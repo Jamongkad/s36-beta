@@ -37,7 +37,7 @@
 
         jQuery(function($) {
             $("button").click(function(e) {
-                xss_ajax("http://www.gearfish.com/s36-beta/public/index.php/test_json_request?name='Ryan'&lastname='Chua'");
+                xss_ajax("http://www.gearfish.com/s36-beta/public/index.php/test_json_request?name=Ryan&lastname=Chua");
             });
         });
     </script>
