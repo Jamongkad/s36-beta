@@ -19,7 +19,6 @@ class S36Auth {
         if(is_null($this->user) and Session::has($this->user_id)) {
             $this->user = DB::table('User', $this->db_name)->where('userId', '=', Session::get($this->user_id))->first();
         } 
-
         return $this->user;
     }
 

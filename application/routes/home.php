@@ -4,18 +4,47 @@ $user = new S36Auth();
 
 return array(
 
-    'GET /' => function() use($user) {
-        print_r($user->user());
-        print_r($user->check());
-        return View::make('home/index');
+    'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user) {
+        $view = View::make('home/index');
+        $view->header = View::make('partials/header');
+        $view->footer = View::make('partials/footer');
+
+        $view->user = $user->user();
+        return $view;
+    }),
+
+    'GET /login' => function() {
+        $view = View::make('home/login');
+        $view->header = View::make('partials/header');
+        $view->footer = View::make('partials/footer');
+        return $view;
+    }, 
+
+    'GET /logout' => function() use($user) {
+        $user->logout(); 
+        return Redirect::to('/login');
+    },
+
+    'POST /login' => function() use($user) {
+        $input = Input::get();
+        $user->login($input['username'], $input['password']);
+
+        if($user->check()) {
+            return Redirect::to('/');           
+        } else {
+            return Redirect::to('/login');
+        }
+
     },
      
     'GET /test' => function() use($user) {
-        print_r($user->login("budi", "password"));
+        print_r($user->user());
+        print_r($user->check());
+        return View::make('home/test');
     },
 
-    'GET /forget' => function() use($user) {
-        $user->logout();
+    'GET /test_login' => function() use($user) { 
+        print_r($user->login("ryan", "p455w0rd"));
     },
 
     'GET /test_json_request' => function() {

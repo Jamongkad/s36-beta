@@ -38,4 +38,10 @@ return array(
 		return (Input::get('csrf_token') !== Form::raw_token()) ? Response::make(View::make('error/500'), 500) : null;
 	},
 
+    //S36 Defined Filters
+    's36_auth' => function() {
+        $user = new S36Auth;       
+        return ($user->check()) ? Null : Redirect::to('/login');
+    }
+
 );
