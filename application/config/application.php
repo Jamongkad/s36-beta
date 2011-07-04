@@ -11,7 +11,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/s36-alpha/public',
+	'url' => 'http://www.gearfish.com/s36-beta',
 
 	/*
 	|--------------------------------------------------------------------------
