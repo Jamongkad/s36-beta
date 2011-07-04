@@ -17,7 +17,17 @@ return array(
     'GET /forget' => function() use($user) {
         $user->logout();
     },
-    
+
+    'GET /test_json_request' => function() {
+        $obj = new StdClass; 
+        $obj->firstname = "Mathew";
+        $obj->lastname = "Wong";
+        $obj->email = "wrm932@gmail.com";
+
+        $response = "callback(". json_encode($obj)  .");";
+        echo $response;
+    },
+
     'GET /feedback' => function() {
         $conn = DB::connection('master');
         $feedback = $conn->query("

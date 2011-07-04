@@ -10,8 +10,10 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-
+    //deployment-dev
 	'url' => 'http://www.gearfish.com/s36-beta/public',
+    //developtment-localhost
+    //'url' => 'http://localhost/s36-alpha/public',
 
 	/*
 	|--------------------------------------------------------------------------

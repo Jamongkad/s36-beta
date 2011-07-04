@@ -29,14 +29,14 @@
                 txt += key + " = " + data[key];
                 txt += "\n";
             }
-            alert(txt);
+            console.log(txt);
         }
 
         //var url = "http://news.ycombinator.com";
 
         jQuery(function($) {
             $("button").click(function(e) {
-               xss_ajax("http://www.gearfish.com");
+               xss_ajax("http://www.gearfish.com/s36-beta/public/index.php/test_json_request");
             });
         });
     </script>
