@@ -20,8 +20,8 @@ return array(
 
     'GET /test_json_request' => function() {
         $obj = new StdClass; 
-        $obj->firstname = "Mathew";
-        $obj->lastname = "Wong";
+        $obj->firstname = $_GET['name'];
+        $obj->lastname = $_GET['lastname'];
         $obj->email = "wrm932@gmail.com";
 
         $response = "callback(". json_encode($obj)  .");";

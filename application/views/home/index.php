@@ -24,19 +24,20 @@
         }
 
         function callback(data) {
+            /*
             var txt = '';
             for(var key in data) {
                 txt += key + " = " + data[key];
                 txt += "\n";
             }
             console.log(txt);
+            */
+            console.log(data);
         }
-
-        //var url = "http://news.ycombinator.com";
 
         jQuery(function($) {
             $("button").click(function(e) {
-               xss_ajax("http://www.gearfish.com/s36-beta/public/index.php/test_json_request");
+                xss_ajax("http://www.gearfish.com/s36-beta/public/index.php/test_json_request?name='Ryan'&lastname='Chua'");
             });
         });
     </script>
