@@ -33,4 +33,5 @@ if($user->check()):
             <li><?=HTML::link('contacts/', 'Contacts')?></li>
         </ul>
     </div>
+    <?=View::make('partials/flag_menu')?>
 <?endif?>

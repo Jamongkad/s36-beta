@@ -1,23 +1,18 @@
 <?php
 
 $user = new S36Auth();
+$view = View::make('partials/layout');
 
 return array(
 
-    'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user) {
-        $view = View::make('home/index');
-        $view->flag_menu = View::make('partials/flag_menu');
-        $view->header = View::make('partials/header');
-        $view->footer = View::make('partials/footer');
-
-        $view->user = $user->user();
+    'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user, $view) {
+        $view->contents = View::make('home/index');
+        $view->contents->user = $user->user();
         return $view;
     }),
 
-    'GET /login' => function() {
-        $view = View::make('home/login');
-        $view->header = View::make('partials/header');
-        $view->footer = View::make('partials/footer');
+    'GET /login' => function() use ($view) {
+        $view->contents = View::make('home/login'); 
         return $view;
     }, 
 

@@ -1,5 +1,7 @@
 <?php
 
-class Feedback extends Mongor\Model {
-    protected $_collection = 'Feedback';
+class Feedback {
+    public static function pull_feedback() { 
+        echo "Cool beans";
+    }
 }

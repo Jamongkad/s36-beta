@@ -1,5 +1,3 @@
-<?=$header?>
-
 <h3>Login Page</h3>
 <div class="grids">
     <div class="g1of2">
@@ -15,4 +13,3 @@
         Mathew
     </div>
 </div>
-<?=$footer?>
