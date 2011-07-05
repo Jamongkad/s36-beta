@@ -1,8 +1,6 @@
 <?=$header?>
 <div class="g4of5">
-    <div>
-        Pewts
-    </div>
+    <?=$flag_menu?>
     <pre>
     <?print_r($user)?>
     </pre>

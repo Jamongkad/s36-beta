@@ -6,6 +6,7 @@ return array(
 
     'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user) {
         $view = View::make('home/index');
+        $view->flag_menu = View::make('partials/flag_menu');
         $view->header = View::make('partials/header');
         $view->footer = View::make('partials/footer');
 
