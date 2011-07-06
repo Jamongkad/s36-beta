@@ -6,8 +6,12 @@ $view = View::make('partials/layout');
 return array(
 
     'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user, $view) {
+        $feedback = new Feedback;
+
+        $user_id = $user->user()->userid;
+
         $view->contents = View::make('home/index');
-        $view->contents->user = $user->user();
+        $view->contents->feedback = $feedback->pull_feedback($user_id);
         return $view;
     }),
 
@@ -53,33 +57,10 @@ return array(
         echo $response;
     },
 
-    'GET /feedback' => function() {
-        $conn = DB::connection('master');
-        $feedback = $conn->query("
-        SELECT 
-            * 
-        FROM 
-            Feedback
-        INNER JOIN
-            Site
-                ON Feedback.siteId = Site.siteId
-        INNER JOIN
-            Contact
-                ON Feedback.contactId = Contact.contactId
-        INNER JOIN
-            Category
-                ON Feedback.categoryId = Category.categoryId
-        INNER JOIN
-            Form
-                ON Feedback.formId = Form.formId
-        INNER JOIN
-            Status
-                ON Feedback.statusId = Status.statusId
-        ");
-
-        echo "<pre>";
-        print_r($feedback->fetchAll(PDO::FETCH_CLASS));
-        echo "</pre>";
+    'GET /feedback' => function() use($user) {
+        $user_id = $user->user()->userid;
+        $user_model = new Feedback;
+        print_r($user_model->pull_feedback($user_id));
     },
 
 );
