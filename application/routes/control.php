@@ -3,8 +3,8 @@
 return array(
     'GET /control/update_user_pwd' => function() {
 
-        $password = crypt("p455w0rd");
-        return DB::table("User", "master")->where('username', '=', 'ryan')
+        $password = crypt("password");
+        return DB::table("User", "master")->where('username', '=', 'budi')
                                           ->update(Array('password' => $password));
 
     },

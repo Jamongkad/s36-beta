@@ -7,9 +7,8 @@ return array(
 
     'GET /' => Array('before' => 's36_auth', 'do' => function() use ($user, $view) {
         $feedback = new Feedback;
-
         $user_id = $user->user()->userid;
-
+        
         $view->contents = View::make('home/index');
         $view->contents->feedback = $feedback->pull_feedback($user_id);
         return $view;
