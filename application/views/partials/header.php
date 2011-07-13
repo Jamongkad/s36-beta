@@ -2,7 +2,8 @@
 <html>
 <head> 
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <?=HTML::script('js/jquery-1.6.2.min.js')?>
+    <?=HTML::script('js/s36.js')?>
     <?=HTML::style('css/grid.css')?>
     <?=HTML::style('css/gridless.css')?>
     <?=HTML::style('css/romanticc.css')?>
@@ -33,5 +34,9 @@ if($user->check()):
             <li><?=HTML::link('contacts/', 'Contacts')?></li>
         </ul>
     </div>
-    <?=View::make('partials/flag_menu')?>
+
+    <?if(Request::route_is('inbox')):?>
+        <?=View::make('partials/flag_menu')?>
+    <?endif?>
+
 <?endif?>

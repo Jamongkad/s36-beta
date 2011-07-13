@@ -1,4 +1,4 @@
-<div style="background-color: #babfc2; padding: 10px;">
+<div class="filter-holder">
     <ul class="filter_nav">
         <li><?=HTML::link('feedback/filter/all', 'SHOW ALL')?></li>
         <li><?=HTML::link('feedback/filter/positive', 'POSITIVE')?></li>
@@ -10,11 +10,11 @@
     </ul>
 </div>
 
-<div style="background-color: #f4f4f4; padding: 10px;">
+<div class="form-select-holder">
     <?=Form::select('form', Array('form1' => 'select form...'))?>
 </div>
 
-<div style="background-color: #cfdce5; padding: 3px;">
+<div class="sort-by-holder">
     <ul class="filter_nav">
         <li>sort by <?=Form::select('form', Array('date' => 'date'))?></li>
         <li>rating <?=Form::select('form', Array('all' => 'all'))?></li>

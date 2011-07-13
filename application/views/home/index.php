@@ -1,4 +1,4 @@
-<div class="g4of5"> 
+<div class="g4of5 feedback-feeds"> 
     <?foreach($feedback as $feed):?>
         <? $id = $feed->id ?>
         <div class="grids feedback-holder">
