@@ -9,8 +9,6 @@ jQuery(function($) {
         var height = $('.main_content').height() + height_const + 'px';
     }
    
-
-
     $('.dash_holder').css({
         'height': height
     })

@@ -3,7 +3,6 @@
 class Feedback {
 
     public function pull_feedback($user_id, $limit=5, $offset=0) {
-
         $dbh = DB::connection('master');    
         $sth = $dbh->prepare('
             SELECT 
@@ -66,6 +65,7 @@ class Feedback {
                 , Feedback.isFeatured
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
+                , Contact.email AS email
             FROM 
                 User
                     INNER JOIN
