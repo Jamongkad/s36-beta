@@ -279,3 +279,17 @@ table.user-info {
 table.user-info td {
     font-size: 0.8em;    
 }
+
+ul.category-picker {  
+    cursor: default;
+    list-style-type: none;
+    display: inline;
+}
+
+ul.category-picker li {
+    padding: 5px; 
+}
+
+li.Matched {
+    background-color: #50a6c2; 
+}

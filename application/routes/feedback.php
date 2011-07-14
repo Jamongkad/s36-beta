@@ -17,6 +17,13 @@ return array(
 
         return $view;
     }),
+    //Ajax url
+    'GET /feedback/changecat' => function() use ($user) {
+        $feedback_id = Input::get('feedid');
+        $cat_id = Input::get('catid');
+        $feedback = new Feedback;
+        $feedback->change_feedback_cat($feedback_id, $cat_id);
+    },
 
     'GET /feedback/feature/(:num)' => function($id) use($user) {
         print_r($id);

@@ -12,4 +12,31 @@ jQuery(function($) {
     $('.dash_holder').css({
         'height': height
     })
+
+    $('ul.category-picker li').bind('click', function(e) {
+
+        var deselect_this = false;
+        var li = $('a', this);
+        var href = li.attr('href');
+
+        if($(this).hasClass('Matched')) {
+            deselect_this = true;
+            $(this).removeClass("Matched");
+        } 
+
+        $('ul.category-picker li').each(function() {
+            $(this).removeClass("Matched");
+        });
+
+        if(!deselect_this) {
+            $(this).addClass('Matched');
+        }
+
+        $.ajax({
+              type: "GET"
+            , url: href
+        });
+
+        e.preventDefault();
+    });
 });

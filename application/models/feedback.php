@@ -2,9 +2,14 @@
 
 class Feedback {
 
+    private $dbh;
+
+    public function __construct() {
+        $this->dbh = DB::connection('master');
+    }
+
     public function pull_feedback($user_id, $limit=5, $offset=0) {
-        $dbh = DB::connection('master');    
-        $sth = $dbh->prepare('
+        $sth = $this->dbh->prepare('
             SELECT 
                   Feedback.feedbackId AS id
                 , Category.intName
@@ -51,8 +56,7 @@ class Feedback {
     }
 
     public function pull_feedback_by_id($id) { 
-        $dbh = DB::connection('master');    
-        $sth = $dbh->prepare('
+        $sth = $this->dbh->prepare('
             SELECT 
                   Feedback.feedbackId AS id
                 , Category.intName
@@ -89,5 +93,18 @@ class Feedback {
         $sth->execute();       
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public function change_feedback_cat($feedback_id, $cat_id) {
+        $sth = $this->dbh->prepare("
+            UPDATE Feedback 
+            SET 
+                Feedback.categoryId = :cat_id
+                WHERE Feedback.feedbackId = :feedback_id
+        ");
+
+        $sth->bindParam(':cat_id', $cat_id, PDO::PARAM_INT);
+        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
+        $sth->execute();       
     }
 }

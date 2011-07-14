@@ -9,10 +9,12 @@
         <div class="g1of2">
              <div class="savebox">
                  <div class="save-head">
-                 Select a Category for this feedback.
-                 <ul>
-                     <?foreach($categories as $cat):?>
-                         <li><?=$cat->name?></li>
+                 Select a Category for this feedback. 
+                 <ul class="category-picker">
+                     <?foreach($categories as $cat):?> 
+                         <li <?=($feedback->category === $cat->name) ? 'class="Matched"' : Null?>>
+                             <?=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feedback->id, $cat->name)?>
+                         </li>
                      <?endforeach?>
                  </ul>
                  </div>

@@ -5,7 +5,7 @@ class Category {
         $dbh = DB::connection('master');     
         $sth = $dbh->prepare("
             SELECT 
-                Category.categoryId
+                Category.categoryId AS id
                 , Category.siteId
                 , Category.intName
                 , Category.name
