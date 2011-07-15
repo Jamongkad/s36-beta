@@ -12,9 +12,20 @@
             </div>
             <div class="g1of5">
                 <?=HTML::link('/feedback/feature/'.$id, 'Mark as Featured');?><br/>
-                <?=HTML::link('/feedback/fileas/'.$id, 'File as...');?><br/>
+                <div class="category-picker-box">
+                <?=HTML::link('/feedback/fileas/'.$id, 'File as...', array('class' => 'fileas'));?><br/>
+                    <div class="category-picker-holder">
+                         <ul class="category-picker">
+                             <?foreach($categories as $cat):?> 
+                                 <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
+                                     <?=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feed->id, $cat->name)?>
+                                 </li>
+                             <?endforeach?>
+                         </ul>
+                    </div>
+                </div>
                 <?=HTML::link('/feedback/reply/'.$id, 'Reply to User');?><br/>
-                <?=HTML::link('/feedback/makesticky/'.$id, 'Mark sticky');?><br/>
+                <?=HTML::link('/feedback/makesticky/'.$id, (($feed->issticked == 0) ? 'Make Sticky' : 'Stickied'), array('class' => 'makesticky'));?><br/>
                 <?=HTML::link('/feedback/delete/'.$id, 'Delete Feedback Entry');?><br/>
             </div>
 

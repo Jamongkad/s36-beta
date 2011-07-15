@@ -293,3 +293,7 @@ ul.category-picker li {
 li.Matched {
     background-color: #50a6c2; 
 }
+
+.picked {
+    background-color: #67737f;    
+}

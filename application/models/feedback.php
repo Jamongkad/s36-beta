@@ -1,5 +1,5 @@
 <?php
-
+//Going old school PDO. No flappy gearbox ORM's hahaha
 class Feedback {
 
     private $dbh;
@@ -20,6 +20,10 @@ class Feedback {
                 , Feedback.dtAdded AS date
                 , Feedback.rating
                 , Feedback.isFeatured
+                , Feedback.isFlagged
+                , Feedback.isPublished
+                , Feedback.isArchived
+                , Feedback.isSticked
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
             FROM 
@@ -104,6 +108,28 @@ class Feedback {
         ");
 
         $sth->bindParam(':cat_id', $cat_id, PDO::PARAM_INT);
+        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
+        $sth->execute();       
+    }
+
+    public function make_sticky($feedback_id, $state) {
+        $stickState = Null;
+        if($state == "Make Sticky") {
+            $stickState = 1; 
+        }
+        
+        if($state == "Stickied") {
+            $stickState = 0;     
+        }
+       
+        $sth = $this->dbh->prepare("
+            UPDATE Feedback 
+            SET 
+                Feedback.isSticked = :state
+                WHERE Feedback.feedbackId = :feedback_id
+        ");
+
+        $sth->bindParam(':state', $stickState, PDO::PARAM_INT);
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $sth->execute();       
     }

@@ -26,16 +26,16 @@ if($user->check()):
     </div>
     <div class="g1of5 dash_holder">
         <ul class="dash_nav">
-            <li><?=HTML::link('dashboard/', 'Dashboard')?></li>
-            <li><?=HTML::link('inbox/', 'Inbox')?></li>
-            <li><?=HTML::link('featured/', 'Featured')?></li>
-            <li><?=HTML::link('filed/', 'Filed Feedback')?></li>
-            <li><?=HTML::link('feedsetup/', 'Feedback Setup')?></li>
-            <li><?=HTML::link('contacts/', 'Contacts')?></li>
+            <li<?=(Request::uri() == 'dashboard' ? ' class="picked"' : null)?>><?=HTML::link('dashboard/', 'Dashboard')?></li>
+            <li<?=(Request::uri() == 'inbox' ? ' class="picked"' : null)?>><?=HTML::link('inbox/', 'Inbox')?></li>
+            <li<?=(Request::uri() == 'featured' ? ' class="picked"' : null)?>><?=HTML::link('featured/', 'Featured')?></li>
+            <li<?=(Request::uri() == 'filed' ? ' class="picked"' : null)?>><?=HTML::link('filed/', 'Filed Feedback')?></li>
+            <li<?=(Request::uri() == 'feedsetup' ? ' class="picked"' : null)?>><?=HTML::link('feedsetup/', 'Feedback Setup')?></li>
+            <li<?=(Request::uri() == 'contacts' ? ' class="picked"' : null)?>><?=HTML::link('contacts/', 'Contacts')?></li>
         </ul>
     </div>
 
-    <?if(Request::route_is('inbox')):?>
+    <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed')):?>
         <?=View::make('partials/flag_menu')?>
     <?endif?>
 

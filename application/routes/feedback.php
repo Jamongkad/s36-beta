@@ -13,16 +13,21 @@ return array(
         $view->contents = View::make('feedback/modifyfeedback');
         $view->contents->feedback = $feedback->pull_feedback_by_id($id);
         $view->contents->categories = $category->pull_site_categories($user->user()->userid);
-        $view->contents->id = $id;
 
         return $view;
     }),
-    //Ajax url
+
+    //Ajax Functions...
     'GET /feedback/changecat' => function() use ($user) {
         $feedback_id = Input::get('feedid');
         $cat_id = Input::get('catid');
         $feedback = new Feedback;
         $feedback->change_feedback_cat($feedback_id, $cat_id);
+    },
+
+    'GET /feedback/makesticky/(:num)' => function($id) {
+        $feedback = new Feedback;
+        $feedback->make_sticky($id, Input::get('state'));
     },
 
     'GET /feedback/feature/(:num)' => function($id) use($user) {

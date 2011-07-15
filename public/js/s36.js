@@ -31,7 +31,7 @@ jQuery(function($) {
             $(this).removeClass("Matched");
         } 
 
-        $('ul.category-picker li').each(function() {
+        $(this).parent().children().each(function() {
             $(this).removeClass("Matched");
         });
 
@@ -46,4 +46,34 @@ jQuery(function($) {
 
         e.preventDefault();
     });
+
+    $('div.category-picker-holder').hide();
+
+    $('a.fileas').bind('click', function(e) {     
+        $(this).siblings('div.category-picker-holder').toggle();
+        e.preventDefault();
+    });
+
+    $('a.makesticky').bind('click', function(e) {
+
+        var href = $(this).attr('href');
+        var text = $(this).text();
+
+        if(text == 'Make Sticky') {
+            $(this).text('Stickied')
+        }
+
+        if(text == 'Stickied') {
+            $(this).text('Make Sticky');
+        }
+
+        $.ajax({
+              type: "GET"
+            , url: href
+            , data: {state: text}
+        });
+
+        e.preventDefault(); 
+    });
+
 });
