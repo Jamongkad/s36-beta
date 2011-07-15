@@ -6,7 +6,14 @@ jQuery(function($) {
     if(mheight) {
         var height =  mheight + height_const + 'px';      
     } else {
-        var height = $('.main_content').height() + height_const + 'px';
+
+        var main_content_hgt = $('.main_content').height();
+
+        if(main_content_hgt < 500) {
+            main_content_hgt = 600; 
+        }
+
+        var height = main_content_hgt + height_const + 'px';
     }
    
     $('.dash_holder').css({
