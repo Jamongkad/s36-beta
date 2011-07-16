@@ -5,7 +5,7 @@ $view = View::make('partials/layout');
 
 return array(
 
-    'GET /login' => function() use ($view) {
+    'GET /' => function() use ($view) {
         $view->contents = View::make('home/login'); 
         return $view;
     }, 
@@ -22,7 +22,7 @@ return array(
         if($user->check()) {
             return Redirect::to('/dashboard');           
         } else {
-            return Redirect::to('/login');
+            return Redirect::to('/');
         }
 
     },
