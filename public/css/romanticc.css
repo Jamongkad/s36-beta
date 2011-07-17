@@ -192,8 +192,8 @@ a.link:hover {
 }
 
 .dash_holder {
-    background-color: #6b7984; 
-    height: 100%   
+    background-color: #6b7984;  
+    height: 100%;
 }
 
 .light_blue {
@@ -296,4 +296,15 @@ li.Matched {
 
 .picked {
     background-color: #67737f;    
+}
+
+.category-picker-holder {
+    z-index: 200;    
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+ul.category-picker li {
+    font-size: 0.8em; 
 }

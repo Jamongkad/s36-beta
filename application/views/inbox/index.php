@@ -5,13 +5,25 @@
             <div class="g3of5">
                 <div class="feedback-author"><?=$feed->firstname?> <?=$feed->lastname?></div>
                 <p><?=$feed->text?></p>
-                <span class="light_blue">Status: </span><span><?=$feed->status?></span>
+                <span class="light_blue">Status: </span>
+                <span class="status-change">
+                    <?=$feed->status?>
+                    <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                        <?foreach($status as $option):?>
+                            <?$option_nm = strtolower($option->name);?>
+                            <option <?=($feed->status == $option_nm) ? 'selected' : null?> 
+                             value="<?=str_replace(" ", "", $option_nm)?>"><?=$option->name?></option>
+                        <?endforeach?>
+                    </select>
+                
+                </span>
                 <span class="light_blue">Priority: </span><span><?=$feed->priority?></span>
                 <span class="light_blue">Rating: </span><span><?=$feed->rating?></span>
                 <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional info')?> 
             </div>
             <div class="g1of5">
                 <?=HTML::link('/feedback/feature/'.$id, 'Mark as Featured');?><br/>
+
                 <div class="category-picker-box">
                 <?=HTML::link('/feedback/fileas/'.$id, 'File as...', array('class' => 'fileas'));?><br/>
                     <div class="category-picker-holder">
@@ -24,6 +36,7 @@
                          </ul>
                     </div>
                 </div>
+
                 <?=HTML::link('/feedback/reply/'.$id, 'Reply to User');?><br/>
                 <?=HTML::link('/feedback/makesticky/'.$id, (($feed->issticked == 0) ? 'Make Sticky' : 'Stickied'), array('class' => 'makesticky'));?><br/>
                 <?=HTML::link('/feedback/delete/'.$id, 'Delete Feedback Entry');?><br/>

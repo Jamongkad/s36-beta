@@ -41,7 +41,7 @@ return array(
     //S36 Defined Filters
     's36_auth' => function() {
         $user = new S36Auth;       
-        return ($user->check()) ? Null : Redirect::to('/login');
+        return ($user->check()) ? Null : Redirect::to('/');
     }
 
 );

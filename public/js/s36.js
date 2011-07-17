@@ -1,10 +1,11 @@
 jQuery(function($) {
 
-    var height_const = 19;
-    var mheight = $('.feedback-feeds').height() + ($('.filter-holder').height() * 2) + $('.form-select-holder').height() + $('.sort-by-holder').height()
+    var mheight = $('.feedback-feeds').height() + ($('.filter-holder').height() * 2) + $('.form-select-holder').height() + $('.sort-by-holder').height();
+
+    var height = null;
 
     if(mheight) {
-        var height =  mheight + height_const + 'px';      
+        var height = mheight + 16 + 'px';      
     } else {
 
         var main_content_hgt = $('.main_content').height();
@@ -13,7 +14,7 @@ jQuery(function($) {
             main_content_hgt = 600; 
         }
 
-        var height = main_content_hgt + height_const + 'px';
+        var height = main_content_hgt + 'px';
     }
    
     $('.dash_holder').css({
@@ -75,5 +76,23 @@ jQuery(function($) {
 
         e.preventDefault(); 
     });
+
+    $('select[name="status"]').hide();
+    $('span.status-change').bind("click", function(e) {
+
+        $(this).children('select').unbind('change.status').bind('change.status', function(e) {
+            var select_val = $(this).val();
+            var feedid = $(this).attr('feedid');
+            var feedurl = $(this).attr('feedurl');
+            $.ajax({
+                  type: "POST"
+                , url: feedurl
+                , data: {"select_val":select_val, "feed_id": feedid}
+            });
+        }).show();
+
+    }).css({'cursor': 'pointer'});
+
+
 
 });

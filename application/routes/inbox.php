@@ -14,6 +14,7 @@ return array(
         $view->contents = View::make('inbox/index');
         $view->contents->feedback = $feedback->pull_feedback($user_id, 10);
         $view->contents->categories = $category->pull_site_categories($user_id);
+        $view->contents->status = DB::table('Status', 'master')->get();
         return $view;
     }),
 );

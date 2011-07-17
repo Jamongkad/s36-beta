@@ -14,7 +14,7 @@
 $user = new S36Auth;
 if($user->check()):
 ?>
-<div class="grids">
+<div class="grids main">
     <div id="nav_holder">
         signed in as <b><?=$user->user()->username?></b>
         <ul class="nav">

@@ -25,6 +25,10 @@ return array(
         $feedback->change_feedback_cat($feedback_id, $cat_id);
     },
 
+    'POST /feedback/changestatus' => function() {
+        print_r($_POST);
+    },
+
     'GET /feedback/makesticky/(:num)' => function($id) {
         $feedback = new Feedback;
         $feedback->make_sticky($id, Input::get('state'));

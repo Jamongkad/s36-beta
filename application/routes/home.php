@@ -12,7 +12,7 @@ return array(
 
     'GET /logout' => function() use($user) {
         $user->logout(); 
-        return Redirect::to('/login');
+        return Redirect::to('/');
     },
 
     'POST /login' => function() use($user) {
