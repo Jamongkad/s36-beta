@@ -11,12 +11,20 @@
                     <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                         <?foreach($status as $option):?>
                             <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
-                            <option <?=($feed->status == $option_match) ? 'selected' : null?> 
-                             value="<?=$option_match?>"><?=$option->name?></option>
+                            <option <?=($feed->status == $option_match) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
                         <?endforeach?>
                     </select> 
                 </span>
-                <span class="light_blue">Priority: </span><span><?=$feed->priority?></span>
+                <span class="light_blue">Priority: </span>
+                <span class="priority-change">
+                    <span class="priority-target"><?=$feed->priority?></span>
+                    <select name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                        <?foreach($priority_obj as $key => $val):?>
+                            <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$key?>"><?=$val?></option>
+                        <?endforeach?>
+                    </select>
+                </span>
+
                 <span class="light_blue">Rating: </span><span><?=$feed->rating?></span>
                 <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional info')?> 
             </div>

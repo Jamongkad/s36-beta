@@ -77,7 +77,7 @@ jQuery(function($) {
         e.preventDefault(); 
     });
 
-    $('select[name="status"]').hide();
+    $('select[name="status"], select[name="priority"]').hide();
 
     $('span.status-change').bind("click", function(e) {
 
@@ -97,5 +97,22 @@ jQuery(function($) {
         }).show();
 
     }).css({'cursor': 'pointer'});
+
+    $('span.priority-change').bind('click', function(e) { 
+        $(this).children('select').unbind('change.priority').bind('change.priority', function(e) { 
+            var select = $(this);
+            var select_val = select.val();
+            var feedid = select.attr('feedid');
+            var feedurl = select.attr('feedurl');
+            
+            $.ajax({
+                  type: "POST"
+                , url: feedurl
+                , data: {"select_val":select_val, "feed_id": feedid}
+            });
+
+            select.siblings().text($(this).children('option:selected').text());
+        }).show();
+    }).css({'cursor': 'pointer'})
 
 });

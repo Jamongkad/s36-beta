@@ -14,6 +14,7 @@ return array(
         $view->contents->feedback = $feedback->pull_feedback($user_id, 10);
         $view->contents->categories = $category->pull_site_categories($user_id);
         $view->contents->status = DB::table('Status', 'master')->get();
+        $view->contents->priority_obj = (object)Array(0 => 'low', 60 => 'medium', 100 => 'high');
         return $view;
     }),
 );

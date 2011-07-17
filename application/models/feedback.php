@@ -140,6 +140,7 @@ class Feedback {
         $sth->execute();       
     }
 
+    //TODO: duplicate functions dumbass generalize this shit nigguh!
     public function change_feedback_status($feedback_id, $status) {
         $sth = $this->dbh->prepare("
             UPDATE Feedback 
@@ -149,6 +150,19 @@ class Feedback {
         ");
 
         $sth->bindParam(':status', $status, PDO::PARAM_STR);
+        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
+        $sth->execute();       
+    }
+
+    public function change_feedback_priority($feedback_id, $priority) {
+        $sth = $this->dbh->prepare("
+            UPDATE Feedback 
+            SET 
+                Feedback.priority = :priority
+                WHERE Feedback.feedbackId = :feedback_id
+        ");
+
+        $sth->bindParam(':priority', $priority, PDO::PARAM_INT);
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $sth->execute();       
     }

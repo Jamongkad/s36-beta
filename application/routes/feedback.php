@@ -23,7 +23,13 @@ return array(
     },
 
     'POST /feedback/changestatus' => function() use ($feedback) {
-        $feedback->change_feedback_status(Input::get('feed_id'), Input::get('select_val'));
+        $feedback->change_feedback_status(Input::get('feed_id'), 
+                                          Input::get('select_val'));
+    },
+
+    'POST /feedback/changepriority' => function() use ($feedback) {
+        $feedback->change_feedback_priority(Input::get('feed_id'), 
+                                            Input::get('select_val'));
     },
 
     'GET /feedback/makesticky/(:num)' => function($id) use ($feedback){
