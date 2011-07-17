@@ -113,14 +113,12 @@ class Feedback {
     }
 
     public function make_sticky($feedback_id, $state) {
+
         $stickState = Null;
-        if($state == "Make Sticky") {
-            $stickState = 1; 
-        }
+
+        if($state == "Make Sticky") { $stickState = 1; }
         
-        if($state == "Stickied") {
-            $stickState = 0;     
-        }
+        if($state == "Stickied") { $stickState = 0; }
        
         $sth = $this->dbh->prepare("
             UPDATE Feedback 
@@ -130,6 +128,19 @@ class Feedback {
         ");
 
         $sth->bindParam(':state', $stickState, PDO::PARAM_INT);
+        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
+        $sth->execute();       
+    }
+
+    public function change_feedback_status($feedback_id, $status) {
+        $sth = $this->dbh->prepare("
+            UPDATE Feedback 
+            SET 
+                Feedback.status = :status
+                WHERE Feedback.feedbackId = :feedback_id
+        ");
+
+        $sth->bindParam(':status', $status, PDO::PARAM_STR);
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $sth->execute();       
     }

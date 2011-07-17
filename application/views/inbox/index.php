@@ -7,15 +7,14 @@
                 <p><?=$feed->text?></p>
                 <span class="light_blue">Status: </span>
                 <span class="status-change">
-                    <?=$feed->status?>
+                    <span class="status-target"><?=$feed->status?></span>
                     <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                         <?foreach($status as $option):?>
-                            <?$option_nm = strtolower($option->name);?>
-                            <option <?=($feed->status == $option_nm) ? 'selected' : null?> 
-                             value="<?=str_replace(" ", "", $option_nm)?>"><?=$option->name?></option>
+                            <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
+                            <option <?=($feed->status == $option_match) ? 'selected' : null?> 
+                             value="<?=$option_match?>"><?=$option->name?></option>
                         <?endforeach?>
-                    </select>
-                
+                    </select> 
                 </span>
                 <span class="light_blue">Priority: </span><span><?=$feed->priority?></span>
                 <span class="light_blue">Rating: </span><span><?=$feed->rating?></span>

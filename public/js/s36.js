@@ -78,17 +78,22 @@ jQuery(function($) {
     });
 
     $('select[name="status"]').hide();
+
     $('span.status-change').bind("click", function(e) {
 
         $(this).children('select').unbind('change.status').bind('change.status', function(e) {
-            var select_val = $(this).val();
-            var feedid = $(this).attr('feedid');
-            var feedurl = $(this).attr('feedurl');
+            var select = $(this);
+            var select_val = select.val();
+            var feedid = select.attr('feedid');
+            var feedurl = select.attr('feedurl');
+
             $.ajax({
                   type: "POST"
                 , url: feedurl
                 , data: {"select_val":select_val, "feed_id": feedid}
             });
+
+            select.siblings().text(select_val);
         }).show();
 
     }).css({'cursor': 'pointer'});
