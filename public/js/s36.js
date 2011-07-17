@@ -98,6 +98,4 @@ jQuery(function($) {
 
     }).css({'cursor': 'pointer'});
 
-
-
 });

@@ -15,7 +15,11 @@ class Feedback {
                 , Category.intName
                 , Category.name AS category
                 , Feedback.status AS status
-                , Feedback.priority AS priority
+                , CASE
+                    WHEN Feedback.priority < 30 THEN "low"
+                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
+                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
+                  END as priority
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating
@@ -66,7 +70,11 @@ class Feedback {
                 , Category.intName
                 , Category.name AS category
                 , Feedback.status AS status
-                , Feedback.priority AS priority
+                , CASE
+                    WHEN Feedback.priority < 30 THEN "low"
+                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
+                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
+                  END as priority
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating

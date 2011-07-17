@@ -9,8 +9,7 @@ return array(
         $feedback = new Feedback;
         $category = new Category;
 
-        $user_id = $user->user()->userid; 
-        
+        $user_id = $user->user()->userid;         
         $view->contents = View::make('inbox/index');
         $view->contents->feedback = $feedback->pull_feedback($user_id, 10);
         $view->contents->categories = $category->pull_site_categories($user_id);
