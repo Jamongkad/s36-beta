@@ -30,6 +30,8 @@ class Feedback {
                 , Feedback.isSticked
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
+                , Country.name AS countryname
+                , Country.code as countrycode
             FROM 
                 User
                     INNER JOIN
@@ -45,6 +47,9 @@ class Feedback {
                         Contact
                         ON Contact.contactId = Feedback.contactId 
                         AND Contact.siteId = Site.siteId
+                    INNER JOIN 
+                        Country
+                        ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND User.userId = :user_id
                     GROUP BY

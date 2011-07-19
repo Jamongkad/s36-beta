@@ -11,7 +11,6 @@ return array(
         $view->contents = View::make('feedback/modifyfeedback');
         $view->contents->feedback = $feedback->pull_feedback_by_id($id);
         $view->contents->categories = $category->pull_site_categories($user->user()->userid);
-
         return $view;
     }),
 

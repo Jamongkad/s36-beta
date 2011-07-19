@@ -1,24 +1,72 @@
-<div class="filter-holder">
-    <ul class="filter_nav">
-        <li><?=HTML::link('feedback/filter/all', 'SHOW ALL')?></li>
-        <li><?=HTML::link('feedback/filter/positive', 'POSITIVE')?></li>
-        <li><?=HTML::link('feedback/filter/negative', 'NEGATIVE')?></li>
-        <li><?=HTML::link('feedback/filter/neutral', 'NEUTRAL')?></li>
-        <li><?=HTML::link('feedback/filter/profanity', 'CONTAINS PROFANITY')?></li>
-        <li><?=HTML::link('feedback/filter/flagged', 'FLAGGED')?></li>
-        <li><?=HTML::link('feedback/filter/most', 'MOST CONTENT')?></li>
+<!-- gray status bar -->
+<div class="admin-status-bar">
+    <div class="current-page inbox">INBOX <span>There were 27 new feedback since your last visit.</span></div>
+</div>
+<!-- end of gray status bar -->
+
+<!-- top navigation bar -->
+<div class="admin-nav-bar">
+    <ul>
+        <li><a href="#" class="selected">SHOW ALL</a></li>
+        <li><a href="#">POSITIVE</a></li>
+        <li><a href="#">NEGATIVE</a></li>
+        <li><a href="#">NEUTRAL</a></li>
+        <li><a href="#">CONTAINS PROFANITY</a></li>
+        <li><a href="#">FLAGGED</a></li>
+        <li><a href="#">MOST CONTENT</a></li>
     </ul>
 </div>
+<!-- end of top navigation bar -->
 
-<div class="form-select-holder">
-    <?=Form::select('form', Array('form1' => 'select form...'))?>
+<div class="admin-filter-bar">
+    <div class="admin-filter-select">
+        <select>
+            <option>Select form</option>
+        </select>
+    </div>
+    
+    <div class="admin-filter-search">
+        <input type="text" class="search" value="Search..." />
+    </div>
+    
+    <div class="admin-filter-datepicker">
+        <input type="text" class="datepicker" value="Jan 12, 2011 - Jan 12, 2011" />
+    </div>
+    <div class="c"></div>
 </div>
-
-<div class="sort-by-holder">
-    <ul class="filter_nav">
-        <li>sort by <?=Form::select('form', Array('date' => 'date'))?></li>
-        <li>rating <?=Form::select('form', Array('all' => 'all'))?></li>
-        <li>category <?=Form::select('form', Array('all' => 'all'))?></li>
-        <li>display <?=Form::select('form', Array(20 => 20))?></li>
-    </ul>
+<!-- top blue bar with filter options -->
+<div class="admin-sorter-bar">
+    <div class="sorter-bar">
+        <div class="left">
+            <input type="checkbox" />
+        </div>
+        <div class="right">
+            <div class="g1of5">
+                <label>SORT BY</label>
+                <select>
+                    <option>Date</option>
+                </select>
+            </div>
+            <div class="g1of5">
+                <label>RATING</label>
+                <select>
+                    <option>All</option>
+                </select>
+            </div>
+            <div class="g1of5">
+                <label>CATEGORY</label>
+                <select>
+                    <option>All</option>
+                </select>
+            </div>
+            <div class="g2of5 right-align">
+                <label>Display</label>
+                <select>
+                    <option>50</option>
+                </select>
+            </div>
+        </div>
+        <div class="c"></div>
+    </div>
 </div>
+<!-- end of top blue bar with filter options -->

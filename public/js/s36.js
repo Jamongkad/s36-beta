@@ -55,17 +55,20 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $('a.makesticky').bind('click', function(e) {
+    //TODO: fix this states should be boolean values. 
+    $('.makesticky').bind('click', function(e) {
 
-        var href = $(this).attr('href');
-        var text = $(this).text();
+        var href = $(this).attr('hrefaction');
+        var text = $(this).attr('state');
 
         if(text == 'Make Sticky') {
-            $(this).text('Stickied')
+            $(this).attr('state', 'Stickied')
+            $(this).css({'background-position': '-60px bottom'});
         }
 
         if(text == 'Stickied') {
-            $(this).text('Make Sticky');
+            $(this).attr('state', 'Make Sticky');
+            $(this).removeAttr('style');
         }
 
         $.ajax({
