@@ -112,19 +112,7 @@ class Feedback {
         return $result;
     }
 
-    public function change_feedback_cat($feedback_id, $cat_id) {
-        $sth = $this->dbh->prepare("
-            UPDATE Feedback 
-            SET 
-                Feedback.categoryId = :cat_id
-                WHERE Feedback.feedbackId = :feedback_id
-        ");
-
-        $sth->bindParam(':cat_id', $cat_id, PDO::PARAM_INT);
-        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
-        $sth->execute();       
-    }
-
+    //TODO: SIMPLIFY THIS!!!
     public function make_sticky($feedback_id, $state) {
 
         $stickState = Null;
@@ -132,43 +120,13 @@ class Feedback {
         if($state == "Make Sticky") { $stickState = 1; }
         
         if($state == "Stickied") { $stickState = 0; }
-       
-        $sth = $this->dbh->prepare("
-            UPDATE Feedback 
-            SET 
-                Feedback.isSticked = :state
-                WHERE Feedback.feedbackId = :feedback_id
-        ");
 
-        $sth->bindParam(':state', $stickState, PDO::PARAM_INT);
-        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
-        $sth->execute();       
+        return $this->_change_feedback('isSticked', $feedback_id, $stickState);
     }
 
-    //TODO: duplicate functions dumbass generalize this shit nigguh!
-    public function change_feedback_status($feedback_id, $status) {
-        $sth = $this->dbh->prepare("
-            UPDATE Feedback 
-            SET 
-                Feedback.status = :status
-                WHERE Feedback.feedbackId = :feedback_id
-        ");
-
-        $sth->bindParam(':status', $status, PDO::PARAM_STR);
-        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
-        $sth->execute();       
-    }
-
-    public function change_feedback_priority($feedback_id, $priority) {
-        $sth = $this->dbh->prepare("
-            UPDATE Feedback 
-            SET 
-                Feedback.priority = :priority
-                WHERE Feedback.feedbackId = :feedback_id
-        ");
-
-        $sth->bindParam(':priority', $priority, PDO::PARAM_INT);
-        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
-        $sth->execute();       
-    }
+    public function _change_feedback($column, $feedback_id, $state) {
+        DB::table('Feedback', 'master')
+                  ->where('feedbackId', '=', $feedback_id)
+                  ->update(array($column => $state));
+    }    
 }

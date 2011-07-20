@@ -117,5 +117,27 @@ jQuery(function($) {
             select.siblings().text($(this).children('option:selected').text());
         }).show();
     }).css({'cursor': 'pointer'})
+    
+    $('.remove').bind('click', function(e) {
+        if(confirm('Are you sure?')) { 
+            var my_parent = $(this).parents('div.feedback').fadeOut();
+            var feedurl = $(this).attr('hrefaction');
+            
+            $.ajax({
+                  type: "DELETE"
+                , url: feedurl
+            });
+        }
+    });
 
+    $('.flag').bind('click', function(e) {
+
+        var feedurl = $(this).attr('hrefaction');
+        
+        $.ajax({
+              type: "GET"
+            , url: feedurl
+        });
+
+    });
 });

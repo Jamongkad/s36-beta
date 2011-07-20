@@ -1,3 +1,29 @@
+        
+            <!-- end of feedback list -->
+            <div class="admin-sorter-bar">
+            	<div class="sorter-bar">
+                    <div class="left">
+                    	<input type="checkbox" />
+                    </div>
+                    <div class="right">
+                    	<div class="g1of3">
+                        	<label>WITH SELECTED</label>
+                            <select>
+                            	<option>Delete</option>
+                            </select>
+                        </div>
+                        <div class="g1of3">
+                        	<div class="pagination-text">Displaying feedbacks 1-12 of 25</div>
+                        </div>
+                        <div class="g1of3">
+                        	<div class="pagination">
+                            	Page <input type="text" style="width: 30px;" class="pagination-input" value="1" /> of 59
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
         </div> 
         <div class="c"></div>
     </div>

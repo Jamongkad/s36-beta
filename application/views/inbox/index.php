@@ -74,8 +74,8 @@
                         <div class="date"><?=date('F j, Y', $unix);?></div>
                         <div class="time"><?=date('h:i:m a', $unix);?></div>
 
-                        <input type="button" class="flag" />
-                        <input type="button" class="remove" />
+                        <input type="button" class="flag" hrefaction="<?=URL::to('/feedback/flagfeedback/'.$id)?>"/>
+                        <input type="button" class="remove" hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
                     </div>
                 </div>
             </div>

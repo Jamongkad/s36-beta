@@ -59,7 +59,7 @@
                     <option>All</option>
                 </select>
             </div>
-            <div class="g2of5 right-align">
+            <div class="g1of5 right-align">
                 <label>Display</label>
                 <select>
                     <option>50</option>
