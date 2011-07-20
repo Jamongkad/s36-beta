@@ -1,4 +1,5 @@
         </div> 
+        <div class="c"></div>
     </div>
 <?
 $user = new S36Auth;
