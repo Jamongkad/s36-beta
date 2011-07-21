@@ -33,8 +33,8 @@ return array(
         $feedback->_change_feedback('isFlagged', Input::get('feedid'), Input::get('state'));
     },
     
-    'POST /feedback/makesticky' => function() use ($feedback){
-        $feedback->_change_feedback('isSticked', Input::get('feedid'), Input::get('state'));
+    'POST /feedback/featurefeedback' => function() use ($feedback){
+        $feedback->_change_feedback('isFeatured', Input::get('feedid'), Input::get('state'));
     },
  
     'POST /feedback/publishfeedback' => function() use ($feedback){

@@ -113,7 +113,7 @@ jQuery(function($) {
         e.preventDefault(); 
     });
 
-    $('.makesticky').bind('click', function(e) {
+    $('.feature').bind('click', function(e) {
 
         var feedurl = $(this).attr('hrefaction');
         var feedid = $(this).attr('feedid');

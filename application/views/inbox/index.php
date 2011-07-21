@@ -26,8 +26,8 @@
                             </div>
 
                             <input type="button" class="reply" />
-                            <input type="button" class="feature makesticky" 
-                            <?=Helpers::switchable($feed->issticked, $id, URL::to('/feedback/makesticky'), ' style="background-position: -60px bottom"') ?>/>
+                            <input type="button" class="feature" 
+                            <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/featurefeedback'), ' style="background-position: -60px bottom"') ?>/>
                             <input type="button" class="contact" />
                         </div>
                         <div class="author-info">
