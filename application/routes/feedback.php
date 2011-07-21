@@ -36,6 +36,10 @@ return array(
     'POST /feedback/makesticky' => function() use ($feedback){
         $feedback->_change_feedback('isSticked', Input::get('feedid'), Input::get('state'));
     },
+ 
+    'POST /feedback/publishfeedback' => function() use ($feedback){
+        $feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
+    },
 
     'DELETE /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         print_r($id);

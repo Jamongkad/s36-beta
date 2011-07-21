@@ -1,26 +1,5 @@
 jQuery(function($) {
 
-    var mheight = $('.feedback-feeds').height() + ($('.filter-holder').height() * 2) + $('.form-select-holder').height() + $('.sort-by-holder').height();
-
-    var height = null;
-
-    if(mheight) {
-        var height = mheight + 16 + 'px';      
-    } else {
-
-        var main_content_hgt = $('.main_content').height();
-
-        if(main_content_hgt < 500) {
-            main_content_hgt = 600; 
-        }
-
-        var height = main_content_hgt + 'px';
-    }
-   
-    $('.dash_holder').css({
-        'height': height
-    })
-
     $('ul.category-picker li').bind('click', function(e) {
 
         var deselect_this = false;
@@ -53,36 +32,6 @@ jQuery(function($) {
     $('.fileas').bind('click', function(e) {     
         $(this).siblings('div.category-picker-holder').toggle();
         e.preventDefault();
-    });
-
-    //TODO: fix this states should be boolean values. 
-    $('.makesticky').bind('click', function(e) {
-
-        var feedurl = $(this).attr('hrefaction');
-        var feedid = $(this).attr('feedid');
-        var state = $(this).attr('state');
-
-        var var_state = null;
-
-        if(state == 0) {
-            var_state = 1;
-            $(this).attr('state', 1);
-            $(this).css({'background-position': '-60px bottom'});
-        }
-
-        if(state == 1) {
-            var_state = 0;
-            $(this).attr('state', 0);
-            $(this).removeAttr('style');
-        }
-
-        $.ajax({
-              type: "POST"
-            , url: feedurl
-            , data: {"state": var_state, "feedid": feedid}
-        });
-
-        e.preventDefault(); 
     });
 
     $('select[name="status"], select[name="priority"]').hide();
@@ -160,6 +109,65 @@ jQuery(function($) {
             , url: feedurl
             , data: {"state": var_state, "feedid": feedid} 
         });
+  
+        e.preventDefault(); 
+    });
 
+    $('.makesticky').bind('click', function(e) {
+
+        var feedurl = $(this).attr('hrefaction');
+        var feedid = $(this).attr('feedid');
+        var state = $(this).attr('state');
+
+        var var_state = null;
+
+        if(state == 0) {
+            var_state = 1;
+            $(this).attr('state', 1);
+            $(this).css({'background-position': '-60px bottom'});
+        }
+
+        if(state == 1) {
+            var_state = 0;
+            $(this).attr('state', 0);
+            $(this).removeAttr('style');
+        }
+
+        $.ajax({
+              type: "POST"
+            , url: feedurl
+            , data: {"state": var_state, "feedid": feedid}
+        });
+
+        e.preventDefault(); 
+    });
+
+    $('.check').bind('click', function(e) {
+
+        var feedurl = $(this).attr('hrefaction');
+        var feedid = $(this).attr('feedid');
+        var state = $(this).attr('state');
+
+        var var_state = null;
+
+        if(state == 0) {
+            var_state = 1;
+            $(this).attr('state', 1);
+            $(this).css({'background-position': '0px bottom'});
+        }
+
+        if(state == 1) {
+            var_state = 0;
+            $(this).attr('state', 0);
+            $(this).removeAttr('style');
+        }
+
+        $.ajax({
+              type: "POST"
+            , url: feedurl
+            , data: {"state": var_state, "feedid": feedid}
+        });
+
+        e.preventDefault(); 
     });
 });
