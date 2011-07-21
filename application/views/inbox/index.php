@@ -25,12 +25,13 @@
                                  </ul>
                             </div>
 
-
                             <input type="button" class="reply" />
                             <input type="button" class="feature makesticky" 
-                                   state="<?=(($feed->issticked == 0) ? 'Make Sticky' : 'Stickied')?>" 
-                                   hrefaction="<?=URL::to('/feedback/makesticky/'.$id)?>" 
-                                   <?=(($feed->issticked == 0) ? null : ' style="background-position: -60px bottom"')?>/>
+                                   state="<?=(($feed->issticked == 0) ? 0 : 1)?>" 
+                                   feedid=<?=$id?>
+                                   <?=(($feed->issticked == 0) ? null : ' style="background-position: -60px bottom"')?>
+                                   hrefaction="<?=URL::to('/feedback/makesticky')?>" />
+
 
                             <input type="button" class="contact" />
                         </div>
@@ -85,8 +86,13 @@
                         <div class="date"><?=date('F j, Y', $unix);?></div>
                         <div class="time"><?=date('h:i:m a', $unix);?></div>
 
-                        <input type="button" class="flag" hrefaction="<?=URL::to('/feedback/flagfeedback/'.$id)?>"/>
-                        <input type="button" class="remove" hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
+                        <input type="button" class="flag" 
+                         state="<?=(($feed->isflagged == 0) ? 0 : 1)?>" 
+                         feedid=<?=$id?>
+                         <?=(($feed->isflagged == 0) ? null : ' style="background-position: -100px bottom"')?>
+                         hrefaction="<?=URL::to('/feedback/flagfeedback')?>"/>
+                        <input type="button" class="remove" 
+                         hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
                     </div>
                 </div>
             </div>

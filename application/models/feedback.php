@@ -112,18 +112,6 @@ class Feedback {
         return $result;
     }
 
-    //TODO: SIMPLIFY THIS!!!
-    public function make_sticky($feedback_id, $state) {
-
-        $stickState = Null;
-
-        if($state == "Make Sticky") { $stickState = 1; }
-        
-        if($state == "Stickied") { $stickState = 0; }
-
-        return $this->_change_feedback('isSticked', $feedback_id, $stickState);
-    }
-
     public function _change_feedback($column, $feedback_id, $state) {
         DB::table('Feedback', 'master')
                   ->where('feedbackId', '=', $feedback_id)

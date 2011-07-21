@@ -29,16 +29,16 @@ return array(
         $feedback->_change_feedback('priority', Input::get('feed_id'), Input::get('select_val'));
     },
 
-    'GET /feedback/flagfeedback/(:num)' => function($id) use ($feedback) {  
-        print_r($id);
+    'POST /feedback/flagfeedback' => function() use ($feedback) {  
+        $feedback->_change_feedback('isFlagged', Input::get('feedid'), Input::get('state'));
     },
     
-    'DELETE /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
-        print_r($id);
+    'POST /feedback/makesticky' => function() use ($feedback){
+        $feedback->_change_feedback('isSticked', Input::get('feedid'), Input::get('state'));
     },
 
-    'GET /feedback/makesticky/(:num)' => function($id) use ($feedback){
-        $feedback->make_sticky($id, Input::get('state'));
+    'DELETE /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
+        print_r($id);
     },
 
     'GET /feedback/feature/(:num)' => function($id) use ($feedback) {

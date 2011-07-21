@@ -58,23 +58,28 @@ jQuery(function($) {
     //TODO: fix this states should be boolean values. 
     $('.makesticky').bind('click', function(e) {
 
-        var href = $(this).attr('hrefaction');
-        var text = $(this).attr('state');
+        var feedurl = $(this).attr('hrefaction');
+        var feedid = $(this).attr('feedid');
+        var state = $(this).attr('state');
 
-        if(text == 'Make Sticky') {
-            $(this).attr('state', 'Stickied')
+        var var_state = null;
+
+        if(state == 0) {
+            var_state = 1;
+            $(this).attr('state', 1);
             $(this).css({'background-position': '-60px bottom'});
         }
 
-        if(text == 'Stickied') {
-            $(this).attr('state', 'Make Sticky');
+        if(state == 1) {
+            var_state = 0;
+            $(this).attr('state', 0);
             $(this).removeAttr('style');
         }
 
         $.ajax({
-              type: "GET"
-            , url: href
-            , data: {state: text}
+              type: "POST"
+            , url: feedurl
+            , data: {"state": var_state, "feedid": feedid}
         });
 
         e.preventDefault(); 
@@ -132,11 +137,28 @@ jQuery(function($) {
 
     $('.flag').bind('click', function(e) {
 
-        var feedurl = $(this).attr('hrefaction');
-        
+        var feedurl = $(this).attr('hrefaction'); 
+        var feedid = $(this).attr('feedid');
+        var state = $(this).attr('state');
+
+        var var_state = null;
+
+        if(state == 0) {
+            var_state = 1;
+            $(this).attr('state', 1);
+            $(this).css({'background-position': '-100px bottom'});
+        }
+
+        if(state == 1) {
+            var_state = 0;
+            $(this).attr('state', 0);
+            $(this).removeAttr('style');
+        }
+
         $.ajax({
-              type: "GET"
+              type: "POST"
             , url: feedurl
+            , data: {"state": var_state, "feedid": feedid} 
         });
 
     });
