@@ -50,7 +50,7 @@ jQuery(function($) {
 
     $('div.category-picker-holder').hide();
 
-    $('a.fileas').bind('click', function(e) {     
+    $('.fileas').bind('click', function(e) {     
         $(this).siblings('div.category-picker-holder').toggle();
         e.preventDefault();
     });

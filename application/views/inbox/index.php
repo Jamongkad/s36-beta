@@ -13,9 +13,20 @@
                     <div class="feedback-details">
                         <div class="options">
                             <input type="button" class="check" />
-                            <input type="button" class="save" />
-                            <input type="button" class="reply" />
+                            
+                            <input type="button" class="save fileas" />
+                            <div class="category-picker-holder">
+                                 <ul class="category-picker">
+                                     <?foreach($categories as $cat):?> 
+                                         <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
+                                             <?=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feed->id, $cat->name)?>
+                                         </li>
+                                     <?endforeach?>
+                                 </ul>
+                            </div>
 
+
+                            <input type="button" class="reply" />
                             <input type="button" class="feature makesticky" 
                                    state="<?=(($feed->issticked == 0) ? 'Make Sticky' : 'Stickied')?>" 
                                    hrefaction="<?=URL::to('/feedback/makesticky/'.$id)?>" 

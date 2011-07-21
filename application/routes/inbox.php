@@ -23,5 +23,6 @@ return array(
         $view->contents->status = DB::table('Status', 'master')->get();
         $view->contents->priority_obj = (object)Array(0 => 'low', 60 => 'medium', 100 => 'high');
         return $view;
+
     }),
 );

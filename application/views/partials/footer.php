@@ -1,4 +1,7 @@
-        
+<?
+$user = new S36Auth;
+if($user->check()):
+?>
             <!-- end of feedback list -->
             <div class="admin-sorter-bar">
             	<div class="sorter-bar">
@@ -13,7 +16,7 @@
                             </select>
                         </div>
                         <div class="g1of3">
-                        	<div class="pagination-text">Displaying feedbacks 1-12 of 25</div>
+                        	<div class="pagination-text"><a href="#">prev</a> Displaying feedbacks 1-12 of 25 <a href="#">next</a></div>
                         </div>
                         <div class="g1of3">
                         	<div class="pagination">
@@ -27,10 +30,6 @@
         </div> 
         <div class="c"></div>
     </div>
-<?
-$user = new S36Auth;
-if($user->check()):
-?>
     <div id="footer">
         <h4>Feedback & Customer Satisfaction Simplified.</h4>
         <h4>36Stories © 2011. </h4>
