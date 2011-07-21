@@ -84,90 +84,37 @@ jQuery(function($) {
         }
     });
 
-    $('.flag').bind('click', function(e) {
+    $.fn.switcharoo = function(background_pos) {
+        $(this).bind('click', function(e) { 
+            var feedurl = $(this).attr('hrefaction');
+            var feedid = $(this).attr('feedid');
+            var state = $(this).attr('state');
 
-        var feedurl = $(this).attr('hrefaction'); 
-        var feedid = $(this).attr('feedid');
-        var state = $(this).attr('state');
+            var var_state = null;
 
-        var var_state = null;
+            if(state == 0) {
+                var_state = 1;
+                $(this).attr('state', 1);
+                $(this).css({'background-position': background_pos});
+            }
 
-        if(state == 0) {
-            var_state = 1;
-            $(this).attr('state', 1);
-            $(this).css({'background-position': '-100px bottom'});
-        }
+            if(state == 1) {
+                var_state = 0;
+                $(this).attr('state', 0);
+                $(this).removeAttr('style');
+            }
 
-        if(state == 1) {
-            var_state = 0;
-            $(this).attr('state', 0);
-            $(this).removeAttr('style');
-        }
+            $.ajax({
+                  type: "POST"
+                , url: feedurl
+                , data: {"state": var_state, "feedid": feedid}
+            });
 
-        $.ajax({
-              type: "POST"
-            , url: feedurl
-            , data: {"state": var_state, "feedid": feedid} 
+            e.preventDefault(); 
         });
-  
-        e.preventDefault(); 
-    });
+    }
 
-    $('.feature').bind('click', function(e) {
-
-        var feedurl = $(this).attr('hrefaction');
-        var feedid = $(this).attr('feedid');
-        var state = $(this).attr('state');
-
-        var var_state = null;
-
-        if(state == 0) {
-            var_state = 1;
-            $(this).attr('state', 1);
-            $(this).css({'background-position': '-60px bottom'});
-        }
-
-        if(state == 1) {
-            var_state = 0;
-            $(this).attr('state', 0);
-            $(this).removeAttr('style');
-        }
-
-        $.ajax({
-              type: "POST"
-            , url: feedurl
-            , data: {"state": var_state, "feedid": feedid}
-        });
-
-        e.preventDefault(); 
-    });
-
-    $('.check').bind('click', function(e) {
-
-        var feedurl = $(this).attr('hrefaction');
-        var feedid = $(this).attr('feedid');
-        var state = $(this).attr('state');
-
-        var var_state = null;
-
-        if(state == 0) {
-            var_state = 1;
-            $(this).attr('state', 1);
-            $(this).css({'background-position': '0px bottom'});
-        }
-
-        if(state == 1) {
-            var_state = 0;
-            $(this).attr('state', 0);
-            $(this).removeAttr('style');
-        }
-
-        $.ajax({
-              type: "POST"
-            , url: feedurl
-            , data: {"state": var_state, "feedid": feedid}
-        });
-
-        e.preventDefault(); 
-    });
+    $('.check').switcharoo('0px bottom');
+    $('.flag').switcharoo('-100px bottom');
+    $('.feature').switcharoo('-60px bottom');
 });
