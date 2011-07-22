@@ -44,8 +44,4 @@ return array(
     'DELETE /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         print_r($id);
     },
-
-    'GET /feedback/feature/(:num)' => function($id) use ($feedback) {
-        print_r($id);
-    },
 );

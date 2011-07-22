@@ -25,4 +25,9 @@ return array(
         return $view;
 
     }),
+ 
+    'GET /inbox/published' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function() use ($user, $view) {
+        $view->contents = View::make('inbox/published');
+        return $view;
+    })
 );

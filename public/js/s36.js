@@ -113,8 +113,14 @@ jQuery(function($) {
             e.preventDefault(); 
         });
     }
-
+      
     $('.check').switcharoo('0px bottom');
     $('.flag').switcharoo('-100px bottom');
     $('.feature').switcharoo('-60px bottom');
+   
+    $.each($('ul#nav-menu li'), function(index, value) {
+        $(value).bind('click', function(e) {
+            window.location = $(this).children('a').attr('href');
+        });
+    });
 });

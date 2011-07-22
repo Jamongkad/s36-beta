@@ -1,6 +1,6 @@
 <!-- gray status bar -->
 <div class="admin-status-bar">
-    <div class="current-page inbox">INBOX <span>There were 27 new feedback since your last visit.</span></div>
+    <div class="current-page inbox">INBOX <!--<span>There were 27 new feedback since your last visit.</span>--></div>
 </div>
 <!-- end of gray status bar -->
 

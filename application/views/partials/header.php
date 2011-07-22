@@ -25,15 +25,15 @@ if($user->check()):
                 <?=HTML::image('img/logo.jpg')?>
             </div>
             <div class="left-menu">
-            	<ul>
+            	<ul id="nav-menu">
                     <li<?=(Request::uri() == 'dashboard' ? ' class="picked dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
                     </li>
                     <li<?=(Request::uri() == 'inbox' ? ' class="picked inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/', 'Inbox')?>
                     </li>
-                    <li<?=(Request::uri() == 'published' ? ' class="picked published"' : ' class="published"')?>>
-                        <?=HTML::link('published/', 'Published')?>
+                    <li<?=(Request::uri() == 'inbox/published' ? ' class="picked published"' : ' class="published"')?>>
+                        <?=HTML::link('inbox/published/', 'Published')?>
                     </li>
                     <li<?=(Request::uri() == 'featured' ? ' class="picked featured"' : ' class="featured"')?>>
                         <?=HTML::link('featured/', 'Featured')?>
