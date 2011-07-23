@@ -4,6 +4,10 @@
 </div>
 <!-- end of gray status bar -->
 
+<!--start of undo bar-->
+<div class="undo-bar"></div>
+<!--end of undo bar-->
+
 <!-- top navigation bar -->
 <div class="admin-nav-bar">
     <ul>

@@ -40,7 +40,9 @@ return array(
         $feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
     },
 
-    'DELETE /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
-        print_r($id);
+    'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback, $user) {
+        $feedback->_change_feedback('isDeleted', $id, 1);
+        $undo_result = $feedback->fetched_delete_feedback($user->user()->userid);
+        echo json_encode($undo_result);
     },
 );

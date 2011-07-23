@@ -78,8 +78,11 @@ jQuery(function($) {
             var feedurl = $(this).attr('hrefaction');
             
             $.ajax({
-                  type: "DELETE"
+                  type: "GET"
                 , url: feedurl
+                , success: function(data) {
+                    $('div.undo-bar').css({'padding': '10px'}).html(data);
+                }
             });
         }
     });

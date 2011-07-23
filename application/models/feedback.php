@@ -117,4 +117,31 @@ class Feedback {
                   ->where('feedbackId', '=', $feedback_id)
                   ->update(array($column => $state));
     }    
+
+    public function fetched_delete_feedback($user_id) {
+        
+        $sth = $this->dbh->prepare('
+            SELECT 
+                  Feedback.feedbackId AS id
+            FROM 
+                User
+                    INNER JOIN
+                        Site
+                        ON User.companyId = Site.companyId
+                    INNER JOIN 
+                        Feedback
+                        ON Site.siteId = Feedback.siteId
+                    WHERE 1=1
+                        AND User.userId = :user_id
+                        AND Feedback.isDeleted = 1
+                    ORDER BY
+                        Feedback.dtAdded DESC
+        ');
+ 
+        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->execute();       
+
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
 }

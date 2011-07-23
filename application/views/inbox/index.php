@@ -85,7 +85,7 @@
                         <?=Helpers::switchable($feed->isflagged, $id, URL::to('/feedback/flagfeedback'), ' style="background-position: -100px bottom"') ?>/>
 
                         <input type="button" class="remove" 
-                         hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
+                        hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
                     </div>
                 </div>
             </div>
