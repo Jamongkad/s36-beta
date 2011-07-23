@@ -1,7 +1,7 @@
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feed):?>
         <? $id = $feed->id ?>
-        <div class="feedback">
+        <div class="feedback" id="<?=$feed->id?>">
             <div class="left">
                 <input type="checkbox" />
             </div>

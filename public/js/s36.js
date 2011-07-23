@@ -74,14 +74,41 @@ jQuery(function($) {
     
     $('.remove').bind('click', function(e) {
         if(confirm('Are you sure?')) { 
+
             var my_parent = $(this).parents('div.feedback').fadeOut();
             var feedurl = $(this).attr('hrefaction');
-            
+            var undobar = $('div.undo-bar');
+
+            undobar.empty();
+            undobar.html('Deleted Feedback');
+
             $.ajax({
                   type: "GET"
                 , url: feedurl
-                , success: function(data) {
-                    $('div.undo-bar').css({'padding': '10px'}).html(data);
+                , success: function(data) { 
+                    var obj = jQuery.parseJSON(data);
+                    $.each(obj, function(idx, val) {
+                        var divTag = document.createElement("div");
+                        var undoLinks = document.createElement("a");
+
+                        undoLinks.setAttribute("href", "feedback/undodelete/" + val.id);
+                        undoLinks.setAttribute("restore-id", val.id);
+                        undoLinks.innerHTML = val.id;
+
+                        divTag.className = "dickies";
+                        divTag.appendChild(undoLinks);
+                        undobar.append(divTag);
+                    });
+
+                    $('div.dickies a').bind('click', function(e) {
+                        var dickiesUrl = $(this);
+                        $.ajax({
+                            url: dickiesUrl.attr('href')
+                        });
+                        $("#" + dickiesUrl.attr('restore-id')).fadeIn();
+                        dickiesUrl.fadeOut();
+                        e.preventDefault();
+                    })
                 }
             });
         }

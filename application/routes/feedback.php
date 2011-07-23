@@ -45,4 +45,8 @@ return array(
         $undo_result = $feedback->fetched_delete_feedback($user->user()->userid);
         echo json_encode($undo_result);
     },
+
+    'GET /feedback/undodelete/(:num)' => function($id) use ($feedback) { 
+        $feedback->_change_feedback('isDeleted', $id, 0);
+    }
 );

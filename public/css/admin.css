@@ -97,7 +97,7 @@ end of reset */
 #admin-panel .main-panel .admin-nav-bar ul li a{padding:4px 8px;color:#343434;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;}
 #admin-panel .main-panel .admin-nav-bar ul li a:hover,#admin-panel .main-panel .admin-nav-bar ul li a.selected{background:url(../img/admin-nav-bar-bg.png) #b7bec2 repeat-x top;text-shadow:#a9b1b6 0px 1px;color:#FFF;}
 
-#admin-panel .main-panel .undo-bar{margin-left: auto; margin-right: auto; width: 1em}
+#admin-panel .main-panel .undo-bar{text-align: center}
 
 #admin-panel .main-panel .admin-filter-bar{padding:10px 20px;display:block;background:#FFF;}
 #admin-panel .main-panel .admin-filter-bar .admin-filter-select{float:left;}
