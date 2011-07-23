@@ -6,7 +6,6 @@ $feedback = new Feedback;
 $category = new Category;
 
 return array(
-
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($view, $user, $feedback, $category) {             
         $view->contents = View::make('feedback/modifyfeedback');
         $view->contents->feedback = $feedback->pull_feedback_by_id($id);
