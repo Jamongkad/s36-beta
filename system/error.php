@@ -31,57 +31,44 @@ class Error {
 	 */
 	public static function handle($e)
 	{
-		// -----------------------------------------------------
-		// Clean the output buffer. We don't want any rendered
-		// views or text to be sent to the browser.
-		// -----------------------------------------------------
 		if (ob_get_level() > 0)
 		{
 			ob_clean();
 		}
 
-		// -----------------------------------------------------
-		// Get the error severity in human readable format.
-		// -----------------------------------------------------
 		$severity = (array_key_exists($e->getCode(), static::$levels)) ? static::$levels[$e->getCode()] : $e->getCode();
-
-		// -----------------------------------------------------
-		// Get the error file. Views require special handling
-		// since view errors occur within eval'd code.
-		// -----------------------------------------------------
-		if (strpos($e->getFile(), 'view.php') !== false and strpos($e->getFile(), "eval()'d code") !== false)
-		{
-			$file = APP_PATH.'views/'.View::$last.EXT;
-		}
-		else
-		{
-			$file = $e->getFile();
-		}
 
 		$message = rtrim($e->getMessage(), '.');
 
 		if (Config::get('error.log'))
 		{
-			Log::error($message.' in '.$e->getFile().' on line '.$e->getLine());
+			call_user_func(Config::get('error.logger'), $severity, $message.' in '.$e->getFile().' on line '.$e->getLine());
 		}
 
-		// -----------------------------------------------------
-		// Detailed error view contains the file name and stack
-		// trace of the error. It is not wise to have details
-		// enabled in a production environment.
-		//
-		// The generic error view (error/500) only has a simple,
-		// generic error message suitable for production.
-		// -----------------------------------------------------
+		static::show($e, $severity, $message);
+
+		exit(1);
+	}
+
+	/**
+	 * Show the error view.
+	 *
+	 * @param  Exception  $e
+	 * @param  string     $severity
+	 * @param  string     $message
+	 * @return void
+	 */
+	private static function show($e, $severity, $message)
+	{
 		if (Config::get('error.detail'))
 		{
 			$view = View::make('exception')
-									->bind('severity', $severity)
-									->bind('message', $message)
-									->bind('file', $file)
-									->bind('line', $e->getLine())
-									->bind('trace', $e->getTraceAsString())
-									->bind('contexts', static::context($file, $e->getLine()));
+                                   ->bind('severity', $severity)
+                                   ->bind('message', $message)
+                                   ->bind('file', $e->getFile())
+                                   ->bind('line', $e->getLine())
+                                   ->bind('trace', $e->getTraceAsString())
+                                   ->bind('contexts', static::context($e->getFile(), $e->getLine()));
 			
 			Response::make($view, 500)->send();
 		}
@@ -89,17 +76,15 @@ class Error {
 		{
 			Response::make(View::make('error/500'), 500)->send();
 		}
-
-		exit(1);
 	}
 
 	/**
-	 * Get the file context of an exception.
+	 * Get the code surrounding a given line in a file.
 	 *
 	 * @param  string  $path
 	 * @param  int     $line
 	 * @param  int     $padding
-	 * @return array
+	 * @return string
 	 */
 	private static function context($path, $line, $padding = 5)
 	{
@@ -108,20 +93,18 @@ class Error {
 			$file = file($path, FILE_IGNORE_NEW_LINES);
 
 			array_unshift($file, '');
+		
+			if (($start = $line - $padding) < 0)
+			{
+				$start = 0;
+			}
 
-			// -----------------------------------------------------
-			// Calculate the starting position of the file context.
-			// -----------------------------------------------------
-			$start = $line - $padding;
-			$start = ($start < 0) ? 0 : $start;
+			if (($length = ($line - $start) + $padding + 1) < 0)
+			{
+				$length = 0;
+			}
 
-			// -----------------------------------------------------
-			// Calculate the context length.
-			// -----------------------------------------------------
-			$length = ($line - $start) + $padding + 1;
-			$length = (($start + $length) > count($file) - 1) ? null : $length;
-
-			return array_slice($file, $start, $length, true);			
+			return array_slice($file, $start, $length, true);
 		}
 
 		return array();

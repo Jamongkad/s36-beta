@@ -11,6 +11,7 @@ class Feedback {
     public function pull_feedback($user_id, $limit=5, $offset=0) {
         $sth = $this->dbh->prepare('
             SELECT 
+                  SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
                 , Category.intName
                 , Category.name AS category
@@ -56,7 +57,7 @@ class Feedback {
                         1
                     ORDER BY
                         Feedback.dtAdded DESC
-                    LIMIT :limit OFFSET :offset
+                    LIMIT :offset, :limit 
         ');
  
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -64,8 +65,14 @@ class Feedback {
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();       
 
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        //print_r($row_count->fetchColumn());
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
+        //return $result;
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
     }
 
     public function pull_feedback_by_id($id) { 

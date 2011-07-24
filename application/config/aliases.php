@@ -15,6 +15,7 @@ return array(
 	*/
     'S36Auth' => 'S36Auth\\S36Auth',
     'Helpers' => 'Helpers\\Helpers',
+    'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
 	'Auth' => 'System\\Auth',
 	'Benchmark' => 'System\\Benchmark',
 	'Cache' => 'System\\Cache',

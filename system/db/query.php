@@ -1,8 +1,8 @@
 <?php namespace System\DB;
 
 use System\DB;
-use System\Config;
 use System\Str;
+use System\Config;
 
 class Query {
 
@@ -12,6 +12,13 @@ class Query {
 	 * @var string
 	 */
 	private $connection;
+
+	/**
+	 * The database connection configuration.
+	 *
+	 * @var array
+	 */
+	private $config;
 
 	/**
 	 * The SELECT clause.
@@ -115,13 +122,45 @@ class Query {
 	/**
 	 * Add columns to the SELECT clause.
 	 *
+	 * @param  array  $columns
 	 * @return Query
 	 */
-	public function select()
+	public function select($columns = array('*'))
 	{
 		$this->select = ($this->distinct) ? 'SELECT DISTINCT ' : 'SELECT ';
-		$this->select .= implode(', ', array_map(array($this, 'wrap'), func_get_args()));
 
+		$wrapped = array();
+
+		foreach ($columns as $column)
+		{
+			// If the column name is being aliased, we will need to wrap the column
+			// name and its alias in keyword identifiers.
+			if (strpos(strtolower($column), ' as ') !== false)
+			{
+				$segments = explode(' ', $column);
+
+				$wrapped[] = $this->wrap($segments[0]).' AS '.$this->wrap($segments[2]);				
+			}
+			else
+			{
+				$wrapped[] = $this->wrap($column);
+			}
+		}
+
+		$this->select .= implode(', ', $wrapped);
+
+		return $this;
+	}
+
+	/**
+	 * Set the FROM clause.
+	 *
+	 * @param  string  $from
+	 * @return Query
+	 */
+	public function from($from)
+	{
+		$this->from = $from;
 		return $this;
 	}
 
@@ -357,37 +396,48 @@ class Query {
 	/**
 	 * Find a record by the primary key.
 	 *
-	 * @param  int    $id
+	 * @param  int     $id
+	 * @param  array   $columns
 	 * @return object
 	 */
-	public function find($id)
+	public function find($id, $columns = array('*'))
 	{
-		return $this->where('id', '=', $id)->first();
+		return $this->where('id', '=', $id)->first($columns);
 	}
 
 	/**
 	 * Execute the query as a SELECT statement and return the first result.
 	 *
+	 * @param  array   $columns
 	 * @return object
 	 */
-	public function first()
+	public function first($columns = array('*'))
 	{
-		return (count($results = call_user_func_array(array($this->take(1), 'get'), func_get_args())) > 0) ? $results[0] : null;
+
+		return (count($results = $this->take(1)->get($columns)) > 0) ? $results[0] : null;
 	}
 
 	/**
 	 * Execute the query as a SELECT statement.
 	 *
+	 * @param  array  $columns
 	 * @return array
 	 */
-	public function get()
+	public function get($columns = array('*'))
 	{
 		if (is_null($this->select))
 		{
-			call_user_func_array(array($this, 'select'), (count(func_get_args()) > 0) ? func_get_args() : array('*'));
+			$this->select($columns);
 		}
 
-		return DB::query(Query\Compiler::select($this), $this->bindings, $this->connection);
+		$results = DB::query(Query\Compiler::select($this), $this->bindings, $this->connection);
+
+		// Reset the SELECT clause so more queries can be performed using the same instance.
+		// This is helpful for performing counts and then getting actual results, such as
+		// when paginating results.
+		$this->select = null;
+
+		return $results;
 	}
 
 	/**
@@ -400,7 +450,35 @@ class Query {
 	private function aggregate($aggregator, $column)
 	{
 		$this->select = 'SELECT '.$aggregator.'('.$this->wrap($column).') AS '.$this->wrap('aggregate');
+
 		return $this->first()->aggregate;
+	}
+
+	/**
+	 * Get paginated query results.
+	 *
+	 * @param  int        $per_page
+	 * @return Paginator
+	 */
+	public function paginate($per_page)
+	{
+		$total = $this->count();
+
+		$current_page = \System\Paginator::page($total, $per_page);
+
+		return new \System\Paginator($this->for_page($current_page, $per_page)->get(), $total, $per_page);
+	}
+
+	/**
+	 * Set the LIMIT and OFFSET values for a given page.
+	 *
+	 * @param  int    $page
+	 * @param  int    $per_page
+	 * @return Query
+	 */
+	public function for_page($page, $per_page)
+	{
+		return $this->skip(($page - 1) * $per_page)->take($per_page);
 	}
 
 	/**
@@ -424,10 +502,8 @@ class Query {
 	{
 		$sql = Query\Compiler::insert($this, $values);
 
-		// ---------------------------------------------------------
-		// Use the RETURNING clause on Postgres instead of PDO.
-		// The Postgres PDO ID method is slightly cumbersome.
-		// ---------------------------------------------------------
+		// Use the RETURNING clause on Postgres instead of the PDO lastInsertID method.
+		// The PDO method is a little cumbersome using Postgres.
 		if (DB::driver($this->connection) == 'pgsql')
 		{
 			$query = DB::connection($this->connection)->prepare($sql.' RETURNING '.$this->wrap('id'));
@@ -437,9 +513,6 @@ class Query {
 			return $query->fetch(\PDO::FETCH_CLASS, 'stdClass')->id;
 		}
 
-		// ---------------------------------------------------------
-		// Use the PDO ID method for MySQL and SQLite.
-		// ---------------------------------------------------------
 		DB::query($sql, array_values($values), $this->connection);
 
 		return DB::connection($this->connection)->lastInsertId();
@@ -480,7 +553,20 @@ class Query {
 	 */
 	public function wrap($value)
 	{
+		if (is_null($this->config))
+		{
+			$connections = Config::get('db.connections');
+
+			$this->config = $connections[$this->connection];		
+		}
+
+		if (array_key_exists('wrap', $this->config) and $this->config['wrap'] === false)
+		{
+			return $value;
+		}
+
 		$wrap = (DB::driver($this->connection) == 'mysql') ? '`' : '"';
+
 		return implode('.', array_map(function($segment) use ($wrap) {return ($segment != '*') ? $wrap.$segment.$wrap : $segment;}, explode('.', $value)));
 	}
 
@@ -500,20 +586,11 @@ class Query {
 	 */
 	public function __call($method, $parameters)
 	{
-		// ---------------------------------------------------------
-		// Dynamic methods allows the building of very expressive
-		// queries. All dynamic methods start with "where_".
-		//
-		// Ex: DB::table('users')->where_email($email)->first();
-		// ---------------------------------------------------------
 		if (strpos($method, 'where_') === 0)
 		{
 			return Query\Dynamic::build($method, $parameters, $this);
 		}
 
-		// ---------------------------------------------------------
-		// Handle any of the aggregate functions.
-		// ---------------------------------------------------------
 		if (in_array($method, array('count', 'min', 'max', 'avg', 'sum')))
 		{
 			return ($method == 'count') ? $this->aggregate(strtoupper($method), '*') : $this->aggregate(strtoupper($method), $parameters[0]);

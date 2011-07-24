@@ -153,4 +153,8 @@ jQuery(function($) {
             window.location = $(this).children('a').attr('href');
         });
     });
+
+    $('select[name="feedback-limit"]').bind('change', function(e) {
+        window.location = "?limit=" + $(this).val();
+    });
 });

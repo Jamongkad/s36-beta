@@ -1,7 +1,7 @@
 <div class="the-feedbacks"> 
-    <?foreach($feedback as $feed):?>
+    <?foreach($feedback->result as $feed):?>
         <? $id = $feed->id ?>
-        <div class="feedback" id="<?=$feed->id?>">
+        <div class="feedback" id="<?=$id?>">
             <div class="left">
                 <input type="checkbox" />
             </div>
@@ -92,4 +92,32 @@
         </div>
     <?endforeach?>
     <div class="c"></div>
+</div>
+
+<!-- end of feedback list -->
+<div class="admin-sorter-bar">
+    <div class="sorter-bar">
+        <div class="left">
+            <input type="checkbox" />
+        </div>
+        <div class="right">
+            <div class="g1of3">
+                <label>WITH SELECTED</label>
+                <select>
+                    <option>Delete</option>
+                </select>
+            </div>
+            <div class="g1of3">
+                <div class="pagination-text"><?=$pagination?></div>
+            </div>
+            <!--
+            <div class="g1of3">
+                <div class="pagination">
+                    Page <input type="text" style="width: 30px;" class="pagination-input" value="1" /> of <?=$feedback->total_rows?>
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="c"></div>
+    </div>
 </div>

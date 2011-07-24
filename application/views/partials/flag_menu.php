@@ -65,8 +65,11 @@
             </div>
             <div class="g1of5 right-align">
                 <label>Display</label>
-                <select>
-                    <option>50</option>
+                <?$limit = Input::get('limit')?>
+                <select name="feedback-limit">
+                    <option value="10" <?=($limit == 10) ? "selected" : null?>>10</option>
+                    <option value="20" <?=($limit == 20) ? "selected" : null?>>20</option>
+                    <option value="50" <?=($limit == 50) ? "selected" : null?>>50</option>
                 </select>
             </div>
         </div>

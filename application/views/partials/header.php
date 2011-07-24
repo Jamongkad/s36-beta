@@ -8,6 +8,7 @@
     <?//=HTML::style('css/gridless.css')?>
     <?=HTML::style('css/romanticc.css')?>
     <?=HTML::style('css/admin.css')?>
+    <?=HTML::style('css/zebra_pagination.css')?>
     
 </head>
 <body>

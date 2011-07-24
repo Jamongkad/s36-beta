@@ -17,11 +17,11 @@ class View {
 	public $data = array();
 
 	/**
-	 * The name of last rendered view.
+	 * The path to the view.
 	 *
 	 * @var string
 	 */
-	public static $last;
+	public $path;
 
 	/**
 	 * Create a new view instance.
@@ -34,6 +34,7 @@ class View {
 	{
 		$this->view = $view;
 		$this->data = $data;
+		$this->path = $this->find();
 	}
 
 	/**
@@ -45,7 +46,7 @@ class View {
 	 */
 	public static function make($view, $data = array())
 	{
-		return new self($view, $data);
+		return new static($view, $data);
 	}
 
 	/**
@@ -55,11 +56,7 @@ class View {
 	 */
 	public function get()
 	{
-		static::$last = $this->view;
-
-		// -----------------------------------------------------
 		// Get the evaluated content of all of the sub-views.
-		// -----------------------------------------------------
 		foreach ($this->data as &$data)
 		{
 			if ($data instanceof View or $data instanceof Response)
@@ -68,35 +65,11 @@ class View {
 			}
 		}
 
-		// -----------------------------------------------------
-		// Extract the view data into the local scope.
-		// -----------------------------------------------------
 		extract($this->data, EXTR_SKIP);
 
-		// -----------------------------------------------------
-		// Start the output buffer so nothing escapes to the
-		// browser. The response will be sent later.
-		// -----------------------------------------------------
 		ob_start();
 
-		$path = $this->find();
-
-		// -----------------------------------------------------
-		// We include the view into the local scope within a
-		// try / catch block to catch any exceptions that may
-		// occur while the view is rendering.
-		//
-		// Otherwise, a white screen of death will be shown
-		// if an exception occurs while rendering the view.
-		// -----------------------------------------------------
-		try
-		{
-			include $path;
-		}
-		catch (\Exception $e)
-		{
-			Error::handle($e);
-		}
+		try { include $this->path; } catch (\Exception $e) { Error::handle($e); }
 
 		return ob_get_clean();
 	}
@@ -136,6 +109,24 @@ class View {
 	{
 		$this->data[$key] = $value;
 		return $this;
+	}
+
+	/**
+	 * Magic Method for creating named view instances.
+	 */
+	public static function __callStatic($method, $parameters)
+	{
+		if (strpos($method, 'of_') === 0)
+		{
+			$views = Config::get('view.names');
+
+			if ( ! array_key_exists($view = substr($method, 3), $views))
+			{
+				throw new \Exception("Named view [$view] is not defined.");
+			}
+
+			return static::make($views[$view], (isset($parameters[0]) and is_array($parameters[0])) ? $parameters[0] : array());
+		}
 	}
 
 	/**
