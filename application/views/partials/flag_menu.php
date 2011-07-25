@@ -23,14 +23,15 @@
 
 <!-- top navigation bar -->
 <div class="admin-nav-bar">
+
     <ul>
-        <li><a href="#" class="selected">SHOW ALL</a></li>
-        <li><a href="#">POSITIVE</a></li>
-        <li><a href="#">NEGATIVE</a></li>
-        <li><a href="#">NEUTRAL</a></li>
-        <li><a href="#">CONTAINS PROFANITY</a></li>
-        <li><a href="#">FLAGGED</a></li>
-        <li><a href="#">MOST CONTENT</a></li>
+        <li><?=HTML::link('inbox', 'SHOW ALL', Array('class' => (Request::uri() == 'inbox') ? 'selected' : null) )?></li>
+        <li><?=HTML::link('inbox/rating/4', 'POSITIVE', Array('class' => (Request::uri() == 'inbox/rating/4') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/rating/1', 'NEGATIVE', Array('class' => (Request::uri() == 'inbox/rating/1') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/rating/2', 'NEUTRAL', Array('class' => (Request::uri() == 'inbox/rating/2') ? 'selected' : null) )?></li>
+        <li><?=HTML::link('inbox/profanity', 'CONTAINS PROFANITY')?></li>
+        <li><?=HTML::link('inbox/flagged', 'FLAGGED')?></li>
+        <li><?=HTML::link('inbox/mostcontent', 'MOST CONTENT')?></li>
     </ul>
 </div>
 <!-- end of top navigation bar -->

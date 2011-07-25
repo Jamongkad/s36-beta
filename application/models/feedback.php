@@ -8,7 +8,14 @@ class Feedback {
         $this->dbh = DB::connection('master');
     }
 
-    public function pull_feedback($user_id, $limit=5, $offset=0) {
+    public function pull_feedback($user_id, $limit=5, $offset=0, $rating=0) {
+
+        $rating_statement = Null;
+
+        if($rating != 0) {
+            $rating_statement = "AND Feedback.rating IN ($rating)";
+        }
+
         $sth = $this->dbh->prepare('
             SELECT 
                   SQL_CALC_FOUND_ROWS
@@ -55,6 +62,7 @@ class Feedback {
                     WHERE 1=1
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = 0
+                        '.$rating_statement.'
                     GROUP BY
                         1
                     ORDER BY
@@ -63,6 +71,12 @@ class Feedback {
         ');
  
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        /*
+        if($rating != 0) {
+            $sth->bindParam(':rating', $rating, PDO::PARAM_STR);     
+        }
+        */
+       
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();       
