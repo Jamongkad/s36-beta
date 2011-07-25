@@ -29,6 +29,7 @@ class Feedback {
                 , Feedback.isPublished
                 , Feedback.isArchived
                 , Feedback.isSticked
+                , Feedback.isDeleted
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Country.name AS countryname
@@ -53,6 +54,7 @@ class Feedback {
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND User.userId = :user_id
+                        AND Feedback.isDeleted = 0
                     GROUP BY
                         1
                     ORDER BY
@@ -66,9 +68,8 @@ class Feedback {
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        //print_r($row_count->fetchColumn());
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        //return $result;
+
         $result_obj = new StdClass;
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
@@ -118,7 +119,8 @@ class Feedback {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
-
+    
+    //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
         DB::table('Feedback', 'master')
                   ->where('feedbackId', '=', $feedback_id)
@@ -151,4 +153,22 @@ class Feedback {
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
+
+    public function undo_deleted_feedback($user_id) {
+        $sth = $this->dbh->prepare('
+            UPDATE 
+            Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                    AND User.companyId = Site.companyId
+                SET Feedback.isDeleted = 0
+        ');
+
+        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+    public function remove_deleted_feedback() {}
 }

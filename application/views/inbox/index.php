@@ -1,7 +1,7 @@
 <div class="the-feedbacks"> 
     <?foreach($feedback->result as $feed):?>
         <? $id = $feed->id ?>
-        <div class="feedback" id="<?=$id?>">
+        <div class="feedback" id="<?=$id?>" <?=($feed->isdeleted == 1) ? " style='display: none'" : null?>>
             <div class="left">
                 <input type="checkbox" />
             </div>

@@ -100,19 +100,61 @@ jQuery(function($) {
                         undobar.append(divTag);
                     });
 
-                    $('div.dickies a').bind('click', function(e) {
-                        var dickiesUrl = $(this);
-                        $.ajax({
-                            url: dickiesUrl.attr('href')
-                        });
-                        $("#" + dickiesUrl.attr('restore-id')).fadeIn();
-                        dickiesUrl.fadeOut();
-                        e.preventDefault();
-                    })
+                    restoreUrl();
+                    deleteDivCount(undobar);
+                    undoAll();
                 }
             });
         }
     });
+
+    restoreUrl();
+    deleteDivCount($('div.undo-bar'));
+    undoAll();
+
+    function undoAll() { 
+        $('div.undoall a').bind('click', function(e) {
+            var href = $(this).attr('href');
+            $.ajax({
+                url: href
+              , success: function(data) {
+                    window.location = "inbox";       
+                }
+            }); 
+           
+            e.preventDefault();
+        });
+    }
+
+    function deleteDivCount(undobar) {
+        
+        if($('div.dickies').length >= 5) {
+
+            undobar.empty();
+            undobar.html('Deleted Feedback');
+         
+            var divTag = document.createElement("div");
+            var undoAllLinks = document.createElement("a");
+            undoAllLinks.setAttribute("href", "feedback/undodelete/all");
+            undoAllLinks.innerHTML = "undo all";
+         
+            divTag.className = "dickies undoall";
+            divTag.appendChild(undoAllLinks);
+            undobar.append(divTag);
+        }
+    }
+
+    function restoreUrl() { 
+        $('div.dickies a').bind('click', function(e) {
+            var dickiesUrl = $(this);
+            $.ajax({
+                url: dickiesUrl.attr('href')
+            });
+            $("#" + dickiesUrl.attr('restore-id')).fadeIn();
+            dickiesUrl.parent('div.dickies').remove();
+            e.preventDefault();
+        });
+    }
 
     $.fn.switcharoo = function(background_pos) {
         $(this).bind('click', function(e) { 

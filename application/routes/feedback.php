@@ -46,7 +46,11 @@ return array(
         echo json_encode($undo_result);
     },
 
-    'GET /feedback/undodelete/(:num)' => function($id) use ($feedback) { 
-        $feedback->_change_feedback('isDeleted', $id, 0);
+    'GET /feedback/undodelete/(:any)' => function($id) use ($feedback, $user) {  
+        if($id == "all") {
+            $feedback->undo_deleted_feedback($user->user()->userid);
+        } else {
+            $feedback->_change_feedback('isDeleted', $id, 0);     
+        } 
     }
 );
