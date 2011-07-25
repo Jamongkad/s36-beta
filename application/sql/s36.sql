@@ -363,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
   `isPublished` tinyint(1) DEFAULT '0',
   `isArchived` tinyint(1) DEFAULT '0',
   `isSticked` tinyint(1) DEFAULT '0',
-  `isDeleted` tinyint(1) NOT NULL,
+  `isDeleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`feedbackId`),
   KEY `Feedback_Contact_contactId` (`contactId`),
   KEY `Feedback_Form_formId` (`formId`),
