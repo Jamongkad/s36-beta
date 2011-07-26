@@ -7,13 +7,28 @@ class Feedback {
     public function __construct() {
         $this->dbh = DB::connection('master');
     }
-
-    public function pull_feedback($user_id, $limit=5, $offset=0, $rating=0) {
+    
+    //TODO: Clean this shit up
+    public function pull_feedback($user_id, $limit=5, $offset=0, $filter=False) {
 
         $rating_statement = Null;
+        $profanity_statement = Null;
 
-        if($rating != 0) {
-            $rating_statement = "AND Feedback.rating IN ($rating)";
+        if($filter != False) {
+
+            if(in_array($filter, Array(1, 2, 3, 4, 5))) {
+                if($filter == 4) {
+                    $filter = '4,5';
+                }
+                $rating_statement = "AND Feedback.rating IN ($filter)";     
+            }
+
+            if(is_string($filter)) {
+                if($filter == 'profanity') {
+                    $profanity_statement = "AND Feedback.hasProfanity = 1";
+                }
+            }
+           
         }
 
         $sth = $this->dbh->prepare('
@@ -63,6 +78,7 @@ class Feedback {
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = 0
                         '.$rating_statement.'
+                        '.$profanity_statement.'
                     GROUP BY
                         1
                     ORDER BY
@@ -71,11 +87,6 @@ class Feedback {
         ');
  
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        /*
-        if($rating != 0) {
-            $sth->bindParam(':rating', $rating, PDO::PARAM_STR);     
-        }
-        */
        
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);

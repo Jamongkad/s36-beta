@@ -4,6 +4,7 @@ $user = new S36Auth();
 $view = View::make('partials/layout');
 
 return array(
+    //TODO: OMG Mathew generalize this shit nigguh
     'GET /inbox' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function() use ($user, $view) {
 
         $user_id = $user->user()->userid;         
@@ -29,7 +30,7 @@ return array(
         return $view;
     }),
 
-    'GET /inbox/rating/(:num)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($id) use ($user, $view) { 
+    'GET /inbox/rating/(:any)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter) use ($user, $view) { 
         $user_id = $user->user()->userid;         
         $limit = 10;
 
@@ -39,11 +40,7 @@ return array(
         $category = new Category;
         $pagination = new ZebraPagination;
 
-        if($id == 4) {
-            $id = '4,5';
-        }
-
-        $records = $feedback->pull_feedback($user_id, $limit, ($pagination->get_page() - 1) * $limit, $id);
+        $records = $feedback->pull_feedback($user_id, $limit, ($pagination->get_page() - 1) * $limit, $filter);
 
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
