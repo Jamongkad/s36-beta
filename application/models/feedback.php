@@ -185,4 +185,22 @@ class Feedback {
     }
 
     public function remove_deleted_feedback() {}
+
+    public function tag_feedback_with_profanity($user_id) {
+        $sth = $this->dbh->prepare("
+            UPDATE 
+            Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                   AND User.companyId = Site.companyId
+                INNER JOIN BadWords
+                    ON Feedback.text LIKE CONCAT('%', BadWords.word, '%')
+                SET Feedback.hasProfanity = 1
+        ");
+
+        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
 }
