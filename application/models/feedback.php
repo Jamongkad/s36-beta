@@ -13,6 +13,8 @@ class Feedback {
 
         $rating_statement = Null;
         $profanity_statement = Null;
+        $flagged_statement = Null;
+        $mostcontent_statement = 'Feedback.dtAdded DESC';
 
         if($filter != False) {
 
@@ -26,6 +28,14 @@ class Feedback {
             if(is_string($filter)) {
                 if($filter == 'profanity') {
                     $profanity_statement = "AND Feedback.hasProfanity = 1";
+                }
+
+                if($filter == 'mostcontent') {
+                    $mostcontent_statement = "LENGTH(textlength) DESC";
+                }
+
+                if($filter == 'flagged') {
+                    $flagged_statement = "AND Feedback.isFlagged = 1";
                 }
             }
            
@@ -42,7 +52,7 @@ class Feedback {
                     WHEN Feedback.priority < 30 THEN "low"
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
-                  END as priority
+                  END AS priority
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating
@@ -55,7 +65,8 @@ class Feedback {
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Country.name AS countryname
-                , Country.code as countrycode
+                , Country.code AS countrycode
+                , LENGTH(text) AS textlength
             FROM 
                 User
                     INNER JOIN
@@ -79,10 +90,11 @@ class Feedback {
                         AND Feedback.isDeleted = 0
                         '.$rating_statement.'
                         '.$profanity_statement.'
+                        '.$flagged_statement.'
                     GROUP BY
                         1
                     ORDER BY
-                        Feedback.dtAdded DESC
+                        '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ');
  

@@ -20,7 +20,6 @@ if($user->check()):
 
 <div class="" id="admin-container">
     <div id="admin-panel">
-
 		<div class="left-panel">
         	<div class="logo">
                 <?=HTML::image('img/logo.jpg')?>
@@ -30,7 +29,7 @@ if($user->check()):
                     <li<?=(Request::uri() == 'dashboard' ? ' class="picked dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
                     </li>
-                    <li<?=(Request::uri() == 'inbox' ? ' class="picked inbox"' :' class="inbox"')?>>
+                    <li<?=(preg_match('/inbox/', Request::uri()) ? ' class="picked inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/', 'Inbox')?>
                     </li>
                     <li<?=(Request::uri() == 'published' ? ' class="picked published"' : ' class="published"')?>>
