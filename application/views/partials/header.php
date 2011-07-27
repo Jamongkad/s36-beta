@@ -49,7 +49,14 @@ if($user->check()):
                     </li>
                 </ul>
             </div>
-            <div class="left-block"></div>
+
+            <div class="left-buttons">
+                <ul>
+                    <li class="request">Request Feedback</li>
+                    <li class="add">Add Feedback</li>
+                </ul>
+            </div>
+
         </div>
         <!-- end of the left panel -->
 
