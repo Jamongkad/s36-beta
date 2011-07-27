@@ -26,26 +26,33 @@ if($user->check()):
             </div>
             <div class="left-menu">
             	<ul id="nav-menu">
-                    <li<?=(Request::uri() == 'dashboard' ? ' class="picked dashboard"' : ' class="dashboard"')?>>
+                    <li<?=(Request::uri() == 'dashboard' ? ' class="selected dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
+                       <?=(Request::uri() == 'dashboard' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(preg_match('/inbox/', Request::uri()) ? ' class="picked inbox"' :' class="inbox"')?>>
+                    <li<?=(preg_match('/inbox/', Request::uri()) ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/', 'Inbox')?>
+                       <?=(preg_match('/inbox/', Request::uri()) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'published' ? ' class="picked published"' : ' class="published"')?>>
+                    <li<?=(Request::uri() == 'published' ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('published/', 'Published')?>
+                       <?=(Request::uri() == 'published' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'featured' ? ' class="picked featured"' : ' class="featured"')?>>
+                    <li<?=(Request::uri() == 'featured' ? ' class="selected featured"' : ' class="featured"')?>>
                         <?=HTML::link('featured/', 'Featured')?>
+                       <?=(Request::uri() == 'featured' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'filed' ? ' class="picked filed"' : ' class="filed"')?>>
+                    <li<?=(Request::uri() == 'filed' ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('filed/', 'Filed Feedback')?>
+                       <?=(Request::uri() == 'filed' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'feedsetup' ? ' class="picked setup"' : ' class="setup"')?>>
+                    <li<?=(Request::uri() == 'feedsetup' ? ' class="selected setup"' : ' class="setup"')?>>
                         <?=HTML::link('feedsetup/', 'Feedback Setup')?>
+                       <?=(Request::uri() == 'feedsetup' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'contacts' ? ' class="picked contacts"' : ' class="contacts"')?>>
+                    <li<?=(Request::uri() == 'contacts' ? ' class="selected contacts"' : ' class="contacts"')?>>
                         <?=HTML::link('contacts/', 'Contacts')?>
+                       <?=(Request::uri() == 'contacts' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                 </ul>
             </div>
