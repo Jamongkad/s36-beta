@@ -36,13 +36,13 @@
                         </div>
                         <div class="feedback-meta">
                             <?$rating = $feed->rating?>
-                            <?if($rating == 1):?>
+                            <?if($rating == 1 || $rating == 2):?>
                                 <span class="rating poor">POOR</span>
                             <?endif?>
-                            <?if($rating == 2):?>
+                            <?if($rating == 3):?>
                                 <span class="rating average">AVERAGE</span>
                             <?endif?>
-                            <?if($rating == 3 || $rating == 4):?>
+                            <?if($rating == 4):?>
                                 <span class="rating good">GOOD</span>
                             <?endif?>
                             <?if($rating == 5):?>
