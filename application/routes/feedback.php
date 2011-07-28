@@ -13,6 +13,18 @@ return array(
         return $view;
     }),
 
+    'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() {
+        
+    }),
+
+    'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
+        
+    }),
+
+    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() {
+        
+    }),
+
     //Ajax Functions...
     'GET /feedback/changecat' => function() use ($feedback) {
         $feedback_id = Input::get('feedid');

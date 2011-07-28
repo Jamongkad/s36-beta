@@ -59,8 +59,9 @@ if($user->check()):
 
             <div class="left-buttons">
                 <ul>
-                    <li class="request">Request Feedback</li>
-                    <li class="add">Add Feedback</li>
+                    <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
+                    <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
+                    <li class="delete"><?=HTML::link('/feedback/deletedfeedback', 'Deleted Feedback')?></li>
                 </ul>
             </div>
 

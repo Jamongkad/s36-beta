@@ -58,6 +58,7 @@ end of reset */
 /* hover state */									 
 #admin-panel .left-panel .left-buttons ul li.request a{background:url(../img/ico-mail.png) no-repeat left top;}
 #admin-panel .left-panel .left-buttons ul li.add     a{background:url(../img/ico-add.png) no-repeat left top;}
+#admin-panel .left-panel .left-buttons ul li.deleted a{background:url(../img/ico-delete.png) no-repeat left top;}
 #admin-panel .left-panel .left-buttons ul li 		 a{color:#FFF;padding:4px 5px 4px 30px;}
 
 #admin-panel .left-panel .left-buttons ul li:hover{background:#56606c}
