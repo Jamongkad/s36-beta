@@ -1,16 +1,15 @@
 <?php
 
 $user = new S36Auth();
-$view = View::make('partials/layout');
 $feedback = new Feedback;
 $category = new Category;
 
 return array(
-    'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($view, $user, $feedback, $category) {             
-        $view->contents = View::make('feedback/modifyfeedback');
-        $view->contents->feedback = $feedback->pull_feedback_by_id($id);
-        $view->contents->categories = $category->pull_site_categories($user->user()->userid);
-        return $view;
+    'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($user, $feedback, $category) {             
+        return View::make('partials/layout')->partial('contents', 'feedback/modifyfeedback', Array(
+             'feedback' => $feedback->pull_feedback_by_id($id)
+           , 'categories' => $category->pull_site_categories($user->user()->userid)
+        ));
     }),
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() {

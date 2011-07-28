@@ -26,12 +26,12 @@
 
     <ul>
         <li><?=HTML::link('inbox', 'SHOW ALL', Array('class' => (Request::uri() == 'inbox') ? 'selected' : null) )?></li>
-        <li><?=HTML::link('inbox/rating/4', 'POSITIVE', Array('class' => (Request::uri() == 'inbox/rating/4') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/rating/1', 'NEGATIVE', Array('class' => (Request::uri() == 'inbox/rating/1') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/rating/3', 'NEUTRAL', Array('class' => (Request::uri() == 'inbox/rating/3') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/rating/profanity', 'CONTAINS PROFANITY', Array('class' => (Request::uri() == 'inbox/rating/profanity') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/rating/flagged', 'FLAGGED' , Array('class' => (Request::uri() == 'inbox/rating/flagged') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/rating/mostcontent', 'MOST CONTENT', Array('class' => (Request::uri() == 'inbox/rating/mostcontent') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/4', 'POSITIVE', Array('class' => (Request::uri() == 'inbox/4') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/1', 'NEGATIVE', Array('class' => (Request::uri() == 'inbox/1') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/3', 'NEUTRAL', Array('class' => (Request::uri() == 'inbox/3') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/profanity', 'CONTAINS PROFANITY', Array('class' => (Request::uri() == 'inbox/profanity') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/flagged', 'FLAGGED' , Array('class' => (Request::uri() == 'inbox/flagged') ? 'selected' : null))?></li>
+        <li><?=HTML::link('inbox/mostcontent', 'MOST CONTENT', Array('class' => (Request::uri() == 'inbox/mostcontent') ? 'selected' : null))?></li>
     </ul>
 </div>
 <!-- end of top navigation bar -->
