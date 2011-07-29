@@ -3,6 +3,7 @@
 class Feedback {
 
     private $dbh;
+    private $user;
 
     public function __construct() {
         $this->dbh = DB::connection('master');
@@ -10,12 +11,18 @@ class Feedback {
     }
     
     //TODO: Clean this shit up
-    public function pull_feedback($user_id, $limit=5, $offset=0, $filter=False) {
+    public function pull_feedback($limit=5, $offset=0, $filter=False) {
+
+        $user_id = $this->user->user()->userid;
 
         $rating_statement = Null;
         $profanity_statement = Null;
         $flagged_statement = Null;
+        
         $mostcontent_statement = 'Feedback.dtAdded DESC';
+        $is_deleted = 0;
+        $is_published = 0;
+        $is_featured = 0;
 
         if($filter != False) {
 
@@ -37,6 +44,18 @@ class Feedback {
 
                 if($filter == 'flagged') {
                     $flagged_statement = "AND Feedback.isFlagged = 1";
+                }
+
+                if($filter == 'deleted') {
+                    $is_deleted = 1; 
+                }
+
+                if($filter == 'published') {
+                    $is_published = 1;     
+                }
+
+                if($filter == 'featured') {
+                    $is_featured = 1; 
                 }
             }
            
@@ -88,7 +107,9 @@ class Feedback {
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND User.userId = :user_id
-                        AND Feedback.isDeleted = 0
+                        AND Feedback.isDeleted = :is_deleted
+                        AND Feedback.isPublished = :is_published
+                        AND Feedback.isFeatured = :is_featured
                         '.$rating_statement.'
                         '.$profanity_statement.'
                         '.$flagged_statement.'
@@ -99,8 +120,10 @@ class Feedback {
                     LIMIT :offset, :limit 
         ');
  
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-       
+        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);       
+        $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();       
@@ -165,7 +188,7 @@ class Feedback {
                   ->update(array($column => $state));
     }    
 
-    public function fetched_deleted_feedback() {
+    public function fetch_deleted_feedback() {
 
         $user_id = $this->user->user()->userid;
         

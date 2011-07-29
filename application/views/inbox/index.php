@@ -1,7 +1,8 @@
 <div class="the-feedbacks"> 
+
     <?foreach($feedback->result as $feed):?>
         <? $id = $feed->id ?>
-        <div class="feedback" id="<?=$id?>" <?=($feed->isdeleted == 1) ? " style='display: none'" : null?>>
+        <div class="feedback" id="<?=$id?>">
             <div class="left">
                 <input type="checkbox" />
             </div>
@@ -83,14 +84,17 @@
 
                         <input type="button" class="flag" 
                         <?=Helpers::switchable($feed->isflagged, $id, URL::to('/feedback/flagfeedback'), ' style="background-position: -100px bottom"') ?>/>
-
-                        <input type="button" class="remove" 
-                        hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
+                        <?if($feed->isdeleted == 0):?>
+                            <input type="button" class="remove" hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
+                        <?else:?>
+                            <?=HTML::link('', 'restore feedback')?>
+                        <?endif?>
                     </div>
                 </div>
             </div>
         </div>
     <?endforeach?>
+
     <div class="c"></div>
 </div>
 

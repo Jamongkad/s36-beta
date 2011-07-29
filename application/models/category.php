@@ -1,9 +1,21 @@
 <?php
 
 class Category {
-    public function pull_site_categories($user_id) {
+    
+    private $dbh;
+    private $user;
+
+    public function __construct() {
+        $this->dbh = DB::connection('master');
+        $this->user = new S36Auth;
+    }
+
+    public function pull_site_categories() {
         $dbh = DB::connection('master');     
-        $sth = $dbh->prepare("
+
+        $user_id = $this->user->user()->userid;
+
+        $sth = $this->dbh->prepare("
             SELECT 
                 Category.categoryId AS id
                 , Category.siteId

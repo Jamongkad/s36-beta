@@ -72,7 +72,7 @@ jQuery(function($) {
         }).show();
     }).css({'cursor': 'pointer'})
 
-    //$('div.undo-bar').hide(); 
+    $('div.undo-bar').hide(); 
     var deleteCount = 0;
     $('.remove').bind('click', function(e) {
         if(confirm('Are you sure?')) { 
@@ -87,13 +87,18 @@ jQuery(function($) {
                   url: feedurl
                 , success: function(data) { 
                     var obj = jQuery.parseJSON(data);
-
                     $('li.delete sup').addClass('count').html(obj.total_rows);
-
                     $.each(obj.result, function(idx, val) {
 
                         var divTag = document.createElement("div");
                         var undoLinks = document.createElement("a");
+                        var hideLink = document.createElement("a");
+
+                        undoLinks.setAttribute("id", "undo-links");
+
+                        hideLink.setAttribute("href", "#");
+                        hideLink.setAttribute("id", "hide-undo-bar");
+                        hideLink.innerHTML = " Hide";
 
                         divTag.className = "undo-delete";
                         if(deleteCount == 1) {
@@ -109,6 +114,7 @@ jQuery(function($) {
                             undoLinks.innerHTML = "Go to Trash";
                         }                       
                         divTag.appendChild(undoLinks);
+                        divTag.appendChild(hideLink);
                         undobar.html(divTag); 
                     });
                     restoreUrl();
@@ -121,9 +127,14 @@ jQuery(function($) {
     restoreUrl();
 
     function restoreUrl() { 
-        $('div.undo-delete a').bind('click', function(e) {
+        $('div.undo-delete a#undo-links').bind('click', function(e) {
             var undoDelete = $(this);
             var deleteMode = undoDelete.attr('delete-mode');            
+
+            var deleteSup = $('li.delete sup');
+            var deleteSupNum = deleteSup.addClass('count').html();
+            deleteSupNum -= 1;
+            deleteSup.addClass('count').html(deleteSupNum); 
 
             if(deleteMode == 'single' || !deleteMode) { 
 
@@ -138,7 +149,12 @@ jQuery(function($) {
             } else {
                 window.location = undoDelete.attr('href');
             }
+            deleteCount = 0;
+            e.preventDefault();
+        });
 
+        $("div.undo-delete a#hide-undo-bar").bind('click', function(e) { 
+            $('div.undo-bar').hide();
             e.preventDefault();
         });
     }

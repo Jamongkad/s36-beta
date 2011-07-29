@@ -20,8 +20,11 @@ return array(
         
     }),
 
-    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        
+    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback){ 
+        $undo_result = $feedback->fetch_deleted_feedback();
+        echo "<pre>";
+        echo print_r($undo_result);
+        echo "</pre>";
     }),
 
     //Ajax Functions...
@@ -53,7 +56,7 @@ return array(
 
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feedback->_change_feedback('isDeleted', $id, 1);
-        $undo_result = $feedback->fetched_deleted_feedback();
+        $undo_result = $feedback->fetch_deleted_feedback();
         echo json_encode($undo_result);
     },
 

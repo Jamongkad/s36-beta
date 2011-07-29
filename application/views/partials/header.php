@@ -30,21 +30,29 @@ if($user->check()):
                         <?=HTML::link('dashboard/', 'Dashboard')?>
                        <?=(Request::uri() == 'dashboard' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(preg_match('/inbox/', Request::uri()) ? ' class="selected inbox"' :' class="inbox"')?>>
+                    <li<?=((preg_match('/inbox/', Request::uri()) 
+                           and Request::uri() != 'inbox/deleted' 
+                           and Request::uri() != 'inbox/published'
+                           and Request::uri() != 'inbox/featured'
+                           ) ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/', 'Inbox')?>
-                       <?=(preg_match('/inbox/', Request::uri()) ? '<div class="arrow-right"></div>' : null)?>
+                       <?=((preg_match('/inbox/', Request::uri()) 
+                            and Request::uri() != 'inbox/deleted' 
+                            and Request::uri() != 'inbox/published'
+                            and Request::uri() != 'inbox/featured'
+                            ) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'published' ? ' class="selected published"' : ' class="published"')?>>
-                        <?=HTML::link('published/', 'Published')?>
-                       <?=(Request::uri() == 'published' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(Request::uri() == 'inbox/published' ? ' class="selected published"' : ' class="published"')?>>
+                        <?=HTML::link('inbox/published', 'Published')?>
+                       <?=(Request::uri() == 'inbox/published' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'featured' ? ' class="selected featured"' : ' class="featured"')?>>
-                        <?=HTML::link('featured/', 'Featured')?>
-                       <?=(Request::uri() == 'featured' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(Request::uri() == 'inbox/featured' ? ' class="selected featured"' : ' class="featured"')?>>
+                        <?=HTML::link('inbox/featured', 'Featured')?>
+                       <?=(Request::uri() == 'inbox/featured' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'filed' ? ' class="selected filed"' : ' class="filed"')?>>
-                        <?=HTML::link('filed/', 'Filed Feedback')?>
-                       <?=(Request::uri() == 'filed' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(Request::uri() == 'inbox/filed' ? ' class="selected filed"' : ' class="filed"')?>>
+                        <?=HTML::link('inbox/filed', 'Filed Feedback')?>
+                       <?=(Request::uri() == 'inbox/filed' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=(Request::uri() == 'feedsetup' ? ' class="selected setup"' : ' class="setup"')?>>
                         <?=HTML::link('feedsetup/', 'Feedback Setup')?>
@@ -61,10 +69,10 @@ if($user->check()):
                 <ul>
                     <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
-                    <li class="delete"><?=HTML::link('/feedback/deletedfeedback', 'Deleted Feedback')?>
+                    <li class="delete"><?=HTML::link('/inbox/deleted', 'Deleted Feedback')?>
 
-                    <?$feedback = new Feedback
-                      if($total_delete_feedback = $feedback->fetched_deleted_feedback()->total_rows):?>
+                    <?$feedback = new Feedback;
+                      if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
                           <sup class="count"><?=$total_delete_feedback?></sup> 
                     <?else:?>
                           <sup></sup>
