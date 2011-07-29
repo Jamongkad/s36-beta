@@ -5,19 +5,17 @@
 <!-- end of gray status bar -->
 
 <!--start of undo bar-->
+<input type="hidden" name="undo-count" value="0" />
 <div class="undo-bar">
 <?
-    $user = new S36Auth;
     $feedback = new Feedback;
-    $userid = $user->user()->userid;
-    if($deleted = $feedback->fetched_delete_feedback($userid)) {
+    if($deleted = $feedback->fetched_deleted_feedback()) {
         echo "Deleted Feedback";
-        foreach($deleted as $val) {
-            echo "<div class='dickies'>".HTML::link('feedback/undodelete/'.$val->id, $val->id, array('restore-id' => $val->id))."</div>";
+        foreach($deleted->result as $val) {
+            echo "<div class='undo-delete'>".HTML::link('feedback/undodelete/'.$val->id, $val->id, array('restore-id' => $val->id))."</div>";
         }
     } 
 ?>
-
 </div>
 <!--end of undo bar-->
 

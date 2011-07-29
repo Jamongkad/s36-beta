@@ -51,9 +51,9 @@ return array(
         $feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
     },
 
-    'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback, $user) {
+    'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feedback->_change_feedback('isDeleted', $id, 1);
-        $undo_result = $feedback->fetched_delete_feedback($user->user()->userid);
+        $undo_result = $feedback->fetched_deleted_feedback();
         echo json_encode($undo_result);
     },
 

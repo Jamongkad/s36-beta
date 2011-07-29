@@ -6,6 +6,7 @@ class Feedback {
 
     public function __construct() {
         $this->dbh = DB::connection('master');
+        $this->user = new S36Auth;
     }
     
     //TODO: Clean this shit up
@@ -164,10 +165,13 @@ class Feedback {
                   ->update(array($column => $state));
     }    
 
-    public function fetched_delete_feedback($user_id) {
+    public function fetched_deleted_feedback() {
+
+        $user_id = $this->user->user()->userid;
         
         $sth = $this->dbh->prepare('
             SELECT 
+                  SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
             FROM 
                 User
@@ -186,9 +190,14 @@ class Feedback {
  
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $sth->execute();       
-
+ 
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
+        
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
     }
 
     public function undo_deleted_feedback($user_id) {

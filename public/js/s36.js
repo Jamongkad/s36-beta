@@ -71,7 +71,9 @@ jQuery(function($) {
             select.siblings().text($(this).children('option:selected').text());
         }).show();
     }).css({'cursor': 'pointer'})
-    
+
+    //$('div.undo-bar').hide(); 
+    var deleteCount = 0;
     $('.remove').bind('click', function(e) {
         if(confirm('Are you sure?')) { 
 
@@ -79,79 +81,64 @@ jQuery(function($) {
             var feedurl = $(this).attr('hrefaction');
             var undobar = $('div.undo-bar');
 
-            undobar.empty();
-            undobar.html('Deleted Feedback');
+            deleteCount += 1;
 
             $.ajax({
-                  type: "GET"
-                , url: feedurl
+                  url: feedurl
                 , success: function(data) { 
                     var obj = jQuery.parseJSON(data);
-                    $.each(obj, function(idx, val) {
+
+                    $('li.delete sup').addClass('count').html(obj.total_rows);
+
+                    $.each(obj.result, function(idx, val) {
+
                         var divTag = document.createElement("div");
                         var undoLinks = document.createElement("a");
 
-                        undoLinks.setAttribute("href", "feedback/undodelete/" + val.id);
-                        undoLinks.setAttribute("restore-id", val.id);
-                        undoLinks.innerHTML = val.id;
-
-                        divTag.className = "dickies";
+                        divTag.className = "undo-delete";
+                        if(deleteCount == 1) {
+                            divTag.innerHTML = deleteCount + " feedback has been moved to the Trash ";     
+                            undoLinks.setAttribute("href", "../feedback/undodelete/" + val.id);
+                            undoLinks.setAttribute("restore-id", val.id);
+                            undoLinks.setAttribute("delete-mode", "single");
+                            undoLinks.innerHTML = "Undo";
+                        } else {
+                            divTag.innerHTML = deleteCount + " feedbacks have been moved to the Trash ";
+                            undoLinks.setAttribute("href", "../feedback/deletedfeedback");
+                            undoLinks.setAttribute("delete-mode", "multiple");
+                            undoLinks.innerHTML = "Go to Trash";
+                        }                       
                         divTag.appendChild(undoLinks);
-                        undobar.append(divTag);
+                        undobar.html(divTag); 
                     });
-
                     restoreUrl();
-                    deleteDivCount(undobar);
-                    undoAll();
                 }
             });
+            undobar.show();
         }
     });
 
     restoreUrl();
-    deleteDivCount($('div.undo-bar'));
-    undoAll();
-
-    function undoAll() { 
-        $('div.undoall a').bind('click', function(e) {
-            var href = $(this).attr('href');
-            $.ajax({
-                url: href
-              , success: function(data) {
-                    window.location = "inbox";       
-                }
-            }); 
-           
-            e.preventDefault();
-        });
-    }
-
-    function deleteDivCount(undobar) {
-        
-        if($('div.dickies').length >= 5) {
-
-            undobar.empty();
-            undobar.html('Deleted Feedback');
-         
-            var divTag = document.createElement("div");
-            var undoAllLinks = document.createElement("a");
-            undoAllLinks.setAttribute("href", "feedback/undodelete/all");
-            undoAllLinks.innerHTML = "undo all";
-         
-            divTag.className = "dickies undoall";
-            divTag.appendChild(undoAllLinks);
-            undobar.append(divTag);
-        }
-    }
 
     function restoreUrl() { 
-        $('div.dickies a').bind('click', function(e) {
-            var dickiesUrl = $(this);
-            $.ajax({
-                url: dickiesUrl.attr('href')
-            });
-            $("#" + dickiesUrl.attr('restore-id')).fadeIn();
-            dickiesUrl.parent('div.dickies').remove();
+        $('div.undo-delete a').bind('click', function(e) {
+            var undoDelete = $(this);
+            var deleteMode = undoDelete.attr('delete-mode');            
+
+            if(deleteMode == 'single' || !deleteMode) { 
+
+                $.ajax({
+                    url: undoDelete.attr('href')
+                });
+              
+                $("#" + undoDelete.attr('restore-id')).fadeIn();
+                undoDelete.parent('div.undo-delete').remove();
+                $('div.undo-bar').hide();
+
+            } else {
+                window.location = undoDelete.attr('href');
+            }
+
             e.preventDefault();
         });
     }
