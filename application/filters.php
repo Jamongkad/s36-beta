@@ -40,8 +40,8 @@ return array(
 
     //S36 Defined Filters
     's36_auth' => function() {
-        $user = new S36Auth;       
-        return ($user->check()) ? Null : Redirect::to('/');
+        //$user = new S36Auth;       
+        return (S36Auth::check()) ? Null : Redirect::to('/');
     }
 
 );

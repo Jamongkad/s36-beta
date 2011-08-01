@@ -3,34 +3,57 @@
  * Laravel - A clean and classy framework for PHP web development.
  *
  * @package  Laravel
- * @version  1.3.1
+ * @version  1.4.1
  * @author   Taylor Otwell
  * @link     http://laravel.com
  */
 
 // --------------------------------------------------------------
-// Define the core framework paths.
+// The path to the application directory.
 // --------------------------------------------------------------
 define('APP_PATH', realpath('../application').'/');
-define('SYS_PATH', realpath('../system').'/');
-define('PUBLIC_PATH', realpath(__DIR__.'/'));
-define('BASE_PATH', realpath('../').'/');
+
+// --------------------------------------------------------------
+// The path to the system directory.
+// --------------------------------------------------------------
+define('SYS_PATH', realpath($system = '../system').'/');
+
+// --------------------------------------------------------------
+// The path to the directory containing the system directory.
+// --------------------------------------------------------------
+define('BASE_PATH', realpath(str_replace('system', '', $system)).'/');
+
+// --------------------------------------------------------------
+// The path to the public directory.
+// --------------------------------------------------------------
+define('PUBLIC_PATH', realpath(__DIR__).'/');
 
 // --------------------------------------------------------------
 // Define various other framework paths.
 // --------------------------------------------------------------
-define('CACHE_PATH', APP_PATH.'storage/cache/');
-define('CONFIG_PATH', APP_PATH.'config/');
-define('DATABASE_PATH', APP_PATH.'storage/db/');
-define('LANG_PATH', APP_PATH.'lang/');
-define('LIBRARY_PATH', APP_PATH.'libraries/');
-define('MODEL_PATH', APP_PATH.'models/');
-define('PACKAGE_PATH', APP_PATH.'packages/');
-define('ROUTE_PATH', APP_PATH.'routes/');
-define('SESSION_PATH', APP_PATH.'storage/sessions/');
-define('STORAGE_PATH', APP_PATH.'storage/');
-define('SYS_VIEW_PATH', SYS_PATH.'views/');
-define('VIEW_PATH', APP_PATH.'views/');
+$constants = array(
+	'CACHE_PATH'    => APP_PATH.'storage/cache/',
+	'CONFIG_PATH'   => APP_PATH.'config/',
+	'DATABASE_PATH' => APP_PATH.'storage/db/',
+	'LANG_PATH'     => APP_PATH.'lang/',
+	'LIBRARY_PATH'  => APP_PATH.'libraries/',
+	'MODEL_PATH'    => APP_PATH.'models/',
+	'PACKAGE_PATH'  => APP_PATH.'packages/',
+	'ROUTE_PATH'    => APP_PATH.'routes/',
+	'SCRIPT_PATH'   => PUBLIC_PATH.'js/',
+	'SESSION_PATH'  => APP_PATH.'storage/sessions/',
+	'STORAGE_PATH'  => APP_PATH.'storage/',
+	'STYLE_PATH'    => PUBLIC_PATH.'css/',
+	'SYS_VIEW_PATH' => SYS_PATH.'views/',
+	'VIEW_PATH'     => APP_PATH.'views/',
+);
+
+foreach ($constants as $key => $value)
+{
+	define($key, $value);
+}
+
+unset($constants, $system);
 
 // --------------------------------------------------------------
 // Define the PHP file extension.
@@ -123,7 +146,7 @@ $response = System\Route\Filter::call('before', array(), true);
 // ----------------------------------------------------------
 if (is_null($response))
 {
-	$route = System\Router::route(System\Request::method(), System\Request::uri());
+	$route = System\Router::make(System\Request::method(), System\Request::uri())->route();
 
 	$response = (is_null($route)) ? System\Response::make(System\View::make('error/404'), 404) : $route->call();
 }

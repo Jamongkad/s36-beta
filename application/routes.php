@@ -1,8 +1,6 @@
 <?php
 
-$user = new S36Auth();
-$view = View::make('partials/layout');
-
+//$user = new S36Auth();
 return array(
 
 	/*
@@ -19,25 +17,23 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use ($view) {
-        $view->contents = View::make('home/login'); 
-        return $view;
+    'GET /' => function() {
+        return View::of_layout()->partial('contents', 'home/login');
     }, 
 
-    'GET /logout' => function() use($user) {
-        $user->logout(); 
+    'GET /logout' => function() {
+        S36Auth::logout();
         return Redirect::to('/');
     },
 
-    'POST /login' => function() use($user) {
+    'POST /login' => function() {
         $input = Input::get();
-        $user->login($input['username'], $input['password']);
+        S36Auth::login($input['username'], $input['password']);
 
-        if($user->check()) {
+        if(S36Auth::check()) {
             return Redirect::to('/dashboard');           
         } else {
             return Redirect::to('/');
         }
-
     },
 );

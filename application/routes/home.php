@@ -5,7 +5,7 @@ $user = new S36Auth();
 return array(
 
     'GET /' => function() use () {
-        return View::make('partials/layout')->partial('contents', 'home/login');
+        return View::of_layout()->partial('contents', 'home/login');
     }, 
 
     'GET /logout' => function() use($user) {

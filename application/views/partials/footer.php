@@ -1,6 +1,5 @@
 <?
-$user = new S36Auth;
-if($user->check()):
+if(S36Auth::check()):
 ?>
         </div> 
         <div class="c"></div>

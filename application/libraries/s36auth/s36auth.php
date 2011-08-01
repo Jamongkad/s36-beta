@@ -6,31 +6,26 @@ use Hash;
 
 class S36Auth {
     
-    private $user;
-    private $db_name;
-    private $user_id;
+    private static $user;
+    private static $db_name = 'master';
+    private static $user_id = 's36_user_id';
 
-    public function __construct() {
-        $this->db_name = 'master';
-        $this->user_id = 's36_user_id';
-    }
-
-    public function user() { 
-        if(is_null($this->user) and Session::has($this->user_id)) {
-            $this->user = DB::table('User', $this->db_name)->where('userId', '=', Session::get($this->user_id))->first();
+    public static function user() { 
+        if(is_null(static::$user) and Session::has(static::$user_id)) {
+            static::$user = DB::table('User', static::$db_name)->where('userId', '=', Session::get(static::$user_id))->first();
         } 
-        return $this->user;
+        return static::$user;
     }
 
-    public function login($username, $password) {
+    public static function login($username, $password) {
         
-        $user = DB::table('User', $this->db_name)->where('email', '=', $username)
+        $user = DB::table('User', static::$db_name)->where('email', '=', $username)
                                            ->or_where('username', '=', $username)->first();
         if(! is_null($user)) {
             $user_password = $user->password; 
             if(crypt($password, $user_password) === $user_password) {
-                $this->user = $user;
-                Session::put($this->user_id, $user->userid);
+                static::$user = $user;
+                Session::put(static::$user_id, $user->userid);
                 return true; 
             }
         }
@@ -38,13 +33,13 @@ class S36Auth {
         return false;
     }
 
-    public function logout() { 
-        Session::forget($this->user_id);
-        $this->user = Null;
+    public static function logout() { 
+        Session::forget(static::$user_id);
+        static::$user = Null;
     }
 
-    public function check() {         
-		return ( ! is_null($this->user()));
+    public static function check() {         
+		return ( ! is_null(static::user()));
     }
 
     public static function register() {

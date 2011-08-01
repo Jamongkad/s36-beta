@@ -24,6 +24,7 @@ return array(
 	'names' => array(
 
 		'home' => 'home/index',
+        'layout' => 'partials/layout'
 
 	),
 

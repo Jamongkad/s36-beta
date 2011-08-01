@@ -1,9 +1,7 @@
 <?php
 
-$user = new S36Auth();
-
 return array(
-    'GET /dashboard' => Array('name' => 'dashboard', 'before' => 's36_auth', 'do' => function() use ($user) {
-        return View::make('partials/layout')->partial('contents', 'dashboard/index');
+    'GET /dashboard' => Array('name' => 'dashboard', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'dashboard/index');
     }),
 );

@@ -1,3 +1,5 @@
-<?=View::make('partials/header')?>
+<?//=View::make('partials/header')?>
+<?=$header?>
 <?=$contents?>
-<?=View::make('partials/footer')?>
+<?=$footer?>
+<?//=View::make('partials/footer')?>

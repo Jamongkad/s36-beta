@@ -1,6 +1,25 @@
 <!-- gray status bar -->
 <div class="admin-status-bar">
-    <div class="current-page inbox">INBOX <!--<span>There were 27 new feedback since your last visit.</span>--></div>
+<?if(Request::uri() == 'inbox'):?>
+    <div class="current-page inbox"> 
+        INBOX <!--<span>There were 27 new feedback since your last visit.</span>--> 
+    </div>
+<?endif?>
+<?if(Request::uri() == 'inbox/published'):?>
+    <div class="current-page published"> 
+        PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+    </div>
+<?endif?>
+<?if(Request::uri() == 'inbox/featured'):?>
+    <div class="current-page featured"> 
+        FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+    </div>
+<?endif?>
+<?if(Request::uri() == 'inbox/filed'):?>
+    <div class="current-page filed"> 
+        FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+    </div>
+<?endif?>
 </div>
 <!-- end of gray status bar -->
 
@@ -9,12 +28,10 @@
 <div class="undo-bar">
 </div>
 <!--end of undo bar-->
-
 <!-- top navigation bar -->
 <div class="admin-nav-bar">
-
     <ul>
-        <li><?=HTML::link('inbox', 'SHOW ALL', Array('class' => (Request::uri() == 'inbox') ? 'selected' : null) )?></li>
+        <li><?=HTML::link('inbox', 'SHOW ALL', Array('class' => (Helpers::filter_highlighter()) ? 'selected' : null) )?></li>
         <li><?=HTML::link('inbox/4', 'POSITIVE', Array('class' => (Request::uri() == 'inbox/4') ? 'selected' : null))?></li>
         <li><?=HTML::link('inbox/1', 'NEGATIVE', Array('class' => (Request::uri() == 'inbox/1') ? 'selected' : null))?></li>
         <li><?=HTML::link('inbox/3', 'NEUTRAL', Array('class' => (Request::uri() == 'inbox/3') ? 'selected' : null))?></li>

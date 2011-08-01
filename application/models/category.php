@@ -3,17 +3,15 @@
 class Category {
     
     private $dbh;
-    private $user;
 
     public function __construct() {
         $this->dbh = DB::connection('master');
-        $this->user = new S36Auth;
     }
 
     public function pull_site_categories() {
         $dbh = DB::connection('master');     
 
-        $user_id = $this->user->user()->userid;
+        $user_id = S36Auth::user()->userid;
 
         $sth = $this->dbh->prepare("
             SELECT 

@@ -13,10 +13,7 @@
 </head>
 <body>
 
-<?
-$user = new S36Auth;
-if($user->check()):
-?>
+<?if(S36Auth::check()):?>
 
 <div class="" id="admin-container">
     <div id="admin-panel">
@@ -34,12 +31,14 @@ if($user->check()):
                            and Request::uri() != 'inbox/deleted' 
                            and Request::uri() != 'inbox/published'
                            and Request::uri() != 'inbox/featured'
+                           and Request::uri() != 'inbox/filed'
                            ) ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/', 'Inbox')?>
                        <?=((preg_match('/inbox/', Request::uri()) 
                             and Request::uri() != 'inbox/deleted' 
                             and Request::uri() != 'inbox/published'
                             and Request::uri() != 'inbox/featured'
+                            and Request::uri() != 'inbox/filed'
                             ) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=(Request::uri() == 'inbox/published' ? ' class="selected published"' : ' class="published"')?>>
@@ -95,7 +94,7 @@ if($user->check()):
                     <img src="images/sample-avatar.jpg" />
                 </div>
                 <div class="admin-details">
-                    <div class="admin-signed-in">Signed in as <span><?=$user->user()->username?></span></div>
+                    <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>
                     <div class="admin-links">
                         <ul>
                             <li><a href="#">ADMIN</a></li>
@@ -108,7 +107,7 @@ if($user->check()):
                     <!-- 
                         drop down list on the top brown bar
                     -->
-                    <? $site = DB::table('Site', 'master')->where('companyId', '=', $user->user()->companyid)->get(); ?>
+                    <? $site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
                     <select name="site_choice">
                         <?foreach($site as $sites):?>
                             <option value="<?=$sites->siteid?>"><?=$sites->domain?></option>
@@ -118,7 +117,6 @@ if($user->check()):
                 </div>
             </div>
             <!-- end of the brown bar on the top -->
-
             <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed')):?>
                     <?=View::make('partials/flag_menu')?>
             <?endif?>

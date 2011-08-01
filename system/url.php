@@ -21,9 +21,15 @@ class URL {
 
 		$base = Config::get('application.url').'/'.Config::get('application.index');
 
-		$base = ($asset) ? str_replace('/'.Config::get('application.index'), '', $base) : $base;
+		if ($asset and Config::get('application.index') !== '')
+		{
+			$base = str_replace('/'.Config::get('application.index'), '', $base);
+		}
 
-		$base = ($https and strpos($base, 'http://') === 0) ? 'https://'.substr($base, 7) : $base;
+		if ($https and strpos($base, 'http://') === 0)
+		{
+			$base = 'https://'.substr($base, 7);
+		}
 
 		return rtrim($base, '/').'/'.ltrim($url, '/');
 	}
@@ -103,6 +109,8 @@ class URL {
 	 */
 	public static function slug($title, $separator = '-')
 	{
+		$title = html_entity_decode(Str::ascii($title), ENT_QUOTES, Config::get('application.encoding'));
+
 		// Remove all characters that are not the separator, letters, numbers, or whitespace.
 		$title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', Str::lower($title));
 

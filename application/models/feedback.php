@@ -3,17 +3,16 @@
 class Feedback {
 
     private $dbh;
-    private $user;
+    private $user_id;
 
     public function __construct() {
         $this->dbh = DB::connection('master');
-        $this->user = new S36Auth;
+        $this->user_id = S36Auth::user()->userid;
+        
     }
     
     //TODO: Clean this shit up
     public function pull_feedback($limit=5, $offset=0, $filter=False) {
-
-        $user_id = $this->user->user()->userid;
 
         $rating_statement = Null;
         $profanity_statement = Null;
@@ -120,7 +119,7 @@ class Feedback {
                     LIMIT :offset, :limit 
         ');
  
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);       
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
         $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
@@ -189,8 +188,6 @@ class Feedback {
     }    
 
     public function fetch_deleted_feedback() {
-
-        $user_id = $this->user->user()->userid;
         
         $sth = $this->dbh->prepare('
             SELECT 
@@ -211,7 +208,7 @@ class Feedback {
                         Feedback.dtAdded DESC
         ');
  
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
  
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
@@ -235,7 +232,7 @@ class Feedback {
                 SET Feedback.isDeleted = 0
         ');
 
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
 

@@ -1,7 +1,7 @@
 <?php
 
 return array( 
-    'GET /inbox/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False) {
+    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {
 
         $limit = 10;
 
@@ -15,8 +15,8 @@ return array(
 
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
-
-        return View::make('partials/layout')->partial('contents', 'inbox/index', Array(
+        
+        return View::of_layout()->partial('contents', 'inbox/index', Array(
               'feedback' => $records
             , 'categories' => $category->pull_site_categories()
             , 'pagination' => $pagination->render()
