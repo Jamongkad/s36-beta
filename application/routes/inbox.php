@@ -11,11 +11,12 @@ return array(
         $category = new Category;
         $pagination = new ZebraPagination;
 
-        $records = $feedback->pull_feedback($limit, ($pagination->get_page() - 1) * $limit, $filter);
+        $records = $feedback->pull_feedback($limit, ($pagination->get_page() - 1) * $limit, $filter, $choice);
+        //print_r($records);
 
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
-        
+          
         return View::of_layout()->partial('contents', 'inbox/index', Array(
               'feedback' => $records
             , 'categories' => $category->pull_site_categories()
@@ -23,5 +24,6 @@ return array(
             , 'status' => DB::table('Status', 'master')->get()
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
+
     }), 
 );

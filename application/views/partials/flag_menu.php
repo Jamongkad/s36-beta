@@ -29,26 +29,27 @@
 </div>
 <!--end of undo bar-->
 <!-- top navigation bar -->
-<?
-    $all = Array('inbox/all', 'inbox/published/all', 'inbox/featured/all', 'inbox/filed/all');
-    $positive = Array('inbox/4', 'inbox/published/4', 'inbox/featured/4', 'inbox/filed/4');
-    $negative = Array('inbox/1', 'inbox/published/1', 'inbox/featured/1', 'inbox/filed/1');
-    $neutral = Array('inbox/3', 'inbox/published/3', 'inbox/featured/3', 'inbox/filed/3');
-    $profanity = Array('inbox/profanity', 'inbox/published/profanity', 'inbox/featured/profanity', 'inbox/filed/profanity');
-    $flagged = Array('inbox/flagged', 'inbox/published/flagged', 'inbox/featured/flagged', 'inbox/filed/flagged');
-    $content = Array('inbox/mostcontent', 'inbox/published/mostcontent', 'inbox/published/mostcontent', 'inbox/filed/mostcontent');
-
+<? 
+    $nav_links = Array('inbox', 'inbox/published', 'inbox/featured', 'inbox/filed');
     $links = Helpers::nav_switcher();
+    $nav_links_name = Array(
+          Array('key' => 'SHOW ALL', 'val' => 'all')
+        , Array('key' => 'POSITIVE', 'val' => 4)
+        , Array('key' => 'NEGATIVE', 'val' => 1)
+        , Array('key' => 'NEUTRAL', 'val' => 3)  
+        , Array('key' => 'CONTAINS PROFANITY', 'val' => 'profanity') 
+        , Array('key' => 'FLAGGED', 'val' => 'flagged')
+        , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
+    );
 ?>
 <div class="admin-nav-bar">
     <ul>
-        <li><?=HTML::link($links[0], 'SHOW ALL', Array('class' => (Helpers::filter_highlighter($all)) ? 'selected' : null) )?></li>
-        <li><?=HTML::link($links[1], 'POSITIVE', Array('class' => (Helpers::filter_highlighter($positive)) ? 'selected' : null))?></li>
-        <li><?=HTML::link($links[2], 'NEGATIVE', Array('class' => (Helpers::filter_highlighter($negative)) ? 'selected' : null))?></li>
-        <li><?=HTML::link($links[3], 'NEUTRAL', Array('class' => (Helpers::filter_highlighter($neutral)) ? 'selected' : null))?></li>
-        <li><?=HTML::link($links[4], 'CONTAINS PROFANITY', Array('class' => (Helpers::filter_highlighter($profanity)) ? 'selected' : null))?></li>
-        <li><?=HTML::link($links[5], 'FLAGGED' , Array('class' => (Helpers::filter_highlighter($flagged)) ? 'selected' : null))?></li>
-        <li><?=HTML::link($links[6], 'MOST CONTENT', Array('class' => (Helpers::filter_highlighter($content)) ? 'selected' : null))?></li>
+        <?for($i=0; $i < count($links); $i++):?>
+            <li>
+                <?=HTML::link($links[$i], $nav_links_name[$i]['key'], 
+                              Array('class' => (Helpers::filter_highlighter($nav_links, $nav_links_name[$i]['val'])) ? 'selected' : null));?>   
+            </li>
+        <?endfor?>
     </ul>
 </div>
 <!-- end of top navigation bar -->

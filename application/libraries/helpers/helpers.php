@@ -12,10 +12,10 @@ class Helpers {
 
 
     //TODO: generalize this
-    public static function filter_highlighter($urls) {
+    public static function filter_highlighter($urls, $type=False) {
         $request_uri = Request::uri();
         foreach($urls as $url) { 
-            if($request_uri == $url) {
+            if($request_uri == $url.'/'.$type) {
                 return True; 
             }
         }

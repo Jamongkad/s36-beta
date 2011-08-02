@@ -12,11 +12,12 @@ class Feedback {
     }
     
     //TODO: Clean this shit up
-    public function pull_feedback($limit=5, $offset=0, $filter=False) {
-
+    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False) {
+      
         $rating_statement = Null;
         $profanity_statement = Null;
         $flagged_statement = Null;
+        $rating_choices = Null;
         
         $mostcontent_statement = 'Feedback.dtAdded DESC';
         $is_deleted = 0;
@@ -25,23 +26,32 @@ class Feedback {
 
         if($filter != False) {
 
-            if(in_array($filter, Array(1, 2, 3, 4, 5))) {
-                if($filter == 4) {
-                    $filter = '4,5';
+            if(in_array($filter, range(1, 5)) or in_array($choice, range(1, 5))) {
+                if($filter == 4 || $choice == 4) {
+                    $rating_choices = '4,5';
+                } 
+
+                if($filter == 1 || $choice == 1) {
+                    $rating_choices = '1,2';
                 }
-                $rating_statement = "AND Feedback.rating IN ($filter)";     
+
+                if($filter == 3 || $choice == 3) {
+                    $rating_choices = 3;
+                }
+               
+                $rating_statement = "AND Feedback.rating IN ($rating_choices)";     
             }
 
             if(is_string($filter)) {
-                if($filter == 'profanity') {
+                if($filter == 'profanity' || $choice == 'profanity') {
                     $profanity_statement = "AND Feedback.hasProfanity = 1";
                 }
 
-                if($filter == 'mostcontent') {
+                if($filter == 'mostcontent' || $choice == 'mostcontent') {
                     $mostcontent_statement = "LENGTH(textlength) DESC";
                 }
 
-                if($filter == 'flagged') {
+                if($filter == 'flagged' || $choice == 'flagged') {
                     $flagged_statement = "AND Feedback.isFlagged = 1";
                 }
 
@@ -118,11 +128,7 @@ class Feedback {
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ');
-        /*
-        print_r($rating_statement);
-        print_r($profanity_statement);
-        print_r($flagged_statement);
-        */
+     
  
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
@@ -139,6 +145,18 @@ class Feedback {
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
+
+        /* DEBUG
+        print_r($rating_statement);
+        print_r($profanity_statement);
+        print_r($flagged_statement);
+        print_r($mostcontent_statement);
+        print_r("<br/>");
+        print_r("rating_choices: ".$rating_choices."<br/>");
+        print_r("is_deleted: ".$is_deleted."<br/>");
+        print_r("is_published: ".$is_published."<br/>");
+        print_r("is_featured: ".$is_featured."<br/>"); 
+        */
     }
 
     public function pull_feedback_by_id($id) { 

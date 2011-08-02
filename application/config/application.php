@@ -12,8 +12,8 @@ return array(
 	*/
     //deployment-dev
 	//'url' => 'http://www.gearfish.com/s36-beta/public',
-    //developtment-localhost
-    'url' => 'http://localhost/s36-beta-test/public',
+    //development-localhost
+    'url' => 'http://36stories.localhost',
 
 	/*
 	|--------------------------------------------------------------------------
