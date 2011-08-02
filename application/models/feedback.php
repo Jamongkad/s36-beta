@@ -118,6 +118,11 @@ class Feedback {
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ');
+        /*
+        print_r($rating_statement);
+        print_r($profanity_statement);
+        print_r($flagged_statement);
+        */
  
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);

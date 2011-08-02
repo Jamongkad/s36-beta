@@ -27,31 +27,22 @@
                         <?=HTML::link('dashboard/', 'Dashboard')?>
                        <?=(Request::uri() == 'dashboard' ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=((preg_match('/inbox/', Request::uri()) 
-                           and Request::uri() != 'inbox/deleted' 
-                           and Request::uri() != 'inbox/published'
-                           and Request::uri() != 'inbox/featured'
-                           and Request::uri() != 'inbox/filed'
-                           ) ? ' class="selected inbox"' :' class="inbox"')?>>
-                        <?=HTML::link('inbox/', 'Inbox')?>
-                       <?=((preg_match('/inbox/', Request::uri()) 
-                            and Request::uri() != 'inbox/deleted' 
-                            and Request::uri() != 'inbox/published'
-                            and Request::uri() != 'inbox/featured'
-                            and Request::uri() != 'inbox/filed'
-                            ) ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(preg_match_all('/inbox\/(all|[0-9]+|profanity|flagged|mostcontent)/', Request::uri(), $matches) ? ' class="selected inbox"' :' class="inbox"')?>>
+                        <?=HTML::link('inbox/all/', 'Inbox')?>
+                       <?=(preg_match_all('/inbox\/(all|[0-9]+|profanity|flagged|mostcontent)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'inbox/published' ? ' class="selected published"' : ' class="published"')?>>
-                        <?=HTML::link('inbox/published', 'Published')?>
-                       <?=(Request::uri() == 'inbox/published' ? '<div class="arrow-right"></div>' : null)?>
+                 
+                    <li<?=(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected published"' : ' class="published"')?>>
+                        <?=HTML::link('inbox/published/all', 'Published')?>
+                       <?=(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'inbox/featured' ? ' class="selected featured"' : ' class="featured"')?>>
-                        <?=HTML::link('inbox/featured', 'Featured')?>
-                       <?=(Request::uri() == 'inbox/featured' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected featured"' : ' class="featured"')?>>
+                        <?=HTML::link('inbox/featured/all', 'Featured')?>
+                       <?=(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'inbox/filed' ? ' class="selected filed"' : ' class="filed"')?>>
-                        <?=HTML::link('inbox/filed', 'Filed Feedback')?>
-                       <?=(Request::uri() == 'inbox/filed' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected filed"' : ' class="filed"')?>>
+                        <?=HTML::link('inbox/filed/all', 'Filed Feedback')?>
+                       <?=(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=(Request::uri() == 'feedsetup' ? ' class="selected setup"' : ' class="setup"')?>>
                         <?=HTML::link('feedsetup/', 'Feedback Setup')?>

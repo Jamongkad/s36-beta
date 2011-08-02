@@ -1,21 +1,21 @@
 <!-- gray status bar -->
 <div class="admin-status-bar">
-<?if(Request::uri() == 'inbox'):?>
+<?if(preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
     <div class="current-page inbox"> 
         INBOX <!--<span>There were 27 new feedback since your last visit.</span>--> 
     </div>
 <?endif?>
-<?if(Request::uri() == 'inbox/published'):?>
+<?if(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
     <div class="current-page published"> 
         PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
     </div>
 <?endif?>
-<?if(Request::uri() == 'inbox/featured'):?>
+<?if(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
     <div class="current-page featured"> 
         FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
     </div>
 <?endif?>
-<?if(Request::uri() == 'inbox/filed'):?>
+<?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
     <div class="current-page filed"> 
         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
     </div>
@@ -29,15 +29,26 @@
 </div>
 <!--end of undo bar-->
 <!-- top navigation bar -->
+<?
+    $all = Array('inbox/all', 'inbox/published/all', 'inbox/featured/all', 'inbox/filed/all');
+    $positive = Array('inbox/4', 'inbox/published/4', 'inbox/featured/4', 'inbox/filed/4');
+    $negative = Array('inbox/1', 'inbox/published/1', 'inbox/featured/1', 'inbox/filed/1');
+    $neutral = Array('inbox/3', 'inbox/published/3', 'inbox/featured/3', 'inbox/filed/3');
+    $profanity = Array('inbox/profanity', 'inbox/published/profanity', 'inbox/featured/profanity', 'inbox/filed/profanity');
+    $flagged = Array('inbox/flagged', 'inbox/published/flagged', 'inbox/featured/flagged', 'inbox/filed/flagged');
+    $content = Array('inbox/mostcontent', 'inbox/published/mostcontent', 'inbox/published/mostcontent', 'inbox/filed/mostcontent');
+
+    $links = Helpers::nav_switcher();
+?>
 <div class="admin-nav-bar">
     <ul>
-        <li><?=HTML::link('inbox', 'SHOW ALL', Array('class' => (Helpers::filter_highlighter()) ? 'selected' : null) )?></li>
-        <li><?=HTML::link('inbox/4', 'POSITIVE', Array('class' => (Request::uri() == 'inbox/4') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/1', 'NEGATIVE', Array('class' => (Request::uri() == 'inbox/1') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/3', 'NEUTRAL', Array('class' => (Request::uri() == 'inbox/3') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/profanity', 'CONTAINS PROFANITY', Array('class' => (Request::uri() == 'inbox/profanity') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/flagged', 'FLAGGED' , Array('class' => (Request::uri() == 'inbox/flagged') ? 'selected' : null))?></li>
-        <li><?=HTML::link('inbox/mostcontent', 'MOST CONTENT', Array('class' => (Request::uri() == 'inbox/mostcontent') ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[0], 'SHOW ALL', Array('class' => (Helpers::filter_highlighter($all)) ? 'selected' : null) )?></li>
+        <li><?=HTML::link($links[1], 'POSITIVE', Array('class' => (Helpers::filter_highlighter($positive)) ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[2], 'NEGATIVE', Array('class' => (Helpers::filter_highlighter($negative)) ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[3], 'NEUTRAL', Array('class' => (Helpers::filter_highlighter($neutral)) ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[4], 'CONTAINS PROFANITY', Array('class' => (Helpers::filter_highlighter($profanity)) ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[5], 'FLAGGED' , Array('class' => (Helpers::filter_highlighter($flagged)) ? 'selected' : null))?></li>
+        <li><?=HTML::link($links[6], 'MOST CONTENT', Array('class' => (Helpers::filter_highlighter($content)) ? 'selected' : null))?></li>
     </ul>
 </div>
 <!-- end of top navigation bar -->
