@@ -17,6 +17,7 @@ class Feedback {
         $rating_statement = Null;
         $profanity_statement = Null;
         $flagged_statement = Null;
+        $filed_statement = Null;
         $rating_choices = Null;
         
         $mostcontent_statement = 'Feedback.dtAdded DESC';
@@ -25,7 +26,7 @@ class Feedback {
         $is_featured = 0;
 
         if($filter != False) {
-
+   
             if(in_array($filter, range(1, 5)) or in_array($choice, range(1, 5))) {
                 if($filter == 4 || $choice == 4) {
                     $rating_choices = '4,5';
@@ -53,6 +54,10 @@ class Feedback {
 
                 if($filter == 'flagged' || $choice == 'flagged') {
                     $flagged_statement = "AND Feedback.isFlagged = 1";
+                }
+
+                if($filter == 'filed' || $choice == 'filed') {
+                    $filed_statement = "AND Feedback.categoryId != 1";
                 }
 
                 if($filter == 'deleted') {
@@ -122,6 +127,7 @@ class Feedback {
                         '.$rating_statement.'
                         '.$profanity_statement.'
                         '.$flagged_statement.'
+                        '.$filed_statement.'
                     GROUP BY
                         1
                     ORDER BY
@@ -146,11 +152,13 @@ class Feedback {
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
 
-        /* DEBUG
+
+        /* DEBUG 
         print_r($rating_statement);
         print_r($profanity_statement);
         print_r($flagged_statement);
         print_r($mostcontent_statement);
+        print_r($filed_statement);
         print_r("<br/>");
         print_r("rating_choices: ".$rating_choices."<br/>");
         print_r("is_deleted: ".$is_deleted."<br/>");
@@ -243,7 +251,7 @@ class Feedback {
         return $result_obj;
     }
 
-    public function undo_deleted_feedback($user_id) {
+    public function undo_deleted_feedback() {
         $sth = $this->dbh->prepare('
             UPDATE 
             Feedback
@@ -258,8 +266,11 @@ class Feedback {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
-
+    
+    //TODO: Think of algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
+    //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
     public function remove_deleted_feedback() {}
+    public function decay_deleted_feedabck() {}
 
     public function tag_feedback_with_profanity($user_id) {
         $sth = $this->dbh->prepare("

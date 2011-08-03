@@ -87,7 +87,7 @@
                         <?if($feed->isdeleted == 0):?>
                             <input type="button" class="remove" hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />
                         <?else:?>
-                            <?=HTML::link('', 'restore feedback')?>
+                            <?=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?>
                         <?endif?>
                     </div>
                 </div>

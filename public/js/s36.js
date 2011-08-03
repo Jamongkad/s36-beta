@@ -103,13 +103,13 @@ jQuery(function($) {
                         divTag.className = "undo-delete";
                         if(deleteCount == 1) {
                             divTag.innerHTML = deleteCount + " feedback has been moved to the Trash ";     
-                            undoLinks.setAttribute("href", "../feedback/undodelete/" + val.id);
+                            undoLinks.setAttribute("href", undobar.attr('delete_action') + val.id);
                             undoLinks.setAttribute("restore-id", val.id);
                             undoLinks.setAttribute("delete-mode", "single");
                             undoLinks.innerHTML = "Undo";
                         } else {
                             divTag.innerHTML = deleteCount + " feedbacks have been moved to the Trash ";
-                            undoLinks.setAttribute("href", "../feedback/deletedfeedback");
+                            undoLinks.setAttribute("href", undobar.attr('goto_trash'));
                             undoLinks.setAttribute("delete-mode", "multiple");
                             undoLinks.innerHTML = "Go to Trash";
                         }                       
@@ -126,6 +126,12 @@ jQuery(function($) {
 
     restoreUrl();
 
+    $('a.restore-feed').bind('click', function(e) { 
+        var my_parent = $(this).parents('div.feedback').fadeOut();
+        console.log($(this).attr('href'));
+        e.preventDefault();
+    })
+
     function restoreUrl() { 
         $('div.undo-delete a#undo-links').bind('click', function(e) {
             var undoDelete = $(this);
@@ -133,7 +139,11 @@ jQuery(function($) {
 
             var deleteSup = $('li.delete sup');
             var deleteSupNum = deleteSup.addClass('count').html();
-            deleteSupNum -= 1;
+
+            if(deleteMode == 'single') {
+                deleteSupNum -= 1;     
+            } 
+
             deleteSup.addClass('count').html(deleteSupNum); 
 
             if(deleteMode == 'single' || !deleteMode) { 

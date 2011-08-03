@@ -13,7 +13,7 @@ return array(
 
         $records = $feedback->pull_feedback($limit, ($pagination->get_page() - 1) * $limit, $filter, $choice);
         //print_r($records);
-
+       
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
           

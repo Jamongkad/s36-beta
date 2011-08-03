@@ -25,8 +25,7 @@
 
 <!--start of undo bar-->
 <input type="hidden" name="undo-count" value="0" />
-<div class="undo-bar">
-</div>
+<div class="undo-bar" delete_action="<?=URL::to('/feedback/undodelete/')?>" goto_trash="<?=URL::to('/inbox/deleted')?>"></div>
 <!--end of undo bar-->
 <!-- top navigation bar -->
 <? 
@@ -87,12 +86,19 @@
                 <label>RATING</label>
                 <select>
                     <option>All</option>
+                    <?foreach(array_reverse(range(1, 5)) as $rating):?>
+                        <option><?=$rating?></option>
+                    <?endforeach?> 
                 </select>
             </div>
-            <div class="g1of5">
+            <div class="g1of5" style="width: 25%">
                 <label>CATEGORY</label>
+                <?$cat = new Category; ?>
                 <select>
                     <option>All</option>
+                    <?foreach($cat->pull_site_categories() as $category):?>
+                        <option><?=$category->name?></option> 
+                    <?endforeach?>
                 </select>
             </div>
             <div class="g1of5 right-align">

@@ -5,7 +5,7 @@ $category = new Category;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
-        return View::make('partials/layout')->partial('contents', 'feedback/modifyfeedback', Array(
+        return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
            , 'categories' => $category->pull_site_categories()
         ));
@@ -61,7 +61,7 @@ return array(
 
     'GET /feedback/undodelete/(:any)' => function($id) use ($feedback) {  
         if($id == "all") {
-            $feedback->undo_deleted_feedback(S36Auth::user()->userid);
+            $feedback->undo_deleted_feedback();
         } else {
             $feedback->_change_feedback('isDeleted', $id, 0);     
         } 
