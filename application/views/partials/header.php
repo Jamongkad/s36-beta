@@ -23,34 +23,37 @@
             </div>
             <div class="left-menu">
             	<ul id="nav-menu">
-                    <li<?=(Request::uri() == 'dashboard' ? ' class="selected dashboard"' : ' class="dashboard"')?>>
+                    <? 
+                        $left_side_nav = Helpers::left_side_nav();
+                    ?>
+                    <li<?=($left_side_nav->dashboard ? ' class="selected dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
-                       <?=(Request::uri() == 'dashboard' ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($left_side_nav->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(preg_match_all('/inbox\/(all|[0-9]+|profanity|flagged|mostcontent)/', Request::uri(), $matches) ? ' class="selected inbox"' :' class="inbox"')?>>
+                    <li<?=($left_side_nav->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all/', 'Inbox')?>
-                       <?=(preg_match_all('/inbox\/(all|[0-9]+|profanity|flagged|mostcontent)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($left_side_nav->inbox ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                  
-                    <li<?=(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected published"' : ' class="published"')?>>
+                    <li<?=($left_side_nav->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all', 'Published')?>
-                       <?=(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($left_side_nav->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected featured"' : ' class="featured"')?>>
+                    <li<?=($left_side_nav->featured ? ' class="selected featured"' : ' class="featured"')?>>
                         <?=HTML::link('inbox/featured/all', 'Featured')?>
-                       <?=(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($left_side_nav->featured ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches) ? ' class="selected filed"' : ' class="filed"')?>>
+                    <li<?=($left_side_nav->profanity ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('inbox/filed/all', 'Filed Feedback')?>
-                       <?=(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)? '<div class="arrow-right"></div>' : null)?>
+                       <?=($left_side_nav->profanity ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'feedsetup' ? ' class="selected setup"' : ' class="setup"')?>>
-                        <?=HTML::link('feedsetup/', 'Feedback Setup')?>
-                       <?=(Request::uri() == 'feedsetup' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=($left_side_nav->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
+                        <?=HTML::link('inbox/feedsetup', 'Feedback Setup')?>
+                       <?=($left_side_nav->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=(Request::uri() == 'contacts' ? ' class="selected contacts"' : ' class="contacts"')?>>
-                        <?=HTML::link('contacts/', 'Contacts')?>
-                       <?=(Request::uri() == 'contacts' ? '<div class="arrow-right"></div>' : null)?>
+                    <li<?=($left_side_nav->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
+                        <?=HTML::link('inbox/contacts', 'Contacts')?>
+                       <?=($left_side_nav->contacts ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                 </ul>
             </div>
@@ -108,6 +111,51 @@
                 </div>
             </div>
             <!-- end of the brown bar on the top -->
+
+            <!-- gray status bar -->
+            <div class="admin-status-bar">
+                <?if(preg_match_all('/dashboard/', Request::uri(), $matches)):?>
+                    <div class="current-page dashboard"> 
+                        DASHBOARD <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                    <div class="current-page inbox"> 
+                        INBOX <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                    <div class="current-page published"> 
+                        PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                    <div class="current-page featured"> 
+                        FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                    <div class="current-page filed"> 
+                        FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
+                    <div class="current-page setup"> 
+                        FEEDBACK SETUP <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
+                    <div class="current-page contacts"> 
+                        CONTACTS <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+                <?if(preg_match_all('/deleted/', Request::uri(), $matches)):?>
+                    <div class="current-page trash"> 
+                        DELETED FEEDBACK <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                    </div>
+                <?endif?>
+            </div>
+            <!-- end of gray status bar -->
             <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed')):?>
                     <?=View::make('partials/flag_menu')?>
             <?endif?>

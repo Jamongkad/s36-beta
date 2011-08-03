@@ -1,5 +1,4 @@
 <div class="the-feedbacks"> 
-
     <?foreach($feedback->result as $feed):?>
         <? $id = $feed->id ?>
         <div class="feedback" id="<?=$id?>">

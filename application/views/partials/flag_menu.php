@@ -1,28 +1,3 @@
-<!-- gray status bar -->
-<div class="admin-status-bar">
-<?if(preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
-    <div class="current-page inbox"> 
-        INBOX <!--<span>There were 27 new feedback since your last visit.</span>--> 
-    </div>
-<?endif?>
-<?if(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
-    <div class="current-page published"> 
-        PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
-    </div>
-<?endif?>
-<?if(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
-    <div class="current-page featured"> 
-        FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
-    </div>
-<?endif?>
-<?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
-    <div class="current-page filed"> 
-        FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
-    </div>
-<?endif?>
-</div>
-<!-- end of gray status bar -->
-
 <!--start of undo bar-->
 <input type="hidden" name="undo-count" value="0" />
 <div class="undo-bar" delete_action="<?=URL::to('/feedback/undodelete/')?>" goto_trash="<?=URL::to('/inbox/deleted')?>"></div>
@@ -52,7 +27,6 @@
     </ul>
 </div>
 <!-- end of top navigation bar -->
-
 <div class="admin-filter-bar">
     <div class="admin-filter-select">
         <select>

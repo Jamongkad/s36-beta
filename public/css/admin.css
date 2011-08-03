@@ -34,7 +34,6 @@ end of reset */
 #admin-panel .left-panel .left-menu ul li div.arrow-right{background:url(../img/ico-arrow-right.png) top no-repeat;width:23px;height:24px;position:absolute;right:10px;top:50%;margin-top:-12px;display:none;}
 #admin-panel .left-panel .left-menu ul li a{color:#FFF;padding:4px 5px 4px 40px;}
 
-
 #admin-panel .left-panel .left-menu ul li.dashboard a{background:url(../img/ico-dashboard.png) no-repeat left top;}
 #admin-panel .left-panel .left-menu ul li.inbox     a{background:url(../img/ico-inbox.png) no-repeat left top;}
 #admin-panel .left-panel .left-menu ul li.published a{background:url(../img/ico-published.png) no-repeat left top;}
@@ -91,6 +90,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .admin-status-bar .filed		{background:url(../img/ico-filed.png) 		no-repeat left center;}
 #admin-panel .main-panel .admin-status-bar .setup		{background:url(../img/ico-setup.png) 		no-repeat left center;}
 #admin-panel .main-panel .admin-status-bar .contacts	{background:url(../img/ico-contacts.png) 	no-repeat left center;}
+#admin-panel .main-panel .admin-status-bar .trash	    {background:url(../img/ico-trash.png) 	no-repeat left center;}
 #admin-panel .main-panel .admin-status-bar .current-page span{color:#666666;margin-left:14px;font-weight:normal;text-shadow:none;}
 
 #admin-panel .main-panel .admin-nav-bar{padding:8px 20px;display:block;background:#FFF;margin-top:10px;}

@@ -24,6 +24,13 @@ return array(
             , 'status' => DB::table('Status', 'master')->get()
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
-
     }), 
+
+    'GET /inbox/feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'inbox/feedsetup_view');
+    }),
+
+    'GET /inbox/contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'inbox/contacts_view');
+    }),
 );
