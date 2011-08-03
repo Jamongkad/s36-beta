@@ -23,9 +23,7 @@
             </div>
             <div class="left-menu">
             	<ul id="nav-menu">
-                    <? 
-                        $left_side_nav = Helpers::left_side_nav();
-                    ?>
+                    <? $left_side_nav = Helpers::left_side_nav(); ?>
                     <li<?=($left_side_nav->dashboard ? ' class="selected dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
                        <?=($left_side_nav->dashboard ? '<div class="arrow-right"></div>' : null)?>
@@ -139,7 +137,7 @@
                         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
+                <?if(preg_match_all('/(feedsetup|displaysetup|displaypreview)/', Request::uri(), $matches)):?>
                     <div class="current-page setup"> 
                         FEEDBACK SETUP <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
@@ -156,7 +154,7 @@
                 <?endif?>
             </div>
             <!-- end of gray status bar -->
-            <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed')):?>
+            <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed') or Request::route_is('feedsetup') or Request::route_is('contacts')):?>
                     <?=View::make('partials/flag_menu')?>
             <?endif?>
 <?endif?>

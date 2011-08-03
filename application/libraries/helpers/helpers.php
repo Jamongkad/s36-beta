@@ -46,6 +46,8 @@ class Helpers {
                              'inbox/'.$nav.'/profanity', 'inbox/'.$nav.'/flagged', 'inbox/'.$nav.'/mostcontent');
             }
         }
+
+
     }
 
     public static function left_side_nav() { 
@@ -58,7 +60,7 @@ class Helpers {
             'published' => preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
             'featured'  => preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
             'profanity' => preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
-            'feedsetup' => preg_match_all('/feedsetup/', self::$request, $matches),
+            'feedsetup' => preg_match_all('/(feedsetup|displaysetup|displaypreview)/', self::$request, $matches),
             'contacts'  => preg_match_all('/contacts/', self::$request, $matches),
         );
     }
