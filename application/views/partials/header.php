@@ -89,9 +89,9 @@
                     <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>
                     <div class="admin-links">
                         <ul>
-                            <li><a href="#">ADMIN</a></li>
-                            <li><a href="#">SETTINGS</a></li>
-                            <li><a href="#">HELP</a></li>
+                            <li><?=HTML::link('admin', 'ADMIN')?></li>
+                            <li><?=HTML::link('settings', 'SETTINGS')?></li>
+                            <li><?=HTML::link('help', 'HELP')?></li>
                         </ul>
                     </div>
                 </div>

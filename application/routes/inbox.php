@@ -30,9 +30,7 @@ return array(
         return View::of_layout()->partial('contents', 'inbox/feedsetup_view');
     }),
 
-    'GET /inbox/displaysetup' => Array('name' => 'feedsetup', 'do' => function() {  
-        //print_r(S36Auth::user());
-        //print_r(Session::get('s36_user_id'));
+    'GET /inbox/displaysetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
         return View::of_layout()->partial('contents', 'inbox/displaysetup_view');
     }),
 
