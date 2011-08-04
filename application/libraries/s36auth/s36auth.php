@@ -6,7 +6,7 @@ use Hash;
 
 class S36Auth {
     
-    private static $user;
+    public static $user;
     private static $db_name = 'master';
     private static $user_id = 's36_user_id';
 
