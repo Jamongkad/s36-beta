@@ -183,6 +183,11 @@ class Feedback {
                 , Feedback.dtAdded AS date
                 , Feedback.rating
                 , Feedback.isFeatured
+                , Feedback.isFlagged
+                , Feedback.isPublished
+                , Feedback.isArchived
+                , Feedback.isSticked
+                , Feedback.isDeleted
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email

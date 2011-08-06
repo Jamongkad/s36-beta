@@ -1,4 +1,5 @@
 <div class="main_content grids"> 
+<? $id = $feedback->id ?>
 <h3>Feedback Information</h3>
 <div class="grids">
     <div class="grids">
@@ -24,14 +25,21 @@
 
     <div>
         <div>Status: <?=$feedback->status?> Priority: <?=$feedback->priority?></div>
-
         <?=HTML::link('/', 'Reply to User')?> | 
         <?=HTML::link('/', 'Forward')?> | 
-        <?=HTML::link('/', 'Delete')?> | 
-        <?=HTML::link('/', 'Publish')?> | 
-        <?=HTML::link('/', 'Make Sticky')?> | 
-        <?=HTML::link('/', 'Flag for followup')?> 
-
+        <?=HTML::link('/feedback/deletefeedback/'.$id, 'Delete')?> | 
+        <?=HTML::link('/', 'Publish', array(  'class' => 'check'
+                                            , 'state' => $feedback->ispublished
+                                            , 'feedid' => $id
+                                            , 'hrefaction' => URL::to('/feedback/publishfeedback')))?> | 
+        <?=HTML::link('/', 'Make Sticky', array(  'class'=> 'feature'
+                                                , 'state' => $feedback->isfeatured
+                                                , 'feedid' => $id
+                                                , 'hrefaction' => URL::to('/feedback/featurefeedback')))?> | 
+        <?=HTML::link('/', 'Flag for followup', array(  'class' => 'flag'
+                                                      , 'state' => $feedback->isflagged
+                                                      , 'feedid' => $id
+                                                      , 'hrefaction' => URL::to('/feedback/flagfeedback')))?>
     </div>
 
     <div class="grids">
