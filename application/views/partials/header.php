@@ -31,8 +31,7 @@
                     <li<?=($left_side_nav->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all/', 'Inbox')?>
                        <?=($left_side_nav->inbox ? '<div class="arrow-right"></div>' : null)?>
-                    </li>
-                 
+                    </li>                 
                     <li<?=($left_side_nav->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all', 'Published')?>
                        <?=($left_side_nav->published ? '<div class="arrow-right"></div>' : null)?>
@@ -46,16 +45,15 @@
                        <?=($left_side_nav->profanity ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($left_side_nav->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
-                        <?=HTML::link('inbox/feedsetup', 'Feedback Setup')?>
+                        <?=HTML::link('feedsetup', 'Feedback Setup')?>
                        <?=($left_side_nav->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($left_side_nav->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
-                        <?=HTML::link('inbox/contacts', 'Contacts')?>
+                        <?=HTML::link('contacts', 'Contacts')?>
                        <?=($left_side_nav->contacts ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                 </ul>
             </div>
-
             <div class="left-buttons">
                 <ul>
                     <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
@@ -89,9 +87,9 @@
                     <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>
                     <div class="admin-links">
                         <ul>
-                            <li><?=HTML::link('admin', 'ADMIN')?></li>
-                            <li><?=HTML::link('settings', 'SETTINGS')?></li>
-                            <li><?=HTML::link('help', 'HELP')?></li>
+                            <li><?=HTML::link('admin', 'ADMIN', Array('class' => (Helpers::filter_highlighter(array('admin')) ? 'selected' : null)))?></li>
+                            <li><?=HTML::link('settings', 'SETTINGS', Array('class' => (Helpers::filter_highlighter(array('settings')) ? 'selected' : null)))?></li>
+                            <li><?=HTML::link('help', 'HELP', Array('class' => (Helpers::filter_highlighter(array('help')) ? 'selected' : null)))?></li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +135,7 @@
                         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/(feedsetup|displaysetup|displaypreview)/', Request::uri(), $matches)):?>
+                <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <div class="current-page setup"> 
                         FEEDBACK SETUP <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>

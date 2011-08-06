@@ -25,21 +25,4 @@ return array(
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
     }), 
-    
-    'GET /inbox/feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
-        return View::of_layout()->partial('contents', 'inbox/feedsetup_view');
-    }),
-
-    'GET /inbox/displaysetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
-        return View::of_layout()->partial('contents', 'inbox/displaysetup_view');
-    }),
-
-    'GET /inbox/displaypreview' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
-        return View::of_layout()->partial('contents', 'inbox/displaypreview_view');
-    }),
-
-    'GET /inbox/contacts' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
-        return View::of_layout()->partial('contents', 'inbox/contacts_view');
-    }),
-
 );

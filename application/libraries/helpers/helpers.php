@@ -17,14 +17,14 @@ class Helpers {
         echo " hrefaction='".$hrefaction."'";
     }
 
-
     //TODO: generalize this
     public static function filter_highlighter($urls, $type=False) {
 
         self::$request = self::request();
 
         foreach($urls as $url) { 
-            if(self::$request == $url.'/'.$type) {
+            $url_match = $url.(($type) ? '/'.$type : null);
+            if(self::$request == $url_match) {
                 return True; 
             }
         }
@@ -61,7 +61,7 @@ class Helpers {
             'featured'  => preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
             'profanity' => preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
             'feedsetup' => preg_match_all('/(feedsetup|displaysetup|displaypreview)/', self::$request, $matches),
-            'contacts'  => preg_match_all('/contacts/', self::$request, $matches),
+            'contacts'  => preg_match_all('/contacts|contacts\/(important|request)/', self::$request, $matches),
         );
     }
 }

@@ -26,10 +26,22 @@
                 </li>
             <?endfor?>
 
-            <?if(preg_match_all('/(feedsetup|displaysetup|displaypreview)/', Request::uri(), $matches)):?>
-                <li><?=HTML::link('inbox/feedsetup', 'FEATURED FEEDBACK SETUP')?></li>
-                <li><?=HTML::link('inbox/displaysetup', 'POPUP DISPLAY SETUP')?></li>
-                <li><?=HTML::link('inbox/displaypreview', 'DISPLAY PREVIEW')?></li>
+            <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
+                <li><?=HTML::link('feedsetup', 'FEATURED FEEDBACK SETUP', 
+                       Array('class' => (Helpers::filter_highlighter(array('feedsetup')) ? 'selected' : null)))?></li>
+                <li><?=HTML::link('feedsetup/displaysetup', 'POPUP DISPLAY SETUP', 
+                       Array('class' => (Helpers::filter_highlighter(array('feedsetup/displaysetup')) ? 'selected' : null)))?></li>
+                <li><?=HTML::link('feedsetup/displaypreview', 'DISPLAY PREVIEW',
+                       Array('class' => (Helpers::filter_highlighter(array('feedsetup/displaypreview')) ? 'selected' : null)))?></li>
+            <?endif?>
+           
+            <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
+                <li><?=HTML::link('contacts', 'LIST OF CONTACTS', 
+                       Array('class' => (Helpers::filter_highlighter(array('contacts')) ? 'selected' : null)))?></li>
+                <li><?=HTML::link('contacts/important', 'IMPORTANT',
+                       Array('class' => (Helpers::filter_highlighter(array('contacts/important')) ? 'selected' : null)))?></li>
+                <li><?=HTML::link('contacts/request', 'REQUEST FEEDBACK', 
+                       Array('class' => (Helpers::filter_highlighter(array('contacts/request')) ? 'selected' : null)))?></li>
             <?endif?>
         </ul>
 
