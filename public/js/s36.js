@@ -212,7 +212,8 @@ jQuery(function($) {
     $('select[name="feedback-limit"]').bind('change', function(e) {
         window.location = "?limit=" + $(this).val();
     });
-
+    
+    //TODO: DUPLICATE
     $('.user-info input[name*="display"]').bind('click', function(e) {
         var val = this.checked;
         var name = $(this).attr('name');

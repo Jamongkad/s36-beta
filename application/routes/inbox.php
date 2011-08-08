@@ -4,8 +4,10 @@ return array(
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {
 
         $limit = 10;
+        $site_id = False;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
+        if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
 
         $feedback = new Feedback;
         $category = new Category;
@@ -13,7 +15,7 @@ return array(
 
         $offset = ($pagination->get_page() - 1) * $limit;
 
-        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice);
+        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id);
         /*
         $embedded_block = $feedback->show_embedded_block();
         print_r($embedded_block);

@@ -12,18 +12,23 @@ class Feedback {
     }
     
     //TODO: Clean this shit up
-    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False) {
+    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False, $site_id=False) {
       
         $rating_statement = Null;
         $profanity_statement = Null;
         $flagged_statement = Null;
         $filed_statement = Null;
         $rating_choices = Null;
+        $siteid_statement = Null;
         
         $mostcontent_statement = 'Feedback.dtAdded DESC';
         $is_deleted = 0;
         $is_published = 0;
         $is_featured = 0;
+
+        if($site_id != False) {
+           $siteid_statement = "AND Feedback.siteId = $site_id";
+        }
 
         if($filter != False) {
    
@@ -119,7 +124,7 @@ class Feedback {
                         Country
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
-                        AND Contact.siteId = Site.siteId
+                        '.$siteid_statement.'
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = :is_deleted
                         AND Feedback.isPublished = :is_published
@@ -235,11 +240,6 @@ class Feedback {
     
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
-        /*
-        DB::table('Feedback', 'master')
-                  ->where('feedbackId', '=', $feedback_id)
-                  ->update(array($column => $state));
-        */
         return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
     }    
 
