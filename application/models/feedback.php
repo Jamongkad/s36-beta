@@ -235,10 +235,23 @@ class Feedback {
     
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
+        /*
         DB::table('Feedback', 'master')
                   ->where('feedbackId', '=', $feedback_id)
                   ->update(array($column => $state));
+        */
+        return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
     }    
+
+    public function _toggle_feedbackblock($column, $block_id, $state) { 
+        return $this->_toggle_state('FeedbackBlock', 'feedbackblockId', $block_id, $column, $state);
+    }
+
+    private function _toggle_state($table, $where_column, $id, $column, $state) { 
+        DB::table($table, 'master')
+                  ->where($where_column, '=', $id)
+                  ->update(array($column => $state));
+    }
 
     public function fetch_deleted_feedback() {
         
@@ -289,7 +302,7 @@ class Feedback {
         $sth->execute();
     }
     
-    //TODO: Think of algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
+    //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
     //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
     public function remove_deleted_feedback() {}
     public function decay_deleted_feedabck() {}
@@ -311,14 +324,50 @@ class Feedback {
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $sth->execute();
     }
-    
-    public function show_embedded_block() {
 
-        $company_id = 1;
-        
+    public function display_embedded_feedback_options() {
         $sth = $this->dbh->prepare("
+                    SELECT 
+                          FeedbackBlock.feedbackblockId 
+                        , FeedbackBlock.displayName
+                        , FeedbackBlock.displayImg
+                        , FeedbackBlock.displayCompany
+                        , FeedbackBlock.displayPosition
+                        , FeedbackBlock.displayURL
+                        , FeedbackBlock.displayCountry
+                        , FeedbackBlock.displaySbmtDate
+                    FROM 
+                        User
+                    INNER JOIN
+                        Site
+                        ON Site.companyId = User.companyId
+                    INNER JOIN
+                        Form
+                        ON Form.formId = Site.defaultFormId
+                    INNER JOIN
+                        Theme
+                        ON Theme.themeId = Form.themeId
+                    INNER JOIN
+                        FeedbackBlock
+                        ON FeedbackBlock.siteId = Site.siteId
+                            AND FeedbackBlock.themeId = Theme.themeId
+                            AND FeedbackBlock.formId = Form.formId
+                    WHERE 1=1
+                        AND User.userId = :user_id
+                ");
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->execute();
+        
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    //This function will be called by JS to display feedback on user's site.
+    public function show_embedded_feedback_block($company_id) {
+
+            $sth = $this->dbh->prepare("
             SELECT 
-                  Feedback.feedbackId
+                Feedback.feedbackId
                 , FeedbackBlock.displayName AS FeedbackBlockName
                 , Feedback.displayName AS FeedbackName
                 , FeedbackBlock.displayURL AS FeedbackBlockURL

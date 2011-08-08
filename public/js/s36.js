@@ -223,7 +223,17 @@ jQuery(function($) {
             , url: "/index.php/feedback/toggle_feedback_display"
             , data: {feedid: feed_id, check_val: val, column_name: name}
         });
+    });
 
-        console.log(name);
+    $('.display-info input[name*="display"]').bind('click', function(e) {
+        var val = this.checked;
+        var name = $(this).attr('name');
+        var feed_id = $('#feed-id').val();
+        
+        $.ajax({
+              type: "POST"     
+            , url: "/index.php/feedsetup/toggle_feedback_display"
+            , data: {feedblock_id: feed_id, check_val: val, column_name: name}
+        });
     });
 });

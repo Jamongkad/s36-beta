@@ -44,5 +44,3 @@
 <div class="block noborder" style="height:300px;">
 </div>
 <!-- spacer -->
-</div>
-<div class="c"></div>

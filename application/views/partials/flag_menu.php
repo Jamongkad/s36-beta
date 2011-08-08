@@ -27,12 +27,19 @@
             <?endfor?>
 
             <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
-                <li><?=HTML::link('feedsetup', 'FEATURED FEEDBACK SETUP', 
-                       Array('class' => (Helpers::filter_highlighter(array('feedsetup')) ? 'selected' : null)))?></li>
-                <li><?=HTML::link('feedsetup/displaysetup', 'POPUP DISPLAY SETUP', 
-                       Array('class' => (Helpers::filter_highlighter(array('feedsetup/displaysetup')) ? 'selected' : null)))?></li>
-                <li><?=HTML::link('feedsetup/displaypreview', 'DISPLAY PREVIEW',
-                       Array('class' => (Helpers::filter_highlighter(array('feedsetup/displaypreview')) ? 'selected' : null)))?></li>
+                <?
+                    $feedsetup_nav = Array(
+                         'feedsetup' => 'FEATURED FEEDBACK SETUP'
+                       , 'feedsetup/displayfeedback' => 'FEEDBACK DISPLAY SETUP'
+                       , 'feedsetup/displaysetup' => 'POPUP DISPLAY SETUP'
+                       , 'feedsetup/displaypreview' => 'DISPLAY PREVIEW'
+                    );
+                ?>
+
+                <?foreach($feedsetup_nav as $name => $value):?>
+                    <li><?=HTML::link($name, $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                <?endforeach?>
+               
             <?endif?>
            
             <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
@@ -54,7 +61,6 @@
                 <option>Select form</option>
             </select>
         </div>
-        
         <div class="admin-filter-search">
             <input type="text" class="search" value="Search..." />
         </div>

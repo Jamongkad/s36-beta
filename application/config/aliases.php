@@ -47,5 +47,4 @@ return array(
 	'Text' => 'System\\Text',
 	'Validator' => 'System\\Validator',
 	'View' => 'System\\View',
-
 );
