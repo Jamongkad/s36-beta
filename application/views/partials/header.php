@@ -1,15 +1,12 @@
 <html>
-<html>
 <head> 
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
-    <?=HTML::script('js/jquery-1.6.2.min.js')?>
-    <?=HTML::script('js/s36.js')?>
-    <?=HTML::style('css/grid.css')?>
-    <?//=HTML::style('css/gridless.css')?>
+    <?=HTML::style('css/grid.css')?> 
     <?=HTML::style('css/romanticc.css')?>
     <?=HTML::style('css/admin.css')?>
     <?=HTML::style('css/zebra_pagination.css')?>
-    
+    </meta>    
 </head>
 <body>
 
@@ -81,7 +78,7 @@
             <!-- start of the brown bar on the top -->
             <div class="admin-session-bar">
                 <div class="admin-avatar">
-                    <img src="images/sample-avatar.jpg" />
+                    <?=HTML::image('img/avatar-matthew.png')?>
                 </div>
                 <div class="admin-details">
                     <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>

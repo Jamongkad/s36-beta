@@ -19,7 +19,7 @@ return array(
         
     }),
 
-    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback){ 
+    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
         $undo_result = $feedback->fetch_deleted_feedback();
         echo "<pre>";
         echo print_r($undo_result);
@@ -33,6 +33,7 @@ return array(
         $feedback->_change_feedback('categoryId', $feedback_id, $cat_id);
     },
 
+    //TODO: Duplicate code find a way to abstract this
     'POST /feedback/changestatus' => function() use ($feedback) {
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
@@ -51,6 +52,14 @@ return array(
  
     'POST /feedback/publishfeedback' => function() use ($feedback){
         $feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
+    },
+
+    'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
+        $state = 0;
+        if(Input::get('check_val') == 'true') {
+            $state = 1;    
+        }
+        $feedback->_change_feedback(Input::get('column_name'), Input::get('feedid'), $state);
     },
 
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {

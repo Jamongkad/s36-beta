@@ -115,11 +115,11 @@ class Feedback {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
-                        AND Contact.siteId = Site.siteId
                     INNER JOIN 
                         Country
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
+                        AND Contact.siteId = Site.siteId
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = :is_deleted
                         AND Feedback.isPublished = :is_published
@@ -179,6 +179,14 @@ class Feedback {
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
                   END as priority
+                , Contact.firstName AS firstname
+                , Contact.lastName AS lastname
+                , Contact.email AS email
+                , Contact.position AS position
+                , Contact.website AS url
+                , Contact.city AS city
+                , Contact.companyName AS companyname
+                , Contact.avatar AS img
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating
@@ -188,9 +196,15 @@ class Feedback {
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted
-                , Contact.firstName AS firstname
-                , Contact.lastName AS lastname
-                , Contact.email AS email
+                , Feedback.displayName
+                , Feedback.displayImg
+                , Feedback.displayCompany
+                , Feedback.displayPosition
+                , Feedback.displayURL
+                , Feedback.displayCountry
+                , Feedback.displaySbmtDate
+                , Country.code AS countrycode
+                , Country.name AS countryname
             FROM 
                 User
                     INNER JOIN
@@ -205,8 +219,11 @@ class Feedback {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
-                        AND Contact.siteId = Site.siteId
+                    INNER JOIN
+                        Country
+                        ON Country.countryId = Contact.countryId
                     WHERE 1=1
+                        AND Contact.siteId = Site.siteId
                         AND Feedback.feedbackId = :id
         ');
 
@@ -293,5 +310,48 @@ class Feedback {
 
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $sth->execute();
+    }
+    
+    public function show_embedded_block() {
+
+        $company_id = 1;
+        
+        $sth = $this->dbh->prepare("
+            SELECT 
+                  Feedback.feedbackId
+                , FeedbackBlock.displayName AS FeedbackBlockName
+                , Feedback.displayName AS FeedbackName
+                , FeedbackBlock.displayURL AS FeedbackBlockURL
+                , Feedback.displayURL AS FeedbackURL
+            FROM 
+                 Feedback
+            INNER JOIN 
+                 Form
+                 ON Form.formId = Feedback.formId
+            INNER JOIN
+                 Site
+                 ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                 Theme
+                 ON Theme.themeId = Form.themeId
+            INNER JOIN
+                 FeedbackBlock
+                 ON FeedbackBlock.siteId = Site.siteId
+                AND FeedbackBlock.themeId = Theme.themeId
+                AND FeedbackBlock.formId = Form.formId
+            INNER JOIN
+                Company
+                ON Company.companyId = Site.companyId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                AND Feedback.isPublished = 1
+                AND Feedback.isDeleted != 1
+            ");
+        
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
     }
 }

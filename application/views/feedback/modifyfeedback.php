@@ -1,11 +1,12 @@
 <div class="main_content grids"> 
 <? $id = $feedback->id ?>
+<?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?>
 <h3>Feedback Information</h3>
 <div class="grids">
     <div class="grids">
         <div class="g1of2">
              <div class="head">Entry by <?=$feedback->firstname?> <?=$feedback->lastname?></div>
-             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 5, 'cols' => 30))?>
+             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 5, 'cols' => 30, 'disabled'))?>
         </div> 
         <div class="g1of2">
              <div class="savebox">
@@ -54,17 +55,48 @@
                  <tr><td>Address:</td><td>-</td></tr>
              </table>
         </div> 
-        <div class="g1of3">
+        <div class="g2of3">
              <div class="head">Display Information</div>
              <table class="user-info">
-                 <tr><td>First Name:</td><td><?=$feedback->firstname?></td></tr>
-                 <tr><td>Last Name:</td><td><?=$feedback->lastname?></td></tr>
-                 <tr><td>Email Address:</td><td><?=$feedback->email?></td></tr>
-                 <tr><td>Time Sent:</td><td><?=$feedback->date?></td></tr>
-                 <tr><td>Phone:</td><td>-</td></tr>
-                 <tr><td>Address:</td><td>-</td></tr>
+                 <tr><th></th><th style="text-align:left; font-size: 9px">edit</th><th style="font-size: 9px">display?</th></tr>
+                 <tr>
+                     <td>Display Name:</td>
+                     <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
+                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Display Image:</td>
+                     <td><?=$feedback->img?></td>
+                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Company Name:</td>
+                     <td><?=$feedback->companyname?></td>
+                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Designation / Position:</td>
+                     <td><?=$feedback->position?></td>
+                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Website Url:</td>
+                     <td><?=$feedback->url?></td> 
+                     <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Country & Flag:</td>
+                     <td><?=$feedback->countryname?> <?=$feedback->countrycode?></td> 
+                     <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td>Submitted Date:</td>
+                     <td><?=$feedback->date?></td> 
+                     <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
+                 </tr>
              </table>
         </div>
+        <!--TODO we need to redesign this portion long db entries mess up layout. 
         <div class="g1of3">
              <div class="head">System Information</div>
              <table class="user-info">
@@ -76,6 +108,7 @@
                  <tr><td>Address:</td><td>-</td></tr>
              </table>
         </div>
+        -->
     </div>
 </div>
 </div>

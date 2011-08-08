@@ -11,8 +11,13 @@ return array(
         $category = new Category;
         $pagination = new ZebraPagination;
 
-        $records = $feedback->pull_feedback($limit, ($pagination->get_page() - 1) * $limit, $filter, $choice);
-        //print_r($records);
+        $offset = ($pagination->get_page() - 1) * $limit;
+
+        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice);
+        /*
+        $embedded_block = $feedback->show_embedded_block();
+        print_r($embedded_block);
+        */
        
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
