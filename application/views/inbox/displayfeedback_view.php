@@ -3,7 +3,7 @@
 </div>
 <div class="block">
      <div class="head">Embedded Block Display Information</div>
-     <table class="display-info" style="width: 300px">
+     <table class="display-info" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>" style="width: 300px">
          <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
          <tr><th></th><th style="text-align:left; font-size: 9px">edit</th><th style="font-size: 9px">display?</th></tr>
          <tr>

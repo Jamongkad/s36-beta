@@ -218,10 +218,11 @@ jQuery(function($) {
         var val = this.checked;
         var name = $(this).attr('name');
         var feed_id = $('#feed-id').val();
+        var hrefaction = $('.user-info').attr('hrefaction');
         
         $.ajax({
               type: "POST"     
-            , url: "/index.php/feedback/toggle_feedback_display"
+            , url: hrefaction
             , data: {feedid: feed_id, check_val: val, column_name: name}
         });
     });
@@ -230,10 +231,11 @@ jQuery(function($) {
         var val = this.checked;
         var name = $(this).attr('name');
         var feed_id = $('#feed-id').val();
-        
+        var hrefaction = $('.display-info').attr('hrefaction'); 
+
         $.ajax({
               type: "POST"     
-            , url: "/index.php/feedsetup/toggle_feedback_display"
+            , url: hrefaction
             , data: {feedblock_id: feed_id, check_val: val, column_name: name}
         });
     });

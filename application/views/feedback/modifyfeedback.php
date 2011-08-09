@@ -57,7 +57,7 @@
         </div> 
         <div class="g2of3">
              <div class="head">Display Information</div>
-             <table class="user-info">
+             <table class="user-info" hrefaction="<?=URL::to('/feedback/toggle_feedback_display')?>">
                  <tr><th></th><th style="text-align:left; font-size: 9px">edit</th><th style="font-size: 9px">display?</th></tr>
                  <tr>
                      <td>Display Name:</td>
