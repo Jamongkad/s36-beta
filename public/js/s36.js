@@ -218,25 +218,27 @@ jQuery(function($) {
         var val = this.checked;
         var name = $(this).attr('name');
         var feed_id = $('#feed-id').val();
-        var hrefaction = $('.user-info').attr('hrefaction');
-        
+        var hrefaction = $('#toggle_url').attr('hrefaction');
+
         $.ajax({
               type: "POST"     
             , url: hrefaction
             , data: {feedid: feed_id, check_val: val, column_name: name}
         });
+ 
     });
 
     $('.display-info input[name*="display"]').bind('click', function(e) {
         var val = this.checked;
         var name = $(this).attr('name');
         var feed_id = $('#feed-id').val();
-        var hrefaction = $('.display-info').attr('hrefaction'); 
+        var hrefaction = $('#toggle_url').attr('hrefaction');
 
         $.ajax({
               type: "POST"     
             , url: hrefaction
             , data: {feedblock_id: feed_id, check_val: val, column_name: name}
         });
+
     });
 });
