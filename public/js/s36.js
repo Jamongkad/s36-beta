@@ -31,6 +31,13 @@ jQuery(function($) {
 
     $('.fileas').bind('click', function(e) {     
         $(this).siblings('div.category-picker-holder').toggle();
+
+        if($(this).attr('style')) {
+            $(this).removeAttr('style'); 
+        } else {
+            $(this).css({"background-position": "-20px bottom"});     
+        }
+        
         e.preventDefault();
     });
 
@@ -128,7 +135,7 @@ jQuery(function($) {
 
     $('a.restore-feed').bind('click', function(e) { 
         var my_parent = $(this).parents('div.feedback').fadeOut();
-        console.log($(this).attr('href'));
+        $.ajax({url: $(this).attr('href')});
         e.preventDefault();
     })
 
@@ -213,6 +220,7 @@ jQuery(function($) {
         window.location = "?limit=" + $(this).val();
     });
     
+    //TODO: This could be better check switcharoo
     $('.user-info input[name*="display"]').bind('click', function(e) {
         var val = this.checked;
         var name = $(this).attr('name');
@@ -234,4 +242,59 @@ jQuery(function($) {
     function post_toggle_change(hrefaction, post_vars) { 
         $.ajax({ type: "POST", url: hrefaction , data: post_vars });
     }
+
+    $('.click-all').bind('click', function(e) {
+        if(this.checked) {
+            $('.check-feed-id').prop("checked", true);
+            $('.click-all').prop("checked", true);
+        } else {
+            $('.check-feed-id').prop("checked", false);
+            $('.click-all').prop("checked", false);
+        }                                            
+    });
+
+    $('#delete-selection').bind('change', function(e) {
+        var mode = $(this).val();
+        var ifChecked = $('.check-feed-id').is(':checked');
+
+        var collection = new Array();
+
+        if(ifChecked && mode != 'none') { 
+            var conf = null; 
+            if(mode == 'restore') 
+                conf = confirm("Are you sure you want to restore these feedbacks?");
+
+            if(mode == 'remove') 
+                conf = confirm("Are you sure you want to permanently remove these feedbacks?");            
+
+            if(mode == 'publish')
+                conf = confirm("Are you sure want to publish these feedbacks?");
+
+            if(mode == 'feature')
+                conf = confirm("Are you sure want to feature these feedbacks?");
+
+            if(mode == 'delete')
+                conf = confirm("Are you sure want to delete these feedbacks?");
+
+            if(conf) {
+                $('.check-feed-id').each(function() {
+                    if($(this).is(':checked')) {
+                        collection.push($(this).val());
+                        $('#' + $(this).val()).fadeOut();
+                    }
+                });    
+            }
+            //revert to default -- select
+            $("option:first", this).prop("selected", true);
+
+            $.ajax({
+                type: "POST"      
+              , dataType: 'json'
+              , data: {col: mode, feed_ids: collection}
+              , url: $("#multiple").attr("hrefaction")
+            })
+        } else {
+            collection.length = 0;     
+        } 
+    });
 });

@@ -7,24 +7,25 @@ class Feedback {
 
     public function __construct() {
         $this->dbh = DB::connection('master');
-        $this->user_id = S36Auth::user()->userid;
-        
+
+        if(S36Auth::check())
+            $this->user_id = S36Auth::user()->userid;        
     }
     
     //TODO: Clean this shit up
     public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False, $site_id=False) {
       
-        $rating_statement = Null;
+        $rating_statement    = Null;
         $profanity_statement = Null;
-        $flagged_statement = Null;
-        $filed_statement = Null;
-        $rating_choices = Null;
-        $siteid_statement = Null;
+        $flagged_statement   = Null;
+        $filed_statement     = Null;
+        $rating_choices      = Null;
+        $siteid_statement    = Null;
         
         $mostcontent_statement = 'Feedback.dtAdded DESC';
-        $is_deleted = 0;
+        $is_deleted   = 0;
         $is_published = 0;
-        $is_featured = 0;
+        $is_featured  = 0;
 
         if($site_id != False) {
            $siteid_statement = "AND Feedback.siteId = $site_id";
@@ -139,8 +140,7 @@ class Feedback {
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ');
-     
- 
+      
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
         $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
@@ -156,7 +156,6 @@ class Feedback {
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
-
 
         /* DEBUG 
         print_r($rating_statement);
@@ -247,9 +246,33 @@ class Feedback {
         return $this->_toggle_state('FeedbackBlock', 'feedbackblockId', $block_id, $column, $state);
     }
 
+    public function _toggle_multiple($mode, $block_id) { 
+
+        $lookup = Array(
+            'publish' => 'isPublished'  
+          , 'feature' => 'isFeatured'
+          , 'delete'  => 'isDeleted' 
+          , 'restore' => 'isDeleted'
+        );
+
+        if(array_key_exists($mode, $lookup)) {
+            $column = $lookup[$mode];     
+        }
+
+        return $this->_toggle_state('Feedback', 'feedbackId', $block_id, $column, 1);
+    }
+
     private function _toggle_state($table, $where_column, $id, $column, $state) { 
+        /*
+        if(!is_array($id)) {
+            $ids = Array($id);
+        } else {
+            $ids = $id;
+        }
+        */
         DB::table($table, 'master')
                   ->where($where_column, '=', $id)
+                  //->where_in($where_column, $ids)
                   ->update(array($column => $state));
     }
 
@@ -285,7 +308,8 @@ class Feedback {
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
     }
-
+    
+    //QUERY IS CORRECT!!
     public function undo_deleted_feedback() {
         $sth = $this->dbh->prepare('
             UPDATE 
@@ -305,7 +329,7 @@ class Feedback {
     //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
     //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
     public function remove_deleted_feedback() {}
-    public function decay_deleted_feedabck() {}
+    public function decay_deleted_feedback() {}
 
     public function tag_feedback_with_profanity($user_id) {
         $sth = $this->dbh->prepare("

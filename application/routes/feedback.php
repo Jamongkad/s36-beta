@@ -62,6 +62,12 @@ return array(
         $feedback->_change_feedback(Input::get('column_name'), Input::get('feedid'), $state);
     },
 
+    'POST /feedback/fire_multiple' => function() use ($feedback) {
+        $feed_ids = Input::get('feed_ids');
+        $mode     = Input::get('col');
+        $feedback->_toggle_multiple($mode, $feed_ids);
+    },
+    
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feedback->_change_feedback('isDeleted', $id, 1);
         $undo_result = $feedback->fetch_deleted_feedback();

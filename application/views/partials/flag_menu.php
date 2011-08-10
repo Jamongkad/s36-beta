@@ -74,7 +74,7 @@
     <div class="admin-sorter-bar">
         <div class="sorter-bar">
             <div class="left">
-                <input type="checkbox" />
+                <input type="checkbox" class="click-all"/>
             </div>
             <div class="right">
                 <div class="g1of5">

@@ -3,7 +3,7 @@
         <? $id = $feed->id ?>
         <div class="feedback" id="<?=$id?>">
             <div class="left">
-                <input type="checkbox" />
+                <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
             </div>
             <div class="right">
                 <div class="g4of5">
@@ -15,7 +15,8 @@
                             <input type="button" class="check" 
                             <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/publishfeedback'), ' style="background-position: 0px bottom"') ?>/>
                             <input type="button" class="save fileas" />
-                            <div class="category-picker-holder">
+                            <div class="base-popup category-picker-holder">
+                            <div class="popup-arrow"></div>
                                  <ul class="category-picker">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
@@ -96,19 +97,32 @@
 
     <div class="c"></div>
 </div>
-
 <!-- end of feedback list -->
 <div class="admin-sorter-bar">
     <div class="sorter-bar">
         <div class="left">
-            <input type="checkbox" />
+            <input type="checkbox" class="click-all"/>
         </div>
         <div class="right">
             <div class="g1of3">
                 <label>WITH SELECTED</label>
-                <select>
-                    <option>Delete</option>
-                </select>
+                <span id="multiple" hrefaction="<?=URL::to('/feedback/fire_multiple')?>"></span>
+                <?//show this when looking at inbox except when in deleted
+                if(!preg_match_all('/inbox\/deleted/', Request::uri(), $matches)):?>
+                    <?=Form::select('delete_selection', Array(
+                        'none' => '-'
+                      , 'publish' => 'Publish'
+                      , 'feature' => 'Feature'
+                      , 'delete' => 'Delete'
+                     ), 'none', array('id' => 'delete-selection'));?>
+                <?else:?>
+                    <?=Form::select('delete_selection', Array(
+                        'none' => '-'
+                      , 'restore' => 'Restore'
+                      , 'remove' => 'Permanently Delete'
+                     ), 'none', array('id' => 'delete-selection'));?>
+                <?endif?>
+
             </div>
             <div class="g1of3">
                 <div class="pagination-text"><?=$pagination?></div>
