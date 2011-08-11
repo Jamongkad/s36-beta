@@ -249,31 +249,42 @@ class Feedback {
     public function _toggle_multiple($mode, $block_id) { 
 
         $lookup = Array(
-            'publish' => 'isPublished'  
-          , 'feature' => 'isFeatured'
-          , 'delete'  => 'isDeleted' 
-          , 'restore' => 'isDeleted'
+            'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0'
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1'
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0' 
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
         );
 
         if(array_key_exists($mode, $lookup)) {
             $column = $lookup[$mode];     
         }
 
+        $block_ids = implode(',', $block_id);
+        
+        $sql = "
+            UPDATE Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                    $column 
+                WHERE 1=1
+                    AND User.companyId = Site.companyId
+                    AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->execute();       
+        /*
         return $this->_toggle_state('Feedback', 'feedbackId', $block_id, $column, 1);
+        */
     }
 
-    private function _toggle_state($table, $where_column, $id, $column, $state) { 
-        /*
-        if(!is_array($id)) {
-            $ids = Array($id);
-        } else {
-            $ids = $id;
-        }
-        */
+    private function _toggle_state($table, $where_column, $id, $column, $state) {  
         DB::table($table, 'master')
                   ->where($where_column, '=', $id)
-                  //->where_in($where_column, $ids)
-                  ->update(array($column => $state));
+                  ->update(array($column => $state));    
     }
 
     public function fetch_deleted_feedback() {

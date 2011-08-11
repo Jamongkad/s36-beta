@@ -280,7 +280,9 @@ jQuery(function($) {
                 $('.check-feed-id').each(function() {
                     if($(this).is(':checked')) {
                         collection.push($(this).val());
-                        $('#' + $(this).val()).fadeOut();
+                        $('#' + $(this).val()).fadeOut(300, function() {
+                            $(this).remove();
+                        });
                     }
                 });    
             }
