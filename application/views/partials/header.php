@@ -26,7 +26,7 @@
                        <?=($left_side_nav->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($left_side_nav->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
-                        <?=HTML::link('inbox/all/', 'Inbox')?>
+                        <?=HTML::link('inbox/all', 'Inbox')?>
                        <?=($left_side_nav->inbox ? '<div class="arrow-right"></div>' : null)?>
                     </li>                 
                     <li<?=($left_side_nav->published ? ' class="selected published"' : ' class="published"')?>>

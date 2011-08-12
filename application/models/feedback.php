@@ -255,9 +255,7 @@ class Feedback {
           , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
         );
 
-        if(array_key_exists($mode, $lookup)) {
-            $column = $lookup[$mode];     
-        }
+        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
 
         $block_ids = implode(',', $block_id);
         
@@ -276,9 +274,6 @@ class Feedback {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
-        /*
-        return $this->_toggle_state('Feedback', 'feedbackId', $block_id, $column, 1);
-        */
     }
 
     private function _toggle_state($table, $where_column, $id, $column, $state) {  

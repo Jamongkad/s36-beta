@@ -256,9 +256,10 @@ jQuery(function($) {
     $('#delete-selection').bind('change', function(e) {
         var mode = $(this).val();
         var ifChecked = $('.check-feed-id').is(':checked');
+        var currentUrl = $(location).attr('href');
 
         var collection = new Array();
-
+       
         if(ifChecked && mode != 'none') { 
             var conf = null; 
             if(mode == 'restore') 
@@ -291,9 +292,14 @@ jQuery(function($) {
 
             $.ajax({
                 type: "POST"      
-              , dataType: 'json'
-              , data: {col: mode, feed_ids: collection}
+              , data: {col: mode, feed_ids: collection, curl: currentUrl}
               , url: $("#multiple").attr("hrefaction")
+              , success: function(msg) {
+                    //$('.the-feedbacks').children().remove().end().html(msg);
+                    //console.log(msg);
+                    location.reload();
+                    $('.check-feed-id').attr('checked', false);
+              }
             })
         } else {
             collection.length = 0;     

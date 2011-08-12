@@ -63,9 +63,34 @@ return array(
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
+
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col');
         $feedback->_toggle_multiple($mode, $feed_ids);
+        /*
+        $currentUrl = preg_match('~index.php/([A-Za-z0-9|/]+)~', Input::get('curl'), $match) ;
+        $currentUrl = explode('/', $match[1]);
+        $filter = (array_key_exists(1, $currentUrl)) ? $currentUrl[1] : False;
+        $choice = (array_key_exists(2, $currentUrl)) ? $currentUrl[2] : False;
+        
+        $limit = 10;
+        $site_id = False;
+
+        if(Input::get('limit')) $limit = (int)Input::get('limit');
+        if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
+
+        $feedback = new Feedback;
+        $pagination = new ZebraPagination;
+
+        $offset = ($pagination->get_page() - 1) * $limit;
+
+        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id);
+
+        $pagination->records($records->total_rows);
+        $pagination->records_per_page($limit);
+  
+        echo $records;
+        */
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
