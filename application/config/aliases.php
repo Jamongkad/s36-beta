@@ -28,8 +28,8 @@ return array(
 	'Cookie' => 'System\\Cookie',
 	'Crypt' => 'System\\Crypt',
 	'Date' => 'System\\Date',
-	'DB' => 'System\\DB',
-	'Eloquent' => 'System\\DB\\Eloquent',
+	'DB' => 'System\\DB\\Manager',
+	'Eloquent' => 'System\\DB\\Eloquent\\Model',
 	'File' => 'System\\File',
 	'Form' => 'System\\Form',
 	'Hash' => 'System\\Hash',
@@ -37,7 +37,8 @@ return array(
 	'Inflector' => 'System\\Inflector',
 	'Input' => 'System\\Input',
 	'Lang' => 'System\\Lang',
-	'Log' => 'System\\Log',
+	'Loader' => 'System\\Loader',
+	'Package' => 'System\\Package',
 	'URL' => 'System\\URL',
 	'Redirect' => 'System\\Redirect',
 	'Request' => 'System\\Request',
@@ -47,4 +48,5 @@ return array(
 	'Text' => 'System\\Text',
 	'Validator' => 'System\\Validator',
 	'View' => 'System\\View',
+
 );

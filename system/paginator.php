@@ -45,6 +45,13 @@ class Paginator {
 	public $language;
 
 	/**
+	 * The values that should be appended to the end of the link query strings.
+	 *
+	 * @var array
+	 */
+	public $append = array();
+
+	/**
 	 * Create a new Paginator instance.
 	 *
 	 * @param  array  $results
@@ -107,7 +114,9 @@ class Paginator {
 	 */
 	public function links($adjacent = 3)
 	{
-		return ($this->last_page > 1) ? '<div class="pagination">'.$this->previous().$this->numbers($adjacent).$this->next().'</div>' : '';
+		if ($this->last_page <= 1) return '';
+
+		return '<div class="pagination">'.$this->previous().$this->numbers($adjacent).$this->next().'</div>';
 	}
 
 	/**
@@ -120,6 +129,8 @@ class Paginator {
 	 */
 	private function numbers($adjacent = 3)
 	{
+		// The hard-coded "7" is to account for all of the constant elements in a sliding range.
+		// Namely: The the current page, the two ellipses, the two beginning pages, and the two ending pages.
 		return ($this->last_page < 7 + ($adjacent * 2)) ? $this->range(1, $this->last_page) : $this->slider($adjacent);
 	}
 
@@ -152,7 +163,12 @@ class Paginator {
 	{
 		$text = Lang::line('pagination.previous')->get($this->language);
 
-		return ($this->page > 1) ? $this->link($this->page - 1, $text, 'prev_page').' ' : HTML::span($text, array('class' => 'disabled prev_page')).' ';
+		if ($this->page > 1)
+		{
+			return $this->link($this->page - 1, $text, 'prev_page').' ';
+		}
+
+		return HTML::span($text, array('class' => 'disabled prev_page')).' ';
 	}
 
 	/**
@@ -164,7 +180,12 @@ class Paginator {
 	{
 		$text = Lang::line('pagination.next')->get($this->language);
 
-		return ($this->page < $this->last_page) ? $this->link($this->page + 1, $text, 'next_page') : HTML::span($text, array('class' => 'disabled next_page'));
+		if ($this->page < $this->last_page)
+		{
+			return $this->link($this->page + 1, $text, 'next_page');
+		}
+
+		return HTML::span($text, array('class' => 'disabled next_page'));
 	}
 
 	/**
@@ -218,7 +239,14 @@ class Paginator {
 	 */
 	private function link($page, $text, $class)
 	{
-		return HTML::link(Request::uri().'?page='.$page, $text, array('class' => $class), Request::is_secure());
+		$append = '';
+
+		foreach ($this->append as $key => $value)
+		{
+			$append .= '&'.$key.'='.$value;
+		}
+
+		return HTML::link(Request::uri().'?page='.$page.$append, $text, array('class' => $class), Request::is_secure());
 	}
 
 	/**
@@ -230,6 +258,18 @@ class Paginator {
 	public function lang($language)
 	{
 		$this->language = $language;
+		return $this;
+	}
+
+	/**
+	 * Set the items that should be appended to the link query strings.
+	 *
+	 * @param  array      $values
+	 * @return Paginator
+	 */
+	public function append($values)
+	{
+		$this->append = $values;
 		return $this;
 	}
 

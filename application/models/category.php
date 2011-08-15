@@ -5,7 +5,7 @@ class Category {
     private $dbh;
 
     public function __construct() {
-        $this->dbh = DB::connection('master');
+        $this->dbh = DB::connection('master')->pdo;
     }
 
     public function pull_site_categories() {

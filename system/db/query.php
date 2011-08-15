@@ -1,24 +1,17 @@
 <?php namespace System\DB;
 
-use System\DB;
 use System\Str;
 use System\Config;
+use System\Paginator;
 
 class Query {
 
 	/**
-	 * The database connection name.
+	 * The database connection.
 	 *
-	 * @var string
+	 * @var Connection
 	 */
-	private $connection;
-
-	/**
-	 * The database connection configuration.
-	 *
-	 * @var array
-	 */
-	private $config;
+	public $connection;
 
 	/**
 	 * The SELECT clause.
@@ -86,24 +79,25 @@ class Query {
 	/**
 	 * Create a new query instance.
 	 *
-	 * @param  string  $table
-	 * @param  string  $connection
+	 * @param  string      $table
+	 * @param  Connection  $connection
 	 * @return void
 	 */
-	public function __construct($table, $connection = null)
+	public function __construct($table, $connection)
 	{
-		$this->connection = (is_null($connection)) ? Config::get('db.default') : $connection;
-		$this->from = 'FROM '.$this->wrap($this->table = $table);
+		$this->table = $table;
+		$this->connection = $connection;
+		$this->from = 'FROM '.$this->wrap($table);
 	}
 
 	/**
 	 * Create a new query instance.
 	 *
-	 * @param  string  $table
-	 * @param  string  $connection
+	 * @param  string      $table
+	 * @param  Connection  $connection
 	 * @return Query
 	 */
-	public static function table($table, $connection = null)
+	public static function table($table, $connection)
 	{
 		return new static($table, $connection);
 	}
@@ -129,25 +123,7 @@ class Query {
 	{
 		$this->select = ($this->distinct) ? 'SELECT DISTINCT ' : 'SELECT ';
 
-		$wrapped = array();
-
-		foreach ($columns as $column)
-		{
-			// If the column name is being aliased, we will need to wrap the column
-			// name and its alias in keyword identifiers.
-			if (strpos(strtolower($column), ' as ') !== false)
-			{
-				$segments = explode(' ', $column);
-
-				$wrapped[] = $this->wrap($segments[0]).' AS '.$this->wrap($segments[2]);				
-			}
-			else
-			{
-				$wrapped[] = $this->wrap($column);
-			}
-		}
-
-		$this->select .= implode(', ', $wrapped);
+		$this->select .= implode(', ', array_map(array($this, 'wrap'), $columns));
 
 		return $this;
 	}
@@ -192,6 +168,17 @@ class Query {
 	public function left_join($table, $column1, $operator, $column2)
 	{
 		return $this->join($table, $column1, $operator, $column2, 'LEFT');
+	}
+
+	/**
+	 * Reset the where clause to its initial state. All bindings will be cleared.
+	 *
+	 * @return void
+	 */
+	public function reset_where()
+	{
+		$this->where = 'WHERE 1 = 1';
+		$this->bindings = array();
 	}
 
 	/**
@@ -250,6 +237,30 @@ class Query {
 	public function or_where($column, $operator, $value)
 	{
 		return $this->where($column, $operator, $value, 'OR');
+	}
+
+	/**
+	 * Add a where condition for the primary key to the query.
+	 * This is simply a short-cut method for convenience.
+	 *
+	 * @param  mixed  $value
+	 * @return Query
+	 */
+	public function where_id($value)
+	{
+		return $this->where('id', '=', $value);
+	}
+
+	/**
+	 * Add an or where condition for the primary key to the query.
+	 * This is simply a short-cut method for convenience.
+	 *
+	 * @param  mixed  $value
+	 * @return Query
+	 */
+	public function or_where_id($value)
+	{
+		return $this->or_where('id', '=', $value);		
 	}
 
 	/**
@@ -357,6 +368,50 @@ class Query {
 	}
 
 	/**
+	 * Add dynamic where conditions to the query.
+	 *
+	 * Dynamic queries are caught by the __call magic method and are parsed here.
+	 * They provide a convenient, expressive API for building simple conditions.
+	 *
+	 * @param  string  $method
+	 * @param  array   $parameters
+	 * @return Query
+	 */
+	private function dynamic_where($method, $parameters)
+	{
+		// Strip the "where_" off of the method.
+		$finder = substr($method, 6);
+
+		// Split the column names from the connectors.
+		$segments = preg_split('/(_and_|_or_)/i', $finder, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+		// The connector variable will determine which connector will be used for the condition.
+		// We'll change it as we come across new connectors in the dynamic method string.
+		//
+		// The index variable helps us get the correct parameter value for the where condition.
+		// We increment it each time we add a condition.
+		$connector = 'AND';
+
+		$index = 0;
+
+		foreach ($segments as $segment)
+		{
+			if ($segment != '_and_' and $segment != '_or_')
+			{
+				$this->where($segment, '=', $parameters[$index], $connector);
+
+				$index++;
+			}
+			else
+			{
+				$connector = trim(strtoupper($segment), '_');
+			}
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Add an ordering to the query.
 	 *
 	 * @param  string  $column
@@ -394,6 +449,18 @@ class Query {
 	}
 
 	/**
+	 * Set the limit and offset values for a given page.
+	 *
+	 * @param  int    $page
+	 * @param  int    $per_page
+	 * @return Query
+	 */
+	public function for_page($page, $per_page)
+	{
+		return $this->skip(($page - 1) * $per_page)->take($per_page);
+	}
+
+	/**
 	 * Find a record by the primary key.
 	 *
 	 * @param  int     $id
@@ -403,6 +470,34 @@ class Query {
 	public function find($id, $columns = array('*'))
 	{
 		return $this->where('id', '=', $id)->first($columns);
+	}
+
+	/**
+	 * Get an aggregate value.
+	 *
+	 * @param  string  $aggregate
+	 * @param  string  $column
+	 * @return mixed
+	 */
+	private function aggregate($aggregator, $column)
+	{
+		$this->select = 'SELECT '.$aggregator.'('.$this->wrap($column).') AS '.$this->wrap('aggregate');
+
+		return $this->first()->aggregate;
+	}
+
+	/**
+	 * Get paginated query results.
+	 *
+	 * @param  int        $per_page
+	 * @param  array      $columns
+	 * @return Paginator
+	 */
+	public function paginate($per_page, $columns = array('*'))
+	{
+		$total = $this->count();
+
+		return Paginator::make($this->for_page(Paginator::page($total, $per_page), $per_page)->get($columns), $total, $per_page);
 	}
 
 	/**
@@ -429,69 +524,40 @@ class Query {
 			$this->select($columns);
 		}
 
-		$results = DB::query(Query\Compiler::select($this), $this->bindings, $this->connection);
+		$results = $this->connection->query($this->compile_select(), $this->bindings);
 
 		// Reset the SELECT clause so more queries can be performed using the same instance.
-		// This is helpful for performing counts and then getting actual results, such as
-		// when paginating results.
+		// This is helpful for getting aggregates and then getting actual results.
 		$this->select = null;
 
 		return $results;
 	}
 
 	/**
-	 * Get an aggregate value.
+	 * Compile the query into a SQL SELECT statement.
 	 *
-	 * @param  string  $aggregate
-	 * @param  string  $column
-	 * @return mixed
+	 * @return string
 	 */
-	private function aggregate($aggregator, $column)
+	private function compile_select()
 	{
-		$this->select = 'SELECT '.$aggregator.'('.$this->wrap($column).') AS '.$this->wrap('aggregate');
+		$sql = $this->select.' '.$this->from.' '.$this->where;
 
-		return $this->first()->aggregate;
-	}
-
-	/**
-	 * Get paginated query results.
-	 *
-	 * @param  int        $per_page
-	 * @param  array      $columns
-	 * @return Paginator
-	 */
-	public function paginate($per_page, $columns = array('*'))
-	{
-		$select = $this->select;
-
-		$total = $this->count();
-
-		// Every query clears the SELECT clause, so we store the contents of the clause
-		// before executing the count query and then put the contents back in afterwards.
-		if ( ! is_null($select))
+		if (count($this->orderings) > 0)
 		{
-			$this->select = $select;
-		}
-		else
-		{
-			$this->select($columns);
+			$sql .= ' ORDER BY '.implode(', ', $this->orderings);
 		}
 
-		$current_page = \System\Paginator::page($total, $per_page);
+		if ( ! is_null($this->limit))
+		{
+			$sql .= ' LIMIT '.$this->limit;
+		}
 
-		return \System\Paginator::make($this->for_page($current_page, $per_page)->get(), $total, $per_page);
-	}
+		if ( ! is_null($this->offset))
+		{
+			$sql .= ' OFFSET '.$this->offset;
+		}
 
-	/**
-	 * Set the LIMIT and OFFSET values for a given page.
-	 *
-	 * @param  int    $page
-	 * @param  int    $per_page
-	 * @return Query
-	 */
-	public function for_page($page, $per_page)
-	{
-		return $this->skip(($page - 1) * $per_page)->take($per_page);
+		return $sql;
 	}
 
 	/**
@@ -502,7 +568,7 @@ class Query {
 	 */
 	public function insert($values)
 	{
-		return DB::query(Query\Compiler::insert($this, $values), array_values($values), $this->connection);
+		return $this->connection->query($this->compile_insert($values), array_values($values));
 	}
 
 	/**
@@ -513,22 +579,35 @@ class Query {
 	 */
 	public function insert_get_id($values)
 	{
-		$sql = Query\Compiler::insert($this, $values);
+		$sql = $this->compile_insert($values);
 
-		// Use the RETURNING clause on Postgres instead of the PDO lastInsertID method.
-		// The PDO method is a little cumbersome using Postgres.
-		if (DB::driver($this->connection) == 'pgsql')
+		if ($this->connection->driver() == 'pgsql')
 		{
-			$query = DB::connection($this->connection)->prepare($sql.' RETURNING '.$this->wrap('id'));
+			$query = $this->connection->pdo->prepare($sql.' RETURNING '.$this->wrap('id'));
 
 			$query->execute(array_values($values));
 
 			return $query->fetch(\PDO::FETCH_CLASS, 'stdClass')->id;
 		}
 
-		DB::query($sql, array_values($values), $this->connection);
+		$this->connection->query($sql, array_values($values));
 
-		return DB::connection($this->connection)->lastInsertId();
+		return $this->connection->pdo->lastInsertId();
+	}
+
+	/**
+	 * Compile the query into a SQL INSERT statement.
+	 *
+	 * @param  array   $values
+	 * @return string
+	 */
+	private function compile_insert($values)
+	{
+		$sql = 'INSERT INTO '.$this->wrap($this->table);
+
+		$columns = array_map(array($this, 'wrap'), array_keys($values));
+
+		return $sql .= ' ('.implode(', ', $columns).') VALUES ('.$this->parameterize($values).')';
 	}
 
 	/**
@@ -539,7 +618,14 @@ class Query {
 	 */
 	public function update($values)
 	{
-		return DB::query(Query\Compiler::update($this, $values), array_merge(array_values($values), $this->bindings), $this->connection);
+		$sql = 'UPDATE '.$this->wrap($this->table).' SET ';
+
+		foreach (array_keys($values) as $column)
+		{
+			$sets[] = $this->wrap($column).' = ?';
+		}
+
+		return $this->connection->query($sql.implode(', ', $sets).' '.$this->where, array_merge(array_values($values), $this->bindings));
 	}
 
 	/**
@@ -550,37 +636,45 @@ class Query {
 	 */
 	public function delete($id = null)
 	{
-		if ( ! is_null($id))
-		{
-			$this->where('id', '=', $id);
-		}
+		if ( ! is_null($id)) $this->where('id', '=', $id);
 
-		return DB::query(Query\Compiler::delete($this), $this->bindings, $this->connection);		
+		return $this->connection->query('DELETE FROM '.$this->wrap($this->table).' '.$this->where, $this->bindings);		
 	}
 
 	/**
 	 * Wrap a value in keyword identifiers.
 	 *
-	 * @param  string  $value
+	 * @param  string      $value
 	 * @return string
 	 */
-	public function wrap($value)
+	private function wrap($value)
 	{
-		if (is_null($this->config))
+		if (strpos(strtolower($value), ' as ') !== false)
 		{
-			$connections = Config::get('db.connections');
-
-			$this->config = $connections[$this->connection];		
+			return $this->wrap_alias($value);
 		}
 
-		if (array_key_exists('wrap', $this->config) and $this->config['wrap'] === false)
+		$wrap = $this->connection->wrapper();
+
+		foreach (explode('.', $value) as $segment)
 		{
-			return $value;
+			$wrapped[] = ($segment != '*') ? $wrap.$segment.$wrap : $segment;
 		}
 
-		$wrap = (DB::driver($this->connection) == 'mysql') ? '`' : '"';
+		return implode('.', $wrapped);
+	}
 
-		return implode('.', array_map(function($segment) use ($wrap) {return ($segment != '*') ? $wrap.$segment.$wrap : $segment;}, explode('.', $value)));
+	/**
+	 * Wrap an alias in keyword identifiers.
+	 *
+	 * @param  string      $value
+	 * @return string
+	 */
+	private function wrap_alias($value)
+	{
+		$segments = explode(' ', $value);
+
+		return $this->wrap($segments[0]).' AS '.$this->wrap($segments[2]);
 	}
 
 	/**
@@ -589,7 +683,7 @@ class Query {
 	 * @param  array  $values
 	 * @return string
 	 */
-	public function parameterize($values)
+	private function parameterize($values)
 	{
 		return implode(', ', array_fill(0, count($values), '?'));
 	}
@@ -601,7 +695,7 @@ class Query {
 	{
 		if (strpos($method, 'where_') === 0)
 		{
-			return Query\Dynamic::build($method, $parameters, $this);
+			return $this->dynamic_where($method, $parameters, $this);
 		}
 
 		if (in_array($method, array('count', 'min', 'max', 'avg', 'sum')))

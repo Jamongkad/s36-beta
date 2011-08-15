@@ -1,8 +1,9 @@
 <?php namespace System\Session;
 
 use System\Config;
+use System\DB\Manager;
 
-class DB implements Driver {
+class DB implements Driver, Sweeper {
 
 	/**
 	 * Load a session by ID.
@@ -16,7 +17,11 @@ class DB implements Driver {
 
 		if ( ! is_null($session))
 		{
-			return array('id' => $session->id, 'last_activity' => $session->last_activity, 'data' => unserialize($session->data));
+			return array(
+				'id'            => $session->id,
+				'last_activity' => $session->last_activity,
+				'data'          => unserialize($session->data)
+			);
 		}
 	}
 
@@ -30,7 +35,11 @@ class DB implements Driver {
 	{
 		$this->delete($session['id']);
 
-		$this->table()->insert(array('id' => $session['id'], 'last_activity' => $session['last_activity'], 'data' => serialize($session['data'])));
+		$this->table()->insert(array(
+			'id'            => $session['id'], 
+			'last_activity' => $session['last_activity'], 
+			'data'          => serialize($session['data'])
+		));
 	}
 
 	/**
@@ -62,7 +71,7 @@ class DB implements Driver {
 	 */
 	private function table()
 	{
-		return \System\DB::table(Config::get('session.table'));		
+		return Manager::connection()->table(Config::get('session.table'));		
 	}
 	
 }

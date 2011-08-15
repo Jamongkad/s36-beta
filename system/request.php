@@ -10,10 +10,14 @@ class Request {
 	public static $route;
 
 	/**
-	 * Get the request URI.
+	 * The request URI.
 	 *
-	 * The server PATH_INFO will be used if available. Otherwise, the REQUEST_URI will be used.
-	 * The application URL and index will be removed from the URI.
+	 * @var string
+	 */
+	public static $uri;
+
+	/**
+	 * Get the request URI.
 	 *
 	 * If the request is to the root of application, a single forward slash will be returned.
 	 *
@@ -21,6 +25,8 @@ class Request {
 	 */
 	public static function uri()
 	{
+		if ( ! is_null(static::$uri)) return static::$uri;
+
 		if (isset($_SERVER['PATH_INFO']))
 		{
 			$uri = $_SERVER['PATH_INFO'];
@@ -39,19 +45,17 @@ class Request {
 			throw new \Exception("Malformed request URI. Request terminated.");
 		}
 
-		// Remove the application URL from the URI.
 		if (strpos($uri, $base = parse_url(Config::get('application.url'), PHP_URL_PATH)) === 0)
 		{
 			$uri = substr($uri, strlen($base));
 		}
 
-		// Remove the application index page from the URI.
-		if (strpos($uri, $index = '/'.Config::get('application.index')) === 0)
+		if (strpos($uri, $index = '/index.php') === 0)
 		{
 			$uri = substr($uri, strlen($index));
 		}
 
-		return (($uri = trim($uri, '/')) == '') ? '/' : $uri;
+		return static::$uri = (($uri = trim($uri, '/')) == '') ? '/' : $uri;
 	}
 
 	/**
@@ -144,7 +148,6 @@ class Request {
 	 */
 	public static function __callStatic($method, $parameters)
 	{
-		// Dynamically determine if a given route is handling the request.
 		if (strpos($method, 'route_is_') === 0)
 		{
 			return static::route_is(substr($method, 9));

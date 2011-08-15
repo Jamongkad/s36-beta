@@ -35,7 +35,7 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	| The default language of your application. This language will be used by
-	| default by the Lang library when doing string localization.
+	| Lang library as the default language when doing string localization.
 	|
 	| If you are not using the Lang library, this option isn't really important.
 	|
@@ -48,7 +48,7 @@ return array(
 	| Application Character Encoding
 	|--------------------------------------------------------------------------
 	|
-	| This default character encoding used by your application. This is the
+	| The default character encoding used by your application. This is the
 	| character encoding that will be used by the Str, Text, and Form classes.
 	|
 	*/
@@ -66,6 +66,42 @@ return array(
 	*/
 
 	'timezone' => 'UTC',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Auto-Loaded Packages
+	|--------------------------------------------------------------------------
+	|
+	| The packages that should be auto-loaded each time Laravel handles
+	| a request. These should generally be packages that you use on almost
+	| every request to your application.
+	|
+	| Each package specified here will be bootstrapped and can be conveniently
+	| used by your application's routes, models, and libraries.
+	|
+	| Note: The package names in this array should correspond to a package
+	|       directory in application/packages.
+	|
+	*/
+
+	'packages' => array(),
+
+	/*
+	|--------------------------------------------------------------------------
+	| Active Modules
+	|--------------------------------------------------------------------------
+	|
+	| Modules are a convenient way to organize your application into logical
+	| components. Each module may have its own libraries, models, routes,
+	| views, language files, and configuration.
+	|
+	| Here you may specify which modules are "active" for your application.
+	| This simply gives Laravel an easy way to know which directories to
+	| check when auto-loading your classes, routes, and views.
+	|
+	*/
+
+	'modules' => array(),
 
 	/*
 	|--------------------------------------------------------------------------

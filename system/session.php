@@ -27,21 +27,20 @@ class Session {
 		{
 			switch (Config::get('session.driver'))
 			{
+				case 'cookie':
+					return static::$driver = new Session\Cookie;
+
 				case 'file':
-					static::$driver = new Session\File;
-					break;
+					return static::$driver = new Session\File;
 
 				case 'db':
-					static::$driver = new Session\DB;
-					break;
+					return static::$driver = new Session\DB;
 
 				case 'memcached':
-					static::$driver = new Session\Memcached;
-					break;
+					return static::$driver = new Session\Memcached;
 
 				case 'apc':
-					static::$driver = new Session\APC;
-					break;
+					return static::$driver = new Session\APC;
 
 				default:
 					throw new \Exception("Session driver [$driver] is not supported.");
@@ -194,15 +193,9 @@ class Session {
 
 		static::driver()->save(static::$session);
 
-		if ( ! headers_sent())
-		{
-			$minutes = (Config::get('session.expire_on_close')) ? 0 : Config::get('session.lifetime');
+		static::write_cookie();
 
-			Cookie::put('laravel_session', static::$session['id'], $minutes, Config::get('session.path'), Config::get('session.domain'), Config::get('session.https'), Config::get('session.http_only'));
-		}
-
-		// 2% chance of performing session garbage collection...
-		if (mt_rand(1, 100) <= 2)
+		if (mt_rand(1, 100) <= 2 and static::driver() instanceof Session\Sweeper)
 		{
 			static::driver()->sweep(time() - (Config::get('session.lifetime') * 60));
 		}
@@ -231,6 +224,23 @@ class Session {
 
 				static::forget($key);
 			}
+		}
+	}
+
+	/**
+	 * Write the session cookie.
+	 *
+	 * @return void
+	 */
+	private static function write_cookie()
+	{
+		if ( ! headers_sent())
+		{
+			extract(Config::get('session'));
+
+			$minutes = ($expire_on_close) ? 0 : $lifetime;
+
+			Cookie::put('laravel_session', static::$session['id'], $minutes, $path, $domain, $https, $http_only);
 		}
 	}
 

@@ -24,12 +24,12 @@ class Redirect {
 	 * Create a redirect response.
 	 *
 	 * @param  string    $url
-	 * @param  string    $method
 	 * @param  int       $status
+	 * @param  string    $method
 	 * @param  bool      $https
 	 * @return Redirect
 	 */
-	public static function to($url, $method = 'location', $status = 302, $https = false)
+	public static function to($url, $status = 302, $method = 'location', $https = false)
 	{
 		$url = URL::to($url, $https);
 
@@ -42,13 +42,13 @@ class Redirect {
 	 * Create a redirect response to a HTTPS URL.
 	 *
 	 * @param  string    $url
-	 * @param  string    $method
 	 * @param  int       $status
+	 * @param  string    $method
 	 * @return Response
 	 */
-	public static function to_secure($url, $method = 'location', $status = 302)
+	public static function to_secure($url, $status = 302, $method = 'location')
 	{
-		return static::to($url, $method, $status, true);
+		return static::to($url, $status, $method, true);
 	}
 
 	/**
@@ -77,13 +77,11 @@ class Redirect {
 	{
 		$parameters = (isset($parameters[0])) ? $parameters[0] : array();
 
-		// Dynamically redirect to a secure route URL.
 		if (strpos($method, 'to_secure_') === 0)
 		{
 			return static::to(URL::to_route(substr($method, 10), $parameters, true));
 		}
 
-		// Dynamically redirect a route URL.
 		if (strpos($method, 'to_') === 0)
 		{
 			return static::to(URL::to_route(substr($method, 3), $parameters));

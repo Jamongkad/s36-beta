@@ -17,6 +17,13 @@ class View {
 	public $data = array();
 
 	/**
+	 * The module that contains the view.
+	 *
+	 * @var string
+	 */
+	public $module;
+
+	/**
 	 * The path to the view.
 	 *
 	 * @var string
@@ -24,11 +31,11 @@ class View {
 	public $path;
 
 	/**
-	 * The view composers.
+	 * The defined view composers.
 	 *
 	 * @var array
 	 */
-	private static $composers;
+	public static $composers;
 
 	/**
 	 * Create a new view instance.
@@ -39,9 +46,11 @@ class View {
 	 */
 	public function __construct($view, $data = array())
 	{
-		$this->view = $view;
 		$this->data = $data;
-		$this->path = $this->find();
+
+		list($this->module, $this->path, $this->view) = static::parse($view);
+
+		$this->compose();
 	}
 
 	/**
@@ -53,33 +62,89 @@ class View {
 	 */
 	public static function make($view, $data = array())
 	{
-		if (is_null(static::$composers))
-		{
-			static::$composers = require APP_PATH.'composers'.EXT;
-		}
-
-		$instance = new static($view, $data);
-
-		return (isset(static::$composers[$view])) ? call_user_func(static::$composers[$view], $instance) : $instance;
+		return new static($view, $data);
 	}
 
 	/**
-	 * Create a new named view instance.
+	 * Create a new view instance from a view name.
 	 *
-	 * @param  string  $view
+	 * The view names for the active module will be searched first, followed by
+	 * the view names for the application directory, followed by the view names
+	 * for all other modules.
+	 *
+	 * @param  string  $name
 	 * @param  array   $data
 	 * @return View
 	 */
-	public static function of($view, $data = array())
+	protected static function of($name, $data = array())
 	{
-		$views = Config::get('view.names');
-
-		if ( ! array_key_exists($view, $views))
+		foreach (array_unique(array_merge(array(ACTIVE_MODULE, 'application'), Config::get('application.modules'))) as $module)
 		{
-			throw new \Exception("Named view [$view] is not defined.");
+			static::load_composers($module);
+
+			foreach (static::$composers[$module] as $key => $value)
+			{
+				if ($name === $value or (isset($value['name']) and $name === $value['name']))
+				{
+					return new static($key, $data);
+				}
+			}
 		}
 
-		return static::make($views[$view], $data);
+		throw new \Exception("Named view [$name] is not defined.");
+	}
+
+	/**
+	 * Parse a view identifier and get the module, path, and view name.
+	 *
+	 * @param  string  $view
+	 * @return array
+	 */
+	protected static function parse($view)
+	{
+		$module = (strpos($view, '::') !== false) ? substr($view, 0, strpos($view, ':')) : 'application';
+
+		$path = ($module == 'application') ? VIEW_PATH : MODULE_PATH.$module.'/views/';
+
+		if ($module != 'application')
+		{
+			$view = substr($view, strpos($view, ':') + 2);
+		}
+
+		return array($module, $path, $view);
+	}
+
+	/**
+	 * Call the composer for the view instance.
+	 *
+	 * @return void
+	 */
+	protected function compose()
+	{
+		static::load_composers($this->module);
+
+		if (isset(static::$composers[$this->module][$this->view]))
+		{
+			foreach ((array) static::$composers[$this->module][$this->view] as $key => $value)
+			{
+				if (is_callable($value)) return call_user_func($value, $this);
+			}
+		}
+	}
+
+	/**
+	 * Load the view composers for a given module.
+	 *
+	 * @param  string  $module
+	 * @return void
+	 */
+	protected static function load_composers($module)
+	{
+		if (isset(static::$composers[$module])) return;
+
+		$composers = ($module == 'application') ? APP_PATH.'composers'.EXT : MODULE_PATH.$module.'/composers'.EXT;
+
+		static::$composers[$module] = (file_exists($composers)) ? require $composers : array();
 	}
 
 	/**
@@ -89,43 +154,23 @@ class View {
 	 */
 	public function get()
 	{
+		$view = str_replace('.', '/', $this->view);
+
+		if ( ! file_exists($this->path.$view.EXT))
+		{
+			throw new \Exception("View [$view] does not exist.");
+		}
+
 		foreach ($this->data as &$data)
 		{
-			if ($data instanceof View or $data instanceof Response)
-			{
-				$data = (string) $data;
-			}
+			if ($data instanceof View or $data instanceof Response) $data = (string) $data;
 		}
 
-		extract($this->data, EXTR_SKIP);
+		ob_start() and extract($this->data, EXTR_SKIP);
 
-		ob_start();
-
-		try { include $this->path; } catch (\Exception $e) { Error::handle($e); }
+		try { include $this->path.$view.EXT; } catch (\Exception $e) { Error::handle($e); }
 
 		return ob_get_clean();
-	}
-
-	/**
-	 * Get the full path to the view.
-	 *
-	 * Views are cascaded, so the application directory views will take
-	 * precedence over system directory views of the same name.
-	 *
-	 * @return string
-	 */
-	protected function find()
-	{
-		if (file_exists($path = VIEW_PATH.$this->view.EXT))
-		{
-			return $path;
-		}
-		elseif (file_exists($path = SYS_VIEW_PATH.$this->view.EXT))
-		{
-			return $path;
-		}
-
-		throw new \Exception("View [".$this->view."] doesn't exist.");
 	}
 
 	/**
@@ -138,7 +183,7 @@ class View {
 	 */
 	public function partial($key, $view, $data = array())
 	{
-		return $this->bind($key, static::make($view, $data));
+		return $this->bind($key, new static($view, $data));
 	}
 
 	/**
@@ -155,7 +200,7 @@ class View {
 	}
 
 	/**
-	 * Magic Method for creating named view instances.
+	 * Magic Method for handling the dynamic creation of named views.
 	 */
 	public static function __callStatic($method, $parameters)
 	{

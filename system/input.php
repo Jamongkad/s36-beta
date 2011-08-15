@@ -41,10 +41,7 @@ class Input {
 	 */
 	public static function get($key = null, $default = null)
 	{
-		if (is_null(static::$input))
-		{
-			static::hydrate();
-		}
+		if (is_null(static::$input)) static::hydrate();
 
 		return Arr::get(static::$input, $key, $default);
 	}
@@ -86,13 +83,6 @@ class Input {
 	 */
 	public static function file($key = null, $default = null)
 	{
-		if (strpos($key, '.') !== false)
-		{
-			list($file, $key) = explode('.', $key);
-
-			return Arr::get($_FILES[$file], $key, $default);
-		}
-
 		return Arr::get($_FILES, $key, $default);
 	}
 

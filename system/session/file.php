@@ -1,6 +1,6 @@
 <?php namespace System\Session;
 
-class File implements Driver {
+class File implements Driver, Sweeper {
 
 	/**
 	 * Load a session by ID.
@@ -10,10 +10,7 @@ class File implements Driver {
 	 */
 	public function load($id)
 	{
-		if (file_exists($path = SESSION_PATH.$id))
-		{
-			return unserialize(file_get_contents($path));
-		}
+		if (file_exists($path = SESSION_PATH.$id)) return unserialize(file_get_contents($path));
 	}
 
 	/**
@@ -48,10 +45,7 @@ class File implements Driver {
 	{
 		foreach (glob(SESSION_PATH.'*') as $file)
 		{
-			if (filetype($file) == 'file' and filemtime($file) < $expiration)
-			{
-				@unlink($file);
-			}			
+			if (filetype($file) == 'file' and filemtime($file) < $expiration) @unlink($file);
 		}
 	}
 	

@@ -22,8 +22,8 @@ class Form {
 	{
 		$attributes['action'] = HTML::entities(URL::to(((is_null($action)) ? Request::uri() : $action), $https));
 
-		// If the request method is PUT or DELETE, we'll default the request method to POST
-		// since the request method is being spoofed by the form.
+		// PUT and DELETE methods are spoofed using a hidden field containing the request method.
+		// Since, HTML does not support PUT and DELETE on forms, we will use POST.
 		$attributes['method'] = ($method == 'PUT' or $method == 'DELETE') ? 'POST' : $method;
 
 		if ( ! array_key_exists('accept-charset', $attributes))
@@ -33,8 +33,6 @@ class Form {
 
 		$html = '<form'.HTML::attributes($attributes).'>';
 
-		// If the request method is PUT or DELETE, create a hidden input element with the
-		// request method in it since HTML forms do not support these two methods.
 		if ($method == 'PUT' or $method == 'DELETE')
 		{
 			$html .= PHP_EOL.static::input('hidden', 'REQUEST_METHOD', $method);
@@ -145,7 +143,9 @@ class Form {
 	 */		
 	public static function input($type, $name, $value = null, $attributes = array())
 	{
-		return '<input'.HTML::attributes(array_merge($attributes, array('type' => $type, 'name' => $name, 'value' => $value, 'id' => static::id($name, $attributes)))).'>'.PHP_EOL;
+		$id = static::id($name, $attributes);
+
+		return '<input'.HTML::attributes(array_merge($attributes, compact('type', 'name', 'value', 'id'))).'>'.PHP_EOL;
 	}
 
 	/**
@@ -275,15 +275,9 @@ class Form {
 	{
 		$attributes = array_merge($attributes, array('id' => static::id($name, $attributes), 'name' => $name));
 
-		if ( ! isset($attributes['rows']))
-		{
-			$attributes['rows'] = 10;
-		}
+		if ( ! isset($attributes['rows'])) $attributes['rows'] = 10;
 
-		if ( ! isset($attributes['cols']))
-		{
-			$attributes['cols'] = 50;
-		}
+		if ( ! isset($attributes['cols'])) $attributes['cols'] = 50;
 
 		return '<textarea'.HTML::attributes($attributes).'>'.HTML::entities($value).'</textarea>'.PHP_EOL;
 	}
@@ -305,7 +299,9 @@ class Form {
 
 		foreach ($options as $value => $display)
 		{
-			$html[] = '<option'.HTML::attributes(array('value' => HTML::entities($value), 'selected' => ($value == $selected) ? 'selected' : null)).'>'.HTML::entities($display).'</option>';
+			$option_attributes = array('value' => HTML::entities($value), 'selected' => ($value == $selected) ? 'selected' : null);
+
+			$html[] = '<option'.HTML::attributes($option_attributes).'>'.HTML::entities($display).'</option>';
 		}
 
 		return '<select'.HTML::attributes($attributes).'>'.implode('', $html).'</select>'.PHP_EOL;
@@ -419,15 +415,9 @@ class Form {
 	 */
 	private static function id($name, $attributes)
 	{
-		if (array_key_exists('id', $attributes))
-		{
-			return $attributes['id'];
-		}
+		if (array_key_exists('id', $attributes)) return $attributes['id'];
 
-		if (in_array($name, static::$labels))
-		{
-			return $name;
-		}
+		if (in_array($name, static::$labels)) return $name;
 	}
 
 }

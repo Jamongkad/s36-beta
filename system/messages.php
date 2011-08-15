@@ -30,8 +30,7 @@ class Messages {
 	 */
 	public function add($key, $message)
 	{
-		// Make sure the message is not duplicated.
-		if ( ! array_key_exists($key, $this->messages) or ! is_array($this->messages[$key]) or ! in_array($message, $this->messages[$key]))
+		if ( ! isset($this->messages[$key]) or array_search($message, $this->messages[$key]) === false)
 		{
 			$this->messages[$key][] = $message;
 		}
@@ -71,10 +70,7 @@ class Messages {
 	 */
 	public function get($key = null, $format = ':message')
 	{
-		if (is_null($key))
-		{
-			return $this->all($format);
-		}
+		if (is_null($key)) return $this->all($format);
 
 		return (array_key_exists($key, $this->messages)) ? $this->format($this->messages[$key], $format) : array();
 	}
@@ -106,7 +102,10 @@ class Messages {
 	 */
 	private function format($messages, $format)
 	{
-		array_walk($messages, function(&$message, $key) use ($format) { $message = str_replace(':message', $message, $format); });
+		foreach ($messages as $key => &$message)
+		{
+			$message = str_replace(':message', $message, $format);
+		}
 
 		return $messages;
 	}

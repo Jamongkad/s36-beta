@@ -14,10 +14,7 @@ class URL {
 	 */
 	public static function to($url = '', $https = false, $asset = false)
 	{
-		if (filter_var($url, FILTER_VALIDATE_URL) !== false)
-		{
-			return $url;
-		}
+		if (filter_var($url, FILTER_VALIDATE_URL) !== false) return $url;
 
 		$base = Config::get('application.url').'/'.Config::get('application.index');
 
@@ -31,7 +28,7 @@ class URL {
 			$base = 'https://'.substr($base, 7);
 		}
 
-		return rtrim($base, '/').'/'.ltrim($url, '/');
+		return rtrim($base, '/').'/'.trim($url, '/');
 	}
 
 	/**
@@ -71,7 +68,7 @@ class URL {
 	 */
 	public static function to_route($name, $parameters = array(), $https = false)
 	{
-		if ( ! is_null($route = Route\Finder::find($name)))
+		if ( ! is_null($route = Routing\Finder::find($name, Routing\Loader::all())))
 		{
 			$uris = explode(', ', key($route));
 
@@ -109,7 +106,7 @@ class URL {
 	 */
 	public static function slug($title, $separator = '-')
 	{
-		$title = html_entity_decode(Str::ascii($title), ENT_QUOTES, Config::get('application.encoding'));
+		$title = Str::ascii($title);
 
 		// Remove all characters that are not the separator, letters, numbers, or whitespace.
 		$title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', Str::lower($title));
@@ -127,13 +124,11 @@ class URL {
 	{
 		$parameters = (isset($parameters[0])) ? $parameters[0] : array();
 
-		// Dynamically create a secure route URL.
 		if (strpos($method, 'to_secure_') === 0)
 		{
 			return static::to_route(substr($method, 10), $parameters, true);
 		}
 
-		// Dynamically create a route URL.
 		if (strpos($method, 'to_') === 0)
 		{
 			return static::to_route(substr($method, 3), $parameters);
