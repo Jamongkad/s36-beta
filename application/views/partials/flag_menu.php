@@ -78,6 +78,25 @@
             </div>
             <div class="right">
                 <div class="g1of5">
+                    <label>SELECTED</label>
+                    <span id="multiple" hrefaction="<?=URL::to('/feedback/fire_multiple')?>"></span>
+                    <?//show this when looking at inbox except when in deleted
+                    if(!preg_match_all('/inbox\/deleted/', Request::uri(), $matches)):?>
+                        <?=Form::select('delete_selection', Array(
+                            'none' => '-'
+                          , 'publish' => 'Publish'
+                          , 'feature' => 'Feature'
+                          , 'delete' => 'Delete'
+                         ), 'none', array('class' => 'delete-selection'));?>
+                    <?else:?>
+                        <?=Form::select('delete_selection', Array(
+                            'none' => '-'
+                          , 'restore' => 'Restore'
+                          , 'remove' => 'Permanently Delete'
+                         ), 'none', array('class' => 'delete-selection', 'style' => 'width:50%'));?>
+                    <?endif?>
+                </div>
+                <div class="g1of5">
                     <label>SORT BY</label>
                     <select>
                         <option>Date</option>
@@ -92,17 +111,17 @@
                         <?endforeach?> 
                     </select>
                 </div>
-                <div class="g1of5" style="width: 25%">
+                <div class="g1of5">
                     <label>CATEGORY</label>
                     <?$cat = new Category; ?>
-                    <select>
+                    <select style="width: 50%">
                         <option>All</option>
                         <?foreach($cat->pull_site_categories() as $category):?>
                             <option><?=$category->name?></option> 
                         <?endforeach?>
                     </select>
                 </div>
-                <div class="g1of5 right-align">
+                <div class="g1of5">
                     <label>Display</label>
                     <?$limit = Input::get('limit')?>
                     <select name="feedback-limit">

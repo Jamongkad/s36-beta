@@ -105,7 +105,7 @@
         </div>
         <div class="right">
             <div class="g1of3">
-                <label>WITH SELECTED</label>
+                <label>SELECTED</label>
                 <span id="multiple" hrefaction="<?=URL::to('/feedback/fire_multiple')?>"></span>
                 <?//show this when looking at inbox except when in deleted
                 if(!preg_match_all('/inbox\/deleted/', Request::uri(), $matches)):?>
@@ -114,15 +114,14 @@
                       , 'publish' => 'Publish'
                       , 'feature' => 'Feature'
                       , 'delete' => 'Delete'
-                     ), 'none', array('id' => 'delete-selection'));?>
+                     ), 'none', array('class' => 'delete-selection'));?>
                 <?else:?>
                     <?=Form::select('delete_selection', Array(
                         'none' => '-'
                       , 'restore' => 'Restore'
                       , 'remove' => 'Permanently Delete'
-                     ), 'none', array('id' => 'delete-selection'));?>
+                     ), 'none', array('class' => 'delete-selection'));?>
                 <?endif?>
-
             </div>
             <div class="g1of3">
                 <div class="pagination-text"><?=$pagination?></div>

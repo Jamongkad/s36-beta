@@ -253,7 +253,7 @@ jQuery(function($) {
         }                                            
     });
 
-    $('#delete-selection').bind('change', function(e) {
+    $('.delete-selection').bind('change', function(e) {
         var mode = $(this).val();
         var ifChecked = $('.check-feed-id').is(':checked');
         var currentUrl = $(location).attr('href');
@@ -305,7 +305,8 @@ jQuery(function($) {
             collection.length = 0;     
         } 
     });
-
+    
+    /*Experimental*/
     function feedbackListViewModel() {
         var self = this;
         $.ajax({
