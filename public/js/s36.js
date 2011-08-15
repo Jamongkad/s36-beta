@@ -305,4 +305,23 @@ jQuery(function($) {
             collection.length = 0;     
         } 
     });
+
+    function feedbackListViewModel() {
+        var self = this;
+        $.ajax({
+            url: "/index.php/feedback/samplefeeds/inbox/all"
+          , dataType: "json"
+          , success: function(msg) {
+                var tmpl = $("#feedbackTemplate").tmpl(msg.result);
+                $("#feedbackContainer").html(tmpl);
+
+            }
+        });
+    }
+
+    feedbackListViewModel();
+
+    $("div.name").live("click", function() {
+        feedbackListViewModel();
+    });
 });

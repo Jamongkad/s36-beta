@@ -105,5 +105,20 @@ return array(
         } else {
             $feedback->_change_feedback('isDeleted', $id, 0);     
         } 
+    },
+
+    'GET /feedback/samplefeeds/(:any?)/(:any?)' => function($filter=False, $choice=False) use ($feedback) {
+
+        $limit = 10;
+        $site_id = False;
+
+        $feedback = new Feedback;
+        $category = new Category;
+        $pagination = new ZebraPagination;
+
+        $offset = ($pagination->get_page() - 1) * $limit;
+        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id);
+
+        echo json_encode($records);
     }
 );

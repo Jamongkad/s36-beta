@@ -11,10 +11,10 @@ if(S36Auth::check()):
     </div>
 
     <?=HTML::script('js/jquery-1.6.2.min.js')?>
-    <?=HTML::script('js/knockout-1.2.1.js')?>
     <?=HTML::script('js/jquery.tmpl.js')?>
+    <?=HTML::script('js/knockout-1.2.1.js')?>
     <?=HTML::script('js/s36.js')?>
-    <?=HTML::script('js/s36-knockout.js')?>
+    <?//=HTML::script('js/s36-knockout.js')?>
 <?endif?>
 </div>
 </body>
