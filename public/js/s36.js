@@ -19,10 +19,7 @@ jQuery(function($) {
             $(this).addClass('Matched');
         }
 
-        $.ajax({
-              type: "GET"
-            , url: href
-        });
+        $.ajax({type: "GET", url: href});
 
         e.preventDefault();
     });
@@ -220,109 +217,11 @@ jQuery(function($) {
         window.location = "?limit=" + $(this).val();
     });
     
-    //TODO: This could be better check switcharoo
-    $('.user-info input[name*="display"]').bind('click', function(e) {
-        var val = this.checked;
-        var name = $(this).attr('name');
-        var feed_id = $('#feed-id').val();
-        var hrefaction = $('#toggle_url').attr('hrefaction');
-        
-        post_toggle_change(hrefaction, {feedid: feed_id, check_val: val, column_name: name}); 
-    });
+    var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
+    userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
+    userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
 
-    $('.display-info input[name*="display"]').bind('click', function(e) {
-        var val = this.checked;
-        var name = $(this).attr('name');
-        var feed_id = $('#feed-id').val();
-        var hrefaction = $('#toggle_url').attr('hrefaction');
-
-        post_toggle_change(hrefaction, {feedblock_id: feed_id, check_val: val, column_name: name});
-    });
-
-    function post_toggle_change(hrefaction, post_vars) { 
-        $.ajax({ type: "POST", url: hrefaction , data: post_vars });
-    }
-
-    $('.click-all').bind('click', function(e) {
-        if(this.checked) {
-            $('.check-feed-id').prop("checked", true);
-            $('.click-all').prop("checked", true);
-        } else {
-            $('.check-feed-id').prop("checked", false);
-            $('.click-all').prop("checked", false);
-        }                                            
-    });
-
-    $('.delete-selection').bind('change', function(e) {
-        var mode = $(this).val();
-        var ifChecked = $('.check-feed-id').is(':checked');
-        var currentUrl = $(location).attr('href');
-
-        var collection = new Array();
-       
-        if(ifChecked && mode != 'none') { 
-            var conf = null; 
-            if(mode == 'restore') 
-                conf = confirm("Are you sure you want to restore these feedbacks?");
-
-            if(mode == 'remove') 
-                conf = confirm("Are you sure you want to permanently remove these feedbacks?");            
-
-            if(mode == 'publish')
-                conf = confirm("Are you sure want to publish these feedbacks?");
-
-            if(mode == 'feature')
-                conf = confirm("Are you sure want to feature these feedbacks?");
-
-            if(mode == 'delete')
-                conf = confirm("Are you sure want to delete these feedbacks?");
-
-            if(conf) {
-                $('.check-feed-id').each(function() {
-                    if($(this).is(':checked')) {
-                        collection.push($(this).val());
-                        $('#' + $(this).val()).fadeOut(300, function() {
-                            $(this).remove();
-                        });
-                    }
-                });    
-            }
-            //revert to default -- select
-            $("option:first", this).prop("selected", true);
-
-            $.ajax({
-                type: "POST"      
-              , data: {col: mode, feed_ids: collection, curl: currentUrl}
-              , url: $("#multiple").attr("hrefaction")
-              , success: function(msg) {
-                    //$('.the-feedbacks').children().remove().end().html(msg);
-                    //console.log(msg);
-                    location.reload();
-                    $('.check-feed-id').attr('checked', false);
-              }
-            })
-        } else {
-            collection.length = 0;     
-        } 
-    });
-    
-    /*Experimental*/
-    function feedbackListViewModel() {
-        var self = this;
-        $.ajax({
-            url: "/index.php/feedback/samplefeeds/inbox/all"
-          , dataType: "json"
-          , success: function(msg) {
-                var tmpl = $("#feedbackTemplate").tmpl(msg.result);
-                $("#feedbackContainer").html(tmpl);
-
-            }
-        });
-    }
-
-    feedbackListViewModel();
-
-    $("div.name").live("click", function() {
-        feedbackListViewModel();
-    });
+    var check = new Checky({delete_selection: $('.delete-selection'), check_feed_id: $('.check-feed-id'), click_all: $('.click-all')});
+    check.init(); 
+    check.clickAll();
 });

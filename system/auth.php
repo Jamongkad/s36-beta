@@ -72,8 +72,8 @@ class Auth {
 	/**
 	 * Attempt to login a user.
 	 *
-	 * If the user credentials are valid. The user ID will be stored in the session
-	 * and will be considered "logged in" on subsequent requests to the application.
+	 * If the user credentials are valid. The user's ID will be stored in the session and the
+	 * user will be considered "logged in" on subsequent requests to the application.
 	 *
 	 * The password passed to the method should be plain text, as it will be hashed
 	 * by the Hash class when authenticating.
@@ -96,15 +96,31 @@ class Auth {
 		{
 			if (Hash::check($password, $user->password))
 			{
-				static::$user = $user;
-
-				Session::put(static::$key, $user->id);
+				static::remember($user);
 
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Log a user into the application without checking credentials.
+	 *
+	 * The user's ID will be stored in the session and the user will be considered
+	 * "logged in" on subsequent requests to the application.
+	 *
+	 * Note: The user given to this method should be an object having a "id" property.
+	 *
+	 * @param  object  $user
+	 * @return void
+	 */
+	public static function remember($user)
+	{
+		static::$user = $user;
+
+		Session::put(static::$key, $user->id);
 	}
 
 	/**
@@ -117,9 +133,9 @@ class Auth {
 	 */
 	public static function logout()
 	{
-		Session::forget(static::$key);
-
 		static::$user = null;
+
+		Session::forget(static::$key);
 	}
 
 }

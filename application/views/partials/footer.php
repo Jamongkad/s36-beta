@@ -14,6 +14,8 @@ if(S36Auth::check()):
     <?=HTML::script('js/jquery.tmpl.js')?>
     <?=HTML::script('js/knockout-1.2.1.js')?>
     <?=HTML::script('js/s36.js')?>
+    <?=HTML::script('js/Checky.js')?> 
+    <?=HTML::script('js/FeedbackBlockDisplay.js')?>
     <?//=HTML::script('js/s36-knockout.js')?>
 <?endif?>
 </div>
