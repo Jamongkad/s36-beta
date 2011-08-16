@@ -171,6 +171,97 @@ class Feedback {
         */
     }
 
+    public function pull_feedback_by_company($opts) {
+
+        $published_statement = Null;
+        $featured_statement = Null;
+        $combined_statement = Null;
+
+        if($opts['is_published'] == 1 && $opts['is_featured'] == 0) {
+           $published_statement = "AND Feedback.isPublished = 1";
+        }
+
+        if($opts['is_published'] == 0 && $opts['is_featured'] == 1) {
+           $featured_statement = "AND Feedback.isFeatured = 1";
+        }
+ 
+        if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
+           $combined_statement = "AND Feedback.isPublished = 1 OR Feedback.isFeatured = 1";
+        }
+
+        $sth = $this->dbh->prepare('
+            SELECT 
+                  SQL_CALC_FOUND_ROWS
+                  Feedback.feedbackId AS id
+                , Category.intName
+                , Category.name AS category
+                , Feedback.status AS status
+                , CASE
+                    WHEN Feedback.priority < 30 THEN "low"
+                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
+                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
+                  END AS priority
+                , Feedback.text
+                , Feedback.dtAdded AS date
+                , Feedback.rating
+                , Feedback.isFeatured
+                , Feedback.isFlagged
+                , Feedback.isPublished
+                , Feedback.isArchived
+                , Feedback.isSticked
+                , Feedback.isDeleted
+                , Contact.firstName AS firstname
+                , Contact.lastName AS lastname
+                , Country.name AS countryname
+                , Country.code AS countrycode
+                , LENGTH(text) AS textlength
+            FROM 
+                User
+                    INNER JOIN
+                        Site
+                        ON User.companyId = Site.companyId
+                    INNER JOIN 
+                        Feedback
+                        ON Site.siteId = Feedback.siteId
+                    INNER JOIN
+                        Category
+                        ON Feedback.categoryId = Category.categoryId
+                    INNER JOIN
+                        Contact
+                        ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN 
+                        Country
+                        ON Country.countryId = Contact.countryId
+                    WHERE 1=1
+                        AND Site.siteId = :site_id 
+                        AND User.companyId = :company_id
+                        '.$published_statement.'
+                        '.$featured_statement.'
+                        '.$combined_statement.'
+                    GROUP BY
+                        1
+                    ORDER BY  
+                        Feedback.dtAdded 
+                    LIMIT :offset, :limit 
+        ');
+        
+        $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
+        $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);       
+        //$sth->bindParam(':is_published', $opts['is_published'], PDO::PARAM_INT);
+        //$sth->bindParam(':is_featured', $opts['is_featured'], PDO::PARAM_INT);
+        $sth->bindParam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindParam(':offset', $opts['offset'], PDO::PARAM_INT);
+        $sth->execute();       
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
+    }
+
     public function pull_feedback_by_id($id) { 
         $sth = $this->dbh->prepare('
             SELECT 
