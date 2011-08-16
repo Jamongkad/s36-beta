@@ -46,6 +46,6 @@ return array(
 
         $feedback = new Feedback;
         $data = $feedback->pull_feedback_by_company($params);
-        echo json_encode(array(utf8_encode($data)));
+        echo json_encode(array('name' => "Mathew", "age" => 29));
     }
 );
