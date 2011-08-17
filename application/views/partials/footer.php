@@ -16,6 +16,8 @@ if(S36Auth::check()):
     <?=HTML::script('js/s36.js')?>
     <?=HTML::script('js/Checky.js')?> 
     <?=HTML::script('js/FeedbackBlockDisplay.js')?>
+    <?=HTML::script('js/DropDownChange.js')?>
+    <?=HTML::script('js/jquery.switcharoo.js')?>
     <?//=HTML::script('js/s36-knockout.js')?>
 <?endif?>
 </div>

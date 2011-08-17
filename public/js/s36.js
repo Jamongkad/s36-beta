@@ -20,7 +20,6 @@ jQuery(function($) {
         }
 
         $.ajax({type: "GET", url: href});
-
         e.preventDefault();
     });
 
@@ -39,42 +38,6 @@ jQuery(function($) {
     });
 
     $('select[name="status"], select[name="priority"]').hide();
-
-    $('span.status-change').bind("click", function(e) {
-
-        $(this).children('select').unbind('change.status').bind('change.status', function(e) {
-            var select = $(this);
-            var select_val = select.val();
-            var feedid = select.attr('feedid');
-            var feedurl = select.attr('feedurl');
-
-            $.ajax({
-                  type: "POST"
-                , url: feedurl
-                , data: {"select_val":select_val, "feed_id": feedid}
-            });
-
-            select.siblings().text(select_val);
-        }).show();
-
-    }).css({'cursor': 'pointer'});
-
-    $('span.priority-change').bind('click', function(e) { 
-        $(this).children('select').unbind('change.priority').bind('change.priority', function(e) { 
-            var select = $(this);
-            var select_val = select.val();
-            var feedid = select.attr('feedid');
-            var feedurl = select.attr('feedurl');
-            
-            $.ajax({
-                  type: "POST"
-                , url: feedurl
-                , data: {"select_val":select_val, "feed_id": feedid}
-            });
-
-            select.siblings().text($(this).children('option:selected').text());
-        }).show();
-    }).css({'cursor': 'pointer'})
 
     $('div.undo-bar').hide(); 
     var deleteCount = 0;
@@ -172,37 +135,7 @@ jQuery(function($) {
             e.preventDefault();
         });
     }
-
-    $.fn.switcharoo = function(background_pos) {
-        $(this).bind('click', function(e) { 
-            var feedurl = $(this).attr('hrefaction');
-            var feedid = $(this).attr('feedid');
-            var state = $(this).attr('state');
-
-            var var_state = null;
-
-            if(state == 0) {
-                var_state = 1;
-                $(this).attr('state', 1);
-                $(this).css({'background-position': background_pos});
-            }
-
-            if(state == 1) {
-                var_state = 0;
-                $(this).attr('state', 0);
-                $(this).removeAttr('style');
-            }
-
-            $.ajax({
-                  type: "POST"
-                , url: feedurl
-                , data: {"state": var_state, "feedid": feedid}
-            });
-
-            e.preventDefault(); 
-        });
-    }
-      
+ 
     $('.check').switcharoo('0px bottom');
     $('.flag').switcharoo('-100px bottom');
     $('.feature').switcharoo('-60px bottom');
@@ -224,4 +157,10 @@ jQuery(function($) {
     var check = new Checky({delete_selection: $('.delete-selection'), check_feed_id: $('.check-feed-id'), click_all: $('.click-all')});
     check.init(); 
     check.clickAll();
+
+    var statusChange = new DropDownChange({status_element: $('span.status-change'), status_selector: 'change.status'});
+    statusChange.enable();
+
+    var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
+    priorityChange.enable();
 });

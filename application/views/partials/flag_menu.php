@@ -1,6 +1,7 @@
 <!--start of undo bar-->
 <input type="hidden" name="undo-count" value="0" />
 <div class="undo-bar" delete_action="<?=URL::to('/feedback/undodelete/')?>" goto_trash="<?=URL::to('/inbox/deleted')?>"></div>
+<div class="checky-bar"></div>
 <!--end of undo bar-->
 <!-- top navigation bar -->
 <? 

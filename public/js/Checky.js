@@ -2,6 +2,7 @@ function Checky(opts) {
     this.delete_selection = opts.delete_selection;
     this.check_feed_id = opts.check_feed_id;
     this.click_all = opts.click_all;
+    this.count = 0;
 }
 
 Checky.prototype.init = function() {
@@ -16,21 +17,34 @@ Checky.prototype.init = function() {
         var collection = new Array();
        
         if(ifChecked && mode != 'none') { 
+
             var conf = null; 
-            if(mode == 'restore') 
-                conf = confirm("Are you sure you want to restore these feedbacks?");
+            var color = null; 
 
-            if(mode == 'remove') 
-                conf = confirm("Are you sure you want to permanently remove these feedbacks?");            
-
-            if(mode == 'publish')
-                conf = confirm("Are you sure want to publish these feedbacks?");
-
-            if(mode == 'feature')
-                conf = confirm("Are you sure want to feature these feedbacks?");
-
-            if(mode == 'delete')
-                conf = confirm("Are you sure want to delete these feedbacks?");
+            if(mode == 'restore') {
+                conf = confirm("Are you sure you want to restore these feedbacks?");     
+                color = '#fef1b5';
+            }
+           
+            if(mode == 'remove') {
+                conf = confirm("Are you sure you want to permanently remove these feedbacks?");                  
+                color = '#fef1b5';
+            }
+           
+            if(mode == 'publish') {
+                conf = confirm("Are you sure want to publish these feedbacks?");     
+                color = '#66cd00';
+            }
+           
+            if(mode == 'feature') {
+                conf = confirm("Are you sure want to feature these feedbacks?");     
+                color = '#fbec5d';
+            }
+           
+            if(mode == 'delete') {
+                conf = confirm("Are you sure want to delete these feedbacks?");     
+                color = '#fef1b5';
+            } 
 
             if(conf) {
                checkFeed.each(function() {
@@ -44,6 +58,26 @@ Checky.prototype.init = function() {
             }
             //revert to default -- select
             $("option:first", this).prop("selected", true);
+            console.log(me.count);
+            console.log(mode);
+            console.log(collection); 
+            checkFeed.attr('checked', false);
+
+            $('.checky-bar').css({
+                'position': 'fixed'
+              , 'width': '450px'
+              , 'font-size': '1.2em'
+              , 'font-weight': 'bold'
+              , 'background': color 
+              , 'text-align': 'center'
+              , 'left': '40%'
+              , 'top': '23%'
+              , 'z-index': '200'
+              , 'padding': '5px'
+              , 'border-radius': '12px'
+              , 'margin': '2px 5px'
+            }).html(mode);
+            /*
             $.ajax({
                 type: "POST"      
               , data: {col: mode, feed_ids: collection, curl: currentUrl}
@@ -57,6 +91,7 @@ Checky.prototype.init = function() {
                     checkFeed.attr('checked', false);
               }
             });
+            */
         } else {
             collection.length = 0;     
         } 
