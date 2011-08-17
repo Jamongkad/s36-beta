@@ -46,6 +46,6 @@ return array(
 
         $feedback = new Feedback;
         $data = $feedback->pull_feedback_by_company($params);
-        echo "mathew(" . json_encode($data) . ")";
+        echo "s36_feedback(" . json_encode($data) . ")";
     }
 );
