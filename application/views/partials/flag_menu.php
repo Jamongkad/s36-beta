@@ -79,22 +79,7 @@
             </div>
             <div class="right">
                 <div class="g1of5">
-                    <label>SELECTED</label>
-                    <?//show this when looking at inbox except when in deleted
-                    if(!preg_match_all('/inbox\/deleted/', Request::uri(), $matches)):?>
-                        <?=Form::select('delete_selection', Array(
-                            'none' => '-'
-                          , 'publish' => 'Publish'
-                          , 'feature' => 'Feature'
-                          , 'delete' => 'Delete'
-                         ), 'none', array('class' => 'delete-selection', 'hrefaction' => URL::to('/feedback/fire_multiple')));?>
-                    <?else:?>
-                        <?=Form::select('delete_selection', Array(
-                            'none' => '-'
-                          , 'restore' => 'Restore'
-                          , 'remove' => 'Permanently Delete'
-                         ), 'none', array('class' => 'delete-selection', 'style' => 'width:50%', 'hrefaction' => URL::to('/feedback/fire_multiple')));?>
-                    <?endif?>
+                    <?=View::make('partials/feedback_select_controls')?>
                 </div>
                 <div class="g1of5">
                     <label>SORT BY</label>

@@ -340,7 +340,8 @@ class Feedback {
     public function _toggle_multiple($mode, $block_id) { 
 
         $lookup = Array(
-            'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0'
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0'
           , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1'
           , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0' 
           , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'

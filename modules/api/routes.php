@@ -47,5 +47,15 @@ return array(
         $feedback = new Feedback;
         $data = $feedback->pull_feedback_by_company($params);
         echo "s36_feedback(" . json_encode($data) . ")";
+    }, 
+
+    'GET /api/test_blob' => function() {
+        $db = DB::connection('master')->pdo;
+        $sth = $db->prepare("SELECT * FROM Theme WHERE companyId = 1");
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        echo "<style type='text/stylesheet'>";
+        print_r($result->interfacesettings);
+        echo "</style>";
     }
 );

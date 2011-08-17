@@ -22,7 +22,7 @@ Checky.prototype.init = function() {
             var color = null; 
             var goto_url = null;
 
-            if(mode == 'restore') {
+            if(mode == 'restore' || mode == 'inbox') {
                 conf = confirm("Are you sure you want to restore these feedbacks?");     
                 color = '#fef1b5';
                 goto_url = '/inbox/all';
