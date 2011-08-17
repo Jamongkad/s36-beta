@@ -20,10 +20,12 @@ Checky.prototype.init = function() {
 
             var conf = null; 
             var color = null; 
+            var goto_url = null;
 
             if(mode == 'restore') {
                 conf = confirm("Are you sure you want to restore these feedbacks?");     
                 color = '#fef1b5';
+                goto_url = '/inbox/all';
             }
            
             if(mode == 'remove') {
@@ -34,16 +36,19 @@ Checky.prototype.init = function() {
             if(mode == 'publish') {
                 conf = confirm("Are you sure want to publish these feedbacks?");     
                 color = '#66cd00';
+                goto_url = '/inbox/published/all';
             }
            
             if(mode == 'feature') {
                 conf = confirm("Are you sure want to feature these feedbacks?");     
                 color = '#fbec5d';
+                goto_url = '/inbox/featured/all';
             }
            
             if(mode == 'delete') {
                 conf = confirm("Are you sure want to delete these feedbacks?");     
                 color = '#fef1b5';
+                goto_url = '/inbox/deleted';
             } 
 
             if(conf) {
@@ -58,25 +63,24 @@ Checky.prototype.init = function() {
             }
             //revert to default -- select
             $("option:first", this).prop("selected", true);
-            console.log(me.count);
-            console.log(mode);
-            console.log(collection); 
-            checkFeed.attr('checked', false);
            
             var hideLink = document.createElement("a");
             var gotoLink = document.createElement("a");
 
             hideLink.setAttribute("href", "#");
-            hideLink.setAttribute("id", "hide-undo-bar");
+            hideLink.setAttribute("id", "hide-checkybar");
             hideLink.style.color = "#00688b";
             hideLink.style.fontSize = "0.7em";
-            hideLink.innerHTML = " hide";
+            hideLink.style.marginLeft = "3px";
+            hideLink.style.textDecoration = "underline";
+            hideLink.innerHTML = "hide";
 
-            gotoLink.setAttribute("href", "#");
-            gotoLink.setAttribute("id", "hide-undo-bar");
+            gotoLink.setAttribute("href", goto_url);
             gotoLink.style.color = "#00688b";
             gotoLink.style.fontSize = "0.7em";
-            gotoLink.innerHTML = " go to " + mode;
+            gotoLink.style.marginLeft = "5px";
+            gotoLink.style.textDecoration = "underline";
+            gotoLink.innerHTML = "go to " + mode;
 
             $('.checky-bar').css({
                 'position': 'fixed'
@@ -91,8 +95,14 @@ Checky.prototype.init = function() {
               , 'padding': '5px'
               , 'border-radius': '12px'
               , 'margin': '2px 5px'
-            }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink);
-            /*
+            }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink).show();
+
+            $("#hide-checkybar").bind("click", function() {
+                $(this).parents(".checky-bar").hide();
+                if($(this).parents(".checky-bar").is(":hidden"))
+                    location.reload(); 
+            });
+
             $.ajax({
                 type: "POST"      
               , data: {col: mode, feed_ids: collection, curl: currentUrl}
@@ -100,13 +110,15 @@ Checky.prototype.init = function() {
               , success: function(msg) {
                     //$('.the-feedbacks').children().remove().end().html(msg);
                     //console.log(msg);
+                    /*
                     if(mode == 'restore') {
                         location.reload(); 
                     } 
+                    */
                     checkFeed.attr('checked', false);
               }
             });
-            */
+
         } else {
             collection.length = 0;     
         } 
