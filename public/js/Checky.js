@@ -62,6 +62,21 @@ Checky.prototype.init = function() {
             console.log(mode);
             console.log(collection); 
             checkFeed.attr('checked', false);
+           
+            var hideLink = document.createElement("a");
+            var gotoLink = document.createElement("a");
+
+            hideLink.setAttribute("href", "#");
+            hideLink.setAttribute("id", "hide-undo-bar");
+            hideLink.style.color = "#00688b";
+            hideLink.style.fontSize = "0.7em";
+            hideLink.innerHTML = " hide";
+
+            gotoLink.setAttribute("href", "#");
+            gotoLink.setAttribute("id", "hide-undo-bar");
+            gotoLink.style.color = "#00688b";
+            gotoLink.style.fontSize = "0.7em";
+            gotoLink.innerHTML = " go to " + mode;
 
             $('.checky-bar').css({
                 'position': 'fixed'
@@ -76,7 +91,7 @@ Checky.prototype.init = function() {
               , 'padding': '5px'
               , 'border-radius': '12px'
               , 'margin': '2px 5px'
-            }).html(mode);
+            }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink);
             /*
             $.ajax({
                 type: "POST"      
