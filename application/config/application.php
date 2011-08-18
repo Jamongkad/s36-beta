@@ -11,9 +11,9 @@ return array(
 	|
 	*/
     //deployment-dev
-	'url' => 'http://www.gearfish.com/s36-beta/public',
+	//'url' => 'http://www.gearfish.com/s36-beta/public',
     //development-localhost
-    //'url' => 'http://dev.36stories.localhost',
+    'url' => ($_SERVER['HTTP_HOST'] == 'dev.36stories.localhost' ? 'http://dev.36stories.localhost' : 'http://www.gearfish.com/s36-beta/public'),
 
 	/*
 	|--------------------------------------------------------------------------
