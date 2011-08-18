@@ -212,6 +212,11 @@ class Feedback {
                 , Feedback.isDeleted
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
+                , Contact.email AS email
+                , Contact.position AS position
+                , Contact.website AS url
+                , Contact.city AS city
+                , Contact.companyName AS companyname
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , LENGTH(text) AS textlength

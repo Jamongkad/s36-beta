@@ -65,8 +65,6 @@ Checky.prototype.init = function() {
             $("option:first", this).prop("selected", true);
            
             var hideLink = document.createElement("a");
-            var gotoLink = document.createElement("a");
-
             hideLink.setAttribute("href", "#");
             hideLink.setAttribute("id", "hide-checkybar");
             hideLink.style.color = "#00688b";
@@ -75,6 +73,7 @@ Checky.prototype.init = function() {
             hideLink.style.textDecoration = "underline";
             hideLink.innerHTML = "hide";
 
+            var gotoLink = document.createElement("a");
             gotoLink.setAttribute("href", goto_url);
             gotoLink.style.color = "#00688b";
             gotoLink.style.fontSize = "0.7em";
@@ -108,8 +107,6 @@ Checky.prototype.init = function() {
               , data: {col: mode, feed_ids: collection, curl: currentUrl}
               , url: $(this).attr("hrefaction")
               , success: function(msg) {
-                    //$('.the-feedbacks').children().remove().end().html(msg);
-                    //console.log(msg);
                     /*
                     if(mode == 'restore') {
                         location.reload(); 
@@ -118,7 +115,7 @@ Checky.prototype.init = function() {
                     checkFeed.attr('checked', false);
               }
             });
-
+            collection.length = 0;     
         } else {
             collection.length = 0;     
         } 
