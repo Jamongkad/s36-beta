@@ -348,7 +348,6 @@ class Feedback {
         );
 
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
-
         $block_ids = implode(',', $block_id);
         
         $sql = "
