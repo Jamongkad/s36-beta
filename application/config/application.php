@@ -5,9 +5,13 @@ function url_determiner() {
 
     if($http_host == 'dev.36stories.localhost') 
         return 'http://dev.36stories.localhost';
-   
+    else
+        return 'http://www.gearfish.com/s36-beta/public';
+
+    /* 
     if($http_host == 'www.gearfish.com/s36-beta/public') 
         return 'http://www.gearfish.com/s36-beta/public';
+    */
 
 }
 
