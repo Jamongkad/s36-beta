@@ -1,4 +1,15 @@
 <?php
+function url_determiner() {
+    
+    $http_host = $_SERVER['HTTP_HOST'];
+
+    if($http_host == 'dev.36stories.localhost') 
+        return 'http://dev.36stories.localhost';
+   
+    if($http_host == 'www.gearfish.com/s36-beta/public') 
+        return 'http://www.gearfish.com/s36-beta/public';
+
+}
 
 return array(
 
@@ -13,8 +24,7 @@ return array(
     //deployment-dev
 	//'url' => 'http://www.gearfish.com/s36-beta/public',
     //development-localhost
-    'url' => ($_SERVER['HTTP_HOST'] == 'dev.36stories.localhost' ? 'http://dev.36stories.localhost' : 'http://www.gearfish.com/s36-beta/public'),
-
+    'url' => url_determiner(),
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index
