@@ -49,6 +49,10 @@ return array(
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
+    'POST /api/submit_feedback' => function() {
+        print_r($_POST);
+    },
+
     'GET /api/test_blob' => function() {
         $db = DB::connection('master')->pdo;
         $sth = $db->prepare("SELECT * FROM Theme WHERE companyId = 1");
