@@ -21,9 +21,6 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-    //deployment-dev
-	//'url' => 'http://www.gearfish.com/s36-beta/public',
-    //development-localhost
     'url' => url_determiner(),
 	/*
 	|--------------------------------------------------------------------------
