@@ -1,20 +1,13 @@
 <?php
-
-print_r($_SERVER['HTTP_HOST']);
-
 function url_determiner() {
     
     $http_host = $_SERVER['HTTP_HOST'];
 
     if($http_host == 'dev.36stories.localhost') 
         return 'http://dev.36stories.localhost';
-    else
+   
+    if($http_host == 'www.gearfish.com') 
         return 'http://www.gearfish.com/s36-beta/public';
-
-    /* 
-    if($http_host == 'www.gearfish.com/s36-beta/public') 
-        return 'http://www.gearfish.com/s36-beta/public';
-    */
 
 }
 
