@@ -1,4 +1,7 @@
 <?php
+
+print_r($_SERVER['HTTP_HOST']);
+
 function url_determiner() {
     
     $http_host = $_SERVER['HTTP_HOST'];
