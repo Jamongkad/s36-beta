@@ -89,13 +89,14 @@
                 </div>
                 <div class="g1of5">
                     <label>RATING</label>
-                    <select>
+                    <select name="rating-limit">
                         <option>All</option>
                         <?foreach(array_reverse(range(1, 5)) as $rating):?>
-                            <option><?=$rating?></option>
+                            <option value="<?=$rating?>"><?=$rating?></option>
                         <?endforeach?> 
                     </select>
                 </div>
+                <?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
                 <div class="g1of5">
                     <label>CATEGORY</label>
                     <?$cat = new Category; ?>
@@ -106,6 +107,7 @@
                         <?endforeach?>
                     </select>
                 </div>
+                <?endif?>
                 <div class="g1of5">
                     <label>Display</label>
                     <?$limit = Input::get('limit')?>

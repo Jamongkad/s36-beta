@@ -12,11 +12,11 @@ return array(
     }),
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        
+        print_r("Requesting Feedback"); 
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        
+        print_r("Adding Feedback");
     }),
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 

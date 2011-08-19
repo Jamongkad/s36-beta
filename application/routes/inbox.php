@@ -3,11 +3,14 @@
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {
 
-        $limit = 10;
+        $limit   = 10;
         $site_id = False;
+        $rating  = null;
+    
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
         if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
+        if(Input::get('rating')) $rating = (int)Input::get('rating');
 
         $feedback = new Feedback;
         $category = new Category;

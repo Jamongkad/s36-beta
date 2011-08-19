@@ -149,6 +149,10 @@ jQuery(function($) {
     $('select[name="feedback-limit"]').bind('change', function(e) {
         window.location = "?limit=" + $(this).val();
     });
+
+    $('select[name="rating-limit"]').bind('change', function(e) {
+        window.location = "?rating=" + $(this).val();
+    });
     
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
