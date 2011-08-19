@@ -30,34 +30,34 @@
             </div>
             <div class="left-menu">
             	<ul id="nav-menu">
-                    <? $left_side_nav = Helpers::left_side_nav(); ?>
-                    <li<?=($left_side_nav->dashboard ? ' class="selected dashboard"' : ' class="dashboard"')?>>
+                    <? $regex = Helpers::nav_regex(); ?>
+                    <li<?=($regex->dashboard ? ' class="selected dashboard"' : ' class="dashboard"')?>>
                         <?=HTML::link('dashboard/', 'Dashboard')?>
-                       <?=($left_side_nav->dashboard ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($left_side_nav->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
+                    <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all', 'Inbox')?>
-                       <?=($left_side_nav->inbox ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                     </li>                 
-                    <li<?=($left_side_nav->published ? ' class="selected published"' : ' class="published"')?>>
+                    <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all', 'Published')?>
-                       <?=($left_side_nav->published ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($left_side_nav->featured ? ' class="selected featured"' : ' class="featured"')?>>
+                    <li<?=($regex->featured ? ' class="selected featured"' : ' class="featured"')?>>
                         <?=HTML::link('inbox/featured/all', 'Featured')?>
-                       <?=($left_side_nav->featured ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->featured ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($left_side_nav->profanity ? ' class="selected filed"' : ' class="filed"')?>>
+                    <li<?=($regex->filed ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('inbox/filed/all', 'Filed Feedback')?>
-                       <?=($left_side_nav->profanity ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($left_side_nav->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
+                    <li<?=($regex->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
                         <?=HTML::link('feedsetup', 'Feedback Setup')?>
-                       <?=($left_side_nav->feedsetup ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($left_side_nav->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
+                    <li<?=($regex->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
                         <?=HTML::link('contacts', 'Contacts')?>
-                       <?=($left_side_nav->contacts ? '<div class="arrow-right"></div>' : null)?>
+                       <?=($regex->contacts ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                 </ul>
             </div>
@@ -122,32 +122,32 @@
                         DASHBOARD <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                <?if($regex->inbox):?>
                     <div class="current-page inbox"> 
                         INBOX <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                <?if($regex->published):?>
                     <div class="current-page published"> 
                         PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                <?if($regex->featured):?>
                     <div class="current-page featured"> 
                         FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                <?if($regex->filed):?>
                     <div class="current-page filed"> 
                         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
+                <?if($regex->feedsetup):?>
                     <div class="current-page setup"> 
                         FEEDBACK SETUP <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
-                <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
+                <?if($regex->contacts):?>
                     <div class="current-page contacts"> 
                         CONTACTS <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>

@@ -5,9 +5,8 @@ return array(
 
         $limit   = 10;
         $site_id = False;
-        $rating  = null;
+        $rating  = False;
     
-
         if(Input::get('limit')) $limit = (int)Input::get('limit');
         if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
         if(Input::get('rating')) $rating = (int)Input::get('rating');
@@ -18,7 +17,7 @@ return array(
 
         $offset = ($pagination->get_page() - 1) * $limit;
 
-        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id);
+        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id, $rating);
         /*
         $embedded_block = $feedback->show_embedded_block();
         print_r($embedded_block);

@@ -5,6 +5,7 @@ use Request;
 class Helpers {
 
     private static $request;
+    private static $regex;
 
     public static function request() {
         return Request::uri();
@@ -31,18 +32,17 @@ class Helpers {
     }
 
     public static function nav_switcher() { 
+        self::$regex = self::nav_regex();
 
-        self::$request = self::request();
-
-        if(preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches)) {
-            return Array('inbox/all', 'inbox/4', 'inbox/1', 'inbox/3', 'inbox/profanity', 'inbox/flagged', 'inbox/mostcontent');
+        if(self::$regex->inbox) {
+            return Array('inbox/all', 'inbox/positive', 'inbox/negative', 'inbox/neutral', 'inbox/profanity', 'inbox/flagged', 'inbox/mostcontent');
         }
 
         $the_navs = Array('published', 'featured', 'filed');
 
         foreach($the_navs as $nav) {    
-            if(preg_match_all('/'.$nav.'\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches)) { 
-                return Array('inbox/'.$nav.'/all', 'inbox/'.$nav.'/4', 'inbox/'.$nav.'/1', 'inbox/'.$nav.'/3', 
+            if(self::$regex->{$nav}) { 
+                return Array('inbox/'.$nav.'/all', 'inbox/'.$nav.'/positive', 'inbox/'.$nav.'/negative', 'inbox/'.$nav.'/neutral', 
                              'inbox/'.$nav.'/profanity', 'inbox/'.$nav.'/flagged', 'inbox/'.$nav.'/mostcontent');
             }
         }
@@ -50,16 +50,16 @@ class Helpers {
 
     }
 
-    public static function left_side_nav() { 
+    public static function nav_regex() { 
 
         self::$request = self::request();
 
         return (object)Array( 
             'dashboard' => self::$request == 'dashboard',
-            'inbox'     => preg_match_all('/inbox\/(all|[0-9]+|profanity|flagged|mostcontent)/', self::$request, $matches),
-            'published' => preg_match_all('/published\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
-            'featured'  => preg_match_all('/featured\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
-            'profanity' => preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', self::$request, $matches),
+            'inbox'     => preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
+            'published' => preg_match_all('/published\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
+            'featured'  => preg_match_all('/featured\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
+            'filed'     => preg_match_all('/filed\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
             'feedsetup' => preg_match_all('/(feedsetup|displaysetup|displaypreview)/', self::$request, $matches),
             'contacts'  => preg_match_all('/contacts|contacts\/(important|request)/', self::$request, $matches),
         );

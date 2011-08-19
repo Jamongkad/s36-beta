@@ -12,16 +12,16 @@ class Feedback {
             $this->user_id = S36Auth::user()->userid;        
     }
     
-    //TODO: Clean this shit up
-    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False, $site_id=False) {
+    //TODO: CODE SMELL consider using an object holder instead
+    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False, $site_id=False, $rating=False) {
       
         $rating_statement    = Null;
         $profanity_statement = Null;
         $flagged_statement   = Null;
-        $filed_statement     = Null;
         $rating_choices      = Null;
         $siteid_statement    = Null;
         
+        $filed_statement       = 'AND Feedback.categoryId = 1';
         $mostcontent_statement = 'Feedback.dtAdded DESC';
         $is_deleted   = 0;
         $is_published = 0;
@@ -33,20 +33,8 @@ class Feedback {
 
         if($filter != False) {
    
-            if(in_array($filter, range(1, 5)) or in_array($choice, range(1, 5))) {
-                if($filter == 4 || $choice == 4) {
-                    $rating_choices = '4,5';
-                } 
-
-                if($filter == 1 || $choice == 1) {
-                    $rating_choices = '1,2';
-                }
-
-                if($filter == 3 || $choice == 3) {
-                    $rating_choices = 3;
-                }
-               
-                $rating_statement = "AND Feedback.rating IN ($rating_choices)";     
+            if( $rating and in_array($rating, range(1, 5)) ) { 
+                $rating_statement = "AND Feedback.rating IN ($rating)";     
             }
 
             if(is_string($filter)) {
@@ -64,6 +52,18 @@ class Feedback {
 
                 if($filter == 'filed' || $choice == 'filed') {
                     $filed_statement = "AND Feedback.categoryId != 1";
+                }
+
+                if($filter == 'positive' || $choice == 'positive') {
+                    $rating_statement = "AND Feedback.rating IN (4,5)";     
+                }
+
+                if($filter == 'negative' || $choice == 'negative') {
+                    $rating_statement = "AND Feedback.rating IN (1,2)";     
+                }
+
+                if($filter == 'neutral' || $choice == 'neutral') {
+                    $rating_statement = "AND Feedback.rating IN (3)";     
                 }
 
                 if($filter == 'deleted') {
@@ -363,7 +363,7 @@ class Feedback {
                     ON Site.siteId = Feedback.siteId
                 INNER JOIN User
                     ON User.userId = :user_id
-                    $column 
+                    $column, categoryId = 1 
                 WHERE 1=1
                     AND User.companyId = Site.companyId
                     AND Feedback.feedbackId IN ($block_ids)

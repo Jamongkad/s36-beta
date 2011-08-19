@@ -9,9 +9,9 @@
     $links = Helpers::nav_switcher();
     $nav_links_name = Array(
           Array('key' => 'SHOW ALL', 'val' => 'all')
-        , Array('key' => 'POSITIVE', 'val' => 4)
-        , Array('key' => 'NEGATIVE', 'val' => 1)
-        , Array('key' => 'NEUTRAL', 'val' => 3)  
+        , Array('key' => 'POSITIVE', 'val' => 'positive')
+        , Array('key' => 'NEGATIVE', 'val' => 'negative')
+        , Array('key' => 'NEUTRAL', 'val' => 'neutral')  
         , Array('key' => 'CONTAINS PROFANITY', 'val' => 'profanity') 
         , Array('key' => 'FLAGGED', 'val' => 'flagged')
         , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
@@ -92,11 +92,13 @@
                     <select name="rating-limit">
                         <option>All</option>
                         <?foreach(array_reverse(range(1, 5)) as $rating):?>
-                            <option value="<?=$rating?>"><?=$rating?></option>
+                            <option value="<?=$rating?>" <?=((Input::get('rating') == $rating) ? 'selected' : null)?>><?=$rating?></option>
                         <?endforeach?> 
                     </select>
                 </div>
-                <?if(preg_match_all('/filed\/(all|profanity|flagged|mostcontent|[0-9]+)/', Request::uri(), $matches)):?>
+                <?
+                $regex = Helpers::nav_regex();
+                if($regex->filed):?>
                 <div class="g1of5">
                     <label>CATEGORY</label>
                     <?$cat = new Category; ?>

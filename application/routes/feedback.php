@@ -30,6 +30,8 @@ return array(
     'GET /feedback/changecat' => function() use ($feedback) {
         $feedback_id = Input::get('feedid');
         $cat_id = Input::get('catid');
+        $affected = DB::table('Feedback')->where('feedbackId', '=', $feedback_id)
+                                         ->update(Array('isDeleted' => 0, 'isPublished' => 0, 'isFeatured' => 0));
         $feedback->_change_feedback('categoryId', $feedback_id, $cat_id);
     },
 
