@@ -13,6 +13,7 @@ Checky.prototype.init = function() {
         var checkFeed = me.check_feed_id;
         var ifChecked = checkFeed.is(':checked');
         var currentUrl = $(location).attr('href');
+        var baseUrl = $(this).attr('base-url');
 
         var collection = new Array();
        
@@ -25,7 +26,7 @@ Checky.prototype.init = function() {
             if(mode == 'restore' || mode == 'inbox') {
                 conf = confirm("Are you sure you want to restore these feedbacks?");     
                 color = '#fef1b5';
-                goto_url = '/index.php/inbox/all';
+                goto_url = 'inbox/all';
             }
            
             if(mode == 'remove') {
@@ -36,19 +37,19 @@ Checky.prototype.init = function() {
             if(mode == 'publish') {
                 conf = confirm("Are you sure want to publish these feedbacks?");     
                 color = '#66cd00';
-                goto_url = '/index.php/inbox/published/all';
+                goto_url = 'inbox/published/all';
             }
            
             if(mode == 'feature') {
                 conf = confirm("Are you sure want to feature these feedbacks?");     
                 color = '#fbec5d';
-                goto_url = '/index.php/inbox/featured/all';
+                goto_url = 'inbox/featured/all';
             }
            
             if(mode == 'delete') {
                 conf = confirm("Are you sure want to delete these feedbacks?");     
                 color = '#fef1b5';
-                goto_url = '/index.php/inbox/deleted';
+                goto_url = 'inbox/deleted';
             } 
 
             if(conf) {
@@ -74,7 +75,7 @@ Checky.prototype.init = function() {
             hideLink.innerHTML = "hide";
 
             var gotoLink = document.createElement("a");
-            gotoLink.setAttribute("href", goto_url);
+            gotoLink.setAttribute("href", baseUrl + goto_url);
             gotoLink.style.color = "#00688b";
             gotoLink.style.fontSize = "0.7em";
             gotoLink.style.marginLeft = "5px";

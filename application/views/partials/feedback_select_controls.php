@@ -22,11 +22,12 @@ if(!preg_match_all('/inbox\/deleted/', Request::uri(), $matches)):?>
         unset($links['feature']);     
     }
 
-    echo Form::select('delete_selection', $links, 'none', array('class' => 'delete-selection', 'hrefaction' => URL::to('/feedback/fire_multiple')));?>
+    echo Form::select('delete_selection', $links, 'none', 
+         array('class' => 'delete-selection', 'hrefaction' => URL::to('/feedback/fire_multiple'), 'base-url' => URL::to('/')) );?>
 <?else:?>
     <?=Form::select('delete_selection', Array(
         'none' => '-'
       , 'restore' => 'Restore'
       , 'remove' => 'Permanently Delete'
-     ), 'none', array('class' => 'delete-selection', 'hrefaction' => URL::to('/feedback/fire_multiple')));?>
+     ), 'none', array('class' => 'delete-selection', 'hrefaction' => URL::to('/feedback/fire_multiple'), 'base-url' => URL::to('/')));?>
 <?endif?>
