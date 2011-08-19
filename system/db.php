@@ -15,113 +15,44 @@ class DB {
 	 *
 	 * Note: Database connections are managed as singletons.
 	 *
-	 * @param  string  $connection
-	 * @return PDO
+	 * @param  string         $connection
+	 * @return DB\Connection
 	 */
 	public static function connection($connection = null)
 	{
-		if (is_null($connection))
-		{
-			$connection = Config::get('db.default');
-		}
+		if (is_null($connection)) $connection = Config::get('db.default');
 
 		if ( ! array_key_exists($connection, static::$connections))
 		{
-			static::$connections[$connection] = DB\Connector::connect($connection);
+			if (is_null($config = Config::get('db.connections.'.$connection)))
+			{
+				throw new \Exception("Database connection [$connection] is not defined.");
+			}
+
+			static::$connections[$connection] = new DB\Connection($connection, (object) $config, new DB\Connector);
 		}
 
 		return static::$connections[$connection];
 	}
 
 	/**
-	 * Execute a SQL query against the connection and return the first result.
-	 *
-	 * @param  string  $sql
-	 * @param  array   $bindings
-	 * @param  string  $connection
-	 * @return object
-	 */
-	public static function first($sql, $bindings = array(), $connection = null)
-	{
-		return (count($results = static::query($sql, $bindings, $connection)) > 0) ? $results[0] : null;
-	}
-
-	/**
-	 * Execute a SQL query against the connection.
-	 *
-	 * The method returns the following based on query type:
-	 *
-	 *     SELECT -> Array of stdClasses
-	 *     UPDATE -> Number of rows affected.
-	 *     DELETE -> Number of Rows affected.
-	 *     ELSE   -> Boolean true / false depending on success.
-	 *
-	 * @param  string  $sql
-	 * @param  array   $bindings
-	 * @param  string  $connection
-	 * @return array
-	 */
-	public static function query($sql, $bindings = array(), $connection = null)
-	{
-		$query = static::connection($connection)->prepare($sql);
-
-		$result = $query->execute($bindings);
-
-		if (strpos(strtoupper($sql), 'SELECT') === 0)
-		{
-			return $query->fetchAll(\PDO::FETCH_CLASS, 'stdClass');
-		}
-		elseif (strpos(strtoupper($sql), 'UPDATE') === 0 or strpos(strtoupper($sql), 'DELETE') === 0)
-		{
-			return $query->rowCount();
-		}
-		else
-		{
-			return $result;
-		}
-	}
-
-	/**
 	 * Begin a fluent query against a table.
 	 *
-	 * This method is simply a convenient shortcut into Query::table.
-	 *
-	 * @param  string  $table
-	 * @param  string  $connection
-	 * @return Query
+	 * @param  string    $table
+	 * @param  string    $connection
+	 * @return DB\Query
 	 */
 	public static function table($table, $connection = null)
 	{
-		return new DB\Query($table, $connection);
+		return static::connection($connection)->table($table);
 	}
 
 	/**
-	 * Get the driver name for a database connection.
-	 *
-	 * @param  string  $connection
-	 * @return string
+	 * Magic Method for calling methods on the default database connection.
 	 */
-	public static function driver($connection = null)
+	public static function __callStatic($method, $parameters)
 	{
-		return static::connection($connection)->getAttribute(\PDO::ATTR_DRIVER_NAME);
-	}
-
-	/**
-	 * Get the table prefix for a database connection.
-	 *
-	 * @param  string  $connection
-	 * @return string
-	 */
-	public static function prefix($connection = null)
-	{
-		$connections = Config::get('db.connections');
-
-		if (is_null($connection))
-		{
-			$connection = Config::get('db.default');
-		}
-
-		return (array_key_exists('prefix', $connections[$connection])) ? $connections[$connection]['prefix'] : '';
+		return call_user_func_array(array(static::connection(), $method), $parameters);
 	}
 
 }
