@@ -350,7 +350,7 @@ class Feedback {
             'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
           , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0'
           , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1'
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0' 
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0' 
           , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
         );
 

@@ -56,6 +56,7 @@ class Helpers {
 
         return (object)Array( 
             'dashboard' => self::$request == 'dashboard',
+            'deleted'   => preg_match_all('/deleted/', self::$request, $matches),
             'inbox'     => preg_match_all('/inbox\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
             'published' => preg_match_all('/published\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
             'featured'  => preg_match_all('/featured\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),

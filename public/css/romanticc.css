@@ -345,3 +345,7 @@ div.undo-bar {
     border-radius:12px;
     margin:2px 5px;
 }
+
+.delete-selection {
+    width: 50%;    
+}

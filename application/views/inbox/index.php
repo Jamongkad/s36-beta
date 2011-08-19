@@ -11,6 +11,10 @@
                         <?=HTML::image('img/avatar-matthew.png')?>
                     </div>
                     <div class="feedback-details">
+                        <?
+                        $regex = Helpers::nav_regex();
+                        if(!$regex->deleted):
+                        ?>
                         <div class="options">
                             <input type="button" class="check" 
                             <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/publishfeedback'), ' style="background-position: 0px bottom"') ?>/>
@@ -31,6 +35,8 @@
                             <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/featurefeedback'), ' style="background-position: -60px bottom"') ?>/>
                             <input type="button" class="contact" />
                         </div>
+                        <?endif?>
+
                         <div class="author-info">
                             <h3><?=$feed->firstname?> <?=$feed->lastname?><span><?=$feed->countryname?>, <?=$feed->countrycode?></span></h3>
                             <p><?=$feed->text?></p>
