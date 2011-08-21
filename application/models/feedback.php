@@ -13,7 +13,7 @@ class Feedback {
     }
     
     //TODO: CODE SMELL consider using an object holder instead
-    public function pull_feedback($limit=5, $offset=0, $filter=False, $choice=False, $site_id=False, $rating=False) {
+    public function pull_feedback($opts) {
       
         $rating_statement    = Null;
         $profanity_statement = Null;
@@ -27,54 +27,54 @@ class Feedback {
         $is_published = 0;
         $is_featured  = 0;
 
-        if($site_id != False) {
-           $siteid_statement = "AND Feedback.siteId = $site_id";
+        if($opts['site_id'] != False) {
+           $siteid_statement = "AND Feedback.siteId = {$opts['site_id']}";
         }
 
-        if($filter != False) {
+        if($opts['filter'] != False) {
    
-            if( $rating and in_array($rating, range(1, 5)) ) { 
-                $rating_statement = "AND Feedback.rating IN ($rating)";     
+            if( $opts['rating'] and in_array($opts['rating'], range(1, 5)) ) { 
+                $rating_statement = "AND Feedback.rating IN ({$opts['rating']})";     
             }
 
-            if(is_string($filter)) {
-                if($filter == 'profanity' || $choice == 'profanity') {
+            if(is_string($opts['filter'])) {
+                if($opts['filter'] == 'profanity' || $opts['choice'] == 'profanity') {
                     $profanity_statement = "AND Feedback.hasProfanity = 1";
                 }
 
-                if($filter == 'mostcontent' || $choice == 'mostcontent') {
+                if($opts['filter'] == 'mostcontent' || $opts['choice'] == 'mostcontent') {
                     $mostcontent_statement = "LENGTH(textlength) DESC";
                 }
 
-                if($filter == 'flagged' || $choice == 'flagged') {
+                if($opts['filter'] == 'flagged' || $opts['choice'] == 'flagged') {
                     $flagged_statement = "AND Feedback.isFlagged = 1";
                 }
 
-                if($filter == 'filed' || $choice == 'filed') {
+                if($opts['filter'] == 'filed' || $opts['choice'] == 'filed') {
                     $filed_statement = "AND Feedback.categoryId != 1";
                 }
 
-                if($filter == 'positive' || $choice == 'positive') {
+                if($opts['filter'] == 'positive' || $opts['choice'] == 'positive') {
                     $rating_statement = "AND Feedback.rating IN (4,5)";     
                 }
 
-                if($filter == 'negative' || $choice == 'negative') {
+                if($opts['filter'] == 'negative' || $opts['choice'] == 'negative') {
                     $rating_statement = "AND Feedback.rating IN (1,2)";     
                 }
 
-                if($filter == 'neutral' || $choice == 'neutral') {
+                if($opts['filter'] == 'neutral' || $opts['choice'] == 'neutral') {
                     $rating_statement = "AND Feedback.rating IN (3)";     
                 }
 
-                if($filter == 'deleted') {
+                if($opts['filter'] == 'deleted') {
                     $is_deleted = 1; 
                 }
 
-                if($filter == 'published') {
+                if($opts['filter'] == 'published') {
                     $is_published = 1;     
                 }
 
-                if($filter == 'featured') {
+                if($opts['filter'] == 'featured') {
                     $is_featured = 1; 
                 }
             }
@@ -145,8 +145,8 @@ class Feedback {
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
         $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
-        $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $sth->bindParam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindParam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");

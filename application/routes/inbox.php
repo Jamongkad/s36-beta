@@ -17,7 +17,8 @@ return array(
 
         $offset = ($pagination->get_page() - 1) * $limit;
 
-        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id, $rating);
+        $records = $feedback->pull_feedback(array('limit'=> $limit, 'offset'=> $offset, 'filter'=> $filter, 
+                                                  'choice'=> $choice, 'site_id'=> $site_id, 'rating'=> $rating));
         /*
         $embedded_block = $feedback->show_embedded_block();
         print_r($embedded_block);
