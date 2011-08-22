@@ -36,7 +36,7 @@ return array(
     },
 
     //TODO: Duplicate code find a way to abstract this
-    'POST /feedback/changestatus' => function() use ($feedback) {
+    'POST /feedback/changestatus' => function() use ($feedback) { 
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
 
@@ -50,15 +50,28 @@ return array(
     },
 
     'POST /feedback/flagfeedback' => function() use ($feedback) {  
-        $feedback->_change_feedback('isFlagged', Input::get('feedid'), Input::get('state'));
+        $feed_id = Input::get('feed_ids');
+        $feedback->_change_feedback('isFlagged', $feed_id[0], Input::get('state'));
     },
-    
+     
     'POST /feedback/featurefeedback' => function() use ($feedback){
-        $feedback->_change_feedback('isFeatured', Input::get('feedid'), Input::get('state'));
+        //$feedback->_change_feedback('isFeatured', Input::get('feedid'), Input::get('state'));
     },
  
-    'POST /feedback/publishfeedback' => function() use ($feedback){
-        $feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
+    'POST /feedback/publishfeedback' => function() use ($feedback) {
+        //$feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
+    },
+    
+    'POST /feedback/change_feedback_state' => function() use ($feedback) { 
+        $feed_ids = Input::get('feed_ids');
+        $mode     = Input::get('col');
+        $state    = Input::get('state');
+        
+        if($state == 0) {
+            $mode = 'inbox';
+        }       
+
+        $feedback->_toggle_multiple($mode, $feed_ids);
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
@@ -70,7 +83,6 @@ return array(
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
-
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col');
         $feedback->_toggle_multiple($mode, $feed_ids);

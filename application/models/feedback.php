@@ -347,11 +347,12 @@ class Feedback {
     public function _toggle_multiple($mode, $block_id) { 
 
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0'
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1'
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0'
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, categoryId = 1'
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, categoryId = 1'
           , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0' 
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0'
+          , 'flag'    => 'SET isFlagged = 1'
         );
 
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
@@ -363,7 +364,7 @@ class Feedback {
                     ON Site.siteId = Feedback.siteId
                 INNER JOIN User
                     ON User.userId = :user_id
-                    $column, categoryId = 1 
+                    $column
                 WHERE 1=1
                     AND User.companyId = Site.companyId
                     AND Feedback.feedbackId IN ($block_ids)
@@ -372,6 +373,7 @@ class Feedback {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
+
     }
 
     private function _toggle_state($table, $where_column, $id, $column, $state) {  

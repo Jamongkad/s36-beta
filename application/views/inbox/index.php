@@ -17,7 +17,7 @@
                         ?>
                         <div class="options">
                             <input type="button" class="check" 
-                            <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/publishfeedback'), ' style="background-position: 0px bottom"') ?>/>
+                            <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                             <input type="button" class="save fileas" />
                             <div class="base-popup category-picker-holder">
                             <div class="popup-arrow"></div>
@@ -29,18 +29,16 @@
                                      <?endforeach?>
                                  </ul>
                             </div>
-
                             <input type="button" class="reply" />
                             <input type="button" class="feature" 
-                            <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/featurefeedback'), ' style="background-position: -60px bottom"') ?>/>
-                            <input type="button" class="contact" />
+                            <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                            <input type="button" class="contact" /> 
                         </div>
                         <?endif?>
-
                         <div class="author-info">
                             <h3><?=$feed->firstname?> <?=$feed->lastname?><span><?=$feed->countryname?>, <?=$feed->countrycode?></span></h3>
                             <p><?=$feed->text?></p>
-                        </div>
+                        </div> 
                         <div class="feedback-meta">
                             <?$rating = $feed->rating?>
                             <?if($rating == 1 || $rating == 2):?>
@@ -97,6 +95,7 @@
                         <?endif?>
                     </div>
                 </div>
+                <span class="status-message"></span>
             </div>
         </div>
     <?endforeach?>
