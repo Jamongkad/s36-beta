@@ -20,11 +20,12 @@
                             <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                             <input type="button" class="save fileas" />
                             <div class="base-popup category-picker-holder">
-                            <div class="popup-arrow"></div>
+                                 <div class="popup-arrow"></div>
                                  <ul class="category-picker">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feed->id, $cat->name)?>
+                                             <?//=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feed->id, $cat->name)?>
+                                             <?=HTML::link('feedback/changecat/'.$cat->id.'/'.$feed->id, $cat->name)?>
                                          </li>
                                      <?endforeach?>
                                  </ul>

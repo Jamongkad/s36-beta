@@ -16,12 +16,19 @@ $.fn.switcharoo = function(background_pos) {
             $(this).attr('state', 1);
             $(this).css({'background-position': background_pos});
 
-            if(class_name == 'check') 
-                $(this).siblings('.feature').removeAttr('style').attr('state', 0);  
-                     
-            if(class_name == 'feature') 
-                $(this).siblings('.check').removeAttr('style').attr('state', 0);       
+            var reset_cat_state = $(this).siblings('.fileas').siblings('.category-picker-holder').children('.category-picker').children('li').removeClass("Matched").
+                                                                                                            end().children('li:first-child').addClass("Matched");
 
+            if(class_name == 'check') {
+                $(this).siblings('.feature').removeAttr('style').attr('state', 0);
+                reset_cat_state;
+            }
+           
+                     
+            if(class_name == 'feature') {
+                $(this).siblings('.check').removeAttr('style').attr('state', 0);
+                reset_cat_state;
+            }
         }
 
         if(state == 1) {

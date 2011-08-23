@@ -344,14 +344,15 @@ class Feedback {
         return $this->_toggle_state('FeedbackBlock', 'feedbackblockId', $block_id, $column, $state);
     }
 
-    public function _toggle_multiple($mode, $block_id) { 
+    public function _toggle_multiple($mode, $block_id, $extra=False) { 
 
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0'
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, categoryId = 1'
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, categoryId = 1'
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0' 
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0'
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0, isArchived = 0'
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, categoryId = 1, isArchived = 0'
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, categoryId = 1, isArchived = 0'
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, categoryId = 1' 
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0, isArchived = 0'
+          , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
 

@@ -27,12 +27,23 @@ return array(
     }),
 
     //Ajax Functions...
-    'GET /feedback/changecat' => function() use ($feedback) {
+    'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
+       
+        /* 
+        print_r($cat_id);
         $feedback_id = Input::get('feedid');
         $cat_id = Input::get('catid');
         $affected = DB::table('Feedback')->where('feedbackId', '=', $feedback_id)
                                          ->update(Array('isDeleted' => 0, 'isPublished' => 0, 'isFeatured' => 0));
         $feedback->_change_feedback('categoryId', $feedback_id, $cat_id);
+        $feedback->_toggle_multiple('fileas', Array($feed_id));
+        */
+        if($cat_id == 1) {
+            $feedback->_toggle_multiple('fileas', Array($feed_id), ",isArchived = 0, categoryId = $cat_id");     
+        } else {  
+            $feedback->_toggle_multiple('fileas', Array($feed_id), ",isArchived = 1, categoryId = $cat_id");     
+        }
+       
     },
 
     //TODO: Duplicate code find a way to abstract this
@@ -53,7 +64,8 @@ return array(
         $feed_id = Input::get('feed_ids');
         $feedback->_change_feedback('isFlagged', $feed_id[0], Input::get('state'));
     },
-     
+    
+    /* DEPRECATED
     'POST /feedback/featurefeedback' => function() use ($feedback){
         //$feedback->_change_feedback('isFeatured', Input::get('feedid'), Input::get('state'));
     },
@@ -61,6 +73,7 @@ return array(
     'POST /feedback/publishfeedback' => function() use ($feedback) {
         //$feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
     },
+    */
     
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids = Input::get('feed_ids');

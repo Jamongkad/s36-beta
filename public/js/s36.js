@@ -19,7 +19,9 @@ jQuery(function($) {
             $(this).addClass('Matched');
         }
 
-        $.ajax({type: "GET", url: href});
+        $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
+        $(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">ARCHIVED: '+li.text()+"</span>");
+        $.ajax( { type: "POST", url: href } );
         e.preventDefault();
     });
 
