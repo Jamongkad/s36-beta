@@ -17,6 +17,11 @@ class S36Auth {
         return static::$user;
     }
 
+    public static function user_site() { 
+        return DB::table('User', static::$db_name)->join('Site', 'Site.companyId', '=', 'User.companyId')
+                                ->where('User.userId', '=', Session::get(static::$user_id))->get(Array('Site.siteId'));
+    }
+
     public static function login($username, $password) {
         
         $user = DB::table('User', static::$db_name)->where('email', '=', $username)

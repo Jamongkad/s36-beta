@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 17, 2011 at 10:59 PM
+-- Generation Time: Aug 24, 2011 at 03:28 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.2
 
@@ -659,14 +659,15 @@ CREATE TABLE IF NOT EXISTS `Company` (
   PRIMARY KEY (`companyId`),
   KEY `Company_Plan_planId` (`planId`),
   KEY `Company_Site_defaultSiteId` (`defaultSiteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Company`
 --
 
 INSERT INTO `Company` (`companyId`, `name`, `planId`, `billTo`, `tagInactive`, `tagInactiveDays`, `deleteIgnored`, `replyTo`, `digestPeriod`, `ffEmail1`, `ffEmail2`, `ffEmail3`, `defaultSiteId`) VALUES
-(1, 'Razer', 3, 'Razer, LLC', 1, 25, 1, 'feedback@razer.com', 1, 'feedback+ryan@razer.com', NULL, NULL, 1);
+(1, 'Razer', 3, 'Razer, LLC', 1, 25, 1, 'feedback@razer.com', 1, 'feedback+ryan@razer.com', NULL, NULL, 1),
+(2, 'YGiraffe', 1, 'YGiraffe, LLC', 1, 25, 1, 'feedback@ygiraffec.com', 1, 'feedback+mathew@ygiraffe.com', NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -791,6 +792,105 @@ INSERT INTO `Contact` (`contactId`, `siteId`, `firstName`, `lastName`, `email`, 
 (96, 1, 'hgjhj', '', 'hjhj@fgf.gfgf', 1, 'hjghk', 'hfgj', 'jghk', '', ''),
 (97, 1, 'sdf', '', 'rrer@fdf.fdf', 1, '', '', '', '', ''),
 (98, 1, 'sdgdfg', '', 'sdfsdf@fdf.ff', 1, '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Copy_Feedback`
+--
+
+CREATE TABLE IF NOT EXISTS `Copy_Feedback` (
+  `feedbackId` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `siteId` int(10) unsigned NOT NULL,
+  `contactId` bigint(20) unsigned NOT NULL,
+  `categoryId` int(10) unsigned NOT NULL,
+  `formId` bigint(20) unsigned NOT NULL,
+  `status` enum('new','inprogress','closed') CHARACTER SET utf8 DEFAULT NULL,
+  `rating` tinyint(1) unsigned NOT NULL,
+  `text` varchar(1500) CHARACTER SET utf8 DEFAULT NULL,
+  `dtAdded` datetime NOT NULL,
+  `isFeatured` tinyint(1) NOT NULL,
+  `priority` tinyint(2) unsigned NOT NULL DEFAULT '99',
+  `license` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `textLength` smallint(4) unsigned NOT NULL DEFAULT '0',
+  `isFlagged` tinyint(1) DEFAULT '0',
+  `isPublished` tinyint(1) DEFAULT '0',
+  `isArchived` tinyint(1) DEFAULT '0',
+  `isSticked` tinyint(1) DEFAULT '0',
+  `isDeleted` tinyint(1) DEFAULT '0',
+  `hasProfanity` tinyint(1) DEFAULT '0',
+  `displayName` tinyint(1) DEFAULT '1',
+  `displayImg` tinyint(1) DEFAULT '1',
+  `displayCompany` tinyint(1) DEFAULT '1',
+  `displayPosition` tinyint(1) DEFAULT '1',
+  `displayURL` tinyint(1) DEFAULT '1',
+  `displayCountry` tinyint(1) DEFAULT '1',
+  `displaySbmtDate` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Copy_Feedback`
+--
+
+INSERT INTO `Copy_Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `formId`, `status`, `rating`, `text`, `dtAdded`, `isFeatured`, `priority`, `license`, `textLength`, `isFlagged`, `isPublished`, `isArchived`, `isSticked`, `isDeleted`, `hasProfanity`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
+(1, 1, 1, 1, 1, 'inprogress', 5, 'sodkoskgos odkgo skdogk skdogksod giw egureo gjerip gpejrgj ipergp kerogk[ kw[ekgo kweiogkj iwekgi jigji sdgok sodkgo skdogks odkgosdk gosjdigjiwje wepkg dijg weirgj ergoijerg erpiojg eprjg oerog rgjr ijieji eij gjdgj djgdklj dgsd ;gs;dg sdijgspdgjspdgjsdipgjspdgjisodpfjivjsdv ckdsmcosdk', '2011-02-07 12:35:02', 0, 20, 2, 253, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(3, 1, 3, 1, 1, 'new', 4, 'I like the Backlight and the profile management. The "keys" are soft and I like its revestiment', '2011-01-31 18:12:27', 0, 20, 2, 95, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(4, 1, 4, 1, 1, 'new', 5, 'The keyboard is cool for hacking terminators :)', '2011-02-15 18:12:27', 0, 60, 3, 47, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(5, 1, 21, 1, 1, 'new', 5, 'qwrerewrwe', '2011-04-22 19:22:48', 0, 0, 2, 10, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(6, 1, 23, 1, 1, 'new', 5, 'fggdfgdfg', '2011-04-22 20:20:49', 0, 0, 1, 9, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(9, 1, 27, 1, 1, 'new', 4, 'review', '2011-04-25 15:26:14', 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(10, 1, 28, 1, 1, 'new', 4, 'another review', '2011-04-25 15:29:01', 0, 0, 2, 14, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(11, 1, 34, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:14:26', 0, 0, 1, 25, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(12, 1, 35, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:18:45', 0, 0, 1, 25, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(13, 1, 36, 1, 1, 'new', 5, 'gfdgdfgfd', '2011-04-27 12:30:57', 0, 0, 1, 9, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(14, 1, 37, 1, 1, 'new', 5, 'qwerty', '2011-04-27 12:32:11', 0, 0, 1, 6, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(15, 1, 38, 1, 1, 'new', 5, 'qwe', '2011-04-27 13:46:55', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(16, 1, 43, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf', '2011-04-27 16:58:12', 0, 0, 3, 15, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(17, 1, 44, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf\r\n\r\nfdsfsdfsdf', '2011-04-27 16:58:40', 0, 0, 3, 29, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(18, 1, 52, 1, 1, 'new', 5, 'fdgdfgdfg', '2011-04-27 18:44:32', 0, 0, 1, 9, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(19, 1, 53, 1, 1, 'new', 5, 'mega new', '2011-04-27 18:59:35', 0, 0, 3, 8, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(20, 1, 54, 1, 1, 'new', 5, 'qwewqeqw\r\newq\r\neq\r\ne\r\nwqeqwewqeqwe', '2011-04-28 17:18:26', 0, 20, 2, 34, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(21, 1, 55, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:19:38', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(22, 1, 56, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:21:32', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(23, 1, 57, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs', '2011-04-28 23:25:38', 0, 0, 3, 14, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(24, 1, 58, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs fuck this shit', '2011-04-28 23:26:31', 1, 0, 3, 14, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(25, 1, 59, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:15', 0, 0, 1, 22, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(26, 1, 60, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:23', 0, 0, 1, 22, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(27, 1, 61, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:29:08', 0, 0, 1, 7, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(28, 1, 62, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:30:39', 0, 0, 1, 7, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(29, 1, 76, 1, 1, 'new', 5, NULL, '2011-04-29 18:24:57', 0, 0, 1, 37, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(30, 1, 77, 1, 1, 'new', 5, 'cock suckers', '2011-04-29 18:29:16', 0, 0, 1, 37, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(31, 1, 82, 1, 1, 'new', 5, 'niggers', '2011-04-29 18:41:30', 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(32, 1, 83, 1, 1, 'new', 5, '', '2011-04-29 19:25:41', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(33, 1, 84, 1, 1, 'new', 5, 'sfdfsdfdfsdfdsfdsfsdfsd\nfsdfsdfsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '2011-04-29 19:31:01', 0, 0, 1, 193, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(34, 1, 85, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:37', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(35, 1, 86, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:39', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(36, 1, 87, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:41', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(37, 1, 88, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:42', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(38, 1, 89, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:43', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(39, 1, 90, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:44', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(40, 1, 91, 1, 1, 'new', 5, 'gdfgdfg', '2011-04-29 19:38:06', 0, 0, 1, 7, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(41, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:17', 0, 0, 1, 25, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(42, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:28', 0, 0, 1, 25, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1),
+(43, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 19:56:21', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(44, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:23', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(45, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:40', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(47, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(48, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(49, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(50, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(51, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(52, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(53, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(54, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(55, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(56, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(57, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(62, 1, 94, 1, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 1, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(63, 1, 95, 2, 1, 'inprogress', 4, 'gh', '2011-06-15 19:28:16', 0, 60, 1, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(64, 1, 1, 3, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 0, 100, 1, 9, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1073,14 +1173,14 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
 
 INSERT INTO `Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `formId`, `status`, `rating`, `text`, `dtAdded`, `isFeatured`, `priority`, `license`, `textLength`, `isFlagged`, `isPublished`, `isArchived`, `isSticked`, `isDeleted`, `hasProfanity`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
 (1, 1, 1, 1, 1, 'inprogress', 5, 'sodkoskgos odkgo skdogk skdogksod giw egureo gjerip gpejrgj ipergp kerogk[ kw[ekgo kweiogkj iwekgi jigji sdgok sodkgo skdogks odkgosdk gosjdigjiwje wepkg dijg weirgj ergoijerg erpiojg eprjg oerog rgjr ijieji eij gjdgj djgdklj dgsd ;gs;dg sdijgspdgjspdgjsdipgjspdgjisodpfjivjsdv ckdsmcosdk', '2011-02-07 12:35:02', 0, 20, 2, 253, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(3, 1, 3, 5, 1, 'new', 4, 'I like the Backlight and the profile management. The "keys" are soft and I like its revestiment', '2011-01-31 18:12:27', 0, 20, 2, 95, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(3, 1, 3, 1, 1, 'new', 4, 'I like the Backlight and the profile management. The "keys" are soft and I like its revestiment', '2011-01-31 18:12:27', 0, 20, 2, 95, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (4, 1, 4, 1, 1, 'new', 5, 'The keyboard is cool for hacking terminators :)', '2011-02-15 18:12:27', 0, 60, 3, 47, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (5, 1, 21, 1, 1, 'new', 5, 'qwrerewrwe', '2011-04-22 19:22:48', 0, 0, 2, 10, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (6, 1, 23, 1, 1, 'new', 5, 'fggdfgdfg', '2011-04-22 20:20:49', 0, 0, 1, 9, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (9, 1, 27, 1, 1, 'new', 4, 'review', '2011-04-25 15:26:14', 0, 0, 3, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (10, 1, 28, 1, 1, 'new', 4, 'another review', '2011-04-25 15:29:01', 0, 0, 2, 14, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (11, 1, 34, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:14:26', 0, 0, 1, 25, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(12, 1, 35, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:18:45', 0, 0, 1, 25, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(12, 1, 35, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:18:45', 0, 0, 1, 25, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (13, 1, 36, 1, 1, 'new', 5, 'gfdgdfgfd', '2011-04-27 12:30:57', 0, 0, 1, 9, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (14, 1, 37, 1, 1, 'new', 5, 'qwerty', '2011-04-27 12:32:11', 0, 0, 1, 6, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (15, 1, 38, 1, 1, 'new', 5, 'qwe', '2011-04-27 13:46:55', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
@@ -1092,45 +1192,44 @@ INSERT INTO `Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `form
 (21, 1, 55, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:19:38', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (22, 1, 56, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:21:32', 0, 0, 2, 3, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (23, 1, 57, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs', '2011-04-28 23:25:38', 0, 0, 3, 14, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(24, 1, 58, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs fuck this shit', '2011-04-28 23:26:31', 0, 0, 3, 14, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(24, 1, 58, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs fuck this shit', '2011-04-28 23:26:31', 1, 0, 3, 14, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
 (25, 1, 59, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:15', 0, 0, 1, 22, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (26, 1, 60, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:23', 0, 0, 1, 22, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (27, 1, 61, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:29:08', 0, 0, 1, 7, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (28, 1, 62, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:30:39', 0, 0, 1, 7, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (29, 1, 76, 1, 1, 'new', 5, NULL, '2011-04-29 18:24:57', 0, 0, 1, 37, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(30, 1, 77, 1, 1, 'new', 5, 'cock suckers', '2011-04-29 18:29:16', 0, 0, 1, 37, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
-(31, 1, 82, 3, 1, 'new', 5, 'niggers', '2011-04-29 18:41:30', 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(30, 1, 77, 1, 1, 'new', 5, 'cock suckers', '2011-04-29 18:29:16', 0, 0, 1, 37, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(31, 1, 82, 1, 1, 'new', 5, 'niggers', '2011-04-29 18:41:30', 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
 (32, 1, 83, 1, 1, 'new', 5, '', '2011-04-29 19:25:41', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (33, 1, 84, 1, 1, 'new', 5, 'sfdfsdfdfsdfdsfdsfsdfsd\nfsdfsdfsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '2011-04-29 19:31:01', 0, 0, 1, 193, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(34, 1, 85, 4, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:37', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(34, 1, 85, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:37', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (35, 1, 86, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:39', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (36, 1, 87, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:41', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (37, 1, 88, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:42', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (38, 1, 89, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:43', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(39, 1, 90, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:44', 0, 0, 1, 6, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(40, 1, 91, 1, 1, 'new', 5, 'gdfgdfg', '2011-04-29 19:38:06', 0, 0, 1, 7, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(41, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:17', 0, 0, 1, 25, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(42, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:28', 0, 0, 1, 25, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1),
+(39, 1, 90, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:44', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(40, 1, 91, 1, 1, 'new', 5, 'gdfgdfg', '2011-04-29 19:38:06', 0, 0, 1, 7, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(41, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:17', 0, 0, 1, 25, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(42, 1, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:28', 0, 0, 1, 25, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1),
 (43, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 19:56:21', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
 (44, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:23', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
 (45, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:40', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(47, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(48, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(49, 1, 93, 3, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(50, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(51, 1, 93, 3, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(52, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(47, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(48, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(49, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(50, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(51, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(52, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (53, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(54, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(55, 1, 93, 4, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(56, 1, 93, 4, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(57, 1, 93, 4, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(61, 1, 93, 3, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:43', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1),
-(62, 1, 94, 2, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 0, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(63, 1, 95, 1, 1, 'inprogress', 4, 'gh', '2011-06-15 19:28:16', 0, 60, 1, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(64, 1, 1, 3, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 0, 100, 1, 9, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1);
+(54, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(55, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(56, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(57, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 0, 3, 20, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 0, 3, 20, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(62, 1, 94, 1, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 1, 0, 1, 6, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(63, 1, 95, 2, 1, 'inprogress', 4, 'gh', '2011-06-15 19:28:16', 0, 60, 1, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(64, 1, 1, 3, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 0, 100, 1, 9, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1285,7 +1384,9 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `last_activity`, `data`) VALUES
-('aOskLWPzLU6UO5IbZaXmavKmArHcrp2dN8wMvKtY', 1313593106, 'a:3:{s:10:"csrf_token";s:16:"ux0hBbMSrkTGwU7H";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}');
+('z2TRpe5mnx0B41W1715jCQik58RAy3Z7CdWLdYaQ', 1314170808, 'a:3:{s:10:"csrf_token";s:16:"xNOcCEk413aK300U";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}'),
+('blysEepByEpLLDszxh1Ur1dWYBUNQxbqKoTDgeSW', 1314164938, 'a:3:{s:10:"csrf_token";s:16:"JUs7i4T9ovTsax6C";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:2:{s:8:"username";s:4:"ryan";s:8:"password";s:8:"p455w0rd";}}'),
+('RjdZSvuViY26jl4JN3eKP0z0bFMKEVN5CDOsJPWN', 1314164869, 'a:3:{s:10:"csrf_token";s:16:"x67LbFaH9mDoCGf8";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:2:{s:8:"username";s:4:"ryan";s:8:"password";s:8:"p455w0rd";}}');
 
 -- --------------------------------------------------------
 
@@ -1302,7 +1403,7 @@ CREATE TABLE IF NOT EXISTS `Site` (
   PRIMARY KEY (`siteId`),
   KEY `Site_Company_companyId` (`companyId`),
   KEY `Site_Form_defaultFormId` (`defaultFormId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `Site`
@@ -1310,7 +1411,9 @@ CREATE TABLE IF NOT EXISTS `Site` (
 
 INSERT INTO `Site` (`siteId`, `companyId`, `domain`, `name`, `defaultFormId`) VALUES
 (1, 1, 'razerzone.com', 'Razer', 1),
-(2, 1, 'google.com', 'google', 1);
+(2, 1, 'google.com', 'google', 1),
+(3, 2, 'www.yidgetsoft.com', 'yidgetsoft', 1),
+(4, 2, 'www.minesoft.com', 'minesoft', 1);
 
 -- --------------------------------------------------------
 
@@ -1387,7 +1490,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE KEY `company_user` (`companyId`,`username`),
   KEY `User_Company_companyId` (`companyId`),
   KEY `User_IM_imId` (`imId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `User`
@@ -1395,7 +1498,8 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 INSERT INTO `User` (`userId`, `companyId`, `username`, `password`, `email`, `fullName`, `title`, `phone`, `ext`, `mobile`, `fax`, `home`, `im`, `imId`, `avatar`) VALUES
 (1, 1, 'ryan', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'ryan@chua.com', 'Ryan Chua', 'CEO', '', '', '', '', '', 'ryanchua6', 3, NULL),
-(2, 1, 'budi', '$1$vKHia0ZE$FyNbOT8wNDGvTGV3IpkO01', 'budi@salim.com', 'Budiyono Salim', 'CTO', '', '', '', '', '', 'byonosalim@gmail.com', 2, NULL);
+(2, 1, 'budi', '$1$vKHia0ZE$FyNbOT8wNDGvTGV3IpkO01', 'budi@salim.com', 'Budiyono Salim', 'CTO', '', '', '', '', '', 'byonosalim@gmail.com', 2, NULL),
+(3, 2, 'mathew', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'mathew@ygiraffe.com', 'Mathew Wong', 'CEO', '', '', '', '', '', '', 4, NULL);
 
 --
 -- Constraints for dumped tables

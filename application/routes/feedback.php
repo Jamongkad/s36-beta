@@ -28,16 +28,7 @@ return array(
 
     //Ajax Functions...
     'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
-       
-        /* 
-        print_r($cat_id);
-        $feedback_id = Input::get('feedid');
-        $cat_id = Input::get('catid');
-        $affected = DB::table('Feedback')->where('feedbackId', '=', $feedback_id)
-                                         ->update(Array('isDeleted' => 0, 'isPublished' => 0, 'isFeatured' => 0));
-        $feedback->_change_feedback('categoryId', $feedback_id, $cat_id);
-        $feedback->_toggle_multiple('fileas', Array($feed_id));
-        */
+        //TODO: this could be better 
         if($cat_id == 1) {
             $feedback->_toggle_multiple('fileas', Array($feed_id), ",isArchived = 0, categoryId = $cat_id");     
         } else {  
@@ -46,7 +37,6 @@ return array(
        
     },
 
-    //TODO: Duplicate code find a way to abstract this
     'POST /feedback/changestatus' => function() use ($feedback) { 
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
@@ -64,17 +54,7 @@ return array(
         $feed_id = Input::get('feed_ids');
         $feedback->_change_feedback('isFlagged', $feed_id[0], Input::get('state'));
     },
-    
-    /* DEPRECATED
-    'POST /feedback/featurefeedback' => function() use ($feedback){
-        //$feedback->_change_feedback('isFeatured', Input::get('feedid'), Input::get('state'));
-    },
- 
-    'POST /feedback/publishfeedback' => function() use ($feedback) {
-        //$feedback->_change_feedback('isPublished', Input::get('feedid'), Input::get('state'));
-    },
-    */
-    
+     
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col');

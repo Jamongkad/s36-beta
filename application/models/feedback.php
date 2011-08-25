@@ -356,7 +356,8 @@ class Feedback {
           , 'flag'    => 'SET isFlagged = 1'
         );
 
-        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
+        if(array_key_exists($mode, $lookup)) $column = $lookup[$mode]; 
+
         $block_ids = implode(',', $block_id);
         
         $sql = "
@@ -492,7 +493,6 @@ class Feedback {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
-
     //This function will be called by JS to display feedback on user's site.
     public function show_embedded_feedback_block($company_id) {
 
@@ -532,6 +532,53 @@ class Feedback {
         $sth->execute();
 
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+
+    public function contact_detection_query($opts=False) {
+        //Set group_concat_max_length to 15000 characters
+        $concat_max_length_sql = "SET GLOBAL group_concat_max_len=15000";
+        $sth = $this->dbh->prepare($concat_max_length_sql);
+        $sth->execute();
+
+
+        $company_id = $opts['company_id'];
+        $feed_id = $opts['feed_id'];
+        $contact_id = $opts['contact_id'];
+        $site_ids = $opts['site_ids'];
+
+        $sql = "
+            SELECT
+                  Feedback.contactId 
+                , Site.domain
+                , Feedback.feedbackId
+                , COUNT(Feedback.feedbackId) AS FeedbackCount
+                , COUNT(Feedback.contactId) AS ContactCount
+                , FIND_IN_SET(:feed_id, GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR))) AS FindFeedId
+                , GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR)) AS FeedIds
+                , Site.name
+            FROM 
+                Feedback 
+            INNER JOIN
+                Site 
+                ON Feedback.siteId = Site.siteId
+            INNER JOIN
+                Contact
+                ON Contact.contactId = Feedback.contactId
+            WHERE 1=1
+                AND Feedback.siteId IN ($site_ids)
+                AND Site.companyId = :company_id
+                AND Contact.contactId = :contact_id
+            GROUP BY 
+                1,2
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->bindParam(':feed_id', $feed_id, PDO::PARAM_INT);
+        $sth->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 }

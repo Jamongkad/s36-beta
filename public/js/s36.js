@@ -18,9 +18,9 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
-
+        //TODO: maaaaaan clean this up!
         $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
-        $(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">ARCHIVED: '+li.text()+"</span>");
+        $(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">FILE AS: '+li.text()+"</span>");
         $.ajax( { type: "POST", url: href } );
         e.preventDefault();
     });
