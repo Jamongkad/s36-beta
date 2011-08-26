@@ -61,13 +61,12 @@ Checky.prototype.init = function() {
             if(conf) {
                checkFeed.each(function() {
                     if($(this).is(':checked')) {
-                        collection.push($(this).val());
-                        $('#' + $(this).val()).fadeOut(300, function() {
-                            $(this).remove();
-                        });
+                        collection.push( {    "feedid": $(this).val(), "contactid": $(this).siblings('.contact-feed-id').val()
+                                           , "siteid": $(this).siblings('.site-feed-id').val()} );
+                        $( '#' + $(this).val() ).fadeOut(300, function() { $(this).remove(); });
                     }
-                });    
-
+               });    
+               /*  
                contactFeed.each(function() {
                     if($(this).siblings('.check-feed-id').is(':checked')) {
                         contact_collection.push($(this).val()) ;
@@ -79,7 +78,7 @@ Checky.prototype.init = function() {
                         site_collection.push($(this).val()) ;
                     }
                });
- 
+               */ 
             }
             //revert to default -- select
             $("option:first", this).prop("selected", true);
@@ -125,15 +124,15 @@ Checky.prototype.init = function() {
                 type: "POST"      
               , data: {  col: mode
                        , feed_ids: collection
+                       /*
                        , site_ids: site_collection
                        , contact_ids: contact_collection
+                       */
                        , curl: currentUrl }
               , url: $(this).attr("hrefaction")
-              , success: function(msg) {
-                    checkFeed.attr('checked', false);
-              }
             });
 
+            checkFeed.attr('checked', false);
             collection.length         = 0;     
             contact_collection.length = 0;
             site_collection.length    = 0;

@@ -359,7 +359,8 @@ class Feedback {
 
         if(array_key_exists($mode, $lookup)) $column = $lookup[$mode]; 
 
-        $block_ids = implode(',', $block_id);
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
+        $block_ids = implode(',', $ids);
         
         $sql = "
             UPDATE Feedback
@@ -379,8 +380,19 @@ class Feedback {
 
     }
 
-    public function _permanentl_delete() {
-        
+    public function _permanent_delete($opts) { 
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
+        $block_ids = implode(',', $ids);
+        $sql = "
+            DELETE FROM 
+                Feedback 
+            WHERE 1=1
+                AND Feedback.isDeleted = 1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute();
     }
 
     private function _toggle_state($table, $where_column, $id, $column, $state) {  
@@ -540,17 +552,24 @@ class Feedback {
         return $result;
     }
 
-    public function contact_detection($opts=False) {
+    public function contact_detection($opts) {
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
+        $block_ids = implode(',', $ids);
+        $sql = "
+            DELETE FROM 
+                Feedback 
+            WHERE 1=1
+                AND Feedback.isDeleted = 1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
 
-        $company_id = $opts['company_id'];
-        $feed_id = $opts['feed_id'];
-        $contact_id = $opts['contact_id'];
-        $site_ids = $opts['site_ids'];
-
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute();
+        /*
         $sql = "
             SELECT
-                SQL_CALC_FOUND_ROWS 
-                Contact.contactId
+                  SQL_CALC_FOUND_ROWS 
+                  Contact.contactId
                 , Feedback.feedbackId
                 , Feedback.siteId
             FROM 
@@ -562,9 +581,9 @@ class Feedback {
                 AND Contact.contactID = :contact_id";
         
         $storage = Array();
-        foreach($contact_id as $ids) { 
+        foreach($opts as $obj) { 
             $sth = $this->dbh->prepare($sql);
-            $sth->bindParam(':contact_id', $ids, PDO::PARAM_INT);
+            $sth->bindParam(':contact_id', $obj['contactid'], PDO::PARAM_INT);
             $sth->execute();
 
             $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
@@ -576,9 +595,9 @@ class Feedback {
 
             $storage[] = $result_obj;
         }
-
+       
         return $storage;
-
+        */
 
         //Set group_concat_max_length to 15000 characters
 
