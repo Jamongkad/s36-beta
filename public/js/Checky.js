@@ -1,54 +1,60 @@
 function Checky(opts) {
     this.delete_selection = opts.delete_selection;
-    this.check_feed_id = opts.check_feed_id;
-    this.click_all = opts.click_all;
-    this.count = 0;
+    this.check_feed_id    = opts.check_feed_id;
+    this.contact_feed_id  = opts.contact_feed_id;
+    this.site_feed_id     = opts.site_feed_id;
+    this.click_all        = opts.click_all;
+    this.count            = 0;
 }
 
 Checky.prototype.init = function() {
     var me = this;    
    
     $(me.delete_selection).bind('change', function(e) {
-        var mode = $(this).val();
-        var checkFeed = me.check_feed_id;
-        var ifChecked = checkFeed.is(':checked');
-        var currentUrl = $(location).attr('href');
-        var baseUrl = $(this).attr('base-url');
+        var mode        = $(this).val();
+        var checkFeed   = me.check_feed_id;
+        var contactFeed = me.contact_feed_id;
+        var siteFeed    = me.site_feed_id;
+        var ifChecked   = checkFeed.is(':checked');
+        var currentUrl  = $(location).attr('href');
+        var baseUrl     = $(this).attr('base-url');
 
-        var collection = new Array();
+        var collection         = new Array();
+        var contact_collection = new Array();
+        var site_collection    = new Array();
        
         if(ifChecked && mode != 'none') { 
 
-            var conf = null; 
-            var color = null; 
+            var conf     = null; 
+            var color    = null; 
             var goto_url = null;
 
             if(mode == 'restore' || mode == 'inbox') {
-                conf = confirm("Are you sure you want to restore these feedbacks?");     
-                color = '#fef1b5';
+                conf     = confirm("Are you sure you want to restore these feedbacks?");     
+                color    = '#fef1b5';
                 goto_url = 'inbox/all';
             }
            
             if(mode == 'remove') {
-                conf = confirm("Are you sure you want to permanently remove these feedbacks?");                  
+                conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
                 color = '#fef1b5';
             }
            
             if(mode == 'publish') {
-                conf = confirm("Are you sure want to publish these feedbacks?");     
-                color = '#66cd00';
+                conf     = confirm("Are you sure want to publish these feedbacks?");     
+                color    = '#66cd00';
                 goto_url = 'inbox/published/all';
             }
            
             if(mode == 'feature') {
-                conf = confirm("Are you sure want to feature these feedbacks?");     
-                color = '#fbec5d';
+                conf     = confirm("Are you sure want to feature these feedbacks?");     
+                color    = '#fbec5d';
                 goto_url = 'inbox/featured/all';
             }
            
             if(mode == 'delete') {
-                conf = confirm("Are you sure want to delete these feedbacks?");     
-                color = '#fef1b5';
+                conf     = confirm("Are you sure want to delete these feedbacks?");     
+                color    = '#fef1b5';
                 goto_url = 'inbox/deleted';
             } 
 
@@ -61,6 +67,19 @@ Checky.prototype.init = function() {
                         });
                     }
                 });    
+
+               contactFeed.each(function() {
+                    if($(this).siblings('.check-feed-id').is(':checked')) {
+                        contact_collection.push($(this).val()) ;
+                    }
+               });
+
+               siteFeed.each(function() {
+                    if($(this).siblings('.check-feed-id').is(':checked')) {
+                        site_collection.push($(this).val()) ;
+                    }
+               });
+ 
             }
             //revert to default -- select
             $("option:first", this).prop("selected", true);
@@ -98,27 +117,30 @@ Checky.prototype.init = function() {
             }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink).show();
 
             $("#hide-checkybar").bind("click", function() {
-                $(this).parents(".checky-bar").hide();
-                if($(this).parents(".checky-bar").is(":hidden"))
-                    location.reload(); 
+                $(this).parents(".checky-bar").hide(); 
+                location.reload(); 
             });
 
             $.ajax({
                 type: "POST"      
-              , data: {col: mode, feed_ids: collection, curl: currentUrl}
+              , data: {  col: mode
+                       , feed_ids: collection
+                       , site_ids: site_collection
+                       , contact_ids: contact_collection
+                       , curl: currentUrl }
               , url: $(this).attr("hrefaction")
               , success: function(msg) {
-                    /*
-                    if(mode == 'restore') {
-                        location.reload(); 
-                    } 
-                    */
                     checkFeed.attr('checked', false);
               }
             });
-            collection.length = 0;     
+
+            collection.length         = 0;     
+            contact_collection.length = 0;
+            site_collection.length    = 0;
         } else {
-            collection.length = 0;     
+            collection.length         = 0;     
+            contact_collection.length = 0;
+            site_collection.length    = 0;
         } 
     });
 }

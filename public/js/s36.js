@@ -160,7 +160,8 @@ jQuery(function($) {
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
 
-    var check = new Checky({delete_selection: $('.delete-selection'), check_feed_id: $('.check-feed-id'), click_all: $('.click-all')});
+    var check = new Checky({ delete_selection: $('.delete-selection'), check_feed_id: $('.check-feed-id'), 
+                             contact_feed_id: $('.contact-feed-id'), site_feed_id: $('.site-feed-id'), click_all: $('.click-all') });
     check.init(); 
     check.clickAll();
 

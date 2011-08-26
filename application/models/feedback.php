@@ -12,7 +12,6 @@ class Feedback {
             $this->user_id = S36Auth::user()->userid;        
     }
     
-    //TODO: CODE SMELL consider using an object holder instead
     public function pull_feedback($opts) {
       
         $rating_statement    = Null;
@@ -102,10 +101,12 @@ class Feedback {
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted
+                , Contact.contactId AS contactid
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Country.name AS countryname
                 , Country.code AS countrycode
+                , Site.siteId AS siteid
                 , LENGTH(text) AS textlength
             FROM 
                 User
@@ -378,6 +379,10 @@ class Feedback {
 
     }
 
+    public function _permanentl_delete() {
+        
+    }
+
     private function _toggle_state($table, $where_column, $id, $column, $state) {  
         DB::table($table, 'master')
                   ->where($where_column, '=', $id)
@@ -535,12 +540,7 @@ class Feedback {
         return $result;
     }
 
-    public function contact_detection_query($opts=False) {
-        //Set group_concat_max_length to 15000 characters
-        $concat_max_length_sql = "SET GLOBAL group_concat_max_len=15000";
-        $sth = $this->dbh->prepare($concat_max_length_sql);
-        $sth->execute();
-
+    public function contact_detection($opts=False) {
 
         $company_id = $opts['company_id'];
         $feed_id = $opts['feed_id'];
@@ -549,12 +549,62 @@ class Feedback {
 
         $sql = "
             SELECT
+                SQL_CALC_FOUND_ROWS 
+                Contact.contactId
+                , Feedback.feedbackId
+                , Feedback.siteId
+            FROM 
+                Contact 
+            INNER JOIN
+                Feedback 
+                ON Feedback.contactId = Contact.contactId
+            WHERE 1=1 
+                AND Contact.contactID = :contact_id";
+        
+        $storage = Array();
+        foreach($contact_id as $ids) { 
+            $sth = $this->dbh->prepare($sql);
+            $sth->bindParam(':contact_id', $ids, PDO::PARAM_INT);
+            $sth->execute();
+
+            $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+            $result = $sth->fetchAll(PDO::FETCH_CLASS);
+            
+            $result_obj = new StdClass;
+            $result_obj->result = $result;
+            $result_obj->total_rows = $row_count->fetchColumn();
+
+            $storage[] = $result_obj;
+        }
+
+        return $storage;
+
+
+        //Set group_concat_max_length to 15000 characters
+
+        /*
+        $concat_max_length_sql = "SET GLOBAL group_concat_max_len=15000";
+        $sth = $this->dbh->prepare($concat_max_length_sql);
+        $sth->execute();
+
+        $company_id = $opts['company_id'];
+        $feed_id = $opts['feed_id'];
+        $contact_id = $opts['contact_id'];
+        $site_ids = $opts['site_ids'];
+
+        $feed_id_check = Array();
+        foreach($feed_id as $id) {
+            $feed_id_check[] = "FIND_IN_SET($id, GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR)))";
+        }
+        $set = implode(" OR ", $feed_id_check);
+
+        $sql = "
+            SELECT
                   Feedback.contactId 
                 , Site.domain
                 , Feedback.feedbackId
-                , COUNT(Feedback.feedbackId) AS FeedbackCount
-                , COUNT(Feedback.contactId) AS ContactCount
-                , FIND_IN_SET(:feed_id, GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR))) AS FindFeedId
+                , COUNT(Feedback.feedbackId) AS FeedbackCount 
+                , $set AS FoundFeedId
                 , GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR)) AS FeedIds
                 , Site.name
             FROM 
@@ -568,17 +618,18 @@ class Feedback {
             WHERE 1=1
                 AND Feedback.siteId IN ($site_ids)
                 AND Site.companyId = :company_id
-                AND Contact.contactId = :contact_id
+                AND Contact.contactId IN ($contact_id)
             GROUP BY 
                 1,2
         ";
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
-        $sth->bindParam(':feed_id', $feed_id, PDO::PARAM_INT);
-        $sth->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
+        //$sth->bindParam(':feed_id', $feed_id, PDO::PARAM_INT);
+        //$sth->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
+        */
     }
 }

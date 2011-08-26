@@ -76,9 +76,18 @@ return array(
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
-        $feed_ids = Input::get('feed_ids');
-        $mode     = Input::get('col');
-        $feedback->_toggle_multiple($mode, $feed_ids);
+        $feed_ids    = Input::get('feed_ids');
+        $site_ids    = Input::get('site_ids');
+        $contact_ids = Input::get('contact_ids');
+        $mode        = Input::get('col');
+
+        if($mode == 'remove') {
+            print_r(array_values(array_unique($site_ids)));
+            print_r(array_values(array_unique($contact_ids)));
+            print_r($feed_ids);
+        } else {
+            $feedback->_toggle_multiple($mode, $feed_ids);     
+        } 
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {

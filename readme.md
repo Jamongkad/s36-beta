@@ -1,2 +1,1 @@
-# 36Stories - Beta Application 
-# Working on it like a boss!
+### 36Stories - StarFox build 0.0.1
