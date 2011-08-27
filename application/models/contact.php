@@ -12,9 +12,8 @@ class Contact {
             $this->user_id = S36Auth::user()->userid;        
     }
 
-
     public function insert_new_contact($opts) {
          $id = DB::table('Contact', 'master')->insert_get_id($opts);
-         print_r($id);
+         return $id; 
     }
 }

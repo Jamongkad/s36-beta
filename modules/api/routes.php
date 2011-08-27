@@ -70,10 +70,20 @@ return array(
           , 'avatar'    => Input::get('cropped_image_dir')
         );
 
-        $ct->insert_new_contact($contact_data);
-        //print_r($contact_data);
-        //$id = db::table('Contact')->insert_get_id($contact_data);
-        //print_r($id);
+        $contact_id = $ct->insert_new_contact($contact_data);
+        
+        $feedback_data = Array(
+            'siteId' => Input::get('site_id')
+          , 'contactId' => $contact_id
+          , 'categoryId' => 1
+          , 'formId' => 1
+          , 'status' => 'new'
+          , 'rating' => Input::get('rating')
+          , 'text' => Input::get('feedback')
+          , 'dtAdded' => date('Y-m-d H:i:s', time())
+        );
+
+        DB::table('Feedback')->insert($feedback_data);
     },
 
     'GET /api/test_blob' => function() {
