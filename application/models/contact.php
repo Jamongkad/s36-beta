@@ -20,8 +20,7 @@ class Contact {
          $stmt = $this->dbh->prepare($sql);
 
          $countryCode = DB::table('Country', 'master')->where('code', '=', $opts->countryId)->first();
-         print_r($countryCode->countryid);
-         /*
+
          $stmt->bindParam(':siteId', $opts->site_id);
          $stmt->bindParam(':firstName', $opts->firstName);
          $stmt->bindParam(':lastName', $opts->lastName);
@@ -32,9 +31,8 @@ class Contact {
          $stmt->bindParam(':companyName', $opts->companyName);
          $stmt->bindParam(':website', $opts->website);
          $stmt->bindParam(':avatar', $opts->avatar);
-         $result = $stmt->execute(); 
-         */
-
+         $stmt->execute(); 
+        
          //print_r($this->dbh->lastInsertId());
     }
 }
