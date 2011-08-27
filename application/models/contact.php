@@ -38,18 +38,7 @@ class Contact {
          */
 
          $countryCode = DB::table('Country', 'master')->where('code', '=', $opts->countryId)->first();
-         $id = DB::table('Contact')->insert_get_id(Array(
-             'siteId'    => $opts->site_id
-           , 'firstName' => $opts->firstName
-           , 'lastName'  => $opts->lastName
-           , 'email'     => $opts->email
-           , 'countryId' => $countryCode->countryId
-           , 'position'  => $opts->position
-           , 'city'      => $opts->city
-           , 'companyName' => $opts->companyName
-           , 'website'     => $opts->website
-           , 'avatar'      => $opts->avatar
-         ));
+         $id = DB::table('Contact', 'master')->insert_get_id($opts);
          print_r($id);
     }
 }

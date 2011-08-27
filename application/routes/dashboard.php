@@ -5,18 +5,25 @@ return array(
         return View::of_layout()->partial('contents', 'dashboard/index');
     }),
 
-    'GET /dashboard/test' => Array('name' => 'dashboard', 'before' => 's36_auth', 'do' => function() {
-        //looking at the output of this algorithm I wrote....what the fuck am I doing? 
-        $fb = new Feedback;
-        $data = Array(
-            'company_id' => 1 //from session object
-          , 'feed_id'    => Array(44, 17, 64, 1, 43) //from post vars
-          , 'contact_id' => Array(93, 1)//implode(',', Array(1))
-          , 'site_ids'   => implode(',', Array(1, 2))
-        ); 
+    'GET /dashboard/test' => function() {  
+        $ct = new Contact;
+        //fuck naive assumption...
 
-        echo "<pre>";
-        print_r($fb->contact_detection($data));
-        echo "</pre>";
-    }),
+        $name = explode(" ", Input::get('name'));
+        $contact_data = Array(
+            'siteId'    => 1
+          , 'firstName' => "Mathew"
+          , 'lastName'  => "Wong"
+          , 'email'     => "wrm932@gmail.com"
+          , 'countryId' => 166
+          , 'position'  => "CTO"
+          , 'city'      => "Manila"
+          , 'companyName' => "Zenith Labs"
+          , 'website'   => "http://www.mathew.com"
+          , 'avatar'    => "penguin.png"
+        );
+        //$ct->insert_new_contact($contact_data);
+        $id = db::table('contact')->insert_get_id($contact_data);
+        print_r($id);
+    },
 );
