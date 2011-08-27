@@ -30,7 +30,8 @@ class Contact {
          $stmt->bindParam(':city', $opts->city);
          $stmt->bindParam(':companyName', $opts->companyName);
          $stmt->bindParam(':website', $opts->website);
-         $stmt->bindParam(':avatar', $opts->avatar);
+         //$stmt->bindParam(':avatar', $opts->avatar); 
+         $stmt->bindParam(':avatar', "Test");
          $stmt->execute(); 
         
          //print_r($this->dbh->lastInsertId());
