@@ -51,6 +51,8 @@ return array(
 
     'POST /api/submit_feedback' => function() {
         $fb = new Feedback;
+        $ct = new Contact;
+        print_r($ct);
         print_r($_POST);
     },
 
