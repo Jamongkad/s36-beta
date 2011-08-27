@@ -68,7 +68,7 @@ return array(
           , 'avatar'    => Input::get('cropped_image_dir')
         );
         //$ct->insert_new_contact($contact_data);
-        $id = db::table('contact')->insert_get_id($contact_data);
+        $id = db::table('Contact')->insert_get_id($contact_data);
         print_r($id);
     },
 
