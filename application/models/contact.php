@@ -19,7 +19,7 @@ class Contact {
 
          $stmt = $this->dbh->prepare($sql);
 
-         $countryCode = DB::table('Country', 'master')->where('code', '=', $opts->countryId)->get(Array('countryId'))->first();
+         $countryCode = DB::table('Country', 'master')->where('code', '=', $opts->countryId)->first();
          print_r($countryCode);
          
          /*
