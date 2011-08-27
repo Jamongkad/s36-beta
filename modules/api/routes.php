@@ -55,7 +55,7 @@ return array(
 
         //fuck naive assumption...
         $name = explode(" ", Input::get('name'));
-        /*
+
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => $name[0]
@@ -68,9 +68,10 @@ return array(
           , 'website'   => Input::get('email')
           , 'avatar'    => Input::get('cropped_image_dir')
         );
-        */
-        //$ct->insert_new_contact($contact_data);
+        print_r($contact_data);
 
+        //$ct->insert_new_contact($contact_data);
+        /*
         $contact_data = Array(
             'siteId'    => 1
           , 'firstName' => "Mathew"
@@ -85,6 +86,7 @@ return array(
         );
         $id = db::table('Contact')->insert_get_id($contact_data);
         print_r($id);
+        */
     },
 
     'GET /api/test_blob' => function() {
