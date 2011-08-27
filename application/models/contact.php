@@ -14,6 +14,25 @@ class Contact {
 
 
     public function insert_new_contact($opts) {
-        print_r($opts);
+         $sql = "INSERT INTO Contact (siteId, firstName, lastName, email, countryId, position, city, companyName, website, avatar) 
+                              VALUES (:siteId, :firstName, :lastName, :email, :countryId, :position, :city, :companyName, :website, :avatar)";
+
+         $stmt = $this->dbh->prepare($sql);
+
+         $countryCode = DB::table('Country', 'master')->where('code', '=', $opts->countryId)->get(Array('countryId'))->first();
+         print_r($countryCode);
+         
+         /*
+         $stmt->bindParam(':siteId', $opts->site_id);
+         $stmt->bindParam(':firstName', $opts->firstName);
+         $stmt->bindParam(':lastName', $opts->lastName);
+         $stmt->bindParam(':email', $opts->email);
+         $stmt->bindParam(':countryId', $opts->countryId);
+         $stmt->bindParam(':position', $opts->position);
+         $stmt->bindParam(':city', $opts->city);
+         $stmt->bindParam(':companyName', $opts->companyName);
+         $stmt->bindParam(':website', $opts->website);
+         $stmt->bindParam(':avatar', $opts->avatar);
+         */
     }
 }

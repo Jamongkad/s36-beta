@@ -55,7 +55,6 @@ return array(
 
         //fuck naive assumption...
         $name = explode(" ", Input::get('name'));
-
         $contact_data = (Object)Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => $name[0]
