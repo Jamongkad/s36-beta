@@ -56,14 +56,13 @@ return array(
         //fuck naive assumption...
         $name = explode(" ", Input::get('name'));
         $country = DB::table('Country', 'master')->where('code', '=', Input::get('country'))->first();
-        print_r($country);
-        /*
+
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => $name[0]
           , 'lastName'  => $name[1]
           , 'email'     => Input::get('email')
-          , 'countryId' => $country->countryId
+          , 'countryId' => $country->countryid
           , 'position'  => Input::get('position')
           , 'city'      => Input::get('city')
           , 'companyName' => Input::get('company')
@@ -73,7 +72,7 @@ return array(
         //print_r($contact_data);
         $id = db::table('Contact')->insert_get_id($contact_data);
         print_r($id);
-        */
+
 
         //$ct->insert_new_contact($contact_data);
         /*
