@@ -69,28 +69,11 @@ return array(
           , 'website'   => Input::get('email')
           , 'avatar'    => Input::get('cropped_image_dir')
         );
+
+        $ct->insert_new_contact($contact_data);
         //print_r($contact_data);
-        $id = db::table('Contact')->insert_get_id($contact_data);
-        print_r($id);
-
-
-        //$ct->insert_new_contact($contact_data);
-        /*
-        $contact_data = Array(
-            'siteId'    => 1
-          , 'firstName' => "Mathew"
-          , 'lastName'  => "Wong"
-          , 'email'     => "wrm932@gmail.com"
-          , 'countryId' => 166
-          , 'position'  => "CTO"
-          , 'city'      => "Manila"
-          , 'companyName' => "Zenith Labs"
-          , 'website'   => "http://www.mathew.com"
-          , 'avatar'    => "penguin.png"
-        );
-        $id = db::table('Contact')->insert_get_id($contact_data);
-        print_r($id);
-        */
+        //$id = db::table('Contact')->insert_get_id($contact_data);
+        //print_r($id);
     },
 
     'GET /api/test_blob' => function() {
