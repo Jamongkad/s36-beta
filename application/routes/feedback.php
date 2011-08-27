@@ -27,14 +27,16 @@ return array(
     }),
 
     //Ajax Functions...
-    'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
+    'POST /feedback/changecat/(:num)/(:num)/(:num)/(:num)' => function($cat_id, $feed_id, $contact_id, $site_id) use ($feedback) {
         //TODO: this could be better 
+        $feed_obj = Array('feedid' => $feed_id, 'siteid' => $site_id, 'contact_id' => $contact_id);
+
         if($cat_id == 1) {
-            $feedback->_toggle_multiple('fileas', Array($feed_id), ",isArchived = 0, categoryId = $cat_id");     
+            $feedback->_toggle_multiple('fileas', Array($feed_obj), ",isArchived = 0, categoryId = $cat_id");     
         } else {  
-            $feedback->_toggle_multiple('fileas', Array($feed_id), ",isArchived = 1, categoryId = $cat_id");     
+            $feedback->_toggle_multiple('fileas', Array($feed_obj), ",isArchived = 1, categoryId = $cat_id");     
         }
-       
+ 
     },
 
     'POST /feedback/changestatus' => function() use ($feedback) { 

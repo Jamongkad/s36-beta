@@ -50,6 +50,7 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => function() {
+        $fb = new Feedback;
         print_r($_POST);
     },
 

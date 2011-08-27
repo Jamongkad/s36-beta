@@ -17,60 +17,62 @@
         , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
     );
 ?>
-<div class="admin-nav-bar">
+<?if(!preg_match('/deleted/', Request::uri())):?>
+    <div class="admin-nav-bar">
+            <ul>
+                <?for($i=0; $i < count($links); $i++):?>
+                    <li>
+                        <?=HTML::link($links[$i], $nav_links_name[$i]['key'], 
+                                      Array('class' => (Helpers::filter_highlighter($nav_links, $nav_links_name[$i]['val'])) ? 'selected' : null));?>   
+                    </li>
+                <?endfor?>
 
-        <ul>
-            <?for($i=0; $i < count($links); $i++):?>
-                <li>
-                    <?=HTML::link($links[$i], $nav_links_name[$i]['key'], 
-                                  Array('class' => (Helpers::filter_highlighter($nav_links, $nav_links_name[$i]['val'])) ? 'selected' : null));?>   
-                </li>
-            <?endfor?>
+                <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
+                    <?
+                        $feedsetup_nav = Array(
+                             'feedsetup' => 'FEATURED FEEDBACK SETUP'
+                           , 'feedsetup/displayfeedback' => 'FEEDBACK DISPLAY SETUP'
+                           , 'feedsetup/displaysetup' => 'POPUP DISPLAY SETUP'
+                           , 'feedsetup/displaypreview' => 'DISPLAY PREVIEW'
+                        );
+                    ?>
 
-            <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
-                <?
-                    $feedsetup_nav = Array(
-                         'feedsetup' => 'FEATURED FEEDBACK SETUP'
-                       , 'feedsetup/displayfeedback' => 'FEEDBACK DISPLAY SETUP'
-                       , 'feedsetup/displaysetup' => 'POPUP DISPLAY SETUP'
-                       , 'feedsetup/displaypreview' => 'DISPLAY PREVIEW'
-                    );
-                ?>
-
-                <?foreach($feedsetup_nav as $name => $value):?>
-                    <li><?=HTML::link($name, $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
-                <?endforeach?>
+                    <?foreach($feedsetup_nav as $name => $value):?>
+                        <li><?=HTML::link($name, $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                    <?endforeach?>
+                   
+                <?endif?>
                
-            <?endif?>
-           
-            <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
-                <li><?=HTML::link('contacts', 'LIST OF CONTACTS', 
-                       Array('class' => (Helpers::filter_highlighter(array('contacts')) ? 'selected' : null)))?></li>
-                <li><?=HTML::link('contacts/important', 'IMPORTANT',
-                       Array('class' => (Helpers::filter_highlighter(array('contacts/important')) ? 'selected' : null)))?></li>
-                <li><?=HTML::link('contacts/request', 'REQUEST FEEDBACK', 
-                       Array('class' => (Helpers::filter_highlighter(array('contacts/request')) ? 'selected' : null)))?></li>
-            <?endif?>
-        </ul>
-
-</div>
+                <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
+                    <li><?=HTML::link('contacts', 'LIST OF CONTACTS', 
+                           Array('class' => (Helpers::filter_highlighter(array('contacts')) ? 'selected' : null)))?></li>
+                    <li><?=HTML::link('contacts/important', 'IMPORTANT',
+                           Array('class' => (Helpers::filter_highlighter(array('contacts/important')) ? 'selected' : null)))?></li>
+                    <li><?=HTML::link('contacts/request', 'REQUEST FEEDBACK', 
+                           Array('class' => (Helpers::filter_highlighter(array('contacts/request')) ? 'selected' : null)))?></li>
+                <?endif?>
+            </ul>
+    </div>
+<?endif?>
 <!-- end of top navigation bar -->
 <?if(!preg_match_all('/(feedsetup|displaysetup|displaypreview|contacts)/', Request::uri(), $matches)):?>
-    <div class="admin-filter-bar">
-        <div class="admin-filter-select">
-            <select>
-                <option>Select form</option>
-            </select>
+    <?if(!preg_match('/deleted/', Request::uri())):?>
+        <div class="admin-filter-bar">
+            <div class="admin-filter-select">
+                <select>
+                    <option>Select form</option>
+                </select>
+            </div>
+            <div class="admin-filter-search">
+                <input type="text" class="search" value="Search..." />
+            </div>
+            
+            <div class="admin-filter-datepicker">
+                <input type="text" class="datepicker" value="Jan 12, 2011 - Jan 12, 2011" />
+            </div>
+            <div class="c"></div>
         </div>
-        <div class="admin-filter-search">
-            <input type="text" class="search" value="Search..." />
-        </div>
-        
-        <div class="admin-filter-datepicker">
-            <input type="text" class="datepicker" value="Jan 12, 2011 - Jan 12, 2011" />
-        </div>
-        <div class="c"></div>
-    </div>
+    <?endif;?>
     <!-- top blue bar with filter options -->
     <div class="admin-sorter-bar">
         <div class="sorter-bar">

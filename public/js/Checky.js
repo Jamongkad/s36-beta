@@ -66,19 +66,6 @@ Checky.prototype.init = function() {
                         $( '#' + $(this).val() ).fadeOut(300, function() { $(this).remove(); });
                     }
                });    
-               /*  
-               contactFeed.each(function() {
-                    if($(this).siblings('.check-feed-id').is(':checked')) {
-                        contact_collection.push($(this).val()) ;
-                    }
-               });
-
-               siteFeed.each(function() {
-                    if($(this).siblings('.check-feed-id').is(':checked')) {
-                        site_collection.push($(this).val()) ;
-                    }
-               });
-               */ 
             }
             //revert to default -- select
             $("option:first", this).prop("selected", true);
@@ -119,19 +106,16 @@ Checky.prototype.init = function() {
                 $(this).parents(".checky-bar").hide(); 
                 location.reload(); 
             });
-
+            console.log(collection);
+            /*
             $.ajax({
                 type: "POST"      
               , data: {  col: mode
                        , feed_ids: collection
-                       /*
-                       , site_ids: site_collection
-                       , contact_ids: contact_collection
-                       */
                        , curl: currentUrl }
               , url: $(this).attr("hrefaction")
             });
-
+            */
             checkFeed.attr('checked', false);
             collection.length         = 0;     
             contact_collection.length = 0;

@@ -26,8 +26,7 @@
                                  <ul class="category-picker">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?//=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feed->id, $cat->name)?>
-                                             <?=HTML::link('feedback/changecat/'.$cat->id.'/'.$feed->id, $cat->name)?>
+                                             <?=HTML::link('feedback/changecat/'.$cat->id.'/'.$id.'/'.$feed->contactid.'/'.$feed->siteid, $cat->name)?>
                                          </li>
                                      <?endforeach?>
                                  </ul>
