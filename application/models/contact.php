@@ -14,6 +14,6 @@ class Contact {
 
 
     public function insert_new_contact($opts) {
-        
+        print_r($opts);
     }
 }
