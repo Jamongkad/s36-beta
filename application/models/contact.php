@@ -32,7 +32,7 @@ class Contact {
          $stmt->bindParam(':website', $opts->website);
          $stmt->bindParam(':avatar', $opts->avatar);
          $result = $stmt->execute(); 
-         print_r($result);
-         print_r($this->dbh->lastInsertId());
+
+         //print_r($this->dbh->lastInsertId());
     }
 }
