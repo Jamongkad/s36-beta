@@ -8,8 +8,6 @@ return array(
     'GET /dashboard/test' => function() {  
         $ct = new Contact;
         //fuck naive assumption...
-
-        $name = explode(" ", Input::get('name'));
         $contact_data = Array(
             'siteId'    => 1
           , 'firstName' => "Mathew"
