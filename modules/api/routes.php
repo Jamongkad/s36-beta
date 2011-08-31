@@ -53,24 +53,20 @@ return array(
         $fb = new Feedback;
         $ct = new Contact;
 
-        print_r($_POST);
-
         //fuck naive assumption...
-        /*
-        $name = explode(" ", Input::get('name'));
         $country = DB::table('Country', 'master')->where('code', '=', Input::get('country'))->first();
 
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
-          , 'firstName' => $name[0]
-          , 'lastName'  => $name[1]
+          , 'firstName' => Input::get('first_name')
+          , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
           , 'countryId' => $country->countryid
           , 'position'  => Input::get('position')
           , 'city'      => Input::get('city')
           , 'companyName' => Input::get('company')
           , 'website'   => Input::get('email')
-          , 'avatar'    => Input::get('cropped_image_dir')
+          , 'avatar'    => Input::get('cropped_image_nm')
         );
 
         $contact_id = $ct->insert_new_contact($contact_data);
@@ -86,7 +82,6 @@ return array(
         );
 
         DB::table('Feedback')->insert($feedback_data);
-        */
     },
 
     'GET /api/test_blob' => function() {
