@@ -19,10 +19,6 @@ return array(
 
         $records = $feedback->pull_feedback(array('limit'=> $limit, 'offset'=> $offset, 'filter'=> $filter, 
                                                   'choice'=> $choice, 'site_id'=> $site_id, 'rating'=> $rating));
-        /*
-        $embedded_block = $feedback->show_embedded_block();
-        print_r($embedded_block);
-        */       
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
           

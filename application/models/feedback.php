@@ -104,6 +104,7 @@ class Feedback {
                 , Contact.contactId AS contactid
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
+                , Contact.avatar AS avatar
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , Site.siteId AS siteid
@@ -218,6 +219,7 @@ class Feedback {
                 , Contact.website AS url
                 , Contact.city AS city
                 , Contact.companyName AS companyname
+                , Contact.avatar AS avatar
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , LENGTH(text) AS textlength
@@ -289,7 +291,7 @@ class Feedback {
                 , Contact.website AS url
                 , Contact.city AS city
                 , Contact.companyName AS companyname
-                , Contact.avatar AS img
+                , Contact.avatar AS avatar
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating

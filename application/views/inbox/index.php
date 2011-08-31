@@ -10,6 +10,7 @@
             <div class="right">
                 <div class="g4of5">
                     <div class="feedback-avatar"> 
+                        <?=$feed->avatar?>
                         <?=HTML::image('img/avatar-matthew.png')?>
                     </div>
                     <div class="feedback-details">
