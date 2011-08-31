@@ -1,5 +1,6 @@
 <?php
-function url_determiner() {
+
+function host_determiner() {
     
     $http_host = $_SERVER['HTTP_HOST'];
 
@@ -21,7 +22,7 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-    'url' => url_determiner(),
+    'url' => host_determiner(),
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index

@@ -75,7 +75,6 @@ return array(
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
-          , 'categoryId' => 1
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => Input::get('rating')
