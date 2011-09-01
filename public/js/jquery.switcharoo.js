@@ -16,8 +16,8 @@ $.fn.switcharoo = function(background_pos) {
             $(this).attr('state', 1);
             $(this).css({'background-position': background_pos});
 
-            var reset_cat_state = $(this).siblings('.fileas').siblings('.category-picker-holder').children('.category-picker').children('li').removeClass("Matched").
-                                                                                                            end().children('li:first-child').addClass("Matched");
+            var reset_cat_state = $(this).siblings('.fileas').siblings('.category-picker-holder').children('.category-picker').children('li').removeClass("Matched")
+                                         .end().children('li:first-child').addClass("Matched");
 
             if(class_name == 'check') {
                 $(this).siblings('.feature').removeAttr('style').attr('state', 0);
@@ -88,7 +88,7 @@ $.fn.switcharoo = function(background_pos) {
            
         }
     
-        $.ajax( { type: "POST", url: feedurl, data: {"col": col, "state": var_state, "feed_ids": [feedid]} } );
+        $.ajax( { type: "POST", url: feedurl, data: {"col": col, "state": var_state, "feed_ids": [ {"feedid": feedid} ]} } );
         e.preventDefault(); 
     });
 }

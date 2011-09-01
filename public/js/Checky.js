@@ -106,8 +106,8 @@ Checky.prototype.init = function() {
                 $(this).parents(".checky-bar").hide(); 
                 location.reload(); 
             });
-            console.log(collection);
-            /*
+            //console.log(collection);
+
             $.ajax({
                 type: "POST"      
               , data: {  col: mode
@@ -115,7 +115,7 @@ Checky.prototype.init = function() {
                        , curl: currentUrl }
               , url: $(this).attr("hrefaction")
             });
-            */
+
             checkFeed.attr('checked', false);
             collection.length         = 0;     
             contact_collection.length = 0;
