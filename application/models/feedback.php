@@ -249,7 +249,7 @@ class Feedback {
                     GROUP BY
                         1
                     ORDER BY  
-                        Feedback.dtAdded 
+                        Feedback.dtAdded DESC
                     LIMIT :offset, :limit 
         ');
         
