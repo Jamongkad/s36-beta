@@ -54,14 +54,18 @@ return array(
         $ct = new Contact;
     
         //fuck naive assumption...
-        $country = DB::table('Country', 'master')->where('code', '=', Input::get('country'))->first();
+        $countryId = Null;
+        if($country_input = Input::get('country')) {
+            $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
+            $countryId = $country->countryid;
+        }
 
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => Input::get('first_name')
           , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
-          , 'countryId' => $country->countryid
+          , 'countryId' => $countryId
           , 'position'  => Input::get('position')
           , 'city'      => Input::get('city')
           , 'companyName' => Input::get('company')
