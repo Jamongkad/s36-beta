@@ -52,9 +52,9 @@ return array(
     'POST /api/submit_feedback' => function() {
         $fb = new Feedback;
         $ct = new Contact;
-        print_r($_POST);
+
         //fuck naive assumption...
-        /*
+
         $countryId = Null;
         if($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
@@ -87,7 +87,7 @@ return array(
         );
 
         DB::table('Feedback')->insert($feedback_data);
-        */ 
+
     },
 
     'GET /api/test_blob' => function() {
