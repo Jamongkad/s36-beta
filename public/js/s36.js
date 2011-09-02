@@ -114,7 +114,8 @@ jQuery(function($) {
             } 
 
             deleteSup.addClass('count').html(deleteSupNum); 
-
+            
+            //WTF DOES THIS MEAN??
             if(deleteMode == 'single' || !deleteMode) { 
 
                 $.ajax({
@@ -138,9 +139,57 @@ jQuery(function($) {
         });
     }
  
-    $('.check').switcharoo('0px bottom');
+    //$('.check').switcharoo('0px bottom');
+    //$('.feature').switcharoo('-60px bottom');
+    var count = 0;
+    var collection = {};
+    $('.check, .feature').bind("click", function() {
+        //keep track of state for url + color switching.
+        var currentState = $(this).attr('style'); 
+        var feedid = $(this).attr('feedid');      
+        $(this).parents('.feedback').fadeOut(700, function() {
+            var currentUrl  = $(location).attr('href');
+            var baseUrl     = $('select[name="delete_selection"]').attr('base-url');
+            //var url = baseUrl + ((!currentState) ? 'inbox/published/all' : 'inbox/all');            
+            var links = $.map(collection, function(key, index) {
+                return "<a class='undo' href='"+key.feedid+"'>undo</a>";
+            });
+
+            $('.checky-bar').css({
+                    'position': 'fixed'
+                  , 'width': '450px'
+                  , 'font-size': '1.2em'
+                  , 'font-weight': 'bold'
+                  , 'background': "#66cd00"
+                  , 'text-align': 'center'
+                  , 'left': '40%'
+                  , 'top': '23%'
+                  , 'z-index': '200'
+                  , 'padding': '5px'
+                  , 'border-radius': '12px'
+                  , 'margin': '2px 5px'
+            }).html('Mathew').html(links.join(" ")).show();
+
+            $(this).hide();
+        });
+        collection[feedid] = {"feedid": feedid};
+    });
+
+    $('a.undo').live('click', function(e) {
+        var feedid = $(this).attr('href');
+        var feedback_id = pick_undo_id(feedid, collection);
+        $("#" + feedback_id.feedid).fadeIn(700);
+        e.preventDefault();
+    });
+
+    function pick_undo_id(n, collection) {
+        if(n in collection) 
+            return collection[n];
+        return false;
+    }
+
     $('.flag').switcharoo('-100px bottom');
-    $('.feature').switcharoo('-60px bottom');
+    
    
     $.each($('ul#nav-menu li'), function(index, value) {
         $(value).bind('click', function(e) {
