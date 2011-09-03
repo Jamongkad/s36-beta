@@ -147,13 +147,21 @@ jQuery(function($) {
         //keep track of state for url + color switching.
         var currentState = $(this).attr('style'); 
         var feedid = $(this).attr('feedid');      
+        var href = $(this).attr('hrefaction');
+
+        var feeds = {"feedid": feedid};
+        collection[feedid] = feeds
+
         $(this).parents('.feedback').fadeOut(700, function() {
+
             var currentUrl  = $(location).attr('href');
-            var baseUrl     = $('select[name="delete_selection"]').attr('base-url');
-            //var url = baseUrl + ((!currentState) ? 'inbox/published/all' : 'inbox/all');            
+            var baseUrl     = $('select[name="delete_selection"]').attr('base-url');            
+            /*
+            var url = baseUrl + ((!currentState) ? 'inbox/published/all' : 'inbox/all');            
             var links = $.map(collection, function(key, index) {
-                return "<a class='undo' href='"+key.feedid+"'>undo</a>";
+                return "<a class='undo' hrefaction='"+href+"' href='"+key.feedid+"'>undo</a>";
             });
+            */
 
             $('.checky-bar').css({
                     'position': 'fixed'
@@ -168,23 +176,37 @@ jQuery(function($) {
                   , 'padding': '5px'
                   , 'border-radius': '12px'
                   , 'margin': '2px 5px'
-            }).html('Mathew').html(links.join(" ")).show();
-
-            $(this).hide();
+            }).html("<a class='undo' hrefaction='"+href+"' href='#'>Undo</a>").show();
         });
-        collection[feedid] = {"feedid": feedid};
+        var json = $.makeArray(collection);
+        $.ajax( { type: "POST", url: href, data: collection } );
     });
 
     $('a.undo').live('click', function(e) {
         var feedid = $(this).attr('href');
-        var feedback_id = pick_undo_id(feedid, collection);
-        $("#" + feedback_id.feedid).fadeIn(700);
+        var href = $(this).attr('hrefaction'); 
+        /*
+        var feedback_id = pick_undo_id(feedid, collection); 
+        var href = $(this).attr('hrefaction');
+        */
+        for(id in collection) {
+            $("#" + id).fadeIn(700);     
+        }
+       
+        $.ajax( { type: "POST", url: href, data: collection } );
+        collection = {};
+        $(this).hide();
+        $('.checky-bar').hide();
         e.preventDefault();
     });
 
     function pick_undo_id(n, collection) {
-        if(n in collection) 
-            return collection[n];
+        if(n in collection) {
+            var result = collection[n];     
+            delete collection[n];
+            return result;
+        }
+       
         return false;
     }
 
@@ -209,8 +231,11 @@ jQuery(function($) {
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
 
-    var check = new Checky({ delete_selection: $('.delete-selection'), check_feed_id: $('.check-feed-id'), 
-                             contact_feed_id: $('.contact-feed-id'), site_feed_id: $('.site-feed-id'), click_all: $('.click-all') });
+    var check = new Checky({   delete_selection: $('.delete-selection')
+                             , check_feed_id: $('.check-feed-id')
+                             , contact_feed_id: $('.contact-feed-id')
+                             , site_feed_id: $('.site-feed-id')
+                             , click_all: $('.click-all')  });
     check.init(); 
     check.clickAll();
 

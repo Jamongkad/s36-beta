@@ -67,7 +67,9 @@ return array(
             $mode = 'inbox';
         }       
 
-        $feedback->_toggle_multiple($mode, $feed_ids);
+        print_r($_POST);
+
+        //$feedback->_toggle_multiple($mode, $feed_ids);
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {

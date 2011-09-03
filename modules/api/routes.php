@@ -87,7 +87,6 @@ return array(
         );
 
         DB::table('Feedback')->insert($feedback_data);
-
     },
 
     'GET /api/test_blob' => function() {
