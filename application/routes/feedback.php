@@ -60,16 +60,8 @@ return array(
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids = Input::get('feed_ids');
-        $mode     = Input::get('col');
-        $state    = Input::get('state');
-        
-        if($state == 0) {
-            $mode = 'inbox';
-        }       
-
-        print_r($_POST);
-
-        //$feedback->_toggle_multiple($mode, $feed_ids);
+        $mode     = Input::get('mode');        
+        $feedback->_toggle_multiple($mode, $feed_ids);
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {

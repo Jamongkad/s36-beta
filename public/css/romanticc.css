@@ -356,3 +356,33 @@ div.undo-bar {
     border-radius:3px;
     padding: 1px 4px 1px;
 }
+
+span.notify { 
+    position: fixed;    
+    width: 450px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    left: 40%;
+    top: 23%;
+    background-color: #fef1b5;
+    z-index: 200; 
+    padding: 5px;
+    -webkit-border-radius:12px;
+    -moz-border-radius:12px;
+    border-radius:12px;
+    margin:2px 5px;
+}
+
+a.undo {
+    color: #0000CC;
+    font-size: 0.9em;
+}
+
+.publish { 
+    background-color: #66cd00;
+}
+
+.feature { 
+    background-color: #fbec5d;
+}
