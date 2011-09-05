@@ -149,7 +149,8 @@ jQuery(function($) {
         var href   = $(this).attr('hrefaction'); 
         var feeds  = {"feedid": feedid};
         var identifier = $(this).attr('class');
-
+        var state  = $(this).attr('state');
+        
         if(identifier == 'check') {
             pub_collection.push(feeds);
             message = "Published";
@@ -168,17 +169,20 @@ jQuery(function($) {
             var cLength    = (identifier == 'check') ? pub_collection.length : feat_collection.length;
             var notify_msg = cLength + " Feedback: " + message + "! <a class='undo' hrefaction='" + href + "' href='#' undo-type='"+identifier+"'>undo</a>";
             var notify     = $('<div/>').addClass(identifier).html(notify_msg);
-
-            if($('.checky-bar').find("."+identifier).length) {
-                console.log("html");
-                $('.checky-bar').find("."+identifier).html(notify).show();
-            } else {
-                console.log("appending");
-                $('.checky-bar').append(notify).show();
+            var chck_find  = $('.checky-bar').find("."+identifier);
+            
+            //if feedback state is 0 meaning feedback has not been set to anything
+            if(state == 0) { 
+                if(chck_find.length) {
+                    //console.log("updating");
+                    chck_find.html(notify_msg).show();
+                } else {
+                    //console.log("appending");
+                    $('.checky-bar').append(notify).show();
+                } 
             }
-           
         });
-        $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds]} } );
+        $.ajax( { type: "POST", url: href, data: {"mode": ((state == 0) ? mode : "inbox") ,"feed_ids": [feeds]} } );
     });
 
     $('a.undo').live('click', function(e) {
@@ -188,9 +192,8 @@ jQuery(function($) {
         var collection = (undo_type == 'check') ? pub_collection : feat_collection;
 
         $.each(collection, function(index, value) { $("#" + value.feedid).fadeIn(700); });
-        $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": collection} } ); 
-        $(this).hide();
-        console.log($(this).parents("."+undo_type).hide());
+        $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": collection} } );  
+        $(this).parents("."+undo_type).fadeOut(300);
         collection.length = 0;
         e.preventDefault(); 
     });

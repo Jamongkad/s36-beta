@@ -357,13 +357,13 @@ div.undo-bar {
     padding: 1px 4px 1px;
 }
 
-span.notify { 
-    position: fixed;    
+.checky-bar > div { 
+    position: relative;    
     width: 450px;
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
-    left: 40%;
+    left: 20%;
     top: 23%;
     background-color: #fef1b5;
     z-index: 200; 
@@ -377,12 +377,4 @@ span.notify {
 a.undo {
     color: #0000CC;
     font-size: 0.9em;
-}
-
-.publish { 
-    background-color: #66cd00;
-}
-
-.feature { 
-    background-color: #fbec5d;
 }
