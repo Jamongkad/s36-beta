@@ -43,7 +43,10 @@ jQuery(function($) {
 
     $('div.undo-bar').hide(); 
     var deleteCount = 0;
+    /*
     $('.remove').bind('click', function(e) {
+        console.log($(this));
+
         if(confirm('Are you sure?')) { 
 
             var my_parent = $(this).parents('div.feedback').fadeOut();
@@ -91,7 +94,9 @@ jQuery(function($) {
             });
             undobar.show();
         }
+
     });
+    */
 
     restoreUrl();
 
@@ -143,8 +148,10 @@ jQuery(function($) {
     //$('.feature').switcharoo('-60px bottom');
     var pub_collection  = new Array();
     var feat_collection = new Array();
-    $('.check, .feature').bind("click", function() {
-        var message;
+    var trsh_collection = new Array();
+    var collection;
+    $('.check, .feature, .remove').bind("click", function() {
+        var message, count, mode;
         var feedid = $(this).attr('feedid');      
         var href   = $(this).attr('hrefaction'); 
         var feeds  = {"feedid": feedid};
@@ -155,47 +162,58 @@ jQuery(function($) {
             pub_collection.push(feeds);
             message = "Published";
             mode    = "publish";
+            collection = pub_collection;
         }
 
         if(identifier == 'feature') { 
             feat_collection.push(feeds);
             message = "Featured";
-            mode    = "feature";
+            mode    = "feature"; 
+            collection = feat_collection;
+        }
+
+        if(identifier == 'remove') { 
+            trsh_collection.push(feeds);
+            message = "Trashed";
+            mode    = "delete";
+            collection = trsh_collection;
         }
 
         $(this).parents('.feedback').fadeOut(700, function() {
             var currentUrl = $(location).attr('href');
             var baseUrl    = $('select[name="delete_selection"]').attr('base-url');             
-            var cLength    = (identifier == 'check') ? pub_collection.length : feat_collection.length;
+            var cLength    = collection.length;//(identifier == 'check') ? pub_collection.length : feat_collection.length;
             var notify_msg = cLength + " Feedback: " + message + "! <a class='undo' hrefaction='" + href + "' href='#' undo-type='"+identifier+"'>undo</a>";
             var notify     = $('<div/>').addClass(identifier).html(notify_msg);
             var chck_find  = $('.checky-bar').find("."+identifier);
             
-            //if feedback state is 0 meaning feedback has not been set to anything
+            //if feedback state is 0
             if(state == 0) { 
                 if(chck_find.length) {
-                    //console.log("updating");
+                    //updating... console.log("updating");
                     chck_find.html(notify_msg).show();
                 } else {
-                    //console.log("appending");
+                    //appending.. console.log("appending");
                     $('.checky-bar').append(notify).show();
                 } 
             }
         });
-        $.ajax( { type: "POST", url: href, data: {"mode": ((state == 0) ? mode : "inbox") ,"feed_ids": [feeds]} } );
+        mode = ((state == 0) ? mode : "inbox");
+        //$.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds]} } );
     });
 
     $('a.undo').live('click', function(e) {
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
-        var collection = (undo_type == 'check') ? pub_collection : feat_collection;
+        var chosen_collection = collection;
 
-        $.each(collection, function(index, value) { $("#" + value.feedid).fadeIn(700); });
-        $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": collection} } );  
+        $.each(chosen_collection, function(index, value) { $("#" + value.feedid).fadeIn(700); });
         $(this).parents("."+undo_type).fadeOut(300);
-        collection.length = 0;
-        e.preventDefault(); 
+        console.log(chosen_collection);
+        //$.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": chosen_collection} } );  
+        chosen_collection.length = 0;
+        //e.preventDefault(); 
     });
 
     $('.flag').switcharoo('-100px bottom');
