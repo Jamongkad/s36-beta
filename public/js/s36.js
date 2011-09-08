@@ -72,7 +72,7 @@ jQuery(function($) {
             console.log($(this).parents('div.category-picker-holder').hide());
         }
 
-        $(this).parents('.feedback').fadeOut(700, function() {
+        $(this).parents('.feedback').fadeOut(350, function() {
             var notify_msg = message + " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
             var notify     = $('<div/>').addClass(identifier).html(notify_msg);
             var chck_find  = $('.checky-bar').find("."+identifier);
@@ -90,8 +90,8 @@ jQuery(function($) {
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
         
-        $("#" + feed_holder.feedid).fadeIn(700);
-        $(this).parents("."+undo_type).fadeOut(300, function() { $(this).remove(); }); 
+        $("#" + feed_holder.feedid).fadeIn(350);
+        $(this).parents("."+undo_type).fadeOut(350, function() { $(this).remove(); }); 
         $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": [feed_holder]} } );  
         e.preventDefault(); 
     });
