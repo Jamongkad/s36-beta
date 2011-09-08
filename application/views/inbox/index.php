@@ -30,7 +30,14 @@
                                  <ul class="category-picker">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?=HTML::link('feedback/changecat/'.$cat->id.'/'.$id.'/'.$feed->contactid.'/'.$feed->siteid, $cat->name)?>
+                                             <?//=HTML::link('feedback/changecat/'.$cat->id.'/'.$id, $cat->name)?>
+                                             <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                                  'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                                , 'class'      => 'cat-picks'
+                                                , 'feedid'     => $id
+                                                , 'catid'      => $cat->id
+                                                , 'state'      => 0
+                                             ))?>
                                          </li>
                                      <?endforeach?>
                                  </ul>

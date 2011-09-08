@@ -20,200 +20,80 @@ jQuery(function($) {
         }
         //TODO: maaaaaan clean this up!
         $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
-        $(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">FILE AS: '+li.text()+"</span>");
-        $.ajax( { type: "POST", url: href } );
+        //$(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">FILE AS: '+li.text()+"</span>");
+        //$.ajax( { type: "POST", url: href } );
         e.preventDefault();
     });
 
     $('div.category-picker-holder').hide();
 
     $('.fileas').bind('click', function(e) {     
-        $(this).siblings('div.category-picker-holder').toggle();
-
-        if($(this).attr('style')) {
-            $(this).removeAttr('style'); 
-        } else {
-            $(this).css({"background-position": "-20px bottom"});     
-        }
-        
+        $(this).siblings('div.category-picker-holder').toggle(); 
         e.preventDefault();
     });
 
     $('select[name="status"], select[name="priority"]').hide();
-
     $('div.undo-bar').hide(); 
-    var deleteCount = 0;
-    /*
-    $('.remove').bind('click', function(e) {
-        console.log($(this));
-
-        if(confirm('Are you sure?')) { 
-
-            var my_parent = $(this).parents('div.feedback').fadeOut();
-            var feedurl = $(this).attr('hrefaction');
-            var undobar = $('div.undo-bar');
-
-            deleteCount += 1;
-
-            $.ajax({
-                  url: feedurl
-                , success: function(data) { 
-                    var obj = jQuery.parseJSON(data);
-                    $('li.delete sup').addClass('count').html(obj.total_rows);
-                    $.each(obj.result, function(idx, val) {
-
-                        var divTag = document.createElement("div");
-                        var undoLinks = document.createElement("a");
-                        var hideLink = document.createElement("a");
-
-                        undoLinks.setAttribute("id", "undo-links");
-
-                        hideLink.setAttribute("href", "#");
-                        hideLink.setAttribute("id", "hide-undo-bar");
-                        hideLink.innerHTML = " Hide";
-
-                        divTag.className = "undo-delete";
-                        if(deleteCount == 1) {
-                            divTag.innerHTML = deleteCount + " feedback has been moved to the Trash ";     
-                            undoLinks.setAttribute("href", undobar.attr('delete_action') + val.id);
-                            undoLinks.setAttribute("restore-id", val.id);
-                            undoLinks.setAttribute("delete-mode", "single");
-                            undoLinks.innerHTML = "Undo";
-                        } else {
-                            divTag.innerHTML = deleteCount + " feedbacks have been moved to the Trash ";
-                            undoLinks.setAttribute("href", undobar.attr('goto_trash'));
-                            undoLinks.setAttribute("delete-mode", "multiple");
-                            undoLinks.innerHTML = "Go to Trash";
-                        }                       
-                        divTag.appendChild(undoLinks);
-                        divTag.appendChild(hideLink);
-                        undobar.html(divTag); 
-                    });
-                    restoreUrl();
-                }
-            });
-            undobar.show();
-        }
-
-    });
-    */
-
-    restoreUrl();
-
-    $('a.restore-feed').bind('click', function(e) { 
-        var my_parent = $(this).parents('div.feedback').fadeOut();
-        $.ajax({url: $(this).attr('href')});
-        e.preventDefault();
-    })
-
-    function restoreUrl() { 
-        $('div.undo-delete a#undo-links').bind('click', function(e) {
-            var undoDelete = $(this);
-            var deleteMode = undoDelete.attr('delete-mode');            
-
-            var deleteSup = $('li.delete sup');
-            var deleteSupNum = deleteSup.addClass('count').html();
-
-            if(deleteMode == 'single') {
-                deleteSupNum -= 1;     
-            } 
-
-            deleteSup.addClass('count').html(deleteSupNum); 
-            
-            //WTF DOES THIS MEAN??
-            if(deleteMode == 'single' || !deleteMode) { 
-
-                $.ajax({
-                    url: undoDelete.attr('href')
-                });
-              
-                $("#" + undoDelete.attr('restore-id')).fadeIn();
-                undoDelete.parent('div.undo-delete').remove();
-                $('div.undo-bar').hide();
-
-            } else {
-                window.location = undoDelete.attr('href');
-            }
-            deleteCount = 0;
-            e.preventDefault();
-        });
-
-        $("div.undo-delete a#hide-undo-bar").bind('click', function(e) { 
-            $('div.undo-bar').hide();
-            e.preventDefault();
-        });
-    }
- 
     //$('.check').switcharoo('0px bottom');
     //$('.feature').switcharoo('-60px bottom');
-    var pub_collection  = new Array();
-    var feat_collection = new Array();
-    var trsh_collection = new Array();
-    var collection;
-    $('.check, .feature, .remove').bind("click", function() {
-        var message, count, mode;
+    var feed_holder;
+    $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
+        var message, mode;
         var feedid = $(this).attr('feedid');      
         var href   = $(this).attr('hrefaction'); 
+        var catid  = $(this).attr('catid');
         var feeds  = {"feedid": feedid};
         var identifier = $(this).attr('class');
         var state  = $(this).attr('state');
+
+        feed_holder = feeds;
         
+        var currentUrl = $(location).attr('href');
+        var baseUrl    = $('select[name="delete_selection"]').attr('base-url');             
+
         if(identifier == 'check') {
-            pub_collection.push(feeds);
-            message = "Published";
+            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/published/all'>Published Folder</a>";
             mode    = "publish";
-            collection = pub_collection;
         }
 
         if(identifier == 'feature') { 
-            feat_collection.push(feeds);
-            message = "Featured";
+            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
             mode    = "feature"; 
-            collection = feat_collection;
         }
 
         if(identifier == 'remove') { 
-            trsh_collection.push(feeds);
-            message = "Trashed";
+            message = "Feedback has been " + "<a href='" +baseUrl+ "inbox/deleted'>deleted</a>"; 
             mode    = "delete";
-            collection = trsh_collection;
+        }
+
+        if(identifier == 'cat-picks') {
+            message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";  
+            mode    = "fileas";
+            console.log($(this).parents('div.category-picker-holder').hide());
         }
 
         $(this).parents('.feedback').fadeOut(700, function() {
-            var currentUrl = $(location).attr('href');
-            var baseUrl    = $('select[name="delete_selection"]').attr('base-url');             
-            var cLength    = collection.length;//(identifier == 'check') ? pub_collection.length : feat_collection.length;
-            var notify_msg = cLength + " Feedback: " + message + "! <a class='undo' hrefaction='" + href + "' href='#' undo-type='"+identifier+"'>undo</a>";
+            var notify_msg = message + " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
             var notify     = $('<div/>').addClass(identifier).html(notify_msg);
             var chck_find  = $('.checky-bar').find("."+identifier);
             
-            //if feedback state is 0
             if(state == 0) { 
-                if(chck_find.length) {
-                    //updating... console.log("updating");
-                    chck_find.html(notify_msg).show();
-                } else {
-                    //appending.. console.log("appending");
-                    $('.checky-bar').append(notify).show();
-                } 
+                $('.checky-bar').html(notify).show();
             }
         });
         mode = ((state == 0) ? mode : "inbox");
-        //$.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds]} } );
+        $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
     });
 
     $('a.undo').live('click', function(e) {
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
-        var chosen_collection = collection;
-
-        $.each(chosen_collection, function(index, value) { $("#" + value.feedid).fadeIn(700); });
-        $(this).parents("."+undo_type).fadeOut(300);
-        console.log(chosen_collection);
-        //$.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": chosen_collection} } );  
-        chosen_collection.length = 0;
-        //e.preventDefault(); 
+        
+        $("#" + feed_holder.feedid).fadeIn(700);
+        $(this).parents("."+undo_type).fadeOut(300, function() { $(this).remove(); }); 
+        $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": [feed_holder]} } );  
+        e.preventDefault(); 
     });
 
     $('.flag').switcharoo('-100px bottom');

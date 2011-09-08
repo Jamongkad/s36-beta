@@ -27,9 +27,9 @@ return array(
     }),
 
     //Ajax Functions...
-    'POST /feedback/changecat/(:num)/(:num)/(:num)/(:num)' => function($cat_id, $feed_id, $contact_id, $site_id) use ($feedback) {
+    'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
         //TODO: this could be better 
-        $feed_obj = Array('feedid' => $feed_id, 'siteid' => $site_id, 'contact_id' => $contact_id);
+        $feed_obj = Array('feedid' => $feed_id);
 
         if($cat_id == 1) {
             $feedback->_toggle_multiple('fileas', Array($feed_obj), ",isArchived = 0, categoryId = $cat_id");     
@@ -60,8 +60,21 @@ return array(
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids = Input::get('feed_ids');
-        $mode     = Input::get('mode');        
-        $feedback->_toggle_multiple($mode, $feed_ids);
+        $cat_id   = Input::get('cat_id');
+        $mode     = Input::get('mode');         
+
+        if($cat_id == 1) {
+            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
+        }
+
+        if($cat_id == 2 || $cat_id == 3 || $cat_id == 4 || $cat_id == 5) {
+            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");     
+        }
+        
+        if($cat_id == null) {
+            $feedback->_toggle_multiple($mode, $feed_ids);     
+        }
+       
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
