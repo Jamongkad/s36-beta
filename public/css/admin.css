@@ -262,3 +262,5 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .large-box{display:block;border:7px solid #e7e7e7;height:400px;}
 #admin-panel .right-align{text-align:right;padding-right:2px;}
 #admin-panel .noborder{border:none !important;}
+
+#admin-panel span.tooltip{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;box-shadow:#dadada 0px 3px 3px;position:absolute;z-index:10000;padding:4px 6px;background:#c9e5f3;color:#6b7880;margin-left:5px;}}

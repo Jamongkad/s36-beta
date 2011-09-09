@@ -15,7 +15,7 @@
     <?=HTML::script('js/FeedbackBlockDisplay.js')?>
     <?=HTML::script('js/DropDownChange.js')?>
     <?=HTML::script('js/jquery.switcharoo.js')?>
-    <?//=HTML::script('js/s36-knockout.js')?>
+    <?=HTML::script('js/jquery.fancytips.js')?>
     </meta>    
 </head>
 <body>

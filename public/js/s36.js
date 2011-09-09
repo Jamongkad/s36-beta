@@ -36,7 +36,7 @@ jQuery(function($) {
     $('div.undo-bar').hide(); 
     //$('.check').switcharoo('0px bottom');
     //$('.feature').switcharoo('-60px bottom');
-    var feed_holder;
+    var feed_holder, new_mode;
     $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
         var message, mode;
         var feedid = $(this).attr('feedid');      
@@ -73,26 +73,35 @@ jQuery(function($) {
         }
 
         $(this).parents('.feedback').fadeOut(350, function() {
-            var notify_msg = message + " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
+            var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
+            var notify_msg = message + undo; 
             var notify     = $('<div/>').addClass(identifier).html(notify_msg);
-            var chck_find  = $('.checky-bar').find("."+identifier);
+            //var chck_find  = $('.checky-bar').find("."+identifier);
             
-            if(state == 0) { 
+            if(state == 0) {  
                 $('.checky-bar').html(notify).show();
+                $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
+            } else { 
+                new_mode = mode;
+                $('.checky-bar')
+                .html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
+                .show();
+                $.ajax( { type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid } } );
             }
         });
-        mode = ((state == 0) ? mode : "inbox");
-        $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
     });
 
     $('a.undo').live('click', function(e) {
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
-        
+        var mode      = (new_mode) ? new_mode : "inbox";
+
+        //generic feedback return 
         $("#" + feed_holder.feedid).fadeIn(350);
         $(this).parents("."+undo_type).fadeOut(350, function() { $(this).remove(); }); 
-        $.ajax( { type: "POST", url: href, data: {"mode": "inbox", "feed_ids": [feed_holder]} } );  
+
+        $.ajax( { type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder]} } );  
         e.preventDefault(); 
     });
 
@@ -129,4 +138,13 @@ jQuery(function($) {
 
     var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
     priorityChange.enable();
+
+    $('.check').fancytips({'text': 'Publish Feedback', 'width': 85});
+    $('.fileas').fancytips({'text': 'Categorize Feedback'});
+    $('.reply').fancytips({'text': 'Reply To', 'width': 40});
+    $('.feature').fancytips({'text': 'Feature Feedback', 'width': 85});
+    $('.contact').fancytips({'text': 'Fast Forward', 'width': 60});
+    $('.flag').fancytips({'text': 'Fast Forward', 'width': 70});
+    $('.remove').fancytips({'top': 45, 'width': 84 ,'text': 'Delete Feedback'});
+
 });
