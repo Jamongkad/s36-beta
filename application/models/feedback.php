@@ -368,7 +368,6 @@ class Feedback {
         print_r("\n");
         print_r($block_ids);
         */ 
-
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -384,7 +383,6 @@ class Feedback {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
-
     }
 
     public function _permanent_delete($opts) { 
