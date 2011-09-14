@@ -39,8 +39,8 @@ return array(
 
 		'master' => array(
 			'driver'   => 'mysql',
-			//'host'     => 'localhost',
-            'host'     => 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com',
+			'host'     => 'localhost',
+            //'host'     => 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com',
 			'database' => 's36',
 			'username' => 'root',
 			'password' => 'brx4*svv',
