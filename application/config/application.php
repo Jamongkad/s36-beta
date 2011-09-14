@@ -10,6 +10,9 @@ function host_determiner() {
     if($http_host == 'www.gearfish.com') 
         return 'http://www.gearfish.com/s36-beta/public';
 
+    if($http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com')
+        return 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
+
 }
 
 return array(
