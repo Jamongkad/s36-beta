@@ -64,7 +64,7 @@ return array(
 
 		'master' => array(
 			'driver'   => 'mysql',
-			'host'     => host_determiner_db(),
+			'host'     => 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com',
 			'host'     => 'localhost',
 			'database' => 's36',
 			'username' => 'root',
