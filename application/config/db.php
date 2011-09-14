@@ -1,4 +1,27 @@
 <?php
+//TODO GENERALIZE THIS!!
+function host_determiner_db() {
+    
+    $http_host = $_SERVER['SERVER_NAME'];
+    //localhost
+    if($http_host == 'dev.36stories.localhost') 
+        return 'localhost';
+    
+    //DEV
+    if($http_host == 'www.gearfish.com') 
+        return 'localhost';
+
+    //STAGING
+    if($http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com')
+        return 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
+
+    //PRODUCTION
+    $str = $_SERVER['SERVER_NAME'];
+    $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
+    preg_match_all($pattern, $str, $matches, PREG_PATTERN_ORDER);  
+    if($matches[0])
+        return 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
+}
 
 return array(
 
@@ -39,16 +62,7 @@ return array(
 
 		'master' => array(
 			'driver'   => 'mysql',
-			'host'     => 'localhost',
-            //'host'     => 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com',
-			'database' => 's36',
-			'username' => 'root',
-			'password' => 'brx4*svv',
-			'charset'  => 'utf8',
-		),
-
-		'slave' => array(
-			'driver'   => 'mysql',
+			'host'     => host_determiner_db(),
 			'host'     => 'localhost',
 			'database' => 's36',
 			'username' => 'root',

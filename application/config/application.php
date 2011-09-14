@@ -2,17 +2,25 @@
 
 function host_determiner() {
     
-    $http_host = $_SERVER['HTTP_HOST'];
-
+    $http_host = $_SERVER['SERVER_NAME'];
+    //localhost
     if($http_host == 'dev.36stories.localhost') 
         return 'http://dev.36stories.localhost';
-   
+    
+    //DEV
     if($http_host == 'www.gearfish.com') 
         return 'http://www.gearfish.com/s36-beta/public';
 
+    //STAGING
     if($http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com')
         return 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
 
+    //PRODUCTION
+    $str = $_SERVER['SERVER_NAME'];
+    $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
+    preg_match_all($pattern, $str, $matches, PREG_PATTERN_ORDER);  
+    if($matches[0])
+        return 'http://app.36stories.com/s36-beta/public';
 }
 
 return array(
