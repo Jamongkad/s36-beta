@@ -23,8 +23,6 @@ function host_determiner_db() {
         return 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
 }
 
-print_r(host_determiner_db());
-
 return array(
 
 	/*
@@ -64,8 +62,7 @@ return array(
 
 		'master' => array(
 			'driver'   => 'mysql',
-			'host'     => 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com',
-			'host'     => 'localhost',
+			'host'     => host_determiner_db(),
 			'database' => 's36',
 			'username' => 'root',
 			'password' => 'brx4*svv',
