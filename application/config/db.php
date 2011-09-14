@@ -23,6 +23,8 @@ function host_determiner_db() {
         return 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
 }
 
+print_r(host_determiner_db());
+
 return array(
 
 	/*
