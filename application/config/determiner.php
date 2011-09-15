@@ -30,6 +30,7 @@ class Determiner {
        if($this->http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com') {
            $obj->host = 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
            $obj->db   = 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
+           return $obj;
        }
        //PRODUCTION
        $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
@@ -37,8 +38,10 @@ class Determiner {
        if($matches[0]) {
            $obj->host = 'http://app.36stories.com';
            $obj->db   = 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
+           return $obj;
        }
 
+       
    }
 
 }
