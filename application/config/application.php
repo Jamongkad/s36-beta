@@ -1,26 +1,6 @@
 <?php
-
-function host_determiner() {
-    
-    $http_host = $_SERVER['SERVER_NAME'];
-    //localhost
-    if($http_host == 'dev.36stories.localhost') 
-        return 'http://dev.36stories.localhost';
-    
-    //DEV
-    if($http_host == 'gearfish.com') 
-        return 'http://gearfish.com/s36-beta/public';
-
-    //STAGING
-    if($http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com')
-        return 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
-
-    //PRODUCTION
-    $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
-    preg_match_all($pattern, $http_host, $matches, PREG_PATTERN_ORDER);  
-    if($matches[0])
-        return 'http://app.36stories.com';
-}
+require_once 'determiner.php';
+$determine = new Determiner;  
 
 return array(
 
@@ -32,7 +12,7 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-    'url' => host_determiner(),
+    'url' => $determine->d->host,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index
