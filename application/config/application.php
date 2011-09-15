@@ -8,8 +8,8 @@ function host_determiner() {
         return 'http://dev.36stories.localhost';
     
     //DEV
-    if($http_host == 'www.gearfish.com') 
-        return 'http://www.gearfish.com/s36-beta/public';
+    if($http_host == 'gearfish.com') 
+        return 'http://gearfish.com/s36-beta/public';
 
     //STAGING
     if($http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com')

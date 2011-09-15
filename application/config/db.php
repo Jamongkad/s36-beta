@@ -8,7 +8,7 @@ function host_determiner_db() {
         return 'localhost';
     
     //DEV
-    if($http_host == 'www.gearfish.com') 
+    if($http_host == 'gearfish.com') 
         return 'localhost';
 
     //STAGING
@@ -16,9 +16,8 @@ function host_determiner_db() {
         return 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
 
     //PRODUCTION
-    $str = $_SERVER['SERVER_NAME'];
     $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
-    preg_match_all($pattern, $str, $matches, PREG_PATTERN_ORDER);  
+    preg_match_all($pattern, $http_host, $matches, PREG_PATTERN_ORDER);  
     if($matches[0])
         return 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
 }
