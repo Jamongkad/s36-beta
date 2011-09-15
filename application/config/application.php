@@ -16,9 +16,8 @@ function host_determiner() {
         return 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
 
     //PRODUCTION
-    $str = $_SERVER['SERVER_NAME'];
     $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
-    preg_match_all($pattern, $str, $matches, PREG_PATTERN_ORDER);  
+    preg_match_all($pattern, $http_host, $matches, PREG_PATTERN_ORDER);  
     if($matches[0])
         return 'http://app.36stories.com/s36-beta/public';
 }
