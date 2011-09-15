@@ -43,7 +43,6 @@ return array(
           , 'offset' => $offset
         );
 
-
         $feedback = new Feedback;
         $data = $feedback->pull_feedback_by_company($params);
         echo "s36_feedback(" . json_encode($data) . ")";

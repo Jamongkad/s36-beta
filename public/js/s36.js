@@ -113,6 +113,12 @@ jQuery(function($) {
         });
     });
 
+
+    $('select[name="site_choice"]').bind('change', function(e) {
+        var select = $(this).val();
+        window.location = (select == 'all') ? "all" : "?site_id=" + $(this).val();
+    });
+
     $('select[name="feedback-limit"]').bind('change', function(e) {
         window.location = "?limit=" + $(this).val();
     });
