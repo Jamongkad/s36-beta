@@ -188,10 +188,10 @@ class Feedback {
         }
  
         if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
-           $combined_statement = "AND Feedback.isPublished = 1 OR Feedback.isFeatured = 1";
+           $combined_statement = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1)";
         }
 
-        $sth = $this->dbh->prepare('
+        $sql = '
             SELECT 
                   SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
@@ -251,7 +251,9 @@ class Feedback {
                     ORDER BY  
                         Feedback.dtAdded DESC
                     LIMIT :offset, :limit 
-        ');
+        ';
+
+        $sth = $this->dbh->prepare($sql);
         
         $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
         $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);       

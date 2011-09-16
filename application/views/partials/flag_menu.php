@@ -22,7 +22,7 @@
             <ul>
                 <?for($i=0; $i < count($links); $i++):?>
                     <li>
-                        <?=HTML::link($links[$i], $nav_links_name[$i]['key'], 
+                        <?=HTML::link($links[$i].((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $nav_links_name[$i]['key'], 
                                       Array('class' => (Helpers::filter_highlighter($nav_links, $nav_links_name[$i]['val'])) ? 'selected' : null));?>   
                     </li>
                 <?endfor?>

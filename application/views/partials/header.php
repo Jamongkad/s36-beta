@@ -36,19 +36,19 @@
                        <?=($regex->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
-                        <?=HTML::link('inbox/all', 'Inbox')?>
+                        <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
-                        <?=HTML::link('inbox/published/all', 'Published')?>
+                        <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
                        <?=($regex->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->featured ? ' class="selected featured"' : ' class="featured"')?>>
-                        <?=HTML::link('inbox/featured/all', 'Featured')?>
+                        <?=HTML::link('inbox/featured/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Featured')?>
                        <?=($regex->featured ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->filed ? ' class="selected filed"' : ' class="filed"')?>>
-                        <?=HTML::link('inbox/filed/all', 'Filed Feedback')?>
+                        <?=HTML::link('inbox/filed/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Filed Feedback')?>
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
