@@ -1,18 +1,20 @@
+<?=Form::open('feedsetup/save_widget')?>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step 1 :</span> Choose Widget</h2>
             <div class="widget-types">
-                <h3><input type="radio" name="embed_type" id="full_page_type" /> <label for="full_page_type">Full Page</label></h3>
+                <h3><input type="radio" name="embed_type" id="full_page_type" value="fullpage"/> <label for="full_page_type">Full Page</label></h3>
                 <div class="widget-opts" id="full_page_widget">
                     <table width="100%">
                         <tr><td width="170" class="feedback-td-font">Units to Display per page:</td>
                             <td>
-                                <select class="regular-select">
-                                    <option>6</option>
-                                    <option>12</option>
-                                    <option>18</option>
-                                    <option>24</option>
+                                <select name="full_page_units" class="regular-select">
+                                    <option value="0">-</option>
+                                    <option value="6">6</option>
+                                    <option value="12">12</option>
+                                    <option value="18">18</option>
+                                    <option value="24">24</option>
                                 </select>
                             </td>
                         </tr>
@@ -25,15 +27,15 @@
                 </div>
             </div>
             <div class="widget-types">
-                <h3><input type="radio" name="embed_type" id="embed_type" /> <label for="embed_type">Embedded Block</label></h3>
+                <h3><input type="radio" name="embed_type" id="embed_type" value="embedded"/> <label for="embed_type">Embedded Block</label></h3>
                 <div class="widget-opts" id="embed_widget">
                     <table width="100%">
                         <tr><td width="170" class="feedback-td-font">Choose Block Type</td>
                             <td>
-                                <input type="radio" name="embed_block_type" id="horizontal_embed" /> <label for="horizontal_embed" class="feedback-td-font">Horizontal</label>
+                                <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed" /> <label for="horizontal_embed" class="feedback-td-font">Horizontal</label>
                             </td>
                             <td>
-                                <input type="radio" name="embed_block_type" id="vertical_embed" /> <label for="vertical_embed" class="feedback-td-font">Vertical</label>
+                                <input type="radio" name="embed_block_type" value="embed_block_y" id="vertical_embed" /> <label for="vertical_embed" class="feedback-td-font">Vertical</label>
                             </td>
                         </tr>
                         <tr>
@@ -48,29 +50,32 @@
                         <tr>
                             <td class="feedback-td-font">Units to Display per page : </td>
                             <td colspan="2">
-                                <select class="regular-select">
-                                    <option>6</option>
-                                    <option>12</option>
-                                    <option>18</option>
-                                    <option>24</option>
+                                <select name="embed_units" class="regular-select">
+                                    <option value="0">-</option>
+                                    <option value="6">6</option>
+                                    <option value="12">12</option>
+                                    <option value="18">18</option>
+                                    <option value="24">24</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="feedback-td-font">Display Size : </td>
                             <td colspan="2" class="feedback-td-font">
-                                Width : <input type="text" class="regular-text small-text" style="display:inline;" />
-                                Height : <input type="text" class="regular-text small-text" style="display:inline;" />
+                                Width : <input type="text" class="regular-text small-text" style="display:inline;" name="embed_width"/>
+                                Height : <input type="text" class="regular-text small-text" style="display:inline;" name="embed_height"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="feedback-td-font">Transition Effect : </td>
                             <td colspan="2">
-                                <select class="regular-select">
-                                    <option>Fade</option>
-                                    <option>Scroll Vertical</option>
-                                    <option>Scroll Horizontal</option>
-                                    <option>Uncover</option>
+                                <select name="embed_effects" class="regular-select"> 
+                                  
+                                    <option value="0">-</option>
+                                    <?foreach($effects_options as $rows):?>        
+                                        <option value="<?=$rows->effectsid?>"><?=$rows->effectsname?></option>
+                                    <?endforeach?>
+                                   
                                 </select>
                             </td>
                         </tr>
@@ -78,16 +83,16 @@
                 </div>
             </div>
             <div class="widget-types">
-                <h3><input type="radio" name="embed_type" id="modal_type" /> <label for="modal_type">Modal / Popup</label></h3>
+                <h3><input type="radio" name="embed_type" id="modal_type" value="modal"/> <label for="modal_type">Modal / Popup</label></h3>
                 <div class="widget-opts" id="modal_widget">
                     <table width="100%">
                         <tr><td width="170" class="feedback-td-font">Transition :</td>
                             <td>
-                                <select class="regular-select">
-                                    <option>Fade</option>
-                                    <option>Scroll Vertical</option>
-                                    <option>Scroll Horizontal</option>
-                                    <option>Uncover</option>
+                                <select name="modal_effects" class="regular-select">       
+                                    <option value="0">-</option>
+                                    <?foreach($effects_options as $rows):?>        
+                                        <option value="<?=$rows->effectsid?>"><?=$rows->effectsname?></option>
+                                    <?endforeach?> 
                                 </select>
                             </td>
                         </tr>
@@ -216,7 +221,9 @@
                 <div class="widget-block">
                     <h2>HTML Code</h2>
                     <div class="html-code">
-                        <textarea spellcheck="false"><iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fplatform&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true&amp;height=590" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:590px;" allowTransparency="true"></iframe></textarea>
+                        <textarea spellcheck="false">
+
+                        </textarea>
                     </div>
                 </div>
             </div>
@@ -225,12 +232,13 @@
         <div class="widget-setup-border"></div>
         <div class="widget-opts">
             <br />
-            <a href="#" class="button">Save Widget</a>
+            <!--<a href="#" class="button">Save Widget</a>-->
+            <input type="submit" value="Save Widget" />
             <br /><br />
         </div>
     </div>
 </div>
-
+<?=Form::close()?>
 <!-- spacer -->
 <div class="block noborder" style="height:300px;">
 </div>
@@ -242,53 +250,3 @@
 <!-- div need to clear floated divs -->
 <div class="c"></div>
 </div>
-
-
-<!--
-<div class="block">
-    <p>Customized testimonials will appear on your website. Configure single display units to appear on each prominent location on your website, or configure an entire page to show the latest approved entries.</p>
-</div>
-<div class="block">
-    <h3>POPUP DISPLAY</h3>
-    <div class="g1of4">
-        <?=HTML::image('img/pop-up-display.png')?>
-    </div>
-    <div class="g3of4">
-        <p>Allows your visitors to view feedback your customers <br /> left through a floating popup on your page. </p>
-        <a href="#" class="customize">CUSTOMIZE</a>
-    </div>
-    <div class="c"></div>
-</div>
-<div class="block">
-    <h3>SINGLE UNIT FEEDBACK</h3>
-    <div class="g1of4">
-        <?=HTML::image('img/single-display-feedback.png')?>
-    </div>
-    <div class="g3of4">
-        <p>Suitable for selective placement areas within sidebars,<br />footers or even headers of your pages. </p>
-        <a href="#" class="customize">CUSTOMIZE</a>
-    </div>
-    <div class="c"></div>
-</div>
-<div class="block noborder">
-    <h3>EMBEDDED FEEDBACK</h3>
-    <div>
-        <?=HTML::image('img/embed-feedback-1.png')?>
-        <?=HTML::image('img/embed-feedback-2.png')?>
-        <?=HTML::image('img/embed-feedback-3.png')?>
-        <p>
-           Recommended to be integrated as a part of your page or <br />
-           as a standalone page, easily accessible by your visitors.<br /> 
-           You can choose between a single, two or three column layouts, <br />
-           all designed to adapt to your page's layout like they <br />
-           were designed especially for it. 
-        </p>
-        <a href="#" class="customize">CUSTOMIZE</a>
-    </div>
-    <div class="c"></div>
-</div>
-<!-- spacer -->
-<div class="block noborder" style="height:300px;">
-</div>
-<!-- spacer -->
-

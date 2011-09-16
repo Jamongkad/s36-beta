@@ -31,7 +31,7 @@
                     <?
                         $feedsetup_nav = Array(
                              'feedsetup' => 'CREATE WIDGETS'
-                           , 'feedsetup/displayfeedback' => 'MY WIDGETS'
+                           , 'feedsetup/mywidgets' => 'MY WIDGETS'
                         );
                     ?>
 
