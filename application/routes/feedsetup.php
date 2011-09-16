@@ -3,8 +3,10 @@
 $feedback = new Feedback;
 
 return array(
-    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
-        return View::of_layout()->partial('contents', 'inbox/feedsetup_view');
+    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+        return View::of_layout()->partial('contents', 'inbox/feedsetup_view', Array( 
+            'feed_options' => $feedback->display_embedded_feedback_options()
+        ));
     }),
 
     'GET /feedsetup/displaysetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  

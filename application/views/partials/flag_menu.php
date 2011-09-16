@@ -30,10 +30,8 @@
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
                         $feedsetup_nav = Array(
-                             'feedsetup' => 'FEATURED FEEDBACK SETUP'
-                           , 'feedsetup/displayfeedback' => 'FEEDBACK DISPLAY SETUP'
-                           , 'feedsetup/displaysetup' => 'POPUP DISPLAY SETUP'
-                           , 'feedsetup/displaypreview' => 'DISPLAY PREVIEW'
+                             'feedsetup' => 'CREATE WIDGETS'
+                           , 'feedsetup/displayfeedback' => 'MY WIDGETS'
                         );
                     ?>
 

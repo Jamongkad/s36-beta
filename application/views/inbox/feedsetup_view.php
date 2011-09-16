@@ -103,14 +103,32 @@
         <div class="widget-options">
             <h2><span>Step 2 :</span> Display Option</h2>
             <div class="widget-opts">
-            <table width="100%" cellpadding="4">
-                <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80"><input type="checkbox" /></td>
-                <td width="140" class="feedback-td-font">Website Url : </td><td><input type="checkbox" /></td></tr>
-                <tr><td class="feedback-td-font">Display Image :  </td><td><input type="checkbox" /></td>		
-                <td class="feedback-td-font">Country & Flag : </td><td><input type="checkbox" /></td></tr>
-                <tr><td class="feedback-td-font">Company Name :</td><td><input type="checkbox" /></td>			
-                <td class="feedback-td-font">Submitted Date : </td><td><input type="checkbox" /></td></tr>
-                <tr><td class="feedback-td-font">Designation / Position :</td><td><input type="checkbox" /></td><td></td><td></td></tr>
+            <table width="100%" cellpadding="4" class="display-info">
+
+                <span id="toggle_url" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>"></span>
+                <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
+
+                <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
+                <?=Form::checkbox('displayName', $feed_options->displayname, ($feed_options->displayname ? True : Null))?>
+                </td>
+                <td width="140" class="feedback-td-font">Website Url : </td><td>
+                <?=Form::checkbox('displayURL', $feed_options->displayurl, ($feed_options->displayurl ? True : Null))?>
+                </td></tr>
+                <tr><td class="feedback-td-font">Display Image :  </td><td>
+                <?=Form::checkbox('displayImg', $feed_options->displayimg, ($feed_options->displayimg ? True : Null))?>
+                </td>		
+                <td class="feedback-td-font">Country & Flag : </td><td>
+               <?=Form::checkbox('displayCountry', $feed_options->displaycountry, ($feed_options->displaycountry ? True : Null))?>
+                </td></tr>
+                <tr><td class="feedback-td-font">Company Name :</td><td>
+                <?=Form::checkbox('displayCompany', $feed_options->displaycompany, ($feed_options->displaycompany ? True : Null))?>
+                </td>			
+                <td class="feedback-td-font">Submitted Date : </td><td>
+                <?=Form::checkbox('displaySbmtDate', $feed_options->displaysbmtdate, ($feed_options->displaysbmtdate ? True : Null))?>
+                </td></tr>
+                <tr><td class="feedback-td-font">Designation / Position :</td><td>
+                <?=Form::checkbox('displayPosition', $feed_options->displayposition, ($feed_options->displayposition ? True : Null))?>
+                </td><td></td><td></td></tr>
             </table>
             </div>
         </div>
