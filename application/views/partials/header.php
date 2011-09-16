@@ -16,6 +16,8 @@
     <?=HTML::script('js/DropDownChange.js')?>
     <?=HTML::script('js/jquery.switcharoo.js')?>
     <?=HTML::script('js/jquery.fancytips.js')?>
+    <?=HTML::script('js/jquery.cycle.all.min.js')?>
+
     </meta>    
 </head>
 <body>

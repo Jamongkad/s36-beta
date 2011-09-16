@@ -153,4 +153,41 @@ jQuery(function($) {
     $('.flag').fancytips({'text': 'Fast Forward', 'width': 70});
     $('.remove').fancytips({'top': 45, 'width': 84 ,'text': 'Delete Feedback'});
 
+
+
+    $('#template-slider').cycle({
+        fx:      'scrollHorz', 
+        speed:    500, 
+        timeout:  0 ,
+        pause : 1,
+        next:   '#next', 
+        prev:   '#prev',
+        after: adjust_height
+    });
+
+    $('#full_page_widget').hide();
+    $('#embed_widget').hide();
+    $('#modal_widget').hide();
+     
+    $('#full_page_type').click(function(){
+        $('#full_page_widget').slideDown();
+        $('#embed_widget').slideUp();
+        $('#modal_widget').slideUp();
+    });
+    $('#embed_type').click(function(){
+        $('#full_page_widget').slideUp();
+        $('#embed_widget').slideDown();
+        $('#modal_widget').slideUp();
+    });
+    $('#modal_type').click(function(){
+        $('#full_page_widget').slideUp();
+        $('#embed_widget').slideUp();
+        $('#modal_widget').slideDown();
+    });
+	
+	function adjust_height(curr, next, opts, fwd) {
+		var index = opts.currSlide;
+		var $ht = $(this).height();
+		$(this).parent().animate({height: $ht},200);
+	}
 });
