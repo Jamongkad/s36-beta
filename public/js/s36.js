@@ -96,10 +96,11 @@ jQuery(function($) {
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
         var mode      = (new_mode) ? new_mode : "inbox";
+        var sec       = 350;
 
         //generic feedback return 
-        $("#" + feed_holder.feedid).fadeIn(350);
-        $(this).parents("."+undo_type).fadeOut(350, function() { $(this).remove(); }); 
+        $("#" + feed_holder.feedid).fadeIn(sec);
+        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
 
         $.ajax( { type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder]} } );  
         e.preventDefault(); 
@@ -152,9 +153,7 @@ jQuery(function($) {
     $('.contact').fancytips({'text': 'Fast Forward', 'width': 60});
     $('.flag').fancytips({'text': 'Fast Forward', 'width': 70});
     $('.remove').fancytips({'top': 45, 'width': 84 ,'text': 'Delete Feedback'});
-
-
-
+    /*
     $('#template-slider').cycle({
         fx:      'scrollHorz', 
         speed:    500, 
@@ -164,7 +163,9 @@ jQuery(function($) {
         prev:   '#prev',
         after: adjust_height
     });
-
+    */
+    
+    //TODO: Clean this shit up
     $('#full_page_widget').hide();
     $('#embed_widget').hide();
     $('#modal_widget').hide();
@@ -173,16 +174,29 @@ jQuery(function($) {
         $('#full_page_widget').slideDown();
         $('#embed_widget').slideUp();
         $('#modal_widget').slideUp();
+
+        
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+                                .children('input[type="radio"]').attr('checked', null);                   
+
+        $("#modal_widget tr td").children('select').val(0);
     });
     $('#embed_type').click(function(){
         $('#full_page_widget').slideUp();
         $('#embed_widget').slideDown();
         $('#modal_widget').slideUp();
+
+        $("#full_page_widget tr td").children('select').val(0);
+        $("#modal_widget tr td").children('select').val(0);
     });
     $('#modal_type').click(function(){
         $('#full_page_widget').slideUp();
         $('#embed_widget').slideUp();
         $('#modal_widget').slideDown();
+
+        $("#full_page_widget tr td").children('select').val(0); 
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+                                .children('input[type="radio"]').attr('checked', null);                   
     });
 	
 	function adjust_height(curr, next, opts, fwd) {

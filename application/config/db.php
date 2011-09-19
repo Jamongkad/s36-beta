@@ -46,6 +46,15 @@ return array(
 			'charset'  => 'utf8',
 		),
 
+		'slave' => array(
+			'driver'   => 'mysql',
+			'host'     => $determine->d->db,
+			'database' => 's36',
+			'username' => 'root',
+			'password' => 'brx4*svv',
+			'charset'  => 'utf8',
+		),
+
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',

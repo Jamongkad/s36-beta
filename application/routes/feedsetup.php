@@ -3,10 +3,12 @@
 $feedback = new Feedback;
 
 return array(
-    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+    'GET /feedsetup/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         return View::of_layout()->partial('contents', 'inbox/feedsetup_view', Array( 
-            'feed_options' => $feedback->display_embedded_feedback_options()
+            'feed_options'    => $feedback->display_embedded_feedback_options()
+          , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
+          , 'themes'          => DB::table('Theme', 'master')->get()
         ));
     }),
 
@@ -15,11 +17,14 @@ return array(
     }),
 
     'POST /feedsetup/save_widget' => function() {
-        print_r($_POST);
+        $d = new UserTheme; 
+        echo "<pre>";
+        print_r($d->createTheme( Input::get() ));
+        echo "</pre>";
     },
 
     'GET /feedsetup/preview_widget' => function() {
-        
+        $d = new UserTheme; 
     },
 
     'POST /feedsetup/generate_code' => function() {

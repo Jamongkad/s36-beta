@@ -2,22 +2,21 @@
 <head> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
-    <?=HTML::style('css/grid.css')?> 
-    <?=HTML::style('css/romanticc.css')?>
-    <?=HTML::style('css/admin.css')?>
-    <?=HTML::style('css/zebra_pagination.css')?>
+        <?=HTML::style('css/grid.css')?> 
+        <?=HTML::style('css/romanticc.css')?>
+        <?=HTML::style('css/admin.css')?>
+        <?=HTML::style('css/zebra_pagination.css')?>
 
-    <?=HTML::script('js/jquery-1.6.2.min.js')?>
-    <?=HTML::script('js/jquery.tmpl.js')?>
-    <?=HTML::script('js/knockout-1.2.1.js')?>
-    <?=HTML::script('js/s36.js')?>
-    <?=HTML::script('js/Checky.js')?> 
-    <?=HTML::script('js/FeedbackBlockDisplay.js')?>
-    <?=HTML::script('js/DropDownChange.js')?>
-    <?=HTML::script('js/jquery.switcharoo.js')?>
-    <?=HTML::script('js/jquery.fancytips.js')?>
-    <?=HTML::script('js/jquery.cycle.all.min.js')?>
-
+        <?=HTML::script('js/jquery-1.6.2.min.js')?>
+        <?=HTML::script('js/jquery.tmpl.js')?>
+        <?=HTML::script('js/knockout-1.2.1.js')?>
+        <?=HTML::script('js/s36.js')?>
+        <?=HTML::script('js/Checky.js')?> 
+        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
+        <?=HTML::script('js/DropDownChange.js')?>
+        <?=HTML::script('js/jquery.switcharoo.js')?>
+        <?=HTML::script('js/jquery.fancytips.js')?>
+        <?=HTML::script('js/jquery.cycle.all.min.js')?>
     </meta>    
 </head>
 <body>
@@ -54,7 +53,7 @@
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
-                        <?=HTML::link('feedsetup', 'Feedback Setup')?>
+                        <?=HTML::link('feedsetup/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Feedback Setup')?>
                        <?=($regex->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>

@@ -30,13 +30,13 @@
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
                         $feedsetup_nav = Array(
-                             'feedsetup' => 'CREATE WIDGETS'
+                             'feedsetup/all' => 'CREATE WIDGETS'
                            , 'feedsetup/mywidgets' => 'MY WIDGETS'
                         );
                     ?>
 
                     <?foreach($feedsetup_nav as $name => $value):?>
-                        <li><?=HTML::link($name, $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                        <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
                     <?endforeach?>
                    
                 <?endif?>

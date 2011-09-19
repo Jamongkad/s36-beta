@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 14, 2011 at 03:25 PM
+-- Generation Time: Sep 19, 2011 at 05:06 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.2
 
@@ -183,6 +183,23 @@ CREATE TABLE IF NOT EXISTS `Effects` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `EmbeddedBlockOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `EmbeddedBlockOptions` (
+  `embeddedBlockId` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(20) NOT NULL,
+  `units` int(10) NOT NULL,
+  `height` int(10) NOT NULL,
+  `width` int(10) NOT NULL,
+  `effectId` int(10) NOT NULL,
+  PRIMARY KEY (`embeddedBlockId`),
+  KEY `EmbeddedBlockOptions_effect_id` (`effectId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Feedback`
 --
 
@@ -268,6 +285,18 @@ CREATE TABLE IF NOT EXISTS `Form` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `FullPageOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `FullPageOptions` (
+  `fullPageId` int(10) NOT NULL AUTO_INCREMENT,
+  `units` int(10) NOT NULL,
+  PRIMARY KEY (`fullPageId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `IM`
 --
 
@@ -276,6 +305,19 @@ CREATE TABLE IF NOT EXISTS `IM` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`imId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ModalWindowOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `ModalWindowOptions` (
+  `modalId` int(10) NOT NULL AUTO_INCREMENT,
+  `effectId` int(10) NOT NULL,
+  PRIMARY KEY (`modalId`),
+  KEY `ModalWindowOption_effect_id` (`effectId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -406,15 +448,16 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 CREATE TABLE IF NOT EXISTS `UserThemes` (
   `userThemeId` int(11) NOT NULL AUTO_INCREMENT,
-  `siteId` int(11) NOT NULL,
+  `siteId` int(10) unsigned NOT NULL,
   `widgetId` int(11) NOT NULL,
-  `themeId` int(11) NOT NULL,
-  `templatePath` varchar(250) NOT NULL,
+  `themeId` int(10) unsigned NOT NULL,
+  `optionId` int(11) NOT NULL,
+  `templatePath` varchar(125) NOT NULL,
   PRIMARY KEY (`userThemeId`),
-  KEY `UserThemes_Site_siteId` (`siteId`),
-  KEY `UserThemes_Widget_widgetId` (`widgetId`),
-  KEY `UserThemes_Theme_themeId` (`themeId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `UserThemes_Site_site_id` (`siteId`),
+  KEY `UserThemes_Theme_theme_id` (`themeId`),
+  KEY `UserThemes_Widget_widget_id` (`widgetId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -423,10 +466,10 @@ CREATE TABLE IF NOT EXISTS `UserThemes` (
 --
 
 CREATE TABLE IF NOT EXISTS `Widget` (
-  `widgetId` int(11) NOT NULL,
+  `widgetId` int(11) NOT NULL AUTO_INCREMENT,
   `widgetName` varchar(125) DEFAULT NULL,
   PRIMARY KEY (`widgetId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Constraints for dumped tables
@@ -503,3 +546,11 @@ ALTER TABLE `Theme`
 ALTER TABLE `User`
   ADD CONSTRAINT `User_Company_companyId` FOREIGN KEY (`companyId`) REFERENCES `Company` (`companyId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `User_IM_imId` FOREIGN KEY (`imId`) REFERENCES `IM` (`imId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `UserThemes`
+--
+ALTER TABLE `UserThemes`
+  ADD CONSTRAINT `UserThemes_Widget_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`),
+  ADD CONSTRAINT `UserThemes_Site_site_id` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`),
+  ADD CONSTRAINT `UserThemes_Theme_theme_id` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`);

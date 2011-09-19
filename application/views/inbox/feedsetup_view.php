@@ -1,8 +1,22 @@
 <?=Form::open('feedsetup/save_widget')?>
+<?$site_id = Input::get('site_id')?>
+<?=Form::hidden('site_id', $site_id)?>
 <div class="block">
+    <?if(!$site_id):?>
+    <div id="widget-setup-block"> 
+        <div class="widget-options">
+            <h2><span>Step 1 :</span> Choose your website you want to apply your widget to</h2>
+            <select name="site_id" class="regular-select"> 
+                <?foreach($site as $sites):?>
+                    <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
+                <?endforeach?>
+            </select>
+        </div>
+    </div>
+    <?endif?>
     <div id="widget-setup-block">
         <div class="widget-options">
-            <h2><span>Step 1 :</span> Choose Widget</h2>
+            <h2><span>Step <?=(!$site_id) ? 2 : 1?> :</span> Choose Widget</h2>
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="full_page_type" value="fullpage"/> <label for="full_page_type">Full Page</label></h3>
                 <div class="widget-opts" id="full_page_widget">
@@ -62,8 +76,8 @@
                         <tr>
                             <td class="feedback-td-font">Display Size : </td>
                             <td colspan="2" class="feedback-td-font">
-                                Width : <input type="text" class="regular-text small-text" style="display:inline;" name="embed_width"/>
-                                Height : <input type="text" class="regular-text small-text" style="display:inline;" name="embed_height"/>
+                                Width (px): <input type="text" class="regular-text small-text" value="0" style="display:inline;" name="embed_width"/>
+                                Height (px): <input type="text" class="regular-text small-text" value="0" style="display:inline;" name="embed_height"/>
                             </td>
                         </tr>
                         <tr>
@@ -106,7 +120,7 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Display Option</h2>
+            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Display Option</h2>
             <div class="widget-opts">
             <table width="100%" cellpadding="4" class="display-info">
 
@@ -138,62 +152,17 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step 3 :</span> Select Theme</h2>
+            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Select Theme</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
                     <ul>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li class="c"></li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li>
-                            <div><?=HTML::image('img/display-thumb.png')?></div>
-                            <div>Sample Name </div>
-                        </li>
-                        <li class="c"></li>
+                       <?foreach($themes as $theme):?>
+                           <li>
+                                <div><?=Form::radio('themeId', $theme->themeid)?> <?=$theme->name?></div>
+                                <div><?=HTML::image('img/display-thumb.png')?></div> 
+                           </li> 
+                       <?endforeach?>
+                       <li class="c"></li>
                     </ul>
                 </div>
                 <div class="slider-navigation">
