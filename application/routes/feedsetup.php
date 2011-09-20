@@ -25,7 +25,13 @@ return array(
     },
 
     'GET /feedsetup/preview_widget' => function() {
-        $d = new UserTheme; 
+        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
+
+        if($postmark->to("ryanchua6@gmail.com")->subject("36Stories Feedback Notification")->plain_message("I am the Manila Miracle Man. I need a drink...")->send()){
+            echo "Message sent";
+        } else {
+           echo "Message not sent";
+        }
     },
 
     'POST /feedsetup/generate_code' => function() {

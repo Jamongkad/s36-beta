@@ -206,7 +206,7 @@ jQuery(function($) {
 	}
 
     $("#preview-widget").bind("click", function(e) {
-        s36Lightbox(100, 100, "Mathew");
+        s36Lightbox(400, 400, "<iframe src='/widget/test' width='400' height='500'></iframe>");
         e.preventDefault(); 
     });
 
@@ -229,7 +229,8 @@ function s36Lightbox(width,height,insertContent){
 	var margin = Math.round(width / 2);
 	
 	// set the css and show the lightbox
-	$('#lightbox').css({'top':100,
+    $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+	$('#lightbox').css({
 						'width':width,
 						'height':height,
 						'margin-left':"-"+margin+"px"
