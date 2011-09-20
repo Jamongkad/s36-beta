@@ -177,7 +177,7 @@
             </div>
         </div>
         <div class="widget-setup-border"></div>
-        
+ 
         <div class="widget-opts" style="height:240px;">
             <br />
             <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>

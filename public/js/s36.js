@@ -206,44 +206,47 @@ jQuery(function($) {
 	}
 
     $("#preview-widget").bind("click", function(e) {
-        s36Lightbox(400, 400, "<iframe src='/widget/test' width='400' height='500'></iframe>");
-        e.preventDefault(); 
+        var embed_width = $('input[name="embed_width"]').val() > 0 ? $('input[name="embed_width"]').val() : 500;
+        var embed_height = $('input[name="embed_height"]').val() > 0 ? $('input[name="embed_height"]').val() : 500;
+        var site_id = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
+
+        //build dynamic string builder for widget preview creation...
+
+        s36Lightbox(embed_width, embed_height, "<iframe src='/widget/test?site_id="+site_id+"' width='"+embed_width+"' height='"+embed_height+"'></iframe>"); 
     });
 
-function s36Lightbox(width,height,insertContent){	
-	if($('#lightbox').size() == 0){
-		var theLightbox = $('<div id="lightbox"/>');
-		var theShadow = $('<div id="lightbox-shadow"/>');
-		$(theShadow).click(function(e){
-			closeLightbox();
-		});
-		$('body').append(theShadow);
-		$('body').append(theLightbox);
-	}
-	$('#lightbox').empty();
-	if(insertContent != null){
-		$('#lightbox').append(insertContent);
-	}
-	
-	//set negative margin for dynamic width
-	var margin = Math.round(width / 2);
-	
-	// set the css and show the lightbox
-    $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
-	$('#lightbox').css({
-						'width':width,
-						'height':height,
-						'margin-left':"-"+margin+"px"
-						});
-						
-	$('#lightbox').fadeIn('fast');
-	$('#lightbox-shadow').fadeIn('fast');
-}
+    function s36Lightbox(width,height,insertContent){	
+        if($('#lightbox').size() == 0){
+            var theLightbox = $('<div id="lightbox"/>');
+            var theShadow = $('<div id="lightbox-shadow"/>');
+            $(theShadow).click(function(e){
+                closeLightbox();
+            });
+            $('body').append(theShadow);
+            $('body').append(theLightbox);
+        }
+        $('#lightbox').empty();
+        if(insertContent != null){
+            $('#lightbox').append(insertContent);
+        }
+        
+        //set negative margin for dynamic width
+        var margin = Math.round(width / 2);
+        
+        // set the css and show the lightbox
+        $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+        $('#lightbox').css({
+                            'width':width,
+                            'height':height,
+                            'margin-left':"-"+margin+"px"
+                            });
+                            
+        $('#lightbox').fadeIn('fast');
+        $('#lightbox-shadow').fadeIn('fast');
+    }
 
-
-
-function closeLightbox(){
-		$('#lightbox').fadeOut('fast',function(){$(this).empty();});
-		$('#lightbox-shadow').fadeOut('fast');
-}
+    function closeLightbox(){
+        $('#lightbox').fadeOut('fast',function(){$(this).empty();});
+        $('#lightbox-shadow').fadeOut('fast');
+    }
 });

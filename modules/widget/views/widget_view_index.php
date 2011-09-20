@@ -1,1 +1,1 @@
-<h1>Pwet</h1>
+<h1>Pwet <?=$_GET['site_id']?></h1>
