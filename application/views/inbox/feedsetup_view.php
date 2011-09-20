@@ -180,13 +180,13 @@
         
         <div class="widget-opts" style="height:240px;">
             <br />
-            <a href="#" class="button-gray">Preview Widget</a>
+            <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
             <br />
             <br />
             <a href="#" class="button-gray">Generate Code</a>
             <br />
             <br />
-            
+
             <div id="widget-preview">
                 <div class="widget-block">
                     <h2>HTML Code</h2>

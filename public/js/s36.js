@@ -204,4 +204,45 @@ jQuery(function($) {
 		var $ht = $(this).height();
 		$(this).parent().animate({height: $ht},200);
 	}
+
+    $("#preview-widget").bind("click", function(e) {
+        s36Lightbox(100, 100, "Mathew");
+        e.preventDefault(); 
+    });
+
+function s36Lightbox(width,height,insertContent){	
+	if($('#lightbox').size() == 0){
+		var theLightbox = $('<div id="lightbox"/>');
+		var theShadow = $('<div id="lightbox-shadow"/>');
+		$(theShadow).click(function(e){
+			closeLightbox();
+		});
+		$('body').append(theShadow);
+		$('body').append(theLightbox);
+	}
+	$('#lightbox').empty();
+	if(insertContent != null){
+		$('#lightbox').append(insertContent);
+	}
+	
+	//set negative margin for dynamic width
+	var margin = Math.round(width / 2);
+	
+	// set the css and show the lightbox
+	$('#lightbox').css({'top':100,
+						'width':width,
+						'height':height,
+						'margin-left':"-"+margin+"px"
+						});
+						
+	$('#lightbox').fadeIn('fast');
+	$('#lightbox-shadow').fadeIn('fast');
+}
+
+
+
+function closeLightbox(){
+		$('#lightbox').fadeOut('fast',function(){$(this).empty();});
+		$('#lightbox-shadow').fadeOut('fast');
+}
 });
