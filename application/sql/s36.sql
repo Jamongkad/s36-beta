@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 14, 2011 at 12:51 PM
+-- Generation Time: Sep 20, 2011 at 11:55 PM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.2
 
@@ -659,7 +659,7 @@ CREATE TABLE IF NOT EXISTS `Company` (
   PRIMARY KEY (`companyId`),
   KEY `Company_Plan_planId` (`planId`),
   KEY `Company_Site_defaultSiteId` (`defaultSiteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `Company`
@@ -667,7 +667,8 @@ CREATE TABLE IF NOT EXISTS `Company` (
 
 INSERT INTO `Company` (`companyId`, `name`, `planId`, `billTo`, `tagInactive`, `tagInactiveDays`, `deleteIgnored`, `replyTo`, `digestPeriod`, `ffEmail1`, `ffEmail2`, `ffEmail3`, `defaultSiteId`) VALUES
 (1, 'Razer', 3, 'Razer, LLC', 1, 25, 1, 'feedback@razer.com', 1, 'feedback+ryan@razer.com', NULL, NULL, 1),
-(2, 'YGiraffe', 1, 'YGiraffe, LLC', 1, 25, 1, 'feedback@ygiraffec.com', 1, 'feedback+mathew@ygiraffe.com', NULL, NULL, 3);
+(2, 'YGiraffe', 1, 'YGiraffe, LLC', 1, 25, 1, 'feedback@ygiraffec.com', 1, 'feedback+mathew@ygiraffe.com', NULL, NULL, 3),
+(3, 'TheAppleClan', 1, 'TheAppleClan, LLC', 1, 25, 1, 'feedback@theappleclan.com', 1, 'feedback+tofumonkey@gmail.com', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1329,6 +1330,32 @@ INSERT INTO `Effects` (`effectsId`, `effectsName`, `jqueryName`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `EmbeddedBlockOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `EmbeddedBlockOptions` (
+  `embeddedBlockId` int(11) NOT NULL AUTO_INCREMENT,
+  `widgetId` int(11) DEFAULT '3',
+  `type` varchar(20) NOT NULL,
+  `units` int(10) NOT NULL,
+  `height` int(10) NOT NULL,
+  `width` int(10) NOT NULL,
+  `effectId` int(10) NOT NULL,
+  PRIMARY KEY (`embeddedBlockId`),
+  KEY `EmbeddedBlockOptions_effect_id` (`effectId`),
+  KEY `EmbeddedBlockOptions_widget_id` (`widgetId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `EmbeddedBlockOptions`
+--
+
+INSERT INTO `EmbeddedBlockOptions` (`embeddedBlockId`, `widgetId`, `type`, `units`, `height`, `width`, `effectId`) VALUES
+(2, 3, 'embed_block_y', 24, 100, 100, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Feedback`
 --
 
@@ -1422,10 +1449,10 @@ INSERT INTO `Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `form
 (55, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (56, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (57, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
 (62, 1, 94, 1, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(64, 1, 1, 1, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 100, 1, 9, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1);
+(64, 1, 1, 1, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 100, 1, 9, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1454,7 +1481,7 @@ CREATE TABLE IF NOT EXISTS `FeedbackBlock` (
 --
 
 INSERT INTO `FeedbackBlock` (`feedbackblockId`, `siteId`, `themeId`, `formId`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
-(1, 1, 3, 1, 1, 1, 0, 0, 1, 1, 1);
+(1, 1, 3, 1, 0, 1, 0, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1492,6 +1519,25 @@ INSERT INTO `Form` (`formId`, `siteId`, `themeId`, `title`, `help`, `scaleId`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `FullPageOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `FullPageOptions` (
+  `fullPageId` int(11) NOT NULL AUTO_INCREMENT,
+  `widgetId` int(11) DEFAULT '1',
+  `units` int(10) NOT NULL,
+  PRIMARY KEY (`fullPageId`),
+  KEY `FullPageOptions_widget_id` (`widgetId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `FullPageOptions`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `IM`
 --
 
@@ -1511,6 +1557,26 @@ INSERT INTO `IM` (`imId`, `name`) VALUES
 (3, 'Skype'),
 (4, 'ICQ'),
 (5, 'AIM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ModalWindowOptions`
+--
+
+CREATE TABLE IF NOT EXISTS `ModalWindowOptions` (
+  `modalId` int(11) NOT NULL AUTO_INCREMENT,
+  `widgetId` int(11) DEFAULT '2',
+  `effectId` int(10) NOT NULL,
+  PRIMARY KEY (`modalId`),
+  KEY `ModalWindowOption_effect_id` (`effectId`),
+  KEY `ModalWindowOptions_widget_id` (`widgetId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `ModalWindowOptions`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1580,12 +1646,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `last_activity`, `data`) VALUES
-('6FcPzytXRlpjyVV8Tc3Ct3cLZLAC1b1IzCWjig0x', 1315928469, 'a:2:{s:10:"csrf_token";s:16:"p6PPrwJT18BNy00O";s:22:":old:laravel_old_input";a:0:{}}'),
-('5B9YtWqI7svn6MY8oCKRoJUzSlzwwqqBPtB8mX7q', 1315900857, 'a:2:{s:10:"csrf_token";s:16:"EihAVcTL2MvQeqRW";s:22:":old:laravel_old_input";a:0:{}}'),
-('36wnUOWQw9DpFTiMvPMRrj17brVsKUJdU5aQ6SJt', 1315885002, 'a:3:{s:10:"csrf_token";s:16:"n4x1bqIzKcBNBkyE";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}'),
-('CPAliWDkLrrJbYKDnA8W63N1p8KgLdUmJryo934i', 1315801446, 'a:3:{s:10:"csrf_token";s:16:"xyQLclDYlTyY25n6";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}'),
-('RnD4PiC0ZjVCWI8OHZlomMEJcdjkGnxk3XE41kjL', 1315809304, 'a:3:{s:10:"csrf_token";s:16:"x9AJeBUYIw8V1W6e";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}'),
-('71zOCHfvKCzZxFfMdWOJCkWGUpekcgZSiMOOpYbG', 1315820018, 'a:3:{s:10:"csrf_token";s:16:"T6NO17iCwjslSVGz";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}');
+('sDFdsZhEjdIVESUjyaA14NMRbpb3Xhnyv9nglHgk', 1316533081, 'a:2:{s:10:"csrf_token";s:16:"hq3ILLnsDSxHPykO";s:22:":old:laravel_old_input";a:0:{}}'),
+('awBK30UtkVkfqLNqBlWjeQhNej7xRkYLGkB3Rbow', 1316534113, 'a:2:{s:10:"csrf_token";s:16:"Q99rRmVAlOCzLgsn";s:22:":old:laravel_old_input";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -1602,7 +1664,7 @@ CREATE TABLE IF NOT EXISTS `Site` (
   PRIMARY KEY (`siteId`),
   KEY `Site_Company_companyId` (`companyId`),
   KEY `Site_Form_defaultFormId` (`defaultFormId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `Site`
@@ -1612,7 +1674,8 @@ INSERT INTO `Site` (`siteId`, `companyId`, `domain`, `name`, `defaultFormId`) VA
 (1, 1, 'razerzone.com', 'Razer', 1),
 (2, 1, 'google.com', 'google', 1),
 (3, 2, 'www.yidgetsoft.com', 'yidgetsoft', 1),
-(4, 2, 'www.minesoft.com', 'minesoft', 1);
+(4, 2, 'www.minesoft.com', 'minesoft', 1),
+(5, 3, 'www.theappleclan.com', 'theappleclan', 1);
 
 -- --------------------------------------------------------
 
@@ -1689,7 +1752,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE KEY `company_user` (`companyId`,`username`),
   KEY `User_Company_companyId` (`companyId`),
   KEY `User_IM_imId` (`imId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `User`
@@ -1698,7 +1761,8 @@ CREATE TABLE IF NOT EXISTS `User` (
 INSERT INTO `User` (`userId`, `companyId`, `username`, `password`, `email`, `fullName`, `title`, `phone`, `ext`, `mobile`, `fax`, `home`, `im`, `imId`, `avatar`) VALUES
 (1, 1, 'ryan', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'ryan@chua.com', 'Ryan Chua', 'CEO', '', '', '', '', '', 'ryanchua6', 3, NULL),
 (2, 1, 'budi', '$1$vKHia0ZE$FyNbOT8wNDGvTGV3IpkO01', 'budi@salim.com', 'Budiyono Salim', 'CTO', '', '', '', '', '', 'byonosalim@gmail.com', 2, NULL),
-(3, 2, 'mathew', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'mathew@ygiraffe.com', 'Mathew Wong', 'CEO', '', '', '', '', '', '', 4, NULL);
+(3, 2, 'mathew', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'mathew@ygiraffe.com', 'Mathew Wong', 'CEO', '', '', '', '', '', '', 4, NULL),
+(5, 3, 'nicholas', '$1$6Sx2eJI9$LfglrU26wSv.73i0xyW5q/', 'tofumonkey@gmail.com', 'Nicholas Foo', '', '', '', '', '', '', '', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -1708,20 +1772,26 @@ INSERT INTO `User` (`userId`, `companyId`, `username`, `password`, `email`, `ful
 
 CREATE TABLE IF NOT EXISTS `UserThemes` (
   `userThemeId` int(11) NOT NULL AUTO_INCREMENT,
-  `siteId` int(11) NOT NULL,
+  `companyId` int(10) unsigned DEFAULT NULL,
+  `siteId` int(10) unsigned NOT NULL,
   `widgetId` int(11) NOT NULL,
-  `themeId` int(11) NOT NULL,
-  `templatePath` varchar(250) NOT NULL,
+  `themeId` int(10) unsigned NOT NULL,
+  `optionId` int(11) NOT NULL,
+  `templatePath` varchar(125) NOT NULL,
   PRIMARY KEY (`userThemeId`),
-  KEY `UserThemes_Site_siteId` (`siteId`),
-  KEY `UserThemes_Widget_widgetId` (`widgetId`),
-  KEY `UserThemes_Theme_themeId` (`themeId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `UserThemes_Site_site_id` (`siteId`),
+  KEY `UserThemes_Theme_theme_id` (`themeId`),
+  KEY `UserThemes_Widget_widget_id` (`widgetId`),
+  KEY `CompanyIdIndex` (`companyId`),
+  KEY `OptionIdIndex` (`optionId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `UserThemes`
 --
 
+INSERT INTO `UserThemes` (`userThemeId`, `companyId`, `siteId`, `widgetId`, `themeId`, `optionId`, `templatePath`) VALUES
+(2, 1, 1, 3, 3, 2, '');
 
 -- --------------------------------------------------------
 
@@ -1730,19 +1800,19 @@ CREATE TABLE IF NOT EXISTS `UserThemes` (
 --
 
 CREATE TABLE IF NOT EXISTS `Widget` (
-  `widgetId` int(11) NOT NULL,
+  `widgetId` int(11) NOT NULL AUTO_INCREMENT,
   `widgetName` varchar(125) DEFAULT NULL,
   PRIMARY KEY (`widgetId`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `Widget`
 --
 
 INSERT INTO `Widget` (`widgetId`, `widgetName`) VALUES
-(1, 'Full Page'),
-(2, 'Embedded Block'),
-(3, 'Modal / Pop-Up');
+(1, 'fullpage'),
+(2, 'modal'),
+(3, 'embedded');
 
 --
 -- Constraints for dumped tables
@@ -1782,6 +1852,13 @@ ALTER TABLE `Contact`
   ADD CONSTRAINT `Contact_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `EmbeddedBlockOptions`
+--
+ALTER TABLE `EmbeddedBlockOptions`
+  ADD CONSTRAINT `EmbeddedBlockOptions_UserThemes_option_id` FOREIGN KEY (`embeddedBlockId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EmbeddedBlockOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
+
+--
 -- Constraints for table `Feedback`
 --
 ALTER TABLE `Feedback`
@@ -1798,6 +1875,20 @@ ALTER TABLE `Form`
   ADD CONSTRAINT `Form_Scale_scaleId` FOREIGN KEY (`scaleId`) REFERENCES `Scale` (`scaleId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Form_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Form_Theme_themeId` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `FullPageOptions`
+--
+ALTER TABLE `FullPageOptions`
+  ADD CONSTRAINT `FullPageOptions_UserThemes_option_id` FOREIGN KEY (`fullPageId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FullPageOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
+
+--
+-- Constraints for table `ModalWindowOptions`
+--
+ALTER TABLE `ModalWindowOptions`
+  ADD CONSTRAINT `ModalWindowOptions_UserThemes_option_id` FOREIGN KEY (`modalId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ModalWindowOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
 
 --
 -- Constraints for table `Site`
@@ -1819,3 +1910,11 @@ ALTER TABLE `Theme`
 ALTER TABLE `User`
   ADD CONSTRAINT `User_Company_companyId` FOREIGN KEY (`companyId`) REFERENCES `Company` (`companyId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `User_IM_imId` FOREIGN KEY (`imId`) REFERENCES `IM` (`imId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `UserThemes`
+--
+ALTER TABLE `UserThemes`
+  ADD CONSTRAINT `UserThemes_Site_site_id` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`),
+  ADD CONSTRAINT `UserThemes_Theme_theme_id` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`),
+  ADD CONSTRAINT `UserThemes_Widget_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
