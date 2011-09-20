@@ -5,14 +5,18 @@ class UserTheme extends S36DataObject {
 
         $optionFactory = new OptionFactory($post);
         $widget = DB::table('Widget', 'master')->where('widgetName', '=', $post['embed_type'])->first(Array('widgetId'));
+        $optionId = $optionFactory->returnObj()->save();
 
         $data = Array(
-            'siteId'   => $post['site_id']
-          , 'widgetId' => $widget->widgetid
-          , 'themeId'  => $post['themeId']
-          , 'optionId' => $optionFactory->returnObj()->save()
+            'siteId'    => $post['site_id']
+          , 'companyId' => $post['company_id']
+          , 'widgetId'  => $widget->widgetid
+          , 'themeId'   => $post['theme_id']
+          , 'optionId'  => $optionId
         );
-        return DB::table('UserThemes', 'master')->insert($data);
+        $insert = DB::table('UserThemes', 'master')->insert($data);
+        print_r($insert);
+
     }
 }
 
@@ -54,7 +58,7 @@ class OptionFactory {
     }
 }
 
-abstract class Options {
+abstract class Options extends S36DataObject {
     
     private $option_parameters;
 
@@ -68,11 +72,14 @@ abstract class Options {
 class EmbeddedBlockOptions extends Options {
     public function __construct($option_parameters) { 
         $this->option_parameters = $option_parameters;    
+        $this->dbh = DB::Connection('master')->pdo;
     }
 
-    public function save() {
-         $insert_id = DB::table(get_class($this), 'master')->insert_get_id( $this->option_parameters );
-         return $insert_id; 
+    public function save() { 
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 0");
+        $insert_id = DB::table(get_class($this), 'master')->insert_get_id( $this->option_parameters );
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 1");
+        return $insert_id;    
     }
 }
 
@@ -82,7 +89,9 @@ class ModalWindowOptions extends Options {
     }
 
     public function save() { 
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 0");
         $insert_id = DB::table(get_class($this), 'master')->insert_get_id( $this->option_parameters );
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 1");
         return $insert_id; 
     }
 }
@@ -93,7 +102,9 @@ class FullPageOptions extends Options {
     }
 
     public function save() { 
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 0");
         $insert_id = DB::table(get_class($this), 'master')->insert_get_id( $this->option_parameters );
+        $this->dbh->query("SET FOREIGN_KEY_CHECKS = 1");
         return $insert_id; 
     }
 }

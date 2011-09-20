@@ -1,6 +1,7 @@
 <?=Form::open('feedsetup/save_widget')?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
+<?=Form::hidden('company_id', $companyId)?>
 <div class="block">
     <?if(!$site_id):?>
     <div id="widget-setup-block"> 
@@ -158,7 +159,7 @@
                     <ul>
                        <?foreach($themes as $theme):?>
                            <li>
-                                <div><?=Form::radio('themeId', $theme->themeid)?> <?=$theme->name?></div>
+                                <div><?=Form::radio('theme_id', $theme->themeid)?> <?=$theme->name?></div>
                                 <div><?=HTML::image('img/display-thumb.png')?></div> 
                            </li> 
                        <?endforeach?>

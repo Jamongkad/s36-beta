@@ -9,6 +9,7 @@ return array(
           , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->get()
+          , 'companyId'       => S36Auth::user()->companyid
         ));
     }),
 
