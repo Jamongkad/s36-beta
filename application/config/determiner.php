@@ -21,7 +21,7 @@ class Determiner {
        
        //DEV
        if($this->http_host == 'dev.gearfish.com') {
-           $obj->host = 'http://dev.gearfish.com/s36-beta/public';     
+           $obj->host = 'http://dev.gearfish.com';     
            $obj->db   = 'localhost';
            return $obj;
        }
