@@ -19,6 +19,7 @@ return array(
 	*/
     'S36Auth' => 'S36Auth\\S36Auth',
     'S36DataObject' => 'S36DataObject\\S36DataObject',
+    'Resize'  => 'Resize\\Resize',
     'PostMark' => 'PostMark\\PostMark',
     'Helpers' => 'Helpers\\Helpers',
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
