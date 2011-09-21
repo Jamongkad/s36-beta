@@ -382,3 +382,17 @@ background:#eceff1;
 	z-index: 100000;
 	display: none;
 }
+
+#mainbodywrapper{width:100%;height:auto;}
+#mainbodycontent{width:880px;height:auto;margin:0 auto;}
+#login{width:880px;margin:30px 0px 200px;}
+#login-box{width:408px;border:1px solid #c9cacc;margin:0 auto;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;background:#c2c3c4 url(../img/login-box-bg.png) repeat-x top;
+		   padding:20px;}
+#login a{text-decoration:underline;color:#2c3844;}	
+#login-logo{margin-top:90px;text-align:center;}
+/*form styles */
+input.login-btn{width:138px;height:50px;background:url(../img/login-button-large.png) top center no-repeat;border:none;font-size:20px;color:#FFF;font-family:Georgia, "Times New Roman", Times, serif;margin-right:6px;}
+input.login-btn:hover{background-position:bottom center;cursor:pointer;}
+input.reg-text{padding:7px 10px;width:290px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
+input.login-text{padding:7px 10px;width:240px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
+select.reg-select{padding:7px 10px;width:310px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
