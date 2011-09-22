@@ -36,8 +36,35 @@ return array(
         }
     },
 
-    'POST /feedsetup/generate_code' => function() {
-        
+    'GET /feedsetup/generate_code' => function() {
+         $site_id = Input::get('site_id');
+         $company_id = Input::get('company_id');
+         return "
+                <link rel='stylesheet' type='text/css' href='http://dev.gearfish.com/css/s36_client_style.css' />
+                <script type='text/javascript' src='http://dev.gearfish.com/js/s36_client_script.js'></script>
+                <script type='text/javascript'>	
+                        DomReady.ready(function() {
+                            var siteId = $site_id;
+                            var companyId = $company_id;
+                            var s36_button_opts = {
+                                siteId 		: siteId,
+                                companyId 	: companyId
+                            }
+                            var m_option_1 = {
+                                target 		: 's36m_widget_1',
+                                siteId 		: siteId,
+                                companyId 	: companyId,
+                                transition 	: 'fade',
+                                template 	: 'default',
+                                src			: 'http://localhost/templates/'
+                            }
+                            
+                            var s36_button = s36_create_widget_button(s36_button_opts);
+                            var m_widget_1 = s36_modal_widget(m_option_1);
+                            
+                        });
+                </script>
+                ";
     },
 
     'POST /feedsetup/toggle_feedback_display' => function() use ($feedback) {

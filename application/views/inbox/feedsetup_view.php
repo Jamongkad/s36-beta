@@ -183,6 +183,9 @@
             <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
             <br />
             <br />
+            <a href="javascript:;" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Feedback Button</a>
+            <br />
+            <br />
             <a href="#" class="button-gray">Generate Code</a>
             <br />
             <br />
@@ -191,13 +194,12 @@
                 <div class="widget-block">
                     <h2>HTML Code</h2>
                     <div class="html-code">
-                        <textarea spellcheck="false">
-
+                        <textarea id="code-generate-view" spellcheck="false">
                         </textarea>
                     </div>
+
                 </div>
-            </div>
-    
+            </div>    
         </div>
         <div class="widget-setup-border"></div>
         <div class="widget-opts">

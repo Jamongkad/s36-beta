@@ -249,4 +249,19 @@ jQuery(function($) {
         $('#lightbox').fadeOut('fast',function(){$(this).empty();});
         $('#lightbox-shadow').fadeOut('fast');
     }
+
+    $("#generate-feedback-btn").bind("click", function(e) {
+        var me = this;
+        var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
+        var company_id = $("input[name='company_id']").val();
+        $.ajax({
+            url: $(me).attr('hrefaction')
+          , data: "site_id=" + site_id + "&" + "company_id=" + company_id
+          , success : function(msg) {
+              $("#code-generate-view").val(msg);             
+          }
+        });
+
+        e.preventDefault();
+    })
 });
