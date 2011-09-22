@@ -215,6 +215,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		}//end of cycle prev
 </script>
 </head>
+<span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
+<span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
+<span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
 
 <body style="background:#000">
 <!-- facebook scripts -->

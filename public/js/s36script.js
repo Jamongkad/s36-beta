@@ -388,12 +388,12 @@ function ajaxFileUpload() {
 		
 		loader.fadeIn();
 		$.ajaxFileUpload ({
-            url: '/widget/form/upload',
+            url: $("#ajax-upload-url").attr('hrefaction'),//'/widget/form/upload',
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json',
             success: function (data, status) {	 
-                console.log(data);
+               
                 if(data.error == null) {     
                     change_images(data.dir);
                     change_jcrop_div(data.wid);
@@ -438,7 +438,7 @@ function save_crop_image(){
 		
 		$.ajax({
 			  //url: "crop.php",
-              url: "/widget/form/crop",
+              url: $("#ajax-crop-url").attr('hrefaction'),//"/widget/form/crop",
 			  method: 'GET',
 			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto,
 			  success: function(data){
@@ -632,7 +632,7 @@ function send_form_data(){
 		console.log(form_data);
 		$.ajax({
 		     type: "POST"
-		   , url:  "/api/submit_feedback"
+		   , url:  $("#ajax-submit-feedback").attr('hrefaction')//"/api/submit_feedback"
 		   , dataType: "json"
 		   , data: form_data
 		   , success: function(data){
