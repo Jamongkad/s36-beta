@@ -12,12 +12,13 @@ return array(
     },
 
     'GET /widget/form/crop' => function() { 
-    
+
+        $fb_login = $_GET['fb_login']; 
         $x  = $_GET['x_coords'];
         $y  = $_GET['y_coords'];
         $wd = $_GET['wd'];
         $ht = $_GET['ht'];		
-        $src = "/var/www/s36-beta/public/".$_GET['src'];
+        $src = $fb_login ? $_GET['src'] : "/var/www/s36-beta/public/".$_GET['src'];
         $ophoto = $_GET['oldphoto'];
         
         /*

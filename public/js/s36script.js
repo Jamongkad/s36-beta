@@ -426,6 +426,7 @@ Function where the user crops an image and saves it to a folder <(-_-)>
 function save_crop_image(){
 		$('#crop_button').removeClass('highlight');
 		hide_error();
+        var fb_login = $("#fb_flag").val();
 		var x_coords = $('#x').val();
 		var y_coords = $('#y').val();
 		var wd = $('#w').val();
@@ -440,7 +441,7 @@ function save_crop_image(){
 			  //url: "crop.php",
               url: $("#ajax-crop-url").attr('hrefaction'),//"/widget/form/crop",
 			  method: 'GET',
-			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto,
+			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
 			  success: function(data){
 				    status.fadeOut('fast',function(){
 						status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
