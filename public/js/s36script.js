@@ -393,7 +393,7 @@ function ajaxFileUpload() {
             fileElementId:'your_photo',
             dataType: 'json',
             success: function (data, status) {	 
-                //debugger console.log(data);
+                console.log(data);
                 if(data.error == null) {     
                     change_images(data.dir);
                     change_jcrop_div(data.wid);
