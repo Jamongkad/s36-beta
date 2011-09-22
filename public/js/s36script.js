@@ -357,8 +357,8 @@ function fb_connect_success(obj){
 /*
 function for the thumbnail preview of the cropping script
 */
-function showPreview(coords)
-{
+function showPreview(coords) {
+
 	var rx = 100 / coords.w;
 	var ry = 100 / coords.h;
 	var target = $('#jcrop_target');
@@ -382,42 +382,31 @@ function showPreview(coords)
 /*
 Function for uploading images using ajax
 */
-function ajaxFileUpload()
-	{
+function ajaxFileUpload() {
 		//starting setting some animation when the ajax starts and completes
 		var loader = $('#loading');
 		
 		loader.fadeIn();
-		$.ajaxFileUpload
-		(
-			{
-                url: '/widget/form/upload',
-				secureuri:false,
-				fileElementId:'your_photo',
-				dataType: 'json',
-				success: function (data, status)
-				{	 
-					if(typeof(data.error) != 'undefined')
-					{
-						if(data.error != '')
-						{
-							loader.html(data.error);
-							return false;
-						}else
-						{ 
-							change_images(data.msg);
-							change_jcrop_div(data.wid);
-							loader.fadeOut(function(){$(this).html("loading...")});
-						}
-					}
-					
-				},
-				error: function (data, status, e)
-				{
-					console.log(data);
-				}
-			}
-		)
+		$.ajaxFileUpload ({
+            url: '/widget/form/upload',
+            secureuri:false,
+            fileElementId:'your_photo',
+            dataType: 'json',
+            success: function (data, status) {	 
+                //debugger console.log(data);
+                if(data.error == null) {     
+                    change_images(data.dir);
+                    change_jcrop_div(data.wid);
+                    loader.fadeOut(function(){$(this).html("loading...")});
+                } else { 
+                    loader.html(data.error);
+                }
+
+            },
+            error: function (data, status, e) {
+                console.log(data);
+            }
+		});
 	}  
 /*
 Function that changes the images based on its dir parameter where dir is the location of the image
@@ -454,7 +443,7 @@ function save_crop_image(){
 				    status.fadeOut('fast',function(){
 						status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
 						status.fadeIn();
-						assign_to_review("uploaded_cropped/150x150/"+data);
+						assign_to_review("/uploaded_cropped/150x150/"+data);
 						
 						$('#cropped_photo').val(data);
 					});
@@ -518,7 +507,7 @@ function assign_to_review(photo){
 		$('#review-name').html(fname +" "+lname);
 		$('#review-position').html(position +" "+company);
 		$('#review-location').html(location+" "+flag);
-		$('#review-date').html("Aug 4, 2011");
+		//$('#review-date').html("Aug 4, 2011");
 		$('#review-photo').attr('src',photo);
 		$('#review-feedback').html(feedback);
 		

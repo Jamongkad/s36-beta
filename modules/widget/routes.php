@@ -81,10 +81,10 @@ return array(
     },
 
     'POST /widget/form/upload' => function() { 
-        $error = "";
-        $msg = "";
-        $filedir = "";
-        $width = "";
+        $error = Null;
+        $msg = Null;
+        $filedir = Null;
+        $width = Null;
         $file = 'your_photo';
         if(!empty($_FILES[$file]['error']))
         {
@@ -126,31 +126,29 @@ return array(
                 ($_FILES[$file]['type'] != "image/png")){
                 $error = 'Please Upload Image Files Only'.$_FILES[$file]['type'];
         }else{
-                //$msg .= " File Size: " . @filesize($_FILES['your_photo']['tmp_name']);
-                //for security reason, we force to remove all uploaded file
                                 
-                    $filename = date("Ydmhis").$_FILES[$file]['name'];
-                    $filedir = "uploaded_tmp/".$filename;
-                    $maxwidth = 350;
-                    $maxheight = 230;
-                    $move = move_uploaded_file($_FILES[$file]['tmp_name'],"/var/www/s36-upload-images/uploaded_tmp/".$filename);
-                    if($move){
-                        
-                         //start image resizing..
-                         $resizeObj = new Resize($filedir);
-                         $resizeObj->resizeImage($maxwidth, $maxheight, 'auto');
-                         $resizeObj->saveImage($filedir, 100);
-                         
-                         //get the optimal dimensions
-                         $dims = $resizeObj->getDimensions($maxwidth, $maxheight, 'auto'); 
-                         $width = $dims['optimalWidth'];
-                    }
+                $filename = date("Ydmhis").$_FILES[$file]['name'];
+                $filedir = "uploaded_tmp/".$filename;
+                $maxwidth = 350;
+                $maxheight = 230;
+                $move = move_uploaded_file($_FILES[$file]['tmp_name'],"/var/www/s36-upload-images/uploaded_tmp/".$filename);
+                if($move){
+                    
+                     //start image resizing..
+                     $resizeObj = new Resize($filedir);
+                     $resizeObj->resizeImage($maxwidth, $maxheight, 'auto');
+                     $resizeObj->saveImage($filedir, 100);
+                     
+                     //get the optimal dimensions
+                     $dims = $resizeObj->getDimensions($maxwidth, $maxheight, 'auto'); 
+                     $width = $dims['optimalWidth'];
+                }
                 
         }
         
             echo json_encode(Array(
                 "error" => $error
-              , "msg" => $filedir
+              , "dir" => $filedir
               , "wid" => $width
             ));
 

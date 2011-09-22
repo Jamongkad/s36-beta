@@ -430,7 +430,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         </div>
                     </div>
                     <div style="width:200px;float:left;margin-left:10px;">
-                    	<h3 style="margin-left:3px;margin-top:10px;">Good with it?</h3>
+                    	<h3 style="margin-left:3px;margin-top:10px;">is this to your liking?</h3>
                         <div id="test_showcoords"></div>
                         <span id="crop_status"></span>
                         <form>
