@@ -345,7 +345,7 @@ function fb_connect_success(obj){
 		$('#fb_flag').val("1");
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		change_jcrop_div(200);
-		change_images(photo);
+		change_images(photo, obj);
 		default_text();	
 		var fb_text = $.trim($('#feedback_text').val());
 		if(fb_text == ""){
@@ -411,8 +411,10 @@ function ajaxFileUpload() {
 /*
 Function that changes the images based on its dir parameter where dir is the location of the image
 */
-function change_images(dir){
-    var file = "/" + dir;
+function change_images(dir, obj){ 
+
+    var file = (obj) ? "/" + dir : dir;
+
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
     $('#preview').attr('src',file);
