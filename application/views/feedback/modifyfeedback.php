@@ -67,7 +67,7 @@
                  </tr>
                  <tr>
                      <td>Display Image:</td>
-                     <td><?=$feedback->img?></td>
+                     <td><?=$feedback->displayimg?></td>
                      <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
                  </tr>
                  <tr>
