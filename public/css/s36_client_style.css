@@ -48,7 +48,7 @@
 	z-index:100000;
 	right:0px;
 	bottom:0px;
-	background:url(images/s36-btn-lr.png) bottom center;
+	background:url(/img/s36-btn-lr.png) bottom center;
 	cursor:pointer;
 }
 #s36_widget_button:hover{background-position:top;}
