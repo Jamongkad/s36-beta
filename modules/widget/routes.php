@@ -17,7 +17,7 @@ return array(
         $y  = $_GET['y_coords'];
         $wd = $_GET['wd'];
         $ht = $_GET['ht'];		
-        $src = "/var/www/s36-beta-test/public/".$_GET['src'];
+        $src = "/var/www/s36-beta/public/".$_GET['src'];
         $ophoto = $_GET['oldphoto'];
         
         /*
