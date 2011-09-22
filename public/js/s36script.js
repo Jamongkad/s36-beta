@@ -411,9 +411,9 @@ function ajaxFileUpload() {
 /*
 Function that changes the images based on its dir parameter where dir is the location of the image
 */
-function change_images(dir, obj){ 
+function change_images(dir, fbObj){ 
 
-    var file = (obj) ? "/" + dir : dir;
+    var file = (fbObj) ? dir : "/" + dir;
 
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
