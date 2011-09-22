@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+#s36_modalshadow {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color:#000;
+	z-index: 100001;
+	filter:alpha(opacity=75);
+	-moz-opacity: 0.75;
+	opacity: 0.80;
+}
+
+* html #s36_modalshadow { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+ 
+#s36_modalbox {
+	position: absolute;
+	display: none;
+	top: 100px;
+	left: 50%;
+	background-color: white;
+	z-index:100002;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;	
+}
+
+#s36_closebtn{
+	cursor:pointer;
+	position:absolute;
+	top:-10px;
+	right:-10px;
+	background:#666;
+	height:20px;
+	width:20px;
+}
+#s36_widget_button{
+	width:76px;
+	height:77px;
+	position:fixed;
+	z-index:100000;
+	right:0px;
+	bottom:0px;
+	background:url(images/s36-btn-lr.png) bottom center;
+	cursor:pointer;
+}
+#s36_widget_button:hover{background-position:top;}
