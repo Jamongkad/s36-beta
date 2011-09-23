@@ -394,10 +394,11 @@ function ajaxFileUpload() {
                     loader.fadeOut(function(){$(this).html("loading...")});
                     
                     //if user uploads different photo while logged into fb
-                    if($('#fb_flag').val() == "1") {
-                        $('#fb_flag').val("2");
+                    console.log($("#fb_flag").val());
+                    if($('#fb_flag').val() == 1) {
+                        $('#fb_flag').val(2);
                     }
-
+                    console.log($("#fb_flag").val());
                 } else { 
                     loader.html(data.error);
                 }
