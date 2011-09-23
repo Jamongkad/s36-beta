@@ -107,9 +107,9 @@
                         //avatar
                         $avatar = trim($r->avatar);
                         if($avatar == ''){
-                            $avatar = "images/blank-avatar.png";
+                            $avatar = "/img/blank-avatar.png";
                         }else{
-                            $avatar = "http://dev.gearfish.com/uploaded_cropped/48x48/".$avatar;
+                            $avatar = "/uploaded_cropped/48x48/".$avatar;
                         }
                         //country code for the class
                         $cc 	= strtolower($r->countrycode);
