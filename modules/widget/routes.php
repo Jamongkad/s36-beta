@@ -62,7 +62,8 @@ return array(
         $y  = Input::get('y_coords');
         $wd = Input::get('wd');
         $ht = Input::get('ht');
-        $src = $fb_login ? Input::get('src') : "/var/www/s36-beta/public/".Input::get('src');
+        //$src = $fb_login ? Input::get('src') : "/var/www/s36-beta/public/".Input::get('src');
+        $src = fb_photo_check($fb_login, Input::get('src'));
         $ophoto = Input::get('oldphoto');
         
         if($ophoto != 0){
@@ -186,3 +187,10 @@ return array(
         ));
     }
 );
+
+function fb_photo_check($fb_login, $photo_src) {    
+    if($fb_login == 1) return $photo_src;
+    if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;
+    
+    return "/var/www/s36-beta/public/".$photo_src;
+}

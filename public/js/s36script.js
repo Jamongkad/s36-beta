@@ -49,13 +49,7 @@ function default_text(){
                 $(this).removeClass("reg-text-active");
             }
         });
-		/*
-		$(".regular-select").change(function(){
-			if($(this).val() != $(this)[0].title){
-				//show_permission();
-			}
-		});
-		*/
+
 		$(".regular-select").blur(function(){
 				if ($(this).val() == $(this)[0].title){
 					$(this).addClass("reg-text-active");
@@ -187,9 +181,9 @@ This function checks a string if it is a valid email address
 */
 function validate_email(email) {
 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
-	return true;
+	    return true;
 	}else{
-	return false;
+	    return false;
 	}
 }
 /*
@@ -398,6 +392,12 @@ function ajaxFileUpload() {
                     change_images(data.dir);
                     change_jcrop_div(data.wid);
                     loader.fadeOut(function(){$(this).html("loading...")});
+                    
+                    //if user uploads different photo while logged into fb
+                    if($('#fb_flag').val() == 1) {
+                        $('#fb_flag').val("2");
+                    }
+
                 } else { 
                     loader.html(data.error);
                 }
@@ -439,7 +439,7 @@ function save_crop_image(){
 		
 		$.ajax({
 			  //url: "crop.php",
-              url: $("#ajax-crop-url").attr('hrefaction'),//"/widget/form/crop",
+              url: $("#ajax-crop-url").attr('hrefaction'),
 			  method: 'GET',
 			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
 			  success: function(data){
