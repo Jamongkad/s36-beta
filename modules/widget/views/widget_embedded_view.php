@@ -85,22 +85,21 @@
 	#feedback-solo{display:block;font-size:11px;position:absolute;width:100%;}
 	#feedback-solo .text{padding-right:30px;}
 	#feedback-solo a{text-decoration:underline;color:#069;}
+
 </style>
 <body>
 <?php if($type == "vertical"): ?>
+
 <div class="v">
 	<div class="title">What some of our customers say</div>
     <div id="feedback-solo">
     </div>
     <div id="feedback-container">
         <div class="feedbacks">
-        
             <?php
-                $max = $feedback->total_rows;
                 $ctr = 0;
+                $max = $feedback->total_rows;
                 foreach($feedback->result as $r){
-                    echo $r->firstname."<br/>";
-
                     if(($ctr % $units) == 0){
                         echo '<div class="feedback-block">';
                         $end = 1;
@@ -110,7 +109,7 @@
                         if($avatar == ''){
                             $avatar = "images/blank-avatar.png";
                         }else{
-                            $avatar = "/uploaded_cropped/48x48/".$avatar;
+                            $avatar = "http://dev.gearfish.com/uploaded_cropped/48x48/".$avatar;
                         }
                         //country code for the class
                         $cc 	= strtolower($r->countrycode);
@@ -176,14 +175,15 @@
                     }
                     $end++;
                     $ctr++;
-
-                } 
-
+                }
+                
+                
             ?>
        </div>
        <div class="pagination"></div>   
    </div>
 </div>
+
 <?endif?>
 </body>
 </html>
