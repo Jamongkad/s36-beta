@@ -1,14 +1,8 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
-
 // GEARFISH - fb
 define('YOUR_APP_ID', '171323469605899');
 define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
-// TEST IDs
-//define('YOUR_APP_ID', '154673521284687');
-//define('YOUR_APP_SECRET', '9eeba55e17ab79f722487d210d3b5a91');
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -55,14 +49,14 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		$('#next').click(function(){
 				var next = cycle_next();
 				if(next)			//if returned true, then cycle the form to the next ui
-				hide_error();		//hide errors
-				$steps.cycle(next);	//cycle
+                    hide_error();		//hide errors
+                    $steps.cycle(next);	//cycle
 			});
 		$('#prev').click(function(){
 				var prev = cycle_prev();
 				if(prev)			//if returned true, then cycle the form to the prev ui
-				hide_error();		//hide errors
-				$steps.cycle(prev);	//cycle
+                    hide_error();		//hide errors
+                    $steps.cycle(prev);	//cycle
 			});
 	
 		// start the rating slider
@@ -88,7 +82,6 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 	function cycle_next(){
 		var cur_step = $('#steps').find('.current').attr('id');
 		var rating = selected_rating();
-
                             
 		var default_photo 	= '<?=HTML::image('img/blank-avatar.png')?>';
 		var is_photo 		= $('#profile_picture').attr('src');
@@ -121,10 +114,18 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 					return 2;
 				}
 		}else if(cur_step == "step_3"){
-			console.log("move to 3 part two");
+			console.log("move to 3 part 2");
+        
 			return 3;
 		}else if(cur_step == "step_4"){
 			// the form validations 
+
+            //check if avatar is blank...
+            if($('#profile_picture').attr('src').match(/blank-avatar/)) {
+				add_error('Profile Photo required...');
+                return false;    
+            }
+
 			if((rating == "2") || (rating == "1")){
 				var val = validate_form('partial'); // validate_form returns 3;
 				var crop = false;
@@ -158,14 +159,18 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			else{
 				return false;
 			}
-		}else if(cur_step == "step_5"){
-				if(default_photo != review_photo){
+		}else if(cur_step == "step_5"){ 
+                console.log(default_photo);
+                console.log(review_photo);
+                var is_cropped = $('#is_cropped').val();
+				if(is_cropped != 0){
+                    //what this means is blank avatar is already replaced by the uploaded photo.
 					console.log("move to 5 part three");
 					return 5;	
 				}else{
 					$('#crop_button').addClass('highlight');
-					//add_error("Please crop your photo"); 
-					$('#crop_status').html('<img src="img/error-ico.png" /> Please Crop Your Photo.');
+					add_error("Please crop your photo"); 
+					//$('#crop_status').html('<img src="img/error-ico.png" /> Please Crop Your Photo.');
 					return false;
 				}
 		}else if(cur_step == "step_6"){
@@ -180,6 +185,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			return false;
 		}		
 	}// end of cycle next
+
 	function cycle_prev(){
 		var cur_step = $('#steps').find('.current').attr('id');
 		var rating = selected_rating();
@@ -245,7 +251,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
     
     <div id="s36_pages">
     	<div id="steps">
-        	
+            <!--Step 1 of Form-->	
         	<div id="step_1" class="s36_pages">
                 <h1>Share Your Feedback About Us</h1>
                 <div class="step-contents">
@@ -253,11 +259,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                 	<h3>Rate your overall experience</h3>
                     <br />
                     <div id="s36_trackbar">
-                        <input type="hidden" id="cropped_photo" value="0" >
-                        <input type="hidden" id="fb_flag" value="0" >
-                        <input type="hidden" id="site_id" value="<?php echo $_GET['siteId'] ?>" >
-                        <input type="hidden" id="company_id" value="<?php echo $_GET['companyId'] ?>" >
-                        <input type="hidden" id="rating" value="5" >
+                        <input type="hidden" id="cropped_photo" value="0"/ >
+                        <input type="hidden" id="is_cropped" value="0" />
+                        <input type="hidden" id="fb_flag" value="0" />
+                        <input type="hidden" id="site_id" value="<?=Input::get('siteId')?>" />
+                        <input type="hidden" id="company_id" value="<?=Input::get('companyId')?>" />
+                        <input type="hidden" id="rating" value="5" />
                         <div id="track_ball"></div>
                         <div id="rate_e"></div>
                         <div id="rate_g"></div>
@@ -291,7 +298,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     </div>
                 </div>
             </div>
-            
+            <!--end of Step 1--> 
+
+            <!--Step 2 of Form-->
             <div id="step_2" class="s36_pages">
             	<h1>Give us permission for your feedback</h1>
                 <div class="step-contents">
@@ -346,12 +355,14 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div> 
+            <!--End of Step 2-->
+ 
+            <!--Start of Form 3-->
             <div id="step_3" class="s36_pages">
             	<h1>Attach your profile</h1>
                 <div class="step-contents">
-                	<p>Thank your for granting us permission. <br />Now we need to attach your profile to the feedback.</p>
+                	<p>Thank your for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <br />
                     <div class="s36_block s36_align_center">
                         <fb:login-button perms="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
@@ -372,12 +383,14 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     </div>
                     <div class="s36_block gray" style="margin-top:15px;">
                         <div class="company">
-                        	Razer uses 36Stories - a feedback company to help process your feedback
+                        	36Stories - a feedback company to help process your feedback
                         </div>
                     </div>
                 </div>
-            </div>
-            
+            </div> 
+            <!--End of Step 3-->
+
+            <!--Start of Form 4-->
             <div id="step_4" class="s36_pages">
             	<h1>Please Check your details below</h1>
                 <div class="step-contents">
@@ -415,8 +428,10 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                             </tr>
                     </table>
                 </div>
-            </div>
-            
+            </div> 
+            <!--End of Step 4-->
+
+            <!--Start of Step 5-->
             <div id="step_5" class="s36_pages">
             	<h1>Adjust and crop your image</h1>
                 <div class="step-contents">
@@ -445,7 +460,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     </div>
                 </div>
             </div>
-           
+            <!--End of Step 5-->
+
+            <!--Start of Step 6--> 
             <div id="step_6" class="s36_pages">
             	<h1>Review your feedback</h1>
                 <div class="step-contents">
@@ -476,6 +493,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     <p style="line-height:22px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted t our team typically takes about 24-48 working hours to be reviewed and processed.</p>
                 </div>
             </div>
+            <!--End of Step 6-->
         </div>
     </div>
     <div class="error-message">

@@ -382,7 +382,7 @@ function ajaxFileUpload() {
 		
 		loader.fadeIn();
 		$.ajaxFileUpload ({
-            url: $("#ajax-upload-url").attr('hrefaction'),//'/widget/form/upload',
+            url: $("#ajax-upload-url").attr('hrefaction'),
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json',
@@ -392,13 +392,11 @@ function ajaxFileUpload() {
                     change_images(data.dir);
                     change_jcrop_div(data.wid);
                     loader.fadeOut(function(){$(this).html("loading...")});
-                    
-                    //if user uploads different photo while logged into fb
-                    console.log($("#fb_flag").val());
+                                        
                     if($('#fb_flag').val() == 1) {
                         $('#fb_flag').val(2);
                     }
-                    console.log($("#fb_flag").val());
+                   
                 } else { 
                     loader.html(data.error);
                 }
@@ -450,6 +448,7 @@ function save_crop_image(){
 						assign_to_review("/uploaded_cropped/150x150/"+data);
 						
 						$('#cropped_photo').val(data);
+                        $('#is_cropped').val(1);
 					});
 			  }
 			});
@@ -485,7 +484,7 @@ Assign the form values to blank html tags for preview purposes
 */	
 function assign_to_review(photo){
 		
-		$('#review-photo').attr('src','images/blank-avatar.png');
+		$('#review-photo').attr('src','/img/blank-avatar.png');
 		
 		var feedback 	=	$('#feedback_text').val();
 		var fname 		=   $('#your_fname').val();
