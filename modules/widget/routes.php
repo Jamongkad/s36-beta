@@ -8,6 +8,7 @@ return array(
     'GET /widget/form' => function() {
         return View::make('widget::widget_form_view', array(
             'country' => DB::Table('Country', 'master')->get()
+          , 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', Input::get('companyId'))->first(array('name'))
         ));
     },
 

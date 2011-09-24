@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
 // GEARFISH - fb
 define('YOUR_APP_ID', '171323469605899');
 define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
@@ -104,7 +103,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			}else{
 				add_error("Please Provide a Feedback"); return false;
 			}
-		}else if(cur_step == "step_2"){
+		}
+
+        if(cur_step == "step_2"){
 				var permission = $('[name="your_permission"]:checked').size();
 				if(permission <= 0){
 					add_error('Please Select a Permission for your feedback');
@@ -112,12 +113,16 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 				}else{
 					console.log("move to 2 and 3");
 					return 2;
-				}
-		}else if(cur_step == "step_3"){
-			console.log("move to 3 part 2");
+		        }
+
+		}
         
+        if(cur_step == "step_3"){
+			console.log("move to 3 part 2"); 
 			return 3;
-		}else if(cur_step == "step_4"){
+		}
+        
+        if(cur_step == "step_4"){
 			// the form validations 
 
             //check if avatar is blank...
@@ -133,6 +138,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 				var val = validate_form('full'); 	// validate_form returns 3;
 				var crop = true;
 			}
+
 			if(val){						
 				// assign all values to the review slide, argument: false if not from jcrop
 				assign_to_review(false);
@@ -155,13 +161,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 					console.log("move to 5 part two");
 					return 5;
 				}
-			}
-			else{
+			} else{
 				return false;
 			}
-		}else if(cur_step == "step_5"){ 
-                console.log(default_photo);
-                console.log(review_photo);
+		}
+
+        if(cur_step == "step_5"){ 
                 var is_cropped = $('#is_cropped').val();
 				if(is_cropped != 0){
                     //what this means is blank avatar is already replaced by the uploaded photo.
@@ -173,12 +178,16 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 					//$('#crop_status').html('<img src="img/error-ico.png" /> Please Crop Your Photo.');
 					return false;
 				}
-		}else if(cur_step == "step_6"){
+		}
+        
+        if(cur_step == "step_6"){
 			$('#next').html("Close");
 			send_form_data();	
 			console.log("move to 6");	
 			return 6;			
-		}else if(cur_step == "step_7"){
+		}
+        
+        if(cur_step == "step_7"){
 			$('#steps').cycle('destroy');
 			parent.s36_closeLightbox();
 			//window.close();
@@ -191,9 +200,13 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		var rating = selected_rating();
 			if(cur_step == "step_2"){
 				return 0;
-			}else if(cur_step == "step_3"){
+			}
+            
+            if(cur_step == "step_3"){
 				return 1;
-			}else if(cur_step == "step_4"){
+			}
+            
+            if(cur_step == "step_4"){
 				
 				if((rating == "2") || (rating == "1")){
 					show_complete_form(false);
@@ -202,9 +215,13 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 					show_complete_form(true);
 					return 2;
 				}
-			}else if(cur_step == "step_5"){
+			}
+            
+            if(cur_step == "step_5"){
 				return 3;
-			}else if(cur_step == "step_6"){
+			}
+            
+            if(cur_step == "step_6"){
 		        var default_photo 	= '<?=HTML::image('img/blank-avatar.png')?>';
 				var is_photo = $('#profile_picture').attr('src');
 				if((is_photo == default_photo) || (rating == "2") || (rating == "1")){
@@ -212,7 +229,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 				}else{
 					return 4;
 				}
-			}else if(cur_step == "step_7"){
+			}
+            
+            if(cur_step == "step_7"){
 				$('#next').html("Next");
 				return 5;
 			}else{
@@ -383,7 +402,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     </div>
                     <div class="s36_block gray" style="margin-top:15px;">
                         <div class="company">
-                        	36Stories - a feedback company to help process your feedback
+                        	<?=$company_name->name?> uses 36Stories - a feedback company to help process your feedback
                         </div>
                     </div>
                 </div>
