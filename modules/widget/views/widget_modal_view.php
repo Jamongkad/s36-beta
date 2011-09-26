@@ -29,8 +29,7 @@
                     speed:  '<?php echo $speed ?>', 
                     timeout:'<?php echo $timeout ?>',
                     pause : 1,
-                    pager: 	'.pagination',
-                    timeoutFn: addScroll
+                    pager: 	'.pagination'
                 });
                 
                 
@@ -171,9 +170,7 @@
           <div class="popup-header">What some of our customers say</div>
           <div class="popup-fullview">
             <div class="fullview-slides"> 
-              <?php //start of full view slides 
-
-                
+              <?php //start of full view slides                 
                         foreach($feedback->result as $r){
                             
                                 //avatar
@@ -225,11 +222,8 @@
                                     $comp = '';
                                     
                                 }
-                                
-                               
-                             
-                                    $text = $r->text;
-                              
+                                 
+                                    $text = $r->text; 
                                     echo '<div class="slides">
                                             '.$avatar.'
                                             <div class="'.$textclass.'">
@@ -242,8 +236,7 @@
                                                   '.$date.'
                                               </div>
                                             </div>
-                                          </div>';
-                            
+                                          </div>'; 
                         }
                         
               ?>
