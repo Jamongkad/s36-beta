@@ -127,7 +127,6 @@
 
                 <span id="toggle_url" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>"></span>
                 <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
-
                 <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
                 <?=Form::checkbox('displayName', $feed_options->displayname, ($feed_options->displayname ? True : Null))?>
                 </td>
@@ -184,22 +183,21 @@
             <br />
             <br />
             <!--
-            <a href="javascript:;" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Feedback Button</a>
+            <a href="javascript:;" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">
+                Generate Feedback Button
+            </a>
             <br />
             <br />
             -->
             <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
             <br />
             <br />
-
             <div id="widget-preview">
                 <div class="widget-block">
                     <h2>HTML Code</h2>
                     <div class="html-code">
-                        <textarea id="code-generate-view" spellcheck="false">
-                        </textarea>
+                        <textarea id="code-generate-view" spellcheck="false"></textarea>
                     </div>
-
                 </div>
             </div>    
         </div>
@@ -218,7 +216,6 @@
 </div>
 <!-- spacer -->
 </div>
-
 <!-- end of the main panel -->
 
 <!-- div need to clear floated divs -->

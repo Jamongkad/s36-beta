@@ -131,8 +131,8 @@ function s36_closeLightbox(){
 }
 
 function s36_modal_widget(opts){	
-	var width  = 960;
-	var height = 480;
+	var width  = 750;
+	var height = 440;
 	var widget = document.getElementById(opts.target);
 		widget.setAttribute('onclick','s36_openLightbox('+width+','+height+',"'+opts.src+'")');
 }
