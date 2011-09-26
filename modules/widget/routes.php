@@ -56,6 +56,50 @@ return array(
         ));
     },
 
+    'GET /widget/modal' => function() {
+
+        #print_r(new Widget\ProfileImage);
+        $feedback = new Feedback;
+
+        $company_id = null;
+        $site_id = null;
+        $is_published = 0;
+        $is_featured = 0;
+        $limit = 10;
+        $offset = 0;
+        
+        if(Input::get('company_id')) $company_id = (int)Input::get('company_id'); 
+
+        if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
+
+        if(Input::get('offset')) $offset = (int)Input::get('offset');
+        
+        if(Input::get('limit')) $limit = (int)Input::get('limit');   
+        
+        if(Input::get('is_published')) $is_published = (int)Input::get('is_published');   
+        
+        if(Input::get('is_featured')) $is_featured = (int)Input::get('is_featured');   
+       
+        $params = Array(
+            'company_id'   => $company_id
+          , 'site_id'      => $site_id
+          , 'is_published' => $is_published
+          , 'is_featured'  => $is_featured
+          , 'limit'        => $limit
+          , 'offset'       => $offset
+        );
+        
+        $data = $feedback->pull_feedback_by_company($params);
+         
+        return View::make('widget::widget_modal_view', array( 
+            'feedback'   => $data
+          , 'units'		 => Input::get('units') ? Input::get('units') : 3
+          , 'transition' => Input::get('transition') ? Input::get('transition') : 'scrollVert'
+          , 'speed'      => Input::get('speed') ? Input::get('speed') : 500
+          , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
+        ));
+    },
+
     'GET /widget/form/crop' => function() { 
 
         $fb_login = Input::get('fb_login');
@@ -63,7 +107,7 @@ return array(
         $y  = Input::get('y_coords');
         $wd = Input::get('wd');
         $ht = Input::get('ht');
-        //$src = $fb_login ? Input::get('src') : "/var/www/s36-beta/public/".Input::get('src');
+
         $src = fb_photo_check($fb_login, Input::get('src'));
         $ophoto = Input::get('oldphoto');
         
