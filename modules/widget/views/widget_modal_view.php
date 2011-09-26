@@ -20,8 +20,8 @@
                     fx:     'fade', 
                     speed:  '1000', 
                     timeout:'1000',
-                    pause : 0
-                    //timeoutFn: addScroll
+                    pause : 0,
+                    timeoutFn: addScroll
                 });
 
                 $('.popup-feedbacks').cycle({
@@ -162,7 +162,120 @@
         .thumb-feedback .position{font-size:11px;font-weight:bold;}
         .thumb-feedback .date{font-size:10px;color:#9da4a8}
         .thumb-feedback .text{color:#72777a;}
-        *:focus{outline:none !important;}	    
+        *:focus{outline:none !important;}	
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 15px;
+	height: 100%;
+	background:url(../images/scrollTrack.png) center repeat-y;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	
+	position: relative;
+}
+
+.jspDrag
+{
+	background:url(../images/scrollDrag-bg.png) repeat;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}    
     </style>
     <body>
 
