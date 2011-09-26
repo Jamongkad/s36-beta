@@ -164,118 +164,118 @@
         .thumb-feedback .text{color:#72777a;}
         *:focus{outline:none !important;}	
 
-.jspContainer
-{
-	overflow: hidden;
-	position: relative;
-}
+        .jspContainer
+        {
+            overflow: hidden;
+            position: relative;
+        }
 
-.jspPane
-{
-	position: absolute;
-}
+        .jspPane
+        {
+            position: absolute;
+        }
 
-.jspVerticalBar
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 15px;
-	height: 100%;
-	background:url(../images/scrollTrack.png) center repeat-y;
-}
+        .jspVerticalBar
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 100%;
+            background:url(/img/scrollTrack.png) center repeat-y;
+        }
 
-.jspHorizontalBar
-{
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 16px;
-}
+        .jspHorizontalBar
+        {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 16px;
+        }
 
-.jspVerticalBar *,
-.jspHorizontalBar *
-{
-	margin: 0;
-	padding: 0;
-}
+        .jspVerticalBar *,
+        .jspHorizontalBar *
+        {
+            margin: 0;
+            padding: 0;
+        }
 
-.jspCap
-{
-	display: none;
-}
+        .jspCap
+        {
+            display: none;
+        }
 
-.jspHorizontalBar .jspCap
-{
-	float: left;
-}
+        .jspHorizontalBar .jspCap
+        {
+            float: left;
+        }
 
-.jspTrack
-{
-	
-	position: relative;
-}
+        .jspTrack
+        {
+            
+            position: relative;
+        }
 
-.jspDrag
-{
-	background:url(../images/scrollDrag-bg.png) repeat;
-	position: relative;
-	top: 0;
-	left: 0;
-	cursor: pointer;
-}
+        .jspDrag
+        {
+            background:url(/img/scrollDrag-bg.png) repeat;
+            position: relative;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
 
-.jspHorizontalBar .jspTrack,
-.jspHorizontalBar .jspDrag
-{
-	float: left;
-	height: 100%;
-}
+        .jspHorizontalBar .jspTrack,
+        .jspHorizontalBar .jspDrag
+        {
+            float: left;
+            height: 100%;
+        }
 
-.jspArrow
-{
-	background: #50506d;
-	text-indent: -20000px;
-	display: block;
-	cursor: pointer;
-}
+        .jspArrow
+        {
+            background: #50506d;
+            text-indent: -20000px;
+            display: block;
+            cursor: pointer;
+        }
 
-.jspArrow.jspDisabled
-{
-	cursor: default;
-	background: #80808d;
-}
+        .jspArrow.jspDisabled
+        {
+            cursor: default;
+            background: #80808d;
+        }
 
-.jspVerticalBar .jspArrow
-{
-	height: 16px;
-}
+        .jspVerticalBar .jspArrow
+        {
+            height: 16px;
+        }
 
-.jspHorizontalBar .jspArrow
-{
-	width: 16px;
-	float: left;
-	height: 100%;
-}
+        .jspHorizontalBar .jspArrow
+        {
+            width: 16px;
+            float: left;
+            height: 100%;
+        }
 
-.jspVerticalBar .jspArrow:focus
-{
-	outline: none;
-}
+        .jspVerticalBar .jspArrow:focus
+        {
+            outline: none;
+        }
 
-.jspCorner
-{
-	background: #eeeef4;
-	float: left;
-	height: 100%;
-}
+        .jspCorner
+        {
+            background: #eeeef4;
+            float: left;
+            height: 100%;
+        }
 
-/* Yuk! CSS Hack for IE6 3 pixel bug :( */
-* html .jspCorner
-{
-	margin: 0 -3px 0 0;
-}    
+        /* Yuk! CSS Hack for IE6 3 pixel bug :( */
+        * html .jspCorner
+        {
+            margin: 0 -3px 0 0;
+        }    
     </style>
     <body>
 
@@ -369,7 +369,7 @@
                                 //avatar
                                 $avatar = trim($r->avatar);
                                 if($avatar == ''){
-                                    $avatar = "/img/blank-avatar.png";
+                                    $avatar = "/img/48x48-blank-avatar.jpg";
                                 }else{
                                     $avatar = "/uploaded_cropped/48x48/".$avatar;
                                 }
