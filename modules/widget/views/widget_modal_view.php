@@ -20,8 +20,8 @@
                     fx:     'fade', 
                     speed:  '1000', 
                     timeout:'1000',
-                    pause : 0,
-                    timeoutFn: addScroll
+                    pause : 0
+                    //timeoutFn: addScroll
                 });
 
                 $('.popup-feedbacks').cycle({
