@@ -23,9 +23,9 @@ return array(
         $limit = 10;
         $offset = 0;
         
-        if(Input::get('company_id')) $company_id = (int)Input::get('company_id'); 
+        if(Input::get('companyId')) $company_id = (int)Input::get('companyId'); 
 
-        if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
+        if(Input::get('siteId')) $site_id = (int)Input::get('siteId');
 
         if(Input::get('offset')) $offset = (int)Input::get('offset');
         
@@ -45,7 +45,6 @@ return array(
         );
         
         $data = $feedback->pull_feedback_by_company($params);
-
         return View::make('widget::widget_embedded_view', array( 
             'feedback'   => $data
           , 'units'		 => Input::get('units') ? Input::get('units') : 3

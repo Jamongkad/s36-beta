@@ -57,7 +57,23 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     hide_error();		//hide errors
                     $steps.cycle(prev);	//cycle
 			});
-	
+		// added
+		// assign crop script to crop btn
+		$('#cropbtn').hide();
+		$('#cropbtn').click(function(){
+			
+			var crop_success = save_crop_image();
+			if( crop_success.statusText == 'success' ){
+				$steps.cycle(5);	
+				// show the next btn
+				$('#next').show();				
+				// hide the crop btn						
+				$('#cropbtn').hide();
+				
+			}
+			
+		});
+		//end added
 		// start the rating slider
 		start_slider();
 		/* re enable this to have a styled upload button
@@ -154,7 +170,13 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 							jcrop_api.release();
 							jcrop_api.setImage(is_photo);
 							jcrop_api.setSelect(['40','20','190','170']);
-						}					
+						}
+						// added
+						// hide the next button
+						$('#next').hide();				
+						// show the crop btn						
+						$('#cropbtn').show();
+						// end added
 						return val;
 					}
 				}else{
@@ -218,6 +240,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			}
             
             if(cur_step == "step_5"){
+               // added
+				// hide the next button
+				$('#next').show();				
+				// show the crop btn						
+				$('#cropbtn').hide();
+				// end added
 				return 3;
 			}
             
@@ -227,6 +255,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 				if((is_photo == default_photo) || (rating == "2") || (rating == "1")){
 					return 3;
 				}else{
+					// added
+					// hide the next button
+					$('#next').hide();				
+					// show the crop btn						
+					$('#cropbtn').show();
+					//end added
 					return 4;
 				}
 			}
@@ -458,7 +492,9 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     	<div class="jcrop_div">
                             <?=HTML::image('img/sample-avatar.png', 'Profile Picture', array('id' => 'jcrop_target'))?>
                         </div>
+                        <!--
                         <a href="javascript:;" onclick="save_crop_image()" class="s36_blue_btn">Save Image</a>
+                        -->
                     </div>
                     <div style="width:100px;text-align:center;font-size:10px;color:#CCC;float:left;">
                     	<div style="margin-bottom:5px">Preview</div>
@@ -526,7 +562,8 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
         	Powered by 36Stories
         </div>
         <div class="s36_footerbtn">
-        	<a href="javascript:;" id="next" class="s36_btn">Next</a>
+        	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
+            <a href="javascript:;" id="next" class="s36_btn">Next</a>
         </div>
     </div>
 </div>

@@ -107,7 +107,7 @@
                         //avatar
                         $avatar = trim($r->avatar);
                         if($avatar == ''){
-                            $avatar = "/img/blank-avatar.png";
+                            $avatar = "/img/48x48-blank-avatar.jpg";
                         }else{
                             $avatar = "/uploaded_cropped/48x48/".$avatar;
                         }

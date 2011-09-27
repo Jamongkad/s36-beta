@@ -436,10 +436,10 @@ function save_crop_image(){
 		
 		status.html(' Cropping Photo...');
 		
-		$.ajax({
-			  //url: "crop.php",
+		return $.ajax({
               url: $("#ajax-crop-url").attr('hrefaction'),
 			  method: 'GET',
+              async: false,
 			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
 			  success: function(data){
 				    status.fadeOut('fast',function(){
