@@ -37,11 +37,12 @@ return array(
     },
 
     'GET /feedsetup/generate_code' => function() {
-         $site_id = Input::get('site_id');
-         $company_id = Input::get('company_id');
+         $base_url = URL::to('/');
+         $site_id = Input::get('siteId');
+         $company_id = Input::get('companyId');
          return "
-                <link rel='stylesheet' type='text/css' href='http://dev.gearfish.com/css/s36_client_style.css' />
-                <script type='text/javascript' src='http://dev.gearfish.com/js/s36_client_script.js'></script>
+                <link rel='stylesheet' type='text/css' href='{$base_url}css/s36_client_style.css' />
+                <script type='text/javascript' src='{$base_url}js/s36_client_script.js'></script>
                 <script type='text/javascript'>	
                         DomReady.ready(function() {
                             var siteId = $site_id;
@@ -56,7 +57,7 @@ return array(
                                 companyId 	: companyId,
                                 transition 	: 'fade',
                                 template 	: 'default',
-                                src			: 'http://localhost/templates/'
+                                src			: '{$base_url}'
                             }
                             
                             var s36_button = s36_create_widget_button(s36_button_opts);

@@ -256,7 +256,7 @@ jQuery(function($) {
         var company_id = $("input[name='company_id']").val();
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "site_id=" + site_id + "&" + "company_id=" + company_id
+          , data: "siteId=" + site_id + "&" + "companyId=" + company_id
           , success : function(msg) {
               $("#code-generate-view").val(msg);             
           }

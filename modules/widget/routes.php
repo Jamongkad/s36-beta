@@ -67,9 +67,9 @@ return array(
         $limit = 10;
         $offset = 0;
         
-        if(Input::get('company_id')) $company_id = (int)Input::get('company_id'); 
+        if(Input::get('companyId')) $company_id = (int)Input::get('companyId'); 
 
-        if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
+        if(Input::get('siteId')) $site_id = (int)Input::get('siteId');
 
         if(Input::get('offset')) $offset = (int)Input::get('offset');
         
@@ -166,6 +166,7 @@ return array(
         $filedir = Null;
         $width = Null;
         $file = 'your_photo';
+
         if(!empty($_FILES[$file]['error']))
         {
             switch($_FILES[$file]['error'])
