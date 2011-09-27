@@ -36,7 +36,7 @@ function s36_openLightbox(width,height,src) {
 		s36_modalbox.appendChild(s36_closebtn);
 	// build that awesome iframe
 	var s36_iframe = document.createElement('iframe');
-		s36_iframe.setAttribute('src','http://localhost/templates');
+		s36_iframe.setAttribute('src',src);
 		s36_iframe.setAttribute('width',width);
 		s36_iframe.setAttribute('height',height);
 		s36_iframe.setAttribute('frameborder',0);
@@ -62,7 +62,7 @@ function s36_openLightbox(width,height,src) {
 /****************************************************************
 /*	function that will open the form in a modal window
 ****************************************************************/
-function s36_openForm(siteId,companyId) {
+function s36_openForm(siteId,companyId, form_url) {
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -74,8 +74,7 @@ function s36_openForm(siteId,companyId) {
 		s36_closebtn.setAttribute("onclick","s36_closeLightbox()");		
 		s36_modalbox.appendChild (s36_closebtn);
 		
-	var src 	= "http://dev.gearfish.com/widget/form?siteId="+siteId+"&companyId="+companyId;
-	
+	//var src 	= "http://dev.gearfish.com/widget/form?siteId="+siteId+"&companyId="+companyId;	
 	var width 	= 447;
 	var height 	= 590;
 	// needed for the marginLeft property of the lightbox. 
@@ -84,7 +83,7 @@ function s36_openForm(siteId,companyId) {
 	
 	// build that awesome iframe
 	var s36_iframe = document.createElement('iframe');
-		s36_iframe.setAttribute('src',src);
+		s36_iframe.setAttribute('src',form_url);
 		s36_iframe.setAttribute('width',width);
 		s36_iframe.setAttribute('height',height);
 		s36_iframe.setAttribute('frameborder',0);
@@ -116,7 +115,7 @@ function s36_create_widget_button(opts){
 	var s36_widget_button 			= document.createElement("div");
 		s36_widget_button.id 		= "s36_widget_button";
 		s36_widget_button.className = "s36_widget_button";
-		s36_widget_button.setAttribute('onclick','s36_openForm('+opts.siteId+','+opts.companyId+')');
+		s36_widget_button.setAttribute('onclick','s36_openForm('+opts.siteId+','+opts.companyId+', '+opts.form_url+')');
 		document.body.appendChild(s36_widget_button);
 }
 
@@ -134,7 +133,7 @@ function s36_modal_widget(opts){
 	var width  = 750;
 	var height = 440;
 	var widget = document.getElementById(opts.target);
-		widget.setAttribute('onclick','s36_openLightbox('+width+','+height+',"'+opts.src+'")');
+		widget.setAttribute('onclick','s36_openLightbox('+width+','+height+',"'+opts.widget_src+'")');
 }
 
 

@@ -48,6 +48,7 @@ return array(
         return View::make('widget::widget_embedded_view', array( 
             'feedback'   => $data
           , 'units'		 => Input::get('units') ? Input::get('units') : 3
+          , 'feedback_grid' => Input::get('units') ? getRightClass(Input::get('units')) : getRightClass(3)
           , 'transition' => Input::get('transition') ? Input::get('transition') : 'scrollVert'
           , 'speed'      => Input::get('speed') ? Input::get('speed') : 500
           , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
@@ -89,13 +90,14 @@ return array(
         );
         
         $data = $feedback->pull_feedback_by_company($params);
-         
+
+        //TODO: refactor this mothafucka!! 
         return View::make('widget::widget_modal_view', array( 
-            'feedback'   => $data
-          , 'units'		 => Input::get('units') ? Input::get('units') : 3
-          , 'transition' => Input::get('transition') ? Input::get('transition') : 'scrollVert'
-          , 'speed'      => Input::get('speed') ? Input::get('speed') : 500
-          , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
+            'feedback'      => $data
+          , 'units'		    => Input::get('units') ? Input::get('units') : 3 
+          , 'transition'    => Input::get('transition') ? Input::get('transition') : 'scrollVert'
+          , 'speed'         => Input::get('speed') ? Input::get('speed') : 500
+          , 'timeout'       => Input::get('timeout') ? Input::get('timeout') : 5000
         ));
     },
 
@@ -233,9 +235,26 @@ return array(
     }
 );
 
+//helper functions will move to seperate file later on
 function fb_photo_check($fb_login, $photo_src) {    
     if($fb_login == 1) return $photo_src;
     if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;
     
     return "/var/www/s36-beta/public/".$photo_src;
+}
+
+
+function getRightClass($units){
+    if($units == '1'){
+        $class = "g1of1";
+    }elseif($units == '2'){
+        $class = "g1of2";
+    }elseif($units == '3'){
+        $class = "g1of3";
+    }elseif($units == '4'){
+        $class = "g1of4";
+    }elseif($units == '5'){
+        $class = "g1of5";
+    }
+    return $class;
 }

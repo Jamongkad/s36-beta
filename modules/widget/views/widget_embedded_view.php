@@ -183,6 +183,102 @@
        <div class="pagination"></div>   
    </div>
 </div>
+<?endif?>
+
+<?if($type == "horizontal"):?>
+<div class="v">
+	<div class="title">What some of our customers say</div>
+    <div id="feedback-solo">
+    </div>
+    <div id="feedback-container">
+        <div class="feedbacks">
+            <?php
+                $ctr = 0;
+                $max = $feedback->total_rows;
+                foreach($feedback->result as $r){
+                    if(($ctr % $units) == 0){
+                        echo '<div class="feedback-block">';
+                        $end = 1;
+                    }	
+                        //avatar
+                        $avatar = trim($r->avatar);
+                        if($avatar == ''){
+                            $avatar = "/img/48x48-blank-avatar.jpg";
+                        }else{
+                            $avatar = "/uploaded_cropped/48x48/".$avatar;
+                        }
+                        //country code
+                        $cc 	= strtolower($r->countrycode);
+                        //date
+                        if(trim($r->date) != ""){
+                            $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                        }else{
+                            $date	= '';
+                        }
+                        
+                        //check if name is available:
+                        if((trim($r->firstname) != "")){
+                            
+                            $name = '<div class="name"><div class="innername">'.$r->firstname.' '.$r->lastname.'</div> <div class="flag flag-'.$cc.'"></div></div>';
+                            
+                        }else{
+                            
+                            $name = '';
+                            
+                        }
+                        
+                        //check if position is available:
+                        if((trim($r->companyname) != "") && (trim($r->position) != "")){
+                            
+                            $comp = '<div class="position">'.$r->position.', '.$r->companyname.'</div>';
+                            
+                        }else if((trim($r->companyname) == "") && (trim($r->position) != "")){
+                            
+                            $comp = '<div class="position">'.$r->companyname.'</div>';
+                            
+                        }else if((trim($r->companyname) != "") && (trim($r->position) == "")){
+                            
+                            $comp = '<div class="position">'.$r->position.'</div>';
+                            
+                        }else{
+                            
+                            $comp = '';
+                            
+                        }
+                        
+                        //check if the feedback has 100 chars or more
+                        $maxchars = 100;
+                        if(strlen(trim($r->text)) <= $maxchars){
+                            $text = $r->text;
+                        }else{
+                            $text = substr($r->text,0,$maxchars) . ' <a href="javascript:;" class="more" onclick="showFullText(\''.$r->id.'\')">more...</a>';
+                            echo '<input type="hidden" value="'.$r->text.'" id="fb-'.$r->id.'" />';
+                        }
+                        
+                            echo '<div class="h-feedback '.$feedback_grid.' grids">
+                                    <div class="v-avatar g1of5">
+                                        <img src="'.$avatar.'" />	
+                                    </div>
+                                    <div class="info g4of5">
+                                        '.$name.'
+                                        '.$comp.'
+                                        '.$date.'
+                                        <div class="text">"'.$text.'"</div>
+                                    </div>
+                                </div>';
+                                
+                    if(($end == $units) || $ctr == ($max - 1)){
+                        echo '</div>';
+                    }
+                    $end++;
+                    $ctr++;
+                }
+                            
+            ?>
+       </div>
+       <div class="pagination"></div>
+   </div>
+</div>
 
 <?endif?>
 </body>
