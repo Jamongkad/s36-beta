@@ -254,9 +254,10 @@ jQuery(function($) {
         var me = this;
         var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
         var company_id = $("input[name='company_id']").val();
+        var embed_type = $("input:radio[name='embed_type']:checked").val();
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "siteId=" + site_id + "&" + "companyId=" + company_id
+          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type
           , success : function(msg) {
               $("#code-generate-view").val(msg);             
           }
