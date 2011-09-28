@@ -30,6 +30,10 @@ class WidgetGenerator {
                </iframe>
             ");
         }
+        
+        if($this->option_obj->embed_type == 'modal') {
+            return trim('<a href="javascript:;" id="s36m_widget_1">display modal</a>');
+        }
 
         return false;
     }
