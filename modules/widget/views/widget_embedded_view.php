@@ -172,7 +172,7 @@
                                         <div class="text">"'.$text.'"</div>
                                     </div>
                                 </div>';
-                    if(($end == $units) || $ctr == ($max)){
+                    if(($end == $units) || $ctr == ($max - 1)){
                         echo '</div>';
                     }
                     $end++;
@@ -268,7 +268,7 @@
                                     </div>
                                 </div>';
                                 
-                    if(($end == $units) || $ctr == ($max)){
+                    if(($end == $units) || $ctr == ($max - 1)){
                         echo '</div>';
                     }
                     $end++;
