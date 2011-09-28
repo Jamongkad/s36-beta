@@ -88,7 +88,9 @@
 
 </style>
 <body>
+<pre>
 <?print_r($feedback)?>
+</pre>
 <?php if($type == "vertical"): ?>
 <div class="v">
 	<div class="title">What some of our customers say</div>
