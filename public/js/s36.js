@@ -181,6 +181,7 @@ jQuery(function($) {
 
         $("#modal_widget tr td").children('select').val(0);
     });
+
     $('#embed_type').click(function(){
         $('#full_page_widget').slideUp();
         $('#embed_widget').slideDown();
@@ -211,8 +212,25 @@ jQuery(function($) {
         var site_id = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
 
         //build dynamic string builder for widget preview creation...
-
         s36Lightbox(embed_width, embed_height, "<iframe src='/widget/test?site_id="+site_id+"' width='"+embed_width+"' height='"+embed_height+"'></iframe>"); 
+    });
+    
+    $("#horizontal_embed, #vertical_embed").bind('click', function() {
+        var click_type = $(this).attr('id');
+
+        if(click_type == 'horizontal_embed') {
+            set_height_width(600, 300);
+        }
+
+        if(click_type == 'vertical_embed') {
+            set_height_width(250, 500);
+        }
+
+        function set_height_width(x, y) {
+            $('input[name="embed_width"]').val(x);
+            $('input[name="embed_height"]').val(y);  
+        }
+
     });
 
     function s36Lightbox(width,height,insertContent){	
@@ -255,11 +273,34 @@ jQuery(function($) {
         var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
         var company_id = $("input[name='company_id']").val();
         var embed_type = $("input:radio[name='embed_type']:checked").val();
+        var embed_choices;
+
+        //TODO: ugh MVC this shit please
+        if(embed_type == 'fullpage') {
+            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
+        }
+
+        if(embed_type == 'embedded') {
+            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
+            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
+        }
+
+        if(embed_type == 'modal') {
+            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
+        }
+
+        if(!embed_choices) { 
+            alert("Mathew");
+            return false;
+        }
+
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type
+          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
+          , dataType: 'json'
           , success : function(msg) {
-              $("#code-generate-view").val(msg);             
+              $("#code-generate-view").val(msg.init_code);             
+              $("#widget-generate-view").val(((msg.widget_code) ? msg.widget_code : "no widget code needed."));
           }
         });
 

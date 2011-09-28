@@ -20,31 +20,32 @@ return array(
         $site_id = null;
         $is_published = 0;
         $is_featured = 0;
-        $limit = 10;
-        $offset = 0;
         
-        if(Input::get('companyId')) $company_id = (int)Input::get('companyId'); 
+        if(Input::get('companyId')) {
+            $company_id = (int)Input::get('companyId');    
+        }
 
-        if(Input::get('siteId')) $site_id = (int)Input::get('siteId');
-
-        if(Input::get('offset')) $offset = (int)Input::get('offset');
+        if(Input::get('siteId')) {
+            $site_id = (int)Input::get('siteId');   
+        }
+ 
+        if(Input::get('is_published')) {
+            $is_published = (int)Input::get('is_published');      
+        }
         
-        if(Input::get('limit')) $limit = (int)Input::get('limit');   
-        
-        if(Input::get('is_published')) $is_published = (int)Input::get('is_published');   
-        
-        if(Input::get('is_featured')) $is_featured = (int)Input::get('is_featured');   
+        if(Input::get('is_featured')) {
+            $is_featured = (int)Input::get('is_featured');      
+        }
        
         $params = Array(
             'company_id'   => $company_id
           , 'site_id'      => $site_id
           , 'is_published' => $is_published
           , 'is_featured'  => $is_featured
-          , 'limit'        => $limit
-          , 'offset'       => $offset
         );
         
         $data = $feedback->pull_feedback_by_company($params);
+
         return View::make('widget::widget_embedded_view', array( 
             'feedback'   => $data
           , 'units'		 => Input::get('units') ? Input::get('units') : 3
@@ -57,7 +58,6 @@ return array(
     },
 
     'GET /widget/modal' => function() {
-
         #print_r(new Widget\ProfileImage);
         $feedback = new Feedback;
 

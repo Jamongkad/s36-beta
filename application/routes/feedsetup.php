@@ -38,50 +38,25 @@ return array(
 
     'GET /feedsetup/generate_code' => function() {
          $base_url   = URL::to('/');
-         $site_id    = Input::get('siteId');
-         $company_id = Input::get('companyId');
-         $embed_type = Input::get('embed_type');
-         $form_url = $base_url."widget/form?siteId=$site_id&companyId=$company_id"; 
-         
-         //make this dynamic based on form options
 
-         $lookup = Array(
-             'fullpage' => (object)Array(  'url' => $base_url."widget/fullpage?siteId=$site_id&companyId=$company_id&is_published=1&is_featured=1"
-                                         , 'js_func' => 's36_fullpage_widget(m_option_1)')
-           , 'embedded' => (object)Array(  'url' => $base_url."widget/embedded?siteId=$site_id&companyId=$company_id&is_published=1&is_featured=1"
-                                         , 'js_func' => 's36_embedded_widget(m_option_1)')
-           , 'modal' => (object)Array(  'url' => $base_url."widget/modal?siteId=$site_id&companyId=$company_id&is_published=1&is_featured=1"
-                                      , 'js_func' => 's36_modal_widget(m_option_1)')
-         );
+         $widget_creation_params = new StdClass;
+         $widget_creation_params->site_id    = Input::get('siteId');
+         $widget_creation_params->company_id = Input::get('companyId');
+         $widget_creation_params->embed_type = Input::get('embed_type');
+         $widget_creation_params->type       = Input::get('type');
+         $widget_creation_params->width      = Input::get('width');
+         $widget_creation_params->height     = Input::get('height');
+         $widget_creation_params->effect     = Input::get('effect');
+         $widget_creation_params->units      = Input::get('units');
 
-         $choice = $lookup[$embed_type];
-         return "
-                <link rel='stylesheet' type='text/css' href='{$base_url}css/s36_client_style.css' />
-                <script type='text/javascript' src='{$base_url}js/s36_client_script.js'></script>
-                <script type='text/javascript'>	
-                        DomReady.ready(function() {
-                            var siteId = $site_id;
-                            var companyId = $company_id;
-                            var s36_button_opts = {
-                                siteId 		: siteId
-                              , companyId 	: companyId
-                              , form_url  : $form_url 
-                            }
-                            var m_option_1 = {
-                                target 		: 's36m_widget_1'
-                              , siteId 		: siteId
-                              , companyId 	: companyId
-                              , transition 	: 'fade'
-                              , template 	: 'default'
-                              , widget_src	: '{$choice->url}'
-                            }
-                            
-                            var s36_button = s36_create_widget_button(s36_button_opts);
-                            var m_widget_1 = {$choice->js_func}
-                            
-                        });
-                </script>
-                ";
+         $wg = new WidgetGenerator($widget_creation_params);
+
+         //print_r($wg->generate_init_code());
+         //print_r($wg->generate_widget_code());     
+         echo json_encode(Array(
+             'init_code'   => $wg->generate_init_code()
+           , 'widget_code' => $wg->generate_widget_code()
+         ));
     },
 
     'POST /feedsetup/toggle_feedback_display' => function() use ($feedback) {

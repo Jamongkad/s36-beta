@@ -89,7 +89,6 @@
 </style>
 <body>
 <?php if($type == "vertical"): ?>
-
 <div class="v">
 	<div class="title">What some of our customers say</div>
     <div id="feedback-solo">
@@ -170,14 +169,12 @@
                                         <div class="text">"'.$text.'"</div>
                                     </div>
                                 </div>';
-                    if(($end == $units) || $ctr == ($max - 1)){
+                    if(($end == $units) || $ctr == ($max)){
                         echo '</div>';
                     }
                     $end++;
                     $ctr++;
-                }
-                
-                
+                } 
             ?>
        </div>
        <div class="pagination"></div>   
@@ -195,6 +192,7 @@
             <?php
                 $ctr = 0;
                 $max = $feedback->total_rows;
+
                 foreach($feedback->result as $r){
                     if(($ctr % $units) == 0){
                         echo '<div class="feedback-block">';
@@ -267,19 +265,18 @@
                                     </div>
                                 </div>';
                                 
-                    if(($end == $units) || $ctr == ($max - 1)){
+                    if(($end == $units) || $ctr == ($max)){
                         echo '</div>';
                     }
                     $end++;
                     $ctr++;
                 }
-                            
+
             ?>
        </div>
        <div class="pagination"></div>
    </div>
 </div>
-
 <?endif?>
 </body>
 </html>

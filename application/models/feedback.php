@@ -250,17 +250,12 @@ class Feedback {
                         1
                     ORDER BY  
                         Feedback.dtAdded DESC
-                    LIMIT :offset, :limit 
         ';
 
         $sth = $this->dbh->prepare($sql);
         
         $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
         $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);       
-        //$sth->bindParam(':is_published', $opts['is_published'], PDO::PARAM_INT);
-        //$sth->bindParam(':is_featured', $opts['is_featured'], PDO::PARAM_INT);
-        $sth->bindParam(':limit', $opts['limit'], PDO::PARAM_INT);
-        $sth->bindParam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");

@@ -115,7 +115,7 @@ function s36_create_widget_button(opts){
 	var s36_widget_button 			= document.createElement("div");
 		s36_widget_button.id 		= "s36_widget_button";
 		s36_widget_button.className = "s36_widget_button";
-		s36_widget_button.setAttribute('onclick','s36_openForm('+opts.siteId+','+opts.companyId+', '+opts.form_url+')');
+		s36_widget_button.setAttribute('onclick','s36_openForm('+opts.siteId+','+opts.companyId+', "'+opts.form_url+'")');
 		document.body.appendChild(s36_widget_button);
 }
 

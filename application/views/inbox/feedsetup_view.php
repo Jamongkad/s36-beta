@@ -177,7 +177,7 @@
         </div>
         <div class="widget-setup-border"></div>
  
-        <div class="widget-opts" style="height:240px;">
+        <div class="widget-opts" style="height:440px;">
             <br />
             <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
             <br />
@@ -197,6 +197,13 @@
                     <h2>HTML Code</h2>
                     <div class="html-code">
                         <textarea id="code-generate-view" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
+                <div class="widget-block">
+                    <h2>Widget Code</h2>
+                    <div class="html-code">
+                        <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
             </div>    
