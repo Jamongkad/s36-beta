@@ -212,6 +212,13 @@ class Feedback {
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted
+                , Feedback.displayName
+                , Feedback.displayImg
+                , Feedback.displayCompany
+                , Feedback.displayPosition
+                , Feedback.displayURL
+                , Feedback.displayCountry
+                , Feedback.displaySbmtDate
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email
@@ -259,10 +266,13 @@ class Feedback {
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
 
+        $feedback_block_display = DB::Table('FeedbackBlock', 'master')->where('siteid', '=', $opts['site_id'])->first();
+
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
         $result_obj = new StdClass;
         $result_obj->result = $result;
+        $result_obj->block_display = $feedback_block_display; 
         $result_obj->site_id = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();

@@ -290,7 +290,7 @@ jQuery(function($) {
         }
 
         if(!embed_choices) { 
-            alert("Mathew");
+            alert("Please choose a Widget.");
             return false;
         }
 

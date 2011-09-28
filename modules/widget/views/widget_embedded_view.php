@@ -88,6 +88,10 @@
 
 </style>
 <body>
+<pre>
+<?print_r($feedback->block_display)?>
+<?print_r($feedback->result)?>
+</pre>
 <?php if($type == "vertical"): ?>
 <div class="v">
 	<div class="title">What some of our customers say</div>

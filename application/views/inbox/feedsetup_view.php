@@ -18,6 +18,7 @@
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step <?=(!$site_id) ? 2 : 1?> :</span> Choose Widget</h2>
+            <!--
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="full_page_type" value="fullpage"/> <label for="full_page_type">Full Page</label></h3>
                 <div class="widget-opts" id="full_page_widget">
@@ -41,6 +42,7 @@
                     </table>
                 </div>
             </div>
+            -->
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="embed_type" value="embedded"/> <label for="embed_type">Embedded Block</label></h3>
                 <div class="widget-opts" id="embed_widget">
