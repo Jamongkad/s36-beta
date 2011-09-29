@@ -53,10 +53,16 @@ return array(
 
          //print_r($wg->generate_init_code());
          //print_r($wg->generate_widget_code());     
-         echo json_encode(Array(
-             'init_code'   => $wg->generate_init_code()
-           , 'widget_code' => $wg->generate_widget_code()
-         ));
+         if(Input::get('getJSON') == 1) { 
+             echo json_encode(Array(
+                 'init_code'   => $wg->generate_init_code()
+               , 'widget_code' => $wg->generate_widget_code()
+             ));
+         } else {
+             echo View::make('widget::widget_view_index', Array(
+               'iframe_code' => $wg->generate_iframe_code()
+             ));
+         }
     },
 
     'POST /feedsetup/toggle_feedback_display' => function() use ($feedback) {

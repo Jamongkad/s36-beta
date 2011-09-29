@@ -17,18 +17,7 @@ class WidgetGenerator {
 
     public function generate_widget_code() {
         if($this->option_obj->embed_type == 'embedded') {
-            $width  = $this->option_obj->width;
-            $height = $this->option_obj->height;
-            $type   = ($this->option_obj->type == 'embed_block_x') ? 'horizontal' : 'vertical';
-
-            $effect = $this->_effect_name($this->option_obj->effect);
-            return trim("
-               <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}' 
-                width='{$width}' height='{$height}' 
-                scrolling='no' frameborder='0'>
-                   Sorry your browser doe not support iframes
-               </iframe>
-            ");
+            return $this->generate_iframe_code();
         }
         
         if($this->option_obj->embed_type == 'modal') {
@@ -56,7 +45,6 @@ class WidgetGenerator {
                   , widget_src	: '{$modal_widget_src}'
                 }
                 var m_widget_1 = s36_modal_widget(m_option_1);
-                //debug console.log(m_widget_1);
             "); 
         }
            
@@ -74,11 +62,41 @@ class WidgetGenerator {
                               , form_url    : '{$this->form_widget}'
                             }  
                             var s36_button = s36_create_widget_button(s36_button_opts);  
-
                             $modal_code 
                         });
                 </script>
         ");
+    }
+
+    public function generate_iframe_code() {
+
+        $effect = $this->_effect_name($this->option_obj->effect);
+
+        if($this->option_obj->embed_type == 'embedded') {
+            $width  = $this->option_obj->width;
+            $height = $this->option_obj->height;
+            $type   = ($this->option_obj->type == 'embed_block_x') ? 'horizontal' : 'vertical';
+            $units  = $this->option_obj->units;
+
+
+            return trim("
+               <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
+                width='{$width}' height='{$height}' 
+                scrolling='no' frameborder='0'>
+                   Sorry your browser doe not support iframes
+               </iframe>
+            ");
+        }
+        
+        if($this->option_obj->embed_type == 'modal') {
+            return trim("
+                <iframe src='{$this->base_url}widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}'
+                 width='750' height='440' scrolling='no' frameborder='0'>
+                   Sorry your browser doe not support iframes       
+                </iframe>
+            ");
+        }
+
     }
 
     private function _effect_name($effectsId) { 

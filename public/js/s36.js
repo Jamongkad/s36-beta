@@ -153,17 +153,6 @@ jQuery(function($) {
     $('.contact').fancytips({'text': 'Fast Forward', 'width': 60});
     $('.flag').fancytips({'text': 'Fast Forward', 'width': 70});
     $('.remove').fancytips({'top': 45, 'width': 84 ,'text': 'Delete Feedback'});
-    /*
-    $('#template-slider').cycle({
-        fx:      'scrollHorz', 
-        speed:    500, 
-        timeout:  0 ,
-        pause : 1,
-        next:   '#next', 
-        prev:   '#prev',
-        after: adjust_height
-    });
-    */
     
     //TODO: Clean this shit up
     $('#full_page_widget').hide();
@@ -190,6 +179,7 @@ jQuery(function($) {
         $("#full_page_widget tr td").children('select').val(0);
         $("#modal_widget tr td").children('select').val(0);
     });
+
     $('#modal_type').click(function(){
         $('#full_page_widget').slideUp();
         $('#embed_widget').slideUp();
@@ -207,12 +197,72 @@ jQuery(function($) {
 	}
 
     $("#preview-widget").bind("click", function(e) {
-        var embed_width = $('input[name="embed_width"]').val() > 0 ? $('input[name="embed_width"]').val() : 500;
-        var embed_height = $('input[name="embed_height"]').val() > 0 ? $('input[name="embed_height"]').val() : 500;
-        var site_id = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
+        var me = this;
+        var embed_choices, iframe_code;
+        var padding = 10;
+        var embed_width  = $('input[name="embed_width"]').val() > 0 ? parseInt($('input[name="embed_width"]').val(), 10) + padding : 750;
+        var embed_height = $('input[name="embed_height"]').val() > 0 ? parseInt($('input[name="embed_height"]').val(), 10) + padding : 440;
+        var site_id      = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
+        var embed_type = $("input:radio[name='embed_type']:checked").val();
+        var company_id = $("input[name='company_id']").val();
 
+        var embed_choices;
+
+        //TODO: ugh MVC this shit please
+        if(embed_type == 'fullpage') {
+            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
+        }
+
+        if(embed_type == 'embedded') {
+            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
+            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
+        }
+
+        if(embed_type == 'modal') {
+            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
+        }
+
+        if(!embed_choices) { 
+            alert("Please choose a Widget.");
+            return false;
+        }
+
+        $.ajax({
+            url: $(me).attr('hrefaction')
+          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
+          , dataType: 'html'
+          , success : function(msg) {
+              //$("#code-generate-view").val(msg.init_code);             
+              //$("#widget-generate-view").val(((msg.widget_code) ? msg.widget_code : "no widget code needed."));
+              //console.log(msg.init_code + msg.widget_code);
+              s36Lightbox(embed_width, embed_height, msg); 
+          }
+        });
+     
+        
+        /*
+        //TODO: Code smell...
+        var base_url = $('input[name="base_url"]').val();
+
+        var embed_type = $("input:radio[name='embed_type']:checked").val();
+        //TODO: ugh MVC this shit please
+        if(embed_type == 'fullpage') {
+            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
+        }
+
+        if(embed_type == 'embedded') {
+            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
+            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
+            iframe_code = "<iframe src='"+base_url+"widget/embedded?siteId="+site_id+"&companyId=1&is_published=1&is_featured=1"+embed_choices+"' width='"+embed_width+"' height='"+embed_height+"'></iframe>";
+        }
+
+        if(embed_type == 'modal') {
+            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
+        }
         //build dynamic string builder for widget preview creation...
-        s36Lightbox(embed_width, embed_height, "<iframe src='/widget/test?site_id="+site_id+"' width='"+embed_width+"' height='"+embed_height+"'></iframe>"); 
+
+        s36Lightbox(embed_width, embed_height, iframe_code); 
+        */
     });
     
     $("#horizontal_embed, #vertical_embed").bind('click', function() {
@@ -296,11 +346,11 @@ jQuery(function($) {
 
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
+          , data: "getJSON=1&siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
           , dataType: 'json'
           , success : function(msg) {
               $("#code-generate-view").val(msg.init_code);             
-              $("#widget-generate-view").val(((msg.widget_code) ? msg.widget_code : "no widget code needed."));
+              $("#widget-generate-view").val(msg.widget_code);
           }
         });
 

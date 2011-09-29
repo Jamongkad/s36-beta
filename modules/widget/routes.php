@@ -13,6 +13,7 @@ return array(
     },
 
     'GET /widget/embedded' => function() {
+        //TODO: Consider using EffectId and fetch from DB for easier integration
 
         $feedback = new Feedback;
 

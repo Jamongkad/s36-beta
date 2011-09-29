@@ -1,1 +1,3 @@
-<h1>Pwet <?=$_GET['site_id']?></h1>
+<br/>
+<h1>Preview</h1>
+<?=$iframe_code?>

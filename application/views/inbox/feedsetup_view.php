@@ -2,6 +2,7 @@
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $companyId)?>
+<?=Form::hidden('base_url', URL::to('/'))?>
 <div class="block">
     <?if(!$site_id):?>
     <div id="widget-setup-block"> 
@@ -69,10 +70,11 @@
                             <td colspan="2">
                                 <select name="embed_units" class="regular-select">
                                     <option value="0">-</option>
-                                    <option value="6">6</option>
-                                    <option value="12">12</option>
-                                    <option value="18">18</option>
-                                    <option value="24">24</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
                                 </select>
                             </td>
                         </tr>
@@ -181,7 +183,7 @@
  
         <div class="widget-opts" style="height:440px;">
             <br />
-            <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
+            <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
             <br />
             <br />
             <!--
