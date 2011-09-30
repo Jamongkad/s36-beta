@@ -219,6 +219,7 @@ class Feedback {
                 , Feedback.displayURL
                 , Feedback.displayCountry
                 , Feedback.displaySbmtDate
+                , Feedback.indLock
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email
@@ -347,6 +348,11 @@ class Feedback {
     
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
+        //release indLock for block display
+        DB::table('Feedback', 'master')
+                  ->where('feedbackId', '=', $feedback_id)
+                  ->update(array('indLock' => 0));    
+
         return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
     }    
 
