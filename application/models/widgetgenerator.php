@@ -78,7 +78,6 @@ class WidgetGenerator {
             $type   = ($this->option_obj->type == 'embed_block_x') ? 'horizontal' : 'vertical';
             $units  = $this->option_obj->units;
 
-
             return trim("
                <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
                 width='{$width}' height='{$height}' 

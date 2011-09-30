@@ -105,49 +105,53 @@
                     }	
                         //avatar
                         $avatar = trim($r->avatar);
-                        if($avatar == ''){
-                            $avatar = "/img/48x48-blank-avatar.jpg";
-                        }else{
-                            $avatar = "/uploaded_cropped/48x48/".$avatar;
+                        if($feedback->block_display->displayimg == 1 || $r->displayimg) { 
+                            if($avatar == ''){
+                                $avatar = "/img/48x48-blank-avatar.jpg";
+                            }else{
+                                $avatar = "/uploaded_cropped/48x48/".$avatar;
+                            }
+                        } else {
+                            $avatar = null;     
                         }
+
+
                         //country code for the class
-                        $cc 	= strtolower($r->countrycode);
+                        $cc = strtolower($r->countrycode);      
+
                         //date
-                        if(trim($r->date) != ""){
-                            $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                        }else{
-                            $date	= '';
+                        $date = null;
+                        if($feedback->block_display->displaysbmtdate == 1 || $r->displaysbmtdate == 1){
+                            $date = '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                        }  
+
+                        //name string
+                        $name = null;
+                        if($feedback->block_display->displayname == 1 || $r->displayname == 1) {
+                            $name = "<div class='innername'>".$r->firstname.' '.$r->lastname."</div>";
                         }
-                        
-                        //check if name is available:
-                        if((trim($r->firstname) != "")){
-                            
-                            $name = '<div class="name"><div class="innername">'.$r->firstname.' '.$r->lastname.'</div> <div class="flag flag-'.$cc.'"></div></div>';
-                            
-                        }else{
-                            
-                            $name = '';
-                            
+
+                        $flag = null;
+                        if($feedback->block_display->displaycountry == 1 || $r->displaycountry == 1) {
+                            $flag = "<div class='flag flag-$cc'></div>";
                         }
-                        
+
+                        $name_string = "<div class='name'>".$name.$flag."</div>";
+
+     
                         //check if position is available:
-                        if((trim($r->companyname) != "") && (trim($r->position) != "")){
-                            
-                            $comp = '<div class="position">'.$r->position.', '.$r->companyname.'</div>';
-                            
-                        }else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-                            
-                            $comp = '<div class="position">'.$r->companyname.'</div>';
-                            
-                        }else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-                            
-                            $comp = '<div class="position">'.$r->position.'</div>';
-                            
-                        }else{
-                            
-                            $comp = '';
-                            
+                        $position = null; 
+                        if($feedback->block_display->displayposition == 1 || $r->displayposition == 1) {
+                            $position = $r->position.", ";
                         }
+                        
+                        $company_name = null; 
+                        if($feedback->block_display->displaycompany == 1 || $r->displaycompany == 1) {
+                            $company_name = $r->companyname;
+                        }
+                        
+                            
+                        $comp = '<div class="position">'.$position.$company_name.'</div>'; 
                         
                         //check if the feedback has 100 chars or more
                         $maxchars = 100;
@@ -156,14 +160,13 @@
                         }else{
                             $text = substr($r->text,0,$maxchars) . ' <a href="javascript:;" class="more" onclick="showFullText(\''.$r->id.'\')">more...</a>';
                             echo '<input type="hidden" value="'.$r->text.'" id="fb-'.$r->id.'" />';
-                        }
-                        
+                        } 
                             echo '<div class="v-feedback grids">
                                     <div class="v-avatar g1of5">
                                         <img src="'.$avatar.'" />	
                                     </div>
                                     <div class="info g4of5">
-                                        '.$name.'
+                                        '.$name_string.'
                                         '.$comp.'
                                         '.$date.'
                                         <div class="text">"'.$text.'"</div>
@@ -198,79 +201,80 @@
                         echo '<div class="feedback-block">';
                         $end = 1;
                     }	
-                        //avatar
-                        $avatar = trim($r->avatar);
+
+                    $avatar = trim($r->avatar);
+                    if($feedback->block_display->displayimg == 1 || $r->displayimg == 1) { 
                         if($avatar == ''){
                             $avatar = "/img/48x48-blank-avatar.jpg";
                         }else{
                             $avatar = "/uploaded_cropped/48x48/".$avatar;
                         }
-                        //country code
-                        $cc 	= strtolower($r->countrycode);
-                        //date
-                        if(trim($r->date) != ""){
-                            $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                        }else{
-                            $date	= '';
-                        }
-                        
-                        //check if name is available:
-                        if((trim($r->firstname) != "")){
-                            
-                            $name = '<div class="name"><div class="innername">'.$r->firstname.' '.$r->lastname.'</div> <div class="flag flag-'.$cc.'"></div></div>';
-                            
-                        }else{
-                            
-                            $name = '';
-                            
-                        }
-                        
-                        //check if position is available:
-                        if((trim($r->companyname) != "") && (trim($r->position) != "")){
-                            
-                            $comp = '<div class="position">'.$r->position.', '.$r->companyname.'</div>';
-                            
-                        }else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-                            
-                            $comp = '<div class="position">'.$r->companyname.'</div>';
-                            
-                        }else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-                            
-                            $comp = '<div class="position">'.$r->position.'</div>';
-                            
-                        }else{
-                            
-                            $comp = '';
-                            
-                        }
-                        
-                        //check if the feedback has 100 chars or more
-                        $maxchars = 100;
-                        if(strlen(trim($r->text)) <= $maxchars){
-                            $text = $r->text;
-                        }else{
-                            $text = substr($r->text,0,$maxchars) . ' <a href="javascript:;" class="more" onclick="showFullText(\''.$r->id.'\')">more...</a>';
-                            echo '<input type="hidden" value="'.$r->text.'" id="fb-'.$r->id.'" />';
-                        }
-                        
-                            echo '<div class="h-feedback '.$feedback_grid.' grids">
-                                    <div class="v-avatar g1of5">
-                                        <img src="'.$avatar.'" />	
-                                    </div>
-                                    <div class="info g4of5">
-                                        '.$name.'
-                                        '.$comp.'
-                                        '.$date.'
-                                        <div class="text">"'.$text.'"</div>
-                                    </div>
-                                </div>';
-                                
-                    if(($end == $units) || $ctr == ($max - 1)){
-                        echo '</div>';
+                    } else {
+                        $avatar = null;     
                     }
-                    $end++;
-                    $ctr++;
+
+                    //country code for the class
+                    $cc = strtolower($r->countrycode);      
+
+                    //date
+                    $date = null;
+                    if($feedback->block_display->displaysbmtdate == 1 || $r->displaysbmtdate == 1){
+                        $date = '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                    }  
+
+                    $name = null;
+                    if($feedback->block_display->displayname == 1 || $r->displayname == 1) {
+                        $name = "<div class='innername'>".$r->firstname.' '.$r->lastname."</div>";
+                    }
+
+                    $flag = null;
+                    if($feedback->block_display->displaycountry == 1 || $r->displaycountry == 1) {
+                        $flag = "<div class='flag flag-$cc'></div>";
+                    }
+
+                    $name_string = "<div class='name'>".$name.$flag."</div>";
+
+ 
+                    //check if position is available:
+                    $position = null; 
+                    if($feedback->block_display->displayposition == 1 || $r->displayposition == 1) {
+                        $position = $r->position.", ";
+                    }
+                    
+                    $company_name = null; 
+                    if($feedback->block_display->displaycompany == 1 || $r->displaycompany == 1) {
+                        $company_name = $r->companyname;
+                    }
+                    
+                        
+                    $comp = '<div class="position">'.$position.$company_name.'</div>'; 
+                    //check if the feedback has 100 chars or more
+                    $maxchars = 100;
+                    if(strlen(trim($r->text)) <= $maxchars){
+                        $text = $r->text;
+                    }else{
+                        $text = substr($r->text,0,$maxchars) . ' <a href="javascript:;" class="more" onclick="showFullText(\''.$r->id.'\')">more...</a>';
+                        echo '<input type="hidden" value="'.$r->text.'" id="fb-'.$r->id.'" />';
+                    }
+                    
+                        echo '<div class="h-feedback '.$feedback_grid.' grids">
+                                <div class="v-avatar g1of5">
+                                    <img src="'.$avatar.'" />	
+                                </div>
+                                <div class="info g4of5">
+                                    '.$name_string.'
+                                    '.$comp.'
+                                    '.$date.'
+                                    <div class="text">"'.$text.'"</div>
+                                </div>
+                            </div>';
+                            
+                if(($end == $units) || $ctr == ($max - 1)){
+                    echo '</div>';
                 }
+                $end++;
+                $ctr++;
+            }
 
             ?>
        </div>
