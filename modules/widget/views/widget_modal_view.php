@@ -288,53 +288,53 @@
                             
                                 //avatar
                                 $avatar = trim($r->avatar);
-                                
-                                if($avatar == ''){
-                                    $textclass = "full-feedback-2";
-                                }else{
-                                    $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
-                                    $textclass = "full-feedback";
+                                $textclass = null;
+                                if($feedback->block_display->displayimg == 1 || $r->displayimg) { 
+                                    if($avatar == ''){ 
+                                        $textclass = "full-feedback-2";
+                                    }else{
+                                        $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
+                                        $textclass = "full-feedback";
+                                    }
+                                } else {
+                                    $avatar = null;     
                                 }
+                                
                                 //country code for the class
-                                $cc 	= strtolower($r->countrycode);
+                                $cc = strtolower($r->countrycode);
                                 //date
-                                if(trim($r->date) != ""){
-                                    $date 	= '<div class="feedback-date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                                }else{
-                                    $date	= '';
-                                }
-                                
+                                $data = null;
+                                if($feedback->block_display->displaysbmtdate == 1 || $r->displaysbmtdate == 1){
+                                    $date = '<div class="feedback-date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }                                
                                 //check if name is available:
-                                if((trim($r->firstname) != "")){
-                                   $name = '<div class="feedback-name">
-                                              <div class="name">'.$r->firstname.' '.$r->lastname.'</div>
-                                              <div class="flag flag-'.$cc.'"></div>
-                                            </div>';
-                                    
-                                }else{
-                                    
-                                    $name = '';
-                                    
+                                $name = null;
+                                if($feedback->block_display->displayname == 1 || $r->displayname == 1) {
+                                    $name = $r->firstname.' '.$r->lastname;
                                 }
+
+                                $flag = null;
+                                if($feedback->block_display->displaycountry == 1 || $r->displaycountry == 1) {
+                                    $flag = $cc;
+                                }
+
+                                $name_string = '<div class="feedback-name">
+                                                    <div class="name">'.$name.'</div>
+                                                    <div class="flag flag-'.$flag.'"></div>
+                                               </div>';
                                 
                                 //check if position is available:
-                                if((trim($r->companyname) != "") && (trim($r->position) != "")){
-                                    
-                                    $comp = '<div class="feedback-position">'.$r->position.', '.$r->companyname.'</div>';
-                                    
-                                }else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-                                    
-                                    $comp = '<div class="feedback-position">'.$r->companyname.'</div>';
-                                    
-                                }else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-                                    
-                                    $comp = '<div class="feedback-position">'.$r->position.'</div>';
-                                    
-                                }else{
-                                    
-                                    $comp = '';
-                                    
+                                $position = null; 
+                                if($feedback->block_display->displayposition == 1 || $r->displayposition == 1) {
+                                    $position = $r->position.", ";
                                 }
+                                
+                                $company_name = null; 
+                                if($feedback->block_display->displaycompany == 1 || $r->displaycompany == 1) {
+                                    $company_name = $r->companyname;
+                                }
+
+                                $comp = '<div class="feedback-position">'.$position.$company_name.'</div>';
                                  
                                     $text = $r->text; 
                                     echo '<div class="slides">
@@ -343,7 +343,7 @@
                                               <div class="full-feedback-text"><p>"'.trim($text).'"</p></div>
                                               <div class="full-feedback-info">
                                                 <div class="feedback-name">
-                                                  '.$name.'
+                                                  '.$name_string.'
                                                 </div>
                                                   '.$comp.'
                                                   '.$date.'
