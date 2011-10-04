@@ -5,8 +5,7 @@ use S36Auth;
 
 abstract class S36DataObject { 
 
-    private $dbh;
-    private $user_id;
+    public $dbh, $user_id;
 
     public function __construct() { 
         $this->dbh = DB::connection('master')->pdo;

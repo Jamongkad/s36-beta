@@ -48,44 +48,8 @@
             
         </script>
     </head>
-
 <style type="text/css">
-	div{position:relative;display:block;}
-	body{margin:0;padding:0;width:100%;height:100%;font-family:Arial, Helvetica, sans-serif;}
-	.v{display:block;background:#FFF;padding:10px;}
-	.title{font-size:16px;text-align:center;padding:10px 0px;}
-	.feedback,.feedbacks{display:block}
-	.feedback-block{
-			display:block;width:100%;
-			padding:0px 0px;
-		}
-	.h-feedback{padding:10px 0px;}
-	.v-feedback{border-top:1px solid #e8e8e8;margin:0px 10px;padding:10px 0px;display:block}
-	.v-avatar{margin:0px 0px;padding-top:5px;text-align:right;}
-	.info{font-size:11px;color:#72777a;background:#FFF;}
-	.v-feedback:after,
-	.name:after,
-	.h-feedback:after{ 
-		 content: ".";  
-		 display: block; 
-		 height: 0; 
-		 clear: both;
-		 visibility: hidden; 
-		}
-	.name{display:block;font-size:12px;color:#000;font-weight:bold;padding:0px 0px 3px 10px;}
-	.name .innername{float:left;}
-	.position{display:block;font-size:10px;font-weight:bold;padding:0px 0px 2px 10px;}
-	.date{color:#9da4a8;font-size:10px;padding:0px 0px 1px 10px;}	
-	.text{font-size:11px;padding:0px 0px 1px 10px;overflow:hidden;word-wrap: break-word;}
-	.text a.more{text-decoration:underline;color:#069;}
-	.pagination{text-align:center;font-size:10px;padding-top:10px;}
-	.pagination a{text-decoration:none;padding:2px 1px;color:#b4b4b4;}
-	.pagination a.activeSlide{color:#72777a;}
-	#feedback-container{position:absolute;width:100%;display:block;}
-	#feedback-solo{display:block;font-size:11px;position:absolute;width:100%;}
-	#feedback-solo .text{padding-right:30px;}
-	#feedback-solo a{text-decoration:underline;color:#069;}
-
+    <?=$themeCSS?>
 </style>
 <body>
 <?php if($type == "vertical"): ?>
@@ -110,14 +74,11 @@
                     $pic = trim($r->avatar); 
                     $avatar = null;
                     if($r->displayimg == 1) { 
-
                         if($pic == ''){
                             $avatar = "/img/48x48-blank-avatar.jpg";
                         }else{
                             $avatar = "/uploaded_cropped/48x48/".$pic;
                         }
-
-                        //$avatar = "/uploaded_cropped/48x48/".$avatar;
                     } 
 
                     if($r->indlock == 0 && ($feedback->block_display->displayimg != 1 || $feedback->block_display->displayimg == 1)) {
@@ -125,14 +86,11 @@
                     }
 
                     if($r->indlock == 1 && $feedback->block_display->displayimg == 1) {
-
                         if($pic == ''){
                             $avatar_pic = "/img/48x48-blank-avatar.jpg";
                         }else{
                             $avatar_pic = "/uploaded_cropped/48x48/".$pic;
                         }
-
-                        //$avatar_pic = $avatar;
                     }                     
 
                     //country code for the class
@@ -272,14 +230,11 @@
                     $pic = trim($r->avatar); 
                     $avatar = null;
                     if($r->displayimg == 1) { 
-
                         if($pic == ''){
                             $avatar = "/img/48x48-blank-avatar.jpg";
                         }else{
                             $avatar = "/uploaded_cropped/48x48/".$pic;
                         }
-
-                        //$avatar = "/uploaded_cropped/48x48/".$avatar;
                     } 
 
                     if($r->indlock == 0 && ($feedback->block_display->displayimg != 1 || $feedback->block_display->displayimg == 1)) {
@@ -293,8 +248,6 @@
                         }else{
                             $avatar_pic = "/uploaded_cropped/48x48/".$pic;
                         }
-
-                        //$avatar_pic = $avatar;
                     }                     
 
                     //country code for the class
@@ -318,8 +271,8 @@
 
                     //name string
                     $name_string = null;
-
                     $name = null;
+
                     if($r->displayname == 1) {
                         $name = "<div class='innername'>".$r->firstname.' '.$r->lastname."</div>";
                     }

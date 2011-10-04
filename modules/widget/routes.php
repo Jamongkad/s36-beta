@@ -7,15 +7,16 @@ return array(
 
     'GET /widget/form' => function() {
         return View::make('widget::widget_form_view', array(
-            'country' => DB::Table('Country', 'master')->get()
+            'siteId'    => Input::get('siteId')
+          , 'companyId' => Input::get('companyId') 
+          , 'themeColor' => DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('name'))
+          , 'country' => DB::Table('Country', 'master')->get()
           , 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', Input::get('companyId'))->first(array('name'))
         ));
     },
 
     'GET /widget/embedded' => function() {
         //TODO: Consider using EffectId and fetch from DB for easier integration
-        $feedback = new Feedback;
-
         $company_id = null;
         $site_id = null;
         $is_published = 0;
@@ -43,11 +44,15 @@ return array(
           , 'is_published' => $is_published
           , 'is_featured'  => $is_featured
         );
-        
+
+        $feedback = new Feedback;       
         $data = $feedback->pull_feedback_by_company($params);
 
+        $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('embeddedCSS'));
+        
         return View::make('widget::widget_embedded_view', array( 
             'feedback'   => $data
+          , 'themeCSS'   => trim($themeCSS->embeddedcss)
           , 'units'		 => Input::get('units') ? Input::get('units') : 3
           , 'feedback_grid' => Input::get('units') ? getRightClass(Input::get('units')) : getRightClass(3)
           , 'transition' => Input::get('transition') ? Input::get('transition') : 'scrollVert'
@@ -55,12 +60,12 @@ return array(
           , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
           , 'type'       => Input::get('type') ? Input::get('type') : 'horizontal'
         ));
+
     },
 
     'GET /widget/modal' => function() {
         #print_r(new Widget\ProfileImage);
         $feedback = new Feedback;
-
         $company_id = null;
         $site_id = null;
         $is_published = 0;
@@ -91,9 +96,12 @@ return array(
         
         $data = $feedback->pull_feedback_by_company($params);
 
+        $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('modalCSS'));
+
         //TODO: refactor this mothafucka!! 
         return View::make('widget::widget_modal_view', array( 
             'feedback'      => $data
+          , 'themeCSS'      => trim($themeCSS->modalcss)
           , 'units'		    => Input::get('units') ? Input::get('units') : 3 
           , 'transition'    => Input::get('transition') ? Input::get('transition') : 'scrollVert'
           , 'speed'         => Input::get('speed') ? Input::get('speed') : 500
@@ -104,6 +112,7 @@ return array(
     'GET /widget/form/crop' => function() { 
 
         $fb_login = Input::get('fb_login');
+        $ln_login = Input::get('ln_login');
         $x  = Input::get('x_coords');
         $y  = Input::get('y_coords');
         $wd = Input::get('wd');

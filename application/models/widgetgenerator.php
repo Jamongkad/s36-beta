@@ -11,8 +11,7 @@ class WidgetGenerator {
 
         $this->siteId    = $this->option_obj->site_id;
         $this->companyId = $this->option_obj->company_id;
-
-        $this->form_widget = $this->base_url."widget/form?siteId={$this->siteId}&companyId={$this->companyId}" ;
+        $this->themeId   = $this->option_obj->theme_id;
     }
 
     public function generate_widget_code() {
@@ -29,9 +28,12 @@ class WidgetGenerator {
 
     public function generate_init_code() { 
         $modal_code = null;
+
+        $form_widget = $this->base_url."widget/form?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}";
+
         if($this->option_obj->embed_type == 'modal') {
             
-            $modal_widget_src = $this->base_url."widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1";
+            $modal_widget_src = $this->base_url."widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1";
 
             $effect = $this->_effect_name($this->option_obj->effect);
  
@@ -59,7 +61,7 @@ class WidgetGenerator {
                             var s36_button_opts = {
                                 siteId 		: siteId
                               , companyId 	: companyId
-                              , form_url    : '{$this->form_widget}'
+                              , form_url    : '{$form_widget}'
                             }  
                             var s36_button = s36_create_widget_button(s36_button_opts);  
                             $modal_code 
@@ -79,7 +81,7 @@ class WidgetGenerator {
             $units  = $this->option_obj->units;
 
             return trim("
-               <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
+               <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
                 width='{$width}' height='{$height}' 
                 scrolling='no' frameborder='0'>
                    Sorry your browser doe not support iframes
@@ -89,7 +91,7 @@ class WidgetGenerator {
         
         if($this->option_obj->embed_type == 'modal') {
             return trim("
-                <iframe src='{$this->base_url}widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&is_published=1&is_featured=1&transition={$effect->jqueryname}'
+                <iframe src='{$this->base_url}widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}'
                  width='750' height='440' scrolling='no' frameborder='0'>
                    Sorry your browser doe not support iframes       
                 </iframe>

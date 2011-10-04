@@ -492,10 +492,12 @@ class Feedback {
         $sth->execute();
     }
 
-    public function display_embedded_feedback_options() {
+    public function display_embedded_feedback_options($site_id) {
         $sth = $this->dbh->prepare("
                     SELECT 
-                          FeedbackBlock.feedbackblockId 
+                          Site.siteId
+                        , User.userId
+                        , FeedbackBlock.feedbackblockId 
                         , FeedbackBlock.displayName
                         , FeedbackBlock.displayImg
                         , FeedbackBlock.displayCompany
@@ -504,25 +506,22 @@ class Feedback {
                         , FeedbackBlock.displayCountry
                         , FeedbackBlock.displaySbmtDate
                     FROM 
-                        User
+                        FeedbackBlock
                     INNER JOIN
                         Site
-                        ON Site.companyId = User.companyId
+                            ON Site.siteId = FeedbackBlock.siteId
                     INNER JOIN
-                        Form
-                        ON Form.formId = Site.defaultFormId
+                        Company
+                            ON Company.companyId = Site.companyId
                     INNER JOIN
-                        Theme
-                        ON Theme.themeId = Form.themeId
-                    INNER JOIN
-                        FeedbackBlock
-                        ON FeedbackBlock.siteId = Site.siteId
-                            AND FeedbackBlock.themeId = Theme.themeId
-                            AND FeedbackBlock.formId = Form.formId
+                        User
+                            ON User.companyId = Company.companyId
                     WHERE 1=1
                         AND User.userId = :user_id
+                        AND Site.siteId = :site_id
                 ");
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT); 
+        $sth->bindParam(':site_id', $site_id, PDO::PARAM_INT);
         $sth->execute();
         
         $result = $sth->fetch(PDO::FETCH_OBJ);
@@ -583,90 +582,5 @@ class Feedback {
 
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
-        /*
-        $sql = "
-            SELECT
-                  SQL_CALC_FOUND_ROWS 
-                  Contact.contactId
-                , Feedback.feedbackId
-                , Feedback.siteId
-            FROM 
-                Contact 
-            INNER JOIN
-                Feedback 
-                ON Feedback.contactId = Contact.contactId
-            WHERE 1=1 
-                AND Contact.contactID = :contact_id";
-        
-        $storage = Array();
-        foreach($opts as $obj) { 
-            $sth = $this->dbh->prepare($sql);
-            $sth->bindParam(':contact_id', $obj['contactid'], PDO::PARAM_INT);
-            $sth->execute();
-
-            $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-            $result = $sth->fetchAll(PDO::FETCH_CLASS);
-            
-            $result_obj = new StdClass;
-            $result_obj->result = $result;
-            $result_obj->total_rows = $row_count->fetchColumn();
-
-            $storage[] = $result_obj;
-        }
-       
-        return $storage;
-        */
-
-        //Set group_concat_max_length to 15000 characters
-
-        /*
-        $concat_max_length_sql = "SET GLOBAL group_concat_max_len=15000";
-        $sth = $this->dbh->prepare($concat_max_length_sql);
-        $sth->execute();
-
-        $company_id = $opts['company_id'];
-        $feed_id = $opts['feed_id'];
-        $contact_id = $opts['contact_id'];
-        $site_ids = $opts['site_ids'];
-
-        $feed_id_check = Array();
-        foreach($feed_id as $id) {
-            $feed_id_check[] = "FIND_IN_SET($id, GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR)))";
-        }
-        $set = implode(" OR ", $feed_id_check);
-
-        $sql = "
-            SELECT
-                  Feedback.contactId 
-                , Site.domain
-                , Feedback.feedbackId
-                , COUNT(Feedback.feedbackId) AS FeedbackCount 
-                , $set AS FoundFeedId
-                , GROUP_CONCAT(CAST(Feedback.feedbackId AS CHAR)) AS FeedIds
-                , Site.name
-            FROM 
-                Feedback 
-            INNER JOIN
-                Site 
-                ON Feedback.siteId = Site.siteId
-            INNER JOIN
-                Contact
-                ON Contact.contactId = Feedback.contactId
-            WHERE 1=1
-                AND Feedback.siteId IN ($site_ids)
-                AND Site.companyId = :company_id
-                AND Contact.contactId IN ($contact_id)
-            GROUP BY 
-                1,2
-        ";
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
-        //$sth->bindParam(':feed_id', $feed_id, PDO::PARAM_INT);
-        //$sth->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_OBJ);
-        return $result;
-        */
     }
 }

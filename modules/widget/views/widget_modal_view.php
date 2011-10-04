@@ -14,8 +14,7 @@
         <script type="text/javascript">
             
             $(document).ready(function(){
-                            
-                
+                                            
                 var $slide = $('.fullview-slides').cycle({
                     fx:     'fade', 
                     speed:  '1000', 
@@ -31,9 +30,7 @@
                     pause : 1,
                     pager: 	'.pagination'
                 });
-                
-                
-                
+                  
                 $('.fullview-slides').mousewheel(function(event,delta){
                     if (delta > 0){$('.fullview-slides').cycle('prev');}
                     else{$('.fullview-slides').cycle('next');}
@@ -62,108 +59,8 @@
         </script>
     </head>
     <style type="text/css">
-        div {
-            position:relative;
-            display:block;
-        }
-        body {
-            margin:0;
-            padding:0;
-            width:100%;
-            height:100%;
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:12px;
-            color:#555;
-        }
-        #popup {
-            width:710px;
-            height:370px;
-            padding:15px 20px;
-        } /* orig size is 750 x 400 pixels */
-        #popup .popup-header {
-            margin:0px 0px;
-            padding:0px 20px 15px;
-            border-bottom:1px solid #e0e0e0;
-            font-size:16px;
-            font-weight:bold;
-        }
-        #popup p {
-            padding-top:0px;
-            margin-top:0px;
-        }
-        #popup .popup-fullview {
-            padding:20px;
-            border-bottom:1px solid #e0e0e0;
-        }
-        #popup .popup-thumbs {
-            padding:20px;
-        }
-        #popup .full-avatar {
-            width:150px;
-            height:150px;
-            margin-right:20px;
-            float:left;
-        }
-        #popup .slides:after, .feedback-name:after, .v-feedback:after, .name:after, .h-feedback:after, .feedback-block:after {
-            content: ".";
-            display: block;
-            height: 0;
-            clear: both;
-            visibility: hidden;
-        }
-        #popup .full-feedback-info {
-            margin-top:10px;
-        }
-        #popup .full-feedback {
-            width:500px;
-            float:left;
-        }
-        #popup .full-feedback-2 {
-            width:690px;
-            float:left;
-        }
-        #popup .full-feedback-text {
-            max-height:100px;
-            line-height:20px;
-            font-size:14px;
-        }
-        .feedback-name .name {
-            float:left;
-            font-size:20px;
-            font-weight:bold;
-            color:#000;
-        }
-        .popup-feedbacks{display:block;width:100%;}
-        .feedback-position {
-            font-size:14px;
-            font-weight:bold;
-            color:#252323;
-        }
-        .feedback-name .flag {
-            margin-top:7px;
-        }
-        .feedback-date {
-            margin-top:3px;
-        }
-
-        .pagination{text-align:center;font-size:10px;padding-top:10px;}
-        .pagination a{text-decoration:none;padding:2px 1px;color:#b4b4b4;}
-        .pagination a.activeSlide{color:#72777a;}
-            
-        .popup-thumbs,.popup-feedbacks{
-            display:block;	
-        }
-        .feedback-block{display:block;}
-        .thumb-feedback{width:215px;float:left;margin-right:8px;cursor:pointer;}
-        .thumb-avatar{width:48px;margin-right:10px;float:left;padding-top:3px;}
-        .thumb-info{width:157px;float:left;}
-        .thumb-info .name .innername{float:left;font-weight:bold;color:#000;}
-        .thumb-info .name .flag{float:left;}
-        .thumb-feedback .position{font-size:11px;font-weight:bold;}
-        .thumb-feedback .date{font-size:10px;color:#9da4a8}
-        .thumb-feedback .text{color:#72777a;}
-        *:focus{outline:none !important;}	
-
+  
+        <?=$themeCSS?>
         .jspContainer
         {
             overflow: hidden;

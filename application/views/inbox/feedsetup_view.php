@@ -4,21 +4,32 @@
 <?=Form::hidden('company_id', $companyId)?>
 <?=Form::hidden('base_url', URL::to('/'))?>
 <div class="block">
+    <div id="widget-setup-block"> 
+        <div class="widget-options">
+            <h2><span>Step 1 :</span> Please choose a name for your theme</h2>
+            <div style="padding:10px">
+                <input type="text" name="theme_name" value="" style="font-size:25px; padding:5px; width:600px"/>
+            </div>
+        </div>
+    </div>
     <?if(!$site_id):?>
     <div id="widget-setup-block"> 
         <div class="widget-options">
-            <h2><span>Step 1 :</span> Choose your website you want to apply your widget to</h2>
-            <select name="site_id" class="regular-select"> 
-                <?foreach($site as $sites):?>
-                    <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
-                <?endforeach?>
-            </select>
+            <h2><span>Step 2 :</span> Choose your website you want to apply your widget to</h2>
+            <div style="padding:10px">
+                <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
+                    <option value="0">--</option>
+                    <?foreach($site as $sites):?>
+                        <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
+                    <?endforeach?>
+                </select>
+            </div>
         </div>
     </div>
     <?endif?>
     <div id="widget-setup-block">
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 2 : 1?> :</span> Choose Widget</h2>
+            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Choose Widget</h2>
             <!--
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="full_page_type" value="fullpage"/> <label for="full_page_type">Full Page</label></h3>
@@ -125,50 +136,54 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Display Option</h2>
-            <div class="widget-opts">
-            <table width="100%" cellpadding="4" class="display-info">
-
-                <span id="toggle_url" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>"></span>
-                <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
-                <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                <?=Form::checkbox('displayName', $feed_options->displayname, ($feed_options->displayname ? True : Null))?>
-                </td>
-                <td width="140" class="feedback-td-font">Website Url : </td><td>
-                <?=Form::checkbox('displayURL', $feed_options->displayurl, ($feed_options->displayurl ? True : Null))?>
-                </td></tr>
-                <tr><td class="feedback-td-font">Display Image :  </td><td>
-                <?=Form::checkbox('displayImg', $feed_options->displayimg, ($feed_options->displayimg ? True : Null))?>
-                </td>		
-                <td class="feedback-td-font">Country & Flag : </td><td>
-               <?=Form::checkbox('displayCountry', $feed_options->displaycountry, ($feed_options->displaycountry ? True : Null))?>
-                </td></tr>
-                <tr><td class="feedback-td-font">Company Name :</td><td>
-                <?=Form::checkbox('displayCompany', $feed_options->displaycompany, ($feed_options->displaycompany ? True : Null))?>
-                </td>			
-                <td class="feedback-td-font">Submitted Date : </td><td>
-                <?=Form::checkbox('displaySbmtDate', $feed_options->displaysbmtdate, ($feed_options->displaysbmtdate ? True : Null))?>
-                </td></tr>
-                <tr><td class="feedback-td-font">Designation / Position :</td><td>
-                <?=Form::checkbox('displayPosition', $feed_options->displayposition, ($feed_options->displayposition ? True : Null))?>
-                </td><td></td><td></td></tr>
-            </table>
+            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Display Option</h2>
+            <div class="widget-opts" id="display-info-target">
+                <?if($site_id):?>
+                    <table width="100%" cellpadding="4" class="display-info">
+                        <span id="toggle_url" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>"></span>
+                        <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
+                        <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
+                        <?=Form::checkbox('displayName', $feed_options->displayname, ($feed_options->displayname ? True : Null))?>
+                        </td>
+                        <td width="140" class="feedback-td-font">Website Url : </td><td>
+                        <?=Form::checkbox('displayURL', $feed_options->displayurl, ($feed_options->displayurl ? True : Null))?>
+                        </td></tr>
+                        <tr><td class="feedback-td-font">Display Image :  </td><td>
+                        <?=Form::checkbox('displayImg', $feed_options->displayimg, ($feed_options->displayimg ? True : Null))?>
+                        </td>		
+                        <td class="feedback-td-font">Country & Flag : </td><td>
+                       <?=Form::checkbox('displayCountry', $feed_options->displaycountry, ($feed_options->displaycountry ? True : Null))?>
+                        </td></tr>
+                        <tr><td class="feedback-td-font">Company Name :</td><td>
+                        <?=Form::checkbox('displayCompany', $feed_options->displaycompany, ($feed_options->displaycompany ? True : Null))?>
+                        </td>			
+                        <td class="feedback-td-font">Submitted Date : </td><td>
+                        <?=Form::checkbox('displaySbmtDate', $feed_options->displaysbmtdate, ($feed_options->displaysbmtdate ? True : Null))?>
+                        </td></tr>
+                        <tr><td class="feedback-td-font">Designation / Position :</td><td>
+                        <?=Form::checkbox('displayPosition', $feed_options->displayposition, ($feed_options->displayposition ? True : Null))?>
+                        </td><td></td><td></td></tr>
+                    </table>
+                <?else:?>
+                    <h3>Please choose a website in order to configure your widget display options.</h3>
+                <?endif?>
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Select Theme</h2>
+            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Color</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
                     <ul>
                        <?foreach($themes as $theme):?>
                            <li>
-                                <div><?=Form::radio('theme_id', $theme->themeid)?> <?=$theme->name?></div>
+                                <div id="themeId_<?=$theme->themeid?>"><?=Form::radio('theme_id', $theme->themeid)?> <?=$theme->name?></div>
                                 <div><?=HTML::image('img/display-thumb.png')?></div> 
                            </li> 
                        <?endforeach?>
                        <li class="c"></li>
                     </ul>
                 </div>
+                <!--
                 <div class="slider-navigation">
                     <div class="prev-next-button">
                         <div class="next-button" id="next"></div>
@@ -177,6 +192,9 @@
                     <div class="counter"><a href="#" class="button">Show All</a></div>
                     <div class="c"></div>
                 </div>
+                -->
+
+                <div class="c"></div>
             </div>
         </div>
         <div class="widget-setup-border"></div>

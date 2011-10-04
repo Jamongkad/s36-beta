@@ -27,6 +27,9 @@ jQuery(function($) {
 
     $('div.category-picker-holder').hide();
 
+    //check theme 1 by default
+    $("#themeId_1 input:radio").attr('checked', true);
+
     $('.fileas').bind('click', function(e) {     
         $(this).siblings('div.category-picker-holder').toggle(); 
         e.preventDefault();
@@ -128,6 +131,21 @@ jQuery(function($) {
         window.location = "?rating=" + $(this).val();
     });
     
+
+    $('#feedsetup-site-select').bind('change', function(e) {
+        var me = this;
+        $.ajax({
+            type: "POST"     
+          , url: $(me).attr('hrefaction')
+          , data: {site_id: $(me).val()}
+          , success: function(msg) {
+              $("#display-info-target").html(msg);             
+          }
+        })
+
+
+    });
+
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
@@ -205,6 +223,7 @@ jQuery(function($) {
         var site_id      = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
         var embed_type = $("input:radio[name='embed_type']:checked").val();
         var company_id = $("input[name='company_id']").val();
+        var theme_id = $("input:radio[name='theme_id']:checked").val();
 
         var embed_choices;
 
@@ -229,7 +248,7 @@ jQuery(function($) {
 
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
+          , data: "siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
           , dataType: 'html'
           , success : function(msg) {
               //$("#code-generate-view").val(msg.init_code);             
@@ -323,6 +342,7 @@ jQuery(function($) {
         var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
         var company_id = $("input[name='company_id']").val();
         var embed_type = $("input:radio[name='embed_type']:checked").val();
+        var theme_id = $("input:radio[name='theme_id']:checked").val();
         var embed_choices;
 
         //TODO: ugh MVC this shit please
@@ -346,7 +366,7 @@ jQuery(function($) {
 
         $.ajax({
             url: $(me).attr('hrefaction')
-          , data: "getJSON=1&siteId=" + site_id + "&" + "companyId=" + company_id + "&" + "embed_type=" + embed_type + embed_choices
+          , data: "getJSON=1&siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
           , dataType: 'json'
           , success : function(msg) {
               $("#code-generate-view").val(msg.init_code);             

@@ -9,7 +9,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<?=HTML::style('css/form_default.css')?>
+<?=HTML::style('themes/'.strtolower($themeColor->name).'/form_default.css')?>
 <?=HTML::style('css/flags.css')?>
 
 <?=HTML::script('js/jquery-1.6.2.min.js')?>
@@ -314,9 +314,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     <div id="s36_trackbar">
                         <input type="hidden" id="cropped_photo" value="0"/ >
                         <input type="hidden" id="is_cropped" value="0" />
+
                         <input type="hidden" id="fb_flag" value="0" />
-                        <input type="hidden" id="site_id" value="<?=Input::get('siteId')?>" />
-                        <input type="hidden" id="company_id" value="<?=Input::get('companyId')?>" />
+                        <input type="hidden" id="ln_flag" value="0" />
+
+                        <input type="hidden" id="site_id" value="<?=$siteId?>" />
+                        <input type="hidden" id="company_id" value="<?=$companyId?>" />
                         <input type="hidden" id="rating" value="5" />
                         <div id="track_ball"></div>
                         <div id="rate_e"></div>
