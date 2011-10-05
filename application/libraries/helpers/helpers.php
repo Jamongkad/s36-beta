@@ -65,4 +65,10 @@ class Helpers {
             'contacts'  => preg_match_all('/contacts|contacts\/(important|request)/', self::$request, $matches),
         );
     }
+
+    public static function show_data($data) {
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+    }
 }

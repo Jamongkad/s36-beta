@@ -20,8 +20,6 @@ jQuery(function($) {
         }
         //TODO: maaaaaan clean this up!
         $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
-        //$(this).parents('.g4of5').siblings('.status-message').html('<span style="background-color: #3a4c5c; color: #f0f0f0">FILE AS: '+li.text()+"</span>");
-        //$.ajax( { type: "POST", url: href } );
         e.preventDefault();
     });
 
@@ -208,12 +206,6 @@ jQuery(function($) {
                                 .children('input[type="radio"]').attr('checked', null);                   
     });
 	
-	function adjust_height(curr, next, opts, fwd) {
-		var index = opts.currSlide;
-		var $ht = $(this).height();
-		$(this).parent().animate({height: $ht},200);
-	}
-
     $("#preview-widget").bind("click", function(e) {
         var me = this;
         var embed_choices, iframe_code;
@@ -224,64 +216,20 @@ jQuery(function($) {
         var embed_type = $("input:radio[name='embed_type']:checked").val();
         var company_id = $("input[name='company_id']").val();
         var theme_id = $("input:radio[name='theme_id']:checked").val();
-
         var embed_choices;
 
-        //TODO: ugh MVC this shit please
-        if(embed_type == 'fullpage') {
-            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
-        }
-
-        if(embed_type == 'embedded') {
-            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
-            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
-        }
-
-        if(embed_type == 'modal') {
-            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
-        }
-
-        if(!embed_choices) { 
-            alert("Please choose a Widget.");
-            return false;
-        }
+        embed_choices = embed_choice_check(embed_type);
 
         $.ajax({
             url: $(me).attr('hrefaction')
           , data: "siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
           , dataType: 'html'
           , success : function(msg) {
-              //$("#code-generate-view").val(msg.init_code);             
-              //$("#widget-generate-view").val(((msg.widget_code) ? msg.widget_code : "no widget code needed."));
-              //console.log(msg.init_code + msg.widget_code);
               s36Lightbox(embed_width, embed_height, msg); 
           }
         });
      
         
-        /*
-        //TODO: Code smell...
-        var base_url = $('input[name="base_url"]').val();
-
-        var embed_type = $("input:radio[name='embed_type']:checked").val();
-        //TODO: ugh MVC this shit please
-        if(embed_type == 'fullpage') {
-            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
-        }
-
-        if(embed_type == 'embedded') {
-            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
-            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
-            iframe_code = "<iframe src='"+base_url+"widget/embedded?siteId="+site_id+"&companyId=1&is_published=1&is_featured=1"+embed_choices+"' width='"+embed_width+"' height='"+embed_height+"'></iframe>";
-        }
-
-        if(embed_type == 'modal') {
-            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
-        }
-        //build dynamic string builder for widget preview creation...
-
-        s36Lightbox(embed_width, embed_height, iframe_code); 
-        */
     });
     
     $("#horizontal_embed, #vertical_embed").bind('click', function() {
@@ -301,6 +249,69 @@ jQuery(function($) {
         }
 
     });
+
+    $("#generate-feedback-btn").bind("click", function(e) {
+        var me = this;
+        var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
+        var company_id = $("input[name='company_id']").val();
+        var embed_type = $("input:radio[name='embed_type']:checked").val();
+        var theme_id = $("input:radio[name='theme_id']:checked").val();
+        var embed_choices;
+
+        embed_choices = embed_choice_check(embed_type);
+
+        $.ajax({
+            url: $(me).attr('hrefaction')
+          , data: "getJSON=1&siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
+          , dataType: 'json'
+          , success : function(msg) {
+              $("#code-generate-view").val(msg.init_code);             
+              $("#widget-generate-view").val(msg.widget_code);
+          }
+        });
+
+        e.preventDefault();
+    })
+
+    $('a.get-code').bind('click', function(e) {  
+        var url = $(this).attr('href');
+        console.log(url);
+        //s36Lightbox(500, 500, "Mathew");
+        
+        $.ajax({
+            url: url
+          , success : function(msg) {
+              s36Lightbox(500, 420, msg);
+          }
+        });
+        return e.preventDefault();  
+    });
+     
+    //helper functions
+    function embed_choice_check(embed_type) {
+
+        var embed_choice_string;
+
+        if(embed_type == 'fullpage') {
+            embed_choice_string = "&units=" + $('select[name="full_page_units"] option:selected').val();
+        }
+
+        if(embed_type == 'embedded') {
+            embed_choice_string = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
+            embed_choice_string += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
+        }
+
+        if(embed_type == 'modal') {
+            embed_choice_string = "&effect=" + $('select[name="modal_effects"] option:selected').val();
+        }
+
+        if(!embed_choice_string) { 
+            alert("Please choose a Widget.");
+            return false;
+        }
+
+        return embed_choice_string; 
+    }
 
     function s36Lightbox(width,height,insertContent){	
         if($('#lightbox').size() == 0){
@@ -337,43 +348,9 @@ jQuery(function($) {
         $('#lightbox-shadow').fadeOut('fast');
     }
 
-    $("#generate-feedback-btn").bind("click", function(e) {
-        var me = this;
-        var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
-        var company_id = $("input[name='company_id']").val();
-        var embed_type = $("input:radio[name='embed_type']:checked").val();
-        var theme_id = $("input:radio[name='theme_id']:checked").val();
-        var embed_choices;
-
-        //TODO: ugh MVC this shit please
-        if(embed_type == 'fullpage') {
-            embed_choices = "&units=" + $('select[name="full_page_units"] option:selected').val();
-        }
-
-        if(embed_type == 'embedded') {
-            embed_choices = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
-            embed_choices += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
-        }
-
-        if(embed_type == 'modal') {
-            embed_choices = "&effect=" + $('select[name="modal_effects"] option:selected').val();
-        }
-
-        if(!embed_choices) { 
-            alert("Please choose a Widget.");
-            return false;
-        }
-
-        $.ajax({
-            url: $(me).attr('hrefaction')
-          , data: "getJSON=1&siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
-          , dataType: 'json'
-          , success : function(msg) {
-              $("#code-generate-view").val(msg.init_code);             
-              $("#widget-generate-view").val(msg.widget_code);
-          }
-        });
-
-        e.preventDefault();
-    })
+	function adjust_height(curr, next, opts, fwd) {
+		var index = opts.currSlide;
+		var $ht = $(this).height();
+		$(this).parent().animate({height: $ht},200);
+	}
 });

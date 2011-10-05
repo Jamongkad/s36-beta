@@ -19,38 +19,38 @@ class UserTheme extends S36DataObject {
         $optionFactory->returnObj()->save();
     }
 
-    public function fetch_theme_by_company_id($company_id) {
+    public function fetch_themes_by_company_id($company_id) {
         $sql = "
-        SELECT 
-            ut.userThemeId 
-          , ut.themeName
-          , ste.domain
-          , wdgt.widgetName 
-          , thme.name
-        FROM 
-            UserThemes AS ut
-        LEFT JOIN
-            FullPageOptions AS fpo
-                ON fpo.userThemeId = ut.userThemeId
-        LEFT JOIN
-            ModalWindowOptions AS mwo
-                ON mwo.userThemeId = ut.userThemeId
-        LEFT JOIN
-            EmbeddedBlockOptions AS ebo
-                ON ebo.userThemeId = ut.userThemeId
-        INNER JOIN
-            Widget AS wdgt
-                ON wdgt.widgetId = ut.widgetId
-        INNER JOIN
-            Site AS ste
-                ON ste.siteId = ut.siteId
-        INNER JOIN
-            Theme AS thme
-                ON thme.themeId = ut.themeId
-        WHERE 1=1
-            AND ut.companyId = :company_id
-        ORDER BY 
-            ut.userThemeId DESC
+            SELECT 
+                ut.userThemeId 
+              , ut.themeName
+              , ste.domain
+              , wdgt.widgetName 
+              , thme.name
+            FROM 
+                UserThemes AS ut
+            LEFT JOIN
+                FullPageOptions AS fpo
+                    ON fpo.userThemeId = ut.userThemeId
+            LEFT JOIN
+                ModalWindowOptions AS mwo
+                    ON mwo.userThemeId = ut.userThemeId
+            LEFT JOIN
+                EmbeddedBlockOptions AS ebo
+                    ON ebo.userThemeId = ut.userThemeId
+            INNER JOIN
+                Widget AS wdgt
+                    ON wdgt.widgetId = ut.widgetId
+            INNER JOIN
+                Site AS ste
+                    ON ste.siteId = ut.siteId
+            INNER JOIN
+                Theme AS thme
+                    ON thme.themeId = ut.themeId
+            WHERE 1=1
+                AND ut.companyId = :company_id
+            ORDER BY 
+                ut.userThemeId DESC
         ";
 
         $sth = $this->dbh->prepare($sql);
@@ -58,6 +58,79 @@ class UserTheme extends S36DataObject {
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public function fetch_theme_by_id($user_theme_id, $company_id) {
+        $sql = "
+            SELECT 
+              *
+              , ut.userThemeId
+              , ut.companyId
+              , ut.siteId
+              , ut.themeId
+              , CASE
+                    WHEN ebo.effectId THEN ebo.effectId
+                    WHEN mwo.effectId THEN mwo.effectId
+                END AS effect
+            FROM 
+                UserThemes AS ut
+            LEFT JOIN
+                FullPageOptions AS fpo
+                    ON fpo.userThemeId = ut.userThemeId
+            LEFT JOIN
+                ModalWindowOptions AS mwo
+                    ON mwo.userThemeId = ut.userThemeId
+            LEFT JOIN
+                EmbeddedBlockOptions AS ebo
+                    ON ebo.userThemeId = ut.userThemeId
+            LEFT JOIN
+                Widget AS wdgt
+                    ON wdgt.widgetId = ut.widgetId
+            LEFT JOIN
+                Site AS ste
+                    ON ste.siteId = ut.siteId
+            LEFT JOIN
+                Theme AS thme
+                    ON thme.themeId = ut.themeId
+            WHERE 1=1
+                AND ut.userThemeId = :user_theme_id
+                AND ut.companyId = :company_id
+        ";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':user_theme_id', $user_theme_id, PDO::PARAM_INT);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT); 
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        
+        //TODO: Create Widget Value objects
+        $widget_creation_params = new StdClass;
+
+        if($result->widgetname == 'embedded') {
+             $widget_creation_params->site_id    = $result->siteid;
+             $widget_creation_params->company_id = $result->companyid; 
+             $widget_creation_params->embed_type = $result->widgetname;
+             $widget_creation_params->type       = $result->type;
+             $widget_creation_params->width      = $result->width; 
+             $widget_creation_params->height     = $result->height;
+             $widget_creation_params->effect     = $result->effect;
+             $widget_creation_params->units      = $result->units; 
+             $widget_creation_params->theme_id   = $result->themeid;
+        }
+
+        if($result->widgetname == 'modal') {
+             $widget_creation_params->site_id    = $result->siteid;
+             $widget_creation_params->company_id = $result->companyid; 
+             $widget_creation_params->embed_type = $result->widgetname;
+             $widget_creation_params->theme_id   = $result->themeid;
+             $widget_creation_params->effect     = $result->effect;     
+        }
+
+        $wg = new WidgetGenerator($widget_creation_params);
+        return Array(
+                'init_code' => $wg->generate_init_code() 
+            , 'widget_code' => $wg->generate_widget_code()
+        );
+
     }
 }
 

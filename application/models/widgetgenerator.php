@@ -6,17 +6,13 @@ class WidgetGenerator {
 
 
     public function __construct($option_obj) {
-        $this->base_url    = URL::to('/');
         $this->option_obj  = $option_obj;
-
-        $this->siteId    = $this->option_obj->site_id;
-        $this->companyId = $this->option_obj->company_id;
-        $this->themeId   = $this->option_obj->theme_id;
     }
 
     public function generate_widget_code() {
         if($this->option_obj->embed_type == 'embedded') {
-            return $this->generate_iframe_code();
+            $embedded = new EmbeddedType($this->option_obj);
+            return $embedded->generate_html_code(); 
         }
         
         if($this->option_obj->embed_type == 'modal') {
@@ -27,6 +23,77 @@ class WidgetGenerator {
     }
 
     public function generate_init_code() { 
+        $modal = new ModalType($this->option_obj);
+        return $modal->generate_modal_init_code(); 
+    }
+
+    public function generate_iframe_code() {
+
+        if($this->option_obj->embed_type == 'embedded') {
+            $embedded = new EmbeddedType($this->option_obj);
+            return $embedded->generate_html_code(); 
+        }
+        
+        if($this->option_obj->embed_type == 'modal') {
+            $modal = new ModalType($this->option_obj);
+            return $modal->generate_html_code(); 
+        }
+
+    }
+}
+
+abstract class WidgetTypes {
+
+    public $option_obj;
+    
+    public function __construct($option_parameters) {
+        $this->option_obj = $option_parameters;    
+        $this->base_url   = URL::to('/'); 
+        $this->siteId    = $this->option_obj->site_id;
+        $this->companyId = $this->option_obj->company_id;
+        $this->themeId   = $this->option_obj->theme_id;
+    }
+    
+    public abstract function generate_html_code();
+}
+
+class FullPageType extends WidgetTypes {
+    public function generate_html_code() {}
+}
+
+
+class EmbeddedType extends WidgetTypes { 
+    public function generate_html_code() { 
+        $effect = _effect_name($this->option_obj->effect);
+        $width  = $this->option_obj->width;
+        $height = $this->option_obj->height;
+        $type   = ($this->option_obj->type == 'embed_block_x') ? 'horizontal' : 'vertical';
+        $units  = $this->option_obj->units;
+
+        return trim("
+           <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
+            width='{$width}' height='{$height}' 
+            scrolling='no' frameborder='0'>
+               Sorry your browser doe not support iframes
+           </iframe>
+        ");
+
+    }
+}
+
+class ModalType extends WidgetTypes { 
+    public function generate_html_code() { 
+        $effect = _effect_name($this->option_obj->effect);
+        return trim("
+            <iframe src='{$this->base_url}widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}'
+             width='750' height='440' scrolling='no' frameborder='0'>
+               Sorry your browser doe not support iframes       
+            </iframe>
+        ");
+    }
+
+    public function generate_modal_init_code() {
+        
         $modal_code = null;
 
         $form_widget = $this->base_url."widget/form?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}";
@@ -35,7 +102,7 @@ class WidgetGenerator {
             
             $modal_widget_src = $this->base_url."widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1";
 
-            $effect = $this->_effect_name($this->option_obj->effect);
+            $effect = _effect_name($this->option_obj->effect);
  
             $modal_code = trim(" 
                 var m_option_1 = {
@@ -69,63 +136,8 @@ class WidgetGenerator {
                 </script>
         ");
     }
-
-    public function generate_iframe_code() {
-
-        $effect = $this->_effect_name($this->option_obj->effect);
-
-        if($this->option_obj->embed_type == 'embedded') {
-            $width  = $this->option_obj->width;
-            $height = $this->option_obj->height;
-            $type   = ($this->option_obj->type == 'embed_block_x') ? 'horizontal' : 'vertical';
-            $units  = $this->option_obj->units;
-
-            return trim("
-               <iframe src='{$this->base_url}widget/embedded?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}&type={$type}&units={$units}' 
-                width='{$width}' height='{$height}' 
-                scrolling='no' frameborder='0'>
-                   Sorry your browser doe not support iframes
-               </iframe>
-            ");
-        }
-        
-        if($this->option_obj->embed_type == 'modal') {
-            return trim("
-                <iframe src='{$this->base_url}widget/modal?siteId={$this->siteId}&companyId={$this->companyId}&themeId={$this->themeId}&is_published=1&is_featured=1&transition={$effect->jqueryname}'
-                 width='750' height='440' scrolling='no' frameborder='0'>
-                   Sorry your browser doe not support iframes       
-                </iframe>
-            ");
-        }
-
-    }
-
-    private function _effect_name($effectsId) { 
-        return DB::Table('Effects', 'master')->where('effectsid', '=', $effectsId)->first(Array('jqueryname'));
-    }
-
 }
 
-abstract class WidgetTypes {
-    
-    private $option_parameters;
-
-    public function __construct($option_parameters) {
-        $this->option_parameters = $option_parameters;    
-    }
-    
-    public abstract function generate_html_code();
-}
-
-class FullPageType extends WidgetTypes {
-    public function generate_html_code() {}
-}
-
-
-class EmbeddedType extends WidgetTypes { 
-    public function generate_html_code() {}
-}
-
-class ModalType extends WidgetTypes { 
-    public function generate_html_code() {}
+function _effect_name($effectsId) { 
+    return DB::Table('Effects', 'master')->where('effectsid', '=', $effectsId)->first(Array('jqueryname'));
 }

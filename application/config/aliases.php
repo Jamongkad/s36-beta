@@ -17,6 +17,7 @@ return array(
 	| We have already aliased common Laravel classes to make your life easier.
 	|
 	*/
+    'S36ValueObject' => 'S36ValueObject\\S36ValueObject',
     'S36Auth' => 'S36Auth\\S36Auth',
     'S36DataObject' => 'S36DataObject\\S36DataObject',
     'Resize'  => 'Resize\\Resize',

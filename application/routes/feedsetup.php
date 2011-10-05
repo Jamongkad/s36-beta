@@ -19,16 +19,15 @@ return array(
     'POST /feedsetup/render_display_info' => function() use ($feedback) {
         $site_id = Input::get('site_id');
         $feed_options = $feedback->display_embedded_feedback_options($site_id);
-        return View::Make('inbox/ajax_views/ajax_display_info', Array( 
+        return View::Make('inbox/ajax_views/ajax_display_info_view', Array( 
             'feed_options' => $feed_options
         ));
     },
 
     'GET /feedsetup/mywidgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
-
         $company_id = S36Auth::user()->companyid;
         $user_theme = new UserTheme;
-        $fetched_themes = $user_theme->fetch_theme_by_company_id($company_id);
+        $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
 
         $links = Array(
             'none' => '-'
@@ -41,13 +40,15 @@ return array(
         return View::of_layout()->partial('contents', 'inbox/mywidgets_view', Array('links' => $links, 'fetched_themes' => $fetched_themes));
     }),
 
+    'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
+        $company_id = S36Auth::user()->companyid;
+        $user_theme = new UserTheme; 
+        $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
+        return View::make('inbox/ajax_views/ajax_getcode_view', Array('fetched_theme' => $fetched_theme));
+    },
+
     'POST /feedsetup/save_widget' => function() {
         $d = new UserTheme; 
-        /*
-        echo "<pre>";
-        print_r($d->createTheme( Input::get() ));
-        echo "</pre>";
-        */
         $d->createTheme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
     },
@@ -77,14 +78,14 @@ return array(
          $widget_creation_params->theme_id   = Input::get('themeId');
 
          $wg = new WidgetGenerator($widget_creation_params);
-         //print_r($wg->generate_init_code());
-         //print_r($wg->generate_widget_code());     
          if(Input::get('getJSON') == 1) { 
+             //generate html code for site integration
              echo json_encode(Array(
                  'init_code'   => $wg->generate_init_code()
                , 'widget_code' => $wg->generate_widget_code()
              ));
          } else {
+             //generate preview
              echo View::make('widget::widget_view_index', Array(
                  'iframe_code' => $wg->generate_iframe_code()
              ));

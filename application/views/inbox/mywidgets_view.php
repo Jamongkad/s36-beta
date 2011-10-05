@@ -17,7 +17,9 @@
                     <?foreach($fetched_themes as $themes):?>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><?=$themes->themename?></td>  
+                            <td><?=$themes->themename?><br/> 
+                            <small><a href="<?=URL::to('feedsetup/get_code/'.$themes->userthemeid)?>" style="color: #627483" class="get-code">[Get Code]</a></small>
+                            </td>  
                             <td><?=$themes->domain?></td>
                             <td><?=$themes->widgetname?></td>
                             <td><?=$themes->name?></td>
