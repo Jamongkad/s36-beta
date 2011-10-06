@@ -99,4 +99,21 @@ return array(
         }
         $feedback->_toggle_feedbackblock(Input::get('column_name'), Input::get('feedblock_id'), $state);
     },
+
+    'POST /feedsetup/delete_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) {
+        print_r($user_theme_id);
+        print_r($widget_type);
+        DB::table('UserThemes', 'master')->where('userThemeId', '=', $user_theme_id)->delete();
+    },
+
+    'GET /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
+        print_r($user_theme_id);
+        print_r($widget_type);
+    }, 
+
+    'POST /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
+        print_r($user_theme_id);
+        print_r($widget_type);
+    }, 
+
 );

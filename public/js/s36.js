@@ -274,10 +274,7 @@ jQuery(function($) {
     })
 
     $('a.get-code').bind('click', function(e) {  
-        var url = $(this).attr('href');
-        console.log(url);
-        //s36Lightbox(500, 500, "Mathew");
-        
+        var url = $(this).attr('href');  
         $.ajax({
             url: url
           , success : function(msg) {
@@ -285,6 +282,26 @@ jQuery(function($) {
           }
         });
         return e.preventDefault();  
+    });
+
+    $('input[type="button"].edit, input[type="button"].delete').bind('click', function(e) {
+        var hrefaction = $(this).attr('hrefaction');
+        var input_class = $(this).attr('class');
+        var input_parents = $(this).parents('tr');
+        var ajax_action;
+
+        if(input_class == 'delete') {
+            if(confirm("Are you sure you want to delete this theme?")) {
+                input_parents.fadeOut(400);     
+                $.post(hrefaction, function(msg) { console.log(msg); });           
+            }
+        } 
+
+        if(input_class == 'edit') {
+            $.get(hrefaction, function(msg) { console.log(msg); });                
+        }
+         
+        e.preventDefault();
     });
      
     //helper functions

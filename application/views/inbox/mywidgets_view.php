@@ -23,7 +23,10 @@
                             <td><?=$themes->domain?></td>
                             <td><?=$themes->widgetname?></td>
                             <td><?=$themes->name?></td>
-                            <td><input class="edit" type="button"/> <input class="delete" type="button"/></td>
+                            <td>
+                                <input class="edit" type="button" hrefaction="<?=URL::to("feedsetup/edit_code/{$themes->userthemeid}/{$themes->widgetname}")?>"/> 
+                                <input class="delete" type="button" hrefaction="<?=URL::to("feedsetup/delete_code/{$themes->userthemeid}/{$themes->widgetname}")?>"/>
+                            </td>
                         </tr>
                     <?endforeach?>
                 </tbody>
