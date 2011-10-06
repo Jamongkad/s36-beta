@@ -2,17 +2,19 @@
 
 class WidgetGenerator {
 
-    public $option_obj, $base_url;
+    public $option_obj, $base_url, $embedded, $modal;
 
 
     public function __construct($option_obj) {
         $this->option_obj  = $option_obj;
+        $this->embedded = new EmbeddedType($option_obj);
+        $this->modal = new ModalType($option_obj);
+        
     }
 
     public function generate_widget_code() {
         if($this->option_obj->embed_type == 'embedded') {
-            $embedded = new EmbeddedType($this->option_obj);
-            return $embedded->generate_html_code(); 
+            return $this->embedded->generate_html_code(); 
         }
         
         if($this->option_obj->embed_type == 'modal') {
@@ -23,20 +25,16 @@ class WidgetGenerator {
     }
 
     public function generate_init_code() { 
-        $modal = new ModalType($this->option_obj);
-        return $modal->generate_modal_init_code(); 
+        return $this->modal->generate_modal_init_code(); 
     }
 
     public function generate_iframe_code() {
-
         if($this->option_obj->embed_type == 'embedded') {
-            $embedded = new EmbeddedType($this->option_obj);
-            return $embedded->generate_html_code(); 
+            return $this->embedded->generate_html_code(); 
         }
         
         if($this->option_obj->embed_type == 'modal') {
-            $modal = new ModalType($this->option_obj);
-            return $modal->generate_html_code(); 
+            return $this->modal->generate_html_code(); 
         }
 
     }

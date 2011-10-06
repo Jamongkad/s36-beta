@@ -14,3 +14,24 @@ abstract class S36DataObject {
             $this->user_id = S36Auth::user()->userid;        
     }
 }
+
+//Value Objects for UserThemes
+class EmbeddedWidget {
+    public $site_id;
+    public $company_id;
+    public $embed_type;
+    public $type;
+    public $width;
+    public $height;
+    public $effect;
+    public $units;
+    public $theme_id;
+}
+
+class ModalWidget { 
+    public $site_id;
+    public $company_id;
+    public $embed_type;
+    public $theme_id;
+    public $effect;
+}

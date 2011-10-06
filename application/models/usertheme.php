@@ -102,27 +102,27 @@ class UserTheme extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         
-        //TODO: Create Widget Value objects
-        $widget_creation_params = new StdClass;
-
+        $widget_creation_params = null;
         if($result->widgetname == 'embedded') {
-             $widget_creation_params->site_id    = $result->siteid;
-             $widget_creation_params->company_id = $result->companyid; 
-             $widget_creation_params->embed_type = $result->widgetname;
-             $widget_creation_params->type       = $result->type;
-             $widget_creation_params->width      = $result->width; 
-             $widget_creation_params->height     = $result->height;
-             $widget_creation_params->effect     = $result->effect;
-             $widget_creation_params->units      = $result->units; 
-             $widget_creation_params->theme_id   = $result->themeid;
+            $widget_creation_params = new S36DataObject\EmbeddedWidget;
+            $widget_creation_params->site_id    = $result->siteid;
+            $widget_creation_params->company_id = $result->companyid; 
+            $widget_creation_params->embed_type = $result->widgetname;
+            $widget_creation_params->type       = $result->type;
+            $widget_creation_params->width      = $result->width; 
+            $widget_creation_params->height     = $result->height;
+            $widget_creation_params->effect     = $result->effect;
+            $widget_creation_params->units      = $result->units; 
+            $widget_creation_params->theme_id   = $result->themeid;
         }
 
         if($result->widgetname == 'modal') {
-             $widget_creation_params->site_id    = $result->siteid;
-             $widget_creation_params->company_id = $result->companyid; 
-             $widget_creation_params->embed_type = $result->widgetname;
-             $widget_creation_params->theme_id   = $result->themeid;
-             $widget_creation_params->effect     = $result->effect;     
+            $widget_creation_params = new S36DataObject\ModalWidget;
+            $widget_creation_params->site_id    = $result->siteid;
+            $widget_creation_params->company_id = $result->companyid; 
+            $widget_creation_params->embed_type = $result->widgetname;
+            $widget_creation_params->theme_id   = $result->themeid;
+            $widget_creation_params->effect     = $result->effect;     
         }
 
         $wg = new WidgetGenerator($widget_creation_params);
