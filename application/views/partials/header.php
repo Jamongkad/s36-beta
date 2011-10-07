@@ -2,6 +2,8 @@
 <html>
 <head> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.ico">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
@@ -18,6 +20,7 @@
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        <?=HTML::script('js/jquery.form.js')?>
     </meta>    
 </head>
 <body>

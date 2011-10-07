@@ -28,7 +28,7 @@ return array(
         $company_id = S36Auth::user()->companyid;
         $user_theme = new UserTheme;
         $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
-
+         
         $links = Array(
             'none' => '-'
           , 'inbox' => 'Inbox'
@@ -38,18 +38,27 @@ return array(
          );
 
         return View::of_layout()->partial('contents', 'inbox/mywidgets_view', Array('links' => $links, 'fetched_themes' => $fetched_themes));
+
     }),
 
     'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
         $company_id = S36Auth::user()->companyid;
         $user_theme = new UserTheme; 
         $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
-        return View::make('inbox/ajax_views/ajax_getcode_view', Array('fetched_theme' => $fetched_theme));
+
+        $wg = new WidgetGenerator($fetched_theme);
+
+        $wigi_data = Array(
+                'init_code' => $wg->generate_init_code() 
+            , 'widget_code' => $wg->generate_widget_code()
+        );
+
+        return View::make('inbox/ajax_views/ajax_getcode_view', Array('fetched_theme' => $wigi_data));
     },
 
     'POST /feedsetup/save_widget' => function() {
         $d = new UserTheme; 
-        $d->createTheme( Input::get() );
+        $d->create_theme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
     },
 
@@ -101,19 +110,42 @@ return array(
     },
 
     'POST /feedsetup/delete_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) {
-        print_r($user_theme_id);
-        print_r($widget_type);
         DB::table('UserThemes', 'master')->where('userThemeId', '=', $user_theme_id)->delete();
     },
 
     'GET /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
-        print_r($user_theme_id);
-        print_r($widget_type);
+        $company_id = S36Auth::user()->companyid;
+        $user_theme = new UserTheme; 
+        $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
+        $view_data = Array(
+            'view' => View::make('inbox/ajax_views/ajax_editcode_view', 
+                        Array(
+                            'fetched_theme' => $fetched_theme
+                          , 'effects_options' => DB::table('Effects', 'master')->get()
+                          , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
+                          , 'user_theme_id' => $user_theme_id
+                          , 'widget_type' => $widget_type
+                          , 'company_id' => $company_id
+                      ))->get()
+        );
+
+        if($fetched_theme->embed_type == 'embedded') {
+            $view_data['width'] = 620;
+            $view_data['height'] = 460;
+        }
+
+        if($fetched_theme->embed_type == 'modal') {
+            $view_data['width'] = 300;
+            $view_data['height'] = 400;
+        }
+
+        echo json_encode($view_data);
     }, 
 
-    'POST /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
-        print_r($user_theme_id);
-        print_r($widget_type);
+    'POST /feedsetup/edit_code' => function() { 
+        $user_theme = new UserTheme;
+        $d = $user_theme->update_theme(Input::get());
+        Helpers::show_data($d);
     }, 
 
 );

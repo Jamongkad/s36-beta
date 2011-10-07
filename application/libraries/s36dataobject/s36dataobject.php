@@ -26,6 +26,7 @@ class EmbeddedWidget {
     public $effect;
     public $units;
     public $theme_id;
+    public $widget_option_id;
 }
 
 class ModalWidget { 
@@ -34,4 +35,5 @@ class ModalWidget {
     public $embed_type;
     public $theme_id;
     public $effect;
+    public $widget_option_id;
 }

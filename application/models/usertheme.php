@@ -1,7 +1,7 @@
 <?php
 
 class UserTheme extends S36DataObject {
-    public function createTheme($post) { 
+    public function create_theme($post) { 
 
         $widget = DB::table('Widget', 'master')->where('widgetName', '=', $post['embed_type'])->first(Array('widgetId'));
         $data = Array(
@@ -15,7 +15,6 @@ class UserTheme extends S36DataObject {
         $insert_id = DB::table('UserThemes', 'master')->insert_get_id($data);
 
         $optionFactory = new OptionFactory($post, $insert_id);
-
         $optionFactory->returnObj()->save();
     }
 
@@ -72,6 +71,10 @@ class UserTheme extends S36DataObject {
                     WHEN ebo.effectId THEN ebo.effectId
                     WHEN mwo.effectId THEN mwo.effectId
                 END AS effect
+              , CASE
+                    WHEN ebo.embeddedBlockId THEN ebo.embeddedBlockId
+                    WHEN mwo.modalId THEN mwo.modalId
+                END AS widgetOptionId
             FROM 
                 UserThemes AS ut
             LEFT JOIN
@@ -102,36 +105,59 @@ class UserTheme extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         
-        $widget_creation_params = null;
+        $value_object = null;
         if($result->widgetname == 'embedded') {
-            $widget_creation_params = new S36DataObject\EmbeddedWidget;
-            $widget_creation_params->site_id    = $result->siteid;
-            $widget_creation_params->company_id = $result->companyid; 
-            $widget_creation_params->embed_type = $result->widgetname;
-            $widget_creation_params->type       = $result->type;
-            $widget_creation_params->width      = $result->width; 
-            $widget_creation_params->height     = $result->height;
-            $widget_creation_params->effect     = $result->effect;
-            $widget_creation_params->units      = $result->units; 
-            $widget_creation_params->theme_id   = $result->themeid;
+            $value_object = new S36DataObject\EmbeddedWidget;
+            $value_object->site_id    = $result->siteid;
+            $value_object->company_id = $result->companyid; 
+            $value_object->embed_type = $result->widgetname;
+            $value_object->type       = $result->type;
+            $value_object->width      = $result->width; 
+            $value_object->height     = $result->height;
+            $value_object->effect     = $result->effect;
+            $value_object->units      = $result->units; 
+            $value_object->theme_id   = $result->themeid;
+            $value_object->widget_option_id = $result->widgetoptionid;
         }
 
         if($result->widgetname == 'modal') {
-            $widget_creation_params = new S36DataObject\ModalWidget;
-            $widget_creation_params->site_id    = $result->siteid;
-            $widget_creation_params->company_id = $result->companyid; 
-            $widget_creation_params->embed_type = $result->widgetname;
-            $widget_creation_params->theme_id   = $result->themeid;
-            $widget_creation_params->effect     = $result->effect;     
+            $value_object = new S36DataObject\ModalWidget;
+            $value_object->site_id    = $result->siteid;
+            $value_object->company_id = $result->companyid; 
+            $value_object->embed_type = $result->widgetname;
+            $value_object->theme_id   = $result->themeid;
+            $value_object->effect     = $result->effect;     
+            $value_object->widget_option_id = $result->widgetoptionid;
         }
 
-        $wg = new WidgetGenerator($widget_creation_params);
-        return Array(
-                'init_code' => $wg->generate_init_code() 
-            , 'widget_code' => $wg->generate_widget_code()
-        );
-
+        return $value_object; 
     }
+
+    public function update_theme($post) {
+        //update UserTheme table
+        DB::table('UserThemes', 'master')->where('userThemeId', '=', $post['userThemeId'])
+                                        ->where('companyId', '=', $post['companyId'])
+                                        ->update(Array('themeId' => $post['theme_id']));
+
+        if($post['widgetType'] == 'embedded') { 
+            DB::table('EmbeddedBlockOptions', 'master')->where('userThemeId', '=', $post['userThemeId'])
+                                                       ->where('embeddedBlockId', '=', $post['widgetOptionId'])
+                                                       ->update(Array(
+                                                           'type' => $post['embed_block_type']
+                                                         , 'units' => $post['embed_units']
+                                                         , 'width'  => $post['embed_width']
+                                                         , 'height' => $post['embed_height']
+                                                         , 'effectId' => $post['embed_effects']
+                                                       ));
+        }
+
+        if($post['widgetType'] == 'modal') {  
+            DB::table('ModalWindowOptions', 'master')->where('userThemeId', '=', $post['userThemeId'])
+                                                       ->where('modalId', '=', $post['widgetOptionId'])
+                                                       ->update(Array('effectId' => $post['modal_effects']));
+        }
+    }
+
 }
 
 class OptionFactory {

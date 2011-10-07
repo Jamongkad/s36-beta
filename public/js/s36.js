@@ -298,7 +298,7 @@ jQuery(function($) {
         } 
 
         if(input_class == 'edit') {
-            $.get(hrefaction, function(msg) { console.log(msg); });                
+            $.getJSON(hrefaction, function(msg) { s36Lightbox(msg.width, msg.height, msg.view);/*console.log(msg);*/ });                
         }
          
         e.preventDefault();
@@ -363,11 +363,5 @@ jQuery(function($) {
     function closeLightbox(){
         $('#lightbox').fadeOut('fast',function(){$(this).empty();});
         $('#lightbox-shadow').fadeOut('fast');
-    }
-
-	function adjust_height(curr, next, opts, fwd) {
-		var index = opts.currSlide;
-		var $ht = $(this).height();
-		$(this).parent().animate({height: $ht},200);
-	}
+    }    
 });
