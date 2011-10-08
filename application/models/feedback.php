@@ -79,8 +79,7 @@ class Feedback {
             }
            
         }
-
-        $sth = $this->dbh->prepare('
+        $sql = '  
             SELECT 
                   SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
@@ -94,7 +93,18 @@ class Feedback {
                   END AS priority
                 , Feedback.text
                 , Feedback.dtAdded AS date
-                , Feedback.rating
+                , CASE 
+                    WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
+                    WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
+                    WHEN Feedback.permission = 3 THEN "PRIVATE"
+                  END AS permission
+                , CASE 
+                    WHEN Feedback.rating = 1 THEN "POOR"
+                    WHEN Feedback.rating = 2 THEN "POOR"
+                    WHEN Feedback.rating = 3 THEN "AVERAGE"
+                    WHEN Feedback.rating = 4 THEN "GOOD"
+                    WHEN Feedback.rating = 5 THEN "EXCELLENT"
+                  END AS rating
                 , Feedback.isFeatured
                 , Feedback.isFlagged
                 , Feedback.isPublished
@@ -113,13 +123,13 @@ class Feedback {
                 User
                     INNER JOIN
                         Site
-                        ON User.companyId = Site.companyId
+                        ON Site.companyId = User.companyId 
                     INNER JOIN 
                         Feedback
-                        ON Site.siteId = Feedback.siteId
+                        ON Feedback.siteId = Site.siteId 
                     INNER JOIN
                         Category
-                        ON Feedback.categoryId = Category.categoryId
+                        ON Category.categoryId = Feedback.categoryId 
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
@@ -141,8 +151,8 @@ class Feedback {
                     ORDER BY
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
-        ');
-      
+        ';
+        $sth = $this->dbh->prepare($sql);      
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
         $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
@@ -267,7 +277,6 @@ class Feedback {
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-
         $feedback_block_display = DB::Table('FeedbackBlock', 'master')->where('siteid', '=', $opts['site_id'])->first();
 
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
@@ -376,11 +385,6 @@ class Feedback {
 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
-        /*DEBUG OUTPUT
-        print_r($column);
-        print_r("\n");
-        print_r($block_ids);
-        */ 
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -527,9 +531,9 @@ class Feedback {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
+
     //This function will be called by JS to display feedback on user's site.
     public function show_embedded_feedback_block($company_id) {
-
             $sth = $this->dbh->prepare("
             SELECT 
                 Feedback.feedbackId

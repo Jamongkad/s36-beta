@@ -30,7 +30,6 @@
                                  <ul class="category-picker">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?//=HTML::link('feedback/changecat/'.$cat->id.'/'.$id, $cat->name)?>
                                              <?=HTML::link('feedback/changecat/', $cat->name, Array(
                                                   'hrefaction' => URL::to('/feedback/change_feedback_state')
                                                 , 'class'      => 'cat-picks'
@@ -53,21 +52,8 @@
                             <p><?=$feed->text?></p>
                         </div> 
                         <div class="feedback-meta">
-                            <?$rating = $feed->rating?>
-                            <?if($rating == 1 || $rating == 2):?>
-                                <span class="rating poor">POOR</span>
-                            <?endif?>
-                            <?if($rating == 3):?>
-                                <span class="rating average">AVERAGE</span>
-                            <?endif?>
-                            <?if($rating == 4):?>
-                                <span class="rating good">GOOD</span>
-                            <?endif?>
-                            <?if($rating == 5):?>
-                                <span class="rating excellent">EXCELLENT</span>
-                            <?endif?>
-
-                            <span class="permission">LIMITED PERMISSION</span>
+                            <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
+                            <span class="permission"><?=$feed->permission?></span>
                             <span class="status-change status">
                                 Status: <span class="status-target"><?=$feed->status?></span>
                                 <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">

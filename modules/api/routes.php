@@ -32,12 +32,7 @@ return array(
         );
 
         $feedback = new Feedback;
-        $data = $feedback->pull_feedback_by_company($params);
-        /*
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
-        */
+        $data = $feedback->pull_feedback_by_company($params); 
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
@@ -74,11 +69,11 @@ return array(
           , 'status' => 'new'
           , 'rating' => Input::get('rating')
           , 'text' => Input::get('feedback')
+          , 'permission' => Input::get('permission')
           , 'dtAdded' => date('Y-m-d H:i:s', time())
         );
 
         DB::table('Feedback')->insert($feedback_data);
-
     },
 
     'GET /api/test_blob' => function() {

@@ -59,8 +59,6 @@ return array(
           , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
           , 'type'       => Input::get('type') ? Input::get('type') : 'horizontal'
         ));
-
-
     },
 
     'GET /widget/modal' => function() {

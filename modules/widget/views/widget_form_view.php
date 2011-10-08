@@ -76,14 +76,6 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		//end added
 		// start the rating slider
 		start_slider();
-		/* re enable this to have a styled upload button
-		$("input[type=file]").filestyle({ 
-			 image: "images/chooser.png",
-			 imageheight : 26,
-			 imagewidth : 110,
-			 width :      110
-			});
-		*/		
 		$('#edit-review-feedback').click(function(){edit_feedback()});
 		$('#save-edited-feedback').hide();
 		$('#save-edited-feedback').click(function(){save_edited_feedback()});
@@ -363,7 +355,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                 	<div id="s36_pemissions">
                     	<div class="s36_block">
                         	<div class="s36_perm_radio">
-                            	<input type="radio" id="permission1" name="your_permission" value="permission_1" />
+                            	<input type="radio" id="permission1" name="your_permission" value="1" />
                             </div>
                             <label for="permission1">
                             <div class="s36_perm_details">
@@ -379,7 +371,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         </div>
                         <div class="s36_block">
                         	<div class="s36_perm_radio">
-                            	<input type="radio" id="permission2" name="your_permission" value="permission_2" />
+                            	<input type="radio" id="permission2" name="your_permission" value="2" />
                             </div>
                             <label for="permission2">
                             <div class="s36_perm_details">
@@ -395,7 +387,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         </div>
                         <div class="s36_block">
                         	<div class="s36_perm_radio">
-                            	<input type="radio" id="permission3" name="your_permission" value="permission_3" />
+                            	<input type="radio" id="permission3" name="your_permission" value="3" />
                             </div>
                             <label for="permission3">
                             <div class="s36_perm_details">

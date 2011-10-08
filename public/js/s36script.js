@@ -633,7 +633,7 @@ function send_form_data(){
 		console.log(form_data);
 		$.ajax({
 		     type: "POST"
-		   , url:  $("#ajax-submit-feedback").attr('hrefaction')//"/api/submit_feedback"
+		   , url:  $("#ajax-submit-feedback").attr('hrefaction')
 		   , dataType: "json"
 		   , data: form_data
 		   , success: function(data){
