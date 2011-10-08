@@ -3,7 +3,7 @@
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {
        
-        $limit   = 1;
+        $limit   = 10;
         $site_id = False;
         $rating  = False;
     
