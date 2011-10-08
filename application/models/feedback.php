@@ -259,10 +259,8 @@ class Feedback {
                     ORDER BY  
                         Feedback.dtAdded DESC
         ';
-
+        Helpers::show_data($opts);
         $sth = $this->dbh->prepare($sql);
-
-        print_r($sth);
         
         $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
         $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);       
