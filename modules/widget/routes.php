@@ -47,9 +47,10 @@ return array(
 
         $feedback = new Feedback;       
         $data = $feedback->pull_feedback_by_company($params);
-
         $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('embeddedCSS'));
-        
+
+        Helpers::show_data($data);
+        /* 
         return View::make('widget::widget_embedded_view', array( 
             'feedback'   => $data
           , 'themeCSS'   => trim($themeCSS->embeddedcss)
@@ -60,6 +61,7 @@ return array(
           , 'timeout'    => Input::get('timeout') ? Input::get('timeout') : 5000
           , 'type'       => Input::get('type') ? Input::get('type') : 'horizontal'
         ));
+        */
 
     },
 
