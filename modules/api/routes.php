@@ -93,16 +93,16 @@ return array(
     },
 
     'GET /api/test_email' => function() {
-        $email = new Email;
+        $emailObj = new Email;
 
         $user = new User;
-        $email = $user->pull_user_emails_by_company_id(1);
+        $email = $user->pull_user_emails_by_company_id(2);
 
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
 
         $target = new NewFeedbackSubmission($email, $feedback);
-        return $target->get_message(); 
-
+        //return $target->get_message(); 
+        $emailObj->process_email($target);
     }
 );
