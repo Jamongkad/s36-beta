@@ -21,7 +21,7 @@ class EmailTest extends EnhanceTestFixture {
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
 
-        $target = new NewFeedbackSubmission($email, $feedback);
+        $target = new NewFeedbackSubmission($email, $feedback, "36Stories Feedback Notification");
         $test = $target->get_message(); 
         Assert::contains('body', $test);
     }

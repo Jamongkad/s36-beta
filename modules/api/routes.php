@@ -101,7 +101,7 @@ return array(
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
 
-        $target = new NewFeedbackSubmission($email, $feedback);
+        $target = new NewFeedbackSubmission($email, $feedback, "36Stories New Feedback Notification");
         //return $target->get_message(); 
         //Helpers::show_data($email);
         $emailObj->process_email($target);

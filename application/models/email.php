@@ -13,7 +13,7 @@ class Email {
 
             foreach($email->get_addresses() as $em) { 
                 if($this->postmark->to($em->email)
-                                  ->subject("36Stories Feedback Notification")
+                                  ->subject($email->get_subject())
                                   ->html_message($email->get_message())
                                   ->send()){
                     echo "Message sent";
@@ -31,11 +31,12 @@ class Email {
 
 abstract class EmailFixture {
 
-    private $addresses, $feedback_data;    
+    private $addresses, $feedback_data, $subject;    
 
-    public function __construct($addresses, $feedback_data) {
+    public function __construct($addresses, $feedback_data, $subject) {
         $this->addresses = $addresses; 
         $this->feedback_data = $feedback_data;
+        $this->subject = $subject;
     }
     
     public function get_addresses() {}
@@ -44,9 +45,10 @@ abstract class EmailFixture {
 
 class NewFeedbackSubmission extends EmailFixture {
     
-    public function __construct($addresses, $feedback_data) {
+    public function __construct($addresses, $feedback_data, $subject) {
         $this->addresses = $addresses; 
         $this->feedback_data = $feedback_data;
+        $this->subject = $subject;
     }
 
     public function get_addresses() {
@@ -59,5 +61,9 @@ class NewFeedbackSubmission extends EmailFixture {
                 'feedback_data' => $this->feedback_data
               , 'addresses' => $this->addresses
         ));     
+    }
+
+    public function get_subject() {
+        return $this->subject;     
     }
 }
