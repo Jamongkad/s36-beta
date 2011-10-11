@@ -102,7 +102,8 @@ return array(
         $feedback = $fb->pull_feedback_by_id(66);
 
         $target = new NewFeedbackSubmission($email, $feedback);
-        return $target->get_message(); 
+        //return $target->get_message(); 
+        return $email;
         //$emailObj->process_email($target);
     }
 );
