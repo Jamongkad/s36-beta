@@ -306,6 +306,13 @@ class Feedback {
                     WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
                     WHEN Feedback.permission = 3 THEN "PRIVATE"
                   END AS permission
+                , CASE 
+                    WHEN Feedback.rating = 1 THEN "POOR"
+                    WHEN Feedback.rating = 2 THEN "POOR"
+                    WHEN Feedback.rating = 3 THEN "AVERAGE"
+                    WHEN Feedback.rating = 4 THEN "GOOD"
+                    WHEN Feedback.rating = 5 THEN "EXCELLENT"
+                  END AS rating
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email

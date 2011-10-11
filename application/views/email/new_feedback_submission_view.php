@@ -44,10 +44,8 @@
                         </tr>
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                                <?=$feedback_data->text?> 
-                                <br /><br />
-                                
-                                <?=$feedback_data->permission?> 
+                                "<?=$feedback_data->text?>"
+                                <br /><br /> 
                                 <?if($feedback_data->permission == "FULL PERMISSION"):?>
                                 <div style="padding:15px 20px 15px 70px;font-size:12px;background:#d9ebd6 url(<?=URL::to('/')?>img/ico-large-check.png) no-repeat left center;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
                                 	<?=$feedback_data->firstname?> has granted you FULL permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
