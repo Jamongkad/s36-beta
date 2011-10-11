@@ -103,7 +103,7 @@ return array(
 
         $target = new NewFeedbackSubmission($email, $feedback);
         //return $target->get_message(); 
-        Helpers::show_data($email);
-        //$emailObj->process_email($target);
+        //Helpers::show_data($email);
+        $emailObj->process_email($target);
     }
 );
