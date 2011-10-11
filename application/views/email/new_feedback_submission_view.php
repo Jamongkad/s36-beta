@@ -67,11 +67,13 @@
                                 <?endif?>
                                 
                                 <br />
-                                
-                                <a href="#" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd url(<?=URL::to('/')?>img/ico-check.png) no-repeat left center;padding:7px 20px 7px 35px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                            
+                                <a href="#" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                <?=HTML::image('img/ico-check.png')?>
                                 Publish this feedback now
                                 </a> 
-                                <a href="#" style="text-decoration:none;margin-right:10px;font-size:11px;background:#d2dbe1 url(<?=URL::to('/')?>img/ico-manage.png) no-repeat left center;padding:7px 20px 7px 35px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                <a href="#" style="text-decoration:none;margin-right:10px;font-size:11px;background:#d2dbe1;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                <?=HTML::image('img/ico-manage.png')?>
                                 Manage Feedback
                                 </a>
                                 
