@@ -9,7 +9,6 @@ class EmailTest extends EnhanceTestFixture {
     public function testUser() { 
         $target = Enhance::getCodeCoverageWrapper('User');
         $test = $target->pull_user_emails_by_company_id(2);
-        Helpers::show_data($test);
         Assert::isNotNull($test);
     }
 

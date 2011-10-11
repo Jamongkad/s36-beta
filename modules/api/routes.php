@@ -74,17 +74,18 @@ return array(
           , 'dtAdded' => date('Y-m-d H:i:s', time())
         );
 
-        $new_feedback_id = DB::table('Feedback')->insert_get_it($feedback_data);
-        /*
-        $email = new Email;
-        $email->latest_feedback(Input::get('company_id'), $new_feedback_id);
-        
-        $user_contacts = $us->pull_users_by_company_id(Input::get('company_id'));
-        $feedback_data = $fb->pull_feedback_by_id($feedback_id);
+        $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
-        $notification = new EmailNotification($user_contacts, $feedback_data);
-        */
-       
+        $emailObj = new Email;
+
+        $user = new User;
+        $user_emails = $user->pull_user_emails_by_company_id(Input::get('company_id'));
+ 
+        $feedback_data = $fb->pull_feedback_by_id($new_feedback_id);
+
+        $email_note = new NewFeedbackSubmission($user_emails, $feedback_data, "36Stories New Feedback Notification");
+
+        $emailObj->process_email($email_note);       
     },
 
     'GET /api/test_blob' => function() {
