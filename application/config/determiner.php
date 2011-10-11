@@ -27,9 +27,9 @@ class Determiner {
        }
       
        //STAGING
-       if($this->http_host == 'ec2-50-18-107-194.us-west-1.compute.amazonaws.com') {
-           $obj->host = 'http://ec2-50-18-107-194.us-west-1.compute.amazonaws.com/s36-beta/public';
-           $obj->db   = 'stagedb.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
+       if($this->http_host == 'staging.gearfish.com') {
+           $obj->host = 'http://staging.gearfish.com';
+           $obj->db   = 'localhost';
            return $obj;
        }
        //PRODUCTION

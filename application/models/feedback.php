@@ -289,7 +289,7 @@ class Feedback {
         return $result_obj;
     }
 
-    public function pull_feedback_by_id($id) { 
+    public function pull_feedback_by_id($feedback_id) { 
         $sth = $this->dbh->prepare('
             SELECT 
                   Feedback.feedbackId AS id
@@ -301,6 +301,11 @@ class Feedback {
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
                   END as priority
+                , CASE 
+                    WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
+                    WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
+                    WHEN Feedback.permission = 3 THEN "PRIVATE"
+                  END AS permission
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email
@@ -346,10 +351,10 @@ class Feedback {
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND Contact.siteId = Site.siteId
-                        AND Feedback.feedbackId = :id
+                        AND Feedback.feedbackId = :feedback_id
         ');
 
-        $sth->bindParam(':id', $id, PDO::PARAM_INT);
+        $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $sth->execute();       
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;

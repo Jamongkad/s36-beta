@@ -39,6 +39,7 @@ return array(
     'POST /api/submit_feedback' => function() {
         $fb = new Feedback;
         $ct = new Contact;
+        $us = new User;
 
         //fuck naive assumption...
         $countryId = Null;
@@ -73,16 +74,35 @@ return array(
           , 'dtAdded' => date('Y-m-d H:i:s', time())
         );
 
-        DB::table('Feedback')->insert($feedback_data);
+        $new_feedback_id = DB::table('Feedback')->insert_get_it($feedback_data);
+        /*
+        $email = new Email;
+        $email->latest_feedback(Input::get('company_id'), $new_feedback_id);
+        
+        $user_contacts = $us->pull_users_by_company_id(Input::get('company_id'));
+        $feedback_data = $fb->pull_feedback_by_id($feedback_id);
+
+        $notification = new EmailNotification($user_contacts, $feedback_data);
+        */
+       
     },
 
     'GET /api/test_blob' => function() {
-        $db = DB::connection('master')->pdo;
-        $sth = $db->prepare("SELECT * FROM Theme WHERE companyId = 1");
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-        echo "<style type='text/stylesheet'>";
-        print_r($result->interfacesettings);
-        echo "</style>";
+        Package::load('EnhanceTestFramework');
+        Enhance::runTests();
+    },
+
+    'GET /api/test_email' => function() {
+        $email = new Email;
+
+        $user = new User;
+        $email = $user->pull_user_emails_by_company_id(1);
+
+        $fb = new Feedback;
+        $feedback = $fb->pull_feedback_by_id(66);
+
+        $target = new NewFeedbackSubmission($email, $feedback);
+        return $target->get_message(); 
+
     }
 );
