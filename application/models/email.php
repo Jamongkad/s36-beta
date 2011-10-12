@@ -29,12 +29,36 @@ class Email {
 
 }
 
+class EmailFactory {
+
+    private $addresses, $message, $email_type;
+
+    public function __construct($opts) {
+        $this->addresses = $opts->addresses;
+        $this->message   = $opts->message;
+        $this->email_type = $opts->email_type;
+    }
+
+    public function execute() {
+
+        $collection = Array();
+        if($this->email_type == 'NewFeedbackSubmission') {
+            foreach($this->addresses as $address) {
+                $collection[] = new NewFeedbackSubmission($address, $this->message, "36Stories: New Feedback Notification");
+            }
+        }
+
+        return $collection;
+    }
+
+}
+
 abstract class EmailFixture {
 
-    private $addresses, $feedback_data, $subject;    
+    private $address, $feedback_data, $subject, $user_account;    
 
-    public function __construct($addresses, $feedback_data, $subject) {
-        $this->addresses = $addresses; 
+    public function __construct($address, $feedback_data, $subject) {
+        $this->address = $addresses; 
         $this->feedback_data = $feedback_data;
         $this->subject = $subject;
     }
@@ -45,21 +69,23 @@ abstract class EmailFixture {
 
 class NewFeedbackSubmission extends EmailFixture {
     
-    public function __construct($addresses, $feedback_data, $subject) {
-        $this->addresses = $addresses; 
+    public function __construct($address, $feedback_data, $subject) {
+        $this->address = $address; 
+        $this->user_account = DB::Table('User', 'master')->where('email', '=', $address->email)->first();
         $this->feedback_data = $feedback_data;
         $this->subject = $subject;
     }
 
-    public function get_addresses() {
-        return $this->addresses;
+    public function get_address() {
+        return $this->address;
     }
 
     public function get_message() {
         return View::make('email/new_feedback_submission_view', 
             Array(
                 'feedback_data' => $this->feedback_data
-              , 'addresses' => $this->addresses
+              , 'address' => $this->address
+              , 'user'    => $this->user_account
         ));     
     }
 

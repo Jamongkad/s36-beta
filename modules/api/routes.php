@@ -86,25 +86,14 @@ return array(
         $email_note = new NewFeedbackSubmission($user_emails, $feedback_data, "36Stories New Feedback Notification");
 
         $emailObj->process_email($email_note);       
-    },
+    }, 
 
-    'GET /api/test_blob' => function() {
-        Package::load('EnhanceTestFramework');
-        Enhance::runTests();
-    },
+    'GET /api/publish' => function() { 
+        $encrypt = new Crypter;
+        $string = Input::get('params');
 
-    'GET /api/test_email' => function() {
-        $emailObj = new Email;
-
-        $user = new User;
-        $email = $user->pull_user_emails_by_company_id(1);
-
-        $fb = new Feedback;
-        $feedback = $fb->pull_feedback_by_id(66);
-
-        $target = new NewFeedbackSubmission($email, $feedback, "36Stories New Feedback Notification");
-        //return $target->get_message(); 
-        //Helpers::show_data($email);
-        $emailObj->process_email($target);
+        $decrypt = $encrypt->decrypt($string);
+        $params = (object)explode("|", $decrypt);
+        print_r($params);
     }
 );

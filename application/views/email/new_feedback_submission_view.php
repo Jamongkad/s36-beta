@@ -81,8 +81,7 @@
                                 <?endif?>
                                 
                                 <br />
-                            
-                                <a href="#" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                <a href="<?=URL::to("api/publish?params=".rawurlencode($user->encryptstring))?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                 <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
                                 <span style="vertical-align: middle">Publish this feedback now</span>
                                 </a> 
@@ -125,10 +124,7 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for
-            <?foreach($addresses as $address):?>
-                <?=$address->email?>
-            <?endforeach?>
+            This message was intended for <?=$address->email?>
             <br/> 
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
