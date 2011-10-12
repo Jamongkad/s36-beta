@@ -47,21 +47,37 @@
                                 "<?=$feedback_data->text?>"
                                 <br /><br /> 
                                 <?if($feedback_data->permission == "FULL PERMISSION"):?>
-                                <div style="padding:15px 20px 15px 70px;font-size:12px;background:#d9ebd6 url(<?=URL::to('/')?>img/ico-large-check.png) no-repeat left center;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                    <span style="vertical-align: middle; " >
                                 	<?=$feedback_data->firstname?> has granted you FULL permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
+
+                                    </span>
                                 </div>
                                 <?endif?>
 
                                 <?if($feedback_data->permission == "LIMITED PERMISSION"):?>
-                                <div style="padding:15px 20px 15px 70px;font-size:12px;background:#d9ebd6 url(<?=URL::to('/')?>img/ico-large-check.png) no-repeat left center;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                    <span style="vertical-align: middle; " >
                                 	<?=$feedback_data->firstname?> has granted you LIMITED permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
+
+                                    </span>
                                 </div>
+
+
                                 <?endif?>
 
                                 <?if($feedback_data->permission == "PRIVATE"):?>
-                                <div style="padding:15px 20px 15px 70px;font-size:12px;background:#d9ebd6 url(<?=URL::to('/')?>img/ico-large-check.png) no-repeat left center;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
-                                	<?=$feedback_data->firstname?> has asked you to keep his/her feedback and profile PRIVATE. 
+
+                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                    <span style="vertical-align: middle; " >
+                                	<?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
+
+                                    </span>
                                 </div>
+
                                 <?endif?>
                                 
                                 <br />
