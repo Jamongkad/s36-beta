@@ -6,10 +6,10 @@ return array(
         $password_string = "p455w0rd";
         $password = crypt($password_string);
 
-        return DB::table("User", "master")->where('username', '=', 'ryan')
+        return DB::table("User", "master")->where('username', '=', 'dan')
                                           ->update(Array(
                                               'password' => $password
-                                            , 'encryptString' => $encrypt->encrypt("ryanchua6@gmail.com"."|".$password_string)
+                                            , 'encryptString' => $encrypt->encrypt("budocski15@gmail.com"."|".$password_string)
                                           ));
 
     },
