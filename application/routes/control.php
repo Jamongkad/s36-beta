@@ -9,7 +9,7 @@ return array(
         return DB::table("User", "master")->where('username', '=', 'karen')
                                           ->update(Array(
                                               'password' => $password
-                                            , 'encryptString' => $encrypt->encrypt("karen.cayamanda@microsourcing.com"."|".$password_string)
+                                            , 'encryptString' => $encrypt->encrypt("karen.cayamanda@microsourcing.com")
                                           ));
 
     },
