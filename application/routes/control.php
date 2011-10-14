@@ -3,7 +3,7 @@
 return array(
     'GET /control/update_user_pwd' => function() {
         $encrypt = new Crypter;
-        $password_string = "p455w0rd";
+        $password_string = "password";
         $password = crypt($password_string);
 
         return DB::table("User", "master")->where('username', '=', 'karen')
