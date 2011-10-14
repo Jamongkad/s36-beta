@@ -25,7 +25,8 @@ class S36Auth {
     public static function login($username, $password) {
         
         $user = DB::table('User', static::$db_name)->where('email', '=', $username)
-                                           ->or_where('username', '=', $username)->first();
+                                                   ->or_where('username', '=', $username)
+                                                   ->first();
         if(! is_null($user)) {
             $user_password = $user->password; 
             if(crypt($password, $user_password) === $user_password) {

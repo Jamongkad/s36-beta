@@ -6,24 +6,50 @@ return array(
         Enhance::runTests();
     },
 
-    'GET /tests/test_email' => function() {
+    'GET /tests/test_email_new' => function() {
 
         $email = new Email;
         $user = new User;
-        $email = $user->pull_user_emails_by_company_id(2);
+        $addresses = $user->pull_user_emails_by_company_id(1);
 
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
 
-        $opts = (object)Array(
-            'addresses' => $email
-          , 'message'   => $feedback
-          , 'email_type' => 'NewFeedbackSubmission' 
-        );
+        Package::load('S36ValueObjects');
 
-        $factory = new EmailFactory($opts);
+        $vo = new EmailData;
+
+        $vo->addresses = $addresses;
+        $vo->message = $feedback;
+        $vo->email_type = 'NewFeedbackSubmission';
+
+        $factory = new EmailFactory($vo);
         $email_page = $factory->execute();
 
+        return $email_page[1]->get_message();
+    },
+
+    'GET /tests/test_email_published' => function() {
+
+        $email = new Email;
+        $user = new User;
+        $addresses = $user->pull_user_emails_by_company_id(1);
+
+        $fb = new Feedback;
+        $feedback = $fb->pull_feedback_by_id(66);
+
+        Package::load('S36ValueObjects');
+
+        $vo = new EmailData;
+        //Published Feedback Notification
+        $vo->addresses = $addresses;
+        $vo->message = $feedback;
+        $vo->email_type = 'PublishedFeedbackNotification';
+        $vo->publisher_email = "mathew@36stories.com";
+       
+        $factory = new EmailFactory($vo);
+        $email_page = $factory->execute();
+         
         return $email_page[1]->get_message();
     },
 );

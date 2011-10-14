@@ -15,7 +15,7 @@ abstract class S36DataObject {
     }
 }
 
-//Value Objects for UserThemes
+//TODO: Transfer to S36ValueObjects Package Value Objects for UserThemes
 class EmbeddedWidget {
     public $site_id;
     public $company_id;

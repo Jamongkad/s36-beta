@@ -18,8 +18,15 @@ return array(
 	|
 	*/
     'GET /' => function() {
-        return View::of_layout()->partial('contents', 'home/login');
-    }, 
+        $auth = new S36Auth;
+        
+        if($auth->check()) { 
+            return View::of_layout()->partial('contents', 'dashboard/index');       
+        } else {
+            return View::of_layout()->partial('contents', 'home/login');      
+        }
+     
+    },
 
     'GET /logout' => function() {
         S36Auth::logout();

@@ -75,25 +75,46 @@ return array(
         );
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
-
+        /*
+        $company_id = Input::get('company_id');
         $emailObj = new Email;
 
         $user = new User;
-        $user_emails = $user->pull_user_emails_by_company_id(Input::get('company_id'));
+        $user_emails = $user->pull_user_emails_by_company_id($company_id);
  
         $feedback_data = $fb->pull_feedback_by_id($new_feedback_id);
 
-        $email_note = new NewFeedbackSubmission($user_emails, $feedback_data, "36Stories New Feedback Notification");
+        Package::load('S36ValueObjects');
 
-        $emailObj->process_email($email_note);       
+        $vo = new EmailData;
+        $vo->addresses = $addresses;
+        $vo->message = $feedback;
+        $vo->email_type = 'NewFeedbackSubmission';
+
+        $factory = new EmailFactory($vo);
+        $email_page = $factory->execute();
+        */
     }, 
 
     'GET /api/publish' => function() { 
+
+        $auth = new S36Auth;
         $encrypt = new Crypter;
-        $string = Input::get('params');
+        $string  = Input::get('params');
+        $feedback_id = Input::get('feedback_id');
+        $company_id  = Input::get('company_id');
 
         $decrypt = $encrypt->decrypt($string);
-        $params = (object)explode("|", $decrypt);
-        print_r($params);
+        $params = explode("|", $decrypt); 
+        $key = Config::get('application.key');
+
+        if($key && $login = $auth->login($params[0], $params[1])) {  
+
+            $feed_obj = Array('feedid' => $feedback_id);
+            $feedback_model = new Feedback;
+            $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
+            //After publishing feedback logout...$auth->logout();
+        }
+
     }
 );
