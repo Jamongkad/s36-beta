@@ -6,11 +6,18 @@ return array(
         $password_string = "p455w0rd";
         $password = crypt($password_string);
 
-        return DB::table("User", "master")->where('username', '=', 'karen')
-                                          ->update(Array(
-                                              'password' => $password
-                                            , 'encryptString' => $encrypt->encrypt("karen"."|".$password_string)
-                                          ));
+        //$name = 'dan';
+
+        $names = array("dan", "mathew", "budi", "ryan");
+
+        foreach($names as $name) { 
+            DB::table("User", "master")->where('username', '=', $name)
+                                       ->update(Array(
+                                          'password' => $password
+                                        , 'encryptString' => $encrypt->encrypt($name."|".$password_string)
+                                       ));
+        }
+
 
     },
 
