@@ -1,5 +1,7 @@
 <?php
 
+Package::load('S36ValueObjects');
+
 return array(
     'GET /tests/test_blob' => function() { 
         Package::load('EnhanceTestFramework');
@@ -14,8 +16,6 @@ return array(
 
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
-
-        Package::load('S36ValueObjects');
 
         $vo = new EmailData;
 
@@ -37,8 +37,6 @@ return array(
 
         $fb = new Feedback;
         $feedback = $fb->pull_feedback_by_id(66);
-
-        Package::load('S36ValueObjects');
 
         $vo = new EmailData;
         //Published Feedback Notification

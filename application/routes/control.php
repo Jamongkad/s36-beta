@@ -6,8 +6,8 @@ return array(
         $password_string = "p455w0rd";
         $password = crypt($password_string);
 
-        //$names = array("dan", "mathew", "budi", "ryan");
-        $names = array('nicholas');
+        $names = array("leica", "mathew", "budi", "ryan", "nicholas");
+        //$names = array('nicholas');
 
         foreach($names as $name) { 
             DB::table("User", "master")->where('username', '=', $name)

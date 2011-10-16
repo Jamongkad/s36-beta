@@ -1,5 +1,7 @@
 <?php
 
+Package::load('S36ValueObjects');
+
 return array(
     'GET /api/pull_feedback' => function() { 
 
@@ -113,7 +115,29 @@ return array(
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
             $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
+
+            $publisher = S36Auth::user();
+            
+            $email = new Email;
+            $user = new User;
+            $addresses = $user->pull_user_emails_by_company_id($company_id);
+
+            $fb = new Feedback;
+            $feedback = $fb->pull_feedback_by_id($feedback_id);
+
+            $vo = new EmailData;
+            //Published Feedback Notification
+            $vo->addresses = $addresses;
+            $vo->message = $feedback;
+            $vo->email_type = 'PublishedFeedbackNotification';
+            $vo->publisher_email = $publisher->email;
+           
+            $factory = new EmailFactory($vo);
+            $email_page = $factory->execute();
+             
+            //return $email_page[1]->get_message();
             //After publishing feedback logout...$auth->logout();
+            Helpers::show_data($email_page);
         }
 
     }
