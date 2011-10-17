@@ -18,6 +18,13 @@ class Determiner {
            $obj->db   = 'localhost';
            return $obj;
        }
+	   
+	   //For Windows Guys and dudes for virtual host problems
+	   if($this->http_host == 'localhost') {
+	       $obj->host = 'http://localhost/s36-beta/public';
+		   $obj->db   = 'localhost';
+		   return $obj;
+	   }
        
        //DEV
        if($this->http_host == 'dev.gearfish.com') {
