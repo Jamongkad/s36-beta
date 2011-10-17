@@ -1,6 +1,7 @@
 <?php
 require_once 'determiner.php';
 $determine = new Determiner;  
+
 return array(
 
 	/*
@@ -23,7 +24,6 @@ return array(
 	| cleaner URLs, set this option to an empty string.
 	|
 	*/
-
 	'index' => '',
 
 	/*

@@ -19,13 +19,11 @@ return array(
 	*/
     'GET /' => function() {
         $auth = new S36Auth;
-        
         if($auth->check()) { 
             return View::of_layout()->partial('contents', 'dashboard/index');       
         } else {
             return View::of_layout()->partial('contents', 'home/login');      
-        }
-     
+        }		
     },
 
     'GET /logout' => function() {
