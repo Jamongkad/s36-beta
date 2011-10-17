@@ -10,7 +10,6 @@ return array(
 
     'GET /tests/test_email_new' => function() {
 
-        $email = new Email;
         $user = new User;
         $addresses = $user->pull_user_emails_by_company_id(1);
 
@@ -31,7 +30,6 @@ return array(
 
     'GET /tests/test_email_published' => function() {
 
-        $email = new Email;
         $user = new User;
         $addresses = $user->pull_user_emails_by_company_id(1);
 

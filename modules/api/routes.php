@@ -109,24 +109,26 @@ return array(
         $decrypt = $encrypt->decrypt($string);
         $params = explode("|", $decrypt); 
         $key = Config::get('application.key');
-
-        if($key && $login = $auth->login($params[0], $params[1])) {  
-
+        
+        //decrypt string use user and password to authenticate into application. 
+        if($key != null && $login = $auth->login($params[0], $params[1])) {  
+            
+            //flick feedback publish this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
             $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
 
+            //since we're already logged in...
             $publisher = S36Auth::user();
             
-            $email = new Email;
             $user = new User;
             $addresses = $user->pull_user_emails_by_company_id($company_id);
 
             $fb = new Feedback;
             $feedback = $fb->pull_feedback_by_id($feedback_id);
-
-            $vo = new EmailData;
+            
             //Published Feedback Notification
+            $vo = new EmailData; 
             $vo->addresses = $addresses;
             $vo->message = $feedback;
             $vo->email_type = 'PublishedFeedbackNotification';
