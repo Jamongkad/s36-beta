@@ -100,7 +100,6 @@ return array(
 
     'GET /api/publish' => function() { 
 
-        $auth = new S36Auth;
         $encrypt = new Crypter;
         $string  = Input::get('params');
         $feedback_id = Input::get('feedback_id');
@@ -111,14 +110,14 @@ return array(
         $key = Config::get('application.key');
         
         //decrypt string use user and password to authenticate into application. 
-        if($key != null && $login = $auth->login($params[0], $params[1])) {  
+        if($key != null && S36Auth::login($params[0], $params[1])) {  
             
             //flick feedback publish this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
             $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
 
-            //since we're already logged in...
+            //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
             
             $user = new User;
@@ -136,10 +135,10 @@ return array(
            
             $factory = new EmailFactory($vo);
             $email_page = $factory->execute();
-             
-            //return $email_page[1]->get_message();
-            //After publishing feedback logout...$auth->logout();
+            //Send email logic goes here...  
+            //After publishing feedback logout...S36Auth::logout();
             Helpers::show_data($email_page);
+
         }
 
     }

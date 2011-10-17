@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 20, 2011 at 11:55 PM
+-- Generation Time: Oct 17, 2011 at 11:12 AM
 -- Server version: 5.1.54
 -- PHP Version: 5.3.5-1ubuntu7.2
 
@@ -38,8 +38,11 @@ CREATE TABLE IF NOT EXISTS `AuthAssignment` (
 --
 
 INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
-('categoryManager', '1', NULL, NULL),
-('feedbackManager', '1', NULL, NULL);
+('Admin', '1', NULL, NULL),
+('Admin', '3', NULL, NULL),
+('Admin', '5', NULL, NULL),
+('CoAdmin', '2', NULL, NULL),
+('CoAdmin', '8', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -63,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `AuthItem` (
 INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('addAdmin', 0, 'viewAdmin', NULL, 'N;'),
 ('addCategory', 0, 'addCategory', NULL, 'N;'),
+('Admin', 0, 'AccountOwner', NULL, NULL),
 ('adminManager', 2, '', NULL, 'N;'),
 ('archiveFeedback', 0, 'archiveFeedback', NULL, 'N;'),
 ('baseEditAdmin', 0, 'viewAdmin', NULL, 'N;'),
@@ -71,6 +75,7 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('categoryManager', 2, '', NULL, 'N;'),
 ('changePriorityFeedback', 0, 'changePriorityFeedback', NULL, 'N;'),
 ('changeStatusFeedback', 0, 'changeStatusFeedback', NULL, 'N;'),
+('CoAdmin', 0, 'AssistantAdmin', NULL, NULL),
 ('deleteAdmin', 0, 'viewAdmin', NULL, 'N;'),
 ('deleteCategory', 0, 'deleteCategory', NULL, 'N;'),
 ('deleteFeedback', 0, 'deleteFeedback', NULL, 'N;'),
@@ -691,7 +696,7 @@ CREATE TABLE IF NOT EXISTS `Contact` (
   PRIMARY KEY (`contactId`),
   KEY `Contact_Country_countryId` (`countryId`),
   KEY `Contact_Site_siteId` (`siteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=105 ;
 
 --
 -- Dumping data for table `Contact`
@@ -796,7 +801,9 @@ INSERT INTO `Contact` (`contactId`, `siteId`, `firstName`, `lastName`, `email`, 
 (99, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'CTO', 'Manila', 'Zenith Labs', 'http://www.mathew.com', 'penguin.png'),
 (100, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'CTO', 'Manila', 'Zenith Labs', 'http://www.mathew.com', 'penguin.png'),
 (101, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'CTO', 'Manila', 'Zenith Labs', 'http://www.mathew.com', 'penguin.png'),
-(102, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'CTO', 'Manila', 'Zenith Labs', 'http://www.mathew.com', 'penguin.png');
+(102, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'CTO', 'Manila', 'Zenith Labs', 'http://www.mathew.com', 'penguin.png'),
+(103, 5, 'Mathew', 'Wong', 'wrm932@gmail.com', 702, 'Dev', 'Singapore', 'CoolBeans', 'wrm932@gmail.com', '092211042029-cropped.jpg'),
+(104, 1, 'Mathew', 'Wong', 'wrm932@gmail.com', 608, 'DEV', 'Manila', 'DEV', 'wrm932@gmail.com', '092711083526-cropped.jpg');
 
 -- --------------------------------------------------------
 
@@ -1335,6 +1342,7 @@ INSERT INTO `Effects` (`effectsId`, `effectsName`, `jqueryName`) VALUES
 
 CREATE TABLE IF NOT EXISTS `EmbeddedBlockOptions` (
   `embeddedBlockId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
   `widgetId` int(11) DEFAULT '3',
   `type` varchar(20) NOT NULL,
   `units` int(10) NOT NULL,
@@ -1343,15 +1351,19 @@ CREATE TABLE IF NOT EXISTS `EmbeddedBlockOptions` (
   `effectId` int(10) NOT NULL,
   PRIMARY KEY (`embeddedBlockId`),
   KEY `EmbeddedBlockOptions_effect_id` (`effectId`),
-  KEY `EmbeddedBlockOptions_widget_id` (`widgetId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `EmbeddedBlockOptions_widget_id` (`widgetId`),
+  KEY `EmbeddedBlockOptions_UserThemes_theme_id` (`userThemeId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `EmbeddedBlockOptions`
 --
 
-INSERT INTO `EmbeddedBlockOptions` (`embeddedBlockId`, `widgetId`, `type`, `units`, `height`, `width`, `effectId`) VALUES
-(2, 3, 'embed_block_y', 24, 100, 100, 1);
+INSERT INTO `EmbeddedBlockOptions` (`embeddedBlockId`, `userThemeId`, `widgetId`, `type`, `units`, `height`, `width`, `effectId`) VALUES
+(9, 3, 3, 'embed_block_x', 2, 300, 600, 1),
+(10, 4, 3, 'embed_block_y', 4, 500, 250, 2),
+(11, 5, 3, 'embed_block_y', 3, 500, 250, 4),
+(12, 7, 3, 'embed_block_y', 4, 300, 500, 3);
 
 -- --------------------------------------------------------
 
@@ -1370,8 +1382,9 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
   `text` varchar(1500) DEFAULT NULL,
   `dtAdded` datetime NOT NULL,
   `priority` tinyint(2) unsigned NOT NULL DEFAULT '99',
-  `license` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `permission` tinyint(1) NOT NULL,
   `textLength` smallint(4) unsigned NOT NULL DEFAULT '0',
+  `indLock` tinyint(1) NOT NULL DEFAULT '1',
   `isFeatured` tinyint(1) NOT NULL,
   `isFlagged` tinyint(1) DEFAULT '0',
   `isPublished` tinyint(1) DEFAULT '0',
@@ -1392,67 +1405,69 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
   KEY `Feedback_Category_categoryId` (`categoryId`),
   KEY `Feedback_Site_siteId` (`siteId`),
   KEY `text` (`text`(255))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='utf8_general_ci' AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='utf8_general_ci' AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `Feedback`
 --
 
-INSERT INTO `Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `formId`, `status`, `rating`, `text`, `dtAdded`, `priority`, `license`, `textLength`, `isFeatured`, `isFlagged`, `isPublished`, `isArchived`, `isSticked`, `isDeleted`, `hasProfanity`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
-(1, 1, 1, 1, 1, 'inprogress', 5, 'sodkoskgos odkgo skdogk skdogksod giw egureo gjerip gpejrgj ipergp kerogk[ kw[ekgo kweiogkj iwekgi jigji sdgok sodkgo skdogks odkgosdk gosjdigjiwje wepkg dijg weirgj ergoijerg erpiojg eprjg oerog rgjr ijieji eij gjdgj djgdklj dgsd ;gs;dg sdijgspdgjspdgjsdipgjspdgjisodpfjivjsdv ckdsmcosdk', '2011-02-07 12:35:02', 20, 2, 253, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(3, 1, 3, 1, 1, 'new', 4, 'I like the Backlight and the profile management. The "keys" are soft and I like its revestiment', '2011-01-31 18:12:27', 20, 2, 95, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(4, 1, 4, 1, 1, 'new', 5, 'The keyboard is cool for hacking terminators :)', '2011-02-15 18:12:27', 60, 3, 47, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(5, 1, 21, 1, 1, 'new', 5, 'qwrerewrwe', '2011-04-22 19:22:48', 0, 2, 10, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(6, 1, 23, 1, 1, 'new', 5, 'fggdfgdfg', '2011-04-22 20:20:49', 0, 1, 9, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(9, 1, 27, 1, 1, 'new', 4, 'review', '2011-04-25 15:26:14', 0, 3, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(10, 1, 28, 1, 1, 'new', 4, 'another review', '2011-04-25 15:29:01', 0, 2, 14, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(11, 1, 34, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:14:26', 0, 1, 25, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(12, 1, 35, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:18:45', 0, 1, 25, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(13, 1, 36, 1, 1, 'new', 5, 'gfdgdfgfd', '2011-04-27 12:30:57', 0, 1, 9, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(14, 1, 37, 1, 1, 'new', 5, 'qwerty', '2011-04-27 12:32:11', 0, 1, 6, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(15, 1, 38, 1, 1, 'new', 5, 'qwe', '2011-04-27 13:46:55', 0, 2, 3, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(16, 1, 43, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf', '2011-04-27 16:58:12', 0, 3, 15, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(17, 1, 44, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf\r\n\r\nfdsfsdfsdf', '2011-04-27 16:58:40', 0, 3, 29, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(18, 1, 52, 1, 1, 'new', 5, 'fdgdfgdfg', '2011-04-27 18:44:32', 0, 1, 9, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(19, 1, 53, 1, 1, 'new', 5, 'mega new', '2011-04-27 18:59:35', 0, 3, 8, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(20, 1, 54, 1, 1, 'new', 5, 'qwewqeqw\r\newq\r\neq\r\ne\r\nwqeqwewqeqwe', '2011-04-28 17:18:26', 20, 2, 34, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(21, 1, 55, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:19:38', 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(22, 1, 56, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:21:32', 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(23, 1, 57, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs', '2011-04-28 23:25:38', 0, 3, 14, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(24, 1, 58, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs fuck this shit', '2011-04-28 23:26:31', 0, 3, 14, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
-(25, 1, 59, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:15', 0, 1, 22, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(26, 1, 60, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:23', 0, 1, 22, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(27, 1, 61, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:29:08', 0, 1, 7, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(28, 1, 62, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:30:39', 0, 1, 7, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(29, 1, 76, 1, 1, 'new', 5, NULL, '2011-04-29 18:24:57', 0, 1, 37, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(30, 1, 77, 1, 1, 'new', 5, 'cock suckers', '2011-04-29 18:29:16', 0, 1, 37, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
-(31, 1, 82, 1, 1, 'new', 5, 'niggers', '2011-04-29 18:41:30', 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
-(32, 1, 83, 1, 1, 'new', 5, '', '2011-04-29 19:25:41', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(33, 1, 84, 1, 1, 'new', 5, 'sfdfsdfdfsdfdsfdsfsdfsd\nfsdfsdfsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '2011-04-29 19:31:01', 0, 1, 193, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(34, 1, 85, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:37', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(35, 1, 86, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:39', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(36, 1, 87, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:41', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(37, 1, 88, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:42', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(38, 1, 89, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:43', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(39, 2, 90, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:44', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(40, 2, 91, 1, 1, 'new', 5, 'gdfgdfg', '2011-04-29 19:38:06', 0, 1, 7, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(41, 2, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:17', 0, 1, 25, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(42, 2, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:28', 0, 1, 25, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1),
-(44, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:23', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(48, 1, 93, 2, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 3, 20, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(49, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(50, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 3, 20, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(51, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 3, 20, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(52, 1, 93, 3, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 3, 20, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(53, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(54, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(55, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(56, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(57, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 3, 20, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
-(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 3, 20, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(62, 1, 94, 1, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 0, 1, 6, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
-(64, 1, 1, 1, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 100, 1, 9, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1);
+INSERT INTO `Feedback` (`feedbackId`, `siteId`, `contactId`, `categoryId`, `formId`, `status`, `rating`, `text`, `dtAdded`, `priority`, `permission`, `textLength`, `indLock`, `isFeatured`, `isFlagged`, `isPublished`, `isArchived`, `isSticked`, `isDeleted`, `hasProfanity`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
+(1, 1, 1, 1, 1, 'inprogress', 5, 'sodkoskgos odkgo skdogk skdogksod giw egureo gjerip gpejrgj ipergp kerogk[ kw[ekgo kweiogkj iwekgi jigji sdgok sodkgo skdogks odkgosdk gosjdigjiwje wepkg dijg weirgj ergoijerg erpiojg eprjg oerog rgjr ijieji eij gjdgj djgdklj dgsd ;gs;dg sdijgspdgjspdgjsdipgjspdgjisodpfjivjsdv ckdsmcosdk', '2011-02-07 12:35:02', 20, 0, 253, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(3, 1, 3, 1, 1, 'new', 4, 'I like the Backlight and the profile management. The "keys" are soft and I like its revestiment', '2011-01-31 18:12:27', 20, 0, 95, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(4, 1, 4, 1, 1, 'new', 5, 'The keyboard is cool for hacking terminators :)', '2011-02-15 18:12:27', 60, 0, 47, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(5, 1, 21, 1, 1, 'new', 5, 'qwrerewrwe', '2011-04-22 19:22:48', 0, 0, 10, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(6, 1, 23, 1, 1, 'new', 5, 'fggdfgdfg', '2011-04-22 20:20:49', 0, 0, 9, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(9, 1, 27, 1, 1, 'new', 4, 'review', '2011-04-25 15:26:14', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(10, 1, 28, 1, 1, 'new', 4, 'another review', '2011-04-25 15:29:01', 0, 0, 14, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(11, 1, 34, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:14:26', 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(12, 1, 35, 1, 1, 'new', 5, 'werwerwe re wer werewrwer', '2011-04-27 12:18:45', 0, 0, 25, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(13, 1, 36, 1, 1, 'new', 5, 'gfdgdfgfd', '2011-04-27 12:30:57', 0, 0, 9, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(14, 1, 37, 1, 1, 'new', 5, 'qwerty', '2011-04-27 12:32:11', 0, 0, 6, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(15, 1, 38, 1, 1, 'new', 5, 'qwe', '2011-04-27 13:46:55', 0, 0, 3, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(16, 1, 43, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf', '2011-04-27 16:58:12', 0, 0, 15, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(17, 1, 44, 1, 1, 'new', 5, 'dfvdsfdsfdsvsdf\r\n\r\nfdsfsdfsdf', '2011-04-27 16:58:40', 0, 0, 29, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(18, 1, 52, 1, 1, 'new', 5, 'fdgdfgdfg', '2011-04-27 18:44:32', 0, 0, 9, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(19, 1, 53, 1, 1, 'new', 5, 'mega new', '2011-04-27 18:59:35', 0, 0, 8, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(20, 1, 54, 1, 1, 'new', 5, 'qwewqeqw\r\newq\r\neq\r\ne\r\nwqeqwewqeqwe', '2011-04-28 17:18:26', 20, 0, 34, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(21, 1, 55, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:19:38', 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(22, 1, 56, 1, 1, 'new', 5, 'qwe', '2011-04-28 23:21:32', 0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(23, 1, 57, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs', '2011-04-28 23:25:38', 0, 0, 14, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(24, 1, 58, 1, 1, 'new', 5, 'fdsfdsfdsfsdfs fuck this shit', '2011-04-28 23:26:31', 0, 0, 14, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(25, 1, 59, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:15', 0, 0, 22, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(26, 1, 60, 1, 1, 'new', 5, 'fdgfgfdgdfg\r\ngdfgdfgfd', '2011-04-28 23:27:23', 0, 0, 22, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(27, 1, 61, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:29:08', 0, 0, 7, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(28, 1, 62, 1, 1, 'new', 5, 'wqewqeq', '2011-04-28 23:30:39', 0, 0, 7, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(29, 1, 76, 1, 1, 'new', 5, NULL, '2011-04-29 18:24:57', 0, 0, 37, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(30, 1, 77, 1, 1, 'new', 5, 'cock suckers', '2011-04-29 18:29:16', 0, 0, 37, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(31, 1, 82, 1, 1, 'new', 5, 'niggers', '2011-04-29 18:41:30', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1),
+(32, 1, 83, 1, 1, 'new', 5, '', '2011-04-29 19:25:41', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(33, 1, 84, 1, 1, 'new', 5, 'sfdfsdfdfsdfdsfdsfsdfsd\nfsdfsdfsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '2011-04-29 19:31:01', 0, 0, 193, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(34, 1, 85, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:37', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(35, 1, 86, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:39', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(36, 1, 87, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:41', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(37, 1, 88, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:42', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(38, 1, 89, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:43', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(39, 2, 90, 1, 1, 'new', 5, 'qwerty', '2011-04-29 19:31:44', 0, 0, 6, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(40, 2, 91, 1, 1, 'new', 5, 'gdfgdfg', '2011-04-29 19:38:06', 0, 0, 7, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(41, 2, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:17', 0, 0, 25, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(42, 2, 92, 1, 1, 'new', 5, 'qwerer\nrwe\nrw\nerwerwerwer', '2011-04-29 19:52:28', 0, 0, 25, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(44, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:23', 0, 0, 20, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(48, 1, 93, 2, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:43', 0, 0, 20, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(49, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 20, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(50, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:44', 0, 0, 20, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(51, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 20, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(52, 1, 93, 3, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 20, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(53, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 20, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(54, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:45', 0, 0, 20, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(55, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 20, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(56, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 20, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(57, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:13:46', 0, 0, 20, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1),
+(59, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:16:16', 0, 0, 20, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(60, 1, 93, 1, 1, 'new', 3, 'gfgdgdfg\ndfgdfgdfgfd', '2011-04-29 20:17:07', 0, 0, 20, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(62, 1, 94, 1, 1, 'closed', 5, 'qwerty', '2011-06-07 15:35:40', 0, 0, 6, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(64, 1, 1, 1, 1, 'closed', 1, 'BAD!!!!!!', '2011-06-17 15:04:31', 100, 0, 9, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(65, 5, 103, 1, 1, 'new', 4, 'Mathew', '2011-09-22 04:20:47', 99, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1),
+(66, 1, 104, 1, 1, 'new', 5, 'asdasd', '2011-09-27 08:35:36', 99, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1474,14 +1489,16 @@ CREATE TABLE IF NOT EXISTS `FeedbackBlock` (
   `displaySbmtDate` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`feedbackblockId`),
   KEY `siteId` (`siteId`,`themeId`,`formId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `FeedbackBlock`
 --
 
 INSERT INTO `FeedbackBlock` (`feedbackblockId`, `siteId`, `themeId`, `formId`, `displayName`, `displayImg`, `displayCompany`, `displayPosition`, `displayURL`, `displayCountry`, `displaySbmtDate`) VALUES
-(1, 1, 3, 1, 0, 1, 0, 1, 0, 0, 1);
+(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(2, 5, 1, 1, 0, 1, 1, 0, 0, 1, 0),
+(3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1503,7 +1520,7 @@ CREATE TABLE IF NOT EXISTS `Form` (
   KEY `Form_Scale_scaleId` (`scaleId`),
   KEY `Form_Site_siteId` (`siteId`),
   KEY `Form_Category_defaultCategoryId` (`defaultCategoryId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `Form`
@@ -1514,7 +1531,8 @@ INSERT INTO `Form` (`formId`, `siteId`, `themeId`, `title`, `help`, `scaleId`, `
 (2, 1, 1, 'Give your feedback for Takeforce', 'Please provide your feedback', 2, '{"firstName": "true","lastName": "true","position": "false","location": "true","company": "false","date": "true","picture": "true"}', 1),
 (3, 2, 1, 'Give your feedback for Takeforce', 'Please provide your feedback', 2, '{"firstName": "true","lastName": "true","position": "false","location": "true","company": "false","date": "true","picture": "true"}', 1),
 (4, 2, 1, 'Give your feedback for Takeforce', 'Please provide your feedback', 2, '{"firstName": "true","lastName": "true","position": "false","location": "true","company": "false","date": "true","picture": "true"}', 1),
-(5, 2, 1, 'Give your feedback for Takeforce', 'Please provide your feedback', 2, '{"firstName": "true","lastName": "true","position": "false","location": "true","company": "false","date": "true","picture": "true"}', 1);
+(5, 2, 1, 'Give your feedback for Takeforce', 'Please provide your feedback', 2, '{"firstName": "true","lastName": "true","position": "false","location": "true","company": "false","date": "true","picture": "true"}', 1),
+(7, 5, 1, '', '', 2, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -1524,10 +1542,12 @@ INSERT INTO `Form` (`formId`, `siteId`, `themeId`, `title`, `help`, `scaleId`, `
 
 CREATE TABLE IF NOT EXISTS `FullPageOptions` (
   `fullPageId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
   `widgetId` int(11) DEFAULT '1',
   `units` int(10) NOT NULL,
   PRIMARY KEY (`fullPageId`),
-  KEY `FullPageOptions_widget_id` (`widgetId`)
+  KEY `FullPageOptions_widget_id` (`widgetId`),
+  KEY `FullPageOptions_UserThemes_theme_id` (`userThemeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -1566,17 +1586,21 @@ INSERT INTO `IM` (`imId`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `ModalWindowOptions` (
   `modalId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
   `widgetId` int(11) DEFAULT '2',
   `effectId` int(10) NOT NULL,
   PRIMARY KEY (`modalId`),
   KEY `ModalWindowOption_effect_id` (`effectId`),
-  KEY `ModalWindowOptions_widget_id` (`widgetId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `ModalWindowOptions_widget_id` (`widgetId`),
+  KEY `ModalWindowOptions_UserThemes_theme_id` (`userThemeId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `ModalWindowOptions`
 --
 
+INSERT INTO `ModalWindowOptions` (`modalId`, `userThemeId`, `widgetId`, `effectId`) VALUES
+(1, 6, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -1646,8 +1670,11 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `last_activity`, `data`) VALUES
-('sDFdsZhEjdIVESUjyaA14NMRbpb3Xhnyv9nglHgk', 1316533081, 'a:2:{s:10:"csrf_token";s:16:"hq3ILLnsDSxHPykO";s:22:":old:laravel_old_input";a:0:{}}'),
-('awBK30UtkVkfqLNqBlWjeQhNej7xRkYLGkB3Rbow', 1316534113, 'a:2:{s:10:"csrf_token";s:16:"Q99rRmVAlOCzLgsn";s:22:":old:laravel_old_input";a:0:{}}');
+('0QflVZsRj9puUbPTgNwdAvis30cwe62DEsOUuBsi', 1318764731, 'a:2:{s:10:"csrf_token";s:16:"QXpjinp7lha8qoOg";s:22:":old:laravel_old_input";a:0:{}}'),
+('2TZWRRBszw8bD5oAi2K6XEcByrLHHPQ6Azj373di', 1318765500, 'a:2:{s:10:"csrf_token";s:16:"qSowChGFgsMiGwB5";s:22:":old:laravel_old_input";a:0:{}}'),
+('ahaV0J2xjSCE6DVcK9W7IXpmKXsczXa8y3fo146H', 1318765829, 'a:2:{s:10:"csrf_token";s:16:"bFyjAnfmEP5yDhbd";s:22:":old:laravel_old_input";a:0:{}}'),
+('27LyAeCiAvzHLdYqAqxToZdK3oGvFtKyhUk5HQS9', 1318810311, 'a:3:{s:10:"csrf_token";s:16:"A1M1r9ksbYAtBqwp";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}'),
+('E6WA5vYEkfcdDto6aKMQLix7CnV72JuyMi6U9mHJ', 1318820415, 'a:3:{s:10:"csrf_token";s:16:"wvtwAzI1iDcOJHQa";s:11:"s36_user_id";s:1:"1";s:22:":old:laravel_old_input";a:0:{}}');
 
 -- --------------------------------------------------------
 
@@ -1709,7 +1736,8 @@ CREATE TABLE IF NOT EXISTS `Theme` (
   `companyId` int(10) unsigned DEFAULT NULL COMMENT 'themes may be custom, company-specific',
   `name` varchar(45) NOT NULL,
   `defaultScaleId` smallint(5) unsigned NOT NULL,
-  `interfaceSettings` blob,
+  `embeddedCSS` blob,
+  `modalCSS` blob,
   `blockPageSize` int(11) DEFAULT NULL,
   `formPageSize` int(11) DEFAULT NULL,
   PRIMARY KEY (`themeId`),
@@ -1721,10 +1749,10 @@ CREATE TABLE IF NOT EXISTS `Theme` (
 -- Dumping data for table `Theme`
 --
 
-INSERT INTO `Theme` (`themeId`, `companyId`, `name`, `defaultScaleId`, `interfaceSettings`, `blockPageSize`, `formPageSize`) VALUES
-(1, NULL, 'Light', 1, 0x7b227363616c65436667223a7b227363616c65496e7456616c7565223a22427574746f6e222c2264656c696d4c6162656c223a7b226c6566744f6666736574223a32307d2c22626c6f636b53697a65223a3132307d7d, NULL, NULL),
-(2, NULL, 'Dark', 2, NULL, NULL, NULL),
-(3, 1, 'Razer-Dark', 2, 0x406368617273657420227574662d38223b0a2f2a2043535320446f63756d656e74202a2f0a0a237333365f726f6f747b646973706c61793a626c6f636b3b706f736974696f6e3a72656c61746976653b70616464696e673a3230707820333070783b77696474683a39373070783b6d617267696e3a30206175746f3b7d0a237333365f726f6f74206469767b706f736974696f6e3a72656c61746976653b7d0a237333365f726f6f7420756c2c0a237333365f726f6f74206f6c7b6c6973742d7374796c653a6e6f6e653b6d617267696e3a303b70616464696e673a303b7d0a237333365f726f6f74206c692c0a237333365f726f6f742068312c0a237333365f726f6f742068322c0a237333365f726f6f742068332c0a237333365f726f6f742068342c0a237333365f726f6f742068352c0a237333365f726f6f742068362c0a237333365f726f6f7420707b0a0970616464696e673a303b6d617267696e3a303b0a7d0a0a237333365f726f6f7420237333365f666565646261636b737b70616464696e673a3230707820313070783b7d0a237333365f726f6f74202e7333365f616c6c5f666565646261636b737b646973706c61793a626c6f636b3b77696474683a313030253b7d0a237333365f726f6f74202e666565646261636b5f7365747b77696474683a313030253b646973706c61793a626c6f636b3b7d0a237333365f726f6f74202e7333365f7469746c657b636f6c6f723a233231346537373b666f6e742d73697a653a323370783b7d0a237333365f726f6f74202e6176617461727b646973706c61793a626c6f636b3b70616464696e673a35707820307078203570783b7d0a237333365f726f6f74202e666565646261636b5f746578747b6261636b67726f756e643a233331356438363b646973706c61793a626c6f636b3b6d617267696e3a313070783b70616464696e673a313570783b636f6c6f723a234646463b666f6e742d73697a653a313470783b6c696e652d6865696768743a313870783b2d7765626b69742d626f726465722d7261646975733a3670783b2d6d6f7a2d626f726465722d7261646975733a3670783b626f726465722d7261646975733a3570783b7d0a237333365f726f6f74202e666565646261636b5f626c6f636b7b706f736974696f6e3a72656c61746976653b7d0a237333365f726f6f74202e627562626c655f7461696c7b6261636b67726f756e643a75726c282e2e2f696d616765732f627562626c652d7461696c2e706e67293b77696474683a313770783b6865696768743a313770783b706f736974696f6e3a6162736f6c7574653b6c6566743a333070783b746f703a2d313770783b7d0a237333365f726f6f74202e666565646261636b5f696e666f7b70616464696e673a32707820313070783b7d0a237333365f726f6f74202e666565646261636b5f6e616d657b636f6c6f723a233164396663663b666f6e742d73697a653a313870783b7d0a237333365f726f6f74202e666565646261636b5f64657461696c737b636f6c6f723a236230623062303b666f6e742d73697a653a313270783b7d0a237333365f726f6f74202e666565646261636b5f646174657b636f6c6f723a236230623062303b666f6e742d73697a653a313070783b666f6e742d7765696768743a6e6f726d616c3b7d0a0a2f2a206d69736320636c6173736573202a2f0a237333365f726f6f74202e6d6574612d646174617b666f6e742d73697a653a313270783b636f6c6f723a233663376138353b666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b7d0a237333365f726f6f74202e6461736865647b626f726465722d746f703a3170782023633763376337206461736865643b646973706c61793a626c6f636b3b6d617267696e3a31307078203070783b7d0a237333365f726f6f74202e616c69676e2d72696768747b746578742d616c69676e3a72696768743b7d0a237333365f726f6f74202e616c69676e2d63656e7465727b746578742d616c69676e3a63656e7465723b7d0a237333365f726f6f74202e666565646261636b5f62746e7b6261636b67726f756e643a236463646364633b636f6c6f723a236163616361633b666f6e742d7765696768743a626f6c643b746578742d736861646f773a2365386538653820307078203170783b626f726465723a6e6f6e653b637572736f723a706f696e7465723b70616464696e673a36707820313070783b2d7765626b69742d626f726465722d7261646975733a3670783b2d6d6f7a2d626f726465722d7261646975733a3670783b626f726465722d7261646975733a3570783b7d0a237333365f726f6f74202e666565646261636b5f62746e3a686f7665727b6261636b67726f756e643a234545453b7d0a237333365f726f6f7420237333365f70616765727b666f6e742d66616d696c793a417269616c3b666f6e742d73697a653a313270783b70616464696e673a30707820313070783b7d0a237333365f726f6f7420237333365f706167657220617b70616464696e673a3270783b636f6c6f723a236235633063393b746578742d6465636f726174696f6e3a6e6f6e653b7d0a237333365f726f6f7420237333365f706167657220612e616374697665536c6964657b666f6e742d7765696768743a626f6c643b746578742d6465636f726174696f6e3a756e6465726c696e653b7d0a2f2a206772696473206672616d65776f726b202a2f0a2e6772696473207b206f766572666c6f773a2068696464656e3b207d0a0a2e67316f66312c0a2e67316f66322c202e67316f66332c202e67316f66342c202e67316f66352c202e67316f66362c0a2e67326f66332c202e67326f66352c202e67326f66362c0a2e67336f66342c202e67336f66352c202e67336f66362c0a2e67346f66352c202e67346f66362c090a2e67356f6636097b20666c6f61743a206c6566743b207d0a0a2e67316f6631097b2077696474683a313030253b207d0a0a2e67316f6632097b2077696474683a203530253b207d0a2e67316f6633097b2077696474683a2033332e333333333333333333253b207d0a2e67316f6634097b2077696474683a203235253b207d0a2e67316f6635097b2077696474683a203230253b207d0a2e67316f663620207b2077696474683a2031362e363636363636363636253b207d0a0a2e67326f6633097b2077696474683a2036362e363636363636363636253b207d0a2e67326f6635097b2077696474683a203430253b207d0a2e67326f663620207b2077696474683a2033332e333333333333333333253b207d0a0a2e67336f6634097b2077696474683a203735253b207d0a2e67336f6635097b2077696474683a203630253b207d0a2e67336f663620207b2077696474683a203530253b7d0a0a2e67346f6635097b2077696474683a203830253b207d0a2e67346f663620207b2077696474683a2036362e363636363636363636253b207d0a0a2e67356f663620207b2077696474683a2038332e333333333333333333253b7d, NULL, NULL);
+INSERT INTO `Theme` (`themeId`, `companyId`, `name`, `defaultScaleId`, `embeddedCSS`, `modalCSS`, `blockPageSize`, `formPageSize`) VALUES
+(1, NULL, 'Light', 1, 0x0a096469767b706f736974696f6e3a72656c61746976653b646973706c61793a626c6f636b3b7d0a09626f64797b6d617267696e3a303b70616464696e673a303b77696474683a313030253b6865696768743a313030253b666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b7d0a092e767b646973706c61793a626c6f636b3b6261636b67726f756e643a234646463b70616464696e673a313070783b7d0a092e7469746c657b666f6e742d73697a653a313670783b746578742d616c69676e3a63656e7465723b70616464696e673a31307078203070783b7d0a092e666565646261636b2c2e666565646261636b737b646973706c61793a626c6f636b7d0a092e666565646261636b2d626c6f636b7b0a090909646973706c61793a626c6f636b3b77696474683a313030253b0a09090970616464696e673a307078203070783b0a09097d0a092e682d666565646261636b7b70616464696e673a31307078203070783b7d0a092e762d666565646261636b7b626f726465722d746f703a31707820736f6c696420236538653865383b6d617267696e3a30707820313070783b70616464696e673a31307078203070783b646973706c61793a626c6f636b7d0a092e762d6176617461727b6d617267696e3a307078203070783b70616464696e672d746f703a3570783b746578742d616c69676e3a72696768743b7d0a092e696e666f7b666f6e742d73697a653a313170783b636f6c6f723a233732373737613b6261636b67726f756e643a234646463b7d0a092e762d666565646261636b3a61667465722c0a092e6e616d653a61667465722c0a092e682d666565646261636b3a61667465727b200a090920636f6e74656e743a20272e273b20200a090920646973706c61793a20626c6f636b3b200a0909206865696768743a20303b200a090920636c6561723a20626f74683b0a0909207669736962696c6974793a2068696464656e3b200a09097d0a092e6e616d657b646973706c61793a626c6f636b3b666f6e742d73697a653a313270783b636f6c6f723a233030303b666f6e742d7765696768743a626f6c643b70616464696e673a307078203070782033707820313070783b7d0a092e6e616d65202e696e6e65726e616d657b666c6f61743a6c6566743b7d0a092e706f736974696f6e7b646973706c61793a626c6f636b3b666f6e742d73697a653a313070783b666f6e742d7765696768743a626f6c643b70616464696e673a307078203070782032707820313070783b7d0a092e646174657b636f6c6f723a233964613461383b666f6e742d73697a653a313070783b70616464696e673a307078203070782031707820313070783b7d090a092e746578747b666f6e742d73697a653a313170783b70616464696e673a307078203070782031707820313070783b6f766572666c6f773a68696464656e3b776f72642d777261703a20627265616b2d776f72643b7d0a092e7465787420612e6d6f72657b746578742d6465636f726174696f6e3a756e6465726c696e653b636f6c6f723a233036393b7d0a092e706167696e6174696f6e7b746578742d616c69676e3a63656e7465723b666f6e742d73697a653a313070783b70616464696e672d746f703a313070783b7d0a092e706167696e6174696f6e20617b746578742d6465636f726174696f6e3a6e6f6e653b70616464696e673a327078203170783b636f6c6f723a236234623462343b7d0a092e706167696e6174696f6e20612e616374697665536c6964657b636f6c6f723a233732373737613b7d0a0923666565646261636b2d636f6e7461696e65727b706f736974696f6e3a6162736f6c7574653b77696474683a313030253b646973706c61793a626c6f636b3b7d0a0923666565646261636b2d736f6c6f7b646973706c61793a626c6f636b3b666f6e742d73697a653a313170783b706f736974696f6e3a6162736f6c7574653b77696474683a313030253b7d0a0923666565646261636b2d736f6c6f202e746578747b70616464696e672d72696768743a333070783b7d0a0923666565646261636b2d736f6c6f20617b746578742d6465636f726174696f6e3a756e6465726c696e653b636f6c6f723a233036393b7d0a0a, 0x0a202020202020646976207b0a202020202020202020202020706f736974696f6e3a72656c61746976653b0a202020202020202020202020646973706c61793a626c6f636b3b0a20202020202020207d0a2020202020202020626f6479207b0a2020202020202020202020206d617267696e3a303b0a20202020202020202020202070616464696e673a303b0a20202020202020202020202077696474683a313030253b0a2020202020202020202020206865696768743a313030253b0a202020202020202020202020666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b0a202020202020202020202020666f6e742d73697a653a313270783b0a202020202020202020202020636f6c6f723a233535353b0a20202020202020207d0a202020202020202023706f707570207b0a20202020202020202020202077696474683a37313070783b0a2020202020202020202020206865696768743a33373070783b0a20202020202020202020202070616464696e673a3135707820323070783b0a20202020202020207d202f2a206f7269672073697a652069732037353020782034303020706978656c73202a2f0a202020202020202023706f707570202e706f7075702d686561646572207b0a2020202020202020202020206d617267696e3a307078203070783b0a20202020202020202020202070616464696e673a307078203230707820313570783b0a202020202020202020202020626f726465722d626f74746f6d3a31707820736f6c696420236530653065303b0a202020202020202020202020666f6e742d73697a653a313670783b0a202020202020202020202020666f6e742d7765696768743a626f6c643b0a20202020202020207d0a202020202020202023706f7075702070207b0a20202020202020202020202070616464696e672d746f703a3070783b0a2020202020202020202020206d617267696e2d746f703a3070783b0a20202020202020207d0a202020202020202023706f707570202e706f7075702d66756c6c76696577207b0a20202020202020202020202070616464696e673a323070783b0a202020202020202020202020626f726465722d626f74746f6d3a31707820736f6c696420236530653065303b0a20202020202020207d0a202020202020202023706f707570202e706f7075702d7468756d6273207b0a20202020202020202020202070616464696e673a323070783b0a20202020202020207d0a202020202020202023706f707570202e66756c6c2d617661746172207b0a20202020202020202020202077696474683a31353070783b0a2020202020202020202020206865696768743a31353070783b0a2020202020202020202020206d617267696e2d72696768743a323070783b0a202020202020202020202020666c6f61743a6c6566743b0a20202020202020207d0a202020202020202023706f707570202e736c696465733a61667465722c202e666565646261636b2d6e616d653a61667465722c202e762d666565646261636b3a61667465722c202e6e616d653a61667465722c202e682d666565646261636b3a61667465722c202e666565646261636b2d626c6f636b3a6166746572207b0a202020202020202020202020636f6e74656e743a20272e273b0a202020202020202020202020646973706c61793a20626c6f636b3b0a2020202020202020202020206865696768743a20303b0a202020202020202020202020636c6561723a20626f74683b0a2020202020202020202020207669736962696c6974793a2068696464656e3b0a20202020202020207d0a202020202020202023706f707570202e66756c6c2d666565646261636b2d696e666f207b0a2020202020202020202020206d617267696e2d746f703a313070783b0a20202020202020207d0a202020202020202023706f707570202e66756c6c2d666565646261636b207b0a20202020202020202020202077696474683a35303070783b0a202020202020202020202020666c6f61743a6c6566743b0a20202020202020207d0a202020202020202023706f707570202e66756c6c2d666565646261636b2d32207b0a20202020202020202020202077696474683a36393070783b0a202020202020202020202020666c6f61743a6c6566743b0a20202020202020207d0a202020202020202023706f707570202e66756c6c2d666565646261636b2d74657874207b0a2020202020202020202020206d61782d6865696768743a31303070783b0a2020202020202020202020206c696e652d6865696768743a323070783b0a202020202020202020202020666f6e742d73697a653a313470783b0a20202020202020207d0a20202020202020202e666565646261636b2d6e616d65202e6e616d65207b0a202020202020202020202020666c6f61743a6c6566743b0a202020202020202020202020666f6e742d73697a653a323070783b0a202020202020202020202020666f6e742d7765696768743a626f6c643b0a202020202020202020202020636f6c6f723a233030303b0a20202020202020207d0a20202020202020202e706f7075702d666565646261636b737b646973706c61793a626c6f636b3b77696474683a313030253b7d0a20202020202020202e666565646261636b2d706f736974696f6e207b0a202020202020202020202020666f6e742d73697a653a313470783b0a202020202020202020202020666f6e742d7765696768743a626f6c643b0a202020202020202020202020636f6c6f723a233235323332333b0a20202020202020207d0a20202020202020202e666565646261636b2d6e616d65202e666c6167207b0a2020202020202020202020206d617267696e2d746f703a3770783b0a20202020202020207d0a20202020202020202e666565646261636b2d64617465207b0a2020202020202020202020206d617267696e2d746f703a3370783b0a20202020202020207d0a0a20202020202020202e706167696e6174696f6e7b746578742d616c69676e3a63656e7465723b666f6e742d73697a653a313070783b70616464696e672d746f703a313070783b7d0a20202020202020202e706167696e6174696f6e20617b746578742d6465636f726174696f6e3a6e6f6e653b70616464696e673a327078203170783b636f6c6f723a236234623462343b7d0a20202020202020202e706167696e6174696f6e20612e616374697665536c6964657b636f6c6f723a233732373737613b7d0a2020202020202020202020200a20202020202020202e706f7075702d7468756d62732c2e706f7075702d666565646261636b737b0a202020202020202020202020646973706c61793a626c6f636b3b090a20202020202020207d0a20202020202020202e666565646261636b2d626c6f636b7b646973706c61793a626c6f636b3b7d0a20202020202020202e7468756d622d666565646261636b7b77696474683a32313570783b666c6f61743a6c6566743b6d617267696e2d72696768743a3870783b637572736f723a706f696e7465723b7d0a20202020202020202e7468756d622d6176617461727b77696474683a343870783b6d617267696e2d72696768743a313070783b666c6f61743a6c6566743b70616464696e672d746f703a3370783b7d0a20202020202020202e7468756d622d696e666f7b77696474683a31353770783b666c6f61743a6c6566743b7d0a20202020202020202e7468756d622d696e666f202e6e616d65202e696e6e65726e616d657b666c6f61743a6c6566743b666f6e742d7765696768743a626f6c643b636f6c6f723a233030303b7d0a20202020202020202e7468756d622d696e666f202e6e616d65202e666c61677b666c6f61743a6c6566743b7d0a20202020202020202e7468756d622d666565646261636b202e706f736974696f6e7b666f6e742d73697a653a313170783b666f6e742d7765696768743a626f6c643b7d0a20202020202020202e7468756d622d666565646261636b202e646174657b666f6e742d73697a653a313070783b636f6c6f723a233964613461387d0a20202020202020202e7468756d622d666565646261636b202e746578747b636f6c6f723a233732373737613b7d0a20202020202020202a3a666f6375737b6f75746c696e653a6e6f6e652021696d706f7274616e743b7d090a, 1, NULL),
+(2, NULL, 'Dark', 2, 0x0a6469767b706f736974696f6e3a72656c61746976653b646973706c61793a626c6f636b3b7d0d0a09626f64797b6d617267696e3a303b70616464696e673a303b77696474683a313030253b6865696768743a313030253b666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b636f6c6f723a236666666666663b6261636b67726f756e643a233133313331333b7d0d0a092e767b646973706c61793a626c6f636b3b6261636b67726f756e643a233133313331333b70616464696e673a313070783b7d0d0a092e7469746c657b666f6e742d73697a653a313670783b746578742d616c69676e3a63656e7465723b70616464696e673a31307078203070783b7d0d0a092e666565646261636b2c2e666565646261636b737b646973706c61793a626c6f636b7d0d0a092e666565646261636b2d626c6f636b7b0d0a090909646973706c61793a626c6f636b3b77696474683a313030253b0d0a09090970616464696e673a307078203070783b0d0a09097d0d0a092e682d666565646261636b7b70616464696e673a31307078203070783b7d0d0a092e762d666565646261636b7b626f726465722d746f703a31707820736f6c696420236538653865383b6d617267696e3a30707820313070783b70616464696e673a31307078203070783b646973706c61793a626c6f636b7d0d0a092e762d6176617461727b6d617267696e3a307078203070783b70616464696e672d746f703a3570783b746578742d616c69676e3a72696768743b7d0d0a092e696e666f7b666f6e742d73697a653a313170783b636f6c6f723a233732373737613b6261636b67726f756e643a233133313331333b7d0d0a092e762d666565646261636b3a61667465722c0d0a092e6e616d653a61667465722c0d0a092e682d666565646261636b3a61667465727b200d0a090920636f6e74656e743a20272e273b20200d0a090920646973706c61793a20626c6f636b3b200d0a0909206865696768743a20303b200d0a090920636c6561723a20626f74683b0d0a0909207669736962696c6974793a2068696464656e3b200d0a09097d0d0a092e6e616d657b646973706c61793a626c6f636b3b666f6e742d73697a653a313270783b636f6c6f723a236666666666663b666f6e742d7765696768743a626f6c643b70616464696e673a307078203070782033707820313070783b7d0d0a092e6e616d65202e696e6e65726e616d657b666c6f61743a6c6566743b7d0d0a092e706f736974696f6e7b646973706c61793a626c6f636b3b666f6e742d73697a653a313070783b666f6e742d7765696768743a626f6c643b70616464696e673a307078203070782032707820313070783b7d0d0a092e646174657b636f6c6f723a233964613461383b666f6e742d73697a653a313070783b70616464696e673a307078203070782031707820313070783b7d090d0a092e746578747b666f6e742d73697a653a313170783b70616464696e673a307078203070782031707820313070783b6f766572666c6f773a68696464656e3b776f72642d777261703a20627265616b2d776f72643b7d0d0a092e7465787420612e6d6f72657b746578742d6465636f726174696f6e3a756e6465726c696e653b636f6c6f723a233036393b7d0d0a092e706167696e6174696f6e7b746578742d616c69676e3a63656e7465723b666f6e742d73697a653a313070783b70616464696e672d746f703a313070783b7d0d0a092e706167696e6174696f6e20617b746578742d6465636f726174696f6e3a6e6f6e653b70616464696e673a327078203170783b636f6c6f723a236234623462343b7d0d0a092e706167696e6174696f6e20612e616374697665536c6964657b636f6c6f723a233732373737613b7d0d0a0923666565646261636b2d636f6e7461696e65727b706f736974696f6e3a6162736f6c7574653b77696474683a313030253b646973706c61793a626c6f636b3b7d0d0a0923666565646261636b2d736f6c6f7b646973706c61793a626c6f636b3b666f6e742d73697a653a313170783b706f736974696f6e3a6162736f6c7574653b77696474683a313030253b7d0d0a0923666565646261636b2d736f6c6f202e746578747b70616464696e672d72696768743a333070783b7d0d0a0923666565646261636b2d736f6c6f20617b746578742d6465636f726174696f6e3a756e6465726c696e653b636f6c6f723a233036393b7d0a, 0x0a646976207b0d0a09706f736974696f6e3a72656c61746976653b0d0a09646973706c61793a626c6f636b3b0d0a7d0d0a617b636f6c6f723a233363346536313b7d0d0a626f6479207b0d0a096d617267696e3a303b0d0a0970616464696e673a303b0d0a0977696474683a313030253b0d0a096865696768743a313030253b0d0a09666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b0d0a09666f6e742d73697a653a313270783b0d0a09636f6c6f723a236666666666663b0d0a096261636b67726f756e643a233133313331333b0d0a7d0d0a23706f707570207b0d0a0977696474683a37313070783b0d0a096865696768743a33373070783b0d0a0970616464696e673a3135707820323070783b0d0a7d202f2a206f7269672073697a652069732037353020782034303020706978656c73202a2f0d0a23706f707570202e706f7075702d686561646572207b0d0a096d617267696e3a307078203070783b0d0a0970616464696e673a307078203230707820313570783b0d0a09626f726465722d626f74746f6d3a31707820736f6c696420233231323132313b0d0a09666f6e742d73697a653a313670783b0d0a09666f6e742d7765696768743a626f6c643b0d0a7d0d0a23706f7075702070207b0d0a0970616464696e672d746f703a3070783b0d0a096d617267696e2d746f703a3070783b0d0a7d0d0a23706f707570202e706f7075702d66756c6c76696577207b0d0a0970616464696e673a323070783b0d0a09626f726465722d626f74746f6d3a31707820736f6c696420233231323132313b0d0a7d0d0a23706f707570202e706f7075702d7468756d6273207b0d0a0970616464696e673a323070783b0d0a7d0d0a23706f707570202e66756c6c2d617661746172207b0d0a0977696474683a31353070783b0d0a096865696768743a31353070783b0d0a096d617267696e2d72696768743a323070783b0d0a09666c6f61743a6c6566743b0d0a7d0d0a23706f707570202e736c696465733a61667465722c202e666565646261636b2d6e616d653a61667465722c202e762d666565646261636b3a61667465722c202e6e616d653a61667465722c202e682d666565646261636b3a61667465722c202e666565646261636b2d626c6f636b3a6166746572207b0d0a09636f6e74656e743a20272e273b0d0a09646973706c61793a20626c6f636b3b0d0a096865696768743a20303b0d0a09636c6561723a20626f74683b0d0a097669736962696c6974793a2068696464656e3b0d0a7d0d0a23706f707570202e66756c6c2d666565646261636b2d696e666f207b0d0a096d617267696e2d746f703a313070783b0d0a7d0d0a23706f707570202e66756c6c2d666565646261636b207b0d0a0977696474683a35303070783b0d0a09666c6f61743a6c6566743b0d0a7d0d0a0d0a23706f707570202e66756c6c2d666565646261636b2d32207b0d0a0977696474683a36393070783b0d0a09666c6f61743a6c6566743b0d0a7d0d0a0d0a0d0a23706f707570202e66756c6c2d666565646261636b2d74657874207b0d0a096d61782d6865696768743a31303070783b0d0a096c696e652d6865696768743a323070783b0d0a09666f6e742d73697a653a313470783b0d0a7d0d0a2e666565646261636b2d6e616d65202e6e616d65207b0d0a09666c6f61743a6c6566743b0d0a09666f6e742d73697a653a323070783b0d0a09666f6e742d7765696768743a626f6c643b0d0a09636f6c6f723a236666666666663b0d0a7d0d0a2e706f7075702d666565646261636b737b646973706c61793a626c6f636b3b77696474683a313030253b7d0d0a2e666565646261636b2d706f736974696f6e207b0d0a09666f6e742d73697a653a313470783b0d0a09666f6e742d7765696768743a626f6c643b0d0a09636f6c6f723a233533353435353b0d0a7d0d0a2e666565646261636b2d6e616d65202e666c6167207b0d0a096d617267696e2d746f703a3770783b0d0a7d0d0a2e666565646261636b2d64617465207b0d0a096d617267696e2d746f703a3370783b0d0a09636f6c6f723a233461346234633b0d0a7d0d0a0d0a2e706167696e6174696f6e7b746578742d616c69676e3a63656e7465723b666f6e742d73697a653a313070783b70616464696e672d746f703a313070783b7d0d0a092e706167696e6174696f6e20617b746578742d6465636f726174696f6e3a6e6f6e653b70616464696e673a327078203170783b636f6c6f723a236234623462343b7d0d0a092e706167696e6174696f6e20612e616374697665536c6964657b636f6c6f723a233732373737613b7d0d0a090d0a092e706f7075702d7468756d62732c2e706f7075702d666565646261636b737b0d0a0909646973706c61793a626c6f636b3b090d0a097d0d0a092e666565646261636b2d626c6f636b7b646973706c61793a626c6f636b3b7d0d0a092e7468756d622d666565646261636b7b77696474683a32313570783b666c6f61743a6c6566743b6d617267696e2d72696768743a3870783b637572736f723a706f696e7465723b7d0d0a092e7468756d622d6176617461727b77696474683a343870783b6d617267696e2d72696768743a313070783b666c6f61743a6c6566743b70616464696e672d746f703a3370783b7d0d0a092e7468756d622d696e666f7b77696474683a31353770783b666c6f61743a6c6566743b7d0d0a092e7468756d622d696e666f202e6e616d65202e696e6e65726e616d657b666c6f61743a6c6566743b666f6e742d7765696768743a626f6c643b636f6c6f723a236666666666663b7d0d0a092e7468756d622d696e666f202e6e616d65202e666c61677b666c6f61743a6c6566743b7d0d0a092e7468756d622d666565646261636b202e706f736974696f6e7b666f6e742d73697a653a313170783b666f6e742d7765696768743a626f6c643b7d0d0a092e7468756d622d666565646261636b202e646174657b666f6e742d73697a653a313070783b636f6c6f723a233964613461387d0d0a092e7468756d622d666565646261636b202e746578747b636f6c6f723a233535353935643b7d0d0a2a3a666f6375737b6f75746c696e653a6e6f6e652021696d706f7274616e743b7d0a, NULL, NULL),
+(3, 1, 'Razer-Dark', 2, 0x406368617273657420227574662d38223b0a2f2a2043535320446f63756d656e74202a2f0a0a237333365f726f6f747b646973706c61793a626c6f636b3b706f736974696f6e3a72656c61746976653b70616464696e673a3230707820333070783b77696474683a39373070783b6d617267696e3a30206175746f3b7d0a237333365f726f6f74206469767b706f736974696f6e3a72656c61746976653b7d0a237333365f726f6f7420756c2c0a237333365f726f6f74206f6c7b6c6973742d7374796c653a6e6f6e653b6d617267696e3a303b70616464696e673a303b7d0a237333365f726f6f74206c692c0a237333365f726f6f742068312c0a237333365f726f6f742068322c0a237333365f726f6f742068332c0a237333365f726f6f742068342c0a237333365f726f6f742068352c0a237333365f726f6f742068362c0a237333365f726f6f7420707b0a0970616464696e673a303b6d617267696e3a303b0a7d0a0a237333365f726f6f7420237333365f666565646261636b737b70616464696e673a3230707820313070783b7d0a237333365f726f6f74202e7333365f616c6c5f666565646261636b737b646973706c61793a626c6f636b3b77696474683a313030253b7d0a237333365f726f6f74202e666565646261636b5f7365747b77696474683a313030253b646973706c61793a626c6f636b3b7d0a237333365f726f6f74202e7333365f7469746c657b636f6c6f723a233231346537373b666f6e742d73697a653a323370783b7d0a237333365f726f6f74202e6176617461727b646973706c61793a626c6f636b3b70616464696e673a35707820307078203570783b7d0a237333365f726f6f74202e666565646261636b5f746578747b6261636b67726f756e643a233331356438363b646973706c61793a626c6f636b3b6d617267696e3a313070783b70616464696e673a313570783b636f6c6f723a234646463b666f6e742d73697a653a313470783b6c696e652d6865696768743a313870783b2d7765626b69742d626f726465722d7261646975733a3670783b2d6d6f7a2d626f726465722d7261646975733a3670783b626f726465722d7261646975733a3570783b7d0a237333365f726f6f74202e666565646261636b5f626c6f636b7b706f736974696f6e3a72656c61746976653b7d0a237333365f726f6f74202e627562626c655f7461696c7b6261636b67726f756e643a75726c282e2e2f696d616765732f627562626c652d7461696c2e706e67293b77696474683a313770783b6865696768743a313770783b706f736974696f6e3a6162736f6c7574653b6c6566743a333070783b746f703a2d313770783b7d0a237333365f726f6f74202e666565646261636b5f696e666f7b70616464696e673a32707820313070783b7d0a237333365f726f6f74202e666565646261636b5f6e616d657b636f6c6f723a233164396663663b666f6e742d73697a653a313870783b7d0a237333365f726f6f74202e666565646261636b5f64657461696c737b636f6c6f723a236230623062303b666f6e742d73697a653a313270783b7d0a237333365f726f6f74202e666565646261636b5f646174657b636f6c6f723a236230623062303b666f6e742d73697a653a313070783b666f6e742d7765696768743a6e6f726d616c3b7d0a0a2f2a206d69736320636c6173736573202a2f0a237333365f726f6f74202e6d6574612d646174617b666f6e742d73697a653a313270783b636f6c6f723a233663376138353b666f6e742d66616d696c793a417269616c2c2048656c7665746963612c2073616e732d73657269663b7d0a237333365f726f6f74202e6461736865647b626f726465722d746f703a3170782023633763376337206461736865643b646973706c61793a626c6f636b3b6d617267696e3a31307078203070783b7d0a237333365f726f6f74202e616c69676e2d72696768747b746578742d616c69676e3a72696768743b7d0a237333365f726f6f74202e616c69676e2d63656e7465727b746578742d616c69676e3a63656e7465723b7d0a237333365f726f6f74202e666565646261636b5f62746e7b6261636b67726f756e643a236463646364633b636f6c6f723a236163616361633b666f6e742d7765696768743a626f6c643b746578742d736861646f773a2365386538653820307078203170783b626f726465723a6e6f6e653b637572736f723a706f696e7465723b70616464696e673a36707820313070783b2d7765626b69742d626f726465722d7261646975733a3670783b2d6d6f7a2d626f726465722d7261646975733a3670783b626f726465722d7261646975733a3570783b7d0a237333365f726f6f74202e666565646261636b5f62746e3a686f7665727b6261636b67726f756e643a234545453b7d0a237333365f726f6f7420237333365f70616765727b666f6e742d66616d696c793a417269616c3b666f6e742d73697a653a313270783b70616464696e673a30707820313070783b7d0a237333365f726f6f7420237333365f706167657220617b70616464696e673a3270783b636f6c6f723a236235633063393b746578742d6465636f726174696f6e3a6e6f6e653b7d0a237333365f726f6f7420237333365f706167657220612e616374697665536c6964657b666f6e742d7765696768743a626f6c643b746578742d6465636f726174696f6e3a756e6465726c696e653b7d0a2f2a206772696473206672616d65776f726b202a2f0a2e6772696473207b206f766572666c6f773a2068696464656e3b207d0a0a2e67316f66312c0a2e67316f66322c202e67316f66332c202e67316f66342c202e67316f66352c202e67316f66362c0a2e67326f66332c202e67326f66352c202e67326f66362c0a2e67336f66342c202e67336f66352c202e67336f66362c0a2e67346f66352c202e67346f66362c090a2e67356f6636097b20666c6f61743a206c6566743b207d0a0a2e67316f6631097b2077696474683a313030253b207d0a0a2e67316f6632097b2077696474683a203530253b207d0a2e67316f6633097b2077696474683a2033332e333333333333333333253b207d0a2e67316f6634097b2077696474683a203235253b207d0a2e67316f6635097b2077696474683a203230253b207d0a2e67316f663620207b2077696474683a2031362e363636363636363636253b207d0a0a2e67326f6633097b2077696474683a2036362e363636363636363636253b207d0a2e67326f6635097b2077696474683a203430253b207d0a2e67326f663620207b2077696474683a2033332e333333333333333333253b207d0a0a2e67336f6634097b2077696474683a203735253b207d0a2e67336f6635097b2077696474683a203630253b207d0a2e67336f663620207b2077696474683a203530253b7d0a0a2e67346f6635097b2077696474683a203830253b207d0a2e67346f663620207b2077696474683a2036362e363636363636363636253b207d0a0a2e67356f663620207b2077696474683a2038332e333333333333333333253b7d, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1737,6 +1765,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `companyId` int(10) unsigned NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `encryptString` varchar(100) NOT NULL,
   `email` varchar(45) NOT NULL,
   `fullName` varchar(45) NOT NULL,
   `title` varchar(45) NOT NULL,
@@ -1752,17 +1781,18 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE KEY `company_user` (`companyId`,`username`),
   KEY `User_Company_companyId` (`companyId`),
   KEY `User_IM_imId` (`imId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` (`userId`, `companyId`, `username`, `password`, `email`, `fullName`, `title`, `phone`, `ext`, `mobile`, `fax`, `home`, `im`, `imId`, `avatar`) VALUES
-(1, 1, 'ryan', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'ryan@chua.com', 'Ryan Chua', 'CEO', '', '', '', '', '', 'ryanchua6', 3, NULL),
-(2, 1, 'budi', '$1$vKHia0ZE$FyNbOT8wNDGvTGV3IpkO01', 'budi@salim.com', 'Budiyono Salim', 'CTO', '', '', '', '', '', 'byonosalim@gmail.com', 2, NULL),
-(3, 2, 'mathew', '$1$K/rY2dS7$9jBqbcveghrsbS6eMlpWc0', 'mathew@ygiraffe.com', 'Mathew Wong', 'CEO', '', '', '', '', '', '', 4, NULL),
-(5, 3, 'nicholas', '$1$6Sx2eJI9$LfglrU26wSv.73i0xyW5q/', 'tofumonkey@gmail.com', 'Nicholas Foo', '', '', '', '', '', '', '', 4, NULL);
+INSERT INTO `User` (`userId`, `companyId`, `username`, `password`, `encryptString`, `email`, `fullName`, `title`, `phone`, `ext`, `mobile`, `fax`, `home`, `im`, `imId`, `avatar`) VALUES
+(1, 1, 'ryan', '$1$/cFUsWhe$2pCk5RmxZmhFdN2SdIjt10', 'JEuIsE6FHJS5Z2LwqT2aDXRUbWZd3828rHXAzmRsrBxhtuliOLapf72bZ2BU2LK6ggTTz1ztHDrfHZl1f0uVvw==', 'ryanchua6@gmail.com', 'Ryan Chua', 'CEO', '', '', '', '', '', 'ryanchua6', 3, NULL),
+(2, 1, 'budi', '$1$/cFUsWhe$2pCk5RmxZmhFdN2SdIjt10', 'HZ4GnX5kpIdu4z8rDZMEBDIDRWWGlcyoVAhslVKfWfbXhSSikq1XWhrnR08Ra7tqEx+QX/whj1Aiep1QSMr8KQ==', 'budi@salim.com', 'Budiyono Salim', 'CTO', '', '', '', '', '', 'byonosalim@gmail.com', 2, NULL),
+(3, 2, 'mathew', '$1$/cFUsWhe$2pCk5RmxZmhFdN2SdIjt10', 'NZ095zBZoTi5DDd1OUTb29arwDrH5/bk4QhsK0XhhJMddlX16OEJAQBrxcvMyiJWSIucC1YexbuH0tEIbAEeQQ==', 'mathew@36stories.com', 'Mathew Wong', 'CEO', '', '', '', '', '', '', 4, NULL),
+(5, 3, 'nicholas', '$1$/cFUsWhe$2pCk5RmxZmhFdN2SdIjt10', 'wg8XAqlCLn5nv4K4U9gMwKwqZ7McBEput5lVeJcOnHbVFXBnHxS8f7ykyYmnim/0U+xeXXZeYduXbJGUdxygMg==', 'tofumonkey@gmail.com', 'Nicholas Foo', '', '', '', '', '', '', '', 4, NULL),
+(8, 2, 'leica', '$1$/cFUsWhe$2pCk5RmxZmhFdN2SdIjt10', '7W9wKjPiv1sS2nZM3egCN631G9hrXAwJcmLP6XPT/SQ2xz+Zpl+ZIIZvGi1PLCBovQy+4zAFD05Rct9yrUMw8w==', 'leicaaah18@gmail.com', 'Leica Chang', 'Community Manager', '', '', '', '', '', '', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -1776,22 +1806,25 @@ CREATE TABLE IF NOT EXISTS `UserThemes` (
   `siteId` int(10) unsigned NOT NULL,
   `widgetId` int(11) NOT NULL,
   `themeId` int(10) unsigned NOT NULL,
-  `optionId` int(11) NOT NULL,
+  `themeName` varchar(125) NOT NULL,
   `templatePath` varchar(125) NOT NULL,
   PRIMARY KEY (`userThemeId`),
   KEY `UserThemes_Site_site_id` (`siteId`),
   KEY `UserThemes_Theme_theme_id` (`themeId`),
   KEY `UserThemes_Widget_widget_id` (`widgetId`),
-  KEY `CompanyIdIndex` (`companyId`),
-  KEY `OptionIdIndex` (`optionId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `CompanyIdIndex` (`companyId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `UserThemes`
 --
 
-INSERT INTO `UserThemes` (`userThemeId`, `companyId`, `siteId`, `widgetId`, `themeId`, `optionId`, `templatePath`) VALUES
-(2, 1, 1, 3, 3, 2, '');
+INSERT INTO `UserThemes` (`userThemeId`, `companyId`, `siteId`, `widgetId`, `themeId`, `themeName`, `templatePath`) VALUES
+(3, 1, 1, 3, 2, 'User Theme Barongkad', ''),
+(4, 1, 2, 3, 2, 'Kewl Beans', ''),
+(5, 1, 2, 3, 2, 'Widget Digit', ''),
+(6, 1, 1, 2, 2, 'Dookie', ''),
+(7, 1, 1, 3, 1, 'Test Vert', '');
 
 -- --------------------------------------------------------
 
@@ -1855,7 +1888,7 @@ ALTER TABLE `Contact`
 -- Constraints for table `EmbeddedBlockOptions`
 --
 ALTER TABLE `EmbeddedBlockOptions`
-  ADD CONSTRAINT `EmbeddedBlockOptions_UserThemes_option_id` FOREIGN KEY (`embeddedBlockId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EmbeddedBlockOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
   ADD CONSTRAINT `EmbeddedBlockOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
 
 --
@@ -1880,14 +1913,14 @@ ALTER TABLE `Form`
 -- Constraints for table `FullPageOptions`
 --
 ALTER TABLE `FullPageOptions`
-  ADD CONSTRAINT `FullPageOptions_UserThemes_option_id` FOREIGN KEY (`fullPageId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FullPageOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
   ADD CONSTRAINT `FullPageOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
 
 --
 -- Constraints for table `ModalWindowOptions`
 --
 ALTER TABLE `ModalWindowOptions`
-  ADD CONSTRAINT `ModalWindowOptions_UserThemes_option_id` FOREIGN KEY (`modalId`) REFERENCES `UserThemes` (`optionId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ModalWindowOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
   ADD CONSTRAINT `ModalWindowOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
 
 --
