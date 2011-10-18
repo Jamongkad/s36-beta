@@ -116,7 +116,9 @@ return array(
         $wd = Input::get('wd');
         $ht = Input::get('ht');
         $src = null;
-        
+
+        print_r($ln_login);
+        /* 
         if($fb_login == 1 || $fb_login == 2) {
             $src = fb_photo_check($fb_login, Input::get('src'));     
         }
@@ -175,6 +177,7 @@ return array(
         imagejpeg($dst_r48,$out48,$jpeg_quality);
         
         echo $date."-cropped.jpg";
+        */
     },
 
     'POST /widget/form/upload' => function() { 
