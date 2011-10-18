@@ -412,7 +412,7 @@ Function that changes the images based on its dir parameter where dir is the loc
 */
 function change_images(dir, fbObj){ 
 
-    var file = (fbObj) ? dir : "/" + dir;
+    var file = (fbObj) ? dir : "/mathew" + dir;
 
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
@@ -658,24 +658,24 @@ function loadData() {
 	  var lname	   = profile.lastName;
 	  var country  = profile.location.name;	 
 		
-			$('#your_city').val( $.trim(location[0]) );
-			$('#your_country').val( $.trim(location[1]) );
-			$('#your_fname').val( $.trim(fname) );
-			$('#your_lname').val( $.trim(lname) );
-			$('#your_company').val( $.trim(company) );	
-			$('#your_occupation').val( $.trim(position) );	
-			
-		$('#ln_flag').val("1");
-		if(profile.pictureUrl != undefined){
-			var photo = profile.pictureUrl;
-		}
-		change_jcrop_div(200);
-		change_images(photo);
+      $('#your_city').val( $.trim(location[0]) );
+      $('#your_country').val( $.trim(location[1]) );
+      $('#your_fname').val( $.trim(fname) );
+      $('#your_lname').val( $.trim(lname) );
+      $('#your_company').val( $.trim(company) );	
+      $('#your_occupation').val( $.trim(position) );	
+
+   	  $('#ln_flag').val("1");
+	  if(profile.pictureUrl != undefined){
+	      var photo = profile.pictureUrl;
+	  }
+      change_jcrop_div(200);
+      change_images(photo);
 		
-		var fb_text = $.trim($('#feedback_text').val());
-		if(fb_text != ""){
-			$('#steps').cycle(3);
-		}
+	  var fb_text = $.trim($('#feedback_text').val());
+	  if(fb_text != ""){
+	      $('#steps').cycle(3);
+	  }
     });
 }
 
