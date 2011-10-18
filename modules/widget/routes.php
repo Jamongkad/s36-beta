@@ -117,8 +117,7 @@ return array(
         $ht = Input::get('ht');
         $src = null;
 
-        echo $ln_login;
-        /* 
+
         if($fb_login == 1 || $fb_login == 2) {
             $src = fb_photo_check($fb_login, Input::get('src'));     
         }
@@ -126,7 +125,9 @@ return array(
         if($ln_login == 1) {
             $src = Input::get('src');
         }
-       
+ 
+        echo $src;
+         /*       
         $ophoto = Input::get('oldphoto');
         
         if($ophoto != 0){
