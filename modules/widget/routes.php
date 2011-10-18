@@ -126,8 +126,7 @@ return array(
             $src = Input::get('src');
         }
  
-        echo $src;
-         /*       
+
         $ophoto = Input::get('oldphoto');
         
         if($ophoto != 0){
@@ -143,7 +142,9 @@ return array(
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
-        
+
+        echo $extension;
+        /*        
         switch($extension) {
             case '.jpg':
             case '.jpeg':
@@ -179,6 +180,7 @@ return array(
         
         echo $date."-cropped.jpg";
         */
+
     },
 
     'POST /widget/form/upload' => function() { 
