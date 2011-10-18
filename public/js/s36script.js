@@ -718,7 +718,7 @@ function save_linkedin_image(){
           url: $("#ajax-crop-url").attr('hrefaction'),
           method: 'GET',
           async: false,
-          data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login" + ln_login,
+          data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login="+ln_login,
           success: function(data){ 
 				assign_to_review("/uploaded_cropped/150x150/"+data);
                 $('#cropped_photo').val(data);
