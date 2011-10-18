@@ -2,31 +2,44 @@
 
 class EmailFactory {
 
-    private $addresses, $message, $email_type;
-
-    public function __construct(EmailData $opts) {
-        $this->addresses = $opts->addresses;
-        $this->message   = $opts->message;
-        $this->email_type = $opts->email_type;
+    private $addresses, $message, $feedback;
+    public $company_id, $feedback_id;
+public function __construct(EmailData $opts) { 
         $this->publisher_email = $opts->publisher_email;
+        $this->get_type = $opts->get_type();
+
+        $this->user = new User; 
+        $this->feedback = new Feedback;
+    }
+
+    private function _addresses() {        
+        if($user = $this->user->pull_user_emails_by_company_id($this->company_id)) {
+            return $user;  
+        } else { 
+            throw new Exception("No User Email addresses!");
+        }
+    }
+
+    private function _feedback() { 
+        if($feedback = $this->feedback->pull_feedback_by_id($this->feedback_id)) {
+            return $feedback;  
+        } else { 
+            throw new Exception("No User Feedback!");
+        }
     }
 
     public function execute() {
 
         $collection = Array();
-        
-        if($this->addresses) { 
-            foreach($this->addresses as $address) {
-                if($this->email_type == 'NewFeedbackSubmission') {
-                    $collection[] = new NewFeedbackSubmission($address, $this->message, "36Stories: New Feedback Notification");     
-                } 
+         
+        foreach($this->_addresses() as $address) {
+            if($this->get_type == 'NewFeedbackSubmissionData') {
+                $collection[] = new NewFeedbackSubmission($address, $this->_feedback(), "36Stories: New Feedback Notification");     
+            } 
 
-                if($this->email_type == 'PublishedFeedbackNotification') {
-                    $collection[] = new PublishedFeedbackNotification($address, $this->message, "36Stories: Published Feedback Notification", $this->publisher_email);     
-                } 
-            }
-        } else {
-            throw new Exception("No Email addresses to process!");
+            if($this->get_type == 'PublishedFeedbackNotificationData') {
+                $collection[] = new PublishedFeedbackNotification($address, $this->_feedback(), "36Stories: Published Feedback Notification", $this->publisher_email);     
+            } 
         }
 
         return $collection;
@@ -57,7 +70,7 @@ class NewFeedbackSubmission extends EmailFixture {
     }
 
     public function get_address() {
-        return $this->address;
+        return $this->address->email;
     }
 
     public function get_message() {
@@ -85,7 +98,7 @@ class PublishedFeedbackNotification extends EmailFixture {
     }
 
     public function get_address() {
-        return $this->address;
+        return $this->address->email;
     }
 
     public function get_message() {

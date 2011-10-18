@@ -44,7 +44,7 @@ return array(
         $us = new User;
 
         //fuck naive assumption...
-        $countryId = Null;
+        $countryId = null;
         if($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
@@ -119,26 +119,19 @@ return array(
 
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
-            
-            $user = new User;
-            $addresses = $user->pull_user_emails_by_company_id($company_id);
 
-            $fb = new Feedback;
-            $feedback = $fb->pull_feedback_by_id($feedback_id);
-            
-            //Published Feedback Notification
-            $vo = new EmailData; 
-            $vo->addresses = $addresses;
-            $vo->message = $feedback;
-            $vo->email_type = 'PublishedFeedbackNotification';
+            $vo = new PublishedFeedbackNotificationData;
             $vo->publisher_email = $publisher->email;
            
             $factory = new EmailFactory($vo);
-            $email_page = $factory->execute();
-            //Send email logic goes here...  
-            //After publishing feedback logout...S36Auth::logout();
-            Helpers::show_data($email_page);
+            $factory->company_id = $company_id;
+            $factory->feedback_id = $feedback_id;
+            $email_page = $factory->execute(); 
 
+            //Send email logic goes here...    
+            Helpers::show_data($email_page);
+            //After publishing feedback logout...
+            S36Auth::logout();
         }
 
     }
