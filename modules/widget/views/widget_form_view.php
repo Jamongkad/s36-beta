@@ -571,6 +571,7 @@ define('LINKEDIN_API_KEY','zmekq26qusj2');
         </div>
         <div class="s36_footertext">
         	Powered by 36Stories
+            <?print_r(LINKEDIN_API_KEY)?>
         </div>
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
