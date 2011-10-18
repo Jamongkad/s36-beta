@@ -77,25 +77,16 @@ return array(
         );
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
-        /*
-        $company_id = Input::get('company_id');
-        $emailObj = new Email;
 
-        $user = new User;
-        $user_emails = $user->pull_user_emails_by_company_id($company_id);
- 
-        $feedback_data = $fb->pull_feedback_by_id($new_feedback_id);
-
-        Package::load('S36ValueObjects');
-
-        $vo = new EmailData;
-        $vo->addresses = $addresses;
-        $vo->message = $feedback;
-        $vo->email_type = 'NewFeedbackSubmission';
+        $vo = new NewFeedbackSubmissionData;
 
         $factory = new EmailFactory($vo);
-        $email_page = $factory->execute();
-        */
+        $factory->company_id = Input::get('company_id');
+        $factory->feedback_id = Input::get('feedback_id');
+        $email_pages = $factory->execute();
+        
+        $email = new Email($email_pages);
+        $email->process_email();
     }, 
 
     'GET /api/publish' => function() { 
