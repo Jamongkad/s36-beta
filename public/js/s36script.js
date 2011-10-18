@@ -339,7 +339,7 @@ function fb_connect_success(obj){
 		$('#fb_flag').val("1");
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		change_jcrop_div(200);
-		change_images(photo, obj);
+		change_images(photo, 'fb');
 		default_text();	
 		var fb_text = $.trim($('#feedback_text').val());
 		if(fb_text == ""){
@@ -389,7 +389,7 @@ function ajaxFileUpload() {
             success: function (data, status) {	 
                
                 if(data.error == null) {     
-                    change_images(data.dir);
+                    change_images(data.dir, 'native');
                     change_jcrop_div(data.wid);
                     loader.fadeOut(function(){$(this).html("loading...")});
                                         
@@ -410,9 +410,18 @@ function ajaxFileUpload() {
 /*
 Function that changes the images based on its dir parameter where dir is the location of the image
 */
-function change_images(dir, fbObj){ 
+function change_images(dir, img){ 
 
-    var file = (fbObj) ? dir : "/" + dir;
+    var file;
+
+    if(img == 'fb' || img == 'ln') {
+        file = dir;     
+    }
+
+    if(img == 'native') {
+        file = "/" + dir;
+    }
+
 
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
@@ -670,7 +679,7 @@ function loadData() {
 	      var photo = profile.pictureUrl;
 	  }
       change_jcrop_div(200);
-      change_images(photo);
+      change_images(photo, 'ln');
 		
 	  var fb_text = $.trim($('#feedback_text').val());
 	  if(fb_text != ""){
