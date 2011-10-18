@@ -662,7 +662,6 @@ function loadData() {
 			$('#your_country').val( $.trim(location[1]) );
 			$('#your_fname').val( $.trim(fname) );
 			$('#your_lname').val( $.trim(lname) );
-//			$('#your_email').val( $.trim(obj.email) );	
 			$('#your_company').val( $.trim(company) );	
 			$('#your_occupation').val( $.trim(position) );	
 			

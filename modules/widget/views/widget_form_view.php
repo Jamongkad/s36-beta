@@ -151,6 +151,12 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			if(val){						
 				// assign all values to the review slide, argument: false if not from jcrop
 				assign_to_review(false);
+
+                if(strstr(is_photo, 'media.linkedin.com')) {
+                    save_linkedin_image();
+                    return 5; 
+                }
+
 				if(crop){
 					if(is_photo == default_photo){
 						console.log("move to 5");
@@ -424,14 +430,14 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         <fb:login-button perms="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
                         <br />
                         <br />
-                        <a href="javascript:;" id="create_wo_facebook">
-                        <?=HTML::image('img/36stories-btn.png')?>
-                        </a>
-                        <br />
-                        <br />
                         <script type="IN/Login" data-onAuth="loadData">
 							Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
                         </script>
+                        <br />
+                        <br />
+                        <a href="javascript:;" id="create_wo_facebook">
+                        <?=HTML::image('img/36stories-btn.png')?>
+                        </a>
                     </div>
                     <br />
                     <div class="s36_block gray">
@@ -568,7 +574,6 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
         </div>
         <div class="s36_footertext">
         	Powered by 36Stories
-
         </div>
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
