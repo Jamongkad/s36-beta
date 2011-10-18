@@ -143,8 +143,7 @@ return array(
             $extension = strtolower(strrchr($src, '.'));
         }
 
-        echo $extension;
-        /*        
+
         switch($extension) {
             case '.jpg':
             case '.jpeg':
@@ -179,7 +178,7 @@ return array(
         imagejpeg($dst_r48,$out48,$jpeg_quality);
         
         echo $date."-cropped.jpg";
-        */
+
 
     },
 
