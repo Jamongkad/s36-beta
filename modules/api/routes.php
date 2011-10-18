@@ -102,7 +102,7 @@ return array(
         
         //decrypt string use user and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
-            
+
             //flick feedback publish this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
@@ -121,8 +121,10 @@ return array(
 
             $email = new Email($email_pages);
             $email->process_email();
+
             //After publishing feedback logout...
             S36Auth::logout();
+            return View::make('email/thankyou_view');
         }
 
     }
