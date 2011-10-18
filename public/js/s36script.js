@@ -412,7 +412,7 @@ Function that changes the images based on its dir parameter where dir is the loc
 */
 function change_images(dir, fbObj){ 
 
-    var file = (fbObj) ? dir : "/mathew" + dir;
+    var file = (fbObj) ? dir : "/" + dir;
 
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
