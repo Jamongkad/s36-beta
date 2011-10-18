@@ -422,7 +422,6 @@ function change_images(dir, img){
         file = "/" + dir;
     }
 
-
     $('#profile_picture').attr('src',file);
     $('#jcrop_target').attr('src',file);
     $('#preview').attr('src',file);
@@ -707,6 +706,8 @@ function strstr(haystack, needle, bool) {
 // this will run if linkedin connect is used
 function save_linkedin_image(){		
     hide_error();
+
+    var ln_login = $("#ln_flag").val();
     var x_coords = 0;
     var y_coords = 0;
     var wd = 80;
@@ -717,7 +718,7 @@ function save_linkedin_image(){
           url: $("#ajax-crop-url").attr('hrefaction'),
           method: 'GET',
           async: false,
-          data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto,
+          data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login" + ln_login,
           success: function(data){ 
 				assign_to_review("/uploaded_cropped/150x150/"+data);
                 $('#cropped_photo').val(data);

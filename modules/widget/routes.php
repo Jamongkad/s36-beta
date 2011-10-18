@@ -115,8 +115,16 @@ return array(
         $y  = Input::get('y_coords');
         $wd = Input::get('wd');
         $ht = Input::get('ht');
+        $src = null;
+        
+        if($fb_login == 1 || $fb_login == 2) {
+            $src = fb_photo_check($fb_login, Input::get('src'));     
+        }
 
-        $src = fb_photo_check($fb_login, Input::get('src'));
+        if($ln_login == 1) {
+            $src = Input::get('src');
+        }
+       
         $ophoto = Input::get('oldphoto');
         
         if($ophoto != 0){
