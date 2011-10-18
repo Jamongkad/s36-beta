@@ -82,7 +82,7 @@ return array(
 
         $factory = new EmailFactory($vo);
         $factory->company_id = Input::get('company_id');
-        $factory->feedback_id = Input::get('feedback_id');
+        $factory->feedback_id = $new_feedback_id;
         $email_pages = $factory->execute();
         
         $email = new Email($email_pages);
