@@ -127,7 +127,7 @@ return array(
         $targ_w = $targ_h = 150;
         $jpeg_quality = 100;
                     
-        if(strstr(strtolower($src),"graph.facebook.com")){
+        if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
             $extension = ".jpg";
         }else{
             $extension = strtolower(strrchr($src, '.'));

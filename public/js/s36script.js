@@ -644,4 +644,77 @@ function send_form_data(){
 			 }
 		});
 	}
+	
+// once connected to linked in do the function below:
+function loadData() {
+  IN.API.Profile("me")
+    .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location"])
+    .result(function(result) {
+      
+	  var profile  = result.values[0]; 
+	  var position = profile.positions.values[0].title;
+	  var company  = profile.positions.values[0].company.name;
+	  var fname	   = profile.firstName;
+	  var lname	   = profile.lastName;
+	  var country  = profile.location.name;	 
+		
+			$('#your_city').val( $.trim(location[0]) );
+			$('#your_country').val( $.trim(location[1]) );
+			$('#your_fname').val( $.trim(fname) );
+			$('#your_lname').val( $.trim(lname) );
+//			$('#your_email').val( $.trim(obj.email) );	
+			$('#your_company').val( $.trim(company) );	
+			$('#your_occupation').val( $.trim(position) );	
+			
+		$('#ln_flag').val("1");
+		if(profile.pictureUrl != undefined){
+			var photo = profile.pictureUrl;
+		}
+		change_jcrop_div(200);
+		change_images(photo);
+		
+		var fb_text = $.trim($('#feedback_text').val());
+		if(fb_text != ""){
+			$('#steps').cycle(3);
+		}
+    });
+}
+
+// strstr like function 
+function strstr(haystack, needle, bool) {
+    var pos = 0;
+    haystack += '';
+    pos = haystack.indexOf(needle);
+    if (pos == -1) {
+        return false;
+    } else {
+        if (bool) {
+            return haystack.substr(0, pos);
+        } else {
+            return haystack.slice(pos);
+        }
+    }
+}
+
+// this will run if linkedin connect is used
+function save_linkedin_image(){		
+    hide_error();
+    var x_coords = 0;
+    var y_coords = 0;
+    var wd = 80;
+    var ht = 80;
+    var cropped_photo = $('#profile_picture').attr('src');		
+    var oldphoto = $('#cropped_photo').val();
+    return $.ajax({ 
+          url: $("#ajax-crop-url").attr('hrefaction'),
+          method: 'GET',
+          async: false,
+          data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto,
+          success: function(data){ 
+				assign_to_review("/uploaded_cropped/150x150/"+data);
+                $('#cropped_photo').val(data);
+                $('#is_cropped').val(1);
+          }
+        });
+}
 // END OF 36stories Javascript

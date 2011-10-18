@@ -1,7 +1,11 @@
 <?php
+//TODO push this to routes...
 // GEARFISH - fb
 define('YOUR_APP_ID', '171323469605899');
 define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
+
+// GEARFISH - LinkedIn
+define('LINKEDIN_API_KEY','zmekq26qusj2');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -265,6 +269,13 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			}
 		}//end of cycle prev
 </script>
+
+<!-- linked in -->
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: <?php echo LINKEDIN_API_KEY ?>
+  authorize: true
+</script>
+
 </head>
 <span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
 <span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
@@ -419,6 +430,11 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                         <a href="javascript:;" id="create_wo_facebook">
                         <?=HTML::image('img/36stories-btn.png')?>
                         </a>
+                        <br />
+                        <br />
+                        <script type="IN/Login" data-onAuth="loadData">
+							Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
+                        </script>
                     </div>
                     <br />
                     <div class="s36_block gray">
@@ -555,6 +571,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
         </div>
         <div class="s36_footertext">
         	Powered by 36Stories
+            <?print_r(LINKEDIN_API_KEY)?>
         </div>
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
