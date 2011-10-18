@@ -3,9 +3,6 @@
 // GEARFISH - fb
 define('YOUR_APP_ID', '171323469605899');
 define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
-
-// GEARFISH - LinkedIn
-define('LINKEDIN_API_KEY','zmekq26qusj2');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -272,7 +269,7 @@ define('LINKEDIN_API_KEY','zmekq26qusj2');
 
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: <?php echo LINKEDIN_API_KEY ?>
+  api_key:   zmekq26qusj2
   authorize: true
 </script>
 
@@ -571,7 +568,7 @@ define('LINKEDIN_API_KEY','zmekq26qusj2');
         </div>
         <div class="s36_footertext">
         	Powered by 36Stories
-            <?print_r(LINKEDIN_API_KEY)?>
+
         </div>
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
