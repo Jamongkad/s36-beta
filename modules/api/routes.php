@@ -117,10 +117,10 @@ return array(
             $factory = new EmailFactory($vo);
             $factory->company_id = $company_id;
             $factory->feedback_id = $feedback_id;
-            $email_page = $factory->execute(); 
+            $email_pages = $factory->execute(); 
 
-            //Send email logic goes here...    
-            Helpers::show_data($email_page);
+            $email = new Email($email_pages);
+            $email->process_email();
             //After publishing feedback logout...
             S36Auth::logout();
         }
