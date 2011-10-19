@@ -4,7 +4,8 @@ class EmailFactory {
 
     private $addresses, $message, $feedback;
     public $company_id, $feedback_id;
-public function __construct(EmailData $opts) { 
+
+    public function __construct(EmailData $opts) { 
         $this->publisher_email = $opts->publisher_email;
         $this->get_type = $opts->get_type();
 

@@ -117,7 +117,6 @@ return array(
         $ht = Input::get('ht');
         $src = null;
 
-
         if($fb_login == 1 || $fb_login == 2) {
             $src = fb_photo_check($fb_login, Input::get('src'));     
         }
@@ -126,7 +125,6 @@ return array(
             $src = Input::get('src');
         }
  
-
         $ophoto = Input::get('oldphoto');
         
         if($ophoto != 0){
@@ -178,8 +176,6 @@ return array(
         imagejpeg($dst_r48,$out48,$jpeg_quality);
         
         echo $date."-cropped.jpg";
-
-
     },
 
     'POST /widget/form/upload' => function() { 
@@ -193,7 +189,6 @@ return array(
         {
             switch($_FILES[$file]['error'])
             {
-
                 case '1':
                     $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
                     break;
