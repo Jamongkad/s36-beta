@@ -62,7 +62,6 @@ return array(
     },
 
     'GET /widget/modal' => function() {
-        #print_r(new Widget\ProfileImage);
         $feedback = new Feedback;
         $company_id = null;
         $site_id = null;
@@ -115,24 +114,25 @@ return array(
         $y  = Input::get('y_coords');
         $wd = Input::get('wd');
         $ht = Input::get('ht');
-        $src = null;
+        $img_src = Input::get('src');
+        $ophoto = Input::get('oldphoto');
 
+        $src = null;
         if($fb_login == 1 || $fb_login == 2) {
-            $src = fb_photo_check($fb_login, Input::get('src'));     
+            $src = fb_photo_check($fb_login, $img_src);     
         }
 
         if($ln_login == 1) {
-            $src = Input::get('src');
+            $src = $img_src;
         }
- 
-        $ophoto = Input::get('oldphoto');
-        
+  
         if($ophoto != 0){
             @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$ophoto);
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$ophoto);		
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$ophoto);	
         }
 
-        $targ_w = $targ_h = 150;
+        $targ_w = 150;
+        $targ_h = 150;
         $jpeg_quality = 100;
                     
         if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
@@ -140,7 +140,6 @@ return array(
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
-
 
         switch($extension) {
             case '.jpg':
@@ -159,7 +158,7 @@ return array(
             default:
                 $img_r150 = false;
                 $img_r48 = false;
-                break;
+            break;
         }
                     
         $dst_r150 = ImageCreateTrueColor( $targ_w, $targ_h ); 
@@ -247,6 +246,12 @@ return array(
           , "dir" => $filedir
           , "wid" => $width
         ));
+    },
+
+    'GET /widget/profile' => function() {
+        $tests = (object)Input::get();
+        $profile_img = new Widget\ProfileImage($tests);
+        Helpers::show_data($profile_img);    
     }
 );
 
