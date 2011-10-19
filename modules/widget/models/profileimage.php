@@ -86,3 +86,11 @@ class ProfileImage {
 
     public function upload() {}
 }
+
+//helper functions will move to seperate file later on
+function fb_photo_check($fb_login, $photo_src) {    
+    if($fb_login == 1) return $photo_src;
+    if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;
+    
+    return "/var/www/s36-beta/public/".$photo_src;
+}

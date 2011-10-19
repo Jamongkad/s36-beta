@@ -108,6 +108,11 @@ return array(
 
     'GET /widget/form/crop' => function() { 
 
+        $img_upload = (object)Input::get();
+        $profile_img = new Widget\ProfileImage($img_upload);
+        $profile_img->crop();
+         
+        /* 
         $fb_login = Input::get('fb_login');
         $ln_login = Input::get('ln_login');
         $x  = Input::get('x_coords');
@@ -175,6 +180,7 @@ return array(
         imagejpeg($dst_r48,$out48,$jpeg_quality);
         
         echo $date."-cropped.jpg";
+        */
     },
 
     'POST /widget/form/upload' => function() { 
@@ -254,15 +260,6 @@ return array(
         Helpers::show_data($profile_img);    
     }
 );
-
-//helper functions will move to seperate file later on
-function fb_photo_check($fb_login, $photo_src) {    
-    if($fb_login == 1) return $photo_src;
-    if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;
-    
-    return "/var/www/s36-beta/public/".$photo_src;
-}
-
 
 function getRightClass($units){
     if($units == '1'){
