@@ -2,16 +2,16 @@
 
 class ProfileImage {
 
-    private $dir150, $dir48;
+    private $dir150, $dir48, $date;
     protected $targ_w, $targ_h, $jpeg_quality;
 
     public function __construct($input_params) { 
 
        $this->input_params = $input_params;
 
-       $date = date("mdyhis");
-       $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$date."-cropped.jpg";
-       $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$date."-cropped.jpg";
+       $this->date = date("mdyhis");
+       $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
+       $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
 
        $this->targ_w_large = 150;
        $this->targ_h_large = 150;
@@ -82,6 +82,8 @@ class ProfileImage {
         
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
+
+        echo $this->date."-cropped.jpg";
     }
 
     public function upload() {}
