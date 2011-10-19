@@ -25,14 +25,14 @@ class ProfileImage {
 
     public function crop() {
 
-        $fb_login = $this->input_params->fb_login; 
-        $ln_login = $this->input_params->ln_login;
+        $fb_login = property_exists($this->input_params, 'fb_login') ? $this->input_params->fb_login : null; 
+        $ln_login = property_exists($this->input_params, 'ln_login') ? $this->input_params->ln_login : null;
         $x  = $this->input_params->x_coords; 
         $y  = $this->input_params->y_coords;
         $wd = $this->input_params->wd; 
         $ht = $this->input_params->ht;
         $img_src = $this->input_params->src;
-        $ophoto  = $this->input_params->oldphoto;
+        $ophoto  = property_exists($this->input_params, 'oldphoto') ? $this->input_params->oldphoto : null;
 
         $src = null;
         if($fb_login == 1 || $fb_login == 2) {
