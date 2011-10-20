@@ -86,7 +86,76 @@ class ProfileImage {
         echo $this->date."-cropped.jpg";
     }
 
-    public function upload() {}
+    public static function upload() { 
+        $error = Null;
+        $msg = Null;
+        $filedir = Null;
+        $width = Null;
+        $file = 'your_photo';
+
+        if(!empty($_FILES[$file]['error']))
+        {
+            switch($_FILES[$file]['error'])
+            {
+                case '1':
+                    $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
+                    break;
+                case '2':
+                    $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
+                    break;
+                case '3':
+                    $error = 'The uploaded file was only partially uploaded';
+                    break;
+                case '4':
+                    $error = 'No file was uploaded.';
+                    break;
+
+                case '6':
+                    $error = 'Missing a temporary folder';
+                    break;
+                case '7':
+                    $error = 'Failed to write file to disk';
+                    break;
+                case '8':
+                    $error = 'File upload stopped by extension';
+                    break;
+                case '999':
+                default:
+                    $error = 'No error code avaiable';
+            }
+        }elseif(empty($_FILES[$file]['tmp_name']) || $_FILES[$file]['tmp_name'] == 'none'){
+            $error = 'No file was uploaded..';
+        }elseif(($_FILES[$file]['type'] != "image/jpeg") && 
+                ($_FILES[$file]['type'] != "image/gif")  && 
+                ($_FILES[$file]['type'] != "image/pjpeg")&& 
+                ($_FILES[$file]['type'] != "image/x-png")&& 
+                ($_FILES[$file]['type'] != "image/png")){
+                $error = 'Please Upload Image Files Only'.$_FILES[$file]['type'];
+        }else{
+                                
+                $filename = date("Ydmhis").$_FILES[$file]['name'];
+                $filedir = "uploaded_tmp/".$filename;
+                $maxwidth = 350;
+                $maxheight = 230;
+                $move = move_uploaded_file($_FILES[$file]['tmp_name'],"/var/www/s36-upload-images/uploaded_tmp/".$filename);
+                if($move){    
+                     //start image resizing..
+                     $resizeObj = new Resize($filedir);
+                     $resizeObj->resizeImage($maxwidth, $maxheight, 'auto');
+                     $resizeObj->saveImage($filedir, 100);
+                     
+                     //get the optimal dimensions
+                     $dims = $resizeObj->getDimensions($maxwidth, $maxheight, 'auto'); 
+                     $width = $dims['optimalWidth'];
+                }       
+        } 
+
+        echo json_encode(Array(
+            "error" => $error
+          , "dir" => $filedir
+          , "wid" => $width
+        ));
+    }
 }
 
 //helper functions will move to seperate file later on

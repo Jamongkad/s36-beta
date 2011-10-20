@@ -107,83 +107,14 @@ return array(
     },
 
     'GET /widget/form/crop' => function() { 
-
         $img_upload = (object)Input::get();
         $profile_img = new Widget\ProfileImage($img_upload);
-        $profile_img->crop();
-         
-        /* 
-        $fb_login = Input::get('fb_login');
-        $ln_login = Input::get('ln_login');
-        $x  = Input::get('x_coords');
-        $y  = Input::get('y_coords');
-        $wd = Input::get('wd');
-        $ht = Input::get('ht');
-        $img_src = Input::get('src');
-        $ophoto = Input::get('oldphoto');
-
-        $src = null;
-        if($fb_login == 1 || $fb_login == 2) {
-            $src = fb_photo_check($fb_login, $img_src);     
-        }
-
-        if($ln_login == 1) {
-            $src = $img_src;
-        }
-  
-        if($ophoto != 0){
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$ophoto);
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$ophoto);	
-        }
-
-        $targ_w = 150;
-        $targ_h = 150;
-        $jpeg_quality = 100;
-                    
-        if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
-            $extension = ".jpg";
-        }else{
-            $extension = strtolower(strrchr($src, '.'));
-        }
-
-        switch($extension) {
-            case '.jpg':
-            case '.jpeg':
-                $img_r150 = @imagecreatefromjpeg($src);
-                $img_r48 = @imagecreatefromjpeg($src);
-                break;
-            case '.gif':
-                $img_r150 = @imagecreatefromgif($src);
-                $img_r48 = @imagecreatefromgif($src);
-                break;
-            case '.png':
-                $img_r150 = @imagecreatefrompng($src);
-                $img_r48 = @imagecreatefrompng($src);
-                break;
-            default:
-                $img_r150 = false;
-                $img_r48 = false;
-            break;
-        }
-                    
-        $dst_r150 = ImageCreateTrueColor( $targ_w, $targ_h ); 
-        $dst_r48 = ImageCreateTrueColor( 48, 48 ); 
-        $date = date("mdyhis");
-        
-        $out150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$date."-cropped.jpg";
-        $out48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$date."-cropped.jpg";
-        
-        imagecopyresampled($dst_r150,$img_r150,0,0,$x,$y,$targ_w,$targ_h,$wd,$ht);
-        imagejpeg($dst_r150,$out150,$jpeg_quality);
-        
-        imagecopyresampled($dst_r48,$img_r48,0,0,$x,$y,48,48,$wd,$ht);
-        imagejpeg($dst_r48,$out48,$jpeg_quality);
-        
-        echo $date."-cropped.jpg";
-        */
+        $profile_img->crop();     
     },
 
     'POST /widget/form/upload' => function() { 
+        Widget\ProfileImage::upload();
+        /*
         $error = Null;
         $msg = Null;
         $filedir = Null;
@@ -252,6 +183,7 @@ return array(
           , "dir" => $filedir
           , "wid" => $width
         ));
+        */
     },
 
     'GET /widget/profile' => function() {
