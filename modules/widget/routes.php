@@ -108,12 +108,13 @@ return array(
 
     'GET /widget/form/crop' => function() { 
         $img_upload = (object)Input::get();
-        $profile_img = new Widget\ProfileImage($img_upload);
-        $profile_img->crop();     
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->crop($img_upload);     
     },
 
     'POST /widget/form/upload' => function() { 
-        Widget\ProfileImage::upload();
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->upload();
         /*
         $error = Null;
         $msg = Null;

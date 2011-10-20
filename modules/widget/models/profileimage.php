@@ -5,25 +5,25 @@ class ProfileImage {
     private $dir150, $dir48, $date;
     protected $targ_w, $targ_h, $jpeg_quality;
 
-    public function __construct($input_params) { 
+    public function __construct() { 
 
-       $this->input_params = $input_params;
+        $this->date = date("mdyhis");
+        $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
+        $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
+ 
+        $this->targ_w_large = 150;
+        $this->targ_h_large = 150;
 
-       $this->date = date("mdyhis");
-       $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
-       $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
-
-       $this->targ_w_large = 150;
-       $this->targ_h_large = 150;
-
-       $this->targ_w_small = 48;
-       $this->targ_h_small = 48;
-
-       $this->jpeg_quality = 100;
+        $this->targ_w_small = 48;
+        $this->targ_h_small = 48;
+ 
+        $this->jpeg_quality = 100;
                     
     }
 
-    public function crop() {
+    public function crop($input_params) {
+
+        $this->input_params = $input_params;
 
         $fb_login = property_exists($this->input_params, 'fb_login') ? $this->input_params->fb_login : null; 
         $ln_login = property_exists($this->input_params, 'ln_login') ? $this->input_params->ln_login : null;
