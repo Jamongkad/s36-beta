@@ -78,15 +78,20 @@ return array(
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
+        $user = new User; 
+        $feedback = new Feedback;
+
         $vo = new NewFeedbackSubmissionData;
 
         $factory = new EmailFactory($vo);
-        $factory->company_id = Input::get('company_id');
-        $factory->feedback_id = $new_feedback_id;
+        $factory->addresses = $user->pull_user_emails_by_company_id(Input::get('company_id'));
+        $factory->feedback = $feedback->pull_feedback_by_id($new_feedback_id);
+ 
         $email_pages = $factory->execute();
         
         $email = new Email($email_pages);
         $email->process_email();
+
     }, 
 
     'GET /api/publish' => function() { 
@@ -111,14 +116,17 @@ return array(
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
 
+            $user = new User; 
+            $feedback = new Feedback;
+
             $vo = new PublishedFeedbackNotificationData;
             $vo->publisher_email = $publisher->email;
-           
+     
             $factory = new EmailFactory($vo);
-            $factory->company_id = $company_id;
-            $factory->feedback_id = $feedback_id;
-            $email_pages = $factory->execute(); 
-
+            $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
+            $factory->feedback = $feedback->pull_feedback_by_id($feedback_id);
+            $email_pages = $factory->execute();
+           
             $email = new Email($email_pages);
             $email->process_email();
 
