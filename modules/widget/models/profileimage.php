@@ -1,5 +1,7 @@
 <?php namespace Widget;
 
+use Resize;
+
 class ProfileImage {
 
     private $dir150, $dir48, $date;
@@ -140,7 +142,7 @@ class ProfileImage {
                 $move = move_uploaded_file($_FILES[$file]['tmp_name'],"/var/www/s36-upload-images/uploaded_tmp/".$filename);
                 if($move){    
                      //start image resizing..
-                     $resizeObj = new Resize\Resize($filedir);
+                     $resizeObj = new Resize($filedir);
                      $resizeObj->resizeImage($maxwidth, $maxheight, 'auto');
                      $resizeObj->saveImage($filedir, 100);
                      
