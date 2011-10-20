@@ -11,12 +11,12 @@ return array(
         ));
     }),
 
-    'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        print_r("Requesting Feedback"); 
+    'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
+        return View::of_layout()->partial('contents', 'feedback/requestfeedback_view');
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        print_r("Adding Feedback");
+        return View::of_layout()->partial('contents', 'feedback/addfeedback_view');
     }),
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
