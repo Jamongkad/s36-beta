@@ -8,7 +8,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
+<title>Feedback Form</title>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <?=HTML::style('themes/'.strtolower($themeColor->name).'/form_default.css')?>
 <?=HTML::style('css/flags.css')?>

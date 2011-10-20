@@ -7,8 +7,8 @@
                 	<table width="616" cellpadding="0" cellspacing="0">
                     	<!-- header -->
                         <tr>
-                        	<td width="33.33%"><?=HTML::image('img/36storieslogo.jpg')?>
-                            </td><td width="33.33%"></td><td width="33.33%" align="right"></td>
+                        	<td width="33.33%"><?=HTML::image('img/36storieslogo.jpg')?></td>
+                            <td width="33.33%"></td><td width="33.33%" align="right"></td>
                         </tr>
                         <tr height="20">
                         	<td colspan="3"></td>

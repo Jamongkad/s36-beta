@@ -1,46 +1,33 @@
 <?php
-
+//TODO: Refactor
 class EmailFactory {
 
-    private $addresses, $message, $feedback;
-    public $company_id, $feedback_id;
+    private $opts;
+
+    public $addresses, $message, $feedback;
 
     public function __construct(EmailData $opts) { 
+        $this->opts = $opts;
         $this->publisher_email = $opts->publisher_email;
         $this->get_type = $opts->get_type();
-
-        $this->user = new User; 
-        $this->feedback = new Feedback;
     }
-
-    private function _addresses() {        
-        if($user = $this->user->pull_user_emails_by_company_id($this->company_id)) {
-            return $user;  
-        } else { 
-            throw new Exception("No User Email addresses!");
-        }
-    }
-
-    private function _feedback() { 
-        if($feedback = $this->feedback->pull_feedback_by_id($this->feedback_id)) {
-            return $feedback;  
-        } else { 
-            throw new Exception("No User Feedback!");
-        }
-    }
-
+    
     public function execute() {
 
         $collection = Array();
          
-        foreach($this->_addresses() as $address) {
+        foreach($this->addresses as $address) {
             if($this->get_type == 'NewFeedbackSubmissionData') {
-                $collection[] = new NewFeedbackSubmission($address, $this->_feedback(), "36Stories: New Feedback Notification");     
+                $collection[] = new NewFeedbackSubmission($address, $this->feedback, "36Stories: New Feedback Notification");     
             } 
 
             if($this->get_type == 'PublishedFeedbackNotificationData') {
-                $collection[] = new PublishedFeedbackNotification($address, $this->_feedback(), "36Stories: Published Feedback Notification", $this->publisher_email);     
+                $collection[] = new PublishedFeedbackNotification($address, $this->feedback, "36Stories: Published Feedback Notification", $this->publisher_email);     
             } 
+
+            if($this->get_type == 'RequestFeedbackData') {
+                $collection[] = new RequestFeedback($address, $this->message, "36Stories: Feedback Request", $this->opts);
+            }
         }
 
         return $collection;
@@ -116,4 +103,30 @@ class PublishedFeedbackNotification extends EmailFixture {
         return $this->subject;     
     }
     
+}
+
+class RequestFeedback extends EmailFixture {
+    
+    public function __construct($address, $message, $subject, $email_data) {
+        $this->email_data = $email_data;
+        $this->address = $address; 
+        $this->message = $message;
+        $this->subject = $subject;
+    }
+
+    public function get_address() {
+        return $this->address->email;
+    }
+
+    public function get_message() {
+        return View::make('email/request_feedback_view', Array(
+            'email_data' => $this->email_data
+          , 'address' => $this->address
+          , 'message' => $this->message
+        ));     
+    }
+
+    public function get_subject() {
+        return $this->subject;     
+    }
 }

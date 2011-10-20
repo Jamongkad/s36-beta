@@ -14,3 +14,8 @@ class NewFeedbackSubmissionData extends EmailData {}
 class PublishedFeedbackNotificationData extends EmailData { 
     public $publisher_email = null;
 }
+
+class RequestFeedbackData extends EmailData {
+    public $first_name = null;    
+    public $last_name = null;
+}
