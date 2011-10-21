@@ -107,7 +107,7 @@ return array(
         
         //decrypt string use user and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
-
+            $user = new User; 
             //flick feedback publish this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
@@ -116,15 +116,12 @@ return array(
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
 
-            $user = new User; 
-            $feedback = new Feedback;
-
             $vo = new PublishedFeedbackNotificationData;
             $vo->publisher_email = $publisher->email;
      
             $factory = new EmailFactory($vo);
             $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
-            $factory->feedback = $feedback->pull_feedback_by_id($feedback_id);
+            $factory->feedback = $feedback_model->pull_feedback_by_id($feedback_id);
             $email_pages = $factory->execute();
            
             $email = new Email($email_pages);
