@@ -21,6 +21,8 @@
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
         <?=HTML::script('js/jquery.form.js')?>
+        <?=HTML::script('js/jquery.validate.min.js')?>
+
     </meta>    
 </head>
 <body>

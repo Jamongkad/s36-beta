@@ -345,6 +345,12 @@ jQuery(function($) {
             $('#lightbox').append(insertContent);
         }
         
+        $("#requestForm").validate({
+            rules: {
+                firstname: "required"     
+            }     
+        });
+
         //set negative margin for dynamic width
         var margin = Math.round(width / 2);
         
@@ -364,4 +370,5 @@ jQuery(function($) {
         $('#lightbox').fadeOut('fast',function(){$(this).empty();});
         $('#lightbox-shadow').fadeOut('fast');
     }    
+
 });

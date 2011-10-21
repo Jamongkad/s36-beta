@@ -2,6 +2,7 @@
 
 $feedback = new Feedback;
 $category = new Category;
+Package::load('S36ValueObjects');
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
@@ -12,8 +13,58 @@ return array(
     }),
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
-        return View::of_layout()->partial('contents', 'feedback/requestfeedback_view');
+        return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
+            'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+          , 'errors' => Array()
+          , 'input' => Array('firstname' => null, 'lastname' => null, 'email' => null, 'custom_message' => "")
+        ));
     }),
+
+    'POST /feedback/requestfeedback' => function() {
+        $data = Input::get();
+        $rules = Array(
+            'firstname' => 'required'
+          , 'lastname' => 'required'
+          , 'email' => 'required|email'
+          , 'custom_message' => 'required'
+        );
+
+        $validator = Validator::make($data, $rules);
+        if(! $validator->valid() ) {
+            return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
+                'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+              , 'errors' => $validator->errors
+              , 'input' => $data
+            ));
+        } else {      
+
+            $auth = new S36Auth;
+            
+            $vo = new RequestFeedbackData;
+            $vo->first_name = $data['firstname'];
+            $vo->last_name  = $data['lastname'];
+
+            $factory = new EmailFactory($vo);
+
+            $email_obj = new StdClass;
+            $email_obj->email = $data['email'];
+
+            $message_obj = new StdClass;
+            $message_obj->custom_message = $data['custom_message'];
+            $message_obj->user = $auth->user();
+            $message_obj->company = $auth->user_company();
+            $message_obj->sites = $data['site_id'];
+
+            $factory->addresses = Array($email_obj);
+            $factory->message = $message_obj;
+            $email_page = $factory->execute();
+     
+            //return $email_page[0]->get_message();
+            $emailer = new Email($email_page);
+            $emailer->process_email();
+
+        }
+    },
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'feedback/addfeedback_view');

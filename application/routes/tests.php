@@ -46,7 +46,7 @@ return array(
         
         $vo = new RequestFeedbackData;
         $vo->first_name = "Ryan";
-        $vo->last_name = "Chua";
+        $vo->last_name  = "Chua";
 
         $factory = new EmailFactory($vo);
 
