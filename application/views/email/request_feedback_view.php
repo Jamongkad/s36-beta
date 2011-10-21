@@ -11,7 +11,7 @@
 <table bgcolor="#dde0e3" width="716" cellpadding="0" cellspacing="0">
 	<tr>
     	<td style="padding:30px 30px 10px;">
-        	<table bgcolor="#FFF" cellpadding="0" cellspacing="0">
+        	<table bgcolor="white" style="background-color:white" cellpadding="0" cellspacing="0">
             	<tr><td style="padding:20px;" cellpadding="0" cellspacing="0">
                 	<table width="616" cellpadding="0" cellspacing="0">
                     	<!-- header -->
