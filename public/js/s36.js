@@ -330,7 +330,7 @@ jQuery(function($) {
         return embed_choice_string; 
     }
 
-    function s36Lightbox(width,height,insertContent){	
+    function s36Lightbox(width, height, insertContent) {	
         if($('#lightbox').size() == 0){
             var theLightbox = $('<div id="lightbox"/>');
             var theShadow = $('<div id="lightbox-shadow"/>');
@@ -345,12 +345,6 @@ jQuery(function($) {
             $('#lightbox').append(insertContent);
         }
         
-        $("#requestForm").validate({
-            rules: {
-                firstname: "required"     
-            }     
-        });
-
         //set negative margin for dynamic width
         var margin = Math.round(width / 2);
         
