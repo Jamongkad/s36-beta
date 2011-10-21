@@ -45,16 +45,16 @@ return array(
         $auth = new S36Auth;
         
         $vo = new RequestFeedbackData;
-        $vo->first_name = "Mathew";
-        $vo->last_name = "Wong";
+        $vo->first_name = "Ryan";
+        $vo->last_name = "Chua";
 
         $factory = new EmailFactory($vo);
 
         $email_obj = new StdClass;
-        $email_obj->email = "mathew@36stories.com";
+        $email_obj->email = "ryanchua6@gmail.com";
 
         $message_obj = new StdClass;
-        $message_obj->custom_message = "Mathew is awesome.";
+        $message_obj->custom_message = "Mathew would like to know if you think he's awesome and shit.";
         $message_obj->user = $auth->user();
         $message_obj->company = $auth->user_company();
         $message_obj->sites = 1;
