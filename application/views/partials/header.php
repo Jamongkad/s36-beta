@@ -160,6 +160,13 @@
                         CONTACTS <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
+
+                <?if(preg_match_all('/feedback\/requestfeedback/', Request::uri(), $matches)):?>
+                    <div class="current-page request"> 
+                        REQUEST FEEDBACK 
+                    </div>
+                <?endif?>
+
                 <?if(preg_match_all('/deleted/', Request::uri(), $matches)):?>
                     <div class="current-page trash"> 
                         DELETED FEEDBACK <!--<span>There were 27 new feedback since your last visit.</span>--> 
