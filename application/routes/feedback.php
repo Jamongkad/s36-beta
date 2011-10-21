@@ -62,7 +62,8 @@ return array(
             //return $email_page[0]->get_message();
             $emailer = new Email($email_page);
             $emailer->process_email();
-
+            
+            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
         }
     },
 
