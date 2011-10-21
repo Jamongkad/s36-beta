@@ -48,7 +48,7 @@
 								<br /><br />
                                 <?=ucfirst($message->user->username)?> also has this to add:
 								<br /><br />                                
-                                "<?=$message->custom_message?>"
+                                <h3>"<?=$message->custom_message?>"</h3>
                             </td>
                         </tr>
                         <tr height="80">

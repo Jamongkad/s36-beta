@@ -63,7 +63,9 @@ return array(
         $factory->message = $message_obj;
         $email_page = $factory->execute();
  
-        return $email_page[0]->get_message();
-       
+        //return $email_page[0]->get_message();
+        $emailer = new Email($email_page);
+        $emailer->process_email();
+
     }
 );
