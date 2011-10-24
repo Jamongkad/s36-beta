@@ -366,3 +366,113 @@ jQuery(function($) {
     }    
 
 });
+
+App = {
+    start: function() {
+       new App.SearchRouter();
+    }
+}
+
+App.SearchResult = Backbone.Model.extend({});
+App.SearchResultList = Backbone.Collection.extend({
+    model: App.SearchResult  
+});
+
+App.searchResults = new App.SearchResultList();
+
+App.SearchController = {
+    search: function(term) {
+        App.searchResults.add({term: term});
+    }
+}
+
+App.SearchResultsView = Backbone.View.extend({
+    el: "#search-results"  
+  , initialize: function() {
+        App.searchResults.bind('add', this.renderItem, this);
+    }
+  , renderItem: function(model) {
+        var view = new App.SearchResultView({model: model});
+        $(this.el).append(view.el).show();
+    }
+});
+
+
+App.Favorite = Backbone.Model.extend({});
+App.FavoriteList = Backbone.Collection.extend({
+    model: App.Favorite
+});
+
+App.favorites = new App.FavoriteList();
+
+App.FavoritesView = Backbone.View.extend({
+    el: "#favorites"
+  , initialize: function() {
+        App.favorites.bind("add", this.renderItem, true);
+    }
+  , renderItem: function(model) { 
+        var view = new App.FavoritesResultView({model: model});
+        $(this.el).append(view.el).show();
+    }
+});
+
+App.FavoritesResultView = Backbone.View.extend({
+    tagName: "div"    
+  , initialize: function() {   
+        this.template = _.template($('#imageTemplate').html());
+        this.render();
+    }
+  , render: function() { 
+        var html = this.template({model: this.model.toJSON()});
+        $(this.el).append(html);
+    }
+})
+
+App.SearchResultView = Backbone.View.extend({
+    tagName: "div"  
+  , events: {
+        'click a': 'imageClick'
+    }
+  , initialize: function() {
+        this.template = _.template($('#imageTemplate').html());
+        this.render();
+    }
+  , render: function() {
+        var html = this.template({model: this.model.toJSON()});
+        $(this.el).append(html);
+    }
+  , imageClick: function() {
+        App.favorites.add(this.model);
+    }
+});
+
+App.SearchRouter = Backbone.Router.extend({
+    
+    initialize: function() {
+        new App.SearchView({router: this});
+        new App.SearchResultsView();
+        new App.FavoritesView();
+    }
+  , routes: {
+        'search/:term': 'search'
+    }  
+  , search: function(term) {
+        App.SearchController.search(term);
+    }
+});
+
+App.SearchView = Backbone.View.extend({
+    el: "#search"  
+  , events: {
+        'keypress': 'handleEnter'
+    }
+  , initialize: function() {
+        this.router = this.options.router;
+        $(this.el).focus();
+    }
+  , handleEnter: function(e) {
+        if(e.keyCode == 13) {
+            this.router.navigate("search/" + $(this.el).val(), true);
+        }
+    }
+});

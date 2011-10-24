@@ -68,7 +68,9 @@ return array(
     },
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'feedback/addfeedback_view');
+        return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
+            'countries' => DB::Table('Country', 'master')->get()
+        ));
     }),
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 

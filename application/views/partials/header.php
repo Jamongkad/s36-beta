@@ -11,9 +11,11 @@
         <?=HTML::style('css/zebra_pagination.css')?>
 
         <?=HTML::script('js/jquery-1.6.2.min.js')?>
+
+        <?=HTML::script('js/underscore-min.js')?>
+        <?=HTML::script('js/backbone.js')?>
+
         <?=HTML::script('js/jquery.tmpl.js')?>
-        <?//=HTML::script('js/knockout-1.2.1.js')?>
-        <?=HTML::script('js/s36.js')?>
         <?=HTML::script('js/Checky.js')?> 
         <?=HTML::script('js/FeedbackBlockDisplay.js')?>
         <?=HTML::script('js/DropDownChange.js')?>
@@ -21,8 +23,8 @@
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
         <?=HTML::script('js/jquery.form.js')?>
-        <?//=HTML::script('js/jquery.validate.min.js')?>
 
+        <?=HTML::script('js/s36application.js')?>
     </meta>    
 </head>
 <body>
@@ -164,6 +166,12 @@
                 <?if(preg_match_all('/feedback\/requestfeedback/', Request::uri(), $matches)):?>
                     <div class="current-page request"> 
                         REQUEST FEEDBACK 
+                    </div>
+                <?endif?>
+
+                <?if(preg_match_all('/feedback\/addfeedback/', Request::uri(), $matches)):?>
+                    <div class="current-page setup"> 
+                        ADD FEEDBACK 
                     </div>
                 <?endif?>
 
