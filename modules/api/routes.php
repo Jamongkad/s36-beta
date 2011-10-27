@@ -78,14 +78,11 @@ return array(
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
-        $user = new User; 
-        $feedback = new Feedback;
-
         $vo = new NewFeedbackSubmissionData;
 
         $factory = new EmailFactory($vo);
-        $factory->addresses = $user->pull_user_emails_by_company_id(Input::get('company_id'));
-        $factory->feedback = $feedback->pull_feedback_by_id($new_feedback_id);
+        $factory->addresses = $us->pull_user_emails_by_company_id(Input::get('company_id'));
+        $factory->feedback = $fb->pull_feedback_by_id($new_feedback_id);
  
         $email_pages = $factory->execute();
         

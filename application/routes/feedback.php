@@ -68,10 +68,17 @@ return array(
     },
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
+        $company_id = S36Auth::user()->companyid;
         return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
-            'countries' => DB::Table('Country', 'master')->get()
+            'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
+          , 'countries' => DB::Table('Country', 'master')->get()
+          , 'company_id' => $company_id
         ));
     }),
+
+    'POST /feedback/addfeedback' => function() {
+        Helpers::show_data(Input::get());
+    },
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
         $undo_result = $feedback->fetch_deleted_feedback();

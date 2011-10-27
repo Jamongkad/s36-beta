@@ -24,6 +24,9 @@
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
         <?=HTML::script('js/jquery.form.js')?>
 
+        <?=HTML::script('js/jquery.jcrop.js')?>
+        <?=HTML::script('js/jquery.ajaxfileupload.js')?>
+
         <?=HTML::script('js/s36application.js')?>
     </meta>    
 </head>

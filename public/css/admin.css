@@ -1,10 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 /* Admin Panel for 36Stories */
-html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, 
+html, body, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, 
 pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, 
 s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, 
 li, fieldset, form, label, legend, caption{border: 0;margin: 0;outline: 0;padding: 0;vertical-align: baseline;position:relative;}
+
 body{
 	font-family:Arial, Helvetica, sans-serif;font-size:12px;color:#666;
 	background:url(../img/background.jpg) #FFF;
@@ -116,6 +117,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .admin-sorter-bar .pagination input.pagination-input{font-size:11px;width:10px;text-align:center;font-weight:bold;color:#5c646a;padding:1px 3px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;border:1px solid #ababab;}
 
 #admin-panel .main-panel .the-feedbacks{padding:0px 0px;display:block;background:#FFF;font-size:10px;}
+#admin-panel .main-panel .the-feedbacks div{position:relative;margin:0; padding:0;}
 #admin-panel .main-panel .the-feedbacks .feedback{clear:both;float:left;display:block;width:100%;border-bottom:1px solid #e4e4e4;padding:15px 0px;}
 
 #admin-panel .main-panel .left{width:10%;float:left;text-align:center;}
@@ -397,3 +399,43 @@ input.login-btn:hover{background-position:bottom center;cursor:pointer;}
 input.reg-text{padding:7px 10px;width:290px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
 input.login-text{padding:7px 10px;width:240px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
 select.reg-select{padding:7px 10px;width:310px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
+
+/* jcrop css */
+#crop_status{padding-left:5px;}
+.jcrop_div{margin:0 auto;position:relative;margin-bottom:10px;}
+.jcrop_div input{display:none !important;}
+/* Fixes issue here http://code.google.com/p/jcrop/issues/detail?id=1 */
+.jcrop-holder { text-align: left; }
+
+.jcrop-vline, .jcrop-hline
+{
+	font-size: 0px;
+	position: absolute;
+	background: white url('../img/Jcrop.gif') top left repeat;
+}
+.jcrop-vline { height: 100%; width: 1px !important; }
+.jcrop-hline { width: 100%; height: 1px !important; }
+.jcrop-vline.right { right: 0px; }
+.jcrop-hline.bottom { bottom: 0px; }
+.jcrop-handle {
+	font-size: 1px;
+	width: 7px !important;
+	height: 7px !important;
+	border: 1px #eee solid;
+	background-color: #333;
+}
+
+.jcrop-tracker { width: 100%; height: 100%; }
+
+.custom .jcrop-vline,
+.custom .jcrop-hline
+{
+	background: yellow;
+}
+.custom .jcrop-handle
+{
+	border-color: black;
+	background-color: #C7BB00;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}

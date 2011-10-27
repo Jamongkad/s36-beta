@@ -1,4 +1,3 @@
-var jcrop_api;
 /* 
 Form interactions. Text boxes and Combo boxes style changer
 */
@@ -349,64 +348,39 @@ function fb_connect_success(obj){
 		}
 	}
 /*
-function for the thumbnail preview of the cropping script
-*/
-function showPreview(coords) {
-
-	var rx = 100 / coords.w;
-	var ry = 100 / coords.h;
-	var target = $('#jcrop_target');
-	var hgt = target.height();
-	var wdt = target.width();
-	
-	$('#x').val(coords.x);
-	$('#y').val(coords.y);
-	$('#w').val(coords.w);
-	$('#h').val(coords.h);
-	
-	$('#preview').css({
-		width: Math.round(rx * wdt) + 'px',
-		height: Math.round(ry * hgt) + 'px',
-		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-		marginTop: '-' + Math.round(ry * coords.y) + 'px'
-	});
-};
-
-
-/*
 Function for uploading images using ajax
 */
 function ajaxFileUpload() {
-		//starting setting some animation when the ajax starts and completes
-		var loader = $('#loading');
-		
-		loader.fadeIn();
-		$.ajaxFileUpload ({
-            url: $("#ajax-upload-url").attr('hrefaction'),
-            secureuri:false,
-            fileElementId:'your_photo',
-            dataType: 'json',
-            success: function (data, status) {	 
-               
-                if(data.error == null) {     
-                    change_images(data.dir, 'native');
-                    change_jcrop_div(data.wid);
-                    loader.fadeOut(function(){$(this).html("loading...")});
-                                        
-                    if($('#fb_flag').val() == 1) {
-                        $('#fb_flag').val(2);
-                    }
-                   
-                } else { 
-                    loader.html(data.error);
+    //starting setting some animation when the ajax starts and completes
+    var loader = $('#loading');
+    
+    loader.fadeIn();
+    $.ajaxFileUpload ({
+        url: $("#ajax-upload-url").attr('hrefaction'),
+        secureuri:false,
+        fileElementId:'your_photo',
+        dataType: 'json',
+        success: function (data, status) {	 
+           
+            if(data.error == null) {     
+                change_images(data.dir, 'native');
+                change_jcrop_div(data.wid);
+                loader.fadeOut(function(){$(this).html("loading...")});
+                                    
+                if($('#fb_flag').val() == 1) {
+                    $('#fb_flag').val(2);
                 }
-
-            },
-            error: function (data, status, e) {
-                console.log(data);
+               
+            } else { 
+                loader.html(data.error);
             }
-		});
-	}  
+
+        },
+        error: function (data, status, e) {
+            console.log(data);
+        }
+    });
+}  
 /*
 Function that changes the images based on its dir parameter where dir is the location of the image
 */
@@ -464,29 +438,53 @@ function save_crop_image(){
 /*
 Function for initializing jCrop
 */
-
+var jcrop_api;
 function init_jcrop(){
-		$('#jcrop_target').Jcrop({
-			setSelect: ['40','20','190','170'],
-			boxWidth: 350,
-			boxHeight: 230,
-			onChange: showPreview,
-			onSelect: showPreview,
-			aspectRatio: 1
-		},function(){
-			jcrop_api = this;
-			var jcwid = $('.jcrop-holder').width();
-			change_jcrop_div(jcwid);
-		});
+    $('#jcrop_target').Jcrop({
+        setSelect: ['40','20','190','170'],
+        boxWidth: 350,
+        boxHeight: 230,
+        onChange: showPreview,
+        onSelect: showPreview,
+        aspectRatio: 1
+    },function(){
+        jcrop_api = this;
+        var jcwid = $('.jcrop-holder').width();
+        change_jcrop_div(jcwid);
+    });
 		
-	}
+}
 /*
 Change the jCrop div based on the image width
 */
 function change_jcrop_div(width){
-		width = Math.round(width);
-		$('div.jcrop_div').css({'width':width});
-	}
+    var width = Math.round(width);
+    $('div.jcrop_div').css({'width':width});
+}
+/*
+function for the thumbnail preview of the cropping script
+*/
+function showPreview(coords) {
+
+	var rx = 100 / coords.w;
+	var ry = 100 / coords.h;
+	var target = $('#jcrop_target');
+	var hgt = target.height();
+	var wdt = target.width();
+	
+	$('#x').val(coords.x);
+	$('#y').val(coords.y);
+	$('#w').val(coords.w);
+	$('#h').val(coords.h);
+	
+	$('#preview').css({
+		width: Math.round(rx * wdt) + 'px',
+		height: Math.round(ry * hgt) + 'px',
+		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+		marginTop: '-' + Math.round(ry * coords.y) + 'px'
+	});
+};
+
 /*
 Assign the form values to blank html tags for preview purposes
 */	
@@ -523,6 +521,7 @@ function assign_to_review(photo){
 		$('#review-feedback').html(feedback);
 		
 	}
+
 function get_flag(country){
 	var country_flag = country.toLowerCase();
 	var flag_class = "flag-";

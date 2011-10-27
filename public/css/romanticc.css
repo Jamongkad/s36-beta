@@ -309,7 +309,7 @@ ul.category-picker li {
 
 .base-popup{
     z-index: 2000;
-    position:absolute;
+    position:absolute !important;
     background:#e4e5e6;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
     padding:3px 5px;
     border-top:1px solid #ebecec;
@@ -319,7 +319,7 @@ ul.category-picker li {
     text-shadow:#ebecec 0px 1px;
     box-shadow:#d2d3d3 0px 0px 10px;
 }
-.base-popup .popup-arrow{background:url(../img/popup-arrow.png) no-repeat;width:9px;height:17px;position:absolute;right:-9px;top:8px;}
+.base-popup .popup-arrow{background:url(../img/popup-arrow.png) no-repeat;width:9px;height:17px;position:absolute !important;right:-9px;top:8px;}
 .base-popup ul{margin:0;padding:0;list-style:none;}
 .base-popup ul li{margin:0;padding:2px;}
 .base-popup ul li.Matched{background:#3a4c5c;color:#e4e5e6;text-shadow:none;}

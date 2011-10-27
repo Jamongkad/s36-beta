@@ -115,15 +115,14 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		}
 
         if(cur_step == "step_2"){
-				var permission = $('[name="your_permission"]:checked').size();
-				if(permission <= 0){
-					add_error('Please Select a Permission for your feedback');
-					return false;
-				}else{
-					console.log("move to 2 and 3");
-					return 2;
-		        }
-
+            var permission = $('[name="your_permission"]:checked').size();
+            if(permission <= 0){
+                add_error('Please Select a Permission for your feedback');
+                return false;
+            }else{
+                console.log("move to 2 and 3");
+                return 2;
+            }
 		}
         
         if(cur_step == "step_3"){
@@ -133,7 +132,6 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
         
         if(cur_step == "step_4"){
 			// the form validations 
-
             //check if avatar is blank...
             if($('#profile_picture').attr('src').match(/blank-avatar/)) {
 				add_error('Profile Photo required...');
@@ -552,7 +550,10 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                     <div class="review-change-photo"></div>
                     <div class="review-feedback-box" id="review-feedback-box">
                     	<div id="review-feedback" class="review-feedback"></div>
-                        <div class="review-edit-feedback"><a href="javascript:;" id="edit-review-feedback">edit</a><a href="javascript:;" id="save-edited-feedback">save</a></div>
+                        <div class="review-edit-feedback">
+                            <a href="javascript:;" id="edit-review-feedback">edit</a>
+                            <a href="javascript:;" id="save-edited-feedback">save</a>
+                        </div>
                     </div>
                 </div>
             </div>

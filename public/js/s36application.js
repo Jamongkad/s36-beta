@@ -365,114 +365,100 @@ jQuery(function($) {
         $('#lightbox-shadow').fadeOut('fast');
     }    
 
-});
+    var jcrop_api, set_image;
 
-App = {
-    start: function() {
-       new App.SearchRouter();
+    function initJcrop() { 
+        $('#jcrop_target').Jcrop({
+            setSelect: ['40','20','190','170']
+          , boxWidth: 350
+          , boxHeight: 230
+          , aspectRatio: 1
+          , onChange: showPreview
+          , onSelect: showPreview
+        }, function() {
+            jcrop_api = this;  
+        });
     }
-}
 
-App.SearchResult = Backbone.Model.extend({});
-App.SearchResultList = Backbone.Collection.extend({
-    model: App.SearchResult  
-});
+    function showPreview(coords) {
 
-App.searchResults = new App.SearchResultList();
+        var rx = 100 / coords.w;
+        var ry = 100 / coords.h;
+        var target = $('#jcrop_target');
+        var hgt = target.height();
+        var wdt = target.width();
+        
+        $('#x').val(coords.x);
+        $('#y').val(coords.y);
+        $('#w').val(coords.w);
+        $('#h').val(coords.h);
+        
+        $('#preview').css({
+            width: Math.round(rx * wdt) + 'px',
+            height: Math.round(ry * hgt) + 'px',
+            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+            marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        });
+    };
 
-App.SearchController = {
-    search: function(term) {
-        App.searchResults.add({term: term});
+    function save_crop_image(){
+        //hide_error();
+        var fb_login = $("#fb_flag").val();
+        var x_coords = $('#x').val();
+        var y_coords = $('#y').val();
+        var wd = $('#w').val();
+        var ht = $('#h').val();
+        var cropped_photo = $('#preview').attr('src');
+        var status = $('#crop_status');
+        var oldphoto = $('input[name="cropped_image_nm"]').val();
+        
+        status.html(' Cropping Photo...');
+        
+        return $.ajax({
+            url: $("#ajax-crop-url").attr('hrefaction'),
+            method: 'GET',
+            async: false,
+            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
+            success: function(data){
+                status.fadeOut('fast',function(){
+                    status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
+                    status.fadeIn();
+                    //set to signify photo has already been uploaded and in case of another photo upload will delete old photo
+                    $('input[name="cropped_image_nm"]').val(data);
+                });
+            }
+        });
     }
-}
 
-App.SearchResultsView = Backbone.View.extend({
-    el: "#search-results"  
-  , initialize: function() {
-        App.searchResults.bind('add', this.renderItem, this);
-    }
-  , renderItem: function(model) {
-        var view = new App.SearchResultView({model: model});
-        $(this.el).append(view.el).show();
-    }
-});
+    $(document).delegate("#your_photo", "change", function() {   
+		$.ajaxFileUpload ({
+            url: $("#ajax-upload-url").attr('hrefaction'),
+            secureuri:false,
+            fileElementId:'your_photo',
+            dataType: 'json', 
+            success: function (data, status) {	  
+                
+                initJcrop();
 
+                var file = "/" + data.dir;
+                var width = Math.round(data.wid);
+                var jcrop_div = $("div.jcrop_div");
 
-App.Favorite = Backbone.Model.extend({});
-App.FavoriteList = Backbone.Collection.extend({
-    model: App.Favorite
-});
+                $('#profile_picture').attr('src',file);
+                $('#jcrop_target').attr('src',file);
+                $('#preview').attr('src',file);
 
-App.favorites = new App.FavoriteList();
+                if(jcrop_api) {
+                    jcrop_api.setImage($('#profile_picture').attr('src'));
+                    jcrop_api.setSelect(['40','20','190','170']);
+                }
 
-App.FavoritesView = Backbone.View.extend({
-    el: "#favorites"
-  , initialize: function() {
-        App.favorites.bind("add", this.renderItem, true);
-    }
-  , renderItem: function(model) { 
-        var view = new App.FavoritesResultView({model: model});
-        $(this.el).append(view.el).show();
-    }
-});
+                jcrop_div.css({'width':width});
+            }
+		}); 
+    });
 
-App.FavoritesResultView = Backbone.View.extend({
-    tagName: "div"    
-  , initialize: function() {   
-        this.template = _.template($('#imageTemplate').html());
-        this.render();
-    }
-  , render: function() { 
-        var html = this.template({model: this.model.toJSON()});
-        $(this.el).append(html);
-    }
-})
-
-App.SearchResultView = Backbone.View.extend({
-    tagName: "div"  
-  , events: {
-        'click a': 'imageClick'
-    }
-  , initialize: function() {
-        this.template = _.template($('#imageTemplate').html());
-        this.render();
-    }
-  , render: function() {
-        var html = this.template({model: this.model.toJSON()});
-        $(this.el).append(html);
-    }
-  , imageClick: function() {
-        App.favorites.add(this.model);
-    }
-});
-
-App.SearchRouter = Backbone.Router.extend({
-    
-    initialize: function() {
-        new App.SearchView({router: this});
-        new App.SearchResultsView();
-        new App.FavoritesView();
-    }
-  , routes: {
-        'search/:term': 'search'
-    }  
-  , search: function(term) {
-        App.SearchController.search(term);
-    }
-});
-
-App.SearchView = Backbone.View.extend({
-    el: "#search"  
-  , events: {
-        'keypress': 'handleEnter'
-    }
-  , initialize: function() {
-        this.router = this.options.router;
-        $(this.el).focus();
-    }
-  , handleEnter: function(e) {
-        if(e.keyCode == 13) {
-            this.router.navigate("search/" + $(this.el).val(), true);
-        }
-    }
+    $('#cropbtn').click(function(){ 
+        save_crop_image(); 
+    });
 });
