@@ -438,8 +438,6 @@ jQuery(function($) {
             dataType: 'json', 
             success: function (data, status) {	  
                 
-                initJcrop();
-
                 var file = "/" + data.dir;
                 var width = Math.round(data.wid);
                 var jcrop_div = $("div.jcrop_div");
@@ -454,6 +452,8 @@ jQuery(function($) {
                 }
 
                 jcrop_div.css({'width':width});
+
+                initJcrop();
             }
 		}); 
     });
