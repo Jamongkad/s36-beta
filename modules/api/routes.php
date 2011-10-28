@@ -39,6 +39,7 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => function() {
+        /*
         $fb = new Feedback;
         $ct = new Contact;
         $us = new User;
@@ -88,7 +89,9 @@ return array(
         
         $email = new Email($email_pages);
         $email->process_email();
-
+        */
+        $addfeedback = new AddFeedback;
+        $addfeedback->create_feedback();
     }, 
 
     'GET /api/publish' => function() { 
