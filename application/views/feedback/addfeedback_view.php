@@ -136,9 +136,7 @@ function slide_track_to(y,rating){
             .rate{float:right;width:517px;}
             .rate-text{float:left;padding-top:16px;}
 </style>
-<?//=Form::open('feedback/addfeedback')?>
-
-<?=Form::open('api/submit_feedback')?>
+<?=Form::open('feedback/addfeedback')?>
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <div class="block">
     <div id="add-feedback-setup-block">

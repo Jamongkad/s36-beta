@@ -68,6 +68,7 @@ return array(
     },
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
+
         $company_id = S36Auth::user()->companyid;
         return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
@@ -77,7 +78,9 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => function() {
-        Helpers::show_data(Input::get());
+        $addfeedback = new AddFeedback;
+        $addfeedback->create_feedback();
+        //Helpers::show_data(Input::get());
     },
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 

@@ -1,5 +1,4 @@
 <?php
-//Going old school PDO. No flappy gearbox ORM's hahaha
 class Feedback {
 
     private $dbh;
