@@ -80,7 +80,7 @@ return array(
     'POST /feedback/addfeedback' => function() {
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback();
-        //Helpers::show_data(Input::get());
+        Redirect::to('feedback/addfeedback');
     },
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
