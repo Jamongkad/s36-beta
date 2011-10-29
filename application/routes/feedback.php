@@ -78,9 +78,11 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => function() {
+       
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback();
         return Redirect::to('feedback/addfeedback');
+        
     },
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 

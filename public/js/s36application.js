@@ -453,6 +453,7 @@ jQuery(function($) {
 
                 jcrop_div.css({'width':width});
 
+                $('input[name="orig_image_dir"]').val(file);
                 initJcrop();
             }
 		}); 

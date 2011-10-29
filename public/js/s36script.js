@@ -611,7 +611,7 @@ function send_form_data(){
 		
 		// check avatar
 		var preview = $('#preview').attr('src');
-		var avatar = '';
+		var avatar;
 		avatar = preview != "/img/sample-avatar.png" ? preview : '';
 		
 		// check permissions if

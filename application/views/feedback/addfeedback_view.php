@@ -289,6 +289,7 @@ function slide_track_to(y,rating){
                                         <input type="hidden" id="h" name="h" />
                                     </form>
                                 </div>
+                                <input type="hidden" name="orig_image_dir" value="" />
                                 <input type="button" value="crop" id="cropbtn"/>
                             </div>   
                         </div>

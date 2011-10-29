@@ -39,11 +39,8 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => function() {
-        /* 
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback();
-        */
-        Helpers::show_data(Input::get());
     }, 
 
     'GET /api/publish' => function() { 

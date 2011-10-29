@@ -53,6 +53,9 @@ class AddFeedback {
         
         $email = new Email($email_pages);
         $email->process_email();
+
+        //delete original photo once done... 
+        @unlink("/var/www/s36-upload-images".Input::get('orig_image_dir'));
     }
 
 }
