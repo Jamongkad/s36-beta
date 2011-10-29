@@ -40,7 +40,7 @@ return array(
 
     'POST /api/submit_feedback' => function() {
         $addfeedback = new AddFeedback;
-        $addfeedback->create_feedback();
+        $addfeedback->create_feedback_with_profile();
     }, 
 
     'GET /api/publish' => function() { 

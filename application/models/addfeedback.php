@@ -2,7 +2,7 @@
 
 class AddFeedback {
 
-    public function create_feedback() {
+    public function create_feedback_with_profile() {
         
         $fb = new Feedback;
         $ct = new Contact;
