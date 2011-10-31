@@ -585,7 +585,20 @@ class Feedback {
     }
 
     public function permanently_removed_feedback($id) { 
-        return $this->pull_feedback_by_id($id);
+        $feedback = DB::table('Feedback', 'master')
+                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
+                        ->where('Feedback.feedbackId', '=', $id)
+                        ->first();
+
+        //delete profile photos...
+        if($feedback->avatar) { 
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$feedback->avatar);
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$feedback->avatar);	
+        }
+        //delete contact...
+        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
+        //delete feedback...
+        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)->delete();
     }
 
     public function contact_detection($opts) {
