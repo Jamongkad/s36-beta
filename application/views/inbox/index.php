@@ -13,7 +13,7 @@
                         <?if($feed->avatar):?> 
                             <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar)?>
                         <?else:?>
-                            <?=HTML::image('img/avatar-matthew.png')?>
+                            <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                         <?endif?>
                     </div>
                     <div class="feedback-details">
@@ -92,7 +92,8 @@
                             <input type="button" class="remove"
                             <?=Helpers::switchable($feed->isdeleted, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                         <?else:?>
-                            <?//=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?>
+                            <?=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>
+                            <?=HTML::link('/feedback/removefeedback/'.$id, 'remove feedback')?>
                         <?endif?>
                     </div>
                 </div>

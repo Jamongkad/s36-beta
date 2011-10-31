@@ -175,6 +175,10 @@ return array(
         } 
     },
 
+    'GET /feedback/removefeedback/(:num)' => function($id) use ($feedback) {
+        print_r("Removed".$id);
+    },
+
     'GET /feedback/samplefeeds/(:any?)/(:any?)' => function($filter=False, $choice=False) use ($feedback) {
 
         $limit = 10;

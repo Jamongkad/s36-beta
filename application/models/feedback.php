@@ -579,7 +579,6 @@ class Feedback {
         
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
-
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
