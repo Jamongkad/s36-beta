@@ -312,6 +312,7 @@ class Feedback {
                     WHEN Feedback.rating = 4 THEN "GOOD"
                     WHEN Feedback.rating = 5 THEN "EXCELLENT"
                   END AS rating
+                , Contact.contactId
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.email AS email
@@ -581,6 +582,10 @@ class Feedback {
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
+    }
+
+    public function permanently_removed_feedback($id) { 
+        return $this->pull_feedback_by_id($id);
     }
 
     public function contact_detection($opts) {
