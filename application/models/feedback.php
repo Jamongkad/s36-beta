@@ -151,6 +151,7 @@ class Feedback {
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ';
+ 
         $sth = $this->dbh->prepare($sql);      
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
@@ -166,6 +167,7 @@ class Feedback {
         $result_obj = new StdClass;
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
+
         return $result_obj;
 
         /* DEBUG 
@@ -449,6 +451,9 @@ class Feedback {
                     INNER JOIN 
                         Feedback
                         ON Site.siteId = Feedback.siteId
+                    INNER JOIN
+                        Contact
+                        ON Contact.contactId = Feedback.contactId 
                     WHERE 1=1
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = 1
