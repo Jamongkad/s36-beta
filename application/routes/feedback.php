@@ -176,8 +176,8 @@ return array(
     },
 
     'GET /feedback/removefeedback/(:num)' => function($id) use ($feedback) {
-        $delete_event = $feedback->permanently_removed_feedback($id);
-        Helpers::show_data($delete_event);
+        $feedback->permanently_removed_feedback($id);
+        return Redirect::to('inbox/deleted'); 
     },
 
     'GET /feedback/samplefeeds/(:any?)/(:any?)' => function($filter=False, $choice=False) use ($feedback) {
