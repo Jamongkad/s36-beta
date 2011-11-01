@@ -31,6 +31,13 @@ return array(
                       ));
     },
 
+    'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) {
+        $feedback = new Feedback;
+        $feed_obj = Array('feedid' => $id);
+        $result = $feedback->_toggle_multiple($state, Array($feed_obj));
+        return Redirect::to('feedback/modifyfeedback/'.$id); 
+    },
+
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
         return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()

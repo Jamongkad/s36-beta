@@ -32,9 +32,9 @@
         <div>Status: <?=$feedback->status?> Priority: <?=$feedback->priority?></div>
         <?=HTML::link('/', 'Reply to User')?> | 
         <?=HTML::link('/', 'Forward')?> | 
-        <?=HTML::link('/', 'Publish')?> |
-        <?=HTML::link('/', 'Feature')?> |
-        <?=HTML::link('/', 'Flag') ?> |
+        <?=HTML::link('feedback/change_state/publish/'.$id, 'Publish')?> |
+        <?=HTML::link('feedback/change_state/feature/'.$id, 'Feature')?> |
+        <?=HTML::link('feedback/change_state/flag/'.$id, 'Flag') ?> |
         <?=HTML::link('/feedback/deletefeedback/'.$id, 'Delete')?> 
         <!--
         <?=HTML::link('/', 'Publish', array(  'class' => 'check'
