@@ -12,6 +12,25 @@ return array(
         ));
     }),
 
+    'POST /feedback/edit_feedback_text' => function() {
+
+        $feedback = new Feedback;
+
+        $post = Input::get();
+
+        $feed_id = $post['feed_id'];
+        $text    = $post['feedback_text'];
+
+        $isProfane = $feedback->profanity_detection($text); 
+        
+        DB::table('Feedback', 'master')
+             ->where('feedbackId', '=', $feed_id)
+             ->update(Array(
+                          'text' => $text
+                        , 'hasProfanity' => ($isProfane) ? 1 : 0
+                      ));
+    },
+
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
         return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -180,19 +199,4 @@ return array(
         return Redirect::to('inbox/deleted'); 
     },
 
-    'GET /feedback/samplefeeds/(:any?)/(:any?)' => function($filter=False, $choice=False) use ($feedback) {
-
-        $limit = 10;
-        $site_id = False;
-
-        $feedback = new Feedback;
-        $category = new Category;
-        $pagination = new ZebraPagination;
-
-        $offset = ($pagination->get_page() - 1) * $limit;
-        $records = $feedback->pull_feedback($limit, $offset, $filter, $choice, $site_id);
-
-        echo json_encode($records);
-
-    }
 );

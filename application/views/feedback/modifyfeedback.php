@@ -6,7 +6,11 @@
     <div class="grids">
         <div class="g1of2">
              <div class="head">Entry by <?=$feedback->firstname?> <?=$feedback->lastname?></div>
-             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 5, 'cols' => 30, 'disabled'))?>
+             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 5, 'cols' => 30, 
+                                                              'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
+             )?><br/>
+             <?=HTML::link('/', 'edit', Array('class' => 'edit'))?>
+             <?=HTML::link('/', 'save', Array('class' => 'save'))?>
         </div> 
         <div class="g1of2">
              <div class="savebox">
@@ -28,7 +32,11 @@
         <div>Status: <?=$feedback->status?> Priority: <?=$feedback->priority?></div>
         <?=HTML::link('/', 'Reply to User')?> | 
         <?=HTML::link('/', 'Forward')?> | 
-        <?=HTML::link('/feedback/deletefeedback/'.$id, 'Delete')?> | 
+        <?=HTML::link('/', 'Publish')?> |
+        <?=HTML::link('/', 'Feature')?> |
+        <?=HTML::link('/', 'Flag') ?> |
+        <?=HTML::link('/feedback/deletefeedback/'.$id, 'Delete')?> 
+        <!--
         <?=HTML::link('/', 'Publish', array(  'class' => 'check'
                                             , 'state' => $feedback->ispublished
                                             , 'feedid' => $id
@@ -41,6 +49,7 @@
                                                       , 'state' => $feedback->isflagged
                                                       , 'feedid' => $id
                                                       , 'hrefaction' => URL::to('/feedback/flagfeedback')))?>
+        -->
     </div>
 
     <div class="grids">

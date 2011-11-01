@@ -462,4 +462,26 @@ jQuery(function($) {
     $('#cropbtn').click(function(){ 
         save_crop_image(); 
     });
+
+
+    $('a.save').hide();
+    $('a.edit').bind("click", function(e) {
+        var me = this;
+        var textarea = $('.feedback-textarea');
+        var hrefaction = textarea.attr('hrefaction');
+
+        $(me).hide();
+        textarea.removeAttr('disabled');
+        
+        $('a.save').show().unbind('click.save').bind("click.save", function(e) { 
+            var feed_id = $('#feed-id').val();
+            $(this).hide();
+            $(me).show();
+            textarea.attr('disabled', 'disabled');
+            $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() });
+            e.preventDefault();
+        });
+ 
+        e.preventDefault();
+    });
 });

@@ -439,3 +439,8 @@ select.reg-select{padding:7px 10px;width:310px;border:1px solid #d1d1d1;-webkit-
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+
+a.edit, a.save {
+    font-size: 1.4em; 
+    color: #2F4F4F   
+}

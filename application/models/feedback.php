@@ -359,8 +359,9 @@ class Feedback {
                         Country
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
-                        AND Contact.siteId = Site.siteId
                         AND Feedback.feedbackId = :feedback_id
+                    GROUP BY 
+                        1
         ');
 
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
@@ -494,6 +495,22 @@ class Feedback {
     //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
     public function remove_deleted_feedback() {}
     public function decay_deleted_feedback() {}
+
+
+    public function profanity_detection($bad_words) {
+        $sth = $this->dbh->prepare(" 
+            SELECT  
+                BadWords.word
+            FROM 
+                BadWords 
+            WHERE 1=1          
+                AND :bad_words LIKE CONCAT('%', BadWords.word, '%')
+        ");
+        $sth->bindParam(':bad_words', $bad_words, PDO::PARAM_STR);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
 
     public function tag_feedback_with_profanity($user_id) {
         $sth = $this->dbh->prepare("
