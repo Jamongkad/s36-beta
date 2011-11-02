@@ -74,9 +74,9 @@
 
                                  <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
                                  <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
-                                    <span style="vertical-align: middle; " >
+                                    <span style="vertical-align: middle; ">
+                                    <br/>
                                 	<?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
-
                                     </span>
                                 </div>
 
