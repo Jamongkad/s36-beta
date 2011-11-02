@@ -134,7 +134,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 			// the form validations 
             //check if avatar is blank...
             if($('#profile_picture').attr('src').match(/blank-avatar/)) {
-				add_error('Profile Photo required...');
+				add_error('Profile Photo required...negroes');
                 return false;    
             }
 
