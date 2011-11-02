@@ -39,8 +39,11 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => function() {
+        /*
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile();
+        */
+        Helpers::show_data(Input::get());
     }, 
 
     'GET /api/publish' => function() { 
