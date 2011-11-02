@@ -76,17 +76,19 @@
                                  <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
                                     <span style="vertical-align: middle; ">
                                 	<?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
-                                    <br/>
                                     </span>
+                                    <br style="clear:both" />
                                 </div>
 
                                 <?endif?>
                                 
                                 <br />
+                                <?if($feedback_data->rating != "POOR"):?>
                                 <a href="<?=URL::to("api/publish?params=".rawurlencode($user->encryptstring)."&feedback_id={$feedback_data->id}&company_id={$user->companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                 <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
                                 <span style="vertical-align: middle">Publish this feedback now</span>
                                 </a> 
+                                <?endif?>
                                 <a href="<?=URL::to("/?feedback_id={$feedback_data->id}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#d2dbe1;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                 <?=HTML::image('img/ico-manage.png', 'Icon Manage', array('style' => 'vertical-align:middle'))?>
                                 <span style="vertical-align: middle">Manage Feedback</span>
