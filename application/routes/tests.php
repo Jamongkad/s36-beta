@@ -21,7 +21,7 @@ return array(
  
         $email_pages = $factory->execute();
        
-        Helpers::show_data($email_pages);
+        Helpers::show_data($email_pages[1]);
         //return $email_pages[1]->get_message();
     },
 
