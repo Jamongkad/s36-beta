@@ -72,7 +72,8 @@ jQuery(function($) {
             mode    = "fileas";
             console.log($(this).parents('div.category-picker-holder').hide());
         }
-
+        console.log(href);
+        /*
         $(this).parents('.feedback').fadeOut(350, function() {
             var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
             var notify_msg = message + undo; 
@@ -90,6 +91,7 @@ jQuery(function($) {
                 $.ajax( { type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid } } );
             }
         });
+        */
     });
 
     $('a.undo').live('click', function(e) {
