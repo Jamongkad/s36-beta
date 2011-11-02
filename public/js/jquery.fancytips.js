@@ -1,5 +1,5 @@
-(function($) {
-$.fn.fancytips  = function(options) {
+(function($){
+	$.fn.fancytips  = function(options) {
 		var defaults = {
 		text: 'tooltip',
 		width: 100,
@@ -11,11 +11,16 @@ $.fn.fancytips  = function(options) {
 			
 			var left = $(this).position().left +options.left; 
 			var top = $(this).height() +options.top;
+			if($(this).attr('tooltip')){
+				var text = $(this).attr('tooltip');
+			}else{
+				var text = options.text;
+			}
 			$(this).hover(
 				function(){
 					$(this).css({'cursor':'pointer'});
-					$(this).parent().append('<span class="tooltip">'+options.text+'</span>');
-					$(this).parent().find('span.tooltip').css({'top':top,'left':left,'width':options.width});
+					$(this).parent().append('<span class="tooltip">'+text+'</span>');
+					$(this).parent().find('span.tooltip').css({'top':top,'left':left});
 					$(this).parent().find('span.tooltip').fadeIn('fast');
 				},
 				function(){
