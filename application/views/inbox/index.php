@@ -23,12 +23,12 @@
                         ?>
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
-                                <input type="button" class="check" 
+                                <input type="button" class="check" tooltip="Publish Feedback" tt_width="85"
                                 <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                             <?else:?>
-                                <input type="button" class="check" tooltip="this feedback cannot be published"/>
+                                <input type="button" class="check" tooltip="This feedback cannot be published" />
                             <?endif?>
-                            <input type="button" class="save fileas" />
+                            <input type="button" class="save fileas" tooltip="Categorize Feedback"/>
                             <div class="base-popup category-picker-holder">
                                  <div class="popup-arrow"></div>
                                  <ul class="category-picker">
@@ -47,12 +47,12 @@
                             </div>
                             <input type="button" class="reply" />
                             <?if($feed->rating != "POOR"):?>
-                                <input type="button" class="feature" 
+                                <input type="button" class="feature" tooltip="Feature Feedback" tt_width="85"
                                 <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                             <?else:?>
-                                <input type="button" class="feature" tooltip="this feedback cannot be featured"/>
+                                <input type="button" class="feature" tooltip="This feedback cannot be featured"/>
                             <?endif?>
-                            <input type="button" class="contact" /> 
+                            <input type="button" class="contact" tooltip="Fast Forward" tt_width="60"/> 
                         </div>
                         <?endif?>
                         <div class="author-info">
@@ -98,11 +98,11 @@
                         <div class="date"><?=date('F j, Y', $unix);?></div>
                         <div class="time"><?=date('h:i:m a', $unix);?></div>
 
-                        <input type="button" class="flag" 
+                        <input type="button" class="flag" tooltip="Flag Feedback" tt_width="75" 
                         <?=Helpers::switchable($feed->isflagged, $id, URL::to('/feedback/flagfeedback'), ' style="background-position: -100px bottom"') ?>/>
                         <?if($feed->isdeleted == 0):?>
                             <!--<input type="button" class="remove" hrefaction="<?=URL::to('/feedback/deletefeedback/'.$id)?>" />-->
-                            <input type="button" class="remove"
+                            <input type="button" class="remove" tooltip="Delete Feedback" tt_width="84" 
                             <?=Helpers::switchable($feed->isdeleted, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                         <?else:?>
                             <?=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>

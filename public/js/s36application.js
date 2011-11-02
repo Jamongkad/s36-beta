@@ -162,13 +162,13 @@ jQuery(function($) {
     var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
     priorityChange.enable();
 
-    $('.check').fancytips({'text': 'Publish Feedback', 'width': 85});
-    $('.fileas').fancytips({'text': 'Categorize Feedback'});
-    $('.reply').fancytips({'text': 'Reply To', 'width': 45});
-    $('.feature').fancytips({'text': 'Feature Feedback', 'width': 85});
-    $('.contact').fancytips({'text': 'Fast Forward', 'width': 60});
-    $('.flag').fancytips({'text': 'Flag Feedback', 'width': 75});
-    $('.remove').fancytips({'top': 45, 'width': 84 ,'text': 'Delete Feedback'});
+    $('.check').fancytips();
+    $('.fileas').fancytips();
+    $('.reply').fancytips();
+    $('.feature').fancytips();
+    $('.contact').fancytips();
+    $('.flag').fancytips();
+    $('.remove').fancytips();
     
     //TODO: Clean this shit up
     $('#full_page_widget').hide();
