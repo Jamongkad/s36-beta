@@ -16,12 +16,12 @@ return array(
         $vo = new NewFeedbackSubmissionData;
 
         $factory = new EmailFactory($vo);
-        $factory->addresses = $user->pull_user_emails_by_company_id(155);
+        $factory->addresses = $user->pull_user_emails_by_company_id(1);
         $factory->feedback = $feedback->pull_feedback_by_id(116);
  
         $email_pages = $factory->execute();
        
-        Helpers::show_data($factory);
+        Helpers::show_data($email_pages);
         //return $email_pages[1]->get_message();
     },
 
