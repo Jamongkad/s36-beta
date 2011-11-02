@@ -132,16 +132,17 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
         
         if(cur_step == "step_4"){
 			// the form validations 
-            //check if avatar is blank...
-            if($('#profile_picture').attr('src').match(/blank-avatar/)) {
-				add_error('Profile Photo required...negroes');
-                return false;    
-            }
 
 			if((rating == "2") || (rating == "1")){
 				var val = validate_form('partial'); // validate_form returns 3;
 				var crop = false;
 			}else{
+                //check if avatar is blank...
+                if($('#profile_picture').attr('src').match(/blank-avatar/)) {
+                    add_error('Profile Photo required...negroes');
+                    return false;    
+                }
+
 				var val = validate_form('full'); 	// validate_form returns 3;
 				var crop = true;
 			}
