@@ -45,7 +45,7 @@
                                      <?endforeach?>
                                  </ul>
                             </div>
-                            <input type="button" class="reply" tooltip="Reply to user"/>
+                            <input type="button" class="reply" tooltip="Reply to user" tt_width="45"/>
                             <?if($feed->rating != "POOR"):?>
                                 <input type="button" class="feature" tooltip="Feature Feedback" tt_width="85"
                                 <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
