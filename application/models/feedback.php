@@ -313,7 +313,7 @@ class Feedback {
                     WHEN Feedback.rating = 3 THEN "AVERAGE"
                     WHEN Feedback.rating = 4 THEN "GOOD"
                     WHEN Feedback.rating = 5 THEN "EXCELLENT"
-                  END AS rating
+                  END AS str_rating
                 , Contact.contactId
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname

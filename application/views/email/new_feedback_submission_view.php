@@ -83,12 +83,12 @@
                                 <?endif?>
                                 
                                 <br />
-                                <b><?=$feedback_data->rating?></b>
+                                <b><?=$feedback_data->str_rating?></b>
                                 <?if($feedback_data->rating !== 1 || $feedback_data->rating !== 2):?>
-                                <a href="<?=URL::to("api/publish?params=".rawurlencode($user->encryptstring)."&feedback_id={$feedback_data->id}&company_id={$user->companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
-                                <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
-                                <span style="vertical-align: middle">Publish this feedback now</span>
-                                </a> 
+                                    <a href="<?=URL::to("api/publish?params=".rawurlencode($user->encryptstring)."&feedback_id={$feedback_data->id}&company_id={$user->companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                    <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
+                                    <span style="vertical-align: middle">Publish this feedback now</span>
+                                    </a> 
                                 <?endif?>
                                 <a href="<?=URL::to("/?feedback_id={$feedback_data->id}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#d2dbe1;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                 <?=HTML::image('img/ico-manage.png', 'Icon Manage', array('style' => 'vertical-align:middle'))?>
