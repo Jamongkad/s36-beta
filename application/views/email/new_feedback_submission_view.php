@@ -83,6 +83,8 @@
                                 <?endif?>
                                 
                                 <br />
+
+                                <?=$feedback_data->rating?>
                                 <?if($feedback_data->rating == "POOR"):?>
                                     <?=$feedback_data->rating?>
                                 <?else:?>
