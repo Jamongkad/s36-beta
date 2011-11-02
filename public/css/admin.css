@@ -129,7 +129,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .right .feedback-avatar img{border-right:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding:1px;}
 #admin-panel .main-panel .right .feedback-details{width:90%;float:left;}
 
-#admin-panel .main-panel .right .feedback-details .author-info{padding:2px;display:block;margin-left:5px;word-wrap;break-word}
+#admin-panel .main-panel .right .feedback-details .author-info{padding:2px;display:block;margin-left:5px; word-wrap:break-word }
 #admin-panel .main-panel .right .feedback-details .author-info h3 span{font-weight:normal;color:#999999;font-size:10px;margin-left:4px;}
 #admin-panel .main-panel .right .feedback-details .author-info p{margin:5px 0px 3px;font-size:11px;}
 
