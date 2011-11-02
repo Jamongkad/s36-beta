@@ -50,7 +50,7 @@
                                 <input type="button" class="feature" tooltip="Feature Feedback" tt_width="85"
                                 <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                             <?else:?>
-                                <input type="button" class="feature" tooltip="This feedback cannot be featured"/>
+                                <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="165"/>
                             <?endif?>
                             <input type="button" class="contact" tooltip="Fast Forward" tt_width="60"/> 
                         </div>
