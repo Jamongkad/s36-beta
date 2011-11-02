@@ -48,7 +48,12 @@
                         </div>
                         <?endif?>
                         <div class="author-info">
-                            <h3><?=$feed->firstname?> <?=$feed->lastname?><span><?=$feed->countryname?>, <?=$feed->countrycode?></span></h3>
+                            <h3>
+                                <?=$feed->firstname?> <?=$feed->lastname?>
+                                <?if($feed->rating != "POOR"):?>
+                                    <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
+                                <?endif?>
+                            </h3>
                             <p><?=$feed->text?></p>
                         </div> 
                         <div class="feedback-meta">

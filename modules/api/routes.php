@@ -38,11 +38,9 @@ return array(
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
-    'POST /api/submit_feedback' => function() {
-  
+    'POST /api/submit_feedback' => function() { 
         $addfeedback = new AddFeedback;
-        $addfeedback->create_feedback_with_profile();
-      
+        $addfeedback->create_feedback_with_profile(); 
     }, 
 
     'GET /api/publish' => function() { 
