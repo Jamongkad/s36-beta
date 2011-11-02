@@ -26,7 +26,7 @@
                                 <input type="button" class="check" tooltip="Publish Feedback" tt_width="85"
                                 <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                             <?else:?>
-                                <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="220"/>
+                                <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="180"/>
                             <?endif?>
                             <input type="button" class="save fileas" tooltip="Categorize Feedback"/>
                             <div class="base-popup category-picker-holder">
