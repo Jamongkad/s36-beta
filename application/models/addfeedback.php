@@ -9,7 +9,7 @@ class AddFeedback {
         $us = new User;
 
         //fuck naive assumption...
-        $countryId = "00";
+        $countryId = 895;
         if($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
