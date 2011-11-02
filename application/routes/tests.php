@@ -21,7 +21,8 @@ return array(
  
         $email_pages = $factory->execute();
        
-        return $email_pages[1]->get_message();
+        Helpers::show_data($email_pages);
+        //return $email_pages[1]->get_message();
     },
 
     'GET /tests/test_email_published' => function() {
