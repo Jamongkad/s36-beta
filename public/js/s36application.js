@@ -72,26 +72,27 @@ jQuery(function($) {
             mode    = "fileas";
             console.log($(this).parents('div.category-picker-holder').hide());
         }
-        console.log(href);
-        /*
-        $(this).parents('.feedback').fadeOut(350, function() {
-            var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
-            var notify_msg = message + undo; 
-            var notify     = $('<div/>').addClass(identifier).html(notify_msg);
-            //var chck_find  = $('.checky-bar').find("."+identifier);
-            
-            if(state == 0) {  
-                $('.checky-bar').html(notify).show();
-                $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
-            } else { 
-                new_mode = mode;
-                $('.checky-bar')
-                .html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
-                .show();
-                $.ajax( { type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid } } );
-            }
-        });
-        */
+
+        if(href){ 
+            $(this).parents('.feedback').fadeOut(350, function() {
+                var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
+                var notify_msg = message + undo; 
+                var notify     = $('<div/>').addClass(identifier).html(notify_msg);
+                //var chck_find  = $('.checky-bar').find("."+identifier);
+                
+                if(state == 0) {  
+                    $('.checky-bar').html(notify).show();
+                    $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
+                } else { 
+                    new_mode = mode;
+                    $('.checky-bar')
+                    .html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
+                    .show();
+                    $.ajax( { type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid } } );
+                }
+            });
+        }
+       
     });
 
     $('a.undo').live('click', function(e) {
