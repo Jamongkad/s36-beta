@@ -168,7 +168,7 @@ jQuery(function($) {
     $('.feature').fancytips();
     $('.contact').fancytips();
     $('.flag').fancytips();
-    $('.remove').fancytips();
+    $('.remove').fancytips({'top': 45});
     
     //TODO: Clean this shit up
     $('#full_page_widget').hide();
