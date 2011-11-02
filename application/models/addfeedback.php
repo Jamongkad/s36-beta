@@ -9,7 +9,7 @@ class AddFeedback {
         $us = new User;
 
         //fuck naive assumption...
-        $countryId = 1;
+        $countryId = "00";
         if($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
@@ -29,6 +29,8 @@ class AddFeedback {
         );
 
         $contact_id = $ct->insert_new_contact($contact_data);
+
+        $permission = Input::get('permission');
         
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
@@ -37,7 +39,7 @@ class AddFeedback {
           , 'status' => 'new'
           , 'rating' => Input::get('rating')
           , 'text' => Input::get('feedback')
-          , 'permission' => Input::get('permission')
+          , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => date('Y-m-d H:i:s', time())
         );
 
