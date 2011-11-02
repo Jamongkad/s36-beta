@@ -44,8 +44,10 @@
                                  </ul>
                             </div>
                             <input type="button" class="reply" />
-                            <input type="button" class="feature" 
-                            <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                            <?if($feed->rating != "POOR"):?>
+                                <input type="button" class="feature" 
+                                <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                            <?endif?>
                             <input type="button" class="contact" /> 
                         </div>
                         <?endif?>
