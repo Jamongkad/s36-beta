@@ -54,8 +54,12 @@ class AddFeedback {
         $email = new Email($email_pages);
         $email->process_email();
 
-        //delete original photo once done... 
-        @unlink("/var/www/s36-upload-images".Input::get('orig_image_dir'));
+        //check if sample-avatar if not...delete original photo once done... 
+        $orig_image_dir = Input::get('orig_image_dir');
+        preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
+        if(!$matches[0]) {
+            @unlink("/var/www/s36-upload-images".$orig_image_dir);     
+        } 
     }
 
 }

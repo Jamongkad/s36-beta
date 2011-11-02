@@ -39,13 +39,10 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => function() {
-        /*
+  
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile();
-        */
-        Helpers::show_data(Input::get());
-        preg_match_all("~sample-avatar.png~", Input::get('orig_image_dir'), $matches);
-        Helpers::show_data($matches);
+      
     }, 
 
     'GET /api/publish' => function() { 
