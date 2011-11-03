@@ -10,6 +10,7 @@ class BadWords extends S36DataObject {
             WHERE 1=1          
                 AND :bad_words LIKE CONCAT('%', BadWords.word, '%')
         ");
+
         $sth->bindParam(':bad_words', $bad_words, PDO::PARAM_STR);
         $sth->execute();
         $isProfane = $sth->fetchAll(PDO::FETCH_CLASS);

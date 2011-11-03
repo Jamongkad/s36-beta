@@ -154,11 +154,19 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .right .feedback-details .options input.reply      {background-position: -40px 0px;}
 #admin-panel .main-panel .right .feedback-details .options input.feature    {background-position: -60px 0px;}
 #admin-panel .main-panel .right .feedback-details .options input.contact    {background-position: -80px 0px;}
-#admin-panel .main-panel .right .feedback-details .options input.check:hover	{background-position: 0px bottom;}
-#admin-panel .main-panel .right .feedback-details .options input.save:hover		{background-position: -20px bottom;}
-#admin-panel .main-panel .right .feedback-details .options input.reply:hover	{background-position: -40px bottom;}
-#admin-panel .main-panel .right .feedback-details .options input.feature:hover	{background-position: -60px bottom;}
-#admin-panel .main-panel .right .feedback-details .options input.contact:hover	{background-position: -80px bottom;}
+
+#admin-panel .main-panel .right .feedback-details .options input.check:hover {background-position: 0px -17px;}
+#admin-panel .main-panel .right .feedback-details .options input.save:hover  {background-position: -20px -17px;}
+#admin-panel .main-panel .right .feedback-details .options input.reply:hover {background-position: -40px -17px;}
+#admin-panel .main-panel .right .feedback-details .options input.feature:hover {background-position: -60px -17px;}
+#admin-panel .main-panel .right .feedback-details .options input.contact:hover {background-position: -80px -17px;}
+
+#admin-panel .main-panel .right .feedback-details .options input.check-active   {background-position: 0px bottom;}
+#admin-panel .main-panel .right .feedback-details .options input.save-active   {background-position: -20px bottom;}
+#admin-panel .main-panel .right .feedback-details .options input.reply-active  {background-position: -40px bottom;}
+#admin-panel .main-panel .right .feedback-details .options input.feature-active{background-position: -60px bottom;}
+#admin-panel .main-panel .right .feedback-details .options input.contact-active{background-position: -80px bottom;}
+
 #admin-panel .main-panel .right .timestamp{display:block;font-size:11px;min-height:60px;}
 #admin-panel .main-panel .right .timestamp .date{color:#484848;}
 #admin-panel .main-panel .right .timestamp .time{color:#8d8c8c;}

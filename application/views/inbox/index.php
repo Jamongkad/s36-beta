@@ -23,7 +23,7 @@
                         ?>
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
-                                <input type="button" class="check" tooltip="Publish Feedback" tt_width="85"
+                                <input type="button" class="check" tooltip="<?=($feed->ispublished) ? "Return to Inbox" : "Publish Feedback"?>"  tt_width="85"
                                 <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                             <?else:?>
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
@@ -47,7 +47,7 @@
                             </div>
                             <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
                             <?if($feed->rating != "POOR"):?>
-                                <input type="button" class="feature" tooltip="Feature Feedback" tt_width="85"
+                                <input type="button" class="feature" tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
                                 <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                             <?else:?>
                                 <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; !important"/>
