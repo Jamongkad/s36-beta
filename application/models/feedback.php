@@ -590,7 +590,7 @@ class Feedback {
         return $result;
     }
 
-    public function permanently_removed_feedback($id) { 
+    public function permanently_remove_feedback($id) { 
         $feedback = DB::table('Feedback', 'master')
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
                         ->where('Feedback.feedbackId', '=', $id)
