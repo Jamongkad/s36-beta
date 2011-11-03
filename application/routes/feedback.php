@@ -14,14 +14,14 @@ return array(
 
     'POST /feedback/edit_feedback_text' => function() {
 
-        $feedback = new Feedback;
+        $badwords = new BadWords;
 
         $post = Input::get();
 
         $feed_id = $post['feed_id'];
         $text    = $post['feedback_text'];
 
-        $isProfane = $feedback->profanity_detection($text); 
+        $isProfane = $badwords->profanity_detection($text); 
         
         DB::table('Feedback', 'master')
              ->where('feedbackId', '=', $feed_id)

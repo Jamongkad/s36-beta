@@ -7,6 +7,7 @@ class AddFeedback {
         $fb = new Feedback;
         $ct = new Contact;
         $us = new User;
+        $bw = new BadWords;
 
         //fuck naive assumption...
         $countryId = 895;
@@ -31,19 +32,29 @@ class AddFeedback {
         $contact_id = $ct->insert_new_contact($contact_data);
 
         $permission = Input::get('permission');
-        
+        $text = Input::get('feedback');
+ 
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => Input::get('rating')
-          , 'text' => Input::get('feedback')
+          , 'text' => $text
           , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => date('Y-m-d H:i:s', time())
         );
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
+
+        $isProfane = $badwords->profanity_detection($text); 
+        
+        DB::table('Feedback', 'master')
+             ->where('feedbackId', '=', $new_feedback_id)
+             ->update(Array(
+                          'text' => $text
+                        , 'hasProfanity' => ($isProfane) ? 1 : 0
+                      ));
 
         $vo = new NewFeedbackSubmissionData;
 
