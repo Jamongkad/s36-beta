@@ -22,14 +22,6 @@ return array(
         $text    = $post['feedback_text'];
 
         $badwords->profanity_detection($text, $feed_id); 
-        /* 
-        DB::table('Feedback', 'master')
-             ->where('feedbackId', '=', $feed_id)
-             ->update(Array(
-                          'text' => $text
-                        , 'hasProfanity' => ($isProfane) ? 1 : 0
-                      ));
-        */
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) {

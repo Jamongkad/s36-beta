@@ -47,7 +47,7 @@ class AddFeedback {
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
-        $badwords->profanity_detection($text, $new_feedback_id); 
+        $bw->profanity_detection($text, $new_feedback_id); 
         
         $vo = new NewFeedbackSubmissionData;
 
