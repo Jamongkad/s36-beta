@@ -17,7 +17,7 @@ class BadWords extends S36DataObject {
         DB::table('Feedback', 'master')
              ->where('feedbackId', '=', $feedback_id)
              ->update(Array(
-                          'text' => $text
+                          'text' => $bad_words
                         , 'hasProfanity' => ($isProfane) ? 1 : 0
                       ));
 
