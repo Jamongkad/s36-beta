@@ -22,12 +22,14 @@
                         <div class="g1of5">
                         	&nbsp;
                         </div>
+                        <!--
                         <div class="g2of5 right-align">
                         	<label>Display</label>
                             <select>
                             	<option>50</option>
                             </select>
                         </div>
+                        -->
                     </div>
                     <div class="c"></div>
                 </div>
@@ -77,15 +79,13 @@
                             </select>
                         </div>
                         <div class="g1of3">
-                        	&nbsp;
-                        </div>
-                        <div class="g1of3">
-                        	&nbsp;
+                            <?=$pagination?>
                         </div>
                     </div>
                     <div class="c"></div>
                 </div>
             </div>
+
             <div class="block noborder">
             	<p></p>
             	<a href="#" class="gray-btn rounder" style="font-size:14px;font-weight:bold;color:#565656;padding:6px 8px;margin-right:5px;text-shadow:#d5d8da 0px 1px;">Export Contacts</a><span>Contacts will be exported as a comma delimited file (CSV format). </span>

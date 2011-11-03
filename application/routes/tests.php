@@ -72,6 +72,10 @@ return array(
 
     'GET /tests/fetch_contacts' => function() {
         $ct = new Contact;     
-        Helpers::show_data($ct->fetch_contacts());
+        $limit = 10;
+        $offset = 10;
+
+        $contacts = $ct->fetch_contacts($limit, $offset);
+        Helpers::show_data($contacts);
     }
 );

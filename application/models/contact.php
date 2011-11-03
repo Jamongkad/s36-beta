@@ -7,7 +7,7 @@ class Contact extends S36DataObject {
          return $id; 
     }
 
-    public function fetch_contacts() { 
+    public function fetch_contacts($limit, $offset) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $sql = "
             SELECT
@@ -41,13 +41,17 @@ class Contact extends S36DataObject {
                 AND User.userId = :user_id
             GROUP BY
                 Contact.email
+            ORDER BY 
+                Contact.contactId DESC
+            LIMIT :offset, :limit
         ";
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':user_id', $this->user_id);
+        $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        //return $result; 
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result_obj = new StdClass;
