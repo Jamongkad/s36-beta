@@ -11,7 +11,10 @@ class Contact extends S36DataObject {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $sql = "
             SELECT
+                SQL_CALC_FOUND_ROWS
                 Contact.email 
+              , Contact.firstname
+              , Contact.lastname
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
               , GROUP_CONCAT(
                     CASE 
@@ -44,6 +47,13 @@ class Contact extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result; 
+        //return $result; 
+        
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+
+        return $result_obj;
     }
 }

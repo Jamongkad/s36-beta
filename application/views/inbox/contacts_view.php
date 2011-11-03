@@ -42,148 +42,23 @@
                         	<td class="checkbox"><input type="checkbox" /></td>
                             <td>NAME</td>
                         	<td>EMAIL ADDRESS</td>
+                            <!--
                             <td>LAST SENT DATE</td>
                             <td>REQUESTS</td>
                             <td>STATUS</td>
+                            -->
                             <td>OPTION</td>
                         </tr>
                     </thead>
                     <tbody>
-                    	<tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
-                        <tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
-                            <td class="name">Jimmy Twotimes</td>
-                        	<td>jimmy@jimmyssite.com</td>
-                            <td>January 19, 2011</td>
-                            <td>13</td>
-                            <td>website</td>
-                            <td><input type="button" class="edit" /><input type="button" class="delete" /></td>                                                              
-                        </tr>
+                        <?foreach($contacts->result as $contact):?>
+                            <tr> 
+                        	    <td class="checkbox"><input type="checkbox" /></td>
+                                <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
+                                <td><?=$contact->email?></td>
+                                <td><input type="button" class="edit" /><input type="button" class="delete" /></td>
+                            </tr>
+                        <?endforeach?>
                         
                     </tbody>
                 </table>
