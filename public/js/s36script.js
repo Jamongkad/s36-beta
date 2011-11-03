@@ -725,4 +725,190 @@ function save_linkedin_image(){
           }
         });
 }
+
+/* end of document ready function. below are custom functions for this form */	
+var init = 0;
+function cycle_next(){
+    var cur_step = $('#steps').find('.current').attr('id');
+    var rating = selected_rating();
+                                
+    var default_photo 	= 'img/blank-avatar.png';
+    var is_photo 		= $('#profile_picture').attr('src');
+    var review_photo 	= $('#review-photo').attr('src');
+    
+    // return this function with a number if the form validation is successful
+    if(cur_step == "step_1"){
+        var feedback = $('#feedback_text').val();
+        if(feedback.length > 0){
+            // check the rating				
+            if((rating == "2") || (rating == "1")){
+                show_complete_form(false);
+                console.log("move to 3");
+                return 3;
+            }else{
+                show_complete_form(true);
+                console.log("move to 1");
+                return 1;
+            }
+        }else{
+            add_error("Please provide valid feeback"); 
+            return false;
+        }
+    }
+
+    if(cur_step == "step_2"){
+        var permission = $('[name="your_permission"]:checked').size();
+        if(permission <= 0){
+            add_error('Please select a permission option for your feedback');
+            return false;
+        }else{
+            console.log("move to 2 and 3");
+            return 2;
+        }
+    }
+    
+    if(cur_step == "step_3"){
+        console.log("move to 3 part 2"); 
+        return 3;
+    }
+    
+    if(cur_step == "step_4"){
+        // the form validations 
+        if((rating == "2") || (rating == "1")){
+            var val = validate_form('partial'); // validate_form returns 3;
+            var crop = false;
+        }else{
+            //check if avatar is blank...
+            if($('#profile_picture').attr('src').match(/blank-avatar/)) {
+                add_error('Profile Photo required');
+                return false;    
+            }
+
+            var val = validate_form('full'); 	// validate_form returns 3;
+            var crop = true;
+        }
+
+        if(val){						
+            // assign all values to the review slide, argument: false if not from jcrop
+            assign_to_review(false);
+
+            if(strstr(is_photo, 'media.linkedin.com')) {
+                save_linkedin_image();
+                return 5; 
+            }
+
+            if(crop){
+                if(is_photo == default_photo){
+                    console.log("move to 5");
+                    return 5;
+                }else{
+                    if(init <= 0){
+                        init = 1;
+                        init_jcrop();
+                    }else{
+                        jcrop_api.release();
+                        jcrop_api.setImage(is_photo);
+                        jcrop_api.setSelect(['40','20','190','170']);
+                    }
+                    // added
+                    // hide the next button
+                    $('#next').hide();				
+                    // show the crop btn						
+                    $('#cropbtn').show();
+                    // end added
+                    return val;
+                }
+            }else{
+                console.log("move to 5 part two");
+                return 5;
+            }
+        } else{
+            return false;
+        }
+    }
+
+    if(cur_step == "step_5"){ 
+        var is_cropped = $('#is_cropped').val();
+        if(is_cropped != 0){
+            //what this means is blank avatar is already replaced by the uploaded photo.
+            console.log("move to 5 part three");
+            return 5;	
+        }else{
+            $('#crop_button').addClass('highlight');
+            add_error("Please crop your photo"); 
+            //$('#crop_status').html('<img src="img/error-ico.png" /> Please Crop Your Photo.');
+            return false;
+        }
+    }
+    
+    if(cur_step == "step_6"){
+        $('#next').html("Close");
+        send_form_data();	
+        console.log("move to 6");	
+        return 6;			
+    }
+    
+    if(cur_step == "step_7"){
+        $('#steps').cycle('destroy');
+        parent.s36_closeLightbox();
+        //window.close();
+        return false;
+    }		
+}// end of cycle next
+
+function cycle_prev(){
+    var cur_step = $('#steps').find('.current').attr('id');
+    var rating = selected_rating();
+        if(cur_step == "step_2"){
+            return 0;
+        }
+        
+        if(cur_step == "step_3"){
+            return 1;
+        }
+        
+        if(cur_step == "step_4"){
+            
+            if((rating == "2") || (rating == "1")){
+                show_complete_form(false);
+                return 0;
+            }else{
+                show_complete_form(true);
+                return 2;
+            }
+
+        }
+        
+        if(cur_step == "step_5"){
+            // hide the next button
+            $('#next').show();				
+            // show the crop btn						
+            $('#cropbtn').hide();
+            // end added
+            return 3;
+        }
+        
+        if(cur_step == "step_6"){
+            var default_photo 	= 'img/blank-avatar.png';
+            var is_photo = $('#profile_picture').attr('src');
+            if((is_photo == default_photo) || (rating == "2") || (rating == "1")){
+                return 3;
+            }else{
+                // hide the next button
+                $('#next').hide();				
+                // show the crop btn						
+                $('#cropbtn').show();
+                //end added
+                return 4;
+            }
+        }
+        
+        if(cur_step == "step_7"){
+            $('#next').html("Next");
+            return 5;
+        }else{
+            return false;
+        }
+    }//end of cycle prev
+
 // END OF 36stories Javascript
