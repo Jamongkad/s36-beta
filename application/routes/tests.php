@@ -68,5 +68,10 @@ return array(
         $emailer = new Email($email_page);
         $emailer->process_email();
 
+    },
+
+    'GET /tests/fetch_contacts' => function() {
+        $ct = new Contact;     
+        Helpers::show_data($ct->fetch_contacts());
     }
 );
