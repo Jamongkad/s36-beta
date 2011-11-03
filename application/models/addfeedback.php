@@ -47,15 +47,8 @@ class AddFeedback {
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
-        $isProfane = $badwords->profanity_detection($text); 
+        $badwords->profanity_detection($text, $new_feedback_id); 
         
-        DB::table('Feedback', 'master')
-             ->where('feedbackId', '=', $new_feedback_id)
-             ->update(Array(
-                          'text' => $text
-                        , 'hasProfanity' => ($isProfane) ? 1 : 0
-                      ));
-
         $vo = new NewFeedbackSubmissionData;
 
         $factory = new EmailFactory($vo);
