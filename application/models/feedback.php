@@ -602,7 +602,7 @@ class Feedback {
             @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$feedback->avatar);	
         }
         //delete contact...
-        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
+        //DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
         //delete feedback...
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)->delete();
     }
