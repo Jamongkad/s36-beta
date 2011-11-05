@@ -1,8 +1,8 @@
 <?=Form::open('admin/add_admin')?>
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Required Information</div>
+    <div class="label"><label>User Name</label></div><div class="input-field"><input type="text" name="username" class="regular-text" /></div>
     <div class="label"><label>Full Name</label></div><div class="input-field"><input type="text" name="fullName" class="regular-text" /></div>
-    <div class="label"><label>Nick Name</label></div><div class="input-field"><input type="text" name="username" class="regular-text" /></div>
     <div class="label"><label>Email Address</label></div><div class="input-field"><input type="text" name="email" class="regular-text" /></div>
     <div class="label"><label>Password</label></div><div class="input-field"><input type="password" name="password" class="regular-text" /></div>
     <div class="label"><label>Confirm Password</label></div><div class="input-field"><input type="password" name="password_confirm" class="regular-text" /></div>
@@ -24,7 +24,7 @@
     </div>
     <div class="input-field"><input type="text" class="regular-text" name="im"/></div>
     <div class="label" style="margin:10px 0px;"	><label>Include a Personal Note</label></div>
-    <div class="wide" style="margin-bottom:10px;"> This person will receive a welcome email with a link to choose<br /> their username and password. You can also add a personalized<br /> note that will appear at the bottom of the email.</div>
+    <div class="wide" style="margin-bottom:10px;"> This person will receive a welcome email with a link to choose<br /> their username and password.</div>
     <div class="wide"><textarea class="regular-text nomargin" rows="8" name="welcome_note"></textarea></div>
     <div class="c"></div>
 </div>
@@ -59,10 +59,10 @@
         <label>Inbox</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" /> <label>Approve</label> 
-        <input type="checkbox" /> <label>Delete</label> 
-        <input type="checkbox" /> <label>Fast Forward</label> 
-        <input type="checkbox" /> <label>Flag</label> 
+        <input type="checkbox" name="inbox[approve]" value="1" /> <label>Approve</label> 
+        <input type="checkbox" name="inbox[delete]" value="1"/> <label>Delete</label> 
+        <input type="checkbox" name="inbox[fast_forward]" value="1"/> <label>Fast Forward</label> 
+        <input type="checkbox" name="inbox[flag]" value="1"/> <label>Flag</label> 
         <!--
         <input type="checkbox" /> <label>Sticky</label>
         -->
@@ -71,20 +71,23 @@
         <label>Features</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" /> <label>Unapprove</label> 
-        <input type="checkbox" /> <label>Delete</label> 
-        <input type="checkbox" /> <label>Fast Forward</label> 
-        <input type="checkbox" /> <label>Flag</label>
+        <input type="checkbox" name="feature[approve]" value="1"/> <label>Unapprove</label> 
+        <input type="checkbox" name="feature[delete]" value="1"/> <label>Delete</label> 
+        <input type="checkbox" name="feature[fast_forward]" value="1"/> <label>Fast Forward</label> 
+        <input type="checkbox" name="feature[flag]" value="1"/> <label>Flag</label>
     </div>
     <div class="label">
          <label>Feedback Setup</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" /> <label>Approve</label>
+        <input type="checkbox" name="feedsetup[approve]" value="1"/> <label>Approve</label>
     </div>
     <div class="label">
         <label>Contacts</label>
-    </div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
+    </div>
+    <div class="checkboxes-field">
+        <input type="checkbox" name="contact[approve]" value="1"/> <label>Approve</label>
+    </div>
     <!--
     <div class="label"><label>People</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
     -->
