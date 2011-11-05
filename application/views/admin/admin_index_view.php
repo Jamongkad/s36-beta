@@ -24,10 +24,8 @@
                             <div class="admin-info"> 
                                 <h3><?=$admin->username?></h3>
                                 <p><?=$admin->title?></p>
-                                <br />
                                 <p><strong>Email: </strong></p>
                                 <p><?=$admin->email?></p>
-                                <br />
                                 <p><small><?=$admin->itemname?></small></p>
                             </div>
                         </div>
