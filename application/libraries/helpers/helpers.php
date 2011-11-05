@@ -63,6 +63,7 @@ class Helpers {
             'filed'     => preg_match_all('/filed\/(all|profanity|flagged|mostcontent|positive|negative|neutral|[0-9]+)/', self::$request, $matches),
             'feedsetup' => preg_match_all('/(feedsetup|displaysetup|displaypreview)/', self::$request, $matches),
             'contacts'  => preg_match_all('/contacts|contacts\/(important|request)/', self::$request, $matches),
+            'admin'     => preg_match_all('/admin/', self::$request, $matches),
         );
     }
 

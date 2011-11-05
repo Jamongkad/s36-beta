@@ -48,5 +48,11 @@ return array(
         $view->partial('header', 'partials/header');
         $view->partial('footer', 'partials/footer');
         return $view;
+    }),
+
+    'partials/widget_layout' => array('name' => 'widget_layout', function($view) {
+        $view->partial('widget_header', 'partials/widget_header');
+        $view->partial('widget_footer', 'partials/widget_footer'); 
+        return $view;
     })
 );

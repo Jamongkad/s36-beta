@@ -165,6 +165,11 @@
                         CONTACTS <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
+                <?if($regex->admin):?>
+                    <div class="current-page contacts"> 
+                        ADMIN
+                    </div>
+                <?endif?>
 
                 <?if(preg_match_all('/feedback\/requestfeedback/', Request::uri(), $matches)):?>
                     <div class="current-page request"> 

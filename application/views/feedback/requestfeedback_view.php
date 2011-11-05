@@ -165,7 +165,7 @@ padding:5px 10px;
         
         <div style="padding:10px">
             <br />
-            <input type="submit" value="Request Feedback" id="send_request"/>
+            <input type="submit" class="large-btn" value="Request Feedback" id="send_request"/>
             <br /><br />
         </div>
         <?=Form::close()?>

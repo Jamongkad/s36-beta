@@ -234,7 +234,7 @@
         <div class="widget-opts">
             <br />
             <!--<a href="#" class="button">Save Widget</a>-->
-            <input type="submit" value="Save Widget" />
+            <input type="submit" class="large-btn" value="Save Widget" />
             <br /><br />
         </div>
     </div>

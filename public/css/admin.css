@@ -239,6 +239,17 @@ li.c{float:none !important;width:0px !important;height:0px !important;}
 #admin-panel table.regular-table  tr.current-plan{background:#d4eaf6;}
 #admin-panel table.regular-table  img{margin:0 !important;}
 
+#admin-panel .admin-box{float:left;box-shadow:#CCC 0px 0px 5px;padding:10px;width:185px;margin:8px 10px 8px 5px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#777777;overflow:hidden;}
+#admin-panel .admin-box img{margin:0px !important;}
+#admin-panel .admin-box .admin-info{font-size:11px;}
+#admin-panel .admin-box .admin-info h3{margin:0px;padding:0px;font-size:14px;color:#2b4f70;}
+#admin-panel .admin-box p{margin:0px !important;padding:0px !important;}
+#admin-panel .admin-box .edit{font-weight:bold;padding:0px 14px;color:#6a7882;}
+#admin-panel .admin-sidebar{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background:#e9eff4;color:#6a7882;padding:10px;margin:8px;}
+#admin-panel .admin-sidebar h3{color:#6a7882 !important;margin-bottom:0px !important;}
+#admin-panel .admin-sidebar ul{margin-left:15px;list-style:square;font-size:11px;}
+#admin-panel .admin-sidebar ul li{margin:0px !important;padding:0px !important;}
+
 /* contact page table styles */
 #admin-panel div.contact-table{width:100%;font-size:11px;}
 #admin-panel div.contact-table table thead{background:#afc3d4;border-bottom:1px solid #9cb0c0;font-weight:bold;font-size:11px;color:#627483;}
@@ -272,6 +283,7 @@ li.c{float:none !important;width:0px !important;height:0px !important;}
 #admin-panel .large-btn{background:#6a7881;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:8px 26px;font-weight:bold;text-shadow:#3c4349 0px -1px;cursor:pointer;}
 #admin-panel .large-btn:hover{background:#8194a0;}
 #admin-panel .gray-btn{padding:2px 4px;background:#b7b7b7;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;font-size:11px;color:#FFF;}
+#admin-panel .blue-btn{background:#2a679f;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:4px 6px;font-weight:bold;text-shadow:#1e5384 0px -1px;cursor:pointer;font-size:10px;}
 #admin-panel .rounder{-webkit-border-radius:16px;-moz-border-radius:16px;border-radius:16px;}
 #admin-panel .gray-btn:hover{background:#767676;}
 #admin-panel .large-box{display:block;border:7px solid #e7e7e7;height:400px;}

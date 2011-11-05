@@ -1,3 +1,8 @@
+<style type="text/css">
+.large-btn{background:#6a7881;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:8px 26px;font-weight:bold;text-shadow:#3c4349 0px -1px;cursor:pointer;}
+.large-btn:hover{background:#8194a0;}
+</style>
+
 <script type="text/javascript">
     jQuery(function($) {
         $("#edit-code-form").bind("submit", function(e) {
@@ -119,5 +124,6 @@
        <?endforeach?>
     </div>
 </div>
-<input type="submit" value="edit" />
+<input type="submit" class="large-btn" value="edit" />
+
 <?=Form::close();?>

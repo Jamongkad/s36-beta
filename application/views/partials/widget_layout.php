@@ -1,0 +1,3 @@
+<?=$widget_header?>
+<?=$contents?>
+<?=$widget_footer?>

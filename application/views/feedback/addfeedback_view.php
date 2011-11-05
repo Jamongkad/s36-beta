@@ -290,7 +290,7 @@ function slide_track_to(y,rating){
                                     </form>
                                 </div>
                                 <input type="hidden" name="orig_image_dir" value="" />
-                                <input type="button" value="crop" id="cropbtn"/>
+                                <input type="button" value="crop" class="large-btn" id="cropbtn"/>
                             </div>   
                         </div>
                     </div>
@@ -301,7 +301,7 @@ function slide_track_to(y,rating){
         <div class="add-feedback-setup-border"></div> 
         <div style="padding-left:10px">
             <br />
-            <input type="submit" value="add feedback" />
+            <input type="submit" class="large-btn" value="add feedback" />
             <br /><br />
         </div>
     </div>

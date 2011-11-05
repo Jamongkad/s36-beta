@@ -1,54 +1,63 @@
+<!-- top navigation bar -->
+<div class="admin-nav-bar">
+    <ul>
+        <li><?=HTML::link('admin/add_admin', 'ADD NEW ADMIN')?></li> 
+    </ul>
+</div>
 
-            <div class="block">
-            	<div class="label">&nbsp;</div><div class="input-field">Required Information</div>
-            	<div class="label"><label>Full Name</label></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><label>Email Address</label></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="c"></div>
-            </div>
-            <div class="block">
-            	<div class="label">&nbsp;</div><div class="input-field">Additional Information</div>
-            	<div class="label"><label>Title</label></div>		<div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><label>Office Phone/Ext.</label>	</div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><label>Mobile Phone</label></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><label>Fax</label></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><label>Home Phone</label></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label"><select class="regular-select nomargin"><option>AIM</option><option>Yahoo</option></select></div><div class="input-field"><input type="text" class="regular-text" /></div>
-                <div class="label" style="margin:10px 0px;"	><label>Include a Personal Note</label></div>
-                <div class="wide" style="margin-bottom:10px;"> This person will receive a welcome email with a link to choose<br /> their username and password. You can also add a personalized<br /> note that will appear at the bottom of the email.</div>
-                <div class="wide"><textarea class="regular-text nomargin" rows="8"></textarea></div>
-                <div class="c"></div>
-            </div>
-            <div class="block">
-            	<div class="label">&nbsp;</div><div class="input-field">Permissions</div>
-                <div class="label"><label>Inbox</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label> <input type="checkbox" /> <label>Delete</label> <input type="checkbox" /> <label>Fast Forward</label> <input type="checkbox" /> <label>Flag</label> <input type="checkbox" /> <label>Sticky</label></div>
-                <div class="label"><label>Features</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Unapprove</label> <input type="checkbox" /> <label>Delete</label> <input type="checkbox" /> <label>Fast Forward</label> <input type="checkbox" /> <label>Flag</label></div>
-                <div class="label"><label>Display Setup</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
-                <div class="label"><label>Contacts</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
-                <div class="label"><label>People</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
-                <div class="label"><label>Settings</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
-                <div class="c"></div>
-            </div>
-            <div class="block">
-            	<div class="g1of2">
-                	<div class="innerblock">
-                	<h3>What Happens Now?</h3>
-                    <p>When you click the "add this person" button below, we'll fire off a nice invitation to the email address you entered above. The email will contain a link to a Web page where this person will complete the setup process by picking their own username and password. You can immediately start involving them in projects even before they've chosen their username and password.</p>
-                    </div>
-                </div>
-                <div class="g1of2">
-                	<div class="innerblock">
-                		<h3>Check out an example of a welcome email the person you are inviting will receive</h3>
-                    	<div class="what-it-looks">
-                        	
+<div class="block">
+    <div class="grids">
+        <div class="g2of3">
+            <?foreach($admins as $admin):?>
+                <div class="admin-box">
+                    <div class="grids">
+                        <div class="g1of3">
+                            <img src="images/avatar-henry.png" />
+                            <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
+                        </div>
+                        <div class="g2of3">
+                            <div class="admin-info"> 
+                                <h3><?=$admin->fullname?></h3>
+                                <p><?=$admin->title?></p>
+                                <br />
+                                <p><strong>Email: </strong></p>
+                                <p><?=$admin->email?></p>
+                                <br />
+                                <p><small><?=$admin->itemname?></small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="c"></div>
-            </div>
-            <div class="block noborder">
-            	<input type="button" class="large-btn" value="SEND" />
+            <?endforeach?> 
+        </div>
+        <div class="g1of3">
+            <div class="admin-sidebar">
+                <h3>Admins can help you on your behalf to review, feature and file feedback as it comes in. You can add up to 5 admins according to your current plan. </h3>
+
+                <br />
+                <a href="add-new-admin.php" class="blue-btn">ADD NEW ADMIN 	</a>
+                <br />
+                <h3>Administrators can: </h3>
+                <ul>
+                    <li>Manage feedback (approve, sticky and delete) </li>
+                    <li>Request for feedback </li>
+                    <li>Sort and edit feedback </li>
+                    <li>Manage feedback widgets</li>
+                </ul>
+                <h3>Only the account holder can: </h3>
+                <ul>
+                    <li>Cancel the account </li>
+                    <li>Upgrade or downgrade the account </li>
+                    <li>View or change billing details</li>
+                </ul>
             </div>
         </div>
-        
-        <div class="c"></div>
+    </div>
+</div>
+</div>
+
+<!-- end of the main panel -->
+
+<!-- div need to clear floated divs -->
+<div class="c"></div>
 </div>

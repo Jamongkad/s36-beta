@@ -2,7 +2,8 @@
 
 return array(
     'GET /widget/test' => function() {
-        return View::make('widget::widget_view_index');
+        //return View::make('widget::widget_view_index');
+        return View::of_widget_layout()->partial('contents', 'dashboard/index');
     },
 
     'GET /widget/form' => function() {

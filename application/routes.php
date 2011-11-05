@@ -42,10 +42,6 @@ return array(
         }
     },
 
-    'GET /admin' => Array('name' => 'admin', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'admin/admin_index_view');
-    }),
-
     'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
