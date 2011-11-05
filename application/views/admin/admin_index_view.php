@@ -12,8 +12,8 @@
                 <div class="admin-box">
                     <div class="grids">
                         <div class="g1of3">
-                            <?if($feed->avatar):?> 
-                                <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar)?>
+                            <?if($admin->avatar):?> 
+                                <?=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>
