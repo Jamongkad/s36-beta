@@ -12,7 +12,12 @@
                 <div class="admin-box">
                     <div class="grids">
                         <div class="g1of3">
-                            <?=HTML::image('img/'.$admin->avatar)?>
+                            <?if($feed->avatar):?> 
+                                <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar)?>
+                            <?else:?>
+                                <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                            <?endif?>
+
                             <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
                         </div>
                         <div class="g2of3">
