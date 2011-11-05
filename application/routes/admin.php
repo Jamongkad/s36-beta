@@ -5,7 +5,7 @@ return array(
         $company_id = S36Auth::user()->companyid;
         $admins = DB::Table('User', 'master')
                       ->join('AuthAssignment', 'AuthAssignment.userId', '=', 'User.userId')
-                      ->where('User.companyId', '=', $company_id)->get()
+                      ->where('User.companyId', '=', $company_id)->get();
 
         Helpers::show_data($admins);
         /*
