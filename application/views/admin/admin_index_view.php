@@ -35,7 +35,7 @@
                 <h3>Admins can help you on your behalf to review, feature and file feedback as it comes in. You can add up to 5 admins according to your current plan. </h3>
 
                 <br />
-                <a href="add-new-admin.php" class="blue-btn">ADD NEW ADMIN 	</a>
+                <?=HTML::link('admin/add_admin', 'ADD NEW ADMIN', array('class' => 'blue-btn'))?>
                 <br />
                 <h3>Administrators can: </h3>
                 <ul>
