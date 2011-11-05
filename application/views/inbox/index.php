@@ -10,8 +10,8 @@
             <div class="right">
                 <div class="g4of5">
                     <div class="feedback-avatar"> 
-                        <?if($feed->avatar):?> 
-                            <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar)?>
+                        <?if($admin->avatar):?> 
+                            <?=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
                         <?else:?>
                             <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                         <?endif?>
