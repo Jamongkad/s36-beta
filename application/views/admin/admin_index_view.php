@@ -1,9 +1,4 @@
 <!-- top navigation bar -->
-<div class="admin-nav-bar">
-    <ul>
-        <li><?=HTML::link('admin/add_admin', 'ADD NEW ADMIN')?></li> 
-    </ul>
-</div>
 
 <div class="block">
     <div class="grids">
