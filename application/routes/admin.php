@@ -15,8 +15,7 @@ return array(
 
     }),
 
-    'GET /admin/add_admin' => Array('name' => 'admin', 'before' => 's36_auth', 'do' => function() {
-
+    'GET /admin/add_admin' => Array('name' => 'add_admin', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
             'ims' => DB::Table('IM', 'master')->get()
         ));
@@ -25,4 +24,9 @@ return array(
     'POST /admin/add_admin' => function() {
        Helpers::show_data(Input::get());
     }
+
+    'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
+        print_r($id);
+    }),
+
 );

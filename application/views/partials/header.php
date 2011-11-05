@@ -106,7 +106,7 @@
                     <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>
                     <div class="admin-links">
                         <ul>
-                            <li><?=HTML::link('admin', 'ADMIN', Array('class' => (Helpers::filter_highlighter(array('admin', 'admin/add_admin')) ? 'selected' : null)))?></li>
+                            <li><?=HTML::link('admin', 'ADMIN', Array('class' => (Helpers::filter_highlighter(array('admin', 'admin/add_admin', 'admin/edit_admin')) ? 'selected' : null)))?></li>
                             <li><?=HTML::link('settings', 'SETTINGS', Array('class' => (Helpers::filter_highlighter(array('settings')) ? 'selected' : null)))?></li>
                             <li><?=HTML::link('help', 'HELP', Array('class' => (Helpers::filter_highlighter(array('help')) ? 'selected' : null)))?></li>
                         </ul>
