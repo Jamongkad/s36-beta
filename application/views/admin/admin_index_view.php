@@ -1,5 +1,3 @@
-<!-- top navigation bar -->
-
 <div class="block">
     <div class="grids">
         <div class="g2of3">
