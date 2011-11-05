@@ -23,7 +23,7 @@ return array(
 
     'POST /admin/add_admin' => function() {
        Helpers::show_data(Input::get());
-    }
+    },
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
         print_r($id);
