@@ -17,7 +17,7 @@
                         </div>
                         <div class="g2of3">
                             <div class="admin-info"> 
-                                <h3><?=$admin->fullname?></h3>
+                                <h3><?=$admin->username?></h3>
                                 <p><?=$admin->title?></p>
                                 <br />
                                 <p><strong>Email: </strong></p>
