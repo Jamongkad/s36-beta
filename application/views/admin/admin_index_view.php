@@ -12,7 +12,7 @@
                 <div class="admin-box">
                     <div class="grids">
                         <div class="g1of3">
-                            <img src="images/avatar-henry.png" />
+                            <?=HTML::image('img/'.$admin->avatar)?>
                             <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
                         </div>
                         <div class="g2of3">
