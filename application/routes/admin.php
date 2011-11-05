@@ -7,12 +7,12 @@ return array(
                       ->join('AuthAssignment', 'AuthAssignment.userId', '=', 'User.userId')
                       ->where('User.companyId', '=', $company_id)->get();
 
-        Helpers::show_data($admins);
-        /*
+
+
         return View::of_layout()->partial('contents', 'admin/admin_index_view', Array(
             'admins' => $admins
         ));
-        */
+
     }),
 
     'GET /admin/add_admin' => Array('name' => 'admin', 'before' => 's36_auth', 'do' => function() {
