@@ -59,10 +59,10 @@
         <label>Inbox</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" name="inbox[approve]" value="1" /> <label>Approve</label> 
-        <input type="checkbox" name="inbox[delete]" value="1"/> <label>Delete</label> 
-        <input type="checkbox" name="inbox[fast_forward]" value="1"/> <label>Fast Forward</label> 
-        <input type="checkbox" name="inbox[flag]" value="1"/> <label>Flag</label> 
+        <input type="checkbox" name="perms[inbox][approve]" value="1" checked/> <label>Approve</label> 
+        <input type="checkbox" name="perms[inbox][delete]" value="1" checked/> <label>Delete</label> 
+        <input type="checkbox" name="perms[inbox][fastforward]" value="1" checked/> <label>Fast Forward</label> 
+        <input type="checkbox" name="perms[inbox][flag]" value="1" checked/> <label>Flag</label> 
         <!--
         <input type="checkbox" /> <label>Sticky</label>
         -->
@@ -71,27 +71,32 @@
         <label>Features</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" name="feature[approve]" value="1"/> <label>Unapprove</label> 
-        <input type="checkbox" name="feature[delete]" value="1"/> <label>Delete</label> 
-        <input type="checkbox" name="feature[fast_forward]" value="1"/> <label>Fast Forward</label> 
-        <input type="checkbox" name="feature[flag]" value="1"/> <label>Flag</label>
+        <input type="checkbox" name="perms[feature][approve]" value="1" checked/> <label>Approve</label> 
+        <input type="checkbox" name="perms[feature][delete]" value="1" checked/> <label>Delete</label> 
+        <input type="checkbox" name="perms[feature][fastforward]" value="1" checked/> <label>Fast Forward</label> 
+        <input type="checkbox" name="perms[feature][flag]" value="1" checked/> <label>Flag</label>
     </div>
     <div class="label">
          <label>Feedback Setup</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" name="feedsetup[approve]" value="1"/> <label>Approve</label>
+        <input type="checkbox" name="perms[feedsetup][approve]" value="1" checked/> <label>Approve</label>
     </div>
     <div class="label">
         <label>Contacts</label>
     </div>
     <div class="checkboxes-field">
-        <input type="checkbox" name="contact[approve]" value="1"/> <label>Approve</label>
+        <input type="checkbox" name="perms[contact][approve]" value="1" checked/> <label>Approve</label>
     </div>
     <!--
     <div class="label"><label>People</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
     -->
-    <div class="label"><label>Settings</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
+    <div class="label">
+        <label>Settings</label>
+    </div>
+    <div class="checkboxes-field">
+        <input type="checkbox" name="perms[setting][approve]" value="1" checked/> <label>Approve</label>
+    </div>
     <div class="c"></div>
 </div>
 <!--

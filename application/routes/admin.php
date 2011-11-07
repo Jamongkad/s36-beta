@@ -22,7 +22,9 @@ return array(
     }),
 
     'POST /admin/add_admin' => function() {
-       Helpers::show_data(Input::get());
+       $perm_factory = new PermissionFactory(Input::get());
+       $perms = $perm_factory->build();
+       Helpers::show_data($perms);
     },
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
