@@ -15,7 +15,9 @@ class PermissionFactory {
     }
 
     public function build() {
-
+        $supplier = new PermissionSupplier($this->input);
+        return $supplier->load(); 
+        /*
         $this->_fill_emptiness();
         $result = Array();
         $result_array = Array();
@@ -56,58 +58,157 @@ class PermissionFactory {
         }
 
         return $result_array;
+        */
+    }
+ 
+}
+ 
+class PermissionSupplier {
+
+    private $config_array = Array();
+
+    public function __construct($input) {
+        $this->input = $input;     
+
+        $this->config_array = Array(
+                'inbox'     => new InboxPermission()
+              , 'feature'   => new FeaturePermission()
+              , 'feedsetup' => new FeedsetupPermission()
+              , 'contact'   => new ContactPermission()
+              , 'setting'   => new SettingPermission() 
+        );
+    }
+
+    public function load() {
+        return $this->_fill_emptiness();
     }
 
     private function _fill_emptiness() { 
-        if(!array_key_exists('inbox', $this->input)) {
-            $this->input['inbox'] = $this->fill_all; 
+
+        foreach($this->config_array as $key => $object) { 
+            if(!array_key_exists($key, $this->input)) {
+                $this->input[$key] = $object->expose_keys();
+            } else {
+                $this->input[$key] = $object->expose_rules($this->input);
+            }
         }
 
-        if(!array_key_exists('feature', $this->input)) {
-            $this->input['feature'] = $this->fill_all; 
-        }
+        return $this->input;
 
-        if(!array_key_exists('feedsetup', $this->input)) {
-            $this->input['feedsetup'] = $this->fill_one; 
-        }
-
-        if(!array_key_exists('contact', $this->input)) {
-            $this->input['contact'] = $this->fill_one; 
-        }
-
-        if(!array_key_exists('setting', $this->input)) {
-            $this->input['setting'] = $this->fill_one; 
-        }
-    }
-    
+    } 
 }
 
 abstract class PermissionType {
     private $permission_keys = Array();
     private $perms = Array();
+}
 
-    public function __construct(Array $perms, Array $permission_keys) {
-        $this->perms = $perms;     
-        $this->permission_keys = $permission_keys;
+class InboxPermission extends PermissionType { 
+
+    private $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
+
+    public function expose_keys() {
+        return $this->permission_keys;     
     }
 
-    public function expose_rules() {
+    public function expose_rules($perms) {
+
+        $this->perms = $perms['inbox'];
+
         foreach($this->permission_keys as $key_rule => $key_value) { 
             if(!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }
 
-        return $this->perms; 
+        return $this->perms;  
     }
 }
 
-class InboxPermission extends PermissionType {}
+class FeaturePermission extends PermissionType {
+    
+    private $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
 
-class FeaturePermission extends PermissionType {}
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
 
-class FeedsetupPermission extends PermissionType {}
+    public function expose_rules($perms) {
 
-class ContactPermission extends PermissionType {}
+        $this->perms = $perms['feature'];
 
-class SettingPermission extends PermissionType {}
+        foreach($this->permission_keys as $key_rule => $key_value) { 
+            if(!array_key_exists($key_rule, $this->perms)) {
+                $this->perms[$key_rule] = 0;
+            }
+        }
+
+        return $this->perms;  
+    }
+}
+
+class FeedsetupPermission extends PermissionType {
+    
+    private $permission_keys = Array('approve' => 0);
+
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
+
+    public function expose_rules($perms) {
+
+        $this->perms = $perms['feedsetup'];
+
+        foreach($this->permission_keys as $key_rule => $key_value) { 
+            if(!array_key_exists($key_rule, $this->perms)) {
+                $this->perms[$key_rule] = 0;
+            }
+        }
+
+        return $this->perms;  
+    }
+}
+
+class ContactPermission extends PermissionType {
+    
+    private $permission_keys = Array('approve' => 0);
+
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
+
+    public function expose_rules($perms) {
+
+        $this->perms = $perms['contact'];
+
+        foreach($this->permission_keys as $key_rule => $key_value) { 
+            if(!array_key_exists($key_rule, $this->perms)) {
+                $this->perms[$key_rule] = 0;
+            }
+        }
+
+        return $this->perms;  
+    }
+}
+
+class SettingPermission extends PermissionType {
+    
+    private $permission_keys = Array('approve' => 0);
+
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
+
+    public function expose_rules($perms) {
+
+        $this->perms = $perms['setting'];
+
+        foreach($this->permission_keys as $key_rule => $key_value) { 
+            if(!array_key_exists($key_rule, $this->perms)) {
+                $this->perms[$key_rule] = 0;
+            }
+        }
+
+        return $this->perms;  
+    }
+}
