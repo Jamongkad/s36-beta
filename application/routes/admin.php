@@ -25,7 +25,7 @@ return array(
         $input = Input::get();
         $perm_factory = new Permission($input);
         $perms = $perm_factory->build();
-        Helpers::show_data($perms);
+        Helpers::show_data($input);
     },
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
