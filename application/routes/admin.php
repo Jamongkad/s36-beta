@@ -23,7 +23,7 @@ return array(
 
     'POST /admin/add_admin' => function() {
         $input = Input::get();
-        $perm_factory = new PermissionFactory($input);
+        $perm_factory = new Permission($input);
         $perms = $perm_factory->build();
         Helpers::show_data($perms);
     },

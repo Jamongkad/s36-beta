@@ -1,6 +1,6 @@
 <?php
 
-class PermissionFactory {
+class Permission {
     
     private $input = Array();
 
@@ -16,41 +16,9 @@ class PermissionFactory {
 
     public function build() {
         $supplier = new PermissionSupplier($this->input);
-        return $supplier->load(); 
-        /*
-        $this->_fill_emptiness();
-        $result = Array();
+
         $result_array = Array();
-
-        foreach($this->input as $key => $perms) { 
-            if($key == 'inbox') {
-                $inbox = new InboxPermission($perms, $this->fill_all);
-                $result[$key] = $inbox->expose_rules();
-            }
-        
-            if($key == 'feature') {
-                $feature = new FeaturePermission($perms, $this->fill_all);
-                $result[$key] = $feature->expose_rules();
-            }
-            
-            if($key == 'feedsetup') {
-                $feedsetup = new FeedsetupPermission($perms, $this->fill_one);
-                $result[$key] = $feedsetup->expose_rules();
-            }
-
-            if($key == 'contact') {
-                $contact = new ContactPermission($perms, $this->fill_one);
-                $result[$key] = $contact->expose_rules();
-            }
-
-            if($key == 'setting') {
-                $setting = new SettingPermission($perms, $this->fill_one);
-                $result[$key] = $setting->expose_rules();
-            }
-       
-        }
-
-        foreach($result as $key => $value) {
+        foreach($supplier->load() as $key => $value) {
             foreach($value as $k => $v) {
                 $result_array[$key."_".$k] = $v;     
             }
@@ -58,7 +26,7 @@ class PermissionFactory {
         }
 
         return $result_array;
-        */
+
     }
  
 }
