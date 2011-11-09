@@ -16,16 +16,46 @@ return array(
     }),
 
     'GET /admin/add_admin' => Array('name' => 'add_admin', 'before' => 's36_auth', 'do' => function() {
+        $user = S36Auth::user();
         return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
             'ims' => DB::Table('IM', 'master')->get()
+          , 'errors' => Array()
+          , 'input' => Array('username' => null, 'fullName' => null, 'email' => null, 'password' => null, 'title' => null)
+          , 'admin' => $user
         ));
     }),
 
     'POST /admin/add_admin' => function() {
-        $input = Input::get();
-        $perm_factory = new Permission($input);
+        $data = Input::get();
+        $user = S36Auth::user();
+
+        $perm_factory = new Permission($data);
         $perms = $perm_factory->build();
-        Helpers::show_data($input);
+
+        $rules = Array(
+            'username' => 'required'
+          , 'fullName' => 'required'
+          , 'email' => 'required|email'
+          , 'password' => 'required|min:8|confirmed'
+          , 'title' => 'required'
+        );
+
+        $validator = Validator::make($data, $rules);
+        if(!$validator->valid()) {
+            return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
+                'ims' => DB::Table('IM', 'master')->get()
+              , 'errors' => $validator->errors
+              , 'input' => $data
+              , 'admin' => $user
+            ));
+        }     
+
+        $admin = new Admin;
+        $admin->input_data = (object)$data;
+        $admin->perms_data = $perms;
+       
+        return $admin->save();
+
     },
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {

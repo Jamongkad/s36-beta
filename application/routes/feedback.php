@@ -57,8 +57,7 @@ return array(
             ));
         } else {      
 
-            $auth = new S36Auth;
-            
+            $auth = new S36Auth; 
             $vo = new RequestFeedbackData;
             $vo->first_name = $data['firstname'];
             $vo->last_name  = $data['lastname'];
@@ -78,7 +77,6 @@ return array(
             $factory->message = $message_obj;
             $email_page = $factory->execute();
      
-            //return $email_page[0]->get_message();
             $emailer = new Email($email_page);
             $emailer->process_email();
             
@@ -109,7 +107,7 @@ return array(
         echo "</pre>";
     }),
 
-    //Ajax Functions...
+    //Ajax Routes...
     'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
         //TODO: this could be better 
         $feed_obj = Array('feedid' => $feed_id);

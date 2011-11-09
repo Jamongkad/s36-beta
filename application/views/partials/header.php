@@ -101,7 +101,11 @@
             <!-- start of the brown bar on the top -->
             <div class="admin-session-bar">
                 <div class="admin-avatar">
-                    <?=HTML::image('img/avatar-matthew.png')?>
+                     <?if($avatar = S36Auth::user()->avatar):?> 
+                         <?=HTML::image('uploaded_cropped/48x48/'.$avatar)?>
+                     <?else:?>
+                         <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                     <?endif?>
                 </div>
                 <div class="admin-details">
                     <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>

@@ -1,16 +1,47 @@
 <?=Form::open('admin/add_admin')?>
+<input type="hidden" name="companyId" value="<?=$admin->companyid?>" />
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Required Information</div>
-    <div class="label"><label>User Name</label></div><div class="input-field"><input type="text" name="username" class="regular-text" /></div>
-    <div class="label"><label>Full Name</label></div><div class="input-field"><input type="text" name="fullName" class="regular-text" /></div>
-    <div class="label"><label>Email Address</label></div><div class="input-field"><input type="text" name="email" class="regular-text" /></div>
-    <div class="label"><label>Password</label></div><div class="input-field"><input type="password" name="password" class="regular-text" /></div>
-    <div class="label"><label>Confirm Password</label></div><div class="input-field"><input type="password" name="password_confirm" class="regular-text" /></div>
+    <div class="label"><label>User Name</label></div>
+    <div class="input-field">
+        <input type="text" name="username" class="regular-text" value="<?=$input['username']?>"/>
+        <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('username')."</p>" : null?>
+    </div>
+    <div class="label"><label>Full Name</label></div>
+    <div class="input-field">
+        <input type="text" name="fullName" class="regular-text" value="<?=$input['fullName']?>"/>
+        <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('fullName')."</p>" : null?>
+    </div>
+    <div class="label"><label>Email Address</label></div>
+    <div class="input-field">
+        <input type="text" name="email" class="regular-text" value="<?=$input['email']?>"/>
+        <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
+    </div>
+    <div class="label"><label>Password</label></div>
+    <div class="input-field">
+        <input type="password" name="password" class="regular-text" value="<?=$input['password']?>"/>
+        <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('password')."</p>" : null?>
+    </div>
+    <div class="label"><label>Confirm Password</label></div><div class="input-field">
+        <input type="password" name="password_confirmation" class="regular-text" value="<?=$input['password']?>"/>
+    </div> 
+    <div class="label"><label>Account Type</label></div><div class="input-field">
+        <select class="regular-select nomargin" name="account_type">
+            <?if($admin->itemname == "Admin"):?>
+                <option value="Admin">Admin</option>
+            <?endif?>
+            <option value="CoAdmin">CoAdmin</option>
+        </select>
+    </div>
     <div class="c"></div>
 </div>
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Additional Information</div>
-    <div class="label"><label>Title</label></div><div class="input-field"><input type="text" name="title" class="regular-text" /></div>
+    <div class="label"><label>Title</label></div>
+    <div class="input-field">
+        <input type="text" name="title" class="regular-text" value="<?=$input['title']?>"/>
+        <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('title')."</p>" : null?>
+    </div>
     <div class="label"><label>Office Phone/Ext.</label>	</div><div class="input-field"><input type="text" name="ext" class="regular-text" /></div>
     <div class="label"><label>Mobile Phone</label></div><div class="input-field"><input type="text" name="mobile" class="regular-text" /></div>
     <div class="label"><label>Fax</label></div><div class="input-field"><input type="text" name="fax" class="regular-text" /></div>

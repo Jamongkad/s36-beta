@@ -12,7 +12,9 @@ class S36Auth {
 
     public static function user() { 
         if(is_null(static::$user) and Session::has(static::$user_id)) {
-            static::$user = DB::table('User', static::$db_name)->where('userId', '=', Session::get(static::$user_id))->first();
+            static::$user = DB::table('User', static::$db_name)
+                ->join('AuthAssignment', 'User.userId', '=', 'AuthAssignment.userid')
+                ->where('User.userId', '=', Session::get(static::$user_id))->first();
         } 
         return static::$user;
     }
