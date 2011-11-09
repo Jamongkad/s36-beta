@@ -433,6 +433,7 @@ jQuery(function($) {
         });
     }
 
+    $('div.adjust-crop').hide();
     $(document).delegate("#your_photo", "change", function() {   
 		$.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
@@ -444,6 +445,8 @@ jQuery(function($) {
                 var file = "/" + data.dir;
                 var width = Math.round(data.wid);
                 var jcrop_div = $("div.jcrop_div");
+
+                $('div.adjust-crop').show();
 
                 $('#profile_picture').attr('src',file);
                 $('#jcrop_target').attr('src',file);
@@ -465,7 +468,6 @@ jQuery(function($) {
     $('#cropbtn').click(function(){ 
         save_crop_image(); 
     });
-
 
     $('a.save').hide();
     $('a.edit').bind("click", function(e) {

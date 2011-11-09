@@ -263,7 +263,7 @@ function slide_track_to(y,rating){
                             </div>
                         </div>
                     </div>
-                    <div class="grids">
+                    <div class="grids adjust-crop">
                         <div class="g1of3">
                             <label><strong>Adjust and crop your image</strong></label><br/>
 
@@ -289,6 +289,8 @@ function slide_track_to(y,rating){
                                         <input type="hidden" id="h" name="h" />
                                     </form>
                                 </div>
+
+                                <div style="height:100px"></div>
                                 <input type="hidden" name="orig_image_dir" value="" />
                                 <input type="button" value="crop" class="large-btn" id="cropbtn"/>
                             </div>   
