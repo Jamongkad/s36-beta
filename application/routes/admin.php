@@ -53,13 +53,10 @@ return array(
 
         }     
         
-
         $admin = new Admin;
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
-       
         return $admin->save();
-
 
     },
 
