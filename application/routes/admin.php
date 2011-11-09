@@ -35,26 +35,31 @@ return array(
         $rules = Array(
             'username' => 'required'
           , 'fullName' => 'required'
-          , 'email' => 'required|email'
+          , 'email' => 'required|email|unique:User,email'
           , 'password' => 'required|min:8|confirmed'
           , 'title' => 'required'
         );
 
         $validator = Validator::make($data, $rules);
         if(!$validator->valid()) {
+            Helpers::show_data($validator->errors);
+
             return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
                 'ims' => DB::Table('IM', 'master')->get()
               , 'errors' => $validator->errors
               , 'input' => $data
               , 'admin' => $user
             ));
+
         }     
+        
 
         $admin = new Admin;
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
        
         return $admin->save();
+
 
     },
 
