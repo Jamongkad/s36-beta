@@ -46,8 +46,7 @@ class ProfileImage {
         }
 
         if($ophoto != 0){
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$ophoto);
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$ophoto);	
+            $this->remove_profile_photo($ophoto);
         }
 
         if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
@@ -158,6 +157,11 @@ class ProfileImage {
           , "dir" => $filedir
           , "wid" => $width
         ));
+    }
+
+    public function remove_profile_photo($name) { 
+        @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$name);
+        @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$name);	
     }
 }
 

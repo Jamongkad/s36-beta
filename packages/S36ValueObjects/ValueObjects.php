@@ -19,3 +19,5 @@ class RequestFeedbackData extends EmailData {
     public $first_name = null;    
     public $last_name = null;
 }
+
+class InvitationNotificationData extends EmailData{}

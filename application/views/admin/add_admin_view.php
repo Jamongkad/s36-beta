@@ -1,4 +1,6 @@
-<?=Form::open('admin/add_admin')?>
+<?//=Form::open('admin/add_admin')?>
+<?=Form::open('admin/test_invite_email')?>
+
 <input type="hidden" name="companyId" value="<?=$admin->companyid?>" />
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Required Information</div>
@@ -118,17 +120,16 @@
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Permissions</div>
     <div class="label">
-        <label>Inbox</label>
+        <label>Inbox|Featured|Filed Feedback</label>
     </div>
     <div class="checkboxes-field">
         <input type="checkbox" name="perms[inbox][approve]" value="1" checked/> <label>Approve</label> 
+        <input type="checkbox" name="perms[inbox][feature]" value="1" checked/> <label>Feature</label> 
         <input type="checkbox" name="perms[inbox][delete]" value="1" checked/> <label>Delete</label> 
         <input type="checkbox" name="perms[inbox][fastforward]" value="1" checked/> <label>Fast Forward</label> 
         <input type="checkbox" name="perms[inbox][flag]" value="1" checked/> <label>Flag</label> 
-        <!--
-        <input type="checkbox" /> <label>Sticky</label>
-        -->
     </div>
+    <!--
     <div class="label">
         <label>Features</label>
     </div>
@@ -138,6 +139,7 @@
         <input type="checkbox" name="perms[feature][fastforward]" value="1" checked/> <label>Fast Forward</label> 
         <input type="checkbox" name="perms[feature][flag]" value="1" checked/> <label>Flag</label>
     </div>
+    -->
     <div class="label">
          <label>Feedback Setup</label>
     </div>
@@ -150,9 +152,6 @@
     <div class="checkboxes-field">
         <input type="checkbox" name="perms[contact][approve]" value="1" checked/> <label>Approve</label>
     </div>
-    <!--
-    <div class="label"><label>People</label></div><div class="checkboxes-field"><input type="checkbox" /> <label>Approve</label></div>
-    -->
     <div class="label">
         <label>Settings</label>
     </div>

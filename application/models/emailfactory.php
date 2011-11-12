@@ -28,6 +28,10 @@ class EmailFactory {
             if($this->get_type == 'RequestFeedbackData') {
                 $collection[] = new RequestFeedback($address, $this->message, "36Stories: Feedback Request", $this->opts);
             }
+
+            if($this->get_type == 'InvitationNotificationData') {
+                $collection[] = new Invitation($address, $this->message, "36Stories: Admin Invitation");
+            }
         }
 
         return $collection;
@@ -122,6 +126,30 @@ class RequestFeedback extends EmailFixture {
         return View::make('email/request_feedback_view', Array(
             'email_data' => $this->email_data
           , 'address' => $this->address
+          , 'message' => $this->message
+        ));     
+    }
+
+    public function get_subject() {
+        return $this->subject;     
+    }
+}
+
+class Invitation extends EmailFixture {
+
+    public function __construct($address, $message, $subject) {
+        $this->address = $address; 
+        $this->message = $message;
+        $this->subject = $subject;
+    }
+        
+    public function get_address() {
+        return $this->address->email;
+    }
+
+    public function get_message() {
+        return View::make('email/invitation_view', Array(
+            'address' => $this->address
           , 'message' => $this->message
         ));     
     }

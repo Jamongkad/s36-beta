@@ -110,7 +110,7 @@ jQuery(function($) {
         e.preventDefault(); 
     });
 
-    $('.flag').switcharoo('-100px bottom');
+    $('.flag').switcharoo('-100px 0px');
        
     $.each($('ul#nav-menu li'), function(index, value) {
         $(value).bind('click', function(e) {
@@ -405,7 +405,6 @@ jQuery(function($) {
     };
 
     function save_crop_image(){
-        //hide_error();
         var fb_login = $("#fb_flag").val();
         var x_coords = $('#x').val();
         var y_coords = $('#y').val();
@@ -441,10 +440,10 @@ jQuery(function($) {
             fileElementId:'your_photo',
             dataType: 'json', 
             success: function (data, status) {	  
-                
                 var file = "/" + data.dir;
                 var width = Math.round(data.wid);
                 var jcrop_div = $("div.jcrop_div");
+                var existing_avatar = $('input[name="existing_avatar"]');
 
                 $('div.adjust-crop').show();
 
@@ -457,9 +456,12 @@ jQuery(function($) {
                     jcrop_api.setSelect(['40','20','190','170']);
                 }
 
-                jcrop_div.css({'width':width});
+                if(existing_avatar.length > 0) {
+                    $.post($("#ajax-delete-existing-avatar").attr('hrefaction'), {avatar: existing_avatar.val()});
+                }
 
-                $('input[name="orig_image_dir"]').val(file);
+                jcrop_div.css({'width':width});
+                $('input[name="orig_image_dir"]').val(file); 
                 initJcrop();
             }
 		}); 

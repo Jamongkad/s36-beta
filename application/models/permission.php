@@ -4,10 +4,6 @@ class Permission {
     
     private $input = Array();
 
-    protected $fill_all = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
-    protected $fill_one = Array('approve' => 0);
-
-
     public function __construct(Array $input) {
         if(array_key_exists('perms', $input)) {
             $this->input = $input['perms'];                   
@@ -15,9 +11,10 @@ class Permission {
     }
 
     public function build() {
-        $supplier = new PermissionSupplier($this->input);
 
+        $supplier = new PermissionSupplier($this->input);
         $result_array = Array();
+
         foreach($supplier->load() as $key => $value) {
             foreach($value as $k => $v) {
                 $result_array[$key."_".$k] = $v;     
@@ -26,9 +23,11 @@ class Permission {
         }
 
         return $result_array;
-
     }
- 
+
+    public static function selector($nav_regex) {
+        return $nav_regex;
+    } 
 }
  
 class PermissionSupplier {
@@ -40,7 +39,6 @@ class PermissionSupplier {
 
         $this->config_array = Array(
                 'inbox'     => new InboxPermission()
-              , 'feature'   => new FeaturePermission()
               , 'feedsetup' => new FeedsetupPermission()
               , 'contact'   => new ContactPermission()
               , 'setting'   => new SettingPermission() 
@@ -73,7 +71,7 @@ abstract class PermissionType {
 
 class InboxPermission extends PermissionType { 
 
-    private $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
+    private $permission_keys = Array('approve' => 0, 'feature' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
 
     public function expose_keys() {
         return $this->permission_keys;     

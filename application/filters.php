@@ -41,6 +41,10 @@ return array(
     //S36 Defined Filters
     's36_auth' => function() {
         return (S36Auth::check()) ? Null : Redirect::to('/');
+    },
+
+    's36_is_admin' => function() { 
+        return (S36Auth::user()->itemname != "Admin") ? Redirect::to('admin') : Null;
     }
 
 );

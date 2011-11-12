@@ -10,8 +10,13 @@
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>
+                            <?if($user_id == $admin->userid && $role != 'Admin'):?>
+                                <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
+                            <?endif?>
 
-                            <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
+                            <?if($role == 'Admin'):?>
+                                <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
+                            <?endif?>
                         </div>
                         <div class="g2of3">
                             <div class="admin-info"> 

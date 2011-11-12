@@ -171,7 +171,8 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .right .timestamp .date{color:#484848;}
 #admin-panel .main-panel .right .timestamp .time{color:#8d8c8c;}
 #admin-panel .main-panel .right .timestamp input{margin:0px 0px;padding:0px;width:20px;height:17px;border:none;background:url(../img/ico-sprite-options.png) no-repeat;cursor:pointer;}
-#admin-panel .main-panel .right .timestamp input.flag  {background-position:-100px 0px;position:absolute;top:0;right:5px;}
+/*#admin-panel .main-panel .right .timestamp input.flag  {background-position:-100px 0px;position:absolute;top:0;right:5px;}*/
+#admin-panel .main-panel .right .timestamp input.flag  {background-position:-100px -34px;position:absolute;top:0;right:5px;}
 #admin-panel .main-panel .right .timestamp input.remove{background-position:-120px 0px;position:absolute;bottom:0;right:5px;}
 #admin-panel .main-panel .right .timestamp input.flag:hover  {background-position:-100px -17px;}
 #admin-panel .main-panel .right .timestamp input.remove:hover{background-position:-120px -17px;}
