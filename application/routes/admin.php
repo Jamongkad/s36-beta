@@ -33,19 +33,20 @@ return array(
         $rules = Array(
             'username' => 'required'
           , 'fullName' => 'required'
-          , 'email' => 'required|email|unique:User,email'
+          , 'email' => 'required|email|s36email'
           , 'password' => 'required|min:8|confirmed'
           , 'title' => 'required'
         );
 
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules, Array('s36email' => 'This email is already taken.'));
+        
         if(!$validator->valid()) {
             return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
                 'ims' => DB::Table('IM', 'master')->get() , 'errors' => $validator->errors
               , 'input' => $data, 'admin' => $user
             ));
         }     
-        
+
         $admin = new Admin;
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
