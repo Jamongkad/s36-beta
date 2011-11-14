@@ -101,13 +101,11 @@ return array(
          $profile_img->remove_profile_photo($avatar);
      },
 
-     'POST /admin/test_invite_email' => function() {
+     'POST /admin/test_invite_email' => Array('needs' => 'S36ValueObjects', 'do' => function() {
          //once done switch to form open url in add_admin_view
          $data = Input::get(); 
-
          $admin = new Admin;
          $admin->input_data = (object)$data;
-
          return $admin->_send_welcome_email();
-     }
+     })
 );

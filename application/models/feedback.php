@@ -417,6 +417,7 @@ class Feedback {
         $sth->execute();       
     }
 
+    //TODO: Add statement that will delete avatar photos as well.
     public function _permanent_delete($opts) { 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
@@ -430,6 +431,22 @@ class Feedback {
 
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
+    }
+
+    public function permanently_remove_feedback($id) { 
+        $feedback = DB::table('Feedback', 'master')
+                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
+                        ->where('Feedback.feedbackId', '=', $id)
+                        ->first();
+
+        //delete profile photos...
+        if($feedback->avatar) { 
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$feedback->avatar);
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$feedback->avatar);	
+        }
+        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
+                             ->where('Feedback.isDeleted', '=', 1)
+                             ->delete();
     }
 
     private function _toggle_state($table, $where_column, $id, $column, $state) {  
@@ -588,23 +605,6 @@ class Feedback {
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
-    }
-
-    public function permanently_remove_feedback($id) { 
-        $feedback = DB::table('Feedback', 'master')
-                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
-                        ->where('Feedback.feedbackId', '=', $id)
-                        ->first();
-
-        //delete profile photos...
-        if($feedback->avatar) { 
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$feedback->avatar);
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$feedback->avatar);	
-        }
-        //delete contact...
-        //DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
-        //delete feedback...
-        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)->delete();
     }
 
     public function contact_detection($opts) {

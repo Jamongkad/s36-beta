@@ -2,8 +2,7 @@
 
 $feedback = new Feedback;
 $category = new Category;
-Package::load('S36ValueObjects');
-
+//Package::load('S36ValueObjects');
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
@@ -15,7 +14,6 @@ return array(
     'POST /feedback/edit_feedback_text' => function() {
 
         $badwords = new BadWords;
-
         $post = Input::get();
 
         $feed_id = $post['feed_id'];
@@ -39,7 +37,7 @@ return array(
         ));
     }),
 
-    'POST /feedback/requestfeedback' => function() {
+    'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() {
         $data = Input::get();
         $rules = Array(
             'firstname' => 'required'
@@ -82,7 +80,7 @@ return array(
             
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
         }
-    },
+    }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
 
@@ -94,11 +92,11 @@ return array(
         ));
     }),
 
-    'POST /feedback/addfeedback' => function() { 
+    'POST /feedback/addfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile();
         return Redirect::to('feedback/addfeedback'); 
-    },
+    }),
 
     'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
         $undo_result = $feedback->fetch_deleted_feedback();

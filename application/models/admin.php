@@ -27,28 +27,27 @@ class Admin extends S36DataObject {
 
     public function _send_welcome_email() {
 
-        Package::load('S36ValueObjects');
         $email = $this->input_data->email;
-        $welcome_note = $this->input_data->welcome_note;
-        $vo = new InvitationNotificationData;
 
+        $vo = new InvitationNotificationData;
         $message_obj = new StdClass;
         $message_obj->account_owner = S36Auth::user()->fullname;
         $message_obj->publisher = S36Auth::user()->email;
         $message_obj->invitee = $this->input_data->fullName;
-        $message_obj->message = $welcome_note;
+        $message_obj->message = $this->input_data->welcome_note;
+        $message_obj->name = $this->input_data->username;
         
         $factory = new EmailFactory($vo);
         $factory->addresses = Array($this->input_data->email);
         $factory->message = $message_obj;
         $email_page = $factory->execute();
-        return $email_page[0]->get_message();
-        //$emailer = new Email($email_page);
-        //$emailer->process_email();
+        //return $email_page[0]->get_message();
+        $emailer = new Email($email_page);
+        $emailer->process_email();
     }
 
     public function save() {
-        //$this->_send_welcome_email();
+        $this->_send_welcome_email();
         $personal_data = $this->_extract_personal_data();
         $user_id = DB::Table('User', 'master')->insert_get_id($personal_data);
 

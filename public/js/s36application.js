@@ -307,6 +307,12 @@ jQuery(function($) {
         e.preventDefault();
     });
      
+    $('a.perm-delete').click(function(e) { 
+        if(confirm("Are you sure you want to permanently delete this feedback?")) {
+            return true;
+        } 
+        e.preventDefault();
+    });
     //helper functions
     function embed_choice_check(embed_type) {
 

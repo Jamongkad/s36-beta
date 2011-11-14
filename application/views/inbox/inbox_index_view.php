@@ -128,7 +128,7 @@
                             <?endif?>
                         <?else:?>
                             <?=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>
-                            <?=HTML::link('/feedback/removefeedback/'.$id, 'remove feedback')?>
+                            <?=HTML::link('/feedback/removefeedback/'.$id, 'remove feedback', Array('class' => 'perm-delete'))?>
                         <?endif?>
                     </div>
                 </div>

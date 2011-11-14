@@ -36,9 +36,9 @@
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">You're invited to join our feedback management system.</h1>
                            
-                        		Hi <strong>%Name%</strong>,
+                        		Hi <strong><?=$message->name?></strong>,
 								<br /><br />
-								<strong>%Account-owner-name%</strong> just setup an account for you.
+								<strong><?=$message->account_owner?></strong> just setup an account for you.
                         		<br /><br />
                                 <div style="padding:20px;background:#f4f4f4;">
                             	All you need to do is to choose a username and password.
@@ -47,12 +47,13 @@
                                 Click this link to get started:
                                 <a href="#">http://setup.36stories.com/id/4732940392470234234</a>
                                 </div>
+                                <?if($message->message):?>
+                                    <br /><br />
+                                    <div><?=$message->account_owner?> also says:</div>
+                                    "<?=$message->message?>"
+                                <?endif?>
                                 <br /><br />
-                                %Account-owner-name% also says:
-								<br /><br />
-								%custom-message%
-                                <br /><br />
-                                <strong>Have questions?</strong> Contact %Account-Owner-name% - your account administrator at %account-owner-email%
+                                <strong>Have questions?</strong> Contact <?=$message->account_owner?> - your account administrator at <?=$message->publisher?>
                             </td>
                         </tr>
                         <tr height="80">

@@ -1,7 +1,5 @@
 <?php
 
-Package::load('S36ValueObjects');
-
 return array(
     'GET /api/pull_feedback' => function() { 
 
@@ -38,12 +36,12 @@ return array(
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
-    'POST /api/submit_feedback' => function() { 
+    'POST /api/submit_feedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
-    }, 
+    }), 
 
-    'GET /api/publish' => function() { 
+    'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
 
         $encrypt = new Crypter;
         $string  = Input::get('params');
@@ -82,5 +80,5 @@ return array(
             return View::make('email/thankyou_view');
         }
 
-    }
+    })
 );
