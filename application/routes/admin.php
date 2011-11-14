@@ -23,7 +23,7 @@ return array(
         ));
     }),
 
-    'POST /admin/add_admin' => function() {
+    'POST /admin/add_admin' => Array('needs' => 'S36ValueObjects', 'do' => function() {
         $data = Input::get();
         $user = S36Auth::user();
 
@@ -51,7 +51,7 @@ return array(
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
         return $admin->save();
-    },
+    }),
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
         $user = S36Auth::user();
