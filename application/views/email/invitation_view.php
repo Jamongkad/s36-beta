@@ -7,12 +7,12 @@
 <style type="text/css">
 
 </style>
-<body bgcolor="#dde0e3" style="padding:0;margin:0;font-size:14px;font-family:Arial, Helvetica, sans-serif;">
+<body bgcolor="#dde0e3" style="padding:0;margin:0;font-size:14px;font-family:Arial, Helvetica, sans-serif;color:#464646">
 <table bgcolor="#dde0e3" width="716" cellpadding="0" cellspacing="0">
 
 	<tr>
     	<td style="padding:30px 30px 10px;">
-        	<table bgcolor="#FFF" cellpadding="0" cellspacing="0">
+        	<table bgcolor="white" style="background:#FFF" cellpadding="0" cellspacing="0">
             	<tr><td style="padding:20px;" cellpadding="0" cellspacing="0">
                 	<table width="616" cellpadding="0" cellspacing="0">
                     	<!-- header -->
