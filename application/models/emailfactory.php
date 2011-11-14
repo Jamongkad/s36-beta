@@ -151,6 +151,7 @@ class Invitation extends EmailFixture {
         return View::make('email/invitation_view', Array(
             'address' => $this->address
           , 'message' => $this->message
+          , 'user' => $this->get_address()
         ));     
     }
 

@@ -38,9 +38,10 @@ class Admin extends S36DataObject {
         $message_obj->name = $this->input_data->username;
         
         $factory = new EmailFactory($vo);
-        $factory->addresses = Array(Array('email' => $this->input_data->email));
+        $factory->addresses = Array((object)Array('email' => $this->input_data->email));
         $factory->message = $message_obj;
         $email_page = $factory->execute();
+
         //return $email_page[0]->get_message();
         $emailer = new Email($email_page);
         $emailer->process_email();
