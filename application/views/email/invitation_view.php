@@ -44,9 +44,12 @@
                             	All you need to do is to choose a username and password.
                                 It takes only a few seconds.
                                 <br /><br />
-                                Click this link to get started:
-                                <a href="#">http://setup.36stories.com/id/4732940392470234234</a>
-                                </div>
+                                Click this 
+                                <a href="<?=URL::to("api/authenticate_user?params=".rawurlencode($message->user->encryptstring)."&company_id=".$message->user->companyid)?>" >
+                                    <span style="vertical-align: middle">link</span>
+                                </a> 
+                                to get started.
+
                                 <?if($message->message):?>
                                     <br /><br />
                                     <div><?=$message->account_owner?> also says:</div>

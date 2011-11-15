@@ -1,5 +1,5 @@
-<?=Form::open('admin/add_admin')?>
-<?//=Form::open('admin/test_invite_email')?>
+<?//=Form::open('admin/add_admin')?>
+<?=Form::open('admin/test_invite_email')?>
 
 <input type="hidden" name="companyId" value="<?=$admin->companyid?>" />
 <div class="block">

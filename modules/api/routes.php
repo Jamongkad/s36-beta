@@ -79,6 +79,17 @@ return array(
             S36Auth::logout();
             return View::make('email/thankyou_view');
         }
+    }),
 
-    })
+    'GET /api/authenticate_user' => Array('needs' => 'S36ValueObjects', 'do' => function() {     
+
+        $encrypt = new Crypter;
+        $string  = Input::get('params');
+        $feedback_id = Input::get('feedback_id');
+
+        $decrypt = $encrypt->decrypt($string);
+        $params = explode("|", $decrypt); 
+        $key = Config::get('application.key');
+        print_r($params);
+    }) 
 );

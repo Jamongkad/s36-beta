@@ -107,6 +107,6 @@ return array(
          $data = Input::get(); 
          $admin = new Admin;
          $admin->input_data = (object)$data;
-         return $admin->_send_welcome_email();
+         return $admin->_send_welcome_email(8);
      })
 );

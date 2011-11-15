@@ -25,7 +25,9 @@ class Admin extends S36DataObject {
        );
     }
 
-    public function _send_welcome_email() {
+    public function _send_welcome_email($user_id) {
+
+        $user = DB::Table('User', 'master')->where('userId', '=', $user_id)->first();
 
         $email = $this->input_data->email;
 
@@ -36,28 +38,32 @@ class Admin extends S36DataObject {
         $message_obj->invitee = $this->input_data->fullName;
         $message_obj->message = $this->input_data->welcome_note;
         $message_obj->name = $this->input_data->username;
+        $message_obj->user = $user;
         
         $factory = new EmailFactory($vo);
         $factory->addresses = Array((object)Array('email' => $this->input_data->email));
         $factory->message = $message_obj;
         $email_page = $factory->execute();
 
-        //return $email_page[0]->get_message();
+        return $email_page[0]->get_message();
+        /*
         $emailer = new Email($email_page);
         $emailer->process_email();
+        */
     }
 
     public function save() {
-        $this->_send_welcome_email();
+    
         $personal_data = $this->_extract_personal_data();
         $user_id = DB::Table('User', 'master')->insert_get_id($personal_data);
 
         if($user_id) {
             $this->perms_data['itemname'] = $this->input_data->account_type;
             $this->perms_data['userid'] = $user_id;
-            DB::Table('AuthAssignment', 'master')->insert($this->perms_data);             
-        } 
+            DB::Table('AuthAssignment', 'master')->insert($this->perms_data);
 
+            $this->_send_welcome_email($user_id);
+        } 
         return Redirect::to('admin'); 
     }
 
