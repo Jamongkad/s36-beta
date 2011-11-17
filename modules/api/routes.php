@@ -56,7 +56,7 @@ return array(
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new User; 
-            //flick feedback publish this bitch
+            //flick publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new Feedback;
             $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
@@ -77,19 +77,68 @@ return array(
 
             //After publishing feedback logout...
             S36Auth::logout();
-            return View::make('email/thankyou_view');
+            return View::of_home_layout()->partial('contents', 'email/thankyou_view');       
         }
     }),
 
-    'GET /api/authenticate_user' => Array('needs' => 'S36ValueObjects', 'do' => function() {     
+    'GET /api/create_user' => Array('do' => function() {     
 
         $encrypt = new Crypter;
         $string  = Input::get('params');
-        $feedback_id = Input::get('feedback_id');
+        $company_id = Input::get('company_id');
 
         $decrypt = $encrypt->decrypt($string);
         $params = explode("|", $decrypt); 
         $key = Config::get('application.key');
-        print_r($params);
-    }) 
+
+        $user = DB::Table('User', 'master')->where('companyId', '=', $company_id)
+                                           ->where('username', '=', $params[0])
+                                           ->first();
+        if($key != null) {  
+            return View::of_home_layout()->partial('contents', 'home/user_auth_view', Array(
+                'user_data' => $params, 'company_id' => $company_id, 'admin_details' => $user, 'encrypt_string' => $string, 'errors' => Array()
+            ));
+        }
+    }),
+
+    'POST /api/create_user' => Array('do' => function() {
+
+        $data = Input::get();  
+        $encrypt = new Crypter;
+
+        $decrypt = $encrypt->decrypt($data['params']);
+        $params = explode("|", $decrypt); 
+        $key = Config::get('application.key');
+
+        $user = DB::Table('User', 'master')->where('companyId', '=', $data['companyId'])
+                                           ->where('username', '=', $params[0])
+                                           ->first();
+
+        $personal_data = Array( 
+            'username' => strtolower($data['username'])  
+          , 'password' => crypt($data['password'])
+          , 'encryptString' => $encrypt->encrypt(strtolower($data['username'])."|".$data['password'])
+          , 'avatar' => $data['cropped_image_nm']
+          , 'confirmed' => 1
+        );
+
+        $rules = Array(
+            'username' => 'required'
+          , 'password' => 'min:8|confirmed|required' 
+        );
+
+        $validator = Validator::make($data, $rules);
+        if(!$validator->valid()) {
+            return View::of_home_layout()->partial('contents', 'home/user_auth_view', Array(
+                'user_data' => $params, 'company_id' => $data['companyId'], 'admin_details' => $user, 'encrypt_string' => $data['params']
+              , 'errors' => $validator->errors
+            ));
+        } else { 
+            DB::table('User', 'master')
+                ->where('User.userId', '=', $data['userId'])
+                ->update($personal_data);
+
+            return Redirect::to('complete');
+        }
+    })
 );

@@ -20,6 +20,7 @@ return array(
           , 'errors' => Array()
           , 'input' => Array('username' => null, 'fullName' => null, 'email' => null, 'password' => null, 'title' => null)
           , 'admin' => $user
+          , 'photo_upload_view' => View::make('partials/photo_upload_view')
         ));
     }),
 
@@ -43,14 +44,15 @@ return array(
         if(!$validator->valid()) {
             return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
                 'ims' => DB::Table('IM', 'master')->get() , 'errors' => $validator->errors
-              , 'input' => $data, 'admin' => $user
+              , 'input' => $data, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view')
             ));
         }     
 
         $admin = new Admin;
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
-        return $admin->save();
+        $admin->save();
+        return Redirect::to('admin'); 
     }),
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
@@ -60,7 +62,7 @@ return array(
         
         return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
             'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-          , 'errors' => Array(), 'admin' => $user
+          , 'errors' => Array(), 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
         ));
      }),
 
@@ -86,13 +88,14 @@ return array(
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-              , 'errors' => $validator->errors, 'admin' => $user
+              , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
          }     
 
          $admin->perms_data = $perms;
          $admin->input_data = (object)$data; 
-         return $admin->update($user); 
+         $admin->update($user); 
+         return Redirect::to('admin'); 
      },
 
      'POST /admin/delete_existing_avatar' => function() {
@@ -107,6 +110,6 @@ return array(
          $data = Input::get(); 
          $admin = new Admin;
          $admin->input_data = (object)$data;
-         return $admin->_send_welcome_email(8);
+         return $admin->_send_welcome_email(11);
      })
 );

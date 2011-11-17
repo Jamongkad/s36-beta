@@ -422,6 +422,9 @@ input.reg-text{padding:7px 10px;width:290px;border:1px solid #d1d1d1;-webkit-bor
 input.login-text{padding:7px 10px;width:240px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
 select.reg-select{padding:7px 10px;width:310px;border:1px solid #d1d1d1;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;color:#828284;}
 
+input.create-btn{width:138px;height:50px;background:url(../img/login-button-large.png) top center no-repeat;border:none;font-size:20px;color:#FFF;font-family:Georgia, "Times New Roman", Times, serif;margin-right:6px;}
+input.create-btn:hover{background-position:bottom center;cursor:pointer;}
+
 /* jcrop css */
 #crop_status{padding-left:5px;}
 .jcrop_div{margin:0 auto;position:relative;margin-bottom:10px;}

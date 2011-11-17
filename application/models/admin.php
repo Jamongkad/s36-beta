@@ -45,11 +45,9 @@ class Admin extends S36DataObject {
         $factory->message = $message_obj;
         $email_page = $factory->execute();
 
-        return $email_page[0]->get_message();
-        /*
+        //return $email_page[0]->get_message();
         $emailer = new Email($email_page);
         $emailer->process_email();
-        */
     }
 
     public function save() {
@@ -64,25 +62,22 @@ class Admin extends S36DataObject {
 
             $this->_send_welcome_email($user_id);
         } 
-        return Redirect::to('admin'); 
     }
 
-    public function update($user) {
+    public function update($user=False) {
 
         $userId = $this->input_data->userId;
         $personal_data = $this->_extract_personal_data();
 
-        if($user->itemname == "Admin") {
+        if(isset($user) && $user->itemname == "Admin") {
             DB::Table('AuthAssignment', 'master')
                       ->where('userid', '=', $userId)
                       ->update($this->perms_data);
         }
-       
+
         DB::Table('User', 'master')
                   ->where('userId', '=', $userId) 
                   ->update($personal_data);
-
-        return Redirect::to('admin');  
     }
 
     public function fetch_admin_details_by_id($id) {

@@ -4,6 +4,7 @@
             <?foreach($admins as $admin):?>
                 <div class="admin-box">
                     <div class="grids">
+                        <?=(!$admin->confirmed) ? "<span style='padding: 2px; background-color: #E9EFF4; font-size:10px;font-weight:bold'>Invited</span>" : null?>
                         <div class="g1of3">
                             <?if($admin->avatar):?> 
                                 <?=HTML::image('uploaded_cropped/48x48/'.$admin->avatar)?>
@@ -16,6 +17,7 @@
 
                             <?if($role == 'Admin'):?>
                                 <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
+                                <small class="edit"><?=HTML::link('admin/delete_admin/'.$admin->userid, 'delete')?></small>
                             <?endif?>
                         </div>
                         <div class="g2of3">

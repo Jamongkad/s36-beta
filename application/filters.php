@@ -40,7 +40,7 @@ return array(
 
     //S36 Defined Filters
     's36_auth' => function() {
-        return (S36Auth::check()) ? Null : Redirect::to('/');
+        return (S36Auth::check()) ? Null : Redirect::to('/login');
     },
 
     's36_is_admin' => function() { 

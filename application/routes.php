@@ -17,7 +17,7 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() {
+    'GET /login' => function() {
         $auth = new S36Auth;
         if($auth->check()) { 
             return View::of_layout()->partial('contents', 'dashboard/index');       
@@ -28,7 +28,7 @@ return array(
 
     'GET /logout' => function() {
         S36Auth::logout();
-        return Redirect::to('/');
+        return Redirect::to('/login');
     },
 
     'POST /login' => function() {
@@ -38,7 +38,7 @@ return array(
         if(S36Auth::check()) {
             return Redirect::to('/dashboard');           
         } else {
-            return Redirect::to('/');
+            return Redirect::to('/login');
         }
     },
 
@@ -49,4 +49,8 @@ return array(
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'help/help_index_view');
     }),
+
+    'GET /complete' => function() { 
+        return View::of_home_layout()->partial('contents', 'home/user_auth_thankyou_view');       
+    }
 );

@@ -45,7 +45,7 @@
                                 It takes only a few seconds.
                                 <br /><br />
                                 Click this 
-                                <a href="<?=URL::to("api/authenticate_user?params=".rawurlencode($message->user->encryptstring)."&company_id=".$message->user->companyid)?>" >
+                                <a href="<?=URL::to("api/create_user?params=".rawurlencode($message->user->encryptstring)."&company_id=".$message->user->companyid)?>" >
                                     <span style="vertical-align: middle">link</span>
                                 </a> 
                                 to get started.
