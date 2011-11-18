@@ -17,29 +17,30 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /login' => function() {
+    'GET /([A-Za-z]+)/login' => function($company) {
         $auth = new S36Auth;
         if($auth->check()) { 
             return View::of_layout()->partial('contents', 'dashboard/index');       
         } else {
-            return View::of_layout()->partial('contents', 'home/login');      
+            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
         }		
     },
 
-    'GET /logout' => function() {
+    'GET /([A-Za-z]+)/logout' => function($company) {
         S36Auth::logout();
         return Redirect::to('/login');
     },
 
-    'POST /login' => function() {
+    'POST /([A-Za-z]+)/login' => function($company) {
         $input = Input::get();
-        S36Auth::login($input['username'], $input['password']);
+        S36Auth::login($input['username'], $input['password'], $company);
 
         if(S36Auth::check()) {
             return Redirect::to('/dashboard');           
         } else {
-            return Redirect::to('/login');
+            return Redirect::to($company.'/login');
         }
+
     },
 
     'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {

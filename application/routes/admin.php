@@ -105,6 +105,12 @@ return array(
          $profile_img->remove_profile_photo($avatar);
      },
 
+     'GET /admin/delete_admin/([0-9]+)' => function($id) {
+         $admin = new Admin;
+         $admin->delete_admin($id);
+         return Redirect::to('admin'); 
+     },
+
      'POST /admin/test_invite_email' => Array('needs' => 'S36ValueObjects', 'do' => function() {
          //once done switch to form open url in add_admin_view
          $data = Input::get(); 

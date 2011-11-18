@@ -17,7 +17,7 @@
 
                             <?if($role == 'Admin'):?>
                                 <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
-                                <small class="edit"><?=HTML::link('admin/delete_admin/'.$admin->userid, 'delete')?></small>
+                                <small class="edit"><?=HTML::link('admin/delete_admin/'.$admin->userid, 'delete', Array('class' => 'admin-delete'))?></small>
                             <?endif?>
                         </div>
                         <div class="g2of3">

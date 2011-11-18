@@ -160,8 +160,14 @@ class ProfileImage {
     }
 
     public function remove_profile_photo($name) { 
-        @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$name);
-        @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$name);	
+        
+        $check150 = is_file("/var/www/s36-upload-images/uploaded_cropped/150x150/".$name);
+        $check48  = is_file("/var/www/s36-upload-images/uploaded_cropped/48x48/".$name);
+        
+        if(isset($name) && $check150 && $check48) { 
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$name);
+            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$name);	
+        } 
     }
 }
 

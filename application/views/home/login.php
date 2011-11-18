@@ -5,7 +5,7 @@
         </div>
 		<div id="login">
         	<div id="login-box">
-                <?=Form::open('/login', 'POST')?>
+                <?=Form::open($company.'/login', 'POST')?>
                     <table width="100%" align="center">
                     <tr><td>Username/email:</td><td><?=Form::text('username')?></td></tr>
                     <tr><td>Password:</td><td><?=Form::password('password')?></td></tr>

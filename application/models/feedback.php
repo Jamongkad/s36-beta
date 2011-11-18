@@ -440,10 +440,9 @@ class Feedback {
                         ->first();
 
         //delete profile photos...
-        if($feedback->avatar) { 
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/150x150/".$feedback->avatar);
-            @unlink("/var/www/s36-upload-images/uploaded_cropped/48x48/".$feedback->avatar);	
-        }
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->remove_profile_photo($feedback->avatar);
+
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
                              ->delete();
