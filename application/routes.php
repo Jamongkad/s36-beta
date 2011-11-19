@@ -26,14 +26,9 @@ return array(
         }		
     },
 
-    'GET /([A-Za-z]+)/logout' => function($company) {
-        S36Auth::logout();
-        return Redirect::to('/login');
-    },
-
     'POST /([A-Za-z]+)/login' => function($company) {
         $input = Input::get();
-        S36Auth::login($input['username'], $input['password'], $company);
+        $test = S36Auth::login($input['username'], $input['password'], Array('company' => $company));
 
         if(S36Auth::check()) {
             return Redirect::to('/dashboard');           
@@ -41,6 +36,11 @@ return array(
             return Redirect::to($company.'/login');
         }
 
+    },
+    
+    'GET /([A-Za-z]+)/logout' => function($company) {
+        S36Auth::logout();
+        return Redirect::to($company.'/login');
     },
 
     'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {

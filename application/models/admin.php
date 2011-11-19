@@ -88,6 +88,40 @@ class Admin extends S36DataObject {
         return $admin;
     }
 
+    public function fetch_admin_details($opts) {
+
+        $company_statement = null;
+        $opts_check = property_exists($opts, 'options');
+        
+        if($opts_check) { 
+            $company_statement = "AND LCASE(CONVERT(Company.name USING latin1)) = :admin_company";
+        }
+
+        $sql = "SELECT 
+                * 
+                FROM 
+                    User
+                INNER JOIN
+                    Company
+                        ON Company.companyId = User.companyId
+                WHERE 1=1
+                    $company_statement 
+                    AND (User.username = :admin_username OR User.email = :admin_email)
+                ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':admin_email', $opts->username, PDO::PARAM_STR);
+        $sth->bindParam(':admin_username', $opts->username, PDO::PARAM_STR);
+
+        if($opts_check) {
+            $sth->bindParam(':admin_company', $opts->options['company'], PDO::PARAM_STR);
+        }
+
+        $sth->execute();
+        $user = $sth->fetch(PDO::FETCH_OBJ);
+        return $user;
+    }
+
     public function delete_admin($id) {
         $admin_details = $this->fetch_admin_details_by_id($id);
         $profile_img = new Widget\ProfileImage();
