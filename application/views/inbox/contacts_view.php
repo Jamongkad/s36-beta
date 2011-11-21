@@ -50,7 +50,13 @@
                     <tbody>
                         <?foreach($contacts->result as $contact):?>
                             <tr> 
-                        	    <td class="avatar"><?=$contact->avatar?></td>
+                        	    <td class="avatar"> 
+                                    <?if($contact->avatar):?> 
+                                        <?=HTML::image('uploaded_cropped/48x48/'.$contact->avatar)?>
+                                    <?else:?>
+                                        <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                                    <?endif?>
+                                </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
                                 <td><?=HTML::link('/', count(explode("|", $contact->feedbackids)))?></td>
