@@ -10,10 +10,13 @@
                     </div>
                     <div class="right">
                     	<div class="g1of5">
+                            <!--
                         	<label>SORT BY</label>
                             <select>
                             	<option>Date</option>
                             </select>
+                            -->
+                        	&nbsp;
                         </div>
                         <div class="g1of5">
                         	&nbsp;
