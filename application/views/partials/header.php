@@ -45,7 +45,7 @@
             	<ul id="nav-menu">
                     <? $regex = Helpers::nav_regex(); ?>
                     <li<?=($regex->dashboard ? ' class="selected dashboard"' : ' class="dashboard"')?>>
-                        <?=HTML::link('dashboard/', 'Dashboard')?>
+                        <?=HTML::link('dashboard', 'Dashboard')?>
                        <?=($regex->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>

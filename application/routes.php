@@ -17,6 +17,11 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
+
+    'GET /(:any)' => function($company) { 
+        return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
+    },
+
     'GET /([A-Za-z]+)/login' => function($company) {
         $auth = new S36Auth;
         if($auth->check()) { 
@@ -31,7 +36,7 @@ return array(
         $test = S36Auth::login($input['username'], $input['password'], Array('company' => $company));
 
         if(S36Auth::check()) {
-            return Redirect::to('/dashboard');           
+            return Redirect::to('dashboard');           
         } else {
             return Redirect::to($company.'/login');
         }

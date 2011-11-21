@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'before' => function()
+	'before' => function($response)
 	{
 		// Do stuff before every request is executed.	
 	},
@@ -40,10 +40,10 @@ return array(
 
     //S36 Defined Filters
     's36_auth' => function() {
-
         if(S36Auth::check()) {
             return null;     
         } else {
+            //we should not be able to reach this point. And if so find a solution immediately
             return Redirect::to('login');   
         }
     },
