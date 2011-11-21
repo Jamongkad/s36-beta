@@ -13,18 +13,17 @@
                     </div>
                     <div class="right">
                     	<div class="g4of5">
-                            <!--
-                        	<label>SORT BY</label>
-                            <select>
-                            	<option>Date</option>
-                            </select>
-                            -->
                         	<label>Search Name</label>
                             <input type="text" class="small-text" />
                         	&nbsp;
                         </div>
-                        <div class="g1of5">
-                        	&nbsp;
+                        <div class="g1of5">     
+                        <!--
+                        	<label>SORT BY</label>
+                            <select>
+                            	<option>Date</option>
+                            </select> 
+                        -->
                         </div>
                     </div>
                     <div class="c"></div>
@@ -56,7 +55,8 @@
                                 </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
-                                <td><?=HTML::link('/', count(explode("|", $contact->feedbackids)))?></td>
+                                <td><?=HTML::link('contacts/view_contact/'.$contact->contactid, count(explode("|", $contact->feedbackids))
+                                                  , Array('class' => 'contact-link'))?></td>
                                 <td><input type="button" class="edit" /><input type="button" class="delete" /></td>
                             </tr>
                         <?endforeach?> 

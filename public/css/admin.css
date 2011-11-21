@@ -477,3 +477,9 @@ a.edit, a.save {
     font-size: 1.4em; 
     color: #2F4F4F   
 }
+
+a.contact-link {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+}

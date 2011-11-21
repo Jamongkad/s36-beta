@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'GET /contacts' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
+    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() { 
         $contact = new Contact;
         $limit = 10;
 
@@ -16,6 +16,11 @@ return array(
             'contacts' => $contacts 
           , 'pagination' => $pagination->render()
         ));
+    }),
+
+    'GET /contacts/view_contact/([0-9]+)' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function($id) { 
+        return $id;
+        //return View::of_layout()->partial('contents', 'inbox/contacts_view');
     }),
 
     'GET /contacts/important' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 

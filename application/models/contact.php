@@ -12,7 +12,8 @@ class Contact extends S36DataObject {
         $sql = "
             SELECT
                 SQL_CALC_FOUND_ROWS
-                Contact.email 
+                Contact.contactId
+              , Contact.email 
               , Contact.firstname
               , Contact.lastname
               , Contact.avatar
