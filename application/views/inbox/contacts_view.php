@@ -1,8 +1,7 @@
-
-            <div class="block">
-            	<p class="small">Total contacts:     <span class="count">2534</span>          Total requests sent:     <span class="count">3421</span>          Total responses:     <span class="count">896</span></p>
-                
-            </div>
+<div class="block">
+    <p class="small">Total contacts:     <span class="count">2534</span>          Total requests sent:     <span class="count">3421</span>          Total responses:     <span class="count">896</span></p>
+    
+</div>
             <!-- top blue bar with filter options -->
             <div class="admin-sorter-bar">
             	<div class="sorter-bar">
@@ -41,27 +40,23 @@
             	<table width="100%" cellpadding="0" cellspacing="0">
                 	<thead>
                 		<tr>
-                        	<td class="checkbox"><input type="checkbox" /></td>
+                        	<td class="avatar"></td>
                             <td>NAME</td>
-                        	<td>EMAIL ADDRESS</td>
-                            <!--
-                            <td>LAST SENT DATE</td>
-                            <td>REQUESTS</td>
-                            <td>STATUS</td>
-                            -->
+                        	<td>EMAIL ADDRESS</td> 
+                            <td>FEEDBACK</td>   
                             <td>OPTION</td>
                         </tr>
                     </thead>
                     <tbody>
                         <?foreach($contacts->result as $contact):?>
                             <tr> 
-                        	    <td class="checkbox"><input type="checkbox" /></td>
+                        	    <td class="avatar"><?=$contact->avatar?></td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
+                                <td><?=HTML::link('/', count(explode("|", $contact->feedbackids)))?></td>
                                 <td><input type="button" class="edit" /><input type="button" class="delete" /></td>
                             </tr>
-                        <?endforeach?>
-                        
+                        <?endforeach?> 
                     </tbody>
                 </table>
             </div>

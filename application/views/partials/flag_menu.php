@@ -17,7 +17,7 @@
         , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
     );
 ?>
-<?if(!preg_match('/deleted/', Request::uri())):?>
+<?if(!preg_match('/(deleted|contacts)/', Request::uri())):?>
     <div class="admin-nav-bar">
             <ul>
                 <?for($i=0; $i < count($links); $i++):?>
@@ -37,18 +37,8 @@
 
                     <?foreach($feedsetup_nav as $name => $value):?>
                         <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
-                    <?endforeach?>
-                   
-                <?endif?>
-               
-                <?if(preg_match_all('/contacts/', Request::uri(), $matches)):?>
-                    <li><?=HTML::link('contacts', 'LIST OF CONTACTS', 
-                           Array('class' => (Helpers::filter_highlighter(array('contacts')) ? 'selected' : null)))?></li>
-                    <li><?=HTML::link('contacts/important', 'IMPORTANT',
-                           Array('class' => (Helpers::filter_highlighter(array('contacts/important')) ? 'selected' : null)))?></li>
-                    <li><?=HTML::link('contacts/request', 'REQUEST FEEDBACK', 
-                           Array('class' => (Helpers::filter_highlighter(array('contacts/request')) ? 'selected' : null)))?></li>
-                <?endif?>
+                    <?endforeach?> 
+                <?endif?>   
             </ul>
     </div>
 <?endif?>

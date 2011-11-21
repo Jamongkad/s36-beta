@@ -15,6 +15,7 @@ class Contact extends S36DataObject {
                 Contact.email 
               , Contact.firstname
               , Contact.lastname
+              , Contact.avatar
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
               , GROUP_CONCAT(
                     CASE 
