@@ -1,6 +1,9 @@
 <div class="block">
-    <p class="small">Total contacts:     <span class="count">2534</span>          Total requests sent:     <span class="count">3421</span>          Total responses:     <span class="count">896</span></p>
-    
+    <p class="small">
+        Total contacts:<span class="count"><?=$contacts->total_rows?></span>          
+        Total requests sent:<span class="count">0</span>          
+        Total responses:     <span class="count">0</span>
+    </p> 
 </div>
             <!-- top blue bar with filter options -->
             <div class="admin-sorter-bar">
@@ -9,29 +12,20 @@
                     	&nbsp;
                     </div>
                     <div class="right">
-                    	<div class="g1of5">
+                    	<div class="g4of5">
                             <!--
                         	<label>SORT BY</label>
                             <select>
                             	<option>Date</option>
                             </select>
                             -->
+                        	<label>Search Name</label>
+                            <input type="text" class="small-text" />
                         	&nbsp;
                         </div>
                         <div class="g1of5">
                         	&nbsp;
                         </div>
-                        <div class="g1of5">
-                        	&nbsp;
-                        </div>
-                        <!--
-                        <div class="g2of5 right-align">
-                        	<label>Display</label>
-                            <select>
-                            	<option>50</option>
-                            </select>
-                        </div>
-                        -->
                     </div>
                     <div class="c"></div>
                 </div>
