@@ -55,9 +55,12 @@
                                 </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
-                                <td><?=HTML::link('contacts/view_contact/'.$contact->contactid, count(explode("|", $contact->feedbackids))
+                                <td><?=HTML::link('contacts/view_contact/'.$contact->contactid, $contact->feedbackidcount
                                                   , Array('class' => 'contact-link'))?></td>
-                                <td><input type="button" class="edit" /><input type="button" class="delete" /></td>
+                                <td>
+                                    <input type="button" class="contact-edit" />
+                                    <input type="button" class="contact-delete" />
+                                </td>
                             </tr>
                         <?endforeach?> 
                     </tbody>

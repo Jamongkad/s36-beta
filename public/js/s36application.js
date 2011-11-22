@@ -499,7 +499,6 @@ jQuery(function($) {
     });
 
     $('a.admin-delete').bind("click", function(e) {
-
         console.log($(this).attr('href'));
         if(confirm("Are you sure you want to delete this user? There is no undo.")) { 
             return true;

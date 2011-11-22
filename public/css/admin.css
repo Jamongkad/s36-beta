@@ -259,10 +259,10 @@ li.c{float:none !important;width:0px !important;height:0px !important;}
 #admin-panel div.contact-table table td.checkbox{width:60px;text-align:center;}
 #admin-panel div.contact-table table td.name{font-weight:bold;color:#343434;}
 #admin-panel div.contact-table input       {margin:0px 0px;padding:0px;width:20px;height:17px;border:none;background:url(../img/ico-sprite-options.png) no-repeat;cursor:pointer;}
-#admin-panel div.contact-table input.edit  {background-position: -140px 0px;}
-#admin-panel div.contact-table input.delete{background-position: -160px 0px;}
-#admin-panel div.contact-table input.edit:hover  {background-position: -140px bottom;}
-#admin-panel div.contact-table input.delete:hover{background-position: -160px bottom;}
+#admin-panel div.contact-table input.contact-edit  {background-position: -140px 0px;}
+#admin-panel div.contact-table input.contact-delete{background-position: -160px 0px;}
+#admin-panel div.contact-table input.contact-edit:hover  {background-position: -140px -17px;}
+#admin-panel div.contact-table input.contact-delete:hover{background-position: -160px -17px;}
 
 #admin-panel div.contact-table table tbody tr:hover{background:#edf3f8;}
 #admin-panel div.contact-table table tbody td a.underline{text-decoration:underline;}

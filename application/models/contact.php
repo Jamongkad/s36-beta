@@ -18,6 +18,7 @@ class Contact extends S36DataObject {
               , Contact.lastname
               , Contact.avatar
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
+              , COUNT(Feedback.feedbackId) AS feedbackIdCount
               , GROUP_CONCAT(
                     CASE 
                         WHEN Feedback.rating = 1 THEN 'POOR' 
@@ -56,6 +57,7 @@ class Contact extends S36DataObject {
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+
         $result_obj = new StdClass;
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
