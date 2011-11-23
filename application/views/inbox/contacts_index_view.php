@@ -1,10 +1,4 @@
-<div class="block">
-    <p class="small">
-        Total contacts:<span class="count"><?=$contacts->total_rows?></span>          
-        Total requests sent:<span class="count">0</span>          
-        Total responses:     <span class="count">0</span>
-    </p> 
-</div>
+<?=$metrics?>
             <!-- top blue bar with filter options -->
             <div class="admin-sorter-bar">
             	<div class="sorter-bar">
@@ -55,11 +49,11 @@
                                 </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
-                                <td><?=HTML::link('contacts/view_contact/'.$contact->contactid, $contact->feedbackidcount
+                                <td><?=HTML::link('contacts/view_contact/'.$contact->email, $contact->feedbackidcount
                                                   , Array('class' => 'contact-link'))?></td>
                                 <td>
-                                    <input type="button" class="contact-edit" />
-                                    <input type="button" class="contact-delete" />
+                                    <input type="button" class="contact-edit" hrefaction="<?=URL::to('contacts/edit_contact/'.$contact->email)?>"/>
+                                    <input type="button" class="contact-delete" hrefaction="<?=URL::to('contacts/delete_contact/'.$contact->email)?>"/>
                                 </td>
                             </tr>
                         <?endforeach?> 
@@ -73,25 +67,20 @@
                     	&nbsp;
                     </div>
                     <div class="right">
-                    	<div class="g1of3">
-                        	<label>WITH SELECTED</label>
-                            <select>
-                            	<option>Delete</option>
-                            </select>
-                        </div>
-                        <div class="g1of3">
+                        <div class="g1of5">
                             <?=$pagination?>
                         </div>
                     </div>
                     <div class="c"></div>
                 </div>
             </div>
-
+            <!--
             <div class="block noborder">
             	<p></p>
             	<a href="#" class="gray-btn rounder" style="font-size:14px;font-weight:bold;color:#565656;padding:6px 8px;margin-right:5px;text-shadow:#d5d8da 0px 1px;">Export Contacts</a><span>Contacts will be exported as a comma delimited file (CSV format). </span>
                 <p></p>
             </div>
+            -->
             <!-- spacer -->
             <div class="block noborder" style="height:100px;">
             </div>

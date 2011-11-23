@@ -499,10 +499,22 @@ jQuery(function($) {
     });
 
     $('a.admin-delete').bind("click", function(e) {
-        console.log($(this).attr('href'));
         if(confirm("Are you sure you want to delete this user? There is no undo.")) { 
             return true;
         } 
         e.preventDefault();
-    })
+    });
+
+    $('.contact-edit').bind('click', function(e) {
+        var href = $(this).attr('hrefaction');
+        window.location = href;
+        e.preventDefault();
+    });
+
+    $('.contact-delete').bind('click', function(e) {
+        var href = $(this).attr('hrefaction');
+        window.location = href;
+        e.preventDefault();
+    });
+    
 });

@@ -7,6 +7,40 @@ class Contact extends S36DataObject {
          return $id; 
     }
 
+    public function count_total_contacts() { 
+        $sql = "
+            SELECT
+               SQL_CALC_FOUND_ROWS
+               Contact.email
+            FROM 
+                Contact
+            INNER JOIN
+                Feedback
+                    On Feedback.contactId = Contact.contactId
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN
+                User
+                    On User.companyId = Site.companyId
+            WHERE 1=1
+                AND User.userId = :user_id
+            GROUP BY
+                Contact.email
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':user_id', $this->user_id);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+         
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj = new StdClass; 
+        $result_obj->total_rows = $row_count->fetchColumn();
+
+        return $result_obj;
+    }
+
     public function fetch_contacts($limit, $offset) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $sql = "
@@ -63,5 +97,21 @@ class Contact extends S36DataObject {
         $result_obj->total_rows = $row_count->fetchColumn();
 
         return $result_obj;
+    }
+}
+
+class ContactMetrics {
+
+    private $contacts_model;
+
+    public function __construct() {
+        $this->contacts_model = new Contact; 
+    }
+
+    public function render_metric_bar() {
+        $contact_count = $this->contacts_model->count_total_contacts();
+        return View::make('partials/contact_metricbar_view', Array(
+            'contact_count' => $contact_count
+        ));
     }
 }
