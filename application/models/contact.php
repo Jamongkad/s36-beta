@@ -93,25 +93,50 @@ class Contact extends S36DataObject {
     }
 
     public function get_contact_feedback($obj) {
-        $query = DB::Table('Contact', 'master') 
-                     ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
-                     ->join('Site', 'Site.siteId', '=', 'Contact.siteId')
-                     ->join('Company', 'Company.companyId', '=', 'Site.companyId')
-                     ->join('Country', 'Country.countryId', '=', 'Contact.countryId')
-                     ->join('User', 'User.companyId', '=', 'Company.companyId')
-                     ->where('User.userId', '=', $this->user_id)
-                     ->where('Contact.firstName', '=', $obj->name)
-                     ->where('Contact.email', '=', $obj->email)
-                     ->get(Array( 
-                         'Contact.contactId'
-                       , 'Feedback.feedbackId'
-                       , 'Contact.firstName'
-                       , 'Contact.lastName'
-                       , 'Country.name'
-                       , 'Country.code'
-                       , 'Site.siteId'
-                       , 'Feedback.text'));
-        return $query;
+        $sql = "
+            SELECT 
+                 Contact.contactId
+               , LCASE(Contact.email)
+               , Feedback.feedbackId
+               , Contact.firstName
+               , Contact.lastName
+               , Contact.avatar
+               , Country.name
+               , Country.code
+               , Site.siteId
+               , Feedback.text 
+            FROM 
+                Contact 
+            INNER JOIN
+                Feedback
+                    ON Feedback.contactId = Contact.contactId
+            INNER JOIN
+                Site
+                    ON Site.siteId = Contact.siteId
+            INNER JOIN
+                Company 
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                 Country
+                    ON Contact.countryId = Country.countryId
+            INNER JOIN
+                User
+                    ON User.companyId = Company.companyId
+            WHERE 1=1 
+                AND Contact.firstName = :first_name
+                AND LCASE(Contact.email) = :email
+                AND User.userId = :user_id
+            ORDER BY
+                Feedback.dtAdded DESC
+        ";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(":user_id", $this->user_id);
+        $sth->bindParam(":first_name", $obj->name); 
+        $sth->bindParam(":email", $obj->email);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        return $result;
     }
 
 }

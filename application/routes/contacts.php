@@ -27,12 +27,12 @@ return array(
         $contacts = new Contact;
         $contact_metrics = new ContactMetrics;
         $contact_person = $contacts->get_contact_feedback($get_data);
-        Helpers::show_data($contact_person);
-        /*
+
         return View::of_layout()->partial('contents', 'inbox/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
+          , 'contact_person' => $contact_person
         ));
-        */
+
     }),
 
     'GET /contacts/edit_contact/([0-9]+)' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function($id) { 
