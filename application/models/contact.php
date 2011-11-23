@@ -73,7 +73,10 @@ class Contact extends S36DataObject {
                     ON Site.siteId = Feedback.siteId
             INNER JOIN
                 User
-                    On User.companyId = Site.companyId
+                    ON User.companyId = Site.companyId
+            INNER JOIN
+                Country
+                    ON Country.countryId = Contact.countryId 
             WHERE 1=1
                 AND User.userId = :user_id
             GROUP BY
@@ -98,6 +101,28 @@ class Contact extends S36DataObject {
 
         return $result_obj;
     }
+
+    public function get_contact_feedback($name) {
+        $query = DB::Table('Contact', 'master') 
+                     ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
+                     ->join('Site', 'Site.siteId', '=', 'Contact.siteId')
+                     ->join('Company', 'Company.companyId', '=', 'Site.companyId')
+                     ->join('Country', 'Country.countryId', '=', 'Contact.countryId')
+                     ->join('User', 'User.companyId', '=', 'Company.companyId')
+                     ->where('User.userId', '=', $this->user_id)
+                     ->where('Contact.firstName', '=', $name)
+                     ->get(Array( 
+                         'Contact.contactId'
+                       , 'Feedback.feedbackId'
+                       , 'Contact.firstName'
+                       , 'Contact.lastName'
+                       , 'Country.name'
+                       , 'Country.code'
+                       , 'Site.siteId'
+                       , 'Feedback.text'));
+        return $query;
+    }
+
 }
 
 class ContactMetrics {

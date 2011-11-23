@@ -24,10 +24,13 @@ return array(
     'GET /contacts/view_contact/(:any)' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function($name) { 
         $contacts = new Contact;
         $contact_metrics = new ContactMetrics;
-
+        $contact_person = $contacts->get_contact_feedback($name);
+        Helpers::show_data($contact_person);
+        /*
         return View::of_layout()->partial('contents', 'inbox/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
         ));
+        */
       
     }),
 
