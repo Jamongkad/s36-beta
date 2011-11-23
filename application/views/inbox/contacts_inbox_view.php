@@ -26,7 +26,7 @@
                 <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                 <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
             </div>
-            <div class="right">
+            <div class="right" style="padding-left:19px">
                 <div class="g4of5">
                     <div class="feedback-avatar"> 
                         <?if($feed->avatar):?> 
