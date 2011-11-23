@@ -5,7 +5,7 @@ return array(
         $contact = new Contact;
         $contact_metrics = new ContactMetrics;
 
-        $limit = 10;
+        $limit = 6;
 
         $pagination = new ZebraPagination;
         $offset = ($pagination->get_page() - 1) * $limit;
