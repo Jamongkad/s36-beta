@@ -23,7 +23,6 @@
         <? $id = $feed->feedbackid ?>
         <div class="feedback" id="<?=$id?>">
             <div class="left">
-                <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
                 <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                 <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
             </div>
