@@ -53,16 +53,6 @@ class Contact extends S36DataObject {
               , Contact.avatar
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
               , COUNT(Feedback.feedbackId) AS feedbackIdCount
-              , GROUP_CONCAT(
-                    CASE 
-                        WHEN Feedback.rating = 1 THEN 'POOR' 
-                        WHEN Feedback.rating = 2 THEN 'POOR'
-                        WHEN Feedback.rating = 3 THEN 'AVERAGE'
-                        WHEN Feedback.rating = 4 THEN 'GOOD'
-                        WHEN Feedback.rating = 5 THEN 'EXCELLENT'
-                    END  
-                    ORDER BY Feedback.feedbackId DESC SEPARATOR '|'
-                ) AS ratings
             FROM 
                 Contact
             INNER JOIN
@@ -70,7 +60,7 @@ class Contact extends S36DataObject {
                     On Feedback.contactId = Contact.contactId
             INNER JOIN
                 Site
-                    ON Site.siteId = Feedback.siteId
+                    ON Site.siteId = Contact.siteId
             INNER JOIN
                 User
                     ON User.companyId = Site.companyId
@@ -102,7 +92,7 @@ class Contact extends S36DataObject {
         return $result_obj;
     }
 
-    public function get_contact_feedback($name) {
+    public function get_contact_feedback($obj) {
         $query = DB::Table('Contact', 'master') 
                      ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
                      ->join('Site', 'Site.siteId', '=', 'Contact.siteId')
@@ -110,7 +100,8 @@ class Contact extends S36DataObject {
                      ->join('Country', 'Country.countryId', '=', 'Contact.countryId')
                      ->join('User', 'User.companyId', '=', 'Company.companyId')
                      ->where('User.userId', '=', $this->user_id)
-                     ->where('Contact.firstName', '=', $name)
+                     ->where('Contact.firstName', '=', $obj->name)
+                     ->where('Contact.email', '=', $obj->email)
                      ->get(Array( 
                          'Contact.contactId'
                        , 'Feedback.feedbackId'

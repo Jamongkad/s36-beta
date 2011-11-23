@@ -49,7 +49,7 @@
                                 </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
-                                <td><?=HTML::link('contacts/view_contact/'.$contact->firstname, $contact->feedbackidcount
+                                <td><?=HTML::link('contacts/view_contact?name='.$contact->firstname."&email=".$contact->email, $contact->feedbackidcount
                                                   , Array('class' => 'contact-link'))?></td>
                                 <td>
                                     <input type="button" class="contact-edit" hrefaction="<?=URL::to('contacts/edit_contact/'.$contact->email)?>"/>

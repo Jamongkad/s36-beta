@@ -21,17 +21,18 @@ return array(
         ));
     }),
 
-    'GET /contacts/view_contact/(:any)' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function($name) { 
+    'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() { 
+        $get_data = (object)Input::get();
+
         $contacts = new Contact;
         $contact_metrics = new ContactMetrics;
-        $contact_person = $contacts->get_contact_feedback($name);
+        $contact_person = $contacts->get_contact_feedback($get_data);
         Helpers::show_data($contact_person);
         /*
         return View::of_layout()->partial('contents', 'inbox/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
         ));
         */
-      
     }),
 
     'GET /contacts/edit_contact/([0-9]+)' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function($id) { 
