@@ -13,11 +13,14 @@ return array(
         $contacts = $contact->fetch_contacts($limit, $offset);
         $pagination->records($contacts->total_rows);
         $pagination->records_per_page($limit);
+
+        $page = Input::get('page');
         
         return View::of_layout()->partial('contents', 'inbox/contacts_index_view', Array(
             'contacts' => $contacts 
           , 'metrics' => $contact_metrics->render_metric_bar()
           , 'pagination' => $pagination->render()
+          , 'page' => ($page) ? '&page='.$page : null
         ));
     }),
 
@@ -28,9 +31,12 @@ return array(
         $contact_metrics = new ContactMetrics;
         $contact_person = $contacts->get_contact_feedback($get_data);
 
+        $page = Input::get('page');
+
         return View::of_layout()->partial('contents', 'inbox/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'contact_person' => $contact_person
+          , 'page' => ($page) ? '?page='.$page : null
         ));
 
     }),

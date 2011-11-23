@@ -12,7 +12,7 @@
             <?endif?> 
         </td>
         <td valign="middle"><strong><?=$contact_person[0]->firstname?> <?=$contact_person[0]->lastname?></strong></td>
-        <td align="right"><a href="#">Back to Contacts</a></td>
+        <td align="right"><?=HTML::link('contacts'.$page, 'Back to Contacts')?></td>
         <td width="10"></td>
     </tr>
 </table>
