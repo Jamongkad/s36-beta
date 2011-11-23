@@ -93,17 +93,44 @@ class Contact extends S36DataObject {
     }
 
     public function get_contact_feedback($obj) {
-        $sql = "
+        $sql = '
             SELECT 
                  Contact.contactId
                , LCASE(Contact.email)
                , Feedback.feedbackId
-               , Contact.firstName
-               , Contact.lastName
-               , Contact.avatar
-               , Country.name
-               , Country.code
-               , Site.siteId
+               , Category.name AS category
+               , Feedback.status AS status
+               , Feedback.dtAdded AS date
+               , CASE
+                    WHEN Feedback.priority < 30 THEN "low"
+                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
+                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
+                 END AS priority
+               , CASE 
+                    WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
+                    WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
+                    WHEN Feedback.permission = 3 THEN "PRIVATE"
+                 END AS permission
+               , CASE 
+                    WHEN Feedback.rating = 1 THEN "POOR"
+                    WHEN Feedback.rating = 2 THEN "POOR"
+                    WHEN Feedback.rating = 3 THEN "AVERAGE"
+                    WHEN Feedback.rating = 4 THEN "GOOD"
+                    WHEN Feedback.rating = 5 THEN "EXCELLENT"
+                 END AS rating
+               , Feedback.isFeatured
+               , Feedback.isFlagged
+               , Feedback.isPublished
+               , Feedback.isArchived
+               , Feedback.isSticked
+               , Feedback.isDeleted
+               , Contact.contactId AS contactid
+               , Contact.firstName AS firstname
+               , Contact.lastName AS lastname
+               , Contact.avatar AS avatar
+               , Country.name AS countryname
+               , Country.code AS countrycode
+               , Site.siteId AS siteid
                , Feedback.text 
             FROM 
                 Contact 
@@ -122,13 +149,16 @@ class Contact extends S36DataObject {
             INNER JOIN
                 User
                     ON User.companyId = Company.companyId
+            INNER JOIN
+                Category
+                    ON Category.categoryId = Feedback.categoryId 
             WHERE 1=1 
                 AND Contact.firstName = :first_name
                 AND LCASE(Contact.email) = :email
                 AND User.userId = :user_id
             ORDER BY
                 Feedback.dtAdded DESC
-        ";
+        ';
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":user_id", $this->user_id);
         $sth->bindParam(":first_name", $obj->name); 
