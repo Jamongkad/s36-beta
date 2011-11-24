@@ -5,7 +5,7 @@ return array(
         $contact = new Contact;
         $contact_metrics = new ContactMetrics;
 
-        $limit = 6;
+        $limit = 7;
 
         $pagination = new ZebraPagination;
         $offset = ($pagination->get_page() - 1) * $limit;
@@ -46,8 +46,9 @@ return array(
 
     }),
 
-    'GET /contacts/edit_contact/([0-9]+)' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function($id) { 
-        return $id;
+    'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() { 
+        $get_data = (object)Input::get();
+        Helpers::show_data($get_data);
         //return View::of_layout()->partial('contents', 'inbox/contacts_view');
     }),
 

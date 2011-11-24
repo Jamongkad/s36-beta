@@ -52,8 +52,8 @@
                                 <td><?=HTML::link('contacts/view_contact?name='.$contact->firstname."&email=".$contact->email.$page, $contact->feedbackidcount
                                                   , Array('class' => 'contact-link'))?></td>
                                 <td>
-                                    <input type="button" class="contact-edit" hrefaction="<?=URL::to('contacts/edit_contact/'.$contact->email)?>"/>
-                                    <input type="button" class="contact-delete" hrefaction="<?=URL::to('contacts/delete_contact/'.$contact->email)?>"/>
+                                    <input type="button" class="contact-edit" hrefaction="<?=URL::to('contacts/edit_contact?email='.$contact->email)?>"/>
+                                    <input type="button" class="contact-delete" hrefaction="<?=URL::to('contacts/delete_contact?email='.$contact->email)?>"/>
                                 </td>
                             </tr>
                         <?endforeach?> 
@@ -82,8 +82,6 @@
             </div>
             -->
             <!-- spacer -->
-            <div class="block noborder" style="height:100px;">
-            </div>
             <!-- spacer -->
         </div>
         
