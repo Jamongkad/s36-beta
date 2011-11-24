@@ -49,10 +49,16 @@ return array(
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() { 
         $get_data = (object)Input::get();
         $contact = new Contact;
-        $result = $contact->get_contact_info($get_data->email);
-        Helpers::show_data($result);
+        $contact_metrics = new ContactMetrics;
 
-        return View::of_layout()->partial('contents', 'contact/contacts_edit_view');
+        $page = Input::get('page');
+
+        return View::of_layout()->partial('contents', 'contact/contacts_edit_view', Array( 
+            'metrics' => $contact_metrics->render_metric_bar()
+          , 'contact_person' => $contact->get_contact_info($get_data->email)
+          , 'page' => ($page) ? '?page='.$page : null
+          , 'countries' => DB::Table('Country', 'master')->get()
+        ));
     }),
 
 );
