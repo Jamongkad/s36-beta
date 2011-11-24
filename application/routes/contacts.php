@@ -58,6 +58,7 @@ return array(
           , 'contact_person' => $contact->get_contact_info($get_data->email)
           , 'page' => ($page) ? '?page='.$page : null
           , 'countries' => DB::Table('Country', 'master')->get()
+          , 'errors' => Array()
         ));
     }),
 
@@ -75,20 +76,23 @@ return array(
         $validator = Validator::make($data, $rules);
         
         if(!$validator->valid()) {
-
-            Helpers::show_data($validator->errors); 
-            /*
-            return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
-                'ims' => DB::Table('IM', 'master')->get() , 'errors' => $validator->errors
-              , 'input' => $data, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view')
+            return View::of_layout()->partial('contents', 'contact/contacts_edit_view', Array(
+                'metrics' => $contact_metrics->render_metric_bar()
+              , 'contact_person' => $contact->get_contact_info($data['email'])
+              , 'page' => (Input::get('page')) ? '?page='.Input::get('page') : null
+              , 'countries' => DB::Table('Country', 'master')->get()
+              , 'errors' => $validator->errors
             ));
-            */
-            return true;
-        } else {
-            $contact->update_contact($data);     
-            return Redirect::to('contacts/edit_contact?email='.$data['email'].$page); 
-        }
+        } 
 
+        $contact->update_contact($data);     
+        return Redirect::to('contacts/edit_contact?email='.$data['email'].$page); 
+    },
+
+    'GET /contacts/delete_contact' => function() { 
+        $data = Input::get();
+        $contact = new Contact;
+        return $contact->delete_contact($data['email']);
     }
 
 );

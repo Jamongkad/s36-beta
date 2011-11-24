@@ -246,13 +246,73 @@ class Contact extends S36DataObject {
                     AND User.userId = :user_id
                     AND LCASE(Contact.email) = :email
             ";
-        
-       
+          
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->bindParam(':email', $data['email'], PDO::PARAM_STR); 
-        $sth->execute();       
-      
+        $sth->execute();        
+    }
+
+    public function delete_contact($email) {
+        $delete_feedback_sql = "
+            DELETE FROM 
+                Feedback
+            WHERE contactId IN (
+                SELECT 
+                    Contact.contactId       
+                FROM 
+                    Contact
+                INNER JOIN
+                    Site
+                    ON Site.siteId = Contact.siteId
+                INNER JOIN 
+                    Country
+                    ON Country.countryId = Contact.countryId
+                INNER JOIN
+                    Company
+                    ON Company.companyId = Site.companyId
+                INNER JOIN
+                    User
+                    ON User.companyId = Company.companyId
+                WHERE 1=1
+                    AND Contact.email = :email
+                    AND User.userId = :user_id
+            )
+        ";
+
+        $sth = $this->dbh->prepare($delete_feedback_sql);  
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':email', $email, PDO::PARAM_STR); 
+        $sth->execute();        
+
+
+        $delete_contact_sql = " 
+            DELETE FROM
+                Contact
+            USING
+                Contact
+                    INNER JOIN
+                    Site
+                    ON Site.siteId = Contact.siteId
+                INNER JOIN 
+                    Country
+                    ON Country.countryId = Contact.countryId
+                INNER JOIN
+                    Company
+                    ON Company.companyId = Site.companyId
+                INNER JOIN
+                    User
+                    ON User.companyId = Company.companyId
+                WHERE 1=1
+                    AND Contact.email = :email
+                    AND User.userId = :user_id
+        ";
+
+
+        $sth = $this->dbh->prepare($delete_contact_sql);  
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':email', $email, PDO::PARAM_STR); 
+        $sth->execute();
     }
 
 }

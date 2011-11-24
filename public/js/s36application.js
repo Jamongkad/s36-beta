@@ -70,7 +70,7 @@ jQuery(function($) {
         if(identifier == 'cat-picks') {
             message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";  
             mode    = "fileas";
-            console.log($(this).parents('div.category-picker-holder').hide());
+            $(this).parents('div.category-picker-holder').hide();
         }
 
         if(href){ 
@@ -512,8 +512,13 @@ jQuery(function($) {
     });
 
     $('.contact-delete').bind('click', function(e) {
-        var href = $(this).attr('hrefaction');
-        window.location = href;
+        var hrefaction= $(this).attr('hrefaction');
+        var that = this;
+        if(confirm("Are you sure you want to delete this user? There is no undo.")) { 
+            $.get(hrefaction, function(msg) { 
+                $(that).parents('tr').fadeOut(350);
+            });           
+        }
         e.preventDefault();
     });
     

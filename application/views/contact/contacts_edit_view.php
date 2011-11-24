@@ -27,7 +27,10 @@
     <table cellpadding="" width="60%">
         <tr>
             <td><small>First Name :</small> </td>
-            <td><input type="text" class="regular-text" name="firstname" value="<?=$contact_person->firstname?>" /></td>
+            <td>
+                <input type="text" class="regular-text" name="firstname" value="<?=$contact_person->firstname?>" />
+                <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('firstname')."</p>" : null?>
+            </td>
         </tr>
         <tr>
             <td><small>Last Name :</small> </td>
