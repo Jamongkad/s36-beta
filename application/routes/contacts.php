@@ -48,7 +48,10 @@ return array(
 
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() { 
         $get_data = (object)Input::get();
-        Helpers::show_data($get_data);
+        $contact = new Contact;
+        $result = $contact->get_contact_info($get_data->email);
+        Helpers::show_data($result);
+
         //return View::of_layout()->partial('contents', 'inbox/contacts_view');
     }),
 

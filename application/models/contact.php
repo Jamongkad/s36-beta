@@ -169,6 +169,50 @@ class Contact extends S36DataObject {
         return $result;
     }
 
+    public function get_contact_info($email) {
+       $sql = " 
+        SELECT 
+              Contact.contactId
+            , Contact.siteId
+            , Contact.email 
+            , Contact.firstname
+            , Contact.lastname
+            , Contact.avatar
+            , Contact.position
+            , Contact.companyName
+            , Country.name
+            , Country.countryId
+        FROM 
+            Contact
+        INNER JOIN
+            Feedback
+                ON Feedback.contactId = Contact.contactId
+        INNER JOIN
+            Site
+                ON Site.siteId = Contact.siteId
+        INNER JOIN 
+            Country
+                ON Country.countryId = Contact.countryId
+        INNER JOIN
+            Company
+                ON Company.companyId = Site.companyId
+        INNER JOIN
+            User
+                ON User.companyId = Company.companyId
+        WHERE 1=1
+            AND lcase(Contact.email) = :email
+            AND User.userId = 1
+        ORDER BY
+            Contact.contactId DESC 
+       ";
+
+       $sth = $this->dbh->prepare($sql);
+       $sth->bindParam(":email", $email);
+       $sth->execute();
+       $result = $sth->fetch(PDO::FETCH_OBJ);
+       return $result;
+    }
+
 }
 
 class ContactMetrics {
