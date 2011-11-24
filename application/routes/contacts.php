@@ -16,7 +16,7 @@ return array(
 
         $page = Input::get('page');
         
-        return View::of_layout()->partial('contents', 'inbox/contacts_index_view', Array(
+        return View::of_layout()->partial('contents', 'contact/contacts_index_view', Array(
             'contacts' => $contacts 
           , 'metrics' => $contact_metrics->render_metric_bar()
           , 'pagination' => $pagination->render()
@@ -34,7 +34,7 @@ return array(
 
         $page = Input::get('page');
 
-        return View::of_layout()->partial('contents', 'inbox/contacts_inbox_view', Array(  
+        return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'categories' => $category->pull_site_categories()
           , 'status' => DB::table('Status', 'master')->get()
@@ -52,7 +52,7 @@ return array(
         $result = $contact->get_contact_info($get_data->email);
         Helpers::show_data($result);
 
-        //return View::of_layout()->partial('contents', 'inbox/contacts_view');
+        return View::of_layout()->partial('contents', 'contact/contacts_edit_view');
     }),
 
 );

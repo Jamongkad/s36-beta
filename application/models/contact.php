@@ -207,7 +207,7 @@ class Contact extends S36DataObject {
        ";
 
        $sth = $this->dbh->prepare($sql);
-       $sth->bindParam(":email", $email);
+       $sth->bindParam(":email", $email, PDO::PARAM_STR);
        $sth->execute();
        $result = $sth->fetch(PDO::FETCH_OBJ);
        return $result;
