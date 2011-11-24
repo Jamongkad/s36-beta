@@ -61,4 +61,8 @@ return array(
         ));
     }),
 
+    'POST /contacts/edit_contact' => function() {
+        Helpers::show_data(Input::get());
+    }
+
 );

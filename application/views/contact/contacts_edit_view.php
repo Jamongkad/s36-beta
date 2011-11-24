@@ -1,7 +1,5 @@
 <?=$metrics?>
-<pre>
-<?print_r($contact_person)?>
-</pre>
+<?Helpers::show_data($contact_person)?>
 <!-- top blue bar with filter options -->
 <div class="admin-sorter-bar">
 <table cellpadding="2" width="100%">
@@ -22,16 +20,17 @@
 </div>
 <!-- end of top blue bar with filter options -->
 
-<!-- the feedback list -->
+<?=Form::open('contacts/edit_contact')?>
+<input type="hidden" name="email" value="<?=$contact_person->email?>" />
 <div class="block">
     <table cellpadding="" width="60%">
         <tr>
-            <td><small>Name :</small> </td>
+            <td><small>First Name :</small> </td>
             <td><input type="text" class="regular-text" name="firstname" value="<?=$contact_person->firstname?>" /></td>
         </tr>
         <tr>
-            <td><small>Email :</small></td>
-            <td><input type="text" class="regular-text" name="email" value="<?=$contact_person->email?>"/></td>
+            <td><small>Last Name :</small> </td>
+            <td><input type="text" class="regular-text" name="lastname" value="<?=$contact_person->lastname?>" /></td>
         </tr>
         <tr>
             <td><small>Company :</small> </td>
@@ -53,18 +52,23 @@
             </td>
         </tr>
         <tr><td colspan="2"></td></tr>                                         
-        <tr><td></td><td><input type="submit" href="#" value="Save Contact" class="gray-btn rounder" style="border:none;cursor:pointer;font-size:14px;font-weight:bold;color:#565656;padding:6px 8px;margin-right:5px;text-shadow:#d5d8da 0px 1px;"></td></tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" href="#" value="Save Contact" class="gray-btn rounder" 
+                       style="border:none;cursor:pointer;font-size:14px;font-weight:bold;color:#565656;padding:6px 8px;margin-right:5px;text-shadow:#d5d8da 0px 1px;">
+            </td>
+        </tr>
     </table>
+
+<!-- spacer -->
+<div class="block noborder" style="height:39px;">
 </div>
+<!-- spacer -->
+</div>
+<?=Form::close()?>
 <!-- end of feedback list -->
 <div class="admin-sorter-bar">
 
 </div>
-<div class="block noborder">
-
-</div>
-<!-- spacer -->
-<div class="block noborder" style="height:100px;">
-</div>
-<!-- spacer -->
 </div>
