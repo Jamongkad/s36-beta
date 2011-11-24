@@ -62,7 +62,33 @@ return array(
     }),
 
     'POST /contacts/edit_contact' => function() {
-        Helpers::show_data(Input::get());
+
+        $data = Input::get();
+
+        $page = (($data['page']) ? '&page='.$data['page'] : null);
+ 
+        $contact = new Contact;
+        $contact_metrics = new ContactMetrics;        
+
+        $rules = Array('firstname' => 'required');
+
+        $validator = Validator::make($data, $rules);
+        
+        if(!$validator->valid()) {
+
+            Helpers::show_data($validator->errors); 
+            /*
+            return View::of_layout()->partial('contents', 'admin/add_admin_view', Array(
+                'ims' => DB::Table('IM', 'master')->get() , 'errors' => $validator->errors
+              , 'input' => $data, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view')
+            ));
+            */
+            return true;
+        } else {
+            $contact->update_contact($data);     
+            return Redirect::to('contacts/edit_contact?email='.$data['email'].$page); 
+        }
+
     }
 
 );

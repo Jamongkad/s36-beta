@@ -213,6 +213,48 @@ class Contact extends S36DataObject {
        return $result;
     }
 
+    public function update_contact($data) {
+     
+        $str = 'SET ';
+        foreach($data as $key => $value) {
+           if($key != 'page') {
+               $str .= "Contact.".$key.'='.(($value) ? "'".trim($value)."'" : "NULL").",";    
+           } 
+        }
+
+        $column = trim($str, ",");
+
+        $sql = "
+            UPDATE Contact
+                INNER JOIN
+                    Feedback
+                    ON Feedback.contactId = Contact.contactId
+                INNER JOIN
+                    Site
+                    ON Site.siteId = Contact.siteId
+                INNER JOIN 
+                    Country
+                    ON Country.countryId = Contact.countryId
+                INNER JOIN
+                    Company
+                    ON Company.companyId = Site.companyId
+                INNER JOIN
+                    User
+                    ON User.companyId = Company.companyId
+                $column
+                WHERE 1=1
+                    AND User.userId = :user_id
+                    AND LCASE(Contact.email) = :email
+            ";
+        
+       
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':email', $data['email'], PDO::PARAM_STR); 
+        $sth->execute();       
+      
+    }
+
 }
 
 class ContactMetrics {

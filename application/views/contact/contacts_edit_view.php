@@ -1,5 +1,5 @@
 <?=$metrics?>
-<?Helpers::show_data($contact_person)?>
+<?//Helpers::show_data($contact_person)?>
 <!-- top blue bar with filter options -->
 <div class="admin-sorter-bar">
 <table cellpadding="2" width="100%">
@@ -22,6 +22,7 @@
 
 <?=Form::open('contacts/edit_contact')?>
 <input type="hidden" name="email" value="<?=$contact_person->email?>" />
+<input type="hidden" name="page" value="<?=Input::get('page')?>" />
 <div class="block">
     <table cellpadding="" width="60%">
         <tr>

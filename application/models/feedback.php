@@ -490,11 +490,9 @@ class Feedback {
         return $result_obj;
     }
     
-    //QUERY IS CORRECT!!
     public function undo_deleted_feedback() {
         $sth = $this->dbh->prepare('
-            UPDATE 
-            Feedback
+            UPDATE Feedback
                 INNER JOIN Site 
                     ON Site.siteId = Feedback.siteId
                 INNER JOIN User
