@@ -287,24 +287,27 @@ jQuery(function($) {
         return e.preventDefault();  
     });
 
-    $('input[type="button"].edit, input[type="button"].delete').bind('click', function(e) {
+    $('input[type="button"].widget-edit, input[type="button"].widget-delete').bind('click', function(e) {
+
+
         var hrefaction = $(this).attr('hrefaction');
         var input_class = $(this).attr('class');
         var input_parents = $(this).parents('tr');
         var ajax_action;
 
-        if(input_class == 'delete') {
+        if(input_class == 'widget-delete') {
             if(confirm("Are you sure you want to delete this theme?")) {
                 input_parents.fadeOut(400);     
                 $.post(hrefaction, function(msg) { console.log(msg); });           
             }
         } 
 
-        if(input_class == 'edit') {
-            $.getJSON(hrefaction, function(msg) { s36Lightbox(msg.width, msg.height, msg.view);/*console.log(msg);*/ });                
+        if(input_class == 'widget-edit') {
+            $.getJSON(hrefaction, function(msg) { s36Lightbox(msg.width, msg.height, msg.view); });                
         }
          
         e.preventDefault();
+
     });
      
     $('a.perm-delete').click(function(e) { 
@@ -313,6 +316,7 @@ jQuery(function($) {
         } 
         e.preventDefault();
     });
+
     //helper functions
     function embed_choice_check(embed_type) {
 

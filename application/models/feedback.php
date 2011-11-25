@@ -443,6 +443,9 @@ class Feedback {
         $profile_img = new Widget\ProfileImage();
         $profile_img->remove_profile_photo($feedback->avatar);
 
+        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
+                            ->delete();
+
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
                              ->delete();

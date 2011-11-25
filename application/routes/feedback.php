@@ -190,6 +190,10 @@ return array(
         } 
     },
 
+    'GET /feedback/restorefeedback/()' => function($id) use ($feedback) {
+        
+    },
+
     'GET /feedback/removefeedback/(:num)' => function($id) use ($feedback) {
         $feedback->permanently_remove_feedback($id);
         return Redirect::to('inbox/deleted'); 
