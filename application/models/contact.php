@@ -261,15 +261,15 @@ class Contact extends S36DataObject {
     }
 
     public function delete_contact($email) {
-        /*
+
         $profile_img = new Widget\ProfileImage();
         $profile_img->remove_profile_photo($feedback->avatar);
-        */
+
         $avatars = $this->get_contact_info($email, $multiple=true);
         foreach($avatars as $avatar) {
-            print_r($avatar->avatar);
+            $profile_img->remove_profile_photo($avatar->avatar);
         }
-        /*
+
         $delete_feedback_sql = "
             DELETE FROM 
                 Feedback
@@ -323,12 +323,11 @@ class Contact extends S36DataObject {
                     AND User.userId = :user_id
         ";
 
-
         $sth = $this->dbh->prepare($delete_contact_sql);  
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->bindParam(':email', $email, PDO::PARAM_STR); 
         $sth->execute();
-        */
+
     }
 
 }
