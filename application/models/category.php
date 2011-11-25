@@ -1,17 +1,9 @@
 <?php
 
-class Category {
+class Category extends S36DataObject {
     
-    private $dbh;
-
-    public function __construct() {
-        $this->dbh = DB::connection('master')->pdo;
-    }
 
     public function pull_site_categories() {
-        $dbh = DB::connection('master');     
-
-        $user_id = S36Auth::user()->userid;
 
         $sth = $this->dbh->prepare("
             SELECT 
@@ -35,7 +27,7 @@ class Category {
                 AND User.userId = :user_id;
         ");
 
-        $sth->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+        $sth->bindParam(":user_id", $this->user_id, PDO::PARAM_INT);
         $sth->execute();
  
         $result = $sth->fetchAll(PDO::FETCH_CLASS);

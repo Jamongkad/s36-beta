@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class User extends S36DataObject {
     public function pull_users($users) { 
         $user = DB::table('User', 'master')->where_in('userId', $users)->get();
         return $user;
