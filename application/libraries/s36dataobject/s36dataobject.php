@@ -13,6 +13,26 @@ abstract class S36DataObject {
         if(S36Auth::check())
             $this->user_id = S36Auth::user()->userid;        
     }
+
+    public function escape($string) {
+        $return = '';
+
+        for($i = 0; $i < strlen($string); ++$i) {
+            $char = $string[$i];
+            $ord = ord($char);
+            if($char !== "'" && $char !== "\"" && $char !== '\\' && $ord >= 32 && $ord <= 126) {
+                $return .= $char;     
+            }
+           
+            else {
+                $return .= '\\x' . dechex($ord);     
+            }
+           
+        }
+
+        return $return;
+                                                                                       
+    }
 }
 
 //TODO: Transfer to S36ValueObjects Package Value Objects for UserThemes

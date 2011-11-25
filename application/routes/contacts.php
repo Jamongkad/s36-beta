@@ -1,8 +1,10 @@
 <?php
 
+$contact = new Contact;
+
 return array(
-    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() { 
-        $contact = new Contact;
+    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact){ 
+
         $contact_metrics = new ContactMetrics;
 
         $limit = 7;
@@ -23,6 +25,30 @@ return array(
           , 'page' => ($page) ? '&page='.$page : null
         ));
     }),
+
+    'POST /contacts/search' => function() use ($contact) {
+
+        $contact_metrics = new ContactMetrics;
+
+        $search_term = Input::get('search_contact');
+ 
+        $pagination = new ZebraPagination;
+        $limit = 7;
+        $offset = ($pagination->get_page() - 1) * $limit; 
+
+        $contacts = $contact->fetch_contacts($limit, $offset, $search_term);
+        $pagination->records($contacts->total_rows);
+        $pagination->records_per_page($limit);
+
+        $page = Input::get('page');
+        
+        return View::of_layout()->partial('contents', 'contact/contacts_index_view', Array(
+            'contacts' => $contacts 
+          , 'metrics' => $contact_metrics->render_metric_bar()
+          , 'pagination' => $pagination->render()
+          , 'page' => ($page) ? '&page='.$page : null
+        ));
+    },
 
     'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() { 
         $get_data = (object)Input::get();
@@ -93,6 +119,5 @@ return array(
         $data = Input::get();
         $contact = new Contact;
         return Helpers::show_data($contact->delete_contact($data['email']));
-    }
-
+    },
 );

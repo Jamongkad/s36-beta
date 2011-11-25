@@ -6,19 +6,10 @@
                     	&nbsp;
                     </div>
                     <div class="right">
-                    	<div class="g4of5">
-                        	<label>Search Name</label>
-                            <input type="text" class="small-text" />
-                        	&nbsp;
-                        </div>
-                        <div class="g1of5">     
-                        <!--
-                        	<label>SORT BY</label>
-                            <select>
-                            	<option>Date</option>
-                            </select> 
-                        -->
-                        </div>
+                        <?=Form::open('contacts/search')?>
+                            <label>Search</label>
+                            <input type="text" class="small-text" name="search_contact" value="<?=Input::get('search_contact')?>" style="width: 200px" /> 
+                        <?=Form::close()?>
                     </div>
                     <div class="c"></div>
                 </div>

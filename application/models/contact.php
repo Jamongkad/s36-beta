@@ -41,8 +41,16 @@ class Contact extends S36DataObject {
         return $result_obj;
     }
 
-    public function fetch_contacts($limit, $offset) { 
+    public function fetch_contacts($limit, $offset, $search_term=false) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
+
+        $search_query = null;
+
+        if($search_term) {
+            $search_query = sprintf("AND Contact.email LIKE '%%%s%%' OR Contact.firstname LIKE '%%%s%%' OR Contact.lastname LIKE '%%%s%%'", 
+                                     $this->escape($search_term), $this->escape($search_term), $this->escape($search_term));
+        }
+
         $sql = "
             SELECT
                 SQL_CALC_FOUND_ROWS
@@ -69,6 +77,7 @@ class Contact extends S36DataObject {
                     ON Country.countryId = Contact.countryId 
             WHERE 1=1
                 AND User.userId = :user_id
+                $search_query
             GROUP BY
                 Contact.email
             ORDER BY 
