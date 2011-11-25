@@ -92,7 +92,7 @@ return array(
     'GET /contacts/delete_contact' => function() { 
         $data = Input::get();
         $contact = new Contact;
-        return $contact->delete_contact($data['email']);
+        return Helpers::show_data($contact->delete_contact($data['email']));
     }
 
 );

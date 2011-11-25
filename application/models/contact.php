@@ -169,7 +169,7 @@ class Contact extends S36DataObject {
         return $result;
     }
 
-    public function get_contact_info($email) {
+    public function get_contact_info($email, $multiple=false) {
        $sql = " 
         SELECT 
               Contact.contactId
@@ -201,15 +201,22 @@ class Contact extends S36DataObject {
                 ON User.companyId = Company.companyId
         WHERE 1=1
             AND lcase(Contact.email) = :email
-            AND User.userId = 1
+            AND User.userId = :user_id
         ORDER BY
             Contact.contactId DESC 
        ";
 
        $sth = $this->dbh->prepare($sql);
        $sth->bindParam(":email", $email, PDO::PARAM_STR);
+       $sth->bindParam(":user_id", $this->user_id, PDO::PARAM_INT);
        $sth->execute();
-       $result = $sth->fetch(PDO::FETCH_OBJ);
+
+       if($multiple == true) { 
+           $result = $sth->fetchAll(PDO::FETCH_CLASS); 
+       } else {
+           $result = $sth->fetch(PDO::FETCH_OBJ); 
+       }
+      
        return $result;
     }
 
@@ -254,6 +261,12 @@ class Contact extends S36DataObject {
     }
 
     public function delete_contact($email) {
+        /*
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->remove_profile_photo($feedback->avatar);
+        */
+        return $this->get_contact_info($email, $multiple=true);
+        /*
         $delete_feedback_sql = "
             DELETE FROM 
                 Feedback
@@ -285,7 +298,6 @@ class Contact extends S36DataObject {
         $sth->bindParam(':email', $email, PDO::PARAM_STR); 
         $sth->execute();        
 
-
         $delete_contact_sql = " 
             DELETE FROM
                 Contact
@@ -313,6 +325,7 @@ class Contact extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->bindParam(':email', $email, PDO::PARAM_STR); 
         $sth->execute();
+        */
     }
 
 }
