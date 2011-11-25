@@ -265,7 +265,7 @@ class Contact extends S36DataObject {
         $profile_img = new Widget\ProfileImage();
         $profile_img->remove_profile_photo($feedback->avatar);
         */
-        return $this->get_contact_info($email, $multiple=true);
+        return $this->get_contact_info($email);
         /*
         $delete_feedback_sql = "
             DELETE FROM 
