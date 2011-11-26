@@ -41,7 +41,7 @@
 								<br /><br />
 								To leave feedback all you need to do is to follow the URL below. It won't take long!
                         		<br /><br /><br />
-                            	<a href="<?=URL::to("widget/form?siteId={$message->sites}&companyId={$message->user->companyid}&themeId=1")?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
+                            	<a href="<?=URL::to("widget/form?siteId={$message->sites}&companyId={$message->user->companyid}&themeId=1&response=1")?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
                                 </a>
                             	<br /><br /><br />
                             	We greatly appreciate your time.
