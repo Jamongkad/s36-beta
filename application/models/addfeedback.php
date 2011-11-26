@@ -8,6 +8,7 @@ class AddFeedback {
         $ct = new Contact;
         $us = new User;
         $bw = new BadWords;
+        $mt = new Metric;
 
         //fuck naive assumption...
         $countryId = 895;
@@ -15,6 +16,12 @@ class AddFeedback {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
         }
+        
+        if(Input::get('response_flag') == 1) {
+            $mt->company_id = Input::get('company_id');
+            $mt->increment_response();
+        }
+       
 
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
@@ -59,7 +66,7 @@ class AddFeedback {
         
         $email = new Email($email_pages);
         $email->process_email();
-
+        
         //check if sample-avatar if not...delete original photo once done... 
         $orig_image_dir = Input::get('orig_image_dir');
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  

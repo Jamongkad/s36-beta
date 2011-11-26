@@ -627,6 +627,7 @@ function send_form_data(){
 			first_name: 	$('#your_fname').val(),
 			last_name:  	$('#your_lname').val(),
 			email: 			$('#your_email').val(),
+            response_flag:  $('#response_flag').val(),
 			country: 		country,
 			city: 			city,
 			position: 		position,

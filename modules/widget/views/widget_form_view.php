@@ -142,7 +142,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 
                         <input type="hidden" id="site_id" value="<?=$siteId?>" />
                         <input type="hidden" id="company_id" value="<?=$companyId?>" />
-                        <input type="hidden" id="response" value="<?=$response?>" />
+                        <input type="hidden" id="response_flag" value="<?=$response?>" />
                         <input type="hidden" id="rating" value="5" />
 
                         <div id="track_ball"></div>
