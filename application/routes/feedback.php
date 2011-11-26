@@ -2,7 +2,7 @@
 
 $feedback = new Feedback;
 $category = new Category;
-//Package::load('S36ValueObjects');
+
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
@@ -56,6 +56,11 @@ return array(
         } else {      
 
             $auth = new S36Auth; 
+
+            $metric = new Metric;
+            $metric->company_id = $auth->user()->companyid;
+            $metric->increment_request();  
+        
             $vo = new RequestFeedbackData;
             $vo->first_name = $data['firstname'];
             $vo->last_name  = $data['lastname'];
@@ -199,5 +204,17 @@ return array(
         $feedback->permanently_remove_feedback($id);
         return Redirect::to('inbox/deleted'); 
     },
+
+    'GET /feedback/test_metric'  => function() {
+        $company_id = new S36Auth;
+
+        $metric = new Metric;
+        $metric->company_id = $company_id->user()->companyid;
+        /*
+        $metric->increment_request();  
+        $metric->increment_response();
+        */
+        Helpers::show_data($metric);
+    }
 
 );

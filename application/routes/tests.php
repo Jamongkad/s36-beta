@@ -3,10 +3,9 @@
 Package::load('S36ValueObjects');
 
 return array(
-    'GET /tests/test_blob' => function() { 
-        Package::load('EnhanceTestFramework');
+    'GET /tests/test_blob' => Array('needs' => 'EnhanceTestFramework, S36ValueObjects', 'do' => function() { 
         Enhance::runTests();
-    },
+    }),
 
     'GET /tests/test_email_new' => function() {
 

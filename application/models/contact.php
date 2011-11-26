@@ -349,9 +349,17 @@ class ContactMetrics {
     }
 
     public function render_metric_bar() {
+
+        $company_id = S36Auth::user()->companyid;
+
+        $metric = new Metric;
+        $metric->company_id = $company_id;
+
         $contact_count = $this->contacts_model->count_total_contacts();
+
         return View::make('partials/contact_metricbar_view', Array(
             'contact_count' => $contact_count
+          , 'metric' => $metric->fetch_metrics()
         ));
     }
 }
