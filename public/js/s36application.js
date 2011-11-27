@@ -35,8 +35,7 @@ jQuery(function($) {
 
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
-    //$('.check').switcharoo('0px bottom');
-    //$('.feature').switcharoo('-60px bottom');
+
     var feed_holder, new_mode;
     $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
         var message, mode;

@@ -24,7 +24,7 @@ return array(
         ));
     },
 
-    'GET /feedsetup/mywidgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
+    'GET /feedsetup/mywidgets' => Array('name' => 'mywidgets', 'before' => 's36_auth', 'do' => function() {  
         $company_id = S36Auth::user()->companyid;
         $user_theme = new UserTheme;
         $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
@@ -38,7 +38,10 @@ return array(
          );
 
         return View::of_layout()->partial('contents', 'inbox/mywidgets_view', Array('links' => $links, 'fetched_themes' => $fetched_themes));
+    }),
 
+    'GET /feedsetup/stream' => Array('name' => 'stream', 'before' => 's36_auth', 'do' => function() {   
+        return View::of_layout()->partial('contents', 'inbox/stream_index_view');
     }),
 
     'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
@@ -60,16 +63,6 @@ return array(
         $d = new UserTheme; 
         $d->create_theme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
-    },
-
-    'GET /feedsetup/preview_widget' => function() {
-        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
-
-        if($postmark->to("danolivercalpatura@yahoo.com")->subject("36Stories Feedback Notification")->plain_message("I am the Manila Miracle Man. I need a drink...")->send()){
-            echo "Message sent";
-        } else {
-           echo "Message not sent";
-        }
     },
 
     'GET /feedsetup/generate_code' => function() {

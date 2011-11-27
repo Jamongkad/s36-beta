@@ -32,6 +32,7 @@
                         $feedsetup_nav = Array(
                              'feedsetup/all' => 'CREATE WIDGETS'
                            , 'feedsetup/mywidgets' => 'MY WIDGETS'
+                           , 'feedsetup/stream' => 'STREAMS'
                         );
                     ?>
 

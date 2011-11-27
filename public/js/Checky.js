@@ -25,9 +25,7 @@ Checky.prototype.init = function() {
        
         if(ifChecked && mode != 'none') { 
 
-            var conf     = null; 
-            var color    = null; 
-            var goto_url = null;
+            var conf, color, goto_url;
 
             if(mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
@@ -66,56 +64,57 @@ Checky.prototype.init = function() {
                         $( '#' + $(this).val() ).fadeOut(300, function() { $(this).remove(); });
                     }
                });    
+
+                //revert to default -- select
+                $("option:first", this).prop("selected", true);
+               
+                var hideLink = document.createElement("a");
+                hideLink.setAttribute("href", "#");
+                hideLink.setAttribute("id", "hide-checkybar");
+                hideLink.style.color = "#00688b";
+                hideLink.style.fontSize = "0.7em";
+                hideLink.style.marginLeft = "3px";
+                hideLink.style.textDecoration = "underline";
+                hideLink.innerHTML = "hide";
+
+                var gotoLink = document.createElement("a");
+                gotoLink.setAttribute("href", baseUrl + goto_url);
+                gotoLink.style.color = "#00688b";
+                gotoLink.style.fontSize = "0.7em";
+                gotoLink.style.marginLeft = "5px";
+                gotoLink.style.textDecoration = "underline";
+                gotoLink.innerHTML = "go to " + mode;
+
+                $('.checky-bar').css({
+                    'position': 'fixed'
+                  , 'width': '450px'
+                  , 'font-size': '1.2em'
+                  , 'font-weight': 'bold'
+                  , 'background': color 
+                  , 'text-align': 'center'
+                  , 'left': '40%'
+                  , 'top': '23%'
+                  , 'z-index': '200'
+                  , 'padding': '5px'
+                  , 'border-radius': '12px'
+                  , 'margin': '2px 5px'
+                }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink).show();
+
+                $("#hide-checkybar").bind("click", function() {
+                    $(this).parents(".checky-bar").hide(); 
+                    location.reload(); 
+                });
+
+                $.ajax({
+                    type: "POST"      
+                  , data: {  col: mode
+                           , feed_ids: collection
+                           , curl: currentUrl }
+                  , url: $(this).attr("hrefaction")
+                });
             }
-            //revert to default -- select
-            $("option:first", this).prop("selected", true);
-           
-            var hideLink = document.createElement("a");
-            hideLink.setAttribute("href", "#");
-            hideLink.setAttribute("id", "hide-checkybar");
-            hideLink.style.color = "#00688b";
-            hideLink.style.fontSize = "0.7em";
-            hideLink.style.marginLeft = "3px";
-            hideLink.style.textDecoration = "underline";
-            hideLink.innerHTML = "hide";
 
-            var gotoLink = document.createElement("a");
-            gotoLink.setAttribute("href", baseUrl + goto_url);
-            gotoLink.style.color = "#00688b";
-            gotoLink.style.fontSize = "0.7em";
-            gotoLink.style.marginLeft = "5px";
-            gotoLink.style.textDecoration = "underline";
-            gotoLink.innerHTML = "go to " + mode;
-
-            $('.checky-bar').css({
-                'position': 'fixed'
-              , 'width': '450px'
-              , 'font-size': '1.2em'
-              , 'font-weight': 'bold'
-              , 'background': color 
-              , 'text-align': 'center'
-              , 'left': '40%'
-              , 'top': '23%'
-              , 'z-index': '200'
-              , 'padding': '5px'
-              , 'border-radius': '12px'
-              , 'margin': '2px 5px'
-            }).html(mode + ": " + collection.length + (collection.length > 1 ? " feedbacks" : " feedback")).append(hideLink).append(gotoLink).show();
-
-            $("#hide-checkybar").bind("click", function() {
-                $(this).parents(".checky-bar").hide(); 
-                location.reload(); 
-            });
-            //console.log(collection);
-
-            $.ajax({
-                type: "POST"      
-              , data: {  col: mode
-                       , feed_ids: collection
-                       , curl: currentUrl }
-              , url: $(this).attr("hrefaction")
-            });
-
+            $(this).val("none");
             checkFeed.attr('checked', false);
             collection.length         = 0;     
             contact_collection.length = 0;

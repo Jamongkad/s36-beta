@@ -204,17 +204,4 @@ return array(
         $feedback->permanently_remove_feedback($id);
         return Redirect::to('inbox/deleted'); 
     },
-
-    'GET /feedback/test_metric'  => function() {
-        $company_id = new S36Auth;
-
-        $metric = new Metric;
-        $metric->company_id = $company_id->user()->companyid;
-        /*
-        $metric->increment_request();  
-        $metric->increment_response();
-        */
-        Helpers::show_data($metric);
-    }
-
 );
