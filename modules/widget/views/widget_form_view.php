@@ -85,7 +85,6 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 		$('#save-edited-feedback').click(function(){save_edited_feedback()});
 		
 		default_text();
-
 	});	
 </script>
 
@@ -99,6 +98,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 <span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
 <span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
 <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
+<span id="ajax-step-metrics" hrefaction="<?=URL::to('/api/check_step')?>"></span>
 
 <body style="background:#000">
 <!-- facebook scripts -->

@@ -26,7 +26,8 @@
                                       Array('class' => (Helpers::filter_highlighter($nav_links, $nav_links_name[$i]['val'])) ? 'selected' : null));?>   
                     </li>
                 <?endfor?>
-
+                 
+                <!--TODO goodness please think of a more robust solution for this view...-->
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
                         $feedsetup_nav = Array(
@@ -40,18 +41,36 @@
                         <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
                     <?endforeach?> 
                 <?endif?>   
+
+                <?if(preg_match_all('/settings/', Request::uri(), $matches)):?>
+                    <?
+                        $feedsetup_nav = Array(
+                             'settings' => 'SETTINGS'
+                           , 'settings/upgrade' => 'UPGRADE'
+                           , 'settings/change_card' => 'CHANGE CREDIT CARD'
+                           , 'settings/cancel_account' => 'CANCEL ACCOUNT'
+                        );
+                    ?>
+
+                    <?foreach($feedsetup_nav as $name => $value):?>
+                        <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                    <?endforeach?> 
+                
+                <?endif?>   
             </ul>
     </div>
 <?endif?>
 <!-- end of top navigation bar -->
-<?if(!preg_match_all('/(feedsetup|displaysetup|displaypreview|contacts)/', Request::uri(), $matches)):?>
+<?if(!preg_match_all('/(feedsetup|displaysetup|displaypreview|contacts|settings)/', Request::uri(), $matches)):?>
     <?if(!preg_match('/deleted/', Request::uri())):?>
         <div class="admin-filter-bar">
+            <!--
             <div class="admin-filter-select">
                 <select>
                     <option>Select form</option>
                 </select>
             </div>
+
             <div class="admin-filter-search">
                 <input type="text" class="search" value="Search..." />
             </div>
@@ -60,6 +79,7 @@
                 <input type="text" class="datepicker" value="Jan 12, 2011 - Jan 12, 2011" />
             </div>
             <div class="c"></div>
+            -->
         </div>
     <?endif;?>
     <!-- top blue bar with filter options -->

@@ -48,10 +48,6 @@ return array(
         return Redirect::to($company.'/login');
     },
 
-    'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_index_view');
-    }),
-
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'help/help_index_view');
     }),

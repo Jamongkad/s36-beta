@@ -112,7 +112,10 @@
                     <div class="admin-links">
                         <ul>
                             <li><?=HTML::link('admin', 'ADMIN', Array('class' => (Helpers::filter_highlighter(array('admin', 'admin/add_admin', 'admin/edit_admin')) ? 'selected' : null)))?></li>
-                            <li><?=HTML::link('settings', 'SETTINGS', Array('class' => (Helpers::filter_highlighter(array('settings')) ? 'selected' : null)))?></li>
+                            <li><?=HTML::link('settings', 'SETTINGS', Array('class' => (Helpers::filter_highlighter(array('settings'
+                                                                                                                        , 'settings/upgrade'
+                                                                                                                        , 'settings/change_card'
+                                                                                                                        , 'settings/cancel_account')) ? 'selected' : null)))?></li>
                             <li><?=HTML::link('help', 'HELP', Array('class' => (Helpers::filter_highlighter(array('help')) ? 'selected' : null)))?></li>
                         </ul>
                     </div>
@@ -193,9 +196,20 @@
                         DELETED FEEDBACK <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
+
+                <?if(preg_match_all('/settings/', Request::uri(), $matches)):?>
+                    <div class="current-page request"> 
+                        SETTINGS
+                    </div>
+                <?endif?>
             </div>
             <!-- end of gray status bar -->
-            <?if(Request::route_is('inbox') or Request::route_is('featured') or Request::route_is('filed') or Request::route_is('feedsetup') or Request::route_is('contacts')):?>
+            <?if(Request::route_is('inbox') 
+                 or Request::route_is('featured') 
+                 or Request::route_is('filed') 
+                 or Request::route_is('feedsetup') 
+                 or Request::route_is('contacts')
+                 or Request::route_is('settings')):?>
                     <?=View::make('partials/flag_menu')?>
             <?endif?>
 <?endif?>
