@@ -42,6 +42,16 @@
 			$this->data["To"] = $to;
 			return $this;
 		}
+
+        function cc($cc) {
+			$this->data["Cc"] = $cc;
+			return $this;  
+        }
+
+        function bcc($bcc) {
+			$this->data["Bcc"] = $bcc;
+			return $this;  
+        }
 		
 		function subject($subject){
 			$this->data["subject"] = $subject;

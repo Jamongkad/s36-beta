@@ -34,6 +34,7 @@
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
                             <?endif?>
                             <input type="button" class="save fileas" tooltip="Categorize Feedback"/>
+
                             <div class="base-popup category-picker-holder">
                                  <div class="popup-arrow"></div>
                                  <ul class="category-picker">
@@ -50,6 +51,7 @@
                                      <?endforeach?>
                                  </ul>
                             </div>
+
                             <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
 
                             <?if($feed->rating != "POOR"):?>
@@ -67,6 +69,19 @@
                                 <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.4; filter:alpha(opacity=40)"/> 
                             <?else:?>
                                 <input type="button" class="contact" tooltip="Fast Forward" tt_width="60"/> 
+                                <!-- email picker block -->
+                                <div class="base-popup fast-forward-holder">
+                                    <div class="popup-arrow"></div>
+                                    <div class="email-list">
+                                        <ul class="email-picker">
+                                            <li id="email1"> Name 1 : <a href="javascript:;">danolivercalpatura@email.com</a> </li>
+                                            <li id="email2"> Name 2 : <a href="javascript:;">budocski15@email.com</a> </li>
+                                            <li id="email3"> Name 3 : <a href="javascript:;">batdogdiaz_13@email.com</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end email picker block -->
+
                             <?endif?>
                         </div>
                         <?endif?>

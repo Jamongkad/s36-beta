@@ -21,17 +21,37 @@ jQuery(function($) {
         //TODO: maaaaaan clean this up!
         $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
         e.preventDefault();
+
     });
 
-    $('div.category-picker-holder').hide();
+
+    $('div.category-picker-holder, div.fast-forward-holder').hide();
 
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
+ 
+    var mouse_is_inside = false;
+    $('.contact, .fileas').hover(function() {
+        mouse_is_inside = true;  
+        if($(this).attr('class') == 'save fileas') {
+            $(this).siblings('div.category-picker-holder').show();      
+        }
+       
+        if($(this).attr('class') == 'contact') { 
+            $(this).siblings('div.fast-forward-holder').show(); 
+        }
 
-    $('.fileas').bind('click', function(e) {     
-        $(this).siblings('div.category-picker-holder').toggle(); 
-        e.preventDefault();
+
+    }, function() {
+        mouse_is_inside = false;
     });
+
+    $("body").click(function() { 
+        if(!mouse_is_inside) {
+            $('div.fast-forward-holder').hide();      
+            $('div.category-picker-holder').hide();      
+        } 
+    })
 
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
