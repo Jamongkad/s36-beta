@@ -33,6 +33,7 @@ jQuery(function($) {
     var mouse_is_inside = false;
     $('.contact, .fileas').hover(function() {
         mouse_is_inside = true;  
+        /*
         if($(this).attr('class') == 'save fileas') {
             $(this).siblings('div.category-picker-holder').show();      
         }
@@ -40,11 +41,22 @@ jQuery(function($) {
         if($(this).attr('class') == 'contact') { 
             $(this).siblings('div.fast-forward-holder').show(); 
         }
-
-
+        */
     }, function() {
         mouse_is_inside = false;
     });
+
+    $('.contact, .fileas').bind('click', function(e) {
+        if($(this).attr('class') == 'save fileas') {
+            $(this).siblings('div.category-picker-holder').show();      
+        }
+       
+        if($(this).attr('class') == 'contact') { 
+            $(this).siblings('div.fast-forward-holder').show(); 
+        }
+             
+        e.preventDefault();
+    })
 
     $("body").click(function() { 
         if(!mouse_is_inside) {
