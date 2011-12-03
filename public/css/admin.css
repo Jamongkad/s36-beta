@@ -148,7 +148,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .right .feedback-details .feedback-meta .modify a{color:#5b81a2;padding:1px 4px;background:#eeeeee;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}
 #admin-panel .main-panel .right .feedback-details .feedback-meta .modify a:hover{color:#eee;background:#5b81a2;}
 #admin-panel .main-panel .right .feedback-details .options{width:120px;position:absolute;top:0px;right:0px;z-index:1}
-#admin-panel .main-panel .right .feedback-details .options input{margin:0px 0px;padding:0px;width:20px;height:17px;border:none;background:url(../img/ico-sprite-options.png) no-repeat;cursor:pointer;}
+#admin-panel .main-panel .right .feedback-details .options input[type=button]{margin:0px 0px;padding:0px;width:20px;height:17px;border:none;background:url(../img/ico-sprite-options.png) no-repeat;cursor:pointer;}
 #admin-panel .main-panel .right .feedback-details .options input.check      {background-position: 0px 0px;}/* this input button uses css sprites. change background position to change the images. */
 #admin-panel .main-panel .right .feedback-details .options input.save       {background-position: -20px 0px;}
 #admin-panel .main-panel .right .feedback-details .options input.reply      {background-position: -40px 0px;}

@@ -13,9 +13,9 @@ class Email {
         if($this->emails) { 
             foreach($this->emails as $email) {     
                 if(!$this->postmark->to($email->get_address())
-                                  ->subject($email->get_subject())
-                                  ->html_message($email->get_message())
-                                  ->send()){
+                                   ->subject($email->get_subject())
+                                   ->html_message($email->get_message())
+                                   ->send()) {
                    throw new Exception("Email not sent!!");
                 }
             }

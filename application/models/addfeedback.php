@@ -22,7 +22,6 @@ class AddFeedback {
             $mt->increment_response();
         }
        
-
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => Input::get('first_name')
@@ -40,10 +39,14 @@ class AddFeedback {
 
         $permission = Input::get('permission');
         $text = Input::get('feedback');
+        
+        $category_id = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
+                                            ->where('intName', '=', 'default')->first(Array('categoryId'));
  
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
+          , 'categoryId' => $category_id 
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => Input::get('rating')

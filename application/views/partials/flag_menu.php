@@ -46,9 +46,9 @@
                     <?
                         $feedsetup_nav = Array(
                              'settings' => 'SETTINGS'
-                           , 'settings/upgrade' => 'UPGRADE'
-                           , 'settings/change_card' => 'CHANGE CREDIT CARD'
-                           , 'settings/cancel_account' => 'CANCEL ACCOUNT'
+                           //, 'settings/upgrade' => 'UPGRADE'
+                           //, 'settings/change_card' => 'CHANGE CREDIT CARD'
+                           //, 'settings/cancel_account' => 'CANCEL ACCOUNT'
                         );
                     ?>
 

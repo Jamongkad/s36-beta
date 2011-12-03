@@ -145,20 +145,24 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids = Input::get('feed_ids');
         $cat_id   = Input::get('cat_id');
+        $cat_state = Input::get('catstate');
         $mode     = Input::get('mode');         
 
-        if($cat_id == 1) {
+        if($cat_state == "default") {
             $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
-        }
-
-        if($cat_id == 2 || $cat_id == 3 || $cat_id == 4 || $cat_id == 5) {
-            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");     
-        }
+            echo "Default Category";
+        } 
         
-        if($cat_id == null) {
-            $feedback->_toggle_multiple($mode, $feed_ids);     
+        if($cat_state != "default" && $cat_state != null){
+            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
+            echo "Archived Category";
         }
        
+        if($cat_state == null) {
+            $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");     
+            echo "Inbox Operation";
+        }
+
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
@@ -170,15 +174,15 @@ return array(
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
-        $feed_ids    = Input::get('feed_ids');
-        $mode        = Input::get('col');
+        $feed_ids = Input::get('feed_ids');
+        $mode     = Input::get('col'); 
+        $cat_id   = Input::get('cat_id');
 
         if($mode == 'remove') {
             $feedback->_permanent_delete($feed_ids);
         } else {
-            $feedback->_toggle_multiple($mode, $feed_ids);     
+            $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");
         } 
-
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
@@ -204,4 +208,8 @@ return array(
         $feedback->permanently_remove_feedback($id);
         return Redirect::to('inbox/deleted'); 
     },
+
+    'POST /feedback/fastforward' => function() {
+        Helpers::show_data(Input::get());
+    }
 );

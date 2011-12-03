@@ -25,45 +25,60 @@ jQuery(function($) {
     });
 
 
-    $('div.category-picker-holder, div.fast-forward-holder').hide();
-
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
- 
+    
+    //FastForward Email Block...fuck this is a mess...
+    $('div.category-picker-holder, div.fast-forward-holder, .ff-form').hide();
     var mouse_is_inside = false;
     $('.contact, .fileas').hover(function() {
         mouse_is_inside = true;  
-        /*
-        if($(this).attr('class') == 'save fileas') {
-            $(this).siblings('div.category-picker-holder').show();      
-        }
-       
-        if($(this).attr('class') == 'contact') { 
-            $(this).siblings('div.fast-forward-holder').show(); 
-        }
-        */
     }, function() {
         mouse_is_inside = false;
     });
 
-    $('.contact, .fileas').bind('click', function(e) {
-        if($(this).attr('class') == 'save fileas') {
-            $(this).siblings('div.category-picker-holder').show();      
-        }
-       
-        if($(this).attr('class') == 'contact') { 
-            $(this).siblings('div.fast-forward-holder').show(); 
-        }
-             
+    $('.fileas').bind('click', function(e) { 
+        $(this).siblings('div.category-picker-holder').show();            
+        e.preventDefault();
+    })
+
+    $('.contact').bind('click', function(e) { 
+        var id = $(this).attr('id');
+        $('#' + id + ' div.fast-forward-holder').show().hover(function() { 
+            $('div.email-list > ul.email-picker li', this)
+            .bind('click', function() {
+                var me = $(this);
+                me.parent().hide()
+                       .siblings('.ff-form')
+                       .ajaxForm({
+                            success: function() {
+                                me.parents('.fast-forward-holder').hide().end()
+                                  .parents('.email-picker').show().end()
+                                  .parent().siblings('.ff-form').children('.ff-forward-to').html("").end();
+                                $('textarea').val("");
+                                alert("Fast-forward sent to " + $('a', me).text());
+                            }
+                        })
+                       .children('.ff-forward-to').html($(this).html()).end()
+                       .children('input[name="email"]').val($('a', this).html()).end()
+                       .show();
+            });
+            mouse_is_inside = true;  
+        }, function() {
+            mouse_is_inside = false;    
+        });      
+        
         e.preventDefault();
     })
 
     $("body").click(function() { 
         if(!mouse_is_inside) {
-            $('div.fast-forward-holder').hide();      
-            $('div.category-picker-holder').hide();      
+            $('div.fast-forward-holder, div.category-picker-holder, .ff-form').hide();      
+            $('.email-picker').show();
+            $('textarea').val("");
         } 
     })
+    //End of FastForward
 
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
@@ -74,6 +89,7 @@ jQuery(function($) {
         var feedid = $(this).attr('feedid');      
         var href   = $(this).attr('hrefaction'); 
         var catid  = $(this).attr('catid');
+        var catstate = $(this).attr('cat-state');
         var feeds  = {"feedid": feedid};
         var identifier = $(this).attr('class');
         var state  = $(this).attr('state');
@@ -113,7 +129,7 @@ jQuery(function($) {
                 
                 if(state == 0) {  
                     $('.checky-bar').html(notify).show();
-                    $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid } } );
+                    $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate } } );
                 } else { 
                     new_mode = mode;
                     $('.checky-bar')
@@ -186,6 +202,7 @@ jQuery(function($) {
                              , check_feed_id: $('.check-feed-id')
                              , contact_feed_id: $('.contact-feed-id')
                              , site_feed_id: $('.site-feed-id')
+                             , category_feed_id: $('.category-feed-id')
                              , click_all: $('.click-all')  });
     check.init(); 
     check.clickAll();

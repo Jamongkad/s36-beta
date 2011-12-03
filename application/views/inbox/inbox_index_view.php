@@ -6,6 +6,7 @@
                 <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
                 <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                 <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
+                <input type="hidden" name="cat_id" value="<?=$feed->categoryid?>" class="category-feed-id"/>
             </div>
             <div class="right">
                 <div class="g4of5">
@@ -21,6 +22,31 @@
                         $regex = Helpers::nav_regex();
                         if(!$regex->deleted):
                         ?>
+
+                        <!-- email picker block -->
+                        <div class="base-popup fast-forward-holder" id="<?=$id?>">
+                            <div class="popup-arrow"></div>
+                            <div class="email-list">
+                                <ul class="email-picker">
+                                    <li id="email1"> Name 1 : <a href="javascript:;">danolivercalpatura@email.com</a> </li>
+                                    <li id="email2"> Name 2 : <a href="javascript:;">budocski15@email.com</a> </li>
+                                    <li id="email3"> Name 3 : <a href="javascript:;">batdogdiaz_13@email.com</a> </li>
+                                </ul>
+
+                                <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
+                                    <?=Form::hidden('email')?>
+                                    <?=form::hidden('feed_id', $id)?>
+                                    <div class="ff-forward-to"></div>
+                                    <div class="popup-border"></div>
+                                    <?=Form::textarea('email_comment', false, array('class' => 'small popup-textarea'))?>
+                                    <div class="popup-border"></div>
+                                    <div class="popup-button">
+                                        <input type="submit" class="button" value="SEND" />
+                                    </div>
+                                <?=Form::close()?>
+                            </div>
+                        </div>
+                        <!-- end email picker block -->
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_approve == 0):?>
@@ -28,7 +54,7 @@
                                                                                                                       opacity:0.4; filter:alpha(opacity=40)"/>
                                 <?else:?>
                                     <input type="button" class="check" tooltip="<?=($feed->ispublished) ? "Return to Inbox" : "Publish Feedback"?>"  tt_width="85"
-                                    <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
+                                    <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
@@ -45,6 +71,7 @@
                                                 , 'class'      => 'cat-picks'
                                                 , 'feedid'     => $id
                                                 , 'catid'      => $cat->id
+                                                , 'cat-state'  => $cat->intname
                                                 , 'state'      => 0
                                              ))?>
                                          </li>
@@ -60,7 +87,7 @@
                                                                                                                         opacity:0.4; filter:alpha(opacity=40)" />
                                 <?else:?>
                                     <input type="button" class="feature" tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
-                                    <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                    <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
                                 <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; !important"/>
@@ -68,20 +95,7 @@
                             <?if($admin_check->inbox_fastforward == 0):?>
                                 <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.4; filter:alpha(opacity=40)"/> 
                             <?else:?>
-                                <input type="button" class="contact" tooltip="Fast Forward" tt_width="60"/> 
-                                <!-- email picker block -->
-                                <div class="base-popup fast-forward-holder">
-                                    <div class="popup-arrow"></div>
-                                    <div class="email-list">
-                                        <ul class="email-picker">
-                                            <li id="email1"> Name 1 : <a href="javascript:;">danolivercalpatura@email.com</a> </li>
-                                            <li id="email2"> Name 2 : <a href="javascript:;">budocski15@email.com</a> </li>
-                                            <li id="email3"> Name 3 : <a href="javascript:;">batdogdiaz_13@email.com</a> </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- end email picker block -->
-
+                                <input type="button" class="contact" id="<?=$id?>" tooltip="Fast Forward" tt_width="60"/> 
                             <?endif?>
                         </div>
                         <?endif?>
@@ -131,7 +145,7 @@
                             <input type="button" class="flag" tooltip="Option Disabled" tt_width="84"  style="opacity:0.4; filter:alpha(opacity=40)"/>
                         <?else:?>
                             <input type="button" class="flag" tooltip="Flag Feedback" tt_width="75" 
-                            <?=Helpers::switchable($feed->isflagged, $id, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px 0px;"') ?>/>
+                            <?=Helpers::switchable($feed->isflagged, $id, $feed->categoryid, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px 0px;"') ?>/>
                         <?endif?>
 
                         <?if($feed->isdeleted == 0):?>
@@ -139,7 +153,7 @@
                                 <input type="button" class="remove"  tooltip="Option Disabled" tt_width="84" style="opacity:0.4; filter:alpha(opacity=40)"/>
                             <?else:?>
                                 <input type="button" class="remove" tooltip="Delete Feedback" tt_width="84" 
-                                <?=Helpers::switchable($feed->isdeleted, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                             <?endif?>
                         <?else:?>
                             <?=HTML::link('/feedback/restorefeedback/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>

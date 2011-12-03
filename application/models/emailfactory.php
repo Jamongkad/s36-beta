@@ -40,7 +40,7 @@ class EmailFactory {
 
 abstract class EmailFixture {
 
-    private $address, $feedback_data, $subject, $user_account;    
+    private $address, $feedback_data, $subject, $user_account, $bcc;    
 
     public function __construct($address, $feedback_data, $subject) {
         $this->address = $address; 
@@ -50,6 +50,7 @@ abstract class EmailFixture {
     
     public function get_addresses() {}
     public function get_message() {}
+    public function get_bcc() {}
 }
 
 class NewFeedbackSubmission extends EmailFixture {

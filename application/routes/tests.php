@@ -76,5 +76,15 @@ return array(
 
         $contacts = $ct->fetch_contacts($limit, $offset);
         Helpers::show_data($contacts);
+    },
+
+    'GET /tests/test_bcc' => function() {
+        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
+        Helpers::show_data($postmark->to("wrm932@gmail.com, klemengkid@gmail.com")
+                 //->bcc("ryanchua6@gmail.com, wrm932@gmail.com, mathew@36stories.com") 
+                 ->bcc("")
+                 ->subject("You win some you lose some. As long as the outcome is income.")
+                 ->html_message("That's good advice Ryan thanks. Testing False BCC, double email sent.")
+                 ->send());
     }
 );

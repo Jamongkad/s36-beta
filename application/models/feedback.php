@@ -9,7 +9,7 @@ class Feedback extends S36DataObject {
         $rating_choices      = Null;
         $siteid_statement    = Null;
         
-        $filed_statement       = 'AND Feedback.categoryId = 1';
+        $filed_statement       = 'AND Category.intName = "default"';
         $mostcontent_statement = 'Feedback.dtAdded DESC';
         $is_deleted   = 0;
         $is_published = 0;
@@ -39,7 +39,8 @@ class Feedback extends S36DataObject {
                 }
 
                 if($opts['filter'] == 'filed' || $opts['choice'] == 'filed') {
-                    $filed_statement = "AND Feedback.categoryId != 1";
+                    //$filed_statement = "AND Feedback.categoryId != 1";
+                    $filed_statement = 'AND Category.intName != "default"'; 
                 }
 
                 if($opts['filter'] == 'positive' || $opts['choice'] == 'positive') {
@@ -74,6 +75,7 @@ class Feedback extends S36DataObject {
                   Feedback.feedbackId AS id
                 , Category.intName
                 , Category.name AS category
+                , Category.categoryId
                 , Feedback.status AS status
                 , CASE
                     WHEN Feedback.priority < 30 THEN "low"
@@ -125,6 +127,10 @@ class Feedback extends S36DataObject {
                     INNER JOIN 
                         Country
                         ON Country.countryId = Contact.countryId
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = User.companyId
+                       AND Company.companyId = Category.companyId
                     WHERE 1=1
                         '.$siteid_statement.'
                         AND User.userId = :user_id
@@ -158,9 +164,7 @@ class Feedback extends S36DataObject {
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
 
-        return $result_obj;
-
-        /* DEBUG 
+        /*
         print_r($rating_statement);
         print_r($profanity_statement);
         print_r($flagged_statement);
@@ -172,6 +176,8 @@ class Feedback extends S36DataObject {
         print_r("is_published: ".$is_published."<br/>");
         print_r("is_featured: ".$is_featured."<br/>"); 
         */
+
+        return $result_obj;
     }
 
     public function pull_feedback_by_company($opts) {
@@ -377,11 +383,11 @@ class Feedback extends S36DataObject {
     public function _toggle_multiple($mode, $block_id, $extra=False) { 
 
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0, isArchived = 0'
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, categoryId = 1, isArchived = 0'
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, categoryId = 1, isArchived = 0'
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, categoryId = 1' 
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, categoryId = 1, isFlagged = 0, isArchived = 0'
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0'.$extra
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0'.$extra
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0'.$extra
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0'.$extra 
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0'.$extra
           , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
@@ -390,6 +396,7 @@ class Feedback extends S36DataObject {
 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
+
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -405,6 +412,7 @@ class Feedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
+
     }
 
     //TODO: Add statement that will delete avatar photos as well.
@@ -562,7 +570,7 @@ class Feedback extends S36DataObject {
             $sth = $this->dbh->prepare("
             SELECT 
                 Feedback.feedbackId
-                , FeedbackBlock.displayName AS FeedbackBlockName
+                , Feedba3kBlock.displayName AS FeedbackBlockName
                 , Feedback.displayName AS FeedbackName
                 , FeedbackBlock.displayURL AS FeedbackBlockURL
                 , Feedback.displayURL AS FeedbackURL

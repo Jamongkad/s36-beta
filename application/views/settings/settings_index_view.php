@@ -1,4 +1,6 @@
  <!-- contents -->
+<?=Form::open('settings/savesettings')?>
+<?=Form::hidden('companyid', $user->companyid)?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>EMAIL SETTINGS</h3>
 </div>
@@ -11,16 +13,16 @@
                 <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
             </div>
             <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="alias1" value="<?=$user->alias1?>"/></div>
             </div>
             <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="alias2" value="<?=$user->alias2?>"/></div>
             </div>
             <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
-                <div class="g1of2"><input type="text" class="regular-text" /></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
+                <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
             </div>                    
         </div>
         <div class="g1of3">
@@ -35,7 +37,7 @@
     <div class="grids border-bottom">
         <div class="g1of3">
             <div style="padding:8px 0px;"><strong style="margin-left:6px;">Reply–To Email Address</strong></div>
-            <input type="text" class="regular-text" />
+            <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
         </div>
         <div class="g2of3">
             <div class="dim-blue-box">
@@ -100,12 +102,16 @@ Curabitur ante justo, commodo in viverra vitae, convallis ut est. Mauris laoreet
     
 In eget elit ac nisi rutrum tempus eu ac nulla. Nulla pellentesque sodales lectus, at consectetur est tempor suscipit. Nam vitae sem vitae urna accumsan consectetur. Aliquam at lectus tortor. Duis dictum gravida leo, vel feugiat lacus porta vel. Nulla eu turpis magna, eget tincidunt nulla
     </textarea>
+    
+    <div style="padding-top:20px; padding-bottom:30px; padding-left:5px">
+        <input type="submit" class="large-btn" value="Save Settings" />
+    </div>
+
 </div>
 </div>
 
 <!-- end of the main panel -->
-
 <!-- div need to clear floated divs -->
 <div class="c"></div>
 </div>
-
+<?=Form::close()?>

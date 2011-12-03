@@ -390,7 +390,8 @@ a.undo {
 	border-top:1px solid #d2d3d5;
 	border-bottom:1px solid #eaeceb;
 	margin:5px -10px !important;
-	}
+}
+
 .popup-textarea{width:240px;height:40px;font-family:Arial, Helvetica, sans-serif;}
 
 .base-popup input.button{border:none;font-weight:normal;color:#FFF;background:#b6bec1;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:3px 12px;text-shadow:#9ba3a6 0px -1px;font-size:11px;cursor:pointer;}

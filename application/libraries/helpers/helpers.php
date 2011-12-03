@@ -11,9 +11,10 @@ class Helpers {
         return Request::uri();
     }
 
-    public static function switchable($element, $id, $hrefaction, $background) { 
+    public static function switchable($element, $id, $catid, $hrefaction, $background) { 
         echo "state='".(($element) == 0 ? 0 : 1)."'";
-        echo "feedid=".$id;
+        echo "catid='".$catid."'";
+        echo "feedid='".$id."'";
         echo ($element == 0) ? null : $background;
         echo " hrefaction='".$hrefaction."'";
     }
