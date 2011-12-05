@@ -40,13 +40,13 @@ class AddFeedback {
         $permission = Input::get('permission');
         $text = Input::get('feedback');
         
-        $category_id = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
-                                            ->where('intName', '=', 'default')->first(Array('categoryId'));
+        $category = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
+                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
  
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
-          , 'categoryId' => $category_id 
+          , 'categoryId' => $category->categoryid
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => Input::get('rating')

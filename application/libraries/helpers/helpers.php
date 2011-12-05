@@ -68,6 +68,26 @@ class Helpers {
         );
     }
 
+    public static function inbox_state($filter) {
+
+        if($filter == "published") {
+            return "publish";          
+        }
+
+        if($filter == "featured") {
+            return "feature";          
+        } 
+
+        if($filter == "filed") {
+            return "fileas";
+        }
+
+        if($filter == "all") {
+           return "inbox";
+        }
+
+    }
+
     public static function show_data($data) {
         echo "<pre>";
         print_r($data);

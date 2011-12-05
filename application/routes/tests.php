@@ -69,13 +69,11 @@ return array(
 
     },
 
-    'GET /tests/fetch_contacts' => function() {
-        $ct = new Contact;     
-        $limit = 10;
-        $offset = 10;
+    'GET /tests/fetch_category' => function() {
+        $category_id = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
+                                            ->where('intName', '=', 'default')->first(Array('categoryId'));
 
-        $contacts = $ct->fetch_contacts($limit, $offset);
-        Helpers::show_data($contacts);
+        Helpers::show_data($category_id->categoryid);
     },
 
     'GET /tests/test_bcc' => function() {

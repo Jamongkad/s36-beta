@@ -1,5 +1,6 @@
 <div class="the-feedbacks"> 
     <?foreach($feedback->result as $feed):?>
+        <p></p>
         <? $id = $feed->id ?>
         <div class="feedback" id="<?=$id?>">
             <div class="left">
@@ -7,6 +8,7 @@
                 <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                 <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
                 <input type="hidden" name="cat_id" value="<?=$feed->categoryid?>" class="category-feed-id"/>
+                <input type="hidden" name="inbox_state" value="<?=$inbox_state?>" class="inbox-state"/>
             </div>
             <div class="right">
                 <div class="g4of5">
@@ -22,7 +24,6 @@
                         $regex = Helpers::nav_regex();
                         if(!$regex->deleted):
                         ?>
-
                         <!-- email picker block -->
                         <div class="base-popup fast-forward-holder" id="<?=$id?>">
                             <div class="popup-arrow"></div>
@@ -63,7 +64,7 @@
 
                             <div class="base-popup category-picker-holder">
                                  <div class="popup-arrow"></div>
-                                 <ul class="category-picker">
+                                 <ul class="category-picker" id="<?=$feed->categoryid?>">
                                      <?foreach($categories as $cat):?> 
                                          <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
                                              <?=HTML::link('feedback/changecat/', $cat->name, Array(

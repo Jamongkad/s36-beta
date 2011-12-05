@@ -149,18 +149,18 @@ return array(
         $mode     = Input::get('mode');         
 
         if($cat_state == "default") {
-            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
-            echo "Default Category";
+            //echo "Default Category";
+            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($cat_state != "default" && $cat_state != null){
-            $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
-            echo "Archived Category";
+            //echo "Archived Category";
+            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
         }
        
         if($cat_state == null) {
-            $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");     
-            echo "Inbox Operation";
+            //echo "Inbox Operation";
+            return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
 
     },
@@ -170,7 +170,9 @@ return array(
         if(Input::get('check_val') == 'true') {
             $state = 1;    
         }
-        $feedback->_change_feedback(Input::get('column_name'), Input::get('feedid'), $state);
+        $feedback->_change_feedback(  Input::get('column_name')
+                                    , Input::get('feedid')
+                                    , $state );
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {

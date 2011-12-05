@@ -83,16 +83,18 @@ jQuery(function($) {
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
 
-    var feed_holder, new_mode;
+    var feed_holder, current_catid;
     $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
         var message, mode;
         var feedid = $(this).attr('feedid');      
         var href   = $(this).attr('hrefaction'); 
         var catid  = $(this).attr('catid');
         var catstate = $(this).attr('cat-state');
-        var feeds  = {"feedid": feedid};
+
         var identifier = $(this).attr('class');
         var state  = $(this).attr('state');
+
+        var feeds  = {"feedid": feedid, "catid": catid};
 
         feed_holder = feeds;
         
@@ -115,27 +117,39 @@ jQuery(function($) {
         }
 
         if(identifier == 'cat-picks') {
-            message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";  
+
+            if(catstate == 'default') {
+                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/all'>Inbox</a>";       
+            } else { 
+                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";       
+            } 
             mode    = "fileas";
             $(this).parents('div.category-picker-holder').hide();
+            current_catid = $(this).parents('.category-picker').attr('id');
         }
 
         if(href){ 
             $(this).parents('.feedback').fadeOut(350, function() {
                 var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
-                var notify_msg = message + undo; 
+                var notify_msg = message + undo;
                 var notify     = $('<div/>').addClass(identifier).html(notify_msg);
+                var checky = $('.checky-bar');
                 //var chck_find  = $('.checky-bar').find("."+identifier);
-                
-                if(state == 0) {  
-                    $('.checky-bar').html(notify).show();
-                    $.ajax( { type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate } } );
-                } else { 
-                    new_mode = mode;
-                    $('.checky-bar')
-                    .html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
-                    .show();
-                    $.ajax( { type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid } } );
+
+                if(state == 0) {   
+                    $.ajax({ type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate }, success: function() 
+                        {
+                            checky.html(notify).show();
+                        } 
+                    });
+                } else {  
+                    //if state is 1 then we're going back to the inbox
+                    $.ajax({ type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid }, success: function() 
+                        { 
+                            checky.html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
+                            .show();
+                        } 
+                    });
                 }
             });
         }
@@ -146,14 +160,12 @@ jQuery(function($) {
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
-        var mode      = (new_mode) ? new_mode : "inbox";
+        var mode      = $('.inbox-state').val();
         var sec       = 350;
 
-        //generic feedback return 
         $("#" + feed_holder.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
-
-        $.ajax( { type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder]} } );  
+        $.ajax({ type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder], "cat_id": current_catid, "catstate": true} });  
         e.preventDefault(); 
     });
 
@@ -187,8 +199,8 @@ jQuery(function($) {
           , url: $(me).attr('hrefaction')
           , data: {site_id: $(me).val()}
           , success: function(msg) {
-              $("#display-info-target").html(msg);             
-          }
+                $("#display-info-target").html(msg);             
+            }
         })
 
 

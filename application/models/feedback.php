@@ -382,12 +382,16 @@ class Feedback extends S36DataObject {
 
     public function _toggle_multiple($mode, $block_id, $extra=False) { 
 
+        $category = DB::Table('Category')->where('companyId', '=', S36Auth::user()->companyid)
+                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
+
+        //TODO consolidate inbox and restore nigguh
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0'.$extra
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0'.$extra
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0'.$extra
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0'.$extra 
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0'.$extra
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, categoryId = '.$category->categoryid.''
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, categoryId = '.$category->categoryid.''
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$category->categoryid.''
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$category->categoryid.''
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, categoryId = '.$category->categoryid.''
           , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
