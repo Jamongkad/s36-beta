@@ -75,10 +75,11 @@ class AddFeedback {
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
 
         print_r(Input::get('fb_flag'));
-
+        /*
         if(!$matches[0]) {
             @unlink("/var/www/s36-upload-images".$orig_image_dir);     
         } 
+        */
     }
 
 }

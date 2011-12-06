@@ -332,9 +332,14 @@ function fb_connect_success(obj){
 				}
 			}
 		}
+
 		if(obj.website != undefined){
-			$('#your_website').val( $.trim(obj.website) );
+            var site = $.trim(obj.website);
+            var matches = site.split(/\r/);//explode the string
+            site = matches.length > 0 ? matches[0] : ""; // check if there are matches
+            $('#your_website').val( site );
 		}
+
 		$('#fb_flag').val("1");
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		change_jcrop_div(200);
