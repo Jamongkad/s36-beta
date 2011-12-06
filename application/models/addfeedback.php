@@ -73,7 +73,10 @@ class AddFeedback {
         //check if sample-avatar if not...delete original photo once done... 
         $orig_image_dir = Input::get('orig_image_dir');
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
-        if(!$matches[0] && !isset(Input::get('fb_flag'))) {
+
+        print_r(Input::get('fb_flag'));
+
+        if(!$matches[0]) {
             @unlink("/var/www/s36-upload-images".$orig_image_dir);     
         } 
     }
