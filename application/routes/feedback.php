@@ -147,7 +147,7 @@ return array(
         $cat_id   = Input::get('cat_id');
         $cat_state = Input::get('catstate');
         $mode     = Input::get('mode');         
-
+        
         if($cat_state == "default") {
             //echo "Default Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
@@ -162,6 +162,7 @@ return array(
             //echo "Inbox Operation";
             return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
+       
 
     },
 

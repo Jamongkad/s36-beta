@@ -19,7 +19,10 @@ jQuery(function($) {
             $(this).addClass('Matched');
         }
         //TODO: maaaaaan clean this up!
-        $(this).parents('.category-picker-holder').siblings('.feature, .check').removeAttr('style').attr('state', 0);
+        $(this).parents('.category-picker-holder')
+               .siblings('.feature, .check')
+               .removeAttr('style')
+               .attr('state', 0);
         e.preventDefault();
 
     });
@@ -78,11 +81,16 @@ jQuery(function($) {
             $('textarea').val("");
         } 
     })
-    //End of FastForward
 
+    //End of FastForward
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
+    
+    //TODO: This could be better
 
+    var inbox_status = new InboxStatusChange($('.check, .feature, .remove, li > a.cat-picks'));
+    inbox_status.initialize(); 
+    /*
     var feed_holder, current_catid;
     $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
         var message, mode;
@@ -95,11 +103,10 @@ jQuery(function($) {
         var state  = $(this).attr('state');
 
         var feeds  = {"feedid": feedid, "catid": catid};
+        var baseUrl = $('select[name="delete_selection"]').attr('base-url');             
 
+        //set feedholder variable for undo function
         feed_holder = feeds;
-        
-        var currentUrl = $(location).attr('href');
-        var baseUrl    = $('select[name="delete_selection"]').attr('base-url');             
 
         if(identifier == 'check') {
             message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/published/all'>Published Folder</a>";
@@ -117,7 +124,6 @@ jQuery(function($) {
         }
 
         if(identifier == 'cat-picks') {
-
             if(catstate == 'default') {
                 message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/all'>Inbox</a>";       
             } else { 
@@ -125,6 +131,7 @@ jQuery(function($) {
             } 
             mode    = "fileas";
             $(this).parents('div.category-picker-holder').hide();
+            //set current_catid variable for undo function
             current_catid = $(this).parents('.category-picker').attr('id');
         }
 
@@ -135,7 +142,6 @@ jQuery(function($) {
                 var notify     = $('<div/>').addClass(identifier).html(notify_msg);
                 var checky = $('.checky-bar');
                 //var chck_find  = $('.checky-bar').find("."+identifier);
-
                 if(state == 0) {   
                     $.ajax({ type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate }, success: function() 
                         {
@@ -168,7 +174,7 @@ jQuery(function($) {
         $.ajax({ type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder], "cat_id": current_catid, "catstate": true} });  
         e.preventDefault(); 
     });
-
+    */
     $('.flag').switcharoo('-100px 0px');
        
     $.each($('ul#nav-menu li'), function(index, value) {

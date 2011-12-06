@@ -20,6 +20,7 @@
         <?=HTML::script('js/Checky.js')?> 
         <?=HTML::script('js/FeedbackBlockDisplay.js')?>
         <?=HTML::script('js/DropDownChange.js')?>
+        <?=HTML::script('js/InboxStatusChange.js')?>
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>

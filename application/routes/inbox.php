@@ -28,7 +28,7 @@ return array(
             , 'pagination' => $pagination->render()
             , 'status' => DB::table('Status', 'master')->get()
             , 'admin_check' => $admin_check
-            , 'inbox_state' => Helpers::inbox_state($filter)//($filter != 'all') ? $filter : 'inbox'
+            , 'inbox_state' => Helpers::inbox_state($filter)
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
     }), 
