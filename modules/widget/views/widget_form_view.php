@@ -197,7 +197,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                                 <div class="s36_perm_text">
                                 	<h3>Yes, with full permission</h3>
                                     <p>
-                                        By select this option you are giving us full permission to publish or feature your feedback in any form we deem fit. 
+                                        By selecting this option you are giving us full permission to publish or feature your feedback in any form we deem fit. 
                                     </p>
                                 </div>
                             </div>
@@ -382,7 +382,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
             <div id="step_7" class="s36_pages">
             	<h1>All Done!</h1>
                 <div class="step-contents">
-                    <p style="line-height:22px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted t our team typically takes about 24-48 working hours to be reviewed and processed.</p>
+                    <p style="line-height:22px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.</p>
                 </div>
             </div>
             <!--End of Step 6-->
