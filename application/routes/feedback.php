@@ -213,7 +213,7 @@ return array(
     },
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
-        $data = Input::get();
+        $data = (object)Input::get();
         $auth = new S36Auth;
 
         $vo = new FastForwardData;          
