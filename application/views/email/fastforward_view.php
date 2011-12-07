@@ -72,6 +72,13 @@
                                 </table>
                                 
                             </td>
+
+                        </tr>
+
+                        <tr>                        	
+							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;"> 
+                            <a href="<?=URL::to(strtolower($message->user->name).'/login')?>" style="color:#6e8cca;">To know more please click on the link to login</a>
+                            </td>
                         </tr>
                         <tr height="40">
                         	<td colspan="3"></td>
