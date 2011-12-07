@@ -189,4 +189,7 @@ class FastForward extends EmailFixture {
         return $this->message->bcc;     
     }
      
+    public function get_subject() {
+        return $this->subject;     
+    }
 }
