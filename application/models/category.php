@@ -7,7 +7,7 @@ class Category extends S36DataObject {
 
         $sth = $this->dbh->prepare("
             SELECT 
-                Category.categoryId AS id
+                  Category.categoryId AS id
                 , Category.siteId
                 , Category.intName
                 , Category.name
@@ -24,7 +24,9 @@ class Category extends S36DataObject {
                 Category
                 On Category.siteId = Site.siteId
             WHERE 1=1
-                AND User.userId = :user_id;
+                AND User.userId = :user_id
+            ORDER BY 
+                Category.name 
         ");
 
         $sth->bindParam(":user_id", $this->user_id, PDO::PARAM_INT);

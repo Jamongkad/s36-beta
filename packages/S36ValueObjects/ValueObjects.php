@@ -21,3 +21,4 @@ class RequestFeedbackData extends EmailData {
 }
 
 class InvitationNotificationData extends EmailData{}
+class FastForwardData extends EmailData {}

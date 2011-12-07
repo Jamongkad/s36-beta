@@ -319,6 +319,7 @@ class Feedback extends S36DataObject {
                 , Contact.city AS city
                 , Contact.companyName AS companyname
                 , Contact.avatar AS avatar
+                , Site.siteId
                 , Feedback.text
                 , Feedback.dtAdded AS date
                 , Feedback.rating

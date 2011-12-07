@@ -32,6 +32,10 @@ class EmailFactory {
             if($this->get_type == 'InvitationNotificationData') {
                 $collection[] = new Invitation($address, $this->message, "36Stories: Admin Invitation");
             }
+
+            if($this->get_type == 'FastForwardData') {
+                $collection[] = new FastForward($address, $this->message,  "36Stories: Fast Forward");
+            }
         }
 
         return $collection;
@@ -159,4 +163,30 @@ class Invitation extends EmailFixture {
     public function get_subject() {
         return $this->subject;     
     }
+}
+
+class FastForward extends EmailFixture {
+    
+    public function __construct($address, $message, $subject) {
+        $this->address = $address; 
+        $this->message = $message;
+        $this->subject = $subject;
+    }
+
+    public function get_message() { 
+        return View::make('email/fastforward_view', Array(
+            'message' => $this->message
+          , 'user' => $this->get_address()
+          , 'feedback_data' => $this->message->feedback
+        ));     
+    }
+
+    public function get_address() { 
+        return $this->address->email;
+    }
+
+    public function get_bcc() {
+        return $this->message->bcc;     
+    }
+     
 }

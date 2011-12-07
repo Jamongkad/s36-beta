@@ -77,6 +77,7 @@ return array(
     },
 
     'GET /tests/test_bcc' => function() {
+        /*
         $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
         Helpers::show_data($postmark->to("wrm932@gmail.com, klemengkid@gmail.com")
                  //->bcc("ryanchua6@gmail.com, wrm932@gmail.com, mathew@36stories.com") 
@@ -84,5 +85,26 @@ return array(
                  ->subject("You win some you lose some. As long as the outcome is income.")
                  ->html_message("That's good advice Ryan thanks. Testing False BCC, double email sent.")
                  ->send());
+        */
+        $auth = new S36Auth;
+        $feedback = new Feedback;
+
+        $vo = new FastForwardData;          
+        $factory = new EmailFactory($vo);
+ 
+        $email_obj = new StdClass;
+        $email_obj->email = "ryanchua6@gmail.com";
+
+        $message_obj = new StdClass;
+        $message_obj->bcc = "";
+        $message_obj->user = $auth->user();
+        $message_obj->comment = "this is a comment";
+        $message_obj->feedback = $feedback->pull_feedback_by_id(14);
+
+        $factory->addresses = Array($email_obj);
+        $factory->message = $message_obj;
+        $email_page = $factory->execute();
+        Helpers::show_data($email_page);
+        return $email_page[0]->get_message();
     }
 );

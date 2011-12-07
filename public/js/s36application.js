@@ -27,7 +27,6 @@ jQuery(function($) {
 
     });
 
-
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
     
@@ -55,15 +54,15 @@ jQuery(function($) {
                        .siblings('.ff-form')
                        .ajaxForm({
                             success: function() {
-                                me.parents('.fast-forward-holder').hide().end()
+                                me.parents('div.fast-forward-holder').hide().end()
                                   .parents('.email-picker').show().end()
-                                  .parent().siblings('.ff-form').children('.ff-forward-to').html("").end();
-                                $('textarea').val("");
+                                  .parent().siblings('.ff-form').hide().children('.ff-forward-to').html("").end();
+                                $('textarea[name="email_comment"]').val("");
                                 alert("Fast-forward sent to " + $('a', me).text());
                             }
                         })
-                       .children('.ff-forward-to').html($(this).html()).end()
-                       .children('input[name="email"]').val($('a', this).html()).end()
+                           .children('.ff-forward-to').html($(this).html()).end()
+                           .children('input[name="email"]').val($('a', this).html()).end()
                        .show();
             });
             mouse_is_inside = true;  
@@ -78,7 +77,7 @@ jQuery(function($) {
         if(!mouse_is_inside) {
             $('div.fast-forward-holder, div.category-picker-holder, .ff-form').hide();      
             $('.email-picker').show();
-            $('textarea').val("");
+            $('textarea[name="email_comment"]').val("");
         } 
     })
 
@@ -86,95 +85,8 @@ jQuery(function($) {
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
     
-    //TODO: This could be better
+    new InboxStatusChange($('.check, .feature, .remove, li > a.cat-picks')).initialize(); 
 
-    var inbox_status = new InboxStatusChange($('.check, .feature, .remove, li > a.cat-picks'));
-    inbox_status.initialize(); 
-    /*
-    var feed_holder, current_catid;
-    $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
-        var message, mode;
-        var feedid = $(this).attr('feedid');      
-        var href   = $(this).attr('hrefaction'); 
-        var catid  = $(this).attr('catid');
-        var catstate = $(this).attr('cat-state');
-
-        var identifier = $(this).attr('class');
-        var state  = $(this).attr('state');
-
-        var feeds  = {"feedid": feedid, "catid": catid};
-        var baseUrl = $('select[name="delete_selection"]').attr('base-url');             
-
-        //set feedholder variable for undo function
-        feed_holder = feeds;
-
-        if(identifier == 'check') {
-            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/published/all'>Published Folder</a>";
-            mode    = "publish";
-        }
-
-        if(identifier == 'feature') { 
-            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
-            mode    = "feature"; 
-        }
-
-        if(identifier == 'remove') { 
-            message = "Feedback has been " + "<a href='" +baseUrl+ "inbox/deleted'>deleted</a>"; 
-            mode    = "delete";
-        }
-
-        if(identifier == 'cat-picks') {
-            if(catstate == 'default') {
-                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/all'>Inbox</a>";       
-            } else { 
-                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";       
-            } 
-            mode    = "fileas";
-            $(this).parents('div.category-picker-holder').hide();
-            //set current_catid variable for undo function
-            current_catid = $(this).parents('.category-picker').attr('id');
-        }
-
-        if(href){ 
-            $(this).parents('.feedback').fadeOut(350, function() {
-                var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
-                var notify_msg = message + undo;
-                var notify     = $('<div/>').addClass(identifier).html(notify_msg);
-                var checky = $('.checky-bar');
-                //var chck_find  = $('.checky-bar').find("."+identifier);
-                if(state == 0) {   
-                    $.ajax({ type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate }, success: function() 
-                        {
-                            checky.html(notify).show();
-                        } 
-                    });
-                } else {  
-                    //if state is 1 then we're going back to the inbox
-                    $.ajax({ type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid }, success: function() 
-                        { 
-                            checky.html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
-                            .show();
-                        } 
-                    });
-                }
-            });
-        }
-       
-    });
-
-    $('a.undo').live('click', function(e) {
-        var feedid    = $(this).attr('href');
-        var href      = $(this).attr('hrefaction'); 
-        var undo_type = $(this).attr('undo-type');
-        var mode      = $('.inbox-state').val();
-        var sec       = 350;
-
-        $("#" + feed_holder.feedid).fadeIn(sec);
-        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
-        $.ajax({ type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder], "cat_id": current_catid, "catstate": true} });  
-        e.preventDefault(); 
-    });
-    */
     $('.flag').switcharoo('-100px 0px');
        
     $.each($('ul#nav-menu li'), function(index, value) {

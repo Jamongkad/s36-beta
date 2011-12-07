@@ -7,7 +7,6 @@ InboxStateObject.prototype.undo = function() {
 
     var me = this;
     $('a.undo').live('click', function(e) {
-
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
         var undo_type = $(this).attr('undo-type');
@@ -97,7 +96,6 @@ function RemoveStateObject(elem) {
     this.catstate = $(elem).attr('cat-state');
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
-
     this.identifier = $(elem).attr('class');
 }
 RemoveStateObject.prototype = new InboxStateObject();
@@ -119,7 +117,6 @@ function CatPickObject(elem) {
     this.catstate = $(elem).attr('cat-state');
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
-
     this.identifier = $(elem).attr('class');
 }
 CatPickObject.prototype = new InboxStateObject();
@@ -167,29 +164,116 @@ InboxStatusChange.prototype.initialize = function() {
     var me = this;
     $(me.inbox_controls).bind("click", function() {  
         var identifier = $(this).attr('class');         
+        var us = $(this);
 
         if(identifier == 'check') {
-            var check = new CheckStateObject($(this));
+            var check = new CheckStateObject(us);
             check.process();
             check.undo();
         }
 
         if(identifier == 'feature') { 
-            var feature = new FeatureStateObject($(this));
+            var feature = new FeatureStateObject(us);
             feature.process();
             feature.undo();
         }
 
         if(identifier == 'remove') { 
-            var remove = new RemoveStateObject($(this));
+            var remove = new RemoveStateObject(us);
             remove.process();
             remove.undo();
         }
 
         if(identifier == 'cat-picks') {
-            var catpick = new CatPickObject($(this));
+            var catpick = new CatPickObject(us);
             catpick.process();
             catpick.undo();
         }
     })   
 }
+
+    /*
+    var feed_holder, current_catid;
+    $('.check, .feature, .remove, li > a.cat-picks').bind("click", function() {
+        var message, mode;
+        var feedid = $(this).attr('feedid');      
+        var href   = $(this).attr('hrefaction'); 
+        var catid  = $(this).attr('catid');
+        var catstate = $(this).attr('cat-state');
+
+        var identifier = $(this).attr('class');
+        var state  = $(this).attr('state');
+
+        var feeds  = {"feedid": feedid, "catid": catid};
+        var baseUrl = $('select[name="delete_selection"]').attr('base-url');             
+
+        //set feedholder variable for undo function
+        feed_holder = feeds;
+
+        if(identifier == 'check') {
+            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/published/all'>Published Folder</a>";
+            mode    = "publish";
+        }
+
+        if(identifier == 'feature') { 
+            message = "Feedback has been published and moved to " + "<a href='" +baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
+            mode    = "feature"; 
+        }
+
+        if(identifier == 'remove') { 
+            message = "Feedback has been " + "<a href='" +baseUrl+ "inbox/deleted'>deleted</a>"; 
+            mode    = "delete";
+        }
+
+        if(identifier == 'cat-picks') {
+            if(catstate == 'default') {
+                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/all'>Inbox</a>";       
+            } else { 
+                message = "Feedback has been sent to " + "<a href='" +baseUrl+ "inbox/filed/all'>Filed Feedback</a>";       
+            } 
+            mode    = "fileas";
+            $(this).parents('div.category-picker-holder').hide();
+            //set current_catid variable for undo function
+            current_catid = $(this).parents('.category-picker').attr('id');
+        }
+
+        if(href){ 
+            $(this).parents('.feedback').fadeOut(350, function() {
+                var undo       = " <a class='undo' hrefaction='" + href + "' href='#' undo-type='" + identifier + "'>undo</a>";
+                var notify_msg = message + undo;
+                var notify     = $('<div/>').addClass(identifier).html(notify_msg);
+                var checky = $('.checky-bar');
+                //var chck_find  = $('.checky-bar').find("."+identifier);
+                if(state == 0) {   
+                    $.ajax({ type: "POST", url: href, data: {"mode": mode ,"feed_ids": [feeds], "cat_id": catid, "catstate": catstate }, success: function() 
+                        {
+                            checky.html(notify).show();
+                        } 
+                    });
+                } else {  
+                    //if state is 1 then we're going back to the inbox
+                    $.ajax({ type: "POST", url: href, data: {"mode": "inbox" ,"feed_ids": [feeds], "cat_id": catid }, success: function() 
+                        { 
+                            checky.html("<div class='" + identifier + "'>Feedback has been sent to the " + "<a href='" + baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
+                            .show();
+                        } 
+                    });
+                }
+            });
+        }
+       
+    });
+
+    $('a.undo').live('click', function(e) {
+        var feedid    = $(this).attr('href');
+        var href      = $(this).attr('hrefaction'); 
+        var undo_type = $(this).attr('undo-type');
+        var mode      = $('.inbox-state').val();
+        var sec       = 350;
+
+        $("#" + feed_holder.feedid).fadeIn(sec);
+        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
+        $.ajax({ type: "POST", url: href, data: {"mode": mode, "feed_ids": [feed_holder], "cat_id": current_catid, "catstate": true} });  
+        e.preventDefault(); 
+    });
+    */

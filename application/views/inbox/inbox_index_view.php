@@ -29,9 +29,15 @@
                             <div class="popup-arrow"></div>
                             <div class="email-list">
                                 <ul class="email-picker">
-                                    <li id="email1"> Name 1 : <a href="javascript:;">danolivercalpatura@email.com</a> </li>
-                                    <li id="email2"> Name 2 : <a href="javascript:;">budocski15@email.com</a> </li>
-                                    <li id="email3"> Name 3 : <a href="javascript:;">batdogdiaz_13@email.com</a> </li>
+                                    <?if($admin_check->ffemail1):?>
+                                        <li id="email1"> Name 1 : <a href="javascript:;"><?=$admin_check->ffemail1?></a> </li>
+                                    <?endif?>
+                                    <?if($admin_check->ffemail2):?>
+                                        <li id="email2"> Name 2 : <a href="javascript:;"><?=$admin_check->ffemail2?></a> </li>
+                                    <?endif?>
+                                    <?if($admin_check->ffemail3):?>
+                                        <li id="email3"> Name 3 : <a href="javascript:;"><?=$admin_check->ffemail3?></a> </li>
+                                    <?endif?>
                                 </ul>
 
                                 <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
