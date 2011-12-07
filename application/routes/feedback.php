@@ -212,7 +212,28 @@ return array(
         return Redirect::to('inbox/deleted'); 
     },
 
-    'POST /feedback/fastforward' => function() {
-        Helpers::show_data(Input::get());
-    }
+    'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
+        $data = Input::get();
+        $auth = new S36Auth;
+
+        $vo = new FastForwardData;          
+        $factory = new EmailFactory($vo);
+ 
+        $email_obj = new StdClass;
+        $email_obj->email = $data->email;
+
+        $message_obj = new StdClass;
+        $message_obj->bcc = "";
+        $message_obj->user = $auth->user();
+        $message_obj->comment = $data->email_comment;
+        $message_obj->feedback = $feedback->pull_feedback_by_id($data->feed_id);
+
+        $factory->addresses = Array($email_obj);
+        $factory->message = $message_obj;
+        $email_page = $factory->execute();
+
+        $emailer = new Email($email_page);
+        $emailer->process_email();
+    })
+    
 );
