@@ -1,4 +1,5 @@
  <!-- contents -->
+<?print_r($category)?>
 <?=Form::open('settings/savesettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
@@ -28,9 +29,9 @@
         <div class="g1of3">
             <div style="height:24px;"></div>
             <div class="dim-blue-box">
-                <strong>Using the Reply–To Feature</strong>
+                <strong>About Fast Forwarding</strong>
                 <br />
-                Configure the email address that you would like to reply to your customers with.
+                Fast forward allows you to forward feedback to a specific person with a single click.
             </div>
         </div>
     </div>
@@ -40,10 +41,11 @@
             <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
         </div>
         <div class="g2of3">
+
             <div class="dim-blue-box">
-                <strong>About Fast Forwarding</strong>
+                <strong>Using the Reply–To Feature</strong>
                 <br />
-                Fast forward allows you to forward feedback to a specific person with a single click.
+                Configure the email address that you would like to reply to your customers with.
             </div>
         </div>
     </div>
@@ -66,23 +68,21 @@
     <h3>CATEGORIES</h3>
 </div>
 <div class="block">
-    <div class="grids padded" style="padding-bottom:10px;">
-        <div class="g1of3"><strong>Suggestions</strong></div><div class="g1of3 align-center"><a href="#">Rename</a> | <a href="#">Delete</a></div><div class="g1of3"></div>
-    </div>
-    <div class="grids padded" style="padding-bottom:10px;">
-        <div class="g1of3"><strong>Problems/Bugs</strong></div><div class="g1of3 align-center"><a href="#">Rename</a> | <a href="#">Delete</a></div><div class="g1of3"></div>
-    </div>
-    <div class="grids padded" style="padding-bottom:10px;">
-        <div class="g1of3"><strong>Pricing</strong></div><div class="g1of3 align-center"><a href="#">Rename</a> | <a href="#">Delete</a></div><div class="g1of3"></div>
-    </div>
-    <div class="grids padded" style="padding-bottom:10px;">
-        <div class="g1of3"><strong>Misc.</strong></div><div class="g1of3 align-center"><a href="#">Rename</a> | <a href="#">Delete</a></div><div class="g1of3"></div>
-    </div>
+    <?foreach($category as $rows):?>
+        <div class="grids padded" style="padding-bottom:10px;">
+            <div class="g1of3">
+                <strong><?=$rows->name?></strong></div>
+                <div class="g1of3 align-center">
+                    <?if($rows->changeable != 0):?>
+                        <?=HTML::link('settings/rename_ctgy/'.$rows->id, 'Rename')?> | <?=HTML::link('settings/delete_ctgy/'.$rows->id, 'Delete')?> 
+                    <?endif?>
+                </div>
+            <div class="g1of3"></div>
+        </div>
+    <?endforeach?>
     <div class="grids" style="background:#fffde5">
-        <div class="g1of3"><input type="text" class="regular-text" /></div><div class="g1of3 align-center" style="padding-top:8px;"><a href="#" class="gray-btn">Add Category</a></div><div class="g1of3"></div>
-    </div>
-    <div class="grids" style="padding:10px 0px;">
-        <a href="#" class="gray-btn">+ Add New Category</a>
+        <div class="g1of3"><input type="text" class="regular-text" /></div>
+        <div class="g1of3 align-center" style="padding-top:8px;"><a href="#" class="gray-btn">+ Add New Category</a></div><div class="g1of3"></div>
     </div>
 </div>
 <div class="block graybg">

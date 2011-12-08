@@ -35,7 +35,8 @@
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">Fast-forward Feedback</h1>
                             	<strong>Hi <?=$user?>,</strong> <br/>
-                                <?=$message->comment?>
+                                <?=$sender->firstname?> says, <br/>
+                                "<?=$message->comment?>"
                             </td>
                         </tr>
                         <tr height="80">
