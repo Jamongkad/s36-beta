@@ -396,3 +396,7 @@ a.undo {
 
 .base-popup input.button{border:none;font-weight:normal;color:#FFF;background:#b6bec1;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:3px 12px;text-shadow:#9ba3a6 0px -1px;font-size:11px;cursor:pointer;}
 .base-popup .popup-button{text-align:center;display:block;}
+.base-popup ul.email-picker li{padding:4px 0px;}
+.base-popup ul.email-picker li a{color:#6e7e8e;}
+.base-popup ul.email-picker li a:hover{color:#3a4c5a;}
+.base-popup .email-list a{color:#6e7e8e}
