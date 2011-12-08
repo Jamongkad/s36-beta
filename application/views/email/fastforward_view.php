@@ -36,7 +36,7 @@
                             	<h1 style="line-height:normal">Fast-forward Feedback</h1>
                             	<!--<strong>Hi <?=$user?>,</strong> <br/>-->
                                 <?if($message->comment):?>
-                                    <strong><?=$message->user->username?></strong> says, <br/>
+                                    <strong><?=ucfirst($message->user->username)?></strong> says, <br/>
                                     <p style="font-size:18px; padding:10px"><?=$message->comment?></p>
                                 <?endif?>
                         <br/><br/>
