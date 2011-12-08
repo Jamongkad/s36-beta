@@ -26,31 +26,35 @@ InboxStateObject.prototype.undo = function() {
 InboxStateObject.prototype.process = function() {
 
     var me = this; 
+    var is_single = $(me).attr('feedid');
+    
+    if(is_single) { 
+        $(me.elem).parents('.feedback').fadeOut(350, function() {
+            var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>undo</a>";
+            var notify_msg = me.message + undo;
+            var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
+            var checky = $('.checky-bar');
+            checky.html(notify).show();
 
-    $(this.elem).parents('.feedback').fadeOut(350, function() {
-        var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>undo</a>";
-        var notify_msg = me.message + undo;
-        var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
-        var checky = $('.checky-bar');
-        checky.html(notify).show();
+            if(me.state == 0) {   
+                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
+                    {
+                        checky.html(notify).show();
+                    } 
+                });
+            } else {  
+                //if state is 1 then we're going back to the inbox
+                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
+                    { 
+                        checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
+                        .show();
+                    } 
+                });
+            }
 
-        if(me.state == 0) {   
-            $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
-                {
-                    checky.html(notify).show();
-                } 
-            });
-        } else {  
-            //if state is 1 then we're going back to the inbox
-            $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
-                { 
-                    checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + "</div>")
-                    .show();
-                } 
-            });
-        }
+        });
+    }
 
-    });
 }
 
 //child implementation classes
