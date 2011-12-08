@@ -34,14 +34,15 @@
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">Fast-forward Feedback</h1>
-                            	<strong>Hi <?=$user?>,</strong> <br/>
-                                <?=$sender->firstname?> says, <br/>
-                                "<?=$message->comment?>"
+                            	<!--<strong>Hi <?=$user?>,</strong> <br/>-->
+                                <?if($message->comment):?>
+                                    <strong><?=$message->user->username?></strong> says, <br/>
+                                    <p style="font-size:18px; padding:10px"><?=$message->comment?></p>
+                                <?endif?>
+                        <br/><br/>
                             </td>
                         </tr>
-                        <tr height="80">
-                        	<td colspan="3"></td>
-                        </tr>
+
                         <tr>
                         	<td colspan="3" style="line-height:20px;padding:10px;background:#f1f3f5;border-top:1px solid #dde0e3" bgcolor="#f1f3f5">
                             	<table>
