@@ -8,21 +8,17 @@ class Category extends S36DataObject {
         $sth = $this->dbh->prepare("
             SELECT 
                   Category.categoryId AS id
-                , Category.siteId
                 , Category.intName
                 , Category.name
                 , Category.changeable
             FROM 
-                User 
+                Category
             INNER JOIN
                 Company
-                ON Company.companyId = User.companyId
+                    ON Company.companyId = Category.companyId
             INNER JOIN
-                Site
-                On Company.companyId = Site.companyId
-            INNER JOIN
-                Category
-                On Category.siteId = Site.siteId
+                User
+                    ON User.companyId = Company.companyId
             WHERE 1=1
                 AND User.userId = :user_id
             ORDER BY 
@@ -34,5 +30,31 @@ class Category extends S36DataObject {
  
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
+    }
+
+    public function write_category_name($ctgy_nm, $companyId) {
+        /*
+        $opts = Array(
+            'companyId' => $companyId
+          , 'intName' => strtolower($ctgy_nm)
+          , 'name' => ucfirst($ctgy_nm)
+          , 'changeable' => 1
+        );
+
+        $result_id = DB::table('Category', 'master')->insert_get_id($opts);
+        */
+        $result_id = 99;
+
+        $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
+        $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
+
+        return "<div class='grids padded' style='padding-bottom:10px;'>
+                    <div class='g1of3'>
+                        <strong class='ctgy-name'>$ctgy_nm</strong>
+                    </div>
+                    <div class='g1of3 align-center'> 
+                        $rename_link | $delete_link
+                    </div>                    
+                </div>"; 
     }
 }

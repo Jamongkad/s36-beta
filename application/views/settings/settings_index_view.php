@@ -68,21 +68,27 @@
     <h3>CATEGORIES</h3>
 </div>
 <div class="block">
-    <?foreach($category as $rows):?>
-        <div class="grids padded" style="padding-bottom:10px;">
-            <div class="g1of3">
-                <strong><?=$rows->name?></strong></div>
+    <div id="ctgy-list" hrefaction="<?=URL::to('settings/write_ctgy')?>">
+        <?foreach($category as $rows):?>
+            <div class="grids padded" style="padding-bottom:10px;">
+                <div class="g1of3">
+                    <strong class='ctgy-name'><?=$rows->name?></strong>
+                </div>
                 <div class="g1of3 align-center">
                     <?if($rows->changeable != 0):?>
-                        <?=HTML::link('settings/rename_ctgy/'.$rows->id, 'Rename')?> | <?=HTML::link('settings/delete_ctgy/'.$rows->id, 'Delete')?> 
+                        <?=HTML::link('settings/rename_ctgy/'.$rows->id, 'Rename', Array('class' => 'rename-ctgy'))?> 
+                      | <?=HTML::link('settings/delete_ctgy/'.$rows->id, 'Delete', Array('class' => 'delete-ctgy'))?> 
                     <?endif?>
                 </div>
-            <div class="g1of3"></div>
-        </div>
-    <?endforeach?>
+            </div>
+        <?endforeach?>
+    </div>
     <div class="grids" style="background:#fffde5">
-        <div class="g1of3"><input type="text" class="regular-text" /></div>
-        <div class="g1of3 align-center" style="padding-top:8px;"><a href="#" class="gray-btn">+ Add New Category</a></div><div class="g1of3"></div>
+        <div class="g1of3"><input type="text" class="regular-text" name="category_nm"/></div>
+        <div class="g1of3 align-center" style="padding-top:8px;">
+            <a href="#" class="gray-btn add-new-ctgy">+ Add New Category</a>
+        </div>
+        <div class="g1of3"></div>
     </div>
 </div>
 <div class="block graybg">

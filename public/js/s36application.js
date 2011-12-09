@@ -193,8 +193,52 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    var jcrop_api, set_image;
+    CategoryControl();
 
+    $('a.add-new-ctgy').bind("click", function(e) {
+        var ctgy_nm = $("input[name='category_nm']");
+        var ctgy_list = $("#ctgy-list");
+        
+        if(ctgy_nm.val() == false) 
+            alert("Category Name cannot be blank.");           
+        else 
+            $.ajax({
+                url: ctgy_list.attr('hrefaction')
+              , type: "POST" 
+              , data: {ctgy_nm: ctgy_nm.val(), companyId: $("input[name='companyid']").val()}
+              , success: function(msg) {
+                  ctgy_list.append(msg);
+                  ctgy_nm.val("");
+                  CategoryControl();
+              }
+            }); 
+       
+        e.preventDefault();
+    })
+
+    function CategoryControl() {
+       $('a.rename-ctgy, a.delete-ctgy').unbind('click.ctgy-controls').bind('click.ctgy-controls', function(e) {
+           var class_name = $(this).attr('class');
+
+           if(class_name == 'rename-ctgy') {
+              var d = $(this)
+                  .parents('div')
+                  .siblings('div')
+                  .children('.ctgy-name').html('mathew').end().end().end();
+              console.log(d.text("Update"));
+
+           }
+
+           if(class_name == 'delete-ctgy') {
+              console.log($(this).attr('href'));
+           }
+
+           e.preventDefault();
+       })
+    }
+
+
+    var jcrop_api, set_image;
     function initJcrop() { 
         $('#jcrop_target').Jcrop({
             setSelect: ['40','20','190','170']
