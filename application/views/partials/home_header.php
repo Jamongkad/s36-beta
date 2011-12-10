@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>36Stories: Create User</title>
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/grid.css')?>

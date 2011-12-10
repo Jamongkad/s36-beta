@@ -106,5 +106,11 @@ return array(
         $email_page = $factory->execute();
         Helpers::show_data($email_page);
         return $email_page[0]->get_message();
+    },
+
+    'GET /tests/email_thankyou' => function() { 
+        return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
+            'company_name' => DB::Table('Company', 'master')->where('companyId', '=', 1)->first(array('name'))
+        ));       
     }
 );
