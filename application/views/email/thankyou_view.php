@@ -5,11 +5,11 @@
         </div>
         <div id="login">
             <div id="login-box" style="text-align:center">
-                <h2>Feedback Published!</h2>
+                <h2>Sweet! You have just published <?=$contact_name?>'s feedback onto your website!</h2>
             </div>
             <br/>
             <div style="text-align:center; font-size:1.3em">
-                <?=HTML::link('/'.strtolower($company_name->name).'/login', 'click to login')?>
+                To view more feedback, <?=HTML::link('/'.strtolower($company_name->name).'/login', 'sign in now!')?>
             </div>
         </div>
     </div>

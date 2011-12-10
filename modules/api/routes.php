@@ -77,8 +77,15 @@ return array(
 
             //After publishing feedback logout...
             S36Auth::logout();
+
+            $contact = DB::Table('Contact', 'master')
+                          ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
+                          ->where('Feedback.feedbackId', '=', $feedback_id)
+                          ->first(Array('firstName'));
+
             return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
+              , 'contact_name' => $contact->firstname
             ));       
         }
     }),

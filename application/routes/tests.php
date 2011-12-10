@@ -109,8 +109,14 @@ return array(
     },
 
     'GET /tests/email_thankyou' => function() { 
+        $contact = DB::Table('Contact', 'master')
+                      ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
+                      ->where('Feedback.feedbackId', '=', 65)
+                      ->first(Array('firstName'));
+                      
         return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
             'company_name' => DB::Table('Company', 'master')->where('companyId', '=', 1)->first(array('name'))
+          , 'contact_name' => $contact->firstname
         ));       
     }
 );
