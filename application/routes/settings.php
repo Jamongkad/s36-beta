@@ -27,7 +27,11 @@ return array (
     },
 
     'POST /settings/savesettings' => function() {
-        Helpers::show_data(Input::get());
+        $company = new Company;
+        $post = (object)Input::get();
+        Helpers::show_data($post); 
+        $company->update_company_emails($post);
+        return Redirect::to('settings');
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {

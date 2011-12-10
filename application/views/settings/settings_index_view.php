@@ -1,5 +1,4 @@
  <!-- contents -->
-<?print_r($category)?>
 <?=Form::open('settings/savesettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
