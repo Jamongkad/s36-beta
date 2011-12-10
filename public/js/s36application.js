@@ -219,18 +219,38 @@ jQuery(function($) {
     function CategoryControl() {
        $('a.rename-ctgy, a.delete-ctgy').unbind('click.ctgy-controls').bind('click.ctgy-controls', function(e) {
            var class_name = $(this).attr('class');
+           var that = $(this);
 
            if(class_name == 'rename-ctgy') {
-              var d = $(this)
-                  .parents('div')
-                  .siblings('div')
-                  .children('.ctgy-name').html('mathew').end().end().end();
-              console.log(d.text("Update"));
+               var input = $('<input type="text" name="ctgy_nm"/>').val(
+                   that.parents('div').siblings('div').children('.ctgy-name').html()
+               );
 
+              if(that.text() == "Update") {
+                  var ctgy_nm_val = $('input[name="ctgy_nm"]').val()
+                  console.log("Rename");
+                  that.text("Rename") 
+                        .parents('div')
+                        .siblings('div')
+                        .children('.ctgy-name')
+                        .html( ctgy_nm_val ).end().end().end()
+                  $.ajax({ url: that.attr('href'), type: "POST", data: {ctgy_nm: ctgy_nm_val} });
+              } else {
+                  console.log("Update");
+                  that.text("Update")     
+                        .parents('div')
+                        .siblings('div')
+                        .children('.ctgy-name')
+                        .html( input ).end().end().end()
+              }
+              
            }
 
            if(class_name == 'delete-ctgy') {
-              console.log($(this).attr('href'));
+              var d = that.parents('div.grids');
+              if(confirm("Are you sure you want to delete this category? There is no undo.")) {
+                  $.ajax({ url: $(this).attr('href'), success: function(msg) { d.fadeOut(); } });
+              }
            }
 
            e.preventDefault();

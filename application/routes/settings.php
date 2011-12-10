@@ -11,12 +11,13 @@ return array (
         ));
     }),
 
-    'GET /settings/rename_ctgy/([0-9]+)' => function($id) {
-        print_r($id);
+    'POST /settings/rename_ctgy/([0-9]+)' => function($id) use($category) { 
+        $ctgy_nm = Input::get('ctgy_nm');
+        return $category->update_category_name($ctgy_nm, $id);
     },
 
-    'GET /settings/delete_ctgy/([0-9]+)' => function($id) {
-        print_r($id);
+    'GET /settings/delete_ctgy/([0-9]+)' => function($id) use($category) { 
+        return $category->delete_category_name($id);
     },
 
     'POST /settings/write_ctgy' => function() use($category) {  

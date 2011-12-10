@@ -33,7 +33,7 @@ class Category extends S36DataObject {
     }
 
     public function write_category_name($ctgy_nm, $companyId) {
-        /*
+
         $opts = Array(
             'companyId' => $companyId
           , 'intName' => strtolower($ctgy_nm)
@@ -42,9 +42,6 @@ class Category extends S36DataObject {
         );
 
         $result_id = DB::table('Category', 'master')->insert_get_id($opts);
-        */
-        $result_id = 99;
-
         $rename_link = HTML::link('settings/rename_ctgy/'.$result_id, 'Rename', Array('class' => 'rename-ctgy'));
         $delete_link = HTML::link('settings/delete_ctgy/'.$result_id, 'Delete', Array('class' => 'delete-ctgy'));
 
@@ -56,5 +53,20 @@ class Category extends S36DataObject {
                         $rename_link | $delete_link
                     </div>                    
                 </div>"; 
+    }
+
+    public function update_category_name($ctgy_nm, $ctgy_id) {
+        DB::Table('Category', 'master')
+            ->where('categoryId', '=', $ctgy_id)
+            ->update(Array( 
+                'intName' => strtolower($ctgy_nm)
+              , 'name' => ucfirst($ctgy_nm)
+            ));
+    }
+
+    public function delete_category_name($ctgy_id) {
+        DB::Table('Category', 'master')     
+            ->where('categoryId', '=', $ctgy_id)
+            ->delete();
     }
 }
