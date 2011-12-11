@@ -1,6 +1,11 @@
 <?php
 
 return array(
+     
+    'GET /api/test' => function() {
+        print_r("Mathew");
+    },
+
     'GET /api/pull_feedback' => function() { 
 
         $company_id = false;
