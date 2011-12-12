@@ -1,6 +1,6 @@
 <?php
 
-class Contact extends S36DataObject {
+class DBContact extends S36DataObject {
 
     public function insert_new_contact($opts) {
          $id = DB::table('Contact', 'master')->insert_get_id($opts);
@@ -108,6 +108,7 @@ class Contact extends S36DataObject {
                , LCASE(Contact.email)
                , Feedback.feedbackId
                , Category.name AS category
+               , Category.categoryId
                , Feedback.status AS status
                , Feedback.dtAdded AS date
                , CASE
@@ -345,7 +346,7 @@ class ContactMetrics {
     private $contacts_model;
 
     public function __construct() {
-        $this->contacts_model = new Contact; 
+        $this->contacts_model = new DBContact; 
     }
 
     public function render_metric_bar() {

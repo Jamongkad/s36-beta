@@ -47,7 +47,7 @@
                                                                                                                       opacity:0.4; filter:alpha(opacity=40)"/>
                                 <?else:?>
                                     <input type="button" class="check" tooltip="<?=($feed->ispublished) ? "Return to Inbox" : "Publish Feedback"?>"  tt_width="85"
-                                    <?=Helpers::switchable($feed->ispublished, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
+                                    <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
@@ -77,7 +77,7 @@
                                                                                                                         opacity:0.4; filter:alpha(opacity=40)" />
                                 <?else:?>
                                     <input type="button" class="feature" tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
-                                    <?=Helpers::switchable($feed->isfeatured, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                    <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
                                 <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; !important"/>
@@ -135,7 +135,7 @@
                             <input type="button" class="flag" tooltip="Option Disabled" tt_width="84"  style="opacity:0.4; filter:alpha(opacity=40)"/>
                         <?else:?>
                             <input type="button" class="flag" tooltip="Flag Feedback" tt_width="75" 
-                            <?=Helpers::switchable($feed->isflagged, $id, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px 0px;"') ?>/>
+                            <?=Helpers::switchable($feed->isflagged, $id, $feed->categoryid, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px 0px;"') ?>/>
                         <?endif?>
 
                         <?if($feed->isdeleted == 0):?>
@@ -143,7 +143,7 @@
                                 <input type="button" class="remove"  tooltip="Option Disabled" tt_width="84" style="opacity:0.4; filter:alpha(opacity=40)"/>
                             <?else:?>
                                 <input type="button" class="remove" tooltip="Delete Feedback" tt_width="84" 
-                                <?=Helpers::switchable($feed->isdeleted, $id, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                             <?endif?>
                         <?else:?>
                             <?=HTML::link('/feedback/undodelete/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>

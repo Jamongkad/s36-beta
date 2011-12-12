@@ -10,7 +10,7 @@ return array(
     'GET /tests/test_email_new' => function() {
 
         $user = new User; 
-        $feedback = new Feedback;
+        $feedback = new DBFeedback;
 
         $vo = new NewFeedbackSubmissionData;
 
@@ -27,7 +27,7 @@ return array(
     'GET /tests/test_email_published' => function() {
         
         $user = new User; 
-        $feedback = new Feedback;
+        $feedback = new DBFeedback;
 
         $vo = new PublishedFeedbackNotificationData;
         $vo->publisher_email = "mathew@36stories.com";
@@ -87,7 +87,7 @@ return array(
                  ->send());
         */
         $auth = new S36Auth;
-        $feedback = new Feedback;
+        $feedback = new DBFeedback;
 
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);

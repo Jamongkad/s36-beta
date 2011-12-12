@@ -1,6 +1,6 @@
 <?php
 
-$feedback = new Feedback;
+$feedback = new DBFeedback;
 
 return array(
     'GET /feedsetup/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 

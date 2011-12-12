@@ -11,7 +11,7 @@ return array(
         if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
         if(Input::get('rating'))  $rating  = (int)Input::get('rating');
 
-        $feedback = new Feedback;
+        $feedback = new DBFeedback;
         $category = new Category;
         $pagination = new ZebraPagination; 
         $admin_check = S36Auth::user();

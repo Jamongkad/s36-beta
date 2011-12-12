@@ -48,7 +48,7 @@ return array(
             ));
         }     
 
-        $admin = new Admin;
+        $admin = new DBAdmin;
         $admin->input_data = (object)$data;
         $admin->perms_data = $perms;
         $admin->save();
@@ -57,7 +57,7 @@ return array(
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
         $user = S36Auth::user();
-        $admin = new Admin;
+        $admin = new DBAdmin;
         $details = $admin->fetch_admin_details_by_id($id);
         
         return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
@@ -69,7 +69,7 @@ return array(
      'POST /admin/edit_admin' => function() {
          $user = S36Auth::user(); 
          $data = Input::get();
-         $admin = new Admin;
+         $admin = new DBAdmin;
 
          $details = $admin->fetch_admin_details_by_id($data['userId']);
 
@@ -106,7 +106,7 @@ return array(
      },
 
      'GET /admin/delete_admin/([0-9]+)' => function($id) {
-         $admin = new Admin;
+         $admin = new DBAdmin;
          $admin->delete_admin($id);
          return Redirect::to('admin'); 
      },
@@ -114,7 +114,7 @@ return array(
      'POST /admin/test_invite_email' => Array('needs' => 'S36ValueObjects', 'do' => function() {
          //once done switch to form open url in add_admin_view
          $data = Input::get(); 
-         $admin = new Admin;
+         $admin = new DBAdmin;
          $admin->input_data = (object)$data;
          return $admin->_send_welcome_email(11);
      })

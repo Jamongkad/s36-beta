@@ -4,8 +4,8 @@ class AddFeedback {
 
     public function create_feedback_with_profile() {
         
-        $fb = new Feedback;
-        $ct = new Contact;
+        $fb = new DBFeedback;
+        $ct = new DBContact;
         $us = new User;
         $bw = new BadWords;
         $mt = new Metric;

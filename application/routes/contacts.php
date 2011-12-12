@@ -1,9 +1,9 @@
 <?php
 
-$contact = new Contact;
+$contact = new DBContact;
 
 return array(
-    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact){ 
+    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact) { 
 
         $contact_metrics = new ContactMetrics;
 
@@ -50,13 +50,12 @@ return array(
         ));
     },
 
-    'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() { 
+    'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact) { 
         $get_data = (object)Input::get();
 
-        $contacts = new Contact;
         $category = new Category;
         $contact_metrics = new ContactMetrics;
-        $contact_person = $contacts->get_contact_feedback($get_data);
+        $contact_person = $contact->get_contact_feedback($get_data);
 
         $page = Input::get('page');
 
@@ -72,9 +71,8 @@ return array(
 
     }),
 
-    'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() { 
+    'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact) { 
         $get_data = (object)Input::get();
-        $contact = new Contact;
         $contact_metrics = new ContactMetrics;
 
         $page = Input::get('page');
@@ -88,13 +86,12 @@ return array(
         ));
     }),
 
-    'POST /contacts/edit_contact' => function() {
+    'POST /contacts/edit_contact' => function() use($contact) {
 
         $data = Input::get();
 
         $page = (($data['page']) ? '&page='.$data['page'] : null);
  
-        $contact = new Contact;
         $contact_metrics = new ContactMetrics;        
 
         $rules = Array('firstname' => 'required');
@@ -115,9 +112,8 @@ return array(
         return Redirect::to('contacts/edit_contact?email='.$data['email'].$page); 
     },
 
-    'GET /contacts/delete_contact' => function() { 
+    'GET /contacts/delete_contact' => function() use($contact) { 
         $data = Input::get();
-        $contact = new Contact;
         return Helpers::show_data($contact->delete_contact($data['email']));
     },
 );

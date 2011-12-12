@@ -1,6 +1,6 @@
 <?php
 
-$feedback = new Feedback;
+$feedback = new DBFeedback;
 $category = new Category;
 
 return array(
@@ -22,8 +22,7 @@ return array(
         $badwords->profanity_detection($text, $feed_id); 
     },
 
-    'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) {
-        $feedback = new Feedback;
+    'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
         $feed_obj = Array('feedid' => $id);
         $result = $feedback->_toggle_multiple($state, Array($feed_obj));
         return Redirect::to('feedback/modifyfeedback/'.$id); 

@@ -1,5 +1,5 @@
 <?php
-class Feedback extends S36DataObject {
+class DBFeedback extends S36DataObject {
  
     public function pull_feedback($opts) {
       

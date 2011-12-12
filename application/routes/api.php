@@ -1,12 +1,14 @@
 <?php
 
+$feedback = new DBFeedback;
+
 return array(
      
     'GET /api/test' => function() {
         print_r("Mathew");
     },
 
-    'GET /api/pull_feedback' => function() { 
+    'GET /api/pull_feedback' => function() use($feedback) { 
 
         $company_id = false;
         $site_id = false;
@@ -36,7 +38,6 @@ return array(
           , 'is_featured' => $is_featured
         );
 
-        $feedback = new Feedback;
         $data = $feedback->pull_feedback_by_company($params); 
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
@@ -49,21 +50,22 @@ return array(
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
 
         $encrypt = new Crypter;
-        $string  = Input::get('params');
+        $string_params  = Input::get('params');
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
 
-        $decrypt = $encrypt->decrypt($string);
-        $params = explode("|", $decrypt); 
+        $decrypt_string = $encrypt->decrypt($string_params);
+        $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
         
-        //decrypt string use user and password to authenticate into application. 
+        //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new User; 
-            //flick publish feedback this bitch
+            
+            //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
-            $feedback_model = new Feedback;
+            $feedback_model = new DBFeedback;
             $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
 
             //since we're already logged in...we just need one property here...the publisher's email

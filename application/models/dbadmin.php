@@ -1,6 +1,6 @@
 <?php
 
-class Admin extends S36DataObject {
+class DBAdmin extends S36DataObject {
     public $input_data; 
     public $perms_data;
 
