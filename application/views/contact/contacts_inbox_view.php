@@ -40,6 +40,44 @@
                         $regex = Helpers::nav_regex();
                         if(!$regex->deleted):
                         ?>
+
+                        <!-- email picker block -->
+                        <div class="base-popup fast-forward-holder" id="<?=$id?>">
+                            <div class="popup-arrow"></div>
+                            <div class="email-list">
+                                <ul class="email-picker">
+                                    <?if($admin_check->ffemail1):?>
+                                        <li id="email1"> 
+                                            <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : <a href="javascript:;"><?=$admin_check->ffemail1?></a> 
+                                        </li>
+                                    <?endif?>
+                                    <?if($admin_check->ffemail2):?>
+                                        <li id="email2"> 
+                                            <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : <a href="javascript:;"><?=$admin_check->ffemail2?></a> 
+                                        </li>
+                                    <?endif?>
+                                    <?if($admin_check->ffemail3):?>
+                                        <li id="email3"> 
+                                            <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
+                                        </li>
+                                    <?endif?>
+                                </ul>
+
+                                <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
+                                    <?=Form::hidden('email')?>
+                                    <?=form::hidden('feed_id', $id)?>
+                                    <div class="ff-forward-to"></div>
+                                    <div class="popup-border"></div>
+                                    <?=Form::textarea('email_comment', false, array('class' => 'small popup-textarea'))?>
+                                    <div class="popup-border"></div>
+                                    <div class="popup-button">
+                                        <input type="submit" class="button" value="SEND" />
+                                    </div>
+                                <?=Form::close()?>
+                            </div>
+                        </div>
+                        <!-- end email picker block -->
+
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_approve == 0):?>
@@ -85,7 +123,7 @@
                             <?if($admin_check->inbox_fastforward == 0):?>
                                 <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.4; filter:alpha(opacity=40)"/> 
                             <?else:?>
-                                <input type="button" class="contact" tooltip="Fast Forward" tt_width="60"/> 
+                                <input type="button" class="contact" id="<?=$id?>" tooltip="Fast Forward" tt_width="60"/> 
                             <?endif?>
                         </div>
                         <?endif?>
