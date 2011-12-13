@@ -1,7 +1,7 @@
 <?php
 
 $feedback = new DBFeedback;
-$category = new Category;
+$category = new DBCategory;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
@@ -13,7 +13,7 @@ return array(
 
     'POST /feedback/edit_feedback_text' => function() {
 
-        $badwords = new BadWords;
+        $badwords = new DBBadWords;
         $post = Input::get();
 
         $feed_id = $post['feed_id'];
@@ -56,7 +56,7 @@ return array(
 
             $auth = new S36Auth; 
 
-            $metric = new Metric;
+            $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
             $metric->increment_request();  
         

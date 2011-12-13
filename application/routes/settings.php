@@ -1,6 +1,6 @@
 <?php
 
-$category = new Category;
+$category = new DBCategory;
 
 return array (
     'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category) {
@@ -27,7 +27,7 @@ return array (
     },
 
     'POST /settings/savesettings' => function() {
-        $company = new Company;
+        $company = new DBCompany;
         $post = (object)Input::get();
         Helpers::show_data($post); 
         $company->update_company_emails($post);

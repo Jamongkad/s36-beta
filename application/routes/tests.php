@@ -9,7 +9,7 @@ return array(
 
     'GET /tests/test_email_new' => function() {
 
-        $user = new User; 
+        $user = new DBUser; 
         $feedback = new DBFeedback;
 
         $vo = new NewFeedbackSubmissionData;
@@ -26,7 +26,7 @@ return array(
 
     'GET /tests/test_email_published' => function() {
         
-        $user = new User; 
+        $user = new DBUser; 
         $feedback = new DBFeedback;
 
         $vo = new PublishedFeedbackNotificationData;

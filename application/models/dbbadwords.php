@@ -1,6 +1,6 @@
 <?php
 
-class BadWords extends S36DataObject { 
+class DBBadWords extends S36DataObject { 
     public function profanity_detection($bad_words, $feedback_id) {
         $sth = $this->dbh->prepare(" 
             SELECT  

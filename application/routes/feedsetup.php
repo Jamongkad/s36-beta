@@ -26,7 +26,7 @@ return array(
 
     'GET /feedsetup/mywidgets' => Array('name' => 'mywidgets', 'before' => 's36_auth', 'do' => function() {  
         $company_id = S36Auth::user()->companyid;
-        $user_theme = new UserTheme;
+        $user_theme = new DBUserTheme;
         $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
          
         $links = Array(
@@ -46,7 +46,7 @@ return array(
 
     'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
         $company_id = S36Auth::user()->companyid;
-        $user_theme = new UserTheme; 
+        $user_theme = new DBUserTheme; 
         $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
 
         $wg = new WidgetGenerator($fetched_theme);
@@ -60,7 +60,7 @@ return array(
     },
 
     'POST /feedsetup/save_widget' => function() {
-        $d = new UserTheme; 
+        $d = new DBUserTheme; 
         $d->create_theme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
     },
@@ -108,7 +108,7 @@ return array(
 
     'GET /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
         $company_id = S36Auth::user()->companyid;
-        $user_theme = new UserTheme; 
+        $user_theme = new DBUserTheme; 
         $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
         $view_data = Array(
             'view' => View::make('inbox/ajax_views/ajax_editcode_view', 
@@ -136,7 +136,7 @@ return array(
     }, 
 
     'POST /feedsetup/edit_code' => function() { 
-        $user_theme = new UserTheme;
+        $user_theme = new DBUserTheme;
         $d = $user_theme->update_theme(Input::get());
         Helpers::show_data($d);
     }, 

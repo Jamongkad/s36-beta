@@ -6,9 +6,9 @@ class AddFeedback {
         
         $fb = new DBFeedback;
         $ct = new DBContact;
-        $us = new User;
-        $bw = new BadWords;
-        $mt = new Metric;
+        $us = new DBUser;
+        $bw = new DBBadWords;
+        $mt = new DBMetric;
 
         //fuck naive assumption...
         $countryId = 895;

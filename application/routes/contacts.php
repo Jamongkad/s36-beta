@@ -53,7 +53,7 @@ return array(
     'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact) { 
         $get_data = (object)Input::get();
 
-        $category = new Category;
+        $category = new DBCategory;
         $contact_metrics = new ContactMetrics;
         $contact_person = $contact->get_contact_feedback($get_data);
 

@@ -112,7 +112,7 @@
                 if($regex->filed):?>
                 <div class="g1of5">
                     <label>CATEGORY</label>
-                    <?$cat = new Category; ?>
+                    <?$cat = new DBCategory; ?>
                     <select style="width: 50%">
                         <option>All</option>
                         <?foreach($cat->pull_site_categories() as $category):?>

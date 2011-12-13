@@ -353,7 +353,7 @@ class ContactMetrics {
 
         $company_id = S36Auth::user()->companyid;
 
-        $metric = new Metric;
+        $metric = new DBMetric;
         $metric->company_id = $company_id;
 
         $contact_count = $this->contacts_model->count_total_contacts();

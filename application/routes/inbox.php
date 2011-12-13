@@ -12,7 +12,7 @@ return array(
         if(Input::get('rating'))  $rating  = (int)Input::get('rating');
 
         $feedback = new DBFeedback;
-        $category = new Category;
+        $category = new DBCategory;
         $pagination = new ZebraPagination; 
         $admin_check = S36Auth::user();
 

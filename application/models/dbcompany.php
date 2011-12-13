@@ -1,6 +1,6 @@
 <?php
 
-class Company extends S36DataObject {
+class DBCompany extends S36DataObject {
     public function update_company_emails($post) {
         DB::Table('Company', 'master') 
             ->where('companyId', '=', $post->companyid)

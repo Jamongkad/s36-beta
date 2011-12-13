@@ -1,6 +1,6 @@
 <?php
 
-class Metric extends S36DataObject {
+class DBMetric extends S36DataObject {
     
     public $company_id;
 

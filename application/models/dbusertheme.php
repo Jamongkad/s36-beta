@@ -1,6 +1,6 @@
 <?php
 
-class UserTheme extends S36DataObject {
+class DBUserTheme extends S36DataObject {
     public function create_theme($post) { 
 
         $widget = DB::table('Widget', 'master')->where('widgetName', '=', $post['embed_type'])->first(Array('widgetId'));

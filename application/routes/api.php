@@ -61,7 +61,7 @@ return array(
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
-            $user = new User; 
+            $user = new DBUser; 
             
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);

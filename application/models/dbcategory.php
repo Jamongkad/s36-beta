@@ -1,6 +1,6 @@
 <?php
 
-class Category extends S36DataObject {
+class DBCategory extends S36DataObject {
     
 
     public function pull_site_categories() {
