@@ -38,7 +38,7 @@ class S36Auth {
             $opts->options = $options;
         }
 
-        $admin = new \Admin;
+        $admin = new \DBAdmin;
         $user = $admin->fetch_admin_details($opts);
 
         if($user) {
