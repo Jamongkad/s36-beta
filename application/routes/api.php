@@ -80,7 +80,6 @@ return array(
                 $factory->feedback = $feedback_model->pull_feedback_by_id($feedback_id);
                 $email_pages = $factory->execute();
                 $email = new Email($email_pages);
-                Helpers::show_data($email_pages);
                 $email->process_email();
             }
 

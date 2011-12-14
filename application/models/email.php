@@ -12,6 +12,7 @@ class Email {
     public function process_email() { 
         if($this->emails) { 
             foreach($this->emails as $email) {     
+                /*
                 if(!$this->postmark->to($email->get_address())
                                    //->bcc($email->get_bcc())
                                    ->subject($email->get_subject())
@@ -19,6 +20,12 @@ class Email {
                                    ->send()) {
                    throw new Exception("Email not sent!!");
                 }
+                */
+                $this->postmark->to($email->get_address())
+                                //->bcc($email->get_bcc())
+                               ->subject($email->get_subject())
+                               ->html_message($email->get_message())
+                               ->send();
             }
         } else { 
            throw new Exception("No email object found!");
