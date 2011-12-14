@@ -47,7 +47,7 @@ return array(
           , 'is_featured'  => $is_featured
         );
 
-        $feedback = new Feedback;       
+        $feedback = new DBFeedback;       
         $data = $feedback->pull_feedback_by_company($params);
         $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('embeddedCSS'));
 
@@ -64,7 +64,7 @@ return array(
     },
 
     'GET /widget/modal' => function() {
-        $feedback = new Feedback;
+        $feedback = new DBFeedback;
         $company_id = null;
         $site_id = null;
         $is_published = 0;
