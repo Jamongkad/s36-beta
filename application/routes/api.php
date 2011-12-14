@@ -58,7 +58,7 @@ return array(
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
-            $status = 'publish'
+            $status = 'publish';
             
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
