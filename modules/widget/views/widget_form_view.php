@@ -247,7 +247,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
                 	<p>Thank your for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <br />
                     <div class="s36_block s36_align_center">
-                        <fb:login-button perms="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
+                        <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
                         <br />
                         <br />
                         <script type="IN/Login" data-onAuth="loadData">
