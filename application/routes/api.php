@@ -67,20 +67,21 @@ return array(
 
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
-
-            $vo = new PublishedFeedbackNotificationData;
-            $vo->publisher_email = $publisher->email;
-     
-            $factory = new EmailFactory($vo);
-            $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
-            $factory->feedback = $feedback_model->pull_feedback_by_id($feedback_id);
-            $email_pages = $factory->execute();
-           
-            $email = new Email($email_pages);
-            $email->process_email();
-
+ 
             $fba = new FeedbackActivity($publisher->userid, $feedback_id, $status);
             $activity_check = $fba->log_activity();
+            
+            if(!is_object($activity_check)) { 
+                $vo = new PublishedFeedbackNotificationData;
+                $vo->publisher_email = $publisher->email;
+         
+                $factory = new EmailFactory($vo);
+                $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
+                $factory->feedback = $feedback_model->pull_feedback_by_id($feedback_id);
+                $email_pages = $factory->execute();
+                $email = new Email($email_pages);
+                $email->process_email();
+            }
 
             //After publishing feedback logout...
             S36Auth::logout();
