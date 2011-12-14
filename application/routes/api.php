@@ -4,10 +4,6 @@ $feedback = new DBFeedback;
 
 return array(
      
-    'GET /api/test' => function() {
-        print_r("Mathew");
-    },
-
     'GET /api/pull_feedback' => function() use($feedback) { 
 
         $company_id = false;
@@ -62,11 +58,12 @@ return array(
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
+            $status = 'publish'
             
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $feedback_model = new DBFeedback;
-            $feedback_model->_toggle_multiple('publish', array($feed_obj)); 
+            $feedback_model->_toggle_multiple($status, array($feed_obj)); 
 
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
@@ -82,6 +79,9 @@ return array(
             $email = new Email($email_pages);
             $email->process_email();
 
+            $fba = new FeedbackActivity($publisher->userid, $feedback_id, $status);
+            $activity_check = $fba->log_activity();
+
             //After publishing feedback logout...
             S36Auth::logout();
 
@@ -93,6 +93,7 @@ return array(
             return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
               , 'contact_name' => $contact->firstname
+              , 'activity_check' => $activity_check
             ));       
         }
     }),

@@ -109,6 +109,15 @@ return array(
     },
 
     'GET /tests/email_thankyou' => function() { 
+
+        $auth = new S36Auth;
+        $userId = $auth->user()->userid;
+        $feedbackId = 54;
+        $status = "publish";
+
+        $fb = new FeedbackActivity($userId, $feedbackId, $status);
+        $activity_check = $fb->log_activity();
+
         $contact = DB::Table('Contact', 'master')
                       ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
                       ->where('Feedback.feedbackId', '=', 65)
@@ -117,6 +126,21 @@ return array(
         return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
             'company_name' => DB::Table('Company', 'master')->where('companyId', '=', 1)->first(array('name'))
           , 'contact_name' => $contact->firstname
+          , 'activity_check' => $activity_check
         ));       
+    },
+
+    'GET /tests/worklog' => function() {   
+        $auth = new S36Auth;
+        $userId = $auth->user()->userid;
+        $feedbackId = 56;
+        $status = "publish";
+
+        $fb = new FeedbackActivity($userId, $feedbackId, $status);
+        $result = $fb->log_activity();
+        //$check = $fb->check_activity_status();
+        //$insert = $fb->insert_new_activity();
+        //$update = $fb->update_activity_status();
+        Helpers::show_data($result);
     }
 );
