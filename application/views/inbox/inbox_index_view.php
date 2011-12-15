@@ -89,17 +89,22 @@
                             <div class="grids">
                                 <div class="label g1of2">Status</div>
                                 <div class="dropdown g1of2">
-                                    <select class="regular-select">
-                                        <option>New</option>
-                                    </select>
+                                    <select class="catmenu-status" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                        <?foreach($status as $option):?>
+                                            <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
+                                            <option <?=($feed->status == $option_match) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
+                                        <?endforeach?>
+                                    </select> 
                                 </div>
                             </div>
                             <div class="popup-border"></div>
                             <div class="grids">
                                 <div class="label g1of2">Priority</div>
                                 <div class="dropdown g1of2">
-                                    <select class="regular-select">
-                                        <option>New</option>
+                                    <select class="catmenu-priority" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                        <?foreach($priority_obj as $key => $val):?>
+                                            <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
+                                        <?endforeach?>
                                     </select>
                                 </div>
                             </div>
@@ -111,6 +116,7 @@
                             </div> 
                         </div>
                         <!-- end of category picker-->
+
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_approve == 0):?>
@@ -156,8 +162,7 @@
                         <div class="feedback-meta">
                             <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
                             <span class="permission"><?=$feed->permission?></span>
-                            <span class="status-change status">
-                                Status: <span class="status-target"><?=$feed->status?></span>
+                            <span class="status-change status"> Status: <span class="status-target"><?=$feed->status?></span>
                                 <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                                     <?foreach($status as $option):?>
                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>  

@@ -85,13 +85,10 @@ jQuery(function($) {
             $('textarea[name="email_comment"]').val("");
         } 
     })
-
     //End of FastForward
-    $('select[name="status"], select[name="priority"]').hide();
-    $('div.undo-bar').hide(); 
-    
-    new InboxStatusChange($('.check, .feature, .remove, .popup-delete, li > a.cat-picks')).initialize(); 
 
+    new InboxStatusChange($('.check, .feature, .remove, .popup-delete, li > a.cat-picks')).initialize(); 
+    $('div.undo-bar').hide(); 
     $('.flag').switcharoo('-100px 0px');
        
     $.each($('ul#nav-menu li'), function(index, value) {
@@ -142,11 +139,30 @@ jQuery(function($) {
     check.init(); 
     check.clickAll();
 
+    $('.status-change > select, .priority-change > select').hide();
+
     var statusChange = new DropDownChange({status_element: $('span.status-change'), status_selector: 'change.status'});
     statusChange.enable();
 
     var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
     priorityChange.enable();
+
+    
+    $('.catmenu-status, .catmenu-priority').bind('change', function(e) {
+        var select = $(this);
+        var select_val = select.val();
+        var feedid = select.attr('feedid');
+        var feedurl = select.attr('feedurl');
+       
+        $.ajax({
+              type: "POST"
+            , url: feedurl
+            , data: {"select_val":select_val, "feed_id": feedid}
+        });
+        
+        select.siblings().text(select_val);
+    }).show();
+
 
     $('.check').fancytips();
     $('.fileas').fancytips();
