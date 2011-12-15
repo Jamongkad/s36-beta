@@ -105,7 +105,7 @@
                             </div>
                             <div class="popup-border"></div> 
                             <div class="grids" style="text-align: center">
-                                <input type="button" class="popup-delete remove" 
+                                <input type="button" class="popup-delete" 
                                 <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>
                                 value="" />
                             </div> 

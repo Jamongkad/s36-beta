@@ -46,9 +46,6 @@ jQuery(function($) {
         }, function() { 
             mouse_is_inside = false;    
         });
-        /*
-        $(this).siblings('div.category-picker-holder').show();            
-        */
         e.preventDefault();
     })
 
@@ -93,7 +90,7 @@ jQuery(function($) {
     $('select[name="status"], select[name="priority"]').hide();
     $('div.undo-bar').hide(); 
     
-    new InboxStatusChange($('.check, .feature, .remove, li > a.cat-picks')).initialize(); 
+    new InboxStatusChange($('.check, .feature, .remove, .popup-delete, li > a.cat-picks')).initialize(); 
 
     $('.flag').switcharoo('-100px 0px');
        

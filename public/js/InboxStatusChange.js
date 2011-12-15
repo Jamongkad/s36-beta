@@ -13,7 +13,8 @@ InboxStateObject.prototype.undo = function() {
         var undo_mode = $('.inbox-state').val();
 
         //set current_catid variable for undo function
-        var current_catid = $(me.elem).siblings('div.base-popup').children('.category-picker').attr('id');
+        //var current_catid = $(me.elem).siblings('div.base-popup').children('.category-picker').attr('id');
+        var current_catid = me.elem.attr('catid');
         var sec       = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
@@ -182,7 +183,7 @@ InboxStatusChange.prototype.initialize = function() {
             feature.undo();
         }
 
-        if(identifier == 'remove') { 
+        if(identifier == 'remove' || identifier == 'popup-delete') { 
             var remove = new RemoveStateObject(us);
             remove.process();
             remove.undo();
