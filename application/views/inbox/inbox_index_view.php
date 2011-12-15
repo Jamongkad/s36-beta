@@ -105,7 +105,7 @@
                             </div>
                             <div class="popup-border"></div> 
                             <div class="grids" style="text-align: center">
-                                <input type="button" class="popup-delete" value="" />
+                                <input type="button" class="popup-delete remove" value="" />
                             </div> 
                         </div>
                         <!-- end of category picker-->
@@ -122,25 +122,6 @@
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
                             <?endif?>
                             <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
-                            <!--
-                            <div class="base-popup category-picker-holder">
-                                 <div class="popup-arrow"></div>
-                                 <ul class="category-picker" id="<?=$feed->categoryid?>">
-                                     <?foreach($categories as $cat):?> 
-                                         <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                                  'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                                , 'class'      => 'cat-picks'
-                                                , 'feedid'     => $id
-                                                , 'catid'      => $cat->id
-                                                , 'cat-state'  => $cat->intname
-                                                , 'state'      => 0
-                                             ))?>
-                                         </li>
-                                     <?endforeach?>
-                                 </ul>
-                            </div>
-                            -->
                             <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
 
                             <?if($feed->rating != "POOR"):?>
