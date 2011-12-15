@@ -71,6 +71,7 @@ return array(
             $fba = new FeedbackActivity($publisher->userid, $feedback_id, $status);
             $activity_check = $fba->log_activity();
             
+            //if no record of activity
             if(!is_object($activity_check)) { 
                 $vo = new PublishedFeedbackNotificationData;
                 $vo->publisher_email = $publisher->email;
