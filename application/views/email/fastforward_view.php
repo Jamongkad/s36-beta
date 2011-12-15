@@ -33,7 +33,7 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">Fast-forward Feedback</h1>
+                            	<h1 style="line-height:normal">Fastforwarded Feedback</h1>
                             	<!--<strong>Hi <?=$user?>,</strong> <br/>-->
                                 <?if($message->comment):?>
                                     <strong><?=ucfirst($message->user->username)?></strong> says, <br/>
