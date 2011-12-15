@@ -65,6 +65,50 @@
                             </div>
                         </div>
                         <!-- end email picker block -->
+
+                        <!-- category picker -->
+                        <div class="base-popup category-picker-holder" id="<?=$id?>">
+                            <div class="popup-arrow"></div>
+                            <div>File this feedback as:</div>
+                            <ul class="category-picker" id="<?=$feed->categoryid?>">
+                              <?foreach($categories as $cat):?> 
+                                 <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
+                                      <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                           'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                         , 'class'      => 'cat-picks'
+                                         , 'feedid'     => $id
+                                         , 'catid'      => $cat->id
+                                         , 'cat-state'  => $cat->intname
+                                         , 'state'      => 0
+                                      ))?>
+                                  </li>
+                              <?endforeach?>
+                            </ul>
+                            <div><?=HTML::link('settings', 'manage categories →')?></div>
+                            <div class="popup-border"></div>
+                            <div class="grids">
+                                <div class="label g1of2">Status</div>
+                                <div class="dropdown g1of2">
+                                    <select class="regular-select">
+                                        <option>New</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="popup-border"></div>
+                            <div class="grids">
+                                <div class="label g1of2">Priority</div>
+                                <div class="dropdown g1of2">
+                                    <select class="regular-select">
+                                        <option>New</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="popup-border"></div> 
+                            <div class="grids" style="text-align: center">
+                                <input type="button" class="popup-delete" value="" />
+                            </div> 
+                        </div>
+                        <!-- end of category picker-->
                         <div class="options">
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_approve == 0):?>
@@ -77,8 +121,8 @@
                             <?else:?>
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
                             <?endif?>
-                            <input type="button" class="save fileas" tooltip="Categorize Feedback"/>
-
+                            <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
+                            <!--
                             <div class="base-popup category-picker-holder">
                                  <div class="popup-arrow"></div>
                                  <ul class="category-picker" id="<?=$feed->categoryid?>">
@@ -96,7 +140,7 @@
                                      <?endforeach?>
                                  </ul>
                             </div>
-
+                            -->
                             <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
 
                             <?if($feed->rating != "POOR"):?>

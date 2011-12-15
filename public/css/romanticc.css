@@ -1,3 +1,35 @@
+.base-popup{
+    z-index: 2000;
+    position:absolute !important;
+    background:#e4e5e6;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
+    padding:3px 5px;
+    border-top:1px solid #ebecec;
+    border-left:1px solid #ebecec;
+    border-right:1px solid #d4d6d7;
+    border-bottom:1px solid #d4d6d7;
+    text-shadow:#ebecec 0px 1px;
+    box-shadow:#d2d3d3 0px 0px 10px;
+}
+
+.base-popup .popup-arrow{background:url(../img/popup-arrow.png) no-repeat;width:9px;height:17px;position:absolute !important;right:-9px;top:8px;}
+
+.base-popup ul{margin:0;padding:0;list-style:none;}
+.base-popup ul li:hover{cursor:pointer;}
+.base-popup ul li a{color:#767676;padding:3px 5px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;}
+.base-popup ul li a.Matched,.base-popup ul li:hover a{color:#6e7f8d;font-weight:bold;background:#f5f5f7;}
+.base-popup a{font-weight:bold;}
+
+.base-popup .label{font-size:12px;font-weight:bold;padding-top:8px !important;color:#353535;}
+.base-popup input.popup-delete{width:134px;height:21px;background:url(../img/popup-delete.png);background-position:bottom;border:none;cursor:pointer;}
+.base-popup input.popup-delete:hover{background-position:top !important;}
+.base-popup input.button{border:none;font-weight:normal;color:#FFF;background:#b6bec1;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:3px 12px;text-shadow:#9ba3a6 0px -1px;font-size:11px;cursor:pointer;}
+.base-popup .popup-button{text-align:center;display:block;}
+.base-popup ul.email-picker li{padding:4px 0px;}
+.base-popup ul.email-picker li a{color:#6e7e8e;}
+.base-popup ul.email-picker li a:hover{color:#3a4c5a;}
+.base-popup .email-list a{color:#6e7e8e}
+.popup-textarea{width:240px;height:40px;font-family:Arial, Helvetica, sans-serif;}
+
 html {
 	background:url(../img/background.jpg) #EBEAE7;
 }
@@ -24,9 +56,6 @@ ul.nav {
     float: right;
 }
 
-.feedback-controls {
-
-}
 
 ul.filter_nav, .filter_nav ul { 
     margin: 0;
@@ -282,12 +311,7 @@ table.user-info td {
 
 ul.category-picker {  
     cursor: default;
-    list-style-type: none;
-    display: inline;
-}
-
-ul.category-picker li {
-    padding: 5px; 
+    list-style-type: none; 
 }
 
 li.Matched {
@@ -301,32 +325,16 @@ li.Matched {
 .category-picker-holder {
     right: 102px;
     top: -10px;
+	width:190px;
+	padding:10px !important;
 }
 
 ul.category-picker li {
-    font-size: 10px; 
+	width:90px;
+	float:left;
+	padding:3px 2px;
+	margin:2px 0px;
 }
-
-.base-popup{
-    z-index: 2000;
-    position:absolute !important;
-    background:#e4e5e6;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;
-    padding:3px 5px;
-    border-top:1px solid #ebecec;
-    border-left:1px solid #ebecec;
-    border-right:1px solid #d4d6d7;
-    border-bottom:1px solid #d4d6d7;
-    text-shadow:#ebecec 0px 1px;
-    box-shadow:#d2d3d3 0px 0px 10px;
-}
-.base-popup .popup-arrow{background:url(../img/popup-arrow.png) no-repeat;width:9px;height:17px;position:absolute !important;right:-9px;top:8px;}
-.base-popup ul{margin:0;padding:0;list-style:none;}
-.base-popup ul li{margin:0;padding:2px;}
-.base-popup ul li.Matched{background:#3a4c5c;color:#e4e5e6;text-shadow:none;}
-.base-popup ul li.Matched:hover a{color:inherit;}
-.base-popup ul li:hover{cursor:pointer;}
-.base-popup ul li:hover a{color:#6e7f8d;font-weight:bold;}
-.base-popup a{font-weight:bold;}
 
 /*TODO: Must ask Dan to help me fix this...*/
 div.undo-bar {
@@ -392,11 +400,11 @@ a.undo {
 	margin:5px -10px !important;
 }
 
-.popup-textarea{width:240px;height:40px;font-family:Arial, Helvetica, sans-serif;}
-
-.base-popup input.button{border:none;font-weight:normal;color:#FFF;background:#b6bec1;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding:3px 12px;text-shadow:#9ba3a6 0px -1px;font-size:11px;cursor:pointer;}
-.base-popup .popup-button{text-align:center;display:block;}
-.base-popup ul.email-picker li{padding:4px 0px;}
-.base-popup ul.email-picker li a{color:#6e7e8e;}
-.base-popup ul.email-picker li a:hover{color:#3a4c5a;}
-.base-popup .email-list a{color:#6e7e8e}
+.category-picker:after
+{  
+content: ".";  
+display: block; 
+height: 0; 
+clear: both;
+visibility: hidden;          
+}

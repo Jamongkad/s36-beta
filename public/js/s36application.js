@@ -40,7 +40,15 @@ jQuery(function($) {
     });
 
     $('.fileas').bind('click', function(e) { 
+        var id = $(this).attr('id');
+        $('#' + id + ' div.category-picker-holder').show().hover(function() { 
+            mouse_is_inside = true;  
+        }, function() { 
+            mouse_is_inside = false;    
+        });
+        /*
         $(this).siblings('div.category-picker-holder').show();            
+        */
         e.preventDefault();
     })
 
