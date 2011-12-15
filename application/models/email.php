@@ -21,14 +21,11 @@ class Email {
                    throw new Exception("Email not sent!!");
                 }
                 */
-                $email = $this->postmark->to($email->get_address())
+                $this->postmark->to($email->get_address())
                                 //->bcc($email->get_bcc())
                                ->subject($email->get_subject())
                                ->html_message($email->get_message())
                                ->send();
-                if($email != 1) {  
-                   throw new Exception("Email not sent!!");
-                }
             }
         } else { 
            throw new Exception("No email object found!");
