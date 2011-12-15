@@ -54,7 +54,7 @@
 <body>
 <?php if($type == "vertical"): ?>
 <div class="v">
-	<div class="title">What some of our customers say</div>
+	<div class="title">What some of our customers have to say</div>
     <div id="feedback-solo">
     </div>
     <div id="feedback-container">
@@ -210,7 +210,7 @@
 
 <?if($type == "horizontal"):?>
 <div class="v">
-	<div class="title">What some of our customers say</div>
+	<div class="title">What some of our customers have to say</div>
     <div id="feedback-solo">
     </div>
     <div id="feedback-container">
