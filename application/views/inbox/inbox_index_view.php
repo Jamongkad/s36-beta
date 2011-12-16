@@ -72,10 +72,10 @@
                             <div>File this feedback as:</div>
                             <ul class="category-picker" id="<?=$feed->categoryid?>">
                               <?foreach($categories as $cat):?> 
-                                 <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
+                                 <li>
                                       <?=HTML::link('feedback/changecat/', $cat->name, Array(
                                            'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                         , 'class'      => 'cat-picks'
+                                         , 'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
                                          , 'feedid'     => $id
                                          , 'catid'      => $cat->id
                                          , 'cat-state'  => $cat->intname
