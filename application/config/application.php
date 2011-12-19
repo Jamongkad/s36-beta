@@ -2,8 +2,6 @@
 require_once 'determiner.php';
 $determine = new Determiner;  
 
-print_r($determine);
-
 return array(
 
 	/*
