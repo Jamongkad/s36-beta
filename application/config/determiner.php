@@ -20,11 +20,19 @@ class Determiner {
        }
 	   
        //DEV
+       $dev_url = explode(".", $this->http_host);
+       if($dev_url[1] == 'gearfish') {
+           $obj->host = 'http://gearfish.com';
+           $obj->db   = 'localhost';
+           return $obj;
+       }
+       /*
        if($this->http_host == 'dev.gearfish.com') {
            $obj->host = 'http://dev.gearfish.com';     
            $obj->db   = 'localhost';
            return $obj;
        }
+       */
       
        //PRODUCTION
        $production_url = explode(".", $this->http_host);

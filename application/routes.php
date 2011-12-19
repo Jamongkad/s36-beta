@@ -1,6 +1,5 @@
 <?php
 
-//$user = new S36Auth();
 return array(
 
 	/*
@@ -18,7 +17,7 @@ return array(
 	|
 	*/
 
-    'GET /' => function() { 
+    'GET /([A-Za-z]+)' => function($company) { 
         $company = Input::get('/?subdomain');
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
