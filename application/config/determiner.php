@@ -27,11 +27,19 @@ class Determiner {
        }
       
        //PRODUCTION
+       $production_url = explode(".", $this->http_host);
+       if($production_url[1] == '36storiesapp') {
+           $obj->host = 'http://36storiesapp.com';
+           $obj->db   = 'localhost';
+           return $obj;
+       }
+       /*
        if($this->http_host == '36storiesapp.com') {
            $obj->host = 'http://36storiesapp.com';
            $obj->db   = 'localhost';
            return $obj;
        }
+       */
        //PRODUCTION
        /*
        $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
