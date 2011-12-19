@@ -28,7 +28,7 @@ class Determiner {
        }
 
        if($my_url[1] == '36storiesapp') {
-           $obj->host = 'http://'.$subdomain.'36storiesapp.com';
+           $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
            $obj->db   = 'localhost';
            return $obj;
        }
