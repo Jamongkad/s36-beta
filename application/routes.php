@@ -19,6 +19,7 @@ return array(
 	*/
 
     'GET /(:any)' => function($company) { 
+        print_r(Input::get());
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
 
