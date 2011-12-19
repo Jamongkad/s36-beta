@@ -18,9 +18,8 @@ return array(
 	|
 	*/
 
-    'GET /' => function() { 
-        print_r(Input::get());
-        //return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
+    'GET /([A-Za-z]+)' => function($company) { 
+        return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
 
     'GET /([A-Za-z]+)/login' => function($company) {
