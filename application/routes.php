@@ -19,6 +19,7 @@ return array(
 	*/
 
     'GET /' => function() { 
+
         $company = Input::get('/?subdomain');
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
