@@ -28,7 +28,6 @@ class Determiner {
       
        //PRODUCTION
        if($this->http_host == '36storiesapp.com') {
-           print_r("Production");
            $obj->host = 'http://36storiesapp.com';
            $obj->db   = 'localhost';
            return $obj;
