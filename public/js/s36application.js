@@ -1,30 +1,33 @@
 jQuery(function($) {
 
-    $('ul.category-picker li').bind('click', function(e) {
+    $('a.cat-picks').bind('click', function(e) {
 
         var deselect_this = false;
-        var li = $('a', this);
-        var href = li.attr('href');
-
         if($(this).hasClass('Matched')) {
             deselect_this = true;
             $(this).removeClass("Matched");
         } 
 
-        $(this).parent().children().each(function() {
-            $(this).removeClass("Matched");
+        $(this).parent().siblings().children('a').each(function() {
+            $(this).removeClass("Matched");     
         });
 
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
+        
+        console.log($(this));
+        /*
         //TODO: maaaaaan clean this up!
-        $(this).parents('.category-picker-holder')
+        var d = $(this).parents('.category-picker-holder')
                .siblings('.feature, .check')
                .removeAttr('style')
                .attr('state', 0);
-        e.preventDefault();
 
+        console.log(d);
+        */
+
+        e.preventDefault();
     });
 
     //check theme 1 by default
