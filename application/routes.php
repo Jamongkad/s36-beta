@@ -19,6 +19,7 @@ return array(
 	*/
 
     'GET /([A-Za-z]+)' => function($company) { 
+        print_r(Input::get());
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
 
