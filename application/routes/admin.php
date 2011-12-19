@@ -2,6 +2,7 @@
 
 return array(
     'GET /admin' => Array('name' => 'admin', 'before' => 's36_auth', 'do' => function() {
+
         $admin = S36Auth::user();
         $company_id = $admin->companyid;
         $role = $admin->itemname;
