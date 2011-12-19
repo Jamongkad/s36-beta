@@ -133,7 +133,7 @@
                             <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                         <?endforeach?>
                     </select>
-                    <?=HTML::link(strtolower(S36Auth::user()->name).'/logout', 'SIGN OUT')?>
+                    <?=HTML::link('logout', 'SIGN OUT')?>
                 </div>
             </div>
             <!-- end of the brown bar on the top -->

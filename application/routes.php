@@ -18,34 +18,37 @@ return array(
 	*/
 
     'GET /' => function() { 
-        $company = Input::get('/?subdomain');
+        $company = Input::get('subdomain');
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
     },
 
-    'GET /([A-Za-z]+)/login' => function($company) {
+    'GET /login' => function() {
         $auth = new S36Auth;
+        $company = Input::get('subdomain');
+
         if($auth->check()) { 
             return View::of_layout()->partial('contents', 'dashboard/index');       
         } else {
             return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
         }		
+
     },
 
-    'POST /([A-Za-z]+)/login' => function($company) {
-        $input = Input::get();
-        $test = S36Auth::login($input['username'], $input['password'], Array('company' => $company));
+    'POST /login' => function() {
+        $input = Input::get();        
+        $test = S36Auth::login($input['username'], $input['password'], Array('company' => $_GET['subdomain']));
 
         if(S36Auth::check()) {
             return Redirect::to('dashboard');           
         } else {
-            return Redirect::to($company.'/login');
+            return Redirect::to('login');
         }
-
+       
     },
     
-    'GET /([A-Za-z]+)/logout' => function($company) {
+    'GET /logout' => function() {
         S36Auth::logout();
-        return Redirect::to($company.'/login');
+        return Redirect::to('login');
     },
 
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {

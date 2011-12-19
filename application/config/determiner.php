@@ -12,43 +12,28 @@ class Determiner {
    public function _host() {
 
        $obj = new StdClass; 
+       $my_url = explode(".", $this->http_host);
+       $subdomain = $_GET['subdomain'];
 
-       if($this->http_host == 'dev.36stories.localhost') {
-           $obj->host =  'http://dev.36stories.localhost';    
+       if($my_url[1] == 'gearfish') {
+           $obj->host = 'http://'.$subdomain.'.gearfish.com';
            $obj->db   = 'localhost';
            return $obj;
        }
-	   
-       //DEV
-       $dev_url = explode(".", $this->http_host);
-       if($dev_url[1] == 'gearfish') {
-           $obj->host = 'http://gearfish.com';
+
+       if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
+           $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = 'localhost';
            return $obj;
        }
-       /*
-       if($this->http_host == 'dev.gearfish.com') {
-           $obj->host = 'http://dev.gearfish.com';     
+
+       if($my_url[1] == '36storiesapp') {
+           $obj->host = 'http://'.$subdomain.'36storiesapp.com';
            $obj->db   = 'localhost';
            return $obj;
        }
-       */
-      
-       //PRODUCTION
-       $production_url = explode(".", $this->http_host);
-       if($production_url[1] == '36storiesapp') {
-           $obj->host = 'http://36storiesapp.com';
-           $obj->db   = 'localhost';
-           return $obj;
-       }
-       /*
-       if($this->http_host == '36storiesapp.com') {
-           $obj->host = 'http://36storiesapp.com';
-           $obj->db   = 'localhost';
-           return $obj;
-       }
-       */
-       //PRODUCTION
+
+       //AWS PRODUCTION
        /*
        $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
        preg_match_all($pattern, $this->http_host, $matches, PREG_PATTERN_ORDER);  
