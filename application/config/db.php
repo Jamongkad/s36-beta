@@ -54,6 +54,15 @@ return array(
 			'password' => 'brx4*svv',
 			'charset'  => 'utf8',
 		),
+        
+        'test' => array(
+			'driver'   => 'mysql',
+			'host'     => $determine->d->db,
+			'database' => 's36_test',
+			'username' => 'root',
+			'password' => 'brx4*svv',
+			'charset'  => 'utf8', 
+        ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
