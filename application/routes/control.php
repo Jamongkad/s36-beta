@@ -4,7 +4,7 @@ return array(
     'GET /control/create_new_account' => function() {
         print_r("Creating New Account");
         $db = new DBAccount;
-        Helpers::show_data($db->create_account());
+        return $db->create_account();
     },
 
     'GET /control/update_user_pwd' => function() {
@@ -48,7 +48,7 @@ return array(
 
     'GET /control/fetch_user/(\d+)' => function($userId) {
         $encrypt = new Crypter;
-        $user = DB::table('User', 'master')->where('userId', '=', $userId)->first();
+        $user = DB::table('User', 'test')->where('userId', '=', $userId)->first();
         $string = $encrypt->decrypt($user->encryptstring);
         $string = (object)explode("|", $string);
         print_r($string);
