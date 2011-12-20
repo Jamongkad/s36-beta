@@ -27,8 +27,8 @@ class DBAccount extends S36DataObject {
         //$sth = $this->dbh->prepare($sql);
         //$sth->execute(); 
         //$this->dbh->query($sql);
-        $this->dbh->beginTransaction();
+        //$this->dbh->beginTransaction();
         $this->dbh->exec('INSERT INTO Company (`name`, `planid`) VALUES("TheMathewClan", 1)');
-        $this->dbh->rollBack();
+        //$this->dbh->rollBack();
     }
 }
