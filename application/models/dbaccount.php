@@ -22,7 +22,8 @@ class DBAccount extends S36DataObject {
             , (@company_id, "bugs", "Problems/Bugs", 1)
             , (@company_id, "suggestions", "Suggestions", 1);
         ';
-        $sth = $this->dbh->prepare($sql);
-        $sth->execute(); 
+        //$sth = $this->dbh->prepare($sql);
+        //$sth->execute(); 
+        $this->dbh->query($sql);
     }
 }
