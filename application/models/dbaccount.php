@@ -29,6 +29,8 @@ class DBAccount extends S36DataObject {
         //$this->dbh->query($sql);
         //$this->dbh->beginTransaction();
         $this->dbh->exec('INSERT INTO Company (`name`, `planid`) VALUES("TheMathewClan", 1)');
+        $this->dbh->exec('SET @company_id = LAST_INSERT_ID()');
+        $this->dbh->exec('INSERT INTO Metric (`companyId`, `totalRequest`, `totalResponse`) VALUES(@company_id, 0, 0)'); 
         //$this->dbh->rollBack();
     }
 }
