@@ -1,6 +1,12 @@
 <?php
 
 return array(
+    'GET /control/create_new_account' => function() {
+        print_r("Creating New Account");
+        $db = new DBAccount;
+        Helpers::show_data($db->create_account());
+    },
+
     'GET /control/update_user_pwd' => function() {
         $encrypt = new Crypter;
         $password_string = "p455w0rd";
