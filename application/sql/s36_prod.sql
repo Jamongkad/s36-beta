@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 19, 2011 at 05:06 PM
+-- Generation Time: Dec 20, 2011 at 04:32 PM
 -- Server version: 5.1.54
--- PHP Version: 5.3.5-1ubuntu7.2
+-- PHP Version: 5.3.5-1ubuntu7.4
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
@@ -28,6 +29,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `AuthAssignment` (
   `itemname` varchar(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
+  `inbox_approve` tinyint(1) NOT NULL DEFAULT '1',
+  `inbox_feature` tinyint(1) NOT NULL DEFAULT '1',
+  `inbox_delete` tinyint(1) NOT NULL DEFAULT '1',
+  `inbox_fastforward` tinyint(1) NOT NULL DEFAULT '1',
+  `inbox_flag` tinyint(1) NOT NULL DEFAULT '1',
+  `feedsetup_approve` tinyint(1) NOT NULL DEFAULT '1',
+  `contact_approve` tinyint(1) NOT NULL DEFAULT '1',
+  `setting_approve` tinyint(1) NOT NULL DEFAULT '1',
   `bizrule` text,
   `data` text,
   PRIMARY KEY (`itemname`,`userid`)
@@ -82,13 +91,13 @@ CREATE TABLE IF NOT EXISTS `BadWords` (
 
 CREATE TABLE IF NOT EXISTS `Category` (
   `categoryId` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `siteId` int(10) unsigned NOT NULL,
+  `companyId` int(10) unsigned NOT NULL,
   `intName` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
   `changeable` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`categoryId`),
-  KEY `Category_Site_siteId` (`siteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  KEY `Category_Company_companyId` (`companyId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -109,11 +118,14 @@ CREATE TABLE IF NOT EXISTS `Company` (
   `ffEmail1` varchar(150) DEFAULT NULL,
   `ffEmail2` varchar(150) DEFAULT NULL,
   `ffEmail3` varchar(150) DEFAULT NULL,
+  `alias1` varchar(150) NOT NULL,
+  `alias2` varchar(150) NOT NULL,
+  `alias3` varchar(150) NOT NULL,
   `defaultSiteId` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`companyId`),
   KEY `Company_Plan_planId` (`planId`),
   KEY `Company_Site_defaultSiteId` (`defaultSiteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -135,8 +147,9 @@ CREATE TABLE IF NOT EXISTS `Contact` (
   `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`contactId`),
   KEY `Contact_Country_countryId` (`countryId`),
-  KEY `Contact_Site_siteId` (`siteId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=103 ;
+  KEY `Contact_Site_siteId` (`siteId`),
+  KEY `Contact_Email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=106 ;
 
 -- --------------------------------------------------------
 
@@ -188,14 +201,18 @@ CREATE TABLE IF NOT EXISTS `Effects` (
 
 CREATE TABLE IF NOT EXISTS `EmbeddedBlockOptions` (
   `embeddedBlockId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
+  `widgetId` int(11) DEFAULT '3',
   `type` varchar(20) NOT NULL,
   `units` int(10) NOT NULL,
   `height` int(10) NOT NULL,
   `width` int(10) NOT NULL,
   `effectId` int(10) NOT NULL,
   PRIMARY KEY (`embeddedBlockId`),
-  KEY `EmbeddedBlockOptions_effect_id` (`effectId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  KEY `EmbeddedBlockOptions_effect_id` (`effectId`),
+  KEY `EmbeddedBlockOptions_widget_id` (`widgetId`),
+  KEY `EmbeddedBlockOptions_UserThemes_theme_id` (`userThemeId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -214,8 +231,9 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
   `text` varchar(1500) DEFAULT NULL,
   `dtAdded` datetime NOT NULL,
   `priority` tinyint(2) unsigned NOT NULL DEFAULT '99',
-  `license` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `permission` tinyint(1) NOT NULL,
   `textLength` smallint(4) unsigned NOT NULL DEFAULT '0',
+  `indLock` tinyint(1) NOT NULL DEFAULT '1',
   `isFeatured` tinyint(1) NOT NULL,
   `isFlagged` tinyint(1) DEFAULT '0',
   `isPublished` tinyint(1) DEFAULT '0',
@@ -236,7 +254,22 @@ CREATE TABLE IF NOT EXISTS `Feedback` (
   KEY `Feedback_Category_categoryId` (`categoryId`),
   KEY `Feedback_Site_siteId` (`siteId`),
   KEY `text` (`text`(255))
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='utf8_general_ci' AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='utf8_general_ci' AUTO_INCREMENT=66 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `FeedbackActivity`
+--
+
+CREATE TABLE IF NOT EXISTS `FeedbackActivity` (
+  `userId` int(10) unsigned NOT NULL,
+  `feedbackId` bigint(20) unsigned NOT NULL,
+  `feedbackStatus` varchar(125) NOT NULL,
+  `dtAdded` datetime NOT NULL,
+  KEY `Feedback_FeedbackActivity_feedbackId` (`feedbackId`),
+  KEY `Feedback_FeedbackActivity_userId` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -258,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `FeedbackBlock` (
   `displaySbmtDate` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`feedbackblockId`),
   KEY `siteId` (`siteId`,`themeId`,`formId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -280,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `Form` (
   KEY `Form_Scale_scaleId` (`scaleId`),
   KEY `Form_Site_siteId` (`siteId`),
   KEY `Form_Category_defaultCategoryId` (`defaultCategoryId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -289,10 +322,14 @@ CREATE TABLE IF NOT EXISTS `Form` (
 --
 
 CREATE TABLE IF NOT EXISTS `FullPageOptions` (
-  `fullPageId` int(10) NOT NULL AUTO_INCREMENT,
+  `fullPageId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
+  `widgetId` int(11) DEFAULT '1',
   `units` int(10) NOT NULL,
-  PRIMARY KEY (`fullPageId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  PRIMARY KEY (`fullPageId`),
+  KEY `FullPageOptions_widget_id` (`widgetId`),
+  KEY `FullPageOptions_UserThemes_theme_id` (`userThemeId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -309,15 +346,34 @@ CREATE TABLE IF NOT EXISTS `IM` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Metric`
+--
+
+CREATE TABLE IF NOT EXISTS `Metric` (
+  `metricId` int(10) NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned NOT NULL,
+  `totalRequest` int(10) NOT NULL,
+  `totalResponse` int(10) NOT NULL,
+  PRIMARY KEY (`metricId`),
+  KEY `Metric_Company_companyId` (`companyId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ModalWindowOptions`
 --
 
 CREATE TABLE IF NOT EXISTS `ModalWindowOptions` (
-  `modalId` int(10) NOT NULL AUTO_INCREMENT,
+  `modalId` int(11) NOT NULL AUTO_INCREMENT,
+  `userThemeId` int(10) NOT NULL,
+  `widgetId` int(11) DEFAULT '2',
   `effectId` int(10) NOT NULL,
   PRIMARY KEY (`modalId`),
-  KEY `ModalWindowOption_effect_id` (`effectId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `ModalWindowOption_effect_id` (`effectId`),
+  KEY `ModalWindowOptions_widget_id` (`widgetId`),
+  KEY `ModalWindowOptions_UserThemes_theme_id` (`userThemeId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -379,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `Site` (
   PRIMARY KEY (`siteId`),
   KEY `Site_Company_companyId` (`companyId`),
   KEY `Site_Form_defaultFormId` (`defaultFormId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -404,7 +460,8 @@ CREATE TABLE IF NOT EXISTS `Theme` (
   `companyId` int(10) unsigned DEFAULT NULL COMMENT 'themes may be custom, company-specific',
   `name` varchar(45) NOT NULL,
   `defaultScaleId` smallint(5) unsigned NOT NULL,
-  `interfaceSettings` blob,
+  `embeddedCSS` blob,
+  `modalCSS` blob,
   `blockPageSize` int(11) DEFAULT NULL,
   `formPageSize` int(11) DEFAULT NULL,
   PRIMARY KEY (`themeId`),
@@ -422,7 +479,9 @@ CREATE TABLE IF NOT EXISTS `User` (
   `userId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `companyId` int(10) unsigned NOT NULL,
   `username` varchar(45) NOT NULL,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
   `password` varchar(45) NOT NULL,
+  `encryptString` varchar(100) NOT NULL,
   `email` varchar(45) NOT NULL,
   `fullName` varchar(45) NOT NULL,
   `title` varchar(45) NOT NULL,
@@ -438,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   UNIQUE KEY `company_user` (`companyId`,`username`),
   KEY `User_Company_companyId` (`companyId`),
   KEY `User_IM_imId` (`imId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
@@ -448,16 +507,18 @@ CREATE TABLE IF NOT EXISTS `User` (
 
 CREATE TABLE IF NOT EXISTS `UserThemes` (
   `userThemeId` int(11) NOT NULL AUTO_INCREMENT,
+  `companyId` int(10) unsigned DEFAULT NULL,
   `siteId` int(10) unsigned NOT NULL,
   `widgetId` int(11) NOT NULL,
   `themeId` int(10) unsigned NOT NULL,
-  `optionId` int(11) NOT NULL,
+  `themeName` varchar(125) NOT NULL,
   `templatePath` varchar(125) NOT NULL,
   PRIMARY KEY (`userThemeId`),
   KEY `UserThemes_Site_site_id` (`siteId`),
   KEY `UserThemes_Theme_theme_id` (`themeId`),
-  KEY `UserThemes_Widget_widget_id` (`widgetId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `UserThemes_Widget_widget_id` (`widgetId`),
+  KEY `CompanyIdIndex` (`companyId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
@@ -492,7 +553,7 @@ ALTER TABLE `AuthItemChild`
 -- Constraints for table `Category`
 --
 ALTER TABLE `Category`
-  ADD CONSTRAINT `Category_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `Category_Company_companyId` FOREIGN KEY (`companyId`) REFERENCES `Company` (`companyId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `Company`
@@ -509,13 +570,26 @@ ALTER TABLE `Contact`
   ADD CONSTRAINT `Contact_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `EmbeddedBlockOptions`
+--
+ALTER TABLE `EmbeddedBlockOptions`
+  ADD CONSTRAINT `EmbeddedBlockOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `EmbeddedBlockOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
+
+--
 -- Constraints for table `Feedback`
 --
 ALTER TABLE `Feedback`
   ADD CONSTRAINT `Feedback_Category_categoryId` FOREIGN KEY (`categoryId`) REFERENCES `Category` (`categoryId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Feedback_Contact_contactId` FOREIGN KEY (`contactId`) REFERENCES `Contact` (`contactId`),
   ADD CONSTRAINT `Feedback_Form_formId` FOREIGN KEY (`formId`) REFERENCES `Form` (`formId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Feedback_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `FeedbackActivity`
+--
+ALTER TABLE `FeedbackActivity`
+  ADD CONSTRAINT `Feedback_FeedbackActivity_feedbackId` FOREIGN KEY (`feedbackId`) REFERENCES `Feedback` (`feedbackId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Feedback_FeedbackActivity_userId` FOREIGN KEY (`userId`) REFERENCES `User` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `Form`
@@ -525,6 +599,26 @@ ALTER TABLE `Form`
   ADD CONSTRAINT `Form_Scale_scaleId` FOREIGN KEY (`scaleId`) REFERENCES `Scale` (`scaleId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Form_Site_siteId` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Form_Theme_themeId` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `FullPageOptions`
+--
+ALTER TABLE `FullPageOptions`
+  ADD CONSTRAINT `FullPageOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FullPageOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
+
+--
+-- Constraints for table `Metric`
+--
+ALTER TABLE `Metric`
+  ADD CONSTRAINT `Metric_Company_companyId` FOREIGN KEY (`companyId`) REFERENCES `Company` (`companyId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `ModalWindowOptions`
+--
+ALTER TABLE `ModalWindowOptions`
+  ADD CONSTRAINT `ModalWindowOptions_UserThemes_theme_id` FOREIGN KEY (`userThemeId`) REFERENCES `UserThemes` (`userThemeId`) ON DELETE CASCADE,
+  ADD CONSTRAINT `ModalWindowOptions_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
 
 --
 -- Constraints for table `Site`
@@ -551,6 +645,7 @@ ALTER TABLE `User`
 -- Constraints for table `UserThemes`
 --
 ALTER TABLE `UserThemes`
-  ADD CONSTRAINT `UserThemes_Widget_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`),
   ADD CONSTRAINT `UserThemes_Site_site_id` FOREIGN KEY (`siteId`) REFERENCES `Site` (`siteId`),
-  ADD CONSTRAINT `UserThemes_Theme_theme_id` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`);
+  ADD CONSTRAINT `UserThemes_Theme_theme_id` FOREIGN KEY (`themeId`) REFERENCES `Theme` (`themeId`),
+  ADD CONSTRAINT `UserThemes_Widget_widget_id` FOREIGN KEY (`widgetId`) REFERENCES `Widget` (`widgetId`);
+SET FOREIGN_KEY_CHECKS=1;
