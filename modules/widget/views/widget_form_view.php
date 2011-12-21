@@ -1,9 +1,3 @@
-<?php
-//TODO push this to routes...
-// GEARFISH - fb
-define('YOUR_APP_ID', '171323469605899');
-define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -90,7 +84,10 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key:   zmekq26qusj2
+  //DEV API KEY
+  api_key: zmekq26qusj2
+  //PROD API KEY
+  //api_key: 1b773lzkdw3f
   authorize: true
 </script>
 
@@ -105,7 +102,7 @@ define('YOUR_APP_SECRET', 'b60766ccb12c32c92029a773f7716be8');
 <div id="fb-root"></div>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-  FB.init({appId: '<?php echo YOUR_APP_ID ?>', status: true,
+  FB.init({appId: '<?=$fb_app_id?>', status: true,
 		   cookie: false, xfbml: true});
   FB.Event.subscribe('auth.login', function(response) {
 	FB.api('/me', function(user) {

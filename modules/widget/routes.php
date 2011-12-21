@@ -7,6 +7,13 @@ return array(
     },
 
     'GET /widget/form' => function() {
+
+        $gearfish_fb_id = '171323469605899';
+        $gearfish_fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+
+        $prod_fb_id = '259670914062599';
+        $prod_fb_secret = '8e0666032461a99fb538e5f38ac7ef93';
+
         return View::make('widget::widget_form_view', array(
             'siteId'    => Input::get('siteId')
           , 'companyId' => Input::get('companyId') 
@@ -14,6 +21,7 @@ return array(
           , 'themeColor' => DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('name'))
           , 'country' => DB::Table('Country', 'master')->get()
           , 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', Input::get('companyId'))->first(array('name'))
+          , 'fb_app_id' => $gearfish_fb_id  
         ));
     },
 
