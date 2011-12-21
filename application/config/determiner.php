@@ -18,18 +18,21 @@ class Determiner {
        if($my_url[1] == 'gearfish') {
            $obj->host = 'http://'.$subdomain.'.gearfish.com';
            $obj->db   = 'localhost';
+           $obj->deploy_env = 'http://dev.gearfish.com';
            return $obj;
        }
 
        if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
            $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = 'localhost';
+           $obj->deploy_env = 'http://dev.gearfish.com';
            return $obj;
        }
 
        if($my_url[1] == '36storiesapp') {
            $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
            $obj->db   = 'localhost';
+           $obj->deploy_env = 'http://1.36storiesapp.com';
            return $obj;
        }
 

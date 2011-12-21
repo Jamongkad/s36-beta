@@ -13,6 +13,7 @@ return array(
 	|
 	*/
     'url' => $determine->d->host,
+    'deploy_env' => $determine->d->deploy_env,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index
