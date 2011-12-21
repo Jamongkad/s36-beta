@@ -52,7 +52,7 @@ return array(
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
-        $key = Config::get('application.key');
+        $key = Config::get('application.name');
         
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  

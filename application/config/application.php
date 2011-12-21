@@ -114,5 +114,4 @@ return array(
 	*/
 
 	'key' => '76wbf0w8c08ws1nbo9gbgyxn3iwfy0xg',
-
 );
