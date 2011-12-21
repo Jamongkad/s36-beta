@@ -14,7 +14,7 @@ return array(
 	*/
     'url' => $determine->d->host,
     'deploy_env' => $determine->d->deploy_env,
-    'env_name' => $determiner->d->env_name,
+    'env_name' => $determine->d->env_name,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index
