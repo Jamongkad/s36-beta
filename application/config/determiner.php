@@ -19,6 +19,7 @@ class Determiner {
            $obj->host = 'http://'.$subdomain.'.gearfish.com';
            $obj->db   = 'localhost';
            $obj->deploy_env = 'http://dev.gearfish.com';
+           $obj->env_name = 'dev';
            return $obj;
        }
 
@@ -26,6 +27,7 @@ class Determiner {
            $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = 'localhost';
            $obj->deploy_env = 'http://dev.gearfish.com';
+           $obj->env_name = 'local';
            return $obj;
        }
 
@@ -33,6 +35,7 @@ class Determiner {
            $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
            $obj->db   = 'localhost';
            $obj->deploy_env = 'http://1.36storiesapp.com';
+           $obj->env_name = 'prod';
            return $obj;
        }
 
