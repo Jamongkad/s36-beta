@@ -84,9 +84,11 @@
                         <tr height="20">
                         	<td colspan="3"></td>
                         </tr>
+                        <!--
                         <tr>
                         	<td colspan="3"><a href="#" style="color:#6e8cca;">No - I am not interested, do not ever mail me again.</a></td>
                         </tr>
+                        -->
                         <tr height="20">
                         	<td colspan="3"></td>
                         </tr>
