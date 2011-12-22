@@ -20,15 +20,18 @@ class DBAccount extends S36DataObject {
         $email = $this->escape("ryanchua6@gmail.com");
         $encrypt_string = $this->escape($encrypt->encrypt($email."|".$password));
         $company = $this->escape("ryan");
+        $fullName = $this->escape("Mathew Wong");
+        $site = $this->escape("www.mathewklan.com");
+        $site_name = $this->escape("mathewklan");
 
         $this->dbh->beginTransaction();
         $this->dbh->query('INSERT INTO Company (`name`, `planid`) VALUES("'.$company.'", 1)');
         $this->dbh->query('SET @company_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO Metric (`companyId`, `totalRequest`, `totalResponse`) VALUES(@company_id, 0, 0)'); 
-        $this->dbh->query('INSERT INTO Site (`companyId`, `domain`, `name`, `defaultFormId`) VALUES(@company_id, "www.mathewklan.com", "mathewklan", 1)');          
+        $this->dbh->query('INSERT INTO Site (`companyId`, `domain`, `name`, `defaultFormId`) VALUES(@company_id, "'.$site.'", "'.$site_name.'", 1)');          
         $this->dbh->query('SET @site_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO User (`companyId`, `username`, `confirmed`, `password`, `encryptString`, `email`, `fullName`, `title`, `imId`)  
-                           VALUES (@company_id, "mathew", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "Mathew Wong", "CEO", 1)');
+                           VALUES (@company_id, "mathew", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
         $this->dbh->query('SET @user_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO AuthAssignment (`itemname`, `userid`) VALUES ("Admin", @user_id)');
         $this->dbh->query('INSERT INTO FeedbackBlock (`siteId`, `themeId`, `formId`) VALUES(@site_id, 1, 1)');
