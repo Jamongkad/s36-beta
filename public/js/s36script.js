@@ -858,7 +858,7 @@ function cycle_next(){
     }
     
     if(cur_step == "step_6"){
-        $('#next').html("Close");
+        $('#next').hide();
         send_form_data();	
         console.log("move to 6");	
         return 6;			
