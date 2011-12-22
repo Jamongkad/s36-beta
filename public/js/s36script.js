@@ -551,6 +551,11 @@ function edit_feedback(){
 		var feedback = $('#review-feedback');
 		var textform = '<textarea class="regular-textarea" id="edited-textarea">'+feedback.html()+'</textarea>';
 		feedback.html(textform);
+        $('#edited-textarea').focus(function(){
+            $(this).blur(function(){
+                save_edited_feedback();
+            });
+        });
 	}
 /*
 Function when save link is clicked on the preview page
