@@ -302,11 +302,16 @@ function fb_connect_success(obj){
 		if(obj.location != undefined){
 
 			if(obj.location.name != undefined){
-			var loc = obj.location.name;
-			var location = loc.split(","); 
-	
-			$('#your_city').val( $.trim(location[0]) );
-			$('#your_country').val( $.trim(location[1]) );
+                var loc = obj.location.name;
+                var location = loc.split(","); 
+        
+                $('#your_city').val( $.trim(location[0]) );
+			
+                $('#your_country option').each(function(){
+                    if($.trim(location[1]) == $(this).text()){
+                        $(this).selected(true);
+                    }
+                });
 			}
 	
 		}

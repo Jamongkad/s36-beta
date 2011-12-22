@@ -85,9 +85,9 @@
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   //DEV API KEY
-  api_key: zmekq26qusj2
+  //api_key: zmekq26qusj2
   //PROD API KEY
-  //api_key: 1b773lzkdw3f
+  api_key: 1b773lzkdw3f
   authorize: true
 </script>
 
