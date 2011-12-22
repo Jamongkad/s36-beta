@@ -267,11 +267,13 @@
                         	We only use Facebook Connect to retrieve and attach your profile information. We do not post updates on your wall without your permission. <em>We hate that</em>.
                         </div>
                     </div>
+                    <!--
                     <div class="s36_block gray" style="margin-top:15px;">
                         <div class="company">
                         	<?=$company_name->name?> uses 36Stories - a feedback company to help process your feedback
                         </div>
                     </div>
+                    -->
                 </div>
             </div> 
             <!--End of Step 3-->
