@@ -382,7 +382,7 @@ div.undo-bar {
     margin:2px 5px;
 }
 
-a.undo {
+a.undo, a.close-checky {
     color: #0000CC;
     font-size: 0.9em;
 }
