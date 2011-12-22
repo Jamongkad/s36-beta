@@ -52,10 +52,10 @@ return array(
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
-        $key = Config::get('application.name');
+        $key = Config::get('application.key');
         
         //decrypt string use username and password to authenticate into application. 
-        if(S36Auth::login($params[0], $params[1])) {  
+        if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
             $status = 'publish';
