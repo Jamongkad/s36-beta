@@ -56,6 +56,8 @@ return array(
         
         //decrypt string use username and password to authenticate into application. 
         print_r($params);
+        S36Auth::login($params[0], $params[1]);
+        Helpers::show_data(S36Auth::user());
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
