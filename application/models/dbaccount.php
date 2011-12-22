@@ -16,9 +16,9 @@ class DBAccount extends S36DataObject {
         $encrypt = new Crypter;
         $password_string = "p455w0rd";
 
-        $password = $this->escape(crypt($password_string));
+        $password = crypt($password_string);
         $email = $this->escape("ryanchua6@gmail.com");
-        $encrypt_string = $this->escape($encrypt->encrypt($email."|".$password));
+        $encrypt_string = $encrypt->encrypt($email."|".$password_string);
         $company = $this->escape("ryan");
         $fullName = $this->escape("Mathew Wong");
         $site = $this->escape("www.mathewklan.com");

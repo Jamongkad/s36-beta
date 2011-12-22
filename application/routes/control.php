@@ -12,14 +12,17 @@ return array(
         $password_string = "p455w0rd";
         $password = crypt($password_string);
 
-        $names = array("leica", "mathew", "budi", "ryan", "nicholas");
-        foreach($names as $name) { 
-            DB::table("User", "master")->where('username', '=', $name)
+        //$names = array("leica", "mathew", "budi", "ryan", "nicholas");
+        $names = array('ryan');
+        $email = 'ryanchua6@gmail.com';
+        //foreach($names as $name) { 
+            DB::table("User", "master")//->where('username', '=', $name)
+                                       ->where('email', '=', $email)
                                        ->update(Array(
                                           'password' => $password
-                                        , 'encryptString' => $encrypt->encrypt($name."|".$password_string)
+                                        , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
                                        ));
-        }
+        //}
 
 
     },
