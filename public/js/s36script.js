@@ -312,6 +312,7 @@ function fb_connect_success(obj){
                         $(this).selected(true);
                     }
                 });
+                console.log(loc);
 			}
 	
 		}

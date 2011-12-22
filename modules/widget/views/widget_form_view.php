@@ -85,9 +85,13 @@
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   //DEV API KEY
-  //api_key: zmekq26qusj2
+  <?if($env == 'dev'):?>
+      api_key: zmekq26qusj2
+  <?endif?>
   //PROD API KEY
-  api_key: 1b773lzkdw3f
+  <?if($env == 'prod'):?>
+      api_key: 1b773lzkdw3f
+  <?endif?>
   authorize: true
 </script>
 
@@ -287,12 +291,16 @@
                         <tr><td colspan="2"><input type="text" id="your_email" class="regular-text required long" title="Email Address" value="" /></td></tr>
                     </table>
                     <table id="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
-                    	<tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td><select id="your_country" class="regular-select required" title="Country"><option>Country</option>
+                    	<tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
+                        
+                            <select id="your_country" class="regular-select required" title="Country">
+                            <option>Country</option>
                                     <?foreach($country as $countries):?>
                                         <option value="<?=$countries->code?>"><?=$countries->name?></option>
-                                    <?endforeach?>
-                                    
-                                </select></td></tr>
+                                    <?endforeach?>         
+                            </select>
+                            
+                            </td></tr>
                          	<tr><td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td><td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
                             <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
                             <tr bgcolor="#e6e8e8">
