@@ -125,7 +125,7 @@
     	<div id="steps">
             <!--Step 1 of Form-->	
         	<div id="step_1" class="s36_pages">
-                <h1>Share Your Feedback About Us</h1>
+                <h1>Send in your feedback</h1>
                 <div class="step-contents">
                 	<br />
                 	<h3>Rate your overall experience</h3>
