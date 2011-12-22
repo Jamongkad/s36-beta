@@ -840,8 +840,11 @@ function cycle_next(){
                     return val;
                 }
             }else{
-                console.log("move to 5 part two");
-                return 5;
+                //console.log("move to 5 part two");
+                //return 5;
+                $('#next').hide();
+                send_form_data();
+                return 6;
             }
         } else{
             return false;
