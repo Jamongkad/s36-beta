@@ -927,4 +927,21 @@ function cycle_prev(){
         }
     }//end of cycle prev
 
+// OPTION SELECT PLUGIN
+$.fn.selected = function(select) {
+    if (select == undefined) select = true;
+    return this.each(function() {
+        var t = this.type;
+        if (t == 'checkbox' || t == 'radio') {
+            this.checked = select;
+        } else if (this.tagName.toLowerCase() == 'option') {
+            var $sel = $(this).parent('select');
+            if (select && $sel[0] && $sel[0].type == 'select-one') {
+                // deselect all other options
+                $sel.find('option').selected(false);
+            }
+            this.selected = select;
+        }
+    });
+};
 // END OF 36stories Javascript
