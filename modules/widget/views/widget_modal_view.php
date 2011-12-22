@@ -177,7 +177,7 @@
     <body>
 
         <div id="popup">
-          <div class="popup-header">What some of our customers say</div>
+          <div class="popup-header">What some of our customers have to say</div>
           <div class="popup-fullview">
             <div class="fullview-slides"> 
               <?php //start of full view slides                 
