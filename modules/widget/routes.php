@@ -8,7 +8,6 @@ return array(
 
     'GET /widget/form' => function() {
 
-
         $env = Config::get('application.env_name');
         if($env == 'dev') { 
             $fb_id = '171323469605899';

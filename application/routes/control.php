@@ -13,8 +13,6 @@ return array(
         $password = crypt($password_string);
 
         $names = array("leica", "mathew", "budi", "ryan", "nicholas");
-        //$names = array('nicholas');
-
         foreach($names as $name) { 
             DB::table("User", "master")->where('username', '=', $name)
                                        ->update(Array(

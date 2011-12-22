@@ -7,6 +7,9 @@ body{
 	margin:0;padding:0;widht:100%;height:100%;
 }
 
+a{color:#5c8ac0;}
+a:hover{color:#6896cb;}
+
 #s36_main{
 	width:447px;
 	height:590px;

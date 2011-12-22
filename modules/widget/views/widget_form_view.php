@@ -244,17 +244,19 @@
                 	<p>Thank your for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <br />
                     <div class="s36_block s36_align_center">
+                        <?=HTML::image('img/facebook-blank-avatar.jpg', Array('style' => 'margin-bottom:10px;'))?><br/>
                         <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
                         <br />
                         <br />
+                        <style>
+							.IN-widget{vertical-align:bottom !important;}
+						</style>
+                       	<span style="padding-right:3px;">If not.. </span>
+                        <br /><br />
                         <script type="IN/Login" data-onAuth="loadData">
 							Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
-                        </script>
-                        <br />
-                        <br />
-                        <a href="javascript:;" id="create_wo_facebook">
-                        <?=HTML::image('img/36stories-btn.png')?>
-                        </a>
+                        </script> 
+                        <span style=""> ... or <a href="javascript:;" id="create_wo_facebook">fill out your profile manually</a></span>
                     </div>
                     <br />
                     <div class="s36_block gray">
