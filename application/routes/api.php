@@ -55,6 +55,7 @@ return array(
         $key = Config::get('application.name');
         
         //decrypt string use username and password to authenticate into application. 
+        print_r("Mathew");
         if($key != null && S36Auth::login($params[0], $params[1])) {  
             /*
             $user = new DBUser; 
@@ -87,7 +88,7 @@ return array(
             //After publishing feedback logout...
             */
             S36Auth::logout();
-            print_r("Mathew");
+
 
             $contact = DB::Table('Contact', 'master')
                           ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
