@@ -46,7 +46,7 @@ return array(
 
     'GET /control/fetch_user/(\d+)' => function($userId) {
         $encrypt = new Crypter;
-        $user = DB::table('User', 'test')->where('userId', '=', $userId)->first();
+        $user = DB::table('User', 'master')->where('userId', '=', $userId)->first();
         $string = $encrypt->decrypt($user->encryptstring);
         $string = (object)explode("|", $string);
         print_r($string);
