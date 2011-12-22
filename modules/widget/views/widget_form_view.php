@@ -244,7 +244,7 @@
                 	<p>Thank your for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <br />
                     <div class="s36_block s36_align_center">
-                        <?=HTML::image('img/facebook-blank-avatar.jpg', Array('style' => 'margin-bottom:10px;'))?><br/>
+                        <?=HTML::image('img/facebook-blank-avatar.jpg', 'fb', Array('style' => 'margin-bottom:10px;'))?><br/>
                         <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
                         <br />
                         <br />
