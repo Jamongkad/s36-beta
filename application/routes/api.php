@@ -55,6 +55,8 @@ return array(
         $key = Config::get('application.name');
         
         //decrypt string use username and password to authenticate into application. 
+        Helpers::show_data($params);
+        /*
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
@@ -98,6 +100,7 @@ return array(
               , 'activity_check' => $activity_check
             ));       
         }
+        */
     }),
 
     'GET /api/create_user' => Array('do' => function() {     
