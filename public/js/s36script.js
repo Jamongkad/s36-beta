@@ -298,13 +298,16 @@ File upload input type styling
 Function which grabs the json response of facebook connect and assigns its values to the 36stories form.
 */
 function fb_connect_success(obj){
+         
 
 		if(obj.location != undefined){
 
 			if(obj.location.name != undefined){
                 var loc = obj.location.name;
                 var location = loc.split(","); 
-        
+
+                console.log($.trim(location[0]));
+
                 $('#your_city').val( $.trim(location[0]) );
 			
                 $('#your_country option').each(function(){
