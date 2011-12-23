@@ -130,7 +130,7 @@
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
                             <?endif?>
                             <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
-                            <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
+                            <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
 
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_feature == 0) :?>

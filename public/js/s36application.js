@@ -30,6 +30,21 @@ jQuery(function($) {
         e.preventDefault();
     });
 
+    $('.reply').bind("click", function(e) {     
+        var href = $(this).attr('hrefaction');
+        window.location = href;
+        e.preventDefault();
+    })
+
+    $('.add-bcc > li').bind("click", function(e) {
+        console.log($(this).text());
+        //$('textarea[name="bcc"]').append($.trim($(this).text()));
+        var input = $("<input type='text' name='bcc[]' value=''/>'");
+        input.val( $(this).text() );
+        console.log(input);
+        $("#bcc-target").append(input);
+    });
+
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
     

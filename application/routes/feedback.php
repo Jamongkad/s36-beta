@@ -211,7 +211,16 @@ return array(
         return Redirect::to('inbox/deleted'); 
     },
 
+    'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) { 
+        return View::of_layout()->partial('contents', 'feedback/reply_to_view');
+    }),
+
+    'POST /feedback/reply_to' => Array('do' => function() { 
+        Helpers::show_data(Input::get());
+    }),
+
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
+        //TODO: too much logic
         $data = (object)Input::get();
         $auth = new S36Auth;
 

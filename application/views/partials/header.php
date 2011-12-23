@@ -204,6 +204,12 @@
                         SETTINGS
                     </div>
                 <?endif?>
+
+                <?if(preg_match_all('/reply_to/', Request::uri(), $matches)):?>
+                    <div class="current-page contacts"> 
+                        REPLY TO
+                    </div>
+                <?endif?>
             </div>
             <!-- end of gray status bar -->
             <?if(Request::route_is('inbox') 
