@@ -211,10 +211,12 @@ return array(
         return Redirect::to('inbox/deleted'); 
     },
 
-    'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) { 
+    'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
         $user = S36Auth::user();
+         
         return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
             'user' => $user 
+          , 'feedback' => $feedback->pull_feedback_by_id($id)
         ));
     }),
 
