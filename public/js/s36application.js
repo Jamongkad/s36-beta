@@ -35,15 +35,17 @@ jQuery(function($) {
         window.location = href;
         e.preventDefault();
     })
-
+    
     $('.add-bcc > li').bind("click", function(e) {
-        console.log($(this).text());
-        //$('textarea[name="bcc"]').append($.trim($(this).text()));
-        var input = $("<input type='text' name='bcc[]' value=''/>'");
-        input.val( $(this).text() );
-        console.log(input);
+        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' href='#'>[x]</a>";
         $("#bcc-target").append(input);
-    });
+        $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
+            $(this).prev('input').remove().end().remove();
+            e.preventDefault();
+        })
+
+        e.preventDefault();
+    })
 
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
@@ -68,6 +70,7 @@ jQuery(function($) {
     })
 
     $('.contact').bind('click', function(e) { 
+
         var id = $(this).attr('id');
         $('#' + id + ' div.fast-forward-holder').show().hover(function() { 
             $('div.email-list > ul.email-picker li', this)

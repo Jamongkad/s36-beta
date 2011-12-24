@@ -33,11 +33,15 @@
             </td>
             <td>
                 <ul class="no-list-style add-bcc">
-                    <li>danolivercalpatura@yahoo.com</li>
-                    <li>danolivercalpatura@yahoo.com</li>
-                    <li>danolivercalpatura@yahoo.com</li>
-                    <li>danolivercalpatura@yahoo.com</li>
-                    <li>danolivercalpatura@yahoo.com</li>     
+                    <?if($user->ffemail1):?>
+                        <li><?=$user->ffemail1?></li>
+                    <?endif?>
+                    <?if($user->ffemail2):?>
+                        <li><?=$user->ffemail2?></li>
+                    <?endif?>
+                    <?if($user->ffemail3):?>
+                        <li><?=$user->ffemail3?></li>
+                    <?endif?>
                 </ul>
             </td>
             <td class="small" valign="top"></td>

@@ -212,7 +212,10 @@ return array(
     },
 
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) { 
-        return View::of_layout()->partial('contents', 'feedback/reply_to_view');
+        $user = S36Auth::user();
+        return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
+            'user' => $user 
+        ));
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() { 

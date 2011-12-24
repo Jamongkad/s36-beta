@@ -489,3 +489,7 @@ a.contact-link {
     font-size: 1.1em;
     text-decoration: underline;
 }
+
+.add-bcc > li {
+    cursor: pointer    
+}
