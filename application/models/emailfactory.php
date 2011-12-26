@@ -1,6 +1,6 @@
 <?php
 
-use \config;
+use System\config;
 
 //TODO: Refactor
 class EmailFactory {
