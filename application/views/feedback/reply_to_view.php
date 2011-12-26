@@ -70,8 +70,9 @@
         <tr><td colspan="3"></td></tr>                                         
         <tr>
             <td></td>
-            <td><input type="submit" href="#" value="Send" class="gray-btn rounder form-button" />
-            <input type="submit" href="#" value="Cancel" class="gray-btn rounder form-button" />
+            <td>
+                <input type="submit" value="Send" class="gray-btn rounder form-button" />
+                <input type="submit" value="Cancel" class="gray-btn rounder form-button" />
             </td>
             <td></td>
         </tr>

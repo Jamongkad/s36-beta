@@ -132,6 +132,7 @@ class RequestFeedback extends EmailFixture {
             'email_data' => $this->email_data
           , 'address' => $this->address
           , 'message' => $this->message
+          , 'deploy_env' => config::get('application.deploy_env')
         ));     
     }
 
