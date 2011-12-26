@@ -1,4 +1,7 @@
 <?php
+
+use config;
+
 //TODO: Refactor
 class EmailFactory {
 
