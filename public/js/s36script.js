@@ -965,5 +965,7 @@ function login_type() {
     if(fb) {
         return "fb";
     }
+
+    return "36";
 }
 // END OF 36stories Javascript
