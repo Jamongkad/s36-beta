@@ -38,18 +38,21 @@ jQuery(function($) {
     
     var seen = {};
     $('.add-bcc > li').bind("click", function(e) {
-        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' href='#'>[x]</a>";       
+        var pointer = $(this).index();
+        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
 
-
-        $("#bcc-target").append(input);
+        if(typeof seen[pointer] == 'undefined') {  
+           $("#bcc-target").append(input);
+           seen[pointer] = true;
+        }         
+        
         $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
+            var del_pointer = $(this).attr('id');
             $(this).prev('input').remove().end().remove();
+            delete seen[del_pointer];
             e.preventDefault();
         })
-
-        seen[input] = input;
-        console.log(seen);
-
+        
         e.preventDefault();
     })
 
