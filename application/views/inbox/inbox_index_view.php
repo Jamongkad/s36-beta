@@ -159,14 +159,14 @@
                                         <?=HTML::image('img/small-fb-icon.png')?>
                                         verified
                                     </span>
-                                <?endif>
+                                <?endif?>
 
                                 <?if($feed->logintype == 'ln'):?>
                                     <span class="author-social in"> 
                                         <?=HTML::image('img/small-in-icon.png')?>
                                         verified
                                     </span>
-                                <?endif>
+                                <?endif?>
 
                                 <?if($feed->rating != "POOR"):?>
                                     <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
