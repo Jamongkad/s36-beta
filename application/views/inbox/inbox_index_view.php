@@ -153,6 +153,21 @@
                         <div class="author-info">
                             <h3>
                                 <?=$feed->firstname?> <?=$feed->lastname?>
+
+                                <?if($feed->logintype == 'fb'):?>
+                                    <span class="author-social fb"> 
+                                        <?=HTML::image('img/small-fb-icon.png')?>
+                                        verified
+                                    </span>
+                                <?endif>
+
+                                <?if($feed->logintype == 'ln'):?>
+                                    <span class="author-social in"> 
+                                        <?=HTML::image('img/small-in-icon.png')?>
+                                        verified
+                                    </span>
+                                <?endif>
+
                                 <?if($feed->rating != "POOR"):?>
                                     <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
                                 <?endif?>

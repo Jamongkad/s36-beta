@@ -106,6 +106,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
                 , Contact.avatar AS avatar
+                , Contact.loginType
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , Site.siteId AS siteid
@@ -235,6 +236,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.city AS city
                 , Contact.companyName AS companyname
                 , Contact.avatar AS avatar
+                , Contact.loginType
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , LENGTH(text) AS textlength
@@ -319,6 +321,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.city AS city
                 , Contact.companyName AS companyname
                 , Contact.avatar AS avatar
+                , Contact.loginType
                 , Site.siteId
                 , Feedback.text
                 , Feedback.dtAdded AS date
