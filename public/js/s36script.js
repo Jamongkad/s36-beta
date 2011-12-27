@@ -648,6 +648,7 @@ function send_form_data(){
 			last_name:  	$('#your_lname').val(),
 			email: 			$('#your_email').val(),
             response_flag:  $('#response_flag').val(),
+            login_type:     login_type(),
 			country: 		country,
 			city: 			city,
 			position: 		position,
@@ -952,4 +953,17 @@ $.fn.selected = function(select) {
         }
     });
 };
+
+function login_type() {
+    var ln = $("#ln_flag");
+    var fb = $("#fb_flag");
+
+    if(ln) {
+        return "ln";
+    }
+
+    if(fb) {
+        return "fb";
+    }
+}
 // END OF 36stories Javascript
