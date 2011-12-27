@@ -33,6 +33,7 @@ class AddFeedback {
           , 'companyName' => Input::get('company')
           , 'website'   => Input::get('email')
           , 'avatar'    => Input::get('cropped_image_nm')
+          , 'loginType' => Input::get('login_type')
         );
 
         $contact_id = $ct->insert_new_contact($contact_data);
