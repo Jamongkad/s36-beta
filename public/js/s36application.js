@@ -47,7 +47,7 @@ jQuery(function($) {
             e.preventDefault();
         })
 
-        seen[input];
+        seen[input] = input;
         console.log(seen);
 
         e.preventDefault();
