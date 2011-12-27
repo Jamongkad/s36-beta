@@ -38,7 +38,10 @@ jQuery(function($) {
     
     $('.add-bcc > li').bind("click", function(e) {
         var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' href='#'>[x]</a>";
+        e.stopPropagation();
+    
         $("#bcc-target").append(input);
+
         $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
             $(this).prev('input').remove().end().remove();
             e.preventDefault();
