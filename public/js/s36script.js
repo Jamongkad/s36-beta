@@ -958,11 +958,11 @@ function login_type() {
     var ln = $("#ln_flag");
     var fb = $("#fb_flag");
 
-    if(ln) {
+    if(ln.val() == 1) {
         return "ln";
     }
 
-    if(fb) {
+    if(fb.val() == 1) {
         return "fb";
     }
 
