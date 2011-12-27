@@ -36,16 +36,19 @@ jQuery(function($) {
         e.preventDefault();
     })
     
+    var seen = {};
     $('.add-bcc > li').bind("click", function(e) {
-        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' href='#'>[x]</a>";
-        e.stopPropagation();
-    
-        $("#bcc-target").append(input);
+        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' href='#'>[x]</a>";       
 
+
+        $("#bcc-target").append(input);
         $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
             $(this).prev('input').remove().end().remove();
             e.preventDefault();
         })
+
+        seen[input];
+        console.log(seen);
 
         e.preventDefault();
     })
