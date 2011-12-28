@@ -220,8 +220,18 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() { 
-        Helpers::show_data(Input::get());
-        return View::make('email/replyto_view');
+        $data = Input::get();
+
+        $message = View::make('email/replyto_view');
+
+        $bcc = null;
+
+        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", $data['replyto']);
+        $postmark->to($data['emailto'])
+                 ->bcc($bcc)
+                 ->subject($data['emailto'])
+                 ->html_message($message)
+                 ->send();
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
