@@ -225,6 +225,10 @@ return array(
         $message = View::make('email/replyto_view');
 
         $bcc = null;
+        
+        if($data['bcc'][0] == true) {
+            $bcc = implode(",", $data['bcc']);
+        }        
 
         $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", $data['replyto']);
         $postmark->to($data['emailto'])
@@ -232,6 +236,7 @@ return array(
                  ->subject($data['subject'])
                  ->html_message($message)
                  ->send();
+
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
