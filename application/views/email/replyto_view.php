@@ -36,27 +36,27 @@
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">You're invited to join our feedback management system.</h1>
                            
-                        		Hi <strong><?=$message->name?></strong>,
+                        		Hi <strong></strong>,
 								<br /><br />
-								<strong><?=$message->account_owner?></strong> just setup an account for you.
+								<strong></strong> just setup an account for you.
                         		<br /><br />
                                 <div style="padding:20px;background:#f4f4f4;">
                             	All you need to do is to choose a username and password.
                                 It takes only a few seconds.
                                 <br /><br />
                                 Click this 
-                                <a href="<?=URL::to("api/create_user?params=".rawurlencode($message->user->encryptstring)."&company_id=".$message->user->companyid)?>" >
+                                <a href="" >
                                     <span style="vertical-align: middle">link</span>
                                 </a> 
                                 to get started.
 
-                                <?if($message->message):?>
-                                    <br /><br />
-                                    <div><?=$message->account_owner?> also says:</div>
-                                    "<?=$message->message?>"
-                                <?endif?>
+
+
+
+                                "mathew"
+
                                 <br /><br />
-                                <strong>Have questions?</strong> Contact <?=$message->account_owner?> - your account administrator at <?=$message->publisher?>
+
                             </td>
                         </tr>
                         <tr height="80">
@@ -93,7 +93,7 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for <?=$user?>.  <br />
+            This message was intended for .  <br />
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
        </td>
