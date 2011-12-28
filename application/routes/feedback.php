@@ -221,6 +221,7 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() { 
         Helpers::show_data(Input::get());
+        return View::make('email/reply_to_view');
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
