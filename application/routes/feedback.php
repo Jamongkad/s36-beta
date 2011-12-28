@@ -229,7 +229,7 @@ return array(
         $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", $data['replyto']);
         $postmark->to($data['emailto'])
                  ->bcc($bcc)
-                 ->subject($data['emailto'])
+                 ->subject($data['subject'])
                  ->html_message($message)
                  ->send();
     }),
