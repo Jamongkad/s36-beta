@@ -78,7 +78,7 @@ return array(
 
     'GET /tests/test_bcc' => function() {
 
-        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
+        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", "mathew@dickosaurus");
         Helpers::show_data($postmark->to("wrm932@gmail.com, klemengkid@gmail.com")
                  //->bcc("ryanchua6@gmail.com, wrm932@gmail.com, mathew@36stories.com") 
                  //->bcc("")
