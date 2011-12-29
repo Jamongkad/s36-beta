@@ -213,27 +213,33 @@ return array(
 
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
         $user = S36Auth::user();         
+        $feedback_data = $feedback->pull_feedback_by_id($id);
+
         return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
             'user' => $user 
-          , 'feedback' => $feedback->pull_feedback_by_id($id)
+          , 'feedback' => $feedback_data 
+          , 'feedid' => $id
         ));
     }),
 
-    'POST /feedback/reply_to' => Array('do' => function() { 
+    'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         $data = Input::get();
+        $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
 
-        $message = View::make('email/replyto_view');
-
-        $bcc = null;
+        $message = View::make('email/replyto_view', Array(
+            'message' => $data['message']
+          , 'sender' => ucfirst($data['username'])
+          , 'submission_date' => $feedback_data->date
+          , 'emailto' => $data['emailto']
+          , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $feedback_data))
+        ));
         
-        if($data['bcc'][0] == true) {
-            $bcc = implode(",", $data['bcc']);
-        }        
+        $bcc = ($data['bcc'][0] == true) ? implode(",", $data['bcc']) : null;
 
         $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", $data['replyto']);
         $postmark->to($data['emailto'])
                  ->bcc($bcc)
-                 ->subject($data['subject'])
+                 ->subject("36Stories | ".$data['subject'])
                  ->html_message($message)
                  ->send();
 

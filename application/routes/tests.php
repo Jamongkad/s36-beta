@@ -16,11 +16,11 @@ return array(
 
         $factory = new EmailFactory($vo);
         $factory->addresses = $user->pull_user_emails_by_company_id(1);
-        $factory->feedback = $feedback->pull_feedback_by_id(122);
+        $factory->feedback = $feedback->pull_feedback_by_id(40);
  
         $email_pages = $factory->execute();
        
-        //Helpers::show_data($email_pages[1]);
+        //Helpers::show_data($email_pages[1]->get_subject());
         return $email_pages[1]->get_message();
     },
 
@@ -34,7 +34,7 @@ return array(
  
         $factory = new EmailFactory($vo);
         $factory->addresses = $user->pull_user_emails_by_company_id(1);
-        $factory->feedback = $feedback->pull_feedback_by_id(66);
+        $factory->feedback = $feedback->pull_feedback_by_id(40);
         $email_page = $factory->execute();
          
         return $email_page[1]->get_message();
@@ -144,5 +144,11 @@ return array(
         //$insert = $fb->insert_new_activity();
         //$update = $fb->update_activity_status();
         Helpers::show_data($result);
+    },
+
+    'GET /tests/test_truncate' => function() {       
+        $feedback = new DBFeedback;
+        $data = $feedback->pull_feedback_by_id(40);
+        Helpers::show_data(Helpers::limit_string($data->text));
     }
 );

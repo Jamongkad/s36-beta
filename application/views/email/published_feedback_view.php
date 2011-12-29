@@ -44,18 +44,7 @@
                         <tr>
                         	<td colspan="3" style="line-height:20px;padding:10px;background:#f1f3f5;border-top:1px solid #dde0e3" bgcolor="#f1f3f5">
                             	<table>
-
-                                	<tr>
-                                    	<td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar', array('width' => '91', 'height' => '91'))?></td>
-                                        <td width="10"></td>
-                                        <td style="font-size:12px;">
-                                        	<h2 style="color:#0078aa;margin:0px;"><?=$feedback_data->firstname?> <?=$feedback_data->lastname?></h2>
-                                            <strong><?=$feedback_data->position?></strong><br />
-                                            <?=$feedback_data->companyname?><br />
-                                            <a href="#" target="_blank"><?=$feedback_data->url?></a><br />
-                                            <?=$feedback_data->city?> 
-                                        </td>
-                                    </tr>
+                                    <?=$profile_partial_view?>
                                     <tr height="30">
                                     	<td colspan="4"></td>
                                     </tr>

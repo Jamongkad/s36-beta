@@ -93,4 +93,14 @@ class Helpers {
         print_r($data);
         echo "</pre>";
     }
+
+
+    public static function limit_string($string, $limit = 100) {
+        // Return early if the string is already shorter than the limit
+        if(strlen($string) < $limit) {return $string;}
+
+        $regex = "/(.{1,$limit})\b/";
+        preg_match($regex, $string, $matches);
+        return $matches[1]."...";
+    }
 }

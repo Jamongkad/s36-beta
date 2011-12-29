@@ -28,41 +28,28 @@
                         </tr>
                         <tr height="20">
                         	<td colspan="3"></td>
-                        </tr>
-                        
+                        </tr>                        
                         <!-- end of header -->
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">You're invited to join our feedback management system.</h1>
-                           
-                        		Hi <strong></strong>,
-								<br /><br />
-								<strong></strong> just setup an account for you.
-                        		<br /><br />
-                                <div style="padding:20px;background:#f4f4f4;">
-                            	All you need to do is to choose a username and password.
-                                It takes only a few seconds.
-                                <br /><br />
-                                Click this 
-                                <a href="" >
-                                    <span style="vertical-align: middle">link</span>
-                                </a> 
-                                to get started.
-
-
-
-
-                                "mathew"
-
-                                <br /><br />
-
+                            	<h4 style="line-height:normal"><?=$sender?> has read your feedback and wants to get into contact with you.</h4>  
+                                <div style="padding:10px;background:#f4f4f4;">
+                                    <?=$sender?> says,<br/>
+                                    "<?=$message?>"
+                                </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="3">
+                                <br/><br/>
+                                <h5 style="line-height:normal">Your feedback submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
+                            </td>
+                        </tr>
+                        <?=$profile_partial_view?>
                         <tr height="80">
                         	<td colspan="3"></td>
-                        </tr>
-                        
+                        </tr> 
                         <!-- end of contents -->
                         
                         <!-- sig -->
@@ -93,7 +80,7 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for .  <br />
+            This message was intended for <?=$emailto?>.  <br />
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
        </td>

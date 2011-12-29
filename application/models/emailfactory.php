@@ -21,7 +21,7 @@ class EmailFactory {
          
         foreach($this->addresses as $address) {
             if($this->get_type == 'NewFeedbackSubmissionData') {
-                $collection[] = new NewFeedbackSubmission($address, $this->feedback, "36Stories: New Feedback Notification");     
+                $collection[] = new NewFeedbackSubmission($address, $this->feedback, "36Stories |");     
             } 
 
             if($this->get_type == 'PublishedFeedbackNotificationData') {
@@ -79,11 +79,12 @@ class NewFeedbackSubmission extends EmailFixture {
                 'feedback_data' => $this->feedback_data
               , 'address' => $this->address
               , 'user'    => $this->user_account
+              , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $this->feedback_data))
         ));     
     }
 
     public function get_subject() {
-        return $this->subject;     
+        return $this->subject." ".Helpers::limit_string($this->feedback_data->text);
     }
 }
 
@@ -108,6 +109,7 @@ class PublishedFeedbackNotification extends EmailFixture {
               , 'address' => $this->address
               , 'user'    => $this->user_account
               , 'publisher_email' => $this->publisher_email
+              , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $this->feedback_data))
         ));     
     }
 

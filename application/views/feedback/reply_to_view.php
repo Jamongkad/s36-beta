@@ -1,6 +1,8 @@
 <?=Form::open('/feedback/reply_to')?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
+<?=Form::hidden('feedbackid', $feedid)?>
+<?=Form::hidden('username', $user->username)?>
 <div class="block">
     <table cellpadding="5" width="100%">
         <!--
