@@ -243,6 +243,7 @@ return array(
                  ->html_message($message)
                  ->send();
 
+        return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
