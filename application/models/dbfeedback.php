@@ -39,7 +39,6 @@ class DBFeedback extends S36DataObject {
                 }
 
                 if($opts['filter'] == 'filed' || $opts['choice'] == 'filed') {
-                    //$filed_statement = "AND Feedback.categoryId != 1";
                     $filed_statement = 'AND Category.intName != "default"'; 
                 }
 

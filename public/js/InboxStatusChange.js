@@ -198,9 +198,11 @@ InboxStatusChange.prototype.initialize = function() {
         }
 
         if(identifier == 'cat-picks') {
-            var catpick = new CatPickObject(us);
-            catpick.process();
-            catpick.undo();
+            //var catpick = new CatPickObject(us);
+            console.log("From InboxStatusChange");
+            console.log(us);
+            //catpick.process();
+            //catpick.undo();
         }
     })   
 }

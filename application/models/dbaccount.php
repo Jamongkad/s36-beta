@@ -38,7 +38,8 @@ class DBAccount extends S36DataObject {
         $this->dbh->query('INSERT INTO Form (`siteId`, `themeId`, `scaleId`) VALUES(@site_id, 1, 2)');
         $this->dbh->query('INSERT INTO Category (`companyId`, `intName`, `name`, `changeable`) 
                            VALUES
-                              (@company_id, "default", "General", 0)
+                              (@company_id, "default", "Inbox", 0) 
+                            , (@company_id, "general", "General", 1)
                             , (@company_id, "misc", "Miscelleanous", 1)
                             , (@company_id, "price", "Price", 1)
                             , (@company_id, "bugs", "Problems/Bugs", 1)

@@ -21,6 +21,7 @@ class DBCategory extends S36DataObject {
                     ON User.companyId = Company.companyId
             WHERE 1=1
                 AND User.userId = :user_id
+                AND Category.intName != 'default'
             ORDER BY 
                 Category.name 
         ");

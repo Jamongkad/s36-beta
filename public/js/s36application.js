@@ -16,7 +16,9 @@ jQuery(function($) {
             $(this).addClass('Matched');
         }
         
-        console.log($(this));
+        var catpick = new CatPickObject($(this));
+        catpick.process();
+        catpick.undo();
         /*
         //TODO: maaaaaan clean this up!
         var d = $(this).parents('.category-picker-holder')
@@ -117,7 +119,7 @@ jQuery(function($) {
     })
     //End of FastForward
 
-    new InboxStatusChange($('.check, .feature, .remove, .popup-delete, li > a.cat-picks')).initialize(); 
+    new InboxStatusChange($('.check, .feature, .remove, .popup-delete')).initialize(); 
     $('div.undo-bar').hide(); 
     $('.flag').switcharoo('-100px 0px');
        

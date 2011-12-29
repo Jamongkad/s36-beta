@@ -33,6 +33,7 @@
                         <div class="base-popup fast-forward-holder" id="<?=$id?>">
                             <div class="popup-arrow"></div>
                             <div class="email-list">
+                                <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
                                 <ul class="email-picker">
                                     <?if($admin_check->ffemail1):?>
                                         <li id="email1"> 
@@ -50,6 +51,9 @@
                                         </li>
                                     <?endif?>
                                 </ul>
+                                <?else:?>
+                                    <?=HTML::link('settings', 'Configure your fast forward settings')?> 
+                                <?endif?>
 
                                 <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
                                     <?=Form::hidden('email')?>
@@ -127,7 +131,9 @@
                                     <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
-                                <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
+                                <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important;
+                                                                                                                                     opacity:0.2; filter:alpha(opacity=40)
+                                                                                                                                    "/>
                             <?endif?>
                             <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
                             <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
@@ -135,16 +141,18 @@
                             <?if($feed->rating != "POOR"):?>
                                 <?if($admin_check->inbox_feature == 0) :?>
                                     <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" style="background-position: -60px 0px; !important;
-                                                                                                                        opacity:0.4; filter:alpha(opacity=40)" />
+                                                                                                                        opacity:0.2; filter:alpha(opacity=40)" />
                                 <?else:?>
                                     <input type="button" class="feature" tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
                                     <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                                 <?endif?>
                             <?else:?>
-                                <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; !important"/>
+                                <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; 
+                                                                                                                                      !important;
+                                                                                                                                      opacity:0.2; filter:alpha(opacity=40)"/>
                             <?endif?>
                             <?if($admin_check->inbox_fastforward == 0):?>
-                                <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.4; filter:alpha(opacity=40)"/> 
+                                <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.2; filter:alpha(opacity=40)"/> 
                             <?else:?>
                                 <input type="button" class="contact" id="<?=$id?>" tooltip="Fast Forward" tt_width="60"/> 
                             <?endif?>
