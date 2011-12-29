@@ -46,7 +46,13 @@
                                 <h5 style="line-height:normal">Your feedback submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
                             </td>
                         </tr>
-                        <?=$profile_partial_view?>
+                        <tr>
+                        	<td colspan="3">
+                            	<table>
+                                    <?=$profile_partial_view?>
+                                </table>
+                            </td>
+                        </tr>
                         <tr height="80">
                         	<td colspan="3"></td>
                         </tr> 
