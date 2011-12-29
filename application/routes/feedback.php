@@ -219,6 +219,8 @@ return array(
             'user' => $user 
           , 'feedback' => $feedback_data 
           , 'feedid' => $id
+          , 'errors' => Array()
+          , 'input' => Array('subject' => null, 'message' => null)
         ));
     }),
 
@@ -226,24 +228,44 @@ return array(
         $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
 
-        $message = View::make('email/replyto_view', Array(
-            'message' => $data['message']
-          , 'sender' => ucfirst($data['username'])
-          , 'submission_date' => $feedback_data->date
-          , 'emailto' => $data['emailto']
-          , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $feedback_data))
-        ));
+        $rules = Array(
+            'subject' => 'required'
+          , 'message' => 'required'
+        );
+ 
+        $validator = Validator::make($data, $rules);
         
-        $bcc = ($data['bcc'][0] == true) ? implode(",", $data['bcc']) : null;
+        if(!$validator->valid()) {
+            $user = S36Auth::user();         
+            return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
+                'user' => $user 
+              , 'feedback' => $feedback_data 
+              , 'feedid' => $data['feedbackid']
+              , 'errors' => $validator->errors
+              , 'input' => $data
+            ));
+        } else { 
+            $message = View::make('email/replyto_view', Array(
+                'message' => $data['message']
+              , 'sender' => ucfirst($data['username'])
+              , 'submission_date' => $feedback_data->date
+              , 'emailto' => $data['emailto']
+              , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $feedback_data))
+            ));
+            
+            $bcc = ($data['bcc'][0] == true) ? implode(",", $data['bcc']) : null;
 
-        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", $data['replyto']);
-        $postmark->to($data['emailto'])
-                 ->bcc($bcc)
-                 ->subject("36Stories | ".$data['subject'])
-                 ->html_message($message)
-                 ->send();
+            $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com");
+            $postmark->to($data['emailto'])
+                     ->replyto($data['replyto'])
+                     ->bcc($bcc)
+                     ->subject("36Stories | ".$data['subject'])
+                     ->html_message($message)
+                     ->send();
 
-        return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
+            return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
+        }
+        
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {

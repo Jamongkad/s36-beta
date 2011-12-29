@@ -13,6 +13,11 @@
 			$this->data["From"] = $from;
 			$this->data["ReplyTo"] = $reply;
 		}
+
+        function replyto($reply) {
+            $this->data['ReplyTo'] = $reply;
+            return $this; 
+        }
 		
 		function send(){
 			$headers = array(
