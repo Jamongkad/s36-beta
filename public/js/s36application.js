@@ -103,7 +103,7 @@ jQuery(function($) {
 
     $("body").click(function() { 
         if(!mouse_is_inside) {
-            $('div.fast-forward-holder, div.category-picker-holder, .ff-form').hide();      
+            $('div.fast-forward-holder, div.category-picker-holder, .ff-form, .checky-bar').hide();      
             $('.email-picker').show();
             $('textarea[name="email_comment"]').val("");
         } 
