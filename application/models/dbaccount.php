@@ -7,8 +7,9 @@ class DBAccount extends S36DataObject {
     public function __construct() { 
         $this->dbh = DB::connection('master')->pdo;
 
-        if(S36Auth::check())
-            $this->user_id = S36Auth::user()->userid;        
+        if (S36Auth::check()) {
+            $this->user_id = S36Auth::user()->userid;             
+        } 
     }
 
     public function create_account() {

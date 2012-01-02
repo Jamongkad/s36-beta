@@ -365,6 +365,21 @@ div.undo-bar {
     padding: 1px 4px 1px;
 }
 
+.checky-bar {
+    position: fixed; 
+    width: 450px;
+    font-size: 1.2em;
+    font-weight: bold;
+    /*background: #fef1b5;*/
+    text-align: center;
+    left: 40%;
+    top: 23%;
+    z-index: 200;
+    padding: 5px;
+    border-radius: 12px;
+    margin: 2px 5px;
+}
+
 .checky-bar > div { 
     position: fixed;    
     width: 550px;

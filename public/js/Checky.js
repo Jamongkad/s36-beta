@@ -1,72 +1,70 @@
 function Checky(opts) {
-    this.delete_selection = opts.delete_selection;
+    this.feed_selection   = opts.feed_selection;
     this.check_feed_id    = opts.check_feed_id;
-    this.contact_feed_id  = opts.contact_feed_id;
-    this.site_feed_id     = opts.site_feed_id;
     this.category_feed_id = opts.category_feed_id;
     this.click_all        = opts.click_all;
+    this.checky_bar       = opts.checky_bar;
     this.count            = 0;
 }
 
 Checky.prototype.init = function() {
     var me = this;    
    
-    $(me.delete_selection).bind('change', function(e) {
+    $(me.feed_selection).bind('change', function(e) {
         var mode        = $(this).val();
         var checkFeed   = me.check_feed_id;
-        var contactFeed = me.contact_feed_id;
-        var siteFeed    = me.site_feed_id;
         var categoryFeed = me.category_feed_id; 
         var ifChecked   = checkFeed.is(':checked');
         var currentUrl  = $(location).attr('href');
         var baseUrl     = $(this).attr('base-url');
-
+        var checkyBar   = me.checky_bar;
         var collection         = new Array();
-        var contact_collection = new Array();
-        var site_collection    = new Array();
        
-        if(ifChecked && mode != 'none') { 
+        if (ifChecked && mode != 'none') { 
 
             var conf, color, goto_url;
 
-            if(mode == 'restore' || mode == 'inbox') {
+            if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
                 color    = '#fef1b5';
                 goto_url = 'inbox/all';
             }
            
-            if(mode == 'remove') {
+            if (mode == 'remove') {
                 conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
                 color = '#fef1b5';
             }
            
-            if(mode == 'publish') {
+            if (mode == 'publish') {
                 conf     = confirm("Are you sure want to publish these feedbacks?");     
                 color    = '#66cd00';
                 goto_url = 'inbox/published/all';
             }
            
-            if(mode == 'feature') {
+            if (mode == 'feature') {
                 conf     = confirm("Are you sure want to feature these feedbacks?");     
                 color    = '#fbec5d';
                 goto_url = 'inbox/featured/all';
             }
            
-            if(mode == 'delete') {
+            if (mode == 'delete') {
                 conf     = confirm("Are you sure want to delete these feedbacks?");     
                 color    = '#fef1b5';
                 goto_url = 'inbox/deleted';
             } 
 
-            if(conf) {
-               checkFeed.each(function() {
-                    if($(this).is(':checked')) {
-                        collection.push( {    "feedid": $(this).val(), "contactid": $(this).siblings('.contact-feed-id').val()
-                                           , "siteid": $(this).siblings('.site-feed-id').val()} );
-                        $( '#' + $(this).val() ).fadeOut(300, function() { $(this).remove(); });
+            if (conf) {
+                checkFeed.each(function() {
+                    if ($(this).is(':checked')) {
+                        if ( $('#' + $(this).val()).is(":hidden") == false ) {
+                            collection.push( {    "feedid": $(this).val(), "contactid": $(this).siblings('.contact-feed-id').val()
+                                               , "siteid": $(this).siblings('.site-feed-id').val(), "rating": $(this).siblings('.feed-ratings').val()} );
+                            $( '#' + $(this).val() ).fadeOut(300, function() { $(this).hide(); });     
+                        } 
                     }
-               });    
+                });    
 
+                var collection_count = collection.length;
                 //revert to default -- select
                 $("option:first", this).prop("selected", true);
                
@@ -92,8 +90,6 @@ Checky.prototype.init = function() {
                     location.reload(); 
                 });
 
-                var collection_count = collection.length;
-
                 $.ajax({
                     type: "POST"      
                   , data: {  col: mode
@@ -101,37 +97,33 @@ Checky.prototype.init = function() {
                            , cat_id: categoryFeed.val()
                            , curl: currentUrl }
                   , url: $(this).attr("hrefaction")
-                  , success: function() {
-
-                      $('.checky-bar').css({
-                        'position': 'fixed'
-                      , 'width': '450px'
-                      , 'font-size': '1.2em'
-                      , 'font-weight': 'bold'
-                      , 'background': color 
-                      , 'text-align': 'center'
-                      , 'left': '40%'
-                      , 'top': '23%'
-                      , 'z-index': '200'
-                      , 'padding': '5px'
-                      , 'border-radius': '12px'
-                      , 'margin': '2px 5px'
-                      }).html(mode + ": " + collection_count + (collection_count > 1 ? " feedbacks" : " feedback")).append(hideLink)
-                                                                                                                   .append(gotoLink)
-                                                                                                                   .show();
+                  , dataType: "json"
+                  , beforeSend: function() {
+                      checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                   }
+                  , success: function(msg) {
+                      checkyBar.hide();
+                      //console.log(msg.message); 
+                      //console.log(msg.return_ids);
+                      //well isn't this a mess...
+                      return_feedback(msg.return_ids, checkyBar, mode);
+                      if(msg.return_ids == null) { 
+                          checkyBar.css({'background': color })
+                                   .html(mode + ": " + (collection_count - ((msg.return_ids != null) ? msg.return_feedback.length : 0)) + (collection_count > 1 ? " feedbacks" : " feedback"))
+                                   .append(hideLink).append(gotoLink).show();                  
+                      }
+
+                   }
                 });
             }
 
             $(this).val("none");
+            $('.click-all').attr('checked', false);
             checkFeed.attr('checked', false);
-            collection.length         = 0;     
-            contact_collection.length = 0;
-            site_collection.length    = 0;
+            //collection.length         = 0;     
         } else {
-            collection.length         = 0;     
-            contact_collection.length = 0;
-            site_collection.length    = 0;
+            $('.click-all').attr('checked', false);
+            //collection.length         = 0;     
         } 
     });
 }
@@ -139,7 +131,7 @@ Checky.prototype.init = function() {
 Checky.prototype.clickAll = function() { 
     var me = this;    
     $(me.click_all).bind('click', function(e) {
-        if(this.checked) {
+        if (this.checked) {
             $(me.check_feed_id).prop("checked", true);
             $(me.click_all).prop("checked", true);
         } else {
@@ -147,4 +139,13 @@ Checky.prototype.clickAll = function() {
             $(me.click_all).prop("checked", false);
         }                                            
     });
+}
+
+function return_feedback(id, message, mode) {
+    if(id != null) {   
+        message.html("Sorry negative feedback cannot be " + ((mode == "publish") ? "published" : "featured") + ".").show();
+        $(id).each(function(index, value) {
+            $( 'div#' + value.feedid + '.feedback').fadeIn(300, function() { $(this).show() });
+        });
+    } 
 }

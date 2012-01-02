@@ -19,15 +19,6 @@ jQuery(function($) {
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
-        /*
-        //TODO: maaaaaan clean this up!
-        var d = $(this).parents('.category-picker-holder')
-               .siblings('.feature, .check')
-               .removeAttr('style')
-               .attr('state', 0);
-
-        console.log(d);
-        */
 
         e.preventDefault();
     });
@@ -162,14 +153,16 @@ jQuery(function($) {
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
 
-    var check = new Checky({   delete_selection: $('.delete-selection')
+    var checkyBar = $('.checky-bar');
+    checkyBar.hide();
+    var check = new Checky({   feed_selection: $('.feed-selection')
                              , check_feed_id: $('.check-feed-id')
-                             , contact_feed_id: $('.contact-feed-id')
-                             , site_feed_id: $('.site-feed-id')
                              , category_feed_id: $('.category-feed-id')
-                             , click_all: $('.click-all')  });
+                             , click_all: $('.click-all')
+                             , checky_bar: checkyBar });
     check.init(); 
     check.clickAll();
+
 
     $('.status-change > select, .priority-change > select').hide();
 

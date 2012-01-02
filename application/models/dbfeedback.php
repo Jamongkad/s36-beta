@@ -385,6 +385,7 @@ class DBFeedback extends S36DataObject {
 
     public function _toggle_multiple($mode, $block_id, $extra=False) { 
 
+        //We need this to reset internal category id to default
         $category = DB::Table('Category')->where('companyId', '=', S36Auth::user()->companyid)
                                          ->where('intName', '=', 'default')->first(Array('categoryId'));
 
@@ -399,7 +400,7 @@ class DBFeedback extends S36DataObject {
           , 'flag'    => 'SET isFlagged = 1'
         );
 
-        if(array_key_exists($mode, $lookup)) $column = $lookup[$mode]; 
+        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
