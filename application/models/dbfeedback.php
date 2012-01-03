@@ -603,11 +603,11 @@ class DBFeedback extends S36DataObject {
                         User
                             ON User.companyId = Company.companyId
                     WHERE 1=1
-                        AND User.userId = :user_id
                         AND Site.siteId = :site_id
+                        AND User.userId = :user_id 
                 ");
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT); 
         $sth->bindParam(':site_id', $site_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT); 
         $sth->execute();
         
         $result = $sth->fetch(PDO::FETCH_OBJ);
