@@ -8,6 +8,7 @@ function Checky(opts) {
 }
 
 Checky.prototype.init = function() {
+
     var me = this;    
    
     $(me.feed_selection).bind('change', function(e) {
@@ -67,7 +68,7 @@ Checky.prototype.init = function() {
                 var collection_count = collection.length;
                 //revert to default -- select
                 $("option:first", this).prop("selected", true);
-               
+                /* 
                 var hideLink = document.createElement("a");
                 hideLink.setAttribute("href", "#");
                 hideLink.setAttribute("id", "hide-checkybar");
@@ -84,11 +85,8 @@ Checky.prototype.init = function() {
                 gotoLink.style.marginLeft = "5px";
                 gotoLink.style.textDecoration = "underline";
                 gotoLink.innerHTML = "go to " + mode;
-
-                $("#hide-checkybar").bind("click", function() {
-                    $(this).parents(".checky-bar").hide(); 
-                    location.reload(); 
-                });
+                */
+                var hideLink = " <a href='#' class='hide-checkybar'>[hide]</a>";
 
                 $.ajax({
                     type: "POST"      
@@ -102,17 +100,19 @@ Checky.prototype.init = function() {
                       checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                   }
                   , success: function(msg) {
+                      var return_ids = msg.return_ids; 
+                      var message = msg.message;
                       checkyBar.hide();
-                      //console.log(msg.message); 
-                      //console.log(msg.return_ids);
-                      //well isn't this a mess...
-                      return_feedback(msg.return_ids, checkyBar, mode);
-                      if(msg.return_ids == null) { 
+                      
+                      return_feedback(return_ids, checkyBar, mode, hideLink, message);
+
+                      if(return_ids == null) { 
                           checkyBar.css({'background': color })
-                                   .html(mode + ": " + (collection_count - ((msg.return_ids != null) ? msg.return_feedback.length : 0)) + (collection_count > 1 ? " feedbacks" : " feedback"))
-                                   .append(hideLink).append(gotoLink).show();                  
+                                   .html(notification_message(mode, collection_count, return_ids, hideLink))
+                                   .show();
                       }
 
+                      close_checkybar();
                    }
                 });
             }
@@ -141,11 +141,22 @@ Checky.prototype.clickAll = function() {
     });
 }
 
-function return_feedback(id, message, mode) {
+function notification_message(mode, collection_count, return_ids, link) {
+    return "<div>" + mode + ": " + (collection_count - ((return_ids != null) ? return_ids.length : 0)) + (collection_count > 1 ? " feedbacks" : " feedback") + link + "</div>";
+}
+
+function return_feedback(id, message_container, mode, link, message) {
     if(id != null) {   
-        message.html("Sorry negative feedback cannot be " + ((mode == "publish") ? "published" : "featured") + ".").show();
+        message_container.html("<div>" + message + link + "</div>").show();
         $(id).each(function(index, value) {
             $( 'div#' + value.feedid + '.feedback').fadeIn(300, function() { $(this).show() });
         });
     } 
+}
+
+function close_checkybar() { 
+    $(".hide-checkybar").bind("click", function(e) {
+        $(this).parents(".checky-bar").hide(); 
+        e.preventDefault();
+    });
 }

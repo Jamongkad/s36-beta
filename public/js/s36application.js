@@ -103,7 +103,7 @@ jQuery(function($) {
 
     $("body").click(function() { 
         if(!mouse_is_inside) {
-            $('div.fast-forward-holder, div.category-picker-holder, .ff-form, .checky-bar').hide();      
+            $('div.fast-forward-holder, div.category-picker-holder, .ff-form').hide();      
             $('.email-picker').show();
             $('textarea[name="email_comment"]').val("");
         } 
@@ -154,7 +154,7 @@ jQuery(function($) {
     userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
 
     var checkyBar = $('.checky-bar');
-    checkyBar.hide();
+    //checkyBar.hide();
     var check = new Checky({   feed_selection: $('.feed-selection')
                              , check_feed_id: $('.check-feed-id')
                              , category_feed_id: $('.category-feed-id')

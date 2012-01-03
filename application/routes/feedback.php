@@ -110,18 +110,6 @@ return array(
     }),
 
     //Ajax Routes...
-    'POST /feedback/changecat/(:num)/(:num)' => function($cat_id, $feed_id) use ($feedback) {
-        //TODO: this could be better 
-        $feed_obj = Array('feedid' => $feed_id);
-
-        if($cat_id == 1) {
-            $feedback->_toggle_multiple('fileas', Array($feed_obj), ",isArchived = 0, categoryId = $cat_id");     
-        } else {  
-            $feedback->_toggle_multiple('fileas', Array($feed_obj), ",isArchived = 1, categoryId = $cat_id");     
-        }
- 
-    },
-
     'POST /feedback/changestatus' => function() use ($feedback) { 
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
@@ -178,39 +166,9 @@ return array(
     'POST /feedback/fire_multiple' => function() use ($feedback) {
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col'); 
-        $cat_id   = Input::get('cat_id');
-        
-        $ok_ratings = array_filter($feed_ids, function($obj) { return $obj['rating'] != "POOR"; });
-        $poor_ratings = array_filter($feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
 
-        //Helpers::show_data($ok_ratings);
-        //Helpers::show_data($poor_ratings);
-
-        //conditions
-        if ($ok_ratings == true and $poor_ratings == true) {
-            echo json_encode(Array("message" => "Mixed ratings!", "return_ids" => $feed_ids));
-        }
-
-        if ($ok_ratings and $poor_ratings == null) {     
-            echo json_encode(Array("message" => "Ok ratings!", "return_ids" => null));
-        }
-
-        if ($ok_ratings == null and $poor_ratings and ($mode == "feature" || $mode == "publish")) {     
-            echo json_encode(Array("message" => "Poor ratings! cannot $mode", "return_ids" => $poor_ratings));
-        }
-
-        if ($ok_ratings == null and $poor_ratings and $mode == "delete") {     
-            echo json_encode(Array("message" => "Poor ratings! allow $mode only", "return_ids" => null));
-        }
- 
-        /*
-        if($mode == 'remove') {
-            $feedback->_permanent_delete($feed_ids);
-        } else {
-            //$feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");
-            $feedback->_toggle_multiple($mode, $feed_ids);
-        } 
-        */
+        $fire = new FireMultiple($feedback, $feed_ids, $mode);
+        return $fire->execute();
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {

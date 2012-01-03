@@ -195,7 +195,7 @@
 
                 <?if(preg_match_all('/deleted/', Request::uri(), $matches)):?>
                     <div class="current-page trash"> 
-                        DELETED FEEDBACK <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                        DELETED<!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
 
@@ -210,6 +210,7 @@
                         REPLY TO
                     </div>
                 <?endif?>
+                <div class="checky-bar">&nbsp;</div>
             </div>
             <!-- end of gray status bar -->
             <?if(Request::route_is('inbox') 

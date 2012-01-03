@@ -120,32 +120,28 @@
                             <div class="options">
                                 <?if($feed->rating != "POOR"):?>
                                     <?if($admin_check->inbox_approve == 0):?>
-                                        <input type="button" class="check" tooltip="Option Disabled" tt_width="75" style="background-position: 0px 0px !important; 
-                                                                                                                          opacity:0.4; filter:alpha(opacity=40)"/>
+                                        <input type="button" class="check" tooltip="Option Disabled" tt_width="75" style="background-position: 0px -51px"/>
                                     <?else:?>
                                         <input type="button" class="check" tooltip="<?=($feed->ispublished) ? "Return to Inbox" : "Publish Feedback"?>"  tt_width="85"
-                                        <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px bottom"') ?>/>
+                                        <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px -34px"') ?>/>
                                     <?endif?>
                                 <?else:?>
-                                    <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important;
-                                                                                                                                         opacity:0.2; filter:alpha(opacity=40)
-                                                                                                                                        "/>
+                                    <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" 
+                                                                                                                   style="background-position: 0px -51px !important;"/>
                                 <?endif?>
                                 <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
                                 <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
 
                                 <?if($feed->rating != "POOR"):?>
                                     <?if($admin_check->inbox_feature == 0) :?>
-                                        <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" style="background-position: -60px 0px; !important;
-                                                                                                                            opacity:0.2; filter:alpha(opacity=40)" />
+                                        <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" style="background-position: -60px -51px;" />
                                     <?else:?>
                                         <input type="button" class="feature" tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
-                                        <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                        <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px -34px"') ?>/>
                                     <?endif?>
                                 <?else:?>
-                                    <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" style="background-position: -60px 0px; 
-                                                                                                                                          !important;
-                                                                                                                                          opacity:0.2; filter:alpha(opacity=40)"/>
+                                    <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" 
+                                                                                                                    style="background-position: -60px -51px;"/>
                                 <?endif?>
                                 <?if($admin_check->inbox_fastforward == 0):?>
                                     <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.2; filter:alpha(opacity=40)"/> 
