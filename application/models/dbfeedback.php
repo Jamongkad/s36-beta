@@ -428,7 +428,46 @@ class DBFeedback extends S36DataObject {
     public function _permanent_delete($opts) { 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
-        $sql = "
+        
+        $avatar_sql = "
+            SELECT 
+                Feedback.feedbackId
+              , Contact.contactId
+              , Contact.avatar
+            FROM 
+                Feedback
+            INNER JOIN
+                Contact
+                    ON Feedback.contactId = Contact.contactId
+            WHERE 1=1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($avatar_sql);
+        $sth->execute();
+        $avatar_result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $contact_ids = array_map(function($obj) { return $obj->contactid; }, $avatar_result);
+        $contact_ids = implode(',', $contact_ids);
+
+        $avatar_names = array_map(function($obj) { return $obj->avatar; }, $avatar_result);
+        
+        $profile_img = new Widget\ProfileImage();
+        foreach($avatar_names as $avatar_name) {
+            $profile_img->remove_profile_photo($avatar_name);
+        }
+ 
+        $contact_sql = "
+           DELETE FROM 
+               Contact
+           WHERE 1=1
+               AND Contact.contactId IN ($contact_ids) 
+        ";
+
+        $sth = $this->dbh->prepare($contact_sql);
+        $sth->execute();
+
+        $delete_sql = "
             DELETE FROM 
                 Feedback 
             WHERE 1=1
@@ -436,8 +475,9 @@ class DBFeedback extends S36DataObject {
                 AND Feedback.feedbackId IN ($block_ids)
         ";
 
-        $sth = $this->dbh->prepare($sql);
+        $sth = $this->dbh->prepare($delete_sql);
         $sth->execute();
+
     }
 
     public function permanently_remove_feedback($id) { 
