@@ -414,3 +414,14 @@ height: 0;
 clear: both;
 visibility: hidden;          
 }
+
+.woops {
+background: none repeat scroll 0 0 #DFDFDF;
+border-radius: 4px 4px 4px 4px;
+box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
+color: #777777;
+margin: 28px;
+padding: 28px;
+text-align: center;
+text-shadow: 0 1px 0 #FFFFFF;
+}

@@ -3,7 +3,7 @@
 <head> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.ico">
+    <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <?=HTML::style('css/grid.css')?> 

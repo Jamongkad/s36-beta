@@ -1,5 +1,5 @@
+<?if($feedback->result != null):?>
 <div class="the-feedbacks"> 
-    <?if($feedback->result != null):?>
         <?foreach($feedback->result as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
@@ -230,13 +230,17 @@
                 </div>
             </div>
         <?endforeach?>
-    <?else:?>
-        <div style="padding: 10px">
-        Whoops sorry you do not have any feedback! Let's set it up right now <?=HTML::link('feedsetup/all', 'GO')?>
-        </div>
-    <?endif?>
+
+
+
     <div class="c"></div>
 </div>
+<?else:?>
+      <div class="woops">
+            <h2>Woops. There's no feedback here.</h2><br/><br/>
+            <p>Have you <?=HTML::link('settings', 'set up your feedback form')?> on your website already?</p>
+      </div>
+<?endif?>
 <!-- end of feedback list -->
 <div class="admin-sorter-bar">
     <div class="sorter-bar">
