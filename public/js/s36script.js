@@ -330,6 +330,7 @@ function fb_connect_success(obj){
 		if(obj.email != undefined){
 			$('#your_email').val( $.trim(obj.email) );	
 		}
+
 		if(obj.work != undefined){
 			if(obj.work[0].employer != undefined){
 				if(obj.work[0].employer.name != undefined){
@@ -349,6 +350,10 @@ function fb_connect_success(obj){
             site = matches.length > 0 ? matches[0] : ""; // check if there are matches
             $('#your_website').val( site );
 		}
+
+        if(obj.link != undefined) {
+            $("#profile_link")val( $.trim(obj.link) );
+        }
 
 		$('#fb_flag').val("1");
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
@@ -648,6 +653,7 @@ function send_form_data(){
 			last_name:  	$('#your_lname').val(),
 			email: 			$('#your_email').val(),
             response_flag:  $('#response_flag').val(),
+            profile_link:   $('#profile_link').val(),
             login_type:     login_type(),
 			country: 		country,
 			city: 			city,
@@ -677,7 +683,7 @@ function send_form_data(){
 // once connected to linked in do the function below:
 function loadData() {
   IN.API.Profile("me")
-    .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location"])
+    .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location","public-profile-url"])
     .result(function(result) {
       
 	  var profile  = result.values[0]; 
@@ -686,6 +692,7 @@ function loadData() {
 	  var fname	   = profile.firstName;
 	  var lname	   = profile.lastName;
 	  var country  = profile.location.name;	 
+      var profile_link = profile.publicProfileUrl;
 		
       $('#your_city').val( $.trim(location[0]) );
       $('#your_country').val( $.trim(location[1]) );
@@ -693,6 +700,9 @@ function loadData() {
       $('#your_lname').val( $.trim(lname) );
       $('#your_company').val( $.trim(company) );	
       $('#your_occupation').val( $.trim(position) );	
+      $("#profile_link")val( $.trim(profile_link) );
+
+      //TODO: 
 
    	  $('#ln_flag').val("1");
 	  if(profile.pictureUrl != undefined){
