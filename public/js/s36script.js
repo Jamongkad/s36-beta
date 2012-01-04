@@ -352,7 +352,7 @@ function fb_connect_success(obj){
 		}
 
         if(obj.link != undefined) {
-            $("#profile_link")val( $.trim(obj.link) );
+            $("#profile_link").val( $.trim(obj.link) );
         }
 
 		$('#fb_flag').val("1");
