@@ -34,7 +34,7 @@ class AddFeedback {
           , 'website'   => Input::get('email')
           , 'avatar'    => Input::get('cropped_image_nm')
           , 'loginType' => Input::get('login_type')
-          , 'profileLink' => Input::get('profile_link');
+          , 'profileLink' => Input::get('profile_link')
         );
 
         $contact_id = $ct->insert_new_contact($contact_data);
