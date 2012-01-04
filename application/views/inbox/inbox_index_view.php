@@ -157,14 +157,14 @@
                                     <?if($feed->logintype == 'fb'):?>
                                         <span class="author-social fb"> 
                                             <?=HTML::image('img/small-fb-icon.png')?>
-                                            verified
+                                            Facebook Verified
                                         </span>
                                     <?endif?>
 
                                     <?if($feed->logintype == 'ln'):?>
                                         <span class="author-social in"> 
                                             <?=HTML::image('img/small-in-icon.png')?>
-                                            verified
+                                            LinkedIn Verified
                                         </span>
                                     <?endif?>
 
