@@ -166,7 +166,7 @@ return array(
     'POST /feedback/fire_multiple' => function() use ($feedback) {
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col'); 
-
+        
         $fire = new FireMultiple($feedback, $feed_ids, $mode);
         return $fire->execute();
     },

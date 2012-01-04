@@ -366,21 +366,24 @@ div.undo-bar {
 }
 
 .checky-bar {
-    /*position: relative;*/ 
-    width: 450px;
-    font-size: 1.0em;
-    font-weight: bold;
-    text-align: center; 
+    position: fixed;
+    z-index: 2000;
+    width: 500px;
+    font-size: 12px;  
     border-radius: 12px;
     margin-left:120px;
     margin-top:-3px;
+    font-family:Arial, Helvetica
 }
 
 .checky-bar > div { 
-    font-weight: bold;
-    text-align: center;
     background-color: #fef1b5; 
-    padding: 5px;
+    color: #8e7676;
+
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
     -webkit-border-radius:12px;
     -moz-border-radius:12px;
     border-radius:12px;
@@ -389,8 +392,10 @@ div.undo-bar {
 
 
 a.undo, a.close-checky, a.hide-checkybar {
-    color: #0000CC;
-    font-size: 0.9em;
+    color: #8e7676;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 20px;
 }
 
 .fast-forward-holder {
@@ -416,12 +421,12 @@ visibility: hidden;
 }
 
 .woops {
-background: none repeat scroll 0 0 #DFDFDF;
-border-radius: 4px 4px 4px 4px;
-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
-color: #777777;
-margin: 28px;
-padding: 28px;
-text-align: center;
-text-shadow: 0 1px 0 #FFFFFF;
+    background: none repeat scroll 0 0 #DFDFDF;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
+    color: #777777;
+    margin: 28px;
+    padding: 28px;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
 }

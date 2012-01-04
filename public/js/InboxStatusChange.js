@@ -29,8 +29,8 @@ InboxStateObject.prototype.process = function() {
     
     if(is_single) { 
         $(me.elem).parents('.feedback').fadeOut(350, function() {
-            var undo       = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>[undo]</a>";
-            var close_checky = "  <a class='close-checky' href='#'>[close]</a>";
+            var undo       = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
+            var close_checky = "  <a class='close-checky' href='#'>Close</a>";
             var notify_msg = me.message + undo + close_checky; 
             var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
             var checky = $('.checky-bar');
@@ -141,8 +141,8 @@ CatPickObject.prototype.process = function() {
         }});
     } else {  
         $(this.elem).parents('.feedback').fadeOut(350, function() {
-            var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>[undo]</a>";
-            var close_checky = "  <a class='close-checky' href='#'>[close]</a>";
+            var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
+            var close_checky = "  <a class='close-checky' href='#'>Close</a>";
             var notify_msg = me.message + undo + close_checky;
             var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
             var checky = $('.checky-bar');

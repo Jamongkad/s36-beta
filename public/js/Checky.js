@@ -86,7 +86,7 @@ Checky.prototype.init = function() {
                 gotoLink.style.textDecoration = "underline";
                 gotoLink.innerHTML = "go to " + mode;
                 */
-                var hideLink = " <a href='#' class='hide-checkybar'>[hide]</a>";
+                var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
 
                 $.ajax({
                     type: "POST"      
@@ -102,12 +102,13 @@ Checky.prototype.init = function() {
                   , success: function(msg) {
                       var return_ids = msg.return_ids; 
                       var message = msg.message;
+                      checkyBar.css({'width': '350px', 'right': '22%'});
                       checkyBar.hide();
                       
                       return_feedback(return_ids, checkyBar, mode, hideLink, message);
 
                       if(return_ids == null) { 
-                          checkyBar.css({'background': color })
+                          checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
                                    .html(notification_message(mode, collection_count, return_ids, hideLink))
                                    .show();
                       }
