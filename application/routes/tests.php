@@ -132,6 +132,35 @@ return array(
         ));       
     },
 
+    'GET /tests/email_fastforward' => function() {     
+        $data = (object)Input::get();
+        $auth = new S36Auth;
+
+        $feedback = new DBFeedback;
+
+        $vo = new FastForwardData;          
+        $factory = new EmailFactory($vo);
+ 
+        $email_obj = new StdClass;
+        $email_obj->email = "wrm932@gmail.com";//$data->email;
+
+        $message_obj = new StdClass;
+        $message_obj->bcc = "";
+        $message_obj->user = $auth->user();
+        $message_obj->comment = "";//$data->email_comment;
+        $message_obj->feedback = $feedback->pull_feedback_by_id(59);
+
+        $factory->addresses = Array($email_obj);
+        $factory->message = $message_obj;
+        $email_page = $factory->execute();
+        
+        return $email_page[0]->get_message();
+        /*
+        $emailer = new Email($email_page);
+        $emailer->process_email();
+        */
+    },
+
     'GET /tests/worklog' => function() {   
         $auth = new S36Auth;
         $userId = $auth->user()->userid;

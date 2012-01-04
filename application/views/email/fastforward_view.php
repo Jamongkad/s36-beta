@@ -32,19 +32,20 @@
                         <!-- end of header -->
                         <!-- contents -->
                         <tr>                        	
-							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">Fastforwarded Feedback</h1>
-                            	<!--<strong>Hi <?=$user?>,</strong> <br/>-->
+							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">	
+                                This feedback has been forwarded to you by <?=ucfirst($message->user->username)?>.
+                                <br/>
+                                <br/>
                                 <?if($message->comment):?>
-                                    <strong><?=ucfirst($message->user->username)?></strong> says, <br/>
-                                    <p style="font-size:18px; padding:10px"><?=$message->comment?></p>
+                                    <?=ucfirst($message->user->username)?> also added: <br/>
+                                    <p style="font-style: italic"><?=$message->comment?></p>
                                 <?endif?>
                         <br/><br/>
                             </td>
                         </tr>
 
                         <tr>
-                        	<td colspan="3" style="line-height:20px;padding:10px;background:#f1f3f5;border-top:1px solid #dde0e3" bgcolor="#f1f3f5">
+                        	<td colspan="3" style="line-height:20px;border-top:1px solid #dde0e3" >
                             	<table>
 
                                 	<tr>
