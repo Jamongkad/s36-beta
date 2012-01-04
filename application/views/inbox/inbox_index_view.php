@@ -238,7 +238,7 @@
 <?else:?>
       <div class="woops">
             <h2>Woops. There's no feedback here.</h2><br/><br/>
-            <p>Have you <?=HTML::link('settings', 'set up your feedback form')?> on your website already?</p>
+            <p>Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
       </div>
 <?endif?>
 <!-- end of feedback list -->
