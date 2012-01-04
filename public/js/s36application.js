@@ -71,8 +71,11 @@ jQuery(function($) {
         e.preventDefault();
     })
 
-    $('.contact').bind('click', function(e) { 
+    $('textarea[name="email_comment"]').bind("focus", function() {
+        $(this).val("");
+    })
 
+    $('.contact').bind('click', function(e) { 
         var id = $(this).attr('id');
         $('#' + id + ' div.fast-forward-holder').show().hover(function() { 
             $('div.email-list > ul.email-picker li', this)

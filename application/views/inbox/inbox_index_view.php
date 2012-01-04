@@ -57,7 +57,7 @@
                                         <?=form::hidden('feed_id', $id)?>
                                         <div class="ff-forward-to"></div>
                                         <div class="popup-border"></div>
-                                        <?=Form::textarea('email_comment', false, array('class' => 'small popup-textarea'))?>
+                                        <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
                                         <div class="popup-border"></div>
                                         <div class="popup-button">
                                             <input type="submit" class="button" value="SEND" />
