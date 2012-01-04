@@ -700,7 +700,7 @@ function loadData() {
       $('#your_lname').val( $.trim(lname) );
       $('#your_company').val( $.trim(company) );	
       $('#your_occupation').val( $.trim(position) );	
-      $("#profile_link")val( $.trim(profile_link) );
+      $("#profile_link").val( $.trim(profile_link) );
 
       //TODO: 
 
