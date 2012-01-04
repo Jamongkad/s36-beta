@@ -153,6 +153,9 @@
                             <div class="author-info">
                                 <h3>
                                     <?=$feed->firstname?> <?=$feed->lastname?>
+                                    <?if($feed->rating != "POOR"):?>
+                                        <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
+                                    <?endif?>
 
                                     <?if($feed->logintype == 'fb'):?>
                                         <span class="author-social fb"> 
@@ -166,10 +169,6 @@
                                             <?=HTML::image('img/small-in-icon.png')?>
                                             LinkedIn Verified
                                         </span>
-                                    <?endif?>
-
-                                    <?if($feed->rating != "POOR"):?>
-                                        <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
                                     <?endif?>
                                 </h3>
                                 <p><?=$feed->text?></p>
