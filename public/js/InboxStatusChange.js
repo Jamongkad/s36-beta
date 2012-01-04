@@ -19,14 +19,7 @@ InboxStateObject.prototype.undo = function() {
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
         $.ajax({ type: "POST", url: href, data: {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "catstate": true} });  
         e.preventDefault(); 
-    });
-     
-
-    $('a.close-checky').live('click', function(e) {
-        $(this).parents('.check').remove();
-        e.preventDefault(); 
-    });
-
+    });     
 }
 
 InboxStateObject.prototype.process = function() {
@@ -63,6 +56,11 @@ InboxStateObject.prototype.process = function() {
 
         });
     }
+
+    $('a.close-checky').live('click', function(e) {
+        $(this).parents('.check').remove();
+        e.preventDefault(); 
+    });
 
 }
 
@@ -166,6 +164,11 @@ CatPickObject.prototype.process = function() {
             }
         });
     }
+
+    $('a.close-checky').live('click', function(e) {
+        $(this).parents('.check').remove();
+        e.preventDefault(); 
+    });
 }
 
 //Factory
