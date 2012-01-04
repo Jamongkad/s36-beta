@@ -111,8 +111,8 @@ jQuery(function($) {
             $('textarea[name="email_comment"]').val("");
         } 
     })
-    //End of FastForward
 
+    //End of FastForward
     new InboxStatusChange($('.check, .feature, .remove, .popup-delete')).initialize(); 
     $('div.undo-bar').hide(); 
     $('.flag').switcharoo('-100px 0px');
@@ -137,7 +137,6 @@ jQuery(function($) {
         window.location = "?rating=" + $(this).val();
     });
     
-
     $('#feedsetup-site-select').bind('change', function(e) {
         var me = this;
         $.ajax({

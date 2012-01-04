@@ -5,17 +5,39 @@
 <div class="grids">
     <div class="grids">
         <div class="g1of2">
-             <div class="head">Entry by <?=$feedback->firstname?> <?=$feedback->lastname?></div>
-             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 5, 'cols' => 30, 
+             <div style="float:left; padding-top:5px; padding-right:5px">
+                 <?if($feedback->avatar):?> 
+                     <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>
+                 <?else:?>
+                     <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                 <?endif?>
+             </div>
+             <div class="head" style="margin-top:6px;">Entry by <?=$feedback->firstname?> <?=$feedback->lastname?></div>
+             <br/>
+             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
                                                               'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
              )?><br/>
              <?=HTML::link('/', 'edit', Array('class' => 'edit'))?>
              <?=HTML::link('/', 'save', Array('class' => 'save'))?>
         </div> 
+
         <div class="g1of2">
-             <div class="savebox">
+
+             <div>
                  <div class="save-head">
                  Select a Category for this feedback. 
+                 <select name="category">
+                     <option>--</option>
+                     <?foreach($categories as $cat):?>  
+                         <option <?=($feedback->category === $cat->name) ? 'selected' : Null?>><?=$cat->name?></option> 
+                         <!--
+                         <li <?=($feedback->category === $cat->name) ? 'class="Matched"' : Null?>>
+                             <?=HTML::link('feedback/changecat?catid='.$cat->id.'&feedid='.$feedback->id, $cat->name)?>
+                         </li>
+                         -->
+                     <?endforeach?>
+                 </select>
+                 <!-- 
                  <ul class="category-picker">
                      <?foreach($categories as $cat):?> 
                          <li <?=($feedback->category === $cat->name) ? 'class="Matched"' : Null?>>
@@ -23,14 +45,17 @@
                          </li>
                      <?endforeach?>
                  </ul>
+                 -->
                  </div>
              </div>
+
         </div>
+
     </div>
 
     <div>
         <div>Status: <?=$feedback->status?> Priority: <?=$feedback->priority?></div>
-        <?=HTML::link('/', 'Reply to User')?> | 
+        <?=HTML::link('feedback/reply_to/'.$feedback->id, 'Reply to User')?> | 
         <?=HTML::link('/', 'Forward')?> | 
         <?if($feedback->str_rating != "POOR"):?>
             <?=HTML::link('feedback/change_state/publish/'.$id, 'Publish')?> |
