@@ -63,15 +63,18 @@
         <div class="grids">
             <div class="g4of5">
                 <div class="feedback-info-menu">
-                    <a href="#" class="menubtn replyto">REPLY TO USER</a>
-                    <a href="#" class="menubtn forward">FORWARD</a>
-                    <a href="#" class="menubtn publish">PUBLISH</a>
-                    <a href="#" class="menubtn flag">FLAG</a>
+                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'menubtn replyto'))?>  
+                    <?=HTML::link('feedback/reply_to/'.$id, 'FORWARD', Array('class' => 'menubtn forward'))?> 
+                    <?if($feedback->str_rating != "POOR"):?>
+                        <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', Array('class' => 'menubtn publish'))?> 
+                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', Array('class' => 'menubtn feature'))?> 
+                    <?endif?> 
+                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', Array('class' => 'menubtn flag'))?>
                 </div>
             </div>
             <div class="g1of5">
                 <div class="feedback-info-menu">
-                    <a href="#" class="menubtn delete">DELETE</a>
+                    <?=HTML::link('/feedback/deletefeedback/'.$id, 'DELETE', Array('class' => 'menubtn delete'))?> 
                 </div>
             </div>
         </div>
