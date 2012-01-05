@@ -21,8 +21,8 @@
                              <span>Status: </span> <?=$feedback->status?> <span>Priority:</span> <?=$feedback->priority?>
                         </div>
                         <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'edit', Array('class' => 'edit'))?>
-                             <?=HTML::link('/', 'save', Array('class' => 'save'))?>
+                             <?=HTML::link('/', 'edit feedback', Array('class' => 'edit'))?>
+                             <?=HTML::link('/', 'save feedback', Array('class' => 'save'))?>
                         </div>
                     </div>
                 </div>
