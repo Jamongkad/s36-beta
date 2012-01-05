@@ -210,6 +210,12 @@
                         REPLY TO
                     </div>
                 <?endif?>
+
+                <?if(preg_match_all('/modifyfeedback/', Request::uri(), $matches)):?>
+                    <div class="current-page contacts"> 
+                        FEEDBACK INFORMATION
+                    </div>
+                <?endif?>
                 <div class="checky-bar">&nbsp;</div>
             </div>
             <!-- end of gray status bar -->
