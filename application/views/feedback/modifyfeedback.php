@@ -18,7 +18,7 @@
                 <div class="feedback-status">
                     <div class="grids">
                         <div class="g3of4">
-                        <span>Status : </span> New <span>Priority : </span> Medium
+                             <span>Status: </span> <?=$feedback->status?> <span>Priority:</span> <?=$feedback->priority?>
                         </div>
                         <div class="g1of4" style="text-align:right;">
                              <?=HTML::link('/', 'edit', Array('class' => 'edit'))?>
