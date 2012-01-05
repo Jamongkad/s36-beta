@@ -109,7 +109,7 @@
                  </tr>
                  <tr>
                      <td class="title">Image:</td>
-                     <td><?=$feedback->displayimg?></td>
+                     <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
                      <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
                  </tr>
                  <tr>
@@ -142,8 +142,8 @@
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table">
                     <tr><td colspan="2" class="header">User System Information </td></tr>
-                    <tr><td class="title">IP Address:</td><td><?=$feedback->ipaddress?></td></tr> 
-                    <tr><td class="title">Browser:</td><td><?=$feedback->browser?></td></tr>
+                    <tr><td class="title">IP Address:</td><td><?=($feedback->ipaddress == 0) ? "N/A" : $feedback->ipaddress?></td></tr> 
+                    <tr><td class="title">Browser:</td><td><?=($feedback->browser != True) ? "N/A" : $feedback->browser?></td></tr>
                 </table>
         </div>
     </div>

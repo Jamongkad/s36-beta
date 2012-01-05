@@ -305,10 +305,6 @@ table.user-info {
     width: 100%;    
 }
 
-table.user-info td {
-    font-size: 0.8em;    
-}
-
 ul.category-picker {  
     cursor: default;
     list-style-type: none; 
