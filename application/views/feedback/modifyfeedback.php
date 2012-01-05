@@ -2,7 +2,10 @@
     <div class="grids">
         <div class="g3of4">
             <div class="permissions <?=$feedback->permission_css?>">
-                <h3><?=$feedback->firstname?> <?=$feedback->lastname?> <?=$feedback->permission?></h3>
+                <h3><?=$feedback->permission?></h3>
+                <p>
+                    <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?>.
+                </p>
             </div>
             <div class="feedback-info">
                 <div class="feedback-text">
