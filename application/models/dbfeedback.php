@@ -306,6 +306,11 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.permission = 3 THEN "PRIVATE"
                   END AS permission
                 , CASE 
+                    WHEN Feedback.permission = 1 THEN "full-permission"
+                    WHEN Feedback.permission = 2 THEN "limited-permission"
+                    WHEN Feedback.permission = 3 THEN "private-permission"
+                  END AS permission_css
+                , CASE 
                     WHEN Feedback.rating = 1 THEN "POOR"
                     WHEN Feedback.rating = 2 THEN "POOR"
                     WHEN Feedback.rating = 3 THEN "AVERAGE"

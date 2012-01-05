@@ -1,7 +1,7 @@
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
-            <div class="permissions private-permission">
+            <div class="permissions <?=$feedback->permission_css?>">
                 <h3><?=$feedback->permission?></h3>
                 <p>Chuck Ragan has granted you full permission to quote his feedback and profile as a quote in your website and any</p>
             </div>
