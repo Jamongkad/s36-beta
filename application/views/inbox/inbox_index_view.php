@@ -159,15 +159,19 @@
 
                                     <?if($feed->logintype == 'fb'):?>
                                         <span class="author-social fb"> 
-                                            <?=HTML::image('img/small-fb-icon.png')?>
-                                            Facebook Verified
+                                            <a <?=(($feed->profilelink) ? "href='{$feed->profilelink}' target=_" : "href='#'")?>>
+                                                <?=HTML::image('img/small-fb-icon.png')?>
+                                                Facebook Verified
+                                            </a>
                                         </span>
                                     <?endif?>
 
                                     <?if($feed->logintype == 'ln'):?>
                                         <span class="author-social in"> 
-                                            <?=HTML::image('img/small-in-icon.png')?>
-                                            LinkedIn Verified
+                                            <a <?=(($feed->profilelink) ? "href='{$feed->profilelink}' target=_" : "href='#'")?>>
+                                                <?=HTML::image('img/small-in-icon.png')?>
+                                                LinkedIn Verified
+                                            </a> 
                                         </span>
                                     <?endif?>
                                 </h3>
