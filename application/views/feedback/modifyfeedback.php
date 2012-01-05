@@ -2,8 +2,7 @@
     <div class="grids">
         <div class="g3of4">
             <div class="permissions <?=$feedback->permission_css?>">
-                <h3><?=$feedback->permission?></h3>
-                <p>Chuck Ragan has granted you full permission to quote his feedback and profile as a quote in your website and any</p>
+                <h3><?=$feedback->firstname?> <?=$feedback->lastname?> <?=$feedback->permission?></h3>
             </div>
             <div class="feedback-info">
                 <div class="feedback-text">
@@ -28,9 +27,9 @@
                 </div>
                 <div class="feedback-data">
                     <table cellpadding="0">
-                        <tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>
-                        <tr><td>URL:			</td><td>http://www.eluminousdev.com/Ryan/engagebox/whatclient/</td>
-                        <tr><td>License:		</td><td>Full license</td>
+                        <!--<tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>-->
+                        <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td>
+                        <!--<tr><td>License:		</td><td>Full license</td>-->
                     </table>
                 </div>
             </div>                            
@@ -108,9 +107,8 @@
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table">
                     <tr><td colspan="2" class="header">User System Information </td></tr>
-                    <tr><td class="title">IP Address:</td><td>192.168.1.1</td></tr> 
+                    <tr><td class="title">IP Address:</td><td><?=$feedback->ipaddress?></td></tr> 
                     <tr><td class="title">Browser:</td><td>Netscape</td></tr>
-                    <tr><td class="title">Flash ver.:</td><td>10-1-r102</td></tr>
                     <tr><td class="title">Resolution:</td><td>1360 × 768</td></tr>
                 </table>
         </div>

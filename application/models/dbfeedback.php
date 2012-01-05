@@ -327,6 +327,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.companyName AS companyname
                 , Contact.avatar AS avatar
                 , Contact.loginType
+                , Contact.ipaddress
                 , Site.siteId
                 , Feedback.text
                 , Feedback.dtAdded AS date
@@ -346,6 +347,8 @@ class DBFeedback extends S36DataObject {
                 , Feedback.displaySbmtDate
                 , Country.code AS countrycode
                 , Country.name AS countryname
+                , Site.name AS sitename
+                , Site.domain AS sitedomain
             FROM 
                 User
                     INNER JOIN
