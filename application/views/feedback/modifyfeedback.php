@@ -80,7 +80,7 @@
     <div class="grids">
         <div class="g1of3">
             <div class="grids">
-                <div class="g1of5">
+                <div class="g1of5" style="margin-top:-4px">
                      <?if($feedback->avatar):?> 
                          <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>
                      <?else:?>
@@ -137,14 +137,6 @@
                      <td><?=$feedback->date?></td> 
                      <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
                  </tr>
-                    <!--
-                    <tr><td colspan="2" class="header">Display Information <a href="#">Edit</a></td><td></td></tr>
-                    <tr><td class="title">Name: </td><td>Chack Ragan</td><td><input type="checkbox" /></td></tr>
-                    <tr><td class="title">Profile Image:</td><td>As displayed above</td><td><input type="checkbox" /></td></tr>
-                    <tr><td class="title">Company:</td><td>Apple, Inc.</td><td><input type="checkbox" /></td></tr>
-                    <tr><td class="title">Website:</td><td>apple.com</td><td><input type="checkbox" /></td></tr>
-                    <tr><td class="title">Date: </td><td>19 May 2011</td><td><input type="checkbox" /></td></tr>
-                    -->
                 </table>
         </div>
         <div class="g1of3">
