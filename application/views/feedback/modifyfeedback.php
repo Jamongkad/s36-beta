@@ -99,7 +99,7 @@
             </div>
         </div>
         <div class="g1of3">
-                <table cellpadding="2" class="feedback-data-table">
+                <table cellpadding="2" class="feedback-data-table user-info">
                  <span id="toggle_url" hrefaction="<?=URL::to('/feedback/toggle_feedback_display')?>"></span>
                  <tr><td colspan="2" class="header">Display Information</td><td>display?</td></tr>
                  <tr>
