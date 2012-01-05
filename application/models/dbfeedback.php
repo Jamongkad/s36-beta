@@ -328,6 +328,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.avatar AS avatar
                 , Contact.loginType
                 , Contact.ipaddress
+                , Contact.browser
                 , Site.siteId
                 , Feedback.text
                 , Feedback.dtAdded AS date

@@ -4,7 +4,8 @@
             <div class="permissions <?=$feedback->permission_css?>">
                 <h3><?=$feedback->permission?></h3>
                 <p>
-                    <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?>.
+                    <?=$feedback->firstname?> <?=$feedback->lastname?> has granted you <?=strtolower($feedback->permission)?> to post his/her feedback
+                    on your website.
                 </p>
             </div>
             <div class="feedback-info">
@@ -89,30 +90,68 @@
                 <div class="g4of5">
                     <table cellpadding="2" class="feedback-data-table">
                         <tr><td colspan="2" class="header">User Information</td><td></td></tr>
-                        <tr><td class="title">Name: </td><td>Chack Ragan</td></tr>
-                        <tr><td class="title">Email:</td><td>maddy@elumin…es.net</td></tr>
-                        <tr><td class="title">City:</td><td>Brooklyn, NY </td></tr>
-                        <tr><td class="title">Country:</td><td>USA</td></tr>
+                        <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
+                        <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
+                        <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
+                        <tr><td class="title">Country:</td><td><?=$feedback->countryname?></td></tr>
                     </table>
                 </div>
             </div>
         </div>
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table">
+                 <span id="toggle_url" hrefaction="<?=URL::to('/feedback/toggle_feedback_display')?>"></span>
+                 <tr><td colspan="2" class="header">Display Information</td><td>display?</td></tr>
+                 <tr>
+                     <td class="title">Name:</td>
+                     <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
+                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Image:</td>
+                     <td><?=$feedback->displayimg?></td>
+                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Company:</td>
+                     <td><?=$feedback->companyname?></td>
+                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Position:</td>
+                     <td><?=$feedback->position?></td>
+                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Website:</td>
+                     <td><?=$feedback->url?></td> 
+                     <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Country:</td>
+                     <td><?=$feedback->countryname?> <?=$feedback->countrycode?></td> 
+                     <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null))?></td>
+                 </tr>
+                 <tr>
+                     <td class="title">Date:</td>
+                     <td><?=$feedback->date?></td> 
+                     <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
+                 </tr>
+                    <!--
                     <tr><td colspan="2" class="header">Display Information <a href="#">Edit</a></td><td></td></tr>
                     <tr><td class="title">Name: </td><td>Chack Ragan</td><td><input type="checkbox" /></td></tr>
                     <tr><td class="title">Profile Image:</td><td>As displayed above</td><td><input type="checkbox" /></td></tr>
                     <tr><td class="title">Company:</td><td>Apple, Inc.</td><td><input type="checkbox" /></td></tr>
                     <tr><td class="title">Website:</td><td>apple.com</td><td><input type="checkbox" /></td></tr>
                     <tr><td class="title">Date: </td><td>19 May 2011</td><td><input type="checkbox" /></td></tr>
+                    -->
                 </table>
         </div>
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table">
                     <tr><td colspan="2" class="header">User System Information </td></tr>
                     <tr><td class="title">IP Address:</td><td><?=$feedback->ipaddress?></td></tr> 
-                    <tr><td class="title">Browser:</td><td>Netscape</td></tr>
-                    <tr><td class="title">Resolution:</td><td>1360 × 768</td></tr>
+                    <tr><td class="title">Browser:</td><td><?=$feedback->browser?></td></tr>
                 </table>
         </div>
     </div>
