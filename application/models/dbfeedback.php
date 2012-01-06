@@ -294,6 +294,7 @@ class DBFeedback extends S36DataObject {
                   Feedback.feedbackId AS id
                 , Category.intName
                 , Category.name AS category
+                , Category.categoryId
                 , Feedback.status AS status
                 , CASE
                     WHEN Feedback.priority < 30 THEN "low"

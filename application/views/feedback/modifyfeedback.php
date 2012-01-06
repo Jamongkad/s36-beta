@@ -1,3 +1,4 @@
+<? $id = $feedback->id ?>
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
@@ -11,11 +12,10 @@
             <div class="feedback-info">
                 <div class="feedback-text">
 
-            <? $id = $feedback->id ?>
-            <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?>
-            <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
-                                                              'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
-             )?>
+                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?>
+                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
+                                                                      'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
+                     )?>
                 </div>
                 
                 <div class="feedback-status">
@@ -44,10 +44,18 @@
                 Selecting other categories will move this item into the 'Filed Feedback' tab. 
             </p>
             <div class="category-box">
-                <ul class="category-box">
-                  
+                <ul class="category-box category-picker" id="<?=$feedback->categoryid?>"> 
                   <?foreach($categories as $cat):?>  
-                     <li><a href="#" <?=($feedback->category === $cat->name) ? 'class="Matched"' : Null?>><?=$cat->name?></a></li>
+                         <li>
+                              <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                   'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                 , 'class'      => 'cat-picks'.(($feedback->category === $cat->name) ? ' Matched' : Null)
+                                 , 'feedid'     => $id
+                                 , 'catid'      => $cat->id
+                                 , 'cat-state'  => $cat->intname
+                                 , 'state'      => 0
+                              ))?>
+                          </li>
                   <?endforeach?>
                 </ul>
                 <div>
@@ -62,19 +70,60 @@
 <div class="admin-sorter-bar">
         <div class="grids">
             <div class="g4of5">
+                <!-- email picker block-->            
+                <div class="base-popup fast-forward-holder modify-page" id="<?=$id?>">
+                    <div class="popup-arrow"></div>
+                    <div class="email-list">
+                        <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
+                        <ul class="email-picker">
+                            <?if($admin_check->ffemail1):?>
+                                <li id="email1"> 
+                                    <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : <a href="javascript:;"><?=$admin_check->ffemail1?></a> 
+                                </li>
+                            <?endif?>
+                            <?if($admin_check->ffemail2):?>
+                                <li id="email2"> 
+                                    <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : <a href="javascript:;"><?=$admin_check->ffemail2?></a> 
+                                </li>
+                            <?endif?>
+                            <?if($admin_check->ffemail3):?>
+                                <li id="email3"> 
+                                    <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
+                                </li>
+                            <?endif?>
+                        </ul>
+                        <?else:?>
+                            <?=HTML::link('settings', 'Configure your fast forward settings')?> 
+                        <?endif?>
+
+                        <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
+                            <?=Form::hidden('email')?>
+                            <?=form::hidden('feed_id', $id)?>
+                            <div class="ff-forward-to"></div>
+                            <div class="popup-border"></div>
+                            <?=Form::textarea('email_comment', "(Optional message)", array('class' => 'small popup-textarea'))?>
+                            <div class="popup-border"></div>
+                            <div class="popup-button">
+                                <input type="submit" class="button" value="SEND" />
+                            </div>
+                        <?=Form::close()?>
+                    </div>
+                </div> 
+                <!-- email picker block-->            
+
                 <div class="feedback-info-menu">
-                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'menubtn replyto'))?>  
-                    <?=HTML::link('feedback/reply_to/'.$id, 'FORWARD', Array('class' => 'menubtn forward'))?> 
+                    <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto'))?>  
+                    <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
                     <?if($feedback->str_rating != "POOR"):?>
                         <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', Array('class' => 'menubtn publish'))?> 
-                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', Array('class' => 'menubtn feature'))?> 
+                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', Array('class' => 'menubtn featured'))?> 
                     <?endif?> 
-                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', Array('class' => 'menubtn flag'))?>
+                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', Array('class' => 'flagged'))?>
                 </div>
             </div>
             <div class="g1of5">
                 <div class="feedback-info-menu">
-                    <?=HTML::link('/feedback/deletefeedback/'.$id, 'DELETE', Array('class' => 'menubtn delete'))?> 
+                    <?=HTML::link('/feedback/deletefeedback/'.$id, 'DELETE', Array('class' => 'delete'))?> 
                 </div>
             </div>
         </div>

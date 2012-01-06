@@ -5,9 +5,13 @@ $category = new DBCategory;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
+
+        $admin_check = S36Auth::user();
+
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
            , 'categories' => $category->pull_site_categories()
+           , 'admin_check' => $admin_check
         ));
     }),
 
@@ -250,6 +254,10 @@ return array(
             return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
         }
         
+    }),
+
+    'GET /feedback/fastforward/(:num)' => Array('needs' => 'S36ValueObjects', 'do' => function($id) use ($feedback) { 
+        print_r("Mathew $id");
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {

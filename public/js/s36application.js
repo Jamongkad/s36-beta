@@ -3,10 +3,11 @@ jQuery(function($) {
     $('a.cat-picks').bind('click', function(e) {
 
         var deselect_this = false;
+        /*
         if($(this).hasClass('Matched')) {
             deselect_this = true;
-            $(this).removeClass("Matched");
         } 
+        */
 
         $(this).parent().siblings().children('a').each(function() {
             $(this).removeClass("Matched");     
@@ -15,13 +16,33 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
-        
+        /*        
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
-
+        */
         e.preventDefault();
     });
+
+    $('a.menubtn').bind('click', function(e) { 
+
+        var deselect = false;
+
+        $(this).parent().children('a.menubtn').each(function() {
+            $(this).removeClass("matched");     
+        });
+
+        if(!deselect) {
+            $(this).addClass('matched');
+        }
+               
+        e.preventDefault();
+    })
+
+    $('a.flagged').bind("click", function(e) {
+        $(this).toggleClass("matched");
+        e.preventDefault();
+    })
 
     $('.reply').bind("click", function(e) {     
         var href = $(this).attr('hrefaction');
@@ -55,7 +76,7 @@ jQuery(function($) {
     //FastForward Email Block...fuck this is a mess...
     $('div.category-picker-holder, div.fast-forward-holder, .ff-form').hide();
     var mouse_is_inside = false;
-    $('.contact, .fileas').hover(function() {
+    $('.contact, .fileas, .forward').hover(function() {
         mouse_is_inside = true;  
     }, function() {
         mouse_is_inside = false;
@@ -74,10 +95,24 @@ jQuery(function($) {
     $('textarea[name="email_comment"]').bind("focus", function() {
         $(this).val("");
     })
+    
+    //fucking bug where in for some reason jquery cannot select the div.fast-forward-holder element when using the forward class name.  
+    $('.contact, .forward').bind('click', function(e) { 
+        var id = $(this).attr('id'); 
+        var selector;
 
-    $('.contact').bind('click', function(e) { 
-        var id = $(this).attr('id');
-        $('#' + id + ' div.fast-forward-holder').show().hover(function() { 
+        var class_name = $(this).attr('class');
+
+        if(class_name == 'contact') {
+            selector = $('#' + id + ' div.fast-forward-holder');
+        }
+
+        if(class_name == 'forward') {
+            selector = $('#' + id);
+        }
+
+        selector.show()
+        .hover(function() { 
             $('div.email-list > ul.email-picker li', this)
             .bind('click', function() {
                 var me = $(this);
@@ -100,7 +135,6 @@ jQuery(function($) {
         }, function() {
             mouse_is_inside = false;    
         });      
-        
         e.preventDefault();
     })
 
