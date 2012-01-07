@@ -176,13 +176,9 @@ return array(
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
-        /*
-        $feedback->_change_feedback('isDeleted', $id, 1);
-        $undo_result = $feedback->fetch_deleted_feedback();
-        echo json_encode($undo_result);
-        */
         $feed_obj = Array('feedid' => $id);
         $feedback->_toggle_multiple('delete', Array($feed_obj));
+        return Redirect::to('inbox/deleted');  
     },
 
     'GET /feedback/undodelete/(:any)' => function($id) use ($feedback) {  

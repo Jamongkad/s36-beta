@@ -45,7 +45,14 @@ jQuery(function($) {
         console.log($(this).attr('href'));
         $(this).toggleClass("matched");
         e.preventDefault();
-    })
+    });
+
+    $('a.delete').bind("click", function(e) { 
+        if(confirm("Are you sure you want to delete this feedback?")) {
+            return true;
+        } 
+        e.preventDefault();
+    });
 
     $('.reply').bind("click", function(e) {     
         var href = $(this).attr('hrefaction');

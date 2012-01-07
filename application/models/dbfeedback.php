@@ -383,12 +383,15 @@ class DBFeedback extends S36DataObject {
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
         //release indLock for block display
+        $this->_release_indlock($feedback_id);
+        return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
+    }    
+
+    private function _release_indlock($feedback_id) { 
         DB::table('Feedback', 'master')
                   ->where('feedbackId', '=', $feedback_id)
                   ->update(array('indLock' => 0));    
-
-        return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
-    }    
+    }
 
     public function _toggle_feedbackblock($column, $block_id, $state) { 
         return $this->_toggle_state('FeedbackBlock', 'feedbackblockId', $block_id, $column, $state);
@@ -403,11 +406,11 @@ class DBFeedback extends S36DataObject {
         $categoryId = $category->categoryid;
         //TODO consolidate inbox and restore nigguh
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, categoryId = '.$categoryId.''
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, categoryId = '.$categoryId.''
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
           , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$categoryId.''
           , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$categoryId.''
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, categoryId = '.$categoryId.''
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
           , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
