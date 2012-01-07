@@ -35,11 +35,14 @@ jQuery(function($) {
         if(!deselect) {
             $(this).addClass('matched');
         }
+        
+        console.log($(this).attr('href'));
                
         e.preventDefault();
     })
 
     $('a.flagged').bind("click", function(e) {
+        console.log($(this).attr('href'));
         $(this).toggleClass("matched");
         e.preventDefault();
     })

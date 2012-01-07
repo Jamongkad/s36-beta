@@ -29,7 +29,7 @@ return array(
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
         $feed_obj = Array('feedid' => $id);
         $result = $feedback->_toggle_multiple($state, Array($feed_obj));
-        return Redirect::to('feedback/modifyfeedback/'.$id); 
+        //return Redirect::to('feedback/modifyfeedback/'.$id); 
     },
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
@@ -134,10 +134,10 @@ return array(
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
-        $feed_ids = Input::get('feed_ids');
-        $cat_id   = Input::get('cat_id');
+        $feed_ids  = Input::get('feed_ids');
+        $cat_id    = Input::get('cat_id');
         $cat_state = Input::get('catstate');
-        $mode     = Input::get('mode');         
+        $mode      = Input::get('mode');         
         
         if($cat_state == "default") {
             //echo "Default Category";
@@ -176,9 +176,13 @@ return array(
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
+        /*
         $feedback->_change_feedback('isDeleted', $id, 1);
         $undo_result = $feedback->fetch_deleted_feedback();
         echo json_encode($undo_result);
+        */
+        $feed_obj = Array('feedid' => $id);
+        $feedback->_toggle_multiple('delete', Array($feed_obj));
     },
 
     'GET /feedback/undodelete/(:any)' => function($id) use ($feedback) {  

@@ -535,6 +535,11 @@ class DBFeedback extends S36DataObject {
                     WHERE 1=1
                         AND User.userId = :user_id
                         AND Feedback.isDeleted = 1
+                        AND Feedback.isPublished = 0 
+                        AND Feedback.isFeatured = 0
+                        AND Feedback.isFlagged = 0
+                        AND Feedback.isSticked = 0
+                        AND Feedback.isArchived = 0
                     ORDER BY
                         Feedback.dtAdded DESC
         ');
