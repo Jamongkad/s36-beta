@@ -186,5 +186,9 @@ return array(
         Helpers::show_data($userinfo->get_real_ip_addr());
         Helpers::show_data($userinfo->get_ip_long());
         Helpers::show_data($userinfo->browser()->getBrowser());
+    },
+
+    'GET /tests/feedback_submission' => function() {
+        
     }
 );

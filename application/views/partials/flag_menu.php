@@ -98,6 +98,8 @@
                     <label>SORT BY</label>
                     <select>
                         <option>Date</option>
+                        <option>Status</option>
+                        <option>Priority</option>
                     </select>
                 </div>
                 <div class="g1of5">
