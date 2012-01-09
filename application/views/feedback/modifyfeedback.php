@@ -206,12 +206,14 @@
         </div>
     </div>
 </div>
+<!--
 <div class="block" style="background:#babfc2;border-top:1px solid #868f94;">
     <input type="submit" href="#" value="Save Changes" class="newbtn">
     <input type="submit" href="#" value="Cancel" class="newbtn">
 </div>
+-->
 <!-- spacer -->
-<div class="block noborder" style="height:100px;">
+<div class="block noborder" style="height:10px;">
 </div>
 <!-- spacer -->
 </div>
