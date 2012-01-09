@@ -39,8 +39,7 @@ class AddFeedback {
           , 'ipaddress' => $userinfo->get_ip_long()
           , 'browser' => $userinfo->browser()->getBrowser()
         );
-        Helpers::show_data($contact_data);
-        /*
+
         $contact_id = $ct->insert_new_contact($contact_data);
 
         $permission = Input::get('permission');
@@ -83,8 +82,6 @@ class AddFeedback {
         if(!$matches[0] && Input::get('fb_flag') == 0) {
             @unlink("/var/www/s36-upload-images".$orig_image_dir);     
         } 
-        */
-
     }
 
 }
