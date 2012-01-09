@@ -11,7 +11,7 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
 
-        <?=HTML::script('js/jquery-1.6.2.min.js')?>
+        <?=HTML::script('js/jquery-1.7.1.min.js')?>
 
         <?=HTML::script('js/underscore-min.js')?>
         <?=HTML::script('js/backbone.js')?>

@@ -78,17 +78,20 @@
                         <ul class="email-picker">
                             <?if($admin_check->ffemail1):?>
                                 <li id="email1"> 
-                                    <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : <a href="javascript:;"><?=$admin_check->ffemail1?></a> 
+                                    <?=($admin_check->alias1) ? $admin_check->alias1 : "Name 1"?> : 
+                                    <a href="javascript:;"><?=$admin_check->ffemail1?></a> 
                                 </li>
                             <?endif?>
                             <?if($admin_check->ffemail2):?>
                                 <li id="email2"> 
-                                    <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : <a href="javascript:;"><?=$admin_check->ffemail2?></a> 
+                                    <?=($admin_check->alias2) ? $admin_check->alias2 : "Name 2"?> : 
+                                    <a href="javascript:;"><?=$admin_check->ffemail2?></a> 
                                 </li>
                             <?endif?>
                             <?if($admin_check->ffemail3):?>
                                 <li id="email3"> 
-                                    <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
+                                    <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : 
+                                    <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
                                 </li>
                             <?endif?>
                         </ul>
@@ -115,10 +118,13 @@
                     <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto'))?>  
                     <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
                     <?if($feedback->str_rating != "POOR"):?>
-                        <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', Array('class' => 'menubtn publish'))?> 
-                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', Array('class' => 'menubtn featured'))?> 
+                        <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', 
+                           Array('class' => 'menubtn publish'.(($feedback->ispublished) ? " matched" : null)))?> 
+                        <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', 
+                           Array('class' => 'menubtn featured'.(($feedback->isfeatured) ? " matched" : null)))?> 
                     <?endif?> 
-                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', Array('class' => 'flagged'))?>
+                    <?=HTML::link('feedback/change_state/flag/'.$id, 'FLAG', 
+                       Array('class' => 'flagged'.(($feedback->isflagged) ? " matched" : null), 'state' => $feedback->isflagged))?>
                 </div>
             </div>
             <div class="g1of5">
@@ -215,127 +221,3 @@
 <!-- div need to clear floated divs -->
 <div class="c"></div>
 </div>
-
-<!--
-<? $id = $feedback->id ?>
-<?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?>
-<h3>Feedback Information</h3>
-<div class="grids">
-    <div class="grids">
-        <div class="g1of2">
-             <div style="float:left; padding-top:5px; padding-right:5px">
-                 <?if($feedback->avatar):?> 
-                     <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>
-                 <?else:?>
-                     <?=HTML::image('img/48x48-blank-avatar.jpg')?>
-                 <?endif?>
-             </div>
-             <div class="head" style="margin-top:6px;">Entry by <?=$feedback->firstname?> <?=$feedback->lastname?></div>
-             <br/>
-             <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
-                                                              'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
-             )?><br/>
-             <?=HTML::link('/', 'edit', Array('class' => 'edit'))?>
-             <?=HTML::link('/', 'save', Array('class' => 'save'))?>
-        </div> 
-
-        <div class="g1of2">
-
-             <div>
-                 <div class="save-head">
-                 Select a Category for this feedback. 
-                 <select name="category">
-                     <option>--</option>
-                     <?foreach($categories as $cat):?>  
-                         <option <?=($feedback->category === $cat->name) ? 'selected' : Null?>><?=$cat->name?></option> 
-                     <?endforeach?>
-                 </select>
-                 </div>
-             </div>
-
-        </div>
-
-    </div>
-
-    <div>
-        <div>Status: <?=$feedback->status?> Priority: <?=$feedback->priority?></div>
-        <?=HTML::link('feedback/reply_to/'.$feedback->id, 'Reply to User')?> | 
-        <?=HTML::link('/', 'Forward')?> | 
-        <?if($feedback->str_rating != "POOR"):?>
-            <?=HTML::link('feedback/change_state/publish/'.$id, 'Publish')?> |
-            <?=HTML::link('feedback/change_state/feature/'.$id, 'Feature')?> |
-        <?endif?>
-        <?=HTML::link('feedback/change_state/flag/'.$id, 'Flag') ?> |
-        <?=HTML::link('/feedback/deletefeedback/'.$id, 'Delete')?> 
-    </div>
-
-    <div class="grids">
-        <div class="g1of3">
-             <div class="head">User Information</div>
-             <table class="user-info">
-                 <tr><td>First Name:</td><td><?=$feedback->firstname?></td></tr>
-                 <tr><td>Last Name:</td><td><?=$feedback->lastname?></td></tr>
-                 <tr><td>Email Address:</td><td><?=$feedback->email?></td></tr>
-                 <tr><td>Time Sent:</td><td><?=$feedback->date?></td></tr>
-                 <tr><td>Phone:</td><td>-</td></tr>
-                 <tr><td>Address:</td><td>-</td></tr>
-             </table>
-        </div> 
-        <div class="g2of3">
-             <div class="head">Display Information</div>
-             <table class="user-info">
-                 <span id="toggle_url" hrefaction="<?=URL::to('/feedback/toggle_feedback_display')?>"></span>
-                 <tr><th></th><th style="text-align:left; font-size: 9px">edit</th><th style="font-size: 9px">display?</th></tr>
-                 <tr>
-                     <td>Display Name:</td>
-                     <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
-                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Display Image:</td>
-                     <td><?=$feedback->displayimg?></td>
-                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Company Name:</td>
-                     <td><?=$feedback->companyname?></td>
-                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Designation / Position:</td>
-                     <td><?=$feedback->position?></td>
-                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Website Url:</td>
-                     <td><?=$feedback->url?></td> 
-                     <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Country & Flag:</td>
-                     <td><?=$feedback->countryname?> <?=$feedback->countrycode?></td> 
-                     <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null))?></td>
-                 </tr>
-                 <tr>
-                     <td>Submitted Date:</td>
-                     <td><?=$feedback->date?></td> 
-                     <td align="center"><?=Form::checkbox('displaySbmtDate', $feedback->displaysbmtdate, ($feedback->displaysbmtdate ? True : Null))?></td>
-                 </tr>
-             </table>
-        </div>
-
-        <div class="g1of3">
-             <div class="head">System Information</div>
-             <table class="user-info">
-                 <tr><td>First Name:</td><td><?=$feedback->firstname?></td></tr>
-                 <tr><td>Last Name:</td><td><?=$feedback->lastname?></td></tr>
-                 <tr><td>Email Address:</td><td><?=$feedback->email?></td></tr>
-                 <tr><td>Time Sent:</td><td><?=$feedback->date?></td></tr>
-                 <tr><td>Phone:</td><td>-</td></tr>
-                 <tr><td>Address:</td><td>-</td></tr>
-             </table>
-        </div>
-
-    </div>
-    </div>
--->

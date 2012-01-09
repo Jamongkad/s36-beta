@@ -9,6 +9,7 @@ class AddFeedback {
         $us = new DBUser;
         $bw = new DBBadWords;
         $mt = new DBMetric;
+        $userinfo = new UserInfo;
 
         //fuck naive assumption...
         $countryId = 895;
@@ -35,6 +36,8 @@ class AddFeedback {
           , 'avatar'    => Input::get('cropped_image_nm')
           , 'loginType' => Input::get('login_type')
           , 'profileLink' => Input::get('profile_link')
+          , 'ipaddress' => $userinfo->get_ip_long()
+          , 'browser' => $userinfo->browser()->getBrowser()
         );
 
         $contact_id = $ct->insert_new_contact($contact_data);

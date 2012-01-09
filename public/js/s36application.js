@@ -16,11 +16,11 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
-        /*        
+
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
-        */
+
         e.preventDefault();
     });
 
@@ -36,14 +36,33 @@ jQuery(function($) {
             $(this).addClass('matched');
         }
         
-        console.log($(this).attr('href'));
-               
+        $.ajax({
+            type: "GET"     
+          , url: $(this).attr('href')
+        }) 
+
         e.preventDefault();
     })
 
-    $('a.flagged').bind("click", function(e) {
-        console.log($(this).attr('href'));
+    $('a.flagged').bind("click", function(e) { 
         $(this).toggleClass("matched");
+
+        var state = $(this).attr('state');
+        var var_state;
+        if(state == 0) { 
+            $(this).attr('state', 1);
+            var_state = 1;
+        } else { 
+            $(this).attr('state', 0);
+            var_state = 0;
+        }
+
+        $.ajax({
+            type: "GET"     
+          , data: {"state": var_state}
+          , url: $(this).attr('href')
+        }) 
+
         e.preventDefault();
     });
 

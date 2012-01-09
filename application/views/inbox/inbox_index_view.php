@@ -213,7 +213,7 @@
                                 <input type="button" class="flag" tooltip="Option Disabled" tt_width="84"  style="opacity:0.4; filter:alpha(opacity=40)"/>
                             <?else:?>
                                 <input type="button" class="flag" tooltip="Flag Feedback" tt_width="75" 
-                                <?=Helpers::switchable($feed->isflagged, $id, $feed->categoryid, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px 0px;"') ?>/>
+                                <?=Helpers::switchable($feed->isflagged, $id, $feed->categoryid, URL::to('/feedback/flagfeedback'), ' style="background-position:-100px -17px;"') ?>/>
                             <?endif?>
 
                             <?if($feed->isdeleted == 0):?>

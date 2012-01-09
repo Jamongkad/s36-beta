@@ -5,7 +5,6 @@ $category = new DBCategory;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
-
         $admin_check = S36Auth::user();
 
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
@@ -16,7 +15,6 @@ return array(
     }),
 
     'POST /feedback/edit_feedback_text' => function() {
-
         $badwords = new DBBadWords;
         $post = Input::get();
 
@@ -27,9 +25,14 @@ return array(
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
-        $feed_obj = Array('feedid' => $id);
-        $result = $feedback->_toggle_multiple($state, Array($feed_obj));
-        //return Redirect::to('feedback/modifyfeedback/'.$id); 
+
+        if($state == 'flag') { 
+            return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
+        } else {   
+            $feed_obj = Array('feedid' => $id);
+            return $feedback->_toggle_multiple($state, Array($feed_obj)); 
+        }
+
     },
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
@@ -91,7 +94,6 @@ return array(
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
-
         $company_id = S36Auth::user()->companyid;
         return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()

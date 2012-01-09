@@ -179,5 +179,12 @@ return array(
         $feedback = new DBFeedback;
         $data = $feedback->pull_feedback_by_id(40);
         Helpers::show_data(Helpers::limit_string($data->text));
+    },
+
+    'GET /tests/browser_info' => function() {
+        $userinfo = new UserInfo;
+        Helpers::show_data($userinfo->get_real_ip_addr());
+        Helpers::show_data($userinfo->get_ip_long());
+        Helpers::show_data($userinfo->browser()->getBrowser());
     }
 );

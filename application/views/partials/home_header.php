@@ -7,7 +7,7 @@
         <?=HTML::style('css/grid.css')?>
         <?=HTML::style('css/flags.css')?>
 
-        <?=HTML::script('js/jquery-1.6.2.min.js')?>
+        <?=HTML::script('js/jquery-1.7.1.min.js')?>
 
         <?=HTML::script('js/Checky.js')?> 
         <?=HTML::script('js/FeedbackBlockDisplay.js')?>
