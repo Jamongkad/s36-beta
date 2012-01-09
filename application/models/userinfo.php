@@ -13,7 +13,7 @@ class UserInfo {
     }    
 
     public function get_ip_long() {
-        return ip2long($this->get_real_ip_addr());
+        return sprintf('%u', ip2long($this->get_real_ip_addr()));
     }
 
     public function get_ip_from_long($long) {
