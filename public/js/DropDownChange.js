@@ -6,7 +6,7 @@ function DropDownChange(opts) {
 DropDownChange.prototype.enable = function() {
     var me = this;     
     me.status_element.bind("click", function(e) {
-
+        $(this).children('span').hide();
         $(this).children('select').unbind(me.status_select).bind(me.status_selector, function(e) {
             var select = $(this);
             var select_val = select.val();
@@ -19,7 +19,7 @@ DropDownChange.prototype.enable = function() {
                 , data: {"select_val":select_val, "feed_id": feedid}
             });
             
-            select.siblings().text(select_val);
+            //select.siblings().text(select_val);
         }).show();
 
     }).css({'cursor': 'pointer'});

@@ -21,7 +21,23 @@
                 <div class="feedback-status">
                     <div class="grids">
                         <div class="g3of4">
-                             <span>Status: </span> <?=$feedback->status?> <span>Priority:</span> <?=$feedback->priority?>
+                            <span class="status-change status"> Status: <span class="status-target"><?=$feedback->status?></span>
+                                <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                    <?foreach($status as $option):?>
+                                        <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
+                                        <option <?=($feedback->status == $option_match) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
+                                    <?endforeach?>
+                                </select> 
+                            </span>
+
+                            <span class="priority-change priority">
+                                Priority: <span class="priority-target"><?=$feedback->priority?></span>
+                                <select name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                    <?foreach($priority_obj as $key => $val):?>
+                                        <option <?=($feedback->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
+                                    <?endforeach?>
+                                </select>
+                            </span>
                         </div>
                         <div class="g1of4" style="text-align:right;">
                              <?=HTML::link('/', 'edit feedback', Array('class' => 'edit'))?>
@@ -213,8 +229,10 @@
 </div>
 -->
 <!-- spacer -->
+<!--
 <div class="block noborder" style="height:10px;">
 </div>
+-->
 <!-- spacer -->
 </div>
 

@@ -10,6 +10,8 @@ return array(
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
            , 'categories' => $category->pull_site_categories()
+           , 'status' => DB::table('Status', 'master')->get()
+           , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
            , 'admin_check' => $admin_check
         ));
     }),
