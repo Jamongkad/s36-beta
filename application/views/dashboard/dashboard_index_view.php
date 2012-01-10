@@ -2,9 +2,9 @@
     google.load("visualization", "1", {packages:["corechart"]});
     google.load('visualization', '1', {'packages': ['geochart']});
 
-    google.setOnLoadCallback(drawChart);
+    //google.setOnLoadCallback(drawChart);
     google.setOnLoadCallback(drawRegionsMap);
-	  
+	 
     function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Task');
@@ -61,6 +61,42 @@
         var geochart = new google.visualization.GeoChart(container);
         geochart.draw(data, options);
     };
+
+    $(function() {
+        
+        var data = [
+            { label: "Positive",  data: 50, color: '#109ca5' },
+            { label: "Negative",  data: 30, color: '#8f3215'},
+            { label: "Neutral",  data: 20, color: '#c1661c'},
+        ];
+
+        $.plot($("#chart_div"), data, {
+            series: {
+                pie: { 
+                    show: true
+                  , radius: 1
+                  , label: {
+                       show: true
+                     , radius: 3/4
+                     , background: {
+                        opacity: 0.5     
+                      , color: '#000'
+                     }
+                     , formatter: function(label, series) {
+                       return '<div style="font-size:8pt;text-align:center;padding:2px;color:white">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+                     } 
+                  }
+                }
+            },
+            grid: {
+                hoverable: true,
+                clickable: true
+            },
+            legend: {
+                show: false     
+            },
+        });
+    });
 </script>
 
 <div class="block noborder">
@@ -76,9 +112,13 @@
         <div class="dashboard-updates-list ignored"><strong>5 entries</strong> have been ignored </div>
     </div>
     <div class="dashboard-pie-chart">
+        <!--
         <div id="chart_div">
         </div>
-        <div class="overall">Overall 4.5/5 <span class="rating excellent">EXCELLENT</span></div>
+        -->
+        <!--<div class="overall">Overall 4.5/5 <span class="rating excellent">EXCELLENT</span></div>-->
+        <h3 style="text-align:center">Feedback Score Distribution</h3>
+        <div id="chart_div" style="width:200px;height:200px"></div>
     </div>
 </div>
 <div class="block grids">

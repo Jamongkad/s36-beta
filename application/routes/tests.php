@@ -190,5 +190,17 @@ return array(
 
     'GET /tests/feedback_submission' => function() {
         
+    },
+
+    'GET /tests/json_for_dashboard' => function() {
+        $data = Array(
+            Array('label' => 'series1', 'data' => 12) 
+          , Array('label' => 'series2', 'data' => 30) 
+          , Array('label' => 'series3', 'data' => 69) 
+          , Array('label' => 'series4', 'data' => 8) 
+          , Array('label' => 'series5', 'data' => 20) 
+        );
+        $json = json_encode($data);
+        Helpers::show_data($json);
     }
 );

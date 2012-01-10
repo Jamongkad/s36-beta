@@ -29,6 +29,9 @@
 
         <?=HTML::script('js/jquery.jcrop.js')?>
         <?=HTML::script('js/jquery.ajaxfileupload.js')?>
+     
+        <?=HTML::script('js/jquery.flot.js')?>
+        <?=HTML::script('js/jquery.flot.pie.js')?>
 
         <?=HTML::script('js/s36application.js')?>
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
