@@ -117,7 +117,7 @@
         </div>
         -->
         <!--<div class="overall">Overall 4.5/5 <span class="rating excellent">EXCELLENT</span></div>-->
-        <h3 style="text-align:center">Feedback Score Distribution</h3>
+        <h3 style="text-align:center">Feedback Rating Distribution</h3>
         <div id="chart_div" style="width:200px;height:200px"></div>
     </div>
 </div>
