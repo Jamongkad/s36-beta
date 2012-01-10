@@ -1,86 +1,66 @@
 <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-	  google.load('visualization', '1', {'packages': ['geochart']});
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.load('visualization', '1', {'packages': ['geochart']});
 
-      google.setOnLoadCallback(drawChart);
-	  google.setOnLoadCallback(drawLineChart);
-	  google.setOnLoadCallback(drawRegionsMap);
+    google.setOnLoadCallback(drawChart);
+    google.setOnLoadCallback(drawRegionsMap);
 	  
-      function drawChart() {
+    function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Task');
         data.addColumn('number', 'Hours per Day');
         data.addRows(3);
-		data.setValue(0, 0, 'Positive');
+
+        data.setValue(0, 0, 'Positive');
         data.setValue(0, 1, 2);
-		data.setValue(1, 0, 'Neutral');
+
+        data.setValue(1, 0, 'Neutral');
         data.setValue(1, 1, 2);
+
         data.setValue(2, 0, 'Negative');
         data.setValue(2, 1, 2);
-		
+
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, {
-			width: 220, height: 220,legend:'bottom', chartArea:{top:20},title:'Overall Feedback Score',
-			titleTextStyles:{color: '#343434', fontSize: 12,fontWeight:'bold'},
-			colors:['#00bf9b','#81cf40','#df0d0d']
-			});
-      }
+            width: 220, height: 220,legend:'bottom', chartArea:{top:20},title:'Overall Feedback Score',
+            titleTextStyles:{color: '#343434', fontSize: 12,fontWeight:'bold'},
+            colors:['#00bf9b','#81cf40','#df0d0d']
+        });
+    }
 	  
-	  function drawLineChart(){
-		var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Year');
-        data.addColumn('number', 'Sales');
-        data.addColumn('number', 'Expenses');
-        data.addRows(4);
-        data.setValue(0, 0, 'Jan');
-        data.setValue(0, 1, 1000);
-        data.setValue(0, 2, 0);
-        data.setValue(1, 0, 'Feb');
-        data.setValue(1, 1, 1170);
-        data.setValue(1, 2, 500);
-        data.setValue(2, 0, 'Mar');
-        data.setValue(2, 1, 860);
-        data.setValue(2, 2, 1000);
-        data.setValue(3, 0, 'Apr');
-        data.setValue(3, 1, 1030);
-        data.setValue(3, 2, 1500);
+    function drawRegionsMap() {
+        var data = new google.visualization.DataTable();
+        data.addRows(6);
+        data.addColumn('string', 'Country');
+        data.addColumn('number', 'Popularity');
 
-        var chart = new google.visualization.LineChart(document.getElementById('linechart_div'));
-        chart.draw(data, {width: 660, height: 240, legend: 'bottom'}); 
-	  }
-	  
-	   function drawRegionsMap() {
-      var data = new google.visualization.DataTable();
-      data.addRows(6);
-      data.addColumn('string', 'Country');
-      data.addColumn('number', 'Popularity');
-      data.setValue(0, 0, 'Germany');
-      data.setValue(0, 1, 200);
+        data.setValue(0, 0, 'Germany');
+        data.setValue(0, 1, 200);
 
-      data.setValue(1, 0, 'United States');
-      data.setValue(1, 1, 300);
+        data.setValue(1, 0, 'United States');
+        data.setValue(1, 1, 300);
 
-      data.setValue(1, 0, 'Philippines');
-      data.setValue(1, 1, 1000);
+        data.setValue(1, 0, 'Philippines');
+        data.setValue(1, 1, 1000);
 
-      data.setValue(2, 0, 'Brazil');
-      data.setValue(2, 1, 400);
+        data.setValue(2, 0, 'Brazil');
+        data.setValue(2, 1, 400);
 
-      data.setValue(3, 0, 'Canada');
-      data.setValue(3, 1, 500);
+        data.setValue(3, 0, 'Canada');
+        data.setValue(3, 1, 500);
 
-      data.setValue(4, 0, 'France');
-      data.setValue(4, 1, 600);
+        data.setValue(4, 0, 'France');
+        data.setValue(4, 1, 600);
 
-      data.setValue(5, 0, 'RU');
-      data.setValue(5, 1, 700);
+        data.setValue(5, 0, 'RU');
+        data.setValue(5, 1, 700);
 
-      var options = {};
+        var options = {};
 
-      var container = document.getElementById('map_canvas');
-      var geochart = new google.visualization.GeoChart(container);
-      geochart.draw(data, options);
-  };
+        var container = document.getElementById('map_canvas');
+        var geochart = new google.visualization.GeoChart(container);
+        geochart.draw(data, options);
+    };
 </script>
 
 <div class="block noborder">
@@ -111,20 +91,19 @@
         <div class="g1of3">
             <h3>Feedback Statistics</h3>
             <p><strong>4,369</strong> featured entries </p>
+            <p><strong>1,120</strong> published entries </p>
+            <p><strong>800</strong> feedback requests  </p>
+            <!--
             <p><strong>372,824</strong> impressions </p>
             <p><strong>239,493</strong> clicks</p>
+            -->
         </div>
         <div class="g1of3">
             <h3>Feedback Submitters</h3>
             <p>Top country:<strong> Singapore</strong> </p>
-            <p>Average time on site: <strong>2:93</strong> </p>
+            <!--<p>Average time on site: <strong>2:93</strong> </p>-->
             <p>Unique submitters: <strong>29,495</strong> </p>
         </div>
-    </div>
-</div>
-
-<div class="block">            	
-    <div id="linechart_div">
     </div>
 </div>
 <div class="block">
