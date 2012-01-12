@@ -1,8 +1,5 @@
 <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
     google.load('visualization', '1', {'packages': ['geochart']});
-
-    //google.setOnLoadCallback(drawChart);
     google.setOnLoadCallback(drawRegionsMap);
 	 
     function drawChart() {
@@ -32,28 +29,8 @@
         var data = new google.visualization.DataTable();
         data.addRows(6);
         data.addColumn('string', 'Country');
-        data.addColumn('number', 'Popularity');
-
-        data.setValue(0, 0, 'Germany');
-        data.setValue(0, 1, 200);
-
-        data.setValue(1, 0, 'United States');
-        data.setValue(1, 1, 300);
-
-        data.setValue(1, 0, 'Philippines');
-        data.setValue(1, 1, 1000);
-
-        data.setValue(2, 0, 'Brazil');
-        data.setValue(2, 1, 400);
-
-        data.setValue(3, 0, 'Canada');
-        data.setValue(3, 1, 500);
-
-        data.setValue(4, 0, 'France');
-        data.setValue(4, 1, 600);
-
-        data.setValue(5, 0, 'RU');
-        data.setValue(5, 1, 700);
+        data.addColumn('number', 'Feedback Density');
+        data.addRows(<?=$geo_chart_data?>);
 
         var options = {};
 
@@ -109,7 +86,7 @@
         <div class="dashboard-updates-list positive"><strong>8 new entries</strong> are rated positively </div>
         <div class="dashboard-updates-list neutral"><strong>10 entries</strong> are rated neutral </div>
         <div class="dashboard-updates-list negative"><strong>3 entries</strong> are rated negatively </div>
-        <div class="dashboard-updates-list ignored"><strong>5 entries</strong> have been ignored </div>
+        <!--<div class="dashboard-updates-list ignored"><strong>5 entries</strong> have been ignored </div>-->
     </div>
     <div class="dashboard-pie-chart">
         <!--
@@ -126,14 +103,14 @@
         <div class="g1of3">
             <h3>Contacts</h3>
             <p><strong>32 incoming</strong> entries from contacts </p>
-            <p><strong>3 of your contacts</strong> have not yet responded to your feedback requests</p>
+            <!--<p><strong>3 of your contacts</strong> have not yet responded to your feedback requests</p>-->
         </div>
         <div class="g1of3">
             <h3>Feedback Statistics</h3>
             <p><strong>4,369</strong> featured entries </p>
             <p><strong>1,120</strong> published entries </p>
-            <p><strong>800</strong> feedback requests  </p>
             <!--
+            <p><strong>800</strong> feedback requests  </p>
             <p><strong>372,824</strong> impressions </p>
             <p><strong>239,493</strong> clicks</p>
             -->

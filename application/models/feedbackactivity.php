@@ -35,7 +35,7 @@ class FeedbackActivity {
         return $affected; 
     }
     
-    //hmmmmm
+    //hmmmmm subject to approval muthafucka
     public function update_activity_status() { 
         $affected = DB::Table('FeedbackActivity', 'master')
             ->where('userId', '=', $this->user_id)

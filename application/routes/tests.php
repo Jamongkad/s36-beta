@@ -200,7 +200,16 @@ return array(
           , Array('label' => 'series4', 'data' => 8) 
           , Array('label' => 'series5', 'data' => 20) 
         );
-        $json = json_encode($data);
+        
+        $arr_data = Array(
+            Array('Germany', 100) 
+          , Array('United States', 1000)
+          , Array('Philippines', 290)
+          , Array('Singapore', 780)
+          , Array('Thailand', 659)
+        );
+
+        $json = json_encode($arr_data);
         Helpers::show_data($json);
     }
 );
