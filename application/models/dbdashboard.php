@@ -45,7 +45,7 @@ class DBDashboard extends S36DataObject {
        $sth = $this->dbh->prepare("
             SELECT 
                 Contact.countryId 
-              , Site.name AS siteName
+              , Site.domain AS url
               , Company.name AS companyName
               , Company.companyId AS companyId
               , Country.name AS countryName
