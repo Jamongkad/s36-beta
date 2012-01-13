@@ -37,7 +37,7 @@ class DBDashboard extends S36DataObject {
         $sth->bindParam(":company_id", $company_id, PDO::PARAM_INT);
         $sth->execute();
  
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
    }
 
@@ -76,7 +76,7 @@ class DBDashboard extends S36DataObject {
         $sth->bindParam(":company_id", $company_id, PDO::PARAM_INT);
         $sth->execute();
  
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
    }
 }
