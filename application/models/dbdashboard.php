@@ -1,6 +1,16 @@
 <?php
 
 class DBDashboard extends S36DataObject {
+
+
+   public function get_dashboard_scores($company_id) {
+       $result = new StdClass;     
+       $result->feedback_scores = $this->get_feedback_scores($company_id); 
+       $result->geochart_scores = $this->get_geochart_scores($company_id);
+
+       return $result;
+   }
+
    public function get_feedback_scores($company_id) {
        $sth = $this->dbh->prepare("
               SELECT 

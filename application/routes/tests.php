@@ -217,12 +217,8 @@ return array(
 
         $dash = new DBDashboard;
          
-        $company_id = 3;
-
-        $feed_score = $dash->get_feedback_scores($company_id);
-        $geo_score = $dash->get_geochart_scores($company_id);
-
+        $company_id = 1;
+        $feed_score = $dash->get_dashboard_scores($company_id);
         Helpers::show_data($feed_score);
-        Helpers::show_data($geo_score);
     }
 );
