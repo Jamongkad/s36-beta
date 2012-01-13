@@ -45,10 +45,11 @@ class DBDashboard extends S36DataObject {
        $sth = $this->dbh->prepare("
             SELECT 
                 Contact.countryId 
-              , Site.name
-              , Company.name
-              , Country.name
-              , Country.code
+              , Site.name AS siteName
+              , Company.name AS companyName
+              , Company.companyId AS companyId
+              , Country.name AS countryName
+              , Country.code AS countryCode
               , COUNT(Feedback.feedbackId) AS feedbackCnt
             FROM 
                 Contact 
