@@ -215,8 +215,8 @@ return array(
 
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
-        $company_id = 1;
-        $feed_score = $dash->get_dashboard_scores($company_id);
+        $dash->company_id = 1;
+        $feed_score = $dash->get_dashboard_scores();
         Helpers::show_data($feed_score);
     }
 );

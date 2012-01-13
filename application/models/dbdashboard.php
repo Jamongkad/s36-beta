@@ -1,19 +1,19 @@
 <?php
 
 class DBDashboard extends S36DataObject {
+   
+   public $company_id;
 
-
-   public function get_dashboard_scores($company_id) {
+   public function get_dashboard_scores() {
        $result = new StdClass;     
-       $result->feedback_scores = $this->get_feedback_scores($company_id); 
-       $result->geochart_scores = $this->get_geochart_scores($company_id);
-
+       $result->feedback_scores = $this->get_feedback_scores($this->company_id); 
+       $result->geochart_scores = $this->get_geochart_scores($this->company_id);
        return $result;
    }
 
-   public function get_feedback_scores($company_id) {
+   public function get_feedback_scores() {
        $sth = $this->dbh->prepare("
-              SELECT 
+            SELECT 
                 COUNT(Feedback.feedbackId) AS pending
               , SUM(IF(Feedback.rating BETWEEN 4 AND 5, 1, 0)) AS excellent
               , SUM(IF(Feedback.rating = 3, 1, 0)) AS average
@@ -34,14 +34,14 @@ class DBDashboard extends S36DataObject {
                 AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)     
        ");
 
-        $sth->bindParam(":company_id", $company_id, PDO::PARAM_INT);
+        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
         $sth->execute();
  
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
    }
 
-   public function get_geochart_scores($company_id) { 
+   public function get_geochart_scores() { 
        $sth = $this->dbh->prepare("
             SELECT 
                 Contact.countryId 
@@ -74,7 +74,7 @@ class DBDashboard extends S36DataObject {
                 feedbackCnt DESC      
        ");
 
-        $sth->bindParam(":company_id", $company_id, PDO::PARAM_INT);
+        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
         $sth->execute();
  
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
