@@ -90,12 +90,18 @@ class DBDashboard extends S36DataObject {
    public function write_summary() {        
        $geoscore = $this->get_geochart_scores();
        if($geoscore) {
-           $stuff = Array();
+           $insert_data = Array();
+           $insert_query = Array();
            foreach($geoscore as $rows) {
-               $stuff[] = $rows->countryname;
+               $insert_query[] = '(?, ?, ?, ?, ?)';
+               $insert_data[] = $this->company_id;
+               $insert_data[] = $rows->countryid; 
+               $insert_data[] = $rows->countryname;
+               $insert_data[] = $rows->countrycode; 
+               $insert_data[] = $rows->feedbackcnt;
            }
 
-           return $stuff;
+           return $insert_data;
        }
    }
 
