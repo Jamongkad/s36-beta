@@ -217,7 +217,7 @@ return array(
 
         $dash = new DBDashboard;
          
-        $company_id = 1;
+        $company_id = 3;
 
         $feed_score = $dash->get_feedback_scores($company_id);
         $geo_score = $dash->get_geochart_scores($company_id);
