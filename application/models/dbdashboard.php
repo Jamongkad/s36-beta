@@ -6,8 +6,8 @@ class DBDashboard extends S36DataObject {
 
    public function get_dashboard_scores() {
        $result = new StdClass;     
-       $result->feedback_scores = $this->get_feedback_scores($this->company_id); 
-       $result->geochart_scores = $this->get_geochart_scores($this->company_id);
+       $result->feedback_scores = $this->get_feedback_scores(); 
+       $result->geochart_scores = $this->get_geochart_scores();
        return $result;
    }
 
@@ -34,11 +34,11 @@ class DBDashboard extends S36DataObject {
                 AND Feedback.dtAdded >= DATE_SUB(NOW(), INTERVAL 1 MONTH)     
        ");
 
-        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
-        $sth->execute();
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute();
  
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
+       $result = $sth->fetch(PDO::FETCH_OBJ);
+       return $result;
    }
 
    public function get_geochart_scores() { 
@@ -74,10 +74,32 @@ class DBDashboard extends S36DataObject {
                 feedbackCnt DESC      
        ");
 
-        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
-        $sth->execute();
- 
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute(); 
+       $result = $sth->fetchAll(PDO::FETCH_CLASS);
+       return $result;
+   }
+
+   public function summary_exists() {
+       $sth = $this->dbh->prepare("SELECT dashboardId FROM DashboardSummary WHERE companyId = :company_id LIMIT 1");
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute();
+       return $sth->fetch(PDO::FETCH_OBJ);
+   }
+
+   public function write_summary() {        
+       $geoscore = $this->get_geochart_scores();
+       if($geoscore) {
+           $stuff = Array();
+           foreach($geoscore as $rows) {
+               $stuff[] = $rows->countryname;
+           }
+
+           return $stuff;
+       }
+   }
+
+   public function update_summary() {
+       
    }
 }

@@ -214,10 +214,11 @@ return array(
     },
 
     'GET /tests/test_dbdashboard' => function() {
-
         $dash = new DBDashboard; 
         $dash->company_id = 1;
         $feed_score = $dash->get_dashboard_scores();
-        Helpers::show_data($feed_score);
+        $exists = $dash->summary_exists();
+        $write = $dash->write_summary();
+        Helpers::show_data($write);
     }
 );
