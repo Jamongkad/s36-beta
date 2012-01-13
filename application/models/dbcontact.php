@@ -41,6 +41,33 @@ class DBContact extends S36DataObject {
         return $result_obj;
     }
 
+    public function total_contacts_by_company($company_id) {
+        $sql = "
+            SELECT 
+                  SQL_CALC_FOUND_ROWS
+                  Contact.contactId
+            FROM 
+                Contact
+                    INNER JOIN
+                        Site
+                        ON Site.siteId = Contact.siteId 
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
+             WHERE 1=1
+                 AND Company.companyId = :company_id
+             GROUP BY
+                 Contact.email;
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        return $row_count->fetchColumn();
+    }
+
     public function fetch_contacts($limit, $offset, $search_term=false) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
 

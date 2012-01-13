@@ -687,4 +687,28 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql);
         $sth->execute();
     }
+
+    public function total_feedback_by_company($company_id) {
+        $sql = "   
+            SELECT 
+                  SQL_CALC_FOUND_ROWS
+                  Feedback.feedbackId
+            FROM 
+                Feedback
+                    INNER JOIN
+                        Site
+                        ON Site.siteId = Feedback.siteId 
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
+             WHERE 1=1
+                 AND Company.companyId = :company_id            
+        ";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        return $row_count->fetchColumn();
+    }
 }

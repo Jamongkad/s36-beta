@@ -217,10 +217,20 @@ return array(
         $dash = new DBDashboard; 
         $dash->company_id = 1;
         $feed_score = $dash->get_dashboard_scores();
+
+        $feedback = new DBFeedback;
+        $contact = new DBContact;
+
+        $feedback_count = $feedback->total_feedback_by_company(1);
+        $contact_count = $contact->total_contacts_by_company(1);
+
+        Helpers::show_data($feedback_count);
+        Helpers::show_data($contact_count);
         /*
         $exists = $dash->summary_exists();
         $write = $dash->write_summary();
         */
-        Helpers::show_data($feed_score->geochart_scores);
+        //Helpers::show_data($feed_score->geochart_scores[0]->countryname);
+
     }
 );
