@@ -103,8 +103,8 @@ class DBDashboard extends S36DataObject {
            }
 
            $sql .= implode(', ', $insert_query);
-
-           return $sql;
+           $sth = $this->dbh->prepare($sql);
+           $sth->execute($insert_data);
        }
    }
 
