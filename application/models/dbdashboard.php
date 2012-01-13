@@ -92,7 +92,7 @@ class DBDashboard extends S36DataObject {
        if($geoscore) {
            $insert_data = Array();
            $insert_query = Array();
-           $sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
+           $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
            foreach($geoscore as $rows) {
                $insert_query[] = '(?, ?, ?, ?, ?)';
                $insert_data[] = $this->company_id;
@@ -102,10 +102,60 @@ class DBDashboard extends S36DataObject {
                $insert_data[] = $rows->feedbackcnt;
            }
 
-           $sql .= implode(', ', $insert_query);
-           $sth = $this->dbh->prepare($sql);
+           $geo_sql .= implode(', ', $insert_query);
+           $sth = $this->dbh->prepare($geo_sql);
            $sth->execute($insert_data);
        }
+
+       $feedbackscore = $this->get_feedback_scores();
+       $dashboard_sql = 'INSERT INTO DashboardSummary (
+                             companyId
+                           , totalFeed
+                           , newFeed
+                           , neutralFeed
+                           , negativeFeed
+                           , positiveFeed
+                           , ignoredFeed
+                           , contactTotal
+                           , contactReply
+                           , contactRequest
+                           , contactNotReply
+                           , feedFeatured 
+                           , feedPublished
+                           , topCountry
+                         ) VALUES (
+                             :company_id
+                           , :total_feed
+                           , :new_feed
+                           , :neutral_feed
+                           , :negative_feed
+                           , :positive_feed
+                           , :ignored_feed
+                           , :contact_total
+                           , :contact_reply
+                           , :contact_request
+                           , :contact_notreply
+                           , :feed_featured 
+                           , :feed_published
+                           , :top_country 
+                         )';
+
+       $sth = $this->dbh->prepare($dashboard_sql);
+       $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+       $sth->bindParam(':total_feed', $feedback->total, PDO::PARAM_INT); 
+       $sth->bindParam(':new_feed', $feedbackscore->pending, PDO::PARAM_INT);
+       $sth->bindParam(':neutral_feed', $feedbackscore->average, PDO::PARAM_INT);
+       $sth->bindParam(':negative_feed', $feedbackscore->poor, PDO::PARAM_INT);
+       $sth->bindParam(':positive_feed', $feedbackscore->excellent, PDO::PARAM_INT);
+       $sth->bindParam(':ignored_feed', 0, PDO::PARAM_INT);
+       $sth->bindParam(':contact_total', $contact->total, PDO::PARAM_INT);
+       $sth->bindParam(':contact_reply', 0, PDO::PARAM_INT); 
+       $sth->bindParam(':contact_request', 0, PDO::PARAM_INT);
+       $sth->bindParam(':contact_notreply', 0, PDO::PARAM_INT);
+       $sth->bindParam(':feed_featured', $feedbackscore->poor, PDO::PARAM_INT);
+       $sth->bindParam(':feed_published', $feedbackscore->excellent, PDO::PARAM_INT);
+       $sth->bindParam(':top_country', $geoscore[0]->countryname, PDO::PARAM_STR);  
+       $sth->execute();
    }
 
    public function update_summary() {

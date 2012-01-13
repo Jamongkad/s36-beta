@@ -217,8 +217,10 @@ return array(
         $dash = new DBDashboard; 
         $dash->company_id = 1;
         $feed_score = $dash->get_dashboard_scores();
+        /*
         $exists = $dash->summary_exists();
         $write = $dash->write_summary();
-        Helpers::show_data($write);
+        */
+        Helpers::show_data($feed_score->geochart_scores);
     }
 );
