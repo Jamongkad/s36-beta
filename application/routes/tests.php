@@ -211,5 +211,18 @@ return array(
 
         $json = json_encode($arr_data);
         Helpers::show_data($json);
+    },
+
+    'GET /tests/test_dbdashboard' => function() {
+
+        $dash = new DBDashboard;
+         
+        $company_id = 1;
+
+        $feed_score = $dash->get_feedback_scores($company_id);
+        $geo_score = $dash->get_geochart_scores($company_id);
+
+        Helpers::show_data($feed_score);
+        Helpers::show_data($geo_score);
     }
 );
