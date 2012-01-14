@@ -17,7 +17,7 @@ class FireMultiple {
         $ok_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] != "POOR"; });
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
         
-        /*
+        /* DEBUG
         Helpers::show_data($ok_ratings);
         Helpers::show_data($poor_ratings);
         Helpers::show_data($this->mode);

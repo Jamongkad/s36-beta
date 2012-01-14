@@ -15,8 +15,8 @@ class Permission {
         $supplier = new PermissionSupplier($this->input);
         $result_array = Array();
 
-        foreach($supplier->load() as $key => $value) {
-            foreach($value as $k => $v) {
+        foreach ($supplier->load() as $key => $value) {
+            foreach ($value as $k => $v) {
                 $result_array[$key."_".$k] = $v;     
             }
            
@@ -51,8 +51,8 @@ class PermissionSupplier {
 
     private function _fill_emptiness() { 
 
-        foreach($this->config_array as $key => $object) { 
-            if(!array_key_exists($key, $this->input)) {
+        foreach ($this->config_array as $key => $object) { 
+            if (!array_key_exists($key, $this->input)) {
                 $this->input[$key] = $object->expose_keys();
             } else {
                 $this->input[$key] = $object->expose_rules($this->input);
@@ -81,8 +81,8 @@ class InboxPermission extends PermissionType {
 
         $this->perms = $perms['inbox'];
 
-        foreach($this->permission_keys as $key_rule => $key_value) { 
-            if(!array_key_exists($key_rule, $this->perms)) {
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }
@@ -103,8 +103,8 @@ class FeaturePermission extends PermissionType {
 
         $this->perms = $perms['feature'];
 
-        foreach($this->permission_keys as $key_rule => $key_value) { 
-            if(!array_key_exists($key_rule, $this->perms)) {
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }
@@ -125,8 +125,8 @@ class FeedsetupPermission extends PermissionType {
 
         $this->perms = $perms['feedsetup'];
 
-        foreach($this->permission_keys as $key_rule => $key_value) { 
-            if(!array_key_exists($key_rule, $this->perms)) {
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }
@@ -147,8 +147,8 @@ class ContactPermission extends PermissionType {
 
         $this->perms = $perms['contact'];
 
-        foreach($this->permission_keys as $key_rule => $key_value) { 
-            if(!array_key_exists($key_rule, $this->perms)) {
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }
@@ -169,8 +169,8 @@ class SettingPermission extends PermissionType {
 
         $this->perms = $perms['setting'];
 
-        foreach($this->permission_keys as $key_rule => $key_value) { 
-            if(!array_key_exists($key_rule, $this->perms)) {
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
                 $this->perms[$key_rule] = 0;
             }
         }

@@ -10,8 +10,8 @@ class Email {
     }
 
     public function process_email() { 
-        if($this->emails) { 
-            foreach($this->emails as $email) {     
+        if ($this->emails) { 
+            foreach ($this->emails as $email) {     
                 /*
                 if(!$this->postmark->to($email->get_address())
                                    //->bcc($email->get_bcc())
@@ -22,7 +22,6 @@ class Email {
                 }
                 */
                 $this->postmark->to($email->get_address())
-                                //->bcc($email->get_bcc())
                                ->subject($email->get_subject())
                                ->html_message($email->get_message())
                                ->send();

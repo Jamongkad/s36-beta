@@ -106,7 +106,7 @@ class DBUserTheme extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         
         $value_object = null;
-        if($result->widgetname == 'embedded') {
+        if ($result->widgetname == 'embedded') {
             $value_object = new S36DataObject\EmbeddedWidget;
             $value_object->site_id    = $result->siteid;
             $value_object->company_id = $result->companyid; 
@@ -120,7 +120,7 @@ class DBUserTheme extends S36DataObject {
             $value_object->widget_option_id = $result->widgetoptionid;
         }
 
-        if($result->widgetname == 'modal') {
+        if ($result->widgetname == 'modal') {
             $value_object = new S36DataObject\ModalWidget;
             $value_object->site_id    = $result->siteid;
             $value_object->company_id = $result->companyid; 
@@ -139,7 +139,7 @@ class DBUserTheme extends S36DataObject {
                                         ->where('companyId', '=', $post['companyId'])
                                         ->update(Array('themeId' => $post['theme_id']));
 
-        if($post['widgetType'] == 'embedded') { 
+        if ($post['widgetType'] == 'embedded') { 
             DB::table('EmbeddedBlockOptions', 'master')->where('userThemeId', '=', $post['userThemeId'])
                                                        ->where('embeddedBlockId', '=', $post['widgetOptionId'])
                                                        ->update(Array(
@@ -151,7 +151,7 @@ class DBUserTheme extends S36DataObject {
                                                        ));
         }
 
-        if($post['widgetType'] == 'modal') {  
+        if ($post['widgetType'] == 'modal') {  
             DB::table('ModalWindowOptions', 'master')->where('userThemeId', '=', $post['userThemeId'])
                                                        ->where('modalId', '=', $post['widgetOptionId'])
                                                        ->update(Array('effectId' => $post['modal_effects']));
@@ -171,7 +171,7 @@ class OptionFactory {
 
         $embed_type = $post['embed_type'];
 
-        if($embed_type == 'embedded') { 
+        if ($embed_type == 'embedded') { 
             $params = Array(
                 'units'    => $post['embed_units']
               , 'type'     => $post['embed_block_type']
@@ -183,12 +183,12 @@ class OptionFactory {
             $this->obj = new EmbeddedBlockOptions($params);          
         }
            
-        if($embed_type == 'fullpage') {
+        if ($embed_type == 'fullpage') {
             $params = Array('units' => $post['full_page_units'], 'userThemeId' => $insert_id);
             $this->obj = new FullPageOptions($params);      
         }
        
-        if($embed_type == 'modal') {
+        if ($embed_type == 'modal') {
             $params = Array('effectId' => $post['modal_effects'], 'userThemeId' => $insert_id);
             $this->obj = new ModalWindowOptions($params);          
         }
