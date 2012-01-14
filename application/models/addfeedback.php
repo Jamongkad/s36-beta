@@ -1,9 +1,9 @@
 <?php
 
 class AddFeedback {
-
+ 
     public function create_feedback_with_profile() {
-        
+        //TODO: HEY MOTHABITCH! REFACTOR THIS CODE ASAP!!        
         $fb = new DBFeedback;
         $ct = new DBContact;
         $us = new DBUser;
@@ -75,6 +75,10 @@ class AddFeedback {
         $email = new Email($email_pages);
         $email->process_email();
         
+        $dash = new DBDashboard; 
+        $dash->company_id = Input::get('company_id');
+        $dash->write_summary();
+
         //check if sample-avatar if not...delete original photo once done... 
         $orig_image_dir = Input::get('orig_image_dir');
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
