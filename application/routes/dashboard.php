@@ -10,5 +10,6 @@ return array(
         return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view', Array(
             'dashboard_summary' => $dashboard_summary
         ));
+
     }),
 );
