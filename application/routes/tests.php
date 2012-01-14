@@ -215,7 +215,7 @@ return array(
 
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
-        $dash->company_id = S36Auth::auth()->companyid;
+        $dash->company_id = 3;
         /*
         $feed_score = $dash->get_dashboard_scores();
 
