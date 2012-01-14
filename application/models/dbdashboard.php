@@ -176,27 +176,6 @@ class DBDashboard extends S36DataObject
    }
 
    public function update_summary() {
-       $geoscore = $this->get_geochart_scores();
-       $feedback = new DBFeedback;
-       $contact = new DBContact;
-
-       if ($geoscore) {
-           $insert_data = Array();
-           $insert_query = Array();
-           $geo_sql = 'UPDATE Geochart (companyId, countryId, countryName, countryCode, feedbackCount) SET ';
-           foreach ($geoscore as $rows) {
-               $insert_query[] = '(?, ?, ?, ?, ?)';
-               $insert_data[] = $this->company_id;
-               $insert_data[] = $rows->countryid; 
-               $insert_data[] = $rows->countryname;
-               $insert_data[] = $rows->countrycode; 
-               $insert_data[] = $rows->feedbackcnt;
-           }
-
-           $geo_sql .= implode(', ', $insert_query);
-           $sth = $this->dbh->prepare($geo_sql);
-           $sth->execute($insert_data);
-       }
                
    }
 
