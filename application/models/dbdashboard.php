@@ -242,7 +242,8 @@ class DBDashboard extends S36DataObject
        $sth->execute(); 
 
        $geo_result = $sth->fetchAll(PDO::FETCH_CLASS);
-
+     
+       $final = null;
        if ($geo_result) {
            $final = array_map(function($rows)  {
                return Array($rows->countryname, $rows->feedbackcount);

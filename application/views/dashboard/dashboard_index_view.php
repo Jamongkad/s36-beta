@@ -30,7 +30,7 @@
         data.addRows(6);
         data.addColumn('string', 'Country');
         data.addColumn('number', 'Feedback Density');
-        data.addRows(<?=$geo_chart_data?>);
+        data.addRows(<?=$dashboard_summary->geoscores?>);
 
         var options = {};
 
@@ -82,10 +82,10 @@
 <div class="block noborder grids">
     <div class="dashboard-updates">
         <div class="dashboard-updates-title"><strong>New Incoming Feedback</strong> </div>
-        <div class="dashboard-updates-list pending"><strong>23 new entries</strong> are pending your review </div>
-        <div class="dashboard-updates-list positive"><strong>8 new entries</strong> are rated positively </div>
-        <div class="dashboard-updates-list neutral"><strong>10 entries</strong> are rated neutral </div>
-        <div class="dashboard-updates-list negative"><strong>3 entries</strong> are rated negatively </div>
+        <div class="dashboard-updates-list pending"><strong><?=$dashboard_summary->dashscores->newfeed?> new entries</strong> are pending your review </div>
+        <div class="dashboard-updates-list positive"><strong><?=$dashboard_summary->dashscores->positivefeed?> new entries</strong> are rated positively </div>
+        <div class="dashboard-updates-list neutral"><strong><?=$dashboard_summary->dashscores->neutralfeed?> entries</strong> are rated neutral </div>
+        <div class="dashboard-updates-list negative"><strong><?=$dashboard_summary->dashscores->negativefeed?> entries</strong> are rated negatively </div>
         <!--<div class="dashboard-updates-list ignored"><strong>5 entries</strong> have been ignored </div>-->
     </div>
     <div class="dashboard-pie-chart">
