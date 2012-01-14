@@ -148,6 +148,9 @@ class DBDashboard extends S36DataObject
        $total_feedback = $feedback->total_feedback_by_company($this->company_id);
        $total_contacts = $contact->total_contacts_by_company($this->company_id);
 
+       //We do this in the absence of other modules.
+       $zero = 0;
+
        $sth = $this->dbh->prepare($dashboard_sql);
        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
        $sth->bindParam(':total_feed', $total_feedback, PDO::PARAM_INT); 
@@ -155,11 +158,11 @@ class DBDashboard extends S36DataObject
        $sth->bindParam(':neutral_feed', $feedbackscore->average, PDO::PARAM_INT);
        $sth->bindParam(':negative_feed', $feedbackscore->poor, PDO::PARAM_INT);
        $sth->bindParam(':positive_feed', $feedbackscore->excellent, PDO::PARAM_INT);
-       $sth->bindParam(':ignored_feed', 0, PDO::PARAM_INT);
+       $sth->bindParam(':ignored_feed', $zero, PDO::PARAM_INT);
        $sth->bindParam(':contact_total', $total_contacts, PDO::PARAM_INT);
-       $sth->bindParam(':contact_reply', 0, PDO::PARAM_INT); 
-       $sth->bindParam(':contact_request', 0, PDO::PARAM_INT);
-       $sth->bindParam(':contact_notreply', 0, PDO::PARAM_INT);
+       $sth->bindParam(':contact_reply', $zero, PDO::PARAM_INT); 
+       $sth->bindParam(':contact_request', $zero, PDO::PARAM_INT);
+       $sth->bindParam(':contact_notreply', $zero, PDO::PARAM_INT);
        $sth->bindParam(':feed_featured', $feedbackscore->poor, PDO::PARAM_INT);
        $sth->bindParam(':feed_published', $feedbackscore->excellent, PDO::PARAM_INT);
        $sth->bindParam(':top_country', $geoscore[0]->countryname, PDO::PARAM_STR);  
