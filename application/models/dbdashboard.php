@@ -95,8 +95,7 @@ class DBDashboard extends S36DataObject
        $contact = new DBContact;
  
        try { 
-           $this->dbh->beginTransaction();
-           
+           $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
                $this->clear_recent_summary();
@@ -198,6 +197,54 @@ class DBDashboard extends S36DataObject
    }
 
    public function pull_summary() {
-       
+       $dashboard_sql = "
+            SELECT 
+                dashboardId
+              , DashboardSummary.companyId AS dsid
+              , totalFeed
+              , newFeed
+              , neutralFeed
+              , negativeFeed
+              , positiveFeed
+              , ignoredFeed
+              , contactTotal
+              , contactReply 
+              , contactRequest
+              , contactNotReply
+              , feedFeatured
+              , feedPublished
+              , topCountry
+              
+            FROM 
+                DashboardSummary
+            WHERE 1=1
+                AND DashboardSummary.companyId = :company_id";
+
+       $sth = $this->dbh->prepare($dashboard_sql);
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute(); 
+
+       $dash_result = $sth->fetch(PDO::FETCH_OBJ);
+
+       $geochart_sql = " 
+            SELECT  
+               countryId
+             , countryName
+             , countryCode
+             , feedbackCount
+            FROM
+                Geochart
+            WHERE 1=1
+                AND Geochart.companyId = :company_id";
+
+       $sth = $this->dbh->prepare($geochart_sql);
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute(); 
+
+       $geo_result = $sth->fetchAll(PDO::FETCH_CLASS);
+      
+       $result_obj = new StdClass;
+       $result_obj->dashscores = $dash_result;
+       $result_obj->geoscores = $geo_result;
    }
 }
