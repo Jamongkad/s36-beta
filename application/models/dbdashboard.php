@@ -191,6 +191,7 @@ class DBDashboard extends S36DataObject
             WHERE 1=1
                  AND DashboardSummary.companyId = :company_id
        ";
+       $sth = $this->dbh->prepare($sql);
        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
        $sth->execute(); 
    }
