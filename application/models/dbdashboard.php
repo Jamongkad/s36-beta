@@ -116,34 +116,11 @@ class DBDashboard extends S36DataObject
 
            $feedbackscore = $this->get_feedback_scores();
            $dashboard_sql = 'INSERT INTO DashboardSummary (
-                                 companyId
-                               , totalFeed
-                               , newFeed
-                               , neutralFeed
-                               , negativeFeed
-                               , positiveFeed
-                               , ignoredFeed
-                               , contactTotal
-                               , contactReply
-                               , contactRequest
-                               , contactNotReply
-                               , feedFeatured 
-                               , feedPublished
-                               , topCountry
+                                 companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
+                               , contactTotal, contactReply, contactRequest, contactNotReply, feedFeatured , feedPublished, topCountry
                              ) VALUES (
-                                 :company_id
-                               , :total_feed
-                               , :new_feed
-                               , :neutral_feed
-                               , :negative_feed
-                               , :positive_feed
-                               , :ignored_feed
-                               , :contact_total
-                               , :contact_reply
-                               , :contact_request
-                               , :contact_notreply
-                               , :feed_featured 
-                               , :feed_published
+                                 :company_id, :total_feed, :new_feed, :neutral_feed, :negative_feed, :positive_feed, :ignored_feed
+                               , :contact_total, :contact_reply, :contact_request, :contact_notreply, :feed_featured , :feed_published
                                , :top_country 
                              )';
 
@@ -175,8 +152,26 @@ class DBDashboard extends S36DataObject
        }
    }
 
-   public function update_summary() {
-               
+   public function check_summary() {
+       $sql = "
+           SELECT 
+                 DashboardSummary.companyId AS dscompanyId
+               , Geochart.companyId AS gccompanyId
+           FROM 
+               DashboardSummary
+           INNER JOIN
+               Geochart
+                   ON Geochart.companyId = DashboardSummary.companyId
+           WHERE 1=1
+               AND DashboardSummary.companyId = :company_id
+       ";
+
+       $sth = $this->dbh->prepare($sql);
+       $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+       $sth->execute();
+
+       $result = $sth->fetch(PDO::FETCH_OBJ);
+       return $result;
    }
 
    public function pull_summary() {
