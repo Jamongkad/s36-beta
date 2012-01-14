@@ -242,10 +242,21 @@ class DBDashboard extends S36DataObject
        $sth->execute(); 
 
        $geo_result = $sth->fetchAll(PDO::FETCH_CLASS);
-      
+
+       if ($geo_result) {
+           /*
+           foreach ($geo_result as $rows) {
+               $final_geo_result[]     
+           }
+           */
+           $final = array_map(function($rows)  {
+               return Array($rows->countryname, $rows->feedbackcount);
+           }, $geo_result);
+       }
+
        $result_obj = new StdClass;
        $result_obj->dashscores = $dash_result;
-       $result_obj->geoscores = $geo_result;
+       $result_obj->geoscores = $final;
 
        return $result_obj;
    }
