@@ -1,6 +1,7 @@
 <?php
 
-class DBDashboard extends S36DataObject {
+class DBDashboard extends S36DataObject 
+{
    
    public $company_id;
 
@@ -93,11 +94,11 @@ class DBDashboard extends S36DataObject {
        $feedback = new DBFeedback;
        $contact = new DBContact;
 
-       if($geoscore) {
+       if ($geoscore) {
            $insert_data = Array();
            $insert_query = Array();
            $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
-           foreach($geoscore as $rows) {
+           foreach ($geoscore as $rows) {
                $insert_query[] = '(?, ?, ?, ?, ?)';
                $insert_data[] = $this->company_id;
                $insert_data[] = $rows->countryid; 
@@ -144,15 +145,18 @@ class DBDashboard extends S36DataObject {
                            , :top_country 
                          )';
 
+       $total_feedback = $feedback->total_feedback_by_company($this->company_id);
+       $total_contacts = $contact->total_contacts_by_company($this->company_id);
+
        $sth = $this->dbh->prepare($dashboard_sql);
        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
-       $sth->bindParam(':total_feed', $feedback->total_feedback_by_company($this->company_id), PDO::PARAM_INT); 
+       $sth->bindParam(':total_feed', $total_feedback, PDO::PARAM_INT); 
        $sth->bindParam(':new_feed', $feedbackscore->pending, PDO::PARAM_INT);
        $sth->bindParam(':neutral_feed', $feedbackscore->average, PDO::PARAM_INT);
        $sth->bindParam(':negative_feed', $feedbackscore->poor, PDO::PARAM_INT);
        $sth->bindParam(':positive_feed', $feedbackscore->excellent, PDO::PARAM_INT);
        $sth->bindParam(':ignored_feed', 0, PDO::PARAM_INT);
-       $sth->bindParam(':contact_total', $contact->total_contacts_by_company($this->company_id), PDO::PARAM_INT);
+       $sth->bindParam(':contact_total', $total_contacts, PDO::PARAM_INT);
        $sth->bindParam(':contact_reply', 0, PDO::PARAM_INT); 
        $sth->bindParam(':contact_request', 0, PDO::PARAM_INT);
        $sth->bindParam(':contact_notreply', 0, PDO::PARAM_INT);
@@ -163,6 +167,6 @@ class DBDashboard extends S36DataObject {
    }
 
    public function update_summary() {
-       
+               
    }
 }

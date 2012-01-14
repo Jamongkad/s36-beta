@@ -216,6 +216,7 @@ return array(
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
         $dash->company_id = 1;
+        /*
         $feed_score = $dash->get_dashboard_scores();
 
         $feedback = new DBFeedback;
@@ -226,6 +227,8 @@ return array(
 
         Helpers::show_data($feedback_count);
         Helpers::show_data($contact_count);
+        */
+        $dash->write_summary();
         /*
         $exists = $dash->summary_exists();
         $write = $dash->write_summary();
