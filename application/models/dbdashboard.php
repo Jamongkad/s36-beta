@@ -96,7 +96,8 @@ class DBDashboard extends S36DataObject
  
        try { 
            $this->dbh->beginTransaction();
-
+           
+           //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
                $this->clear_recent_summary();
            }
