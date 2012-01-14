@@ -252,7 +252,7 @@ class DBDashboard extends S36DataObject
 
        $result_obj = new StdClass;
        $result_obj->dashscores = $dash_result;
-       $result_obj->geoscores = json_encode($final);
+       $result_obj->geoscores = json_encode($final, JSON_NUMERIC_CHECK);
 
        return $result_obj;
    }
