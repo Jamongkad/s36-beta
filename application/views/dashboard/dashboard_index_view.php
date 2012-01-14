@@ -102,7 +102,7 @@
     <div class="dashboard-graybox">
         <div class="g1of3">
             <h3>Contacts</h3>
-            <p><strong><?=$dashboard_summary->dashscores->contacttotal?> incoming</strong> entries from contacts </p>
+            <p><strong><?=$dashboard_summary->dashscores->newfeed?> incoming</strong> entries from contacts </p>
             <!--<p><strong>3 of your contacts</strong> have not yet responded to your feedback requests</p>-->
         </div>
         <div class="g1of3">
