@@ -96,6 +96,11 @@ class DBDashboard extends S36DataObject
  
        try { 
            $this->dbh->beginTransaction();
+
+           if ($this->check_summary()) {
+               $this->clear_recent_summary();
+           }
+
            if ($geoscore) {
                $insert_data = Array();
                $insert_query = Array();
@@ -173,6 +178,21 @@ class DBDashboard extends S36DataObject
 
        $result = $sth->fetch(PDO::FETCH_OBJ);
        return $result;
+   }
+
+   public function clear_recent_summary() {
+       $sql = "
+           DELETE DashboardSummary, Geochart 
+           FROM 
+               DashboardSummary
+           INNER JOIN
+               Geochart
+                   ON Geochart.companyId = DashboardSummary.companyId
+            WHERE 1=1
+                 AND DashboardSummary.companyId = :company_id
+       ";
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute(); 
    }
 
    public function pull_summary() {

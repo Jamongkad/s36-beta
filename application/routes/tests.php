@@ -228,7 +228,7 @@ return array(
         Helpers::show_data($feedback_count);
         Helpers::show_data($contact_count);
         */
-        $d = $dash->check_summary();
+        $d = $dash->write_summary();
         Helpers::show_data($d);
         /*
         $exists = $dash->summary_exists();
