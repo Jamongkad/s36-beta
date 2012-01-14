@@ -102,13 +102,13 @@
     <div class="dashboard-graybox">
         <div class="g1of3">
             <h3>Contacts</h3>
-            <p><strong>32 incoming</strong> entries from contacts </p>
+            <p><strong><?=$dashboard_summary->dashscores->contacttotal?> incoming</strong> entries from contacts </p>
             <!--<p><strong>3 of your contacts</strong> have not yet responded to your feedback requests</p>-->
         </div>
         <div class="g1of3">
             <h3>Feedback Statistics</h3>
-            <p><strong>4,369</strong> featured entries </p>
-            <p><strong>1,120</strong> published entries </p>
+            <p><strong><?=$dashboard_summary->dashscores->feedfeatured?></strong> featured entries </p>
+            <p><strong><?=$dashboard_summary->dashscores->feedpublished?></strong> published entries </p>
             <!--
             <p><strong>800</strong> feedback requests  </p>
             <p><strong>372,824</strong> impressions </p>
@@ -117,9 +117,9 @@
         </div>
         <div class="g1of3">
             <h3>Feedback Submitters</h3>
-            <p>Top country:<strong> Singapore</strong> </p>
+            <p>Top country:<strong><?=$dashboard_summary->dashscores->topcountry?></strong> </p>
             <!--<p>Average time on site: <strong>2:93</strong> </p>-->
-            <p>Unique submitters: <strong>29,495</strong> </p>
+            <p>Unique submitters: <strong> <?=$dashboard_summary->dashscores->contacttotal?> </strong> </p>
         </div>
     </div>
 </div>
