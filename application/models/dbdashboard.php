@@ -93,7 +93,7 @@ class DBDashboard extends S36DataObject
        $geoscore = $this->get_geochart_scores();
        $feedback = new DBFeedback;
        $contact = new DBContact;
-        
+ 
        try { 
            $this->dbh->beginTransaction();
            if ($geoscore) {
@@ -164,6 +164,7 @@ class DBDashboard extends S36DataObject
                    ON Geochart.companyId = DashboardSummary.companyId
            WHERE 1=1
                AND DashboardSummary.companyId = :company_id
+           LIMIT 1
        ";
 
        $sth = $this->dbh->prepare($sql);
