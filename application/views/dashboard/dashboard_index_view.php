@@ -1,29 +1,6 @@
 <script type="text/javascript">
     google.load('visualization', '1', {'packages': ['geochart']});
     google.setOnLoadCallback(drawRegionsMap);
-	 
-    function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Task');
-        data.addColumn('number', 'Hours per Day');
-        data.addRows(3);
-
-        data.setValue(0, 0, 'Positive');
-        data.setValue(0, 1, 2);
-
-        data.setValue(1, 0, 'Neutral');
-        data.setValue(1, 1, 2);
-
-        data.setValue(2, 0, 'Negative');
-        data.setValue(2, 1, 2);
-
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, {
-            width: 220, height: 220,legend:'bottom', chartArea:{top:20},title:'Overall Feedback Score',
-            titleTextStyles:{color: '#343434', fontSize: 12,fontWeight:'bold'},
-            colors:['#00bf9b','#81cf40','#df0d0d']
-        });
-    }
 	  
     function drawRegionsMap() {
         var data = new google.visualization.DataTable();
@@ -42,9 +19,9 @@
     $(function() {
         
         var data = [
-            { label: "Positive",  data: 50, color: '#109ca5' },
-            { label: "Negative",  data: 30, color: '#8f3215'},
-            { label: "Neutral",  data: 20, color: '#c1661c'},
+            { label: "Positive",  data: <?=$dashboard_summary->dashscores->positivefeed?>, color: '#109ca5' },
+            { label: "Negative",  data: <?=$dashboard_summary->dashscores->negativefeed?>, color: '#8f3215'},
+            { label: "Neutral",  data: <?=$dashboard_summary->dashscores->neutralfeed?>, color: '#c1661c'},
         ];
 
         $.plot($("#chart_div"), data, {
