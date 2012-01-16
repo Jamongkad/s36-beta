@@ -55,7 +55,7 @@
     </script>
 
     <div class="block noborder">
-        <h3>News from 36Stories: <span style="font-weight:normal">We've reached a new milestone today!</span></h3>
+        <!--<h3>News from 36Stories: <span style="font-weight:normal">We've reached a new milestone today!</span></h3>-->
     </div> 
     <div class="block noborder grids">
         <div class="dashboard-updates">
