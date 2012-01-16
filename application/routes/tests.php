@@ -175,12 +175,6 @@ return array(
         Helpers::show_data($result);
     },
 
-    'GET /tests/test_truncate' => function() {       
-        $feedback = new DBFeedback;
-        $data = $feedback->pull_feedback_by_id(40);
-        Helpers::show_data(Helpers::limit_string($data->text));
-    },
-
     'GET /tests/browser_info' => function() {
         $userinfo = new UserInfo;
         Helpers::show_data($userinfo->get_real_ip_addr());
@@ -190,27 +184,6 @@ return array(
 
     'GET /tests/feedback_submission' => function() {
         
-    },
-
-    'GET /tests/json_for_dashboard' => function() {
-        $data = Array(
-            Array('label' => 'series1', 'data' => 12) 
-          , Array('label' => 'series2', 'data' => 30) 
-          , Array('label' => 'series3', 'data' => 69) 
-          , Array('label' => 'series4', 'data' => 8) 
-          , Array('label' => 'series5', 'data' => 20) 
-        );
-        
-        $arr_data = Array(
-            Array('Germany', 100) 
-          , Array('United States', 1000)
-          , Array('Philippines', 290)
-          , Array('Singapore', 780)
-          , Array('Thailand', 659)
-        );
-
-        $json = json_encode($arr_data);
-        Helpers::show_data($json);
     },
 
     'GET /tests/test_dbdashboard' => function() {

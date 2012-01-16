@@ -112,13 +112,10 @@ class DBFeedback extends S36DataObject {
                 , Site.siteId AS siteid
                 , LENGTH(text) AS textlength
             FROM 
-                User
-                    INNER JOIN
-                        Site
-                        ON Site.companyId = User.companyId 
+                Feedback
                     INNER JOIN 
-                        Feedback
-                        ON Feedback.siteId = Site.siteId 
+                        Site
+                        ON Site.siteId = Feedback.siteId 
                     INNER JOIN
                         Category
                         ON Category.categoryId = Feedback.categoryId 
@@ -130,11 +127,10 @@ class DBFeedback extends S36DataObject {
                         ON Country.countryId = Contact.countryId
                     INNER JOIN
                         Company
-                        ON Company.companyId = User.companyId
-                       AND Company.companyId = Category.companyId
+                        ON Company.companyId = Site.companyId
                     WHERE 1=1
                         '.$siteid_statement.'
-                        AND User.userId = :user_id
+                        AND Company.companyId = :company_id
                         AND Feedback.isDeleted = :is_deleted
                         AND Feedback.isPublished = :is_published
                         AND Feedback.isFeatured = :is_featured
@@ -142,15 +138,13 @@ class DBFeedback extends S36DataObject {
                         '.$profanity_statement.'
                         '.$flagged_statement.'
                         '.$filed_statement.'
-                    GROUP BY
-                        1
                     ORDER BY
                         '.$mostcontent_statement.'
                     LIMIT :offset, :limit 
         ';
  
         $sth = $this->dbh->prepare($sql);      
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
         $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
@@ -241,13 +235,10 @@ class DBFeedback extends S36DataObject {
                 , Country.code AS countrycode
                 , LENGTH(text) AS textlength
             FROM 
-                User
-                    INNER JOIN
-                        Site
-                        ON User.companyId = Site.companyId
+                Feedback
                     INNER JOIN 
                         Feedback
-                        ON Site.siteId = Feedback.siteId
+                        ON Feedback.siteId = Site.siteId
                     INNER JOIN
                         Category
                         ON Feedback.categoryId = Category.categoryId
@@ -257,14 +248,15 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN 
                         Country
                         ON Country.countryId = Contact.countryId
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
                     WHERE 1=1
                         AND Site.siteId = :site_id 
-                        AND User.companyId = :company_id
+                        AND Company.companyId = :company_id
                         '.$published_statement.'
                         '.$featured_statement.'
                         '.$combined_statement.'
-                    GROUP BY
-                        1
                     ORDER BY  
                         Feedback.dtAdded DESC
         ';
@@ -352,12 +344,9 @@ class DBFeedback extends S36DataObject {
                 , Site.name AS sitename
                 , Site.domain AS sitedomain
             FROM 
-                User
+                Feedback
                     INNER JOIN
                         Site
-                        ON User.companyId = Site.companyId
-                    INNER JOIN 
-                        Feedback
                         ON Site.siteId = Feedback.siteId
                     INNER JOIN
                         Category
@@ -370,8 +359,6 @@ class DBFeedback extends S36DataObject {
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND Feedback.feedbackId = :feedback_id
-                    GROUP BY 
-                        1
         ');
 
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
