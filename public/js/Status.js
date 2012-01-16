@@ -15,8 +15,3 @@ Status.prototype.notify = function(msg, delay) {
 		}
 	});
 }
-
-Status.prototype.hideNotification = function() {
-    var me = this;
- 	
-}
