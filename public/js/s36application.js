@@ -471,7 +471,10 @@ jQuery(function($) {
             $(this).hide();
             $(me).show();
             textarea.attr('disabled', 'disabled');
-            $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() });
+            $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            });
             e.preventDefault();
         });
  
