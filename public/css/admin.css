@@ -329,6 +329,7 @@ templates ul:after, .category-picker:after, .category-box:after
 
 #admin-panel .dashboard-updates-title{background:#ededed;padding:10px;}
 #admin-panel .dashboard-updates-list{padding:7px 10px 7px 40px;margin:0px 0px;border-top:1px solid #dfdfdf;color:#777777;background:url(../img/ico-dashboard-updates.png) no-repeat left;}
+#admin-panel .dashboard-updates-list a { color:#777777; }
 #admin-panel .dashboard-updates .pending{background-position:0px 0px;}
 #admin-panel .dashboard-updates .positive{background-position:0px -30px;}
 #admin-panel .dashboard-updates .neutral{background-position:0px -90px;}
