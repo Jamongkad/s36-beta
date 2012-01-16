@@ -12,7 +12,7 @@
         <?=HTML::style('css/zebra_pagination.css')?>
 
         <?=HTML::script('js/jquery-1.7.1.min.js')?>
-        <?=HTML::script('js/ember-0.9.3.min.js')?>
+        <?//=HTML::script('js/ember-0.9.3.min.js')?>
 
         <?=HTML::script('js/jquery.tmpl.js')?>
         <?=HTML::script('js/Checky.js')?> 
@@ -33,7 +33,7 @@
         <?=HTML::script('js/jquery.flot.pie.js')?>
 
         <?=HTML::script('js/s36application.js')?>
-        <?=HTML::script('js/s36application-ember.js')?>
+        <?//=HTML::script('js/s36application-ember.js')?>
 
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     </meta>    

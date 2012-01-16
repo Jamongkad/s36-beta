@@ -156,7 +156,6 @@ jQuery(function($) {
                                   .parents('.email-picker').show().end()
                                   .parent().siblings('.ff-form').hide().children('.ff-forward-to').html("").end();
                                 $('textarea[name="email_comment"]').val("");
-
                                 alert("Fast-forward sent to " + $('a', me).text());
                             }
                         })
@@ -242,28 +241,6 @@ jQuery(function($) {
 
     var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
     priorityChange.enable();
-
-    /* 
-    $('.catmenu-status, .catmenu-priority').bind('change', function(e) {
-        var select = $(this);
-        var select_val = select.val();
-        var feedid = select.attr('feedid');
-        var feedurl = select.attr('feedurl');
-       
-        $.ajax({
-              type: "POST"
-            , url: feedurl
-            , data: {"select_val":select_val, "feed_id": feedid}
-            , success: function(msg)  { 
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
-            }
-        });
-        
-        select.siblings().text(select_val);
-    }).show();
-    */
-
 
     $('.check').fancytips();
     $('.fileas').fancytips();
@@ -358,7 +335,6 @@ jQuery(function($) {
                         .html( ctgy_nm_val ).end().end().end()
                   $.ajax({ url: that.attr('href'), type: "POST", data: {ctgy_nm: ctgy_nm_val} });
               } else {
-                  console.log("Update");
                   that.text("Update")     
                         .parents('div')
                         .siblings('div')

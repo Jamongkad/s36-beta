@@ -141,8 +141,6 @@ CatPickObject.prototype.process = function() {
             if(me.catstate == "default") {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
-
-
             var myStatus = new Status();
             myStatus.notify("Processing...", 1000);
         }});
