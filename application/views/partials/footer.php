@@ -12,5 +12,14 @@ if(S36Auth::check()):
 <?endif?>
 
 </div>
+
+<div id="notification">
+	<div id="notification-design">
+    	<div id="notification-message">
+        	Loading... Please Wait... you bits.
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -3,11 +3,6 @@ jQuery(function($) {
     $('a.cat-picks').bind('click', function(e) {
 
         var deselect_this = false;
-        /*
-        if($(this).hasClass('Matched')) {
-            deselect_this = true;
-        } 
-        */
 
         $(this).parent().siblings().children('a').each(function() {
             $(this).removeClass("Matched");     
@@ -35,10 +30,14 @@ jQuery(function($) {
         if(!deselect) {
             $(this).addClass('matched');
         }
-        
+
         $.ajax({
             type: "GET"     
           , url: $(this).attr('href')
+          , success: function(msg) {
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
         }) 
 
         e.preventDefault();
@@ -61,6 +60,10 @@ jQuery(function($) {
             type: "GET"     
           , data: {"state": var_state}
           , url: $(this).attr('href')
+          , success: function(msg) { 
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
         }) 
 
         e.preventDefault();
@@ -103,7 +106,7 @@ jQuery(function($) {
     $("#themeId_1 input:radio").attr('checked', true);
     
     //FastForward Email Block...fuck this is a mess...
-    $('div.category-picker-holder, div.fast-forward-holder, .ff-form').hide();
+    $('div.category-picker-holder, div.fast-forward-holder, .ff-form, #notification-message').hide();
     var mouse_is_inside = false;
     $('.contact, .fileas, .forward').hover(function() {
         mouse_is_inside = true;  
@@ -153,6 +156,7 @@ jQuery(function($) {
                                   .parents('.email-picker').show().end()
                                   .parent().siblings('.ff-form').hide().children('.ff-forward-to').html("").end();
                                 $('textarea[name="email_comment"]').val("");
+
                                 alert("Fast-forward sent to " + $('a', me).text());
                             }
                         })
@@ -208,6 +212,8 @@ jQuery(function($) {
           , data: {site_id: $(me).val()}
           , success: function(msg) {
                 $("#display-info-target").html(msg);             
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
             }
         })
 
@@ -237,7 +243,7 @@ jQuery(function($) {
     var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
     priorityChange.enable();
 
-    
+    /* 
     $('.catmenu-status, .catmenu-priority').bind('change', function(e) {
         var select = $(this);
         var select_val = select.val();
@@ -248,10 +254,15 @@ jQuery(function($) {
               type: "POST"
             , url: feedurl
             , data: {"select_val":select_val, "feed_id": feedid}
+            , success: function(msg)  { 
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
         });
         
         select.siblings().text(select_val);
     }).show();
+    */
 
 
     $('.check').fancytips();
@@ -367,7 +378,6 @@ jQuery(function($) {
            e.preventDefault();
        })
     }
-
 
     var jcrop_api, set_image;
     function initJcrop() { 
@@ -515,5 +525,5 @@ jQuery(function($) {
         }
         e.preventDefault();
     });
-    
+ 
 });

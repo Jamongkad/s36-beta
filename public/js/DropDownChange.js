@@ -17,6 +17,10 @@ DropDownChange.prototype.enable = function() {
                   type: "POST"
                 , url: feedurl
                 , data: {"select_val":select_val, "feed_id": feedid}
+                , success: function() { 
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000);
+                }
             });
             
             //select.siblings().text(select_val);
