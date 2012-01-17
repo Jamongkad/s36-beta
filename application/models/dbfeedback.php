@@ -237,7 +237,7 @@ class DBFeedback extends S36DataObject {
             FROM 
                 Feedback
                     INNER JOIN 
-                        Feedback
+                        Site
                         ON Feedback.siteId = Site.siteId
                     INNER JOIN
                         Category
@@ -260,11 +260,11 @@ class DBFeedback extends S36DataObject {
                     ORDER BY  
                         Feedback.dtAdded DESC
         ';
-
-        $sth = $this->dbh->prepare($sql);
         
+        
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);              
         $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
-        $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);       
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
@@ -278,6 +278,7 @@ class DBFeedback extends S36DataObject {
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
+       
     }
 
     public function pull_feedback_by_id($feedback_id) { 
