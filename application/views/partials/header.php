@@ -34,9 +34,9 @@
 
         <?=HTML::script('js/s36application.js')?>
         <?//=HTML::script('js/s36application-ember.js')?>
-        <!--
+
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        -->
+
     </meta>    
 </head>
 <body>
