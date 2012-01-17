@@ -109,7 +109,7 @@
 </div>
 <?endif?>
 <div class="block noborder">
-    <input type="submit" class="large-btn" value="EDIT ADMIN" />
+    <input type="submit" class="large-btn" value="SAVE SETTINGS" /> or <?=HTML::link('admin', 'cancel')?>
 </div>
 </div>
 
