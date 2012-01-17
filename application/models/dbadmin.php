@@ -7,12 +7,10 @@ class DBAdmin extends S36DataObject {
     private function _extract_personal_data()   {
        $encrypt = new Crypter;
 
-       return Array(
+       $data = Array(
            'username' => strtolower($this->input_data->username) 
          , 'fullName' => $this->input_data->fullName
          , 'email' => $this->input_data->email
-         , 'password' => crypt($this->input_data->password)
-         , 'encryptString' => $encrypt->encrypt(strtolower($this->input_data->username)."|".$this->input_data->password)
          , 'companyId' => $this->input_data->companyId
          , 'title' => $this->input_data->title
          , 'ext' => $this->input_data->ext
@@ -23,6 +21,14 @@ class DBAdmin extends S36DataObject {
          , 'im' => $this->input_data->im
          , 'avatar' => $this->input_data->cropped_image_nm
        );
+       
+       //check if password has been changed...
+       if($this->input_data->password) {
+           $data['password'] = crypt($this->input_data->password);
+           $data['encryptString'] = $encrypt->encrypt(strtolower($this->input_data->username)."|".$this->input_data->password);
+       }
+
+       return $data;
     }
 
     public function _send_welcome_email($user_id) {

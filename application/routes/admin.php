@@ -95,7 +95,7 @@ return array(
 
          $admin->perms_data = $perms;
          $admin->input_data = (object)$data; 
-         $admin->update($user); 
+         $admin->update($user);
          return Redirect::to('admin'); 
      },
 
