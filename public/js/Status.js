@@ -11,8 +11,8 @@ Status.prototype.notify = function(msg, delay) {
     $(me.notification).animate({height: '50', opacity: '100'}, 'fast', '', function() { 
 		if(delay){
 			setTimeout(function() {
-                $(me.notification).animate({ height: 0, opacity: 0 }, 'fast');
-            },delay);		
+                $(me.notification).animate({ height: 0, opacity: 0 }, 'fast'); 
+            }, delay);		
 		}
     });
 }

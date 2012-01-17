@@ -36,7 +36,8 @@ jQuery(function($) {
           , url: $(this).attr('href')
           , success: function(msg) {
                 var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
+                console.log("mathew");
+                myStatus.notify("Processing...", 10000);
             }
         }) 
 
@@ -402,15 +403,11 @@ jQuery(function($) {
         
         status.html(' Cropping Photo...');
         
-        return $.ajax({
+        $.ajax({
             url: $("#ajax-crop-url").attr('hrefaction'),
             method: 'GET',
-            async: false,
+            async: true,
             data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
-            beforeSend: function() { 
-                var myStatus = new Status();
-                myStatus.notify("Cropping photo please wait...", 1000);
-            },
             success: function(data){
                 status.fadeOut('fast',function(){
                     //status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
@@ -421,6 +418,7 @@ jQuery(function($) {
 
                 var myStatus = new Status();
                 myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 4000);
+
             }
         });
     }
@@ -432,10 +430,6 @@ jQuery(function($) {
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json', 
-            beforeSend: function() { 
-                var myStatus = new Status();
-                myStatus.notify("Uploading Photo please wait...", 1000);
-            },
             success: function (data, status) {	  
 
                 var myStatus = new Status();
