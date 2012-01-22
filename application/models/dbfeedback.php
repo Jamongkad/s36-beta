@@ -277,8 +277,7 @@ class DBFeedback extends S36DataObject {
         $result_obj->site_id = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;
-       
+        return $result_obj;       
     }
 
     public function pull_feedback_by_id($feedback_id) { 

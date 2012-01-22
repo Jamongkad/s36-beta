@@ -189,25 +189,39 @@ return array(
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
         $dash->company_id = 3;
-        /*
-        $feed_score = $dash->get_dashboard_scores();
-
-        $feedback = new DBFeedback;
-        $contact = new DBContact;
-
-        $feedback_count = $feedback->total_feedback_by_company(1);
-        $contact_count = $contact->total_contacts_by_company(1);
-
-        Helpers::show_data($feedback_count);
-        Helpers::show_data($contact_count);
-        */
         $d = $dash->write_summary();
         Helpers::show_data($d);
-        /*
-        $exists = $dash->summary_exists();
-        $write = $dash->write_summary();
-        */
-        //Helpers::show_data($feed_score->geochart_scores[0]->countryname);
+    },
 
+    'GET /tests/new_widgets' => function() {
+        $dbw = new DBWidget;
+
+        //embedded
+        /*
+        $obj = new StdClass;
+        $obj->company_id = S36Auth::user()->companyid;
+        $obj->site_id = 2;
+        $obj->embed_type = 'embedded';
+        $obj->type = 'embed_block_x';
+        $obj->theme = 'aglow';
+        $obj->effect = 1;
+
+        //modal 
+        $obj = new StdClass;
+        $obj->company_id = S36Auth::user()->companyid;
+        $obj->site_id = 2;
+        $obj->embed_type = 'modal';
+        $obj->type = false;
+        $obj->theme = 'aglow';
+        $obj->effect = 1;
+ 
+        $dbw->save_widget($obj);
+        */
+
+        $widget_obj = $dbw->fetch_widget_by_id('yi710'); 
+        $obj = base64_decode($widget_obj->widgetobjstring);
+        $obj = unserialize($obj);
+        $obj = json_encode($obj);
+        Helpers::show_data($obj);
     }
 );

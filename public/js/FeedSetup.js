@@ -79,8 +79,6 @@ jQuery(function($) {
     });
 
     $('input[type="button"].widget-edit, input[type="button"].widget-delete').bind('click', function(e) {
-
-
         var hrefaction = $(this).attr('hrefaction');
         var input_class = $(this).attr('class');
         var input_parents = $(this).parents('tr');

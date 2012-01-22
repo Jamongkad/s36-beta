@@ -33,9 +33,10 @@
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
                         $feedsetup_nav = Array(
-                             'feedsetup/all' => 'CREATE WIDGETS'
+                             'feedsetup/all'  => 'WIDGET DASHBOARD'
+                           , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
+                           , 'feedsetup/form_widgets' => 'CREATE SUBMISSION WIDGETS'
                            , 'feedsetup/mywidgets' => 'MY WIDGETS'
-                           , 'feedsetup/stream' => 'STREAMS'
                         );
                     ?>
 

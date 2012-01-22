@@ -3,8 +3,11 @@
 $feedback = new DBFeedback;
 
 return array(
-    'GET /feedsetup/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+    'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view');
+    }),
 
+    'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         $feed_options = $feedback->display_embedded_feedback_options(Input::get('site_id'));
         return View::of_layout()->partial('contents', 'inbox/feedsetup_view', Array( 
             'feed_options'    => $feed_options
@@ -12,8 +15,11 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'companyId'       => S36Auth::user()->companyid
-        ));
-        
+        )); 
+    }),
+
+    'GET /feedsetup/form_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+        return View::of_layout()->partial('contents', 'inbox/feedsetup_form_widgets_view');
     }),
 
     'POST /feedsetup/render_display_info' => function() use ($feedback) {
@@ -24,7 +30,7 @@ return array(
         ));
     },
 
-    'GET /feedsetup/mywidgets' => Array('name' => 'mywidgets', 'before' => 's36_auth', 'do' => function() {  
+    'GET /feedsetup/mywidgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
         $company_id = S36Auth::user()->companyid;
         $user_theme = new DBUserTheme;
         $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
@@ -60,14 +66,15 @@ return array(
     },
 
     'POST /feedsetup/save_widget' => function() {
+        /*
         $d = new DBUserTheme; 
         $d->create_theme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
+        */
+        Helpers::show_data(Input::get()); 
     },
 
     'GET /feedsetup/generate_code' => function() {
-         $base_url   = URL::to('/');
-
          $widget_creation_params = new StdClass;
          $widget_creation_params->site_id    = Input::get('siteId');
          $widget_creation_params->company_id = Input::get('companyId');

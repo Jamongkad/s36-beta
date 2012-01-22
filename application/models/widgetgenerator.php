@@ -8,8 +8,7 @@ class WidgetGenerator {
     public function __construct($option_obj) {
         $this->option_obj  = $option_obj;
         $this->embedded = new EmbeddedType($option_obj);
-        $this->modal = new ModalType($option_obj);
-        
+        $this->modal = new ModalType($option_obj); 
     }
 
     public function generate_widget_code() {
@@ -38,6 +37,10 @@ class WidgetGenerator {
         }
 
     }
+
+    public function generate_js_code() {
+        
+    }
 }
 
 abstract class WidgetTypes {
@@ -46,7 +49,7 @@ abstract class WidgetTypes {
     
     public function __construct($option_parameters) {
         $this->option_obj = $option_parameters;    
-        $this->base_url   = Config::get('application.deploy_env').'/';//URL::to('/'); 
+        $this->base_url   = Config::get('application.deploy_env').'/';
         $this->siteId    = $this->option_obj->site_id;
         $this->companyId = $this->option_obj->company_id;
         $this->themeId   = $this->option_obj->theme_id;

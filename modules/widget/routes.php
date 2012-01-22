@@ -78,6 +78,10 @@ return array(
         ));
     },
 
+    'GET /widget/embedded_proto/(:num)/(:num)' => function($company_id, $site_id) {
+        return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_new_view');
+    },
+
     'GET /widget/modal' => function() {
         $feedback = new DBFeedback;
         $company_id = null;

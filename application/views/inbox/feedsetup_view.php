@@ -76,6 +76,7 @@
                                 <?=HTML::image('img/preview-vertical-embed.png')?>
                             </td>
                         </tr>
+                        <!--
                         <tr>
                             <td class="feedback-td-font">Units to Display per page : </td>
                             <td colspan="2">
@@ -96,6 +97,7 @@
                                 Height (px): <input type="text" class="regular-text small-text" value="0" style="display:inline;" name="embed_height"/>
                             </td>
                         </tr>
+                        -->
                         <tr>
                             <td class="feedback-td-font">Transition Effect : </td>
                             <td colspan="2">
@@ -170,7 +172,7 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Color</h2>
+            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Theme</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
                     <ul>
@@ -193,27 +195,18 @@
                     <div class="c"></div>
                 </div>
                 -->
-
                 <div class="c"></div>
             </div>
         </div>
         <div class="widget-setup-border"></div>
- 
-        <div class="widget-opts" style="height:440px;">
+        <!--
+        <div class="widget-opts" style="height:50px; text-align:center">
             <br />
             <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
-            <br />
-            <br />
-            <!--
-            <a href="javascript:;" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">
-                Generate Feedback Button
-            </a>
-            <br />
-            <br />
-            -->
+
             <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
-            <br />
-            <br />
+
+
             <div id="widget-preview">
                 <div class="widget-block">
                     <h2>HTML Code</h2>
@@ -223,24 +216,25 @@
                 </div>
 
                 <div class="widget-block">
-                    <h2>IFrame Widget Code</h2>
+                    <h2>JS Widget Code (recommended)</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
 
                 <div class="widget-block">
-                    <h2>JS Widget Code (recommended)</h2>
+                    <h2>IFrame Widget Code</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
             </div>    
-        </div>
 
-        <div class="block noborder" style="height:160px;">
-        </div>
+        </div> 
+
+        <div class="block noborder" style="height:160px;"></div>
         <div class="widget-setup-border"></div>
+        -->
         <div class="widget-opts">
             <br />
             <!--<a href="#" class="button">Save Widget</a>-->

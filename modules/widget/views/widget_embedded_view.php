@@ -241,8 +241,7 @@
                         $avatar_pic = $avatar;    
                     }
 
-                    if($r->indlock == 1 && $feedback->block_display->displayimg == 1) {
-
+                    if($r->indlock == 1 && $feedback->block_display->displayimg == 1) { 
                         if($pic == ''){
                             $avatar_pic = "/img/48x48-blank-avatar.jpg";
                         }else{
