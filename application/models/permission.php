@@ -2,20 +2,17 @@
 
 class Permission {
     
-    private $input = Array();
-
     public function __construct(Array $input) {
         if(array_key_exists('perms', $input)) {
-            $this->input = $input['perms'];                   
+            $this->supplier = new PermissionSupplier($input['perms']);
         }
     }
 
     public function build() {
-
-        $supplier = new PermissionSupplier($this->input);
+ 
         $result_array = Array();
 
-        foreach ($supplier->load() as $key => $value) {
+        foreach ($this->supplier->load() as $key => $value) {
             foreach ($value as $k => $v) {
                 $result_array[$key."_".$k] = $v;     
             }
@@ -25,9 +22,13 @@ class Permission {
         return $result_array;
     }
 
-    public static function selector($nav_regex) {
-        return $nav_regex;
-    } 
+    public function cherry_pick($key) {
+
+        $data = $this->supplier->load();    
+
+        if(array_key_exists($key, $data))  
+            return $data[$key]; 
+    }
 }
  
 class PermissionSupplier {
@@ -42,6 +43,7 @@ class PermissionSupplier {
               , 'feedsetup' => new FeedsetupPermission()
               , 'contact'   => new ContactPermission()
               , 'setting'   => new SettingPermission() 
+              , 'feedbacksetupdisplay' => new FeedbackDisplayPermission()
         );
     }
 
@@ -168,6 +170,35 @@ class SettingPermission extends PermissionType {
     public function expose_rules($perms) {
 
         $this->perms = $perms['setting'];
+
+        foreach ($this->permission_keys as $key_rule => $key_value) { 
+            if (!array_key_exists($key_rule, $this->perms)) {
+                $this->perms[$key_rule] = 0;
+            }
+        }
+
+        return $this->perms;  
+    }
+}
+
+class FeedbackDisplayPermission extends PermissionType {
+    
+    private $permission_keys = Array(  'displayName' => 0
+                                     , 'displayURL' => 0
+                                     , 'displayImg' => 0
+                                     , 'displayCountry' => 0
+                                     , 'displayCompany' => 0
+                                     , 'displaySbmtDate' => 0
+                                     , 'displayPosition' => 0
+                                    );
+
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
+
+    public function expose_rules($perms) {
+
+        $this->perms = $perms['feedbacksetupdisplay'];
 
         foreach ($this->permission_keys as $key_rule => $key_value) { 
             if (!array_key_exists($key_rule, $this->perms)) {

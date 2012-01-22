@@ -71,7 +71,12 @@ return array(
         $d->create_theme( Input::get() );
         return Redirect::to('feedsetup/mywidgets');
         */
-        Helpers::show_data(Input::get()); 
+        $data = Input::get();
+        $perm_factory = new Permission($data);
+        $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');
+        
+        $data['perms'] = $perms;
+        Helpers::show_data($data); 
     },
 
     'GET /feedsetup/generate_code' => function() {

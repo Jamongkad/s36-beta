@@ -175,6 +175,7 @@
             <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Theme</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
+                    <!--
                     <ul>
                        <?foreach($themes as $theme):?>
                            <li>
@@ -183,6 +184,13 @@
                            </li> 
                        <?endforeach?>
                        <li class="c"></li>
+                    </ul>
+                    -->
+                    <ul>
+                        <li>
+                            <div id="themeId_1"><?=Form::radio('theme_type', 'aglow')?> Aglow</div>
+                            <div><?=HTML::image('img/display-thumb.png')?></div> 
+                        </li>
                     </ul>
                 </div>
                 <!--

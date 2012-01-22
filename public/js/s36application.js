@@ -222,8 +222,7 @@ jQuery(function($) {
 
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
-    userInfo.toggleDisplays($('.display-info input[name*="display"]'), 'feedblock_id');
-
+    
     var checkyBar = $('.checky-bar');
     //checkyBar.hide();
     var check = new Checky({   feed_selection: $('.feed-selection')
