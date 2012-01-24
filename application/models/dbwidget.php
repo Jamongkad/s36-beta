@@ -6,7 +6,8 @@ class DBWidget extends S36DataObject {
 
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 
-        $sql = "INSERT INTO WidgetStore (widgetKey, companyId, siteId, widgetObjString) VALUES (:widget_key, :company_id, :site_id, :widget_string)";
+        $sql = "INSERT INTO WidgetStore (widgetKey, companyId, siteId, widgetObjString) 
+                VALUES (:widget_key, :company_id, :site_id, :widget_string)";
         $widget_obj_string = base64_encode(serialize($widget_obj));
 
         $sth = $this->dbh->prepare($sql);
@@ -15,9 +16,10 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->execute();
+        /*
         $last_insert_id = $this->dbh->lastInsertId();
         return $last_insert_id;
-
+        */
     }
 
     public function fetch_widget_by_id($widget_key) {    

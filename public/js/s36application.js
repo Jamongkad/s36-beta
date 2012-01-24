@@ -204,22 +204,6 @@ jQuery(function($) {
         window.location = "?rating=" + $(this).val();
     });
     
-    $('#feedsetup-site-select').bind('change', function(e) {
-        var me = this;
-        $.ajax({
-            type: "POST"     
-          , url: $(me).attr('hrefaction')
-          , data: {site_id: $(me).val()}
-          , success: function(msg) {
-                $("#display-info-target").html(msg);             
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
-            }
-        })
-
-
-    });
-
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     
@@ -250,41 +234,6 @@ jQuery(function($) {
     $('.flag').fancytips();
     $('.remove').fancytips({'top': 45});
     
-    //TODO: Clean this shit up
-    $('#full_page_widget').hide();
-    $('#embed_widget').hide();
-    $('#modal_widget').hide();
-     
-    $('#full_page_type').click(function(){
-        $('#full_page_widget').slideDown();
-        $('#embed_widget').slideUp();
-        $('#modal_widget').slideUp();        
-        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-                                .children('input[type="radio"]').attr('checked', null);                   
-
-        $("#modal_widget tr td").children('select').val(0);
-    });
-
-    $('#embed_type').click(function(){
-        $('#full_page_widget').slideUp();
-        $('#embed_widget').slideDown();
-        $('#modal_widget').slideUp();
-
-        $("#full_page_widget tr td").children('select').val(0);
-        $("#modal_widget tr td").children('select').val(0);
-    });
-
-    $('#modal_type').click(function(){
-        $('#full_page_widget').slideUp();
-        $('#embed_widget').slideUp();
-        $('#modal_widget').slideDown();
-
-        $("#full_page_widget tr td").children('select').val(0); 
-        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-                                .children('input[type="radio"]').attr('checked', null);                   
-    });
-	
-     
     $('a.perm-delete').click(function(e) { 
         if(confirm("Are you sure you want to permanently delete this feedback?")) {
             return true;

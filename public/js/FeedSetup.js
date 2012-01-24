@@ -159,4 +159,127 @@ jQuery(function($) {
         $('#lightbox').fadeOut('fast',function(){$(this).empty();});
         $('#lightbox-shadow').fadeOut('fast');
     }    
+
+    $('#full_page_widget').hide();
+    $('#embed_widget').hide();
+    $('#modal_widget').hide();
+     
+    $('#full_page_type').click(function(){
+        fullpage_up();
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+                                .children('input[type="radio"]').attr('checked', null);                   
+
+        $("#modal_widget tr td").children('select').val(0);
+    });
+
+    $('#embed_type').click(function(){
+        embed_up();
+        $("#full_page_widget tr td").children('select').val(0);
+        $("#modal_widget tr td").children('select').val(0);
+    });
+
+    $('#modal_type').click(function(){
+        modal_up();
+        $("#full_page_widget tr td").children('select').val(0); 
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+                                .children('input[type="radio"]').attr('checked', null);                   
+    });
+    
+    if($('input[value="embed_type"]').attr('checked')) {
+        embed_up();
+    }
+
+    if($('input[value="modal"]').attr('checked')) {
+        modal_up();
+    }
+
+    function fullpage_up() { 
+        $('#full_page_widget').slideDown();
+        $('#embed_widget').slideUp();
+        $('#modal_widget').slideUp();        
+    }
+    
+    function embed_up() {
+        $('#full_page_widget').slideUp();
+        $('#embed_widget').slideDown();
+        $('#modal_widget').slideUp(); 
+    }
+
+    function modal_up() {
+        $('#full_page_widget').slideUp();
+        $('#embed_widget').slideUp();
+        $('#modal_widget').slideDown(); 
+    }
+
+    $('#create-widget').bind("submit", function(e) {
+        $(this).ajaxSubmit({
+            dataType: 'json'
+          , beforeSubmit: function(formData, jqForm, options) {
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
+          , success: function(responseText, statusText, xhr, $form) {  
+                var error = responseText.errors;
+                var theme_name = $("div#theme_name");
+                var site_id    = $("div#site_id");
+                var embed_type = $("div#embed_type");
+                var widget_options = $("div#widget_options");
+                
+                if(error) {
+                   if(error.messages.theme_name) {
+                       theme_name.html(error.messages.theme_name[0]);     
+                       $.scrollTo('input[name="theme_name"]', 800);
+                   } else { 
+                       theme_name.html("");
+                   }
+                  
+                   if(error.messages.site_id) {
+                       site_id.html(error.messages.site_id[0]);                   
+                       $.scrollTo('input[name="theme_name"]', 800);
+                   } else { 
+                       site_id.html("");
+                   }
+
+                   if(error.messages.embed_type) {
+                       embed_type.html(error.messages.embed_type[0]);     
+                       $.scrollTo('input[name="theme_name"]', 800);
+                   } else { 
+                       embed_type.html("");
+                   } 
+
+                   if(error.messages.perms) {
+                       widget_options.html(error.messages.perms[0]);     
+                       $.scrollTo('input[type="radio"][value="modal"]', 800);
+                   } else { 
+                       widget_options.html("");
+                   } 
+                } else { 
+                   theme_name.html("");
+                   site_id.html("");
+                   embed_type.html("");
+                   widget_options.html("");  
+                }   
+
+                console.log(responseText);
+
+            }
+        }); 
+        e.preventDefault();
+    })
+   
+    /*
+    $('#feedsetup-site-select').bind('change', function(e) {
+        var me = this;
+        $.ajax({
+            type: "POST"     
+          , url: $(me).attr('hrefaction')
+          , data: {site_id: $(me).val()}
+          , success: function(msg) {
+                $("#display-info-target").html(msg);             
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
+        })
+    });
+    */
 })

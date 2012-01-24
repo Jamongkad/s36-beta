@@ -1,4 +1,4 @@
-<?=Form::open('feedsetup/save_widget')?>
+<?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $companyId)?>
@@ -9,6 +9,7 @@
             <h2><span>Step 1 :</span> Please choose a name for your theme</h2>
             <div style="padding:10px">
                 <input type="text" name="theme_name" value="" style="font-size:25px; padding:5px; width:600px"/>
+                <div id="theme_name" class="error-msg"></div>
             </div>
         </div>
     </div>
@@ -18,11 +19,12 @@
             <h2><span>Step 2 :</span> Choose your website you want to apply your widget to</h2>
             <div style="padding:10px">
                 <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-                    <option value="0">--</option>
+                    <option value="">--</option>
                     <?foreach($site as $sites):?>
                         <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                     <?endforeach?>
                 </select>
+                <div id="site_id" class="error-msg"></div>
             </div>
         </div>
     </div>
@@ -136,39 +138,35 @@
                     </table>
                 </div>
             </div>
+            <div id="embed_type" class="error-msg"></div>
         </div>
         <div class="widget-options">
             <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Display Option</h2>
             <div class="widget-opts" id="display-info-target">
-                <?if($site_id):?>
-                    <table width="100%" cellpadding="4" class="display-info">
-                        <span id="toggle_url" hrefaction="<?=URL::to('/feedsetup/toggle_feedback_display')?>"></span>
-                        <?=Form::hidden('feedid', $feed_options->feedbackblockid, array('id' => 'feed-id'))?>
-                        <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                        <?=Form::checkbox('displayName', $feed_options->displayname, ($feed_options->displayname ? True : Null))?>
-                        </td>
-                        <td width="140" class="feedback-td-font">Website Url : </td><td>
-                        <?=Form::checkbox('displayURL', $feed_options->displayurl, ($feed_options->displayurl ? True : Null))?>
-                        </td></tr>
-                        <tr><td class="feedback-td-font">Display Image :  </td><td>
-                        <?=Form::checkbox('displayImg', $feed_options->displayimg, ($feed_options->displayimg ? True : Null))?>
-                        </td>		
-                        <td class="feedback-td-font">Country & Flag : </td><td>
-                       <?=Form::checkbox('displayCountry', $feed_options->displaycountry, ($feed_options->displaycountry ? True : Null))?>
-                        </td></tr>
-                        <tr><td class="feedback-td-font">Company Name :</td><td>
-                        <?=Form::checkbox('displayCompany', $feed_options->displaycompany, ($feed_options->displaycompany ? True : Null))?>
-                        </td>			
-                        <td class="feedback-td-font">Submitted Date : </td><td>
-                        <?=Form::checkbox('displaySbmtDate', $feed_options->displaysbmtdate, ($feed_options->displaysbmtdate ? True : Null))?>
-                        </td></tr>
-                        <tr><td class="feedback-td-font">Designation / Position :</td><td>
-                        <?=Form::checkbox('displayPosition', $feed_options->displayposition, ($feed_options->displayposition ? True : Null))?>
-                        </td><td></td><td></td></tr>
-                    </table>
-                <?else:?>
-                    <h3>Please choose a website in order to configure your widget display options.</h3>
-                <?endif?>
+                <table width="100%" cellpadding="4" class="display-info">
+                    <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayName]', 1, 1)?>
+                    </td>
+                    <td width="140" class="feedback-td-font">Website Url : </td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayURL]', 1, 1)?>
+                    </td></tr>
+                    <tr><td class="feedback-td-font">Display Image :  </td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayImg]', 1, 1)?>
+                    </td>		
+                    <td class="feedback-td-font">Country & Flag : </td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayCountry]', 1, 1)?>
+                    </td></tr>
+                    <tr><td class="feedback-td-font">Company Name :</td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayCompany]', 1, 1)?>
+                    </td>			
+                    <td class="feedback-td-font">Submitted Date : </td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaySbmtDate]', 1, 1)?>
+                    </td></tr>
+                    <tr><td class="feedback-td-font">Designation / Position :</td><td>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayPosition]', 1, 1)?>
+                    </td><td></td><td></td></tr>
+                </table>
+                <div id="widget_options" class="error-msg"></div>
             </div>
         </div>
         <div class="widget-options">

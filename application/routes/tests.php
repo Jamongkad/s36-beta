@@ -218,10 +218,10 @@ return array(
         $dbw->save_widget($obj);
         */
 
-        $widget_obj = $dbw->fetch_widget_by_id('95gcp'); 
+        $widget_obj = $dbw->fetch_widget_by_id('qxodq'); 
         $obj = base64_decode($widget_obj->widgetobjstring);
         $obj = unserialize($obj);
-        $obj = json_encode($obj);
+        //$obj = json_encode($obj);
         Helpers::show_data($obj);
 
     }

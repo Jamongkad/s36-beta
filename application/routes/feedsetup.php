@@ -8,13 +8,14 @@ return array(
     }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        $feed_options = $feedback->display_embedded_feedback_options(Input::get('site_id'));
         return View::of_layout()->partial('contents', 'inbox/feedsetup_view', Array( 
-            'feed_options'    => $feed_options
-          , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'companyId'       => S36Auth::user()->companyid
+          , 'input'           => Array(  'site_id' => null, 'company_id' => null, 'theme_name' => null, 'embed_effects' => null
+                                       , 'modal_effects' => null, 'feedid' => null, 'perms' => Array(), 'theme_type' => null
+                                       , 'embed_type' => null)
         )); 
     }),
 
@@ -72,11 +73,33 @@ return array(
         return Redirect::to('feedsetup/mywidgets');
         */
         $data = Input::get();
-        $perm_factory = new Permission($data);
-        $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');
-        
-        $data['perms'] = $perms;
-        Helpers::show_data($data); 
+
+        $rules = Array(
+            'theme_name' => 'required'
+          , 'site_id' => 'required'
+          , 'embed_type' => 'required'
+          , 'perms' => 'required'
+        );
+
+        $validator = Validator::make($data, $rules);
+ 
+        if(!$validator->valid()) {
+            $json_data = Array(
+                'data' => $data
+              , 'errors' => $validator->errors
+            );
+            echo json_encode($json_data);
+        } else { 
+
+            $dbw = new DBWidget;
+
+            $perm_factory = new Permission($data);
+            $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
+            $data['perms'] = $perms;
+
+            Helpers::show_data($dbw->save_widget((object)$data));
+        }
+       
     },
 
     'GET /feedsetup/generate_code' => function() {
