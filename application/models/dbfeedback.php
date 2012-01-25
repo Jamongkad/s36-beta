@@ -266,14 +266,16 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);              
         $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
         $sth->execute();       
-
+        
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        /*
         $feedback_block_display = DB::Table('FeedbackBlock', 'master')->where('siteid', '=', $opts['site_id'])->first();
+        */
 
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         $result_obj = new StdClass;
         $result_obj->result = $result;
-        $result_obj->block_display = $feedback_block_display; 
+        //$result_obj->block_display = $feedback_block_display; 
         $result_obj->site_id = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();

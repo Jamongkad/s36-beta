@@ -1,11 +1,6 @@
 <?php
 
 return array(
-    'GET /widget/test' => function() {
-        //return View::make('widget::widget_view_index');
-        return View::of_widget_layout()->partial('contents', 'dashboard/index');
-    },
-
     'GET /widget/form' => function() {
 
         $env = Config::get('application.env_name');
@@ -78,8 +73,33 @@ return array(
         ));
     },
 
-    'GET /widget/embedded_proto/(:num)/(:num)' => function($company_id, $site_id) {
-        return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_new_view');
+    'GET /widget/embedded_proto/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
+
+        $dbu = new DBUser;
+        $user_obj = new StdClass;
+        $user_obj->username = $username;
+        $user_obj->company_id = $company_id;
+        $user_result = $dbu->pull_user($user_obj);
+
+        if($user_result) {
+            $dbw = new DBWidget;
+            $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
+            $obj = base64_decode($widget_obj->widgetobjstring);
+            $obj = unserialize($obj); 
+
+            $params = Array(
+                'company_id'   => $obj->company_id
+              , 'site_id'      => $obj->site_id
+              , 'is_published' => 1
+              , 'is_featured'  => 1
+            );
+
+            $feedback = new DBFeedback;       
+            $data = $feedback->pull_feedback_by_company($params);
+            $data->block_display = $obj->perms;
+            Helpers::show_data($data);
+        }
+        //return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_new_view');
     },
 
     'GET /widget/modal' => function() {

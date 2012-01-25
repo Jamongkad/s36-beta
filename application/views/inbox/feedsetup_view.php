@@ -205,13 +205,8 @@
             </div>
         </div>
         <div class="widget-setup-border"></div>
-        <!--
-        <div class="widget-opts" style="height:50px; text-align:center">
-            <br />
-            <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
 
-            <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
-
+        <div class="widget-opts" style="text-align:center">
 
             <div id="widget-preview">
                 <div class="widget-block">
@@ -234,13 +229,15 @@
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
-            </div>    
+                <!--
+                <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
 
+                <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
+                -->
+            </div>    
+            <div class="block noborder" style="height:660px;"></div>
         </div> 
 
-        <div class="block noborder" style="height:160px;"></div>
-        <div class="widget-setup-border"></div>
-        -->
         <div class="widget-opts">
             <br />
             <!--<a href="#" class="button">Save Widget</a>-->

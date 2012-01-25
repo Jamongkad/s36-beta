@@ -84,11 +84,13 @@ return array(
         $validator = Validator::make($data, $rules);
  
         if(!$validator->valid()) {
+
             $json_data = Array(
                 'data' => $data
               , 'errors' => $validator->errors
             );
             echo json_encode($json_data);
+
         } else { 
 
             $dbw = new DBWidget;
@@ -97,7 +99,8 @@ return array(
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
             $data['perms'] = $perms;
 
-            Helpers::show_data($dbw->save_widget((object)$data));
+            $dbw->save_widget( (object)$data );
+
         }
        
     },

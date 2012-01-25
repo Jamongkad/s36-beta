@@ -1,8 +1,8 @@
 <?php
 
 return array( 
-    'GET /inbox/(:any?)/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth'
-                                        , 'do' => function($filter=False, $choice=False, $sort=False) {
+    'GET /inbox/(:any?)/(:any?)/(:any?)' => Array(  'name' => 'inbox', 'before' => 's36_auth'
+                                                  , 'do' => function($filter=False, $choice=False, $sort=False) {
        
         $limit   = 10;
         $site_id = False;

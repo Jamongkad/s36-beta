@@ -211,6 +211,9 @@ jQuery(function($) {
         $('#modal_widget').slideDown(); 
     }
 
+    $("#widget-preview").hide();
+    $("#widget-preview").siblings(".block").hide();
+
     $('#create-widget').bind("submit", function(e) {
         $(this).ajaxSubmit({
             dataType: 'json'
@@ -219,7 +222,7 @@ jQuery(function($) {
                 myStatus.notify("Processing...", 1000);
             }
           , success: function(responseText, statusText, xhr, $form) {  
-                var error = responseText.errors;
+                var error = isDefined(responseText, 'errors') ? responseText.errors : false;
                 var theme_name = $("div#theme_name");
                 var site_id    = $("div#site_id");
                 var embed_type = $("div#embed_type");
@@ -258,10 +261,12 @@ jQuery(function($) {
                    site_id.html("");
                    embed_type.html("");
                    widget_options.html("");  
+
+                   $("#widget-preview").show();
+                   $("#widget-preview").siblings(".block").show();
+                   $.scrollTo('#code-generate-view', 800);
+                
                 }   
-
-                console.log(responseText);
-
             }
         }); 
         e.preventDefault();
@@ -282,4 +287,23 @@ jQuery(function($) {
         })
     });
     */
-})
+});
+
+function isDefined(target, path) {
+    if (typeof target != 'object' || target == null) {
+        return false;
+    }
+
+    var parts = path.split('.');
+
+    while(parts.length) {
+        var branch = parts.shift();
+        if (!(branch in target)) {
+            return false;
+        }
+
+        target = target[branch];
+    }
+
+    return true;
+}

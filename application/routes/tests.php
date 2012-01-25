@@ -196,29 +196,7 @@ return array(
     'GET /tests/new_widgets' => function() {
         $dbw = new DBWidget;
 
-        //embedded
-        /*
-        $obj = new StdClass;
-        $obj->company_id = S36Auth::user()->companyid;
-        $obj->site_id = 2;
-        $obj->embed_type = 'embedded';
-        $obj->type = 'embed_block_x';
-        $obj->theme = 'aglow';
-        $obj->effect = 1;
-
-        //modal 
-        $obj = new StdClass;
-        $obj->company_id = S36Auth::user()->companyid;
-        $obj->site_id = 2;
-        $obj->embed_type = 'modal';
-        $obj->type = false;
-        $obj->theme = 'aglow';
-        $obj->effect = 1;
- 
-        $dbw->save_widget($obj);
-        */
-
-        $widget_obj = $dbw->fetch_widget_by_id('qxodq'); 
+        $widget_obj = $dbw->fetch_widget_by_id('y10b0'); 
         $obj = base64_decode($widget_obj->widgetobjstring);
         $obj = unserialize($obj);
         //$obj = json_encode($obj);
