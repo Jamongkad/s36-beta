@@ -81,9 +81,7 @@ return array(
         $user_obj->company_id = $company_id;
         $user_result = $dbu->pull_user($user_obj);
 
-        Helpers::show_data($user_result);
-
-        if($user_result) {
+       
             $dbw = new DBWidget;
             $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
             $obj = base64_decode($widget_obj->widgetobjstring);
@@ -100,7 +98,6 @@ return array(
             $data = $feedback->pull_feedback_by_company($params);
             $data->block_display = $obj->perms;
             return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_new_view', Array('result' => $data));
-        }
         
     },
 
