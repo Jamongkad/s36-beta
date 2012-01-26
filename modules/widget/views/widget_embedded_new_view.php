@@ -1,5 +1,5 @@
 <?php
-	
+ /*	
 	error_reporting(0);
 	
 	//get the parameters
@@ -37,6 +37,7 @@
 	// get the maximum feedback returned
 	//$max 	= count($result);
 	$max 	= $fb[0]->total_rows;
+   */ 
 ?>
 
 <script type="text/javascript">
