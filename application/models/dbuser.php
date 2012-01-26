@@ -10,7 +10,6 @@ class DBUser extends S36DataObject {
         $user = DB::table('User', 'master')
                     ->where('username', '=', $user_obj->username)
                     ->where('companyId', '=', $user_obj->company_id)
-                    ->where('confirmed', '=', 1)
                     ->first();
         return $user;
     }
