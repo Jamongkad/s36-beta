@@ -81,6 +81,8 @@ return array(
         $user_obj->company_id = $company_id;
         $user_result = $dbu->pull_user($user_obj);
 
+        Helpers::show_data($user_result);
+
         if($user_result) {
             $dbw = new DBWidget;
             $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
