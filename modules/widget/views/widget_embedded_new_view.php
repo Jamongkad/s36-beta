@@ -1,45 +1,3 @@
-<?php
- /*	
-	error_reporting(0);
-	
-	//get the parameters
-	$companyId 	= isset($_GET['companyId']) ? $_GET['companyId']	: 1;
-	$siteId		= isset($_GET['siteId']) 	? $_GET['siteId'] 		: 2;
-	$units		= isset($_GET['units']) 	? $_GET['units']		: 3;
-	$transition = isset($_GET['transition'])? $_GET['transition'] 	: 'scrollVert';
-	$speed		= isset($_GET['speed']) 	? $_GET['speed']		: 500;
-	$timeout	= isset($_GET['timeout']) 	? $_GET['timeout'] 		: 5000;
-	$type		= isset($_GET['type']) 		? $_GET['type'] 		: 'horizontal';
-	
-	// this function will remove the s36_feedback() on the JSON
-	function removeJSONfunction($json){
-		$json = trim($json);
-		$json = str_replace("s36_feedback(","[",$json);
-		$json = str_replace("})","}]",$json);
-		return $json;
-	}
-
-	// assign the json url to this var
-	$url = "http://dev.gearfish.com/api/pull_feedback?company_id=".$companyId."&site_id=".$siteId."&limit=30&offset=0&is_featured=1&is_published=1";
-	
-	// get the string from the url
-	$json = file_get_contents($url);
-	
-	// remove the json function
-	$json = removeJSONfunction($json);
-	
-	// decode the json. this will turn the strings to an array
-	$fb = json_decode($json);
-	
-	// get the feedbacks
-	$result = $fb[0]->result;
-	
-	// get the maximum feedback returned
-	//$max 	= count($result);
-	$max 	= $fb[0]->total_rows;
-   */ 
-?>
-
 <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -50,11 +8,33 @@
 			$('#pager').fadeIn();
 		});
 		$('.readmore, .feedbackText').click(function(){
+			
+			var id = $(this).attr('feed-id');
+			var text = $('#'+id).val();
+			var avatar = $(this).parent().parent().find('.feedbackAvatar img').attr('src');
+			var name = $(this).parent().parent().find('.feedbackAuthorName').html();
+			var position = $(this).parent().parent().find('.authorPosition').html();
+			var company = $(this).parent().parent().find('.authorCompany').html();
+			var city = $(this).parent().parent().find('.authorCity').html(); 
+			var country = $(this).parent().parent().find('.authorCountry').html(); 
+			var date =$(this).parent().parent().find('.feedbackDate').html(); 
+			var flag =$(this).parent().parent().find('.feedbackAvatar .flag').attr('class'); 
+			
 			$('.boxSolo').fadeIn();
 			$('#feedContainer').hide();
 			$('.pagination').hide();
 			$('.theSocialButtons').hide();
-			$('.boxSolo .feedbackText').jScrollPane();	
+			
+			$('.boxSolo .feedbackText').html('<p>'+text+'</p>').jScrollPane();	
+			$('.boxSolo .feedbackAvatar').find('img').attr('src',avatar);
+			$('.boxSolo .feedbackAuthorInfo').find('.name').html(name);
+			$('.boxSolo .feedbackAuthorInfo').find('.position').html(position);
+			$('.boxSolo .feedbackAuthorInfo').find('.company').html(company);
+			$('.boxSolo .feedbackAuthorInfo').find('.city').html(city+" ");
+			$('.boxSolo .feedbackAuthorInfo').find('.country').html(country);
+			$('.boxSolo .feedbackAuthorInfo').find('.date').html(date);
+			$('.boxSolo .feedbackAuthorInfo').find('.flag').removeClass().addClass(flag);
+			
 			$('#pager').hide();
 		});
 		if($('.feedbacks').length == 1){
@@ -398,7 +378,7 @@
                     	<span class="name">Chris Davidson </span>
                     	<span class="position">Front End Developer, </span>
                         <span class="company"> 36Stories</span> 
-                        <span class="city"> Manila City, </span>
+                        <span class="city"> Manila City </span>
                         <span class="country"> Philippines</span>
                         <span class="flag flag-ph"></span>
                         <span class="date">13th Sept. 2011</span>
@@ -455,7 +435,7 @@
 							if($avatar == ''){
                                 $avatar = "/img/48x48-blank-avatar.jpg";
 							}else{
-								$avatar = "http://dev.gearfish.com/uploaded_cropped/48x48/".$avatar;
+								$avatar = "/uploaded_cropped/48x48/".$avatar;
 							}
 							//country code for the class
 							$cc 	= strtolower($r->countrycode);
@@ -504,7 +484,7 @@
 								$text = $r->text . '<span style="color:#88bae8;font-size:10px;">(read full feedback)</span>';
 							}
 							
-							   echo '<div class="'.$feedback_class.'">
+							   echo '<div class="'.$feedback_class.'"><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
@@ -517,14 +497,14 @@
 													<span class="authorCompany">'.$r->companyname.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
-													<span>'.$r->city.', </span>
-													<span> '.$r->countryname.'</span>													
+													<span class="authorCity">'.$r->city.', </span>
+													<span class="authorCountry"> '.$r->countryname.'</span>													
 												</div>
 											</div>
 										</div>
 										<div>    
-											<div class="feedbackText">
-												<div class="theText">'.$text.' </div>
+											<div class="feedbackText" feed-id="'.$r->id.'">
+												<div class="theText" >'.$text.' </div>
 											</div>
 											<div class="feedbackOptions">
 												<div class="feedbackReadMore">
