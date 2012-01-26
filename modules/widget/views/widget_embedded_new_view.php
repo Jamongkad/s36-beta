@@ -87,11 +87,8 @@
 		});
 
 		$('#slides').mousewheel(function(event,delta){
-			if (delta > 0){
-                $('#slides').cycle('prev');
-            }else{
-                $('#slides').cycle('next');
-            }
+			if (delta > 0){$('#slides').cycle('prev');}
+			else{$('#slides').cycle('next');}
 			return false;
 		});
 		
@@ -431,13 +428,12 @@
                 </div>
             </div>
         </div>
-        <?//Helpers::show_data($data->result);?>
         <div id="feedContainer">
             <div id="slides" class="feedBoxes">
                 <!-- group -->
                 <?php
 					$ctr = 0;
-					foreach($data->result as $r): 
+					foreach($result as $r): 
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
