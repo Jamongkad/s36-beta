@@ -1,46 +1,3 @@
-<?php
-	
-	error_reporting(0);
-	
-	//get the parameters
-	$companyId 	= isset($_GET['companyId']) ? $_GET['companyId']	: 1;
-	$siteId		= isset($_GET['siteId']) 	? $_GET['siteId'] 		: 2;
-	$units		= isset($_GET['units']) 	? $_GET['units']		: 3;
-	$transition = isset($_GET['transition'])? $_GET['transition'] 	: 'scrollVert';
-	$speed		= isset($_GET['speed']) 	? $_GET['speed']		: 500;
-	$timeout	= isset($_GET['timeout']) 	? $_GET['timeout'] 		: 5000;
-	$type		= isset($_GET['type']) 		? $_GET['type'] 		: 'horizontal';
-	
-	// this function will remove the s36_feedback() on the JSON
-	function removeJSONfunction($json){
-		$json = trim($json);
-		$json = str_replace("s36_feedback(","[",$json);
-		$json = str_replace("})","}]",$json);
-		return $json;
-	}
-
-	// assign the json url to this var
-	//$url = "http://dev.gearfish.com/index.php/api/pull_feedback?company_id=".$companyId."&site_id=".$siteId."&limit=30&offset=0&is_featured=1&is_published=1";
-	$url = "http://dev.gearfish.com/api/pull_feedback?company_id=".$companyId."&site_id=".$siteId."&limit=30&offset=0&is_featured=1&is_published=1";
-	
-	// get the string from the url
-	$json = file_get_contents($url);
-	
-	// remove the json function
-	$json = removeJSONfunction($json);
-	
-	// decode the json. this will turn the strings to an array
-	$fb = json_decode($json);
-	
-	// get the feedbacks
-	$result = $fb[0]->result;
-	
-	// get the maximum feedback returned
-	//$max 	= count($result);
-	$max 	= $fb[0]->total_rows;
-	
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -359,7 +316,9 @@
             <div id="slides" class="feedBoxes">
                 <?php
 					$ctr = 0;
-					foreach($result as $r){
+                    $units = 3;
+                    $max = $data->total_rows;
+					foreach($data->result as $r){
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -372,9 +331,9 @@
 							//avatar
 							$avatar = trim($r->avatar);
 							if($avatar == ''){
-								$avatar = "images/blank-avatar.png";
+                                $avatar = "/img/48x48-blank-avatar.jpg";
 							}else{
-								$avatar = "http://dev.gearfish.com/uploaded_cropped/48x48/".$avatar;
+								$avatar = "/uploaded_cropped/48x48/".$avatar;
 							}
 							//country code for the class
 							$cc 	= strtolower($r->countrycode);
