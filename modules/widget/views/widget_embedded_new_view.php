@@ -438,6 +438,7 @@
                 <!-- group -->
                 <?php
 					$ctr = 0;
+                    $units = 3;
 					foreach($data->result as $r): 
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
