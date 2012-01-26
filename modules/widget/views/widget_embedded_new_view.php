@@ -439,6 +439,7 @@
                 <?php
 					$ctr = 0;
                     $units = 3;
+                    $max = $feedback->total_rows;
 					foreach($data->result as $r): 
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
