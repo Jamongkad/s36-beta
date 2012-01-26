@@ -97,8 +97,8 @@ return array(
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
             $data->block_display = $obj->perms;
-            #return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_hor_view', Array('result' => $data));
-            return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_ver_view', Array('result' => $data));
+            return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_hor_view', Array('result' => $data));
+            #return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_ver_view', Array('result' => $data));
         } else {
             throw new Exception("Invalid Widget paramaters!");
         }
