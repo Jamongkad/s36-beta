@@ -98,8 +98,9 @@ return array(
             $data = $feedback->pull_feedback_by_company($params);
             $data->block_display = $obj->perms;
             return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_new_view', Array('result' => $data));
+        } else {
+            throw new Exception("Invalid Widget paramaters!");
         }
-        
     },
 
     'GET /widget/modal' => function() {
