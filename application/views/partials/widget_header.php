@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <?=HTML::style('css/embedded_widget_master_template.css')?>
         <?=HTML::style('css/flags_widget.css')?>
-        <?=HTML::script('js/jquery-1.6.2.min.js')?>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
         <?=HTML::script('js/jquery.mousewheel.min.js')?>
         <?=HTML::script('js/jquery.scroll.js')?>
