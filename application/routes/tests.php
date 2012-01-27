@@ -196,9 +196,13 @@ return array(
     'GET /tests/new_widgets' => function() {
         $dbw = new DBWidget;
 
-        $widget_obj = $dbw->fetch_widget_by_id('y10b0'); 
-        $obj = base64_decode($widget_obj->widgetobjstring);
+        $widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
+        $widget_obj_embed = $dbw->fetch_widget_by_id('y10b0'); 
+        
+
+        $obj = base64_decode($widget_obj_modal->widgetobjstring);
         $obj = unserialize($obj);
+
         //$obj = json_encode($obj);
         Helpers::show_data($obj);
 
