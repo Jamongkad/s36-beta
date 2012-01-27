@@ -31,6 +31,7 @@
 			
 			$('.boxSolo .feedbackText').html('<p>'+text+'</p>');	
             console.log(text);
+
 			$('.boxSolo .feedbackText').jScrollPane();
 			$('.boxSolo .feedbackAvatar').find('img').attr('src',avatar);
 			$('.boxSolo .feedbackInfo').find('.name').html(name);
