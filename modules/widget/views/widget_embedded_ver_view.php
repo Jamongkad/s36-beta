@@ -280,6 +280,30 @@
         	What some of our customers say
         </div>
         <div class="boxBorder"></div>
+        <div class="boxSolo">
+        	<div class="feedback">
+                <div class="feedbackAvatar">
+                    <img src="images/blank2.jpg" />
+                </div>
+                <div class="feedbackInfo">
+                    <div class="feedbackAuthorName"><span class="flag "></span></div>
+                    <div class="feedbackAuthorInfo">
+                        <span class="authorPosition"></span> 
+                        <span class="authorCompany"></span>
+                    </div>
+                    <div class="feedbackText">
+                        <p></p>
+                    </div>
+                    <div class="feedbackOptions">
+                        <div class="feedbackReadMore">
+                            <a href="#" class="back">back</a>
+                        </div>
+                        <div class="feedbackDate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="feedContainer">
             <div id="slides" class="feedBoxes">
                 <?php
