@@ -280,25 +280,27 @@
         	What some of our customers say
         </div>
         <div class="boxBorder"></div>
+
         <div class="boxSolo">
         	<div class="feedback">
                 <div class="feedbackAvatar">
                     <img src="images/blank2.jpg" />
                 </div>
                 <div class="feedbackInfo">
-                    <div class="feedbackAuthorName"><span class="flag "></span></div>
+                    <div class="feedbackAuthorName">Chris Davidson <span class="flag "></span></div>
                     <div class="feedbackAuthorInfo">
-                        <span class="authorPosition"></span> 
-                        <span class="authorCompany"></span>
+                        <span class="authorPosition">Front End Developer, </span> 
+                        <span class="authorCompany">36Stories</span>
                     </div>
                     <div class="feedbackText">
-                        <p></p>
+                        <p>The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. </p>
                     </div>
                     <div class="feedbackOptions">
                         <div class="feedbackReadMore">
                             <a href="#" class="back">back</a>
                         </div>
                         <div class="feedbackDate">
+                            13th Sept. 2011
                         </div>
                     </div>
                 </div>
