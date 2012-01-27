@@ -287,6 +287,7 @@
         	What some of our customers say
         </div>
         <div class="boxBorder"></div>
+        <!--
         <div class="boxSolo">
         	<div class="feedback">
                 <div class="feedbackAvatar">
@@ -312,6 +313,7 @@
                 </div>
             </div>
         </div>
+        -->
         <div id="feedContainer">
             <div id="slides" class="feedBoxes">
                 <?php
@@ -380,7 +382,7 @@
 							if(strlen(trim($r->text)) <= $maxchars){
 								$text = $r->text . ' <br />';																
 							}else{
-								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;"> (read full feedback)</span>';								
+								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;"> (read full feedback)</span>';
 							}
 							
 							   echo '<input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />';
