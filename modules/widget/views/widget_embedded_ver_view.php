@@ -399,8 +399,7 @@
 								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;"> (read full feedback)</span>';
 							}
 							
-							   echo '<input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />';
-							   echo '<div class="'.$feedback_class.'">
+							   echo '<div class="'.$feedback_class.'"><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
