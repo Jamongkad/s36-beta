@@ -30,8 +30,6 @@
 			$('.theSocialButtons').hide();
 			
 			$('.boxSolo .feedbackText').html('<p>'+text+'</p>');	
-            console.log(text);
-
 			$('.boxSolo .feedbackText').jScrollPane();
 			$('.boxSolo .feedbackAvatar').find('img').attr('src',avatar);
 			$('.boxSolo .feedbackInfo').find('.name').html(name);
@@ -317,7 +315,6 @@
                         <span class="authorCompany">36Stories</span>
                     </div>
                     <div class="feedbackText">
-                        <p>The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. The quick brown fox jumps over the lazy dog just so you know. </p>
                     </div>
                     <div class="feedbackOptions">
                         <div class="feedbackReadMore">
@@ -413,7 +410,7 @@
 													<span class="authorPosition">'.$r->position.' </span> 
 													<span class="authorCompany">'.$r->companyname.'</span>
 												</div>
-												<div class="feedbackText">
+												<div class="feedbackText" data-id="'.$r->id.'">
 													'.$text.'
 												</div>
 											</div>
