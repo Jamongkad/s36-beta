@@ -30,6 +30,7 @@
 			$('.theSocialButtons').hide();
 			
 			$('.boxSolo .feedbackText').html('<p>'+text+'</p>');	
+            console.log(text);
 			$('.boxSolo .feedbackText').jScrollPane();
 			$('.boxSolo .feedbackAvatar').find('img').attr('src',avatar);
 			$('.boxSolo .feedbackInfo').find('.name').html(name);
@@ -398,7 +399,7 @@
 							}else{
 								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;"> (read full feedback)</span>';
 							}
-							
+	
 							   echo '<div class="'.$feedback_class.'">
                                      <input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
 										<div class="feedbackAuthor">
