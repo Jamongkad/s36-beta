@@ -367,51 +367,6 @@
             </div>
         </div>
         <div class="boxBorder"></div>
-        <div class="boxSolo" style="display:none;">
-        	<div class="feedback">
-                <div class="feedbackAvatar">
-                    <img src="images/blank2.jpg" />
-                    <span class="back"><a href="javascript:;">back</a> </span>
-                </div>
-                <div class="feedbackInfo">
-                    <div class="feedbackAuthorInfo">
-                    	<span class="name">Chris Davidson </span>
-                    	<span class="position">Front End Developer, </span>
-                        <span class="company"> 36Stories</span> 
-                        <span class="city"> Manila City </span>
-                        <span class="country"> Philippines</span>
-                        <span class="flag flag-ph"></span>
-                        <span class="date">13th Sept. 2011</span>
-                    </div>
-                    <div class="feedbackText">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                    <div class="feedbackOptions">
-                        <div class="feedbackSocial">
-                        	
-                            <!-- twitter widget -->
-                            
-                            <div class="twitter-button">
-                                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                            </div>
-                            
-                            <div class="facebook-button">
-                            <!-- like button -->
-                            	<div class="fb-like" data-href="http://webmumu.com" data-send="true" data-width="450" data-show-faces="false"></div>
-                            </div>                            
-                            
-                        </div>
-                        <div class="feedbackReturnDate">
-                            <!-- <span class="back"><a href="javascript:;">back</a> </span> -->
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
         <?//Helpers::show_data($data->result);?>
         <div id="feedContainer">
             <div id="slides" class="feedBoxes">
