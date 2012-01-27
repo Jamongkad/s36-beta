@@ -12,6 +12,12 @@
         <?=HTML::style('css/zebra_pagination.css')?>
 
         <?=HTML::script('js/jquery-1.7.1.min.js')?>
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <!--
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js'></script>
+        -->
         <?//=HTML::script('js/ember-0.9.3.min.js')?>
 
         <?=HTML::script('js/Checky.js')?> 
@@ -20,6 +26,8 @@
         <?=HTML::script('js/InboxStatusChange.js')?>
         <?=HTML::script('js/FeedSetup.js')?>
         <?=HTML::script('js/Status.js')?>
+
+        <?//=HTML::script('js/Backbone.js')?>
 
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>
@@ -34,9 +42,6 @@
         <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>
 
         <?=HTML::script('js/s36application.js')?>
-        <?//=HTML::script('js/s36application-ember.js')?>
-
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
     </meta>    
 </head>
