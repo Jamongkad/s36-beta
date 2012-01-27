@@ -410,7 +410,7 @@
 													<span class="authorPosition">'.$r->position.' </span> 
 													<span class="authorCompany">'.$r->companyname.'</span>
 												</div>
-												<div class="feedbackText" data-id="'.$r->id.'">
+												<div class="feedbackText" feed-id="'.$r->id.'">
 													'.$text.'
 												</div>
 											</div>
