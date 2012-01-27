@@ -97,9 +97,17 @@ return array(
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
             $data->block_display = $obj->perms;
-            Helpers::show_data($obj);
-            #return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_hor_view', Array('result' => $data));
-            #return View::of_widget_layout()->partial('contents', 'widget::widget_embedded_ver_view', Array('result' => $data));
+
+            $widget_view = null;
+            if($obj->embed_block_type == 'embed_block_x') {
+                $widget_view = 'widget::widget_embedded_hor_view';
+            }
+
+            if($obj->embed_block_type == 'embed_block_y') { 
+                $widget_view = 'widget::widget_embedded_ver_view';
+            }
+
+            return View::of_widget_layout()->partial('contents', $widget_view, Array('result' => $data));
         } else {
             throw new Exception("Invalid Widget paramaters!");
         }
