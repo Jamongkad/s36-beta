@@ -18,6 +18,11 @@
 			$('#feedContainer').fadeIn();
 			$('.pagination').show();
 			$('#pager').fadeIn();
+            
+           var element = $('.boxSolo .feedbackText').jScrollPane();  
+           var api = element.data('jsp'); 
+           api.destroy();
+
 		});
 		$('.readmore, .feedbackText').click(function(){
 			$('.boxSolo').fadeIn();
