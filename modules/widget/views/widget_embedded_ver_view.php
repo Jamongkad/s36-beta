@@ -193,7 +193,7 @@
 			margin-bottom:10px;
 		}
 		.boxBorder{
-			background:url(images/border.png) repeat-x;
+			background:url(/img/border.png) repeat-x;
 			height:7px;
 			display:block;
 			margin: 2px 0px;
@@ -212,7 +212,7 @@
 			.sendFeedback{float:left;width:50%;padding-top:7px;font-weight:bold;}
 				.sendFeedback a{color:#6c6c6c;text-decoration:underline;font-size:11px;}
 			.viewAll{float:left;width:50%;text-align:right;}
-				.viewAllBtn{background:url(images/viewallbtn.png) no-repeat;background-position:top;width:96px;height:27px;border:none;cursor:pointer;}
+				.viewAllBtn{background:url(/img/viewallbtn.png) no-repeat;background-position:top;width:96px;height:27px;border:none;cursor:pointer;}
 				.viewAllBtn:hover{background-position:bottom;}
 			
 			.pagination{text-align:center;font-size:11px;padding-top:5px;}
@@ -256,9 +256,9 @@
 					.boxSolo .feedbackText{color:#000000;font-size:11px;margin-bottom:10px;text-align:justify;line-height:17px;max-height:280px;}
 					
 					.feedbacks .theSocialButtons{background:#f3f3f3;padding:6px 8px;border:1px solid #e4e4e4;position:absolute;bottom:18px;left:0px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}
-							  .theSocialButtons .shareTail{background:url(images/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
+							  .theSocialButtons .shareTail{background:url(/img/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
 								
-								a.share{padding-left:16px;background:url(images/ico-share.png) no-repeat left top;margin-left:4px;}
+								a.share{padding-left:16px;background:url(/img/ico-share.png) no-repeat left top;margin-left:4px;}
 								a.share:hover{color:#88bae8;background-position:left bottom;}
 								
 					
