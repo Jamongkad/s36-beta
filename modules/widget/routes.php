@@ -126,7 +126,9 @@ return array(
 
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
-        print_r($widget_id);
+        $dbw = new DBWidget;
+        $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
+        print_r($widget_obj);
         /*
         $dbw = new DBWidget;
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
