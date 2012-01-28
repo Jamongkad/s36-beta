@@ -35,8 +35,7 @@ class DBWidget extends S36DataObject {
         $sth->execute();
     }
 
-    public function fetch_widget_by_id($widget_key) {    
-        
+    public function fetch_widget_by_id($widget_key) {     
         $sql = "SELECT 
                     widgetObjString 
                 FROM 
@@ -46,7 +45,6 @@ class DBWidget extends S36DataObject {
                     AND widgetKey = :widget_key
                 LIMIT 1";
         $sth = $this->dbh->prepare($sql);
-        //$sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
