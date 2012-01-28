@@ -36,20 +36,6 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widget_by_id($widget_key) {     
-        /*
-        $sql = "SELECT 
-                    widgetObjString 
-                FROM 
-                    WidgetStore 
-                WHERE 1=1 
-                    AND widgetKey = :widget_key
-                LIMIT 1";
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
-        */
         $query = DB::Table('WidgetStore')->where('widgetKey', '=', $widget_key)->first();
         return $query;
     }
