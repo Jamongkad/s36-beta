@@ -214,7 +214,7 @@ return array(
         $obj->site_id = 1;
         $obj->company_id = 1;
         $obj->base_url = 'http://razer.gearfish.com';
-        $obj->theme_name = 'If I could escape';
+        $obj->theme_name = 'If I could escape ooh yeah';
         $obj->embed_type = 'embedded';
         $obj->embed_block_type = 'embed_block_y';
         $obj->embed_effects = 1;
