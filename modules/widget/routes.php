@@ -128,8 +128,7 @@ return array(
         $widget_id = Input::get('widgetId');
         $dbw = new DBWidget;
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
-        Helpers::show_data($widget_obj);
-        /*
+
         $obj = base64_decode($widget_obj->widgetobjstring);
         $obj = unserialize($obj); 
 
@@ -151,7 +150,7 @@ return array(
         );
 
         return View::make('widget::widget_js_output', $data);
-        */
+
     },
 
     'GET /widget/modal' => function() {

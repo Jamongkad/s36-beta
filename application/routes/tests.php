@@ -198,7 +198,6 @@ return array(
 
         //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
         $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
-
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
 
