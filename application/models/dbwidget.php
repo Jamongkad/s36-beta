@@ -41,7 +41,6 @@ class DBWidget extends S36DataObject {
                 FROM 
                     WidgetStore 
                 WHERE 1=1 
-                    /*AND companyId = :company_id*/
                     AND widgetKey = :widget_key
                 LIMIT 1";
         $sth = $this->dbh->prepare($sql);
