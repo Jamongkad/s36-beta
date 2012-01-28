@@ -80,7 +80,8 @@ return array(
         $user_obj->username = $username;
         $user_obj->company_id = $company_id;
         $user_result = $dbu->pull_user($user_obj);
-
+        print_r($user_result);
+        /*
         if($user_result) { 
             $dbw = new DBWidget;
             $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
@@ -117,10 +118,11 @@ return array(
 
             return View::of_widget_layout()->partial('contents', $widget_view, Array('result' => $data));
 
+
         } else {
             throw new Exception("Invalid Widget paramaters!");
         }
-
+        */
     },
 
     'GET /widget/js_output' => function() {
