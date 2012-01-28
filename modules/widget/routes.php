@@ -99,7 +99,7 @@ return array(
             $data->block_display = $obj->perms;
 
             $widget_view = null;
-            if($obj->embed_type == 'embedded') {
+            if ($obj->embed_type == 'embedded') {
              
                 if($obj->embed_block_type == 'embed_block_x') {
                     $widget_view = 'widget::widget_embedded_hor_view';
@@ -109,7 +109,9 @@ return array(
                     $widget_view = 'widget::widget_embedded_ver_view';
                 }
                   
-            } else {
+            } 
+            
+            if ($obj->embed_type == 'modal') {
                 $widget_view = "widget::widget_modal_popup_view";
             }
 
