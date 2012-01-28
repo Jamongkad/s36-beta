@@ -124,7 +124,10 @@ return array(
     },
 
     'GET /widget/js_output' => function() {
-        return View::make('widget::widget_js_output');
+        $data = Array(
+            'url' => Config::get('application.deploy_env')
+        );
+        return View::make('widget::widget_js_output', $data);
     },
 
     'GET /widget/modal' => function() {
