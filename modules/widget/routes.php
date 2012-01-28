@@ -88,7 +88,6 @@ return array(
             $obj = base64_decode($widget_obj->widgetobjstring);
             $obj = unserialize($obj); 
 
-
             $params = Array(
                 'company_id'   => $obj->company_id
               , 'site_id'      => $obj->site_id
@@ -125,11 +124,30 @@ return array(
 
     },
 
-    'GET /widget/js_output' => function() {
-        print_r(Input::get('widgetId'));
+    'GET /widget/js_output' => function() { 
+        $widget_id = Input::get('widgetId');
+        $dbw = new DBWidget;
+        $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
+        $obj = base64_decode($widget_obj->widgetobjstring);
+        $obj = unserialize($obj); 
+
+        if ($obj->embed_type == 'embedded') {
+         
+            if($obj->embed_block_type == 'embed_block_x') {
+                $widget_ht = 300;
+            }
+
+            if($obj->embed_block_type == 'embed_block_y') { 
+                $widget_ht = 700; 
+            }
+              
+        } 
+        
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
+            'widget_height' => $widget_ht
         );
+
         return View::make('widget::widget_js_output', $data);
     },
 
