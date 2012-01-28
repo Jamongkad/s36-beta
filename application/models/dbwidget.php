@@ -36,6 +36,7 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widget_by_id($widget_key) {     
+        /*
         $sql = "SELECT 
                     widgetObjString 
                 FROM 
@@ -48,5 +49,8 @@ class DBWidget extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
+        */
+        $query = DB::Table('WidgetStore')->where('widgetKey', '=', $widget_key)->first();
+        return $query;
     }
 }
