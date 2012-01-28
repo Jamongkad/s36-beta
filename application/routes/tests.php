@@ -197,14 +197,40 @@ return array(
         $dbw = new DBWidget;
 
         $widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
-        $widget_obj_embed = $dbw->fetch_widget_by_id('y10b0'); 
+        $widget_obj_embed = $dbw->fetch_widget_by_id('iuz0h'); 
         
-
-        $obj = base64_decode($widget_obj_modal->widgetobjstring);
+        $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
 
         //$obj = json_encode($obj);
         Helpers::show_data($obj);
+    },
 
+    'GET /tests/update_widget' => function() { 
+
+        $widget_key = 'iuz0h';
+
+        $dbw = new DBWidget;
+        $obj = new StdClass;
+        $obj->site_id = 1;
+        $obj->company_id = 1;
+        $obj->base_url = 'http://razer.gearfish.com';
+        $obj->theme_name = 'Playing the Fool';
+        $obj->embed_type = 'embedded';
+        $obj->embed_block_type = 'embed_block_y';
+        $obj->embed_effects = 1;
+        $obj->modal_effects = 0;
+        $obj->perms = Array(
+            'displayName'  => 1
+          , 'displayURL' => 1
+          , 'displayImg' => 1
+          , 'displayCountry' => 1
+          , 'displayCompany' => 1
+          , 'displaySbmtDate' => 1
+          , 'displayPosition' => 1
+        );
+        $obj->theme_type = 'aglow';
+
+        $dbw->update_widget_by_id($widget_key, $obj);
     }
 );

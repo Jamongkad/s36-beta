@@ -22,6 +22,19 @@ class DBWidget extends S36DataObject {
         */
     }
 
+    public function update_widget_by_id($widget_key, $widget_obj) {
+        $widget_obj_string = base64_encode(serialize($widget_obj));
+        $sql = "UPDATE WidgetStore
+                    SET widgetObjString = :widget_string  
+                WHERE 1=1
+                    AND widgetKey = :widget_key";
+        
+        $sth = $this->dbh->prepare($sql);  
+        $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
+        $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
+        $sth->execute();
+    }
+
     public function fetch_widget_by_id($widget_key) {    
         
         $sql = "SELECT 
@@ -38,6 +51,5 @@ class DBWidget extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
-
     }
 }
