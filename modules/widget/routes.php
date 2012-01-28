@@ -145,7 +145,7 @@ return array(
         
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
-            'widget_height' => $widget_ht
+          , 'widget_height' => $widget_ht
         );
 
         return View::make('widget::widget_js_output', $data);
