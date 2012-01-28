@@ -1,10 +1,8 @@
 function s36Widget(){
 	this.frameUrl = '',
 	this.init = function(params){
-		for (key in params){
-			this[key] = params[key]; // get the parameters!
-		}
-		this.generateWidgetUrl();
+        console.log(params);
+		//this.generateWidgetUrl();
 	},
 	this.generateWidgetUrl = function(){
         var url = 'http://razer.gearfish.com/widget/embedded_proto/iuz0h/ryan/1/';
