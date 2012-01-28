@@ -202,7 +202,7 @@ return array(
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
 
-        //$obj = json_encode($obj);
+        $obj = json_encode($obj);
         Helpers::show_data($obj);
     },
 
