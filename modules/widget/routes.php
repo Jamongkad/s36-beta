@@ -73,7 +73,7 @@ return array(
         ));
     },
 
-    'GET /widget/embedded_proto/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
+    'GET /widget/widget_loader/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
 
         $dbu = new DBUser;
         $user_obj = new StdClass;
