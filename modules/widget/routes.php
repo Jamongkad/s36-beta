@@ -126,6 +126,7 @@ return array(
     },
 
     'GET /widget/js_output' => function() {
+        print_r(Input::get('widgetId'));
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
         );

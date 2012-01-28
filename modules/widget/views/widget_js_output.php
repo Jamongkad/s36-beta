@@ -1,6 +1,6 @@
 <?php
-   //header("Content-type: application/x-javascript");
-   header("Content-type: text/javascript; charset=UTF-8");
+   header("Content-type: application/x-javascript; charset=UTF-8");
+   //header("Content-type: text/javascript; charset=UTF-8");
 ?>
 
 function WidgetLoader(opts) {
