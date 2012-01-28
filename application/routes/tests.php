@@ -215,7 +215,7 @@ return array(
         $obj->base_url = 'http://razer.gearfish.com';
         $obj->theme_name = 'Goodness gracious';
         $obj->embed_type = 'embedded';
-        $obj->embed_block_type = 'embed_block_x';
+        $obj->embed_block_type = 'embed_block_y';
         $obj->embed_effects = 1;
         $obj->modal_effects = 0;
         $obj->perms = Array(
