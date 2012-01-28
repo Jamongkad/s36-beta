@@ -196,8 +196,8 @@ return array(
     'GET /tests/new_widgets' => function() {
         $dbw = new DBWidget;
 
-        $widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
-        $widget_obj_embed = $dbw->fetch_widget_by_id('qbbro'); 
+        //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
+        $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
         
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
@@ -230,7 +230,6 @@ return array(
           , 'displayPosition' => 1
         );
         $obj->theme_type = 'aglow';
-
         $dbw->update_widget_by_id($widget_key, $obj);
     }
 );
