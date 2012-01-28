@@ -126,22 +126,22 @@ return array(
 
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
+        print_r($widget_id);
+        /*
         $dbw = new DBWidget;
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
 
         $obj = base64_decode($widget_obj->widgetobjstring);
         $obj = unserialize($obj); 
 
-        if ($obj->embed_type == 'embedded') {
-         
+        if ($obj->embed_type == 'embedded') {  
             if($obj->embed_block_type == 'embed_block_x') {
                 $widget_ht = 300;
             }
 
             if($obj->embed_block_type == 'embed_block_y') { 
                 $widget_ht = 700; 
-            }
-     
+            }     
         } 
         
         $data = Array(
@@ -150,7 +150,7 @@ return array(
         );
 
         return View::make('widget::widget_js_output', $data);
-
+        */
     },
 
     'GET /widget/modal' => function() {
