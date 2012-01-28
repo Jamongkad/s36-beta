@@ -7,7 +7,7 @@ function s36Widget(){
 		this.generateWidgetUrl();
 	},
 	this.generateWidgetUrl = function(){
-		var url = 'http://localhost/new_template/aglow/760x300_Leaderboard.php?';
+        var url = 'http://razer.gearfish.com/widget/embedded_proto/iuz0h/ryan/1/';
 		this.frameUrl = url;
 	},
 	this.generateFrameMarkup = function(){
