@@ -129,8 +129,7 @@ return array(
         $widget_id = str_replace("'", "", $widget_id);
         $dbw = new DBWidget;
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
-        print_r($widget_obj);
-        /*
+
         $dbw = new DBWidget;
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
 
@@ -153,7 +152,7 @@ return array(
         );
 
         return View::make('widget::widget_js_output', $data);
-        */
+
     },
 
     'GET /widget/modal' => function() {
