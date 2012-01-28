@@ -29,11 +29,11 @@ class DBWidget extends S36DataObject {
                 FROM 
                     WidgetStore 
                 WHERE 1=1 
-                    AND companyId = :company_id 
+                    /*AND companyId = :company_id*/
                     AND widgetKey = :widget_key
                 LIMIT 1";
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        //$sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
