@@ -127,7 +127,7 @@ return array(
 
     'GET /widget/js_output' => function() {
         $data = Array(
-            'url' => Config::get('application.deploy_env')
+            'deploy_url' => Config::get('application.deploy_env')
         );
         return View::make('widget::widget_js_output', $data);
     },
