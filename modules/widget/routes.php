@@ -123,6 +123,10 @@ return array(
 
     },
 
+    'GET /widget/js_output' => function() {
+        return View::make('widget::widget_js_output');
+    },
+
     'GET /widget/modal' => function() {
         $feedback = new DBFeedback;
         $company_id = null;

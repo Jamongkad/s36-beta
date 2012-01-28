@@ -14,7 +14,3 @@ WidgetLoader.prototype.generateFrameMarkup = function() {
 WidgetLoader.prototype.display = function() { 
     document.write(this.generateFrameMarkup());
 }
-
-WidgetLoader.prototype.test = function() {
-    console.log(jamongkad.name);
-}
