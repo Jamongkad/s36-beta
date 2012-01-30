@@ -217,45 +217,6 @@ return array(
     },
 
     'GET /tests/widget_data' => function() {
-        /*
-        $dbw = new DBWidget;
-        //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
-        $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
-        $obj = base64_decode($widget_obj_embed->widgetobjstring);
-        $obj = unserialize($obj);
-        //global widget rules
-
-        $params = Array(
-            'company_id'   => $obj->company_id
-          , 'site_id'      => $obj->site_id
-          , 'is_published' => 1
-          , 'is_featured'  => 1
-        );
-
-        $feedback = new DBFeedback;       
-        $data = $feedback->pull_feedback_by_company($params);
-        
-        $fixed_data = Array();
-        foreach($data->result as $rows) {
-           if($rows->indlock == 1) { 
-               $feed_rules = $obj->perms;    
-           } else {
-               $feed_rules = new StdClass;
-               $feed_rules->displayname     = $rows->displayname;
-               $feed_rules->displayimg      = $rows->displayimg;
-               $feed_rules->displaycompany  = $rows->displaycompany;
-               $feed_rules->displayposition = $rows->displayposition;
-               $feed_rules->displayurl      = $rows->displayurl;
-               $feed_rules->displaycountry  = $rows->displaycountry;
-               $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
-            }
-           $rows->rules = $feed_rules;
-           $fixed_data[] = $rows;
-        }
-
-        Helpers::show_data($fixed_data);
-        $fixed_data = null;
-        */
         $wl = new WidgetLoader('qtg3d'); 
         Helpers::show_data($wl->execute());
     }

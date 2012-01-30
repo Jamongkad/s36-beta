@@ -61,6 +61,7 @@ class WidgetLoader {
         $wd = new WidgetDelivery;         
         $wd->widget_view = $widget_view;
         $wd->widget_data = $fixed_data;
+        $fixed_data = null;
         return $wd;
     }
 }
