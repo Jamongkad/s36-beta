@@ -418,7 +418,7 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-                    
+ 
 					foreach($result as $r): 
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';

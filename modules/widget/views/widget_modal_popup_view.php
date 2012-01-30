@@ -425,9 +425,9 @@
                   <?php //start of full view slides   
 					$ctr = 0;
                     $units = 3;
-                    $max = $result->row_count;
+                    $max = $row_count;
 
-                    foreach($result->result as $r){         
+                    foreach($result as $r){         
                             //avatar
                             $avatar = trim($r->avatar);
                             

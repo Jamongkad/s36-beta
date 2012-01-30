@@ -332,9 +332,9 @@
                 <?php
 					$ctr = 0;
                     $units = 3;
-                    $max = $result->row_count;
+                    $max = $row_count;
 
-					foreach($result->result as $r){
+					foreach($result as $r){
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
