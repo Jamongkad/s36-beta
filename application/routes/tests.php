@@ -236,14 +236,17 @@ return array(
         $feedback = new DBFeedback;       
         $data = $feedback->pull_feedback_by_company($params);
         
-        $result_data = Array();
+        $fixed_data = Array();
+        $rules_data = Array();
         foreach($data->result as $rows) {
            $feed_rules = new StdClass;
            $feed_rules->feedid = $rows->id;
            $feed_rules->displayname = $rows->displayname;
-           $result_data[] = $feed_rules;
+           $rules_data[] = $feed_rules;
+           $rows->rules = $rules_data;
+           $fixed_data[] = $rows;
         }
 
-        Helpers::show_data($result_data);
+        Helpers::show_data($fixed_data);
     }
 );
