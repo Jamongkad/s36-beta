@@ -252,5 +252,6 @@ return array(
         }
 
         Helpers::show_data($fixed_data);
+        $fixed_data = null;
     }
 );
