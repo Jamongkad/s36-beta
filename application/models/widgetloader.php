@@ -40,9 +40,9 @@ class WidgetLoader {
             $widget_view = "widget::widget_modal_popup_view";
         }
 
-        $wd = new WidgetDelivery;         
-        $wd->data = $data;
+        $wd = new StdClass;         
         $wd->widget_view = $widget_view;
+        $wd->data = $data;
         return $wd;
     }
 }
