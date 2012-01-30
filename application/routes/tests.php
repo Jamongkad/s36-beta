@@ -204,13 +204,13 @@ return array(
         $obj->embed_effects = 1;
         $obj->modal_effects = 0;
         $obj->perms = Array(
-            'displayName'  => 1
+            'displayName'  => 0
           , 'displayURL' => 1
           , 'displayImg' => 1
           , 'displayCountry' => 1
           , 'displayCompany' => 1
           , 'displaySbmtDate' => 1
-          , 'displayPosition' => 1
+          , 'displayPosition' => 0
         );
         $obj->theme_type = 'aglow';
         $dbw->update_widget_by_id($widget_key, $obj);
