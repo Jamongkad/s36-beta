@@ -415,6 +415,8 @@
             <div id="slides" class="feedBoxes">
                 <!-- group -->
                 <?php
+                print_r($result);
+                /*
 					$ctr = 0;
                     $units = 3;
                     $max = $result->row_count;
@@ -526,7 +528,7 @@
 						$end++;
 						$ctr++;
 					endforeach;
-
+                    */
 				?>
                 
                
