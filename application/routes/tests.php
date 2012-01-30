@@ -217,14 +217,13 @@ return array(
     },
 
     'GET /tests/widget_data' => function() {
+        /*
         $dbw = new DBWidget;
         //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
         $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
-
         //global widget rules
-        Helpers::show_data($obj);
 
         $params = Array(
             'company_id'   => $obj->company_id
@@ -256,5 +255,8 @@ return array(
 
         Helpers::show_data($fixed_data);
         $fixed_data = null;
+        */
+        $wl = new WidgetLoader('qtg3d'); 
+        Helpers::show_data($wl);
     }
 );

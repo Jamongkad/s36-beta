@@ -95,7 +95,6 @@ return array(
 
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
-            $data->block_display = $obj->perms;
 
             $widget_view = null;
             if ($obj->embed_type == 'embedded') {
