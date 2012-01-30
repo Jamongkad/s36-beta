@@ -420,9 +420,8 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
- 
+                    print_r($result);
 					foreach($result as $r): 
-                        print_r($r->rules);
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
