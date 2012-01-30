@@ -223,7 +223,7 @@ return array(
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
 
-        Helpers::show_data($obj);
+        Helpers::show_data($obj->perms);
 
         $params = Array(
             'company_id'   => $obj->company_id
