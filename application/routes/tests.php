@@ -232,6 +232,6 @@ return array(
     },
 
     'GET /tests/widget_data' => function() {
-        print("Mathew");
+        print_r("Mathew");
     }
 );
