@@ -182,10 +182,6 @@ return array(
         Helpers::show_data($userinfo->browser()->getBrowser());
     },
 
-    'GET /tests/feedback_submission' => function() {
-        
-    },
-
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
         $dash->company_id = 3;
@@ -221,8 +217,6 @@ return array(
     },
 
     'GET /tests/widget_data' => function() {
-        print_r("Mathew");
-
         $dbw = new DBWidget;
         //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
         $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
@@ -230,5 +224,16 @@ return array(
         $obj = unserialize($obj);
 
         Helpers::show_data($obj);
+
+        $params = Array(
+            'company_id'   => $obj->company_id
+          , 'site_id'      => $obj->site_id
+          , 'is_published' => 1
+          , 'is_featured'  => 1
+        );
+
+        $feedback = new DBFeedback;       
+        $data = $feedback->pull_feedback_by_company($params);
+        Helpers::show_data($data);
     }
 );
