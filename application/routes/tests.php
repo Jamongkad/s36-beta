@@ -238,15 +238,18 @@ return array(
         
         $fixed_data = Array();
         foreach($data->result as $rows) {
-           $feed_rules = new StdClass;
-           $feed_rules->displayname     = $rows->displayname;
-           $feed_rules->displayimg      = $rows->displayimg;
-           $feed_rules->displaycompany  = $rows->displaycompany;
-           $feed_rules->displayposition = $rows->displayposition;
-           $feed_rules->displayurl      = $rows->displayurl;
-           $feed_rules->displaycountry  = $rows->displaycountry;
-           $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
-
+           if($rows->indlock == 1) { 
+               $feed_rules = new StdClass;
+               $feed_rules->displayname     = $rows->displayname;
+               $feed_rules->displayimg      = $rows->displayimg;
+               $feed_rules->displaycompany  = $rows->displaycompany;
+               $feed_rules->displayposition = $rows->displayposition;
+               $feed_rules->displayurl      = $rows->displayurl;
+               $feed_rules->displaycountry  = $rows->displaycountry;
+               $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
+           } else {
+               $feed_rules = $obj->perms;    
+            }
            $rows->rules = $feed_rules;
            $fixed_data[] = $rows;
         }
