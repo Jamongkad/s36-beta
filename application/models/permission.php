@@ -183,13 +183,13 @@ class SettingPermission extends PermissionType {
 
 class FeedbackDisplayPermission extends PermissionType {
     
-    private $permission_keys = Array(  'displayName' => 0
-                                     , 'displayURL' => 0
-                                     , 'displayImg' => 0
-                                     , 'displayCountry' => 0
-                                     , 'displayCompany' => 0
-                                     , 'displaySbmtDate' => 0
-                                     , 'displayPosition' => 0
+    private $permission_keys = Array(  'displayname' => 0
+                                     , 'displayurl' => 0
+                                     , 'displayimg' => 0
+                                     , 'displaycountry' => 0
+                                     , 'displaycompany' => 0
+                                     , 'displaysbmtdate' => 0
+                                     , 'displayposition' => 0
                                     );
 
     public function expose_keys() {

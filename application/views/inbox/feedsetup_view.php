@@ -145,25 +145,25 @@
             <div class="widget-opts" id="display-info-target">
                 <table width="100%" cellpadding="4" class="display-info">
                     <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayName]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, 1)?>
                     </td>
                     <td width="140" class="feedback-td-font">Website Url : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayURL]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, 1)?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Display Image :  </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayImg]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, 1)?>
                     </td>		
                     <td class="feedback-td-font">Country & Flag : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayCountry]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, 1)?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Company Name :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayCompany]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, 1)?>
                     </td>			
                     <td class="feedback-td-font">Submitted Date : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaySbmtDate]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, 1)?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Designation / Position :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayPosition]', 1, 1)?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, 1)?>
                     </td><td></td><td></td></tr>
                 </table>
                 <div id="widget_options" class="error-msg"></div>
