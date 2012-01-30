@@ -193,17 +193,6 @@ return array(
         Helpers::show_data($d);
     },
 
-    'GET /tests/new_widgets' => function() {
-        $dbw = new DBWidget;
-
-        //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
-        $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
-        $obj = base64_decode($widget_obj_embed->widgetobjstring);
-        $obj = unserialize($obj);
-
-        Helpers::show_data($obj);
-    },
-
     'GET /tests/update_widget' => function() { 
 
         $widget_key = 'iuz0h';
@@ -233,5 +222,13 @@ return array(
 
     'GET /tests/widget_data' => function() {
         print_r("Mathew");
+
+        $dbw = new DBWidget;
+        //$widget_obj_modal = $dbw->fetch_widget_by_id('c2wu9'); 
+        $widget_obj_embed = $dbw->fetch_widget_by_id('qtg3d'); 
+        $obj = base64_decode($widget_obj_embed->widgetobjstring);
+        $obj = unserialize($obj);
+
+        Helpers::show_data($obj);
     }
 );
