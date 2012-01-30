@@ -422,7 +422,7 @@
                     $max = $row_count;
  
 					foreach($result as $r): 
-                        print_r($r->rules);
+                        print_r($r->rules->displayname);
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
