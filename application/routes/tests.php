@@ -257,6 +257,6 @@ return array(
         $fixed_data = null;
         */
         $wl = new WidgetLoader('qtg3d'); 
-        Helpers::show_data($wl);
+        Helpers::show_data($wl->execute());
     }
 );
