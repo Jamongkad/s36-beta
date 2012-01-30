@@ -237,13 +237,11 @@ return array(
         $data = $feedback->pull_feedback_by_company($params);
         
         $fixed_data = Array();
-        $rules_data = Array();
         foreach($data->result as $rows) {
            $feed_rules = new StdClass;
            $feed_rules->feedid = $rows->id;
            $feed_rules->displayname = $rows->displayname;
-           $rules_data[] = $feed_rules;
-           $rows->rules = $rules_data;
+           $rows->rules = $feed_rules;
            $fixed_data[] = $rows;
         }
 
