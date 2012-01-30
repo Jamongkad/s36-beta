@@ -86,7 +86,7 @@ return array(
             $widget_data = $wl->execute();
 
             return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
-                'result' => $widget_data->widget_data
+                'result' => $widget_data->widget_data, 'row_count' => $widget_data->total_rows
             ));
 
         } else {

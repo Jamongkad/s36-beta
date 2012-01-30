@@ -421,14 +421,13 @@
         <div class="" id="popup">
         	<div class="popup-fullview">
                 <div class="fullview-slides">
-                
-                    
+                 
                   <?php //start of full view slides   
 					$ctr = 0;
                     $units = 3;
-                    $max = $result->total_rows;
-                    foreach($result->result as $r){
-                        
+                    $max = $result->row_count;
+
+                    foreach($result->result as $r){         
                             //avatar
                             $avatar = trim($r->avatar);
                             
