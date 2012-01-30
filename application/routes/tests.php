@@ -223,7 +223,8 @@ return array(
         $obj = base64_decode($widget_obj_embed->widgetobjstring);
         $obj = unserialize($obj);
 
-        Helpers::show_data($obj->perms);
+        //global widget rules
+        //Helpers::show_data($obj->perms);
 
         $params = Array(
             'company_id'   => $obj->company_id
@@ -234,6 +235,15 @@ return array(
 
         $feedback = new DBFeedback;       
         $data = $feedback->pull_feedback_by_company($params);
-        Helpers::show_data($data);
+        
+        $result_data = Array();
+        foreach($data->result as $rows) {
+           $feed_rules = new StdClass;
+           $feed_rules->feedid = $rows->id;
+           $feed_rules->displayname = $rows->displayname;
+           $result_data[] = $feed_rules;
+        }
+
+        Helpers::show_data($result_data);
     }
 );
