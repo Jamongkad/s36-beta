@@ -209,7 +209,7 @@ return array(
           , 'displayimg' => 1
           , 'displaycountry' => 1
           , 'displaycompany' => 1
-          , 'displaysbmtdate' => 1
+          , 'displaysbmtdate' => 0
           , 'displayposition' => 0
         );
         $obj->theme_type = 'aglow';
