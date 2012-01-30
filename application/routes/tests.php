@@ -229,5 +229,9 @@ return array(
         );
         $obj->theme_type = 'aglow';
         $dbw->update_widget_by_id($widget_key, $obj);
+    },
+
+    'GET /tests/widget_data' => function() {
+        print("Mathew");
     }
 );

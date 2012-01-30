@@ -14,7 +14,6 @@ return array(
             $fb_secret = '8e0666032461a99fb538e5f38ac7ef93';
         }
 
-
         return View::make('widget::widget_form_view', array(
             'siteId'    => Input::get('siteId')
           , 'companyId' => Input::get('companyId') 
@@ -80,7 +79,6 @@ return array(
         $user_obj->username = $username;
         $user_obj->company_id = $company_id;
         $user_result = $dbu->pull_user($user_obj);
-
 
         if($user_result) { 
             $dbw = new DBWidget;
