@@ -218,6 +218,6 @@ return array(
 
     'GET /tests/widget_data' => function() {
         $wl = new WidgetLoader('qtg3d'); 
-        Helpers::show_data($wl->execute()->widget_view);
+        Helpers::show_data($wl->execute());
     }
 );
