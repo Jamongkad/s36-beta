@@ -1,6 +1,7 @@
 <?php
 
 class WidgetLoader {
+
     public function __construct($widget_id) {
         $this->widget_id = $widget_id;
     }
@@ -26,11 +27,11 @@ class WidgetLoader {
         $widget_view = null;
         if ($obj->embed_type == 'embedded') {
          
-            if($obj->embed_block_type == 'embed_block_x') {
+            if ($obj->embed_block_type == 'embed_block_x') {
                 $widget_view = 'widget::widget_embedded_hor_view';
             }
 
-            if($obj->embed_block_type == 'embed_block_y') { 
+            if ($obj->embed_block_type == 'embed_block_y') { 
                 $widget_view = 'widget::widget_embedded_ver_view';
             }
               
@@ -41,8 +42,9 @@ class WidgetLoader {
         }
 
         $fixed_data = Array();
-        foreach($data->result as $rows) {
-           if($rows->indlock == 1) { 
+        foreach ($data->result as $rows) {
+
+           if ($rows->indlock == 1) { 
                $feed_rules = $obj->perms;    
            } else {
                $feed_rules = new StdClass;
@@ -53,7 +55,8 @@ class WidgetLoader {
                $feed_rules->displayurl      = $rows->displayurl;
                $feed_rules->displaycountry  = $rows->displaycountry;
                $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
-            }
+           }
+
            $rows->rules = $feed_rules;
            $fixed_data[] = $rows;
         }

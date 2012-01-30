@@ -81,39 +81,13 @@ return array(
         $user_result = $dbu->pull_user($user_obj);
 
         if($user_result) { 
-            $dbw = new DBWidget;
-            $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
-            $obj = base64_decode($widget_obj->widgetobjstring);
-            $obj = unserialize($obj); 
 
-            $params = Array(
-                'company_id'   => $obj->company_id
-              , 'site_id'      => $obj->site_id
-              , 'is_published' => 1
-              , 'is_featured'  => 1
-            );
+            $wl = new WidgetLoader($widget_id); 
+            $widget_data = $wl->execute();
 
-            $feedback = new DBFeedback;       
-            $data = $feedback->pull_feedback_by_company($params);
-
-            $widget_view = null;
-            if ($obj->embed_type == 'embedded') {
-             
-                if($obj->embed_block_type == 'embed_block_x') {
-                    $widget_view = 'widget::widget_embedded_hor_view';
-                }
-
-                if($obj->embed_block_type == 'embed_block_y') { 
-                    $widget_view = 'widget::widget_embedded_ver_view';
-                }
-                  
-            } 
-            
-            if ($obj->embed_type == 'modal') {
-                $widget_view = "widget::widget_modal_popup_view";
-            }
-
-            return View::of_widget_layout()->partial('contents', $widget_view, Array('result' => $data));
+            return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
+                'result' => $widget_data->widget_data
+            ));
 
         } else {
             throw new Exception("Invalid Widget paramaters!");
