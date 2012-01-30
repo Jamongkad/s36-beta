@@ -191,16 +191,16 @@ return array(
 
     'GET /tests/update_widget' => function() { 
 
-        $widget_key = 'iuz0h';
+        $widget_key = 'qtg3d';
 
         $dbw = new DBWidget;
         $obj = new StdClass;
         $obj->site_id = 1;
         $obj->company_id = 1;
         $obj->base_url = 'http://razer.gearfish.com';
-        $obj->theme_name = 'Goodness gracious';
+        $obj->theme_name = 'I love that song!';
         $obj->embed_type = 'embedded';
-        $obj->embed_block_type = 'embed_block_x';
+        $obj->embed_block_type = 'embed_block_y';
         $obj->embed_effects = 1;
         $obj->modal_effects = 0;
         $obj->perms = Array(
