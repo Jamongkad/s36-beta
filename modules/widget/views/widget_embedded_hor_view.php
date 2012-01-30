@@ -7,6 +7,7 @@
 			$('.pagination').show();
 			$('#pager').fadeIn();
 		});
+
 		$('.readmore, .feedbackText').click(function(){
 			
 			var id = $(this).attr('feed-id');
@@ -37,6 +38,7 @@
 			
 			$('#pager').hide();
 		});
+
 		if($('.feedbacks').length == 1){
 			$('.feedbacks').show();
 		}
@@ -420,6 +422,7 @@
                     $max = $row_count;
  
 					foreach($result as $r): 
+                        print_r($r->rules);
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
