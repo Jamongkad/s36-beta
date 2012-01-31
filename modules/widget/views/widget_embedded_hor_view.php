@@ -420,10 +420,10 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-                    Helpers::show_data($result[0]->rules->displayname);
+                    //Helpers::show_data($result[0]->rules->displayname);
 					foreach($result as $r): 
-                    /*                        
-                        print_r($r->rules);
+
+                        print_r($r->rules->displayname);
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -529,7 +529,7 @@
 						}
 						$end++;
 						$ctr++;
-                    */
+
 					endforeach;  
 				?>
                 
