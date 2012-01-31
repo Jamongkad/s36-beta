@@ -424,7 +424,7 @@
 					foreach($result as $r): 
                         $rules = $r->rules;
 
-                        Helpers::show_data($rules['displayname']);
+                        Helpers::show_data($rules);
                         /*
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';

@@ -57,7 +57,7 @@ class WidgetLoader {
                $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
            }
 
-           $rows->rules = $feed_rules;
+           $rows->rules = (object)$feed_rules;
            $fixed_data[] = $rows;
         }
 
