@@ -465,7 +465,7 @@
                             }
 							
 							//check if name is available:
-                            $name = null
+                            $name = null;
                             if ($r->rules->displayname == 1) { 
                                 if((trim($r->firstname) != "")){
                                     
