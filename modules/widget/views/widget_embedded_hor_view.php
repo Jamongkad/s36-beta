@@ -444,7 +444,7 @@
 							//avatar
 							$pic = trim($r->avatar);
                             $avatar = null;
-                            if ($rules->displayimg == 1) {
+                            if ($r->rules->displayimg == 1) {
                                 if ($avatar == '') {
                                     $avatar = "/img/48x48-blank-avatar.jpg";
                                 }else{
