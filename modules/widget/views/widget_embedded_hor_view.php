@@ -422,16 +422,6 @@
                     $max = $row_count;
 					foreach($result as $r): 
    
-                        /*
-                        Helpers::show_data($rules->displayname)."<br/>";
-                        Helpers::show_data($rules->displayurl)."<br/>";
-                        Helpers::show_data($rules->displayposition)."<br/>";
-                        Helpers::show_data($rules->displaycompany)."<br/>";
-                        Helpers::show_data($rules->displaycountry)."<br/>";
-                        Helpers::show_data($rules->displayimg)."<br/>";
-                        Helpers::show_data($rules->displaysbmtdate);
-                        */
-
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -472,14 +462,10 @@
 							//check if name is available:
                             $name = null;
                             if ($r->rules->displayname == 1) { 
-                                if((trim($r->firstname) != "")){
-                                    
-                                    $name = $r->firstname.' '.$r->lastname;
-                                    
-                                }else{
-                                    
-                                    $name = '';
-                                    
+                                if((trim($r->firstname) != "")){  
+                                    $name = $r->firstname.' '.$r->lastname; 
+                                }else{ 
+                                    $name = ''; 
                                 }
                             }
 							
