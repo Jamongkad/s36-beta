@@ -615,12 +615,8 @@
 						}
 						$end++;
 						$ctr++;
-					}
-					
-					
-				?>
-                
-               
+					}	
+				?> 
                 <!-- end of group -->
             </div>
         <!-- end of feedboxes -->

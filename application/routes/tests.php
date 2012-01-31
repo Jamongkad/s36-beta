@@ -216,8 +216,8 @@ return array(
         $dbw->update_widget_by_id($widget_key, $obj);
     },
 
-    'GET /tests/widget_data' => function() {
-        $wl = new WidgetLoader('qtg3d'); 
+    'GET /tests/widget_data/(:any)' => function($widget_id) {
+        $wl = new WidgetLoader($widet_id); 
         Helpers::show_data($wl->execute());
     }
 );
