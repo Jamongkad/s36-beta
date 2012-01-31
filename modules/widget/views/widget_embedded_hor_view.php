@@ -479,23 +479,11 @@
                             }
 							
 							//check if position is available:
-							if((trim($r->companyname) != "") && (trim($r->position) != "")){
-								
-								$comp = '<div class="position">'.$r->position.', '.$r->companyname.'</div>';
-								
-							}else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-								
-								$comp = '<div class="position">'.$r->companyname.'</div>';
-								
-							}else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-								
-								$comp = '<div class="position">'.$r->position.'</div>';
-								
-							}else{
-								
-								$comp = '';
-								
-							}
+                            $company = null;
+                            if($r->rules->displaycompany == 1)  {
+                                $company = $r->companyname;     
+                            }
+                            
 							
 							//check if the feedback has 100 chars or more
 							$maxchars = 100;
@@ -515,7 +503,7 @@
 												<div class="feedbackAuthorName">'.$name.'</div>
 												<div class="feedbackAuthorInfo">
 													<span class="authorPosition">'.$r->position.'</span> 
-													<span class="authorCompany">'.$r->companyname.'</span>
+													<span class="authorCompany">'.$company.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
 													<span class="authorCity">'.$r->city.', </span>
