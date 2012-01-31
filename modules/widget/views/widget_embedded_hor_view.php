@@ -443,7 +443,6 @@
 						}
 							//avatar
 							$pic = trim($r->avatar);
-                            $avatar = null;
                             if ($r->rules->displayimg == 1) {
                                 if ($pic == '') {
                                     $avatar = "/img/48x48-blank-avatar.jpg";
@@ -456,11 +455,14 @@
 							//country code for the class
 							$cc 	= strtolower($r->countrycode);
 							//date
-							if(trim($r->date) != ""){
-								$date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-							}else{
-								$date	= '';
-							}
+                            $date = null; 
+                            if($r->rules->displaysbmtdate == 1)  { 
+                                if(trim($r->date) != ""){
+                                    $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }else{
+                                    $date	= '';
+                                }
+                            }
 							
 							//check if name is available:
 							if((trim($r->firstname) != "")){
