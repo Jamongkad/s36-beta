@@ -420,7 +420,7 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-                    Helpers::show_data($result[0]->rules);
+                    Helpers::show_data($result[0]->rules->displayname);
 					foreach($result as $r): 
                     /*                        
                         print_r($r->rules);
