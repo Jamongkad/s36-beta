@@ -421,8 +421,8 @@
                     $units = 3;
                     $max = $row_count;
 					foreach($result as $r): 
-                        $rules = $r->rules;
-
+   
+                        /*
                         Helpers::show_data($rules->displayname)."<br/>";
                         Helpers::show_data($rules->displayurl)."<br/>";
                         Helpers::show_data($rules->displayposition)."<br/>";
@@ -430,7 +430,8 @@
                         Helpers::show_data($rules->displaycountry)."<br/>";
                         Helpers::show_data($rules->displayimg)."<br/>";
                         Helpers::show_data($rules->displaysbmtdate);
-                        /*
+                        */
+
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -536,7 +537,6 @@
 						}
 						$end++;
 						$ctr++;
-                        */
 
 					endforeach;  
 				?>
