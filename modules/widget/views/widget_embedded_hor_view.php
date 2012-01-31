@@ -450,6 +450,8 @@
                                 }else{
                                     $avatar = "/uploaded_cropped/48x48/".$pic;
                                 }
+                            } else {
+                                $avatar = "/img/48x48-blank-avatar.jpg";
                             }
 							//country code for the class
 							$cc 	= strtolower($r->countrycode);
