@@ -442,12 +442,15 @@
 							$feedback_class = "feedback";
 						}
 							//avatar
-							$avatar = trim($r->avatar);
-							if($avatar == ''){
-                                $avatar = "/img/48x48-blank-avatar.jpg";
-							}else{
-								$avatar = "/uploaded_cropped/48x48/".$avatar;
-							}
+							$pic = trim($r->avatar);
+                            $avatar = null;
+                            if ($rules->displayimg == 1) {
+                                if ($avatar == '') {
+                                    $avatar = "/img/48x48-blank-avatar.jpg";
+                                }else{
+                                    $avatar = "/uploaded_cropped/48x48/".$pic;
+                                }
+                            }
 							//country code for the class
 							$cc 	= strtolower($r->countrycode);
 							//date
