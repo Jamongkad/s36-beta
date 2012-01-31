@@ -423,12 +423,12 @@
 					foreach($result as $r): 
                         $rules = $r->rules;
 
-                        Helpers::show_data($rules->displayname);
-                        Helpers::show_data($rules->displayurl);
-                        Helpers::show_data($rules->displayposition);
-                        Helpers::show_data($rules->displaycompany);
-                        Helpers::show_data($rules->displaycountry);
-                        Helpers::show_data($rules->displayimg);
+                        Helpers::show_data($rules->displayname)."<br/>";
+                        Helpers::show_data($rules->displayurl)."<br/>";
+                        Helpers::show_data($rules->displayposition)."<br/>";
+                        Helpers::show_data($rules->displaycompany)."<br/>";
+                        Helpers::show_data($rules->displaycountry)."<br/>";
+                        Helpers::show_data($rules->displayimg)."<br/>";
                         Helpers::show_data($rules->displaysbmtdate);
                         /*
 						if(($ctr % $units) == 0){
