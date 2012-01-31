@@ -483,6 +483,11 @@
                             if($r->rules->displaycompany == 1)  {
                                 $company = $r->companyname;     
                             }
+
+                            $position = null;
+                            if($r->rules->displayposition == 1)  {
+                                $position = $r->position;     
+                            }
                             
 							
 							//check if the feedback has 100 chars or more
@@ -502,7 +507,7 @@
 											<div class="feedbackInfo">
 												<div class="feedbackAuthorName">'.$name.'</div>
 												<div class="feedbackAuthorInfo">
-													<span class="authorPosition">'.$r->position.'</span> 
+													<span class="authorPosition">'.$position.'</span> 
 													<span class="authorCompany">'.$company.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
