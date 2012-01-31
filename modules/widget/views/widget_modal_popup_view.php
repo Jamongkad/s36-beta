@@ -425,8 +425,7 @@
                   <?php //start of full view slides   
 					$ctr = 0;
                     $units = 3;
-                    $max = $row_count;
-
+                    $max = $row_count; 
                     foreach($result as $r){         
                             //avatar
                             $avatar = trim($r->avatar);
@@ -508,8 +507,8 @@
                 <?php
 					$ctr = 0;
                     $units = 3;
-                    $max = $result->total_rows;
-					foreach($result->result as $r){
+                    $max = $row_count;
+					foreach($result as $r){
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
