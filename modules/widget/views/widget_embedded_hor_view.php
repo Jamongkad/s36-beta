@@ -465,15 +465,18 @@
                             }
 							
 							//check if name is available:
-							if((trim($r->firstname) != "")){
-								
-								$name = $r->firstname.' '.$r->lastname;
-								
-							}else{
-								
-								$name = '';
-								
-							}
+                            $name = null
+                            if ($r->rules->displayname == 1) { 
+                                if((trim($r->firstname) != "")){
+                                    
+                                    $name = $r->firstname.' '.$r->lastname;
+                                    
+                                }else{
+                                    
+                                    $name = '';
+                                    
+                                }
+                            }
 							
 							//check if position is available:
 							if((trim($r->companyname) != "") && (trim($r->position) != "")){
