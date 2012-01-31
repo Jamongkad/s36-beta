@@ -412,7 +412,7 @@
 												<div class="feedbackAuthorName">'.$name.' <span class="flag flag-'.strtolower($r->countrycode).'"></span></div>
 												<div class="feedbackAuthorInfo">
 													<span class="authorPosition">'.$position.' </span> 
-													<span class="authorCompany">'.$companyname.'</span>
+													<span class="authorCompany">'.$company.'</span>
 												</div>
 												<div class="feedbackText" feed-id="'.$r->id.'">
 													'.$text.'
