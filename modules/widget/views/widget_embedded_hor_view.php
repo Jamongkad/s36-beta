@@ -423,7 +423,8 @@
                     //Helpers::show_data($result[0]->rules->displayname);
 					foreach($result as $r): 
 
-                        print_r($r->rules->displayname);
+                        print_r($r->rules);
+                        /*
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -529,6 +530,7 @@
 						}
 						$end++;
 						$ctr++;
+                        */
 
 					endforeach;  
 				?>
