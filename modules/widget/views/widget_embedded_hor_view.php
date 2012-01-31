@@ -445,7 +445,7 @@
 							$pic = trim($r->avatar);
                             $avatar = null;
                             if ($r->rules->displayimg == 1) {
-                                if ($avatar == '') {
+                                if ($pic == '') {
                                     $avatar = "/img/48x48-blank-avatar.jpg";
                                 }else{
                                     $avatar = "/uploaded_cropped/48x48/".$pic;
