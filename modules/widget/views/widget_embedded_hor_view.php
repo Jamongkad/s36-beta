@@ -420,11 +420,16 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-                    //Helpers::show_data($result[0]->rules->displayname);
 					foreach($result as $r): 
                         $rules = $r->rules;
 
                         Helpers::show_data($rules->displayname);
+                        Helpers::show_data($rules->displayurl);
+                        Helpers::show_data($rules->displayposition);
+                        Helpers::show_data($rules->displaycompany);
+                        Helpers::show_data($rules->displaycountry);
+                        Helpers::show_data($rules->displayimg);
+                        Helpers::show_data($rules->displaysbmtdate);
                         /*
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
