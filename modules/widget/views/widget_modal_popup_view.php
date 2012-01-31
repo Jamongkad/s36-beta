@@ -420,7 +420,7 @@
                             if($avatar == ''){
                                 $textclass = "full-feedback-2";
                             }else{
-                                $avatar = '<div class="full-avatar"> <img src="http://dev.gearfish.com/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
+                                $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
                                 $textclass = "full-feedback";
                             }
                             //country code for the class
