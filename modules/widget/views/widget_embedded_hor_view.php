@@ -452,8 +452,13 @@
                             } else {
                                 $avatar = "/img/48x48-blank-avatar.jpg";
                             }
+
 							//country code for the class
-							$cc 	= strtolower($r->countrycode);
+                            $cc = null
+                            if($r->rules->displaycountry == 1) {
+                        	    $cc = strtolower($r->countrycode);        
+                            }
+						
 							//date
                             $date = null; 
                             if($r->rules->displaysbmtdate == 1)  { 
@@ -502,7 +507,7 @@
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
-												<span class="flag flag-'.strtolower($r->countrycode).'"></span>
+												<span class="flag flag-'.$cc.'"></span>
 											</div>
 											<div class="feedbackInfo">
 												<div class="feedbackAuthorName">'.$name.'</div>
