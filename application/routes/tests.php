@@ -191,7 +191,7 @@ return array(
 
     'GET /tests/update_widget' => function() { 
 
-        $widget_key = 'qtg3d';
+        $widget_key = 'qbbro';
 
         $dbw = new DBWidget;
         $obj = new StdClass;
