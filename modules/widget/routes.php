@@ -95,10 +95,6 @@ return array(
 
     },
 
-    'GET /widget/test_modal' => function() {
-        return View::of_widget_layout()->partial('contents', 'widget::widget_modal_popup_view'); 
-    },
-
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
         $wl = new WidgetLoader($widget_id); 

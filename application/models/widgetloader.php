@@ -3,7 +3,6 @@
 class WidgetLoader {
 
     public function __construct($widget_id) {
-
         $this->dbw = new DBWidget;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
