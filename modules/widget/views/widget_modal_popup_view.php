@@ -415,37 +415,63 @@
                     $max = $row_count; 
                     foreach($result as $r){         
                             //avatar
-                            $avatar = trim($r->avatar);
+                            $pic = trim($r->avatar);
+                            $avatar = null;
+                            if ($r->rules->displayimg == 1) {
+
+                                if ($pic == '') {
+                                    $textclass = "full-feedback-2";
+                                }else{
+                                    $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$pic.'" /> </div>';
+                                    $textclass = "full-feedback";
+                                }
                             
+                            } else {
+                                $textclass = "full-feedback-2"; 
+                            }
+                            /* 
                             if($avatar == ''){
                                 $textclass = "full-feedback-2";
                             }else{
                                 $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
                                 $textclass = "full-feedback";
                             }
+                            */
                             //country code for the class
                             $cc 	= strtolower($r->countrycode);
                             //date
-                            if(trim($r->date) != ""){
-                                $date 	= '<div class="feedback-date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                            }else{
-                                $date	= '';
-                            }
-                            
+                            $date = null; 
+                            if($r->rules->displaysbmtdate == 1)  { 
+                                if(trim($r->date) != ""){
+                                    $date 	= '<div class="feedback-date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }else{
+                                    $date	= '';
+                                }
+                            }  
                             //check if name is available:
-                            if((trim($r->firstname) != "")){
-                               $name = '<div class="feedback-name">
-                                          <div class="name">'.$r->firstname.' '.$r->lastname.'</div>
-                                          <div class="flag flag-'.$cc.'"></div>
-                                        </div>';
-                                
-                            }else{
-                                
-                                $name = '';
-                                
-                            }
-                            
+                            $name = null;
+                            if ($r->rules->displayname == 1) {
+                                if ((trim($r->firstname) != "")) {
+                                   $name = '<div class="feedback-name">
+                                              <div class="name">'.$r->firstname.' '.$r->lastname.'</div>
+                                              <div class="flag flag-'.$cc.'"></div>
+                                            </div>';
+                                    
+                                } else { 
+                                    $name = ''; 
+                                }  
+                            } 
                             //check if position is available:
+                            $company = null;
+                            if($r->rules->displaycompany == 1)  {
+                                $company = $r->companyname;     
+                            }
+
+                            $position = null;
+                            if($r->rules->displayposition == 1)  {
+                                $position = $r->position;     
+                            }
+                            /*
                             if((trim($r->companyname) != "") && (trim($r->position) != "")){
                                 
                                 $comp = '<div class="feedback-position">'.$r->position.', '.$r->companyname.'</div>';
@@ -463,11 +489,9 @@
                                 $comp = '';
                                 
                             }
-                            
-                           
-                         
-                                $text = $r->text;
-                          
+                            */
+ 
+                                $text = $r->text;  
                                 echo '<div class="slides">
                                         '.$avatar.'
                                         <div class="'.$textclass.'">
@@ -476,7 +500,7 @@
                                             <div class="feedback-name">
                                               '.$name.'
                                             </div>
-                                              '.$comp.'
+                                              <div class="feedback-position">'.$position." ".$company.'</div>
                                               '.$date.'
                                           </div>
                                         </div>
