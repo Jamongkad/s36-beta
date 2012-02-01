@@ -1,4 +1,4 @@
-<?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
+<?=Form::open('feedsetup/save_widget', 'POST'/*, Array('id' => 'create-widget')*/)?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $companyId)?>
