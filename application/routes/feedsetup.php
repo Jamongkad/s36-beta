@@ -5,8 +5,13 @@ $feedback = new DBFeedback;
 return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
         $dbw = new DBWidget;
-        Helpers::show_data($dbw->fetch_widgets_by_company());  
-        //return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view');
+        $widgets = $dbw->fetch_widgets_by_company();
+        Helpers::show_data($widgets);
+        /*
+        return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view', Array(
+            'widgets' => $widgets
+        ));
+        */
     }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 

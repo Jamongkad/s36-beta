@@ -59,6 +59,15 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
+        
+        $data = Array();
+        foreach ($result as $rows) {
+            $obj = base64_decode($rows->widgetobjstring);
+            $obj = unserialize($obj); 
+            $rows->widget_obj = $obj;
+            $data[] = $rows; 
+        }
+
+        return $data;
     }
 }
