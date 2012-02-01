@@ -104,8 +104,7 @@ return array(
             $data['perms'] = $perms;
             $data['widget_type'] = 'display';
             $dbw->save_widget( (object)$data );
-            
-            Helpers::show_data($data);
+        
         }
        
     },

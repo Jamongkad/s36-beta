@@ -226,10 +226,8 @@ jQuery(function($) {
                 var theme_name = $("div#theme_name");
                 var site_id    = $("div#site_id");
                 var embed_type = $("div#embed_type");
-                var widget_options = $("div#widget_options");
+                var widget_options = $("div#widget_options");                
 
-                console.log(responseText);
-                
                 if(error) {
                    if(error.messages.theme_name) {
                        theme_name.html(error.messages.theme_name[0]);     
