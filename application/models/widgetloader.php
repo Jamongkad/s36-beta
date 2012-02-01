@@ -60,7 +60,7 @@ class WidgetLoader {
            $fixed_data[] = $rows;
         }
 
-        $wd = new WidgetDelivery;         
+        $wd = new StdClass;         
         $wd->widget_view = $widget_view;
         $wd->widget_data = $fixed_data;
         $wd->widget_obj  = $obj;
@@ -100,8 +100,4 @@ class WidgetLoader {
         $obj = unserialize($obj); 
         return $obj;
     }
-}
-
-class WidgetDelivery {
-    public $widget_data, $widget_view;
 }
