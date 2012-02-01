@@ -52,6 +52,7 @@ class DBWidget extends S36DataObject {
                 WidgetStore
             WHERE 1=1
                 AND companyId = :company_id
+            ORDER BY widgetStoreId DESC
         ";
 
         $sth = $this->dbh->prepare($sql);  
