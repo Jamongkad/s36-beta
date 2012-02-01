@@ -71,6 +71,32 @@ class WidgetLoader {
         $fixed_data = null;
         return $wd;
     }
+
+    public function deploy_client_code() {
+        $obj = base64_decode($this->widget_obj->widgetobjstring);
+        $obj = unserialize($obj); 
+
+        if ($obj->embed_type == 'embedded') {  
+            if($obj->embed_block_type == 'embed_block_x') {
+                $widget_ht = 300;
+            }
+
+            if($obj->embed_block_type == 'embed_block_y') { 
+                $widget_ht = 700; 
+            }     
+        } 
+
+        if ($obj->embed_type == 'modal') {
+            $widget_ht = 500;
+        }
+        
+        $data = Array(
+            'deploy_url' => Config::get('application.deploy_env')
+          , 'widget_height' => $widget_ht
+        );
+        
+        return $data;
+    }
 }
 
 class WidgetDelivery {
