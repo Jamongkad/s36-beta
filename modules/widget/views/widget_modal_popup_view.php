@@ -504,34 +504,57 @@
 							$feedback_class = "feedback";
 						}
 							//avatar
-							$avatar = trim($r->avatar);
-							if($avatar == ''){
+                            $pic = trim($r->avatar);
+                            if ($r->rules->displayimg == 1) {
+                                if ($pic == '') {
+                                    $avatar = "/img/48x48-blank-avatar.jpg";
+                                }else{
+                                    $avatar = "/uploaded_cropped/48x48/".$pic;
+                                }
+                            } else {
                                 $avatar = "/img/48x48-blank-avatar.jpg";
-							}else{
-								$avatar = "/uploaded_cropped/48x48/".$avatar;
-							}
+                            }
+
 							//country code for the class
-							$cc 	= strtolower($r->countrycode);
+
+                            $cc = null;
+                            if($r->rules->displaycountry == 1) {
+                        	    $cc = strtolower($r->countrycode);        
+                            }
+							
 							//date
-							if(trim($r->date) != ""){
-								$date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-							}else{
-								$date	= '';
-							}
+                            $date = null; 
+                            if($r->rules->displaysbmtdate == 1)  { 
+                                if(trim($r->date) != ""){
+                                    $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }else{
+                                    $date	= '';
+                                }
+                            }
 							
 							//check if name is available:
-							if((trim($r->firstname) != "")){
-								
-								$name = $r->firstname.' '.$r->lastname;
-								
-							}else{
-								
-								$name = '';
-								
-							}
+                            $name = null;
+                            if ($r->rules->displayname == 1) { 
+                                if((trim($r->firstname) != "")){  
+                                    $name = $r->firstname.' '.$r->lastname; 
+                                }else{ 
+                                    $name = ''; 
+                                }
+                            }
+
+							//check if position is available:
+                            $company = null;
+                            if($r->rules->displaycompany == 1)  {
+                                $company = $r->companyname;     
+                            }
+
+                            $position = null;
+                            if($r->rules->displayposition == 1)  {
+                                $position = $r->position;     
+                            }
 														
 							//check if the feedback has 100 chars or more
-							$maxchars = 190;	
+							$maxchars = 100;	
 							if(strlen(trim($r->text)) <= $maxchars){
 								$text = $r->text . ' <br />';																
 							}else{
@@ -541,13 +564,13 @@
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
-												<span class="flag flag-'.strtolower($r->countrycode).'"></span>
+												<span class="flag flag-'.$cc.'"></span>
 											</div>
 											<div class="feedbackInfo">
 												<div class="feedbackAuthorName">'.$name.'</div>
 												<div class="feedbackAuthorInfo">
-													<span class="authorPosition">'.$r->position.'</span> 
-													<span class="authorCompany">'.$r->companyname.'</span>
+													<span class="authorPosition">'.$position.'</span> 
+													<span class="authorCompany">'.$company.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
 													<span class="authorCity">'.$r->city.', </span>
