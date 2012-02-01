@@ -35,7 +35,7 @@
                         $feedsetup_nav = Array(
                              'feedsetup/all'  => 'WIDGET DASHBOARD'
                            , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
-                           , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION WIDGETS'
+                           , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
                            , 'feedsetup/mywidgets' => 'MY WIDGETS'
                         );
                     ?>

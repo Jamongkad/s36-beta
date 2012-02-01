@@ -4,6 +4,8 @@ $feedback = new DBFeedback;
 
 return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
+        $dbw = new DBWidget;
+        Helpers::show_data($dbw->fetch_widgets_by_company());  
         return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view');
     }),
 
