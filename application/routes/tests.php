@@ -195,22 +195,21 @@ return array(
 
         $dbw = new DBWidget;
         $obj = new StdClass;
-        $obj->site_id = 1;
+        $obj->site_id = 2;
         $obj->company_id = 1;
         $obj->base_url = 'http://razer.gearfish.com';
-        $obj->theme_name = 'I love that song!';
-        $obj->embed_type = 'embedded';
-        $obj->embed_block_type = 'embed_block_y';
+        $obj->theme_name = 'Funky';
+        $obj->embed_type = 'modal'; 
         $obj->embed_effects = 1;
         $obj->modal_effects = 0;
         $obj->perms = Array(
-            'displayname'  => 0
+            'displayname'  => 1
           , 'displayurl' => 1
           , 'displayimg' => 1
           , 'displaycountry' => 1
           , 'displaycompany' => 1
-          , 'displaysbmtdate' => 0
-          , 'displayposition' => 0
+          , 'displaysbmtdate' => 1
+          , 'displayposition' => 1
         );
         $obj->theme_type = 'aglow';
         $dbw->update_widget_by_id($widget_key, $obj);

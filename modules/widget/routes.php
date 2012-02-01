@@ -115,6 +115,10 @@ return array(
                 $widget_ht = 700; 
             }     
         } 
+
+        if ($obj->embed_type == 'modal') {
+            $widget_ht = 500;
+        }
         
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
