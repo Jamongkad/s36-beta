@@ -103,8 +103,9 @@ return array(
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
             $data['perms'] = $perms;
             $data['widget_type'] = 'display';
-            $dbw->save_widget( (object)$data );
-
+            $r = $dbw->save_widget( (object)$data );
+            
+            echo $r;
         }
        
     },
