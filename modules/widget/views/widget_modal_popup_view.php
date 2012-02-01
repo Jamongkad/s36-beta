@@ -427,7 +427,10 @@
                                 }
                             
                             } else {
-                                $textclass = "full-feedback-2"; 
+
+                                $avatar = '<div class="full-avatar"> <img src="/img/blank-avatar.png" /> </div>';
+                                $textclass = "full-feedback";
+
                             }
                             /* 
                             if($avatar == ''){
