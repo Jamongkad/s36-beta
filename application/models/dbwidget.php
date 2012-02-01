@@ -3,8 +3,7 @@
 class DBWidget extends S36DataObject {    
 
     public function save_widget($widget_obj) {
-        Helpers::show_data($widget_obj);
-        /*
+
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 
         $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
@@ -18,7 +17,7 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->execute();
-        */
+
         /*
         $last_insert_id = $this->dbh->lastInsertId();
         return $last_insert_id;
