@@ -493,8 +493,7 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-					foreach($result as $r): 
-   
+					foreach($result as $r){
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -505,74 +504,50 @@
 							$feedback_class = "feedback";
 						}
 							//avatar
-							$pic = trim($r->avatar);
-                            if ($r->rules->displayimg == 1) {
-                                if ($pic == '') {
-                                    $avatar = "/img/48x48-blank-avatar.jpg";
-                                }else{
-                                    $avatar = "/uploaded_cropped/48x48/".$pic;
-                                }
-                            } else {
+							$avatar = trim($r->avatar);
+							if($avatar == ''){
                                 $avatar = "/img/48x48-blank-avatar.jpg";
-                            }
-
-							//country code for the class
-                            $cc = null;
-                            if($r->rules->displaycountry == 1) {
-                        	    $cc = strtolower($r->countrycode);        
-                            }
-						
-							//date
-                            $date = null; 
-                            if($r->rules->displaysbmtdate == 1)  { 
-                                if(trim($r->date) != ""){
-                                    $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                                }else{
-                                    $date	= '';
-                                }
-                            }
-							
-							//check if name is available:
-                            $name = null;
-                            if ($r->rules->displayname == 1) { 
-                                if((trim($r->firstname) != "")){  
-                                    $name = $r->firstname.' '.$r->lastname; 
-                                }else{ 
-                                    $name = ''; 
-                                }
-                            }
-							
-							//check if position is available:
-                            $company = null;
-                            if($r->rules->displaycompany == 1)  {
-                                $company = $r->companyname;     
-                            }
-
-                            $position = null;
-                            if($r->rules->displayposition == 1)  {
-                                $position = $r->position;     
-                            }
-                            
-							
-							//check if the feedback has 100 chars or more
-							$maxchars = 100;
-							if(strlen(trim($r->text)) <= $maxchars){
-								$text = substr($r->text,0,$maxchars) . ' <br />';								
 							}else{
-								$text = $r->text . '<span style="color:#88bae8;font-size:10px;">(read full feedback)</span>';
+								$avatar = "/uploaded_cropped/48x48/".$avatar;
+							}
+							//country code for the class
+							$cc 	= strtolower($r->countrycode);
+							//date
+							if(trim($r->date) != ""){
+								$date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+							}else{
+								$date	= '';
 							}
 							
-							   echo '<div class="'.$feedback_class.'"><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
+							//check if name is available:
+							if((trim($r->firstname) != "")){
+								
+								$name = $r->firstname.' '.$r->lastname;
+								
+							}else{
+								
+								$name = '';
+								
+							}
+														
+							//check if the feedback has 100 chars or more
+							$maxchars = 190;	
+							if(strlen(trim($r->text)) <= $maxchars){
+								$text = $r->text . ' <br />';																
+							}else{
+								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+							}
+							   echo '<div class="'.$feedback_class.'" index-id="'.$ctr.'" ><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
-												<span class="flag flag-'.$cc.'"></span>
+												<span class="flag flag-'.strtolower($r->countrycode).'"></span>
 											</div>
 											<div class="feedbackInfo">
 												<div class="feedbackAuthorName">'.$name.'</div>
 												<div class="feedbackAuthorInfo">
-													<span class="authorPosition">'.$position.'</span> 
-													<span class="authorCompany">'.$company.'</span>
+													<span class="authorPosition">'.$r->position.'</span> 
+													<span class="authorCompany">'.$r->companyname.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
 													<span class="authorCity">'.$r->city.', </span>
@@ -604,8 +579,7 @@
 						}
 						$end++;
 						$ctr++;
-
-					endforeach;  
+					}	
 				?> 
                 <!-- end of group -->
             </div>
