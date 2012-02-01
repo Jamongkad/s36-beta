@@ -43,7 +43,7 @@ class WidgetLoader {
 
         $fixed_data = Array();
         foreach ($data->result as $rows) {
-
+           //check if feedback is locked individually
            if ($rows->indlock == 1) { 
                $feed_rules = $obj->perms;    
            } else {
