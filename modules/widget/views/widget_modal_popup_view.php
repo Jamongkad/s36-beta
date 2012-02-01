@@ -441,7 +441,11 @@
                             }
                             */
                             //country code for the class
-                            $cc 	= strtolower($r->countrycode);
+							$cc = null; 	
+                            if($r->rules->displaycountry == 1) {
+                        	    $cc = strtolower($r->countrycode);        
+                            }
+
                             //date
                             $date = null; 
                             if($r->rules->displaysbmtdate == 1)  { 
