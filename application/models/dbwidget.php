@@ -42,6 +42,7 @@ class DBWidget extends S36DataObject {
 
     public function fetch_widgets_by_company() {
         $sql = "
+            EXPLAIN
             SELECT 
                 widgetStoreId
               , widgetKey
