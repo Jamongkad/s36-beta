@@ -227,6 +227,8 @@ jQuery(function($) {
                 var site_id    = $("div#site_id");
                 var embed_type = $("div#embed_type");
                 var widget_options = $("div#widget_options");
+
+                console.log(responseText);
                 
                 if(error) {
                    if(error.messages.theme_name) {
