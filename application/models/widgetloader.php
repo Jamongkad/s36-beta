@@ -3,14 +3,16 @@
 class WidgetLoader {
 
     public function __construct($widget_id) {
-        $this->widget_id = $widget_id;
+
+        $this->dbw = new DBWidget;
+        $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
+
     }
 
     public function execute() {
 
         $dbw = new DBWidget;
-        $widget_obj = $dbw->fetch_widget_by_id($this->widget_id); 
-        $obj = base64_decode($widget_obj->widgetobjstring);
+        $obj = base64_decode($this->widget_obj->widgetobjstring);
         $obj = unserialize($obj); 
 
         $params = Array(
