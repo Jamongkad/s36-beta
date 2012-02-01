@@ -19,7 +19,7 @@ return array(
         )); 
     }),
 
-    'GET /feedsetup/form_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         return View::of_layout()->partial('contents', 'inbox/feedsetup_form_widgets_view');
     }),
 

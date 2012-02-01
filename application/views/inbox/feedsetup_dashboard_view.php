@@ -107,6 +107,7 @@
     <div class="widget-options">
         <h2>Submission Forms <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
         <a href="#" class="widget-create">Create Submission Form</a>
+        <?=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
         <div class="widget-types">
             <div class="widget-info">
                 <div class="grids">
