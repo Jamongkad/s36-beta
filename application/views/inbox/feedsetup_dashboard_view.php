@@ -12,13 +12,13 @@
                         <div class="widget-title"><?=$rows->widget_obj->theme_name?></div>
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr><td width="90"><strong>Widget Type :</strong></td>
-                                <td>Embedded, Modal Widget and Full Page</td>
+                                <td><?=$rows->widget_obj->embed_type?></td>
                             </tr>
                             <tr><td width="90"><strong>Theme :</strong></td>
-                                <td>Aglow</td>
+                                <td><?=$rows->widget_obj->theme_type?></td>
                             </tr>
                             <tr><td width="90"><strong>URL :</strong></td>
-                                <td>www.twitmis.com</td>
+                                <td><?=$rows->widget_obj->base_url?></td>
                             </tr>
                         </table>
                         </div>
