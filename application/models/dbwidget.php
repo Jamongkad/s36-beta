@@ -41,6 +41,23 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widgets_by_company() {
-        return $this->company_id;     
+        $sql = "
+            SELECT 
+                widgetStoreId
+              , widgetKey
+              , companyId
+              , siteId
+              , widgetObjString
+            FROM 
+                WidgetStore
+            WHERE 1=1
+                AND companyId = :company_id
+        ";
+
+        $sth = $this->dbh->prepare($sql);  
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
     }
 }
