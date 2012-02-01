@@ -83,7 +83,7 @@ return array(
         if($user_result) { 
 
             $wl = new WidgetLoader($widget_id); 
-            $widget_data = $wl->execute();
+            $widget_data = $wl->render();
 
             return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
                 'result' => $widget_data->widget_data, 'row_count' => $widget_data->total_rows

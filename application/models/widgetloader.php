@@ -9,7 +9,7 @@ class WidgetLoader {
 
     }
 
-    public function execute() {
+    public function render() {
 
         $dbw = new DBWidget;
         $obj = base64_decode($this->widget_obj->widgetobjstring);
