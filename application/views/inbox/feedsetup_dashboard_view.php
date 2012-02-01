@@ -3,7 +3,7 @@
 <div id="widget-setup-block">
     <div class="widget-options">
         <h2>Display Widgets <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
-        <a href="#" class="widget-create">Create Display Widget</a>
+        <?=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>
         <div class="widget-types">
             <div class="widget-info">
                 <div class="grids">
