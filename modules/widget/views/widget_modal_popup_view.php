@@ -407,8 +407,7 @@
         <div class="boxBorder"></div>
         <div class="" id="popup">
         	<div class="popup-fullview">
-                <div class="fullview-slides">
-                 
+                <div class="fullview-slides"> 
                   <?php //start of full view slides   
 					$ctr = 0;
                     $units = 3;
@@ -418,28 +417,17 @@
                             $pic = trim($r->avatar);
                             $avatar = null;
                             if ($r->rules->displayimg == 1) {
-
                                 if ($pic == '') {
                                     $textclass = "full-feedback-2";
                                 }else{
                                     $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$pic.'" /> </div>';
                                     $textclass = "full-feedback";
-                                }
-                            
+                                } 
                             } else {
-
                                 $avatar = '<div class="full-avatar"> <img src="/img/blank-avatar.png" /> </div>';
                                 $textclass = "full-feedback";
+                            }
 
-                            }
-                            /* 
-                            if($avatar == ''){
-                                $textclass = "full-feedback-2";
-                            }else{
-                                $avatar = '<div class="full-avatar"> <img src="/uploaded_cropped/150x150/'.$avatar.'" /> </div>';
-                                $textclass = "full-feedback";
-                            }
-                            */
                             //country code for the class
 							$cc = null; 	
                             if($r->rules->displaycountry == 1) {
@@ -478,43 +466,22 @@
                             if($r->rules->displayposition == 1)  {
                                 $position = $r->position;     
                             }
-                            /*
-                            if((trim($r->companyname) != "") && (trim($r->position) != "")){
-                                
-                                $comp = '<div class="feedback-position">'.$r->position.', '.$r->companyname.'</div>';
-                                
-                            }else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-                                
-                                $comp = '<div class="feedback-position">'.$r->companyname.'</div>';
-                                
-                            }else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-                                
-                                $comp = '<div class="feedback-position">'.$r->position.'</div>';
-                                
-                            }else{
-                                
-                                $comp = '';
-                                
-                            }
-                            */
  
-                                $text = $r->text;  
-                                echo '<div class="slides">
-                                        '.$avatar.'
-                                        <div class="'.$textclass.'">
-                                          <div class="full-feedback-text"><p>"'.trim($text).'"</p></div>
-                                          <div class="full-feedback-info">
-                                            <div class="feedback-name">
-                                              '.$name.'
-                                            </div>
-                                              <div class="feedback-position">'.$position." ".$company.'</div>
-                                              '.$date.'
-                                          </div>
+                            $text = $r->text;  
+                            echo '<div class="slides">
+                                    '.$avatar.'
+                                    <div class="'.$textclass.'">
+                                      <div class="full-feedback-text"><p>"'.trim($text).'"</p></div>
+                                      <div class="full-feedback-info">
+                                        <div class="feedback-name">
+                                          '.$name.'
                                         </div>
-                                      </div>';
-                        
-                    }
-                            
+                                          <div class="feedback-position">'.$position." ".$company.'</div>
+                                          '.$date.'
+                                      </div>
+                                    </div>
+                                  </div>'; 
+                    } 
                   ?>
                 </div>
               </div>
@@ -526,7 +493,8 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-					foreach($result as $r){
+					foreach($result as $r): 
+   
 						if(($ctr % $units) == 0){
 							echo '<div class="feedbacks">';
 							$end = 1;
@@ -537,70 +505,74 @@
 							$feedback_class = "feedback";
 						}
 							//avatar
-							$avatar = trim($r->avatar);
-							if($avatar == ''){
+							$pic = trim($r->avatar);
+                            if ($r->rules->displayimg == 1) {
+                                if ($pic == '') {
+                                    $avatar = "/img/48x48-blank-avatar.jpg";
+                                }else{
+                                    $avatar = "/uploaded_cropped/48x48/".$pic;
+                                }
+                            } else {
                                 $avatar = "/img/48x48-blank-avatar.jpg";
-							}else{
-								$avatar = "/uploaded_cropped/48x48/".$avatar;
-							}
+                            }
+
 							//country code for the class
-							$cc 	= strtolower($r->countrycode);
+                            $cc = null;
+                            if($r->rules->displaycountry == 1) {
+                        	    $cc = strtolower($r->countrycode);        
+                            }
+						
 							//date
-							if(trim($r->date) != ""){
-								$date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-							}else{
-								$date	= '';
-							}
+                            $date = null; 
+                            if($r->rules->displaysbmtdate == 1)  { 
+                                if(trim($r->date) != ""){
+                                    $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }else{
+                                    $date	= '';
+                                }
+                            }
 							
 							//check if name is available:
-							if((trim($r->firstname) != "")){
-								
-								$name = $r->firstname.' '.$r->lastname;
-								
-							}else{
-								
-								$name = '';
-								
-							}
+                            $name = null;
+                            if ($r->rules->displayname == 1) { 
+                                if((trim($r->firstname) != "")){  
+                                    $name = $r->firstname.' '.$r->lastname; 
+                                }else{ 
+                                    $name = ''; 
+                                }
+                            }
 							
 							//check if position is available:
-							if((trim($r->companyname) != "") && (trim($r->position) != "")){
-								
-								$comp = '<div class="position">'.$r->position.', '.$r->companyname.'</div>';
-								
-							}else if((trim($r->companyname) == "") && (trim($r->position) != "")){
-								
-								$comp = '<div class="position">'.$r->companyname.'</div>';
-								
-							}else if((trim($r->companyname) != "") && (trim($r->position) == "")){
-								
-								$comp = '<div class="position">'.$r->position.'</div>';
-								
-							}else{
-								
-								$comp = '';
-								
-							}
+                            $company = null;
+                            if($r->rules->displaycompany == 1)  {
+                                $company = $r->companyname;     
+                            }
+
+                            $position = null;
+                            if($r->rules->displayposition == 1)  {
+                                $position = $r->position;     
+                            }
+                            
 							
 							//check if the feedback has 100 chars or more
-							$maxchars = 190;
-							
+							$maxchars = 100;
 							if(strlen(trim($r->text)) <= $maxchars){
-								$text = $r->text . ' <br />';																
+								$text = substr($r->text,0,$maxchars) . ' <br />';								
 							}else{
-								$text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+								$text = $r->text . '<span style="color:#88bae8;font-size:10px;">(read full feedback)</span>';
 							}
-							   echo '<div class="'.$feedback_class.'" index-id="'.$ctr.'" ><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
+							
+							   echo '<div class="'.$feedback_class.'"><input type="hidden" value="'.$r->text.'" id="'.$r->id.'" />
 										<div class="feedbackAuthor">
 											<div class="feedbackAvatar">
 												<img src="'.$avatar.'" />
-												<span class="flag flag-'.strtolower($r->countrycode).'"></span>
+												<span class="flag flag-'.$cc.'"></span>
 											</div>
 											<div class="feedbackInfo">
 												<div class="feedbackAuthorName">'.$name.'</div>
 												<div class="feedbackAuthorInfo">
-													<span class="authorPosition">'.$r->position.'</span> 
-													<span class="authorCompany">'.$r->companyname.'</span>
+													<span class="authorPosition">'.$position.'</span> 
+													<span class="authorCompany">'.$company.'</span>
 												</div>
 												<div class="feedbackAuthorLocation">
 													<span class="authorCity">'.$r->city.', </span>
@@ -632,7 +604,8 @@
 						}
 						$end++;
 						$ctr++;
-					}	
+
+					endforeach;  
 				?> 
                 <!-- end of group -->
             </div>
