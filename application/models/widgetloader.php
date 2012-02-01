@@ -6,14 +6,11 @@ class WidgetLoader {
 
         $this->dbw = new DBWidget;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
-
     }
 
     public function render() {
 
-        $dbw = new DBWidget;
-        $obj = base64_decode($this->widget_obj->widgetobjstring);
-        $obj = unserialize($obj); 
+        $obj = $this->_load_object_code();
 
         $params = Array(
             'company_id'   => $obj->company_id
@@ -73,8 +70,8 @@ class WidgetLoader {
     }
 
     public function deploy_client_code() {
-        $obj = base64_decode($this->widget_obj->widgetobjstring);
-        $obj = unserialize($obj); 
+
+        $obj = $this->_load_object_code();
 
         if ($obj->embed_type == 'embedded') {  
             if($obj->embed_block_type == 'embed_block_x') {
@@ -96,6 +93,12 @@ class WidgetLoader {
         );
         
         return $data;
+    }
+
+    private function _load_object_code() {      
+        $obj = base64_decode($this->widget_obj->widgetobjstring);
+        $obj = unserialize($obj); 
+        return $obj;
     }
 }
 

@@ -102,35 +102,7 @@ return array(
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
         $wl = new WidgetLoader($widget_id); 
-        //too much logic bitch
-        /*
-        $dbw = new DBWidget;
-        $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
-        $obj = base64_decode($widget_obj->widgetobjstring);
-        $obj = unserialize($obj); 
-
-        if ($obj->embed_type == 'embedded') {  
-            if($obj->embed_block_type == 'embed_block_x') {
-                $widget_ht = 300;
-            }
-
-            if($obj->embed_block_type == 'embed_block_y') { 
-                $widget_ht = 700; 
-            }     
-        } 
-
-        if ($obj->embed_type == 'modal') {
-            $widget_ht = 500;
-        }
-        
-        $data = Array(
-            'deploy_url' => Config::get('application.deploy_env')
-          , 'widget_height' => $widget_ht
-        );
-        */
-
         return View::make('widget::widget_js_output', $wl->deploy_client_code());
-
     },
 
     'GET /widget/modal' => function() {
