@@ -9,7 +9,7 @@
                 <div class="widget-info">
                     <div class="grids">
                         <div class="g2of3">
-                        <div class="widget-title">Twitmis001</div>
+                        <div class="widget-title"><?=$rows->widget_obj->theme_name?></div>
                         <table width="100%" cellpadding="0" cellspacing="0">
                             <tr><td width="90"><strong>Widget Type :</strong></td>
                                 <td>Embedded, Modal Widget and Full Page</td>
