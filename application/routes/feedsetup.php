@@ -99,11 +99,10 @@ return array(
         } else { 
 
             $dbw = new DBWidget;
-
             $perm_factory = new Permission($data);
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
             $data['perms'] = $perms;
-
+            $data['widget_type'] = 'display';
             $dbw->save_widget( (object)$data );
 
         }
