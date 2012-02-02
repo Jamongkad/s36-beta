@@ -33,9 +33,9 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/ajax_overview/(:any)' => function($type) {
+    'GET /feedsetup/ajax_overview/(:any)/([0-9]+)' => function($type, $offset) {
         $dbw = new DBWidget;
-        $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset=3);
+        $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset);
         Helpers::show_data($widgets);
         /*
         $view_data = Array(
