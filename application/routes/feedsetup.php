@@ -44,7 +44,7 @@ return array(
 
         echo json_encode($view_data);
         */ 
-        echo View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
+        echo View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get();
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
