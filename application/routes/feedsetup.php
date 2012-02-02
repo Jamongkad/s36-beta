@@ -33,6 +33,17 @@ return array(
         ));
     }),
 
+    'GET /feedsetup/ajax_overview/(:any)' => function($type) {
+        $dbw = new DBWidget;
+        $widgets = $dbw->fetch_widgets_by($type);
+
+        $view_data = Array(
+            'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
+        );
+         
+        echo json_encode($view_data);
+    },
+
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
