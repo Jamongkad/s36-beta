@@ -33,7 +33,7 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/ajax_overview/(:any)/(:any?)' => function($type, $page=False) {
+    'GET /feedsetup/ajax_overview/(:any)/(:any?)/' => function($type, $page=False) {
 
         $limit = 3;
 
