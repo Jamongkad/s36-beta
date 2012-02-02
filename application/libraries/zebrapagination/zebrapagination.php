@@ -616,7 +616,9 @@ class ZebraPagination
 
             );
 
-              // if the current page is already set in GET
+            $server_query_string = str_replace('subdomain=razer', '', $_SERVER['QUERY_STRING']);
+
+            // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
 
                 // set the current page to whatever it was set to
@@ -626,7 +628,7 @@ class ZebraPagination
 
                     $this->variable_name . '=' . $page,
 
-                    $_SERVER['QUERY_STRING']
+                    $server_query_string 
 
                 );
                 echo "Mathew";
@@ -635,7 +637,7 @@ class ZebraPagination
             } else {
                 echo "wong";
 
-                $server_query_string = str_replace('subdomain=razer', '', $_SERVER['QUERY_STRING']);
+                //$server_query_string = str_replace('subdomain=razer', '', $_SERVER['QUERY_STRING']);
 
                 // set the current page to whatever it was set to
                 $query_string = $server_query_string .
