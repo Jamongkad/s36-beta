@@ -615,8 +615,8 @@ class ZebraPagination
                 )
 
             );
-            
-            print_r($_GET[$this->variable_name]);
+
+            $url = preg_replace('/\?.*/', '', $_SERVER['QUERY_STRING']);
 
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
@@ -628,7 +628,7 @@ class ZebraPagination
 
                     $this->variable_name . '=' . $page,
 
-                    $_SERVER['QUERY_STRING']
+                    $url//$_SERVER['QUERY_STRING']
 
                 );
 
@@ -636,9 +636,10 @@ class ZebraPagination
             } else {
 
                 // set the current page to whatever it was set to
-                $query_string = $_SERVER['QUERY_STRING'] .
+                $query_string = $url/*$_SERVER['QUERY_STRING']*/ .
 
-                    (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? '&' : '') .
+                    //(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? '&' : '') .
+                    (isset($url) && $url != '' ? '&' : '') .
 
                     $this->variable_name . '=' . $page;
 
