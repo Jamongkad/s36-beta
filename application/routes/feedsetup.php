@@ -49,6 +49,7 @@ return array(
         $pagination->records_per_page($limit);
 
         Helpers::show_data($widgets);
+        Helpers::show_data($pagination->render());
         /*
         $view_data = Array(
             'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
