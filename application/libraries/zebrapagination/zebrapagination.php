@@ -615,6 +615,8 @@ class ZebraPagination
                 )
 
             );
+            
+            print_r($this->variable_name);
 
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
