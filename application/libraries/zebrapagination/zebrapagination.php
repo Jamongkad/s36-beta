@@ -616,7 +616,7 @@ class ZebraPagination
 
             );
 
-            $url = preg_replace('/\?.*/', '', $_SERVER['QUERY_STRING']);
+            $url = preg_replace('/\?subdomain/', '', $_SERVER['QUERY_STRING']);
             print_r($url);
 
             // if the current page is already set in GET
