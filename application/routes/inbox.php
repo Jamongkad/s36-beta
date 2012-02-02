@@ -2,8 +2,7 @@
 
 return array( 
     'GET /inbox/(:any?)/(:any?)/(:any?)' => Array(  'name' => 'inbox', 'before' => 's36_auth'
-                                                  , 'do' => function($filter=False, $choice=False, $sort=False) {
-       
+                                                  , 'do' => function($filter=False, $choice=False, $sort=False) {       
         $limit   = 10;
         $site_id = False;
         $rating  = False;
@@ -15,6 +14,7 @@ return array(
         $feedback = new DBFeedback;
         $category = new DBCategory;
         $pagination = new ZebraPagination; 
+        $pagination->method('url');
 
         $admin_check = S36Auth::user();
 
@@ -23,7 +23,7 @@ return array(
                                                   'choice'=> $choice, 'site_id'=> $site_id, 'rating'=> $rating));
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
-  
+        
         return View::of_layout()->partial('contents', 'inbox/inbox_index_view', Array(
               'feedback' => $records
             , 'categories' => $category->pull_site_categories()
@@ -33,5 +33,6 @@ return array(
             , 'inbox_state' => Helpers::inbox_state($filter)
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
+       
     }), 
 );
