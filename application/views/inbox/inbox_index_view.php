@@ -240,8 +240,8 @@
 </div>
 <?else:?>
       <div class="woops">
-            <h2>Woops. There's no feedback here.</h2><br/><br/>
-            <p>Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
+            <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
+            <p class="woops-content">Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
       </div>
 <?endif?>
 <!-- end of feedback list -->
