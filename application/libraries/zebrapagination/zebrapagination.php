@@ -629,19 +629,20 @@ class ZebraPagination
                     $_SERVER['QUERY_STRING']
 
                 );
-                
-                echo "Mathew";
+
             // if the current page is not already set in GET
             } else {
 
-                echo "Wong";
+                $server_query_string = $_SERVER['QUERY_STRING'];
 
                 // set the current page to whatever it was set to
-                $query_string = $_SERVER['QUERY_STRING'] .
+                $query_string = $server_query_string .
 
-                    (isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? '&' : '') .
+                    (isset($server_query_string) && $server_query_string != '' ? '&' : '') .
 
                     $this->variable_name . '=' . $page;
+
+                print_r($server_query_string);
 
             }
 
