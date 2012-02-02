@@ -33,7 +33,7 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/ajax_overview/(:any)' => function($type) {
+    'GET /feedsetup/ajax_overview/(:any)/(:any?)' => function($type, $page=False) {
 
         $limit = 3;
 
@@ -50,6 +50,7 @@ return array(
 
         Helpers::show_data($widgets);
         Helpers::show_data($pagination->render());
+        Helpers::show_data($page);
         /*
         $view_data = Array(
             'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
