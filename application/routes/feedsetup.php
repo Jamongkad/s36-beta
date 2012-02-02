@@ -15,7 +15,7 @@ return array(
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
         //TODO: Paginate this motherfucka
         $dbw = new DBWidget;
-        $widgets = $dbw->fetch_widgets_by($type);
+        $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset=0);
 
         if($type == 'display') {
             $link_text = 'Display Widgets';
