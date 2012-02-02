@@ -39,6 +39,8 @@
             <?endforeach?>
         </div>
         <div class="widget-opts">
+        <?=HTML::link('feedsetup/overview/display', 'browse for more...', Array('class' => 'woops-a'))?> 
+        <!--
             <div class="widget-pagination">
                 <a href="#" class="activePage">1</a>
                 <a href="#">2</a>
@@ -46,6 +48,7 @@
                 <a href="#">4</a>
                 <a href="#">5</a>
             </div>
+        -->
         </div>
        <?else:?>
         <div class="woops">
@@ -98,6 +101,8 @@
                 </div> 
             <?endforeach?>
             <div class="widget-opts">
+            <?=HTML::link('feedsetup/overview/display', 'browse for more...', Array('class' => 'woops-a'))?> 
+            <!--
                 <div class="widget-pagination">
                     <a href="#" class="activePage">1</a>
                     <a href="#">2</a>
@@ -105,6 +110,7 @@
                     <a href="#">4</a>
                     <a href="#">5</a>
                 </div>
+            -->
             </div>
         <?else:?>
             <div class="woops">
