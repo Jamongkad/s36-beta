@@ -2,7 +2,7 @@
 
 <div id="widget-setup-block">
     <div class="widget-options">
-        <h2>Display Widgets <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
+        <h2 class="ico-widget widget">Display Widgets <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
         <?=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>
         <?foreach($widgets as $rows):?>
             <div class="widget-types">
@@ -51,7 +51,7 @@
 
 <div id="widget-setup-block">
     <div class="widget-options">
-        <h2>Submission Forms <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
+        <h2 class="ico-widget form">Submission Forms <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
         <a href="#" class="widget-create">Create Submission Form</a>
         <?=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
         <div class="widget-types">
