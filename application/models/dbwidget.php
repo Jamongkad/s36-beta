@@ -49,11 +49,11 @@ class DBWidget extends S36DataObject {
         return $widgets;
     }
 
-    public function fetch_widgets_by($widget_type) {
-        return $this->_fetch_widgets_by($widget_type);
+    public function fetch_widgets_by($widget_type, $limit, $offset) {
+        return $this->_fetch_widgets_by($widget_type, $limit, $offset);
     }
 
-    public function _fetch_widgets_by($widget_type) { 
+    public function _fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
         $sql = "
             SELECT 
                 widgetStoreId
@@ -67,12 +67,14 @@ class DBWidget extends S36DataObject {
                 AND companyId = :company_id
                 AND widgetType = :widget_type
             ORDER BY widgetStoreId DESC
-            LIMIT 3
+            LIMIT :offset, :limit 
         ";
 
         $sth = $this->dbh->prepare($sql);  
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_type', $widget_type, PDO::PARAM_INT);
+        $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
