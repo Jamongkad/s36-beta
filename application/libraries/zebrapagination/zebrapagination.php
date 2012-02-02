@@ -642,8 +642,9 @@ class ZebraPagination
 
             }
 
+            print_r($query_string);
+
             // make sure the returned HTML is W3C compliant
-            print_r($_SERVER['QUERY_STRING']);
             return htmlspecialchars($base_path . '?' . $query_string);
 
         }
