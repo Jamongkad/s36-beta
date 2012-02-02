@@ -55,7 +55,7 @@
             </p>
         </div>
     <?endif?>
-    </div>
+
 </div>
 
 <div id="widget-setup-block">
