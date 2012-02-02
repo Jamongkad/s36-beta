@@ -52,6 +52,7 @@
             </div>
 
         </div>
+       </div>
        <?else:?>
         <div class="woops">
             <h2 class="woops-header">Create your feedback submission form</h2>
@@ -60,7 +61,7 @@
             </p>
         </div>
     <?endif?>
-    </div>
+
 </div>
 
 <div id="widget-setup-block">
