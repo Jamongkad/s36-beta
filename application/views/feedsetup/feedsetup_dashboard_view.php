@@ -40,11 +40,14 @@
         </div>
         <div class="widget-opts">
             <div class="widget-pagination">
+            <!--
                 <a href="#" class="activePage">1</a>
                 <a href="#">2</a>
                 <a href="#">3</a>
                 <a href="#">4</a>
                 <a href="#">5</a>
+            -->
+                <?=HTML::link('feedsetup/overview/display', 'browser for more...')?> 
             </div>
         </div>
        <?else:?>
