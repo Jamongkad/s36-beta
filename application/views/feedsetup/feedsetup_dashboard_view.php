@@ -3,8 +3,8 @@
     <div class="widget-options">
         <h2 class="ico-widget widget"><?=HTML::link('feedsetup/overview/display', 'Display Widgets', Array('class' => 'widget-overview-btn'))?> <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
         <?=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>
-        <?if($widgets->widgets->display_widgets != null):?>
-            <?foreach($widgets->widgets->display_widgets as $rows):?>
+        <?if($widgets->display_widgets->widgets != null):?>
+            <?foreach($widgets->display_widgets->widgets as $rows):?>
                 <div class="widget-types">
                     <div class="widget-info">
                         <div class="grids">
@@ -67,8 +67,8 @@
         <h2 class="ico-widget form"><?=HTML::link('feedsetup/overview/form', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
         <a href="#" class="widget-create">Create Submission Form</a>
         <?=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
-        <?if($widgets->widgets->form_widgets != null):?>
-            <?foreach($widgets->widgets->display_widgets as $rows):?>
+        <?if($widgets->form_widgets->widgets != null):?>
+            <?foreach($widgets->display_widgets->widgets as $rows):?>
                 <div class="widget-types">
                     <div class="widget-info">
                         <div class="grids">
