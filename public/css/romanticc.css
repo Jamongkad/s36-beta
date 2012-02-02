@@ -429,6 +429,7 @@ visibility: hidden;
 
 .woops .woops-header { margin: 0; padding:0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; border: 1px solid #DFDFDF; font-size: 20px; }
 .woops .woops-content { margin: 0; color: #777; }
+.woops a.woops-a { color: #777; font-size: 14px; }
 
 .category-box {
     display:block;width:100%;
