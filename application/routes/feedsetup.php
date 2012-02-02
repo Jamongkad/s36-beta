@@ -7,11 +7,26 @@ return array(
         $dbw = new DBWidget;
         $widgets = $dbw->fetch_widgets_by_company();
         $pagination = new ZebraPagination; 
-        //Helpers::show_data($widgets);
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
         ));
 
+    }),
+
+    'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
+        if($type == 'display') {
+            $link_text = 'Display Widgets';
+            $link_href = 'display_widgets';
+        } else {
+            $link_text = 'Submission Forms';
+            $link_href = 'submission_widgets';
+        }
+
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_overview_view', Array(
+            'overview_type' => $type
+          , 'link_text' => $link_text
+          , 'link_href' => $link_href
+        ));
     }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 

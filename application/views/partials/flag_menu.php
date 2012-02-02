@@ -32,16 +32,35 @@
                 <!--TODO goodness please think of a more robust solution for this view...-->
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
-                        $feedsetup_nav = Array(
-                             'feedsetup/all'  => 'WIDGET DASHBOARD'
-                           , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
-                           , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
-                           , 'feedsetup/mywidgets' => 'MY WIDGETS'
-                        );
+                        $feedsetup_nav = Array();
+                        if(Request::uri() == 'feedsetup/overview/display' || Request::uri() == 'feedsetup/overview/form') {
+
+                            $feedsetup_overview_key = (Request::uri() == 'feedsetup/overview/display') ? 'feedsetup/overview/display' 
+                                                                                                       : 'feedsetup/overview/form';
+
+                            $feedsetup_overview_value = (Request::uri() == 'feedsetup/overview/display') ? 'DISPLAY WIDGET OVERVIEW' 
+                                                                                                       : 'SUBMISSION FORM WIDGET OVERVIEW';
+
+                            $feedsetup_nav = Array( 
+                                 'feedsetup/all'  => 'WIDGET DASHBOARD'
+                               , $feedsetup_overview_key => $feedsetup_overview_value
+                            );
+                        } else {
+                            
+                            $feedsetup_nav = Array(
+                                 'feedsetup/all'  => 'WIDGET DASHBOARD'
+                               , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
+                               , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
+                               , 'feedsetup/mywidgets' => 'MY WIDGETS'
+                            );
+                        }
+
                     ?>
 
                     <?foreach($feedsetup_nav as $name => $value):?>
+                        <?if($name):?>
                         <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                        <?endif?>
                     <?endforeach?> 
                 <?endif?>   
 
