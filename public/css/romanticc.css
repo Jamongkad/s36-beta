@@ -422,13 +422,13 @@ visibility: hidden;
     box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
     color: #777777;
     margin: 28px;
-    padding: 28px;
+    padding: 10px;
     text-align: center;
     text-shadow: 0 1px 0 #FFFFFF;
 }
 
-.woops .woops-header { margin: 0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; border: 1px solid #DFDFDF; font-size: 20px; }
-.woops .woops-content { margin: 0; }
+.woops .woops-header { margin: 0; padding:0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; border: 1px solid #DFDFDF; font-size: 20px; }
+.woops .woops-content p a { margin: 0; color: #777; }
 
 .category-box {
     display:block;width:100%;
