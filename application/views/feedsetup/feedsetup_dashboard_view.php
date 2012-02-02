@@ -98,12 +98,13 @@
             </div>
         <?else:?>
             <div class="woops">
-                <h2>Create your feedback submission form</h2><br/><br/>
+                <h2 class="woops-header">Create your feedback submission form</h2><br/><br/>
                 <!--
                 <p>Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
                 -->
-                <p>Start receiving feedback from you customers/visitors</p>
+                <p class="woops-content">Start receiving feedback from you customers/visitors</p>
             </div>
         <?endif?>
+        </div>
 </div>
 </div>
