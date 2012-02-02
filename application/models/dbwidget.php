@@ -63,7 +63,7 @@ class DBWidget extends S36DataObject {
                 AND companyId = :company_id
                 AND widgetType = :widget_type
             ORDER BY widgetStoreId DESC
-            LIMIT 5
+            LIMIT 3
         ";
 
         $sth = $this->dbh->prepare($sql);  
