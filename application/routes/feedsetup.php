@@ -36,14 +36,15 @@ return array(
     'GET /feedsetup/ajax_overview/(:any)/([0-9]+)' => function($type, $offset) {
         $dbw = new DBWidget;
         $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset);
-        Helpers::show_data($widgets);
+        //Helpers::show_data($widgets);
         /*
         $view_data = Array(
             'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
         );
-         
+
         echo json_encode($view_data);
-        */
+        */ 
+        echo View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
