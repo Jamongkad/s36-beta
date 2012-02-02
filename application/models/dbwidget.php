@@ -54,9 +54,9 @@ class DBWidget extends S36DataObject {
     }
 
     public function _fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
-        $sql = "
-            SQL_CALC_FOUND_ROWS
+        $sql = " 
             SELECT 
+                SQL_CALC_FOUND_ROWS
                 widgetStoreId
               , widgetKey
               , companyId
