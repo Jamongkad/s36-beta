@@ -616,7 +616,7 @@ class ZebraPagination
 
             );
 
-            $server_query_string = str_replace('subdomain=razer', '', $_SERVER['QUERY_STRING']);
+            $server_query_string = str_replace('subdomain=razer', false, $_SERVER['QUERY_STRING']);
 
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
