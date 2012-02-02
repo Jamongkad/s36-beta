@@ -35,7 +35,7 @@ return array(
 
     'GET /feedsetup/ajax_overview/(:any)' => function($type) {
         $dbw = new DBWidget;
-        $widgets = $dbw->fetch_widgets_by($type);
+        $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset=0);
         Helpers::show_data($widgets);
         /*
         $view_data = Array(
