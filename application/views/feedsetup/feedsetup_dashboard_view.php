@@ -54,6 +54,7 @@
                 <?=HTML::link('feedsetup/display_widgets', 'Share your customer testimonials on your website', Array('class' => 'woops-a'))?> 
             </p>
         </div>
+    </div>
     <?endif?>
 
 </div>
