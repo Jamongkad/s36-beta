@@ -633,9 +633,12 @@ class ZebraPagination
                 );
                 echo "Mathew";
 
+                print_r($server_query_string);
+
             // if the current page is not already set in GET
             } else {
                 echo "wong";
+                print_r($server_query_string);
 
                 //$server_query_string = str_replace('subdomain=razer', '', $_SERVER['QUERY_STRING']);
 
