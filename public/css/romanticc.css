@@ -428,7 +428,7 @@ visibility: hidden;
 }
 
 .woops .woops-header { margin: 0; padding:0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; border: 1px solid #DFDFDF; font-size: 20px; }
-.woops .woops-content p a { margin: 0; color: #777; }
+.woops .woops-content > p a { margin: 0; color: #777; }
 
 .category-box {
     display:block;width:100%;

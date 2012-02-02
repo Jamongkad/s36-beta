@@ -98,7 +98,7 @@
             </div>
         <?else:?>
             <div class="woops">
-                <h2 class="woops-header">Create your feedback submission form</h2><br/><br/>
+                <h2 class="woops-header">Create your feedback submission form</h2>
                 <p class="woops-content"><?=HTML::link('feedsetup/submission_widgets', 'Start receiving feedback from you customers/visitors')?> </p>
             </div>
         <?endif?>
