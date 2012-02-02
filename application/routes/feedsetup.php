@@ -6,9 +6,12 @@ return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
         $dbw = new DBWidget;
         $widgets = $dbw->fetch_widgets_by_company();
+        Helpers::show_data($widgets);
+        /*
         return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
         ));
+        */
 
     }),
 

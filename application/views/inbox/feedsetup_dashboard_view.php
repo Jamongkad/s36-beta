@@ -1,5 +1,4 @@
 <div class="block">
-
 <div id="widget-setup-block">
     <div class="widget-options">
         <h2 class="ico-widget widget">Display Widgets <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>

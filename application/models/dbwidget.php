@@ -43,6 +43,13 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widgets_by_company() {
+        $widgets = new StdClass;
+        $widgets->display_widgets = $this->_fetch_widgets_by('display');
+        $widgets->form_widgets = $this->_fetch_widgets_by('submit');
+        return $widgets;
+    }
+
+    public function _fetch_widgets_by($widget_type) { 
         $sql = "
             SELECT 
                 widgetStoreId
@@ -54,11 +61,13 @@ class DBWidget extends S36DataObject {
                 WidgetStore
             WHERE 1=1
                 AND companyId = :company_id
+                AND widgetType = :widget_type
             ORDER BY widgetStoreId DESC
         ";
 
         $sth = $this->dbh->prepare($sql);  
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(':widget_type', $widget_type, PDO::PARAM_INT);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
@@ -69,7 +78,7 @@ class DBWidget extends S36DataObject {
             $rows->widget_obj = $obj;
             $data[] = $rows; 
         }
-
+        
         return $data;
     }
 }
