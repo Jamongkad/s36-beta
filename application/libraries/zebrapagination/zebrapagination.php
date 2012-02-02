@@ -615,7 +615,8 @@ class ZebraPagination
                 )
 
             );
-
+           
+            //TODO FUCK I hate this...remove subdomain
             $url = preg_replace('/(subdomain=[a-zA-Z-0-9]+&)/', false, $_SERVER['QUERY_STRING']);
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
