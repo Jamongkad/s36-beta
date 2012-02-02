@@ -55,6 +55,7 @@ class DBWidget extends S36DataObject {
 
     public function _fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
         $sql = "
+            SQL_CALC_FOUND_ROWS
             SELECT 
                 widgetStoreId
               , widgetKey
@@ -85,7 +86,13 @@ class DBWidget extends S36DataObject {
             $rows->widget_obj = $obj;
             $data[] = $rows; 
         }
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $row_count = $row_count->fetchColumn();
         
-        return $data;
+        $data_holder = new StdClass;
+        $data_holder->widgets = $data;
+        $data_holder->total_rows = $row_count;
+        return $data_holder;
     }
 }
