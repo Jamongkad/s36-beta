@@ -1,7 +1,7 @@
 <div class="block">
 <div id="widget-setup-block">
     <div class="widget-options">
-        <h2 class="ico-widget widget">Display Widgets <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
+        <h2 class="ico-widget widget"><?=HTML::link('', 'Display Widgets')?> <small style="font-weight:normal;">(for displaying feedback on your websites)</small></h2>
         <?=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>
         <?if($widgets->display_widgets != null):?>
             <?foreach($widgets->display_widgets as $rows):?>
