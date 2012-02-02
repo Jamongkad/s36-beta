@@ -25,8 +25,8 @@
                             <div class="g1of3">
                                 <div class="right-align">
                                     <ul class="widget-button-list">
-                                        <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid, 'Edit', array('class' => 'button-gray'))?></li>
                                         <!--
+                                        <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid, 'Edit', array('class' => 'button-gray'))?></li>
                                         <li><a href="#" class="button-gray">Stat</a></li>
                                         <li><a href="#" class="button">More</a></li>
                                         -->
@@ -89,8 +89,8 @@
                             <div class="g1of3">
                                 <div class="right-align">
                                     <ul class="widget-button-list">
-                                        <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid, 'Edit', array('class' => 'button-gray'))?></li>
                                         <!--
+                                        <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid, 'Edit', array('class' => 'button-gray'))?></li>
                                         <li><a href="#" class="button-gray">Stat</a></li>
                                         <li><a href="#" class="button">More</a></li>
                                         -->
