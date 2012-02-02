@@ -427,7 +427,7 @@ visibility: hidden;
     text-shadow: 0 1px 0 #FFFFFF;
 }
 
-.woops .woops-header h2 { margin: 0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; }
+.woops .woops-header { margin: 0; line-height: 1; text-align: center; color: #777; background: #DFDFDF; }
 .woops .woops-content { margin: 0; }
 
 .category-box {
