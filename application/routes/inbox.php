@@ -15,6 +15,8 @@ return array(
         $feedback = new DBFeedback;
         $category = new DBCategory;
         $pagination = new ZebraPagination; 
+
+        $pagination->base_url("pwet");
         $admin_check = S36Auth::user();
 
         $offset = ($pagination->get_page() - 1) * $limit;
