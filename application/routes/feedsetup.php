@@ -6,17 +6,15 @@ return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
         $dbw = new DBWidget;
         $widgets = $dbw->fetch_widgets_by_company();
-        Helpers::show_data($widgets);
-        /*
-        return View::of_layout()->partial('contents', 'inbox/feedsetup_dashboard_view', Array(
+        //Helpers::show_data($widgets);
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
         ));
-        */
 
     }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'inbox/feedsetup_view', Array( 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
@@ -28,7 +26,7 @@ return array(
     }),
 
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'inbox/feedsetup_form_widgets_view');
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view');
     }),
 
     'POST /feedsetup/render_display_info' => function() use ($feedback) {
