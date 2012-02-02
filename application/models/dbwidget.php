@@ -49,6 +49,10 @@ class DBWidget extends S36DataObject {
         return $widgets;
     }
 
+    public function fetch_widgets_by($widget_type) {
+        return $this->_fetch_widgets_by($widget_type);
+    }
+
     public function _fetch_widgets_by($widget_type) { 
         $sql = "
             SELECT 

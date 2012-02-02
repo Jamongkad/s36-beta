@@ -6,7 +6,6 @@ return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
         $dbw = new DBWidget;
         $widgets = $dbw->fetch_widgets_by_company();
-        $pagination = new ZebraPagination; 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
         ));
@@ -14,6 +13,10 @@ return array(
     }),
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
+
+        $dbw = new DBWidget;
+        $widgets = $dbw->fetch_widgets_by($type);
+
         if($type == 'display') {
             $link_text = 'Display Widgets';
             $link_href = 'display_widgets';
@@ -26,6 +29,7 @@ return array(
             'overview_type' => $type
           , 'link_text' => $link_text
           , 'link_href' => $link_href
+          , 'widgets' => $widgets
         ));
     }),
 
