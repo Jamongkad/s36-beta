@@ -260,7 +260,7 @@ function widgenator($type, $limit, $pagination) {
     $pagination->records($widgets->total_rows);
     $pagination->records_per_page($limit);
 
-    $result = stdClass;
+    $result = new stdClass;
     $result->widget = $widgets;
     $result->pagination = $pagination->render();
 
