@@ -462,7 +462,7 @@ jQuery(function($) {
         }
         e.preventDefault();
     });
-    
+    /* 
     $(".pagination a").live("click", function(e) {
         var url = $(this).attr('href');
         $.getJSON(url, function(data) {
@@ -471,4 +471,5 @@ jQuery(function($) {
 
         e.preventDefault();
     });
+    */
 });
