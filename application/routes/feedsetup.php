@@ -20,13 +20,17 @@ return array(
         $pagination = new ZebraPagination; 
         $pagination->method('url');
         $pagination->base_url('/feedsetup/ajax_overview/'.$type);
-
+        
+        /*
         $offset = ($pagination->get_page() - 1) * $limit;
 
         $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
 
         $pagination->records($widgets->total_rows);
         $pagination->records_per_page($limit);
+        */
+
+        $widgy = widgenator($type, $limit, $pagination);
 
         if($type == 'display') {
             $link_text = 'Display Widgets';
@@ -40,8 +44,9 @@ return array(
             'overview_type' => $type
           , 'link_text' => $link_text
           , 'link_href' => $link_href
-          , 'widgets' => $widgets
-          , 'pagination' => $pagination->render() 
+          , 'widgets' => $widgy->widget
+          , 'pagination' => $widgy->pagination
+
         ));
     }),
 
@@ -244,3 +249,20 @@ return array(
     }, 
 
 );
+
+function widgenator($type, $limit, $pagination) {  
+    $dbw = new DBWidget;
+
+    $offset = ($pagination->get_page() - 1) * $limit;
+
+    $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
+
+    $pagination->records($widgets->total_rows);
+    $pagination->records_per_page($limit);
+
+    $result = stdClass;
+    $result->widget = $widgets;
+    $result->pagination = $pagination->render();
+
+    return $result;
+}
