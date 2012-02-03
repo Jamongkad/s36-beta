@@ -40,11 +40,11 @@
                     </div> 
                 <?endforeach?>
             </div>
-            <div class="widget-opts">
-                <div class="widget-pagination">
-                    <?=$pagination?>
+                <div class="widget-opts">
+                    <div class="widget-pagination">
+                        <?=$pagination?>
+                    </div>
                 </div>
-            </div>
             <?else:?>
             <div class="woops">
                 <h2 class="woops-header">No Widgets available</h2>
