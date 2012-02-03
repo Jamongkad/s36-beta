@@ -19,6 +19,7 @@ return array(
         $dbw = new DBWidget;
         $pagination = new ZebraPagination; 
         $pagination->method('url');
+        $pagination->base_url('/feedsetup/ajax_overview/');
 
         $offset = ($pagination->get_page() - 1) * $limit;
 
