@@ -208,7 +208,6 @@ jQuery(function($) {
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
     
     var checkyBar = $('.checky-bar');
-    //checkyBar.hide();
     var check = new Checky({   feed_selection: $('.feed-selection')
                              , check_feed_id: $('.check-feed-id')
                              , category_feed_id: $('.category-feed-id')

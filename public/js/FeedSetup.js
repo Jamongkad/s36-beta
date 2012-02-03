@@ -284,8 +284,22 @@ jQuery(function($) {
     overview.delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
         var that = $(this);
+        /*
         $.getJSON(url, function(data) {
             overview.html(data.view);
+        });
+        */
+
+        $.ajax({
+            url: url 
+          , dataType: 'json'
+          , beforeSubmit: function(formData, jqForm, options) {
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
+          , success : function(data) {
+                overview.html(data.view);
+            }
         });
 
         dickie; 
