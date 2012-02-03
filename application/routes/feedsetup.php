@@ -48,12 +48,12 @@ return array(
         $pagination->records($widgets->total_rows);
         $pagination->records_per_page($limit);
         
-        /*
+
         Helpers::show_data($widgets);
         Helpers::show_data($pagination->render());
         Helpers::show_data($page);
         Helpers::show_data($pagination->get_page());
-        */
+
         /*
         $view_data = Array(
             'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
@@ -61,11 +61,12 @@ return array(
 
         echo json_encode($view_data);
         */
-
+        /*
         echo View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgets
           , 'pagination' => $pagination->render() 
         ))->get();
+        */
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
