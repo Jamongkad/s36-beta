@@ -296,6 +296,7 @@ jQuery(function($) {
           , beforeSubmit: function(formData, jqForm, options) {
                 var myStatus = new Status();
                 myStatus.notify("Processing...", 1000);
+                console.log("Processing");
             }
           , success : function(data) {
                 overview.html(data.view);
