@@ -472,4 +472,20 @@ jQuery(function($) {
         e.preventDefault();
     });
     */
+    $("#overview-target").delegate(".pagination a", "click", function(e) {
+        var url = $(this).attr('href');
+        var that = this;
+        $.getJSON(url, function(data) {
+            $(that).html(data.view);
+        });
+
+        $(this).delegate("li a.button-gray", "click", function(e) {
+            console.log($(this).attr('href'));
+            e.stopImmediatePropagation();    
+            e.preventDefault();
+        });
+
+        e.stopImmediatePropagation();
+        e.preventDefault();
+    });
 });
