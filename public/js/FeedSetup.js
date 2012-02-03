@@ -297,8 +297,6 @@ jQuery(function($) {
             }
         });
 
-        //rebind edit; 
-
         e.stopImmediatePropagation();
         e.preventDefault();
     });
