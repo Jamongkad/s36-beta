@@ -275,7 +275,7 @@ jQuery(function($) {
 
     var overview = $("#overview-target");
 
-    var edit = overview.delegate("li a.button-gray", "click", function(e) {
+    overview.delegate("li a.button-gray", "click", function(e) {
         console.log($(this).attr('href'));
         e.stopImmediatePropagation();    
         e.preventDefault();
