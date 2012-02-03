@@ -14,8 +14,18 @@ return array(
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
         //TODO: Paginate this motherfucka
+        $limit = 3;
+
         $dbw = new DBWidget;
-        $widgets = $dbw->fetch_widgets_by($type, $limit=3, $offset=0);
+        $pagination = new ZebraPagination; 
+        $pagination->method('url');
+
+        $offset = ($pagination->get_page() - 1) * $limit;
+
+        $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
+
+        $pagination->records($widgets->total_rows);
+        $pagination->records_per_page($limit);
 
         if($type == 'display') {
             $link_text = 'Display Widgets';
@@ -30,6 +40,7 @@ return array(
           , 'link_text' => $link_text
           , 'link_href' => $link_href
           , 'widgets' => $widgets
+          , 'pagination' => $pagination->render() 
         ));
     }),
 
