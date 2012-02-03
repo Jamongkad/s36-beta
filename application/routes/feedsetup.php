@@ -58,8 +58,10 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/([0-9]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) {
-        print_r($widget_id);
+    'GET /feedsetup/edit/([0-9]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) { 
+        $dbw = new DBWidget;
+        $result = $dbw->fetch_widget_by_id($widget_id);
+        Helpers::show_data($result);
     }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
