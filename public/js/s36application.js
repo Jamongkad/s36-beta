@@ -465,9 +465,14 @@ jQuery(function($) {
      
     $.getJSON('/feedsetup/ajax_overview/display', function(data) { 
        $("#overview-target").html(data.view);
+       
        $(".pagination a").bind("click", function(e) {
-           console.log($(this).attr('href'));
+           //console.log($(this).attr('href'));
+           $.getJSON($(this).attr('href'), function(data) { 
+               $("#overview-target").html(data.view);
+           });
            e.preventDefault();
+
        });
     });
 
