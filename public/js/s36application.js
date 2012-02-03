@@ -462,25 +462,16 @@ jQuery(function($) {
         }
         e.preventDefault();
     });
-    /* 
-    $(".pagination a").live("click", function(e) {
-        var url = $(this).attr('href');
-        $.getJSON(url, function(data) {
-            $("#overview-target").html(data.view);
-        });
 
-        e.preventDefault();
-    });
-    */
-    /*
-    $("#overview-target").delegate(".pagination a", "click", function(e) {
+    var overview = $("#overview-target");
+    overview.delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
         var that = $(this);
         $.getJSON(url, function(data) {
-            $(that).html(data.view);
+            overview.html(data.view);
         });
 
-        $(this).delegate("li a.button-gray", "click", function(e) {
+        overview.delegate("li a.button-gray", "click", function(e) {
             console.log($(this).attr('href'));
             e.stopImmediatePropagation();    
             e.preventDefault();
@@ -489,5 +480,5 @@ jQuery(function($) {
         e.stopImmediatePropagation();
         e.preventDefault();
     });
-    */
+    
 });
