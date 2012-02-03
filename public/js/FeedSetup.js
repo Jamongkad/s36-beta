@@ -277,7 +277,6 @@ jQuery(function($) {
 
     overview.delegate("li a.button-gray", "click", function(e) {
         console.log($(this).attr('href'));
-        //e.stopImmediatePropagation();    
         e.preventDefault();
     });
 
@@ -290,7 +289,6 @@ jQuery(function($) {
           , beforeSend: function(xhr) {
                 var myStatus = new Status();
                 myStatus.notify("Processing...", 1000);
-                console.log("Processing");
             }
           , success : function(data) {
                 overview.html(data.view);
