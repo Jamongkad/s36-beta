@@ -277,7 +277,7 @@ jQuery(function($) {
 
     overview.delegate("li a.button-gray", "click", function(e) {
         console.log($(this).attr('href'));
-        e.stopImmediatePropagation();    
+        //e.stopImmediatePropagation();    
         e.preventDefault();
     });
 
