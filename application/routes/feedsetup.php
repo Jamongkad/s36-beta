@@ -54,18 +54,17 @@ return array(
         Helpers::show_data($page);
         Helpers::show_data($pagination->get_page());
         */
-        /*
-        $view_data = Array(
-            'view' => View::make('feedsetup/ajax_views/ajax_overview_view', Array('widgets' => $widgets))->get()
-        );
-
-        echo json_encode($view_data);
-        */
-
-        echo View::make('feedsetup/ajax_views/ajax_overview_view', Array(
+        $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgets
           , 'pagination' => $pagination->render() 
         ))->get();
+
+        $view_data = Array(
+            'view' => $view
+        );
+
+        echo json_encode($view_data);
+        //echo $view; 
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
