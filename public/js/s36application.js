@@ -463,19 +463,12 @@ jQuery(function($) {
         e.preventDefault();
     });
     
-    /*
-    $.getJSON('/feedsetup/ajax_overview/display', function(data) { 
-       $("#overview-target").html(data.view);
-       
-       $(".pagination a").bind("click", function(e) {
-           //console.log($(this).attr('href'));
-           $.getJSON($(this).attr('href'), function(data) { 
-               $("#overview-target").html(data.view);
-           });
-           e.preventDefault();
+    $(".pagination a").live("click", function(e) {
+        var url = $(this).attr('href');
+        $.getJSON(url, function(data) {
+            $("#overview-target").html(data.view);
+        });
 
-       });
+        e.preventDefault();
     });
-    */
-
 });
