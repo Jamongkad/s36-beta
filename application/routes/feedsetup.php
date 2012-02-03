@@ -14,22 +14,12 @@ return array(
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
         //TODO: Paginate this motherfucka
-        $limit = 5;
+        $limit = 5; 
 
-        $dbw = new DBWidget;
         $pagination = new ZebraPagination; 
         $pagination->method('url');
         $pagination->base_url('/feedsetup/ajax_overview/'.$type);
-        
-        /*
-        $offset = ($pagination->get_page() - 1) * $limit;
-
-        $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
-
-        $pagination->records($widgets->total_rows);
-        $pagination->records_per_page($limit);
-        */
-
+    
         $widgy = widgenator($type, $limit, $pagination);
 
         if($type == 'display') {
@@ -54,20 +44,14 @@ return array(
 
         $limit = 5;
 
-        $dbw = new DBWidget;
         $pagination = new ZebraPagination; 
         $pagination->method('url');
 
-        $offset = ($pagination->get_page() - 1) * $limit;
-
-        $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
-
-        $pagination->records($widgets->total_rows);
-        $pagination->records_per_page($limit);
-        
+        $widgy = widgenator($type, $limit, $pagination);
+ 
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
-            'widgets' => $widgets
-          , 'pagination' => $pagination->render() 
+            'widgets' => $widgy->widget
+          , 'pagination' => $widgy->pagination
         ))->get();
 
         $view_data = Array(
