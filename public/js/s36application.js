@@ -462,7 +462,8 @@ jQuery(function($) {
         }
         e.preventDefault();
     });
-     
+    
+    /*
     $.getJSON('/feedsetup/ajax_overview/display', function(data) { 
        $("#overview-target").html(data.view);
        
@@ -475,5 +476,6 @@ jQuery(function($) {
 
        });
     });
+    */
 
 });
