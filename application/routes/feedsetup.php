@@ -68,7 +68,7 @@ return array(
         */
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgets
-          //, 'pagination' => $pagination->render() 
+          , 'pagination' => $pagination->render() 
         ))->get();
 
         $view_data = Array(
