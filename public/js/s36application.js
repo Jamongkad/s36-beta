@@ -463,25 +463,5 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    var overview = $("#overview-target");
-
-    var dickie = overview.delegate("li a.button-gray", "click", function(e) {
-        console.log($(this).attr('href'));
-        e.stopImmediatePropagation();    
-        e.preventDefault();
-    });
-
-    overview.delegate(".pagination a", "click", function(e) {
-        var url = $(this).attr('href');
-        var that = $(this);
-        $.getJSON(url, function(data) {
-            overview.html(data.view);
-        });
-
-        dickie; 
-
-        e.stopImmediatePropagation();
-        e.preventDefault();
-    });
     
 });
