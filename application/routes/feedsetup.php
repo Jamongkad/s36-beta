@@ -14,7 +14,7 @@ return array(
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
         //TODO: Paginate this motherfucka
-        $limit = 3;
+        $limit = 5;
 
         $dbw = new DBWidget;
         $pagination = new ZebraPagination; 
@@ -47,7 +47,7 @@ return array(
 
     'GET /feedsetup/ajax_overview/(:any?)/(:any?)' => function($type=False, $page=False) {
 
-        $limit = 3;
+        $limit = 5;
 
         $dbw = new DBWidget;
         $pagination = new ZebraPagination; 
@@ -60,12 +60,6 @@ return array(
         $pagination->records($widgets->total_rows);
         $pagination->records_per_page($limit);
         
-        /*
-        Helpers::show_data($widgets);
-        Helpers::show_data($pagination->render());
-        Helpers::show_data($page);
-        Helpers::show_data($pagination->get_page());
-        */
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgets
           , 'pagination' => $pagination->render() 
@@ -76,7 +70,6 @@ return array(
         );
 
         echo json_encode($view_data);
-        //echo $view; 
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
