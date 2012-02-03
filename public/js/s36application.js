@@ -472,9 +472,10 @@ jQuery(function($) {
         e.preventDefault();
     });
     */
+    /*
     $("#overview-target").delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
-        var that = this;
+        var that = $(this);
         $.getJSON(url, function(data) {
             $(that).html(data.view);
         });
@@ -488,4 +489,5 @@ jQuery(function($) {
         e.stopImmediatePropagation();
         e.preventDefault();
     });
+    */
 });
