@@ -13,9 +13,7 @@ return array(
     }),
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
-        //TODO: Paginate this motherfucka
         $limit = 5; 
-
         $pagination = new ZebraPagination; 
         $pagination->method('url');
         $pagination->base_url('/feedsetup/ajax_overview/'.$type);
@@ -43,7 +41,6 @@ return array(
     'GET /feedsetup/ajax_overview/(:any?)/(:any?)' => function($type=False, $page=False) {
 
         $limit = 5;
-
         $pagination = new ZebraPagination; 
         $pagination->method('url');
 
@@ -60,6 +57,10 @@ return array(
 
         echo json_encode($view_data);
     },
+
+    'GET /feedsetup/edit/([0-9]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) {
+        print_r($widget_id);
+    }),
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_view', Array( 
