@@ -35,13 +35,7 @@
 </div>
 <div class="widget-opts">
     <div class="widget-pagination">
-
-        <a href="#" class="activePage">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-   
+        <?=$pagination?>
     </div>
 </div>
 <?else:?>
