@@ -463,9 +463,10 @@ jQuery(function($) {
         e.preventDefault();
     });
      
-    //$("#overview-target")
     $.getJSON('/feedsetup/ajax_overview/display', function(data) {
-          console.log(data);
+          //console.log(data.view);
+          $("#overview-target").html(data.view);
+
     });
 
 });
