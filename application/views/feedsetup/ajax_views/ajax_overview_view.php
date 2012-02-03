@@ -1,5 +1,5 @@
 <?if($widgets):?>
-    <?foreach($widgets as $rows):?>
+    <?foreach($widgets->widgets as $rows):?>
         <div class="widget-types">
             <div class="widget-info">
                 <div class="grids">
