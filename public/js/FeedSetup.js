@@ -293,7 +293,7 @@ jQuery(function($) {
         $.ajax({
             url: url 
           , dataType: 'json'
-          , beforeSubmit: function(formData, jqForm, options) {
+          , beforeSend: function(xhr) {
                 var myStatus = new Status();
                 myStatus.notify("Processing...", 1000);
                 console.log("Processing");
