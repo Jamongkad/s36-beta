@@ -275,10 +275,12 @@ jQuery(function($) {
 
     var overview = $("#overview-target");
 
+    /* TODO: this is the code we will use for Inbox rebinding
     overview.delegate("li a.button-gray", "click", function(e) {
         console.log($(this).attr('href'));
         e.preventDefault();
     });
+    */
 
     overview.delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
