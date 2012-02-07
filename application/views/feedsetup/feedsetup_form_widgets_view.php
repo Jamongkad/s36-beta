@@ -75,7 +75,7 @@
         });
 });	
 </script>
-<?=Form::open('feedsetup/save_form_widget', 'POST')?>
+<?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>

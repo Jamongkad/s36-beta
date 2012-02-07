@@ -214,6 +214,16 @@ jQuery(function($) {
     $("#widget-preview").hide();
     $("#widget-preview").siblings(".block").hide();
 
+    $("#create-form-widget").bind("submit", function(e) { 
+        $(this).ajaxSubmit({
+            dataType: 'json'       
+          , beforeSubmit: function(formData, jqForm, options) {
+                new Status().notify("Processing...", 1000); 
+            }
+        })
+        e.preventDefault();
+    });
+
     $('#create-widget').bind("submit", function(e) {
         $(this).ajaxSubmit({
             dataType: 'json'

@@ -51,7 +51,6 @@
                                  'feedsetup/all'  => 'WIDGET DASHBOARD' 
                             );
 
-                            //Helpers::show_data($matches);
                             $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
 
                         } else {

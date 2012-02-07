@@ -188,8 +188,8 @@ return array(
         $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));  
         $data['widget_type'] = 'submit';
         $data['site_nm'] = $site->domain;
-        //Helpers::show_data((object)$data);
-        $dbw->save_widget( (object)$data );          
+        Helpers::show_data((object)$data);
+        //$dbw->save_widget( (object)$data );          
     },
 
     'GET /feedsetup/generate_code' => function() {
