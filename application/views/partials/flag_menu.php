@@ -33,18 +33,27 @@
                 <?if(preg_match_all('/feedsetup/', Request::uri(), $matches)):?>
                     <?
                         $feedsetup_nav = Array();
-                        if(Request::uri() == 'feedsetup/overview/display' || Request::uri() == 'feedsetup/overview/form') {
+                        if(   $display = preg_match('~feedsetup/overview/(display|submit)~', Request::uri(), $matches)
+                           or $edit_widget = preg_match('~feedsetup/edit/([0-9]+)/(display|submit)~', Request::uri(), $matches) ) {
 
-                            $feedsetup_overview_key = (Request::uri() == 'feedsetup/overview/display') ? 'feedsetup/overview/display' 
-                                                                                                       : 'feedsetup/overview/form';
-
-                            $feedsetup_overview_value = (Request::uri() == 'feedsetup/overview/display') ? 'DISPLAY WIDGET OVERVIEW' 
-                                                                                                       : 'SUBMISSION FORM WIDGET OVERVIEW';
+                            if(isset($display)) {
+                                $dynamic_nav = Array(Request::uri() => 'WIDGET OVERVIEW');
+                            }
+                            
+                            if(isset($edit_widget)) {
+                                $dynamic_nav = Array(
+                                      'feedsetup/overview/'.$matches[2] => 'WIDGET OVERVIEW'
+                                    , Request::uri() => 'EDIT '.strtoupper($matches[2]).' WIDGET'
+                                );
+                            }
 
                             $feedsetup_nav = Array( 
-                                 'feedsetup/all'  => 'WIDGET DASHBOARD'
-                               , $feedsetup_overview_key => $feedsetup_overview_value
+                                 'feedsetup/all'  => 'WIDGET DASHBOARD' 
                             );
+
+                            //Helpers::show_data($matches);
+                            $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
+
                         } else {
                             
                             $feedsetup_nav = Array(
@@ -58,15 +67,16 @@
                     ?>
 
                     <?foreach($feedsetup_nav as $name => $value):?>
-                        <?if($name):?>
-                        <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
-                        <?endif?>
+                        <li>
+                            <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value
+                                          , Array('class' => (Helpers::filter_highlighter($name) ? 'selected' : null)) )?>
+                        </li>
                     <?endforeach?> 
                 <?endif?>   
 
                 <?if(preg_match_all('/settings/', Request::uri(), $matches)):?>
                     <?
-                        $feedsetup_nav = Array(
+                        $settings = Array(
                              'settings' => 'SETTINGS'
                            //, 'settings/upgrade' => 'UPGRADE'
                            //, 'settings/change_card' => 'CHANGE CREDIT CARD'
@@ -74,8 +84,11 @@
                         );
                     ?>
 
-                    <?foreach($feedsetup_nav as $name => $value):?>
-                        <li><?=HTML::link($name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value, Array('class' => (Helpers::filter_highlighter(array($name)) ? 'selected' : null)))?></li>
+                    <?foreach($settings as $name => $value):?>
+                        <li>
+                            <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value
+                                          , Array('class' => (Helpers::filter_highlighter($name) ? 'selected' : null)) )?>
+                        </li>
                     <?endforeach?> 
                 
                 <?endif?>   

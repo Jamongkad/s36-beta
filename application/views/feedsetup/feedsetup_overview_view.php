@@ -13,20 +13,20 @@
                                 <div class="widget-title"><?=$rows->widget_obj->theme_name?></div>
                                 <table width="100%" cellpadding="0" cellspacing="0">
                                     <tr><td width="90"><strong>Widget Type :</strong></td>
-                                        <td><?=$rows->widget_obj->embed_type?></td>
+                                        <td><?=($overview_type == 'display') ? $rows->widget_obj->embed_type : 'Submission'?></td>
                                     </tr>
                                     <tr><td width="90"><strong>Theme :</strong></td>
                                         <td><?=$rows->widget_obj->theme_type?></td>
                                     </tr>
                                     <tr><td width="90"><strong>URL :</strong></td>
-                                        <td><?=$rows->widget_obj->base_url?></td>
+                                        <td><?=$rows->widget_obj->site_nm?></td>
                                     </tr>
                                 </table>
                                 </div>
                                 <div class="g1of3">
                                     <div class="right-align">
                                         <ul class="widget-button-list">
-                                            <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid, 'Edit', array('class' => 'button-gray'))?></li>
+                                            <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid.'/'.$overview_type, 'Edit', array('class' => 'button-gray'))?></li>
                                             <!--
                                             <li><a href="#" class="button-gray">Stat</a></li>
                                             <li><a href="#" class="button">More</a></li>

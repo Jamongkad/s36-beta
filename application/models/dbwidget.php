@@ -42,6 +42,10 @@ class DBWidget extends S36DataObject {
                      ->where('widgetKey', '=', $widget_key)
                      ->or_where('widgetStoreId', '=', $widget_key)
                      ->first();
+
+        $obj = base64_decode($query->widgetobjstring);
+        $obj = unserialize($obj); 
+        $query->widgetobj = $obj; 
         return $query;
     }
 

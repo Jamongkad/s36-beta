@@ -185,7 +185,7 @@ jQuery(function($) {
                                 .children('input[type="radio"]').attr('checked', null);                   
     });
     
-    if($('input[value="embed_type"]').attr('checked')) {
+    if($('input[value="embedded"]').attr('checked')) {
         embed_up();
     }
 
@@ -218,8 +218,7 @@ jQuery(function($) {
         $(this).ajaxSubmit({
             dataType: 'json'
           , beforeSubmit: function(formData, jqForm, options) {
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
+                new Status().notify("Processing...", 1000); 
             }
           , success: function(responseText, statusText, xhr, $form) {  
                 var error = isDefined(responseText, 'errors') ? responseText.errors : false;
@@ -229,43 +228,48 @@ jQuery(function($) {
                 var widget_options = $("div#widget_options");                
 
                 if(error) {
-                   if(error.messages.theme_name) {
-                       theme_name.html(error.messages.theme_name[0]);     
-                       $.scrollTo('input[name="theme_name"]', 800);
-                   } else { 
-                       theme_name.html("");
-                   }
+                    if(error.messages.theme_name) {
+                        theme_name.html(error.messages.theme_name[0]);     
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        theme_name.html("");
+                    }
                   
-                   if(error.messages.site_id) {
-                       site_id.html(error.messages.site_id[0]);                   
-                       $.scrollTo('input[name="theme_name"]', 800);
-                   } else { 
-                       site_id.html("");
-                   }
+                    if(error.messages.site_id) {
+                        site_id.html(error.messages.site_id[0]);                   
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        site_id.html("");
+                    }
 
-                   if(error.messages.embed_type) {
-                       embed_type.html(error.messages.embed_type[0]);     
-                       $.scrollTo('input[name="theme_name"]', 800);
-                   } else { 
-                       embed_type.html("");
-                   } 
+                    if(error.messages.embed_type) {
+                        embed_type.html(error.messages.embed_type[0]);     
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        embed_type.html("");
+                    } 
 
-                   if(error.messages.perms) {
-                       widget_options.html(error.messages.perms[0]);     
-                       $.scrollTo('input[type="radio"][value="modal"]', 800);
-                   } else { 
-                       widget_options.html("");
-                   } 
+                    if(error.messages.perms) {
+                        widget_options.html(error.messages.perms[0]);     
+                        $.scrollTo('input[type="radio"][value="modal"]', 800);
+                    } else { 
+                        widget_options.html("");
+                    } 
                 } else { 
-                   theme_name.html("");
-                   site_id.html("");
-                   embed_type.html("");
-                   widget_options.html("");  
+                    theme_name.html("");
+                    site_id.html("");
+                    embed_type.html("");
+                    widget_options.html("");  
 
-                   $("#widget-preview").show();
-                   $("#widget-preview").siblings(".block").show();
-                   $.scrollTo('#code-generate-view', 800);
-                
+                    $("#widget-preview").show();
+                    $("#widget-preview").siblings(".block").show();
+
+                    //if this bitch exists scroll down!! :)
+                    if($('#code-generate-view').length > 0) {
+                        $.scrollTo('#code-generate-view', 800);     
+                    }  
+
+                    new Status().notify("Success!", 1000);
                 }   
             }
         }); 
@@ -279,6 +283,17 @@ jQuery(function($) {
     overview.delegate("li a.button-gray", "click", function(e) {
         console.log($(this).attr('href'));
         e.preventDefault();
+    });
+
+    TODO: New type validation unlock submit button when text fields have value
+    $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
+    $("input[type='text']").keyup(function(){
+        if ($(this).val().length != 0) {
+            $("input[type='submit']").removeAttr("disabled")
+                                     .css({'opacity': '1.0'});
+        } else { 
+            $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
+        }
     });
     */
 

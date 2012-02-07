@@ -50,6 +50,5 @@ return array(
 
     's36_is_admin' => function() { 
         return (S36Auth::user()->itemname != "Admin") ? Redirect::to('admin') : Null;
-    }
-
+    },
 );

@@ -622,3 +622,78 @@ a.widget-overview-btn:hover {
 
 .widget-options h2.ico-widget{background:#6b7984 url(../img/ico-widgets.png) no-repeat top left;padding-left:24px;}
 .widget-options h2.ico-widget.form{background:#6b7984 url(../img/ico-widgets.png) no-repeat bottom left;padding-left:23px;}
+
+/* submission widget */
+input.large-text{padding:10px;width:80%;}
+.form-design-slide,
+.l-design-slide,
+.r-design-slide,
+.tr-design-slide,
+.tl-design-slide,
+.br-design-slide,
+.bl-design-slide
+{width:656px;height:110px;padding:0px 10px;}
+
+.form-design-prev,.l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
+    float:left;
+    width:25px;
+    height:80px;
+    
+    /* background:url(images/btn-prev.png) no-repeat center center; */
+}
+.form-design-next,.l-design-next,.r-design-next,.br-design-next,.bl-design-next,.tr-design-next,.tl-design-next{
+    float:right;
+    width:25px;
+    height:80px;
+    /* background:url(images/btn-next.png) no-repeat center center; */
+}
+.form-designs,.l-designs,.r-designs,.br-designs,.bl-designs,.tr-designs,.tl-designs{
+    width:606px;
+    float:left;
+    height:100px;
+}
+.form-design-group{
+    width:586px;
+    margin:5px 10px;
+    height:100px;
+}
+.form-design{
+    width:81px;
+    float:left;
+    text-align:center;
+    padding-top:5px;
+    border:1px solid #f4f4f4;
+}
+.tab-design{
+    width:81px;
+    float:left;
+    text-align:center;
+    padding:5px 0px;
+    border:1px solid #f4f4f4;
+}
+.form-design img,.tab-design img{
+    margin:0px !important;
+}
+.form-design span,.tab-design span{
+    color:#487ba8;
+    font-size:11px;
+}
+.form-design:hover,.tab-design:hover{
+    background:#CCC;
+    cursor:pointer;
+    background:#ffffff;
+    border:1px solid #d1d1d1;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+}
+.selected-form,.selected-tab{
+    background:#CCC;
+    cursor:pointer;
+    background:#e1f8ff;
+    border:1px solid #d1d1d1;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+}
+.reg-text-active{color:#AAA;font-style:italic;}

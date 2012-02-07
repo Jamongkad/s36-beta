@@ -18,7 +18,7 @@
                                     <td><?=$rows->widget_obj->theme_type?></td>
                                 </tr>
                                 <tr><td width="90"><strong>URL :</strong></td>
-                                    <td><?=$rows->widget_obj->base_url?></td>
+                                    <td><?=$rows->widget_obj->site_nm?></td>
                                 </tr>
                             </table>
                             </div>
@@ -64,11 +64,11 @@
 
 <div id="widget-setup-block">
     <div class="widget-options">
-        <h2 class="ico-widget form"><?=HTML::link('feedsetup/overview/form', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
+        <h2 class="ico-widget form"><?=HTML::link('feedsetup/overview/submit', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors) </small></h2>
         <a href="#" class="widget-create">Create Submission Form</a>
         <?=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
         <?if($widgets->form_widgets->widgets != null):?>
-            <?foreach($widgets->display_widgets->widgets as $rows):?>
+            <?foreach($widgets->form_widgets->widgets as $rows):?>
                 <div class="widget-types">
                     <div class="widget-info">
                         <div class="grids">
@@ -76,13 +76,13 @@
                             <div class="widget-title"><?=$rows->widget_obj->theme_name?></div>
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr><td width="90"><strong>Widget Type :</strong></td>
-                                    <td><?=$rows->widget_obj->embed_type?></td>
+                                    <td>Submission Form</td>
                                 </tr>
                                 <tr><td width="90"><strong>Theme :</strong></td>
                                     <td><?=$rows->widget_obj->theme_type?></td>
                                 </tr>
                                 <tr><td width="90"><strong>URL :</strong></td>
-                                    <td><?=$rows->widget_obj->base_url?></td>
+                                    <td><?=$rows->widget_obj->site_nm?></td>
                                 </tr>
                             </table>
                             </div>

@@ -58,26 +58,52 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/([0-9]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) { 
+    'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) { 
         $dbw = new DBWidget;
-        $result = $dbw->fetch_widget_by_id($widget_id);
-        Helpers::show_data($result);
-    }),
+        $widget = $dbw->fetch_widget_by_id($widget_id); 
+        //Helpers::show_data($widget->widgetobj);
+        if($widget->widgetobj->widget_type == 'display') {
+            $edit_view = 'feedsetup/feedsetup_edit_view';
+        } else { 
+            $edit_view = 'feedsetup/feedsetup_editform_view';
+        }
 
-    'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_view', Array( 
+        return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
-          , 'companyId'       => S36Auth::user()->companyid
-          , 'input'           => Array(  'site_id' => null, 'company_id' => null, 'theme_name' => null, 'embed_effects' => null
-                                       , 'modal_effects' => null, 'feedid' => null, 'perms' => Array(), 'theme_type' => null
-                                       , 'embed_type' => null)
+          , 'company_id'      => S36Auth::user()->companyid
+          , 'widget'          => $widget
+        ));
+
+    }),
+
+    'POST /feedsetup/update_widget' => function() {
+        $data = Input::get(); 
+        $dbw = new DBWidget;
+        $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
+        $perm_factory = new Permission($data);
+        $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
+        $data['perms'] = $perms;
+        $data['widget_type'] = 'display';
+        $data['site_nm'] = $site->domain;
+        $dbw->update_widget_by_id($data['widget_key'], (object)$data); 
+    },
+
+    'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_createwidget_view', Array( 
+            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+          , 'effects_options' => DB::table('Effects', 'master')->get()
+          , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
+          , 'company_id'      => S36Auth::user()->companyid
         )); 
     }),
 
-    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view');
+    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view', Array(
+            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+          , 'company_id'      => S36Auth::user()->companyid
+        ));
     }),
 
     'POST /feedsetup/render_display_info' => function() use ($feedback) {
@@ -124,11 +150,6 @@ return array(
     },
 
     'POST /feedsetup/save_widget' => function() {
-        /*
-        $d = new DBUserTheme; 
-        $d->create_theme( Input::get() );
-        return Redirect::to('feedsetup/mywidgets');
-        */
         $data = Input::get();
 
         $rules = Array(
@@ -139,26 +160,36 @@ return array(
         );
 
         $validator = Validator::make($data, $rules);
- 
-        if(!$validator->valid()) {
 
+        if(!$validator->valid()) {
             $json_data = Array(
                 'data' => $data
               , 'errors' => $validator->errors
             );
             echo json_encode($json_data);
-
         } else { 
 
             $dbw = new DBWidget;
+            $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
             $perm_factory = new Permission($data);
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
             $data['perms'] = $perms;
             $data['widget_type'] = 'display';
-            $dbw->save_widget( (object)$data );
-        
-        }
-       
+            $data['site_nm'] = $site->domain;
+           
+            $dbw->save_widget( (object)$data );         
+        }       
+    },
+
+    'POST /feedsetup/save_form_widget' => function() {
+        $data = Input::get();
+
+        $dbw = new DBWidget;
+        $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));  
+        $data['widget_type'] = 'submit';
+        $data['site_nm'] = $site->domain;
+        //Helpers::show_data((object)$data);
+        $dbw->save_widget( (object)$data );          
     },
 
     'GET /feedsetup/generate_code' => function() {

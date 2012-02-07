@@ -22,14 +22,20 @@ class Helpers {
     //TODO: generalize this
     public static function filter_highlighter($urls, $type=False) {
 
-        self::$request = self::request();
+        $request = self::request();
 
-        foreach($urls as $url) { 
-            $url_match = $url.(($type) ? '/'.$type : null);
-            if(self::$request == $url_match) {
-                return True; 
-            }
-        }
+        $filter = function($url) use ($type, $request) {
+            $url_match = $url . (($type) ? '/'.$type : null);
+            $regex_match = '~'.$url_match.'~';
+            return preg_match($regex_match, $request, $matches);   
+        };
+        
+        if(is_array($urls)) { 
+            return array_filter($urls, $filter);
+        } 
+
+        return $filter($urls);
+
     }
 
     public static function nav_switcher() { 

@@ -1,22 +1,20 @@
 <?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
-<?=Form::hidden('company_id', $companyId)?>
-<?=Form::hidden('base_url', URL::to('/'))?>
+<?=Form::hidden('company_id', $company_id)?>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
-            <h2><span>Step 1 :</span> Please choose a name for your theme</h2>
+            <h2><span>Step 1 :</span> Please choose a name for your Widget</h2>
             <div style="padding:10px">
                 <input type="text" name="theme_name" value="" style="font-size:25px; padding:5px; width:600px"/>
                 <div id="theme_name" class="error-msg"></div>
             </div>
         </div>
-    </div>
+
     <?if(!$site_id):?>
-    <div id="widget-setup-block"> 
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Choose your website you want to apply your widget to</h2>
+            <h2><span>Step 2 :</span> Choose your website you want to apply your Widget to</h2>
             <div style="padding:10px">
                 <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
                     <option value="">--</option>
@@ -27,36 +25,10 @@
                 <div id="site_id" class="error-msg"></div>
             </div>
         </div>
-    </div>
+
     <?endif?>
-    <div id="widget-setup-block">
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Choose Widget</h2>
-            <!--
-            <div class="widget-types">
-                <h3><input type="radio" name="embed_type" id="full_page_type" value="fullpage"/> <label for="full_page_type">Full Page</label></h3>
-                <div class="widget-opts" id="full_page_widget">
-                    <table width="100%">
-                        <tr><td width="170" class="feedback-td-font">Units to Display per page:</td>
-                            <td>
-                                <select name="full_page_units" class="regular-select">
-                                    <option value="0">-</option>
-                                    <option value="6">6</option>
-                                    <option value="12">12</option>
-                                    <option value="18">18</option>
-                                    <option value="24">24</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr><td></td>
-                            <td>
-                                <?=HTML::image('img/preview-fullpage.png')?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            -->
+            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Choose Widget type</h2>
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="embed_type" value="embedded"/> <label for="embed_type">Embedded Block</label></h3>
                 <div class="widget-opts" id="embed_widget">
@@ -78,28 +50,6 @@
                                 <?=HTML::image('img/preview-vertical-embed.png')?>
                             </td>
                         </tr>
-                        <!--
-                        <tr>
-                            <td class="feedback-td-font">Units to Display per page : </td>
-                            <td colspan="2">
-                                <select name="embed_units" class="regular-select">
-                                    <option value="0">-</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="feedback-td-font">Display Size : </td>
-                            <td colspan="2" class="feedback-td-font">
-                                Width (px): <input type="text" class="regular-text small-text" value="0" style="display:inline;" name="embed_width"/>
-                                Height (px): <input type="text" class="regular-text small-text" value="0" style="display:inline;" name="embed_height"/>
-                            </td>
-                        </tr>
-                        -->
                         <tr>
                             <td class="feedback-td-font">Transition Effect : </td>
                             <td colspan="2">
@@ -141,7 +91,7 @@
             <div id="embed_type" class="error-msg"></div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Display Option</h2>
+            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Widget Display Options</h2>
             <div class="widget-opts" id="display-info-target">
                 <table width="100%" cellpadding="4" class="display-info">
                     <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
@@ -170,7 +120,7 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Theme</h2>
+            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Widget Theme</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
                     <!--
@@ -240,18 +190,13 @@
 
         <div class="widget-opts">
             <br />
-            <!--<a href="#" class="button">Save Widget</a>-->
             <input type="submit" class="large-btn" value="Save Widget & Preview Code" />
             <br /><br />
         </div>
     </div>
 </div>
 <?=Form::close()?>
-<!-- spacer -->
-<!-- spacer -->
 </div>
-<!-- end of the main panel -->
 
-<!-- div need to clear floated divs -->
 <div class="c"></div>
 </div>
