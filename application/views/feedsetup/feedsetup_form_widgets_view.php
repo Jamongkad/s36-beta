@@ -201,7 +201,7 @@
             <!--
             <a href="#" class="button">Save Form</a> &nbsp;&nbsp; <a href="#" class="button-gray">Preview Form</a>
             -->
-            <input type="submit" class="large-btn" value="Save Form & Preview Your Submission Form" />
+            <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Submission Form" />
             </div>
         </div>
     </div>

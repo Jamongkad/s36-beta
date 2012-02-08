@@ -183,12 +183,11 @@ return array(
 
     'POST /feedsetup/save_form_widget' => function() {
         $data = Input::get();
-
         $dbw = new DBWidget;
         $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));  
         $data['widget_type'] = 'submit';
         $data['site_nm'] = $site->domain;
-        Helpers::show_data((object)$data);
+        Helpers::show_data( (object)$data );
         //$dbw->save_widget( (object)$data );          
     },
 

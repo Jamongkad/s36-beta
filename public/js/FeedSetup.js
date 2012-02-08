@@ -220,6 +220,9 @@ jQuery(function($) {
           , beforeSubmit: function(formData, jqForm, options) {
                 new Status().notify("Processing...", 1000); 
             }
+          , success: function(responseText, statusText, xhr, $form) {
+              
+            }
         })
         e.preventDefault();
     });
@@ -278,6 +281,8 @@ jQuery(function($) {
                     if($('#code-generate-view').length > 0) {
                         $.scrollTo('#code-generate-view', 800);     
                     }  
+
+                    $(".create-widget-button").attr("disabled", true).css({ 'opacity' : '0.5' });
 
                     new Status().notify("Success!", 1000);
                 }   

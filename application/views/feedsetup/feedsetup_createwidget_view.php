@@ -190,7 +190,7 @@
 
         <div class="widget-opts">
             <br />
-            <input type="submit" class="large-btn" value="Save Widget & Preview Code" />
+            <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Widget" />
             <br /><br />
         </div>
     </div>
