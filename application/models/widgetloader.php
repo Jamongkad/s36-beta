@@ -4,6 +4,7 @@ class WidgetLoader {
 
     public function __construct($widget_id) {
         $this->dbw = new DBWidget;
+        $this->widget_id = $widget_id;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
 
@@ -71,6 +72,21 @@ class WidgetLoader {
             $obj->widget_data = $fixed_data;
             return $obj;
         }
+    }
+
+    public function load_html_head_code() {
+        $frame_url = Config::get('application.deploy_env')."/widget/js_output?widgetId=\"+widgetId+\""; 
+        $widget_id = "'".$this->widget_id."'";
+        return trim('
+                <!--Stick this plugin in the HEAD portion of your web page-->
+                <script type="text/javascript">
+                    //SERVER GENERATED
+                    //TODO: think about encrypting widgetId get parameter
+                    var widgetId = {'.$widget_id.'};
+                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                    document.write(unescape("%3Cscript src=\'" + host + "\' type=\'text/javascript\'%3E%3C/script%3E"));
+                </script>
+        ');
     }
 
     private function _load_object_code() {      

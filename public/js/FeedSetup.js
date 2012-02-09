@@ -66,12 +66,13 @@ jQuery(function($) {
                         , dataType: 'json'
                         , success: function(data) {
                               s36Lightbox(data.width, data.height, data.html_view);
+                              //fuuuuuuck clean this up!!
+                              $("#code-generate-view").val(data.html_head_code);
+                              $("#widget-generate-view").val(data.html_widget_js_code);
                           } 
                     });
 
                     console.log(responseText.widget.widgetkey);
-                    $("#code-generate-view").val("[code]");
-                    $("#widget-generate-view").val("[code]");
                     new Status().notify("Success!", 1000);
                 }   
             }

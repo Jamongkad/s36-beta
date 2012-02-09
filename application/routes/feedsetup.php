@@ -176,6 +176,8 @@ return array(
 
          echo json_encode(Array(
              'html_view' => $iframe
+           , 'html_head_code' =>i $wl->load_html_head_code() 
+           , 'html_widget_js_code' => '[code]'
            , 'width' => $wl->widget_obj->width
            , 'height' => $wl->widget_obj->height
          ));
