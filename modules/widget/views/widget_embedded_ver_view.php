@@ -189,7 +189,7 @@
 <style type="text/css">
 	#box{
 		margin:0 auto;
-		margin-top:100px;
+		/*margin-top:100px;*/
 		width:250px;
 		height:500px;
 		-webkit-border-radius:5px;
