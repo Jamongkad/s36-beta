@@ -183,7 +183,7 @@
                 <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
                 <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
                 -->
-                <a href="javascript:;" class="button-gray" hrefaction="<?=URL::to('/feedsetup/generate_code')?>" id="preview-widget">Preview Widget</a>
+                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
                 <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
             </div>    
             <div class="block noborder" style="height:660px;"></div>

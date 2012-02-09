@@ -271,6 +271,18 @@ jQuery(function($) {
                         $.scrollTo('#code-generate-view', 800);     
                     }  
                     $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+
+                    var widget_key = $("input[name=widgetkey]").val();
+                    var action = $(this).attr('hrefaction') + "/" + widget_key;
+                    $.ajax({
+                        url: action
+                        , type: "GET"
+                        , dataType: 'json'
+                        , success: function(data) {
+                              s36Lightbox(data.width, data.height, data.html_view);
+                          } 
+                    });
+
                     console.log(responseText.widget.widgetkey);
                     new Status().notify("Success!", 1000);
                 }   
