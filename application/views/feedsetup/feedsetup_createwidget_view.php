@@ -2,6 +2,7 @@
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('widgetkey', false)?>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
@@ -17,7 +18,6 @@
             <h2><span>Step 2 :</span> Choose your website you want to apply your Widget to</h2>
             <div style="padding:10px">
                 <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-                    <option value="">--</option>
                     <?foreach($site as $sites):?>
                         <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                     <?endforeach?>
@@ -160,7 +160,7 @@
 
             <div id="widget-preview">
                 <div class="widget-block">
-                    <h2>HTML Code</h2>
+                    <h2>HTML(head) Code </h2>
                     <div class="html-code">
                         <textarea id="code-generate-view" spellcheck="false"></textarea>
                     </div>
@@ -181,9 +181,10 @@
                 </div>
                 <!--
                 <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
-
                 <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
                 -->
+                <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
+                <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
             </div>    
             <div class="block noborder" style="height:660px;"></div>
         </div> 

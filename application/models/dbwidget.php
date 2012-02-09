@@ -22,6 +22,9 @@ class DBWidget extends S36DataObject {
         $last_insert_id = $this->dbh->lastInsertId();
         return $last_insert_id;
         */
+        $last_insert_id = $this->dbh->lastInsertId();
+        $obj = $this->fetch_widget_by_id($last_insert_id); 
+        return Array('status' => 'save', 'widget' => $obj);
     }
 
     public function update_widget_by_id($widget_key, $widget_obj) {
@@ -39,6 +42,7 @@ class DBWidget extends S36DataObject {
 
     public function fetch_widget_by_id($widget_key) {     
         $query = DB::Table('WidgetStore')
+                     ->where('companyId', '=', $this->company_id)
                      ->where('widgetKey', '=', $widget_key)
                      ->or_where('widgetStoreId', '=', $widget_key)
                      ->first();

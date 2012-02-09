@@ -2,6 +2,7 @@ jQuery(function($) {
     
     $("#preview-widget").bind("click", function(e) {
         var me = this;
+        /*
         var embed_choices, iframe_code;
         var padding = 10;
         var embed_width  = $('input[name="embed_width"]').val() > 0 ? parseInt($('input[name="embed_width"]').val(), 10) + padding : 750;
@@ -22,8 +23,9 @@ jQuery(function($) {
               s36Lightbox(embed_width, embed_height, msg); 
           }
         });
-     
-        
+        */ 
+        s36Lightbox(400, 400, "mathew");
+        e.preventDefault();
     });
     
     $("#horizontal_embed, #vertical_embed").bind('click', function() {
@@ -43,7 +45,8 @@ jQuery(function($) {
         }
 
     });
-
+    
+    /*
     $("#generate-feedback-btn").bind("click", function(e) {
         var me = this;
         var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
@@ -98,7 +101,7 @@ jQuery(function($) {
         e.preventDefault();
 
     });
-
+    */
     //helper functions
     function embed_choice_check(embed_type) {
 
@@ -227,7 +230,7 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $('#create-widget').bind("submit", function(e) {
+    $("#create-widget").on("submit", function(e) {
         $(this).ajaxSubmit({
             dataType: 'json'
           , beforeSubmit: function(formData, jqForm, options) {
@@ -281,16 +284,19 @@ jQuery(function($) {
                     if($('#code-generate-view').length > 0) {
                         $.scrollTo('#code-generate-view', 800);     
                     }  
-
-                    $(".create-widget-button").attr("disabled", true).css({ 'opacity' : '0.5' });
-
+                    $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+                    console.log(responseText.widget.widgetkey);
                     new Status().notify("Success!", 1000);
                 }   
             }
         }); 
+        e.preventDefault(); 
+    });
+
+    $("#edit-widget-btn").on("click", function(e) {   
+        $.scrollTo('.widget-options:first-child', 800);
         e.preventDefault();
-    })
-   
+    });
 
     var overview = $("#overview-target");
 

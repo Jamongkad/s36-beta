@@ -26,6 +26,97 @@ return array(
         ));
     },
 
+    'GET /widget/widget_loader/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
+
+        $dbu = new DBUser;
+        $user_obj = new StdClass;
+        $user_obj->username = $username;
+        $user_obj->company_id = $company_id;
+        $user_result = $dbu->pull_user($user_obj);
+
+        if($user_result) { 
+
+            $wl = new WidgetLoader($widget_id); 
+            $widget_data = $wl->render();
+
+            return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
+                'result' => $widget_data->widget_data, 'row_count' => $widget_data->total_rows
+            ));
+
+        } else {
+            throw new Exception("Invalid Widget paramaters!");
+        }
+
+    },
+
+    'GET /widget/js_output' => function() { 
+        $widget_id = Input::get('widgetId');
+        $wl = new WidgetLoader($widget_id); 
+        return View::make('widget::widget_js_output', $wl->deploy_client_code());
+    },
+
+    'GET /widget/form/crop' => function() { 
+        $img_upload = (object)Input::get();
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->crop($img_upload);     
+    },
+
+    'POST /widget/form/upload' => function() { 
+        $profile_img = new Widget\ProfileImage();
+        $profile_img->upload();
+    },
+
+    'GET /widget/profile' => function() {
+        $tests = (object)Input::get();
+        $profile_img = new Widget\ProfileImage($tests);
+        Helpers::show_data($profile_img);    
+    },
+    
+    //TODO: These functions are deprecated...RELEASE THEM!!!
+    'GET /widget/modal' => function() {
+        $feedback = new DBFeedback;
+        $company_id = null;
+        $site_id = null;
+        $is_published = 0;
+        $is_featured = 0;
+        $limit = 10;
+        $offset = 0;
+        
+        if(Input::get('companyId')) $company_id = (int)Input::get('companyId'); 
+
+        if(Input::get('siteId')) $site_id = (int)Input::get('siteId');
+
+        if(Input::get('offset')) $offset = (int)Input::get('offset');
+        
+        if(Input::get('limit')) $limit = (int)Input::get('limit');   
+        
+        if(Input::get('is_published')) $is_published = (int)Input::get('is_published');   
+        
+        if(Input::get('is_featured')) $is_featured = (int)Input::get('is_featured');   
+       
+        $params = Array(
+            'company_id'   => $company_id
+          , 'site_id'      => $site_id
+          , 'is_published' => $is_published
+          , 'is_featured'  => $is_featured
+          , 'limit'        => $limit
+          , 'offset'       => $offset
+        );
+        
+        $data = $feedback->pull_feedback_by_company($params);
+
+        $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('modalCSS'));
+
+        return View::make('widget::widget_modal_view', array( 
+            'feedback'      => $data
+          , 'themeCSS'      => trim($themeCSS->modalcss)
+          , 'units'		    => Input::get('units') ? Input::get('units') : 3 
+          , 'transition'    => Input::get('transition') ? Input::get('transition') : 'scrollVert'
+          , 'speed'         => Input::get('speed') ? Input::get('speed') : 500
+          , 'timeout'       => Input::get('timeout') ? Input::get('timeout') : 5000
+        ));
+    },
+
     'GET /widget/embedded' => function() {
         //TODO: Consider using EffectId and fetch from DB for easier integration
         $company_id = null;
@@ -71,96 +162,6 @@ return array(
           , 'type'       => Input::get('type') ? Input::get('type') : 'horizontal'
         ));
     },
-
-    'GET /widget/widget_loader/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
-
-        $dbu = new DBUser;
-        $user_obj = new StdClass;
-        $user_obj->username = $username;
-        $user_obj->company_id = $company_id;
-        $user_result = $dbu->pull_user($user_obj);
-
-        if($user_result) { 
-
-            $wl = new WidgetLoader($widget_id); 
-            $widget_data = $wl->render();
-
-            return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
-                'result' => $widget_data->widget_data, 'row_count' => $widget_data->total_rows
-            ));
-
-        } else {
-            throw new Exception("Invalid Widget paramaters!");
-        }
-
-    },
-
-    'GET /widget/js_output' => function() { 
-        $widget_id = Input::get('widgetId');
-        $wl = new WidgetLoader($widget_id); 
-        return View::make('widget::widget_js_output', $wl->deploy_client_code());
-    },
-
-    'GET /widget/modal' => function() {
-        $feedback = new DBFeedback;
-        $company_id = null;
-        $site_id = null;
-        $is_published = 0;
-        $is_featured = 0;
-        $limit = 10;
-        $offset = 0;
-        
-        if(Input::get('companyId')) $company_id = (int)Input::get('companyId'); 
-
-        if(Input::get('siteId')) $site_id = (int)Input::get('siteId');
-
-        if(Input::get('offset')) $offset = (int)Input::get('offset');
-        
-        if(Input::get('limit')) $limit = (int)Input::get('limit');   
-        
-        if(Input::get('is_published')) $is_published = (int)Input::get('is_published');   
-        
-        if(Input::get('is_featured')) $is_featured = (int)Input::get('is_featured');   
-       
-        $params = Array(
-            'company_id'   => $company_id
-          , 'site_id'      => $site_id
-          , 'is_published' => $is_published
-          , 'is_featured'  => $is_featured
-          , 'limit'        => $limit
-          , 'offset'       => $offset
-        );
-        
-        $data = $feedback->pull_feedback_by_company($params);
-
-        $themeCSS = DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('modalCSS'));
-
-        return View::make('widget::widget_modal_view', array( 
-            'feedback'      => $data
-          , 'themeCSS'      => trim($themeCSS->modalcss)
-          , 'units'		    => Input::get('units') ? Input::get('units') : 3 
-          , 'transition'    => Input::get('transition') ? Input::get('transition') : 'scrollVert'
-          , 'speed'         => Input::get('speed') ? Input::get('speed') : 500
-          , 'timeout'       => Input::get('timeout') ? Input::get('timeout') : 5000
-        ));
-    },
-
-    'GET /widget/form/crop' => function() { 
-        $img_upload = (object)Input::get();
-        $profile_img = new Widget\ProfileImage();
-        $profile_img->crop($img_upload);     
-    },
-
-    'POST /widget/form/upload' => function() { 
-        $profile_img = new Widget\ProfileImage();
-        $profile_img->upload();
-    },
-
-    'GET /widget/profile' => function() {
-        $tests = (object)Input::get();
-        $profile_img = new Widget\ProfileImage($tests);
-        Helpers::show_data($profile_img);    
-    }
 );
 
 function getRightClass($units){

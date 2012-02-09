@@ -1,7 +1,4 @@
-<?php
-   header("Content-type: application/x-javascript; charset=UTF-8");
-   //header("Content-type: text/javascript; charset=UTF-8");
-?>
+<?php header("Content-type: application/x-javascript; charset=UTF-8"); ?>
 
 function WidgetLoader(opts) {
     this.company_id = opts.companyId;
@@ -18,8 +15,4 @@ WidgetLoader.prototype.generateFrameMarkup = function() {
 
 WidgetLoader.prototype.display = function() { 
     document.write(this.generateFrameMarkup());
-}
-
-WidgetLoader.prototype.test = function() {
-    
 }

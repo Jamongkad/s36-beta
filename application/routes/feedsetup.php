@@ -105,56 +105,12 @@ return array(
           , 'company_id'      => S36Auth::user()->companyid
         ));
     }),
-
-    'POST /feedsetup/render_display_info' => function() use ($feedback) {
-        $site_id = Input::get('site_id');
-        $feed_options = $feedback->display_embedded_feedback_options($site_id);
-        return View::Make('inbox/ajax_views/ajax_display_info_view', Array( 
-            'feed_options' => $feed_options
-        ));
-    },
-
-    'GET /feedsetup/mywidgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
-        $company_id = S36Auth::user()->companyid;
-        $user_theme = new DBUserTheme;
-        $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
-         
-        $links = Array(
-            'none' => '-'
-          , 'inbox' => 'Inbox'
-          , 'publish' => 'Publish'
-          , 'feature' => 'Feature'
-          , 'delete' => 'Delete'
-         );
-
-        return View::of_layout()->partial('contents', 'inbox/mywidgets_view', Array('links' => $links, 'fetched_themes' => $fetched_themes));
-    }),
-
-    'GET /feedsetup/stream' => Array('name' => 'stream', 'before' => 's36_auth', 'do' => function() {   
-        return View::of_layout()->partial('contents', 'inbox/stream_index_view');
-    }),
-
-    'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
-        $company_id = S36Auth::user()->companyid;
-        $user_theme = new DBUserTheme; 
-        $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
-
-        $wg = new WidgetGenerator($fetched_theme);
-
-        $wigi_data = Array(
-                'init_code' => $wg->generate_init_code() 
-            , 'widget_code' => $wg->generate_widget_code()
-        );
-
-        return View::make('inbox/ajax_views/ajax_getcode_view', Array('fetched_theme' => $wigi_data));
-    },
-
+     
     'POST /feedsetup/save_widget' => function() {
         $data = Input::get();
 
         $rules = Array(
             'theme_name' => 'required'
-          , 'site_id' => 'required'
           , 'embed_type' => 'required'
           , 'perms' => 'required'
         );
@@ -162,11 +118,13 @@ return array(
         $validator = Validator::make($data, $rules);
 
         if(!$validator->valid()) {
+
             $json_data = Array(
                 'data' => $data
               , 'errors' => $validator->errors
             );
             echo json_encode($json_data);
+
         } else { 
 
             $dbw = new DBWidget;
@@ -175,9 +133,20 @@ return array(
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
             $data['perms'] = $perms;
             $data['widget_type'] = 'display';
-            $data['site_nm'] = $site->domain;
-           
-            $dbw->save_widget( (object)$data );         
+            $data['site_nm'] = $site->domain; 
+
+            $data_object = (object)$data;
+            //Helpers::show_data($data);
+            if(!$widgetkey = $data['widgetkey']) {
+                //save widget
+                $save_result = $dbw->save_widget( $data_object );         
+                echo json_encode($save_result);
+            } else {
+                //update widget     
+                $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
+                echo json_encode( Array('status' => 'update', 'widget' => $data_object ) ); 
+            }
+
         }       
     },
 
@@ -192,6 +161,7 @@ return array(
     },
 
     'GET /feedsetup/generate_code' => function() {
+         /*
          $widget_creation_params = new StdClass;
          $widget_creation_params->site_id    = Input::get('siteId');
          $widget_creation_params->company_id = Input::get('companyId');
@@ -216,8 +186,11 @@ return array(
                  'iframe_code' => $wg->generate_iframe_code()
              ));
          }
+         */
     },
-
+    
+    //TODO: Kill these functions...
+    //deprecated...
     'POST /feedsetup/toggle_feedback_display' => function() use ($feedback) {
         $state = 0;
         if(Input::get('check_val') == 'true') {
@@ -226,10 +199,12 @@ return array(
         $feedback->_toggle_feedbackblock(Input::get('column_name'), Input::get('feedblock_id'), $state);
     },
 
+    //deprecated...
     'POST /feedsetup/delete_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) {
         DB::table('UserThemes', 'master')->where('userThemeId', '=', $user_theme_id)->delete();
     },
 
+    //deprecated...
     'GET /feedsetup/edit_code/([0-9]+)/(\w+)' => function($user_theme_id, $widget_type) { 
         $company_id = S36Auth::user()->companyid;
         $user_theme = new DBUserTheme; 
@@ -259,11 +234,59 @@ return array(
         echo json_encode($view_data);
     }, 
 
+    //deprecated...
     'POST /feedsetup/edit_code' => function() { 
         $user_theme = new DBUserTheme;
         $d = $user_theme->update_theme(Input::get());
         Helpers::show_data($d);
     }, 
+
+    //deprecated...
+    'POST /feedsetup/render_display_info' => function() use ($feedback) {
+        $site_id = Input::get('site_id');
+        $feed_options = $feedback->display_embedded_feedback_options($site_id);
+        return View::Make('inbox/ajax_views/ajax_display_info_view', Array( 
+            'feed_options' => $feed_options
+        ));
+    },
+
+    //deprecated...
+    'GET /feedsetup/mywidgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {  
+        $company_id = S36Auth::user()->companyid;
+        $user_theme = new DBUserTheme;
+        $fetched_themes = $user_theme->fetch_themes_by_company_id($company_id);
+         
+        $links = Array(
+            'none' => '-'
+          , 'inbox' => 'Inbox'
+          , 'publish' => 'Publish'
+          , 'feature' => 'Feature'
+          , 'delete' => 'Delete'
+         );
+
+        return View::of_layout()->partial('contents', 'inbox/mywidgets_view', Array('links' => $links, 'fetched_themes' => $fetched_themes));
+    }),
+
+    //deprecated...
+    'GET /feedsetup/stream' => Array('name' => 'stream', 'before' => 's36_auth', 'do' => function() {   
+        return View::of_layout()->partial('contents', 'inbox/stream_index_view');
+    }),
+
+    //deprecated...
+    'GET /feedsetup/get_code/(:num)' => function($user_theme_id) {
+        $company_id = S36Auth::user()->companyid;
+        $user_theme = new DBUserTheme; 
+        $fetched_theme = $user_theme->fetch_theme_by_id($user_theme_id, $company_id);
+
+        $wg = new WidgetGenerator($fetched_theme);
+
+        $wigi_data = Array(
+                'init_code' => $wg->generate_init_code() 
+            , 'widget_code' => $wg->generate_widget_code()
+        );
+
+        return View::make('inbox/ajax_views/ajax_getcode_view', Array('fetched_theme' => $wigi_data));
+    },
 
 );
 

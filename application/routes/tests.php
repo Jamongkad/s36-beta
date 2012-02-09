@@ -217,6 +217,6 @@ return array(
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new WidgetLoader($widget_id); 
-        Helpers::show_data($wl->execute());
+        Helpers::show_data($wl);
     }
 );

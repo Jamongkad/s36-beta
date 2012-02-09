@@ -11,7 +11,8 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
 
-        <?=HTML::script('js/jquery-1.7.1.min.js')?>
+        <?//=HTML::script('js/jquery-1.7.1.min.js')?>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
 
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--

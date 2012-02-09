@@ -79,6 +79,7 @@
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('widgetkey', false)?>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
