@@ -7,7 +7,7 @@ class WidgetLoader {
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
 
-    public function render() {
+    public function render($type="view") {
 
         $obj = $this->_load_object_code();
 
@@ -58,36 +58,19 @@ class WidgetLoader {
            $rows->rules = (object)$feed_rules;
            $fixed_data[] = $rows;
         }
-
-        return View::of_widget_layout()->partial('contents', $widget_view, Array(
-            'result' => $fixed_data, 'row_count' => $data->total_rows
-        ))->get();
-    }
-
-    public function deploy_client_code() {
-
-        $obj = $this->_load_object_code();
-
-        if ($obj->embed_type == 'embedded') {  
-            if($obj->embed_block_type == 'embed_block_x') {
-                $widget_ht = 300;
-            }
-
-            if($obj->embed_block_type == 'embed_block_y') { 
-                $widget_ht = 700; 
-            }     
-        } 
-
-        if ($obj->embed_type == 'modal') {
-            $widget_ht = 500;
+        
+        if ($type == "view") { 
+            return View::of_widget_layout()->partial('contents', $widget_view, Array(
+                'result' => $fixed_data, 'row_count' => $data->total_rows
+            ))->get();
         }
-        
-        $data = Array(
-            'deploy_url' => Config::get('application.deploy_env')
-          , 'widget_height' => $widget_ht
-        );
-        
-        return $data;
+
+        if ($type == "data") {
+            $obj = new StdClass;     
+            $obj->row_count = $data->total_rows;
+            $obj->widget_data = $fixed_data;
+            return $obj;
+        }
     }
 
     private function _load_object_code() {      

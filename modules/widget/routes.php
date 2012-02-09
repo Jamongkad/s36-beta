@@ -28,13 +28,19 @@ return array(
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
         $wl = new WidgetLoader($widget_key);  
-        return $wl->render();
+        return $wl->render("view");
     },
 
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
         $wl = new WidgetLoader($widget_id); 
-        return View::make('widget::widget_js_output', $wl->deploy_client_code());
+
+        $data = Array(
+            'deploy_url' => Config::get('application.deploy_env')
+          , 'width' => $wl->widget_obj->width
+          , 'height' => $wl->widget_obj->height
+        );
+        return View::make('widget::widget_js_output', $data);
     },
 
     'GET /widget/form/crop' => function() { 
