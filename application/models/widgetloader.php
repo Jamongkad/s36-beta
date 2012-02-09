@@ -82,9 +82,9 @@ class WidgetLoader {
                 <script type="text/javascript">
                     //SERVER GENERATED
                     //TODO: think about encrypting widgetId get parameter
-                    var widgetId = {'.$widget_id.'};
+                    var widgetId = '.$widget_id.';
                     var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-                    document.write(unescape("%3Cscript src=\'" + host + "\' type=\'text/javascript\'%3E%3C/script%3E"));
+                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
                 </script>
         ');
     }
