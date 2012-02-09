@@ -194,8 +194,7 @@
 		height:500px;
 		-webkit-border-radius:5px;
 		-moz-border-radius:5px;
-		border-radius:5px;
-		border:1px dashed #DDD;
+		border-radius:5px;	
 	}
 	.boxPad{
 		padding:20px;

@@ -1,30 +1,22 @@
 jQuery(function($) {
     
-    $("#preview-widget").bind("click", function(e) {
-        var me = this;
-        /*
-        var embed_choices, iframe_code;
-        var padding = 10;
-        var embed_width  = $('input[name="embed_width"]').val() > 0 ? parseInt($('input[name="embed_width"]').val(), 10) + padding : 750;
-        var embed_height = $('input[name="embed_height"]').val() > 0 ? parseInt($('input[name="embed_height"]').val(), 10) + padding : 440;
-        var site_id      = $('input[name="site_id"]').val() > 0 ? $('input[name="site_id"]').val() : $('select[name="site_id"]').val();
-        var embed_type = $("input:radio[name='embed_type']:checked").val();
-        var company_id = $("input[name='company_id']").val();
-        var theme_id = $("input:radio[name='theme_id']:checked").val();
-        var embed_choices;
-
-        embed_choices = embed_choice_check(embed_type);
-
+    $("#preview-widget").on("click", function(e) { 
+        var username = $("input[name=username]").val();
+        var company_id = $("input[name=company_id]").val();
+        var widget_key = $("input[name=widgetkey]").val();
+        var widget_type = $("input[name=widgettype]").val();
+        var action = $(this).attr('hrefaction') + "/" + widget_key + "/" + username + "/" + company_id;
         $.ajax({
-            url: $(me).attr('hrefaction')
-          , data: "siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
-          , dataType: 'html'
-          , success : function(msg) {
-              s36Lightbox(embed_width, embed_height, msg); 
-          }
+            url: action
+            , type: "GET"
+            , dataType: 'json'
+            , success: function(msg) {
+                  //760x300 hor
+                  //250x500 ver 
+                  //760x500 modal
+                  //s36Lightbox(760, 300, msg);
+              } 
         });
-        */ 
-        s36Lightbox(400, 400, "mathew");
         e.preventDefault();
     });
     

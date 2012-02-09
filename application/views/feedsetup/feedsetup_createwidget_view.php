@@ -3,6 +3,7 @@
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('widgetkey', false)?>
+<?=Form::hidden('username', $username)?>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
@@ -183,7 +184,7 @@
                 <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
                 <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
                 -->
-                <a href="javascript:;" class="button-gray" id="preview-widget">Preview Widget</a>
+                <a href="javascript:;" class="button-gray" hrefaction="<?=URL::to('/widget/widget_loader')?>" id="preview-widget">Preview Widget</a>
                 <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
             </div>    
             <div class="block noborder" style="height:660px;"></div>

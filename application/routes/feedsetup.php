@@ -96,6 +96,7 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid
+          , 'username'        => S36Auth::user()->username
         )); 
     }),
 

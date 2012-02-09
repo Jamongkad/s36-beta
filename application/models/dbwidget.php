@@ -30,13 +30,14 @@ class DBWidget extends S36DataObject {
     public function update_widget_by_id($widget_key, $widget_obj) {
         $widget_obj_string = base64_encode(serialize($widget_obj));
         $sql = "UPDATE WidgetStore
-                    SET widgetObjString = :widget_string  
+                    SET widgetObjString = :widget_string, siteId = :site_id
                 WHERE 1=1
                     AND widgetKey = :widget_key";
         
         $sth = $this->dbh->prepare($sql);  
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
+        $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_STR);
         $sth->execute();
     }
 

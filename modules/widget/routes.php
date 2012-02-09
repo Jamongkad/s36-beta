@@ -26,27 +26,9 @@ return array(
         ));
     },
 
-    'GET /widget/widget_loader/(:any)/(:any)/(:num)' => function($widget_id, $username, $company_id) {
-
-        $dbu = new DBUser;
-        $user_obj = new StdClass;
-        $user_obj->username = $username;
-        $user_obj->company_id = $company_id;
-        $user_result = $dbu->pull_user($user_obj);
-
-        if($user_result) { 
-
-            $wl = new WidgetLoader($widget_id); 
-            $widget_data = $wl->render();
-
-            return View::of_widget_layout()->partial('contents', $widget_data->widget_view, Array(
-                'result' => $widget_data->widget_data, 'row_count' => $widget_data->total_rows
-            ));
-
-        } else {
-            throw new Exception("Invalid Widget paramaters!");
-        }
-
+    'GET /widget/widget_loader/(:any)' => function($widget_id) {
+        $wl = new WidgetLoader($widget_id); 
+        return $wl->render();
     },
 
     'GET /widget/js_output' => function() { 

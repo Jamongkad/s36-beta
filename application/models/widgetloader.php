@@ -59,13 +59,9 @@ class WidgetLoader {
            $fixed_data[] = $rows;
         }
 
-        $wd = new StdClass;         
-        $wd->widget_view = $widget_view;
-        $wd->widget_data = $fixed_data;
-        $wd->widget_obj  = $obj;
-        $wd->total_rows  = $data->total_rows;
-        $fixed_data = null;
-        return $wd;
+        return View::of_widget_layout()->partial('contents', $widget_view, Array(
+            'result' => $fixed_data, 'row_count' => $data->total_rows
+        ));
     }
 
     public function deploy_client_code() {

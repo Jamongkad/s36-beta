@@ -218,5 +218,19 @@ return array(
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new WidgetLoader($widget_id); 
         Helpers::show_data($wl);
+    },
+
+    'GET /tests/pull_feedback' => function() {
+        
+        $params = Array(
+            'company_id'   => 1 
+          , 'site_id'      => 1
+          , 'is_published' => 1
+          , 'is_featured'  => 1
+        );
+
+        $feedback = new DBFeedback;       
+        $data = $feedback->pull_feedback_by_company($params);
+        Helpers::show_data($data);
     }
 );
