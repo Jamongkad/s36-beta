@@ -1,93 +1,84 @@
 jQuery(function($) {
-    
-    $("#preview-widget").on("click", function(e) { 
-        var widget_key = $("input[name=widgetkey]").val();
-        var action = $(this).attr('hrefaction') + "/" + widget_key;
-        $.ajax({
-            url: action
-            , type: "GET"
-            , dataType: 'json'
-            , success: function(data) {
-                  s36Lightbox(data.width, data.height, data.html_view);
-              } 
-        });
-        e.preventDefault();
-    });
-    
-    $("#horizontal_embed, #vertical_embed").bind('click', function() {
-        var click_type = $(this).attr('id');
 
-        if(click_type == 'horizontal_embed') {
-            set_height_width(600, 300);
-        }
-
-        if(click_type == 'vertical_embed') {
-            set_height_width(250, 500);
-        }
-
-        function set_height_width(x, y) {
-            $('input[name="embed_width"]').val(x);
-            $('input[name="embed_height"]').val(y);  
-        }
-
-    });
-    
-    /*
-    $("#generate-feedback-btn").bind("click", function(e) {
-        var me = this;
-        var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
-        var company_id = $("input[name='company_id']").val();
-        var embed_type = $("input:radio[name='embed_type']:checked").val();
-        var theme_id = $("input:radio[name='theme_id']:checked").val();
-        var embed_choices;
-
-        embed_choices = embed_choice_check(embed_type);
-
-        $.ajax({
-            url: $(me).attr('hrefaction')
-          , data: "getJSON=1&siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
-          , dataType: 'json'
-          , success : function(msg) {
-              $("#code-generate-view").val(msg.init_code);             
-              $("#widget-generate-view").val(msg.widget_code);
-          }
-        });
-
-        e.preventDefault();
-    })
-
-    $('a.get-code').bind('click', function(e) {  
-        var url = $(this).attr('href');  
-        $.ajax({
-            url: url
-          , success : function(msg) {
-              s36Lightbox(500, 420, msg);
-          }
-        });
-        return e.preventDefault();  
-    });
-
-    $('input[type="button"].widget-edit, input[type="button"].widget-delete').bind('click', function(e) {
-        var hrefaction = $(this).attr('hrefaction');
-        var input_class = $(this).attr('class');
-        var input_parents = $(this).parents('tr');
-        var ajax_action;
-
-        if(input_class == 'widget-delete') {
-            if(confirm("Are you sure you want to delete this theme?")) {
-                input_parents.fadeOut(400);     
-                $.post(hrefaction, function(msg) { console.log(msg); });           
+    $("#create-widget").on("submit", function(e) {
+        $(this).ajaxSubmit({
+            dataType: 'json'
+          , beforeSubmit: function(formData, jqForm, options) {
+                new Status().notify("Processing...", 1000); 
             }
-        } 
+          , success: function(responseText, statusText, xhr, $form) {  
+                var error = isDefined(responseText, 'errors') ? responseText.errors : false;
+                var theme_name = $("div#theme_name");
+                var site_id    = $("div#site_id");
+                var embed_type = $("div#embed_type");
+                var widget_options = $("div#widget_options");                
 
-        if(input_class == 'widget-edit') {
-            $.getJSON(hrefaction, function(msg) { s36Lightbox(msg.width, msg.height, msg.view); });                
-        }
-         
-        e.preventDefault();
+                if(error) {
+                    if(error.messages.theme_name) {
+                        theme_name.html(error.messages.theme_name[0]);     
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        theme_name.html("");
+                    }
+                  
+                    if(error.messages.site_id) {
+                        site_id.html(error.messages.site_id[0]);                   
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        site_id.html("");
+                    }
 
+                    if(error.messages.embed_type) {
+                        embed_type.html(error.messages.embed_type[0]);     
+                        $.scrollTo('input[name="theme_name"]', 800);
+                    } else { 
+                        embed_type.html("");
+                    } 
+
+                    if(error.messages.perms) {
+                        widget_options.html(error.messages.perms[0]);     
+                        $.scrollTo('input[type="radio"][value="modal"]', 800);
+                    } else { 
+                        widget_options.html("");
+                    } 
+                } else { 
+                    theme_name.html("");
+                    site_id.html("");
+                    embed_type.html("");
+                    widget_options.html("");  
+
+                    $("#widget-preview").show();
+                    $("#widget-preview").siblings(".block").show();
+
+                    //if this bitch exists scroll down!! :)
+                    /*
+                    if($('#code-generate-view').length > 0) {
+                        $.scrollTo('#code-generate-view', 800);     
+                    }  
+                    */
+                    $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+
+                    var widget_key = $("input[name=widgetkey]").val();
+                    var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+                    $.ajax({
+                        url: action
+                        , type: "GET"
+                        , dataType: 'json'
+                        , success: function(data) {
+                              s36Lightbox(data.width, data.height, data.html_view);
+                          } 
+                    });
+
+                    console.log(responseText.widget.widgetkey);
+                    $("#code-generate-view").val("[code]");
+                    $("#widget-generate-view").val("[code]");
+                    new Status().notify("Success!", 1000);
+                }   
+            }
+        }); 
+        e.preventDefault(); 
     });
-    */
+      
     //helper functions
     function embed_choice_check(embed_type) {
 
@@ -216,83 +207,6 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $("#create-widget").on("submit", function(e) {
-        $(this).ajaxSubmit({
-            dataType: 'json'
-          , beforeSubmit: function(formData, jqForm, options) {
-                new Status().notify("Processing...", 1000); 
-            }
-          , success: function(responseText, statusText, xhr, $form) {  
-                var error = isDefined(responseText, 'errors') ? responseText.errors : false;
-                var theme_name = $("div#theme_name");
-                var site_id    = $("div#site_id");
-                var embed_type = $("div#embed_type");
-                var widget_options = $("div#widget_options");                
-
-                if(error) {
-                    if(error.messages.theme_name) {
-                        theme_name.html(error.messages.theme_name[0]);     
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        theme_name.html("");
-                    }
-                  
-                    if(error.messages.site_id) {
-                        site_id.html(error.messages.site_id[0]);                   
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        site_id.html("");
-                    }
-
-                    if(error.messages.embed_type) {
-                        embed_type.html(error.messages.embed_type[0]);     
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        embed_type.html("");
-                    } 
-
-                    if(error.messages.perms) {
-                        widget_options.html(error.messages.perms[0]);     
-                        $.scrollTo('input[type="radio"][value="modal"]', 800);
-                    } else { 
-                        widget_options.html("");
-                    } 
-                } else { 
-                    theme_name.html("");
-                    site_id.html("");
-                    embed_type.html("");
-                    widget_options.html("");  
-
-                    $("#widget-preview").show();
-                    $("#widget-preview").siblings(".block").show();
-
-                    //if this bitch exists scroll down!! :)
-                    /*
-                    if($('#code-generate-view').length > 0) {
-                        $.scrollTo('#code-generate-view', 800);     
-                    }  
-                    */
-                    $("input[name=widgetkey]").val(responseText.widget.widgetkey);
-
-                    var widget_key = $("input[name=widgetkey]").val();
-                    var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
-                    $.ajax({
-                        url: action
-                        , type: "GET"
-                        , dataType: 'json'
-                        , success: function(data) {
-                              s36Lightbox(data.width, data.height, data.html_view);
-                          } 
-                    });
-
-                    console.log(responseText.widget.widgetkey);
-                    new Status().notify("Success!", 1000);
-                }   
-            }
-        }); 
-        e.preventDefault(); 
-    });
-
     $("#edit-widget-btn").on("click", function(e) {   
         $.scrollTo('.widget-options:first-child', 800);
         e.preventDefault();
@@ -356,3 +270,78 @@ function isDefined(target, path) {
 
     return true;
 }
+
+    /*
+    $("#generate-feedback-btn").bind("click", function(e) {
+        var me = this;
+        var site_id = $("input[name='site_id']").val() ? $("input[name='site_id']").val() : $("select[name='site_id']").val();
+        var company_id = $("input[name='company_id']").val();
+        var embed_type = $("input:radio[name='embed_type']:checked").val();
+        var theme_id = $("input:radio[name='theme_id']:checked").val();
+        var embed_choices;
+
+        embed_choices = embed_choice_check(embed_type);
+
+        $.ajax({
+            url: $(me).attr('hrefaction')
+          , data: "getJSON=1&siteId=" + site_id + "&companyId=" + company_id + "&themeId=" + theme_id + "&embed_type=" + embed_type + embed_choices
+          , dataType: 'json'
+          , success : function(msg) {
+              $("#code-generate-view").val(msg.init_code);             
+              $("#widget-generate-view").val(msg.widget_code);
+          }
+        });
+
+        e.preventDefault();
+    })
+
+    $('a.get-code').bind('click', function(e) {  
+        var url = $(this).attr('href');  
+        $.ajax({
+            url: url
+          , success : function(msg) {
+              s36Lightbox(500, 420, msg);
+          }
+        });
+        return e.preventDefault();  
+    });
+
+    $('input[type="button"].widget-edit, input[type="button"].widget-delete').bind('click', function(e) {
+        var hrefaction = $(this).attr('hrefaction');
+        var input_class = $(this).attr('class');
+        var input_parents = $(this).parents('tr');
+        var ajax_action;
+
+        if(input_class == 'widget-delete') {
+            if(confirm("Are you sure you want to delete this theme?")) {
+                input_parents.fadeOut(400);     
+                $.post(hrefaction, function(msg) { console.log(msg); });           
+            }
+        } 
+
+        if(input_class == 'widget-edit') {
+            $.getJSON(hrefaction, function(msg) { s36Lightbox(msg.width, msg.height, msg.view); });                
+        }
+         
+        e.preventDefault();
+
+    });
+
+    $("#horizontal_embed, #vertical_embed").bind('click', function() {
+        var click_type = $(this).attr('id');
+
+        if(click_type == 'horizontal_embed') {
+            set_height_width(600, 300);
+        }
+
+        if(click_type == 'vertical_embed') {
+            set_height_width(250, 500);
+        }
+
+        function set_height_width(x, y) {
+            $('input[name="embed_width"]').val(x);
+            $('input[name="embed_height"]').val(y);  
+        }
+
+    });
+    */

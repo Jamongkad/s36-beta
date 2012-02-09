@@ -172,14 +172,13 @@
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
-
+                <!--
                 <div class="widget-block">
                     <h2>IFrame Widget Code</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
-                <!--
                 <a href="javascript:;" class="button-gray" id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Preview Widget</a>
                 <a href="#" class="button-gray" id="generate-feedback-btn" hrefaction="<?=URL::to('/feedsetup/generate_code')?>">Generate Code</a>
                 -->
