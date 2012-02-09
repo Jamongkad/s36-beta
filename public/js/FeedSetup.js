@@ -267,9 +267,11 @@ jQuery(function($) {
                     $("#widget-preview").siblings(".block").show();
 
                     //if this bitch exists scroll down!! :)
+                    /*
                     if($('#code-generate-view').length > 0) {
                         $.scrollTo('#code-generate-view', 800);     
                     }  
+                    */
                     $("input[name=widgetkey]").val(responseText.widget.widgetkey);
 
                     var widget_key = $("input[name=widgetkey]").val();
