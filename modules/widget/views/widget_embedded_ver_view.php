@@ -197,7 +197,7 @@
 		border-radius:5px;	
 	}
 	.boxPad{
-		padding:20px;
+		padding:15px;
 	}
 		.boxTitle{
 			font-size:13px;
