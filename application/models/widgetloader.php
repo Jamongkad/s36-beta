@@ -89,6 +89,18 @@ class WidgetLoader {
         ');
     }
 
+    public function load_widget_js_code() {
+        return trim(' 
+        <script type="text/javascript">
+            var widget = new WidgetLoader({
+                "widgetId": widgetId
+            });
+
+            widget.display();
+        </script>
+        ');
+    }
+
     private function _load_object_code() {      
         $obj = base64_decode($this->widget_obj->widgetobjstring);
         $obj = unserialize($obj); 
