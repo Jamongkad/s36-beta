@@ -174,7 +174,7 @@ return array(
                             width={$wl->widget_obj->width}
                             frameborder='0' 
                             scrolling='no' 
-                            style='border:none;overflow:visible;' src='$frame_url'>Insomnia wooohooooh</iframe>
+                            src='$frame_url'>Insomnia wooohooooh</iframe>
                     </span>";
 
          echo json_encode(Array(
