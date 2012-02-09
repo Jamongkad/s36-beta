@@ -26,8 +26,8 @@ return array(
         ));
     },
 
-    'GET /widget/widget_loader/(:any)' => function($widget_id) {
-        $wl = new WidgetLoader($widget_id); 
+    'GET /widget/widget_loader/(:any)' => function($widget_key) {
+        $wl = new WidgetLoader($widget_key); 
         return $wl->render();
     },
 
