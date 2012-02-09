@@ -87,7 +87,7 @@ return array(
         $data['perms'] = $perms;
         $data['widget_type'] = 'display';
         $data['site_nm'] = $site->domain;
-        $dbw->update_widget_by_id($data['widget_key'], (object)$data); 
+        $dbw->update_widget_by_id($data['widgetkey'], (object)$data); 
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
