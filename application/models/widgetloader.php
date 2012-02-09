@@ -75,7 +75,7 @@ class WidgetLoader {
     }
 
     public function load_html_head_code() {
-        $frame_url = Config::get('application.deploy_env')."/widget/js_output?widgetId=\"+widgetId+\""; 
+        $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
         $widget_id = "'".$this->widget_id."'";
         return trim('
                 <!--Stick this plugin in the HEAD portion of your web page-->
