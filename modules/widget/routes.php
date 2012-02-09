@@ -27,9 +27,8 @@ return array(
     },
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
-        $wl = new WidgetLoader($widget_key); 
-        Helpers::show_data($wl);
-        //return $wl->render();
+        $wl = new WidgetLoader($widget_key);  
+        return $wl->render();
     },
 
     'GET /widget/js_output' => function() { 
