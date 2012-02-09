@@ -95,8 +95,7 @@ return array(
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
-          , 'company_id'      => S36Auth::user()->companyid
-          , 'username'        => S36Auth::user()->username
+          , 'company_id'      => S36Auth::user()->companyid 
         )); 
     }),
 
@@ -161,33 +160,27 @@ return array(
         //$dbw->save_widget( (object)$data );          
     },
 
-    'GET /feedsetup/generate_code' => function() {
-         /*
-         $widget_creation_params = new StdClass;
-         $widget_creation_params->site_id    = Input::get('siteId');
-         $widget_creation_params->company_id = Input::get('companyId');
-         $widget_creation_params->embed_type = Input::get('embed_type');
-         $widget_creation_params->type       = Input::get('type');
-         $widget_creation_params->width      = Input::get('width');
-         $widget_creation_params->height     = Input::get('height');
-         $widget_creation_params->effect     = Input::get('effect');
-         $widget_creation_params->units      = Input::get('units');
-         $widget_creation_params->theme_id   = Input::get('themeId');
+    'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
 
-         $wg = new WidgetGenerator($widget_creation_params);
-         if(Input::get('getJSON') == 1) { 
-             //generate html code for site integration
-             echo json_encode(Array(
-                 'init_code'   => $wg->generate_init_code()
-               , 'widget_code' => $wg->generate_widget_code()
-             ));
-         } else {
-             //generate preview
-             echo View::make('widget::widget_view_index', Array(
-                 'iframe_code' => $wg->generate_iframe_code()
-             ));
-         }
-         */
+         $wl = new WidgetLoader($widget_key); 
+
+         $frame_data = $wl->deploy_client_code();
+         $frame_url = $frame_data['deploy_url'].'/widget/widget_loader/'.$widget_key; 
+
+         $iframe = "<span style='z-index:100001'>
+                    <iframe id='s36Widget' 
+                            allowTransparency='true' 
+                            height= {$frame_data['widget_height']}
+                            frameborder='0' 
+                            scrolling='no' 
+                            style='width:100%;border:none;overflow:visible;' src='$frame_url'>Insomnia wooohooooh</iframe>
+                    </span>";
+
+         echo json_encode(Array(
+             'html_view' => $iframe
+           , 'width' => $wl->widget_obj->width
+           , 'height' => $wl->widget_obj->height
+         ));
     },
     
     //TODO: Kill these functions...

@@ -61,7 +61,7 @@ class WidgetLoader {
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $fixed_data, 'row_count' => $data->total_rows
-        ));
+        ))->get();
     }
 
     public function deploy_client_code() {

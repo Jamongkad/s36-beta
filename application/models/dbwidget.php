@@ -51,6 +51,24 @@ class DBWidget extends S36DataObject {
         $obj = base64_decode($query->widgetobjstring);
         $obj = unserialize($obj); 
         $query->widgetobj = $obj; 
+
+        if($obj->embed_type == 'embedded') {
+            if($obj->embed_block_type == 'embed_block_x') {
+                $query->width = 760; 
+                $query->height = 300;
+            }
+
+            if($obj->embed_block_type == 'embed_block_y') {
+                $query->width = 250; 
+                $query->height = 500; 
+            }
+        }
+
+        if($obj->embed_type == 'modal') {
+            $query->width = 760; 
+            $query->height = 500;  
+        }
+
         return $query;
     }
 

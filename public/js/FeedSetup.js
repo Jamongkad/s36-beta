@@ -1,20 +1,14 @@
 jQuery(function($) {
     
     $("#preview-widget").on("click", function(e) { 
-        var username = $("input[name=username]").val();
-        var company_id = $("input[name=company_id]").val();
         var widget_key = $("input[name=widgetkey]").val();
-        var widget_type = $("input[name=widgettype]").val();
-        var action = $(this).attr('hrefaction') + "/" + widget_key + "/" + username + "/" + company_id;
+        var action = $(this).attr('hrefaction') + "/" + widget_key;
         $.ajax({
             url: action
             , type: "GET"
             , dataType: 'json'
-            , success: function(msg) {
-                  //760x300 hor
-                  //250x500 ver 
-                  //760x500 modal
-                  //s36Lightbox(760, 300, msg);
+            , success: function(data) {
+                  s36Lightbox(data.width, data.height, data.html_view);
               } 
         });
         e.preventDefault();
