@@ -170,7 +170,8 @@ return array(
          $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
                             allowTransparency='true' 
-                            height= {$frame_data['widget_height']}
+                            height={$wl->widget_obj->height}
+                            width={$wl->widget_obj->width}
                             frameborder='0' 
                             scrolling='no' 
                             style='width:100%;border:none;overflow:visible;' src='$frame_url'>Insomnia wooohooooh</iframe>
