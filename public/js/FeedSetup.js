@@ -273,7 +273,7 @@ jQuery(function($) {
                     $("input[name=widgetkey]").val(responseText.widget.widgetkey);
 
                     var widget_key = $("input[name=widgetkey]").val();
-                    var action = $(this).attr('hrefaction') + "/" + widget_key;
+                    var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     $.ajax({
                         url: action
                         , type: "GET"
