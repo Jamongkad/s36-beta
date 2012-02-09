@@ -49,7 +49,7 @@ class DBWidget extends S36DataObject {
                      ->first();
 
         print_r($this->company_id);
-        /*
+
         $obj = base64_decode($query->widgetobjstring);
         $obj = unserialize($obj); 
         $query->widgetobj = $obj; 
@@ -72,7 +72,6 @@ class DBWidget extends S36DataObject {
         }
 
         return $query;
-        */
     }
 
     public function fetch_widgets_by_company() {
