@@ -163,10 +163,7 @@ return array(
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
 
          $wl = new WidgetLoader($widget_key); 
-
-         $frame_data = $wl->deploy_client_code();
-         $frame_url = $frame_data['deploy_url'].'/widget/widget_loader/'.$widget_key; 
-
+         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widget_key; 
          $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
                             allowTransparency='true' 
