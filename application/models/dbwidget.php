@@ -53,8 +53,8 @@ class DBWidget extends S36DataObject {
 
         if($obj->embed_type == 'embedded') {
             if($obj->embed_block_type == 'embed_block_x') {
-                $query->width = 760; 
-                $query->height = 300;
+                $query->width = 780; 
+                $query->height = 320;
             }
 
             if($obj->embed_block_type == 'embed_block_y') {
