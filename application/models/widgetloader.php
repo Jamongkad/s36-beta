@@ -76,10 +76,10 @@ class WidgetLoader {
 
     public function load_widget_js_code() {
         $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
-        $widget_id = "'".$this->widget_id."'";
+        $widgetkey = "'".$this->widget_obj->widgetobj->widgetkey."'";
         return trim('
             <script type="text/javascript">
-                var widgetId = '.$widget_id.';
+                var widgetId = '.$widgetkey.';
                 var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
                 document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
                 var widget = new WidgetLoader({
@@ -91,8 +91,9 @@ class WidgetLoader {
     }
 
     public function load_iframe_code() {
-         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$this->widget_id; 
-         $iframe = "<span style='z-index:100001'>
+        $widgetkey = $this->widget_obj->widgetobj->widgetkey;
+        $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
+        $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
                             allowTransparency='true' 
                             height={$this->widget_obj->height}
