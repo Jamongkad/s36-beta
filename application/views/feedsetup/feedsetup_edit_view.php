@@ -4,7 +4,7 @@
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
-            <h2><span>Step 1 :</span> Your Widget name</h2>
+            <h2>Your Widget name</h2>
             <div style="padding:10px">
                 <input type="text" name="theme_name" value="<?=$widget->widgetobj->theme_name?>" style="font-size:25px; padding:5px; width:600px"/>
                 <div id="theme_name" class="error-msg"></div>
@@ -14,7 +14,7 @@
 
 
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Website applied to this Widget</h2>
+            <h2>Website applied to this Widget</h2>
             <div style="padding:10px">
                 <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
                     <?foreach($site as $sites):?>
@@ -30,7 +30,7 @@
 
 
         <div class="widget-options">
-            <h2><span>Step 3 :</span> Your chosen Widget type</h2>
+            <h2>Your chosen Widget type</h2>
             <div class="widget-types">
                 <h3>
                     <input type="radio" name="embed_type" id="embed_type" value="embedded" 
@@ -116,7 +116,7 @@
             <div id="embed_type" class="error-msg"></div>
         </div>
         <div class="widget-options">
-            <h2><span>Step 4 :</span> Widget Display Options</h2>
+            <h2>Widget Display Options</h2>
             <div class="widget-opts" id="display-info-target">
                 <table width="100%" cellpadding="4" class="display-info"> 
                     <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step 5 :</span>Theme</h2>
+            <h2>Theme</h2>
             <div class="widget-opts">
                 <div class="templates" id="template-slider">
                     <!--
