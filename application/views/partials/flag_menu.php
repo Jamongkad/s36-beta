@@ -59,12 +59,9 @@
                                  'feedsetup/all'  => 'WIDGET DASHBOARD'
                                , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
                                , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
-                               , 'feedsetup/mywidgets' => 'MY WIDGETS'
                             );
                         }
-
                     ?>
-
                     <?foreach($feedsetup_nav as $name => $value):?>
                         <li>
                             <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value

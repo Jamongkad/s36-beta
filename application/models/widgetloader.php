@@ -62,7 +62,7 @@ class WidgetLoader {
         
         if ($type == "view") { 
             return View::of_widget_layout()->partial('contents', $widget_view, Array(
-                'result' => $fixed_data, 'row_count' => $data->total_rows
+                'result' => $fixed_data, 'row_count' => $data->total_rows, 'flavor_text' => $obj->form_text
             ))->get();
         }
 
@@ -78,19 +78,15 @@ class WidgetLoader {
         $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
         $widget_id = "'".$this->widget_id."'";
         return trim('
-                <script type="text/javascript">
-                    //SERVER GENERATED
-                    //TODO: think about encrypting widgetId get parameter
-                    var widgetId = '.$widget_id.';
-                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
-
-                    var widget = new WidgetLoader({
-                        "widgetId": widgetId
-                    });
-
-                    widget.display();
-                </script>
+            <script type="text/javascript">
+                var widgetId = '.$widget_id.';
+                var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
+                var widget = new WidgetLoader({
+                    "widgetId": widgetId
+                });
+                widget.display();
+            </script>
         ');
     }
 

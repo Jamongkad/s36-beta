@@ -7,9 +7,23 @@
     <div id="widget-setup-block"> 
         <div class="widget-options">
             <h2><span>Step 1 :</span> Please choose a name for your Widget</h2>
-            <div style="padding:10px">
-                <input type="text" name="theme_name" value="" style="font-size:25px; padding:5px; width:600px"/>
-                <div id="theme_name" class="error-msg"></div>
+            <div class="widget-types">
+                    <table width="100%" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <td width="120">
+                                <strong style="font-size:14px;">Widget Name :</strong>
+                            </td>
+                            <td><input type="text" class="large-text" name="theme_name" value="" title="Name of your widget" />
+                                <div id="theme_name" class="error-msg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong style="font-size:14px;">Flavor Text :</strong>
+                            </td>
+                            <td><input type="text" class="large-text" name="form_text" value="" title="ex. What our customers have to say" /></td>
+                        </tr>
+                    </table>
             </div>
         </div>
 
@@ -157,9 +171,7 @@
         <div class="widget-setup-border"></div>
 
         <div class="widget-opts" style="text-align:center">
-
             <div id="widget-preview">
-
                 <div class="widget-block">
                     <h2>JS Widget Code</h2>
                     <div class="html-code">

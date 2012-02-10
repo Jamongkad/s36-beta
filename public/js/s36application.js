@@ -463,4 +463,17 @@ jQuery(function($) {
     });
 
     
+    $(".large-text").focus(function(i){          		 
+        if ($(this).val() == $(this)[0].title){
+            $(this).removeClass("reg-text-active");
+            $(this).val("");
+        }
+    });
+    $(".large-text").blur(function(){
+        if ($.trim($(this).val()) == ""){
+            $(this).addClass("reg-text-active");
+            $(this).val($(this)[0].title);
+        }
+    });
+    $(".large-text").blur();
 });

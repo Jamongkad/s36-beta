@@ -298,7 +298,7 @@
 <div id="box">
 	<div class="boxPad">
     	<div class="boxTitle">
-        	What some of our customers say
+        	<?=$flavor_text?>
         </div>
         <div class="boxBorder"></div>
 

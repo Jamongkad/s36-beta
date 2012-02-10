@@ -356,7 +356,7 @@
 	<div class="boxPad">
     	<div class="boxHeader">
           	 <div class="boxTitle">
-            	What some of our customers say
+            	<?=$flavor_text?>
              </div>
              <div class="boxOptions">
                 <div class="sendFeedback">

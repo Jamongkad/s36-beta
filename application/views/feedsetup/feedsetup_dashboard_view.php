@@ -52,7 +52,7 @@
         </div>
        <?else:?>
         <div class="woops">
-            <h2 class="woops-header">Create your feedback submission form</h2>
+            <h2 class="woops-header">Create your display widgets</h2>
             <p class="woops-content">
                 <?=HTML::link('feedsetup/display_widgets', 'Share your customer testimonials on your website', Array('class' => 'woops-a'))?> 
             </p>
