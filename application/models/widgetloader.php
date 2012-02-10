@@ -90,6 +90,20 @@ class WidgetLoader {
         ');
     }
 
+    public function load_iframe_code() {
+         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$this->widget_id; 
+         $iframe = "<span style='z-index:100001'>
+                    <iframe id='s36Widget' 
+                            allowTransparency='true' 
+                            height={$this->widget_obj->height}
+                            width={$this->widget_obj->width}
+                            frameborder='0' 
+                            scrolling='no' 
+                            src='$frame_url'>Your Widget</iframe>
+                    </span>";
+         return trim($iframe);
+    }
+
     private function _load_object_code() {      
         $obj = base64_decode($this->widget_obj->widgetobjstring);
         $obj = unserialize($obj); 

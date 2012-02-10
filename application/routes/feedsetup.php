@@ -162,16 +162,7 @@ return array(
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
 
          $wl = new WidgetLoader($widget_key); 
-         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widget_key; 
-         $iframe = "<span style='z-index:100001'>
-                    <iframe id='s36Widget' 
-                            allowTransparency='true' 
-                            height={$wl->widget_obj->height}
-                            width={$wl->widget_obj->width}
-                            frameborder='0' 
-                            scrolling='no' 
-                            src='$frame_url'>Your Widget</iframe>
-                    </span>";
+         $iframe = $wl->load_iframe_code();
 
          echo json_encode(Array(
              'html_view' => $iframe
