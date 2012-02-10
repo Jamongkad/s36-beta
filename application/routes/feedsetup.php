@@ -61,7 +61,9 @@ return array(
     'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) { 
         $dbw = new DBWidget;
         $widget = $dbw->fetch_widget_by_id($widget_id); 
-        //Helpers::show_data($widget->widgetobj);
+        $wl = new WidgetLoader($widget_key); 
+        Helpers::show_data($widget->widgetobj);
+        Helpers::show_data($wl);
         if($widget->widgetobj->widget_type == 'display') {
             $edit_view = 'feedsetup/feedsetup_edit_view';
         } else { 
@@ -171,7 +173,7 @@ return array(
                             width={$wl->widget_obj->width}
                             frameborder='0' 
                             scrolling='no' 
-                            src='$frame_url'>Insomnia wooohooooh</iframe>
+                            src='$frame_url'>Your Widget</iframe>
                     </span>";
 
          echo json_encode(Array(
