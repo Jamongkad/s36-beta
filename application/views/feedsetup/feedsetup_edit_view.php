@@ -183,7 +183,7 @@
             <h2>Code</h2>
             <br/>
             <div class="widget-opts">
-                <div id="widget-preview">
+                <div style="width: 360px;margin-left:auto;margin-right:auto">
                     <div class="widget-block">
                         <h2>JS Widget Code</h2>
                         <div class="html-code">
