@@ -179,6 +179,31 @@
                 <div class="c"></div>
             </div>
         </div>
+        <div class="widget-options">
+            <h2>Code</h2>
+            <br/>
+            <div class="widget-opts">
+                <div id="widget-preview">
+                    <div class="widget-block">
+                        <h2>JS Widget Code</h2>
+                        <div class="html-code">
+                            <textarea id="widget-generate-view" spellcheck="false"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="widget-block">
+                        <h2>IFrame Widget Code</h2>
+                        <div class="html-code">
+                            <textarea id="iframe-generate-view" spellcheck="false"></textarea>
+                        </div>
+                    </div>
+                </div>    
+                <!--
+                <div class="block noborder" style="height:490px;"></div>
+                -->
+                <div class="c"></div>
+            </div>
+        </div>
         <div class="widget-setup-border"></div>
         <div class="widget-opts">
             <br />
