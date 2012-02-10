@@ -64,8 +64,6 @@ class DBWidget extends S36DataObject {
             $query->height = 500;  
         }
 
-        print_r($query);
-
         return $query;
     }
 
