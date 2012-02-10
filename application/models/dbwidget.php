@@ -18,10 +18,6 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->execute();
 
-        /*
-        $last_insert_id = $this->dbh->lastInsertId();
-        return $last_insert_id;
-        */
         $last_insert_id = $this->dbh->lastInsertId();
         $obj = $this->fetch_widget_by_id($last_insert_id); 
         return Array('status' => 'save', 'widget' => $obj);
@@ -67,6 +63,8 @@ class DBWidget extends S36DataObject {
             $query->width = 760; 
             $query->height = 500;  
         }
+
+        print_r($query);
 
         return $query;
     }

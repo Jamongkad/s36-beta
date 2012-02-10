@@ -147,7 +147,6 @@ return array(
                 $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
                 echo json_encode( Array('status' => 'update', 'widget' => $data_object ) ); 
             }
-
         }       
     },
 
