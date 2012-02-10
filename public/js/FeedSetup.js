@@ -68,6 +68,7 @@ jQuery(function($) {
                               s36Lightbox(data.width, data.height, data.html_view);
                               //fuuuuuuck clean this up!! 
                               $("#widget-generate-view").val(data.html_widget_js_code);
+                              $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
                     });
 
