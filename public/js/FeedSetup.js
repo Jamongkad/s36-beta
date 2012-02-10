@@ -58,7 +58,7 @@ jQuery(function($) {
                     */
                     var widget_key = $("input[name=widgetkey]").val();
 
-                    if(!widget_key) {
+                    if(widget_key == '') {
                         $("input[name=widgetkey]").val(responseText.widget.widgetkey);    
                     }
              
