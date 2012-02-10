@@ -159,12 +159,6 @@
         <div class="widget-opts" style="text-align:center">
 
             <div id="widget-preview">
-                <div class="widget-block">
-                    <h2>HTML(head) Code </h2>
-                    <div class="html-code">
-                        <textarea id="code-generate-view" spellcheck="false"></textarea>
-                    </div>
-                </div>
 
                 <div class="widget-block">
                     <h2>JS Widget Code</h2>
@@ -172,7 +166,22 @@
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
                 </div>
+
+                <div class="widget-block">
+                    <h2>IFrame Widget Code</h2>
+                    <div class="html-code">
+                        <textarea id="iframe-generate-view" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
                 <!--
+                <div class="widget-block">
+                    <h2>HTML(head) Code </h2>
+                    <div class="html-code">
+                        <textarea id="code-generate-view" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
                 <div class="widget-block">
                     <h2>IFrame Widget Code</h2>
                     <div class="html-code">

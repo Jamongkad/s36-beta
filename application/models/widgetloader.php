@@ -74,30 +74,23 @@ class WidgetLoader {
         }
     }
 
-    public function load_html_head_code() {
+    public function load_widget_js_code() {
         $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
         $widget_id = "'".$this->widget_id."'";
         return trim('
-                <!--Stick this plugin in the HEAD portion of your web page-->
                 <script type="text/javascript">
                     //SERVER GENERATED
                     //TODO: think about encrypting widgetId get parameter
                     var widgetId = '.$widget_id.';
                     var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
                     document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
+
+                    var widget = new WidgetLoader({
+                        "widgetId": widgetId
+                    });
+
+                    widget.display();
                 </script>
-        ');
-    }
-
-    public function load_widget_js_code() {
-        return trim(' 
-        <script type="text/javascript">
-            var widget = new WidgetLoader({
-                "widgetId": widgetId
-            });
-
-            widget.display();
-        </script>
         ');
     }
 
