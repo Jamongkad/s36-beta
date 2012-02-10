@@ -56,12 +56,9 @@ jQuery(function($) {
                         $.scrollTo('#code-generate-view', 800);     
                     }  
                     */
-                    var widget_key = $("input[name=widgetkey]").val();
+                    $("input[name=widgetkey]").val(responseText.widget.widgetkey);
 
-                    if(widget_key == '') {
-                        $("input[name=widgetkey]").val(responseText.widget.widgetkey);    
-                    }
-             
+                    var widget_key = $("input[name=widgetkey]").val();
                     var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     $.ajax({
                         url: action
