@@ -87,7 +87,7 @@ class WidgetLoader {
                 });
                 widget.display();
             </script>
-        '
+        ';
         return trim($html);
     }
 
