@@ -77,7 +77,7 @@ class WidgetLoader {
     public function load_widget_js_code() {
         $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
         $widgetkey = "'".$this->widget_obj->widgetkey."'";
-        return trim('
+        $html = '
             <script type="text/javascript">
                 var widgetId = '.$widgetkey.';
                 var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
@@ -87,7 +87,8 @@ class WidgetLoader {
                 });
                 widget.display();
             </script>
-        ');
+        '
+        return trim($html);
     }
 
     public function load_iframe_code() {
