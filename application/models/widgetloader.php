@@ -76,7 +76,7 @@ class WidgetLoader {
 
     public function load_widget_js_code() {
         $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
-        $widgetkey = "'".$this->widget_obj->widgetobj->widgetkey."'";
+        $widgetkey = "'".$this->widget_obj->widgetkey."'";
         return trim('
             <script type="text/javascript">
                 var widgetId = '.$widgetkey.';
@@ -91,7 +91,7 @@ class WidgetLoader {
     }
 
     public function load_iframe_code() {
-        $widgetkey = $this->widget_obj->widgetobj->widgetkey;
+        $widgetkey = $this->widget_obj->widgetkey;
         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
         $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
