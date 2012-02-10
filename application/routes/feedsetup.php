@@ -73,6 +73,8 @@ return array(
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
+          , 'iframe_code'     => $wl->load_iframe_code()
+          , 'js_code'         => $wl->load_widget_js_code()
         ));
 
     }),

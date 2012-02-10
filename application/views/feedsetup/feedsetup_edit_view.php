@@ -187,14 +187,18 @@
                     <div class="widget-block">
                         <h2>JS Widget Code</h2>
                         <div class="html-code">
-                            <textarea id="widget-generate-view" spellcheck="false"></textarea>
+                            <textarea id="widget-generate-view" spellcheck="false">
+                                <?=$js_code?> 
+                            </textarea>
                         </div>
                     </div>
 
                     <div class="widget-block">
                         <h2>IFrame Widget Code</h2>
                         <div class="html-code">
-                            <textarea id="iframe-generate-view" spellcheck="false"></textarea>
+                            <textarea id="iframe-generate-view" spellcheck="false">
+                                <?=$iframe_code?> 
+                            </textarea>
                         </div>
                     </div>
                 </div>    
