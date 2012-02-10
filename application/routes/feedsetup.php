@@ -61,7 +61,7 @@ return array(
     'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) { 
         $dbw = new DBWidget;
         $widget = $dbw->fetch_widget_by_id($widget_id); 
-        $wl = new WidgetLoader($widget_key); 
+        $wl = new WidgetLoader($widget_id); 
         Helpers::show_data($widget->widgetobj);
         Helpers::show_data($wl);
         if($widget->widgetobj->widget_type == 'display') {
