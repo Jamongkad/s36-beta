@@ -13,12 +13,12 @@ return array(
     }),
 
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
-        $limit = 5; 
-        $pagination = new ZebraPagination; 
-        $pagination->method('url');
+
+        $pagination = new ZebraPagination;  
         $pagination->base_url('/feedsetup/ajax_overview/'.$type);
     
-        $widgy = widgenator($type, $limit, $pagination);
+        $wdg = new DBWidget;
+        $widgy = $wdg->fetch_paginated_widgets($type, $pagination);
 
         if($type == 'display') {
             $link_text = 'Display Widgets';
@@ -40,11 +40,11 @@ return array(
 
     'GET /feedsetup/ajax_overview/(:any?)/(:any?)' => function($type=False, $page=False) {
 
-        $limit = 5;
         $pagination = new ZebraPagination; 
         $pagination->method('url');
 
-        $widgy = widgenator($type, $limit, $pagination);
+        $wdg = new DBWidget;
+        $widgy = $wdg->fetch_paginated_widgets($type, $pagination);
  
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgy->widget
@@ -175,20 +175,3 @@ return array(
     },
     
 );
-
-function widgenator($type, $limit, $pagination) {  
-    $dbw = new DBWidget;
-
-    $offset = ($pagination->get_page() - 1) * $limit;
-
-    $widgets = $dbw->fetch_widgets_by($type, $limit, $offset);
-
-    $pagination->records($widgets->total_rows);
-    $pagination->records_per_page($limit);
-
-    $result = new stdClass;
-    $result->widget = $widgets;
-    $result->pagination = $pagination->render();
-
-    return $result;
-}

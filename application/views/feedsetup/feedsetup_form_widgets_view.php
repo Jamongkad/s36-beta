@@ -85,7 +85,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <strong style="font-size:14px;">Form Title :</strong>
+                                <strong style="font-size:14px;">Flavor Text :</strong>
                             </td>
                             <td><input type="text" class="large-text" name="form_text" value="" title="ex. Give us your feedback" /></td>
                         </tr>

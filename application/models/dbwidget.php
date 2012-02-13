@@ -69,16 +69,12 @@ class DBWidget extends S36DataObject {
 
     public function fetch_widgets_by_company() {
         $widgets = new StdClass;
-        $widgets->display_widgets = $this->_fetch_widgets_by('display');
-        $widgets->form_widgets = $this->_fetch_widgets_by('submit');
+        $widgets->display_widgets = $this->fetch_widgets_by('display');
+        $widgets->form_widgets = $this->fetch_widgets_by('submit');
         return $widgets;
     }
 
-    public function fetch_widgets_by($widget_type, $limit, $offset) {
-        return $this->_fetch_widgets_by($widget_type, $limit, $offset);
-    }
-
-    public function _fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
+    public function fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
         $sql = " 
             SELECT 
                 SQL_CALC_FOUND_ROWS
@@ -119,5 +115,22 @@ class DBWidget extends S36DataObject {
         $data_holder->widgets = $data;
         $data_holder->total_rows = $row_count;
         return $data_holder;
+    }
+
+    public function fetch_paginated_widgets($type, ZebraPagination $pagination, $limit=5) {
+
+        $pagination->method('url');
+        $offset = ($pagination->get_page() - 1) * $limit;
+
+        $widgets = $this->fetch_widgets_by($type, $limit, $offset);
+
+        $pagination->records($widgets->total_rows);
+        $pagination->records_per_page($limit);
+
+        $result = new stdClass;
+        $result->widget = $widgets;
+        $result->pagination = $pagination->render();
+
+        return $result; 
     }
 }
