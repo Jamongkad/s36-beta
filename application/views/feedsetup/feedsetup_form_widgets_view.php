@@ -184,21 +184,38 @@
                 </div>
             </div>
         </div>
+
+        <div class="widget-opts" style="text-align:center">
+
+            <div id="widget-preview">
+                <div class="widget-block">
+                    <h2>JS Widget Code (recommended)</h2>
+                    <div class="html-code">
+                        <textarea id="widget-generate-view" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
+                <div class="widget-block">
+                    <h2>IFrame Widget Code</h2>
+                    <div class="html-code">
+                        <textarea id="iframe-generate-view" spellcheck="false"></textarea>
+                    </div>
+                </div>
+
+                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
+                <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
+            </div>    
+
+        </div> 
+
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
-            <!--
-            <a href="#" class="button">Save Form</a> &nbsp;&nbsp; <a href="#" class="button-gray">Preview Form</a>
-            -->
-            <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Submission Form" />
+                <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Submission Form" />
             </div>
         </div>
     </div>
 </div>
 <?=Form::close()?>
-<!-- spacer -->
-<div class="block noborder" style="height:300px;">
-</div>
-<!-- spacer -->
 </div>
 
 <!-- end of the main panel -->

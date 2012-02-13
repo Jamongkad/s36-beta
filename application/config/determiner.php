@@ -26,7 +26,7 @@ class Determiner {
        if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
            $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = 'localhost';
-           $obj->deploy_env = 'http://dev.gearfish.com';
+           $obj->deploy_env = 'http://'.$subdomain.'.36stories.localhost';//'http://dev.gearfish.com';
            $obj->env_name = 'local';
            return $obj;
        }

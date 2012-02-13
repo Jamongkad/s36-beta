@@ -1,24 +1,19 @@
 <?php
 
 $feedback = new DBFeedback;
+$dbw = new DBWidget;
 
 return array(
-    'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() {
-        $dbw = new DBWidget;
+    'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) {
         $widgets = $dbw->fetch_widgets_by_company();
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
         ));
-
     }),
 
-    'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) { 
-
-        $pagination = new ZebraPagination;  
-        $pagination->base_url('/feedsetup/ajax_overview/'.$type);
-    
-        $wdg = new DBWidget;
-        $widgy = $wdg->fetch_paginated_widgets($type, $pagination);
+    'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) use ($dbw) { 
+ 
+        $widgy = $dbw->fetch_paginated_widgets($type);
 
         if($type == 'display') {
             $link_text = 'Display Widgets';
@@ -38,17 +33,14 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/ajax_overview/(:any?)/(:any?)' => function($type=False, $page=False) {
+    'GET /feedsetup/ajax_overview/(:any?)/(:any?)' => function($type=False, $page=False) use ($dbw) {
 
-        $pagination = new ZebraPagination; 
-        $pagination->method('url');
-
-        $wdg = new DBWidget;
-        $widgy = $wdg->fetch_paginated_widgets($type, $pagination);
+        $widgy = $dbw->fetch_paginated_widgets($type);
  
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgy->widget
           , 'pagination' => $widgy->pagination
+          , 'widget_type' => $type
         ))->get();
 
         $view_data = Array(
@@ -67,6 +59,11 @@ return array(
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
 
+        /*
+        Helpers::show_data($wl);
+        Helpers::show_data($edit_view);
+        */
+
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
@@ -76,12 +73,10 @@ return array(
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_js_code()
         ));
-
     }),
 
-    'POST /feedsetup/update_widget' => function() {
+    'POST /feedsetup/update_widget' => function() use ($dbw) {
         $data = Input::get(); 
-        $dbw = new DBWidget;
         $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
         $perm_factory = new Permission($data);
         $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
@@ -107,7 +102,7 @@ return array(
         ));
     }),
      
-    'POST /feedsetup/save_widget' => function() {
+    'POST /feedsetup/save_widget' => function() use ($dbw) {
         $data = Input::get();
 
         $rules = Array(
@@ -128,7 +123,6 @@ return array(
 
         } else { 
 
-            $dbw = new DBWidget;
             $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
             $perm_factory = new Permission($data);
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
@@ -145,19 +139,30 @@ return array(
             } else {
                 //update widget     
                 $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
-                echo json_encode( Array('status' => 'update', 'widget' => $data_object ) ); 
+                echo json_encode( $update_result ); 
             }
         }       
     },
 
-    'POST /feedsetup/save_form_widget' => function() {
+    'POST /feedsetup/save_form_widget' => function() use ($dbw) {
         $data = Input::get();
-        $dbw = new DBWidget;
         $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));  
         $data['widget_type'] = 'submit';
         $data['site_nm'] = $site->domain;
-        Helpers::show_data( (object)$data );
-        //$dbw->save_widget( (object)$data );          
+        $data['embed_type'] = 'form';
+        
+        //Helpers::show_data( $save_result );
+        $data_object = (object)$data;
+        //Helpers::show_data($data);
+        if(!$widgetkey = $data['widgetkey']) {
+            //save widget
+            $save_result = $dbw->save_widget( $data_object );         
+            echo json_encode($save_result);
+        } else {
+            //update widget     
+            $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
+            echo json_encode( $update_result ); 
+        }
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {

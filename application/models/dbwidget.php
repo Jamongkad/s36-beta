@@ -35,6 +35,7 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_STR);
         $sth->execute();
+        return Array('status' => 'update', 'widget' => $widget_obj);
     }
 
     public function fetch_widget_by_id($widget_key) {     
@@ -64,13 +65,18 @@ class DBWidget extends S36DataObject {
             $query->height = 500;  
         }
 
+        if($obj->embed_type == 'form') { 
+            $query->width = 447; 
+            $query->height = 590;  
+        }
+
         return $query;
     }
 
     public function fetch_widgets_by_company() {
         $widgets = new StdClass;
-        $widgets->display_widgets = $this->fetch_widgets_by('display');
-        $widgets->form_widgets = $this->fetch_widgets_by('submit');
+        $widgets->display_widgets = $this->fetch_paginated_widgets('display');
+        $widgets->form_widgets = $this->fetch_paginated_widgets('submit');
         return $widgets;
     }
 
@@ -117,9 +123,13 @@ class DBWidget extends S36DataObject {
         return $data_holder;
     }
 
-    public function fetch_paginated_widgets($type, ZebraPagination $pagination, $limit=5) {
+    public function fetch_paginated_widgets($type, $limit=5) {
 
+        $pagination = new ZebraPagination;  
         $pagination->method('url');
+        $pagination->base_url('/feedsetup/ajax_overview/'.$type);
+        $pagination->selectable_pages(5);
+
         $offset = ($pagination->get_page() - 1) * $limit;
 
         $widgets = $this->fetch_widgets_by($type, $limit, $offset);

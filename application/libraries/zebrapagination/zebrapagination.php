@@ -335,7 +335,7 @@ class ZebraPagination
                 ($this->page == 1 ? 'javascript:void(0)' : $this->_build_uri($this->page - 1)) .
 
                 // if we're on the first page, the link is disabled
-                '" class="navigation left' . ($this->page == 1 ? ' disabled' : '') . '"' .
+                '" class="navigation z-left' . ($this->page == 1 ? ' disabled' : '') . '"' .
 
                 '>previous page</a>';
 
@@ -456,7 +456,7 @@ class ZebraPagination
                     ($this->page == $this->_total_pages ? 'javascript:void(0)' : $this->_build_uri($this->page + 1)) .
 
                     // if we're on the last page, the link is disabled
-                    '" class="navigation right' . ($this->page == $this->_total_pages ? ' disabled' : '') . '"' .
+                    '" class="navigation z-right' . ($this->page == $this->_total_pages ? ' disabled' : '') . '"' .
 
                     '>next page</a>';
 

@@ -70,16 +70,49 @@ jQuery(function($) {
                               $("#widget-generate-view").val(data.html_widget_js_code);
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
-                    });
+                          });
 
                     console.log(responseText.widget.widgetkey);
                     new Status().notify("Success!", 1000);
                 }   
-            }
+          }
         }); 
         e.preventDefault(); 
     });
-      
+
+    $("#create-form-widget").bind("submit", function(e) { 
+        $(this).ajaxSubmit({
+            dataType: 'json'       
+          , beforeSubmit: function(formData, jqForm, options) {
+                new Status().notify("Processing...", 1000); 
+            }
+          , success: function(responseText, statusText, xhr, $form) {
+                $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+
+                $("#widget-preview").show();
+                $("#widget-preview").siblings(".block").show();
+
+                var widget_key = $("input[name=widgetkey]").val();
+                var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+                $.ajax({
+                    url: action
+                    , type: "GET"
+                    , dataType: 'json'
+                    , success: function(data) {
+                          s36Lightbox(data.width, data.height, data.html_view);
+                          //fuuuuuuck clean this up!! 
+                          $("#widget-generate-view").val(data.html_widget_js_code);
+                          $("#iframe-generate-view").val(data.html_iframe_code);
+                      } 
+                      });
+
+                console.log(responseText.widget.widgetkey);
+                new Status().notify("Success!", 1000);
+            }
+        });
+        e.preventDefault();
+    });
+
     //helper functions
     function embed_choice_check(embed_type) {
 
@@ -108,30 +141,35 @@ jQuery(function($) {
 
     function s36Lightbox(width, height, insertContent) {	
         if($('#lightbox').size() == 0){
-            var theLightbox = $('<div id="lightbox"/>');
+            var theLightbox = $('<div id="lightbox"></div>');
             var theShadow = $('<div id="lightbox-shadow"/>');
             $(theShadow).click(function(e){
-                closeLightbox();
+                    closeLightbox();
             });
             $('body').append(theShadow);
             $('body').append(theLightbox);
         }
         $('#lightbox').empty();
         if(insertContent != null){
-            $('#lightbox').append(insertContent);
+            //This is just a test
+            $('#lightbox').append(insertContent + "<div id='lightbox-comment' style='color:#fff;position:absolute;top:-20px;right:10px;'>This is a preview only | <span style='cursor:pointer'>close</span></div>");
         }
-        
+
+        $('#lightbox-comment').click(function(e){
+            closeLightbox();
+        });
+
         //set negative margin for dynamic width
         var margin = Math.round(width / 2);
-        
+
         // set the css and show the lightbox
         $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
         $('#lightbox').css({
-                            'width':width,
-                            'height':height,
-                            'margin-left':"-"+margin+"px"
-                            });
-                            
+                'width':width,
+                'height':height,
+                'margin-left':"-"+margin+"px"
+                });
+
         $('#lightbox').fadeIn('fast');
         $('#lightbox-shadow').fadeIn('fast');
     }
@@ -144,28 +182,28 @@ jQuery(function($) {
     $('#full_page_widget').hide();
     $('#embed_widget').hide();
     $('#modal_widget').hide();
-     
-    $('#full_page_type').click(function(){
-        fullpage_up();
-        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-                                .children('input[type="radio"]').attr('checked', null);                   
 
-        $("#modal_widget tr td").children('select').val(0);
-    });
+    $('#full_page_type').click(function(){
+            fullpage_up();
+            $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+            .children('input[type="radio"]').attr('checked', null);                   
+
+            $("#modal_widget tr td").children('select').val(0);
+            });
 
     $('#embed_type').click(function(){
-        embed_up();
-        $("#full_page_widget tr td").children('select').val(0);
-        $("#modal_widget tr td").children('select').val(0);
-    });
+            embed_up();
+            $("#full_page_widget tr td").children('select').val(0);
+            $("#modal_widget tr td").children('select').val(0);
+            });
 
     $('#modal_type').click(function(){
-        modal_up();
-        $("#full_page_widget tr td").children('select').val(0); 
-        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-                                .children('input[type="radio"]').attr('checked', null);                   
-    });
-    
+            modal_up();
+            $("#full_page_widget tr td").children('select').val(0); 
+            $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+            .children('input[type="radio"]').attr('checked', null);                   
+            });
+
     if($('input[value="embedded"]').attr('checked')) {
         embed_up();
     }
@@ -179,7 +217,7 @@ jQuery(function($) {
         $('#embed_widget').slideUp();
         $('#modal_widget').slideUp();        
     }
-    
+
     function embed_up() {
         $('#full_page_widget').slideUp();
         $('#embed_widget').slideDown();
@@ -195,25 +233,12 @@ jQuery(function($) {
     $("#widget-preview").hide();
     $("#widget-preview").siblings(".block").hide();
 
-    $("#create-form-widget").bind("submit", function(e) { 
-        $(this).ajaxSubmit({
-            dataType: 'json'       
-          , beforeSubmit: function(formData, jqForm, options) {
-                new Status().notify("Processing...", 1000); 
-            }
-          , success: function(responseText, statusText, xhr, $form) {
-              
-            }
-        })
-        e.preventDefault();
-    });
-
     $("#edit-widget-btn").on("click", function(e) {   
         $.scrollTo('.widget-options:first-child', 800);
         e.preventDefault();
     });
 
-    var overview = $("#overview-target");
+    var overview = $("#overview-target, #display-overview-target, #form-overview-target");
 
     /* TODO: this is the code we will use for Inbox rebinding
     overview.delegate("li a.button-gray", "click", function(e) {
@@ -235,7 +260,8 @@ jQuery(function($) {
 
     overview.delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
-        
+        var me = $(this);
+
         $.ajax({
             url: url 
           , dataType: 'json'
@@ -244,7 +270,7 @@ jQuery(function($) {
                 myStatus.notify("Processing...", 1000);
             }
           , success : function(data) {
-                overview.html(data.view);
+                me.parents('span').html(data.view);
             }
         });
 
