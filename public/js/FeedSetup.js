@@ -80,6 +80,7 @@ jQuery(function($) {
         e.preventDefault(); 
     });
 
+    //TODO: abstract this
     $("#create-form-widget").bind("submit", function(e) { 
         $(this).ajaxSubmit({
             dataType: 'json'       
