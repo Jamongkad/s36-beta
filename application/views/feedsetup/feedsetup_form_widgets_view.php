@@ -110,13 +110,14 @@
                 <strong style="font-size:14px;">Form Theme Design :</strong>
                 <div class="widget-info" style="margin:0px -20px;">
                 <?php  
-                    $colors = array('black'=>'Black',
-                                    'gray'=>'Silver Gray',
-                                    'blue'=>'Ocean Blue',
-                                    'green'=>'Forest Green',
-                                    'yellow'=>'Mandarin',
-                                    'orange'=>'Sleek Orange',
-                                    'red'=>'Thin Red'
+                    $colors = array(
+                                    'black'=>'Black',
+                                    'silver-gray'=>'Silver Gray',
+                                    'ocean-blue'=>'Ocean Blue',
+                                    'forest-green'=>'Forest Green',
+                                    'mandarin'=>'Mandarin',
+                                    'sleek-orange'=>'Sleek Orange',
+                                    'thin-red'=>'Thin Red'
                                    );                                         
                 ?>
                     <div class="form-design-slide">

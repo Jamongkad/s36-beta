@@ -38,7 +38,7 @@ class WidgetLoader {
             } 
             
             if ($obj->embed_type == 'modal') {
-                $widget_view = "widget::widget_modal_popup_view";
+                $widget_view = 'widget::widget_modal_popup_view';
             }
 
             $fixed_data = Array();
@@ -61,7 +61,7 @@ class WidgetLoader {
                $fixed_data[] = $rows;
             }
             
-            if ($type == "view") { 
+            if ($type == 'view') { 
                 return View::of_widget_layout()->partial('contents', $widget_view, Array(
                     'result' => $fixed_data, 'row_count' => $data->total_rows, 'flavor_text' => $obj->form_text
                 ))->get();
@@ -69,18 +69,36 @@ class WidgetLoader {
             
         }
 
-        if($obj->widget_type == 'display') {
-            Helpers::show_data($obj);
-        }
-        /*
+        if($obj->widget_type == 'submit') {
 
-        if ($type == "data") {
-            $obj = new StdClass;     
-            $obj->row_count = $data->total_rows;
-            $obj->widget_data = $fixed_data;
-            return $obj;
+            if ($obj->embed_type == 'form') {
+                $widget_view = 'widget::widget_submissionform_view';
+            }
+            Helpers::show_data($obj);
+
+            $env = Config::get('application.env_name');
+            if($env == 'dev' or $env == 'local') { 
+                $fb_id = '171323469605899';
+                $fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+            }
+
+            if($env == 'prod') { 
+                $fb_id = '259670914062599';
+                $fb_secret = '8e0666032461a99fb538e5f38ac7ef93';
+            }
+            
+            if ($type == 'view') {
+                return View::of_widget_layout()->partial('contents', $widget_view, Array(
+                    'fb_app_id' => $fb_id  
+                  , 'env' => $env
+                  , 'country' => DB::Table('Country', 'master')->get()
+                  , 'site_id' => $obj->site_id
+                  , 'company_id' => $obj->company_id
+                  , 'form_widget_vars'=> $obj
+                  , 'response' => 1
+                ))->get(); 
+            }
         }
-        */
     }
 
     public function load_widget_js_code() {
