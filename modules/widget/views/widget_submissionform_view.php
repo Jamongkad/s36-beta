@@ -1,4 +1,3 @@
-<?//print_r($form_widget_vars->theme_type)?>
 <?=HTML::style('themes/'.$form_widget_vars->theme_type.'.css')?>
 
 <script type="text/javascript">
@@ -131,7 +130,7 @@
     	<div id="steps">  
         	<!-- page 1 (rating and feedback text) -->
         	<div id="step_1" class="s36_pages">
-                <h1>Share Your Feedback About Us</h1>
+                <h1><?=$form_widget_vars->form_text?></h1>
                 <div class="step-contents">
                 	<br />
                 	<h3>Rate your overall experience</h3>
@@ -165,7 +164,7 @@
                         </ul>
                     </div>
                     <br />
-                    <h3><?=$form_widget_vars->form_text?> <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
+                    <h3>Share Your Feedback About Us<a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
                     <!--
                     <br />
                     <div id="s36_whattowrite">
