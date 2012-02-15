@@ -1,4 +1,5 @@
-<?=HTML::style('themes/'.'light'.'/form_default.css')?>
+<?//print_r($form_widget_vars->theme_type)?>
+<?=HTML::style('themes/'.$form_widget_vars->theme_type.'.css')?>
 
 <script type="text/javascript">
 	$(document).ready(function(){

@@ -74,7 +74,7 @@ class WidgetLoader {
             if ($obj->embed_type == 'form') {
                 $widget_view = 'widget::widget_submissionform_view';
             }
-            Helpers::show_data($obj);
+            //Helpers::show_data($obj);
 
             $env = Config::get('application.env_name');
             if($env == 'dev' or $env == 'local') { 
