@@ -1,65 +1,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-        $('.form-designs').cycle({
-            fx:      'scrollHorz', 
-            speed:    500, 
-            timeout:  0 ,
-            pause : 1,
-            next:   '.form-design-next', 
-            prev:   '.form-design-prev'				
-        });
-
-        
-        var positions = ['r','l','br','bl','tr','tl'];
-        var tabpos;
-        for(pos = 0;pos <= positions.length;pos++){
-            tabpos = positions[pos];
-            $('.'+tabpos+'-designs').cycle({
-                fx:      'scrollHorz', 
-                speed:    500, 
-                timeout:  0 ,
-                pause : 1,
-                next:   '.'+tabpos+'-design-next', 
-                prev:   '.'+tabpos+'-design-prev'    
-            });
-        }
-                      	
-        $('.br-design-slide, .tr-design-slide, .bl-design-slide, .tl-design-slide, .r-design-slide').hide();
-            
-        $('#tab-position').change(function(){
-            var slide = $(this).val();
-            $('#tab-slider').children().each(function(){
-                $(this).hide();
-            });
-            
-            $('.'+slide+'-design-slide').show();
-        });
-        
-        var selected_form = $('#selected-form').val();
-        var selected_tab = $('#selected-tab').val();
-        $('#'+selected_form).addClass('selected-form');
-        $('#'+selected_tab).addClass('selected-tab');
-        
-        $('.form-design').click(function(){
-            
-            var value = $(this).attr('id');
-            
-            $('.selected-form').removeClass('selected-form');
-            $(this).addClass('selected-form');
-            
-            $('#selected-form').val(value);
-            
-        });
-        
-        $('.tab-design').click(function(){
-            var value = $(this).attr('id');
-            
-            $('.selected-tab').removeClass('selected-tab');
-            $(this).addClass('selected-tab');
-            
-            $('#selected-tab').val(value);
-        });
 });	
 </script>
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
@@ -132,12 +73,13 @@
                                                             <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
                                                             <br />
                                                             <span>'.$val.'</span>
-                                                        </div>';
+                                                            <div class="button-gray" hrefaction="form-'.$form_colors.'">Preview</div>
+                                                        </div> '; 
                                     }
                                     echo $form_slides;
                                 ?>
                             </div>
-                        </div>
+                        </div> 
                         <div class="form-design-next">
                         </div>
                     </div>
@@ -211,7 +153,10 @@
 
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Submission Form" />
+                <input type="submit" class="large-btn create-widget-button" value="Save" />
+                <!--
+
+                -->
             </div>
         </div>
     </div>
