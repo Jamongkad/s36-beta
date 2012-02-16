@@ -1,13 +1,37 @@
 @charset "utf-8";
 /* CSS Document */
 
-body{padding:0px;margin:0px;font-size:12px;}
+body{
+	padding:0px;
+	margin:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+div{
+	display:block;
+	padding:0px;
+	margin:0px;	
+	position:relative;	
+	outline:none;
+}
 
-body{font-family:Arial, Helvetica, sans-serif;width:100%;height:100%;}
-
-div{position:relative;display:block;outline:none;}
+a{text-decoration:none;}
 
 p{margin:0;padding:0;}
+
+/* simples texts*/
+.large{font-weight:bold;font-size:12px;margin-bottom:1px;color: #5F5F61;}
+.normal{font-weight:normal;font-size:11px;margin-bottom:1px;color: #72777A;}
+.small{font-weight:normal;font-size:10px;margin-bottom:1px;color: #969696;}
+/* floats */
+.left{float:left;}
+.center{margin:0 auto;}
+.right{float:right;}
+/* text aligns */
+.align-right{text-align:right;}
+.align-center{text-align:right;}
+.align-left{text-align:right;}
+
 /* scrollpane styles */
 
 /* scroll styles */

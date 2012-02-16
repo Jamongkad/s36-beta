@@ -1,14 +1,16 @@
 .flag {
 	width: 16px;
 	height: 11px;
-	background:url(../img/flags.png) no-repeat;
+	background:url(/img/flags.png) no-repeat;
 	margin-left:5px;
 	margin-top:1px;
-    position:absolute;
-    bottom:2px;
-    right:2px;
+    position:relative;
 }
-
+.flag-fix{
+	position:absolute;
+	bottom:2px;
+	right:2px;
+}
 .boxSolo .flag{
 	width: 16px;
 	height: 11px;
@@ -16,7 +18,18 @@
 	margin-top:3px;
 	position:relative;
 }
+
+#popup .flag{
+	width: 16px;
+	height: 11px;
+	margin-left:5px;
+	margin-top:8px;
+	position:relative;
+	float:left;
+}
 .flag-ad {background-position: -16px 0}
+.flag-ae {background-position: -32px 0}
+.flag-af {background-position: -48px 0}
 .flag-ae {background-position: -32px 0}
 .flag-af {background-position: -48px 0}
 .flag-ag {background-position: -64px 0}

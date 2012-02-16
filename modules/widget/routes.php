@@ -27,7 +27,7 @@ return array(
     },
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
-        $wl = new WidgetLoader($widget_key);  
+        $wl = new WidgetLoader($widget_key);   
         return $wl->render("view");
     },
 

@@ -23,21 +23,28 @@ class WidgetLoader {
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
             $data->block_display = $obj->perms;
+            $theme = $obj->theme_type;
 
             $widget_view = null;
             if ($obj->embed_type == 'embedded') {
              
                 if ($obj->embed_block_type == 'embed_block_x') {
+                    $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_horizontal_style.css');
+                    $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_horizontal.js');
                     $widget_view = 'widget::widget_embedded_hor_view';
                 }
 
                 if ($obj->embed_block_type == 'embed_block_y') { 
+                    $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_vertical_style.css');
+                    $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_vertical.js');
                     $widget_view = 'widget::widget_embedded_ver_view';
                 }
                   
             } 
             
             if ($obj->embed_type == 'modal') {
+                $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_popup_style.css');
+                $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_popup.js');
                 $widget_view = 'widget::widget_modal_popup_view';
             }
 
@@ -60,13 +67,13 @@ class WidgetLoader {
                $rows->rules = (object)$feed_rules;
                $fixed_data[] = $rows;
             }
-            
+             
             if ($type == 'view') { 
                 return View::of_widget_layout()->partial('contents', $widget_view, Array(
-                    'result' => $fixed_data, 'row_count' => $data->total_rows, 'flavor_text' => $obj->form_text
+                    'result' => $fixed_data, 'row_count' => $data->total_rows, 'flavor_text' => $obj->form_text, 'css' => $css, 'js' => $js
                 ))->get();
             }
-            
+ 
         }
 
         if($obj->widget_type == 'submit') {
@@ -74,7 +81,6 @@ class WidgetLoader {
             if ($obj->embed_type == 'form') {
                 $widget_view = 'widget::widget_submissionform_view';
             }
-            //Helpers::show_data($obj);
 
             $env = Config::get('application.env_name');
             if($env == 'dev' or $env == 'local') { 

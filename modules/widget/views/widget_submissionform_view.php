@@ -1,4 +1,4 @@
-<?=HTML::style('themes/'.$form_widget_vars->theme_type.'.css')?>
+<?=HTML::style('themes/form/'.$form_widget_vars->theme_type.'.css')?>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -45,8 +45,7 @@
 				hide_error();		//hide errors
 				$steps.cycle(prev);	//cycle
 			});
-		
-		
+			
 		// assign crop script to crop btn
 		$('#crop_photo').hide();
 		$('#cancel_cropbtn').hide();
