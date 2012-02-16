@@ -77,16 +77,13 @@
                         <tr>
                             <td class="feedback-td-font">Transition Effect : </td>
                             <td colspan="2">
-                                <select name="embed_effects" class="regular-select"> 
-                                  
-                                    <option value="0">-</option>
+                                <select name="embed_effects" class="regular-select">  
                                     <?foreach ($effects_options as $rows):?>        
                                         <option value="<?=$rows->effectsid?>"
                                         
                                         <?=($widget->widgetobj->embed_type == 'embedded' && $widget->widgetobj->embed_effects == $rows->effectsid) ? 'selected' : null?>
                                         ><?=$rows->effectsname?></option>
-                                    <?endforeach?>
-                                   
+                                    <?endforeach?> 
                                 </select>
                             </td>
                         </tr>
@@ -106,7 +103,6 @@
                         <tr><td width="170" class="feedback-td-font">Transition :</td>
                             <td>
                                 <select name="modal_effects" class="regular-select">       
-                                    <option value="0">-</option>
                                     <?foreach($effects_options as $rows):?>        
                                         <option value="<?=$rows->effectsid?>"
                                         

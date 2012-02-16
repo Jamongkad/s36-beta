@@ -68,12 +68,9 @@
                             <td class="feedback-td-font">Transition Effect : </td>
                             <td colspan="2">
                                 <select name="embed_effects" class="regular-select"> 
-                                  
-                                    <option value="0">-</option>
                                     <?foreach($effects_options as $rows):?>        
                                         <option value="<?=$rows->effectsid?>"><?=$rows->effectsname?></option>
-                                    <?endforeach?>
-                                   
+                                    <?endforeach?> 
                                 </select>
                             </td>
                         </tr>
@@ -87,7 +84,6 @@
                         <tr><td width="170" class="feedback-td-font">Transition :</td>
                             <td>
                                 <select name="modal_effects" class="regular-select">       
-                                    <option value="0">-</option>
                                     <?foreach($effects_options as $rows):?>        
                                         <option value="<?=$rows->effectsid?>"><?=$rows->effectsname?></option>
                                     <?endforeach?> 
