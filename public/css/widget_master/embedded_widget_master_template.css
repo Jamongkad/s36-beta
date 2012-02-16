@@ -61,7 +61,7 @@ p{margin:0;padding:0;}
 	right: 0;
 	width: 9px;
 	height: 100%;
-	background:url(images/scrollTrack.png) center repeat-y;
+	background:url(/img/scrollTrack.png) center repeat-y;
 }
 
 .jspHorizontalBar
@@ -98,7 +98,7 @@ p{margin:0;padding:0;}
 
 .jspDrag
 {
-	background:url(images/scrollDrag-bg.png) repeat;
+	background:url(/img/scrollDrag-bg.png) repeat;
 	position: relative;
 	top: 0;
 	left: 0;

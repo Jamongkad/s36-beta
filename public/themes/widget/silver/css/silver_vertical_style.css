@@ -1,13 +1,14 @@
 #widget{
-	width:760px;
-	height:300px;
+	width:250px;
+	height:500px;
 	padding:0px;
-	margin:0px;	
-	min-width:760px;
+	margin:0px;
+	min-width:250px;
+	position:relative;
+	background:url(../images/silver_bg.png) repeat-x;
 }
 .block{
 	display:block;
-	width:100%;
 }
 
 /* new clear fix dawg! */
@@ -20,27 +21,23 @@
 }
 .widgetStyledBorder{
 	height:7px;
-	background:url(/img/border.png);
+	/* background:url(../images/border.png); */
 	margin:0px 15px;
 }
-
-/* here comes the css styles for this widget! */
 #widgetHeader{
 	padding:10px 15px;
 }
 	.theWidgetTitle{
-		font-size: 18px;
+		font-size: 12px;
 		font-weight: bold;
 		color: #72777A;
-		text-align: left;
-		width: 70%;
-		float: left;
-		padding-top:4px;
+		width: 100%;
+		text-align:center;
 	}
 	.theWidgetButtons{
-	
+		margin:2px 15px;
 	}
-		.sendFeedbackButton{
+	.sendFeedbackButton{
 			padding-top:8px;
 		}
 		.sendFeedbackButton a{
@@ -49,7 +46,7 @@
 			font-size: 11px;
 			font-weight:bold;
 		}
-		.viewAllFeedbackButton input{
+	.viewAllFeedbackButton input{
 			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
@@ -58,11 +55,9 @@
 			cursor: pointer;
 			border-image: initial;
 		}
-/* end of header styles */
 #widgetBody{
-	padding:0px;
 	margin:10px 15px;
-	height:200px;
+	height:360px;	
 }
 	#theLoopBox,
 	#theSoloBox{
@@ -71,39 +66,51 @@
 		left:0px;
 		width:100%;
 	}
+	#theSlides{
+		margin-top:-15px;
+	}
+	#theSoloSlides{
+		padding:5px;
+		background:#FFF;
+		border:1px solid #e0e0e0;
+		-webkit-border-radius:4px;
+		-moz-border-radius:4px;
+		border-radius:4px;
+	}.soloFeedbackSocialButtons{margin-left:-10px;}
 	.theFeedback{
-		width:93%;
+		padding:4px 5px;
+		background:#FFF;
+		margin-bottom:5px;
+		border:1px solid #e0e0e0;
+		-webkit-border-radius:4px;
+		-moz-border-radius:4px;
+		border-radius:4px;
 	}
-	.theFeedback.mid{
-		margin:0 auto;
-	}
-		.theFeedbackAvatar{
+	.theFeedbackAvatar{
 			width:48px;
 			float:left;
 		}
 		.theFeedbackAuthorInfo{
 			margin-left:58px;
-			height:60px;
 		}
-		
+		.theFeedbackAuthorCompany{
+			max-height:22px;
+		}
 		.theFeedbackText{
-			height:115px;
-			padding:10px 0px 5px;
-			line-height:18px;
+			height:48px;
+			padding:5px 0px 5px;
+			line-height:15px;
 			overflow:hidden;
 			text-align:justify;
 			color: #969696;
-			font-size:13px;
+			font-size:11px;
 			cursor:pointer;
 		}
-	.theFeedbackShare{
-		padding-top:2px;
-	}
-
 #widgetFooter{
-	position:relative;bottom:0px;
+	position:absolute;bottom:0px;
 	margin:0px 15px;
 	padding:5px 0px;
+	right:0px;
 }
 .theFooterText{
 	position:relative;right:0px;
@@ -113,41 +120,6 @@
 	.theFooterText a{
 		font-size: 11px;
 		color: #D8D8D8;
-	}
-	
-	
-/* codes for the solo Feedback */
-.soloFeedbackAvatar{width:50px;float:left;text-align:center;}
-.soloFeedbackDetails{margin-left:60px;}
-	.soloFeedbackAuthor ul{
-		list-style:none;
-		margin:0px;
-		padding:0px;
-	}
-	.soloFeedbackAuthor ul li{
-		display:inline-block;
-		margin-right:5px;
-	}
-	.soloFeedbackText{
-		height:150px;
-		line-height:18px;
-		margin-top:15px;
-		color: #969696;
-	}
-	.soloFeedbackText p{
-		margin-top:0px;
-		margin-bottom:15px;
-	}
-	.soloFeedbackSocialButtons{
-		padding-top:10px;
-	}
-	.back{
-		padding-left:7px;
-		background:url(/img/ico-back.png) left center no-repeat;
-	}
-	.back a{
-		color:#919191;
-		text-decoration:none;
 	}
 .share{
 	padding-left: 16px;
@@ -165,25 +137,53 @@
 	-moz-border-radius:3px;
 	border-radius:3px
 	}
-	
+
+.theSoloFeedback{
+	display:block;
+}
+	.soloFeedbackAvatar{
+		width:50px;float:left;
+		text-align:center;
+	}
+	.soloFeedbackDetails{
+		margin-left:58px;
+	}
+	.soloFeedbackAuthor ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	.soloFeedbackAuthorCompany{
+		max-height:22px;
+	}
+	.soloFeedbackText{
+		height:275px;
+		line-height:18px;
+		margin:10px 0px;
+		color: #969696;
+	}
+	.back{
+		padding-left:7px;
+		background:url(/img/ico-back.png) left center no-repeat;
+	}
+	.back a{
+		color:#919191;
+	}
 .shareTail{background:url(/img/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
 	.twitter-button{margin-top:0px;float:left;width:80px;}
 	.facebook-button{float:left;width:80px;}
 	
 .thePagination{
+	margin-top:10px;
 	text-align:center;
-	position:absolute;
+	position:relative;
 	width:100%;
 	color:#969696;
 	font-size:11px;
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#72abe0;color:#FFF;}
+	.pagination a.activeSlide{background:#a6a6a6;color:#FFF;}
 		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#72abe0;}	
-		.pagination a:hover{color:#72abe0;text-decoration:underline;}
-
-/*fb like button hack*/
-.fb_send_button_form_widget{top:-198px !important;}
-.fb_edge_comment_widget{top:-198px !important;}
+		#prev:hover,#next:hover{color:#dbdbdb;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}	

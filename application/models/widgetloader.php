@@ -30,13 +30,13 @@ class WidgetLoader {
              
                 if ($obj->embed_block_type == 'embed_block_x') {
                     $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_horizontal_style.css');
-                    $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_horizontal.js');
+                    $js = HTML::script('js/widget/horizontal.js');
                     $widget_view = 'widget::widget_embedded_hor_view';
                 }
 
                 if ($obj->embed_block_type == 'embed_block_y') { 
                     $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_vertical_style.css');
-                    $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_vertical.js');
+                    $js = HTML::script('js/widget/vertical.js');
                     $widget_view = 'widget::widget_embedded_ver_view';
                 }
                   
@@ -44,7 +44,7 @@ class WidgetLoader {
             
             if ($obj->embed_type == 'modal') {
                 $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_popup_style.css');
-                $js = HTML::script('themes/widget/'.$theme.'/js/'.$theme.'_popup.js');
+                $js = HTML::script('js/widget/popup.js');
                 $widget_view = 'widget::widget_modal_popup_view';
             }
 

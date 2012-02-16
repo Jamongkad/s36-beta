@@ -20,22 +20,26 @@
 }
 .widgetStyledBorder{
 	height:7px;
-	background:url(/img/border.png);
+	/*background:url(../images/border.png);*/
 	margin:0px 15px;
 }
 
 /* here comes the css styles for this widget! */
 #widgetHeader{
 	padding:10px 15px;
+	background:#dbdbdb;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
 }
 	.theWidgetTitle{
 		font-size: 18px;
-		font-weight: bold;
-		color: #72777A;
+		font-weight: normal;
+		color: #5f5f5f;
 		text-align: left;
 		width: 70%;
 		float: left;
-		padding-top:4px;
+		padding-top:2px;
 	}
 	.theWidgetButtons{
 	
@@ -179,10 +183,10 @@
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#72abe0;color:#FFF;}
+	.pagination a.activeSlide{background:#a6a6a6;color:#FFF;}
 		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#72abe0;}	
-		.pagination a:hover{color:#72abe0;text-decoration:underline;}
+		#prev:hover,#next:hover{color:#dbdbdb;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}
 
 /*fb like button hack*/
 .fb_send_button_form_widget{top:-198px !important;}

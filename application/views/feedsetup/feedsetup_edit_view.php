@@ -175,6 +175,18 @@
                             <div id="themeId_1"><?=Form::radio('theme_type', 'aglow')?> Aglow</div>
                             <div><?=HTML::image('img/display-thumb.png')?></div> 
                         </li>
+                        <li>
+                            <div id="themeId_1"><?=Form::radio('theme_type', 'classic')?> Classic</div>
+                            <div><?=HTML::image('img/display-thumb.png')?></div> 
+                        </li>
+                        <li>
+                            <div id="themeId_1"><?=Form::radio('theme_type', 'chrome')?> Chrome</div>
+                            <div><?=HTML::image('img/display-thumb.png')?></div> 
+                        </li>
+                        <li>
+                            <div id="themeId_1"><?=Form::radio('theme_type', 'silver')?> Silver</div>
+                            <div><?=HTML::image('img/display-thumb.png')?></div> 
+                        </li>
                     </ul>
                 </div>
                 <!--

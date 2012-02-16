@@ -1,6 +1,6 @@
 #widget{
 	width:760px;
-	height:300px;
+	height:500px;
 	padding:0px;
 	margin:0px;	
 	min-width:760px;
@@ -20,22 +20,32 @@
 }
 .widgetStyledBorder{
 	height:7px;
-	background:url(/img/border.png);
+	/*background:url(../images/border.png);*/
 	margin:0px 15px;
 }
 
 /* here comes the css styles for this widget! */
 #widgetHeader{
-	padding:10px 15px;
+	font-family:Georgia;
+	padding:15px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background:#dbdbdb;
 }
 	.theWidgetTitle{
-		font-size: 18px;
-		font-weight: bold;
-		color: #72777A;
+		font-size: 21px;
+		font-weight: normal;
+		color: #9d9d9d;
 		text-align: left;
 		width: 70%;
 		float: left;
-		padding-top:4px;
+		padding-top:2px;
+		text-shadow:#e8e8e8 0px 1px;
+		font-family:Arial, Helvetica, sans-serif;
+	}
+	.theFeedbackAuthorName{
+		font-family:Arial, Helvetica, sans-serif;
 	}
 	.theWidgetButtons{
 	
@@ -58,52 +68,108 @@
 			cursor: pointer;
 			border-image: initial;
 		}
-/* end of header styles */
-#widgetBody{
-	padding:0px;
-	margin:10px 15px;
-	height:200px;
+
+#theSoloBox{
+	padding:10px 10px;
+	height:170px;
 }
-	#theLoopBox,
-	#theSoloBox{
-		position:absolute;	
-		top:0px;
-		left:0px;
-		width:100%;
+#theLoopBox{
+	padding:10px 10px;
+}
+	#theSoloSlides{
+		padding:10px;
+		height:150px;
 	}
-	.theFeedback{
-		width:93%;
+	#theSlides{
+		margin:10px 10px 0px;
+		height:190px;
 	}
-	.theFeedback.mid{
-		margin:0 auto;
-	}
-		.theFeedbackAvatar{
-			width:48px;
+		.soloFeedback{
+			position:absolute;
+			margin:10px;
+		}
+		.soloFeedbackAvatar{
+			width:158px;
 			float:left;
+			text-align:center;
+		}		
+		.soloFeedbackAvatar img{
+			padding:3px;
+			border:1px solid #e0e0e0;
 		}
-		.theFeedbackAuthorInfo{
-			margin-left:58px;
-			height:60px;
+		.soloFeedbackDetails{
+			margin-left:168px;
 		}
+		.no-avatar-class{
+			margin-left:0px;
+		}
+		.soloFeedbackAuthor ul{
+			list-style:none;
+			margin:0px;
+			padding:0px;
+		}
+		.soloFeedbackAuthorName{
+			font-size:21px;
+			color:#292d2f;
+		}
+		.soloFeedbackAuthorCompany{
+			font-size:14px;
+			font-weight:bold;
+			color:#58;
+		}
+		.soloFeedbackAuthorCompany span{
+			color:#1c8bbf;
+		}
+		.soloFeedbackDate{
+			color:#77838b;
+			font-size:12px;
+			margin-top:2px;
+		}
+		.soloFeedbackText{
+			line-height:1.5em;
+			font-size:14px;
+			color:#3d4246;
+			height:94px;
+		}
+
 		
-		.theFeedbackText{
-			height:115px;
-			padding:10px 0px 5px;
-			line-height:18px;
-			overflow:hidden;
-			text-align:justify;
-			color: #969696;
-			font-size:13px;
-			cursor:pointer;
+		.theFeedback{
+			width:93%;
 		}
-	.theFeedbackShare{
-		padding-top:2px;
-	}
+		.theFeedback.mid{
+			margin:0 auto;
+		}
+			.theFeedbackAvatar{
+				width:52px;
+				float:left;
+			}
+			.theFeedbackAvatar img{
+				padding:1px;
+				border:1px solid #e0e0e0;
+			}
+			.theFeedbackAuthorInfo{
+				margin-left:58px;
+				height:60px;
+			}
+			
+			.theFeedbackText{
+				height:95px;
+				padding:10px 0px 5px;
+				line-height:18px;
+				overflow:hidden;
+				text-align:justify;
+				color: #969696;
+				font-size:13px;
+				cursor:pointer;
+			}
+		.theFeedbackShare{
+			padding-top:2px;
+		}
 
 #widgetFooter{
 	position:relative;bottom:0px;
-	margin:0px 15px;
-	padding:5px 0px;
+	margin:0px 10px;
+	padding:5px 12px;
 }
 .theFooterText{
 	position:relative;right:0px;
@@ -113,33 +179,6 @@
 	.theFooterText a{
 		font-size: 11px;
 		color: #D8D8D8;
-	}
-	
-	
-/* codes for the solo Feedback */
-.soloFeedbackAvatar{width:50px;float:left;text-align:center;}
-.soloFeedbackDetails{margin-left:60px;}
-	.soloFeedbackAuthor ul{
-		list-style:none;
-		margin:0px;
-		padding:0px;
-	}
-	.soloFeedbackAuthor ul li{
-		display:inline-block;
-		margin-right:5px;
-	}
-	.soloFeedbackText{
-		height:150px;
-		line-height:18px;
-		margin-top:15px;
-		color: #969696;
-	}
-	.soloFeedbackText p{
-		margin-top:0px;
-		margin-bottom:15px;
-	}
-	.soloFeedbackSocialButtons{
-		padding-top:10px;
 	}
 	.back{
 		padding-left:7px;
@@ -179,10 +218,10 @@
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#72abe0;color:#FFF;}
+	.pagination a.activeSlide{background:#a6a6a6;color:#FFF;}
 		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#72abe0;}	
-		.pagination a:hover{color:#72abe0;text-decoration:underline;}
+		#prev:hover,#next:hover{color:#dbdbdb;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}
 
 /*fb like button hack*/
 .fb_send_button_form_widget{top:-198px !important;}
