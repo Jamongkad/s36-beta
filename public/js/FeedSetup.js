@@ -88,6 +88,7 @@ jQuery(function($) {
                 new Status().notify("Processing...", 1000); 
             }
           , success: function(responseText, statusText, xhr, $form) {
+
                 $("input[name=widgetkey]").val(responseText.widget.widgetkey);
 
                 $("#widget-preview").show();

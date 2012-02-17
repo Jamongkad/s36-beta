@@ -154,11 +154,13 @@ return array(
         if(!$widgetkey = $data['widgetkey']) {
             //save widget 
             $save_result = $dbw->save_widget( $data_object );         
-            echo json_encode($save_result); 
+            echo json_encode( $save_result ); 
+            //echo json_encode(Array('status' => 'save'));
         } else {
             //update widget      
             $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
-            echo json_encode( $update_result );  
+            echo json_encode( $update_result );   
+            //echo json_encode(Array('status' => 'update'));
         }
     },
 

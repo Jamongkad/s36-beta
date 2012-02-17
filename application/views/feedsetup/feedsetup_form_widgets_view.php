@@ -135,13 +135,6 @@
                     </div>
                 </div>
 
-                <div class="widget-block">
-                    <h2>IFrame Widget Code</h2>
-                    <div class="html-code">
-                        <textarea id="iframe-generate-view" spellcheck="false"></textarea>
-                    </div>
-                </div>
-
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
                 <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
             </div>    
