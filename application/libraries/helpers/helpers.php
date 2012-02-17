@@ -109,4 +109,17 @@ class Helpers {
         preg_match($regex, $string, $matches);
         return $matches[1]."...";
     }
+
+    public static function render_iframe_code($frame_url, $width, $height) { 
+        $iframe = "<span style='z-index:100001'>
+                    <iframe id='s36Widget' 
+                            allowTransparency='true' 
+                            width={$width}
+                            height={$height}
+                            frameborder='0' 
+                            scrolling='no' 
+                            src='$frame_url'>Your Widget</iframe>
+                    </span>";
+         return trim($iframe);
+    }
 }

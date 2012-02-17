@@ -58,12 +58,10 @@ return array(
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
-
         /*
         Helpers::show_data($wl);
         Helpers::show_data($edit_view);
         */
-
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
@@ -154,17 +152,13 @@ return array(
         $data_object = (object)$data;
         //Helpers::show_data($data);
         if(!$widgetkey = $data['widgetkey']) {
-            //save widget
-       
+            //save widget 
             $save_result = $dbw->save_widget( $data_object );         
-            echo json_encode($save_result);
-      
+            echo json_encode($save_result); 
         } else {
-            //update widget     
-     
+            //update widget      
             $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
-            echo json_encode( $update_result ); 
-    
+            echo json_encode( $update_result );  
         }
     },
 
@@ -181,5 +175,27 @@ return array(
            , 'height' => $wl->widget_obj->height
          ));
     },
+    
+    //TODO: something is wrong here...
+    'GET /feedsetup/preview_widget_style/(:any)' => function($theme) {
+        $width  = 447;
+        $height = 590;
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme;
+        $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
+        $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
+        echo json_encode($data);
+    },
+
+    'GET /feedsetup/preview_widget/(:any)' => function($theme) {
+        $option = new StdClass;
+        $option->site_id    = 1;
+        $option->company_id = 1;
+        $option->form_text  = "This is an example form";
+        $option->theme_type = $theme;
+        $option->widget = "form";
+        $wf = new WidgetFactory($option);
+        $load_widget = $wf->load_widget();
+        return $load_widget->render();
+    }
     
 );

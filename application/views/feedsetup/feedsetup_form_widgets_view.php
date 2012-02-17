@@ -1,8 +1,3 @@
-<script type="text/javascript">
-	$(document).ready(function(){
-
-});	
-</script>
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('site_id', $site_id)?>
@@ -73,8 +68,10 @@
                                                             <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
                                                             <br />
                                                             <span>'.$val.'</span>
-                                                            <div class="button-gray" hrefaction="form-'.$form_colors.'">Preview</div>
-                                                        </div> '; 
+                                                            <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
+                                                                Preview
+                                                            </div>
+                                                        </div>'; 
                                     }
                                     echo $form_slides;
                                 ?>

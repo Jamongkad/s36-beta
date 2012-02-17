@@ -22,31 +22,6 @@ class WidgetLoader {
         if($obj->widget_type == 'display') {
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
-            $data->block_display = $obj->perms;
-            $theme = $obj->theme_type;
-
-            $widget_view = null;
-            if ($obj->embed_type == 'embedded') {
-             
-                if ($obj->embed_block_type == 'embed_block_x') {
-                    $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_horizontal_style.css');
-                    $js = HTML::script('js/widget/horizontal.js');
-                    $widget_view = 'widget::widget_embedded_hor_view';
-                }
-
-                if ($obj->embed_block_type == 'embed_block_y') { 
-                    $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_vertical_style.css');
-                    $js = HTML::script('js/widget/vertical.js');
-                    $widget_view = 'widget::widget_embedded_ver_view';
-                }
-                  
-            } 
-            
-            if ($obj->embed_type == 'modal') {
-                $css = HTML::style('themes/widget/'.$theme.'/css/'.$theme.'_popup_style.css');
-                $js = HTML::script('js/widget/popup.js');
-                $widget_view = 'widget::widget_modal_popup_view';
-            }
 
             $fixed_data = Array();
             foreach ($data->result as $rows) {
@@ -69,40 +44,29 @@ class WidgetLoader {
             }
              
             if ($type == 'view') { 
-                return View::of_widget_layout()->partial('contents', $widget_view, Array(
-                    'result' => $fixed_data, 'row_count' => $data->total_rows, 'flavor_text' => $obj->form_text, 'css' => $css, 'js' => $js
-                ))->get();
+                $option = new StdClass;
+                $option->form_text  = $obj->form_text;
+                $option->theme_type = $obj->theme_type;
+                $option->widget = $obj;
+                $option->fixed_data = $fixed_data;
+                $option->total_rows = $data->total_rows;
+
+                $wf = new WidgetFactory($option); 
+                return $wf->load_widget()->render();
             }
  
         }
 
         if($obj->widget_type == 'submit') {
-
-            if ($obj->embed_type == 'form') {
-                $widget_view = 'widget::widget_submissionform_view';
-            }
-
-            $env = Config::get('application.env_name');
-            if($env == 'dev' or $env == 'local') { 
-                $fb_id = '171323469605899';
-                $fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-            }
-
-            if($env == 'prod') { 
-                $fb_id = '259670914062599';
-                $fb_secret = '8e0666032461a99fb538e5f38ac7ef93';
-            }
-            
-            if ($type == 'view') {
-                return View::of_widget_layout()->partial('contents', $widget_view, Array(
-                    'fb_app_id' => $fb_id  
-                  , 'env' => $env
-                  , 'country' => DB::Table('Country', 'master')->get()
-                  , 'site_id' => $obj->site_id
-                  , 'company_id' => $obj->company_id
-                  , 'form_widget_vars'=> $obj
-                  , 'response' => 0
-                ))->get(); 
+             if ($type == 'view') {
+                $option = new StdClass;
+                $option->site_id    = $obj->site_id;
+                $option->company_id = $obj->company_id;
+                $option->form_text  = $obj->form_text;
+                $option->theme_type = $obj->theme_type;
+                $option->widget = $obj->embed_type;
+                $wf = new WidgetFactory($option);
+                return $wf->load_widget()->render();
             }
         }
     }
@@ -127,6 +91,7 @@ class WidgetLoader {
     public function load_iframe_code() {
         $widgetkey = $this->widget_obj->widgetkey;
         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
+        /*
         $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
                             allowTransparency='true' 
@@ -137,6 +102,8 @@ class WidgetLoader {
                             src='$frame_url'>Your Widget</iframe>
                     </span>";
          return trim($iframe);
+         */
+         return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
     }
 
     private function _load_object_code() {      

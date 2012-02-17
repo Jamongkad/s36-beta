@@ -1,98 +1,21 @@
-<?=HTML::style('themes/form/'.$form_widget_vars->theme_type.'.css')?>
+<?=HTML::style('themes/form/'.$theme_name.'.css')?>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		//hide what to write, error message
-		$('#s36_whattowrite').hide();
-		//$('#s36_error').hide();
-		
-		$('#s36_tip').click(function(){
-			$('#s36_whattowrite').slideToggle();
-		});
-		
-		$('#loading').hide();
-		$('#feedback_permission').hide();
-		$('#prev').hide();
-		$('.error-message').hide();
-		
-		$('#feedback_text').tinymce({
-			script_url : '<?=URL::to('/')?>js/tiny_mce.js',
-			mode : "textareas",
-			theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
-		});
-		
-		// toggle class for each list items
-		$('#leave_fb'). click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
-		$('#browse_fb').click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
-
-		// initiate the cycle script for the #steps div
-		var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assignClass });	
-		
-		// move to the manual form if the user doesn't want to connect to facebook:
-		$('#create_wo_facebook').click(function(){ $steps.cycle(3); $('#next').show(); });
-		
-		// when clicking the next button
-		$('#next').click(function(){
-				var next = new PageCycle().cycle_next();
-				if(next)			//if returned true, then cycle the form to the next ui
-				hide_error();		//hide errors
-				$steps.cycle(next);	//cycle
-			});
-		$('#prev').click(function(){
-				var prev = new PageCycle().cycle_prev();
-				if(prev)			//if returned true, then cycle the form to the prev ui
-				hide_error();		//hide errors
-				$steps.cycle(prev);	//cycle
-			});
-			
-		// assign crop script to crop btn
-		$('#crop_photo').hide();
-		$('#cancel_cropbtn').hide();
-		$('#cancel_cropbtn').click(function(){
-			$steps.cycle(5);
-			hide_crop_buttons();
-		});
-		// added
-		// assign crop script to crop btn
-		$('#cropbtn').hide();
-		$('#cropbtn').click(function(){
-			
-			var crop_success = save_crop_image();
-			if( crop_success.statusText == 'success' ){
-				$steps.cycle(5);
-				// hide the crop btn						
-				hide_crop_buttons();
-			}
-			
-		});
-		//end added
-		// start the rating slider
-		start_slider();
-		/* re enable this to have a styled upload button
-		$("input[type=file]").filestyle({ 
-			 image: "images/chooser.png",
-			 imageheight : 26,
-			 imagewidth : 110,
-			 width :      110
-			});
-		*/		
-		$('#edit-review-feedback').click(function(){edit_feedback()});
-		$('#save-edited-feedback').hide();
-		$('#save-edited-feedback').click(function(){save_edited_feedback()});
-		
-		default_text();
 	});	
 </script>
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  //DEV API KEY
+
   <?if($env == 'dev' or $env == 'local'):?>
-      api_key: zmekq26qusj2
+  //DEV API KEY
+  api_key: zmekq26qusj2
   <?endif?>
-  //PROD API KEY
+
   <?if($env == 'prod'):?>
-      api_key: 1b773lzkdw3f
+  //PROD API KEY
+  api_key: 1b773lzkdw3f
   <?endif?>
   authorize: true
 </script>
@@ -129,7 +52,7 @@
     	<div id="steps">  
         	<!-- page 1 (rating and feedback text) -->
         	<div id="step_1" class="s36_pages">
-                <h1><?=$form_widget_vars->form_text?></h1>
+                <h1><?=$form_text?></h1>
                 <div class="step-contents">
                 	<br />
                 	<h3>Rate your overall experience</h3>
@@ -422,4 +345,4 @@
 <?=HTML::script('js/jquery.ajaxfileupload.js')?>
 <?=HTML::script('js/s36script.js')?>
 <?=HTML::script('js/cycle.function.js')?>
-<?=HTML::script('js/jquery.tinymce.js')?>
+<?=HTML::script('js/widget/form.js')?>

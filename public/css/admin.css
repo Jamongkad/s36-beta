@@ -426,6 +426,8 @@ margin-left:auto;
 margin-right:auto;
 margin-top:5px;
 }
+div.button-gray:hover{ background:#dce9f5;}
+
 .widget-opts a.button-gray:hover{background:#dce9f5;}
 
 .feedback-td-font { font-size: 12px; }
@@ -643,7 +645,7 @@ input.large-text{padding:10px;width:80%;}
 .tl-design-slide,
 .br-design-slide,
 .bl-design-slide
-{width:656px;height:110px;padding:0px 10px;}
+{width:656px;height:120px;padding:0px 10px;}
 
 .form-design-prev,.l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
     float:left;

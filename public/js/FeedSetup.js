@@ -95,7 +95,10 @@ jQuery(function($) {
 
                 //console.log(responseText.widget.widgetkey);
                 new Status().notify("Success!", 1000);
-                
+                /* 
+                $("#widget-generate-view").val(data.html_widget_js_code);
+                $("#iframe-generate-view").val(data.html_iframe_code);
+                */
                 /*
                 window.onbeforeunload = function() {
                     return "Are you sure you want to navigate away from this page?";
@@ -105,57 +108,27 @@ jQuery(function($) {
         });
         e.preventDefault();
     });
-
-    $(".button-gray").on("click", function(e) {
-        //start making fake forms!
-        /*       
-        var widget_key = $("input[name=widgetkey]").val();
-        var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
-
+    
+    $("div#preview.button-gray").on("click", function(e) {
+        //start making fake forms! 
         $.ajax({
-            url: action
-            , type: "GET"
+              url: $(this).attr('hrefaction')
+            , type: 'GET'
             , dataType: 'json'
-            , success: function(data) {
+            , success: function(data) { 
                   s36Lightbox(data.width, data.height, data.html_view);
+                  /*
                   //fuuuuuuck clean this up!! 
                   $("#widget-generate-view").val(data.html_widget_js_code);
                   $("#iframe-generate-view").val(data.html_iframe_code);
+                  */ 
               } 
         });
 
-        console.log(widget_key);
-        */
-        console.log($(this).attr('hrefaction'));
         e.preventDefault();
     });
 
-    //helper functions
-    function embed_choice_check(embed_type) {
-
-        var embed_choice_string;
-
-        if(embed_type == 'fullpage') {
-            embed_choice_string = "&units=" + $('select[name="full_page_units"] option:selected').val();
-        }
-
-        if(embed_type == 'embedded') {
-            embed_choice_string = "&type=" + $('input[name="embed_block_type"]:checked').val() + "&width=" + $('input[name="embed_width"]').val() + "&height=" + $('input[name="embed_height"]').val();
-            embed_choice_string += "&effect=" + $('select[name="embed_effects"] option:selected').val() + "&units=" + $('select[name="embed_units"] option:selected').val();
-        }
-
-        if(embed_type == 'modal') {
-            embed_choice_string = "&effect=" + $('select[name="modal_effects"] option:selected').val();
-        }
-
-        if(!embed_choice_string) { 
-            alert("Please choose a Widget.");
-            return false;
-        }
-
-        return embed_choice_string; 
-    }
-
+    //helper functions ABSTRACT THIS MOTHAFUCKER 
     function s36Lightbox(width, height, insertContent) {	
         if($('#lightbox').size() == 0){
             var theLightbox = $('<div id="lightbox"></div>');
@@ -180,7 +153,7 @@ jQuery(function($) {
         var margin = Math.round(width / 2);
 
         // set the css and show the lightbox
-        $('#lightbox').css('top', $(window).scrollTop() + 100 + 'px');
+        $('#lightbox').css('top', $(window).scrollTop() + 50 + 'px');
         $('#lightbox').css({
                 'width':width,
                 'height':height,

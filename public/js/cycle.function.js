@@ -1,0 +1,374 @@
+// PageCycle Functions
+
+/*
+||-----------------------------------------------
+||  Assign required parameters and elements used
+||-----------------------------------------------
+*/
+var init = 0;
+
+function PageCycle() {
+	
+	this.cur_step 		= $('#steps').find('.current').attr('id');
+	this.rating 		= selected_rating();
+	this.default_photo 	= "images/blank-avatar.png";
+	this.is_photo 		= $('#profile_picture').attr('src');
+	this.review_photo 	= $('#review-photo').attr('src');
+	this.next_button	= $('#next');
+	this.prev_button	= $('#prev');
+	this.crop_button	= $('#cropbtn');
+	this.cancel_crop_button	= $('#cancel_cropbtn');
+	this.feedback 		= $('#feedback_text').val();
+}
+
+/*
+||-------------------------------------------
+||  Move the form to the next page
+||--------------------------------------------
+*/
+
+PageCycle.prototype.cycle_next = function() {
+	
+	var that = this;
+	
+	if(this.cur_step == "step_1"){
+		
+		return this._check_page_one(true);
+		
+	}else if(this.cur_step == "step_2"){
+		
+		return this._check_page_two(true);
+		
+	}else if(this.cur_step == "step_3"){
+		
+		return this._check_page_three(true);
+		
+	}else if(this.cur_step == "step_4"){
+		
+		return this._check_page_four(true);
+		
+	}else if(this.cur_step == "step_5"){
+		
+		return this._check_page_five(true);
+		
+	}else if(this.cur_step == "step_6"){
+		
+		return this._check_page_six(true);
+		
+	}else if(this.cur_step == "step_7"){
+		
+		return this._check_page_seven(true);
+		
+	}		
+}
+
+/*
+||-------------------------------------------
+||  Move the form to the previous page
+||--------------------------------------------
+*/
+
+PageCycle.prototype.cycle_prev = function() {
+	
+	var that = this;
+	
+	if(this.cur_step == "step_2"){
+		
+		return this._check_page_two(false);
+		
+	}else if(this.cur_step == "step_3"){
+		
+		return this._check_page_three(false);
+		
+	}else if(this.cur_step == "step_4"){
+		
+		return this._check_page_four(false);
+		
+	}else if(this.cur_step == "step_5"){
+		
+		return this._check_page_five(false);
+		
+	}else if(this.cur_step == "step_6"){
+		
+		return this._check_page_six(false);
+		
+	}else if(this.cur_step == "step_7"){
+		
+		return this._check_page_seven(false);
+		
+	}else{
+		
+		return false;
+		
+	}
+}
+
+
+/*
+||---------------------------------------------------------------------
+||  Page checker -- validation below (^_^)
+||---------------------------------------------------------------------
+*/
+	
+	/*
+	||---------------------------------------
+	||  Check Page One
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_one = function(next){
+	
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+			if(this.feedback.length > 0){
+				if((this.rating == "2") || (this.rating == "1")){
+					show_complete_form(false);
+					return 3;
+				}else{
+					show_complete_form(true);
+					return 1;
+				}
+			}else{
+				add_error("Please provide feedback"); 
+				return false;
+			}
+	}
+	
+	/*
+	||---------------------------------------
+	||  Check Page Two
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_two = function(next){
+		
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+		if(next){	
+			var permission = $('[name="your_permission"]:checked').size();
+			if(permission <= 0){
+				add_error('Please Select a Permission for your feedback');
+				return false;
+			}else{
+				this.next_button.hide();
+				return 2;
+			}
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/
+		
+		else{
+			return 0;
+		}
+	}
+	
+	/*
+	||---------------------------------------
+	||  Check Page Three
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_three = function(next){
+		
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+		if(next){
+			return 3;
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/	
+		
+		else{
+			this.next_button.show();
+			return 1;
+		}
+	}
+	
+	/*
+	||---------------------------------------
+	||  Check Page Four (The profile form and photo upload)
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_four = function(next){
+						
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		var that = this;
+		if(next){
+			
+			if((this.rating == "2") || (this.rating == "1")){
+				var val = validate_form('partial'); // validate_form returns 3;
+				var send = true;
+			}else{
+				var val = validate_form('full'); 	// validate_form returns 3;
+				var send = false;
+			}
+			if(val){ 
+				// if form is validated..				
+				// assign all values to the review slide, argument: false if not from jcrop				
+				assign_to_review(this.is_photo);
+				$('#crop_photo').click(function(){
+					that._cropper_page();
+				});
+				
+				if(strstr(this.is_photo,'media.linkedin.com')){
+					save_linkedin_image();
+					return 5;
+				}else{
+					if(send){
+						this.next_button.hide();
+						send_form_data();
+						return 6;
+					}else{
+						return 5;
+					}
+				}
+				
+			}
+			else{
+				return false;
+			}
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/	
+		
+		else{
+			this.next_button.hide();
+			if((this.rating == "2") || (this.rating == "1")){
+				show_complete_form(false);
+				return 0;
+			}else{
+				show_complete_form(true);
+				return 2;
+			}
+		}
+	}
+	
+	/*
+	||---------------------------------------
+	||  Check Page Five (This is the cropper page!)
+	||---------------------------------------
+	*/	
+	
+	PageCycle.prototype._check_page_five = function(next){
+	
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+		if(next){
+			if(this.default_photo != this.review_photo){
+				return 5;	
+			}else{
+				$('#crop_status').html('<img src="images/error-ico.png" /> Please Crop Your Photo.');
+				return false;
+			}
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/	
+		
+		else{
+			return 3;
+		}
+	}
+	
+	/*
+	||---------------------------------------
+	||  Check Page Six
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_six = function(next){
+		
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+		if(next){
+			this.next_button.hide();
+			send_form_data();	
+			return 6;
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/	
+		
+		else{
+			return 3;
+			/*
+			if((this.is_photo == this.default_photo) || (this.rating == "2") || (this.rating == "1") || (strstr(this.is_photo,'media.linkedin.com'))){
+				return 3;
+			}else{
+				this.next_button.hide();				
+				this.crop_button.show();
+				return 4;
+			}
+			*/
+		}
+	} 
+	
+	/*
+	||---------------------------------------
+	||  Check Page Seven
+	||---------------------------------------
+	*/
+	
+	PageCycle.prototype._check_page_seven = function(next){
+		
+		/*------------------------
+		|  Next button pressed
+		-------------------------*/
+		
+		if(next){
+			$('#steps').cycle('destroy');
+			parent.s36_closeLightbox();
+			return false;
+		}
+		
+		/*------------------------
+		|  Previous button pressed
+		-------------------------*/	
+		
+		else{
+			this.next_button.html("Next");
+			return 5;
+		}
+	}
+	
+	
+/*
+||---------------------------------------
+||  The Cropper Page beybeh
+||---------------------------------------
+*/
+
+
+PageCycle.prototype._cropper_page = function(){
+	$('#steps').cycle(4);
+	if(init <= 0){
+	   init = 1;
+	   init_jcrop();
+	}else{
+	   jcrop_api.release();
+	   jcrop_api.setImage(this.is_photo);
+	   jcrop_api.setSelect(['40','20','190','170']);
+	}
+	show_crop_buttons();
+}
