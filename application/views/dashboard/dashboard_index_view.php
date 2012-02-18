@@ -130,8 +130,43 @@
         </table>
     </div>
 <?else:?>
+      
+      <script type="text/javascript"> 
+        $(function() {
+
+            $('.tabs a').on('click', function(e) {
+                var me = $(this);
+                $.pjax({
+                    url: me.attr('href')
+                  , container: '#display'
+                  , success: function() {
+                      /*
+                        $('div.button-gray').on('click', function(e) {
+                            console.log("Buster");
+                        }) 
+                     */
+                    }
+                });
+                e.preventDefault();
+            });
+
+            $('#display').delegate("a", "click", function(e) {
+                console.log("Mathew rocks");
+                e.preventDefault();
+            });
+        })
+      </script>
+       
+      <div id="main">
+          <div class="tabs">
+              <?=HTML::link('/dashboard/pwet', 'Mathew')?>
+              <?=HTML::link('/dashboard/wewe', 'Wong')?>
+          </div>
+      </div>
+      <div id="display"></div>
+
       <div class="woops">
             <h2>Woops. Since there's no feedback. We are unable to return any meaningful data.</h2><br/><br/>
             <p>Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
-      </div>
+      </div> 
 <?endif?>

@@ -10,6 +10,14 @@ return array(
         return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view', Array(
             'dashboard_summary' => $dashboard_summary
         ));
-
     }),
+
+    'GET /dashboard/pwet' => function() {
+        Helpers::show_data(Input::get('_pjax'));
+        echo "<div class='button-gray'><a href='#'>pwet ka</a></div>";
+    },
+
+    'GET /dashboard/wewe' => function() { 
+        echo "pwet wewe";
+    },
 );

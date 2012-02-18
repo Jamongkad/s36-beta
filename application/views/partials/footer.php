@@ -1,6 +1,7 @@
 <?
 if(S36Auth::check()):
-?>
+?> 
+        <?=View::make('partials/admin_sorter_bar')?>
         </div> 
         <div class="c"></div>
     </div>

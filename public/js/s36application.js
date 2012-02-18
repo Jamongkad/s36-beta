@@ -1,4 +1,28 @@
 jQuery(function($) {
+    /*
+    $('.admin-nav-bar').delegate('li a', 'click', function(e) {
+        var url = $(this).attr('href');
+        var deselect_this = false;
+
+        $(this).parent().siblings().children('a').each(function() {
+            $(this).removeClass("selected");     
+        });
+
+        if(!deselect_this) {
+            $(this).addClass('selected');
+        }
+
+        $.pjax({
+            url: url
+          , container: '.the-feedbacks'
+          , success: function() { 
+              $('.status-change > select, .priority-change > select, div.category-picker-holder, div.fast-forward-holder, .ff-form, #notification-message').hide();
+          }
+        });
+
+        e.preventDefault();
+    });
+    */
 
     $('a.cat-picks').bind('click', function(e) {
 
@@ -219,11 +243,12 @@ jQuery(function($) {
 
     $('.status-change > select, .priority-change > select').hide();
 
-    var statusChange = new DropDownChange({status_element: $('span.status-change'), status_selector: 'change.status'});
+    var statusChange = new DropDownChange({status_element: 'span.status-change', status_selector: 'change.status'});
     statusChange.enable();
 
-    var priorityChange = new DropDownChange({status_element: $('span.priority-change'), status_selector: 'change.priority'});
+    var priorityChange = new DropDownChange({status_element: 'span.priority-change', status_selector: 'change.priority'});
     priorityChange.enable();
+
 
     $('.check').fancytips();
     $('.fileas').fancytips();

@@ -22,16 +22,22 @@ return array(
                                                   'choice'=> $choice, 'site_id'=> $site_id, 'rating'=> $rating));
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
-        
-        return View::of_layout()->partial('contents', 'inbox/inbox_index_view', Array(
+
+        $view_data = Array(
               'feedback' => $records
             , 'categories' => $category->pull_site_categories()
             , 'pagination' => $pagination->render()
             , 'status' => DB::table('Status', 'master')->get()
             , 'admin_check' => $admin_check
             , 'inbox_state' => Helpers::inbox_state($filter)
-            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
-        ));
-       
+            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
+        );
+        
+        if(!Input::get('_pjax')) { 
+            return View::of_layout()->partial('contents', 'inbox/inbox_index_view', $view_data);
+        } else {
+            echo View::make('inbox/inbox_index_view', $view_data);
+        }
+  
     }), 
 );

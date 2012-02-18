@@ -235,8 +235,13 @@
         <?endforeach?>
 
 
-
     <div class="c"></div>
+    
+    <?if($pagination):?>
+        <div style="padding:10px 28px 30px"> 
+            <?=$pagination?>
+        </div>
+    <?endif?>
 </div>
 <?else:?>
       <div class="woops">
@@ -245,26 +250,3 @@
       </div>
 <?endif?>
 <!-- end of feedback list -->
-<div class="admin-sorter-bar">
-    <div class="sorter-bar">
-        <div class="left">
-            <input type="checkbox" class="click-all"/>
-        </div>
-        <div class="right">
-            <div class="g1of3">
-                <?=View::make('partials/feedback_select_controls')?>
-            </div>
-            <div class="g1of3">
-                <div class="pagination-text"><?=$pagination?></div>
-            </div>
-            <!--
-            <div class="g1of3">
-                <div class="pagination">
-                    Page <input type="text" style="width: 30px;" class="pagination-input" value="1" /> of <?=$feedback->total_rows?>
-                </div>
-            </div>
-            -->
-        </div>
-        <div class="c"></div>
-    </div>
-</div>

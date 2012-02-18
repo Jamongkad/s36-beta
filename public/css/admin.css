@@ -711,3 +711,6 @@ input.large-text{padding:10px;width:80%;}
     border-radius:2px;
 }
 .reg-text-active{color:#AAA;font-style:italic;}
+.status-change,.priority-change{
+    cursor: pointer;
+}
