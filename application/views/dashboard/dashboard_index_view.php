@@ -156,7 +156,7 @@
             });
         })
       </script>
-       
+      <!-- 
       <div id="main">
           <div class="tabs">
               <?=HTML::link('/dashboard/pwet', 'Mathew')?>
@@ -164,6 +164,7 @@
           </div>
       </div>
       <div id="display"></div>
+      -->
 
       <div class="woops">
             <h2>Woops. Since there's no feedback. We are unable to return any meaningful data.</h2><br/><br/>
