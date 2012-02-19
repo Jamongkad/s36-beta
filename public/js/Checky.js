@@ -10,17 +10,16 @@ function Checky(opts) {
 Checky.prototype.init = function() {
 
     var me = this;    
-   
-    $(me.feed_selection).bind('change', function(e) {
+    $(document).delegate(me.feed_selection, 'change', function(e) {
         var mode        = $(this).val();
-        var checkFeed   = me.check_feed_id;
-        var categoryFeed = me.category_feed_id; 
+        var checkFeed   = $(me.check_feed_id);
+        var categoryFeed = $(me.category_feed_id);
         var ifChecked   = checkFeed.is(':checked');
         var currentUrl  = $(location).attr('href');
         var baseUrl     = $(this).attr('base-url');
-        var checkyBar   = me.checky_bar;
-        var collection         = new Array();
-       
+        var checkyBar   = $('.checky-bar');
+        var collection  = new Array();
+
         if (ifChecked && mode != 'none') { 
 
             var conf, color, goto_url;
@@ -64,30 +63,9 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-
                 var collection_count = collection.length;
-                //revert to default -- select
                 $("option:first", this).prop("selected", true);
-                /* 
-                var hideLink = document.createElement("a");
-                hideLink.setAttribute("href", "#");
-                hideLink.setAttribute("id", "hide-checkybar");
-                hideLink.style.color = "#00688b";
-                hideLink.style.fontSize = "0.7em";
-                hideLink.style.marginLeft = "3px";
-                hideLink.style.textDecoration = "underline";
-                hideLink.innerHTML = "hide";
-
-                var gotoLink = document.createElement("a");
-                gotoLink.setAttribute("href", baseUrl + goto_url);
-                gotoLink.style.color = "#00688b";
-                gotoLink.style.fontSize = "0.7em";
-                gotoLink.style.marginLeft = "5px";
-                gotoLink.style.textDecoration = "underline";
-                gotoLink.innerHTML = "go to " + mode;
-                */
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-
                 $.ajax({
                     type: "POST"      
                   , data: {  col: mode
@@ -121,20 +99,18 @@ Checky.prototype.init = function() {
             $(this).val("none");
             $('.click-all').attr('checked', false);
             checkFeed.attr('checked', false);
-            //collection.length         = 0;     
         } else {
             $('.click-all').attr('checked', false);
-            //collection.length         = 0;     
         } 
     });
 }
 
 Checky.prototype.clickAll = function() { 
     var me = this;    
-    $(me.click_all).bind('click', function(e) {
+    $(document).delegate(me.click_all, 'click', function(e) {
         if (this.checked) {
             $(me.check_feed_id).prop("checked", true);
-            $(me.click_all).prop("checked", true);
+            $(me.click_all).prop("checked", true); 
         } else {
             $(me.check_feed_id).prop("checked", false);
             $(me.click_all).prop("checked", false);

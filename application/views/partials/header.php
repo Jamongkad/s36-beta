@@ -6,44 +6,16 @@
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
-        <?=HTML::style('css/grid.css')?> 
-        <?=HTML::style('css/romanticc.css')?>
-        <?=HTML::style('css/admin.css')?>
-        <?=HTML::style('css/zebra_pagination.css')?>
+        <?=HTML::script('js/jquery-1.7.1.min.js')?>
 
-        <?//=HTML::script('js/jquery-1.7.1.min.js')?>
-
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js'></script>
         -->
         <?//=HTML::script('js/ember-0.9.3.min.js')?>
-
-        <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
-        <?=HTML::script('js/DropDownChange.js')?>
-        <?=HTML::script('js/InboxStatusChange.js')?>
-        <?=HTML::script('js/FeedSetup.js')?>
-        <?=HTML::script('js/Status.js')?>
-
         <?//=HTML::script('js/Backbone.js')?>
-
-        <?=HTML::script('js/jquery.switcharoo.js')?>
-        <?=HTML::script('js/jquery.fancytips.js')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?=HTML::script('js/jquery.form.js')?>
-        <?=HTML::script('js/jquery.tmpl.js')?>
-        <?=HTML::script('js/jquery.jcrop.js')?>
-        <?=HTML::script('js/jquery.ajaxfileupload.js')?>
-     
-        <?=HTML::script('js/jquery.flot.js')?>
-        <?=HTML::script('js/jquery.flot.pie.js')?>
-        <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>
-
-        <?=HTML::script('js/s36application.js')?>
-        <?=HTML::script('js/jquery.pjax.js')?>
 
     </meta>    
 </head>

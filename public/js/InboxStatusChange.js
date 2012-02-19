@@ -59,11 +59,17 @@ InboxStateObject.prototype.process = function() {
 
         });
     }
-
+    
+    /*
     $('a.close-checky').live('click', function(e) {
         $(this).parents('.check').remove();
         e.preventDefault(); 
     });
+    */
+    $(document).delegate('a.close-checky', 'click', function(e) { 
+        $(this).parents('.check').remove();
+        e.preventDefault(); 
+   })
 
 }
 
@@ -190,6 +196,10 @@ function InboxStatusChange(opts)  {
 
 InboxStatusChange.prototype.initialize = function() {
     var me = this;
+    $(document).delegate(me.inbox_controls, 'click', function(e) {
+        console.log($(this));
+    })
+    /*
     $(me.inbox_controls).bind("click", function() {  
         var identifier = $(this).attr('class');         
         var us = $(this);
@@ -212,4 +222,5 @@ InboxStatusChange.prototype.initialize = function() {
             remove.undo();
         }
     })   
+    */
 }

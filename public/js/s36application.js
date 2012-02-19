@@ -24,6 +24,7 @@ jQuery(function($) {
     });
     */
 
+
     $('a.cat-picks').bind('click', function(e) {
 
         var deselect_this = false;
@@ -67,7 +68,7 @@ jQuery(function($) {
 
         e.preventDefault();
     })
-
+    //for modify feedback bit    
     $('a.flagged').bind("click", function(e) { 
         $(this).toggleClass("matched");
 
@@ -154,7 +155,7 @@ jQuery(function($) {
     })
     
     //fucking bug where in for some reason jquery cannot select the div.fast-forward-holder element when using the forward class name.  
-    $('.contact, .forward').bind('click', function(e) { 
+    $('.contact, .forward').live('click', function(e) { 
         var id = $(this).attr('id'); 
         var selector;
 
@@ -171,7 +172,7 @@ jQuery(function($) {
         selector.show()
         .hover(function() { 
             $('div.email-list > ul.email-picker li', this)
-            .bind('click', function() {
+            .live('click', function() {
                 var me = $(this);
                 me.parent().hide()
                        .siblings('.ff-form')
@@ -204,8 +205,11 @@ jQuery(function($) {
     })
 
     //End of FastForward
-    new InboxStatusChange($('.check, .feature, .remove, .popup-delete')).initialize(); 
+    //$('.check, .feature, .remove, .popup-delete')
+    new InboxStatusChange('.check, .feature, .remove, .popup-delete').initialize(); 
     $('div.undo-bar').hide(); 
+
+    //TODO: Please update
     $('.flag').switcharoo('-100px 0px');
        
     $.each($('ul#nav-menu li'), function(index, value) {
@@ -230,22 +234,21 @@ jQuery(function($) {
     
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
-    
-    var checkyBar = $('.checky-bar');
-    var check = new Checky({   feed_selection: $('.feed-selection')
-                             , check_feed_id: $('.check-feed-id')
-                             , category_feed_id: $('.category-feed-id')
-                             , click_all: $('.click-all')
-                             , checky_bar: checkyBar });
+     
+    var check = new Checky({   
+        feed_selection: '.feed-selection'
+      , check_feed_id: '.check-feed-id'
+      , category_feed_id: '.category-feed-id'
+      , click_all: '.click-all'
+    });
+
     check.init(); 
     check.clickAll();
-
 
     $('.status-change > select, .priority-change > select').hide();
 
     var statusChange = new DropDownChange({status_element: 'span.status-change', status_selector: 'change.status'});
     statusChange.enable();
-
     var priorityChange = new DropDownChange({status_element: 'span.priority-change', status_selector: 'change.priority'});
     priorityChange.enable();
 
