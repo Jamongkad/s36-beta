@@ -7,7 +7,6 @@
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <?=HTML::script('js/jquery-1.7.1.min.js')?>
-
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  

@@ -63,6 +63,7 @@ class WidgetLoader {
                 $option->site_id    = $obj->site_id;
                 $option->company_id = $obj->company_id;
                 $option->form_text  = $obj->form_text;
+                $option->form_question = $obj->form_question;
                 $option->theme_type = $obj->theme_type;
                 $option->widget = $obj->embed_type;
                 $wf = new WidgetFactory($option);
@@ -72,19 +73,35 @@ class WidgetLoader {
     }
 
     public function load_widget_js_code() {
-        $frame_url = str_replace("http://", '', Config::get('application.deploy_env'))."/widget/js_output?widgetId=\"+widgetId+\""; 
+        $deploy_env = Config::get('application.deploy_env');
+        $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\""; 
         $widgetkey = "'".$this->widget_obj->widgetkey."'";
-        $html = '
-            <script type="text/javascript">
-                var widgetId = '.$widgetkey.';
-                var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-                document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
-                var widget = new WidgetLoader({
-                    "widgetId": widgetId
-                });
-                widget.display();
-            </script>
-        ';
+        //TODO: break this shit up
+        if($this->widget_obj->widgettype == 'display') { 
+            $html = '
+                <script type="text/javascript">
+                    var widgetId = '.$widgetkey.';
+                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
+                    var widget = new WidgetLoader({
+                        "widgetId": widgetId
+                    });
+                    widget.display();
+                </script>
+            ';
+        } else {
+            $html = '
+                <script type="text/javascript" src="'.$deploy_env.'/js/s36_client_script.js"></script>
+                <script type="text/javascript">
+                    var widgetId = '.$widgetkey.';
+                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
+                    var tab = new s36Tab();
+                    tab.display();
+                </script>
+            '; 
+        }
+
         return trim($html);
     }
 
@@ -102,8 +119,9 @@ class WidgetLoader {
                             src='$frame_url'>Your Widget</iframe>
                     </span>";
          return trim($iframe);
-         */
-         return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
+         */ 
+         if($this->widget_obj->widgettype == 'display') 
+             return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
     }
 
     private function _load_object_code() {      

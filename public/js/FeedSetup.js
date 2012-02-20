@@ -65,12 +65,12 @@ jQuery(function($) {
                         , type: "GET"
                         , dataType: 'json'
                         , success: function(data) {
-                              s36Lightbox(data.width, data.height, data.html_view);
+                              //s36Lightbox(data.width, data.height, data.html_view);
                               //fuuuuuuck clean this up!! 
                               $("#widget-generate-view").val(data.html_widget_js_code);
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
-                          });
+                    });
 
                     console.log(responseText.widget.widgetkey);
                     new Status().notify("Success!", 1000);
@@ -96,6 +96,19 @@ jQuery(function($) {
 
                 //console.log(responseText.widget.widgetkey);
                 new Status().notify("Success!", 1000);
+
+                var widget_key = $("input[name=widgetkey]").val();
+                var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+                $.ajax({
+                    url: action
+                    , type: "GET"
+                    , dataType: 'json'
+                    , success: function(data) {
+                          //s36Lightbox(data.width, data.height, data.html_view);
+                          //fuuuuuuck clean this up!! 
+                          $("#widget-generate-view").val(data.html_widget_js_code); 
+                      } 
+                });
                 /* 
                 $("#widget-generate-view").val(data.html_widget_js_code);
                 $("#iframe-generate-view").val(data.html_iframe_code);
@@ -114,7 +127,7 @@ jQuery(function($) {
         //start making fake forms! 
         $.ajax({
               url: $(this).attr('hrefaction')
-            , type: 'GET'
+            , data: {form_text: $("input[name=form_text]").val(), form_question: $("input[name=form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 
                   s36Lightbox(data.width, data.height, data.html_view);

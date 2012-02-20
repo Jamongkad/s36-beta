@@ -62,7 +62,7 @@ function s36_openLightbox(width,height,src) {
 /****************************************************************
 /*	function that will open the form in a modal window
 ****************************************************************/
-function s36_openForm(siteId,companyId, form_url) {
+function s36_openForm(form_url) {
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -74,7 +74,6 @@ function s36_openForm(siteId,companyId, form_url) {
 		s36_closebtn.setAttribute("onclick","s36_closeLightbox()");		
 		s36_modalbox.appendChild (s36_closebtn);
 		
-	//var src 	= "http://dev.gearfish.com/widget/form?siteId="+siteId+"&companyId="+companyId;	
 	var width 	= 447;
 	var height 	= 590;
 	// needed for the marginLeft property of the lightbox. 

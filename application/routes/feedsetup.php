@@ -82,6 +82,7 @@ return array(
         $data['widget_type'] = 'display';
         $data['site_nm'] = $site->domain;
         $dbw->update_widget_by_id($data['widgetkey'], (object)$data); 
+        //theoritcally this should work...$dbw->push_widget_db($data);
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
@@ -128,8 +129,10 @@ return array(
             $data['widget_type'] = 'display';
             $data['site_nm'] = $site->domain; 
 
-            $data_object = (object)$data;
+            $dbw->push_widget_db($data);
             //Helpers::show_data($data);
+            /*
+            $data_object = (object)$data;
             if(!$widgetkey = $data['widgetkey']) {
                 //save widget
                 $save_result = $dbw->save_widget( $data_object );         
@@ -139,6 +142,7 @@ return array(
                 $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
                 echo json_encode( $update_result ); 
             }
+            */
         }       
     },
 
@@ -148,20 +152,14 @@ return array(
         $data['widget_type'] = 'submit';
         $data['site_nm'] = $site->domain;
         $data['embed_type'] = 'form';
-        
-        $data_object = (object)$data;
-        //Helpers::show_data($data);
-        if(!$widgetkey = $data['widgetkey']) {
-            //save widget 
-            $save_result = $dbw->save_widget( $data_object );         
-            echo json_encode( $save_result ); 
-            //echo json_encode(Array('status' => 'save'));
+ 
+        if(preg_match('~tab-(br|bl|tr|tl)~', $data['tab_type'], $match)) {
+            $data['tab_pos'] = 'corner';
         } else {
-            //update widget      
-            $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
-            echo json_encode( $update_result );   
-            //echo json_encode(Array('status' => 'update'));
+            $data['tab_pos'] = 'side';
         }
+
+        $dbw->push_widget_db($data);
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
@@ -181,23 +179,26 @@ return array(
     //TODO: something is wrong here...
     'GET /feedsetup/preview_widget_style/(:any)' => function($theme) {
         $width  = 447;
-        $height = 590;
-        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme;
+        $height = 590;       
+        //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme
+                                                          .'?form_text='.Input::get('form_text').'&form_question='.Input::get('form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
-        echo json_encode($data);
+        echo json_encode($data); 
     },
-
+    
+    //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any)' => function($theme) {
         $option = new StdClass;
         $option->site_id    = 1;
         $option->company_id = 1;
-        $option->form_text  = "This is an example form";
+        $option->form_text  = Input::get('form_text');
+        $option->form_question  = Input::get('form_question');
         $option->theme_type = $theme;
         $option->widget = "form";
         $wf = new WidgetFactory($option);
         $load_widget = $wf->load_widget();
         return $load_widget->render();
-    }
-    
+    },
 );

@@ -25,6 +25,12 @@
                             </td>
                             <td><input type="text" class="large-text" name="form_text" value="" title="ex. Give us your feedback" /></td>
                         </tr>
+                        <tr>
+                            <td>
+                                <strong style="font-size:14px;">What to write :</strong>
+                            </td>
+                            <td><input type="text" class="large-text" name="form_question" value="" title="ex. How do you feel about our products?" /></td>
+                        </tr>
                     </table>
             </div>
         </div>

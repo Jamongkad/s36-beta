@@ -1,0 +1,242 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tab-cornertab{
+	position:fixed;
+	width:76px;
+	height:76px;
+	background-position:no-repeat;
+	cursor:pointer;
+}
+.tab-sidetab{
+	position:fixed;
+	width:31px;
+	height:92px;
+	background-position:no-repeat;
+	cursor:pointer;
+}
+
+/* colors */
+
+/* bottom left tabs */
+.tab-bl-black{
+	background:url(tab-designs/bl-black-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-ocean-blue{
+	background:url(tab-designs/bl-ocean-blue-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-silver-gray{
+	background:url(tab-designs/bl-silver-gray-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-forest-green{
+	background:url(tab-designs/bl-forest-green-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-sleek-orange{
+	background:url(tab-designs/bl-sleek-orange-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-thin-red{
+	background:url(tab-designs/bl-thin-red-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+.tab-bl-mandarin{
+	background:url(tab-designs/bl-mandarin-tab-design.png);
+	left:0px;
+	bottom:0px;
+}
+
+
+/* bottom right tabs */
+.tab-br-black{
+	background:url(tab-br-designs/br-black-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-ocean-blue{
+	background:url(tab-br-designs/br-ocean-blue-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-silver-gray{
+	background:url(tab-br-designs/br-silver-gray-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-forest-green{
+	background:url(tab-br-designs/br-forest-green-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-sleek-orange{
+	background:url(tab-br-designs/br-sleek-orange-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-thin-red{
+	background:url(tab-br-designs/br-thin-red-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+.tab-br-mandarin{
+	background:url(tab-br-designs/br-mandarin-tab-br-design.png);
+	right:0px;
+	bottom:0px;
+}
+
+/* top right tabs */
+.tab-tr-black{
+	background:url(tab-tr-designs/tr-black-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-ocean-blue{
+	background:url(tab-tr-designs/tr-ocean-blue-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-silver-gray{
+	background:url(tab-tr-designs/tr-silver-gray-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-forest-green{
+	background:url(tab-tr-designs/tr-forest-green-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-sleek-orange{
+	background:url(tab-tr-designs/tr-sleek-orange-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-thin-red{
+	background:url(tab-tr-designs/tr-thin-red-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+.tab-tr-mandarin{
+	background:url(tab-tr-designs/tr-mandarin-tab-tr-design.png);
+	right:0px;
+	top:0px;
+}
+
+/* top left tabs */
+.tab-tl-black{
+	background:url(tab-designs/tl-black-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-ocean-blue{
+	background:url(tab-designs/tl-ocean-blue-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-silver-gray{
+	background:url(tab-designs/tl-silver-gray-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-forest-green{
+	background:url(tab-designs/tl-forest-green-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-sleek-orange{
+	background:url(tab-designs/tl-sleek-orange-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-thin-red{
+	background:url(tab-designs/tl-thin-red-tab-design.png);
+	left:0px;
+	top:0px;
+}
+.tab-tl-mandarin{
+	background:url(tab-designs/tl-mandarin-tab-design.png);
+	left:0px;
+	top:0px;
+}
+
+/* lefttabs */
+.tab-l-black{
+	background:url(tab-designs/l-black-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-ocean-blue{
+	background:url(tab-designs/l-ocean-blue-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-silver-gray{
+	background:url(tab-designs/l-silver-gray-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-forest-green{
+	background:url(tab-designs/l-forest-green-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-sleek-orange{
+	background:url(tab-designs/l-sleek-orange-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-thin-red{
+	background:url(tab-designs/l-thin-red-tab-design.png);
+	left:0px;
+	top:20%;
+}
+.tab-l-mandarin{
+	background:url(tab-designs/l-mandarin-tab-design.png);
+	left:0px;
+	top:20%;
+}
+
+/* right tabs */
+.tab-r-black{
+	background:url(tab-designs/r-black-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-ocean-blue{
+	background:url(tab-designs/r-ocean-blue-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-silver-gray{
+	background:url(tab-designs/r-silver-gray-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-forest-green{
+	background:url(tab-designs/r-forest-green-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-sleek-orange{
+	background:url(tab-designs/r-sleek-orange-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-thin-red{
+	background:url(tab-designs/r-thin-red-tab-design.png);
+	right:0px;
+	top:20%;
+}
+.tab-r-mandarin{
+	background:url(tab-designs/r-mandarin-tab-design.png);
+	right:0px;
+	top:20%;
+}

@@ -55,6 +55,7 @@ class SubmissionWidget extends WidgetTypes {
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
         $this->form_text  = $options->form_text;
+        $this->form_question = $options->form_question;
         $this->theme_type = $options->theme_type;
     }
 
@@ -69,6 +70,7 @@ class SubmissionWidget extends WidgetTypes {
           , 'site_id' => $this->site_id
           , 'company_id' => $this->company_id
           , 'form_text' => $this->form_text
+          , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
           , 'response' => 0
         ))->get();  

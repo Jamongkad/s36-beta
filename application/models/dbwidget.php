@@ -2,6 +2,23 @@
 
 class DBWidget extends S36DataObject {    
 
+    public function push_widget_db($data) {
+
+        $data_object = (object)$data;
+
+        if(!$widgetkey = $data['widgetkey']) {
+            //save widget 
+            $save_result = $this->save_widget( $data_object );         
+            echo json_encode( $save_result ); 
+            //echo json_encode(Array('status' => 'save'));
+        } else {
+            //update widget      
+            $update_result = $this->update_widget_by_id( $widgetkey, $data_object );
+            echo json_encode( $update_result );   
+            //echo json_encode(Array('status' => 'update'));
+        } 
+    }
+
     public function save_widget($widget_obj) {
 
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);

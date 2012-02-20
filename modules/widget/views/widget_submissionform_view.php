@@ -1,10 +1,5 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		
-	});	
-</script>
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
 
@@ -86,19 +81,11 @@
                         </ul>
                     </div>
                     <br />
-                    <h3>Share Your Feedback About Us<a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
-                    <!--
-                    <br />
+                    <h4>Tells us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h4>
                     <div id="s36_whattowrite">
-                    	<h4>This is a customizable-field in backend</h4>
-                        <ul>
-                        	<li>Where did you hear about us?
-							<li>Were there previous products you were unsatisfied with?</li>
-							<li>Was there anything you didn't expect?</li>
-                        </ul>
-                    </div>
-                    -->
+                    	<h4><?=$form_question?></h4>
                     <br />
+                    </div>
                     <div class="feedback">
                         <textarea id="feedback_text" class="regular-textarea"></textarea>
                     </div>

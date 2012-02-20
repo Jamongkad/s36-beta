@@ -34,11 +34,22 @@ return array(
     'GET /widget/js_output' => function() { 
         $widget_id = Input::get('widgetId');
         $wl = new WidgetLoader($widget_id); 
+        
+        $tab_type = null;
+        $tab_pos = null;
+        if($wl->widget_obj->widgettype == 'submit') { 
+            $tab_type = $wl->widget_obj->widgetobj->tab_type;
+            $tab_pos = $wl->widget_obj->widgetobj->tab_pos;
+        }
 
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
           , 'width' => $wl->widget_obj->width
           , 'height' => $wl->widget_obj->height
+          , 'widgettype' => $wl->widget_obj->widgettype
+          , 'widgetkey' => $wl->widget_obj->widgetkey
+          , 'tab_type' => $tab_type
+          , 'tab_pos' => $tab_pos
         );
         return View::make('widget::widget_js_output', $data);
     },
