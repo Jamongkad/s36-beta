@@ -12,6 +12,9 @@ function WidgetLoader() {
         document.write(this.generateFrameMarkup());
     }
 }
+
+var dis  = new WidgetLoader();
+dis.display();
 <?endif?>
 
 <?if($widgettype == 'submit'):?>
@@ -27,4 +30,7 @@ function s36Tab() {
         document.write(this.generateTab());
     }	
 }
+
+var tab = new s36Tab();
+tab.display();
 <?endif?>
