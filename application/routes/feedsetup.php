@@ -62,12 +62,28 @@ return array(
         Helpers::show_data($wl);
         Helpers::show_data($edit_view);
         */
+        //TODO place this motherfucker in a model
+        $form_themes = array(
+            'black'=>'Black',
+            'silver-gray'=>'Silver Gray',
+            'ocean-blue'=>'Ocean Blue',
+            'forest-green'=>'Forest Green',
+            'mandarin'=>'Mandarin',
+            'sleek-orange'=>'Sleek Orange',
+            'thin-red'=>'Thin Red',
+            'aglow'=>'Aglow',
+            'silver'=>'Silver',
+            'chrome'=>'Chrome',
+            'classic'=>'Classic'
+        );
+
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
+          , 'form_themes'     => $form_themes
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_js_code()
         ));
@@ -95,9 +111,25 @@ return array(
     }),
 
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
+
+        $form_themes = array(
+            'black'=>'Black',
+            'silver-gray'=>'Silver Gray',
+            'ocean-blue'=>'Ocean Blue',
+            'forest-green'=>'Forest Green',
+            'mandarin'=>'Mandarin',
+            'sleek-orange'=>'Sleek Orange',
+            'thin-red'=>'Thin Red',
+            'aglow'=>'Aglow',
+            'silver'=>'Silver',
+            'chrome'=>'Chrome',
+            'classic'=>'Classic'
+        );
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view', Array(
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'company_id'      => S36Auth::user()->companyid
+          , 'form_themes'     => $form_themes
         ));
     }),
      

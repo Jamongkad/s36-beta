@@ -50,21 +50,6 @@
             <div class="widget-types">
                 <strong style="font-size:14px;">Form Theme Design :</strong>
                 <div class="widget-info" style="margin:0px -20px;">
-                <?php  
-                    $form_themes = array(
-                        'black'=>'Black',
-                        'silver-gray'=>'Silver Gray',
-                        'ocean-blue'=>'Ocean Blue',
-                        'forest-green'=>'Forest Green',
-                        'mandarin'=>'Mandarin',
-                        'sleek-orange'=>'Sleek Orange',
-                        'thin-red'=>'Thin Red',
-                        'aglow'=>'Aglow',
-                        'silver'=>'Silver',
-                        'chrome'=>'Chrome',
-                        'classic'=>'Classic'
-                    );
-                ?>
                     <div class="form-design-slide">
                         <div class="form-design-prev">
                         </div>
@@ -119,23 +104,10 @@
                 <div id="tab-slider" class="widget-info" style="margin:0px -20px;">
                 
                 <?php
-                    $tab_themes = array(
-                        'black'=>'Black',
-                        'silver-gray'=>'Silver Gray',
-                        'ocean-blue'=>'Ocean Blue',
-                        'forest-green'=>'Forest Green',
-                        'mandarin'=>'Mandarin',
-                        'sleek-orange'=>'Sleek Orange',
-                        'thin-red'=>'Thin Red',
-                        'aglow'=>'Aglow',
-                        'silver'=>'Silver',
-                        'chrome'=>'Chrome',
-                        'classic'=>'Classic'
-                    );
                       
                     $positions = Array();
                     foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-                        $positions[$v] = $tab_themes;
+                        $positions[$v] = $form_themes;
                     }
 
                     $theme_slides = '';
@@ -146,7 +118,7 @@
                                       <div class="'.$pos.'-designs grids">';
                                         $units = 7;
                                         $ctr = 0;
-                                        $max = count($tab_themes);
+                                        $max = count($form_themes);
                                         
                                         foreach($theme as $key => $val){
                                             
