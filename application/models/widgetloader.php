@@ -74,7 +74,7 @@ class WidgetLoader {
 
     public function load_widget_js_code() {
         $deploy_env = Config::get('application.deploy_env');
-        $widgetkey = "'".$this->widget_obj->widgetkey."'";
+        $widgetkey = $this->widget_obj->widgetkey;
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"".$widgetkey."\""; 
     
         //TODO: break this shit up or lessen it up mah nigguh
