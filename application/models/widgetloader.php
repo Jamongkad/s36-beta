@@ -75,17 +75,15 @@ class WidgetLoader {
     public function load_widget_js_code() {
         $deploy_env = Config::get('application.deploy_env');
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\""; 
-        $widgetkey = "'".$this->widget_obj->widgetkey."'";
-        //TODO: break this shit up
+        //$widgetkey = "'".$this->widget_obj->widgetkey."'";
+
+        //TODO: break this shit up or lessen it up mah nigguh
         if($this->widget_obj->widgettype == 'display') { 
             $html = '
                 <script type="text/javascript">
-                    var widgetId = '.$widgetkey.';
                     var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
                     document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
-                    var widget = new WidgetLoader({
-                        "widgetId": widgetId
-                    });
+                    var widget = new WidgetLoader();
                     widget.display();
                 </script>
             ';
@@ -93,7 +91,6 @@ class WidgetLoader {
             $html = '
                 <script type="text/javascript" src="'.$deploy_env.'/js/s36_client_script.js"></script>
                 <script type="text/javascript">
-                    var widgetId = '.$widgetkey.';
                     var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
                     document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
                     var tab = new s36Tab();
@@ -108,20 +105,8 @@ class WidgetLoader {
     public function load_iframe_code() {
         $widgetkey = $this->widget_obj->widgetkey;
         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
-        /*
-        $iframe = "<span style='z-index:100001'>
-                    <iframe id='s36Widget' 
-                            allowTransparency='true' 
-                            height={$this->widget_obj->height}
-                            width={$this->widget_obj->width}
-                            frameborder='0' 
-                            scrolling='no' 
-                            src='$frame_url'>Your Widget</iframe>
-                    </span>";
-         return trim($iframe);
-         */ 
-         if($this->widget_obj->widgettype == 'display') 
-             return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
+        if($this->widget_obj->widgettype == 'display') 
+            return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
     }
 
     private function _load_object_code() {      
