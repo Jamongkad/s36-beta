@@ -21,7 +21,9 @@ function s36Tab() {
 	this.type = '<?=$tab_type?>', //br,tr,tl,tr,r,l
 	this.position = '<?=$tab_pos?>', // sidetab or cornertab	
 	this.generateTab= function(){
-        var src = '<link type="text/css" href="<?=$deploy_url?>/css/widget_master/tab-positions.css" rel="stylesheet" />'+
+        var src = '<script type="text/javascript" src="<?=$deploy_url?>/js/s36_client_script.js"></script>' + 
+                  '<link href="<?=$deploy_url?>/css/s36_client_style.css" media="all" rel="stylesheet" type="text/css">' +
+                  '<link type="text/css" href="<?=$deploy_url?>/css/widget_master/tab-positions.css" rel="stylesheet" />'+
 				  '<div id="s36LeaveFeedback" onclick="s36_openForm(\'<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>\')" class="tab-'+this.position+'tab '+this.type+'"></div>';				
         return src;
 	},
