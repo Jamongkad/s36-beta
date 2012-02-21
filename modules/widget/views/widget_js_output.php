@@ -15,7 +15,7 @@ function WidgetLoader() {
 <?endif?>
 
 <?if($widgettype == 'submit'):?>
-function s36Tab(){
+function s36Tab() {
 	this.type = '<?=$tab_type?>', //br,tr,tl,tr,r,l
 	this.position = '<?=$tab_pos?>', // sidetab or cornertab	
 	this.generateTab= function(){
