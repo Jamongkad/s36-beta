@@ -85,12 +85,12 @@
                         //avatar
                         $pic = trim($r->avatar);
                         $avatar = null;
+                        $no_avatar_class = null;
                         if ($r->rules->displayimg == 1)  {
                             if($pic == false){
                                 $no_avatar_class = "no-avatar-class";
                             }else{
                                 $avatar = '<img src="/uploaded_cropped/150x150/'.$pic.'" />';
-                                $no_avatar_class = "";
                             }    
                         } else {
                             $avatar = '<img src="/img/blank-avatar.png" />';

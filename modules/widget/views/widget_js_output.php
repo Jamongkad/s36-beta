@@ -1,5 +1,4 @@
 <?php header("Content-type: application/x-javascript; charset=UTF-8"); ?>
-
 <?if($widgettype == 'display'):?>
 function WidgetLoader() {
     this.generateFrameMarkup = function() {
