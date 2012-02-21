@@ -58,7 +58,7 @@ class WidgetLoader {
         }
 
         if($obj->widget_type == 'submit') {
-             if ($type == 'view') {
+            if ($type == 'view') {
                 $option = new StdClass;
                 $option->site_id    = $obj->site_id;
                 $option->company_id = $obj->company_id;
@@ -77,30 +77,13 @@ class WidgetLoader {
         $widgetkey = "'".$this->widget_obj->widgetkey."'";
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\""; 
 
-        //TODO: break this shit up or lessen it up mah nigguh
-        if($this->widget_obj->widgettype == 'display') { 
-            $html = '
-                <script type="text/javascript">
-                    var widgetId = '.$widgetkey.';
-                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
-                    var widget = new WidgetLoader();
-                    widget.display();
-                </script>
-            ';
-        } else {
-            $html = '
-                <script type="text/javascript" src="'.$deploy_env.'/js/s36_client_script.js"></script>
-                <link href="'.$deploy_env.'/css/s36_client_style.css" media="all" rel="stylesheet" type="text/css">
-                <script type="text/javascript">
-                    var widgetId = '.$widgetkey.';
-                    var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-                    document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
-                    var tab = new s36Tab();
-                    tab.display();
-                </script>
-            '; 
-        }
+        $html = '
+            <script type="text/javascript">
+                var widgetId = '.$widgetkey.';
+                var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
+            </script>
+        ';
 
         return trim($html);
     }

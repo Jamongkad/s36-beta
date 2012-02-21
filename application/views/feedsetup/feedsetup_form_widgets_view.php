@@ -51,16 +51,21 @@
             <div class="widget-types">
                 <strong style="font-size:14px;">Form Theme Design :</strong>
                 <div class="widget-info" style="margin:0px -20px;">
+
                 <?php  
-                    $colors = array(
-                                    'black'=>'Black',
-                                    'silver-gray'=>'Silver Gray',
-                                    'ocean-blue'=>'Ocean Blue',
-                                    'forest-green'=>'Forest Green',
-                                    'mandarin'=>'Mandarin',
-                                    'sleek-orange'=>'Sleek Orange',
-                                    'thin-red'=>'Thin Red'
-                                   );                                         
+                    $form_themes = array(
+                        'black'=>'Black',
+                        'silver-gray'=>'Silver Gray',
+                        'ocean-blue'=>'Ocean Blue',
+                        'forest-green'=>'Forest Green',
+                        'mandarin'=>'Mandarin',
+                        'sleek-orange'=>'Sleek Orange',
+                        'thin-red'=>'Thin Red',
+                        'aglow'=>'Aglow',
+                        'silver'=>'Silver',
+                        'chrome'=>'Chrome',
+                        'classic'=>'Classic'
+                    );
                 ?>
                     <div class="form-design-slide">
                         <div class="form-design-prev">
@@ -69,17 +74,31 @@
                             <div class="form-design-group grids">
                                 <?php
                                     $form_slides = '';
-                                    foreach($colors as $form_colors => $val){
-                                        $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
-                                                            <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
-                                                            <br />
-                                                            <span>'.$val.'</span>
-                                                            <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
-                                                                Preview
-                                                            </div>
-                                                        </div>'; 
+                                    $units = 7;
+                                    $ctr = 0;
+                                    $max = count($form_themes );
+                                    
+                                    foreach($form_themes  as $form_colors => $val){
+                                        if(($ctr % $units) == 0){
+                                            $form_slides .= '<div class="form-design-group grids">';
+                                            $end = 1;
+                                        }
+                                        
+                                            $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
+                                                                <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
+                                                                <span>'.$val.'</span>
+                                                                <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
+                                                                    Preview
+                                                                </div>
+                                                            </div>';
+                                        
+                                         if(($end == $units) || $ctr == ($max - 1)){
+                                            $form_slides .= '</div>';
+                                        }
+                                        $end++;
+                                        $ctr++;
                                     }
-                                    echo $form_slides;
+                                    echo $form_slides
                                 ?>
                             </div>
                         </div> 
@@ -102,30 +121,62 @@
                 <div id="tab-slider" class="widget-info" style="margin:0px -20px;">
                 
                 <?php
-                    
-                    $positions  = array('r','l','br','bl','tr','tl');
-                    
-                    $slider = '';
-                    foreach ($positions as $pos) {
-                        $slider .= '<div class="'.$pos.'-design-slide">
+                    $tab_themes = array(
+                        'black'=>'Black',
+                        'silver-gray'=>'Silver Gray',
+                        'ocean-blue'=>'Ocean Blue',
+                        'forest-green'=>'Forest Green',
+                        'mandarin'=>'Mandarin',
+                        'sleek-orange'=>'Sleek Orange',
+                        'thin-red'=>'Thin Red',
+                        'aglow'=>'Aglow',
+                        'silver'=>'Silver',
+                        'chrome'=>'Chrome',
+                        'classic'=>'Classic'
+                    );
+                      
+                    $positions = Array();
+                    foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
+                        $positions[$v] = $tab_themes;
+                    }
+
+                    $theme_slides = '';
+                    foreach($positions as $pos => $theme){
+                        $theme_slides .= '<div class="'.$pos.'-design-slide">
                                       <div class="'.$pos.'-design-prev">
                                       </div>
-                                      <div class="'.$pos.'-designs grids">
-                                      <div class="form-design-group grids">';
-                                        foreach($colors as $key => $val){
-                                            $slider .= '<div class="tab-design" id="tab-'.$pos.'-'.$key.'">
+                                      <div class="'.$pos.'-designs grids">';
+                                        $units = 7;
+                                        $ctr = 0;
+                                        $max = count($tab_themes);
+                                        
+                                        foreach($theme as $key => $val){
+                                            
+                                            if(($ctr % $units) == 0){
+                                                $theme_slides .= '<div class="form-design-group grids">';
+                                                $end = 1;
+                                            }
+                                            $theme_slides .= '<div class="tab-design" id="tab-'.$pos.'-'.$key.'">
                                                             <img src="/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png" height="60" />
                                                             <br />
                                                             <span>'.$val.'</span>
                                                         </div>';
+                                            
+                                            if(($end == $units) || $ctr == ($max - 1)){
+                                                $theme_slides .= '</div>';
+                                            }
+                                            
+                                            $end++;
+                                            $ctr++;
                                         }
-                                    $slider .= '</div>
-                                            </div>
+                                        
+                                $theme_slides .= '</div>
                                         <div class="'.$pos.'-design-next">
                                         </div>
-                                    </div>';                 
+                                    </div>';
                     }
-                    echo $slider;	
+                    echo $theme_slides;	
+                    
                 ?>
                 </div>
             </div>
