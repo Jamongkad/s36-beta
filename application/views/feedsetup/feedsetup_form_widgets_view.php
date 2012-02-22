@@ -159,6 +159,10 @@
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
+
+                    <!-- add this -->
+                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                    <!-- end add this -->
                 </div>
 
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
