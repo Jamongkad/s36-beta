@@ -8,8 +8,8 @@
         <div class="widget-options">
             <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
             <!-- selected form and color -->
-                <input type="hidden" name="theme_type" value="form-black" id="selected-form" />
-                <input type="hidden" name="tab_type" value="tab-l-black" id="selected-tab" />
+                <input type="hidden" name="theme_type" value="form-aglow" id="selected-form" />
+                <input type="hidden" name="tab_type" value="tab-l-aglow" id="selected-tab" />
             <!-- end -->
             <div class="widget-types">
                     <table width="100%" cellpadding="5" cellspacing="0">
@@ -66,11 +66,12 @@
                                     $form_slides .= '<div class="form-design-group grids">';
                                     $end = 1;
                                 }
-                                
-                                    $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
+  
+                                    $color_name = 'form-'.$form_colors;
+                                    $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                         <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
                                                         <span>'.$val.'</span>
-                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
+                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/'.$color_name.'">
                                                             Preview
                                                         </div>
                                                     </div>';

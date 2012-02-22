@@ -277,32 +277,53 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $('.form-designs').cycle({
-        fx:      'scrollHorz', 
-        speed:    500, 
-        timeout:  0 ,
-        pause : 1,
-        next:   '.form-design-next', 
-        prev:   '.form-design-prev'				
-    });
 
-    
-    var positions = ['r','l','br','bl','tr','tl'];
-    var tabpos;
-    for(pos = 0;pos <= positions.length;pos++){
-        tabpos = positions[pos];
-        $('.'+tabpos+'-designs').cycle({
-            fx:      'scrollHorz', 
-            speed:    500, 
-            timeout:  0 ,
-            pause : 1,
-            next:   '.'+tabpos+'-design-next', 
-            prev:   '.'+tabpos+'-design-prev'    
-        });
-    } 
- 
-    $('.br-design-slide, .tr-design-slide, .bl-design-slide, .tl-design-slide, .r-design-slide').hide();
-        
+   var $form_slide = $('.form-designs').cycle({
+    fx:      'scrollHorz', 
+    speed:    500, 
+    timeout:  0 ,
+    pause : 1,
+    next:   '.form-design-next', 
+    prev:   '.form-design-prev'    
+   });
+   
+   var selected_form = $('#selected-form').val();   //get the selected form
+   var current_form_slide = $('#'+selected_form).parent(); //get the parent of the selected form
+   var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container
+   
+   $form_slide.cycle(form_index);        // cycle the form theme selection to the index number
+   $('#'+selected_form).addClass('selected-form');   // add class to the selected form thumbnail
+   
+   var positions = ['r','l','br','bl','tr','tl'];
+   var tabpos = '';  
+   
+   $tab_slide = [];
+   for(pos = 0;pos <= positions.length;pos++){
+    tabpos = positions[pos];
+    $tab_slide[tabpos] = $('.'+tabpos+'-designs').cycle({
+      fx:      'scrollHorz', 
+      speed:    500, 
+      timeout:  0 ,
+      pause : 1,
+      next:   '.'+tabpos+'-design-next', 
+      prev:   '.'+tabpos+'-design-prev'    
+     });
+   }
+   
+   var selected_tab = $('#selected-tab').val();   // get the selected tab
+   var current_tab_slide = $('#'+selected_tab).parent(); //show the parent of the selected tab
+   var tab_index  = parseInt(current_tab_slide.index());  // get the index of the parent container
+   var selected_pos = $('#tab-position').val();   // get the current value of the tab position dropdown box
+   
+   $tab_slide[selected_pos].cycle(tab_index);    // cycle the current tab design
+   $('#tab-slider').children().each(function(){   // hide all the tab design positions
+    $(this).hide();
+   });
+   
+   $('.'+selected_pos+'-design-slide').show();    // show the selected tab design
+   $('#'+selected_tab).addClass('selected-tab');   // add class to the selected tab thumbnail 
+
+
     $('#tab-position').change(function(){
         var slide = $(this).val();
         $('#tab-slider').children().each(function(){
@@ -311,12 +332,7 @@ jQuery(function($) {
         
         $('.'+slide+'-design-slide').show();
     });
-    
-    var selected_form = $('#selected-form').val();
-    var selected_tab = $('#selected-tab').val();
-    $('#'+selected_form).addClass('selected-form');
-    $('#'+selected_tab).addClass('selected-tab');
-    
+     
     $('.form-design').click(function(){
         
         var value = $(this).attr('id');

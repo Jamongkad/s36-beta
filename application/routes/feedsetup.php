@@ -2,6 +2,19 @@
 
 $feedback = new DBFeedback;
 $dbw = new DBWidget;
+$form_themes = array(
+    'aglow'=>'Aglow'
+  , 'silver'=>'Silver'
+  , 'chrome'=>'Chrome'
+  , 'classic'=>'Classic'
+  , 'black'=>'Black'
+  , 'silver-gray'=>'Silver Gray'
+  , 'ocean-blue'=>'Ocean Blue'
+  , 'forest-green'=>'Forest Green'
+  , 'mandarin'=>'Mandarin'
+  , 'sleek-orange'=>'Sleek Orange'
+  , 'thin-red'=>'Thin Red'
+);
 
 return array(
     'GET /feedsetup/all' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) {
@@ -50,7 +63,7 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) {  
+    'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
         $wl = new WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widgetobj->widget_type == 'display') {
@@ -62,20 +75,6 @@ return array(
         Helpers::show_data($wl);
         Helpers::show_data($edit_view);
         */
-        //TODO place this motherfucker in a model
-        $form_themes = array(
-            'black'=>'Black',
-            'silver-gray'=>'Silver Gray',
-            'ocean-blue'=>'Ocean Blue',
-            'forest-green'=>'Forest Green',
-            'mandarin'=>'Mandarin',
-            'sleek-orange'=>'Sleek Orange',
-            'thin-red'=>'Thin Red',
-            'aglow'=>'Aglow',
-            'silver'=>'Silver',
-            'chrome'=>'Chrome',
-            'classic'=>'Classic'
-        );
 
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -110,21 +109,7 @@ return array(
         )); 
     }),
 
-    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() { 
-
-        $form_themes = array(
-            'black'=>'Black',
-            'silver-gray'=>'Silver Gray',
-            'ocean-blue'=>'Ocean Blue',
-            'forest-green'=>'Forest Green',
-            'mandarin'=>'Mandarin',
-            'sleek-orange'=>'Sleek Orange',
-            'thin-red'=>'Thin Red',
-            'aglow'=>'Aglow',
-            'silver'=>'Silver',
-            'chrome'=>'Chrome',
-            'classic'=>'Classic'
-        );
+    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) { 
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view', Array(
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -192,6 +177,7 @@ return array(
         }
 
         $dbw->push_widget_db($data);
+ 
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {

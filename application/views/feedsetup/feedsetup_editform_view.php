@@ -7,8 +7,8 @@
         <div class="widget-options">
             <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
             <!-- selected form and color -->
-                <input type="hidden" name="theme_type" value="form-black" id="selected-form" />
-                <input type="hidden" name="tab_type" value="tab-l-black" id="selected-tab" />
+                <input type="hidden" name="theme_type" value="<?=$widget->widgetobj->theme_type?>" id="selected-form" />
+                <input type="hidden" name="tab_type" value="<?=$widget->widgetobj->tab_type?>" id="selected-tab" />
             <!-- end -->
             <div class="widget-types">
                     <table width="100%" cellpadding="5" cellspacing="0">
@@ -64,11 +64,12 @@
                                     $form_slides .= '<div class="form-design-group grids">';
                                     $end = 1;
                                 }
-                                
-                                    $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
+                                    $color_name = 'form-'.$form_colors;
+                                    $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                         <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
                                                         <span>'.$val.'</span>
-                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
+                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style')
+                                                                 .'/'.$color_name.'">
                                                             Preview
                                                         </div>
                                                     </div>';
@@ -87,14 +88,30 @@
                     </div>
                 </div>
                 <br />
-                <strong style="font-size:14px;">Floating Tab Position : <select id="tab-position" class="regular-select" style="font-size:12px;padding:5px;">
-                                                                            <option value="l">Left Side Tab</option>
-                                                                            <option value="r">Right Side Tab</option>
-                                                                            <option value="tr" selected>Top Right Corner</option>
-                                                                            <option value="tl">Top Left Corner</option>
-                                                                            <option value="br">Bottom Right Corner</option>
-                                                                            <option value="bl">Bottom Left Corner</option>
-                                                                        </select></strong>
+                <strong style="font-size:14px;">Floating Tab Position : 
+                    <select id="tab-position" class="regular-select" style="font-size:12px;padding:5px;">
+                    <?php 
+                        preg_match('~tab-(br|bl|tr|tl|r|l)~', $widget->widgetobj->tab_type, $match);
+                        $select = Array(
+                            'l' => 'Left Side Tab'
+                          , 'r' => 'Right Side Tab'
+                          , 'tr' => 'Top Right Corner'
+                          , 'tl' => 'Top Left Corner'
+                          , 'br' => 'Bottom Right Corner'
+                          , 'bl' => 'Bottom Left Corner'
+                        );
+
+
+                        $string = "";
+
+                        foreach($select as $key => $value) {
+                            $string .= "<option value='$key' ".(($key == $match[1]) ? "selected" : null).">$value</option>";
+                        }
+
+                        echo $string;      
+                    ?>
+                    </select>
+                </strong>
                 <div class="widget-info" style="margin:0px -20px;"></div>
                 <br />
                 <strong style="font-size:14px;">Tab Design : </strong>
