@@ -181,18 +181,24 @@
         <div class="widget-opts" style="text-align:center">
 
             <div id="widget-preview">
-                <div class="widget-block">
+                <div class="widget-block" style="position:relative">
                     <h2>JS Widget Code (recommended)</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
                     </div>
+                    <!-- add this -->
+                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                    <!-- end add this -->
                 </div>
 
-                <div class="widget-block">
+                <div class="widget-block" style="position:relative">
                     <h2>IFrame Widget Code</h2>
                     <div class="html-code">
                         <textarea id="iframe-generate-view" spellcheck="false"></textarea>
                     </div>
+                    <!-- add this -->
+                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                    <!-- end add this -->
                 </div>
 
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>

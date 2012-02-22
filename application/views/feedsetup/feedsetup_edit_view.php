@@ -203,7 +203,7 @@
             <br/>
             <div class="widget-opts">
                 <div style="width: 360px;margin-left:auto;margin-right:auto">
-                    <div class="widget-block">
+                    <div class="widget-block" style="position:relative">
                         <h2>JS Widget Code (recommended)</h2>
                         <div class="html-code">
                             <textarea id="widget-generate-view" spellcheck="false">
@@ -212,7 +212,7 @@
                         </div>
                     </div>
 
-                    <div class="widget-block">
+                    <div class="widget-block" style="position:relative">
                         <h2>IFrame Widget Code</h2>
                         <div class="html-code">
                             <textarea id="iframe-generate-view" spellcheck="false">

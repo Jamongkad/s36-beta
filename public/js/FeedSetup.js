@@ -229,8 +229,8 @@ jQuery(function($) {
         $('#modal_widget').slideDown(); 
     }
 
-    $("#widget-preview").hide();
-    $("#widget-preview").siblings(".block").hide();
+    //$("#widget-preview").hide();
+    //$("#widget-preview").siblings(".block").hide();
 
     $("#edit-widget-btn").on("click", function(e) {   
         $.scrollTo('.widget-options:first-child', 800);
