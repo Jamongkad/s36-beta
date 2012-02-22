@@ -650,15 +650,16 @@ input.large-text{padding:10px;width:80%;}
 .form-design-prev,.l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
     float:left;
     width:25px;
-    height:80px;
-    
-    /* background:url(images/btn-prev.png) no-repeat center center; */
+    height:80px; 
+    background:url(../img/btn-prev.png) no-repeat center center; 
+    cursor:pointer;
 }
 .form-design-next,.l-design-next,.r-design-next,.br-design-next,.bl-design-next,.tr-design-next,.tl-design-next{
     float:right;
     width:25px;
     height:80px;
-    /* background:url(images/btn-next.png) no-repeat center center; */
+    background:url(../img/btn-next.png) no-repeat center center;
+    cursor:pointer;
 }
 .form-designs,.l-designs,.r-designs,.br-designs,.bl-designs,.tr-designs,.tl-designs{
     width:606px;

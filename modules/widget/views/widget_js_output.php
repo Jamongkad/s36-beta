@@ -1,4 +1,7 @@
-<?php header("Content-type: application/x-javascript; charset=UTF-8"); ?>
+<?php 
+session_cache_limiter("private_no_expire"); 
+header("Content-type: application/x-javascript; charset=UTF-8"); 
+?>
 <?if($widgettype == 'display'):?>
 function WidgetLoader() {
     this.generateFrameMarkup = function() {

@@ -84,7 +84,7 @@ a.cropbtn:hover{
 }
 
 a.s36_btn{
-	background:url(images/classic/classic-btn-bg.png) repeat-x;
+	background:url(images/chrome/chrome-btn-bg.png) repeat-x;
 	padding:7px 22px;
 	border-radius:6px;
 	-moz-border-radius:6px;
@@ -101,7 +101,7 @@ a.s36_btn:hover{
 	text-shadow:none;
 }
 
-	.s36_pages h1{margin:0px;padding:14px 30px;background:#bdbdbd url(images/classic/classic-btn-bg.png) repeat-x;font-size:22px;color:#333;text-shadow:#DDD 0px 1px;}
+	.s36_pages h1{margin:0px;padding:14px 30px;background:#bdbdbd url(images/chrome/chrome-btn-bg.png) repeat-x;font-size:22px;color:#333;text-shadow:#DDD 0px 1px;}
 	.s36_pages h3{color:#303030;font-size:15px;margin:0px;padding:5px 0px;}
 	.s36_pages h3 a.s36_tip{font-size:11px;color:#c3c3c3;text-decoration:none;padding-left:4px;font-weight:normal;}
 	.s36_pages h3 a.s36_tip:hover{text-decoration:underline;}
@@ -298,5 +298,3 @@ input:focus{border:1px solid #b1d1e4;outline:#b1d1e4;box-shadow:#daecf8 0px 0px 
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-
-

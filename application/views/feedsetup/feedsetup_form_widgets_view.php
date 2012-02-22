@@ -38,7 +38,6 @@
             <h2><span>Step 2 :</span> Choose your website you want to apply your Widget to</h2>
             <div style="padding:10px">
                 <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-
                     <?foreach($site as $sites):?>
                         <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                     <?endforeach?>
@@ -55,37 +54,35 @@
                     <div class="form-design-slide">
                         <div class="form-design-prev">
                         </div>
-                        <div class="form-designs grids">
-                            <div class="form-design-group grids">
-                                <?php
-                                    $form_slides = '';
-                                    $units = 7;
-                                    $ctr = 0;
-                                    $max = count($form_themes);
-                                    
-                                    foreach($form_themes  as $form_colors => $val){
-                                        if(($ctr % $units) == 0){
-                                            $form_slides .= '<div class="form-design-group grids">';
-                                            $end = 1;
-                                        }
-                                        
-                                            $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
-                                                                <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
-                                                                <span>'.$val.'</span>
-                                                                <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
-                                                                    Preview
-                                                                </div>
-                                                            </div>';
-                                        
-                                         if(($end == $units) || $ctr == ($max - 1)){
-                                            $form_slides .= '</div>';
-                                        }
-                                        $end++;
-                                        $ctr++;
-                                    }
-                                    echo $form_slides
-                                ?>
-                            </div>
+                        <div class="form-designs grids"> 
+                        <?php
+                            $form_slides = '';
+                            $units = 7;
+                            $ctr = 0;
+                            $max = count($form_themes);
+                            
+                            foreach($form_themes  as $form_colors => $val){
+                                if(($ctr % $units) == 0){
+                                    $form_slides .= '<div class="form-design-group grids">';
+                                    $end = 1;
+                                }
+                                
+                                    $form_slides .= '<div class="form-design" id="form-'.$form_colors.'">
+                                                        <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
+                                                        <span>'.$val.'</span>
+                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style').'/form-'.$form_colors.'">
+                                                            Preview
+                                                        </div>
+                                                    </div>';
+                                
+                                 if(($end == $units) || $ctr == ($max - 1)){
+                                    $form_slides .= '</div>';
+                                }
+                                $end++;
+                                $ctr++;
+                            }
+                            echo $form_slides
+                        ?>
                         </div> 
                         <div class="form-design-next">
                         </div>

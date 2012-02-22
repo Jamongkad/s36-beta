@@ -299,8 +299,8 @@ jQuery(function($) {
             next:   '.'+tabpos+'-design-next', 
             prev:   '.'+tabpos+'-design-prev'    
         });
-    }
-                    
+    } 
+ 
     $('.br-design-slide, .tr-design-slide, .bl-design-slide, .tl-design-slide, .r-design-slide').hide();
         
     $('#tab-position').change(function(){
