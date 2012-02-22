@@ -158,11 +158,10 @@
                     <h2>JS Widget Code (recommended)</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
+                        <!-- add this -->
+                        <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                        <!-- end add this -->
                     </div>
-
-                    <!-- add this -->
-                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                    <!-- end add this -->
                 </div>
 
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
@@ -174,9 +173,6 @@
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Save" />
-                <!--
-
-                -->
             </div>
         </div>
     </div>

@@ -209,6 +209,9 @@
                             <textarea id="widget-generate-view" spellcheck="false">
                                 <?=$js_code?> 
                             </textarea>
+                            <!-- add this -->
+                            <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                            <!-- end add this -->
                         </div>
                     </div>
 
@@ -218,8 +221,15 @@
                             <textarea id="iframe-generate-view" spellcheck="false">
                                 <?=$iframe_code?> 
                             </textarea>
+                            <!-- add this -->
+                            <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                            <!-- end add this -->
                         </div>
                     </div>
+
+                    <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
+                    <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
+                    <a href="javascript;;" class="button-gray" id="preview-widget-btn">Preview</a>
                 </div>    
                 <!--
                 <div class="block noborder" style="height:490px;"></div>

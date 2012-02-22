@@ -48,9 +48,7 @@ jQuery(function($) {
                     widget_options.html("");  
 
                     $("#widget-preview").show();
-                    $("#widget-preview").siblings(".block").show();
 
-                    //if this bitch exists scroll down!! :)
                     /*
                     if($('#code-generate-view').length > 0) {
                         $.scrollTo('#code-generate-view', 800);     
@@ -70,6 +68,8 @@ jQuery(function($) {
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
                     });
+
+                    new ZClip();
                     new Status().notify("Success!", 1000);
                 }   
           }
@@ -107,22 +107,7 @@ jQuery(function($) {
                       } 
                 });
 
-                $('#widget-generate-view').zclip({
-                    path:'/js/ZeroClipboard.swf',
-                    copy:$('#widget-generate-view').text(),
-                    beforeCopy:function(){
-                        $('#copycheck').fadeIn();
-                        $('#widget-generate-view').animate({'backgroundColor':'#beffa2'},100);
-                    },
-                    afterCopy:function(){
-                        $('#copycheck').fadeOut();
-                        $('#widget-generate-view').animate({'backgroundColor':'#FFF'},500);
-                    }
-                });
-                /* 
-                $("#widget-generate-view").val(data.html_widget_js_code);
-                $("#iframe-generate-view").val(data.html_iframe_code);
-                */
+                new ZClip();
                 /*
                 window.onbeforeunload = function() {
                     return "Are you sure you want to navigate away from this page?";
@@ -238,10 +223,7 @@ jQuery(function($) {
         $('#embed_widget').slideUp();
         $('#modal_widget').slideDown(); 
     }
-
-    $("#widget-preview").hide();
-    $("#widget-preview").siblings(".block").hide();
-
+     
     $("#edit-widget-btn").on("click", function(e) {   
         $.scrollTo('.widget-options:first-child', 800);
         e.preventDefault();

@@ -26,6 +26,7 @@ if(S36Auth::check()):
 <?=HTML::style('css/admin.css')?>
 <?=HTML::style('css/zebra_pagination.css')?>
 
+<?=HTML::script('js/ZClip.js')?> 
 <?=HTML::script('js/Checky.js')?> 
 <?=HTML::script('js/FeedbackBlockDisplay.js')?>
 <?=HTML::script('js/DropDownChange.js')?>

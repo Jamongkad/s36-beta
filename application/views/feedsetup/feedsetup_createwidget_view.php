@@ -185,31 +185,32 @@
                     <h2>JS Widget Code (recommended)</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
+                        <!-- add this -->
+                        <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                        <!-- end add this -->
                     </div>
-                    <!-- add this -->
-                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                    <!-- end add this -->
                 </div>
 
                 <div class="widget-block" style="position:relative">
                     <h2>IFrame Widget Code</h2>
                     <div class="html-code">
                         <textarea id="iframe-generate-view" spellcheck="false"></textarea>
+                        <!-- add this -->
+                        <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
+                        <!-- end add this -->
                     </div>
-                    <!-- add this -->
-                    <div id="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                    <!-- end add this -->
                 </div>
 
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
                 <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
+                <a href="javascript;;" class="button-gray" id="preview-widget-btn">Preview</a>
             </div>    
 
         </div> 
 
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn create-widget-button" value="Save & Preview Your Widget" />
+                <input type="submit" class="large-btn create-widget-button" value="Save Widget" />
             </div>
         </div>
     </div>
