@@ -40,7 +40,7 @@ if(S36Auth::check()):
 <?=HTML::script('js/jquery.tmpl.js')?>
 <?=HTML::script('js/jquery.jcrop.js')?>
 <?=HTML::script('js/jquery.ajaxfileupload.js')?>
-
+<?=HTML::script('js/jquery.zclip.js')?>
 <?=HTML::script('js/jquery.flot.js')?>
 <?=HTML::script('js/jquery.flot.pie.js')?>
 <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>

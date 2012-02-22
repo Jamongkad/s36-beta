@@ -504,4 +504,18 @@ jQuery(function($) {
         }
     });
     $(".large-text").blur();
+
+    $('#copycheck').hide();
+    $('#widget-generate-view').zclip({
+        path:'/js/ZeroClipboard.swf',
+        copy:$('#widget-generate-view').text(),
+        beforeCopy:function(){
+            $('#copycheck').fadeIn();
+            $('#widget-generate-view').animate({'backgroundColor':'#beffa2'},100);
+        },
+        afterCopy:function(){
+            $('#copycheck').fadeOut();
+            $('#widget-generate-view').animate({'backgroundColor':'#FFF'},500);
+        }
+    });
 });
