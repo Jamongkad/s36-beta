@@ -57,7 +57,6 @@ jQuery(function($) {
                     }  
                     */
                     $("input[name=widgetkey]").val(responseText.widget.widgetkey);
-
                     var widget_key = $("input[name=widgetkey]").val();
                     var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     $.ajax({
@@ -71,8 +70,6 @@ jQuery(function($) {
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
                     });
-
-                    console.log(responseText.widget.widgetkey);
                     new Status().notify("Success!", 1000);
                 }   
           }
@@ -108,6 +105,19 @@ jQuery(function($) {
                           //fuuuuuuck clean this up!! 
                           $("#widget-generate-view").val(data.html_widget_js_code); 
                       } 
+                });
+
+                $('#widget-generate-view').zclip({
+                    path:'/js/ZeroClipboard.swf',
+                    copy:$('#widget-generate-view').text(),
+                    beforeCopy:function(){
+                        $('#copycheck').fadeIn();
+                        $('#widget-generate-view').animate({'backgroundColor':'#beffa2'},100);
+                    },
+                    afterCopy:function(){
+                        $('#copycheck').fadeOut();
+                        $('#widget-generate-view').animate({'backgroundColor':'#FFF'},500);
+                    }
                 });
                 /* 
                 $("#widget-generate-view").val(data.html_widget_js_code);
@@ -229,8 +239,8 @@ jQuery(function($) {
         $('#modal_widget').slideDown(); 
     }
 
-    //$("#widget-preview").hide();
-    //$("#widget-preview").siblings(".block").hide();
+    $("#widget-preview").hide();
+    $("#widget-preview").siblings(".block").hide();
 
     $("#edit-widget-btn").on("click", function(e) {   
         $.scrollTo('.widget-options:first-child', 800);
@@ -278,50 +288,50 @@ jQuery(function($) {
     });
 
 
-   var $form_slide = $('.form-designs').cycle({
-    fx:      'scrollHorz', 
-    speed:    500, 
-    timeout:  0 ,
-    pause : 1,
-    next:   '.form-design-next', 
-    prev:   '.form-design-prev'    
-   });
+    var $form_slide = $('.form-designs').cycle({
+        fx:      'scrollHorz', 
+        speed:    500, 
+        timeout:  0 ,
+        pause : 1,
+        next:   '.form-design-next', 
+        prev:   '.form-design-prev'    
+    });
    
-   var selected_form = $('#selected-form').val();   //get the selected form
-   var current_form_slide = $('#'+selected_form).parent(); //get the parent of the selected form
-   var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container
+    var selected_form = $('#selected-form').val();   //get the selected form
+    var current_form_slide = $('#'+selected_form).parent(); //get the parent of the selected form
+    var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container
    
-   $form_slide.cycle(form_index);        // cycle the form theme selection to the index number
-   $('#'+selected_form).addClass('selected-form');   // add class to the selected form thumbnail
+    $form_slide.cycle(form_index);        // cycle the form theme selection to the index number
+    $('#'+selected_form).addClass('selected-form');   // add class to the selected form thumbnail
+    
+    var positions = ['r','l','br','bl','tr','tl'];
+    var tabpos = '';  
    
-   var positions = ['r','l','br','bl','tr','tl'];
-   var tabpos = '';  
-   
-   $tab_slide = [];
-   for(pos = 0;pos <= positions.length;pos++){
-    tabpos = positions[pos];
-    $tab_slide[tabpos] = $('.'+tabpos+'-designs').cycle({
+    $tab_slide = [];
+    for(pos = 0;pos <= positions.length;pos++){
+     tabpos = positions[pos];
+     $tab_slide[tabpos] = $('.'+tabpos+'-designs').cycle({
       fx:      'scrollHorz', 
       speed:    500, 
       timeout:  0 ,
       pause : 1,
       next:   '.'+tabpos+'-design-next', 
       prev:   '.'+tabpos+'-design-prev'    
-     });
-   }
+      });
+    }
    
-   var selected_tab = $('#selected-tab').val();   // get the selected tab
-   var current_tab_slide = $('#'+selected_tab).parent(); //show the parent of the selected tab
-   var tab_index  = parseInt(current_tab_slide.index());  // get the index of the parent container
-   var selected_pos = $('#tab-position').val();   // get the current value of the tab position dropdown box
+    var selected_tab = $('#selected-tab').val();   // get the selected tab
+    var current_tab_slide = $('#'+selected_tab).parent(); //show the parent of the selected tab
+    var tab_index  = parseInt(current_tab_slide.index());  // get the index of the parent container
+    var selected_pos = $('#tab-position').val();   // get the current value of the tab position dropdown box
    
-   $tab_slide[selected_pos].cycle(tab_index);    // cycle the current tab design
-   $('#tab-slider').children().each(function(){   // hide all the tab design positions
-    $(this).hide();
-   });
+    $tab_slide[selected_pos].cycle(tab_index);    // cycle the current tab design
+    $('#tab-slider').children().each(function(){   // hide all the tab design positions
+     $(this).hide();
+    });
    
-   $('.'+selected_pos+'-design-slide').show();    // show the selected tab design
-   $('#'+selected_tab).addClass('selected-tab');   // add class to the selected tab thumbnail 
+    $('.'+selected_pos+'-design-slide').show();    // show the selected tab design
+    $('#'+selected_tab).addClass('selected-tab');   // add class to the selected tab thumbnail 
 
 
     $('#tab-position').change(function(){
