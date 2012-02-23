@@ -352,7 +352,6 @@ $.fn.selected_theme = function(select_name) {
         $('.' + select_name).removeClass(select_name);
         $(this).addClass(select_name); 
         $('#' + select_name).val(value); 
-        console.log(value);
     })
 }
 
