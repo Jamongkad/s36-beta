@@ -67,7 +67,7 @@ return array(
         $wl = new WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widgetobj->widget_type == 'display') {
-            $edit_view = 'feedsetup/feedsetup_edit_view';
+            $edit_view = 'feedsetup/feedsetup_editdisplay_view';
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
@@ -92,12 +92,11 @@ return array(
         $data['perms'] = $perms;
         $data['widget_type'] = 'display';
         $data['site_nm'] = $site->domain;
-        $dbw->update_widget_by_id($data['widgetkey'], (object)$data); 
-        //theoritcally this should work...$dbw->push_widget_db($data);
+        $dbw->push_widget_db($data);
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_createwidget_view', Array( 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
@@ -106,8 +105,7 @@ return array(
     }),
 
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) { 
-
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_form_widgets_view', Array(
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'form_themes'     => $form_themes
@@ -152,13 +150,13 @@ return array(
         $data['widget_type'] = 'submit';
         $data['site_nm'] = $site->domain;
         $data['embed_type'] = 'form';
- 
+         
         if(preg_match('~tab-(br|bl|tr|tl)~', $data['tab_type'], $match)) {
             $data['tab_pos'] = 'corner';
         } else {
             $data['tab_pos'] = 'side';
         }
-
+ 
         $dbw->push_widget_db($data);  
     },
 

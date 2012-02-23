@@ -82,9 +82,9 @@ jQuery(function($) {
 
                 $("#widget-preview").show();
                 $("#widget-preview").siblings(".block").show();
-
                 //console.log(responseText.widget.widgetkey);
                 new Status().notify("Success!", 1000);
+                new ZClip();
 
                 var widget_key = $("input[name=widgetkey]").val();
                 var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
@@ -97,8 +97,6 @@ jQuery(function($) {
                           $("#widget-generate-view").val(data.html_widget_js_code); 
                       } 
                 });
-
-                new ZClip();
                 /*
                 window.onbeforeunload = function() {
                     return "Are you sure you want to navigate away from this page?";
@@ -108,19 +106,22 @@ jQuery(function($) {
         });
         e.preventDefault();
     });
-
-    $(document).delegate("div#preview.button-gray", "click", function(e) {
-        //start making fake forms! 
+    
+    //preview picked out of form theme slider and other preview buttons
+    $(document).delegate(".preview-form-widget-button, div#preview.button-gray", "click", function(e) {
+        var action = $("#preview-form-widget-url").attr("hrefaction");
+        var form_theme = $("#selected-form").val();
+        var action_url = action + "/"  + form_theme;
+    
         $.ajax({
-              url: $(this).attr('hrefaction')
-            , data: {form_text: $("input[name=form_text]").val(), form_question: $("input[name=form_question]").val()}
+              url: action_url 
+            , data: {form_text: $("input[name=form_text]").val(), form_question: $("textarea[name=form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 
                   s36Lightbox(data.width, data.height, data.html_view);
               } 
         });
-
-        e.preventDefault(); 
+        e.preventDefault();
     })
     
     $(document).delegate("a#preview-widget-btn", "click", function(e) {
@@ -277,13 +278,9 @@ jQuery(function($) {
         next:   '.form-design-next', 
         prev:   '.form-design-prev'    
     });
-   
-    var selected_form = $('#selected-form').val();   //get the selected form
-    var current_form_slide = $('#'+selected_form).parent(); //get the parent of the selected form
-    var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container   
-    $form_slide.cycle(form_index);        // cycle the form theme selection to the index number
-    $('#'+selected_form).addClass('selected-form');   // add class to the selected form thumbnail
     
+    $form_slide.cycle(expose_index('#selected-form'));  // cycle the form theme selection to the index number
+ 
     var positions = ['r','l','br','bl','tr','tl'];
     var tabpos = '';  
    
@@ -299,20 +296,19 @@ jQuery(function($) {
       prev:   '.'+tabpos+'-design-prev'    
       });
     }
-   
-    var selected_tab = $('#selected-tab').val();   // get the selected tab
-    var current_tab_slide = $('#'+selected_tab).parent(); //show the parent of the selected tab
-    var tab_index  = parseInt(current_tab_slide.index());  // get the index of the parent container
+
+    var tab_index = expose_index('#selected-tab');
+
+    $form_slide.cycle(expose_index('#selected-form'));  // cycle the form theme selection to the index number
     var selected_pos = $('#tab-position').val();   // get the current value of the tab position dropdown box
-   
+  
     $tab_slide[selected_pos].cycle(tab_index);    // cycle the current tab design
     $('#tab-slider').children().each(function(){   // hide all the tab design positions
         $(this).hide();
     });
    
-    $('.'+selected_pos+'-design-slide').show();    // show the selected tab design
-    $('#'+selected_tab).addClass('selected-tab');   // add class to the selected tab thumbnail 
-
+ 
+    $('.'+selected_pos+'-design-slide').show();    // show the selected tab design  
 
     $('#tab-position').change(function(){
         var slide = $(this).val();
@@ -323,8 +319,8 @@ jQuery(function($) {
         $('.'+slide+'-design-slide').show();
     });
      
-    $('.form-design').selected_theme('selected-form');
-    $('.tab-design').selected_theme('selected-tab');    
+    $('.form-design').selected_theme({set_value: '#selected-form'});
+    $('.tab-design').selected_theme({set_value: '#selected-tab'});    
 
     $(document).delegate(".delete-widget", "click", function(e) {
         var href = $(this).attr('href');
@@ -344,15 +340,47 @@ jQuery(function($) {
 
         e.preventDefault();
     })
+
+    $(".large-textarea, .large-text").focus(function(i){          		 
+            if ($(this).val() == $(this)[0].title){
+                $(this).removeClass("reg-text-active");
+                $(this).val("");
+            }
+        });
+    $(".large-textarea, .large-text").blur(function(){
+            if ($.trim($(this).val()) == ""){
+                $(this).addClass("reg-text-active");
+                $(this).val($(this)[0].title);
+            }
+        });
+    $(".large-textarea, .large-text").blur();
 });
 
 $.fn.selected_theme = function(select_name) {
     $(this).on('click', function(e) { 
         var value = $(this).attr('id'); 
-        $('.' + select_name).removeClass(select_name);
-        $(this).addClass(select_name); 
-        $('#' + select_name).val(value); 
+
+        var deselect_this = false;
+
+        $(this).siblings().each(function() {
+            $(this).removeClass("selected-theme");     
+        });
+
+        if(!deselect_this) {
+            $(this).addClass("selected-theme");
+        }
+       
+        $(select_name.set_value).val(value);
     })
+}
+
+function expose_index(selector) {
+    var selected = $(selector).val();   //get the selected form
+    var current_slide = $('#'+selected).parent(); //get the parent of the selected form
+    var index  = parseInt(current_slide.index()); //get the index of the parent container   
+
+    $('#'+selected).addClass('selected-theme');   // add class to the selected form thumbnail
+    return index; 
 }
 
 function isDefined(target, path) {
