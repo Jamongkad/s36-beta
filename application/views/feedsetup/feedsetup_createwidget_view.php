@@ -131,48 +131,49 @@
         </div>
         <div class="widget-options">
             <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Widget Theme</h2>
-            <div class="widget-opts">
-                <div class="templates" id="template-slider">
-                    <!--
-                    <ul>
-                       <?foreach($themes as $theme):?>
-                           <li>
-                                <div id="themeId_<?=$theme->themeid?>"><?=Form::radio('theme_id', $theme->themeid)?> <?=$theme->name?></div>
-                                <div><?=HTML::image('img/display-thumb.png')?></div> 
-                           </li> 
-                       <?endforeach?>
-                       <li class="c"></li>
-                    </ul>
-                    -->
-                    <ul>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'aglow')?> Aglow</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'classic')?> Classic</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'chrome')?> Chrome</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'silver')?> Silver</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                    </ul>
-                </div>
-                <!--
-                <div class="slider-navigation">
-                    <div class="prev-next-button">
-                        <div class="next-button" id="next"></div>
-                        <div class="prev-button" id="prev"></div>
+            <div class="widget-opts" style="margin:0px -10px;">
+                <div class="form-design-slide">
+                    <div class="form-design-prev">
                     </div>
-                    <div class="counter"><a href="#" class="button">Show All</a></div>
-                    <div class="c"></div>
+                        <div class="form-designs grids">  
+                        <?php
+                            $themes = Array( 
+                                'aglow'=>'Aglow'
+                              , 'silver'=>'Silver'
+                              , 'chrome'=>'Chrome'
+                              , 'classic'=>'Classic'
+                            );
+                            $form_slides = '';
+                            $units = 7;
+                            $ctr = 0;
+                            $max = count($themes);
+                            
+                            foreach($themes  as $form_colors => $val){
+                                if(($ctr % $units) == 0){
+                                    $form_slides .= '<div class="form-design-group grids">';
+                                    $end = 1;
+                                }
+  
+                                    $color_name = $form_colors;
+                                    $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                        <img src="/img/display-thumb.png "/>
+                                                        <span>'.$val.'</span>
+                                                    </div>';
+                                
+                                 if(($end == $units) || $ctr == ($max - 1)){
+                                    $form_slides .= '</div>';
+                                }
+                                $end++;
+                                $ctr++;
+                            }
+                            echo $form_slides
+                        ?>
+                        
+                        </div>
+                    <div class="form-design-next">
+                    </div>
                 </div>
-                -->
+
                 <div class="c"></div>
             </div>
         </div>

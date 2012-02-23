@@ -2,14 +2,12 @@
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('company_id', $widget->companyid)?>
 <?=Form::hidden('widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
+<?=Form::hidden('tab_type', $widget->widgetobj->tab_type, Array('id' => 'selected-tab'))?>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
-            <!-- selected form and color -->
-                <input type="hidden" name="theme_type" value="<?=$widget->widgetobj->theme_type?>" id="selected-form" />
-                <input type="hidden" name="tab_type" value="<?=$widget->widgetobj->tab_type?>" id="selected-tab" />
-            <!-- end -->
             <div class="widget-types">
                     <table width="100%" cellpadding="5" cellspacing="0">
                         <tr>

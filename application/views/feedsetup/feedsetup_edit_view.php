@@ -1,6 +1,7 @@
 <?=Form::open('feedsetup/update_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
@@ -152,56 +153,58 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2>Theme</h2>
-            <div class="widget-opts">
-                <div class="templates" id="template-slider">
-                    <!--
-                    <ul>
-                       <?foreach($themes as $theme):?>
-                           <li>
-                                <div id="themeId_<?=$theme->themeid?>"><?=Form::radio('theme_id', $theme->themeid)?> <?=$theme->name?></div>
-                                <div><?=HTML::image('img/display-thumb.png')?></div> 
-                           </li> 
-                       <?endforeach?>
-                       <li class="c"></li>
-                    </ul>
-                    -->
-                    <ul>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'aglow')?> Aglow</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'classic')?> Classic</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'chrome')?> Chrome</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                        <li>
-                            <div id="themeId_1"><?=Form::radio('theme_type', 'silver')?> Silver</div>
-                            <div><?=HTML::image('img/display-thumb.png')?></div> 
-                        </li>
-                    </ul>
-                </div>
-                <!--
-                <div class="slider-navigation">
-                    <div class="prev-next-button">
-                        <div class="next-button" id="next"></div>
-                        <div class="prev-button" id="prev"></div>
+            <h2>Widget Theme</h2>
+            <div class="widget-opts" style="margin:0px -10px;">
+
+                <div class="form-design-slide">
+                    <div class="form-design-prev">
                     </div>
-                    <div class="counter"><a href="#" class="button">Show All</a></div>
-                    <div class="c"></div>
+                        <div class="form-designs grids">  
+                        <?php
+                            $themes = Array( 
+                                'aglow'=>'Aglow'
+                              , 'silver'=>'Silver'
+                              , 'chrome'=>'Chrome'
+                              , 'classic'=>'Classic'
+                            );
+                            $form_slides = '';
+                            $units = 7;
+                            $ctr = 0;
+                            $max = count($themes);
+                            
+                            foreach($themes  as $form_colors => $val){
+                                if(($ctr % $units) == 0){
+                                    $form_slides .= '<div class="form-design-group grids">';
+                                    $end = 1;
+                                }
+  
+                                    $color_name = $form_colors;
+                                    $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                        <img src="/img/display-thumb.png "/>
+                                                        <span>'.$val.'</span>
+                                                    </div>';
+                                
+                                 if(($end == $units) || $ctr == ($max - 1)){
+                                    $form_slides .= '</div>';
+                                }
+                                $end++;
+                                $ctr++;
+                            }
+                            echo $form_slides
+                        ?>
+                        
+                        </div>
+                    <div class="form-design-next">
+                    </div>
                 </div>
-                -->
+           
                 <div class="c"></div>
             </div>
         </div>
         <div class="widget-options">
             <h2>Code</h2>
             <br/>
-            <div class="widget-opts">
+            <div class="widget-opts" style="text-align:center">
                 <div style="width: 360px;margin-left:auto;margin-right:auto">
                     <div class="widget-block" style="position:relative">
                         <h2>JS Widget Code (recommended)</h2>
@@ -228,7 +231,6 @@
                     </div>
 
                     <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-                    <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
                     <a href="javascript;;" class="button-gray" id="preview-widget-btn">Preview</a>
                 </div>    
                 <!--

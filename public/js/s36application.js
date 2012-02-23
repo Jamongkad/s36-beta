@@ -24,8 +24,8 @@ jQuery(function($) {
     });
     */
 
-
-    $('a.cat-picks').bind('click', function(e) {
+    //$('a.cat-picks').bind('click', function(e) {
+    $(document).delegate("a.cat-picks", "click", function(e) {
 
         var deselect_this = false;
 
@@ -44,7 +44,8 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $('a.menubtn').bind('click', function(e) { 
+    //$('a.menubtn').bind('click', function(e) { 
+    $(document).delegate("a.menubtn", "click", function(e) {
 
         var deselect = false;
 
@@ -68,8 +69,10 @@ jQuery(function($) {
 
         e.preventDefault();
     })
+
     //for modify feedback bit    
-    $('a.flagged').bind("click", function(e) { 
+    //$('a.flagged').bind("click", function(e) { 
+    $(document).delegate("a.flagged", "click", function(e) {
         $(this).toggleClass("matched");
 
         var state = $(this).attr('state');
@@ -95,7 +98,8 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-    $('a.delete').bind("click", function(e) { 
+    //$('a.delete').bind("click", function(e) { 
+    $(document).delegate("a.delete", "click", function(e) {
         if(confirm("Are you sure you want to delete this feedback?")) {
             return true;
         } 
@@ -140,7 +144,8 @@ jQuery(function($) {
         mouse_is_inside = false;
     });
 
-    $('.fileas').bind('click', function(e) { 
+    //$('.fileas').bind('click', function(e) { 
+    $(document).delegate(".fileas", "click", function(e) {
         var id = $(this).attr('id');
         $('#' + id + ' div.category-picker-holder').show().hover(function() { 
             mouse_is_inside = true;  
@@ -155,7 +160,9 @@ jQuery(function($) {
     })
     
     //fucking bug where in for some reason jquery cannot select the div.fast-forward-holder element when using the forward class name.  
-    $('.contact, .forward').live('click', function(e) { 
+    
+    //$('.contact, .forward').live('click', function(e) { 
+    $(document).delegate(".contact, .forward", "click", function(e) {
         var id = $(this).attr('id'); 
         var selector;
 
@@ -205,7 +212,6 @@ jQuery(function($) {
     })
 
     //End of FastForward
-    //$('.check, .feature, .remove, .popup-delete')
     new InboxStatusChange('.check, .feature, .remove, .popup-delete').initialize(); 
     $('div.undo-bar').hide(); 
 

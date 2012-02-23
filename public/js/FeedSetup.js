@@ -48,12 +48,6 @@ jQuery(function($) {
                     widget_options.html("");  
 
                     $("#widget-preview").show();
-
-                    /*
-                    if($('#code-generate-view').length > 0) {
-                        $.scrollTo('#code-generate-view', 800);     
-                    }  
-                    */
                     $("input[name=widgetkey]").val(responseText.widget.widgetkey);
                     var widget_key = $("input[name=widgetkey]").val();
                     var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
@@ -63,7 +57,6 @@ jQuery(function($) {
                         , dataType: 'json'
                         , success: function(data) {
                               //s36Lightbox(data.width, data.height, data.html_view);
-                              //fuuuuuuck clean this up!! 
                               $("#widget-generate-view").val(data.html_widget_js_code);
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
@@ -102,7 +95,6 @@ jQuery(function($) {
                     , dataType: 'json'
                     , success: function(data) {
                           //s36Lightbox(data.width, data.height, data.html_view);
-                          //fuuuuuuck clean this up!! 
                           $("#widget-generate-view").val(data.html_widget_js_code); 
                       } 
                 });
@@ -117,8 +109,8 @@ jQuery(function($) {
         });
         e.preventDefault();
     });
-    
-    $("div#preview.button-gray").on("click", function(e) {
+
+    $(document).delegate("div#preview.button-gray", "click", function(e) {
         //start making fake forms! 
         $.ajax({
               url: $(this).attr('hrefaction')
@@ -129,8 +121,23 @@ jQuery(function($) {
               } 
         });
 
+        e.preventDefault(); 
+    })
+    
+    $(document).delegate("a#preview-widget-btn", "click", function(e) {
+        var widget_key = $("input[name=widgetkey]").val();
+        var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+        $.ajax({
+            url: action
+            , type: "GET"
+            , dataType: 'json'
+            , success: function(data) {
+                  s36Lightbox(data.width, data.height, data.html_view); 
+              } 
+        });
+
         e.preventDefault();
-    });
+    })
 
     //helper functions ABSTRACT THIS MOTHAFUCKER 
     function s36Lightbox(width, height, insertContent) {	
