@@ -21,6 +21,8 @@
                         <div class="right-align">
                             <ul class="widget-button-list">
                                 <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid."/".$widget_type, 'Edit', array('class' => 'button-gray'))?></li>
+
+                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetstoreid, 'Del', array('class' => 'button-gray delete-widget'))?></li>
                                 <!--
                                 <li><a href="#" class="button-gray">Stat</a></li>
                                 <li><a href="#" class="button">More</a></li>
@@ -32,7 +34,7 @@
             </div>
         </div> 
     <?endforeach?>
-</div>
+
 
 <div class="widget-opts">
     <div class="widget-pagination">

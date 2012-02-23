@@ -19,6 +19,13 @@ class DBWidget extends S36DataObject {
         } 
     }
 
+    public function delete_widget($widget_id) {
+        $sql = "DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':widget_store_id', $widget_id, PDO::PARAM_STR);
+        $sth->execute();
+    }
+
     public function save_widget($widget_obj) {
 
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);

@@ -71,10 +71,6 @@ return array(
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
-        /*
-        Helpers::show_data($wl);
-        Helpers::show_data($edit_view);
-        */
 
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -147,19 +143,6 @@ return array(
             $data['site_nm'] = $site->domain; 
 
             $dbw->push_widget_db($data);
-            //Helpers::show_data($data);
-            /*
-            $data_object = (object)$data;
-            if(!$widgetkey = $data['widgetkey']) {
-                //save widget
-                $save_result = $dbw->save_widget( $data_object );         
-                echo json_encode($save_result);
-            } else {
-                //update widget     
-                $update_result = $dbw->update_widget_by_id( $widgetkey, $data_object );
-                echo json_encode( $update_result ); 
-            }
-            */
         }       
     },
 
@@ -176,8 +159,11 @@ return array(
             $data['tab_pos'] = 'side';
         }
 
-        $dbw->push_widget_db($data);
- 
+        $dbw->push_widget_db($data);  
+    },
+
+    'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
+        $dbw->delete_widget($widget_id);
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {

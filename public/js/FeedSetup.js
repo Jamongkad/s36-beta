@@ -56,7 +56,6 @@ jQuery(function($) {
                         , type: "GET"
                         , dataType: 'json'
                         , success: function(data) {
-                              //s36Lightbox(data.width, data.height, data.html_view);
                               $("#widget-generate-view").val(data.html_widget_js_code);
                               $("#iframe-generate-view").val(data.html_iframe_code);
                           } 
@@ -238,13 +237,7 @@ jQuery(function($) {
 
     var overview = $("#overview-target, #display-overview-target, #form-overview-target");
 
-    /* TODO: this is the code we will use for Inbox rebinding
-    overview.delegate("li a.button-gray", "click", function(e) {
-        console.log($(this).attr('href'));
-        e.preventDefault();
-    });
-
-    TODO: New type validation unlock submit button when text fields have value
+    /* TODO: New type validation unlock submit button when text fields have value
     $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
     $("input[type='text']").keyup(function(){
         if ($(this).val().length != 0) {
@@ -276,7 +269,6 @@ jQuery(function($) {
         e.preventDefault();
     });
 
-
     var $form_slide = $('.form-designs').cycle({
         fx:      'scrollHorz', 
         speed:    500, 
@@ -288,8 +280,7 @@ jQuery(function($) {
    
     var selected_form = $('#selected-form').val();   //get the selected form
     var current_form_slide = $('#'+selected_form).parent(); //get the parent of the selected form
-    var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container
-   
+    var form_index  = parseInt(current_form_slide.index()); //get the index of the parent container   
     $form_slide.cycle(form_index);        // cycle the form theme selection to the index number
     $('#'+selected_form).addClass('selected-form');   // add class to the selected form thumbnail
     
@@ -316,7 +307,7 @@ jQuery(function($) {
    
     $tab_slide[selected_pos].cycle(tab_index);    // cycle the current tab design
     $('#tab-slider').children().each(function(){   // hide all the tab design positions
-     $(this).hide();
+        $(this).hide();
     });
    
     $('.'+selected_pos+'-design-slide').show();    // show the selected tab design
@@ -332,26 +323,38 @@ jQuery(function($) {
         $('.'+slide+'-design-slide').show();
     });
      
-    $('.form-design').click(function(){
+    $('.form-design').selected_theme('selected-form');
+    $('.tab-design').selected_theme('selected-tab');    
+
+    $(document).delegate(".delete-widget", "click", function(e) {
+        var href = $(this).attr('href');
+        var parent_div = $(this).parents('div.widget-types');
         
-        var value = $(this).attr('id');
-        
-        $('.selected-form').removeClass('selected-form');
-        $(this).addClass('selected-form');
-        
-        $('#selected-form').val(value);
-        
-    });
-    
-    $('.tab-design').click(function(){
-        var value = $(this).attr('id');
-        
-        $('.selected-tab').removeClass('selected-tab');
-        $(this).addClass('selected-tab');
-        
-        $('#selected-tab').val(value);
-    });
+        if(confirm("Are you sure you want to delete this widget?")) { 
+            $.ajax({
+                url: href   
+              , success: function(data) {
+                    console.log(data);
+                    parent_div.fadeOut(500, function() {
+                        $(this).remove();
+                    });
+                }
+            });
+        }
+
+        e.preventDefault();
+    })
 });
+
+$.fn.selected_theme = function(select_name) {
+    $(this).on('click', function(e) { 
+        var value = $(this).attr('id'); 
+        $('.' + select_name).removeClass(select_name);
+        $(this).addClass(select_name); 
+        $('#' + select_name).val(value); 
+        console.log(value);
+    })
+}
 
 function isDefined(target, path) {
     if (typeof target != 'object' || target == null) {

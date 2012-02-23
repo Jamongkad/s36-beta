@@ -27,6 +27,7 @@
                                     <div class="right-align">
                                         <ul class="widget-button-list">
                                             <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid.'/'.$overview_type, 'Edit', array('class' => 'button-gray'))?></li>
+                                            <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetstoreid, 'Del', array('class' => 'button-gray'))?></li>
                                             <!--
                                             <li><a href="#" class="button-gray">Stat</a></li>
                                             <li><a href="#" class="button">More</a></li>
