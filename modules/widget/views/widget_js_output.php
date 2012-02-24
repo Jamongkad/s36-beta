@@ -10,7 +10,7 @@ function WidgetLoader() {
                   '<link href="<?=$deploy_url?>/css/s36_client_style.css" media="all" rel="stylesheet" type="text/css">' +
                   '<div style="position:relative;width:<?=$width?>px;height:<?=$height?>px;">' +
                   '<div class="s36_<?=$embed_block_type?>"><a href="javascript:;" onclick="s36_openForm(\'<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>\')">Send Feedback</a></div>' +
-                  '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="'+frameUrl+'">Insomnia wooohooooh</iframe></div>';
+                  '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:hidden;" src="'+frameUrl+'">Insomnia wooohooooh</iframe></div>';
         return src;    
     },
 
