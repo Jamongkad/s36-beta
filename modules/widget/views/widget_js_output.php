@@ -6,7 +6,9 @@ header("Content-type: application/x-javascript; charset=UTF-8");
 function WidgetLoader() {
     this.generateFrameMarkup = function() {
         var frameUrl = '<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>';
-        var src = '<span style="z-index:100001"><iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="'+frameUrl+'">Insomnia wooohooooh</iframe></span>';
+        var src = '<div style="position:relative;width:760px;height:300px;">' +
+                  '<div style="position:absolute;top:25px;right:170px;z-index:10000"><a href="javascript:;" onclick="s36_openForm(\'<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>\')">Send Feedback</a></div>' +
+                  '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="'+frameUrl+'">Insomnia wooohooooh</iframe></div>';
         return src;    
     },
 
