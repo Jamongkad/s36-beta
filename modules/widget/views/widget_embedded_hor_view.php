@@ -146,15 +146,13 @@
                             if($r->rules->displaycountry == 1) {
                         	    $cc = strtolower($r->countrycode);        
                             }
-	
-                                
+	     
 							//date
+                            $data = '&nbsp;';
                             if($r->rules->displaysbmtdate == 1)  { 
                                 if($r->date != false) {
                                     $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                                }else{
-                                    $date	= '&nbsp;';
-                                }
+                                }                            
                             }
                                 
 							//check if name is available:
@@ -166,23 +164,24 @@
                                     $name = '&nbsp;'; 
                                 }
                             }
-	
+                             
+                            $comp = '&nbsp;';								
                             if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                                 $comp = $r->position.', '.$r->companyname;								
-                            }else if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                                $comp = $r->companyname;								
-                            }else if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                                $comp = $r->position;								
-                            }else{								
-                                $comp = '&nbsp;';								
                             }
-                             
+                            
+                            if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                                $comp = $r->companyname;								
+                            }
+                            
+                            if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
+                                $comp = $r->position;								
+                            }                             
 
+                            $loc = '&nbps;';
                             if($r->rules->displaycountry == 1) {
                                 $loc = $r->countryname.', '.$r->city;								 
-                            } else {								
-                                $loc = '&nbsp;';								
-                            }	
+                            } 
 													
                             $maxchars = 200;							
                             if(strlen(trim($r->text)) <= $maxchars){

@@ -123,39 +123,41 @@
                         }
 
                         //country code for the class
-                        $cc = null; 	
+                        $cc = '&nbsp;'; 	
                         if($r->rules->displaycountry == 1) {
                             $cc = strtolower($r->countrycode);        
                         }
 							
 						//date 
+                        $data = '&nbsp;';
                         if($r->rules->displaysbmtdate == 1)  { 
                             if(trim($r->date) != ""){
                                 $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                            }else{
-                                $date	= '&nbsp;';
-                            }
+                            }                        
                         }
 							
                         //check if name is available: 
+                        $name = '&nbsp;';
                         if ($r->rules->displayname == 1) { 
                             if((trim($r->firstname) != "")){  
                                 $name = $r->firstname.' '.$r->lastname; 
-                            }else{ 
-                                $name = '&nbsp;'; 
-                            }
+                            }                        
                         }
+
 	
+                        $comp = '&nbsp;';								
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                             $comp = $r->position.', '.$r->companyname;								
-                        }else if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                            $comp = $r->companyname;								
-                        }else if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            $comp = $r->position;								
-                        }else{								
-                            $comp = '&nbsp;';								
                         }
-								
+                        
+                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                            $comp = $r->companyname;								
+                        }
+
+                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
+                            $comp = $r->position;								
+                        }								
+
                         $maxchars = 72;							
                         if(strlen(trim($r->text)) <= $maxchars){
                             $text = $r->text . ' <br />';																

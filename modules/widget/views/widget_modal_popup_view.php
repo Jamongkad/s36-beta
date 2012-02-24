@@ -97,13 +97,13 @@
                         }
                                 
                         //country code for the class
-                        $cc = null; 	
+                        $cc = '&nbsp;'; 	
                         if($r->rules->displaycountry == 1) {
                             $cc = strtolower($r->countrycode);        
                         }
                         
                         //date
-                        $date = null; 
+                        $date = '&nbsp;'; 
                         if($r->rules->displaysbmtdate == 1)  { 
                             if(trim($r->date) != ""){
                                 $date 	= date('F d, Y',strtotime($r->date));
@@ -113,27 +113,27 @@
                         }  
                         
                         //check if name is available:
-                        $name = null;
+                        $name = '&nbsp;';
                         if ($r->rules->displayname == 1) {
-                            if ((trim($r->firstname) != "")) {
-                               $name = '<span class="left">'.$r->firstname.' '.$r->lastname.'</span> &nbsp;&nbsp;<span class="flag flag-'.$cc.' left" style="margin-top:6px;"></span>';
-                                
-                            } else { 
-                                $name = ''; 
-                            }  
+                            if ($r->firstname != false) {
+                               $name = '<span class="left">'.$r->firstname.' '.$r->lastname.'</span> &nbsp;&nbsp;<span class="flag flag-'.$cc.' left" style="margin-top:6px;"></span>'; 
+                            } 
                         } 
                         
-                        //check if position is available: 
+                        //check if position is available:  
+                        $comp = '&nbsp;';								
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                             $comp = $r->position.', <span class="highlight">'.$r->companyname.'</span>';
-                        }else if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                            $comp = $r->companyname;								
-                        }else if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            $comp = $r->position;								
-                        }else{								
-                            $comp = '&nbsp;';								
                         }
-                                            
+                        
+                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                            $comp = $r->companyname;								
+                        }
+                        
+                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
+                            $comp = $r->position;								
+                        }                                            
+
                         $text = $r->text;
                   
                         echo '<div class="soloFeedback">
@@ -186,44 +186,44 @@
                             $avatar = "/img/48x48-blank-avatar.jpg";
                         }
                             
-                        $cc = null;
+                        $cc = '&nbsp;';
                         if($r->rules->displaycountry == 1) {
                             $cc = strtolower($r->countrycode);        
                         }
                         
                         //date 
+                        $date	= '&nbsp;';
                         if($r->rules->displaysbmtdate == 1)  { 
-                            if(trim($r->date) != ""){
+                            if($r->date != false){
                                 $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                            }else{
-                                $date	= '&nbsp;';
-                            }
+                            }                        
                         }
                               
                         //check if name is available: 
+                        $name = '&nbsp;'; 
                         if ($r->rules->displayname == 1) { 
-                            if((trim($r->firstname) != "")){  
+                            if($r->firstname != false){  
                                 $name = $r->firstname.' '.$r->lastname; 
-                            }else{ 
-                                $name = '&nbsp;'; 
-                            }
+                            }                        
                         }
                             		
+                        $comp = '&nbsp;';								
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                             $comp = $r->position.', '.$r->companyname;								
-                        }else if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                            $comp = $r->companyname;								
-                        }else if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            $comp = $r->position;								
-                        }else{								
-                            $comp = '&nbsp;';								
                         }
-                         
+                        
+                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                            $comp = $r->companyname;								
+                        }
+                        
+                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
+                            $comp = $r->position;								
+                        }                         
+
+                        $loc = '&nbsp;';								
                         if($r->rules->displaycountry == 1) {
                             $loc = $r->countryname.', '.$r->city;								 
-                        } else {								
-                            $loc = '&nbsp;';								
-                        }	
+                        } 
                                                 
                         $maxchars = 157;							
                         if(strlen(trim($r->text)) <= $maxchars){
