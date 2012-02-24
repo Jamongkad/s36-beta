@@ -63,6 +63,7 @@
 		});
 		/* apply a mousewheel scroll event on the slides */
 		slides.mousewheel(function(event,delta){
+            console.log(delta);
 			if (delta > 0){$(this).cycle('prev');}
 			else{$(this).cycle('next');}
 			return false;
