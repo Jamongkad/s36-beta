@@ -48,6 +48,7 @@ return array(
           , 'height' => $wl->widget_obj->height
           , 'widgettype' => $wl->widget_obj->widgettype
           , 'widgetkey' => $wl->widget_obj->widgetkey
+          , 'embed_block_type' => $wl->widget_obj->widgetobj->embed_block_type
           , 'tab_type' => $tab_type
           , 'tab_pos' => $tab_pos
         );
