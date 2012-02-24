@@ -41,7 +41,7 @@ return array(
             $tab_type = $wl->widget_obj->widgetobj->tab_type;
             $tab_pos = $wl->widget_obj->widgetobj->tab_pos;
         }
-
+        
         $data = Array(
             'deploy_url' => Config::get('application.deploy_env')
           , 'width' => $wl->widget_obj->width
