@@ -62,7 +62,7 @@
 				after: showOverFlow		   // this displays the overflow of a feedback div to display the like button's iframe
 		});
 		/* apply a mousewheel scroll event on the slides */
-		slides.mousewheel(function(event,delta){
+		slides.mousewheel(function(event, delta){
             console.log(delta);
 			if (delta > 0){$(this).cycle('prev');}
 			else{$(this).cycle('next');}
