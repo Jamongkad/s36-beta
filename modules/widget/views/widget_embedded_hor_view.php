@@ -158,6 +158,7 @@
                             }
                                 
 							//check if name is available:
+                            $name = null;
                             if ($r->rules->displayname == 1) { 
                                 if($r->firstname != false) {
                                     $name = $r->firstname.' '.$r->lastname; 
