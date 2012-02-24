@@ -8,7 +8,7 @@ function WidgetLoader() {
         var frameUrl = '<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>';
         var src = '<script type="text/javascript" src="<?=$deploy_url?>/js/s36_client_script.js"></script>' + 
                   '<link href="<?=$deploy_url?>/css/s36_client_style.css" media="all" rel="stylesheet" type="text/css">' +
-                  '<div style="position:relative;width:760px;height:300px;">' +
+                  '<div style="position:relative;width:<?=$width?>px;height:<?=$height?>px;">' +
                   '<div style="position:absolute;top:25px;right:170px;z-index:10000"><a href="javascript:;" onclick="s36_openForm(\'<?=$deploy_url?>/widget/widget_loader/<?=$widgetkey?>\')">Send Feedback</a></div>' +
                   '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="'+frameUrl+'">Insomnia wooohooooh</iframe></div>';
         return src;    
