@@ -34,6 +34,8 @@ class DBWidget extends S36DataObject {
                 VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
         $widget_obj_string = base64_encode(serialize($widget_obj));
 
+        //$this->dbh->beginTransaction();
+
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->bindParam(':widget_type', $widget_obj->widget_type, PDO::PARAM_STR);
@@ -43,8 +45,21 @@ class DBWidget extends S36DataObject {
         $sth->execute();
 
         $last_insert_id = $this->dbh->lastInsertId();
+        $this->_insert_ancestor($last_insert_id);
+
         $obj = $this->fetch_widget_by_id($last_insert_id); 
+
+        //$this->dbh->commit();
+
         return Array('status' => 'save', 'widget' => $obj);
+    }
+
+    public function _insert_ancestor($last_insert_id) { 
+        $closure_sql = "INSERT INTO WidgetClosure (ancestor_id, descendant_id) VALUES (:ancestor_id, :descendant_id)"; 
+        $sth = $this->dbh->prepare($closure_sql);
+        $sth->bindParam(':ancestor_id', $last_insert_id, PDO::PARAM_INT);
+        $sth->bindParam(':descendant_id', $last_insert_id, PDO::PARAM_INT);
+        $sth->execute();
     }
 
     public function update_widget_by_id($widget_key, $widget_obj) {
@@ -63,6 +78,58 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widget_by_id($widget_key) {     
+        $sql = "
+            SELECT 
+                  WidgetStore.widgetStoreId
+                , WidgetStore.widgetKey
+                , WidgetStore.widgetObjString
+                , WidgetClosure.path_length
+            FROM 
+                WidgetStore
+            INNER JOIN
+                WidgetClosure
+                    ON WidgetStore.widgetStoreId = WidgetClosure.descendant_id
+            WHERE 1=1
+                AND WidgetClosure.ancestor_id = (
+                    SELECT 
+                        WidgetStoreId
+                    FROM
+                        WidgetStore
+                    WHERE 
+                        WidgetStore.widgetKey = :widget_key
+                )
+            ORDER BY
+                WidgetStore.widgetStoreId DESC
+        ";
+ 
+        $sth = $this->dbh->prepare($sql);  
+        $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
+        $sth->execute();
+        
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+ 
+        $child = Array();
+        $level = 0;
+        foreach($result as $rows) {
+            if ( $rows->path_length == 0 ) { 
+                $node = $this->_load_object_code($rows->widgetobjstring);
+                $node->widgetstoreid = $rows->widgetstoreid; 
+            } else {
+                $my_kid = $this->_load_object_code($rows->widgetobjstring);
+                $my_kid->widgetstoreid = $rows->widgetstoreid;
+                $child[] = $my_kid; 
+            }
+
+            $node->children = null;
+            if ($child) {
+                $node->children = $child;
+            }
+                
+        }
+
+        return $node;
+ 
+        /*
         $query = DB::Table('WidgetStore') 
                      ->where('widgetKey', '=', $widget_key)
                      ->or_where('widgetStoreId', '=', $widget_key)
@@ -72,6 +139,7 @@ class DBWidget extends S36DataObject {
         $obj = unserialize($obj); 
         $query->widgetobj = $obj; 
 
+        //remove this shit....
         if($obj->embed_type == 'embedded') {
             if($obj->embed_block_type == 'embed_block_x') {
                 $query->width = 780; 
@@ -95,6 +163,7 @@ class DBWidget extends S36DataObject {
         }
 
         return $query;
+        */
     }
 
     public function fetch_widgets_by_company() {
@@ -107,18 +176,26 @@ class DBWidget extends S36DataObject {
     public function fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
         $sql = " 
             SELECT 
-                SQL_CALC_FOUND_ROWS
-                widgetStoreId
-              , widgetKey
-              , companyId
-              , siteId
-              , widgetObjString
+            SQL_CALC_FOUND_ROWS
+                WidgetStore.widgetStoreId
+                , WidgetStore.widgetKey
+                , WidgetStore.companyId
+                , WidgetStore.siteId
+                , WidgetStore.widgetObjString
             FROM 
                 WidgetStore
+            INNER JOIN
+                WidgetClosure
+                    ON WidgetStore.widgetStoreId = WidgetClosure.descendant_id
             WHERE 1=1
                 AND companyId = :company_id
                 AND widgetType = :widget_type
-            ORDER BY widgetStoreId DESC
+            GROUP BY 
+                WidgetStore.widgetStoreId
+            HAVING 
+                NOT COUNT(*) > 1
+            ORDER BY 
+                WidgetStore.widgetStoreId DESC 
             LIMIT :offset, :limit 
         ";
 
@@ -166,5 +243,11 @@ class DBWidget extends S36DataObject {
         $result->pagination = $pagination->render();
 
         return $result; 
+    }
+
+    private function _load_object_code($widget_obj_string) {      
+        $obj = base64_decode($widget_obj_string);
+        $obj = unserialize($obj); 
+        return $obj;
     }
 }

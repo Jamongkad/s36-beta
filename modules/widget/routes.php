@@ -37,7 +37,7 @@ return array(
         
         $tab_type = null;
         $tab_pos = null;
-        if($wl->widget_obj->widgettype == 'submit') { 
+        if ($wl->widget_obj->widgettype == 'submit') { 
             $tab_type = $wl->widget_obj->widgetobj->tab_type;
             $tab_pos = $wl->widget_obj->widgetobj->tab_pos;
         }
@@ -47,7 +47,7 @@ return array(
           , 'width' => $wl->widget_obj->width
           , 'height' => $wl->widget_obj->height
           , 'widgettype' => $wl->widget_obj->widgettype
-          , 'widgetkey' => $wl->widget_obj->widgetkey
+          , 'widgetkey' => $wl->widget_obj->->widgetobj->widgetkey
           , 'embed_block_type' => $wl->widget_obj->widgetobj->embed_block_type
           , 'tab_type' => $tab_type
           , 'tab_pos' => $tab_pos

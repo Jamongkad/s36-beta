@@ -1,16 +1,19 @@
 <?php
-
+//TODO: You can do a better job at this. 
+//Place these in a data structure of some sort
+//All relevant information should be accessible via json or php
+//Plugin factors such as height, frameurl, etc into data structure
+//will clear up view templates from unneccesary cruft
 class WidgetLoader {
 
     public function __construct($widget_id) {
         $this->dbw = new DBWidget;
-        $this->widget_id = $widget_id;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
 
     public function render($type="view") {
 
-        $obj = $this->_load_object_code();
+        $obj = $this->widget_obj;//$this->_load_object_code();
 
         $params = Array(
             'company_id'   => $obj->company_id
@@ -74,7 +77,7 @@ class WidgetLoader {
 
     public function load_widget_js_code() {
         $deploy_env = Config::get('application.deploy_env');
-        $widgetkey = "'".$this->widget_obj->widgetkey."'";
+        $widgetkey = "'".$this->widget_obj->widgetobj->widgetkey."'";
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\""; 
 
         $html = '
@@ -89,7 +92,7 @@ class WidgetLoader {
     }
 
     public function load_iframe_code() {
-        $widgetkey = $this->widget_obj->widgetkey;
+        $widgetkey = $this->widget_obj->widgetobj->widgetkey;
         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
         if($this->widget_obj->widgettype == 'display') 
             return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);

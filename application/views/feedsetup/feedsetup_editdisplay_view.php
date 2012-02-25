@@ -1,6 +1,6 @@
 <?=Form::open('feedsetup/update_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('company_id', $company_id)?>
-<?=Form::hidden('widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('widgetkey', $widget->widgetobj->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
 <div class="block">
     <div id="widget-setup-block"> 

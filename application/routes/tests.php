@@ -191,10 +191,9 @@ return array(
 
     'GET /tests/update_widget' => function() { 
 
-        $widget_key = 'qbbro';
-
         $dbw = new DBWidget;
         $obj = new StdClass;
+        $obj->widgetkey = 'qbbro';
         $obj->site_id = 2;
         $obj->company_id = 1;
         $obj->base_url = 'http://razer.gearfish.com';
@@ -212,23 +211,27 @@ return array(
           , 'displayposition' => 1
         );
         $obj->theme_type = 'aglow';
-        $dbw->update_widget_by_id($widget_key, $obj);
+        $dbw->push_widget_db($obj);
     },
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
+        //TODO: widget loader should just accept any widget object be type specific if able. 
+        /*
+        $dbw = new DBWidget;
+        $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
+        */
         $wl = new WidgetLoader($widget_id); 
         Helpers::show_data($wl);
     },
 
-    'GET /tests/pull_feedback' => function() {
-        
+    'GET /tests/pull_feedback' => function() {        
         $params = Array(
             'company_id'   => 1 
           , 'site_id'      => 1
           , 'is_published' => 1
           , 'is_featured'  => 1
         );
-
+        
         $feedback = new DBFeedback;       
         $data = $feedback->pull_feedback_by_company($params);
         Helpers::show_data($data);
