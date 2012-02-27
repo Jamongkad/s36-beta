@@ -221,7 +221,10 @@ return array(
         $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
         */
         $wl = new WidgetLoader($widget_id); 
-        Helpers::show_data($wl);
+        $obj = $wl->load();
+        //Helpers::show_data($obj);
+        $js = new ClientRender($obj);
+        return $js->output_js();
     },
 
     'GET /tests/pull_feedback' => function() {        

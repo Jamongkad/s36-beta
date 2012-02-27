@@ -1,43 +1,73 @@
 <?php
 
 class WidgetFactory {
-   public function __construct($option) {
-       $this->option = $option;     
-   }
 
-   public function load_widget() {
-       if ($this->option->widget == 'form') {
-           $widget = new SubmissionWidget($this->option);     
+   public function load_widget($option) {
+       if ($option->widget == 'form') {
+           $widget = new SubmissionWidget($option);     
            return $widget;
        }
 
-       if ($this->option->widget->embed_type == 'embedded') {
-           if ($this->option->widget->embed_block_type == 'embed_block_x') {
-               $widget = new HorizontalEmbedWidget($this->option);
+       if ($option->widget == 'embedded') {
+           if ($option->embed_block_type == 'embed_block_x') {
+               $widget = new HorizontalEmbedWidget($option);
                return $widget;
            }
 
-           if ($this->option->widget->embed_block_type == 'embed_block_y') { 
-               $widget = new VerticalEmbedWidget($this->option);
+           if ($option->embed_block_type == 'embed_block_y') { 
+               $widget = new VerticalEmbedWidget($option);
                return $widget;
            }
        }
 
-       if ($this->option->widget->embed_type == 'modal') {    
-           $widget = new ModalEmbedWidget($this->option);
+       if ($option->widget == 'modal') {    
+           $widget = new ModalEmbedWidget($option);
            return $widget;
        }
    }
 }
 
 abstract class WidgetTypes {
-    public function render() {}
+
+    protected $height;
+    protected $width;
+    protected $css;
+    protected $js;
+
+    public function render_data() {}
+    public function get_height() {
+        return $this->height;      
+    }
+    public function get_width() { 
+        return $this->width;      
+    }
 }
 
-class SubmissionWidget extends WidgetTypes {
+class DisplayWidgets extends WidgetTypes { 
+    public function get_embed_block_type() {
+        return $this->embed_block_type; 
+    }
 
-    public $height = 590;
-    public $width = 447;
+    public function get_child() {
+        $child_key = null;
+        if($this->children) {
+            foreach($this->children as $child) { 
+                $child_key = $child->widgetkey; 
+            }
+        }
+        return $child_key;
+    }
+}
+
+class FormWidgets extends WidgetTypes { 
+    public function get_tab_type() {}
+    public function get_tab_pos() {}
+}
+
+class SubmissionWidget extends FormWidgets {
+
+    protected $height = 590;
+    protected $width = 447;
     
     public function __construct($options) {
 
@@ -51,18 +81,19 @@ class SubmissionWidget extends WidgetTypes {
             $this->fb_id = '259670914062599';
             $fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
         }
-
+        
+        $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
         $this->form_text  = $options->form_text;
         $this->form_question = $options->form_question;
         $this->theme_type = $options->theme_type;
+        $this->tab_pos  = $options->tab_pos;
+        $this->tab_type = $options->tab_type;
     }
 
-    public function render() {
-
+    public function render_data() {
         $widget_view = 'widget::widget_submissionform_view';
-
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
@@ -75,45 +106,60 @@ class SubmissionWidget extends WidgetTypes {
           , 'response' => 0
         ))->get();  
     }
+
+    public function get_tab_type() { 
+        return $this->tab_type;
+    }
+
+    public function get_tab_pos() { 
+        return $this->tab_pos;
+    }
 }
 
-class VerticalEmbedWidget extends WidgetTypes {
+class VerticalEmbedWidget extends DisplayWidgets {
 
-    public $width = 250;
-    public $height = 500;
+    protected $width = 250;
+    protected $height = 500;
 
     public function __construct($options) { 
+        $this->widgetkey  = $options->widgetkey;
         $this->form_text  = $options->form_text;
         $this->fixed_data = $options->fixed_data;
         $this->total_rows = $options->total_rows;
+        $this->embed_block_type = $options->embed_block_type;
+        $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_vertical_style.css');
         $this->css .= HTML::style('css/widget_master/ie_fix.css');
         $this->js = HTML::script('js/widget/vertical.js');
     }
 
-    public function render() { 
+    public function render_data() { 
         $widget_view = 'widget::widget_embedded_ver_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css, 'js' => $this->js
         ))->get();
     }
+
 }
 
-class HorizontalEmbedWidget extends WidgetTypes {
+class HorizontalEmbedWidget extends DisplayWidgets {
 
-    public $width = 780;
-    public $height = 320;
+    protected $width = 780;
+    protected $height = 320;
 
     public function __construct($options) {
+        $this->widgetkey  = $options->widgetkey;
         $this->form_text  = $options->form_text;
         $this->fixed_data = $options->fixed_data;
         $this->total_rows = $options->total_rows;
+        $this->embed_block_type = $options->embed_block_type;
+        $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_horizontal_style.css');
         $this->css .= HTML::style('css/widget_master/ie_fix.css');
         $this->js = HTML::script('js/widget/horizontal.js'); 
     }
 
-    public function render() { 
+    public function render_data() { 
         $widget_view = 'widget::widget_embedded_hor_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css, 'js' => $this->js
@@ -121,21 +167,24 @@ class HorizontalEmbedWidget extends WidgetTypes {
     }
 }
 
-class ModalEmbedWidget extends WidgetTypes {
+class ModalEmbedWidget extends DisplayWidgets {
 
-    public $width = 760;
-    public $height = 500;
+    protected $width = 760;
+    protected $height = 500;
 
     public function __construct($options) {
+        $this->widgetkey  = $options->widgetkey;
         $this->form_text  = $options->form_text;
         $this->fixed_data = $options->fixed_data;
         $this->total_rows = $options->total_rows;
+        $this->embed_block_type = $options->embed_block_type;
+        $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_popup_style.css');
         $this->css .= HTML::style('css/widget_master/ie_fix.css');
         $this->js = HTML::script('js/widget/popup.js');  
     } 
 
-    public function render() {
+    public function render_data() {
         $widget_view = 'widget::widget_modal_popup_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css, 'js' => $this->js

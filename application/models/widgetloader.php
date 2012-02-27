@@ -11,18 +11,20 @@ class WidgetLoader {
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
 
-    public function render($type="view") {
+    public function load() {
 
-        $obj = $this->widget_obj;//$this->_load_object_code();
-
-        $params = Array(
-            'company_id'   => $obj->company_id
-          , 'site_id'      => $obj->site_id
-          , 'is_published' => 1
-          , 'is_featured'  => 1
-        );
+        $obj = $this->widget_obj;
+        $wf = new WidgetFactory;
 
         if($obj->widget_type == 'display') {
+
+            $params = Array(
+                'company_id'   => $obj->company_id
+              , 'site_id'      => $obj->site_id
+              , 'is_published' => 1
+              , 'is_featured'  => 1
+            );
+
             $feedback = new DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
 
@@ -45,41 +47,40 @@ class WidgetLoader {
                $rows->rules = (object)$feed_rules;
                $fixed_data[] = $rows;
             }
-             
-            if ($type == 'view') { 
-                $option = new StdClass;
-                $option->form_text  = $obj->form_text;
-                $option->theme_type = $obj->theme_type;
-                $option->widget = $obj;
-                $option->fixed_data = $fixed_data;
-                $option->total_rows = $data->total_rows;
 
-                $wf = new WidgetFactory($option); 
-                return $wf->load_widget()->render();
-            }
- 
+            $option = new StdClass;
+            $option->form_text  = $obj->form_text;
+            $option->children   = $obj->children;
+            $option->theme_type = $obj->theme_type;
+            $option->widget = $obj->embed_type;
+            $option->widgetkey = $obj->widgetkey;
+            $option->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : null;
+            $option->fixed_data = $fixed_data;
+            $option->total_rows = $data->total_rows;
+
+            return $wf->load_widget($option); 
         }
 
         if($obj->widget_type == 'submit') {
-            if ($type == 'view') {
-                $option = new StdClass;
-                $option->site_id    = $obj->site_id;
-                $option->company_id = $obj->company_id;
-                $option->form_text  = $obj->form_text;
-                $option->form_question = $obj->form_question;
-                $option->theme_type = $obj->theme_type;
-                $option->widget = $obj->embed_type;
-                $wf = new WidgetFactory($option);
-                return $wf->load_widget()->render();
-            }
+            $option = new StdClass;
+            $option->site_id    = $obj->site_id;
+            $option->company_id = $obj->company_id;
+            $option->form_text  = $obj->form_text;
+            $option->form_question = $obj->form_question;
+            $option->theme_type = $obj->theme_type;
+            $option->widget = $obj->embed_type;
+            $option->widgetkey = $obj->widgetkey;
+            $option->tab_type = $obj->tab_type;
+            $option->tab_pos  = $obj->tab_pos;
+            return $wf->load_widget($option);
         }
     }
 
     public function load_widget_js_code() {
         $deploy_env = Config::get('application.deploy_env');
         $widgetkey = "'".$this->widget_obj->widgetobj->widgetkey."'";
-        $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\""; 
-
+        $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\"";  
+        //$frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output/\"+widgetId+\""; 
         $html = '
             <script type="text/javascript">
                 var widgetId = '.$widgetkey.';
@@ -96,11 +97,44 @@ class WidgetLoader {
         $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
         if($this->widget_obj->widgettype == 'display') 
             return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
-    }
+    }    
+}
 
-    private function _load_object_code() {      
-        $obj = base64_decode($this->widget_obj->widgetobjstring);
-        $obj = unserialize($obj); 
-        return $obj;
+class ClientRender {
+    public function __construct(WidgetTypes $widget_type_obj) {
+        $this->widget_type_obj    = $widget_type_obj; 
+        $this->widget_loader_url  = Config::get('application.deploy_env')."/widget/widget_loader/";
+        $this->form_loader_script = HTML::script('js/s36_client_script.js');
+        $this->form_loader_css    = HTML::style('css/s36_client_style.css');
+        $this->tab_position_css_output = HTML::style(Config::get('application.deploy_env')."/widget/tab_position");
+    }  
+
+    public function js_output() {
+        $obj = $this->widget_type_obj;
+        if($obj instanceof FormWidgets) {
+            $data = Array(
+                'js_load' => $this->form_loader_script 
+              , 'css_load' => $this->form_loader_css
+              , 'tab_pos' => $obj->get_tab_pos()
+              , 'tab_type' => $obj->get_tab_type()
+              , 'widget_loader_url' => $this->widget_loader_url.$obj->widgetkey
+              , 'tab_position_css' => $this->tab_position_css_output
+            );
+            return View::make('widget::widget_js_output_form', $data);
+        }
+
+        if($obj instanceof DisplayWidgets) {
+            $data = Array(
+                'js_load' => $this->form_loader_script 
+              , 'css_load' => $this->form_loader_css
+              , 'widget_loader_url' => $this->widget_loader_url.$obj->widgetkey
+              , 'widget_child_loader_url' => $this->widget_loader_url.$obj->get_child()
+              , 'height' => $obj->get_height()
+              , 'width' => $obj->get_width()
+              , 'embed_block_type' => $obj->get_embed_block_type()
+            );
+
+            return View::make('widget::widget_js_output_display', $data)->get(); 
+        }
     }
 }

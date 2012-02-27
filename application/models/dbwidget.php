@@ -109,7 +109,6 @@ class DBWidget extends S36DataObject {
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
  
         $child = Array();
-        $level = 0;
         foreach($result as $rows) {
             if ( $rows->path_length == 0 ) { 
                 $node = $this->_load_object_code($rows->widgetobjstring);

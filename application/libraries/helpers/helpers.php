@@ -1,6 +1,6 @@
 <?php namespace Helpers;
 
-use Request;
+use Request, View;
 
 class Helpers {
 
@@ -121,5 +121,29 @@ class Helpers {
                             src='$frame_url'>Your Widget</iframe>
                     </span>";
          return trim($iframe);
+    }
+
+    public static function tab_position_css_output() { 
+        //TODO: From zeh database this should be
+        $tab_themes = array('black'=>'Black',
+                            'gray'=>'Silver Gray',
+                            'blue'=>'Ocean Blue',
+                            'green'=>'Forest Green',
+                            'mandarin'=>'Mandarin',
+                            'orange'=>'Sleek Orange',
+                            'red'=>'Thin Red',
+                            'aglow'=>'Aglow',
+                            'chrome'=>'Chrome',
+                            'classic'=>'Classic',
+                            'silver'=>'Silver'
+                            );
+	
+        $positions = Array();
+        
+        foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
+            $positions[$v] = $tab_themes;
+        }
+        
+        return View::make('partials/tab_position_css_output', Array('positions' => $positions));
     }
 }

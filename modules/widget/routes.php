@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    /*
     'GET /widget/form' => function() {
 
         $env = Config::get('application.env_name');
@@ -25,35 +26,24 @@ return array(
           , 'env' => $env
         ));
     },
+    */
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
         $wl = new WidgetLoader($widget_key);   
-        return $wl->render("view");
+        return $wl->load()->render_data();
     },
-
+    
+    //these routes are used by js loaders for source construction
+    'GET /widget/tab_position' => function() {
+        return Helpers::tab_position_css_output();
+    },
+     
     'GET /widget/js_output' => function() { 
-        $widget_id = Input::get('widgetId');
-        $wl = new WidgetLoader($widget_id); 
-        
-        $tab_type = null;
-        $tab_pos = null;
-        if ($wl->widget_obj->widgettype == 'submit') { 
-            $tab_type = $wl->widget_obj->widgetobj->tab_type;
-            $tab_pos = $wl->widget_obj->widgetobj->tab_pos;
-        }
-        
-        $data = Array(
-            'deploy_url' => Config::get('application.deploy_env')
-          , 'width' => $wl->widget_obj->width
-          , 'height' => $wl->widget_obj->height
-          , 'widgettype' => $wl->widget_obj->widgettype
-          , 'widgetkey' => $wl->widget_obj->->widgetobj->widgetkey
-          , 'embed_block_type' => $wl->widget_obj->widgetobj->embed_block_type
-          , 'tab_type' => $tab_type
-          , 'tab_pos' => $tab_pos
-        );
-        return View::make('widget::widget_js_output', $data);
+        $wl = new WidgetLoader(Input::get('widgetId'));  
+        $js = new ClientRender($wl->load());
+        return $js->js_output();
     },
+    //end of these muthafuckas
 
     'GET /widget/form/crop' => function() { 
         $img_upload = (object)Input::get();
