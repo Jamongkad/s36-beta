@@ -1,32 +1,6 @@
 <?php
 
 return array(
-    /*
-    'GET /widget/form' => function() {
-
-        $env = Config::get('application.env_name');
-        if($env == 'dev') { 
-            $fb_id = '171323469605899';
-            $fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-        }
-
-        if($env == 'prod') { 
-            $fb_id = '259670914062599';
-            $fb_secret = '8e0666032461a99fb538e5f38ac7ef93';
-        }
-
-        return View::make('widget::widget_form_view', array(
-            'siteId'    => Input::get('siteId')
-          , 'companyId' => Input::get('companyId') 
-          , 'response' => Input::get('response')
-          , 'themeColor' => DB::Table('Theme', 'master')->where('themeId', '=', Input::get('themeId'))->first(array('name'))
-          , 'country' => DB::Table('Country', 'master')->get()
-          , 'company_name' => DB::Table('Company', 'master')->where('companyId', '=', Input::get('companyId'))->first(array('name'))
-          , 'fb_app_id' => $fb_id  
-          , 'env' => $env
-        ));
-    },
-    */
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
         $wl = new WidgetLoader($widget_key);   
