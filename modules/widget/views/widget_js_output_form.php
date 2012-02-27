@@ -7,7 +7,7 @@ function s36Tab() {
         var src = '<?=$js_load?>' + 
                   '<?=$css_load?>' + 
                   '<?=$tab_position_css?>' + 
-				  '<div id="s36LeaveFeedback" onclick="s36_openForm(\'<?=$widget_loader_url?>'\)" class="tab-<?=$tab_pos?>tab <?=$tab_type?>"></div>';				
+				  '<div id="s36LeaveFeedback" onclick="s36_openForm(\'<?=$widget_loader_url?>\')" class="tab-<?=$tab_pos?>tab <?=$tab_type?>"></div>';				
         return src;
 	},
 	this.display = function () {
