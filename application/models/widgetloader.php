@@ -117,7 +117,7 @@ class ClientRender {
               , 'css_load' => $this->form_loader_css
               , 'tab_pos' => $obj->get_tab_pos()
               , 'tab_type' => $obj->get_tab_type()
-              , 'widget_loader_url' => $this->widget_loader_url.$obj->widgetkey
+              , 'widget_loader_url' => trim($this->widget_loader_url.$obj->widgetkey)
               , 'tab_position_css' => $this->tab_position_css_output
             );
             return View::make('widget::widget_js_output_form', $data);
@@ -127,8 +127,8 @@ class ClientRender {
             $data = Array(
                 'js_load' => $this->form_loader_script 
               , 'css_load' => $this->form_loader_css
-              , 'widget_loader_url' => $this->widget_loader_url.$obj->widgetkey
-              , 'widget_child_loader_url' => $this->widget_loader_url.$obj->get_child()
+              , 'widget_loader_url' => trim($this->widget_loader_url.$obj->widgetkey)
+              , 'widget_child_loader_url' => trim($this->widget_loader_url.$obj->get_child())
               , 'height' => $obj->get_height()
               , 'width' => $obj->get_width()
               , 'embed_block_type' => $obj->get_embed_block_type()
