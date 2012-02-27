@@ -126,43 +126,7 @@ class DBWidget extends S36DataObject {
                 
         }
 
-        return $node;
- 
-        /*
-        $query = DB::Table('WidgetStore') 
-                     ->where('widgetKey', '=', $widget_key)
-                     ->or_where('widgetStoreId', '=', $widget_key)
-                     ->first();
-
-        $obj = base64_decode($query->widgetobjstring);
-        $obj = unserialize($obj); 
-        $query->widgetobj = $obj; 
-
-        //remove this shit....
-        if($obj->embed_type == 'embedded') {
-            if($obj->embed_block_type == 'embed_block_x') {
-                $query->width = 780; 
-                $query->height = 320;
-            }
-
-            if($obj->embed_block_type == 'embed_block_y') {
-                $query->width = 250; 
-                $query->height = 500; 
-            }
-        }
-
-        if($obj->embed_type == 'modal') {
-            $query->width = 760; 
-            $query->height = 500;  
-        }
-
-        if($obj->embed_type == 'form') { 
-            $query->width = 447; 
-            $query->height = 590;  
-        }
-
-        return $query;
-        */
+        return $node; 
     }
 
     public function fetch_widgets_by_company() {

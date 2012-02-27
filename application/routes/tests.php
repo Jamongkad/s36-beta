@@ -216,15 +216,10 @@ return array(
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         //TODO: widget loader should just accept any widget object be type specific if able. 
-        /*
-        $dbw = new DBWidget;
-        $widget_obj = $dbw->fetch_widget_by_id($widget_id); 
-        */
         $wl = new WidgetLoader($widget_id); 
         $obj = $wl->load();
-        //Helpers::show_data($obj);
         $js = new ClientRender($obj);
-        return $js->output_js();
+        return $js->js_output();
     },
 
     'GET /tests/pull_feedback' => function() {        

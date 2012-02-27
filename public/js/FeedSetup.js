@@ -115,7 +115,7 @@ jQuery(function($) {
     
         $.ajax({
               url: action_url 
-            , data: {form_text: $("input[name=form_text]").val(), form_question: $("textarea[name=form_question]").val()}
+            , data: {form_text: $("input[name=submit_form_text]").val(), form_question: $("textarea[name=submit_form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 
                   s36Lightbox(data.width, data.height, data.html_view);
@@ -341,18 +341,23 @@ jQuery(function($) {
         e.preventDefault();
     })
 
-    $(".large-textarea, .large-text").focus(function(i){          		 
+    $(".large-text").focus(function(i){          		 
             if ($(this).val() == $(this)[0].title){
                 $(this).removeClass("reg-text-active");
                 $(this).val("");
             }
         });
-    $(".large-textarea, .large-text").blur(function(){
+    $(".large-text").blur(function(){
             if ($.trim($(this).val()) == ""){
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
             }
         });
+    
+
+    $(".large-textarea, .form-text").each(function() {
+        $(this).val($(this)[0].title);
+    });
     $(".large-textarea, .large-text").blur();
 });
 

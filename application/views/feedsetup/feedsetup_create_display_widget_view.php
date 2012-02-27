@@ -3,6 +3,7 @@
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('widgetkey', false)?>
+<span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
@@ -27,22 +28,62 @@
             </div>
         </div>
 
-    <?if(!$site_id):?>
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Choose your website you want to apply your Widget to</h2>
-            <div style="padding:10px">
-                <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-                    <?foreach($site as $sites):?>
-                        <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
-                    <?endforeach?>
-                </select>
-                <div id="site_id" class="error-msg"></div>
+            <h2><span>Step 2 :</span> Choose a name for your form and a question to encourage your users</h2>
+            <div class="widget-types">
+            <table width="100%" cellpadding="5" cellspacing="0">
+                <tbody><tr>
+                    <td width="140">
+                        <strong style="font-size:14px;">Form Header Text :</strong>
+                    </td>
+                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="Give us your feedback" /></td>
+                    <td rowspan="2" width="150" align="center" valign="top">
+                        <br /><br />
+                        <big>See how your form will <br /> appear to your visitors.</big>
+                        <br /><br />
+                        <a href="#" class="preview-form-widget-button button-gray">Preview</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong style="font-size:14px;">What to write?</strong>
+                        <br />
+                        <small style="line-height:normal">
+                        Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
+                        <br/>
+                        <br/>
+                    </td>
+                    <td valign="top">
+                        <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                        title="What do you like about our products?">
+                        </textarea>
+                    </td>
+                </tr> 
+
+                <tr> 
+                    <td><strong style="font-size:14px;">Website: </strong>
+                    
+                        <br />
+                        <small style="line-height:normal">
+                            Choose which website to apply your widget.
+                        </small>
+                    </td>
+                    <td align="top"> 
+                        <div style="margin-left:-5px">
+                            <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
+                                <?foreach($site as $sites):?>
+                                    <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
+                                <?endforeach?>
+                            </select>
+                            <div id="site_id" class="error-msg"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
             </div>
         </div>
-
-    <?endif?>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 3 : 2?> :</span> Choose Widget type</h2>
+            <h2><span>Step 3 :</span> Choose Widget type</h2>
             <div class="widget-types">
                 <h3><input type="radio" name="embed_type" id="embed_type" value="embedded"/> <label for="embed_type">Embedded Block</label></h3>
                 <div class="widget-opts" id="embed_widget">
@@ -101,7 +142,7 @@
             <div id="embed_type" class="error-msg"></div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 4 : 3?> :</span> Widget Display Options</h2>
+            <h2><span>Step 4 :</span> Widget Display Options</h2>
             <div class="widget-opts" id="display-info-target">
                 <table width="100%" cellpadding="4" class="display-info">
                     <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
@@ -130,7 +171,7 @@
             </div>
         </div>
         <div class="widget-options">
-            <h2><span>Step <?=(!$site_id) ? 5 : 4?> :</span> Select Widget Theme</h2>
+            <h2><span>Step 5 :</span> Select Widget Theme</h2>
             <div class="widget-opts" style="margin:0px -10px;">
                 <div class="form-design-slide">
                     <div class="form-design-prev">

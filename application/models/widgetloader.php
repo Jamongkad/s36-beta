@@ -65,8 +65,8 @@ class WidgetLoader {
             $option = new StdClass;
             $option->site_id    = $obj->site_id;
             $option->company_id = $obj->company_id;
-            $option->form_text  = $obj->form_text;
-            $option->form_question = $obj->form_question;
+            $option->form_text  = $obj->submit_form_text;
+            $option->form_question = $obj->submit_form_question;
             $option->theme_type = $obj->theme_type;
             $option->widget = $obj->embed_type;
             $option->widgetkey = $obj->widgetkey;
@@ -117,7 +117,7 @@ class ClientRender {
               , 'css_load' => $this->form_loader_css
               , 'tab_pos' => $obj->get_tab_pos()
               , 'tab_type' => $obj->get_tab_type()
-              , 'widget_loader_url' => trim($this->widget_loader_url.$obj->widgetkey)
+              , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
               , 'tab_position_css' => $this->tab_position_css_output
             );
             return View::make('widget::widget_js_output_form', $data);
@@ -127,8 +127,8 @@ class ClientRender {
             $data = Array(
                 'js_load' => $this->form_loader_script 
               , 'css_load' => $this->form_loader_css
-              , 'widget_loader_url' => trim($this->widget_loader_url.$obj->widgetkey)
-              , 'widget_child_loader_url' => trim($this->widget_loader_url.$obj->get_child())
+              , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
+              , 'widget_child_loader_url' => $this->_widget_loader($obj->get_child())
               , 'height' => $obj->get_height()
               , 'width' => $obj->get_width()
               , 'embed_block_type' => $obj->get_embed_block_type()
@@ -136,5 +136,9 @@ class ClientRender {
 
             return View::make('widget::widget_js_output_display', $data)->get(); 
         }
+    }
+
+    private function _widget_loader($widget_key) {
+        return trim($this->widget_loader_url.$widget_key);
     }
 }

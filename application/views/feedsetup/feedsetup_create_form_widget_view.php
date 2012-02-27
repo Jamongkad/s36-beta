@@ -31,7 +31,7 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="large-text reg-text-active" name="form_text" value="" title="ex. Give us your feedback" /></td>
+                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="Give us your feedback" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
                         <big>See how your form will <br /> appear to your visitors.</big>
@@ -47,15 +47,13 @@
                         Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
                         <br />
                         <br />
+                        <!--
                         <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
+                        -->
                     </td>
                     <td valign="top">
-                        <textarea name="form_question" class="large-textarea reg-text-active" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
-                        title="What do you like about our products?
-What did you like best?
-Did you enjoy using our service?
-Will you come back to visit us again?
-Would you recommend us to your friends?">
+                        <textarea name="submit_form_question" class="form-text" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                        title="What do you like about our products?">
                         </textarea>
                     </td>
                 </tr>

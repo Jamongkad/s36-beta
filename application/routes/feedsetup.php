@@ -2,6 +2,7 @@
 
 $feedback = new DBFeedback;
 $dbw = new DBWidget;
+//TODO: DO SOMETHING ABOUT THIS!!
 $form_themes = array(
     'aglow'=>'Aglow'
   , 'silver'=>'Silver'
@@ -140,7 +141,7 @@ return array(
             $data['widget_type'] = 'display';
             $data['site_nm'] = $site->domain; 
 
-            $dbw->push_widget_db($data);
+            //$dbw->push_widget_db($data);
         }       
     },
 
@@ -191,16 +192,19 @@ return array(
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any)' => function($theme) {
+    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
+        $wf = new WidgetFactory;
         $option = new StdClass;
         $option->site_id    = 1;
         $option->company_id = 1;
         $option->form_text  = Input::get('form_text');
         $option->form_question  = Input::get('form_question');
-        $option->theme_type = $theme;
-        $option->widget = "form";
-        $wf = new WidgetFactory($option);
-        $load_widget = $wf->load_widget();
-        return $load_widget->render();
+        $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
+        $option->widget = 'form';
+        $option->widgetkey = 'sample';  
+        $option->tab_type = 'tab-l-aglow';
+        $option->tab_pos  = 'l';
+        $load_widget = $wf->load_widget($option);
+        return $load_widget->render_data();
     },
 );

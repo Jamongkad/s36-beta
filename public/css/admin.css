@@ -637,7 +637,7 @@ a.widget-overview-btn:hover {
 .widget-options h2.ico-widget.form{background:#6b7984 url(../img/ico-widgets.png) no-repeat bottom left;padding-left:23px;}
 
 /* submission widget */
-input.large-text{padding:10px;width:80%;}
+input.large-text, input.form-text{padding:10px;width:80%;}
 .form-design-slide,
 .l-design-slide,
 .r-design-slide,
