@@ -1,16 +1,18 @@
-<?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
+<?=Form::open('feedsetup/save_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
+<?=Form::hidden('widget_type', 'submit')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('widgetkey', false)?>
+<?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
+<?=Form::hidden('tab_type', 'tab-l-aglow', Array('id' => 'selected-tab'))?>
+<?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step 1 :</span> Create Submission Form</h2>
             <!-- selected form and color -->
-                <input type="hidden" name="theme_type" value="form-aglow" id="selected-form" />
-                <input type="hidden" name="tab_type" value="tab-l-aglow" id="selected-tab" />
             <!-- end -->
             <div class="widget-types">
                     <table width="100%" cellpadding="5" cellspacing="0">

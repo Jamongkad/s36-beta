@@ -48,7 +48,8 @@ jQuery(function($) {
                     widget_options.html("");  
 
                     $("#widget-preview").show();
-                    $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+                    $("input[name=display_widgetkey]").val(responseText.display.widget.widgetkey);
+                    $("input[name=submit_widgetkey]").val(responseText.submit.widget.widgetkey);
                     var widget_key = $("input[name=widgetkey]").val();
                     var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     $.ajax({
@@ -115,7 +116,7 @@ jQuery(function($) {
     
         $.ajax({
               url: action_url 
-            , data: {form_text: $("input[name=submit_form_text]").val(), form_question: $("textarea[name=submit_form_question]").val()}
+            , data: {submit_form_text: $("input[name=submit_form_text]").val(), submit_form_question: $("textarea[name=submit_form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 
                   s36Lightbox(data.width, data.height, data.html_view);
@@ -124,6 +125,7 @@ jQuery(function($) {
         e.preventDefault();
     })
     
+    //Preview picked out of widget key. This assumes widget is already created in the DB
     $(document).delegate("a#preview-widget-btn", "click", function(e) {
         var widget_key = $("input[name=widgetkey]").val();
         var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;

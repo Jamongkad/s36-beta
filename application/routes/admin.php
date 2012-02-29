@@ -29,7 +29,7 @@ return array(
         $data = Input::get();
         $user = S36Auth::user();
 
-        $perm_factory = new Permission($data);
+        $perm_factory = new Permission($data['perms']);
         $perms = $perm_factory->build();
 
         $rules = Array(
@@ -74,7 +74,7 @@ return array(
 
          $details = $admin->fetch_admin_details_by_id($data['userId']);
 
-         $perm_factory = new Permission($data);
+         $perm_factory = new Permission($data['perms']);
          $perms = $perm_factory->build();
 
          $rules = Array(

@@ -1,5 +1,4 @@
 <?php
-
 class DBWidget extends S36DataObject {    
 
     public function push_widget_db($data) {
@@ -10,12 +9,10 @@ class DBWidget extends S36DataObject {
             //save widget 
             $save_result = $this->save_widget( $data_object );         
             echo json_encode( $save_result ); 
-            //echo json_encode(Array('status' => 'save'));
         } else {
             //update widget      
             $update_result = $this->update_widget_by_id( $widgetkey, $data_object );
             echo json_encode( $update_result );   
-            //echo json_encode(Array('status' => 'update'));
         } 
     }
 
@@ -31,11 +28,10 @@ class DBWidget extends S36DataObject {
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 
         $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
-                VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
+                                 VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
         $widget_obj_string = base64_encode(serialize($widget_obj));
 
-        //$this->dbh->beginTransaction();
-
+        $this->dbh->beginTransaction();
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->bindParam(':widget_type', $widget_obj->widget_type, PDO::PARAM_STR);
@@ -45,21 +41,11 @@ class DBWidget extends S36DataObject {
         $sth->execute();
 
         $last_insert_id = $this->dbh->lastInsertId();
-        $this->_insert_ancestor($last_insert_id);
+        //$obj = $this->fetch_widget_by_id($last_insert_id); 
+        $this->dbh->commit();
 
-        $obj = $this->fetch_widget_by_id($last_insert_id); 
-
-        //$this->dbh->commit();
-
-        return Array('status' => 'save', 'widget' => $obj);
-    }
-
-    public function _insert_ancestor($last_insert_id) { 
-        $closure_sql = "INSERT INTO WidgetClosure (ancestor_id, descendant_id) VALUES (:ancestor_id, :descendant_id)"; 
-        $sth = $this->dbh->prepare($closure_sql);
-        $sth->bindParam(':ancestor_id', $last_insert_id, PDO::PARAM_INT);
-        $sth->bindParam(':descendant_id', $last_insert_id, PDO::PARAM_INT);
-        $sth->execute();
+        //return Array('status' => 'save', 'widget' => $obj);
+        return $last_insert_id;
     }
 
     public function update_widget_by_id($widget_key, $widget_obj) {
@@ -77,6 +63,18 @@ class DBWidget extends S36DataObject {
         return Array('status' => 'update', 'widget' => $widget_obj);
     }
 
+    public function insert_ancestor($ancestor_id, $descendant_id, $path_length=0) { 
+ 
+        $this->dbh->beginTransaction();
+        $closure_sql = "INSERT INTO WidgetClosure (ancestor_id, descendant_id, path_length) VALUES (:ancestor_id, :descendant_id, :path_length)"; 
+        $sth = $this->dbh->prepare($closure_sql);
+        $sth->bindParam(':ancestor_id', $ancestor_id, PDO::PARAM_INT);
+        $sth->bindParam(':descendant_id', $descendant_id, PDO::PARAM_INT);
+        $sth->bindParam(':path_length', $path_length, PDO::PARAM_INT);
+        $sth->execute();
+        $this->dbh->commit();
+    }
+
     public function fetch_widget_by_id($widget_key) {     
         $sql = "
             SELECT 
@@ -92,11 +90,12 @@ class DBWidget extends S36DataObject {
             WHERE 1=1
                 AND WidgetClosure.ancestor_id = (
                     SELECT 
-                        WidgetStoreId
+                        WidgetStore.widgetStoreId
                     FROM
                         WidgetStore
-                    WHERE 
-                        WidgetStore.widgetKey = :widget_key
+                    WHERE 1=1
+                        AND WidgetStore.widgetKey = :widget_key
+                        OR WidgetStore.widgetStoreId = :widget_store_key
                 )
             ORDER BY
                 WidgetStore.widgetStoreId DESC
@@ -104,26 +103,31 @@ class DBWidget extends S36DataObject {
  
         $sth = $this->dbh->prepare($sql);  
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
+        $sth->bindParam(':widget_store_key', $widget_key, PDO::PARAM_STR);
         $sth->execute();
         
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
- 
+        
+        $node = new StdClass;
         $child = Array();
         foreach($result as $rows) {
+            //path of parents is alway zero
             if ( $rows->path_length == 0 ) { 
                 $node = $this->_load_object_code($rows->widgetobjstring);
                 $node->widgetstoreid = $rows->widgetstoreid; 
             } else {
                 $my_kid = $this->_load_object_code($rows->widgetobjstring);
                 $my_kid->widgetstoreid = $rows->widgetstoreid;
+                $my_kid->widgetkey = $rows->widgetkey;
                 $child[] = $my_kid; 
             }
 
+            $node->widgetkey = $rows->widgetkey;
+            $node->widgetstoreid = $rows->widgetstoreid;
             $node->children = null;
             if ($child) {
                 $node->children = $child;
-            }
-                
+            } 
         }
 
         return $node; 
@@ -139,8 +143,8 @@ class DBWidget extends S36DataObject {
     public function fetch_widgets_by($widget_type, $limit=3, $offset=0) { 
         $sql = " 
             SELECT 
-            SQL_CALC_FOUND_ROWS
-                WidgetStore.widgetStoreId
+                  SQL_CALC_FOUND_ROWS
+                  WidgetStore.widgetStoreId
                 , WidgetStore.widgetKey
                 , WidgetStore.companyId
                 , WidgetStore.siteId
@@ -157,6 +161,7 @@ class DBWidget extends S36DataObject {
                 WidgetStore.widgetStoreId
             HAVING 
                 NOT COUNT(*) > 1
+                /* NOT COUNT(WidgetStore.widgetStoreId) */
             ORDER BY 
                 WidgetStore.widgetStoreId DESC 
             LIMIT :offset, :limit 

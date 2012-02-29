@@ -190,7 +190,6 @@ return array(
     },
 
     'GET /tests/update_widget' => function() { 
-
         $dbw = new DBWidget;
         $obj = new StdClass;
         $obj->widgetkey = 'qbbro';
@@ -215,11 +214,13 @@ return array(
     },
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
-        //TODO: widget loader should just accept any widget object be type specific if able. 
         $wl = new WidgetLoader($widget_id); 
+        Helpers::show_data($wl);
+        /* 
         $obj = $wl->load();
         $js = new ClientRender($obj);
         return $js->js_output();
+        */
     },
 
     'GET /tests/pull_feedback' => function() {        

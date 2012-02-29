@@ -1,9 +1,11 @@
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
+<?=Form::hidden('widget_type', 'submit')?>
 <?=Form::hidden('company_id', $widget->widgetobj->company_id)?>
 <?=Form::hidden('widgetkey', $widget->widgetobj->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
 <?=Form::hidden('tab_type', $widget->widgetobj->tab_type, Array('id' => 'selected-tab'))?>
+<?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block">
@@ -28,7 +30,7 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="large-text" name="form_text" value="<?=$widget->widgetobj->form_text?>" title="ex. Give us your feedback" /></td>
+                    <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->widgetobj->form_text?>" title="ex. Give us your feedback" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
                         <big>See how your form will <br /> appear to your visitors.</big>
@@ -47,7 +49,7 @@
                         <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
                     </td>
                     <td valign="top">
-                        <textarea name="form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" >
+                        <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" >
 <?=$widget->widgetobj->form_question?>
                         </textarea>
                     </td>
@@ -90,10 +92,10 @@
                             $form_slides = '';
                             $units = 7;
                             $ctr = 0;
-                            $max = count($form_themes );
+                            $max = count($form_themes);
                             
-                            foreach($form_themes  as $form_colors => $val){
-                                if(($ctr % $units) == 0){
+                            foreach($form_themes as $form_colors => $val){
+                                if (($ctr % $units) == 0) {
                                     $form_slides .= '<div class="form-design-group grids">';
                                     $end = 1;
                                 }

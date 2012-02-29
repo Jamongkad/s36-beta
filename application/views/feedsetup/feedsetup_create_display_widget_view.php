@@ -1,8 +1,11 @@
 <?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
 <?$site_id = Input::get('site_id')?>
+<?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
-<?=Form::hidden('widgetkey', false)?>
+<?=Form::hidden('display_widgetkey', false)?>
+<?=Form::hidden('submit_widgetkey', false)?>
+<?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block"> 
@@ -82,6 +85,7 @@
             </tbody></table>
             </div>
         </div>
+
         <div class="widget-options">
             <h2><span>Step 3 :</span> Choose Widget type</h2>
             <div class="widget-types">
@@ -178,27 +182,26 @@
                     </div>
                         <div class="form-designs grids">  
                         <?php
-                            $themes = Array( 
-                                'aglow'=>'Aglow'
-                              , 'silver'=>'Silver'
-                              , 'chrome'=>'Chrome'
-                              , 'classic'=>'Classic'
-                            );
                             $form_slides = '';
                             $units = 7;
                             $ctr = 0;
-                            $max = count($themes);
+                            $max = count($form_themes);
                             
-                            foreach($themes  as $form_colors => $val){
-                                if(($ctr % $units) == 0){
+                            foreach($form_themes as $form_colors => $val){
+                                if (($ctr % $units) == 0) {
                                     $form_slides .= '<div class="form-design-group grids">';
                                     $end = 1;
                                 }
   
-                                    $color_name = $form_colors;
+                                    $color_name = 'form-'.$form_colors;
                                     $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                         <img src="/img/display-thumb.png "/>
                                                         <span>'.$val.'</span>
+                                                        <!--
+                                                        <div id="preview" class="preview button-gray">
+                                                            Preview
+                                                        </div>
+                                                        -->
                                                     </div>';
                                 
                                  if(($end == $units) || $ctr == ($max - 1)){

@@ -630,8 +630,9 @@ a.widget-overview-btn:hover {
 
 .widget-pagination{padding:0px 10px 30px;}
 .activePage{color:#7e7e7e;text-decoration:underline;}
-.widget-create{position:absolute;top:5px;right:15px;font-size:12px;color:#3f4a53;text-shadow:#889096 0px 1px;font-weight:bold}
-.widget-create:hover{color:#97b2c6;text-shadow:#373a3d 0px 1px;}
+
+.widget-create{position:absolute;top:5px;right:15px;font-size:12px;color:#3f4a53;text-shadow:#EEE 0px 1px;font-weight:bold}
+.widget-create:hover{color:#FFF;text-shadow:#3f4a53 0px 1px;}
 
 .widget-options h2.ico-widget{background:#6b7984 url(../img/ico-widgets.png) no-repeat top left;padding-left:24px;}
 .widget-options h2.ico-widget.form{background:#6b7984 url(../img/ico-widgets.png) no-repeat bottom left;padding-left:23px;}

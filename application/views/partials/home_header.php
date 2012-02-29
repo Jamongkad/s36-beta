@@ -22,5 +22,4 @@
 
         <?=HTML::script('js/s36application.js')?>
     </head>
-
     <body>

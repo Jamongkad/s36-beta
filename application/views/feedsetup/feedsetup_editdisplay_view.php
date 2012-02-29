@@ -1,7 +1,9 @@
 <?=Form::open('feedsetup/update_widget', 'POST', Array('id' => 'create-widget'))?>
+<?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('widgetkey', $widget->widgetobj->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
+<span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block"> 
         <div class="widget-options">
@@ -26,20 +28,61 @@
         </div>
 
         <div class="widget-options">
-            <h2>Website applied to this Widget</h2>
-            <div style="padding:10px">
-                <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-                    <?foreach($site as $sites):?>
-                        <option value="<?=$sites->siteid?>" <?=($widget->widgetobj->site_id == $sites->siteid) ? 'selected' : null?>>
-                            <?=$sites->domain?>
-                        </option>
-                    <?endforeach?>
-                </select>
-                <div id="site_id" class="error-msg"></div>
+            <h2><span>Step 2 :</span> Choose a name for your form and a question to encourage your users</h2>
+            <div class="widget-types">
+            <table width="100%" cellpadding="5" cellspacing="0">
+                <tbody><tr>
+                    <td width="140">
+                        <strong style="font-size:14px;">Form Header Text :</strong>
+                    </td>
+                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="Give us your feedback" /></td>
+                    <td rowspan="2" width="150" align="center" valign="top">
+                        <br /><br />
+                        <big>See how your form will <br /> appear to your visitors.</big>
+                        <br /><br />
+                        <a href="#" class="preview-form-widget-button button-gray">Preview</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong style="font-size:14px;">What to write?</strong>
+                        <br />
+                        <small style="line-height:normal">
+                        Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
+                        <br/>
+                        <br/>
+                    </td>
+                    <td valign="top">
+                        <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                        title="What do you like about our products?">
+                        </textarea>
+                    </td>
+                </tr> 
+
+                <tr> 
+                    <td><strong style="font-size:14px;">Website: </strong>
+                    
+                        <br />
+                        <small style="line-height:normal">
+                            Choose which website to apply your widget.
+                        </small>
+                    </td>
+                    <td align="top"> 
+                        <div style="margin-left:-5px">
+                            <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
+                                <?foreach($site as $sites):?>
+                                    <option value="<?=$sites->siteid?>" <?=($widget->widgetobj->site_id == $sites->siteid) ? 'selected' : null?>>
+                                        <?=$sites->domain?>
+                                    </option>
+                                <?endforeach?>
+                            </select>
+                            <div id="site_id" class="error-msg"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
             </div>
         </div>
-
-
 
         <div class="widget-options">
             <h2>Your chosen Widget type</h2>
@@ -161,27 +204,26 @@
                     </div>
                         <div class="form-designs grids">  
                         <?php
-                            $themes = Array( 
-                                'aglow'=>'Aglow'
-                              , 'silver'=>'Silver'
-                              , 'chrome'=>'Chrome'
-                              , 'classic'=>'Classic'
-                            );
                             $form_slides = '';
                             $units = 7;
                             $ctr = 0;
-                            $max = count($themes);
+                            $max = count($form_themes);
                             
-                            foreach($themes  as $form_colors => $val){
+                            foreach($form_themes  as $form_colors => $val){
                                 if(($ctr % $units) == 0){
                                     $form_slides .= '<div class="form-design-group grids">';
                                     $end = 1;
                                 }
   
-                                    $color_name = $form_colors;
+                                    $color_name = 'form-'.$form_colors;
                                     $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                         <img src="/img/display-thumb.png "/>
                                                         <span>'.$val.'</span>
+                                                        <!--
+                                                        <div id="preview" class="preview button-gray">
+                                                            Preview
+                                                        </div>
+                                                        -->
                                                     </div>';
                                 
                                  if(($end == $units) || $ctr == ($max - 1)){

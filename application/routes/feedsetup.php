@@ -68,7 +68,14 @@ return array(
         $wl = new WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widgetobj->widget_type == 'display') {
+            //TODO: this is just bad engineering
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
+            $form_themes = Array( 
+                'aglow'=>'Aglow'
+              , 'silver'=>'Silver'
+              , 'chrome'=>'Chrome'
+              , 'classic'=>'Classic'
+            );
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
@@ -84,11 +91,12 @@ return array(
           , 'js_code'         => $wl->load_widget_js_code()
         ));
     }),
-
+    
+    //TODO: Get rid of this...
     'POST /feedsetup/update_widget' => function() use ($dbw) {
         $data = Input::get(); 
         $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
-        $perm_factory = new Permission($data);
+        $perm_factory = new Permission($data['perms']);
         $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
         $data['perms'] = $perms;
         $data['widget_type'] = 'display';
@@ -97,11 +105,18 @@ return array(
     },
 
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+        $form_themes = Array( 
+            'aglow'=>'Aglow'
+          , 'silver'=>'Silver'
+          , 'chrome'=>'Chrome'
+          , 'classic'=>'Classic'
+        );
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid 
+          , 'form_themes'     => $form_themes
         )); 
     }),
 
@@ -112,10 +127,44 @@ return array(
           , 'form_themes'     => $form_themes
         ));
     }),
-     
-    'POST /feedsetup/save_widget' => function() use ($dbw) {
+    
+    //TODO: Confusing as fucking hell...change name or generalize
+    'POST /feedsetup/save_widget' => Array('do' => function() use ($dbw) {
         $data = Input::get();
 
+        $wdm = new WidgetDataManager;
+
+        if ( Input::get('widget_type') == 'display' ) {  
+            $display_data = $wdm->provide_data_for('display');
+            $submit_data  = $wdm->provide_data_for('submit');
+
+            $display = new DisplayWidget($display_data);
+            $form = new FormWidget($submit_data);
+            
+            if($display_data->widgetkey && $submit_data->widgetkey) { 
+                $display->update();
+                $form->update();
+            } else { 
+                $display->save();
+                $form->save();
+                $display->adopt($form);
+            }
+
+            $emit_data = Array(
+                'display' => $display->emit()
+              , 'submit'  => $form->emit()
+            );
+
+            echo json_encode($emit_data);
+        }
+
+        if ( Input::get('widget_type') == 'submit' ) { 
+            $submit_data = $wdm->provide_data_for('submit');
+            $form = new FormWidget($submit_data);
+            $form->save();
+        }
+
+        /*
         $rules = Array(
             'theme_name' => 'required'
           , 'embed_type' => 'required'
@@ -123,27 +172,9 @@ return array(
         );
 
         $validator = Validator::make($data, $rules);
-
-        if(!$validator->valid()) {
-
-            $json_data = Array(
-                'data' => $data
-              , 'errors' => $validator->errors
-            );
-            echo json_encode($json_data);
-
-        } else { 
-
-            $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
-            $perm_factory = new Permission($data);
-            $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
-            $data['perms'] = $perms;
-            $data['widget_type'] = 'display';
-            $data['site_nm'] = $site->domain; 
-
-            //$dbw->push_widget_db($data);
-        }       
-    },
+        $validator->valid();
+        */
+    }),
 
     'POST /feedsetup/save_form_widget' => function() use ($dbw) {
         $data = Input::get();
@@ -158,7 +189,8 @@ return array(
             $data['tab_pos'] = 'side';
         }
  
-        $dbw->push_widget_db($data);  
+        Helpers::show_data($data);
+        //$dbw->push_widget_db($data);  
     },
 
     'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
@@ -166,7 +198,7 @@ return array(
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
-
+         /*
          $wl = new WidgetLoader($widget_key); 
          $iframe = $wl->load_iframe_code();
 
@@ -177,6 +209,7 @@ return array(
            , 'width' => $wl->widget_obj->width
            , 'height' => $wl->widget_obj->height
          ));
+         */
     },
     
     //TODO: something is wrong here...
@@ -185,7 +218,7 @@ return array(
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
         $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme
-                                                          .'?form_text='.Input::get('form_text').'&form_question='.Input::get('form_question');
+                                                          .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
@@ -197,8 +230,8 @@ return array(
         $option = new StdClass;
         $option->site_id    = 1;
         $option->company_id = 1;
-        $option->form_text  = Input::get('form_text');
-        $option->form_question  = Input::get('form_question');
+        $option->submit_form_text = Input::get('submit_form_text');
+        $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
         $option->widget = 'form';
         $option->widgetkey = 'sample';  

@@ -85,8 +85,8 @@ class SubmissionWidget extends FormWidgets {
         $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
-        $this->form_text  = $options->form_text;
-        $this->form_question = $options->form_question;
+        $this->form_text  = $options->submit_form_text;
+        $this->form_question = $options->submit_form_question;
         $this->theme_type = $options->theme_type;
         $this->tab_pos  = $options->tab_pos;
         $this->tab_type = $options->tab_type;
