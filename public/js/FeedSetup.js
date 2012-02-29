@@ -50,7 +50,7 @@ jQuery(function($) {
                     $("#widget-preview").show();
                     $("input[name=display_widgetkey]").val(responseText.display.widget.widgetkey);
                     $("input[name=submit_widgetkey]").val(responseText.submit.widget.widgetkey);
-                    var widget_key = $("input[name=widgetkey]").val();
+                    var widget_key = $("input[name=display_widgetkey]").val();
                     var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     $.ajax({
                         url: action
@@ -79,7 +79,7 @@ jQuery(function($) {
             }
           , success: function(responseText, statusText, xhr, $form) {
 
-                $("input[name=widgetkey]").val(responseText.widget.widgetkey);
+                $("input[name=submit_widgetkey]").val(responseText.submit.widget.widgetkey);
 
                 $("#widget-preview").show();
                 $("#widget-preview").siblings(".block").show();
@@ -87,7 +87,7 @@ jQuery(function($) {
                 new Status().notify("Success!", 1000);
                 new ZClip();
 
-                var widget_key = $("input[name=widgetkey]").val();
+                var widget_key = $("input[name=submit_widgetkey]").val();
                 var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                 $.ajax({
                     url: action

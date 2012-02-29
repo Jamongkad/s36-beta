@@ -5,6 +5,48 @@ class WidgetDataManager {
         $this->site_nm = DB::Table('Site')->where('siteId', '=', Input::get('site_id'))->first(Array('domain'));
     }
 
+    public function create_and_save_widget() {  
+        if ( Input::get('widget_type') == 'display' ) {  
+            $display_data = $this->provide_data_for('display');
+            $submit_data  = $this->provide_data_for('submit');
+
+            $display = new DisplayWidget($display_data);
+            $form = new FormWidget($submit_data);
+            
+            if($display_data->widgetkey && $submit_data->widgetkey) { 
+                $display->update();
+                $form->update();
+            } else { 
+                $display->save();
+                $form->save();
+                $display->adopt($form);
+            }
+
+            $emit_data = Array(
+                'display' => $display->emit()
+              , 'submit'  => $form->emit()
+            );
+
+            echo json_encode($emit_data);
+        }
+
+        if ( Input::get('widget_type') == 'submit' ) {  
+            $submit_data  = $this->provide_data_for('submit');
+            $form = new FormWidget($submit_data);
+            if($submit_data->widgetkey) { 
+                $form->update();
+            } else { 
+                $form->save();
+            }
+
+            $emit_data = Array(
+                'submit' => $form->emit()
+            );
+
+            echo json_encode($emit_data);
+        }
+    }
+
     public function provide_data_for($force_type=False) {
         if ( $force_type == "display" ) {
 

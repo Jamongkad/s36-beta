@@ -1,10 +1,8 @@
 <?php
-//TODO: You can do a better job at this. 
-//Place these in a data structure of some sort
-//All relevant information should be accessible via json or php
-//Plugin factors such as height, frameurl, etc into data structure
-//will clear up view templates from unneccesary cruft
 class WidgetLoader {
+
+    private $dbh;
+    public $widget_obj;
 
     public function __construct($widget_id) {
         $this->dbw = new DBWidget;
@@ -78,7 +76,7 @@ class WidgetLoader {
 
     public function load_widget_js_code() {
         $deploy_env = Config::get('application.deploy_env');
-        $widgetkey = "'".$this->widget_obj->widgetobj->widgetkey."'";
+        $widgetkey = "'".$this->widget_obj->widgetkey."'";
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\"";  
         //$frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output/\"+widgetId+\""; 
         $html = '
@@ -93,10 +91,17 @@ class WidgetLoader {
     }
 
     public function load_iframe_code() {
-        $widgetkey = $this->widget_obj->widgetobj->widgetkey;
-        $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey;
-        if($this->widget_obj->widgettype == 'display') 
-            return Helpers::render_iframe_code($frame_url, $this->widget_obj->width, $this->widget_obj->height);
+        $widget = $this->load();
+        $client = new ClientRender($widget);
+        //Helpers::show_data($client);
+        return $client->iframe_output();
+        /*
+        $widgetkey = $this->widget_obj->widgetkey;
+        $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey; 
+        if($this->widget_obj->widget_type == 'display') 
+            return Helpers::render_iframe_code($frame_url, $widget->get_width(), $widget->get_height());
+        */
+
     }    
 }
 
@@ -136,6 +141,31 @@ class ClientRender {
 
             return View::make('widget::widget_js_output_display', $data)->get(); 
         }
+    }
+
+    public function iframe_output() {
+        $obj = $this->widget_type_obj;
+        if($obj instanceof DisplayWidgets) {
+            $data = Array(
+                'js_load' => $this->form_loader_script 
+              , 'css_load' => $this->form_loader_css
+              , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
+              , 'widget_child_loader_url' => $this->_widget_loader($obj->get_child())
+              , 'height' => $obj->get_height()
+              , 'width' => $obj->get_width()
+              , 'embed_block_type' => $obj->get_embed_block_type()
+            );
+
+            return $data['js_load']
+                  .$data['css_load']
+                  .'<div style="position:relative;width:'.$data['width'].'px;height:'.$data['height'].'px;">' 
+                  .'<div class="s36_'.$data['embed_block_type'].'"><a href="javascript:;" onclick="s36_openForm('.$data['widget_child_loader_url'].')">Send Feedback</a></div>' 
+                  .'<iframe id="s36Widget" allowTransparency="true" 
+                            height="'.$data['height'].'" width="'.$data['width'].'" 
+                            frameborder="0" scrolling="no" style="width:100%;border:none;overflow:hidden;" src="'.$data['widget_loader_url'].'">Insomnia wooohooooh</iframe>
+                   </div>';
+        }
+        
     }
 
     private function _widget_loader($widget_key) {

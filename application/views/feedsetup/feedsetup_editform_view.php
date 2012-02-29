@@ -1,10 +1,10 @@
-<?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
+<?=Form::open('feedsetup/save_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
-<?=Form::hidden('company_id', $widget->widgetobj->company_id)?>
-<?=Form::hidden('widgetkey', $widget->widgetobj->widgetkey)?>
-<?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
-<?=Form::hidden('tab_type', $widget->widgetobj->tab_type, Array('id' => 'selected-tab'))?>
+<?=Form::hidden('company_id', $widget->company_id)?>
+<?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('theme_type', $widget->theme_type, Array('id' => 'selected-form'))?>
+<?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
@@ -17,7 +17,7 @@
                             <td width="120">
                                 <strong style="font-size:14px;">Form Name :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->widgetobj->theme_name?>" title="Name your form" /></td>
+                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="Name your form" /></td>
                         </tr>
                     </table>
             </div>
@@ -30,7 +30,7 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->widgetobj->form_text?>" title="ex. Give us your feedback" /></td>
+                    <td><input type="text" class="large-text" name="submit_form_text" value="" title="<?=$widget->submit_form_text?>" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
                         <big>See how your form will <br /> appear to your visitors.</big>
@@ -49,8 +49,8 @@
                         <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
                     </td>
                     <td valign="top">
-                        <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" >
-<?=$widget->widgetobj->form_question?>
+                        <textarea name="submit_form_question" class="large-textarea" 
+                                  style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" title="<?=$widget->submit_form_question?>">
                         </textarea>
                     </td>
                 </tr>
@@ -67,7 +67,7 @@
                         <div style="margin-left:-5px">
                             <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
                                 <?foreach($site as $sites):?>
-                                    <option value="<?=$sites->siteid?>" <?=($widget->siteid== $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
+                                    <option value="<?=$sites->siteid?>" <?=($widget->site_id== $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                                 <?endforeach?>
                             </select>
                             <div id="site_id" class="error-msg"></div>
@@ -126,7 +126,7 @@
                 <strong style="font-size:14px;">Floating Tab Position : 
                     <select id="tab-position" class="regular-select" style="font-size:12px;padding:5px;">
                     <?php 
-                        preg_match('~tab-(br|bl|tr|tl|r|l)~', $widget->widgetobj->tab_type, $match);
+                        preg_match('~tab-(br|bl|tr|tl|r|l)~', $widget->tab_type, $match);
                         $select = Array(
                             'l' => 'Left Side Tab'
                           , 'r' => 'Right Side Tab'

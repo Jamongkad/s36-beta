@@ -1,8 +1,9 @@
-<?=Form::open('feedsetup/update_widget', 'POST', Array('id' => 'create-widget'))?>
+<?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('company_id', $company_id)?>
-<?=Form::hidden('widgetkey', $widget->widgetobj->widgetkey)?>
-<?=Form::hidden('theme_type', $widget->widgetobj->theme_type, Array('id' => 'selected-form'))?>
+<?=Form::hidden('display_widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('submit_widgetkey', $widget->children[0]->widgetkey)?>
+<?=Form::hidden('theme_type', 'form-'.$widget->theme_type, Array('id' => 'selected-form'))?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
     <div id="widget-setup-block"> 
@@ -14,14 +15,14 @@
                             <td width="120">
                                 <strong style="font-size:14px;">Widget Name :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->widgetobj->theme_name?>" title="Name of your widget" />
+                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="Name of your widget" />
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <strong style="font-size:14px;">Flavor Text :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="form_text" value="<?=$widget->widgetobj->form_text?>" title="ex. What our customers have to say" /></td>
+                            <td><input type="text" class="large-text" name="form_text" value="<?=$widget->form_text?>" title="ex. What our customers have to say" /></td>
                         </tr>
                     </table>
             </div>
@@ -35,7 +36,7 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="Give us your feedback" /></td>
+                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="<?=$widget->children[0]->submit_form_text?>" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
                         <big>See how your form will <br /> appear to your visitors.</big>
@@ -54,7 +55,8 @@
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
-                        title="What do you like about our products?">
+                        title="<?=$widget->children[0]->submit_form_question?>">
+                        
                         </textarea>
                     </td>
                 </tr> 
@@ -71,7 +73,7 @@
                         <div style="margin-left:-5px">
                             <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
                                 <?foreach($site as $sites):?>
-                                    <option value="<?=$sites->siteid?>" <?=($widget->widgetobj->site_id == $sites->siteid) ? 'selected' : null?>>
+                                    <option value="<?=$sites->siteid?>" <?=($widget->site_id == $sites->siteid) ? 'selected' : null?>>
                                         <?=$sites->domain?>
                                     </option>
                                 <?endforeach?>
@@ -89,7 +91,7 @@
             <div class="widget-types">
                 <h3>
                     <input type="radio" name="embed_type" id="embed_type" value="embedded" 
-                        <?=($widget->widgetobj->embed_type == 'embedded') ? 'checked' : null?>
+                        <?=($widget->embed_type == 'embedded') ? 'checked' : null?>
                     /> 
                     <label for="embed_type">Embedded Block</label>
                 </h3>
@@ -98,13 +100,13 @@
                         <tr><td width="170" class="feedback-td-font">Choose Block Type</td>
                             <td>
                                 <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed"  
-                                    <?=($widget->widgetobj->embed_type == 'embedded' && $widget->widgetobj->embed_block_type == 'embed_block_x') ? 'checked' : null?>
+                                    <?=($widget->embed_type == 'embedded' && $widget->embed_block_type == 'embed_block_x') ? 'checked' : null?>
                                 /> 
                                 <label for="horizontal_embed" class="feedback-td-font">Horizontal</label>
                             </td>
                             <td>
                                 <input type="radio" name="embed_block_type" value="embed_block_y" id="vertical_embed"  
-                                    <?=($widget->widgetobj->embed_type == 'embedded' && $widget->widgetobj->embed_block_type == 'embed_block_y') ? 'checked' : null?>
+                                    <?=($widget->embed_type == 'embedded' && $widget->embed_block_type == 'embed_block_y') ? 'checked' : null?>
                                 /> 
                                 <label for="vertical_embed" class="feedback-td-font">Vertical</label>
                             </td>
@@ -123,9 +125,8 @@
                             <td colspan="2">
                                 <select name="embed_effects" class="regular-select">  
                                     <?foreach ($effects_options as $rows):?>        
-                                        <option value="<?=$rows->effectsid?>"
-                                        
-                                        <?=($widget->widgetobj->embed_type == 'embedded' && $widget->widgetobj->embed_effects == $rows->effectsid) ? 'selected' : null?>
+                                        <option value="<?=$rows->effectsid?>" 
+                                        <?=($widget->embed_type == 'embedded' && $widget->embed_effects == $rows->effectsid) ? 'selected' : null?>
                                         ><?=$rows->effectsname?></option>
                                     <?endforeach?> 
                                 </select>
@@ -137,7 +138,7 @@
             <div class="widget-types">
                 <h3>
                     <input type="radio" name="embed_type" id="modal_type" value="modal" 
-                        <?=($widget->widgetobj->embed_type == 'modal') ? 'checked' : null?>
+                        <?=($widget->embed_type == 'modal') ? 'checked' : null?>
                     /> 
                     <label for="modal_type">Modal / Popup</label>
                 </h3>
@@ -148,9 +149,8 @@
                             <td>
                                 <select name="modal_effects" class="regular-select">       
                                     <?foreach($effects_options as $rows):?>        
-                                        <option value="<?=$rows->effectsid?>"
-                                        
-                                        <?=($widget->widgetobj->embed_type == 'modal' && $widget->widgetobj->modal_effects == $rows->effectsid) ? 'selected' : null?>
+                                        <option value="<?=$rows->effectsid?>" 
+                                        <?=($widget->embed_type == 'modal' && $widget->modal_effects == $rows->effectsid) ? 'selected' : null?>
                                         ><?=$rows->effectsname?></option>
                                     <?endforeach?> 
                                 </select>
@@ -171,25 +171,25 @@
             <div class="widget-opts" id="display-info-target">
                 <table width="100%" cellpadding="4" class="display-info"> 
                     <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, (($widget->widgetobj->perms['displayname']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, (($widget->perms['displayname']) ? 1 : null) )?>
                     </td>
                     <td width="140" class="feedback-td-font">Website Url : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, (($widget->widgetobj->perms['displayurl']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, (($widget->perms['displayurl']) ? 1 : null) )?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Display Image :  </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, (($widget->widgetobj->perms['displayimg']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, (($widget->perms['displayimg']) ? 1 : null) )?>
                     </td>		
                     <td class="feedback-td-font">Country & Flag : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, (($widget->widgetobj->perms['displaycountry']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, (($widget->perms['displaycountry']) ? 1 : null) )?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Company Name :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, (($widget->widgetobj->perms['displaycompany']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, (($widget->perms['displaycompany']) ? 1 : null) )?>
                     </td>			
                     <td class="feedback-td-font">Submitted Date : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, (($widget->widgetobj->perms['displaysbmtdate']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, (($widget->perms['displaysbmtdate']) ? 1 : null) )?>
                     </td></tr>
                     <tr><td class="feedback-td-font">Designation / Position :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, (($widget->widgetobj->perms['displayposition']) ? 1 : null) )?>
+                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, (($widget->perms['displayposition']) ? 1 : null) )?>
                     </td><td></td><td></td></tr>
                 </table>
                 <div id="widget_options" class="error-msg"></div>

@@ -67,7 +67,7 @@ return array(
     'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
         $wl = new WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
-        if($widget->widgetobj->widget_type == 'display') {
+        if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
             $form_themes = Array( 
@@ -79,7 +79,7 @@ return array(
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
-
+        
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
@@ -92,18 +92,6 @@ return array(
         ));
     }),
     
-    //TODO: Get rid of this...
-    'POST /feedsetup/update_widget' => function() use ($dbw) {
-        $data = Input::get(); 
-        $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));
-        $perm_factory = new Permission($data['perms']);
-        $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
-        $data['perms'] = $perms;
-        $data['widget_type'] = 'display';
-        $data['site_nm'] = $site->domain;
-        $dbw->push_widget_db($data);
-    },
-
     'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
         $form_themes = Array( 
             'aglow'=>'Aglow'
@@ -127,70 +115,10 @@ return array(
           , 'form_themes'     => $form_themes
         ));
     }),
-    
-    //TODO: Confusing as fucking hell...change name or generalize
-    'POST /feedsetup/save_widget' => Array('do' => function() use ($dbw) {
-        $data = Input::get();
-
+     
+    'POST /feedsetup/save_widget' => function() {
         $wdm = new WidgetDataManager;
-
-        if ( Input::get('widget_type') == 'display' ) {  
-            $display_data = $wdm->provide_data_for('display');
-            $submit_data  = $wdm->provide_data_for('submit');
-
-            $display = new DisplayWidget($display_data);
-            $form = new FormWidget($submit_data);
-            
-            if($display_data->widgetkey && $submit_data->widgetkey) { 
-                $display->update();
-                $form->update();
-            } else { 
-                $display->save();
-                $form->save();
-                $display->adopt($form);
-            }
-
-            $emit_data = Array(
-                'display' => $display->emit()
-              , 'submit'  => $form->emit()
-            );
-
-            echo json_encode($emit_data);
-        }
-
-        if ( Input::get('widget_type') == 'submit' ) { 
-            $submit_data = $wdm->provide_data_for('submit');
-            $form = new FormWidget($submit_data);
-            $form->save();
-        }
-
-        /*
-        $rules = Array(
-            'theme_name' => 'required'
-          , 'embed_type' => 'required'
-          , 'perms' => 'required'
-        );
-
-        $validator = Validator::make($data, $rules);
-        $validator->valid();
-        */
-    }),
-
-    'POST /feedsetup/save_form_widget' => function() use ($dbw) {
-        $data = Input::get();
-        $site = DB::Table('Site')->where('siteId', '=', $data['site_id'])->first(Array('domain'));  
-        $data['widget_type'] = 'submit';
-        $data['site_nm'] = $site->domain;
-        $data['embed_type'] = 'form';
-         
-        if(preg_match('~tab-(br|bl|tr|tl)~', $data['tab_type'], $match)) {
-            $data['tab_pos'] = 'corner';
-        } else {
-            $data['tab_pos'] = 'side';
-        }
- 
-        Helpers::show_data($data);
-        //$dbw->push_widget_db($data);  
+        $wdm->create_and_save_widget();
     },
 
     'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
@@ -198,7 +126,7 @@ return array(
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
-         /*
+
          $wl = new WidgetLoader($widget_key); 
          $iframe = $wl->load_iframe_code();
 
@@ -206,10 +134,8 @@ return array(
              'html_view' => $iframe
            , 'html_widget_js_code' => $wl->load_widget_js_code() 
            , 'html_iframe_code' => $iframe
-           , 'width' => $wl->widget_obj->width
-           , 'height' => $wl->widget_obj->height
          ));
-         */
+
     },
     
     //TODO: something is wrong here...
