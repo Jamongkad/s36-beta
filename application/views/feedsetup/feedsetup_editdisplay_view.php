@@ -29,7 +29,7 @@
         </div>
 
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Choose a name for your form and a question to encourage your users</h2>
+            <h2><span>Step 2 :</span> Optional - Customize your form if you wish </h2>
             <div class="widget-types">
             <table width="100%" cellpadding="5" cellspacing="0">
                 <tbody><tr>

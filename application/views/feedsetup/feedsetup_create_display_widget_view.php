@@ -22,8 +22,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <strong style="font-size:14px;">Flavor Text :</strong>
+                            <td width="140">
+                                <strong style="font-size:14px;">Form Header Text :</strong>
                             </td>
                             <td><input type="text" class="large-text" name="form_text" value="" title="What our customers have to say" /></td>
                         </tr>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="widget-options">
-            <h2><span>Step 2 :</span> Choose a name for your form and a question to encourage your users</h2>
+            <h2><span>Step 2 :</span> Optional - Customize your form if you wish </h2>
             <div class="widget-types">
             <table width="100%" cellpadding="5" cellspacing="0">
                 <tbody><tr>
