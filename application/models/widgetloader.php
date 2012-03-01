@@ -101,29 +101,29 @@ class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
         $this->widget_type_obj    = $widget_type_obj; 
         $this->widget_loader_url  = Config::get('application.deploy_env')."/widget/widget_loader/";
-        $this->form_loader_script = HTML::script('js/s36_client_script.js');
-        $this->form_loader_css    = HTML::style('css/s36_client_style.css');
-        $this->tab_position_css_output = HTML::style(Config::get('application.deploy_env')."/widget/tab_position");
+        $this->form_loader_script = trim(HTML::script('js/s36_client_script.js'));
+        $this->form_loader_css    = trim(HTML::style('css/s36_client_style.css'));
+        $this->tab_position_css_output = trim(HTML::style(Config::get('application.deploy_env')."/widget/tab_position"));
     }  
 
     public function js_output() {
         $obj = $this->widget_type_obj;
         if($obj instanceof FormWidgets) {
             $data = Array(
-                'js_load' => trim($this->form_loader_script)
-              , 'css_load' => trim($this->form_loader_css)
+                'js_load' => $this->form_loader_script
+              , 'css_load' => $this->form_loader_css
               , 'tab_pos' => $obj->get_tab_pos()
               , 'tab_type' => $obj->get_tab_type()
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
-              , 'tab_position_css' => trim($this->tab_position_css_output)
+              , 'tab_position_css' => $this->tab_position_css_output
             );
             return View::make('widget::widget_js_output_form', $data);
         }
 
         if($obj instanceof DisplayWidgets) {
             $data = Array(
-                'js_load' => trim($this->form_loader_script)
-              , 'css_load' => trim($this->form_loader_css)
+                'js_load'  => $this->form_loader_script
+              , 'css_load' => $this->form_loader_css
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
               , 'widget_child_loader_url' => $this->_widget_loader($obj->get_child())
               , 'height' => $obj->get_height()

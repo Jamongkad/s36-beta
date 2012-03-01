@@ -14,6 +14,5 @@ function s36Tab() {
         document.write(this.generateTab());
     }	
 }
-
 var tab = new s36Tab();
 tab.display();
