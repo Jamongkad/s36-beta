@@ -15,14 +15,14 @@
                             <td width="120">
                                 <strong style="font-size:14px;">Widget Name :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="Name of your widget" />
+                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" />
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <strong style="font-size:14px;">Flavor Text :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="form_text" value="<?=$widget->form_text?>" title="What our customers have to say" /></td>
+                            <td><input type="text" class="large-text" name="form_text" value="<?=$widget->form_text?>" title="<?=$widget->form_text?>" /></td>
                         </tr>
                     </table>
             </div>
@@ -36,7 +36,7 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="form-text" name="submit_form_text" value="" title="<?=$widget->children[0]->submit_form_text?>" /></td>
+                    <td><input type="text" class="form-text" name="submit_form_text" value="<?=$widget->children[0]->submit_form_text?>" title="<?=$widget->children[0]->submit_form_text?>" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
                         <big>See how your form will <br /> appear to your visitors.</big>
@@ -56,7 +56,7 @@
                     <td valign="top">
                         <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
                         title="<?=$widget->children[0]->submit_form_question?>">
-                        
+<?=$widget->children[0]->submit_form_question?>
                         </textarea>
                     </td>
                 </tr> 
