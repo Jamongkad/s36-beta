@@ -200,11 +200,9 @@
                         <!-- end add this -->
                     </div>
                 </div>
-
-                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-                <a href="javascript;;" class="button-gray" id="edit-widget-btn">Edit Widget</a>
+                <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
+                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>  
             </div>    
-
         </div> 
 
         <div class="widget-options">

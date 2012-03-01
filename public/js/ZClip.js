@@ -1,23 +1,22 @@
 function ZClip() {
-
-    $('#widget-generate-view').zclip({
+    $('#copy-widget-js').zclip({
         path:'/js/ZeroClipboard.swf',
         copy:$('#widget-generate-view').val(),
         beforeCopy:function(){
-            $(this).siblings('.copycheck').fadeIn();
+            $('#widget-generate-view').siblings('.copycheck').fadeIn();
         },
         afterCopy:function(){
-            $(this).siblings('.copycheck').fadeOut(1000);
+            $('#widget-generate-view').siblings('.copycheck').fadeOut(1000);
         }
     });
-    $('#iframe-generate-view').zclip({
+    $('#copy-widget-iframe').zclip({
         path:'/js/ZeroClipboard.swf',
         copy:$('#iframe-generate-view').val(),
         beforeCopy:function(){
-            $(this).siblings('.copycheck').fadeIn();
+            $('#iframe-generate-view').siblings('.copycheck').fadeIn();
         },
         afterCopy:function(){
-            $(this).siblings('.copycheck').fadeOut(1000);
+            $('#iframe-generate-view').siblings('.copycheck').fadeOut(1000);
         }
     });
 }

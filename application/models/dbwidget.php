@@ -1,26 +1,37 @@
 <?php
 class DBWidget extends S36DataObject {    
 
-    public function push_widget_db($data) {
-
-        $data_object = (object)$data;
-
-        if(!$widgetkey = $data['widgetkey']) {
-            //save widget 
-            $save_result = $this->save_widget( $data_object );         
-            echo json_encode( $save_result ); 
-        } else {
-            //update widget      
-            $update_result = $this->update_widget_by_id( $widgetkey, $data_object );
-            echo json_encode( $update_result );   
-        } 
-    }
-
     public function delete_widget($widget_id) {
+        $obj = $this->fetch_widget_by_id($widget_id);
+        $parent_id = $obj->widgetstoreid;
+        $child_id = Null;
+        if($obj->children) {
+            foreach($obj->children as $rows) {
+                $child_id = $rows->widgetstoreid;
+                $sql = "DELETE FROM WidgetClosure WHERE ancestor_id = :child_id";
+                $sth = $this->dbh->prepare($sql); 
+                $sth->bindParam(':child_id', $child_id, PDO::PARAM_STR);
+                $sth->execute();
+
+            }
+        }
+ 
+        $sql = "DELETE FROM WidgetClosure WHERE ancestor_id = :parent_id"; 
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(':parent_id', $parent_id, PDO::PARAM_STR);
+        $sth->execute();
+
         $sql = "DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':widget_store_id', $widget_id, PDO::PARAM_STR);
         $sth->execute();
+       
+        if($obj->children) { 
+            $sql = "DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id";
+            $sth = $this->dbh->prepare($sql);
+            $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
+            $sth->execute();
+        }
     }
 
     public function save_widget($widget_obj) {

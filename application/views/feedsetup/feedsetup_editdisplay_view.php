@@ -271,9 +271,9 @@
                             <!-- end add this -->
                         </div>
                     </div>
-
+                    <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
+                    <a href="javascript;;" class="button-gray" id="copy-widget-iframe">Copy IFrame Code</a>
                     <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-                    <a href="javascript;;" class="button-gray" id="preview-widget-btn">Preview</a>
                 </div>    
                 <!--
                 <div class="block noborder" style="height:490px;"></div>

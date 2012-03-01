@@ -18,14 +18,6 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
 
-        <?=HTML::script('js/ZClip.js')?> 
-        <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
-        <?=HTML::script('js/DropDownChange.js')?>
-        <?=HTML::script('js/InboxStatusChange.js')?>
-        <?=HTML::script('js/FeedSetup.js')?>
-        <?=HTML::script('js/Status.js')?>
-
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
@@ -37,6 +29,14 @@
         <?=HTML::script('js/jquery.flot.js')?>
         <?=HTML::script('js/jquery.flot.pie.js')?>
         <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>
+
+        <?=HTML::script('js/ZClip.js')?> 
+        <?=HTML::script('js/Checky.js')?> 
+        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
+        <?=HTML::script('js/DropDownChange.js')?>
+        <?=HTML::script('js/InboxStatusChange.js')?>
+        <?=HTML::script('js/FeedSetup.js')?>
+        <?=HTML::script('js/Status.js')?>
 
         <?=HTML::script('js/s36application.js')?>
         <?=HTML::script('js/jquery.pjax.js')?>
