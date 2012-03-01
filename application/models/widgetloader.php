@@ -110,8 +110,8 @@ class ClientRender {
         $obj = $this->widget_type_obj;
         if($obj instanceof FormWidgets) {
             $data = Array(
-                'js_load' => $this->form_loader_script 
-              , 'css_load' => $this->form_loader_css
+                'js_load' => trim($this->form_loader_script)
+              , 'css_load' => trim($this->form_loader_css)
               , 'tab_pos' => $obj->get_tab_pos()
               , 'tab_type' => $obj->get_tab_type()
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
@@ -122,8 +122,8 @@ class ClientRender {
 
         if($obj instanceof DisplayWidgets) {
             $data = Array(
-                'js_load' => $this->form_loader_script 
-              , 'css_load' => $this->form_loader_css
+                'js_load' => trim($this->form_loader_script)
+              , 'css_load' => trim($this->form_loader_css)
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
               , 'widget_child_loader_url' => $this->_widget_loader($obj->get_child())
               , 'height' => $obj->get_height()
