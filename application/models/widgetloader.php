@@ -93,15 +93,7 @@ class WidgetLoader {
     public function load_iframe_code() {
         $widget = $this->load();
         $client = new ClientRender($widget);
-        //Helpers::show_data($client);
         return $client->iframe_output();
-        /*
-        $widgetkey = $this->widget_obj->widgetkey;
-        $frame_url = Config::get('application.deploy_env').'/widget/widget_loader/'.$widgetkey; 
-        if($this->widget_obj->widget_type == 'display') 
-            return Helpers::render_iframe_code($frame_url, $widget->get_width(), $widget->get_height());
-        */
-
     }    
 }
 
@@ -109,9 +101,9 @@ class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
         $this->widget_type_obj    = $widget_type_obj; 
         $this->widget_loader_url  = Config::get('application.deploy_env')."/widget/widget_loader/";
-        $this->form_loader_script = trim(HTML::script('js/s36_client_script.js'));
-        $this->form_loader_css    = trim(HTML::style('css/s36_client_style.css'));
-        $this->tab_position_css_output = trim(HTML::style(Config::get('application.deploy_env')."/widget/tab_position"));
+        $this->form_loader_script = HTML::script('js/s36_client_script.js');
+        $this->form_loader_css    = HTML::style('css/s36_client_style.css');
+        $this->tab_position_css_output = HTML::style(Config::get('application.deploy_env')."/widget/tab_position");
     }  
 
     public function js_output() {
@@ -155,11 +147,10 @@ class ClientRender {
               , 'width' => $obj->get_width()
               , 'embed_block_type' => $obj->get_embed_block_type()
             );
-
             return $data['js_load']
                   .$data['css_load']
                   .'<div style="position:relative;width:'.$data['width'].'px;height:'.$data['height'].'px;">' 
-                  .'<div class="s36_'.$data['embed_block_type'].'"><a href="javascript:;" onclick="s36_openForm('.$data['widget_child_loader_url'].')">Send Feedback</a></div>' 
+                  .'<div class="s36_'.$data['embed_block_type'].'"><a href="javascript:;" onclick="s36_openForm(\''.$data['widget_child_loader_url'].'\')">Send Feedback</a></div>' 
                   .'<iframe id="s36Widget" allowTransparency="true" 
                             height="'.$data['height'].'" width="'.$data['width'].'" 
                             frameborder="0" scrolling="no" style="width:100%;border:none;overflow:hidden;" src="'.$data['widget_loader_url'].'">Insomnia wooohooooh</iframe>

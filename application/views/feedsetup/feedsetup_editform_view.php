@@ -46,7 +46,9 @@
                         Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
                         <br />
                         <br />
+                        <!--
                         <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
+                        -->
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="large-textarea" 

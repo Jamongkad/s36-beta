@@ -12,7 +12,7 @@ function createLightboxes(){
 	// Create the s36 modal shadow	
 	var s36_modalboxshadow = document.createElement("div");
 		s36_modalboxshadow.id = "s36_modalshadow";        
-		s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");
+		//s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");
 		s36_modalboxshadow.className = "s36_modalshadow";
 		document.body.appendChild(s36_modalboxshadow);
 }
@@ -108,16 +108,6 @@ function s36_openForm(form_url) {
 /****************************************************************
 /* Create that widget button
 ****************************************************************/
-function s36_create_widget_button(opts){
-	console.log(opts);
-	// Create the s36 modal box
-	var s36_widget_button 			= document.createElement("div");
-		s36_widget_button.id 		= "s36_widget_button";
-		s36_widget_button.className = "s36_widget_button";
-		s36_widget_button.setAttribute('onclick','s36_openForm('+opts.siteId+','+opts.companyId+', "'+opts.form_url+'")');
-		document.body.appendChild(s36_widget_button);
-}
-
 function s36_closeLightbox(){	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -127,14 +117,6 @@ function s36_closeLightbox(){
 	s36_modalbox.style.display 		= 'none';
 	s36_modalshadow.style.display 	= 'none';		
 }
-
-function s36_modal_widget(opts){	
-	var width  = 750;
-	var height = 440;
-	var widget = document.getElementById(opts.target);
-		widget.setAttribute('onclick','s36_openLightbox('+width+','+height+',"'+opts.widget_src+'")');
-}
-
 
 /****************************************************************
 /* This is the document ready function

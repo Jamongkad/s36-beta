@@ -115,7 +115,7 @@ return array(
           , 'form_themes'     => $form_themes
         ));
     }),
-     
+      
     'POST /feedsetup/save_widget' => function() {
         $wdm = new WidgetDataManager;
         $wdm->create_and_save_widget();
@@ -126,16 +126,15 @@ return array(
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
-
          $wl = new WidgetLoader($widget_key); 
          $iframe = $wl->load_iframe_code();
-
          echo json_encode(Array(
              'html_view' => $iframe
            , 'html_widget_js_code' => $wl->load_widget_js_code() 
            , 'html_iframe_code' => $iframe
+           , 'height' => $wl->load()->get_height()
+           , 'width' => $wl->load()->get_width()
          ));
-
     },
     
     //TODO: something is wrong here...

@@ -1,51 +1,31 @@
 jQuery(function($) {
-
-    $("#create-widget").on("submit", function(e) {
-        $(this).ajaxSubmit({
-            dataType: 'json'
-          , beforeSubmit: function(formData, jqForm, options) {
-                new Status().notify("Processing...", 1000); 
-            }
-          , success: function(responseText, statusText, xhr, $form) {  
-                var error = isDefined(responseText, 'errors') ? responseText.errors : false;
-                var theme_name = $("div#theme_name");
-                var site_id    = $("div#site_id");
-                var embed_type = $("div#embed_type");
-                var widget_options = $("div#widget_options");                
-
-                if(error) {
-                    if(error.messages.theme_name) {
-                        theme_name.html(error.messages.theme_name[0]);     
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        theme_name.html("");
-                    }
-                  
-                    if(error.messages.site_id) {
-                        site_id.html(error.messages.site_id[0]);                   
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        site_id.html("");
-                    }
-
-                    if(error.messages.embed_type) {
-                        embed_type.html(error.messages.embed_type[0]);     
-                        $.scrollTo('input[name="theme_name"]', 800);
-                    } else { 
-                        embed_type.html("");
-                    } 
-
-                    if(error.messages.perms) {
-                        widget_options.html(error.messages.perms[0]);     
-                        $.scrollTo('input[type="radio"][value="modal"]', 800);
-                    } else { 
-                        widget_options.html("");
-                    } 
-                } else { 
-                    theme_name.html("");
-                    site_id.html("");
-                    embed_type.html("");
-                    widget_options.html("");  
+    /*
+    $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
+    $("input[type='text']").keyup(function(){
+        if ($(this).val().length != 0) {
+            $("input[type='submit']").removeAttr("disabled")
+                                     .css({'opacity': '1.0'});
+        } else { 
+            $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
+        }
+    });
+    */
+    var preview_widget = ".preview-display-widget-button";
+    $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
+    $(document).delegate("#create-widget", "submit", function(e) {
+      
+        if ($("input[name=theme_name]", this).val() == "Name of your widget" ) { 
+            alert("Please choose a name for your widget");
+        } else if ( !$('input[value="embedded"]').attr('checked') && !$('input[value="modal"]').attr('checked') ) {
+            alert("Please choose a widget type");
+        } else {
+            
+            $(this).ajaxSubmit({
+                dataType: 'json'
+              , beforeSubmit: function(formData, jqForm, options) {
+                    new Status().notify("Processing...", 1000); 
+                }
+              , success: function(responseText, statusText, xhr, $form) {  
 
                     $("#widget-preview").show();
                     $("input[name=display_widgetkey]").val(responseText.display.widget.widgetkey);
@@ -64,14 +44,30 @@ jQuery(function($) {
 
                     new ZClip();
                     new Status().notify("Success!", 1000);
-                }   
-          }
-        }); 
+
+                    $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
+                    $(document).delegate('.preview-display-widget-button', 'click', function(e) {  
+
+                        var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+                        $.ajax({
+                            url: action
+                            , type: "GET"
+                            , dataType: 'json'
+                            , success: function(data) {
+                                  s36Lightbox(data.width, data.height, data.html_view);
+                              } 
+                        });
+
+                        e.preventDefault();
+                    })
+              }
+            }); 
+        }
         e.preventDefault(); 
     });
 
     //TODO: abstract this
-    $("#create-form-widget").bind("submit", function(e) { 
+    $(document).delegate("#create-form-widget", "submit", function(e) {
         $(this).ajaxSubmit({
             dataType: 'json'       
           , beforeSubmit: function(formData, jqForm, options) {
@@ -82,7 +78,6 @@ jQuery(function($) {
                 $("input[name=submit_widgetkey]").val(responseText.submit.widget.widgetkey);
 
                 $("#widget-preview").show();
-                $("#widget-preview").siblings(".block").show();
                 //console.log(responseText.widget.widgetkey);
                 new Status().notify("Success!", 1000);
                 new ZClip();
@@ -94,7 +89,6 @@ jQuery(function($) {
                     , type: "GET"
                     , dataType: 'json'
                     , success: function(data) {
-                          //s36Lightbox(data.width, data.height, data.html_view);
                           $("#widget-generate-view").val(data.html_widget_js_code); 
                       } 
                 });
@@ -105,9 +99,9 @@ jQuery(function($) {
                 */
             }
         });
-        e.preventDefault();
+        e.preventDefault();    
     });
-    
+ 
     //preview picked out of form theme slider and other preview buttons
     $(document).delegate(".preview-form-widget-button, div#preview.button-gray", "click", function(e) {
         var action = $("#preview-form-widget-url").attr("hrefaction");
@@ -125,22 +119,6 @@ jQuery(function($) {
         e.preventDefault();
     })
     
-    //Preview picked out of widget key. This assumes widget is already created in the DB
-    $(document).delegate("a#preview-widget-btn", "click", function(e) {
-        var widget_key = $("input[name=widgetkey]").val();
-        var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
-        $.ajax({
-            url: action
-            , type: "GET"
-            , dataType: 'json'
-            , success: function(data) {
-                  s36Lightbox(data.width, data.height, data.html_view); 
-              } 
-        });
-
-        e.preventDefault();
-    })
-
     //helper functions ABSTRACT THIS MOTHAFUCKER 
     function s36Lightbox(width, height, insertContent) {	
         if($('#lightbox').size() == 0){
@@ -240,18 +218,6 @@ jQuery(function($) {
 
     var overview = $("#overview-target, #display-overview-target, #form-overview-target");
 
-    /* TODO: New type validation unlock submit button when text fields have value
-    $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
-    $("input[type='text']").keyup(function(){
-        if ($(this).val().length != 0) {
-            $("input[type='submit']").removeAttr("disabled")
-                                     .css({'opacity': '1.0'});
-        } else { 
-            $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
-        }
-    });
-    */
-
     overview.delegate(".pagination a", "click", function(e) {
         var url = $(this).attr('href');
         var me = $(this);
@@ -342,25 +308,23 @@ jQuery(function($) {
 
         e.preventDefault();
     })
-
-    $(".large-text").focus(function(i){          		 
-            if ($(this).val() == $(this)[0].title){
-                $(this).removeClass("reg-text-active");
-                $(this).val("");
-            }
-        });
-    $(".large-text").blur(function(){
-            if ($.trim($(this).val()) == ""){
-                $(this).addClass("reg-text-active");
-                $(this).val($(this)[0].title);
-            }
-        });
     
+    $(".large-text").focus(function(i){          		 
+        if ($(this).val() == $(this)[0].title){
+            $(this).removeClass("reg-text-active");
+            $(this).val("");
+        }
+    });
 
-    $(".large-textarea, .form-text").each(function() {
+    $(".large-text").blur(function(){
+        if ($.trim($(this).val()) == ""){
+            $(this).val($(this)[0].title);
+        }
+    });
+    $(".large-textarea, .form-text, .large-text").each(function() {
         $(this).val($(this)[0].title);
     });
-    $(".large-textarea, .large-text").blur();
+
 });
 
 $.fn.selected_theme = function(select_name) {

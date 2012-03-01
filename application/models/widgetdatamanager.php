@@ -4,7 +4,8 @@ class WidgetDataManager {
     public function __construct() {
         $this->site_nm = DB::Table('Site')->where('siteId', '=', Input::get('site_id'))->first(Array('domain'));
     }
-
+    
+    //TODO: UGLEEEEEEEEEEEEEEEEEEEEEEEE
     public function create_and_save_widget() {  
         if ( Input::get('widget_type') == 'display' ) {  
             $display_data = $this->provide_data_for('display');

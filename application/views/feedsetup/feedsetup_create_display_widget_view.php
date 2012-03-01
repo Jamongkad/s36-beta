@@ -25,7 +25,7 @@
                             <td>
                                 <strong style="font-size:14px;">Flavor Text :</strong>
                             </td>
-                            <td><input type="text" class="large-text" name="form_text" value="" title="ex. What our customers have to say" /></td>
+                            <td><input type="text" class="large-text" name="form_text" value="" title="What our customers have to say" /></td>
                         </tr>
                     </table>
             </div>
@@ -256,6 +256,7 @@
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Save Widget" />
+                <input type="submit" class="large-btn preview-display-widget-button" value="Preview Widget" />
             </div>
         </div>
     </div>
