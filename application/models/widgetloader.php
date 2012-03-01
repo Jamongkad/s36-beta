@@ -115,7 +115,7 @@ class ClientRender {
               , 'tab_pos' => $obj->get_tab_pos()
               , 'tab_type' => $obj->get_tab_type()
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
-              , 'tab_position_css' => $this->tab_position_css_output
+              , 'tab_position_css' => trim($this->tab_position_css_output)
             );
             return View::make('widget::widget_js_output_form', $data);
         }
