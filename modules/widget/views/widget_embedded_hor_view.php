@@ -143,6 +143,7 @@
                             }
 
                             //country code for the class
+                            $cc = '&nbsp;';
                             if($r->rules->displaycountry == 1) {
                         	    $cc = strtolower($r->countrycode);        
                             }
