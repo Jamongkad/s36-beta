@@ -18,9 +18,11 @@
                 </span>
             <?else:?>
                 <div class="woops">
-                    <h2 class="woops-header">Create your display widgets</h2>
+                    <h2 class="woops-header">
+                        <?=HTML::link('feedsetup/display_widgets', 'Create your display widgets ', Array('class' => 'woops-header'))?> 
+                    </h2>
                     <p class="woops-content">
-                    <?=HTML::link('feedsetup/display_widgets', 'Share your customer testimonials on your website', Array('class' => 'woops-a'))?> 
+                        <?=HTML::link('feedsetup/display_widgets', 'Share your customer testimonials on your website', Array('class' => 'woops-a'))?> 
                     </p>
                 </div>
             <?endif;?>
@@ -47,7 +49,9 @@
                 </span>
             <?else:?>
                 <div class="woops">
-                    <h2 class="woops-header">Create your feedback submission form</h2>
+                    <h2 class="woops-header">  
+                         <?=HTML::link('feedsetup/submission_widgets', 'Create your feedback submission form', Array('class' => 'woops-header'))?> 
+                    </h2>
                     <p class="woops-content">
                     <?=HTML::link('feedsetup/submission_widgets', 'Start receiving feedback from you customers/visitors', Array('class' => 'woops-a'))?> 
                     </p>
