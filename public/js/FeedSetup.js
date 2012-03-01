@@ -10,7 +10,7 @@ jQuery(function($) {
         }
     });
     */
-    var preview_widget = ".preview-display-widget-button";
+    var preview_widget = ".preview-display-widget-button, .preview-form-widget-button";
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
     $(document).delegate("#create-widget", "submit", function(e) {
       
@@ -91,6 +91,7 @@ jQuery(function($) {
                           new ZClip();
                       } 
                 });
+                $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
                 /*
                 window.onbeforeunload = function() {
                     return "Are you sure you want to navigate away from this page?";
