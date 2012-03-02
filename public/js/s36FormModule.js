@@ -60,11 +60,6 @@ var S36Form = new function() {
 		$('#rate_b').click(function(){ that.slide_track_to('+365px','1'); }); 
     };
 
-    this.selected_rating = function() { 
-	    var rating = $('#rating').val();
-		return rating;
-    };
-
     this.add_error = function(str)  {
 		$('.error-message').fadeOut('fast',function(){
 			$('#the_error').html(str);
@@ -222,6 +217,11 @@ var S36Form = new function() {
 		});
 		$(".regular-text").blur();
 		$(".regular-select").blur();
+    };
+
+    this.selected_rating = function() { 
+	    var rating = $('#rating').val();
+		return rating;
     };
 
     this.assign_class = function(curr, next, opts, fwd)  { 
