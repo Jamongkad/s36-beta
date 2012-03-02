@@ -21,7 +21,6 @@ $.fn.selected = function(select) {
 };
 
 var S36Form = new function() {
-
     var jcrop_api;
 
     var slide_track_to = function(y, rating) {
@@ -112,7 +111,7 @@ var S36Form = new function() {
 			}
 		}else if(type == "numeric"){
 			//strictly allows numeric values only
-			var numeric = new RegExp('[0-9 ]');
+			var numeric = new RegExp('[0-9]');
 			var notallow = new RegExp('[a-zA-Z]');
 			if((!value.match(numeric)) || (value.match(notallow))){
 				return false;
@@ -226,7 +225,6 @@ var S36Form = new function() {
     };
 
     this.assign_class = function(curr, next, opts, fwd)  { 
-        console.log(this);
 		var rating = this.selected_rating();
 		var index = opts.currSlide;									 
 		var $ht = $(this).height();									 //get the height of the next slide
@@ -684,6 +682,7 @@ var S36Form = new function() {
             });
         }); 
     };
+
 };
 
 // END OF 36stories Javascript
