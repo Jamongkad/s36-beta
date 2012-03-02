@@ -6,6 +6,13 @@
 	margin-top:1px;
     position:relative;
 }
+.flag-form {
+    width: 16px;
+    height: 11px;
+    background:url(/img/flags.png) no-repeat;
+    float:left;
+    margin-left:5px;
+}
 .flag-fix{
 	position:absolute;
 	bottom:2px;

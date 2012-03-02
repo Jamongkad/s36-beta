@@ -374,7 +374,7 @@ var S36Form = new function() {
 		var position	= 	$('#your_occupation').val();
 		var company		= 	$('#your_company').val();
 		var flag_class  =	that.get_flag(country); 
-		var flag 		=   '<div class="flag '+flag_class+'"></div>';
+		var flag 		=   '<div class="flag-form '+flag_class+'"></div>';
 		var location 	=   '<div class="review-location">'+city+', '+country+'</div>';
 		if(!photo){
 			var photo = $('#your_photo').attr('src');
