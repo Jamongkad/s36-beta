@@ -36,7 +36,6 @@ class DBAccount extends S36DataObject {
         $this->dbh->query('SET @user_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO AuthAssignment (`itemname`, `userid`) VALUES ("Admin", @user_id)');
         $this->dbh->query('INSERT INTO FeedbackBlock (`siteId`, `themeId`, `formId`) VALUES(@site_id, 1, 1)');
-        $this->dbh->query('INSERT INTO Form (`siteId`, `themeId`, `scaleId`) VALUES(@site_id, 1, 2)');
         $this->dbh->query('INSERT INTO Category (`companyId`, `intName`, `name`, `changeable`) 
                            VALUES
                               (@company_id, "default", "Inbox", 0) 

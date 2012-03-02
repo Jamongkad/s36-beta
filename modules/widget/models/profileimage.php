@@ -85,7 +85,6 @@ class ProfileImage {
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
         echo $this->date."-cropped.jpg";
-
     }
 
     public static function upload() { 
@@ -111,7 +110,6 @@ class ProfileImage {
                 case '4':
                     $error = 'No file was uploaded.';
                     break;
-
                 case '6':
                     $error = 'Missing a temporary folder';
                     break;

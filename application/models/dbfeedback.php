@@ -1,8 +1,7 @@
 <?php
 class DBFeedback extends S36DataObject {
  
-    public function pull_feedback($opts) {
-      
+    public function pull_feedback($opts) {      
         $rating_statement    = Null;
         $profanity_statement = Null;
         $flagged_statement   = Null;
@@ -176,7 +175,6 @@ class DBFeedback extends S36DataObject {
     }
 
     public function pull_feedback_by_company($opts) {
-
         $published_statement = Null;
         $featured_statement = Null;
         $combined_statement = Null;
@@ -422,7 +420,6 @@ class DBFeedback extends S36DataObject {
         $sth->execute();       
     }
 
-    //TODO: Add statement that will delete avatar photos as well.
     public function _permanent_delete($opts) { 
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
@@ -579,42 +576,6 @@ class DBFeedback extends S36DataObject {
 
         $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $sth->execute();
-    }
-
-    public function display_embedded_feedback_options($site_id) {
-        $sth = $this->dbh->prepare("
-                    SELECT 
-                          Site.siteId
-                        , User.userId
-                        , FeedbackBlock.feedbackblockId 
-                        , FeedbackBlock.displayName
-                        , FeedbackBlock.displayImg
-                        , FeedbackBlock.displayCompany
-                        , FeedbackBlock.displayPosition
-                        , FeedbackBlock.displayURL
-                        , FeedbackBlock.displayCountry
-                        , FeedbackBlock.displaySbmtDate
-                    FROM 
-                        FeedbackBlock
-                    INNER JOIN
-                        Site
-                            ON Site.siteId = FeedbackBlock.siteId
-                    INNER JOIN
-                        Company
-                            ON Company.companyId = Site.companyId
-                    INNER JOIN
-                        User
-                            ON User.companyId = Company.companyId
-                    WHERE 1=1
-                        AND Site.siteId = :site_id
-                        AND User.userId = :user_id 
-                ");
-        $sth->bindParam(':site_id', $site_id, PDO::PARAM_INT);
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT); 
-        $sth->execute();
-        
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
     }
 
     public function contact_detection($opts) {

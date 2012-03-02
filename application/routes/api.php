@@ -39,8 +39,10 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
+        /*
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
+        */
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
