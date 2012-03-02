@@ -355,7 +355,7 @@ var S36Form = new function() {
         });
     };
 
-    this.get_flag = function() {
+    this.get_flag = function(country) {
         var country_flag = country.toLowerCase();
         var flag_class = "flag-";
         return flag_class + country_flag; 
