@@ -81,7 +81,7 @@ var S36Form = new function() {
     };
 
     this.validate_field = function(fieldid, value, default_val, type) {
-        var that = this;
+        
 	    if(type == "regular"){   // check if type is only regular
 			if((value.length <= 0) || (value == default_val)){		
 				return false;
@@ -152,7 +152,7 @@ var S36Form = new function() {
     };
 
     this.default_text = function() { 
-        var that = this;
+        
 
 		$(".regular-text").focus(function(i){          		 
             if ($(this).val() == $(this)[0].title){
@@ -235,7 +235,7 @@ var S36Form = new function() {
     };
 
     this.fb_connect_success = function(obj) { 
-        var that = this;
+        
 		if(obj.location != undefined){
 
 			if(obj.location.name != undefined){
@@ -306,7 +306,7 @@ var S36Form = new function() {
     };
 
     this.validate_form = function(form) {
-        var that = this;
+        
 	    var fname 		= $('#your_fname'); 
 		var lname 		= $('#your_lname'); 
 		var email		= $('#your_email');
@@ -340,7 +340,7 @@ var S36Form = new function() {
     };
 
     this.init_jcrop = function() { 
-        var that = this;
+        
         $('#jcrop_target').Jcrop({
             setSelect: ['40','20','190','170'],
             boxWidth: 350,
@@ -362,7 +362,7 @@ var S36Form = new function() {
     };
 
     this.assign_to_review = function(photo) {
-        var that = this;
+        
 		$('#review-photo').attr('src','/img/blank-avatar.png');
 		
 		var feedback 	=	$('#feedback_text').val();
@@ -396,7 +396,7 @@ var S36Form = new function() {
     this.ajax_file_upload = function() { 
         //starting setting some animation when the ajax starts and completes
         var loader = $('#loading');
-        var that = this;
+        
         
         loader.fadeIn();
         $.ajaxFileUpload ({
@@ -427,7 +427,6 @@ var S36Form = new function() {
     };
 
     this.load_linkedin_data = function() {
-        var that = this;
         IN.API.Profile("me")
         .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location","public-profile-url"])
         .result(function(result) {
@@ -468,7 +467,6 @@ var S36Form = new function() {
     };
     
     this.save_crop_image = function() {
-        var that = this;
 		$('#crop_button').removeClass('highlight');
 		that.hide_error();
         var fb_login = $("#fb_flag").val();
@@ -502,7 +500,7 @@ var S36Form = new function() {
     };
 
     this.save_linkedin_image = function() {
-        var that = this;   
+        
         that.hide_error();
 
         var ln_login = $("#ln_flag").val();
@@ -556,7 +554,6 @@ var S36Form = new function() {
     };
 
     this.send_form_data = function() {
-        var that = this;
 		// grab all form data
 		var cit = $('#your_city');
 		var cou = $('#your_country');
@@ -631,7 +628,7 @@ var S36Form = new function() {
     };
 
     this.save_edited_feedback = function() {
-        var that = this; 
+        
         var feedback = $('#review-feedback');
         var editedtext = $('#edited-textarea');		
          //check if there is a feedback
@@ -650,7 +647,6 @@ var S36Form = new function() {
     };
 
     this.edit_feedback = function() {
-        var that = this;
 		$('#edit-review-feedback').fadeOut('fast');
 		$('#save-edited-feedback').fadeIn('fast');
 		var feedback = $('#review-feedback');
