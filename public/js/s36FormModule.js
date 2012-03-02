@@ -226,6 +226,7 @@ var S36Form = new function() {
     };
 
     this.assign_class = function(curr, next, opts, fwd)  { 
+        console.log(this);
 		var rating = this.selected_rating();
 		var index = opts.currSlide;									 
 		var $ht = $(this).height();									 //get the height of the next slide
@@ -684,4 +685,5 @@ var S36Form = new function() {
         }); 
     };
 };
+
 // END OF 36stories Javascript
