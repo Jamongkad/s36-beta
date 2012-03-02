@@ -396,8 +396,7 @@ var S36Form = new function() {
     this.ajax_file_upload = function() { 
         //starting setting some animation when the ajax starts and completes
         var loader = $('#loading');
-        
-        
+         
         loader.fadeIn();
         $.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
