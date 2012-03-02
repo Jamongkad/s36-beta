@@ -131,7 +131,7 @@ PageCycle.prototype.cycle_prev = function() {
 					return 1;
 				}
 			}else{
-				add_error("Please provide feedback"); 
+				S36Form.add_error("Please provide feedback"); 
 				return false;
 			}
 	}
@@ -151,7 +151,7 @@ PageCycle.prototype.cycle_prev = function() {
 		if(next){	
 			var permission = $('[name="your_permission"]:checked').size();
 			if(permission <= 0){
-				add_error('Please Select a Permission for your feedback');
+				S36Form.add_error('Please Select a Permission for your feedback');
 				return false;
 			}else{
 				this.next_button.hide();
