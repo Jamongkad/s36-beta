@@ -489,8 +489,7 @@ var S36Form = new function() {
 				    status.fadeOut('fast',function(){
 						status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
 						status.fadeIn();
-						that.assign_to_review("/uploaded_cropped/150x150/"+data);
-						
+						that.assign_to_review("/uploaded_cropped/150x150/"+data);				
 						$('#cropped_photo').val(data);
                         $('#is_cropped').val(1);
 					});

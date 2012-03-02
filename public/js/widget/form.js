@@ -53,6 +53,7 @@ jQuery(function($) {
     $('#cropbtn').hide();
     $('#cropbtn').click(function(){        
         var crop_success = S36Form.save_crop_image();
+        console.log(crop_success);
         if( crop_success.statusText == 'success' ){
             $steps.cycle(5);
             // hide the crop btn						
