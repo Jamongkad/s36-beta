@@ -23,6 +23,26 @@ $.fn.selected = function(select) {
 var S36Form = new function() {
     var jcrop_api;
 
+    var show_preview = function(coords) {
+        var rx = 100 / coords.w;
+        var ry = 100 / coords.h;
+        var target = $('#jcrop_target');
+        var hgt = target.height();
+        var wdt = target.width();
+        
+        $('#x').val(coords.x);
+        $('#y').val(coords.y);
+        $('#w').val(coords.w);
+        $('#h').val(coords.h);
+        
+        $('#preview').css({
+            width: Math.round(rx * wdt) + 'px',
+            height: Math.round(ry * hgt) + 'px',
+            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+            marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        }); 
+    };
+
     var slide_track_to = function(y, rating) {
 		$('#track_ball').animate({'left':y});
 		$('#rating').val(rating); 
@@ -336,26 +356,6 @@ var S36Form = new function() {
 		}else{
 			return 4;
 		}    
-    };
-
-    var show_preview = function(coords) {
-        var rx = 100 / coords.w;
-        var ry = 100 / coords.h;
-        var target = $('#jcrop_target');
-        var hgt = target.height();
-        var wdt = target.width();
-        
-        $('#x').val(coords.x);
-        $('#y').val(coords.y);
-        $('#w').val(coords.w);
-        $('#h').val(coords.h);
-        
-        $('#preview').css({
-            width: Math.round(rx * wdt) + 'px',
-            height: Math.round(ry * hgt) + 'px',
-            marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-            marginTop: '-' + Math.round(ry * coords.y) + 'px'
-        }); 
     };
 
     this.init_jcrop = function() { 
