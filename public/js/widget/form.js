@@ -19,8 +19,7 @@ jQuery(function($) {
         mode : "textareas",
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
-    */
-    
+    */ 
     // toggle class for each list items
     $('#leave_fb'). click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
     $('#browse_fb').click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
