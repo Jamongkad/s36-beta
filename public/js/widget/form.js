@@ -26,7 +26,7 @@ jQuery(function($) {
     $('#browse_fb').click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
 
     // initiate the cycle script for the #steps div
-    var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assignClass });	
+    var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: S36Form.assign_class });	
     
     // move to the manual form if the user doesn't want to connect to facebook:
     $('#create_wo_facebook').click(function(){ $steps.cycle(3); $('#next').show(); });
@@ -50,36 +50,26 @@ jQuery(function($) {
     $('#cancel_cropbtn').hide();
     $('#cancel_cropbtn').click(function(){
         $steps.cycle(5);
-        hide_crop_buttons();
+        S36Form.hide_crop_buttons();
     });
     // added
     // assign crop script to crop btn
     $('#cropbtn').hide();
-    $('#cropbtn').click(function(){
-        
-        var crop_success = save_crop_image();
+    $('#cropbtn').click(function(){        
+        var crop_success = S36Form.save_crop_image();
         if( crop_success.statusText == 'success' ){
             $steps.cycle(5);
             // hide the crop btn						
-            hide_crop_buttons();
-        }
-        
+            S36Form.hide_crop_buttons();
+        } 
     });
     //end added
     // start the rating slider
-    start_slider();
-    /* re enable this to have a styled upload button
-    $("input[type=file]").filestyle({ 
-         image: "images/chooser.png",
-         imageheight : 26,
-         imagewidth : 110,
-         width :      110
-        });
-    */		
-    $('#edit-review-feedback').click(function(){edit_feedback()});
+    S36Form.start_slider();
+
+    $('#edit-review-feedback').click(function(){S36Form.edit_feedback()});
     $('#save-edited-feedback').hide();
-    $('#save-edited-feedback').click(function(){save_edited_feedback()});
+    $('#save-edited-feedback').click(function(){S36Form.save_edited_feedback()});
     
-    default_text();
-    
+    S36Form.default_text(); 
 });

@@ -10,8 +10,8 @@ var init = 0;
 function PageCycle() {
 	
 	this.cur_step 		= $('#steps').find('.current').attr('id');
-	this.rating 		= selected_rating();
-	this.default_photo 	= "images/blank-avatar.png";
+	this.rating 		= S36Form.selected_rating();
+	this.default_photo 	= "img/blank-avatar.png";
 	this.is_photo 		= $('#profile_picture').attr('src');
 	this.review_photo 	= $('#review-photo').attr('src');
 	this.next_button	= $('#next');
@@ -124,10 +124,10 @@ PageCycle.prototype.cycle_prev = function() {
 		
 			if(this.feedback.length > 0){
 				if((this.rating == "2") || (this.rating == "1")){
-					show_complete_form(false);
+					S36Form.show_complete_form(false);
 					return 3;
 				}else{
-					show_complete_form(true);
+					S36Form.show_complete_form(true);
 					return 1;
 				}
 			}else{
@@ -209,27 +209,27 @@ PageCycle.prototype.cycle_prev = function() {
 		if(next){
 			
 			if((this.rating == "2") || (this.rating == "1")){
-				var val = validate_form('partial'); // validate_form returns 3;
+				var val = S36Form.validate_form('partial'); // validate_form returns 3;
 				var send = true;
 			}else{
-				var val = validate_form('full'); 	// validate_form returns 3;
+				var val = S36Form.validate_form('full'); 	// validate_form returns 3;
 				var send = false;
 			}
 			if(val){ 
 				// if form is validated..				
 				// assign all values to the review slide, argument: false if not from jcrop				
-				assign_to_review(this.is_photo);
+				S36Form.assign_to_review(this.is_photo);
 				$('#crop_photo').click(function(){
 					that._cropper_page();
 				});
 				
-				if(strstr(this.is_photo,'media.linkedin.com')){
-					save_linkedin_image();
+				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){
+					S36Form.save_linkedin_image();
 					return 5;
 				}else{
 					if(send){
 						this.next_button.hide();
-						send_form_data();
+						S36Form.send_form_data();
 						return 6;
 					}else{
 						return 5;
@@ -249,10 +249,10 @@ PageCycle.prototype.cycle_prev = function() {
 		else{
 			this.next_button.hide();
 			if((this.rating == "2") || (this.rating == "1")){
-				show_complete_form(false);
+				S36Form.show_complete_form(false);
 				return 0;
 			}else{
-				show_complete_form(true);
+				S36Form.show_complete_form(true);
 				return 2;
 			}
 		}
@@ -274,7 +274,7 @@ PageCycle.prototype.cycle_prev = function() {
 			if(this.default_photo != this.review_photo){
 				return 5;	
 			}else{
-				$('#crop_status').html('<img src="images/error-ico.png" /> Please Crop Your Photo.');
+				$('#crop_status').html('<img src="img/error-ico.png" /> Please Crop Your Photo.');
 				return false;
 			}
 		}
@@ -302,7 +302,7 @@ PageCycle.prototype.cycle_prev = function() {
 		
 		if(next){
 			this.next_button.hide();
-			send_form_data();	
+			S36Form.send_form_data();	
 			return 6;
 		}
 		
@@ -312,15 +312,6 @@ PageCycle.prototype.cycle_prev = function() {
 		
 		else{
 			return 3;
-			/*
-			if((this.is_photo == this.default_photo) || (this.rating == "2") || (this.rating == "1") || (strstr(this.is_photo,'media.linkedin.com'))){
-				return 3;
-			}else{
-				this.next_button.hide();				
-				this.crop_button.show();
-				return 4;
-			}
-			*/
 		}
 	} 
 	
@@ -358,17 +349,15 @@ PageCycle.prototype.cycle_prev = function() {
 ||  The Cropper Page beybeh
 ||---------------------------------------
 */
-
-
 PageCycle.prototype._cropper_page = function(){
 	$('#steps').cycle(4);
 	if(init <= 0){
 	   init = 1;
-	   init_jcrop();
+	   S36Form.init_jcrop();
 	}else{
-	   jcrop_api.release();
-	   jcrop_api.setImage(this.is_photo);
-	   jcrop_api.setSelect(['40','20','190','170']);
+	   S36Form.jcrop_api.release();
+	   S36Form.jcrop_api.setImage(this.is_photo);
+	   S36Form.jcrop_api.setSelect(['40','20','190','170']);
 	}
-	show_crop_buttons();
+	S36Form.show_crop_buttons();
 }

@@ -1,4 +1,9 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
+<?=HTML::script('js/jquery.jcrop.js')?>
+<?=HTML::script('js/jquery.ajaxfileupload.js')?>
+<?=HTML::script('js/s36FormModule.js')?>
+<?=HTML::script('js/cycle.function.js')?>
+<?=HTML::script('js/widget/form.js')?>
 
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
@@ -32,7 +37,7 @@
 	   if(user != null) {
 		  //alert(dump(user)); //debugger
 		  console.log('fb connect');
-		  fb_connect_success(user);
+		  S36Form.fb_connect_success(user);
 	   }else{
 		  alert('error logging in to facebook');  
 	   }
@@ -168,7 +173,7 @@
 						</style>
                        	<span style="padding-right:3px;">If not.. </span>
                         <br /><br />
-                        <script type="IN/Login" data-onAuth="loadData">
+                        <script type="IN/Login" data-onAuth="S36Form.load_linkedin_data">
 							Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
                         </script> 
                         <span style=""> ... or <a href="javascript:;" id="create_wo_facebook">fill out your profile manually</a></span>
@@ -226,7 +231,7 @@
                                             Select your display profile photo. <br />
                                             You can also use your company <br />
                                             logo if you like. <br />
-                                            <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="ajaxFileUpload()"/> <span id="loading">loading...</span> </div>
+                                            <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">loading...</span> </div>
                                         </div>
                                     </div>
                                 </td>
@@ -244,9 +249,6 @@
                     	<div class="jcrop_div">
                             <?=HTML::image('img/sample-avatar.png', 'Profile Picture', array('id' => 'jcrop_target'))?>
                         </div>
-                        <!--
-                        <a href="javascript:;" onclick="save_crop_image()" class="s36_blue_btn">Save Image</a>
-                        -->
                     </div>
                     <div style="width:100px;text-align:center;font-size:10px;color:#CCC;float:left;">
                     	<div style="margin-bottom:5px">Preview</div>
@@ -327,9 +329,3 @@
     </div>
 </div>
 </body>
-
-<?=HTML::script('js/jquery.jcrop.js')?>
-<?=HTML::script('js/jquery.ajaxfileupload.js')?>
-<?=HTML::script('js/s36script.js')?>
-<?=HTML::script('js/cycle.function.js')?>
-<?=HTML::script('js/widget/form.js')?>
