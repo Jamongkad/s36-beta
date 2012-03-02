@@ -226,7 +226,8 @@ var S36Form = new function() {
     };
 
     this.assign_class = function(curr, next, opts, fwd)  { 
-		var rating = this.selected_rating();
+        var that = this; 
+		var rating = that.selected_rating();
 		var index = opts.currSlide;									 
 		var $ht = $(this).height();									 //get the height of the next slide
 		$(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it
@@ -595,7 +596,7 @@ var S36Form = new function() {
 		var position = '';
 		var company  = '';
 		var website	 = '';
-		var rating 	 = this.selected_rating();
+		var rating 	 = that.selected_rating();
 		
 		if(rating != 2 && rating != 1){
 			var country  = cou.val() == cou_title ? '' : cou.val();
