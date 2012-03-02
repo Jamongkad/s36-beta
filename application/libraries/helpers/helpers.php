@@ -125,18 +125,19 @@ class Helpers {
 
     public static function tab_position_css_output() { 
         //TODO: From zeh database this should be
-        $tab_themes = array('black'=>'Black',
-                            'gray'=>'Silver Gray',
-                            'ocean-blue'=>'Ocean Blue',
-                            'forest-green'=>'Forest Green',
-                            'mandarin'=>'Mandarin',
-                            'orange'=>'Sleek Orange',
-                            'thin-red'=>'Thin Red',
-                            'aglow'=>'Aglow',
-                            'chrome'=>'Chrome',
-                            'classic'=>'Classic',
-                            'silver-gray'=>'Silver'
-                            );
+        $tab_themes = array(
+            'black'=>'Black',
+            'gray'=>'Silver Gray',
+            'ocean-blue'=>'Ocean Blue',
+            'forest-green'=>'Forest Green',
+            'mandarin'=>'Mandarin',
+            'orange'=>'Sleek Orange',
+            'thin-red'=>'Thin Red',
+            'aglow'=>'Aglow',
+            'chrome'=>'Chrome',
+            'classic'=>'Classic',
+            'silver-gray'=>'Silver'
+        );
 	
         $positions = Array();
         

@@ -617,46 +617,6 @@ class DBFeedback extends S36DataObject {
         return $result;
     }
 
-    //This function will be called by JS to display feedback on user's site.
-    public function show_embedded_feedback_block($company_id) {
-            $sth = $this->dbh->prepare("
-            SELECT 
-                Feedback.feedbackId
-                , Feedba3kBlock.displayName AS FeedbackBlockName
-                , Feedback.displayName AS FeedbackName
-                , FeedbackBlock.displayURL AS FeedbackBlockURL
-                , Feedback.displayURL AS FeedbackURL
-            FROM 
-                 Feedback
-            INNER JOIN 
-                 Form
-                 ON Form.formId = Feedback.formId
-            INNER JOIN
-                 Site
-                 ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                 Theme
-                 ON Theme.themeId = Form.themeId
-            INNER JOIN
-                 FeedbackBlock
-                 ON FeedbackBlock.siteId = Site.siteId
-                AND FeedbackBlock.themeId = Theme.themeId
-                AND FeedbackBlock.formId = Form.formId
-            INNER JOIN
-                Company
-                ON Company.companyId = Site.companyId
-            WHERE 1=1
-                AND Company.companyId = :company_id
-                AND Feedback.isPublished = 1
-                AND Feedback.isDeleted != 1
-            ");
-        
-        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
-        $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
-    }
-
     public function contact_detection($opts) {
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
