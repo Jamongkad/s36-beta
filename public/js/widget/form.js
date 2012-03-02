@@ -70,6 +70,5 @@ jQuery(function($) {
     $('#save-edited-feedback').hide();
     $('#save-edited-feedback').click(function(){S36Form.save_edited_feedback()});
     
-    S36Form.default_text(); 
-    console.log(S36Form);
+    S36Form.default_text();  
 });
