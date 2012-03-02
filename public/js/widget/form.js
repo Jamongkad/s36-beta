@@ -34,13 +34,13 @@ jQuery(function($) {
     $('#next').click(function(){
             var next = new PageCycle().cycle_next();
             if(next)			//if returned true, then cycle the form to the next ui
-            hide_error();		//hide errors
+            S36Form.hide_error();		//hide errors
             $steps.cycle(next);	//cycle
         });
     $('#prev').click(function(){
             var prev = new PageCycle().cycle_prev();
             if(prev)			//if returned true, then cycle the form to the prev ui
-            hide_error();		//hide errors
+            S36Form.hide_error();		//hide errors
             $steps.cycle(prev);	//cycle
         });
         
