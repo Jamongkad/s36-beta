@@ -669,7 +669,7 @@ var S36Form = new function() {
         } 
     };
 
-    this.save_edited_feedback() {
+    this.edit_feedback = function() {
         var that = this;
 		$('#edit-review-feedback').fadeOut('fast');
 		$('#save-edited-feedback').fadeIn('fast');
