@@ -135,7 +135,7 @@ class Helpers {
                             'aglow'=>'Aglow',
                             'chrome'=>'Chrome',
                             'classic'=>'Classic',
-                            'silver'=>'Silver'
+                            'silver-gray'=>'Silver'
                             );
 	
         $positions = Array();
