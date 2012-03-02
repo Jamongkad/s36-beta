@@ -5,7 +5,7 @@ var S36Form = new function() {
     var jcrop_api;
     var that = this;
 
-    var show_preview = function(coords) {
+    this.show_preview = function(coords) {
         var rx = 100 / coords.w;
         var ry = 100 / coords.h;
         var target = $('#jcrop_target');
@@ -25,7 +25,7 @@ var S36Form = new function() {
         }); 
     };
 
-    var slide_track_to = function(y, rating) {
+    this.slide_track_to = function(y, rating) {
 		$('#track_ball').animate({'left':y});
 		$('#rating').val(rating); 
     };
@@ -526,7 +526,7 @@ var S36Form = new function() {
 
     };
 
-    var login_type = function() { 
+    this.login_type = function() { 
         var ln = $("#ln_flag");
         var fb = $("#fb_flag");
 
