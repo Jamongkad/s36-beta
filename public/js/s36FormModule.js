@@ -225,8 +225,10 @@ var S36Form = new function() {
 		return rating;
     };
 
+    var that = this;
+
     this.assign_class = function(curr, next, opts, fwd)  { 
-		var rating = this.selected_rating();
+		var rating = that.selected_rating();
 		var index = opts.currSlide;									 
 		var $ht = $(this).height();									 //get the height of the next slide
 		$(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it
