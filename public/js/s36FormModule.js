@@ -3,6 +3,7 @@ Form interactions. Text boxes and Combo boxes style changer
 */
 var S36Form = new function() {
     var jcrop_api;
+    var that = this;
 
     var show_preview = function(coords) {
         var rx = 100 / coords.w;
@@ -53,7 +54,6 @@ var S36Form = new function() {
     };
 
     this.start_slider = function() {
-        var that = this;
 		$('#rate_e').click(function(){ that.slide_track_to('-1px'  ,'5'); });
 		$('#rate_g').click(function(){ that.slide_track_to('+100px','4'); });
 		$('#rate_a').click(function(){ that.slide_track_to('+189px','3'); });
@@ -224,8 +224,6 @@ var S36Form = new function() {
 	    var rating = $('#rating').val();
 		return rating;
     };
-
-    var that = this;
 
     this.assign_class = function(curr, next, opts, fwd)  { 
 		var rating = that.selected_rating();
