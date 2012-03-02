@@ -461,6 +461,7 @@ var S36Form = new function() {
 
             var fb_text = $.trim($('#feedback_text').val());
             if(fb_text != ""){
+                $('#next').show();
                 $('#steps').cycle(3);
             }
         });    
