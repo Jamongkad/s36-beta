@@ -233,7 +233,7 @@ var S36Form = new function() {
 		var $ht = $(this).height();									 //get the height of the next slide
 		$(this).parent().find('div.current').removeClass('current'); //find all div that has a current class and remove it
 		$(this).addClass('current');								 //add the current class to the active div	
-		this.display_prev_btn($(this).attr('id'));						 
+		that.display_prev_btn($(this).attr('id'));						 
     };
 
     this.fb_connect_success = function(obj) { 
