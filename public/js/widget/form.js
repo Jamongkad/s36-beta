@@ -1,8 +1,6 @@
-jQuery(function($) {
-    
+jQuery(function($) {    
     //hide what to write, error message
     $('#s36_whattowrite').hide();
-    //$('#s36_error').hide();
     
     $('#s36_tip').click(function(){
         $('#s36_whattowrite').slideToggle();
@@ -11,8 +9,7 @@ jQuery(function($) {
     $('#loading').hide();
     $('#feedback_permission').hide();
     $('#prev').hide();
-    $('.error-message').hide();
-    
+    $('.error-message').hide();    
     /*
     $('#feedback_text').tinymce({
         script_url : '<?=URL::to('/')?>js/tiny_mce.js',

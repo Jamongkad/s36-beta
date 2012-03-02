@@ -18,7 +18,7 @@ function PageCycle() {
 	this.prev_button	= $('#prev');
 	this.crop_button	= $('#cropbtn');
 	this.cancel_crop_button	= $('#cancel_cropbtn');
-	this.feedback 		= $('#feedback_text').val();
+	this.feedback 		    = $('#feedback_text').val();
 }
 
 /*
