@@ -207,9 +207,9 @@
                         
                             <select id="your_country" class="regular-select required" title="Country">
                             <option>Country</option>
-                                    <?foreach($country as $countries):?>
-                                        <option value="<?=$countries->code?>"><?=$countries->name?></option>
-                                    <?endforeach?>         
+                                <?foreach($country as $countries):?>
+                                    <option value="<?=$countries->code?>"><?=$countries->name?></option>
+                                <?endforeach?>         
                             </select>
                             
                             </td></tr>
@@ -261,10 +261,10 @@
                         <div id="test_showcoords"></div>
                         <span id="crop_status"></span>
                         <form>
-                        <input type="hidden" id="x" name="x" />
-                        <input type="hidden" id="y" name="y" />
-                        <input type="hidden" id="w" name="w" />
-                        <input type="hidden" id="h" name="h" />
+                            <input type="hidden" id="x" name="x" />
+                            <input type="hidden" id="y" name="y" />
+                            <input type="hidden" id="w" name="w" />
+                            <input type="hidden" id="h" name="h" />
                         </form>
                     </div>
                 </div>
@@ -275,7 +275,7 @@
             <div id="step_6" class="s36_pages">
             	<h1>Review your feedback</h1>
                 <div class="step-contents">
-                	<p>Just before you submit in your feedback, be sure to check it one more time.</p>
+                	<p>Just before you submit your feedback, be sure to check it one last time.</p>
                     <div class="review-profile">
                     	<div class="review-avatar s36_align_center">
 
@@ -305,7 +305,9 @@
             <div id="step_7" class="s36_pages">
             	<h1>All Done!</h1>
                 <div class="step-contents">
-                    <p style="line-height:22px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.</p>
+                    <p style="line-height:22px;">
+                    Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                    </p>
                 </div>
             </div>
             
