@@ -1,6 +1,25 @@
 /* 
 Form interactions. Text boxes and Combo boxes style changer
 */
+
+// OPTION SELECT PLUGIN
+$.fn.selected = function(select) {
+    if (select == undefined) select = true;
+    return this.each(function() {
+        var t = this.type;
+        if (t == 'checkbox' || t == 'radio') {
+            this.checked = select;
+        } else if (this.tagName.toLowerCase() == 'option') {
+            var $sel = $(this).parent('select');
+            if (select && $sel[0] && $sel[0].type == 'select-one') {
+                // deselect all other options
+                $sel.find('option').selected(false);
+            }
+            this.selected = select;
+        }
+    });
+};
+
 var S36Form = new function() {
     var jcrop_api;
     var that = this;
@@ -127,7 +146,7 @@ var S36Form = new function() {
 			$('#prev').fadeIn('fast');
 		} 
     };
-
+    
     this.change_jcrop_div = function(width) {
         var width = Math.round(width);
         $('div.jcrop_div').css({'width':width}); 
@@ -291,7 +310,7 @@ var S36Form = new function() {
             $("#profile_link").val( $.trim(obj.link) );
         }
 
-		$('#fb_flag').val("1");
+		$('#fb_flag').val(1);
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		that.change_jcrop_div(200);
 		that.change_images(photo, 'fb');
@@ -409,7 +428,8 @@ var S36Form = new function() {
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
                     loader.fadeOut(function(){$(this).html("loading...")});
-                                        
+                    
+                    //wtf does this mean...why set the fb_flag to 2??
                     if($('#fb_flag').val() == 1) {
                         $('#fb_flag').val(2);
                     }
@@ -451,7 +471,7 @@ var S36Form = new function() {
             $('#your_occupation').val( $.trim(position) );	
             $("#profile_link").val( $.trim(profile_link) );
 
-            $('#ln_flag').val("1");
+            $('#ln_flag').val(1);
             if(profile.pictureUrl != undefined){
                 photo = profile.pictureUrl;
             }
@@ -659,23 +679,5 @@ var S36Form = new function() {
         }); 
     };
 
-};
-
-// OPTION SELECT PLUGIN
-$.fn.selected = function(select) {
-    if (select == undefined) select = true;
-    return this.each(function() {
-        var t = this.type;
-        if (t == 'checkbox' || t == 'radio') {
-            this.checked = select;
-        } else if (this.tagName.toLowerCase() == 'option') {
-            var $sel = $(this).parent('select');
-            if (select && $sel[0] && $sel[0].type == 'select-one') {
-                // deselect all other options
-                $sel.find('option').selected(false);
-            }
-            this.selected = select;
-        }
-    });
 };
 // END OF 36stories Javascript
