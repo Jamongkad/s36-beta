@@ -29,17 +29,17 @@ jQuery(function($) {
     
     // when clicking the next button
     $('#next').click(function(){
-            var next = new PageCycle().cycle_next();
-            if(next)			//if returned true, then cycle the form to the next ui
+        var next = new PageCycle().cycle_next();
+        if(next)			//if returned true, then cycle the form to the next ui
             S36Form.hide_error();		//hide errors
             $steps.cycle(next);	//cycle
-        });
+    });
     $('#prev').click(function(){
-            var prev = new PageCycle().cycle_prev();
-            if(prev)			//if returned true, then cycle the form to the prev ui
+        var prev = new PageCycle().cycle_prev();
+        if(prev)			//if returned true, then cycle the form to the prev ui
             S36Form.hide_error();		//hide errors
             $steps.cycle(prev);	//cycle
-        });
+    });
         
     // assign crop script to crop btn
     $('#crop_photo').hide();

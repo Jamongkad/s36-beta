@@ -7,8 +7,7 @@
 */
 var init = 0;
 
-function PageCycle() {
-	
+function PageCycle() {	
 	this.cur_step 		= $('#steps').find('.current').attr('id');
 	this.rating 		= S36Form.selected_rating();
 	this.default_photo 	= "img/blank-avatar.png";
@@ -28,9 +27,7 @@ function PageCycle() {
 */
 
 PageCycle.prototype.cycle_next = function() {
-	
-	var that = this;
-	
+		
 	if(this.cur_step == "step_1"){
 		
 		return this._check_page_one(true);
@@ -69,9 +66,7 @@ PageCycle.prototype.cycle_next = function() {
 */
 
 PageCycle.prototype.cycle_prev = function() {
-	
-	var that = this;
-	
+		
 	if(this.cur_step == "step_2"){
 		
 		return this._check_page_two(false);
