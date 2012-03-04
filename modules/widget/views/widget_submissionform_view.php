@@ -20,11 +20,6 @@
   authorize: true
 </script>
 
-<span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
-<span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
-<span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
-<span id="ajax-step-metrics" hrefaction="<?=URL::to('/api/check_step')?>"></span>
-
 <body style="background:#000">
 <!-- facebook scripts -->
 <div id="fb-root"></div>
@@ -35,7 +30,6 @@
   FB.Event.subscribe('auth.login', function(response) {
 	FB.api('/me', function(user) {
 	   if(user != null) {
-		  //alert(dump(user)); //debugger
 		  console.log('fb connect');
 		  S36Form.fb_connect_success(user);
 	   }else{
@@ -45,6 +39,13 @@
   });
 </script>
 <!-- end of facebook script -->
+
+<!-- 36Stories DataExchange URLs -->
+<span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
+<span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
+<span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
+<span id="ajax-step-metrics" hrefaction="<?=URL::to('/api/check_step')?>"></span>
+<!-- end of 36Stories script -->
 
 <div id="s36_main">
 	<div id="s36_whitebar"></div>    
@@ -63,6 +64,7 @@
 
                         <input type="hidden" id="fb_flag" value="0" />
                         <input type="hidden" id="ln_flag" value="0" />
+                        <input type="hidden" id="native_flag" value="0" />
 
                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
@@ -231,7 +233,10 @@
                                             Select your display profile photo. <br />
                                             You can also use your company <br />
                                             logo if you like. <br />
-                                            <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">loading...</span> </div>
+                                            <div style="margin:5px 0px;">
+                                            <input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> 
+                                                <span id="loading">loading...</span> 
+                                            </div>
                                         </div>
                                     </div>
                                 </td>

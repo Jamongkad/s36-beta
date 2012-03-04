@@ -152,16 +152,16 @@ var S36Form = new function() {
         $('div.jcrop_div').css({'width':width}); 
     };
 
-    this.change_images = function(dir, img) {
+    this.change_images = function(img_nm, img_src) {
 
         var file;
 
-        if(img == 'fb' || img == 'ln') {
-            file = dir;     
+        if(img_src == 'fb' || img_src == 'ln') {
+            file = img_nm;     
         }
 
-        if(img == 'native') {
-            file = "/" + dir;
+        if(img_src == 'native') {
+            file = "/" + img_nm;
         }
 
         $('#profile_picture').attr('src',file);
@@ -430,6 +430,11 @@ var S36Form = new function() {
                     loader.fadeOut(function(){$(this).html("loading...")});
                     
                     //wtf does this mean...why set the fb_flag to 2??
+                    /*TODO: 
+                      Ideally...
+                      $('#native_flag').val(1);
+                     
+                    */
                     if($('#fb_flag').val() == 1) {
                         $('#fb_flag').val(2);
                     }
@@ -499,6 +504,8 @@ var S36Form = new function() {
 		var oldphoto = $('#cropped_photo').val();
 		
 		status.html(' Cropping Photo...');
+
+        //TODO: it should be cleaner if we get login type instead of passing fb_login var.
 		
 		return $.ajax({
               url: $("#ajax-crop-url").attr('hrefaction'),
@@ -542,7 +549,8 @@ var S36Form = new function() {
         });
 
     };
-
+    
+    //used for data insertion
     this.login_type = function() { 
         var ln = $("#ln_flag");
         var fb = $("#fb_flag");

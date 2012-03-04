@@ -1,4 +1,11 @@
+/*
+ * Submission Form Widget Controller
+ */
+
 jQuery(function($) {    
+    // start the rating slider
+    S36Form.start_slider();
+
     //hide what to write, error message
     $('#s36_whattowrite').hide();
     
@@ -60,9 +67,6 @@ jQuery(function($) {
         } 
     });
     //end added
-    // start the rating slider
-    S36Form.start_slider();
-
     $('#edit-review-feedback').click(function(){S36Form.edit_feedback()});
     $('#save-edited-feedback').hide();
     $('#save-edited-feedback').click(function(){S36Form.save_edited_feedback()});
