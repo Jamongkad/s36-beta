@@ -6,6 +6,7 @@
 ||-----------------------------------------------
 */
 var init = 0;
+var debug = 0;
 
 function PageCycle() {	
 	this.cur_step 		= $('#steps').find('.current').attr('id');
@@ -112,6 +113,7 @@ PageCycle.prototype.cycle_prev = function() {
 	*/
 	
 	PageCycle.prototype._check_page_one = function(next){
+        this._debug("Page 1");
 	
 		/*------------------------
 		|  Next button pressed
@@ -355,4 +357,15 @@ PageCycle.prototype._cropper_page = function(){
 	   S36Form.jcrop_api.setSelect(['40','20','190','170']);
 	}
 	S36Form.show_crop_buttons();
+}
+
+/*
+||---------------------------------------
+||  Debugger Toggle
+||---------------------------------------
+*/
+PageCycle.prototype._debug = function(page) {
+    if(debug) {
+        console.log(page)     
+    }
 }
