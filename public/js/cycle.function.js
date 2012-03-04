@@ -113,12 +113,13 @@ PageCycle.prototype.cycle_prev = function() {
 	*/
 	
 	PageCycle.prototype._check_page_one = function(next){
-        this._debug("Page 1");
+
 	
 		/*------------------------
 		|  Next button pressed
 		-------------------------*/
-		
+
+	        this._debug("Page 1");	
 			if(this.feedback.length > 0){
 				if((this.rating == "2") || (this.rating == "1")){
 					S36Form.show_complete_form(false);
@@ -145,6 +146,7 @@ PageCycle.prototype.cycle_prev = function() {
 		|  Next button pressed
 		-------------------------*/
 		
+        this._debug("Page 2");
 		if(next){	
 			var permission = $('[name="your_permission"]:checked').size();
 			if(permission <= 0){
@@ -175,8 +177,8 @@ PageCycle.prototype.cycle_prev = function() {
 		
 		/*------------------------
 		|  Next button pressed
-		-------------------------*/
-		
+		-------------------------*/	
+	    this._debug("Page 3");	
 		if(next){
 			return 3;
 		}
@@ -202,6 +204,7 @@ PageCycle.prototype.cycle_prev = function() {
 		/*------------------------
 		|  Next button pressed
 		-------------------------*/
+	    this._debug("Page 4");	
 		var that = this;
 		if(next){
 			
@@ -265,8 +268,8 @@ PageCycle.prototype.cycle_prev = function() {
 	
 		/*------------------------
 		|  Next button pressed
-		-------------------------*/
-		
+		-------------------------*/	
+	    this._debug("Page 5");	
 		if(next){
 			if(this.default_photo != this.review_photo){
 				return 5;	
@@ -296,7 +299,7 @@ PageCycle.prototype.cycle_prev = function() {
 		/*------------------------
 		|  Next button pressed
 		-------------------------*/
-		
+	    this._debug("Page 6");		
 		if(next){
 			this.next_button.hide();
 			S36Form.send_form_data();	
@@ -322,8 +325,8 @@ PageCycle.prototype.cycle_prev = function() {
 		
 		/*------------------------
 		|  Next button pressed
-		-------------------------*/
-		
+		-------------------------*/	
+	    this._debug("Page 7");	
 		if(next){
 			$('#steps').cycle('destroy');
 			parent.s36_closeLightbox();
@@ -347,6 +350,7 @@ PageCycle.prototype.cycle_prev = function() {
 ||---------------------------------------
 */
 PageCycle.prototype._cropper_page = function(){
+	this._debug("Cropper Page");	
 	$('#steps').cycle(4);
 	if(init <= 0){
 	   init = 1;
