@@ -25,6 +25,7 @@ class AddFeedback {
         }
         
         $avatar = Input::get('cropped_image_nm');
+        //fucking js integers
         if ($avatar == '0') {
             echo "no cropped image name";
             $avatar = $profile_img->auto_crop(Input::get('orig_image_dir'), Input::get('login_type'));
