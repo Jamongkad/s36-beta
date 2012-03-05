@@ -62,7 +62,7 @@ class ProfileImage {
         file_put_contents($file_name, file_get_contents($file_src));
         $resizeObj = new Resize($file_name);
         $resizeObj->resizeImage($maxwidth, $maxheight);
-        $resizeObj->saveImage($file_name); 
+        //$resizeObj->saveImage($file_name); 
 
         /*
         $file_src = file_get_contents($src);
