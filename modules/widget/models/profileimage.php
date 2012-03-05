@@ -28,11 +28,6 @@ class ProfileImage {
         $facebook_pic = ($img_src_location == 'fb') ? True : False;
         $linkedin_pic = ($img_src_location == 'ln') ? True : False;
         $src = Null;
-        $x = 0;
-        $y = 0;
-        $wd = 80;
-        $ht = 80;
-
         if($native_pic) {
             $src = '/var/www/s36-upload-images'.$img_src;
         }
@@ -56,8 +51,7 @@ class ProfileImage {
         } else {
             $file_src = $src; 
         }
-        print_r($file_src);
-        /*
+
         $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg"; 
         $new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";
         file_put_contents($file_name, file_get_contents($file_src));
@@ -65,7 +59,7 @@ class ProfileImage {
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage($new_file_name); 
         @unlink($file_name);
-        */
+
 
     }
 
