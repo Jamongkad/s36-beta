@@ -56,8 +56,8 @@ class ProfileImage {
         } else {
             $file_src = $src; 
         }
-
-
+        print_r($file_src);
+        /*
         $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg"; 
         $new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";
         file_put_contents($file_name, file_get_contents($file_src));
@@ -65,47 +65,8 @@ class ProfileImage {
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage($new_file_name); 
         @unlink($file_name);
-
-        /*
-        $file_src = file_get_contents($src);
-        
-        $resizeObj = new Resize($file_src);
-        $resizeObj->resizeImage($maxwidth, $maxheight);
-        $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
         */
 
-        /*
-        switch($extension) {
-            case '.jpg':
-            case '.jpeg':
-                $img_r150 = @imagecreatefromjpeg($src);
-                $img_r48 = @imagecreatefromjpeg($src);
-                break;
-            case '.gif':
-                $img_r150 = @imagecreatefromgif($src);
-                $img_r48 = @imagecreatefromgif($src);
-                break;
-            case '.png':
-                $img_r150 = @imagecreatefrompng($src);
-                $img_r48 = @imagecreatefrompng($src);
-                break;
-            default:
-                $img_r150 = false;
-                $img_r48 = false;
-            break;
-        }
-                    
-        $dst_r150 = ImageCreateTrueColor( $this->targ_w_large, $this->targ_h_large ); 
-        $dst_r48 = ImageCreateTrueColor( $this->targ_w_small, $this->targ_h_small ); 
-        
-        imagecopyresampled($dst_r150, $img_r150, 0, 0, $x, $y, $this->targ_w_large, $this->targ_h_large, $wd, $ht);
-        imagejpeg($dst_r150, $this->dir150, $this->jpeg_quality);
-        
-        imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
-        imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
-
-        echo $this->date."-cropped.jpg"; 
-        */
     }
 
     public function crop($input_params) {
