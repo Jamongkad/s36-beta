@@ -636,7 +636,7 @@ var S36Form = new function() {
 			company: 		company,
 			website: 		website,
 			permission: 	perm,
-			cropped_image_nm: $('#cropped_photo').val() == '0' ? false : $('#cropped_photo').val(),
+			cropped_image_nm: $('#cropped_photo').val() == 0 ? 0 : $('#cropped_photo').val(),
 			orig_image_dir: avatar
 		};	
 		//console.log(form_data);
