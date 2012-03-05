@@ -28,40 +28,38 @@ class ProfileImage {
         $facebook_pic = ($img_src_location == 'fb') ? True : False;
         $linkedin_pic = ($img_src_location == 'ln') ? True : False;
         $src = Null;
+        $file_name = Null;
+
         if($native_pic) {
-            $src = '/var/www/s36-upload-images'.$img_src;
+            $file_name = '/var/www/s36-upload-images'.$img_src;
         }
 
         if($facebook_pic || $linkedin_pic) {
+
             $src = $img_src;
-        }
 
-        if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
-            $extension = ".jpg";
-        }else{
-            $extension = strtolower(strrchr($src, '.'));
-        }
+            $url = get_all_redirects($src);
+            if($url) {
+                //For Facebook url redirects...
+                $file_src = $url[0];
+            } else {
+                //For Linkedi
+                $file_src = $src; 
+            }
 
-        $maxwidth = 48;
-        $maxheight = 48;
-        //start image resizing..
-        $url = get_all_redirects($src);
-        if($url) {
-            $file_src = $url[0];
-        } else {
-            $file_src = $src; 
-        }
-        
-        if($native_pic) {
-            $file_name = $file_src;   
-        } else { 
             $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
             file_put_contents($file_name, file_get_contents($file_src));
-        }
-       
-        $new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";  
+        } 
+        //$new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";  
+        $new_48_pic  = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
+        $new_150_pic = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg"; 
+        $this->_save_pic(48, 48, $file_name, $new_48_pic);
+        $this->_save_pic(150, 150, $file_name, $new_150_pic);
+    }
+
+    private function _save_pic($width, $height, $file_name, $new_file_name) { 
         $resizeObj = new Resize($file_name);
-        $resizeObj->resizeImage($maxwidth, $maxheight);
+        $resizeObj->resizeImage($width, $height);
         $resizeObj->saveImage($new_file_name); 
         @unlink($file_name);
     }

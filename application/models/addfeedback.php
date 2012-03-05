@@ -80,12 +80,18 @@ class AddFeedback {
         $dash->write_summary();
 
         //check if sample-avatar if not...delete original photo once done... 
+        /*
         $orig_image_dir = Input::get('orig_image_dir');
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
+
+        if(Input::get('login_type') == "36") {
+            @unlink("/var/www/s36-upload-images".$orig_image_dir);      
+        }
 
         if(!$matches[0] && Input::get('fb_flag') == 0) {
             @unlink("/var/www/s36-upload-images".$orig_image_dir);     
         } 
+        */
     }
 
 }
