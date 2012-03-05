@@ -74,7 +74,7 @@ class ProfileImage {
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
         */
-        print_r($src);
+        print_r(file_get_contents($src));
 
         /*
         switch($extension) {
