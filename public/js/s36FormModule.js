@@ -310,7 +310,10 @@ var S36Form = new function() {
             $("#profile_link").val( $.trim(obj.link) );
         }
 
-		$('#fb_flag').val(1);
+        $('#ln_flag').val(0);
+        $('#fb_flag').val(1);
+        $('#native_flag').val(0);
+
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		that.change_jcrop_div(200);
 		that.change_images(photo, 'fb');
@@ -437,7 +440,9 @@ var S36Form = new function() {
                       if($('#fb_flag').val() == 1) {
                           $('#fb_flag').val(2);
                       }
-                    */
+                    */		
+                    $('#ln_flag').val(0)
+                    $('#fb_flag').val(0);
                     $('#native_flag').val(1);
                    
                 } else { 
@@ -478,6 +483,8 @@ var S36Form = new function() {
             $("#profile_link").val( $.trim(profile_link) );
 
             $('#ln_flag').val(1);
+            $('#fb_flag').val(0);
+            $('#native_flag').val(0);
             if(profile.pictureUrl != undefined){
                 photo = profile.pictureUrl;
             }
@@ -526,7 +533,8 @@ var S36Form = new function() {
 			});
         
     };
-
+    
+    /* DEPRECATED
     this.save_linkedin_image = function() {
         
         that.hide_error();
@@ -550,6 +558,7 @@ var S36Form = new function() {
             }
         });
     };
+    */
     
     //used for data insertion
     this.login_type = function() { 

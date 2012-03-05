@@ -227,6 +227,9 @@ PageCycle.prototype.cycle_prev = function() {
 				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){
                     //TODO: auto crop page but let's comment it out for the mean time. 
 					//S36Form.save_linkedin_image();
+                    if($('#ln_flag').val() == 1) {
+                        $('#crop_photo').hide();
+                    }
 					return 5;
 				}else{
 					if (bad_rating) {
