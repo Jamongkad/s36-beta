@@ -23,6 +23,62 @@ class ProfileImage {
                     
     }
 
+    public function auto_crop($img_src, $img_src_location) {
+        $native_pic   = ($img_src_location == 'native') ? True : False;
+        $facebook_pic = ($img_src_location == 'fb') ? True : False;
+        $linkedin_pic = ($img_src_location == 'ln') ? True : False;
+        $src = Null;
+        $x = 0;
+        $y = 0;
+        $wd = 80;
+        $ht = 80;
+
+        if($native_pic) {
+            $src = '/var/www/s36-upload-images/uploaded_tmp'.$img_src;
+        }
+
+        if($facebook_pic || $linkedin_pic) {
+            $src = $img_src;
+        }
+
+        if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
+            $extension = ".jpg";
+        }else{
+            $extension = strtolower(strrchr($src, '.'));
+        }
+
+        switch($extension) {
+            case '.jpg':
+            case '.jpeg':
+                $img_r150 = @imagecreatefromjpeg($src);
+                $img_r48 = @imagecreatefromjpeg($src);
+                break;
+            case '.gif':
+                $img_r150 = @imagecreatefromgif($src);
+                $img_r48 = @imagecreatefromgif($src);
+                break;
+            case '.png':
+                $img_r150 = @imagecreatefrompng($src);
+                $img_r48 = @imagecreatefrompng($src);
+                break;
+            default:
+                $img_r150 = false;
+                $img_r48 = false;
+            break;
+        }
+                    
+        $dst_r150 = ImageCreateTrueColor( $this->targ_w_large, $this->targ_h_large ); 
+        $dst_r48 = ImageCreateTrueColor( $this->targ_w_small, $this->targ_h_small ); 
+        
+        imagecopyresampled($dst_r150, $img_r150, 0, 0, $x, $y, $this->targ_w_large, $this->targ_h_large, $wd, $ht);
+        imagejpeg($dst_r150, $this->dir150, $this->jpeg_quality);
+        
+        imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
+        imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
+
+        echo $this->date."-cropped.jpg"; 
+    }
+
     public function crop($input_params) {
 
         $this->input_params = $input_params;
@@ -72,7 +128,7 @@ class ProfileImage {
             default:
                 $img_r150 = false;
                 $img_r48 = false;
-                break;
+            break;
         }
                     
         $dst_r150 = ImageCreateTrueColor( $this->targ_w_large, $this->targ_h_large ); 
@@ -137,7 +193,7 @@ class ProfileImage {
                 $filedir = "uploaded_tmp/".$filename;
                 $maxwidth = 350;
                 $maxheight = 230;
-                $move = move_uploaded_file($_FILES[$file]['tmp_name'],"/var/www/s36-upload-images/uploaded_tmp/".$filename);
+                $move = move_uploaded_file($_FILES[$file]['tmp_name'], "/var/www/s36-upload-images/uploaded_tmp/".$filename);
                 if($move){    
                      //start image resizing..
                      $resizeObj = new Resize($filedir);
@@ -173,6 +229,7 @@ class ProfileImage {
 }
 
 //helper functions will move to seperate file later on
+//WTF DOES THIS MEAN MATHEW!?!?!
 function fb_photo_check($fb_login, $photo_src) {    
     if($fb_login == 1) return $photo_src;
     if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;

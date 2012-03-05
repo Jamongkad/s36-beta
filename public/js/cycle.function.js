@@ -206,14 +206,15 @@ PageCycle.prototype.cycle_prev = function() {
 		-------------------------*/
 	    this._debug("Page 4");	
 		var that = this;
+        var bad_rating;
 		if(next){
 			
 			if((this.rating == "2") || (this.rating == "1")){
 				var val = S36Form.validate_form('partial'); // validate_form returns 3;
-				var send = true;
+				var bad_rating = true;
 			}else{
 				var val = S36Form.validate_form('full'); 	// validate_form returns 3;
-				var send = false;
+				var bad_rating = false;
 			}
 			if(val){ 
 				// if form is validated..				
@@ -227,7 +228,7 @@ PageCycle.prototype.cycle_prev = function() {
 					S36Form.save_linkedin_image();
 					return 5;
 				}else{
-					if(send){
+					if (bad_rating) {
 						this.next_button.hide();
 						S36Form.send_form_data();
 						return 6;
@@ -346,7 +347,7 @@ PageCycle.prototype.cycle_prev = function() {
 	
 /*
 ||---------------------------------------
-||  The Cropper Page beybeh
+||  The Cropper 
 ||---------------------------------------
 */
 PageCycle.prototype._crop_photo = function(){

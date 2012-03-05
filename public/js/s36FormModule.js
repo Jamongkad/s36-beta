@@ -608,8 +608,7 @@ var S36Form = new function() {
 			var position = pos.val() == pos_title ? '' : pos.val();
 			var company  = com.val() == com_title ? '' : com.val();
 			var website	 = web.val() == web_title ? '' : web.val();
-		}
-		
+		}	
 		// check avatar
 		var preview = $('#preview').attr('src');
 		var avatar;
@@ -637,7 +636,7 @@ var S36Form = new function() {
 			company: 		company,
 			website: 		website,
 			permission: 	perm,
-			cropped_image_nm: $('#cropped_photo').val() == '0' ? '' : $('#cropped_photo').val(),
+			cropped_image_nm: $('#cropped_photo').val() == '0' ? false : $('#cropped_photo').val(),
 			orig_image_dir: avatar
 		};	
 		//console.log(form_data);
