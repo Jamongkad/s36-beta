@@ -51,7 +51,7 @@ class ProfileImage {
         $maxheight = 150;
 
         //start image resizing..
-        $resizeObj = new Resize($src.$extension);
+        $resizeObj = new Resize($src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
 
