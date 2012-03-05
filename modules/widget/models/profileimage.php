@@ -51,10 +51,16 @@ class ProfileImage {
         } else {
             $file_src = $src; 
         }
-
-        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg"; 
+        
+        if($native_pic) {
+            $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+            file_put_contents($file_name, file_get_contents($file_src));
+        } else {
+             $file_name = $file_src;   
+        }
+       
         $new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";
-        file_put_contents($file_name, file_get_contents($file_src));
+      
         $resizeObj = new Resize($file_name);
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage($new_file_name); 
