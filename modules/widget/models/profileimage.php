@@ -50,31 +50,23 @@ class ProfileImage {
         $maxwidth = 150;
         $maxheight = 150;
         //start image resizing..
-        switch($extension) {
-            case '.jpg':
-            case '.jpeg':
-                $img_r150 = @imagecreatefromjpeg($src);
-                $img_r48 = @imagecreatefromjpeg($src);
-                break;
-            case '.gif':
-                $img_r150 = @imagecreatefromgif($src);
-                $img_r48 = @imagecreatefromgif($src);
-                break;
-            case '.png':
-                $img_r150 = @imagecreatefrompng($src);
-                $img_r48 = @imagecreatefrompng($src);
-                break;
-            default:
-                $img_r150 = false;
-                $img_r48 = false;
-            break;
+        $headers = get_headers($src, 1);
+        // just a precaution, check whether the header isset...
+        if(isset($headers['Location'])) {
+            $url = $headers['Location']; // string
+        } else {
+            $url = false; // nothing there? .. weird, but okay!
         }
 
+        print_r($url);
+
+        /*
         $file_src = file_get_contents($src);
         
         $resizeObj = new Resize($file_src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
+        */
 
         /*
         switch($extension) {
