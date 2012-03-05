@@ -49,21 +49,20 @@ class ProfileImage {
             $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
             file_put_contents($file_name, file_get_contents($file_src));
         } 
-        print_r($file_name);
+        //print_r($file_name);
         //$new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";  
-        /*
+
         $new_48_pic  = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
         $new_150_pic = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg"; 
         $this->_save_pic(48, 48, $file_name, $new_48_pic);
         $this->_save_pic(150, 150, $file_name, $new_150_pic);
-        */
+        @unlink($file_name);
     }
 
     private function _save_pic($width, $height, $file_name, $new_file_name) { 
         $resizeObj = new Resize($file_name);
         $resizeObj->resizeImage($width, $height);
         $resizeObj->saveImage($new_file_name); 
-        @unlink($file_name);
     }
 
     public function crop($input_params) {
