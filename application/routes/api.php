@@ -39,12 +39,14 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
-        /*
+
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
-        */
+
+        /*
         $profile_img = new Widget\ProfileImage();
         $profile_img->auto_crop(Input::get('orig_image_dir'), Input::get('login_type'));
+        */
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 

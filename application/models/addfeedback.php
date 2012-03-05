@@ -10,7 +10,8 @@ class AddFeedback {
         $bw = new DBBadWords;
         $mt = new DBMetric;
         $userinfo = new UserInfo;
-
+        $profile_img = new Widget\ProfileImage();
+    
         //fuck naive assumption...
         $countryId = 895;
         if($country_input = Input::get('country')) {
@@ -22,7 +23,14 @@ class AddFeedback {
             $mt->company_id = Input::get('company_id');
             $mt->increment_response();
         }
-       
+        
+        $avatar = Input::get('cropped_image_nm');
+        if ($avatar == false) {
+            $avatar = $profile_img->auto_crop(Input::get('orig_image_dir'), Input::get('login_type'));
+        } 
+
+        Helpers::show_data($avatar);
+        /*
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => Input::get('first_name')
@@ -33,7 +41,7 @@ class AddFeedback {
           , 'city'      => Input::get('city')
           , 'companyName' => Input::get('company')
           , 'website'   => Input::get('email')
-          , 'avatar'    => Input::get('cropped_image_nm')
+          , 'avatar'    => $avatar
           , 'loginType' => Input::get('login_type')
           , 'profileLink' => Input::get('profile_link')
           , 'ipaddress' => $userinfo->get_ip_long()
@@ -79,9 +87,13 @@ class AddFeedback {
         $dash->company_id = Input::get('company_id');
         $dash->write_summary();
 
+        $orig_image_dir = Input::get('orig_image_dir');
+        if(Input::get('login_type') == "36") {
+            @unlink("/var/www/s36-upload-images".$orig_image_dir);      
+        }
         //check if sample-avatar if not...delete original photo once done... 
         /*
-        $orig_image_dir = Input::get('orig_image_dir');
+
         preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
 
         if(Input::get('login_type') == "36") {
