@@ -619,7 +619,7 @@ var S36Form = new function() {
 		var perm = per.length > 0 ? per.val() : '';
 		
 		var form_data = {
-			fb_flag:		$('#fb_flag').val(),
+			//fb_flag:		$('#fb_flag').val(),
 			site_id:		$('#site_id').val(),
 			company_id: 	$('#company_id').val(),
 		   	rating: 		$('#rating').val(),
