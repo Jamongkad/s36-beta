@@ -51,8 +51,15 @@ class ProfileImage {
         $maxheight = 150;
         //start image resizing..
         $url = get_all_redirects($src);
-        print_r($url);
-
+        if($url) {
+            $file_src = $url[0];
+        } else {
+            $file_src = $src; 
+        }
+       
+        $resizeObj = new Resize($file_src);
+        $resizeObj->resizeImage($maxwidth, $maxheight);
+        $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
         /*
         $file_src = file_get_contents($src);
         
