@@ -44,7 +44,7 @@ return array(
         $addfeedback->create_feedback_with_profile(); 
         */
         $profile_img = new Widget\ProfileImage();
-        Helpers::show_data($profile_img);
+        Helpers::show_data(Input::get());
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
