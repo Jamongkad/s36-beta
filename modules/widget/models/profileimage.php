@@ -46,7 +46,7 @@ class ProfileImage {
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
-        /* 
+
         $maxwidth = 150;
         $maxheight = 150;
         //start image resizing..
@@ -69,12 +69,12 @@ class ProfileImage {
                 $img_r48 = false;
             break;
         }
+
+        $file_src = file_get_contents($src);
         
-        $resizeObj = new Resize($src);
+        $resizeObj = new Resize($file_src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
-        */
-        print_r(file_get_contents($src));
 
         /*
         switch($extension) {
