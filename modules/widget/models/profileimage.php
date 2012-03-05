@@ -56,13 +56,14 @@ class ProfileImage {
         } else {
             $file_src = $src; 
         }
-         
-        file_put_contents("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg", file_get_contents($file_src));
-        /*
-        $resizeObj = new Resize($file_src);
+
+
+        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"; 
+        file_put_contents($file_name, file_get_contents($file_src));
+        $resizeObj = new Resize($file_name);
         $resizeObj->resizeImage($maxwidth, $maxheight);
-        $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
-        */
+        $resizeObj->saveImage($file_name); 
+
         /*
         $file_src = file_get_contents($src);
         
