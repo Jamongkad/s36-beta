@@ -42,8 +42,8 @@ class ProfileImage {
             $extension = strtolower(strrchr($src, '.'));
         }
 
-        $maxwidth = 150;
-        $maxheight = 150;
+        $maxwidth = 48;
+        $maxheight = 48;
         //start image resizing..
         $url = get_all_redirects($src);
         if($url) {
