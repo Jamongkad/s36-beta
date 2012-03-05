@@ -49,9 +49,28 @@ class ProfileImage {
         
         $maxwidth = 150;
         $maxheight = 150;
-
         //start image resizing..
-        print_r($src);
+        switch($extension) {
+            case '.jpg':
+            case '.jpeg':
+                $img_r150 = @imagecreatefromjpeg($src);
+                $img_r48 = @imagecreatefromjpeg($src);
+                break;
+            case '.gif':
+                $img_r150 = @imagecreatefromgif($src);
+                $img_r48 = @imagecreatefromgif($src);
+                break;
+            case '.png':
+                $img_r150 = @imagecreatefrompng($src);
+                $img_r48 = @imagecreatefrompng($src);
+                break;
+            default:
+                $img_r150 = false;
+                $img_r48 = false;
+            break;
+        }
+        print_r($img_r150);
+        print_r($img_r48);
         /*
         $resizeObj = new Resize($src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
