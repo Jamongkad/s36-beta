@@ -34,7 +34,7 @@ class ProfileImage {
         $ht = 80;
 
         if($native_pic) {
-            $src = '/var/www/s36-upload-images/uploaded_tmp/'.$img_src;
+            $src = '/var/www/s36-upload-images'.$img_src;
         }
 
         if($facebook_pic || $linkedin_pic) {
