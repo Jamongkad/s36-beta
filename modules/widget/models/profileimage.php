@@ -56,7 +56,8 @@ class ProfileImage {
         } else {
             $file_src = $src; 
         }
-        print_r($file_src);
+         
+        file_put_contents("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg", file_get_contents($file_src));
         /*
         $resizeObj = new Resize($file_src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
