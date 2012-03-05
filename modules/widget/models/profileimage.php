@@ -58,11 +58,13 @@ class ProfileImage {
         }
 
 
-        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"; 
+        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg"; 
+        $new_file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg";
         file_put_contents($file_name, file_get_contents($file_src));
         $resizeObj = new Resize($file_name);
         $resizeObj->resizeImage($maxwidth, $maxheight);
-        //$resizeObj->saveImage($file_name); 
+        $resizeObj->saveImage($new_file_name); 
+        @unlink($file_name);
 
         /*
         $file_src = file_get_contents($src);
