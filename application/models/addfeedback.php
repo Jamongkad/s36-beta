@@ -27,14 +27,9 @@ class AddFeedback {
         $avatar = Input::get('cropped_image_nm');
         //fucking js integers
         if ($avatar == '0') {
-            echo "no cropped image name";
-            $avatar = $profile_img->auto_crop(Input::get('orig_image_dir'), Input::get('login_type'));
-        }  else {
-            echo "cropped image name";
-        }
+            $avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
+        }  
 
-        Helpers::show_data($avatar);
-        /*
         $contact_data = Array(
             'siteId'    => Input::get('site_id')
           , 'firstName' => Input::get('first_name')

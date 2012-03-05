@@ -23,7 +23,7 @@ class ProfileImage {
                     
     }
 
-    public function auto_crop($img_src, $img_src_location) {
+    public function auto_resize($img_src, $img_src_location) {
         $native_pic   = ($img_src_location == '36') ? True : False;
         $facebook_pic = ($img_src_location == 'fb') ? True : False;
         $linkedin_pic = ($img_src_location == 'ln') ? True : False;
