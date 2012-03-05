@@ -46,7 +46,16 @@ class ProfileImage {
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
+        
+        $maxwidth = 150;
+        $maxheight = 150;
 
+        //start image resizing..
+        $resizeObj = new Resize($src.$extension);
+        $resizeObj->resizeImage($maxwidth, $maxheight);
+        $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
+
+        /*
         switch($extension) {
             case '.jpg':
             case '.jpeg':
@@ -77,6 +86,7 @@ class ProfileImage {
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
         echo $this->date."-cropped.jpg"; 
+        */
     }
 
     public function crop($input_params) {
