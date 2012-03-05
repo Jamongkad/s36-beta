@@ -85,24 +85,6 @@ class AddFeedback {
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
         $dash->write_summary();
-
-        $orig_image_dir = Input::get('orig_image_dir');
-        if(Input::get('login_type') == "36") {
-            @unlink("/var/www/s36-upload-images".$orig_image_dir);      
-        }
-        //check if sample-avatar if not...delete original photo once done... 
-        /*
-
-        preg_match_all("~sample-avatar.png~", $orig_image_dir, $matches);  
-
-        if(Input::get('login_type') == "36") {
-            @unlink("/var/www/s36-upload-images".$orig_image_dir);      
-        }
-
-        if(!$matches[0] && Input::get('fb_flag') == 0) {
-            @unlink("/var/www/s36-upload-images".$orig_image_dir);     
-        } 
-        */
     }
 
 }
