@@ -405,10 +405,10 @@ var S36Form = new function() {
 		if(company == "Company Name"){
 			company  = "";
 		}
-		$('#review-name').html(fname +" "+lname);
+		$('#review-name').html(fname+" "+lname);
 		$('#review-position').html(position +" "+company);
 		$('#review-location').html(location+" "+flag);
-		$('#review-photo').attr('src',photo);
+		$('#review-photo').attr('src', photo);
 		$('#review-feedback').html(feedback); 
     };
 

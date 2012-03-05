@@ -220,7 +220,7 @@ PageCycle.prototype.cycle_prev = function() {
 				// assign all values to the review slide, argument: false if not from jcrop				
 				S36Form.assign_to_review(this.is_photo);
 				$('#crop_photo').click(function(){
-					that._cropper_page();
+					that._crop_photo();
 				});
 				
 				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){
@@ -349,7 +349,7 @@ PageCycle.prototype.cycle_prev = function() {
 ||  The Cropper Page beybeh
 ||---------------------------------------
 */
-PageCycle.prototype._cropper_page = function(){
+PageCycle.prototype._crop_photo = function(){
 	this._debug("Cropper Page");	
 	$('#steps').cycle(4);
 	if(init <= 0){

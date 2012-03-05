@@ -163,8 +163,7 @@
             <div id="step_3" class="s36_pages">
             	<h1>Attach your profile</h1>
                 <div class="step-contents">
-                	<p>Thank your for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
-                    <br />
+                	<p>Thank you for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <div class="s36_block s36_align_center">
                         <?=HTML::image('img/facebook-blank-avatar.jpg', 'fb', Array('style' => 'margin-bottom:10px;'))?><br/>
                         <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
