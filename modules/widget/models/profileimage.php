@@ -34,7 +34,7 @@ class ProfileImage {
         $ht = 80;
 
         if($native_pic) {
-            $src = '/var/www/s36-upload-images/uploaded_tmp'.$img_src;
+            $src = '/var/www/s36-upload-images/uploaded_tmp/'.$img_src;
         }
 
         if($facebook_pic || $linkedin_pic) {
@@ -46,7 +46,7 @@ class ProfileImage {
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
-        
+        /* 
         $maxwidth = 150;
         $maxheight = 150;
         //start image resizing..
@@ -69,11 +69,12 @@ class ProfileImage {
                 $img_r48 = false;
             break;
         }
-
-        $resizeObj = new Resize($img_r150);
+        
+        $resizeObj = new Resize($src);
         $resizeObj->resizeImage($maxwidth, $maxheight);
         $resizeObj->saveImage("/var/www/s36-upload-images/uploaded_tmp/".$this->date."-cropped.jpg"); 
-
+        */
+        print_r($src);
 
         /*
         switch($extension) {
