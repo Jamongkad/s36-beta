@@ -416,14 +416,15 @@ var S36Form = new function() {
         //starting setting some animation when the ajax starts and completes
         var loader = $('#loading');
          
-        loader.fadeIn();
         $.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json',
-            success: function (data, status) {	 
-               
+            beforeSend: function() {
+                loader.fadeIn(); 
+            },
+            success: function (data, status) {	  
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
@@ -432,12 +433,12 @@ var S36Form = new function() {
                     //wtf does this mean...why set the fb_flag to 2??
                     /*TODO: 
                       Ideally...
-                      $('#native_flag').val(1);
-                     
+                      $('#native_flag').val(1); 
+                      if($('#fb_flag').val() == 1) {
+                          $('#fb_flag').val(2);
+                      }
                     */
-                    if($('#fb_flag').val() == 1) {
-                        $('#fb_flag').val(2);
-                    }
+                    $('#native_flag').val(1);
                    
                 } else { 
                     loader.html(data.error);
@@ -494,7 +495,9 @@ var S36Form = new function() {
     this.save_crop_image = function() {
 		$('#crop_button').removeClass('highlight');
 		that.hide_error();
+        //TODO: try something like if FB flag pass some sort of variable to the server to determine origin
         var fb_login = $("#fb_flag").val();
+        var native_login = $("#native_flag").val();
 		var x_coords = $('#x').val();
 		var y_coords = $('#y').val();
 		var wd = $('#w').val();
@@ -505,8 +508,7 @@ var S36Form = new function() {
 		
 		status.html(' Cropping Photo...');
 
-        //TODO: it should be cleaner if we get login type instead of passing fb_login var.
-		
+        //TODO: it should be cleaner if we get login type instead of passing fb_login var.	
 		return $.ajax({
               url: $("#ajax-crop-url").attr('hrefaction'),
 			  method: 'GET',
@@ -537,17 +539,16 @@ var S36Form = new function() {
         var cropped_photo = $('#profile_picture').attr('src');		
         var oldphoto = $('#cropped_photo').val();
         return $.ajax({ 
-              url: $("#ajax-crop-url").attr('hrefaction'),
-              method: 'GET',
-              async: false,
-              data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login="+ln_login,
-              success: function(data){ 
-                    that.assign_to_review("/uploaded_cropped/150x150/"+data);
-                    $('#cropped_photo').val(data);
-                    $('#is_cropped').val(1);
-              }
+            url: $("#ajax-crop-url").attr('hrefaction'),
+            method: 'GET',
+            async: false,
+            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login="+ln_login,
+            success: function(data){ 
+                that.assign_to_review("/uploaded_cropped/150x150/"+data);
+                $('#cropped_photo').val(data);
+                $('#is_cropped').val(1);
+            }
         });
-
     };
     
     //used for data insertion
