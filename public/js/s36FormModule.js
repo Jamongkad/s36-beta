@@ -324,7 +324,7 @@ var S36Form = new function() {
         $('#fb_flag').val(1);
     };
 
-    this.load_linkedin_data = function() {
+    this.linkedin_connect_success = function() {
         IN.API.Profile("me")
         .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location","public-profile-url"])
         .result(function(result) {
@@ -363,6 +363,10 @@ var S36Form = new function() {
             $('#ln_flag').val(1);
         });    
     };
+
+    this.s36_connect_success = function() {
+        console.log("Mathew has connected to 36Stories");
+    }
 
     this.validate_form = function(form) {
         
