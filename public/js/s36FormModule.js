@@ -366,7 +366,7 @@ var S36Form = new function() {
 
     this.s36_connect_success = function() {
         console.log("Mathew has connected to 36Stories");
-    }
+    };
 
     this.validate_form = function(form) {
         
