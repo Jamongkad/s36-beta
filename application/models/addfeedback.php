@@ -41,7 +41,7 @@ class AddFeedback {
           , 'companyName' => Input::get('company')
           , 'website'   => Input::get('email')
           , 'avatar'    => $avatar
-          , 'loginType' => Input::get('login_type')
+          , 'loginType' => (Input::get('login_type')) ? Inpuget::get('login_type') : '36' //if bad feedback just regard as 36s login type
           , 'profileLink' => Input::get('profile_link')
           , 'ipaddress' => $userinfo->get_ip_long()
           , 'browser' => $userinfo->browser()->getBrowser()
