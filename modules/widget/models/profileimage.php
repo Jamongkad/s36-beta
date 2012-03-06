@@ -68,26 +68,27 @@ class ProfileImage {
     public function crop($input_params) {
 
         $this->input_params = $input_params;
-
+        /*
         $fb_login = property_exists($this->input_params, 'fb_login') ? $this->input_params->fb_login : null; 
         $ln_login = property_exists($this->input_params, 'ln_login') ? $this->input_params->ln_login : null;
+        */
+        $login_type = $this->input_params->login_type;
         $x  = $this->input_params->x_coords; 
         $y  = $this->input_params->y_coords;
         $wd = $this->input_params->wd; 
         $ht = $this->input_params->ht;
         $img_src = $this->input_params->src;
-        $ophoto  = property_exists($this->input_params, 'oldphoto') ? $this->input_params->oldphoto : null;
+        $ophoto  = $this->input_params->oldphoto;//property_exists($this->input_params, 'oldphoto') ? $this->input_params->oldphoto : null;
 
         $src = '/var/www/s36-upload-images'.$img_src;
-        /*
-        if($fb_login == 1 || $fb_login == 2) {
-            $src = fb_photo_check($fb_login, $img_src);     
-        }
-        */
+
         if($fb_login == 1 || $ln_login == 1) {
            $src = $img_src;     
         }
 
+        print_r($src);
+        
+        /*
         if($ophoto != 0){
             $this->remove_profile_photo($ophoto);
         }
@@ -128,6 +129,7 @@ class ProfileImage {
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
         echo $this->date."-cropped.jpg";
+        */
     }
 
     public static function upload() { 

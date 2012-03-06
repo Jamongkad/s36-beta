@@ -26,8 +26,10 @@ return array(
     },
     */
     'POST /widget/form/crop' => function() {
+        $img_upload = (object)Input::get();
         $profile_img = new Widget\ProfileImage();
-        Helpers::show_data(Input::get());    
+        Helpers::show_data($img_upload);      
+        $profile_img->crop($img_upload);     
     },
 
     'POST /widget/form/upload' => function() { 
