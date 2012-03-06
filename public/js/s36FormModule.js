@@ -527,7 +527,10 @@ var S36Form = new function() {
           , async: false
           , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, fb_login: fb_login}
           , success: function(data) {
-              console.log(data);
+                console.log(data);
+			    $('#steps').cycle(5);
+                // hide the crop btn						
+                that.hide_crop_buttons();
           }
         });
     };
