@@ -90,6 +90,7 @@
                     <h4>Tells us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h4>
                     <div id="s36_whattowrite">
                     	<h4><?=$form_question?></h4>
+                    <br />
                     </div>
                     <div class="feedback">
                         <textarea id="feedback_text" class="regular-textarea"></textarea>

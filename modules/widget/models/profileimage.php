@@ -24,17 +24,14 @@ class ProfileImage {
     }
 
     public function auto_resize($img_src, $img_src_location) {
-        $native_pic   = ($img_src_location == '36') ? True : False;
-        $facebook_pic = ($img_src_location == 'fb') ? True : False;
-        $linkedin_pic = ($img_src_location == 'ln') ? True : False;
         $src = Null;
         $file_name = Null;
 
-        if($native_pic) {
+        if($img_src_location == '36') {
             $file_name = '/var/www/s36-upload-images'.$img_src;
         }
 
-        if($facebook_pic || $linkedin_pic) {
+        if($img_src_location == 'fb' || $img_src_location == 'ln') {
 
             $src = $img_src;
             $url = get_all_redirects($src);
@@ -78,7 +75,7 @@ class ProfileImage {
 
         $src = null;
 
-        if($login_type == 'fb' || $login_type == 'ln') {
+        if($login_type == 'fb') {
             $src = $img_src;     
         }
 
