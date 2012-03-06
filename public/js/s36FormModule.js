@@ -310,10 +310,6 @@ var S36Form = new function() {
             $("#profile_link").val( $.trim(obj.link) );
         }
 
-        $('#ln_flag').val(0);
-        $('#fb_flag').val(1);
-        $('#native_flag').val(0);
-
 		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		that.change_jcrop_div(200);
 		that.change_images(photo, 'fb');
@@ -325,6 +321,47 @@ var S36Form = new function() {
 			$('#next').show();
 			$('#steps').cycle(3);
 		}
+        $('#fb_flag').val(1);
+    };
+
+    this.load_linkedin_data = function() {
+        IN.API.Profile("me")
+        .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location","public-profile-url"])
+        .result(function(result) {
+            var photo;
+            var profile  = result.values[0]; 
+            var position = profile.positions.values[0].title;
+            var company  = profile.positions.values[0].company.name;
+            var fname	   = profile.firstName;
+            var lname	   = profile.lastName;
+            var country  = profile.location.name;	 
+            var profile_link = profile.publicProfileUrl;
+
+            $('#your_city').val( $.trim(location[0]) );
+            $('#your_country option').each(function(){
+                if($.trim(location[1]) == $(this).text()){
+                    $(this).selected(true);
+                }
+            });
+
+            $('#your_fname').val( $.trim(fname) );
+            $('#your_lname').val( $.trim(lname) );
+            $('#your_company').val( $.trim(company) );	
+            $('#your_occupation').val( $.trim(position) );	
+            $("#profile_link").val( $.trim(profile_link) );
+            if(profile.pictureUrl != undefined){
+                photo = profile.pictureUrl;
+            }
+            that.change_jcrop_div(200);
+            that.change_images(photo, 'ln');
+
+            var fb_text = $.trim($('#feedback_text').val());
+            if(fb_text != ""){
+                $('#next').show();
+                $('#steps').cycle(3);
+            }
+            $('#ln_flag').val(1);
+        });    
     };
 
     this.validate_form = function(form) {
@@ -431,20 +468,7 @@ var S36Form = new function() {
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
-                    loader.fadeOut(function(){$(this).html("loading...")});
-                    
-                    //wtf does this mean...why set the fb_flag to 2??
-                    /*TODO: 
-                      Ideally...
-                      $('#native_flag').val(1); 
-                      if($('#fb_flag').val() == 1) {
-                          $('#fb_flag').val(2);
-                      }
-                    */		
-                    $('#ln_flag').val(0)
-                    $('#fb_flag').val(0);
-                    $('#native_flag').val(1);
-                   
+                    loader.fadeOut(function(){$(this).html("loading...")}); 
                 } else { 
                     loader.html(data.error);
                 }
@@ -455,50 +479,7 @@ var S36Form = new function() {
             }
         });
     };
-
-    this.load_linkedin_data = function() {
-        IN.API.Profile("me")
-        .fields(["id", "firstName", "lastName", "pictureUrl","headline","positions","location","public-profile-url"])
-        .result(function(result) {
-            var photo;
-            var profile  = result.values[0]; 
-            var position = profile.positions.values[0].title;
-            var company  = profile.positions.values[0].company.name;
-            var fname	   = profile.firstName;
-            var lname	   = profile.lastName;
-            var country  = profile.location.name;	 
-            var profile_link = profile.publicProfileUrl;
-
-            $('#your_city').val( $.trim(location[0]) );
-            $('#your_country option').each(function(){
-                if($.trim(location[1]) == $(this).text()){
-                    $(this).selected(true);
-                }
-            });
-
-            $('#your_fname').val( $.trim(fname) );
-            $('#your_lname').val( $.trim(lname) );
-            $('#your_company').val( $.trim(company) );	
-            $('#your_occupation').val( $.trim(position) );	
-            $("#profile_link").val( $.trim(profile_link) );
-
-            $('#ln_flag').val(1);
-            $('#fb_flag').val(0);
-            $('#native_flag').val(0);
-            if(profile.pictureUrl != undefined){
-                photo = profile.pictureUrl;
-            }
-            that.change_jcrop_div(200);
-            that.change_images(photo, 'ln');
-
-            var fb_text = $.trim($('#feedback_text').val());
-            if(fb_text != ""){
-                $('#next').show();
-                $('#steps').cycle(3);
-            }
-        });    
-    };
-    
+ 
     this.save_crop_image = function() {
 		$('#crop_button').removeClass('highlight');
 		that.hide_error();
@@ -533,37 +514,12 @@ var S36Form = new function() {
 			});
         
     };
-    
-    /* DEPRECATED
-    this.save_linkedin_image = function() {
-        
-        that.hide_error();
-
-        var ln_login = $("#ln_flag").val();
-        var x_coords = 0;
-        var y_coords = 0;
-        var wd = 80;
-        var ht = 80;
-        var cropped_photo = $('#profile_picture').attr('src');		
-        var oldphoto = $('#cropped_photo').val();
-        return $.ajax({ 
-            url: $("#ajax-crop-url").attr('hrefaction'),
-            method: 'GET',
-            async: false,
-            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&ln_login="+ln_login,
-            success: function(data){ 
-                that.assign_to_review("/uploaded_cropped/150x150/"+data);
-                $('#cropped_photo').val(data);
-                $('#is_cropped').val(1);
-            }
-        });
-    };
-    */
-    
+     
     //used for data insertion
     this.login_type = function() { 
         var ln = $("#ln_flag");
         var fb = $("#fb_flag");
+        var nt = $("#native_flag");
 
         if(ln.val() == 1) {
             return "ln";
@@ -572,8 +528,10 @@ var S36Form = new function() {
         if(fb.val() == 1) {
             return "fb";
         }
-
-        return "36";
+        
+        if(nt.val() == 1) {
+            return "36";     
+        } 
     };
 
     this.show_crop_buttons = function() {
@@ -628,7 +586,6 @@ var S36Form = new function() {
 		var perm = per.length > 0 ? per.val() : '';
 		
 		var form_data = {
-			//fb_flag:		$('#fb_flag').val(),
 			site_id:		$('#site_id').val(),
 			company_id: 	$('#company_id').val(),
 		   	rating: 		$('#rating').val(),
@@ -694,7 +651,6 @@ var S36Form = new function() {
                 that.save_edited_feedback();
             });
         }); 
-    };
-
+    }; 
 };
 // END OF 36stories Javascript

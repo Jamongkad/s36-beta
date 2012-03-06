@@ -177,7 +177,7 @@
                         <script type="IN/Login" data-onAuth="S36Form.load_linkedin_data">
 							Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
                         </script> 
-                        <span style=""> or <a href="javascript:;" id="create_wo_facebook">fill out your profile manually</a></span>
+                        <span style=""> or <a href="javascript:;" id="create_wo_facebook" onClick="alert('mathew')">fill out your profile manually</a></span>
                     </div>
                     <br />
                     <div class="s36_block gray">
