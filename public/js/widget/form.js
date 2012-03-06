@@ -59,15 +59,16 @@ jQuery(function($) {
     // added
     // assign crop script to crop btn
     $('#cropbtn').hide();
-    $('#cropbtn').click(function(){        
-        var crop_success = S36Form.save_crop_image();
+    $('#cropbtn').click(function(e){          
         /*
+        var crop_success = S36Form.save_crop_image();
         if ( crop_success.status == 200 ) {
             $steps.cycle(5);
             // hide the crop btn						
             S36Form.hide_crop_buttons();
         } 
         */
+        e.preventDefault();
     });
     //end added
     $('#edit-review-feedback').click(function(){S36Form.edit_feedback()});
