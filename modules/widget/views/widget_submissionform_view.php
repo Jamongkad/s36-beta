@@ -19,6 +19,16 @@
   <?endif?>
   authorize: true
 </script>
+<style type="text/css">
+#fb-false-connect{
+    background:url(/img/fb-connect-success.jpg) no-repeat;
+    width:165px;
+    height:22px;
+    cursor:pointer;
+    margin:0 auto;
+}
+</style>
+
 
 <body style="background:#000">
 <!-- facebook scripts -->
@@ -163,7 +173,9 @@
                 	<p>Thank you for granting us permission. <br />Now we need to attach your profile to your feedback.</p>
                     <div class="s36_block s36_align_center">
                         <?=HTML::image('img/facebook-blank-avatar.jpg', 'fb', Array('style' => 'margin-bottom:10px;'))?><br/>
-                        <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
+                        <div id="fb-connect-button">
+                            <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
+                        </div>
                         <br />
                         <br />
                         <style>

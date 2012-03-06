@@ -270,8 +270,8 @@ var S36Form = new function() {
                         $(this).selected(true);
                     }
                 });
-                console.log("location success!");
-                console.log(loc);
+                //console.log("location success!");
+                //console.log(loc);
 			}
 	
 		}
@@ -321,9 +321,15 @@ var S36Form = new function() {
 			$('#next').show();
 			$('#steps').cycle(3);
 		}
+
         $('#fb_flag').val(1);
         $('#native_flag').val(0);
         $('#ln_flag').val(0);
+        
+        $('#fb-connect-button').empty().html('<div id="fb-false-connect"></div>');
+        $('#fb-false-connect').click(function(){
+            $('#steps').cycle(3); $('#next').show();
+        }); 
     };
 
     this.linkedin_connect_success = function() {

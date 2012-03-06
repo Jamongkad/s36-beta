@@ -144,15 +144,17 @@ PageCycle.prototype.cycle_prev = function() {
 		
 		/*------------------------
 		|  Next button pressed
-		-------------------------*/
-		
+		-------------------------*/	
         this._debug("Page 2");
 		if(next){	
 			var permission = $('[name="your_permission"]:checked').size();
+            var fb_profile_check = $('#fb_flag').val();
 			if(permission <= 0){
 				S36Form.add_error('Please Select a Permission for your feedback');
 				return false;
-			}else{
+			} else if(fb_profile_check == 1) {
+                return 3; 
+            } else {
 				this.next_button.hide();
 				return 2;
 			}

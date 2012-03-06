@@ -122,8 +122,7 @@ class ProfileImage {
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
-        echo $this->date."-cropped.jpg";
-        
+        echo $this->date."-cropped.jpg";  
         //Garbage collect local upload
         if($login_type == '36') { @unlink($src); }
     }
@@ -211,15 +210,6 @@ class ProfileImage {
             @unlink($file48);	
         } 
     }
-}
-
-//helper functions will move to seperate file later on
-//WTF DOES THIS MEAN MATHEW!?!?!
-function fb_photo_check($fb_login, $photo_src) {    
-    if($fb_login == 1) return $photo_src;
-    if($fb_login == 2) return "/var/www/s36-beta/public/".$photo_src;
-    
-    return "/var/www/s36-beta/public/".$photo_src;
 }
 
 /**
