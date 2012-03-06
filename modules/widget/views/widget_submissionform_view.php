@@ -30,7 +30,6 @@
   FB.Event.subscribe('auth.login', function(response) {
 	FB.api('/me', function(user) {
 	   if(user != null) {
-		  console.log('fb connect');
 		  S36Form.fb_connect_success(user);
 	   }else{
 		  alert('error logging in to facebook');  

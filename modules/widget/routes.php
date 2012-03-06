@@ -26,6 +26,7 @@ return array(
     },
     */
     'POST /widget/form/crop' => function() {
+        $profile_img = new Widget\ProfileImage();
         Helpers::show_data(Input::get());    
     },
 

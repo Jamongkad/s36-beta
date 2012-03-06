@@ -164,9 +164,9 @@ var S36Form = new function() {
             file = "/" + img_nm;
         }
 
-        $('#profile_picture').attr('src',file);
-        $('#jcrop_target').attr('src',file);
-        $('#preview').attr('src',file);
+        $('#profile_picture').attr('src', file);
+        $('#jcrop_target').attr('src', file);
+        $('#preview').attr('src', file);
         $('#crop_photo').show(); 
     };
 
@@ -492,8 +492,6 @@ var S36Form = new function() {
 		$('#crop_button').removeClass('highlight');
 		that.hide_error();
         //TODO: try something like if FB flag pass some sort of variable to the server to determine origin
-        var fb_login = $("#fb_flag").val();
-        var native_login = $("#native_flag").val();
 		var x_coords = $('#x').val();
 		var y_coords = $('#y').val();
 		var wd = $('#w').val();
@@ -521,16 +519,16 @@ var S36Form = new function() {
             }
 		}); 
         */
-        return $.ajax({ 
+        $.ajax({ 
             url: $("#ajax-crop-url").attr('hrefaction')
-          , type: "POST"
-          , async: false
-          , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, fb_login: fb_login}
+          , type: "POST" 
+          , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: that.login_type()}
           , success: function(data) {
                 console.log(data);
+                /*
 			    $('#steps').cycle(5);
-                // hide the crop btn						
                 that.hide_crop_buttons();
+                */
           }
         });
     };

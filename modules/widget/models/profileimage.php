@@ -78,13 +78,14 @@ class ProfileImage {
         $img_src = $this->input_params->src;
         $ophoto  = property_exists($this->input_params, 'oldphoto') ? $this->input_params->oldphoto : null;
 
-        $src = '/var/www/s36-upload-images/'.$img_src;
+        $src = '/var/www/s36-upload-images'.$img_src;
+        /*
         if($fb_login == 1 || $fb_login == 2) {
             $src = fb_photo_check($fb_login, $img_src);     
         }
-
-        if($ln_login == 1) {
-            $src = $img_src;
+        */
+        if($fb_login == 1 || $ln_login == 1) {
+           $src = $img_src;     
         }
 
         if($ophoto != 0){
