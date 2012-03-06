@@ -85,7 +85,6 @@ class ProfileImage {
         if($fb_login == 1 || $ln_login == 1) {
            $src = $img_src;     
         }
-
         print_r($src);
         
         /*
