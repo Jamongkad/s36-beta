@@ -489,9 +489,8 @@ var S36Form = new function() {
     };
  
     this.save_crop_image = function() {
-		$('#crop_button').removeClass('highlight');
 		that.hide_error();
-        //TODO: try something like if FB flag pass some sort of variable to the server to determine origin
+		$('#crop_button').removeClass('highlight');
 		var x_coords = $('#x').val();
 		var y_coords = $('#y').val();
 		var wd = $('#w').val();
@@ -500,24 +499,7 @@ var S36Form = new function() {
 		var crop_status = $('#crop_status');
 		var oldphoto = $('#cropped_photo').val();	
 		crop_status.html(' Cropping Photo...');
-        //TODO: it should be cleaner if we get login type instead of passing fb_login var.	
-        /*
-		return $.ajax({
-            url: $("#ajax-crop-url").attr('hrefaction'),
-            type: 'GET',
-            async: false,
-            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
-            success: function(data){
-                status.fadeOut('fast',function(){
-                    status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
-                    status.fadeIn();
-                    that.assign_to_review("/uploaded_cropped/150x150/"+data);				
-                    $('#cropped_photo').val(data);
-                    $('#is_cropped').val(1);
-                });
-            }
-		}); 
-        */
+        
         $.ajax({ 
             url: $("#ajax-crop-url").attr('hrefaction')
           , type: "POST" 
@@ -527,10 +509,8 @@ var S36Form = new function() {
                 crop_status.fadeIn();
                 that.assign_to_review("/uploaded_cropped/150x150/"+data);				
                 $('#cropped_photo').val(data);
-                /*
 			    $('#steps').cycle(5);
                 that.hide_crop_buttons();
-                */
           }
         });
     };
