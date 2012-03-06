@@ -220,8 +220,9 @@ PageCycle.prototype.cycle_prev = function() {
 				// if form is validated..				
 				// assign all values to the review slide, argument: false if not from jcrop				
 				S36Form.assign_to_review(this.is_photo);
-				$('#crop_photo').click(function(){
+				$('#crop_photo').click(function(e){
 					that._crop_photo();
+                    e.preventDefault();
 				});
 				
 				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){

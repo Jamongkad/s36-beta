@@ -322,6 +322,8 @@ var S36Form = new function() {
 			$('#steps').cycle(3);
 		}
         $('#fb_flag').val(1);
+        $('#native_flag').val(0);
+        $('#ln_flag').val(0);
     };
 
     this.linkedin_connect_success = function() {
@@ -361,6 +363,8 @@ var S36Form = new function() {
                 $('#steps').cycle(3);
             }
             $('#ln_flag').val(1);
+            $('#native_flag').val(0);
+            $('#fb_flag').val(0);
         });    
     };
 
@@ -499,24 +503,33 @@ var S36Form = new function() {
 		var oldphoto = $('#cropped_photo').val();
 		
 		status.html(' Cropping Photo...');
-
         //TODO: it should be cleaner if we get login type instead of passing fb_login var.	
+        /*
 		return $.ajax({
-              url: $("#ajax-crop-url").attr('hrefaction'),
-			  method: 'GET',
-              async: false,
-			  data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
-			  success: function(data){
-				    status.fadeOut('fast',function(){
-						status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
-						status.fadeIn();
-						that.assign_to_review("/uploaded_cropped/150x150/"+data);				
-						$('#cropped_photo').val(data);
-                        $('#is_cropped').val(1);
-					});
-			  }
-			});
-        
+            url: $("#ajax-crop-url").attr('hrefaction'),
+            method: 'GET',
+            async: false,
+            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
+            success: function(data){
+                status.fadeOut('fast',function(){
+                    status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
+                    status.fadeIn();
+                    that.assign_to_review("/uploaded_cropped/150x150/"+data);				
+                    $('#cropped_photo').val(data);
+                    $('#is_cropped').val(1);
+                });
+            }
+		}); 
+        */
+        return $.ajax({ 
+            url: $("#ajax-crop-url").attr('hrefaction')
+          , method: "POST"
+          , async: false
+          , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, fb_login: fb_login}
+          , success: function(data) {
+              console.log(data);
+          }
+        });
     };
      
     //used for data insertion

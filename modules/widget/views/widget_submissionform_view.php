@@ -291,7 +291,7 @@
                             <h4 id="review-position"></h4>
                             <p  id="review-location"></p>
                             <p  id="review-date"></p>
-                            <p><a href="javascript:;" id="crop_photo">Crop Photo</a></p>
+                            <p><a href="#" id="crop_photo">Crop Photo</a></p>
                         </div>
                     </div>
                     <div class="review-change-photo"></div>

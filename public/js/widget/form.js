@@ -5,6 +5,7 @@
 jQuery(function($) {    
     // start the rating slider
     S36Form.start_slider();
+    S36Form.default_text();  
 
     //hide what to write, error message
     $('#s36_whattowrite').hide();
@@ -24,10 +25,6 @@ jQuery(function($) {
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
     */ 
-    // toggle class for each list items
-    $('#leave_fb'). click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
-    $('#browse_fb').click(function(){ $(this).parent().find('li').removeClass(); $(this).addClass('active'); });
-
     // initiate the cycle script for the #steps div
     var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: S36Form.assign_class });	
     
@@ -74,6 +71,4 @@ jQuery(function($) {
     $('#edit-review-feedback').click(function(){S36Form.edit_feedback()});
     $('#save-edited-feedback').hide();
     $('#save-edited-feedback').click(function(){S36Form.save_edited_feedback()});
-    
-    S36Form.default_text();  
 });
