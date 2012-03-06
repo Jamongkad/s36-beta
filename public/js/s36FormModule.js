@@ -521,7 +521,7 @@ var S36Form = new function() {
         $.ajax({ 
             url: $("#ajax-crop-url").attr('hrefaction')
           , type: "POST" 
-          , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: that.login_type()}
+          , data: {src: cropped_photo, x_coords: x_coords, y_coords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: that.login_type()}
           , success: function(data) {
                 console.log(data);
                 /*
