@@ -32,7 +32,11 @@ jQuery(function($) {
     var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: S36Form.assign_class });	
     
     // move to the manual form if the user doesn't want to connect to facebook:
-    $('#create_wo_facebook').click(function(){ $steps.cycle(3); $('#next').show(); });
+    $('#s36_create_profile').click(function(e) { 
+        $steps.cycle(3); $('#next').show(); 
+        S36Form.s36_connect_success;
+        e.preventDefault();
+    });
     
     // when clicking the next button
     $('#next').click(function(){
