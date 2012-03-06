@@ -523,7 +523,6 @@ var S36Form = new function() {
           , type: "POST" 
           , data: {src: cropped_photo, x_coords: x_coords, y_coords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: that.login_type()}
           , success: function(data) {
-                console.log(data);
                 crop_status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
                 crop_status.fadeIn();
                 that.assign_to_review("/uploaded_cropped/150x150/"+data);				
