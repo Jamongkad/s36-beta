@@ -124,8 +124,8 @@ class ProfileImage {
 
         echo $this->date."-cropped.jpg";
         
-
-        if($login_type == '36') {  @unlink($src); }
+        //Garbage collect local upload
+        if($login_type == '36') { @unlink($src); }
     }
 
     public static function upload() { 
