@@ -84,10 +84,8 @@ class ProfileImage {
 
         if($login_type == '36') {  
             $src = '/var/www/s36-upload-images'.$img_src;
-        }
-        print_r($src);
-        
-        /*
+        }        
+   
         if($ophoto != 0){
             $this->remove_profile_photo($ophoto);
         }
@@ -128,7 +126,7 @@ class ProfileImage {
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
         echo $this->date."-cropped.jpg";
-        */
+       
     }
 
     public static function upload() { 
