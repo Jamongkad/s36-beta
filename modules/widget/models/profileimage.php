@@ -77,12 +77,13 @@ class ProfileImage {
         $ophoto  = $this->input_params->oldphoto;
 
         $src = null;
+
         if($login_type == 'fb' || $login_type == 'ln') {
-           $src = $img_src;     
+            $src = $img_src;     
         }
 
         if($login_type == '36') {  
-           $src = '/var/www/s36-upload-images'.$img_src;
+            $src = '/var/www/s36-upload-images'.$img_src;
         }
         print_r($src);
         
