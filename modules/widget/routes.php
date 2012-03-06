@@ -25,7 +25,6 @@ return array(
         $profile_img->crop($img_upload);     
     },
     */
-
     'POST /widget/form/crop' => function() {
         Helpers::show_data(Input::get());    
     },

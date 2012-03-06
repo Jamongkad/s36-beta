@@ -68,7 +68,7 @@ jQuery(function($) {
             S36Form.hide_crop_buttons();
         } 
         */
-        console.log("Crop this photo");
+        S36Form.save_crop_image();
         e.preventDefault();
     });
     //end added
