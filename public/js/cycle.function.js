@@ -253,12 +253,13 @@ PageCycle.prototype.cycle_prev = function() {
 		-------------------------*/	
 		
 		else{
-			this.next_button.hide();
+
 			if((this.rating == "2") || (this.rating == "1")){
 				S36Form.show_complete_form(false);
 				return 0;
-			}else{
-				S36Form.show_complete_form(true);
+			}else{ 
+                this.next_button.hide();
+                S36Form.show_complete_form(true);
 				return 2;
 			}
 		}
