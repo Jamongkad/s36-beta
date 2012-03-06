@@ -507,7 +507,7 @@ var S36Form = new function() {
         /*
 		return $.ajax({
             url: $("#ajax-crop-url").attr('hrefaction'),
-            method: 'GET',
+            type: 'GET',
             async: false,
             data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
             success: function(data){
@@ -523,7 +523,7 @@ var S36Form = new function() {
         */
         return $.ajax({ 
             url: $("#ajax-crop-url").attr('hrefaction')
-          , method: "POST"
+          , type: "POST"
           , async: false
           , data: {src: cropped_photo, x_coords: x_coords, ycoords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, fb_login: fb_login}
           , success: function(data) {
