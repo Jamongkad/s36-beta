@@ -59,8 +59,6 @@
                     <br />
                     <div id="s36_trackbar">
                         <input type="hidden" id="cropped_photo" value="0"/ >
-                        <input type="hidden" id="is_cropped" value="0" />
-
                         <input type="hidden" id="fb_flag" value="0" />
                         <input type="hidden" id="ln_flag" value="0" />
                         <input type="hidden" id="native_flag" value="0" />

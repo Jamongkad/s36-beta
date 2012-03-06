@@ -6,7 +6,7 @@
 ||-----------------------------------------------
 */
 var init = 0;
-var debug = 1;
+var debug = 0;
 
 function PageCycle() {	
 	this.cur_step 		= $('#steps').find('.current').attr('id');
