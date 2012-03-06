@@ -497,10 +497,9 @@ var S36Form = new function() {
 		var wd = $('#w').val();
 		var ht = $('#h').val();
 		var cropped_photo = $('#preview').attr('src');
-		var status = $('#crop_status');
-		var oldphoto = $('#cropped_photo').val();
-		
-		status.html(' Cropping Photo...');
+		var crop_status = $('#crop_status');
+		var oldphoto = $('#cropped_photo').val();	
+		crop_status.html(' Cropping Photo...');
         //TODO: it should be cleaner if we get login type instead of passing fb_login var.	
         /*
 		return $.ajax({
