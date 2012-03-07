@@ -34,6 +34,7 @@
                         </tr>
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
+                            <?if($feedback_data->str_rating != "POOR"):?>
                                 "<?=$feedback_data->text?>"
                                 <br /><br /> 
                                 <?if($feedback_data->permission == "FULL PERMISSION"):?>
@@ -54,8 +55,7 @@
 
                                     </span>
                                 </div>
-
-
+                                <?endif?>
                                 <?endif?>
 
                                 <?if($feedback_data->permission == "PRIVATE"):?>
