@@ -25,11 +25,11 @@ class AddFeedback {
         }
         
         $avatar = Input::get('cropped_image_nm');
-        $position = null;
-        $city     = null;
-        $company  = null;
-        $website  = null;
-        $profilelink = null;
+        $position = 0;
+        $city     = 0;
+        $company  = 0;
+        $website  = 0;
+        $profilelink = 0;
         //fucking js integers
         if ($avatar == '0' and Input::get('rating') > 2) {
             $avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
