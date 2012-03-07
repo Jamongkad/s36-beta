@@ -1,6 +1,5 @@
 <script type="text/javascript">
-$(document).ready(function() {
-    
+$(function() { 
     $('.feedback-textarea').tinymce({
         script_url : '<?=URL::to('/')?>js/tiny_mce.js',
         mode : "textareas",
@@ -22,8 +21,8 @@ $(document).ready(function() {
             <div class="feedback-info">
                 <div class="feedback-text">
                     <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
-                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
-                                                                     'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text')))?>
+                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83,
+                                                                     'hrefaction' => URL::to('feedback/edit_feedback_text')))?>
                 </div>
                 
                 <div class="feedback-status">
@@ -48,7 +47,6 @@ $(document).ready(function() {
                             </span>
                         </div>
                         <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'edit feedback', Array('class' => 'edit'))?>
                              <?=HTML::link('/', 'save feedback', Array('class' => 'save'))?>
                         </div>
                     </div>

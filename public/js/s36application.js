@@ -448,27 +448,15 @@ jQuery(function($) {
         save_crop_image(); 
     });
 
-    $('a.save').hide();
-    $('a.edit').bind("click", function(e) {
-        var me = this;
+    $(document).delegate('a.save', 'click', function(e) { 
         var textarea = $('.feedback-textarea');
         var hrefaction = textarea.attr('hrefaction');
 
-        $(me).hide();
-        textarea.removeAttr('disabled');
-        
-        $('a.save').show().unbind('click.save').bind("click.save", function(e) { 
-            var feed_id = $('#feed-id').val();
-            $(this).hide();
-            $(me).show();
-            textarea.attr('disabled', 'disabled');
-            $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
-            });
-            e.preventDefault();
+        var feed_id = $('#feed-id').val();
+        $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
+            var myStatus = new Status();
+            myStatus.notify("Processing...", 1000);
         });
- 
         e.preventDefault();
     });
 
