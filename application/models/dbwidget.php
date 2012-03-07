@@ -208,7 +208,7 @@ class DBWidget extends S36DataObject {
         $pagination = new ZebraPagination;  
         $pagination->method('url');
         $pagination->base_url('/feedsetup/ajax_overview/'.$type);
-        $pagination->selectable_pages(5);
+        $pagination->selectable_pages(3);
 
         $offset = ($pagination->get_page() - 1) * $limit;
 
