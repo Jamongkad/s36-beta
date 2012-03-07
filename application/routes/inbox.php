@@ -14,7 +14,7 @@ return array(
         $feedback = new DBFeedback;
         $category = new DBCategory;
         $pagination = new ZebraPagination; 
-        $pagination->selectable_pages(5);
+        $pagination->selectable_pages(3);
 
         $admin_check = S36Auth::user();
 
