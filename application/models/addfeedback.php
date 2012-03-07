@@ -31,6 +31,7 @@ class AddFeedback {
         $website  = "";
         $profilelink = "";
         //fucking js integers
+        //TODO: this could be better...if Feedback is not bad then fill out these fields for data insertion.
         if ($avatar == '0' and Input::get('rating') > 2) {
             $avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
             $position = Input::get('position');
@@ -46,7 +47,7 @@ class AddFeedback {
           , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
           , 'countryId' => $countryId
-          , 'avatar'      => $avatar
+          , 'avatar'    => $avatar
           , 'position'  => $position
           , 'city'      => $city
           , 'companyName' => $company
@@ -63,8 +64,8 @@ class AddFeedback {
         $text = Input::get('feedback');
         
         $category = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
-                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
- 
+                                         ->where('intName', '=', 'default')->first(Array('categoryId')); 
+
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
