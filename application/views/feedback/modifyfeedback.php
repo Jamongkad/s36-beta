@@ -1,9 +1,12 @@
 <script type="text/javascript">
+$(document).ready(function() {
+    
     $('.feedback-textarea').tinymce({
         script_url : '<?=URL::to('/')?>js/tiny_mce.js',
         mode : "textareas",
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
+})
 </script>
 <? $id = $feedback->id ?>
 <div class="block noborder">
@@ -18,11 +21,9 @@
             </div>
             <div class="feedback-info">
                 <div class="feedback-text">
-
-                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?>
+                    <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
                     <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83, 
-                                                                      'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text'))
-                     )?>
+                                                                     'disabled', 'hrefaction' => URL::to('feedback/edit_feedback_text')))?>
                 </div>
                 
                 <div class="feedback-status">

@@ -476,6 +476,7 @@ ul.category-box{
     overflow:hidden;
 }
 .feedback-info textarea{padding:10px;display:block;width:90%;margin:0 auto;overflow:hidden;border:none;font-family:Arial, Helvetica, sans-serif;}
+.feedback-textarea {width:420px !important; margin:0 auto}
 .feedback-info .feedback-text{padding:10px;color:#777777;}
 .feedback-info .feedback-status{padding:2px 10px;background:#edeede;font-size:11px;border-bottom:1px solid #ffffff;}
 .feedback-info .feedback-status span{color:#b6b096;padding-left:10px;}

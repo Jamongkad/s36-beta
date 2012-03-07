@@ -6,11 +6,10 @@
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
-        <?=HTML::script('js/jquery-1.7.1.min.js')?>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <!--
-
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
+        <?=HTML::script('js/jquery-1.7.1.min.js')?>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
         <script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js'></script>
         -->
@@ -31,6 +30,7 @@
         <?=HTML::script('js/jquery.flot.pie.js')?>
         <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
+        <?=HTML::script('js/jquery.pjax.js')?>
 
         <?=HTML::script('js/ZClip.js')?> 
         <?=HTML::script('js/Checky.js')?> 
@@ -41,7 +41,7 @@
         <?=HTML::script('js/Status.js')?>
 
         <?=HTML::script('js/s36application.js')?>
-        <?=HTML::script('js/jquery.pjax.js')?>
+
     </meta>    
 </head>
 <body>

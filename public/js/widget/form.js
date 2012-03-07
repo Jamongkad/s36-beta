@@ -18,13 +18,6 @@ jQuery(function($) {
     $('#feedback_permission').hide();
     $('#prev').hide();
     $('.error-message').hide();    
-    /*
-    $('#feedback_text').tinymce({
-        script_url : '<?=URL::to('/')?>js/tiny_mce.js',
-        mode : "textareas",
-        theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
-    });
-    */ 
     // initiate the cycle script for the #steps div
     var $steps = $('#steps').cycle({  fx: 'fade', speed: 100, timeout: 0, before: S36Form.assign_class });	
     
