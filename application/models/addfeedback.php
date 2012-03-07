@@ -14,20 +14,30 @@ class AddFeedback {
     
         //fuck naive assumption...
         $countryId = 895;
-        if($country_input = Input::get('country')) {
+        if ($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
         }
         
-        if(Input::get('response_flag') == 1) {
+        if (Input::get('response_flag') == 1) {
             $mt->company_id = Input::get('company_id');
             $mt->increment_response();
         }
         
         $avatar = Input::get('cropped_image_nm');
+        $position = null;
+        $city     = null;
+        $company  = null;
+        $website  = null;
+        $profilelink = null;
         //fucking js integers
         if ($avatar == '0' and Input::get('rating') > 2) {
             $avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
+            $position = Input::get('position');
+            $city    = Input::get('city');
+            $company = Input::get('company');
+            $website = Input::get('website');
+            $profilelink = Input::get('profile_link');
         }  
 
         $contact_data = Array(
@@ -36,14 +46,14 @@ class AddFeedback {
           , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
           , 'countryId' => $countryId
-          , 'position'  => Input::get('position')
-          , 'city'      => Input::get('city')
-          , 'companyName' => Input::get('company')
-          , 'website'   => Input::get('email')
-          , 'avatar'    => $avatar
-          , 'loginType' => (Input::get('login_type')) ? Input::get('login_type') : '36' //if bad feedback just regard as 36s login type
-          , 'profileLink' => Input::get('profile_link')
-          , 'ipaddress' => $userinfo->get_ip_long()
+          , 'avatar'      => $avatar
+          , 'position'  => $position
+          , 'city'      => $city
+          , 'companyName' => $company
+          , 'website'     => $website
+          , 'profileLink' => $profilelink
+          , 'loginType'   => (Input::get('login_type')) ? Input::get('login_type') : '36' //if bad feedback just regard as 36s login type
+          , 'ipaddress'   => $userinfo->get_ip_long()
           , 'browser' => $userinfo->browser()->getBrowser()
         );
 
@@ -86,5 +96,4 @@ class AddFeedback {
         $dash->company_id = Input::get('company_id');
         $dash->write_summary();
     }
-
 }
