@@ -16,7 +16,7 @@ function WidgetLoader() {
                       '<div id="s36PopupWidgetShadow">'+
                       '<div id="s36PopupWidgetBox">'+
                       '<div id="s36PopupWidgetSendFeedback" onclick="s36_openForm(\'<?=$widget_child_loader_url?>\')">Send Feedback</div><div id="s36_closebtn" onclick="s36_closePopupWidget()"></div>'+
-                      '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>" frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="<?=$widget_loader_url?>"></iframe></div></div>';
+                      '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" frameborder="0" scrolling="no" style="width:100%;border:none;overflow:visible;" src="<?=$widget_loader_url?>"></iframe></div></div>';
         <?endif?>
         return src;    
     },
