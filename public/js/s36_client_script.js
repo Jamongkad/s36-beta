@@ -2,19 +2,17 @@
 /*  this function will create necessary lightboxes for the popup
 ****************************************************************/
 function createLightboxes(){
-	
-	// Create the s36 modal box
-	var s36_modalbox = document.createElement("div");
-		s36_modalbox.id = "s36_modalbox";        
-		s36_modalbox.className = "s36_modalbox";
-		document.body.appendChild(s36_modalbox);
 		
 	// Create the s36 modal shadow	
 	var s36_modalboxshadow = document.createElement("div");
 		s36_modalboxshadow.id = "s36_modalshadow";        
-		//s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");
 		s36_modalboxshadow.className = "s36_modalshadow";
 		document.body.appendChild(s36_modalboxshadow);
+	// Create the s36 modal box
+	var s36_modalbox = document.createElement("div");
+		s36_modalbox.id = "s36_modalbox";        
+		s36_modalbox.className = "s36_modalbox";
+		s36_modalboxshadow.appendChild(s36_modalbox);
 }
 
 /****************************************************************
@@ -62,6 +60,21 @@ function s36_openLightbox(width,height,src) {
 /****************************************************************
 /*	function that will open the form in a modal window
 ****************************************************************/
+// NEW!!!!!!!! ADDED 03-08-12
+function s36_open_popup_widget(){
+	var s36_popupmodalbox 	= document.getElementById('s36PopupWidgetBox');
+	var s36_popupmodalshadow = document.getElementById('s36PopupWidgetShadow');
+	s36_popupmodalbox.style.display = 'block';
+	s36_popupmodalshadow.style.display 	= 'block';	
+}
+// NEW!!!!!!!! ADDED 03-08-12
+function s36_closePopupWidget(){	
+	var s36_popupmodalbox 	= document.getElementById('s36PopupWidgetBox');
+	var s36_popupmodalshadow = document.getElementById('s36PopupWidgetShadow');
+	s36_popupmodalbox.style.display = 'none';
+	s36_popupmodalshadow.style.display 	= 'none';		
+}
+
 function s36_openForm(form_url) {
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');

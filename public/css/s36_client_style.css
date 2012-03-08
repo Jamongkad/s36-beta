@@ -8,18 +8,10 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color:#000;
+	background:url(/img/faded-bg.png) repeat;
 	z-index: 100001;
-	filter:alpha(opacity=75);
-	-moz-opacity: 0.75;
-	opacity: 0.80;
 }
 
-* html #s36_modalshadow { /* ie6 hack */
-     position: absolute;
-     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
-}
- 
 #s36_modalbox {
 	position: absolute;
 	display: none;
@@ -30,6 +22,42 @@
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;	
+}
+
+#s36PopupWidgetShadow {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:url(/img/faded-bg.png) repeat;
+	z-index: 99998;
+}
+
+#s36PopupWidgetBox{
+	position: absolute;
+	display: none;
+	top: 100px;
+	left: 50%;
+	background-color: white;
+	z-index:99999;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;	
+	width:760px;
+	height:500px;
+	margin-left:-380px;
+}
+
+#s36PopupWidgetSendFeedback{
+	position:absolute;
+	left:520px;
+	top:22px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
 }
 
 #s36_closebtn{
@@ -54,6 +82,7 @@
 	background:url(/img/s36-btn-lr.png) bottom center;
 	cursor:pointer;
 }
+
 #s36_widget_button:hover{background-position:top;}
 .s36_embed_block_x{font-family:Arial, Helvetica, sans-serif;font-weight:bold;color:#333;position:absolute;top:15px;right:170px;z-index:10000}
 .s36_embed_block_y{font-family:Arial, Helvetica, sans-serif;font-weight:bold;color:#333;position:absolute;bottom:58px;left:5px;z-index:10000}
