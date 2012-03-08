@@ -41,6 +41,9 @@ abstract class WidgetTypes {
     public function get_width() { 
         return $this->width;      
     }
+    public function my_name() {
+        return get_class($this);
+    }
 }
 
 class DisplayWidgets extends WidgetTypes { 

@@ -129,6 +129,7 @@ class ClientRender {
               , 'height' => $obj->get_height()
               , 'width' => $obj->get_width()
               , 'embed_block_type' => $obj->get_embed_block_type()
+              , 'class_name' => $obj->my_name()
             );
 
             return View::make('widget::widget_js_output_display', $data)->get(); 
