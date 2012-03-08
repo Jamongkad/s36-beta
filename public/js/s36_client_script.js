@@ -112,7 +112,9 @@ function s36_closeLightbox(){
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
 	
-	while (s36_modalbox.hasChildNodes()) s36_modalbox.removeChild(s36_modalbox.firstChild);
+	while (s36_modalbox.hasChildNodes()) {
+        s36_modalbox.removeChild(s36_modalbox.firstChild); 
+    }
 	
 	s36_modalbox.style.display 		= 'none';
 	s36_modalshadow.style.display 	= 'none';		
