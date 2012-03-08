@@ -25,6 +25,10 @@ return array(
         ));
     }),
 
+    'GET /feedsetup/widget_selection' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) { 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_widget_selection');
+    }),
+
     'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) use ($dbw) { 
  
         $widgy = $dbw->fetch_paginated_widgets($type);
