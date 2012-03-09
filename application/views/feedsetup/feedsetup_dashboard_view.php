@@ -36,7 +36,6 @@
                 <?=HTML::link('feedsetup/overview/submit', 'Submission Forms', Array('class' => 'widget-overview-btn'))?> 
                 <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors)</small>
             </h2>
-            <a href="#" class="widget-create">Create Submission Form</a>
             <?//=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
 
             <?if($widgets->form_widgets->widget->widgets != null):?>
