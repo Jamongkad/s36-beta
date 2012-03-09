@@ -28,7 +28,7 @@
                 border-radius:5px;padding:4px 12px;color:#748e9e;font-weight:bold;}
 </style>
 <div class="block">
-    <div id="widget-setup-block">
+    <div>
         <div class="widget-options" style="position:relative;">
             <strong style="color:#000">PLEASE SELECT A WIDGET</strong>
               <br /><br /> 
