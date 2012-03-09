@@ -1,5 +1,6 @@
 <?if($feedback->result != null):?>
 <div class="the-feedbacks"> 
+
         <?foreach($feedback->result as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
