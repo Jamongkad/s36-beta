@@ -30,12 +30,11 @@ class FeedbackDisplay {
         ));
 
         $data = Array();
-        foreach($this->grouped_dates as $dates) {
-            
-            $header = $data[$dates->date_format] = Array();
+        foreach($this->grouped_dates as $dates) { 
+            $data[$dates->date_format] = Array();
             foreach($this->feedback->result as $feed) {
                 if(strtotime($feed->date) == $dates->unix_timestamp) {
-                    $header[] = $feed;    
+                    $data[$dates->date_format][] = $feed;    
                 }
                 
             }
