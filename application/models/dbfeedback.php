@@ -361,7 +361,36 @@ class DBFeedback extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
-    
+
+    public function pull_feedback_grouped_by_date() {
+        $sql = "
+            SELECT   
+                DATE_FORMAT(dtAdded, GET_FORMAT(DATE,'USA')) AS date_format 
+              , dtAdded
+              , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
+            FROM 
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                    ON Company.companyId = Site.companyId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+            GROUP BY 
+                date_format 
+            ORDER BY 
+                dtAdded DESC
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+ 
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
         //release indLock for block display

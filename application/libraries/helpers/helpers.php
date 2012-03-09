@@ -93,11 +93,17 @@ class Helpers {
         }
 
     }
-
+    
+    //retained for legacy shit
     public static function show_data($data) {
         echo "<pre>";
         print_r($data);
         echo "</pre>";
+    }
+    
+    //wrapper
+    public static function dump($data) {
+        return self::show_data($data);
     }
 
 

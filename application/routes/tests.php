@@ -216,11 +216,6 @@ return array(
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new WidgetLoader($widget_id); 
         Helpers::show_data($wl);
-        /* 
-        $obj = $wl->load();
-        $js = new ClientRender($obj);
-        return $js->js_output();
-        */
     },
 
     'GET /tests/pull_feedback' => function() {        
@@ -234,5 +229,10 @@ return array(
         $feedback = new DBFeedback;       
         $data = $feedback->pull_feedback_by_company($params);
         Helpers::show_data($data);
+    },
+
+    'GET /tests/display_feedback_by_date' => function() {
+        $data = new FeedbackDisplay;
+        Helpers::dump($data->display_feedback());
     }
 );
