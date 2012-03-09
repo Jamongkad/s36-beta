@@ -1,10 +1,8 @@
 <?if($feedback->result != null):?>
-<?$cur_date = null;?>
 <div class="the-feedbacks"> 
         <?foreach($feedback->result as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
-
             <div class="feedback" id="<?=$id?>">
                 <div class="left">      
                     <input type="checkbox" name="id" value="<?=$id//.(($feed->rating == "POOR") ? "-poor" : null)?>" class="check-feed-id"/>
@@ -23,13 +21,6 @@
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>
                         </div>
-
-                        <?
-                         $unix = strtotime($feed->date);
-                         if($cur_date != $unix):?>   
-                            <p>Feedback given on <?=date('D', $unix)?></p> 
-                            <?$cur_date = $unix;?>
-                        <?endif?>
 
                         <div class="feedback-details">
                             <?
