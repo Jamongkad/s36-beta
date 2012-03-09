@@ -6,7 +6,7 @@
                 <?=HTML::link('feedsetup/overview/display', 'Display Widgets', Array('class' => 'widget-overview-btn'))?> 
                 <small style="font-weight:normal;">(for displaying feedback on your websites)</small>
             </h2>
-            <?=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>   
+            <?//=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>   
 
             <?if($widgets->display_widgets->widget->widgets != null):?>
                 <span id="display-overview-target">
@@ -37,7 +37,7 @@
                 <small style="font-weight:normal;"> (for accepting feedback from your customers/visitors)</small>
             </h2>
             <a href="#" class="widget-create">Create Submission Form</a>
-            <?=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
+            <?//=HTML::link('feedsetup/submission_widgets', 'Create Submission Form', array('class' => 'widget-create'))?>
 
             <?if($widgets->form_widgets->widget->widgets != null):?>
                 <span id="form-overview-target">

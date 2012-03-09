@@ -306,19 +306,19 @@ jQuery(function($) {
         e.preventDefault();
     })
     
-    $(".large-text").focus(function(i){          		 
+    $(".large-text, .regular-text").focus(function(i){          		 
         if ($(this).val() == $(this)[0].title){
             $(this).removeClass("reg-text-active");
             $(this).val("");
         }
     });
 
-    $(".large-text").blur(function(){
+    $(".large-text, .regular-text").blur(function(){
         if ($.trim($(this).val()) == ""){
             $(this).val($(this)[0].title);
         }
     });
-    $(".large-textarea, .form-text, .large-text").each(function() {
+    $(".large-textarea, .regular-textarea, .form-text, .large-text").each(function() {
         $(this).val($(this)[0].title);
     });
 

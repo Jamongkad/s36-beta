@@ -34,18 +34,34 @@
                     <?
                         $feedsetup_nav = Array();
                         if(   $display = preg_match('~feedsetup/overview/(display|submit)~', Request::uri(), $matches)
-                           or $edit_widget = preg_match('~feedsetup/edit/([0-9]+)/(display|submit)~', Request::uri(), $matches) ) {
+                           or $edit_widget = preg_match('~feedsetup/edit/([0-9]+)/(display|submit)~', Request::uri(), $matches) 
+                           or $create_display_widget = preg_match('~feedsetup/display_widgets/(embed|modal)~', Request::uri(), $matches) 
+                           or $create_form_widget = preg_match('~feedsetup/submission_widgets~', Request::uri(), $matches)
+                           ) {
 
-                            if(isset($display)) {
-                                $dynamic_nav = Array(Request::uri() => 'WIDGET OVERVIEW');
+                            $dynamic_nav = Array();
+
+                            if (isset($display) and $display == true) {
+                                $dynamic_nav = Array(
+                                    Request::uri() => 'WIDGET OVERVIEW'
+                                  , 'feedsetup/widget_selection'  => 'WIDGET CREATION'
+                                );
                             }
                             
-                            if(isset($edit_widget)) {
+                            if (isset($edit_widget) and $edit_widget == true) {
                                 $dynamic_nav = Array(
                                       'feedsetup/overview/'.$matches[2] => 'WIDGET OVERVIEW'
                                     , Request::uri() => 'EDIT '.strtoupper($matches[2]).' WIDGET'
                                 );
                             }
+                            
+                            if ((isset($create_display_widget) and $create_display_widget == true) || (isset($create_form_widget) and $create_form_widget == true)) {
+                                $dynamic_nav = Array(
+                                      'feedsetup/widget_selection'  => 'WIDGET SELECTION'
+                                    , $matches[0] => 'CREATE WIDGET'
+                                );
+                            }
+                            
 
                             $feedsetup_nav = Array( 
                                  'feedsetup/all'  => 'WIDGET DASHBOARD' 
@@ -54,11 +70,14 @@
                             $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
 
                         } else {
-                            
+                            //Default Nav 
                             $feedsetup_nav = Array(
                                  'feedsetup/all'  => 'WIDGET DASHBOARD'
+                               , 'feedsetup/widget_selection' => 'WIDGET CREATION'
+                               /*
                                , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
                                , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
+                               */
                             );
                         }
                     ?>

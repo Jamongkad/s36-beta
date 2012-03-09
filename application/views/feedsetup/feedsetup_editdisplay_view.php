@@ -5,96 +5,98 @@
 <?=Form::hidden('submit_widgetkey', $widget->children[0]->widgetkey)?>
 <?=Form::hidden('theme_type', 'form-'.$widget->theme_type, Array('id' => 'selected-form'))?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
+
 <div class="block">
-    <div id="widget-setup-block"> 
-        <div class="widget-options">
-            <h2>Your Widget name</h2>
-            <div class="widget-types">
-                    <table width="100%" cellpadding="5" cellspacing="0">
-                        <tr>
-                            <td width="120">
-                                <strong style="font-size:14px;">Widget Name :</strong>
-                            </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong style="font-size:14px;">Flavor Text :</strong>
-                            </td>
-                            <td><input type="text" class="large-text" name="form_text" value="<?=$widget->form_text?>" title="<?=$widget->form_text?>" /></td>
-                        </tr>
-                    </table>
-            </div>
-        </div>
+    <div>
+        <div class="widget-options" style="position:relative;">
+            <div class="the-selected-widget-box">
+                <?if($widget->embed_type == 'embedded'):?>
+                    <strong>Embedded display</strong> 
+                <?endif;?>
 
-        <div class="widget-options">
-            <h2><span>Step 2 :</span> Optional - Customize your form if you wish </h2>
-            <div class="widget-types">
-            <table width="100%" cellpadding="5" cellspacing="0">
-                <tbody><tr>
-                    <td width="140">
-                        <strong style="font-size:14px;">Form Header Text :</strong>
-                    </td>
-                    <td><input type="text" class="form-text" name="submit_form_text" value="<?=$widget->children[0]->submit_form_text?>" title="<?=$widget->children[0]->submit_form_text?>" /></td>
-                    <td rowspan="2" width="150" align="center" valign="top">
-                        <br /><br />
-                        <big>See how your form will <br /> appear to your visitors.</big>
-                        <br /><br />
-                        <a href="#" class="preview-form-widget-button button-gray">Preview</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong style="font-size:14px;">What to write?</strong>
-                        <br />
-                        <small style="line-height:normal">
-                        Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
-                        <br/>
-                        <br/>
-                    </td>
-                    <td valign="top">
-                        <textarea name="submit_form_question" class="large-textarea" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
-                        title="<?=$widget->children[0]->submit_form_question?>">
-<?=$widget->children[0]->submit_form_question?>
-                        </textarea>
-                    </td>
-                </tr> 
+                <?if($widget->embed_type == 'modal'):?>
+                    <strong>Modal Popup display</strong> 
+                <?endif;?>
+                <!--(<small style="text-decoration:underline;"><?=HTML::link('feedsetup/widget_selection', 'change')?></small>)-->
+                <br /><br />
+                <div class="the-selected-widget-img">
+                    <?if($widget->embed_type == 'embedded'):?> 
+                        <?=HTML::image('img/embed-widget-preview.jpg')?>
+                    <?endif;?>
 
-                <tr> 
-                    <td><strong style="font-size:14px;">Website: </strong>
+                    <?if($widget->embed_type == 'modal'):?> 
+                        <?=HTML::image('img/popup-widget-preview.jpg')?>
+                    <?endif;?>
                     
-                        <br />
-                        <small style="line-height:normal">
-                            Choose which website to apply your widget.
-                        </small>
-                    </td>
-                    <td align="top"> 
-                        <div style="margin-left:-5px">
-                            <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
-                                <?foreach($site as $sites):?>
-                                    <option value="<?=$sites->siteid?>" <?=($widget->site_id == $sites->siteid) ? 'selected' : null?>>
-                                        <?=$sites->domain?>
-                                    </option>
-                                <?endforeach?>
-                            </select>
-                            <div id="site_id" class="error-msg"></div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody></table>
-            </div>
-        </div>
+                </div>
+            </div>        
 
-        <div class="widget-options">
-            <h2>Your chosen Widget type</h2>
+            <br />
             <div class="widget-types">
-                <h3>
+                <strong style="padding-left:3px;color:#000;">CUSTOMIZE YOUR POPUP DISPLAYS</strong>
+                <br /><br />
+                <table>
+                    <tr><td width="110"><strong style="font-size:11px;">Name and save as..</strong></td>
+                        <td width="200">
+                            <input type="text" class="regular-text" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" name="theme_name"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <br />
+            <div class="widget-types">
+                <strong style="color:#447697;padding-left:3px;">Feedback Display Options</strong>
+                <br /><br />
+                <table>
+                    <tr><td width="110"><strong style="font-size:11px;">Your header text</strong></td>
+                        <td width="200">
+                         <input type="text" class="regular-text" name="form_text" style="padding:8px;" value="<?=$widget->form_text?>" title="<?=$widget->form_text?>" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <br />
+            <div class="widget-types">
+                <strong style="padding-left:3px;color:#000;">Feedback detail display options</strong>
+                <br /><br />
+                <div class="widget-opts" id="display-info-target">
+                    <table width="100%" cellpadding="4" class="display-info">
+                        <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, (($widget->perms['displayname']) ? 1 : null) )?>
+                            </td>
+                            <td width="140" class="feedback-td-font">Website Url : </td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, (($widget->perms['displayurl']) ? 1 : null) )?>
+                            </td></tr>
+                            <tr><td class="feedback-td-font">Display Image :  </td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, (($widget->perms['displayimg']) ? 1 : null) )?>
+                            </td>		
+                            <td class="feedback-td-font">Country & Flag : </td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, (($widget->perms['displaycountry']) ? 1 : null) )?>
+                            </td></tr>
+                            <tr><td class="feedback-td-font">Company Name :</td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, (($widget->perms['displaycompany']) ? 1 : null) )?>
+                            </td>			
+                            <td class="feedback-td-font">Submitted Date : </td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, (($widget->perms['displaysbmtdate']) ? 1 : null) )?>
+                            </td></tr>
+                            <tr><td class="feedback-td-font">Designation / Position :</td><td>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, (($widget->perms['displayposition']) ? 1 : null) )?>
+                        </td><td></td><td></td></tr>
+                    </table>
+                    <div id="widget_options" class="error-msg"></div>
+                </div>
+            </div>
+
+            <br/> 
+            <div class="widget-types">
+
+                <p style="padding-left:3px;color:#000;">
                     <input type="radio" name="embed_type" id="embed_type" value="embedded" 
-                        <?=($widget->embed_type == 'embedded') ? 'checked' : null?>
-                    /> 
-                    <label for="embed_type">Embedded Block</label>
-                </h3>
+                     <?=($widget->embed_type == 'embedded') ? "checked" : null?>
+                    /> <label for="embed_type">Embedded Block</label>
+                </p>
                 <div class="widget-opts" id="embed_widget">
                     <table width="100%">
                         <tr><td width="170" class="feedback-td-font">Choose Block Type</td>
@@ -134,19 +136,16 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-            <div class="widget-types">
-                <h3>
-                    <input type="radio" name="embed_type" id="modal_type" value="modal" 
-                        <?=($widget->embed_type == 'modal') ? 'checked' : null?>
-                    /> 
-                    <label for="modal_type">Modal / Popup</label>
-                </h3>
 
+                <p style="padding-left:3px;color:#000">
+                    <input type="radio" name="embed_type" id="modal_type" value="modal" 
+                     <?=($widget->embed_type == 'modal') ? "checked" : null?>
+                    /> <label for="modal_type">Modal / Popup</label>
+                </p>
                 <div class="widget-opts" id="modal_widget">
                     <table width="100%">
                         <tr><td width="170" class="feedback-td-font">Transition :</td>
-                            <td>
+                            <td> 
                                 <select name="modal_effects" class="regular-select">       
                                     <?foreach($effects_options as $rows):?>        
                                         <option value="<?=$rows->effectsid?>" 
@@ -164,107 +163,135 @@
                     </table>
                 </div>
             </div>
-            <div id="embed_type" class="error-msg"></div>
-        </div>
-        <div class="widget-options">
-            <h2>Widget Display Options</h2>
-            <div class="widget-opts" id="display-info-target">
-                <table width="100%" cellpadding="4" class="display-info"> 
-                    <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, (($widget->perms['displayname']) ? 1 : null) )?>
-                    </td>
-                    <td width="140" class="feedback-td-font">Website Url : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, (($widget->perms['displayurl']) ? 1 : null) )?>
-                    </td></tr>
-                    <tr><td class="feedback-td-font">Display Image :  </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, (($widget->perms['displayimg']) ? 1 : null) )?>
-                    </td>		
-                    <td class="feedback-td-font">Country & Flag : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, (($widget->perms['displaycountry']) ? 1 : null) )?>
-                    </td></tr>
-                    <tr><td class="feedback-td-font">Company Name :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, (($widget->perms['displaycompany']) ? 1 : null) )?>
-                    </td>			
-                    <td class="feedback-td-font">Submitted Date : </td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, (($widget->perms['displaysbmtdate']) ? 1 : null) )?>
-                    </td></tr>
-                    <tr><td class="feedback-td-font">Designation / Position :</td><td>
-                    <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, (($widget->perms['displayposition']) ? 1 : null) )?>
-                    </td><td></td><td></td></tr>
-                </table>
-                <div id="widget_options" class="error-msg"></div>
-            </div>
-        </div>
-        <div class="widget-options">
-            <h2>Widget Theme</h2>
-            <div class="widget-opts" style="margin:0px -10px;">
 
-                <div class="form-design-slide">
-                    <div class="form-design-prev">
-                    </div>
-                        <div class="form-designs grids">  
-                        <?php
-                            $form_slides = '';
-                            $units = 7;
-                            $ctr = 0;
-                            $max = count($form_themes);
-                            
-                            foreach($form_themes  as $form_colors => $val){
-                                if(($ctr % $units) == 0){
-                                    $form_slides .= '<div class="form-design-group grids">';
-                                    $end = 1;
-                                }
-  
-                                    $color_name = 'form-'.$form_colors;
-                                    $form_slides .= '<div class="form-design" id="'.$color_name.'">
-                                                        <img src="/img/display-thumb.png "/>
-                                                        <span>'.$val.'</span>
-                                                        <!--
-                                                        <div id="preview" class="preview button-gray">
-                                                            Preview
-                                                        </div>
-                                                        -->
-                                                    </div>';
-                                
-                                 if(($end == $units) || $ctr == ($max - 1)){
-                                    $form_slides .= '</div>';
-                                }
-                                $end++;
-                                $ctr++;
-                            }
-                            echo $form_slides
-                        ?>
-                        
-                        </div>
-                    <div class="form-design-next">
-                    </div>
-                </div>
-           
-                <div class="c"></div>
-            </div>
-        </div>
-        <div class="widget-options">
-            <h2>Code</h2>
             <br/>
-            <div class="widget-opts" style="text-align:center">
-                <div style="width: 360px;margin-left:auto;margin-right:auto">
+            <div class="widget-types">
+                <strong style="padding-left:3px;color:#000;">Select your display theme</strong>
+                    <div class="widget-opts" style="margin-left: -18px">
+                        <div class="form-design-slide">
+                            <div class="form-design-prev">
+                            </div>
+                                <div class="form-designs grids">  
+                                <?php
+                                    $form_slides = '';
+                                    $units = 7;
+                                    $ctr = 0;
+                                    $max = count($form_themes);
+                                    
+                                    foreach($form_themes as $form_colors => $val){
+                                        if (($ctr % $units) == 0) {
+                                            $form_slides .= '<div class="form-design-group grids">';
+                                            $end = 1;
+                                        }
+          
+                                            $color_name = 'form-'.$form_colors;
+                                            $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                                <img src="/img/display-thumb.png "/>
+                                                                <span>'.$val.'</span>
+                                                            </div>';
+                                        
+                                         if(($end == $units) || $ctr == ($max - 1)){
+                                            $form_slides .= '</div>';
+                                        }
+                                        $end++;
+                                        $ctr++;
+                                    }
+                                    echo $form_slides
+                                ?>
+                                
+                                </div>
+                            <div class="form-design-next">
+                            </div>
+                        </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+
+            <br />
+            <div class="widget-types">
+                <strong style="padding-left:3px;color:#447697;">Feedback Form Options</strong>
+                <br />
+                <p style="font-size:11px;padding-left:3px;">Users will be able to submit feedback through your feedback display through a popup form</p>
+                <table width="100%" cellpadding="5" cellspacing="0">
+                    <tbody><tr>
+                        <td width="140">
+                            <strong style="font-size:11px;color:#000;">Form Header Text :</strong>
+                        </td>
+                        <td><input type="text" class="form-text regular-text" style="padding:8px;width:200px;" name="submit_form_text" value="<?=$widget->children[0]->submit_form_text?>" title="<?=$widget->children[0]->submit_form_text?>"  /></td>
+                        <td rowspan="2"valign="top">
+                            <br /><br /><br />
+                            <p style="font-size:11px;">See how your form will <br /> appear to your visitors.</p>
+                            <br />
+                            <a href="#" class="preview-form-widget-button button-gray">Preview</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong style="font-size:11px;color:#000;">What to write?</strong>
+                            <br />
+                            <small style="line-height:normal">
+                            Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
+                            </small>
+                            <br/>
+                            <br/>
+                        </td>
+                        <td valign="top">
+                            <textarea name="submit_form_question" class="regular-textarea" style="width:230px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                            title="<?=$widget->children[0]->submit_form_question?>">
+
+<?=$widget->children[0]->submit_form_question?>
+                            </textarea>
+                        </td>
+                    </tr> </tbody>
+                </table> 
+            </div>
+            <br/>
+            <div class="widget-types">
+                <strong style="padding-left:3px;color:#447697;">Select your site to apply this widget to..</strong>
+                <br /><br /> 
+                <table  cellpadding="5" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td width="110">
+                            <strong style="font-size:11px;color:#000;">Website:</strong>
+                            <br />
+                            <small style="line-height:normal">Choose which website to apply your widget. </small>
+                        </td>
+                        <td> 
+                           <select name="site_id" id="feedsetup-site-select" class="regular-select" hrefaction="<?=URL::to('feedsetup/render_display_info')?>" style="font-size:15px"> 
+                                <?foreach($site as $sites):?>
+                                    <option value="<?=$sites->siteid?>" <?=($widget->site_id == $sites->siteid) ? 'selected' : null?>>
+                                        <?=$sites->domain?>
+                                    </option>
+                                <?endforeach?>
+                           </select>
+                        </td>
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="widget-types">
+                <strong style="padding-left:3px;color:#447697;">Copy Paste Widget Code...</strong>
+                <br /><br /> 
+                <div style="width: 360px; margin-left:auto; margin-right:auto">
                     <div class="widget-block" style="position:relative">
                         <h2>JS Widget Code (recommended)</h2>
                         <div class="html-code">
-                            <textarea id="widget-generate-view" spellcheck="false">
+                            <textarea id="widget-generate-view" spellcheck="false"> 
                                 <?=$js_code?> 
-                            </textarea>
+                            </textarea> 
                             <!-- add this -->
                             <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
                             <!-- end add this -->
                         </div>
                     </div>
-
                     <div class="widget-block" style="position:relative">
                         <h2>IFrame Widget Code</h2>
                         <div class="html-code">
                             <textarea id="iframe-generate-view" spellcheck="false">
-                                <?=$iframe_code?> 
+                                <?=$iframe_code?>  
                             </textarea>
                             <!-- add this -->
                             <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
@@ -274,17 +301,12 @@
                     <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
                     <a href="javascript;;" class="button-gray" id="copy-widget-iframe">Copy IFrame Code</a>
                     <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-                </div>    
-                <!--
-                <div class="block noborder" style="height:490px;"></div>
-                -->
-                <div class="c"></div>
+                </div>     
             </div>
-        </div>
-        <div class="widget-setup-border"></div>
-        <div class="widget-opts">
-            <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn" value="Update Widget" />
+
+            <br/>
+            <div class="widget-types">
+                <input type="submit" class="large-btn create-widget-button" value="Save Widget" />
                 <input type="submit" class="large-btn preview-display-widget-button" value="Preview Widget" />
             </div>
         </div>
