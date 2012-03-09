@@ -31,19 +31,21 @@ class FeedbackDisplay {
 
         $data = Array();
         foreach($this->grouped_dates as $dates) { 
-            $data[$dates->date_format] = Array();
-            //echo $dates->date_format."<br/>";
+            $head_date = $dates->date_format;
+            $head = new StdClass;
+            $head->head_date = $head_date;
+            $head->children = Array();
             foreach($this->feedback->result as $feed) { 
                 $unix = strtotime($feed->date);
                 $date = date("m.d.Y", $unix);
-                //echo "----".$date."<br/>";
-
                 if($date == $dates->date_format) {
-                    $data[$dates->date_format][] = $feed;    
+                    $head->children[] = $feed;    
                 }
 
                 
             }
+
+            $data[] = $head;
         }
         return $data;
 
