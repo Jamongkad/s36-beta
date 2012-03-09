@@ -32,11 +32,16 @@ class FeedbackDisplay {
         $data = Array();
         foreach($this->grouped_dates as $dates) { 
             $data[$dates->date_format] = Array();
-            foreach($this->feedback->result as $feed) {
-                echo $dates->unix_timestamp;
-                if(strtotime($feed->date) == $dates->unix_timestamp) {
+            //echo $dates->date_format."<br/>";
+            foreach($this->feedback->result as $feed) { 
+                $unix = strtotime($feed->date);
+                $date = date("m.d.Y", $unix);
+                //echo "----".$date."<br/>";
+
+                if($date == $dates->date_format) {
                     $data[$dates->date_format][] = $feed;    
                 }
+
                 
             }
         }
