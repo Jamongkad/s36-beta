@@ -9,7 +9,7 @@
                         <h4>EMBEDDED BLOCK</h4>
                         <img src="/img/embed-widget-preview.jpg" />
                         <br />
-                        <a href="#" class="white-button">Select</a>
+                        <?=HTML::link('feedsetup/display_widgets', 'Select', Array('class' => 'white-button'))?>
                         <br />
                         <br />
                     </div>
@@ -23,7 +23,7 @@
                         <h4>POPUP DISPLAY</h4>
                         <img src="/img/popup-widget-preview.jpg" />
                         <br />
-                        <a href="#" class="white-button">Select</a>
+                        <?=HTML::link('feedsetup/display_widgets', 'Select', Array('class' => 'white-button'))?>
                         <br />
                         <br />
                     </div>
@@ -37,7 +37,7 @@
                         <h4>SUBMISSION FORM</h4>
                         <img src="/img/submission-widget-preview.jpg" />
                         <br />
-                        <a href="#" class="white-button">Select</a>
+                        <?=HTML::link('feedsetup/submission_widgets', 'Select', Array('class' => 'white-button'))?>
                         <br />
                         <br />
                     </div>
@@ -50,10 +50,6 @@
                 
         </div>
     </div>
-<div class="c"></div>
-    <div class="block noborder" style="height:300px;">
-    </div>
-
+    <div class="c"></div>
+    <div class="block noborder" style="height:300px;"></div>
 </div>
-
-<!-- spacer -->
