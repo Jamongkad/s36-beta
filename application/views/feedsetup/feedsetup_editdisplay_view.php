@@ -291,9 +291,4 @@
     </div>
 </div>
 <?=Form::close()?>
-</div>
-<!-- end of the main panel -->
-
-<!-- div need to clear floated divs -->
 <div class="c"></div>
-</div>
