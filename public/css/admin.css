@@ -743,3 +743,16 @@ input.large-text, input.form-text{padding:10px;width:80%;}
 .white-button{background:#FFF;border:#d2d2d2 1px solid;-webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;padding:4px 12px;color:#748e9e;font-weight:bold;}
+
+.the-selected-widget-box{
+    width:194px;
+    height:224px;
+    border:#d6dfe6 1px solid;
+    position:absolute;
+    background:#ebf0f4;
+    right:0px;
+    top:15px;
+    padding:8px;
+    text-align:center;
+}
+.the-selected-widget-box img{margin:0 !important;}

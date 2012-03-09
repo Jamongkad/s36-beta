@@ -96,19 +96,22 @@ return array(
         ));
     }),
     
-    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($select=false) use ($feedback) { 
+    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_select=false) use ($feedback) { 
+
         $form_themes = Array( 
             'aglow'=>'Aglow'
           , 'silver'=>'Silver'
           , 'chrome'=>'Chrome'
           , 'classic'=>'Classic'
         );
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'form_themes'     => $form_themes
+          , 'widget_select'   => $widget_select
         )); 
     }),
 

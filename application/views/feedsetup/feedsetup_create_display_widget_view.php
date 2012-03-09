@@ -260,7 +260,4 @@
     </div>
 </div>
 <?=Form::close()?>
-</div>
-
 <div class="c"></div>
-</div>
