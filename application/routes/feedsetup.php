@@ -96,7 +96,7 @@ return array(
         ));
     }),
     
-    'GET /feedsetup/display_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($select=false) use ($feedback) { 
         $form_themes = Array( 
             'aglow'=>'Aglow'
           , 'silver'=>'Silver'
