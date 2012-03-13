@@ -214,7 +214,7 @@ return array(
             , 'choice'=> false
             , 'site_id'=> 1
             , 'rating' => 3
-            , 'priority' => 60 //0 60 100
+            , 'priority' => 'low' //low medium high
             , 'status' => 'new' //new inprogress closed
         );
         Helpers::dump($inbox_service);

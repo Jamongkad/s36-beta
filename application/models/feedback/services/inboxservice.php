@@ -88,6 +88,11 @@ class InboxService {
         if($filters['rating'] and !in_array($filters['choice'], Array('positive', 'negative', 'neutral'))) { 
             $rating_statement = "AND Feedback.rating = {$filters['rating']}";
         }
+
+
+        $filters['status_statement'] = ($filters['status']) ? "AND Feedback.status = {$filters['status']}" : null;
+        $filters['priority_statement'] = ($filters['priority']) ? "AND Feedback.priority = {$filters['priority']}" : null;
+
         
         if($filters['choice'] == 'profanity') {
             $sql_statement = "AND Feedback.hasProfanity = 1";
@@ -127,7 +132,6 @@ class InboxService {
         $filters['default_date_statement'] = $default_date_statement;
         $filters['rating_statement'] = $rating_statement;
         $filters['sql_statement'] = $sql_statement;
-
         return $filters;
 
     }
