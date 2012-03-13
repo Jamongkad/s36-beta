@@ -210,10 +210,10 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'offset'=> 0  
-            , 'filter'=> 'published'
-            , 'choice'=> 'all'
+            , 'filter'=> 'flagged'
+            , 'choice'=> false
             , 'site_id'=> 1
-            , 'rating' => 5
+            , 'rating' => 3
             , 'priority' => 60 //0 60 100
             , 'status' => 'new' //new inprogress closed
         );
