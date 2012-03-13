@@ -231,13 +231,15 @@ jQuery(function($) {
     });
 
     $('select[name="feedback-limit"]').bind('change', function(e) {
-        //window.location = "?limit=" + $(this).val(); 
         insertParam('limit', $(this).val());
     });
 
     $('select[name="rating-limit"]').bind('change', function(e) {
-        //window.location = "?rating=" + $(this).val();
         insertParam('rating', $(this).val());
+    });
+
+    $('select[name="category-filter"]').bind('change', function(e) {
+        insertParam('category', $(this).val());
     });
     
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});

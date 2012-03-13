@@ -31,10 +31,10 @@
             <div class="g1of5">
                 <label>CATEGORY</label>
                 <?$cat = new DBCategory; ?>
-                <select style="width: 50%">
+                <select name="category-filter" style="width: 50%">
                     <option>All</option>
                     <?foreach($cat->pull_site_categories() as $category):?>
-                        <option><?=$category->name?></option> 
+                        <option value="<?=$category->intname?>" <?=((Input::get('category') == $category->intname) ? 'selected' : null)?>><?=$category->name?></option> 
                     <?endforeach?>
                 </select>
             </div>

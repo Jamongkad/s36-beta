@@ -2,7 +2,6 @@
 
 class DBCategory extends S36DataObject {
     
-
     public function pull_site_categories() {
 
         $sth = $this->dbh->prepare("
@@ -13,20 +12,14 @@ class DBCategory extends S36DataObject {
                 , Category.changeable
             FROM 
                 Category
-            INNER JOIN
-                Company
-                    ON Company.companyId = Category.companyId
-            INNER JOIN
-                User
-                    ON User.companyId = Company.companyId
-            WHERE 1=1
-                AND User.userId = :user_id
+            WHERE 1=1 
+                AND Category.companyId = :company_id
                 AND Category.intName != 'default'
             ORDER BY 
                 Category.name 
         ");
 
-        $sth->bindParam(":user_id", $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
         $sth->execute();
  
         $result = $sth->fetchAll(PDO::FETCH_CLASS);

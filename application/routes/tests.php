@@ -220,5 +220,7 @@ return array(
         Helpers::dump($inbox_service);
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());
+        $cat = new DBCategory;
+        Helpers::dump($cat->pull_site_categories());
     }
 );
