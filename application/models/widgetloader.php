@@ -23,7 +23,7 @@ class WidgetLoader {
               , 'is_featured'  => 1
             );
 
-            $feedback = new DBFeedback;       
+            $feedback = new Feedback\Repositories\DBFeedback;       
             $data = $feedback->pull_feedback_by_company($params);
 
             $fixed_data = Array();

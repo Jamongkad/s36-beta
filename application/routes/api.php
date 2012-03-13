@@ -1,6 +1,6 @@
 <?php
 
-$feedback = new DBFeedback;
+$feedback = new Feedback\Repositories\DBFeedback;
 
 return array(
      
@@ -43,7 +43,7 @@ return array(
         $addfeedback->create_feedback_with_profile(); 
     }), 
 
-    'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
+    'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
 
         $encrypt = new Crypter;
         $string_params  = Input::get('params');
@@ -62,8 +62,7 @@ return array(
             
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
-            $feedback_model = new DBFeedback;
-            $feedback_model->_toggle_multiple($status, array($feed_obj)); 
+            $feedback->_toggle_multiple($status, array($feed_obj)); 
 
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
@@ -78,7 +77,7 @@ return array(
          
                 $factory = new EmailFactory($vo);
                 $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
-                $factory->feedback = $feedback_model->pull_feedback_by_id($feedback_id);
+                $factory->feedback = $feedback->pull_feedback_by_id($feedback_id);
                 $email_pages = $factory->execute();
                 $email = new Email($email_pages);
                 $email->process_email();

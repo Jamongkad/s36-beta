@@ -1,8 +1,18 @@
 <?php
 
 return array( 
-    'GET /inbox/(:any?)/(:any?)/(:any?)' => Array(  'name' => 'inbox', 'before' => 's36_auth'
-                                                  , 'do' => function($filter=False, $choice=False, $sort=False) {       
+    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
+        /*
+        print_r("Filter: ".$filter."<br>");
+        print_r("Filter Choice: ".$choice."<br>"); 
+        print_r(Input::get()); 
+
+        $feedback = new Feedback\Services\InboxService; 
+        $feedback->set_filters($filters);
+        $feedback->present_feedback();
+        */
+        
+
         $limit   = 10;
         $site_id = False;
         $rating  = False;
@@ -11,11 +21,9 @@ return array(
         if(Input::get('site_id')) $site_id = (int)Input::get('site_id');
         if(Input::get('rating'))  $rating  = (int)Input::get('rating');
 
-        $feedback = new DBFeedback;
-        $category = new DBCategory;
+        $feedback = new Feedback\Repositories\DBFeedback;
         $pagination = new ZebraPagination; 
         $pagination->selectable_pages(4);
-        $admin_check = S36Auth::user();
 
         $offset = ($pagination->get_page() - 1) * $limit;
         $records = $feedback->pull_feedback(array('limit'=> $limit, 'offset'=> $offset, 'filter'=> $filter, 
@@ -23,12 +31,14 @@ return array(
         $pagination->records($records->total_rows);
         $pagination->records_per_page($limit);
 
+        $admin_check = S36Auth::user();
+        $category = new DBCategory;
         $view_data = Array(
               'feedback' => $records
-            , 'categories' => $category->pull_site_categories()
             , 'pagination' => $pagination->render()
-            , 'status' => DB::table('Status', 'master')->get()
             , 'admin_check' => $admin_check
+            , 'categories' => $category->pull_site_categories()
+            , 'status' => DB::table('Status', 'master')->get()
             , 'inbox_state' => Helpers::inbox_state($filter)
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
         );
@@ -38,6 +48,7 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         }
+
   
     }), 
 );

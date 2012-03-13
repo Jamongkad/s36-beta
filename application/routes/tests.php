@@ -1,7 +1,5 @@
 <?php
-
 Package::load('S36ValueObjects');
-
 return array(
     'GET /tests/test_blob' => Array('needs' => 'EnhanceTestFramework, S36ValueObjects', 'do' => function() { 
         Enhance::runTests();
@@ -10,7 +8,7 @@ return array(
     'GET /tests/test_email_new' => function() {
 
         $user = new DBUser; 
-        $feedback = new DBFeedback;
+        $feedback = new Feedback\Repositories\DBFeedback;
 
         $vo = new NewFeedbackSubmissionData;
 
@@ -27,7 +25,7 @@ return array(
     'GET /tests/test_email_published' => function() {
         
         $user = new DBUser; 
-        $feedback = new DBFeedback;
+        $feedback = new Feedback\Repositories\DBFeedback;
 
         $vo = new PublishedFeedbackNotificationData;
         $vo->publisher_email = "mathew@36stories.com";
@@ -88,7 +86,7 @@ return array(
 
         /*
         $auth = new S36Auth;
-        $feedback = new DBFeedback;
+        $feedback = new Feeback\Repositories\DBFeedback;
 
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);
@@ -136,7 +134,7 @@ return array(
         $data = (object)Input::get();
         $auth = new S36Auth;
 
-        $feedback = new DBFeedback;
+        $feedback = new Feedback\Repositories\DBFeedback;
 
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);
@@ -189,30 +187,6 @@ return array(
         Helpers::show_data($d);
     },
 
-    'GET /tests/update_widget' => function() { 
-        $dbw = new DBWidget;
-        $obj = new StdClass;
-        $obj->widgetkey = 'qbbro';
-        $obj->site_id = 2;
-        $obj->company_id = 1;
-        $obj->base_url = 'http://razer.gearfish.com';
-        $obj->theme_name = 'Funky';
-        $obj->embed_type = 'modal'; 
-        $obj->embed_effects = 1;
-        $obj->modal_effects = 0;
-        $obj->perms = Array(
-            'displayname'  => 1
-          , 'displayurl' => 1
-          , 'displayimg' => 1
-          , 'displaycountry' => 1
-          , 'displaycompany' => 1
-          , 'displaysbmtdate' => 1
-          , 'displayposition' => 1
-        );
-        $obj->theme_type = 'aglow';
-        $dbw->push_widget_db($obj);
-    },
-
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new WidgetLoader($widget_id); 
         Helpers::show_data($wl);
@@ -226,13 +200,25 @@ return array(
           , 'is_featured'  => 1
         );
         
-        $feedback = new DBFeedback;       
+        $feedback = new Feedback\Repositories\DBFeedback;
         $data = $feedback->pull_feedback_by_company($params);
         Helpers::show_data($data);
     },
 
-    'GET /tests/display_feedback_by_date' => function() {
-        $data = new FeedbackDisplay;
-        Helpers::dump($data->display_feedback());
+    'GET /tests/inboxservice' => function() {
+        $inbox_service = new Feedback\Services\InboxService;
+        $filters = array(
+              'limit'=> 10
+            , 'offset'=> 0  
+            , 'filter'=> 'published'
+            , 'choice'=> 'all'
+            , 'site_id'=> 1
+            , 'rating' => 5
+            , 'priority' => 60 //0 60 100
+            , 'status' => 'new' //new inprogress closed
+        );
+        Helpers::dump($inbox_service);
+        Helpers::dump($inbox_service->set_filters($filters));  
+        Helpers::dump($inbox_service->present_feedback());
     }
 );

@@ -1,6 +1,6 @@
 <?php
 
-$feedback = new DBFeedback;
+$feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 
 return array(

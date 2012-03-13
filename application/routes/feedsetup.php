@@ -1,6 +1,6 @@
 <?php
 
-$feedback = new DBFeedback;
+$feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new DBWidget;
 //TODO: DO SOMETHING ABOUT THIS!!
 $form_themes = array(

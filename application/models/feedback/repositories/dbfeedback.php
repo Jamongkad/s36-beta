@@ -1,4 +1,7 @@
-<?php
+<?php namespace Feedback\Repositories;
+
+use S36DataObject\S36DataObject, PDO, StdClass;
+
 class DBFeedback extends S36DataObject {
  
     public function pull_feedback($opts) {      
@@ -21,16 +24,29 @@ class DBFeedback extends S36DataObject {
         if($opts['filter'] != False) {
    
             if( $opts['rating'] and in_array($opts['rating'], range(1, 5)) ) { 
-                $rating_statement = "AND Feedback.rating IN ({$opts['rating']})";     
+                $rating_statement = "AND Feedback.rating = {$opts['rating']}";     
             }
 
             if(is_string($opts['filter'])) {
+
+                if($opts['filter'] == 'deleted') {
+                    $is_deleted = 1; 
+                }
+
+                if($opts['filter'] == 'published') {
+                    $is_published = 1;     
+                }
+
+                if($opts['filter'] == 'featured') {
+                    $is_featured = 1; 
+                }
+
                 if($opts['filter'] == 'profanity' || $opts['choice'] == 'profanity') {
                     $profanity_statement = "AND Feedback.hasProfanity = 1";
                 }
 
                 if($opts['filter'] == 'mostcontent' || $opts['choice'] == 'mostcontent') {
-                    $mostcontent_statement = "LENGTH(textlength) DESC";
+                    $mostcontent_statement = "word_count DESC";
                 }
 
                 if($opts['filter'] == 'flagged' || $opts['choice'] == 'flagged') {
@@ -52,18 +68,6 @@ class DBFeedback extends S36DataObject {
                 if($opts['filter'] == 'neutral' || $opts['choice'] == 'neutral') {
                     $rating_statement = "AND Feedback.rating IN (3)";     
                 }
-
-                if($opts['filter'] == 'deleted') {
-                    $is_deleted = 1; 
-                }
-
-                if($opts['filter'] == 'published') {
-                    $is_published = 1;     
-                }
-
-                if($opts['filter'] == 'featured') {
-                    $is_featured = 1; 
-                }
             }
            
         }
@@ -80,7 +84,7 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
                   END AS priority
-                , Feedback.text
+                , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
                 , Feedback.dtAdded AS date
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
@@ -109,7 +113,8 @@ class DBFeedback extends S36DataObject {
                 , Country.name AS countryname
                 , Country.code AS countrycode
                 , Site.siteId AS siteid
-                , LENGTH(text) AS textlength
+                /* Temporary fix.. */
+                , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
             FROM 
                 Feedback
                     INNER JOIN 
@@ -152,25 +157,67 @@ class DBFeedback extends S36DataObject {
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        $date_sql = '
+            SELECT   
+                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
+              , dtAdded
+              , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
+              , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
+            FROM 
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                   ON Category.categoryId = Feedback.categoryId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                AND Feedback.isDeleted = :is_deleted
+                AND Feedback.isPublished = :is_published
+                AND Feedback.isFeatured = :is_featured
+                '.$rating_statement.'
+                '.$profanity_statement.'
+                '.$flagged_statement.'
+                '.$filed_statement.'
+            GROUP BY 
+                date_format 
+            ORDER BY 
+                '.$mostcontent_statement.'
+        ';
 
+        $sth = $this->dbh->prepare($date_sql);
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
+        $sth->execute();
+        $date_result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $data = Array();
+        foreach($date_result as $dates) { 
+            $head = new StdClass;
+            $head->head_date = $dates->date_format;
+            $head->children = Array();
+            foreach($result as $feed) { 
+                $unix = strtotime($feed->date);
+                $date = date("m.d.Y", $unix);
+                if($date == $dates->date_format) {
+                    $head->children[] = $feed;    
+                }                
+            } 
+            if($head->children) {
+                $data[] = $head;     
+            } 
+        }
+         
         $result_obj = new StdClass;
-        $result_obj->result = $result;
+        $result_obj->result = $result;//$grouped_data;//$result;
         $result_obj->total_rows = $row_count->fetchColumn();
-
-        /*
-        print_r($rating_statement);
-        print_r($profanity_statement);
-        print_r($flagged_statement);
-        print_r($mostcontent_statement);
-        print_r($filed_statement);
-        print_r("<br/>");
-        print_r("rating_choices: ".$rating_choices."<br/>");
-        print_r("is_deleted: ".$is_deleted."<br/>");
-        print_r("is_published: ".$is_published."<br/>");
-        print_r("is_featured: ".$is_featured."<br/>"); 
-        */
-
         return $result_obj;
     }
 
@@ -359,35 +406,6 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
         $sth->execute();       
         $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
-    }
-
-    public function pull_feedback_grouped_by_date() {
-        $sql = "
-            SELECT   
-                DATE_FORMAT(dtAdded, GET_FORMAT(DATE,'USA')) AS date_format 
-              , dtAdded
-              , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
-            FROM 
-                Feedback
-            INNER JOIN
-                Site
-                    ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                Company
-                    ON Company.companyId = Site.companyId
-            WHERE 1=1
-                AND Company.companyId = :company_id
-            GROUP BY 
-                date_format 
-            ORDER BY 
-                dtAdded DESC
-        ";
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
-        $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
         return $result;
     }
  

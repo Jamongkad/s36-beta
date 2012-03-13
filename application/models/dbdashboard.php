@@ -91,7 +91,7 @@ class DBDashboard extends S36DataObject
    public function write_summary() {        
 
        $geoscore = $this->get_geochart_scores();
-       $feedback = new DBFeedback;
+       $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
  
        try { 

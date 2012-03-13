@@ -93,7 +93,7 @@
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
                     <li class="delete"><?=HTML::link('/inbox/deleted', 'Deleted Feedback')?>
 
-                    <?$feedback = new DBFeedback;
+                    <?$feedback = new Feedback\Repositories\DBFeedback;
                       if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
                           <sup class="count"><?=$total_delete_feedback?></sup> 
                     <?else:?>
