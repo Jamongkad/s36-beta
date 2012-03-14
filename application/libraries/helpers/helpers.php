@@ -153,4 +153,9 @@ class Helpers {
         
         return View::make('partials/tab_position_css_output', Array('positions' => $positions));
     }
+
+    public static function sanitize($string) {
+        $page = preg_replace('/[^-a-zA-Z0-9_]/', '', $string);
+        return $page;
+    }
 }

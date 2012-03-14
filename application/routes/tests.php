@@ -210,17 +210,15 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'offset'=> 0  
-            , 'filter'=> 'flagged'
-            , 'choice'=> false
+            , 'filter'=> 'published'
+            , 'choice'=> 'all'
+            , 'date'  => 'date_new'
             , 'site_id'=> 1
-            , 'rating' => 3
-            , 'priority' => 'low' //low medium high
-            , 'status' => 'new' //new inprogress closed
+            , 'rating' => 2
+            , 'priority' => 'high' //low medium high
+            , 'status' => 'inprogress' //new inprogress closed
         );
-        Helpers::dump($inbox_service);
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());
-        $cat = new DBCategory;
-        Helpers::dump($cat->pull_site_categories());
     }
 );

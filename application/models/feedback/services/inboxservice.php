@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception;
+use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers;
 
 class InboxService {
 
@@ -40,12 +40,22 @@ class InboxService {
           , 'neutral'  => 'neutral'
           , 'profanity' => 'profanity'
           , 'flagged'   => 'flagged'
-          , 'date_new' => 'date_new'
-          , 'date_old' => 'date_old'
           , 'mostcontent' => 'mostcontent'
         );
 
+        $date_structure = Array(
+            'date_new' => 'date_new'
+          , 'date_old' => 'date_old'
+        );
+
+        $sql_statement = Null;
+        $rating_statement = Null;
+        $date_statement = "Feedback.dtAdded DESC";;
+
         $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.intName = "default"';       
+        $filters['featured'] = 0;
+        $filters['published'] = 0;
+        $filters['deleted'] = 0;
 
         if ($filters['filter'] and $filters['choice']) {
             //check against filter structure     
@@ -81,18 +91,23 @@ class InboxService {
             } 
         }
 
-        $sql_statement = Null;
-        $rating_statement = Null;
-        $default_date_statement = "Feedback.dtAdded DESC";;
+        if ($filters['date']) {
+            //check against choice structure     
+            if (!array_key_exists($filters['date'], $date_structure)) {
+                throw new Exception("{$filters['date']} not a valid date structure data type.");
+            } else {
+                if ($filters['date'] == 'date_new') {
+                    $date_statement = "Feedback.dtAdded DESC";
+                }
 
-        if($filters['rating'] and !in_array($filters['choice'], Array('positive', 'negative', 'neutral'))) { 
-            $rating_statement = "AND Feedback.rating = {$filters['rating']}";
+                if ($filters['date'] == 'date_old') {  
+                    $date_statement = "Feedback.dtAdded ASC";
+                }
+            } 
         }
 
-
-        $filters['status_statement'] = ($filters['status']) ? "AND Feedback.status = {$filters['status']}" : null;
-        $filters['priority_statement'] = ($filters['priority']) ? "AND Feedback.priority = {$filters['priority']}" : null;
-
+        $filters['status_statement'] = ($status = Helpers::sanitize($filters['status'])) ? "AND Feedback.status = '$status'" : null;
+        $filters['priority_statement'] = ($priority = Helpers::sanitize($filters['priority'])) ? "AND Feedback.priority = '$priority'" : null;
         
         if($filters['choice'] == 'profanity') {
             $sql_statement = "AND Feedback.hasProfanity = 1";
@@ -114,22 +129,17 @@ class InboxService {
             $sql_statement = "AND Feedback.rating = 3";
         }
 
-        if ($filters['choice'] == 'date_new') {
-            $default_date_statement = null;
-            $sql_statement = "Feedback.dtAdded DESC";
-        }
-
-        if ($filters['choice'] == 'date_old') {  
-            $default_date_statement = null;
-            $sql_statement = "Feedback.dtAdded ASC";
-        }
-
         if ($filters['choice'] == 'mostcontent') {
-            $default_date_statement = null;
-            $sql_statement = "word_count DESC";
+            $date_statement = "word_count DESC";
         }
-        //$sql_statement = ($filters['choice'] == 'mostcontent') ? 'word_count DESC' : 'Feedback.dtAdded DESC'; 
-        $filters['default_date_statement'] = $default_date_statement;
+
+        if($filters['rating']) { 
+            $sql_statement = null;
+            $rating = Helpers::sanitize($filters['rating']);
+            $rating_statement = "AND Feedback.rating = $rating";
+        }
+
+        $filters['date_statement'] = $date_statement;
         $filters['rating_statement'] = $rating_statement;
         $filters['sql_statement'] = $sql_statement;
         return $filters;
