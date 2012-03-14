@@ -209,15 +209,15 @@ return array(
         $inbox_service = new Feedback\Services\InboxService;
         $filters = array(
               'limit'=> 10
-            , 'offset'=> 0  
-            , 'site_id'=> 1
-            , 'filter'=> 'mostcontent'
-            , 'choice'=> false
-            , 'date'  => 'date_old'
+            , 'offset'=> 0
+            , 'site_id'=> false
+            , 'filter'=> 'filed'
+            , 'choice'=> 'positive'
+            , 'date'  => false
             , 'rating' => false
             , 'category' => false
             , 'priority' => false //low medium high
-            , 'status' => false //new inprogress closed
+            , 'status' => 'new' //new inprogress closed
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());

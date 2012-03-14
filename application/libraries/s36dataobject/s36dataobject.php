@@ -35,4 +35,8 @@ abstract class S36DataObject {
         return $return;
                                                                                        
     }
+
+    public function quote($string) {
+        return $this->dbh->quote($string);
+    }
 }

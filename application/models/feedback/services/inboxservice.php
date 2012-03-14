@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers;
+use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB;
 
 class InboxService {
 
@@ -96,9 +96,7 @@ class InboxService {
         if ($filters['date']) {
             if (!array_key_exists($filters['date'], $date_structure)) {
                 throw new Exception("{$filters['date']} not a valid date structure data type.");
-            } else {
-                //echo $filters['date'] == 'date_new' && $filters['choice'] == 'mostcontent';
-                
+            } else {                
                 if($filters['choice'] == 'mostcontent') {
 
                     if($filters['date'] == 'date_new' ) {
@@ -106,7 +104,6 @@ class InboxService {
                     }
 
                     if($filters['date'] == 'date_old' ) {
-
                         $date_statement = "Feedback.dtAdded ASC, word_count DESC";    
                     } 
                 } else { 
@@ -128,7 +125,7 @@ class InboxService {
             $date_statement = "word_count DESC";
         }
 
-        
+        //anchor statements 
         if($filters['choice'] == 'profanity') {
             $sql_statement = "AND Feedback.hasProfanity = 1";
         } 
@@ -137,53 +134,73 @@ class InboxService {
             $sql_statement = "AND Feedback.isFlagged = 1";
         }
 
-        if ($filters['choice'] == 'positive')  {
+        if ($filters['choice'] == 'positive' && !$filters['rating'])  {
             $sql_statement = "AND Feedback.rating IN (4,5)";
         }
 
-        if ($filters['choice'] == 'negative') { 
+        if ($filters['choice'] == 'negative' && !$filters['rating']) { 
             $sql_statement = "AND Feedback.rating IN (1,2)";
         }
 
-        if ($filters['choice'] == 'neutral') { 
+        if ($filters['choice'] == 'neutral' && !$filters['rating']) { 
             $sql_statement = "AND Feedback.rating = 3";
         }
 
+        //ephemeral statements
+        $rating_statement = $this->_sql_statement_helper(function($rating) {  
+            return "AND Feedback.rating = $rating";
+        }, $filters['rating']);
 
-        if($filters['rating']) { 
-            //its a rating? then null out the sql statement
-            $sql_statement = null;
-            $rating = Helpers::sanitize($filters['rating']);
-            $rating_statement = "AND Feedback.rating = $rating";
-        }
-        
-        $priority_statement = null;
-        if($priority = Helpers::sanitize($filters['priority'])) {
-            if($priority == "low") {
-                $priority_statement = "AND (Feedback.priority >= 0 AND Feedback.priority <= 30)";     
+         
+        $priority_statement = $this->_sql_statement_helper(function($choice) {
+            $choice = trim($choice, "'");
+
+            if($choice === 'low') {
+                return "AND (Feedback.priority >= 0 AND Feedback.priority <= 30)";     
             }
 
-            if($priority == "medium") { 
-                $priority_statement = "AND (Feedback.priority >= 30 AND Feedback.priority <= 60)";     
+            if($choice == "medium") { 
+                return "AND (Feedback.priority >= 30 AND Feedback.priority <= 60)";     
             }
             
-            if($priority == "high") { 
-                $priority_statement = "AND (Feedback.priority > 60 AND Feedback.priority <= 100)";     
+            if($choice == "high") { 
+                return "AND (Feedback.priority > 60 AND Feedback.priority <= 100)";     
             }
-        }
 
-        $category_statement = null;
-        if($category = Helpers::sanitize($filters['category'])) { 
-            $category_statement = "AND Category.intName = $category";      
-        }
+        }, $filters['priority']);
 
-        $filters['status_statement']   = ($status = Helpers::sanitize($filters['status'])) ? "AND Feedback.status = '$status'" : null;
+
+        $category_statement = $this->_sql_statement_helper(function($category) { 
+            return "AND Category.intName = $category";      
+        }, $filters['category']);
+
+        $status_statement = $this->_sql_statement_helper(function($status) { 
+            return "AND Feedback.status = $status";
+        }, $filters['status']);
+
+        $siteid_statement = $this->_sql_statement_helper(function($id) {
+            return "AND Feedback.siteId = $id";  
+        }, $filters['site_id']);
+
+        $filters['status_statement']   = $status_statement;
         $filters['priority_statement'] = $priority_statement;
-        $filters['date_statement']   = $date_statement;
-        $filters['siteid_statement'] = ($siteid_statement = Helpers::sanitize($filters['site_id'])) ? "AND Feedback.siteId = $siteid_statement" : null;
-        $filters['rating_statement'] = $rating_statement;
+        $filters['date_statement']     = $date_statement;
+        $filters['siteid_statement']   = $siteid_statement;
+        $filters['rating_statement']   = $rating_statement;
         $filters['category_statement'] = $category_statement;
-        $filters['sql_statement']    = $sql_statement;
+        $filters['sql_statement']      = $sql_statement;
+
         return $filters;
+    }
+
+    private function _sql_statement_helper($callback, $vector) { 
+        if($vector = Helpers::sanitize($vector)) {
+            $vector = $this->dbfeedback->quote($vector);
+            if(is_callable($callback)) {
+                return call_user_func($callback, $vector);     
+            } 
+        }  else {
+            return null;     
+        }
     }
 }
