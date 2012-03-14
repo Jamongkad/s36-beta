@@ -211,13 +211,13 @@ return array(
               'limit'=> 10
             , 'offset'=> 0  
             , 'site_id'=> 1
-            , 'filter'=> 'filed'
-            , 'choice'=> 'all'
-            , 'date'  => false 
-            , 'rating' => 4
+            , 'filter'=> 'mostcontent'
+            , 'choice'=> false
+            , 'date'  => 'date_old'
+            , 'rating' => false
             , 'category' => false
-            , 'priority' => 'low' //low medium high
-            , 'status' => 'new' //new inprogress closed
+            , 'priority' => false //low medium high
+            , 'status' => false //new inprogress closed
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());

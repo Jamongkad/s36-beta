@@ -20,8 +20,8 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
-            //return $this->filters;
-            return $this->dbfeedback->pull_feedback($this->filters);
+            return $this->filters;
+            //return $this->dbfeedback->pull_feedback($this->filters);
         }
     }
 
@@ -97,14 +97,35 @@ class InboxService {
             if (!array_key_exists($filters['date'], $date_structure)) {
                 throw new Exception("{$filters['date']} not a valid date structure data type.");
             } else {
-                if ($filters['date'] == 'date_new') {
-                    $date_statement = "Feedback.dtAdded DESC";
+                //echo $filters['date'] == 'date_new' && $filters['choice'] == 'mostcontent';
+                
+                if($filters['choice'] == 'mostcontent') {
+
+                    if($filters['date'] == 'date_new' ) {
+                        $date_statement = "Feedback.dtAdded DESC, word_count DESC";
+                    }
+
+                    if($filters['date'] == 'date_old' ) {
+
+                        $date_statement = "Feedback.dtAdded ASC, word_count DESC";    
+                    } 
+                } else { 
+
+                    if ($filters['date'] == 'date_new') {
+                        $date_statement = "Feedback.dtAdded DESC";
+                    }
+
+                    if ($filters['date'] == 'date_old') {  
+                        $date_statement = "Feedback.dtAdded ASC";
+                    }
                 }
 
-                if ($filters['date'] == 'date_old') {  
-                    $date_statement = "Feedback.dtAdded ASC";
-                }
             } 
+        }
+
+
+        if ($filters['choice'] == 'mostcontent' && !$filters['date']) {
+            $date_statement = "word_count DESC";
         }
 
         
@@ -128,9 +149,6 @@ class InboxService {
             $sql_statement = "AND Feedback.rating = 3";
         }
 
-        if ($filters['choice'] == 'mostcontent') {
-            $date_statement = "word_count DESC";
-        }
 
         if($filters['rating']) { 
             //its a rating? then null out the sql statement

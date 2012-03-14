@@ -190,7 +190,6 @@ class DBFeedback extends S36DataObject {
             ORDER BY 
                 '.$opts['date_statement'].' 
         ';
-
         //Helpers::dump($date_sql);
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
@@ -218,7 +217,7 @@ class DBFeedback extends S36DataObject {
         }
          
         $result_obj = new StdClass;
-        $result_obj->result = $result;
+        $result_obj->result = $data;//$result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
     }
