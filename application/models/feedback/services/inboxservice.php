@@ -24,6 +24,7 @@ class InboxService {
         }
     }
 
+    //I am sorry but filters are hard -_-
     public function _check_filters(Array $filters) {
         $filter_structure = Array(
             'all' => 'all'
@@ -92,7 +93,6 @@ class InboxService {
         }
 
         if ($filters['date']) {
-            //check against choice structure     
             if (!array_key_exists($filters['date'], $date_structure)) {
                 throw new Exception("{$filters['date']} not a valid date structure data type.");
             } else {
@@ -134,6 +134,7 @@ class InboxService {
         }
 
         if($filters['rating']) { 
+            //its a rating? then null out the sql statement
             $sql_statement = null;
             $rating = Helpers::sanitize($filters['rating']);
             $rating_statement = "AND Feedback.rating = $rating";
@@ -143,6 +144,5 @@ class InboxService {
         $filters['rating_statement'] = $rating_statement;
         $filters['sql_statement'] = $sql_statement;
         return $filters;
-
     }
 }
