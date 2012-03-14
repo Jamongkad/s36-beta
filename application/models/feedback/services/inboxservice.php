@@ -20,11 +20,12 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
-            return $this->filters;
+            //return $this->filters;
+            return $this->dbfeedback->pull_feedback($this->filters);
         }
     }
 
-    //I am sorry but filters are hard -_-
+    //I am sorry but filters are hard (-_-)
     public function _check_filters(Array $filters) {
         $filter_structure = Array(
             'all' => 'all'
@@ -106,8 +107,6 @@ class InboxService {
             } 
         }
 
-        $filters['status_statement'] = ($status = Helpers::sanitize($filters['status'])) ? "AND Feedback.status = '$status'" : null;
-        $filters['priority_statement'] = ($priority = Helpers::sanitize($filters['priority'])) ? "AND Feedback.priority = '$priority'" : null;
         
         if($filters['choice'] == 'profanity') {
             $sql_statement = "AND Feedback.hasProfanity = 1";
@@ -139,10 +138,34 @@ class InboxService {
             $rating = Helpers::sanitize($filters['rating']);
             $rating_statement = "AND Feedback.rating = $rating";
         }
+        
+        $priority_statement = null;
+        if($priority = Helpers::sanitize($filters['priority'])) {
+            if($priority == "low") {
+                $priority_statement = "AND (Feedback.priority >= 0 AND Feedback.priority <= 30)";     
+            }
 
-        $filters['date_statement'] = $date_statement;
+            if($priority == "medium") { 
+                $priority_statement = "AND (Feedback.priority >= 30 AND Feedback.priority <= 60)";     
+            }
+            
+            if($priority == "high") { 
+                $priority_statement = "AND (Feedback.priority > 60 AND Feedback.priority <= 100)";     
+            }
+        }
+
+        $category_statement = null;
+        if($category = Helpers::sanitize($filters['category'])) { 
+            $category_statement = "AND Category.intName = $category";      
+        }
+
+        $filters['status_statement']   = ($status = Helpers::sanitize($filters['status'])) ? "AND Feedback.status = '$status'" : null;
+        $filters['priority_statement'] = $priority_statement;
+        $filters['date_statement']   = $date_statement;
+        $filters['siteid_statement'] = ($siteid_statement = Helpers::sanitize($filters['site_id'])) ? "AND Feedback.siteId = $siteid_statement" : null;
         $filters['rating_statement'] = $rating_statement;
-        $filters['sql_statement'] = $sql_statement;
+        $filters['category_statement'] = $category_statement;
+        $filters['sql_statement']    = $sql_statement;
         return $filters;
     }
 }

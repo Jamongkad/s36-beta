@@ -1,10 +1,11 @@
 <?php namespace Feedback\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass;
+use S36DataObject\S36DataObject, PDO, StdClass, Helpers;
 
 class DBFeedback extends S36DataObject {
  
     public function pull_feedback($opts) {      
+        /*
         $rating_statement    = Null;
         $profanity_statement = Null;
         $flagged_statement   = Null;
@@ -71,6 +72,7 @@ class DBFeedback extends S36DataObject {
             }
            
         }
+        */
         $sql = '  
             SELECT 
                   SQL_CALC_FOUND_ROWS
@@ -133,25 +135,27 @@ class DBFeedback extends S36DataObject {
                         Company
                         ON Company.companyId = Site.companyId
                     WHERE 1=1
-                        '.$siteid_statement.'
+                        '.$opts['siteid_statement'].'
                         AND Company.companyId = :company_id
                         AND Feedback.isDeleted = :is_deleted
                         AND Feedback.isPublished = :is_published
                         AND Feedback.isFeatured = :is_featured
-                        '.$rating_statement.'
-                        '.$profanity_statement.'
-                        '.$flagged_statement.'
-                        '.$filed_statement.'
+                        '.$opts['rating_statement'].'
+                        '.$opts['filed_statement'].'
+                        '.$opts['status_statement'].'
+                        '.$opts['priority_statement'].'
+                        '.$opts['sql_statement'].'
                     ORDER BY
-                        '.$mostcontent_statement.'
+                        '.$opts['date_statement'].'
                     LIMIT :offset, :limit 
         ';
- 
+
+        //Helpers::dump($sql); 
         $sth = $this->dbh->prepare($sql);      
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
-        $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
-        $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
-        $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
+        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         $sth->bindParam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindParam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();       
@@ -176,25 +180,23 @@ class DBFeedback extends S36DataObject {
                 Category
                    ON Category.categoryId = Feedback.categoryId
             WHERE 1=1
+                '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
                 AND Feedback.isDeleted = :is_deleted
                 AND Feedback.isPublished = :is_published
                 AND Feedback.isFeatured = :is_featured
-                '.$rating_statement.'
-                '.$profanity_statement.'
-                '.$flagged_statement.'
-                '.$filed_statement.'
             GROUP BY 
                 date_format 
             ORDER BY 
-                '.$mostcontent_statement.'
+                '.$opts['date_statement'].' 
         ';
 
+        //Helpers::dump($date_sql);
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
-        $sth->bindParam(':is_deleted', $is_deleted, PDO::PARAM_INT);
-        $sth->bindParam(':is_published', $is_published, PDO::PARAM_INT);
-        $sth->bindParam(':is_featured', $is_featured, PDO::PARAM_INT);
+        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         $sth->execute();
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS);
 
@@ -216,7 +218,7 @@ class DBFeedback extends S36DataObject {
         }
          
         $result_obj = new StdClass;
-        $result_obj->result = $result;//$grouped_data;//$result;
+        $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
     }
