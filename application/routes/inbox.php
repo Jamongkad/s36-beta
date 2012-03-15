@@ -2,11 +2,6 @@
 
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
-
-        print_r("Filter: ".$filter."<br>");
-        print_r("Filter Choice: ".$choice."<br>"); 
-        print_r(Input::get()); 
-
         $inbox = new Feedback\Services\InboxService; 
         $limit = 10;
 
@@ -27,6 +22,26 @@ return array(
         Helpers::dump($inbox->set_filters($filters));  
         Helpers::dump($inbox->present_feedback());
         */
+        $inbox->set_filters($filters);
+        $feedback = $inbox->present_feedback();
+
+        $admin_check = S36Auth::user();
+        $category = new DBCategory;
+        $view_data = Array(
+              'feedback' => $feedback->result
+            , 'pagination' => $feedback->pagination
+            , 'admin_check' => $admin_check
+            , 'categories' => $category->pull_site_categories()
+            , 'status' => DB::table('Status', 'master')->get()
+            , 'inbox_state' => Helpers::inbox_state($filter)
+            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
+        );
+        
+        if(!Input::get('_pjax')) { 
+            return View::of_layout()->partial('contents', 'inbox/inbox_index_view', $view_data);
+        } else {
+            echo View::make('inbox/inbox_index_view', $view_data);
+        }
 
         /*        
         $limit   = 10;

@@ -1,6 +1,10 @@
-<?if($feedback->result != null):?>
+<?if($feedback != null):?>
 <div class="the-feedbacks"> 
-        <?foreach($feedback->result as $feed):?>
+        <?foreach($feedback as $feeds):?>
+            <div style="padding-left: 20px;">
+                <h2><?=$feeds->head_date?></h2>
+            </div>
+            <?foreach($feeds->children as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
             <div class="feedback" id="<?=$id?>">
@@ -233,9 +237,8 @@
                     <span class="status-message"></span>
                 </div>
             </div>
+            <?endforeach?>
         <?endforeach?>
-
-
     <div class="c"></div>
     
     <?if($pagination):?>
