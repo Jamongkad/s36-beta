@@ -2,13 +2,7 @@
 
 class Permission {
     
-    public function __construct($input) {
-        /*
-        if(array_key_exists('perms', $input)) {
-            $this->supplier = new PermissionSupplier($input['perms']);
-        }
-        */
-        
+    public function __construct($input) { 
         $this->supplier = new PermissionSupplier($input);
     }
 

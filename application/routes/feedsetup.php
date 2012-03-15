@@ -123,9 +123,10 @@ return array(
         ));
     }),
       
-    'POST /feedsetup/save_widget' => function() {
+    'POST /feedsetup/save_widget' => function() { 
         $wdm = new WidgetDataManager;
-        $wdm->create_and_save_widget();
+        $wdm->create_and_save_widget(); 
+        //Helpers::dump(Input::get());
     },
 
     'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {

@@ -64,12 +64,17 @@
                 <br /><br />
                 <div class="widget-opts" id="display-info-target">
                     <table width="100%" cellpadding="4" class="display-info">
-                        <tr><td width="160" class="feedback-td-font">Display Name :</td><td width="80">
-                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, 1)?>
-                        </td>
-                        <td width="140" class="feedback-td-font">Website Url : </td><td>
-                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, 1)?>
-                        </td></tr>
+                        <tr>
+                            <td width="160" class="feedback-td-font">Display Name :</td>
+                            <td width="80">
+                                <?=Form::checkbox('perms[feedbacksetupdisplay][displayname]', 1, 1, array('disabled' => 'disabled'))?>
+                            </td>
+                            <?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1)?>
+                            <td width="160" class="feedback-td-font">Website Url : </td>
+                            <td width="80">
+                                <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, 1)?>
+                            </td>
+                        </tr>
                         <tr><td class="feedback-td-font">Display Image :  </td><td>
                         <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, 1)?>
                         </td>		
@@ -223,7 +228,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <strong style="font-size:11px;color:#000;">What to write?</strong>
+                            What to write?
                             <br />
                             <small style="line-height:normal">
                             Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 

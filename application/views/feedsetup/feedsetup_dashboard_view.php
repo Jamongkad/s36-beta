@@ -3,7 +3,7 @@
         <div class="widget-options">
 
             <h2 class="ico-widget widget">
-                <?=HTML::link('feedsetup/overview/display', 'Display Widgets', Array('class' => 'widget-overview-btn'))?> 
+                <?=HTML::link('feedsetup/overview/display', 'Feedback Display Setup', Array('class' => 'widget-overview-btn'))?> 
                 <small style="font-weight:normal;">(for displaying feedback on your websites)</small>
             </h2>
             <?//=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>   

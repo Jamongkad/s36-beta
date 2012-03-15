@@ -43,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <strong style="font-size:14px;">What to write?</strong>
+                        What to write?
                         <br />
                         <small style="line-height:normal">
                         Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 

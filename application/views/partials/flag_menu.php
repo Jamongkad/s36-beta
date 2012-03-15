@@ -73,7 +73,7 @@
                             //Default Nav 
                             $feedsetup_nav = Array(
                                  'feedsetup/all'  => 'WIDGET DASHBOARD'
-                               , 'feedsetup/widget_selection' => 'WIDGET CREATION'
+                               , 'feedsetup/widget_selection' => 'CREATE'
                                /*
                                , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
                                , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
