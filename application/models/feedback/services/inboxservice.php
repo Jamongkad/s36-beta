@@ -11,23 +11,8 @@ class InboxService {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
         $this->input = Input::get(); 
-    }
 
-    public function set_filters(Array $filters) {
-        $this->filters = $this->_check_filters($filters);
-    }
-
-    public function present_feedback() {
-        if ($this->filters) {
-            //pass filters to dbfeedback     
-            return $this->filters;
-            //return $this->dbfeedback->pull_feedback($this->filters);
-        }
-    }
-
-    //I am sorry but filters are hard (-_-)
-    public function _check_filters(Array $filters) {
-        $filter_structure = Array(
+        $this->filter_structure = Array(
             'all' => 'all'
           , 'published' => 'published'
           , 'featured'  => 'featured'
@@ -35,7 +20,7 @@ class InboxService {
           , 'deleted' => 'deleted'
         );
 
-        $choice_structure = Array(
+        $this->choice_structure = Array(
             'all' => 'all'
           , 'positive' => 'positive'
           , 'negative' => 'negative'
@@ -45,13 +30,53 @@ class InboxService {
           , 'mostcontent' => 'mostcontent'
         );
 
-        $date_structure = Array(
+        $this->date_structure = Array(
             'date_new' => 'date_new'
           , 'date_old' => 'date_old'
         );
+    }
 
-        $sql_statement = Null;
-        $rating_statement = Null;
+    public function set_filters(Array $filters) {
+        $this->filters = $this->_check_filters($filters);
+    }
+
+    public function present_feedback() {
+        if ($this->filters) {
+            //pass filters to dbfeedback     
+            $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
+            $feed_result = $this->dbfeedback->pull_feedback($this->filters);
+            
+            $data = Array();
+            foreach($date_result as $dates) { 
+                $head = new \StdClass;
+                $head->head_date = $dates->date_format;
+                $head->children = Array();
+                foreach($feed_result->result as $feed) { 
+                    $unix = strtotime($feed->date);
+                    $date = date("m.d.Y", $unix);
+                    if($date == $dates->date_format) {
+                        $head->children[] = $feed;    
+                    }                
+                } 
+                if($head->children) {
+                    $data[] = $head;     
+                } 
+            }
+
+            return $data;
+        }
+        //debug
+        /*
+        return Array(
+            'feedback' => $this->dbfeedback->pull_feedback($this->filters)
+          , 'dates' => $this->dbfeedback->pull_feedback_grouped_dates($this->filters)
+        );
+        */
+    }
+
+    //I am sorry but filters are hard (-_-)
+    public function _check_filters(Array $filters) {
+
         $date_statement = "Feedback.dtAdded DESC";;
 
         $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.intName = "default"';       
@@ -61,11 +86,11 @@ class InboxService {
 
         if ($filters['filter'] and $filters['choice']) {
             //check against filter structure     
-            if (!array_key_exists($filters['filter'], $filter_structure)) {
+            if (!array_key_exists($filters['filter'], $this->filter_structure)) {
                 throw new Exception("{$filters['filter']} not a valid filter structure data type.");
             } 
             
-            if (!array_key_exists($filters['choice'], $choice_structure)) {
+            if (!array_key_exists($filters['choice'], $this->choice_structure)) {
                 throw new Exception("{$filters['choice']} not a valid choice structure data type.");
             } 
 
@@ -85,7 +110,7 @@ class InboxService {
 
         if ($filters['filter'] and $filters['choice'] == false) {
             //check against choice structure     
-            if (!array_key_exists($filters['filter'], $choice_structure)) {
+            if (!array_key_exists($filters['filter'], $this->choice_structure)) {
                 throw new Exception("{$filters['filter']} not a valid choice structure data type.");
             } else {
                 $filters['choice'] = $filters['filter'];
@@ -94,7 +119,7 @@ class InboxService {
         }
 
         if ($filters['date']) {
-            if (!array_key_exists($filters['date'], $date_structure)) {
+            if (!array_key_exists($filters['date'], $this->date_structure)) {
                 throw new Exception("{$filters['date']} not a valid date structure data type.");
             } else {                
                 if($filters['choice'] == 'mostcontent') {
@@ -126,33 +151,47 @@ class InboxService {
         }
 
         //anchor statements 
-        if($filters['choice'] == 'profanity') {
-            $sql_statement = "AND Feedback.hasProfanity = 1";
-        } 
+        $sql_statement = call_user_func(function($filters) { 
+            if($filters['choice'] == 'profanity') {
+                return "AND Feedback.hasProfanity = 1";
+            } 
 
-        if($filters['choice'] == 'flagged') {
-            $sql_statement = "AND Feedback.isFlagged = 1";
-        }
+            if($filters['choice'] == 'flagged') {
+                return "AND Feedback.isFlagged = 1";
+            }
 
-        if ($filters['choice'] == 'positive' && !$filters['rating'])  {
-            $sql_statement = "AND Feedback.rating IN (4,5)";
-        }
+            if ($filters['choice'] == 'positive' && !$filters['rating'])  {
+                return "AND Feedback.rating IN (4,5)";
+            }
 
-        if ($filters['choice'] == 'negative' && !$filters['rating']) { 
-            $sql_statement = "AND Feedback.rating IN (1,2)";
-        }
+            if ($filters['choice'] == 'negative' && !$filters['rating']) { 
+                return "AND Feedback.rating IN (1,2)";
+            }
 
-        if ($filters['choice'] == 'neutral' && !$filters['rating']) { 
-            $sql_statement = "AND Feedback.rating = 3";
-        }
+            if ($filters['choice'] == 'neutral' && !$filters['rating']) { 
+                return "AND Feedback.rating = 3";
+            }
+
+            return null;
+        }, $filters); 
 
         //ephemeral statements
-        $rating_statement = $this->_sql_statement_helper(function($rating) {  
+        $numeric_check = function($id) {
+            if( !is_numeric($id) ) {
+                throw new \InvalidArgumentException("Site ID is integers only playah!");
+            } 
+        };
+
+        $siteid_statement = $this->_sql_statement_helper($filters['site_id'], function($id) {  
+            return "AND Feedback.siteId = $id";  
+        }, $numeric_check);
+
+        $rating_statement = $this->_sql_statement_helper($filters['rating'], function($rating) {  
             return "AND Feedback.rating = $rating";
-        }, $filters['rating']);
+        }, $numeric_check);
 
          
-        $priority_statement = $this->_sql_statement_helper(function($choice) {
+        $priority_statement = $this->_sql_statement_helper($filters['priority'], function($choice) {
             $choice = trim($choice, "'");
 
             if($choice === 'low') {
@@ -167,20 +206,15 @@ class InboxService {
                 return "AND (Feedback.priority > 60 AND Feedback.priority <= 100)";     
             }
 
-        }, $filters['priority']);
+        });
 
-
-        $category_statement = $this->_sql_statement_helper(function($category) { 
+        $category_statement = $this->_sql_statement_helper($filters['category'], function($category) { 
             return "AND Category.intName = $category";      
-        }, $filters['category']);
+        });
 
-        $status_statement = $this->_sql_statement_helper(function($status) { 
+        $status_statement = $this->_sql_statement_helper($filters['status'], function($status) { 
             return "AND Feedback.status = $status";
-        }, $filters['status']);
-
-        $siteid_statement = $this->_sql_statement_helper(function($id) {
-            return "AND Feedback.siteId = $id";  
-        }, $filters['site_id']);
+        });
 
         $filters['status_statement']   = $status_statement;
         $filters['priority_statement'] = $priority_statement;
@@ -193,12 +227,16 @@ class InboxService {
         return $filters;
     }
 
-    private function _sql_statement_helper($callback, $vector) { 
+    private function _sql_statement_helper($vector, $callback, $callback_filter=False) { 
         if($vector = Helpers::sanitize($vector)) {
-            $vector = $this->dbfeedback->quote($vector);
-            if(is_callable($callback)) {
-                return call_user_func($callback, $vector);     
+            if($callback_filter and is_callable($callback_filter)) {
+                call_user_func($callback_filter, $vector);      
+            }
+
+            if(is_callable($callback)) { 
+                return call_user_func($callback, $this->dbfeedback->quote($vector));     
             } 
+
         }  else {
             return null;     
         }

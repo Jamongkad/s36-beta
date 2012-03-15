@@ -3,78 +3,8 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers;
 
 class DBFeedback extends S36DataObject {
- 
-    public function pull_feedback($opts) {      
-        /*
-        $rating_statement    = Null;
-        $profanity_statement = Null;
-        $flagged_statement   = Null;
-        $rating_choices      = Null;
-        $siteid_statement    = Null;
-        
-        $filed_statement       = 'AND Category.intName = "default"';
-        $mostcontent_statement = 'Feedback.dtAdded DESC';
-        $is_deleted   = 0;
-        $is_published = 0;
-        $is_featured  = 0;
 
-        if($opts['site_id'] != False) {
-           $siteid_statement = "AND Feedback.siteId = {$opts['site_id']}";
-        }
-
-        if($opts['filter'] != False) {
-   
-            if( $opts['rating'] and in_array($opts['rating'], range(1, 5)) ) { 
-                $rating_statement = "AND Feedback.rating = {$opts['rating']}";     
-            }
-
-            if(is_string($opts['filter'])) {
-
-                if($opts['filter'] == 'deleted') {
-                    $is_deleted = 1; 
-                }
-
-                if($opts['filter'] == 'published') {
-                    $is_published = 1;     
-                }
-
-                if($opts['filter'] == 'featured') {
-                    $is_featured = 1; 
-                }
-
-                if($opts['filter'] == 'profanity' || $opts['choice'] == 'profanity') {
-                    $profanity_statement = "AND Feedback.hasProfanity = 1";
-                }
-
-                if($opts['filter'] == 'mostcontent' || $opts['choice'] == 'mostcontent') {
-                    $mostcontent_statement = "word_count DESC";
-                }
-
-                if($opts['filter'] == 'flagged' || $opts['choice'] == 'flagged') {
-                    $flagged_statement = "AND Feedback.isFlagged = 1";
-                }
-
-                if($opts['filter'] == 'filed' || $opts['choice'] == 'filed') {
-                    $filed_statement = 'AND Category.intName != "default"'; 
-                }
-
-                if($opts['filter'] == 'positive' || $opts['choice'] == 'positive') {
-                    $rating_statement = "AND Feedback.rating IN (4,5)";     
-                }
-
-                if($opts['filter'] == 'negative' || $opts['choice'] == 'negative') {
-                    $rating_statement = "AND Feedback.rating IN (1,2)";     
-                }
-
-                if($opts['filter'] == 'neutral' || $opts['choice'] == 'neutral') {
-                    $rating_statement = "AND Feedback.rating IN (3)";     
-                }
-            }
-           
-        }
-        */
-        $sql = '  
-            SELECT 
+    private $select_vars = '
                   SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
                 , Category.intName
@@ -100,23 +30,52 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.rating = 4 THEN "GOOD"
                     WHEN Feedback.rating = 5 THEN "EXCELLENT"
                   END AS rating
+                , CASE 
+                    WHEN Feedback.permission = 1 THEN "full-permission"
+                    WHEN Feedback.permission = 2 THEN "limited-permission"
+                    WHEN Feedback.permission = 3 THEN "private-permission"
+                  END AS permission_css
                 , Feedback.isFeatured
                 , Feedback.isFlagged
                 , Feedback.isPublished
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted
+                , Feedback.displayName
+                , Feedback.displayImg
+                , Feedback.displayCompany
+                , Feedback.displayPosition
+                , Feedback.displayURL
+                , Feedback.displayCountry
+                , Feedback.displaySbmtDate
+                , Feedback.indLock
                 , Contact.contactId AS contactid
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
+                , Contact.email AS email
+                , Contact.profileLink
+                , Contact.position AS position
+                , Contact.website AS url
+                , Contact.city AS city
+                , Contact.companyName AS companyname
                 , Contact.avatar AS avatar
                 , Contact.loginType
-                , Contact.profileLink
+                , Contact.ipaddress
+                , Contact.browser
                 , Country.name AS countryname
                 , Country.code AS countrycode
+                , Contact.ipaddress
+                , Contact.browser
+                , Contact.avatar AS avatar
                 , Site.siteId AS siteid
-                /* Temporary fix.. */
-                , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
+                , Site.name AS sitename
+                , Site.domain AS sitedomain
+                , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
+ 
+    public function pull_feedback($opts) {      
+        $sql = '  
+            SELECT 
+                '.$this->select_vars.'
             FROM 
                 Feedback
                     INNER JOIN 
@@ -142,6 +101,7 @@ class DBFeedback extends S36DataObject {
                         AND Feedback.isFeatured = :is_featured
                         '.$opts['rating_statement'].'
                         '.$opts['filed_statement'].'
+                        '.$opts['category_statement'].'
                         '.$opts['status_statement'].'
                         '.$opts['priority_statement'].'
                         '.$opts['sql_statement'].'
@@ -150,7 +110,6 @@ class DBFeedback extends S36DataObject {
                     LIMIT :offset, :limit 
         ';
 
-        //Helpers::dump($sql); 
         $sth = $this->dbh->prepare($sql);      
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
@@ -162,6 +121,14 @@ class DBFeedback extends S36DataObject {
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS); 
+  
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
+    }
+
+    public function pull_feedback_grouped_dates($opts) {
         $date_sql = '
             SELECT   
                 DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
@@ -185,41 +152,26 @@ class DBFeedback extends S36DataObject {
                 AND Feedback.isDeleted = :is_deleted
                 AND Feedback.isPublished = :is_published
                 AND Feedback.isFeatured = :is_featured
+                '.$opts['rating_statement'].'
+                '.$opts['filed_statement'].'
+                '.$opts['category_statement'].'
+                '.$opts['status_statement'].'
+                '.$opts['priority_statement'].'
+                '.$opts['sql_statement'].'
             GROUP BY 
                 date_format 
             ORDER BY 
                 '.$opts['date_statement'].' 
         ';
-        //Helpers::dump($date_sql);
+
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         $sth->execute();
-        $date_result = $sth->fetchAll(PDO::FETCH_CLASS);
-
-        $data = Array();
-        foreach($date_result as $dates) { 
-            $head = new StdClass;
-            $head->head_date = $dates->date_format;
-            $head->children = Array();
-            foreach($result as $feed) { 
-                $unix = strtotime($feed->date);
-                $date = date("m.d.Y", $unix);
-                if($date == $dates->date_format) {
-                    $head->children[] = $feed;    
-                }                
-            } 
-            if($head->children) {
-                $data[] = $head;     
-            } 
-        }
-         
-        $result_obj = new StdClass;
-        $result_obj->result = $data;//$result;
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;
+        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        return $date_result;
     }
 
     public function pull_feedback_by_company($opts) {
@@ -241,45 +193,7 @@ class DBFeedback extends S36DataObject {
 
         $sql = '
             SELECT 
-                  SQL_CALC_FOUND_ROWS
-                  Feedback.feedbackId AS id
-                , Category.intName
-                , Category.name AS category
-                , Feedback.status AS status
-                , CASE
-                    WHEN Feedback.priority < 30 THEN "low"
-                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
-                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
-                  END AS priority
-                , Feedback.text
-                , Feedback.dtAdded AS date
-                , Feedback.rating
-                , Feedback.isFeatured
-                , Feedback.isFlagged
-                , Feedback.isPublished
-                , Feedback.isArchived
-                , Feedback.isSticked
-                , Feedback.isDeleted
-                , Feedback.displayName
-                , Feedback.displayImg
-                , Feedback.displayCompany
-                , Feedback.displayPosition
-                , Feedback.displayURL
-                , Feedback.displayCountry
-                , Feedback.displaySbmtDate
-                , Feedback.indLock
-                , Contact.firstName AS firstname
-                , Contact.lastName AS lastname
-                , Contact.email AS email
-                , Contact.position AS position
-                , Contact.website AS url
-                , Contact.city AS city
-                , Contact.companyName AS companyname
-                , Contact.avatar AS avatar
-                , Contact.loginType
-                , Country.name AS countryname
-                , Country.code AS countrycode
-                , LENGTH(text) AS textlength
+                '.$this->select_vars.'
             FROM 
                 Feedback
                     INNER JOIN 
@@ -326,66 +240,7 @@ class DBFeedback extends S36DataObject {
     public function pull_feedback_by_id($feedback_id) { 
         $sth = $this->dbh->prepare('
             SELECT 
-                  Feedback.feedbackId AS id
-                , Category.intName
-                , Category.name AS category
-                , Category.categoryId
-                , Feedback.status AS status
-                , CASE
-                    WHEN Feedback.priority < 30 THEN "low"
-                    WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
-                    WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
-                  END as priority
-                , CASE 
-                    WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
-                    WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
-                    WHEN Feedback.permission = 3 THEN "PRIVATE"
-                  END AS permission
-                , CASE 
-                    WHEN Feedback.permission = 1 THEN "full-permission"
-                    WHEN Feedback.permission = 2 THEN "limited-permission"
-                    WHEN Feedback.permission = 3 THEN "private-permission"
-                  END AS permission_css
-                , CASE 
-                    WHEN Feedback.rating = 1 THEN "POOR"
-                    WHEN Feedback.rating = 2 THEN "POOR"
-                    WHEN Feedback.rating = 3 THEN "AVERAGE"
-                    WHEN Feedback.rating = 4 THEN "GOOD"
-                    WHEN Feedback.rating = 5 THEN "EXCELLENT"
-                  END AS str_rating
-                , Contact.contactId
-                , Contact.firstName AS firstname
-                , Contact.lastName AS lastname
-                , Contact.email AS email
-                , Contact.position AS position
-                , Contact.website AS url
-                , Contact.city AS city
-                , Contact.companyName AS companyname
-                , Contact.avatar AS avatar
-                , Contact.loginType
-                , Contact.ipaddress
-                , Contact.browser
-                , Site.siteId
-                , Feedback.text
-                , Feedback.dtAdded AS date
-                , Feedback.rating
-                , Feedback.isFeatured
-                , Feedback.isFlagged
-                , Feedback.isPublished
-                , Feedback.isArchived
-                , Feedback.isSticked
-                , Feedback.isDeleted
-                , Feedback.displayName
-                , Feedback.displayImg
-                , Feedback.displayCompany
-                , Feedback.displayPosition
-                , Feedback.displayURL
-                , Feedback.displayCountry
-                , Feedback.displaySbmtDate
-                , Country.code AS countrycode
-                , Country.name AS countryname
-                , Site.name AS sitename
-                , Site.domain AS sitedomain
+                '.$this->select_vars.'
             FROM 
                 Feedback
                     INNER JOIN

@@ -210,14 +210,14 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'offset'=> 0
-            , 'site_id'=> false
-            , 'filter'=> 'filed'
-            , 'choice'=> 'positive'
+            , 'site_id'=> false 
+            , 'filter'=> 'all'
+            , 'choice'=> false
             , 'date'  => false
             , 'rating' => false
             , 'category' => false
             , 'priority' => false //low medium high
-            , 'status' => 'new' //new inprogress closed
+            , 'status' => false //new inprogress closed
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());

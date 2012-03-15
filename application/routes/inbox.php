@@ -7,12 +7,23 @@ return array(
         print_r("Filter Choice: ".$choice."<br>"); 
         print_r(Input::get()); 
 
-        $feedback = new Feedback\Services\InboxService; 
-        $feedback->set_filters($filters);
-        $feedback->present_feedback();
+        $inbox = new Feedback\Services\InboxService; 
+        $filters = array(
+              'limit'=> 10
+            , 'offset'=> 0
+            , 'site_id'=> false 
+            , 'filter'=> $filter
+            , 'choice'=> $choice
+            , 'date'  => false
+            , 'rating' => false
+            , 'category' => false
+            , 'priority' => false //low medium high
+            , 'status' => false //new inprogress closed
+        );
+        Helpers::dump($inbox->set_filters($filters));  
+        Helpers::dump($inbox->present_feedback());
         */
         
-
         $limit   = 10;
         $site_id = False;
         $rating  = False;
