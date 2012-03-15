@@ -2,28 +2,33 @@
 
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
-        /*
+
         print_r("Filter: ".$filter."<br>");
         print_r("Filter Choice: ".$choice."<br>"); 
         print_r(Input::get()); 
 
         $inbox = new Feedback\Services\InboxService; 
+        $limit = 10;
+
+        if(Input::get('limit')) $limit= (int)Input::get('limit');
+
         $filters = array(
-              'limit'=> 10
-            , 'offset'=> 0
-            , 'site_id'=> false 
+              'limit'=> $limit
+            , 'site_id'=> Input::get('site_id')
             , 'filter'=> $filter
             , 'choice'=> $choice
-            , 'date'  => false
-            , 'rating' => false
-            , 'category' => false
-            , 'priority' => false //low medium high
-            , 'status' => false //new inprogress closed
+            , 'date'  => Input::get('date')
+            , 'rating' => Input::get('rating')
+            , 'category' => Input::get('category')
+            , 'priority' => Input::get('priority') //low medium high
+            , 'status' => Input::get('status') //new inprogress closed
         );
+        /*
         Helpers::dump($inbox->set_filters($filters));  
         Helpers::dump($inbox->present_feedback());
         */
-        
+
+        /*        
         $limit   = 10;
         $site_id = False;
         $rating  = False;
@@ -59,7 +64,7 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         }
-
+        */
   
     }), 
 );

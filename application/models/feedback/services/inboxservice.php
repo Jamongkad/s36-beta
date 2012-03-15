@@ -10,8 +10,7 @@ class InboxService {
     public function __construct() {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
-        $this->input = Input::get(); 
-
+        //$this->input = Input::get(); 
         $this->filter_structure = Array(
             'all' => 'all'
           , 'published' => 'published'
@@ -43,12 +42,10 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
-
             $this->pagination->selectable_pages(4);
-            //print_r($this->pagination->get_page());
             $offset = ($this->pagination->get_page() - 1) * $this->filters['limit'];
-            $this->filters['offset'] = $offset;
 
+            $this->filters['offset'] = $offset;
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
             $feed_result = $this->dbfeedback->pull_feedback($this->filters);
 

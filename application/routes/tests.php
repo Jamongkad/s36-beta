@@ -209,7 +209,6 @@ return array(
         $inbox_service = new Feedback\Services\InboxService;
         $filters = array(
               'limit'=> 2
-            //, 'offset'=> 0
             , 'site_id'=> false 
             , 'filter'=> 'all'
             , 'choice'=> false
