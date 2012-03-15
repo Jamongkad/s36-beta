@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB;
+use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
 
 class InboxService {
 
@@ -43,12 +43,21 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
+
+            $this->pagination->selectable_pages(4);
+            //print_r($this->pagination->get_page());
+            $offset = ($this->pagination->get_page() - 1) * $this->filters['limit'];
+            $this->filters['offset'] = $offset;
+
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
             $feed_result = $this->dbfeedback->pull_feedback($this->filters);
+
+            $this->pagination->records($feed_result->total_rows);
+            $this->pagination->records_per_page($this->filters['limit']);
             
             $data = Array();
             foreach($date_result as $dates) { 
-                $head = new \StdClass;
+                $head = new StdClass;
                 $head->head_date = $dates->date_format;
                 $head->children = Array();
                 foreach($feed_result->result as $feed) { 
@@ -58,12 +67,18 @@ class InboxService {
                         $head->children[] = $feed;    
                     }                
                 } 
+           
                 if($head->children) {
                     $data[] = $head;     
                 } 
+        
             }
 
-            return $data;
+            $data_obj = new StdClass;
+            $data_obj->result = $data;
+            $data_obj->num_rows = $feed_result->total_rows;
+            $data_obj->pagination = $this->pagination->render();
+            return $data_obj;
         }
         //debug
         /*

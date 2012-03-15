@@ -208,8 +208,8 @@ return array(
     'GET /tests/inboxservice' => function() {
         $inbox_service = new Feedback\Services\InboxService;
         $filters = array(
-              'limit'=> 10
-            , 'offset'=> 0
+              'limit'=> 2
+            //, 'offset'=> 0
             , 'site_id'=> false 
             , 'filter'=> 'all'
             , 'choice'=> false
