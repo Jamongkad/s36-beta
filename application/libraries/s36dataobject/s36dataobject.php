@@ -9,6 +9,7 @@ abstract class S36DataObject {
 
     public function __construct() { 
         $this->dbh = DB::connection($this->db_name)->pdo;       
+        //TODO: Take not if no login cookie you cannot test inbox specific data retrieval
         if(S36Auth::check()) {
             $this->user_id = S36Auth::user()->userid;             
             $this->company_id = S36Auth::user()->companyid;             
