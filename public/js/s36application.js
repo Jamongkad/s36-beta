@@ -223,25 +223,7 @@ jQuery(function($) {
             window.location = $(this).children('a').attr('href');
         });
     });
-
-
-    $('select[name="site_choice"]').bind('change', function(e) {
-        var select = $(this).val();
-        window.location = (select == 'all') ? "all" : "?site_id=" + $(this).val();
-    });
-
-    $('select[name="feedback-limit"]').bind('change', function(e) {
-        insertParam('limit', $(this).val());
-    });
-
-    $('select[name="rating-limit"]').bind('change', function(e) {
-        insertParam('rating', $(this).val());
-    });
-
-    $('select[name="category-filter"]').bind('change', function(e) {
-        insertParam('category', $(this).val());
-    });
-    
+ 
     var userInfo = new FeedbackDisplayToggle({feed_id: $('#feed-id'), hrefaction: $('#toggle_url')});
     userInfo.toggleDisplays($('.user-info input[name*="display"]'), 'feedid');
      
@@ -492,32 +474,3 @@ jQuery(function($) {
     $("#widget-preview").hide();
     new ZClip();
 });
-
-//for dynamic GET parameters
-function insertParam(key, value) {
-    key = escape(key); value = escape(value);
-
-    var kvp = document.location.search.substr(1).split('&');
-    if (kvp == '') {
-        document.location.search = '?' + key + '=' + value;
-    } else { 
-        var i=kvp.length; 
-        var x; 
-        while(i--) {
-            x = kvp[i].split('=');
-
-            if (x[0]==key) {
-                x[1] = value;
-                kvp[i] = x.join('=');
-                break;
-            }
-        }
-
-        if (i<0) {
-            kvp[kvp.length] = [key,value].join('=');
-        }
-        //this will reload the page, it's likely better to store this until finished
-        document.location.search = kvp.join('&'); 
-    }
-
-}

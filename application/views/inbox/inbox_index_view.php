@@ -1,9 +1,7 @@
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
         <?foreach($feedback as $feeds):?>
-            <div style="padding-left: 20px;">
-                <h2><?=$feeds->head_date?></h2>
-            </div>
+            <h2 style="padding:12px; float:left"><?=$feeds->head_date?></h2>
             <?foreach($feeds->children as $feed):?>
             <p></p>
             <? $id = $feed->id ?>

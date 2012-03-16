@@ -5,21 +5,39 @@
             <input type="checkbox" class="click-all"/>
         </div>
         <div class="right">
-            <div class="g1of5">
+            <div class="select-options">
                 <?=View::make('partials/feedback_select_controls')?>
             </div>
-            <div class="g1of5">
-                <label>SORT BY</label>
-                <select>
-                    <option>Date</option>
-                    <option>Status</option>
-                    <option>Priority</option>
+            <div class="select-options">
+                <label>Date</label>
+                <select name="date-filter">
+                    <option value="default">-</option>
+                    <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>newest</option>
+                    <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>oldest</option>
                 </select>
             </div>
-            <div class="g1of5">
-                <label>RATING</label>
+            <div class="select-options">
+                <label>Priority</label>
+                <select name="priority-filter">
+                    <option value="default">-</option>
+                    <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>low</option>
+                    <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>medium</option>
+                    <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>high</option>
+                </select>
+            </div>
+            <div class="select-options">
+                <label>Status</label>
+                <select name="status-filter">
+                    <option value="default">-</option>
+                    <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>new</option>
+                    <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>in progress</option>
+                    <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>closed</option>
+                </select>
+            </div>
+            <div class="select-options">
+                <label>Rating</label>
                 <select name="rating-limit">
-                    <option>All</option>
+                    <option value="default">-</option>
                     <?foreach(array_reverse(range(1, 5)) as $rating):?>
                         <option value="<?=$rating?>" <?=((Input::get('rating') == $rating) ? 'selected' : null)?>><?=$rating?></option>
                     <?endforeach?> 
@@ -28,21 +46,22 @@
             <?
             $regex = Helpers::nav_regex();
             if($regex->filed):?>
-            <div class="g1of5">
-                <label>CATEGORY</label>
+            <div class="select-options">
+                <label>Category</label>
                 <?$cat = new DBCategory; ?>
                 <select name="category-filter" style="width: 50%">
-                    <option>All</option>
+                    <option value="default">-</option>
                     <?foreach($cat->pull_site_categories() as $category):?>
                         <option value="<?=$category->intname?>" <?=((Input::get('category') == $category->intname) ? 'selected' : null)?>><?=$category->name?></option> 
                     <?endforeach?>
                 </select>
             </div>
             <?endif?>
-            <div class="g1of5">
+            <div class="select-options">
                 <label>Display</label>
                 <?$limit = Input::get('limit')?>
                 <select name="feedback-limit">
+                    <option value="default">-</option>
                     <option value="10" <?=($limit == 10) ? "selected" : null?>>10</option>
                     <option value="20" <?=($limit == 20) ? "selected" : null?>>20</option>
                     <option value="50" <?=($limit == 50) ? "selected" : null?>>50</option>

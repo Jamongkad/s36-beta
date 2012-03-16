@@ -37,6 +37,7 @@
         <?=HTML::script('js/FeedbackBlockDisplay.js')?>
         <?=HTML::script('js/DropDownChange.js')?>
         <?=HTML::script('js/InboxStatusChange.js')?>
+        <?=HTML::script('js/InboxFilters.js')?>
         <?=HTML::script('js/FeedSetup.js')?>
         <?=HTML::script('js/Status.js')?>
 
