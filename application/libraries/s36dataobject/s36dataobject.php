@@ -12,11 +12,7 @@ abstract class S36DataObject {
         if(S36Auth::check()) {
             $this->user_id = S36Auth::user()->userid;             
             $this->company_id = S36Auth::user()->companyid;             
-        } else {
-            echo "36Stories Account not detected.";
-            return null;
-        }
-
+        } 
     }
 
     public function escape($string) {
