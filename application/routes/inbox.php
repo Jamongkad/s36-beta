@@ -18,10 +18,10 @@ return array(
             , 'priority' => Input::get('priority') //low medium high
             , 'status' => Input::get('status') //new inprogress closed
         );
-        Helpers::dump($filters);
-        /*
-        Helpers::dump($inbox->set_filters($filters));  
+        //Helpers::dump($filters);
+        $inbox->set_filters($filters);
         Helpers::dump($inbox->present_feedback());
+        /*
         $inbox->set_filters($filters);
         $feedback = $inbox->present_feedback();
 
