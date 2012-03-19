@@ -19,9 +19,15 @@
 	left: 50%;
 	background-color: white;
 	z-index:100002;
-	-webkit-border-radius:4px;
-	-moz-border-radius:4px;
-	border-radius:4px;	
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;	
+}
+
+#s36_modalbox iframe{
+ -webkit-border-radius:10px;
+ -moz-border-radius:10px;
+ border-radius:10px;
 }
 
 #s36PopupWidgetShadow {

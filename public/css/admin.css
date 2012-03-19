@@ -435,7 +435,7 @@ div.button-gray:hover{ background:#dce9f5;}
 .feedback-td-font { font-size: 12px; }
 
 #lightbox {
-	position: absolute;top: 0;left: 50%;width: 400px;margin-left: -200px;padding:0px;background: #FFF;z-index: 100001;display: none;border:2px solid #6b7984;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-align:center;
+	position: absolute;top: 0;left: 50%;width: 400px;margin-left: -200px;padding:0px;background: #FFF;z-index: 100001;display: none;border:2px solid #6b7984;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;text-align:center;
 }
 #lightbox-shadow{
 	position: fixed;
@@ -451,6 +451,8 @@ div.button-gray:hover{ background:#dce9f5;}
 	z-index: 100000;
 	display: none;
 }
+
+#lightbox iframe{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
 
 #mainbodywrapper{width:100%;height:auto;}
 #mainbodycontent{width:880px;height:auto;margin:0 auto;}
