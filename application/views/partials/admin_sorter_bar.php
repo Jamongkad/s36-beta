@@ -1,4 +1,4 @@
-<?if(!preg_match_all('/(dashboard|feedsetup|displaysetup|displaypreview|contacts|settings|help|feedback\/(modifyfeedback|reply_to))/', Request::uri(), $matches)):?>
+<?if(!preg_match_all('/(dashboard|feedsetup|displaysetup|displaypreview|contacts|admin|settings|help|feedback\/(modifyfeedback|reply_to))/', Request::uri(), $matches)):?>
 <div class="admin-sorter-bar">
     <div class="sorter-bar">
         <div class="left">
