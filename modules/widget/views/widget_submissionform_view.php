@@ -110,10 +110,10 @@
             <div id="step_2" class="s36_pages"> 
             	<h1>Give us permission for your feedback</h1>
                 <div id="good-feedback-message">
-                    <h3 style="padding-left:25px;padding-right:15px;padding-top:25px;padding-bottom:10px">
-                        Thanks for giving us an excellent/good rating!<br/>
+                    <p style="font-size:20px;padding-left:25px;padding-right:15px;padding-top:25px;padding-bottom:10px">
+                        Thanks for giving us an excellent/good rating!<br/><br/>
                         Could we feature your positive feedback as a testimonial?
-                    </h3> 
+                    </p> 
                 </div>
                 <div class="step-contents">
                 	<div id="s36_pemissions">
