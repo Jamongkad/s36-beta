@@ -97,7 +97,7 @@
                     <br />
                     <h4>Tells us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h4>
                     <div id="s36_whattowrite">
-                    	<h4><?=$form_question?></h4>
+                    	<p><?=$form_question?></p>
                     <br />
                     </div>
                     <div class="feedback">
@@ -334,9 +334,11 @@
         	<a href="javascript:;" id="cancel_cropbtn" class="s36_btn cropbtn">Cancel</a>
             <a href="javascript:;" id="prev" class="s36_btn">Back</a>
         </div>
+        <!--Should take company name...
         <div class="s36_footertext">
         	Powered by 36Stories
         </div>
+        -->
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
             <a href="javascript:;" id="next" class="s36_btn">Next</a>
