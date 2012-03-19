@@ -5,13 +5,6 @@
 <?=Form::hidden('username', $user->username)?>
 <div class="block">
     <table cellpadding="5" width="100%">
-        <!--
-        <tr>
-            <td width="15%"><strong>From :</strong></td>
-            <td width="50%"><input type="text" class="regular-text"/></td>
-            <td class="small">Configure your brand/company name here that your user will recognize (e.g. Razer)</td>
-        </tr>
-        -->
         <tr>
             <td width="15%"><strong>Reply To :</strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>

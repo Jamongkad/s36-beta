@@ -34,7 +34,6 @@
 
         <?=HTML::script('js/ZClip.js')?> 
         <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
         <?=HTML::script('js/DropDownChange.js')?>
         <?=HTML::script('js/InboxStatusChange.js')?>
         <?=HTML::script('js/InboxFilters.js')?>

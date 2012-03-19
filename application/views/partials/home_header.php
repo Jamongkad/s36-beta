@@ -10,7 +10,6 @@
         <?=HTML::script('js/jquery-1.7.1.min.js')?>
 
         <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/FeedbackBlockDisplay.js')?>
         <?=HTML::script('js/DropDownChange.js')?>
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>

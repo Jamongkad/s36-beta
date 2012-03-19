@@ -16,7 +16,6 @@ class DBAccount extends S36DataObject {
         
         $encrypt = new Crypter;
         $password_string = "p455w0rd";
-
         $password = crypt($password_string);
         $email = $this->quote("ryanchua6@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
@@ -35,7 +34,6 @@ class DBAccount extends S36DataObject {
                            VALUES (@company_id, "mathew", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
         $this->dbh->query('SET @user_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO AuthAssignment (`itemname`, `userid`) VALUES ("Admin", @user_id)');
-        //$this->dbh->query('INSERT INTO FeedbackBlock (`siteId`, `themeId`, `formId`) VALUES(@site_id, 1, 1)');
         $this->dbh->query('INSERT INTO Category (`companyId`, `intName`, `name`, `changeable`) 
                            VALUES
                               (@company_id, "default", "Inbox", 0) 

@@ -278,10 +278,6 @@ class DBFeedback extends S36DataObject {
                   ->update(array('indLock' => 0));    
     }
 
-    public function _toggle_feedbackblock($column, $block_id, $state) { 
-        return $this->_toggle_state('FeedbackBlock', 'feedbackblockId', $block_id, $column, $state);
-    }
-
     public function _toggle_multiple($mode, $block_id, $extra=False) { 
 
         //We need this to reset internal category id to default

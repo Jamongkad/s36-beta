@@ -204,6 +204,7 @@ return array(
     },
 
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
+
         $user = S36Auth::user();         
         $feedback_data = $feedback->pull_feedback_by_id($id);
 
@@ -214,6 +215,7 @@ return array(
           , 'errors' => Array()
           , 'input' => Array('subject' => null, 'message' => null)
         ));
+
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
