@@ -146,6 +146,7 @@ PageCycle.prototype.cycle_prev = function() {
 		|  Next button pressed
 		-------------------------*/	
         this._debug("Page 2");
+        console.log(this.rating);
 		if(next){	
 			var permission = $('[name="your_permission"]:checked').size();
             var fb_profile_check = $('#fb_flag').val();
