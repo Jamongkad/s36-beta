@@ -123,7 +123,7 @@
                                 <div class="s36_perm_text">
                                 	<h3>Yes, with full permission</h3>
                                     <p>
-                                        By selecting this option you are giving us full permission to publish or feature your feedback in any form we deem fit. 
+                                        This allows us to use the positive feedback anywhere and everywhere we want. 
                                     </p>
                                 </div>
                             </div>
@@ -140,7 +140,9 @@
                                 </div>
                                 <div class="s36_perm_text">
                                 	<h3>Yes, but with limited permission</h3>
-                                    <p>By selecting this option you are giving us limited permission to publish or feature your feedback on our website only.</p>
+                                    <p>
+                                        This allows us to use the feedback only on the website.
+                                    </p>
                                 </div>
                             </div>
                             </label>
@@ -156,7 +158,9 @@
                                 </div>
                                 <div class="s36_perm_text">
                                 	<h3>Keep your feedback private</h3>
-                                    <p>By selecting this option you are telling us to keep your feedback private and within the confines of our business organization.</p>
+                                    <p>
+                                        This feedback is NOT public. 
+                                    </p>
                                 </div>
                             </div>
                             </label>
