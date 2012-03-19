@@ -107,8 +107,14 @@
             </div>
             
             <!-- page 2 (permission selection text) -->
-            <div id="step_2" class="s36_pages">
+            <div id="step_2" class="s36_pages"> 
             	<h1>Give us permission for your feedback</h1>
+                <div id="good-feedback-message">
+                    <h3>
+                        Thanks for giving us an excellent/good rating!<br/>
+                        Could we feature your positive feedback as a testimonial?
+                    </h3> 
+                </div>
                 <div class="step-contents">
                 	<div id="s36_pemissions">
                     	<div class="s36_block full">
@@ -207,7 +213,7 @@
 
             <!--Start of Form 4-->
             <div id="step_4" class="s36_pages">
-            	<h1>Please Check your details below</h1>
+            	<h1>Please check your details below</h1>
                 <input type="hidden" id="profile_link" value="">
                 <div class="step-contents">
                 	<table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
