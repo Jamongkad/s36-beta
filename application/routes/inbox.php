@@ -19,9 +19,11 @@ return array(
             , 'status' => Input::get('status') //new inprogress closed
         );
         //Helpers::dump($filters);
+        /*
         $inbox->set_filters($filters);
         Helpers::dump($inbox->present_feedback());
-        /*
+        */
+
         $inbox->set_filters($filters);
         $feedback = $inbox->present_feedback();
 
@@ -42,6 +44,6 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
-        */
+
     }), 
 );

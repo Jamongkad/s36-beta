@@ -91,7 +91,7 @@
                 <ul>
                     <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
-                    <li class="delete"><?=HTML::link('/inbox/deleted', 'Deleted Feedback')?>
+                    <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?>
 
                     <?$feedback = new Feedback\Repositories\DBFeedback;
                       if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
@@ -206,7 +206,7 @@
 
                 <?if(preg_match_all('/deleted/', Request::uri(), $matches)):?>
                     <div class="current-page trash"> 
-                        DELETED<!--<span>There were 27 new feedback since your last visit.</span>--> 
+                        DELETED 
                     </div>
                 <?endif?>
 
