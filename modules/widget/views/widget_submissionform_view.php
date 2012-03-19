@@ -111,7 +111,7 @@
             	<h1>Give us permission for your feedback</h1>
                 <div class="step-contents">
                 	<div id="s36_pemissions">
-                    	<div class="s36_block">
+                    	<div class="s36_block full">
                         	<div class="s36_perm_radio">
                             	<input type="radio" id="permission1" name="your_permission" value="1" />
                             </div>
@@ -129,7 +129,7 @@
                             </div>
                             </label>
                         </div>
-                        <div class="s36_block">
+                        <div class="s36_block limited">
                         	<div class="s36_perm_radio">
                             	<input type="radio" id="permission2" name="your_permission" value="2" />
                             </div>

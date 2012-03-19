@@ -298,3 +298,8 @@ input:focus{border:1px solid #b1d1e4;outline:#b1d1e4;box-shadow:#daecf8 0px 0px 
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
+.full .s36_perm_icon{background:#daeec9;}
+.full .s36_perm_radio{padding-top:58px;}
+.limited .s36_perm_details{background:#faf1d4;}
+.limited .s36_perm_icon{background:#faf1d4;}
