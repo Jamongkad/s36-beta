@@ -26,7 +26,7 @@ class Helpers {
 
         $filter = function($url) use ($type, $request) {
             $url_match = $url . (($type) ? '/'.$type : null);
-            $regex_match = '~'.$url_match.'~';
+            $regex_match = '~^'.$url_match.'$~';
             return preg_match($regex_match, $request, $matches);   
         };
         
@@ -34,8 +34,7 @@ class Helpers {
             return array_filter($urls, $filter);
         } 
 
-        return $filter($urls);
-
+        return call_user_func($filter, $urls);     
     }
 
     public static function nav_switcher() { 
