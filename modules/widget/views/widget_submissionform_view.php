@@ -214,6 +214,11 @@
             <!--Start of Form 4-->
             <div id="step_4" class="s36_pages">
             	<h1>Please check your details below</h1>
+                <div id="bad-feedback-message">
+                    <p style="font-size:14px;padding-left:25px;padding-right:15px;padding-top:25px;">
+                        Thanks for your feedback. In order for us to get back to you, fill in your contact details below.
+                    </p> 
+                </div>
                 <input type="hidden" id="profile_link" value="">
                 <div class="step-contents">
                 	<table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">

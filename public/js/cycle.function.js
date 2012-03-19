@@ -123,9 +123,11 @@ PageCycle.prototype.cycle_prev = function() {
 
             if((this.rating == 5) || (this.rating == 4)) {
                 //console.log(this.rating);    
-                $('#good-feedback-message').show();
+                $('#good-feedback-message').show();  
+                $('#bad-feedback-message').hide();
             } else { 
                 $('#good-feedback-message').hide();
+                $('#bad-feedback-message').show();
             }
             
 			if(this.feedback.length > 0){
