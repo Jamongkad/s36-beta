@@ -64,7 +64,7 @@
                             
 
                             $feedsetup_nav = Array( 
-                                 'feedsetup/all'  => 'WIDGET DASHBOARD' 
+                                 'feedsetup'  => 'WIDGET DASHBOARD' 
                             );
 
                             $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
@@ -72,7 +72,7 @@
                         } else {
                             //Default Nav 
                             $feedsetup_nav = Array(
-                                 'feedsetup/all'  => 'WIDGET DASHBOARD'
+                                 'feedsetup'  => 'WIDGET DASHBOARD'
                                , 'feedsetup/widget_selection' => 'CREATE'
                                /*
                                , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'

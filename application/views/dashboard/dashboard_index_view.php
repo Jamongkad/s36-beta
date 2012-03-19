@@ -168,6 +168,6 @@
 
       <div class="woops">
             <h2>Woops. Since there's no feedback. We are unable to return any meaningful data.</h2><br/><br/>
-            <p>Have you <?=HTML::link('feedsetup/all', 'set up your feedback form')?> on your website already?</p>
+            <p>Have you <?=HTML::link('feedsetup', 'set up your feedback form')?> on your website already?</p>
       </div> 
 <?endif?>

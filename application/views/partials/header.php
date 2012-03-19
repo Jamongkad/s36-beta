@@ -78,7 +78,7 @@
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->feedsetup ? ' class="selected setup"' : ' class="setup"')?>>
-                        <?=HTML::link('feedsetup/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Feedback Setup')?>
+                        <?=HTML::link('feedsetup'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Feedback Setup')?>
                        <?=($regex->feedsetup ? '<div class="arrow-right"></div>' : null)?>
                     </li>
                     <li<?=($regex->contacts ? ' class="selected contacts"' : ' class="contacts"')?>>
