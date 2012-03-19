@@ -334,11 +334,11 @@
         	<a href="javascript:;" id="cancel_cropbtn" class="s36_btn cropbtn">Cancel</a>
             <a href="javascript:;" id="prev" class="s36_btn">Back</a>
         </div>
-        <!--Should take company name...
+
         <div class="s36_footertext">
-        	Powered by 36Stories
+        	&nbsp;
         </div>
-        -->
+
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
             <a href="javascript:;" id="next" class="s36_btn">Next</a>
