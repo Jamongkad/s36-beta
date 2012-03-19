@@ -6,7 +6,7 @@
 ||-----------------------------------------------
 */
 var init = 0;
-var debug = 0;
+var debug = 1;
 
 function PageCycle() {	
 	this.cur_step 		= $('#steps').find('.current').attr('id');
@@ -146,7 +146,7 @@ PageCycle.prototype.cycle_prev = function() {
 		|  Next button pressed
 		-------------------------*/	
         this._debug("Page 2");
-        console.log(this.rating);
+        //console.log(this.rating);
 		if(next){	
 			var permission = $('[name="your_permission"]:checked').size();
             var fb_profile_check = $('#fb_flag').val();
