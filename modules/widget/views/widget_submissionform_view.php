@@ -300,7 +300,7 @@
                             <h4 id="review-position"></h4>
                             <p  id="review-location"></p>
                             <p  id="review-date"></p>
-                            <p><a href="#" id="crop_photo">Crop Photo</a></p>
+                            <p><a href="#" id="crop_photo">Adjust Photo (Optional)</a></p>
                         </div>
                     </div>
                     <div class="review-change-photo"></div>
