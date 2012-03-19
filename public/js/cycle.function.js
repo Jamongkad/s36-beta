@@ -120,7 +120,12 @@ PageCycle.prototype.cycle_prev = function() {
 		-------------------------*/
 
 	        this._debug("Page 1");	
-            console.log(this.rating);
+
+            if((this.rating == 5) || (this.rating == 4)) {
+                //console.log(this.rating);    
+                $('#good-feedback-message').show();
+            }
+            
 			if(this.feedback.length > 0){
 				if((this.rating == "2") || (this.rating == "1")){
 					S36Form.show_complete_form(false);
