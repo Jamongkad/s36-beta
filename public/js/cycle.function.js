@@ -124,6 +124,8 @@ PageCycle.prototype.cycle_prev = function() {
             if((this.rating == 5) || (this.rating == 4)) {
                 //console.log(this.rating);    
                 $('#good-feedback-message').show();
+            } else { 
+                $('#good-feedback-message').hide();
             }
             
 			if(this.feedback.length > 0){
