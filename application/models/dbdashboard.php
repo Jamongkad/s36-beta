@@ -94,12 +94,13 @@ class DBDashboard extends S36DataObject
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
 
-       Helpers::dump($geoscore);
+       Helpers::dump($this->check_summary());
  
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
+               echo "summary exists deleting";
                $this->clear_recent_summary();
            }
 
