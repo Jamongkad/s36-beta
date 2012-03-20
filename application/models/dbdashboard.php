@@ -98,10 +98,12 @@ class DBDashboard extends S36DataObject
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
+               echo "Existing Summary clear feedback summary";
                $this->clear_recent_summary();
            }
 
            if ($geoscore) {
+               echo "New Country inserting geoscore";
                $insert_data = Array();
                $insert_query = Array();
                $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
@@ -119,6 +121,7 @@ class DBDashboard extends S36DataObject
                $sth->execute($insert_data);
            }
 
+            echo "Creating new Dashboard Summary Record";
            $feedbackscore = $this->get_feedback_scores();
            $dashboard_sql = 'INSERT INTO DashboardSummary (
                                  companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
