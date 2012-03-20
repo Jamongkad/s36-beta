@@ -93,14 +93,11 @@ class DBDashboard extends S36DataObject
        $geoscore = $this->get_geochart_scores();
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
-
-       Helpers::dump($this->check_summary());
  
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
-               echo "summary exists deleting";
                $this->clear_recent_summary();
            }
 
@@ -136,7 +133,6 @@ class DBDashboard extends S36DataObject
            $total_contacts = $contact->total_contacts_by_company($this->company_id);
            //We do this in the absence of other modules.
            $zero = 0;
-
            $sth = $this->dbh->prepare($dashboard_sql);
            $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
            $sth->bindParam(':total_feed', $total_feedback, PDO::PARAM_INT); 
