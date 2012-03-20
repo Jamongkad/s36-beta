@@ -104,6 +104,7 @@ class DBDashboard extends S36DataObject
 
            if ($geoscore) {
                echo "New Country inserting geoscore<br/>";
+               Helpers::dump($geoscore);
                $insert_data = Array();
                $insert_query = Array();
                $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
@@ -123,6 +124,13 @@ class DBDashboard extends S36DataObject
 
            echo "Creating new Dashboard Summary Record<br/>";
            $feedbackscore = $this->get_feedback_scores();
+           $total_feedback = $feedback->total_feedback_by_company($this->company_id);
+           $total_contacts = $contact->total_contacts_by_company($this->company_id);
+
+           Helpers::dump($feedbackscore);
+           Helpers::dump($total_feedback);
+           Helpers::dump($total_contacts);
+
            $dashboard_sql = 'INSERT INTO DashboardSummary (
                                  companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
                                , contactTotal, contactReply, contactRequest, contactNotReply, feedFeatured , feedPublished, topCountry
@@ -131,9 +139,6 @@ class DBDashboard extends S36DataObject
                                , :contact_total, :contact_reply, :contact_request, :contact_notreply, :feed_featured , :feed_published
                                , :top_country 
                              )';
-
-           $total_feedback = $feedback->total_feedback_by_company($this->company_id);
-           $total_contacts = $contact->total_contacts_by_company($this->company_id);
            //We do this in the absence of other modules.
            $zero = 0;
            $sth = $this->dbh->prepare($dashboard_sql);
