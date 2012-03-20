@@ -93,8 +93,6 @@ class DBDashboard extends S36DataObject
        $geoscore = $this->get_geochart_scores();
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
-
-       Helpers::dump($this->company_id);
  
        try { 
            $this->dbh->beginTransaction(); 
