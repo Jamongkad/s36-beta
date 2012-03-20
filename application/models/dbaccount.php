@@ -21,12 +21,13 @@ class DBAccount extends S36DataObject {
         $email = $this->quote("mathew@36stories.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
         $company = $this->quote("jadickie");
+        $bill_to = "Jadickie, LLC";
         $fullName = $this->quote("Mathew Wong");
         $site = $this->quote("www.jadickie.com");
         $site_name = $this->quote("jadickie");
 
         $this->dbh->beginTransaction();
-        $this->dbh->query('INSERT INTO Company (`name`, `planid`) VALUES("'.$company.'", 1)');
+        $this->dbh->query('INSERT INTO Company (`name`, `planid`, `billTo`) VALUES("'.$company.'", 1, "'.$bill_to.'")');
         $this->dbh->query('SET @company_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO Metric (`companyId`, `totalRequest`, `totalResponse`) VALUES(@company_id, 0, 0)'); 
         $this->dbh->query('INSERT INTO Site (`companyId`, `domain`, `name`, `defaultFormId`) VALUES(@company_id, "'.$site.'", "'.$site_name.'", 1)');   
