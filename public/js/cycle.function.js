@@ -139,7 +139,7 @@ PageCycle.prototype.cycle_prev = function() {
 					return 1;
 				}
 			}else{
-				S36Form.add_error("Please provide feedback"); 
+				S36Form.add_error("Please provide feedback."); 
 				return false;
 			}
 	}
@@ -161,7 +161,7 @@ PageCycle.prototype.cycle_prev = function() {
 			var permission = $('[name="your_permission"]:checked').size();
             var fb_profile_check = $('#fb_flag').val();
 			if(permission <= 0){
-				S36Form.add_error('Please Select a Permission for your feedback');
+				S36Form.add_error('Please select your permission for your feedback.');
 				return false;
 			} else if(fb_profile_check == 1) {
                 return 3; 
