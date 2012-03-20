@@ -102,7 +102,7 @@ class DBDashboard extends S36DataObject
                $this->clear_recent_summary();
            }
 
-           Helpers::dump(count($geoscore));
+           Helpers::dump($geoscore);
            
            if (count($geoscore) > 0) {
                echo "New Country inserting geoscore<br/>";
