@@ -81,7 +81,8 @@ class AddFeedback {
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
 
         $bw->profanity_detection($text, $new_feedback_id); 
-        
+
+        /*        
         $vo = new NewFeedbackSubmissionData;
         $factory = new EmailFactory($vo);
         $factory->addresses = $us->pull_user_emails_by_company_id(Input::get('company_id'));
@@ -91,6 +92,7 @@ class AddFeedback {
         
         $email = new Email($email_pages);
         $email->process_email();
+        */
         
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
