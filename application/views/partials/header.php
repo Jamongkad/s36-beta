@@ -121,7 +121,7 @@
                      <?endif?>
                 </div>
                 <div class="admin-details">
-                    <div class="admin-signed-in"><!--Signed in as --><span><?=S36Auth::user()->username?></span></div>
+                    <div class="admin-signed-in">Signed in as <span><?=S36Auth::user()->username?></span></div>
                     <div class="admin-links">
                         <ul>
                             <li><?=HTML::link('admin', 'ADMIN', Array('class' => (Helpers::filter_highlighter(array('admin', 'admin/add_admin', 'admin/edit_admin')) ? 'selected' : null)))?></li>
