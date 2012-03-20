@@ -162,7 +162,6 @@ class DBDashboard extends S36DataObject
 
            $this->dbh->commit();
        } catch (Exception $e) {
-           echo "Something went wrong";
            $this->dbh->rollback();
        }
    }
