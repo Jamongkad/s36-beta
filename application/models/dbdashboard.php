@@ -102,7 +102,6 @@ class DBDashboard extends S36DataObject
                $this->clear_recent_summary();
            }
            
-           /*
            if (count($geoscore) > 0) {
                echo "New Country inserting geoscore<br/>";
                Helpers::dump($geoscore);
@@ -122,7 +121,6 @@ class DBDashboard extends S36DataObject
                $sth = $this->dbh->prepare($geo_sql);
                $sth->execute($insert_data);
            }
-           */
 
            echo "Creating new Dashboard Summary Record<br/>";
            $feedbackscore = $this->get_feedback_scores();
@@ -162,6 +160,7 @@ class DBDashboard extends S36DataObject
 
            $this->dbh->commit();
        } catch (Exception $e) {
+           echo "Something went wrong";
            $this->dbh->rollback();
        }
    }
