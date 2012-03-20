@@ -87,7 +87,6 @@ return array(
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
-          , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
           , 'form_themes'     => $form_themes
@@ -108,7 +107,6 @@ return array(
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
-          , 'themes'          => DB::table('Theme', 'master')->where_in('themeId', array(1,2))->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'form_themes'     => $form_themes
           , 'widget_select'   => $widget_select
