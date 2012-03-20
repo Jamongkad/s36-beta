@@ -88,12 +88,9 @@ class AddFeedback {
         $factory->addresses = $us->pull_user_emails_by_company_id(Input::get('company_id'));
         $factory->feedback = $fb->pull_feedback_by_id($new_feedback_id); 
         $email_pages = $factory->execute();
-
-        Helpers::dump($email_pages);
         
         $email = new Email($email_pages);
         $email->process_email();
-
 
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
