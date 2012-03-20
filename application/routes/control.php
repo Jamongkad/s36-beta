@@ -4,7 +4,8 @@ return array(
     'GET /control/create_new_account' => function() {
         print_r("Creating New Account");
         $db = new DBAccount;
-        return $db->create_account();
+        $db->create_account();
+        print_r("SUCCESSFUL MOTHAFUCKA!");
     },
 
     'GET /control/update_user_pwd' => function() {
