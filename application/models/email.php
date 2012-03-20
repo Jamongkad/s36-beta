@@ -12,9 +12,6 @@ class Email {
     public function process_email() { 
         if ($this->emails) { 
             foreach ($this->emails as $email) {     
-                echo $email->get_address()."<br/>";
-                echo $email->get_subject()."<br/>";
-                echo $email->get_message()."<br/>";
                 $this->postmark->to($email->get_address())
                                ->subject($email->get_subject())
                                ->html_message($email->get_message())
