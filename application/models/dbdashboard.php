@@ -94,7 +94,6 @@ class DBDashboard extends S36DataObject
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
  
-       Helpers::dump(count($geoscore) > 0);
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
@@ -103,7 +102,7 @@ class DBDashboard extends S36DataObject
                $this->clear_recent_summary();
            }
 
-           if ($geoscore) {
+           if (count($geoscore) > 0) {
                echo "New Country inserting geoscore<br/>";
                Helpers::dump($geoscore);
                $insert_data = Array();
