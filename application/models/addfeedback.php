@@ -93,7 +93,7 @@ class AddFeedback {
         $email = new Email($email_pages);
         $email->process_email();
         */
-        
+        Helpers::dump(Input::get());
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
         $dash->write_summary();
