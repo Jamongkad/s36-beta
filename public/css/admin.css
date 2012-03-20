@@ -69,7 +69,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel{width:75%;background:#ffffff;float:left;border-top:1px solid #000000;}
 #admin-panel .main-panel .admin-session-bar{height:47px;background:#343434;display:blockborder-right:1px solid #000;border-bottom:1px solid #000;} /* deduct 1px for the border */
 #admin-panel .main-panel .admin-session-bar .admin-avatar{width:45px;height:45px;border-right:1px solid #000;float:left;}
-#admin-panel .main-panel .admin-session-bar .admin-details{width:340px;float:left;}
+#admin-panel .main-panel .admin-session-bar .admin-details{width:390px;float:left;}
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-signed-in{padding:7px 13px;margin:8px 0px;font-weight:bold;color:#babfc2;border-right:1px solid #2a2929;float:left;}
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-signed-in span{color:#dae7ee;}
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-links{padding:7px 13px;margin:8px 0px;border-left:1px solid #3f3f3f;float:left;}
@@ -77,7 +77,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-links ul li{display:inline;font-size:10px;margin:0px;}
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-links ul li a{color:#858585;padding:3px 6px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
 #admin-panel .main-panel .admin-session-bar .admin-details .admin-links ul li a:hover,#admin-panel .main-panel .admin-session-bar .admin-details .admin-links ul li a.selected{background:#2b2b2b;text-shadow:#000 0px 1px;}
-#admin-panel .main-panel .admin-session-bar .admin-meta{width:300px;float:right;padding:6px 10px;margin:5px 0px;text-align:right;}
+#admin-panel .main-panel .admin-session-bar .admin-meta{width:250px;float:right;padding:6px 10px;margin:5px 0px;text-align:right;}
 #admin-panel .main-panel .admin-session-bar .admin-meta select{background:#2b2b2b;border:1px solid #393939;color:#616161;font-size:11px;padding:2px 4px;margin:0px 10px;}
 #admin-panel .main-panel .admin-session-bar .admin-meta a{font-size:10px;color:#b1b1b1;}
 #admin-panel .main-panel .admin-session-bar .admin-meta a:hover{color:#bebebe;}
