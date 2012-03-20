@@ -90,7 +90,7 @@ class AddFeedback {
         $email_pages = $factory->execute();
         
         $email = new Email($email_pages);
-        print_r($email->process_email());
+        $email->process_email();
         
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
