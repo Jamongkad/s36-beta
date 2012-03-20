@@ -94,7 +94,7 @@ class DBDashboard extends S36DataObject
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
  
-       Helpers::dump($geoscore);
+       Helpers::dump(count($geoscore) > 0);
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
