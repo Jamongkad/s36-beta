@@ -17,12 +17,13 @@ class DBAccount extends S36DataObject {
         $encrypt = new Crypter;
         $password_string = "p455w0rd";
         $password = crypt($password_string);
-        $email = $this->quote("ryanchua6@gmail.com");
+        $name = $this->quote("machu");
+        $email = $this->quote("mathew@36stories.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $company = $this->quote("ryan");
+        $company = $this->quote("jadickie");
         $fullName = $this->quote("Mathew Wong");
-        $site = $this->quote("www.mathewklan.com");
-        $site_name = $this->quote("mathewklan");
+        $site = $this->quote("www.jadickie.com");
+        $site_name = $this->quote("jadickie");
 
         $this->dbh->beginTransaction();
         $this->dbh->query('INSERT INTO Company (`name`, `planid`) VALUES("'.$company.'", 1)');
@@ -31,7 +32,7 @@ class DBAccount extends S36DataObject {
         $this->dbh->query('INSERT INTO Site (`companyId`, `domain`, `name`, `defaultFormId`) VALUES(@company_id, "'.$site.'", "'.$site_name.'", 1)');   
         $this->dbh->query('SET @site_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO User (`companyId`, `username`, `confirmed`, `password`, `encryptString`, `email`, `fullName`, `title`, `imId`)  
-                           VALUES (@company_id, "mathew", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
+                           VALUES (@company_id, "'.$name.'", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
         $this->dbh->query('SET @user_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO AuthAssignment (`itemname`, `userid`) VALUES ("Admin", @user_id)');
         $this->dbh->query('INSERT INTO Category (`companyId`, `intName`, `name`, `changeable`) 
