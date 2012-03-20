@@ -93,7 +93,6 @@ class DBDashboard extends S36DataObject
        $geoscore = $this->get_geochart_scores();
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new DBContact;
-       Helpers::dump($geoscore);
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
@@ -188,6 +187,7 @@ class DBDashboard extends S36DataObject
    }
 
    public function clear_recent_summary() {
+       /*
        $sql = "
            DELETE DashboardSummary, Geochart 
            FROM 
@@ -198,7 +198,14 @@ class DBDashboard extends S36DataObject
             WHERE 1=1
                  AND DashboardSummary.companyId = :company_id
        ";
-       $sth = $this->dbh->prepare($sql);
+       */
+       $dash_sql = "DELETE FROM DashboardSummary WHERE DashboardSummary.companyId = :company_id";
+       $sth = $this->dbh->prepare($dash_sql);
+       $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
+       $sth->execute(); 
+
+       $geo_sql = "DELETE FROM Geochart WHERE Geochart.companyId = :company_id";
+       $sth = $this->dbh->prepare($geo_sql);
        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
        $sth->execute(); 
    }
