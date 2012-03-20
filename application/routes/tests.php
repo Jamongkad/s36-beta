@@ -183,7 +183,7 @@ return array(
     'GET /tests/test_dbdashboard' => function() {
         $dash = new DBDashboard; 
         $dash->company_id = 5;
-        $d = $dash->get_feedback_scores();
+        $d = $dash->write_summary();
         Helpers::show_data($d);
     },
 
