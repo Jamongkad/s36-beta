@@ -187,18 +187,6 @@ class DBDashboard extends S36DataObject
    }
 
    public function clear_recent_summary() {
-       /*
-       $sql = "
-           DELETE DashboardSummary, Geochart 
-           FROM 
-               DashboardSummary
-           INNER JOIN
-               Geochart
-                   ON Geochart.companyId = DashboardSummary.companyId
-            WHERE 1=1
-                 AND DashboardSummary.companyId = :company_id
-       ";
-       */
        $dash_sql = "DELETE FROM DashboardSummary WHERE DashboardSummary.companyId = :company_id";
        $sth = $this->dbh->prepare($dash_sql);
        $sth->bindParam(":company_id", $this->company_id, PDO::PARAM_INT);
