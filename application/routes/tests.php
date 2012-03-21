@@ -191,8 +191,8 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
-        //return $cl->js_output();
-        return $widget->render_data();
+        return $cl->js_output();
+        //return $widget->render_data();
     },
 
     'GET /tests/pull_feedback' => function() {        
