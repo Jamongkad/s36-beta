@@ -70,17 +70,17 @@
                             $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
 
                         } else {
-                            //Default Nav 
-                            $feedsetup_nav = Array(
-                                 'feedsetup'  => 'DASHBOARD'
-                               , 'feedsetup/widget_selection' => 'CREATE'
-                               /*
-                               , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'
-                               , 'feedsetup/submission_widgets' => 'CREATE SUBMISSION FORM'
-                               */
-                            );
+                            if(!preg_match_all('~feedsetup/formcode_manager~', Request::uri(), $matches)) {
+                                $feedsetup_nav = Array(
+                                     'feedsetup'  => 'DASHBOARD'
+                                   , 'feedsetup/widget_selection' => 'CREATE'
+                                );
+                                
+                            } //Default Nav
+                            
                         }
                     ?>
+                    
                     <?foreach($feedsetup_nav as $name => $value):?>
                         <li>
                             <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value
