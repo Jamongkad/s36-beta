@@ -13,6 +13,7 @@ class ClientRender {
 
     public function js_output() {
         $obj = $this->widget_type_obj;
+        print_r($obj);
         if($obj instanceof FormWidgets) {
             $data = Array(
                 'js_load' => $this->form_loader_script
