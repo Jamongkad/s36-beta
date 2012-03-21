@@ -123,16 +123,17 @@ return array(
     'POST /feedsetup/save_widget' => function() { 
         $wdm = new WidgetDataManager;
         $wdm->create_and_save_widget(); 
-        //Helpers::dump(Input::get());
     },
 
-    'GET /feedsetup/formcode_manager/(:num?)/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false, $type=false) use ($form_themes) {
-        $wl = new WidgetLoader($id); 
-        $widget = $wl->widget_obj;
-        Helpers::dump($widget);
+    'GET /feedsetup/formcode_manager/(:num?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
+        $wl = new Widget\Services\WidgetLoader($id); 
+        $widget = $wl->load();
+        Helpers::dump($widget->render_data());
+        /*
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'form_themes'     => $form_themes
         ));
+        */
     }),
 
     'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
