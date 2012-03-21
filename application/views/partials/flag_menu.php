@@ -51,7 +51,7 @@
                             if (isset($edit_widget) and $edit_widget == true) {
                                 $dynamic_nav = Array(
                                       'feedsetup/overview/'.$matches[2] => 'OVERVIEW'
-                                    , Request::uri() => 'EDIT '.strtoupper($matches[2]).' WIDGET'
+                                    , Request::uri() => 'EDIT'
                                 );
                             }
                             
