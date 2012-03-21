@@ -1,6 +1,7 @@
 <?php namespace Widget\Services;
 
 use StdClass;
+use Widget\Repositories\DBWidget;
 
 class WidgetLoader {
 
@@ -8,7 +9,7 @@ class WidgetLoader {
     public $widget_obj;
 
     public function __construct($widget_id) {
-        $this->dbw = new \DBWidget;
+        $this->dbw = new DBWidget;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
 
