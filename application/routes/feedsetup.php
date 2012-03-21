@@ -68,7 +68,8 @@ return array(
     },
 
     'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
-        $wl = new WidgetLoader($widget_id); 
+        //$wl = new WidgetLoader($widget_id); 
+        $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
@@ -143,7 +144,8 @@ return array(
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
-         $wl = new WidgetLoader($widget_key); 
+         //$wl = new WidgetLoader($widget_key); 
+         $wl = new Widget\Services\WidgetLoader($widget_key); 
          $iframe = $wl->load_iframe_code();
          echo json_encode(Array(
              'html_view' => $iframe
@@ -168,7 +170,8 @@ return array(
     
     //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
-        $wf = new WidgetFactory;
+        //$wf = new WidgetFactory; 
+        $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->site_id    = 1;
         $option->company_id = 1;
