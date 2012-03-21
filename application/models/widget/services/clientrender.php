@@ -1,6 +1,6 @@
 <?php namespace Widget\Services;
 
-use Config, HTML, View, \Widget\Entities\Types\WidgetTypes;
+use Config, HTML, View, Helpers, \Widget\Entities\Types\WidgetTypes;
 
 class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
@@ -13,7 +13,7 @@ class ClientRender {
 
     public function js_output() {
         $obj = $this->widget_type_obj;
-        print_r($obj);
+        Helpers::dump($obj instanceof FormWidgets);
         if($obj instanceof FormWidgets) {
             $data = Array(
                 'js_load' => $this->form_loader_script
