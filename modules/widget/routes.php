@@ -3,7 +3,7 @@
 return array(
 
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
-        $wl = new WidgetLoader($widget_key);   
+        $wl = new Widget\Services\WidgetLoader($widget_key); 
         return $wl->load()->render_data();
     },
     
@@ -13,8 +13,8 @@ return array(
     },
      
     'GET /widget/js_output' => function() { 
-        $wl = new WidgetLoader(Input::get('widgetId'));  
-        $js = new ClientRender($wl->load());
+        $wl = new Widget\Services\WidgetLoader( Input::get('widgetId') ); 
+        $js = new Widget\Services\ClientRender( $wl->load() );
         return $js->js_output();
     },
     //end of these muthafuckas

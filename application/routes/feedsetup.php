@@ -144,7 +144,6 @@ return array(
     },
 
     'GET /feedsetup/generate_code/(:any)' => function($widget_key) {
-         //$wl = new WidgetLoader($widget_key); 
          $wl = new Widget\Services\WidgetLoader($widget_key); 
          $iframe = $wl->load_iframe_code();
          echo json_encode(Array(
