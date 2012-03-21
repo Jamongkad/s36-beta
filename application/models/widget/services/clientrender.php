@@ -1,6 +1,6 @@
 <?php namespace Widget\Services;
 
-use Config, HTML, View;
+use Config, HTML, View, \Widget\Entities\Types\WidgetTypes;
 
 class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
