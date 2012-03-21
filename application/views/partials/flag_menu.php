@@ -43,28 +43,28 @@
 
                             if (isset($display) and $display == true) {
                                 $dynamic_nav = Array(
-                                    Request::uri() => 'WIDGET OVERVIEW'
-                                  , 'feedsetup/widget_selection'  => 'WIDGET CREATION'
+                                    Request::uri() => 'OVERVIEW'
+                                  , 'feedsetup/widget_selection'  => 'CREATE'
                                 );
                             }
                             
                             if (isset($edit_widget) and $edit_widget == true) {
                                 $dynamic_nav = Array(
-                                      'feedsetup/overview/'.$matches[2] => 'WIDGET OVERVIEW'
+                                      'feedsetup/overview/'.$matches[2] => 'OVERVIEW'
                                     , Request::uri() => 'EDIT '.strtoupper($matches[2]).' WIDGET'
                                 );
                             }
                             
                             if ((isset($create_display_widget) and $create_display_widget == true) || (isset($create_form_widget) and $create_form_widget == true)) {
                                 $dynamic_nav = Array(
-                                      'feedsetup/widget_selection'  => 'WIDGET SELECTION'
-                                    , $matches[0] => 'CREATE WIDGET'
+                                      'feedsetup/widget_selection'  => 'SELECTION'
+                                    , $matches[0] => 'CREATE'
                                 );
                             }
                             
 
                             $feedsetup_nav = Array( 
-                                 'feedsetup'  => 'WIDGET DASHBOARD' 
+                                 'feedsetup'  => 'DASHBOARD' 
                             );
 
                             $feedsetup_nav = $feedsetup_nav + $dynamic_nav; 
@@ -72,7 +72,7 @@
                         } else {
                             //Default Nav 
                             $feedsetup_nav = Array(
-                                 'feedsetup'  => 'WIDGET DASHBOARD'
+                                 'feedsetup'  => 'DASHBOARD'
                                , 'feedsetup/widget_selection' => 'CREATE'
                                /*
                                , 'feedsetup/display_widgets' => 'CREATE DISPLAY WIDGETS'

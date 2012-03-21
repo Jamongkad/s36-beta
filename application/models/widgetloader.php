@@ -78,7 +78,7 @@ class WidgetLoader {
         $deploy_env = Config::get('application.deploy_env');
         $widgetkey = "'".$this->widget_obj->widgetkey."'";
         $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\"";  
-        //$frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output/\"+widgetId+\""; 
+
         $html = '
             <script type="text/javascript">
                 var widgetId = '.$widgetkey.';

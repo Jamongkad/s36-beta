@@ -1,5 +1,4 @@
 <?php
-
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new DBWidget;
 //TODO: DO SOMETHING ABOUT THIS!!
@@ -126,6 +125,12 @@ return array(
         $wdm->create_and_save_widget(); 
         //Helpers::dump(Input::get());
     },
+
+    'GET /feedsetup/formcode_manager' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) {
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
+            'form_themes'     => $form_themes
+        ));
+    }),
 
     'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
         $dbw->delete_widget($widget_id);

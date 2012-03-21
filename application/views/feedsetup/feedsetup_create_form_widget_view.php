@@ -125,66 +125,7 @@
                         <div class="form-design-next">
                         </div>
                     </div>
-                </div>
-                <br />
-                <strong style="font-size:14px;">Floating Tab Position : <select id="tab-position" class="regular-select" style="font-size:12px;padding:5px;">
-                                                                            <option value="l">Left Side Tab</option>
-                                                                            <option value="r">Right Side Tab</option>
-                                                                            <option value="tr">Top Right Corner</option>
-                                                                            <option value="tl">Top Left Corner</option>
-                                                                            <option value="br">Bottom Right Corner</option>
-                                                                            <option value="bl">Bottom Left Corner</option>
-                                                                        </select></strong>
-                <div class="widget-info" style="margin:0px -20px;"></div>
-                <br />
-                <strong style="font-size:14px;">Tab Design : </strong>
-                <div id="tab-slider" class="widget-info" style="margin:0px -20px;">
-                
-                <?php 
-                    $positions = Array();
-                    foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-                        $positions[$v] = $form_themes;
-                    }
-
-                    $theme_slides = '';
-                    foreach($positions as $pos => $theme){
-                        $theme_slides .= '<div class="'.$pos.'-design-slide">
-                                      <div class="'.$pos.'-design-prev">
-                                      </div>
-                                      <div class="'.$pos.'-designs grids">';
-                                        $units = 7;
-                                        $ctr = 0;
-                                        $max = count($form_themes);
-                                        
-                                        foreach($theme as $key => $val){
-                                            
-                                            if(($ctr % $units) == 0){
-                                                $theme_slides .= '<div class="form-design-group grids">';
-                                                $end = 1;
-                                            }
-                                            $theme_slides .= '<div class="tab-design" id="tab-'.$pos.'-'.$key.'">
-                                                            <img src="/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png" height="60" />
-                                                            <br />
-                                                            <span>'.$val.'</span>
-                                                        </div>';
-                                            
-                                            if(($end == $units) || $ctr == ($max - 1)){
-                                                $theme_slides .= '</div>';
-                                            }
-                                            
-                                            $end++;
-                                            $ctr++;
-                                        }
-                                        
-                                $theme_slides .= '</div>
-                                        <div class="'.$pos.'-design-next">
-                                        </div>
-                                    </div>';
-                    }
-                    echo $theme_slides;	
-                    
-                ?>
-                </div>
+                </div>  
             </div>
         </div>
 

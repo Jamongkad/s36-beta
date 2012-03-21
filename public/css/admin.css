@@ -650,7 +650,7 @@ input.large-text, input.form-text{padding:10px;width:80%;}
 .tl-design-slide,
 .br-design-slide,
 .bl-design-slide
-{width:656px;height:120px;padding:0px 10px;}
+{width:480px;height:120px;padding:0px 10px;}
 
 .form-design-prev,.l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
     float:left;
@@ -667,7 +667,7 @@ input.large-text, input.form-text{padding:10px;width:80%;}
     cursor:pointer;
 }
 .form-designs,.l-designs,.r-designs,.br-designs,.bl-designs,.tr-designs,.tl-designs{
-    width:606px;
+    width:430px;
     float:left;
     height:120px;
 }
@@ -771,3 +771,38 @@ margin: 5px 5px;
 padding: 4px;
 font-size: 11px;
 color: #777;}
+
+#formcodebox{
+    display:block;
+    background:#f4f4f4;
+}
+#formcodeboxcontent:after{content: ".";  
+         display: block; 
+         height: 0; 
+         clear: both;
+         visibility: hidden; }
+#formcodebox ul{list-style:none;margin:0;padding:0;width:180px;float:left;margin-top:0px;background:#6b7984;height:450px;}
+#formcodebox ul li{padding:15px 20px 15px 50px;font-weight:bold;cursor:pointer;margin:0px !important;
+    border-top:1px solid #7f8f9c;background:#6b7984 url(/img/formcodelinkicons.png) no-repeat;color:#FFF;
+    border-bottom:1px solid #56646f;
+}
+#formcodebox ul li:hover{
+    color:#FFF;
+    background-color:#768591;
+}
+
+#formcodebox ul li.formcodelink1{background-position:0px 0px;}
+#formcodebox ul li.formcodelink2{background-position:0px -48px;}
+#formcodebox ul li.formcodelink3{background-position:0px -96px;}
+#formcodebox ul li.formcodelink4{background-position:0px -147px;}
+#formcodebox ul li.formcodelink1.active{background-position:-157px 0px;}
+#formcodebox ul li.formcodelink2.active{background-position:-157px -48px;}
+#formcodebox ul li.formcodelink3.active{background-position:-157px -96px;}
+#formcodebox ul li.formcodelink4.active{background-position:-157px -147px;}
+#formcodebox ul li.active{background-color:#f4f4f4;color:#6b7984;border-top:1px solid #f4f4f4;border-bottom:1px solid #f4f4f4;}
+#formcodeboxcontent{margin-left:180px;background:#f4f4f4;}
+
+#formcodeboxcontent1,#formcodeboxcontent2,#formcodeboxcontent3,#formcodeboxcontent4{position:relative;text-align:center;width:496px;padding:10px 0px;}
+#formcodeboxcontent2,#formcodeboxcontent3,#formcodeboxcontent4{display:none;}
+#formcodeboxcontent input[type="text"],#formcodeboxcontent textarea{margin:5px auto !important;}
+.formcodelink1{background}
