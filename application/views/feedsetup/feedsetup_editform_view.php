@@ -4,7 +4,6 @@
 <?=Form::hidden('company_id', $widget->company_id)?>
 <?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->theme_type, Array('id' => 'selected-form'))?>
-<?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <div class="block">
