@@ -4,14 +4,14 @@ header("Content-type: application/x-javascript; charset=UTF-8");
 ?>
 function WidgetLoader() {
     this.generateFrameMarkup = function() {
-        <?if($class_name == "VerticalEmbedWidget" || $class_name == "HorizontalEmbedWidget"):?>
+        <?if($class_name == 'Widget\Entities\VerticalEmbedWidget' || $class_name == 'Widget\Entities\HorizontalEmbedWidget'):?>
             var src = '<?=$js_load?>' + 
                       '<?=$css_load?>' + 
                       '<div style="position:relative;width:<?=$width?>px;height:<?=$height?>px;">' +
                       '<div class="s36_<?=$embed_block_type?>"><a href="javascript:;" onclick="s36_openForm(\'<?=$widget_child_loader_url?>\');">Send Feedback</a></div>' +
                       '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:hidden;" src="<?=$widget_loader_url?>">Insomnia wooohooooh</iframe></div>';
         <?endif?>
-        <?if($class_name == "ModalEmbedWidget"):?>
+        <?if($class_name == 'Widget\Entities\ModalEmbedWidget'):?>
             var src = '<div class="s36_embed_block_p"><a href="javascript:;" onclick="s36_open_popup_widget()">Display Feedback</a></div>'+
                       '<div id="s36PopupWidgetShadow">'+
                       '<div id="s36PopupWidgetBox">'+
