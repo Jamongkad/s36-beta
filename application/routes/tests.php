@@ -190,7 +190,9 @@ return array(
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->load();
-        return $widget->render_data();
+        $cl = new Widget\Services\ClientRender($widget);
+        return $cl->js_output();
+        //return $widget->render_data();
     },
 
     'GET /tests/pull_feedback' => function() {        
