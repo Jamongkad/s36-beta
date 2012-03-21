@@ -110,7 +110,7 @@ abstract class WidgetDataTypes {
 
     public function __construct($data) {
         $this->_data = $data;     
-        $this->_dbw = new DBWidget; 
+        $this->_dbw = new Widget\Repositories\DBWidget; 
     }
 
     public function save() { 

@@ -28,8 +28,6 @@ class ClientRender {
             return View::make('widget::widget_js_output_form', $data);
         }
 
-        print_r($obj->my_name());
-
         if($obj instanceof DisplayWidgets) {
             $data = Array(
                 'js_load'  => $this->form_loader_script
