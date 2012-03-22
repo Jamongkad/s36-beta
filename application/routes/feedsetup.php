@@ -134,6 +134,8 @@ return array(
         
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'form_themes'     => $form_themes
+          , 'embed_js_code'   => $wl->load_widget_init_js_code()
+          , 'tab_js_output'   => false
           , 'link_js_output'  => $cl->link_js_output()
           , 'link_native_output' => $cl->iframe_output()
         ));

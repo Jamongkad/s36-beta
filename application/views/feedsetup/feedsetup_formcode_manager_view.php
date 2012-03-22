@@ -55,10 +55,10 @@ function display_codes(i){
                         
                         <table width="400" align="center">
                         <tr><td><strong>Permanent Shortlink URL</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" /></td></tr>
+                        <tr><td><input type="text" class="regular-text" value=" "/></td></tr>
                         <tr height="10"><td></td></tr>
                         <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" /></td></tr>
+                        <tr><td><input type="text" class="regular-text" value=" "/></td></tr>
                         </table>
                         <br />
                     </div>
@@ -69,7 +69,9 @@ function display_codes(i){
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <!--JS Link Pop code goes here-->
-                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>  
+                        <tr><td><textarea class="regular-text" rows="7">
+<?=$embed_js_code;?> 
+                        </textarea></td></tr>  
                         </table>
                         <br />
                     </div>
@@ -77,8 +79,7 @@ function display_codes(i){
                         <h4 style="font-size:16px;line-height:20px;">Copy and Paste this Code into<br />
                         Your Website or Blog Post</h4>
                         
-                        <table width="400" align="center">
-                        <!--JS Native Pop code goes here-->
+                        <table width="400" align="center"> 
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <tr><td><textarea class="regular-text jspopup" rows="7">
 <?=$link_js_output;?>
