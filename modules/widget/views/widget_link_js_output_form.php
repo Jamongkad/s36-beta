@@ -15,6 +15,7 @@ function s36FormLink() {
     }	
     
 }
+
 var link = new s36FormLink();
 link.display();
 </script>
