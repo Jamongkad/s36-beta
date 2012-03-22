@@ -52,10 +52,8 @@ function display_codes(i){
                         
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
-                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
-                        <tr height="10"><td></td></tr>
-                        <tr><td><strong>iFrame version</strong></td></tr>
-                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
+                        <!--JS Link Pop code goes here-->
+                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>  
                         </table>
                         <br />
                     </div>
@@ -64,6 +62,7 @@ function display_codes(i){
                         Your Website or Blog Post</h4>
                         
                         <table width="400" align="center">
+                        <!--JS Native Pop code goes here-->
                         <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
                         </table>
                         <br />
@@ -143,6 +142,7 @@ function display_codes(i){
                         </div>
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
+                        <!--JS Pop code goes here-->
                         <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
                         </table>
                     </div>
