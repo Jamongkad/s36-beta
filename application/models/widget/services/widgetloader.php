@@ -1,6 +1,6 @@
 <?php namespace Widget\Services;
 
-use StdClass, Config;
+use StdClass, Config, Helpers;
 use Widget\Repositories\DBWidget;
 
 class WidgetLoader {
