@@ -1,7 +1,3 @@
-<?php 
-#session_cache_limiter("private_no_expire"); 
-#header("Content-type: application/x-javascript; charset=UTF-8"); 
-?>
 <?=$js_load?>
 <?=$css_load?>
 <script type="text/javascript">

@@ -68,7 +68,6 @@ return array(
     },
 
     'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
-        //$wl = new WidgetLoader($widget_id); 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widget_type == 'display') {
@@ -128,15 +127,14 @@ return array(
     },
 
     'GET /feedsetup/formcode_manager/(:num?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
-        /*
+
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
-        Helpers::dump($widget->render_data());
-        */
-
+        
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'form_themes'     => $form_themes
+            'link_js_output'  => $cl->link_js_output()
         ));
 
     }),

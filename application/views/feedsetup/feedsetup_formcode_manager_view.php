@@ -64,7 +64,9 @@ function display_codes(i){
                         <table width="400" align="center">
                         <!--JS Native Pop code goes here-->
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
-                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
+                        <tr><td><textarea class="regular-text" rows="7">
+                        <?=$link_js_output;?>
+                        </textarea></td></tr>
                         </table>
                         <br />
                     </div>
