@@ -25,15 +25,13 @@ function display_codes(i){
     <div id="widget-setup-block" style="background:#778692;">
         <div class="widget-options">
             <h2><span>Form Code Manager</span></h2>
-            <div id="formcodebox">
-                    
-                    <ul>
-                        <li class="formcodelink1 active">Link to Form</li>
-                        <li class="formcodelink2">Embed Form Code</li>
-                        <li class="formcodelink3">Popup Form Link</li>
-                        <li class="formcodelink4">Image Tabs</li>
-                    </ul>
-                    
+            <div id="formcodebox">                    
+                <ul>
+                    <li class="formcodelink1 active">Link to Form</li>
+                    <li class="formcodelink2">Embed Form Code</li>
+                    <li class="formcodelink3">Popup Form Link</li>
+                    <li class="formcodelink4">Image Tabs</li>
+                </ul> 
                 <div id="formcodeboxcontent">
                     <div id="formcodeboxcontent1" class="formcodeboxcontainer">
                         <h4 style="font-size:16px;line-height:20px;">Copy and Paste Code Snippets to <br />
@@ -143,6 +141,10 @@ function display_codes(i){
                             echo $theme_slides;	
                             
                         ?>
+
+                        <table width="400" align="center">
+                        <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
+                        </table>
                 
                 </div>
                     </div>

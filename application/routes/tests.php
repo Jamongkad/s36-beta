@@ -193,8 +193,8 @@ return array(
         //Helpers::dump($widget);
         $cl = new Widget\Services\ClientRender($widget);
         //return $cl->iframe_output();
-        return $widget->render_data();
-        //Helpers::dump($wl->widget_obj);
+        //return $widget->render_data();
+        Helpers::dump($wl->widget_obj);
     },
 
     'GET /tests/pull_feedback' => function() {        

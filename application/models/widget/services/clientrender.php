@@ -5,6 +5,7 @@ use \Widget\Entities\Types\WidgetTypes;
 use \Widget\Entities\Types\DisplayWidgets;
 use \Widget\Entities\Types\FormWidgets;
 
+//This little bastard renders the widget code!!
 class ClientRender {
     public function __construct(WidgetTypes $widget_type_obj) {
         $this->widget_type_obj    = $widget_type_obj; 
