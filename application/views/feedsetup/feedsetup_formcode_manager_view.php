@@ -96,7 +96,6 @@ function display_codes(i){
                             </select>
                         </strong>
                         <div id="tab-slider" style="margin:0px 0px;">
-                            <strong>Tab Design : </strong>                  
                             <?php 
                                 $positions = Array();
                                 foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
