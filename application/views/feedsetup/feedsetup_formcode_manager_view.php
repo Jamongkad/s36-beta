@@ -55,7 +55,7 @@ function display_codes(i){
                         
                         <table width="400" align="center">
                         <tr><td><strong>Permanent Shortlink URL</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" value=" "/></td></tr>
+                        <tr><td><input type="text" class="regular-text" value="<?=$loader_url?>"/></td></tr>
                         <tr height="10"><td></td></tr>
                         <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
                         <tr><td><input type="text" class="regular-text" value=" "/></td></tr>
