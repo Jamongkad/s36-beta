@@ -45,6 +45,19 @@ class ClientRender {
         }
     }
 
+    public function link_js_output() { 
+        $obj = $this->widget_type_obj;
+
+        if($obj instanceof FormWidgets) {
+            $data = Array(
+                'js_load' => $this->form_loader_script
+              , 'css_load' => $this->form_loader_css
+              , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
+            );
+            return View::make('widget::widget_js_output_form', $data);
+        }
+    }
+
     public function iframe_output() {
         $obj = $this->widget_type_obj;
         if($obj instanceof DisplayWidgets) {

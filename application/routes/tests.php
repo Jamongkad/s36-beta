@@ -191,9 +191,7 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
-        echo "<script type='text/javascript'>" ;
-        echo $cl->js_output();
-        echo "</script>";
+        return $cl->link_js_output();
     },
 
     'GET /tests/pull_feedback' => function() {        
