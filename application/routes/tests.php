@@ -189,11 +189,13 @@ return array(
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $wl = new Widget\Services\WidgetLoader($widget_id); 
+        /*
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
         //return $cl->iframe_output();
         //return $widget->render_data();
         Helpers::dump($wl->widget_obj);
+        */
     },
 
     
