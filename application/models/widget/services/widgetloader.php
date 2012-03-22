@@ -17,6 +17,7 @@ class WidgetLoader {
 
         $obj = $this->widget_obj;
         $wf = new WidgetFactory; 
+        Helpers::dump($obj);
         if($obj) {
             if($obj->widget_type == 'display') {
 
