@@ -7,7 +7,7 @@
 <script type="text/javascript">
 function s36FormLink() {
 	this.generateTab= function(){
-        var src = '<a href="#" onclick="s36_openForm(\'<?=$widget_loader_url?>\');javascript::void();">Click to open feedback form</a>';				
+        var src = '<a href="#" onclick="s36_openForm(\'<?=$widget_loader_url?>\');javascript::void(0);">Click to open feedback form</a>';				
         return src;
 	},
 	this.display = function () {
