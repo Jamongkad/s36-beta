@@ -130,11 +130,11 @@ return array(
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
-        Helpers::dump($widget);
         $cl = new Widget\Services\ClientRender($widget);
         
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
-            'form_themes'     => $form_themes
+            'tab_type'        => $widget->tab_type
+          , 'form_themes'     => $form_themes
           , 'embed_js_code'   => $wl->load_widget_init_js_code()
           , 'tab_js_output'   => $cl->js_output()
           , 'link_js_output'  => $cl->link_js_output()

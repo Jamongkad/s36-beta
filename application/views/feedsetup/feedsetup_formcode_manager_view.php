@@ -1,4 +1,4 @@
-<?=Form::hidden('tab_type', 'tab-l-aglow', Array('id' => 'selected-tab'))?>
+<?=Form::hidden('tab_type', $tab_type, Array('id' => 'selected-tab'))?>
 <script type="text/javascript">
 $(function(){
     
