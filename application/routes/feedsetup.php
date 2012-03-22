@@ -115,9 +115,9 @@ return array(
 
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) { 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
-            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
-          , 'company_id'      => S36Auth::user()->companyid
-          , 'form_themes'     => $form_themes
+            'site'             => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+          , 'company_id'       => S36Auth::user()->companyid
+          , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
         ));
     }),
       
