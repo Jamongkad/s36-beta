@@ -1,6 +1,6 @@
 <?=Form::hidden('tab_type', 'tab-l-aglow', Array('id' => 'selected-tab'))?>
 <script type="text/javascript">
-$(document).ready(function(){
+$(function(){
     
     $('#formcodebox ul li').click(function(){
         $(this).parent().find('li').each(function(){
