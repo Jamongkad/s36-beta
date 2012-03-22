@@ -10,6 +10,22 @@ $(function(){
         $(this).addClass('active');
     });
     
+    $('textarea.jspopup').focus(function() {
+        $this = $(this);
+
+        $this.select();
+
+        window.setTimeout(function() {
+            $this.select();
+        }, 1);
+
+        // Work around WebKit's little problem
+        $this.mouseup(function() {
+            // Prevent further mouseup intervention
+            $this.unbind("mouseup");
+            return false;
+        });
+    });
 });
 
 function display_codes(i){
@@ -64,7 +80,7 @@ function display_codes(i){
                         <table width="400" align="center">
                         <!--JS Native Pop code goes here-->
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
-                        <tr><td><textarea class="regular-text" rows="7">
+                        <tr><td><textarea class="regular-text jspopup" rows="7">
                         <?=$link_js_output;?>
                         </textarea></td></tr>
                         </table>
