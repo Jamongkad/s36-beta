@@ -18,6 +18,7 @@ class WidgetLoader {
         $obj = $this->widget_obj;
         $wf = new WidgetFactory; 
         Helpers::dump($obj);
+        /*
         if($obj) {
             if($obj->widget_type == 'display') {
 
@@ -78,6 +79,7 @@ class WidgetLoader {
                 return $wf->load_widget($option);
             } 
         }
+        */
     }
 
     public function load_widget_init_js_code() {
