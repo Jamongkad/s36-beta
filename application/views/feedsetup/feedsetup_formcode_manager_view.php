@@ -141,8 +141,8 @@ function display_codes(i){
                                 
                             ?> 
                         </div>
-
                         <table width="400" align="center">
+                        <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
                         </table>
                     </div>
