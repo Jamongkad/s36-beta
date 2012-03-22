@@ -105,8 +105,7 @@
                                     $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                         <img src="/img/tab-designs/'.$form_colors.'-form.png" height="60" />
                                                         <span>'.$val.'</span>
-                                                        <div id="preview" class="preview button-gray" hrefaction="'.URL::to('feedsetup/preview_widget_style')
-                                                                 .'/'.$color_name.'">
+                                                        <div id="preview" class="preview button-gray">
                                                             Preview
                                                         </div>
                                                     </div>';
