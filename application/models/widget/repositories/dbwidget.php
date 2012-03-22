@@ -52,10 +52,7 @@ class DBWidget extends S36DataObject {
         $sth->execute();
 
         $last_insert_id = $this->dbh->lastInsertId();
-        //$obj = $this->fetch_widget_by_id($last_insert_id); 
         $this->dbh->commit();
-
-        //return Array('status' => 'save', 'widget' => $obj);
         return $last_insert_id;
     }
 
@@ -119,29 +116,31 @@ class DBWidget extends S36DataObject {
         
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
-        $node = new StdClass;
-        $child = Array();
-        foreach($result as $rows) {
-            //path of parents is alway zero
-            if ( $rows->path_length == 0 ) { 
-                $node = $this->_load_object_code($rows->widgetobjstring);
-                $node->widgetstoreid = $rows->widgetstoreid; 
-            } else {
-                $my_kid = $this->_load_object_code($rows->widgetobjstring);
-                $my_kid->widgetstoreid = $rows->widgetstoreid;
-                $my_kid->widgetkey = $rows->widgetkey;
-                $child[] = $my_kid; 
+        if($result) {
+            $node = new StdClass;
+            $child = Array();
+            foreach($result as $rows) {
+                //path of parents is alway zero
+                if ( $rows->path_length == 0 ) { 
+                    $node = $this->_load_object_code($rows->widgetobjstring);
+                    $node->widgetstoreid = $rows->widgetstoreid; 
+                } else {
+                    $my_kid = $this->_load_object_code($rows->widgetobjstring);
+                    $my_kid->widgetstoreid = $rows->widgetstoreid;
+                    $my_kid->widgetkey = $rows->widgetkey;
+                    $child[] = $my_kid; 
+                }
+
+                $node->widgetkey = $rows->widgetkey;
+                $node->widgetstoreid = $rows->widgetstoreid;
+                $node->children = null;
+                if ($child) {
+                    $node->children = $child;
+                } 
             }
-
-            $node->widgetkey = $rows->widgetkey;
-            $node->widgetstoreid = $rows->widgetstoreid;
-            $node->children = null;
-            if ($child) {
-                $node->children = $child;
-            } 
+            
+            return $node;  
         }
-
-        return $node; 
     }
 
     public function fetch_widgets_by_company() {
