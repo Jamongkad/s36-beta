@@ -123,7 +123,7 @@ return array(
     }),
       
     'POST /feedsetup/save_widget' => function() { 
-        $wdm = new WidgetDataManager;
+        $wdm = new Widget\Services\WidgetDataManager;
         $wdm->create_and_save_widget(); 
     },
 

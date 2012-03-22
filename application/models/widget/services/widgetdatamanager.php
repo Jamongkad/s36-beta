@@ -1,4 +1,7 @@
-<?php
+<?php namespace Widget\Services;
+
+use DB, Input;
+use Widget\Repositories\DBWidget;
 
 class WidgetDataManager {
     public function __construct() {
@@ -51,7 +54,7 @@ class WidgetDataManager {
     public function provide_data_for($force_type=False) {
         if ( $force_type == "display" ) {
 
-            $perm_factory = new Permission(Input::get('perms'));
+            $perm_factory = new \Permission(Input::get('perms'));
             $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
 
             $theme_type = explode('-', Input::get('theme_type'));
@@ -81,7 +84,6 @@ class WidgetDataManager {
             if ( preg_match('~tab-(br|bl|tr|tl)~', Input::get('tab_type'), $match) ) {
                 $tab_pos = 'corner';
             } else {
-                //if not then assume side tab
                 $tab_pos = 'side';
             } 
 
@@ -110,7 +112,7 @@ abstract class WidgetDataTypes {
 
     public function __construct($data) {
         $this->_data = $data;     
-        $this->_dbw = new Widget\Repositories\DBWidget; 
+        $this->_dbw = new DBWidget;
     }
 
     public function save() { 
