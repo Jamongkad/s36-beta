@@ -110,7 +110,7 @@ class DBWidget extends S36DataObject {
                         WidgetStore
                     WHERE 1=1
                         AND (WidgetStore.widgetKey = :widget_key OR WidgetStore.widgetStoreId = :widget_store_key)
-                    LIMIT 1
+                    HAVING COUNT(*) = 1
                 )
             ORDER BY
                 WidgetStore.widgetStoreId DESC
