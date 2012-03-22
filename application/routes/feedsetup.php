@@ -91,7 +91,7 @@ return array(
           , 'widget'          => $widget
           , 'form_themes'     => $form_themes
           , 'iframe_code'     => $wl->load_iframe_code()
-          , 'js_code'         => $wl->load_widget_js_code()
+          , 'js_code'         => $wl->load_widget_init_js_code()
         ));
     }),
     
@@ -130,6 +130,7 @@ return array(
         /*
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
+        $cl = new Widget\Services\ClientRender($widget);
         Helpers::dump($widget->render_data());
         */
 
@@ -148,7 +149,7 @@ return array(
          $iframe = $wl->load_iframe_code();
          echo json_encode(Array(
              'html_view' => $iframe
-           , 'html_widget_js_code' => $wl->load_widget_js_code() 
+           , 'html_widget_js_code' => $wl->load_widget_init_js_code() 
            , 'html_iframe_code' => $iframe
            , 'height' => $wl->load()->get_height()
            , 'width' => $wl->load()->get_width()
