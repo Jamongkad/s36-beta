@@ -54,7 +54,7 @@ class ClientRender {
               , 'css_load' => $this->form_loader_css
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
             );
-            return View::make('widget::widget_js_output_form', $data);
+            return View::make('widget::widget_link_js_output_form', $data);
         }
     }
 
