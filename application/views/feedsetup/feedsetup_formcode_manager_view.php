@@ -10,7 +10,7 @@ $(function(){
         $(this).addClass('active');
     });
     
-    $('textarea.jspopup').focus(function() {
+    $('.highlight').focus(function() {
         $this = $(this);
 
         $this.select();
@@ -55,10 +55,10 @@ function display_codes(i){
                         
                         <table width="400" align="center">
                         <tr><td><strong>Permanent Shortlink URL</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" value="<?=$loader_url?>"/></td></tr>
+                        <tr><td><input type="text" class="regular-text highlight" value="<?=$loader_url?>"/></td></tr>
                         <tr height="10"><td></td></tr>
                         <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" 
+                        <tr><td><input type="text" class="regular-text highlight" 
                                        value="<a href='<?=$loader_url?>'>Fill out my form!</a>"/></td></tr>
                         </table>
                         <br />
@@ -70,7 +70,7 @@ function display_codes(i){
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <!--JS Link Pop code goes here-->
-                        <tr><td><textarea class="regular-text" rows="7">
+                        <tr><td><textarea class="regular-text highlight" rows="7">
 <?=$embed_js_code;?> 
                         </textarea></td></tr>  
                         </table>
@@ -82,12 +82,12 @@ function display_codes(i){
                         
                         <table width="400" align="center"> 
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
-                        <tr><td><textarea class="regular-text jspopup" rows="7">
+                        <tr><td><textarea class="regular-text highlight" rows="7">
 <?=$link_js_output;?>
                         </textarea></td></tr>
 
                         <tr><td><strong>HTML Popup Version</strong></td></tr>
-                        <tr><td><textarea class="regular-text jspopup" rows="7">
+                        <tr><td><textarea class="regular-text highlight" rows="7">
 <?=$link_native_output;?>
                         </textarea></td></tr>
                         </table>
@@ -169,7 +169,7 @@ function display_codes(i){
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <!--JS Pop code goes here-->
-                        <tr><td><textarea class="regular-text" rows="7">
+                        <tr><td><textarea class="regular-text highlight" rows="7">
 <?=$tab_js_output?>                        
                         </textarea></td></tr>
                         </table>
