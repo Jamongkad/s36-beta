@@ -86,6 +86,7 @@
             <div class="widget-types">
                 <strong style="font-size:14px;">Form Theme Design :</strong>
                 <div class="widget-info" style="margin:0px -20px;">
+                    pwet
                     <?=$themepicker_view?>
                 </div>  
             </div>
