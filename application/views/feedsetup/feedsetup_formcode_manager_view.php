@@ -96,60 +96,58 @@ function display_codes(i){
                             </select>
                         </strong>
                         <div id="tab-slider" style="margin:0px 0px;">
-                        <strong>Tab Design : </strong>                  
-                        <?php 
-                            $positions = Array();
-                            foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-                                $positions[$v] = $form_themes;
-                            }
+                            <strong>Tab Design : </strong>                  
+                            <?php 
+                                $positions = Array();
+                                foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
+                                    $positions[$v] = $form_themes;
+                                }
 
-                            $theme_slides = '';
-                            foreach($positions as $pos => $theme){
-                                $theme_slides .= '<div class="'.$pos.'-design-slide">
-                                              <div class="'.$pos.'-design-prev">
-                                              </div>
-                                              <div class="'.$pos.'-designs grids">';
-                                                $units = 5;
-                                                $ctr = 0;
-                                                $max = count($form_themes);
-                                                
-                                                foreach($theme as $key => $val){
+                                $theme_slides = '';
+                                foreach($positions as $pos => $theme){
+                                    $theme_slides .= '<div class="'.$pos.'-design-slide">
+                                                  <div class="'.$pos.'-design-prev">
+                                                  </div>
+                                                  <div class="'.$pos.'-designs grids">';
+                                                    $units = 5;
+                                                    $ctr = 0;
+                                                    $max = count($form_themes);
                                                     
-                                                    if(($ctr % $units) == 0){
-                                                        $theme_slides .= '<div class="form-design-group grids">';
-                                                        $end = 1;
+                                                    foreach($theme as $key => $val){
+                                                        
+                                                        if(($ctr % $units) == 0){
+                                                            $theme_slides .= '<div class="form-design-group grids">';
+                                                            $end = 1;
+                                                        }
+                                                        $theme_slides .= '<div class="tab-design" id="tab-'.$pos.'-'.$key.'">
+                                                                        <img src="/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png" height="60" />
+                                                                        <br />
+                                                                        <span>'.$val.'</span>
+                                                                    </div>';
+                                                        
+                                                        if(($end == $units) || $ctr == ($max - 1)){
+                                                            $theme_slides .= '</div>';
+                                                        }
+                                                        
+                                                        $end++;
+                                                        $ctr++;
                                                     }
-                                                    $theme_slides .= '<div class="tab-design" id="tab-'.$pos.'-'.$key.'">
-                                                                    <img src="/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png" height="60" />
-                                                                    <br />
-                                                                    <span>'.$val.'</span>
-                                                                </div>';
                                                     
-                                                    if(($end == $units) || $ctr == ($max - 1)){
-                                                        $theme_slides .= '</div>';
-                                                    }
-                                                    
-                                                    $end++;
-                                                    $ctr++;
-                                                }
-                                                
-                                        $theme_slides .= '</div>
-                                                <div class="'.$pos.'-design-next">
-                                                </div>
-                                            </div>';
-                            }
-                            echo $theme_slides;	
-                            
-                        ?>
+                                            $theme_slides .= '</div>
+                                                    <div class="'.$pos.'-design-next">
+                                                    </div>
+                                                </div>';
+                                }
+                                echo $theme_slides;	
+                                
+                            ?> 
+                        </div>
 
                         <table width="400" align="center">
                         <tr><td><textarea class="regular-text" rows="7"></textarea></td></tr>
                         </table>
-                
-                </div>
                     </div>
-                </div>
-                
+                </div> 
             </div>
         </div>
         <!--
