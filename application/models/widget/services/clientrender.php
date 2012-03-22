@@ -62,8 +62,10 @@ class ClientRender {
         $obj = $this->widget_type_obj;
 
         if($obj instanceof FormWidgets) {
+            $height = $obj->get_height();
+            $width = $obj->get_width();
             return '<a href="'.$this->_widget_loader($obj->widgetkey).'" 
-                       onclick="window.open(this.href,  null, \'height=757, width=680, toolbar=0, location=0, status=1, scrollbars=1, resizable=1\'); 
+                       onclick="window.open(this.href,  null, \'height='.$height.', width='.$width.', toolbar=0, location=0, status=1, scrollbars=1, resizable=1\'); 
                                 return false;">Please fill out my form.</a>';
         }
 
