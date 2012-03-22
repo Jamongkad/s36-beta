@@ -58,7 +58,8 @@ function display_codes(i){
                         <tr><td><input type="text" class="regular-text" value="<?=$loader_url?>"/></td></tr>
                         <tr height="10"><td></td></tr>
                         <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
-                        <tr><td><input type="text" class="regular-text" value=" "/></td></tr>
+                        <tr><td><input type="text" class="regular-text" 
+                                       value="<a href='<?=$loader_url?>'>Fill out my form!</a>"/></td></tr>
                         </table>
                         <br />
                     </div>
