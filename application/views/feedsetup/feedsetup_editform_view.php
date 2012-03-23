@@ -90,7 +90,9 @@
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Update" />
+                <!--
                 <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
+                -->
             </div>
         </div>
     </div>
