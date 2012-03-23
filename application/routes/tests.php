@@ -189,7 +189,7 @@ return array(
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $dbw = new Widget\Repositories\DBWidget;
-        $widget = $dbw->fetch_widget_by_id($widget_id);
+        $widget = $dbw->fetch_widget_by_id($widget_id, $data_return='widgetstoreid');
         Helpers::dump($widget);
         /*
         $wl = new Widget\Services\WidgetLoader($widget_id); 

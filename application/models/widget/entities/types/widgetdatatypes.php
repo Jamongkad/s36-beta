@@ -37,7 +37,7 @@ abstract class WidgetDataTypes {
     }
 
     public function emit() { 
-        $obj = $this->_dbw->fetch_widget_by_id($this->_id);
+        $obj = $this->_dbw->fetch_widget_by_id($this->_id, $data_return='widgetstoreid');
         return Array('widget_type' => 'display', 'widget' => $obj);
     }
 
