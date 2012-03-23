@@ -1,3 +1,4 @@
+<?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('tab_type', $tab_type, Array('id' => 'selected-tab'))?>
 <script type="text/javascript">
 $(function(){    

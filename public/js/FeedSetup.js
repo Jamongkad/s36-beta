@@ -286,9 +286,9 @@ jQuery(function($) {
     });
      
     $('.form-design').selected_theme({set_value: '#selected-form'});
-    $('.tab-design').selected_theme({set_value: '#selected-tab'}).end().click(function(e) { 
+    $('.tab-design').selected_theme({set_value: '#selected-tab'}).click(function(e) { 
         var value = $(this).attr('id'); 
-        console.log(value);
+        
         e.preventDefault();
     });    
 
