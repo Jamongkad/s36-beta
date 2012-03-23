@@ -1,6 +1,6 @@
 <?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
-<span id="update-tabtype-url" hrefaction="<?=URL::to('feedsetup/update_tabtype/'?>"></span>
+<span id="update-tabtype-url" hrefaction="<?=URL::to('feedsetup/update_tabtype/')?>"></span>
 
 <script type="text/javascript">
 $(function(){    
