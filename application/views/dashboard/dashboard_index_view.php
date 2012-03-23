@@ -114,6 +114,7 @@
         <div id="map_canvas">
         </div>
     </div>
+    <!--
     <div class="block">
         <table width="100%" class="regular-table" cellpadding="0" cellspacing="0">
             <thead>                        
@@ -129,6 +130,7 @@
             </tfoot>
         </table>
     </div>
+    -->
 <?else:?>
       
       <script type="text/javascript"> 
