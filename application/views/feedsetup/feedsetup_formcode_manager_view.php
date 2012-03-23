@@ -170,7 +170,6 @@ function display_codes(i){
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
                         <!--JS Pop code goes here-->
                         <tr><td><textarea class="regular-text highlight" rows="7">
-<?=$tab_js_output?>                        
                         </textarea></td></tr>
                         </table>
                         -->
