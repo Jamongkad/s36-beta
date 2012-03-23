@@ -143,9 +143,13 @@ return array(
 
     }),
 
-    'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) {
+    'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) use ($dbw) {  
+        /*
         Helpers::dump($widgetkey);
         Helpers::dump($tab_type);
+        */
+        $obj = $dbw->fetch_widget_by_id($widgetkey);
+        Helpers::dump($obj);
     },
 
     'GET /feedsetup/delete_widget/(:any)' => function($widget_id) use ($dbw) {
