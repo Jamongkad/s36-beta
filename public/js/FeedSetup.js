@@ -50,7 +50,6 @@ jQuery(function($) {
                           } 
                     });
 
-
                     new Status().notify("Success!", 1000);
 
                     $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
@@ -82,15 +81,13 @@ jQuery(function($) {
                 new Status().notify("Processing...", 1000); 
             }
           , success: function(responseText, statusText, xhr, $form) {
-
                 var widget_key = responseText.submit.widget.widgetkey;
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
-                $("input[name=submit_widgetkey]").val(widget_key);
+
                 $("#widget-preview").show();
                 new Status().notify("Success!", 1000);
-                var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                 $.ajax({
-                    url: action
+                      url: $("#preview-widget").attr('hrefaction') + "/" + widget_key;
                     , type: "GET"
                     , dataType: 'json'
                     , success: function(data) { 

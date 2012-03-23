@@ -7,19 +7,20 @@
 <?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
+<span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step 1 :</span> Choose a name for your form and a question to encourage your users</h2>
             <div class="widget-types">
-                    <table width="100%" cellpadding="5" cellspacing="0">
-                        <tr>
-                            <td width="120">
-                                <strong style="font-size:14px;">Form Name :</strong>
-                            </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" /></td>
-                        </tr>
-                    </table>
+                <table width="100%" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td width="120">
+                            <strong style="font-size:14px;">Form Name :</strong>
+                        </td>
+                        <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" /></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="widget-options">
@@ -44,11 +45,6 @@
                         <br />
                         <small style="line-height:normal">
                         Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
-                        <br />
-                        <br />
-                        <!--
-                        <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
-                        -->
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="large-textarea" 
@@ -90,26 +86,7 @@
                     <?=$themepicker_view?>
                 </div> 
             </div>
-        </div>
-
-        <div class="widget-opts" style="text-align:center">
-            <div style="width: 360px;margin-left:auto;margin-right:auto">
-                <div class="widget-block" style="position:relative">
-                    <h2>JS Widget Code (recommended)</h2>
-                    <div class="html-code">
-                        <textarea id="widget-generate-view" spellcheck="false">
-                            <?=$js_code?> 
-                        </textarea>
-                        <!-- add this -->
-                        <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                        <!-- end add this -->
-                    </div>
-                </div>
-                <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
-                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-            </div>    
         </div> 
-
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Update" />

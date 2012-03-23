@@ -15,17 +15,15 @@
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2><span>Step 1 :</span> Create Submission Form</h2>
-            <!-- selected form and color -->
-            <!-- end -->
             <div class="widget-types">
-                    <table width="100%" cellpadding="5" cellspacing="0">
-                        <tr>
-                            <td width="120">
-                                <strong style="font-size:14px;">Form Name :</strong>
-                            </td>
-                            <td><input type="text" class="large-text" name="theme_name" value="" title="Name your form" /></td>
-                        </tr>
-                    </table>
+                <table width="100%" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td width="120">
+                            <strong style="font-size:14px;">Form Name :</strong>
+                        </td>
+                        <td><input type="text" class="large-text" name="theme_name" value="" title="Name your form" /></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="widget-options">
@@ -50,11 +48,6 @@
                         <br />
                         <small style="line-height:normal">
                         Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?". 
-                        <br />
-                        <br />
-                        <!--
-                        <a href="#" style="text-decoration:underline;color:#333">Click here to preview what happens.</a></small>
-                        -->
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="form-text" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
