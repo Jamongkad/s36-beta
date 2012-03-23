@@ -100,7 +100,7 @@ class DBWidget extends S36DataObject {
             $widget_storeid = $widget_store_id->widgetstoreid; 
         }
 
-        Helpers::dump($wiget_storeid);
+        Helpers::dump($widget_storeid);
         
         /*
         $sql = "
