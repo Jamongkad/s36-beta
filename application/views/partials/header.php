@@ -39,6 +39,7 @@
         <?=HTML::script('js/InboxFilters.js')?>
         <?=HTML::script('js/FeedSetup.js')?>
         <?=HTML::script('js/Status.js')?>
+        <?=HTML::script('js/s36Lightbox.js')?>
 
         <?=HTML::script('js/s36application.js')?>
 
