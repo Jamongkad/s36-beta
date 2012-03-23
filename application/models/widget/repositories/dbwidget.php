@@ -90,7 +90,8 @@ class DBWidget extends S36DataObject {
          
         Helpers::dump($widget_key);
         Helpers::dump($widget_store_id);
-
+        
+        /*
         $sql = "
             SELECT 
                   WidgetStore.widgetStoreId
@@ -148,6 +149,7 @@ class DBWidget extends S36DataObject {
             
             return $node;  
         }
+        */
     }
 
     public function fetch_widgets_by_company() {
