@@ -20,13 +20,13 @@
                     <div class="g1of3">
                         <div class="right-align">
                             <ul class="widget-button-list">
-                                <li><?=HTML::link('feedsetup/edit/'.$rows->widgetstoreid."/".$widget_type, 'Edit', array('class' => 'button-gray'))?></li>
+                                <li><?=HTML::link('feedsetup/edit/'.$rows->widgetkey."/".$widget_type, 'Edit', array('class' => 'button-gray'))?></li>
 
                                 <?if($widget_type == "submit"):?>
-                                <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetstoreid, 'Integrate', array('class' => 'button-gray'))?></li>
+                                <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li>
                                 <?endif?>
 
-                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetstoreid, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
+                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetkey, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
                                 <!--
                                 <li><a href="#" class="button-gray">Stat</a></li>
                                 <li><a href="#" class="button">More</a></li>

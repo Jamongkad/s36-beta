@@ -67,7 +67,7 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/([0-9]+)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
+    'GET /feedsetup/edit/(:any)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         if($widget->widget_type == 'display') {
@@ -95,7 +95,8 @@ return array(
         ));
     }),
     
-    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_select=false) use ($feedback) { 
+    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 
+                                                      'do' => function($widget_select=false) use ($feedback) { 
 
         $form_themes = Array( 
             'aglow'=>'Aglow'
@@ -143,7 +144,7 @@ return array(
 
     }),
 
-    'GET /feedsetup/delete_widget/([0-9]+)' => function($widget_id) use ($dbw) {
+    'GET /feedsetup/delete_widget/(:any)' => function($widget_id) use ($dbw) {
         $dbw->delete_widget($widget_id);
     },
 

@@ -136,8 +136,7 @@ class DBWidget extends S36DataObject {
                 if ($child) {
                     $node->children = $child;
                 } 
-            }
-            
+            } 
             return $node;  
         }
 
