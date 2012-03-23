@@ -7,6 +7,7 @@
 <?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <?=Form::hidden('embed_type', 'form')?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
+<span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
