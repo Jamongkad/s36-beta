@@ -286,7 +286,13 @@ jQuery(function($) {
     });
      
     $('.form-design').selected_theme({set_value: '#selected-form'});
-    $('.tab-design').selected_theme({set_value: '#selected-tab'});    
+    $('.tab-design').selected_theme({set_value: '#selected-tab'}).end().click(function(e) {
+        
+        var value = $(this).attr('id'); 
+        console.log(value);
+        e.preventDefault();
+
+    });    
 
     $(document).delegate(".delete-widget", "click", function(e) {
         var href = $(this).attr('href');
@@ -337,7 +343,6 @@ $.fn.selected_theme = function(select_name) {
         }
        
         $(select_name.set_value).val(value);
-        console.log(value);
     })
 }
 
