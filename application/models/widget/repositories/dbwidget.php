@@ -24,7 +24,7 @@ class DBWidget extends S36DataObject {
         $sth->execute();
 
         $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id");
-        $sth->bindParam(':widget_store_id', $widget_id, PDO::PARAM_STR);
+        $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
        
         if($obj->children) { 
