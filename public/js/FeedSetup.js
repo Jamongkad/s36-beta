@@ -293,8 +293,11 @@ jQuery(function($) {
 
         $.ajax({
             url: url     
-          , success: function(msg) {
-                console.log(msg);
+          , beforeSend: function() { 
+                new Status().notify("Processing...", 1000); 
+            }
+          , success: function(msg) { 
+                new Status().notify("Success!", 1000); 
             }
         })
         e.preventDefault();
