@@ -9,11 +9,12 @@ jQuery(function($) {
             $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
         }
     });
-    */
 
     window.onbeforeunload = function() {
         return "Are you sure you want to navigate away from this page?";
     };
+
+    */
 
     var preview_widget = ".preview-display-widget-button, .preview-form-widget-button";
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
