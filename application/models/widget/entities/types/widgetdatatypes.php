@@ -2,6 +2,7 @@
 
 use Widget\Repositories\DBWidget;
 
+//TODO: You can do better than this...
 abstract class WidgetDataTypes {
 
     private $_data, $_dbw, $_id, $_widgetkey;
