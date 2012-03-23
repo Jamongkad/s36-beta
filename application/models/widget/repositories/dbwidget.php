@@ -111,7 +111,6 @@ class DBWidget extends S36DataObject {
  
         $sth = $this->dbh->prepare($sql);  
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
-        $sth->bindParam(':widget_store_key', $widget_key, PDO::PARAM_STR);
         $sth->execute();
         
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
