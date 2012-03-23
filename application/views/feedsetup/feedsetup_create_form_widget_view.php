@@ -90,28 +90,28 @@
                 </div>  
             </div>
         </div>
-
+        <!--
         <div class="widget-opts" style="text-align:center">
-
             <div id="widget-preview">
                 <div class="widget-block" style="position:relative">
                     <h2>JS Widget Code (recommended)</h2>
                     <div class="html-code">
                         <textarea id="widget-generate-view" spellcheck="false"></textarea>
-                        <!-- add this -->
                         <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                        <!-- end add this -->
                     </div>
                 </div>
                 <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
                 <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>  
             </div>    
         </div> 
+        -->
 
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Save" />
+                <!--
                 <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
+                -->
             </div>
         </div>
     </div>
