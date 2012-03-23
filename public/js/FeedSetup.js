@@ -291,7 +291,12 @@ jQuery(function($) {
         var widgetkey = $('input[name=submit_widgetkey]').val();
         var url = $('#update-tabtype-url').attr('hrefaction') + '/' + widgetkey + '/' + value;
 
-        console.log(url);
+        $.ajax({
+            url: url     
+          , success: function(msg) {
+                console.log(msg);
+            }
+        })
         e.preventDefault();
     });    
 
