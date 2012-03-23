@@ -87,7 +87,7 @@ jQuery(function($) {
                 $("#widget-preview").show();
                 new Status().notify("Success!", 1000);
                 $.ajax({
-                      url: $("#preview-widget").attr('hrefaction') + "/" + widget_key;
+                      url: $("#preview-widget").attr('hrefaction') + "/" + widget_key
                     , type: "GET"
                     , dataType: 'json'
                     , success: function(data) { 
