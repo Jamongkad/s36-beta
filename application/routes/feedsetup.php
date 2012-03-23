@@ -154,9 +154,8 @@ return array(
         $obj = $dbw->fetch_widget_by_id($widgetkey);
         $obj->tab_type = $tab_type;
         $obj->tab_pos = $tab_pos;
-
-        Helpers::dump($obj);
-        //TODO: then update make a better object mapper for widget objects you dickead.
+        $dbw->update_widget_by_id($widgetkey, $obj);
+        //TODO: update make a better object mapper for widget objects you dickead.
     },
 
     'GET /feedsetup/delete_widget/(:any)' => function($widget_id) use ($dbw) {
