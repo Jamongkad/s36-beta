@@ -188,10 +188,15 @@ return array(
     },
 
     'GET /tests/widget_data/(:any)' => function($widget_id) {
+        $dbw = new Widget\Repositories\DBWidget;
+        $widget = $dbw->fetch_widget_by_id($widget_id);
+        Helpers::dump($widget);
+        /*
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
         return $cl->link_js_output();
+        */
     },
 
     'GET /tests/pull_feedback' => function() {        
