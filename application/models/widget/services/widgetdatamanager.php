@@ -2,6 +2,8 @@
 
 use DB, Input;
 use Widget\Repositories\DBWidget;
+use Widget\Entities\DisplayWidget;
+use Widget\Entities\FormWidget;
 
 class WidgetDataManager {
     public function __construct() {
@@ -98,7 +100,7 @@ class WidgetDataManager {
               , 'submit_form_text'     => Input::get('submit_form_text')
               , 'submit_form_question' => Input::get('submit_form_question')
               , 'tab_pos'  => $tab_pos
-              , 'tab_type' => Input::get('tab_type')
+              , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
               , 'site_nm'  => $this->site_nm->domain
             );
             
@@ -106,6 +108,7 @@ class WidgetDataManager {
     }
 }
 
+/*
 abstract class WidgetDataTypes {
 
     private $_data, $_dbw, $_id;
@@ -147,3 +150,4 @@ class DisplayWidget extends WidgetDataTypes {
 
 class FormWidget extends WidgetDataTypes { 
 }
+*/

@@ -1,8 +1,5 @@
 <?php namespace Widget\Services;
 
-//require_once('/var/www/s36-beta/application/models/widget/entities/widgettypes.php');
-//require_once('/entities/widgettypes.php');
-
 use Config
   , Widget\Entities\SubmissionWidget
   , Widget\Entities\HorizontalEmbedWidget
