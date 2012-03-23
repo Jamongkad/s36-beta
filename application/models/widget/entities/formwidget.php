@@ -1,4 +1,4 @@
-<?php
+<?php namespace Widget\Entities;
 
 use \Widget\Entities\Types\WidgetDataTypes;
 
