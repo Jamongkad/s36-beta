@@ -127,7 +127,7 @@ return array(
         $wdm->create_and_save_widget(); 
     },
 
-    'GET /feedsetup/formcode_manager/(:num?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
+    'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
