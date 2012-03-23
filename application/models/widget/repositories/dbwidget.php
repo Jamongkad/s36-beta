@@ -85,10 +85,10 @@ class DBWidget extends S36DataObject {
 
     public function fetch_widget_by_id($widget_key) {     
 
-        $widget_key = DB::Table('WidgetStore')->where('WidgetStore.widgetKey', '=', $widget_key)->first();
+        $widgetkey = DB::Table('WidgetStore')->where('WidgetStore.widgetKey', '=', $widget_key)->first();
         $widget_store_id = DB::Table('WidgetStore')->where('WidgetStore.widgetStoreId', '=', $widget_key)->first();
          
-        Helpers::dump($widget_key);
+        Helpers::dump($widgetkey);
         Helpers::dump($widget_store_id);
         
         /*
