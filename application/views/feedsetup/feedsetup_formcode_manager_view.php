@@ -1,4 +1,4 @@
-<input type="hidden" name="tab_type" value="<?=$tab_type?>" id="selected-tab" />
+<?=Form::hidden('tab_type', $tab_type, Array('id' => 'selected-tab'))?>
 <script type="text/javascript">
 $(function(){    
     $('#formcodebox ul li').click(function(){
@@ -53,7 +53,7 @@ function display_codes(i){
                         Create a Link to Your Form</h4>
                         
                         <table width="400" align="center">
-                        <tr><td><strong>Permanent Shortlink URL</strong></td></tr>
+                        <tr><td align="center"><strong>Permanent Shortlink URL</strong></td></tr>
                         <tr><td><input type="text" class="regular-text highlight" value="<?=$loader_url?>"/></td></tr>
                         <tr height="10"><td></td></tr>
                         <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
