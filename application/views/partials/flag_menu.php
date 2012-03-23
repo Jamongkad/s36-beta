@@ -34,7 +34,7 @@
                     <?
                         $feedsetup_nav = Array();
                         if(   $display = preg_match('~feedsetup/overview/(display|submit)~', Request::uri(), $matches)
-                           or $edit_widget = preg_match('~feedsetup/edit/([0-9]+)/(display|submit)~', Request::uri(), $matches) 
+                           or $edit_widget = preg_match('~feedsetup/edit/([a-zA-Z0-9]+)/(display|submit)~', Request::uri(), $matches) 
                            or $create_display_widget = preg_match('~feedsetup/display_widgets/(embed|modal)~', Request::uri(), $matches) 
                            or $create_form_widget = preg_match('~feedsetup/submission_widgets~', Request::uri(), $matches)
                            ) {
