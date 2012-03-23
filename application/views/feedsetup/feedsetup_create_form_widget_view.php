@@ -6,8 +6,11 @@
 <?=Form::hidden('submit_widgetkey', false)?>
 <?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <?=Form::hidden('embed_type', 'form')?>
+
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
 <span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
+<span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>  
+
 <div class="block">
     <div id="widget-setup-block">
         <div class="widget-options">
@@ -102,7 +105,6 @@
                     </div>
                 </div>
                 <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
-                <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>  
             </div>    
         </div> 
         -->
