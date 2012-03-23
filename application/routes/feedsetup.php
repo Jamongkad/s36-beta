@@ -149,6 +149,7 @@ return array(
         Helpers::dump($tab_type);
         */
         $obj = $dbw->fetch_widget_by_id($widgetkey);
+        $obj->tab_type = $tab_type;
         Helpers::dump($obj);
     },
 
