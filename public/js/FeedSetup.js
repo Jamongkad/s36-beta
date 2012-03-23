@@ -163,25 +163,25 @@ jQuery(function($) {
     $('#modal_widget').hide();
 
     $('#full_page_type').click(function(){
-            fullpage_up();
-            $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-            .children('input[type="radio"]').attr('checked', null);                   
+        fullpage_up();
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+        .children('input[type="radio"]').attr('checked', null);                   
 
-            $("#modal_widget tr td").children('select').val(0);
-            });
+        $("#modal_widget tr td").children('select').val(0);
+    });
 
     $('#embed_type').click(function(){
-            embed_up();
-            $("#full_page_widget tr td").children('select').val(0);
-            $("#modal_widget tr td").children('select').val(0);
-            });
+        embed_up();
+        $("#full_page_widget tr td").children('select').val(0);
+        $("#modal_widget tr td").children('select').val(0);
+    });
 
     $('#modal_type').click(function(){
-            modal_up();
-            $("#full_page_widget tr td").children('select').val(0); 
-            $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
-            .children('input[type="radio"]').attr('checked', null);                   
-            });
+        modal_up();
+        $("#full_page_widget tr td").children('select').val(0); 
+        $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
+        .children('input[type="radio"]').attr('checked', null);                   
+    });
 
     if($('input[value="embedded"]').attr('checked')) {
         embed_up();
@@ -287,9 +287,8 @@ jQuery(function($) {
      
     $('.form-design').selected_theme({set_value: '#selected-form'});
     $('.tab-design').selected_theme({set_value: '#selected-tab'}).click(function(e) { 
-        var value = $(this).attr('id'); 
-        var widgetkey = $('input[name=submit_widgetkey]').val();
-        console.log(widgetkey);
+        var url = $("#update-tabtype-url").attr('hrefaction');   
+        console.log(url);
         e.preventDefault();
     });    
 

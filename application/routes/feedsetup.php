@@ -143,6 +143,11 @@ return array(
 
     }),
 
+    'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) {
+        Helpers::dump($widgetkey);
+        Helpers::dump($tab_type);
+    },
+
     'GET /feedsetup/delete_widget/(:any)' => function($widget_id) use ($dbw) {
         $dbw->delete_widget($widget_id);
     },
