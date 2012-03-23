@@ -1,7 +1,6 @@
-<?=Form::hidden('tab_type', $tab_type, Array('id' => 'selected-tab'))?>
+<input type="hidden" name="tab_type" value="<?=$tab_type?>" id="selected-tab" />
 <script type="text/javascript">
-$(function(){
-    
+$(function(){    
     $('#formcodebox ul li').click(function(){
         $(this).parent().find('li').each(function(){
             $(this).removeClass('active');
