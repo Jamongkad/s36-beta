@@ -344,6 +344,8 @@ $.fn.selected_theme = function(select_name) {
        
         $(select_name.set_value).val(value);
     })
+
+    return this;
 }
 
 function expose_index(selector) {
