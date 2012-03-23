@@ -78,7 +78,7 @@ jQuery(function($) {
           , success: function(responseText, statusText, xhr, $form) {
 
                 var widget_key = responseText.submit.widget.widgetkey;
-
+                var formcode_url = $("#formcode-manager-url").attr('hrefaction') + widget_key;
                 $("input[name=submit_widgetkey]").val(widget_key);
                 $("#widget-preview").show();
                 new Status().notify("Success!", 1000);
@@ -88,12 +88,8 @@ jQuery(function($) {
                     , type: "GET"
                     , dataType: 'json'
                     , success: function(data) {
-                          /*
-                          $("#widget-generate-view").val(data.html_widget_js_code); 
-                          new ZClip();
-                          */
-                          var formcode_url = $("#formcode-manager-url").attr('hrefaction');
-                          window.location = formcode_url + "/" + widget_key;
+                          console.log(formcode_url);
+                          //window.location = formcode_url + "/" + widget_key;
                       } 
                 });
                 $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
