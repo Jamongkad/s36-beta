@@ -35,7 +35,6 @@ class DBWidget extends S36DataObject {
     }
 
     public function save_widget($widget_obj) {
-
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
 
         $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
@@ -83,7 +82,13 @@ class DBWidget extends S36DataObject {
         $this->dbh->commit();
     }
 
-    public function fetch_widget_by_id($widget_key) {     
+    public function fetch_widget_by_id($widget_key, $data_return='widgetkey') {     
+
+        if($data_return == "widgetkey") {
+            $statement = "AND WidgetStore.widgetKey = :widget_key";
+        } else { 
+            $statement = "AND WidgetStore.widgetStoreId = :widget_store_id";
+        }
  
         $sql = "
             SELECT 
@@ -103,14 +108,19 @@ class DBWidget extends S36DataObject {
                     FROM
                         WidgetStore
                     WHERE 1=1
-                        AND WidgetStore.widgetKey = :widget_key
+                        $statement
                 )
             ORDER BY
                 WidgetStore.widgetStoreId DESC
         ";
  
         $sth = $this->dbh->prepare($sql);  
-        $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
+        if($data_return == "widgetkey") {
+            $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
+        } else { 
+            $sth->bindParam(':widget_store_id', $widget_key, PDO::PARAM_STR);
+        }
+        
         $sth->execute();
         
         $result = $sth->fetchAll(PDO::FETCH_CLASS);

@@ -27,7 +27,7 @@ class WidgetDataManager {
                 $form->save();
                 $display->adopt($form);
             }
-
+            
             $emit_data = Array(
                 'display' => $display->emit()
               , 'submit'  => $form->emit()
@@ -44,12 +44,12 @@ class WidgetDataManager {
             } else { 
                 $form->save();
             }
-
+            
             $emit_data = Array(
                 'submit' => $form->emit()
             );
 
-            echo json_encode($emit_data);
+            echo json_encode($emit_data); 
         }
     }
 

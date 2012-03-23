@@ -4,7 +4,7 @@ use Widget\Repositories\DBWidget;
 
 abstract class WidgetDataTypes {
 
-    private $_data, $_dbw, $_id;
+    private $_data, $_dbw, $_id, $_widgetkey;
 
     public function __construct($data) {
         $this->_data = $data;     

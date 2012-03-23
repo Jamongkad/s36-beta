@@ -23,7 +23,7 @@
                                 <li><?=HTML::link('feedsetup/edit/'.$rows->widgetkey."/".$widget_type, 'Edit', array('class' => 'button-gray'))?></li>
 
                                 <?if($widget_type == "submit"):?>
-                                <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li>
+                                    <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li>
                                 <?endif?>
 
                                 <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetkey, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
