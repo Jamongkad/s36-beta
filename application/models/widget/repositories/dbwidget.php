@@ -84,25 +84,7 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_widget_by_id($widget_key) {     
-
-        $widgetkey = DB::Table('WidgetStore')->where('WidgetStore.widgetKey', '=', $widget_key)->first();
-        $widget_store_id = DB::Table('WidgetStore')->where('WidgetStore.widgetStoreId', '=', $widget_key)->first();
-         
-        Helpers::dump($widgetkey);
-        Helpers::dump($widget_store_id);
-        
-        $widget_storeid = null;
-        if($widgetkey) {
-            $widget_storeid = $widgetkey->widgetstoreid; 
-        }
-
-        if($widget_store_id) { 
-            $widget_storeid = $widget_store_id->widgetstoreid; 
-        }
-
-        Helpers::dump($widget_storeid);
-        
-        /*
+ 
         $sql = "
             SELECT 
                   WidgetStore.widgetStoreId
@@ -121,8 +103,7 @@ class DBWidget extends S36DataObject {
                     FROM
                         WidgetStore
                     WHERE 1=1
-                        AND (WidgetStore.widgetKey = :widget_key OR WidgetStore.widgetStoreId = :widget_store_key)
-                    HAVING COUNT(*) = 1
+                        AND WidgetStore.widgetKey = :widget_key
                 )
             ORDER BY
                 WidgetStore.widgetStoreId DESC
@@ -160,7 +141,7 @@ class DBWidget extends S36DataObject {
             
             return $node;  
         }
-        */
+
     }
 
     public function fetch_widgets_by_company() {
