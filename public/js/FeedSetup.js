@@ -10,6 +10,11 @@ jQuery(function($) {
         }
     });
     */
+
+    window.onbeforeunload = function() {
+        return "Are you sure you want to navigate away from this page?";
+    };
+
     var preview_widget = ".preview-display-widget-button, .preview-form-widget-button";
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
     $(document).delegate("#create-widget", "submit", function(e) {
@@ -78,7 +83,7 @@ jQuery(function($) {
           , success: function(responseText, statusText, xhr, $form) {
 
                 var widget_key = responseText.submit.widget.widgetkey;
-                var formcode_url = $("#formcode-manager-url").attr('hrefaction') + widget_key;
+                var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
                 $("input[name=submit_widgetkey]").val(widget_key);
                 $("#widget-preview").show();
                 new Status().notify("Success!", 1000);
@@ -87,17 +92,11 @@ jQuery(function($) {
                     url: action
                     , type: "GET"
                     , dataType: 'json'
-                    , success: function(data) {
-                          console.log(formcode_url);
-                          //window.location = formcode_url + "/" + widget_key;
+                    , success: function(data) { 
+                          window.location = formcode_url;
                       } 
                 });
                 $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
-                /*
-                window.onbeforeunload = function() {
-                    return "Are you sure you want to navigate away from this page?";
-                };
-                */
             }
         });
         e.preventDefault();    
