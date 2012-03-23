@@ -1,5 +1,6 @@
 <?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
-<?=Form::hidden('tab_type', $tab_type, Array('id' => 'selected-tab'))?>
+<?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
+
 <script type="text/javascript">
 $(function(){    
     $('#formcodebox ul li').click(function(){
@@ -34,7 +35,6 @@ function display_codes(i){
     });
     $('#formcodeboxcontent'+i).fadeIn('fast');
 }
-
 </script>
 
 <div class="block" style="margin-top:-25px">
