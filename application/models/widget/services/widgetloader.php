@@ -99,7 +99,10 @@ class WidgetLoader {
 
     public function load_iframe_code() {
         $widget = $this->load();
+        Helpers::dump($widget);
+        /*
         $client = new ClientRender($widget);
         return $client->iframe_output();
+        */
     }    
 }
