@@ -26,7 +26,7 @@
                                 <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li>
                                 <?endif?>
 
-                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetstoreid, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
+                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetkey, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
                                 <!--
                                 <li><a href="#" class="button-gray">Stat</a></li>
                                 <li><a href="#" class="button">More</a></li>
