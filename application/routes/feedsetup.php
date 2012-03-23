@@ -130,7 +130,6 @@ return array(
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
-        Helpers::dump($widget);
         $cl = new Widget\Services\ClientRender($widget);
         
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
