@@ -168,7 +168,6 @@ function display_codes(i){
                         <!--
                         <table width="400" align="center">
                         <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
-                        <!--JS Pop code goes here-->
                         <tr><td><textarea class="regular-text highlight" rows="7">
                         </textarea></td></tr>
                         </table>
