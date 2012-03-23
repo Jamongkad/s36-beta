@@ -337,6 +337,7 @@ $.fn.selected_theme = function(select_name) {
         }
        
         $(select_name.set_value).val(value);
+        console.log(value);
     })
 }
 
