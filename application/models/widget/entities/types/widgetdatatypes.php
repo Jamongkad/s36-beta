@@ -1,7 +1,7 @@
 <?php namespace Widget\Entities\Types;
 
 use Widget\Repositories\DBWidget;
-use DB, Input, Helpers;
+use DB, Input;
  
 //TODO: You can do better than this...
 abstract class WidgetDataTypes {
