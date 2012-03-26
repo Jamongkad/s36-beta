@@ -57,6 +57,7 @@ class InboxService {
                 $head = new StdClass;
                 $head->head_date = $dates->date_format;
                 $head->unix_timestamp = $dates->unix_timestamp;
+                $head->daysago = $dates->daysago;
                 $head->children = Array();
                 foreach($feed_result->result as $feed) { 
                     $unix = strtotime($feed->date);

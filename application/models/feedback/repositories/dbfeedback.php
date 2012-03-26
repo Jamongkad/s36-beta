@@ -133,6 +133,24 @@ class DBFeedback extends S36DataObject {
             SELECT   
                 DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
               , dtAdded
+              , CASE
+                    WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
+                        THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
+
+                    WHEN datediff(now(), dtAdded) = 1 
+                        THEN "Yesterday"
+
+                    WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
+                        THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
+
+                    WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
+                        THEN concat(datediff(now(), dtAdded)," days ago")
+
+                    WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
+                        THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
+                    ELSE    
+                        "about a year ago"
+                END as daysAgo
               , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
               , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
             FROM 
