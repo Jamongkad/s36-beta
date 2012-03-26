@@ -130,7 +130,7 @@ return array(
 
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
-        Helpers::dump($form);
+        Helpers::dump($form->data());
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
