@@ -38,16 +38,17 @@ function display_codes(i){
 }
 </script>
 
-<div class="block" style="margin-top:-25px">
-    <div id="widget-setup-block" style="background:#778692;">
-        <div class="widget-options">
-            <h2><span>Form Code Manager</span></h2>
+<div class="block">
+    <h2 style="margin-left:-8px;color:#3d6285;font-size:17px;">Form Code Manager</h2>
+    <br/>
+    <div id="widget-setup-block">
+        <div class="widget-options" style="padding-bottom:0px;border:1px solid #f0f2f3">
             <div id="formcodebox">                    
                 <ul>
-                    <li class="formcodelink1 active">Link to Form</li>
-                    <li class="formcodelink2">Embed Form Code</li>
-                    <li class="formcodelink3">Popup Form Link</li>
-                    <li class="formcodelink4">Image Tabs</li>
+                    <li class="formcodelink1 active" >Link to Form <div class="formcodearrow"></div></li>
+                    <li class="formcodelink2">Embed Form Code <div class="formcodearrow"></div></li>
+                    <li class="formcodelink3">Popup Form Link <div class="formcodearrow"></div></li>
+                    <li class="formcodelink4">Image Tabs <div class="formcodearrow"></div></li>
                 </ul> 
                 <div id="formcodeboxcontent">
                     <div id="formcodeboxcontent1" class="formcodeboxcontainer">
