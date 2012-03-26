@@ -144,7 +144,7 @@ return array(
     }),
 
     'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) use ($dbw) {  
-
+        //TODO: update make a better object mapper for widget objects you dickead.
         if ( preg_match('~tab-(br|bl|tr|tl)~', $tab_type, $match) ) {
             $tab_pos = 'corner';
         } else {
@@ -155,7 +155,6 @@ return array(
         $obj->tab_type = $tab_type;
         $obj->tab_pos = $tab_pos;
         $dbw->update_widget_by_id($widgetkey, $obj);
-        //TODO: update make a better object mapper for widget objects you dickead.
     },
 
     'GET /feedsetup/delete_widget/(:any)' => function($widget_id) use ($dbw) {
