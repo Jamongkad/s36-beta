@@ -121,13 +121,6 @@ return array(
         ));
     }),
     
-    /*
-    'POST /feedsetup/save_widget' => function() { 
-        $wdm = new Widget\Services\WidgetDataManager;
-        $wdm->create_and_save_widget(); 
-    },
-    */
-
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
         $form->save();
@@ -136,13 +129,12 @@ return array(
         )); 
     },
     
-    //TODO: Think about this...
     'POST /feedsetup/save_display_widget' => function() { 
         $display = new Widget\Entities\DisplayWidget;
-        $form = new Widget\Entities\FormWidget;
+        $form = new Widget\Entities\FormWidget; 
 
-        $form->save();
         $display->save();
+        $form->save();
         $display->adopt($form);
         
         echo json_encode(Array(
@@ -150,7 +142,6 @@ return array(
            , 'submit' => $form->emit()
         )); 
     },
-
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
 

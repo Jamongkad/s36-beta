@@ -70,8 +70,7 @@ class DBWidget extends S36DataObject {
         return Array('status' => 'update', 'widget' => $widget_obj);
     }
 
-    public function insert_ancestor($ancestor_id, $descendant_id, $path_length=0) { 
- 
+    public function insert_ancestor($ancestor_id, $descendant_id, $path_length=0) {  
         $this->dbh->beginTransaction();
         $closure_sql = "INSERT INTO WidgetClosure (ancestor_id, descendant_id, path_length) VALUES (:ancestor_id, :descendant_id, :path_length)"; 
         $sth = $this->dbh->prepare($closure_sql);

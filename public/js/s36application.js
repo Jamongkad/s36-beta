@@ -24,6 +24,8 @@ jQuery(function($) {
     });
     */
 
+    $("abbr.timeago").timeago();
+
     $(document).delegate("a.cat-picks", "click", function(e) {
 
         var deselect_this = false;

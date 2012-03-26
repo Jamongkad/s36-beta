@@ -1,7 +1,11 @@
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
         <?foreach($feedback as $feeds):?>
-            <h2 style="padding:12px; float:left"><?=$feeds->head_date?></h2>
+
+            <div style="padding:12px; float:left">
+                <?=date("jS F, l Y", $feeds->unix_timestamp)?> (<abbr class="timeago" title="<?=date("Y-m-d", $feeds->unix_timestamp)?>"></abbr>)
+            </div>
+
             <?foreach($feeds->children as $feed):?>
             <p></p>
             <? $id = $feed->id ?>

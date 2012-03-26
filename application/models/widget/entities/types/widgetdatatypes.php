@@ -1,7 +1,7 @@
 <?php namespace Widget\Entities\Types;
 
 use Widget\Repositories\DBWidget;
-use DB, Input;
+use DB, Input, Helpers;
  
 //TODO: You can do better than this...
 abstract class WidgetDataTypes {
@@ -39,7 +39,23 @@ abstract class WidgetDataTypes {
 
     public function adopt(WidgetDataTypes $child) { 
         //add this child set path length to one
-        $this->_dbw->insert_ancestor($this->_id, $child->get_widget_id(), 1);
+        if(!$this->child_exists($child)) {
+            $this->_dbw->insert_ancestor($this->_id, $child->get_widget_id(), 1);        
+        } 
+    }
+
+    public function child_exists($child) {  
+        $obj = $this->_dbw->fetch_widget_by_id($this->_id, $fetch_by='widgetstoreid');
+        $child_exists = false;
+        if($obj->children) { 
+            foreach($obj->children as $my_child) {
+                if($my_child->widgetstoreid == $child->get_widget_id()) {
+                    $child_exists = true; 
+                }
+            }
+        }
+
+        return $child_exists;
     }
 
     public function emit() { 

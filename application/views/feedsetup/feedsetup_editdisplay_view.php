@@ -1,4 +1,4 @@
-<?=Form::open('feedsetup/save_widget', 'POST', Array('id' => 'create-widget'))?>
+<?=Form::open('feedsetup/save_display_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('display_widgetkey', $widget->widgetkey)?>
@@ -160,11 +160,14 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr><td></td>
+                        <!--
+                        <tr>
+                            <td></td>
                             <td>
                                 <?=HTML::image('img/preview-modal.png')?>
                             </td>
                         </tr>
+                        -->
                     </table>
                 </div>
             </div>
@@ -312,7 +315,7 @@
             <br/>
             <div class="widget-types">
                 <input type="submit" class="large-btn create-widget-button" value="Save Widget" />
-                <input type="submit" class="large-btn preview-display-widget-button" value="Preview Widget" />
+                <!--<input type="submit" class="large-btn preview-display-widget-button" value="Preview Widget" />-->
             </div>
         </div>
     </div>
