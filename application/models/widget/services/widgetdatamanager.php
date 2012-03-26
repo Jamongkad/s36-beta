@@ -1,6 +1,6 @@
 <?php namespace Widget\Services;
 
-use DB, Input;
+use DB, Input, Helpers;
 use Widget\Repositories\DBWidget;
 use Widget\Entities\DisplayWidget;
 use Widget\Entities\FormWidget;

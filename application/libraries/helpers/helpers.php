@@ -160,7 +160,7 @@ class Helpers {
 
     public static function tab_position($tab_type) {
         $match = null;  
-        if ( preg_match('~tab-(br|bl|tr|tl)~', Input::get('tab_type'), $match) ) {
+        if ( preg_match('~tab-(br|bl|tr|tl)~', $tab_type, $match) ) {
             $tab_pos = 'corner';
         } else {
             $tab_pos = 'side';
