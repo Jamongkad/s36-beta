@@ -31,6 +31,7 @@
         <?=HTML::script('js/jquery.scrollTo-1.4.2-min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.pjax.js')?>
+        <?=HTML::script('js/jquery.timeago.js')?>
 
         <?=HTML::script('js/ZClip.js')?> 
         <?=HTML::script('js/Checky.js')?> 

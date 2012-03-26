@@ -12,9 +12,11 @@ class WidgetDataManager {
     
     //TODO: UGLEEEEEEEEEEEEEEEEEEEEEEEE
     public function create_and_save_widget() {  
+
+        $display_data = $this->provide_data_for('display');
+        $submit_data  = $this->provide_data_for('submit');
+
         if ( Input::get('widget_type') == 'display' ) {  
-            $display_data = $this->provide_data_for('display');
-            $submit_data  = $this->provide_data_for('submit');
 
             $display = new DisplayWidget($display_data);
             $form = new FormWidget($submit_data);
@@ -37,7 +39,7 @@ class WidgetDataManager {
         }
 
         if ( Input::get('widget_type') == 'submit' ) {  
-            $submit_data  = $this->provide_data_for('submit');
+            
             $form = new FormWidget($submit_data);
             if($submit_data->widgetkey) { 
                 $form->update();

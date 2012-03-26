@@ -82,9 +82,9 @@ class DBWidget extends S36DataObject {
         $this->dbh->commit();
     }
 
-    public function fetch_widget_by_id($widget_key, $data_return='widgetkey') {     
-
-        if($data_return == "widgetkey") {
+    public function fetch_widget_by_id($widget_key, $fetch_by='widgetkey') {     
+        //FIX to avoid aggregation bugs. Ensure that only ONE widget is returned. 
+        if($fetch_by == "widgetkey") {
             $statement = "AND WidgetStore.widgetKey = :widget_key";
         } else { 
             $statement = "AND WidgetStore.widgetStoreId = :widget_store_id";
@@ -115,7 +115,7 @@ class DBWidget extends S36DataObject {
         ";
  
         $sth = $this->dbh->prepare($sql);  
-        if($data_return == "widgetkey") {
+        if($fetch_by == "widgetkey") {
             $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         } else { 
             $sth->bindParam(':widget_store_id', $widget_key, PDO::PARAM_STR);
@@ -147,9 +147,9 @@ class DBWidget extends S36DataObject {
                     $node->children = $child;
                 } 
             } 
+
             return $node;  
         }
-
     }
 
     public function fetch_widgets_by_company() {
