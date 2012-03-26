@@ -157,4 +157,15 @@ class Helpers {
         $page = preg_replace('/[^-a-zA-Z0-9_]/', '', $string);
         return $page;
     }
+
+    public static function tab_position($tab_type) {
+        $match = null;  
+        if ( preg_match('~tab-(br|bl|tr|tl)~', Input::get('tab_type'), $match) ) {
+            $tab_pos = 'corner';
+        } else {
+            $tab_pos = 'side';
+        } 
+
+        return $tab_pos; 
+    }
 }

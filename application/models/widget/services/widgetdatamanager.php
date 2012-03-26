@@ -81,14 +81,6 @@ class WidgetDataManager {
 
         if ( $force_type == "submit" ) {
 
-            $tab_pos = null;
-            $match = null;  
-            if ( preg_match('~tab-(br|bl|tr|tl)~', Input::get('tab_type'), $match) ) {
-                $tab_pos = 'corner';
-            } else {
-                $tab_pos = 'side';
-            } 
-
             return (object) Array(
                 'widgetkey'   => Input::get('submit_widgetkey')
               , 'widget_type' => "submit"
@@ -99,7 +91,7 @@ class WidgetDataManager {
               , 'embed_type' => "form"
               , 'submit_form_text'     => Input::get('submit_form_text')
               , 'submit_form_question' => Input::get('submit_form_question')
-              , 'tab_pos'  => $tab_pos
+              , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))
               , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
               , 'site_nm'  => $this->site_nm->domain
             );
