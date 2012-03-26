@@ -6,13 +6,23 @@ use Widget\Entities\DisplayWidget;
 use Widget\Entities\FormWidget;
 
 class WidgetDataManager {
+    /*
     public function __construct() {
         $this->site_nm = DB::Table('Site')->where('siteId', '=', Input::get('site_id'))->first(Array('domain'));
     }
+    */
     
     //TODO: UGLEEEEEEEEEEEEEEEEEEEEEEEE
     public function create_and_save_widget() {  
+        $form = new FormWidget;
+        $form->save();
+        
+        $emit_data = Array(
+            'submit' => $form->emit()
+        );
 
+        echo json_encode($emit_data); 
+        /*
         $display_data = $this->provide_data_for('display');
         $submit_data  = $this->provide_data_for('submit');
 
@@ -53,8 +63,9 @@ class WidgetDataManager {
 
             echo json_encode($emit_data); 
         }
+        */
     }
-
+    /*
     public function provide_data_for($force_type=False) {
         if ( $force_type == "display" ) {
 
@@ -100,4 +111,5 @@ class WidgetDataManager {
             
         }
     }
+    */
 }

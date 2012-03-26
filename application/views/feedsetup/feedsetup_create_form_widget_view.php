@@ -1,9 +1,10 @@
-<?=Form::open('feedsetup/save_widget', 'POST', array('id' => 'create-form-widget'))?>
+<?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
 <?=Form::hidden('site_id', $site_id)?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('submit_widgetkey', false)?>
+<!--lets provide a default tab type-->
 <?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <?=Form::hidden('embed_type', 'form')?>
 

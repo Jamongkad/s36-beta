@@ -120,11 +120,18 @@ return array(
           , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
         ));
     }),
-      
+    
+    /*
     'POST /feedsetup/save_widget' => function() { 
         $wdm = new Widget\Services\WidgetDataManager;
         $wdm->create_and_save_widget(); 
     },
+    */
+
+    'POST /feedsetup/save_form_widget' => function() { 
+        $form = new Widget\Entities\FormWidget;
+        Helpers::dump($form);
+    }
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
 
