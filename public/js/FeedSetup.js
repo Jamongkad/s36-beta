@@ -81,8 +81,7 @@ jQuery(function($) {
                 new Status().notify("Processing...", 1000); 
             }
           , success: function(responseText, statusText, xhr, $form) {
-                console.log(responseText);
-                /*
+                 
                 var widget_key = responseText.submit.widget.widgetkey;
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
@@ -96,7 +95,7 @@ jQuery(function($) {
                           window.location = formcode_url;
                       } 
                 });
-                */
+
             }
         });
         e.preventDefault();    

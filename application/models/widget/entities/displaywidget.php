@@ -4,6 +4,7 @@ use \Widget\Entities\Types\WidgetDataTypes;
 use Input, Helpers;
 
 class DisplayWidget extends WidgetDataTypes {
+
     public function data() {
         $perm_factory = new \Permission(Input::get('perms'));
         $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
