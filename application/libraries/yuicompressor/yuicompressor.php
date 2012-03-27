@@ -1,8 +1,6 @@
 <?php namespace YUICompressor;
 
-class YUICompressor
-{
-    
+class YUICompressor { 
     // absolute path to YUI jar file.
     private $JAR_PATH;
     private $TEMP_FILES_DIR;
@@ -16,8 +14,7 @@ class YUICompressor
     private $string = '';
     
     // construct with a path to the YUI jar and a path to a place to put temporary files
-    function __construct($JAR_PATH, $TEMP_FILES_DIR, $options = array())
-    {
+    public function __construct($JAR_PATH, $TEMP_FILES_DIR, $options = array()) {
         $this->JAR_PATH = $JAR_PATH;
         $this->TEMP_FILES_DIR = $TEMP_FILES_DIR;
         
@@ -28,26 +25,22 @@ class YUICompressor
     }
     
     // set one of the YUI compressor options
-    function setOption($option, $value)
-    {
+    public function setOption($option, $value) {
         $this->options[$option] = $value;
     }
 
     // add a file (absolute path) to be compressed
-    function addFile($file)
-    {
+    public function addFile($file) {
         array_push($this->files, $file);
     }
     
     // add a strong to be compressed
-    function addString($string)
-    {
+    public function addString($string) {
         $this->string .= ' ' . $string;
     }
     
     // the meat and potatoes, executes the compression command in shell
-    function compress()
-    {
+    public function compress() {
         
         // read the input
         foreach ($this->files as $file) {
@@ -100,5 +93,3 @@ class YUICompressor
     	return $flattened_output;
     }
 }
-
-?>

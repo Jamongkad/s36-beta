@@ -7,32 +7,32 @@ class InboxService {
     private $limit = 10;
     private $filters = Array();
 
-    public function __construct() {
-        $this->dbfeedback = new DBFeedback;     
-        $this->pagination = new ZebraPagination;
-        //$this->input = Input::get(); 
-        $this->filter_structure = Array(
+    private $filter_structure = Array(
             'all' => 'all'
           , 'published' => 'published'
           , 'featured'  => 'featured'
           , 'filed'   => 'filed'
           , 'deleted' => 'deleted'
-        );
+    );
 
-        $this->choice_structure = Array(
-            'all' => 'all'
-          , 'positive' => 'positive'
-          , 'negative' => 'negative'
-          , 'neutral'  => 'neutral'
-          , 'profanity' => 'profanity'
-          , 'flagged'   => 'flagged'
-          , 'mostcontent' => 'mostcontent'
-        );
+    private $choice_structure = Array(
+        'all' => 'all'
+      , 'positive' => 'positive'
+      , 'negative' => 'negative'
+      , 'neutral'  => 'neutral'
+      , 'profanity' => 'profanity'
+      , 'flagged'   => 'flagged'
+      , 'mostcontent' => 'mostcontent'
+    );
 
-        $this->date_structure = Array(
-            'date_new' => 'date_new'
-          , 'date_old' => 'date_old'
-        );
+    private $date_structure = Array(
+        'date_new' => 'date_new'
+      , 'date_old' => 'date_old'
+    );
+
+    public function __construct() {
+        $this->dbfeedback = new DBFeedback;     
+        $this->pagination = new ZebraPagination;
     }
 
     public function set_filters(Array $filters) {
@@ -59,6 +59,7 @@ class InboxService {
                 $head->unix_timestamp = $dates->unix_timestamp;
                 $head->daysago = $dates->daysago;
                 $head->children = Array();
+
                 foreach($feed_result->result as $feed) { 
                     $unix = strtotime($feed->date);
                     $date = date("m.d.Y", $unix);
@@ -69,8 +70,7 @@ class InboxService {
            
                 if($head->children) {
                     $data[] = $head;     
-                } 
-        
+                }  
             }
 
             $data_obj = new StdClass;
@@ -79,13 +79,6 @@ class InboxService {
             $data_obj->pagination = $this->pagination->render();
             return $data_obj;
         }
-        //debug
-        /*
-        return Array(
-            'feedback' => $this->dbfeedback->pull_feedback($this->filters)
-          , 'dates' => $this->dbfeedback->pull_feedback_grouped_dates($this->filters)
-        );
-        */
     }
 
     //I am sorry but filters are hard (-_-)
@@ -119,7 +112,6 @@ class InboxService {
             if ($filters['filter'] == 'deleted') {
                 $filters['deleted'] = 1;
             }
-
         }
 
         if ($filters['filter'] and $filters['choice'] == false) {
@@ -155,10 +147,8 @@ class InboxService {
                         $date_statement = "Feedback.dtAdded ASC";
                     }
                 }
-
             } 
         }
-
 
         if ($filters['choice'] == 'mostcontent' && !$filters['date']) {
             $date_statement = "word_count DESC";
@@ -196,16 +186,16 @@ class InboxService {
             } 
         };
 
-        $siteid_statement = $this->_sql_statement_helper($filters['site_id'], function($id) {  
+        $siteid_statement = $this->_sql_statement_decorator($filters['site_id'], function($id) {  
             return "AND Feedback.siteId = $id";  
         }, $numeric_check);
 
-        $rating_statement = $this->_sql_statement_helper($filters['rating'], function($rating) {  
+        $rating_statement = $this->_sql_statement_decorator($filters['rating'], function($rating) {  
             return "AND Feedback.rating = $rating";
         }, $numeric_check);
 
          
-        $priority_statement = $this->_sql_statement_helper($filters['priority'], function($choice) {
+        $priority_statement = $this->_sql_statement_decorator($filters['priority'], function($choice) {
             $choice = trim($choice, "'");
 
             if($choice === 'low') {
@@ -222,11 +212,11 @@ class InboxService {
 
         });
 
-        $category_statement = $this->_sql_statement_helper($filters['category'], function($category) { 
+        $category_statement = $this->_sql_statement_decorator($filters['category'], function($category) { 
             return "AND Category.intName = $category";      
         });
 
-        $status_statement = $this->_sql_statement_helper($filters['status'], function($status) { 
+        $status_statement = $this->_sql_statement_decorator($filters['status'], function($status) { 
             return "AND Feedback.status = $status";
         });
 
@@ -241,7 +231,7 @@ class InboxService {
         return $filters;
     }
 
-    private function _sql_statement_helper($vector, $callback, $callback_filter=False) { 
+    private function _sql_statement_decorator($vector, $callback, $callback_filter=False) { 
         if($vector = Helpers::sanitize($vector)) {
             if($callback_filter and is_callable($callback_filter)) {
                 call_user_func($callback_filter, $vector);      

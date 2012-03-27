@@ -16,7 +16,6 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-
     'GET /' => function() { 
         $company = Input::get('subdomain');
         return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
