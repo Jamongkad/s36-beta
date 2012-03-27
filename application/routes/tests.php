@@ -237,7 +237,8 @@ return array(
     },
 
     'GET /tests/time' => function() {
-        $time = date('y-m-d h:i:s', time());
+        date_default_timezone_set('Asia/Singapore');
+        $time = date('y-m-d h:i:s');
         Helpers::dump($time);
     }
 );
