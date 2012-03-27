@@ -234,9 +234,12 @@ PageCycle.prototype.cycle_prev = function() {
 				// assign all values to the review slide, argument: false if not from jcrop				
 				S36Form.assign_to_review(this.is_photo);
 				$('#crop_photo').click(function(e){
-					that._crop_photo();
+					//that._crop_photo();
+                    that._cropper_page();
                     e.preventDefault();
 				});
+
+                that._crop_photo();
 				
 				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){
                     if($('#ln_flag').val() == 1) {
@@ -367,16 +370,20 @@ PageCycle.prototype.cycle_prev = function() {
 ||---------------------------------------
 */
 PageCycle.prototype._crop_photo = function(){
-	this._debug("Cropper Page");	
-	$('#steps').cycle(4);
+	this._debug("Cropper Page");		
 	if(init <= 0){
 	   init = 1;
 	   S36Form.init_jcrop();
+       $('#steps').cycle(4);
 	}else{
 	   S36Form.jcrop_api.release();
 	   S36Form.jcrop_api.setImage(this.is_photo);
 	   S36Form.jcrop_api.setSelect(['40','20','190','170']);
 	}
+}
+
+PageCycle.prototype._cropper_page = function() { 
+    $('#steps').cycle(4);
 	S36Form.show_crop_buttons();
 }
 
