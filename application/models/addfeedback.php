@@ -76,7 +76,7 @@ class AddFeedback {
           , 'rating' => Input::get('rating')
           , 'text' => $text
           , 'permission' => ($permission) ? $permission : 3
-          , 'dtAdded' => date('Y-m-d H:i:s', time())
+          , 'dtAdded' => date('Y-m-d H:i:s')
         );
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);

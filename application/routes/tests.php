@@ -237,7 +237,6 @@ return array(
     },
 
     'GET /tests/time' => function() {
-        date_default_timezone_set('Asia/Singapore');
         $time = date('y-m-d h:i:s');
         Helpers::dump($time);
     }
