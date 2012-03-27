@@ -332,7 +332,7 @@ templates ul:after, .category-picker:after, .category-box:after
 #admin-panel .dashboard-updates{float:left;width:440px;border:1px solid #dfdfdf;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;overflow:hidden;color:#3b5e75;} 
 #admin-panel .dashboard-pie-chart{float:left;margin-left:20px;margin-top:-13px} 
 
-#admin-panel .dashboard-updates-title{background:#ededed;padding:10px;}
+#admin-panel .dashboard-updates-title{background:#ededed;padding:10px;color#66CCCC;}
 #admin-panel .dashboard-updates-list{padding:7px 10px 7px 40px;margin:0px 0px;border-top:1px solid #dfdfdf;color:#777777;background:url(../img/ico-dashboard-updates.png) no-repeat left;}
 #admin-panel .dashboard-updates-list a { color:#777777; }
 #admin-panel .dashboard-updates .pending{background-position:0px 0px;}

@@ -59,7 +59,7 @@
     </div> 
     <div class="block noborder grids">
         <div class="dashboard-updates">
-            <div class="dashboard-updates-title"><strong>New Incoming Feedback</strong> </div>
+            <div class="dashboard-updates-title"><strong>Since your last visit...</strong> </div>
             <div class="dashboard-updates-list pending">
                 <strong><?=HTML::link('inbox/all', $dashboard_summary->dashscores->newfeed." new entries")?></strong> are pending your review 
             </div>
