@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Laravel - A clean and classy framework for PHP web development.
  *

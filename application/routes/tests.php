@@ -236,7 +236,7 @@ return array(
         print($yui->compress());
     },
 
-    'GET /tests/time' => function() {
+    'GET /tests/time' => function() { 
         $time = date('y-m-d h:i:s');
         Helpers::dump($time);
     }
