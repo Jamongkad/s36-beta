@@ -227,5 +227,12 @@ return array(
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());
+    }, 
+
+    'GET /tests/compress' => function() {
+        $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
+        $yui->addFile('js/jquery-1.7.1.min.js');
+        $yui->addFile('js/s36application.js');
+        print($yui->compress());
     }
 );
