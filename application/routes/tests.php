@@ -234,5 +234,10 @@ return array(
         $yui->addFile('js/jquery-1.7.1.min.js');
         $yui->addFile('js/s36application.js');
         print($yui->compress());
+    },
+
+    'GET /tests/time' => function() {
+        $time = date('y-m-d h:i:s', time());
+        Helpers::dump($time);
     }
 );
