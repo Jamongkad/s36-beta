@@ -31,9 +31,7 @@ abstract class S36DataObject {
             }
            
         }
-
-        return $return;
-                                                                                       
+        return $return;                                                                                       
     }
 
     public function quote($string) {
