@@ -336,10 +336,10 @@ templates ul:after, .category-picker:after, .category-box:after
 #admin-panel .dashboard-updates-list{padding:15px 10px 15px 40px;margin:0px 0px;border-top:1px solid #dfdfdf;color:#777777;background:url(../img/ico-dashboard-updates.png) no-repeat left;font-size:14px}
 #admin-panel .dashboard-updates-list a { color:#777777; }
 #admin-panel .dashboard-updates .pending{background-position:0px 11px;}
-#admin-panel .dashboard-updates .positive{background-position:0px -21px;}
-#admin-panel .dashboard-updates .neutral{background-position:0px -90px;}
-#admin-panel .dashboard-updates .negative{background-position:0px -60px;}
-#admin-panel .dashboard-updates .ignored{background-position:0px -120px;}
+#admin-panel .dashboard-updates .positive{background-position:0px -25px;}
+#admin-panel .dashboard-updates .neutral{background-position:0px -94px;}
+#admin-panel .dashboard-updates .negative{background-position:0px -59px;}
+#admin-panel .dashboard-updates .ignored{background-position:0px -128px;}
 #admin-panel .dashboard-graybox{border:1px solid #dfdfdf;background:#f7f7f7;padding:10px;background:#f7f7f7;}
 #admin-panel .dashboard-graybox:after{content: ".";  
  display: block; 
