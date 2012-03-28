@@ -15,16 +15,16 @@ class DBAccount extends S36DataObject {
     public function create_account() {
         
         $encrypt = new Crypter;
-        $password_string = "razer668";
+        $password_string = "vanidavae668";
         $password = crypt($password_string);
-        $name = $this->escape("ryan");
-        $email = $this->escape("ryanchua6@gmail.com");
+        $name = $this->escape("vanida");
+        $email = $this->escape("vanidavae@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $company = $this->escape("razer");
-        $bill_to = "Razer, LLC";
-        $fullName = $this->escape("Ryan Chua");
-        $site = $this->escape("www.razersone.com");
-        $site_name = $this->escape("razerzone");
+        $company = $this->escape("vanidavae");
+        $bill_to = "VanidaVae, LLC";
+        $fullName = $this->escape("Vanida Vae");
+        $site = $this->escape("www.vanidavae.com");
+        $site_name = $this->escape("vanidavae");
 
         $this->dbh->beginTransaction();
         $this->dbh->query('INSERT INTO Company (`name`, `planid`, `billTo`) VALUES("'.$company.'", 1, "'.$bill_to.'")');
