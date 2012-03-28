@@ -42,8 +42,8 @@ class S36Auth {
         $admin = new \DBAdmin;
         $user = $admin->fetch_admin_details($opts);
 
-        Helpers::dump($user);
-
+        Helpers::dump($user); 
+        /*
         if($user) {
             $user_password = $user->password; 
             if(crypt($password, $user_password) === $user_password) {
@@ -53,6 +53,7 @@ class S36Auth {
             }
         }
         return false;
+        */
     }
 
     public static function logout() { 
