@@ -1,15 +1,21 @@
 <?php
 
 class Permission {
+
+    private $result_array = Array();
     
     public function __construct($input) { 
         $this->supplier = new PermissionSupplier($input);
     }
 
-    public function build() {
- 
-        $result_array = Array();
+    public function expose_perms($key) {
+        $this->result_array[] = $this->cherry_pick($key, true);
+    }
 
+    public function build() {
+        /* 
+        $result_array = Array();
+        
         foreach ($this->supplier->load() as $key => $value) {
             foreach ($value as $k => $v) {
                 $result_array[$key."_".$k] = $v;     
@@ -18,6 +24,9 @@ class Permission {
         }
 
         return $result_array;
+        */
+
+        return $this->result_array;
     }
     
     //TODO: consider using this function for build method. use array merge foo!

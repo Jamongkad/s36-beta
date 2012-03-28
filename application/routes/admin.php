@@ -29,15 +29,13 @@ return array(
         $data = Input::get();
         $user = S36Auth::user();
 
-        $perm_factory = new Permission($data['perms']);
-        $perms = $perm_factory->build();
-
         $rules = Array(
             'username' => 'required'
           , 'fullName' => 'required'
           , 'email' => 'required|email|s36email'
           , 'password' => 'required|min:8|confirmed'
           , 'title' => 'required'
+          , 'perms' => 'required'
         );
 
         $validator = Validator::make($data, $rules, Array('s36email' => 'This email is already taken.'));
@@ -47,13 +45,22 @@ return array(
                 'ims' => DB::Table('IM', 'master')->get() , 'errors' => $validator->errors
               , 'input' => $data, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view')
             ));
-        }     
+        } else {        
+            $perm_factory = new Permission($data['perms']); 
+            $inbox     = $perm_factory->cherry_pick('inbox', true);
+            $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
+            $contact   = $perm_factory->cherry_pick('contact', true);
+            $setting   = $perm_factory->cherry_pick('setting', true);
 
-        $admin = new DBAdmin;
-        $admin->input_data = (object)$data;
-        $admin->perms_data = $perms;
-        $admin->save();
-        return Redirect::to('admin'); 
+            $perms = array_merge($inbox, $feedsetup, $contact, $setting);
+
+            $admin = new DBAdmin;
+            $admin->perms_data = $perms;
+            $admin->input_data = (object)$data; 
+            $admin->save();
+            return Redirect::to('admin'); 
+        } 
+
     }),
 
     'GET /admin/edit_admin/([0-9]+)' => Array('name' => 'edit_admin', 'before' => 's36_auth', 'do' => function($id) {
@@ -68,45 +75,49 @@ return array(
         ));
      }),
 
-     'POST /admin/edit_admin' => function() {
-         $user = S36Auth::user(); 
-         $data = Input::get();
-         $admin = new DBAdmin;
+    'POST /admin/edit_admin' => function() {
+        $user = S36Auth::user(); 
+        $data = Input::get();
+        $admin = new DBAdmin;
 
-         $details = $admin->fetch_admin_details_by_id($data['userId']);
+        $details = $admin->fetch_admin_details_by_id($data['userId']);
 
-         $rules = Array(
+        $rules = Array(
              'username' => 'required'
            , 'fullName' => 'required'
            , 'email' => 'required|email'
            , 'password' => 'min:8|confirmed'
            , 'title' => 'required'
            , 'perms' => 'required'
-         );
+        );
 
-         $validator = Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules);
 
-         if(!$validator->valid()) {
-             return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
+        if(!$validator->valid()) {
+            return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
               , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
-         } else {
-
-             $perm_factory = new Permission($data['perms']);
-             $inbox     = $perm_factory->cherry_pick('inbox', true);
-             $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
-             $contact   = $perm_factory->cherry_pick('contact', true);
-             $setting   = $perm_factory->cherry_pick('setting', true);
-           
-             $perms = array_merge($inbox, $feedsetup, $contact, $setting);
+        } else {
+            $perm_factory = new Permission($data['perms']);
+            $perm_factory->expose_perms('inbox');
+            $perm_factory->expose_perms('feedsetup');
+            $perm_factory->expose_perms('contact');
+            $perm_factory->expose_perms('setting');
+            /*
+            $inbox     = $perm_factory->cherry_pick('inbox', true);
+            $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
+            $contact   = $perm_factory->cherry_pick('contact', true);
+            $setting   = $perm_factory->cherry_pick('setting', true);
+            
+            $perms = array_merge($inbox, $feedsetup, $contact, $setting);
          
-             $admin->perms_data = $perms;  
-             $admin->input_data = (object)$data; 
-             $admin->update($user);
-             return Redirect::to('admin');    
-         }
-
+            $admin->perms_data = $perms;  
+            $admin->input_data = (object)$data; 
+            $admin->update($user);
+            return Redirect::to('admin');    
+            */
+        }
      },
 
      'POST /admin/delete_existing_avatar' => function() {
