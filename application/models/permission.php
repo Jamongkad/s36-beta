@@ -13,7 +13,7 @@ class Permission {
     }
 
     public function build() {
-        return $this->result_array;
+        return $this->flatten($this->result_array);
     }
     
     //cherry pick array in two different flavors!!
@@ -26,12 +26,12 @@ class Permission {
                 return $data[$key];           
             } else {
                 //return array for database insertion, keys match db columns
-                $result_array = Array();
+                $result = Array();
                 foreach($data[$key] as $k => $v) {
-                    $result_array[$key."_".$k] = $v;
+                    $result[$key."_".$k] = $v;
                 }
 
-                return $result_array;
+                return $result;
             }
            
         } 
