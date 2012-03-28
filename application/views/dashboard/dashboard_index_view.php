@@ -52,8 +52,10 @@
                 },
             });
 
-            $(document).delegate("#chart_div", "plotclick", function(e) {
+            $(document).delegate("#chart_div", "plotclick", function(e, pos, obj) {
                 console.log(e);
+                console.log(pos);
+                console.log(obj);
             });
         });
     </script>
