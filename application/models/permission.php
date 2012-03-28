@@ -67,7 +67,7 @@ class PermissionSupplier {
 }
 
 abstract class PermissionType {
-    private $permission_keys = Array();
+    protected $permission_keys = Array();
     private $perms = Array();
 
     public function expose_keys() {
@@ -77,7 +77,7 @@ abstract class PermissionType {
 
 class InboxPermission extends PermissionType { 
 
-    private $permission_keys = Array('approve' => 0, 'feature' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
+    protected $permission_keys = Array('approve' => 0, 'feature' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
 
     public function expose_rules($perms) {
 
@@ -95,7 +95,7 @@ class InboxPermission extends PermissionType {
 
 class FeaturePermission extends PermissionType {
     
-    private $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
+    protected $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
 
     public function expose_rules($perms) {
 
@@ -113,7 +113,7 @@ class FeaturePermission extends PermissionType {
 
 class FeedsetupPermission extends PermissionType {
     
-    private $permission_keys = Array('approve' => 0);
+    protected $permission_keys = Array('approve' => 0);
 
     public function expose_rules($perms) {
 
@@ -131,7 +131,7 @@ class FeedsetupPermission extends PermissionType {
 
 class ContactPermission extends PermissionType {
     
-    private $permission_keys = Array('approve' => 0);
+    protected $permission_keys = Array('approve' => 0);
 
     public function expose_rules($perms) {
 
@@ -149,7 +149,7 @@ class ContactPermission extends PermissionType {
 
 class SettingPermission extends PermissionType {
     
-    private $permission_keys = Array('approve' => 0);
+    protected $permission_keys = Array('approve' => 0);
 
     public function expose_rules($perms) {
 
@@ -167,13 +167,13 @@ class SettingPermission extends PermissionType {
 
 class FeedbackDisplayPermission extends PermissionType {
     
-    private $permission_keys = Array(  'displayname' => 0
-                                     , 'displayurl' => 0
-                                     , 'displayimg' => 0
-                                     , 'displaycountry' => 0
-                                     , 'displaycompany' => 0
-                                     , 'displaysbmtdate' => 0
-                                     , 'displayposition' => 0
+    protected $permission_keys = Array(  'displayname' => 0
+                                       , 'displayurl' => 0
+                                       , 'displayimg' => 0
+                                       , 'displaycountry' => 0
+                                       , 'displaycompany' => 0
+                                       , 'displaysbmtdate' => 0
+                                       , 'displayposition' => 0
                                     );
 
     public function expose_rules($perms) {
