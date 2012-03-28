@@ -13,7 +13,13 @@ class Permission {
     }
 
     public function build() {
-        return array_merge($this->result_array);
+        $result = array();
+        foreach($this->result_array as $pieces) {
+            foreach($pieces as $key => $value) {
+                $result[$key] => $value;
+            }
+        }
+        return $result;
     }
     
     //cherry pick array in two different flavors!!
