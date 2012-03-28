@@ -33,12 +33,14 @@
                       , label: {
                            show: true
                          , radius: 3/4
+                         /*
                          , background: {
                             opacity: 0.5     
                           , color: '#000'
                          }
+                         */
                          , formatter: function(label, series) {
-                           return '<div style="font-size:8pt;text-align:center;padding:10px;color:white">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+                           return '<div style="font-size:8pt;text-align:center;padding:2px;color:white">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
                          } 
                       }
                     }
