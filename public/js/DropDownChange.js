@@ -9,10 +9,8 @@ DropDownChange.prototype.enable = function() {
     $(document).delegate(me.status_element, 'hover', function(e) {
         if(e.type === 'mouseenter') {
             mouse_is_inside = true;     
-            console.log(mouse_is_inside);
         } else {
-            mouse_is_inside = false; 
-            console.log(mouse_is_inside);
+            mouse_is_inside = false;  
         }
     })
     $(document).delegate(me.status_element, 'click', function(e) { 
@@ -38,5 +36,12 @@ DropDownChange.prototype.enable = function() {
             }); 
             select.siblings().text(select_text); 
         });
-    })
+
+        $(document).delegate('body', 'click', function(e) {
+            if(!mouse_is_inside) {
+                select.hide();
+            }
+        })
+    });
+
 }
