@@ -125,7 +125,7 @@ class DBAdmin extends S36DataObject {
         }
 
         $sth->execute();
-        $user = $sth->fetch(PDO::FETCH_OBJ);
+        $user = $sth->fetchAll(PDO::FETCH_CLASS);
         return $user;
     }
 
