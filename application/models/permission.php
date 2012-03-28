@@ -20,11 +20,24 @@ class Permission {
         return $result_array;
     }
 
-    public function cherry_pick($key) {
+    public function cherry_pick($key, $key_type=False) {
 
         $data = $this->supplier->load();    
-        if(array_key_exists($key, $data))  
-            return $data[$key]; 
+        if(array_key_exists($key, $data)) {
+            if($key_type == false) {
+                return $data[$key];           
+            } else {
+
+                $result_array = Array();
+                foreach($data[$key] as $k => $v) {
+                    $result_array[$key."_".$k] = $v;
+                }
+
+                return $result_array;
+            }
+           
+        }
+       
     }
 }
  
