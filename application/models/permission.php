@@ -23,7 +23,6 @@ class Permission {
     public function cherry_pick($key) {
 
         $data = $this->supplier->load();    
-
         if(array_key_exists($key, $data))  
             return $data[$key]; 
     }

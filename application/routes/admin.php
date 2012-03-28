@@ -30,7 +30,7 @@ return array(
         $user = S36Auth::user();
 
         $perm_factory = new Permission($data['perms']);
-        $perms = $perm_factory->build();
+        $perms = $perm_factory->cherry_pick('inbox');
 
         $rules = Array(
             'username' => 'required'
