@@ -106,7 +106,7 @@ return array(
             $perm_factory->expose_perms('setting');
 
             $perms = $perm_factory->build();
-            Helpers::dump($perm);
+            Helpers::dump($perms);
             /*
             $inbox     = $perm_factory->cherry_pick('inbox', true);
             $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
