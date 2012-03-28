@@ -10,7 +10,7 @@ return array(
 
     'GET /control/update_user_pwd' => function() {
         $encrypt = new Crypter;
-        $password_string = "p455w0rd";
+        $password_string = "vanidavae668";
         $password = crypt($password_string);
 
         $email = 'vanidavae@gmail.com';

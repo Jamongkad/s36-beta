@@ -1,6 +1,6 @@
 <?php namespace S36Auth;
 
-use Session;
+use Session, Cookie;
 use DB;
 use Hash;
 use Helpers;
@@ -42,7 +42,6 @@ class S36Auth {
         $admin = new \DBAdmin;
         $user = $admin->fetch_admin_details($opts);
 
-        //Helpers::dump($user); 
         if($user) {
             $user_password = $user->password; 
             if(crypt($password, $user_password) === $user_password) {
