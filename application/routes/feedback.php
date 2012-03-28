@@ -119,7 +119,7 @@ return array(
 
     //Ajax Routes...
     'POST /feedback/changestatus' => function() use ($feedback) { 
-        $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
+        //$feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
 
     'POST /feedback/changepriority' => function() use ($feedback) { 

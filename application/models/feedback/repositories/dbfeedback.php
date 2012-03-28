@@ -10,7 +10,11 @@ class DBFeedback extends S36DataObject {
                 , Category.intName
                 , Category.name AS category
                 , Category.categoryId
-                , Feedback.status AS status
+                , CASE 
+                    WHEN Feedback.status = "new" THEN "New"
+                    WHEN Feedback.status = "inprogress" THEN "In Progress"
+                    WHEN Feedback.status = "closed" THEN "Closed"
+                  END AS status
                 , CASE
                     WHEN Feedback.priority < 30 THEN "low"
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
