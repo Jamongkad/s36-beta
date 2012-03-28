@@ -13,31 +13,19 @@ class Permission {
     }
 
     public function build() {
-        /* 
-        $result_array = Array();
-        
-        foreach ($this->supplier->load() as $key => $value) {
-            foreach ($value as $k => $v) {
-                $result_array[$key."_".$k] = $v;     
-            }
-           
-        }
-
-        return $result_array;
-        */
-
         return $this->result_array;
     }
     
-    //TODO: consider using this function for build method. use array merge foo!
+    //cherry pick array in two different flavors!!
     public function cherry_pick($key, $key_type=False) {
 
         $data = $this->supplier->load();    
         if(array_key_exists($key, $data)) {
             if($key_type == false) {
+                //return ordinary array with permissions
                 return $data[$key];           
             } else {
-
+                //return array for database insertion, keys match db columns
                 $result_array = Array();
                 foreach($data[$key] as $k => $v) {
                     $result_array[$key."_".$k] = $v;
@@ -46,8 +34,13 @@ class Permission {
                 return $result_array;
             }
            
-        }
-       
+        } 
+    }
+
+    public function flatten(array $array) {
+        $return = array();
+        array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+        return $return;    
     }
 }
  
