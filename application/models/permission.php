@@ -69,15 +69,15 @@ class PermissionSupplier {
 abstract class PermissionType {
     private $permission_keys = Array();
     private $perms = Array();
+
+    public function expose_keys() {
+        return $this->permission_keys;     
+    }
 }
 
 class InboxPermission extends PermissionType { 
 
     private $permission_keys = Array('approve' => 0, 'feature' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
-
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
 
     public function expose_rules($perms) {
 
@@ -97,10 +97,6 @@ class FeaturePermission extends PermissionType {
     
     private $permission_keys = Array('approve' => 0, 'delete' => 0, 'fastforward' => 0, 'flag' => 0);
 
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
-
     public function expose_rules($perms) {
 
         $this->perms = $perms['feature'];
@@ -118,10 +114,6 @@ class FeaturePermission extends PermissionType {
 class FeedsetupPermission extends PermissionType {
     
     private $permission_keys = Array('approve' => 0);
-
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
 
     public function expose_rules($perms) {
 
@@ -141,10 +133,6 @@ class ContactPermission extends PermissionType {
     
     private $permission_keys = Array('approve' => 0);
 
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
-
     public function expose_rules($perms) {
 
         $this->perms = $perms['contact'];
@@ -162,10 +150,6 @@ class ContactPermission extends PermissionType {
 class SettingPermission extends PermissionType {
     
     private $permission_keys = Array('approve' => 0);
-
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
 
     public function expose_rules($perms) {
 
@@ -191,10 +175,6 @@ class FeedbackDisplayPermission extends PermissionType {
                                      , 'displaysbmtdate' => 0
                                      , 'displayposition' => 0
                                     );
-
-    public function expose_keys() {
-        return $this->permission_keys;     
-    }
 
     public function expose_rules($perms) {
 
