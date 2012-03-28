@@ -36,13 +36,14 @@ DropDownChange.prototype.enable = function() {
                 }
             }); 
             select.siblings().text(select_text); 
-
-            $(document).delegate('body', 'click', function(e) {
-                if(!mouse_is_inside) {
-                    select.hide();
-                }
-            })
         });
+
+        $(document).delegate('body', 'click', function(e) {
+            if(!mouse_is_inside) {
+                $(that).children('span').show();
+                $(that).children('select').hide();
+            }
+        })
     });
 
 }
