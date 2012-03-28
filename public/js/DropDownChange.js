@@ -11,7 +11,7 @@ DropDownChange.prototype.enable = function() {
         $(that).children('select').show();
         $(that).undelegate(me.status_selector).delegate('select', me.status_selector, function(e) {
             var select = $(this);
-            console.log($(this, 'option').text());
+            console.log($(this, 'option:selected').text());
             var select_val = select.val();
             var feedid = select.attr('feedid');
             var feedurl = select.attr('feedurl');
