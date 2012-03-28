@@ -74,13 +74,6 @@ return array(
          $admin = new DBAdmin;
 
          $details = $admin->fetch_admin_details_by_id($data['userId']);
-         /*
-         $perm_factory = new Permission($data['perms']);
-         $inbox_perms = $perm_factory->cherry_pick('inbox', true);
-         $perms = $perm_factory->build();
-
-         Helpers::dump($perms);
-         */
 
          $rules = Array(
              'username' => 'required'
@@ -93,20 +86,26 @@ return array(
 
          $validator = Validator::make($data, $rules);
          Helpers::dump($validator->valid());
+         Helpers::dump($validator->errors);
          /*
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
               , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
-         }     
-         */
+         } else {
 
-         //$admin->perms_data = $perms; 
-         /*
-         $admin->input_data = (object)$data; 
-         $admin->update($user);
-         return Redirect::to('admin'); 
+             $perm_factory = new Permission($data['perms']);
+             $inbox_perms = $perm_factory->cherry_pick('inbox', true);
+             $perms = $perm_factory->build();
+
+             Helpers::dump($perms);
+             
+             //$admin->perms_data = $perms;  
+             $admin->input_data = (object)$data; 
+             $admin->update($user);
+             return Redirect::to('admin');   
+         }
          */
      },
 
