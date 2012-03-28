@@ -53,11 +53,20 @@
             });
 
             $(document).delegate("#chart_div", "plotclick", function(e, pos, obj) {
-                /*
-                console.log(e);
-                console.log(pos);
-                */
-                console.log(obj.series.label);
+                var href;
+                if(obj.series.label === "Neutral") {
+                    href = $('.dashboard-updates-list neutral strong a').attr('href');
+                    console.log(href);
+                }
+
+                if(obj.series.label === "Positive") {
+                    
+                }
+
+                if(obj.series.label === "Negative") {
+                    
+                }
+                //console.log(obj.series.label);
             });
         });
     </script>
