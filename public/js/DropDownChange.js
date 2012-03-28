@@ -13,6 +13,7 @@ DropDownChange.prototype.enable = function() {
             mouse_is_inside = false;  
         }
     })
+
     $(document).delegate(me.status_element, 'click', function(e) { 
         var that = this;
         $(that).children('span').hide();
@@ -35,13 +36,13 @@ DropDownChange.prototype.enable = function() {
                 }
             }); 
             select.siblings().text(select_text); 
-        });
 
-        $(document).delegate('body', 'click', function(e) {
-            if(!mouse_is_inside) {
-                select.hide();
-            }
-        })
+            $(document).delegate('body', 'click', function(e) {
+                if(!mouse_is_inside) {
+                    select.hide();
+                }
+            })
+        });
     });
 
 }
