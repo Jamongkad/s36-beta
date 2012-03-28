@@ -36,16 +36,12 @@ return array(
     'POST /login' => function() {
         $input = Input::get();        
         $auth = new S36Auth;
-        $test = $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain']));
- 
-        Helpers::dump($test);
-        /*
+        $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
         if($auth->check()) {
             return Redirect::to('dashboard');           
         } else {
             return Redirect::to('login');
         }
-        */
     },
     
     'GET /logout' => function() {
