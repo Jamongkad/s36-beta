@@ -76,7 +76,10 @@ return array(
          $details = $admin->fetch_admin_details_by_id($data['userId']);
 
          $perm_factory = new Permission($data['perms']);
-         $perms = $perm_factory->cherry_pick('inbox', true);
+         //$inbox_perms = $perm_factory->cherry_pick('inbox', true);
+         $perms = $perm_factory->build();
+
+         Helpers::dump($perms);
 
          $rules = Array(
              'username' => 'required'
@@ -94,8 +97,7 @@ return array(
              ));
          }     
 
-         $admin->perms_data = $perms;
-         Helpers::dump($perms);
+         //$admin->perms_data = $perms; 
          /*
          $admin->input_data = (object)$data; 
          $admin->update($user);
