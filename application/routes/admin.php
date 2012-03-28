@@ -30,7 +30,7 @@ return array(
         $user = S36Auth::user();
 
         $perm_factory = new Permission($data['perms']);
-        $perms = $perm_factory->cherry_pick('inbox');
+        $perms = $perm_factory->build();
 
         $rules = Array(
             'username' => 'required'
@@ -76,7 +76,7 @@ return array(
          $details = $admin->fetch_admin_details_by_id($data['userId']);
 
          $perm_factory = new Permission($data['perms']);
-         $perms = $perm_factory->build();
+         $perms = $perm_factory->cherry_pick('inbox');
 
          $rules = Array(
              'username' => 'required'
@@ -90,8 +90,7 @@ return array(
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-              , 'errors' => $validator->errors, 'admin' => $user
-              , 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
+              , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
          }     
 
