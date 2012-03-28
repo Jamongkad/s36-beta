@@ -52,7 +52,7 @@
                 },
             });
 
-            $(document).delegate("chart_div", "plotclick", function(e) {
+            $(document).delegate("#chart_div", "plotclick", function(e) {
                 console.log(pieClick);
             });
         });
