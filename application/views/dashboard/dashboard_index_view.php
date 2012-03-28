@@ -32,7 +32,7 @@
                       , radius: 1
                       , label: {
                            show: true
-                         , radius: 1 
+                         , radius: 1/2
                          , background: {
                             opacity: 0.5     
                           , color: '#000'
