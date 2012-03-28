@@ -53,10 +53,10 @@ class PermissionSupplier {
 
         foreach ($this->config_array as $key => $object) { 
             if (!array_key_exists($key, $this->input)) {
-                echo $key;
+                echo $key."<br/>";
                 $this->input[$key] = $object->expose_keys();
             } else {
-                echo $key;
+                echo $key."<br/>";
                 $this->input[$key] = $object->expose_rules($this->input);
             }
         }
