@@ -55,16 +55,18 @@
             $(document).delegate("#chart_div", "plotclick", function(e, pos, obj) {
                 var href;
                 if(obj.series.label === "Neutral") {
-                    href = $('.dashboard-updates-list neutral strong a').attr('href');
+                    href = $('.neutral strong a').attr('href');;
                     console.log(href);
                 }
 
                 if(obj.series.label === "Positive") {
-                    
+                    href = $('.positive strong a').attr('href');;
+                    console.log(href); 
                 }
 
-                if(obj.series.label === "Negative") {
-                    
+                if(obj.series.label === "Negative") { 
+                    href = $('.negative strong a').attr('href');;
+                    console.log(href);
                 }
                 //console.log(obj.series.label);
             });
