@@ -63,7 +63,8 @@ return array(
         
         return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
             'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-          , 'errors' => Array(), 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
+          , 'errors' => Array(), 'admin' => $user
+          , 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
         ));
      }),
 
@@ -89,7 +90,8 @@ return array(
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
-              , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
+              , 'errors' => $validator->errors, 'admin' => $user
+              , 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
          }     
 
