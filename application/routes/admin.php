@@ -104,6 +104,9 @@ return array(
             $perm_factory->expose_perms('feedsetup');
             $perm_factory->expose_perms('contact');
             $perm_factory->expose_perms('setting');
+
+            $perms = $perm_factory->build();
+            Helpers::dump($perm);
             /*
             $inbox     = $perm_factory->cherry_pick('inbox', true);
             $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
