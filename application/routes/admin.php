@@ -75,7 +75,7 @@ return array(
          $details = $admin->fetch_admin_details_by_id($data['userId']);
 
          $perm_factory = new Permission($data['perms']);
-         $perms = $perm_factory->cherry_pick('inbox');
+         $perms = $perm_factory->build();
 
          $rules = Array(
              'username' => 'required'
