@@ -3,6 +3,7 @@
 use Session;
 use DB;
 use Hash;
+use Helpers;
 
 class S36Auth {
     
@@ -40,6 +41,8 @@ class S36Auth {
 
         $admin = new \DBAdmin;
         $user = $admin->fetch_admin_details($opts);
+
+        Helpers::dump($user);
 
         if($user) {
             $user_password = $user->password; 
