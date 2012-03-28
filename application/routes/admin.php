@@ -104,7 +104,6 @@ return array(
             $perm_factory->expose_perms('feedsetup');
             $perm_factory->expose_perms('contact');
             $perm_factory->expose_perms('setting');
-            $perm_factory->expose_perms('feedbacksetupdisplay');
 
             $perms = $perm_factory->build();
             Helpers::dump($perms);

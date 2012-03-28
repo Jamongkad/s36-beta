@@ -13,7 +13,7 @@ class Permission {
     }
 
     public function build() {
-        return $this->flatten($this->result_array);
+        return array_merge($this->result_array);
     }
     
     //cherry pick array in two different flavors!!
@@ -37,11 +37,6 @@ class Permission {
         } 
     }
 
-    public function flatten(array $array) {
-        $return = array();
-        array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
-        return $return;    
-    }
 }
  
 class PermissionSupplier {
