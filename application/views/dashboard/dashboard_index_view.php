@@ -58,17 +58,17 @@
                 var href;
                 if(obj.series.label === "Neutral") {
                     href = $('.neutral strong a').attr('href');;
-                    console.log(href);
+                    window.location = href;
                 }
 
                 if(obj.series.label === "Positive") {
                     href = $('.positive strong a').attr('href');;
-                    console.log(href); 
+                    window.location = href;
                 }
 
                 if(obj.series.label === "Negative") { 
                     href = $('.negative strong a').attr('href');;
-                    console.log(href);
+                    window.location = href;
                 }
                 //console.log(obj.series.label);
             });
