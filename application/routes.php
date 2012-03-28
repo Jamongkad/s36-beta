@@ -38,6 +38,7 @@ return array(
         $auth = new S36Auth;
         $test = $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain']));
         
+        Helpers::dump($input);
         Helpers::dump($test);
         /*
         if($auth->check()) {
