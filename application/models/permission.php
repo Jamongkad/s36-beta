@@ -19,7 +19,8 @@ class Permission {
 
         return $result_array;
     }
-
+    
+    //TODO: consider using this function for build method. use array merge foo!
     public function cherry_pick($key, $key_type=False) {
 
         $data = $this->supplier->load();    

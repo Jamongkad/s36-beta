@@ -98,20 +98,13 @@ return array(
              $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
              $contact   = $perm_factory->cherry_pick('contact', true);
              $setting   = $perm_factory->cherry_pick('setting', true);
-             
-             Helpers::dump($inbox);             
-             Helpers::dump($feedsetup);             
-             Helpers::dump($contact);             
-             Helpers::dump($setting);             
-             
+           
              $perms = array_merge($inbox, $feedsetup, $contact, $setting);
-             Helpers::dump($perms);
-             /*
+         
              $admin->perms_data = $perms;  
              $admin->input_data = (object)$data; 
              $admin->update($user);
-             return Redirect::to('admin');   
-             */
+             return Redirect::to('admin');    
          }
 
      },
