@@ -2,7 +2,7 @@
 
 return array(
     'GET /control/create_new_account' => function() {
-        print_r("Creating New Account");
+        print_r("Creating New Account<br/>");
         $db = new DBAccount;
         $db->create_account();
         print_r("SUCCESSFUL MOTHAFUCKA!");
@@ -13,19 +13,12 @@ return array(
         $password_string = "p455w0rd";
         $password = crypt($password_string);
 
-        //$names = array("leica", "mathew", "budi", "ryan", "nicholas");
-        $names = array('ryan');
-        $email = 'ryanchua6@gmail.com';
-        //foreach($names as $name) { 
-            DB::table("User", "master")//->where('username', '=', $name)
-                                       ->where('email', '=', $email)
-                                       ->update(Array(
-                                          'password' => $password
-                                        , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
-                                       ));
-        //}
-
-
+        $email = 'vanidavae@gmail.com';
+        DB::table("User", "master")->where('email', '=', $email)
+                                   ->update(Array(
+                                      'password' => $password
+                                    , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
+                                   ));
     },
 
     'GET /control/insert_new_user/(\d+)' => function($companyId) {
