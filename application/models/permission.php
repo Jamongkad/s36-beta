@@ -16,7 +16,7 @@ class Permission {
         $result = array();
         foreach($this->result_array as $pieces) {
             foreach($pieces as $key => $value) {
-                $result[$key] => $value;
+                $result[$key] = $value;
             }
         }
         return $result;
