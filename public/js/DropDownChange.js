@@ -4,7 +4,17 @@ function DropDownChange(opts) {
 }
 
 DropDownChange.prototype.enable = function() {
+    var mouse_is_inside = false;
     var me = this;     
+    $(document).delegate(me.status_element, 'hover', function(e) {
+        if(e.type === 'mouseenter') {
+            mouse_is_inside = true;     
+            console.log(mouse_is_inside);
+        } else {
+            mouse_is_inside = false; 
+            console.log(mouse_is_inside);
+        }
+    })
     $(document).delegate(me.status_element, 'click', function(e) { 
         var that = this;
         $(that).children('span').hide();
