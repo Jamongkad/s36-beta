@@ -44,12 +44,16 @@
                     }
                 },
                 grid: {
-                    hoverable: true,
-                    clickable: true
+                     hoverable: true
+                   , clickable: true
                 },
                 legend: {
                     show: false     
                 },
+            });
+
+            $(document).delegate("chart_div", "plotclick", function(e) {
+                console.log(pieClick);
             });
         });
     </script>
