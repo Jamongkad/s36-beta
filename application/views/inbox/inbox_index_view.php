@@ -98,6 +98,7 @@
                                     <div class="label g1of2">Status</div>
                                     <div class="dropdown g1of2">
                                         <select class="catmenu-status" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                            <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
                                             <?foreach($status as $option):?>
                                                 <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
                                             <?endforeach?>
@@ -190,6 +191,7 @@
                                 <span class="status-change status"> Status: <span class="status-target"><?=$feed->status?></span>
                                     <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                                         <?foreach($status as $option):?>
+                                            <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
                                             <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
                                         <?endforeach?>
                                     </select> 
