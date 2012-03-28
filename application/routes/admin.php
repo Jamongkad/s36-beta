@@ -85,9 +85,7 @@ return array(
          );
 
          $validator = Validator::make($data, $rules);
-         Helpers::dump($validator->valid());
-         Helpers::dump($validator->errors);
-         /*
+
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
@@ -96,17 +94,24 @@ return array(
          } else {
 
              $perm_factory = new Permission($data['perms']);
-             $inbox_perms = $perm_factory->cherry_pick('inbox', true);
-             $perms = $perm_factory->build();
-
-             Helpers::dump($perms);
+             $inbox     = $perm_factory->cherry_pick('inbox', true);
+             $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
+             $contact   = $perm_factory->cherry_pick('contact', true);
+             $setting   = $perm_factory->cherry_pick('setting', true);
              
-             //$admin->perms_data = $perms;  
+             //$perms = $perm_factory->build();
+             Helpers::dump($inbox);             
+             Helpers::dump($feedsetup);             
+             Helpers::dump($contact);             
+             Helpers::dump($setting);             
+             /*
+             $admin->perms_data = $perms;  
              $admin->input_data = (object)$data; 
              $admin->update($user);
              return Redirect::to('admin');   
+             */
          }
-         */
+
      },
 
      'POST /admin/delete_existing_avatar' => function() {
