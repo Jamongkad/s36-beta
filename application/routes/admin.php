@@ -74,12 +74,13 @@ return array(
          $admin = new DBAdmin;
 
          $details = $admin->fetch_admin_details_by_id($data['userId']);
-
+         /*
          $perm_factory = new Permission($data['perms']);
-         //$inbox_perms = $perm_factory->cherry_pick('inbox', true);
+         $inbox_perms = $perm_factory->cherry_pick('inbox', true);
          $perms = $perm_factory->build();
 
          Helpers::dump($perms);
+         */
 
          $rules = Array(
              'username' => 'required'
@@ -87,15 +88,19 @@ return array(
            , 'email' => 'required|email'
            , 'password' => 'min:8|confirmed'
            , 'title' => 'required'
+           , 'perms' => 'required'
          );
 
          $validator = Validator::make($data, $rules);
+         Helpers::dump($validator->valid());
+         /*
          if(!$validator->valid()) {
              return View::of_layout()->partial('contents', 'admin/edit_admin_view', Array(
                 'admin_details' => $details, 'ims' => DB::Table('IM', 'master')->get()
               , 'errors' => $validator->errors, 'admin' => $user, 'photo_upload_view' => View::make('partials/photo_upload_view', Array('admin_details' => $details))
              ));
          }     
+         */
 
          //$admin->perms_data = $perms; 
          /*
