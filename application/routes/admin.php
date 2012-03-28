@@ -94,9 +94,12 @@ return array(
          }     
 
          $admin->perms_data = $perms;
+         Helpers::dump($perms);
+         /*
          $admin->input_data = (object)$data; 
          $admin->update($user);
          return Redirect::to('admin'); 
+         */
      },
 
      'POST /admin/delete_existing_avatar' => function() {
