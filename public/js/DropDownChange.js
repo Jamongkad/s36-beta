@@ -11,7 +11,7 @@ DropDownChange.prototype.enable = function() {
         $(that).children('select').show();
         $(that).undelegate(me.status_selector).delegate('select', me.status_selector, function(e) {
             var select = $(this);
-            console.log($('option[value="'+select.val()+'"]', this).text());
+            var select_text = $('option[value="'+select.val()+'"]', this).text();
             var select_val = select.val();
             var feedid = select.attr('feedid');
             var feedurl = select.attr('feedurl');
@@ -26,7 +26,7 @@ DropDownChange.prototype.enable = function() {
                     $(that).children('span').show();
                 }
             }); 
-            select.siblings().text(select_val); 
+            select.siblings().text(select_text); 
         });
     })
 }
