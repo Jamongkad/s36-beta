@@ -47,15 +47,13 @@ return array(
             ));
         } else {        
             $perm_factory = new Permission($data['perms']); 
-            $inbox     = $perm_factory->cherry_pick('inbox', true);
-            $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
-            $contact   = $perm_factory->cherry_pick('contact', true);
-            $setting   = $perm_factory->cherry_pick('setting', true);
-
-            $perms = array_merge($inbox, $feedsetup, $contact, $setting);
+            $perm_factory->expose_perms('inbox');
+            $perm_factory->expose_perms('feedsetup');
+            $perm_factory->expose_perms('contact');
+            $perm_factory->expose_perms('setting');
 
             $admin = new DBAdmin;
-            $admin->perms_data = $perms;
+            $admin->perms_data = $perm_factory->build();
             $admin->input_data = (object)$data; 
             $admin->save();
             return Redirect::to('admin'); 
@@ -105,21 +103,10 @@ return array(
             $perm_factory->expose_perms('contact');
             $perm_factory->expose_perms('setting');
 
-            $perms = $perm_factory->build();
-            Helpers::dump($perms);
-            /*
-            $inbox     = $perm_factory->cherry_pick('inbox', true);
-            $feedsetup = $perm_factory->cherry_pick('feedsetup', true);
-            $contact   = $perm_factory->cherry_pick('contact', true);
-            $setting   = $perm_factory->cherry_pick('setting', true);
-            
-            $perms = array_merge($inbox, $feedsetup, $contact, $setting);
-         
-            $admin->perms_data = $perms;  
+            $admin->perms_data = $perm_factory->build();
             $admin->input_data = (object)$data; 
             $admin->update($user);
             return Redirect::to('admin');    
-            */
         }
      },
 
