@@ -237,8 +237,43 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
-        $redis = new redisent\Redis('redis://localhost');
-        $redis->set("awesome", "{name: Mathew, age: dickie}");
-        Helpers::dump($redis->get("awesome"));
+
+        $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
+        $yui->addFile('js/jquery.switcharoo.js');
+        $yui->addFile('js/jquery.fancytips.js');
+        $yui->addFile('js/jquery.cycle.all.min.js');
+        $yui->addFile('js/jquery.form.js');
+        $yui->addFile('js/jquery.tmpl.js');
+        $yui->addFile('js/jquery.jcrop.js');
+        $yui->addFile('js/jquery.ajaxfileupload.js');
+        $yui->addFile('js/jquery.zclip.js');
+        $yui->addFile('js/jquery.flot.js');
+        $yui->addFile('js/jquery.flot.pie.js');
+        $yui->addFile('js/jquery.scrollTo-1.4.2-min.js');
+        $yui->addFile('js/jquery.tinymce.js');
+        $yui->addFile('js/jquery.pjax.js');
+        $yui->addFile('js/jquery.timeago.js');
+        $yui->addFile('js/s36LightBox.js');
+        $yui->addFile('js/ZClip.js');
+        $yui->addFile('js/Checky.js');
+        $yui->addFile('js/DropDownChange.js');
+        $yui->addFile('js/InboxStatusChange.js');
+        $yui->addFile('js/InboxFilters.js');
+        $yui->addFile('js/FeedSetup.js');
+        $yui->addFile('js/Status.js');
+        $yui->addFile('js/s36application.js');
+        $minified_js = $yui->compress();
+
+        $redis = new redisent\Redis;
+        $redis->set("users:mathew", $minified_js);
+        /*
+        $obj = new StdClass;
+        $obj->age = 29;
+        $obj->company_id = 1;
+
+
+        $result = Helpers::unwrap($redis->hget("users:mathew", 1));
+        Helpers::dump($result);
+        */
     }
 );

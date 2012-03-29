@@ -168,4 +168,14 @@ class Helpers {
 
         return $tab_pos; 
     }
+
+    public static function wrap($object) {
+        $obj = base64_encode( serialize($object) );
+        return $obj;  
+    }
+
+    public static function unwrap($object) {
+        $obj = unserialize( base64_decode($object) );
+        return $obj; 
+    }
 }
