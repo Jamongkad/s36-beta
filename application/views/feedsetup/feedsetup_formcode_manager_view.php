@@ -170,7 +170,7 @@ function display_codes(i){
                         </div>
 
                         <table width="400" align="center">
-                        <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
+                        <tr><td><strong>JavaScript Version</strong></td></tr>
                         <tr><td><textarea class="regular-text highlight" rows="7">
 <?=$embed_js_code;?> 
                         </textarea></td></tr>
