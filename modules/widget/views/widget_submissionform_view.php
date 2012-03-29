@@ -27,6 +27,9 @@
     cursor:pointer;
     margin:0 auto;
 }
+#step_2,#step_3,#step_4,#step_5,#step_6,#step_7{
+    display:none;
+}
 </style>
 
 
