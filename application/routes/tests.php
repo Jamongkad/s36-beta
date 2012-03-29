@@ -277,7 +277,7 @@ return array(
     },
 
     'GET /tests/shit' => function() {
-        preg_match("~/uploaded/tmp/(\w+.[jpg|jpeg|gif|png]{3,4}+)~", "/uploaded/tmp/skdjasldja.jpeg", $match);
+        preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png]+)~", "/uploaded_tmp/20122903080050karen_tuazon_by_evimark-d4hmn15.jpg", $match);
         Helpers::dump($match);
     }
 );
