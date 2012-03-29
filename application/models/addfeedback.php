@@ -66,7 +66,6 @@ class AddFeedback {
         
         $category = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
-
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
