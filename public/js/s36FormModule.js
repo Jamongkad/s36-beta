@@ -477,16 +477,19 @@ var S36Form = new function() {
             dataType: 'json',
             beforeSend: function() {
                 loader.fadeIn(); 
+                $("#next, #back").fadeOut("fast");
             },
             success: function (data, status) {	  
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
-                    loader.fadeOut(function(){$(this).html("loading...")}); 
+                    loader.fadeOut(function(){ 
+                       $("#next, #back").fadeIn("fast");
+                       $(this).html("loading...")
+                    }); 
                 } else { 
                     loader.html(data.error);
-                }
-
+                } 
             },
             error: function (data, status, e) {
                 console.log(data);
