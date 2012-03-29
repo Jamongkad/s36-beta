@@ -163,7 +163,7 @@ var S36Form = new function() {
         if(img_src == 'native') {
             file = "/" + img_nm;
         }
-
+        console.log(file);
         $('#profile_picture').attr('src', file);
         $('#jcrop_target').attr('src', file);
         $('#preview').attr('src', file);
@@ -470,7 +470,7 @@ var S36Form = new function() {
         //starting setting some animation when the ajax starts and completes
         var loader = $('#loading');
         loader.fadeIn();  
-        console.log("Fading Out");
+        //console.log("Fading Out");
         $("#next").fadeOut("fast");
         $("#back").fadeOut("fast");
         $.ajaxFileUpload ({
@@ -486,7 +486,7 @@ var S36Form = new function() {
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
                     loader.fadeOut(function(){ 
-                       console.log("Fading In");
+                       //console.log("Fading In");
                        $("#next").fadeIn("fast");
                        $("#back").fadeIn("fast");
                        $(this).html("loading...")
