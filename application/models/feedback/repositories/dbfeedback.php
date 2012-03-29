@@ -77,7 +77,6 @@ class DBFeedback extends S36DataObject {
                 , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
  
     public function pull_feedback($opts) {      
-        Helpers::dump($opts);
         $sql = '  
             SELECT 
                 '.$this->select_vars.'
