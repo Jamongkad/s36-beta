@@ -236,8 +236,9 @@ return array(
         print($yui->compress());
     },
 
-    'GET /tests/time' => function() { 
-        $time = date('y-m-d h:i:s');
-        Helpers::dump($time);
+    'GET /tests/redis' => function() { 
+        $redis = new redisent\Redis('redis://localhost');
+        $redis->set("awesome", "{name: Mathew, age: dickie}");
+        Helpers::dump($redis->get("awesome"));
     }
 );
