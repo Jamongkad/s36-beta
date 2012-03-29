@@ -103,7 +103,7 @@ class DBDashboard extends S36DataObject
       
            if (count($geoscore) > 0) {
                //echo "New Country inserting geoscore<br/>";
-               Helpers::dump($geoscore);
+               //Helpers::dump($geoscore);
                $insert_data = Array();
                $insert_query = Array();
                $geo_sql = 'INSERT INTO Geochart (companyId, countryId, countryName, countryCode, feedbackCount) VALUES ';
