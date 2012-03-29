@@ -17,9 +17,7 @@
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?
-        ?>
- 
+        
         <?=HTML::script('js/jquery.switcharoo.js')?>
         <?=HTML::script('js/jquery.fancytips.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
