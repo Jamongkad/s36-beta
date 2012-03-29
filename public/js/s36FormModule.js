@@ -496,6 +496,7 @@ var S36Form = new function() {
  
     this.save_crop_image = function() {
 		that.hide_error();
+        that.hide_crop_buttons();
 		$('#crop_button').removeClass('highlight');
 		var x_coords = $('#x').val();
 		var y_coords = $('#y').val();
@@ -505,7 +506,7 @@ var S36Form = new function() {
 		var crop_status = $('#crop_status');
 		var oldphoto = $('#cropped_photo').val();	
 		crop_status.html(' Cropping Photo...');
-        
+       
         $.ajax({ 
             url: $("#ajax-crop-url").attr('hrefaction')
           , type: "POST" 
@@ -516,7 +517,6 @@ var S36Form = new function() {
                 that.assign_to_review("/uploaded_cropped/150x150/"+data);				
                 $('#cropped_photo').val(data);
 			    $('#steps').cycle(5);
-                that.hide_crop_buttons();
           }
         });
     };
