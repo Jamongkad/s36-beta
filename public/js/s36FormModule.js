@@ -469,17 +469,17 @@ var S36Form = new function() {
     this.ajax_file_upload = function() { 
         //starting setting some animation when the ajax starts and completes
         var loader = $('#loading');
-         
+        loader.fadeIn();  
+        console.log("Fading Out");
+        $("#next").fadeOut("fast");
+        $("#back").fadeOut("fast");
         $.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json',
             beforeSend: function() {
-                loader.fadeIn(); 
-                console.log("Fading Out");
-                $("#next").fadeOut("fast");
-                $("#back").fadeOut("fast");
+        
             },
             success: function (data, status) {	  
                 if(data.error == null) {     
