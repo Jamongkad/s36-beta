@@ -24,7 +24,8 @@ jQuery(function($) {
     
     // move to the manual form if the user doesn't want to connect to facebook:
     $('#s36_create_profile').click(function(e) { 
-        $steps.cycle(3); $('#next').show(); 
+        $steps.cycle(3); 
+        $('#next').show(); 
         S36Form.s36_connect_success();
         e.preventDefault();
     });

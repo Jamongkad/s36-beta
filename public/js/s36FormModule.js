@@ -163,7 +163,7 @@ var S36Form = new function() {
         if(img_src == 'native') {
             file = "/" + img_nm;
         }
-        console.log(file);
+
         $('#profile_picture').attr('src', file);
         $('#jcrop_target').attr('src', file);
         $('#preview').attr('src', file);
@@ -172,7 +172,6 @@ var S36Form = new function() {
 
     this.default_text = function() { 
         
-
 		$(".regular-text").focus(function(i){          		 
             if ($(this).val() == $(this)[0].title){
                 $(this).removeClass("reg-text-active");
@@ -270,8 +269,6 @@ var S36Form = new function() {
                         $(this).selected(true);
                     }
                 });
-                //console.log("location success!");
-                //console.log(loc);
 			}
 	
 		}

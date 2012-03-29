@@ -274,5 +274,10 @@ return array(
         $result = Helpers::unwrap($redis->hget("users:mathew", 1));
         Helpers::dump($result);
         */
+    },
+
+    'GET /tests/shit' => function() {
+        preg_match("~/uploaded/tmp/(\w+.[jpg|jpeg|gif|png]{3,4}+)~", "/uploaded/tmp/skdjasldja.jpeg", $match);
+        Helpers::dump($match);
     }
 );
