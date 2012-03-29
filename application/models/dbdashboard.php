@@ -97,12 +97,12 @@ class DBDashboard extends S36DataObject
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
            if ($this->check_summary()) {
-               echo "Existing Summary clear feedback summary<br/>";
+               //echo "Existing Summary clear feedback summary<br/>";
                $this->clear_recent_summary();
            }
       
            if (count($geoscore) > 0) {
-               echo "New Country inserting geoscore<br/>";
+               //echo "New Country inserting geoscore<br/>";
                Helpers::dump($geoscore);
                $insert_data = Array();
                $insert_query = Array();
@@ -121,14 +121,16 @@ class DBDashboard extends S36DataObject
                $sth->execute($insert_data);
            }
 
-           echo "Creating new Dashboard Summary Record<br/>";
+           //echo "Creating new Dashboard Summary Record<br/>";
            $feedbackscore = $this->get_feedback_scores();
            $total_feedback = $feedback->total_feedback_by_company($this->company_id);
            $total_contacts = $contact->total_contacts_by_company($this->company_id);
-
+           
+           /* Nightmare fuel DEBUG output
            Helpers::dump($feedbackscore);
            Helpers::dump($total_feedback);
            Helpers::dump($total_contacts);
+           */
 
            $dashboard_sql = 'INSERT INTO DashboardSummary (
                                  companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
