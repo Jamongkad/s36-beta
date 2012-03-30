@@ -482,12 +482,7 @@ var S36Form = new function() {
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
                     that.change_jcrop_div(data.wid);
-                    loader.fadeOut(function(){ 
-                       //console.log("Fading In");
-                       $("#next").fadeIn("fast");
-                       $("#back").fadeIn("fast");
-                       $(this).html("loading...")
-                    }); 
+                    that.fetch_new_image(data.dir);
                 } else { 
                     loader.html(data.error);
                 } 
@@ -495,6 +490,19 @@ var S36Form = new function() {
             error: function (data, status, e) {
                 console.log(data);
             }
+        });
+    };
+
+    this.fetch_new_image = function(src){
+        $('#loading').html('Crunching Image...');
+        $('<img />')
+        .attr('src', src)
+        .load(function(){
+            $('.profile').append( $(this) );
+            $('#next').fadeIn('fast');
+            $('#loading').fadeOut('fast',function(){
+                $(this).html('Uploading Image...');
+            });
         });
     };
  
