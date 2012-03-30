@@ -493,8 +493,7 @@ var S36Form = new function() {
     this.fetch_new_image = function(src){
         console.log(src);
         $('#loading').html('Crunching Image...');
-        $('<img />')
-        .attr('src', src)
+        $('<img />').attr('src', "/" + src)
         .load(function(){
             $('.profile').append( $(this) );
             $('#next').fadeIn('fast');
