@@ -1,6 +1,6 @@
 <?php namespace Feedback\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
+use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
 
 class DBFeedback extends S36DataObject {
 
@@ -403,7 +403,7 @@ class DBFeedback extends S36DataObject {
                         ->first();
 
         //delete profile photos...
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new \Widget\ProfileImage();
         $profile_img->remove_profile_photo($feedback->avatar);
 
         DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)

@@ -265,6 +265,7 @@ return array(
 
         $redis = new redisent\Redis;
         $redis->set("users:mathew", $minified_js);
+        $redis->expire("users:mathew", 30);
         /*
         $obj = new StdClass;
         $obj->age = 29;
@@ -275,12 +276,8 @@ return array(
         Helpers::dump($result);
         */
     },
-
-    'GET /tests/shit' => function() {
-        preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png]+)~", "/uploaded_tmp/20122903080050karen_tuazon_by_evimark-d4hmn15.jpg", $match);
-        Helpers::dump($match);
-    },
-
+ 
+    //reserved route for Leica testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
     }
