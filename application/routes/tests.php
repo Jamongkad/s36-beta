@@ -238,20 +238,8 @@ return array(
     'GET /tests/redis' => function() { 
 
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
-        $yui->addFile('js/jquery.switcharoo.js');
-        $yui->addFile('js/jquery.fancytips.js');
-        $yui->addFile('js/jquery.cycle.all.min.js');
-        $yui->addFile('js/jquery.form.js');
-        $yui->addFile('js/jquery.tmpl.js');
-        $yui->addFile('js/jquery.jcrop.js');
-        $yui->addFile('js/jquery.ajaxfileupload.js');
-        $yui->addFile('js/jquery.zclip.js');
-        $yui->addFile('js/jquery.flot.js');
-        $yui->addFile('js/jquery.flot.pie.js');
-        $yui->addFile('js/jquery.scrollTo-1.4.2-min.js');
-        $yui->addFile('js/jquery.tinymce.js');
-        $yui->addFile('js/jquery.pjax.js');
-        $yui->addFile('js/jquery.timeago.js');
+        $redis = new redisent\Redis;
+
         $yui->addFile('js/s36LightBox.js');
         $yui->addFile('js/ZClip.js');
         $yui->addFile('js/Checky.js');
@@ -263,20 +251,33 @@ return array(
         $yui->addFile('js/s36application.js');
         $minified_js = $yui->compress();
 
-        $redis = new redisent\Redis;
-        $redis->set("users:mathew", $minified_js);
-        $redis->expire("users:mathew", 30);
+        $redis->set("cache:main_js", $minified_js);
+
         /*
-        $obj = new StdClass;
-        $obj->age = 29;
-        $obj->company_id = 1;
-
-
-        $result = Helpers::unwrap($redis->hget("users:mathew", 1));
-        Helpers::dump($result);
+        $yui->addFile('js/jquery.switcharoo.js');
+        $yui->addFile('js/jquery.fancytips.js');
+        $yui->addFile('js/jquery.jcrop.js');
+        $yui->addFile('js/jquery.ajaxfileupload.js');
+        $yui->addFile('js/jquery.zclip.js');
+        $yui->addFile('js/jquery.flot.js');
+        $yui->addFile('js/jquery.flot.pie.js');
+        $yui->addFile('js/jquery.tinymce.js');
+        $yui->addFile('js/jquery.pjax.js');
+        $yui->addFile('js/jquery.timeago.js');
+        $plugin_minified_js = $yui->compress();
+        $redis->set("cache:plugin_js", $plugin_minified_js);
+        //$redis->expire("users:mathew", 30);
         */
+
+    }, 
+
+    'GET /tests/get_redis_cache' => function() { 
+        $redis = new redisent\Redis;
+        $main_js = $redis->get("cache:main_js");
+        $plugin_js = $redis->get("cache:plugin_js");
+
+        return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
- 
     //reserved route for Leica testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
