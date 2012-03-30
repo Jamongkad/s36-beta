@@ -19,6 +19,14 @@ function createLightboxes(){
 /*	function that will open the modal window
 ****************************************************************/
 function s36_openLightbox(width,height,src) {
+
+    var browser = {
+    	version: (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [])[1],
+    	safari: /webkit/.test(userAgent),
+    	opera: /opera/.test(userAgent),
+    	msie: (/msie/.test(userAgent)) && (!/opera/.test( userAgent )),
+    	mozilla: (/mozilla/.test(userAgent)) && (!/(compatible|webkit)/.test(userAgent))
+    };    
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -29,8 +37,13 @@ function s36_openLightbox(width,height,src) {
 	// create that close button
 	var s36_closebtn = document.createElement("div");
 		s36_closebtn.id = "s36_closebtn";
-		//s36_closebtn.setAttribute("onclick","s36_closeLightbox()");
-        s36_closebtn.attachEvent("onclick", s36_closeLightbox);
+
+        if(browser.msie) {
+            s36_closebtn.attachEvent("onclick", s36_closeLightbox);
+        } else {
+            s36_closebtn.setAttribute("onclick","s36_closeLightbox()");            
+        }
+	
 		s36_closebtn.className = "s36_closebtn";
 		s36_modalbox.appendChild(s36_closebtn);
 	// build that awesome iframe
@@ -77,6 +90,14 @@ function s36_closePopupWidget(){
 }
 
 function s36_openForm(form_url) {
+
+    var browser = {
+    	version: (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [])[1],
+    	safari: /webkit/.test(userAgent),
+    	opera: /opera/.test(userAgent),
+    	msie: (/msie/.test(userAgent)) && (!/opera/.test( userAgent )),
+    	mozilla: (/mozilla/.test(userAgent)) && (!/(compatible|webkit)/.test(userAgent))
+    };    
 	
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
@@ -85,8 +106,13 @@ function s36_openForm(form_url) {
 	var s36_closebtn 			= document.createElement("div");
 		s36_closebtn.id 		= "s36_closebtn";
 		s36_closebtn.className 	= "s36_closebtn";
-		//s36_closebtn.setAttribute("onclick","s36_closeLightbox()");		
-        s36_closebtn.attachEvent("onclick", s36_closeLightbox);
+
+        if(browser.msie) {
+            s36_closebtn.attachEvent("onclick", s36_closeLightbox);
+        } else {
+            s36_closebtn.setAttribute("onclick","s36_closeLightbox()");            
+        }
+
 		s36_modalbox.appendChild (s36_closebtn);
 		
 	var width 	= 447;
