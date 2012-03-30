@@ -85,7 +85,8 @@ function s36_openForm(form_url) {
 	var s36_closebtn 			= document.createElement("div");
 		s36_closebtn.id 		= "s36_closebtn";
 		s36_closebtn.className 	= "s36_closebtn";
-		s36_closebtn.setAttribute("onclick","s36_closeLightbox()");		
+		//s36_closebtn.setAttribute("onclick","s36_closeLightbox()");		
+        s36_closebtn.addEventListener("click", s36_closeLightbox, false);
 		s36_modalbox.appendChild (s36_closebtn);
 		
 	var width 	= 447;
