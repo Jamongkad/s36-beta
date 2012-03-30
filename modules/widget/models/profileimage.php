@@ -44,7 +44,7 @@ class ProfileImage {
             }
             
             //fucking fix: if user does not like to use his or her pic from FB and LinkedIn
-            if(preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png]+)~", $src, $match)) { 
+            if(preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", $src, $match)) { 
                 $file_name = '/var/www/s36-upload-images'.$src;
             } else { 
                 $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
