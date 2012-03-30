@@ -261,7 +261,7 @@
                                             logo if you like. <br />
                                             <div style="margin:5px 0px;">
                                             <input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> 
-                                                <span id="loading">loading...</span> 
+                                                <span id="loading">Uploading Image...</span> 
                                             </div>
                                         </div>
                                     </div>
