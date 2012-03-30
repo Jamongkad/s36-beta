@@ -15,7 +15,8 @@
 #s36_modalbox {
 	position: absolute;
 	display: none;
-	top: 100px;
+    margin-top: -295px;
+	top: 50%;
 	left: 50%;
 	background-color: white;
 	z-index:100002;
