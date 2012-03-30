@@ -481,8 +481,8 @@ var S36Form = new function() {
             success: function (data, status) {	  
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
-                    that.change_jcrop_div(data.wid);
                     that.fetch_new_image(data.dir);
+                    that.change_jcrop_div(data.wid);
                 } else { 
                     loader.html(data.error);
                 } 
@@ -494,6 +494,7 @@ var S36Form = new function() {
     };
 
     this.fetch_new_image = function(src){
+        console.log(src);
         $('#loading').html('Crunching Image...');
         $('<img />')
         .attr('src', src)
