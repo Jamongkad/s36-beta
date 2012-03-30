@@ -9,6 +9,7 @@
 				height:76px;
 				background-position:no-repeat;
 				cursor:pointer;
+                z-index: 999999;
 			}
 			.tab-sidetab{
 				position:fixed;
@@ -16,6 +17,7 @@
 				height:92px;
 				background-position:no-repeat;
 				cursor:pointer;
+                z-index: 999999;
 			}';
 	
 	foreach($positions as $pos => $theme){
