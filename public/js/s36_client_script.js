@@ -29,7 +29,8 @@ function s36_openLightbox(width,height,src) {
 	// create that close button
 	var s36_closebtn = document.createElement("div");
 		s36_closebtn.id = "s36_closebtn";
-		s36_closebtn.setAttribute("onclick","s36_closeLightbox()");
+		//s36_closebtn.setAttribute("onclick","s36_closeLightbox()");
+        s36_closebtn.addEventListener("click", s36_closeLightbox, false);
 		s36_closebtn.className = "s36_closebtn";
 		s36_modalbox.appendChild(s36_closebtn);
 	// build that awesome iframe
