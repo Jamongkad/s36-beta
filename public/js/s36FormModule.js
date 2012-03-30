@@ -475,9 +475,6 @@ var S36Form = new function() {
             secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json',
-            beforeSend: function() {
-        
-            },
             success: function (data, status) {	  
                 if(data.error == null) {     
                     that.change_images(data.dir, 'native');
