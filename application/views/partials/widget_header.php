@@ -6,13 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.1/underscore-min.js'></script>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js'></script>
-
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?=HTML::script('js/jquery.mousewheel.js')?>
-        <?=HTML::script('js/jquery.scroll.js')?> 
     </head>
 <body>
