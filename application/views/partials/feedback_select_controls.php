@@ -1,6 +1,7 @@
 <label>Selected</label>
 <?//show this when looking at inbox except when in deleted
-if(!preg_match_all('~inbox/deleted~', Request::uri(), $matches)):?>
+if(!preg_match('~inbox/deleted/all~', Request::uri(), $matches)):?>
+
     <?
     $links = Array(
         'none' => '-'

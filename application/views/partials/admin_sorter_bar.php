@@ -1,4 +1,6 @@
-<?if(!preg_match_all('/(dashboard|feedsetup|displaysetup|displaypreview|contacts|admin|settings|help|feedback\/(modifyfeedback|reply_to))/', Request::uri(), $matches)):?>
+<?
+$regex = '/(dashboard|feedsetup|displaysetup|displaypreview|contacts|admin|settings|help|feedback\/(modifyfeedback|reply_to))/';
+if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
 <div class="admin-sorter-bar">
     <div class="sorter-bar">
         <div class="left">
