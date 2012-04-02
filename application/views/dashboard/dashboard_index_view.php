@@ -1,4 +1,5 @@
 <?if ($dashboard_summary->dashscores != null): ?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load('visualization', '1', {'packages': ['geochart']});
         google.setOnLoadCallback(drawRegionsMap);
