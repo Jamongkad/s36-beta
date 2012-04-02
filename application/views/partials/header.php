@@ -5,44 +5,30 @@
 
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
+
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
-        <?=HTML::style('css/grid-min.css')?> 
-        <?=HTML::style('css/zebra_pagination-min.css')?>
-        <?=HTML::style('css/admin-min.css')?>
-        <?=HTML::style('css/romanticc-min.css')?>
-        <?=HTML::script('js/head.min.js')?>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <?=HTML::style('css/grid.css')?> 
+        <?=HTML::style('css/romanticc.css')?>
+        <?=HTML::style('css/admin.css')?>
+        <?=HTML::style('css/zebra_pagination.css')?>
+
+        <?=HTML::script('js/s36LightBox.js')?>
+        <?=HTML::script('js/ZClip.js')?> 
+        <?=HTML::script('js/Checky.js')?> 
+        <?=HTML::script('js/DropDownChange.js')?>
+        <?=HTML::script('js/InboxStatusChange.js')?>
+        <?=HTML::script('js/InboxFilters.js')?>
+        <?=HTML::script('js/FeedSetup.js')?>
+        <?=HTML::script('js/Status.js')?>
+        <?=HTML::script('js/s36application.js')?>
+
+
     </meta>    
 </head>
 <body>
-<script type="text/javascript">
-
-    head.js(  "/js/jquery.timeago.js"
-            , "/js/jquery.flot.js"
-            , "/js/jquery.flot.pie.js"
-            , "/js/jquery.pjax.min.js"
-            , "/js/jquery.cycle.all.min.js"
-            , "/js/jquery.zclip.js"
-            , "/js/jquery.timeago.js"
-            , "/js/min/jquery.ajaxfileupload-min.js"
-            , "/js/min/jquery.fancytips-min.js"
-            , "/js/min/jquery.form-min.js"
-            , "/js/min/jquery.jcrop-min.js"
-            , "/js/min/jquery.tmpl-min.js"
-            , "/js/application/min/Switcharoo-min.js"
-            , "/js/application/min/s36LightBox-min.js"
-            , "/js/application/min/ZClip-min.js"
-            , "/js/application/min/Checky-min.js"
-            , "/js/application/min/DropDownChange-min.js"
-            , "/js/application/min/InboxStatusChange-min.js"
-            , "/js/application/min/InboxFilters-min.js"
-            , "/js/application/min/FeedSetup-min.js"
-            , "/js/application/min/Status-min.js"
-            , "/js/application/min/s36application-min.js");
-
-</script>
 
 <?if(S36Auth::check()):?>
-
 <?=Form::hidden('baseUrl', URL::to('/'))?>
 <div class="" id="admin-container">
     <div id="admin-panel">

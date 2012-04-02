@@ -1,0 +1,22 @@
+function ZClip() {
+    $('#copy-widget-js').zclip({
+        path:'/js/ZeroClipboard.swf',
+        copy:$('#widget-generate-view').val(),
+        beforeCopy:function(){
+            $('#widget-generate-view').siblings('.copycheck').fadeIn();
+        },
+        afterCopy:function(){
+            $('#widget-generate-view').siblings('.copycheck').fadeOut(1000);
+        }
+    });
+    $('#copy-widget-iframe').zclip({
+        path:'/js/ZeroClipboard.swf',
+        copy:$('#iframe-generate-view').val(),
+        beforeCopy:function(){
+            $('#iframe-generate-view').siblings('.copycheck').fadeIn();
+        },
+        afterCopy:function(){
+            $('#iframe-generate-view').siblings('.copycheck').fadeOut(1000);
+        }
+    });
+}

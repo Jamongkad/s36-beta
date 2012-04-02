@@ -15,7 +15,7 @@
                     </div>
                     <br />
                     <p>
-                        Embed and integrate your endorsements and testimonials in your website.     
+                        Lorem ipsum dolor sit amet consect adipiscing elit ivamus mollis ierdie quis placerat risus sagittis sed. 
                     </p>
                 </div>
                 <div class="widget-preview-box">
@@ -29,7 +29,7 @@
                     </div>
                     <br />
                     <p>
-                        Display your endorsements and testimonials through a modal window. 
+                        Lorem ipsum dolor sit amet consect adipiscing elit ivamus mollis ierdie quis placerat risus sagittis sed. 
                     </p>
                 </div>
                 <div class="widget-preview-box">
@@ -43,7 +43,7 @@
                     </div>
                     <br />
                     <p>
-                        Create your form for visitors and customers leave feedback. 
+                        Lorem ipsum dolor sit amet consect adipiscing elit ivamus mollis ierdie quis placerat risus sagittis sed. 
                     </p>
                 </div>
             </div>

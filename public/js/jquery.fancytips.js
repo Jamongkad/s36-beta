@@ -1,10 +1,10 @@
 (function($){
 	$.fn.fancytips  = function(options) {
 		var defaults = {
-            text: 'tooltip',
-            width: 100,
-            top: 5,
-            left: 0
+		text: 'tooltip',
+		width: 100,
+		top: 5,
+		left: 0
 		}
 		var options = $.extend(defaults,  options);
 		return this.each(function(){
