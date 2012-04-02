@@ -225,6 +225,7 @@
                 <input type="hidden" id="profile_link" value="">
                 <div class="step-contents">
                 	<table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
+                        <tr><td colspan="2"><strong>Required Fields</strong></td>
                     	<tr>
                         <td><input type="text" id="your_fname" class="regular-text required" title="First Name" value="" /></td>
                         <td><input type="text" id="your_lname" class="regular-text required" title="Last Name" value="" /></td></tr>
@@ -238,9 +239,9 @@
                                 <?foreach($country as $countries):?>
                                     <option value="<?=$countries->code?>"><?=$countries->name?></option>
                                 <?endforeach?>         
-                            </select>
-                            
+                            </select> 
                             </td></tr>
+                            <tr><td colspan="2"><strong>Optional info - but great to include!</strong></td></tr>
                          	<tr>
                             <td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td>
                             <td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
@@ -249,7 +250,7 @@
                                 <td colspan="2">
                                     <div class="avatar">
 
-                                    <?=HTML::image('img/blank-avatar.png', false, array( 'id' => 'profile_picture'
+                                    <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture'
                                                                                         , 'style' => ' border:2px solid #CCC;'
                                                                                         , 'width' => 97))?>
                                     
@@ -278,13 +279,13 @@
                 <div class="step-contents">
                 	<div class="s36_block s36_align_center gray" style="padding:15px 0px;">
                     	<div class="jcrop_div">
-                            <?=HTML::image('img/sample-avatar.png', 'Profile Picture', array('id' => 'jcrop_target'))?>
+                            <?=HTML::image('img/blank-avatar.jpg', 'Profile Picture', array('id' => 'jcrop_target'))?>
                         </div>
                     </div>
                     <div style="width:100px;text-align:center;font-size:10px;color:#CCC;float:left;">
                     	<div style="margin-bottom:5px">Preview</div>
                         <div style="width:100px;height:100px;overflow:hidden;">
-                               <?=HTML::image('img/sample-avatar.png', false, array('id' => 'preview'))?>
+                               <?=HTML::image('img/blank-avatar.png', false, array('id' => 'preview'))?>
                         </div>
                     </div>
                     <div style="width:200px;float:left;margin-left:10px;">
@@ -310,7 +311,7 @@
                     <div class="review-profile">
                     	<div class="review-avatar s36_align_center">
 
-                            <?=HTML::image('img/blank-avatar.png', false, array( 'id' => 'review-photo'
+                            <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'review-photo'
                                                                                 , 'width' => 100))?>
                         </div>
                         <div class="review-profile-info">
