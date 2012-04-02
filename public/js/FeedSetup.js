@@ -1,3 +1,22 @@
+$.fn.selected_theme = function(select_name) {
+    $(this).on('click', function(e) { 
+        var value = $(this).attr('id'); 
+
+        var deselect_this = false;
+
+        $(this).siblings().each(function() {
+            $(this).removeClass("selected-theme");     
+        });
+
+        if(!deselect_this) {
+            $(this).addClass("selected-theme");
+        }
+       
+        $(select_name.set_value).val(value);
+    })
+
+    return this;
+}
 jQuery(function($) {
     /*
     $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
@@ -296,26 +315,6 @@ jQuery(function($) {
     });
 
 });
-
-$.fn.selected_theme = function(select_name) {
-    $(this).on('click', function(e) { 
-        var value = $(this).attr('id'); 
-
-        var deselect_this = false;
-
-        $(this).siblings().each(function() {
-            $(this).removeClass("selected-theme");     
-        });
-
-        if(!deselect_this) {
-            $(this).addClass("selected-theme");
-        }
-       
-        $(select_name.set_value).val(value);
-    })
-
-    return this;
-}
 
 function expose_index(selector) {
     var selected = $(selector).val();   //get the selected form

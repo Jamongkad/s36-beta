@@ -12,18 +12,38 @@
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-
-        <?=HTML::script('js/s36LightBox.js')?>
-        <?=HTML::script('js/ZClip.js')?> 
-        <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/DropDownChange.js')?>
-        <?=HTML::script('js/InboxStatusChange.js')?>
-        <?=HTML::script('js/InboxFilters.js')?>
-        <?=HTML::script('js/FeedSetup.js')?>
-        <?=HTML::script('js/Status.js')?>
-        <?=HTML::script('js/s36application.js')?>
-
-
+        <?=HTML::script('js/head.min.js')?>
+        <script>
+           <?
+               $js_scripts = Array(
+                   '/js/jquery.switcharoo.js'
+                 , '/js/jquery.fancytips.js'
+                 , '/js/jquery.cycle.all.min.js'
+                 , '/js/jquery.form.js'
+                 , '/js/jquery.tmpl.js'
+                 , '/js/jquery.jcrop.js'
+                 , '/js/jquery.ajaxfileupload.js'
+                 , '/js/jquery.zclip.js' 
+                 , '/js/jquery.flot.js'
+                 , '/js/jquery.flot.pie.js'
+                 , '/js/jquery.scrollTo-1.4.2-min.js'
+                 , '/js/jquery.tinymce.js'
+                 , '/js/jquery.pjax.js'
+                 , '/js/jquery.timeago.js'
+                 , '/js/s36LightBox.js'
+                 , '/js/ZClip.js'
+                 , '/js/Checky.js'
+                 , '/js/DropDownChange.js'
+                 , '/js/InboxStatusChange.js'
+                 , '/js/InboxFilters.js'
+                 , '/js/FeedSetup.js'
+                 , '/js/Status.js'
+                 , '/js/s36application.js'
+               );
+               $string = '"' . implode('","', $js_scripts) . '"';
+           ?> 
+           head.js(<?=$string?>);
+        </script>
     </meta>    
 </head>
 <body>
