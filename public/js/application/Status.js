@@ -1,0 +1,1 @@
+function Status(){this.message="#notification-message";this.notification="#notification"}Status.prototype.notify=function(f,e){var d=this;var e=e;$(d.message).empty().html(f).show();$(d.notification).animate({height:"50",opacity:"100"},"fast","",function(){if(e){setTimeout(function(){$(d.notification).animate({height:0,opacity:0},"fast")},e)}})};

@@ -1,44 +1,4 @@
-/*!
- * jQuery Form Plugin
- * version: 2.85 (23-SEP-2011)
- * @requires jQuery v1.3.2 or later
- *
- * Examples and documentation at: http://malsup.com/jquery/form/
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- */
-;(function($) {
-
-/*
-	Usage Note:
-	-----------
-	Do not use both ajaxSubmit and ajaxForm on the same form.  These
-	functions are intended to be exclusive.  Use ajaxSubmit if you want
-	to bind your own submit handler to the form.  For example,
-
-	$(document).ready(function() {
-		$('#myForm').bind('submit', function(e) {
-			e.preventDefault(); // <-- important
-			$(this).ajaxSubmit({
-				target: '#output'
-			});
-		});
-	});
-
-	Use ajaxForm when you want the plugin to manage all the event binding
-	for you.  For example,
-
-	$(document).ready(function() {
-		$('#myForm').ajaxForm({
-			target: '#output'
-		});
-	});
-
-	When using ajaxForm, the ajaxSubmit function will be invoked for you
-	at the appropriate time.
-*/
-
+(function($) {
 /**
  * ajaxSubmit() provides a mechanism for immediately submitting
  * an HTML form using AJAX.

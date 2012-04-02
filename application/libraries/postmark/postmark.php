@@ -26,15 +26,15 @@
 				"X-Postmark-Server-Token: {$this->api_key}"
 			);
 			$data = $this->data;
-			$ch = curl_init('http://api.postmarkapp.com/email');
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			$return = curl_exec($ch);
-			$curl_error = curl_error($ch);
-			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			curl_close($ch);
+			$ch = \curl_init('http://api.postmarkapp.com/email');
+			\curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			\curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+			\curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+			\curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			$return = \curl_exec($ch);
+			$curl_error = \curl_error($ch);
+			$http_code = \curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			\curl_close($ch);
 			// do some checking to make sure it sent
 			if($http_code !== 200){
 				return false;

@@ -1,10 +1,4 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
-<?=HTML::script('js/jquery.jcrop.js')?>
-<?=HTML::script('js/jquery.ajaxfileupload.js')?>
-<?=HTML::script('js/s36FormModule.js')?>
-<?=HTML::script('js/cycle.function.js')?>
-<?=HTML::script('js/widget/form.js')?>
-
 <!-- linked in -->
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
 
@@ -363,4 +357,11 @@
         </div>
     </div>
 </div>
+
+<?=HTML::script('js/jquery.jcrop.js')?>
+<?=HTML::script('js/jquery.ajaxfileupload.js')?>
+<?=HTML::script('js/s36FormModule.js')?>
+<?=HTML::script('js/cycle.function.js')?>
+<?=HTML::script('js/widget/form.js')?>
+
 </body>
