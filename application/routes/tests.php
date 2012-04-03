@@ -9,8 +9,14 @@ return array(
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;
         $emailservice = new Email\Services\EmailService;
-        Helpers::dump($emailservice);
 
+        $email_stub = new StdClass;
+        $email_stub->email = "wrm932@gmail.com";
+        $new_submission = new Email\Entities\NewFeedbackSubmission($email_stub, null, null);
+
+        Helpers::dump($emailservice);
+        Helpers::dump($new_submission);
+        Helpers::dump(new Email\Entities\NewFeedbackSubmissionData);
         /*
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;
@@ -172,17 +178,7 @@ return array(
 
         $fb = new FeedbackActivity($userId, $feedbackId, $status);
         $result = $fb->log_activity();
-        //$check = $fb->check_activity_status();
-        //$insert = $fb->insert_new_activity();
-        //$update = $fb->update_activity_status();
         Helpers::show_data($result);
-    },
-
-    'GET /tests/browser_info' => function() {
-        $userinfo = new UserInfo;
-        Helpers::show_data($userinfo->get_real_ip_addr());
-        Helpers::show_data($userinfo->get_ip_long());
-        Helpers::show_data($userinfo->browser()->getBrowser());
     },
 
     'GET /tests/test_dbdashboard' => function() {
@@ -196,12 +192,6 @@ return array(
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_widget_by_id($widget_id);
         Helpers::dump($widget);
-        /*
-        $wl = new Widget\Services\WidgetLoader($widget_id); 
-        $widget = $wl->load();
-        $cl = new Widget\Services\ClientRender($widget);
-        return $cl->link_js_output();
-        */
     },
 
     'GET /tests/pull_feedback' => function() {        
@@ -258,32 +248,15 @@ return array(
         $minified_js = $yui->compress();
 
         $redis->set("cache:main_js", $minified_js);
-
-        /*
-        $yui->addFile('js/jquery.switcharoo.js');
-        $yui->addFile('js/jquery.fancytips.js');
-        $yui->addFile('js/jquery.jcrop.js');
-        $yui->addFile('js/jquery.ajaxfileupload.js');
-        $yui->addFile('js/jquery.zclip.js');
-        $yui->addFile('js/jquery.flot.js');
-        $yui->addFile('js/jquery.flot.pie.js');
-        $yui->addFile('js/jquery.tinymce.js');
-        $yui->addFile('js/jquery.pjax.js');
-        $yui->addFile('js/jquery.timeago.js');
-        $plugin_minified_js = $yui->compress();
-        $redis->set("cache:plugin_js", $plugin_minified_js);
-        //$redis->expire("users:mathew", 30);
-        */
-
     }, 
 
     'GET /tests/get_redis_cache' => function() { 
         $redis = new redisent\Redis;
         $main_js = $redis->get("cache:main_js");
         $plugin_js = $redis->get("cache:plugin_js");
-
         return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
+
     //reserved route for Leica testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');

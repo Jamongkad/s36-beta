@@ -6,7 +6,6 @@ use System\config;
 class EmailFactory {
 
     private $opts;
-
     public $addresses, $message, $feedback;
 
     public function __construct(EmailData $opts) { 

@@ -27,14 +27,23 @@
 
                     <?if($widget_select == 'modal'):?> 
                         <?=HTML::image('img/popup-widget-preview.jpg')?>
-                    <?endif;?>
-                    
+                    <?endif;?>                    
                 </div>
             </div>        
 
             <br />
             <div class="widget-types">
-                <strong style="padding-left:3px;color:#000;">CUSTOMIZE YOUR POPUP DISPLAYS</strong>
+                <strong style="padding-left:3px;color:#000;">
+                    CUSTOMIZE YOUR
+                    <?if($widget_select == 'embed'):?> 
+                        EMBEDDED
+                    <?endif;?>
+
+                    <?if($widget_select == 'modal'):?> 
+                         POPUP
+                    <?endif;?>
+                    DISPLAYS 
+                </strong>
                 <br /><br />
                 <table>
                     <tr><td width="110"><strong style="font-size:11px;">Name and save as..</strong></td>

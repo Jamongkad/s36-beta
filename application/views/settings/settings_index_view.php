@@ -9,6 +9,11 @@
     <div class="grids border-bottom">
         <div class="g2of3">
             <div class="grids">
+                <strong>Fast forwarding Options</strong>
+                <br/>
+                Fast forward allows you to forward feedback to a specific person with a single click.
+            </div>
+            <div class="grids">
                 <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
                 <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
             </div>
@@ -26,26 +31,29 @@
             </div>                    
         </div>
         <div class="g1of3">
-            <div style="height:24px;"></div>
-            <div class="dim-blue-box">
-                <strong>About Fast Forwarding</strong>
-                <br />
-                Fast forward allows you to forward feedback to a specific person with a single click.
-            </div>
+            &nbsp;
         </div>
     </div>
     <div class="grids border-bottom">
         <div class="g1of3">
-            <div style="padding:8px 0px;"><strong style="margin-left:6px;">Reply–To Email Address</strong></div>
+            <div style="padding:8px 0px;">
+                <strong style="margin-left:6px;">Reply–To Email Address</strong>
+                <br/>
+                Configure the email address that you would like to reply to your customers with.
+            </div>
+
             <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
         </div>
         <div class="g2of3">
-
+        <!--
             <div class="dim-blue-box">
                 <strong>Using the Reply–To Feature</strong>
                 <br />
                 Configure the email address that you would like to reply to your customers with.
             </div>
+        -->
+
+            &nbsp;
         </div>
     </div>
     <!--
