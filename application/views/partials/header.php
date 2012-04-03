@@ -12,11 +12,11 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::script('js/head.min.js')?>
+        <?=HTML::script('js/jquery.tinymce.js')?>
         <script>
            <?
                $js_scripts = Array(
-                   '/js/jquery.tinymce.js'
-                 , '/js/jquery.switcharoo.js'
+                   '/js/jquery.switcharoo.js'
                  , '/js/jquery.fancytips.js'
                  , '/js/jquery.cycle.all.min.js'
                  , '/js/jquery.form.js'
