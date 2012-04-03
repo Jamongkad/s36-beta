@@ -354,28 +354,23 @@ jQuery(function($) {
     };
 
     function save_crop_image(){
-        var fb_login = $("#fb_flag").val();
+
         var x_coords = $('#x').val();
         var y_coords = $('#y').val();
         var wd = $('#w').val();
         var ht = $('#h').val();
         var cropped_photo = $('#preview').attr('src');
-        var status = $('#crop_status');
-        var oldphoto = $('input[name="cropped_image_nm"]').val();
-        
-        status.html(' Cropping Photo...');
+		var crop_status = $('#crop_status');  
+		var oldphoto = $('#cropped_photo').val();	
+        crop_status.html(' Cropping Photo...');
         
         $.ajax({
-            url: $("#ajax-crop-url").attr('hrefaction'),
-            method: 'GET',
-            async: true,
-            data: "&src="+cropped_photo+"&x_coords="+x_coords+"&y_coords="+y_coords+"&wd="+wd+"&ht="+ht+"&oldphoto="+oldphoto+"&fb_login="+fb_login,
+            url: $("#ajax-crop-url").attr('hrefaction')
+          , method: "POST"
+          , data: {src: cropped_photo, x_coords: x_coords, y_coords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: 36}
             success: function(data){
-                status.fadeOut('fast',function(){
-                    //status.html(' <img src="/img/check-ico.png" /> Photo Successfully Cropped! ');
-                    //status.fadeIn();
-                    //set to signify photo has already been uploaded and in case of another photo upload will delete old photo
-                    $('input[name="cropped_image_nm"]').val(data);
+                crop_status.fadeOut('fast',function(){
+                    $('#cropped_photo').val(data);
                 });
 
                 var myStatus = new Status();

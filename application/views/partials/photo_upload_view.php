@@ -24,7 +24,7 @@
             <span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
             <span id="ajax-delete-existing-avatar" hrefaction="<?=URL::to('/admin/delete_existing_avatar')?>"></span>
 
-            <input type="hidden" value="" name="cropped_image_nm" />
+            <input type="hidden" value="" id="cropped_photo" name="cropped_image_nm" />
             <div style="font-size:11px; font-weight:bold; padding: 8px 0 0"><label>Add Photo</label></div>
             <div style="padding-left:10px;font-weight:bold;">
                 <div style="margin:5px 0px;">
