@@ -35,7 +35,7 @@
             <br/>
             <span style="margin-left:6px;">Configure the email address that you would like to reply to your customers with.</span>
         </div> 
-        <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
+        <input type="text" class="regular-text" name="replyTo" style="width:240px" value="<?=$user->replyto?>"/>
     </div>
     <!--
     <div class="grids">
