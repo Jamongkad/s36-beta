@@ -26,7 +26,6 @@
                  , '/js/jquery.zclip.js' 
                  , '/js/jquery.flot.js'
                  , '/js/jquery.flot.pie.js'
-                 , '/js/jquery.scrollTo-1.4.2-min.js'
                  , '/js/jquery.pjax.js'
                  , '/js/jquery.timeago.js'
                  , '/js/s36LightBox.js'

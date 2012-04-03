@@ -6,7 +6,12 @@ return array(
     }),
 
     'GET /tests/test_email_new' => function() {
+        $user = new DBUser; 
+        $feedback = new Feedback\Repositories\DBFeedback;
+        $emailservice = new Email\Services\EmailService;
+        Helpers::dump($emailservice);
 
+        /*
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;
 
@@ -19,6 +24,7 @@ return array(
         $email_pages = $factory->execute();       
         //Helpers::show_data($email_pages[1]->get_subject());
         return $email_pages[1]->get_message();
+        */
     },
 
     'GET /tests/test_email_published' => function() {

@@ -21,5 +21,4 @@ class Email {
            throw new Exception("No email object found!");
         }
     }
-
 }
