@@ -92,8 +92,8 @@ class AddFeedback {
         $email->process_email();
         */
         $submission_data = new Email\Entities\NewFeedbackSubmissionData;
-        $submission_data->set_feedback($feedback->pull_feedback_by_id($new_feedback_id))
-                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(Input::get('company_id')));
+        $submission_data->set_feedback($fb->pull_feedback_by_id($new_feedback_id))
+                        ->set_sendtoaddresses($us->pull_user_emails_by_company_id(Input::get('company_id')));
 
         $emailservice = new Email\Services\EmailService($submission_data);
         $emailservice->execute();
