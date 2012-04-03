@@ -1,7 +1,5 @@
 <?php namespace Widget\Entities\Types;
 
-use Config;
-
 abstract class WidgetTypes {
 
     protected $height;

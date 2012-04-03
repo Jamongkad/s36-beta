@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, HTML, View, \Widget\Entities\Types\DisplayWidgets;
+use HTML, View, \Widget\Entities\Types\DisplayWidgets;
 
 class ModalEmbedWidget extends DisplayWidgets {
 
