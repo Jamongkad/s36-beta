@@ -8,15 +8,22 @@ return array(
     'GET /tests/test_email_new' => function() {
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;
-        $emailservice = new Email\Services\EmailService;
 
+        $emailservice = new Email\Services\EmailService;
+        /*
         $email_stub = new StdClass;
         $email_stub->email = "wrm932@gmail.com";
         $new_submission = new Email\Entities\NewFeedbackSubmission($email_stub, null, null);
+        */
+        
+        $submission_data = new Email\Entities\NewFeedbackSubmissionData;
+        $submission_data->set_publisher_email("mathew@dickie.com")
+                        ->set_feedback($feedback->pull_feedback_by_id(90))
+                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(2));
 
-        Helpers::dump($emailservice);
-        Helpers::dump($new_submission);
-        Helpers::dump(new Email\Entities\NewFeedbackSubmissionData);
+        Helpers::dump($emailservice); 
+        Helpers::dump($submission_data);
+
         /*
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;

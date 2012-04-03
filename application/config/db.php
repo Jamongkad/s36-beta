@@ -39,28 +39,28 @@ return array(
 
 		'master' => array(
 			'driver'   => 'mysql',
-			'host'     => $determine->d->db,
+			'host'     => $determine->d->db['host'],
 			'database' => 's36',
-			'username' => 'root',
-			'password' => 'brx4*svv',
+			'username' => $determine->d->db['username'],
+			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8',
 		),
 
 		'slave' => array(
 			'driver'   => 'mysql',
-			'host'     => $determine->d->db,
+			'host'     => $determine->d->db['host'],
 			'database' => 's36',
-			'username' => 'root',
-			'password' => 'brx4*svv',
+			'username' => $determine->d->db['username'],
+			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8',
 		),
         
         'test' => array(
 			'driver'   => 'mysql',
-			'host'     => $determine->d->db,
+			'host'     => $determine->d->db['host'],
 			'database' => 's36_test',
-			'username' => 'root',
-			'password' => 'brx4*svv',
+			'username' => $determine->d->db['username'],
+			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8', 
         ),
 

@@ -14,26 +14,41 @@ class Determiner {
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
        $subdomain = $_GET['subdomain'];
-
+       
+       //Development
+       if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
+           $obj->host = 'http://'.$subdomain.'.36stories.localhost';
+           $obj->db   = Array(
+               'host' => 'localhost'
+              , 'username' => 'root'
+              , 'password' => 'brx4*svv'
+           );
+           $obj->deploy_env = 'http://'.$subdomain.'.36stories.localhost';
+           $obj->env_name = 'local';
+           return $obj;
+       }
+       
+       //Staging
        if($my_url[1] == 'gearfish') {
            $obj->host = 'http://'.$subdomain.'.gearfish.com';
-           $obj->db   = 'localhost';
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+           );
            $obj->deploy_env = 'http://dev.gearfish.com';
            $obj->env_name = 'dev';
            return $obj;
        }
-
-       if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
-           $obj->host = 'http://'.$subdomain.'.36stories.localhost';
-           $obj->db   = 'localhost';
-           $obj->deploy_env = 'http://'.$subdomain.'.36stories.localhost';//'http://dev.gearfish.com';
-           $obj->env_name = 'local';
-           return $obj;
-       }
-
+       
+       //Production
        if($my_url[1] == '36storiesapp') {
            $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
-           $obj->db   = 'localhost';
+           $obj->db   = Array(
+                'host' => 'localhost'
+              , 'username' => 'root'
+              , 'password' => 'brx4*svv'
+           );
            $obj->deploy_env = 'http://1.36storiesapp.com';
            $obj->env_name = 'prod';
            return $obj;
