@@ -7,54 +7,36 @@
 <div class="block">    
     <p class="small"><strong></strong></p>
     <div class="grids border-bottom">
-        <div class="g2of3">
-            <div class="grids">
-                <strong>Fast forwarding Options</strong>
-                <br/>
-                Fast forward allows you to forward feedback to a specific person with a single click.
-            </div>
-            <div class="grids">
-                <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
-                <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
-            </div>
-            <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
-                <div class="g1of2"><input type="text" class="regular-text" name="alias1" value="<?=$user->alias1?>"/></div>
-            </div>
-            <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
-                <div class="g1of2"><input type="text" class="regular-text" name="alias2" value="<?=$user->alias2?>"/></div>
-            </div>
-            <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
-                <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
-            </div>                    
+        <div class="grids">
+            <strong>Fast forwarding Options</strong>
+            <br/>
+            Fast forward allows you to forward feedback to a specific person with a single click.
         </div>
-        <div class="g1of3">
-            &nbsp;
+        <div class="grids">
+            <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
+            <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
         </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias1" value="<?=$user->alias1?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias2" value="<?=$user->alias2?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
+        </div>                    
     </div>
     <div class="grids border-bottom">
-        <div class="g1of3">
-            <div style="padding:8px 0px;">
-                <strong style="margin-left:6px;">Reply–To Email Address</strong>
-                <br/>
-                Configure the email address that you would like to reply to your customers with.
-            </div>
-
-            <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
+        <div style="padding:8px 0px;">
+            <strong style="margin-left:6px;">Reply–To Email Address</strong>
+            <br/>
+            Configure the email address that you would like to reply to your customers with.
         </div>
-        <div class="g2of3">
-        <!--
-            <div class="dim-blue-box">
-                <strong>Using the Reply–To Feature</strong>
-                <br />
-                Configure the email address that you would like to reply to your customers with.
-            </div>
-        -->
 
-            &nbsp;
-        </div>
+        <input type="text" class="regular-text" name="replyTo" value="<?=$user->replyto?>"/>
     </div>
     <!--
     <div class="grids">
