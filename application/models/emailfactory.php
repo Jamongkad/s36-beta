@@ -53,8 +53,7 @@ abstract class EmailFixture {
         $this->feedback_data = $feedback_data;
         $this->subject = $subject;
     }
-    
-    public function get_addresses() {}
+     
     public function get_message() {}
     public function get_bcc() {}
 }

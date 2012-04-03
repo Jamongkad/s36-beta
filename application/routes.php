@@ -38,9 +38,13 @@ return array(
         $auth = new S36Auth;
         $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
         if($auth->check()) {
-            return Redirect::to('dashboard');           
+            if($forward_to = Input::get('forward_to')) {
+                return Redirect::to($forward_to);
+            } else {
+                return Redirect::to('dashboard');     
+            } 
         } else {
-            return Redirect::to('login');
+            return Redirect::to('login');     
         }
     },
     

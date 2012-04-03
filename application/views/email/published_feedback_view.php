@@ -33,9 +33,9 @@
                         <!-- contents -->
                         <tr>
                         	<td colspan="3">
-                            	<strong>Hi <?=ucfirst($user->username)?>,</strong> 
+                            	<strong>Hi <?=$username?>,</strong> 
                                 <br /><br />
-                                <strong><?=ucfirst($publisher_email->username)?></strong> has published this feedback live.
+                                <strong><?=$publisher_email?></strong> has published this feedback live.
                             </td>
                         </tr>
                         <tr height="20">
@@ -91,9 +91,11 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for  <?=$user->email?><br />
+            This message was intended for  <?=$address?><br />
+            <!--
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
+            -->
        </td>
     </tr>
     <!-- end footer -->    

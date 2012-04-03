@@ -19,8 +19,8 @@ class Determiner {
        if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
            $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = Array(
-               'host' => 'localhost'
-              , 'username' => 'root'
+                'host' => 'localhost'//'173.255.211.107'
+              , 'username' => 'root'//'mathew'
               , 'password' => 'brx4*svv'
            );
            $obj->deploy_env = 'http://'.$subdomain.'.36stories.localhost';

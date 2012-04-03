@@ -7,11 +7,11 @@
 <?endif?>
     <td style="font-size:12px;">
         <h2 style="color:#0078aa;margin:0px;"><?=$feedback_data->firstname?> <?=$feedback_data->lastname?></h2>
-<?if($feedback_data->rating != "POOR"):?>
-    <strong><?=$feedback_data->position?></strong><br />
-    <?=$feedback_data->companyname?><br />
-    <a href="#" target="_blank"><?=$feedback_data->url?></a><br />
-    <?=$feedback_data->city?> 
-<?endif?>
+        <?if($feedback_data->rating != "POOR"):?>
+            <strong><?=$feedback_data->position?></strong><br />
+            <?=$feedback_data->companyname?><br />
+            <a href="#" target="_blank"><?=$feedback_data->url?></a><br />
+            <?=$feedback_data->city?> 
+        <?endif?>
     </td>
 </tr>

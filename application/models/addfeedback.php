@@ -82,6 +82,7 @@ class AddFeedback {
 
         $bw->profanity_detection($text, $new_feedback_id); 
 
+        /* Old way of doing things
         $vo = new NewFeedbackSubmissionData;
         $factory = new EmailFactory($vo);
         $factory->addresses = $us->pull_user_emails_by_company_id(Input::get('company_id'));
@@ -89,6 +90,13 @@ class AddFeedback {
         $email_pages = $factory->execute(); 
         $email = new Email($email_pages);
         $email->process_email();
+        */
+        $submission_data = new Email\Entities\NewFeedbackSubmissionData;
+        $submission_data->set_feedback($feedback->pull_feedback_by_id($new_feedback_id))
+                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(Input::get('company_id')));
+
+        $emailservice = new Email\Services\EmailService($submission_data);
+        $emailservice->execute();
 
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
