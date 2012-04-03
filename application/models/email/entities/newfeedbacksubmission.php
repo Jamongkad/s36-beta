@@ -12,10 +12,9 @@ class NewFeedbackSubmission extends EmailFixture {
 
     public function send() {
         foreach($this->address as $address) {
-
             //oh shit...
             $company = DB::Table('Company', 'master')->where('companyId', '=', $address->companyid)->first(array('name'));
-            $host_url = $company->name.'.'.Config::get('application.hostname').'.com';
+            $host_url = strtolower($company->name).'.'.Config::get('application.hostname').'.com';
             $forward_url = "http://".$host_url.'/feedback/modifyfeedback/'.$this->feedback_data->id;
             $login_url = trim("http://".$host_url."/login?forward_to=".$forward_url);
 
