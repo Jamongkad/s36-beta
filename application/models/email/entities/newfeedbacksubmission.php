@@ -14,11 +14,10 @@ class NewFeedbackSubmission extends EmailFixture {
         foreach($this->address as $address) {
 
             //oh shit...
-            //$company = DB::Table('Company', 'master')->where('companyId', '=', $address->companyid)->first(array('name'));
-            //print_r($company);
-            $host_url = Config::get('application.url');
-            $forward_url = $host_url.'/feedback/modifyfeedback/'.$this->feedback_data->id;
-            $login_url = trim($host_url."/login?forward_to=".$forward_url);
+            $company = DB::Table('Company', 'master')->where('companyId', '=', $address->companyid)->first(array('name'));
+            $host_url = $company->name.'.'.Config::get('application.hostname').'.com';
+            $forward_url = "http://".$host_url.'/feedback/modifyfeedback/'.$this->feedback_data->id;
+            $login_url = trim("http://".$host_url."/login?forward_to=".$forward_url);
 
             $email_html = View::make('email/new_feedback_submission_view', Array(
                   'feedback_data' => $this->feedback_data
@@ -29,11 +28,12 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'profile_partial_view' => View::make('email/partials/profile_partial_view'
                                                        , Array('feedback_data' => $this->feedback_data))
             ))->get();     
-            //print_r($email_html);
+
             $this->postmark->to($address->email)
                            ->subject($this->get_subject())
                            ->html_message($email_html)
                            ->send();         
+
         }    
     }
 

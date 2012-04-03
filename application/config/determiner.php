@@ -17,6 +17,7 @@ class Determiner {
        
        //Development
        if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
+           $obj->hostname = '36stories';
            $obj->host = 'http://'.$subdomain.'.36stories.localhost';
            $obj->db   = Array(
                 'host' => 'localhost'//'173.255.211.107'
@@ -30,6 +31,7 @@ class Determiner {
        
        //Staging
        if($my_url[1] == 'gearfish') {
+           $obj->hostname = $my_url[1];
            $obj->host = 'http://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
@@ -43,6 +45,7 @@ class Determiner {
        
        //Production
        if($my_url[1] == '36storiesapp') {
+           $obj->hostname = $my_url[1];
            $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
            $obj->db   = Array(
                 'host' => 'localhost'
