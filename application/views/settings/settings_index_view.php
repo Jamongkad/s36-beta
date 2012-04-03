@@ -12,7 +12,7 @@
             <br/>
             <span style="margin-left:6px;">Fast forward allows you to forward feedback to a specific person with a single click.</span>
         </div>
-        <div class="grids">
+        <div class="grids" style="padding-top:6px">
             <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
             <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
         </div>
