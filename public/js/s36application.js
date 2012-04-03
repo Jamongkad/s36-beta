@@ -394,7 +394,6 @@ jQuery(function($) {
     });
 
     $('#cropbtn').click(function(){ 
-        //save_crop_image(); 
         var x_coords = $('#x').val();
         var y_coords = $('#y').val();
         var wd = $('#w').val();
@@ -402,25 +401,22 @@ jQuery(function($) {
         var cropped_photo = $('#preview').attr('src');
 		var crop_status = $('#crop_status');  
 		var oldphoto = $('#cropped_photo').val();	
-        crop_status.html(' Cropping Photo...');
         var data = {src: cropped_photo, x_coords: x_coords, y_coords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: 36};
-        console.log(data);
-        /*
+        crop_status.html(' Cropping Photo...');
+
         $.ajax({
             url: $("#ajax-crop-url").attr('hrefaction')
-          , method: "POST"
-          , data: 
+          , type: "POST"
+          , data: data 
           , success: function(data){
                 crop_status.fadeOut('fast',function(){
                     $('#cropped_photo').val(data);
                 });
-
                 var myStatus = new Status();
                 myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 7000);
 
             }
         });
-        */
     });
 
     $(document).delegate('a.save', 'click', function(e) { 
