@@ -413,6 +413,7 @@ jQuery(function($) {
               $("#profile_picture").attr('src', "/uploaded_cropped/150x150/" + data); 
               var myStatus = new Status();
               myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 4000);
+              crop_status.hide();
               $('div.adjust-crop').hide();
            }
         });
