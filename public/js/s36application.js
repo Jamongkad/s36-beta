@@ -409,17 +409,12 @@ jQuery(function($) {
           , type: "POST"
           , data: data 
           , success: function(data){
-              /*
-                crop_status.fadeOut('fast',function(){
-                    $('#cropped_photo').val(data);
-                });
-                */
-              console.log(data);
-                var myStatus = new Status();
-                myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 7000);
-
-                $('div.adjust-crop').hide();
-            }
+              $('#cropped_photo').val(data);
+              $("#profile_photo").attr('src', "/" + data);
+              var myStatus = new Status();
+              myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 7000);
+              $('div.adjust-crop').hide();
+           }
         });
     });
 
