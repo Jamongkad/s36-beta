@@ -368,7 +368,7 @@ jQuery(function($) {
             url: $("#ajax-crop-url").attr('hrefaction')
           , method: "POST"
           , data: {src: cropped_photo, x_coords: x_coords, y_coords: y_coords, wd: wd, ht: ht, oldphoto: oldphoto, login_type: 36}
-            success: function(data){
+          , success: function(data){
                 crop_status.fadeOut('fast',function(){
                     $('#cropped_photo').val(data);
                 });
