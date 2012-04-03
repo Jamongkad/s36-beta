@@ -15,7 +15,8 @@
         <script>
            <?
                $js_scripts = Array(
-                   '/js/jquery.switcharoo.js'
+                   '/js/jquery.tinymce.js'
+                 , '/js/jquery.switcharoo.js'
                  , '/js/jquery.fancytips.js'
                  , '/js/jquery.cycle.all.min.js'
                  , '/js/jquery.form.js'
@@ -26,7 +27,6 @@
                  , '/js/jquery.flot.js'
                  , '/js/jquery.flot.pie.js'
                  , '/js/jquery.scrollTo-1.4.2-min.js'
-                 , '/js/jquery.tinymce.js'
                  , '/js/jquery.pjax.js'
                  , '/js/jquery.timeago.js'
                  , '/js/s36LightBox.js'
