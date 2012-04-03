@@ -421,7 +421,7 @@ jQuery(function($) {
     });
 
     $('#cropbtn').click(function(){ 
-        save_crop_image(); 
+        //save_crop_image(); 
     });
 
     $(document).delegate('a.save', 'click', function(e) { 
