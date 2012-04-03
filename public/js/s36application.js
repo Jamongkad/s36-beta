@@ -409,10 +409,11 @@ jQuery(function($) {
           , type: "POST"
           , data: data 
           , success: function(data){
+              console.log(data);
               $('#cropped_photo').val(data);
               $("#profile_photo").attr('src', "/" + data);
               var myStatus = new Status();
-              myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 7000);
+              myStatus.notify("Your photo is successfully cropped! If you feel this is the right photo for you please click on the Save Settings button.", 4000);
               $('div.adjust-crop').hide();
            }
         });
