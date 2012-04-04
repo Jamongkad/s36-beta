@@ -36,7 +36,7 @@ return array(
         $request_data->sendto = (object) Array(
             'first_name' => 'Ryan'
           , 'last_name' => 'Chua'
-          , 'email' => 'ryanchua6@gmail.com'
+          , 'email' => 'wrm932@gmail.com'
         );
         $request_data->message = 'Dan is gay...';
         $request_data->from = $auth->user(); 
@@ -44,31 +44,6 @@ return array(
         $request_data->widgetkey = 'ovns8';
         $emailservice = new Email\Services\EmailService($request_data);
         $emailservice->send_email();
-        /*
-        $auth = new S36Auth; 
-        $vo = new RequestFeedbackData;
-        $vo->first_name = "Ryan";
-        $vo->last_name  = "Chua";
-
-        $factory = new EmailFactory($vo);
-
-        $email_obj = new StdClass;
-        $email_obj->email = "ryanchua6@gmail.com";
-
-        $message_obj = new StdClass;
-        $message_obj->custom_message = "Mathew would like to know if you think he's awesome and shit.";
-        $message_obj->user = $auth->user();
-        $message_obj->company = $auth->user_company();
-        $message_obj->sites = 1;
-
-        $factory->addresses = Array($email_obj);
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
- 
-        //return $email_page[0]->get_message();
-        $emailer = new Email($email_page);
-        $emailer->process_email();
-        */
     },
 
     'GET /tests/fetch_category' => function() {
