@@ -153,7 +153,7 @@ padding:5px 10px;
                             <td colspan="2">
                             <label>Message : </label> <br />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
-                            <textarea class="regular-text" name="message" style="width:400px;float:left" rows="7" id="message" ><?=$input['custom_message']?></textarea>
+                            <textarea class="regular-text" name="message" style="width:400px;float:left" rows="7" id="message" ><?=$input['message']?></textarea>
 
                             <ul class="custom-message">
                                 <li>Custom Message #1</li>
