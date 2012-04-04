@@ -142,7 +142,7 @@ padding:5px 10px;
                                 <select name="widget_key">
                                     <?foreach($submission_widgets->form_widgets->widget->widgets as $widgets):?>
                                         <option value="<?=$widgets->widgetkey?>">
-                                        <?=Helpers::unwrap($widgets->widgetobjstring)?>
+                                        <?//=Helpers::unwrap($widgets->widgetobjstring)?>
                                         </option>
                                     <?endforeach?>
                                 </select>
