@@ -41,6 +41,7 @@ return array(
         $request_data->message = 'Dan is gay...';
         $request_data->from = $auth->user(); 
         $request_data->sites = 1;
+        $request_data->widgetkey = 'ovns8';
         $emailservice = new Email\Services\EmailService($request_data);
         Helpers::dump($emailservice->send_email()); 
         /*

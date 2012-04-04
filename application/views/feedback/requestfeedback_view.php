@@ -139,7 +139,7 @@ padding:5px 10px;
                             <td width="120">
                             <div style="padding-left:6px">
                                 <label>Submission Forms: </label><br />
-                                <select name="widget_key">
+                                <select name="widgetkey">
                                     <?foreach($submission_widgets->form_widgets->widget->widgets as $widgets):?>
                                         <option value="<?=$widgets->widgetkey?>">
                                             <?=$widgets->widget_obj->theme_name?>
