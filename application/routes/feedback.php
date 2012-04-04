@@ -38,11 +38,16 @@ return array(
     },
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
+        $company_id = S36Auth::user()->companyid;
+        $widget = new Widget\Repositories\DBWidget;
+
         return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
-            'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+            'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
+          , 'submission_widgets' => $widget->fetch_widgets_by_company() 
           , 'errors' => Array()
           , 'input' => Array('firstname' => null, 'lastname' => null, 'email' => null, 'custom_message' => "")
         ));
+
     }),
 
     'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() {

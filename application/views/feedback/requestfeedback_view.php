@@ -99,6 +99,7 @@ padding:5px 10px;
 .float-right{float:right;}
 </style>
 <div class="block">
+    <?if($submission_widgets->form_widgets->widget->total_rows > 0):?>
     <div id="request-setup-block">                    
         <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'requestForm'))?>
         <div class="request-options">
@@ -133,7 +134,20 @@ padding:5px 10px;
                                 <?endforeach?>
                             </select>
                             </td>
-
+                        </tr>
+                        <tr>
+                            <td width="120">
+                            <div style="padding-left:6px">
+                                <label>Submission Forms: </label><br />
+                                <select name="widget_key">
+                                    <?foreach($submission_widgets as $widgets):?>
+                                        <option value="<?=$widgets->widgetkey?>">
+                                        <?=Helpers::unwrap($widgets->widgetobjstring)?>
+                                        </option>
+                                    <?endforeach?>
+                                </select>
+                            </div>
+                            </td> 
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -154,31 +168,24 @@ padding:5px 10px;
                 <div class="request-opts">
                     <span class="gray">Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. For a sample of the email, click here.</span>
                 </div>
-                <!--
-                <div class="error-message">
-                    
-                </div>
-                -->
             </div> 
         </div>
-        <div class="request-setup-border"></div>
-        
+        <div class="request-setup-border"></div>  
         <div style="padding:10px">
-            <br />
+            <br /> 
             <input type="submit" class="large-btn" value="Request Feedback" id="send_request"/>
             <br /><br />
         </div>
         <?=Form::close()?>
     </div>
-</div>
 
-<!-- spacer -->
-<div class="block noborder" style="height:300px;">
+    <?else:?>
+        <div class="woops">
+            <h2>Woops. You cannot request feedback without creating a submission form first.</h2><br/><br/>
+            <p>
+             Fortunately it's super easy to create one! 
+             <strong style="font-size:12px"><?=HTML::link('feedsetup/submission_widgets', 'click here', Array('class' => 'woops-a'))?> </strong>
+             to create your submission form. </p>
+        </div> 
+    <?endif?>
 </div>
-<!-- spacer -->
-</div>
-
-<!-- end of the main panel -->
-
-<!-- div need to clear floated divs -->
-<div class="c"></div>

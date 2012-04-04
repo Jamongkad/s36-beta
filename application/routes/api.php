@@ -72,15 +72,13 @@ return array(
             
             //if no record of activity
             if(!is_object($activity_check)) { 
-                $vo = new PublishedFeedbackNotificationData;
-                $vo->publisher_email = $publisher->email;
-         
-                $factory = new EmailFactory($vo);
-                $factory->addresses = $user->pull_user_emails_by_company_id($company_id);
-                $factory->feedback = $feedback->pull_feedback_by_id($feedback_id);
-                $email_pages = $factory->execute();
-                $email = new Email($email_pages);
-                $email->process_email();
+                $published_data = new Email\Entities\PublishedFeedbackData;
+                $published_data->set_publisher_email($publisher->email)
+                               ->set_feedback($feedback->pull_feedback_by_id($feedback_id))
+                               ->set_sendtoaddresses($user->pull_user_emails_by_company_id($company_id));
+            
+                $emailservice = new Email\Services\EmailService($published_data);
+                $emailservice->send_email(); 
             }
 
             //After publishing feedback logout...

@@ -87,7 +87,7 @@ class AddFeedback {
                         ->set_sendtoaddresses($us->pull_user_emails_by_company_id(Input::get('company_id')));
 
         $emailservice = new Email\Services\EmailService($submission_data);
-        $emailservice->execute();
+        $emailservice->send_email();
 
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');

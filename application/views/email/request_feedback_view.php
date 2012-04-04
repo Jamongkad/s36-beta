@@ -35,20 +35,20 @@
                         	<td colspan="3" style="padding-right:140px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">Hi there. We'd really like to hear from you.</h1>
 								<br />                           		
-                                Hi <?=$email_data->first_name?>,
+                                Hi <?=$email_data->sendto->first_name?>,
 								<br /><br />
-								<?=$message->user->fullname?> from <?=$message->company->name?> has requested to have your feedback.
+								<?=$email_data->from->fullname?> from <?=$email_data->from->companyname?> has requested to have your feedback.
 								<br /><br />
 								To leave feedback all you need to do is to follow the URL below. It won't take long!
                         		<br /><br /><br />
-                            	<a href="<?=$deploy_env."/widget/form?siteId={$message->sites}&companyId={$message->user->companyid}&themeId=1&response=1"?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
+                            	<a href="<?=$deploy_env."/widget/form?siteId={$email_data->sites}&companyId={$email_data->from->companyid}&themeId=1&response=1"?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
                                 </a>
                             	<br /><br /><br />
                             	We greatly appreciate your time.
 								<br /><br />
-                                <?=ucfirst($message->user->username)?> also has this to add:
+                                <?=ucfirst($email_data->from->username)?> also has this to add:
 								<br /><br />                                
-                                <h3>"<?=$message->custom_message?>"</h3>
+                                <h3>"<?=$email_data->message?>"</h3>
                             </td>
                         </tr>
                         <tr height="80">
@@ -85,7 +85,7 @@
     <!-- footer -->
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
-            This message was intended for <?=$address->email?>.  <br />
+            This message was intended for <?=$email_data->sendto->email?>.  <br />
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
        </td>

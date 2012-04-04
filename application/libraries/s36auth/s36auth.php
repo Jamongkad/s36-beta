@@ -16,16 +16,15 @@ class S36Auth {
             static::$user = DB::table('User', static::$db_name)
                 ->join('AuthAssignment', 'User.userId', '=', 'AuthAssignment.userid')
                 ->join('Company', 'User.companyId', '=', 'Company.companyId')
-                ->where('User.userId', '=', Session::get(static::$user_id))->first();
+                ->where('User.userId', '=', Session::get(static::$user_id))->first(Array( 
+                    '*' 
+                  , 'Company.name AS companyname'
+                  , 'Company.billTo AS companybillto'  
+                ));
         } 
         return static::$user;
     }
-
-    public static function user_company() { 
-        return DB::table('User', static::$db_name)->join('Company', 'Company.companyId', '=', 'User.companyId')
-                                ->where('User.userId', '=', Session::get(static::$user_id))->first(array('Company.name', 'Company.billTo'));
-    }
-
+    
     public static function user_site() { 
         return DB::table('User', static::$db_name)->join('Site', 'Site.companyId', '=', 'User.companyId')
                                 ->where('User.userId', '=', Session::get(static::$user_id))->get(Array('Site.siteId'));
@@ -64,6 +63,12 @@ class S36Auth {
 
     public static function register() {
         // use crypt...
+    }
+
+    //DEPRECATED
+    public static function user_company() { 
+        return DB::table('User', static::$db_name)->join('Company', 'Company.companyId', '=', 'User.companyId')
+                                ->where('User.userId', '=', Session::get(static::$user_id))->first(array('Company.name', 'Company.billTo'));
     }
 
     public static function _is_array_empty($InputVariable) {

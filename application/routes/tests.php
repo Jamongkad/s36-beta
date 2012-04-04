@@ -14,7 +14,7 @@ return array(
                         ->set_sendtoaddresses($user->pull_user_emails_by_company_id(2));
 
         $emailservice = new Email\Services\EmailService($submission_data);
-        Helpers::dump($emailservice->execute()); 
+        Helpers::dump($emailservice->send_email()); 
     },
 
     'GET /tests/test_email_published' => function() {    
@@ -27,12 +27,22 @@ return array(
                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(2));
     
         $emailservice = new Email\Services\EmailService($published_data);
-        Helpers::dump($emailservice->execute()); 
+        Helpers::dump($emailservice->send_email()); 
     },
 
     'GET /tests/test_email_request' => function() {
+        $auth = new S36Auth; 
         $request_data = new Email\Entities\RequestFeedbackData;
-        Helpers::dump($request_data);
+        $request_data->sendto = (object) Array(
+            'first_name' => 'Ryan'
+          , 'last_name' => 'Chua'
+          , 'email' => 'ryanchua6@gmail.com'
+        );
+        $request_data->message = 'Dan is gay...';
+        $request_data->from = $auth->user(); 
+        $request_data->sites = 1;
+        $emailservice = new Email\Services\EmailService($request_data);
+        Helpers::dump($emailservice->send_email()); 
         /*
         $auth = new S36Auth; 
         $vo = new RequestFeedbackData;
