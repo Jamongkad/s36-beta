@@ -86,31 +86,7 @@ return array(
             
             $emailservice = new Email\Services\EmailService($request_data);
             $emailservice->send_email();
-            /* To be redone...
-            $vo = new RequestFeedbackData;
-            $vo->first_name = $data['firstname'];
-            $vo->last_name  = $data['lastname'];
-
-            $factory = new EmailFactory($vo);
-
-            $email_obj = new StdClass;
-            $email_obj->email = $data['email'];
-
-            $message_obj = new StdClass;
-            $message_obj->custom_message = $data['custom_message'];
-            $message_obj->user = $auth->user();
-            $message_obj->company = $auth->user_company();
-            $message_obj->sites = $data['site_id'];
-
-            $factory->addresses = Array($email_obj);
-            $factory->message = $message_obj;
-            $email_page = $factory->execute();
-     
-            $emailer = new Email($email_page);
-            $emailer->process_email();
-            */
-         
-            //return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
+            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');  
         }
     }),
 
