@@ -52,10 +52,10 @@ return array(
     'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() {
         $data = Input::get();
         $rules = Array(
-            'firstname' => 'required'
-          , 'lastname' => 'required'
+            'first_name' => 'required'
+          , 'last_name' => 'required'
           , 'email' => 'required|email'
-          , 'custom_message' => 'required'
+          , 'message' => 'required'
         );
 
         $validator = Validator::make($data, $rules);
@@ -67,14 +67,25 @@ return array(
             ));
         } else {      
 
-            $auth = new S36Auth; 
-            Helpers::dump($data);
+            $auth = new S36Auth;  
             /*
             $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
             $metric->increment_request();  
             */
+            $request_data = new Email\Entities\RequestFeedbackData;
+            $request_data->sendto = (object) Array(
+                'first_name' => $data['first_name']
+              , 'last_name' => $data['last_name']
+              , 'email' => $data['email']
+            );
+            $request_data->message = $data['message'];
+            $request_data->from = $auth->user(); 
+            $request_data->sites = $data['site_id'];
+            $request_data->widgetkey = $data['widgetkey'];
             
+            $emailservice = new Email\Services\EmailService($request_data);
+            $emailservice->send_email();
             /* To be redone...
             $vo = new RequestFeedbackData;
             $vo->first_name = $data['firstname'];

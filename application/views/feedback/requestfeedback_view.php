@@ -111,13 +111,13 @@ padding:5px 10px;
                         <tr>
                             <td width="120">
                             <label>First Name : </label><br />
-                            <input type="text" name="firstname" class="regular-text" id="recipient-fname" value="<?=$input['firstname']?>"/>
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('firstname')."</p>" : null?>
+                            <input type="text" name="first_name" class="regular-text" id="recipient-fname" value="<?=$input['first_name']?>"/>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('first_name')."</p>" : null?>
                             </td>
                             <td width="120">
                             <label>Last Name :</label><br />
-                            <input type="text" name="lastname" class="regular-text" id="recipient-lname" value="<?=$input['lastname']?>"/>
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('lastname')."</p>" : null?>
+                            <input type="text" name="last_name" class="regular-text" id="recipient-lname" value="<?=$input['last_name']?>"/>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
                             </td>
                         </tr>
                         <tr>
@@ -152,8 +152,8 @@ padding:5px 10px;
                         <tr>
                             <td colspan="2">
                             <label>Message : </label> <br />
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('custom_message')."</p>" : null?>
-                            <textarea class="regular-text" name="custom_message" style="width:400px;float:left" rows="7" id="message" ><?=$input['custom_message']?></textarea>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
+                            <textarea class="regular-text" name="message" style="width:400px;float:left" rows="7" id="message" ><?=$input['custom_message']?></textarea>
 
                             <ul class="custom-message">
                                 <li>Custom Message #1</li>
