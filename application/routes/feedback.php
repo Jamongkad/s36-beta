@@ -2,6 +2,7 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
+$dbwidget = new Widget\Repositories\DBWidget;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
@@ -37,19 +38,18 @@ return array(
 
     },
 
-    'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() { 
+    'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() use ($dbwidget) { 
         $company_id = S36Auth::user()->companyid;
-        $widget = new Widget\Repositories\DBWidget;
-        
+ 
         return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
-          , 'submission_widgets' => $widget->fetch_widgets_by_company() 
+          , 'submission_widgets' => $dbwidget->fetch_widgets_by_company() 
           , 'errors' => Array()
           , 'input' => Array('first_name' => null, 'last_name' => null, 'email' => null, 'message' => "")
         ));
     }),
 
-    'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() {
+    'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($dbwidget){
         $data = Input::get();
         $rules = Array(
             'first_name' => 'required'
@@ -62,6 +62,7 @@ return array(
         if(! $validator->valid() ) {
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
                 'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+              , 'submission_widgets' => $dbwidget->fetch_widgets_by_company() 
               , 'errors' => $validator->errors
               , 'input' => $data
             ));
