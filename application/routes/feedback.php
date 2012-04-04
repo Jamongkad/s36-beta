@@ -41,8 +41,6 @@ return array(
         $company_id = S36Auth::user()->companyid;
         $widget = new Widget\Repositories\DBWidget;
         
-        //Helpers::dump($widget->fetch_widgets_by_company());
-
         return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
           , 'submission_widgets' => $widget->fetch_widgets_by_company() 
@@ -70,10 +68,12 @@ return array(
         } else {      
 
             $auth = new S36Auth; 
-
+            Helpers::dump($data);
+            /*
             $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
             $metric->increment_request();  
+            */
             
             /* To be redone...
             $vo = new RequestFeedbackData;
@@ -98,8 +98,8 @@ return array(
             $emailer = new Email($email_page);
             $emailer->process_email();
             */
-            
-            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
+         
+            //return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
         }
     }),
 
