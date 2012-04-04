@@ -34,6 +34,7 @@
             <br />
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#000;">
+                <!--
                     CUSTOMIZE YOUR
                     <?if($widget_select == 'embed'):?> 
                         EMBEDDED
@@ -43,6 +44,8 @@
                          POPUP
                     <?endif;?>
                     DISPLAYS 
+                -->
+                CREATE SUBMISSION FORM
                 </strong>
                 <br /><br />
                 <table>

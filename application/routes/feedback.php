@@ -68,7 +68,8 @@ return array(
             $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
             $metric->increment_request();  
-        
+            
+            /* To be redone...
             $vo = new RequestFeedbackData;
             $vo->first_name = $data['firstname'];
             $vo->last_name  = $data['lastname'];
@@ -90,6 +91,7 @@ return array(
      
             $emailer = new Email($email_page);
             $emailer->process_email();
+            */
             
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');
         }

@@ -31,8 +31,10 @@ return array(
     },
 
     'GET /tests/test_email_request' => function() {
-        $auth = new S36Auth;
-        
+        $request_data = new Email\Entities\RequestFeedbackData;
+        Helpers::dump($request_data);
+        /*
+        $auth = new S36Auth; 
         $vo = new RequestFeedbackData;
         $vo->first_name = "Ryan";
         $vo->last_name  = "Chua";
@@ -55,7 +57,7 @@ return array(
         //return $email_page[0]->get_message();
         $emailer = new Email($email_page);
         $emailer->process_email();
-
+        */
     },
 
     'GET /tests/fetch_category' => function() {
@@ -74,29 +76,6 @@ return array(
                  ->subject("You win some you lose some. As long as the outcome is income.")
                  ->html_message("That's good advice Ryan thanks. Testing False BCC, double email sent.")
                  ->send());
-
-        /*
-        $auth = new S36Auth;
-        $feedback = new Feeback\Repositories\DBFeedback;
-
-        $vo = new FastForwardData;          
-        $factory = new EmailFactory($vo);
- 
-        $email_obj = new StdClass;
-        $email_obj->email = "ryanchua6@gmail.com";
-
-        $message_obj = new StdClass;
-        $message_obj->bcc = "";
-        $message_obj->user = $auth->user();
-        $message_obj->comment = "this is a comment";
-        $message_obj->feedback = $feedback->pull_feedback_by_id(14);
-
-        $factory->addresses = Array($email_obj);
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
-        Helpers::show_data($email_page);
-        return $email_page[0]->get_message();
-        */
     },
 
     'GET /tests/email_thankyou' => function() { 
