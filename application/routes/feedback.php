@@ -45,7 +45,7 @@ return array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
           , 'submission_widgets' => $widget->fetch_widgets_by_company() 
           , 'errors' => Array()
-          , 'input' => Array('firstname' => null, 'lastname' => null, 'email' => null, 'custom_message' => "")
+          , 'input' => Array('first_name' => null, 'last_name' => null, 'email' => null, 'message' => "")
         ));
     }),
 
