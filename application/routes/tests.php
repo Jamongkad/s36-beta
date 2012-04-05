@@ -48,7 +48,7 @@ return array(
 
     'GET /tests/test_email_invite' => function() {
         $invite_data = new Email\Entities\InvitationData; 
-        $invite_data->invitee_info_id(15);
+        $invite_data->invitee_info_id(13);
         $invite_data->set_publisher_email(S36Auth::user()->email);
         $invite_data->account_owner = S36Auth::user()->fullname;
         $invite_data->message = "Mathew is kewl";
