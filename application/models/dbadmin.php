@@ -33,8 +33,7 @@ class DBAdmin extends S36DataObject {
     }
 
     public function _send_welcome_email($user_id) {
-
-        //$user = DB::Table('User', 'master')->where('userId', '=', $user_id)->first();
+        /*
         $user = $this->fetch_admin_details_by_id($user_id);
 
         $email = $this->input_data->email;
@@ -56,6 +55,16 @@ class DBAdmin extends S36DataObject {
         //return $email_page[0]->get_message();
         $emailer = new Email($email_page);
         $emailer->process_email();
+        */
+
+        $invite_data = new Email\Entities\InvitationData; 
+        $invite_data->invitee_info_id($user_id);
+        $invite_data->set_publisher_email(S36Auth::user()->email);
+        $invite_data->account_owner = S36Auth::user()->fullname;
+        $invite_data->message = $this->input_data->welcome_note;
+
+        $emailservice = new Email\Services\EmailService($invite_data);
+        $emailservice->send_email();
     }
 
     public function save() {
