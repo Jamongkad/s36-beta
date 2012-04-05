@@ -183,7 +183,7 @@ class DBFeedback extends S36DataObject {
             GROUP BY 
                 date_format 
             ORDER BY 
-                '.$opts['date_statement'].' 
+                '.$opts['grouped_date_statement'].' 
         ';
 
         $sth = $this->dbh->prepare($date_sql);
