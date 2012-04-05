@@ -84,8 +84,8 @@ class InboxService {
     //I am sorry but filters are hard (-_-) TODO GET BACK TO THIS!!
     public function _check_filters(Array $filters) {
 
-        $date_statement = "Feedback.dtAdded DESC, Feedback.rating = 5 DESC";
-        $grouped_date_statement = "Feedback.dtAdded DESC, Feedback.rating = 5 DESC";
+        $date_statement = "Feedback.dtAdded DESC";
+        $grouped_date_statement = "Feedback.dtAdded DESC";
 
         $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.intName = "default"';       
         $filters['featured'] = 0;
