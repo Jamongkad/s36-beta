@@ -52,8 +52,7 @@ class DBAdmin extends S36DataObject {
             $this->perms_data['itemname'] = $this->input_data->account_type;
             $this->perms_data['userid'] = $user_id;
             DB::Table('AuthAssignment', 'master')->insert($this->perms_data);
-
-            Helpers::dump($this->_send_welcome_email($user_id));
+            $this->_send_welcome_email($user_id);
         } 
     }
 
