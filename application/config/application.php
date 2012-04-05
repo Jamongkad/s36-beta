@@ -12,10 +12,10 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-    'url' => 'http://36storiesapp.com',//$determine->d->host,
-    //'deploy_env' => $determine->d->deploy_env,
-    //'env_name' => $determine->d->env_name,
-    //'hostname' => $determine->d->hostname,
+    'url' => $determine->d->host,
+    'deploy_env' => $determine->d->deploy_env,
+    'env_name' => $determine->d->env_name,
+    'hostname' => $determine->d->hostname,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index

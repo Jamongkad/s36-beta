@@ -14,10 +14,7 @@ class Determiner {
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
        $subdomain = $_GET['subdomain'];
-
-       print_r($my_url);
        
-       /*
        //Development
        if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
            $obj->hostname = '36storiesdev';
@@ -59,7 +56,6 @@ class Determiner {
            $obj->env_name = 'prod';
            return $obj;
        }
-       */
 
        //AWS PRODUCTION
        /*
