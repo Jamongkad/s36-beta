@@ -33,30 +33,6 @@ class DBAdmin extends S36DataObject {
     }
 
     public function _send_welcome_email($user_id) {
-        /*
-        $user = $this->fetch_admin_details_by_id($user_id);
-
-        $email = $this->input_data->email;
-
-        $vo = new InvitationNotificationData;
-        $message_obj = new StdClass;
-        $message_obj->account_owner = S36Auth::user()->fullname;
-        $message_obj->publisher = S36Auth::user()->email;
-        $message_obj->invitee = $this->input_data->fullName;
-        $message_obj->message = $this->input_data->welcome_note;
-        $message_obj->name = $this->input_data->username;
-        $message_obj->user = $user;
-        
-        $factory = new EmailFactory($vo);
-        $factory->addresses = Array((object)Array('email' => $this->input_data->email));
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
-
-        //return $email_page[0]->get_message();
-        $emailer = new Email($email_page);
-        $emailer->process_email();
-        */
-
         $invite_data = new Email\Entities\InvitationData; 
         $invite_data->invitee_info_id($user_id);
         $invite_data->set_publisher_email(S36Auth::user()->email);
