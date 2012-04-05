@@ -86,13 +86,6 @@ return array(
         */
     },
 
-    'GET /tests/fetch_category' => function() {
-        $category_id = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
-                                            ->where('intName', '=', 'default')->first(Array('categoryId'));
-
-        Helpers::show_data($category_id->categoryid);
-    },
-
     'GET /tests/test_bcc' => function() {
 
         $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", "mathew@dickosaurus");
