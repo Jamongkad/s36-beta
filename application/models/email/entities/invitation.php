@@ -1,7 +1,7 @@
 <?php namespace Email\Entities;
 
 use Email\Entities\Types\EmailFixture;
-use View, Helpers;
+use View;
 
 class Invitation extends EmailFixture {
 

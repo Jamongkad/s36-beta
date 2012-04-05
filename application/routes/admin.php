@@ -56,7 +56,7 @@ return array(
             $admin->perms_data = $perm_factory->build();
             $admin->input_data = (object)$data; 
             $admin->save();
-            return Redirect::to('admin'); 
+            //return Redirect::to('admin'); 
         } 
 
     }),
