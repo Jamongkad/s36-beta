@@ -13,11 +13,8 @@ class Invitation extends EmailFixture {
 
     public function send() {
         $email_html = View::make('email/invitation_view', Array('data' => $this->email_data))->get();     
-        print_r($email_html);
-        /*
         $this->postmark->to($this->email_data->invitee->email)
                        ->subject($this->get_subject())->html_message($email_html)->send();
-        */
     }
     
     public function get_subject() {
