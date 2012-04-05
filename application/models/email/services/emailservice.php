@@ -3,6 +3,7 @@
 use Email\Entities\NewFeedbackSubmission;
 use Email\Entities\PublishedFeedback;
 use Email\Entities\RequestFeedback;
+use Email\Entities\Invitation;
 use Email\Entities\Types\EmailData;
 
 class EmailService { 
@@ -34,7 +35,7 @@ class EmailService {
             return $email->send();
         }
 
-        if($this->email_data->get_type() == 'Email\Entities\InvitationNotificationData') {
+        if($this->email_data->get_type() == 'Email\Entities\InvitationData') {
             $email = new Invitation;
             $email->gather($this->email_data);
             return $email->send();

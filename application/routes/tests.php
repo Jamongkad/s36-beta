@@ -46,6 +46,46 @@ return array(
         $emailservice->send_email();
     },
 
+    'GET /tests/test_email_invite' => function() {
+        $invite_data = new Email\Entities\InvitationData; 
+        $invite_data->invitee_info_id(15);
+        $invite_data->set_publisher_email(S36Auth::user()->email);
+        $invite_data->account_owner = S36Auth::user()->fullname;
+        $invite_data->message = "Mathew is kewl";
+
+        $emailservice = new Email\Services\EmailService($invite_data);
+        Helpers::dump($emailservice->send_email());
+    },
+
+    'GET /tests/email_fastforward' => function() {     
+        $data = (object)Input::get();
+        $auth = new S36Auth;
+
+        $feedback = new Feedback\Repositories\DBFeedback;
+
+        $vo = new FastForwardData;          
+        $factory = new EmailFactory($vo);
+ 
+        $email_obj = new StdClass;
+        $email_obj->email = "wrm932@gmail.com";//$data->email;
+
+        $message_obj = new StdClass;
+        $message_obj->bcc = "";
+        $message_obj->user = $auth->user();
+        $message_obj->comment = "";//$data->email_comment;
+        $message_obj->feedback = $feedback->pull_feedback_by_id(59);
+
+        $factory->addresses = Array($email_obj);
+        $factory->message = $message_obj;
+        $email_page = $factory->execute();
+        
+        return $email_page[0]->get_message();
+        /*
+        $emailer = new Email($email_page);
+        $emailer->process_email();
+        */
+    },
+
     'GET /tests/fetch_category' => function() {
         $category_id = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
                                             ->where('intName', '=', 'default')->first(Array('categoryId'));
@@ -85,46 +125,6 @@ return array(
           , 'activity_check' => $activity_check
         ));       
      },
-
-    'GET /tests/test_email_invite' => function() {
-        $invite = new Email\Entities\InvitationData; 
-        $invite->set_publisher_email(S36Auth::user()->email);
-        $invite->account_owner = S36Auth::user()->fullname;
-        $invite->invitee_id = 15;
-        $invite->message = "Mathew is kewl";
-        $invite->admin_info();
-        Helpers::dump($invite);
-
-    },
-
-    'GET /tests/email_fastforward' => function() {     
-        $data = (object)Input::get();
-        $auth = new S36Auth;
-
-        $feedback = new Feedback\Repositories\DBFeedback;
-
-        $vo = new FastForwardData;          
-        $factory = new EmailFactory($vo);
- 
-        $email_obj = new StdClass;
-        $email_obj->email = "wrm932@gmail.com";//$data->email;
-
-        $message_obj = new StdClass;
-        $message_obj->bcc = "";
-        $message_obj->user = $auth->user();
-        $message_obj->comment = "";//$data->email_comment;
-        $message_obj->feedback = $feedback->pull_feedback_by_id(59);
-
-        $factory->addresses = Array($email_obj);
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
-        
-        return $email_page[0]->get_message();
-        /*
-        $emailer = new Email($email_page);
-        $emailer->process_email();
-        */
-    },
 
     'GET /tests/worklog' => function() {   
         $auth = new S36Auth;
