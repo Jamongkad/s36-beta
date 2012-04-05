@@ -16,15 +16,15 @@ class Determiner {
        $subdomain = $_GET['subdomain'];
        
        //Development
-       if($my_url[1] == '36stories' && $my_url[2] == 'localhost') {
-           $obj->hostname = '36stories';
-           $obj->host = 'http://'.$subdomain.'.36stories.localhost';
+       if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
+           $obj->hostname = '36storiesdev';
+           $obj->host = 'http://'.$subdomain.'.36storiesdev.localhost';
            $obj->db   = Array(
                 'host' => 'localhost'//'173.255.211.107'
               , 'username' => 'root'//'mathew'
               , 'password' => 'brx4*svv'
            );
-           $obj->deploy_env = 'http://'.$subdomain.'.36stories.localhost';
+           $obj->deploy_env = 'http://'.$subdomain.'.36storiesdev.localhost';
            $obj->env_name = 'local';
            return $obj;
        }

@@ -34,7 +34,8 @@ class DBAdmin extends S36DataObject {
 
     public function _send_welcome_email($user_id) {
 
-        $user = DB::Table('User', 'master')->where('userId', '=', $user_id)->first();
+        //$user = DB::Table('User', 'master')->where('userId', '=', $user_id)->first();
+        $user = $this->fetch_admin_details_by_id($user_id);
 
         $email = $this->input_data->email;
 

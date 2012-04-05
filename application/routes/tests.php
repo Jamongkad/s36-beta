@@ -84,6 +84,17 @@ return array(
           , 'contact_name' => $contact->firstname
           , 'activity_check' => $activity_check
         ));       
+     },
+
+    'GET /tests/test_email_invite' => function() {
+        $invite = new Email\Entities\InvitationData; 
+        $invite->set_publisher_email(S36Auth::user()->email);
+        $invite->account_owner = S36Auth::user()->fullname;
+        $invite->invitee_id = 15;
+        $invite->message = "Mathew is kewl";
+        $invite->admin_info();
+        Helpers::dump($invite);
+
     },
 
     'GET /tests/email_fastforward' => function() {     

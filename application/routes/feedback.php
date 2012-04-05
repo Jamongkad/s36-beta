@@ -67,8 +67,6 @@ return array(
               , 'input' => $data
             ));
         } else {      
-
-            $auth = new S36Auth;  
             /*
             $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
@@ -81,7 +79,7 @@ return array(
               , 'email' => $data['email']
             );
             $request_data->message = $data['message'];
-            $request_data->from = $auth->user(); 
+            $request_data->from = S36Auth::user(); 
             $request_data->sites = $data['site_id'];
             $request_data->widgetkey = $data['widgetkey'];
             
@@ -201,11 +199,10 @@ return array(
 
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
 
-        $user = S36Auth::user();         
         $feedback_data = $feedback->pull_feedback_by_id($id);
 
         return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
-            'user' => $user 
+            'user' => S36Auth::user()
           , 'feedback' => $feedback_data 
           , 'feedid' => $id
           , 'errors' => Array()
