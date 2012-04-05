@@ -123,13 +123,4 @@ return array(
          return Redirect::to('admin'); 
      },
      
-     /*
-     'POST /admin/test_invite_email' => Array('needs' => 'S36ValueObjects', 'do' => function() {
-         //once done switch to form open url in add_admin_view
-         $data = Input::get(); 
-         $admin = new DBAdmin;
-         $admin->input_data = (object)$data;
-         return $admin->_send_welcome_email(11);
-     })
-     */
 );

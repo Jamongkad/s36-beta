@@ -52,7 +52,15 @@ class DBAdmin extends S36DataObject {
             $this->perms_data['itemname'] = $this->input_data->account_type;
             $this->perms_data['userid'] = $user_id;
             DB::Table('AuthAssignment', 'master')->insert($this->perms_data);
-            $this->_send_welcome_email($user_id);
+           
+            $invite_data = new Email\Entities\InvitationData; 
+            $invite_data->invitee_info_id($user_id);
+            $invite_data->set_publisher_email(S36Auth::user()->email);
+            $invite_data->account_owner = S36Auth::user()->fullname;
+            $invite_data->message = $this->input_data->welcome_note;
+
+            $emailservice = new Email\Services\EmailService($invite_data);
+            $emailservice->send_email();
         } 
     }
 
