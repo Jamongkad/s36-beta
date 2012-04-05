@@ -32,17 +32,6 @@ class DBAdmin extends S36DataObject {
        return $data;
     }
 
-    public function _send_welcome_email($user_id) {
-        $invite_data = new Email\Entities\InvitationData; 
-        $invite_data->invitee_info_id($user_id);
-        $invite_data->set_publisher_email(S36Auth::user()->email);
-        $invite_data->account_owner = S36Auth::user()->fullname;
-        $invite_data->message = $this->input_data->welcome_note;
-
-        $emailservice = new Email\Services\EmailService($invite_data);
-        $emailservice->send_email();
-    }
-
     public function save() {
     
         $personal_data = $this->_extract_personal_data();
