@@ -141,6 +141,7 @@ class DBFeedback extends S36DataObject {
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $date_sql = '
+            EXPLAIN
             SELECT   
                 DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
