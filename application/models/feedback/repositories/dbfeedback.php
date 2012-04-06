@@ -300,6 +300,8 @@ class DBFeedback extends S36DataObject {
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
                         AND Feedback.feedbackId IN ('.$in_query.')
+                    ORDER BY
+                        Feedback.rating DESC
         ');
 
         foreach($ids as $k => $id) {
