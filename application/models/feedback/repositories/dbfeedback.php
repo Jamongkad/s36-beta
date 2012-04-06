@@ -125,8 +125,8 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
-        $sth->bindParam(':limit', $opts['limit'], PDO::PARAM_INT);
-        $sth->bindParam(':offset', $opts['offset'], PDO::PARAM_INT);
+        $sth->bindparam(':limit', $opts['limit'], pdo::param_int);
+        $sth->bindparam(':offset', $opts['offset'], pdo::param_int);
         $sth->execute();       
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
@@ -193,7 +193,7 @@ class DBFeedback extends S36DataObject {
                 date_format 
             ORDER BY 
                 '.$opts['grouped_date_statement'].' 
-            LIMIT 0, 3
+            LIMIT :offset, :limit
         ';
 
         $company_id = $this->company_id;
@@ -206,6 +206,8 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
+        $sth->bindparam(':limit', $opts['limit'], pdo::param_int);
+        $sth->bindparam(':offset', $opts['offset'], pdo::param_int);
         $sth->execute();
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
         return $date_result;
