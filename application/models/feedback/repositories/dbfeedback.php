@@ -303,7 +303,7 @@ class DBFeedback extends S36DataObject {
         ');
 
         foreach($ids as $k => $id) {
-            $sth->bindParam(($k+1), $id);
+            $sth->bindValue(($k+1), $id);
         }
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
