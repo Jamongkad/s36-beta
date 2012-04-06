@@ -193,7 +193,7 @@ class DBFeedback extends S36DataObject {
             GROUP BY 
                 date_format 
             ORDER BY 
-                '.$opts['grouped_date_statement'].' 
+                '.$opts['date_statement'].' 
             LIMIT :offset, :limit
         ';
 

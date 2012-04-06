@@ -91,8 +91,7 @@ class InboxService {
             $time_end = microtime(True);
             $time = $time_end - $time_start;
             Helpers::dump("Old Algorithm: ".$time." seconds");
-            */
-        
+            */ 
             $data_obj = new StdClass;
             $data_obj->result = $data;
             $data_obj->num_rows = $date_result->total_rows;//$feed_result->total_rows;
@@ -105,7 +104,6 @@ class InboxService {
     public function _check_filters(Array $filters) {
 
         $date_statement = "Feedback.dtAdded DESC";
-        $grouped_date_statement = "Feedback.dtAdded DESC";
 
         $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.intName = "default"';       
         $filters['featured'] = 0;
@@ -157,7 +155,6 @@ class InboxService {
 
                     if($filters['date'] == 'date_old' ) {
                         $date_statement = "Feedback.dtAdded ASC, word_count DESC";    
-                        $grouped_date_statement = "Feedback.dtAdded ASC";
                     } 
                 } else { 
 
@@ -167,7 +164,6 @@ class InboxService {
 
                     if ($filters['date'] == 'date_old') {  
                         $date_statement = "Feedback.dtAdded ASC";
-                        $grouped_date_statement = "Feedback.dtAdded ASC";
                     }
                 }
             } 
@@ -175,7 +171,6 @@ class InboxService {
 
         if ($filters['choice'] == 'mostcontent' && !$filters['date']) {
             $date_statement = "word_count DESC";
-            $grouped_date_statement = "Feedback.dtAdded DESC";
         }
 
         //anchor statements 
@@ -247,7 +242,6 @@ class InboxService {
         $filters['status_statement']   = $status_statement;
         $filters['priority_statement'] = $priority_statement;
         $filters['date_statement']     = $date_statement;
-        $filters['grouped_date_statement'] = $grouped_date_statement; 
         $filters['siteid_statement']   = $siteid_statement;
         $filters['rating_statement']   = $rating_statement;
         $filters['category_statement'] = $category_statement;
