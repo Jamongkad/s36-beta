@@ -51,16 +51,20 @@ class InboxService {
 
             $this->pagination->records($feed_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
-            
+             
+            $time_start = microtime(True);
             $count = 0;
-            foreach($date_result as $dates) {
-               $dates->children = $this->dbfeedback->pull_feedback_by_group_id($dates->feedbackids);
-               $count += $dates->feedcount;
-               Helpers::dump($dates);
+            $data = Array();
+            foreach($date_result as $feeds) {
+               $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
+               $count += $feeds->feedcount;
+               $data[] = $feeds;
             }
-            //Helpers::dump($count);
-            //Helpers::dump($feed_result->total_rows);
-           // Helpers::dump($date_result);
+
+            Helpers::dump($data);
+            $time_end = microtime(True);
+            $time = $time_end - $time_start;
+            Helpers::dump($time." seconds");
 
             /*
             $data = Array();
