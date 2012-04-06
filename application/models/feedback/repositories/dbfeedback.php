@@ -115,7 +115,13 @@ class DBFeedback extends S36DataObject {
         ';
 
         $sth = $this->dbh->prepare($sql);      
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
+
+        $company_id = $this->company_id;
+        if(!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
@@ -188,8 +194,13 @@ class DBFeedback extends S36DataObject {
                 '.$opts['grouped_date_statement'].' 
         ';
 
+        $company_id = $this->company_id;
+        if(!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
         $sth = $this->dbh->prepare($date_sql);
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);

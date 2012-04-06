@@ -159,7 +159,7 @@ return array(
     'GET /tests/inboxservice' => function() {
         $inbox_service = new Feedback\Services\InboxService;
         $filters = array(
-              'limit'=> 2
+              'limit'=> 10
             , 'site_id'=> false 
             , 'filter'=> 'all'
             , 'choice'=> false
@@ -168,6 +168,7 @@ return array(
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
+            , 'company_id' => 2
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());

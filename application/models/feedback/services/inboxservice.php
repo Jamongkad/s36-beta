@@ -51,7 +51,10 @@ class InboxService {
 
             $this->pagination->records($feed_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
+
+            Helpers::dump($date_result);
             
+            /*
             $data = Array();
             foreach($date_result as $dates) { 
                 $head = new StdClass;
@@ -78,6 +81,7 @@ class InboxService {
             $data_obj->num_rows = $feed_result->total_rows;
             $data_obj->pagination = $this->pagination->render();
             return $data_obj;
+            */
         }
     }
 
