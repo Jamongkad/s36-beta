@@ -305,7 +305,6 @@ class DBFeedback extends S36DataObject {
         ');
 
         foreach($ids as $k => $id) {
-            echo $id;
             $sth->bindValue(($k+1), $id);
         }
         $sth->execute();

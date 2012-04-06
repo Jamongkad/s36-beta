@@ -60,13 +60,12 @@ class InboxService {
                $count += $feeds->feedcount;
                $data[] = $feeds;
             }
-
-            Helpers::dump($data);
             $time_end = microtime(True);
             $time = $time_end - $time_start;
-            Helpers::dump($time." seconds");
+            Helpers::dump("New Algorithm: ".$time." seconds");
 
-            /*
+
+            $time_start = microtime(True);
             $data = Array();
             foreach($date_result as $dates) { 
                 $head = new StdClass;
@@ -87,13 +86,18 @@ class InboxService {
                     $data[] = $head;     
                 }  
             }
-
+            $time_end = microtime(True);
+            $time = $time_end - $time_start;
+            Helpers::dump("Old Algorithm: ".$time." seconds");
+            
+            /*
             $data_obj = new StdClass;
             $data_obj->result = $data;
             $data_obj->num_rows = $feed_result->total_rows;
             $data_obj->pagination = $this->pagination->render();
             return $data_obj;
             */
+
         }
     }
 
