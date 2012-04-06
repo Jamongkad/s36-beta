@@ -182,7 +182,6 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
-
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
         $redis = new redisent\Redis;
 
