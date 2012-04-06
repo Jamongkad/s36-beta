@@ -57,7 +57,7 @@ class InboxService {
                $count += $dates->feedcount;
             }
             Helpers::dump($count);
-            Helpers::dump($feed_result->total_rows);
+            //Helpers::dump($feed_result->total_rows);
             Helpers::dump($date_result);
             /*
             $data = Array();
