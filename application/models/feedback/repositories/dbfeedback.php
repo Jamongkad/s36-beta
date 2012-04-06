@@ -290,6 +290,7 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare('
             SELECT
                 Feedback.feedbackId
+              , Feedback.contactId
             FROM
                 Feedback
                     INNER JOIN
