@@ -308,6 +308,7 @@ class DBFeedback extends S36DataObject {
                         AND Feedback.feedbackId IN ('.$in_query.')
                     ORDER BY
                         Feedback.rating DESC
+                    LIMIT 3
         ');
 
         foreach($ids as $k => $id) {
