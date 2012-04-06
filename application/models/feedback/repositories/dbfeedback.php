@@ -276,6 +276,12 @@ class DBFeedback extends S36DataObject {
         return $result_obj;       
     }
 
+    public function pull_feedback_by_group_id($feedbackids) {
+        $ids      = explode("|", $feedbackids);
+        $in_query = implode(',', array_fill(0, count($ids), '?'));
+        return $in_query;
+    }
+
     public function pull_feedback_by_id($feedback_id) { 
         $sth = $this->dbh->prepare('
             SELECT 

@@ -54,10 +54,7 @@ class InboxService {
             
             $count = 0;
             foreach($date_result as $dates) {
-               $ids     = explode("|", $dates->feedbackids);
-               $in_query = implode(',', array_fill(0, count($ids), '?'));
-               Helpers::dump($in_query);
-               Helpers::dump($dates);
+               Helpers::dump($this->dbfeedback->pull_feedback_by_group_id($dates->feedbackids));
                $count += $dates->feedcount;
             }
             //Helpers::dump($count);
