@@ -57,7 +57,6 @@ class InboxService {
             $data = Array();
             foreach($date_result as $feeds) {
                $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
-               $count += $feeds->feedcount;
                $data[] = $feeds;
             }
             $time_end = microtime(True);
