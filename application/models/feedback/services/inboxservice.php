@@ -56,7 +56,8 @@ class InboxService {
             foreach($date_result as $dates) {
                $feeds = explode("|", $dates->feedbackids);
                $feed_count = count($feeds);
-               Helpers::dump($feed_count);
+               $count += $feed_count;
+               Helpers::dump($count);
             }
             
             /*
