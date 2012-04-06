@@ -162,7 +162,7 @@ return array(
               'limit'=> 10
             , 'site_id'=> false 
             , 'filter'=> 'featured'
-            , 'choice'=> 'all'
+            , 'choice'=> 'positive'
             , 'date'  => false
             , 'rating' => false
             , 'category' => false
