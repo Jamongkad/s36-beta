@@ -277,9 +277,38 @@ class DBFeedback extends S36DataObject {
     }
 
     public function pull_feedback_by_group_id($feedbackids) {
+
         $ids      = explode("|", $feedbackids);
         $in_query = implode(',', array_fill(0, count($ids), '?'));
-        return $in_query;
+
+        $sth = $this->dbh->prepare('
+            SELECT
+                '.$this->select_vars.'
+            FROM
+                Feedback
+                    INNER JOIN
+                        Site
+                        ON Site.siteId = Feedback.siteId
+                    INNER JOIN
+                        Category
+                        ON Feedback.categoryId = Category.categoryId
+                    INNER JOIN
+                        Contact
+                        ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        Country
+                        ON Country.countryId = Contact.countryId
+                    WHERE 1=1
+                        AND Feedback.feedbackId IN ('.$in_query.')
+        ');
+
+        foreach($ids as $k => $id) {
+            $sth->bindParam(($k+1), $id);
+        }
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+            
     }
 
     public function pull_feedback_by_id($feedback_id) { 
