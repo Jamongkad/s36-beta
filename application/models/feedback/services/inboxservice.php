@@ -54,8 +54,9 @@ class InboxService {
             
             $count = 0;
             foreach($date_result as $dates) {
-               $dates->haspipe = strpos($dates->feedbackids, "|") !== FALSE;
-               $dates->explode = explode("|", $dates->feedbackids);
+               $ids     = explode("|", $dates->feedbackids);
+               $in_query = implode(',', array_fill(0, count($ids), '?'));
+               Helpers::dump($in_query);
                Helpers::dump($dates);
                $count += $dates->feedcount;
             }
