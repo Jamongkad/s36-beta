@@ -54,11 +54,13 @@ class InboxService {
             
             $count = 0;
             foreach($date_result as $dates) {
+               Helpers::dump(strpos($dates->feedbackids, "|"));
                $count += $dates->feedcount;
             }
             Helpers::dump($count);
             //Helpers::dump($feed_result->total_rows);
             Helpers::dump($date_result);
+
             /*
             $data = Array();
             foreach($date_result as $dates) { 
