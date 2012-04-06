@@ -95,7 +95,6 @@ class InboxService {
             $data_obj->result = $data;
             $data_obj->num_rows = $date_result->total_rows;//$feed_result->total_rows;
             $data_obj->pagination = $this->pagination->render();
-            Helpers::dump($data_obj);
             return $data_obj; 
         }
     }
