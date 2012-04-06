@@ -60,6 +60,7 @@ class InboxService {
             }
             Helpers::dump($count);
             Helpers::dump($feed_result->total_rows);
+            Helpers::dump($feed_result);
             /*
             $data = Array();
             foreach($date_result as $dates) { 
