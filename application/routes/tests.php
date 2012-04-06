@@ -168,7 +168,7 @@ return array(
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
-            , 'company_id' => 2
+            , 'company_id' => 1
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump($inbox_service->present_feedback());
