@@ -161,8 +161,8 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'site_id'=> false 
-            , 'filter'=> 'featured'
-            , 'choice'=> 'positive'
+            , 'filter'=> 'all'
+            , 'choice'=> false
             , 'date'  => false
             , 'rating' => false
             , 'category' => false
