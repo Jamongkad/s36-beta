@@ -51,10 +51,12 @@ class InboxService {
 
             $this->pagination->records($feed_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
-
+            
+            $count = 0;
             foreach($date_result as $dates) {
                $feeds = explode("|", $dates->feedbackids);
-               Helpers::dump($feeds);
+               $feed_count = count($feeds);
+               Helpers::dump($feed_count);
             }
             
             /*
