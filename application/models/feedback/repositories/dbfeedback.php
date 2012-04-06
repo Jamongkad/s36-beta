@@ -142,6 +142,7 @@ class DBFeedback extends S36DataObject {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $date_sql = '
             SELECT   
+                SQL_CALC_FOUND_ROWS
                 DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
               , COUNT(DISTINCT Feedback.feedbackId) AS feedcount
@@ -209,8 +210,16 @@ class DBFeedback extends S36DataObject {
         $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
-        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        /*
         return $date_result;
+        */
+        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj = new StdClass;
+        $result_obj->result = $date_result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
+        
     }
 
     public function pull_feedback_by_company($opts) {

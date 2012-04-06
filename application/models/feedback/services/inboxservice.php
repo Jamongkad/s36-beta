@@ -55,8 +55,9 @@ class InboxService {
             $time_start = microtime(True);
             $count = 0;
             $data = Array();
-            foreach($date_result as $feeds) {
+            foreach($date_result->result as $feeds) {
                $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
+               $count += $feeds->feedcount;
                $data[] = $feeds;
             }
             $time_end = microtime(True);
@@ -66,7 +67,7 @@ class InboxService {
 
             $time_start = microtime(True);
             $data = Array();
-            foreach($date_result as $dates) { 
+            foreach($date_result->result as $dates) { 
                 $head = new StdClass;
                 $head->head_date = $dates->date_format;
                 $head->unix_timestamp = $dates->unix_timestamp;
