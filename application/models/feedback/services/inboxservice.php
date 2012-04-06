@@ -49,7 +49,7 @@ class InboxService {
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
             $feed_result = $this->dbfeedback->pull_feedback($this->filters);
 
-            $this->pagination->records($feed_result->total_rows);
+            $this->pagination->records($date_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
              
             $time_start = microtime(True);
@@ -64,7 +64,7 @@ class InboxService {
             $time = $time_end - $time_start;
             Helpers::dump("New Algorithm: ".$time." seconds");
 
-
+            /*
             $time_start = microtime(True);
             $data = Array();
             foreach($date_result->result as $dates) { 
@@ -89,15 +89,14 @@ class InboxService {
             $time_end = microtime(True);
             $time = $time_end - $time_start;
             Helpers::dump("Old Algorithm: ".$time." seconds");
-            
-            /*
+            */
+        
             $data_obj = new StdClass;
             $data_obj->result = $data;
-            $data_obj->num_rows = $feed_result->total_rows;
+            $data_obj->num_rows = $date_result->total_rows;//$feed_result->total_rows;
             $data_obj->pagination = $this->pagination->render();
-            return $data_obj;
-            */
-
+            Helpers::dump($data_obj);
+            return $data_obj; 
         }
     }
 

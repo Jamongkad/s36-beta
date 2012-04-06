@@ -210,16 +210,13 @@ class DBFeedback extends S36DataObject {
         $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
-        /*
-        return $date_result;
-        */
+
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result_obj = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;
-        
+        return $result_obj; 
     }
 
     public function pull_feedback_by_company($opts) {
