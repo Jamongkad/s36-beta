@@ -164,7 +164,7 @@ return array(
             , 'filter'=> 'all'
             , 'choice'=> false
             , 'date'  => false
-            , 'rating' => 2
+            , 'rating' => false
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
