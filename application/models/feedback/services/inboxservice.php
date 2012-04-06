@@ -54,7 +54,7 @@ class InboxService {
             
             $count = 0;
             foreach($date_result as $dates) {
-               $dates->children = $this->dbfeedback->pull_feedback_by_group_id($dates->feedbackids)
+               $dates->children = $this->dbfeedback->pull_feedback_by_group_id($dates->feedbackids);
                $count += $dates->feedcount;
                Helpers::dump($dates);
             }
