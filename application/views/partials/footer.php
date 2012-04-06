@@ -15,7 +15,7 @@
 <div id="notification">
 	<div id="notification-design">
     	<div id="notification-message">
-        	Loading... Please Wait... you bits.
+        	Loading... Please Wait...
         </div>
     </div>
 </div>
