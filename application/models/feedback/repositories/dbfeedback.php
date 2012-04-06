@@ -193,6 +193,7 @@ class DBFeedback extends S36DataObject {
                 date_format 
             ORDER BY 
                 '.$opts['grouped_date_statement'].' 
+            LIMIT 0, 10
         ';
 
         $company_id = $this->company_id;
