@@ -307,8 +307,7 @@ class DBFeedback extends S36DataObject {
         }
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
-            
+        return $result; 
     }
 
     public function pull_feedback_by_id($feedback_id) { 
