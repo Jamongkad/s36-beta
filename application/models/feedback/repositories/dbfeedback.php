@@ -289,8 +289,7 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare('
             SELECT
-                Feedback.feedbackId
-              , Feedback.contactId
+                '.$this->select_vars.'
             FROM
                 Feedback
                     INNER JOIN
