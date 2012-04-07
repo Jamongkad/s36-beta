@@ -5,9 +5,9 @@
 
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
-        <!--
+
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
-        -->
+
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
@@ -17,9 +17,7 @@
         <script>
            <?
                $js_scripts = Array(
-                   '/js/jquery-1.7.1.min.js'
-                 , '/js/jquery.tinymce.js'
-                 , '/js/jquery.switcharoo.js'
+                   '/js/jquery.switcharoo.js'
                  , '/js/jquery.fancytips.js'
                  , '/js/jquery.cycle.all.min.js'
                  , '/js/jquery.form.js'
