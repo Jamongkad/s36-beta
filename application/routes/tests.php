@@ -57,7 +57,7 @@ return array(
         Helpers::dump($emailservice->send_email());
     },
 
-    'GET /tests/email_fastforward' => function() {     
+    'GET /tests/test_email_fastforward' => function() {     
         $data = (object)Input::get();
         $auth = new S36Auth;
         
