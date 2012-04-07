@@ -52,7 +52,7 @@ class InboxService {
             $this->pagination->records($date_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
              
-            //$time_start = microtime(True);
+            $time_start = microtime(True);
             $count = 0;
             $data = Array();
             foreach($date_result->result as $feeds) {
@@ -60,11 +60,11 @@ class InboxService {
                $count += $feeds->feedcount;
                $data[] = $feeds;
             }
-            /*
+
             $time_end = microtime(True);
             $time = $time_end - $time_start;
             Helpers::dump("New Algorithm: ".$time." seconds");
-            */
+
 
             /*
             $time_start = microtime(True);
