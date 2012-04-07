@@ -2,7 +2,7 @@
 use Email\Entities\Types\EmailData;
 use Config;
 
-class RequestFeedbackData extends EmailData{
+class RequestFeedbackData extends EmailData {
     public $sendto;
     public $message;
     public $from;

@@ -60,11 +60,21 @@ return array(
     'GET /tests/email_fastforward' => function() {     
         $data = (object)Input::get();
         $auth = new S36Auth;
+        
+        $feedback = new Feedback\Repositories\DBFeedbac
+        $fastdata = new Email\Entities\FastForwardData;
+        $email = new Email\Entities\FastForward;
 
-        $feedback = new Feedback\Repositories\DBFeedback;
-
+        Helpers::dump($fastdata);
+        Helpers::dump($email);
+        /*
+        $emailservice = new Email\Services\EmailService($fast_data);
+        Helpers::dump($emailservice->send_email());
+        */
+        /*
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);
+
  
         $email_obj = new StdClass;
         $email_obj->email = "wrm932@gmail.com";//$data->email;
