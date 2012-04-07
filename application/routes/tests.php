@@ -61,7 +61,7 @@ return array(
         $data = (object)Input::get();
         $auth = new S36Auth;
         
-        $feedback = new Feedback\Repositories\DBFeedbac
+        $feedback = new Feedback\Repositories\DBFeedback;
         $fastdata = new Email\Entities\FastForwardData;
         $email = new Email\Entities\FastForward;
 
