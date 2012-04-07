@@ -18,6 +18,7 @@
            <?
                $js_scripts = Array(
                    '/js/jquery-1.7.1.min.js'
+                 , '/js/jquery.tinymce.js'
                  , '/js/jquery.switcharoo.js'
                  , '/js/jquery.fancytips.js'
                  , '/js/jquery.cycle.all.min.js'
