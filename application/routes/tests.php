@@ -66,7 +66,7 @@ return array(
         $email = new Email\Entities\FastForward;
 
         $fastdata->sendto = "wrm932@gmail.com";
-        $fastdata->from = ucfirst($auth->user->username);
+        $fastdata->from = ucfirst($auth->user()->username);
         $fastdata->message = "Mathew is kewl";
         $fastdata->set_feedback($feedback->pull_feedback_by_id(59));
 
