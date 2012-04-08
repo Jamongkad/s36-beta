@@ -65,6 +65,11 @@ return array(
         $fastdata = new Email\Entities\FastForwardData;
         $email = new Email\Entities\FastForward;
 
+        $fastdata->sendto = "wrm932@gmail.com";
+        $fastdata->from = ucfirst($auth->user->username);
+        $fastdata->message = "Mathew is kewl";
+        $fastdata->set_feedback($feedback->pull_feedback_by_id(59));
+
         Helpers::dump($fastdata);
         Helpers::dump($email);
         /*
@@ -74,7 +79,6 @@ return array(
         /*
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);
-
  
         $email_obj = new StdClass;
         $email_obj->email = "wrm932@gmail.com";//$data->email;
