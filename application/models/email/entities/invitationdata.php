@@ -4,6 +4,7 @@ use Email\Entities\Types\EmailData;
 use DBAdmin;
 
 class InvitationData extends EmailData {
+
     public $account_owner;
     public $message;
     public $invitee;

@@ -67,8 +67,9 @@ return array(
 
         $fastdata->sendto = "wrm932@gmail.com";
         $fastdata->from = ucfirst($auth->user()->username);
-        $fastdata->message = "Mathew is kewl";
-        $fastdata->set_feedback($feedback->pull_feedback_by_id(213));
+        $fastdata->email_comment = "Mathew is kewl";
+        $fastdata->feedback = $feedback->pull_feedback_by_id(213);
+        $fastdata->receiver_details();
 
         Helpers::dump($fastdata);
         Helpers::dump($email);
