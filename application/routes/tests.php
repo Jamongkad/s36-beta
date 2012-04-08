@@ -74,7 +74,7 @@ return array(
         $email->gather($fastdata);
 
         Helpers::dump($fastdata);
-        Helpers::dump($email);
+        Helpers::dump($email->send());
         /*
         $emailservice = new Email\Services\EmailService($fast_data);
         Helpers::dump($emailservice->send_email());
