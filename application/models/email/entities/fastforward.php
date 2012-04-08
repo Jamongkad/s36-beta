@@ -18,7 +18,7 @@ class FastForward extends EmailFixture{
             'comment' => $this->email_data->email_comment
           , 'receiver' => $this->email_data->receiver_details
           , 'sender' => $this->email_data->from
-          , 'feedback_data' => $this->email_data->feedback;
+          , 'feedback_data' => $this->email_data->feedback
         ))->get();     
         print_r($email_html);
          /*       
