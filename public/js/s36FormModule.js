@@ -633,21 +633,22 @@ var S36Form = new function() {
         
         var feedback = $('#review-feedback');
         var editedtext = $('#edited-textarea');		
-         //check if there is a feedback
-        var text = editedtext.val();
-        if(text.length > 0){
-            that.hide_error();
-            $('#edit-review-feedback').fadeIn('fast');
-            $('#save-edited-feedback').fadeOut('fast');
-            feedback.html(editedtext.val());
-            $('#feedback_text').val(text);
-            //console.log(text);
-            $("#next").fadeIn("fast");
-        }else{
-            editedtext.focus();
-            that.add_error('Please provide feedback.');
-            $("#next").fadeOut("fast");
-        } 
+
+        if(editedtext.length > 0) {
+            var text = editedtext.val();     
+            if(text.length > 0){
+                that.hide_error();
+                $('#edit-review-feedback').fadeIn('fast');
+                $('#save-edited-feedback').fadeOut('fast');
+                feedback.html(editedtext.val());
+                $('#feedback_text').val(text);
+                $("#next").fadeIn("fast");
+            }else{
+                editedtext.focus();
+                that.add_error('Please provide feedback.');
+                $("#next").fadeOut("fast");
+            } 
+        }
     };
     
     //create textarea when edit-review-feedback is clicked
