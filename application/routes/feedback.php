@@ -260,7 +260,6 @@ return array(
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
-        //TODO: too much logic
         $data = (object)Input::get();
         $auth = new S36Auth;
 
@@ -275,26 +274,5 @@ return array(
 
         $emailservice = new Email\Services\EmailService($fastdata);
         $emailservice->send_email();
-        /*
-        $vo = new FastForwardData;          
-        $factory = new EmailFactory($vo);
- 
-        $email_obj = new StdClass;
-        $email_obj->email = $data->email;
-
-        $message_obj = new StdClass;
-        $message_obj->bcc = "";
-        $message_obj->user = $auth->user();
-        $message_obj->comment = $data->email_comment;
-        $message_obj->feedback = $feedback->pull_feedback_by_id($data->feed_id);
-
-        $factory->addresses = Array($email_obj);
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
-
-        $emailer = new Email($email_page);
-        $emailer->process_email();
-        */
-    })
-    
+    }) 
 );
