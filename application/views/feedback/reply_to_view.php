@@ -75,10 +75,11 @@
             <td></td>
             <td>
                 <input type="submit" value="Send" class="large-btn" />
-                <input type="submit" value="Cancel" class="large-btn" />
             </td>
             <td></td>
         </tr>
     </table>
 </div>
 <?=Form::close()?>
+
+<div class="c"></div>
