@@ -5,7 +5,9 @@
         <title>36Stories Widgets</title>
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
+        <!--Do we need twitter widgets??
         <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+        -->
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
     </head>
