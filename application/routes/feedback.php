@@ -264,6 +264,19 @@ return array(
         $data = (object)Input::get();
         $auth = new S36Auth;
 
+        $feedback = new Feedback\Repositories\DBFeedback;
+        $fastdata = new Email\Entities\FastForwardData;
+
+        $fastdata->sendto = $data->email
+        $fastdata->from = ucfirst($auth->user()->username);
+        $fastdata->email_comment = $data->email_comment;
+        $fastdata->feedback = $feedback->pull_feedback_by_id($data->feed_id);
+        $fastdata->receiver_details();
+        $fastdata->make_forward_url();
+
+        $emailservice = new Email\Services\EmailService($fastdata);
+        $emailservice->send_email();
+        /*
         $vo = new FastForwardData;          
         $factory = new EmailFactory($vo);
  
@@ -282,6 +295,7 @@ return array(
 
         $emailer = new Email($email_page);
         $emailer->process_email();
+        */
     })
     
 );
