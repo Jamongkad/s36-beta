@@ -264,10 +264,9 @@ return array(
         $data = (object)Input::get();
         $auth = new S36Auth;
 
-        $feedback = new Feedback\Repositories\DBFeedback;
         $fastdata = new Email\Entities\FastForwardData;
 
-        $fastdata->sendto = $data->email
+        $fastdata->sendto = $data->email;
         $fastdata->from = ucfirst($auth->user()->username);
         $fastdata->email_comment = $data->email_comment;
         $fastdata->feedback = $feedback->pull_feedback_by_id($data->feed_id);
