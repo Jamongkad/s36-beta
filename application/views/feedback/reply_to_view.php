@@ -13,8 +13,8 @@
         </tr>
         <?endif?>
         <tr>
-            <td><strong>To :</strong> </td>
-            <td class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
+            <td width="15%"><strong>To :</strong> </td>
+            <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
             <td></td>
         </tr>
         <tr>
