@@ -1,7 +1,7 @@
 <?php namespace Email\Entities;
 
 use Email\Entities\Types\EmailData;
-use DBAdmin, StdClass, DB;
+use DBAdmin, StdClass, DB, Config;
 
 class FastForwardData extends EmailData {
 
