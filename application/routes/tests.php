@@ -70,6 +70,7 @@ return array(
         $fastdata->email_comment = "Mathew is kewl";
         $fastdata->feedback = $feedback->pull_feedback_by_id(213);
         $fastdata->receiver_details();
+        $fastdata->make_forward_url();
 
         $email->gather($fastdata);
 

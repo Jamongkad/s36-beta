@@ -19,6 +19,7 @@ class FastForward extends EmailFixture{
           , 'receiver' => $this->email_data->receiver_details
           , 'sender' => $this->email_data->from
           , 'feedback_data' => $this->email_data->feedback
+          , 'login_url' => $this->email_data->make_forward_url()
         ))->get();     
         print_r($email_html);
          /*       
