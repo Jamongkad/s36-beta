@@ -74,8 +74,8 @@
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Send" class="gray-btn rounder form-button" />
-                <input type="submit" value="Cancel" class="gray-btn rounder form-button" />
+                <input type="submit" value="Send" class="large-btn" />
+                <input type="submit" value="Cancel" class="large-btn" />
             </td>
             <td></td>
         </tr>
