@@ -36,9 +36,9 @@
                                 This feedback has been forwarded to you by <?=$sender?>.
                                 <br/>
                                 <br/>
-                                <?if($message->email_comment):?>
+                                <?if($message):?>
                                     <?=$sender?> also added: <br/>
-                                    <p style="font-style: italic"><?=$message->email_comment?></p>
+                                    <p style="font-style: italic"><?=$message?></p>
                                 <?endif?>
                         <br/><br/>
                             </td>
