@@ -1,7 +1,7 @@
 <?php namespace Email\Entities;
 
 use Email\Entities\Types\EmailData;
-use DBAdmin, StdClass, DB, Config;
+use DBAdmin, StdClass, DB, Config, Helpers;
 
 class FastForwardData extends EmailData {
 
@@ -21,10 +21,13 @@ class FastForwardData extends EmailData {
     }
 
     public function make_forward_url() { 
+        /*
         $company = DB::Table('Company', 'master')->where('companyId', '=', $this->receiver_details->companyid)->first(array('name'));
         $host_url = strtolower($company->name).'.'.Config::get('application.hostname').'.com';
         $forward_url = '/feedback/modifyfeedback/'.$this->feedback->id;
         $login_url = trim("http://".$host_url."/login?forward_to=".$forward_url);
         return $login_url;
+        */
+        return Helpers::make_forward_url($this->receiver_details->companyid, '/feedback/modifyfeedback/'.$this->feedback->id);
     }
 }
