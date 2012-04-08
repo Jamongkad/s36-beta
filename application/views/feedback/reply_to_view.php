@@ -17,6 +17,7 @@
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
             <td></td>
         </tr>
+        <?if($user->ffemail1):?>
         <tr>
             <td>
                 <strong>Bcc :</strong>
@@ -45,6 +46,7 @@
             </td>
             <td class="small" valign="top"></td>
         </tr>
+        <?endif?>
         <tr>
             <td><strong>Subject : </strong> </td>
             <td>
