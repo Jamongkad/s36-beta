@@ -255,10 +255,6 @@ return array(
         
     }),
 
-    'GET /feedback/fastforward/(:num)' => Array('needs' => 'S36ValueObjects', 'do' => function($id) use ($feedback) { 
-        print_r("Mathew $id");
-    }),
-
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
         $data = (object)Input::get();
         $auth = new S36Auth;

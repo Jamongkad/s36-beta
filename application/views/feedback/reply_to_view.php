@@ -52,7 +52,7 @@
             <td></td>
         </tr>
         <tr>
-            <td><strong>Message : </strong> </td>
+            <td valign="top"><strong>Message : </strong> </td>
             <td>
                 <textarea class="regular-text" rows="6" name="message"><?=$input['message']?></textarea>
                 <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
