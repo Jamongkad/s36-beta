@@ -4,6 +4,7 @@ use Email\Entities\NewFeedbackSubmission;
 use Email\Entities\PublishedFeedback;
 use Email\Entities\RequestFeedback;
 use Email\Entities\Invitation;
+use Email\Entities\FastForwardData;
 use Email\Entities\Types\EmailData;
 
 class EmailService { 

@@ -63,7 +63,6 @@ return array(
         
         $feedback = new Feedback\Repositories\DBFeedback;
         $fastdata = new Email\Entities\FastForwardData;
-        $email = new Email\Entities\FastForward;
 
         $fastdata->sendto = "wrm932@gmail.com";
         $fastdata->from = ucfirst($auth->user()->username);
@@ -72,36 +71,8 @@ return array(
         $fastdata->receiver_details();
         $fastdata->make_forward_url();
 
-        $email->gather($fastdata);
-
-        Helpers::dump($fastdata);
-        Helpers::dump($email->send());
-        /*
-        $emailservice = new Email\Services\EmailService($fast_data);
+        $emailservice = new Email\Services\EmailService($fastdata);
         Helpers::dump($emailservice->send_email());
-        */
-        /*
-        $vo = new FastForwardData;          
-        $factory = new EmailFactory($vo);
- 
-        $email_obj = new StdClass;
-        $email_obj->email = "wrm932@gmail.com";//$data->email;
-
-        $message_obj = new StdClass;
-        $message_obj->bcc = "";
-        $message_obj->user = $auth->user();
-        $message_obj->comment = "";//$data->email_comment;
-        $message_obj->feedback = $feedback->pull_feedback_by_id(59);
-
-        $factory->addresses = Array($email_obj);
-        $factory->message = $message_obj;
-        $email_page = $factory->execute();
-        
-        return $email_page[0]->get_message();
-        /*
-        $emailer = new Email($email_page);
-        $emailer->process_email();
-        */
     },
 
     'GET /tests/test_bcc' => function() {
