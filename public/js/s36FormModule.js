@@ -626,12 +626,6 @@ var S36Form = new function() {
 		   , url:  $("#ajax-submit-feedback").attr('hrefaction')
 		   , dataType: "json"
 		   , data: form_data
-		   , success: function(data){
-			  	console.log(data);
-			 }
-		   , error: function(e){
-			 	console.log(e);
-			 }
 		}); 
     };
 
@@ -650,15 +644,16 @@ var S36Form = new function() {
             console.log(text);
         }else{
             editedtext.focus();
-            that.add_error('Please Provide a Feedback');
+            that.add_error('Please provide feedback.');
         } 
     };
-
+    
+    //create textarea when edit-review-feedback is clicked
     this.edit_feedback = function() {
 		$('#edit-review-feedback').fadeOut('fast');
 		$('#save-edited-feedback').fadeIn('fast');
 		var feedback = $('#review-feedback');
-		var textform = '<textarea class="regular-textarea" id="edited-textarea">'+feedback.html()+'</textarea>';
+		var textform = '<textarea id="edited-textarea">'+feedback.html()+'</textarea>';
 		feedback.html(textform);
         
         $('#edited-textarea').focus(function(){

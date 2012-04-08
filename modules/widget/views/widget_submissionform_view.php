@@ -24,6 +24,15 @@
 #step_2,#step_3,#step_4,#step_5,#step_6,#step_7{
     display:none;
 }
+
+#edited-textarea {     
+    background:#f7f7f7;
+    border:1px solid #e1e1e1;
+    padding:10px;
+    width:360px;
+    height:110px;
+    font-family:Arial, Helvetica, sans-serif;
+}
 </style>
 
 
