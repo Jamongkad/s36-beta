@@ -3,6 +3,10 @@
 <?=Form::hidden('emailto', $feedback->email)?>
 <?=Form::hidden('feedbackid', $feedid)?>
 <?=Form::hidden('username', $user->username)?>
+
+<div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
+    <h3>Send an email to Karen</h3>
+</div>
 <div class="block">
     <table cellpadding="5" width="100%">
         <tr>
@@ -74,18 +78,15 @@
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Send" class="large-btn" />
-                <input type="submit" value="Cancel" class="large-btn" />
             </td>
             <td></td>
         </tr>
     </table>
 </div>
-<?=Form::close()?>
-<div class="block noborder">
 
-</div>
-<!-- spacer -->
 <div class="block noborder" style="height:100px;">
 </div>
-<!-- spacer -->
+
+<input type="submit" value="Send" class="large-btn" />
+<input type="submit" value="Cancel" class="large-btn" />
+<?=Form::close()?>
