@@ -641,10 +641,12 @@ var S36Form = new function() {
             $('#save-edited-feedback').fadeOut('fast');
             feedback.html(editedtext.val());
             $('#feedback_text').val(text);
-            console.log(text);
+            //console.log(text);
+            $("#next").fadeIn("fast");
         }else{
             editedtext.focus();
             that.add_error('Please provide feedback.');
+            $("#next").fadeOut("fast");
         } 
     };
     
