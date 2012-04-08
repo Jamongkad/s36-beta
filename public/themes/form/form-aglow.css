@@ -228,7 +228,7 @@ a.s36_btn:hover{
 
 
 /* form page */
-#s36_form{margin-top:5px;}
+#s36_form{margin-top:-5px;}
 table tr td{margin-top:3px;}
 div.avatar{width:90px;float:left;padding:10px;}
 div.avatartext{width:240px;float:left;padding:10px;}
