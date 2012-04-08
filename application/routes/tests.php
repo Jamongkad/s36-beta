@@ -71,6 +71,8 @@ return array(
         $fastdata->feedback = $feedback->pull_feedback_by_id(213);
         $fastdata->receiver_details();
 
+        $email->gather($fastdata);
+
         Helpers::dump($fastdata);
         Helpers::dump($email);
         /*

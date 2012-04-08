@@ -33,11 +33,11 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">	
-                                This feedback has been forwarded to you by <?=ucfirst($message->user->username)?>.
+                                This feedback has been forwarded to you by <?=$sender?>.
                                 <br/>
                                 <br/>
                                 <?if($message->comment):?>
-                                    <?=ucfirst($message->user->username)?> also added: <br/>
+                                    <?=$sender?> also added: <br/>
                                     <p style="font-style: italic"><?=$message->comment?></p>
                                 <?endif?>
                         <br/><br/>
@@ -80,7 +80,7 @@
 
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;"> 
-                            <a href="<?=URL::to(strtolower($message->user->name).'/login')?>" style="color:#6e8cca;">To know more please click on the link to login</a>
+                            <a href="" style="color:#6e8cca;">To know more please click on the link to login</a>
                             </td>
                         </tr>
                         <tr height="40">
