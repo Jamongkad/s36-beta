@@ -107,10 +107,7 @@ a.s36_btn:hover{
 	.s36_pages h3 a.s36_tip:hover{text-decoration:underline;}
 	.s36_pages h4{color:#6f7375;font-size:11px;margin:0px;padding:5px 0px;}
 	.s36_pages .step-contents{
-		padding-top:0px;
-        padding-right:30px;
-        padding-left:30px;
-        display:block;
+		padding:5px 30px;display:block;
 	}
 	
 	#s36_whattowrite{
@@ -231,7 +228,7 @@ a.s36_btn:hover{
 
 
 /* form page */
-#s36_form{margin-top:20px;}
+#s36_form{margin-top:5px;}
 table tr td{margin-top:3px;}
 div.avatar{width:90px;float:left;padding:10px;}
 div.avatartext{width:240px;float:left;padding:10px;}
