@@ -341,6 +341,7 @@
             	<h1>All Done!</h1>
                 <div class="step-contents">
                     <p style="text-align:center; margin:0 auto"> 
+                        Your feedback is being processed please wait...<br/><br/>
                         <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
                     </p>
                     <p style="line-height:22px;">
