@@ -110,7 +110,9 @@ return array(
 
     'GET /tests/test_email_replyto' => function() {
         $replydata = new Email\Entities\ReplyData;
+        $reply = new Email\Entities\Reply;
         print_r($replydata);
+        print_r($reply);
     },
 
     'GET /tests/worklog' => function() {   
