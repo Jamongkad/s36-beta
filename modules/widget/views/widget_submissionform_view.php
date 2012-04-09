@@ -71,11 +71,11 @@
 <!-- end of 36Stories script -->
 
 <div id="s36_main">
+    <?=HTML::image('img/widget-loader.gif', false)?>
 	<div id="s36_whitebar"></div>    
     <div id="s36_pages">
     	<div id="steps">  
         	<!-- page 1 (rating and feedback text) -->
-            <?=HTML::image('img/widget-loader.gif', false)?>
         	<div id="step_1" class="s36_pages">
                 <h1><?=$form_text?></h1>
                 <div class="step-contents">
