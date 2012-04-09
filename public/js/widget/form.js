@@ -9,7 +9,7 @@ jQuery(function($) {
 
     //hide what to write, error message
     $('#s36_whattowrite').hide();
-    $('#good-feedback-message, #bad-feedback-message, #submission-success').hide();
+    $('#good-feedback-message, #bad-feedback-message, #submission-success, #submission-success-header').hide();
     
     $('#s36_tip').click(function(){
         $('#s36_whattowrite').slideToggle();

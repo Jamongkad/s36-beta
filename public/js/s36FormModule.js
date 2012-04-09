@@ -627,8 +627,8 @@ var S36Form = new function() {
 		   , dataType: "json"
 		   , data: form_data
            , success: function() {
-                 $("#submission-loader").hide();
-                 $("#submission-success").show();
+                 $("#submission-loader, #submission-loader-header").hide();
+                 $("#submission-success, #submission-success-header").show();
             }
 		}); 
     };
