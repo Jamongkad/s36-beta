@@ -18,7 +18,7 @@
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
             <td></td>
         </tr>
-        <?if($user->ffemail1):?>
+
         <tr>
             <td>
                 <strong>Bcc :</strong>
@@ -28,6 +28,7 @@
             </td>
             <td class="small" valign="top">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward')?>)</td>
         </tr>
+        <?if($user->ffemail1):?>
         <tr>
             <td valign="top">
                 <strong>Add to Bcc : </strong>
