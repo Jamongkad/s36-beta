@@ -115,7 +115,10 @@ return array(
         $reply = new Email\Entities\Reply;
 
         $replydata->sendto = "wrm932@gmail.com";
-        $replydata->from = "wrm932@gmail.com";
+        $replydata->from = Array(
+            "replyto" => "wrm932@gmail.com"
+          , "username"  => "Mathew"
+        )
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
 

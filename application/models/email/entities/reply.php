@@ -1,7 +1,7 @@
 <?php namespace Email\Entities;
 
 use Email\Entities\Types\EmailFixture;
-use View, Config;
+use View, Config, Helpers;
 
 class Reply extends EmailFixture {
     
@@ -21,6 +21,8 @@ class Reply extends EmailFixture {
           , 'emailto' => $data['emailto']
           , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $feedback_data))
         ));
+
+        Helpers::dump($email_html); 
         /*
         reference
         $this->postmark->to($this->email_data->sendto->email)->subject($this->get_subject())->html_message($email_html)->send();
