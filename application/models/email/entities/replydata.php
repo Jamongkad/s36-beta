@@ -8,4 +8,5 @@ class ReplyData extends EmailData {
     public $from;
     public $bcc;
     public $message; 
+    public $feedback;
 }

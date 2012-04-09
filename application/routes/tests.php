@@ -109,8 +109,16 @@ return array(
      },
 
     'GET /tests/test_email_replyto' => function() {
+        
+        $feedback = new Feedback\Repositories\DBFeedback;
         $replydata = new Email\Entities\ReplyData;
         $reply = new Email\Entities\Reply;
+
+        $replydata->sendto = "wrm932@gmail.com";
+        $replydata->from = "wrm932@gmail.com";
+        $replydata->message = "Mathew is kewl";
+        $replydata->feedback = $feedback->pull_feedback_by_id(213);
+
         print_r($replydata);
         print_r($reply);
     },

@@ -6,6 +6,7 @@ use View, Config;
 class RequestFeedback extends EmailFixture {
 
     private $email_data;
+    private $subject = "36Stories: Feedback Request";
 
     public function gather($email_data) {
         $this->email_data = $email_data; 
@@ -20,6 +21,6 @@ class RequestFeedback extends EmailFixture {
     }
 
     public function get_subject() {
-        return "36Stories: Feedback Request";
+        return $this->subject;
     }
 }
