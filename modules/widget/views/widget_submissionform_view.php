@@ -371,7 +371,7 @@
 
 <script text="text/javascript">
 <?
-    $js_files = Array(
+    $js_scripts = Array(
          '/js/jquery.jcrop.js' 
        , '/js/jquery.ajaxfileupload.js'
        , '/js/s36FormModule.js'
