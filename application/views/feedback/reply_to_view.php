@@ -23,7 +23,7 @@
                 <strong>Bcc :</strong>
             </td>
             <td id="bcc-target">
-                <input type="text" name="bcc[]" value="" />
+                <input id="first-bcc" type="text" name="bcc[]" value="" />
             </td>
             <td class="small" valign="top">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward')?>)</td>
         </tr>

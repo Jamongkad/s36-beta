@@ -118,12 +118,17 @@ jQuery(function($) {
     $('.add-bcc > li').bind("click", function(e) {
         var pointer = $(this).index();
         var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
-
-        if(typeof seen[pointer] == 'undefined') {  
-           $("#bcc-target").append(input);
-           seen[pointer] = true;
-        }         
+        var first_bcc = $("#first-bcc");
         
+        if(first_bcc.val().length === 0) {
+            first_bcc.val($(this).text());
+        } else {
+             if(typeof seen[pointer] == 'undefined') {  
+               $("#bcc-target").append(input);
+               seen[pointer] = true;
+            }   
+        }
+ 
         $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
             var del_pointer = $(this).attr('id');
             $(this).prev('input').remove().end().remove();
