@@ -21,7 +21,7 @@ class Reply extends EmailFixture {
           , 'emailto' => $this->email_data->sendto
           , 'profile_partial_view' => View::make(  'email/partials/profile_partial_view'
                                                  , Array('feedback_data' => $this->email_data->feedback))
-        ));
+        ))->get();
 
         Helpers::dump($email_html); 
         /*
