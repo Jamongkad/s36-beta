@@ -114,10 +114,13 @@ return array(
         $replydata = new Email\Entities\ReplyData;
         
         $replydata->subject = "Mathew is a dickie";
+        /*
         $replydata->bcc = Array(
             "wrm932@gmail.com" 
           , "mathew@36stories.com"
         );
+        */
+        $replydata->bcc = null;
         $replydata->sendto = "wrm932@gmail.com";
         $replydata->from = (object) Array(
             "replyto" => "ryanchu6@gmail.com"
