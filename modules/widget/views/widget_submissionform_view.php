@@ -338,14 +338,12 @@
             
             <!-- page 7 (all done page!) -->
             <div id="step_7" class="s36_pages">
-                <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
-                <div id="submission-success">
-                    <h1>All Done!</h1>
-                    <div class="step-contents">
-                        <p style="line-height:22px;">
-                        Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
-                        </p>
-                    </div>
+            	<h1>All Done!</h1>
+                <div class="step-contents">
+                    <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
+                    <p style="line-height:22px;">
+                    Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                    </p>
                 </div>
             </div>
             
