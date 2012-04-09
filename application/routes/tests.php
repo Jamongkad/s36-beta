@@ -108,6 +108,11 @@ return array(
         ));       
      },
 
+    'GET /tests/reply_to' => function() {
+        $replydata = new Email\Entities\ReplyData;
+        print_r($replydata);
+    },
+
     'GET /tests/worklog' => function() {   
         $auth = new S36Auth;
         $userId = $auth->user()->userid;
