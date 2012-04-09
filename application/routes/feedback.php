@@ -203,7 +203,7 @@ return array(
 
         return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
             'user' => S36Auth::user()
-            'feedback' => $feedback_data 
+          , 'feedback' => $feedback_data 
           , 'feedid' => $id
           , 'errors' => Array()
           , 'input' => Array('subject' => null, 'message' => null)
