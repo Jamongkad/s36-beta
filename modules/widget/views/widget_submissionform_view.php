@@ -35,6 +35,7 @@
 }
 
 #widget-loader {
+    padding-top: 45px;
     text-align:center; margin:0 auto
 }
 
