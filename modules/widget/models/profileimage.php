@@ -83,8 +83,8 @@ class ProfileImage {
         if($login_type == 'fb') {
             $src = $img_src;     
         }
-
-        if($login_type == '36') {  
+        
+        if($login_type == '36' || preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", strtolower($img_src), $match)) {  
             $src = '/var/www/s36-upload-images'.$img_src;
         }        
    
