@@ -108,7 +108,7 @@ return array(
         ));       
      },
 
-    'GET /tests/reply_to' => function() {
+    'GET /tests/test_email_replyto' => function() {
         $replydata = new Email\Entities\ReplyData;
         print_r($replydata);
     },
