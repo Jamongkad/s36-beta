@@ -34,6 +34,10 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+#widget-loader {
+    text-align:center; margin:0 auto
+}
+
 #submission-loader {
     text-align:center; margin:0 auto
 }
@@ -72,7 +76,9 @@
 
 <div id="s36_main">
 	<div id="s36_whitebar"></div>    
-    <?=HTML::image('img/widget-loader.gif', false)?>
+    <div id="widget-loader">
+        <?=HTML::image('img/widget-loader.gif', false)?>
+    </div>
     <div id="s36_pages">
     	<div id="steps">  
         	<!-- page 1 (rating and feedback text) -->
