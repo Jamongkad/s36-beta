@@ -33,6 +33,14 @@
     height:110px;
     font-family:Arial, Helvetica, sans-serif;
 }
+
+#submission-loader {
+    text-align:center; margin:0 auto
+}
+
+#submission-success {
+    line-height:22px;
+}
 </style>
 
 
@@ -340,12 +348,13 @@
             <div id="step_7" class="s36_pages">
             	<h1>All Done!</h1>
                 <div class="step-contents" style="padding-top:25px">
-                    <p style="text-align:center; margin:0 auto"> 
+                    <p id="submission-loader"> 
                         Your feedback is being processed please wait...<br/><br/>
-                        <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
+                        <?=HTML::image('img/submission-loader.gif', 'submission')?><br/>
                     </p>
-                    <p style="line-height:22px;">
-                    Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                    <p id="submission-success">
+                        Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
+                        Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                     </p>
                 </div>
             </div>
