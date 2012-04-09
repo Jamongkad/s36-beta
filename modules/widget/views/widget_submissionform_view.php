@@ -369,8 +369,23 @@
 </div>
 </body>
 
-<?=HTML::script('js/jquery.jcrop.js')?>
-<?=HTML::script('js/jquery.ajaxfileupload.js')?>
-<?=HTML::script('js/s36FormModule.js')?>
-<?=HTML::script('js/cycle.function.js')?>
-<?=HTML::script('js/widget/form.js')?>
+<script text="text/javascript">
+<?
+    $js_files = Array(
+         '/js/jquery.jcrop.js' 
+       , '/js/jquery.ajaxfileupload.js'
+       , '/js/s36FormModule.js'
+       , '/js/cycle.function.js'
+       , '/js/widget/form.js'
+    );
+
+    $string = '"' . implode('","', $js_scripts) . '"';
+?>
+
+head.js(<?=$string?>);
+</script>
+<?//=HTML::script('js/jquery.jcrop.js')?>
+<?//=HTML::script('js/jquery.ajaxfileupload.js')?>
+<?//=HTML::script('js/s36FormModule.js')?>
+<?//=HTML::script('js/cycle.function.js')?>
+<?//=HTML::script('js/widget/form.js')?>
