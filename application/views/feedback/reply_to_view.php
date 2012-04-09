@@ -1,3 +1,4 @@
+<?if($user->replyto):?>
 <?=Form::open('/feedback/reply_to')?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -85,5 +86,15 @@
     </table>
 </div>
 <?=Form::close()?>
-
+<?else:?>
+<div class="block">
+    <div class="woops">
+        <h2>Woops. In order to reply to your users, you have to configure your reply to address.</h2>
+        <br/><br/>
+        <p>
+         Fortunately it's super easy! to add your reply to address <?=HTML::link('/settings', 'click here', Array('class' => 'woops-a'))?> 
+        </p>
+    </div> 
+</div>
+<?endif?>
 <div class="c"></div>
