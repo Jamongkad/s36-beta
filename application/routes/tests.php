@@ -114,6 +114,10 @@ return array(
         $replydata = new Email\Entities\ReplyData;
         
         $replydata->subject = "Mathew is a dickie";
+        $replydata->bcc = Array(
+            "wrm932@gmail.com" 
+          , "mathew@36stories.com"
+        );
         $replydata->sendto = "wrm932@gmail.com";
         $replydata->from = (object) Array(
             "replyto" => "ryanchu6@gmail.com"
@@ -121,9 +125,14 @@ return array(
         );
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
-
+        $replydata->process_bcc();
+         
+        print_r( $replydata->process_bcc() );
+        
+        /*
         $emailservice = new Email\Services\EmailService($replydata);
         Helpers::dump($emailservice->send_email()); 
+        */
 
     },
 

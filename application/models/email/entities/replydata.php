@@ -9,4 +9,13 @@ class ReplyData extends EmailData {
     public $bcc;
     public $message; 
     public $feedback;
+
+    public function process_bcc() { 
+
+        if($this->bcc[0] == true) {
+            return implode(",", $this->bcc);
+        } 
+        
+        return null;
+    }
 }
