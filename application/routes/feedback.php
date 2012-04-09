@@ -86,6 +86,9 @@ return array(
             $emailservice = new Email\Services\EmailService($request_data);
             $emailservice->send_email();
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view');  
+
+            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
+                                              array("linkback" => "requestfeedback"));  
         }
     }),
 
@@ -245,8 +248,9 @@ return array(
             $replydata->feedback = $feedback_data;
  
             $emailservice = new Email\Services\EmailService($replydata);  
-            $emailservice->send_email();
-            //return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
+            $emailservice->send_email(); 
+            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
+                                              array("linkback" => "reply_to/".$data['feedbackid']));  
         }
         
     }),

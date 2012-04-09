@@ -4,7 +4,7 @@
         <br/><br/>
         <p>
          Awesome! If you want to send more requests 
-         <strong style="font-size:12px"><?=HTML::link('feedback/requestfeedback', 'click here', Array('class' => 'woops-a'))?> </strong>
+         <strong style="font-size:12px"><?=HTML::link('feedback/'.$linkback, 'click here', Array('class' => 'woops-a'))?> </strong>
          .</p>
     </div> 
 </div>
