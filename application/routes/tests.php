@@ -113,9 +113,10 @@ return array(
         $feedback = new Feedback\Repositories\DBFeedback;
         $replydata = new Email\Entities\ReplyData;
         $reply = new Email\Entities\Reply;
-
+        
+        $replydata->subject = "Mathew is a dickie";
         $replydata->sendto = "wrm932@gmail.com";
-        $replydata->from = Array(
+        $replydata->from = (object) Array(
             "replyto" => "wrm932@gmail.com"
           , "username"  => "Mathew"
         );
