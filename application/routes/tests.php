@@ -118,7 +118,7 @@ return array(
         $replydata->from = Array(
             "replyto" => "wrm932@gmail.com"
           , "username"  => "Mathew"
-        )
+        );
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
 
