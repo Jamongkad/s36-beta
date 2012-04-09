@@ -116,7 +116,8 @@ return array(
         $replydata->subject = "Mathew is a dickie";
         $replydata->bcc = Array(
             "wrm932@gmail.com" 
-          , "mathew@36stories.com"
+          , "karen_cayamanda@yahoo.com"
+          , "klemengkid@gmail.com"
         );
         $replydata->sendto = "wrm932@gmail.com";
         $replydata->from = (object) Array(
