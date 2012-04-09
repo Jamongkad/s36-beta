@@ -126,7 +126,6 @@ return array(
         );
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
-        $replydata->process_bcc();
                  
         $emailservice = new Email\Services\EmailService($replydata);
         Helpers::dump($emailservice->send_email()); 

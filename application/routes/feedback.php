@@ -232,6 +232,7 @@ return array(
               , 'input' => $data
             ));
         } else { 
+            /*
             $message = View::make('email/replyto_view', Array(
                 'message' => $data['message']
               , 'sender' => ucfirst($data['username'])
@@ -249,8 +250,22 @@ return array(
                      ->subject("36Stories | ".$data['subject'])
                      ->html_message($message)
                      ->send();
-
-            return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
+            */
+            $replydata = new Email\Entities\ReplyData;
+            
+            $replydata->subject = $data['subject'];
+            $replydata->bcc = $data['bcc'];
+            $replydata->sendto = $data['emailto'] ;
+            $replydata->from = (object) Array(
+                "replyto" => $data['replyto'] 
+              , "username"  => ucfirst($data['username'])
+            );
+            $replydata->message = $data['message'];
+            $replydata->feedback = $feedback_data;
+                     
+            $emailservice = new Email\Services\EmailService($replydata);  
+            $emailservice->send_email();
+            //return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
         }
         
     }),

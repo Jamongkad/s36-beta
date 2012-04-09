@@ -6,7 +6,7 @@ use View, Config, Helpers;
 class Reply extends EmailFixture {
     
     private $email_data;
-    private $subject;
+    private $subject = "36Stories: We received your feedback ";
 
     public function gather($email_data) {
         $this->email_data = $email_data; 
@@ -32,6 +32,6 @@ class Reply extends EmailFixture {
     }
 
     public function get_subject() {
-        return "36Stories: ".$this->email_data->subject;
+        return $this->subject.$this->email_data->subject;
     }
 }
