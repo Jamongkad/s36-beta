@@ -15,11 +15,12 @@ class Reply extends EmailFixture {
     public function send() {
          
         $email_html = View::make('email/replyto_view', Array(
-            'message' => $data['message']
-          , 'sender' => ucfirst($data['username'])
-          , 'submission_date' => $feedback_data->date
-          , 'emailto' => $data['emailto']
-          , 'profile_partial_view' => View::make('email/partials/profile_partial_view', Array('feedback_data' => $feedback_data))
+            'message' => $this->email_data->message
+          , 'sender' => ucfirst($this->email_data->username)
+          , 'submission_date' => $this->email_data->feedback->date
+          , 'emailto' => $this->email_data->emailto
+          , 'profile_partial_view' => View::make(  'email/partials/profile_partial_view'
+                                                 , Array('feedback_data' => $this->email_data->feedback))
         ));
 
         Helpers::dump($email_html); 

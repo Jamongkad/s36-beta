@@ -122,6 +122,7 @@ return array(
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
 
+        $reply->gather($replydata);
         print_r($replydata);
         print_r($reply);
     },
