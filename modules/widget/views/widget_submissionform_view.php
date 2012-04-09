@@ -340,7 +340,7 @@
             <div id="step_7" class="s36_pages">
             	<h1>All Done!</h1>
                 <div class="step-contents">
-                    <p style="margin:auto"> 
+                    <p style="margin:0 auto"> 
                         <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
                     </p>
                     <p style="line-height:22px;">
