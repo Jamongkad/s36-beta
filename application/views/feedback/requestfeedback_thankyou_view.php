@@ -5,6 +5,6 @@
         <p>
          Awesome! If you want to send more emails
          <strong style="font-size:12px"><?=HTML::link('feedback/'.$linkback, 'click here', Array('class' => 'woops-a'))?> </strong>
-         .</p>
+        </p>
     </div> 
 </div>
