@@ -339,7 +339,7 @@
             <!-- page 7 (all done page!) -->
             <div id="step_7" class="s36_pages">
             	<h1>All Done!</h1>
-                <div class="step-contents">
+                <div class="step-contents" style="padding-top:25px">
                     <p style="text-align:center; margin:0 auto"> 
                         Your feedback is being processed please wait...<br/><br/>
                         <?=HTML::image('img/submission-loader.gif', 'submission', Array('id' => 'submission-loader'))?><br/>
