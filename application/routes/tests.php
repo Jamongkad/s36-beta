@@ -112,7 +112,6 @@ return array(
         
         $feedback = new Feedback\Repositories\DBFeedback;
         $replydata = new Email\Entities\ReplyData;
-        $reply = new Email\Entities\Reply;
         
         $replydata->subject = "Mathew is a dickie";
         $replydata->sendto = "wrm932@gmail.com";
@@ -122,9 +121,10 @@ return array(
         );
         $replydata->message = "Mathew is kewl";
         $replydata->feedback = $feedback->pull_feedback_by_id(213);
-        $reply->gather($replydata);
 
-        print_r($reply->send());
+        $emailservice = new Email\Services\EmailService($replydata);
+        Helpers::dump($emailservice->send_email()); 
+
     },
 
     'GET /tests/worklog' => function() {   
