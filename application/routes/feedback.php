@@ -243,14 +243,9 @@ return array(
             );
             $replydata->message = $data['message'];
             $replydata->feedback = $feedback_data;
-
-            Helpers::dump($replydata);
-            Helpers::dump($replydata->process_bcc());
-            
-            /*
+ 
             $emailservice = new Email\Services\EmailService($replydata);  
             $emailservice->send_email();
-            */
             //return Redirect::to('feedback/reply_to/'.$data['feedbackid']);  
         }
         
