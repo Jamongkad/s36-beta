@@ -28,10 +28,16 @@ return array (
 
     'POST /settings/savesettings' => function() {
         $company = new DBCompany;
+
         $post = (object)Input::get();
-        Helpers::show_data($post); 
         $company->update_company_emails($post);
-        return Redirect::to('settings');
+ 
+        //lets help the user along!
+        if($forward_to = Input::get('forward_to')) {
+            return Redirect::to($forward_to);
+        } else { 
+            return Redirect::to('settings');
+        }         
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
