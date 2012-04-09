@@ -78,7 +78,6 @@ var S36Form = new function() {
 		$('#rate_a').click(function(){ that.slide_track_to('+189px','3'); });
 		$('#rate_p').click(function(){ that.slide_track_to('+278px','2'); });
 		$('#rate_b').click(function(){ that.slide_track_to('+365px','1'); }); 
-        $('#widget-loader').hide();
     };
 
     this.add_error = function(str)  {
