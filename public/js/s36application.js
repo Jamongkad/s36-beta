@@ -122,6 +122,7 @@ jQuery(function($) {
         
         if(first_bcc.val().length === 0) {
             first_bcc.val($(this).text());
+            seen[pointer] = true;
         } else {
              if(typeof seen[pointer] == 'undefined') {  
                $("#bcc-target").append(input);
