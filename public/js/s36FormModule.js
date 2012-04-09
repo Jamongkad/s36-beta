@@ -626,6 +626,10 @@ var S36Form = new function() {
 		   , url:  $("#ajax-submit-feedback").attr('hrefaction')
 		   , dataType: "json"
 		   , data: form_data
+           , success: function() {
+                 $("#submission-loader").hide();
+                 $("#submission-success").show();
+            }
 		}); 
     };
 
