@@ -864,3 +864,9 @@ color: #777;}
     margin: -13px 14px 0 0;
     padding-right: 21px;
 }
+
+.large-avatar {
+    display:none;
+    z-index:999999;
+    position:absolute !important;
+}

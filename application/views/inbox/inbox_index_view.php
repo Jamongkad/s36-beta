@@ -27,10 +27,7 @@
                             <?if($feed->avatar):?> 
                                 <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
                                 <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false
-                                               , array(
-                                                     'class' => 'large-avatar'
-                                                   , 'style' => 'display:none;z-index:999999'
-                                                 ))?>
+                                               , array('class' => 'large-avatar'))?>
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>
