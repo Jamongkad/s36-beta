@@ -11,7 +11,7 @@
                     <table width="100%" align="center">
                         <tr><td>Enter your email:</td>
                             <td>
-                               <?=Form::text('username')?>
+                               <?=Form::text('email')?>
                                <?=Form::submit('submit')?>
                             </td>
                         </tr>
