@@ -14,7 +14,7 @@
 
 <div id="notification">
 	<div id="notification-design">
-    	<div id="notification-message">
+    	<div id="notification-message" style="display:none">
         	Loading... Please Wait...
         </div>
     </div>
