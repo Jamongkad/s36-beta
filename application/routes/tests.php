@@ -129,7 +129,16 @@ return array(
                  
         $emailservice = new Email\Services\EmailService($replydata);
         Helpers::dump($emailservice->send_email()); 
+    },
 
+    'GET /tests/test_email_resend' => function() {
+        $admin = new DBadmin; 
+        $data = Input::get();
+        $opts = new StdClass; 
+        $opts->username = "wrm932@gmail.com";
+        $opts->options = Array('company' => Input::get('subdomain'));
+        $user = $admin->fetch_admin_details($opts);
+        Helpers::dump($user); 
     },
 
     'GET /tests/worklog' => function() {   
