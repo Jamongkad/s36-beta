@@ -292,6 +292,9 @@
         </div>
     </div>
 </div>
-<?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
+
+<!--[if IE]>
+<?=HTML::style('css/widget_master/ie_fix.css')?>
+<![endif]-->
 <?=$css?>
 <?=$js?>
