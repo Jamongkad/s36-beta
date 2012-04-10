@@ -20,6 +20,10 @@ InboxStateObject.prototype.undo = function() {
         $.ajax({  type: "POST"
                 , url: href
                 , data: {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "catstate": true} 
+                , success: function () {
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000); 
+                  }
                });  
         e.preventDefault(); 
     });     
