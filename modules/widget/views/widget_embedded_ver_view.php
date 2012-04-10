@@ -262,6 +262,6 @@
         </div>
     </div>
 </div>
-<?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
+<?//=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
 <?=$css?>
 <?=$js?>
