@@ -27,7 +27,11 @@ jQuery(function($) {
     $("abbr.timeago").timeago();
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
-      
+        if (event.type === "mouseenter")  {
+            $('.large-avatar', this).show();
+        } else { 
+            $('.large-avatar', this).hide();
+        }
     });
 
     $(document).delegate("a.cat-picks", "click", function(e) {
