@@ -8,14 +8,11 @@
         <!--
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         -->
-
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::script('js/head.min.js')?>
-
-        <?//=HTML::script('js/jquery.tinymce.js')?>
         <script>
            <?
                $js_scripts = Array(
