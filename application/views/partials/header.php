@@ -7,7 +7,6 @@
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
-
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
@@ -139,12 +138,14 @@
                         drop down list on the top brown bar
                     -->
                     <? $site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
+                    <!--
                     <select name="site_choice"> 
                         <option value="all">All Sites</option>
                         <?foreach($site as $sites):?>
                             <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                         <?endforeach?>
                     </select>
+                    -->
                     <?=HTML::link('logout', 'SIGN OUT')?>
                 </div>
             </div>
