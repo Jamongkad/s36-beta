@@ -851,3 +851,10 @@ color: #777;}
 #formcodeboxcontent2,#formcodeboxcontent3,#formcodeboxcontent4{display:none;}
 #formcodeboxcontent input[type="text"],#formcodeboxcontent textarea{margin:5px auto !important;}
 .formcodelink1{background}
+#bye {
+    background: url("/img/sign-off.png") no-repeat scroll 100% 15px transparent;
+    color: #999999;
+    float: right;
+    margin: 0 14px 0 0;
+    padding-right: 21px;
+}

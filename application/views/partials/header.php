@@ -138,13 +138,17 @@
                         drop down list on the top brown bar
                     -->
                     <? $site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
+                    <!--
                     <select name="site_choice"> 
                         <option value="all">All Sites</option>
                         <?foreach($site as $sites):?>
                             <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
                         <?endforeach?>
                     </select>
-                    <?=HTML::link('logout', 'SIGN OUT')?>
+                    -->
+                    <div id="bye">
+                        <?=HTML::link('logout', 'SIGN OUT')?>
+                    </div>
                 </div>
             </div>
             <!-- end of the brown bar on the top -->
