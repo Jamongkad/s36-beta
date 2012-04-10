@@ -12,7 +12,7 @@
             <? $id = $feed->id ?>
             <div class="feedback" id="<?=$id?>">
                 <div class="left">      
-                    <input type="checkbox" name="id" value="<?=$id//.(($feed->rating == "POOR") ? "-poor" : null)?>" class="check-feed-id"/>
+                    <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
                     <input type="hidden" name="rating" value="<?=$feed->rating?>" class="feed-ratings" />
                     <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                     <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
@@ -23,7 +23,7 @@
                     <div class="g4of5">
                         <div class="feedback-avatar"> 
                             <?if($feed->avatar):?> 
-                                <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar)?>
+                                <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar)?>
                             <?else:?>
                                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
                             <?endif?>

@@ -627,6 +627,7 @@ var S36Form = new function() {
 		   , dataType: "json"
 		   , data: form_data
            , success: function() {
+                 //opera fix scumbag webbrowser
                  $("#submission-loader").hide();
                  $("#submission-loader-header").hide();
                  $("#submission-success").show();
