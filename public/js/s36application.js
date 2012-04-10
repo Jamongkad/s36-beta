@@ -26,6 +26,10 @@ jQuery(function($) {
 
     $("abbr.timeago").timeago();
 
+    $(document).delegate(".feedback-avatar", "hover", function(e) {
+      
+    });
+
     $(document).delegate("a.cat-picks", "click", function(e) {
 
         var deselect_this = false;
