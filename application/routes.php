@@ -74,7 +74,13 @@ return array(
 
     'POST /resend_password' => function() {
         $auth = new S36Auth;
+        $admin = new DBadmin; 
+
         $data = Input::get();
-        Helpers::dump($data);
+        $opts = new StdClass; 
+        $opts->username = $data['email'];
+        $opts->options = Array('company' => $data['company']);
+        $user = $admin->fetch_admin_details($opts);
+        Helpers::dump($user);
     }
 );
