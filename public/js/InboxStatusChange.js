@@ -6,7 +6,6 @@ function InboxStateObject() {
 InboxStateObject.prototype.undo = function() {
 
     var me = this;
-    //$('a.undo').live('click', function(e) {
     $(document).delegate("a.undo", "click", function(e) {
         var feedid    = $(this).attr('href');
         var href      = $(this).attr('hrefaction'); 
@@ -44,6 +43,8 @@ InboxStateObject.prototype.process = function() {
                 $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
                     {
                         checky.html(notify).show();
+                        var myStatus = new Status();
+                        myStatus.notify("Processing...", 1000);
                     } 
                 });
         
@@ -53,6 +54,9 @@ InboxStateObject.prototype.process = function() {
                     { 
                         checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
                         .show();
+
+                        var myStatus = new Status();
+                        myStatus.notify("Processing...", 1000);
                     } 
                 });
       
