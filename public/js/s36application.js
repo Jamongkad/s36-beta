@@ -31,7 +31,7 @@ jQuery(function($) {
             $('.large-avatar', this).fadeIn('fast');
             $('.small-avatar', this).hide();
         } else { 
-            $('.large-avatar', this).fadeOut('fast');
+            $('.large-avatar', this).hide();
             $('.small-avatar', this).show('fast');
         }
     });
