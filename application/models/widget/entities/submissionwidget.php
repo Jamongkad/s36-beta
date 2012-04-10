@@ -35,7 +35,7 @@ class SubmissionWidget extends FormWidgets {
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
-          , 'country' => DB::Table('Country', 'master')->get()
+          , 'country' => DB::Table('Country', 'master')->order_by('name')->get()
           , 'site_id' => $this->site_id
           , 'company_id' => $this->company_id
           , 'form_text' => $this->form_text

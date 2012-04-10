@@ -181,10 +181,11 @@ return array(
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
-            , 'company_id' => 1
+            , 'company_id' => 2
         );
         Helpers::dump($inbox_service->set_filters($filters));  
-        Helpers::dump($inbox_service->present_feedback());
+        Helpers::dump(json_encode($inbox_service->present_feedback()));
+
     }, 
 
     'GET /tests/compress' => function() {
@@ -225,7 +226,14 @@ return array(
     'GET /tests/redis' => function() { 
         $redis = new redisent\Redis;
 
+        $feeds = $redis->smembers('feeds:cache:1');
 
+        foreach($feeds as $feed) { 
+            $objs = $redis->hgetall($feed); 
+            Helpers::dump($objs);
+        }
+
+        Helpers::dump($feeds);
         //$redis->set("cache:main_js", $minified_js);
     }, 
 
