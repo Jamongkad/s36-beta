@@ -74,7 +74,7 @@ return array(
 
     'POST /resend_password' => function() {
         $auth = new S36Auth;
-        $company = Input::get('subdomain'); 
-        Helpers::dump(Input::get('subdomain'));
+        $data = Input::get();
+        Helpers::dump($data);
     }
 );
