@@ -21,7 +21,7 @@ return array(
         $auth = new S36Auth;
 
         if($auth->check()) { 
-            return View::of_layout()->partial('contents', 'dashboard/index');       
+            return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
             return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
         }		
@@ -33,7 +33,7 @@ return array(
         $company = Input::get('subdomain');
 
         if($auth->check()) { 
-            return View::of_layout()->partial('contents', 'dashboard/index');       
+            return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
             return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
         }		
