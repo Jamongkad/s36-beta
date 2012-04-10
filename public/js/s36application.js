@@ -28,11 +28,11 @@ jQuery(function($) {
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {
-            $('.large-avatar', this).fadeIn('fast');
+            $('.large-avatar', this).show();
             $('.small-avatar', this).hide();
         } else { 
             $('.large-avatar', this).hide();
-            $('.small-avatar', this).show('fast');
+            $('.small-avatar', this).show();
         }
     });
 
