@@ -18,7 +18,14 @@ return array(
 	*/
     'GET /' => function() { 
         $company = Input::get('subdomain');
-        return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));       
+        $auth = new S36Auth;
+
+        if($auth->check()) { 
+            return View::of_layout()->partial('contents', 'dashboard/index');       
+        } else {
+            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
+        }		
+
     },
 
     'GET /login' => function() {
