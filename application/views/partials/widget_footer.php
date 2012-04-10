@@ -16,7 +16,7 @@
 */
 ?>
 
-//head.js(<?=$string?>);
+//head.js(<?//=$string?>);
 </script>
 </body>
 </html>
