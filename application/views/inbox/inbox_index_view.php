@@ -40,7 +40,7 @@
                             if(!$regex->deleted):
                             ?>
                             <!-- email picker block -->
-                            <div class="base-popup fast-forward-holder" id="<?=$id?>">
+                            <div class="base-popup fast-forward-holder" style="display:none" id="<?=$id?>">
                                 <div class="popup-arrow"></div>
                                 <div class="email-list">
                                     <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
@@ -80,7 +80,7 @@
                             </div>
                             <!-- end email picker block -->
                             <!-- category picker -->
-                            <div class="base-popup category-picker-holder" id="<?=$id?>">
+                            <div class="base-popup category-picker-holder" style="display:none" id="<?=$id?>">
                                 <div class="popup-arrow"></div>
                                 <div>File this feedback as:</div>
                                 <ul class="category-picker" id="<?=$feed->categoryid?>">
