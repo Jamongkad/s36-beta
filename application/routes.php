@@ -66,5 +66,15 @@ return array(
 
     'GET /complete' => function() { 
         return View::of_home_layout()->partial('contents', 'home/user_auth_thankyou_view');       
+    },
+
+    'GET /resend_password' => function() {  
+        return View::of_home_layout()->partial('contents', 'home/resend_password_view');       
+    },
+
+    'POST /resend_password' => function() {
+        $auth = new S36Auth;
+        $company = Input::get('subdomain'); 
+        Helpers::dump(Input::get('subdomain'));
     }
 );
