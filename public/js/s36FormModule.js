@@ -620,15 +620,17 @@ var S36Form = new function() {
 			cropped_image_nm: $('#cropped_photo').val() == 0 ? 0 : $('#cropped_photo').val(),
 			orig_image_dir: avatar
 		};	
-		//console.log(form_data);
+
 		$.ajax({
 		     type: "POST"
 		   , url:  $("#ajax-submit-feedback").attr('hrefaction')
 		   , dataType: "json"
 		   , data: form_data
            , success: function() {
-                 $("#submission-loader, #submission-loader-header").hide();
-                 $("#submission-success, #submission-success-header").show();
+                 $("#submission-loader").hide();
+                 $("#submission-loader-header").hide();
+                 $("#submission-success").show();
+                 $("#submission-success-header").show();
             }
 		}); 
     };
