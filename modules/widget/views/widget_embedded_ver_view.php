@@ -211,6 +211,8 @@
         	<div id="theSoloSlides">
             	<div class="soloFeedback block">
                 	<div class="soloFeedbackAvatar">                        
+
+                        <img src="/img/48x48-blank-avatar.jpg"/>
                         <span class="back"><a href="javascript:;">back</a> </span>
                     </div>
                     <div class="soloFeedbackDetails">
