@@ -29,10 +29,10 @@ jQuery(function($) {
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {
             $('.large-avatar', this).fadeIn('fast');
-            $('.small-avatar', this).fadeOut('fast');
+            $('.small-avatar', this).hide();
         } else { 
             $('.large-avatar', this).fadeOut('fast');
-            $('.small-avatar', this).fadeIn('fast');
+            $('.small-avatar', this).show('fast');
         }
     });
 
