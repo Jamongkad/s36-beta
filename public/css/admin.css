@@ -869,10 +869,10 @@ color: #777;}
     display:none;
     z-index:999999;
     position:absolute !important;
-    -moz-box-shadow: 7px 7px 5px #888;
-    -webkit-box-shadow: 7px 7px 5px #888;
-    box-shadow: 7px 7px 5px #888;
+    -moz-box-shadow: 5px 5px 3px #888;
+    -webkit-box-shadow: 5px 5px 3px #888;
+    box-shadow: 5px 5px 3px #888;
     left:-1%;
     top:-1%;
-    border:10px solid #ebecec;
+    /*border:10px solid #ebecec;*/
 }
