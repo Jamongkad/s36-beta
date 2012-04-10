@@ -47,7 +47,7 @@ class InboxService {
 
             $this->filters['offset'] = $offset;
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
-            $feed_result = $this->dbfeedback->pull_feedback($this->filters);
+            //$feed_result = $this->dbfeedback->pull_feedback($this->filters);
 
             $this->pagination->records($date_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);

@@ -223,21 +223,10 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
-        $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
         $redis = new redisent\Redis;
 
-        $yui->addFile('js/s36LightBox.js');
-        $yui->addFile('js/ZClip.js');
-        $yui->addFile('js/Checky.js');
-        $yui->addFile('js/DropDownChange.js');
-        $yui->addFile('js/InboxStatusChange.js');
-        $yui->addFile('js/InboxFilters.js');
-        $yui->addFile('js/FeedSetup.js');
-        $yui->addFile('js/Status.js');
-        $yui->addFile('js/s36application.js');
-        $minified_js = $yui->compress();
 
-        $redis->set("cache:main_js", $minified_js);
+        //$redis->set("cache:main_js", $minified_js);
     }, 
 
     'GET /tests/get_redis_cache' => function() { 
