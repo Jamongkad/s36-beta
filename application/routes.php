@@ -90,7 +90,8 @@ return array(
             $user = $admin->fetch_admin_details($opts);
 
             if($user == 0) { 
-                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array(), 'warning' => 'no user.'));
+                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array()
+                                                       , 'warning' => 'this email does not exist.'));
             }
         
             $data = new Email\Entities\ResendPasswordData;
