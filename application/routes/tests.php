@@ -260,6 +260,11 @@ return array(
         return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
 
+    'GET /tests/email_view' => function() { 
+        return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');       
+    },
+
+
     //reserved route for Leica testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
