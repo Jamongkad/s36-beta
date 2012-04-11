@@ -141,11 +141,13 @@ return array(
         Helpers::dump($user); 
 
         $data = new Email\Entities\ResendPasswordData;
+        $data->user_data = $user;
+        $data->get_host();
+
         $email = new Email\Entities\ResendPassword; 
         Helpers::dump($data);
         $email->gather($data);
         $email->email_html();
-
         /*
         $emailservice = new Email\Services\EmailService($data);
         Helpers::dump($emailservice->send_email()); 
