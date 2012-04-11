@@ -86,6 +86,17 @@ return array(
         $data = Input::get();
         $encrypt = new Crypter;
         Helpers::dump($data);
-        Helpers::dump($encrypt->decrypt($data['k']));
+        //I am the only key to user passwords!!! MWHAHAHA
+        if($encrypt->decrypt($data['k']) === "jamongkad") {  
+            return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(
+                'subdomain' => $data['subdomain'], 'email' => $data['email']
+            ));       
+        }
+       
+    },
+
+    'POST /resend_password' => function() {
+        $data = Input::get(); 
+        Helpers::dump($data);
     }
 );
