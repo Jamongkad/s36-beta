@@ -266,6 +266,10 @@
                 <?elseif($filter == 'featured'):?>
                     Looks like you haven’t featured any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. either that,
                     have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
+                <?elseif($filter == 'filed'):?>
+                    Looks like you haven’t filed any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. either that,
+                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
+
                 <?else:?>
                     Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
                         on your website already?
