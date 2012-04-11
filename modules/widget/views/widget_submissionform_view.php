@@ -318,7 +318,7 @@
             <div id="step_6" class="s36_pages">
             	<h1>Review your feedback</h1>
                 <div class="step-contents">
-                	<p style="margin-top: 3px">Just before you submit your feedback, be sure to check it one last time.</p>
+                	<p style="margin-top: 12px">Just before you submit your feedback, be sure to check it one last time.</p>
                     <div class="review-profile">
                     	<div class="review-avatar s36_align_center">
 
