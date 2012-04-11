@@ -81,7 +81,8 @@ return array(
         );
  
         $validator = Validator::make($data, $rules);
-        
+        Helpers::dump($validator->errors);
+        /* 
         if(!$validator->valid()) {
             return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
         } else {
@@ -96,7 +97,7 @@ return array(
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
             }
 
-            /*
+        
             $data = new Email\Entities\ResendPasswordData;
             $data->user_data = $user;
             $data->get_host();
@@ -104,9 +105,10 @@ return array(
 
             $emailservice = new Email\Services\EmailService($data);
             $emailservice->send_email(); 
-            */
+         
             //return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
         }
+        */
     },
     
     'GET /password_reset' => function() { 
