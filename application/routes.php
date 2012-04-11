@@ -87,7 +87,6 @@ return array(
 
         $emailservice = new Email\Services\EmailService($data);
         $emailservice->send_email(); 
-
         return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');       
     },
     
