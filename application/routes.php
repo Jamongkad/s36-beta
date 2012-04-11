@@ -84,6 +84,8 @@ return array(
     
     'GET /password_reset' => function() { 
         $data = Input::get();
+        $encrypt = new Crypter;
         Helpers::dump($data);
+        Helpers::dump($encrypt->decrypt($data['k']));
     }
 );
