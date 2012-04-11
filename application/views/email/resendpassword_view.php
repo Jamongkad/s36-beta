@@ -34,11 +34,13 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">Forgot your password, jamongkad (@jamongkad)?</h1>
+                            	<h1 style="line-height:normal">Forgot your password, jamongkad?</h1>
          
                                 <p>We received a request to reset the password for your 36Stories account (jamongkad).</p>
                                 <p>If you want to reset your password, click on the link below (or copy and paste the URL into your browser):
-                                https://twitter.com/account/password_reset?email=wrm932%40gmail.com&token=3063f57150977c7c9a6fc6a96964f11d-1334050054-user</p>
+                                <a href="">
+                                http://twitter.com/account/password_reset?email=wrm932%40gmail.com&token=3063f57150977c7c9a6fc6a96964f11d-1334050054-user</p>
+                                </a>
                                 
                                 <p>This link takes you to a secure page where you can change your password.</p> 
                                 <p>If you don't want to reset your password, please ignore this message. Your password will not be reset.</p>
