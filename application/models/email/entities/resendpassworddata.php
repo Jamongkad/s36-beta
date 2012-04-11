@@ -4,5 +4,9 @@ use Config;
 
 class ResendPasswordData extends EmailData {
     public $user;    
-    public $host = Config::get('application.host');
+    public $host
+
+    public function host() {
+        $this->host = Config::get('application.host'); 
+    }
 }
