@@ -144,13 +144,8 @@ return array(
         $data->get_host();
         $data->reset_key();
 
-        $email = new Email\Entities\ResendPassword; 
-        $email->gather($data);
-        $email->send();
-        /*
         $emailservice = new Email\Services\EmailService($data);
         Helpers::dump($emailservice->send_email()); 
-        */
     },
 
     'GET /tests/worklog' => function() {   
