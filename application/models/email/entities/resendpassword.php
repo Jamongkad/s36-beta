@@ -17,7 +17,7 @@ class ResendPassword extends EmailFixture {
     }
 
     public function email_html() { 
-        $email_html = View::make('email/resend_password_view', Array(
+        $email_html = View::make('email/resendpassword_view', Array(
             'email_data' => $this->email_data
         ))->get();     
         
