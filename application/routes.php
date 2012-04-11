@@ -144,13 +144,15 @@ return array(
               , 'encryptString' => $encrypt->encrypt(strtolower($user->username)."|".$data['password'])
             );
 
+            /*
             Helpers::dump($user);
             Helpers::dump($personal_data);
-            /*
+            */
+
             DB::table('User', 'master')
                 ->where('User.userId', '=', $data['user_id'])
                 ->update($personal_data);
-            */
+
             echo "successful update";
         }
     }
