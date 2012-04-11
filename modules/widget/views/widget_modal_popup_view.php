@@ -1,3 +1,4 @@
+<?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var $slide = $('#theSoloSlides').cycle({

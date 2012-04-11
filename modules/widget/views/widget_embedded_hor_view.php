@@ -1,3 +1,4 @@
+<?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		/* show the solo feedback when the feedbacktext class is clicked */
@@ -293,6 +294,5 @@
 <!--[if IE]>
 <?=HTML::style('css/widget_master/ie_fix.css')?>
 <![endif]-->
-
 <?=$css?>
 <?=$js?>
