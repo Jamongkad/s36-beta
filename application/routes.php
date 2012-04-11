@@ -123,6 +123,7 @@ return array(
 
     'POST /password_reset' => function() {  
         $data = Input::get();
+        $encrypt = new Crypter;
 
         $rules = Array(
             'password' => 'required|min:8|confirmed'
