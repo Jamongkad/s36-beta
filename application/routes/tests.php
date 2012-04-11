@@ -142,6 +142,7 @@ return array(
 
         $data = new Email\Entities\ResendPasswordData;
         $email = new Email\Entities\ResendPassword; 
+        Helpers::dump($data);
         $email->gather($data);
         $email->email_html();
 
