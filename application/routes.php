@@ -83,7 +83,7 @@ return array(
         $validator = Validator::make($data, $rules);
         Helpers::dump($validator->valid());
         Helpers::dump($validator->errors);
-        /* 
+
         if(!$validator->valid()) {
             return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
         } else {
@@ -94,7 +94,7 @@ return array(
 
             //Helpers::dump($user);
             if($user == 0) { 
-                $validator->errors = Array('no user bitch');
+                $validator->errors = Array('messages' => Array('email' => Array('no user bitch')));
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
             }
 
@@ -109,7 +109,7 @@ return array(
          
             //return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
         }
-        */
+
     },
     
     'GET /password_reset' => function() { 
