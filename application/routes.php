@@ -81,6 +81,7 @@ return array(
         );
  
         $validator = Validator::make($data, $rules);
+        Helpers::dump($validator->valid());
         Helpers::dump($validator->errors);
         /* 
         if(!$validator->valid()) {
