@@ -96,7 +96,7 @@
                                       </li>
                                   <?endforeach?>
                                 </ul>
-                                <div><?=HTML::link('settings', 'manage categories →')?></div>
+                                <div class="manage-cat-link"><?=HTML::link('settings', 'manage categories →')?></div>
                                 <div class="popup-border"></div>
                                 <div class="grids">
                                     <div class="label g1of2">Status</div>

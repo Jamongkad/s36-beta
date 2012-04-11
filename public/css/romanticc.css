@@ -308,6 +308,7 @@ table.user-info {
 ul.category-picker {  
     cursor: default;
     list-style-type: none; 
+    margin-left:-7px;
 }
 
 li.Matched {
@@ -330,6 +331,10 @@ ul.category-picker li {
 	float:left;
 	padding:3px 2px;
 	margin:2px 0px;
+}
+
+div.manage-cat-link {
+    padding:5px 0px;
 }
 
 /*TODO: Must ask Dan to help me fix this...*/
