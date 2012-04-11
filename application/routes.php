@@ -87,7 +87,7 @@ return array(
         } else {
             $opts = new StdClass; 
             $opts->username = $data['email'];
-            $opts->options = Array('company' => $data['company']);
+            $opts->options = Array('company' => $_GET['subdomain']);
             $user = $admin->fetch_admin_details($opts);
             Helpers::dump($data);
             Helpers::dump($user);
