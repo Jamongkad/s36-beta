@@ -28,7 +28,7 @@
 .base-popup ul.email-picker li a{color:#6e7e8e;}
 .base-popup ul.email-picker li a:hover{color:#3a4c5a;}
 .base-popup .email-list a{color:#6e7e8e}
-.popup-textarea{width:240px;height:40px;font-family:Arial, Helvetica, sans-serif;color:#888888;}
+.popup-textarea{width:240px;height:40px;font-family:Arial, Helvetica, sans-serif;color:#888888;padding:4px}
 
 html {
 	background:url(../img/background.jpg) #EBEAE7;
