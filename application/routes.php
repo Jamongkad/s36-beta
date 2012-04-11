@@ -101,6 +101,7 @@ return array(
 
             $emailservice = new Email\Services\EmailService($data);
             $emailservice->send_email();  
+            //success!
             return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
         }
 
@@ -118,4 +119,9 @@ return array(
         }
        
     },
+
+    'POST /password_reset' => function() {  
+        $data = Input::get();
+        Helpers::dump($data);
+    }
 );
