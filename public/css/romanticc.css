@@ -334,7 +334,7 @@ ul.category-picker li {
 }
 
 div.manage-cat-link {
-    padding:5px 0px;
+    padding:5px 0px !important;
 }
 
 /*TODO: Must ask Dan to help me fix this...*/
