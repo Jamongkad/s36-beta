@@ -145,6 +145,7 @@ return array(
             );
 
             Helpers::dump($user);
+            Helpers::dump($personal_data);
             /*
             DB::table('User', 'master')
                 ->where('User.userId', '=', $data['user_id'])
