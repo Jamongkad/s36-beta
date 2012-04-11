@@ -141,10 +141,14 @@ return array(
         Helpers::dump($user); 
 
         $data = new Email\Entities\ResendPasswordData;
+        $email = new Email\Entities\ResendPassword; 
+        $email->gather($data);
+        $email->email_html();
 
+        /*
         $emailservice = new Email\Services\EmailService($data);
-
         Helpers::dump($emailservice->send_email()); 
+        */
     },
 
     'GET /tests/worklog' => function() {   
