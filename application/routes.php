@@ -110,11 +110,12 @@ return array(
     'GET /password_reset' => function() { 
         $data = Input::get();
         $encrypt = new Crypter;
- 
+
+        $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA
-        if($encrypt->decrypt($data['k']) === "jamongkad") {  
+        if($params[0] === "jamongkad") {  
             return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(
-                'subdomain' => $data['subdomain'], 'email' => $data['email']
+                'subdomain' => $data['subdomain'], 'email' => $data['email'], 'user_id' => $params[1]
             ));       
         }
        

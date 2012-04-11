@@ -21,7 +21,6 @@ class ResendPassword extends EmailFixture {
             'email_data' => $this->email_data
         ))->get();     
         
-        //print_r($email_html);
         return $email_html;
     }
 
