@@ -272,8 +272,7 @@
 
                 <?else:?>
                     Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
-                        on your website already?
-               
+                        on your website already? 
                 <?endif?>
             </p>
       </div>
