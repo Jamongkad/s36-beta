@@ -148,7 +148,7 @@ return array(
                 ->where('User.userId', '=', $data['user_id'])
                 ->update($personal_data);
 
-            return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
+            return View::of_home_layout()->partial('contents', 'home/reset_password_success_view');        
         }
     }
 );
