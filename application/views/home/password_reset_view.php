@@ -8,6 +8,7 @@
             <div id="login-box" style="text-align:center">
                 <?=Form::open('/password_reset')?>
                     <?=Form::hidden('company', $subdomain)?>
+                    <?=Form::hidden('user_id', $user_id)?>
                     <?=Form::hidden('email', $email)?>
                     <table width="100%" align="center">
                         <tr><td>New password</td>
