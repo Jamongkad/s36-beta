@@ -7,8 +7,8 @@
             <h2 style="text-align: center; padding-bottom: 30px">Choose your new password.</h2>
             <div id="login-box" style="text-align:center">
                 <?=Form::open('resend_password')?>
-                    <?=Form::hidden('company', $subdomain))?>
-                    <?=Form::hidden('email', $email))?>
+                    <?=Form::hidden('company', $subdomain)?>
+                    <?=Form::hidden('email', $email)?>
                     <table width="100%" align="center">
                         <tr><td>New password</td>
                             <td>
