@@ -385,7 +385,7 @@ var S36Form = new function() {
     };
 
     this.validate_form = function(form) {
-        if($('#steps').find('.current').attr('id') == "step_4") {
+   
             var fname 		= $('#your_fname'); 
             var lname 		= $('#your_lname'); 
             var email		= $('#your_email');
@@ -416,7 +416,7 @@ var S36Form = new function() {
             }else{
                 return 4;
             }     
-        }
+    
     };
 
     this.init_jcrop = function() { 
