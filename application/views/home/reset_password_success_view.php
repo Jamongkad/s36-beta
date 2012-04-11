@@ -8,7 +8,7 @@
                 Password has been successfully updated.
             </h1>
             <p style="text-align: center;">
-            Please <?=HTML::link('/login', 'try logging in again.')?>
+            Please <?=HTML::link('/login', 'try logging in again.', array('class' => 'woops-a'))?>
             </p>
         </div>
     </div>
