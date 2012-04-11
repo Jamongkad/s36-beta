@@ -115,7 +115,9 @@
                                     <div class="dropdown g1of2">
                                         <select class="catmenu-priority" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
                                             <?foreach($priority_obj as $key => $val):?>
-                                                <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
+                                                <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
+                                                    <?=ucfirst($val)?>
+                                                </option>
                                             <?endforeach?>
                                         </select>
                                     </div>
