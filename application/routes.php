@@ -103,9 +103,4 @@ return array(
         }
        
     },
-
-    'POST /resend_password' => function() {
-        $data = Input::get(); 
-        Helpers::dump($data);
-    }
 );
