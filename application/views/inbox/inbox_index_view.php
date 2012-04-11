@@ -259,7 +259,8 @@
 <?else:?>
       <div class="woops">
             <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
-            <p class="woops-content">Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
+            <p class="woops-content">
+            Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
                 on your website already?
             </p>
       </div>
