@@ -386,36 +386,36 @@ var S36Form = new function() {
 
     this.validate_form = function(form) {
    
-            var fname 		= $('#your_fname'); 
-            var lname 		= $('#your_lname'); 
-            var email		= $('#your_email');
-            var city 		= $('#your_city');
-            var country 	= $('#your_country');
+        var fname 		= $('#your_fname'); 
+        var lname 		= $('#your_lname'); 
+        var email		= $('#your_email');
+        var city 		= $('#your_city');
+        var country 	= $('#your_country');
 
-            //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric
-            if(!that.validate_field( fname.attr('id')    , fname.val()    , fname.attr('title')    , "regular")){
-                fname.focus();
-                add_error('Please Enter Your First Name');
-                return false;
-            }else if(!that.validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
-                lname.focus();
-                that.add_error('Please Enter Your Last Name');
-                return false;
-            }else if(!that.validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
-                email.focus();
-                that.add_error('Please Enter A Valid Email');
-                return false;
-            }else if((!that.validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")) && (form == "full")){
-                city.focus();
-                that.add_error('Please Enter Your City');
-                return false;
-            }else if((!that.validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")) && (form == "full")){
-                country.focus();
-                that.add_error('Please Select Your Country');
-                return false;
-            }else{
-                return 4;
-            }     
+        //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric
+        if(!that.validate_field( fname.attr('id')    , fname.val()    , fname.attr('title')    , "regular")){
+            fname.focus();
+            add_error('Please Enter Your First Name');
+            return false;
+        }else if(!that.validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
+            lname.focus();
+            that.add_error('Please Enter Your Last Name');
+            return false;
+        }else if(!that.validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
+            email.focus();
+            that.add_error('Please Enter A Valid Email');
+            return false;
+        }else if((!that.validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")) && (form == "full")){
+            city.focus();
+            that.add_error('Please Enter Your City');
+            return false;
+        }else if((!that.validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")) && (form == "full")){
+            country.focus();
+            that.add_error('Please Select Your Country');
+            return false;
+        }else{
+            return 4;
+        }     
     
     };
 
