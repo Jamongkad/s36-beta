@@ -14,11 +14,12 @@
                         <tr><td>New password</td>
                             <td>
                                <?=Form::password('password')?>
+                               <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('password')."</p>" : null?>
                             </td>
                         </tr>
                         <tr><td>Verify password</td>
                             <td>
-                               <?=Form::password('password_confirm')?>
+                               <?=Form::password('password_confirmation')?>
                             </td>
                         </tr>
                         <tr>
