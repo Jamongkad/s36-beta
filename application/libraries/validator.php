@@ -3,7 +3,7 @@
 class Validator extends System\Validator {
     public function validate_s36email($attribute, $parameters) {
         $email = $this->attributes[$attribute];
-        $companyId = $_GET['subdomain']
+        $companyId = $_GET['subdomain'];
         $admin = new \DBadmin; 
 
         $opts = new StdClass; 
