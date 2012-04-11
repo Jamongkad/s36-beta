@@ -123,7 +123,6 @@ return array(
 
     'POST /password_reset' => function() {  
         $data = Input::get();
-        Helpers::dump($data);
 
         $rules = Array(
             'password' => 'required|min:8|confirmed'
@@ -135,6 +134,21 @@ return array(
                 'subdomain' => $data['company'], 'email' => $data['email'], 'user_id' => $data['user_id'], 'errors' => $validator->errors
             ));        
         } else {
+
+            $user = DB::table('User', 'master')->where('User.userId', '=', $data['user_id'])->first();
+
+            $personal_data = Array( 
+                'username' => strtolower($user->username)
+              , 'password' => crypt($data['password'])
+              , 'encryptString' => $encrypt->encrypt(strtolower($user->username)."|".$data['password'])
+            );
+
+            Helpers::dump($user);
+            /*
+            DB::table('User', 'master')
+                ->where('User.userId', '=', $data['user_id'])
+                ->update($personal_data);
+            */
             echo "successful update";
         }
     }
