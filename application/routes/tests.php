@@ -138,11 +138,10 @@ return array(
         $opts->username = "wrm932@gmail.com";
         $opts->options = Array('company' => Input::get('subdomain'));
         $user = $admin->fetch_admin_details($opts);
-        Helpers::dump($user); 
 
         $data = new Email\Entities\ResendPasswordData;
         $data->user_data = $user;
-        $data->get_host();
+        print_r($data->get_host());
 
         $email = new Email\Entities\ResendPassword; 
         Helpers::dump($data);

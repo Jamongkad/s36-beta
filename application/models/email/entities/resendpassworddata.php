@@ -7,6 +7,6 @@ class ResendPasswordData extends EmailData {
     public $host;
 
     public function get_host() {
-        $this->host = Config::get('application.host'); 
+        return Config::get('application.host'); 
     }
 }
