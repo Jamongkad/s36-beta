@@ -79,7 +79,11 @@ return array(
         $opts->username = $data['email'];
         $opts->options = Array('company' => $data['company']);
         $user = $admin->fetch_admin_details($opts);
-
         Helpers::dump($user);
+    },
+    
+    'GET /password_reset' => function() { 
+        $data = Input::get();
+        Helpers::dump($data);
     }
 );
