@@ -89,7 +89,7 @@ return array(
             $opts->options = Array('company' => $_GET['subdomain']);
             $user = $admin->fetch_admin_details($opts);
 
-            if($user == 0) { 
+            if(!$user) { 
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array()
                                                        , 'warning' => 'email does not exist.'));
             }
