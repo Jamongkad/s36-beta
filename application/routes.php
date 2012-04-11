@@ -35,7 +35,7 @@ return array(
         if($auth->check()) { 
             return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
-            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company));      
+            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
         }		
 
     },
@@ -43,15 +43,31 @@ return array(
     'POST /login' => function() {
         $input = Input::get();        
         $auth = new S36Auth;
-        $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
-        if($auth->check()) {
-            if($forward_to = Input::get('forward_to')) {
-                return Redirect::to($forward_to);
-            } else {
-                return Redirect::to('dashboard');     
-            } 
+
+        $rules = Array(
+            'username' => 'required'
+          , 'password' => 'required'
+        );
+ 
+        $validator = Validator::make($data, $rules);
+
+        if(!$validator->valid()) { 
+            return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+                                                                              , 'errors' => $validator->errors
+                                                                              , 'warning' => null));      
         } else {
-            return Redirect::to('login');     
+            $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
+            if($auth->check()) {
+                if($forward_to = Input::get('forward_to')) {
+                    return Redirect::to($forward_to);
+                } else {
+                    return Redirect::to('dashboard');     
+                } 
+            } else {
+                return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+                                                                                  , 'errors' => Array()
+                                                                                  , 'warning' => 'invalid login please try again'));      
+            } 
         }
     },
     
