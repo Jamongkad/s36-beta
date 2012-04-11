@@ -38,8 +38,8 @@
          
                                 <p>We received a request to reset the password for your 36Stories account (jamongkad).</p>
                                 <p>If you want to reset your password, click on the link below (or copy and paste the URL into your browser):
-                                <a href="<?=$email_data->host?>/password_reset?email=<?=$email_data->user_data->email?>">
-                                    <?=$email_data->host?>/password_reset?email=<?=urlencode($email_data->user_data->email)?>
+                                <a href="<?=$email_data->host?>/password_reset?email=<?=$email_data->user_data->email?>&k=<?=urlencode($email_data->reset_key)?>">
+                                    <?=$email_data->host?>/password_reset?email=<?=urlencode($email_data->user_data->email)?>&k=<?=urlencode($email_data->reset_key)?>
                                 </a>
                                 
                                 <p>This link takes you to a secure page where you can change your password.</p> 
