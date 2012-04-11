@@ -34,8 +34,15 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">You're invited to join our feedback management system.</h1>
-                           
+                            	<h1 style="line-height:normal">Forgot your password, jamongkad (@jamongkad)?</h1>
+         
+                                We received a request to reset the password for your 36Stories account (jamongkad). 
+                                If you want to reset your password, click on the link below (or copy and paste the URL into your browser):
+                                https://twitter.com/account/password_reset?email=wrm932%40gmail.com&token=3063f57150977c7c9a6fc6a96964f11d-1334050054-user
+                                
+                                This link takes you to a secure page where you can change your password. For tips on selecting a strong password, see our Safe Tweeting help page.
+                                
+                                If you don't want to reset your password, please ignore this message. Your password will not be reset. If you have any concerns, please contact us at Twitter Support. '))) 
                             </td>
                         </tr>
                         <tr height="80">

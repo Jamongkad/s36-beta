@@ -11,6 +11,6 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
-        <?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
+        <?//=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
     </head>
 <body>

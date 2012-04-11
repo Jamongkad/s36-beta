@@ -139,6 +139,12 @@ return array(
         $opts->options = Array('company' => Input::get('subdomain'));
         $user = $admin->fetch_admin_details($opts);
         Helpers::dump($user); 
+
+        $data = new Email\Entities\ResendPasswordData;
+
+        $emailservice = new Email\Services\EmailService($data);
+
+        Helpers::dump($emailservice->send_email()); 
     },
 
     'GET /tests/worklog' => function() {   

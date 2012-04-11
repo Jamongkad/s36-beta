@@ -86,8 +86,10 @@
     <tr>
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
             This message was intended for <?=$email_data->sendto->email?>.  <br />
+            <!--
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303
+            -->
        </td>
     </tr>
     <!-- end footer -->    

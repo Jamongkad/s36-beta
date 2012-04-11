@@ -7,6 +7,7 @@ use Email\Entities\RequestFeedback;
 use Email\Entities\Invitation;
 use Email\Entities\FastForward;
 use Email\Entities\Reply;
+use Email\Entities\ResendPassword;
 
 class EmailService { 
 
@@ -50,6 +51,12 @@ class EmailService {
         }
 
         if($this->email_data->get_type() == 'Email\Entities\ReplyData') {
+            $email = new Reply;
+            $email->gather($this->email_data);
+            return $email->send();
+        }
+
+        if($this->email_data->get_type() == 'Email\Entities\ResendPasswordData') {
             $email = new Reply;
             $email->gather($this->email_data);
             return $email->send();
