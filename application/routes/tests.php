@@ -145,9 +145,8 @@ return array(
         $data->reset_key();
 
         $email = new Email\Entities\ResendPassword; 
-        Helpers::dump($data);
         $email->gather($data);
-        $email->email_html();
+        $email->send();
         /*
         $emailservice = new Email\Services\EmailService($data);
         Helpers::dump($emailservice->send_email()); 

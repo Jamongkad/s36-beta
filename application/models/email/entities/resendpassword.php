@@ -13,7 +13,7 @@ class ResendPassword extends EmailFixture {
 
     public function send() {
         $email_html = $this->email_html();
-        $this->postmark->to($this->email_data->sendto->email)->subject($this->get_subject())->html_message($email_html)->send();
+        $this->postmark->to($this->email_data->user_data->email)->subject($this->get_subject())->html_message($email_html)->send();
     }
 
     public function email_html() { 
@@ -21,8 +21,8 @@ class ResendPassword extends EmailFixture {
             'email_data' => $this->email_data
         ))->get();     
         
-        print_r($email_html);
-        //return $email_html;
+        //print_r($email_html);
+        return $email_html;
     }
 
     public function get_subject() {
