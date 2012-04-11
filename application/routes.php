@@ -91,7 +91,7 @@ return array(
 
             if($user == 0) { 
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array()
-                                                       , 'warning' => 'this email does not exist.'));
+                                                       , 'warning' => 'email does not exist.'));
             }
         
             $data = new Email\Entities\ResendPasswordData;
