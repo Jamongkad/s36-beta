@@ -77,7 +77,7 @@ return array(
         $data = Input::get();
 
         $rules = Array(
-            'email' => 'required|email|s36email'
+            'email' => 'required|email'
         );
  
         $validator = Validator::make($data, $rules);
@@ -90,7 +90,11 @@ return array(
             $opts->options = Array('company' => $_GET['subdomain']);
             $user = $admin->fetch_admin_details($opts);
 
-            Helpers::dump($user);
+            //Helpers::dump($user);
+            if($user == 0) { 
+                $validator->errors = Array('no user bitch');
+                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
+            }
 
             /*
             $data = new Email\Entities\ResendPasswordData;
