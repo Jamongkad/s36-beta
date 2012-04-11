@@ -337,6 +337,10 @@ div.manage-cat-link {
     padding:5px 0px !important;
 }
 
+.catmenu-status, .catmenu-priority {
+    font-size: 12px;    
+}
+
 /*TODO: Must ask Dan to help me fix this...*/
 div.undo-bar {
     position: fixed;    
