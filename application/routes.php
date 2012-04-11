@@ -69,7 +69,7 @@ return array(
     },
 
     'GET /resend_password' => function() {  
-        return View::of_home_layout()->partial('contents', 'home/resend_password_view');       
+        return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors'  => Array()));       
     },
 
     'POST /resend_password' => function() {
@@ -81,23 +81,23 @@ return array(
         );
  
         $validator = Validator::make($data, $rules);
-        Helpers::dump($validator->valid());
-        Helpers::dump($validator->errors);
         
-        /*
-        $opts = new StdClass; 
-        $opts->username = $data['email'];
-        $opts->options = Array('company' => $data['company']);
-        $user = $admin->fetch_admin_details($opts);
-        $data = new Email\Entities\ResendPasswordData;
-        $data->user_data = $user;
-        $data->get_host();
-        $data->reset_key();
+        if(!$validator->valid()) {
+            return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
+        } else {
+            $opts = new StdClass; 
+            $opts->username = $data['email'];
+            $opts->options = Array('company' => $data['company']);
+            $user = $admin->fetch_admin_details($opts);
+            $data = new Email\Entities\ResendPasswordData;
+            $data->user_data = $user;
+            $data->get_host();
+            $data->reset_key();
 
-        $emailservice = new Email\Services\EmailService($data);
-        $emailservice->send_email(); 
-        return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');       
-        */
+            $emailservice = new Email\Services\EmailService($data);
+            $emailservice->send_email(); 
+            return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
+        }
     },
     
     'GET /password_reset' => function() { 
