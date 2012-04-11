@@ -324,6 +324,7 @@ li.Matched {
     top: -10px;
 	width:210px;
 	padding:10px !important;
+    font-size:12px;
 }
 
 ul.category-picker li {
