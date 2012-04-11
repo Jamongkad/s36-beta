@@ -32,6 +32,7 @@ return array(
             , 'status' => DB::table('Status', 'master')->get()
             , 'inbox_state' => Helpers::inbox_state($filter)
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
+            , 'filter' => $filter
         );
         
         if(!Input::get('_pjax')) { 
