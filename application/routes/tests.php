@@ -142,6 +142,7 @@ return array(
         $data = new Email\Entities\ResendPasswordData;
         $data->user_data = $user;
         $data->get_host();
+        $data->reset_key();
 
         $email = new Email\Entities\ResendPassword; 
         Helpers::dump($data);
