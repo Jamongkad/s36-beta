@@ -132,7 +132,7 @@ return array(
         $validator = Validator::make($data, $rules);
         if(!$validator->valid()) {
             return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(
-                'subdomain' => $data['company'], 'email' => $data['email'], 'user_id' => $data['user_id'], 'errors' => array()
+                'subdomain' => $data['company'], 'email' => $data['email'], 'user_id' => $data['user_id'], 'errors' => $validator->errors
             ));        
         } else {
             echo "successful update";
