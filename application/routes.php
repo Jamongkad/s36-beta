@@ -85,7 +85,7 @@ return array(
     'GET /password_reset' => function() { 
         $data = Input::get();
         $encrypt = new Crypter;
-        Helpers::dump($data);
+ 
         //I am the only key to user passwords!!! MWHAHAHA
         if($encrypt->decrypt($data['k']) === "jamongkad") {  
             return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(

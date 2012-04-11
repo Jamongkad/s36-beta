@@ -4,7 +4,7 @@
             <?=HTML::image('img/36logo2.png')?>
         </div>
         <div id="login">
-            <h2 style="text-align: center; padding-bottom: 30px">Choose your new password.</h2>
+            <h2 style="text-align: center; padding-bottom: 30px">Choose your new password</h2>
             <div id="login-box" style="text-align:center">
                 <?=Form::open('resend_password')?>
                     <?=Form::hidden('company', $subdomain)?>
