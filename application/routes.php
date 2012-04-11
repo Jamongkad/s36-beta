@@ -77,7 +77,7 @@ return array(
         $data = Input::get();
 
         $rules = Array(
-            'email' => 'required|email'
+            'email' => 'required|email|s36email'
         );
  
         $validator = Validator::make($data, $rules);
@@ -89,7 +89,7 @@ return array(
             $opts->username = $data['email'];
             $opts->options = Array('company' => $_GET['subdomain']);
             $user = $admin->fetch_admin_details($opts);
-            Helpers::dump($data);
+
             Helpers::dump($user);
 
             /*
