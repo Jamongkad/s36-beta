@@ -34,11 +34,11 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h1 style="line-height:normal">Forgot your password, jamongkad?</h1>
+                            	<h2 style="line-height:normal">Forgot your password, <?=$email_data->username?>?</h2>
          
                                 <p>We received a request to reset the password for your 36Stories account (jamongkad).</p>
                                 <p>If you want to reset your password, click on the link below (or copy and paste the URL into your browser):
-                                <a href="<?=$email_data->host?>/password_reset?email=<?=urlencode($email_data->user_data->email)?>">
+                                <a href="<?=$email_data->host?>/password_reset?email=<?=$email_data->user_data->email?>">
                                     <?=$email_data->host?>/password_reset?email=<?=urlencode($email_data->user_data->email)?>
                                 </a>
                                 
