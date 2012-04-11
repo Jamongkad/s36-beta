@@ -57,7 +57,7 @@ class EmailService {
         }
 
         if($this->email_data->get_type() == 'Email\Entities\ResendPasswordData') {
-            $email = new Reply;
+            $email = new ResendPassword;
             $email->gather($this->email_data);
             return $email->send();
         }
