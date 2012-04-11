@@ -66,7 +66,7 @@ sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:1
 #admin-panel .left-panel .left-buttons ul li:hover a{color:#FFF;background-position:left bottom;}
 
 
-#admin-panel .main-panel{width:75%;background:#ffffff;float:left;border-top:1px solid #000000;}
+#admin-panel .main-panel{width:75%;background:#ffffff;float:left}
 #admin-panel .main-panel .admin-session-bar{height:47px;background:#343434;display:blockborder-right:1px solid #000;border-bottom:1px solid #000;} /* deduct 1px for the border */
 #admin-panel .main-panel .admin-session-bar .admin-avatar{width:45px;height:45px;border-right:1px solid #000;float:left;}
 #admin-panel .main-panel .admin-session-bar .admin-details{width:390px;float:left;}
