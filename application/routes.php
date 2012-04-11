@@ -69,7 +69,7 @@ return array(
     },
 
     'GET /resend_password' => function() {  
-        return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors'  => Array()));       
+        return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors'  => Array(), 'warning' => null));       
     },
 
     'POST /resend_password' => function() {
@@ -81,23 +81,17 @@ return array(
         );
  
         $validator = Validator::make($data, $rules);
-        Helpers::dump($validator->valid());
-        Helpers::dump($validator->errors);
-
         if(!$validator->valid()) {
-            return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
+            return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors, 'warning' => null));
         } else {
             $opts = new StdClass; 
             $opts->username = $data['email'];
             $opts->options = Array('company' => $_GET['subdomain']);
             $user = $admin->fetch_admin_details($opts);
 
-            //Helpers::dump($user);
             if($user == 0) { 
-                $validator->errors = Array('messages' => Array('email' => Array('no user bitch')));
-                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors));
+                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array(), 'warning' => 'no user.'));
             }
-
         
             $data = new Email\Entities\ResendPasswordData;
             $data->user_data = $user;
@@ -105,9 +99,8 @@ return array(
             $data->reset_key();
 
             $emailservice = new Email\Services\EmailService($data);
-            $emailservice->send_email(); 
-         
-            //return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
+            $emailservice->send_email();  
+            return View::of_home_layout()->partial('contents', 'home/resend_password_sent_view');        
         }
 
     },
