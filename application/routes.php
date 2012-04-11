@@ -49,7 +49,7 @@ return array(
           , 'password' => 'required'
         );
  
-        $validator = Validator::make($data, $rules);
+        $validator = Validator::make($input, $rules);
 
         if(!$validator->valid()) { 
             return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
