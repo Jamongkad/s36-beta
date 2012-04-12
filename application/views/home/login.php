@@ -5,9 +5,9 @@
         </div>
 		<div id="login">
         	<div id="login-box">
-               <?=($errors) ? "<p style='color:red; text-align:center'>".$errors->first('username')."</p>" : null?>
-               <?=($errors) ? "<p style='color:red; text-align:center'>".$errors->first('password')."</p>" : null?>
-               <?=($warning) ? "<p style='color:red; text-align:center'>".$warning."</p>" : null?>
+               <?=($errors) ? "<p style='color:#7093b2; text-align:center'>".$errors->first('username')."</p>" : null?>
+               <?=($errors) ? "<p style='color:#7093b2; text-align:center'>".$errors->first('password')."</p>" : null?>
+               <?=($warning) ? "<p style='color:#7093b2; text-align:center'>".$warning."</p>" : null?>
                 <?=Form::open('login', 'POST')?>
                     <table width="100%" align="center">
                         <input type="hidden" value="<?=Input::get('forward_to')?>" name="forward_to" />
