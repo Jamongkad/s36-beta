@@ -1,4 +1,5 @@
 <?
+    //CSS preprocessor
     session_cache_limiter("private_no_expire"); 
 	header("Content-type: text/css", true);
 	$class = '@charset "utf-8";
@@ -18,8 +19,7 @@
 				background-position:no-repeat;
 				cursor:pointer;
                 z-index: 999999;
-			}
-                       
+			}                       
             .tab-small-sidetab{ 
                 position:fixed; 
                 width:31px; 
