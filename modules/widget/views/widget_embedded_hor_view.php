@@ -238,7 +238,7 @@
                                 $ctr++;
                             }
                         } else {
-                            echo "<h3>Sorry, no feedback here yet.</h3>";
+                            echo "<div style='margin:0 auto;text-align:center'><h3>Sorry, no feedback here yet.</h3></div>";
                         }
                     ?>
                 </div>
