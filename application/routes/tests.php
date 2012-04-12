@@ -173,7 +173,8 @@ return array(
     },
 
     'GET /tests/heart_test' => function() { 
-        $tab_type = 'tab-r-black-heart';
+        //$tab_type = 'tab-r-black-heart';
+        $tab_type = 'tab-r-orange-like-2';
         preg_match('~(heart|like)~', $tab_type, $match);
         Helpers::dump($match);
     },
