@@ -358,6 +358,7 @@ div.undo-bar {
     -moz-border-radius:12px;
     border-radius:12px;
     margin:2px 5px;
+    display:none;
 }
 
 .delete-selection {

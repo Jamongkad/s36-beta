@@ -48,7 +48,7 @@
 
 <?if(S36Auth::check()):?>
 <?=Form::hidden('baseUrl', URL::to('/'))?>
-<div class="" id="admin-container">
+<div id="admin-container">
     <div id="admin-panel">
 		<div class="left-panel">
         	<div class="logo">
