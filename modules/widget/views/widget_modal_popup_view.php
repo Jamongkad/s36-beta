@@ -66,9 +66,11 @@
                 </div>
             </div>
             <div class="g1of3">
+            <!--
                 <div class="viewAllFeedbackButton align-right">
                     <input type="button" />
                 </div>
+            -->
             </div>
         </div>
     </div>

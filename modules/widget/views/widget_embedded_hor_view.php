@@ -96,7 +96,9 @@
                             <div class="sendFeedbackButton align-right"></div>
                         </div>
                         <div class="g1of2">
+                        <!--
                             <div class="viewAllFeedbackButton align-right"><input type="button" class="viewAllBtn" value=""></div>
+                        -->
                         </div>
                     </div>
                 </div>
