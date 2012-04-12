@@ -183,9 +183,8 @@ class Helpers {
         } else {
             if( preg_match('~(heart|like)~', $tab_type, $match) ) {
                 return 'small-side';     
-            } else {
-                return 'side';     
             } 
+            return 'side';     
         } 
     }
 
