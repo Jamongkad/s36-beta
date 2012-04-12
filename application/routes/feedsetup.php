@@ -1,7 +1,6 @@
 <?php
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
-//TODO: DO SOMETHING ABOUT THIS!!
 $form_themes = Helpers::$tab_themes;
 
 return array(
