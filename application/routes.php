@@ -66,7 +66,7 @@ return array(
             } else {
                 return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
-                                                                                  , 'warning' => 'invalid login please try again'));      
+                                                                                  , 'warning' => 'Invalid login - try again.')); 
             } 
         }
     },
@@ -107,7 +107,7 @@ return array(
 
             if(!$user) { 
                 return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array()
-                                                       , 'warning' => 'email does not exist.'));
+                                                       , 'warning' => 'Email does not exist.'));
             }
         
             $data = new Email\Entities\ResendPasswordData;
