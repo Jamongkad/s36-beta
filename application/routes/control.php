@@ -23,22 +23,24 @@ return array(
 
     'GET /control/insert_new_user/(\d+)' => function($companyId) {
         $encrypt = new Crypter;
-        $password_string = "p455w0rd";
+        $password_string = "bimshop668";
         $password = crypt($password_string);
-        $email = "leicaaah18@gmail.com";
+        $email = "stevensze@bimshop.com.sg";
         
         $opts = Array(
             'companyId' => $companyId
-          , 'username' => 'leica'
+          , 'username' => 'steven'
           , 'password' => $password
           , 'email'  => $email
           , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
-          , 'fullName' => "Leica Chang"
-          , 'title' => 'Community Manager'
-          , 'imId' => 4
+          , 'fullName' => "Steven Sze"
+          , 'title' => 'CEO'
+          , 'imId' => 1
 
         );
-        DB::Table('User', 'master')->insert($opts);
+        $user_id = DB::Table('User', 'master')->insert_get_id($opts);
+
+        DB::Table('AuthAssignment', 'master')->insert(Array('itemname' => 'Admin', 'userId' => $user_id));
     },
 
     'GET /control/fetch_user/(\d+)' => function($userId) {

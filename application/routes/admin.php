@@ -119,6 +119,8 @@ return array(
      },
 
      'GET /admin/delete_admin/([0-9]+)' => function($id) {
+         //think about it...should account owners have the permission to delete shit? 
+         $me = S36Auth::user();
          $admin = new DBAdmin;
          $admin->delete_admin($id);
          return Redirect::to('admin'); 
