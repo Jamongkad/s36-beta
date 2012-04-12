@@ -390,7 +390,7 @@
        , '/js/jquery.ajaxfileupload.js'
        , '/js/s36FormModule.js'
        , '/js/cycle.function.js'
-       //, '/js/widget/form.js'
+       , '/js/widget/form.js'
     );
 
     $string = '"' . implode('","', $js_scripts) . '"';
