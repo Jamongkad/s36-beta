@@ -17,8 +17,10 @@
 
                             <?if($role == 'Admin'):?>
                                 <small class="edit"><?=HTML::link('admin/edit_admin/'.$admin->userid, 'edit')?></small>
-                                <?if($user_id != $admin->userid):?>
-                                <small class="edit"><?=HTML::link('admin/delete_admin/'.$admin->userid, 'delete', Array('class' => 'admin-delete'))?></small>
+                                <?if($user_id != $admin->userid || $admin->account_owner == 1):?>
+                                    <small class="edit">
+                                        <?=HTML::link('admin/delete_admin/'.$admin->userid, 'delete', Array('class' => 'admin-delete'))?>
+                                    </small>
                                 <?endif?>
                             <?endif?>
                         </div>

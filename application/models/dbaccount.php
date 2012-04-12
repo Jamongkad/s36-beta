@@ -32,8 +32,8 @@ class DBAccount extends S36DataObject {
         $this->dbh->query('INSERT INTO Metric (`companyId`, `totalRequest`, `totalResponse`) VALUES(@company_id, 0, 0)'); 
         $this->dbh->query('INSERT INTO Site (`companyId`, `domain`, `name`, `defaultFormId`) VALUES(@company_id, "'.$site.'", "'.$site_name.'", 1)');   
         $this->dbh->query('SET @site_id = LAST_INSERT_ID()');
-        $this->dbh->query('INSERT INTO User (`companyId`, `username`, `confirmed`, `password`, `encryptString`, `email`, `fullName`, `title`, `imId`)  
-                           VALUES (@company_id, "'.$name.'", 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
+        $this->dbh->query('INSERT INTO User (`companyId`, `username`, `account_owner`,`confirmed`, `password`, `encryptString`, `email`, `fullName`, `title`, `imId`)  
+                           VALUES (@company_id, "'.$name.'", 1, 1, "'.$password.'", "'.$encrypt_string.'", "'.$email.'", "'.$fullName.'", "CEO", 1)');
         $this->dbh->query('SET @user_id = LAST_INSERT_ID()');
         $this->dbh->query('INSERT INTO AuthAssignment (`itemname`, `userid`) VALUES ("Admin", @user_id)');
         $this->dbh->query('INSERT INTO Category (`companyId`, `intName`, `name`, `changeable`) 
