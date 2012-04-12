@@ -172,6 +172,12 @@ return array(
         Helpers::dump($widget);
     },
 
+    'GET /tests/heart_test' => function() { 
+        $tab_type = 'tab-r-black-heart';
+        preg_match('~(heart|like)~', $tab_type, $match);
+        Helpers::dump($match);
+    },
+
     'GET /tests/pull_feedback' => function() {        
         $params = Array(
             'company_id'   => 1 

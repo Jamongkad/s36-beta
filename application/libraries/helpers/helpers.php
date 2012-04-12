@@ -179,12 +179,14 @@ class Helpers {
     public static function tab_position($tab_type) {
         $match = null;  
         if ( preg_match('~tab-(br|bl|tr|tl)~', $tab_type, $match) ) {
-            $tab_pos = 'corner';
+            return 'corner';
         } else {
-            $tab_pos = 'side';
+            if( preg_match('~(heart|like)~', $tab_type, $match) ) {
+                return 'small-side';     
+            } else {
+                return 'side';     
+            } 
         } 
-
-        return $tab_pos; 
     }
 
     public static function wrap($object) {
