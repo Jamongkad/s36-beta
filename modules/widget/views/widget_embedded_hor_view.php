@@ -238,7 +238,9 @@
                                 $ctr++;
                             }
                         } else {
-                            echo "<div style='margin:0 auto;text-align:center'><h3>Sorry, no feedback here yet.</h3></div>";
+                            echo "<div style='margin:0 auto;text-align:center;padding-top:60px'>
+                                      <h2>Sorry, no feedback here yet.</h2>
+                                  </div>";
                         }
                     ?>
                 </div>
@@ -281,13 +283,15 @@
     </div>
     <div id="widgetFooter">
     	<div class="block">
-            <div class="thePagination">
-                <span id="pager">
-                    <span id="prev">◄</span>
-                    <span class="pagination"></span>
-                    <span id="next">►</span>
-                </span>
-            </div>
+            <?if($result):?>
+                <div class="thePagination">
+                    <span id="pager">
+                        <span id="prev">◄</span>
+                        <span class="pagination"></span>
+                        <span id="next">►</span>
+                    </span>
+                </div>
+            <?endif?>
             <div class="theFooterText">
                 <a href="#">Powered by 36Stories</a>
             </div>
