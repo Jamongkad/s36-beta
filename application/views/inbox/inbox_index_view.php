@@ -195,7 +195,7 @@
                                 <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
                                 <span class="permission"><?=$feed->permission?></span>
                                 <span class="status-change status"> Status: <span class="status-target"><?=$feed->status?></span>
-                                    <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                    <select style="display:none" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                                         <?foreach($status as $option):?>
                                             <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
                                             <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
@@ -204,7 +204,7 @@
                                 </span>
                                 <span class="priority-change priority">
                                     Priority: <span class="priority-target"><?=$feed->priority?></span>
-                                    <select name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                    <select style="display:none" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
                                         <?foreach($priority_obj as $key => $val):?>
                                             <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
                                         <?endforeach?>
