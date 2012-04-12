@@ -13,7 +13,7 @@
         <script type="text/javascript" src="http://www.liveleader.com/a/Hello?cid=69d46946-034a-498a-911b-e4508d14a78c;v=2"></script>
         <a class="ChatPoweredLink" href="http://www.liveleader.com">Live chat, live help, live support</a>
         <!--Live Leader Chat app-->
-    <?else?>
+    <?endif?>
 
 <?endif?>
 
