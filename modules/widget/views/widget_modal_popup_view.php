@@ -49,11 +49,6 @@
 
 	})
 </script>
-<?
-    $ctr = 0;
-    $units = 3;
-    $max = $row_count; 
-?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -79,9 +74,15 @@
     </div>
     <div class="widgetStyledBorder"></div>
     <div id="widgetBody">
+
         <div id="theSoloBox">
             <div id="theSoloSlides">
+            <?if($result):?>
                 <?php    
+
+                    $ctr = 0;
+                    $units = 3;
+                    $max = $row_count; 
                     foreach($result as $r) {
                         //avatar
                         $pic = trim($r->avatar);
@@ -277,15 +278,20 @@
             ?>
             </div>
         </div> 
+        <?else:?>
+            <div style='margin:0 auto;text-align:center;padding-top:60px'><h2>Sorry, no feedback here yet.</h2></div>
+        <?endif?>
     </div>
     <div id="widgetFooter">
     	<div class="block">
             <div class="thePagination">
-                <span id="pager">
-                    <span id="prev">◄</span>
-                    <span class="pagination"></span>
-                    <span id="next">►</span>
-                </span>
+                <?if($result):?>
+                    <span id="pager">
+                        <span id="prev">◄</span>
+                        <span class="pagination"></span>
+                        <span id="next">►</span>
+                    </span>
+                <?endif?>
             </div>
             <div class="theFooterText">
                 <a href="#">Powered by 36Stories</a>
