@@ -116,6 +116,13 @@
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
             This message was intended for <?=$address?>
             <br/> 
+
+            <p style="">
+                36Stories Inc<br/>
+                340 Lemon Ave #6168<br/>
+                Walnut CA, 91789<br/>
+                United States<br/>
+            </p>
             <!--
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />
             36Stories, Inc. P.O. Box 10005, Palo Alto, CA 94303

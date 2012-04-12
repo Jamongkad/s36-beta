@@ -30,6 +30,7 @@ return array(
         $opts = Array(
             'companyId' => $companyId
           , 'username' => 'steven'
+          , 'account_owner' => 1
           , 'password' => $password
           , 'email'  => $email
           , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
