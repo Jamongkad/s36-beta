@@ -2,7 +2,8 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
 //TODO: DO SOMETHING ABOUT THIS!!
-$form_themes = array(
+$form_themes = Helpers::$tab_themes;
+/*array(
     'aglow'=>'Aglow'
   , 'silver'=>'Silver'
   , 'chrome'=>'Chrome'
@@ -14,7 +15,7 @@ $form_themes = array(
   , 'mandarin'=>'Mandarin'
   , 'sleek-orange'=>'Sleek Orange'
   , 'thin-red'=>'Thin Red'
-);
+);*/
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) {
