@@ -181,7 +181,7 @@ class Helpers {
         if ( preg_match('~tab-(br|bl|tr|tl)~', $tab_type, $match) ) {
             $tab_pos = 'corner';
         } else {
-            $tab_pos = 'side';
+            $tab_pos = 'side tab-small-sidetab';
         } 
 
         return $tab_pos; 
