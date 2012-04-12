@@ -19,8 +19,7 @@
 				cursor:pointer;
                 z-index: 999999;
 			}
-            
-           
+                       
             .tab-small-sidetab{ 
                 position:fixed; 
                 width:31px; 

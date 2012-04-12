@@ -6,6 +6,7 @@ class Helpers {
 
     private static $request;
     private static $regex;
+    //TODO: From zeh database this should be Helpers Class managing too many things at once
     public static $tab_themes = Array(
             'aglow'=>'Aglow'
           , 'silver'=>'Silver'
@@ -160,43 +161,7 @@ class Helpers {
          return trim($iframe);
     }
 
-    public static function tab_position_css_output() { 
-        //TODO: From zeh database this should be
-        /*
-        $tab_themes = array(
-            'aglow'=>'Aglow'
-          , 'silver'=>'Silver'
-          , 'chrome'=>'Chrome'
-          , 'classic'=>'Classic'
-          , 'black'=>'Black'
-          , 'silver-gray'=>'Silver Gray'
-          , 'ocean-blue'=>'Ocean Blue'
-          , 'forest-green'=>'Forest Green'
-          , 'mandarin'=>'Mandarin'
-          , 'sleek-orange'=>'Sleek Orange'
-          , 'thin-red'=>'Thin Red'
-          , 'black-heart' => 'Black Heart'
-          , 'gray-heart' => 'Gray Heart'
-          , 'red-heart' => 'Red Heart'
-          , 'orange-heart' => 'Orange Heart'
-          , 'yellow-heart' => 'Yellow Heart'
-          , 'green-heart' => 'Green Heart'
-          , 'gray-like' => 'Gray Like'
-          , 'blue-like' => 'Blue Like'
-          , 'red-like' => 'Red Like'
-          , 'orange-like' => 'Orange Like'
-          , 'yellow-like' => 'Yellow Like'
-          , 'green-like' => 'Green Like'
-          , 'black-like-2' => 'Black Like 2'
-          , 'gray-like-2' => 'Gray Like 2'
-          , 'blue-like-2' => 'Blue Like 2'
-          , 'red-like-2' => 'Red Like 2'
-          , 'orange-like-2' => 'Orange Like 2'
-          , 'yellow-like-2' => 'Yellow Like 2'
-          , 'green-like-2' => 'Green Like 2'
-        );
-        */
-	
+    public static function tab_position_css_output() { 	
         $positions = Array();
         
         foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
