@@ -268,11 +268,6 @@ return array(
         return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
 
-    'GET /tests/static' => function() { 
-        Helpers::dump(Helpers::$tab_themes);
-    },
-
-
     //reserved route for Leica testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
