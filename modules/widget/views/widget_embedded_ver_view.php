@@ -96,114 +96,119 @@
 					$ctr = 0;
                     $units = 3;
                     $max = $row_count;
-					
-					foreach($result as $r){						
+				    if($result) { 
+                        foreach($result as $r){						
 
-						if(($ctr % $units) == 0){
-							echo '<div class="theFeedbacks grids">';
-							$end = 1;
-						}
-						if($end == 1){
-							$feedback_class = "theFeedback";
-						}elseif($end == 2){
-							$feedback_class = "theFeedback";
-						}else{
-							$feedback_class = "theFeedback";
-						}
-							
-                        //avatar
-                        $pic = trim($r->avatar);
-                        if ($r->rules->displayimg == 1) {
-                            if ($pic == '') {
-                                $avatar = "/img/48x48-blank-avatar.jpg";
-                            }else{
-                                $avatar = "/uploaded_cropped/48x48/".$pic;
+                            if(($ctr % $units) == 0){
+                                echo '<div class="theFeedbacks grids">';
+                                $end = 1;
                             }
-                        } else {
-                            $avatar = "/img/48x48-blank-avatar.jpg";
-                        }
+                            if($end == 1){
+                                $feedback_class = "theFeedback";
+                            }elseif($end == 2){
+                                $feedback_class = "theFeedback";
+                            }else{
+                                $feedback_class = "theFeedback";
+                            }
+                                
+                            //avatar
+                            $pic = trim($r->avatar);
+                            if ($r->rules->displayimg == 1) {
+                                if ($pic == '') {
+                                    $avatar = "/img/48x48-blank-avatar.jpg";
+                                }else{
+                                    $avatar = "/uploaded_cropped/48x48/".$pic;
+                                }
+                            } else {
+                                $avatar = "/img/48x48-blank-avatar.jpg";
+                            }
 
-                        //country code for the class
-                        $cc = '&nbsp;'; 	
-                        if($r->rules->displaycountry == 1) {
-                            $cc = strtolower($r->countrycode);        
-                        }
-							
-						//date 
-                        $data = '&nbsp;';
-                        if($r->rules->displaysbmtdate == 1)  { 
-                            if(trim($r->date) != ""){
-                                $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
-                            }                        
-                        }
-							
-                        //check if name is available: 
-                        $name = '&nbsp;';
-                        if ($r->rules->displayname == 1) { 
-                            if((trim($r->firstname) != "")){  
-                                $name = $r->firstname.' '.$r->lastname; 
-                            }                        
-                        }
+                            //country code for the class
+                            $cc = '&nbsp;'; 	
+                            if($r->rules->displaycountry == 1) {
+                                $cc = strtolower($r->countrycode);        
+                            }
+                                
+                            //date 
+                            $data = '&nbsp;';
+                            if($r->rules->displaysbmtdate == 1)  { 
+                                if(trim($r->date) != ""){
+                                    $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                                }                        
+                            }
+                                
+                            //check if name is available: 
+                            $name = '&nbsp;';
+                            if ($r->rules->displayname == 1) { 
+                                if((trim($r->firstname) != "")){  
+                                    $name = $r->firstname.' '.$r->lastname; 
+                                }                        
+                            }
 
-	
-                        $comp = '&nbsp;';								
-                        if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                            $comp = $r->position.', '.$r->companyname;								
-                        }
-                        
-                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                            $comp = $r->companyname;								
-                        }
+        
+                            $comp = '&nbsp;';								
+                            if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
+                                $comp = $r->position.', '.$r->companyname;								
+                            }
+                            
+                            if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                                $comp = $r->companyname;								
+                            }
 
-                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            $comp = $r->position;								
-                        }								
+                            if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
+                                $comp = $r->position;								
+                            }								
 
-                        $maxchars = 72;							
-                        if(strlen(trim($r->text)) <= $maxchars){
-                            $text = $r->text . ' <br />';																
-                        }else{
-                            $text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
-                        }							
-                        echo '<div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">                    
-                              <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$r->text.'</p>" />                        	
-                                <div class="block">	
-                                    <div class="theFeedbackAvatar">
-                                        <img src="'.$avatar.'" />
-                                        <div class="flag flag-'.$cc.' flag-fix"></div>
+                            $maxchars = 72;							
+                            if(strlen(trim($r->text)) <= $maxchars){
+                                $text = $r->text . ' <br />';																
+                            }else{
+                                $text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+                            }							
+                            echo '<div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">                    
+                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$r->text.'</p>" />                        	
+                                    <div class="block">	
+                                        <div class="theFeedbackAvatar">
+                                            <img src="'.$avatar.'" />
+                                            <div class="flag flag-'.$cc.' flag-fix"></div>
+                                        </div>
+                                        <div class="theFeedbackAuthorInfo">
+                                            <div class="theFeedbackAuthorName large">'.$name.'</div>
+                                            <div class="theFeedbackAuthorCompany normal">'.$comp.'</div>
+                                            <div class="block">
+                                                <div class="theFeedbackText" feed-id="'.$r->id.'">
+                                                    '.$text.'
+                                                </div>
+                                            </div>
+                                        </div>                       
                                     </div>
-                                    <div class="theFeedbackAuthorInfo">
-                                        <div class="theFeedbackAuthorName large">'.$name.'</div>
-                                        <div class="theFeedbackAuthorCompany normal">'.$comp.'</div>
-                                        <div class="block">
-                                            <div class="theFeedbackText" feed-id="'.$r->id.'">
-                                                '.$text.'
+                                    <div class="block">
+                                        <div class="theFeedbackShare">
+                                            <div class="grids">
+                                                <div class="g1of3">
+                                                    <div class="theShareIcon"><a href="javascript:;" feed-id="'.$r->id.'" class="share" style="display: inline; "></a>&nbsp;</div>
+                                                </div>
+                                                <div class="g2of3">
+                                                    <div class="theFeedbackDate small align-right">'.$date.'</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>                       
-                                </div>
-                                <div class="block">
-                                    <div class="theFeedbackShare">
-                                        <div class="grids">
-                                            <div class="g1of3">
-                                                <div class="theShareIcon"><a href="javascript:;" feed-id="'.$r->id.'" class="share" style="display: inline; "></a>&nbsp;</div>
-                                            </div>
-                                            <div class="g2of3">
-                                                <div class="theFeedbackDate small align-right">'.$date.'</div>
-                                            </div>
+                                        <div class="theSocialButtons">                                   
+                                            <div class="shareTail"></div>
                                         </div>
                                     </div>
-                                    <div class="theSocialButtons">                                   
-                                        <div class="shareTail"></div>
-                                    </div>
-                                </div>
-                            </div>';
-						if(($end == $units) || $ctr == ($max - 1)){
-							echo '</div>';
-						}
-						$end++;
-						$ctr++;
-					}
+                                </div>';
+                            if(($end == $units) || $ctr == ($max - 1)){
+                                echo '</div>';
+                            }
+                            $end++;
+                            $ctr++;
+                        }
+                    } else { 
+                        echo "<div style='margin:0 auto;text-align:center;padding-top:60px'>
+                                  <h2>Sorry, no feedback here yet.</h2>
+                              </div>";
+                    }
 				?>
             </div>
         </div>
@@ -252,11 +257,13 @@
         </div>
     </div>
     <div class="thePagination block">
-        <span id="pager">
-            <span id="prev">◄</span>
-            <span class="pagination"></span>
-            <span id="next">►</span>
-        </span>
+        <?if($result):?>
+            <span id="pager">
+                <span id="prev">◄</span>
+                <span class="pagination"></span>
+                <span id="next">►</span>
+            </span>
+        <?endif?>
     </div>
     <div id="widgetFooter" class="block">
         <div class="theFooterText">
