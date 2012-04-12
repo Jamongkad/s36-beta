@@ -11,7 +11,9 @@ return array(
                       ->join('AuthAssignment', 'AuthAssignment.userId', '=', 'User.userId')
                       ->where('User.companyId', '=', $company_id)->get();
 
-        return View::of_layout()->partial('contents', 'admin/admin_index_view', Array('admins' => $admins, 'user_id' => $admin->userid, 'role' => $role));
+        return View::of_layout()->partial('contents', 'admin/admin_index_view', 
+                                          Array('admins' => $admins, 'user_id' => $admin->userid, 'account_owner' => $admin->account_owner
+                                                ,'role' => $role));
     }),
 
     'GET /admin/add_admin' => Array('name' => 'add_admin', 'before' => 's36_auth', 'do' => function() {
