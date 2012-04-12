@@ -14,7 +14,7 @@
                         <tr><td>Username/email:</td><td><?=Form::text('username')?></td></tr>
                         <tr><td>Password:</td>
                             <td><?=Form::password('password')?><br/>
-                                <?=HTML::link('resend_password', 'forgot password?')?>
+                                <?=HTML::link('resend_password', 'Forgot password?')?>
                             </td>
                         </tr>
                         <tr><td><?=Form::submit('login', array('class' => 'login-btn'))?></td></tr>

@@ -12,8 +12,8 @@
                         <tr><td>Enter your email:</td>
                             <td>
                                <?=Form::text('email')?>
-                               <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
-                               <?=($warning) ? "<p style='color:red; padding-left:10px'>".$warning."</p>" : null?>
+                               <?=($errors) ? "<p style='color:#7093b2; padding-left:10px'>".$errors->first('email')."</p>" : null?>
+                               <?=($warning) ? "<p style='color:#7093b2; padding-left:10px'>".$warning."</p>" : null?>
                                <?=Form::submit('submit')?>
                             </td>
                         </tr>
