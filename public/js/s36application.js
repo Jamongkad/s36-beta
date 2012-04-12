@@ -248,8 +248,6 @@ jQuery(function($) {
     check.init(); 
     check.clickAll();
 
-    $('.status-change > select, .priority-change > select').hide();
-
     var statusChange = new DropDownChange({status_element: 'span.status-change', status_selector: 'change.status'});
     statusChange.enable();
     var priorityChange = new DropDownChange({status_element: 'span.priority-change', status_selector: 'change.priority'});
