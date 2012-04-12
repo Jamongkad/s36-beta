@@ -18,7 +18,18 @@
 				background-position:no-repeat;
 				cursor:pointer;
                 z-index: 999999;
-			}';
+			}
+            
+           
+            .tab-small-sidetab{ 
+                position:fixed; 
+                width:31px; 
+                height:28px; 
+                background-position:no-repeat; 
+                cursor:pointer; 
+                z-index: 999999;
+            }
+            ';
 	
 	foreach($positions as $pos => $theme){
 		if($pos == 'bl'){

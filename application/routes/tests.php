@@ -206,7 +206,7 @@ return array(
 
     'GET /tests/compress' => function() {
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
-
+        /*
         $js_scripts = Array(
            'js/jquery.switcharoo.js'
          , 'js/jquery.fancytips.js'
@@ -228,6 +228,14 @@ return array(
          , 'js/FeedSetup.js'
          , 'js/Status.js'
          , 'js/s36application.js'
+        );
+        */
+        $js_scripts = Array( 
+             'js/jquery.jcrop.js' 
+           , 'js/jquery.ajaxfileupload.js'
+           , 'js/s36FormModule.js'
+           , 'js/cycle.function.js'
+           , 'js/widget/form.js'
         );
 
         foreach($js_scripts as $js_file) {
