@@ -59,7 +59,10 @@
 
 #s36PopupWidgetSendFeedback{
 	position:absolute;
-	left:520px;
+    /*same thing here when viewall button returns
+     * left:520px;
+     * */
+	left:620px;
 	top:22px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight:bold;
@@ -92,6 +95,14 @@
 }
 
 #s36_widget_button:hover{background-position:top;}
-.s36_embed_block_x{font-family:Arial, Helvetica, sans-serif;font-weight:bold;color:#333;position:absolute;top:15px;right:170px;z-index:10000}
+.s36_embed_block_x{
+    font-family:Arial, Helvetica, sans-serif;font-weight:bold;
+    color:#333;
+    position:absolute;top:15px;
+    /*Temporary until viewall button is fixed*/
+    /*right:170px;*/
+    right:70px;
+    z-index:10000
+}
 .s36_embed_block_y{font-family:Arial, Helvetica, sans-serif;font-weight:bold;color:#333;position:absolute;bottom:58px;left:5px;z-index:10000}
 .s36_embed_block_y a,.s36_embed_block_x a{color:#333 !important;font-size:13px !important;font-weight:bold !important;}
