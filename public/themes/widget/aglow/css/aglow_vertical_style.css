@@ -5,6 +5,7 @@
 	margin:0px;
 	min-width:250px;
 	position:relative;
+    background:#fff;
 }
 .block{
 	display:block;
