@@ -260,20 +260,14 @@
       <div class="woops">
             <h2 class="woops-header">Woops. There's no feedback here.</h2><br/><br/>
             <p class="woops-content">
-                <?if($filter == 'published'):?>
-                    Looks like you haven’t published any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. either that,
-                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
-                <?elseif($filter == 'featured'):?>
-                    Looks like you haven’t featured any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. either that,
-                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
-                <?elseif($filter == 'filed'):?>
-                    Looks like you haven’t filed any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. either that,
-                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
-
-                <?else:?>
+               <?if($filter == 'all'):?>
                     Have you <?=HTML::link('feedsetup', 'set up your feedback form', Array('class' => 'woops-a'))?> 
                         on your website already? 
-                <?endif?>
+               <?else:?>
+                    Looks like you haven’t <?=$filter?> any feedback from your <?=HTML::link('inbox/all', 'inbox', Array('class' => 'woops-a'))?> yet.. <br/>either that,
+                    have you set up your <?=HTML::link('feedsetup' , 'feedback form', Array('class' => 'woops-a'))?> on your website already?
+               
+               <?endif?>
             </p>
       </div>
 <?endif?>
