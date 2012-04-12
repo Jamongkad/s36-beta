@@ -49,10 +49,10 @@
             <?else:?>
                 <div class="woops">
                     <h2 class="woops-header">  
-                         <?=HTML::link('feedsetup/widget_selection', 'Create your feedback submission form', Array('class' => 'woops-header'))?> 
+                         <?=HTML::link('feedsetup/submission_widgets', 'Create your feedback submission form', Array('class' => 'woops-header'))?> 
                     </h2>
                     <p class="woops-content">
-                    <?=HTML::link('feedsetup/widget_selection', 'Start receiving feedback from you customers/visitors', Array('class' => 'woops-a'))?> 
+                    <?=HTML::link('feedsetup/submission_widgets', 'Start receiving feedback from your customers/visitors', Array('class' => 'woops-a'))?> 
                     </p>
                 </div>
             <?endif?>
