@@ -81,7 +81,7 @@
                             <!-- category picker -->
                             <div class="base-popup category-picker-holder" style="display:none" id="<?=$id?>">
                                 <div class="popup-arrow"></div>
-                                <div style="padding-bottom:4px">File this feedback as:</div>
+                                <div style="padding-bottom:4px"><b>File this feedback as:</b></div>
                                 <ul class="category-picker" id="<?=$feed->categoryid?>">
                                   <?foreach($categories as $cat):?> 
                                      <li>
