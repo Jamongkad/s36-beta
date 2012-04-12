@@ -268,8 +268,13 @@ return array(
         return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
 
-    //reserved route for Leica testing
+    //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
+    },
+
+    'GET /tests/ryan' => function() {
+        return View::make('tests/ryan_view');
     }
+
 );
