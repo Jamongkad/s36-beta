@@ -35,6 +35,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'left:0px;';
 				$class .= 'bottom:0px}';
 			}
@@ -42,6 +44,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'right:0px;';
 				$class .= 'bottom:0px}';
 			}
@@ -49,6 +53,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'left:0px;';
 				$class .= 'top:0px}';
 			}
@@ -56,6 +62,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'right:0px;';
 				$class .= 'top:0px}';
 			}			
@@ -63,6 +71,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'left:0px;';
 				$class .= 'top:20%}';	
 			}
@@ -70,6 +80,8 @@
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
 				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+                $class .= 'background-color:transparent;'
+                $class .= 'border:none;'
 				$class .= 'right:0px;';
 				$class .= 'top:20%}';
 			}
