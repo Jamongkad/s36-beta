@@ -93,7 +93,7 @@ $(function() {
         <div class="grids">
             <div class="g4of5">
                 <!-- email picker block-->            
-                <div class="base-popup fast-forward-holder modify-page" id="<?=$id?>">
+                <div class="base-popup fast-forward-holder modify-page" style="display:none" id="<?=$id?>">
                     <div class="popup-arrow"></div>
                     <div class="email-list">
                         <?if($admin_check->ffemail1 || $admin_check->ffemail2 || $admin_check->ffemail3):?>
