@@ -153,7 +153,7 @@
                                 }
              
                                 //date
-                                $data = '&nbsp;';
+                                $date = '&nbsp;';
                                 if($r->rules->displaysbmtdate == 1)  { 
                                     if($r->date != false) {
                                         $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
