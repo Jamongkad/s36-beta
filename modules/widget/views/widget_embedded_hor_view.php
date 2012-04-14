@@ -226,9 +226,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--
                                                 <div class="theSocialButtons">                                   
                                                     <div class="shareTail"></div>
                                                 </div>
+                                                -->
                                             </div>
                                         </div>
                                     </div>';
@@ -266,6 +268,7 @@
                             </div>                       
                             <div class="soloFeedbackText">                        	
                             </div>                        
+                            <!--
                             <div class="soloFeedbackSocialButtons">                        	
                                 <!-- twitter widget -->                            
                                 <div class="twitter-button">
@@ -277,6 +280,7 @@
                                     <div class="fb-like" data-href="http://webmumu.com" data-send="true" data-width="450" data-show-faces="false"></div>
                                 </div>                                                        
                             </div>                                               
+                            -->
                         </div>                    
                     </div>
                 </div>

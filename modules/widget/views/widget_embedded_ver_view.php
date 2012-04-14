@@ -193,9 +193,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!--
                                         <div class="theSocialButtons">                                   
                                             <div class="shareTail"></div>
                                         </div>
+                                        -->
                                     </div>
                                 </div>';
                             if(($end == $units) || $ctr == ($max - 1)){
@@ -229,6 +231,7 @@
                         </div>
                        
                         <div class="soloFeedbackText"></div>                        
+                        <!--
                         <div class="soloFeedbackSocialButtons block">                        	
                             <!-- twitter widget -->                            
                             <div class="twitter-button">
@@ -241,6 +244,7 @@
                                 <iframe src="//www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>
                             </div>                                                        
                         </div>                                               
+                        -->
                     </div>                    
                 </div>
             </div>
