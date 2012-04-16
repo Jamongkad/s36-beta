@@ -13,34 +13,37 @@
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
-        <script>
-           <?
-               $js_scripts = Array(
-                   '/js/jquery.switcharoo.js'
-                 , '/js/jquery.fancytips.js'
-                 , '/js/jquery.cycle.all.min.js'
-                 , '/js/jquery.form.js'
-                 , '/js/jquery.tmpl.js'
-                 , '/js/jquery.jcrop.js'
-                 , '/js/jquery.ajaxfileupload.js'
-                 , '/js/jquery.zclip.js' 
-                 , '/js/jquery.flot.js'
-                 , '/js/jquery.flot.pie.js'
-                 , '/js/jquery.pjax.js'
-                 , '/js/jquery.timeago.js'
-                 , '/js/s36LightBox.js'
-                 , '/js/ZClip.js'
-                 , '/js/Checky.js'
-                 , '/js/DropDownChange.js'
-                 , '/js/InboxStatusChange.js'
-                 , '/js/InboxFilters.js'
-                 , '/js/FeedSetup.js'
-                 , '/js/Status.js'
-                 , '/js/s36application.js'
-               );
-               $string = '"' . implode('","', $js_scripts) . '"';
-           ?> 
-           head.js(<?=$string?>);
+       <?
+           $js_scripts = Array(
+               '/js/jquery.switcharoo.js'
+             , '/js/jquery.fancytips.js'
+             , '/js/jquery.cycle.all.min.js'
+             , '/js/jquery.form.js'
+             , '/js/jquery.tmpl.js'
+             , '/js/jquery.jcrop.js'
+             , '/js/jquery.ajaxfileupload.js'
+             , '/js/jquery.zclip.js' 
+             , '/js/jquery.flot.js'
+             , '/js/jquery.flot.pie.js'
+             , '/js/jquery.pjax.js'
+             , '/js/jquery.timeago.js'
+             , '/js/s36LightBox.js'
+             , '/js/ZClip.js'
+             , '/js/Checky.js'
+             , '/js/DropDownChange.js'
+             , '/js/InboxStatusChange.js'
+             , '/js/InboxFilters.js'
+             , '/js/FeedSetup.js'
+             , '/js/Status.js'
+             , '/js/s36application.js'
+           );
+           //$string = '"' . implode('","', $js_scripts) . '"';
+       ?> 
+        <script text="text/javascript">
+           //head.js(<?//=$string?>);
+            <?foreach($js_scripts as $scripts):?>
+               head.js('<?=$scripts?>');
+            <?endforeach?>
         </script>
     </meta>    
 </head>
