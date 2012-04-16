@@ -195,8 +195,6 @@ jQuery(function($) {
             $('div.email-list > ul.email-picker li[id^=email]', this)
             .live('click', function() {
                 var me = $(this);
-                console.log(me);
-                /*
                 me.parent().hide()
                        .siblings('.ff-form')
                        .ajaxForm({
@@ -211,7 +209,6 @@ jQuery(function($) {
                            .children('.ff-forward-to').html($(this).html()).end()
                            .children('input[name="email"]').val($('a', this).html()).end()
                        .show();
-                */
             });
             mouse_is_inside = true;  
         }, function() {
