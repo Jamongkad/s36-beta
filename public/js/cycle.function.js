@@ -375,6 +375,7 @@ PageCycle.prototype._crop_photo = function(){
 	   init = 1;
 	   S36Form.init_jcrop();
        $('#steps').cycle(4);
+       console.log('initialize crop');
 	}else{
 	   S36Form.jcrop_api.release();
 	   S36Form.jcrop_api.setImage(this.is_photo);
