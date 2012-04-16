@@ -392,7 +392,13 @@
     );
 ?>
 <script text="text/javascript">
-    <?foreach($js_scripts as $scripts):?>
-       head.js('<?=$scripts?>');
-    <?endforeach?>
+    <?//foreach($js_scripts as $scripts):?>
+       //head.js('<?//=$scripts?>');
+    <?//endforeach?>
+
+    head.js('/js/form.js', '/js/cycle.function.js', function() {
+        head.js('/js/s36FormModule.js');
+        head.js('/js/jquery.jcrop.js');
+        head.js('/js/jquery.ajaxfileupload.js');
+    })
 </script>
