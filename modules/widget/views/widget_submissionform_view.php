@@ -393,5 +393,5 @@
 ?>
 
 <?foreach($js_scripts as $scripts):?>
-   <?=HTML::script('"'.$scripts.'"');?>
+   <?=HTML::script("'".$scripts."'");?>
 <?endforeach?>
