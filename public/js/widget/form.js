@@ -3,7 +3,8 @@
  */
 
 jQuery(function($) {    
-    $(window).load(function() {
+    var loading = "pwet";
+    $(window).load(loading, function() {
         // start the rating slider
         S36Form.start_slider();
         S36Form.default_text();  
