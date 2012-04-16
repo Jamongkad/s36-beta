@@ -390,15 +390,8 @@
        , '/js/cycle.function.js'
        , '/js/widget/form.js'
     );
-    /*
-    foreach($js_scripts as $scripts) {
-        echo HTML::script($scripts);
-    } 
-    */
-    //$string = '"' . implode('","', $js_scripts) . '"';
 ?>
 <script text="text/javascript">
-//head.js(<?//=$string?>);
     <?foreach($js_scripts as $scripts):?>
        head.js('<?=$scripts?>');
     <?endforeach?>
