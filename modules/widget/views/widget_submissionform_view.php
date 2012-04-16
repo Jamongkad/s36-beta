@@ -384,21 +384,14 @@
 </body>
 <?
     $js_scripts = Array(
-         '/js/s36FormModule.js'
-       , '/js/jquery.jcrop.js' 
+         '/js/jquery.jcrop.js' 
+       , '/js/s36FormModule.js'
        , '/js/jquery.ajaxfileupload.js'
        , '/js/cycle.function.js'
        , '/js/widget/form.js'
     );
 ?>
-<script text="text/javascript">
-    <?//foreach($js_scripts as $scripts):?>
-       //head.js('<?//=$scripts?>');
-    <?//endforeach?>
 
-    head.js('/js/widget/form.js', '/js/cycle.function.js', function() {
-        head.js('/js/s36FormModule.js');
-        head.js('/js/jquery.jcrop.js');
-        head.js('/js/jquery.ajaxfileupload.js');
-    })
-</script>
+<?foreach($js_scripts as $scripts):?>
+   HTML::script('<?=$scripts?>');
+<?endforeach?>
