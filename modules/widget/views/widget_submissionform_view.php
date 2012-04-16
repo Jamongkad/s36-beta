@@ -109,9 +109,9 @@
                         </ul>
                     </div>
                     <br />
-                    <h4>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h4>
+                    <h3>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
                     <div id="s36_whattowrite">
-                    	<p><?=$form_question?></p>
+                    	<h4><?=$form_question?></h4>
                     <br />
                     </div>
                     <div class="feedback">
