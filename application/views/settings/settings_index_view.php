@@ -31,7 +31,7 @@
         </div>                    
     </div>
     <div class="grids border-bottom">
-        <div style="padding:8px 0px;">
+        <div style="padding:8px 0px 0px;">
             <strong style="margin-left:6px;">Reply–To Email Address</strong>
             <br/>
             <span style="margin-left:6px;">Configure the email address that you would like to reply to your customers with.</span>
