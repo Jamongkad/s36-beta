@@ -466,17 +466,18 @@ var S36Form = new function() {
 		if(company == "Company Name"){
 			company  = "";
 		}
-        /*
-        $('<img />').attr('src', photo)
-        .load(function(){       
-        });
-        */
+        $("#next").fadeOut("fast");
+        $("#back").fadeOut("fast");
+        $('#loading').html('Loading Image...');
 
 		$('#review-name').html(fname+" "+lname);
 		$('#review-position').html(position +" "+company);
 		$('#review-location').html(location+" "+flag);
 		$('#review-photo').attr('src', photo).load(function() {
-            console.log("fully loaded");     
+            $('#next').fadeIn('fast');
+            $('#loading').fadeOut('fast',function(){
+                $(this).html('Uploading Image...');
+            });
         })
 		$('#review-feedback').html(feedback); 
     };
