@@ -604,5 +604,9 @@ ul.category-box{
     font-weight:bold;
 }
 li.configure-ff-link a {
-    padding: 0px;
+    padding: 0px !important;
+}
+
+li.configure-ff-link a:hover {
+    background: none !important;
 }
