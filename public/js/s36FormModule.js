@@ -429,6 +429,7 @@ var S36Form = new function() {
             onSelect: that.show_preview,
             aspectRatio: 1
         }, function() {
+            console.log('re-initialize crop');
             that.jcrop_api = this;
             var jcwid = $('.jcrop-holder').width();
             that.change_jcrop_div(jcwid);
