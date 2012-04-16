@@ -388,8 +388,8 @@
     $js_scripts = Array(
          '/js/jquery.jcrop.js' 
        , '/js/jquery.ajaxfileupload.js'
-       , '/js/s36FormModule.js'
        , '/js/cycle.function.js'
+       , '/js/s36FormModule.js'
        , '/js/widget/form.js'
     );
 
