@@ -496,6 +496,7 @@ var S36Form = new function() {
                     that.change_images(data.dir, 'native');
                     that.fetch_new_image(data.dir);
                     that.change_jcrop_div(data.wid);
+                    that.init_jcrop();
                 } else { 
                     loader.html(data.error);
                 } 
