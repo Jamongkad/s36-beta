@@ -385,7 +385,7 @@
 <?
     $js_scripts = Array(
          '/js/s36FormModule.js'
-       , '/js/jquery.jcrop.js' p
+       , '/js/jquery.jcrop.js' 
        , '/js/jquery.ajaxfileupload.js'
        , '/js/cycle.function.js'
        , '/js/widget/form.js'
