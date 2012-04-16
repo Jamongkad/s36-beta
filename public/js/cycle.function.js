@@ -232,15 +232,13 @@ PageCycle.prototype.cycle_prev = function() {
 			if(val){ 
 				// if form is validated..				
 				// assign all values to the review slide, argument: false if not from jcrop				
+                that._jcrop_initializer();
 				S36Form.assign_to_review(this.is_photo);
 				$('#crop_photo').click(function(e){
-					//that._crop_photo();
                     that._cropper_page();
                     e.preventDefault();
 				});
-
-                that._crop_photo();
-				
+	
 				if(S36Form.strstr(this.is_photo,'media.linkedin.com')){
                     if($('#ln_flag').val() == 1) {
                         $('#crop_photo').hide();
@@ -369,13 +367,12 @@ PageCycle.prototype.cycle_prev = function() {
 ||  The Cropper 
 ||---------------------------------------
 */
-PageCycle.prototype._crop_photo = function(){
+PageCycle.prototype._jcrop_initializer = function(){
 	this._debug("Cropper Page");		
 	if(init <= 0){
 	   init = 1;
 	   S36Form.init_jcrop();
        $('#steps').cycle(4);
-       console.log('initialize crop');
 	}else{
 	   S36Form.jcrop_api.release();
 	   S36Form.jcrop_api.setImage(this.is_photo);
