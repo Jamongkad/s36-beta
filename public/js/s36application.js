@@ -192,7 +192,7 @@ jQuery(function($) {
 
         selector.show()
         .hover(function() { 
-            $('div.email-list > ul.email-picker li', this)
+            $('div.email-list > ul.email-picker li[id^=email]', this)
             .live('click', function() {
                 var me = $(this);
                 console.log(me);
