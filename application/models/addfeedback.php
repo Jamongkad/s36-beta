@@ -92,6 +92,5 @@ class AddFeedback {
         $dash = new DBDashboard; 
         $dash->company_id = Input::get('company_id');
         $dash->write_summary();
-        //if($login_type == '36') { @unlink($src); }
     }
 }
