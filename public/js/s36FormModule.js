@@ -466,10 +466,18 @@ var S36Form = new function() {
 		if(company == "Company Name"){
 			company  = "";
 		}
+        /*
+        $('<img />').attr('src', photo)
+        .load(function(){       
+        });
+        */
+
 		$('#review-name').html(fname+" "+lname);
 		$('#review-position').html(position +" "+company);
 		$('#review-location').html(location+" "+flag);
-		$('#review-photo').attr('src', photo);
+		$('#review-photo').attr('src', photo).load(function() {
+            console.log("fully loaded");     
+        })
 		$('#review-feedback').html(feedback); 
     };
 
