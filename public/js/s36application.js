@@ -153,6 +153,7 @@ jQuery(function($) {
     
     //FastForward Email Block...fuck this is a mess...
     //$('div.category-picker-holder, div.fast-forward-holder, .ff-form, #notification-message').hide();
+    $(".ff-form").hide();
     var mouse_is_inside = false;
     $('.contact, .fileas, .forward').hover(function() {
         mouse_is_inside = true;  
@@ -194,6 +195,8 @@ jQuery(function($) {
             $('div.email-list > ul.email-picker li', this)
             .live('click', function() {
                 var me = $(this);
+                console.log(me);
+                /*
                 me.parent().hide()
                        .siblings('.ff-form')
                        .ajaxForm({
@@ -208,6 +211,7 @@ jQuery(function($) {
                            .children('.ff-forward-to').html($(this).html()).end()
                            .children('input[name="email"]').val($('a', this).html()).end()
                        .show();
+                */
             });
             mouse_is_inside = true;  
         }, function() {
