@@ -383,7 +383,7 @@
 </div>
 </body>
 
-<script text="text/javascript">
+
 <?
     $js_scripts = Array(
          '/js/jquery.jcrop.js' 
@@ -393,11 +393,11 @@
        , '/js/widget/form.js'
     );
     foreach($js_scripts as $scripts) {
-        HTML::script($scripts);
+        echo HTML::script($scripts);
     }
     
     //$string = '"' . implode('","', $js_scripts) . '"';
 ?>
-
+<script text="text/javascript">
 //head.js(<?//=$string?>);
 </script>
