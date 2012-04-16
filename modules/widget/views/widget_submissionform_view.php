@@ -392,9 +392,12 @@
        , '/js/cycle.function.js'
        , '/js/widget/form.js'
     );
-
-    $string = '"' . implode('","', $js_scripts) . '"';
+    foreach($js_scripts as $scripts) {
+        HTML::script($scripts);
+    }
+    
+    //$string = '"' . implode('","', $js_scripts) . '"';
 ?>
 
-head.js(<?=$string?>);
+//head.js(<?//=$string?>);
 </script>
