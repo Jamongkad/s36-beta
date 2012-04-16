@@ -128,8 +128,6 @@ class ProfileImage {
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
 
         echo $this->date."-cropped.jpg";  
-        //Garbage collect local upload
-        if($login_type == '36') { @unlink($src); }
     }
 
     public static function upload() { 
