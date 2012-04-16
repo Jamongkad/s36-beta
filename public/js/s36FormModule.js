@@ -21,7 +21,8 @@ $.fn.selected = function(select) {
 };
 
 var S36Form = new function() {
-    //var jcrop_api;
+
+    var jcrop_api;
     var that = this;
 
     this.show_preview = function(coords) {
@@ -420,9 +421,6 @@ var S36Form = new function() {
     };
 
     this.init_jcrop = function() {  
-
-        var jcrop_api;
-
         $('#jcrop_target').Jcrop({
             setSelect: ['40','20','190','170'],
             boxWidth: 350,
@@ -430,8 +428,8 @@ var S36Form = new function() {
             onChange: that.show_preview,
             onSelect: that.show_preview,
             aspectRatio: 1
-        }, function(){
-            jcrop_api = this;
+        }, function() {
+            that.jcrop_api = this;
             var jcwid = $('.jcrop-holder').width();
             that.change_jcrop_div(jcwid);
         });
