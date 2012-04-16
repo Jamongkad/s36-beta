@@ -153,7 +153,6 @@ jQuery(function($) {
     
     //FastForward Email Block...fuck this is a mess...
     //$('div.category-picker-holder, div.fast-forward-holder, .ff-form, #notification-message').hide();
-    $(".ff-form").hide();
     var mouse_is_inside = false;
     $('.contact, .fileas, .forward').hover(function() {
         mouse_is_inside = true;  
