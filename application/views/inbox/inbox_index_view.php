@@ -59,7 +59,7 @@
                                                 <?=($admin_check->alias3) ? $admin_check->alias3 : "Name 3"?> : <a href="javascript:;"><?=$admin_check->ffemail3?></a> 
                                             </li>
                                         <?endif?>
-                                        <li><?=HTML::link('settings', 'Configure fast forward settings')?></li>
+                                        <li class="configure-ff-link"><?=HTML::link('settings', 'Configure fast forward settings')?></li>
                                     </ul>
                                     <?else:?>
                                         <?=HTML::link('settings', 'Configure your fast forward settings')?> 

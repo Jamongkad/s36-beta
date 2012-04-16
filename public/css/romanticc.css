@@ -603,3 +603,6 @@ ul.category-box{
     text-shadow:#e09107 0px 1px;
     font-weight:bold;
 }
+li.configure-ff-link a {
+    padding: 0px;
+}
