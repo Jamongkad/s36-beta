@@ -3,7 +3,7 @@
  */
 
 jQuery(function($) {    
-    var loading = "pwet";
+    var loading = "<img src='/img/submission-loader.gif' />";
     $(window).load(loading, function() {
         // start the rating slider
         S36Form.start_slider();
