@@ -3,8 +3,7 @@
  */
 
 jQuery(function($) {    
-    var loading = "<img src='/img/submission-loader.gif' />";
-    $(window).load(loading, function() {
+    $(window).load(function() {
         // start the rating slider
         S36Form.start_slider();
         S36Form.default_text();  
