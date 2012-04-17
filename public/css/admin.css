@@ -43,8 +43,7 @@ end of reset */
 #admin-panel .left-panel .left-menu ul li.setup     a{background:url(../img/ico-setup.png) no-repeat left top;}
 #admin-panel .left-panel .left-menu ul li.contacts  a{background:url(../img/ico-contacts.png) no-repeat left top;}
 
-/*#admin-panel .left-panel .left-menu ul li sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:11px;box-shadow:#57626c 0px 1px 2px;padding:1px 8px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;position:absolute;top:12px;}*/
-sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:11px;box-shadow:#57626c 0px 1px 2px;padding:1px 8px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;position:absolute;top:3px;}
+sup.count{background:#d92222;text-shadow:#a31a1a 0px -1px;color:#FFF;font-size:11px;box-shadow:#57626c 0px 1px 2px;padding:1px 8px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;top:-2px;}
 /* hover state */
 #admin-panel .left-panel .left-menu ul li:hover,#admin-panel .left-panel .left-menu ul li.selected{background:#768591;}
 #admin-panel .left-panel .left-menu ul li:hover a,#admin-panel .left-panel .left-menu ul li.selected a{color:#FFF;background-position:left bottom;}
