@@ -1,10 +1,14 @@
 <?php namespace Halcyonic\Services;
 
+use S36Auth;
+
 class HalcyonicService {
 
-    private $redis;
+    private $redis, $auth;
 
     public function __construct()  {
         $this->redis = new \redisent\Redis; 
+        $this->auth = new S36Auth;
     }
+ 
 }

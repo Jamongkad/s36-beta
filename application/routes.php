@@ -42,7 +42,6 @@ return array(
 
     'POST /login' => function() {
         $input = Input::get();        
-        $redis = new redisent\Redis;
         $auth = new S36Auth;
 
         $rules = Array(
