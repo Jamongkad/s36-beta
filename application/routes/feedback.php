@@ -105,13 +105,6 @@ return array(
         return Redirect::to('feedback/addfeedback'); 
     }),
 
-    'GET /feedback/deletedfeedback' => Array('before' => 's36_auth', 'do' => function() use ($feedback) { 
-        $undo_result = $feedback->fetch_deleted_feedback();
-        echo "<pre>";
-        echo print_r($undo_result);
-        echo "</pre>";
-    }),
-
     //Ajax Routes...
     'POST /feedback/changestatus' => function() use ($feedback) { 
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));

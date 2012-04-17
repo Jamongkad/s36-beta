@@ -394,7 +394,6 @@ class DBFeedback extends S36DataObject {
                     AND Feedback.feedbackId IN ($block_ids)
         ";
 
-        //Helpers::show_data($sql);
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();       
@@ -478,48 +477,7 @@ class DBFeedback extends S36DataObject {
                   ->where($where_column, '=', $id)
                   ->update(array($column => $state));    
     }
-
-    public function fetch_deleted_feedback() {
-        
-        $sth = $this->dbh->prepare('
-            SELECT 
-                  SQL_CALC_FOUND_ROWS
-                  Feedback.feedbackId AS id
-            FROM 
-                User
-                    INNER JOIN
-                        Site
-                        ON User.companyId = Site.companyId
-                    INNER JOIN 
-                        Feedback
-                        ON Site.siteId = Feedback.siteId
-                    INNER JOIN
-                        Contact
-                        ON Contact.contactId = Feedback.contactId 
-                    WHERE 1=1
-                        AND User.userId = :user_id
-                        AND Feedback.isDeleted = 1
-                        AND Feedback.isPublished = 0 
-                        AND Feedback.isFeatured = 0
-                        AND Feedback.isFlagged = 0
-                        AND Feedback.isSticked = 0
-                        AND Feedback.isArchived = 0
-                    ORDER BY
-                        Feedback.dtAdded DESC
-        ');
- 
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-        $sth->execute();       
- 
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        
-        $result_obj = new StdClass;
-        $result_obj->result = $result;
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;
-    }
-    
+     
     public function undo_deleted_feedback() {
         $sth = $this->dbh->prepare('
             UPDATE Feedback
@@ -595,5 +553,83 @@ class DBFeedback extends S36DataObject {
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         return $row_count->fetchColumn();
+    }
+    
+    //duplication??
+    public function total_newfeedback_by_company($company_id=False) {
+        $sql = "   
+            SELECT 
+                  SQL_CALC_FOUND_ROWS
+                  Feedback.feedbackId
+            FROM 
+                Feedback
+                    INNER JOIN
+                        Site
+                        ON Site.siteId = Feedback.siteId 
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
+             WHERE 1=1
+                 AND Company.companyId = :company_id            
+                 AND Feedback.isDeleted = 0
+                 AND Feedback.isPublished = 0 
+                 AND Feedback.isFeatured = 0
+                 AND Feedback.isFlagged = 0
+                 AND Feedback.isSticked = 0
+                 AND Feedback.isArchived = 0
+        ";
+        $sth = $this->dbh->prepare($sql);
+
+        if($this->company_id) {
+            $company_id = $this->company_id;
+        }
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        return $row_count->fetchColumn(); 
+    }
+
+    //DEPRECATED Apr, 17 2012
+    public function fetch_deleted_feedback() {
+        
+        $sth = $this->dbh->prepare('
+            SELECT 
+                  SQL_CALC_FOUND_ROWS
+                  Feedback.feedbackId AS id
+            FROM 
+                User
+                    INNER JOIN
+                        Site
+                        ON User.companyId = Site.companyId
+                    INNER JOIN 
+                        Feedback
+                        ON Site.siteId = Feedback.siteId
+                    INNER JOIN
+                        Contact
+                        ON Contact.contactId = Feedback.contactId 
+                    WHERE 1=1
+                        AND User.userId = :user_id
+                        AND Feedback.isDeleted = 1
+                        AND Feedback.isPublished = 0 
+                        AND Feedback.isFeatured = 0
+                        AND Feedback.isFlagged = 0
+                        AND Feedback.isSticked = 0
+                        AND Feedback.isArchived = 0
+                    ORDER BY
+                        Feedback.dtAdded DESC
+        ');
+ 
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->execute();       
+ 
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;
     }
 }

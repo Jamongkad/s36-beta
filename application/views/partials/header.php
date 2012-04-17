@@ -69,10 +69,11 @@
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <?
                        $feedback = new Feedback\Repositories\DBFeedback;
-                       if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
-                           <sup class="count">3</sup> 
+                       $count = $feedback->total_newfeedback_by_company(); 
+                       if($count):?>
+                           <sup class="count"><?=$count?></sup> 
                        <?else:?>
-                           <sup class="count">3</sup>
+                           <sup></sup>
                        <?endif?>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>

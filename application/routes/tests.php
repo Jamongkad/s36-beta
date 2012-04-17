@@ -268,6 +268,12 @@ return array(
         return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
     },
 
+    'GET /tests/count' => function() {  
+        $feedback = new Feedback\Repositories\DBFeedback;
+        $count = $feedback->total_newfeedback_by_company(2);
+        Helpers::dump($count);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
