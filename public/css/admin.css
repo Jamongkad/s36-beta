@@ -44,7 +44,7 @@ end of reset */
 #admin-panel .left-panel .left-menu ul li.contacts  a{background:url(../img/ico-contacts.png) no-repeat left top;}
 
 sup.count{
-    background:#68838B;/*#d92222;*/
+    background:#68838B;/*#d92222; #344152*/
     text-shadow:0px -1px;
     color:#FFF;
     font-size:11px;
