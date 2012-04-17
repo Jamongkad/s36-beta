@@ -248,7 +248,7 @@ return array(
 
     'GET /tests/redis' => function() { 
         $halcyon = new Halcyonic\Services\HalcyonicService;
-        $halcyon->company_id = 1
+        $halcyon->company_id = 1;
         Helpers::dump($halcyon->save_latest_feedid());
 
         $redis = new redisent\Redis;       
