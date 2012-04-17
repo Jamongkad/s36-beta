@@ -94,7 +94,9 @@ class AddFeedback {
         $dash = new DBDashboard; 
         $dash->company_id = $company_id;
         $dash->write_summary();
-        
-        //Upon new feedback always invalidate cache
+
+        //Upon new feedback always invalidate cache       
+        $halcyon = new Halcyonic\Services\HalcyonicService;
+        $halcyon->save_latest_feedid();
     }
 }

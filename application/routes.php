@@ -65,12 +65,12 @@ return array(
                     return Redirect::to('dashboard');     
                 } 
                 
+                $redis = new \redisent\Redis; 
                 $user = $auth->user();
                 $company_id = $user->companyid;
 
-                //Redis Shit here  
-                $data = $redis->hgetall("company:$company_id");
-                if($data) {
+                //Redis Shit here   
+                if($feedid = $redis->hmget("company:$company_id", "last_feedid")) {
                     //grab data    
                 } else {
                     //create data 
