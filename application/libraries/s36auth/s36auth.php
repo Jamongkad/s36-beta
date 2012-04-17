@@ -58,7 +58,7 @@ class S36Auth {
     }
 
     public static function check() {         
-		return ( !is_null(static::user()) );
+		return !is_null(static::user());
     }
 
     public static function register() {

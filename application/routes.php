@@ -42,6 +42,7 @@ return array(
 
     'POST /login' => function() {
         $input = Input::get();        
+        $redis = new redisent\Redis;
         $auth = new S36Auth;
 
         $rules = Array(
@@ -63,6 +64,10 @@ return array(
                 } else {
                     return Redirect::to('dashboard');     
                 } 
+                
+                $user = $auth->user();
+                //Redis Shit here  
+                $data = $redis->hgetall("company:$companyname:$companyid");
             } else {
                 return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()

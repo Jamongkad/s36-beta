@@ -247,9 +247,12 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
+        $auth = new S36Auth;
+        $user = $auth->user();
+
         $redis = new redisent\Redis;
-        $data = $redis->hgetall('widget:display:feedback', 'rank');
-        Helpers::dump($data);
+        $data = $redis->hgetall('widget:display:feedback');
+        Helpers::dump($user);
         /*
         $redis->hset('widget:display:feedback:1', 'rank', 1);
         $redis->hset('widget:display:feedback:1', 'priority', 10);
