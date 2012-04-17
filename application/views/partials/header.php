@@ -13,8 +13,8 @@
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
-       <?
-           $js_scripts = Array(
+        <?
+            $js_scripts = Array(
                '/js/jquery.switcharoo.js'
              , '/js/jquery.fancytips.js'
              , '/js/jquery.cycle.all.min.js'
