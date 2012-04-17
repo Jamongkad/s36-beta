@@ -56,7 +56,9 @@ return array(
                                                                               , 'errors' => $validator->errors
                                                                               , 'warning' => null));      
         } else {
+
             $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
+
             if($auth->check()) {
 
                 $redis = new redisent\Redis; 
@@ -64,14 +66,24 @@ return array(
                 $user_id = $auth->userid;
                 $company_id = $user->companyid;
 
+                $halcyon = new Halcyonic\Services\HalcyonicService;
+                $halcyon->company_id = $company_id; 
                 //Redis Shit here   
                 $redis_string = "user:$user_id:$company_id";
-                if(!$redis->hget($redis_string, "feedid_checked")) {
+                if(!$redis->hgetall($redis_string)) {
                     //create data 
-                    $halcyon = new Halcyonic\Services\HalcyonicService;
-                    $halcyon->company_id = $user->companyid;
                     $halcyon->save_latest_feedid();
-                    $redis->hset($redis_string, "feedid_checked", $halcyon->get_latest_feedid()->feedbackid);
+                    $redis->hset($redis_string, "feedid_checked", 0);
+                    $redis->hset($redis_string, "last_feedid", $halcyon->get_latest_feedid()->feedbackid);
+                } else {                    
+                    $user_last_feedid = $redis->hget($redis_string, "last_feedid");
+                    $latest_feedid = $redis->hget("company:$company_id", "last_feedid");
+
+                    //invalidate cache if newest feedid does not match user feedid
+                    if($user_last_feedid !== $latest_feedid) {
+                        $redis->hset($redis_string, "feedid_checked", 0);
+                        $redis->hset($redis_string, "last_feedid", $halcyon->get_latest_feedid()->feedbackid); 
+                    }                 
                 }
 
                 if($forward_to = Input::get('forward_to')) {

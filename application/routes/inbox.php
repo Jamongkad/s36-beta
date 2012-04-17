@@ -3,6 +3,7 @@
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
         $inbox = new Feedback\Services\InboxService; 
+        $redis = new redisent\Redis;
         $limit = 10;
 
         if(Input::get('limit')) $limit= (int)Input::get('limit');
@@ -23,6 +24,11 @@ return array(
         $feedback = $inbox->present_feedback();
 
         $admin_check = S36Auth::user();
+
+        $user_id = S36Auth::user()->userid;
+        $company_id = S36Auth::user()->companyid;
+        $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
+
         $category = new DBCategory;
         $view_data = Array(
               'feedback' => $feedback->result

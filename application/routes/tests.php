@@ -254,23 +254,6 @@ return array(
         $redis = new redisent\Redis;       
         $feedid = $redis->hget("company:1", "last_feedid");
         Helpers::dump($feedid);
-        /*
-
-        $data = $redis->hgetall('widget:display:feedback');
-        $redis->hset('widget:display:feedback:1', 'rank', 1);
-        $redis->hset('widget:display:feedback:1', 'priority', 10);
-        $redis->hset('widget:display:feedback:1', 'data', '{id: 453, title: "Mathew"}');
-        */
-
-        /*
-        $feeds = $redis->smembers('feeds:cache:1');
-
-        foreach($feeds as $feed) { 
-            $objs = $redis->hgetall($feed); 
-            Helpers::dump($objs);
-        }
-        Helpers::dump($feeds);
-        */
     }, 
 
     'GET /tests/get_redis_cache' => function() { 

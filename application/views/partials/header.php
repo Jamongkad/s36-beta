@@ -70,7 +70,13 @@
                        <?
                        $feedback = new Feedback\Repositories\DBFeedback;
                        $count = $feedback->total_newfeedback_by_company(); 
-                       if($count):?>
+
+                       $redis = new redisent\Redis;
+                       $user_id = S36Auth::user()->userid;
+                       $company_id = S36Auth::user()->companyid;
+                       $checked = $redis->hget("user:$user_id:$company_id", "feedid_checked");
+
+                       if($checked == 0):?> 
                            <sup class="count"><?=$count?></sup> 
                        <?else:?>
                            <sup></sup>
