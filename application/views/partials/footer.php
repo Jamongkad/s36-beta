@@ -9,10 +9,11 @@
         <p>Keep in touch by following us on <a href="#">Facebook</a>, <a href="#">Twitter</a>, subscribing to our <a href="#">blog's feed</a> and joining our <a href="#">email newsletter</a>.</p>
     </div>
     <?if(Config::get('application.env_name') == 'prod'):?>
-        <!--Live Leader Chat app
-        <script type="text/javascript" src="http://www.liveleader.com/a/Hello?cid=69d46946-034a-498a-911b-e4508d14a78c;v=2"></script>
-        <a class="ChatPoweredLink" href="http://www.liveleader.com">Live chat, live help, live support</a>
-        -->
+        <script type="text/javascript">
+            var widgetId = 'i1ghz';
+            var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+            document.write(unescape("%3Cscript src='" + host + "1.36storiesapp.com/widget/js_output?widgetId="+widgetId+"' type='text/javascript'%3E%3C/script%3E"));
+        </script>                     
     <?endif?>
 
 <?endif?>
