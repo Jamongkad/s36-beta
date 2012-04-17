@@ -247,8 +247,6 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
-        $auth = new S36Auth;
-        $user = $auth->user();
         $halcyon = new Halcyonic\Services\HalcyonicService;
         Helpers::dump($halcyon);
         /*
