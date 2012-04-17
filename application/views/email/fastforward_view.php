@@ -119,10 +119,7 @@
         <td style="font-size:10px;padding:0px 30px;line-height:16px;">
             This message was intended for <?=$receiver->email?>.  <br />
             <p style="">
-                36Stories Inc<br/>
-                340 Lemon Ave #6168<br/>
-                Walnut CA, 91789<br/>
-                United States<br/>
+                <b>36Stories Inc</b> 340 Lemon Ave #6168 Walnut CA, 91789 United States
             </p>
             <!--
             If you do not wish to receive this type of email from 36Stories in the future, please click here to unsubscribe.<br />

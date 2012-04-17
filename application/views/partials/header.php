@@ -67,6 +67,13 @@
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
+                       <?
+                       $feedback = new Feedback\Repositories\DBFeedback;
+                       if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
+                           <sup class="count">3</sup> 
+                       <?else:?>
+                           <sup></sup>
+                       <?endif?>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
@@ -94,15 +101,7 @@
                 <ul>
                     <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
-                    <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?>
-
-                    <?$feedback = new Feedback\Repositories\DBFeedback;
-                      if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
-                          <sup class="count"><?=$total_delete_feedback?></sup> 
-                    <?else:?>
-                          <sup></sup>
-                    <?endif?>
-                    </li>
+                    <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?></li>
                 </ul>
             </div>
 
@@ -140,13 +139,14 @@
                     <!-- 
                         drop down list on the top brown bar
                     -->
-                    <? $site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
+                    <? //$site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
                     <!--
                     <select name="site_choice"> 
                         <option value="all">All Sites</option>
-                        <?foreach($site as $sites):?>
-                            <option value="<?=$sites->siteid?>" <?=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?=$sites->domain?></option>
-                        <?endforeach?>
+                        <?//foreach($site as $sites):?>
+                            <option value="<?//=$sites->siteid?>" 
+                            <?//=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?//=$sites->domain?></option>
+                        <?//endforeach?>
                     </select>
                     -->
                     <div id="bye">
