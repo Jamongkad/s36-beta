@@ -219,6 +219,7 @@ class DBFeedback extends S36DataObject {
         return $result_obj; 
     }
 
+    //TODO: Caching Candidate -> Priority Number One
     public function pull_feedback_by_company($opts) {
         $published_statement = Null;
         $featured_statement = Null;

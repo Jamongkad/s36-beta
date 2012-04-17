@@ -201,7 +201,6 @@ return array(
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump(json_encode($inbox_service->present_feedback()));
-
     }, 
 
     'GET /tests/compress' => function() {
@@ -249,16 +248,23 @@ return array(
 
     'GET /tests/redis' => function() { 
         $redis = new redisent\Redis;
+        $data = $redis->hgetall('widget:display:feedback', 'rank');
+        Helpers::dump($data);
+        /*
+        $redis->hset('widget:display:feedback:1', 'rank', 1);
+        $redis->hset('widget:display:feedback:1', 'priority', 10);
+        $redis->hset('widget:display:feedback:1', 'data', '{id: 453, title: "Mathew"}');
+        */
 
+        /*
         $feeds = $redis->smembers('feeds:cache:1');
 
         foreach($feeds as $feed) { 
             $objs = $redis->hgetall($feed); 
             Helpers::dump($objs);
         }
-
         Helpers::dump($feeds);
-        //$redis->set("cache:main_js", $minified_js);
+        */
     }, 
 
     'GET /tests/get_redis_cache' => function() { 
