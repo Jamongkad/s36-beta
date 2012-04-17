@@ -65,12 +65,13 @@ return array(
                 $company_id = $user->companyid;
 
                 //Redis Shit here   
-                if($feedid = $redis->hget("user:$user_id:$company_id", "feedid_checked")) {
-                    //grab data    
-                } else {
+                $redis_string = "user:$user_id:$company_id";
+                if(!$redis->hget($redis_string, "feedid_checked")) {
                     //create data 
                     $halcyon = new Halcyonic\Services\HalcyonicService;
+                    $halcyon->company_id = $user->companyid;
                     $halcyon->save_latest_feedid();
+                    $redis->hset($redis_string, "feedid_checked", $halcyon->get_latest_feedid()->feedbackid);
                 }
 
                 if($forward_to = Input::get('forward_to')) {
