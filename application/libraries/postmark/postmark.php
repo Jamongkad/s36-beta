@@ -8,10 +8,10 @@
 		private $api_key;
 		private $data = array();
 		
-		function __construct($apikey,$from,$reply=""){
+		function __construct($apikey, $from, $bcc=False){
 			$this->api_key = $apikey;
 			$this->data["From"] = $from;
-			$this->data["ReplyTo"] = $reply;
+			$this->data["Bcc"] = $bcc;
 		}
 
         function replyto($reply) {
@@ -54,7 +54,12 @@
         }
 
         function bcc($bcc) {
-			$this->data["Bcc"] = $bcc;
+            if($this->data["Bcc"]) {
+                $this->data["Bcc"] .= $bcc;
+            } else {
+        	    $this->data["Bcc"] = $bcc;        
+            }
+		
 			return $this;  
         }
 		
