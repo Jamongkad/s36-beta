@@ -248,9 +248,7 @@ return array(
 
     'GET /tests/redis' => function() { 
         $halcyon = new Halcyonic\Services\HalcyonicService;
-        Helpers::dump($halcyon);
-        $feedback = new Feedback\Repositories\DBFeedback;
-        Helpers::dump($feedback->fetch_latest_feedback_id());
+        Helpers::dump($halcyon->save_latest_feedid());
         /*
         $redis = new redisent\Redis;
         $data = $redis->hgetall('widget:display:feedback');

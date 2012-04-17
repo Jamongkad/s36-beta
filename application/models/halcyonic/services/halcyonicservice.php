@@ -9,6 +9,11 @@ class HalcyonicService {
     public function __construct()  {
         $this->redis = new \redisent\Redis; 
         $this->feedback = new Feedback\Repositories\DBFeedback;
-        $this->auth = S36Auth::user();
     } 
+
+    public function save_latest_feedid() {
+        $company_id = $this->feedback->company_id;
+        $feed = $this->feedback->fetch_latest_feedback_id();
+        $this->redis->hset("company:$company_id", "last_feedid", $feed->feedbackid);
+    }
 }
