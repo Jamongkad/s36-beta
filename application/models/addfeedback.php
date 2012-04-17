@@ -18,9 +18,11 @@ class AddFeedback {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $countryId = $country->countryid;
         }
+
+        $company_id = Input::get('company_id');
         
         if (Input::get('response_flag') == 1) {
-            $mt->company_id = Input::get('company_id');
+            $mt->company_id = $company_id;
             $mt->increment_response();
         }
         
@@ -64,7 +66,7 @@ class AddFeedback {
         $permission = Input::get('permission');
         $text = Input::get('feedback');
         
-        $category = DB::Table('Category')->where('companyId', '=', Input::get('company_id'))
+        $category = DB::Table('Category')->where('companyId', '=', $company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
         $feedback_data = Array(
             'siteId' => Input::get('site_id')
@@ -84,13 +86,16 @@ class AddFeedback {
 
         $submission_data = new Email\Entities\NewFeedbackSubmissionData;
         $submission_data->set_feedback($fb->pull_feedback_by_id($new_feedback_id))
-                        ->set_sendtoaddresses($us->pull_user_emails_by_company_id(Input::get('company_id')));
+                        ->set_sendtoaddresses($us->pull_user_emails_by_company_id($company_id));
 
         $emailservice = new Email\Services\EmailService($submission_data);
         $emailservice->send_email();
 
         $dash = new DBDashboard; 
-        $dash->company_id = Input::get('company_id');
+        $dash->company_id = $company_id;
         $dash->write_summary();
+
+        $redis = new redisent\Redis;
+        $data = $redis->hgetall("company:$company_id");
     }
 }

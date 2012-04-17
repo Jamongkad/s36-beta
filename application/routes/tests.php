@@ -249,11 +249,12 @@ return array(
     'GET /tests/redis' => function() { 
         $auth = new S36Auth;
         $user = $auth->user();
-
+        Helpers::dump($user);
+        $halcyon = new Halcyonic\Services\HalcyonicService;
+        Helpers::dump($halcyon);
+        /*
         $redis = new redisent\Redis;
         $data = $redis->hgetall('widget:display:feedback');
-        Helpers::dump($user);
-        /*
         $redis->hset('widget:display:feedback:1', 'rank', 1);
         $redis->hset('widget:display:feedback:1', 'priority', 10);
         $redis->hset('widget:display:feedback:1', 'data', '{id: 453, title: "Mathew"}');

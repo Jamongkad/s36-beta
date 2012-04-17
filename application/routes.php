@@ -59,6 +59,7 @@ return array(
         } else {
             $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
             if($auth->check()) {
+
                 if($forward_to = Input::get('forward_to')) {
                     return Redirect::to($forward_to);
                 } else {
@@ -66,8 +67,16 @@ return array(
                 } 
                 
                 $user = $auth->user();
+                $company_id = $user->companyid;
+
                 //Redis Shit here  
-                $data = $redis->hgetall("company:$companyname:$companyid");
+                $data = $redis->hgetall("company:$company_id");
+                if($data) {
+                    //grab data    
+                } else {
+                    //create data 
+                }
+
             } else {
                 return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
