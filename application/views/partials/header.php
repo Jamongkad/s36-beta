@@ -72,7 +72,7 @@
                        if($total_delete_feedback = $feedback->fetch_deleted_feedback()->total_rows):?>
                            <sup class="count">3</sup> 
                        <?else:?>
-                           <sup></sup>
+                           <sup class="count">3</sup>
                        <?endif?>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
