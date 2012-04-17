@@ -9,6 +9,5 @@ class HalcyonicService {
     public function __construct()  {
         $this->redis = new \redisent\Redis; 
         $this->auth = S36Auth::user();
-    }
- 
+    } 
 }

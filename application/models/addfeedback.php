@@ -94,8 +94,7 @@ class AddFeedback {
         $dash = new DBDashboard; 
         $dash->company_id = $company_id;
         $dash->write_summary();
-
-        $redis = new redisent\Redis;
-        $data = $redis->hgetall("company:$company_id");
+        
+        //Upon new feedback always invalidate cache
     }
 }

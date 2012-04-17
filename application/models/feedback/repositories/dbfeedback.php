@@ -592,6 +592,30 @@ class DBFeedback extends S36DataObject {
         return $row_count->fetchColumn(); 
     }
 
+    public function fetch_latest_feedback_id() {
+        $sth = $this->dbh->prepare('
+            SELECT 
+                Feedback.feedbackId
+            FROM
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN
+                Company
+                    ON Company.companyId = Site.companyId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+            ORDER BY 
+                Feedback.dtAdded DESC 
+            LIMIT 1
+        ');
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+        return $sth->fetch(PDO::FETCH_OBJ);
+    }
+
     //DEPRECATED Apr, 17 2012
     public function fetch_deleted_feedback() {
         
