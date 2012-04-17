@@ -251,7 +251,7 @@ return array(
         Helpers::dump($halcyon->save_latest_feedid());
 
         $redis = new redisent\Redis;       
-        $feedid = $redis->hmget("company:1", "last_feedid");
+        $feedid = $redis->hget("company:1", "last_feedid");
         Helpers::dump($feedid);
         /*
 
