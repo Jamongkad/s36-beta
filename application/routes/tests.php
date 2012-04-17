@@ -249,11 +249,12 @@ return array(
     'GET /tests/redis' => function() { 
         $halcyon = new Halcyonic\Services\HalcyonicService;
         Helpers::dump($halcyon->save_latest_feedid());
-        
+
+        $redis = new redisent\Redis;       
         $feedid = $redis->hmget("company:1", "last_feedid");
         Helpers::dump($feedid);
         /*
-        $redis = new redisent\Redis;
+
         $data = $redis->hgetall('widget:display:feedback');
         $redis->hset('widget:display:feedback:1', 'rank', 1);
         $redis->hset('widget:display:feedback:1', 'priority', 10);
