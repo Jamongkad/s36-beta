@@ -592,7 +592,7 @@ class DBFeedback extends S36DataObject {
         return $row_count->fetchColumn(); 
     }
 
-    public function fetch_latest_feedback_id() {
+    public function fetch_latest_feedback_id($company_id) {
         $sth = $this->dbh->prepare('
             SELECT 
                 Feedback.feedbackId
@@ -611,7 +611,7 @@ class DBFeedback extends S36DataObject {
             LIMIT 1
         ');
 
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
         return $sth->fetch(PDO::FETCH_OBJ);
     }

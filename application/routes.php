@@ -59,23 +59,26 @@ return array(
             $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
             if($auth->check()) {
 
+                $redis = new redisent\Redis; 
+                $user = $auth->user();
+                $user_id = $auth->userid;
+                $company_id = $user->companyid;
+
+                //Redis Shit here   
+                if($feedid = $redis->hget("user:$user_id:$company_id", "feedid_checked")) {
+                    //grab data    
+                } else {
+                    //create data 
+                    $halcyon = new Halcyonic\Services\HalcyonicService;
+                    $halcyon->save_latest_feedid();
+                }
+
                 if($forward_to = Input::get('forward_to')) {
                     return Redirect::to($forward_to);
                 } else {
                     return Redirect::to('dashboard');     
                 } 
                 
-                $redis = new \redisent\Redis; 
-                $user = $auth->user();
-                $company_id = $user->companyid;
-
-                //Redis Shit here   
-                if($feedid = $redis->hmget("company:$company_id", "last_feedid")) {
-                    //grab data    
-                } else {
-                    //create data 
-                }
-
             } else {
                 return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
