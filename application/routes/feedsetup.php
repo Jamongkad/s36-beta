@@ -109,14 +109,11 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
-        /*
         $form = new Widget\Entities\FormWidget;
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
-        */
-        Helpers::dump(Input::get());
     },
     
     'POST /feedsetup/save_display_widget' => function() { 
