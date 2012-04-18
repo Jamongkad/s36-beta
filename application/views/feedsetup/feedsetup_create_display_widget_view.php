@@ -258,6 +258,7 @@
                     </tr> </tbody>
                 </table> 
             </div>
+            <!--
             <br/>
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#447697;">Select your site to apply this widget to..</strong>
@@ -282,6 +283,7 @@
                     </tbody>
                 </table>
             </div>
+            -->
             
             <br/>
             <div class="widget-types">
