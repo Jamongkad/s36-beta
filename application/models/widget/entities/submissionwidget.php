@@ -47,7 +47,7 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
-        return View::make('widget::widget_hostedform_view');
+        return View::make('widget::widget_hostedform_view')->get();
     }
 
     public function get_tab_type() { 
