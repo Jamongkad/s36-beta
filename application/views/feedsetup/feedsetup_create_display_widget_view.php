@@ -1,3 +1,5 @@
+<?print_r($site)?>
+
 <?=Form::open('feedsetup/save_display_widget', 'POST', Array('id' => 'create-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'display')?>

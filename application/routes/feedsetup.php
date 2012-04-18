@@ -92,7 +92,7 @@ return array(
         );
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
-            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->first()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'form_themes'     => $form_themes
