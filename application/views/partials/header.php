@@ -80,7 +80,7 @@
                            ?>
                            <sup class="count"><?=$count?></sup> 
                        <?else:?>
-                           <sup></sup>
+                           <sup class="count">3</sup>
                        <?endif?>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
