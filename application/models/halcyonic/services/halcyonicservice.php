@@ -16,7 +16,7 @@ class HalcyonicService {
     public function save_latest_feedid() {
         $company_id = $this->company_id;
         $feed = $this->get_latest_feedid();
-        $this->redis->hset("company:$company_id", "last_feedid", $feed->feedbackid);
+        if($feed) $this->redis->hset("company:$company_id", "last_feedid", $feed->feedbackid);
     }
 
     public function get_latest_feedid() { 
