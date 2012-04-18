@@ -103,7 +103,15 @@
     /*Temporary until viewall button is fixed*/
     /*right:170px;*/
     right:40px;
-    z-index:10000
+    z-index:10000;
 }
-.s36_embed_block_y{font-family:Arial, Helvetica, sans-serif;font-weight:bold;color:#333;position:absolute;bottom:58px;left:5px;z-index:10000}
+.s36_embed_block_y{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    color:#333;
+    position:absolute;
+    bottom:58px;
+    left:15px;
+    z-index:10000;
+}
 .s36_embed_block_y a,.s36_embed_block_x a{color:#333 !important;font-size:13px !important;font-weight:bold !important;}
