@@ -63,7 +63,7 @@ return array(
 
                 $redis = new redisent\Redis; 
                 $user = $auth->user();
-                $user_id = $auth->userid;
+                $user_id = $user->userid;
                 $company_id = $user->companyid;
 
                 $halcyon = new Halcyonic\Services\HalcyonicService;

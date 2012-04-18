@@ -68,15 +68,16 @@
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <?
-                       $feedback = new Feedback\Repositories\DBFeedback;
-                       $count = $feedback->total_newfeedback_by_company(); 
-
                        $redis = new redisent\Redis;
                        $user_id = S36Auth::user()->userid;
                        $company_id = S36Auth::user()->companyid;
                        $checked = $redis->hget("user:$user_id:$company_id", "feedid_checked");
 
                        if($checked == 0):?> 
+                           <?
+                           $feedback = new Feedback\Repositories\DBFeedback;
+                           $count = $feedback->total_newfeedback_by_company(); 
+                           ?>
                            <sup class="count"><?=$count?></sup> 
                        <?else:?>
                            <sup></sup>
@@ -143,19 +144,6 @@
                     </div>
                 </div>
                 <div class="admin-meta">
-                    <!-- 
-                        drop down list on the top brown bar
-                    -->
-                    <? //$site = DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get(); ?>
-                    <!--
-                    <select name="site_choice"> 
-                        <option value="all">All Sites</option>
-                        <?//foreach($site as $sites):?>
-                            <option value="<?//=$sites->siteid?>" 
-                            <?//=(Input::get('site_id') == $sites->siteid) ? 'selected' : null?>><?//=$sites->domain?></option>
-                        <?//endforeach?>
-                    </select>
-                    -->
                     <div id="bye">
                         <?=HTML::link('logout', 'SIGN OUT')?>
                     </div>
