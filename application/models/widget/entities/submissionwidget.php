@@ -47,7 +47,17 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
-        return View::make('widget::widget_hostedform_view')->get();
+        return View::make('widget::widget_hostedform_view', Array(
+            'fb_app_id' => $this->fb_id  
+          , 'env' => $this->env
+          , 'country' => DB::Table('Country', 'master')->order_by('name')->get()
+          , 'site_id' => $this->site_id
+          , 'company_id' => $this->company_id
+          , 'form_text' => $this->form_text
+          , 'form_question' => $this->form_question
+          , 'theme_name' => $this->theme_type
+          , 'response' => 0
+        ))->get();
     }
 
     public function get_tab_type() { 
