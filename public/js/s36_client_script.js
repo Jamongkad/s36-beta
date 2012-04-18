@@ -93,7 +93,11 @@ function s36_closePopupWidget(){
 }
 
 function s36_openForm(form_url) {
-	
+
+    var topoffset = document.body.scrollTop - 20;
+    var boxheight = -295;
+    var fixoffset = boxheight + topoffset;
+
 	var s36_modalbox 	= document.getElementById('s36_modalbox');
 	var s36_modalshadow = document.getElementById('s36_modalshadow');
 	
@@ -126,7 +130,9 @@ function s36_openForm(form_url) {
 		s36_iframe.setAttribute('scrolling','no');
 		
 	if(s36_modalbox != null){
-		
+
+        s36_modalbox.style.marginTop = fixoffset + 'px';
+
 		s36_modalbox.style.width 	  = width + "px";
 		s36_modalbox.style.height	  = height + "px";			
 		s36_modalbox.style.marginLeft = '-' + divide + 'px';
