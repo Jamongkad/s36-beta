@@ -10,6 +10,7 @@ class SubmissionWidget extends FormWidgets {
     public function __construct($options) {
 
         $this->env = Config::get('application.env_name');
+
         if($this->env == 'dev' or $this->env == 'local') { 
             $this->fb_id = '171323469605899';
             $fb_secret   = 'b60766ccb12c32c92029a773f7716be8';
@@ -51,6 +52,5 @@ class SubmissionWidget extends FormWidgets {
 
     public function get_tab_pos() { 
         return $this->tab_pos;
-    }
-    
+    } 
 }
