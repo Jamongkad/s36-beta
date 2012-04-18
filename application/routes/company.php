@@ -1,7 +1,7 @@
 <?php 
 
 return array(
-    'GET /' => function() {
+    'GET /company' => function() {
              
     },
 );
