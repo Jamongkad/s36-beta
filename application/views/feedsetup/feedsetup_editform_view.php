@@ -2,6 +2,7 @@
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
 <?=Form::hidden('company_id', $widget->company_id)?>
+<?=Form::hidden('site_id', $widget->site_id)?>
 <?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->theme_type, Array('id' => 'selected-form'))?>
 <?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
@@ -56,6 +57,7 @@
                         </textarea>
                     </td>
                 </tr>
+                <!--
                 <tr> 
                     <td><strong style="font-size:14px;">Website: </strong>
                     
@@ -76,7 +78,7 @@
                         </div>
                     </td>
                 </tr>
-                
+                -->                
             </tbody></table>
             </div>
 

@@ -109,16 +109,17 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
+        /*
         $form = new Widget\Entities\FormWidget;
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
+        */
+        Helpers::dump(Input::get());
     },
     
     'POST /feedsetup/save_display_widget' => function() { 
-        Helpers::dump(Input::get());
-        /*
         $display = new Widget\Entities\DisplayWidget;
         $form = new Widget\Entities\FormWidget; 
 
@@ -130,7 +131,6 @@ return array(
              'display' => $display->emit()
            , 'submit' => $form->emit()
         )); 
-        */
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
