@@ -46,8 +46,10 @@ class HalcyonicService {
     }
 
     public function invalidate_user_data($redis_string) {
-        $feedbackid = $this->get_latest_feedid()->feedbackid;       
-        $this->redis->hset($redis_string, "feedid_checked", 0);
-        $this->redis->hset($redis_string, "last_feedid", $feedbackid); 
+        $feed = $this->get_latest_feedid();
+        if($feed) { 
+            $this->redis->hset($redis_string, "feedid_checked", 0);
+            $this->redis->hset($redis_string, "last_feedid", $feed->feedbackid); 
+        }
     }
 }
