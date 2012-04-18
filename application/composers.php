@@ -59,5 +59,11 @@ return array(
         $view->partial('home_header', 'partials/home_header');
         $view->partial('home_footer', 'partials/home_footer'); 
         return $view; 
+    }),
+ 
+    'partials/company_layout' => array('name' => 'company_layout', function($view) {
+        $view->partial('company_header', 'partials/company_header');
+        $view->partial('company_footer', 'partials/company_footer'); 
+        return $view; 
     })
 );
