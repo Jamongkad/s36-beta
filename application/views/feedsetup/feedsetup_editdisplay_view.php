@@ -1,6 +1,7 @@
 <?=Form::open('feedsetup/save_display_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('site_id', $widget->site_id)?>
 <?=Form::hidden('display_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('submit_widgetkey', $widget->children[0]->widgetkey)?>
 <?=Form::hidden('theme_type', 'form-'.$widget->theme_type, Array('id' => 'selected-form'))?>
@@ -254,6 +255,7 @@
                 </table> 
             </div>
             <br/>
+            <!--
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#447697;">Select your site to apply this widget to..</strong>
                 <br /><br /> 
@@ -280,6 +282,7 @@
                 </table>
             </div>
             <br/>
+            -->
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#447697;">Copy Paste Widget Code...</strong>
                 <br /><br /> 
