@@ -61,30 +61,11 @@ return array(
 
             if($auth->check()) {
 
-                $redis = new redisent\Redis; 
-                $user = $auth->user();
-                $user_id = $user->userid;
-                $company_id = $user->companyid;
+                $user_id = $auth->user()->userid;
+                $company_id = $auth->user()->companyid;
 
-                $halcyon = new Halcyonic\Services\HalcyonicService;
-                $halcyon->company_id = $company_id; 
-                //Redis Shit here   
-                $redis_string = "user:$user_id:$company_id";
-                if(!$redis->hgetall($redis_string)) {
-                    //create data 
-                    $halcyon->save_latest_feedid();
-                    $redis->hset($redis_string, "feedid_checked", 0);
-                    $redis->hset($redis_string, "last_feedid", $halcyon->get_latest_feedid()->feedbackid);
-                } else {                    
-                    $user_last_feedid = $redis->hget($redis_string, "last_feedid");
-                    $latest_feedid = $redis->hget("company:$company_id", "last_feedid");
-
-                    //invalidate cache if newest feedid does not match user feedid
-                    if($user_last_feedid !== $latest_feedid) {
-                        $redis->hset($redis_string, "feedid_checked", 0);
-                        $redis->hset($redis_string, "last_feedid", $halcyon->get_latest_feedid()->feedbackid); 
-                    }                 
-                }
+                $halcyon = new Halcyonic\Services\HalcyonicService($company_id);
+                $halcyon->set_user_feedcount($user_id);
 
                 if($forward_to = Input::get('forward_to')) {
                     return Redirect::to($forward_to);

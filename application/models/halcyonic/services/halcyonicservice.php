@@ -4,14 +4,15 @@ use S36Auth, Feedback, redisent;
 
 class HalcyonicService {
      
-    public $company_id;
-    private $redis, $auth, $feedback;
+    private $redis, $feedback, $company_id;
 
-    public function __construct()  {
+    public function __construct($company_id)  {
         $this->redis = new redisent\Redis; 
         $this->feedback = new Feedback\Repositories\DBFeedback;
+        $this->company_id = $company_id;
     } 
-
+    
+    //save the latest feedid to company redis
     public function save_latest_feedid() {
         $company_id = $this->company_id;
         $feed = $this->get_latest_feedid();
@@ -20,5 +21,33 @@ class HalcyonicService {
 
     public function get_latest_feedid() { 
         return $this->feedback->fetch_latest_feedback_id($this->company_id);
+    }
+
+    public function set_user_feedcount($user_id) { 
+
+        $company_id = $this->company_id;
+
+        $redis_string = "user:$user_id:$company_id";
+        if(!$this->redis->hgetall($redis_string)) {
+            //create data 
+            $this->save_latest_feedid();
+            $this->invalidate_user_data($redis_string); 
+        } else {                    
+            //lets check if a new feed has arrived.
+            $user_last_feedid = $this->redis->hget($redis_string, "last_feedid");
+            $latest_feedid = $this->redis->hget("company:$company_id", "last_feedid");
+
+            //invalidate cache if newest feedid does not match user feedid
+            if($user_last_feedid !== $latest_feedid) {
+                $this->save_latest_feedid();
+                $this->invalidate_user_data($redis_string);
+            }                 
+        }
+    }
+
+    public function invalidate_user_data($redis_string) {
+        $feedbackid = $this->get_latest_feedid()->feedbackid;       
+        $this->redis->hset($redis_string, "feedid_checked", 0);
+        $this->redis->hset($redis_string, "last_feedid", $feedbackid); 
     }
 }

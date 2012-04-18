@@ -46,6 +46,5 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
-
     }), 
 );
