@@ -170,7 +170,7 @@
                                 <div id="s36_pemissions">
                                     <div class="s36_block full">
                                         <div class="s36_perm_radio">
-                                            <input type="radio" id="permission1" name="your_permission" value="permission_1" />
+                                            <input type="radio" id="permission1" name="your_permission" value="1" />
                                         </div>
                                         <label for="permission1">
                                         <div class="s36_perm_details">
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="s36_block limited">
                                         <div class="s36_perm_radio">
-                                            <input type="radio" id="permission2" name="your_permission" value="permission_2"  />
+                                            <input type="radio" id="permission2" name="your_permission" value="2"  />
                                         </div>
                                         <label for="permission2">
                                         <div class="s36_perm_details">
@@ -204,7 +204,7 @@
                                     </div>
                                     <div class="s36_block private">
                                         <div class="s36_perm_radio">
-                                            <input type="radio" id="permission3" name="your_permission" value="permission_3" />
+                                            <input type="radio" id="permission3" name="your_permission" value="3" />
                                         </div>
                                         <label for="permission3">
                                         <div class="s36_perm_details">
@@ -402,15 +402,19 @@
                         
                         <!-- page 7 (all done page!) -->
                         <div id="step_7" class="s36_pages">
-                            <div class="formTitle">
-	                            <h2>All Done!</h2>
+                            <h1 id="submission-loader-header">Feedback in transit...</h1>
+                            <h1 id="submission-success-header">All Done!</h1>
+                            <div class="step-contents" style="padding-top:25px">
+                                <p id="submission-loader"> 
+                                    Your feedback is being processed please wait...<br/><br/>
+                                    <?=HTML::image('img/submission-loader.gif', 'submission')?><br/>
+                                </p>
+                                <p id="submission-success">
+                                    Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
+                                    Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                                </p>
                             </div>
-                            <div class="step-contents">
-                            	<br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                <h3 style="line-height:1.6em;text-align:center;padding:0px 90px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.</h3>
-                            </div>
-                        </div>
-                        
+                        </div> 
                     </div>
                 </div>
             </div>
