@@ -332,8 +332,8 @@
                                         </table>
                                     </div>
                                 </div>
-                            </div>
                             -->
+                            </div>
                         </div>
                         
                         <!-- page 5 (photo cropper) -->
