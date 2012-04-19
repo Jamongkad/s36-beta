@@ -165,7 +165,7 @@
                             </div>
                             <div class="step-contents">
                             	<br /><br />
-                            	<h3>Thanks for giving us an excellent/good rating! <br />Could we feature your positive feedback as a testimonial?</h3>
+                            	<h3>Thanks for giving us an excellent/good rating! Could we feature your positive feedback as a testimonial?</h3>
                                 
                                 <div id="s36_pemissions">
                                     <div class="s36_block full">
@@ -276,9 +276,9 @@
                             </div>
 
                             <div id="bad-feedback-message">
-                                <p style="font-size:16px;text-align:center;padding-top:20px">
+                                <h3>
                                     Thanks for your feedback. In order for us to get back to you fill in your contact details below.
-                                </p> 
+                                </h3> 
                             </div>
 
                             <input type="hidden" id="profile_link" value="">
