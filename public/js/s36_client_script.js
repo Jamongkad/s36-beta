@@ -94,7 +94,7 @@ function s36_closePopupWidget(){
 
 function s36_openForm(form_url) {
 
-    var topoffset = document.body.scrollTop - 5;
+    var topoffset = document.body.scrollTop - 1;
     var boxheight = -295;
     var fixoffset = boxheight + topoffset;
 
