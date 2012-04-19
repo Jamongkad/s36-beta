@@ -298,7 +298,7 @@
                                 </div>
                                 <div style="width:50%;float:left;">
                                 	<div style="padding:50px 20px;">
-                                        <table class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
+                                        <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
                                                 <tr class="tr-photo-upload">
                                                     <td>
                                                         <div class="avatar">
