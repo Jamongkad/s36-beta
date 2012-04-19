@@ -111,14 +111,8 @@
                                     <h3>Rate your overall experience</h3>
                                     <br /><br /><br />
                                     <h3>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
-                                    <br />
                                     <div id="s36_whattowrite">
-                                        <h4>This is a customisable-field in backend</h4>
-                                        <ul>
-                                            <li>Where did you hear bout us?
-                                            <li>Were there previous products you were unsatisfied with?</li>
-                                            <li>Was there anything you didn't expect?</li>
-                                        </ul>
+                    	                <h4><?=$form_question?></h4>
                                     </div>
                                 </div>
                                 <div style="float:left;width:473px;">
