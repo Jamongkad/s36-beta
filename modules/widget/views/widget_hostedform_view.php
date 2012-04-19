@@ -224,7 +224,7 @@
                             </div>
                             <div class="step-contents">
                             	<br /><br />
-                                <h3>Thank you for granting us permission. Now we need to attach your profile to your feedback.</h3>
+                                <h3 style="text-align:center">Thank you for granting us permission. Now we need to attach your profile to your feedback.</h3>
                                 <br />
                                 <div class="s36_block s36_align_center">
                                     <div id="fb-connect-button">
