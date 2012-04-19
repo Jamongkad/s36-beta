@@ -42,7 +42,7 @@ return array(
 
             //return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
-            return Redirect::to('login');     
+            return Redirect::to('/');     
             //return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
         }		
 
