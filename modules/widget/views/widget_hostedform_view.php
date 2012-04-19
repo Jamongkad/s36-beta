@@ -272,8 +272,15 @@
                         <!-- page 4 (profile form and photo upload) -->
                         <div id="step_4" class="s36_pages">
                             <div class="formTitle">
-	                            <h2>Please fill your details below</h2>
+	                            <h2>Please check your details below</h2>
                             </div>
+
+                            <div id="bad-feedback-message">
+                                <p style="font-size:14px;padding-left:25px;padding-right:15px;padding-top:25px;">
+                                    Thanks for your feedback. In order for us to get back to you <br/>fill in your contact details below.
+                                </p> 
+                            </div>
+                            <input type="hidden" id="profile_link" value="">
                             <div class="step-contents">
                                 <div style="width:50%;float:left;">
                                 <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
