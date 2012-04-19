@@ -10,7 +10,7 @@
 				height:76px;
 				background-position:no-repeat;
 				cursor:pointer;
-                z-index: 999999;
+                z-index: 100000;
 			}
 			.tab-sidetab{
 				position:fixed;
@@ -18,7 +18,7 @@
 				height:92px;
 				background-position:no-repeat;
 				cursor:pointer;
-                z-index: 999999;
+                z-index: 100000;
 			}                       
             .tab-small-sidetab{ 
                 position:fixed; 
@@ -26,7 +26,7 @@
                 height:28px; 
                 background-position:no-repeat; 
                 cursor:pointer; 
-                z-index: 999999;
+                z-index: 100000;
             }
             ';
 	
