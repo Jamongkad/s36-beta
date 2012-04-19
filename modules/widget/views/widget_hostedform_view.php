@@ -403,8 +403,14 @@
                         
                         <!-- page 7 (all done page!) -->
                         <div id="step_7" class="s36_pages">
-                            <h1 class="formTitle" id="submission-loader-header">Feedback in transit...</h1>
-                            <h1 class="formTitle" id="submission-success-header">All Done!</h1>
+
+                            <div class="formTitle"> 
+                                <h2 id="submission-loader-header">Feedback in transit...</h2>
+                            </div>
+                            <div class="formTitle"> 
+                                <h2 id="submission-success-header">All Done!</h2> 
+                            </div>
+                           
                             <div class="step-contents" style="padding-top:25px">
                                 <p id="submission-loader"> 
                                     Your feedback is being processed please wait...<br/><br/>
