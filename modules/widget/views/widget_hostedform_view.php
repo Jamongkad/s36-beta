@@ -276,7 +276,7 @@
                             </div>
 
                             <div id="bad-feedback-message">
-                                <p style="font-size:14px;padding-left:25px;padding-right:15px;padding-top:25px;">
+                                <p style="font-size:16px;text-align:center;padding-top:5px">
                                     Thanks for your feedback. In order for us to get back to you fill in your contact details below.
                                 </p> 
                             </div>
