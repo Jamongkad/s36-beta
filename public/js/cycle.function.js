@@ -121,7 +121,7 @@ PageCycle.prototype.cycle_prev = function() {
 
 	        this._debug("Page 1");	
 
-            if((this.rating == 5) || (this.rating == 4)) {
+            if((this.rating == 5) || (this.rating == 4) || (this.rating == 3)) {
                 //console.log(this.rating);    
                 $('#good-feedback-message').show();  
                 $('#bad-feedback-message').hide();
