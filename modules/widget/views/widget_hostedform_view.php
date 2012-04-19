@@ -65,4 +65,379 @@
 <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
 <span id="ajax-step-metrics" hrefaction="<?=URL::to('/api/check_step')?>"></span>
 <!-- end of 36Stories script -->
-<p>Mathew</p>
+
+<div id="bodyWrapper">
+	<div id="bodyContent">
+    	<!-- form box starts here -->
+        <div id="feedbackBox">
+        	<div class="block">
+            	<div id="s36_pages">
+                    <div id="steps">
+                        <!-- page 1 (rating and feedback text) -->
+                        <div id="step_1" class="s36_pages current">
+                            <div class="formTitle">
+                                <h2>Share Your Feedback About Us</h2>
+                            </div>
+                            <div class="step-contents">
+                                <div style="float:left;width:235px;padding:0px 30px 0px 0px;">
+                                	<br /><br />
+                                    <h3>Rate your overall experience</h3>
+                                    <br /><br /><br />
+                                    <h3>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
+                                    <br />
+                                    <div id="s36_whattowrite">
+                                        <h4>This is a customisable-field in backend</h4>
+                                        <ul>
+                                            <li>Where did you hear bout us?
+                                            <li>Were there previous products you were unsatisfied with?</li>
+                                            <li>Was there anything you didn't expect?</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="float:left;width:473px;">
+                                	<br />
+                                    <div id="s36_trackbar">
+                                        <input type="hidden" id="cropped_photo" value="0"/ >
+                                        <input type="hidden" id="fb_flag" value="0" />
+                                        <input type="hidden" id="ln_flag" value="0" />
+                                        <input type="hidden" id="native_flag" value="0" />
+
+                                        <input type="hidden" id="site_id" value="<?=$site_id?>" />
+                                        <input type="hidden" id="company_id" value="<?=$company_id?>" />
+                                        <input type="hidden" id="response_flag" value="<?=$response?>" />
+                                        <input type="hidden" id="rating" value="5" />
+
+                                        <div id="track_ball"></div>
+                                        <div id="rate_e"></div>
+                                        <div id="rate_g"></div>
+                                        <div id="rate_a"></div>
+                                        <div id="rate_p"></div>
+                                        <div id="rate_b"></div>
+                                    </div>
+                                    <div id="s36_ratings">
+                                        <ul>
+                                            <li class="excellent">EXCELLENT</li>
+                                            <li class="good">GOOD</li>
+                                            <li class="average">AVERAGE</li> 
+                                            <li class="poor">POOR</li>
+                                            <li class="bad">BAD</li>
+                                        </ul>
+                                    </div>
+                                    <br />
+                                    <div class="feedback">
+                                        <textarea id="feedback_text" class="regular-textarea"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- page 2 (permission selection text) -->
+                        <div id="step_2" class="s36_pages">
+                            <div class="formTitle">
+                            	<h2>Give us permission for your feedback</h2>
+                            </div>
+                            <div class="step-contents">
+                            	<br /><br />
+                            	<h3>Thanks for giving us an excellent/good rating! <br />Could we feature your positive feedback as a testimonial?</h3>
+                                
+                                <div id="s36_pemissions">
+                                    <div class="s36_block full">
+                                        <div class="s36_perm_radio">
+                                            <input type="radio" id="permission1" name="your_permission" value="permission_1" />
+                                        </div>
+                                        <label for="permission1">
+                                        <div class="s36_perm_details">
+                                        	<br />
+                                            <div class="s36_perm_icon">
+                                                <div class="s36_perm_icon1"></div>
+                                            </div>
+                                            <div class="s36_perm_text">
+                                                <h3>Yes, with full permission</h3>
+                                                <p>This allows us to use the positive feedback anywhere and everywhere we want. </p>
+                                            </div>
+                                        </div>
+                                        </label>
+                                    </div>
+                                    <div class="s36_block limited">
+                                        <div class="s36_perm_radio">
+                                            <input type="radio" id="permission2" name="your_permission" value="permission_2"  />
+                                        </div>
+                                        <label for="permission2">
+                                        <div class="s36_perm_details">
+                                        	<br />
+                                            <div class="s36_perm_icon">
+                                                <div class="s36_perm_icon2"></div>
+                                            </div>
+                                            <div class="s36_perm_text">
+                                                <h3>Yes, but with limited permission</h3>
+                                                <p>This allows us to use the feedback only on the website.</p>
+                                            </div>
+                                        </div>
+                                        </label>
+                                    </div>
+                                    <div class="s36_block private">
+                                        <div class="s36_perm_radio">
+                                            <input type="radio" id="permission3" name="your_permission" value="permission_3" />
+                                        </div>
+                                        <label for="permission3">
+                                        <div class="s36_perm_details">
+                                        	<br />
+                                            <div class="s36_perm_icon">
+                                                <div class="s36_perm_icon3"></div>
+                                            </div>
+                                            <div class="s36_perm_text">
+                                                <h3>Keep your feedback private</h3>
+                                                <p>This feedback is NOT public.</p>
+                                            </div>
+                                        </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- page 3 (facebook - linkedin connect) -->
+                        <div id="step_3" class="s36_pages">
+                            <div class="formTitle">
+                            	<h2>Attach your profile</h2>
+                            </div>
+                            <div class="step-contents">
+                            	<br /><br />
+                                <h3>Thank you for granting us permission. Now we need to attach your profile to your feedback.</h3>
+                                <br />
+                                <div class="s36_block s36_align_center">
+                                    <div id="fb-connect-button">
+                                    
+                                        <fb:login-button scope="email,user_location,user_website,user_work_history,user_photos">Connect with Facebook</fb:login-button>
+                                        
+                                    </div>
+                                    <br />
+                                    <style>
+                                        .IN-widget{vertical-align:bottom !important;}
+                                    </style>
+                                    <span style="padding-right:3px;">
+                                    If not.. </span>
+                                    <br /><br />
+                                    <script type="IN/Login" data-onAuth="loadData">
+                                        Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
+                                    </script> <span style=""> ... or <a href="javascript:;" id="create_wo_facebook">fill out your profile manually</a>
+                                    </span>
+                                </div>
+                                <br />
+                                <div class="s36_block gray">
+                                    <div class="warning">
+                                        <img src="images/ico-warning.png" />
+                                    </div>
+                                    <div class="warning-text">
+                                        We only use Facebook Connect to retrieve and attach your profile information. We do not post updates on <br /> your wall without your permission. <em>We hate that</em>.
+                                    </div>
+                                </div>
+                                <!--
+                                <div class="s36_block gray" style="margin-top:15px;">
+                                    <div class="company">
+                                        Razer uses 36Stories - a feedback company to help process your feedback
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        
+                        <!-- page 4 (profile form and photo upload) -->
+                        <div id="step_4" class="s36_pages">
+                            <div class="formTitle">
+	                            <h2>Please fill your details below</h2>
+                            </div>
+                            <div class="step-contents">
+                                <div style="width:50%;float:left;">
+                                <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
+                                    <tr><td colspan="2"><strong>Required Fields</strong></td></tr>
+                                    <tr><td><input type="text" id="your_fname" class="regular-text required" title="First Name" value="" /></td><td><input type="text" id="your_lname" class="regular-text required" title="Last Name" value="" /></td></tr>
+                                    <tr><td colspan="2"><input type="text" id="your_email" class="regular-text required long" title="Email Address" value="" /></td></tr>
+                                </table>
+                                <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
+                                    <tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
+                                    <select id="your_country" class="regular-select required" title="Country">
+                                    <option>Country</option>
+                                        <?foreach($country as $countries):?>
+                                            <option value="<?=$countries->code?>"><?=$countries->name?></option>
+                                        <?endforeach?>         
+                                    </select>
+                                        </td></tr>
+                                        <tr><td colspan="2"><strong>Optional info - but great to include!</strong></td></tr>
+                                        <tr><td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td><td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
+                                        <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
+                                </table>
+                                </div>
+                                <div style="width:50%;float:left;">
+                                	<div style="padding:50px 20px;">
+                                        <table class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
+                                                <tr class="tr-photo-upload">
+                                                    <td>
+                                                        <div class="avatar">
+
+                                                            <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture'
+                                                                                                                , 'style' => ' border:2px solid #CCC;'
+                                                                                                                , 'width' => 97))?>
+                                                        
+                                                        </div>
+                                                    </td>
+                                                    <td valign="top">
+                                                        <div class="avatartext">
+                                                            <div style="font-weight:normal;">
+                                                                <strong>Select your display profile photo.</strong> <br />
+                                                                You can also use your company <br />
+                                                                logo if you like. <br />
+                                                                <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">Uploading Image...</span> </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- page 5 (photo cropper) -->
+                        <div id="step_5" class="s36_pages">
+                        	<div class="formTitle">
+	                            <h2>Adjust and crop your image</h2>
+                            </div>
+                            <div class="step-contents">
+	                            <br />
+                            	<div style="width:50%;float:left;">
+                                    <div class="s36_block s36_align_center gray" style="padding:15px 0px;">
+                                        <div class="jcrop_div">
+                                            <?=HTML::image('img/blank-avatar.jpg', 'Profile Picture', array('id' => 'jcrop_target'))?>
+                                        </div>
+                                        <!-- <a href="javascript:;" onclick="save_crop_image()" class="s36_blue_btn">Save Image</a> -->
+                                    </div>
+                                </div>
+                                <br />
+                                <div style="width:50%;float:left;">
+                                	<div style="padding:0px 20px;">
+                                        <div style="width:100px;text-align:center;font-size:10px;color:#CCC;float:left;">
+                                            <div style="margin-bottom:5px">Preview</div>
+                                            <div style="width:100px;height:100px;overflow:hidden;">
+                                                <?=HTML::image('img/blank-avatar.png', false, array('id' => 'preview'))?>
+                                            </div>
+                                        </div>
+                                        <div style="width:200px;float:left;margin-left:10px;">
+                                            <h3 style="margin-left:3px;margin-top:10px;">Good with it?</h3>
+                                            <div id="test_showcoords"></div>
+                                            <span id="crop_status"></span>
+                                            <form>
+                                            <input type="hidden" id="x" name="x" />
+                                            <input type="hidden" id="y" name="y" />
+                                            <input type="hidden" id="w" name="w" />
+                                            <input type="hidden" id="h" name="h" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- page 6 (review profile and feedback page) -->
+                        <div id="step_6" class="s36_pages">
+                        	<div class="formTitle">
+	                            <h2>Review your feedback</h2>
+                            </div>
+                            <div class="step-contents">
+                            	<br />
+                                <h3>Just before you submit in your feedback, be sure to check it one more time.</h3>
+                                <div style="width:30%;float:left;">    
+                                    <div class="review-profile">
+                                        <br />
+                                        <div class="review-avatar s36_align_center">
+                                            <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'review-photo'
+                                                                                                , 'width' => 100))?>
+                                        </div>    
+                                        <div class="review-profile-info">
+                                            <h2 id="review-name"></h2>
+                                            <p id="review-position"></p>
+                                            <p  id="review-location"></p>
+                                            <p  id="review-date"></p>
+                                            <p><a href="javascript:;" id="crop_photo">Crop Photo</a></p>
+                                        </div>
+                                    </div>
+								    <div class="review-change-photo"></div>                                    
+                                 </div>
+                                 <br />
+                                 <div style="width:70%;float:left;"> 
+                                    <div class="review-feedback-box" id="review-feedback-box">
+                                        <div id="review-feedback" class="review-feedback"></div>
+                                        <div class="review-edit-feedback"><a href="javascript:;" id="edit-review-feedback">edit</a><a href="javascript:;" id="save-edited-feedback">save</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- page 7 (all done page!) -->
+                        <div id="step_7" class="s36_pages">
+                            <div class="formTitle">
+	                            <h2>All Done!</h2>
+                            </div>
+                            <div class="step-contents">
+                            	<br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <h3 style="line-height:1.6em;text-align:center;padding:0px 90px;">Thank you for taking the time to send in your feedback, and we will get back to you very shortly. Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="error-message">
+                <div id="the_error"></div>
+            </div>
+            <div id="s36_footer">
+                <div class="s36_footerbtn left">
+                    <a href="javascript:;" id="cancel_cropbtn" class="s36_btn cropbtn">Cancel</a>
+                    <a href="javascript:;" id="prev" class="s36_btn">Back</a>
+                </div>
+                
+                <div class="s36_footerbtn right">
+                    <a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
+                    <a href="javascript:;" id="next" class="s36_btn">Next Step</a>
+                </div>
+            </div>
+        </div>
+        <!-- form box ends here -->
+        <div class="block" style="height:40px;"></div>
+        <div id="companyDetails" class="block">
+        	<div class="companyLogo">
+            	<img src="images/company-logo-filler.jpg" />
+            </div>
+            <div class="companyDetails">
+            	<h2>Company Profile</h2>
+                <p>Acme in specializes in creating widgets for everyday use. Thousands of 
+customers worldwideuse Acme products and get better each and everyday. 
+Visit Acme's website today for more information. </p>
+				<br />
+                <div class="companyLinks">
+                	<ul>
+                    	<li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="block" style="height:20px;"></div>
+        <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
+    </div>
+</div>
+<?
+    $js_scripts = Array(
+         '/js/jquery.jcrop.js' 
+       , '/js/s36FormModule.js'
+       , '/js/jquery.ajaxfileupload.js'
+       , '/js/cycle.function.js'
+       , '/js/widget/form.js'
+    );
+?>
+<script text="text/javascript">
+    <?foreach($js_scripts as $scripts):?>
+       head.js('<?=$scripts?>');
+    <?endforeach?>
+</script>

@@ -321,7 +321,6 @@
                 	<p style="margin-top: 12px">Just before you submit your feedback, be sure to check it one last time.</p>
                     <div class="review-profile">
                     	<div class="review-avatar s36_align_center">
-
                             <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'review-photo'
                                                                                 , 'width' => 100))?>
                         </div>
