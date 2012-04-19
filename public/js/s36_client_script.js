@@ -22,7 +22,7 @@ function createLightboxes(){
 	var s36_modalbox = document.createElement("div");
 		s36_modalbox.id = "s36_modalbox";        
 		s36_modalbox.className = "s36_modalbox";
-		s36_modalboxshadow.appendChild(s36_modalbox);
+		document.body.appendChild(s36_modalbox);
 }
 
 /****************************************************************
