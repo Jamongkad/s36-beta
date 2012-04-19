@@ -406,8 +406,6 @@
 
                             <div class="formTitle"> 
                                 <h2 id="submission-loader-header">Feedback in transit...</h2>
-                            </div>
-                            <div class="formTitle"> 
                                 <h2 id="submission-success-header">All Done!</h2> 
                             </div>
                            
