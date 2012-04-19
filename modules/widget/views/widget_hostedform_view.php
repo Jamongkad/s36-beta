@@ -276,10 +276,11 @@
                             </div>
 
                             <div id="bad-feedback-message">
-                                <p style="font-size:16px;text-align:center;padding-top:5px">
+                                <p style="font-size:16px;text-align:center;padding-top:20px">
                                     Thanks for your feedback. In order for us to get back to you fill in your contact details below.
                                 </p> 
                             </div>
+
                             <input type="hidden" id="profile_link" value="">
                             <div class="step-contents">
                                 <div style="width:50%;float:left;">

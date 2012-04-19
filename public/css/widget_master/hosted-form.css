@@ -131,7 +131,7 @@ a.cropbtn:hover{
 	.s36_pages h3 a.s36_tip:hover{text-decoration:underline;}
 	.s36_pages h4{font-size:11px;margin:0px;padding:5px 0px;}
 	.s36_pages .step-contents{
-		padding:5px 30px;display:block;
+		padding:0px 30px;display:block;
 	}
 	
 	#s36_whattowrite{
