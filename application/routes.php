@@ -40,10 +40,8 @@ return array(
                 return Redirect::to('dashboard');     
             } 
 
-            //return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
-            return Redirect::to('/');     
-            //return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
+            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
         }		
 
     },
