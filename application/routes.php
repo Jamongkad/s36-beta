@@ -74,13 +74,6 @@ return array(
 
                 $halcyon = new Halcyonic\Services\HalcyonicService($company_id);
                 $halcyon->set_user_feedcount($user_id);
-                /*
-                if($forward_to = Input::get('forward_to')) {
-                    return Redirect::to($forward_to);
-                } else {
-                    return Redirect::to('dashboard');     
-                } 
-                */
                 
                 return forward_or_dash();
             } else {
