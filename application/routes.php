@@ -34,7 +34,12 @@ return array(
 
         if($auth->check()) { 
 
-            return Redirect::to('dashboard');     
+            if($forward_to = Input::get('forward_to')) {
+                return Redirect::to($forward_to);
+            } else {
+                return Redirect::to('dashboard');     
+            } 
+
             //return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view');       
         } else {
             return Redirect::to('login');     
