@@ -276,7 +276,8 @@
 
                             <input type="hidden" id="profile_link" value="">
                             <div class="step-contents">
-                                <div style="width:50%;float:left;">
+
+                                <div id="hostform_info" style="width:50%;float:left;">
                                 <table id="s36_form" width="100%" border="0" cellpadding="4" cellspacing="4">
                                     <tr><td colspan="2"><strong>Required Fields</strong></td></tr>
                                     <tr><td><input type="text" id="your_fname" class="regular-text required" title="First Name" value="" /></td><td><input type="text" id="your_lname" class="regular-text required" title="Last Name" value="" /></td></tr>
@@ -296,7 +297,8 @@
                                         <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
                                 </table>
                                 </div>
-                                <div style="width:50%;float:left;">
+
+                                <div id="hostform_photo" style="width:50%;float:left;">
                                 	<div style="padding:50px 20px;">
                                         <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
                                                 <tr class="tr-photo-upload">
