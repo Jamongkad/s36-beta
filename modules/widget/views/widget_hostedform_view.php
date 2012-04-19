@@ -292,14 +292,16 @@
                                     </select>
                                         </td></tr>
                                         <tr><td colspan="2"><strong>Optional info - but great to include!</strong></td></tr>
-                                        <tr><td><input type="text" id="your_company" value="" class="regular-text" title="Company Name" /></td><td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
+                                        <tr>
+                                        <td>
+                                        <input type="text" id="your_company" value="" class="regular-text" title="Company Name" />
+                                        </td>
+                                        <td>
+                                        <input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" />
+                                        </td>
+                                        </tr>
                                         <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
-                                </table>
-                                </div>
-                                <div style="width:50%;float:left;">
-                                	<div style="padding:50px 20px;">
-                                        <table class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
-                                                <tr class="tr-photo-upload">
+                                        <tr class="tr-photo-upload">
                                                     <td>
                                                         <div class="avatar">
 
@@ -313,15 +315,25 @@
                                                                 <strong>Select your display profile photo.</strong> <br />
                                                                 You can also use your company <br />
                                                                 logo if you like. <br />
-                                                                <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">Uploading Image...</span> </div>
+                                                                <div style="margin:5px 0px;">
+                                                                <input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">Uploading Image...</span> 
+                                                                </div>
                                                             </div>
                                                         </div> 
                                                     </td>
                                                 </tr>
+                                </table>
+                                </div>
+                                <!--
+                                <div style="width:50%;float:left;">
+                                	<div style="padding:50px 20px;">
+                                        <table class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4" bgcolor="#e6e8e8" >
+                                                
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            -->
                         </div>
                         
                         <!-- page 5 (photo cropper) -->
