@@ -278,7 +278,7 @@
                             <td><input type="text" value="" id="your_occupation" title="Occupation" class="regular-text required" /></td></tr>
                             <tr><td colspan="2"><input type="text" id="your_website" class="regular-text long" value="" title="Website Address" /></td></tr>
                             <tr bgcolor="#e6e8e8">
-                                <td colspan="2">
+                                <td>
                                     <div class="avatar">
 
                                     <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture'

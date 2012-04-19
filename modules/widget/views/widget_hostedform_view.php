@@ -308,8 +308,6 @@
                                                                                                                 , 'width' => 97))?>
                                                         
                                                         </div>
-                                                    </td>
-                                                    <td valign="top">
                                                         <div class="avatartext">
                                                             <div style="font-weight:normal;">
                                                                 <strong>Select your display profile photo.</strong> <br />
@@ -317,7 +315,7 @@
                                                                 logo if you like. <br />
                                                                 <div style="margin:5px 0px;"><input type="file" id="your_photo" class="fileupload" name="your_photo" onChange="S36Form.ajax_file_upload()"/> <span id="loading">Uploading Image...</span> </div>
                                                             </div>
-                                                        </div>
+                                                        </div> 
                                                     </td>
                                                 </tr>
                                         </table>
