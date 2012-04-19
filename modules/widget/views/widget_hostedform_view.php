@@ -13,6 +13,16 @@
     <?endforeach?>
 </script>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+        
+		$('.s36_perm_details').click(function(){
+			$('.s36_perm_details').css('opacity','0.6').parent().parent().css('border','solid 2px #FFF');
+			$(this).css('opacity','1').parent().parent().css('border','solid 2px #CCC');
+		});
+    });
+</script>
+
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
 
   <?if($env == 'dev' or $env == 'local'):?>
