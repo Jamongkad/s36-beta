@@ -33,13 +33,6 @@ return array(
         $company = Input::get('subdomain');
 
         if($auth->check()) { 
-            /*
-            if($forward_to = Input::get('forward_to')) {
-                return Redirect::to($forward_to);
-            } else {
-                return Redirect::to('dashboard');     
-            } 
-            */
             return forward_or_dash();
 
         } else {

@@ -29,7 +29,7 @@ $(function() {
                     <div class="grids">
                         <div class="g3of4">
                             <span class="status-change status"> Status: <span class="status-target"><?=$feedback->status?></span>
-                                <select name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                <select style="display:none" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
                                     <?foreach($status as $option):?>
                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
                                         <option <?=($feedback->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
@@ -39,7 +39,7 @@ $(function() {
 
                             <span class="priority-change priority">
                                 Priority: <span class="priority-target"><?=$feedback->priority?></span>
-                                <select name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                <select style="display:none" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
                                     <?foreach($priority_obj as $key => $val):?>
                                         <option <?=($feedback->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
                                     <?endforeach?>
