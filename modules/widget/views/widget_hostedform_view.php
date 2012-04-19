@@ -1,3 +1,18 @@
+<?
+    $js_scripts = Array(
+         '/js/jquery.jcrop.js' 
+       , '/js/s36FormModule.js'
+       , '/js/jquery.ajaxfileupload.js'
+       , '/js/cycle.function.js'
+       , '/js/widget/form.js'
+    );
+?>
+<script text="text/javascript">
+    <?foreach($js_scripts as $scripts):?>
+       head.js('<?=$scripts?>');
+    <?endforeach?>
+</script>
+
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
 
   <?if($env == 'dev' or $env == 'local'):?>
@@ -427,17 +442,3 @@ Visit Acme's website today for more information. </p>
         <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
     </div>
 </div>
-<?
-    $js_scripts = Array(
-         '/js/jquery.jcrop.js' 
-       , '/js/s36FormModule.js'
-       , '/js/jquery.ajaxfileupload.js'
-       , '/js/cycle.function.js'
-       , '/js/widget/form.js'
-    );
-?>
-<script text="text/javascript">
-    <?foreach($js_scripts as $scripts):?>
-       head.js('<?=$scripts?>');
-    <?endforeach?>
-</script>
