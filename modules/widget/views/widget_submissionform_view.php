@@ -1,5 +1,10 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
 <!-- linked in -->
+<script type="text/javascript">
+	$(document).ready(function(){ 
+        S36Form.start_slider();
+    });
+</script>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
 
   <?if($env == 'dev' or $env == 'local'):?>

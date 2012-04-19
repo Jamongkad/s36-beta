@@ -14,8 +14,8 @@
 </script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-        
+	$(document).ready(function(){ 
+        S36Form.start_slider();
 		$('.s36_perm_details').click(function(){
 			$('.s36_perm_details').css('opacity','0.6').parent().parent().css('border','solid 2px #FFF');
 			$(this).css('opacity','1').parent().parent().css('border','solid 2px #CCC');

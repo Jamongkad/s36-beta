@@ -4,7 +4,7 @@
 
 jQuery(function($) {    
     // start the rating slider
-    S36Form.start_slider();
+    //S36Form.start_slider();
     S36Form.default_text();  
 
     //hide what to write, error message
