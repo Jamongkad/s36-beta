@@ -1,4 +1,19 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
+
+<?
+    $js_scripts = Array(
+         '/js/jquery.jcrop.js' 
+       , '/js/s36FormModule.js'
+       , '/js/jquery.ajaxfileupload.js'
+       , '/js/cycle.function.js'
+       , '/js/widget/form.js'
+    );
+?>
+<script text="text/javascript">
+    <?foreach($js_scripts as $scripts):?>
+       head.js('<?=$scripts?>');
+    <?endforeach?>
+</script>
 <!-- linked in -->
 <script type="text/javascript">
 	$(document).ready(function(){ 
@@ -386,17 +401,3 @@
     </div>
 </div>
 </body>
-<?
-    $js_scripts = Array(
-         '/js/jquery.jcrop.js' 
-       , '/js/s36FormModule.js'
-       , '/js/jquery.ajaxfileupload.js'
-       , '/js/cycle.function.js'
-       , '/js/widget/form.js'
-    );
-?>
-<script text="text/javascript">
-    <?foreach($js_scripts as $scripts):?>
-       head.js('<?=$scripts?>');
-    <?endforeach?>
-</script>
