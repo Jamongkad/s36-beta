@@ -53,6 +53,7 @@ var S36Form = new function() {
     this.show_complete_form = function(arg) {
 		if (arg) {
 		    $('#form_complete').show();
+            $('#hostform_info').removeAttr('style');
             $('#hostform_info').css({'width': '50%', 'float': 'left'});
             $('#hostform_photo').show();
 		} else {
