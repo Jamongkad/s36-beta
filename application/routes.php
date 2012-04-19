@@ -33,12 +33,14 @@ return array(
         $company = Input::get('subdomain');
 
         if($auth->check()) { 
-
+            /*
             if($forward_to = Input::get('forward_to')) {
                 return Redirect::to($forward_to);
             } else {
                 return Redirect::to('dashboard');     
             } 
+            */
+            return forward_or_dash();
 
         } else {
             return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
@@ -72,13 +74,15 @@ return array(
 
                 $halcyon = new Halcyonic\Services\HalcyonicService($company_id);
                 $halcyon->set_user_feedcount($user_id);
-
+                /*
                 if($forward_to = Input::get('forward_to')) {
                     return Redirect::to($forward_to);
                 } else {
                     return Redirect::to('dashboard');     
                 } 
+                */
                 
+                return forward_or_dash();
             } else {
                 return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
@@ -184,3 +188,11 @@ return array(
         }
     }
 );
+
+function forward_or_dash() { 
+    if($forward_to = Input::get('forward_to')) {
+        return Redirect::to($forward_to);
+    } else {
+        return Redirect::to('dashboard');     
+    } 
+}
