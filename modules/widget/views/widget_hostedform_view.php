@@ -268,12 +268,8 @@
                             <div class="formTitle">
 	                            <h2>Please check your details below</h2>
                             </div>
-
-                                <h3>
-                                    Thanks for your feedback. In order for us to get back to you fill in your contact details below.
-                                </h3> 
                             <div id="bad-feedback-message">
-                                <h3>
+                                <h3 style="text-align:center">
                                     Thanks for your feedback. In order for us to get back to you fill in your contact details below.
                                 </h3> 
                             </div>
