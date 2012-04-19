@@ -226,7 +226,7 @@
                                 <br />
                                 <div class="s36_block gray">
                                     <div class="warning">
-                                        <img src="images/ico-warning.png" />
+                                        <?=HTML::image('img/ico-warning.png')?>
                                     </div>
                                     <div class="warning-text">
                                         We only use Facebook Connect to retrieve and attach your profile information. We do not post updates on <br /> your wall without your permission. <em>We hate that</em>.
@@ -406,7 +406,7 @@
         <div class="block" style="height:40px;"></div>
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
-            	<img src="images/company-logo-filler.jpg" />
+                <?=HTML::image('img/company-logo-filler.jpg')?>
             </div>
             <div class="companyDetails">
             	<h2>Company Profile</h2>

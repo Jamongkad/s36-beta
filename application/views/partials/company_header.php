@@ -7,7 +7,7 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
-        <?=HTML::style('css/widget_master/master.css')?>
+        <?=HTML::style('css/widget_master/hosted-form.css')?>
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
