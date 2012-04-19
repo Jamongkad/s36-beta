@@ -247,7 +247,7 @@
                                     <br /><br />
                                     <script type="IN/Login" data-onAuth="loadData">
                                         Your <span style="color:#26bcf2">linkedIn</span> account is connected. Please proceed to the next step
-                                    </script> <span style=""> ... or <a href="javascript:;" id="create_wo_facebook">fill out your profile manually</a>
+                                    </script> <span style=""> ... or <a href="javascript:;" id="s36_create_profile">fill out your profile manually</a>
                                     </span>
                                 </div>
                                 <br />
