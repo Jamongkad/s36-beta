@@ -235,7 +235,7 @@ var S36Form = new function() {
                 
                 if($(this).attr('id') == "your_city"){														
                     if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Enter Your City Pwet');
+                        that.add_error('Please Enter Your City');
                     }else{
                         that.hide_error();
                     }
