@@ -9,7 +9,9 @@ $.fn.selected = function(select) {
         var t = this.type;
         if (t == 'checkbox' || t == 'radio') {
             this.checked = select;
-        } else if (this.tagName.toLowerCase() == 'option') {
+        } 
+        
+        if (this.tagName.toLowerCase() == 'option') {
             var $sel = $(this).parent('select');
             if (select && $sel[0] && $sel[0].type == 'select-one') {
                 // deselect all other options
@@ -123,7 +125,9 @@ var S36Form = new function() {
 			}else{
 				return true;
 			}
-		} else if(type == "email"){ //if type is email
+		} 
+        
+        if(type == "email"){ //if type is email
 			if((value.length <= 0) || (value == default_val)){
 				return false;
 			}else if(!that.validate_email(value)){
@@ -131,7 +135,9 @@ var S36Form = new function() {
 			}else{
 				return true;
 			}
-		}else if(type == "phone"){
+		}
+        
+        if(type == "phone"){
 			//phone only allows '+',','," " and numeric values 
 			var phone = new RegExp('[+0-9 ,]');
 			var notallow = new RegExp('[a-zA-Z]');
@@ -140,7 +146,9 @@ var S36Form = new function() {
 			}else{
 				return true;
 			}
-		}else if(type == "numeric"){
+		}
+        
+        if(type == "numeric"){
 			//strictly allows numeric values only
 			var numeric = new RegExp('[0-9]');
 			var notallow = new RegExp('[a-zA-Z]');
@@ -414,19 +422,27 @@ var S36Form = new function() {
             fname.focus();
             add_error('Please Enter Your First Name');
             return false;
-        }else if(!that.validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
+        }
+        
+        if(!that.validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
             lname.focus();
             that.add_error('Please Enter Your Last Name');
             return false;
-        }else if(!that.validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
+        }
+        
+        if(!that.validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
             email.focus();
             that.add_error('Please Enter A Valid Email');
             return false;
-        }else if((!that.validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")) && (form == "full")){
+        }
+        
+        if((!that.validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")) && (form == "full")){
             city.focus();
             that.add_error('Please Enter Your City');
             return false;
-        }else if((!that.validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")) && (form == "full")){
+        }
+        
+        if((!that.validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")) && (form == "full")){
             country.focus();
             that.add_error('Please Select Your Country');
             return false;
