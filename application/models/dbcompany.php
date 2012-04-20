@@ -34,7 +34,7 @@ class DBCompany extends S36DataObject {
         $sth->bindParam(':site_id', $company_id);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        return $result;
-    }
-   
+        //get first element of array
+        return array_shift(array_values($result));
+    } 
 }
