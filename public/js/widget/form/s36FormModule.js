@@ -445,7 +445,7 @@ var S36Form = new function() {
         if(form === 'full') { 
             if((!that.validate_field(city.val(), city.attr('title'), "regular"))){
                 city.focus();
-                that.add_error('Please Enter Your City Dickie');
+                that.add_error('Please Enter Your City');
                 return false;
             }
             
