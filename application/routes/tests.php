@@ -266,6 +266,9 @@ return array(
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
         Helpers::dump($imagine);
+
+        $size = new Imagine\Image\Box(40, 40);
+        Helpers::dump($size);
     },
 
     //reserved route for Leica and Ryan testing
