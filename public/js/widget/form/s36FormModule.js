@@ -252,7 +252,8 @@ var S36Form = new function() {
                 $(this).removeClass("reg-text-active");
             }
         });
-
+        
+        /*
 		$(".regular-select").blur(function(){
             if ($(this).val() === $(this)[0].title){
                 $(this).addClass("reg-text-active");
@@ -267,6 +268,7 @@ var S36Form = new function() {
                 }
             }
 		});
+        */
 		$(".regular-text").blur();
 		$(".regular-select").blur();
     };
