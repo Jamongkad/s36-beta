@@ -208,7 +208,7 @@ var S36Form = new function() {
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
             }
-            /* 
+
             else{
                 //validate_field function arguments : element ID, element's user input value, element's default value, type = regular or email
                 if($(this).attr('id') == "your_fname"){																
@@ -243,16 +243,15 @@ var S36Form = new function() {
                     }
                 }    
             }
-            */
-		});
 
+		});
+ 
 		$(".regular-select").focus(function(i){
             $(this).removeClass("reg-text-active");
             if ($(this).val() != $(this)[0].title){
                 $(this).removeClass("reg-text-active");
             }
         });
-        
         /*
 		$(".regular-select").blur(function(){
             if ($(this).val() === $(this)[0].title){
