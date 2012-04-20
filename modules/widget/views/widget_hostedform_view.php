@@ -1,7 +1,7 @@
+<?=HTML::script('/js/widget/form/s36FormModule.js')?>
 <?
     $js_scripts = Array(
          '/js/jquery.jcrop.js' 
-       , '/js/widget/form/s36FormModule.js'
        , '/js/jquery.ajaxfileupload.js'
        , '/js/widget/form/cycle.function.js'
        , '/js/widget/form/form.js'
