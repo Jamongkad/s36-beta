@@ -460,6 +460,7 @@ var S36Form = new function() {
             }     
         }
     
+		that.hide_error();
     };
 
     this.init_jcrop = function() {  
