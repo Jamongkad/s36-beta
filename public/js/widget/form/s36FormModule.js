@@ -117,7 +117,7 @@ var S36Form = new function() {
         }
     };
 
-    this.validate_field = function(fieldid, value, default_val, type) {
+    this.validate_field = function(value, default_val, type) {
         
 	    if(type == "regular") {   // check if type is only regular
 			if((value.length <= 0) || (value == default_val)){		
@@ -210,7 +210,7 @@ var S36Form = new function() {
             }else{
                 //validate_field function arguments : element ID, element's user input value, element's default value, type = regular or email
                 if($(this).attr('id') == "your_fname"){																
-                    if(!that.validate_field( $(this).attr('id') , $(this).val() , $(this)[0].title , "regular")){
+                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
                         that.add_error('Please Enter Your First Name');
                     }else{
                         that.hide_error();
@@ -218,7 +218,7 @@ var S36Form = new function() {
                 }
                 
                 if($(this).attr('id') == "your_lname"){														
-                    if(!that.validate_field( $(this).attr('id') , $(this).val() , $(this)[0].title , "regular")){
+                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
                         that.add_error('Please Enter Your Last Name');
                     }else{
                         that.hide_error();	
@@ -226,7 +226,7 @@ var S36Form = new function() {
                 }
                 
                 if($(this).attr('id') == "your_email"){														
-                    if(!that.validate_field( $(this).attr('id') , $(this).val() , $(this)[0].title , "email")){
+                    if(!that.validate_field($(this).val() , $(this)[0].title , "email")){
                         that.add_error('Please Enter A Valid Email');
                     }else{
                         that.hide_error();	
@@ -234,7 +234,7 @@ var S36Form = new function() {
                 }
                 
                 if($(this).attr('id') == "your_city"){														
-                    if(!that.validate_field( $(this).attr('id') , $(this).val() , $(this)[0].title , "regular")){
+                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
                         that.add_error('Please Enter Your City Pwet');
                     }else{
                         that.hide_error();
@@ -424,31 +424,31 @@ var S36Form = new function() {
         var country 	= $('#your_country');
 
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric
-        if(!that.validate_field( fname.attr('id'), fname.val(), fname.attr('title'), "regular")){
+        if(!that.validate_field(fname.val(), fname.attr('title'), "regular")){
             fname.focus();
             add_error('Please Enter Your First Name');
             return false;
         }
         
-        if(!that.validate_field( lname.attr('id'), lname.val(), lname.attr('title'), "regular")){
+        if(!that.validate_field(lname.val(), lname.attr('title'), "regular")){
             lname.focus();
             that.add_error('Please Enter Your Last Name');
             return false;
         }
         
-        if(!that.validate_field( email.attr('id'), email.val(), email.attr('title'), "email")){
+        if(!that.validate_field(email.val(), email.attr('title'), "email")){
             email.focus();
             that.add_error('Please Enter A Valid Email');
             return false;
         }
         
-        if((!that.validate_field( city.attr('id'), city.val(), city.attr('title'), "regular")) && (form == "full")){
+        if((!that.validate_field(city.val(), city.attr('title'), "regular")) && (form == "full")){
             city.focus();
             that.add_error('Please Enter Your City Dickie');
             return false;
         }
         
-        if((!that.validate_field( country.attr('id'), country.val(), country.attr('title'), "regular")) && (form == "full")){
+        if((!that.validate_field(country.val(), country.attr('title'), "regular")) && (form == "full")){
             country.focus();
             that.add_error('Please Select Your Country');
             return false;
