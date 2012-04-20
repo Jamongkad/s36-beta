@@ -8,7 +8,7 @@
             
             <?if($company->domain):?>
                 <span class="right padfix">
-                    <?=HTML::link($company->domain, "Visit $company_name's Website")?>
+                    <a href="<?=$company->domain?>"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
         </div>
