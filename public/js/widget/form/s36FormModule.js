@@ -254,13 +254,13 @@ var S36Form = new function() {
         });
 
 		$(".regular-select").blur(function(){
-            if ($(this).val() == $(this)[0].title){
+            if ($(this).val() === $(this)[0].title){
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
             }else{
                 if($(this).attr('id') == "your_country"){
-                    if(!that.validate_field( $(this).attr('id') , $(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Select Your Country');
+                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
+                        that.add_error('Please Select Your Country Fired');
                     }else{
                         that.hide_error();
                     }
