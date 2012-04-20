@@ -6,19 +6,5 @@
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/grid.css')?>
         <?=HTML::style('css/flags.css')?>
-
-        <?=HTML::script('js/jquery-1.7.1.min.js')?>
-
-        <?=HTML::script('js/Checky.js')?> 
-        <?=HTML::script('js/DropDownChange.js')?>
-        <?=HTML::script('js/jquery.switcharoo.js')?>
-        <?=HTML::script('js/jquery.fancytips.js')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?=HTML::script('js/jquery.form.js')?>
-
-        <?=HTML::script('js/jquery.jcrop.js')?>
-        <?=HTML::script('js/jquery.ajaxfileupload.js')?>
-
-        <?=HTML::script('js/s36application.js')?>
     </head>
     <body>

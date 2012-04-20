@@ -36,7 +36,7 @@ return array(
             return forward_or_dash();
 
         } else {
-            return View::of_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
+            return View::of_home_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
         }		
 
     },
@@ -53,7 +53,7 @@ return array(
         $validator = Validator::make($input, $rules);
 
         if(!$validator->valid()) { 
-            return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+            return View::of_home_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                               , 'errors' => $validator->errors
                                                                               , 'warning' => null));      
         } else {
@@ -70,7 +70,7 @@ return array(
                 
                 return forward_or_dash();
             } else {
-                return View::of_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+                return View::of_home_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
                                                                                   , 'warning' => 'Invalid login - try again.')); 
             } 
@@ -83,7 +83,7 @@ return array(
     },
 
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'help/help_index_view');
+        return View::of_home_layout()->partial('contents', 'help/help_index_view');
     }),
 
     'GET /complete' => function() { 
