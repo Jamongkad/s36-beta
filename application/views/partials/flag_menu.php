@@ -93,6 +93,7 @@
                     <?
                         $settings = Array(
                              'settings' => 'SETTINGS'
+                           , 'settings/company' => 'COMPANY'
                            //, 'settings/upgrade' => 'UPGRADE'
                            //, 'settings/change_card' => 'CHANGE CREDIT CARD'
                            //, 'settings/cancel_account' => 'CANCEL ACCOUNT'
@@ -104,8 +105,7 @@
                             <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value
                                           , Array('class' => (Helpers::filter_highlighter($name) ? 'selected' : null)) )?>
                         </li>
-                    <?endforeach?> 
-                
+                    <?endforeach?>  
                 <?endif?>   
             </ul>
     </div>
