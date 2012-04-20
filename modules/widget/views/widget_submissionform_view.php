@@ -262,7 +262,7 @@
                         <tr><td colspan="2"><input type="text" id="your_email" class="regular-text required long" title="Email Address" value="" /></td></tr>
                     </table>
                     <table id="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
-                    	<tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
+                    	<tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="pwet" /></td><td>
                         
                             <select id="your_country" class="regular-select required" title="Country">
                             <option>Country</option>

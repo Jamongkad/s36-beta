@@ -117,13 +117,13 @@ var S36Form = new function() {
 
     this.validate_field = function(fieldid, value, default_val, type) {
         
-	    if(type == "regular"){   // check if type is only regular
+	    if(type == "regular") {   // check if type is only regular
 			if((value.length <= 0) || (value == default_val)){		
 				return false;
 			}else{
 				return true;
 			}
-		}else if(type == "email"){ //if type is email
+		} else if(type == "email"){ //if type is email
 			if((value.length <= 0) || (value == default_val)){
 				return false;
 			}else if(!that.validate_email(value)){
@@ -226,6 +226,7 @@ var S36Form = new function() {
                         that.hide_error();
                     }
                 }
+                 
             }
 		});
 
