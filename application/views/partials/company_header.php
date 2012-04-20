@@ -11,4 +11,3 @@
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
-<title><?=$name?></title>
