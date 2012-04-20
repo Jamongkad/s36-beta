@@ -207,7 +207,9 @@ var S36Form = new function() {
             if ($.trim($(this).val()) == ""){
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
-            }else{
+            }
+            /* 
+            else{
                 //validate_field function arguments : element ID, element's user input value, element's default value, type = regular or email
                 if($(this).attr('id') == "your_fname"){																
                     if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
@@ -239,9 +241,9 @@ var S36Form = new function() {
                     }else{
                         that.hide_error();
                     }
-                }
-                 
+                }    
             }
+            */
 		});
 
 		$(".regular-select").focus(function(i){
