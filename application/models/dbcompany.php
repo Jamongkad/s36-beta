@@ -14,4 +14,27 @@ class DBCompany extends S36DataObject {
               , 'replyTo' => $post->replyTo
             ));
     }
+
+    public function get_company_info($company_id) {
+        $sql = "
+            SELECT 
+                *
+            FROM
+                Company
+            INNER JOIN
+                Site
+                    ON Site.companyId = Site.companyId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                AND Site.companyId = :site_id
+        ";
+        $sth = $this->dbh->prepare($sql);     
+
+        $sth->bindParam(':company_id', $company_id);
+        $sth->bindParam(':site_id', $company_id)
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
+    }
+   
 }
