@@ -424,22 +424,6 @@ var S36Form = new function() {
         var country 	= $('#your_country');
 
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric 
-        if(form === 'full') { 
-            if((!that.validate_field(city.val(), city.attr('title'), "regular"))){
-                city.focus();
-                that.add_error('Please Enter Your City Dickie');
-                return false;
-            }
-            
-            if((!that.validate_field(country.val(), country.attr('title'), "regular"))){
-                country.focus();
-                that.add_error('Please Select Your Country');
-                return false;
-            }else{
-                return 4;
-            }     
-        }
-
         if(!that.validate_field(fname.val(), fname.attr('title'), "regular") ){
             fname.focus();
             that.add_error('Please Enter Your First Name');
@@ -456,6 +440,22 @@ var S36Form = new function() {
             email.focus();
             that.add_error('Please Enter A Valid Email');
             return false;
+        }
+
+        if(form === 'full') { 
+            if((!that.validate_field(city.val(), city.attr('title'), "regular"))){
+                city.focus();
+                that.add_error('Please Enter Your City Dickie');
+                return false;
+            }
+            
+            if((!that.validate_field(country.val(), country.attr('title'), "regular"))){
+                country.focus();
+                that.add_error('Please Select Your Country');
+                return false;
+            }else{
+                return 4;
+            }     
         }
     
     };
