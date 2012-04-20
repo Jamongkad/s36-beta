@@ -264,7 +264,7 @@ return array(
     },
 
     'GET /tests/imagine' => function() {
-        $imagine = new Imagine\Imagick\Imagine();
+        $imagine = new Imagine\Gd\Imagine();
         Helpers::dump($imagine);
     },
 
