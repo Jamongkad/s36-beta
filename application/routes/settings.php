@@ -41,7 +41,10 @@ return array (
     },
 
     'GET /settings/company'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
-        return View::of_layout()->partial('contents', 'settings/settings_company_view');
+        $user = S36Auth::user();
+        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
+            'user' => $user
+        ));
     }),
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
