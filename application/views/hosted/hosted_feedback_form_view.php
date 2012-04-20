@@ -8,7 +8,7 @@
             
             <?if($company->domain):?>
                 <span class="right padfix">
-                    <a href="<?=$company->domain?>"><?="Visit $company_name's Website"?></a>
+                    <a href="http://<?=$company->domain?>"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
         </div>
