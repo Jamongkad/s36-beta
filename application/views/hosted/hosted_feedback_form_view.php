@@ -29,12 +29,14 @@ customers worldwideuse Acme products and get better each and everyday.
 Visit Acme's website today for more information. </p>
 				<br />
                 <div class="companyLinks">
+                <!--decompress social_links object and iterate here
                 	<ul>
                     	<li><a href="#" class="website">Visit Our Website</a></li>
                         <li><a href="#" class="facebook">Join us on Facebook</a></li>
                         <li><a href="#" class="twitter">Follow us on Twitter</a></li>
                     </ul>
                 </div>
+                -->
             </div>
         </div>
         <div class="block" style="height:20px;"></div>
