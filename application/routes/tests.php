@@ -205,30 +205,6 @@ return array(
 
     'GET /tests/compress' => function() {
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
-        /*
-        $js_scripts = Array(
-           'js/jquery.switcharoo.js'
-         , 'js/jquery.fancytips.js'
-         , 'js/jquery.form.js'
-         , 'js/jquery.tmpl.js'
-         , 'js/jquery.jcrop.js'
-         , 'js/jquery.ajaxfileupload.js'
-         , 'js/jquery.zclip.js' 
-         , 'js/jquery.flot.js'
-         , 'js/jquery.flot.pie.js'
-         , 'js/jquery.pjax.js'
-         , 'js/jquery.timeago.js'
-         , 'js/s36LightBox.js'
-         , 'js/ZClip.js'
-         , 'js/Checky.js'
-         , 'js/DropDownChange.js'
-         , 'js/InboxStatusChange.js'
-         , 'js/InboxFilters.js'
-         , 'js/FeedSetup.js'
-         , 'js/Status.js'
-         , 'js/s36application.js'
-        );
-        */
         $js_scripts = Array( 
              'js/jquery.jcrop.js' 
            , 'js/jquery.ajaxfileupload.js'

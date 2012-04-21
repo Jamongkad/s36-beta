@@ -27,6 +27,7 @@
              , '/js/jquery.flot.pie.js'
              , '/js/jquery.pjax.js'
              , '/js/jquery.timeago.js'
+             /*
              , '/js/inbox/s36LightBox.js'
              , '/js/inbox/ZClip.js'
              , '/js/inbox/Checky.js'
@@ -36,6 +37,8 @@
              , '/js/inbox/FeedSetup.js'
              , '/js/inbox/Status.js'
              , '/js/inbox/s36application.js'
+             */
+             , '/js/inbox/combined-min.js'
            );
            //$string = '"' . implode('","', $js_scripts) . '"';
        ?> 
