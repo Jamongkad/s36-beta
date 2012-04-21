@@ -15,7 +15,6 @@
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?
             $js_scripts = Array(
-            /*
                '/js/jquery.switcharoo.js'
              , '/js/jquery.fancytips.js'
              , '/js/jquery.cycle.all.min.js'
@@ -28,8 +27,6 @@
              , '/js/jquery.flot.pie.js'
              , '/js/jquery.pjax.js'
              , '/js/jquery.timeago.js'
-             */
-               '/js/combined.js'
              , '/js/inbox/s36LightBox.js'
              , '/js/inbox/ZClip.js'
              , '/js/inbox/Checky.js'
