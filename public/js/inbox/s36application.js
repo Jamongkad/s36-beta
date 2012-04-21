@@ -152,7 +152,6 @@ jQuery(function($) {
     $("#themeId_1 input:radio").attr('checked', true);
     
     //FastForward Email Block...fuck this is a mess...
-    //$('div.category-picker-holder, div.fast-forward-holder, .ff-form, #notification-message').hide();
     $(".ff-form").hide();
     var mouse_is_inside = false;
     $('.contact, .fileas, .forward').hover(function() {
@@ -471,4 +470,8 @@ jQuery(function($) {
     $('.copycheck').hide();
     $("#widget-preview").hide();
     new ZClip();
+
+    $(document).delegate('.catmenu-status', 'change', function(e) {
+        console.log($(this).val()); 
+    });
 });
