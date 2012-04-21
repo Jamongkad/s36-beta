@@ -471,7 +471,7 @@ jQuery(function($) {
     $("#widget-preview").hide();
     new ZClip();
 
-    $(document).delegate('.catmenu-status', 'change', function(e) {
+    $(document).delegate('.catmenu-status, .catmenu-priority', 'change', function(e) {
         console.log($(this).val()); 
     });
 });
