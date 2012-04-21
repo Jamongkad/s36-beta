@@ -29,7 +29,7 @@
              , '/js/jquery.pjax.js'
              , '/js/jquery.timeago.js'
              */
-             , 'js/combined.js'
+               '/js/combined.js'
              , '/js/inbox/s36LightBox.js'
              , '/js/inbox/ZClip.js'
              , '/js/inbox/Checky.js'
