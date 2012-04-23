@@ -329,6 +329,9 @@ class DBFeedback extends S36DataObject {
                         Site
                         ON Site.siteId = Feedback.siteId
                     INNER JOIN
+                        Company
+                        ON Company.companyId  = Site.companyId
+                    INNER JOIN
                         Category
                         ON Feedback.categoryId = Category.categoryId
                     INNER JOIN

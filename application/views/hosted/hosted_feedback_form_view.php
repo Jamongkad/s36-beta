@@ -14,6 +14,7 @@
         </div>
     </div>
 </div>
+
 <?=$widget?>
 
 <div class="block" style="height:40px;"></div>
