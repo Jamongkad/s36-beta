@@ -324,6 +324,8 @@ class DBFeedback extends S36DataObject {
             SELECT 
                 '.$this->select_vars.'
                 , Company.companyId
+                , Company.name AS company_name
+                , Company.billTo AS company_billto
             FROM 
                 Feedback
                     INNER JOIN
