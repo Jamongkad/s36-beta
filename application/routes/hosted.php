@@ -14,7 +14,7 @@ return array(
         ));
     },
 
-    'GET /hosted/single/(:num)' => function($id) use $feedback { 
+    'GET /hosted/single/(:num)' => function($id) use ($feedback) { 
         $feedback = $feedback->pull_feedback_by_id($id);
         Helpers::dump($feedback);
     }
