@@ -32,7 +32,7 @@
                     </div>
                     <div class="theAuthorCompany">
                         <?if($feedback->companyname):?>
-                    	    <span><?=$feedback->companyname?></span>
+                    	    <span><?=$feedback->position?>, <?=$feedback->companyname?></span>
                         <?else:?>
                     	    <span></span>
                         <?endif?>
