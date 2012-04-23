@@ -10,14 +10,12 @@ body{
 }
 a{color:#4894b3;text-decoration:none;}
 a:hover{color:#54a1c0;}
-/*
 div{
 	position:relative;
 	display:block;
 	padding:0px;
 	margin:0px;
 }
-*/
 
 #headerWrapper{
 	background:url(../../img/gray-bg.jpg) repeat-x;
@@ -75,7 +73,7 @@ div{
 	.theAuthorName{font-size:30px;color:#1982ad;}
 	.theAuthorCompany{font-size:14px;font-weight:bold;color:#000;}
 	.theDate{color:#a0a0a0;font-size:12px;margin-top:3px;}
-	.theText{font-size:33px;font-family:Georgia, "Times New Roman", Times, serif;line-height:1.6em;}
+	.theText{font-size:33px;font-family:Georgia, "Times New Roman", Times, serif;line-height:1.6em;color:#000}
 	
 	.companyLogo{float:left;width:252px;}
 	.companyDetails{float:left;width:618px;padding-left:30px;}
