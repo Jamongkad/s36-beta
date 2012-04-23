@@ -9,18 +9,20 @@
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
         
-        <?if(preg_match('~hosted/form~', Request::uri())):?>
-            <?=HTML::style('css/widget_master/hosted-form.css')?>
-        <?endif?>
+        <?  
+            preg_match_all('~hosted/(form|single|full)~', Request::uri(), $matches);
+ 
+            $hosted_type = array_slice($matches, 1);
+            if($hosted_type == 'single') {
+                echo HTML::style('css/widget_master/hosted-single.css');
+            }
 
-        <?if(preg_match('~hosted/single~', Request::uri())):?>
-            <?=HTML::style('css/widget_master/hosted-single.css')?>
-        <?endif?>
+            if($hosted_type == 'form') {
+                echo HTML::style('css/widget_master/hosted-form.css');
+            }
+        ?>
 
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
-<?preg_match_all('~hosted/(form|single|full)~', Request::uri(), $matches);
-    Helpers::dump(array_slice($matches, 1));
-?>
 
