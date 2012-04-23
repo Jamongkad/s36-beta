@@ -28,26 +28,27 @@
                 </div>
                 <div class="theAuthor">
                 	<div class="theAuthorName">
-                    	<span>Chris Davidson</span>
+                    	<span><?=$feedback->firstname?> <?=$feedback->lastname?></span>
                     </div>
                     <div class="theAuthorCompany">
-                    	<span>Marketing Manager, Davis LLP</span>
+                        <?if($feedback->company):?>
+                    	    <span><?=$feedback->company?></span>
+                        <?else:?>
+                    	    <span></span>
+                        <?endif?>
                     </div>
                     <div class="theDate">
-                    	<span class="flag flag-ca"></span><span>13th Sept. 2011</span>
+                    	<span class="flag"></span><span><?=$feedback->dtadded?></span>
                     </div>
                 </div>
             </div>
             <div class="block" style="height:20px"></div>
             <div class="block">
             	<div class="theText">
-                	"I had great fun using your product.  Its more comfortable to use than your competitor. Constantly surprising your customers!"
+                	"<?=$feedback->text?>"
                 </div>
             </div>
             <div class="block" style="height:20px"></div>
-            <div class="block regular">
-				<span class="gray-text">21 minutes ago via <a href="#">36Stories</a></span>
-            </div>
         </div>
  
         <div class="block" style="height:40px;"></div>
