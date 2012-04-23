@@ -8,8 +8,16 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
-        <?=HTML::style('css/widget_master/hosted-form.css')?>
+        
+        <?if(preg_match('~hosted~', Request::uri())):?>
+            <?=HTML::style('css/widget_master/hosted-form.css')?>
+        <?endif?>
+
+        <?if(preg_match('~single~', Request::uri())):?>
+            <?=HTML::style('css/widget_master/hosted-single.css')?>
+        <?endif?>
+
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
-<?=Request::uri()?>
+
