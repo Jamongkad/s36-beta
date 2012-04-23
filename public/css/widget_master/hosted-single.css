@@ -75,6 +75,7 @@ div{
 	border:1px solid #AAA;
 	width:150px;
 	float:left;
+    text-align:center;
 }
 .theAuthor{
 	width:600px;
