@@ -31,8 +31,8 @@
                     	<span><?=$feedback->firstname?> <?=$feedback->lastname?></span>
                     </div>
                     <div class="theAuthorCompany">
-                        <?if($feedback->company):?>
-                    	    <span><?=$feedback->company?></span>
+                        <?if($feedback->companyname):?>
+                    	    <span><?=$feedback->companyname?></span>
                         <?else:?>
                     	    <span></span>
                         <?endif?>
