@@ -14,9 +14,38 @@
         </div>
     </div>
 </div>
-
-
-<div class="block" style="height:40px;"></div>
+<div id="bodyWrapper">
+	<div id="bodyContent">
+    	<div id="feedbackBox">
+        	<div class="block">
+            	<div class="theAvatar">
+                	<img src="images/bianca.jpg" />
+                </div>
+                <div class="theAuthor">
+                	<div class="theAuthorName">
+                    	<span>Chris Davidson</span>
+                    </div>
+                    <div class="theAuthorCompany">
+                    	<span>Marketing Manager, Davis LLP</span>
+                    </div>
+                    <div class="theDate">
+                    	<span class="flag flag-ca"></span><span>13th Sept. 2011</span>
+                    </div>
+                </div>
+            </div>
+            <div class="block" style="height:20px"></div>
+            <div class="block">
+            	<div class="theText">
+                	"I had great fun using your product.  Its more comfortable to use than your competitor. Constantly surprising your customers!"
+                </div>
+            </div>
+            <div class="block" style="height:20px"></div>
+            <div class="block regular">
+				<span class="gray-text">21 minutes ago via <a href="#">36Stories</a></span>
+            </div>
+        </div>
+ 
+        <div class="block" style="height:40px;"></div>
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
                 <?if($feedback->company_logo):?>
