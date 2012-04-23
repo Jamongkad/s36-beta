@@ -26,6 +26,9 @@ div{
 	border-bottom:#BBB 1px solid;
 }
 
+.left{float:left;text-align:left !important;}
+.right{float:right;text-align:right !important;}
+
 #headerContent{
 	margin:0 auto;
 	width:900px;
