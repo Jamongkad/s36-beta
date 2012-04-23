@@ -80,3 +80,17 @@ div{
 	.companyDetails h2{font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;margin-top:2px;}
 	.companyDetails p{line-height:1.6em;font-size:14px;}
 	
+/* page style not the form style */
+.companyLogo{float:left;width:252px;}
+.companyDetails{margin-left:272px;display:block;color:#000;}
+.companyDetails h2{font-weight:normal;font-size:22px;margin-left:2px;margin:10px 0px 6px;}
+.companyDetails p{line-height:1.8em;font-size:14px;color:#000;margin-left:2px;}
+.companyLinks{background:#FFF;padding:5px;border-bottom:1px solid #CCC;}
+.companyLinks ul{list-style:none;margin:0px;padding:5px;}
+.companyLinks ul li{display:inline;padding:5px 5px 5px 10px;}
+.companyLinks ul li{border-right:1px solid #EEE;}
+.companyLinks ul li:last-child{border:none;}
+.companyLinks ul li a{padding:5px 2px 5px 24px;margin-right:10px;background:url(../../img/companyLinkIcons.png) no-repeat;}
+.companyLinks ul li a.website{background-position:0px 1px;}
+.companyLinks ul li a.facebook{background-position:0px -25px;}
+.companyLinks ul li a.twitter{background-position:0px -50px;}
