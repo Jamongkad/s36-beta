@@ -38,7 +38,7 @@
                         <?endif?>
                     </div>
                     <div class="theDate">
-                    	<span class="flag flag-"<?=strtolower($feedback->countrycode)?>></span>
+                    	<span class="flag flag-<?=strtolower($feedback->countrycode)?>"></span>
                         <span>
                             <?
                             $date = $feedback->date;
