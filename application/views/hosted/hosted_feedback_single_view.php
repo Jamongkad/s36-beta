@@ -6,7 +6,7 @@
         	<strong><?=$company_name?></strong>  
             <span><?=HTML::link('/', 'View all feedback')?></span>
             
-            <?if($company->domain):?>
+            <?if($feedback->sitedomain):?>
                 <span class="right padfix">
                     <a href="http://<?=$feedback->sitedomain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
