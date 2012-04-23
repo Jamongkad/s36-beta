@@ -20,8 +20,6 @@
             if($hosted_type[0][0] == 'form') {
                 echo HTML::style('css/widget_master/hosted-form.css');
             }
-
-            Helpers::dump($hosted_type);
         ?>
 
         <?=HTML::style('css/widget_master/form-default.css')?>
