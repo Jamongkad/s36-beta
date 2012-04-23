@@ -12,3 +12,4 @@
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
+<?=Request::uri()?>
