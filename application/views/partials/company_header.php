@@ -21,6 +21,6 @@
     </head>
 <body>
 <?preg_match_all('~hosted/(form|single|full)~', Request::uri(), $matches);
-    Helpers::dump($matches);
+    Helpers::dump(array_slice($matches, 1));
 ?>
 
