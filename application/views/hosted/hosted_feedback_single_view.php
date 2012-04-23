@@ -38,7 +38,13 @@
                         <?endif?>
                     </div>
                     <div class="theDate">
-                    	<span class="flag"></span><span><?=$feedback->date?></span>
+                    	<span class="flag"></span>
+                        <span>
+                            <?
+                            $date = $feedback->date;
+                            $unix = strtotime($date);
+                            echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
+                        </span>
                     </div>
                 </div>
             </div>
