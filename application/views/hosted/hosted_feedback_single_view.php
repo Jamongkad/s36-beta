@@ -38,7 +38,7 @@
                         <?endif?>
                     </div>
                     <div class="theDate">
-                        <span>
+                        <span class="right">
                             <?
                             $date = $feedback->date;
                             $unix = strtotime($date);
