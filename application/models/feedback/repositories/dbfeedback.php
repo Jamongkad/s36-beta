@@ -323,6 +323,7 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare('
             SELECT 
                 '.$this->select_vars.'
+                , Company.companyId
             FROM 
                 Feedback
                     INNER JOIN
