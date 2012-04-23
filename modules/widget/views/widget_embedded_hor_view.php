@@ -226,11 +226,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!--
+
                                                 <div class="theSocialButtons">                                   
                                                     <div class="shareTail"></div>
                                                 </div>
-                                                -->
+
                                             </div>
                                         </div>
                                     </div>';
