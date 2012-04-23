@@ -40,7 +40,8 @@ div{
 #headerTitle span {padding-left:20px;text-shadow:#EEE 0px 1px;}
 #headerTitle span a{color:#000;font-size:14px;font-weight:bold;}
 #headerTitle a:hover{color:#666;}
-
+.padfix{padding-top:5px;}
+.padfix a{font-weight:normal !important;font-size:12px !important; }
 #bodyWrapper{
 	width:100%;
 }
@@ -63,6 +64,10 @@ div{
 
 .block{display:block;width:100%;overflow:hidden;}
 .gray-text{color:#a0a0a0}
+
+.formTitle{background:#f9f9f9;padding:20px 30px;border-bottom:1px solid #e4e4e4;}
+.formTitle h2{color:#bbbdbf;text-shadow:#FFF 0px 1px;font-size:22px;padding:0px;margin:0px;}
+
 .theAvatar{
 	border:1px solid #AAA;
 	width:150px;
