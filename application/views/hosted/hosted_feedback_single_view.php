@@ -38,7 +38,7 @@
                         <?endif?>
                     </div>
                     <div class="theDate">
-                    	<span class="flag"></span><span><?=$feedback->dtadded?></span>
+                    	<span class="flag"></span><span><?=$feedback->date?></span>
                     </div>
                 </div>
             </div>
