@@ -10,12 +10,14 @@ body{
 }
 a{color:#4894b3;text-decoration:none;}
 a:hover{color:#54a1c0;}
+/*
 div{
 	position:relative;
 	display:block;
 	padding:0px;
 	margin:0px;
 }
+*/
 
 #headerWrapper{
 	background:url(../../img/gray-bg.jpg) repeat-x;
