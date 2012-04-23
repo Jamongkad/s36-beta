@@ -74,12 +74,12 @@ div{
 	.theAuthorCompany{font-size:14px;font-weight:bold;color:#000;}
 	.theDate{color:#a0a0a0;font-size:12px;margin-top:3px;}
 	.theText{font-size:33px;font-family:Georgia, "Times New Roman", Times, serif;line-height:1.6em;color:#000}
-	
+/*	
 	.companyLogo{float:left;width:252px;}
 	.companyDetails{float:left;width:618px;padding-left:30px;}
 	.companyDetails h2{font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;margin-top:2px;}
 	.companyDetails p{line-height:1.6em;font-size:14px;}
-	
+*/	
 /* page style not the form style */
 .companyLogo{float:left;width:252px;}
 .companyDetails{margin-left:272px;display:block;color:#000;}
