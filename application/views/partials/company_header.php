@@ -13,11 +13,11 @@
             preg_match_all('~hosted/(form|single|full)~', Request::uri(), $matches);
  
             $hosted_type = array_slice($matches, 1);
-            if($hosted_type == 'single') {
+            if($hosted_type[0] == 'single') {
                 echo HTML::style('css/widget_master/hosted-single.css');
             }
 
-            if($hosted_type == 'form') {
+            if($hosted_type[0] == 'form') {
                 echo HTML::style('css/widget_master/hosted-form.css');
             }
         ?>
