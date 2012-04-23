@@ -19,7 +19,12 @@
     	<div id="feedbackBox">
         	<div class="block">
             	<div class="theAvatar">
-                	<img src="images/bianca.jpg" />
+                    <?if($feedback->avatar):?>
+                        <?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>
+                    <?else:?>
+                        <?=HTML::image('img/blank-avatar.jpg')?>
+                    <?endif?>
+
                 </div>
                 <div class="theAuthor">
                 	<div class="theAuthorName">
