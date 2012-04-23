@@ -20,7 +20,7 @@
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
-<?preg_match_all('~hosted~', Request::uri(), $matches)
+<?preg_match_all('~hosted~', Request::uri(), $matches);
     Helpers::dump($matches);
 ?>
 
