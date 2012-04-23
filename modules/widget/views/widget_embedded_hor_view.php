@@ -268,7 +268,7 @@
                             </div>                       
                             <div class="soloFeedbackText">                        	
                             </div>                        
-                            <!--
+
                             <div class="soloFeedbackSocialButtons">                        	
                                 <div class="twitter-button">
                                     <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
@@ -278,7 +278,7 @@
                                     <div class="fb-like" data-href="http://webmumu.com" data-send="true" data-width="450" data-show-faces="false"></div>
                                 </div>                                                        
                             </div>                                               
-                            -->
+
                         </div>                    
                     </div>
                 </div>
