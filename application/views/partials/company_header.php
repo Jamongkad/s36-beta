@@ -9,11 +9,11 @@
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
         
-        <?if(preg_match('~hosted~', Request::uri())):?>
+        <?if(preg_match('~hosted/form~', Request::uri())):?>
             <?=HTML::style('css/widget_master/hosted-form.css')?>
         <?endif?>
 
-        <?if(preg_match('~single~', Request::uri())):?>
+        <?if(preg_match('~hosted/single~', Request::uri())):?>
             <?=HTML::style('css/widget_master/hosted-single.css')?>
         <?endif?>
 
