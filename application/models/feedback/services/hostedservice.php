@@ -14,7 +14,7 @@ class HostedService {
         $groups = Array();
 
         $ctr = 0;
-        $units = 3;
+        $units = 4;
         $max = count($feeds);
         $main = new StdClass;
         $child = Array();
