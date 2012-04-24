@@ -11,6 +11,7 @@ class HostedService {
     public function fetch_hosted_feedback($company_id) {
         $feeds = $this->feedback->televised_feedback($company_id);
         $collection = Array();
+        $groups = Array();
 
         $ctr = 0;
         $units = 3;
@@ -22,11 +23,16 @@ class HostedService {
                 $collection[] = $feed;
                 $end = 1;
             }
+
+            if(($ctr % $units) == 0) {
+                $groups[] = $feed;
+            }
+
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
 
         }
 
-        return $collection;
+        return Array($collection, $groups);
     }
 }
