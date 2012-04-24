@@ -26,6 +26,7 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
                 */
                 $i = array_slice($feeds, $ctr, $units);
+                Helpers::dump($i);
                 $coll = Array();
                 foreach($i as $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
