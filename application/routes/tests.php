@@ -75,19 +75,7 @@ return array(
         Helpers::dump($emailservice->send_email());
     },
 
-    'GET /tests/test_bcc' => function() {
-
-        $postmark = new PostMark("11c0c3be-3d0c-47b2-99a6-02fb1c4eed71", "news@36stories.com", "mathew@dickosaurus");
-        Helpers::show_data($postmark->to("wrm932@gmail.com, klemengkid@gmail.com")
-                 //->bcc("ryanchua6@gmail.com, wrm932@gmail.com, mathew@36stories.com") 
-                 //->bcc("")
-                 ->subject("You win some you lose some. As long as the outcome is income.")
-                 ->html_message("That's good advice Ryan thanks. Testing False BCC, double email sent.")
-                 ->send());
-    },
-
     'GET /tests/email_thankyou' => function() { 
-
         $auth = new S36Auth;
         $userId = $auth->user()->userid;
         $feedbackId = 54;
@@ -108,8 +96,7 @@ return array(
         ));       
      },
 
-    'GET /tests/test_email_replyto' => function() {
-        
+    'GET /tests/test_email_replyto' => function() {        
         $feedback = new Feedback\Repositories\DBFeedback;
         $replydata = new Email\Entities\ReplyData;
         
@@ -232,19 +219,16 @@ return array(
         Helpers::dump($feedid);
     }, 
 
-    'GET /tests/get_redis_cache' => function() { 
-        $redis = new redisent\Redis;
-        $main_js = $redis->get("cache:main_js");
-        $plugin_js = $redis->get("cache:plugin_js");
-        return View::make("partials/cache_output", Array('main_js' => $main_js, 'plugin_js' => $plugin_js))->get();
-    },
-
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
         Helpers::dump($imagine);
 
         $size = new Imagine\Image\Box(40, 40);
         Helpers::dump($size);
+    },
+
+    'GET /tests/full_page_algo' => function() {
+        
     },
 
     //reserved route for Leica and Ryan testing

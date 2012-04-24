@@ -16,8 +16,7 @@ return array(
 
     'GET /hosted/single/(:num)' => function($id) use ($feedback) { 
         $feedback = $feedback->pull_feedback_by_id($id);
-        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view', Array(
-            'feedback' => $feedback
-        ));
-    }
+        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view', Array('feedback' => $feedback));
+    },
+
 );
