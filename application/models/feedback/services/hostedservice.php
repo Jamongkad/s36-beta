@@ -35,21 +35,16 @@ class HostedService {
             $collection[] = $main; 
             */  
 
-            if($feed->isfeatured == 1)  {
-                $node->head = $feed->id;
-            }  else {
-                $slice_coords = Array();
-                //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
-                if(($ctr % $units) == 0) { 
-                    //echo "multiple: ".$ctr."<br/>";
-                    $start = $ctr;   
-                    $end = $ctr + $units;
-                    $slice_coords['start'] = $start;
-                    $slice_coords['end'] = $end;
-                }             
+            $slice_coords = Array();
+            //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
+            if(($ctr % $units) == 0 and $feed->ispublished == 1) { 
+                //echo "multiple: ".$ctr."<br/>";
+                $start = $ctr;   
+                $end = $ctr + $units;
+                $slice_coords['start'] = $start;
+                $slice_coords['end'] = $end;
+            }             
 
-                $node->slice = $slice_coords;
-            }
             
             $ctr += 1;
             Helpers::dump($node);
