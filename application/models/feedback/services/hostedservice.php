@@ -36,16 +36,16 @@ class HostedService {
             $collection[] = $main; 
             */  
             $d = Array();
-            echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
+            //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
                 //echo "multiple: ".$ctr."<br/>";
-                $start = $ctr;
-                $end = $start - $ctr;
-
-                echo "start: $start<br/>";
-                echo "end: $end<br/>";
-            }   
+                $start = $ctr;   
+            } else {
+                $end = $start - $ctr;    
+            }
             
+            echo "start: $start<br/>";
+            echo "end: $end<br/>";
             $ctr += 1;
             //Helpers::dump($d);
         }
