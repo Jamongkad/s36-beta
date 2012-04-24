@@ -29,35 +29,40 @@ class HostedService {
                 $featured_feeds[] = $feed->id;
             }
 
+        }
+
+        //Helpers::dump($featured_feeds);
+        //Helpers::dump($published_feeds);
+        foreach($published_feeds as $published_feed) {
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
                 /*
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 */
-                /*
-                $i = array_slice($feeds, $ctr, $units);
+
+                $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
-                foreach($i as $ky => $fr) {
+                foreach($i as $fr) {
+                    $coll[] = $fr;
+                    /*
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         //$node->head = $fr->id;
                     } else {
                         $coll[] = $fr->id;           
-                    } 
-                   
+                    }  
+                    */                    
                     $node->children = $coll;     
                 }
                 
                 //if(property_exists($node, 'head')) {
                 $collection[] = $node;
                 //} 
-                */
-            }              
-            $ctr += 1;
-        }
 
-        Helpers::dump($featured_feeds);
-        Helpers::dump($published_feeds);
-        return $collection;
+            }              
+            $ctr += 1; 
+        }
+        Helpers::dump($collection);
+        //return $collection;
     }
 }
