@@ -20,8 +20,8 @@ class HostedService {
             if($feed->isfeatured == 1)  {
                 $collection[] = $feed;
             }
-            echo $ctr++."<br/>";
-            echo $end++."<br/>";
+            echo "ctr: ".$ctr++."<br/>";
+            echo "end: ".$end++."<br/>";
         }
 
         return $collection;
