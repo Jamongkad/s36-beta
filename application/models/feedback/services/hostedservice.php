@@ -39,7 +39,7 @@ class HostedService {
             if(($ctr % $units) == 0) { 
                 echo "multiple: ".$ctr."<br/>";
             } else {
-                echo "non-multiple: ".$ctr."<br/>";
+                //echo "non-multiple: ".$ctr."<br/>";
                 $d[] = $ctr;
             } 
 
