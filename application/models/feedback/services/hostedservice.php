@@ -17,13 +17,14 @@ class HostedService {
         $max = count($feeds);
         foreach($feeds as $feed) {
             $end = 0;
+            echo "mod: ".(($ctr % $units) == 0)."<br/>";
             if($feed->isfeatured == 1)  {
                 $collection[] = $feed;
                 $end = 1;
             }
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
-            echo "max: ".($max - 1)."<br/>";
+
         }
 
         return $collection;
