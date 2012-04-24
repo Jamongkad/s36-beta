@@ -39,24 +39,17 @@ class HostedService {
             if(isset($featured_feeds[$ctr])) {
                 $head = $featured_feeds[$ctr];
             }
-
-           
+ 
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
                 /*
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
-                */
-                Helpers::dump($head);
+                */ 
                 $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $ky => $fr) {
-                    if( isset($featured_feeds[$ky]) ) {
-                        $node->head = $featured_feeds[$ky];
-                    } else {
-                        $coll[] = $fr;     
-                    }
-                   
+                    $coll[] = $fr;      
                     $node->children = $coll;     
                 }
             
