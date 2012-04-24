@@ -44,12 +44,11 @@ class HostedService {
                 //foreach($featured_feeds as $featured_feed) {
                     //$node->head = $int; 
                 //}
-                $int = 0;
+
                 foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
                     $node->children[] = $fr;     
-                     $int += 1; 
                 }
-                Helpers::dump($int);
+
                 $collection[] = $node;
 
             }             
