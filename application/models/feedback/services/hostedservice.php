@@ -22,19 +22,19 @@ class HostedService {
         $featured_feeds = Array();
         $published_feeds = Array();
         foreach($feeds as $feed) {           
+
+            if($feed->isfeatured == 0 and $feed->ispublished == 1) {
+                $published_feeds[] = $feed->id;
+            } else {
+                $featured_feeds[] = $feed->id;
+            }
+
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
                 /*
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 */
-
-                if($feed->isfeatured == 0 and $feed->ispublished == 1) {
-                    $published_feeds[] = $feed->id;
-                } else {
-                    $featured_feeds[] = $feed->id;
-                }
-
                 /*
                 $i = array_slice($feeds, $ctr, $units);
                 $coll = Array();
