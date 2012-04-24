@@ -35,14 +35,16 @@ class HostedService {
             
             $collection[] = $main; 
             */  
-            $d = Array();
+            $slice_coords = Array();
             //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
                 //echo "multiple: ".$ctr."<br/>";
                 $start = $ctr;   
                 $end = $ctr + $units;
-                echo "start: $start<br/>";
-                echo "end: $end<br/>";  
+                $slice_coords['start'] = $start;
+                $slice_coords['end'] = $end;
+
+                Helpers::dump($slice_coords);
             }             
 
             //echo "end: $end<br/>";
