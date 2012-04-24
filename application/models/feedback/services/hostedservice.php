@@ -35,8 +35,6 @@ class HostedService {
                     $featured_feeds[] = $feed->id;
                 }
 
-                Helpers::dump($featured_feeds);
-                Helpers::dump($published_feeds);
                 /*
                 $i = array_slice($feeds, $ctr, $units);
                 $coll = Array();
@@ -58,6 +56,8 @@ class HostedService {
             $ctr += 1;
         }
 
+        Helpers::dump($featured_feeds);
+        Helpers::dump($published_feeds);
         return $collection;
     }
 }
