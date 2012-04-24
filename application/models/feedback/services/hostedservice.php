@@ -25,6 +25,18 @@ class HostedService {
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 */
+                $featured_feeds = Array();
+                $published_feeds = Array();
+
+                if($feed->isfeatured == 0 and $feed->ispublished == 1) {
+                    $published_feeds[] = $feed->id;
+                } else {
+                    $featured_feeds[] = $feed->id;
+                }
+
+                Helpers::dump($featured_feeds);
+                Helpers::dump($published_feeds);
+                /*
                 $i = array_slice($feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $ky => $fr) {
@@ -40,6 +52,7 @@ class HostedService {
                 //if(property_exists($node, 'head')) {
                 $collection[] = $node;
                 //} 
+                */
             }              
             $ctr += 1;
         }
