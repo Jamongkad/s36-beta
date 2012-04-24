@@ -20,21 +20,6 @@ class HostedService {
 
         foreach($feeds as $feed) {            
             $end = 0;
-            /* 
-            if($feed->isfeatured == 1)  {
-                $main->head = $feed->id;
-            } 
-            if(($ctr % $units) == 0) {
-                $child[] = $feed;
-            }
-
-            if($child) {
-                $main->child = $child;     
-            }
-            
-            $collection[] = $main; 
-            */ 
-            //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0 and $feed->ispublished == 1) { 
                 //echo "multiple: ".$ctr."<br/>";
                 $f = new \ArrayIterator($feeds);
@@ -43,6 +28,8 @@ class HostedService {
                 foreach($i as $fr) {
                     if($fr->ispublished == 1 and $fr->isfeatured == 0) {
                         $coll[] = $fr->id;      
+                    } else {
+                        echo $fr->id."<br/>";     
                     }
                   
                 }
