@@ -37,19 +37,19 @@ class HostedService {
             $node = new StdClass;
     
             if(($ctr % $units) == 0) { 
-        $int = 0;
+
                 $node->children = Array();
                 $f = new ArrayIterator($published_feeds);
                 
                 //foreach($featured_feeds as $featured_feed) {
                     $node->head = $int; 
                 //}
-
+                $int = 0;
                 foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
                     $node->children[] = $fr;     
                      $int += 1; 
                 }
-                 
+                Helpers::dump($int);
                 $collection[] = $node;
 
             }             
