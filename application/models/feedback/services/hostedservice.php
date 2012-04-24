@@ -36,10 +36,12 @@ class HostedService {
             $collection[] = $main; 
             */
             echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
-
+            if(($ctr % $units) == 0) {
+                $child[] = $feed;
+            }
             $ctr += 1;
         }
 
-        return $collection;
+        return $child;
     }
 }
