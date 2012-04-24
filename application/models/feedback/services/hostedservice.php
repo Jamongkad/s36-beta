@@ -51,6 +51,7 @@ class HostedService {
                 $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $ky => $fr) {
+                    Helpers::dump($ky);
                     if($head) {
                         $node->head = $head;
                     } else {
