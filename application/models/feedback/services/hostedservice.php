@@ -12,7 +12,7 @@ class HostedService {
         $feeds = $this->feedback->televised_feedback($company_id);
         $collection = Array();
         foreach($feeds as $feed) {
-            if($feed->isFeatured)  {
+            if($feed->isfeatured == 1)  {
                 $collection[] = $feed;
             }
         }
