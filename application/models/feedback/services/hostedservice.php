@@ -37,7 +37,7 @@ class HostedService {
 
             $slice_coords = Array();
             //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
-            if(($ctr % $units) == 0) { 
+            if(($ctr % $units) == 0 and $feed->ispublished == 1) { 
                 //echo "multiple: ".$ctr."<br/>";
                 $start = $ctr;   
                 $end = $ctr + $units;
