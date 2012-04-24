@@ -40,7 +40,7 @@ class HostedService {
             if(($ctr % $units) == 0) { 
                 //echo "multiple: ".$ctr."<br/>";
                 $start = $ctr;   
-                $end = $ctr - $units;
+                $end = $ctr + $units;
                 echo "start: $start<br/>";
                 echo "end: $end<br/>";  
             }             
