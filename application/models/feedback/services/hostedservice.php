@@ -23,12 +23,13 @@ class HostedService {
             $main->children = Array();
             if($feed->isfeatured == 1)  {
                 $main->head = $feed;
-                $collection[] = $main; 
             }
 
             if(($ctr % $units) == 0) {
                 $main->children[] = $feed;
             }
+            
+            $collection[] = $main; 
 
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
