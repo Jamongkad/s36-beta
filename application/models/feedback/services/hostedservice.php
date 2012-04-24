@@ -44,12 +44,16 @@ class HostedService {
                 $slice_coords['start'] = $start;
                 $slice_coords['end'] = $end;
 
-                Helpers::dump($slice_coords);
+                //Helpers::dump($slice_coords);
             }             
 
             
             $ctr += 1;
         }
+
+        Helpers::dump(array_slice($feeds, 32, 36));
+
+
 
         //return $child;
     }
