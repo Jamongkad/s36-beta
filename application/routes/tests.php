@@ -227,8 +227,9 @@ return array(
         Helpers::dump($size);
     },
 
-    'GET /tests/full_page_algo' => function() {
-        
+    'GET /tests/full_page_algo' => function() { 
+        $test = new Feedback\Services\HostedService;
+        Helpers::dump($test);
     },
 
     //reserved route for Leica and Ryan testing
