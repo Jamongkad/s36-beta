@@ -36,16 +36,11 @@ class HostedService {
             $node = new StdClass;
             
             $node->head = "Mathew".$ctr;
+            $node->children = Array();
 
             if(($ctr % $units) == 0) { 
 
-                $node->children = Array();
                 $f = new ArrayIterator($published_feeds);
-                
-                //foreach($featured_feeds as $featured_feed) {
-                    //$node->head = $int; 
-                //}
-
                 foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
                     $node->children[] = $fr;     
                 }
