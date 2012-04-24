@@ -31,13 +31,12 @@ class HostedService {
                     } else {
                         $coll[] = $fr->id;           
                     } 
-
                    
                     $node->children = $coll;     
-
                 }
- 
-                $collection[] = $node;
+                
+                if($node->head)
+                    $collection[] = $node;
             }              
             $ctr += 1;
         }
