@@ -20,9 +20,10 @@ class HostedService {
         $child = Array();
         foreach($feeds as $feed) {
             $end = 0;
+            $ctr++;
             //echo "mod: ".(($ctr % $units) == 0)."<br/>";
             if($feed->isfeatured == 1)  {
-                $main->head = $feed;
+                $main->head = $feed->feedbackid;
             } 
             if(($ctr % $units) == 0) {
                 $child[] = $feed;
@@ -32,14 +33,14 @@ class HostedService {
                 $main->child = $child;     
             }
             
-            $collection[] = $main; 
+            //$collection[] = $main; 
             /*
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
             */
-            $ctr++;
+
         }
 
-        return $collection;
+        return $main;
     }
 }
