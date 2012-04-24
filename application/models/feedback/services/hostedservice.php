@@ -29,7 +29,7 @@ class HostedService {
                 $coll = Array();
                 foreach($i as $ky => $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
-                        $node->head = $fr->id;
+                        //$node->head = $fr->id;
                     } else {
                         $coll[] = $fr->id;           
                     } 
