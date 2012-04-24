@@ -39,7 +39,8 @@ class HostedService {
             if(($ctr % $units) == 0) { 
                 $child[] = $feed->id; 
             } else {
-                $child[] = null;      
+                $d[] = $feed->id;
+                $child[] = $d;
             } 
             
             $ctr += 1;
