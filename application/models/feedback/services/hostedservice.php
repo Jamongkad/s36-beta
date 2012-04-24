@@ -24,7 +24,7 @@ class HostedService {
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 $coll = Array();
-                foreach($i as $ky => $fr) {
+                foreach($i as $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         $node->head = $fr->id;
                         Helpers::dump($ky);
