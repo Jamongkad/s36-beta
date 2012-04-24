@@ -42,12 +42,12 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
 
                 $coll = Array();
-
+                $int = 0;
                 foreach($i as $ky => $fr) {
-                    $node->head = "Mathew".$ky;
-                    $coll[] = $fr;      
-   
+                    $node->head = "Mathew".$int;
+                    $coll[] = $fr;       
                     $node->children = $coll;     
+                    $int += 1;
                 }
             
                 $collection[] = $node;
