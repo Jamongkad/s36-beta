@@ -17,6 +17,7 @@ class HostedService {
         $units = 3;
         $max = count($feeds);
         $main = new StdClass;
+        $child = Array();
         foreach($feeds as $feed) {
             $end = 0;
             
@@ -34,15 +35,17 @@ class HostedService {
             
             $collection[] = $main; 
             */
-            $child = Array();
+
             echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
-            if(($ctr % $units) != 0) {
+            if(($ctr % $units) == 0) {
                 $child[] = $feed;
+            } else {
+                $child[] = null;
             }
             $ctr += 1;
-            Helpers::dump($child);
-        }
 
+        }
+        Helpers::dump($child);
         //return $child;
     }
 }
