@@ -23,7 +23,7 @@ class HostedService {
             $ctr++;
             //echo "mod: ".(($ctr % $units) == 0)."<br/>";
             if($feed->isfeatured == 1)  {
-                $main->head = $feed->feedbackid;
+                $main->head = $feed->id;
             } 
             if(($ctr % $units) == 0) {
                 $child[] = $feed;
