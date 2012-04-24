@@ -36,7 +36,7 @@ class HostedService {
             */
             $child = Array();
             echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
-            if(($ctr % $units) == 0) {
+            if(($ctr % $units) != 0) {
                 $child[] = $feed;
             }
             $ctr += 1;
