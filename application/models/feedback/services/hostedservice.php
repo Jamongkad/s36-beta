@@ -38,12 +38,10 @@ class HostedService {
 
             echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
             $d = Array();
-            if(($ctr % $units) == 0) {
-                $d[] = $feed;
-                $child[] = $d;
-            } else {
-                $child[] = null;
-            }
+            if(($ctr % $units) == 0) { 
+                $child[] = $feed->id;
+            }            
+            
             $ctr += 1;
 
         }
