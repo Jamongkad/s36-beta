@@ -19,8 +19,8 @@ class HostedService {
 
         $collection = Array();
         foreach($feeds as $feed) {           
-            $node = new StdClass;
             if(($ctr % $units) == 0) { 
+                $node = new StdClass;
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 $coll = Array();
