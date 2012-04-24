@@ -29,25 +29,26 @@ class HostedService {
         }
 
         Helpers::dump($featured_feeds);
-        $int = 0;
+
         foreach($published_feeds as $published_feed) {
 
             $head = null;
             $node = new StdClass;
-            
-            $node->head = "Mathew";
-            $node->children = Array();
+            foreach($featured_feeds as $ff)  {
+                $node->head = $ff;
+                $node->children = Array();
 
-            if(($ctr % $units) == 0) { 
+                if(($ctr % $units) == 0) { 
 
-                $f = new ArrayIterator($published_feeds);
-                foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
-                    $node->children[] = $fr;     
-                }
+                    $f = new ArrayIterator($published_feeds);
+                    foreach(new LimitIterator($f, $ctr, $units) as $fr) { 
+                        $node->children[] = $fr;     
+                    }
 
-                $collection[] = $node;
+                    $collection[] = $node;
 
-            }             
+                }              
+            }
        
             $ctr += 1; 
         }
