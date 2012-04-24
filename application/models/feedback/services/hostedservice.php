@@ -45,7 +45,7 @@ class HostedService {
 
             
             $ctr += 1;
-            echo $d;
+            print_r($d);
         }
 
         //return $child;
