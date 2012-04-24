@@ -21,8 +21,11 @@ class HostedService {
         foreach($feeds as $feed) {           
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
+                /*
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
+                */
+                $i = array_slice($feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
