@@ -44,7 +44,7 @@ class HostedService {
                 $slice_coords['start'] = $start;
                 $slice_coords['end'] = $end;
 
-                Helpers::dump($slice_coords);
+                Helpers::dump(array_slice($feeds, $start, $end));
             }             
 
             
