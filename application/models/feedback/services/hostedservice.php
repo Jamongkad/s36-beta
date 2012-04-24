@@ -18,7 +18,6 @@ class HostedService {
         $max = count($feeds);
         $main = new StdClass;
         $child = Array();
-        $d = Array();
         foreach($feeds as $feed) {            
             /*
             $end = 0;
@@ -34,18 +33,21 @@ class HostedService {
             }
             
             $collection[] = $main; 
-            */
+            */  
+            $d = Array();
             echo "feedid: ".$feed->id." num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
                 echo "multiple: ".$ctr."<br/>";
             } else {
                 echo "non-multiple: ".$ctr."<br/>";
+                $d[] = $ctr;
             } 
+
             
             $ctr += 1;
-
+            Helpers::dump($d);
         }
-        Helpers::dump($child);
+
         //return $child;
     }
 }
