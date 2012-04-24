@@ -19,8 +19,9 @@ class HostedService {
         $main = new StdClass;
         $child = Array();
         foreach($feeds as $feed) {            
-            /*
             $end = 0;
+            /*
+
             if($feed->isfeatured == 1)  {
                 $main->head = $feed->id;
             } 
@@ -37,8 +38,13 @@ class HostedService {
             $d = Array();
             echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
-                echo "multiple: ".$ctr."<br/>";
-            } 
+                //echo "multiple: ".$ctr."<br/>";
+                $start = $ctr;
+                $end = $start - $ctr;
+
+                echo "start: $start<br/>";
+                echo "end: $end<br/>";
+            }   
             
             $ctr += 1;
             //Helpers::dump($d);
