@@ -25,7 +25,7 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
                 $coll = Array();
                 foreach($i as $fr) {
-                    if($fr->ispublished == 0 and $fr->isfeatured == 1) {
+                    if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         echo $fr->id."<br/>";     
                         $node->head = $fr->id;
                     } else {
