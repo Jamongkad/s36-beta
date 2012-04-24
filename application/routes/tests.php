@@ -229,7 +229,9 @@ return array(
 
     'GET /tests/full_page_algo' => function() { 
         $test = new Feedback\Services\HostedService;
+        $feed = $test->fetch_hoste_feedback(1);
         Helpers::dump($test);
+        Helpers::dump($feed);
     },
 
     //reserved route for Leica and Ryan testing

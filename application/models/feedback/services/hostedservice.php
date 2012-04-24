@@ -7,4 +7,8 @@ class HostedService {
     public function __construct() {
         $this->feedback = new DBFeedback;
     }
+
+    public function fetch_hosted_feedback($company_id) {
+        return $this->feedback->televised_feedback($company_id);
+    }
 }
