@@ -626,7 +626,34 @@ class DBFeedback extends S36DataObject {
     }
 
     public function televised_feedback($company_id) {
-        
+        $sql = "
+            SELECT 
+                ".$this->select_vars."
+            FROM 
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                    ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                    ON Contact.contactId = Feedback.contactId
+            INNER JOIN 
+                Country
+                    ON Contact.countryId = Country.countryId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
+        ";
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute();
+        return $sth->fetchAll(PDO::FETCH_CLASS);
     }
 
     //DEPRECATED Apr, 17 2012
