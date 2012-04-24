@@ -9,6 +9,14 @@ class HostedService {
     }
 
     public function fetch_hosted_feedback($company_id) {
-        return $this->feedback->televised_feedback($company_id);
+        $feeds = $this->feedback->televised_feedback($company_id);
+        $collection = Array();
+        foreach($feeds as $feed) {
+            if($feed->isFeatured)  {
+                $collection[] = $feed;
+            }
+        }
+
+        return $collection;
     }
 }
