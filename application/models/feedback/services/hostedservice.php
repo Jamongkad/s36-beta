@@ -30,7 +30,6 @@ class HostedService {
         }
 
         Helpers::dump($featured_feeds);
-        //Helpers::dump($published_feeds);
 
         foreach($published_feeds as $published_feed) {
 
@@ -41,9 +40,12 @@ class HostedService {
 
                 $node->children = Array();
                 $f = new ArrayIterator($published_feeds);
-                    $node->head = "Mathew";
+                
+                foreach($featured_feeds as $featured_feed) {
+                    $node->head = $featured_feed;
+                }
+               
                 foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
-
                     $node->children[] = $fr;     
                 }
                  
