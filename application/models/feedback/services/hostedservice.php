@@ -17,10 +17,10 @@ class HostedService {
         $units = 4;
         $max = count($feeds);
         $node = new StdClass;
+
         foreach($feeds as $feed) {            
             $end = 0;
-            /*
-
+            /* 
             if($feed->isfeatured == 1)  {
                 $main->head = $feed->id;
             } 
@@ -33,27 +33,24 @@ class HostedService {
             }
             
             $collection[] = $main; 
-            */  
-
-            $slice_coords = Array();
+            */ 
             //echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0 and $feed->ispublished == 1) { 
                 //echo "multiple: ".$ctr."<br/>";
-                $start = $ctr;   
-                $end = $ctr + $units;
-                $slice_coords['start'] = $start;
-                $slice_coords['end'] = $end;
-
-                //Helpers::dump($slice_coords);
+                $f = new \ArrayIterator($feeds);
+                $i = new \LimitIterator($f, $ctr, $units);
+                $coll = Array();
+                foreach($i as $fr) {
+                    if($fr->ispublished == 1 and $fr->isfeatured == 0) {
+                        $coll[] = $fr->id;      
+                    }
+                  
+                }
+                Helpers::dump($coll);
             }             
-
-            
+ 
             $ctr += 1;
         }
-
-        Helpers::dump(array_slice($feeds, 0, 4));
-
-
 
         //return $child;
     }
