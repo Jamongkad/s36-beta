@@ -30,13 +30,12 @@ class HostedService {
 
         Helpers::dump($featured_feeds);
         $int = 0;
-        $node = new StdClass;
         foreach($published_feeds as $published_feed) {
 
             $head = null;
-
+            $node = new StdClass;
             
-            $node->head = "Mathew".$int;
+            $node->head = "Mathew";
             $node->children = Array();
 
             if(($ctr % $units) == 0) { 
@@ -51,7 +50,6 @@ class HostedService {
             }             
        
             $ctr += 1; 
-            $int++;
         }
         Helpers::dump($collection);
         //return $collection;
