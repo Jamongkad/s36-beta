@@ -42,6 +42,7 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
 
                 $coll = Array();
+                $node->head = "Mathew";
                 foreach($i as $ky => $fr) {
                     $coll[] = $fr;      
                     $node->children = $coll;     
