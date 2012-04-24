@@ -18,6 +18,7 @@ class HostedService {
         $max = count($feeds);
         $main = new StdClass;
         $child = Array();
+        $d = Array();
         foreach($feeds as $feed) {            
             /*
             $end = 0;
@@ -34,9 +35,8 @@ class HostedService {
             
             $collection[] = $main; 
             */
-
-            echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
-
+            $d[] = $feed->id;
+            echo "feedid: ".$feed->id." num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
                 $child[] = $d; 
             }            
