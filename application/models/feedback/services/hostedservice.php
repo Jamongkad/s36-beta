@@ -39,7 +39,7 @@ class HostedService {
             if(isset($featured_feeds[$ctr])) {
                 $head = $featured_feeds[$ctr];
             }
-            Helpers::dump($head);
+
            
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
@@ -47,7 +47,7 @@ class HostedService {
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 */
-
+                Helpers::dump($head);
                 $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $ky => $fr) {
