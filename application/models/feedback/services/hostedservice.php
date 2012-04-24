@@ -51,7 +51,7 @@ class HostedService {
             $ctr += 1;
         }
 
-        Helpers::dump(array_slice($feeds, 4));
+        Helpers::dump(array_slice($feeds, 0, 4));
 
 
 
