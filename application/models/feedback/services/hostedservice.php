@@ -36,7 +36,9 @@ class HostedService {
                         $node->children = $coll;     
                     }
                 }
-                $collection[] = $node;
+
+                if($node->head)
+                    $collection[] = $node;
             }              
             $ctr += 1;
         }
