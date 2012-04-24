@@ -31,7 +31,7 @@ class HostedService {
 
         Helpers::dump($featured_feeds);
         //Helpers::dump($published_feeds);
-                $int = 0;
+        $int = 0;
         foreach($published_feeds as $published_feed) {
 
             $head = null;
@@ -48,12 +48,12 @@ class HostedService {
                     $node->head = "Mathew".$int;
                     $coll[] = $fr;       
                     $node->children = $coll;     
-                    $int += 1;
+       
                 }
             
                 $collection[] = $node;
             }             
-            
+                    $int += 1;     
             $ctr += 1; 
         }
         Helpers::dump($collection);
