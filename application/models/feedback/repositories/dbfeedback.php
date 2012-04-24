@@ -625,7 +625,12 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
+    public function featured_published_feedback($company_id) {
+        
+    }
+
     //DEPRECATED Apr, 17 2012
+    /*
     public function fetch_deleted_feedback() {
         
         $sth = $this->dbh->prepare('
@@ -666,4 +671,5 @@ class DBFeedback extends S36DataObject {
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
     }
+    */
 }
