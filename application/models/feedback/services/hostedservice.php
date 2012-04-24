@@ -45,7 +45,7 @@ class HostedService {
 
             
             $ctr += 1;
-            print_r($d);
+            Helpers::dump($d);
         }
 
         //return $child;
