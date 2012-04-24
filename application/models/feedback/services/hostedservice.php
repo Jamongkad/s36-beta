@@ -18,6 +18,9 @@ class HostedService {
         $max = count($feeds);
 
         $collection = Array();
+
+        $featured_feeds = Array();
+        $published_feeds = Array();
         foreach($feeds as $feed) {           
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
@@ -25,8 +28,6 @@ class HostedService {
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 */
-                $featured_feeds = Array();
-                $published_feeds = Array();
 
                 if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                     $published_feeds[] = $feed->id;
