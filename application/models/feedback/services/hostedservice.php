@@ -34,21 +34,20 @@ class HostedService {
 
             $head = null;
             $node = new StdClass;
-            foreach($featured_feeds as $ff)  {
-                $node->head = $ff;
-                $node->children = Array();
+            
+            $node->head = "Mathew";
+            $node->children = Array();
 
-                if(($ctr % $units) == 0) { 
+            if(($ctr % $units) == 0) { 
 
-                    $f = new ArrayIterator($published_feeds);
-                    foreach(new LimitIterator($f, $ctr, $units) as $fr) { 
-                        $node->children[] = $fr;     
-                    }
+                $f = new ArrayIterator($published_feeds);
+                foreach(new LimitIterator($f, $ctr, $units) as $fr) { 
+                    $node->children[] = $fr;     
+                }
 
-                    $collection[] = $node;
+                $collection[] = $node;
 
-                }              
-            }
+            }             
        
             $ctr += 1; 
         }
