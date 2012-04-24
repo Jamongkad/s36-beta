@@ -35,10 +35,10 @@ class HostedService {
                     if($coll) {
                         $node->children = $coll;     
                     }
-
-                    $collection[] = $node;
                 }
             }              
+
+            $collection[] = $node;
             $ctr += 1;
         }
 
