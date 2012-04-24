@@ -44,6 +44,7 @@ class HostedService {
                 $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
                 foreach($i as $ky => $fr) {
+                    Helpers::dump($featured_feeds[$ctr]);
                     if(array_key_exists($ctr, $featured_feeds)) {
                         $node->head = $featured_feeds[$ctr];
                     } else {
