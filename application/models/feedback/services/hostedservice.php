@@ -16,24 +16,28 @@ class HostedService {
         $ctr = 0;
         $units = 3;
         $max = count($feeds);
+        $main = new StdClass;
+        $child = Array();
         foreach($feeds as $feed) {
             $end = 0;
-            echo "mod: ".(($ctr % $units) == 0)."<br/>";
-            $main = new StdClass;
-            $main->children = Array();
+            //echo "mod: ".(($ctr % $units) == 0)."<br/>";
             if($feed->isfeatured == 1)  {
                 $main->head = $feed;
+            } 
+            if(($ctr % $units) == 0) {
+                $child[] = $feed;
             }
 
-            if(($ctr % $units) == 0) {
-                $main->children[] = $feed;
+            if($child) {
+                $main->child = $child;     
             }
             
             $collection[] = $main; 
-
+            /*
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
-
+            */
+            $ctr++;
         }
 
         return $collection;
