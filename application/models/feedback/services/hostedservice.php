@@ -26,11 +26,11 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
                 */
                 $i = array_slice($feeds, $ctr, $units);
-                Helpers::dump($i);
                 $coll = Array();
-                foreach($i as $fr) {
+                foreach($i as $ky => $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         $node->head = $fr->id;
+                        Helpers::dump($ky);
                         //unset($i[$ky]);
                     } else {
                         $coll[] = $fr->id;           
