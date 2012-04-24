@@ -48,13 +48,8 @@ class HostedService {
                 }
             
                 $collection[] = $node;
-            } else {
-
-                if(isset($featured_feeds[$ctr])) {
-                    $node->head = $featured_feeds[$ctr];
-                }
-                
-            }
+            }             
+            
             $ctr += 1; 
         }
         Helpers::dump($collection);
