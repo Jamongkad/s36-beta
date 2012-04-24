@@ -23,6 +23,7 @@ class HostedService {
             }
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
+            echo "max: ".($max - 1)."<br/>";
         }
 
         return $collection;
