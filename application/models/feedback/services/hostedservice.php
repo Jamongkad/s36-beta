@@ -29,14 +29,14 @@ class HostedService {
             }
         }
 
-        Helpers::dump($published_feeds);
+        Helpers::dump($featured_feeds);
 
-        foreach($published_feeds as $key => $published_feed) {
+        foreach($published_feeds as $published_feed) {
 
             $head = null;
             $node = new StdClass;
             
-            $node->head = "Mathew".$key;
+            $node->head = "Mathew".$ctr;
 
             if(($ctr % $units) == 0) { 
 
