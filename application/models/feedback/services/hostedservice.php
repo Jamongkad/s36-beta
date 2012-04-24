@@ -24,10 +24,10 @@ class HostedService {
                 $f = new ArrayIterator($feeds);
                 $i = new LimitIterator($f, $ctr, $units);
                 $coll = Array();
-                foreach($i as $fr) {
+                foreach($i as $ky => $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
-                        echo $fr->id."<br/>";     
                         $node->head = $fr->id;
+                        unset($i[$ky]);
                     } else {
                         $coll[] = $fr->id;           
                     } 
