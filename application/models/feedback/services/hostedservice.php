@@ -19,13 +19,15 @@ class HostedService {
         foreach($feeds as $feed) {
             $end = 0;
             echo "mod: ".(($ctr % $units) == 0)."<br/>";
+            $main = new StdClass;
+            $main->children = Array();
             if($feed->isfeatured == 1)  {
-                $collection[] = $feed;
-                $end = 1;
+                $main->head = $feed;
+                $collection[] = $main; 
             }
 
             if(($ctr % $units) == 0) {
-                $groups[] = $feed;
+                $main->children[] = $feed;
             }
 
             echo "ctr: ".$ctr++."<br/>";
@@ -33,6 +35,6 @@ class HostedService {
 
         }
 
-        return Array($collection, $groups);
+        return $collection;
     }
 }
