@@ -29,7 +29,7 @@ class HostedService {
             }
         }
 
-        Helpers::dump($featured_feeds);
+        Helpers::dump($published_feeds);
 
         foreach($published_feeds as $key => $published_feed) {
 
