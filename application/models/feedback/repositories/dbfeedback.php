@@ -625,7 +625,7 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
-    public function featured_published_feedback($company_id) {
+    public function televised_feedback($company_id) {
         
     }
 
