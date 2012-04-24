@@ -42,7 +42,7 @@ class HostedService {
                 $f = new ArrayIterator($published_feeds);
                 
                 foreach($featured_feeds as $featured_feed) {
-                    $node->head = $featured_feed;
+                    $node->head[] = $featured_feed;
                 }
                
                 foreach(new LimitIterator($f, $ctr, $units) as $ky => $fr) { 
