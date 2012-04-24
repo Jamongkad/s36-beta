@@ -18,10 +18,9 @@ class HostedService {
         $max = count($feeds);
         $main = new StdClass;
         $child = Array();
-        foreach($feeds as $feed) {
-            $end = 0;
-            
+        foreach($feeds as $feed) {            
             /*
+            $end = 0;
             if($feed->isfeatured == 1)  {
                 $main->head = $feed->id;
             } 
@@ -39,7 +38,7 @@ class HostedService {
             echo "num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
             $d = Array();
             if(($ctr % $units) == 0) { 
-                $child[] = $feed->id;
+                $child[] = $d; 
             }            
             
             $ctr += 1;
