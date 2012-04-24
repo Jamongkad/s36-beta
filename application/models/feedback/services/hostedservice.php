@@ -22,13 +22,11 @@ class HostedService {
         $featured_feeds = Array();
         $published_feeds = Array();
         foreach($feeds as $feed) {           
-
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 $published_feeds[] = $feed->id;
             } else {
                 $featured_feeds[] = $feed->id;
             }
-
         }
 
         Helpers::dump($featured_feeds);
@@ -36,12 +34,12 @@ class HostedService {
         foreach($published_feeds as $published_feed) {
 
             $head = null;
+            $node = new StdClass;
             if(isset($featured_feeds[$ctr])) {
                 $head = $featured_feeds[$ctr];
             }
  
             if(($ctr % $units) == 0) { 
-                $node = new StdClass;
 
                 $f = new ArrayIterator($published_feeds);
                 $i = new LimitIterator($f, $ctr, $units);
