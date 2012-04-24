@@ -30,8 +30,6 @@ class HostedService {
                 foreach($i as $ky => $fr) {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         $node->head = $fr->id;
-                        Helpers::dump($ky);
-                        //unset($i[$ky]);
                     } else {
                         $coll[] = $fr->id;           
                     } 
@@ -39,9 +37,9 @@ class HostedService {
                     $node->children = $coll;     
                 }
                 
-                if(property_exists($node, 'head')) {
-                    $collection[] = $node;
-                } 
+                //if(property_exists($node, 'head')) {
+                $collection[] = $node;
+                //} 
             }              
             $ctr += 1;
         }
