@@ -43,11 +43,12 @@ class HostedService {
                 $end = $ctr + $units;
                 $slice_coords['start'] = $start;
                 $slice_coords['end'] = $end;
+
+                Helpers::dump($slice_coords);
             }             
 
             
             $ctr += 1;
-            Helpers::dump($node);
         }
 
         //return $child;
