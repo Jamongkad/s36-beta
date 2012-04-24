@@ -651,6 +651,7 @@ class DBFeedback extends S36DataObject {
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
         ";
 
+        $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS);
