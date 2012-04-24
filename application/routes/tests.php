@@ -163,7 +163,7 @@ return array(
         $params = Array(
             'company_id'   => 1 
           , 'site_id'      => 1
-          , 'is_published' => 1
+          , 'is_published' => 0
           , 'is_featured'  => 1
         );
         
