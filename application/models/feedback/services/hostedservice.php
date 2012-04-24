@@ -43,8 +43,13 @@ class HostedService {
 
                 $i = array_slice($published_feeds, $ctr, $units);
                 $coll = Array();
-                foreach($i as $fr) {
-                    $coll[] = $fr;
+                foreach($i as $ky => $fr) {
+                    if(array_key_exists($ky, $featured_feeds)) {
+                        $node->head = $featured_feeds[$ky];
+                    } else {
+                        $coll[] = $fr;     
+                    }
+                   
                     /*
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         //$node->head = $fr->id;
