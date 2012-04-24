@@ -31,7 +31,7 @@ class HostedService {
 
         Helpers::dump($featured_feeds);
         //Helpers::dump($published_feeds);
-        $int = 0;
+
         foreach($published_feeds as $published_feed) {
 
             $head = null;
@@ -43,17 +43,18 @@ class HostedService {
                 $i = new LimitIterator($f, $ctr, $units);
 
                 $coll = Array();
-
+                $int = 0;
                 foreach($i as $ky => $fr) {
+                    $int += 1;     
                     $node->head = "Mathew".$int;
                     $coll[] = $fr;       
                     $node->children = $coll;     
-       
+
                 }
-            
+                 
                 $collection[] = $node;
             }             
-                    $int += 1;     
+       
             $ctr += 1; 
         }
         Helpers::dump($collection);
