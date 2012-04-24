@@ -35,10 +35,9 @@ class HostedService {
             
             $collection[] = $main; 
             */
-            $d[] = $feed->id;
             echo "feedid: ".$feed->id." num:".$ctr." mod:".(($ctr % $units) == 0)."<br/>";        
             if(($ctr % $units) == 0) { 
-                $child[] = $d; 
+                $child[] = Array(); 
             }            
             
             $ctr += 1;
