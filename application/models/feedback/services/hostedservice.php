@@ -39,6 +39,7 @@ class HostedService {
             if(isset($featured_feeds[$ctr])) {
                 $head = $featured_feeds[$ctr];
             }
+            Helpers::dump($head);
            
             if(($ctr % $units) == 0) { 
                 $node = new StdClass;
