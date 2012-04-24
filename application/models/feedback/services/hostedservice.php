@@ -28,9 +28,11 @@ class HostedService {
                     if($fr->isfeatured == 1 and $fr->ispublished == 0) {
                         echo $fr->id."<br/>";     
                         $node->head = $fr->id;
+                    } else {
+                        $coll[] = $fr->id;           
                     } 
 
-                    $coll[] = $fr->id;      
+                   
                     $node->children = $coll;     
 
                 }
