@@ -36,7 +36,7 @@ class HostedService {
             $head = null;
             $node = new StdClass;
             if(isset($featured_feeds[$ctr])) {
-                $head = $featured_feeds[$ctr];
+                $node->head = $featured_feeds[$ctr];
             }
  
             if(($ctr % $units) == 0) { 
@@ -50,8 +50,9 @@ class HostedService {
                     $node->children = $coll;     
                 }
             
-                $collection[] = $node;
             }              
+
+            $collection[] = $node;
             $ctr += 1; 
         }
         Helpers::dump($collection);
