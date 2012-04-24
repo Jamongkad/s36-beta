@@ -35,7 +35,7 @@ class HostedService {
                     $node->children = $coll;     
                 }
                 
-                if($node->head)
+                if(property_exists($node, 'head'))
                     $collection[] = $node;
             }              
             $ctr += 1;
