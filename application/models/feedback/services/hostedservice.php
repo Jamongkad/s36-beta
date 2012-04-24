@@ -37,7 +37,6 @@ class HostedService {
             $node = new StdClass;
             
             $node->head = "Mathew";
-
             if(($ctr % $units) == 0) { 
 
                 $node->children = Array();
