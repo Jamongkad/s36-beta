@@ -16,9 +16,9 @@ class HostedService {
         $units = 3;
         $max = count($feeds);
         foreach($feeds as $feed) {
-            $end = 1;
             if($feed->isfeatured == 1)  {
                 $collection[] = $feed;
+                $end = 1;
             }
             echo "ctr: ".$ctr++."<br/>";
             echo "end: ".$end++."<br/>";
