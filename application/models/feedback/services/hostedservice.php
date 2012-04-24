@@ -36,9 +36,9 @@ class HostedService {
                 }
                 
                 if(property_exists($node, 'head')) {
-                    $collection[] = $node;
+                    $collection[$ctr] = $node;
                 } else {
-                    $collection[] = $fr->id;
+                    $collection[$ctr] = $fr->id;
                 }
             }              
             $ctr += 1;
