@@ -20,7 +20,7 @@ class HostedService {
 
         foreach($feeds as $feed) {            
             $end = 0;
-            if(($ctr % $units) == 0 and $feed->ispublished == 1) { 
+            if(($ctr % $units) == 0) { 
                 //echo "multiple: ".$ctr."<br/>";
                 $f = new \ArrayIterator($feeds);
                 $i = new \LimitIterator($f, $ctr, $units);
