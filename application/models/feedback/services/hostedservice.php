@@ -35,9 +35,9 @@ class HostedService {
             $collection[] = $main; 
             */  
             $d = Array();
-            echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."<br/>";        
+            echo "feedid: ".$feed->id." num: ".$ctr." mod: ".(($ctr % $units) == 0)."\n";        
             if(($ctr % $units) == 0) { 
-                echo "multiple: ".$ctr."<br/>";
+                echo "multiple: ".$ctr."\n";
             } else {
                 //echo "non-multiple: ".$ctr."<br/>";
                 $d[] = $ctr;
