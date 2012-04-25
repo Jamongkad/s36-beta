@@ -482,7 +482,7 @@ jQuery(function($) {
         var check_val = $(this).val();
         var feedid = $('.fast-forward-holder').attr('id');
         
-        var isChecked = $(this).is('checked');
+        var isChecked = $(this).attr('checked');
         console.log(isChecked);
 
         $.ajax({ 
