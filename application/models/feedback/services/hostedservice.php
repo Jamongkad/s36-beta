@@ -29,14 +29,11 @@ class HostedService {
         }
 
         Helpers::dump($featured_feeds);
-
+         
+        $children_collection = Array()
         foreach($published_feeds as $published_feed) {
 
             $node = new StdClass;
-            if(isset($featured_feeds[$ctr])) {
-                echo $featured_feeds[$ctr];
-            }
-            $node->head = "Mathew".$ctr;
             $node->children = Array();
 
             if(($ctr % $units) == 0) { 
@@ -46,13 +43,16 @@ class HostedService {
                     $node->children[] = $fr;     
                 }
 
-                $collection[] = $node;
+                $children_collection[] = $node;
 
             }             
        
             $ctr += 1;
         }
-        Helpers::dump($collection);
+         
+        foreach($children_collection as $child) {
+            Helpers::dump($child);
+        }
         //return $collection;
     }
 }
