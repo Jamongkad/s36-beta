@@ -32,7 +32,6 @@ class HostedService {
 
         foreach($published_feeds as $published_feed) {
 
-            $head = null;
             $node = new StdClass;
             
             $node->head = "Mathew";
@@ -49,7 +48,7 @@ class HostedService {
 
             }             
        
-            $ctr += 1; 
+            $ctr++;
         }
         Helpers::dump($collection);
         //return $collection;
