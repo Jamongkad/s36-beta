@@ -48,7 +48,7 @@ class HostedService {
 
             }             
 
-            if($chilren) {
+            if($children) {
                 $node->children = $chilren;     
             }
 
