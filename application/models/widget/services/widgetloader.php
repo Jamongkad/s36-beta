@@ -33,10 +33,11 @@ class WidgetLoader {
 
                 $fixed_data = Array();
                 foreach ($data->result as $rows) {
-                   //check if feedback is locked individually
+                   //check if feedback is locked use global widget display rules
                    if ($rows->indlock == 1) { 
                        $feed_rules = $obj->perms;    
                    } else {
+                   //ok feedback has it's own set of display rules
                        $feed_rules = new StdClass;
                        $feed_rules->displayname     = $rows->displayname;
                        $feed_rules->displayimg      = $rows->displayimg;

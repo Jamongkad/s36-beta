@@ -470,8 +470,13 @@ jQuery(function($) {
     $('.copycheck').hide();
     $("#widget-preview").hide();
     new ZClip();
-
+    
+    //TODO: WORK ON THIS
     $(document).delegate('.catmenu-status, .catmenu-priority', 'change', function(e) {
+        console.log($(this).val()); 
+    });
+
+    $(document).delegate('.feedback-data-table input[type=checkbox]', 'click', function(e) {
         console.log($(this).val()); 
     });
 });
