@@ -50,8 +50,11 @@ class HostedService {
             if($children) {
                 $node->children = $children;     
             }
-
-            $collection[] = $node;    
+            
+            if($node) {
+                $collection[] = $node;         
+            }
+           
 
             $ctr += 1;
         }
