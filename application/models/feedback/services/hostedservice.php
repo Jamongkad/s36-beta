@@ -32,13 +32,13 @@ class HostedService {
 
         $published_feeds = array_map(function($obj) {
             if($obj['isfeatured'] == 0 and $obj['ispublished'] == 1) {
-                return $obj; 
+                return $obj->id; 
             }
         }, $feeds);
 
         $featured_feeds = array_map(function($obj) {
             if($obj['isfeatured'] == 1 and $obj['ispublished'] == 0) {
-                return $obj; 
+                return $obj->id; 
             }  
         }, $feeds);
          
