@@ -36,8 +36,10 @@ class HostedService {
             if(isset($featured_feeds[$ctr])) {
                 echo $featured_feeds[$ctr];
             }
-            $node->node = $ctr;
+            $node->head = $ctr;
             $node->children = Array();
+
+            $fb_node = new FeedbackNode($ctr);
 
             if(($ctr % $units) == 0) { 
 
@@ -46,7 +48,7 @@ class HostedService {
                     $node->children[] = $fr;     
                 }
 
-                $collection[] = $node;
+                $collection[] = $fb_node;//$node;
 
             }             
        
@@ -54,5 +56,19 @@ class HostedService {
         }
         Helpers::dump($collection);
         //return $collection;
+    }
+}
+
+class FeedbackNode {
+
+    private $id;
+    private $children = Array();
+
+    public function __construct($id) {
+        $this->id = $id;      
+    }
+
+    public function add_child($child) {
+        $this->children[] = $child;
     }
 }
