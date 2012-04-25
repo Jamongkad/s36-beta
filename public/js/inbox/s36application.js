@@ -478,13 +478,17 @@ jQuery(function($) {
 
     $(document).delegate('.feedback-data-table input[type=checkbox]', 'click', function(e) {
         //console.log($(this).val()); 
-        console.log($(this).attr('name'));
+        var column_name = $(this).attr('name');
+        var check_val = $(this).val();
+        var feedid = $('.fast-forward-holder').attr('id');
+
         $.ajax({ 
             type: "POST"     
           , url: $("#toggle_url").attr("hrefaction")
+          , data: {column_name: column_name, check_val: check_val, feedid: feedid}
           , success: function(msg) {
                 var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
+                myStatus.notify("Processing...", 750);
             }
         })
     });
