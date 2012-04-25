@@ -173,7 +173,7 @@
                                         </div>
                                         <div class="theFeedbackAuthorInfo">
                                             <div class="theFeedbackAuthorName large">'.$name.'</div>
-                                            <div class="theFeedbackAuthorCompany normal">'.$comp.$r->url.'</div>
+                                            <div class="theFeedbackAuthorCompany normal">'.$r->url.'</div>
                                             <div class="block">
                                                 <div class="theFeedbackText" feed-id="'.$r->id.'">
                                                     '.$text.'
