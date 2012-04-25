@@ -19,7 +19,8 @@ class HostedService {
         $featured_feeds = Array();
         $published_feeds = Array();
         $children_collection = Array();
-
+        
+        /*
         foreach($feeds as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 $published_feeds[] = $feed;
@@ -27,8 +28,20 @@ class HostedService {
                 $featured_feeds[] = $feed;
             }
         }
-         
+        */
 
+        $published_feeds = array_map(function($obj) {
+            if($obj['isfeatured'] == 0 and $obj['ispublished'] == 1) {
+                return $obj; 
+            }
+        }, $feeds);
+
+        $featured_feeds = array_map(function($obj) {
+            if($obj['isfeatured'] == 1 and $obj['ispublished'] == 0) {
+                return $obj; 
+            }  
+        }, $feeds);
+         
         foreach($published_feeds as $published_feed) {
 
             $node = new StdClass;
