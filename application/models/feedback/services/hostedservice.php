@@ -30,7 +30,7 @@ class HostedService {
 
         Helpers::dump($featured_feeds);
          
-        $children_collection = Array()
+        $children_collection = Array();
         foreach($published_feeds as $published_feed) {
 
             $node = new StdClass;
