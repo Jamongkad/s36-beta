@@ -44,9 +44,7 @@ $(function() {
                                         <option <?=($feedback->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
                                     <?endforeach?>
                                 </select>
-                            </span>
-                           
-                            inherit widget display block? yes <?=Form::checkbox('resetIndLock', 1, true)?>
+                            </span> 
                         </div>
                         <div class="g1of4" style="text-align:right;">
                              <?=HTML::link('/', 'save feedback', Array('class' => 'save'))?>
@@ -56,7 +54,8 @@ $(function() {
                 <div class="feedback-data">
                     <table cellpadding="0">
                         <!--<tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>-->
-                        <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td>
+                        <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td></tr>
+                        <tr><td>INHERIT WIDGET DISPLAY:</td><td><?=Form::checkbox('resetIndLock', 1, true)?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
                     </table>
                 </div>
