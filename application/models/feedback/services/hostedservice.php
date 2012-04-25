@@ -49,7 +49,7 @@ class HostedService {
             }             
 
             if($children) {
-                $node->children = $chilren;     
+                $node->children = $children;     
             }
 
             $collection[] = $node;    
