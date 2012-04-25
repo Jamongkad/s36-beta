@@ -37,6 +37,8 @@ class HostedService {
             $node->head = "Mathew";
             $node->children = Array();
 
+            echo $ctr;
+
             if(($ctr % $units) == 0) { 
 
                 $f = new ArrayIterator($published_feeds);
@@ -48,7 +50,7 @@ class HostedService {
 
             }             
        
-            echo $ctr++;
+            $ctr++;
         }
         Helpers::dump($collection);
         //return $collection;
