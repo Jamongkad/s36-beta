@@ -36,39 +36,27 @@ class HostedService {
             if(isset($featured_feeds[$ctr])) {
                 echo $featured_feeds[$ctr];
             }
-            $node->head = $ctr;
-            $node->children = Array();
+            $node->head = "Mathew".$ctr;
 
-            $fb_node = new FeedbackNode($ctr);
-
+            $children = Array();
             if(($ctr % $units) == 0) { 
 
                 $f = new ArrayIterator($published_feeds);
                 foreach(new LimitIterator($f, $ctr, $units) as $fr) { 
-                    $node->children[] = $fr;     
+                    $children[] = $fr;     
                 }
 
-                $collection[] = $fb_node;//$node;
-
             }             
-       
+
+            if($chilren) {
+                $node->children = $chilren;     
+            }
+
+            $collection[] = $node;    
+
             $ctr += 1;
         }
         Helpers::dump($collection);
         //return $collection;
-    }
-}
-
-class FeedbackNode {
-
-    private $id;
-    private $children = Array();
-
-    public function __construct($id) {
-        $this->id = $id;      
-    }
-
-    public function add_child($child) {
-        $this->children[] = $child;
     }
 }
