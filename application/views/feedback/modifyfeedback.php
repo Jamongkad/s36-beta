@@ -55,7 +55,7 @@ $(function() {
                     <table cellpadding="0">
                         <!--<tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>-->
                         <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td></tr>
-                        <tr><td>INHERIT WIDGET DISPLAY:</td><td><?=Form::checkbox('resetIndLock', 1, true)?></td></tr>
+                        <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, true)?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
                     </table>
                 </div>
