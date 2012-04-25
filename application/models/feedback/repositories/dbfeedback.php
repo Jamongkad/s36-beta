@@ -359,14 +359,18 @@ class DBFeedback extends S36DataObject {
     //TODO: solidify this use USER_ID for company verification
     public function _change_feedback($column, $feedback_id, $state) {
         //release indLock for block display
-        $this->_release_indlock($feedback_id);
+        $this->_release_indlock($feedback_id, 0);
         return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
     }    
 
-    private function _release_indlock($feedback_id) { 
+    public function toggle_indlock($feedback_id, $state) {
+        return $this->_release_indlock($feedback_id, $state);
+    } 
+
+    private function _release_indlock($feedback_id, $state) { 
         DB::table('Feedback', 'master')
                   ->where('feedbackId', '=', $feedback_id)
-                  ->update(array('indLock' => 0));    
+                  ->update(array('indLock' => $state));    
     }
 
     public function _toggle_multiple($mode, $block_id, $extra=False) { 

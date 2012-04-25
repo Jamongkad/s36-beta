@@ -165,8 +165,7 @@ return array(
             $state = 1;    
         }
         
-        print_r($state);
-        print_r(Input::get());
+        $feedback->toggle_indlock(Input::get('feedid'), $state);
     },
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
