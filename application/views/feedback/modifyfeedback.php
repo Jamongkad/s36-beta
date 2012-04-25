@@ -187,7 +187,7 @@ $(function() {
                  <tr>
                      <td class="title">Name:</td>
                      <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
-                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null))?></td>
+                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null), Array('disabled' => 'disabled'))?></td>
                  </tr>
                  <tr>
                      <td class="title">Image:</td>
