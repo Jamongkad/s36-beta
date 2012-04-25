@@ -146,12 +146,18 @@
                             }
         
                             $comp = '&nbsp;';								
+
+                            $companyname = $r->companyname;
+                            if($r->rules->displayurl == 1) {
+                                $companyname = "<a href='".$r->url."'>".$r->companyname."</a>";    
+                            }
+
                             if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                                $comp = $r->position.', '.$r->companyname;								
+                                $comp = $r->position.', '.$companyname;								
                             }
                             
                             if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
-                                $comp = $r->companyname;								
+                                $comp = $companyname;								
                             }
 
                             if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
@@ -173,7 +179,7 @@
                                         </div>
                                         <div class="theFeedbackAuthorInfo">
                                             <div class="theFeedbackAuthorName large">'.$name.'</div>
-                                            <div class="theFeedbackAuthorCompany normal">'.$r->url.'</div>
+                                            <div class="theFeedbackAuthorCompany normal">'.$comp.'</div>
                                             <div class="block">
                                                 <div class="theFeedbackText" feed-id="'.$r->id.'">
                                                     '.$text.'
