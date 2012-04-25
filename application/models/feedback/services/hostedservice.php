@@ -33,11 +33,11 @@ class HostedService {
         foreach($published_feeds as $published_feed) {
 
             $node = new StdClass;
-            
+            if(isset($featured_feeds[$ctr])) {
+                echo $featured_feeds[$ctr];
+            }
             $node->head = "Mathew";
             $node->children = Array();
-
-            echo $ctr;
 
             if(($ctr % $units) == 0) { 
 
