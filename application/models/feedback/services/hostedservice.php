@@ -48,7 +48,7 @@ class HostedService {
 
             }             
        
-            $ctr++;
+            echo $ctr++;
         }
         Helpers::dump($collection);
         //return $collection;
