@@ -479,12 +479,9 @@ jQuery(function($) {
     $(document).delegate('.feedback-data-table input[type=checkbox]', 'click', function(e) {
         //console.log($(this).val()); 
         var column_name = $(this).attr('name');
-        var check_val = $(this).val();
+        var check_val = $(this).attr('checked');
         var feedid = $('.fast-forward-holder').attr('id');
         
-        var isChecked = $(this).attr('checked');
-        console.log(isChecked);
-
         $.ajax({ 
             type: "POST"     
           , url: $("#toggle_url").attr("hrefaction")
