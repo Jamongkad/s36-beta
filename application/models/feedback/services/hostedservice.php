@@ -54,7 +54,7 @@ class HostedService {
 
             $final_node = new StdClass; 
             echo $key;
-            if(isset($featured[$key])) {
+            if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
                 echo $featured_feeds[$key];
             }
