@@ -477,6 +477,14 @@ jQuery(function($) {
     });
 
     $(document).delegate('.feedback-data-table input[type=checkbox]', 'click', function(e) {
-        console.log($(this).val()); 
+        //console.log($(this).val()); 
+        $.ajax({ 
+            type: "POST"     
+          , url: $("#toggle_url").attr("hrefaction")
+          , success: function(msg) {
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 10000);
+            }
+        })
     });
 });
