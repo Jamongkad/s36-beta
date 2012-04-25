@@ -45,6 +45,8 @@ $(function() {
                                     <?endforeach?>
                                 </select>
                             </span>
+                           
+                            inherit widget display block? yes <?=Form::checkbox('resetIndLock', 1, true)?>
                         </div>
                         <div class="g1of4" style="text-align:right;">
                              <?=HTML::link('/', 'save feedback', Array('class' => 'save'))?>
@@ -181,8 +183,7 @@ $(function() {
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <span id="toggle_url" hrefaction="<?=URL::to('/feedback/toggle_feedback_display')?>"></span>
-                 <tr><td colspan="2" class="header">Display Information<br/>
-                 inherit widget display choices? <?=Form::checkbox('resetIndLock', 1, true)?>
+                 <tr><td colspan="2" class="header">Display Information
                  </td><td>display?</td></tr>
                  <tr>
                      <td class="title">Name:</td>
