@@ -152,7 +152,7 @@ return array(
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
         $state = 0;
 
-        if(Input::get('check_val') == 'true') {
+        if(Input::get('check_val')) {
             $state = 1;    
         }
         print_r($state);
