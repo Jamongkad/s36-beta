@@ -5,7 +5,7 @@ use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, A
 class HostedService {
 
     public $units = 4;
-    private $ctr = 0;
+
     
     public function __construct() {
         $this->feedback = new DBFeedback;
@@ -19,7 +19,7 @@ class HostedService {
         $featured_feeds = Array();
         $published_feeds = Array();
         $children_collection = Array();
-        
+    
         foreach($feeds as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 $published_feeds[] = $feed->id;
@@ -27,22 +27,23 @@ class HostedService {
                 $featured_feeds[] = $feed->id;
             }
         }
-         
+
+        $ctr = 0;            
         foreach($published_feeds as $published_feed) {
 
-            $node = new StdClass;
-            $node->children = Array();
+            $children = Array();
 
-            if(($this->ctr % $this->units) == 0) { 
+            if(($ctr % $this->units) == 0) { 
 
                 $f = new ArrayIterator($published_feeds);
-                foreach(new LimitIterator($f, $this->ctr, $this->units) as $fr) { 
-                    $node->children[] = $fr;     
+                foreach(new LimitIterator($f, $ctr, $this->units) as $fr) { 
+                    $children[] = $fr;     
                 }
-                $children_collection[] = $node;
+
+                $children_collection[] = $chilren;
 
             }              
-            $this->ctr += 1;
+            $ctr += 1;
         }
          
         foreach($children_collection as $key => $val) {
@@ -52,10 +53,10 @@ class HostedService {
                 $final_node->head = $featured_feeds[$key];     
             }
 
-            $final_node->children = $val->children;
-           
+            $final_node->children = $val;
             $collection[] = $final_node;
         }
+
         return $collection;
     }
 }
