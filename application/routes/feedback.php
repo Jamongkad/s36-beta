@@ -159,6 +159,16 @@ return array(
                                     , $state );
     },
 
+    'POST /feedback/lock_feedback_display' => function() use ($feedback) {
+        $state = 0;
+        if(Input::get('check_val')) {
+            $state = 1;    
+        }
+        
+        print_r($state);
+        print_r(Input::get());
+    },
+
     'POST /feedback/fire_multiple' => function() use ($feedback) {
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col'); 

@@ -492,4 +492,19 @@ jQuery(function($) {
             }
         })
     });
+
+    $(document).delegate('.feedback-data input[type=checkbox]', 'click', function(e) {
+        var check_val = $(this).attr('checked');
+        var feedid = $('.fast-forward-holder').attr('id');     
+
+        $.ajax({ 
+            type: "POST"     
+          , url: $("#indlock_url").attr("hrefaction")
+          , data: {check_val: check_val, feedid: feedid}
+          , success: function(msg) {
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 750);
+            }
+        })
+    });
 });

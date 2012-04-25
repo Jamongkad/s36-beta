@@ -52,10 +52,11 @@ $(function() {
                     </div>
                 </div>
                 <div class="feedback-data">
+                    <span id="indlock_url" hrefaction="<?=URL::to('/feedback/lock_feedback_display')?>"></span>
                     <table cellpadding="0">
                         <!--<tr><td width="90">Feedback Form:	</td><td>Testimonial Form</td>-->
                         <tr><td>SITE URL:</td><td><?=$feedback->sitedomain?></td></tr>
-                        <tr><td>DEFAULT DISPLAY RULES:</td><td align="center">yes <?=Form::checkbox('resetIndLock', 1, 
+                        <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, 
                                                                       ($feedback->indlock ? True : Null))?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
                     </table>
