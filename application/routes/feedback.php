@@ -151,12 +151,12 @@ return array(
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
         $state = 0;
-        print_r(Input::get());
-        /*
+
         if(Input::get('check_val') == 'true') {
             $state = 1;    
         }
-
+        print_r($state);
+        /*
         $feedback->_change_feedback(  Input::get('column_name')
                                     , Input::get('feedid')
                                     , $state );
