@@ -22,13 +22,11 @@ class HostedService {
 
         foreach($feeds as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
-                $published_feeds[] = $feed->id;
+                $published_feeds[] = $feed;
             } else {
-                $featured_feeds[] = $feed->id;
+                $featured_feeds[] = $feed;
             }
         }
-
-        Helpers::dump($featured_feeds);
          
         $children_collection = Array();
         foreach($published_feeds as $published_feed) {
