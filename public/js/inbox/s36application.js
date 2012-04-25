@@ -481,6 +481,9 @@ jQuery(function($) {
         var column_name = $(this).attr('name');
         var check_val = $(this).val();
         var feedid = $('.fast-forward-holder').attr('id');
+        
+        var isChecked = $(this).is('checked');
+        console.log(isChecked);
 
         $.ajax({ 
             type: "POST"     
