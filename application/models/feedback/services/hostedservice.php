@@ -57,8 +57,8 @@ class HostedService {
 
             $final_node->children = $val->children;
            
-            Helpers::dump($final_node);
+            $collection[] = $final_node;
         }
-        //return $collection;
+        return $collection;
     }
 }
