@@ -34,28 +34,22 @@ class HostedService {
 
             $node = new StdClass;
             if(isset($featured_feeds[$ctr])) {
-                $node->head = $featured_feeds[$ctr];
+                echo $featured_feeds[$ctr];
             }
+            $node->head = "Mathew".$ctr;
+            $node->children = Array();
 
-            $children = Array();
             if(($ctr % $units) == 0) { 
 
                 $f = new ArrayIterator($published_feeds);
                 foreach(new LimitIterator($f, $ctr, $units) as $fr) { 
-                    $children[] = $fr;     
+                    $node->children[] = $fr;     
                 }
 
+                $collection[] = $node;
+
             }             
-
-            if($children) {
-                $node->children = $children;     
-            }
-            
-            if($node) {
-                $collection[] = $node;         
-            }
-           
-
+       
             $ctr += 1;
         }
         Helpers::dump($collection);
