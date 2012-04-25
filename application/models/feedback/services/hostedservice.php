@@ -34,11 +34,9 @@ class HostedService {
 
             $node = new StdClass;
             if(isset($featured_feeds[$ctr])) {
-                $node->head = $featured_feeds[$ctr];
-            } else {
-                $node->head = null;     
+                echo $featured_feeds[$ctr];
             }
-
+            $node->head = "Mathew".$ctr;
             $node->children = Array();
 
             if(($ctr % $units) == 0) { 
