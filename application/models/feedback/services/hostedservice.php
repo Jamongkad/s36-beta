@@ -40,7 +40,7 @@ class HostedService {
                     $children[] = $fr;     
                 }
 
-                $children_collection[] = $chilren;
+                $children_collection[] = $children;
 
             }              
             $ctr += 1;
