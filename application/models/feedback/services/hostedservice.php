@@ -57,6 +57,6 @@ class HostedService {
             $collection[] = $final_node;
         }
 
-        return $collection;
+        return json_encode($collection);
     }
 }
