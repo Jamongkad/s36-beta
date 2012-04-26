@@ -13,9 +13,9 @@ class HostedService {
         $this->redis = new redisent\Redis; 
     }
 
-    public function fetch_hosted_feedback($company_id) {
+    public function fetch_hosted_feedback($company_id, $ignore=False) {
    
-        if(!$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) {
+        if($ignore or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) {
  
             $feeds = $this->feedback->televised_feedback($company_id);
 
@@ -59,17 +59,14 @@ class HostedService {
                 $final_node->children = $val;
                 $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
-            }    
-            
-            echo "Fresh Load";
+            }     
+            //echo "Fresh Load";
             return $collection;
         } else {
-            echo "From Cache";
+            //echo "From Cache";
             return array_map(function($arr) {
                 return json_decode($arr);
             }, $collection);
         }
-
-
     }
 }
