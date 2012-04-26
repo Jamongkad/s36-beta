@@ -653,6 +653,8 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 AND Company.companyId = :company_id
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
+            ORDER BY
+                Feedback.dtAdded DESC
         ";
 
         $sth = $this->dbh->prepare($sql);
