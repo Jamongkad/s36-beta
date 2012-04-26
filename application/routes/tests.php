@@ -229,7 +229,7 @@ return array(
 
     'GET /tests/full_page_algo' => function() { 
         $test = new Feedback\Services\HostedService;
-        $feed = $test->fetch_hosted_feedback(3);
+        $feed = $test->fetch_hosted_feedback(1);
         Helpers::dump($feed);
     },
 
