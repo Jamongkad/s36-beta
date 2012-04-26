@@ -63,9 +63,7 @@ class HostedService {
             return $collection;
         } else {
             echo "From Cache";
-            return array_map(function($arr) {
-                return json_decode($arr);
-            }, $collection);
+            return array_map(function($arr) { return json_decode($arr); }, $collection);
         }
     }
 }
