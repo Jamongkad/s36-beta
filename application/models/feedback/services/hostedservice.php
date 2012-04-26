@@ -16,7 +16,7 @@ class HostedService {
     public function fetch_hosted_feedback($company_id) {
   
         $time_start = microtime(True);
-        if(!$collection = $this->redis->smembers("hosted:feeds:$company_id")) {
+        if(!$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) {
             echo "Fresh Load";
             $feeds = $this->feedback->televised_feedback($company_id);
 
@@ -58,7 +58,7 @@ class HostedService {
                 }
 
                 $final_node->children = $val;
-                $this->redis->sadd("hosted:feeds:$company_id", json_encode($final_node));
+                $this->redis->lpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }
             
