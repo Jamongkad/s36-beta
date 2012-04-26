@@ -210,13 +210,12 @@ return array(
     },
 
     'GET /tests/redis' => function() { 
-        $halcyon = new Halcyonic\Services\HalcyonicService;
-        $halcyon->company_id = 1;
-        Helpers::dump($halcyon->save_latest_feedid());
-
         $redis = new redisent\Redis;       
-        $feedid = $redis->hget("company:1", "last_feedid");
+        $feedid = $redis->smembers("hosted:feeds:3");
         Helpers::dump($feedid);
+        foreach($feedid as $feeds) {
+            Helpers::dump(json_decode($feeds));
+        }
     }, 
 
     'GET /tests/imagine' => function() {
