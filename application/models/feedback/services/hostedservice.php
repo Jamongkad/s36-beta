@@ -1,6 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, ArrayIterator, LimitIterator;
+use redisent;
 
 class HostedService {
 
@@ -9,6 +10,7 @@ class HostedService {
     
     public function __construct() {
         $this->feedback = new DBFeedback;
+        $this->redis = new redisent\Redis; 
     }
 
     public function fetch_hosted_feedback($company_id) {

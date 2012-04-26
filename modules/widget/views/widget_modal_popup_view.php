@@ -129,7 +129,7 @@
 
                         $companyname = $r->companyname;
                         if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."'>".$r->companyname."</a>";    
+                            $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
                         }
 
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
@@ -221,7 +221,7 @@
 
                         $companyname = $r->companyname;
                         if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."'>".$r->companyname."</a>";    
+                            $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
                         }
 
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
