@@ -15,8 +15,7 @@ class HostedService {
 
     public function fetch_hosted_feedback($company_id, $ignore=False) {
    
-        if($ignore or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) {
- 
+        if($ignore or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id);
 
             $collection = Array();
