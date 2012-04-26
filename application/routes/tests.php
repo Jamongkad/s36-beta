@@ -229,7 +229,7 @@ return array(
     'GET /tests/full_page_algo' => function() { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService;
-        $feed = $test->fetch_hosted_feedback(1, $ignore=true);
+        $feed = $test->fetch_hosted_feedback(1);
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
