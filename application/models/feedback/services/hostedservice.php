@@ -57,7 +57,7 @@ class HostedService {
                 }
 
                 $final_node->children = $val;
-                $this->redis->lpush("hosted:feeds:$company_id", json_encode($final_node));
+                $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }    
         } 
