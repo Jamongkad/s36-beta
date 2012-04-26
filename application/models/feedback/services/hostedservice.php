@@ -60,8 +60,16 @@ class HostedService {
                 $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }    
-        } 
+            
+            echo "Fresh Load";
+            return $collection;
+        } else {
+            echo "From Cache";
+            return array_map(function($arr) {
+                return json_decode($arr);
+            }, $collection);
+        }
 
-        return $collection;
+
     }
 }
