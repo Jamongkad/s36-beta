@@ -34,7 +34,6 @@ class HostedService {
         foreach($published_feeds as $published_feed) {
 
             $children = Array();
-
             if(($ctr % $this->units) == 0) { 
 
                 $f = new ArrayIterator($published_feeds);
@@ -46,16 +45,17 @@ class HostedService {
 
             }              
             $ctr += 1;
+
         }
          
         foreach($children_collection as $key => $val) {
-
             $final_node = new StdClass; 
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
             }
 
             $final_node->children = $val;
+            Helpers::dump($final_node);
             $collection[] = $final_node;
         }
 
