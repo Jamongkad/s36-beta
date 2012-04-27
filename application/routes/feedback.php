@@ -131,7 +131,8 @@ return array(
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
         $company_id = S36Auth::user()->companyid;
-
+        
+        Helpers::dump(Input::get());
         
         /*
         if($cat_state == "default") {
