@@ -134,24 +134,21 @@ return array(
         
         if($cat_state == "default") {
             //echo "Default Category";
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
+            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($cat_state != "default" && $cat_state != null){
             //echo "Archived Category";
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
+            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
         }
        
         if($cat_state == null) {
             //echo "Inbox Operation";
             if($mode == 'feature' || $mode == 'publish') { 
-                echo $mode;
-                /*
                 $hosted = new Feedback\Services\HostedService($company_id);
                 $hosted->invalidate_hosted_feeds_cache(); 
-                */
             }
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
+            return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
        
     },
