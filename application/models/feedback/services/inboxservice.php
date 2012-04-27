@@ -42,10 +42,9 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
-            Helpers::dump($this->pagination->get_page());
-
             $this->pagination->selectable_pages(4);
-            $offset = ($this->pagination->get_page() - 1) * $this->filters['limit'];
+            $page_offset = $this->pagination->get_page() - 1;
+            $offset = $page_offset * $this->filters['limit'];
 
             $this->filters['offset'] = $offset;
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
