@@ -68,8 +68,10 @@ class InboxService {
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
                 $this->redis->set("inbox:feeds:$company_id:$page_number", json_encode($data_obj));
+                echo "no cache";
                 return $data_obj; 
             } else {
+                echo "cached";
                 return json_decode($data_obj);
             }
 
