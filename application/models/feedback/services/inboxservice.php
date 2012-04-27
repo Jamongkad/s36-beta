@@ -1,6 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
+use redisent;
 
 class InboxService {
 
@@ -33,6 +34,7 @@ class InboxService {
     public function __construct() {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
+        $this->redis = new redisent\Redis; 
     }
 
     public function set_filters(Array $filters) {
