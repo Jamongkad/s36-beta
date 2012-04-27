@@ -70,10 +70,10 @@ class InboxService {
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
                 $this->redis->set($key, json_encode($data_obj));
-                echo "no cache";
+                //echo "set cache";
                 return $data_obj; 
             } else {
-                echo "cached";
+                //echo "get cache";
                 return json_decode($data_obj);
             }
 
