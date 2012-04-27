@@ -172,7 +172,7 @@ return array(
         Helpers::show_data($data);
     },
 
-    'GET /tests/inboxservice' => function() {
+    'GET /tests/inboxservice/(:num)' => function($company_id) {
         $inbox_service = new Feedback\Services\InboxService;
         $filters = array(
               'limit'=> 10
@@ -184,7 +184,7 @@ return array(
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
-            , 'company_id' => 2
+            , 'company_id' => $company_id
         );
         Helpers::dump($inbox_service->set_filters($filters));  
         Helpers::dump(json_encode($inbox_service->present_feedback()));
