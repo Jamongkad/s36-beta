@@ -132,7 +132,7 @@ return array(
         $mode      = Input::get('mode');         
         $company_id = S36Auth::user()->companyid;
         
-        print_r(Input::get());
+        print_r(Input::get('mode'));
         /*
         if($cat_state == "default") {
             //echo "Default Category";
