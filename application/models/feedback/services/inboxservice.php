@@ -45,6 +45,8 @@ class InboxService {
         if ($this->filters) {
             //pass filters to dbfeedback     
             $page_number = $this->pagination->get_page();
+            $company_id = $this->dbfeedback->company_id;
+
             if($ignore_cache or !$data_obj = $this->redis->get("inbox:feeds:$company_id:$page_number")) { 
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
