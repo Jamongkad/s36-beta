@@ -8,12 +8,15 @@ class HostedService {
     public $units = 4;
 
     
-    public function __construct() {
+    public function __construct($company_id) {
         $this->feedback = new DBFeedback;
         $this->redis = new redisent\Redis; 
+        $this->company_id = $company_id;
     }
 
-    public function fetch_hosted_feedback($company_id, $ignore=False) {
+    public function fetch_hosted_feedback($ignore=False) {
+
+        $company_id = $this->company_id;
    
         if($ignore or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id);
@@ -59,10 +62,9 @@ class HostedService {
                 $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }     
-            echo "Fresh Load";
+         
             return $collection;
-        } else {
-            echo "From Cache";
+        } else { 
             return array_map(function($arr) { return json_decode($arr); }, $collection);
         }
     }
