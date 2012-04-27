@@ -190,7 +190,7 @@ return array(
         );
 
         $inbox_service->set_filters($filters);
-        $feedback = $inbox_service->present_feedback();
+        $feedback = $inbox_service->present_feedback(true);
         Helpers::dump($feedback);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
