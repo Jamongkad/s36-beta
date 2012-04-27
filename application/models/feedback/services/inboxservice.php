@@ -55,7 +55,7 @@ class InboxService {
             $data = Array();
             foreach($date_result->result as $feeds) {
                $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
-               $data[] = $feeds;
+               $data[] = $feeds->id;
             }
             
             $data_obj = new StdClass;
