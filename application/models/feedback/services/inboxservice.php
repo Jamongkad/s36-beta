@@ -39,31 +39,36 @@ class InboxService {
         $this->filters = $this->_check_filters($filters);
     }
 
-    public function present_feedback() {
+    public function present_feedback($ignore_cache=False) {
         if ($this->filters) {
             //pass filters to dbfeedback     
             $page_number = $this->pagination->get_page();
-            print_r($page_number);
-            $this->pagination->selectable_pages(4);
-            $offset = ($page_number - 1) * $this->filters['limit'];
+            if($ignore_cache or !$data_obj = $this->redis->get("inbox:feeds:$company_id:$page_number")) { 
+                $this->pagination->selectable_pages(4);
+                $offset = ($page_number - 1) * $this->filters['limit'];
 
-            $this->filters['offset'] = $offset;
-            $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
+                $this->filters['offset'] = $offset;
+                $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
 
-            $this->pagination->records($date_result->total_rows);
-            $this->pagination->records_per_page($this->filters['limit']);
+                $this->pagination->records($date_result->total_rows);
+                $this->pagination->records_per_page($this->filters['limit']);
+                    
+                $data = Array();
+                foreach($date_result->result as $feeds) {
+                   $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
+                   $data[] = $feeds;
+                }
                 
-            $data = Array();
-            foreach($date_result->result as $feeds) {
-               $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
-               $data[] = $feeds;
+                $data_obj = new StdClass;
+                $data_obj->result = $data;
+                $data_obj->num_rows = $date_result->total_rows;
+                $data_obj->pagination = $this->pagination->render();
+                $this->redis->set("inbox:feeds:$company_id:$page_number", json_encode($data_obj));
+                return $data_obj; 
+            } else {
+                return json_decode($data_obj);
             }
-            
-            $data_obj = new StdClass;
-            $data_obj->result = $data;
-            $data_obj->num_rows = $date_result->total_rows;
-            $data_obj->pagination = $this->pagination->render();
-            return $data_obj; 
+
         }
     }
 

@@ -14,11 +14,11 @@ class HostedService {
         $this->company_id = $company_id;
     }
 
-    public function fetch_hosted_feedback($ignore=False) {
+    public function fetch_hosted_feedback($ignore_cache=False) {
 
         $company_id = $this->company_id;
    
-        if($ignore or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
+        if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id);
 
             $collection = Array();
