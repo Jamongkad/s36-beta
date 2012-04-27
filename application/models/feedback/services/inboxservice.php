@@ -42,6 +42,7 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback     
+            print_r($this->pagination->get_page());
             $this->pagination->selectable_pages(4);
             $page_offset = $this->pagination->get_page() - 1;
             $offset = $page_offset * $this->filters['limit'];
