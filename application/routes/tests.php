@@ -187,7 +187,7 @@ return array(
             , 'company_id' => $company_id
         );
         Helpers::dump($inbox_service->set_filters($filters));  
-        Helpers::dump(json_encode($inbox_service->present_feedback()));
+        Helpers::dump($inbox_service->present_feedback());
     }, 
 
     'GET /tests/compress' => function() {
