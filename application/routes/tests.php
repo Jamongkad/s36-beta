@@ -229,7 +229,8 @@ return array(
     'GET /tests/full_page_algo' => function() { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService(1);
-        $test->fetch_hosted_feedback(); 
+        $feeds = $test->fetch_hosted_feedback(); 
+        Helpers::dump($feeds);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");

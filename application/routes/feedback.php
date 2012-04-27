@@ -131,10 +131,7 @@ return array(
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
         $company_id = S36Auth::user()->companyid;
-        
-        Helpers::dump(Input::get());
-        
-        /*
+                
         if($cat_state == "default") {
             //echo "Default Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
@@ -147,9 +144,11 @@ return array(
        
         if($cat_state == null) {
             //echo "Inbox Operation";
+            $hosted = new Feedback\Services\HostedService($company_id);
+            $hosted->invalidate_hosted_feeds_cache(); 
             return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
-        */
+
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
