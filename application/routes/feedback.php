@@ -144,7 +144,7 @@ return array(
        
         if($cat_state == null) {
             //echo "Inbox Operation";
-            if($mode == 'feature' || $mode == 'publish') { 
+            if($mode == 'feature' || $mode == 'publish' || $mode == 'inbox') { 
                 $hosted = new Feedback\Services\HostedService($company_id);
                 $hosted->invalidate_hosted_feeds_cache(); 
             }
