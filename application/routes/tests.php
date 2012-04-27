@@ -174,6 +174,8 @@ return array(
 
     'GET /tests/inboxservice/(:num)' => function($company_id) {
         $inbox_service = new Feedback\Services\InboxService;
+        $time_start = microtime(True);
+
         $filters = array(
               'limit'=> 10
             , 'site_id'=> false 
@@ -186,8 +188,14 @@ return array(
             , 'status' => false //new inprogress closed
             , 'company_id' => $company_id
         );
-        Helpers::dump($inbox_service->set_filters($filters));  
+
+        $inbox_service->set_filters($filters);
         Helpers::dump($inbox_service->present_feedback());
+
+        $time_end = microtime(True);
+        $time = $time_end - $time_start;
+        Helpers::dump("New Algorithm: ".$time." seconds");
+
     }, 
 
     'GET /tests/compress' => function() {
