@@ -238,7 +238,7 @@ return array(
     'GET /tests/hosted_feedback_cache_invalidate' => function() { 
         $test = new Feedback\Services\HostedService(1);
         $test->invalidate_hosted_feeds_cache(); 
-    }
+    },
 
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
