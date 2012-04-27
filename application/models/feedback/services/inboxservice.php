@@ -46,6 +46,7 @@ class InboxService {
             //pass filters to dbfeedback     
             $page_number = $this->pagination->get_page();
             $company_id = $this->dbfeedback->company_id;
+            print_r($this->dbfeedback);
 
             $key = "inbox:feeds:$company_id:$page_number";
             print_r($key);
