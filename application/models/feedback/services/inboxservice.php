@@ -47,7 +47,10 @@ class InboxService {
             $page_number = $this->pagination->get_page();
             $company_id = $this->dbfeedback->company_id;
 
-            if($ignore_cache or !$data_obj = $this->redis->get("inbox:feeds:$company_id:$page_number")) { 
+            $key = "inbox:feeds:$company_id:$page_number";
+            print_r($key);
+
+            if($ignore_cache or !$data_obj = $this->redis->get($key)) { 
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
@@ -67,7 +70,7 @@ class InboxService {
                 $data_obj->result = $data;
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
-                $this->redis->set("inbox:feeds:$company_id:$page_number", json_encode($data_obj));
+                $this->redis->set($key, json_encode($data_obj));
                 echo "no cache";
                 return $data_obj; 
             } else {
