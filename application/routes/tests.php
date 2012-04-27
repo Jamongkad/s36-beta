@@ -227,10 +227,11 @@ return array(
     },
 
     'GET /tests/full_page_algo' => function() { 
-
+        $timer = new Timer\Timer(1);
         $test = new Feedback\Services\HostedService;
         $feeds = $test->fetch_hosted_feedback(1); 
-        Helpers::bench($feeds);
+        $processing_time = $timer->get(); 
+        Helpers::dump($processing_time);
     },
 
     //reserved route for Leica and Ryan testing

@@ -205,14 +205,6 @@ class Helpers {
         return $login_url;
     }
 
-    public static function bench($code) { 
-        $time_start = microtime(True);
-        $code;
-        $time_end = microtime(True);
-        $time = $time_end - $time_start;
-        Helpers::dump("Algorithm: ".$time." seconds");
-    }
-
     public static function relative_time($time, $short=False) {
         $SECOND = 1;
         $MINUTE = 60 * $SECOND;
