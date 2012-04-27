@@ -68,4 +68,9 @@ class HostedService {
             return array_map(function($arr) { return json_decode($arr); }, $collection);
         }
     }
+
+    public function invalidate_hosted_feeds_cache() {
+        $company_id = $this->company_id;
+        $this->redis->del("hosted:feeds:$company_id");
+    }
 }
