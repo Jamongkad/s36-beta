@@ -47,52 +47,24 @@ class InboxService {
 
             $this->filters['offset'] = $offset;
             $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
-            //$feed_result = $this->dbfeedback->pull_feedback($this->filters);
 
             $this->pagination->records($date_result->total_rows);
             $this->pagination->records_per_page($this->filters['limit']);
              
-            //$time_start = microtime(True);
+            $time_start = microtime(True);
             $data = Array();
             foreach($date_result->result as $feeds) {
                $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
                $data[] = $feeds;
             }
-            /*
+           
             $time_end = microtime(True);
             $time = $time_end - $time_start;
             Helpers::dump("New Algorithm: ".$time." seconds");
-            */
-
-            /*
-            $time_start = microtime(True);
-            $data = Array();
-            foreach($date_result->result as $dates) { 
-                $head = new StdClass;
-                $head->head_date = $dates->date_format;
-                $head->unix_timestamp = $dates->unix_timestamp;
-                $head->daysago = $dates->daysago;
-                $head->children = Array();
-
-                foreach($feed_result->result as $feed) { 
-                    $unix = strtotime($feed->date);
-                    $date = date("m.d.Y", $unix);
-                    if($date == $dates->date_format) {
-                        $head->children[] = $feed;    
-                    }                
-                } 
-           
-                if($head->children) {
-                    $data[] = $head;     
-                }  
-            }
-            $time_end = microtime(True);
-            $time = $time_end - $time_start;
-            Helpers::dump("Old Algorithm: ".$time." seconds");
-            */ 
+          
             $data_obj = new StdClass;
             $data_obj->result = $data;
-            $data_obj->num_rows = $date_result->total_rows;//$feed_result->total_rows;
+            $data_obj->num_rows = $date_result->total_rows;
             $data_obj->pagination = $this->pagination->render();
             return $data_obj; 
         }
