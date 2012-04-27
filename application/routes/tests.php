@@ -227,11 +227,12 @@ return array(
     },
 
     'GET /tests/full_page_algo' => function() { 
-        $timer = new Timer\Timer(1);
+        $time_start = microtime(True);
         $test = new Feedback\Services\HostedService;
-        $feeds = $test->fetch_hosted_feedback(1); 
-        $processing_time = $timer->get(); 
-        Helpers::dump($processing_time);
+        $test->fetch_hosted_feedback(1); 
+        $time_end = microtime(True);
+        $time = $time_end - $time_start;
+        Helpers::dump("Algorithm: ".$time." seconds");
     },
 
     //reserved route for Leica and Ryan testing
