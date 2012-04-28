@@ -18,6 +18,7 @@ return array(
             , 'category' => Input::get('category')
             , 'priority' => Input::get('priority') //low medium high
             , 'status' => Input::get('status') //new inprogress closed
+            , 'company_id' => S36Auth::user()->companyid
         );
 
         $inbox->set_filters($filters);
