@@ -7,6 +7,7 @@ class InboxService {
 
     private $limit = 10;
     private $filters = Array();
+    private $raw_filters = Array();
 
     private $filter_structure = Array(
             'all' => 'all'
@@ -39,12 +40,13 @@ class InboxService {
 
     public function set_filters(Array $filters) {
         $this->filters = $this->_check_filters($filters);
+        $this->raw_filters = $filters;
     }
 
     public function present_feedback($ignore_cache=False) {
         if ($this->filters) {
             //pass filters to dbfeedback     
-            Helpers::dump($this->filters);
+            Helpers::dump($this->raw_filters);
             $page_number = $this->pagination->get_page();
             $company_id = $this->dbfeedback->company_id;
 
