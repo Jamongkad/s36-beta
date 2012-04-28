@@ -48,7 +48,7 @@ class InboxService {
             //pass filters to dbfeedback     
             
             $page_number = $this->pagination->get_page();
-            $company_id = $this->dbfeedback->company_id;
+            $company_id = $this->raw_filters['company_id'];
 
             $this->raw_filters['page_no'] = $page_number;
 
