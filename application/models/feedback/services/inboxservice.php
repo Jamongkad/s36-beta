@@ -46,13 +46,17 @@ class InboxService {
     public function present_feedback($ignore_cache=False) {
         if ($this->filters) {
             //pass filters to dbfeedback     
-            Helpers::dump($this->raw_filters);
+            
             $page_number = $this->pagination->get_page();
             $company_id = $this->dbfeedback->company_id;
 
+            $this->raw_filters['page_no'] = $page_number;
+
+            Helpers::dump($this->raw_filters);
+
             $key = "inbox:feeds:$company_id";
 
-            if($ignore_cache or !$data_obj = $this->redis->hget($key)) { 
+            if($ignore_cache or !$data_obj = $this->redis->hget($key, $key_string)) { 
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
