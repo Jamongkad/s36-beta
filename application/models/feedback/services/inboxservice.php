@@ -50,12 +50,12 @@ class InboxService {
             $company_id = $this->raw_filters['company_id'];
 
             $this->raw_filters['page_no'] = $page_number;
-
+            
+            /*
             $cache = new Halcyonic\Services\InboxCache;
             $cache->filter_array = $this->raw_filters;
             $key_string = $cache->generate_keystring();
-
-            print_r($key_string);
+            */
 
             $key = "inbox:feeds:$company_id";
 

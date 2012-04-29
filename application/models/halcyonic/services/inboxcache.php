@@ -8,13 +8,12 @@ class InboxCache {
     private $key_string;    
 
     public function generate_keystring() {
-        //$this->key_string = implode($this->filter_array, ":");
         $this->key_string = '';
         foreach($this->filter_array as $key => $val) {
             if($val) {
                 $this->key_string .= $key."=".$val.":";   
             }    
         }
-        return substr($this->key_string, 0, -1);
+        $this->key_string = substr($this->key_string, 0, -1);
     }
 }
