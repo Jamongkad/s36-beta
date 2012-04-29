@@ -45,14 +45,11 @@ class InboxService {
 
     public function present_feedback($ignore_cache=False) {
         if ($this->filters) {
-            //pass filters to dbfeedback     
-            
+            //pass filters to dbfeedback                 
             $page_number = $this->pagination->get_page();
             $company_id = $this->raw_filters['company_id'];
 
             $this->raw_filters['page_no'] = $page_number;
-
-            Helpers::dump($this->raw_filters);
 
             $key = "inbox:feeds:$company_id";
 
