@@ -210,11 +210,12 @@ return array(
             , 'category' => false
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
-            , 'company_id' => $company_id
+            , 'company_id' => 1
         );
 
         $cache = new Halcyonic\Services\InboxCache;
         $cache->set_filters($filters);
+        $cache->generate_keystring();
         Helpers::dump($cache);
     },
 
