@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
-use redisent, Halcyonic;
+use Halcyonic;
 
 class InboxService {
 
@@ -35,7 +35,7 @@ class InboxService {
     public function __construct() {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
-        $this->redis = new redisent\Redis; 
+        $this->cache = new Halcyonic\Services\InboxCache;
     }
 
     public function set_filters(Array $filters) {
@@ -47,15 +47,12 @@ class InboxService {
         if ($this->filters) {
             //pass filters to dbfeedback                 
             $page_number = $this->pagination->get_page();
-            $company_id = $this->raw_filters['company_id'];
-
             $this->raw_filters['page_no'] = $page_number;
-            
-            $cache = new Halcyonic\Services\InboxCache;
-            $cache->filter_array = $this->raw_filters;
-            $cache->generate_keys();
+        
+            $this->cache->filter_array = $this->raw_filters;
+            $this->cache->generate_keys();
 
-            if($ignore_cache or !$data_obj = $cache->get_cache()) { 
+            if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
@@ -75,7 +72,7 @@ class InboxService {
                 $data_obj->result = $data;
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
-                $cache->set_cache($data_obj);
+                $this->cache->set_cache($data_obj);
                 return $data_obj; 
             } else {
                 return json_decode($data_obj);
