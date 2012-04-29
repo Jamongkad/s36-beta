@@ -199,7 +199,22 @@ return array(
     }, 
 
     'GET /tests/inboxcache' => function() {
+
+        $filters = array(
+              'limit'=> 10
+            , 'site_id'=> false 
+            , 'filter'=> 'all'
+            , 'choice'=> false
+            , 'date'  => false
+            , 'rating' => false
+            , 'category' => false
+            , 'priority' => false //low medium high
+            , 'status' => false //new inprogress closed
+            , 'company_id' => $company_id
+        );
+
         $cache = new Halcyonic\Services\InboxCache;
+        $cache->set_filters($filters);
         Helpers::dump($cache);
     },
 
