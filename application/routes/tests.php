@@ -220,6 +220,7 @@ return array(
         $cache->generate_key(); 
         $result_cache = $cache->get_cache();
         Helpers::dump($result_cache);
+        Helpers::dump($cache);
     },
 
     'GET /tests/compress' => function() {
