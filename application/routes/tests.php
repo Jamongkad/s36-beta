@@ -198,6 +198,11 @@ return array(
 
     }, 
 
+    'GET /tests/inboxcache' => function() {
+        $cache = new Halcyonic\Services\InboxCache;
+        Helpers::dump($cache);
+    },
+
     'GET /tests/compress' => function() {
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
         $js_scripts = Array( 
@@ -219,11 +224,6 @@ return array(
 
     'GET /tests/redis' => function() { 
         $redis = new redisent\Redis;       
-        $feedid = $redis->smembers("hosted:feeds:3");
-        Helpers::dump($feedid);
-        foreach($feedid as $feeds) {
-            Helpers::dump(json_decode($feeds));
-        }
     }, 
 
     'GET /tests/imagine' => function() {
