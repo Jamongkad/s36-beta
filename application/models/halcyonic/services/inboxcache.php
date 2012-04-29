@@ -6,6 +6,11 @@ class InboxCache {
 
     public $filter_array;
     private $key_string, $key;    
+    protected $redis;
+
+    public function __construct() {
+        $this->redis = new redisent\Redis; 
+    }
 
     public function generate_keystring() {
         $this->key_string = '';
