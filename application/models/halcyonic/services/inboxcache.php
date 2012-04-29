@@ -9,10 +9,9 @@ class InboxCache {
 
     public function generate_keystring() {
         //$this->key_string = implode($this->filter_array, ":");
-        $transformed_array = array_map(function($a, $b) {
-            print_r($a);
-            print_r($b);
-        }, $this->filter_array);
-        print_r($transformed_array);
+        $this->key_string = '';
+        foreach($this->filter_array as $key => $val) {
+            $this->key_string .= $key."=".$val.":";
+        }
     }
 }
