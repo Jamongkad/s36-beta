@@ -12,7 +12,7 @@ class InboxCache {
         $this->redis = new redisent\Redis; 
     }
 
-    public function generate_keystring() {
+    public function generate_keys() {
         $this->key_string = '';
         foreach($this->filter_array as $key => $val) {
             if($val) {
@@ -20,13 +20,14 @@ class InboxCache {
             }    
         }
         $this->key_string = substr($this->key_string, 0, -1);
-    }
-
-    public function generate_key() {
         $this->key = "inbox:feeds:".$this->filter_array['company_id'];
     }
 
     public function get_cache() {
         return $this->redis->hget($this->key, $this->key_string);
+    }
+
+    public function set_cache($data) {
+        return $this->redis->hsetnx($this->key, $this->key_string, json_encode($data));
     }
 }

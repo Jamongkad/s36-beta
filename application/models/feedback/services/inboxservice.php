@@ -51,15 +51,11 @@ class InboxService {
 
             $this->raw_filters['page_no'] = $page_number;
             
-            /*
             $cache = new Halcyonic\Services\InboxCache;
             $cache->filter_array = $this->raw_filters;
-            $key_string = $cache->generate_keystring();
-            */
+            $cache->generate_keys();
 
-            $key = "inbox:feeds:$company_id";
-
-            if($ignore_cache or !$data_obj = $this->redis->hget($key, $key_string)) { 
+            if($ignore_cache or !$data_obj = $cache->get_cache()) { 
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
@@ -79,7 +75,7 @@ class InboxService {
                 $data_obj->result = $data;
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
-                //$this->redis->hsetnx($key, $key_string, json_encode($data_obj));
+                $cache->set_cache($data_obj);
                 return $data_obj; 
             } else {
                 return json_decode($data_obj);
