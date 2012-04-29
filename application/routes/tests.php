@@ -215,6 +215,7 @@ return array(
         );
 
         $cache = new Halcyonic\Services\InboxCache;
+        $cache->key_name = "inbox:feeds";
         $cache->filter_array = $filters;
         $cache->generate_keys();
         $result_cache = $cache->get_cache();
