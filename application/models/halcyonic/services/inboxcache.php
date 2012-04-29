@@ -5,7 +5,7 @@ use redisent;
 class InboxCache {
 
     public $filter_array;
-    private $key_string;    
+    private $key_string, $key;    
 
     public function generate_keystring() {
         $this->key_string = '';
@@ -15,5 +15,13 @@ class InboxCache {
             }    
         }
         $this->key_string = substr($this->key_string, 0, -1);
+    }
+
+    public function generate_key() {
+        $this->key = "inbox:feeds:".$this->filter_array['company_id'];
+    }
+
+    public function get_cache() {
+        return $this->redis->hget($this->key, $this->key_string);
     }
 }

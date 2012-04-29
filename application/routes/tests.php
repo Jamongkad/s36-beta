@@ -217,7 +217,9 @@ return array(
         $cache = new Halcyonic\Services\InboxCache;
         $cache->filter_array = $filters;
         $cache->generate_keystring();
-        Helpers::dump($cache);
+        $cache->generate_key(); 
+        $result_cache = $cache->get_cache();
+        Helpers::dump($result_cache);
     },
 
     'GET /tests/compress' => function() {
