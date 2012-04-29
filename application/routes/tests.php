@@ -214,7 +214,7 @@ return array(
         );
 
         $cache = new Halcyonic\Services\InboxCache;
-        $cache->set_filter($filters);
+        $cache->set_inbox_filter($filters);
         $cache->generate_keystring();
         Helpers::dump($cache);
     },
