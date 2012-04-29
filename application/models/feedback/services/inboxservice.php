@@ -48,7 +48,8 @@ class InboxService {
             //pass filters to dbfeedback                 
             $page_number = $this->pagination->get_page();
             $this->raw_filters['page_no'] = $page_number;
-        
+            
+            $this->cache->key_name = "inbox:feeds";
             $this->cache->filter_array = $this->raw_filters;
             $this->cache->generate_keys();
 

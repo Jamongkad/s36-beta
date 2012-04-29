@@ -4,7 +4,7 @@ use redisent;
 
 class InboxCache {
 
-    public $filter_array;
+    public $filter_array, $key_name;
     private $key_string, $key;    
     protected $redis;
 
@@ -20,7 +20,7 @@ class InboxCache {
             }    
         }
         $this->key_string = substr($this->key_string, 0, -1);
-        $this->key = "inbox:feeds:".$this->filter_array['company_id'];
+        $this->key = $this->key_name.":".$this->filter_array['company_id'];
     }
 
     public function get_cache() {
