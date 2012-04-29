@@ -54,7 +54,7 @@ class InboxService {
             $this->cache->generate_keys();
 
             if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
-                echo "no cache";
+                //echo "no cache";
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
@@ -77,10 +77,9 @@ class InboxService {
                 $this->cache->set_cache($data_obj);
                 return $data_obj; 
             } else {
-                echo "from cache";
+                //echo "from cache";
                 return json_decode($data_obj);
             }
-
         }
     }
 
