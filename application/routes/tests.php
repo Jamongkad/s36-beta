@@ -205,10 +205,10 @@ return array(
             , 'site_id'=> false 
             , 'filter'=> 'all'
             , 'choice'=> false
-            , 'date'  => false
-            , 'rating' => false
-            , 'category' => false
-            , 'priority' => false //low medium high
+            , 'date'  => 'date_new'
+            , 'rating' => 4
+            , 'category' => 'bugs'
+            , 'priority' => 'low' //low medium high
             , 'status' => false //new inprogress closed
             , 'company_id' => 1
         );
