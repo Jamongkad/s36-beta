@@ -27,7 +27,7 @@ return array(
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
-        Helpers::dump.$time." seconds");
+        Helpers::dump($time." seconds");
 
         $admin_check = S36Auth::user();
 
