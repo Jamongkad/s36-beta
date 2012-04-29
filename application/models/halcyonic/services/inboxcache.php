@@ -13,5 +13,6 @@ class InboxCache {
         foreach($this->filter_array as $key => $val) {
             $this->key_string .= $key."=".$val.":";
         }
+        substr($this->key_string, ":");
     }
 }
