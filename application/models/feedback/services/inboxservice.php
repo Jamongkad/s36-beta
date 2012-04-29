@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
-use redisent;
+use redisent, Halcyonic;
 
 class InboxService {
 
