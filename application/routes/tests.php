@@ -209,7 +209,7 @@ return array(
             , 'rating' => 4
             , 'category' => 'bugs'
             , 'priority' => 'low' //low medium high
-            , 'status' => false //new inprogress closed
+            , 'status' => 'new' //new inprogress closed
             , 'company_id' => 1
             , 'page_no' => 2
         );
