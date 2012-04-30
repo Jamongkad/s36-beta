@@ -82,8 +82,8 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/wizard' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
-
+    'GET /feedsetup/wizard' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view');
     }),
     
     'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 
