@@ -6,8 +6,6 @@ return array(
         $redis = new redisent\Redis;
         $limit = 10;
 
-        Helpers::dump(Input::get());
-
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
         $filters = array(
