@@ -1,4 +1,3 @@
-
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>CUSTOMIZE YOUR EMBEDDED DISPLAYS</h3>
 </div>
@@ -15,7 +14,7 @@
                     
                     <div class="grids">
                         <div class="g1of3" style="height:200px">
-                            <img src="images/embed-feedback-3.png" />
+                            <img src="/img/embed-feedback-3.png" />
                         </div>
                         <div class="g2of3">
                             <br />
@@ -43,7 +42,7 @@
                 </div>
             </div>
             <div class="grids" style="height:185px">
-                <img src="images/embedded-display-preview.jpg" />
+                <img src="/img/embedded-display-preview.jpg" />
             </div>
         </div>
         <div id="wizard-step-3" class="wizard-steps">
@@ -67,12 +66,12 @@
                 <div class="g1of4" style="height:250px">
                     <input type="radio" name="type" checked /> Horizontal
                     <br />
-                    <img src="images/preview-horizontal-embed.png" />
+                    <img src="/img/preview-horizontal-embed.png" />
                 </div>
                 <div class="g1of4" style="height:250px">
                     <input type="radio" name="type" /> Vertical
                     <br />
-                    <img src="images/preview-horizontal-embed.png" />
+                    <img src="/img/preview-horizontal-embed.png" />
                 </div>
             </div>
             <br />
@@ -85,54 +84,54 @@
                     <div class="form-designs grids" >
                         <div class="form-design-group grids">
                             <div class="form-design selected-form" id="form-blue">
-                                <img src="images/tab-designs/blue-form.png" height="60">
+                                <img src="/img/tab-designs/blue-form.png" height="60">
                                 <br>
                                 <span>Ocean Blue</span>
                             </div>
                             <div class="form-design" id="form-green">
-                                <img src="images/tab-designs/green-form.png" height="60">
+                                <img src="/img/tab-designs/green-form.png" height="60">
                                 <br>
                                 <span>Forest Green</span>
                             </div>
                             <div class="form-design" id="form-yellow">
-                                <img src="images/tab-designs/yellow-form.png" height="60">
+                                <img src="/img/tab-designs/yellow-form.png" height="60">
                                 <br>
                                 <span>Mandarin</span>
                             </div>
                             <div class="form-design" id="form-orange">
-                                <img src="images/tab-designs/orange-form.png" height="60">
+                                <img src="/img/tab-designs/orange-form.png" height="60">
                                 <br>
                                 <span>Sleek Orange</span>
                             </div>
                             <div class="form-design" id="form-red">
-                                <img src="images/tab-designs/red-form.png" height="60">
+                                <img src="/img/tab-designs/red-form.png" height="60">
                                 <br>
                                 <span>Thin Red</span>
                             </div>
                         </div>
                         <div class="form-design-group grids">
                             <div class="form-design" id="form-blue">
-                                <img src="images/tab-designs/blue-form.png" height="60">
+                                <img src="/img/tab-designs/blue-form.png" height="60">
                                 <br>
                                 <span>Ocean Blue</span>
                             </div>
                             <div class="form-design" id="form-green">
-                                <img src="images/tab-designs/green-form.png" height="60">
+                                <img src="/img/tab-designs/green-form.png" height="60">
                                 <br>
                                 <span>Forest Green</span>
                             </div>
                             <div class="form-design" id="form-yellow">
-                                <img src="images/tab-designs/yellow-form.png" height="60">
+                                <img src="/img/tab-designs/yellow-form.png" height="60">
                                 <br>
                                 <span>Mandarin</span>
                             </div>
                             <div class="form-design" id="form-orange">
-                                <img src="images/tab-designs/orange-form.png" height="60">
+                                <img src="/img/tab-designs/orange-form.png" height="60">
                                 <br>
                                 <span>Sleek Orange</span>
                             </div>
                             <div class="form-design" id="form-red">
-                                <img src="images/tab-designs/red-form.png" height="60">
+                                <img src="/img/tab-designs/red-form.png" height="60">
                                 <br>
                                 <span>Thin Red</span>
                             </div>
@@ -164,7 +163,7 @@
                     <div class="wizard-feedback-preview">
                         <div id="wizard-preview-box">
                             <div id="wizard-preview-author-info"> 
-                                <div id="wizard-preview-avatar"><img id="avatar-display" src="images/avatar-dan.png" /><img id="avatar-blank" src="images/blank.jpg" style="display:none;"/></div>
+                                <div id="wizard-preview-avatar"><img id="avatar-display" src="/img/avatar-dan.png" /><img id="avatar-blank" src="/img/blank.jpg" style="display:none;"/></div>
                                 <div id="wizard-preview-author-details">
                                     <div id="wizard-preview-author-name">Nelson Cardella</div>
                                     <div id="wizard-preview-author-position"><span id="wizard-preview-position">Marketing Manager,</span> <span id="wizard-preview-company"><a href="javascript:;" id="wizard-preview-website">Davis LLP</a></span></div>
@@ -203,7 +202,7 @@
                     <br />
                 </div>
                 <div class="g1of2">
-                    <img src="images/form-preview.jpg" style="margin-top:-20px;margin-left:-20px;"/>
+                    <img src="/img/form-preview.jpg" style="margin-top:-20px;margin-left:-20px;"/>
                 </div>
             </div>
         </div>
