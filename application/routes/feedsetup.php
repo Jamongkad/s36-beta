@@ -81,6 +81,10 @@ return array(
           , 'js_code'         => $wl->load_widget_init_js_code()
         ));
     }),
+
+    'GET /feedsetup/wizard' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
+
+    }),
     
     'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 
                                                       'do' => function($widget_select=false) use ($feedback) { 
