@@ -22,7 +22,7 @@ return array(
         );
 
         $inbox->set_filters($filters);
-        $feedback = $inbox->present_feedback();
+        $feedback = $inbox->present_feedback(True);
 
         $admin_check = S36Auth::user();
 
