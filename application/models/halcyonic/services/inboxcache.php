@@ -1,6 +1,6 @@
 <?php namespace Halcyonic\Services;
 
-use redisent; 
+use redisent, StdClass; 
 
 class InboxCache {
 
@@ -29,5 +29,12 @@ class InboxCache {
 
     public function set_cache($data) {
         return $this->redis->hsetnx($this->key, $this->key_string, json_encode($data));
+    }
+
+    public function get_keys() {
+        $result = new StdClass;     
+        $result->key_string = $this->key_string;
+        $result->key = $this->key;
+        return $result;
     }
 }

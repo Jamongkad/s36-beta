@@ -6,7 +6,7 @@ return array(
         $redis = new redisent\Redis;
         $limit = 10;
 
-        if(Input::get('limit')) $limit= (int)Input::get('limit');
+        if(Input::get('limit')) $limit = (int)Input::get('limit');
 
         $filters = array(
               'limit'=> $limit
@@ -21,14 +21,8 @@ return array(
             , 'company_id' => S36Auth::user()->companyid
         );
 
-        //$time_start = microtime(True);
         $inbox->set_filters($filters);
         $feedback = $inbox->present_feedback();
-        /*
-        $time_end = microtime(True);
-        $time = $time_end - $time_start;
-        Helpers::dump($time." seconds");
-        */
 
         $admin_check = S36Auth::user();
 

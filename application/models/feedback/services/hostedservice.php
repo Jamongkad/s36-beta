@@ -49,7 +49,6 @@ class HostedService {
 
                 }              
                 $ctr += 1;
-
             }
              
             foreach($children_collection as $key => $val) {
