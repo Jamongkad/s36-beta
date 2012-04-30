@@ -75,69 +75,8 @@ class DBFeedback extends S36DataObject {
                 , Site.name AS sitename
                 , Site.domain AS sitedomain
                 , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
- 
-    public function pull_feedback($opts) {      
-        $sql = '  
-            SELECT 
-                '.$this->select_vars.'
-            FROM 
-                Feedback
-                    INNER JOIN 
-                        Site
-                        ON Site.siteId = Feedback.siteId 
-                    INNER JOIN
-                        Category
-                        ON Category.categoryId = Feedback.categoryId 
-                    INNER JOIN
-                        Contact
-                        ON Contact.contactId = Feedback.contactId 
-                    INNER JOIN 
-                        Country
-                        ON Country.countryId = Contact.countryId
-                    INNER JOIN
-                        Company
-                        ON Company.companyId = Site.companyId
-                    WHERE 1=1
-                        '.$opts['siteid_statement'].'
-                        AND Company.companyId = :company_id
-                        AND Feedback.isDeleted = :is_deleted
-                        AND Feedback.isPublished = :is_published
-                        AND Feedback.isFeatured = :is_featured
-                        '.$opts['rating_statement'].'
-                        '.$opts['filed_statement'].'
-                        '.$opts['category_statement'].'
-                        '.$opts['status_statement'].'
-                        '.$opts['priority_statement'].'
-                        '.$opts['sql_statement'].'
-                    ORDER BY
-                        '.$opts['date_statement'].'
-                    LIMIT :offset, :limit 
-        ';
-
-        $sth = $this->dbh->prepare($sql);      
-
-        $company_id = $this->company_id;
-        if(!$this->company_id) {
-            $company_id = $opts['company_id'];
-        }
-
-        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
-        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
-        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
-        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
-        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
-        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
-        $sth->execute();       
-
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS); 
-  
-        $result_obj = new StdClass;
-        $result_obj->result = $result;
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;
-    }
-
+    
+    //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
         $date_sql = '
@@ -355,196 +294,7 @@ class DBFeedback extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
- 
-    //TODO: solidify this use USER_ID for company verification
-    public function _change_feedback($column, $feedback_id, $state) {
-        //release indLock for block display
-        $this->_release_indlock($feedback_id, 0);
-        return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
-    }    
-
-    public function toggle_indlock($feedback_id, $state) {
-        return $this->_release_indlock($feedback_id, $state);
-    } 
-
-    private function _release_indlock($feedback_id, $state) { 
-        DB::table('Feedback', 'master')
-                  ->where('feedbackId', '=', $feedback_id)
-                  ->update(array('indLock' => $state));    
-    }
-
-    public function _toggle_multiple($mode, $block_id, $extra=False) { 
-
-        //We need this to reset internal category id to default
-        $category = DB::Table('Category')->where('companyId', '=', S36Auth::user()->companyid)
-                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
-
-        $categoryId = $category->categoryid;
-        //TODO consolidate inbox and restore nigguh
-        $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$categoryId.''
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$categoryId.''
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
-          , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
-          , 'flag'    => 'SET isFlagged = 1'
-        );
-
-        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
-
-        $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
-        $block_ids = implode(',', $ids);
-
-        $sql = "
-            UPDATE Feedback
-                INNER JOIN Site 
-                    ON Site.siteId = Feedback.siteId
-                INNER JOIN User
-                    ON User.userId = :user_id
-                    $column
-                WHERE 1=1
-                    AND User.companyId = Site.companyId
-                    AND Feedback.feedbackId IN ($block_ids)
-        ";
-
-        $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-        $sth->execute();       
-    }
-
-    public function _permanent_delete($opts) { 
-        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
-        $block_ids = implode(',', $ids);
-        
-        $avatar_sql = "
-            SELECT 
-                Feedback.feedbackId
-              , Contact.contactId
-              , Contact.avatar
-            FROM 
-                Feedback
-            INNER JOIN
-                Contact
-                    ON Feedback.contactId = Contact.contactId
-            WHERE 1=1
-                AND Feedback.feedbackId IN ($block_ids)
-        ";
-
-        $sth = $this->dbh->prepare($avatar_sql);
-        $sth->execute();
-        $avatar_result = $sth->fetchAll(PDO::FETCH_CLASS);
-
-        $contact_ids = array_map(function($obj) { return $obj->contactid; }, $avatar_result);
-        $contact_ids = implode(',', $contact_ids);
-
-        $avatar_names = array_map(function($obj) { return $obj->avatar; }, $avatar_result);
-        
-        $profile_img = new Widget\ProfileImage();
-        foreach($avatar_names as $avatar_name) {
-            $profile_img->remove_profile_photo($avatar_name);
-        }
- 
-        $contact_sql = "
-           DELETE FROM 
-               Contact
-           WHERE 1=1
-               AND Contact.contactId IN ($contact_ids) 
-        ";
-
-        $sth = $this->dbh->prepare($contact_sql);
-        $sth->execute();
-
-        $delete_sql = "
-            DELETE FROM 
-                Feedback 
-            WHERE 1=1
-                AND Feedback.isDeleted = 1
-                AND Feedback.feedbackId IN ($block_ids)
-        ";
-
-        $sth = $this->dbh->prepare($delete_sql);
-        $sth->execute();
-
-    }
-
-    public function permanently_remove_feedback($id) { 
-        $feedback = DB::table('Feedback', 'master')
-                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
-                        ->where('Feedback.feedbackId', '=', $id)
-                        ->first();
-
-        //delete profile photos...
-        $profile_img = new \Widget\ProfileImage();
-        $profile_img->remove_profile_photo($feedback->avatar);
-
-        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
-                            ->delete();
-
-        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                             ->where('Feedback.isDeleted', '=', 1)
-                             ->delete();
-    }
-
-    private function _toggle_state($table, $where_column, $id, $column, $state) {  
-        DB::table($table, 'master')
-                  ->where($where_column, '=', $id)
-                  ->update(array($column => $state));    
-    }
-     
-    public function undo_deleted_feedback() {
-        $sth = $this->dbh->prepare('
-            UPDATE Feedback
-                INNER JOIN Site 
-                    ON Site.siteId = Feedback.siteId
-                INNER JOIN User
-                    ON User.userId = :user_id
-                    AND User.companyId = Site.companyId
-                SET Feedback.isDeleted = 0
-        ');
-
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-        $sth->execute();
-    }
     
-    //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
-    //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
-    public function remove_deleted_feedback() {}
-    public function decay_deleted_feedback() {}
-
-    public function tag_feedback_with_profanity($user_id) {
-        $sth = $this->dbh->prepare("
-            UPDATE 
-            Feedback
-                INNER JOIN Site 
-                    ON Site.siteId = Feedback.siteId
-                INNER JOIN User
-                    ON User.userId = :user_id
-                   AND User.companyId = Site.companyId
-                INNER JOIN BadWords
-                    ON Feedback.text LIKE CONCAT('%', BadWords.word, '%')
-                SET Feedback.hasProfanity = 1
-        ");
-
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $sth->execute();
-    }
-
-    public function contact_detection($opts) {
-        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
-        $block_ids = implode(',', $ids);
-        $sql = "
-            DELETE FROM 
-                Feedback 
-            WHERE 1=1
-                AND Feedback.isDeleted = 1
-                AND Feedback.feedbackId IN ($block_ids)
-        ";
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->execute();
-    }
-
     public function total_feedback_by_company($company_id) {
         $sql = "   
             SELECT 
@@ -662,48 +412,258 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS);
     }
+    
+    //DB WRITES
+    public function _change_feedback($column, $feedback_id, $state) {
+        //release indLock for block display
+        $this->_release_indlock($feedback_id, 0);
+        return $this->_toggle_state('Feedback', 'feedbackId', $feedback_id, $column, $state);
+    }    
 
-    //DEPRECATED Apr, 17 2012
-    /*
-    public function fetch_deleted_feedback() {
+    public function toggle_indlock($feedback_id, $state) {
+        return $this->_release_indlock($feedback_id, $state);
+    } 
+
+    private function _release_indlock($feedback_id, $state) { 
+        DB::table('Feedback', 'master')
+                  ->where('feedbackId', '=', $feedback_id)
+                  ->update(array('indLock' => $state));    
+    }
+
+    public function _toggle_multiple($mode, $block_id, $extra=False) { 
+
+        //We need this to reset internal category id to default
+        $category = DB::Table('Category')->where('companyId', '=', S36Auth::user()->companyid)
+                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
+
+        $categoryId = $category->categoryid;
+        //TODO consolidate inbox and restore nigguh
+        $lookup = Array(
+            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
+          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
+          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$categoryId.''
+          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$categoryId.''
+          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
+          , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
+          , 'flag'    => 'SET isFlagged = 1'
+        );
+
+        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
+
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
+        $block_ids = implode(',', $ids);
+
+        $sql = "
+            UPDATE Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                    $column
+                WHERE 1=1
+                    AND User.companyId = Site.companyId
+                    AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->execute();       
+    }
+
+    public function _permanent_delete($opts) { 
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
+        $block_ids = implode(',', $ids);
         
-        $sth = $this->dbh->prepare('
+        $avatar_sql = "
             SELECT 
-                  SQL_CALC_FOUND_ROWS
-                  Feedback.feedbackId AS id
+                Feedback.feedbackId
+              , Contact.contactId
+              , Contact.avatar
             FROM 
-                User
-                    INNER JOIN
-                        Site
-                        ON User.companyId = Site.companyId
+                Feedback
+            INNER JOIN
+                Contact
+                    ON Feedback.contactId = Contact.contactId
+            WHERE 1=1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($avatar_sql);
+        $sth->execute();
+        $avatar_result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $contact_ids = array_map(function($obj) { return $obj->contactid; }, $avatar_result);
+        $contact_ids = implode(',', $contact_ids);
+
+        $avatar_names = array_map(function($obj) { return $obj->avatar; }, $avatar_result);
+        
+        $profile_img = new Widget\ProfileImage();
+        foreach($avatar_names as $avatar_name) {
+            $profile_img->remove_profile_photo($avatar_name);
+        }
+ 
+        $contact_sql = "
+           DELETE FROM 
+               Contact
+           WHERE 1=1
+               AND Contact.contactId IN ($contact_ids) 
+        ";
+
+        $sth = $this->dbh->prepare($contact_sql);
+        $sth->execute();
+
+        $delete_sql = "
+            DELETE FROM 
+                Feedback 
+            WHERE 1=1
+                AND Feedback.isDeleted = 1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($delete_sql);
+        $sth->execute();
+
+    }
+
+    private function _toggle_state($table, $where_column, $id, $column, $state) {  
+        DB::table($table, 'master')
+                  ->where($where_column, '=', $id)
+                  ->update(array($column => $state));    
+    }
+     
+    public function undo_deleted_feedback() {
+        $sth = $this->dbh->prepare('
+            UPDATE Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                    AND User.companyId = Site.companyId
+                SET Feedback.isDeleted = 0
+        ');
+
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
+    
+    //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
+    //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
+    public function remove_deleted_feedback() {}
+    public function decay_deleted_feedback() {}
+
+    public function tag_feedback_with_profanity($user_id) {
+        $sth = $this->dbh->prepare("
+            UPDATE 
+            Feedback
+                INNER JOIN Site 
+                    ON Site.siteId = Feedback.siteId
+                INNER JOIN User
+                    ON User.userId = :user_id
+                   AND User.companyId = Site.companyId
+                INNER JOIN BadWords
+                    ON Feedback.text LIKE CONCAT('%', BadWords.word, '%')
+                SET Feedback.hasProfanity = 1
+        ");
+
+        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+    public function contact_detection($opts) {
+        $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
+        $block_ids = implode(',', $ids);
+        $sql = "
+            DELETE FROM 
+                Feedback 
+            WHERE 1=1
+                AND Feedback.isDeleted = 1
+                AND Feedback.feedbackId IN ($block_ids)
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute();
+    }
+
+}
+
+/*
+    public function pull_feedback($opts) {      
+        $sql = '  
+            SELECT 
+                '.$this->select_vars.'
+            FROM 
+                Feedback
                     INNER JOIN 
-                        Feedback
-                        ON Site.siteId = Feedback.siteId
+                        Site
+                        ON Site.siteId = Feedback.siteId 
+                    INNER JOIN
+                        Category
+                        ON Category.categoryId = Feedback.categoryId 
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN 
+                        Country
+                        ON Country.countryId = Contact.countryId
+                    INNER JOIN
+                        Company
+                        ON Company.companyId = Site.companyId
                     WHERE 1=1
-                        AND User.userId = :user_id
-                        AND Feedback.isDeleted = 1
-                        AND Feedback.isPublished = 0 
-                        AND Feedback.isFeatured = 0
-                        AND Feedback.isFlagged = 0
-                        AND Feedback.isSticked = 0
-                        AND Feedback.isArchived = 0
+                        '.$opts['siteid_statement'].'
+                        AND Company.companyId = :company_id
+                        AND Feedback.isDeleted = :is_deleted
+                        AND Feedback.isPublished = :is_published
+                        AND Feedback.isFeatured = :is_featured
+                        '.$opts['rating_statement'].'
+                        '.$opts['filed_statement'].'
+                        '.$opts['category_statement'].'
+                        '.$opts['status_statement'].'
+                        '.$opts['priority_statement'].'
+                        '.$opts['sql_statement'].'
                     ORDER BY
-                        Feedback.dtAdded DESC
-        ');
- 
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+                        '.$opts['date_statement'].'
+                    LIMIT :offset, :limit 
+        ';
+
+        $sth = $this->dbh->prepare($sql);      
+
+        $company_id = $this->company_id;
+        if(!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
+        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();       
- 
+
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        
+        $result = $sth->fetchAll(PDO::FETCH_CLASS); 
+  
         $result_obj = new StdClass;
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
     }
-    */
-}
+
+    public function permanently_remove_feedback($id) { 
+        $feedback = DB::table('Feedback', 'master')
+                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
+                        ->where('Feedback.feedbackId', '=', $id)
+                        ->first();
+
+        //delete profile photos...
+        $profile_img = new \Widget\ProfileImage();
+        $profile_img->remove_profile_photo($feedback->avatar);
+
+        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
+                            ->delete();
+
+        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
+                             ->where('Feedback.isDeleted', '=', 1)
+                             ->delete();
+    }
+*/

@@ -53,8 +53,6 @@ class InboxService {
             $this->cache->filter_array = $this->raw_filters;
             $this->cache->generate_keys();
 
-            Helpers::dump($this->cache->get_keys());
-
             if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 $this->pagination->selectable_pages(4);
