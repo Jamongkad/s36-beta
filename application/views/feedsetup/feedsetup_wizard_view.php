@@ -293,9 +293,8 @@
                     $wizard_slide.cycle('next');
                     $('#wizard-next').fadeOut('fast');
                     $('#wizard-back').fadeOut('fast');
+                    console.log('FINISHED');
                 }
-            } else if(cur_step == 'wizard-step-6') {
-                console.log("FINISHED");
             }else{
                 $wizard_slide.cycle('next');
             }
