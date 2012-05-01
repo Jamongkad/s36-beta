@@ -165,7 +165,10 @@
                     <div class="wizard-feedback-preview">
                         <div id="wizard-preview-box">
                             <div id="wizard-preview-author-info"> 
-                                <div id="wizard-preview-avatar"><img id="avatar-display" src="/img/48x48-blank-avatar.jpg" /><img id="avatar-blank" src="/img/48x48-blank-avatar.jpg" style="display:none;"/></div>
+                                <div id="wizard-preview-avatar">
+                                    <img id="avatar-display" src="/img/sample-avatar-2.jpg" />
+                                    <img id="avatar-blank" src="/img/48x48-blank-avatar.jpg" style="display:none;"/>
+                                </div>
                                 <div id="wizard-preview-author-details">
                                     <div id="wizard-preview-author-name">Nelson Cardella</div>
                                     <div id="wizard-preview-author-position"><span id="wizard-preview-position">Marketing Manager,</span> <span id="wizard-preview-company"><a href="javascript:;" id="wizard-preview-website">Davis LLP</a></span></div>
