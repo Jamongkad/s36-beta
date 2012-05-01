@@ -294,6 +294,7 @@
                     $('#wizard-back').fadeOut('fast');
                 }
             }else{
+                console.log(cur_step);
                 $wizard_slide.cycle('next');
             }
         });
