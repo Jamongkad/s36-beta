@@ -370,7 +370,7 @@ jQuery(function($) {
             $wizard_slide.cycle('next');
         } else if(cur_step == 'wizard-step-4') {
             $('.create-widget-button').fadeIn('fast');
-            $('#wizard-back').fadeOut('fast');
+            $('#wizard-next').fadeOut('fast');
             $wizard_slide.cycle('next');
         }   
     });
