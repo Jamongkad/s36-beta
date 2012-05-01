@@ -348,7 +348,6 @@ jQuery(function($) {
     $('#wizard-back').hide();    
     $('#wizard-next').click(function(){
         cur_step = check_current_wizard_step();
-        console.log(cur_step);
         if(cur_step == 'wizard-step-1'){
             var form_name = $('#form-name');
             if(!validate_field(form_name.attr('id'),form_name.val(),form_name.attr('title'), "regular")){
@@ -358,8 +357,6 @@ jQuery(function($) {
                 $wizard_slide.cycle('next');
                 $('#wizard-back').fadeIn();
             }
-            $('.create-widget-button').hide();
-            $('#wizard-next').fadeIn('fast');
         }else if(cur_step == 'wizard-step-2'){
             var header_text = $('#header-text');
             if(!validate_field(header_text.attr('id'),header_text.val(),header_text.attr('title'), "regular")){
@@ -368,12 +365,8 @@ jQuery(function($) {
             }else{
                 $wizard_slide.cycle('next');
             }
-            $('.create-widget-button').hide();
-            $('#wizard-next').fadeIn('fast');
         } else if(cur_step == 'wizard-step-3') {
             $wizard_slide.cycle('next');
-            $('.create-widget-button').hide();
-            $('#wizard-next').fadeIn('fast');
         } else if(cur_step == 'wizard-step-4') {
             $('.create-widget-button').fadeIn('fast');
             $('#wizard-next').fadeOut('fast');
@@ -386,6 +379,9 @@ jQuery(function($) {
         if(cur_step == 'wizard-step-2'){
             $(this).fadeOut();
         }
+
+        $('.create-widget-button').hide();
+        $('#wizard-next').fadeIn('fast');
         $wizard_slide.cycle('prev');
     });
     
