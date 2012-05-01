@@ -39,8 +39,12 @@ jQuery(function($) {
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
     $(document).delegate("#create-widget", "submit", function(e) {
       
-        if ($("input[name=theme_name]", this).val() == "Name of your widget" ) { 
-            alert("Please choose a name for your widget");
+        var form_header_text = $('#form-header-text');
+        var form_what_to_write =  $('#form-what-to-write');
+        if (!validate_field(form_header_text.attr('id'),form_header_text.val(),form_header_text.attr('title'), "regular")) { 
+            form_header_text.focus();
+        } else if (!validate_field(form_what_to_write.attr('id'),form_what_to_write.val(),form_what_to_write.attr('title'), "regular")) {
+            form_what_to_write.focus();
         } else {
             
             $(this).ajaxSubmit({
@@ -367,22 +371,7 @@ jQuery(function($) {
             $('#wizard-next').fadeOut('fast');
             $('#wizard-back').fadeOut('fast');
             $wizard_slide.cycle('next');
-        } else if(cur_step == 'wizard-step-5'){
-            var form_header_text = $('#form-header-text');
-            var form_what_to_write =  $('#form-what-to-write');
-            
-            if(!validate_field(form_header_text.attr('id'),form_header_text.val(),form_header_text.attr('title'), "regular")){
-                form_header_text.focus();
-            }else if(!validate_field(form_what_to_write.attr('id'),form_what_to_write.val(),form_what_to_write.attr('title'), "regular")){
-                form_what_to_write.focus();
-            }else{
-                $wizard_slide.cycle('next');
-                $('#wizard-next').fadeOut('fast');
-                $('#wizard-back').fadeOut('fast'); 
-            }
-        }else{
-            $wizard_slide.cycle('next');
-        }
+        }   
     });
     
     $('#wizard-back').click(function(){

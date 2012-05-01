@@ -209,13 +209,13 @@
                 </div>
             </div>
         </div>
+        <!--
         <div id="wizard-step-6" class="wizard-steps">
             <span class="blue">Forwarding to our integration menu now…</span>
         </div>
+        -->
     </div>
-    <div id="wizard-error-prompt">
-        
-    </div>
+    <div id="wizard-error-prompt"></div>
     <div class="wizard-buttons">
         <a href="javascript:;" class="wizard-btn" id="wizard-back">Back</a>
         &nbsp;
