@@ -378,9 +378,9 @@ jQuery(function($) {
         cur_step = check_current_wizard_step();
         if(cur_step == 'wizard-step-2'){
             $(this).fadeOut();
-        } else { 
-            $('.create-widget-button').hide();
-            $('#wizard-next').fadeIn('fast');
+        } else {
+            $('#wizard-next').fadeIn('fast');     
+            $('.create-widget-button').hide(); 
         }
 
         $wizard_slide.cycle('prev');
