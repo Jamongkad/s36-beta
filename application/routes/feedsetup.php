@@ -136,7 +136,7 @@ return array(
     'POST /feedsetup/save_display_widget' => function() { 
         $display = new Widget\Entities\DisplayWidget;
         $form = new Widget\Entities\FormWidget; 
-
+        /*
         $display->save();
         $form->save();
         $display->adopt($form);
@@ -145,6 +145,8 @@ return array(
              'display' => $display->emit()
            , 'submit' => $form->emit()
         )); 
+        */
+        Helpers::dump(Input::get());
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {

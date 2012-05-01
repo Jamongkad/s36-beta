@@ -294,6 +294,11 @@
                     $('#wizard-next').fadeOut('fast');
                     $('#wizard-back').fadeOut('fast');
                     console.log('FINISHED');
+                    $.ajaxForm({
+                        success: function(msg) {
+                            console.log(msg);
+                        }
+                    })
                 }
             }else{
                 $wizard_slide.cycle('next');
