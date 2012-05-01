@@ -365,11 +365,12 @@ jQuery(function($) {
             }else{
                 $wizard_slide.cycle('next');
             }
-        }else if(cur_step == 'wizard-step-4') {
+        }
+        /*else if(cur_step == 'wizard-step-4') {
             $('.create-widget-button').fadeIn('fast');
             $('#wizard-next').fadeOut('fast');
-            $('#wizard-back').fadeOut('fast'); 
-        }else if(cur_step == 'wizard-step-5'){
+            $('#wizard-back').fadeOut('fast');} */
+        else if(cur_step == 'wizard-step-5'){
             var form_header_text = $('#form-header-text');
             var form_what_to_write =  $('#form-what-to-write');
             
