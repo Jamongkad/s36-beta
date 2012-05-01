@@ -136,7 +136,6 @@
                 <br />
                     <div class="grids wizard-display-options">
                         <p><label>Display Image :</label> 
-                        <input type="checkbox" id="preview-avatar" class="display-option" checked />
                         <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, 1, Array(  'class' => 'display-option'
                                                                                                  , 'id' => 'preview-avatar'))?>
                         </p>
@@ -157,7 +156,7 @@
                                                                                                      , 'id' => 'preview-author-location'))?>
                         </p>
                         <p><label>Submitted Date :</label> 
-                        <input type="checkbox" id="preview-feedback-date" class="display-option" checked />
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displaysbmtdate]', 1, 1, Array(  'class' => 'display-option'
                                                                                                       , 'id' => 'preview-feedback-date'))?>
                         </p>
                     </div>
