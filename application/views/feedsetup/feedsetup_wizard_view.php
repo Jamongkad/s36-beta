@@ -84,7 +84,6 @@
             <br />
             <span>Choose your theme : </span>
             <br />
-            <input type="hidden" val="" id="selected-form" name="form-design" />
             <div class="form-design-slide" style="margin-left:-10px;">
                 <div class="form-design-prev">
                 </div>

@@ -368,17 +368,17 @@ jQuery(function($) {
         }else if(cur_step == 'wizard-step-5'){
             var form_header_text = $('#form-header-text');
             var form_what_to_write =  $('#form-what-to-write');
-            
+
             if(!validate_field(form_header_text.attr('id'),form_header_text.val(),form_header_text.attr('title'), "regular")){
                 form_header_text.focus();
             }else if(!validate_field(form_what_to_write.attr('id'),form_what_to_write.val(),form_what_to_write.attr('title'), "regular")){
                 form_what_to_write.focus();
             }else{
                 $wizard_slide.cycle('next');
-                $('#wizard-next').fadeOut('fast');
                 $('#wizard-back').fadeOut('fast');
-                $('.create-widget-button').fadeIn('fast');
             }
+            $('.create-widget-button').fadeIn('fast');
+            $('#wizard-next').fadeOut('fast');
         }else{
             $wizard_slide.cycle('next');
         }
