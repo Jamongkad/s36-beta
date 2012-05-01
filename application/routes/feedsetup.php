@@ -95,6 +95,7 @@ return array(
             'form_themes'  => $form_themes
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid 
+          , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
         ));
     }),
     
