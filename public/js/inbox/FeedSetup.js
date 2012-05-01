@@ -366,6 +366,8 @@ jQuery(function($) {
             }else{
                 $wizard_slide.cycle('next');
             }
+        } else if(cur_step == 'wizard-step-3') {
+            $wizard_slide.cycle('next');
         } else if(cur_step == 'wizard-step-4') {
             $('.create-widget-button').fadeIn('fast');
             $('#wizard-next').fadeOut('fast');
