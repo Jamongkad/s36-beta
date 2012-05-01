@@ -293,8 +293,9 @@
                     $('#wizard-next').fadeOut('fast');
                     $('#wizard-back').fadeOut('fast');
                 }
+            } else if(cur_step == 'wizard-step-5') {
+                console.log("FINISHED");
             }else{
-                console.log(cur_step);
                 $wizard_slide.cycle('next');
             }
         });
