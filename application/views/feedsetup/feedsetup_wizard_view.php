@@ -221,7 +221,7 @@
         <a href="javascript:;" class="wizard-btn" id="wizard-back">Back</a>
         &nbsp;
         <a href="javascript:;" class="wizard-btn" id="wizard-next">Next</a> 
-        <input type="submit" class="large-btn create-widget-button" value="Save Widget" style="display:hidden" />
+        <input type="submit" class="large-btn create-widget-button" value="Save Widget" style="display:none" />
     </div>
 </div>
 <div class="block noborder" style="height:150px;">
