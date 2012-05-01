@@ -261,6 +261,7 @@
         
         $('#wizard-next').click(function(){
             cur_step = check_current_wizard_step();
+            console.log(cur_step);
             if(cur_step == 'wizard-step-1'){
                 var form_name = $('#form-name');
                 if(!validate_field(form_name.attr('id'),form_name.val(),form_name.attr('title'), "regular")){
