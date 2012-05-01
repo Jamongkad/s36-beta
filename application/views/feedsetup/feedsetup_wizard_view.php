@@ -176,6 +176,14 @@
         }
     }
 </script>
+<?=Form::open('feedsetup/save_display_widget', 'POST', Array('id' => 'create-widget'))?>
+<?=Form::hidden('widget_type', 'display')?>
+<?=Form::hidden('site_id', $site[0]->siteid)?>
+<?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('display_widgetkey', false)?>
+<?=Form::hidden('submit_widgetkey', false)?>
+<?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
+<?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1);?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>CUSTOMIZE YOUR EMBEDDED DISPLAYS</h3>
 </div>
@@ -188,8 +196,7 @@
             <span>Name and save as : </span>
             <div class="grids">
                 <div class="g3of4">
-                    <input type="text" id="form-name" class="wizard-text-field" title="%co-name% Display form" />
-                    
+                    <input type="text" id="form-name" class="wizard-text-field" name="theme_name" value="" title="Name of your widget" />
                     <div class="grids">
                         <div class="g1of3" style="height:200px">
                             <img src="/img/embed-feedback-3.png" />
@@ -198,7 +205,7 @@
                             <br />
                             <span class="blue"><strong>Selected</strong> : Embedded Display </span>
                             <br />
-                            <span class="underline"><small><a href="#">Change</a></small></span>
+                            <small class="underline"><?=HTML::link('feedsetup/widget_selection', 'change')?></small>
                         </div>
                     </div>
                 </div>
@@ -213,7 +220,8 @@
             <span>Your header text : </span>
             <div class="grids">
                 <div class="g3of4">
-                    <input type="text" id="header-text" class="wizard-text-field" title="What our customer say" />
+                    <input type="text" id="header-text" class="wizard-text-field" name="form_text" style="padding:8px;"  
+                           title="What our customers have to say" />
                 </div>
                 <div class="g1of4">
                     &nbsp;
@@ -229,11 +237,10 @@
             <span>Transition Effect : </span>
             <div class="grids">
                 <div class="g1of4">
-                    <select class="wizard-select">
-                        <option>Fade</option>
-                        <option>Scroll Vertical</option>
-                        <option>Scroll Horizontal</option>
-                        <option>Uncover</option>
+                    <select name="embed_effects" class="wizard-select"> 
+                        <?foreach($effects_options as $rows):?>        
+                            <option value="<?=$rows->effectsid?>"><?=$rows->effectsname?></option>
+                        <?endforeach?> 
                     </select>
                 </div>
                 <div class="g3of4">
@@ -242,12 +249,12 @@
             </div>
             <div class="grids">
                 <div class="g1of4" style="height:250px">
-                    <input type="radio" name="type" checked /> Horizontal
+                    <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed" /> Horizontal
                     <br />
                     <img src="/img/preview-horizontal-embed.png" />
                 </div>
                 <div class="g1of4" style="height:250px">
-                    <input type="radio" name="type" /> Vertical
+                    <input type="radio" name="embed_block_type" value="embed_block_y" id="vertical_embed" /> Vertical
                     <br />
                     <img src="/img/preview-horizontal-embed.png" />
                 </div>
@@ -257,67 +264,45 @@
             <br />
             <input type="hidden" val="" id="selected-form" name="form-design" />
             <div class="form-design-slide" style="margin-left:-10px;">
-                    <div class="form-design-prev">
-                    </div>
-                    <div class="form-designs grids" >
-                        <div class="form-design-group grids">
-                            <div class="form-design selected-form" id="form-blue">
-                                <img src="/img/tab-designs/blue-form.png" height="60">
-                                <br>
-                                <span>Ocean Blue</span>
-                            </div>
-                            <div class="form-design" id="form-green">
-                                <img src="/img/tab-designs/green-form.png" height="60">
-                                <br>
-                                <span>Forest Green</span>
-                            </div>
-                            <div class="form-design" id="form-yellow">
-                                <img src="/img/tab-designs/yellow-form.png" height="60">
-                                <br>
-                                <span>Mandarin</span>
-                            </div>
-                            <div class="form-design" id="form-orange">
-                                <img src="/img/tab-designs/orange-form.png" height="60">
-                                <br>
-                                <span>Sleek Orange</span>
-                            </div>
-                            <div class="form-design" id="form-red">
-                                <img src="/img/tab-designs/red-form.png" height="60">
-                                <br>
-                                <span>Thin Red</span>
-                            </div>
-                        </div>
-                        <div class="form-design-group grids">
-                            <div class="form-design" id="form-blue">
-                                <img src="/img/tab-designs/blue-form.png" height="60">
-                                <br>
-                                <span>Ocean Blue</span>
-                            </div>
-                            <div class="form-design" id="form-green">
-                                <img src="/img/tab-designs/green-form.png" height="60">
-                                <br>
-                                <span>Forest Green</span>
-                            </div>
-                            <div class="form-design" id="form-yellow">
-                                <img src="/img/tab-designs/yellow-form.png" height="60">
-                                <br>
-                                <span>Mandarin</span>
-                            </div>
-                            <div class="form-design" id="form-orange">
-                                <img src="/img/tab-designs/orange-form.png" height="60">
-                                <br>
-                                <span>Sleek Orange</span>
-                            </div>
-                            <div class="form-design" id="form-red">
-                                <img src="/img/tab-designs/red-form.png" height="60">
-                                <br>
-                                <span>Thin Red</span>
-                            </div>
-                        </div>                                                                    
-                    </div>
-                    <div class="form-design-next">
-                    </div>
+                <div class="form-design-prev">
                 </div>
+                    <div class="form-designs grids">  
+                    <?php
+                        $form_slides = '';
+                        $units = 7;
+                        $ctr = 0;
+                        $max = count($form_themes);
+                        
+                        foreach($form_themes as $form_colors => $val){
+                            if (($ctr % $units) == 0) {
+                                $form_slides .= '<div class="form-design-group grids">';
+                                $end = 1;
+                            }
+
+                                $color_name = 'form-'.$form_colors;
+                                $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                    <img src="/img/display-thumb.png "/>
+                                                    <span>'.$val.'</span>
+                                                    <!--
+                                                    <div id="preview" class="preview button-gray">
+                                                        Preview
+                                                    </div>
+                                                    -->
+                                                </div>';
+                            
+                             if(($end == $units) || $ctr == ($max - 1)){
+                                $form_slides .= '</div>';
+                            }
+                            $end++;
+                            $ctr++;
+                        }
+                        echo $form_slides
+                    ?>
+                    
+                    </div>
+                <div class="form-design-next">
+                </div>
+            </div>
         </div>                    
         <div id="wizard-step-4" class="wizard-steps">
             <span><strong>Step 4 </strong><span class="blue">Feedback detail display options </span></span>
@@ -328,12 +313,31 @@
                 <div class="g1of2">
                 <br />
                     <div class="grids wizard-display-options">
-                        <p><label>Display Image :</label> <input type="checkbox" id="preview-avatar" class="display-option" checked /></p>
-                        <p><label>Company Name :</label> <input type="checkbox" id="preview-company" class="display-option" checked /></p>
-                        <p><label>Designation / Position :</label> <input type="checkbox" id="preview-position" class="display-option" checked /></p>
-                        <p><label>Website Url :</label> <input type="checkbox" id="preview-website" class="display-option" checked /></p>
-                        <p><label>Country & Flag : </label> <input type="checkbox" id="preview-author-location" class="display-option" checked /></p>
-                        <p><label>Submitted Date :</label> <input type="checkbox" id="preview-feedback-date" class="display-option" checked /></p>
+                        <p><label>Display Image :</label> 
+                        <input type="checkbox" id="preview-avatar" class="display-option" checked />
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, 1, Array(  'class' => 'display-option'
+                                                                                                 , 'id' => 'preview-avatar'))?>
+                        </p>
+                        <p><label>Company Name :</label> 
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, 1, Array(  'class' => 'display-option'
+                                                                                                     , 'id' => 'preview-company'))?>
+                        </p>
+                        <p><label>Designation / Position :</label> 
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayposition]', 1, 1, Array(  'class' => 'display-option'
+                                                                                                      , 'id' => 'preview-position'))?>
+                        </p>
+                        <p><label>Website Url :</label> 
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, 1, Array(  'class' => 'display-option'
+                                                                                                 , 'id' => 'preview-website'))?>
+                        </p>
+                        <p><label>Country & Flag : </label> 
+                        <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, 1, Array(  'class' => 'display-option'
+                                                                                                     , 'id' => 'preview-author-location'))?>
+                        </p>
+                        <p><label>Submitted Date :</label> 
+                        <input type="checkbox" id="preview-feedback-date" class="display-option" checked />
+                                                                                                      , 'id' => 'preview-feedback-date'))?>
+                        </p>
                     </div>
                 </div>
                 <div class="g1of2">
@@ -368,11 +372,12 @@
                     <br /><br />
                     Form Header Text :
                     <br />
-                    <input type="text" id="form-header-text" class="wizard-text-field" title="Give us your feedback" />
+                    <input type="text" id="form-header-text" class="wizard-text-field" name="submit_form_text" value="" title="Give us your feedback" />
                     <br />
                     What to write?
                     <br />
-                    <textarea id="form-what-to-write" class="wizard-text-field" rows="6" title="What do you like about our product"></textarea>
+                    <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?">
+                    </textarea>
                     <small>Questions to help your customers/visitors respond to your form in a certain way. This text will appear if they click "What to write?".</small>
                     <br />
                     <br />
@@ -398,5 +403,6 @@
     </div>
 </div>
 <div class="block noborder" style="height:150px;">
-    
 </div>
+
+<?=Form::close()?>

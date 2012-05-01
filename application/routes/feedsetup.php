@@ -83,7 +83,19 @@ return array(
     }),
 
     'GET /feedsetup/wizard' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view');
+
+        $form_themes = Array( 
+            'aglow'=>'Aglow'
+          , 'silver'=>'Silver'
+          , 'chrome'=>'Chrome'
+          , 'classic'=>'Classic'
+        );
+
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view', Array(
+            'form_themes'  => $form_themes
+          , 'effects_options' => DB::table('Effects', 'master')->get()
+          , 'company_id'      => S36Auth::user()->companyid 
+        ));
     }),
     
     'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 
