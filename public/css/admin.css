@@ -886,19 +886,6 @@ color: #777;}
     /*border:10px solid #ebecec;*/
 }
 
-.the-selected-widget-box{
-    width:194px;
-    height:284px;
-    border:#d6dfe6 1px solid;
-    position:absolute;
-    background:#ebf0f4;
-    right:0px;
-    top:-10px;
-    padding:8px;
-    text-align:center;
-    z-index:10;
-}
-.the-selected-widget-box img{margin:0 !important;}
 
 .blue{color:#447697;}
 #wizard{}

@@ -1,5 +1,7 @@
 <?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
-<?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
+<?if($widget_type == 'Widget\Entities\Types\FormWidgets'):?>
+    <?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
+<?endif?>
 <span id="update-tabtype-url" hrefaction="<?=URL::to('feedsetup/update_tabtype/')?>"></span>
 
 <script type="text/javascript">
@@ -45,12 +47,18 @@ function display_codes(i){
         <div class="widget-options" style="padding-bottom:0px;border:1px solid #f0f2f3">
             <div id="formcodebox">                    
                 <ul>
-                    <li class="formcodelink1 active" >Image Tabs <div class="formcodearrow"></div></li>
-                    <li class="formcodelink2">Embed Form Code <div class="formcodearrow"></div></li>
-                    <li class="formcodelink3">Popup Form Link <div class="formcodearrow"></div></li>
-                    <li class="formcodelink4">Link to Form <div class="formcodearrow"></div></li>
+                  <?if($widget_type == 'Widget\Entities\Types\FormWidgets'):?>
+                      <li class="formcodelink1 active" >Image Tabs <div class="formcodearrow"></div></li>
+                      <li class="formcodelink2">Embed Form Code <div class="formcodearrow"></div></li>
+                      <li class="formcodelink3">Popup Form Link <div class="formcodearrow"></div></li>
+                      <li class="formcodelink4">Link to Form <div class="formcodearrow"></div></li>
+                  <?else:?>
+                      <li class="formcodelink1 active">Embed Code <div class="formcodearrow"></div></li>
+                      <li class="formcodelink2">Link to Display <div class="formcodearrow"></div></li>
+                  <?endif?>
                 </ul> 
                 <div id="formcodeboxcontent">
+                  <?if($widget_type == 'Widget\Entities\Types\FormWidgets'):?>
                     <div id="formcodeboxcontent1" class="formcodeboxcontainer">
                         <h4 style="font-size:16px;line-height:20px;">Copy and Paste this Code into<br />
                         Your Website or Blog Post</h4>
@@ -176,16 +184,42 @@ function display_codes(i){
                                        value="<a href='<?=$loader_url?>'>Fill out my form!</a>"/></td></tr>
                         </table>
                     </div>
+                  <?else:?>
+                    <div id="formcodeboxcontent1" class="formcodeboxcontainer">
+                        <h4 style="font-size:16px;line-height:20px;">Copy and Paste this Code into<br />
+                        Your Website or Blog Post</h4>
+                        
+                        <table width="400" align="center">
+                        <tr><td><strong>JavaScript Version <small>(Recommended)</small></strong></td></tr>
+                        <!--JS Link Pop code goes here-->
+                        <tr><td><textarea class="regular-text highlight" rows="7">
+<?=$embed_js_code;?> 
+                        </textarea></td></tr>  
+
+                        <tr><td><strong>HTML Popup Version</strong></td></tr>
+                        <tr><td><textarea class="regular-text highlight" rows="7">
+<?=$iframe_code;?>
+                        </textarea></td></tr>
+                        </table>
+                        <br />
+                    </div>
+                    <div id="formcodeboxcontent2" class="formcodeboxcontainer">
+                        <h4 style="font-size:16px;line-height:20px;">Copy and Paste Code Snippets to <br />
+                        Create a Link to Your Form</h4>
+                        
+                        <table width="400" align="center">
+                        <tr><td><strong>Permanent Shortlink URL</strong></td></tr>
+                        <tr><td><input type="text" class="regular-text highlight" value="<?=$loader_url?>"/></td></tr>
+                        <tr height="10"><td></td></tr>
+                        <tr><td><strong>Use this HTML Link in a Webpage</strong></td></tr>
+                        <tr><td><input type="text" class="regular-text highlight" 
+                                       value="<a href='<?=$loader_url?>'>Fill out my form!</a>"/></td></tr>
+                        </table>
+                    </div>
+ 
+                  <?endif?>
                 </div> 
             </div>
         </div>
-        <!--
-        <div class="widget-options">
-            <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn create-widget-button" value="Save" />
-                <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
-            </div>
-        </div>
-        -->
     </div>
 </div>

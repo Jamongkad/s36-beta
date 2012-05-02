@@ -2,10 +2,9 @@
 <?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('site_id', $site[0]->siteid)?>
 <?=Form::hidden('company_id', $company_id)?>
-<?=Form::hidden('display_widgetkey', false)?>
-<?=Form::hidden('submit_widgetkey', false)?>
 <?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1);?>
+<span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>CUSTOMIZE YOUR EMBEDDED DISPLAYS</h3>
 </div>
@@ -21,11 +20,25 @@
                     <input type="text" id="form-name" class="wizard-text-field" name="theme_name" value="" title="Name of your widget" />
                     <div class="grids">
                         <div class="g1of3" style="height:200px">
-                            <img src="/img/embed-feedback-3.png" />
+                            <?if($widget_select == 'embed'):?> 
+                                <?=HTML::image('img/embed-widget-preview.jpg')?>
+                            <?endif;?>
+
+                            <?if($widget_select == 'modal'):?> 
+                                <?=HTML::image('img/popup-widget-preview.jpg')?>
+                            <?endif;?>                    
                         </div>
                         <div class="g2of3">
                             <br />
-                            <span class="blue"><strong>Selected</strong> : Embedded Display </span>
+                            <span class="blue"><strong>Selected</strong> : 
+                            <?if($widget_select == 'embed'):?>
+                                Embedded display selected 
+                            <?endif;?>
+
+                            <?if($widget_select == 'modal'):?>
+                                Modal Popup display selected
+                            <?endif;?>
+                            </span>
                             <br />
                             <small class="underline"><?=HTML::link('feedsetup/widget_selection', 'change')?></small>
                         </div>
@@ -70,16 +83,26 @@
                 </div>
             </div>
             <div class="grids">
-                <div class="g1of4" style="height:250px">
-                    <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed" /> Horizontal
-                    <br />
-                    <img src="/img/preview-horizontal-embed.png" />
-                </div>
-                <div class="g1of4" style="height:250px">
-                    <input type="radio" name="embed_block_type" value="embed_block_y" id="vertical_embed" /> Vertical
-                    <br />
-                    <img src="/img/preview-horizontal-embed.png" />
-                </div>
+                <?if($widget_select == "embed"):?>
+                    <input type="radio" name="embed_type" id="embed_type" value="embedded" checked style="display:none"/> 
+                    <?=Form::hidden('embed_type', 'embedded')?>
+                    <div class="g1of4" style="height:250px">
+                        <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed" /> Horizontal
+                        <br />
+                        <?=HTML::image('img/preview-horizontal-embed.png')?>
+                    </div>
+                    <div class="g1of4" style="height:250px">
+                        <input type="radio" name="embed_block_type" value="embed_block_y" id="vertical_embed" /> Vertical
+                        <br />
+                        <?=HTML::image('img/preview-vertical-embed.png')?>
+                    </div>
+                <?endif?>
+                <?if($widget_select == "modal"):?>
+                    <?=Form::hidden('embed_type', 'modal')?>
+                    <div class="g1of4" style="height:250px"> 
+                        <?=HTML::image('img/popup-widget-preview.jpg')?>
+                    </div>
+                <?endif?>
             </div>
             <br />
             <span>Choose your theme : </span>
@@ -229,9 +252,3 @@
 <div class="block noborder" style="height:150px;">
 </div>
 <?=Form::close()?>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-    });
-    
-</script>

@@ -1,9 +1,9 @@
 <?php namespace Widget\Services;
 
 use Config, HTML, View, Helpers;
-use \Widget\Entities\Types\WidgetTypes;
-use \Widget\Entities\Types\DisplayWidgets;
-use \Widget\Entities\Types\FormWidgets;
+use Widget\Entities\Types\WidgetTypes;
+use Widget\Entities\Types\DisplayWidgets;
+use Widget\Entities\Types\FormWidgets;
 
 //This little bastard renders the widget code!!
 class ClientRender {

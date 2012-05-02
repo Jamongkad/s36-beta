@@ -9,7 +9,7 @@
                         <h4>EMBEDDED BLOCK</h4>
                         <img src="/img/embed-widget-preview.jpg" />
                         <br />
-                        <?=HTML::link('feedsetup/display_widgets/embed', 'Select', Array('class' => 'white-button'))?>
+                        <?=HTML::link('feedsetup/wizard/embed', 'Select', Array('class' => 'white-button'))?>
                         <br />
                         <br />
                     </div>
@@ -23,7 +23,7 @@
                         <h4>POPUP DISPLAY</h4>
                         <img src="/img/popup-widget-preview.jpg" />
                         <br />
-                        <?=HTML::link('feedsetup/display_widgets/modal', 'Select', Array('class' => 'white-button'))?>
+                        <?=HTML::link('feedsetup/wizard/modal', 'Select', Array('class' => 'white-button'))?>
                         <br />
                         <br />
                     </div>

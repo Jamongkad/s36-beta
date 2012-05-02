@@ -40,6 +40,27 @@ class Helpers {
           , 'green-like-2' => 'Green Like 2' 
     );
 
+    public static $form_themes = Array(
+            'aglow'=>'Aglow'
+          , 'silver'=>'Silver'
+          , 'chrome'=>'Chrome'
+          , 'classic'=>'Classic'
+          , 'black'=>'Black'
+          , 'silver-gray'=>'Silver Gray'
+          , 'ocean-blue'=>'Ocean Blue'
+          , 'forest-green'=>'Forest Green'
+          , 'mandarin'=>'Mandarin'
+          , 'sleek-orange'=>'Sleek Orange'
+          , 'thin-red'=>'Thin Red' 
+    );
+
+    public static $display_themes = Array( 
+            'aglow'=>'Aglow'
+          , 'silver'=>'Silver'
+          , 'chrome'=>'Chrome'
+          , 'classic'=>'Classic'
+    );
+
     public static function request() {
         return Request::uri();
     }

@@ -6,6 +6,7 @@
 <?=Form::hidden('submit_widgetkey', $widget->children[0]->widgetkey)?>
 <?=Form::hidden('theme_type', 'form-'.$widget->theme_type, Array('id' => 'selected-form'))?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
+<span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 
 <div class="block">
     <div>
@@ -226,7 +227,7 @@
                         <td width="140">
                             <strong style="font-size:11px;color:#000;">Form Header Text :</strong>
                         </td>
-                        <td><input type="text" class="form-text regular-text" style="padding:8px;width:200px;" name="submit_form_text" value="<?=$widget->children[0]->submit_form_text?>" title="<?=$widget->children[0]->submit_form_text?>"  /></td>
+                        <td><input type="text" id="form-header-text" class="form-text regular-text" style="padding:8px;width:200px;" name="submit_form_text" value="<?=$widget->children[0]->submit_form_text?>" title="<?=$widget->children[0]->submit_form_text?>"  /></td>
                         <td rowspan="2"valign="top">
                             <br /><br /><br />
                             <p style="font-size:11px;">See how your form will <br /> appear to your visitors.</p>
@@ -245,7 +246,7 @@
                             <br/>
                         </td>
                         <td valign="top">
-                            <textarea name="submit_form_question" class="regular-textarea" style="width:230px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                            <textarea name="submit_form_question" id="form-what-to-write" class="regular-textarea" style="width:230px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
                             title="<?=$widget->children[0]->submit_form_question?>">
 
 <?=$widget->children[0]->submit_form_question?>
@@ -283,38 +284,6 @@
             </div>
             <br/>
             -->
-            <div class="widget-types">
-                <strong style="padding-left:3px;color:#447697;">Copy Paste Widget Code...</strong>
-                <br /><br /> 
-                <div style="width: 360px; margin-left:auto; margin-right:auto">
-                    <div class="widget-block" style="position:relative">
-                        <h2>JS Widget Code (recommended)</h2>
-                        <div class="html-code">
-                            <textarea id="widget-generate-view" spellcheck="false"> 
-                                <?=$js_code?> 
-                            </textarea> 
-                            <!-- add this -->
-                            <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                            <!-- end add this -->
-                        </div>
-                    </div>
-                    <div class="widget-block" style="position:relative">
-                        <h2>IFrame Widget Code</h2>
-                        <div class="html-code">
-                            <textarea id="iframe-generate-view" spellcheck="false">
-                                <?=$iframe_code?>  
-                            </textarea>
-                            <!-- add this -->
-                            <div class="copycheck"><img src="/img/ico-green-check.png" style="margin:0;padding:0;" /> Copied!</div> 
-                            <!-- end add this -->
-                        </div>
-                    </div>
-                    <a href="javascript;;" class="button-gray" id="copy-widget-js">Copy JS Code</a>
-                    <a href="javascript;;" class="button-gray" id="copy-widget-iframe">Copy IFrame Code</a>
-                    <span id="preview-widget" hrefaction="<?=URL::to('/feedsetup/generate_code')?>"></span>
-                </div>     
-            </div>
-
             <br/>
             <div class="widget-types">
                 <input type="submit" class="large-btn create-widget-button" value="Save Widget" />

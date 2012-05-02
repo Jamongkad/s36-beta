@@ -41,55 +41,21 @@ jQuery(function($) {
       
         var form_header_text = $('#form-header-text');
         var form_what_to_write =  $('#form-what-to-write');
-        if (!validate_field(form_header_text.attr('id'),form_header_text.val(),form_header_text.attr('title'), "regular")) { 
+        if (!validate_field(form_header_text.val(), true, "regular")) { 
             form_header_text.focus();
-        } else if (!validate_field(form_what_to_write.attr('id'),form_what_to_write.val(),form_what_to_write.attr('title'), "regular")) {
+        } else if (!validate_field(form_what_to_write.val(), true, "regular")) {
             form_what_to_write.focus();
         } else {
             
             $(this).ajaxSubmit({
-                //dataType: 'json'
-                beforeSubmit: function(formData, jqForm, options) {
+                dataType: 'json'
+              , beforeSubmit: function(formData, jqForm, options) {
                     new Status().notify("Processing...", 1000); 
                 }
               , success: function(responseText, statusText, xhr, $form) {   
-                    console.log(responseText);
-                    /*
-                    $("#widget-preview").show();
-                    $("input[name=display_widgetkey]").val(responseText.display.widget.widgetkey);
-                    $("input[name=submit_widgetkey]").val(responseText.submit.widget.widgetkey);
-                    var widget_key = $("input[name=display_widgetkey]").val();
-
-                    var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
-                    $.ajax({
-                          url: action
-                        , type: "GET"
-                        , dataType: 'json'
-                        , success: function(data) {
-                              $("#widget-generate-view").val(data.html_widget_js_code);
-                              $("#iframe-generate-view").val(data.html_iframe_code);
-                              new ZClip();
-                          } 
-                    });
-
-                    new Status().notify("Success!", 1000);
-
-                    $(preview_widget).removeAttr("disabled").css({'opacity': '1.0'});
-                    $(document).delegate('.preview-display-widget-button', 'click', function(e) {  
-
-                        var action = $("#preview-widget").attr('hrefaction') + "/" + widget_key;
-                        $.ajax({
-                            url: action
-                            , type: "GET"
-                            , dataType: 'json'
-                            , success: function(data) {
-                                  s36Lightbox(data.width, data.height, data.html_view);
-                              } 
-                        });
-
-                        e.preventDefault();
-                    })
-                   */
+                    var widget_key = responseText.display.widget.widgetkey;
+                    var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
+                    window.location = formcode_url;
               }
             }); 
         }
@@ -103,22 +69,10 @@ jQuery(function($) {
           , beforeSubmit: function(formData, jqForm, options) {
                 new Status().notify("Processing...", 1000); 
             }
-          , success: function(responseText, statusText, xhr, $form) {
-                 
+          , success: function(responseText, statusText, xhr, $form) {     
                 var widget_key = responseText.submit.widget.widgetkey;
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
-
-                $("#widget-preview").show();
-                new Status().notify("Success!", 1000);
-                $.ajax({
-                      url: $("#preview-widget").attr('hrefaction') + "/" + widget_key
-                    , type: "GET"
-                    , dataType: 'json'
-                    , success: function(data) { 
-                          window.location = formcode_url;
-                      } 
-                });
-
+                window.location = formcode_url;
             }
         });
         e.preventDefault();    
@@ -350,7 +304,7 @@ jQuery(function($) {
         cur_step = check_current_wizard_step();
         if(cur_step == 'wizard-step-1'){
             var form_name = $('#form-name');
-            if(!validate_field(form_name.attr('id'),form_name.val(),form_name.attr('title'), "regular")){
+            if(!validate_field(form_name.val(), true, "regular")){
                 form_name.focus();
                 console.log('Please Enter Your First Name');
             }else{
@@ -359,7 +313,7 @@ jQuery(function($) {
             }
         }else if(cur_step == 'wizard-step-2'){
             var header_text = $('#header-text');
-            if(!validate_field(header_text.attr('id'),header_text.val(),header_text.attr('title'), "regular")){
+            if(!validate_field(header_text.val(), true, "regular")){
                 header_text.focus();
                 console.log('Please Enter Header Text');
             }else{
@@ -468,7 +422,7 @@ function run_display_option(){
         }
     });
 }
-function validate_field(fieldid,value,default_val,type){
+function validate_field(value, default_val, type){
     if(type == "regular"){   // check if type is only regular
         if((value.length <= 0) || (value == default_val)){		
             return false;

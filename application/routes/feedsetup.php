@@ -1,7 +1,10 @@
 <?php
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
-$form_themes = Helpers::$tab_themes;
+
+$form_themes = Helpers::$form_themes;
+$tab_themes = Helpers::$tab_themes;
+$display_themes = Helpers::$display_themes;
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) {
@@ -54,18 +57,15 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/(:any)/([a-z]+)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id, $type) use ($form_themes) {  
+    'GET /feedsetup/edit/(:any)/([a-z]+)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
+                                                   , 'do' => function($widget_id, $type) use ($form_themes, $display_themes) {  
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
+        $themes = $form_themes;
         if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
-            $form_themes = Array( 
-                'aglow'=>'Aglow'
-              , 'silver'=>'Silver'
-              , 'chrome'=>'Chrome'
-              , 'classic'=>'Classic'
-            );
+            $themes = $display_themes;
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
@@ -75,48 +75,25 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
-          , 'form_themes'     => $form_themes
+          , 'form_themes'     => $themes
           , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
         ));
     }),
 
-    'GET /feedsetup/wizard' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) { 
-
-        $form_themes = Array( 
-            'aglow'=>'Aglow'
-          , 'silver'=>'Silver'
-          , 'chrome'=>'Chrome'
-          , 'classic'=>'Classic'
-        );
+    'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
+                                            , 'do' => function($widget_select=false) use ($feedback, $display_themes) { 
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view', Array(
-            'form_themes'  => $form_themes
+            'form_themes'  => $display_themes
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
+          , 'widget_select'   => $widget_select
         ));
     }),
     
-    'GET /feedsetup/display_widgets/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 
-                                                      'do' => function($widget_select=false) use ($feedback) { 
-        $form_themes = Array( 
-            'aglow'=>'Aglow'
-          , 'silver'=>'Silver'
-          , 'chrome'=>'Chrome'
-          , 'classic'=>'Classic'
-        );
-
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_display_widget_view', Array( 
-            'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
-          , 'effects_options' => DB::table('Effects', 'master')->get()
-          , 'company_id'      => S36Auth::user()->companyid 
-          , 'form_themes'     => $form_themes
-          , 'widget_select'   => $widget_select
-        )); 
-    }),
-
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) { 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
             'site'             => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -136,7 +113,7 @@ return array(
     'POST /feedsetup/save_display_widget' => function() { 
         $display = new Widget\Entities\DisplayWidget;
         $form = new Widget\Entities\FormWidget; 
-        /*
+
         $display->save();
         $form->save();
         $display->adopt($form);
@@ -144,26 +121,26 @@ return array(
         echo json_encode(Array(
              'display' => $display->emit()
            , 'submit' => $form->emit()
-        )); 
-        */
-        Helpers::dump(Input::get());
+        ));     
     },
 
-    'GET /feedsetup/formcode_manager/(:any?)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($id=false) use ($form_themes) {
+    'GET /feedsetup/formcode_manager/(:any?)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
+                                                       , 'do' => function($id=false) use ($tab_themes) {
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);
-        
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
-          , 'form_themes'     => $form_themes
+          , 'widget_type'     => get_parent_class($widget)
+          , 'form_themes'     => $tab_themes
           , 'loader_url'      => $cl->widget_loader_url.$widget->widgetkey
           , 'link_js_output'  => $cl->link_js_output()
           , 'link_native_output' => $cl->iframe_output()
           , 'embed_js_code'   => $wl->load_widget_init_js_code()
+          , 'iframe_code'     => $wl->load_iframe_code()
         ));
-
     }),
 
     'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) use ($dbw) {  
