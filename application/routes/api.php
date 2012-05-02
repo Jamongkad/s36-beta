@@ -3,6 +3,11 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 
 return array(
+    'GET /api/full_page_display/(:any)' => function($company_id) { 
+        $host = new Feedback\Services\HostedService($company_id);
+        $feeds = $host->fetch_hosted_feedback(); 
+        echo json_encode($feeds);
+    },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
 
