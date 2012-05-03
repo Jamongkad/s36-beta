@@ -19,7 +19,7 @@ class HostedService {
         $company_id = $this->company_id;
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
-            $feeds = $this->feedback->televised_feedback($company_id, 0, 8);
+            $feeds = $this->feedback->televised_feedback($company_id, 8, 8);
 
             $collection = Array();
             $featured_feeds = Array();
