@@ -3,6 +3,6 @@
         <h2><?=$coll->head?></h2>
     <?endif?>
     <?foreach($coll->children as $child):?>
-        <?=$child?><br/>
+        <p><?=$child?></p>
     <?endforeach?>
 <?endforeach?>
