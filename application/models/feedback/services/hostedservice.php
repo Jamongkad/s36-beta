@@ -12,7 +12,6 @@ class HostedService {
     
     public function __construct($company_id) {
         $this->feedback = new DBFeedback;
-        $this->redis = new redisent\Redis; 
         $this->company_id = $company_id;
         $this->cache = new Halcyonic\Services\Cache;
     }
