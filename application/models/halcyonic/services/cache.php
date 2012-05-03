@@ -2,7 +2,7 @@
 
 use redisent, StdClass; 
 
-class InboxCache {
+class Cache {
 
     public $filter_array, $key_name;
     private $key_string, $key;    

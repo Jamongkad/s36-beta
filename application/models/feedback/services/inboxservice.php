@@ -35,7 +35,7 @@ class InboxService {
     public function __construct() {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
-        $this->cache = new Halcyonic\Services\InboxCache;
+        $this->cache = new Halcyonic\Services\Cache;
     }
 
     public function set_filters(Array $filters) {

@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, ArrayIterator, LimitIterator;
-use redisent;
+use Halcyonic;
 
 class HostedService {
     
@@ -14,17 +14,26 @@ class HostedService {
         $this->feedback = new DBFeedback;
         $this->redis = new redisent\Redis; 
         $this->company_id = $company_id;
+        $this->cache = new Halcyonic\Services\Cache;
     }
 
     public function fetch_hosted_feedback($ignore_cache=False) {
 
-        $company_id = $this->company_id;
         if(!$this->page_number) { $this->page_number = 1; }
         $this->offset = ($this->page_number - 1) * $this->limit;
+        
+        $this->cache->key_name = "hosted:feeds";
+        $this->cache->filter_array = Array(
+            'page_no' => $this->page_number
+          , 'units' => $this->units
+          , 'limit' => $this->limit
+          , 'offset' => $this->offset
+          , 'company_id' => $this->company_id
+        );
+        $this->cache->generate_keys();
    
-        if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
-            $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
-            Helpers::dump($feeds);
+        if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
+            $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
 
             $collection = Array();
             $featured_feeds = Array();
@@ -63,14 +72,20 @@ class HostedService {
                 }
 
                 $final_node->children = $val;
-                //$this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }     
+
             echo "no cached";
-            return $collection;
+            $data_obj = new StdClass;
+            $data_obj->collection = $collection;
+            $data_obj->num_rows = $feeds->total_rows;
+            $data_obj->number_of_pages = $feeds->number_of_pages;
+            $data_obj->pages = $feeds->pages;
+            $this->cache->set_cache($data_obj);
+            return $data_obj; 
         } else { 
             echo "cached";
-            return array_map(function($arr) { return json_decode($arr); }, $collection);
+            return json_decode($data_obj);
         }
     }
 
