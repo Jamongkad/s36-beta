@@ -4,7 +4,8 @@ use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, A
 use redisent;
 
 class HostedService {
-
+    
+    public $page_number = 0;
     public $units = 4;
     public $limit = 8;
     public $offset = 0;
@@ -18,6 +19,7 @@ class HostedService {
     public function fetch_hosted_feedback($ignore_cache=False) {
 
         $company_id = $this->company_id;
+        $this->offset = ($this->page_number - 1) * $this->limit;
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
