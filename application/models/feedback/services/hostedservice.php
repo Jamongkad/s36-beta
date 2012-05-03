@@ -61,9 +61,10 @@ class HostedService {
                 $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }     
-         
+            echo "no cached";
             return $collection;
         } else { 
+            echo "cached";
             return array_map(function($arr) { return json_decode($arr); }, $collection);
         }
     }
