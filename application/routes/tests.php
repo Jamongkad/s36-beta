@@ -260,7 +260,7 @@ return array(
         $test->page_number = $page;
         $test->limit = 10;
         $feeds = $test->fetch_hosted_feedback(true); 
-        Helpers::dump($feeds);
+        Helpers::dump($feeds->html);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");
