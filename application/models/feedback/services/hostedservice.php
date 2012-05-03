@@ -19,14 +19,11 @@ class HostedService {
     public function fetch_hosted_feedback($ignore_cache=False) {
 
         $company_id = $this->company_id;
-        if(!$this->page_number) {
-            $this->page_number = 1; 
-        }
+        if(!$this->page_number) { $this->page_number = 1; }
         $this->offset = ($this->page_number - 1) * $this->limit;
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
-            Helpers::dump($feeds);
 
             $collection = Array();
             $featured_feeds = Array();
@@ -65,7 +62,7 @@ class HostedService {
                 }
 
                 $final_node->children = $val;
-                $this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
+                //$this->redis->rpush("hosted:feeds:$company_id", json_encode($final_node));
                 $collection[] = $final_node;
             }     
             echo "no cached";

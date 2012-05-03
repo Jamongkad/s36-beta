@@ -421,7 +421,8 @@ class DBFeedback extends S36DataObject {
         $result_obj = new StdClass;
         $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
         $result_obj->total_rows = $total;
-        $result_obj->pages = ceil($total/$limit);
+        $result_obj->number_of_pages = ceil($total/$limit);
+        $result_obj->pages = range(1, ceil($total/$limit));
         return $result_obj; 
     }
     
