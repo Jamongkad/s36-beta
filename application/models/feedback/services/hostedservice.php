@@ -32,7 +32,7 @@ class HostedService {
             $published_feeds = Array();
             $children_collection = Array();
         
-            foreach($feeds as $feed) {           
+            foreach($feeds->result as $feed) {           
                 if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                     $published_feeds[] = $feed->id;
                 } else {
