@@ -254,9 +254,11 @@ return array(
         Helpers::dump($size);
     },
 
-    'GET /tests/full_page_algo/(:num)' => function($company_id) { 
+    'GET /tests/full_page_algo/(:num)/(:num)/(:num)' => function($company_id, $offset, $limit) { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_id);
+        $test->offset = $offset;
+        $test->limit = $limit;
         $feeds = $test->fetch_hosted_feedback(true); 
         Helpers::dump($feeds);
         $time_end = microtime(True);

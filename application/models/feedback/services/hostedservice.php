@@ -6,6 +6,8 @@ use redisent;
 class HostedService {
 
     public $units = 4;
+    public $limit = 8;
+    public $offset = 0;
     
     public function __construct($company_id) {
         $this->feedback = new DBFeedback;
@@ -18,7 +20,7 @@ class HostedService {
         $company_id = $this->company_id;
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
-            $feeds = $this->feedback->televised_feedback($company_id, 24, 8);
+            $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
 
             $collection = Array();
             $featured_feeds = Array();
