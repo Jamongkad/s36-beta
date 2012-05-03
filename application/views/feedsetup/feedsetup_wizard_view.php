@@ -4,6 +4,7 @@
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
 <?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1);?>
+<?=Form::hidden('perms[feedbacksetupdisplay][displayimg]', 1);?>
 <span id="formcode-manager-url" hrefaction="<?=URL::to('feedsetup/formcode_manager')?>"></span>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>CUSTOMIZE YOUR EMBEDDED DISPLAYS</h3>
@@ -17,7 +18,7 @@
             <span>Name and save as : </span>
             <div class="grids">
                 <div class="g3of4">
-                    <input type="text" id="form-name" class="wizard-text-field" name="theme_name" value="" title="Name of your widget" />
+                    <input type="text" id="form-name" class="regular-text" name="theme_name" value="" title="Name of your widget" />
                     <div class="grids">
                         <div class="g1of3" style="height:200px">
                             <?if($widget_select == 'embed'):?> 
@@ -55,7 +56,7 @@
             <span>Your header text : </span>
             <div class="grids">
                 <div class="g3of4">
-                    <input type="text" id="header-text" class="wizard-text-field" name="form_text" style="padding:8px;"  
+                    <input type="text" id="header-text" class="regular-text" name="form_text" style="padding:8px;"  
                            title="What our customers have to say" />
                 </div>
                 <div class="g1of4">
@@ -84,7 +85,6 @@
             </div>
             <div class="grids">
                 <?if($widget_select == "embed"):?>
-                    <input type="radio" name="embed_type" id="embed_type" value="embedded" checked style="display:none"/> 
                     <?=Form::hidden('embed_type', 'embedded')?>
                     <div class="g1of4" style="height:250px">
                         <input type="radio" name="embed_block_type" value="embed_block_x" id="horizontal_embed" /> Horizontal
@@ -157,10 +157,6 @@
                 <div class="g1of2">
                 <br />
                     <div class="grids wizard-display-options">
-                        <p><label>Display Image :</label> 
-                        <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, 1, Array(  'class' => 'display-option'
-                                                                                                 , 'id' => 'preview-avatar'))?>
-                        </p>
                         <p><label>Company Name :</label> 
                         <?=Form::checkbox('perms[feedbacksetupdisplay][displaycompany]', 1, 1, Array(  'class' => 'display-option'
                                                                                                      , 'id' => 'preview-company'))?>

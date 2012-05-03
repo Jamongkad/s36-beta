@@ -69,15 +69,18 @@
                             <?=Form::checkbox( 'perms[feedbacksetupdisplay][displayname]'
                                               , 1
                                               , (($widget->perms['displayname']) ? 1 : null) 
-                                              , array('disabled' => 'disabled') 
-                                              )?>
+                                              , array('disabled' => 'disabled'))?>
                             <?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1)?>
                             </td>
                             <td width="140" class="feedback-td-font">Website Url : </td><td>
                             <?=Form::checkbox('perms[feedbacksetupdisplay][displayurl]', 1, (($widget->perms['displayurl']) ? 1 : null) )?>
                             </td></tr>
                             <tr><td class="feedback-td-font">Display Image :  </td><td>
-                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]', 1, (($widget->perms['displayimg']) ? 1 : null) )?>
+                            <?=Form::checkbox('perms[feedbacksetupdisplay][displayimg]'
+                                              , 1
+                                              , (($widget->perms['displayimg']) ? 1 : null) 
+                                              , array('disabled' => 'disabled'))?>
+                            <?=Form::hidden('perms[feedbacksetupdisplay][displayimg]', 1)?>
                             </td>		
                             <td class="feedback-td-font">Country & Flag : </td><td>
                             <?=Form::checkbox('perms[feedbacksetupdisplay][displaycountry]', 1, (($widget->perms['displaycountry']) ? 1 : null) )?>

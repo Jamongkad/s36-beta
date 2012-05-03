@@ -46,7 +46,7 @@ jQuery(function($) {
         } else if (!validate_field(form_what_to_write.val(), true, "regular")) {
             form_what_to_write.focus();
         } else {
-            
+
             $(this).ajaxSubmit({
                 dataType: 'json'
               , beforeSubmit: function(formData, jqForm, options) {
@@ -56,8 +56,9 @@ jQuery(function($) {
                     var widget_key = responseText.display.widget.widgetkey;
                     var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
                     window.location = formcode_url;
-              }
+                }
             }); 
+
         }
         e.preventDefault(); 
     });
@@ -284,29 +285,15 @@ jQuery(function($) {
         pause : 1,
         before: adjust_height
     });
-    $(".wizard-textarea, .wizard-text-field").focus(function(i){          		 
-        if ($(this).val() == $(this)[0].title){
-            $(this).removeClass("reg-text-active");
-            $(this).val("");
-        }
-    });
-    $(".wizard-textarea, .wizard-text-field").blur(function(){
-            if ($.trim($(this).val()) == ""){
-                $(this).addClass("reg-text-active");
-                $(this).val($(this)[0].title);
-            }
-        });
-    $(".wizard-textarea, .wizard-text-field").blur();
     /* end */ 
     check_current_wizard_step(); 
     $('#wizard-back').hide();    
-    $('#wizard-next').click(function(){
+    $('#wizard-next').click(function(e){
         cur_step = check_current_wizard_step();
         if(cur_step == 'wizard-step-1'){
             var form_name = $('#form-name');
             if(!validate_field(form_name.val(), true, "regular")){
                 form_name.focus();
-                console.log('Please Enter Your First Name');
             }else{
                 $wizard_slide.cycle('next');
                 $('#wizard-back').fadeIn();
@@ -315,12 +302,17 @@ jQuery(function($) {
             var header_text = $('#header-text');
             if(!validate_field(header_text.val(), true, "regular")){
                 header_text.focus();
-                console.log('Please Enter Header Text');
             }else{
                 $wizard_slide.cycle('next');
             }
         } else if(cur_step == 'wizard-step-3') {
-            $wizard_slide.cycle('next');
+            var embed_radio = $('input[type=radio]');
+            if(embed_radio.length > 0 && embed_radio.is(':checked') || $('input[name=embed_type]').val() == 'modal') {
+                $wizard_slide.cycle('next');     
+            } else {
+                return e.preventDefault();     
+            }
+            
         } else if(cur_step == 'wizard-step-4') {
             $('.create-widget-button').fadeIn('fast');
             $('#wizard-next').fadeOut('fast');
