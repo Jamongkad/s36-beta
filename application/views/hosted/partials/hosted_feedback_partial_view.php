@@ -2,7 +2,9 @@
     <?if(property_exists($coll, 'head')):?>
         <h2><?=$coll->head?></h2>
     <?endif?>
+    <ul>
     <?foreach($coll->children as $child):?>
-        <p><?=$child?></p>
+        <li><?=$child?></li>
     <?endforeach?>
+    </ul>
 <?endforeach?>
