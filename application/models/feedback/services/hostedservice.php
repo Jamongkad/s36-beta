@@ -30,8 +30,7 @@ class HostedService {
           , 'company_id' => $this->company_id
         );
         $this->cache->generate_keys();
-        Helpers::dump($this->cache);
-        /* 
+
         if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
             $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
 
@@ -87,7 +86,7 @@ class HostedService {
             echo "cached";
             return json_decode($data_obj);
         }
-        */
+
     }
 
     public function invalidate_hosted_feeds_cache() {
