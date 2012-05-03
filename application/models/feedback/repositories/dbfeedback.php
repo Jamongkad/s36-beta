@@ -417,12 +417,13 @@ class DBFeedback extends S36DataObject {
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $total = $row_count->fetchColumn();
+        $page_count = ceil($total/$limit);
 
         $result_obj = new StdClass;
         $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
         $result_obj->total_rows = $total;
-        $result_obj->number_of_pages = ceil($total/$limit);
-        $result_obj->pages = range(1, ceil($total/$limit));
+        $result_obj->number_of_pages = $page_count;
+        $result_obj->pages = range(1, $page_count);
         return $result_obj; 
     }
     
