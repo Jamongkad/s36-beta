@@ -33,10 +33,11 @@ class HostedService {
 
         if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
             echo "no cache";
+            $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
+            $collection = $this->collection_data($feeds);
             $data_obj = new StdClass;
-            $data_obj->collection = $this->collection_data();
-            $data_obj->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
-                                         , Array('collection' => $this->collection_data()))->get();
+            $data_obj->collection = $collection;
+            $data_obj->html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $collection))->get();
             $data_obj->num_rows = $feeds->total_rows;
             $data_obj->number_of_pages = $feeds->number_of_pages;
             $data_obj->pages = $feeds->pages;
@@ -48,10 +49,8 @@ class HostedService {
         }
     }
 
-    public function collection_data() {
+    public function collection_data($feeds) {
         
-        $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
-
         $collection = Array();
         $featured_feeds = Array();
         $published_feeds = Array();
