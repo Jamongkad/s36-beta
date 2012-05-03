@@ -254,7 +254,7 @@ return array(
         Helpers::dump($size);
     },
 
-    'GET /tests/full_page_algo/(:num)/(:num)' => function($company_id, $page) { 
+    'GET /tests/full_page_algo/(:num)/(:num?)' => function($company_id, $page=false) { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_id);
         $test->page_number = $page;

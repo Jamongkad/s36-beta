@@ -19,8 +19,10 @@ class HostedService {
     public function fetch_hosted_feedback($ignore_cache=False) {
 
         $company_id = $this->company_id;
+        if(!$this->page_number) {
+            $this->page_number = 1; 
+        }
         $this->offset = ($this->page_number - 1) * $this->limit;
-        print_r($this->offset);
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
