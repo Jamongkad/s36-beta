@@ -26,6 +26,7 @@ class HostedService {
    
         if($ignore_cache or !$collection = $this->redis->lrange("hosted:feeds:$company_id", 0, -1)) { 
             $feeds = $this->feedback->televised_feedback($company_id, $this->offset, $this->limit);
+            Helpers::dump($feeds);
 
             $collection = Array();
             $featured_feeds = Array();
