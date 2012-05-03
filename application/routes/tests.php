@@ -257,7 +257,7 @@ return array(
     'GET /tests/full_page_algo/(:num)' => function($company_id) { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_id);
-        $feeds = $test->fetch_hosted_feedback(true); 
+        $feeds = $test->fetch_hosted_feedback(); 
         Helpers::dump($feeds);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
