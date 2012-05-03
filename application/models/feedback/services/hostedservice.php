@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, ArrayIterator, LimitIterator;
+use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, ArrayIterator, LimitIterator, View;
 use Halcyonic;
 
 class HostedService {
