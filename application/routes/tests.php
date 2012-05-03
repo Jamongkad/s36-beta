@@ -258,6 +258,7 @@ return array(
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_id);
         $test->page_number = $page;
+        $test->limit = 10;
         $feeds = $test->fetch_hosted_feedback(true); 
         Helpers::dump($feeds);
         $time_end = microtime(True);
