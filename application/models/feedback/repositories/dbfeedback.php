@@ -410,8 +410,8 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
-        $sth->bindparam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindparam(':offset', $offset, PDO::PARAM_INT);
+        $sth->bindparam(':limit', $limit, PDO::PARAM_INT);
 
         $sth->execute();
         return $sth->fetchAll(PDO::FETCH_CLASS);
