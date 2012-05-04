@@ -12,7 +12,7 @@
         <script type="text/javascript">
             var widgetId = 'i1ghz';
             var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
-            document.write(unescape("%3Cscript src='" + host + "1.36storiesapp.com/widget/js_output?widgetId="+widgetId+"' type='text/javascript'%3E%3C/script%3E"));
+            document.write(unescape("%3Cscript src='" + host + "feedback.36storiesapp.com/widget/js_output?widgetId="+widgetId+"' type='text/javascript'%3E%3C/script%3E"));
         </script>                     
     <?endif?>
 
