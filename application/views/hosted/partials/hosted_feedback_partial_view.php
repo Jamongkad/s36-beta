@@ -41,7 +41,7 @@
                 <div class="feedbackBlock">
                     <div class="feedbackAuthor">
                         <div class="feedbackAuthorAvatar">
-                            <img src="/uploaded_cropped/150x150/<?=$child->avatar?>" width="150" height="150" />
+                            <img src="/uploaded_cropped/48x48/<?=$child->avatar?>" width="48" height="48" />
                         </div>
                         <div class="feedbackAuthorDetails">
                             <h2><?=$child->firstname?> <?=$child->lastname?></h2>
