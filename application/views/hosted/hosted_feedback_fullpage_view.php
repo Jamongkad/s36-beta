@@ -22,10 +22,13 @@
 	function add_boxes(){
 		var container = $('#theFeedbacks');
 		/* ajax here */
-		var boxes = $('pwet');
-
-		container.append( $boxes ).masonry( 'appended', boxes ); 
-        console.log("mathew");
+        $.ajax({
+            url: '/hosted/fullpage_partial/<?=$company_info->company_id?>/' + 2;
+            success: function(msg) {
+ 		        var boxes = $(msg);               
+         		container.append( $boxes ).masonry( 'appended', boxes ); 
+            }
+        }) 
 	}
  
  function loadSocialButtons(id,target){
