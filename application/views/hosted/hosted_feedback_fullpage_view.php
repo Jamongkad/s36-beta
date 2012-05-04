@@ -14,8 +14,11 @@
         </div>
     </div>
 </div>
-
-
+<div id="bodyWrapper">
+    <div id="bodyContent">
+       Aryann
+    </div>
+</div>
 <div class="block" style="height:40px;"></div>
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
