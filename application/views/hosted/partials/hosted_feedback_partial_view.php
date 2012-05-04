@@ -4,19 +4,19 @@
             <div class="feedbackContents">
                 <div class="feedbackBlock">
                     <div class="feedbackAuthor">
-                        <div class="feedbackAuthorAvatar"><img src="images/friendzone.png" width="150" height="150" /></div>
+                        <div class="feedbackAuthorAvatar"><img src="/img/<?=$coll->avatar?>" width="150" height="150" /></div>
                         <div class="feedbackAuthorDetails">
-                            <h2>Rosary Anne Matusoc</h2>
-                            <h4>Marketing Manager, <span>Davis LLP</span></h4>
-                            <p><span style="float:left">New York, USA</span><span class="flag flag-ph"></span></p>
-                            <p> <span class="feedbackDate">26th April 2012</span></p>
+                            <h2><?=$coll->firstname?> <?=$coll->lastname?></h2>
+                            <h4><?=$coll->position?>, <span><?=$coll->companyname?></span></h4>
+                            <p><span style="float:left"><?=$coll->countryname?>, <?=$coll->city?></span>
+                               <span class="flag flag-<?=strtolower($coll->countrycode)?>"></span></p>
+                            <p> <span class="feedbackDate"><?=$coll->date?></span></p>
                         </div>
                     </div>
                     <div class="feedbackText">
                         <div class="feedbackTextTail"></div>
                         <div class="feedbackTextBubble">
-                            <p>I had great fun using your product.  Its more comfortable to use than your competitor.Constantly surprising your customers!"</p>
-                            <p>I had great fun using your product.  Its more comfortable to use than your competitor.Constantly surprising your customers!"</p>
+                            <p><?=$coll->text?></p>
                         </div>
                     </div>
                 </div>
