@@ -1,5 +1,5 @@
 <script type="text/javascript">
-		
+	var counter = 0;	
 	$(document).ready(function(){
 		$('#theFeedbacks').masonry({
 			itemSelector: '.feedback',
@@ -14,14 +14,17 @@
 		
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-				add_boxes();		 
+                counter += 1;
+				add_boxes(counter);		 
 		   }
 		});
 	});
 	/* end of document ready function. below are custom functions for this form */	
-	function add_boxes(){
+
+	function add_boxes(counter){
+        console.log(counter);
 		var container = $('#theFeedbacks');
-		/* ajax here */
+		/* ajax here */ 
         $.ajax({
               url: '/hosted/fullpage_partial/<?=$company->companyid?>/' + 2
             , success: function(msg) {
