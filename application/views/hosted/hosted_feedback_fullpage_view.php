@@ -23,7 +23,7 @@
 		var container = $('#theFeedbacks');
 		/* ajax here */
         $.ajax({
-            url: '/hosted/fullpage_partial/<?=$company->company_id?>/' + 2;
+            url: '/hosted/fullpage_partial/<?=$company->companyid?>/' + 2;
             success: function(msg) {
  		        var boxes = $(msg);               
          		container.append( $boxes ).masonry( 'appended', boxes ); 
