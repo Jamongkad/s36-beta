@@ -29,24 +29,36 @@ class HostedService {
           , 'offset' => $this->offset
           , 'company_id' => $this->company_id
         );
+
         $this->cache->generate_keys();
 
         if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
             echo "no cache";
-            $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
-            $collection = $this->collection_data($feeds);
-            $data_obj = new StdClass;
-            $data_obj->collection = $collection;
-            $data_obj->html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $collection))->get();
-            $data_obj->num_rows = $feeds->total_rows;
-            $data_obj->number_of_pages = $feeds->number_of_pages;
-            $data_obj->pages = $feeds->pages;
-            $this->cache->set_cache($data_obj);
-            return $data_obj; 
+            return $this->original_data();
         } else { 
             echo "cached";
-            return json_decode($data_obj);
+            return $this->cached_data($data_obj);
         }
+    }
+
+    public function original_data() { 
+        $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
+        $collection = $this->collection_data($feeds);
+
+        $data_obj = new StdClass;
+        $data_obj->collection = $collection;
+        $data_obj->html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $collection))->get();
+        $data_obj->num_rows = $feeds->total_rows;
+        $data_obj->number_of_pages = $feeds->number_of_pages;
+        $data_obj->pages = $feeds->pages;
+
+        $this->cache->set_cache($data_obj);    
+
+        return $data_obj; 
+    }
+
+    public function cached_data($data_obj) {
+        return json_decode($data_obj);
     }
 
     public function collection_data($feeds) {
