@@ -26,7 +26,7 @@
             }
         ?>
 
-        <?//=HTML::style('css/widget_master/form-default.css')?>
+        <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
 
