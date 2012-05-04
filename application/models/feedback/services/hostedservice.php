@@ -110,7 +110,6 @@ class HostedService {
     }
 
     public function invalidate_hosted_feeds_cache() {
-        $company_id = $this->company_id;
-        $this->redis->del("hosted:feeds:$company_id");
+        return $this->cache->invalidate_cache();
     }
 }

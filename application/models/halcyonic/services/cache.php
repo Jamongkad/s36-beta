@@ -37,4 +37,10 @@ class Cache {
         $result->key = $this->key;
         return $result;
     }
+
+    public function invalidate_cache() { 
+        $key = $this->key_name.":".$this->filter_array['company_id'];
+        $this->redis->del($key);
+    }
+
 }
