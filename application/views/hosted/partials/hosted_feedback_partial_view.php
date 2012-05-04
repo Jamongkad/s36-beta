@@ -33,8 +33,8 @@
         </div>
     <?endif?>
     <ul>
-    <?foreach($coll->children as $child):?>
-        <li><?=$child?></li>
-    <?endforeach?>
+    <?//foreach($coll->children as $child):?>
+        <li><?//=$child?></li>
+    <?//endforeach?>
     </ul>
 <?endforeach?>
