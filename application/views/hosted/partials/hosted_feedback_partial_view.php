@@ -6,8 +6,8 @@
                     <div class="feedbackAuthor">
                         <div class="feedbackAuthorAvatar"><img src="/img/<?=$coll->head->avatar?>" width="150" height="150" /></div>
                         <div class="feedbackAuthorDetails">
-                            <h2><?=$coll->firstname?> <?=$coll->head->lastname?></h2>
-                            <h4><?=$coll->position?>, <span><?=$coll->head->companyname?></span></h4>
+                            <h2><?=$coll->head->firstname?> <?=$coll->head->lastname?></h2>
+                            <h4><?=$coll->head->position?>, <span><?=$coll->head->companyname?></span></h4>
                             <p><span style="float:left"><?=$coll->head->countryname?>, <?=$coll->head->city?></span>
                                <span class="flag flag-<?=strtolower($coll->head->countrycode)?>"></span></p>
                             <p> <span class="feedbackDate"><?=$coll->head->date?></span></p>
