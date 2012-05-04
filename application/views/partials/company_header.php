@@ -10,7 +10,7 @@
         <?=HTML::style('css/widget_master/grids.css')?>
         
         <?  
-            preg_match_all('~hosted/(form|single|full)~', Request::uri(), $matches);
+            preg_match_all('~hosted/(form|single|fullpage)~', Request::uri(), $matches);
             //YUCK!! 
             $hosted_type = array_slice($matches, 1);
             if($hosted_type[0][0] == 'single') {
@@ -19,6 +19,10 @@
 
             if($hosted_type[0][0] == 'form') {
                 echo HTML::style('css/widget_master/hosted-form.css');
+            }
+
+            if($hosted_type[0][0] == 'fullpage') {
+                echo HTML::style('css/widget_master/hosted-fullpage.css');
             }
         ?>
 
