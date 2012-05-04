@@ -24,6 +24,7 @@
 		/* ajax here */
 		var $boxes = $('pwet');
 			$container.append( $boxes ).masonry( 'appended', $boxes ); 
+        console.log("mathew");
 	}
  
  function loadSocialButtons(id,target){
