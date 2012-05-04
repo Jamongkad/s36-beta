@@ -5,7 +5,11 @@
                 <div class="feedbackBlock">
                     <div class="feedbackAuthor">
                         <div class="feedbackAuthorAvatar">
-                            <img src="/uploaded_cropped/150x150/<?=$coll->head->avatar?>" width="150" height="150" />
+                            <?if($coll->head->avatar):?>
+                                <img src="/uploaded_cropped/150x150/<?=$coll->head->avatar?>" width="150" height="150" />
+                            <?else:?>
+                                <img src="/img/blank-avatar.png" width="150" height="150" />
+                            <?endif?>
                         </div>
                         <div class="feedbackAuthorDetails">
                             <h2><?=$coll->head->firstname?> <?=$coll->head->lastname?></h2>
@@ -41,7 +45,11 @@
                 <div class="feedbackBlock">
                     <div class="feedbackAuthor">
                         <div class="feedbackAuthorAvatar">
-                            <img src="/uploaded_cropped/48x48/<?=$child->avatar?>" width="48" height="48" />
+                            <?if($child->avatar):?>
+                                <img src="/uploaded_cropped/48x48/<?=$child->avatar?>" width="48" height="48" />
+                            <?else:?>
+                                <img src="/img/48x48-blank-avatar.jpg" width="48" height="48" />
+                            <?endif?>
                         </div>
                         <div class="feedbackAuthorDetails">
                             <h2><?=$child->firstname?> <?=$child->lastname?></h2>
