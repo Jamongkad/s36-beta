@@ -4,19 +4,19 @@
             <div class="feedbackContents">
                 <div class="feedbackBlock">
                     <div class="feedbackAuthor">
-                        <div class="feedbackAuthorAvatar"><img src="/img/<?=$coll->avatar?>" width="150" height="150" /></div>
+                        <div class="feedbackAuthorAvatar"><img src="/img/<?=$coll->head->avatar?>" width="150" height="150" /></div>
                         <div class="feedbackAuthorDetails">
-                            <h2><?=$coll->firstname?> <?=$coll->lastname?></h2>
-                            <h4><?=$coll->position?>, <span><?=$coll->companyname?></span></h4>
-                            <p><span style="float:left"><?=$coll->countryname?>, <?=$coll->city?></span>
-                               <span class="flag flag-<?=strtolower($coll->countrycode)?>"></span></p>
-                            <p> <span class="feedbackDate"><?=$coll->date?></span></p>
+                            <h2><?=$coll->firstname?> <?=$coll->head->lastname?></h2>
+                            <h4><?=$coll->position?>, <span><?=$coll->head->companyname?></span></h4>
+                            <p><span style="float:left"><?=$coll->head->countryname?>, <?=$coll->head->city?></span>
+                               <span class="flag flag-<?=strtolower($coll->head->countrycode)?>"></span></p>
+                            <p> <span class="feedbackDate"><?=$coll->head->date?></span></p>
                         </div>
                     </div>
                     <div class="feedbackText">
                         <div class="feedbackTextTail"></div>
                         <div class="feedbackTextBubble">
-                            <p><?=$coll->text?></p>
+                            <p><?=$coll->head->text?></p>
                         </div>
                     </div>
                 </div>
