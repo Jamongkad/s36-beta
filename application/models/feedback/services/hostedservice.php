@@ -34,15 +34,14 @@ class HostedService {
         $this->cache->generate_keys();
 
         if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
-            echo "no cache";
             return $this->original_data();
         } else { 
-            echo "cached";
             return $this->cached_data($data_obj);
         }
     }
 
     public function original_data() { 
+        
         $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
         $collection = $this->collection_data($feeds);
 
@@ -58,6 +57,7 @@ class HostedService {
         }
 
         return $data_obj; 
+
     }
 
     public function cached_data($data_obj) {
@@ -73,9 +73,9 @@ class HostedService {
     
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
-                $published_feeds[] = $feed->id;
+                $published_feeds[] = $feed;
             } else {
-                $featured_feeds[] = $feed->id;
+                $featured_feeds[] = $feed;
             }
         }
 

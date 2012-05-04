@@ -19,4 +19,10 @@ return array(
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view', Array('feedback' => $feedback));
     },
 
+    'GET /hosted/fullpage/(:num)' => function($company_id) use ($feedback) {
+        $company = new DBCompany;
+        $company_info = $company->get_company_info($company_id); 
+
+    },
+
 );

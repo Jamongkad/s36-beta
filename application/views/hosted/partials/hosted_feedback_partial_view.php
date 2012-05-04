@@ -1,6 +1,36 @@
 <?foreach($collection as $coll):?>
     <?if(property_exists($coll, 'head')):?>
-        <h2><?=$coll->head?></h2>
+        <div class="feedback featured">
+            <div class="feedbackContents">
+                <div class="feedbackBlock">
+                    <div class="feedbackAuthor">
+                        <div class="feedbackAuthorAvatar"><img src="images/friendzone.png" width="150" height="150" /></div>
+                        <div class="feedbackAuthorDetails">
+                            <h2>Rosary Anne Matusoc</h2>
+                            <h4>Marketing Manager, <span>Davis LLP</span></h4>
+                            <p><span style="float:left">New York, USA</span><span class="flag flag-ph"></span></p>
+                            <p> <span class="feedbackDate">26th April 2012</span></p>
+                        </div>
+                    </div>
+                    <div class="feedbackText">
+                        <div class="feedbackTextTail"></div>
+                        <div class="feedbackTextBubble">
+                            <p>I had great fun using your product.  Its more comfortable to use than your competitor.Constantly surprising your customers!"</p>
+                            <p>I had great fun using your product.  Its more comfortable to use than your competitor.Constantly surprising your customers!"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feedbackBlock">
+                    <div class="feedbackMeta">
+                        <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div> 
+                        <div class="feedbackSocial">
+                            <div class="feedbackSocialTwitter"><a href="http://webmumu.com" class="twitter-share-button">Tweet</a></div>
+                            <div class="feedbackSocialFacebook"><iframe src="//www.facebook.com/plugins/like.php?href=http://webmumu.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <?endif?>
     <ul>
     <?foreach($coll->children as $child):?>
