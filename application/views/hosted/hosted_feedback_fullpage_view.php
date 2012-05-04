@@ -20,10 +20,11 @@
 	});
 	/* end of document ready function. below are custom functions for this form */	
 	function add_boxes(){
-		var $container = $('#theFeedbacks');
+		var container = $('#theFeedbacks');
 		/* ajax here */
-		var $boxes = $('pwet');
-			$container.append( $boxes ).masonry( 'appended', $boxes ); 
+		var boxes = $('pwet');
+
+		container.append( $boxes ).masonry( 'appended', boxes ); 
         console.log("mathew");
 	}
  

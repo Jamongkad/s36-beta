@@ -32,7 +32,7 @@ return array(
                                                   , Array('company' => $company_info, 'feeds' => $feeds->html));        
     },
 
-    'GET /hosted/fullpage_partial/(:num)/(?:num)' => function($company_id, $page=False) {
+    'GET /hosted/fullpage_partial/(:num)/(:num?)' => function($company_id, $page=False) {
         $hosted = new Feedback\Services\HostedService($company_id);
         $hosted->page_number = $page;
         $hosted->limit = 10;
