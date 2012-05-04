@@ -60,9 +60,7 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->name);?>
 
-        	<strong><?=$company_name?></strong>  
-            <span><?=HTML::link('/', 'View all feedback')?></span>
-            
+        	<strong><?=$company_name?></strong>              
             <?if($company->domain):?>
                 <span class="right padfix">
                     <a href="http://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
