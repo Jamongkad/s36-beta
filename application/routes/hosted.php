@@ -26,7 +26,7 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_id);
         $hosted->limit = 10;
         $hosted->ignore_cache = True;
-        $feeds = $test->fetch_hosted_feedback(); 
+        $feeds = $hosted->fetch_hosted_feedback(); 
 
         $html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds->collection))->get();
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
