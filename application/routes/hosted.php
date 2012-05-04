@@ -22,8 +22,16 @@ return array(
     'GET /hosted/fullpage/(:num)' => function($company_id) use ($feedback) {
         $company = new DBCompany;
         $company_info = $company->get_company_info($company_id); 
+
+        $hosted = new Feedback\Services\HostedService($company_id);
+        $hosted->limit = 10;
+        $hosted->ignore_cache = True;
+        $feeds = $test->fetch_hosted_feedback(); 
+
+        $html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds->collection))->get();
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array('company' => $company_info));
+                                                  , Array('company' => $company_info, 'feeds' => $html));
+        
     },
 
 );
