@@ -22,11 +22,12 @@
 	/* end of document ready function. below are custom functions for this form */	
 
 	function add_boxes(counter){
-        console.log(counter);
+
 		var container = $('#theFeedbacks');
+        var page_counter = counter + 1;
 		/* ajax here */ 
         $.ajax({
-              url: '/hosted/fullpage_partial/<?=$company->companyid?>/' + 2
+              url: '/hosted/fullpage_partial/<?=$company->companyid?>/' + page_counter
             , success: function(msg) {
  		        var boxes = $(msg);               
          		container.append( boxes ).masonry( 'appended', boxes ); 
