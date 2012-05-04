@@ -28,10 +28,17 @@ return array(
         $hosted->ignore_cache = True;
         $feeds = $hosted->fetch_hosted_feedback(); 
 
-        $html = View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds->collection))->get();
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array('company' => $company_info, 'feeds' => $html));
-        
+                                                  , Array('company' => $company_info, 'feeds' => $feeds->html));        
     },
+
+    'GET /hosted/fullpage_partial/(:num)/(?:num)' => function($company_id, $page=False) {
+        $hosted = new Feedback\Services\HostedService($company_id);
+        $hosted->page_number = $page;
+        $hosted->limit = 10;
+        $hosted->ignore_cache = True;
+        $feeds = $hosted->fetch_hosted_feedback(); 
+        echo $feeds->html; 
+    }
 
 );
