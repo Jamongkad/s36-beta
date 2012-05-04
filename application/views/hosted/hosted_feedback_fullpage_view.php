@@ -193,9 +193,9 @@
                 </div>
             </div>
         </div>
-        <div id="theFeedbacks">
-        <?=$feeds?> 
+            <div id="theFeedbacks">
+                <?=$feeds?> 
+            </div>
         </div>
-    </div>
     </div>
 </div>
