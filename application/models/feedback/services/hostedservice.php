@@ -9,6 +9,7 @@ class HostedService {
     public $units = 4;
     public $limit = 8;
     public $offset = 0;
+    public $ignore_cache = False; 
     
     public function __construct($company_id) {
         $this->feedback = new DBFeedback;
@@ -16,7 +17,7 @@ class HostedService {
         $this->cache = new Halcyonic\Services\Cache;
     }
 
-    public function fetch_hosted_feedback($ignore_cache=False) {
+    public function fetch_hosted_feedback() {
 
         if(!$this->page_number) { $this->page_number = 1; }
         $this->offset = ($this->page_number - 1) * $this->limit;
@@ -32,7 +33,7 @@ class HostedService {
 
         $this->cache->generate_keys();
 
-        if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
+        if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
             echo "no cache";
             return $this->original_data();
         } else { 
@@ -52,7 +53,9 @@ class HostedService {
         $data_obj->number_of_pages = $feeds->number_of_pages;
         $data_obj->pages = $feeds->pages;
 
-        $this->cache->set_cache($data_obj);    
+        if(!$this->ignore_cache) {
+            $this->cache->set_cache($data_obj);               
+        }
 
         return $data_obj; 
     }
