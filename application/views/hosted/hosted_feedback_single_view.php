@@ -1,6 +1,6 @@
 <meta property="og:title" content="<?=$feedback->text?>"/> 
 <meta property="og:type" content="article"/> 
-<meta property="og:image" content="<?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>"/> 
+<meta property="og:image" content='<?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>'/> 
 <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
 <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
 <meta property="fb:app_id" content="<?=$fb_id?>"/>
