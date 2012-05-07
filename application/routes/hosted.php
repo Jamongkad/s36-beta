@@ -1,6 +1,7 @@
 <?php 
 
 $feedback = new Feedback\Repositories\DBFeedback;
+
 return array(
 
     'GET /hosted/form/(:any)' => function($widget_id) { 

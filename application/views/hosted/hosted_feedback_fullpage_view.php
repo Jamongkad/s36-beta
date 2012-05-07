@@ -25,7 +25,6 @@
 
 		var container = $('#theFeedbacks');
         var page_counter = counter + 1;
-		/* ajax here */ 
         $.ajax({
               url: '/hosted/fullpage_partial/<?=$company->companyid?>/' + page_counter
             , success: function(msg) {
@@ -35,7 +34,7 @@
         }) 
 	}
  
- function loadSocialButtons(id,target){
+    function loadSocialButtons(id,target){
 		
 		var link = 'http://www.36stories.com/stand-alone/'+id;
 		if(target.find('.twitter-button').length == 0){
