@@ -18,6 +18,14 @@
 				add_boxes(counter);		 
 		   }
 		});
+
+        $(document).delegate(".feedbackAuthorAvatar", "hover", function(e) {
+            if (e.type === "mouseenter")  {
+                $('.large-avatar', this).show();
+            } else { 
+                $('.large-avatar', this).hide();
+            }
+        });
 	});
 	/* end of document ready function. below are custom functions for this form */	
 
