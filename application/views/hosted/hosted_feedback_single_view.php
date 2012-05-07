@@ -1,3 +1,4 @@
+<meta name="description" content="<?=$feedback->text?>" />
 <meta property="og:title" content="<?=$feedback->text?>"/> 
 <meta property="og:description" content="<?=$feedback->text?>"/> 
 <meta property="og:type" content="article"/> 
