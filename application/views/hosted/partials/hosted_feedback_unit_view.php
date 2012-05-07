@@ -21,10 +21,15 @@
                     <h2><?=$feed->firstname?> <?=$feed->lastname?></h2>
                     <h4><?=$feed->position?>, <span><?=$feed->companyname?></span></h4>
                     <p><span style="float:left"><?=$feed->countryname?>, <?=$feed->city?></span>
-                       <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span></p>
-                    <!--
-                    <p><span class="feedbackDate"><?=$feed->date?></span></p>
-                    -->
+                       <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span></p> 
+                    <p>
+                        <span class="feedbackDate"> 
+                            <?
+                            $date = $feed->date;
+                            $unix = strtotime($date);
+                            echo date('M j, Y', $unix)?>
+                        </span>
+                    </p> 
                 </div>
             </div>
             <div class="feedbackText">
@@ -35,13 +40,7 @@
             </div>
         </div>
         <div class="feedbackBlock">
-            <div class="feedbackMeta">
-                <div class="feedbackTimestamp"> 
-                <?
-                $date = $feed->date;
-                $unix = strtotime($date);
-                echo date('M j, Y', $unix)?>
-                </div> 
+            <div class="feedbackMeta"> 
                 <div class="feedbackSocial">
 
                     <div class="feedbackSocialTwitter">
