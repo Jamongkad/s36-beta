@@ -14,7 +14,12 @@
         <meta property="og:title" content="<?=$feedback->text?>"/> 
         <meta property="og:description" content="<?=$feedback->text?>"/> 
         <meta property="og:type" content="article"/> 
-        <meta property="og:image" content='<?=URL::to('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
+        <?if($feeeback->avatar):?>
+            <meta property="og:image" content='<?=URL::to('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
+        <?else:?>
+            <meta property="og:image" content='<?=URL::to('img/36logo2.png')?>'/> 
+        <?endif?>
+
         <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
         <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
