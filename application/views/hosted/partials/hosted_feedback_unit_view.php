@@ -3,10 +3,18 @@
         <div class="feedbackBlock">
             <div class="feedbackAuthor">
                 <div class="feedbackAuthorAvatar">
-                    <?if($feed->avatar):?>
-                        <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>" width="150" height="150" />
+                    <?if($type == 'featured'):?>
+                        <?if($feed->avatar):?>
+                            <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>" width="150" height="150" />
+                        <?else:?>
+                            <img src="/img/blank-avatar.png" width="150" height="150" />
+                        <?endif?>
                     <?else:?>
-                        <img src="/img/blank-avatar.png" width="150" height="150" />
+                        <?if($feed->avatar):?>
+                            <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>" width="48" height="48" />
+                        <?else:?>
+                            <img src="/img/48x48-blank-avatar.jpg" width="48" height="48" />
+                        <?endif?>
                     <?endif?>
                 </div>
                 <div class="feedbackAuthorDetails">
