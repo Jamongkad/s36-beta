@@ -38,7 +38,7 @@
             <div class="feedbackMeta">
                 <div class="feedbackTimestamp"> 
                 <?
-                $date = $feedback->date;
+                $date = $feed->date;
                 $unix = strtotime($date);
                 echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
                 via <span><a href="#">36Stories</a></span></div> 
