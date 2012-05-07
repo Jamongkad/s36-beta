@@ -1,10 +1,36 @@
-<meta property="og:title" content="<?=$feedback->text?>"/> 
-<meta property="og:description" content="<?=$feedback->text?>"/> 
-<meta property="og:type" content="article"/> 
-<meta property="og:image" content='<?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
-<meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
-<meta property="og:site_name" content="36Stories: Feedback made easy."/> 
-<meta property="fb:app_id" content="<?=$fb_id?>"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:fb="http://ogp.me/ns/fb#">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
+        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+        <?=HTML::script('js/head.min.js')?>
+        <?=HTML::style('css/widget_master/flags_widget.css')?>
+        <?=HTML::style('css/widget_master/grids.css')?> 
+        <?=HTML::style('css/widget_master/hosted-single.css');?>
+
+        <meta property="og:title" content="<?=$feedback->text?>"/> 
+        <meta property="og:description" content="<?=$feedback->text?>"/> 
+        <meta property="og:type" content="article"/> 
+        <meta property="og:image" content='<?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
+        <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
+        <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
+        <meta property="fb:app_id" content="<?=$fb_id?>"/>
+
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+    </head>
+<body>
+<div id="fb-root"></div>
 
 <div id="headerWrapper">
 	<div id="headerContent">
@@ -66,7 +92,6 @@
         </div>
  
         <div class="block" style="height:40px;"></div>
-        <!--
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
                 <?if($feedback->company_logo):?>
@@ -108,5 +133,9 @@
         <div class="block" style="height:20px;"></div>
         <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
     </div>
-    -->
 </div>
+
+<?=HTML::script('js/masonry.js')?> 
+<?=HTML::script('js/modernizr.js')?> 
+</body>
+</html>
