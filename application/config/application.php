@@ -12,10 +12,12 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
-    'url' => $determine->d->host,
+    'url'        => $determine->d->host,
     'deploy_env' => $determine->d->deploy_env,
-    'env_name' => $determine->d->env_name,
-    'hostname' => $determine->d->hostname,
+    'env_name'   => $determine->d->env_name,
+    'hostname'   => $determine->d->hostname,
+    'fb_id'      => $determine->d->fb_id,
+    'fb_secret'  => $determine->d->fb_secret,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index

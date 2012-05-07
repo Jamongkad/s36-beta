@@ -1,15 +1,9 @@
-<meta property="og:title" content="Galit si Henry sa baboy"/> 
-
+<meta property="og:title" content="<?=$feedback->text?>"/> 
 <meta property="og:type" content="article"/> 
-
-<meta property="og:image" content="http://profile.ak.fbcdn.net/hprofile-ak-ash2/371033_1120186970_1243330383_n.jpg"/> 
-
-<meta property="og:url" content="http://webmumu.com/single_page_feedback/single.php"/> 
-
-<meta property="og:site_name" content="Webmumu - A portofolio of the pogi"/> 
-
+<meta property="og:image" content="<?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>"/> 
+<meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
+<meta property="og:site_name" content="36Stories: Feedback made easy."/> 
 <meta property="fb:app_id" content="259670914062599"/>
-
 
 <div id="headerWrapper">
 	<div id="headerContent">

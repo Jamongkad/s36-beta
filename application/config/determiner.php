@@ -26,6 +26,8 @@ class Determiner {
            );
            $obj->deploy_env = 'http://'.$subdomain.'.36storiesdev.localhost';
            $obj->env_name = 'local';
+           $obj->fb_id = '171323469605899';
+           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
            return $obj;
        }
        
@@ -40,6 +42,8 @@ class Determiner {
            );
            $obj->deploy_env = 'http://dev.gearfish.com';
            $obj->env_name = 'dev';
+           $obj->fb_id = '171323469605899';
+           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
            return $obj;
        }
        
@@ -55,6 +59,8 @@ class Determiner {
            //$obj->deploy_env = 'http://1.36storiesapp.com';
            $obj->deploy_env = 'http://feedback.36storiesapp.com';
            $obj->env_name = 'prod';
+           $obj->fb_id = '259670914062599';
+           $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
            return $obj;
        }
 
