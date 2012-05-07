@@ -43,7 +43,7 @@
             <?$company_name = ucfirst($feedback->company_name);?>
 
         	<strong><?=$company_name?></strong>  
-            <span><?=HTML::link('/', 'View all feedback')?></span>
+            <span><?=HTML::link('hosted/fullpage/'.$feedback->company_id, 'View all feedback')?></span>
             
             <?if($feedback->sitedomain):?>
                 <span class="right padfix">
