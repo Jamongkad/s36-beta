@@ -1,3 +1,5 @@
+<title><?=ucfirst($company->name);?> - Customer's Stories</title>
+
 <script type="text/javascript">
 	var counter = 0;	
 	$(document).ready(function(){
