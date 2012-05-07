@@ -1,4 +1,3 @@
-<meta name="description" content="<?=$feedback->text?>" />
 <meta property="og:title" content="<?=$feedback->text?>"/> 
 <meta property="og:description" content="<?=$feedback->text?>"/> 
 <meta property="og:type" content="article"/> 
@@ -67,6 +66,7 @@
         </div>
  
         <div class="block" style="height:40px;"></div>
+        <!--
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
                 <?if($feedback->company_logo):?>
@@ -108,4 +108,5 @@
         <div class="block" style="height:20px;"></div>
         <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
     </div>
+    -->
 </div>
