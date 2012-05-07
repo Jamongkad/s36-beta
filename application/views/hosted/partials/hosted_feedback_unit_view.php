@@ -22,14 +22,6 @@
                     <h4><?=$feed->position?>, <span><?=$feed->companyname?></span></h4>
                     <p><span style="float:left"><?=$feed->countryname?>, <?=$feed->city?></span>
                        <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span></p> 
-                    <p>
-                        <span class="feedbackDate"> 
-                            <?
-                            $date = $feed->date;
-                            $unix = strtotime($date);
-                            echo date('M j, Y', $unix)?>
-                        </span>
-                    </p> 
                 </div>
             </div>
             <div class="feedbackText">
@@ -38,11 +30,16 @@
                     <p><?=$feed->text?></p>
                 </div>
             </div>
+            <div class="feedbackDate"> 
+                <?
+                $date = $feed->date;
+                $unix = strtotime($date);
+                echo date('M j, Y', $unix)?>
+            </div>
         </div>
         <div class="feedbackBlock">
             <div class="feedbackMeta"> 
                 <div class="feedbackSocial">
-
                     <div class="feedbackSocialTwitter">
                         <a href="<?=URL::to('hosted/single/'.$feed->id)?>" class="twitter-share-button">Tweet</a>
                     </div>

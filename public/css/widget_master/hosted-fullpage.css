@@ -81,7 +81,7 @@ div{position:relative;}
 .featured .feedbackTextTail{background:url(../../img/featured-bubble-tail.png) no-repeat;width:22px;height:22px;position:absolute;top:20px;left:-22px;}
 .featured .feedbackTextBubble{background:#FFF;padding:20px;}
 .featured .feedbackMeta{text-align:right;}
-.featured .feedbackMeta{float:right}
+.featured .feedbackMeta{float:left}
 .featured .feedbackTimestamp,
 .featured .feedbackSocial,
 .featured .feedbackSocialTwitter,
@@ -89,6 +89,7 @@ div{position:relative;}
 .featured .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
 .featured .feedbackSocialTwitter{width:90px;}
 .featured .feedbackSocialFacebook{width:90px;}
+.featured .feedbackDate{position:absolute;bottom:-40px;right:0px;font-weight:bold;color:#7bb5e5;text-shadow:#FFF 0px 1px;}
 /* normal */
 .normal .feedbackAuthor{display:block;}
 .normal .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;}
@@ -102,7 +103,7 @@ div{position:relative;}
 .normal .feedbackTextTail{background:url(../../img/normal-bubble-tail.png) no-repeat;width:22px;height:22px;position:absolute;top:-18px;left:6px;}
 .normal .feedbackTextBubble{background:#efefef;padding:12px;margin-top:14px;}
 .normal .feedbackMeta{text-align:left;font-size:11px;color:#CCC;}
-.normal .feedbackDate{position:absolute;top:-10px;right:0px;}
+.normal .feedbackDate{position:absolute;top:-10px;right:0px;font-size:11px;color:#999;}
 .normal .feedbackMeta{padding-top:5px;}
 .normal .feedbackTimestamp,
 .normal .feedbackSocial,
