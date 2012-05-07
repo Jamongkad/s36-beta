@@ -36,7 +36,12 @@
         </div>
         <div class="feedbackBlock">
             <div class="feedbackMeta">
-                <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div> 
+                <div class="feedbackTimestamp"> 
+                <?
+                $date = $feedback->date;
+                $unix = strtotime($date);
+                echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
+                via <span><a href="#">36Stories</a></span></div> 
                 <div class="feedbackSocial">
 
                     <div class="feedbackSocialTwitter">
