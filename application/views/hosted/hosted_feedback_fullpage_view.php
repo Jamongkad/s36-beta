@@ -19,8 +19,6 @@
 		   }
 		});
 
-        $('.large-avatar').hide();
-
         $(document).delegate(".feedbackAuthorAvatar", "hover", function(e) {
             if (e.type === "mouseenter")  {
                 $('.large-avatar', this).show();
