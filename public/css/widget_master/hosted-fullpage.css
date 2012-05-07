@@ -80,8 +80,7 @@ div{position:relative;}
 .featured .feedbackText p:last-child{margin-bottom:0px;}
 .featured .feedbackTextTail{background:url(../../img/featured-bubble-tail.png) no-repeat;width:22px;height:22px;position:absolute;top:20px;left:-22px;}
 .featured .feedbackTextBubble{background:#FFF;padding:20px;}
-.featured .feedbackMeta{text-align:right;}
-.featured .feedbackMeta{float:left}
+.featured .feedbackMeta{text-align:right;float:left;bottom:-15px;}
 .featured .feedbackTimestamp,
 .featured .feedbackSocial,
 .featured .feedbackSocialTwitter,
