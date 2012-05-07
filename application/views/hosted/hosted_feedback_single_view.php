@@ -14,7 +14,7 @@
         <meta property="og:title" content="<?=$feedback->text?>"/> 
         <meta property="og:description" content="<?=$feedback->text?>"/> 
         <meta property="og:type" content="article"/> 
-        <?if($feeeback->avatar):?>
+        <?if($feedback->avatar):?>
             <meta property="og:image" content='<?=URL::to('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
         <?else:?>
             <meta property="og:image" content='<?=URL::to('img/36logo2.png')?>'/> 
