@@ -16,7 +16,7 @@
         <meta property="og:type" content="article"/> 
         <meta property="og:image" content='<?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
         <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
-        <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
+        <meta property="og:site_name" content="Powered by 36Stories."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
 
         <script>
@@ -99,35 +99,6 @@
                 <?else:?>
                     <?=HTML::image('img/company-logo-filler.jpg')?>
                 <?endif?>
-            </div>
-            <div class="companyDetails">
-            	<h2>Company Profile</h2>
-                <p>
-                    <?if($feedback->company_description):?>
-                        <?=$feedback->company_description?> 
-                    <?else:?>
-                        Acme in specializes in creating widgets for everyday use. Thousands of 
-                        customers worldwideuse Acme products and get better each and everyday. 
-                        Visit Acme's website today for more information. 
-                    <?endif?>
-                </p>
-
-				<br />
-                <div class="companyLinks">
-                    <?if($feedback->company_social_links):?> 
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?else:?>
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?endif?>
-                </div>
             </div>
         </div>
         <div class="block" style="height:20px;"></div>
