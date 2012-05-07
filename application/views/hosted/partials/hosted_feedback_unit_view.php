@@ -22,7 +22,9 @@
                     <h4><?=$feed->position?>, <span><?=$feed->companyname?></span></h4>
                     <p><span style="float:left"><?=$feed->countryname?>, <?=$feed->city?></span>
                        <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span></p>
+                    <!--
                     <p><span class="feedbackDate"><?=$feed->date?></span></p>
+                    -->
                 </div>
             </div>
             <div class="feedbackText">
