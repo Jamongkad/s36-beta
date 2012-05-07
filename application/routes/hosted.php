@@ -47,5 +47,4 @@ return array(
         $feeds = $hosted->fetch_hosted_feedback(); 
         echo $feeds->html; 
     }
-
 );
