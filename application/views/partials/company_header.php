@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7/jquery.min.js'></script>  
         <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+
 
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
@@ -31,7 +31,7 @@
         <?=HTML::style('css/widget_master/form-default.css')?>
     </head>
 <body>
-<div id="fb-root"></div>div>
+<div id="fb-root"></div>
 <script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
