@@ -40,7 +40,7 @@
                 <?
                 $date = $feed->date;
                 $unix = strtotime($date);
-                echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
+                echo date('F j, Y', $unix)?>
                 via <span><a href="#">36Stories</a></span></div> 
                 <div class="feedbackSocial">
 
