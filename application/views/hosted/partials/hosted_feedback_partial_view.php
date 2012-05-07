@@ -33,8 +33,8 @@
 
                             <div class="feedbackSocialTwitter"><a href="<?=URL::to('hosted/single/'.$coll->head->id)?>" class="twitter-share-button">Tweet</a></div>
                             <div class="feedbackSocialFacebook">
-                            <iframe src="http://www.facebook.com/plugins/like.php?href=<?=URL::to('hosted/single/'.$coll->head->id)?>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=<?=$fb_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
-                            </iframe>
+                            <fb:like href="<?=URL::to('hosted/single/'.$coll->head->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
+                            
                             </div>
                         </div>
                     </div>
@@ -76,8 +76,8 @@
                         <div class="feedbackSocial">
                             <div class="feedbackSocialTwitter"><a href="<?=URL::to('hosted/single/'.$child->id)?>" class="twitter-share-button">Tweet</a></div>
                             <div class="feedbackSocialFacebook">
-                            <iframe src="http://www.facebook.com/plugins/like.php?href=<?=URL::to('hosted/single/'.$child->id)?>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=<?=$fb_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
-                            </iframe>
+
+                            <fb:like href="<?=URL::to('hosted/single/'.$child->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
                             </div>
                         </div>
                     </div>
