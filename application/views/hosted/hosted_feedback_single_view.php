@@ -1,4 +1,5 @@
 <meta property="og:title" content="<?=$feedback->text?>"/> 
+<meta property="og:description" content="<?=$feedback->text?>"/> 
 <meta property="og:type" content="article"/> 
 <meta property="og:image" content='<?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>'/> 
 <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
