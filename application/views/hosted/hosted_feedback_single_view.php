@@ -16,7 +16,7 @@
         <meta property="og:type" content="article"/> 
         <meta property="og:image" content='<?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
         <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
-        <meta property="og:site_name" content="Powered by 36Stories."/> 
+        <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
 
         <script>
@@ -92,16 +92,6 @@
         </div>
  
         <div class="block" style="height:40px;"></div>
-        <div id="companyDetails" class="block">
-        	<div class="companyLogo">
-                <?if($feedback->company_logo):?>
-                    <?=HTML::image('img/company_logos/'.$feedback->company_logo)?>
-                <?else:?>
-                    <?=HTML::image('img/company-logo-filler.jpg')?>
-                <?endif?>
-            </div>
-        </div>
-        <div class="block" style="height:20px;"></div>
         <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
     </div>
 </div>
