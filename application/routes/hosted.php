@@ -17,8 +17,9 @@ return array(
 
     'GET /hosted/single/(:num)' => function($id) use ($feedback) { 
         $feedback = $feedback->pull_feedback_by_id($id);
-        print_r(Config::get('application.fb_id'));
-        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view', Array('feedback' => $feedback));
+        $fb_id = Config::get('application.fb_id');
+        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view'
+                                                  , Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
     'GET /hosted/fullpage/(:num)' => function($company_id) use ($feedback) {
