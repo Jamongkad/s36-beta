@@ -41,7 +41,7 @@
                 $date = $feed->date;
                 $unix = strtotime($date);
                 echo date('M j, Y', $unix)?>
-                via <span><a href="#">36Stories</a></span></div> 
+                </div> 
                 <div class="feedbackSocial">
 
                     <div class="feedbackSocialTwitter">
