@@ -30,6 +30,7 @@
             , success: function(msg) {
  		        var boxes = $(msg);               
          		container.append( boxes ).masonry( 'appended', boxes ); 
+                FB.XFBML.parse();
             }
         }) 
 	}
