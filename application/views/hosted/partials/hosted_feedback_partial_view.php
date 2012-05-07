@@ -30,11 +30,10 @@
                     <div class="feedbackMeta">
                         <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div> 
                         <div class="feedbackSocial">
-                            <!--
-                            <div class="feedbackSocialTwitter"><a href="http://webmumu.com" class="twitter-share-button">Tweet</a></div>
-                            -->
+
+                            <div class="feedbackSocialTwitter"><a href="<?=URL::to('hosted/single/'.$coll->head->id)?>" class="twitter-share-button">Tweet</a></div>
                             <div class="feedbackSocialFacebook">
-                            <iframe src="//www.facebook.com/plugins/like.php?href=http://webmumu.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
+                            <iframe src="//www.facebook.com/plugins/like.php?href=<?=URL::to('hosted/single/'.$coll->head->id)?>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=<?=$fb_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
                             </iframe>
                             </div>
                         </div>
@@ -75,11 +74,9 @@
                     <div class="feedbackMeta">
                         <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div> 
                         <div class="feedbackSocial">
-                            <!--
-                            <div class="feedbackSocialTwitter"><a href="http://webmumu.com" class="twitter-share-button">Tweet</a></div>
-                            -->
+                            <div class="feedbackSocialTwitter"><a href="<?=URL::to('hosted/single/'.$child->id)?>" class="twitter-share-button">Tweet</a></div>
                             <div class="feedbackSocialFacebook">
-                            <iframe src="//www.facebook.com/plugins/like.php?href=http://webmumu.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
+                            <iframe src="//www.facebook.com/plugins/like.php?href=<?=URL::to('hosted/single/'.$child->id)?>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=<?=$fb_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true">
                             </iframe>
                             </div>
                         </div>
