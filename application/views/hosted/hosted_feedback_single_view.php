@@ -59,7 +59,7 @@
             <div class="block" style="height:20px"></div>
             <div class="block">
             	<div class="theText">
-                	"<?=$feedback->text?>"
+                	<p>"<?=$feedback->text?>"</p>
                 </div>
             </div>
             <div class="block" style="height:20px"></div>
