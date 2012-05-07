@@ -42,6 +42,7 @@
          		container.append( boxes ).masonry( 'appended', boxes ); 
                 FB.XFBML.parse();
                 twttr.widgets.load();
+                $('.large-avatar').hide();
             }
         }) 
 	}
