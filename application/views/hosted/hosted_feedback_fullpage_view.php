@@ -114,5 +114,6 @@
                 <?=$feeds?> 
             </div>
         </div>
+        <div class="block" style="text-align:center;font-size:11px;color:#c2c3c4;">Powered by 36Stories</div>
     </div>
 </div>

@@ -1,46 +1,6 @@
 <?foreach($collection as $coll):?>
     <?if(property_exists($coll, 'head')):?>
-        <div class="feedback featured">
-            <div class="feedbackContents">
-                <div class="feedbackBlock">
-                    <div class="feedbackAuthor">
-                        <div class="feedbackAuthorAvatar">
-                            <?if($coll->head->avatar):?>
-                                <img src="/uploaded_cropped/150x150/<?=$coll->head->avatar?>" width="150" height="150" />
-                            <?else:?>
-                                <img src="/img/blank-avatar.png" width="150" height="150" />
-                            <?endif?>
-                        </div>
-                        <div class="feedbackAuthorDetails">
-                            <h2><?=$coll->head->firstname?> <?=$coll->head->lastname?></h2>
-                            <h4><?=$coll->head->position?>, <span><?=$coll->head->companyname?></span></h4>
-                            <p><span style="float:left"><?=$coll->head->countryname?>, <?=$coll->head->city?></span>
-                               <span class="flag flag-<?=strtolower($coll->head->countrycode)?>"></span></p>
-                            <p> <span class="feedbackDate"><?=$coll->head->date?></span></p>
-                        </div>
-                    </div>
-                    <div class="feedbackText">
-                        <div class="feedbackTextTail"></div>
-                        <div class="feedbackTextBubble">
-                            <p><?=$coll->head->text?></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feedbackBlock">
-                    <div class="feedbackMeta">
-                        <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div> 
-                        <div class="feedbackSocial">
-
-                            <div class="feedbackSocialTwitter"><a href="<?=URL::to('hosted/single/'.$coll->head->id)?>" class="twitter-share-button">Tweet</a></div>
-                            <div class="feedbackSocialFacebook">
-                            <fb:like href="<?=URL::to('hosted/single/'.$coll->head->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
-                            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?=View::make('hosted/partials/hosted_feedback_unit_view', Array('feed' => $coll->head, 'type' => 'featured'))?>
     <?endif?>
 
     <?foreach($coll->children as $child):?> 
