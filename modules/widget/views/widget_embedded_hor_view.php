@@ -46,8 +46,9 @@
 		});
 		/* load the facebook and twitter social buttons when the share icon is clicked */
 		$('.share').click(function(){
-			var link = '<?=URL::to('hosted/single/')?>' + $(this).attr('feed-id');		
-			var social_box = $('#feedbackid-'+id).find('.theSocialButtons');
+            var feedid = $(this).attr('feed-id');		
+			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
+			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
 			loadSocialButtons(link, social_box);
 		});	
 		/* add the slide effect on the element */
