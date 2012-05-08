@@ -54,7 +54,6 @@
 			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
 			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
 
-			//loadSocialButtons(link, social_box);
             S36Display.load_socialbuttons(link, social_box);
 		});	
 		/* add the slide effect on the element */

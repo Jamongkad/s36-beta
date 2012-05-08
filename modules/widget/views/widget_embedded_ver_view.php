@@ -1,10 +1,13 @@
 <?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
+<?=HTML::script('js/widget/display/master.js')?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		/* show the solo feedback when the feedbacktext class is clicked */
 		$('.theFeedbackText').click(function(){
 			var id	 = $(this).attr('feed-id');
 			var feedback_container = $('#feedbackid-'+id);
+			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
+
 			var meta = {
 				text 	 : feedback_container.find('.theFullFeedbackText').val(),
 				flag 	 : feedback_container.find('.theFullFeedbackText').attr('data-flag'),
@@ -12,7 +15,8 @@
 				name 	 : feedback_container.find('.theFeedbackAuthorName').html(),
 				company  : feedback_container.find('.theFeedbackAuthorCompany').html(),
 				location : feedback_container.find('.theFeedbackAuthorLocation').html(),
-				date 	 : feedback_container.find('.theFeedbackDate').html()
+				date 	 : feedback_container.find('.theFeedbackDate').html(),
+                link     : link 
 			}
 				
 			$('#theSoloBox').fadeIn('fast');
@@ -29,8 +33,7 @@
 				api.destroy();
 			});
 			$('#theLoopBox').fadeIn('fast');
-			$('.thePagination').fadeIn('fast');
-			
+			$('.thePagination').fadeIn('fast');			
 		});
 		/* hide the following elements on document ready */
 		$('#theSoloBox').hide();
@@ -46,9 +49,11 @@
 		});
 		/* load the facebook and twitter social buttons when the share icon is clicked */
 		$('.share').click(function(){
-			var id = $(this).attr('feed-id');		
-			var social_box = $('#feedbackid-'+id).find('.theSocialButtons');
-			loadSocialButtons(id,social_box);
+            var feedid = $(this).attr('feed-id');		
+			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
+			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
+
+            S36Display.load_socialbuttons(link, social_box);
 		});	
 		/* add the slide effect on the element */
 		var slides = $('#theSlides');
@@ -59,8 +64,8 @@
 				pause : 1,
 				prev : '#prev',
 				next : '#next',
-				before: beforeCycle, // this hides visible social buttons before a transition is made
-				after: showOverFlow		   // this displays the overflow of a feedback div to display the like button's iframe
+				before: S36Display.before_cycle,//this hides visible social buttons before a transition is made
+				after: S36Display.show_overflow//this displays the overflow of a feedback div to display the like button's iframe
 		});
 		/* apply a mousewheel scroll event on the slides */
 		slides.mousewheel(function(event, delta){
@@ -69,17 +74,18 @@
 			return false;
 		});
 	});
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=154673521284687";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+
 <div id="widget">
 	<div id="widgetHeader">
     	<div class="theWidgetTitle">
