@@ -27,7 +27,7 @@
 		}
 		target.slideToggle('fast');
 	}
-    /*	
+
 	function createPagination(curr,next,opts,fwd){
 		
 		var obj 		= $(next);	  
@@ -89,7 +89,7 @@
 		});
 
 	}
-    */
+
 	
 	function beforeCycle(curr,next,opts,fwd){
 		hideSocialButtons();
