@@ -90,5 +90,29 @@ var S36Display = new function() {
 
     this.show_overflow = function() {
  	    $('.feedBoxes').css('overflow','visible');       
+    },
+
+    this.display_solofeedback = function(link) {
+		$('.theFeedbackText').click(function(){
+			var feedid	 = $(this).attr('feed-id');
+			var feedback_container = $('#feedbackid-'+feedid);
+			var link = link + '/' + feedid;
+
+			var meta = {
+				text 	 : feedback_container.find('.theFullFeedbackText').val(),
+				flag 	 : feedback_container.find('.theFullFeedbackText').attr('data-flag'),
+				avatar 	 : feedback_container.find('.theFeedbackAvatar img').attr('src'),
+				name 	 : feedback_container.find('.theFeedbackAuthorName').html(),
+				company  : feedback_container.find('.theFeedbackAuthorCompany').html(),
+				location : feedback_container.find('.theFeedbackAuthorLocation').html(),
+				date 	 : feedback_container.find('.theFeedbackDate').html(),
+                link     : link 
+			}			
+
+			$('#theSoloBox').fadeIn('fast');
+			$('#theLoopBox').fadeOut('fast');
+			$('.thePagination').fadeOut('fast');
+			assignSoloFeedback(meta);
+		}); 
     }
 }

@@ -3,7 +3,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		/* show the solo feedback when the feedbacktext class is clicked */
-
+        /*
 		$('.theFeedbackText').click(function(){
 			var feedid	 = $(this).attr('feed-id');
 			var feedback_container = $('#feedbackid-'+feedid);
@@ -25,7 +25,9 @@
 			$('.thePagination').fadeOut('fast');
 			assignSoloFeedback(meta);
 		});
-		
+        */
+        var link = '<?=URL::to('hosted/single')?>';
+	    S36Display.display_solofeedback(link);
 		/* return to the loopbox when the back link is clicked */
 		$('.back').click(function(){
 			$('#theSoloBox').fadeOut('fast',function(){
