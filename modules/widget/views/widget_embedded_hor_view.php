@@ -29,8 +29,7 @@
 				api.destroy();
 			});
 			$('#theLoopBox').fadeIn('fast');
-			$('.thePagination').fadeIn('fast');
-			
+			$('.thePagination').fadeIn('fast');			
 		});
 		/* hide the following elements on document ready */
 		$('#theSoloBox').hide();
@@ -50,7 +49,8 @@
 			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
 			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
 
-			loadSocialButtons(link, social_box);
+			//loadSocialButtons(link, social_box);
+            S36Display.load_socialbuttons(link, social_box);
 		});	
 		/* add the slide effect on the element */
 		var slides = $('#theSlides');
@@ -318,3 +318,4 @@
 <![endif]-->
 <?=$css?>
 <?=$js?>
+<?=HTML::script('js/widget/display/master.js')?>
