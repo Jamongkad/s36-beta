@@ -12,10 +12,14 @@ var S36Display = new function() {
 									.append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
 				  );
 			
-			twttr.widgets.load(); // parse the twitter widgets
-			FB.XFBML.parse();	  // parse the facebook widgets
+             that.load_socialxml();
 		}
 		target.slideToggle('fast'); 
+    },
+
+    this.load_socialxml = function() { 
+        twttr.widgets.load(); // parse the twitter widgets
+        FB.XFBML.parse();	  // parse the facebook widgets
     },
 
     this.before_cycle = function(curr, next, opts, fwd) { 
@@ -113,6 +117,7 @@ var S36Display = new function() {
 			$('#theLoopBox').fadeOut('fast');
 			$('.thePagination').fadeOut('fast');
 			assignSoloFeedback(meta);
+            that.load_socialxml();
 		}); 
     }
 }
