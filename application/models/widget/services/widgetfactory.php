@@ -17,7 +17,6 @@ class WidgetFactory {
 
        if ($option->widget == 'embedded') {
            echo "embedded";
-           Helpers::dump($option);
            if ($option->embed_block_type == 'embed_block_x') {
                $widget = new HorizontalEmbedWidget($option);
                return $widget;
