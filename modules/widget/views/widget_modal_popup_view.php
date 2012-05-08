@@ -1,4 +1,5 @@
 <?=HTML::style('css/widget_master/embedded_widget_master_template.css')?>
+<?=HTML::script('js/widget/display/master.js')?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var $slide = $('#theSoloSlides').cycle({
@@ -16,8 +17,8 @@
 				pause : 1,
 				prev : '#prev',
 				next : '#next',
-				before: beforeCycle, // this hides visible social buttons before a transition is made
-				after: showOverFlow	 // this displays the overflow of a feedback div to display the like button's iframe
+				before: S36Display.before_cycle, // this hides visible social buttons before a transition is made
+				after: S36Display.show_overflow	 // this displays the overflow of a feedback div to display the like button's iframe
 		});
 		$('#theSlides').mousewheel(function(event,delta){
 			if (delta > 0){$('#theSlides').cycle('prev');}
@@ -42,9 +43,11 @@
 		});
 		/* load the facebook and twitter social buttons when the share icon is clicked */
 		$('.share').click(function(){
-			var id = $(this).attr('feed-id');		
-			var social_box = $('#feedbackid-'+id).find('.theSocialButtons');
-			loadSocialButtons(id,social_box);
+            var feedid = $(this).attr('feed-id');		
+			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
+			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
+
+            S36Display.load_socialbuttons(link, social_box);
 		});	
 
 	})
