@@ -4,8 +4,8 @@
 	$(document).ready(function(){
 		/* show the solo feedback when the feedbacktext class is clicked */
 		$('.theFeedbackText').click(function(){
-			var id	 = $(this).attr('feed-id');
-			var feedback_container = $('#feedbackid-'+id);
+			var feedid	 = $(this).attr('feed-id');
+			var feedback_container = $('#feedbackid-'+feedid);
 			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
 
 			var meta = {
