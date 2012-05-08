@@ -55,10 +55,11 @@ class Helpers {
     );
 
     public static $display_themes = Array( 
-            'aglow'=>'Aglow'
-          , 'silver'=>'Silver'
-          , 'chrome'=>'Chrome'
-          , 'classic'=>'Classic'
+            'aglow'  => 'Aglow'
+          , 'silver' => 'Silver'
+          , 'chrome' => 'Chrome'
+          , 'classic'=> 'Classic'
+          , 'dark'   => 'Dark'
     );
 
     public static function request() {
