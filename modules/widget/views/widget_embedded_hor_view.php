@@ -46,9 +46,9 @@
 		});
 		/* load the facebook and twitter social buttons when the share icon is clicked */
 		$('.share').click(function(){
-			var id = $(this).attr('feed-id');		
+			var link = '<?=URL::to('hosted/single/')?>' + $(this).attr('feed-id');		
 			var social_box = $('#feedbackid-'+id).find('.theSocialButtons');
-			loadSocialButtons(id,social_box);
+			loadSocialButtons(link, social_box);
 		});	
 		/* add the slide effect on the element */
 		var slides = $('#theSlides');
@@ -69,9 +69,7 @@
 			return false;
 		});
 	});
-</script>
 
-<script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -80,6 +78,7 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+
 <div id="fb-root"></div>
 <div id="widget">
 	<!-- The Widget Header -->
@@ -225,8 +224,10 @@
                                                 <div class="theFeedbackShare">
                                                     <div class="grids">
                                                         <div class="g1of3">
-                                                            <div class="theShareIcon"><a href="javascript:;" feed-id="'.$r->id.'" class="share" style="display: inline; ">
-                                                            </a>&nbsp;</div>
+                                                            <div class="theShareIcon">
+                                                            <a href="javascript:;" feed-id="'.$r->id.'" class="share" style="display: inline; "></a>
+                                                            &nbsp;
+                                                            </div>
                                                         </div>
                                                         <div class="g2of3">
                                                             <div class="theFeedbackDate small align-right">'.$date.'</div>

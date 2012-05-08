@@ -11,9 +11,8 @@
 		$('.soloFeedbackAuthor').find('.flag').removeClass().addClass("flag flag-" + meta.flag);
 	}
 	
-	function loadSocialButtons(id,target){
+	function loadSocialButtons(link, target){
 		
-		var link = '/hosted/single/'+id;
 		if(target.find('.twitter-button').length == 0){
 			target.append(
 						$('<div />').addClass('twitter-button')
