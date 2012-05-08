@@ -43,27 +43,8 @@
                 FB.XFBML.parse();
                 twttr.widgets.load();
             }
-        }) 
+        });
 	}
- 
-    function loadSocialButtons(id,target){
-		
-		var link = 'http://www.36stories.com/stand-alone/'+id;
-		if(target.find('.twitter-button').length == 0){
-			target.append(
-						$('<div />').addClass('twitter-button')
-									.append('<a href="'+link+'" class="twitter-share-button">Tweet</a>'))
-				  .append(
-						$('<div />').addClass('facebook-button')
-									.append('<iframe src="//www.facebook.com/plugins/like.php?href='+link+'&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>')
-				  );
-			
-			twttr.widgets.load(); // parse the twitter widgets
-			FB.XFBML.parse();	  // parse the facebook widgets
-		}
-		target.slideToggle('fast');
-	}
-
 </script>
 
 <div id="headerWrapper">
