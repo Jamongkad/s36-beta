@@ -10,11 +10,13 @@ class WidgetFactory {
 
    public function load_widget($option) {
        if ($option->widget == 'form') {
+           echo "form";
            $widget = new SubmissionWidget($option);     
            return $widget;
        }
 
        if ($option->widget == 'embedded') {
+           echo "embedded";
            if ($option->embed_block_type == 'embed_block_x') {
                $widget = new HorizontalEmbedWidget($option);
                return $widget;
@@ -27,6 +29,7 @@ class WidgetFactory {
        }
 
        if ($option->widget == 'modal') {    
+           echo "modal";
            $widget = new ModalEmbedWidget($option);
            return $widget;
        }

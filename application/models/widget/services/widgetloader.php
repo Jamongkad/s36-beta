@@ -60,7 +60,7 @@ class WidgetLoader {
                 $option->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : null;
                 $option->fixed_data = $fixed_data;
                 $option->total_rows = $data->total_rows;
-                Helpers::dump($option);
+
                 return $wf->load_widget($option); 
             }
 
