@@ -97,10 +97,13 @@ var S36Display = new function() {
     },
 
     this.display_solofeedback = function(link) {
+
+        var linky = link;
+
 		$('.theFeedbackText').click(function(){
 			var feedid	 = $(this).attr('feed-id');
 			var feedback_container = $('#feedbackid-'+feedid);
-			var link = link + '/' + feedid;
+			var link = linky + '/' + feedid;
 
 			var meta = {
 				text 	 : feedback_container.find('.theFullFeedbackText').val(),
@@ -119,5 +122,18 @@ var S36Display = new function() {
 			assignSoloFeedback(meta);
             that.load_socialxml();
 		}); 
+    },
+
+    this.show_sharebuttons = function(link) { 
+
+        var linky = link;
+
+		$('.share').click(function(){
+            var feedid = $(this).attr('feed-id');		
+			var link = linky + '/' + feedid;
+			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
+
+            that.load_socialbuttons(link, social_box);
+		});	
     }
 }
