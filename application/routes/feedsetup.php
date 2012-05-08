@@ -129,8 +129,9 @@ return array(
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
-        $cl = new Widget\Services\ClientRender($widget);
-
+        //$cl = new Widget\Services\ClientRender($widget);  
+        Helpers::dump($widget);
+        /*
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
           , 'widget_type'     => get_parent_class($widget)
@@ -141,6 +142,7 @@ return array(
           , 'embed_js_code'   => $wl->load_widget_init_js_code()
           , 'iframe_code'     => $wl->load_iframe_code()
         ));
+        */
     }),
 
     'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) use ($dbw) {  
