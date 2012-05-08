@@ -131,7 +131,6 @@ return array(
         $widget = $wl->load();
         //$cl = new Widget\Services\ClientRender($widget);  
         Helpers::dump($widget);
-        Helpers::dump($wl);
         /*
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
