@@ -5,8 +5,10 @@
 		/* show the solo feedback when the feedbacktext class is clicked */
 
 		$('.theFeedbackText').click(function(){
-			var id	 = $(this).attr('feed-id');
-			var feedback_container = $('#feedbackid-'+id);
+			var feedid	 = $(this).attr('feed-id');
+			var feedback_container = $('#feedbackid-'+feedid);
+			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
+
 			var meta = {
 				text 	 : feedback_container.find('.theFullFeedbackText').val(),
 				flag 	 : feedback_container.find('.theFullFeedbackText').attr('data-flag'),
@@ -14,7 +16,8 @@
 				name 	 : feedback_container.find('.theFeedbackAuthorName').html(),
 				company  : feedback_container.find('.theFeedbackAuthorCompany').html(),
 				location : feedback_container.find('.theFeedbackAuthorLocation').html(),
-				date 	 : feedback_container.find('.theFeedbackDate').html()
+				date 	 : feedback_container.find('.theFeedbackDate').html(),
+                link     : link 
 			}			
 			$('#theSoloBox').fadeIn('fast');
 			$('#theLoopBox').fadeOut('fast');
@@ -62,8 +65,8 @@
 				pause : 1,
 				prev : '#prev',
 				next : '#next',
-				before: S36Display.before_cycle,//beforeCycle, // this hides visible social buttons before a transition is made
-				after: S36Display.show_overflow//showOverFlow		   // this displays the overflow of a feedback div to display the like button's iframe
+				before: S36Display.before_cycle,//this hides visible social buttons before a transition is made
+				after: S36Display.show_overflow//this displays the overflow of a feedback div to display the like button's iframe
 		});
 		/* apply a mousewheel scroll event on the slides */
 		slides.mousewheel(function(event,delta){
@@ -286,7 +289,7 @@
                                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>                            
                                 <div class="facebook-button">
-                                    <div class="fb-like" data-href="http://webmumu.com" data-send="true" data-width="450" data-show-faces="false"></div>
+
                                 </div>                                                        
                             </div>                                               
 

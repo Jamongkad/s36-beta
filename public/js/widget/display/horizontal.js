@@ -8,4 +8,8 @@ function assignSoloFeedback(meta) {
     $('.soloFeedbackAuthorLocation').html(meta.location);
     $('.soloFeedbackDate').html(meta.date);
     $('.soloFeedbackAuthor').find('.flag').removeClass().addClass("flag flag-" + meta.flag);
+    $('.facebook-button').append( 
+        $('<div />')
+        .append('<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
+    )
 }	
