@@ -51,17 +51,22 @@ class WidgetLoader {
                    $fixed_data[] = $rows;
                 }
 
+                /* why expend memory??
                 $option = new StdClass;
                 $option->form_text  = $obj->form_text;
                 $option->children   = $obj->children;
                 $option->theme_type = $obj->theme_type;
                 $option->widget = $obj->embed_type;
                 $option->widgetkey = $obj->widgetkey;
-                $option->embed_block_type = 'pwet';//property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : 'embed_block_x';
+                $option->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : 'embed_block_x';
                 $option->fixed_data = $fixed_data;
                 $option->total_rows = $data->total_rows;
-                Helpers::dump($option);
-                return $wf->load_widget($option); 
+                */
+
+                $obj->widget = $obj->embed_type;
+                $obj->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : 'embed_block_x';
+                Helpers::dump($obj);
+                return $wf->load_widget($obj); 
             }
 
             if($obj->widget_type == 'submit') {
