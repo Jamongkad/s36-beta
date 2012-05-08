@@ -312,10 +312,10 @@
         </div>
     </div>
 </div>
-
+<?=HTML::script('js/widget/display/master.js')?>
 <!--[if IE]>
 <?=HTML::style('css/widget_master/ie_fix.css')?>
 <![endif]-->
 <?=$css?>
 <?=$js?>
-<?=HTML::script('js/widget/display/master.js')?>
+
