@@ -64,11 +64,10 @@ class WidgetLoader {
                 */
                 
                 $obj->widget = $obj->embed_type;
-                $obj->embed_block_type = (property_exists($obj, 'embed_block_type') && $obj->embed_block_type )? $obj->embed_block_type : 'embed_block_x';
+                $obj->embed_block_type = (property_exists($obj, 'embed_block_type') && $obj->embed_block_type) ? $obj->embed_block_type : 'embed_block_x';
                 $obj->fixed_data = $fixed_data; 
                 $obj->total_rows = $data->total_rows;
                 
-                Helpers::dump($obj);
                 return $wf->load_widget($obj); 
             }
 
