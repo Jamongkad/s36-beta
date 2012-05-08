@@ -17,6 +17,11 @@ var S36Display = new function() {
 		}
 		target.slideToggle('fast'); 
     },
+
+    this.before_cycle = function(curr, next, opts, fwd) { 
+		hideSocialButtons();
+		createPagination(curr,next,opts,fwd);
+    }
 }
 	function loadSocialButtons(link, target){
 		

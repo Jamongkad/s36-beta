@@ -62,7 +62,7 @@
 				pause : 1,
 				prev : '#prev',
 				next : '#next',
-				before: beforeCycle, // this hides visible social buttons before a transition is made
+				before: S36Display.before_cycle,//beforeCycle, // this hides visible social buttons before a transition is made
 				after: showOverFlow		   // this displays the overflow of a feedback div to display the like button's iframe
 		});
 		/* apply a mousewheel scroll event on the slides */
