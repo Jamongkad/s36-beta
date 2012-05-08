@@ -1,6 +1,6 @@
 <?php namespace Widget\Services;
 
-use Config
+use Config, Helpers
   , Widget\Entities\SubmissionWidget
   , Widget\Entities\HorizontalEmbedWidget
   , Widget\Entities\VerticalEmbedWidget
@@ -17,7 +17,7 @@ class WidgetFactory {
 
        if ($option->widget == 'embedded') {
            echo "embedded";
-           print_r($option->embed_block_type);
+           Helpers::dump($option);
            if ($option->embed_block_type == 'embed_block_x') {
                $widget = new HorizontalEmbedWidget($option);
                return $widget;
