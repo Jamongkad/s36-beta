@@ -15,7 +15,7 @@ class HorizontalEmbedWidget extends DisplayWidgets {
         $this->embed_block_type = $options->embed_block_type;
         $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_horizontal_style.css');
-        $this->js = HTML::script('js/widget/horizontal.js'); 
+        $this->js = HTML::script('js/widget/display/horizontal.js'); 
     }
 
     public function render_data() { 

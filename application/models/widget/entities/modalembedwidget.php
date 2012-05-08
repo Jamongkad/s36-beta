@@ -15,7 +15,7 @@ class ModalEmbedWidget extends DisplayWidgets {
         $this->embed_block_type = $options->embed_block_type;
         $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_popup_style.css');
-        $this->js = HTML::script('js/widget/popup.js');  
+        $this->js = HTML::script('js/widget/display/popup.js');  
     } 
 
     public function render_data() {

@@ -50,19 +50,7 @@ class WidgetLoader {
                    $rows->rules = (object)$feed_rules;
                    $fixed_data[] = $rows;
                 }
-
-                /* why expend memory??
-                $option = new StdClass;
-                $option->form_text  = $obj->form_text;
-                $option->children   = $obj->children;
-                $option->theme_type = $obj->theme_type;
-                $option->widget = $obj->embed_type;
-                $option->widgetkey = $obj->widgetkey;
-                $option->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : 'embed_block_x';
-                $option->fixed_data = $fixed_data;
-                $option->total_rows = $data->total_rows;
-                */
-                
+ 
                 $obj->widget = $obj->embed_type;
                 $obj->embed_block_type = (property_exists($obj, 'embed_block_type') && $obj->embed_block_type) ? $obj->embed_block_type : 'embed_block_x';
                 $obj->fixed_data = $fixed_data; 
