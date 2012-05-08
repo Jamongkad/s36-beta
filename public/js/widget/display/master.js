@@ -135,5 +135,5 @@ var S36Display = new function() {
 
             that.load_socialbuttons(link, social_box);
 		});	
-    }
+    },
 }

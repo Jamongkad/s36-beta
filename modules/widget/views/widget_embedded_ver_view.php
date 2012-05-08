@@ -28,15 +28,6 @@
 			$(this).find('.theSocialButtons').fadeOut('fast');
 		});
 		/* load the facebook and twitter social buttons when the share icon is clicked */
-        /*
-		$('.share').click(function(){
-            var feedid = $(this).attr('feed-id');		
-			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
-			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
-
-            S36Display.load_socialbuttons(link, social_box);
-		});	
-        */
         S36Display.show_sharebuttons(link);
 		/* add the slide effect on the element */
 		var slides = $('#theSlides');
