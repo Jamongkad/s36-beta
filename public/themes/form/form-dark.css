@@ -119,7 +119,7 @@ a.cropbtn:hover{
 	#s36_whattowrite ul{margin:0px;list-style:none;padding:0px;font-size:11px;}
 /* trackbar styles */
 #s36_trackbar{
-	background:url(/images/dark/dark-trackbar.png) no-repeat;
+	background:url(images/dark/dark-trackbar.png) no-repeat;
 	width:388px;
 	height:36px;
 	position:relative;
@@ -127,7 +127,7 @@ a.cropbtn:hover{
 
 /* rating page */
 #rate_e,#rate_g,#rate_a,#rate_p,#rate_b{float:left;height:33px;position:relative;cursor:pointer;}
-#track_ball{width:30px;height:33px;position:absolute;background:url(/images/dark/trackball.png) no-repeat;left:-1px;}
+#track_ball{width:30px;height:33px;position:absolute;background:url(images/dark/trackball.png) no-repeat;left:-1px;}
 #rate_e,#rate_b{width:48px;}
 #rate_g,#rate_a,#rate_p{width:97px;}
 
