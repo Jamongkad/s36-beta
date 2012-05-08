@@ -65,6 +65,7 @@ class WidgetLoader {
 
                 $obj->widget = $obj->embed_type;
                 $obj->embed_block_type = property_exists($obj, 'embed_block_type') ? $obj->embed_block_type : 'embed_block_x';
+                $obj->fixed_data = $fixed_data;
                 Helpers::dump($obj);
                 return $wf->load_widget($obj); 
             }
