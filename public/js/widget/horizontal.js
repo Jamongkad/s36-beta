@@ -20,8 +20,7 @@
 									.append('<a href="'+link+'" class="twitter-share-button">Tweet</a>'))
 				  .append(
 						$('<div />').addClass('facebook-button')
-									.append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>');
-                    
+									.append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
 				  );
 			
 			twttr.widgets.load(); // parse the twitter widgets
