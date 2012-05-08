@@ -20,7 +20,7 @@ class WidgetLoader {
 
         if($obj) {
             if($obj->widget_type == 'display') {
-
+                echo "display";
                 $params = Array(
                     'company_id'   => $obj->company_id
                   , 'site_id'      => $obj->site_id
