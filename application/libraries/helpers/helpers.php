@@ -60,6 +60,9 @@ class Helpers {
           , 'chrome' => 'Chrome'
           , 'classic'=> 'Classic'
           , 'dark'   => 'Dark'
+          , 'alum'   => 'Aluminum'
+          , 'contrast' => 'Contrast'
+          , 'matte'  => 'Matte'
     );
 
     public static function request() {
