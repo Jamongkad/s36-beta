@@ -62,7 +62,6 @@
 }
 </style>
 
-
 <body style="background:#000">
 <!-- facebook scripts -->
 <div id="fb-root"></div>
@@ -112,19 +111,33 @@
                         <input type="hidden" id="rating" value="5" />
 
                         <div id="track_ball"></div>
+                        <!--
                         <div id="rate_e"></div>
                         <div id="rate_g"></div>
                         <div id="rate_a"></div>
                         <div id="rate_p"></div>
+                        -->
+
                         <div id="rate_b"></div>
+                        <div id="rate_p"></div>
+                        <div id="rate_a"></div>
+                        <div id="rate_g"></div>
+                        <div id="rate_e"></div>
                     </div>
                     <div id="s36_ratings">
                         <ul>
+                            <!--
                             <li class="excellent">EXCELLENT</li>
                             <li class="good">GOOD</li>
                             <li class="average">AVERAGE</li> 
                             <li class="poor">POOR</li>
+                            -->
+
                             <li class="bad">BAD</li>
+                            <li class="poor">POOR</li>
+                            <li class="average">AVERAGE</li> 
+                            <li class="good">GOOD</li>
+                            <li class="excellent">EXCELLENT</li>
                         </ul>
                     </div>
                     <br />
