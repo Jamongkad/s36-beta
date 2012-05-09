@@ -144,5 +144,5 @@ var S36Display = new function() {
 			$(this).find('.share').fadeOut('fast');
 			$(this).find('.theSocialButtons').fadeOut('fast');
 		});
-    },
+    }
 }
