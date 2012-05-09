@@ -50,6 +50,14 @@
          		container.append( boxes ).masonry( 'appended', boxes ); 
                 FB.XFBML.parse();
                 twttr.widgets.load();
+
+                $('.feedback').hover(function(){
+                    $(this).find('.feedbackSocialTwitter').fadeIn();
+                    $(this).find('.feedbackSocialFacebook').fadeIn();
+                },function(){
+                    $(this).find('.feedbackSocialTwitter').fadeOut();
+                    $(this).find('.feedbackSocialFacebook').fadeOut();
+                });
             }
         });
 	}
