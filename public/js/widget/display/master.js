@@ -104,7 +104,7 @@ var S36Display = new function() {
 			var feedid	 = $(this).attr('feed-id');
 			var feedback_container = $('#feedbackid-'+feedid);
 			var link = linky + '/' + feedid;
-
+            console.log(link);
 			var meta = {
 				text 	 : feedback_container.find('.theFullFeedbackText').val(),
 				flag 	 : feedback_container.find('.theFullFeedbackText').attr('data-flag'),
@@ -119,7 +119,7 @@ var S36Display = new function() {
 			$('#theSoloBox').fadeIn('fast');
 			$('#theLoopBox').fadeOut('fast');
 			$('.thePagination').fadeOut('fast');
-			//assignSoloFeedback(meta);
+
             that.transfer_solofeedback_metadata(meta);
 		}); 
     },
