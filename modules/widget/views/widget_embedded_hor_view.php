@@ -283,4 +283,3 @@
 <?=HTML::style('css/widget_master/ie_fix.css')?>
 <![endif]-->
 <?=$css?>
-<?=$js?>

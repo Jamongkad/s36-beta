@@ -15,13 +15,11 @@ class HorizontalEmbedWidget extends DisplayWidgets {
         $this->embed_block_type = $options->embed_block_type;
         $this->children  = $options->children;
         $this->css  = HTML::style('themes/widget/'.$options->theme_type.'/css/'.$options->theme_type.'_horizontal_style.css');
-        $this->js = HTML::script('js/widget/display/horizontal.js'); 
     }
 
     public function render_data() { 
         $widget_view = 'widget::widget_embedded_hor_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
-            'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css, 'js' => $this->js
-        ))->get();
+            'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css))->get();
     }
 }
