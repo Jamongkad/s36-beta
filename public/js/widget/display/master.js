@@ -136,4 +136,13 @@ var S36Display = new function() {
             that.load_socialbuttons(link, social_box);
 		});	
     },
+
+    this.sharebutton_hover = function() { 
+		$('.theFeedback').hover(function(){
+			$(this).find('.share').fadeIn();
+		},function(){
+			$(this).find('.share').fadeOut('fast');
+			$(this).find('.theSocialButtons').fadeOut('fast');
+		});
+    }
 }

@@ -2,6 +2,8 @@
 <?=HTML::script('js/widget/display/master.js')?>
 <script type="text/javascript">
 	$(document).ready(function(){
+
+        var link = '<?=URL::to('hosted/single')?>';
 		var $slide = $('#theSoloSlides').cycle({
 				fx:     'fade', 
 				speed:  '1000', 
@@ -27,28 +29,17 @@
 		});
 		
 		$('.theFeedbackText').click(function(){
-				var indexid = $(this).parent().parent().parent().attr('index-id');
-				$slide.cycle(parseInt(indexid));
+            var indexid = $(this).parent().parent().parent().attr('index-id');
+            $slide.cycle(parseInt(indexid));
 		});
 		
 		$('.theSocialButtons').hide();
 		$('.share').hide();
 		
 		/* show the share icon when hovering on the feedback block */
-		$('.theFeedback').hover(function(){
-			$(this).find('.share').fadeIn();
-		},function(){
-			$(this).find('.share').fadeOut('fast');
-			$(this).find('.theSocialButtons').fadeOut('fast');
-		});
+        S36Display.sharebutton_hover();
 		/* load the facebook and twitter social buttons when the share icon is clicked */
-		$('.share').click(function(){
-            var feedid = $(this).attr('feed-id');		
-			var link = '<?=URL::to('hosted/single')?>' + '/' + feedid;
-			var social_box = $('#feedbackid-' + feedid).find('.theSocialButtons');
-
-            S36Display.load_socialbuttons(link, social_box);
-		});	
+        S36Display.show_sharebuttons(link);
 
 	})
 </script>

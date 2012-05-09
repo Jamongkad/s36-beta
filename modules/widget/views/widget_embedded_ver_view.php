@@ -21,12 +21,7 @@
 		$('.share').hide();
 		
 		/* show the share icon when hovering on the feedback block */
-		$('.theFeedback').hover(function(){
-			$(this).find('.share').fadeIn();
-		},function(){
-			$(this).find('.share').fadeOut('fast');
-			$(this).find('.theSocialButtons').fadeOut('fast');
-		});
+        S36Display.sharebutton_hover();
 		/* load the facebook and twitter social buttons when the share icon is clicked */
         S36Display.show_sharebuttons(link);
 		/* add the slide effect on the element */
