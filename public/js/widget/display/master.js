@@ -136,8 +136,14 @@ var S36Display = new function() {
         $('.soloFeedbackSocialButtons .facebook-button').html( 
             '<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>'
         );
-
-        $('.soloFeedbackSocialButtons .twitter-button').html('<a href="' + meta.link + '" class="twitter-share-button">'+ meta.link +'</a>');
+        
+        var twitter = $('a').attr({
+            'data-url': meta.link
+          , 'href': meta.link
+          , 'class': 'twitter-share-button'
+          , 'data-text': meta.text
+        })
+        $('.soloFeedbackSocialButtons .twitter-button').html(twitter);
 
         that.load_socialxml();
     },
