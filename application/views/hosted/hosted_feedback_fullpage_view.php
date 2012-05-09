@@ -28,6 +28,14 @@
                 $('.large-avatar', this).hide();
             }
         });
+
+        $('.feedback').hover(function(){
+            $(this).find('.feedbackSocialTwitter').fadeIn();
+            $(this).find('.feedbackSocialFacebook').fadeIn();
+        },function(){
+            $(this).find('.feedbackSocialTwitter').fadeOut();
+            $(this).find('.feedbackSocialFacebook').fadeOut();
+        });
 	});
 	/* end of document ready function. below are custom functions for this form */	
 

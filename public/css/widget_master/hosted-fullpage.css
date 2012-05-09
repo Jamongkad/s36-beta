@@ -8,6 +8,7 @@ body{
 	font-size:12px;
 	background:#FFF;
 }
+
 a{color:#4894b3;text-decoration:none;}
 a:hover{color:#54a1c0;}
 div{position:relative;}
@@ -158,3 +159,7 @@ div{position:relative;}
     top: -1%;
     z-index: 999999;
 }
+
+.featured .feedbackSocial{height:20px;}
+.normal .feedbackSocial{height:20px;}
+.feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook{display:none;}
