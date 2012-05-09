@@ -5,12 +5,7 @@ var S36Display = new function() {
     this.load_socialbuttons = function(link, target) {
 		if(target.find('.twitter-button').length == 0){
 
-            var twitter = $('a').attr({
-                'data-url': link
-              , 'href': link
-              , 'class': 'twitter-share-button'
-              //, 'data-text': meta.text
-            })
+            var twitter = '<a class="twitter-share-button" href="'+meta.link+'" data-url="'+meta.link+'"></a>';
 			target.append(twitter)
 				  .append(
                       $('<div />').addClass('facebook-button')
@@ -141,17 +136,9 @@ var S36Display = new function() {
         $('.soloFeedbackSocialButtons .facebook-button').html( 
             '<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>'
         );
-        
-        /*
-        var twitter = $('a').attr({
-            'data-url': meta.link
-          , 'href': meta.link
-          , 'class': 'twitter-share-button'
-          , 'data-text': meta.text
-        })
-        console.log(twitter);
-        */
-        var twitter = '<a style="display: none;" class="twitter-share-button" href="'+meta.link+'" data-url="'+meta.link+'" data-text="'+meta.text+'"></a>';
+
+        var data_text = meta.text.replace(/(<([^>]+)>)/ig,"");
+        var twitter = '<a class="twitter-share-button" href="'+meta.link+'" data-url="'+meta.link+'" data-text="'+data_text+'"></a>';
         $('.soloFeedbackSocialButtons .twitter-button').html(twitter);
 
         that.load_socialxml();
