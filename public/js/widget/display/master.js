@@ -133,11 +133,11 @@ var S36Display = new function() {
         $('.soloFeedbackAuthorLocation').html(meta.location);
         $('.soloFeedbackDate').html(meta.date);
         $('.soloFeedbackAuthor').find('.flag').removeClass().addClass("flag flag-" + meta.flag);
-        $('.facebook-button').html( 
+        $('.soloFeedbackSocialButtons .facebook-button').html( 
             '<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>'
-        )
+        );
 
-        $('.twitter-button').html('<a href="' + meta.link + '" class="twitter-share-button">Tweet</a>')
+        $('.soloFeedbackSocialButtons .twitter-button').html('<a href="' + meta.link + '" class="twitter-share-button">Tweet</a>');
 
         that.load_socialxml();
     },
