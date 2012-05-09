@@ -5,22 +5,22 @@
 
         var link = '<?=URL::to('hosted/single')?>';
 		var $slide = $('#theSoloSlides').cycle({
-				fx:     'fade', 
-				speed:  '1000', 
-				timeout:'5000',
-				pause : 0,
-				timeoutFn: addScroll
+            fx:     'fade', 
+            speed:  '1000', 
+            timeout:'5000',
+            pause : 0,
+            timeoutFn: addScroll
 		});
 		
 		$('#theSlides').cycle({
-				fx:      'scrollHorz', 
-				speed:   '500', 
-				timeout: '5000',
-				pause : 1,
-				prev : '#prev',
-				next : '#next',
-				before: S36Display.before_cycle, // this hides visible social buttons before a transition is made
-				after: S36Display.show_overflow	 // this displays the overflow of a feedback div to display the like button's iframe
+            fx:      'scrollHorz', 
+            speed:   '500', 
+            timeout: '5000',
+            pause : 1,
+            prev : '#prev',
+            next : '#next',
+            before: S36Display.before_cycle, // this hides visible social buttons before a transition is made
+            after: S36Display.show_overflow	 // this displays the overflow of a feedback div to display the like button's iframe
 		});
 		$('#theSlides').mousewheel(function(event,delta){
 			if (delta > 0){$('#theSlides').cycle('prev');}
@@ -40,7 +40,6 @@
         S36Display.sharebutton_hover();
 		/* load the facebook and twitter social buttons when the share icon is clicked */
         S36Display.show_sharebuttons(link);
-
 	})
 </script>
 <div id="fb-root"></div>
