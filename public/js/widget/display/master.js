@@ -10,6 +10,8 @@ var S36Display = new function() {
                 twitter + $('<div />').addClass('facebook-button')
                             .append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
 			);
+
+            console.log(target);
 			
             that.load_socialxml();
 		}
