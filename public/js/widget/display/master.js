@@ -104,7 +104,6 @@ var S36Display = new function() {
 			var feedid	 = $(this).attr('feed-id');
 			var feedback_container = $('#feedbackid-'+feedid);
 			var link = linky + '/' + feedid;
-            console.log(link);
 			var meta = {
 				text 	 : feedback_container.find('.theFullFeedbackText').val(),
 				flag 	 : feedback_container.find('.theFullFeedbackText').attr('data-flag'),
@@ -134,15 +133,11 @@ var S36Display = new function() {
         $('.soloFeedbackAuthorLocation').html(meta.location);
         $('.soloFeedbackDate').html(meta.date);
         $('.soloFeedbackAuthor').find('.flag').removeClass().addClass("flag flag-" + meta.flag);
-        $('.facebook-button').append( 
-            $('<div />')
-            .append('<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
+        $('.facebook-button').html( 
+            '<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>'
         )
 
-        $('.twitter-button').append( 
-            $('<div />')
-            .append('<a href="' + meta.link +'" class="twitter-share-button">Tweet</a>')
-        )
+        $('.twitter-button').html('<a href="' + meta.link + '" class="twitter-share-button">Tweet</a>')
 
         that.load_socialxml();
     },
