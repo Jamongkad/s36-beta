@@ -187,7 +187,7 @@
                                 <div class="form-designs grids">  
                                 <?php
                                     $form_slides = '';
-                                    $units = 7;
+                                    $units = 5;
                                     $ctr = 0;
                                     $max = count($form_themes);
                                     
