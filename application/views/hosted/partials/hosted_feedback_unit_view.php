@@ -42,7 +42,10 @@
             <div class="feedbackMeta"> 
                 <div class="feedbackSocial">
                     <div class="feedbackSocialTwitter">
-                        <a href="<?=URL::to('hosted/single/'.$feed->id)?>" class="twitter-share-button">Tweet</a>
+                        <a href="<?=URL::to('hosted/single/'.$feed->id)?>" 
+                           data-url="<?=URL::to('hosted/single/'.$feed->id)?>" 
+                           data-text="<?=strip_tags($feed->text)?>"
+                           class="twitter-share-button">Tweet</a>
                     </div>
                     <div class="feedbackSocialFacebook">
                     <fb:like href="<?=URL::to('hosted/single/'.$feed->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like>
