@@ -121,7 +121,6 @@ var S36Display = new function() {
 			$('.thePagination').fadeOut('fast');
 			//assignSoloFeedback(meta);
             that.transfer_solofeedback_metadata(meta);
-            that.load_socialxml();
 		}); 
     },
 
@@ -144,6 +143,8 @@ var S36Display = new function() {
             $('<div />')
             .append('<a href="' + meta.link +'" class="twitter-share-button">Tweet</a>')
         )
+
+        that.load_socialxml();
     },
 
     this.show_sharebuttons = function(link) { 
