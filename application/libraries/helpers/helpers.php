@@ -52,6 +52,7 @@ class Helpers {
           , 'mandarin'=>'Mandarin'
           , 'sleek-orange'=>'Sleek Orange'
           , 'thin-red'=>'Thin Red' 
+          , 'dark' => 'Dark'
     );
 
     public static $display_themes = Array( 
