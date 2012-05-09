@@ -4,13 +4,18 @@ var S36Display = new function() {
 
     this.load_socialbuttons = function(link, target) {
 		if(target.find('.twitter-button').length == 0){
-			target.append(
-						$('<div />').addClass('twitter-button')
-									.append('<a href="'+link+'" class="twitter-share-button">Tweet</a>'))
+
+            var twitter = $('a').attr({
+                'data-url': link
+              , 'href': link
+              , 'class': 'twitter-share-button'
+              //, 'data-text': meta.text
+            })
+			target.append(twitter)
 				  .append(
-						$('<div />').addClass('facebook-button')
-									.append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
-				  );
+                      $('<div />').addClass('facebook-button')
+                                  .append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
+				   );
 			
              that.load_socialxml();
 		}
@@ -143,6 +148,7 @@ var S36Display = new function() {
           , 'class': 'twitter-share-button'
           , 'data-text': meta.text
         })
+        console.log(twitter);
         $('.soloFeedbackSocialButtons .twitter-button').html(twitter);
 
         that.load_socialxml();
