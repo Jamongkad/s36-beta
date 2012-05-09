@@ -5,7 +5,7 @@ var S36Display = new function() {
     this.load_socialbuttons = function(link, target) {
 		if(target.find('.twitter-button').length == 0){
 
-            var twitter = '<a class="twitter-share-button" href="'+meta.link+'" data-url="'+meta.link+'"></a>';
+            var twitter = '<a class="twitter-share-button" href="'+link+'" data-url="'+link+'"></a>';
 			target.append(twitter)
 				  .append(
                       $('<div />').addClass('facebook-button')
