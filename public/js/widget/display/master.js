@@ -142,6 +142,7 @@ var S36Display = new function() {
             '<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>'
         );
         
+        /*
         var twitter = $('a').attr({
             'data-url': meta.link
           , 'href': meta.link
@@ -149,6 +150,8 @@ var S36Display = new function() {
           , 'data-text': meta.text
         })
         console.log(twitter);
+        */
+        var twitter = '<a style="display: none;" class="twitter-share-button" href="'+meta.link+'" data-url="'+meta.link+'" data-text="'+meta.text+'"></a>';
         $('.soloFeedbackSocialButtons .twitter-button').html(twitter);
 
         that.load_socialxml();
