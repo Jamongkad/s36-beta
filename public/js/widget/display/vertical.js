@@ -12,4 +12,9 @@ function assignSoloFeedback(meta){
         $('<div />')
         .append('<fb:like href="' + meta.link + '" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
     )
+
+    $('.twitter-button').append( 
+        $('<div />')
+        .append('<a href="' + meta.link +'" class="twitter-share-button">Tweet</a>')
+    )
 }	
