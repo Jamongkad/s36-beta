@@ -6,8 +6,8 @@ var S36Display = new function() {
 		if(target.find('.twitter-button').length == 0){
 
             var twitter = '<a class="twitter-share-button" href="'+link+'" data-url="'+link+'"></a>';
-			target.append(twitter)
-				  .append(
+			target.html(twitter)
+				  .html(
                       $('<div />').addClass('facebook-button')
                                   .append('<fb:like href="'+link+'" send="false" layout="button_count" width="100" show_faces="false"></fb:like>')
 				   );
