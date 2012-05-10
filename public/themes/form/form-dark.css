@@ -134,10 +134,17 @@ a.cropbtn:hover{
 #s36_ratings{color:#adafb0;font-size:12px;font-weight:bold;}
 #s36_ratings ul{margin:0px;padding:0px;position:relative;height:25px;}
 #s36_ratings ul li	   	  {list-style:none;display:inline;margin:0px;padding:0px;position:absolute;top:0px;}
+/*
 #s36_ratings ul li.good	  {left:97px;}
 #s36_ratings ul li.average{left:180px;}
 #s36_ratings ul li.poor	  {left:276px;}
 #s36_ratings ul li.bad	  {left:365px;}
+*/
+
+#s36_ratings ul li.poor	  {left:97px;}
+#s36_ratings ul li.average{left:180px;}
+#s36_ratings ul li.good	  {left:276px;}
+#s36_ratings ul li.excellent {left:338px;}
 
 /* permission page */
 #s36_permissions{background:#900;}
