@@ -42,6 +42,7 @@ return array (
 
     'GET /settings/company'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
         $user = S36Auth::user();
+        Helpers::dump("Mathew");
         return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
             'user' => $user
         ));
