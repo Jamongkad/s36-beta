@@ -15,17 +15,17 @@
 
     <div class="label"><label>Social Link 1: </label></div>
     <div class="input-field">
-        <input type="text" name="social_link[]" class="regular-text" value=""/> 
+        <input type="text" name="social_links[]" class="regular-text" value=""/> 
     </div>
 
     <div class="label"><label>Social Link 2: </label></div>
     <div class="input-field">
-        <input type="text" name="social_link[]" class="regular-text" value=""/> 
+        <input type="text" name="social_links[]" class="regular-text" value=""/> 
     </div>
 
     <div class="label"><label>Social Link 3: </label></div>
     <div class="input-field">
-        <input type="text" name="social_link[]" class="regular-text" value=""/> 
+        <input type="text" name="social_links[]" class="regular-text" value=""/> 
     </div>
 
     <br/><br/><br/><br/>
