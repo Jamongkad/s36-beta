@@ -49,7 +49,7 @@ return array (
     }),
 
     'POST /settings/save_companysettings' => function() {
-        Helpers::dump(Input::get());
+        //Helpers::dump(Input::get());
         Helpers::dump($_FILES);
     },
 
