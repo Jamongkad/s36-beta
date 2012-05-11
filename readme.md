@@ -1,1 +1,1 @@
-### 36Stories - StarFox build 0.2.1
+### 36Stories - StarFox build 0.2.2
