@@ -6,7 +6,7 @@ return array(
 
     'GET /hosted/form/(:any)' => function($widget_id) { 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
-        $company = new DBCompany;
+        $company = new Company\Repositories\DBCompany;
         $widget = $wl->load();
         $company_info = $company->get_company_info($widget->company_id);
 
@@ -26,7 +26,7 @@ return array(
     },
 
     'GET /hosted/fullpage/(:num)' => function($company_id) use ($feedback) {
-        $company = new DBCompany;
+        $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_id); 
 
         $hosted = new Feedback\Services\HostedService($company_id);
