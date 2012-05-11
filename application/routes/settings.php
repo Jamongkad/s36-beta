@@ -27,7 +27,7 @@ return array (
     },
 
     'POST /settings/savesettings' => function() {
-        $company = new DBCompany;
+        $company = new Company\Repositories\DBCompany;
 
         $post = (object)Input::get();
         $company->update_company_emails($post);
