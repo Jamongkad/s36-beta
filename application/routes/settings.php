@@ -49,8 +49,7 @@ return array (
     }),
 
     'POST /settings/save_companysettings' => function() {
-        //Helpers::dump(Input::get());
-        Helpers::dump($_FILES);
+        Helpers::dump(Input::get());
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
