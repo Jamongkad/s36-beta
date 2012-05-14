@@ -11,15 +11,18 @@ class CompanySettings {
         $this->files = $files; 
         $filename = $this->files['your_photo']['name'];
         $upload_dir = "/var/www/s36-upload-images/uploaded_tmp/";
-        if($this->files['your_photo']['name']) { 
+        $final_file = $upload_dir.$filename;
+
+        //check if photo is a part of the files array
+        if($filename) { 
             if($this->files['your_photo']['error'] > 0) {
                 echo "Return Code: " . $this->files['your_photo']['error'] . "<br/>";
-            } else if(file_exists($upload_dir.$filename)) {
+            } else if(file_exists($final_file)) {
                 echo $filename . " already exists.";
             } else {
-                $move = move_uploaded_file($this->files['your_photo']['tmp_name'], $upload_dir.$filename);           
+                $move = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
                 if($move) {
-                    $imagesize = getimagesize($upload_dir.$filename);
+                    $imagesize = getimagesize($final_file);
                     Helpers::dump($imagesize);
                     list($width, $height, $type, $attr) = $imagesize;
                     Helpers::dump($width);    
