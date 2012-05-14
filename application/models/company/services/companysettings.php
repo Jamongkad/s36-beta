@@ -50,9 +50,7 @@ class CompanySettings {
             if($this->filename) {
                 $post_data->logo = $this->filename;     
             }
-            
-            //do some validation here...
-            
+             
             $db = new DBCompany;
             $db->save_settings($post_data);
         }
