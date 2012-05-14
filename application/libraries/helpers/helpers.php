@@ -318,6 +318,7 @@ class Helpers {
             $years = floor  ($before / 60 / 60 / 24 / 30 / 12);
             return $years <= 1 ? "one year ago" : $years." years ago";
         }
+
         return $time;       
     }
 }

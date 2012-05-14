@@ -33,8 +33,7 @@
 
     <p><strong>Company Description</strong><br />
     <span class="light-blue">a short description about your company</span></p>
-    <textarea class="regular-text" rows="20" name="company_desc">
-    </textarea> 
+    <textarea class="regular-text" rows="20" name="company_desc"></textarea> 
     <br/>
 
     <div class="grids">
