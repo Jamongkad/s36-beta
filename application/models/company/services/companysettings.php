@@ -52,7 +52,7 @@ class CompanySettings {
             }
              
             $db = new DBCompany;
-            $db->save_settings($post_data);
+            $db->update_companyinfo($post_data);
         }
     }
 
