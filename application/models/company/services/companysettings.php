@@ -5,7 +5,7 @@ use Company\Repositories\DBCompany;
 
 class CompanySettings {
     
-    private $files;
+    private $files, $filename;
 
     public function upload_companylogo($files)  {
         $this->files = $files; 
@@ -33,7 +33,7 @@ class CompanySettings {
                             echo "Failed to copy file to company logo folder"; 
                         } else {
                             unlink($final_file);     
-                            return $filename;
+                            $this->filename = $filename;
                         } 
                     }              
 
@@ -42,5 +42,10 @@ class CompanySettings {
         } else {
             echo "No photo";
         }
+    }
+
+    public function get_filename() {
+        if($this->filename)     
+            return $this->filename;
     }
 }

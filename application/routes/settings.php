@@ -52,7 +52,9 @@ return array (
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
         $company_settings->upload_companylogo($_FILES);
+        $filename = $company_settings->get_filename();
         Helpers::dump(Input::get());
+        Helpers::dump($filename);
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
