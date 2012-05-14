@@ -3,6 +3,7 @@
 $category = new DBCategory;
 
 return array (
+
     'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category) {
         $user = S36Auth::user();
         return View::of_layout()->partial('contents', 'settings/settings_index_view', Array(

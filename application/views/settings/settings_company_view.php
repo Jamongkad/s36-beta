@@ -30,8 +30,7 @@
         <input type="text" name="social_links[]" class="regular-text" value=""/> 
     </div>
 
-    <br/><br/><br/><br/>
-    <br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/>
 
     <p><strong>Company Description</strong><br />
     <span class="light-blue">a short description about your company</span></p>
