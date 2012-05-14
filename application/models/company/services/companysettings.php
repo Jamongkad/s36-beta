@@ -28,12 +28,13 @@ class CompanySettings {
 
                     if($width !== 250 and $height !== 180) {
                         echo "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
-                        unlink($final_file);
                     } else {
                         if(!copy($final_file, "/var/www/s36-upload-images/company_logos/".$filename)) {
                             echo "Failed to copy file to company logo folder"; 
                         }
                     }              
+
+                    unlink($final_file);
                 } 
             }
         } else {
