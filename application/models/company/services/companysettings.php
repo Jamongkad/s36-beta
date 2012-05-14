@@ -11,6 +11,11 @@ class CompanySettings {
         $this->files = $files; 
         $filename = $this->files['your_photo']['name'];
         $upload_dir = "/var/www/s36-upload-images/uploaded_tmp/";
+        if($this->files['your_photo']['name']) { 
+            echo "Yes photo";
+        } else {
+            echo "No photo";
+        }
         /*
         if($this->files['your_photo']['error'] > 0) {
             echo "Return Code: " . $this->files['your_photo']['error'] . "<br/>";
