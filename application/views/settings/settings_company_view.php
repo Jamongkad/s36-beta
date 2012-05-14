@@ -6,11 +6,11 @@
 </div>
 <div class="block">
 
-    <div class="label"><label>Company Name</label></div>
+    <div class="label"><label>Company Name: </label></div>
     <div class="input-field">
         <input type="text" class="regular-text" name="company_name" value="<?=$user->companyname?>" style="width:200px"/>
     </div>
-
+    <br/><br/>
     <p><strong>Company Social Links</strong><br/>
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
     </p>
