@@ -17,8 +17,8 @@ class DBCompany extends S36DataObject {
             ));
     }
 
-    public function save_settings() {
-        
+    public function save_settings($post) {
+        return $post; 
     }
 
     public function get_company_info($company_id) {

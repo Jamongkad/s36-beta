@@ -47,8 +47,7 @@ class CompanySettings {
         if($this->errors == False) { 
             //if no errors then let's save to DB
             $db = new DBCompany;
-            Helpers::dump(Input::get());    
-            Helpers::dump($db);
+            Helpers::dump($db->save_settings(Input::get()));
         }
     }
 
