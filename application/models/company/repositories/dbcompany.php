@@ -18,6 +18,7 @@ class DBCompany extends S36DataObject {
     }
 
     public function save_settings($post) {
+        Helpers::dump($post);
         return $post; 
     }
 
