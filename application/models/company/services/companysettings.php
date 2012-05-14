@@ -47,6 +47,9 @@ class CompanySettings {
         if($this->errors == False) { 
             //if no errors then let's save to DB
             $post_data = (object)Input::get();
+            if($this->filename) {
+                $post_data->logo = $this->filename;     
+            }
             $db = new DBCompany;
             Helpers::dump($db->save_settings($post_data));
         }
