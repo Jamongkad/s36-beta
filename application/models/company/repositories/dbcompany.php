@@ -18,6 +18,7 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_companyinfo($post) {
+        //do an update 
         Helpers::dump($post);
         return $post; 
     }
