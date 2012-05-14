@@ -5,7 +5,7 @@ use Company\Repositories\DBCompany;
 
 class CompanySettings {
     
-    private $files, $filename;
+    private $files, $filename, $errors;
 
     public function upload_companylogo($files)  {
         $this->files = $files; 
@@ -16,9 +16,9 @@ class CompanySettings {
         //check if photo is a part of the files array
         if($filename) { 
             if($this->files['your_photo']['error'] > 0) {
-                echo "Return Code: " . $this->files['your_photo']['error'] . "<br/>";
+                $this->errors = "Return Code: " . $this->files['your_photo']['error'] . "<br/>";
             } else if(file_exists($final_file)) {
-                echo $filename . " already exists.";
+                $this->errors = $filename . " already exists.";
             } else {
                 $move = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
                 if($move) {
@@ -26,22 +26,26 @@ class CompanySettings {
                     list($width, $height, $type, $attr) = $imagesize;
 
                     if($width !== 250 and $height !== 180) {
-                        echo "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
+                        $this->errors = "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
                         unlink($final_file);
                     } else {
                         if(!copy($final_file, "/var/www/s36-upload-images/company_logos/".$filename)) {
-                            echo "Failed to copy file to company logo folder"; 
+                            $this->errors = "Failed to copy file to company logo folder"; 
                         } else {
                             unlink($final_file);     
                             $this->filename = $filename;
                         } 
                     }              
-
                 } 
             }
         } else {
-            echo "No photo";
+            $this->errors = "No photo";
         }
+    }
+
+    public function get_errors() { 
+        if($this->errors)     
+            return $this->errors;
     }
 
     public function get_filename() {
