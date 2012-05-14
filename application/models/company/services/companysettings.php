@@ -19,16 +19,13 @@ class CompanySettings {
             } else {
                 $move = move_uploaded_file($this->files['your_photo']['tmp_name'], $upload_dir.$filename);           
                 if($move) {
-                    Helpers::dump(getimagesize($upload_dir.$filename));
-                    /*
-                    list($width, $height, $type, $attr, $mime) = getimagesize($upload_dir.$filename);
+                    $imagesize = getimagesize($upload_dir.$filename);
+                    Helpers::dump($imagesize);
+                    list($width, $height, $type, $attr) = $imagesize;
                     Helpers::dump($width);    
                     Helpers::dump($height);
                     Helpers::dump($type);
                     Helpers::dump($attr);
-                    Helpers::dump($mime);
-                    */
-
                 } 
             }
         } else {
