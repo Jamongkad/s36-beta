@@ -18,7 +18,7 @@ class CompanySettings {
         if($filename) { 
             if($this->files['your_photo']['error'] > 0) {
                 $this->errors = "Return Code: " . $this->files['your_photo']['error'];
-            } else if(file_exists($final_file)) {
+            } else if(file_exists($final_file) or file_exists("/var/www/s36-upload-images/company_logos/".$filename)) {
                 $this->errors = $filename . " already exists.";
             } else {
                 $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
