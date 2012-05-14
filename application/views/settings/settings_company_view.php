@@ -5,9 +5,11 @@
     <h3>COMPANY PROFILE SETTINGS</h3>
 </div>
 <div class="block">
-    <p><strong>Company Name</strong></p>
-    <input type="text" class="regular-text" name="company_name" value="<?=$user->companyname?>" style="width:200px"/>
-    <br />
+
+    <div class="label"><label>Company Name</label></div>
+    <div class="input-field">
+        <input type="text" class="regular-text" name="company_name" value="<?=$user->companyname?>" style="width:200px"/>
+    </div>
 
     <p><strong>Company Social Links</strong><br/>
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
