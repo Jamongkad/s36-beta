@@ -39,9 +39,7 @@ class CompanySettings {
                     }              
                 } 
             }
-        } else {
-            $this->errors = "No photo";
-        }
+        }     
     }
 
     public function save_companysettings() {
