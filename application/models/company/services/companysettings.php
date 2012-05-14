@@ -18,7 +18,9 @@ class CompanySettings {
                 echo $filename . " already exists.";
             } else {
                 $move = move_uploaded_file($this->files['your_photo']['tmp_name'], $upload_dir.$filename);           
-                Helpers::dump($move);
+                if($move) {
+                     Helpers::dump(getimagesize($upload_dir.$filename));    
+                } 
             }
         } else {
             echo "No photo";
