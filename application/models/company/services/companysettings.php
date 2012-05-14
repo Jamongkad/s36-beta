@@ -18,10 +18,8 @@ class CompanySettings {
         if($filename) { 
             if($this->files['your_photo']['error'] > 0) {
                 $this->errors = "Return Code: " . $this->files['your_photo']['error'];
-                return false;
             } else if(file_exists($final_file)) {
                 $this->errors = $filename . " already exists.";
-                return false;
             } else {
                 $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
                 if($move_attempt == True) {
@@ -31,11 +29,9 @@ class CompanySettings {
                     if($width !== 250 and $height !== 180) {
                         $this->errors = "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
                         unlink($final_file);
-                        return false;
                     } else {
                         if(!copy($final_file, "/var/www/s36-upload-images/company_logos/".$filename)) {
                             $this->errors = "Failed to copy file to company logo folder"; 
-                            return false;
                         } else {
                             unlink($final_file);     
                             $this->filename = $filename;
@@ -49,7 +45,9 @@ class CompanySettings {
     }
 
     public function save_companysettings() {
-        Helpers::dump(Input::get());    
+        if($this->errors == False) { 
+            Helpers::dump(Input::get());    
+        }
     }
 
     public function get_errors() { 
