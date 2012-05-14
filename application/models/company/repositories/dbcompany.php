@@ -17,6 +17,10 @@ class DBCompany extends S36DataObject {
             ));
     }
 
+    public function save_settings() {
+        
+    }
+
     public function get_company_info($company_id) {
         $sql = "
             SELECT 

@@ -45,7 +45,10 @@ class CompanySettings {
 
     public function save_companysettings() {
         if($this->errors == False) { 
+            //if no errors then let's save to DB
+            $db = new DBCompany;
             Helpers::dump(Input::get());    
+            Helpers::dump($db);
         }
     }
 
