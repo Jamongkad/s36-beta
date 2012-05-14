@@ -54,10 +54,10 @@ return array (
         $company_settings->upload_companylogo($_FILES);
         $filename = $company_settings->get_filename();
         $errors = $company_settings->get_errors();  
-        $company_settings->save_companysettings();
-
+        $save = $company_settings->save_companysettings();
         Helpers::dump($filename);
         Helpers::dump($errors);
+        Helpers::dump($save); 
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
