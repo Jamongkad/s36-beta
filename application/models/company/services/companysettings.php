@@ -25,6 +25,7 @@ class CompanySettings {
                     Helpers::dump($type);
                     Helpers::dump($attr);
                     Helpers::dump($mime);
+
                 } 
             }
         } else {
