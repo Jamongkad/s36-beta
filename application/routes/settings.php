@@ -46,9 +46,7 @@ return array (
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
 
-        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
-            'user' => $user, 'company' => $company_info
-        ));
+        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array('user' => $user, 'company' => $company_info));
     }),
 
     'POST /settings/save_companysettings' => function() {

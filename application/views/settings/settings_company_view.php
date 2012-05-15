@@ -9,7 +9,7 @@
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
     </p>
 
-    <?$social_links = json_decode($company->social_links)?>
+    <? $social_links = json_decode($company->social_links); ?>
     <div class="label"><label>Social Link 1: </label></div>
     <div class="input-field">
         <input type="text" name="social_links[]" class="regular-text" 
@@ -32,9 +32,11 @@
 
     <p><strong>Company Description</strong><br />
     <span class="light-blue">a short description about your company</span></p>
+
 <textarea class="regular-text" rows="20" name="company_desc">
 <?=$company->description?>
 </textarea> 
+
     <br/>
 
     <div class="grids">
@@ -42,7 +44,12 @@
             <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
             <p><strong>Add Company Logo</strong><br /> 
                <span class="light-blue">logo size should be atleast 250x180</span></p>
-            <?=HTML::image('img/company-logo-filler.jpg')?>
+            <?if($company->logo):?>
+                <?=HTML::image('img/company_logos/'.$company->logo)?>
+            <?else:?>
+                <?=HTML::image('img/company-logo-filler.jpg')?>
+            <?endif?>
+
             <div style="padding-left:10px;font-weight:bold;">
                 <div style="margin:5px 0px;">
                     <input type="file" id="your_photo" class="fileupload" name="your_photo"/> 
