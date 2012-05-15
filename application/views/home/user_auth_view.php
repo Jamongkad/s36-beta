@@ -91,6 +91,7 @@ $(document).ready(function(){
                     <input type="hidden" name="userId" value="<?=$admin_details->userid?>" />
                     <input type="hidden" name="params" value="<?=$encrypt_string?>" />
                     <!--Photo Stuff here-->
+                    <!--
                     <div class="block formUploadPhoto" style="margin-left: auto; margin-right: auto; width: 12em">
                         <div class="grids">
                             <div>
@@ -127,9 +128,6 @@ $(document).ready(function(){
                         </div>
                         <div class="grids adjust-crop">
                             <div class="g1of3">
-                                <!--
-                                <div style="font-size:11px; font-weight:bold; padding: 8px 0 0"><label>Adjust and crop your image</label></div>
-                                -->
                                 <div>
                                     <div style="padding:15px 0px;">
                                         <div class="jcrop_div">
@@ -158,6 +156,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </div>
+                    -->
                     <!--Photo Stuff here-->
                     <input type="hidden" name="companyId" value="<?=$company_id?>" />
                     
