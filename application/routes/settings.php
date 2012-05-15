@@ -56,13 +56,13 @@ return array (
         $company_settings->upload_companylogo($_FILES);
         $company_settings->save_companysettings();
         
-        Helpers::dump($company_settings->get_errors());
-        /*
+
         if(!$company_settings->get_errors()) {
-            return Redirect::to('settings/company');     
-        }
-        */
-       
+            //return Redirect::to('settings/company');          
+            echo "redirect";
+        } else {
+            Helpers::dump($company_settings->get_errors());           
+        } 
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
