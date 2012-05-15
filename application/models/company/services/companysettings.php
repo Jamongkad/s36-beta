@@ -53,7 +53,10 @@ class CompanySettings {
 
             //if a new file has been uploaded
             if($this->filename) {
-                unlink($this->company_dir.$post_data->logo);     
+                if($post_data->logo) {
+                    unlink($this->company_dir.$post_data->logo);          
+                }
+               
                 $post_data->logo = $this->filename;  
             } 
             
