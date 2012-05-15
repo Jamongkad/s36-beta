@@ -55,7 +55,7 @@ return array (
         $company_settings = new Company\Services\CompanySettings;
         $company_settings->upload_companylogo($_FILES); 
         $company_settings->save_companysettings();
-        Redirect::to('settings/company');
+        return Redirect::to('settings/company');
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
