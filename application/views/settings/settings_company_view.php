@@ -45,7 +45,7 @@
             <p><strong>Add Company Logo</strong><br /> 
                <span class="light-blue">logo size should be atleast 250x180</span></p>
             <?if($company->logo):?>
-                <?=HTML::image('img/company_logos/'.$company->logo)?>
+                <?=HTML::image('company_logos/'.$company->logo)?>
             <?else:?>
                 <?=HTML::image('img/company-logo-filler.jpg')?>
             <?endif?>
