@@ -43,6 +43,9 @@
 
     <div class="grids">
         <div class="g1of3">
+            <?if($error):?>
+                <p class="error"><?=$error?></p>
+            <?endif?>
             <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
             <p><strong>Add Company Logo</strong><br /> 
                <span class="light-blue">logo size should be atleast 250x180</span></p>

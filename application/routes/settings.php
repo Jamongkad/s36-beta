@@ -46,10 +46,8 @@ return array (
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
 
-        Helpers::dump(Input::get('error_msg'));
-
         return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
-            'user' => $user, 'company' => $company_info
+            'user' => $user, 'company' => $company_info, 'error' => Input::get('error_msg')
         ));
     }),
 
