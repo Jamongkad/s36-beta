@@ -51,17 +51,20 @@ return array (
         ));
     }),
 
+    'GET /settings/error/(:any)' => function($str) {
+        return $str; 
+    },
+
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
         $company_settings->upload_companylogo($_FILES);
-        $company_settings->save_companysettings();
-        
-
+     
         if(!$company_settings->get_errors()) {
-            //return Redirect::to('settings/company');          
-            echo "redirect";
+            $company_settings->save_companysettings();
+            return Redirect::to('settings/company');           
         } else {
-            Helpers::dump($company_settings->get_errors());           
+            //Helpers::dump($company_settings->get_errors());           
+            return Redirect::to('settings/error/'.$company_settings->get_errors());
         } 
     },
 
