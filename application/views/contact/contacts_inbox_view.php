@@ -20,8 +20,6 @@
 
 <div class="the-feedbacks"> 
     <?foreach($contact_person as $feeds):?>
-        <? $id = $feed->feedbackid ?>
-
             <?foreach($feeds->children as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
