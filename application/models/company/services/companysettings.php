@@ -50,9 +50,11 @@ class CompanySettings {
         if($this->errors == False) { 
             //if no errors then let's save to DB
             $post_data = (object)Input::get();
+
+            //if a new file has been uploaded
             if($this->filename) {
-                $post_data->logo = $this->filename;     
-                //unlink($this->company_dir.$post_data->logo);
+                unlink($this->company_dir.$post_data->logo);     
+                $post_data->logo = $this->filename;  
             } 
             
             if(!$this->is_sociallinks_empty($post_data->social_links)) {
