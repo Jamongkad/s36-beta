@@ -19,8 +19,13 @@ class DBCompany extends S36DataObject {
 
     public function update_companyinfo($post) {
         //do an update 
-        Helpers::dump($post);
-        return $post; 
+        DB::Table('Company', 'master')
+            ->where('companyId', '=', $post->companyid)
+            ->update(Array( 
+                'description' => $post->company_desc
+              , 'logo' => $post->logo
+              , 'social_links' => $post->social_links 
+            )); 
     }
 
     public function get_company_info($company_id) {
