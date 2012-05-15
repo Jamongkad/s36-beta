@@ -29,7 +29,6 @@
                     <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                     <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
                     <input type="hidden" name="cat_id" value="<?=$feed->categoryid?>" class="category-feed-id"/>
-                    <input type="hidden" name="inbox_state" value="<?=$inbox_state?>" class="inbox-state"/>
                 </div>
                 <div class="right">
                     <div class="g4of5">
