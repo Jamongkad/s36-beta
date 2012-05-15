@@ -8,21 +8,31 @@
     <p><strong>Company Social Links</strong><br/>
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
     </p>
+    <?if($company->social_links):?>
+        <?$counter = 0;?>
+        <?foreach(json_decode($company->social_links) as $link):?>
+            <div class="label"><label>Social Link <?=$counter?>: </label></div>
+            <div class="input-field">
+                <input type="text" name="social_links[]" class="regular-text" value="<?=$link?>"/> 
+            </div>
+            <?$counter++;?>
+        <?endforeach?>
+    <?else:?>
+        <div class="label"><label>Social Link 1: </label></div>
+        <div class="input-field">
+            <input type="text" name="social_links[]" class="regular-text" value=""/> 
+        </div>
 
-    <div class="label"><label>Social Link 1: </label></div>
-    <div class="input-field">
-        <input type="text" name="social_links[]" class="regular-text" value=""/> 
-    </div>
+        <div class="label"><label>Social Link 2: </label></div>
+        <div class="input-field">
+            <input type="text" name="social_links[]" class="regular-text" value=""/> 
+        </div>
 
-    <div class="label"><label>Social Link 2: </label></div>
-    <div class="input-field">
-        <input type="text" name="social_links[]" class="regular-text" value=""/> 
-    </div>
-
-    <div class="label"><label>Social Link 3: </label></div>
-    <div class="input-field">
-        <input type="text" name="social_links[]" class="regular-text" value=""/> 
-    </div>
+        <div class="label"><label>Social Link 3: </label></div>
+        <div class="input-field">
+            <input type="text" name="social_links[]" class="regular-text" value=""/> 
+        </div>
+    <?endif?>
 
     <br/><br/><br/><br/><br/><br/><br/>
 
