@@ -19,8 +19,7 @@
 
 
 <div class="the-feedbacks"> 
-    <?foreach($contact_person as $feeds):?>
-            <?foreach($feeds->children as $feed):?>
+    <?foreach($contact_person as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
             <div class="feedback" id="<?=$id?>">
@@ -258,7 +257,7 @@
                     <span class="status-message"></span>
                 </div>
             </div>
-            <?endforeach?>
+
     <?endforeach?>
 
     <div class="c"></div>
