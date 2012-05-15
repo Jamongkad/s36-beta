@@ -64,7 +64,7 @@ return array (
             return Redirect::to('settings/company');           
         } else {
             //Helpers::dump($company_settings->get_errors());           
-            return Redirect::to('settings/error/'.$company_settings->get_errors());
+            return Redirect::to('settings/error/'."Mathew");
         } 
     },
 
