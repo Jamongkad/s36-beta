@@ -49,12 +49,14 @@ class CompanySettings {
             $post_data = (object)Input::get();
             if($this->filename) {
                 $post_data->logo = $this->filename;     
+            } else {
+                $post_data->logo = Null;     
             }
 
             if(!$this->is_sociallinks_empty($post_data->social_links)) {
                 $post_data->social_links = $this->jsonify_sociallinks($post_data->social_links);
             } else {
-                $post_data->social_links = null;     
+                $post_data->social_links = Null;     
             }
 
             $db = new DBCompany;
