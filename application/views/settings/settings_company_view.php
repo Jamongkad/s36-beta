@@ -1,6 +1,8 @@
 <?=Form::open_for_files('settings/save_companysettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
 <?=Form::hidden('logo', $company->logo)?>
+<?=Form::hidden('reupload', (($company->logo) ? 1 : 0))?>
+
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>COMPANY PROFILE SETTINGS</h3>

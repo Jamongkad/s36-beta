@@ -52,7 +52,7 @@ class CompanySettings {
             $post_data = (object)Input::get();
             if($this->filename) {
                 $post_data->logo = $this->filename;     
-                unlink($this->company_dir.$post_data->logo);
+                //unlink($this->company_dir.$post_data->logo);
             } 
             
             if(!$this->is_sociallinks_empty($post_data->social_links)) {
