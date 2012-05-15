@@ -50,7 +50,10 @@ class CompanySettings {
             if($this->filename) {
                 $post_data->logo = $this->filename;     
             }
-            $post_data->social_links = json_encode($post_data->social_links);
+
+            if($post_data->social_links) {
+                $post_data->social_links = json_encode($post_data->social_links);    
+            }
              
             $db = new DBCompany;
             $db->update_companyinfo($post_data);
