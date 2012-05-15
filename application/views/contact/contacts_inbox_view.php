@@ -42,7 +42,7 @@
                         ?>
 
                         <!-- email picker block -->
-                        <div class="base-popup fast-forward-holder" id="<?=$id?>">
+                        <div class="base-popup fast-forward-holder" style="display:none" id="<?=$id?>">
                             <div class="popup-arrow"></div>
                             <div class="email-list">
                                 <ul class="email-picker">
@@ -91,21 +91,56 @@
                                 <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" style="background-position: 0px 0px !important"/>
                             <?endif?>
                             <input type="button" class="save fileas" tooltip="Categorize Feedback"/>
-                            <div class="base-popup category-picker-holder">
-                                 <div class="popup-arrow"></div>
-                                 <ul class="category-picker">
-                                     <?foreach($categories as $cat):?> 
-                                         <li <?=($feed->category === $cat->name) ? 'class="Matched"' : Null?>>
-                                             <?=HTML::link('feedback/changecat/', $cat->name, Array(
-                                                  'hrefaction' => URL::to('/feedback/change_feedback_state')
-                                                , 'class'      => 'cat-picks'
-                                                , 'feedid'     => $id
-                                                , 'catid'      => $cat->id
-                                                , 'state'      => 0
-                                             ))?>
-                                         </li>
-                                     <?endforeach?>
-                                 </ul>
+                            <div class="base-popup category-picker-holder" style="display:none" id="<?=$id?>">
+
+                                <div class="popup-arrow"></div>
+                                <div style="padding-bottom:4px"><b>File this feedback as:</b></div>
+                                <ul class="category-picker" id="<?=$feed->categoryid?>">
+                                  <?foreach($categories as $cat):?> 
+                                     <li>
+                                          <?=HTML::link('feedback/changecat/', $cat->name, Array(
+                                               'hrefaction' => URL::to('/feedback/change_feedback_state')
+                                             , 'class'      => 'cat-picks'.(($feed->category === $cat->name) ? ' Matched' : Null)
+                                             , 'feedid'     => $id
+                                             , 'catid'      => $cat->id
+                                             , 'cat-state'  => $cat->intname
+                                             , 'state'      => 0
+                                          ))?>
+                                      </li>
+                                  <?endforeach?>
+                                </ul>
+                                <div class="manage-cat-link"><?=HTML::link('settings', 'manage categories →')?></div>
+                                <div class="popup-border"></div>
+                                <div class="grids">
+                                    <div class="label g1of2">Status</div>
+                                    <div class="dropdown g1of2">
+                                        <select class="catmenu-status" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                            <?foreach($status as $option):?>
+                                                <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
+                                                <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
+                                            <?endforeach?>
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div class="popup-border"></div>
+                                <div class="grids">
+                                    <div class="label g1of2">Priority</div>
+                                    <div class="dropdown g1of2">
+                                        <select class="catmenu-priority" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                            <?foreach($priority_obj as $key => $val):?>
+                                                <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
+                                                    <?=ucfirst($val)?>
+                                                </option>
+                                            <?endforeach?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="popup-border"></div> 
+                                <div class="grids" style="text-align: center">
+                                    <input type="button" class="popup-delete" 
+                                    <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>
+                                    value="" />
+                                </div> 
                             </div>
                             <input type="button" class="reply" tooltip="Reply to user" tt_width="65"/>
 
