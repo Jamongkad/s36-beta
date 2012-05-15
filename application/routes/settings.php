@@ -46,14 +46,20 @@ return array (
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
 
-        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array('user' => $user, 'company' => $company_info));
+        return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
+            'user' => $user, 'company' => $company_info
+        ));
     }),
 
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
-        $company_settings->upload_companylogo($_FILES); 
+        $company_settings->upload_companylogo($_FILES);
         $company_settings->save_companysettings();
-        return Redirect::to('settings/company');
+
+        if(!$company_settings->get_errors()) {
+            return Redirect::to('settings/company');     
+        }
+       
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {

@@ -22,24 +22,21 @@ class DBCompany extends S36DataObject {
         DB::Table('Company', 'master')
             ->where('companyId', '=', $post->companyid)
             ->update(Array( 
-                'description' => $post->company_desc
-              , 'logo' => $post->logo
+                'description'  => $post->company_desc
               , 'social_links' => $post->social_links 
+              , 'logo' => $post->logo
             )); 
     }
 
     public function get_company_info($company_id) {
         $sql = "
-            SELECT 
-                *
-            FROM
+            SELECT * FROM
                 Company
             INNER JOIN
                 Site
                     ON Site.companyId = Site.companyId
             WHERE 1=1
-                AND Company.companyId = :company_id
-                AND Site.companyId = :site_id
+                AND Company.companyId = :company_id AND Site.companyId = :site_id
         ";
         $sth = $this->dbh->prepare($sql);     
 
