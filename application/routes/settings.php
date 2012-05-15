@@ -46,14 +46,12 @@ return array (
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
 
+        Helpers::dump(Input::get('error_msg'));
+
         return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
             'user' => $user, 'company' => $company_info
         ));
     }),
-
-    'GET /settings/error' => function() {
-        Helpers::dump(Input::get());
-    },
 
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
@@ -64,7 +62,7 @@ return array (
             return Redirect::to('settings/company');           
         } else {
             //Helpers::dump($company_settings->get_errors());           
-            return Redirect::to('settings/error?error_msg="'.$company_settings->get_errors().'"');
+            return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
         } 
     },
 
