@@ -34,7 +34,6 @@ return array(
 
         if($auth->check()) { 
             return forward_or_dash();
-
         } else {
             return View::of_home_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
         }		

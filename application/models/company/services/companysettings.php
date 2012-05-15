@@ -50,15 +50,25 @@ class CompanySettings {
             if($this->filename) {
                 $post_data->logo = $this->filename;     
             }
-            /*
-            if($post_data->social_links) {
-                $post_data->social_links = json_encode($post_data->social_links);    
+
+            if(!$this->is_sociallinks_empty($post_data->social_links)) {
+                $post_data->social_links = $this->jsonify($post_data->social_links);
+            } else {
+                $post_data->social_links = null;     
             }
-            */
-             
+
             $db = new DBCompany;
             $db->update_companyinfo($post_data);
         }
+    }
+
+    public function jsonify($social_links) {
+        $array = array_filter($social_links, function($arr) { if($arr) return $arr; });
+        return json_encode($array);
+    }
+
+    public function is_sociallinks_empty($social_links) {
+        foreach($social_links as $link) return empty($link);
     }
 
     public function get_errors() { 
