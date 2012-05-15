@@ -19,14 +19,8 @@
 
 
 <div class="the-feedbacks"> 
-    <?foreach($contact_person as $feed):?>
-
-            <div style="padding:12px; float:left">
-                <?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)
-                <!--
-                (<abbr class="timeago" title="<?=date("Y-m-d h:i:s", $feeds->unix_timestamp)?>"></abbr>)
-                -->
-            </div>
+    <?foreach($contact_person as $feeds):?>
+        <? $id = $feed->feedbackid ?>
 
             <?foreach($feeds->children as $feed):?>
             <p></p>
@@ -266,7 +260,7 @@
                     <span class="status-message"></span>
                 </div>
             </div>
-        <?endforeach?>
+            <?endforeach?>
     <?endforeach?>
 
     <div class="c"></div>
