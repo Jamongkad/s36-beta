@@ -52,10 +52,8 @@ return array (
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
         $company_settings->upload_companylogo($_FILES);
-        $filename = $company_settings->get_filename();
         $errors = $company_settings->get_errors();  
         $save = $company_settings->save_companysettings();
-        Helpers::dump($filename);
         Helpers::dump($errors);
         Helpers::dump($save); 
     },
