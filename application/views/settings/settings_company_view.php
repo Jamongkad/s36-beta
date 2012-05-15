@@ -11,17 +11,17 @@
     <?if($social_links = json_decode($company->social_links)):?>
         <div class="label"><label>Social Link 1: </label></div>
         <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=$social_links[0]?>"/> 
+            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(0, $social_links)) ? $social_links[0] : null?>"/> 
         </div>
 
         <div class="label"><label>Social Link 2: </label></div>
         <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=$social_links[1]?>"/> 
+            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(1, $social_links)) ? $social_links[1] : null?>"/> 
         </div>
 
         <div class="label"><label>Social Link 3: </label></div>
         <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=$social_links[2]?>"/> 
+            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(2, $social_links)) ? $social_links[2] : null?>"/> 
         </div>
     <?else:?>
         <div class="label"><label>Social Link 1: </label></div>
