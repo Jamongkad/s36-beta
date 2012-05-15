@@ -21,7 +21,7 @@
 <div class="the-feedbacks"> 
     <?foreach($contact_person as $feed):?>
             <p></p>
-            <? $id = $feed->id ?>
+            <? $id = $feed->feedbackid ?>
             <div class="feedback" id="<?=$id?>">
                 <div class="left">      
                     <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
