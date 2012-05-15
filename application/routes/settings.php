@@ -51,8 +51,8 @@ return array (
         ));
     }),
 
-    'GET /settings/error/(:any)' => function($str) {
-        return $str; 
+    'GET /settings/error' => function() {
+        Helpers::dump(Input::get());
     },
 
     'POST /settings/save_companysettings' => function() {
@@ -64,7 +64,7 @@ return array (
             return Redirect::to('settings/company');           
         } else {
             //Helpers::dump($company_settings->get_errors());           
-            return Redirect::to('settings/error/'."Mathew");
+            return Redirect::to('settings/error?error_msg="'.$company_settings->get_errors().'"');
         } 
     },
 
