@@ -44,9 +44,10 @@ return array (
     'GET /settings/company'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
         $user = S36Auth::user();
         $company = new Company\Repositories\DBCompany;
+        $company_info = $company->get_company_info($user->companyid);
         Helpers::dump($company->get_company_info($user->companyid));
         return View::of_layout()->partial('contents', 'settings/settings_company_view', Array( 
-            'user' => $user
+            'user' => $user, 'company' => $company_info
         ));
     }),
 
