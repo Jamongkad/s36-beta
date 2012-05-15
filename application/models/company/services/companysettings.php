@@ -52,7 +52,7 @@ class CompanySettings {
             }
 
             if(!$this->is_sociallinks_empty($post_data->social_links)) {
-                $post_data->social_links = $this->jsonify($post_data->social_links);
+                $post_data->social_links = $this->jsonify_sociallinks($post_data->social_links);
             } else {
                 $post_data->social_links = null;     
             }
@@ -62,7 +62,7 @@ class CompanySettings {
         }
     }
 
-    public function jsonify($social_links) {
+    public function jsonify_sociallinks($social_links) {
         $array = array_filter($social_links, function($arr) { if($arr) return $arr; });
         return json_encode($array);
     }
