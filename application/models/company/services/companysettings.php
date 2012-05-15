@@ -7,19 +7,22 @@ class CompanySettings {
     
     private $files, $filename, $errors;
 
+    public function __construct() {
+        $this->upload_dir = "/var/www/s36-upload-images/uploaded_tmp/";
+        $this->company_dir = "/var/www/s36-upload-images/company_logos/";
+    }
+
     public function upload_companylogo($files)  {
 
         $this->files = $files; 
         $filename = $this->files['your_photo']['name'];
-        $upload_dir = "/var/www/s36-upload-images/uploaded_tmp/";
-        $company_dir = "/var/www/s36-upload-images/company_logos/";
-        $final_file = $upload_dir.$filename;
+        $final_file = $this->upload_dir.$filename;
 
         //check if photo is a part of the files array
         if($filename) { 
             if($this->files['your_photo']['error'] > 0) {
                 $this->errors = "Return Code: " . $this->files['your_photo']['error'];
-            } else if(file_exists($final_file) or file_exists($company_dir.$filename)) {
+            } else if(file_exists($final_file) or file_exists($this->company_dir.$filename)) {
                 $this->errors = $filename . " already exists.";
             } else {
                 $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
@@ -31,7 +34,7 @@ class CompanySettings {
                         $this->errors = "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
                         unlink($final_file);
                     } else {
-                        if(!copy($final_file, "/var/www/s36-upload-images/company_logos/".$filename)) {
+                        if(!copy($final_file, $this->company_dir.$filename)) {
                             $this->errors = "Failed to copy file to company logo folder"; 
                         } else {
                             unlink($final_file);     
@@ -49,8 +52,9 @@ class CompanySettings {
             $post_data = (object)Input::get();
             if($this->filename) {
                 $post_data->logo = $this->filename;     
+                unlink($this->company_dir.$post_data->logo);
             } 
-
+            
             if(!$this->is_sociallinks_empty($post_data->social_links)) {
                 $post_data->social_links = $this->jsonify_sociallinks($post_data->social_links);
             } else {
