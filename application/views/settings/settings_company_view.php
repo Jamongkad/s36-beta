@@ -8,37 +8,22 @@
     <p><strong>Company Social Links</strong><br/>
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
     </p>
-    <?if($social_links = json_decode($company->social_links)):?>
-        <div class="label"><label>Social Link 1: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(0, $social_links)) ? $social_links[0] : null?>"/> 
-        </div>
 
-        <div class="label"><label>Social Link 2: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(1, $social_links)) ? $social_links[1] : null?>"/> 
-        </div>
+    <?$social_links = json_decode($company->social_links)?>
+    <div class="label"><label>Social Link 1: </label></div>
+    <div class="input-field">
+        <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(0, $social_links)) ? $social_links[0] : null?>"/> 
+    </div>
 
-        <div class="label"><label>Social Link 3: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(2, $social_links)) ? $social_links[2] : null?>"/> 
-        </div>
-    <?else:?>
-        <div class="label"><label>Social Link 1: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value=""/> 
-        </div>
+    <div class="label"><label>Social Link 2: </label></div>
+    <div class="input-field">
+        <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(1, $social_links)) ? $social_links[1] : null?>"/> 
+    </div>
 
-        <div class="label"><label>Social Link 2: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value=""/> 
-        </div>
-
-        <div class="label"><label>Social Link 3: </label></div>
-        <div class="input-field">
-            <input type="text" name="social_links[]" class="regular-text" value=""/> 
-        </div>
-    <?endif?>
+    <div class="label"><label>Social Link 3: </label></div>
+    <div class="input-field">
+        <input type="text" name="social_links[]" class="regular-text" value="<?=(array_key_exists(2, $social_links)) ? $social_links[2] : null?>"/> 
+    </div>
 
     <br/><br/><br/><br/><br/><br/><br/>
 
