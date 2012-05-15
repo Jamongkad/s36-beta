@@ -28,9 +28,9 @@
 
     <p><strong>Company Description</strong><br />
     <span class="light-blue">a short description about your company</span></p>
-    <textarea class="regular-text" rows="20" name="company_desc">
+<textarea class="regular-text" rows="20" name="company_desc">
 <?=$company->description?>
-    </textarea> 
+</textarea> 
     <br/>
 
     <div class="grids">
