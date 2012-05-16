@@ -142,7 +142,7 @@ return array(
             'username' => strtolower($data['username'])  
           , 'password' => crypt($data['password'])
           , 'encryptString' => $encrypt->encrypt(strtolower($data['username'])."|".$data['password'])
-          , 'avatar' => $data['cropped_image_nm']
+          //, 'avatar' => $data['cropped_image_nm']
           , 'confirmed' => 1
         );
 
