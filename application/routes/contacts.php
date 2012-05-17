@@ -58,10 +58,10 @@ return array(
         //we get the page no for the return trip
         $page = Input::get('page');
 
-        return view::of_layout()->partial('contents', 'contact/contacts_inbox_view', array(  
+        return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'categories' => $category->pull_site_categories()
-          , 'status' => db::table('Status', 'master')->get()
+          , 'status' => DB::Table('Status', 'master')->get()
           , 'feedback_of_contact' => $feedback_of_contact
           , 'page' => ($page) ? '?page='.$page : null
           , 'admin_check' => s36auth::user()
@@ -88,7 +88,7 @@ return array(
 
         echo View::make('contact/partials/contacts_units_partial_view', array(  
             'categories' => $category->pull_site_categories()
-          , 'status' => db::table('Status', 'master')->get()
+          , 'status' => DB::Table('Status', 'master')->get()
           , 'feedback_of_contact' => $feedback_of_contact
           , 'admin_check' => s36auth::user()
           , 'priority_obj' => (object)array(0 => 'low', 60 => 'medium', 100 => 'high')
