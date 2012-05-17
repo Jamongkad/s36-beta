@@ -1,12 +1,12 @@
 <?$request_url_parameters = Input::get('limit').'?name='.Input::get('name').'&email='.Input::get('email');?>
 <script>
 	var counter = 0;	
-	var container = $('.the-feedbacks');
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() == $(document).height()) {
            counter += 1;
             //add_boxes(counter);		 
            var page_counter = counter + 1;
+		   var container = $('.the-feedbacks');
            $.ajax({
                   url: '/contacts/pull_feedback_for_contact/' + page_counter + '/' + <?="'".$request_url_parameters."'"?>
                 , success: function(msg) {
