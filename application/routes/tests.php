@@ -272,6 +272,11 @@ return array(
         $test->invalidate_hosted_feeds_cache(); 
     },
 
+    'GET /tests/contact' => function() {
+        $contact = new Contact\Repositories\DBContact;
+        Helpers::dump($contact);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
