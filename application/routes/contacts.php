@@ -69,6 +69,10 @@ return array(
         ));
     }),
 
+    'GET /contacts/pull_feedback_for_contact/(:int)' => function($page) {
+        Helpers::dump($page);
+    },
+
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
         $get_data = (object)Input::get();
         $page = Input::get('page');
