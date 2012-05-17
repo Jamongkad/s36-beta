@@ -236,3 +236,5 @@
             </div>
         </div>
 <?endforeach?>
+
+<div class="c"></div>
