@@ -227,11 +227,14 @@ class DBContact extends S36DataObject {
                 AND Feedback.isDeleted = 0
             ORDER BY
                 Feedback.dtAdded DESC
+            LIMIT :offset, :limit
         ';
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":first_name", $obj->name); 
         $sth->bindParam(":email", $obj->email);
-        $sth->bindParam(":company_id", $this->company_id);
+        $sth->bindParam(":company_id", $this->company_id); 
+        $sth->bindParam(":offset", $obj->offset);
+        $sth->bindParam(":limit", $obj->limit);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
 

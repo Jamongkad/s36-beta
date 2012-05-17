@@ -286,6 +286,8 @@ return array(
         $get_data = (object) Array(
             'name'  => 'Mathew'
           , 'email' => 'wrm932@gmail.com'
+          , 'offset' => 0
+          , 'limit' => 5
         );
         $contact_feedback = $contact->get_contact_feedback($get_data);
         Helpers::dump($contact_feedback);
