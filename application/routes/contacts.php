@@ -1,6 +1,6 @@
 <?php
 
-$contact = new DBContact;
+$contact = new Contact\Repositories\DBContact;
 
 return array(
     'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact) { 
