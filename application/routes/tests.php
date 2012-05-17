@@ -283,7 +283,7 @@ return array(
         $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
         Helpers::dump($contact_metric->render_metric_bar());
         */
-        $get_data (object) Array(
+        $get_data = (object) Array(
             'name'  => 'Mathew'
           , 'email' => 'wrm932@gmail.com'
         );
