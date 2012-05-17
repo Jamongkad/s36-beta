@@ -138,14 +138,6 @@ return array(
                                            ->where('username', '=', $params[0])
                                            ->first();
 
-        $personal_data = Array( 
-            'username' => strtolower($data['username'])  
-          , 'password' => crypt($data['password'])
-          , 'encryptString' => $encrypt->encrypt(strtolower($data['username'])."|".$data['password'])
-          //, 'avatar' => $data['cropped_image_nm']
-          , 'confirmed' => 1
-        );
-
         $rules = Array(
             'username' => 'required'
           , 'password' => 'min:8|confirmed|required' 
@@ -158,6 +150,15 @@ return array(
               , 'errors' => $validator->errors
             ));
         } else { 
+
+            $personal_data = Array( 
+                'username' => strtolower($data['username'])  
+              , 'password' => crypt($data['password'])
+              , 'encryptString' => $encrypt->encrypt(strtolower($data['username'])."|".$data['password'])
+              //, 'avatar' => $data['cropped_image_nm']
+              , 'confirmed' => 1
+            );
+
             DB::table('User', 'master')
                 ->where('User.userId', '=', $data['userId'])
                 ->update($personal_data);
