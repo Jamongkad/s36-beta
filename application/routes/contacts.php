@@ -59,10 +59,11 @@ return array(
 
         $category = new DBCategory;
         $contact_metrics = new ContactMetrics;
-        $contact_person = $contact->get_contact_feedback($get_data);
+        $contact_feedback = $contact->get_contact_feedback($get_data);
 
         $page = Input::get('page');
-
+        Helpers::dump($contact_feedback);
+        /*
         return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'categories' => $category->pull_site_categories()
@@ -72,6 +73,7 @@ return array(
           , 'admin_check' => S36Auth::user()
           , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
+        */
 
     }),
 
