@@ -2,9 +2,15 @@
 	var counter = 0;	
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-            counter += 1;
+           counter += 1;
             //add_boxes(counter);		 
-            console.log(counter);
+           var page_counter = counter + 1;
+           $.ajax({
+                  url: '/contacts/pull_feedback_for_contact/' + page_counter
+                , success: function(msg) {
+                    console.log(msg);
+                }
+           });
        }
     });
 </script>
