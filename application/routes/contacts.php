@@ -3,13 +3,10 @@ use Contact\Repositories\DBContact;
 use Contact\Services\ContactMetrics;
 
 $contact = new DBContact;
+$contact_metrics = new ContactMetrics($contact, new DBMetric, new S36Auth);
 
 return array(
-    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact) { 
-
-        $auth = new S36Auth;
-        $metric = new DBMetric;
-        $contact_metrics = new ContactMetrics($contact, $metric, $auth);
+    'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact, $contact_metrics) { 
 
         $limit = 7;
 
@@ -30,9 +27,7 @@ return array(
         ));
     }),
 
-    'POST /contacts/search' => function() use ($contact) {
-
-        $contact_metrics = new ContactMetrics;
+    'POST /contacts/search' => function() use ($contact, $contact_metrics) {
 
         $search_term = Input::get('search_contact');
  
@@ -54,15 +49,15 @@ return array(
         ));
     },
 
-    'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact) { 
+    'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
         $get_data = (object)Input::get();
 
         $category = new DBCategory;
-        $contact_metrics = new ContactMetrics;
-        $contact_feedback = $contact->get_contact_feedback($get_data);
+
+        $contact_person = $contact->get_contact_feedback($get_data);
 
         $page = Input::get('page');
-        Helpers::dump($contact_feedback);
+        Helpers::dump(); 
         /*
         return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
@@ -77,10 +72,8 @@ return array(
 
     }),
 
-    'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact) { 
+    'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
         $get_data = (object)Input::get();
-        $contact_metrics = new ContactMetrics;
-
         $page = Input::get('page');
 
         return View::of_layout()->partial('contents', 'contact/contacts_edit_view', Array( 
@@ -92,14 +85,12 @@ return array(
         ));
     }),
 
-    'POST /contacts/edit_contact' => function() use($contact) {
+    'POST /contacts/edit_contact' => function() use($contact, $contact_metrics) {
 
         $data = Input::get();
 
         $page = (($data['page']) ? '&page='.$data['page'] : null);
  
-        $contact_metrics = new ContactMetrics;        
-
         $rules = Array('firstname' => 'required');
 
         $validator = Validator::make($data, $rules);
