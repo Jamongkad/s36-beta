@@ -187,22 +187,19 @@ class DBContact extends S36DataObject {
                  Country
                     ON Contact.countryId = Country.countryId
             INNER JOIN
-                User
-                    ON User.companyId = Company.companyId
-            INNER JOIN
                 Category
                     ON Category.categoryId = Feedback.categoryId 
             WHERE 1=1 
                 AND Contact.firstName = :first_name
                 AND LCASE(Contact.email) = :email
-                AND User.userId = :user_id
+                AND Company.companyId = :company_id
             ORDER BY
                 Feedback.dtAdded DESC
         ';
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(":user_id", $this->user_id);
         $sth->bindParam(":first_name", $obj->name); 
         $sth->bindParam(":email", $obj->email);
+        $sth->bindParam(":company_id", $this->company_id);
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
 
