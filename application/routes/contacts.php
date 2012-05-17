@@ -80,6 +80,7 @@ return array(
         $data_request->email = Input::get('email');
 
         $results = $contact->get_contact_feedback($data_request);
+        //echo view partial here
         echo $results;
     },
 
