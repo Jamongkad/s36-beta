@@ -279,10 +279,16 @@ return array(
         $auth = new S36Auth;
 
         Helpers::dump($contact);
-
+        /*
         $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
-
         Helpers::dump($contact_metric->render_metric_bar());
+        */
+        $get_data (object) Array(
+            'name'  => 'Mathew'
+          , 'email' => 'wrm932@gmail.com'
+        );
+        $contact_feedback = $contact->get_contact_feedback($get_data);
+        Helpers::dump($contact_feedback);
     },
 
     //reserved route for Leica and Ryan testing

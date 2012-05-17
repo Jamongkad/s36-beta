@@ -9,7 +9,6 @@ return array(
 
         $auth = new S36Auth;
         $metric = new DBMetric;
-
         $contact_metrics = new ContactMetrics($contact, $metric, $auth);
 
         $limit = 7;

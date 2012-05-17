@@ -78,7 +78,7 @@ class DBContact extends S36DataObject {
 
         if($search_term) {
             $search_query = sprintf("AND Contact.email LIKE '%%%s%%' OR Contact.firstname LIKE '%%%s%%' OR Contact.lastname LIKE '%%%s%%'", 
-                                     $this->quote($search_term), $this->quote($search_term), $this->quote($search_term));
+                                    $this->quote($search_term), $this->quote($search_term), $this->quote($search_term));
         }
 
         $sql = "
