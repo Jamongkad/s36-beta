@@ -1,6 +1,7 @@
 <?php namespace Contact\Services;
 
 use View, Helpers;
+use Contact\Repositories\DBContact;
 
 class ContactMetrics {
 
