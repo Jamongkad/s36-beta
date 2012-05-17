@@ -224,6 +224,7 @@ class DBContact extends S36DataObject {
                 AND Contact.firstName = :first_name
                 AND LCASE(Contact.email) = :email
                 AND Company.companyId = :company_id
+                AND Feedback.isDeleted = 0
             ORDER BY
                 Feedback.dtAdded DESC
         ';
