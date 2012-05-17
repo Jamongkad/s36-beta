@@ -1,3 +1,14 @@
+<script>
+	var counter = 0;	
+    $(window).scroll(function() {
+       if($(window).scrollTop() + $(window).height() == $(document).height()) {
+            counter += 1;
+            //add_boxes(counter);		 
+            console.log(counter);
+       }
+    });
+</script>
+
 <?=$metrics?>
 <div class="admin-sorter-bar">
 
