@@ -57,7 +57,7 @@ return array(
         $contact_person = $contact->get_contact_feedback($get_data);
 
         $page = Input::get('page');
-        Helpers::dump(); 
+        Helpers::dump($contact_person); 
         /*
         return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
