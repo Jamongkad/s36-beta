@@ -75,7 +75,7 @@ class DBContact extends S36DataObject {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
 
         $search_query = null;
-
+        //TODO: Try to fit this into PDO paradigm
         if($search_term) {
             $search_query = sprintf("AND Contact.email LIKE '%%%s%%' OR Contact.firstname LIKE '%%%s%%' OR Contact.lastname LIKE '%%%s%%'", 
                                     $this->quote($search_term), $this->quote($search_term), $this->quote($search_term));
