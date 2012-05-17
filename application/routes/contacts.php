@@ -69,8 +69,9 @@ return array(
         ));
     }),
 
-    'GET /contacts/pull_feedback_for_contact/(:num)' => function($page) {
-        Helpers::dump($page);
+    'GET /contacts/pull_feedback_for_contact/(:num)/(:num)' => function($page, $limit) {
+        $offset = ($page - 1) * $limit;
+        Helpers::dump($offset);
     },
 
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
