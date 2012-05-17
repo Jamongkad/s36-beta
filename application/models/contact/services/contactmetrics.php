@@ -24,6 +24,6 @@ class ContactMetrics {
         return View::make('partials/contact_metricbar_view', Array(
             'contact_count' => $contact_count
           , 'metric' => $this->metric->fetch_metrics()
-        ));
+        ))->get();
     }
 }
