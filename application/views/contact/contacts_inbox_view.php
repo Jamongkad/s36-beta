@@ -1,3 +1,4 @@
+<?$request_url_parameters = Input::get('limit').'/'.Input::get('name').'/'.Input::get('email');?>
 <script>
 	var counter = 0;	
     $(window).scroll(function() {
@@ -6,7 +7,7 @@
             //add_boxes(counter);		 
            var page_counter = counter + 1;
            $.ajax({
-                  url: '/contacts/pull_feedback_for_contact/' + page_counter + '/' + <?=Input::get('limit')?>
+                  url: '/contacts/pull_feedback_for_contact/' + page_counter + '/' + <?=$request_url_parameters?>
                 , success: function(msg) {
                     console.log(msg);
                 }

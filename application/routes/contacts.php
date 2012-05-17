@@ -69,8 +69,17 @@ return array(
         ));
     }),
 
-    'GET /contacts/pull_feedback_for_contact/(:num)/(:num)' => function($page, $limit) {
+    'GET /contacts/pull_feedback_for_contact/(:num)/(:num)/(:any)/(:any)' => function($page, $limit, $name, $email) use ($contact) {
         $offset = ($page - 1) * $limit;
+
+        $data_request = new StdClass;
+        $data->limit = $limit;
+        $data->offset = $offset;
+        $data->company_id = S36Auth::user()->companyid;
+        $data->name = $name;
+        $data->email = $email;
+
+        $results = $contact->get_contact_feedback($data);
         Helpers::dump($offset);
     },
 
