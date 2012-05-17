@@ -10,7 +10,7 @@ return array(
         $auth = new S36Auth;
 
         $metric = new DBMetric;
-        $metric->company_id = $auth->user()->companyid;
+        //$metric->company_id = $auth->user()->companyid;
 
         $contact_metrics = new ContactMetrics($contact, $metric, $auth);
 
