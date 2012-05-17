@@ -92,6 +92,7 @@ class DBDashboard extends S36DataObject {
        $geoscore = $this->get_geochart_scores();
        $feedback = new Feedback\Repositories\DBFeedback;
        $contact = new Contact\Repositories\DBContact;
+
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
@@ -123,14 +124,12 @@ class DBDashboard extends S36DataObject {
            //echo "Creating new Dashboard Summary Record<br/>";
            $feedbackscore = $this->get_feedback_scores();
            $total_feedback = $feedback->total_feedback_by_company($this->company_id);
-           $total_contacts = $contact->total_contacts_by_company($this->company_id);
-           
+           $total_contacts = $contact->total_contacts_by_company($this->company_id); 
            /* Nightmare fuel DEBUG output
            Helpers::dump($feedbackscore);
            Helpers::dump($total_feedback);
            Helpers::dump($total_contacts);
            */
-
            $dashboard_sql = 'INSERT INTO DashboardSummary (
                                  companyId, totalFeed, newFeed, neutralFeed, negativeFeed, positiveFeed, ignoredFeed
                                , contactTotal, contactReply, contactRequest, contactNotReply, feedFeatured , feedPublished, topCountry
