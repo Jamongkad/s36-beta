@@ -7,7 +7,7 @@
             //add_boxes(counter);		 
            var page_counter = counter + 1;
            $.ajax({
-                  url: '/contacts/pull_feedback_for_contact/' + page_counter + '/' + <?=$request_url_parameters?>
+                  url: '/contacts/pull_feedback_for_contact/' + page_counter + '/' + <?="'".$request_url_parameters."'"?>
                 , success: function(msg) {
                     console.log(msg);
                 }
