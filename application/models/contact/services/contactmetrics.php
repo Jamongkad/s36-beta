@@ -9,7 +9,7 @@ class ContactMetrics {
 
     public function __construct(DBContact $dbcontact, DBMetric $metric, S36Auth $auth) {
         $this->contacts_model = $dbcontact;
-        $this->auth = $auth;
+        $this->auth = $auth->user();
         $this->metric = $metric;
     }
 
