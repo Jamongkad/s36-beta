@@ -79,7 +79,7 @@ return array(
         $data_request->name = Input::get('name');
         $data_request->email = Input::get('email');
 
-        $results = $contact->get_contact_feedback($data);
+        $results = $contact->get_contact_feedback($data_request);
         Helpers::dump($offset);
     },
 
