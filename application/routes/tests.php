@@ -274,7 +274,15 @@ return array(
 
     'GET /tests/contact' => function() {
         $contact = new Contact\Repositories\DBContact;
+        $metric = new DBMetric;
+        $metric->company_id = 1;
+        $auth = new S36Auth;
+
         Helpers::dump($contact);
+
+        $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
+
+        Helpers::dump($contact_metric);
     },
 
     //reserved route for Leica and Ryan testing

@@ -100,13 +100,13 @@ class DBContact extends S36DataObject {
                 Site
                     ON Site.siteId = Contact.siteId
             INNER JOIN
-                User
-                    ON User.companyId = Site.companyId
+                Company
+                    ON Company.companyId = Site.companyId
             INNER JOIN
                 Country
                     ON Country.countryId = Contact.countryId 
             WHERE 1=1
-                AND User.userId = :user_id
+                AND Company.companyId = :company_id
                 $search_query
             GROUP BY
                 Contact.email
@@ -116,7 +116,7 @@ class DBContact extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':user_id', $this->user_id);
+        $sth->bindParam(':company_id', $this->company_id);
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();
