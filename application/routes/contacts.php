@@ -86,7 +86,7 @@ return array(
         //echo view partial here
         //echo $feedback_of_contact;
 
-        echo view::of_layout()->partial('contents', 'contact/contacts_inbox_view', array(  
+        echo view::of_layout()->partial('contents', 'contact/partials/contacts_units_partial_view', array(  
             'categories' => $category->pull_site_categories()
           , 'status' => db::table('status', 'master')->get()
           , 'feedback_of_contact' => $feedback_of_contact
