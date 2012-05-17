@@ -73,11 +73,11 @@ return array(
         $offset = ($page - 1) * $limit;
 
         $data_request = new StdClass;
-        $data->limit = $limit;
-        $data->offset = $offset;
-        $data->company_id = S36Auth::user()->companyid;
-        $data->name = $name;
-        $data->email = $email;
+        $data_request->limit = $limit;
+        $data_request->offset = $offset;
+        $data_request->company_id = S36Auth::user()->companyid;
+        $data_request->name = $name;
+        $data_request->email = $email;
 
         $results = $contact->get_contact_feedback($data);
         Helpers::dump($offset);
