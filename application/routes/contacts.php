@@ -58,18 +58,21 @@ return array(
         //we get the page no for the return trip
         $page = Input::get('page');
 
-        return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
+        return view::of_layout()->partial('contents', 'contact/contacts_inbox_view', array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'categories' => $category->pull_site_categories()
-          , 'status' => DB::table('Status', 'master')->get()
+          , 'status' => db::table('status', 'master')->get()
           , 'feedback_of_contact' => $feedback_of_contact
           , 'page' => ($page) ? '?page='.$page : null
-          , 'admin_check' => S36Auth::user()
-          , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
+          , 'admin_check' => s36auth::user()
+          , 'priority_obj' => (object)array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
     }),
 
     'GET /contacts/pull_feedback_for_contact/(:num)/(:num)' => function($page, $limit) use ($contact) {
+
+        $category = new DBCategory;
+
         $offset = ($page - 1) * $limit;
 
         $data_request = new StdClass;
@@ -79,9 +82,17 @@ return array(
         $data_request->name = Input::get('name');
         $data_request->email = Input::get('email');
 
-        $results = $contact->get_contact_feedback($data_request);
+        $feedback_of_contact = $contact->get_contact_feedback($data_request);
         //echo view partial here
-        echo $results;
+        //echo $feedback_of_contact;
+
+        echo view::of_layout()->partial('contents', 'contact/contacts_inbox_view', array(  
+            'categories' => $category->pull_site_categories()
+          , 'status' => db::table('status', 'master')->get()
+          , 'feedback_of_contact' => $feedback_of_contact
+          , 'admin_check' => s36auth::user()
+          , 'priority_obj' => (object)array(0 => 'low', 60 => 'medium', 100 => 'high')
+        ))->get();
     },
 
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
