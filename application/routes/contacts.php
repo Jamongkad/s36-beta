@@ -69,7 +69,7 @@ return array(
         ));
     }),
 
-    'GET /contacts/pull_feedback_for_contact/(:int)' => function($page) {
+    'GET /contacts/pull_feedback_for_contact/(:num)' => function($page) {
         Helpers::dump($page);
     },
 
