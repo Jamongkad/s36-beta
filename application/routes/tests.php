@@ -279,7 +279,7 @@ return array(
         $auth = new S36Auth;
 
         Helpers::dump($contact); 
-        Helpers::dump($auth);
+        Helpers::dump($auth->user());
         /*
         $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
 
