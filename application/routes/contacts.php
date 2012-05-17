@@ -80,7 +80,7 @@ return array(
         $data_request->email = Input::get('email');
 
         $results = $contact->get_contact_feedback($data_request);
-        Helpers::dump($results);
+        echo $results;
     },
 
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
