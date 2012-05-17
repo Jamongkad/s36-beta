@@ -53,23 +53,20 @@ return array(
         $get_data = (object)Input::get();
 
         $category = new DBCategory;
-
-        $contact_person = $contact->get_contact_feedback($get_data);
-
+        $feedback_of_contact = $contact->get_contact_feedback($get_data);
+        
+        //we get the page no for the return trip
         $page = Input::get('page');
-        Helpers::dump($contact_person); 
-        /*
+
         return View::of_layout()->partial('contents', 'contact/contacts_inbox_view', Array(  
             'metrics' => $contact_metrics->render_metric_bar()
           , 'categories' => $category->pull_site_categories()
           , 'status' => DB::table('Status', 'master')->get()
-          , 'contact_person' => $contact_person
+          , 'feedback_of_contact' => $feedback_of_contact
           , 'page' => ($page) ? '?page='.$page : null
           , 'admin_check' => S36Auth::user()
           , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
         ));
-        */
-
     }),
 
     'GET /contacts/edit_contact' => Array('name' => 'edit_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 

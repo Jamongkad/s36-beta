@@ -134,44 +134,75 @@ class DBContact extends S36DataObject {
     public function get_contact_feedback($obj) {
         $sql = '
             SELECT 
-                 Contact.contactId
-               , LCASE(Contact.email)
-               , Feedback.feedbackId
-               , Category.name AS category
-               , Category.categoryId
-               , Feedback.status AS status
-               , Feedback.dtAdded AS date
-               , CASE
+                  SQL_CALC_FOUND_ROWS
+                  Feedback.feedbackId AS id
+                , Category.intName
+                , Category.name AS category
+                , Category.categoryId
+                , CASE 
+                    WHEN Feedback.status = "new" THEN "New"
+                    WHEN Feedback.status = "inprogress" THEN "In Progress"
+                    WHEN Feedback.status = "closed" THEN "Closed"
+                  END AS status
+                , CASE
                     WHEN Feedback.priority < 30 THEN "low"
                     WHEN Feedback.priority >= 30 AND Feedback.priority <= 60 THEN "medium"
                     WHEN Feedback.priority > 60 AND Feedback.priority <= 100 THEN "high"
-                 END AS priority
-               , CASE 
+                  END AS priority
+                , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
+                , Feedback.dtAdded AS date
+                , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
                     WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
                     WHEN Feedback.permission = 3 THEN "PRIVATE"
-                 END AS permission
-               , CASE 
+                  END AS permission
+                , CASE 
                     WHEN Feedback.rating = 1 THEN "POOR"
                     WHEN Feedback.rating = 2 THEN "POOR"
                     WHEN Feedback.rating = 3 THEN "AVERAGE"
                     WHEN Feedback.rating = 4 THEN "GOOD"
                     WHEN Feedback.rating = 5 THEN "EXCELLENT"
-                 END AS rating
-               , Feedback.isFeatured
-               , Feedback.isFlagged
-               , Feedback.isPublished
-               , Feedback.isArchived
-               , Feedback.isSticked
-               , Feedback.isDeleted
-               , Contact.contactId AS contactid
-               , Contact.firstName AS firstname
-               , Contact.lastName AS lastname
-               , Contact.avatar AS avatar
-               , Country.name AS countryname
-               , Country.code AS countrycode
-               , Site.siteId AS siteid
-               , Feedback.text 
+                  END AS rating
+                , CASE 
+                    WHEN Feedback.permission = 1 THEN "full-permission"
+                    WHEN Feedback.permission = 2 THEN "limited-permission"
+                    WHEN Feedback.permission = 3 THEN "private-permission"
+                  END AS permission_css
+                , Feedback.isFeatured
+                , Feedback.isFlagged
+                , Feedback.isPublished
+                , Feedback.isArchived
+                , Feedback.isSticked
+                , Feedback.isDeleted
+                , Feedback.displayName
+                , Feedback.displayImg
+                , Feedback.displayCompany
+                , Feedback.displayPosition
+                , Feedback.displayURL
+                , Feedback.displayCountry
+                , Feedback.displaySbmtDate
+                , Feedback.indLock
+                , Contact.contactId AS contactid
+                , Contact.firstName AS firstname
+                , Contact.lastName AS lastname
+                , Contact.email AS email
+                , Contact.profileLink
+                , Contact.position AS position
+                , Contact.website AS url
+                , Contact.city AS city
+                , Contact.companyName AS companyname
+                , Contact.avatar AS avatar
+                , Contact.loginType
+                , Contact.ipaddress
+                , Contact.browser
+                , Country.name AS countryname
+                , Country.code AS countrycode
+                , Contact.ipaddress
+                , Contact.browser
+                , Contact.avatar AS avatar
+                , Site.siteId AS siteid
+                , Site.name AS sitename
+                , Site.domain AS sitedomain
             FROM 
                 Contact 
             INNER JOIN
