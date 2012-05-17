@@ -23,7 +23,7 @@ class ContactMetrics {
 
         return View::make('partials/contact_metricbar_view', Array(
             'contact_count' => $contact_count
-          , 'metric' => $metric->fetch_metrics()
+          , 'metric' => $this->metric->fetch_metrics()
         ));
     }
 }
