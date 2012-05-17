@@ -1,4 +1,4 @@
-<?$request_url_parameters = Input::get('limit').'/'.Input::get('name').'/'.Input::get('email');?>
+<?$request_url_parameters = Input::get('limit').'?name='.Input::get('name').'&email='.Input::get('email');?>
 <script>
 	var counter = 0;	
     $(window).scroll(function() {

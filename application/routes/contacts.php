@@ -69,15 +69,15 @@ return array(
         ));
     }),
 
-    'GET /contacts/pull_feedback_for_contact/(:num)/(:num)/(:any)/(:any)' => function($page, $limit, $name, $email) use ($contact) {
+    'GET /contacts/pull_feedback_for_contact/(:num)/(:num)' => function($page, $limit) use ($contact) {
         $offset = ($page - 1) * $limit;
 
         $data_request = new StdClass;
         $data_request->limit = $limit;
         $data_request->offset = $offset;
         $data_request->company_id = S36Auth::user()->companyid;
-        $data_request->name = $name;
-        $data_request->email = $email;
+        $data_request->name = Input::get('name');
+        $data_request->email = Input::get('email');
 
         $results = $contact->get_contact_feedback($data);
         Helpers::dump($offset);
