@@ -40,7 +40,7 @@
                                 </td>
                                 <td class="name"><?=$contact->firstname?> <?=$contact->lastname?></td>
                                 <td><?=$contact->email?></td>
-                                <td><?=HTML::link('contacts/view_contact?name='.$contact->firstname."&email=".$contact->email.'&offset=0&limit=10'.$page
+                                <td><?=HTML::link('contacts/view_contact?name='.$contact->firstname."&email=".$contact->email.'&offset=0&limit=5'.$page
                                                   , $contact->feedbackidcount
                                                   , Array('class' => 'contact-link'))?></td>
                                 <td>
