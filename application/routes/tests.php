@@ -282,7 +282,7 @@ return array(
 
         $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
 
-        Helpers::dump($contact_metric);
+        Helpers::dump($contact_metric->render_metric_bar());
     },
 
     //reserved route for Leica and Ryan testing
