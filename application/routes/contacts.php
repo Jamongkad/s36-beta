@@ -8,9 +8,7 @@ return array(
     'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact) { 
 
         $auth = new S36Auth;
-
         $metric = new DBMetric;
-        //$metric->company_id = $auth->user()->companyid;
 
         $contact_metrics = new ContactMetrics($contact, $metric, $auth);
 

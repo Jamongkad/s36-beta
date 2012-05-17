@@ -5,7 +5,7 @@ class AddFeedback {
     public function create_feedback_with_profile() {
         //TODO: HEY MOTHABITCH! REFACTOR THIS CODE ASAP!!        
         $fb = new Feedback\Repositories\DBFeedback;
-        $ct = new DBContact;
+        $ct = new Contact\Repositories\DBContact;
         $us = new DBUser;
         $bw = new DBBadWords;
         $mt = new DBMetric;

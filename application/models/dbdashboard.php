@@ -1,7 +1,6 @@
 <?php
 
-class DBDashboard extends S36DataObject 
-{
+class DBDashboard extends S36DataObject {
    
    public $company_id;
 
@@ -92,7 +91,7 @@ class DBDashboard extends S36DataObject
 
        $geoscore = $this->get_geochart_scores();
        $feedback = new Feedback\Repositories\DBFeedback;
-       $contact = new DBContact;
+       $contact = new Contact\Repositories\DBContact;
        try { 
            $this->dbh->beginTransaction(); 
            //if summary exists clear table and rebuild data muthafucka
