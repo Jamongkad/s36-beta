@@ -5,13 +5,13 @@
     <tr>
         <td width="10"></td>
         <td width="10">
-            <?if($contact_person[0]->avatar):?> 
-                <?=HTML::image('uploaded_cropped/48x48/'.$contact_person[0]->avatar)?>
+            <?if($feedback_of_contact[0]->avatar):?> 
+                <?=HTML::image('uploaded_cropped/48x48/'.$feedback_of_contact[0]->avatar)?>
             <?else:?>
                 <?=HTML::image('img/48x48-blank-avatar.jpg')?>
             <?endif?> 
         </td>
-        <td valign="middle"><strong><?=$contact_person[0]->firstname?> <?=$contact_person[0]->lastname?></strong></td>
+        <td valign="middle"><strong><?=$feedback_of_contact[0]->firstname?> <?=$feedback_of_contact[0]->lastname?></strong></td>
         <td align="right"><?=HTML::link('contacts'.$page, 'Back to Contacts')?></td>
         <td width="10"></td>
     </tr>
