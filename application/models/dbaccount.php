@@ -15,16 +15,16 @@ class DBAccount extends S36DataObject {
     public function create_account() {
         
         $encrypt = new Crypter;
-        $password_string = "36stories668";
+        $password_string = "bimshop668";
         $password = crypt($password_string);
-        $name = $this->escape("36stories");
-        $email = $this->escape("36stories@gmail.com");
+        $name = $this->escape("Bimshop");
+        $email = $this->escape("bimshop@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $company = $this->escape("36stories");
-        $bill_to = "36stories, LLC";
-        $fullName = $this->escape("36stories");
-        $site = $this->escape("www.36stories.com");
-        $site_name = $this->escape("36stories");
+        $company = $this->escape("Bimshop");
+        $bill_to = "Bimshop, LLC";
+        $fullName = $this->escape("Bimshop");
+        $site = $this->escape("www.bimshop.com");
+        $site_name = $this->escape("Bimshop");
         
         if($this->company($company)) {
             throw new Exception("The company $company already exists.");
