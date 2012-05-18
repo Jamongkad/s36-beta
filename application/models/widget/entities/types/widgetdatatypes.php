@@ -24,19 +24,19 @@ abstract class WidgetDataTypes {
     }
 
     public function create() { 
-        $insert_id = $this->_dbw->save_widget($this->data(), $this->make_default);
+        $insert_id = $this->_dbw->save_widget($this->data, $this->make_default);
         $this->_dbw->insert_ancestor($insert_id, $insert_id);
         $this->_id = $insert_id; 
     }
 
     public function update() {
-        $this->_dbw->update_widget_by_id($this->data()->widgetkey, $this->data());
-        $obj = $this->_dbw->fetch_widget_by_id($this->data()->widgetkey);
+        $this->_dbw->update_widget_by_id($this->data->widgetkey, $this->data);
+        $obj = $this->_dbw->fetch_widget_by_id($this->data->widgetkey);
         $this->_id = $obj->widgetstoreid;
     }
 
     public function delete() {
-        $this->_dbw->delete_widget($this->data()->widgetkey);
+        $this->_dbw->delete_widget($this->data->widgetkey);
     }
 
     public function adopt(WidgetDataTypes $child) { 
