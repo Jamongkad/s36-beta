@@ -35,6 +35,7 @@ class DBWidget extends S36DataObject {
     }
 
     public function save_widget($widget_obj, $make_default=false) {
+
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
         
         if($make_default) { 
@@ -52,7 +53,7 @@ class DBWidget extends S36DataObject {
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->bindParam(':widget_type', $widget_obj->widget_type, PDO::PARAM_STR);
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(':company_id', $widget_obj->company_id, PDO::PARAM_INT);
         $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_INT);
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->execute();
