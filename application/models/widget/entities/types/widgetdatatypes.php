@@ -16,7 +16,7 @@ abstract class WidgetDataTypes {
     }
 
     public function save() {
-        if($this->data()->widgetkey) {
+        if($this->data->widgetkey) {
             $this->update();     
         } else {
             $this->create();         
