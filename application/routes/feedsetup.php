@@ -161,7 +161,6 @@ return array(
           , 'embed_effects'    => Input::get('embed_effects')
           , 'modal_effects'    => Input::get('modal_effects')
           , 'perms'   => $perms 
-          , 'site_nm' => $this->site_nm->domain
         );
 
         $display = new Widget\Entities\DisplayWidget;
