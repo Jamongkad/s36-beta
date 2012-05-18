@@ -159,9 +159,11 @@ class DBContact extends S36DataObject {
                 Contact.contactId DESC
         ";
 
+        $search_term = '%'.$search_term.'%';
+
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->company_id);
-        $sth->bindParam(':search', '%'.$search_term.'%');
+        $sth->bindParam(':search', $search_term);
         /*
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
