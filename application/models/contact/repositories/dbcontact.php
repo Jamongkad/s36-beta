@@ -161,11 +161,12 @@ class DBContact extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->company_id);
+        $sth->bindParam(':search', $seach_term);
         /*
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         */
-        $sth->execute( array('search' => '%'.$search_term.'%') );
+        $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
