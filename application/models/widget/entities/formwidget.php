@@ -4,7 +4,7 @@ use \Widget\Entities\Types\WidgetDataTypes;
 use Input, Helpers;
 
 class FormWidget extends WidgetDataTypes {
-    
+    /* 
     public function data() { 
         return (object) Array(
             'widgetkey'   => Input::get('submit_widgetkey')
@@ -21,4 +21,5 @@ class FormWidget extends WidgetDataTypes {
           , 'site_nm'  => $this->site_nm->domain
         );
     }
+    */
 }

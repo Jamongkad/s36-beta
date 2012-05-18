@@ -6,7 +6,9 @@ use DB, Input, Helpers;
 //TODO: You can do better than this...
 abstract class WidgetDataTypes {
 
-    private $_dbw, $_id;
+    public $make_default = False;
+
+    private $_dbw, $_id, $data;
 
     public function __construct() {
         $this->_dbw = new DBWidget;
@@ -22,7 +24,7 @@ abstract class WidgetDataTypes {
     }
 
     public function create() { 
-        $insert_id = $this->_dbw->save_widget($this->data());
+        $insert_id = $this->_dbw->save_widget($this->data(), $this->make_default);
         $this->_dbw->insert_ancestor($insert_id, $insert_id);
         $this->_id = $insert_id; 
     }
@@ -67,5 +69,8 @@ abstract class WidgetDataTypes {
         return $this->_id;     
     }
 
-    public function data() {}
+    public function data($data) {
+        $this->data = $data;     
+        $this->data->site_nm = $this->site_nm->domain; 
+    }
 }
