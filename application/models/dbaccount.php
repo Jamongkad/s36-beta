@@ -26,11 +26,11 @@ class DBAccount extends S36DataObject {
         $site = $this->escape("www.36stories.com");
         $site_name = $this->escape("36stories");
         
-        Helpers::dump($this->company_exists($company));
-        /*
         if($company_info = $this->company_exists($company)) {
             throw new Exception("$company already exists.");
         } else { 
+            Helpers::dump($company_info); 
+            /*
             print_r("Creating New Account<br/>");
             $this->dbh->beginTransaction();
             $this->dbh->query('INSERT INTO Company (`name`, `planid`, `billTo`) VALUES("'.$company.'", 1, "'.$bill_to.'")');
@@ -52,8 +52,9 @@ class DBAccount extends S36DataObject {
                                 , (@company_id, "suggestions", "Suggestions", 1)');
             $this->dbh->commit();
             print_r("SUCCESSFUL MOTHAFUCKA!");
+            */
         }
-        */
+
     }
 
     public function company_exists($company) {
