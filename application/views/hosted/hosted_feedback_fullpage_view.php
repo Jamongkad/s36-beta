@@ -68,7 +68,7 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->name);?>
         	<strong><?=$company_name?></strong>              
-            <span><a href="#">View all feedback</a> | <a href="#">Send in feedback</a></span>
+            <span><?=HTML::link('/', 'Send in feedback')?></span>
 
             <?if($company->domain):?>
                 <span class="right padfix">

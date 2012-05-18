@@ -240,6 +240,16 @@ class DBWidget extends S36DataObject {
         return $result; 
     }
 
+    public function fetch_canonical_widget($company_id) { 
+        $sql = "SELECT WidgetStore.widgetKey FROM WidgetStore WHERE WidgetStore.companyId = :company_id";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id);
+        $sth->execute();
+
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result->widgetkey;
+    }
+
     private function _load_object_code($widget_obj_string) {      
         $obj = base64_decode($widget_obj_string);
         $obj = unserialize($obj); 

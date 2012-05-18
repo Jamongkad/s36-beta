@@ -159,6 +159,12 @@ return array(
         Helpers::dump($widget);
     },
 
+    'GET /tests/default_widget/(:any)' => function($company_id) {
+        $dbw = new Widget\Repositories\DBWidget;
+        $widget = $dbw->fetch_canonical_widget($company_id);
+        Helpers::dump($widget);
+    },
+
     'GET /tests/pull_feedback' => function() {        
         $params = Array(
             'company_id'   => 1 
