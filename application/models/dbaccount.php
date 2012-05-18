@@ -20,7 +20,7 @@ class DBAccount extends S36DataObject {
         $name = $this->escape("36stories");
         $email = $this->escape("36stories@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $company = $this->escape("36stories");
+        $company = $this->escape("36storiespwet");
         $bill_to = "36stories, LLC";
         $fullName = $this->escape("36stories");
         $site = $this->escape("www.36stories.com");
