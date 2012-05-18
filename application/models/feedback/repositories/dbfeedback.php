@@ -511,7 +511,7 @@ class DBFeedback extends S36DataObject {
 
         $avatar_names = array_map(function($obj) { return $obj->avatar; }, $avatar_result);
         
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new \Widget\ProfileImage();
         foreach($avatar_names as $avatar_name) {
             $profile_img->remove_profile_photo($avatar_name);
         }
