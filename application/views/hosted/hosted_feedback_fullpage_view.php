@@ -82,7 +82,7 @@
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
                 <?if($company->logo):?>
-                    <?=HTML::image('img/company_logos/'.$company->logo)?>
+                    <?=HTML::image('company_logos/'.$company->logo)?>
                 <?else:?>
                     <?=HTML::image('img/company-logo-filler.jpg')?>
                 <?endif?>
