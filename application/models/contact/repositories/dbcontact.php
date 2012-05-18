@@ -132,6 +132,10 @@ class DBContact extends S36DataObject {
         return $result_obj;
     }
 
+    public function search_contacts($search_term, $multiple=False) {
+        
+    }
+
     public function get_contact_feedback($obj) {
         $sql = '
             SELECT 

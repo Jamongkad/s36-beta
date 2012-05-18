@@ -26,9 +26,12 @@ return array(
           , 'page' => ($page) ? '&page='.$page : null
         ));
     }),
-
+    
     'POST /contacts/search' => function() use ($contact, $contact_metrics) {
-        print_r(Input::get());
+        $search_term = Input::get('search_contact');
+        $search_results = $contact->search_contacts($search_term);
+        Helpers::dump($search_results);
+        
         /*
         $search_term = Input::get('search_contact');
  
