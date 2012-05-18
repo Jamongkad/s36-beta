@@ -299,6 +299,12 @@ return array(
         Helpers::dump($contact_info);
     },
 
+    'GET /tests/accounts' => function() {
+        $accounts = new DBAccount;
+        $no_default = $accounts->companies_wo_defaultwidgets();
+        Helpers::dump($no_default);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
