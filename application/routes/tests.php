@@ -280,9 +280,6 @@ return array(
 
         Helpers::dump($contact);
         /*
-        $contact_metric = new Contact\Services\ContactMetrics($contact, $metric, $auth);
-        Helpers::dump($contact_metric->render_metric_bar());
-        */
         $get_data = (object) Array(
             'name'  => 'Mathew'
           , 'email' => 'wrm932@gmail.com'
@@ -291,6 +288,9 @@ return array(
         );
         $contact_feedback = $contact->get_contact_feedback($get_data);
         Helpers::dump($contact_feedback);
+        */
+        $contact_info = $contact->get_contact_info("henry_s_castor@yahoo.com");
+        Helpers::dump($contact_info);
     },
 
     //reserved route for Leica and Ryan testing

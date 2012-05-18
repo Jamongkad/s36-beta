@@ -84,8 +84,6 @@ return array(
 
         $feedback_of_contact = $contact->get_contact_feedback($data_request);
         //echo view partial here
-        //echo $feedback_of_contact;
-
         echo View::make('contact/partials/contacts_units_partial_view', array(  
             'categories' => $category->pull_site_categories()
           , 'status' => DB::Table('Status', 'master')->get()
