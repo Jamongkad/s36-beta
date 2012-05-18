@@ -241,7 +241,14 @@ class DBWidget extends S36DataObject {
     }
 
     public function fetch_canonical_widget($company_id) { 
-        $sql = "SELECT WidgetStore.widgetKey FROM WidgetStore WHERE WidgetStore.companyId = :company_id";
+        $sql = "SELECT 
+                    WidgetStore.widgetKey 
+                FROM 
+                    WidgetStore 
+                WHERE 1=1 
+                    AND WidgetStore.companyId = :company_id
+                    AND WidgetStore.isDefault = 1      
+                ";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id);
         $sth->execute();
