@@ -28,7 +28,8 @@ return array(
     }),
 
     'POST /contacts/search' => function() use ($contact, $contact_metrics) {
-
+        print_r(Input::get());
+        /*
         $search_term = Input::get('search_contact');
  
         $pagination = new ZebraPagination;
@@ -47,6 +48,7 @@ return array(
           , 'pagination' => $pagination->render()
           , 'page' => ($page) ? '&page='.$page : null
         ));
+        */
     },
 
     'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 
