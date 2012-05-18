@@ -2,7 +2,7 @@
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 use ZebraPagination\ZebraPagination;
-use Widget\ProfileImage;
+use \Widget\ProfileImage;
 
 class DBContact extends S36DataObject {
 
