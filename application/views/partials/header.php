@@ -140,7 +140,7 @@
                                                                                                                         , 'settings/upgrade'
                                                                                                                         , 'settings/change_card'
                                                                                                                         , 'settings/cancel_account')) ? 'selected' : null)))?></li>
-                            <li><?=HTML::link('help', 'HELP', Array('class' => (Helpers::filter_highlighter(array('help')) ? 'selected' : null)))?></li>
+                            <li><a href="http://36stories.freshdesk.com/" target=_>HELP</a></li>
                         </ul>
                     </div>
                 </div>
