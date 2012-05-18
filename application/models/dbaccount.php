@@ -57,6 +57,7 @@ class DBAccount extends S36DataObject {
     }
 
     public function company_exists($company) {
+        echo $company;
         $sql = "
             SELECT  
                 Company.companyId
