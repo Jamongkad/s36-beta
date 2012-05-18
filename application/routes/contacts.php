@@ -13,7 +13,7 @@ return array(
         $pagination = new ZebraPagination;
         $offset = ($pagination->get_page() - 1) * $limit;
 
-        $contacts = $contact->fetch_contacts($limit, $offset);
+        $contacts = $contact->fetch_contacts($offset, $limit);
         $pagination->records($contacts->total_rows);
         $pagination->records_per_page($limit);
 

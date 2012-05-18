@@ -72,7 +72,7 @@ class DBContact extends S36DataObject {
     }
     
     //A function must do one thing and do it well.
-    public function fetch_contacts($limit, $offset) { 
+    public function fetch_contacts($offset, $limit) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
 
         $sql = "
