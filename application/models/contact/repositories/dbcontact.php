@@ -153,7 +153,7 @@ class DBContact extends S36DataObject {
                     ON Country.countryId = Contact.countryId 
             WHERE 1=1
                 AND Company.companyId = :company_id
-                AND Contact.email LIKE :search OR Contact.firstname LIKE :search OR Contact.lastname LIKE :search
+                AND (Contact.email LIKE :search OR Contact.firstname LIKE :search OR Contact.lastname LIKE :search)
             GROUP BY
                 Contact.email
             ORDER BY 
@@ -163,7 +163,7 @@ class DBContact extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':search', $search_term);
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(':company_id', $this->company_id);
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
         $sth->execute();
