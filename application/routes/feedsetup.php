@@ -120,7 +120,7 @@ return array(
         );
 
         $form->make_default = true;
-        $form->data($data);
+        $form->set_widgetdata($data);
         Helpers::dump($form);
         /*
         $form = new Widget\Entities\FormWidget;

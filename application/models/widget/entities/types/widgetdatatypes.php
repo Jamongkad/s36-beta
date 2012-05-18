@@ -69,7 +69,7 @@ abstract class WidgetDataTypes {
         return $this->_id;     
     }
 
-    public function data($data) {
+    public function set_widgetdata($data) {
         $this->data = $data;     
         $this->data->site_nm = $this->site_nm->domain; 
     }
