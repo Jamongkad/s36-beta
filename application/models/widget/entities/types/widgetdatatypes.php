@@ -12,7 +12,6 @@ abstract class WidgetDataTypes {
 
     public function __construct() {
         $this->_dbw = new DBWidget;
-        $this->site_nm = DB::Table('Site')->where('siteId', '=', Input::get('site_id'))->first(Array('domain'));
     }
 
     public function save() {
@@ -70,7 +69,8 @@ abstract class WidgetDataTypes {
     }
 
     public function set_widgetdata($data) {
+        $site = DB::Table('Site')->where('siteId', '=', $data->site_id)->first(Array('domain'));
         $this->data = $data;     
-        $this->data->site_nm = $this->site_nm->domain; 
+        $this->data->site_nm = $site->domain; 
     }
 }
