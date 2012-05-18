@@ -2,7 +2,6 @@
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 use ZebraPagination\ZebraPagination;
-use \Widget\ProfileImage;
 
 class DBContact extends S36DataObject {
 
@@ -335,7 +334,7 @@ class DBContact extends S36DataObject {
 
     public function delete_contact($email) {
 
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new \Widget\ProfileImage();
         $avatars = $this->get_contact_info($email, $multiple=true);
 
         foreach($avatars as $avatar) {
