@@ -72,15 +72,8 @@ class DBContact extends S36DataObject {
     }
     
     //A function must do one thing and do it well.
-    public function fetch_contacts($limit, $offset, $search_term=false) { 
+    public function fetch_contacts($limit, $offset) { 
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
-
-        $search_query = null;
-        //TODO: Try to fit this into PDO paradigm
-        if($search_term) {
-            $search_query = sprintf("AND Contact.email LIKE '%%%s%%' OR Contact.firstname LIKE '%%%s%%' OR Contact.lastname LIKE '%%%s%%'", 
-                                    $this->quote($search_term), $this->quote($search_term), $this->quote($search_term));
-        }
 
         $sql = "
             SELECT
@@ -132,8 +125,57 @@ class DBContact extends S36DataObject {
         return $result_obj;
     }
 
-    public function search_contacts($search_term, $multiple=False) {
-        return $search_term;     
+    public function search_contacts($search_term) {
+
+        $sql = "
+            SELECT
+                SQL_CALC_FOUND_ROWS
+                Contact.contactId
+              , Contact.email 
+              , Contact.firstname
+              , Contact.lastname
+              , Contact.avatar
+              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
+              , COUNT(Feedback.feedbackId) AS feedbackIdCount
+            FROM 
+                Contact
+            INNER JOIN
+                Feedback
+                    On Feedback.contactId = Contact.contactId
+            INNER JOIN
+                Site
+                    ON Site.siteId = Contact.siteId
+            INNER JOIN
+                Company
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                Country
+                    ON Country.countryId = Contact.countryId 
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                AND Contact.email LIKE :search OR Contact.firstname LIKE :search OR Contact.lastname LIKE :search
+            GROUP BY
+                Contact.email
+            ORDER BY 
+                Contact.contactId DESC
+            LIMIT :offset, :limit
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':search', $search_term);
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);
+        $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+
+        return $result_obj;
     }
 
     public function get_contact_feedback($obj) {
