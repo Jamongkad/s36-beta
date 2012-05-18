@@ -173,8 +173,9 @@ class DBWidget extends S36DataObject {
                 WidgetClosure
                     ON WidgetStore.widgetStoreId = WidgetClosure.descendant_id
             WHERE 1=1
-                AND companyId = :company_id
-                AND widgetType = :widget_type
+                AND WidgetStore.companyId = :company_id
+                AND WidgetStore.widgetType = :widget_type
+                AND WidgetStore.isDefault = 0 
             GROUP BY 
                 WidgetStore.widgetStoreId
             HAVING 
