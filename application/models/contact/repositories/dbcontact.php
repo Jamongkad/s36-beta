@@ -153,7 +153,7 @@ class DBContact extends S36DataObject {
                     ON Country.countryId = Contact.countryId 
             WHERE 1=1
                 AND Company.companyId = :company_id
-                AND (Contact.email LIKE :search OR Contact.firstname LIKE :search OR Contact.lastname LIKE :search)
+                AND (Contact.email LIKE :search)
             GROUP BY
                 Contact.email
             ORDER BY 
