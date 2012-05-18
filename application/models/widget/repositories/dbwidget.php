@@ -39,6 +39,7 @@ class DBWidget extends S36DataObject {
 
         $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
                                  VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
+
         $widget_obj_string = base64_encode(serialize($widget_obj));
 
         $this->dbh->beginTransaction();
