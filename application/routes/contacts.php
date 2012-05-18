@@ -35,13 +35,13 @@ return array(
         $offset = ($pagination->get_page() - 1) * $limit; 
 
         $search_results = $contact->search_contacts($search_term, $offset, $limit);
-        $pagination->records($contacts->total_rows);
+        $pagination->records($search_results->total_rows);
         $pagination->records_per_page($limit);
 
         $page = Input::get('page');
         
         return View::of_layout()->partial('contents', 'contact/contacts_index_view', Array(
-            'contacts' => $contacts 
+            'contacts' => $search_results 
           , 'metrics' => $contact_metrics->render_metric_bar()
           , 'pagination' => $pagination->render()
           , 'page' => ($page) ? '&page='.$page : null
