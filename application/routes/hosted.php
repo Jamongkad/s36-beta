@@ -34,8 +34,12 @@ return array(
         $hosted->ignore_cache = True;
         $feeds = $hosted->fetch_hosted_feedback(); 
 
+        $dbw = new Widget\Repositories\DBWidget;
+        $widget = $dbw->fetch_canonical_widget($company_id);
+
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array('company' => $company_info, 'feeds' => $feeds->html));        
+                                                  , Array(  'company' => $company_info, 'feeds' => $feeds->html
+                                                          , 'widget' => $widget ));        
     },
 
     'GET /hosted/fullpage_partial/(:num)/(:num?)' => function($company_id, $page=False) {

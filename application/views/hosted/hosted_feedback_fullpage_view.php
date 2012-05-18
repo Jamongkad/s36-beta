@@ -68,7 +68,9 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->name);?>
         	<strong><?=$company_name?></strong>              
-            <span><?=HTML::link('/', 'Send in feedback')?></span>
+            <?if($widget):?>
+                <span><?=HTML::link('hosted/form/'.$widget->widgetkey, 'Send in feedback')?></span>
+            <?endif?>
 
             <?if($company->domain):?>
                 <span class="right padfix">
