@@ -119,6 +119,7 @@ return array(
           , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
         );
 
+        $form->make_default = true;
         $form->data($data);
         Helpers::dump($form);
         /*

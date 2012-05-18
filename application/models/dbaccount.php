@@ -52,9 +52,30 @@ class DBAccount extends S36DataObject {
             $this->dbh->commit();
             print_r("SUCCESSFUL MOTHAFUCKA!");
             */
+            /*
             $company_info = $this->company($company);
             $site_id = $company_info->siteid;
             $company_id = $company_info->companyid;
+
+            $form = new Widget\Entities\FormWidget;
+
+            $data = (object) Array(
+                'widgetkey'   => False
+              , 'widget_type' => "submit"
+              , 'site_id'     => $site_id 
+              , 'company_id' => $company_id
+              , 'theme_type' => 'form-aglow'
+              , 'theme_name' => "$company Default"
+              , 'embed_type' => 'form'
+              , 'submit_form_text'     => 'Please gives us your feedback'
+              , 'submit_form_question' => 'What are your thoughts about our product/services?'
+              , 'tab_pos'  => 'side'
+              , 'tab_type' => 'tab-l-aglow'
+            );
+
+            $form->data($data);
+            Helpers::dump($form);
+            */
         }
 
     }
