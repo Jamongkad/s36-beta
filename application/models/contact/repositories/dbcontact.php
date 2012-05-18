@@ -133,7 +133,7 @@ class DBContact extends S36DataObject {
     }
 
     public function search_contacts($search_term, $multiple=False) {
-        
+        return $search_term;     
     }
 
     public function get_contact_feedback($obj) {
