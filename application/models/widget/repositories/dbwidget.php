@@ -34,11 +34,17 @@ class DBWidget extends S36DataObject {
         }
     }
 
-    public function save_widget($widget_obj) {
+    public function save_widget($widget_obj, $make_default=false) {
         $widget_key = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
-
-        $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
-                                 VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
+        
+        if($make_default) { 
+            $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, isDefault, companyId, siteId, widgetObjString) 
+                                     VALUES (:widget_key, :widget_type, 1, :company_id, :site_id, :widget_string)";
+        } else {
+            
+            $sql = "INSERT INTO WidgetStore (widgetKey, widgetType, companyId, siteId, widgetObjString) 
+                                     VALUES (:widget_key, :widget_type, :company_id, :site_id, :widget_string)";
+        }
 
         $widget_obj_string = base64_encode(serialize($widget_obj));
 
