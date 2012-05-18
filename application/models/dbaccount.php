@@ -80,21 +80,38 @@ class DBAccount extends S36DataObject {
 
     public function company($company) {
         $sql = "
-            SELECT  
-                Company.companyId
-              , Site.siteId
-            FROM 
-                Company 
-            INNER JOIN
-                Site
-                    ON Site.companyId = Company.companyId
-            WHERE 1=1
-                AND Company.name = :company_name
+            select  
+                company.companyid
+              , site.siteid
+            from 
+                company 
+            inner join
+                site
+                    on site.companyid = company.companyid
+            where 1=1
+                and company.name = :company_name
         ";
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_name', $company);
+        $sth->bindparam(':company_name', $company);
         $sth->execute(); 
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public function companies_wo_defaultwidgets() {
+        $sql = "
+            SELECT * FROM Company
+            INNER JOIN
+                WidgetStore
+                    ON WidgetStore.companyId = Company.companyId
+            WHERE 1=1
+                AND WidgetStore.isDefault = 0
+            GROUP BY
+                Company.companyId
+        ";
+        $sth = $this->dbh->prepare($sql); 
+        $sth->execute(); 
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result; 
     }
 }
