@@ -254,7 +254,7 @@ class DBWidget extends S36DataObject {
         $sth->execute();
 
         $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result->widgetkey;
+        return $result;
     }
 
     private function _load_object_code($widget_obj_string) {      
