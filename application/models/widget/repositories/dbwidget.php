@@ -175,7 +175,7 @@ class DBWidget extends S36DataObject {
             WHERE 1=1
                 AND WidgetStore.companyId = :company_id
                 AND WidgetStore.widgetType = :widget_type
-                AND WidgetStore.isDefault = 1
+                AND WidgetStore.isDefault = 0 
             GROUP BY 
                 WidgetStore.widgetStoreId
             HAVING 
