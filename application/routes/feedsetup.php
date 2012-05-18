@@ -103,7 +103,8 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
-        Helpers::dump(Input::get());
+        $form = new Widget\Entities\FormWidget;
+        Helpers::dump($form->data());
         /*
         $form = new Widget\Entities\FormWidget;
         $form->save();
