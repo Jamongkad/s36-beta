@@ -29,7 +29,6 @@ class DBAccount extends S36DataObject {
         if($this->company($company)) {
             throw new Exception("The company $company already exists.");
         } else {  
-            /*
             print_r("Creating New Account<br/>");
             $this->dbh->beginTransaction();
             $this->dbh->query('INSERT INTO Company (`name`, `planid`, `billTo`) VALUES("'.$company.'", 1, "'.$bill_to.'")');
@@ -50,18 +49,17 @@ class DBAccount extends S36DataObject {
                                 , (@company_id, "bugs", "Problems/Bugs", 1)
                                 , (@company_id, "suggestions", "Suggestions", 1)');
             $this->dbh->commit();
-            print_r("SUCCESSFUL MOTHAFUCKA!");
-            */
-            /*
+            
             $company_info = $this->company($company);
             $site_id = $company_info->siteid;
             $company_id = $company_info->companyid;
 
             $form = new Widget\Entities\FormWidget;
+            $form->make_default = True;
 
-            $data = (object) Array(
+            $form_data = (object) Array(
                 'widgetkey'   => False
-              , 'widget_type' => "submit"
+              , 'widget_type' => 'submit'
               , 'site_id'     => $site_id 
               , 'company_id' => $company_id
               , 'theme_type' => 'form-aglow'
@@ -73,9 +71,9 @@ class DBAccount extends S36DataObject {
               , 'tab_type' => 'tab-l-aglow'
             );
 
-            $form->data($data);
-            Helpers::dump($form);
-            */
+            $form->set_widgetdata($form_data);
+            $form->save();
+            print_r("SUCCESSFUL");
         }
 
     }
