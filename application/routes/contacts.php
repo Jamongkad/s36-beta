@@ -28,18 +28,13 @@ return array(
     }),
     
     'POST /contacts/search' => function() use ($contact, $contact_metrics) {
+
         $search_term = Input::get('search_contact');
-        $search_results = $contact->search_contacts($search_term);
-        Helpers::dump($search_results);
-        
-        /*
-        $search_term = Input::get('search_contact');
- 
         $pagination = new ZebraPagination;
         $limit = 7;
         $offset = ($pagination->get_page() - 1) * $limit; 
 
-        $contacts = $contact->fetch_contacts($limit, $offset, $search_term);
+        $search_results = $contact->search_contacts($search_term, $offset, $limit);
         $pagination->records($contacts->total_rows);
         $pagination->records_per_page($limit);
 
@@ -51,7 +46,7 @@ return array(
           , 'pagination' => $pagination->render()
           , 'page' => ($page) ? '&page='.$page : null
         ));
-        */
+
     },
 
     'GET /contacts/view_contact' => Array('name' => 'view_contacts', 'before' => 's36_auth', 'do' => function() use($contact, $contact_metrics) { 

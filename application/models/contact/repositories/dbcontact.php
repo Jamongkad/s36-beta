@@ -124,7 +124,7 @@ class DBContact extends S36DataObject {
         return $result_obj;
     }
 
-    public function search_contacts($search_term) {
+    public function search_contacts($search_term, $offset, $limit) {
 
         $sql = "
             SELECT
@@ -157,6 +157,7 @@ class DBContact extends S36DataObject {
                 Contact.email
             ORDER BY 
                 Contact.contactId DESC
+            LIMIT :offset, :limit
         ";
 
         $search_term = '%'.$search_term.'%';
@@ -164,10 +165,9 @@ class DBContact extends S36DataObject {
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->company_id);
         $sth->bindParam(':search', $search_term);
-        /*
         $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
         $sth->bindParam(':offset', $offset, PDO::PARAM_INT);
-        */
+
         $sth->execute();
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
