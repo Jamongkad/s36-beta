@@ -28,9 +28,10 @@ class DBAccount extends S36DataObject {
         
         Helpers::dump($this->company_exists($company));
         /*
-        if($this->company_exists($company)) {
+        if($company_info = $this->company_exists($company)) {
             throw new Exception("$company already exists.");
         } else { 
+            print_r("Creating New Account<br/>");
             $this->dbh->beginTransaction();
             $this->dbh->query('INSERT INTO Company (`name`, `planid`, `billTo`) VALUES("'.$company.'", 1, "'.$bill_to.'")');
             $this->dbh->query('SET @company_id = LAST_INSERT_ID()');
@@ -50,11 +51,28 @@ class DBAccount extends S36DataObject {
                                 , (@company_id, "bugs", "Problems/Bugs", 1)
                                 , (@company_id, "suggestions", "Suggestions", 1)');
             $this->dbh->commit();
+            print_r("SUCCESSFUL MOTHAFUCKA!");
         }
         */
     }
 
     public function company_exists($company) {
-        return $company == "36stories";
+        $sql = "
+            SELECT  
+                Company.companyId
+              , Site.siteId
+            FROM 
+                Company 
+            INNER JOIN
+                Site
+                    ON Site.companyId = Company.companyId
+            WHERE 1=1
+                AND Company.name = :company_name
+        ";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_name', $company);
+        $sth->execute(); 
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 }
