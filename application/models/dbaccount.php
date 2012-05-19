@@ -118,28 +118,27 @@ class DBAccount extends S36DataObject {
         $accounts = $this->companies_wo_defaultwidgets();
         foreach($accounts as $account) {
             
-            if(!$this->company($account->name)) { 
-                $form = new Widget\Entities\FormWidget;
-                $form->make_default = True;
+            $form = new Widget\Entities\FormWidget;
+            $form->make_default = True;
 
-                $form_data = (object) Array(
-                    'widgetkey'   => False
-                  , 'widget_type' => 'submit'
-                  , 'site_id'     => $account->siteid 
-                  , 'company_id' => $account->companyid
-                  , 'theme_type' => 'form-aglow'
-                  , 'theme_name' => "$account->name Default"
-                  , 'embed_type' => 'form'
-                  , 'submit_form_text'     => 'Please gives us your feedback'
-                  , 'submit_form_question' => 'What are your thoughts about our product/services?'
-                  , 'tab_pos'  => 'side'
-                  , 'tab_type' => 'tab-l-aglow'
-                );
-               
-                $form->set_widgetdata($form_data);
-                Helpers::dump($form);
-                //$form->save();
-            }
+            $form_data = (object) Array(
+                'widgetkey'   => False
+              , 'widget_type' => 'submit'
+              , 'site_id'     => $account->siteid 
+              , 'company_id' => $account->companyid
+              , 'theme_type' => 'form-aglow'
+              , 'theme_name' => "$account->name Default"
+              , 'embed_type' => 'form'
+              , 'submit_form_text'     => 'Please gives us your feedback'
+              , 'submit_form_question' => 'What are your thoughts about our product/services?'
+              , 'tab_pos'  => 'side'
+              , 'tab_type' => 'tab-l-aglow'
+            );
+           
+            $form->set_widgetdata($form_data);
+            Helpers::dump($form);
+            //$form->save();
         }
+
     }
 }
