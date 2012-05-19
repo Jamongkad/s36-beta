@@ -81,15 +81,15 @@ class DBAccount extends S36DataObject {
     public function company($company) {
         $sql = "
             select  
-                company.companyid
-              , site.siteid
+                Company.companyId
+              , Site.siteId
             from 
-                company 
+                Company 
             inner join
-                site
-                    on site.companyid = company.companyid
+                Site
+                    on Site.companyId = Company.companyId
             where 1=1
-                and company.name = :company_name
+                and Company.name = :company_name
         ";
         $sth = $this->dbh->prepare($sql);
         $sth->bindparam(':company_name', $company);
