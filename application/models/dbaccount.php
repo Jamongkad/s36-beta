@@ -105,12 +105,8 @@ class DBAccount extends S36DataObject {
             FROM 
                 Company
             INNER JOIN
-                WidgetStore
-                    ON WidgetStore.companyId != Company.companyId
-            WHERE 1=1
-                AND WidgetStore.isDefault = 0
-            GROUP BY
-                Company.companyId
+                Site 
+                    ON Site.companyId = Company.companyId
         ";
         $sth = $this->dbh->prepare($sql); 
         $sth->execute(); 
