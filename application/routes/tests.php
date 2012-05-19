@@ -301,7 +301,7 @@ return array(
 
     'GET /tests/accounts' => function() {
         $accounts = new DBAccount;
-        $no_default = $accounts->companies_wo_defaultwidgets();
+        $no_default = $accounts->activate_defaultwidgets();
         Helpers::dump($no_default);
     },
 
