@@ -100,7 +100,10 @@ class DBAccount extends S36DataObject {
 
     public function companies_wo_defaultwidgets() {
         $sql = "
-            SELECT * FROM Company
+            SELECT 
+            * 
+            FROM 
+                Company
             INNER JOIN
                 WidgetStore
                     ON WidgetStore.companyId = Company.companyId
