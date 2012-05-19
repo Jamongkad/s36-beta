@@ -106,7 +106,7 @@ class DBAccount extends S36DataObject {
                 Company
             INNER JOIN
                 WidgetStore
-                    ON WidgetStore.companyId = Company.companyId
+                    ON WidgetStore.companyId != Company.companyId
             WHERE 1=1
                 AND WidgetStore.isDefault = 0
             GROUP BY
