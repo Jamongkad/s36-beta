@@ -140,8 +140,7 @@ class DBAccount extends S36DataObject {
             );
            
             $form->set_widgetdata($form_data);
-            //Helpers::dump($form);
-            $form->save();
+            //$form->save();
         }
     }
 }
