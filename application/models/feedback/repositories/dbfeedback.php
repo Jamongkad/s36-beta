@@ -467,8 +467,6 @@ class DBFeedback extends S36DataObject {
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
 
-        Helpers::dump(S36Auth::user()->userid); 
-
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -482,7 +480,7 @@ class DBFeedback extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', S36Auth::user()->userid, PDO::PARAM_INT);
         return $sth->execute();       
     }
 
