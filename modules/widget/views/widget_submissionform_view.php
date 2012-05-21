@@ -1,5 +1,5 @@
 <?if($theme_name !== 'form-dark'):?>
-    <?=HTML::style('css/widget_master/form.css')?>
+    <?=HTML::style('css/widget_master/form-master.css')?>
 <?endif?>
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
 <?=HTML::script('/js/widget/form/s36FormModule.js')?>
