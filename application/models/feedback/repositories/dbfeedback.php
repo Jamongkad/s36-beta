@@ -469,6 +469,7 @@ class DBFeedback extends S36DataObject {
 
         Helpers::dump($block_ids);
         Helpers::dump($column);
+        Helpers::dump($this->user_id);
 
         $sql = "
             UPDATE Feedback
