@@ -138,9 +138,7 @@ a.cropbtn:hover{
 	width:80px;float:left;
 	height:75px;
 }
-
-.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
-.full .s36_perm_icon{background:#daeec9;}
+.full .s36_perm_details{padding-top:30px;padding-bottom:30px;}
 .full .s36_perm_radio{padding-top:58px;}
 	.s36_perm_details .s36_perm_icon1,
 	.s36_perm_details .s36_perm_icon2,
@@ -179,7 +177,7 @@ a.cropbtn:hover{
 }
 
 /* connect page */
-.s36_block .company{background:url(../../img/s36-logo.png);background-repeat:no-repeat;background-position:center left;padding:15px 15px 15px 160px;font-size:11px;}
+.s36_block .company{background-repeat:no-repeat;background-position:center left;padding:15px 15px 15px 160px;font-size:11px;}
 .s36_block .warning{width:82px;float:left;text-align:center;padding:13px 0px;}
 .s36_block .warning-text{width:270px;float:left;padding:10px 15px;font-size:11px;line-height:18px;}
 .gray{
