@@ -468,6 +468,7 @@ class DBFeedback extends S36DataObject {
         $block_ids = implode(',', $ids);
 
         Helpers::dump($block_ids);
+        Helpers::dump($column);
 
         $sql = "
             UPDATE Feedback
