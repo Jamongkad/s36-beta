@@ -17,9 +17,7 @@ return array(
 	|
 	*/
     'GET /' => function() { 
-        $company = Input::get('subdomain');
         $auth = new S36Auth;
-
         if($auth->check()) { 
             return Redirect::to('dashboard');     
         } else { 
@@ -111,7 +109,8 @@ return array(
             $user = $admin->fetch_admin_details($opts);
 
             if(!$user) { 
-                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => Array()
+                return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
+                                                         'errors' => Array()
                                                        , 'warning' => 'Email does not exist.'));
             }
         
