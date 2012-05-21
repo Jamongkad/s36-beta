@@ -32,8 +32,6 @@ return array(
         $auth = new S36Auth;
         $company = Input::get('subdomain');
 
-        print_r($company);
-
         if($auth->check()) { 
             return forward_or_dash();
         } else {
