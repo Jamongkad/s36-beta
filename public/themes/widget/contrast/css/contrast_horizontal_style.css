@@ -27,7 +27,8 @@
 
 /* here comes the css styles for this widget! */
 #widgetHeader{
-	padding:12px 15px 8px;
+	/*padding:12px 15px 8px;*/
+    padding:10px 15px;
 	background:#1d1b1c;
 }
 	.theWidgetTitle{
