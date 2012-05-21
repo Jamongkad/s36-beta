@@ -91,7 +91,7 @@ return array(
                 */
 
                 //After publishing feedback logout...
-                S36Auth::logout();
+                //S36Auth::logout();
 
                 $contact = DB::Table('Contact', 'master')
                               ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
