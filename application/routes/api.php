@@ -58,10 +58,7 @@ return array(
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
-
-        Helpers::dump($params[0]);
-        Helpers::dump($params[1]);
-        
+ 
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
@@ -75,8 +72,7 @@ return array(
                 //since we're already logged in...we just need one property here...the publisher's email
                 $publisher = S36Auth::user();
                 
-                $activity_check = False;
-                /*Record action on activity log
+                //Record action on activity log
                 $fba = new FeedbackActivity($publisher->userid, $feedback_id, $status);
                 $activity_check = $fba->log_activity();
                 
@@ -90,7 +86,6 @@ return array(
                     $emailservice = new Email\Services\EmailService($published_data);
                     $emailservice->send_email(); 
                 }
-                */
 
                 //After publishing feedback logout...
                 S36Auth::logout();
