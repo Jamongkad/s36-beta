@@ -53,6 +53,9 @@ class Helpers {
           , 'sleek-orange'=>'Sleek Orange'
           , 'thin-red'=>'Thin Red' 
           , 'dark' => 'Dark'
+          , 'alum'   => 'Aluminum'
+          , 'contrast' => 'Contrast'
+          , 'matte'  => 'Matte'
     );
 
     public static $display_themes = Array( 
