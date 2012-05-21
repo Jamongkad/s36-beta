@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Leica Page</title>
+        <title>Aryann Test Suite Page</title>
     </head>
     <body>
 
