@@ -469,7 +469,7 @@ class DBFeedback extends S36DataObject {
 
         Helpers::dump($block_ids);
         Helpers::dump($column);
-        $user_id = false;
+        Helpers::dump($categoryId);
 
         $sql = "
             UPDATE Feedback
@@ -484,7 +484,7 @@ class DBFeedback extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         return $sth->execute();       
     }
 
