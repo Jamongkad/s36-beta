@@ -25,7 +25,9 @@ return array(
         return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
-    'GET /hosted/fullpage/(:num)' => function($company_id) use ($feedback) {
+    'GET /hosted/fullpage/(:any)' => function($company_id) use ($feedback) {
+        return $company_id;
+        /*
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_id); 
 
@@ -40,6 +42,7 @@ return array(
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $feeds->html
                                                           , 'widget' => $widget ));        
+        */
     },
 
     'GET /hosted/fullpage_partial/(:num)/(:num?)' => function($company_id, $page=False) {
