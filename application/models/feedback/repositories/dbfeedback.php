@@ -469,7 +469,7 @@ class DBFeedback extends S36DataObject {
 
         Helpers::dump($block_ids);
         Helpers::dump($column);
-        Helpers::dump($categoryId);
+        Helpers::dump(S36Auth::user());
 
         $sql = "
             UPDATE Feedback
