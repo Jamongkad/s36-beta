@@ -58,6 +58,9 @@ return array(
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
+
+        Helpers::dump($params[0]);
+        Helpers::dump($params[1]);
         
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
@@ -68,7 +71,6 @@ return array(
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $publish_success = $feedback->_toggle_multiple($status, array($feed_obj));  
-            Helpers::dump($publish_success);
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
                 $publisher = S36Auth::user();
