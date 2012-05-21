@@ -467,8 +467,6 @@ class DBFeedback extends S36DataObject {
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
 
-        Helpers::dump($column);
-
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -483,7 +481,8 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-        return $sth->execute();       
+        return false;
+        //return $sth->execute();       
     }
 
     public function _permanent_delete($opts) { 
