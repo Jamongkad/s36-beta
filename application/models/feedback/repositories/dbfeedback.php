@@ -484,7 +484,7 @@ class DBFeedback extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
+        $sth->bindParam(':user_id', false, PDO::PARAM_INT);
         return $sth->execute();       
     }
 
