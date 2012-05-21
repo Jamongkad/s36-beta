@@ -176,6 +176,12 @@ a.cropbtn:hover{
  visibility: hidden; 
 }
 
+.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
+.full .s36_perm_icon{background:#daeec9;}
+.full .s36_perm_radio{padding-top:58px;}
+.limited .s36_perm_details{background:#faf1d4;}
+.limited .s36_perm_icon{background:#faf1d4;}
+
 /* connect page */
 .s36_block .company{background:url(../../img/s36-logo.png);background-repeat:no-repeat;background-position:center left;padding:15px 15px 15px 160px;font-size:11px;}
 .s36_block .warning{width:82px;float:left;text-align:center;padding:13px 0px;}
