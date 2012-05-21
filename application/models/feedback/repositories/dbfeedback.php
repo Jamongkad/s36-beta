@@ -481,7 +481,7 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
-        $sth->execute();       
+        return $sth->execute();       
     }
 
     public function _permanent_delete($opts) { 

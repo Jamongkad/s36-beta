@@ -66,9 +66,11 @@ return array(
             $status = 'publish';
             
             //publish feedback this bitch
+            //TODO: Place additional check here. Expected Behavior: once saved successfully move on...
             $feed_obj = Array('feedid' => $feedback_id);
-            $feedback->_toggle_multiple($status, array($feed_obj)); 
-
+            $toggle_success = $feedback->_toggle_multiple($status, array($feed_obj));  
+            Helpers::dump($toggle_success);
+            /*
             //since we're already logged in...we just need one property here...the publisher's email
             $publisher = S36Auth::user();
  
@@ -99,6 +101,7 @@ return array(
               , 'contact_name' => $contact->firstname
               , 'activity_check' => $activity_check
             ));       
+            */
         } else {
             print_r("Something went wrong");
         }
