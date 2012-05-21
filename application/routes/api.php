@@ -68,6 +68,7 @@ return array(
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $publish_success = $feedback->_toggle_multiple($status, array($feed_obj));  
+            Helpers::dump($publish_success);
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
                 $publisher = S36Auth::user();
