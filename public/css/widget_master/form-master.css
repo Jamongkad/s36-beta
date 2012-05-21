@@ -138,7 +138,9 @@ a.cropbtn:hover{
 	width:80px;float:left;
 	height:75px;
 }
-.full .s36_perm_details{padding-top:30px;padding-bottom:30px;}
+
+.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
+.full .s36_perm_icon{background:#daeec9;}
 .full .s36_perm_radio{padding-top:58px;}
 	.s36_perm_details .s36_perm_icon1,
 	.s36_perm_details .s36_perm_icon2,
