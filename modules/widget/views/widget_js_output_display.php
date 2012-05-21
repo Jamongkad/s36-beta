@@ -12,7 +12,8 @@ function WidgetLoader() {
                       '<iframe id="s36Widget" allowTransparency="true" height="<?=$height?>" width="<?=$width?>"frameborder="0" scrolling="no" style="width:100%;border:none;overflow:hidden;" src="<?=$widget_loader_url?>">Insomnia wooohooooh</iframe></div>';
         <?endif?>
         <?if($class_name == 'Widget\Entities\ModalEmbedWidget'):?>
-            var src = '<div class="s36_embed_block_p"><a href="javascript:;" onclick="s36_open_popup_widget()">Display Feedback</a></div>'+
+            var src ='<?=$js_load?>' + 
+                     '<div class="s36_embed_block_p"><a href="javascript:;" onclick="s36_open_popup_widget()">Display Feedback</a></div>'+
                       '<div id="s36PopupWidgetShadow">'+
                       '<div id="s36PopupWidgetBox">'+
                       '<div id="s36PopupWidgetSendFeedback" onclick="s36_openForm(\'<?=$widget_child_loader_url?>\')">Send Feedback</div><div id="s36_closebtn" onclick="s36_closePopupWidget()"></div>'+
