@@ -467,7 +467,7 @@ class DBFeedback extends S36DataObject {
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
 
-        Helpers::dump($this->user_id); 
+        Helpers::dump(S36Auth::user()->user_id); 
 
         $sql = "
             UPDATE Feedback
