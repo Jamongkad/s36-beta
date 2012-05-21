@@ -73,7 +73,7 @@ return array(
                 $publisher = S36Auth::user();
                 
                 //Record action on activity log
-                $fba = new Feeback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
+                $fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
                 $activity_check = $fba->log_activity();
                 
                 //if no record of activity
