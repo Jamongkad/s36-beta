@@ -467,6 +467,8 @@ class DBFeedback extends S36DataObject {
         $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         $block_ids = implode(',', $ids);
 
+        Helpers::dump($block_ids);
+
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
