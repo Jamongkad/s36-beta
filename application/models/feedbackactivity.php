@@ -1,5 +1,5 @@
 <?php
-
+//TODO: Move this guy to feedback model
 class FeedbackActivity {
 
     public function __construct($user_id, $feedback_id, $status) {
@@ -10,7 +10,7 @@ class FeedbackActivity {
 
     public function log_activity() {
         if($this->check_activity_status()) {
-           return $this->check_activity_status();
+            return $this->check_activity_status();
         } else {
             return $this->insert_new_activity();
         }

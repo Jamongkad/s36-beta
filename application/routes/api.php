@@ -66,13 +66,14 @@ return array(
             $status = 'publish';
             
             //publish feedback this bitch
-            //TODO: Place additional check here. Expected Behavior: once saved successfully move on...
             $feed_obj = Array('feedid' => $feedback_id);
-            $toggle_success = $feedback->_toggle_multiple($status, array($feed_obj));  
-            if($toggle_success)  { 
+            $publish_success = $feedback->_toggle_multiple($status, array($feed_obj));  
+            if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
                 $publisher = S36Auth::user();
-     
+                
+                $activity_check = False;
+                /*Record action on activity log
                 $fba = new FeedbackActivity($publisher->userid, $feedback_id, $status);
                 $activity_check = $fba->log_activity();
                 
@@ -86,6 +87,7 @@ return array(
                     $emailservice = new Email\Services\EmailService($published_data);
                     $emailservice->send_email(); 
                 }
+                */
 
                 //After publishing feedback logout...
                 S36Auth::logout();
