@@ -9,12 +9,20 @@ body{
 a{color:#5c8ac0;}
 a:hover{color:#6896cb;}
 #s36_main{
-	background:#f0f0f0 top repeat-x;
+	width:447px;
+	height:590px;
+	position:absolute;
+	background:#f0f0f0;
 }
 #s36_whitebar{
+	height:15px;
+	width:447px;
 	background:transparent;
 }
-
+#s36_pages,#s36_steps{
+	width:447px;
+	height:465px;
+}
 .error-message{
 	background:url(../../img/error-bg.png) repeat;
 	color:#212121;
