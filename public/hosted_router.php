@@ -1,3 +1,2 @@
 <?php
-
-Helpers::dump($_GET);
+print_r($_GET);
