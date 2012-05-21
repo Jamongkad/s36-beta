@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	color:#666;
+	background: #f0f0f0;
+}
+a{color:#5c8ac0;}
+a:hover{color:#6896cb;}
+#s36_main{
+	background:#f0f0f0 top repeat-x;
+}
+#s36_whitebar{
+	background:transparent;
+}
+
+.error-message{
+	background:url(../../img/error-bg.png) repeat;
+	color:#212121;
+	border-top:2px solid #e5db58;
+	border-bottom:2px solid #e5db58;
+}
+/* classes */	
+
+/* crop button */
+a.cropbtn{
+	background:#1cb5f5;
+	border:1px solid #0d9cd7;
+	color:#FFF;
+	text-shadow:none;
+}
+a.cropbtn:hover{
+	background:#4dc9fc;
+	border:1px solid #1cb5f5;
+	color:#FFF;
+	text-shadow:none;
+}
+/* crop button */
+/* pages class */
+
+a.s36_btn{
+	background:#b5b5b5;
+	border:1px solid #f0f0f0;
+	color:#FFF;
+	text-shadow:#FFF 0px 1px;
+}
+a.s36_btn:hover{
+	background:#c3c3c3;
+	border:1px solid #f0f0f0;
+	color:#FFF;
+	text-shadow:none;
+}
+
+	.s36_pages h1{background:#e5e5e5;color:#565656;text-shadow:#FFF 0px 1px;border-top:2px solid #FFF;border-bottom:4px solid #FFF;padding-top:12px;padding-bottom:10px;box-shadow:#CCC 0px 1px 5px;}
+	.s36_pages h3{color:#303030;}
+	.s36_pages h3 a.s36_tip{color:#c3c3c3;}
+	.s36_pages h4{color:#6f7375;}
+	#s36_whattowrite{
+		background:url(../../img/ico-question.png) no-repeat top left
+	}
+/* trackbar styles */
+#s36_trackbar{
+	background:url(images/matte/matte-trackbar.png) no-repeat;
+}
+
+/* rating page */
+#track_ball{background:url(../images/trackball.png) no-repeat;}
+
+/* review page slide */
+.review-feedback-box{background:#f7f7f7;border:1px solid #e1e1e1;}
