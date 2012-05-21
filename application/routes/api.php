@@ -63,11 +63,11 @@ return array(
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
             $user = new DBUser; 
-            $status = 'publish';
-            
+            $status = 'publish'; 
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
             $publish_success = $feedback->_toggle_multiple($status, array($feed_obj));  
+
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
                 $publisher = S36Auth::user();
