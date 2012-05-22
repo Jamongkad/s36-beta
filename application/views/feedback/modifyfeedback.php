@@ -48,7 +48,7 @@ $(function() {
                         <div class="g1of4" style="text-align:right;">
                              <?=HTML::link('/', 'save feedback', Array(
                                  'class' => 'save-feedback-text'
-                                 'hrefaction' => URL::to('feedback/edit_feedback_text') 
+                               , 'hrefaction' => URL::to('feedback/edit_feedback_text') 
                             ))?>
                         </div>
                     </div>
