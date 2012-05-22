@@ -433,7 +433,7 @@ jQuery(function($) {
 
     $(document).delegate('a.save-feedback-text', 'click', function(e) { 
         var textarea = $('.feedback-textarea');
-        var hrefaction = $(this).attr('hrefaction');
+        var hrefaction = $(this).attr('href');
         var feed_id = $('#feed-id').val();
 
         /*
@@ -447,8 +447,6 @@ jQuery(function($) {
             myStatus.notify("Processing...", 1000);
         });
         */
-        console.log(feed_id);
-        console.log(textarea.val());
         console.log(hrefaction);
         e.preventDefault();
     });
