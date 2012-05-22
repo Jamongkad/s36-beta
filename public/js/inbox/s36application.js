@@ -48,11 +48,11 @@ jQuery(function($) {
 
         var catpick = new CatPickObject($(this));
         console.log(catpick.undo());
-        /*
+
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
-        */
+
         e.preventDefault();
     });
 
