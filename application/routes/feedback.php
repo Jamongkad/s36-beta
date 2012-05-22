@@ -23,7 +23,8 @@ return array(
 
         $feed_id = $post['feed_id'];
         $text    = $post['feedback_text'];
-        print_r($post);
+        $profanity = $badwords->profanity_detection($text); 
+        print_r($profanity);
         /*
         //Wtf is this? Profanity detection only? 
         $badwords->profanity_detection($text, $feed_id); 

@@ -81,8 +81,9 @@ class AddFeedback {
         );
 
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
-
-        $bw->profanity_detection($text, $new_feedback_id); 
+         
+        //TODO: return to this bitch later
+        //$bw->profanity_detection($text, $new_feedback_id); 
 
         $submission_data = new Email\Entities\NewFeedbackSubmissionData;
         $submission_data->set_feedback($fb->pull_feedback_by_id($new_feedback_id))
