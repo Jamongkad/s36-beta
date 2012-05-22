@@ -17,14 +17,20 @@ return array(
         ));
     }),
 
-    'POST /feedback/edit_feedback_text' => function() {
+    'POST /feedback/edit_feedback_text' => function() use ($feedback) {
         $badwords = new DBBadWords;
-        $post = Input::get();
 
+        $post = (object)Input::get();
+        $feedbackservice = new Feedback\Services\FeedbackService($feedback, $badwords);
+        $result = $feedbackservice->save_feedback($post);
+        Helpers::dump($result);
+        /*
         $feed_id = $post['feed_id'];
         $text    = $post['feedback_text'];
-        $profanity = $badwords->profanity_detection($text); 
-        print_r($profanity);
+        */
+
+        //$profanity = $badwords->profanity_detection($text); 
+        //print_r($profanity);
         /*
         //Wtf is this? Profanity detection only? 
         $badwords->profanity_detection($text, $feed_id); 

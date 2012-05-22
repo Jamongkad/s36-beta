@@ -3,6 +3,7 @@
 use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
 use Halcyonic;
 
+//Compose this in order to receive via constructor
 class InboxService {
 
     private $limit = 10;
