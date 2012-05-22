@@ -436,6 +436,12 @@ jQuery(function($) {
         var hrefaction = textarea.attr('hrefaction');
 
         var feed_id = $('#feed-id').val();
+
+        /*
+        $.ajax({
+              
+        });
+        */
         /*
         $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
             var myStatus = new Status();
@@ -443,6 +449,8 @@ jQuery(function($) {
         });
         */
         console.log(feed_id);
+        console.log(textarea);
+        console.log(hrefaction);
         e.preventDefault();
     });
 
