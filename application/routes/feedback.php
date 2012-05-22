@@ -18,6 +18,8 @@ return array(
     }),
 
     'POST /feedback/edit_feedback_text' => function() {
+        Helpers::dump("Mathew");
+        /*
         $badwords = new DBBadWords;
         $post = Input::get();
 
@@ -25,6 +27,7 @@ return array(
         $text    = $post['feedback_text'];
 
         $badwords->profanity_detection($text, $feed_id); 
+        */
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {

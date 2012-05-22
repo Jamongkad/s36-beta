@@ -433,21 +433,22 @@ jQuery(function($) {
 
     $(document).delegate('a.save-feedback-text', 'click', function(e) { 
         var textarea = $('.feedback-textarea');
-        var hrefaction = $(this).attr('href');
         var feed_id = $('#feed-id').val();
 
-        /*
+
         $.ajax({
-              
+            url: '/feedback/edit_feedback_text'              
+          , success: function(msg) {
+                console.log(msg);
+            }
         });
-        */
+
         /*
         $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
             var myStatus = new Status();
             myStatus.notify("Processing...", 1000);
         });
         */
-        console.log(hrefaction);
         e.preventDefault();
     });
 
