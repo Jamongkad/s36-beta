@@ -418,7 +418,7 @@ jQuery(function($) {
 
         $.ajax({
             url: $("#ajax-crop-url").attr('hrefaction')
-          , type: "POST"
+          , type: 'POST'
           , data: data 
           , success: function(data){
               $('#cropped_photo').val(data);
@@ -438,6 +438,7 @@ jQuery(function($) {
 
         $.ajax({
             url: '/feedback/edit_feedback_text'              
+          , type: 'POST'
           , success: function(msg) {
                 console.log(msg);
             }
