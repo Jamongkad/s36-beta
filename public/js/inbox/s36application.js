@@ -449,7 +449,7 @@ jQuery(function($) {
         });
         */
         console.log(feed_id);
-        console.log(textarea);
+        console.log(textarea.val());
         console.log(hrefaction);
         e.preventDefault();
     });
