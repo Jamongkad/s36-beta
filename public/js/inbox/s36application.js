@@ -45,10 +45,11 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
-
+        /*
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
+        */
 
         e.preventDefault();
     });
@@ -432,6 +433,7 @@ jQuery(function($) {
     });
 
     $(document).delegate('a.save-feedback-text', 'click', function(e) { 
+
         var textarea = $('.feedback-textarea');
         var feed_id = $('#feed-id').val();
 

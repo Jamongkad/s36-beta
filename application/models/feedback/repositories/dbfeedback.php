@@ -562,11 +562,11 @@ class DBFeedback extends S36DataObject {
 
     public function update_feedback_text($feedback_id, $text, $is_profane)  { 
         $affected = DB::table('Feedback', 'master')
-             ->where('feedbackId', '=', $feedback_id)
-             ->update(Array(
+            ->where('feedbackId', '=', $feedback_id)
+            ->update(Array(
                   'text' => $text
                 , 'hasProfanity' => ($is_profane) ? 1 : 0
-             ));
+            ));
         return $affected;
     }
     

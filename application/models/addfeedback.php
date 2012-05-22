@@ -86,6 +86,7 @@ class AddFeedback {
             'feedback_text' => $text
           , 'feed_id' => $new_feedback_id
         );
+
         $feedbackservice = new Feedback\Services\FeedbackService($fb, $bw);
         $feedbackservice->save_feedback($post);
 

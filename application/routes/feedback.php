@@ -3,6 +3,7 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
+$badwords = new DBBadWords;
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
@@ -17,13 +18,10 @@ return array(
         ));
     }),
 
-    'POST /feedback/edit_feedback_text' => function() use ($feedback) {
-        $badwords = new DBBadWords;
-
+    'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
         $post = (object)Input::get();
         $feedbackservice = new Feedback\Services\FeedbackService($feedback, $badwords);
         $feedbackservice->save_feedback($post);
-
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
