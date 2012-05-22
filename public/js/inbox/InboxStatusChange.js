@@ -146,10 +146,17 @@ function CatPickObject(elem) {
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;
-    var data = {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
 
     if(location.pathname.match(/filed|modifyfeedback/)) {
-        console.log(data);
+        $.ajax({  type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+                , success: function() {
+                    if(me.catstate == "default") {
+                        $(me.elem).parents('.feedback').fadeOut(350);
+                    }
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000);
+                  }
+        });
     } else {
         console.log("mathew");
     }
