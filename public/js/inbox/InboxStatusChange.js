@@ -147,15 +147,21 @@ CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;
     if(location.pathname.match(/filed|modifyfeedback/)) {
-        $.ajax({  type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
-                , success: function() {
-                    if(me.catstate == "default") {
-                        $(me.elem).parents('.feedback').fadeOut(350);
-                    }
-                    var myStatus = new Status();
-                    myStatus.notify("Processing...", 1000);
-                  }
+        /*
+        $.ajax({  
+            type: "POST"
+          , url: me.href
+          , data: { "mode": me.mode, "feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+          , success: function() {
+                if(me.catstate == "default") {
+                    $(me.elem).parents('.feedback').fadeOut(350);
+                }
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
+            }
         });
+        */
+        console.log(me.href);
     } else {
         console.log("mathew");
     }
