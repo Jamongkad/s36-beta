@@ -146,8 +146,11 @@ function CatPickObject(elem) {
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;
+    console.log(me);
+    /*
     if(location.pathname.match(/filed|modifyfeedback/)) {
-        $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() {
+        $.ajax({  type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+                , success: function() {
             if(me.catstate == "default") {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
@@ -191,6 +194,7 @@ CatPickObject.prototype.process = function() {
         $(this).parents('.check').remove();
         e.preventDefault(); 
     })
+    */
 }
 
 //Factory
