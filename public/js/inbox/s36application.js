@@ -433,8 +433,7 @@ jQuery(function($) {
 
     $(document).delegate('a.save-feedback-text', 'click', function(e) { 
         var textarea = $('.feedback-textarea');
-        var hrefaction = textarea.attr('hrefaction');
-
+        var hrefaction = $(this).attr('hrefaction');
         var feed_id = $('#feed-id').val();
 
         /*
