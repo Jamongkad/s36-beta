@@ -431,7 +431,7 @@ jQuery(function($) {
         });
     });
 
-    $(document).delegate('a.save', 'click', function(e) { 
+    $(document).delegate('a.save-feedback-text', 'click', function(e) { 
         var textarea = $('.feedback-textarea');
         var hrefaction = textarea.attr('hrefaction');
 
