@@ -520,7 +520,7 @@ input.create-btn:hover{background-position:bottom center;cursor:pointer;}
 	-webkit-border-radius: 3px;
 }
 
-a.edit, a.save {
+a.edit, a.save, a.save-feedback-text {
     font-size: 1.4em; 
     color: #2F4F4F   
 }
