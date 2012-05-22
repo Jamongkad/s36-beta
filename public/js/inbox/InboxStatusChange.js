@@ -13,7 +13,7 @@ InboxStateObject.prototype.undo = function() {
         var undo_mode = $('.inbox-state').val();
 
         var current_catid = me.elem.attr('catid');
-        var sec       = 350;
+        var sec = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
@@ -201,8 +201,6 @@ function InboxStatusChange(opts)  {
 InboxStatusChange.prototype.initialize = function() {
     var me = this;
     $(document).delegate(me.inbox_controls, 'click', function(e) {
-        var identifier = $(this).attr('class');         
-        var us = $(this);
         var identifier = $(this).attr('class');         
         var us = $(this);
 
