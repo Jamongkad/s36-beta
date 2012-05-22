@@ -1,14 +1,10 @@
 body, td, pre {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	text-shadow:#FFF 0px 1px;
-	color:#444;
-	line-height:1.4em;
+	font-size: 10px;
 }
 
 body {
-	background-color: #EEE;
-
+	background-color: #FFFFFF;
 }
 
 .mceVisualAid {

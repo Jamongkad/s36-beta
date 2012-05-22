@@ -142,11 +142,12 @@ function CatPickObject(elem) {
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
 }
+
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;
     if(location.pathname.match(/filed|modifyfeedback/)) {
-        $.ajax({ type: "POST", url: '/feedback/change_feedback_state', data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() {
+        $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() {
             if(me.catstate == "default") {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
@@ -162,7 +163,7 @@ CatPickObject.prototype.process = function() {
             var checky = $('.checky-bar');
 
             if(me.state == 0) {   
-                $.ajax({ type: "POST", url: '/feedback/change_feedback_state', data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
+                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
                     {
 
                         var myStatus = new Status();
@@ -172,7 +173,7 @@ CatPickObject.prototype.process = function() {
                 });
             } else {  
                 //if state is 1 then we're going back to the inbox
-                $.ajax({ type: "POST", url: '/feedback/change_feedback_state', data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
+                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
                     { 
 
                         var myStatus = new Status();
