@@ -317,6 +317,4 @@ return array(
     'GET /tests/aryann' => function() {
         return View::make('tests/aryann_view');
     }
-
-
 );

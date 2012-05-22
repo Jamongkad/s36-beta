@@ -436,10 +436,13 @@ jQuery(function($) {
         var hrefaction = textarea.attr('hrefaction');
 
         var feed_id = $('#feed-id').val();
+        /*
         $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
             var myStatus = new Status();
             myStatus.notify("Processing...", 1000);
         });
+        */
+        console.log(feed_id);
         e.preventDefault();
     });
 
