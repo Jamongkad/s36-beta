@@ -142,6 +142,7 @@ function CatPickObject(elem) {
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
 }
+
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;

@@ -45,12 +45,13 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
+
+        var catpick = new CatPickObject($(this));
         /*
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
         */
-
         e.preventDefault();
     });
 
