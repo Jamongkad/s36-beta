@@ -435,7 +435,6 @@ jQuery(function($) {
         var textarea = $('.feedback-textarea');
         var feed_id = $('#feed-id').val();
 
-
         $.ajax({
             url: '/feedback/edit_feedback_text'              
           , type: 'POST'
