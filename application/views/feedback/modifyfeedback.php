@@ -21,8 +21,7 @@ $(function() {
             <div class="feedback-info">
                 <div class="feedback-text">
                     <?=Form::hidden('feed_id', $id, array('id' => 'feed-id'))?> 
-                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83,
-                                                                     'hrefaction' => URL::to('feedback/edit_feedback_text')))?>
+                    <?=Form::textarea('text', $feedback->text, Array('class' => 'feedback-textarea', 'rows' => 10, 'cols' => 83))?>
                 </div>
                 
                 <div class="feedback-status">
@@ -47,7 +46,10 @@ $(function() {
                             </span> 
                         </div>
                         <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'save feedback', Array('class' => 'save-feedback-text'))?>
+                             <?=HTML::link('/', 'save feedback', Array(
+                                 'class' => 'save-feedback-text'
+                                 'hrefaction' => URL::to('feedback/edit_feedback_text') 
+                            ))?>
                         </div>
                     </div>
                 </div>
