@@ -146,7 +146,6 @@ function CatPickObject(elem) {
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
     var me = this;
-
     if(location.pathname.match(/filed|modifyfeedback/)) {
         $.ajax({  type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
                 , success: function() {
