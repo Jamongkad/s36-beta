@@ -18,14 +18,14 @@ return array(
     }),
 
     'POST /feedback/edit_feedback_text' => function() {
-        Helpers::dump("Mathew");
-        /*
         $badwords = new DBBadWords;
         $post = Input::get();
 
         $feed_id = $post['feed_id'];
         $text    = $post['feedback_text'];
-
+        print_r($post);
+        /*
+        //Wtf is this? Profanity detection only? 
         $badwords->profanity_detection($text, $feed_id); 
         */
     },
