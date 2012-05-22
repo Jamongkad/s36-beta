@@ -12,7 +12,7 @@ class FeedbackService {
     public function save_feedback($post) {
         $text = $post->feedback_text;
         $feed_id = $post->feed_id;
-        $profanity = $this->dbbadwords->profanity_detection($text); 
-        return $profanity;
+        $profanity = $this->dbbadwords->profanity_detection($text);         
+        return $this->dbfeedback->update_feedback_text($feed_id, $text, $profanity);
     }
 }

@@ -559,6 +559,16 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
+
+    public function update_feedback_text($feedback_id, $text, $is_profane)  { 
+        $affected = DB::table('Feedback', 'master')
+             ->where('feedbackId', '=', $feedback_id)
+             ->update(Array(
+                  'text' => $text
+                , 'hasProfanity' => ($is_profane) ? 1 : 0
+             ));
+        return $affected;
+    }
     
     //TODO: Think of an algorithm for this. Either set a timer for all feedback to be deleted. Or get total number of feedback. The higher the number
     //the lesser time it takes for the system to clean shit up. Maximum time cap at 1000 feedback. 
