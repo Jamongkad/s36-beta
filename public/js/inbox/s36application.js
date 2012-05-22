@@ -440,17 +440,12 @@ jQuery(function($) {
             url: '/feedback/edit_feedback_text'              
           , type: 'POST'
           , data: { feed_id: feed_id, feedback_text: textarea.val() } 
-          , success: function(msg) {
-                console.log(msg);
+          , success: function(msg) { 
+                var myStatus = new Status();
+                myStatus.notify("Processing...", 1000);
             }
         });
 
-        /*
-        $.post(hrefaction, { feed_id: feed_id, feedback_text: textarea.val() }, function(msg) { 
-            var myStatus = new Status();
-            myStatus.notify("Processing...", 1000);
-        });
-        */
         e.preventDefault();
     });
 

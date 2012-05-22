@@ -22,19 +22,8 @@ return array(
 
         $post = (object)Input::get();
         $feedbackservice = new Feedback\Services\FeedbackService($feedback, $badwords);
-        $result = $feedbackservice->save_feedback($post);
-        Helpers::dump($result);
-        /*
-        $feed_id = $post['feed_id'];
-        $text    = $post['feedback_text'];
-        */
+        $feedbackservice->save_feedback($post);
 
-        //$profanity = $badwords->profanity_detection($text); 
-        //print_r($profanity);
-        /*
-        //Wtf is this? Profanity detection only? 
-        $badwords->profanity_detection($text, $feed_id); 
-        */
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {

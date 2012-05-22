@@ -18,13 +18,5 @@ class DBBadWords extends S36DataObject {
         $sth->execute();
         $is_profane = $sth->fetchAll(PDO::FETCH_CLASS);
         return $is_profane == True;
-        /*
-        DB::table('Feedback', 'master')
-             ->where('feedbackId', '=', $feedback_id)
-             ->update(Array(
-                          'text' => $bad_words
-                        , 'hasProfanity' => ($isProfane) ? 1 : 0
-                      ));
-        */
     }
 }
