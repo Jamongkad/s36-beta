@@ -47,7 +47,7 @@ jQuery(function($) {
         }
 
         var catpick = new CatPickObject($(this));
-        console.log(catpick);
+        console.log(catpick.process());
         /*
         var catpick = new CatPickObject($(this));
         catpick.process();
