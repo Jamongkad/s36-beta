@@ -73,7 +73,7 @@ jQuery(function($) {
           , url: $(this).attr('href')
           , success: function(msg) {
                 var myStatus = new Status();
-                myStatus.notify("Processing...", 10000);
+                myStatus.notify("Processing...", 3000);
             }
         }) 
 
