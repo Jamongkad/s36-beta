@@ -21,6 +21,9 @@ return array(
         if($auth->check()) { 
             return Redirect::to('dashboard');     
         } 	
+
+        $company = Input::get('subdomain');
+        Helpers::dump($company);
     },
 
     'GET /login' => function() {
