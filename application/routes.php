@@ -1,5 +1,7 @@
 <?php
 
+$feedback = new Feedback\Repositories\DBFeedback;
+
 return array(
 
 	/*
@@ -24,6 +26,10 @@ return array(
 
         $company = Input::get('subdomain');
         Helpers::dump($company);
+    },
+
+    'GET /single/(:num)' => function($id) use ($feedback) {
+        print_r($id);
     },
 
     'GET /login' => function() {
