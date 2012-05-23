@@ -30,6 +30,7 @@ return array(
     },
 
     'GET /hosted/fullpage/(:any)' => function($company_id) use ($feedback) {
+        echo "calling fullpage";
         return $company_id;
         /*
         $company = new Company\Repositories\DBCompany;
