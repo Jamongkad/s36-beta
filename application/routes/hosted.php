@@ -22,17 +22,13 @@ return array(
 
     'GET /hosted/single/(:num)' => function($id) use ($feedback) { 
 
-        echo "calling single<br/>";
-        Helpers::dump($_SERVER['HTTP_HOST']);
-        return $id;
-        /*
         $feedback = $feedback->pull_feedback_by_id($id);
         $fb_id = Config::get('application.fb_id');
         /*
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_single_view'
                                                   , Array('feedback' => $feedback, 'fb_id' => $fb_id));
-        return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
         */
+        return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
     'GET /hosted/fullpage/(:any)' => function($company_id) use ($feedback) {
