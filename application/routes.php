@@ -20,10 +20,7 @@ return array(
         $auth = new S36Auth;
         if($auth->check()) { 
             return Redirect::to('dashboard');     
-        } else { 
-            return Redirect::to('login');     
-        }		
-
+        } 	
     },
 
     'GET /login' => function() {
