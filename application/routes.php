@@ -46,6 +46,10 @@ return array(
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
     },
 
+    'GET /(:any)/submit' => function($company) {
+        print_r($company);
+    },
+
     'GET /submit' => function() {
 
         $company_name = Input::get('subdomain');

@@ -81,7 +81,7 @@
             <?$company_name = ucfirst($company->name);?>
         	<strong><?=$company_name?></strong>              
             <?if($widget):?>
-                <span><a href="<?=$deploy_env.'/hosted/form/'.$widget->widgetkey?>">Send in feedback</a></span>
+                <span><a href="<?=$deploy_env.'/'.strtolower($company->name).'/submit'?>">Send in feedback</a></span>
             <?endif?>
 
             <?if($company->domain):?>
