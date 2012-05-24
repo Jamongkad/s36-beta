@@ -75,7 +75,11 @@ class InboxService {
                 $data_obj->result = $data;
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
-                $this->cache->set_cache($data_obj);
+
+                if(!$ignore_cache) {
+                    $this->cache->set_cache($data_obj);     
+                }
+               
                 return $data_obj; 
             } else {
                 //echo "from cache";
