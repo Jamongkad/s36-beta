@@ -30,33 +30,16 @@ return array(
         return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
-    'GET /hosted/fullpage/(:any)' => function($company_id) use ($feedback) {
-        echo "calling fullpage<br/>";
-        return $company_id;
+    'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($company_name, $page=False) {
         /*
-        $company = new Company\Repositories\DBCompany;
-        $company_info = $company->get_company_info($company_id); 
-
-        $hosted = new Feedback\Services\HostedService($company_id);
-        $hosted->limit = 10;
-        $hosted->ignore_cache = True;
-        $feeds = $hosted->fetch_hosted_feedback(); 
-
-        $dbw = new Widget\Repositories\DBWidget;
-        $widget = $dbw->fetch_canonical_widget($company_id);
-
-        return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array(  'company' => $company_info, 'feeds' => $feeds->html
-                                                          , 'widget' => $widget ));        
-        */
-    },
-
-    'GET /hosted/fullpage_partial/(:num)/(:num?)' => function($company_id, $page=False) {
-        $hosted = new Feedback\Services\HostedService($company_id);
+        $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->page_number = $page;
         $hosted->limit = 10;
         $hosted->ignore_cache = True;
         $feeds = $hosted->fetch_hosted_feedback(); 
         echo $feeds->html; 
+        */
+        Helpers::dump($company_name);
+        Helpers::dump($page);
     }
 );

@@ -33,7 +33,7 @@ return array(
 
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->limit = 10;
-        //$hosted->ignore_cache = True;
+        $hosted->ignore_cache = True;
         $feeds = $hosted->fetch_hosted_feedback(); 
 
         $dbw = new Widget\Repositories\DBWidget;
