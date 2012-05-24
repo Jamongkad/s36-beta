@@ -19,13 +19,29 @@ return array(
 	|
 	*/
     'GET /' => function() { 
+        /*
         $auth = new S36Auth;
         if($auth->check()) { 
             return Redirect::to('dashboard');     
         } 	
+        */
 
-        $company = Input::get('subdomain');
-        Helpers::dump($company);
+        $company_name = Input::get('subdomain');
+        
+        $company = new Company\Repositories\DBCompany;
+        $company_info = $company->get_company_info($company_name); 
+
+        $hosted = new Feedback\Services\HostedService($company_name);
+        $hosted->limit = 10;
+        $hosted->ignore_cache = True;
+        $feeds = $hosted->fetch_hosted_feedback(); 
+
+        $dbw = new Widget\Repositories\DBWidget;
+        $widget = $dbw->fetch_canonical_widget($company_id);
+
+        return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
+                                                  , Array(  'company' => $company_info, 'feeds' => $feeds->html
+                                                          , 'widget' => $widget ));        
     },
 
     'GET /single/(:num)' => function($id) use ($feedback) {

@@ -6,7 +6,6 @@ return array(
 
     'GET /hosted/form/(:any)' => function($widget_id) { 
         echo "calling form<br/>";
-        Helpers::dump($_SERVER['HTTP_HOST']);
         return $widget_id;
         /*
         $wl = new Widget\Services\WidgetLoader($widget_id); 
@@ -33,7 +32,6 @@ return array(
 
     'GET /hosted/fullpage/(:any)' => function($company_id) use ($feedback) {
         echo "calling fullpage<br/>";
-        Helpers::dump($_SERVER['HTTP_HOST']);
         return $company_id;
         /*
         $company = new Company\Repositories\DBCompany;

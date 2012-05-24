@@ -37,7 +37,8 @@ class DBCompany extends S36DataObject {
         }
 
         $sql = "
-            SELECT * FROM Company
+            SELECT * FROM 
+                Company
             WHERE 1=1
                 AND $company_sql
         ";
