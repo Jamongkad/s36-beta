@@ -39,9 +39,11 @@ return array(
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_canonical_widget($company_name);
 
+        $deploy_env = Config::get('application.deploy_env');
+
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $feeds->html
-                                                          , 'widget' => $widget ));        
+                                                          , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
     },
 
     'GET /single/(:num)' => function($id) use ($feedback) {
