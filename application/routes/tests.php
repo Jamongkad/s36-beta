@@ -267,7 +267,7 @@ return array(
         $test->limit = 10;
         $test->ignore_cache = True;
         $feeds = $test->fetch_hosted_feedback(); 
-        Helpers::dump($feeds->html);
+        Helpers::dump($feeds->collection);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");
