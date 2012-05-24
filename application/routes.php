@@ -37,7 +37,7 @@ return array(
         $feeds = $hosted->fetch_hosted_feedback(); 
 
         $dbw = new Widget\Repositories\DBWidget;
-        $widget = $dbw->fetch_canonical_widget($company_id);
+        $widget = $dbw->fetch_canonical_widget($company_name);
 
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $feeds->html
