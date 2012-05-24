@@ -4,7 +4,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-        var link = '<?=URL::to('hosted/single')?>';
+        var link = '<?=URL::to('single')?>';
 		var $slide = $('#theSoloSlides').cycle({
             fx:     'fade', 
             speed:  '1000', 
