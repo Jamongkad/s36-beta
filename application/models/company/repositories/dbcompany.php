@@ -37,22 +37,15 @@ class DBCompany extends S36DataObject {
         }
 
         $sql = "
-            SELECT * FROM
-                Company
-            INNER JOIN
-                Site
-                    ON Site.companyId = Site.companyId
+            SELECT * FROM Company
             WHERE 1=1
                 AND $company_sql
-                AND Site.companyId = :site_id
         ";
         $sth = $this->dbh->prepare($sql);     
 
         $sth->bindParam(':company_id', $company_id);
-        $sth->bindParam(':site_id', $company_id);
         $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        //get first element of array
-        return array_shift($result);
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
     } 
 }
