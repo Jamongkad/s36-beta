@@ -39,8 +39,12 @@ class DBCompany extends S36DataObject {
         $sql = "
             SELECT * FROM 
                 Company
+            INNER JOIN
+                Site
+                    ON Site.companyId = Company.companyId
             WHERE 1=1
                 AND $company_sql
+            LIMIT 1
         ";
         $sth = $this->dbh->prepare($sql);     
 
