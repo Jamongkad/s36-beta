@@ -20,7 +20,7 @@
             <meta property="og:image" content='<?=URL::to('img/36logo2.png')?>'/> 
         <?endif?>
 
-        <meta property="og:url" content="<?=URL::to('hosted/single/'.$feedback->id)?>"/> 
+        <meta property="og:url" content="<?=URL::to('single/'.$feedback->id)?>"/> 
         <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
 
