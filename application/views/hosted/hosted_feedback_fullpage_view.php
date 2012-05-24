@@ -1,5 +1,5 @@
 <title><?=ucfirst($company->name);?> - Customer's Stories</title>
-
+<?=HTML::style('css/widget_master/hosted-fullpage.css');?>
 <script type="text/javascript">
 	var counter = 0;	
 	$(document).ready(function(){

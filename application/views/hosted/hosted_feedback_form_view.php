@@ -1,3 +1,4 @@
+<?=HTML::style('css/widget_master/hosted-form.css');?>
 <div id="headerWrapper">
 	<div id="headerContent">
     	<div id="headerTitle">
