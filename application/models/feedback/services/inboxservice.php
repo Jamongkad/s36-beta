@@ -6,6 +6,8 @@ use Halcyonic;
 //Compose this in order to receive via constructor
 class InboxService {
 
+    public $ignore_cache = False; 
+
     private $limit = 10;
     private $filters = Array();
     private $raw_filters = Array();
@@ -44,7 +46,7 @@ class InboxService {
         $this->raw_filters = $filters;
     }
 
-    public function present_feedback($ignore_cache=False) {
+    public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback                 
             $page_number = $this->pagination->get_page();
@@ -54,7 +56,7 @@ class InboxService {
             $this->cache->filter_array = $this->raw_filters;
             $this->cache->generate_keys();
 
-            if($ignore_cache or !$data_obj = $this->cache->get_cache()) { 
+            if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
@@ -76,7 +78,7 @@ class InboxService {
                 $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
 
-                if(!$ignore_cache) {
+                if(!$this->ignore_cache) {
                     $this->cache->set_cache($data_obj);     
                 }
                
