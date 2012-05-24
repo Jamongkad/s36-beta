@@ -10,15 +10,10 @@ class Cache {
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
-
-        if(array_key_exists('company_name', $this->filter_array)) {
-            $this->company_identifier = $this->filter_array['company_name'];
-        } else {
-            $this->company_identifier = $this->filter_array['company_id'];
-        }
     }
 
     public function generate_keys() {
+        $this->company_identifier = $this->_get_company_identifier();
         $this->key_string = '';
         foreach($this->filter_array as $key => $val) {
             if($val) {
@@ -27,6 +22,14 @@ class Cache {
         }
         $this->key_string = substr($this->key_string, 0, -1);
         $this->key = $this->key_name.":".$this->company_identifier;
+    }
+
+    private function _get_company_identifier() { 
+        if(array_key_exists('company_name', $this->filter_array)) {
+            return $this->filter_array['company_name'];
+        } else {
+            return $this->filter_array['company_id'];
+        }
     }
 
     public function get_cache() {
@@ -45,6 +48,7 @@ class Cache {
     }
 
     public function invalidate_cache() { 
+        $this->company_identifier = $this->_get_company_identifier();
         $key = $this->key_name.":".$this->company_identifier;
         $this->redis->del($key);
     }
