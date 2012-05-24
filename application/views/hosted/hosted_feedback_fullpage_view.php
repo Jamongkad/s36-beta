@@ -44,7 +44,7 @@
 		var container = $('#theFeedbacks');
         var page_counter = counter + 1;
         $.ajax({
-              url: '/hosted/fullpage_partial/<?=$company->name?>/' + page_counter
+              url: '/hosted/fullpage_partial/<?=strtolower($company->name)?>/' + page_counter
             , success: function(msg) {
  		        var boxes = $(msg);               
          		container.append( boxes ).masonry( 'appended', boxes ); 
