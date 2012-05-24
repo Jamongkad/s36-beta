@@ -10,9 +10,11 @@ return array(
         $company = new Company\Repositories\DBCompany;
         $widget = $wl->load();
         $company_info = $company->get_company_info($widget->company_id);
+        
+        $hostname = Config::get('application.hostname');
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
-            'widget' => $widget->render_hosted(), 'company' => $company_info
+            'widget' => $widget->render_hosted(), 'company' => $company_info, 'hostname' => $hostname
         ));
 
     },
