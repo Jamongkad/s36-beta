@@ -46,14 +46,7 @@ return array(
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
     },
 
-    'GET /(:any)/submit' => function($company) {
-        print_r($company);
-    },
-
-    'GET /submit' => function() {
-
-        $company_name = Input::get('subdomain');
-
+    'GET /(:any)/submit' => function($company_name) {
         $dbw = new Widget\Repositories\DBWidget;
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
