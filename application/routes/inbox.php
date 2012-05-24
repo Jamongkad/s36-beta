@@ -22,7 +22,7 @@ return array(
         );
 
         $inbox->set_filters($filters);
-        $inbox->ignore_cache = True;
+        //$inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
 
         $admin_check = S36Auth::user();
