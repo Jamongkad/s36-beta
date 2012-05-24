@@ -90,6 +90,7 @@
             <div class="block" style="height:20px"></div>
             <div class="block">
             	<div class="theText">
+                    <br/><br/>
                 	<?=$feedback->text?>
                 </div>
             </div>
