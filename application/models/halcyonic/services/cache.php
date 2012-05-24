@@ -20,7 +20,7 @@ class Cache {
             }    
         }
         $this->key_string = substr($this->key_string, 0, -1);
-        $this->key = $this->key_name.":".$this->filter_array['company_id'];
+        $this->key = $this->key_name.":".$this->filter_array['company_name'];
     }
 
     public function get_cache() {
@@ -39,7 +39,7 @@ class Cache {
     }
 
     public function invalidate_cache() { 
-        $key = $this->key_name.":".$this->filter_array['company_id'];
+        $key = $this->key_name.":".$this->filter_array['company_name'];
         $this->redis->del($key);
     }
 
