@@ -5,11 +5,17 @@ use redisent, StdClass;
 class Cache {
 
     public $filter_array, $key_name;
-    private $key_string, $key;    
+    private $key_string, $key, $company_identifier;    
     protected $redis;
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
+
+        if(array_key_exists('company_name', $this->filter_array)) {
+            $this->company_identifier = $this->filter_array['company_name'];
+        } else {
+            $this->company_identifier = $this->filter_array['company_id'];
+        }
     }
 
     public function generate_keys() {
@@ -20,7 +26,7 @@ class Cache {
             }    
         }
         $this->key_string = substr($this->key_string, 0, -1);
-        $this->key = $this->key_name.":".$this->filter_array['company_name'];
+        $this->key = $this->key_name.":".$this->company_identifier;
     }
 
     public function get_cache() {
@@ -39,7 +45,7 @@ class Cache {
     }
 
     public function invalidate_cache() { 
-        $key = $this->key_name.":".$this->filter_array['company_name'];
+        $key = $this->key_name.":".$this->company_identifier;
         $this->redis->del($key);
     }
 
