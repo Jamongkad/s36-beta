@@ -20,11 +20,11 @@ class DBAccount extends S36DataObject {
         $name = $this->escape("stuart");
         $email = $this->escape("stuarttan@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $company = $this->escape("stuarttan");
+        $company = $this->escape(strtolower("stuarttan"));
         $bill_to = "Stuart Tan, LLC";
         $fullName = $this->escape("Stuart Tan");
         $site = $this->escape("www.stuarttan.com");
-        $site_name = $this->escape("stuarttan");
+        $site_name = $this->escape(strtolower("stuarttan"));
         
         if($this->company($company)) {
             throw new Exception("The company $company already exists.");

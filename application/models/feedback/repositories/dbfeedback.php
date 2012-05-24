@@ -379,7 +379,7 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
-    public function televised_feedback($company_id, $offset=0, $limit=4) {
+    public function televised_feedback($company_name, $offset=0, $limit=4) {
         $sql = "
             SELECT 
                 ".$this->select_vars."
@@ -401,7 +401,7 @@ class DBFeedback extends S36DataObject {
                 Country
                     ON Contact.countryId = Country.countryId
             WHERE 1=1
-                AND Company.companyId = :company_id
+                AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY
                 Feedback.dtAdded DESC
@@ -409,7 +409,7 @@ class DBFeedback extends S36DataObject {
         ";
 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
         $sth->bindparam(':offset', $offset, PDO::PARAM_INT);
         $sth->bindparam(':limit', $limit, PDO::PARAM_INT);
 

@@ -11,9 +11,10 @@ class HostedService {
     public $offset = 0;
     public $ignore_cache = False; 
     
-    public function __construct($company_id) {
+    public function __construct($company_name) {
+        $this->company_name = $company_name;
+        //$this->company_id = $company_id;
         $this->feedback = new DBFeedback;
-        $this->company_id = $company_id;
         $this->cache = new Halcyonic\Services\Cache;
     }
 
@@ -28,7 +29,7 @@ class HostedService {
           , 'units' => $this->units
           , 'limit' => $this->limit
           , 'offset' => $this->offset
-          , 'company_id' => $this->company_id
+          , 'company_name' => $this->company_name
         );
 
         $this->cache->generate_keys();
@@ -42,7 +43,7 @@ class HostedService {
 
     public function original_data() { 
         
-        $feeds = $this->feedback->televised_feedback($this->company_id, $this->offset, $this->limit);
+        $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
         $collection = $this->collection_data($feeds);
 
         $data_obj = new StdClass;

@@ -260,9 +260,9 @@ return array(
         Helpers::dump($size);
     },
 
-    'GET /tests/full_page_algo/(:num)/(:num?)' => function($company_id, $page=false) { 
+    'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
         $time_start = microtime(True);
-        $test = new Feedback\Services\HostedService($company_id);
+        $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
         $test->limit = 10;
         $test->ignore_cache = True;
