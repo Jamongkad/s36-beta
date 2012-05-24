@@ -13,7 +13,6 @@ class HostedService {
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
-        //$this->company_id = $company_id;
         $this->feedback = new DBFeedback;
         $this->cache = new Halcyonic\Services\Cache;
     }

@@ -299,10 +299,10 @@ return array(
         Helpers::dump($contact_info);
     },
 
-    'GET /tests/accounts' => function() {
-        $accounts = new DBAccount;
-        $no_default = $accounts->activate_defaultwidgets();
-        Helpers::dump($no_default);
+    'GET /tests/company_info/(:any)' => function($company_id) {
+        $company = new Company\Repositories\DBCompany;
+        $company_info = $company->get_company_info($company_id);
+        Helpers::dump($company_info);
     },
 
     //reserved route for Leica and Ryan testing

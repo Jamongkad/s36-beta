@@ -29,6 +29,13 @@ class DBCompany extends S36DataObject {
     }
 
     public function get_company_info($company_id) {
+
+        if(is_numeric($company_id)) {
+            $company_sql = "Company.companyId = :company_id";
+        } else { 
+            $company_sql = "Company.name = :company_id";
+        }
+
         $sql = "
             SELECT * FROM
                 Company
@@ -36,7 +43,8 @@ class DBCompany extends S36DataObject {
                 Site
                     ON Site.companyId = Site.companyId
             WHERE 1=1
-                AND Company.companyId = :company_id AND Site.companyId = :site_id
+                AND $company_sql
+                AND Site.companyId = :site_id
         ";
         $sth = $this->dbh->prepare($sql);     
 
