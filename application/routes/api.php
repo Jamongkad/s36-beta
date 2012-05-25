@@ -98,7 +98,7 @@ return array(
                 $hostname = Config::get('application.hostname');
 
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
-                    'company_name' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
+                    'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
                   , 'activity_check' => $activity_check
                   , 'hostname' => $hostname
