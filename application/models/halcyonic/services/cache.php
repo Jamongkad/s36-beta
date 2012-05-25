@@ -48,7 +48,6 @@ class Cache {
     }
 
     public function invalidate_cache() { 
-        $this->company_identifier = $this->_get_company_identifier();
         $key = $this->key_name.":".$this->company_identifier;
         $this->redis->del($key);
     }
