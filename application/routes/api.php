@@ -95,10 +95,13 @@ return array(
                               ->where('Feedback.feedbackId', '=', $feedback_id)
                               ->first(Array('firstName'));
 
+                $deploy_env = Config::get('application.deploy_env');
+
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                     'company_name' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
                   , 'activity_check' => $activity_check
+                  , 'deploy_env' => $deploy_env
                 ));       
             } else {
                 S36Auth::logout();

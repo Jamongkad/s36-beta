@@ -234,6 +234,11 @@ class Helpers {
         return $login_url;
     }
 
+    public static function deploy_link($target_link, $name) {
+        $deploy_env = Config::get('application.deploy_env');
+        return "<a href='$deploy_env$target_link'>$name</a>";
+    }
+
     public static function relative_time($time, $short=False) {
         $SECOND = 1;
         $MINUTE = 60 * $SECOND;

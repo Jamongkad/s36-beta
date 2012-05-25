@@ -13,7 +13,9 @@
             </div>
             <br/>
             <div style="text-align:center; font-size:1.3em">
-                To view more feedback, <?=HTML::link('/'.strtolower($company_name->name).'/login', 'sign in now!')?>
+                To view more feedback, 
+
+                <?=HTML::link('/'.strtolower($company_name->name).'/login', 'sign in now!')?>
             </div>
         </div>
     </div>
