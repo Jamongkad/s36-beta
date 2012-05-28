@@ -608,6 +608,23 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
     }
 
+    public function permanently_remove_feedback($id) { 
+        $feedback = DB::table('Feedback', 'master')
+                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
+                        ->where('Feedback.feedbackId', '=', $id)
+                        ->first();
+
+        //delete profile photos...
+        $profile_img = new \Widget\ProfileImage();
+        $profile_img->remove_profile_photo($feedback->avatar);
+
+        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
+                            ->delete();
+
+        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
+                             ->where('Feedback.isDeleted', '=', 1)
+                             ->delete();
+    }
 }
 
 /*
@@ -671,23 +688,5 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;
-    }
-
-    public function permanently_remove_feedback($id) { 
-        $feedback = DB::table('Feedback', 'master')
-                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
-                        ->where('Feedback.feedbackId', '=', $id)
-                        ->first();
-
-        //delete profile photos...
-        $profile_img = new \Widget\ProfileImage();
-        $profile_img->remove_profile_photo($feedback->avatar);
-
-        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
-                            ->delete();
-
-        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                             ->where('Feedback.isDeleted', '=', 1)
-                             ->delete();
     }
 */
