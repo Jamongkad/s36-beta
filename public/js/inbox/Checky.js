@@ -54,6 +54,8 @@ Checky.prototype.init = function() {
             } 
 
             if (conf) {
+                var count= checkFeed.parents('div.feedback-group').children('div.feedback').length;
+                console.log(count);
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
@@ -61,12 +63,12 @@ Checky.prototype.init = function() {
                                              , "contactid": $(this).siblings('.contact-feed-id').val()
                                              , "siteid": $(this).siblings('.site-feed-id').val()
                                              , "rating": $(this).siblings('.feed-ratings').val()
-                                             , "parent": $(this).parents('div.feedback-group')
                                              });
                             $( '#' + $(this).val() ).fadeOut(300, function() { $(this).hide(); });     
-
+                            /*
                             var count = $(this).parents('div.feedback-group').children('div.feedback').length;
                             console.log(count);
+                            */
                         } 
                     }
                 });    
