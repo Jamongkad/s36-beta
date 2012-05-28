@@ -53,15 +53,18 @@ Checky.prototype.init = function() {
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
+
+                            var parent_id = $(this).parents('div.feedback-group').attr('id');
                             collection.push({  "feedid": $(this).val()
                                              , "contactid": $(this).siblings('.contact-feed-id').val()
                                              , "siteid": $(this).siblings('.site-feed-id').val()
                                              , "rating": $(this).siblings('.feed-ratings').val()
+                                             , "parent_id": parent_id
                                              });
 
                             var feed_unit = '#' + $(this).val();
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
-                            var parent_id = $(this).parents('div.feedback-group').attr('id');
+
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var total_children = my_parent.children('.feedback');
@@ -92,8 +95,7 @@ Checky.prototype.init = function() {
                   , data: {  'col': mode
                            , 'feed_ids': collection
                            , 'cat_d': categoryFeed.val()
-                           , 'curl': currentUrl 
-                           , 'parent_id': parent_id }
+                           , 'curl': currentUrl }
                   , url: $(this).attr("hrefaction")
                   , dataType: "json"
                   , beforeSend: function() {
