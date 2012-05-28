@@ -23,7 +23,7 @@ class FireMultiple {
         Helpers::show_data($this->mode);
         */
         //conditions
-        if ( $ok_ratings == true and $poor_ratings == true and ($this->mode == "feature" || $this->mode == "publish")) {
+        if ($ok_ratings == true and $poor_ratings == true and ($this->mode == "feature" || $this->mode == "publish")) {
             echo json_encode(Array("message" => $message, "return_ids" => $this->feed_ids));
         }
 

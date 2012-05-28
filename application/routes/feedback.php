@@ -174,7 +174,7 @@ return array(
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col'); 
         
-        $fire = new FireMultiple($feedback, $feed_ids, $mode);
+        $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
         return $fire->execute();
     },
     
