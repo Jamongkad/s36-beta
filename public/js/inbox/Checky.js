@@ -85,7 +85,7 @@ Checky.prototype.init = function() {
                     return $(n).is(':hidden');
                 });
 
-                console.log(hidden_children);
+                console.log(total_children);
 
                            
                 $("option:first", this).prop("selected", true);
