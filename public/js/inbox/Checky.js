@@ -54,6 +54,7 @@ Checky.prototype.init = function() {
             } 
 
             if (conf) {
+
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
@@ -67,8 +68,11 @@ Checky.prototype.init = function() {
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
                             var my_parent = $(this).parents('div.feedback-group');
                             var children = my_parent.children('.feedback').size();
-                            console.log($(this));
 
+                            var hidden_children = $.grep(checkFeed, function(n, i) {
+                                return $(n).is(':hidden');
+                            });
+                            console.log(hidden_children);
 
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
