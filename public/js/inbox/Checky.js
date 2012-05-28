@@ -66,8 +66,7 @@ Checky.prototype.init = function() {
 
                             var my_parent = $(this).parents('div.feedback-group');
                             var count = my_parent.children('div.feedback').not(':hidden').length;
-                            console.log(count);
-                            if(count == 1)  {
+                            if(count === 0)  {
                                 my_parent.hide();
                             }
 
