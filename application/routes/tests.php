@@ -306,7 +306,8 @@ return array(
     },
 
     'GET /tests/underscore' => function() {
-        Helpers::dump(__\__::map(array(1, 2), function($n) { return $n * 2; }));
+        $underscore = new underscore\__;
+        Helpers::dump($underscore);
     },
 
     //reserved route for Leica and Ryan testing
