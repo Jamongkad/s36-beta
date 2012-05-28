@@ -131,6 +131,7 @@ sup.count{
 #admin-panel .main-panel .the-feedbacks{padding:0px 0px;display:block;background:#FFF;font-size:10px;}
 #admin-panel .main-panel .the-feedbacks div{position:relative;margin:0; padding:0;}
 #admin-panel .main-panel .the-feedbacks .feedback{clear:both;float:left;display:block;width:100%;border-bottom:1px solid #e4e4e4;padding:15px 0px;}
+#admin-panel .main-panel .the-feedbacks .feedback-date-header {padding:12px; float:left;}
 
 #admin-panel .main-panel .left{width:10%;float:left;text-align:center;}
 #admin-panel .main-panel .left input{top:2px;}
