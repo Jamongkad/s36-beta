@@ -63,9 +63,12 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
+
                 var collection_count = collection.length;
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
+                console.log(checkFeed);
+                /*
                 $.ajax({
                     type: "POST"      
                   , data: {  col: mode
@@ -94,6 +97,7 @@ Checky.prototype.init = function() {
                       close_checkybar();
                    }
                 });
+                */
             }
 
             $(this).val("none");
