@@ -26,30 +26,30 @@ class FireMultiple {
 
         //conditions
         if ($ok_ratings == true and $poor_ratings == true and ($this->mode == "feature" || $this->mode == "publish")) {
-            echo json_encode(Array("message" => $message, "return_ids" => $this->feed_ids));
+            echo json_encode(Array("message" => $message, "mode" => $this->mode, "return_ids" => $this->feed_ids));
         }
 
         if ($ok_ratings == null and $poor_ratings and ($this->mode == "feature" || $this->mode == "publish")) {      
-            echo json_encode(Array("message" => $message, "return_ids" => $poor_ratings));
+            echo json_encode(Array("message" => $message, "mode" => $this->mode, "return_ids" => $poor_ratings));
         }
 
         if ($ok_ratings == null and $poor_ratings and $this->mode == "delete") {     
-            echo json_encode(Array("message" => "Poor ratings! allow {$this->mode} only", "return_ids" => null));
+            echo json_encode(Array("message" => "Poor ratings! allow {$this->mode} only", "mode" => $this->mode, "return_ids" => null));
             //$this->_toggle();
         }
  
         if ($ok_ratings and $poor_ratings == null) {     
-            echo json_encode(Array("message" => "Ok ratings! mode: {$this->mode}", "return_ids" => null)); 
+            echo json_encode(Array("message" => "Ok ratings! mode: {$this->mode}", "mode" => $this->mode, "return_ids" => null)); 
             //$this->_toggle();
         }
 
         if ( $ok_ratings == true and $poor_ratings == true and ($this->mode == 'restore' or $this->mode == 'delete') ) {
-            echo json_encode(Array("message" => "Restoring Feeds", "return_ids" => null)); 
+            echo json_encode(Array("message" => "Restoring Feeds", "mode" => $this->mode, "return_ids" => null)); 
             //$this->_toggle(); 
         }
 
         if ($this->mode == 'remove') {
-            echo json_encode(Array("message" => "Deleting Feeds", "return_ids" => null)); 
+            echo json_encode(Array("message" => "Deleting Feeds", "mode" => $this->mode, "return_ids" => null)); 
             //$this->feedback->_permanent_delete($this->feed_ids);     
         }
 
