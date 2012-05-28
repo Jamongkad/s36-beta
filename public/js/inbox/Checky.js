@@ -92,10 +92,12 @@ Checky.prototype.init = function() {
 
                 $.ajax({
                     type: "POST"      
-                  , data: {  'col': mode
-                           , 'feed_ids': collection
-                           , 'cat_d': categoryFeed.val()
-                           , 'curl': currentUrl }
+                  , data: {  
+                      'col': mode
+                    , 'feed_ids': collection
+                    //, 'cat_d': categoryFeed.val()
+                    //, 'curl': currentUrl 
+                    }
                   , url: $(this).attr("hrefaction")
                   //, dataType: "json"
                   , beforeSend: function() {
