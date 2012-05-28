@@ -67,7 +67,7 @@ Checky.prototype.init = function() {
                 var collection_count = collection.length;
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                console.log(checkFeed);
+                console.log(collection);
                 /*
                 $.ajax({
                     type: "POST"      
