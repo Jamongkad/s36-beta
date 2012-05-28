@@ -198,8 +198,8 @@ return array(
     },
 
     'GET /feedback/removefeedback/(:num)' => function($id) use ($feedback) {
-        $feedback->permanently_remove_feedback($id);
-        return Redirect::to('inbox/deleted/all'); 
+        Helpers::dump($feedback->permanently_remove_feedback($id));
+        //return Redirect::to('inbox/deleted/all'); 
     },
 
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
