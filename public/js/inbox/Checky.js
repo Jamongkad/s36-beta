@@ -54,7 +54,7 @@ Checky.prototype.init = function() {
             } 
 
             if (conf) {
-
+                var total_children;
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
@@ -67,7 +67,7 @@ Checky.prototype.init = function() {
                             var feed_unit = '#' + $(this).val();
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
                             var my_parent = $(this).parents('div.feedback-group');
-                            var children = my_parent.children('.feedback').size();
+                            total_children = my_parent.children('.feedback').size();
 
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
@@ -80,12 +80,8 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-
-                            
-                var hidden_children = $.grep(checkFeed, function(n, i) {
-                    return $(n).is(':hidden');
-                });
-                console.log(hidden_children);
+  
+                console.log(total_children);
                            
                 var collection_count = collection.length;
                 $("option:first", this).prop("selected", true);
