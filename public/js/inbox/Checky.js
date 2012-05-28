@@ -54,8 +54,6 @@ Checky.prototype.init = function() {
             } 
 
             if (conf) {
-                var count= checkFeed.parents('div.feedback-group').children('div.feedback').length;
-                console.log(count);
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
@@ -65,10 +63,13 @@ Checky.prototype.init = function() {
                                              , "rating": $(this).siblings('.feed-ratings').val()
                                              });
                             $( '#' + $(this).val() ).fadeOut(300, function() { $(this).hide(); });     
-                            /*
-                            var count = $(this).parents('div.feedback-group').children('div.feedback').length;
-                            console.log(count);
-                            */
+
+                            var my_parent = $(this).parents('div.feedback-group');
+                            var count = my_parent.children('div.feedback').length;
+                            if(count === 1)  {
+                                my_parent.fadeOut(300, function() { $(this).hide(); });
+                            }
+
                         } 
                     }
                 });    
@@ -76,7 +77,6 @@ Checky.prototype.init = function() {
                 var collection_count = collection.length;
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                //console.log(collection);
                 /*
                 $.ajax({
                     type: "POST"      
