@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Helpers;
+use Feedback\Repositories\DBFeedback, Helpers, Underscore;
 
 class FireMultiple {
 
@@ -63,6 +63,8 @@ class FireMultiple {
     }
 
     private function _group_cluster($feeds) {
+        $underscore = new Underscore;
+        Helpers::dump($underscore);
         return $feeds; 
     }
     
