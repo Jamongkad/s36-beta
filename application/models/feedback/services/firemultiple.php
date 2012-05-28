@@ -19,7 +19,7 @@ class FireMultiple {
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
         $parent_ids = array_unique(array_map(function($obj) { return $obj['parent_id']; }, $this->feed_ids));
         
-        $clustered_groups = $this->_group_cluster($this->feeds_ids);
+        $clustered_groups = $this->_group_cluster($this->feed_ids);
 
         Helpers::dump($clustered_groups);
         
