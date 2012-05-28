@@ -87,7 +87,7 @@ Checky.prototype.init = function() {
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-
+                /*
                 $.ajax({
                     type: "POST"      
                   , data: {  col: mode
@@ -116,7 +116,7 @@ Checky.prototype.init = function() {
                       close_checkybar();
                    }
                 });
-
+                */
             }
 
             $(this).val("none");
