@@ -306,7 +306,7 @@ return array(
     },
 
     'GET /tests/underscore' => function() {
-        $underscore = new Underscore\__;
+        $underscore = new __;
         Helpers::dump($underscore);
     },
 
