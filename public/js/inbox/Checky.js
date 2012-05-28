@@ -22,12 +22,11 @@ Checky.prototype.init = function() {
 
         if (ifChecked && mode != 'none') { 
 
-            var conf, color, goto_url;
+            var conf, color
 
             if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
                 color    = '#fef1b5';
-                goto_url = 'inbox/all';
             }
            
             if (mode == 'remove') {
@@ -38,19 +37,16 @@ Checky.prototype.init = function() {
             if (mode == 'publish') {
                 conf     = confirm("Are you sure want to publish these feedbacks?");     
                 color    = '#66cd00';
-                goto_url = 'inbox/published/all';
             }
            
             if (mode == 'feature') {
                 conf     = confirm("Are you sure want to feature these feedbacks?");     
                 color    = '#fbec5d';
-                goto_url = 'inbox/featured/all';
             }
            
             if (mode == 'delete') {
                 conf     = confirm("Are you sure want to delete these feedbacks?");     
                 color    = '#fef1b5';
-                goto_url = 'inbox/deleted';
             } 
 
             if (conf) {
