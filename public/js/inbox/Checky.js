@@ -62,12 +62,16 @@ Checky.prototype.init = function() {
                                              , "siteid": $(this).siblings('.site-feed-id').val()
                                              , "rating": $(this).siblings('.feed-ratings').val()
                                              });
-                            $( '#' + $(this).val() ).fadeOut(300, function() { $(this).hide(); });     
 
+                            var feed_unit = '#' + $(this).val();
+                            $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                            var my_parent = $(feed_unit).parents('div.feedback-group');
+                            console.log(my_parent);
+
+                            /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var count = my_parent.children('div.feedback').is(':hidden').length;
                             console.log(count);
-                            /*
                             if(count === 1)  {
                                 my_parent.hide();
                             }
