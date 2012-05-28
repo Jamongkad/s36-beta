@@ -54,7 +54,6 @@ Checky.prototype.init = function() {
             } 
 
             if (conf) {
-                var total_children;
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
@@ -67,8 +66,8 @@ Checky.prototype.init = function() {
                             var feed_unit = '#' + $(this).val();
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
                             var my_parent = $(this).parents('div.feedback-group');
-                            total_children = my_parent.children('.feedback');
-
+                            var total_children = my_parent.children('.feedback');
+                            console.log(total_children);
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var count = my_parent.children('div.feedback').is(':hidden').length;
@@ -81,12 +80,11 @@ Checky.prototype.init = function() {
                     }
                 });    
                 var collection_count = collection.length; 
+                /*
                 var hidden_children = $.grep(total_children, function(n, i) {
                     return $(n).is(':hidden');
                 });
-
-                console.log(total_children);
-
+                */
                            
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
