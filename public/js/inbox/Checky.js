@@ -22,7 +22,7 @@ Checky.prototype.init = function() {
 
         if (ifChecked && mode != 'none') { 
 
-            var conf, color
+            var conf, color, parent_id;
 
             if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
@@ -61,8 +61,7 @@ Checky.prototype.init = function() {
 
                             var feed_unit = '#' + $(this).val();
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
-                            var my_parent = $(this).parents('div.feedback-group').attr('id');
-                            console.log(my_parent);
+                            var parent_id = $(this).parents('div.feedback-group').attr('id');
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var total_children = my_parent.children('.feedback');
@@ -87,13 +86,14 @@ Checky.prototype.init = function() {
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                /*
+
                 $.ajax({
                     type: "POST"      
-                  , data: {  col: mode
-                           , feed_ids: collection
-                           , cat_id: categoryFeed.val()
-                           , curl: currentUrl }
+                  , data: {  'col': mode
+                           , 'feed_ids': collection
+                           , 'cat_d': categoryFeed.val()
+                           , 'curl': currentUrl 
+                           , 'parent_id': parent_id }
                   , url: $(this).attr("hrefaction")
                   , dataType: "json"
                   , beforeSend: function() {
@@ -116,7 +116,7 @@ Checky.prototype.init = function() {
                       close_checkybar();
                    }
                 });
-                */
+
             }
 
             $(this).val("none");
