@@ -16,7 +16,7 @@ function __($item=null) {
 }
 
 // Underscore.php
-class __ {
+class Underscore {
   
   // Start the chain
   private $_chained = false; // Are we in a chain?
