@@ -82,8 +82,10 @@ Checky.prototype.init = function() {
                 });    
                 var collection_count = collection.length; 
                 var hidden_children = $.grep(total_children, function(n, i) {
-                    console.log(n);
+                    return $(n).is(':hidden');
                 });
+
+                console.log(hidden_children);
 
                            
                 $("option:first", this).prop("selected", true);
