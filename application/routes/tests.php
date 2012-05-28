@@ -306,7 +306,7 @@ return array(
     },
 
     'GET /tests/underscore' => function() {
-        $underscore = new Underscore;//Underscore::map(array(1,2,3), function($n) { return $n * 2;  });
+        $underscore = new __;//Underscore::map(array(1,2,3), function($n) { return $n * 2;  });
         Helpers::dump($underscore);
     },
 
