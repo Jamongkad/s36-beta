@@ -80,10 +80,10 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-  
+                var collection_count = collection.length; 
                 console.log(total_children);
+                console.log(collection_count);
                            
-                var collection_count = collection.length;
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 /*
