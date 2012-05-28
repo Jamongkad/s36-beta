@@ -64,7 +64,11 @@ Checky.prototype.init = function() {
                                              });
 
                             var feed_unit = '#' + $(this).val();
-                            $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                            $(feed_unit).fadeOut(300, function() { 
+                                $(this).hide(); 
+                                var test = $(this).parents('div.feedback-group > :hidden');
+                                console.log(test);
+                            });      
                             var my_parent = $(this).parents('div.feedback-group');
                             var total_children = my_parent.children('.feedback');
                             console.log(total_children);
