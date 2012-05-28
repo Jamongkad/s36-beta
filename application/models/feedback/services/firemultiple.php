@@ -39,7 +39,7 @@ class FireMultiple {
         }
  
         if ($ok_ratings and $poor_ratings == null) {     
-            echo json_encode(Array("message" => "Ok ratings! {$this->mode}", "return_ids" => null)); 
+            echo json_encode(Array("message" => "Ok ratings! mode: {$this->mode}", "return_ids" => null)); 
             //$this->_toggle();
         }
 
