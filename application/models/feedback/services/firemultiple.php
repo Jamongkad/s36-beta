@@ -17,7 +17,7 @@ class FireMultiple {
         $message = "Sorry negative feedback cannot be ".(($this->mode == "publish") ? "published" : "featured"); 
         $ok_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] != "POOR"; });
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
-        $parent_ids = array_filter($this->feeds_ids, function($obj) { return $obj['parent_id']; });
+        $parent_ids = array_filter($this->feed_ids, function($obj) { return $obj['parent_id']; });
 
         print_r($parent_ids);
         
