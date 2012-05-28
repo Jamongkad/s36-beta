@@ -71,7 +71,7 @@ Checky.prototype.init = function() {
                             });      
                             var my_parent = $(this).parents('div.feedback-group');
                             var total_children = my_parent.children('.feedback');
-                            console.log(total_children);
+                            //console.log(total_children);
                             /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var count = my_parent.children('div.feedback').is(':hidden').length;
