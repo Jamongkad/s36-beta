@@ -67,7 +67,7 @@ Checky.prototype.init = function() {
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
                             var my_parent = $(this).parents('div.feedback-group');
                             var children = my_parent.children('.feedback').size();
-                            console.log(children);
+                            console.log($(this));
 
 
                             /*
