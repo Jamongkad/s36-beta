@@ -63,7 +63,7 @@ class FireMultiple {
     }
 
     private function _group_cluster($feeds) {
-        Helpers::dump(__::map(array(1, 2), function($n) { return $n * 2; }));
+        Helpers::dump(\__::map(array(1, 2), function($n) { return $n * 2; }));
         return $feeds; 
     }
     
