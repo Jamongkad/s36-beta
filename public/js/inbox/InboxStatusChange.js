@@ -205,7 +205,8 @@ InboxStatusChange.prototype.initialize = function() {
         var us = $(this);
         var identifier = $(this).attr('class');         
         var us = $(this);
-
+        console.log(identifier);
+        /*
         if(identifier == 'check') {
             var check = new CheckStateObject(us);
             check.process();
@@ -220,12 +221,9 @@ InboxStatusChange.prototype.initialize = function() {
 
         if(identifier == 'remove' || identifier == 'popup-delete') { 
             var remove = new RemoveStateObject(us);
-            console.log(remove);
-            /*
             remove.process();
             remove.undo();
-            */
         }
-
+        */
     })
 }
