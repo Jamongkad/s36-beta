@@ -63,7 +63,7 @@ class FireMultiple {
     }
 
     private function _group_cluster($feeds) {
-        $underscore = new Underscore;
+        $underscore = new Underscore\Underscore;
         Helpers::dump($underscore);
         return $feeds; 
     }
