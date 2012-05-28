@@ -234,6 +234,7 @@ class Helpers {
         return $login_url;
     }
 
+
     public static function relative_time($time, $short=False) {
         $SECOND = 1;
         $MINUTE = 60 * $SECOND;

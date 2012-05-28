@@ -305,6 +305,11 @@ return array(
         Helpers::dump($company_info);
     },
 
+    'GET /tests/deploy_link' => function() {
+        $link = Helpers::deploy_link('/pwet/wewe', 'Martie');
+        Helpers::dump($link);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
