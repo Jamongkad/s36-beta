@@ -66,10 +66,12 @@ Checky.prototype.init = function() {
 
                             var my_parent = $(this).parents('div.feedback-group');
                             var count = my_parent.children('div.feedback').not(':hidden').length;
-                            if(count === 0)  {
+                            console.log(count);
+                            /*
+                            if(count === 1)  {
                                 my_parent.hide();
                             }
-
+                            */
                         } 
                     }
                 });    
