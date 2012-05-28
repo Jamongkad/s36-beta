@@ -19,7 +19,7 @@ class FireMultiple {
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
         $parent_ids = array_unique(array_map(function($obj) { return $obj['parent_id']; }, $this->feed_ids));
 
-        print_r($parent_ids);
+        Helpers::dump($this->feed_ids);
         
         /*
         Helpers::show_data($ok_ratings);
@@ -28,6 +28,7 @@ class FireMultiple {
         */
 
         //conditions
+        /*
         if ($ok_ratings == true and $poor_ratings == true and ($this->mode == "feature" || $this->mode == "publish")) {
             echo json_encode(Array("message" => $message, "mode" => $this->mode, "return_ids" => $this->feed_ids));
         }
@@ -55,6 +56,7 @@ class FireMultiple {
             echo json_encode(Array("message" => "Deleting Feeds", "mode" => $this->mode, "return_ids" => null)); 
             //$this->feedback->_permanent_delete($this->feed_ids);     
         }
+        */
 
     }
     

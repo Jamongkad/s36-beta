@@ -97,11 +97,12 @@ Checky.prototype.init = function() {
                            , 'cat_d': categoryFeed.val()
                            , 'curl': currentUrl }
                   , url: $(this).attr("hrefaction")
-                  , dataType: "json"
+                  //, dataType: "json"
                   , beforeSend: function() {
                       checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                   }
                   , success: function(msg) {
+                      /*
                       var return_ids = msg.return_ids; 
                       var message = msg.message;
                       checkyBar.css({'width': '350px', 'right': '22%'});
@@ -116,6 +117,7 @@ Checky.prototype.init = function() {
                       }
 
                       close_checkybar();
+                      */
                    }
                 });
 
