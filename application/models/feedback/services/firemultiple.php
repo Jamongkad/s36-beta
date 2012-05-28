@@ -14,8 +14,7 @@ class FireMultiple {
 
     public function execute() {
         
-        $message = "Sorry negative feedback cannot be ".(($this->mode == "publish") ? "published" : "featured");
-        
+        $message = "Sorry negative feedback cannot be ".(($this->mode == "publish") ? "published" : "featured"); 
         $ok_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] != "POOR"; });
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
         
@@ -40,7 +39,7 @@ class FireMultiple {
         }
  
         if ($ok_ratings and $poor_ratings == null) {     
-            echo json_encode(Array("message" => "Ok ratings!", "return_ids" => null)); 
+            echo json_encode(Array("message" => "Ok ratings! {$this->mode}", "return_ids" => null)); 
             //$this->_toggle();
         }
 
