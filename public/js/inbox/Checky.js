@@ -57,8 +57,12 @@ Checky.prototype.init = function() {
                 checkFeed.each(function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
-                            collection.push( {    "feedid": $(this).val(), "contactid": $(this).siblings('.contact-feed-id').val()
-                                               , "siteid": $(this).siblings('.site-feed-id').val(), "rating": $(this).siblings('.feed-ratings').val()} );
+                            collection.push({  "feedid": $(this).val()
+                                             , "contactid": $(this).siblings('.contact-feed-id').val()
+                                             , "siteid": $(this).siblings('.site-feed-id').val()
+                                             , "rating": $(this).siblings('.feed-ratings').val()
+                                             , "parent": $(this).parents('div.feedback-group')
+                                             });
                             $( '#' + $(this).val() ).fadeOut(300, function() { $(this).hide(); });     
                         } 
                     }
