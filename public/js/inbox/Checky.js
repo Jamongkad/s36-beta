@@ -65,6 +65,7 @@ Checky.prototype.init = function() {
 
                             var feed_unit = '#' + $(this).val();
                             $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                            /*
                             var my_parent = $(this).parents('div.feedback-group');
                             var total_children = my_parent.children('.feedback');
                             var hidden = $.grep(total_children, function(n, i) {
@@ -85,15 +86,10 @@ Checky.prototype.init = function() {
                     }
                 });    
                 var collection_count = collection.length; 
-                /*
-                var hidden_children = $.grep(total_children, function(n, i) {
-                    return $(n).is(':hidden');
-                });
-                */
-                           
+                         
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                /*
+
                 $.ajax({
                     type: "POST"      
                   , data: {  col: mode
@@ -122,7 +118,7 @@ Checky.prototype.init = function() {
                       close_checkybar();
                    }
                 });
-                */
+
             }
 
             $(this).val("none");
