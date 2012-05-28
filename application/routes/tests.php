@@ -305,9 +305,8 @@ return array(
         Helpers::dump($company_info);
     },
 
-    'GET /tests/deploy_link' => function() {
-        $link = Helpers::deploy_link('/pwet/wewe', 'Martie');
-        Helpers::dump($link);
+    'GET /tests/underscore' => function() {
+        Helpers::dump(__::map(array(1, 2), function($n) { return $n * 2; }));
     },
 
     //reserved route for Leica and Ryan testing
