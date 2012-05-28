@@ -1,4 +1,4 @@
-<?php
+<?php namespace __;
 
 /**
  * Underscore.php v1.3.1
