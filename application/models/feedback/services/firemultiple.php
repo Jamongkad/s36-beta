@@ -72,7 +72,7 @@ class FireMultiple {
         Helpers::dump($this->mode);
         $count = 0;
         foreach($group as $key => $val) {
-            $total_units = $this->underscore->groupBy($val, 'total_units');
+            $total_units = $this->underscore->first($val);
             Helpers::dump($total_units);
             /*
             $count += 1;
