@@ -83,7 +83,10 @@ class FireMultiple {
             if($total_units == count($total_mems)) {
                 $this->redis->hset($company_key, $key, "full");
             }
+        } 
 
+        if($hkeys = $this->redis->hkeys($company_key)) {
+            Helpers::dump($hkeys);
         } 
         //return $feeds; 
     }
