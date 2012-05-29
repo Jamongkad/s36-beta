@@ -78,21 +78,19 @@ class FireMultiple {
             $total_units = $this->underscore->first($val);
             $total_units = $total_units['total_units'];
 
-            $count += 1;
-            $this->redis->hsetnx($key_name, $this->mode.$count, json_encode($val));     
 
+            $this->redis->hset($key_name, $this->mode.$count, json_encode($val));     
+            Helpers::dump($this->mode.$count);
+            /*
             $total_hkeys = $this->redis->hkeys($key_name);
 
             Helpers::dump($total_hkeys);
-
+          
             if($total_units == count($total_hkeys)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
-            /*
-            if($this->underscore->isEqual($total_units, count($total_hkeys))) {
-           
-            }
             */
+            $count += 1;
         } 
         //return $feeds; 
     }
