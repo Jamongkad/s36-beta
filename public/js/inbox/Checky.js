@@ -95,8 +95,6 @@ Checky.prototype.init = function() {
                   , data: {  
                       'col': mode
                     , 'feed_ids': collection
-                    //, 'cat_d': categoryFeed.val()
-                    //, 'curl': currentUrl 
                     }
                   , url: $(this).attr("hrefaction")
                   //, dataType: "json"

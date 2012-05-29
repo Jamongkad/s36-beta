@@ -8,7 +8,7 @@
             (<abbr class="timeago" title="<?=date("Y-m-d h:i:s", $feeds->unix_timestamp)?>"></abbr>)
             -->
         </div>
-        <?foreach($feeds->children as $feed):?>
+        <?foreach($feeds->children->result as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
             <div class="feedback" id="<?=$id?>">
