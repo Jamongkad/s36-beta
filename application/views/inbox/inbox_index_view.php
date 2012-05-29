@@ -9,7 +9,7 @@
             -->
         </div>
         <?foreach($feeds->children->result as $feed):?>
-            <p><?=$feed->total_rows?></p>
+            <p></p>
             <? $id = $feed->id ?>
             <div class="feedback" id="<?=$id?>">
                 <div class="left">      
