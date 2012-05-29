@@ -71,20 +71,17 @@ class FireMultiple {
         $company_key = "inbox:check-action:".$this->company_id;
         foreach($group as $key => $val) {
             
-            $key_name = "check-action:".$key;
-
             $first = $this->underscore->first($val);
             $total_units = $first['total_units'];
 
-            $this->redis->hset($company_key, $key_name, null);
+            $this->redis->hset($company_key, $key, null);
             foreach($val as $v) {
-                $this->redis->sadd($key_name, $v['feedid']."-".$this->mode);     
+                $this->redis->sadd($key, $v['feedid']."-".$this->mode);     
             }
 
-            $total_mems = $this->redis->smembers($key_name);
+            $total_mems = $this->redis->smembers($key);
             if($total_units == count($total_mems)) {
-                $this->redis->hset($company_key, $key_name, "full");
-                //Helpers::dump("Limit has been reached exposing: ".$key);        
+                $this->redis->hset($company_key, $key, "full");
             }
 
         } 
