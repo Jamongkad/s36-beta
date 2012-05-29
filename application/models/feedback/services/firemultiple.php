@@ -74,10 +74,9 @@ class FireMultiple {
 
             $total_units = $this->underscore->first($val);
             $total_units = $total_units['total_units'];
-            $count = 0;
+
             foreach($val as $v) {
                 $this->redis->hset($key_name, $key."-".$this->mode, json_encode($v));     
-                $count += 1;
             }
 
             $total_mems = $this->redis->hkeys($key_name);
