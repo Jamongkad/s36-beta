@@ -30,7 +30,14 @@ return array(
         $user_id = S36Auth::user()->userid;
         $company_id = S36Auth::user()->companyid;
         $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
-        $redis->del("inbox:check-action:".$company_id);
+
+        $company_key = "inbox:check-action:".$company_id;
+        if($hkeys = $this->redis->hkeys($company_key)) {
+            foreach($hkeys as $hseek) {  
+                $redis->del($hseek);
+            }
+        } 
+        $redis->del($company_key);
 
         $category = new DBCategory;
         $view_data = Array(
