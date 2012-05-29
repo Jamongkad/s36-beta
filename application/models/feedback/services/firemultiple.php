@@ -62,26 +62,25 @@ class FireMultiple {
             //$this->feedback->_permanent_delete($this->feed_ids);     
         }
         */
-
     }
 
     private function _group_cluster($feeds) {
 
         $group = $this->underscore->groupBy($feeds, 'parent_id');
-        //Helpers::dump($group);
-        //Helpers::dump($this->mode);
+
         foreach($group as $key => $val) {
             
             $key_name = "inbox:check-action:".$key;
 
             $total_units = $this->underscore->first($val);
             $total_units = $total_units['total_units'];
-
+            $count = 0;
             foreach($val as $v) {
-                $this->redis->sadd($key_name, json_encode($v));     
+                $this->redis->hset($key_name, $count, json_encode($v));     
+                $count += 1;
             }
 
-            $total_mems = $this->redis->smembers($key_name);
+            $total_mems = $this->redis->hget($key_name);
             if($total_units == count($total_mems)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
