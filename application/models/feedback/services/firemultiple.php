@@ -80,7 +80,7 @@ class FireMultiple {
                 $count += 1;
             }
 
-            $total_mems = $this->redis->hget($key_name);
+            $total_mems = $this->redis->hkeys($key_name);
             if($total_units == count($total_mems)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
