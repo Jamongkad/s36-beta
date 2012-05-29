@@ -80,11 +80,10 @@ class FireMultiple {
             foreach($val as $v) {
                 $this->redis->sadd($key_name, json_encode($v));     
             }
-            /*
-            $total_hkeys = $this->redis->hkeys($key_name);
 
-            Helpers::dump($total_hkeys);
-          
+            $total_mems = $this->redis->smembers($key_name);
+            Helpers::dump($total_mems);
+            /*          
             if($total_units == count($total_hkeys)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
