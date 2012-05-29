@@ -54,12 +54,13 @@ Checky.prototype.init = function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
 
-                            var parent_id = $(this).parents('div.feedback-group').attr('id');
+                            var my_parent = $(this).parents('div.feedback-group')
                             collection.push({  "feedid": $(this).val()
                                              , "contactid": $(this).siblings('.contact-feed-id').val()
                                              , "siteid": $(this).siblings('.site-feed-id').val()
                                              , "rating": $(this).siblings('.feed-ratings').val()
-                                             , "parent_id": parent_id
+                                             , "parent_id": my_parent.attr('id')
+                                             , "total_units": my_parent.attr('data-total') 
                                              });
 
                             var feed_unit = '#' + $(this).val();
