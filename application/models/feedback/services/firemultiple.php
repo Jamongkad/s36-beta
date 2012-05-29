@@ -73,8 +73,7 @@ class FireMultiple {
         $count = 0;
         foreach($group as $key => $val) {
             $total_units = $this->underscore->first($val);
-            $total_units = $this->underscore->pluck($total_units, 'total_units');
-            Helpers::dump($total_units);
+            Helpers::dump($total_units->total_rows);
             /*
             $count += 1;
             $this->redis->hsetnx("inbox:check-action:".$key, $this->mode.$count, json_encode($val));     
