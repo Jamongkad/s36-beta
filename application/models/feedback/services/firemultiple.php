@@ -80,7 +80,7 @@ class FireMultiple {
 
 
             $this->redis->hset($key_name, $this->mode.$count, json_encode($val));     
-            Helpers::dump($this->mode.$count);
+            Helpers::dump($val);
             /*
             $total_hkeys = $this->redis->hkeys($key_name);
 
