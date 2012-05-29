@@ -68,7 +68,7 @@ class FireMultiple {
         $underscore = new Underscore\Underscore;
         $group = $underscore->groupBy($feeds, 'parent_id');
         Helpers::dump($group);
-        Helpers::dump($feeds);
+        Helpers::dump($this->mode);
         //return $feeds; 
     }
     
