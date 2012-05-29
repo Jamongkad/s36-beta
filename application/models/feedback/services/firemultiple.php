@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Helpers, Underscore;
-use redisent;
+use Feedback\Repositories\DBFeedback, Helpers;
+use Underscore, redisent;
 
 class FireMultiple {
 
@@ -9,9 +9,10 @@ class FireMultiple {
 
     public function __construct($feedback, $feed_ids, $mode) {
         $this->redis = new redisent\Redis; 
+        $this->underscore = new Underscore\Underscore;
         $this->feedback = $feedback;
         $this->feed_ids = $feed_ids;
-        $this->mode     = $mode;
+        $this->mode     = $mode; 
     }
 
     public function execute() {
@@ -65,10 +66,19 @@ class FireMultiple {
     }
 
     private function _group_cluster($feeds) {
-        $underscore = new Underscore\Underscore;
-        $group = $underscore->groupBy($feeds, 'parent_id');
+
+        $group = $this->underscore->groupBy($feeds, 'parent_id');
         Helpers::dump($group);
         Helpers::dump($this->mode);
+        $count = 0;
+        foreach($group as $key => $val) {
+            $total_units = $this->underscore->groupBy($val, 'total_units');
+            Helpers::dump($total_units);
+            /*
+            $count += 1;
+            $this->redis->hsetnx("inbox:check-action:".$key, $this->mode.$count, json_encode($val));     
+            */
+        } 
         //return $feeds; 
     }
     
