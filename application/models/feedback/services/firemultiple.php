@@ -77,7 +77,7 @@ class FireMultiple {
             $total_units = $first['total_units'];
 
             foreach($val as $v) {
-                $this->redis->sadd($key_name, $v['feedid']."-".$this->mode, json_encode($v));     
+                $this->redis->sadd($key_name, $v['feedid']."-".$this->mode);     
             }
 
             $total_mems = $this->redis->smembers($key_name);
