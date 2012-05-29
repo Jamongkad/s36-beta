@@ -56,6 +56,7 @@ Checky.prototype.init = function() {
 
                             var my_parent = $(this).parents('div.feedback-group')
                             collection.push({  "feedid": $(this).val()
+                                             , "company_id": $(this).siblings('.company-feed-id').val()
                                              , "contactid": $(this).siblings('.contact-feed-id').val()
                                              , "siteid": $(this).siblings('.site-feed-id').val()
                                              , "rating": $(this).siblings('.feed-ratings').val()
