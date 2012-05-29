@@ -79,7 +79,7 @@ class FireMultiple {
             $total_units = $total_units['total_units'];
 
 
-            $this->redis->hset($key_name, $this->mode.$count, json_encode($val));     
+            $this->redis->hset($key_name, $count, json_encode($val));     
             Helpers::dump($val);
             /*
             $total_hkeys = $this->redis->hkeys($key_name);
