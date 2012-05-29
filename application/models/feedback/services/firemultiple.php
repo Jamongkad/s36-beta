@@ -68,15 +68,22 @@ class FireMultiple {
     private function _group_cluster($feeds) {
 
         $group = $this->underscore->groupBy($feeds, 'parent_id');
-        Helpers::dump($group);
-        Helpers::dump($this->mode);
+        //Helpers::dump($group);
+        //Helpers::dump($this->mode);
         $count = 0;
         foreach($group as $key => $val) {
+            
+            $key_name = "inbox:check-action:".$key;
+
             $total_units = $this->underscore->first($val);
             $total_units = $total_units['total_units'];
 
             $count += 1;
-            $this->redis->hsetnx("inbox:check-action:".$key, $this->mode.$count, json_encode($val));     
+            $this->redis->hsetnx($key_name, $this->mode.$count, json_encode($val));     
+
+            $total_hkeys = $this->redis->hkeys($key_name);
+            Helpers::dump(count($total_hkeys));
+
         } 
         //return $feeds; 
     }
