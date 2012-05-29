@@ -70,7 +70,6 @@ class FireMultiple {
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         //Helpers::dump($group);
         //Helpers::dump($this->mode);
-        $count = 0;
         foreach($group as $key => $val) {
             
             $key_name = "inbox:check-action:".$key;
@@ -79,7 +78,7 @@ class FireMultiple {
             $total_units = $total_units['total_units'];
 
 
-            $this->redis->hset($key_name, $count, json_encode($val));     
+            $this->redis->sadd($key_name, json_encode($val));     
             Helpers::dump($val);
             /*
             $total_hkeys = $this->redis->hkeys($key_name);
@@ -90,7 +89,6 @@ class FireMultiple {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
             */
-            $count += 1;
         } 
         //return $feeds; 
     }
