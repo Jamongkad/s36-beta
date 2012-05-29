@@ -77,12 +77,13 @@ class FireMultiple {
             $total_units = $first['total_units'];
 
             foreach($val as $v) {
-                $this->redis->hsetnx($company_key, $key_name, null);
+                $this->redis->hset($company_key, $key_name, null);
                 $this->redis->sadd($key_name, $v['feedid']."-".$this->mode);     
             }
 
             $total_mems = $this->redis->smembers($key_name);
             if($total_units == count($total_mems)) {
+                $this->redis->hset($company_key, $key_name, "full");
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
 
