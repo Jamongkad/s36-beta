@@ -88,8 +88,11 @@ class FireMultiple {
         if($hkeys = $this->redis->hkeys($company_key)) {
             $obj = Array();
             foreach($hkeys as $hseek) {  
-                $members = $this->redis->smembers($hseek);
-                $obj[$hseek] = $members;
+                $is_full = $this->redis->hget($company_key, $hseek);
+                if($is_full) { 
+                    $members = $this->redis->smembers($hseek);
+                    $obj[$hseek] = $members;
+                }
             }
 
             Helpers::dump($obj);
