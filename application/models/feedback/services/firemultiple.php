@@ -75,14 +75,18 @@ class FireMultiple {
             $key_name = "inbox:check-action:".$company_id;
 
             foreach($val as $v) {
-                $this->redis->hset($key_name, $key."-".$v['feedid']."-".$this->mode, json_encode($v));     
+                $key_save = $key."-".$v['feedid']."-".$this->mode;
+                $this->redis->hset($key_name, $key_save, json_encode($v));     
+                $total_mems = $this->redis->hmget($key_name, $key_save);
+                Helpers::dump($total_mems);
             }
 
-            $total_mems = $this->redis->hkeys($key_name);
+            //$total_mems = $this->redis->hkeys($key_name);
+            /*
             if($total_units == count($total_mems)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
-
+            */
         } 
         //return $feeds; 
     }
