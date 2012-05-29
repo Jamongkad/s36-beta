@@ -68,7 +68,7 @@ class FireMultiple {
     private function _group_cluster($feeds) {
 
         $group = $this->underscore->groupBy($feeds, 'parent_id');
-
+        $company_key = "inbox:check-action:".$this->company_id;
         foreach($group as $key => $val) {
             
             $key_name = "check-action:".$key;
@@ -77,6 +77,7 @@ class FireMultiple {
             $total_units = $first['total_units'];
 
             foreach($val as $v) {
+                $this->redis->hsetnx($company_key, $key_name, null);
                 $this->redis->sadd($key_name, $v['feedid']."-".$this->mode);     
             }
 
