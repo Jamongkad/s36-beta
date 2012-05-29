@@ -77,8 +77,9 @@ class FireMultiple {
             $total_units = $this->underscore->first($val);
             $total_units = $total_units['total_units'];
 
-            Helpers::dump($val);
-            $this->redis->sadd($key_name, json_encode($val));     
+            foreach($val as $v) {
+                $this->redis->sadd($key_name, json_encode($val));     
+            }
             /*
             $total_hkeys = $this->redis->hkeys($key_name);
 
