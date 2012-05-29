@@ -16,7 +16,6 @@
                 <div class="left">      
                     <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
                     <input type="hidden" name="rating" value="<?=$feed->rating?>" class="feed-ratings" />
-                    <input type="hidden" name="company_id" value="<?=$company_id?>" class="company-feed-id"/>
                     <input type="hidden" name="contact_id" value="<?=$feed->contactid?>" class="contact-feed-id"/>
                     <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
                     <input type="hidden" name="cat_id" value="<?=$feed->categoryid?>" class="category-feed-id"/>

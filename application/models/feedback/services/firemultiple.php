@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Helpers;
+use Feedback\Repositories\DBFeedback, Helpers, S36Auth;
 use Underscore, redisent;
 
 class FireMultiple {
@@ -10,6 +10,7 @@ class FireMultiple {
     public function __construct($feedback, $feed_ids, $mode) {
         $this->redis = new redisent\Redis; 
         $this->underscore = new Underscore\Underscore;
+        $this->company_id = S36Auth::user()->companyid;
         $this->feedback = $feedback;
         $this->feed_ids = $feed_ids;
         $this->mode     = $mode; 
@@ -69,24 +70,21 @@ class FireMultiple {
         $group = $this->underscore->groupBy($feeds, 'parent_id');
 
         foreach($group as $key => $val) {
-            $first = $this->underscore->first($val);           
+            
+            $key_name = "check-action:".$key;
+
+            $first = $this->underscore->first($val);
             $total_units = $first['total_units'];
-            $company_id = $first['company_id'];
-            $key_name = "inbox:check-action:".$company_id;
 
             foreach($val as $v) {
-                $key_save = $key."-".$v['feedid']."-".$this->mode;
-                $this->redis->hset($key_name, $key_save, json_encode($v));     
-                $total_mems = $this->redis->hmget($key_name, $key_save);
-                Helpers::dump($total_mems);
+                $this->redis->sadd($key_name, $v['feedid']."-".$this->mode, json_encode($v));     
             }
 
-            //$total_mems = $this->redis->hkeys($key_name);
-            /*
+            $total_mems = $this->redis->smembers($key_name);
             if($total_units == count($total_mems)) {
                 Helpers::dump("Limit has been reached exposing: ".$key);        
             }
-            */
+
         } 
         //return $feeds; 
     }
