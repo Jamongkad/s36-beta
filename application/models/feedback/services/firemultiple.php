@@ -87,6 +87,10 @@ class FireMultiple {
 
         if($hkeys = $this->redis->hkeys($company_key)) {
             Helpers::dump($hkeys);
+            foreach($hkeys as $hseek) {  
+                $members = $this->redis->smembers($hseek);
+                Helpers::dump($members);
+            }
         } 
         //return $feeds; 
     }
