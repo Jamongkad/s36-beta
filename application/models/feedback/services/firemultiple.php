@@ -82,11 +82,13 @@ class FireMultiple {
             $this->redis->hsetnx($key_name, $this->mode.$count, json_encode($val));     
 
             $total_hkeys = $this->redis->hkeys($key_name);
-            Helpers::dump($total_units);
-            Helpers::dump(count($total_hkeys));
+
+            if($total_units === count($total_hkeys)) {
+                Helpers::dump("Limit has been reached exposing: ".$key);        
+            }
             /*
             if($this->underscore->isEqual($total_units, count($total_hkeys))) {
-                Helpers::dump("Limit has been reached exposing: ".$key);   
+           
             }
             */
         } 
