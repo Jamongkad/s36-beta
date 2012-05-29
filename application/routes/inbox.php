@@ -30,7 +30,9 @@ return array(
         $user_id = S36Auth::user()->userid;
         $company_id = S36Auth::user()->companyid;
         $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
-
+        
+        //TODO: Place this fucker in a function
+        //Resets UI code for clicky action function
         $company_key = "inbox:check-action:".$company_id;
         if($hkeys = $redis->hkeys($company_key)) {
             foreach($hkeys as $hseek) {  
