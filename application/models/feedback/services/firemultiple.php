@@ -1,12 +1,14 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Helpers, Underscore;
+use redisent;
 
 class FireMultiple {
 
     public $feedback;
 
     public function __construct($feedback, $feed_ids, $mode) {
+        $this->redis = new redisent\Redis; 
         $this->feedback = $feedback;
         $this->feed_ids = $feed_ids;
         $this->mode     = $mode;

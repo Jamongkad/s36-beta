@@ -250,6 +250,8 @@ return array(
 
     'GET /tests/redis' => function() { 
         $redis = new redisent\Redis;       
+        $h = $redis->hkeys('inbox:check-action:feed-grp-1334732198');
+        Helpers::dump($h);
     }, 
 
     'GET /tests/imagine' => function() {
