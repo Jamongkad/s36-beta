@@ -32,7 +32,7 @@ return array(
         $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
 
         $company_key = "inbox:check-action:".$company_id;
-        if($hkeys = $this->redis->hkeys($company_key)) {
+        if($hkeys = $redis->hkeys($company_key)) {
             foreach($hkeys as $hseek) {  
                 $redis->del($hseek);
             }
