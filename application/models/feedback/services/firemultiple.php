@@ -95,7 +95,9 @@ class FireMultiple {
                     $obj[$hseek] = $members;
                 }
             }
-            echo json_encode($obj);
+
+
+            echo json_encode(Array('ui' => $obj));
         }  
     }
     

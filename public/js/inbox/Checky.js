@@ -96,7 +96,7 @@ Checky.prototype.init = function() {
                           myStatus.notify("Processing...", 1000);
                       }
                       , success: function(msg) { 
-                          for(var key in msg) {
+                          for(var key in msg.ui) {
                               $('#' + key).hide();
                           }
                           /*
