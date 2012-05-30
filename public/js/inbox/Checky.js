@@ -55,8 +55,7 @@ Checky.prototype.init = function() {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
                             
                             var my_parent = $(this).parents('div.feedback-group')
-                            console.log($(this).siblings('.feed-ratings'));
-                            if($(this).siblings('.feed-ratings') != 'POOR') { 
+                            if($(this).siblings('.feed-ratings').val() != 'POOR') { 
                                 collection.push({  "feedid": $(this).val()
                                                  , "contactid": $(this).siblings('.contact-feed-id').val()
                                                  , "siteid": $(this).siblings('.site-feed-id').val()
