@@ -70,7 +70,7 @@ class FireMultiple {
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         $company_key = "inbox:check-action:".$this->company_id;
 
-        Helpers::dump($ratings);
+        Helpers::dump($feeds);
 
         foreach($group as $key => $val) {
             
