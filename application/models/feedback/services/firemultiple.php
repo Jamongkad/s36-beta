@@ -25,8 +25,7 @@ class FireMultiple {
         
         $clustered_groups = $this->_group_cluster($this->feed_ids);
 
-        Helpers::dump($clustered_groups);
-        
+        return $clustered_groups; 
         /*
         Helpers::show_data($ok_ratings);
         Helpers::show_data($poor_ratings);
