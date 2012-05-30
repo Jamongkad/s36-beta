@@ -97,7 +97,7 @@ Checky.prototype.init = function() {
                       , success: function(msg) { 
                           console.log(msg);
                           for(var key in msg) {
-                              $(key).hide();
+                              $('#' + key).hide();
                           }
                           /*
                           var return_ids = msg.return_ids; 
