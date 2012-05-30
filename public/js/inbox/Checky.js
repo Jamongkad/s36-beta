@@ -96,6 +96,9 @@ Checky.prototype.init = function() {
                       }
                       , success: function(msg) { 
                           console.log(msg);
+                          for(var key in msg) {
+                              console.log(key);     
+                          }
                           /*
                           var return_ids = msg.return_ids; 
                           var message = msg.message;
