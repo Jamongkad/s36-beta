@@ -55,16 +55,18 @@ Checky.prototype.init = function() {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
 
                             var my_parent = $(this).parents('div.feedback-group')
-                            collection.push({  "feedid": $(this).val()
-                                             , "contactid": $(this).siblings('.contact-feed-id').val()
-                                             , "siteid": $(this).siblings('.site-feed-id').val()
-                                             , "rating": $(this).siblings('.feed-ratings').val()
-                                             , "parent_id": my_parent.attr('id')
-                                             , "total_units": my_parent.attr('data-total') 
-                                             });
+                            if($(this).siblings('.feed-ratings') != 'POOR') { 
+                                collection.push({  "feedid": $(this).val()
+                                                 , "contactid": $(this).siblings('.contact-feed-id').val()
+                                                 , "siteid": $(this).siblings('.site-feed-id').val()
+                                                 , "rating": $(this).siblings('.feed-ratings').val()
+                                                 , "parent_id": my_parent.attr('id')
+                                                 , "total_units": my_parent.attr('data-total') 
+                                                 });
 
-                            var feed_unit = '#' + $(this).val();
-                            $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                                var feed_unit = '#' + $(this).val();
+                                $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                            }
                         } 
                     }
                 });    
