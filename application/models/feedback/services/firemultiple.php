@@ -67,10 +67,8 @@ class FireMultiple {
 
     private function _group_cluster($feeds) {
         
-        $ok_ratings = array_filter($feeds, function($obj) { return $obj['rating'] != "POOR"; });
+        //$ok_ratings = array_filter($feeds, function($obj) { return $obj['rating'] != "POOR"; });
         $poor_ratings = array_filter($feeds, function($obj) { return $obj['rating'] == "POOR"; });
-
-        Helpers::dump($ok_ratings);
         Helpers::dump($poor_ratings);
 
         $group = $this->underscore->groupBy($feeds, 'parent_id');
@@ -100,7 +98,6 @@ class FireMultiple {
                     $obj[$hseek] = $members;
                 }
             }
-
             //Helpers::dump($obj);
         }  
     }
