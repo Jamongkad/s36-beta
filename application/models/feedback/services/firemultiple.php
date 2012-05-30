@@ -101,8 +101,7 @@ class FireMultiple {
                 //Helpers::dump($obj);
                 echo json_encode($obj);
             }  
-        }
-       
+        } 
     }
     
     private function _toggle() { 
