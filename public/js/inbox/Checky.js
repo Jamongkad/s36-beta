@@ -68,17 +68,24 @@ Checky.prototype.init = function() {
                             };
 
                             if(my_ratings != 'POOR') { 
+                                /*
                                 collection.push(data);
                                 $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
-                            } else {
-                                if(my_ratings == 'POOR' && mode == 'delete') {
-                                    collection.push(data);
-                                    $(feed_unit).fadeOut(300, function() { $(this).hide(); });       
-                                }
+                                */
+                                process_feedbacks(collection, data, feed_unit); 
+                            } 
+
+                            if(my_ratings == 'POOR' && mode == 'delete') {
+                                process_feedbacks(collection, data, feed_unit); 
+                                /*
+                                collection.push(data);
+                                $(feed_unit).fadeOut(300, function() { $(this).hide(); });       
+                                */
                             }
                         } 
                     }
                 });    
+
                 var collection_count = collection.length; 
                          
                 $("option:first", this).prop("selected", true);
@@ -157,4 +164,10 @@ function close_checkybar() {
         $(this).parents(".checky-bar").hide(); 
         e.preventDefault();
     });
+}
+
+function process_feedbacks(collection, data, units) {
+    collection.push(data);
+    //units to vanished
+    $(units).fadeOut(300, function() { $(this).hide(); });       
 }
