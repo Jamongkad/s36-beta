@@ -4,7 +4,6 @@ function Checky(opts) {
     this.category_feed_id = opts.category_feed_id;
     this.click_all        = opts.click_all;
     this.checky_bar       = opts.checky_bar;
-    this.count            = 0;
 }
 
 Checky.prototype.init = function() {
@@ -82,37 +81,39 @@ Checky.prototype.init = function() {
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-
-                $.ajax({
-                    type: "POST"      
-                  , data: {  
-                      'col': mode
-                    , 'feed_ids': collection
-                    }
-                  , url: $(this).attr("hrefaction")
-                  //, dataType: "json"
-                  , beforeSend: function() {
-                      checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
-                  }
-                  , success: function(msg) { 
-                      /*
-                      var return_ids = msg.return_ids; 
-                      var message = msg.message;
-                      checkyBar.css({'width': '350px', 'right': '22%'});
-                      checkyBar.hide();
-                      
-                      return_feedback(return_ids, checkyBar, mode, hideLink, message);
-
-                      if(return_ids == null) { 
-                          checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
-                                   .html(notification_message(mode, collection_count, return_ids, hideLink))
-                                   .show();
+                
+                if(collection_count > 0) { 
+                    $.ajax({
+                        type: "POST"      
+                      , data: {  
+                          'col': mode
+                        , 'feed_ids': collection
+                        }
+                      , url: $(this).attr("hrefaction")
+                      //, dataType: "json"
+                      , beforeSend: function() {
+                          checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                       }
+                      , success: function(msg) { 
+                          /*
+                          var return_ids = msg.return_ids; 
+                          var message = msg.message;
+                          checkyBar.css({'width': '350px', 'right': '22%'});
+                          checkyBar.hide();
+                          
+                          return_feedback(return_ids, checkyBar, mode, hideLink, message);
 
-                      close_checkybar();
-                      */
-                   }
-                });
+                          if(return_ids == null) { 
+                              checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
+                                       .html(notification_message(mode, collection_count, return_ids, hideLink))
+                                       .show();
+                          }
+
+                          close_checkybar();
+                          */
+                       }
+                    });
+                }
 
             }
 
