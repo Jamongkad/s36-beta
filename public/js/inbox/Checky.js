@@ -85,7 +85,7 @@ Checky.prototype.init = function() {
                       checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                   }
                   , success: function(msg) {
-                      console.log(msg);
+                      return msg;
                       /*
                       var return_ids = msg.return_ids; 
                       var message = msg.message;
