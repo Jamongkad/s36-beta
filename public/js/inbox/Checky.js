@@ -92,10 +92,10 @@ Checky.prototype.init = function() {
                       , url: $(this).attr("hrefaction")
                       , dataType: "json"
                       , beforeSend: function() {
-                          checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
+                          var myStatus = new Status();
+                          myStatus.notify("Processing...", 1000);
                       }
                       , success: function(msg) { 
-                          console.log(msg);
                           for(var key in msg) {
                               $('#' + key).hide();
                           }
