@@ -55,17 +55,26 @@ Checky.prototype.init = function() {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
                             
                             var my_parent = $(this).parents('div.feedback-group')
-                            if($(this).siblings('.feed-ratings').val() != 'POOR') { 
-                                collection.push({  "feedid": $(this).val()
-                                                 , "contactid": $(this).siblings('.contact-feed-id').val()
-                                                 , "siteid": $(this).siblings('.site-feed-id').val()
-                                                 , "rating": $(this).siblings('.feed-ratings').val()
-                                                 , "parent_id": my_parent.attr('id')
-                                                 , "total_units": my_parent.attr('data-total') 
-                                                 });
+                            var my_ratings = $(this).siblings('.feed-ratings').val();
+                            var feed_unit = '#' + $(this).val();
 
-                                var feed_unit = '#' + $(this).val();
+                            var data = {  
+                                "feedid": $(this).val()
+                              , "contactid": $(this).siblings('.contact-feed-id').val()
+                              , "siteid": $(this).siblings('.site-feed-id').val()
+                              , "rating": $(this).siblings('.feed-ratings').val()
+                              , "parent_id": my_parent.attr('id')
+                              , "total_units": my_parent.attr('data-total') 
+                            };
+
+                            if(my_ratings != 'POOR') { 
+                                collection.push(data);
                                 $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
+                            } else {
+                                if(my_ratings == 'POOR' && mode == 'delete') {
+                                    collection.push(data);
+                                    $(feed_unit).fadeOut(300, function() { $(this).hide(); });       
+                                }
                             }
                         } 
                     }
