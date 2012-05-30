@@ -54,9 +54,9 @@ Checky.prototype.init = function() {
                     if ($(this).is(':checked')) {
                         if ( $('#' + $(this).val()).is(":hidden") == false ) {
                             
-                            var my_parent = $(this).parents('div.feedback-group')
+                            var my_parent  = $(this).parents('div.feedback-group')
                             var my_ratings = $(this).siblings('.feed-ratings').val();
-                            var feed_unit = '#' + $(this).val();
+                            var feed_unit  = '#' + $(this).val();
 
                             var data = {  
                                 "feedid": $(this).val()
@@ -68,19 +68,11 @@ Checky.prototype.init = function() {
                             };
 
                             if(my_ratings != 'POOR') { 
-                                /*
-                                collection.push(data);
-                                $(feed_unit).fadeOut(300, function() { $(this).hide(); });      
-                                */
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if(my_ratings == 'POOR' && mode == 'delete') {
+                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 process_feedbacks(collection, data, feed_unit); 
-                                /*
-                                collection.push(data);
-                                $(feed_unit).fadeOut(300, function() { $(this).hide(); });       
-                                */
                             }
                         } 
                     }
