@@ -70,9 +70,11 @@ class FireMultiple {
         $group = $this->underscore->groupBy($feeds, 'parent_id');
 
         if($poor_ratings) {
+            echo "poor";
             Helpers::dump($group);
             //echo json_encode($group);
         } else { 
+            echo "good";
             $company_key = "inbox:check-action:".$this->company_id;
             foreach($group as $key => $val) {
                 
