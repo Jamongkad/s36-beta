@@ -66,45 +66,42 @@ class FireMultiple {
 
     private function _group_cluster($feeds) {
          
-        $poor_ratings = array_filter($feeds, function($obj) { return $obj['rating'] == "POOR"; });
+        $ratings = $this->underscore->groupBy($feeds, 'rating');
         $group = $this->underscore->groupBy($feeds, 'parent_id');
+        $company_key = "inbox:check-action:".$this->company_id;
 
-        if($poor_ratings) {
-            echo "poor";
-            Helpers::dump($group);
-            //echo json_encode($group);
-        } else { 
-            echo "good";
-            $company_key = "inbox:check-action:".$this->company_id;
-            foreach($group as $key => $val) {
-                
-                $first = $this->underscore->first($val);
-                $total_units = $first['total_units'];
+        Helpers::dump($ratings);
 
-                $this->redis->hset($company_key, $key, null);
-                foreach($val as $v) {
-                    $this->redis->sadd($key, $v['feedid']."-".$this->mode);     
-                }
+        foreach($group as $key => $val) {
+            
+            $first = $this->underscore->first($val);
+            $total_units = $first['total_units'];
 
-                $total_mems = $this->redis->smembers($key);
-                if($total_units == count($total_mems)) {
-                    $this->redis->hset($company_key, $key, "full");
-                }
-            } 
+            $this->redis->hset($company_key, $key, null);
+            foreach($val as $v) {
+                $this->redis->sadd($key, $v['feedid']."-".$this->mode);     
+            }
 
-            if($hkeys = $this->redis->hkeys($company_key)) {
-                $obj = Array();
-                foreach($hkeys as $hseek) {  
-                    $is_full = $this->redis->hget($company_key, $hseek);
-                    if($is_full) { 
-                        $members = $this->redis->smembers($hseek);
-                        $obj[$hseek] = $members;
-                    }
-                }
-                Helpers::dump($obj);
-                //echo json_encode($obj);
-            }  
+            $total_mems = $this->redis->smembers($key);
+            if($total_units == count($total_mems)) {
+                $this->redis->hset($company_key, $key, "full");
+            }
         } 
+
+        if($hkeys = $this->redis->hkeys($company_key)) {
+            $obj = Array();
+            foreach($hkeys as $hseek) {  
+                $is_full = $this->redis->hget($company_key, $hseek);
+                if($is_full) { 
+                    $members = $this->redis->smembers($hseek);
+                    $obj[$hseek] = $members;
+                }
+            }
+            //Helpers::dump($obj);
+            //echo json_encode($obj);
+        }  
+
+        //poor no mysql toggle
     }
     
     private function _toggle() { 
