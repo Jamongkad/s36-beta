@@ -90,11 +90,12 @@ Checky.prototype.init = function() {
                         , 'feed_ids': collection
                         }
                       , url: $(this).attr("hrefaction")
-                      //, dataType: "json"
+                      , dataType: "json"
                       , beforeSend: function() {
                           checkyBar.html("processing feedback...").css({"background": "#fef1b5"}).show();
                       }
                       , success: function(msg) { 
+                          console.log(msg);
                           /*
                           var return_ids = msg.return_ids; 
                           var message = msg.message;

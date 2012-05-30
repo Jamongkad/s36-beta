@@ -95,8 +95,8 @@ class FireMultiple {
                     $obj[$hseek] = $members;
                 }
             }
-            Helpers::dump($obj);
-            //echo json_encode($obj);
+            //Helpers::dump($obj);
+            echo json_encode($obj);
         }  
 
         //poor no mysql toggle
