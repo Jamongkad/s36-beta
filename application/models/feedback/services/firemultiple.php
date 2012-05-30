@@ -101,7 +101,7 @@ class FireMultiple {
                 }
             }
 
-            Helpers::dump($obj);
+            //Helpers::dump($obj);
         }  
     }
     
