@@ -70,8 +70,6 @@ class FireMultiple {
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         $company_key = "inbox:check-action:".$this->company_id;
 
-        Helpers::dump($feeds);
-
         foreach($group as $key => $val) {
             
             $first = $this->underscore->first($val);
@@ -97,7 +95,7 @@ class FireMultiple {
                     $obj[$hseek] = $members;
                 }
             }
-            //Helpers::dump($obj);
+            Helpers::dump($obj);
             //echo json_encode($obj);
         }  
 
