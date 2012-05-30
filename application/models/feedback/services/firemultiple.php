@@ -66,40 +66,44 @@ class FireMultiple {
     }
 
     private function _group_cluster($feeds) {
-        
-        //$ok_ratings = array_filter($feeds, function($obj) { return $obj['rating'] != "POOR"; });
+         
         $poor_ratings = array_filter($feeds, function($obj) { return $obj['rating'] == "POOR"; });
-        Helpers::dump($poor_ratings);
-
         $group = $this->underscore->groupBy($feeds, 'parent_id');
-        $company_key = "inbox:check-action:".$this->company_id;
-        foreach($group as $key => $val) {
-            
-            $first = $this->underscore->first($val);
-            $total_units = $first['total_units'];
 
-            $this->redis->hset($company_key, $key, null);
-            foreach($val as $v) {
-                $this->redis->sadd($key, $v['feedid']."-".$this->mode);     
-            }
+        if($poor_ratings) {
+            echo json_encode($group);
+        } else { 
+            $company_key = "inbox:check-action:".$this->company_id;
+            foreach($group as $key => $val) {
+                
+                $first = $this->underscore->first($val);
+                $total_units = $first['total_units'];
 
-            $total_mems = $this->redis->smembers($key);
-            if($total_units == count($total_mems)) {
-                $this->redis->hset($company_key, $key, "full");
-            }
-        } 
-
-        if($hkeys = $this->redis->hkeys($company_key)) {
-            $obj = Array();
-            foreach($hkeys as $hseek) {  
-                $is_full = $this->redis->hget($company_key, $hseek);
-                if($is_full) { 
-                    $members = $this->redis->smembers($hseek);
-                    $obj[$hseek] = $members;
+                $this->redis->hset($company_key, $key, null);
+                foreach($val as $v) {
+                    $this->redis->sadd($key, $v['feedid']."-".$this->mode);     
                 }
-            }
-            //Helpers::dump($obj);
-        }  
+
+                $total_mems = $this->redis->smembers($key);
+                if($total_units == count($total_mems)) {
+                    $this->redis->hset($company_key, $key, "full");
+                }
+            } 
+
+            if($hkeys = $this->redis->hkeys($company_key)) {
+                $obj = Array();
+                foreach($hkeys as $hseek) {  
+                    $is_full = $this->redis->hget($company_key, $hseek);
+                    if($is_full) { 
+                        $members = $this->redis->smembers($hseek);
+                        $obj[$hseek] = $members;
+                    }
+                }
+                //Helpers::dump($obj);
+                echo json_encode($obj);
+            }  
+        }
+       
     }
     
     private function _toggle() { 
