@@ -97,7 +97,6 @@ class FireMultiple {
                 }
             }
 
-
             echo json_encode(Array('ui' => $obj));
         }  
     }    

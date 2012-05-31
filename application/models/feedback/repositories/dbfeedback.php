@@ -468,14 +468,8 @@ class DBFeedback extends S36DataObject {
         );
 
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
-        $in_query = implode(',', array_fill(0, count($block_id), '?'));
-        Helpers::dump($in_query);
-        /*
-        foreach($block_id as $k => $id) {
-            $sth->bindValue(($k+1), $id);
-        }
-        */
 
+        $in_query = implode(',', array_fill(0, count($block_id), '?'));
         //$ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
         //$block_ids = implode(',', $ids);
         /*
@@ -488,13 +482,23 @@ class DBFeedback extends S36DataObject {
                     $column
                 WHERE 1=1
                     AND User.companyId = Site.companyId
-                    AND Feedback.feedbackId IN ($block_ids)
+                    AND Feedback.feedbackId IN ($in_query)
         ";
 
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', S36Auth::user()->userid, PDO::PARAM_INT);
+
+        foreach($block_id as $k => $id) {
+            $sth->bindValue(($k+1), $id);
+        }
         return $sth->execute();       
         */
+
+        foreach($block_id as $k => $id) {
+            print_r($k+1)
+            print_r($id);
+            //$sth->bindValue(($k+1), $id);
+        }
     }
 
     public function _permanent_delete($opts) { 
