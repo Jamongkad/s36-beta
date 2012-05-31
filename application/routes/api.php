@@ -24,7 +24,6 @@ return array(
         if($auth->check()) {
             echo json_encode($auth->user());     
         } else {
-            header('HTTP/1.0 403 Forbidden');
             echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
         } 
     },
