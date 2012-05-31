@@ -473,19 +473,12 @@ class DBFeedback extends S36DataObject {
 
         $sql = "
             UPDATE Feedback
-                INNER JOIN Site 
-                    ON Site.siteId = Feedback.siteId
-                INNER JOIN User
-                    ON User.userId = :user_id
                     $column
                 WHERE 1=1
-                    AND User.companyId = Site.companyId
                     AND Feedback.feedbackId IN ($in_query)
         ";
 
         $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':user_id', S36Auth::user()->userid, PDO::PARAM_INT);
-
         foreach($block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
         }
