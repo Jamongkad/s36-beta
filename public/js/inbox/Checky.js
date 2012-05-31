@@ -107,11 +107,7 @@ Checky.prototype.init = function() {
                                    .show();
                           close_checkybar();
 
-                          checkyBar.hover(function() { 
-                              mouse_is_inside = true;  
-                          }, function() { 
-                              mouse_is_inside = false;  
-                          });
+                          mouse_is_inside = false;  
                        }
                     });
                 }
