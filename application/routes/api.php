@@ -19,7 +19,7 @@ return array(
         );
 
         $validator = Validator::make($input, $rules);
-        $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
+        $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
         
         if($auth->check()) {
             echo json_encode($auth->user());     
