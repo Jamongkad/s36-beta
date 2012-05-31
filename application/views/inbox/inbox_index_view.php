@@ -236,7 +236,11 @@
                                     <input type="button" class="remove"  tooltip="Option Disabled" tt_width="84" style="opacity:0.4; filter:alpha(opacity=40)"/>
                                 <?else:?>
                                     <input type="button" class="remove" tooltip="Delete Feedback" tt_width="84" 
-                                    <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
+                                    <?=Helpers::switchable(  $feed->isdeleted
+                                                           , $id
+                                                           , $feed->categoryid
+                                                           , URL::to('/feedback/change_feedback_state')
+                                                           , ' style="background-position: -60px bottom"') ?>/>
                                 <?endif?>
                             <?endif?>
                         </div>

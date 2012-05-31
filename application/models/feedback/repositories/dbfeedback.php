@@ -611,7 +611,11 @@ class DBFeedback extends S36DataObject {
     }
 
     public function permanently_remove_feedback($id) { 
-        return $id; 
+        $feedback = DB::table('Feedback', 'master')
+                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
+                        ->where('Feedback.feedbackId', '=', $id)
+                        ->first();
+        Helpers::dump($feedback);
         /*
         $feedback = DB::table('Feedback', 'master')
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
