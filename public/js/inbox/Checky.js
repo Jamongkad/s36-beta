@@ -94,7 +94,9 @@ Checky.prototype.init = function() {
                           for(var key in msg.ui) {
                               $('#' + key).hide();
                           }
+
                           var message = msg.message;
+
                           checkyBar.css({
                               'background': '#fef1b5'
                             , 'width': '200px'
@@ -105,8 +107,8 @@ Checky.prototype.init = function() {
                             , 'font-weight': 'bold'
                             }).html(message)
                                    .show();
-                          close_checkybar();
 
+                          //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
                     });
@@ -133,22 +135,6 @@ Checky.prototype.clickAll = function() {
             $(me.check_feed_id).prop("checked", false);
             $(me.click_all).prop("checked", false);
         }                                            
-    });
-}
-
-function return_feedback(id, message_container, mode, link, message) {
-    if(id != null) {   
-        message_container.html("<div>" + message + link + "</div>").show();
-        $(id).each(function(index, value) {
-            $( 'div#' + value.feedid + '.feedback').fadeIn(300, function() { $(this).show() });
-        });
-    } 
-}
-
-function close_checkybar() { 
-    $(".hide-checkybar").bind("click", function(e) {
-        $(this).parents(".checky-bar").hide(); 
-        e.preventDefault();
     });
 }
 
