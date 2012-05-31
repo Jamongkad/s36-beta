@@ -313,7 +313,7 @@ return array(
 
     'GET /tests/manipulate_feedback/(:any)' => function($feedback_id) {
         $feedback = new Feedback\Repositories\DBFeedback;
-        $result = $feedback->permanently_remove_feedback($feedback_id) 
+        $result = $feedback->permanently_remove_feedback($feedback_id);
         Helpers::dump($result);
     },
 
