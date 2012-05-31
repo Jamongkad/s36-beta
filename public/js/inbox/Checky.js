@@ -99,6 +99,11 @@ Checky.prototype.init = function() {
                           for(var key in msg.ui) {
                               $('#' + key).hide();
                           }
+                          var message = msg.message;
+                          checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
+                                   .html(message)
+                                   .show();
+                          close_checkybar();
                           /*
                           var return_ids = msg.return_ids; 
                           var message = msg.message;
