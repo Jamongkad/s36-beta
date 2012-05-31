@@ -313,9 +313,8 @@ return array(
 
     'GET /tests/manipulate_feedback/(:any)' => function($feedback_id) {
         $feedback = new Feedback\Repositories\DBFeedback;
-        $feedback->_change_feedback('isDeleted', $feedback_id, 0);      
-        //$feedback->permanently_remove_feedback($feedback_id) 
-        Helpers::dump($feedback_id);
+        $result = $feedback->permanently_remove_feedback($feedback_id) 
+        Helpers::dump($result);
     },
 
     //reserved route for Leica and Ryan testing
