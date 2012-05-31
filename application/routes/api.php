@@ -10,7 +10,23 @@ return array(
     },
 
     'POST /api/login' => function() {
-        echo json_encode(Input::get()); 
+        $auth = new S36Auth;
+        $input = Input::get();
+
+        $rules = Array(
+            'username' => 'required'
+          , 'password' => 'required'
+        );
+
+        $validator = Validator::make($input, $rules);
+        $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
+        
+        if($auth->check()) {
+            echo json_encode($auth->user());     
+        } else {
+            echo json_encode(Array('msg' => 'Invalid Login Credentials'));
+        }
+       
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
