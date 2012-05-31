@@ -23,9 +23,10 @@ class FireMultiple {
         $poor_ratings = array_filter($this->feed_ids, function($obj) { return $obj['rating'] == "POOR"; });
         $parent_ids = array_unique(array_map(function($obj) { return $obj['parent_id']; }, $this->feed_ids));
         */ 
-        $clustered_groups = $this->_group_cluster($this->feed_ids);
-
-        return $clustered_groups; 
+        $this->_group_ui_cluster($this->feed_ids);
+        $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
+        //return 
+        //return $clustered_groups; 
         /*
         Helpers::show_data($ok_ratings);
         Helpers::show_data($poor_ratings);
@@ -64,7 +65,7 @@ class FireMultiple {
         */
     }
 
-    private function _group_cluster($feeds) {
+    private function _group_ui_cluster($feeds) {
          
         $ratings = $this->underscore->groupBy($feeds, 'rating');
         $group = $this->underscore->groupBy($feeds, 'parent_id');
@@ -99,9 +100,5 @@ class FireMultiple {
 
             echo json_encode(Array('ui' => $obj));
         }  
-    }
-    
-    private function _toggle() { 
-        return $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
-    }
+    }    
 }

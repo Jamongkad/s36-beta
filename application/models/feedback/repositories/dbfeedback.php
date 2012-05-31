@@ -468,18 +468,17 @@ class DBFeedback extends S36DataObject {
         );
 
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
-
-        //$ids      = explode("|", $feedbackids);
-        //$in_query = implode(',', array_fill(0, count($ids), '?'));
+        $in_query = implode(',', array_fill(0, count($block_id), '?'));
+        Helpers::dump($in_query);
         /*
-        foreach($ids as $k => $id) {
+        foreach($block_id as $k => $id) {
             $sth->bindValue(($k+1), $id);
         }
         */
 
-        $ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
-        $block_ids = implode(',', $ids);
-
+        //$ids = array_map(function($obj) { return $obj['feedid']; }, $block_id);
+        //$block_ids = implode(',', $ids);
+        /*
         $sql = "
             UPDATE Feedback
                 INNER JOIN Site 
@@ -495,6 +494,7 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':user_id', S36Auth::user()->userid, PDO::PARAM_INT);
         return $sth->execute();       
+        */
     }
 
     public function _permanent_delete($opts) { 
