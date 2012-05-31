@@ -9,8 +9,8 @@ return array(
         echo json_encode($feeds);
     },
 
-    'GET /api/login' => function() {
-        Helpers::dump(Input::get()); 
+    'POST /api/login' => function() {
+        echo json_encode(Input::get()); 
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
