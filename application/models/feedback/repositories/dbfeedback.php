@@ -496,8 +496,8 @@ class DBFeedback extends S36DataObject {
 
         foreach($block_id as $k => $id) {
             print_r($k+1);
-            print_r($id);
-            //$sth->bindValue(($k+1), $id);
+            print_r($id['feedid']);
+            //$sth->bindValue(($k+1), $id['feedid']);
         }
     }
 
