@@ -25,8 +25,14 @@ return array(
             echo json_encode($auth->user());     
         } else {
             echo json_encode(Array('msg' => 'Invalid Login Credentials'));
-        }
-       
+        } 
+    },
+
+    'POST /api/logout' => function() {
+        $auth = new S36Auth;
+        $auth->logout();
+
+        echo json_encode(Array('msg' => 'Logout'));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
