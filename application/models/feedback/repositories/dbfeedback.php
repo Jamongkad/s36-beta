@@ -616,8 +616,6 @@ class DBFeedback extends S36DataObject {
                         ->where('Feedback.feedbackId', '=', $id)
                         ->first();
 
-        Helpers::dump($feedback);
-        /*
         if($feedback->avatar) { 
             //delete profile photos...
             $profile_img = new \Widget\ProfileImage();
@@ -630,7 +628,6 @@ class DBFeedback extends S36DataObject {
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
                              ->delete();
-        */
     }
 }
 

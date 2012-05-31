@@ -18,12 +18,13 @@ class FireMultiple {
 
     public function execute() {
         $this->_group_ui_cluster($this->feed_ids);
+
         if($this->mode == "remove") {
             foreach($this->feed_ids as $feed_id) {
                 $this->feedback->permanently_remove_feedback($feed_id['feedid']);    
             } 
         } else {
-            //$this->feedback->_toggle_multiple($this->mode, $this->feed_ids);    
+            $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);    
         }
         
     }
