@@ -191,7 +191,7 @@ return array(
             $feedback->_change_feedback('isDeleted', $id, 0);     
         } 
     },
-
+    /*
     'GET /feedback/restorefeedback/(:num)' => function($id) use ($feedback) {
         $feedback->_change_feedback('isDeleted', $id, 0);      
         return Redirect::to('inbox/deleted/all'); 
@@ -201,7 +201,7 @@ return array(
         $feedback->permanently_remove_feedback($id);
         return Redirect::to('inbox/deleted/all'); 
     },
-
+    */
     'GET /feedback/reply_to/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback) { 
 
         $feedback_data = $feedback->pull_feedback_by_id($id);

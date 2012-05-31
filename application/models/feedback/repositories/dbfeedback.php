@@ -615,16 +615,14 @@ class DBFeedback extends S36DataObject {
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
                         ->where('Feedback.feedbackId', '=', $id)
                         ->first();
+
         Helpers::dump($feedback);
         /*
-        $feedback = DB::table('Feedback', 'master')
-                        ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
-                        ->where('Feedback.feedbackId', '=', $id)
-                        ->first();
-
-        //delete profile photos...
-        $profile_img = new \Widget\ProfileImage();
-        $profile_img->remove_profile_photo($feedback->avatar);
+        if($feedback->avatar) { 
+            //delete profile photos...
+            $profile_img = new \Widget\ProfileImage();
+            $profile_img->remove_profile_photo($feedback->avatar);
+        }
 
         DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
                             ->delete();
