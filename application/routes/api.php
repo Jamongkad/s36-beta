@@ -31,7 +31,6 @@ return array(
     'POST /api/logout' => function() {
         $auth = new S36Auth;
         $auth->logout();
-
         echo json_encode(Array('msg' => 'Logout'));
     },
      
