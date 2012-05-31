@@ -106,22 +106,12 @@ Checky.prototype.init = function() {
                             }).html(message)
                                    .show();
                           close_checkybar();
-                          /*
-                          var return_ids = msg.return_ids; 
-                          var message = msg.message;
-                          checkyBar.css({'width': '350px', 'right': '22%'});
-                          checkyBar.hide();
-                          
-                          return_feedback(return_ids, checkyBar, mode, hideLink, message);
 
-                          if(return_ids == null) { 
-                              checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
-                                       .html(notification_message(mode, collection_count, return_ids, hideLink))
-                                       .show();
-                          }
-
-                          close_checkybar();
-                          */
+                          checkyBar.hover(function() { 
+                              mouse_is_inside = true;  
+                          }, function() { 
+                              mouse_is_inside = false;  
+                          });
                        }
                     });
                 }
@@ -148,10 +138,6 @@ Checky.prototype.clickAll = function() {
             $(me.click_all).prop("checked", false);
         }                                            
     });
-}
-
-function notification_message(mode, collection_count, return_ids, link) {
-    return "<div>" + mode + ": " + (collection_count - ((return_ids != null) ? return_ids.length : 0)) + (collection_count > 1 ? " feedbacks" : " feedback") + link + "</div>";
 }
 
 function return_feedback(id, message_container, mode, link, message) {
