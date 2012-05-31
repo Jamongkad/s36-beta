@@ -109,7 +109,8 @@ return array(
                 
                 return forward_or_dash();
             } else {
-                return View::of_home_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+                return View::of_home_layout()->partial('contents', 'home/login', Array(  
+                                                                                    'company' => $_GET['subdomain']
                                                                                   , 'errors' => Array()
                                                                                   , 'warning' => 'Invalid login - try again.')); 
             } 
