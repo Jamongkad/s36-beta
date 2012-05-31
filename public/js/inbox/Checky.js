@@ -95,8 +95,15 @@ Checky.prototype.init = function() {
                               $('#' + key).hide();
                           }
                           var message = msg.message;
-                          checkyBar.css({'background': '#fef1b5', 'width': '200px', 'right': '20%'})
-                                   .html(message)
+                          checkyBar.css({
+                              'background': '#fef1b5'
+                            , 'width': '200px'
+                            , 'right': '35%'
+                            , 'top': '15%'
+                            , 'text-align': 'center'
+                            , 'padding': '5px'
+                            , 'font-weight': 'bold'
+                            }).html(message)
                                    .show();
                           close_checkybar();
                           /*
