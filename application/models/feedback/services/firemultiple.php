@@ -18,7 +18,7 @@ class FireMultiple {
 
     public function execute() {
         $this->_group_ui_cluster($this->feed_ids);
-        //$this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
+        $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
     }
 
     private function _group_ui_cluster($feeds) {
@@ -26,7 +26,6 @@ class FireMultiple {
         $ratings = $this->underscore->groupBy($feeds, 'rating');
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         $company_key = "inbox:check-action:".$this->company_id;
-        $message = $this->mode;//"Sorry negative feedback cannot be ".(($this->mode == "publish") ? "published" : "featured"); 
 
         foreach($group as $key => $val) {
             
@@ -54,7 +53,7 @@ class FireMultiple {
                 }
             }
 
-            echo json_encode(Array('ui' => $obj, 'message' => $message));
+            echo json_encode(Array('ui' => $obj, 'message' => $this->mode));
         }  
     }    
 }

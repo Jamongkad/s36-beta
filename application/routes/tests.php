@@ -311,6 +311,13 @@ return array(
         Helpers::dump($test);
     },
 
+    'GET /tests/manipulate_feedback/(:any)' => function($feedback_id) {
+        $feedback = new Feedback\Repositories\DBFeedback;
+        //$feedback->_change_feedback('isDeleted', $feedback_id, 0);      
+        //$feedback->permanently_remove_feedback($feedback_id) 
+        Helpers::dump($feedback_id);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
