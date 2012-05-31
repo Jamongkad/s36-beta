@@ -25,27 +25,22 @@ Checky.prototype.init = function() {
 
             if (mode == 'restore' || mode == 'inbox') {
                 conf     = confirm("Are you sure you want to restore these feedbacks?");     
-                color    = '#fef1b5';
             }
            
             if (mode == 'remove') {
                 conf  = confirm("Are you sure you want to permanently remove these feedbacks?");                  
-                color = '#fef1b5';
             }
            
             if (mode == 'publish') {
                 conf     = confirm("Are you sure want to publish these feedbacks?");     
-                color    = '#66cd00';
             }
            
             if (mode == 'feature') {
                 conf     = confirm("Are you sure want to feature these feedbacks?");     
-                color    = '#fbec5d';
             }
            
             if (mode == 'delete') {
                 conf     = confirm("Are you sure want to delete these feedbacks?");     
-                color    = '#fef1b5';
             } 
 
             if (conf) {
@@ -100,9 +95,7 @@ Checky.prototype.init = function() {
                               $('#' + key).hide();
                           }
                           var message = msg.message;
-                          checkyBar.css({'width': '350px', 'right': '22%'});
-                          checkyBar.hide();
-                          checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
+                          checkyBar.css({'background': '#fef1b5', 'width': '200px', 'right': '20%'})
                                    .html(message)
                                    .show();
                           close_checkybar();
