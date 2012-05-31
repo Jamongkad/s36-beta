@@ -10,7 +10,7 @@ return array(
     },
 
     'GET /api/login' => function() {
-        
+        Helpers::dump(Input::get()); 
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
