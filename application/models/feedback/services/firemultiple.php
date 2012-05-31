@@ -18,7 +18,7 @@ class FireMultiple {
 
     public function execute() {
         $this->_group_ui_cluster($this->feed_ids);
-        $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
+        //$this->feedback->_toggle_multiple($this->mode, $this->feed_ids);
     }
 
     private function _group_ui_cluster($feeds) {
