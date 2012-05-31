@@ -100,6 +100,8 @@ Checky.prototype.init = function() {
                               $('#' + key).hide();
                           }
                           var message = msg.message;
+                          checkyBar.css({'width': '350px', 'right': '22%'});
+                          checkyBar.hide();
                           checkyBar.css({'background': color, 'width': '200px', 'right': '28%'})
                                    .html(message)
                                    .show();
