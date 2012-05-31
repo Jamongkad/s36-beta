@@ -311,10 +311,11 @@ return array(
         Helpers::dump($test);
     },
 
-    'GET /tests/manipulate_feedback/(:any)' => function($feedback_id) {
-        $feedback = new Feedback\Repositories\DBFeedback;
-        $result = $feedback->permanently_remove_feedback($feedback_id);
-        Helpers::dump($result);
+    'GET /tests/mobile' => function() {
+        $is_mobile = (bool)preg_match('#\b(ip(hone|od|ad)|android|opera m(ob|in)i|windows (phone|ce)|blackberry|tablet'.
+                            '|s(ymbian|eries60|amsung)|p(laybook|alm|rofile/midp|laystation portable)|nokia|fennec|htc[\-_]'.
+                            '|mobile|up\.browser|[1-4][0-9]{2}x[1-4][0-9]{2})\b#i', $_SERVER['HTTP_USER_AGENT'] );
+        Helpers::dump($is_mobile);
     },
 
     //reserved route for Leica and Ryan testing

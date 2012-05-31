@@ -8,6 +8,10 @@ return array(
         $feeds = $host->fetch_hosted_feedback(); 
         echo json_encode($feeds);
     },
+
+    'GET /api/login' => function() {
+        
+    },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
 
