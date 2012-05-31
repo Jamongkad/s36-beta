@@ -238,9 +238,6 @@
                                     <input type="button" class="remove" tooltip="Delete Feedback" tt_width="84" 
                                     <?=Helpers::switchable($feed->isdeleted, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: -60px bottom"') ?>/>
                                 <?endif?>
-                            <?else:?>
-                                <?=HTML::link('/feedback/restorefeedback/'.$id, 'restore feedback', Array('class' => 'restore-feed'))?><br/>
-                                <?=HTML::link('/feedback/removefeedback/'.$id, 'remove feedback', Array('class' => 'perm-delete'))?>
                             <?endif?>
                         </div>
                     </div>
