@@ -1,6 +1,7 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
+$auth = new S36Auth;
 
 return array(
     'GET /api/full_page_display/(:any)' => function($company_name) { 
@@ -9,8 +10,8 @@ return array(
         echo json_encode($feeds);
     },
 
-    'POST /api/login' => function() {
-        $auth = new S36Auth;
+    'POST /api/login' => function() use ($auth) {
+
         $input = Input::get();
 
         $rules = Array(
@@ -28,10 +29,13 @@ return array(
         } 
     },
 
-    'POST /api/logout' => function() {
-        $auth = new S36Auth;
+    'POST /api/logout' => function() use ($auth) {
         $auth->logout();
         echo json_encode(Array('msg' => 'Logout'));
+    },
+
+    'GET /api/check_user' => function() use ($auth) {
+        echo json_encode(Array('check' => $auth->check()));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
