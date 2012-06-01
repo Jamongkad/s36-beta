@@ -29,7 +29,7 @@ return array(
         } 
     },
 
-    'POST /api/logout' => function() use ($auth) {
+    'GET /api/logout' => function() use ($auth) {
         $auth->logout();
         echo json_encode(Array('msg' => 'Logout'));
     },
