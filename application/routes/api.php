@@ -41,6 +41,11 @@ return array(
 
     'GET /api/check_user' => function() use ($auth) {
         session_start();
+        if(!isset($_SESSION['logged_in'])) {
+            $_SESSION['logged_in'] = False;
+        } else {
+            $_SESSION['logged_in'] = True;
+        }
         echo json_encode(Array('session' => $_SESSION['logged_in'], 'user' => $auth->user()));
     },
      
