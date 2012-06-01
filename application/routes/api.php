@@ -2,6 +2,7 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $auth = new S36Auth;
+session_start();
 
 return array(
     'GET /api/full_page_display/(:any)' => function($company_name) { 
@@ -23,7 +24,6 @@ return array(
         $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
         
         if($auth->check()) {
-            session_start();
             $_SESSION['logged_in'] = True;
             echo json_encode(Array('user' => $auth->user(), 'session' => $_SESSION['logged_in']));     
         } else {
@@ -33,14 +33,11 @@ return array(
 
     'GET /api/logout' => function() use ($auth) {
         $auth->logout();
-
-        session_start();
         $_SESSION['logged_in'] = False;
         echo json_encode(Array('msg' => 'Logout', 'session' => $_SESSION['logged_in']));
     },
 
     'GET /api/check_user' => function() use ($auth) {
-        session_start();
         if(!isset($_SESSION['logged_in'])) {
             $_SESSION['logged_in'] = False;
         } else {
