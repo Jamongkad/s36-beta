@@ -1,8 +1,6 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
-$auth = new S36Auth;
-session_start();
 
 return array(
     'GET /api/full_page_display/(:any)' => function($company_name) { 
@@ -11,8 +9,8 @@ return array(
         echo json_encode($feeds);
     },
 
-    'POST /api/login' => function() use ($auth) {
-
+    'POST /api/login' => function() {
+        $auth = new S36Auth;
         $input = Input::get();
 
         $rules = Array(
@@ -24,37 +22,17 @@ return array(
         $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
         
         if($auth->check()) {
-            $_SESSION['logged_in'] = True;
-            echo json_encode(Array('user' => $auth->user(), 'session' => $_SESSION['logged_in']));     
+            $token = $auth->user()->encryptstring;
+            echo json_encode(Array('user' => $auth->user(), 'token' => $token));     
         } else {
             echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
         } 
     },
 
-    'GET /api/login' => function() use ($auth) {
-        $auth->login('ryan', 'p455w0rd', Array('company' => 'razer')); 
-        
-        if($auth->check()) {
-            $_SESSION['logged_in'] = True;
-            echo json_encode(Array('user' => $auth->user(), 'session' => $_SESSION['logged_in']));     
-        } else {
-            echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
-        }  
-    },
-
-    'GET /api/logout' => function() use ($auth) {
+    'POST /api/logout' => function() {
+        $auth = new S36Auth;
         $auth->logout();
-        $_SESSION['logged_in'] = False;
-        echo json_encode(Array('msg' => 'Logout', 'session' => $_SESSION['logged_in']));
-    },
-
-    'GET /api/check_user' => function() use ($auth) {
-        if(!isset($_SESSION['logged_in'])) {
-            $_SESSION['logged_in'] = False;
-        } else {
-            $_SESSION['logged_in'] = True;
-        }
-        echo json_encode(Array('session' => $_SESSION['logged_in'], 'user' => $auth->user()));
+        echo json_encode(Array('msg' => 'Logout'));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
