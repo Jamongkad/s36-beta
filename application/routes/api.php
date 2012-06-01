@@ -31,7 +31,7 @@ return array(
         } 
     },
 
-    'GET /api/login' => function() {
+    'GET /api/login' => function() use ($auth) {
         $auth->login('ryan', 'p455w0rd', Array('company' => 'razer')); 
         
         if($auth->check()) {
