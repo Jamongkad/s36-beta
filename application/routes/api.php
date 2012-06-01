@@ -31,6 +31,17 @@ return array(
         } 
     },
 
+    'GET /api/login' => function() {
+        $auth->login('ryan', 'p455w0rd', Array('company' => 'razer')); 
+        
+        if($auth->check()) {
+            $_SESSION['logged_in'] = True;
+            echo json_encode(Array('user' => $auth->user(), 'session' => $_SESSION['logged_in']));     
+        } else {
+            echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
+        }  
+    },
+
     'GET /api/logout' => function() use ($auth) {
         $auth->logout();
         $_SESSION['logged_in'] = False;
