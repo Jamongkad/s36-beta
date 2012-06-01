@@ -35,7 +35,7 @@ return array(
     },
 
     'GET /api/check_user' => function() use ($auth) {
-        echo json_encode(Array('check' => $auth->check()));
+        echo json_encode(Array('check' => $auth->check(), 'user' => $auth->user()));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
