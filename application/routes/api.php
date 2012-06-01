@@ -41,7 +41,7 @@ return array(
 
     'GET /api/check_user' => function() use ($auth) {
         session_start();
-        echo json_encode(Array('session' => $_SESSION['logged_in']), 'user' => $auth->user()));
+        echo json_encode(Array('session' => $_SESSION['logged_in'], 'user' => $auth->user()));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
