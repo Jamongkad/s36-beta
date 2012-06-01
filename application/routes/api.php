@@ -23,7 +23,9 @@ return array(
         $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
         
         if($auth->check()) {
-            echo json_encode($auth->user());     
+            session_start();
+            $_SESSION['logged_in'] = True;
+            echo json_encode(Array('user' => $auth->user(), 'session' => $_SESSION['logged_in']));     
         } else {
             echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
         } 
@@ -31,11 +33,15 @@ return array(
 
     'GET /api/logout' => function() use ($auth) {
         $auth->logout();
-        echo json_encode(Array('msg' => 'Logout'));
+
+        session_start();
+        $_SESSION['logged_in'] = False;
+        echo json_encode(Array('msg' => 'Logout', 'session' => $_SESSION['logged_in']));
     },
 
     'GET /api/check_user' => function() use ($auth) {
-        echo json_encode(Array('check' => $auth->check(), 'user' => $auth->user()));
+        session_start();
+        echo json_encode(Array('session' => $_SESSION['logged_in']), 'user' => $auth->user()));
     },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
