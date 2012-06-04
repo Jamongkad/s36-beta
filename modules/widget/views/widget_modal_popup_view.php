@@ -243,7 +243,7 @@
                         }							
                            echo '<div class="g1of3" index-id="'.$ctr.'">
                                     <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$text.'</p>" />                        	
+                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.$text.'"/>                        	
                                         <div class="block">
                                             <div class="theFeedbackAvatar">
                                                 <img src="'.$avatar.'" />
