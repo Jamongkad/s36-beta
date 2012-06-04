@@ -232,7 +232,17 @@
 
                         $loc = '&nbsp;';								
                         if($r->rules->displaycountry == 1) {
-                            $loc = $r->countryname.', '.$r->city;								 
+                            if($r->countryname && $r->city) {
+                                $loc = $r->countryname.', '.$r->city;
+                            }
+
+                            if($r->countryname && $r->city == false) {
+                                $loc = $r->countryname; 
+                            }
+
+                            if($r->countryname == false && $r->city) {
+                                $loc = $r->city;
+                            }
                         } 
                                                 
                         $maxchars = 157;							
