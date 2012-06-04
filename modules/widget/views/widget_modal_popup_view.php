@@ -138,7 +138,7 @@
                             $comp = $r->position;								
                         }                                            
 
-                        $text = $r->text;
+                        $text = strip_tags($r->text);
                   
                         echo '<div class="soloFeedback">
                                 <div class="soloFeedbackAvatar">
@@ -236,14 +236,14 @@
                         } 
                                                 
                         $maxchars = 157;							
-                        if(strlen(trim($r->text)) <= $maxchars){
-                            $text = $r->text . ' <br />';																
+                        if(strlen(trim($text)) <= $maxchars){
+                            $text = $text . ' <br />';																
                         }else{
-                            $text = substr($r->text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+                            $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
                         }							
                            echo '<div class="g1of3" index-id="'.$ctr.'">
                                     <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$r->text.'</p>" />                        	
+                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$text.'</p>" />                        	
                                         <div class="block">
                                             <div class="theFeedbackAvatar">
                                                 <img src="'.$avatar.'" />
