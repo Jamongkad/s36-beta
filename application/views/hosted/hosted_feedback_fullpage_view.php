@@ -49,8 +49,8 @@
             $(this).find('.feedbackSocialFacebook').fadeOut();
         });
 	});
-	/* end of document ready function. below are custom functions for this form */	
 
+	/* end of document ready function. below are custom functions for this form */	
 	function add_boxes(counter){
 
 		var container = $('#theFeedbacks');
