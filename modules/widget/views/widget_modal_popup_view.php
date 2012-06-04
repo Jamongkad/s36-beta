@@ -97,7 +97,9 @@
                         //country code for the class
                         $cc = '&nbsp;'; 	
                         if($r->rules->displaycountry == 1) {
-                            $cc = strtolower($r->countrycode);        
+                            if($r->countrycode) {
+                                $cc = strtolower($r->countrycode);             
+                            } 
                         }
                         
                         //date
@@ -196,7 +198,9 @@
                             
                         $cc = '&nbsp;';
                         if($r->rules->displaycountry == 1) {
-                            $cc = strtolower($r->countrycode);        
+                            if($r->countrycode) {
+                                $cc = strtolower($r->countrycode);             
+                            }  
                         }
                         
                         //date 
