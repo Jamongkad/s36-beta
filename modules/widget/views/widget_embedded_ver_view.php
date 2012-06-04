@@ -101,7 +101,9 @@
                             //country code for the class
                             $cc = '&nbsp;'; 	
                             if($r->rules->displaycountry == 1) {
-                                $cc = strtolower($r->countrycode);        
+                                if($r->countrycode) {
+                                    $cc = strtolower($r->countrycode);             
+                                } 
                             }
                                 
                             //date 
@@ -127,8 +129,10 @@
                                 $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
                             }
 
-                            if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                                $comp = $r->position.', '.$companyname;								
+                            if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){
+                                if($r->position && $r->companyname) {
+                                    $comp = $r->position.', '.$companyname;								     
+                                } 
                             }
                             
                             if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
@@ -136,18 +140,20 @@
                             }
 
                             if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                                $comp = $r->position;								
+                                if($r->position) {
+                                    $comp = $r->position;								     
+                                } 
                             }								
 
                             $maxchars = 72;							
                             $text = strip_tags($r->text);
                             if(strlen(trim($text)) <= $maxchars){
-                                $text = $text . ' <br />';																
+                                $text = $text; 
                             }else{
                                 $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
                             }							
                             echo '<div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">                    
-                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="<p>'.$text.'</p>" />                        	
+                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.$text.'\'/>                        	
                                     <div class="block">	
                                         <div class="theFeedbackAvatar">
                                             <img src="'.$avatar.'" />
