@@ -153,7 +153,7 @@
                                 $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
                             }							
                             echo '<div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">                    
-                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.$text.'\'/>                        	
+                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.trim($r->text).'\'/>                        	
                                     <div class="block">	
                                         <div class="theFeedbackAvatar">
                                             <img src="'.$avatar.'" />
