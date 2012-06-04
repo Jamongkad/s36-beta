@@ -7,7 +7,7 @@ return array(
         $host = new Feedback\Services\HostedService($company_name);
         $feeds = $host->fetch_hosted_feedback(); 
         echo json_encode($feeds);
-    },
+     },
 
     'POST /api/login' => function() {
         $auth = new S36Auth;

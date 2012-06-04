@@ -420,7 +420,7 @@
                                     Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                                     Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                                     <br/><br/>
-                                    Please press the (X) button on the upper right hand corner of the form to close this box.
+                                    Click <a href="/submit">Here</a> to submit more feedback.
                                 </p>
                             </div>
                         </div> 
