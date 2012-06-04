@@ -172,10 +172,20 @@
 
                                 $loc = '&nbps;';
                                 if($r->rules->displaycountry == 1) {
-                                    $loc = $r->countryname.', '.$r->city;								 
+                                    if($r->countryname && $r->city) {
+                                        $loc = $r->countryname.', '.$r->city;								      
+                                    }
+                                   
+                                    if($r->countryname && $r->city == false) {
+                                        $loc = $r->countryname;     
+                                    }
+
+                                    if($r->countryname == false && $r->city) {
+                                        $loc = $r->city;     
+                                    }
                                 } 
                                                         
-                                $maxchars = 72;							
+                                $maxchars = 100;							
                                 $text = strip_tags($r->text);
                                 if(strlen(trim($text)) <= $maxchars){
                                     $text = $text;

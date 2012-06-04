@@ -145,7 +145,7 @@
                                 } 
                             }								
 
-                            $maxchars = 72;							
+                            $maxchars = 100;							
                             $text = strip_tags($r->text);
                             if(strlen(trim($text)) <= $maxchars){
                                 $text = $text; 
