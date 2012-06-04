@@ -82,12 +82,12 @@
             </div>
         </div>
         <?php
-            $maxchars = 140;							
+            $maxchars = 74;							
             $text = strip_tags($feed->text);
             if(strlen(trim($text)) <= $maxchars){
                 $text = $text;
             }else{
-                $text = substr($text, 0, $maxchars);
+                $text = substr($text, 0, $maxchars)."...";
             }							
         ?>
         <div class="feedbackBlock">
