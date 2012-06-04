@@ -445,7 +445,7 @@ var S36Form = new function() {
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric 
         if(!that.validate_field(fname.val(), fname.attr('title'), "regular") ){
             fname.focus();
-            that.add_error('Please Enter Your First Name Bitch');
+            that.add_error('Please Enter Your First Name');
             return false;
         }
         
@@ -472,10 +472,10 @@ var S36Form = new function() {
                 country.focus();
                 that.add_error('Please Select Your Country');
                 return false;
-            }else{
-                return 4;
-            }     
+            }    
         }
+
+        return 4;
     
 		that.hide_error();
     };
