@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="soloFeedbackDetails '.$no_avatar_class.'">
                                     <div class="soloFeedbackText">
-                                        <p>"'.trim($text).'"</p>
+                                        <p>"'.trim($r->text).'"</p>
                                     </div>
                                     <div class="soloFeedbackAuthor">
                                         <ul>
@@ -265,7 +265,7 @@
                         }							
                            echo '<div class="g1of3" index-id="'.$ctr.'">
                                     <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.trim($text).'"/>                        	
+                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.trim($r->text).'\'/>                        	
                                         <div class="block">
                                             <div class="theFeedbackAvatar">
                                                 <img src="'.$avatar.'" />
