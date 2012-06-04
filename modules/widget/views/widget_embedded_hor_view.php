@@ -180,7 +180,9 @@
                                 if(strlen(trim($text)) <= $maxchars){
                                     $text = $text;
                                 }else{
-                                    $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+                                    $text = '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> 
+                                    (read full feedback)
+                                    </span>';								
                                 }							
 
                                echo '<div class="g1of3">
