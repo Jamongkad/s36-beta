@@ -20,11 +20,13 @@
                 </div>
                 <div class="feedbackAuthorDetails">
                     <h2><?=$feed->firstname?> <?=$feed->lastname?></h2>
-                    <h4><?=($feed->position) ? $feed->position.',' : '&nbsp;'?>  
-                        <?=($feed->companyname) ? "<span>".$feed->position."</span>" : '&nbsp;'?></h4>
+                    <?if($feed->position || $feed->companyname):?>
+                        <h4><?=($feed->position) ? $feed->position.',' : null?>  
+                            <?=($feed->companyname) ? "<span>".$feed->companyname."</span>" : null?></h4>
+                    <?endif?>
                     <p><span style="float:left">
-                           <?=($feed->countryname) ? $feed->countryname.',' : '&nbsp;'?>
-                           <?=($feed->city) ? $feed->city : '&nbsp;'?>
+                           <?=($feed->countryname) ? $feed->countryname.',' : null?>
+                           <?=($feed->city) ? $feed->city : null?>
                        </span>
                        <?if($feed->countrycode):?>
                            <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span>
