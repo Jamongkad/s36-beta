@@ -175,7 +175,7 @@
                                     $loc = $r->countryname.', '.$r->city;								 
                                 } 
                                                         
-                                $maxchars = 200;							
+                                $maxchars = 72;							
                                 $text = strip_tags($r->text);
                                 if(strlen(trim($text)) <= $maxchars){
                                     $text = $text;
