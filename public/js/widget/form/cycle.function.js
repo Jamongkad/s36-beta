@@ -131,7 +131,7 @@ PageCycle.prototype.cycle_prev = function() {
             }
             
 			if(this.feedback.length > 0){
-				if((this.rating == "2") || (this.rating == "1")){
+				if((this.rating == 2) || (this.rating == 1)){
 					S36Form.show_complete_form(false);
 					return 3;
 				}else{
@@ -222,12 +222,14 @@ PageCycle.prototype.cycle_prev = function() {
         var bad_rating;
 		if(next){
 			
-			if((this.rating == "2") || (this.rating == "1")){
+			if((this.rating == 2) || (this.rating == 1)){
 				var val = S36Form.validate_form('partial'); // validate_form returns 3;
 				var bad_rating = true;
+                console.log("Dan is gay");
 			}else{
 				var val = S36Form.validate_form('full'); 	// validate_form returns 3;
 				var bad_rating = false;
+                console.log("Ok maybe its his cousin");
 			}
 			if(val){ 
 				// if form is validated..				
