@@ -127,7 +127,9 @@
                         }
 
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                            $comp = $r->position.', <span class="highlight">'.$companyname.'</span>';
+                            if($r->position && $r->companyname) {
+                                $comp = $r->position.', <span class="highlight">'.$companyname.'</span>';     
+                            } 
                         }
                         
                         if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
@@ -135,7 +137,9 @@
                         }
                         
                         if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            $comp = $r->position;								
+                            if($r->position) {
+                                $comp = $r->position;								     
+                            } 
                         }                                            
 
                         $text = strip_tags($r->text);
