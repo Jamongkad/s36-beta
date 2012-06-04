@@ -18,12 +18,28 @@
                         <?endif?>
                     <?endif?>
                 </div>
+                <?php
+                    $comp = null;        
+                    if($feed->companyname && $feed->position) {
+                        $comp = $feed->companyname.', '."<span>".$feed->position."</span>";
+                    }
+
+                    if($feed->companyname && $feed->position == false) {
+                        $comp = $feed->companyname; 
+                    }
+
+                    if($feed->companyname == false && $feed->position) {
+                        $comp = "<span>".$feed->position."</span>";
+                    }
+ 
+                ?>
                 <div class="feedbackAuthorDetails">
                     <h2><?=$feed->firstname?> <?=$feed->lastname?></h2>
-                    <?if($feed->position || $feed->companyname):?>
-                        <h4><?=($feed->position) ? $feed->position.',' : null?>  
-                            <?=($feed->companyname) ? "<span>".$feed->companyname."</span>" : null?></h4>
+ 
+                    <?if($comp):?>
+                        <h4><?=$comp?></h4>
                     <?endif?>
+
                     <p><span style="float:left">
                            <?=($feed->countryname) ? $feed->countryname.',' : null?>
                            <?=($feed->city) ? $feed->city : null?>
