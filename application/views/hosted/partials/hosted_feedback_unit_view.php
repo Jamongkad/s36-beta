@@ -33,6 +33,21 @@
                     }
  
                 ?>
+                <?php 
+                   $location = null;
+                    if($feed->countryname && $feed->city) {
+                        $location = $feed->countryname.', '.$feed->city;
+                    }
+
+                    if($feed->countryname && $feed->city == false) {
+                        $location = $feed->countryname; 
+                    }
+
+                    if($feed->countryname == false && $feed->city) {
+                        $location = $feed->city;
+                    }
+
+                ?>
                 <div class="feedbackAuthorDetails">
                     <h2><?=$feed->firstname?> <?=$feed->lastname?></h2>
  
@@ -40,10 +55,13 @@
                         <h4><?=$comp?></h4>
                     <?endif?>
 
-                    <p><span style="float:left">
-                           <?=($feed->countryname) ? $feed->countryname.',' : null?>
-                           <?=($feed->city) ? $feed->city : null?>
-                       </span>
+                    <p>
+                        <?if($location):?>
+                            <span style="float:left">
+                                <?=$location?>
+                            </span>
+                        <?endif?>
+
                        <?if($feed->countrycode):?>
                            <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span>
                        <?endif?>
