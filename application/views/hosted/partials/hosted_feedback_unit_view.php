@@ -81,13 +81,22 @@
                 echo date('M j, Y', $unix)?>
             </div>
         </div>
+        <?php
+            $maxchars = 140;							
+            $text = strip_tags($r->text);
+            if(strlen(trim($text)) <= $maxchars){
+                $text = $text;
+            }else{
+                $text = substr($text, 0, $maxchars);
+            }							
+        ?>
         <div class="feedbackBlock">
             <div class="feedbackMeta"> 
                 <div class="feedbackSocial">
                     <div class="feedbackSocialTwitter">
                         <a href="<?=URL::to('single/'.$feed->id)?>" 
                            data-url="<?=URL::to('single/'.$feed->id)?>" 
-                           data-text="<?=strip_tags($feed->text)?>"
+                           data-text="<?=$text?>"
                            class="twitter-share-button">Tweet</a>
                     </div>
                    <div class="feedbackSocialFacebook">
