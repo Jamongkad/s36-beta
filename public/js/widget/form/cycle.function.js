@@ -267,7 +267,7 @@ PageCycle.prototype.cycle_prev = function() {
 		-------------------------*/	
 		
 		else{
-			if((this.rating == "2") || (this.rating == "1")){
+			if((this.rating == 2) || (this.rating == 1)){
 				S36Form.show_complete_form(false);
 				return 0;
 			}else{ 
