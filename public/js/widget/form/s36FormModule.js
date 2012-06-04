@@ -445,7 +445,7 @@ var S36Form = new function() {
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric 
         if(!that.validate_field(fname.val(), fname.attr('title'), "regular") ){
             fname.focus();
-            that.add_error('Please Enter Your First Name');
+            that.add_error('Please Enter Your First Name Bitch');
             return false;
         }
         
