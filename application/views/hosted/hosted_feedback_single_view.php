@@ -11,8 +11,8 @@
         <?=HTML::style('css/widget_master/grids.css')?> 
         <?=HTML::style('css/widget_master/hosted-single.css');?>
 
-        <meta property="og:title" content="<?=$feedback->text?>"/> 
-        <meta property="og:description" content="<?=$feedback->text?>"/> 
+        <meta property="og:title" content="<?=strip_tags($feedback->text)?>"/> 
+        <meta property="og:description" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:type" content="article"/> 
         <?if($feedback->avatar):?>
             <meta property="og:image" content='<?=URL::to('uploaded_cropped/150x150/'.$feedback->avatar)?>'/> 
