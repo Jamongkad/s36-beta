@@ -83,7 +83,7 @@
         </div>
         <?php
             $maxchars = 140;							
-            $text = strip_tags($r->text);
+            $text = strip_tags($feed->text);
             if(strlen(trim($text)) <= $maxchars){
                 $text = $text;
             }else{
