@@ -1,12 +1,12 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Input, Exception, Helpers, DB, StdClass, ArrayIterator, LimitIterator, View, Config;
+use Feedback\Repositories\DBFeedback, Exception, Helpers, StdClass, ArrayIterator, LimitIterator, View, Config;
 use Halcyonic;
 
 class HostedService {
     
     public $page_number = 0;
-    public $units = 2;
+    public $units = 4;
     public $limit = 8;
     public $offset = 0;
     public $ignore_cache = False; 
@@ -111,6 +111,8 @@ class HostedService {
             $final_node = new StdClass; 
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
+            } else {
+                $final_node->head = $featured_feeds;
             }
 
             $final_node->children = $val;
