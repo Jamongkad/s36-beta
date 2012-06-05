@@ -6,7 +6,7 @@ use Halcyonic;
 class HostedService {
     
     public $page_number = 0;
-    public $units = 4;
+    public $units = 2;
     public $limit = 8;
     public $offset = 0;
     public $ignore_cache = False; 
