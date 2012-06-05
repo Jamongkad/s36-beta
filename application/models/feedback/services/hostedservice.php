@@ -74,8 +74,8 @@ class HostedService {
         $published_feeds = Array();
         $children_collection = Array();
 
-        Helpers::dump("All Feeds");
-        Helpers::dump($feeds->result);
+        #Helpers::dump("All Feeds");
+        #Helpers::dump($feeds->result);
     
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
