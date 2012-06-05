@@ -106,14 +106,15 @@ class HostedService {
             }              
             $ctr += 1;
         }
+
+        Helpers::dump("Children"); 
+        Helpers::dump($children_collection);
          
         foreach($children_collection as $key => $val) {
             $final_node = new StdClass; 
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
-            } else {
-                echo "Oh man";
-            }
+            } 
             $final_node->children = $val;
             $collection[] = $final_node;
         }     
