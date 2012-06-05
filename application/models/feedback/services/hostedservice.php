@@ -111,10 +111,9 @@ class HostedService {
             $final_node = new StdClass; 
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
-            } else {
-                $final_node->detached_head = $featured_feeds;
-            }
-
+            }             
+            
+            $final_node->detached_head = $featured_feeds;
             $final_node->children = $val;
             $collection[] = $final_node;
         }     
