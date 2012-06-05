@@ -82,6 +82,8 @@ class HostedService {
             }
         }
 
+        Helpers::dump($featured_feeds);
+
         $ctr = 0;            
         foreach($published_feeds as $published_feed) {
 
