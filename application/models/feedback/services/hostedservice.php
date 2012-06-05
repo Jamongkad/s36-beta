@@ -116,13 +116,14 @@ class HostedService {
     
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];     
-                 unset($featured_feeds[$key]);
-            } 
+                unset($featured_feeds[$key]);
+            } else {
+                print_r($featured_feeds);     
+            }
    
             //$final_node->head = $featured_feeds[$key];     
             $final_node->children = $val;
-
-            print_r($featured_feeds);
+           
             $collection[] = $final_node;
 
         }     
