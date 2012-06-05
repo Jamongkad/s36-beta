@@ -23,6 +23,10 @@ return array(
         } 
     },
 
+    'GET /api/inbox' => function() {
+        echo json_encode(Array('msg' => 'request successful', 'data' => Array('feedid' => 12)));
+    },
+
     'POST /api/logout' => function() {
         $auth = new S36Auth;
         $auth->logout();
