@@ -13,12 +13,6 @@ return array(
         $auth = new S36Auth;
         $input = Input::get();
 
-        $rules = Array(
-            'username' => 'required'
-          , 'password' => 'required'
-        );
-
-        $validator = Validator::make($input, $rules);
         $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
         
         if($auth->check()) {
