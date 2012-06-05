@@ -24,7 +24,7 @@ return array(
     },
 
     'GET /api/inbox' => function() {
-        echo json_encode(Array('msg' => 'request successful', 'data' => Array('feedid' => 12)));
+        echo json_encode(Array('msg' => 'request successful', 'data' => Array('feedid' => 12), 'params' => Input::get()));
     },
 
     'POST /api/logout' => function() {
