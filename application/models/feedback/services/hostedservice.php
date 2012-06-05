@@ -120,7 +120,7 @@ class HostedService {
 
             
             $final_node->head = $featured_feeds[$key];     
-            unset($featured_feeds[$key]);
+            unset($featured_feeds[$key-1]);
             $final_node->children = $val;
 
             print_r($featured_feeds);     
