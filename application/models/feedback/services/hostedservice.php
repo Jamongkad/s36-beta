@@ -108,7 +108,7 @@ class HostedService {
         Helpers::dump($children_collection);
         
         //pre count for performance.
-        /*
+
         $featured_count = count($featured_feeds);
  
         for($i=0; $i < $featured_count; $i++) {
@@ -121,17 +121,18 @@ class HostedService {
 
             $collection[] = $final_node;
         }
-        */
+
+        /*
         foreach($featured_feeds as $feat_key => $feat_val) { 
             $final_node = new StdClass;
             $final_node->head = $feat_val;
             if(isset($children_collection[$feat_key])) { 
                 $final_node->children = $children_collection[$feat_key];
-            }             
-            
-            $final_node->children = $children_collection;     
+            } 
+            //$final_node->children = $children_collection;     
             $collection[] = $final_node;
         }
+        */
         return $collection;
     }
 
