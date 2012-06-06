@@ -126,7 +126,7 @@ class HostedService {
             $final_node = new StdClass;   
             foreach($children_collection as $child_key => $child_val) {
                 if($feed_key === $child_key) {
-                    $final_node->head = $feed_key; 
+                    $final_node->head = $feed_val; 
                 } else {
                     echo "unmatched".$feed_val."<br/>";
                 }
