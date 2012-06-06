@@ -163,7 +163,7 @@ div{position:relative;}
 }
 
 .featured .feedbackSocial{height:20px;}
-.normal .feedbackSocial{height:20px;width:100%}
+.normal .feedbackSocial{height:20px;width:280px}
 .feedbackSocial .feedbackSocialTwitter,
 .feedbackSocial .feedbackSocialFacebook, 
 .feedbackSocial .feedbackSocialView{display:none;}
