@@ -75,6 +75,11 @@
                 </div>
             </div>
             <div class="feedbackDate"> 
+                <?if($type == 'featured'):?>
+                    <div class="feedbackSocialView">
+                        <?=HTML::link('single/'.$feed->id, 'view feedback')?>
+                    </div>
+                <?endif?>
                 <?
                 $date = $feed->date;
                 $unix = strtotime($date);
@@ -103,9 +108,11 @@
                    <fb:like href="<?=URL::to('single/'.$feed->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
                    </div>
                 </div>
-                <div class="feedbackSocialView">
-                    <?=HTML::link('single/'.$feed->id, 'view feedback')?>
-                </div>
+                <?if($type == 'published'):?>
+                    <div class="feedbackSocialView">
+                        <?=HTML::link('single/'.$feed->id, 'view feedback')?>
+                    </div>
+                <?endif?>
             </div>
         </div>
     </div>
