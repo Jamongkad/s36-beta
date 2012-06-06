@@ -121,7 +121,7 @@ class HostedService {
 
         }          
         */
-
+        /*
         foreach($featured_feeds as $feed_key => $feed_val) {
             $final_node = new StdClass;   
             foreach($children_collection as $child_key => $child_val) {
@@ -131,6 +131,11 @@ class HostedService {
             }
 
             $collection[] = $final_node;
+        }
+        */
+        for($i=0; $i < count($featured_feeds); $i++) {
+            print_r($featured_feeds[$i]);
+            print_r($children_collection[$i]);
         }
         return $collection;
     }
