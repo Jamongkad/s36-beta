@@ -125,11 +125,9 @@ class HostedService {
         foreach($featured_feeds as $feed_key => $feed_val) {
             $final_node = new StdClass;   
             foreach($children_collection as $child_key => $child_val) {
-                if($feed_key === $child_key) {
+                if($feed_key == $child_key) {
                     $final_node->head = $feed_val; 
-                } else {
-                    $final_node->detached_head = $feed_val;
-                }
+                }             
             }
 
             $collection[] = $final_node;
