@@ -127,6 +127,8 @@ class HostedService {
             $final_node->head = $feat_val;
             if(isset($children_collection[$feat_key])) { 
                 $final_node->children = $children_collection[$feat_key];
+            } else {
+                $final_node->children = $children_collection;     
             }
 
             $collection[] = $final_node;
