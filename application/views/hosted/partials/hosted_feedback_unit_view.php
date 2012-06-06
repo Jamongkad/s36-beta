@@ -74,12 +74,11 @@
                     <p><?=$feed->text?></p>
                 </div>
             </div>
-            <!--
-            <div class="feedbackSocialView">
-                <?=HTML::link('single/'.$feed->id, 'view feedback')?>
-            </div>
-            -->
             <div class="feedbackDate"> 
+
+                <div class="feedbackSocialView">
+                    <?=HTML::link('single/'.$feed->id, 'view feedback')?>
+                </div>
                 <?
                 $date = $feed->date;
                 $unix = strtotime($date);
