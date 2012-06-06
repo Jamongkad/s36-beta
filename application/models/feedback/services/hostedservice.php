@@ -123,13 +123,16 @@ class HostedService {
         */
 
         foreach($featured_feeds as $feed_key => $feed_val) {
+            $final_node = new StdClass;   
             foreach($children_collection as $child_key => $child_val) {
                 if($feed_key === $child_key) {
-                    echo $feed_val."<br/>";     
+                    $final_node->head = $feed_key; 
                 } else {
                     echo "unmatched".$feed_val."<br/>";
                 }
             }
+
+            $collection[] = $final_node;
         }
         return $collection;
     }
