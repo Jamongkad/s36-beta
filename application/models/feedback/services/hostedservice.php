@@ -126,6 +126,8 @@ class HostedService {
             foreach($children_collection as $child_key => $child_val) {
                 if($feed_key == $child_key) {
                     echo $feed_key."<br/>";     
+                } else {
+                    echo $feed_key."<br/>";
                 }
             }
         }
