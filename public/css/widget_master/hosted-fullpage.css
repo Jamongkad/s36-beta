@@ -86,12 +86,9 @@ div{position:relative;}
 .featured .feedbackSocial,
 .featured .feedbackSocialTwitter,
 .featured .feedbackSocialFacebook{float:left;}
-
 .featured .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
-/*
 .featured .feedbackSocialTwitter{width:90px;}
-*/
-.featured .feedbackSocialFacebook{width:90px;right:20px}
+.featured .feedbackSocialFacebook{width:90px;}
 .featured .feedbackDate{position:absolute;bottom:-40px;right:0px;font-weight:bold;color:#7bb5e5;text-shadow:#FFF 0px 1px;}
 
 /* normal */
@@ -111,7 +108,8 @@ div{position:relative;}
 .normal .feedbackMeta{padding-top:5px;}
 .normal .feedbackTimestamp,
 .normal .feedbackSocial,
-.normal .feedbackSocialTwitter{float:left;}
+.normal .feedbackSocialTwitter,
+.normal .feedbackSocialFacebook{float:left;}
 .normal .feedbackTimestamp{padding-right:7px;padding-top:2px;float:left;}
 .normal .feedbackSocialTwitter{width:85px;}
 .normal .feedbackSocialFacebook{width:90px;}
@@ -164,8 +162,5 @@ div{position:relative;}
 }
 
 .featured .feedbackSocial{height:20px;}
-.normal .feedbackSocial{height:20px;width:280px}
-.feedbackSocial .feedbackSocialTwitter,
-.feedbackSocial .feedbackSocialFacebook {display:none;}
-
-/*.feedbackSocialView{display:none; font-weight:bold; top:3px; right: 10px;float:left}*/
+.normal .feedbackSocial{height:20px;}
+.feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook{display:none;}
