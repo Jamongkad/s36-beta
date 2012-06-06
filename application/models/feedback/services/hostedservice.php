@@ -47,13 +47,11 @@ class HostedService {
 
         $data_obj = new StdClass;
         $data_obj->collection = $collection;
-        /*
         $data_obj->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
                                      , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id')))->get();
         $data_obj->num_rows = $feeds->total_rows;
         $data_obj->number_of_pages = $feeds->number_of_pages;
         $data_obj->pages = $feeds->pages;
-        */
 
         if(!$this->ignore_cache) {
             $this->cache->set_cache($data_obj);               
@@ -72,11 +70,8 @@ class HostedService {
         $collection = Array();
         $featured_feeds = Array();
         $published_feeds = Array();
-        $children_collection = Array();
+        $children_collection = Array(); 
 
-        #Helpers::dump("All Feeds");
-        #Helpers::dump($feeds->result);
-    
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 $published_feeds[] = $feed;
