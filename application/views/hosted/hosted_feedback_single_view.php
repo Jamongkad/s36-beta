@@ -50,6 +50,7 @@
                     <a href="http://<?=$feedback->sitedomain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
+            <span><a href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
         </div>
     </div>
 </div>

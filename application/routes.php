@@ -65,7 +65,8 @@ return array(
     'GET /single/(:num)' => function($id) use ($feedback) { 
         $feedback = $feedback->pull_feedback_by_id($id);
         $fb_id = Config::get('application.fb_id');
-        return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
+        $deploy_env = Config::get('application.deploy_env');
+        return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id, 'deploy_env' => $deploy_env));
     },
 
     'GET /login' => function() {
