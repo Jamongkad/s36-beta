@@ -76,7 +76,7 @@
             </div>
             <div class="feedbackDate"> 
                 <?if($type == 'featured'):?>
-                    <div class="feedbackSocialView">
+                    <div class="feedbackSocialView" style="float:left">
                         <?=HTML::link('single/'.$feed->id, 'view feedback')?>
                     </div>
                 <?endif?>
