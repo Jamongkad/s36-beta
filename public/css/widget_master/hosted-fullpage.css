@@ -164,4 +164,4 @@ div{position:relative;}
 .featured .feedbackSocial{height:20px;}
 .normal .feedbackSocial{height:20px;}
 .feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook, .feedbackSocialView{display:none;}
-.feedbackSocialView a { color: #A4D3EE; }
+.feedbackSocialView a { color: #87CEFA;/*#A4D3EE;*/ }
