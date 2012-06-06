@@ -80,10 +80,9 @@
                         <?=HTML::link('single/'.$feed->id, 'view feedback')?>
                     </div>
                 <?endif?>
-                <?
-                $date = $feed->date;
-                $unix = strtotime($date);
-                echo date('M j, Y', $unix)?>
+                <?$date = $feed->date;
+                  $unix = strtotime($date);
+                  echo date('M j, Y', $unix)?>
             </div>
         </div>
         <?php
