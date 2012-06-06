@@ -112,9 +112,9 @@ class HostedService {
         foreach($children_collection as $key => $val) {
             foreach($featured_feeds as $feed_key => $feed_val) {
                 if($key == $feed_key) {
-                    echo $feed_val;     
+                    echo $feed_val."<br/>";     
                 } else {
-                    echo $feed_val; 
+                    echo $feed_val."<br/>"; 
                 }
             }
             /*
