@@ -164,4 +164,4 @@ div{position:relative;}
 .featured .feedbackSocial{height:20px;}
 .normal .feedbackSocial{height:20px;}
 .feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook, .feedbackSocialView{display:none;}
-.feedbackSocialView{ opacity: 0.5; }
+.feedbackSocialView{ opacity: 0.9; }
