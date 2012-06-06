@@ -102,3 +102,5 @@ div{
 .companyLinks ul li a.website{background-position:0px 1px;}
 .companyLinks ul li a.facebook{background-position:0px -25px;}
 .companyLinks ul li a.twitter{background-position:0px -50px;}
+
+.feedbackSocial {float:left;}
