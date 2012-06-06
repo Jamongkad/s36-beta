@@ -108,16 +108,9 @@ class HostedService {
 
         //$combined = array_combine($featured_feeds, $children_collection);
         //Helpers::dump($combined);
-         
+        /*        
         foreach($children_collection as $key => $val) {
-            foreach($featured_feeds as $feed_key => $feed_val) {
-                if($key == $feed_key) {
-                    echo "matched".$feed_val."<br/>";     
-                } else {
-                    echo "unmatched".$feed_val."<br/>"; 
-                }
-            }
-            /*
+
             $final_node = new StdClass;   
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];      
@@ -125,9 +118,17 @@ class HostedService {
             }  
             //$final_node->head = $featured_feeds[$key];     
             $collection[] = $final_node;
-            */
-        }     
 
+        }          
+        */
+
+        foreach($featured_feeds as $feed_key => $feed_val) {
+            foreach($children_collection as $child_key => $child_val) {
+                if($feed_key == $child_key) {
+                    echo $feed_key."<br/>";     
+                }
+            }
+        }
         return $collection;
     }
 
