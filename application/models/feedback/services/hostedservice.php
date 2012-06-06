@@ -110,6 +110,14 @@ class HostedService {
         //Helpers::dump($combined);
          
         foreach($children_collection as $key => $val) {
+            foreach($featured_feeds as $feed_key => $feed_val) {
+                if($key == $feed_key) {
+                    echo $feed_val;     
+                } else {
+                    echo $feed_val; 
+                }
+            }
+            /*
             $final_node = new StdClass;   
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];      
@@ -117,6 +125,7 @@ class HostedService {
             }  
             //$final_node->head = $featured_feeds[$key];     
             $collection[] = $final_node;
+            */
         }     
 
         return $collection;
