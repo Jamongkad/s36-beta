@@ -134,10 +134,14 @@ class HostedService {
         }
         */
         for($i=0; $i < count($featured_feeds); $i++) {
-            print_r($featured_feeds[$i]);
+            $final_node = new StdClass;
+            $final_node->head = $featured_feeds[$i];
+
             if(isset($children_collection[$i])) {
-                print_r($children_collection[$i]);               
+                $final_node->children = $children_collection[$i];
             }
+
+            $collection[] = $final_node;
         }
         return $collection;
     }
