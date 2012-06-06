@@ -106,8 +106,8 @@ class HostedService {
         Helpers::dump("Children"); 
         Helpers::dump($children_collection);
 
-        $combined = array_combine($featured_feeds, $children_collection);
-        Helpers::dump($combined);
+        //$combined = array_combine($featured_feeds, $children_collection);
+        //Helpers::dump($combined);
          
         foreach($children_collection as $key => $val) {
             $final_node = new StdClass;   
