@@ -111,7 +111,7 @@ class HostedService {
 
         $featured_count = count($featured_feeds);
  
-        for($i=0; $i < $featured_count; $i++) {
+        for($i=0; $i < $featured_count && $i < $children_collection; $i++) {
             $final_node = new StdClass;
             $final_node->head = $featured_feeds[$i];
 
