@@ -128,7 +128,7 @@ class HostedService {
                 if($feed_key === $child_key) {
                     $final_node->head = $feed_val; 
                 } else {
-                    echo "unmatched".$feed_val."<br/>";
+                    $final_node->detached_head = $feed_val;
                 }
             }
 
