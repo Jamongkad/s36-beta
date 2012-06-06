@@ -109,7 +109,7 @@
                    </div>
                 </div>
                 <?if($type != 'featured'):?>
-                    <div class="feedbackSocialView">
+                    <div class="feedbackSocialView" style="float:right">
                         <?=HTML::link('single/'.$feed->id, 'view feedback')?>
                     </div>
                 <?endif?>
