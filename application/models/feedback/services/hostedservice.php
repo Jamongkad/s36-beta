@@ -124,7 +124,7 @@ class HostedService {
 
         foreach($featured_feeds as $feed_key => $feed_val) {
             foreach($children_collection as $child_key => $child_val) {
-                if($feed_key == $child_key) {
+                if($feed_key === $child_key) {
                     echo $feed_val."<br/>";     
                 } else {
                     echo "unmatched".$feed_val."<br/>";
