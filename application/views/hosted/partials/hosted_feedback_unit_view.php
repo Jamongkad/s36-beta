@@ -74,9 +74,11 @@
                     <p><?=$feed->text?></p>
                 </div>
             </div>
+            <!--
             <div class="feedbackSocialView">
                 <?=HTML::link('single/'.$feed->id, 'view feedback')?>
             </div>
+            -->
             <div class="feedbackDate"> 
                 <?
                 $date = $feed->date;
