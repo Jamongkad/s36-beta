@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="block" style="top:10px">
+            <div class="block" style="top:-60px">
             	<div class="theText">
                     <br/>
                 	<?=$feedback->text?>
