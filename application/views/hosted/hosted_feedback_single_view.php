@@ -97,14 +97,14 @@
             <div class="block" style="height:20px"></div>
 
             <div class="feedbackSocial"> 
-                <div class=""> 
+                <div style="float:left"> 
                     <a href="<?=URL::to('single/'.$feedback->id)?>" 
                        data-url="<?=URL::to('single/'.$feedback->id)?>" 
                        data-text="<?=$feedback->text?>"
                        class="twitter-share-button">Tweet</a>
                 </div>
              
-                <div class=""> 
+                <div style="float:left "> 
                     <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
                 </div>
 
