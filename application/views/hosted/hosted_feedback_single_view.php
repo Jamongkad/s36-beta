@@ -97,10 +97,20 @@
             <div class="block" style="height:20px"></div>
 
             <div class="feedbackSocial"> 
+
+                <?php
+                    $maxchars = 74;							
+                    $text = strip_tags($feedback->text);
+                    if(strlen(trim($text)) <= $maxchars){
+                        $text = $text;
+                    }else{
+                        $text = substr($text, 0, $maxchars)."...";
+                    }							
+                ?>
                 <div style="float:left"> 
                     <a href="<?=URL::to('single/'.$feedback->id)?>" 
                        data-url="<?=URL::to('single/'.$feedback->id)?>" 
-                       data-text="<?=$feedback->text?>"
+                       data-text="<?=$text?>"
                        class="twitter-share-button">Tweet</a>
                 </div>
              
