@@ -92,29 +92,27 @@ class HostedService {
 
         $ctr = 0;            
         foreach($published_feeds as $published_feed) {
-
             $children = Array();
             if(($ctr % $this->units) == 0) { 
-
                 $iter = new ArrayIterator($published_feeds);
                 foreach(new LimitIterator($iter, $ctr, $this->units) as $fr) { 
                     $children[] = $fr;     
                 }
-
                 $children_collection[] = $children;
-
             }              
             $ctr += 1;
         }
 
         Helpers::dump("Children"); 
         Helpers::dump($children_collection);
+
+        $combined = array_combine($featured_feeds, $children_collection);
+        Helpers::dump($combined);
          
         foreach($children_collection as $key => $val) {
             $final_node = new StdClass;   
             if(isset($featured_feeds[$key])) {
                 $final_node->head = $featured_feeds[$key];      
-                //print_r($featured_feeds[$key]);     
                 $final_node->children = $val;
             }  
             //$final_node->head = $featured_feeds[$key];     
