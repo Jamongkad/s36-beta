@@ -44,9 +44,11 @@
         $('.feedback').hover(function(){
             $(this).find('.feedbackSocialTwitter').fadeIn();
             $(this).find('.feedbackSocialFacebook').fadeIn();
+            $(this).find('.feedbackSocialView').fadeIn();
         },function(){
             $(this).find('.feedbackSocialTwitter').fadeOut();
             $(this).find('.feedbackSocialFacebook').fadeOut();
+            $(this).find('.feedbackSocialView').fadeOut();
         });
 	});
 

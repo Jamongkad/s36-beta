@@ -85,7 +85,8 @@ div{position:relative;}
 .featured .feedbackTimestamp,
 .featured .feedbackSocial,
 .featured .feedbackSocialTwitter,
-.featured .feedbackSocialFacebook{float:left;}
+.featured .feedbackSocialFacebook,
+.featured .feedbackSocialView {float:left;}
 .featured .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
 .featured .feedbackSocialTwitter{width:90px;}
 .featured .feedbackSocialFacebook{width:90px;}
