@@ -114,18 +114,19 @@ class HostedService {
         $featured_count = count($featured_feeds);
         $published_count = count($published_feeds);
 
-        $final_node = new StdClass; 
         if($featured_count == 1)  {
+            $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
             $final_node->children = $published_feeds; 
             $collection[] = $final_node;
         } if($featured_count == 0 and $published_count > 0) {
+            $final_node = new StdClass; 
             $final_node->head = null;
             $final_node->children = $published_feeds;
             $collection[] = $final_node;
         } else { 
             for($i=0; $i < $featured_count && $i < $children_collection; $i++) {
-                //$final_node = new StdClass;
+                $final_node = new StdClass;
                 $final_node->head = $featured_feeds[$i];
                 if(isset($children_collection[$i])) {
                     $final_node->children = $children_collection[$i];
