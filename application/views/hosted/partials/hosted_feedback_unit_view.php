@@ -103,7 +103,7 @@
                    <fb:like href="<?=URL::to('single/'.$feed->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
                    </div>
                    <div class="feedbackSocialView">
-                       <?=HTML::link('single/'.$feed->id, 'View this feedback')?>
+                       <?=HTML::link('single/'.$feed->id, 'view feedback')?>
                    </div>
                 </div>
             </div>
