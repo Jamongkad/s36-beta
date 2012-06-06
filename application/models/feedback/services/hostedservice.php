@@ -116,7 +116,7 @@ class HostedService {
             $final_node->head = $featured_feeds[0];
             $final_node->children = $published_feeds; 
             $collection[] = $final_node;
-        } if($featured_count == 0 and $published_count > 0) {
+        } else if($featured_count == 0 and $published_count > 0) {
             $final_node = new StdClass; 
             $final_node->head = null;
             $final_node->children = $published_feeds;
