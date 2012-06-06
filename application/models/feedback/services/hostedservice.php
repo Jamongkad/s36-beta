@@ -124,7 +124,7 @@ class HostedService {
         */
         foreach($featured_feeds as $feat_key => $feat_val) { 
             $final_node = new StdClass;
-            $final_node->head = $feat_key;
+            $final_node->head = $feat_val;
             if(isset($children_collection[$feat_key])) { 
                 $final_node->children = $children_collection[$feat_key];
             }
