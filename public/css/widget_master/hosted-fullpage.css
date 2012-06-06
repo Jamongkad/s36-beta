@@ -92,7 +92,6 @@ div{position:relative;}
 .featured .feedbackSocialTwitter{width:90px;}
 */
 .featured .feedbackSocialFacebook{width:90px;right:20px}
-.featured .feedbackSocialView{font-weight:bold; top:3px; right: 30px;float:right}
 .featured .feedbackDate{position:absolute;bottom:-40px;right:0px;font-weight:bold;color:#7bb5e5;text-shadow:#FFF 0px 1px;}
 
 /* normal */
@@ -116,7 +115,7 @@ div{position:relative;}
 .normal .feedbackTimestamp{padding-right:7px;padding-top:2px;float:left;}
 .normal .feedbackSocialTwitter{width:85px;}
 .normal .feedbackSocialFacebook{width:90px;}
-.normal .feedbackSocialView{font-weight:bold; top:3px; right: 10px;float:right}
+.normal 
 
 .masonry,
 .masonry .masonry-brick {
@@ -167,8 +166,8 @@ div{position:relative;}
 
 .featured .feedbackSocial{height:20px;}
 .normal .feedbackSocial{height:20px;width:280px}
-
-
 .feedbackSocial .feedbackSocialTwitter,
 .feedbackSocial .feedbackSocialFacebook, 
 .feedbackSocial .feedbackSocialView{display:none;}
+
+.feedbackSocialView{font-weight:bold; top:3px; right: 10px;float:right}
