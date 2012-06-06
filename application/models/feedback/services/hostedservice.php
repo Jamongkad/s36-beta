@@ -79,9 +79,9 @@ class HostedService {
     
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
-                $published_feeds[] = $feed->id;
+                $published_feeds[] = $feed;
             } else {
-                $featured_feeds[] = $feed->id;
+                $featured_feeds[] = $feed;
             }
         }
 
@@ -99,6 +99,7 @@ class HostedService {
         }
         
         //Debugger
+        /*
         Helpers::dump("Featured");
         Helpers::dump($featured_feeds);
 
@@ -107,6 +108,7 @@ class HostedService {
 
         Helpers::dump("Children"); 
         Helpers::dump($children_collection);        
+        */
         //pre count for performance.
         $featured_count = count($featured_feeds);
         $published_count = count($published_feeds);
