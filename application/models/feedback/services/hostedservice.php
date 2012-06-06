@@ -108,18 +108,22 @@ class HostedService {
         Helpers::dump($children_collection);
         
         //pre count for performance.
-
         $featured_count = count($featured_feeds);
- 
-        for($i=0; $i < $featured_count && $i < $children_collection; $i++) {
-            $final_node = new StdClass;
-            $final_node->head = $featured_feeds[$i];
 
-            if(isset($children_collection[$i])) {
-                $final_node->children = $children_collection[$i];
-            }
-
+        if($featured_count == 1)  {
+            $final_node = new StdClass; 
+            $final_node->head = $featured_feeds[0];
+            $final_node->children = $published_feeds; 
             $collection[] = $final_node;
+        } else { 
+            for($i=0; $i < $featured_count && $i < $children_collection; $i++) {
+                $final_node = new StdClass;
+                $final_node->head = $featured_feeds[$i];
+                if(isset($children_collection[$i])) {
+                    $final_node->children = $children_collection[$i];
+                }
+                $collection[] = $final_node;
+            }
         }
 
         /*
