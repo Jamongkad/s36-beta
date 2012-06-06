@@ -84,11 +84,6 @@ class HostedService {
                 $featured_feeds[] = $feed->id;
             }
         }
-        Helpers::dump("Featured");
-        Helpers::dump($featured_feeds);
-
-        Helpers::dump("Published");
-        Helpers::dump($published_feeds);
 
         $ctr = 0;            
         foreach($published_feeds as $published_feed) {
@@ -102,6 +97,12 @@ class HostedService {
             }              
             $ctr += 1;
         }
+
+        Helpers::dump("Featured");
+        Helpers::dump($featured_feeds);
+
+        Helpers::dump("Published");
+        Helpers::dump($published_feeds);
 
         Helpers::dump("Children"); 
         Helpers::dump($children_collection);
