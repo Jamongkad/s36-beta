@@ -135,7 +135,9 @@ class HostedService {
         */
         for($i=0; $i < count($featured_feeds); $i++) {
             print_r($featured_feeds[$i]);
-            print_r($children_collection[$i]);
+            if(isset($children_collection[$i])) {
+                print_r($children_collection[$i]);               
+            }
         }
         return $collection;
     }
