@@ -127,7 +127,7 @@ class HostedService {
                 if($feed_key == $child_key) {
                     echo $feed_key."<br/>";     
                 } else {
-                    echo $feed_key."<br/>";
+                    echo "unmatched".$feed_key."<br/>";
                 }
             }
         }
