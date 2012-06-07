@@ -14,15 +14,17 @@ return array(
         //$encrypt = new Crypter;
         $encrypt = new Encryption\Encryption;
 
-        $email = Array('leicaaah18@gmail.com', 'budocski15@gmail.com');
+        $emails = Array('leicaaah18@gmail.com', 'budocski15@gmail.com');
         $password_string = 'p455w0rd';
 
-        $password = crypt($password_string);
-        $affected = DB::table("User", "master")->where_in('email', $email)
-                                               ->update(Array(
-                                                  'password' => $password
-                                                , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
-                                               ));
+        foreach($emails as $email) { 
+            $password = crypt($password_string);
+            $affected = DB::table("User", "master")->where('email', '=', $email)
+                                                   ->update(Array(
+                                                      'password' => $password
+                                                    , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
+                                                   ));
+        }
         return $affected;
     },
 
