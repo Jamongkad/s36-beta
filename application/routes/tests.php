@@ -185,11 +185,11 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'site_id'=> false 
-            , 'filter'=> 'featured'
-            , 'choice'=> 'positive'
-            , 'date'  => false
-            , 'rating' => false
-            , 'category' => false
+            , 'filter'=> false //(new arrivals) all (show only) featured published
+            , 'choice'=> false //positive negative neutral profanity flagged mostcontent
+            , 'date'  => false //date_new date_old
+            , 'rating' => false //5 4 3 2 1
+            , 'category' => false 
             , 'priority' => false //low medium high
             , 'status' => false //new inprogress closed
             , 'company_id' => $company_id
