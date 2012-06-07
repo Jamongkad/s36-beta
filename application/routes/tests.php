@@ -196,7 +196,7 @@ return array(
         );
         $inbox_service->ignore_cache = True;
         $inbox_service->set_filters($filters);
-        $feedback = $inbox_service->present_feedback(true);
+        $feedback = $inbox_service->present_feedback();
         Helpers::dump($feedback);
         $time_end = microtime(True);
         $time = $time_end - $time_start;
