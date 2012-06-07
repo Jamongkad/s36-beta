@@ -186,7 +186,7 @@ return array(
               'limit'=> 10
             , 'site_id'=> false 
             , 'filter'=> 'positive'
-            , 'choice'=> false
+            , 'choice'=> 'featured'
             , 'date'  => false
             , 'rating' => false
             , 'category' => false
