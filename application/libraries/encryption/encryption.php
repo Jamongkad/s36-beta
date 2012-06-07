@@ -19,7 +19,7 @@ class Encryption {
         return base64_decode($data);
     }
 
-    public  function encode($value){ 
+    public  function encrypt($value){ 
         if(!$value){return false;}
         $text = $value;
         $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
@@ -28,7 +28,7 @@ class Encryption {
         return trim($this->safe_b64encode($crypttext)); 
     }
 
-    public function decode($value){
+    public function decrypt($value){
         if(!$value){return false;}
         $crypttext = $this->safe_b64decode($value); 
         $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);

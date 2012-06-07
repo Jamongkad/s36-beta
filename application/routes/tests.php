@@ -310,8 +310,8 @@ return array(
         $encrypt = new Encryption\Encryption;
         $email = "wrm932@gmail.com";
         $password_string = "stuarttan668";
-        $encrypt_string = $encrypt->encode($email."|".$password_string);
-        $decode = $encrypt->decode($encrypt_string);
+        $encrypt_string = $encrypt->encrypt($email."|".$password_string);
+        $decode = $encrypt->decrypt($encrypt_string);
         Helpers::dump($decode);
         /*
         $name = $this->escape("stuart");
