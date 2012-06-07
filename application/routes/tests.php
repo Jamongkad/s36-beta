@@ -306,13 +306,16 @@ return array(
         Helpers::dump($company_info);
     },
 
-    'GET /tests/crypter' => function() {
-        $encrypt = new Crypter;
+    'GET /tests/encrypt' => function() {
+        $encrypt = new Encryption;
         $password_string = "stuarttan668";
         $password = crypt($password_string);
+        Helpers::dump($encrypt);
+        /*
         $name = $this->escape("stuart");
         $email = $this->escape("stuarttan@gmail.com");
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
+        */
     },
 
     'GET /tests/mobile' => function() {
