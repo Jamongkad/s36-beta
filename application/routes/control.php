@@ -49,9 +49,18 @@ return array(
         DB::Table('AuthAssignment', 'master')->insert(Array('itemname' => 'Admin', 'userId' => $user_id));
     },
 
-    'GET /control/fetch_user/(\d+)' => function($userId) {
-        //$encrypt = new Crypter;
+    'GET /control/fetch_user_old/(\d+)' => function($userId) {
+        $encrypt = new Crypter;
+       
+        $user = DB::table('User', 'master')->where('userId', '=', $userId)->first();
+        $string = $encrypt->decrypt($user->encryptstring);
+        $string = (object)explode("|", $string);
+        print_r($string);
+    },
+
+    'GET /control/fetch_user_new/(\d+)' => function($userId) {
         $encrypt = new Encryption\Encryption;
+
         $user = DB::table('User', 'master')->where('userId', '=', $userId)->first();
         $string = $encrypt->decrypt($user->encryptstring);
         $string = (object)explode("|", $string);
