@@ -1,8 +1,9 @@
 <?php namespace Email\Entities;
 use Email\Entities\Types\EmailData;
-use Config;
+use Config, Encryption\Encryption;
 
 class ResendPasswordData extends EmailData {
+
     public $user_data;    
     public $host;
     public $reset_key = "jamongkad";

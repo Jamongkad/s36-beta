@@ -7,16 +7,18 @@ return array(
     },
 
     'GET /control/regenerate_encrypt' => function() {
-        
+         
     },
 
     'GET /control/update_user_pwd' => function() {
         //$encrypt = new Crypter;
         $encrypt = new Encryption\Encryption;
-        $password_string = "theappleclan668";
+
+        $email = 'ryanchua6@gmail.com';
+        $password_string = 'p455w0rd';
+
         $password = crypt($password_string);
 
-        $email = 'theappleclan@gmail.com';
         DB::table("User", "master")->where('email', '=', $email)
                                    ->update(Array(
                                       'password' => $password
@@ -40,8 +42,8 @@ return array(
           , 'fullName' => "Steven Sze"
           , 'title' => 'CEO'
           , 'imId' => 1
-
         );
+
         $user_id = DB::Table('User', 'master')->insert_get_id($opts);
         DB::Table('AuthAssignment', 'master')->insert(Array('itemname' => 'Admin', 'userId' => $user_id));
     },
