@@ -185,7 +185,7 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'site_id'=> false 
-            , 'filter'=> 'all'
+            , 'filter'=> 'positive'
             , 'choice'=> false
             , 'date'  => false
             , 'rating' => false

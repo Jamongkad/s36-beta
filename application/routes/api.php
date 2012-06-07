@@ -27,7 +27,25 @@ return array(
         $input = Input::get();
         $company = $input['subdomain'];
         $token = $input['token'];
-        echo json_encode(Array('msg' => 'request successful', 'data' => Array('feedid' => 12)));
+        $inbox_service = new Feedback\Services\InboxService;
+
+        $filters = array(
+              'limit'=> false
+            , 'site_id'=> false 
+            , 'filter'=> false
+            , 'choice'=> false
+            , 'date'  => false
+            , 'rating' => false
+            , 'category' => false
+            , 'priority' => false //low medium high
+            , 'status' => false //new inprogress closed
+            , 'company_id' => false
+        );
+        $inbox_service->ignore_cache = True;
+        $inbox_service->set_filters($filters);
+        $feedback = $inbox_service->present_feedback();
+        Helpers::dump($feedback);
+        //echo json_encode(Array('msg' => 'request successful', 'data' => Array('feedid' => 12)));
     },
 
     'POST /api/logout' => function() {
