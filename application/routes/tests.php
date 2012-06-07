@@ -311,7 +311,8 @@ return array(
         $email = "wrm932@gmail.com";
         $password_string = "stuarttan668";
         $encrypt_string = $encrypt->encode($email."|".$password_string);
-        Helpers::dump($encrypt_string);
+        $decode = $encrypt->decode($encrypt_string);
+        Helpers::dump($decode);
         /*
         $name = $this->escape("stuart");
         $email = $this->escape("stuarttan@gmail.com");
