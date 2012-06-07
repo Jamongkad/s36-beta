@@ -14,7 +14,7 @@ return array(
         //$encrypt = new Crypter;
         $encrypt = new Encryption\Encryption;
 
-        $email = 'ryanchua6@gmail.com';
+        $email = 'wrm932@gmail.com';
         $password_string = 'p455w0rd';
 
         $password = crypt($password_string);
