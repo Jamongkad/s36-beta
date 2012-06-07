@@ -308,9 +308,10 @@ return array(
 
     'GET /tests/encrypt' => function() {
         $encrypt = new Encryption\Encryption;
+        $email = "wrm932@gmail.com";
         $password_string = "stuarttan668";
-        $password = crypt($password_string);
-        Helpers::dump($encrypt);
+        $encrypt_string = $encrypt->encode($email."|".$password_string);
+        Helpers::dump($encrypt_string);
         /*
         $name = $this->escape("stuart");
         $email = $this->escape("stuarttan@gmail.com");
