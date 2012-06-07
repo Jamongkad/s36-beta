@@ -19,11 +19,12 @@ return array(
 
         $password = crypt($password_string);
 
-        DB::table("User", "master")->where('email', '=', $email)
-                                   ->update(Array(
-                                      'password' => $password
-                                    , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
-                                   ));
+        $affected = DB::table("User", "master")->where('email', '=', $email)
+                                               ->update(Array(
+                                                  'password' => $password
+                                                , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
+                                               ));
+        return $affected;
     },
 
     'GET /control/insert_new_user/(\d+)' => function($companyId) {
