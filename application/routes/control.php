@@ -11,11 +11,10 @@ return array(
     },
 
     'GET /control/update_user_pwd' => function() {
-        //$encrypt = new Crypter;
         $encrypt = new Encryption\Encryption;
 
-        $emails = Array('leicaaah18@gmail.com', 'budocski15@gmail.com');
-        $password_string = 'p455w0rd';
+        $emails = Array('aryann.matusoc@gmail.com');
+        $password_string = 'Aryann08';
 
         foreach($emails as $email) { 
             $password = crypt($password_string);
