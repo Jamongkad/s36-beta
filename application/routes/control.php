@@ -6,12 +6,16 @@ return array(
         $db->create_account();
     },
 
+    'GET /control/regenerate_encrypt' => function() {
+        
+    },
+
     'GET /control/update_user_pwd' => function() {
         $encrypt = new Crypter;
-        $password_string = "vanidavae668";
+        $password_string = "theappleclan668";
         $password = crypt($password_string);
 
-        $email = 'vanidavae@gmail.com';
+        $email = 'theappleclan@gmail.com';
         DB::table("User", "master")->where('email', '=', $email)
                                    ->update(Array(
                                       'password' => $password

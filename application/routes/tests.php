@@ -306,10 +306,13 @@ return array(
         Helpers::dump($company_info);
     },
 
-    'GET /tests/underscore' => function() {
-        $underscore = new Underscore\Underscore;
-        $test = $underscore->map(array(1, 2, 3), function($n) { return $n * 2;  });
-        Helpers::dump($test);
+    'GET /tests/crypter' => function() {
+        $encrypt = new Crypter;
+        $password_string = "stuarttan668";
+        $password = crypt($password_string);
+        $name = $this->escape("stuart");
+        $email = $this->escape("stuarttan@gmail.com");
+        $encrypt_string = $encrypt->encrypt($email."|".$password_string);
     },
 
     'GET /tests/mobile' => function() {
