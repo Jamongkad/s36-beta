@@ -29,7 +29,7 @@ return array(
          
         $encrypt = new Crypter;
         $decrypt_string = $encrypt->decrypt($token);
-        //$params = explode("|", $decrypt_string); 
+        $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
         Helpers::dump($decrypt_string);
         /*
