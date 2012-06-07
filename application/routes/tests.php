@@ -307,7 +307,7 @@ return array(
     },
 
     'GET /tests/encrypt' => function() {
-        $encrypt = new Encryption;
+        $encrypt = new Encryption\Encryption;
         $password_string = "stuarttan668";
         $password = crypt($password_string);
         Helpers::dump($encrypt);
