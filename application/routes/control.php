@@ -14,12 +14,11 @@ return array(
         //$encrypt = new Crypter;
         $encrypt = new Encryption\Encryption;
 
-        $email = 'wrm932@gmail.com';
+        $email = Array('leicaaah18@gmail.com', 'budocski15@gmail.com');
         $password_string = 'p455w0rd';
 
         $password = crypt($password_string);
-
-        $affected = DB::table("User", "master")->where('email', '=', $email)
+        $affected = DB::table("User", "master")->where_in('email', $email)
                                                ->update(Array(
                                                   'password' => $password
                                                 , 'encryptString' => $encrypt->encrypt($email."|".$password_string)
