@@ -31,7 +31,7 @@ return array(
         $decrypt_string = $encrypt->decrypt($token);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
-        Helpers::dump($decrypt_string);
+        Helpers::dump($params);
         /*
         $inbox_service = new Feedback\Services\InboxService;
 
