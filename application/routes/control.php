@@ -43,13 +43,12 @@ return array(
 
         );
         $user_id = DB::Table('User', 'master')->insert_get_id($opts);
-
         DB::Table('AuthAssignment', 'master')->insert(Array('itemname' => 'Admin', 'userId' => $user_id));
     },
 
     'GET /control/fetch_user/(\d+)' => function($userId) {
-        //$encrypt = new Crypter;
-        $encrypt = new Encryption\Encryption;
+        $encrypt = new Crypter;
+        //$encrypt = new Encryption\Encryption;
         $user = DB::table('User', 'master')->where('userId', '=', $userId)->first();
         $string = $encrypt->decrypt($user->encryptstring);
         $string = (object)explode("|", $string);
