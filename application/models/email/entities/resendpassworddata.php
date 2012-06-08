@@ -1,6 +1,6 @@
 <?php namespace Email\Entities;
 use Email\Entities\Types\EmailData;
-use Config, Encryption\Encryption;
+use Config;
 
 class ResendPasswordData extends EmailData {
 
@@ -13,7 +13,7 @@ class ResendPasswordData extends EmailData {
     }
 
     public function reset_key() {
-        $encrypt = new Encryption\Encryption;
+        $encrypt = new \Encryption\Encryption;
         $this->reset_key = $encrypt->encrypt($this->reset_key."|".$this->user_data->userid);
     }
 }

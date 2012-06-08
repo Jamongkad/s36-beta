@@ -31,8 +31,7 @@ return array(
         $decrypt_string = $encrypt->decrypt($token);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
-        print_r($params);
-        /*
+
         $inbox_service = new Feedback\Services\InboxService;
 
         $filters = array(
@@ -52,7 +51,7 @@ return array(
         $feedback = $inbox_service->present_feedback();
         Helpers::dump($feedback);
         //echo json_encode(Array('msg' => 'request successful', 'data' => $feedback));
-        */
+
     },
 
     'POST /api/logout' => function() {

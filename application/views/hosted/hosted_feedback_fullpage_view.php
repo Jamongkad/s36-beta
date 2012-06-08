@@ -134,9 +134,11 @@
                 </div>
             </div>
         </div>
+            <!--this is where the magic starts-->
             <div id="theFeedbacks">
                 <?=$feeds?> 
             </div>
+            <!--this is where the magic starts-->
         </div>
 
         <div class="block" style="height:40px;"></div>
