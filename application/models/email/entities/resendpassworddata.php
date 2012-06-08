@@ -13,7 +13,7 @@ class ResendPasswordData extends EmailData {
     }
 
     public function reset_key() {
-        $encrypt = new \System\Crypter;
+        $encrypt = new Encryption\Encryption;
         $this->reset_key = $encrypt->encrypt($this->reset_key."|".$this->user_data->userid);
     }
 }

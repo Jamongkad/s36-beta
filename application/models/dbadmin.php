@@ -6,7 +6,7 @@ class DBAdmin extends S36DataObject {
     public $perms_data;
 
     private function _extract_personal_data()   {
-       $encrypt = new Crypter;
+       $encrypt = new Encryption\Encryption;
 
        $data = Array(
            'username' => strtolower($this->input_data->username) 

@@ -170,7 +170,7 @@ return array(
     
     'GET /password_reset' => function() { 
         $data = Input::get();
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
 
         $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA
@@ -184,7 +184,7 @@ return array(
 
     'POST /password_reset' => function() {  
         $data = Input::get();
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
 
         $rules = Array(
             'password' => 'required|min:8|confirmed'

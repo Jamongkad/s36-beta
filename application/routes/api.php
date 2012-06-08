@@ -27,7 +27,7 @@ return array(
         $company = Input::get('subdomain');
         $token = Input::get('token');
          
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
         $decrypt_string = $encrypt->decrypt($token);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
@@ -102,7 +102,7 @@ return array(
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
 
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
         $string_params  = Input::get('params');
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
@@ -167,7 +167,7 @@ return array(
 
     'GET /api/create_user' => Array('do' => function() {     
 
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
         $string  = Input::get('params');
         $company_id = Input::get('company_id');
 
@@ -188,7 +188,7 @@ return array(
     'POST /api/create_user' => Array('do' => function() {
 
         $data = Input::get();  
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
 
         $decrypt = $encrypt->decrypt($data['params']);
         $params = explode("|", $decrypt); 

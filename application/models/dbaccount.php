@@ -14,7 +14,7 @@ class DBAccount extends S36DataObject {
 
     public function create_account() {
         
-        $encrypt = new Crypter;
+        $encrypt = new Encryption\Encryption;
         $password_string = "stuarttan668";
         $password = crypt($password_string);
         $name = $this->escape("stuart");
