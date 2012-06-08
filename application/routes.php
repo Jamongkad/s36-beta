@@ -19,13 +19,6 @@ return array(
 	|
 	*/
     'GET /' => function() { 
-        /*
-        $auth = new S36Auth;
-        if($auth->check()) { 
-            return Redirect::to('dashboard');     
-        } 	
-        */
-
         $company_name = Input::get('subdomain');
         
         $company = new Company\Repositories\DBCompany;
@@ -66,7 +59,9 @@ return array(
         $feedback = $feedback->pull_feedback_by_id($id);
         $fb_id = Config::get('application.fb_id');
         $deploy_env = Config::get('application.deploy_env');
-        return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id, 'deploy_env' => $deploy_env));
+        return View::make('hosted/hosted_feedback_single_view', Array(
+            'feedback' => $feedback, 'fb_id' => $fb_id, 'deploy_env' => $deploy_env
+        ));
     },
 
     'GET /login' => function() {
@@ -76,7 +71,9 @@ return array(
         if($auth->check()) { 
             return forward_or_dash();
         } else {
-            return View::of_home_layout()->partial('contents', 'home/login', Array('company' => $company, 'errors' => array(), 'warning' => null));      
+            return View::of_home_layout()->partial('contents', 'home/login', Array(
+                'company' => $company, 'errors' => array(), 'warning' => null
+            ));      
         }		
 
     },
@@ -111,9 +108,9 @@ return array(
                 return forward_or_dash();
             } else {
                 return View::of_home_layout()->partial('contents', 'home/login', Array(  
-                                                                                    'company' => $_GET['subdomain']
-                                                                                  , 'errors' => Array()
-                                                                                  , 'warning' => 'Invalid login - try again.')); 
+                    'company' => $_GET['subdomain']
+                  , 'errors' => Array()
+                  , 'warning' => 'Invalid login - try again.')); 
             } 
         }
     },
