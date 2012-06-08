@@ -13,8 +13,8 @@ return array(
     'GET /control/update_user_pwd' => function() {
         $encrypt = new Encryption\Encryption;
 
-        $emails = Array('stuart@stuarttan.com');
-        $password_string = '*Bo)(&(6';
+        $emails = Array('billykueek@gmail.com');
+        $password_string = 'billykueek668';
 
         foreach($emails as $email) { 
             $password = crypt($password_string);
