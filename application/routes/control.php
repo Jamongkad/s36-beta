@@ -27,6 +27,11 @@ return array(
         return $affected;
     },
 
+    'GET /control/update_bulk_user_pwd/(\d+)' => function($user_id) { 
+        $user = DB::table('User', 'master')->where('userId', '=', $user_id)->first();
+        print_r($user);
+    },
+
     'GET /control/insert_new_user/(\d+)' => function($companyId) {
         $encrypt = new Crypter;
         $password_string = "bimshop668";
