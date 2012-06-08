@@ -28,6 +28,7 @@ return array(
     },
 
     'GET /control/update_bulk_user_pwd/(\d+)' => function($user_id) { 
+        $encrypt = new Encryption\Encryption;
         $user = DB::table('User', 'master')->where('userId', '=', $user_id)->first();        
         $password_string = $user->username."668"; 
         $password = crypt($password_string);
