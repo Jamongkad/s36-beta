@@ -28,8 +28,15 @@ return array(
     },
 
     'GET /control/update_bulk_user_pwd/(\d+)' => function($user_id) { 
-        $user = DB::table('User', 'master')->where('userId', '=', $user_id)->first();
-        print_r($user);
+        $user = DB::table('User', 'master')->where('userId', '=', $user_id)->first();        
+        $password_string = $user->username."668"; 
+        $password = crypt($password_string);
+        $affected = DB::table("User", "master")->where('userId', '=', $user->userid)
+                                               ->update(Array(
+                                                  'password' => $password
+                                                , 'encryptString' => $encrypt->encrypt($user->email."|".$password_string)
+                                               ));
+        return $affected;
     },
 
     'GET /control/insert_new_user/(\d+)' => function($companyId) {
