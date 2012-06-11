@@ -267,17 +267,19 @@ return array(
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
         */
         $options48 = Array(
-            'resolution-units' => Imagine\Image\ImageInterface::RESOLUTION_PIXELSPERINCH
+            'resolution-units' => Imagine\Image\ImageInterface::THUMBNAIL_INSET
           , 'resolution-x' => 48
           , 'resolution-y' => 48
+          , 'quality' => 100
         );
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options48);
 
         $options150 = Array(
-            'resolution-units' => Imagine\Image\ImageInterface::RESOLUTION_PIXELSPERINCH
+            'resolution-units' => Imagine\Image\ImageInterface::THUMBNAIL_INSET
           , 'resolution-x' => 150
           , 'resolution-y' => 150
+          , 'quality' => 100
         );
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options150);
