@@ -255,11 +255,17 @@ return array(
 
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
-        $size = new Imagine\Image\Box(48, 48);
+        $size48 = new Imagine\Image\Box(48, 48);
+        $size48 = new Imagine\Image\Box(150, 150);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
-                ->thumbnail($size, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail.jpg');
+                ->thumbnail($size48, $mode)
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg');
+
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
+                ->thumbnail($size150, $mode)
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
         //Helpers::dump($mode);
     },
 
