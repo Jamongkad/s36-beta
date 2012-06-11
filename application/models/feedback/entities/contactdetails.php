@@ -5,7 +5,20 @@ use Input, DB, UserInfo;
 class ContactDetails { 
 
     private $country_id = 895;
-    private $avatar, $position, $city, $company, $website, $profilelink, $ipaddress, $browser;
+    private $avatar
+          , $position
+          , $city
+          , $company
+          , $website
+          , $profilelink
+          , $ipaddress
+          , $browser
+          , $firstname
+          , $lastname
+          , $company_name
+          , $login
+          , $email
+          , $site_id;
 
     public function insert_contact() { 
         if ($country_input = Input::get('country')) {
