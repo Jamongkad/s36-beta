@@ -1,4 +1,4 @@
-<?php 
+<?php namespace Profile\Services;
 
 use Resize;
 

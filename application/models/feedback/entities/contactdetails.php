@@ -1,6 +1,6 @@
 <?php namespace Feedback\Entities;
 
-use Input, DB, UserInfo, ProfileImage;
+use Input, DB, UserInfo, Profile\Services\ProfileImage;
 
 class ContactDetails { 
 

@@ -26,7 +26,7 @@ return array(
     },
 
     'POST /widget/form/upload' => function() { 
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new Profile\Services\ProfileImage();
         $profile_img->upload();
     },
 );
