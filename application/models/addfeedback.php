@@ -32,6 +32,7 @@ class AddFeedback {
         $company  = "";
         $website  = "";
         $profilelink = "";
+
         //fucking js integers
         //TODO: this could be better...if Feedback is not bad then fill out these fields for data insertion.
         if ($avatar == '0' and Input::get('rating') > 2) {

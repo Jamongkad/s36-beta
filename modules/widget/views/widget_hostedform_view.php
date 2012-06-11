@@ -286,7 +286,7 @@
                                 <table id="form_complete" class="form_complete" width="100%" border="0" cellpadding="4" cellspacing="4">
                                     <tr><td><input type="text" id="your_city" class="regular-text required" title="City" value="" /></td><td>
                                     <select id="your_country" class="regular-select required" title="Country">
-                                    <option>Country</option>
+                                        <option>Country</option>
                                         <?foreach($country as $countries):?>
                                             <option value="<?=$countries->code?>"><?=$countries->name?></option>
                                         <?endforeach?>         
