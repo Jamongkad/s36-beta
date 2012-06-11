@@ -262,7 +262,9 @@ return array(
           , 'resolution-y' => 48
           , 'quality' => 100
         );
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
+
+        $file_name = '20121106045457-tumblr_l5nczwRPSn1qzmxnbo1_500.jpg';
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options48);
 
         $options150 = Array(
@@ -271,9 +273,9 @@ return array(
           , 'resolution-y' => 150
           , 'quality' => 100
         );
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options150);
-        //Helpers::dump($mode);
+
     },
 
     'GET /tests/submissionservice' => function() {
