@@ -94,10 +94,10 @@ return array(
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
-    'POST /api/submit_feedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
+    'POST /api/submit_feedback' => Array('do' => function() { 
         //$addfeedback = new AddFeedback;
         //$addfeedback->create_feedback_with_profile(); 
-        echo "pwet";
+        return true;
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
