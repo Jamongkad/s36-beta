@@ -165,3 +165,15 @@ div{position:relative;}
 .normal .feedbackSocial{height:20px;}
 .feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook, .feedbackSocialView{display:none;}
 .feedbackSocialView a { color: #87CEFA;/*#A4D3EE;*/ }
+
+img.small-avatar {
+    display:block;    
+    margin-left:auto;
+    margin-right:auto;
+}
+
+img.large-avatar {
+    display:block;    
+    margin-left:auto;
+    margin-right:auto; 
+}
