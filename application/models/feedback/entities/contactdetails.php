@@ -7,9 +7,8 @@ class ContactDetails {
 
     public function insert_contact() { 
         if ($country_input = Input::get('country')) {
-            print_r($country_input);
-            //$country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
-            //$this->country_id = $country->countryid;
+            $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
+            $this->country_id = $country->countryid;
         }
     }
 }
