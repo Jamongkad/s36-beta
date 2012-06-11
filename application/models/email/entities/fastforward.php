@@ -3,7 +3,7 @@
 use Email\Entities\Types\EmailFixture;
 use View;
 
-class FastForward extends EmailFixture{
+class FastForward extends EmailFixture {
 
     private $email_data;
     private $subject = "36Stories: Fast Forward";

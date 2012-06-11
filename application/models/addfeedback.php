@@ -13,10 +13,10 @@ class AddFeedback {
         $profile_img = new Widget\ProfileImage();
     
         //fuck naive assumption...
-        $countryId = 895;
+        $country_id = 895;
         if ($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
-            $countryId = $country->countryid;
+            $country_id = $country->countryid;
         }
 
         $company_id = Input::get('company_id');
@@ -49,7 +49,7 @@ class AddFeedback {
           , 'firstName' => Input::get('first_name')
           , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
-          , 'countryId' => $countryId
+          , 'countryId' => $country_id
           , 'avatar'    => $avatar
           , 'position'  => $position
           , 'city'      => $city

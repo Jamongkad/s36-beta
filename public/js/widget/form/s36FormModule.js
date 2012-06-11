@@ -84,7 +84,7 @@ var S36Form = new function() {
         length = typeof length !== 'undefined' ? length : 'short';
 
         if(length === 'short') { 
-            /* just incase someone there changes his mind again
+            /* just incase someone out there changes his mind again
             $('#rate_e').click(function(){ that.slide_track_to('-1px'  ,'5'); });
             $('#rate_g').click(function(){ that.slide_track_to('+100px','4'); });
             $('#rate_a').click(function(){ that.slide_track_to('+189px','3'); });

@@ -260,6 +260,11 @@ return array(
         Helpers::dump($mode);
     },
 
+    'GET /tests/submissionservice' => function() {
+        $contact = new Feedback\Entities\ContactDetails; 
+        Helpers::dump($contact);
+    },
+
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_name);
