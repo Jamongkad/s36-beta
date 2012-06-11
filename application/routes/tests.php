@@ -255,27 +255,20 @@ return array(
 
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
-
-        $options48 = Array(
-            'resolution-units' => Imagine\Image\ImageInterface::THUMBNAIL_INSET
-          , 'resolution-x' => 48
-          , 'resolution-y' => 48
-          , 'quality' => 100
-        );
+        $size48 = new Imagine\Image\Box(48, 48);
+        $size150 = new Imagine\Image\Box(150, 150);
+        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         $file_name = '20121106045457-tumblr_l5nczwRPSn1qzmxnbo1_500.jpg';
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options48);
 
-        $options150 = Array(
-            'resolution-units' => Imagine\Image\ImageInterface::THUMBNAIL_INSET
-          , 'resolution-x' => 150
-          , 'resolution-y' => 150
-          , 'quality' => 100
-        );
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options150);
+                ->thumbnail($size48, $mode)
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg');
 
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
+                ->thumbnail($size150, $mode)
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
+        //Helpers::dump($mode);
     },
 
     'GET /tests/submissionservice' => function() {
