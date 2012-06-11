@@ -257,7 +257,7 @@ return array(
         $imagine = new Imagine\Gd\Imagine();
         $size = new Imagine\Image\Box(48, 48);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/2012110604125349136_1203804008_7591_n.jpg')
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
                 ->thumbnail($size, $mode)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail.jpg');
         //Helpers::dump($mode);
