@@ -3,6 +3,7 @@
 use Input, DB;
 
 class ContactDetails { 
+
     private $country_id = 895;
 
     public function insert_contact() { 
