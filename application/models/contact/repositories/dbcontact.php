@@ -383,7 +383,7 @@ class DBContact extends S36DataObject {
 
     public function delete_contact($email) {
 
-        $profile_img = new \Widget\ProfileImage();
+        $profile_img = new Profile\Services\ProfileImage();
         $avatars = $this->get_contact_info($email, $multiple=true);
 
         foreach($avatars as $avatar) {

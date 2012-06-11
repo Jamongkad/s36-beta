@@ -113,7 +113,7 @@ class DBAdmin extends S36DataObject {
 
     public function delete_admin($id) {
         $admin_details = $this->fetch_admin_details_by_id($id);
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new Profile\Services\ProfileImage();
         $profile_img->remove_profile_photo($admin_details->avatar);
         DB::Table('User', 'master')->where('userId', '=', $id)->delete();
         DB::Table('AuthAssignment', 'master')->where('userid', '=', $id)->delete();

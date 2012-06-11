@@ -114,7 +114,7 @@ return array(
      'POST /admin/delete_existing_avatar' => function() {
          $data = Input::get(); 
          $avatar = $data['avatar'];
-         $profile_img = new Widget\ProfileImage();
+         $profile_img = new Profile\Services\ProfileImage();
          $profile_img->remove_profile_photo($avatar);
      },
 

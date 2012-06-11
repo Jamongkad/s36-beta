@@ -21,7 +21,7 @@ return array(
 
     'POST /widget/form/crop' => function() {
         $img_upload = (object)Input::get();
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new Profile\Services\ProfileImage();
         $profile_img->crop($img_upload);     
     },
 
