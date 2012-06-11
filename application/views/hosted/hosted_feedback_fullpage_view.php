@@ -35,9 +35,9 @@
 
         $(document).delegate(".feedbackAuthorAvatar", "hover", function(e) {
             if (e.type === "mouseenter")  {
-                $('.large-avatar', this).show();
+                $('img.large-avatar', this).show();
             } else { 
-                $('.large-avatar', this).hide();
+                $('img.large-avatar', this).hide();
             }
         });
 
