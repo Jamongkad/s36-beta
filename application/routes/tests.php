@@ -256,7 +256,7 @@ return array(
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
         $size48 = new Imagine\Image\Box(48, 48);
-        $size48 = new Imagine\Image\Box(150, 150);
+        $size150 = new Imagine\Image\Box(150, 150);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
