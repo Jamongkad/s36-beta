@@ -101,13 +101,14 @@ class ProfileImage {
         if($ophoto != 0){
             $this->remove_profile_photo($ophoto);
         }
-
+        
+        /*
         if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
             $extension = ".jpg";
         }else{
             $extension = strtolower(strrchr($src, '.'));
         }
-
+        
         switch($extension) {
             case '.jpg':
             case '.jpeg':
@@ -127,7 +128,7 @@ class ProfileImage {
                 $img_r48 = false;
             break;
         }
-                    
+                     
         $dst_r150 = ImageCreateTrueColor( $this->targ_w_large, $this->targ_h_large ); 
         $dst_r48 = ImageCreateTrueColor( $this->targ_w_small, $this->targ_h_small ); 
         
@@ -136,6 +137,7 @@ class ProfileImage {
         
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
+        */
 
         echo $this->date."-cropped.jpg";  
     }
