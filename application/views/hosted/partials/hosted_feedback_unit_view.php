@@ -11,7 +11,7 @@
                         <?endif?>
                     <?else:?>
                         <?if($feed->avatar):?>
-                            <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>" width="48" height="48" class="small-avatar"/>
+                            <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>" width="48" height="48" class="small-avatar"/>
                             <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
                         <?else:?>
                             <img src="/img/48x48-blank-avatar.jpg" width="48" height="48" />

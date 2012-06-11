@@ -255,10 +255,9 @@ return array(
 
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
-        Helpers::dump($imagine);
-
-        $size = new Imagine\Image\Box(40, 40);
-        Helpers::dump($size);
+        $size = new Imagine\Image\Box(48, 48);
+        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+        Helpers::dump($mode);
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
