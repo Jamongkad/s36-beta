@@ -18,7 +18,6 @@ return array(
         return $js->js_output();
     },
     //end of these muthafuckas
-
     'POST /widget/form/crop' => function() {
         $img_upload = (object)Input::get();
         $profile_img = new Profile\Services\ProfileImage();
