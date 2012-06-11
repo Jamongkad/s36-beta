@@ -27,7 +27,7 @@ class ContactDetails {
         }
 
         if ($this->avatar == '0' and Input::get('rating') > 2) {
-            //$avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
+            //$this->avatar = $profile_img->auto_resize(Input::get('orig_image_dir'), Input::get('login_type'));
             $this->position = Input::get('position');
             $this->city    = Input::get('city');
             $this->company = Input::get('company');
