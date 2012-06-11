@@ -269,7 +269,6 @@ return array(
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
                 ->thumbnail($size150, $mode)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options);
-        //Helpers::dump($mode);
     },
 
     'GET /tests/submissionservice' => function() {

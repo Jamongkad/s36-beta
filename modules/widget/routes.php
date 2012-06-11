@@ -26,14 +26,8 @@ return array(
     },
 
     'POST /widget/form/upload' => function() { 
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new ProfileImage();
         $profile_img->upload();
-    },
-
-    'GET /widget/profile' => function() {
-        $tests = (object)Input::get();
-        $profile_img = new Widget\ProfileImage($tests);
-        Helpers::show_data($profile_img);    
     },
 );
 
