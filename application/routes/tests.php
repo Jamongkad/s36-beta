@@ -255,17 +255,7 @@ return array(
 
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
-        $size48 = new Imagine\Image\Box(48, 48);
-        $size150 = new Imagine\Image\Box(150, 150);
-        /*
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
-                ->thumbnail($size48, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg');
 
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
-                ->thumbnail($size150, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
-        */
         $options48 = Array(
             'resolution-units' => Imagine\Image\ImageInterface::THUMBNAIL_INSET
           , 'resolution-x' => 48

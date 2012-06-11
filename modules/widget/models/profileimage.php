@@ -176,13 +176,14 @@ class ProfileImage {
                 $error = 'Please Upload Image Files Only'.$_FILES[$file]['type'];
         }else{
                                 
-                $filename = date("Ydmhis").$_FILES[$file]['name'];
+                $filename = date("Ydmhis").'-'.$_FILES[$file]['name'];
                 $filedir = "uploaded_tmp/".$filename;
                 $maxwidth = 350;
                 $maxheight = 230;
                 $move = move_uploaded_file($_FILES[$file]['tmp_name'], "/var/www/s36-upload-images/uploaded_tmp/".$filename);
                 if($move){    
                      //start image resizing..
+                     //Change this...
                      $resizeObj = new Resize($filedir);
                      $resizeObj->resizeImage($maxwidth, $maxheight, 'auto');
                      $resizeObj->saveImage($filedir, 100);
