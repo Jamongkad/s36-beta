@@ -260,14 +260,15 @@ return array(
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         $file_name = '20121106045457-tumblr_l5nczwRPSn1qzmxnbo1_500.jpg';
+        $options = Array('quality' => 100);
 
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
                 ->thumbnail($size48, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg');
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options);
 
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
                 ->thumbnail($size150, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options);
         //Helpers::dump($mode);
     },
 
