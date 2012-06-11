@@ -257,8 +257,7 @@ return array(
         $imagine = new Imagine\Gd\Imagine();
         $size48 = new Imagine\Image\Box(48, 48);
         $size150 = new Imagine\Image\Box(150, 150);
-        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-
+        /*
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
                 ->thumbnail($size48, $mode)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg');
@@ -266,6 +265,22 @@ return array(
         $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
                 ->thumbnail($size150, $mode)
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg');
+        */
+        $options48 = Array(
+            'resolution-units' => Imagine\Image\ImageInterface::RESOLUTION_PIXELSPERINCH
+          , 'resolution-x' => 48
+          , 'resolution-y' => 48
+        );
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options48);
+
+        $options150 = Array(
+            'resolution-units' => Imagine\Image\ImageInterface::RESOLUTION_PIXELSPERINCH
+          , 'resolution-x' => 150
+          , 'resolution-y' => 150
+        );
+        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/20121106041741house_stark.jpg')
+                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options150);
         //Helpers::dump($mode);
     },
 
