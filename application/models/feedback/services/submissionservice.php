@@ -24,7 +24,7 @@ class SubmissionService {
         $this->dbh->beginTransaction();
 
         $contact_info = $this->contact->read_info();
-        print_r($contact_info)
+        print_r($contact_info);
         print_r($this->dbcontact);
 
         $this->dbh->commit();
