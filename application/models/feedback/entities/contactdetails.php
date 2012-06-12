@@ -54,5 +54,9 @@ class ContactDetails {
           , 'ipaddress'   => $this->userinfo->get_ip_long()
           , 'browser' => $this->userinfo->browser()->getBrowser()
         );
+
+        //return successful database insert code here
+        print_r($this->contact_data);
+        return true;
     }
 }
