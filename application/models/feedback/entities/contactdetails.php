@@ -31,6 +31,7 @@ class ContactDetails extends FeedbackDataTypes {
         
         //if no cropped photo and feedback rating is above 2
         if ($avatar == '0' and Input::get('rating') > 2) {
+
             $orig_image_dir = Input::get('orig_image_dir');
             
             if(strpos($orig_image_dir, 'blank-avatar') !== false) {
