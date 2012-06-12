@@ -23,7 +23,7 @@ class SubmissionService {
     public function perform() {
         $this->dbh->beginTransaction();
 
-        $contact_info = $this->contact->read_info();
+        $contact_info = $this->contact->read_data();
         print_r($contact_info);
         print_r($this->dbcontact);
 

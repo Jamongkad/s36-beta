@@ -275,7 +275,7 @@ return array(
         $contact = new Feedback\Entities\ContactDetails;
         $addfeedback = new Feedback\Services\SubmissionService($contact);
         $result = $addfeedback->perform();
-        Helpers::dump($result);
+        print_r($result);
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
