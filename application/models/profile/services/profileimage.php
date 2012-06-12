@@ -1,6 +1,7 @@
 <?php namespace Profile\Services;
 
 use Resize;
+use Imagine;
 
 class ProfileImage {
 
