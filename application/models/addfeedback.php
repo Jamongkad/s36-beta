@@ -10,7 +10,7 @@ class AddFeedback {
         $bw = new DBBadWords;
         $mt = new DBMetric;
         $userinfo = new UserInfo;
-        $profile_img = new Widget\ProfileImage();
+        $profile_img = new Profile\Services\ProfileImage();
     
         //fuck naive assumption...
         $country_id = 895;

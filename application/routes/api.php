@@ -95,10 +95,10 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        $addfeedback = new Feedback\Services\SubmissionService;
-        //$addfeedback = new AddFeedback;
-        //$addfeedback->create_feedback_with_profile(); 
-        return true;
+        //$addfeedback = new Feedback\Services\SubmissionService;
+        $addfeedback = new AddFeedback;
+        $addfeedback->create_feedback_with_profile(); 
+        //return true;
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
