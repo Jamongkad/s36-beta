@@ -95,7 +95,9 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        $addfeedback = new Feedback\Services\SubmissionService;
+        $contact = new Feedback\Entities\ContactDetails;
+        $addfeedback = new Feedback\Services\SubmissionService($contact);
+        Helpers::dump($addfeedback);
         //$addfeedback = new AddFeedback;
         //$addfeedback->create_feedback_with_profile(); 
         return true;

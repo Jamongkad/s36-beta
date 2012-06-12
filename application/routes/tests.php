@@ -329,11 +329,6 @@ return array(
         $encrypt_string = $encrypt->encrypt($email."|".$password_string);
         $decode = $encrypt->decrypt($encrypt_string);
         Helpers::dump($decode);
-        /*
-        $name = $this->escape("stuart");
-        $email = $this->escape("stuarttan@gmail.com");
-        $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        */
     },
 
     'GET /tests/mobile' => function() {
