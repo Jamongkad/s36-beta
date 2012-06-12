@@ -1,5 +1,5 @@
 <?php namespace Feedback\Entities\Types;
 
 abstract class FeedbackDataTypes {
-    public function read_data()    
+    public function read_data() {}
 }
