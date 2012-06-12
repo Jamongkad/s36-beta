@@ -44,7 +44,7 @@ class ContactDetails {
           , 'lastName'  => Input::get('last_name')
           , 'email'     => Input::get('email')
           , 'countryId' => $country_id
-          , 'avatar'    => $this->avatar
+          , 'avatar'    => $avatar
           , 'position'  => $this->position
           , 'city'      => $this->city
           , 'companyName' => $this->company
