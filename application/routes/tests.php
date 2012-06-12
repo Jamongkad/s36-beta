@@ -272,9 +272,9 @@ return array(
     },
 
     'GET /tests/submissionservice' => function() {
-        $contact = new Feedback\Entities\ContactDetails; 
-        $contact->insert_contact();
-        Helpers::dump($contact);
+        $contact = new Feedback\Entities\ContactDetails;
+        $addfeedback = new Feedback\Services\SubmissionService($contact);
+        Helpers::dump($addfeedback);
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 

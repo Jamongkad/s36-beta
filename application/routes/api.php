@@ -95,12 +95,11 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        $contact = new Feedback\Entities\ContactDetails;
-        $addfeedback = new Feedback\Services\SubmissionService($contact);
-        Helpers::dump($addfeedback);
-        //$addfeedback = new AddFeedback;
-        //$addfeedback->create_feedback_with_profile(); 
-        return true;
+        //$contact = new Feedback\Entities\ContactDetails;
+        //$addfeedback = new Feedback\Services\SubmissionService($contact);
+        $addfeedback = new AddFeedback;
+        $addfeedback->create_feedback_with_profile(); 
+
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 

@@ -87,9 +87,14 @@
 <!-- end of facebook script -->
 
 <!-- 36Stories DataExchange URLs -->
+<?if(Input::get('test')):?>
+    <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/tests/submissionservice')?>"></span>
+<?else:?>
+     <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
+<?endif?>
+
 <span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
 <span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
-<span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
 <span id="ajax-step-metrics" hrefaction="<?=URL::to('/api/check_step')?>"></span>
 <!-- end of 36Stories script -->
 
