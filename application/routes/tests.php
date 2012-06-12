@@ -271,7 +271,7 @@ return array(
                 ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options);
     },
 
-    'GET /tests/submissionservice' => function() {
+    'POST /tests/submissionservice' => function() {
         $contact = new Feedback\Entities\ContactDetails;
         $addfeedback = new Feedback\Services\SubmissionService($contact);
         Helpers::dump($addfeedback);
