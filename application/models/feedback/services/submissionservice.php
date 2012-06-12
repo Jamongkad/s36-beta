@@ -14,4 +14,8 @@ class SubmissionService {
     public function __construct(ContactDetails $contact) {
         $this->contact = $contact;     
     }
+
+    public function perform() {
+        $this->contact->insert_contact();
+    }
 }
