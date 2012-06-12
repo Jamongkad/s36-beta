@@ -11,8 +11,8 @@ class ProfileImage {
     public function __construct() { 
 
         $this->date = date("mdyhis");
-        $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
         $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
+        $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
  
         $this->targ_w_large = 150;
         $this->targ_h_large = 150;
@@ -52,22 +52,14 @@ class ProfileImage {
                 file_put_contents($file_name, file_get_contents($file_src));
             }
         } 
-
-        $cropped_photo_nm = $this->date."-cropped.jpg";
-        $new_48_pic  = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$cropped_photo_nm;
-        $new_150_pic = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$cropped_photo_nm;
-        $this->_save_pic(48, 48, $file_name, $new_48_pic);
-        $this->_save_pic(150, 150, $file_name, $new_150_pic);
+        
+        $this->_save_pic($file_name, $this->dir48, 48, 48);
+        $this->_save_pic($file_name, $this->dir150, 150, 150);
         @unlink($file_name);
-        return $cropped_photo_nm; 
+        return $this->date."-cropped.jpg";
     }
 
-    private function _save_pic($width, $height, $file_name, $new_file_name) { 
-        /*
-        $resizeObj = new Resize($file_name);
-        $resizeObj->resizeImage($width, $height);
-        $resizeObj->saveImage($new_file_name); 
-        */
+    private function _save_pic($file_name, $new_file_name, $width, $height) { 
         $imagine = new Imagine\Gd\Imagine();
         $size = new Imagine\Image\Box($width, $height);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
@@ -102,7 +94,7 @@ class ProfileImage {
         if($ophoto != 0){
             $this->remove_profile_photo($ophoto);
         }
-
+        /*
         if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
             $extension = ".jpg";
         }else{
@@ -137,8 +129,22 @@ class ProfileImage {
         
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
-
+        */
+        $this->_crop_pic($this->dir150, $x, $y, $wd, $ht);
+        $this->_crop_pic($this->dir48, $x, $y, $wd, $ht);
         echo $this->date."-cropped.jpg";  
+    }
+
+    private function _crop_pic($file_name, $x, $y, $width, $height) {
+        $imagine = new Imagine\Gd\Imagine();
+        $point = new Imagine\Image\Point($x, $y);
+        $size = new Imagine\Image\Box($width, $height);
+        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+        $options = Array('quality' => 100);
+        $imagine->open($file_name)
+                ->crop($point, $size)
+                ->save($file_name, $options); 
     }
 
     public static function upload() { 
