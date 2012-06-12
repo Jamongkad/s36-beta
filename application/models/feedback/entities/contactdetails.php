@@ -33,7 +33,8 @@ class ContactDetails extends FeedbackDataTypes {
         if ($avatar == '0' and Input::get('rating') > 2) {
 
             $orig_image_dir = Input::get('orig_image_dir');
-            
+
+            //return 0 if avatar is blank.
             if(strpos($orig_image_dir, 'blank-avatar') !== false) {
                 $avatar = '0';      
             } else {
