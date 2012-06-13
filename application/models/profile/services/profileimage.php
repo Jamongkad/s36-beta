@@ -134,8 +134,9 @@ class ProfileImage {
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
         */
-        $this->_crop_pic($src, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
-        $this->_crop_pic($src, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
+        $image_create = $this->_create_image($src);
+        $this->_crop_pic($image_create, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
+        $this->_crop_pic($image_create, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
         echo $this->date."-cropped.jpg";  
     }
 
@@ -151,6 +152,29 @@ class ProfileImage {
                 ->crop($point, $size)
                 ->resize($resize)
                 ->save($file_name, $options); 
+    }
+
+    private function _create_image($image_src) {
+
+        $extension = strtolower(strrchr($image_src, '.')); 
+
+        switch($extension) {
+            case '.jpg':
+            case '.jpeg':
+                $img = @imagecreatefromjpeg($src);
+                break;
+            case '.gif':
+                $img_ = @imagecreatefromgif($src);
+                break;
+            case '.png':
+                $img = @imagecreatefrompng($src);
+                break;
+            default:
+                $img = false;
+            break;
+        }
+
+        return $img; 
     }
 
     public static function upload() { 
