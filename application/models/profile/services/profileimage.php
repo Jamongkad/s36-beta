@@ -141,8 +141,13 @@ class ProfileImage {
         $size = new Imagine\Image\Box($width, $height);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
+        $resize150 = new Imagine\Image\Box(150, 150);
+        $resize48 = new Imagine\Image\Box(48, 48);
+
         $options = Array('quality' => 100);
+
         $imagine->open($source_file_name)
+                ->resize($resize48)
                 ->crop($point, $size)
                 ->save($file_name, $options); 
     }
