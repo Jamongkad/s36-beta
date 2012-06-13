@@ -158,7 +158,6 @@ class ProfileImage {
 
         //this little function grabs the extension
         $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
-        @unlink($file_name);
         $extension = $this->_extract_image_extension($image_src);
 
         switch($extension) {
