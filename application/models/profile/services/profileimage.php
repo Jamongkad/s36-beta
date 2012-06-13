@@ -180,6 +180,7 @@ class ProfileImage {
             file_put_contents($file_name, file_get_contents($image_src));
             return $file_name;
         } 
+
     }
 
     private function _extract_image_extension($image_src) {
