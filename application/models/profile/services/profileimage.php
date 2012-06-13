@@ -146,9 +146,9 @@ class ProfileImage {
 
         $options = Array('quality' => 100);
 
-        $imagine->open($source_file_name)
-                ->resize($resize48)
+        $imagine->open($source_file_name) 
                 ->crop($point, $size)
+                ->resize($resize48)
                 ->save($file_name, $options); 
     }
 
