@@ -84,7 +84,11 @@ class ProfileImage {
         $src = null;
 
         if($login_type == 'fb') {
-            $src = $img_src;     
+            $url = get_all_redirects($img_src);
+            if($url) {
+                //For Facebook url redirects...
+                $src = $url[0];
+            }         
         }
         
         if($login_type == '36' || preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", strtolower($img_src), $match)) {  
