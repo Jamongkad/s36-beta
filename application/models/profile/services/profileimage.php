@@ -156,18 +156,19 @@ class ProfileImage {
 
     private function _create_image($image_src) {
 
-        $extension = strtolower(strrchr($image_src, '.')); 
+        //this little function grabs the extension
+        $extension = $this->_extract_image_extension($image_src);
 
         switch($extension) {
             case '.jpg':
             case '.jpeg':
-                $img = @imagecreatefromjpeg($src);
+                $img = @imagecreatefromjpeg($image_src);
                 break;
             case '.gif':
-                $img_ = @imagecreatefromgif($src);
+                $img_ = @imagecreatefromgif($image_src);
                 break;
             case '.png':
-                $img = @imagecreatefrompng($src);
+                $img = @imagecreatefrompng($image_src);
                 break;
             default:
                 $img = false;
@@ -175,6 +176,10 @@ class ProfileImage {
         }
 
         return $img; 
+    }
+
+    private function _extract_image_extension($image_src) {
+        return strtolower(strrchr($image_src, '.')); 
     }
 
     public static function upload() { 
