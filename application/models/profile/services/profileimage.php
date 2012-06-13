@@ -88,11 +88,12 @@ class ProfileImage {
             if($url) {
                 //For Facebook url redirects...
                 $src = $url[0];
+                $image = $this->_create_image($src);
             }         
         }
         
         if($login_type == '36' || preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", strtolower($img_src), $match)) {  
-            $src = '/var/www/s36-upload-images'.$img_src;
+            $image = '/var/www/s36-upload-images'.$img_src;
         }        
    
         if($ophoto != 0){
@@ -134,9 +135,9 @@ class ProfileImage {
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
         */
-        $image_create = $this->_create_image($src);
-        $this->_crop_pic($image_create, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
-        $this->_crop_pic($image_create, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
+        $this->_crop_pic($image, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
+        $this->_crop_pic($image, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
+        @unlink($image);
         echo $this->date."-cropped.jpg";  
     }
 
