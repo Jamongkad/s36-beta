@@ -157,7 +157,7 @@ class ProfileImage {
     private function _create_image($image_src) {
 
         //this little function grabs the extension
-        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+        $file_name = "/var/www/s36-upload-images/uploaded_tmp/sample.jpg";      
         $extension = $this->_extract_image_extension($image_src);
 
         switch($extension) {
