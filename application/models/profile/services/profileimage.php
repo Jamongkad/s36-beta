@@ -174,8 +174,13 @@ class ProfileImage {
                 $img = false;
             break;
         }
+        
+        if($img) {
+            $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+            file_put_contents($file_name, file_get_contents($image_src));
+            return $file_name;
+        } 
 
-        return $img; 
     }
 
     private function _extract_image_extension($image_src) {
