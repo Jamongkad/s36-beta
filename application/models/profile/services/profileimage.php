@@ -88,7 +88,7 @@ class ProfileImage {
             if($url) {
                 //For Facebook url redirects...
                 $src = $url[0];
-                $image = $this->_create_image($src);
+                $image = $this->_verify_image($src);
             }         
         }
         
@@ -99,42 +99,6 @@ class ProfileImage {
         if($ophoto != 0){
             $this->remove_profile_photo($ophoto);
         }
-        /*
-        if( strstr(strtolower($src),"graph.facebook.com") || strstr(strtolower($src), "media.linkedin.com") ){
-            $extension = ".jpg";
-        }else{
-            $extension = strtolower(strrchr($src, '.'));
-        }
-        
-        switch($extension) {
-            case '.jpg':
-            case '.jpeg':
-                $img_r150 = @imagecreatefromjpeg($src);
-                $img_r48 = @imagecreatefromjpeg($src);
-                break;
-            case '.gif':
-                $img_r150 = @imagecreatefromgif($src);
-                $img_r48 = @imagecreatefromgif($src);
-                break;
-            case '.png':
-                $img_r150 = @imagecreatefrompng($src);
-                $img_r48 = @imagecreatefrompng($src);
-                break;
-            default:
-                $img_r150 = false;
-                $img_r48 = false;
-            break;
-        }
-                     
-        $dst_r150 = ImageCreateTrueColor( $this->targ_w_large, $this->targ_h_large ); 
-        $dst_r48 = ImageCreateTrueColor( $this->targ_w_small, $this->targ_h_small ); 
-        
-        imagecopyresampled($dst_r150, $img_r150, 0, 0, $x, $y, $this->targ_w_large, $this->targ_h_large, $wd, $ht);
-        imagejpeg($dst_r150, $this->dir150, $this->jpeg_quality);
-        
-        imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
-        imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
-        */
         $this->_crop_pic($image, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
         $this->_crop_pic($image, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
         echo $this->date."-cropped.jpg";  
@@ -154,7 +118,7 @@ class ProfileImage {
                 ->save($file_name, $options); 
     }
 
-    private function _create_image($image_src) {
+    private function _verify_image($image_src) {
 
         //this little function grabs the extension
         $extension = $this->_extract_image_extension($image_src);

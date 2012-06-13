@@ -23,7 +23,8 @@ class SubmissionService {
 
         $contact_info = $this->contact->read_data();
         print_r($contact_info);
-        print_r($this->dbcontact);
+        $contact_id = $this->dbcontact->insert_new_contact($contact_info);
+        print_r($contact_id);
 
         $this->dbh->commit();
     }
