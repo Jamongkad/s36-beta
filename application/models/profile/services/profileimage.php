@@ -130,25 +130,22 @@ class ProfileImage {
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
         */
-        $this->_crop_pic($src, $this->dir150, $x, $y, $wd, $ht);
-        $this->_crop_pic($src, $this->dir48, $x, $y, $wd, $ht);
+        $this->_crop_pic($src, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
+        $this->_crop_pic($src, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
         echo $this->date."-cropped.jpg";  
     }
 
-    private function _crop_pic($source_file_name, $file_name, $x, $y, $width, $height) {
+    private function _crop_pic($source_file_name, $file_name, $x, $y, $width, $height, $resize) {
         $imagine = new Imagine\Gd\Imagine();
         $point = new Imagine\Image\Point($x, $y);
         $size = new Imagine\Image\Box($width, $height);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
-        $resize150 = new Imagine\Image\Box(150, 150);
-        $resize48 = new Imagine\Image\Box(48, 48);
-
         $options = Array('quality' => 100);
 
         $imagine->open($source_file_name) 
                 ->crop($point, $size)
-                ->resize($resize48)
+                ->resize($resize)
                 ->save($file_name, $options); 
     }
 
