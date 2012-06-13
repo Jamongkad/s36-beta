@@ -447,7 +447,6 @@ class DBContact extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->bindParam(':email', $email, PDO::PARAM_STR); 
         $sth->execute();
-
     }
 
 }

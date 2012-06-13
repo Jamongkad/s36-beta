@@ -11,10 +11,12 @@ class SubmissionService {
    
     private $company_id;
 
-    public function __construct(ContactDetails $contact) {
+    public function __construct(ContactDetails $contact, FeedbackDetails $feedback_details) {
         $this->company_id = Input::get('company_id');
-        $this->dbh = DB::connection('master')->pdo;
         $this->contact = $contact;     
+        $this->feedback_details = $feedback_details;
+
+        $this->dbh = DB::connection('master')->pdo;
         $this->dbcontact = new DBContact; 
     }
 
@@ -23,8 +25,10 @@ class SubmissionService {
 
         $contact_info = $this->contact->read_data();
         print_r($contact_info);
-        $contact_id = $this->dbcontact->insert_new_contact($contact_info);
-        print_r($contact_id);
+        //$contact_id = $this->dbcontact->insert_new_contact($contact_info);
+        $contact_id = 313;
+        $feedback_info = $this->feedback_details;
+        print_r($feedback_info);
 
         $this->dbh->commit();
     }
