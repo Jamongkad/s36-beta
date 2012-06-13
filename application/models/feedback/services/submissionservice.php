@@ -15,8 +15,6 @@ class SubmissionService {
         $this->company_id = Input::get('company_id');
         $this->dbh = DB::connection('master')->pdo;
         $this->contact = $contact;     
-        $this->metric = new DBMetric;
-
         $this->dbcontact = new DBContact; 
     }
 
@@ -31,7 +29,8 @@ class SubmissionService {
     }
 
     public function metric_response() {
-        $this->metric->company_id = $this->company_id; 
-        $this->metric->increment_response();
+        $metric = new DBMetric;
+        $metric->company_id = $this->company_id; 
+        $metric->increment_response();
     }
 }

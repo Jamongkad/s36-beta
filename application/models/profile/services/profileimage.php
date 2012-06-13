@@ -130,19 +130,19 @@ class ProfileImage {
         imagecopyresampled($dst_r48, $img_r48, 0, 0, $x, $y, $this->targ_w_small, $this->targ_h_small, $wd, $ht);
         imagejpeg($dst_r48, $this->dir48, $this->jpeg_quality);
         */
-        $this->_crop_pic($this->dir150, $x, $y, $wd, $ht);
-        $this->_crop_pic($this->dir48, $x, $y, $wd, $ht);
+        $this->_crop_pic($src, $this->dir150, $x, $y, $wd, $ht);
+        $this->_crop_pic($src, $this->dir48, $x, $y, $wd, $ht);
         echo $this->date."-cropped.jpg";  
     }
 
-    private function _crop_pic($file_name, $x, $y, $width, $height) {
+    private function _crop_pic($source_file_name, $file_name, $x, $y, $width, $height) {
         $imagine = new Imagine\Gd\Imagine();
         $point = new Imagine\Image\Point($x, $y);
         $size = new Imagine\Image\Box($width, $height);
         $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
 
         $options = Array('quality' => 100);
-        $imagine->open($file_name)
+        $imagine->open($source_file_name)
                 ->crop($point, $size)
                 ->save($file_name, $options); 
     }
