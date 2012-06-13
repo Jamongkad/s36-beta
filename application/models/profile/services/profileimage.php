@@ -137,7 +137,6 @@ class ProfileImage {
         */
         $this->_crop_pic($image, $this->dir150, $x, $y, $wd, $ht, new Imagine\Image\Box(150, 150));
         $this->_crop_pic($image, $this->dir48, $x, $y, $wd, $ht, new Imagine\Image\Box(48, 48));
-        @unlink($image);
         echo $this->date."-cropped.jpg";  
     }
 
@@ -158,6 +157,8 @@ class ProfileImage {
     private function _create_image($image_src) {
 
         //this little function grabs the extension
+        $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+        @unlink($file_name);
         $extension = $this->_extract_image_extension($image_src);
 
         switch($extension) {
@@ -177,7 +178,6 @@ class ProfileImage {
         }
         
         if($img) {
-            $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
             file_put_contents($file_name, file_get_contents($image_src));
             return $file_name;
         } 
