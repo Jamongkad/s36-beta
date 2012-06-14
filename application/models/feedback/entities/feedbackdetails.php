@@ -1,7 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
-use Input, DB, UserInfo, Profile\Services\ProfileImage;
+use Input, DB;
 
 class FeedbackDetails extends FeedbackDataTypes {
 

@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Contact\Repositories\DBContact;
-use Feedback\Entities\ContactDetails;
+use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackDetails;
 use Halcyonic;
 use DBUser, DBBadWords, DBMetric;
 use Helpers, Input, S36Auth, DB;
