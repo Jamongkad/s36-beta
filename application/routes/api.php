@@ -1,6 +1,11 @@
 <?php
 
-$feedback = new Feedback\Repositories\DBFeedback;
+use Feedback\Entities\ContactDetails;
+use Feedback\Entities\FeedbackDetails;
+use Halcyonic\Services\Halcyonic;
+use Feedback\Repositories\DBFeedback;
+
+$feedback = new DBFeedback;
 
 return array(
     'GET /api/full_page_display/(:any)' => function($company_name) { 
@@ -99,10 +104,7 @@ return array(
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
         */
-
-        $contact = new Feedback\Entities\ContactDetails;
-        $feedback_details = new Feedback\Entities\FeedbackDetails;
-        $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details);
+        $addfeedback = new Feedback\Services\SubmissionService(new ContactDetails, new FeedbackDetails, new DBDashboard, new HalcyonicService);
         $addfeedback->perform();
     }), 
 
