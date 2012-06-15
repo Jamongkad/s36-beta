@@ -143,7 +143,6 @@
                                 $comp = $r->position;								     
                             } 
                         }                                            
-
                         $text = strip_tags($r->text); 
                         $hidden_text = htmlspecialchars($r->text);
                         echo '<div class="soloFeedback">
