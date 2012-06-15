@@ -12,6 +12,11 @@ class Helpers {
           , 'silver'=>'Silver'
           , 'chrome'=>'Chrome'
           , 'classic'=>'Classic'
+          , 'dark' => 'Dark'
+          , 'alum'   => 'Aluminum'
+          , 'contrast' => 'Contrast'
+          , 'matte'  => 'Matte'
+          /*
           , 'black'=>'Black'
           , 'silver-gray'=>'Silver Gray'
           , 'ocean-blue'=>'Ocean Blue'
@@ -38,6 +43,7 @@ class Helpers {
           , 'orange-like-2' => 'Orange Like 2'
           , 'yellow-like-2' => 'Yellow Like 2'
           , 'green-like-2' => 'Green Like 2' 
+          */
     );
 
     public static $form_themes = Array(
@@ -45,6 +51,11 @@ class Helpers {
           , 'silver'=>'Silver'
           , 'chrome'=>'Chrome'
           , 'classic'=>'Classic'
+          , 'dark' => 'Dark'
+          , 'alum'   => 'Aluminum'
+          , 'contrast' => 'Contrast'
+          , 'matte'  => 'Matte'
+        /*
           , 'black'=>'Black'
           , 'silver-gray'=>'Silver Gray'
           , 'ocean-blue'=>'Ocean Blue'
@@ -52,10 +63,7 @@ class Helpers {
           , 'mandarin'=>'Mandarin'
           , 'sleek-orange'=>'Sleek Orange'
           , 'thin-red'=>'Thin Red' 
-          , 'dark' => 'Dark'
-          , 'alum'   => 'Aluminum'
-          , 'contrast' => 'Contrast'
-          , 'matte'  => 'Matte'
+        */
     );
 
     public static $display_themes = Array( 
