@@ -5,7 +5,7 @@ use Input, DB;
 
 class FeedbackDetails extends FeedbackDataTypes {
 
-    private $contact_id, $company_id;
+    private $contact_id, $company_id, $feedback_data;
 
     public function set_contact_id($contact_id) {
         $this->contact_id = $contact_id;    
@@ -22,7 +22,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
-        $feedback_data = Array(
+        $this->feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $contact_id
           , 'categoryId' => $category->categoryid
@@ -33,6 +33,5 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => date('Y-m-d H:i:s')
         );
-
     }
 }
