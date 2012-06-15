@@ -1,7 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
-
+use Contact\Repositories\DBContact;
 use Input, DB, UserInfo, Profile\Services\ProfileImage;
 
 class ContactDetails extends FeedbackDataTypes { 
@@ -14,6 +14,7 @@ class ContactDetails extends FeedbackDataTypes {
           , $profilelink;
 
     private $contact_data = Array();
+    private $contact_id;
 
     public function __construct() {
         $this->userinfo = new UserInfo;
@@ -67,7 +68,13 @@ class ContactDetails extends FeedbackDataTypes {
         ); 
     }
 
-    public function expose_contact_data() {
-        return $this->contact_data;     
+    public function write_new_contact() {
+        $dbcontact = new DBContact;        
+        $this->contact_id = $db->insert_new_contact($this->contact_data);
+    }
+    
+    public function get_contact_id() {
+        if($this->contact_id)
+            return $this->contact_id;     
     }
 }

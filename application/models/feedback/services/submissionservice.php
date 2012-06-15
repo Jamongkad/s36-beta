@@ -24,12 +24,12 @@ class SubmissionService {
         $this->dbh->beginTransaction();
 
         $this->contact_details->read_data(); 
-        //$contact_id = $this->dbcontact->insert_new_contact($contact_info);
-        //$contact_id = $this->dbcontact->write_new_contact($this->contact_details);
-        $contact_id = 313;
+        $this->contact_details->write_new_contact();
+        $contact_id = $this->contact_details->get_contact_id();
         $this->feedback_details->set_contact_id($contact_id);
         $this->feedback_details->set_company_id($this->company_id);
         $this->feedback_details->read_data();
+
         print_r($this->feedback_details);
 
         $this->dbh->commit();
