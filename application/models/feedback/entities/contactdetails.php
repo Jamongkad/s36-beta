@@ -25,6 +25,7 @@ class ContactDetails extends FeedbackDataTypes {
 
         $avatar = Input::get('cropped_image_nm');
 
+        $country_id = 895;
         if ($country_input = Input::get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $country_id = $country->countryid;
