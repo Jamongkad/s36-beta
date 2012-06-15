@@ -10,10 +10,6 @@ class DBContact extends S36DataObject {
         return DB::table('Contact', 'master')->insert_get_id($opts);
     }
 
-    public function write_new_contact(ContactDetails $opts) {
-        return DB::table('Contact', 'master')->insert_get_id($opts->expose_contact_data());
-    }
-
     public function count_total_contacts() { 
         $sql = "
             SELECT
