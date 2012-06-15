@@ -194,10 +194,10 @@
                                     (read full feedback)
                                     </span>';								
                                 }							
-
+                               $hidden_text = htmlspecialchars($r->text);
                                echo '<div class="g1of3">
                                         <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                            <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.htmlspecialchars($r->text).'\' />                        	
+                                            <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.$hidden_text.'" />                        	
                                             <div class="block">
                                                 <div class="theFeedbackAvatar">
                                                     <img src="'.$avatar.'" />
