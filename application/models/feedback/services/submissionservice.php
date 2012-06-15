@@ -27,9 +27,8 @@ class SubmissionService {
         print_r($contact_info);
         //$contact_id = $this->dbcontact->insert_new_contact($contact_info);
         $contact_id = 313;
-        $feedback_info = $this->feedback_details;
-        $feedback_info->set_contact_id($contact_id);
-        print_r($feedback_info);
+        $this->feedback_details->set_contact_id($contact_id);
+        print_r($this->feedback_details);
 
         $this->dbh->commit();
     }
