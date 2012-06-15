@@ -103,12 +103,14 @@ return array(
         /* DEPRECATED
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
-        */
-        /*
-        $addfeedback = new Feedback\Services\SubmissionService(new ContactDetails, new FeedbackDetails, new DBDashboard, new HalcyonicService);
-        $addfeedback->perform();
-        */
-        return True;
+        */ 
+        $addfeedback = new Feedback\Services\SubmissionService(
+                           new ContactDetails
+                         , new FeedbackDetails
+                         , new DBDashboard
+                         , new HalcyonicService
+                        );  
+        return $addfeedback->perform();
     }), 
 
     //TODO: REFACTOR THIS BITCH
