@@ -66,6 +66,6 @@ class ContactDetails extends FeedbackDataTypes {
           , 'browser' => $this->userinfo->browser()->getBrowser()
         );
 
-        return $this->contact_data;
+        //return $this->contact_data;
     }
 }
