@@ -224,42 +224,6 @@ var S36Form = new function() {
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
             }
-            /* 
-            else{
-                //validate_field function arguments : element ID, element's user input value, element's default value, type = regular or email
-                if($(this).attr('id') == "your_fname"){																
-                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Enter Your First Name');
-                    }else{
-                        that.hide_error();
-                    }
-                }
-                
-                if($(this).attr('id') == "your_lname"){														
-                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Enter Your Last Name');
-                    }else{
-                        that.hide_error();	
-                    }
-                }
-                
-                if($(this).attr('id') == "your_email"){														
-                    if(!that.validate_field($(this).val() , $(this)[0].title , "email")){
-                        that.add_error('Please Enter A Valid Email');
-                    }else{
-                        that.hide_error();	
-                    }
-                }
-                
-                if($(this).attr('id') == "your_city"){														
-                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Enter Your City');
-                    }else{
-                        that.hide_error();
-                    }
-                }    
-            }
-            */
 		});
  
 		$(".regular-select").focus(function(i){
@@ -268,22 +232,6 @@ var S36Form = new function() {
                 $(this).removeClass("reg-text-active");
             }
         });
-        /*
-		$(".regular-select").blur(function(){
-            if ($(this).val() === $(this)[0].title){
-                $(this).addClass("reg-text-active");
-                $(this).val($(this)[0].title);
-            }else{
-                if($(this).attr('id') == "your_country"){
-                    if(!that.validate_field($(this).val() , $(this)[0].title , "regular")){
-                        that.add_error('Please Select Your Country Fired');
-                    }else{
-                        that.hide_error();
-                    }
-                }
-            }
-		});
-        */
 		$(".regular-text").blur();
 		$(".regular-select").blur();
     };

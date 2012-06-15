@@ -104,10 +104,14 @@ return array(
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
         */
+        /*
         $addfeedback = new Feedback\Services\SubmissionService(new ContactDetails, new FeedbackDetails, new DBDashboard, new HalcyonicService);
         $addfeedback->perform();
+        */
+        return True;
     }), 
 
+    //TODO: REFACTOR THIS BITCH
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
 
         $encrypt = new Encryption\Encryption;
