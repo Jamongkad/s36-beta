@@ -11,12 +11,12 @@ body{
 	width:447px;
 	height:590px;
 	position:absolute;
-	background:#131313;
+	background:#000;
 }
 #s36_whitebar{
 	height:15px;
 	width:447px;
-	background:#131313;
+	background:#000;
 }
 #s36_pages,#s36_steps{
 	width:447px;
@@ -43,10 +43,10 @@ body{
 	z-index:100;
 }
 a{
-	color:lime !important;
+	color:#CCC !important;
 }
 a:hover{
-	color:#0C0 !important;
+	color:#DDD !important;
 }
 	#s36_footer .s36_footerbtn{
 		width:80px;
@@ -72,14 +72,14 @@ a.s36_btn{
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	border:1px solid #103311;
+	border:1px solid #3c3c3c;
 	color:#393939;
 	text-shadow:#141414 0px 1px;
 	text-decoration:none;
 }
 a.s36_btn:hover{
 	background:#272727;
-	border:1px solid #103311;
+	border:1px solid #3c3c3c;
 	color:#393939;
 	text-shadow:#141414 0px 1px;
 }
@@ -103,8 +103,8 @@ a.cropbtn:hover{
 	width:447px;
 	height:465px;
 }
-	.s36_pages h1{margin:0px;padding:14px 30px;background:lime;font-size:22px;color:#1e1e1e;}
-	.s36_pages h3{color:#474747;font-size:15px;margin:0px;padding:5px 0px;}
+	.s36_pages h1{margin:0px;padding:14px 30px;background:#232323;font-size:22px;color:#FFF;}
+	.s36_pages h3{color:#999;font-size:15px;margin:0px;padding:5px 0px;}
 	.s36_pages h3 a.s36_tip{font-size:11px;color:#c3c3c3;text-decoration:none;padding-left:4px;font-weight:normal;}
 	.s36_pages h3 a.s36_tip:hover{text-decoration:underline;}
 	.s36_pages h4{color:#6f7375;font-size:11px;margin:0px;padding:5px 0px;}
@@ -249,8 +249,8 @@ input.reg-text-active{color:#999;font-weight:normal;}
 select.regular-select{background:#131313;height:30px;border:1px solid #272727;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;overflow:hidden;font-weight:bold;display:block;width:180px;padding:4px;font-family:Arial, Helvetica, sans-serif;color:#666;-webkit-box-shadow:#1c1c1c 0px 0px 0px 3px;box-shadow:#1c1c1c 0px 0px 0px 3px;}
 select.regular-select option{width:120px;}
 select.reg-text-active{color:#AAA;font-weight:normal;}
-select:focus{border:1px solid #204221;outline:#5d5d5d;-webkit-box-shadow:#222 0px 0px 0px 3px;box-shadow:#222 0px 0px 0px 3px;}
-input:focus{border:1px solid #204221;outline:#5d5d5d;box-shadow:#222 0px 0px 0px 3px;}
+select:focus{border:1px solid #AAA;outline:#5d5d5d;-webkit-box-shadow:#222 0px 0px 0px 3px;box-shadow:#222 0px 0px 0px 3px;}
+input:focus{border:1px solid #AAA;outline:#5d5d5d;box-shadow:#222 0px 0px 0px 3px;}
 
 /* review page */
 

@@ -25,7 +25,7 @@
 	margin:0px 15px;
 }
 #widgetHeader{
-	background:url(../images/widgetheaderbg.jpg) repeat-x;
+	background:#232323;
 	padding:13px 15px;
 	border-top:1px solid #171717;
 	border-bottom:1px solid #171717;	
@@ -171,9 +171,9 @@
 	font-size:11px;
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
-	.pagination a{padding:2px 3px;color:#1d1d1d;text-decoration:none;}
-	.pagination a.activeSlide{background:#00FF00;color:#000;}
-	.pagination a.activeSlide:hover{color:#000}
+	.pagination a{padding:2px 3px;color:#4b4b4b;text-decoration:none;}
+	.pagination a.activeSlide{background:#232323;color:#FFF;}
+	.pagination a.activeSlide:hover{color:#EEE}
 		#prev,#next{cursor:pointer;color:#1d1d1d;}
-		#prev:hover,#next:hover{color:#0f0;}	
-		.pagination a:hover{color:#0f0;text-decoration:underline;}
+		#prev:hover,#next:hover{color:#4b4b4b;}	
+		.pagination a:hover{color:#4b4b4b;text-decoration:underline;}
