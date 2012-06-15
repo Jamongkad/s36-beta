@@ -656,7 +656,7 @@ var S36Form = new function() {
                  $("#submission-loader-header").hide();
                  $("#submission-success").show();
                  $("#submission-success-header").show();
-                 $("#feedback_text").val("Mathew");
+                 $("#feedback_text").val("");
                  $("#next").hide();
             }
 		}); 
