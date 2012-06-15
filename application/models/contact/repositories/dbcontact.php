@@ -6,8 +6,11 @@ use ZebraPagination\ZebraPagination;
 class DBContact extends S36DataObject {
 
     public function insert_new_contact($opts) {
-         $id = DB::table('Contact', 'master')->insert_get_id($opts);
-         return $id; 
+        return DB::table('Contact', 'master')->insert_get_id($opts);
+    }
+
+    public function write_new_contact(ContactDetails $opts) {
+        return $opts->contact_data; 
     }
 
     public function count_total_contacts() { 
