@@ -13,7 +13,7 @@ class Helpers {
           , 'chrome'=>'Chrome'
           , 'classic'=>'Classic'
           , 'dark' => 'Dark'
-          , 'dark-heard' => 'Dark Heart'
+          , 'dark-heart' => 'Dark Heart'
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
           , 'matte'  => 'Matte'
