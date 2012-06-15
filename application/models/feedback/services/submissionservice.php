@@ -9,9 +9,11 @@ class SubmissionService {
    
     private $company_id;
 
-    public function __construct(ContactDetails $contact, FeedbackDetails $feedback_details) {
+    public function __construct(ContactDetails $contact, FeedbackDetails $feedback_details, DBDashboard $dbdashboard, HalcyonicService $halcyonic) {
         $this->company_id = Input::get('company_id');
         $this->contact_details = $contact;     
+        $this->dbdashboard = $dbdashboard;
+        $this->halcyonic = $halcyonic;
         $this->feedback_details = $feedback_details;
     }
 
@@ -26,11 +28,11 @@ class SubmissionService {
         $this->feedback_details->write_new_feedback();
         $this->feedback_details->send_email_notification();
 
-        $dash = new DBDashboard; 
-        $dash->company_id = $this->company_id;
-        $dash->write_summary();
+        $this->dbdashboard->company_id = $this->company_id;
+        $this->dbdashboard->write_summary();
         //Upon new feedback always invalidate cache       
-        $halcyon = new HalcyonicService($this->company_id);
+        $halcyon = new HalcyonicService;
+        $halcyon->company_id = $this->company_id;
         $halcyon->save_latest_feedid();
     }
 

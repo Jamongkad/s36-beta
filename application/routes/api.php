@@ -95,10 +95,15 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        //$contact = new Feedback\Entities\ContactDetails;
-        //$addfeedback = new Feedback\Services\SubmissionService($contact);
+        /* DEPRECATED
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile(); 
+        */
+
+        $contact = new Feedback\Entities\ContactDetails;
+        $feedback_details = new Feedback\Entities\FeedbackDetails;
+        $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details);
+        $addfeedback->perform();
     }), 
 
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 

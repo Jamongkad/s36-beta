@@ -102,7 +102,8 @@ return array(
                 $user_id = $auth->user()->userid;
                 $company_id = $auth->user()->companyid;
 
-                $halcyon = new Halcyonic\Services\HalcyonicService($company_id);
+                $halcyon = new Halcyonic\Services\HalcyonicService;
+                $halcyon->company_id = $company_id;
                 $halcyon->set_user_feedcount($user_id);
                 
                 return forward_or_dash();

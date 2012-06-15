@@ -4,12 +4,12 @@ use S36Auth, Feedback, redisent;
 
 class HalcyonicService {
      
-    private $redis, $feedback, $company_id;
+    private $redis, $feedback, 
+    public $company_id;
 
-    public function __construct($company_id)  {
+    public function __construct()  {
         $this->redis = new redisent\Redis; 
         $this->feedback = new Feedback\Repositories\DBFeedback;
-        $this->company_id = $company_id;
     } 
     
     //save the latest feedid to company redis
