@@ -7,11 +7,11 @@ use Input, DB, UserInfo, Profile\Services\ProfileImage;
 class ContactDetails extends FeedbackDataTypes { 
 
     private $country_id = 895;
-    private $position
-          , $city
-          , $company
-          , $website
-          , $profilelink;
+    private $position = false;
+    private $city = false;
+    private $company = false;
+    private $website = false;
+    private $profilelink = false;
 
     private $contact_data = Array();
     private $contact_id;
