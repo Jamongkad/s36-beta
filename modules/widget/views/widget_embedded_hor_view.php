@@ -197,7 +197,7 @@
 
                                echo '<div class="g1of3">
                                         <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                            <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.trim(strip_tags($r->text)).'\' />                        	
+                                            <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.strip_tags($r->text).'\' />                        	
                                             <div class="block">
                                                 <div class="theFeedbackAvatar">
                                                     <img src="'.$avatar.'" />
