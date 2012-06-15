@@ -22,10 +22,11 @@ class SubmissionService {
 
     public function perform() {
         $this->dbh->beginTransaction();
-
+        
         $this->contact_details->read_data(); 
-        $this->contact_details->write_new_contact();
-        $contact_id = $this->contact_details->get_contact_id();
+        //$this->contact_details->write_new_contact();
+        //$contact_id = $this->contact_details->get_contact_id();
+        $contact_id = 316;
         $this->feedback_details->set_contact_id($contact_id);
         $this->feedback_details->set_company_id($this->company_id);
         $this->feedback_details->read_data();
