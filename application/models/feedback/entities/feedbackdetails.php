@@ -24,7 +24,7 @@ class FeedbackDetails extends FeedbackDataTypes {
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
         $this->feedback_data = Array(
             'siteId' => Input::get('site_id')
-          , 'contactId' => $contact_id
+          , 'contactId' => $this->contact_id
           , 'categoryId' => $category->categoryid
           , 'formId' => 1
           , 'status' => 'new'
