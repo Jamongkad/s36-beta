@@ -16,9 +16,10 @@ class Helpers {
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
           , 'matte'  => 'Matte'
+          , 'silver-gray'=>'Silver Gray'
           /*
           , 'black'=>'Black'
-          , 'silver-gray'=>'Silver Gray'
+
           , 'ocean-blue'=>'Ocean Blue'
           , 'forest-green'=>'Forest Green'
           , 'mandarin'=>'Mandarin'
@@ -55,9 +56,10 @@ class Helpers {
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
           , 'matte'  => 'Matte'
+          , 'silver-gray'=>'Silver Gray'
         /*
           , 'black'=>'Black'
-          , 'silver-gray'=>'Silver Gray'
+
           , 'ocean-blue'=>'Ocean Blue'
           , 'forest-green'=>'Forest Green'
           , 'mandarin'=>'Mandarin'
@@ -75,6 +77,7 @@ class Helpers {
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
           , 'matte'  => 'Matte'
+          , 'silver-gray'=>'Silver Gray'
     );
 
     public static function request() {
