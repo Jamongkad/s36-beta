@@ -152,8 +152,10 @@
                             }else{
                                 $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
                             }							
+
+                            $hidden_text = htmlspecialchars($r->text);
                             echo '<div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">                    
-                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.trim(strip_tags($r->text)).'\'/>                        	
+                                  <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.$hidden_text.'"/>                        	
                                     <div class="block">	
                                         <div class="theFeedbackAvatar">
                                             <img src="'.$avatar.'" />

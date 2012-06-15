@@ -144,15 +144,15 @@
                             } 
                         }                                            
 
-                        $text = strip_tags($r->text);
-                  
+                        $text = strip_tags($r->text); 
+                        $hidden_text = htmlspecialchars($r->text);
                         echo '<div class="soloFeedback">
                                 <div class="soloFeedbackAvatar">
                                     '.$avatar .'
                                 </div>
                                 <div class="soloFeedbackDetails '.$no_avatar_class.'">
                                     <div class="soloFeedbackText">
-                                        '.trim($r->text).'
+                                        '.$hidden_text.'
                                     </div>
                                     <div class="soloFeedbackAuthor">
                                         <ul>
@@ -265,7 +265,7 @@
                         }							
                            echo '<div class="g1of3" index-id="'.$ctr.'">
                                     <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
-                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value=\''.trim($r->text).'\'/>                        	
+                                        <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.$hidden_text.'"/>                        	
                                         <div class="block">
                                             <div class="theFeedbackAvatar">
                                                 <img src="'.$avatar.'" />
