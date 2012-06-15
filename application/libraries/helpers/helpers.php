@@ -13,13 +13,13 @@ class Helpers {
           , 'chrome'=>'Chrome'
           , 'classic'=>'Classic'
           , 'dark' => 'Dark'
+          , 'dark-heard' => 'Dark Heart'
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
           , 'matte'  => 'Matte'
           , 'silver-gray'=>'Silver Gray'
           /*
           , 'black'=>'Black'
-
           , 'ocean-blue'=>'Ocean Blue'
           , 'forest-green'=>'Forest Green'
           , 'mandarin'=>'Mandarin'
@@ -59,7 +59,6 @@ class Helpers {
           , 'silver-gray'=>'Silver Gray'
         /*
           , 'black'=>'Black'
-
           , 'ocean-blue'=>'Ocean Blue'
           , 'forest-green'=>'Forest Green'
           , 'mandarin'=>'Mandarin'
