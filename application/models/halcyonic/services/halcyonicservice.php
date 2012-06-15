@@ -1,6 +1,6 @@
 <?php namespace Halcyonic\Services;
 
-use S36Auth, Feedback, redisent;
+use Feedback\Repositories\DBFeedback, redisent;
 
 class HalcyonicService {
      
@@ -9,7 +9,7 @@ class HalcyonicService {
 
     public function __construct()  {
         $this->redis = new redisent\Redis; 
-        $this->feedback = new Feedback\Repositories\DBFeedback;
+        $this->feedback = new DBFeedback;
     } 
     
     //save the latest feedid to company redis

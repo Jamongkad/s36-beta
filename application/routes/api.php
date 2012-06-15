@@ -2,7 +2,7 @@
 
 use Feedback\Entities\ContactDetails;
 use Feedback\Entities\FeedbackDetails;
-use Halcyonic\Services\Halcyonic;
+use Halcyonic\Services\HalcyonicService;
 use Feedback\Repositories\DBFeedback;
 
 $feedback = new DBFeedback;
