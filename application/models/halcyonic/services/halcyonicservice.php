@@ -4,7 +4,7 @@ use Feedback\Repositories\DBFeedback, redisent;
 
 class HalcyonicService {
      
-    private $redis, $feedback, 
+    private $redis, $feedback;
     public $company_id;
 
     public function __construct()  {
