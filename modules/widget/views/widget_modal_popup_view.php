@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="soloFeedbackDetails '.$no_avatar_class.'">
                                     <div class="soloFeedbackText">
-                                        '.$hidden_text.'
+                                        '.trim($r->text).'
                                     </div>
                                     <div class="soloFeedbackAuthor">
                                         <ul>
