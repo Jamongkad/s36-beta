@@ -64,8 +64,10 @@ class ContactDetails extends FeedbackDataTypes {
           , 'loginType'   => $login_type 
           , 'ipaddress'   => $this->userinfo->get_ip_long()
           , 'browser' => $this->userinfo->browser()->getBrowser()
-        );
+        ); 
+    }
 
-        //return $this->contact_data;
+    public function expose_contact_data() {
+        return $this->contact_data;     
     }
 }
