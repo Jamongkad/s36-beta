@@ -30,6 +30,8 @@ class SubmissionService {
         $this->feedback_details->set_contact_id($contact_id);
         $this->feedback_details->set_company_id($this->company_id);
         $this->feedback_details->read_data();
+        $this->feedback_details->write_new_feedback();
+        $this->feedback_details->send_email_notification();
 
         print_r($this->feedback_details);
 
