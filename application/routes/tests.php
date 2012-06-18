@@ -246,6 +246,7 @@ return array(
         $test->page_number = $page;
         $test->limit = 10;
         $test->ignore_cache = True;
+        $test->debug = True;
         $feeds = $test->fetch_hosted_feedback(); 
         Helpers::dump($feeds->collection);
         $time_end = microtime(True);
