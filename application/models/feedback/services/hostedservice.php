@@ -12,11 +12,11 @@ class HostedService {
     public $ignore_cache = False; 
     public $debug = False;
 
-    public $collection;
-    public $html;
-    public $num_rows;
-    public $number_of_pages;
-    public $pages;
+    private $collection;
+    private $html;
+    private $num_rows;
+    private $number_of_pages;
+    private $pages;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -53,6 +53,18 @@ class HostedService {
         $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
         $collection = $this->collection_data($feeds);
         $this->collection = $collection;
+
+        $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
+                                     , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
+                                    )->get();
+
+        $this->num_rows = $feeds->total_rows;
+        $this->number_of_pages = $feeds->number_of_pages;
+        $this->pages = $feeds->pages;
+
+        if(!$this->ignore_cache) {
+            $this->cache->set_cache($collection);                                                                              
+        }
         /*
         $data_obj = new StdClass;
         $data_obj->collection = $collection;
