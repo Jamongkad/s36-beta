@@ -24,6 +24,8 @@ return array(
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
+        Helpers::dump($company_info);
+
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->limit = 10;
         $hosted->ignore_cache = True;
