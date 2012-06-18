@@ -1,5 +1,7 @@
 <?php
+
 Package::load('S36ValueObjects');
+
 return array(
     'GET /tests/test_blob' => Array('needs' => 'EnhanceTestFramework, S36ValueObjects', 'do' => function() { 
         Enhance::runTests();
@@ -264,8 +266,6 @@ return array(
         $metric = new DBMetric;
         $metric->company_id = 1;
         $auth = new S36Auth;
-
-        Helpers::dump($contact);
         /*
         $get_data = (object) Array(
             'name'  => 'Mathew'

@@ -27,7 +27,7 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->limit = 10;
         $hosted->ignore_cache = True;
-        $feeds = $hosted->fetch_hosted_feedback(); 
+        $hosted->fetch_hosted_feedback(); 
 
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_canonical_widget($company_name);
@@ -35,7 +35,7 @@ return array(
         $deploy_env = Config::get('application.deploy_env');
 
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array(  'company' => $company_info, 'feeds' => $feeds->html
+                                                  , Array(  'company' => $company_info, 'feeds' => $feeds->return_html()
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
     },
 

@@ -93,6 +93,10 @@ class HostedService {
         return $this->collection;     
     }
 
+    public function return_html() { 
+        return $this->html;     
+    }
+
     public function cached_data($data_obj) {
         return json_decode($data_obj);
     }
