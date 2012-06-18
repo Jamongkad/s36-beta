@@ -1,4 +1,4 @@
-<title><?=ucfirst($company->name);?> - Customer's Stories</title>
+<title><?=ucfirst($company->company_name);?> - Customer's Stories</title>
 <?=HTML::style('css/widget_master/hosted-fullpage.css');?>
 
 <div id="fb-root"></div>
@@ -58,7 +58,7 @@
 		var container = $('#theFeedbacks');
         var page_counter = counter + 1;
         $.ajax({
-              url: '/hosted/fullpage_partial/<?=strtolower($company->name)?>/' + page_counter
+              url: '/hosted/fullpage_partial/<?=strtolower($company->company_name)?>/' + page_counter
             , success: function(msg) {
  		        var boxes = $(msg);               
          		container.append( boxes ).masonry( 'appended', boxes ); 
@@ -80,10 +80,10 @@
 <div id="headerWrapper">
 	<div id="headerContent">
     	<div id="headerTitle">
-            <?$company_name = ucfirst($company->name);?>
+            <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
             <?if($widget):?>
-                <span><a href="<?=$deploy_env.'/'.strtolower($company->name).'/submit'?>">Send in feedback</a></span>
+                <span><a href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
             <?endif?>
 
             <?if($company->domain):?>

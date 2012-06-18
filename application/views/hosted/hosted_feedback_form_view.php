@@ -2,10 +2,10 @@
 <div id="headerWrapper">
 	<div id="headerContent">
     	<div id="headerTitle">
-            <?$company_name = ucfirst($company->name);?>
+            <?$company_name = ucfirst($company->company_name);?>
 
         	<strong><?=$company_name?></strong>  
-            <span><a href="http://<?=strtolower($company->name).".".$hostname?>.com">View all feedback</a></span>
+            <span><a href="http://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
             
             <?if($company->domain):?>
                 <span class="right padfix">

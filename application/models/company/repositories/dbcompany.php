@@ -37,7 +37,10 @@ class DBCompany extends S36DataObject {
         }
 
         $sql = "
-            SELECT * FROM 
+            SELECT 
+                * 
+              , Company.name AS company_name 
+            FROM 
                 Company
             INNER JOIN
                 Site
