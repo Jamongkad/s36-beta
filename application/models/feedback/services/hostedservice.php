@@ -109,6 +109,7 @@ class HostedService {
         
         //Debugger
         if($this->debug == True) { 
+            /*
             Helpers::dump("Featured");
             Helpers::dump($featured_feeds);
 
@@ -117,6 +118,7 @@ class HostedService {
 
             Helpers::dump("Children"); 
             Helpers::dump($children_collection);        
+            */
         }
 
         //pre count for performance.
