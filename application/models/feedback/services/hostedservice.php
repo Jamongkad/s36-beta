@@ -80,14 +80,14 @@ class HostedService {
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 if($this->debug == True) { 
-                    $published_feeds[] = $feed->id;                   
+                    $published_feeds[] = Array($feed->id, $feed->dtAdded);                   
                 } else {
                     $published_feeds[] = $feed;                   
                 }
 
             } else {
                 if($this->debug == True) { 
-                    $featured_feeds[] = $feed->id;
+                    $featured_feeds[] = Array($feed->id, $feed->dtAdded); //$feed->id;
                 } else {
                     $featured_feeds[] = $feed;
                 } 
