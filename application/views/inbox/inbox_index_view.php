@@ -144,7 +144,7 @@
                                     <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" 
                                                                                                                    style="background-position: 0px -51px !important;"/>
                                 <?endif?>
-                                <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
+
                                 <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
 
                                 <?if($feed->rating != "POOR"):?>
@@ -165,6 +165,7 @@
                                 <?endif?>
                             </div>
                             <?endif?>
+                            <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
                             <div class="author-info">
                                 <h3>
                                     <?=$feed->firstname?> <?=$feed->lastname?>
