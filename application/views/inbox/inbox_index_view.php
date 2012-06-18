@@ -145,8 +145,6 @@
                                                                                                                    style="background-position: 0px -51px !important;"/>
                                 <?endif?>
 
-                                <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
-
                                 <?if($feed->rating != "POOR"):?>
                                     <?if($admin_check->inbox_feature == 0) :?>
                                         <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" style="background-position: -60px -51px;" />
@@ -158,6 +156,8 @@
                                     <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" 
                                                                                                                     style="background-position: -60px -51px;"/>
                                 <?endif?>
+
+                                <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
                                 <?if($admin_check->inbox_fastforward == 0):?>
                                     <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.2; filter:alpha(opacity=40)"/> 
                                 <?else:?>
