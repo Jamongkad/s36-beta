@@ -131,7 +131,7 @@
                                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
                                         <input type="hidden" id="response_flag" value="<?=$response?>" />
-                                        <input type="hidden" id="rating" value="1" />
+                                        <input type="hidden" id="rating" value="3" />
 
                                         <div id="track_ball"></div>
                                         <div id="rate_b"></div>
