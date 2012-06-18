@@ -54,13 +54,15 @@ class HostedService {
         $collection = $this->collection_data($feeds);
         $this->collection = $collection;
 
-        $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
-                                     , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
-                                    )->get();
+        if($this->debug == False) { 
+            $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
+                                         , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
+                                        )->get();
 
-        $this->num_rows = $feeds->total_rows;
-        $this->number_of_pages = $feeds->number_of_pages;
-        $this->pages = $feeds->pages;
+            $this->num_rows = $feeds->total_rows;
+            $this->number_of_pages = $feeds->number_of_pages;
+            $this->pages = $feeds->pages;
+        }
 
         if(!$this->ignore_cache) {
             $this->cache->set_cache($collection);                                                                              
