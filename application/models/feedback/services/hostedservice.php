@@ -147,7 +147,7 @@ class HostedService {
             }
         }
 
-        return json_encode($collection);
+        return $collection;
     }
 
     public function invalidate_hosted_feeds_cache() {
