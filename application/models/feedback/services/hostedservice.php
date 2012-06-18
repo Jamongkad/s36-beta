@@ -51,7 +51,8 @@ class HostedService {
         
         if($this->debug == False) { 
             $data_obj->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
-                                         , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id')))->get();
+                                         , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
+                                        )->get();
             $data_obj->num_rows = $feeds->total_rows;
             $data_obj->number_of_pages = $feeds->number_of_pages;
             $data_obj->pages = $feeds->pages;
