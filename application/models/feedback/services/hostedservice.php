@@ -11,6 +11,12 @@ class HostedService {
     public $offset = 0;
     public $ignore_cache = False; 
     public $debug = False;
+
+    public $collection;
+    public $html;
+    public $num_rows;
+    public $number_of_pages;
+    public $pages;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -46,7 +52,8 @@ class HostedService {
         
         $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
         $collection = $this->collection_data($feeds);
-
+        $this->collection = $collection;
+        /*
         $data_obj = new StdClass;
         $data_obj->collection = $collection;
         
@@ -65,6 +72,7 @@ class HostedService {
         }
 
         return $data_obj; 
+        */
     }
 
     public function cached_data($data_obj) {
@@ -148,6 +156,10 @@ class HostedService {
         }
 
         return $collection;
+    }
+
+    public function create_pagination() {
+             
     }
 
     public function invalidate_hosted_feeds_cache() {
