@@ -163,9 +163,9 @@
                                 <?else:?>
                                     <input type="button" class="contact" id="<?=$id?>" tooltip="Fast Forward" tt_width="60"/> 
                                 <?endif?>
+                                <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
                             </div>
                             <?endif?>
-                            <input type="button" class="save fileas" id="<?=$id?>" tooltip="Categorize Feedback"/>
                             <div class="author-info">
                                 <h3>
                                     <?=$feed->firstname?> <?=$feed->lastname?>
