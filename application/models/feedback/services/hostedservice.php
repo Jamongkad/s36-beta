@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Exception, Helpers, StdClass, ArrayIterator, LimitIterator, View, Config;
-use Halcyonic;
+use Halcyonic, redis;
 
 class HostedService {
     
@@ -16,6 +16,7 @@ class HostedService {
         $this->company_name = $company_name;
         $this->feedback = new DBFeedback;
         $this->cache = new Halcyonic\Services\Cache;
+        $this->redis = new redisent\Redis;
     }
 
     public function fetch_hosted_feedback() {
@@ -53,18 +54,17 @@ class HostedService {
             $data_obj->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
                                          , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
                                         )->get();
+
             $data_obj->num_rows = $feeds->total_rows;
             $data_obj->number_of_pages = $feeds->number_of_pages;
             $data_obj->pages = $feeds->pages;
         }
 
         if(!$this->ignore_cache) {
-            $this->cache->set_cache($data_obj);               
+            $this->cache->set_cache($data_obj);                                                                              
         }
 
-
         return $data_obj; 
-
     }
 
     public function cached_data($data_obj) {
@@ -147,7 +147,7 @@ class HostedService {
             }
         }
 
-        return $collection;
+        return json_encode($collection);
     }
 
     public function invalidate_hosted_feeds_cache() {

@@ -51,5 +51,4 @@ class Cache {
         $key = $this->key_name.":".$this->company_identifier;
         $this->redis->del($key);
     }
-
 }
