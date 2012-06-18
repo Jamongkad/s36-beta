@@ -99,7 +99,7 @@ a.cropbtn:hover{
 
 /* rating page */
 #rate_e,#rate_g,#rate_a,#rate_p,#rate_b{float:left;height:33px;position:relative;cursor:pointer;}
-#track_ball{width:30px;height:33px;position:absolute;background:url(../../img/trackball.png) no-repeat;left:-1px;}
+#track_ball{width:30px;height:33px;position:absolute;background:url(../../img/trackball.png) no-repeat;left:189px;}
 #rate_e,#rate_b{width:48px;}
 #rate_g,#rate_a,#rate_p{width:97px;}
 
