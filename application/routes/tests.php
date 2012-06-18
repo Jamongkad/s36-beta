@@ -205,31 +205,6 @@ return array(
 
     }, 
 
-    'GET /tests/inboxcache' => function() {
-
-        $filters = array(
-              'limit'=> 10
-            , 'site_id'=> false 
-            , 'filter'=> 'all'
-            , 'choice'=> false
-            , 'date'  => 'date_new'
-            , 'rating' => 4
-            , 'category' => 'bugs'
-            , 'priority' => 'low' //low medium high
-            , 'status' => 'new' //new inprogress closed
-            , 'company_id' => 1
-            , 'page_no' => 2
-        );
-
-        $cache = new Halcyonic\Services\InboxCache;
-        $cache->key_name = "inbox:feeds";
-        $cache->filter_array = $filters;
-        $cache->generate_keys();
-        $result_cache = $cache->get_cache();
-        Helpers::dump($result_cache);
-        Helpers::dump($cache);
-    },
-
     'GET /tests/compress' => function() {
         $yui = new YUICompressor\YUICompressor("/usr/share/yui-compressor/yui-compressor.jar", "/tmp", Array('type' => 'js'));
         $js_scripts = Array( 
@@ -255,20 +230,6 @@ return array(
 
     'GET /tests/imagine' => function() {
         $imagine = new Imagine\Gd\Imagine();
-        $size48 = new Imagine\Image\Box(48, 48);
-        $size150 = new Imagine\Image\Box(150, 150);
-        $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
-
-        $file_name = '20121106045457-tumblr_l5nczwRPSn1qzmxnbo1_500.jpg';
-        $options = Array('quality' => 100);
-
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
-                ->thumbnail($size48, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail48.jpg', $options);
-
-        $imagine->open('/var/www/s36-upload-images/uploaded_tmp/'.$file_name)
-                ->thumbnail($size150, $mode)
-                ->save('/var/www/s36-upload-images/uploaded_tmp/thumbnail150.jpg', $options);
     },
 
     'POST /tests/submissionservice' => function() {

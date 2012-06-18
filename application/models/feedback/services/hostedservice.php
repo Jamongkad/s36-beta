@@ -10,6 +10,7 @@ class HostedService {
     public $limit = 8;
     public $offset = 0;
     public $ignore_cache = False; 
+    public $debug = False;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -76,9 +77,18 @@ class HostedService {
 
         foreach($feeds->result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
-                $published_feeds[] = $feed;
+                if($this->debug == True) { 
+                    $published_feeds[] = $feed->id;                   
+                } else {
+                    $published_feeds[] = $feed;                   
+                }
+
             } else {
-                $featured_feeds[] = $feed;
+                if($this->debug == True) { 
+                    $featured_feeds[] = $feed->id;
+                } else {
+                    $featured_feeds[] = $feed;
+                } 
             }
         }
 
@@ -96,16 +106,17 @@ class HostedService {
         }
         
         //Debugger
-        /*
-        Helpers::dump("Featured");
-        Helpers::dump($featured_feeds);
+        if($this->debug == True) { 
+            Helpers::dump("Featured");
+            Helpers::dump($featured_feeds);
 
-        Helpers::dump("Published");
-        Helpers::dump($published_feeds);
+            Helpers::dump("Published");
+            Helpers::dump($published_feeds);
 
-        Helpers::dump("Children"); 
-        Helpers::dump($children_collection);        
-        */
+            Helpers::dump("Children"); 
+            Helpers::dump($children_collection);        
+        }
+
         //pre count for performance.
         $featured_count = count($featured_feeds);
         $published_count = count($published_feeds);
