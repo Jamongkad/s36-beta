@@ -122,7 +122,8 @@ class HostedService {
         //pre count for performance.
         $featured_count = count($featured_feeds);
         $published_count = count($published_feeds);
-
+        
+        //decision tree
         if($featured_count == 1)  {
             $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
