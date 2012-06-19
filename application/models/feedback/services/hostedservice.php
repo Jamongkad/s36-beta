@@ -26,6 +26,8 @@ class HostedService {
         $this->feedback = new DBFeedback;
         $this->cache = new Halcyonic\Services\Cache;
         $this->redis = new redisent\Redis;
+
+        $this->key_name = $this->company_name.":fullpage:data";
     }
 
     public function fetch_hosted_feedback() {
@@ -129,10 +131,9 @@ class HostedService {
             $this->page_number = 1; 
         }
 
-        $key_name = $this->company_name.":fullpage:data";
-        $key_exists = $this->redis->hexists($key_name, "set:".$this->page_number);
+        $key_exists = $this->redis->hexists($this->key_name, "set:".$this->page_number);
         if($key_exists) {
-            $data = $this->redis->hget($key_name, "set:".$this->page_number);     
+            $data = $this->redis->hget($this->key_name, "set:".$this->page_number);     
             return json_decode($data);
         }
        
@@ -142,11 +143,9 @@ class HostedService {
 
         $key_name = $this->company_name.":fullpage:data";
         $total_collection = $this->featured_count + $this->published_count;
-        $total_set        = (int)$this->redis->hget($key_name, 'total:set');       
+        $total_set        = (int)$this->redis->hget($this->key_name, 'total:set');       
 
-        print_r($total_collection);
-
-        $key = $this->redis->hgetall($key_name);
+        $key = $this->redis->hgetall($this->key_name);
         if(!$key || $total_set !== $total_collection) {
             echo "Processing";
             //process data into redis
@@ -159,5 +158,9 @@ class HostedService {
             echo "No processing";
         }
 
+    }
+
+    public function bust_hostfeed_data() {
+        $this->redis->del($this->key_name); 
     }
 }
