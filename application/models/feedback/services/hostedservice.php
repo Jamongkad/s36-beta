@@ -181,13 +181,13 @@ class HostedService {
     }
 
     public function build_data() {
-        $total_collection = count($this->collection);
+        $total_collection = (int)count($this->collection);
         
         $key_name = $this->company_name.":fullpage:data";
-        $total_set = $this->redis->hget($key_name, 'total:set');
+        $total_set = (int)$this->redis->hget($key_name, 'total:set');
         
         $key = $this->redis->hgetall($key_name);
-        if(!$key || $total_set != $total_collection) {
+        if(!$key || $total_set !== $total_collection) {
             echo "Processing required";
             //process data into redis
             Helpers::dump($total_collection);
