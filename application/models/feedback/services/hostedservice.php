@@ -26,10 +26,6 @@ class HostedService {
         $this->feedback = new DBFeedback;
         $this->cache = new Halcyonic\Services\Cache;
         $this->redis = new redisent\Redis;
-
-        if(!$this->page_number) { 
-            $this->page_number = 1; 
-        }
     }
 
     public function fetch_hosted_feedback() {
@@ -128,6 +124,10 @@ class HostedService {
     }
 
     public function fetch_data_by_set() {
+
+        if(!$this->page_number) { 
+            $this->page_number = 1; 
+        }
 
         $key_name = $this->company_name.":fullpage:data";
         $key_exists = $this->redis->hexists($key_name, "set:".$this->page_number);
