@@ -181,6 +181,7 @@ class HostedService {
     }
 
     public function build_data() {
+
         $key_name = $this->company_name.":fullpage:data";
 
         $total_collection = (int)count($this->collection);
@@ -194,11 +195,12 @@ class HostedService {
             Helpers::dump($total_set);
             foreach($this->collection as $ky => $vl) {
                 $index = $ky + 1;
-                Helpers::dump($vl);
+                $this->redis->hset($key_name, "set:".$index, json_encode($vl));
             }
         } else {
             echo "No processing required";
         }
+
     }
 
     public function invalidate_hosted_feeds_cache() {
