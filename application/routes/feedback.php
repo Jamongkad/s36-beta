@@ -141,11 +141,13 @@ return array(
        
         if($cat_state == null) {
             //echo "Inbox Operation";
+            /*
             if($mode == 'feature' || $mode == 'publish' || $mode == 'inbox') { 
                 $company_name = Input::get('subdomain');
                 $hosted = new Feedback\Services\HostedService($company_name);
                 $hosted->invalidate_hosted_feeds_cache(); 
             }
+            */
             return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
        
