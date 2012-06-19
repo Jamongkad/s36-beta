@@ -187,7 +187,10 @@ class HostedService {
         $total_sets = "total:sets";
         
         $key = $this->redis->hgetall($key_name);
-        Helpers::dump($key);
+        if($key || $this->redis->hget($key, 'total:sets') !== $total_collection) {
+            //process data into redis
+            Helpers::dump($key);     
+        } 
     }
 
     public function invalidate_hosted_feeds_cache() {
