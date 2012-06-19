@@ -186,6 +186,8 @@ class HostedService {
 
         $total_collection = (int)count($this->collection, COUNT_RECURSIVE);
         $total_set = (int)$this->redis->hget($key_name, 'total:set');       
+
+        Helpers::dump($total_collection);
         
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
