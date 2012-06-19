@@ -249,7 +249,7 @@ return array(
         $test->page_number = $page;
         $test->limit = 10;
         $test->ignore_cache = True;
-        $test->debug = True;
+        $test->debug = False;
 
         $test->fetch_hosted_feedback(); 
         $test->build_data();
