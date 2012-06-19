@@ -251,7 +251,7 @@ return array(
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
         $test->create_pagination();
-        Helpers::dump($test->return_collection());
+        //Helpers::dump($test->return_collection());
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
