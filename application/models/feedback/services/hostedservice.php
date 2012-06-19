@@ -187,7 +187,7 @@ class HostedService {
         $total_sets = "total:sets";
         
         $key = $this->redis->hgetall($key_name);
-        if($key || $this->redis->hget($key_name, 'total:sets') !== $total_collection) {
+        if(!$key || $this->redis->hget($key_name, 'total:sets') !== $total_collection) {
             //process data into redis
             Helpers::dump($key);     
         } 
