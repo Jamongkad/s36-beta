@@ -166,9 +166,8 @@ class HostedService {
     public function fetch_data_by_set() {
         $key_name = $this->company_name.":fullpage:data";
         $key_exists = $this->redis->hgetall($key_name);
-        if($key_exists) {
+        if($key_exists)
             return $this->redis->hget($key_name, "set:".$this->page_number);
-        }
     }
 
     public function build_data() {
