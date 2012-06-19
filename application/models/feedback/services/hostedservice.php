@@ -38,7 +38,7 @@ class HostedService {
 
     public function view_fragment() { 
         return View::make('hosted/partials/hosted_feedback_partial_view', 
-            Array('collection' => $this->collection, 'fb_id' => Config::get('application.fb_id'))
+            Array('collection' => $this->fetch_data_by_set(), 'fb_id' => Config::get('application.fb_id'))
         )->get();
     }
 
