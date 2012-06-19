@@ -149,6 +149,7 @@ class HostedService {
         if(!$key || $total_set !== $total_collection) {
             //echo "Processing";
             //process data into redis
+            print_r($this->collection);
             $this->redis->hset($key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
                 $index = $ky + 1;
