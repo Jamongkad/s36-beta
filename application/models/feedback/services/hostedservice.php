@@ -67,29 +67,9 @@ class HostedService {
             $this->pages = $feeds->pages;
         }
 
-        if(!$this->ignore_cache) {
+        if($this->ignore_cache === False) {
             $this->cache->set_cache($collection);                                                                              
         }
-        /*
-        $data_obj = new StdClass;
-        $data_obj->collection = $collection;
-        
-        if($this->debug == False) { 
-            $data_obj->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
-                                         , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
-                                        )->get();
-
-            $data_obj->num_rows = $feeds->total_rows;
-            $data_obj->number_of_pages = $feeds->number_of_pages;
-            $data_obj->pages = $feeds->pages;
-        }
-
-        if(!$this->ignore_cache) {
-            $this->cache->set_cache($data_obj);                                                                              
-        }
-
-        return $data_obj; 
-        */
     }
 
     public function return_collection() {
@@ -181,6 +161,14 @@ class HostedService {
         }
 
         return $collection;
+    }
+
+    public function fetch_data_by_set() {
+        $key_name = $this->company_name.":fullpage:data";
+        $key_exists = $this->redis->hgetall($key_name);
+        if($key_exists) {
+            return $this->redis->hget($key_name, "set:".$this->page_number);
+        }
     }
 
     public function build_data() {
