@@ -192,7 +192,6 @@ class HostedService {
             //process data into redis
             Helpers::dump($total_collection);
             Helpers::dump($total_set);
-            Helpers::dump($key);     
             foreach($this->collection as $ky => $vl) {
                 $index = $ky + 1;
                 Helpers::dump($vl);
