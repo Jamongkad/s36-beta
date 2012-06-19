@@ -184,16 +184,18 @@ class HostedService {
         $total_collection = count($this->collection);
         
         $key_name = $this->company_name.":fullpage:data";
-        $total_sets = "total:sets";
+        $total_sets = $this->redis->hget($key_name, 'total:sets');
         
         $key = $this->redis->hgetall($key_name);
-        if(!$key || $this->redis->hget($key_name, 'total:sets') !== $total_collection) {
+        if(!$key || $total_sets !== $total_collection) {
+            echo "Processing required";
             //process data into redis
-            $compare = $this->redis->hget($key_name, 'total:sets');
             Helpers::dump($total_collection);
-            Helpers::dump($compare);
+            Helpers::dump($total_test);
             Helpers::dump($key);     
-        } 
+        } else {
+            echo "No processing required";
+        }
     }
 
     public function invalidate_hosted_feeds_cache() {
