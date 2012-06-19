@@ -28,9 +28,7 @@ return array(
     'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($company_name, $page=False) {
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->page_number = $page;
-        $hosted->limit = 10;
         $hosted->ignore_cache = True;
-        $feeds = $hosted->fetch_hosted_feedback(); 
-        echo $feeds->html; 
+        echo $hosted->view_fragment();
     }
 );

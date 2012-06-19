@@ -25,7 +25,6 @@ return array(
         $company_info = $company->get_company_info($company_name); 
 
         $hosted = new Feedback\Services\HostedService($company_name);
-        $hosted->limit = 10;
         $hosted->ignore_cache = True;
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
