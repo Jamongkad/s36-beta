@@ -78,6 +78,9 @@ Checky.prototype.init = function() {
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
                 if(collection_count > 0) { 
+                   
+                    $.ajax({url: "/feedback/bust_hostfeed_data"});
+
                     $.ajax({
                         type: "POST"      
                       , data: {  
