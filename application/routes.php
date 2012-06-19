@@ -28,19 +28,17 @@ return array(
         $hosted->limit = 10;
         $hosted->ignore_cache = True;
         $hosted->fetch_hosted_feedback(); 
-        $hosted->build_data(); 
-        $hosted->fetch_data_by_set();
-        
-        /*
+        $hosted->build_data();         
+
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_canonical_widget($company_name);
 
         $deploy_env = Config::get('application.deploy_env');
 
         return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
-                                                  , Array(  'company' => $company_info, 'feeds' => $hosted->return_html()
+                                                  , Array(  'company' => $company_info, 'feeds' => $hosted->view_fragment()
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
-        */
+
     },
 
     'GET /(:any)/submit' => function($company_name) {
