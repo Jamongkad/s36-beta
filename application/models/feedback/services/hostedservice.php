@@ -158,8 +158,4 @@ class HostedService {
         }
 
     }
-
-    public function invalidate_hosted_feeds_cache() {
-        return $this->cache->invalidate_cache();
-    }
 }

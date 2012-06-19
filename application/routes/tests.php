@@ -247,8 +247,6 @@ return array(
         $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
-        $test->limit = 10;
-        $test->ignore_cache = True;
         $test->debug = False;
 
         $test->fetch_hosted_feedback(); 
