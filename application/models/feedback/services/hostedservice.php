@@ -36,16 +36,18 @@ class HostedService {
         $this->cache->key_name = "hosted:feeds";
         $this->cache->filter_array = Array(
             'page_no' => $this->page_number
+            /*
           , 'units' => $this->units
           , 'limit' => $this->limit
           , 'offset' => $this->offset
+          */
           , 'company_name' => $this->company_name
         );
 
         $this->cache->generate_keys();
 
         if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
-            return $this->original_data();
+            $this->original_data();
         } else { 
             return $this->cached_data($data_obj);
         }
@@ -54,26 +56,22 @@ class HostedService {
     public function original_data() { 
         
         $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
-        $collection = $this->collection_data($feeds);
-        $this->collection = $collection;
-
+        $this->collection = $this->collection_data($feeds);
+        /*
         if($this->debug == False) { 
+
             $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
                                          , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
                                         )->get();
 
             $this->num_rows = $feeds->total_rows;
             $this->number_of_pages = $feeds->number_of_pages;
-            $this->pages = $feeds->pages;
+            $this->pages = $feeds->pages; 
         }
-
         if($this->ignore_cache === False) {
             $this->cache->set_cache($collection);                                                                              
         }
-    }
-
-    public function return_collection() {
-        return $this->collection;     
+        */
     }
 
     public function return_html() { 
@@ -101,7 +99,7 @@ class HostedService {
 
             } else {
                 if($this->debug == True) { 
-                    $featured_feeds[] = Array($feed->id, $feed->date); //$feed->id;
+                    $featured_feeds[] = Array($feed->id, $feed->date); 
                 } else {
                     $featured_feeds[] = $feed;
                 } 
@@ -122,8 +120,7 @@ class HostedService {
         }
         
         //Debugger
-        if($this->debug == True) { 
-            /*
+        if($this->debug == True) {          
             Helpers::dump("Featured");
             Helpers::dump($featured_feeds);
 
@@ -131,12 +128,11 @@ class HostedService {
             Helpers::dump($published_feeds);
 
             Helpers::dump("Children"); 
-            Helpers::dump($children_collection);        
-            */
+            Helpers::dump($children_collection);         
         }
 
         //pre count for performance.
-        $this->featured_count = count($featured_feeds);
+        $this->featured_count  = count($featured_feeds);
         $this->published_count = count($published_feeds);
         
         //decision tree
