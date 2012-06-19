@@ -187,7 +187,7 @@ class HostedService {
         $total_sets = "total:sets";
         
         $key = $this->redis->hgetall($key_name);
-        print_r($key);
+        Helpers::dump($key);
     }
 
     public function invalidate_hosted_feeds_cache() {
