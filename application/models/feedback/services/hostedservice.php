@@ -131,7 +131,6 @@ class HostedService {
 
         $key_name = $this->company_name.":fullpage:data";
         $key_exists = $this->redis->hexists($key_name, "set:".$this->page_number);
-        print_r($this->page_number);
         if($key_exists) {
             $data = $this->redis->hget($key_name, "set:".$this->page_number);     
             return json_decode($data);
