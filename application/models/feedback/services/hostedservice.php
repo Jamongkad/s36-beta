@@ -181,10 +181,10 @@ class HostedService {
     }
 
     public function build_data() {
-        $total_collection = (int)count($this->collection);
-        
         $key_name = $this->company_name.":fullpage:data";
-        $total_set = (int)$this->redis->hget($key_name, 'total:set');
+
+        $total_collection = (int)count($this->collection);
+        $total_set = (int)$this->redis->hget($key_name, 'total:set');       
         
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
@@ -193,6 +193,9 @@ class HostedService {
             Helpers::dump($total_collection);
             Helpers::dump($total_set);
             Helpers::dump($key);     
+            foreach($this->collection as $ky => $vl) {
+                Helpers::dump($ky);
+            }
         } else {
             echo "No processing required";
         }
