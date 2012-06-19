@@ -28,6 +28,8 @@ return array(
     'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($company_name, $page=False) {
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->page_number = $page;
+
+        $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
         echo $hosted->view_fragment();
     }
