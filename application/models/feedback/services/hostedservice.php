@@ -184,7 +184,7 @@ class HostedService {
 
         $key_name = $this->company_name.":fullpage:data";
 
-        $total_collection = (int)count($this->collection, COUNT_RECURSIVE);
+        $total_collection = count($this->collection, COUNT_RECURSIVE);
         $total_set = (int)$this->redis->hget($key_name, 'total:set');       
 
         Helpers::dump($total_collection);
