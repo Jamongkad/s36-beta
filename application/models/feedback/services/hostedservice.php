@@ -17,6 +17,9 @@ class HostedService {
     private $num_rows;
     private $number_of_pages;
     private $pages;
+
+    private $featured_count;
+    private $published_count;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -153,21 +156,21 @@ class HostedService {
         }
 
         //pre count for performance.
-        $featured_count = count($featured_feeds);
-        $published_count = count($published_feeds);
+        $this->featured_count = count($featured_feeds);
+        $this->published_count = count($published_feeds);
         
         //decision tree
-        if($featured_count == 1)  {
+        if($this->featured_count == 1)  {
             $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
             $final_node->children = $published_feeds; 
             $collection[] = $final_node;
-        } else if($featured_count == 0 and $published_count > 0) {
+        } else if($this->featured_count == 0 and $this->published_count > 0) {
             $final_node = new StdClass; 
             $final_node->children = $published_feeds;
             $collection[] = $final_node;
         } else { 
-            for($i=0; $i < $featured_count && $i < $children_collection; $i++) {
+            for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
                 $final_node = new StdClass;
                 $final_node->head = $featured_feeds[$i];
                 if(isset($children_collection[$i])) {
@@ -185,10 +188,11 @@ class HostedService {
         $key_name = $this->company_name.":fullpage:data";
 
         $total_collection = (int)count($this->collection, COUNT_RECURSIVE);
-        $total_set = (int)$this->redis->hget($key_name, 'total:set');       
+        $total_countable_collection = $this->featured_count + $this->published_count;
+        $total_set        = (int)$this->redis->hget($key_name, 'total:set');       
 
-        Helpers::dump($this->collection);
-        
+        Helpers::dump($total_countable_collection);
+        /* 
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
             echo "Processing required";
@@ -203,7 +207,7 @@ class HostedService {
         } else {
             echo "No processing required";
         }
-
+        */
     }
 
     public function invalidate_hosted_feeds_cache() {
