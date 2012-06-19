@@ -385,7 +385,7 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
-    public function televised_feedback($company_name, $offset=0, $limit=4) {
+    public function televised_feedback($company_name) {
         $sql = "
             SELECT 
                 ".$this->select_vars."
@@ -416,20 +416,11 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
-        $sth->bindparam(':offset', $offset, PDO::PARAM_INT);
-        $sth->bindparam(':limit', $limit, PDO::PARAM_INT);
 
         $sth->execute();
 
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $total = $row_count->fetchColumn();
-        $page_count = ceil($total/$limit);
-
         $result_obj = new StdClass;
         $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $result_obj->total_rows = $total;
-        $result_obj->number_of_pages = $page_count;
-        $result_obj->pages = range(1, $page_count);
         return $result_obj; 
     }
     

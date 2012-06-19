@@ -46,7 +46,7 @@ class HostedService {
 
     public function collection_data() {
 
-        $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
+        $feeds = $this->feedback->televised_feedback($this->company_name);
 
         $collection = Array();
         $featured_feeds = Array();
@@ -149,7 +149,6 @@ class HostedService {
         if(!$key || $total_set !== $total_collection) {
             //echo "Processing";
             //process data into redis
-            print_r($this->collection);
             $this->redis->hset($key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
                 $index = $ky + 1;
