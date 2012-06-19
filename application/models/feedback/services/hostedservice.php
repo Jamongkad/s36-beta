@@ -180,9 +180,14 @@ class HostedService {
         return $collection;
     }
 
-    public function create_pagination() {
-        $this->redis;
-        print_r($this->collection);
+    public function build_data() {
+        $total_collection = count($this->collection);
+        
+        $key_name = $this->company_name.":fullpage:data";
+        $total_sets = "total:sets";
+        
+        $key = $this->redis->hgetall($key_name);
+        print_r($key);
     }
 
     public function invalidate_hosted_feeds_cache() {
