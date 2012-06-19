@@ -5,7 +5,7 @@ use Halcyonic, redisent;
 
 class HostedService {
     
-    public $page_number = 1;
+    public $page_number = 0;
     public $units = 4;
     public $limit = 8;
     public $offset = 0;
@@ -124,6 +124,10 @@ class HostedService {
     }
 
     public function fetch_data_by_set() {
+
+        if(!$this->page_number) { 
+            $this->page_number = 1; 
+        }
 
         $key_name = $this->company_name.":fullpage:data";
         $key_exists = $this->redis->hexists($key_name, "set:".$this->page_number);
