@@ -250,7 +250,7 @@ return array(
         $test->ignore_cache = True;
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
-        $test->create_pagination();
+        $test->build_data();
         //Helpers::dump($test->return_collection());
 
         $time_end = microtime(True);
