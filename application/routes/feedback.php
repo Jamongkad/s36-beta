@@ -103,6 +103,12 @@ return array(
     }),
 
     //Ajax Routes...
+    'GET /feedback/bust_hostfeed_data' => function() { 
+        $company_name = Input::get('subdomain');
+        $hosted = new Feedback\Services\HostedService($company_name);
+        $hosted->bust_hostfeed_data();
+    },
+
     'POST /feedback/changestatus' => function() use ($feedback) { 
         $feedback->_change_feedback('status', Input::get('feed_id'), Input::get('select_val'));
     },
@@ -141,11 +147,6 @@ return array(
        
         if($cat_state == null) {
             //echo "Inbox Operation";
-            if($mode == 'feature' || $mode == 'publish' || $mode == 'inbox') { 
-                $company_name = Input::get('subdomain');
-                $hosted = new Feedback\Services\HostedService($company_name);
-                $hosted->bust_hostfeed_data();
-            }
             return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
        

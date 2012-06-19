@@ -206,6 +206,8 @@ InboxStatusChange.prototype.initialize = function() {
         var identifier = $(this).attr('class');         
         var us = $(this);
 
+        bust_hostfeed_data();
+
         if(identifier == 'check') {
             var check = new CheckStateObject(us);
             check.process();
@@ -225,4 +227,10 @@ InboxStatusChange.prototype.initialize = function() {
         }
 
     })
+}
+
+function bust_hostfeed_data() {
+    $.ajax({
+        url: "/feedback/bust_hostfeed_data"   
+    });
 }
