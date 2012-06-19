@@ -243,8 +243,8 @@ return array(
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
-        $time_start = microtime(True);
 
+        $time_start = microtime(True);
         $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
         $test->limit = 10;

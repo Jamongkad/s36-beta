@@ -26,6 +26,10 @@ class HostedService {
         $this->feedback = new DBFeedback;
         $this->cache = new Halcyonic\Services\Cache;
         $this->redis = new redisent\Redis;
+
+        if($this->page_number === False) { 
+            $this->page_number = 1; 
+        }
     }
 
     public function fetch_hosted_feedback() {
@@ -47,17 +51,17 @@ class HostedService {
         $this->cache->generate_keys();
 
         if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
-            $this->original_data();
+            //$this->original_data();
+            $this->collection = $this->collection_data(); 
         } else { 
             return $this->cached_data($data_obj);
         }
     }
-
+    /*
     public function original_data() { 
         
         $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
-        $this->collection = $this->collection_data($feeds);
-        /*
+        $this->collection = $this->collection_data($feeds); 
         if($this->debug == False) { 
 
             $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
@@ -71,8 +75,9 @@ class HostedService {
         if($this->ignore_cache === False) {
             $this->cache->set_cache($collection);                                                                              
         }
-        */
+    
     }
+    */
 
     public function return_html() { 
         return $this->html;     
@@ -82,8 +87,10 @@ class HostedService {
         return json_decode($data_obj);
     }
 
-    public function collection_data($feeds) {
-        
+    public function collection_data() {
+
+        $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
+
         $collection = Array();
         $featured_feeds = Array();
         $published_feeds = Array();
