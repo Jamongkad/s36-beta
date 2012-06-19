@@ -195,7 +195,7 @@ class HostedService {
             Helpers::dump($key);     
             foreach($this->collection as $ky => $vl) {
                 $index = $ky + 1;
-                Helpers::dump($index);
+                Helpers::dump($vl);
             }
         } else {
             echo "No processing required";
