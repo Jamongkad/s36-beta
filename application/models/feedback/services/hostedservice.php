@@ -27,7 +27,7 @@ class HostedService {
         $this->cache = new Halcyonic\Services\Cache;
         $this->redis = new redisent\Redis;
 
-        if($this->page_number == False) { 
+        if(!$this->page_number) { 
             $this->page_number = 1; 
         }
     }
