@@ -144,6 +144,8 @@ class HostedService {
         $total_collection = $this->featured_count + $this->published_count;
         $total_set        = (int)$this->redis->hget($key_name, 'total:set');       
 
+        print_r($total_collection);
+
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
             echo "Processing";
