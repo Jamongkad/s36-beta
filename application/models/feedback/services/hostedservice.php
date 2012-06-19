@@ -181,7 +181,7 @@ class HostedService {
     }
 
     public function create_pagination() {
-             
+        print_r($this->redis);
     }
 
     public function invalidate_hosted_feeds_cache() {

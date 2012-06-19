@@ -99,7 +99,7 @@ return array(
      },
 
     'GET /tests/test_email_replyto' => function() {        
-        $feedback = new Feedback\Repositories\DBFeedback;
+        $feedback  = new Feedback\Repositories\DBFeedback;
         $replydata = new Email\Entities\ReplyData;
         
         $replydata->subject = "Mathew is a dickie";
@@ -200,7 +200,7 @@ return array(
         $inbox_service->set_filters($filters);
         $feedback = $inbox_service->present_feedback();
         Helpers::dump($feedback);
-        
+                 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("New Algorithm: ".$time." seconds");
@@ -250,7 +250,9 @@ return array(
         $test->ignore_cache = True;
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
+        $test->create_pagination();
         Helpers::dump($test->return_collection());
+
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");
