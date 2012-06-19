@@ -29,7 +29,7 @@ return array(
         $hosted->ignore_cache = True;
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data(); 
-        $hosted->fetch_data_by_set()
+        $hosted->fetch_data_by_set();
         
         /*
         $dbw = new Widget\Repositories\DBWidget;
