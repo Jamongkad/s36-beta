@@ -121,6 +121,7 @@ class HostedService {
         
         //Debugger
         if($this->debug == True) {          
+            /*
             Helpers::dump("Featured");
             Helpers::dump($featured_feeds);
 
@@ -129,6 +130,7 @@ class HostedService {
 
             Helpers::dump("Children"); 
             Helpers::dump($children_collection);         
+            */
         }
 
         //pre count for performance.
@@ -178,7 +180,7 @@ class HostedService {
 
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
-            echo "Processing required";
+            echo "Processing";
             //process data into redis
             $this->redis->hset($key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
@@ -186,7 +188,7 @@ class HostedService {
                 $this->redis->hset($key_name, "set:".$index, json_encode($vl));
             }
         } else {
-            echo "No processing required";
+            echo "No processing";
         }
 
     }
