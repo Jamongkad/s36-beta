@@ -33,54 +33,13 @@ class HostedService {
     }
 
     public function fetch_hosted_feedback() {
-
-        if(!$this->page_number) { $this->page_number = 1; }
-        $this->offset = ($this->page_number - 1) * $this->limit;
-        
-        $this->cache->key_name = "hosted:feeds";
-        $this->cache->filter_array = Array(
-            'page_no' => $this->page_number
-            /*
-          , 'units' => $this->units
-          , 'limit' => $this->limit
-          , 'offset' => $this->offset
-          */
-          , 'company_name' => $this->company_name
-        );
-
-        $this->cache->generate_keys();
-
-        if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
-            //$this->original_data();
-            $this->collection = $this->collection_data(); 
-        } else { 
-            return $this->cached_data($data_obj);
-        }
+        $this->collection = $this->collection_data(); 
     }
-    /*
-    public function original_data() { 
-        
-        $feeds = $this->feedback->televised_feedback($this->company_name, $this->offset, $this->limit);
-        $this->collection = $this->collection_data($feeds); 
-        if($this->debug == False) { 
 
-            $this->html = View::make(  'hosted/partials/hosted_feedback_partial_view'
-                                         , Array('collection' => $collection, 'fb_id' => Config::get('application.fb_id'))
-                                        )->get();
-
-            $this->num_rows = $feeds->total_rows;
-            $this->number_of_pages = $feeds->number_of_pages;
-            $this->pages = $feeds->pages; 
-        }
-        if($this->ignore_cache === False) {
-            $this->cache->set_cache($collection);                                                                              
-        }
-    
-    }
-    */
-
-    public function return_html() { 
-        return $this->html;     
+    public function view_fragment() { 
+        return View::make('hosted/partials/hosted_feedback_partial_view', 
+            Array('collection' => $this->collection, 'fb_id' => Config::get('application.fb_id'))
+        )->get();
     }
 
     public function cached_data($data_obj) {
