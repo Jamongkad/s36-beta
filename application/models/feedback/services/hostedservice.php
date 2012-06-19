@@ -186,13 +186,9 @@ class HostedService {
     public function build_data() {
 
         $key_name = $this->company_name.":fullpage:data";
-
-        $total_collection = (int)count($this->collection, COUNT_RECURSIVE);
-        $total_countable_collection = $this->featured_count + $this->published_count;
+        $total_collection = $this->featured_count + $this->published_count;
         $total_set        = (int)$this->redis->hget($key_name, 'total:set');       
 
-        Helpers::dump($total_countable_collection);
-        /* 
         $key = $this->redis->hgetall($key_name);
         if(!$key || $total_set !== $total_collection) {
             echo "Processing required";
@@ -207,7 +203,7 @@ class HostedService {
         } else {
             echo "No processing required";
         }
-        */
+
     }
 
     public function invalidate_hosted_feeds_cache() {
