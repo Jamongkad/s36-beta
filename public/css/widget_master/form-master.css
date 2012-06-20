@@ -280,3 +280,7 @@ select.reg-text-active{font-weight:normal;}
 
 /* added 6/20/2012 */
 .tr-photo-upload{background:#e6e8e8;}
+
+div.feedback {
+    padding-top:25px;  
+}

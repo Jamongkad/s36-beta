@@ -135,17 +135,17 @@
                         </ul>
                     </div>
                     <br />
-                    <h3>Tell us what you think in 200 words or less 
-                    <!--<a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a>-->
-                    </h3>
+                    <h3>Tell us what you think in 200 words or less</h3>
                     <!--
                     <div id="s36_whattowrite">
-                    	<h4><?=$form_question?></h4>
+                    	<h4></h4>
                         <br />
                     </div>
                     -->
                     <div class="feedback">
-                        <textarea id="feedback_text" class="regular-textarea"></textarea>
+                        <textarea id="feedback_text" class="regular-textarea">
+<?=$form_question?>
+                        </textarea>
                     </div>
                 </div>
             </div>
