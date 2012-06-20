@@ -4,7 +4,7 @@ return array(
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
-        $limit = 5;
+        $limit = 1;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
