@@ -8,6 +8,9 @@ return array(
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
+        print_r($filter);
+        print_r($choice);
+
         $filters = array(
               'limit'=> $limit
             , 'site_id'=> Input::get('site_id')
