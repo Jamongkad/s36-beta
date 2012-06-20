@@ -155,6 +155,7 @@ class DBFeedback extends S36DataObject {
         $result_obj = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
+        print_r($date_result);
         return $result_obj; 
     }
 
