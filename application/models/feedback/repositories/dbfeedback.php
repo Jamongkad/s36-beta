@@ -99,7 +99,8 @@ class DBFeedback extends S36DataObject {
             GROUP BY
                 date_format
             ORDER BY
-                Feedback.dtAdded DESC
+                '.$opts['date_statement'].' 
+            LIMIT :offset, :limit
         ';
 
         $company_id = $this->company_id;
@@ -109,6 +110,8 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
+        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
 
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
