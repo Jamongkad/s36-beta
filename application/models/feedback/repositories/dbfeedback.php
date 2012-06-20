@@ -99,6 +99,7 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 AND Company.companyId = :company_id
                 '.$opts['category_statement'].'
+                '.$opts['filed_statement'].'
                 '.$opts['status_statement'].'
                 '.$opts['priority_statement'].'
                 '.$opts['sql_statement'].'
