@@ -121,6 +121,11 @@ PageCycle.prototype.cycle_prev = function() {
 
 	        this._debug("Page 1");	
 
+            if($("#feedback_text").val() == $("#feedback_text").attr('title')) { 
+				S36Form.add_error("Please provide feedback."); 
+                return false 
+            }
+
             if((this.rating == 5) || (this.rating == 4) || (this.rating == 3)) {
                 //console.log(this.rating);    
                 $('#good-feedback-message').show();  
