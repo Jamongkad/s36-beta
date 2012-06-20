@@ -101,6 +101,7 @@ class DBFeedback extends S36DataObject {
                 AND Feedback.isDeleted = :is_deleted
                 AND Feedback.isPublished = :is_published
                 AND Feedback.isFeatured = :is_featured
+                '.$opts['category_statement'].'
             GROUP BY
                 date_format
             ORDER BY
