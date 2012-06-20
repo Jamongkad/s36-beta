@@ -248,7 +248,7 @@ class DBFeedback extends S36DataObject {
                     WHERE 1=1
                         AND Feedback.feedbackId IN ('.$in_query.')
                     ORDER BY
-                        Feedback.rating DESC
+                        Feedback.dtAdded DESC
         ');
 
         foreach($ids as $k => $id) {

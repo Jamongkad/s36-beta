@@ -82,9 +82,8 @@ class InboxService {
                 if(!$this->ignore_cache) {
                     $this->cache->set_cache($data_obj);     
                 }
-               
+ 
                 return $data_obj; 
-
             } else {
                 //echo "from cache";
                 return json_decode($data_obj);
