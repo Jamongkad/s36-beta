@@ -96,7 +96,7 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 AND Company.companyId = :company_id
             GROUP BY
-                date_format
+                1
         ';
 
         $company_id = $this->company_id;
