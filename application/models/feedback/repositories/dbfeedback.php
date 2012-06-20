@@ -98,7 +98,6 @@ class DBFeedback extends S36DataObject {
                    ON Category.categoryId = Feedback.categoryId
             WHERE 1=1
                 AND Company.companyId = :company_id
-                '.$opts['siteid_statement'].'
                 '.$opts['category_statement'].'
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
