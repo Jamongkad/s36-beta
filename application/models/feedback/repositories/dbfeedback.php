@@ -142,7 +142,6 @@ class DBFeedback extends S36DataObject {
         }
 
         $sth = $this->dbh->prepare($date_sql);
-        print_r($company_id);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
