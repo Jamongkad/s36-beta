@@ -79,7 +79,7 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
-        /*
+
         $date_sql = '
             SELECT 
                 DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
@@ -125,8 +125,7 @@ class DBFeedback extends S36DataObject {
         $result_obj = new StdClass;
         $result_obj->result = $date_result;
         return $result_obj; 
-        */
-
+        /*
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
@@ -204,7 +203,7 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
-
+        */
     }
 
     //TODO: Caching Candidate -> Priority Number One
