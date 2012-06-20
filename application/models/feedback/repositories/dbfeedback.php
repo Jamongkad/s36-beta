@@ -79,7 +79,7 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
-        Helpers::dump($opts)
+        Helpers::dump($opts);
         $date_sql = '
             SELECT 
                 DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
