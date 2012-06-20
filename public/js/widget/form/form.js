@@ -67,4 +67,16 @@ jQuery(function($) {
     $("#feedback_text").each(function() {
         $(this).val($(this)[0].title);
     });
+
+    $("#feedback_text").focus(function(i){          		 
+        if ($(this).val() == $(this)[0].title){ 
+            $(this).val("");
+        }
+    });
+
+    $("#feedback_text").blur(function(){
+        if ($.trim($(this).val()) == ""){
+            $(this).val($(this)[0].title);
+        }
+    });
 });
