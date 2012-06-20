@@ -97,7 +97,7 @@ class InboxService {
 
         $date_statement = "Feedback.dtAdded DESC";
 
-        $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.categoryId = 23';       
+        $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.categoryId = "default"'; 
         $filters['featured'] = 0;
         $filters['published'] = 0;
         $filters['deleted'] = 0;
