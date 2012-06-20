@@ -224,7 +224,8 @@ class InboxService {
         });
 
         $category_statement = $this->_sql_statement_decorator($filters['category'], function($category) { 
-            return "AND Category.intName = $category";      
+            //return "AND Category.intName = $category";      
+            return "AND Category.categoryId = 23";
         });
 
         $status_statement = $this->_sql_statement_decorator($filters['status'], function($status) { 
