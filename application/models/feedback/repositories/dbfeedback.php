@@ -79,6 +79,37 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
+        $date_sql = '
+            SELECT 
+                DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
+            FROM
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                   ON Category.categoryId = Feedback.categoryId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+        ';
+
+        $company_id = $this->company_id;
+        if(!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth = $this->dbh->prepare($date_sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
+        $sth->execute();
+
+        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        $result_obj = new StdClass;
+        $result_obj->result = $date_result;
+        return $result_obj; 
         /*
         $date_sql = '
             SELECT   
