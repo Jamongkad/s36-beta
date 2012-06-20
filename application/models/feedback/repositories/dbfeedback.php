@@ -79,6 +79,7 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
+        /*
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
@@ -120,11 +121,9 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
-                /*
                 AND Feedback.isDeleted = :is_deleted
                 AND Feedback.isPublished = :is_published
                 AND Feedback.isFeatured = :is_featured
-                */
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
                 '.$opts['category_statement'].'
@@ -135,7 +134,7 @@ class DBFeedback extends S36DataObject {
                 date_format 
             ORDER BY 
                 '.$opts['date_statement'].' 
-            /*LIMIT :offset, :limit*/
+            LIMIT :offset, :limit
         ';
 
         $company_id = $this->company_id;
@@ -145,23 +144,20 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
-        /*
         $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
         $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
         $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
-        */
         $sth->execute();
 
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
-
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result_obj = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
-        Helpers::dump($result_obj);
         return $result_obj; 
+        */
     }
 
     //TODO: Caching Candidate -> Priority Number One
