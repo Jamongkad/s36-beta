@@ -311,7 +311,7 @@
                                                         <div class="avatar">
 
                                                             <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture'
-                                                                                                                , 'style' => ' border:2px solid #CCC;'
+                                                                                                                , 'style' => 'border:2px solid #CCC;'
                                                                                                                 , 'width' => 97))?>
                                                         
                                                         </div>
