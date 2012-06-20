@@ -120,6 +120,9 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
+                AND Feedback.isDeleted = :is_deleted
+                AND Feedback.isPublished = :is_published
+                AND Feedback.isFeatured = :is_featured
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
                 '.$opts['category_statement'].'
@@ -139,7 +142,11 @@ class DBFeedback extends S36DataObject {
         }
 
         $sth = $this->dbh->prepare($date_sql);
+        print_r($company_id);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
+        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
@@ -149,7 +156,6 @@ class DBFeedback extends S36DataObject {
         $result_obj = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
-        //Helpers::dump($result_obj);
         return $result_obj; 
     }
 
