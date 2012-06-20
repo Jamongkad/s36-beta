@@ -98,6 +98,8 @@ class DBFeedback extends S36DataObject {
                 AND Company.companyId = :company_id
             GROUP BY
                 date_format
+            ORDER BY
+                Feedback.dtAdded DESC
         ';
 
         $company_id = $this->company_id;
