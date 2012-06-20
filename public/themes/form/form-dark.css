@@ -279,3 +279,7 @@ input:focus{border:1px solid #AAA;outline:#5d5d5d;box-shadow:#222 0px 0px 0px 3p
 .review-edit-feedback a{color:#afb1b2;}
 .review-feedback-box .regular-textarea{background:#FFF;}
 .tr-photo-upload{background:#202020 !important;color:#474747;}
+
+div.feedback {
+    padding-top:25px;  
+}

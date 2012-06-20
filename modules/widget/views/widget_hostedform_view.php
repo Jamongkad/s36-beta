@@ -115,10 +115,7 @@
                                 	<br /><br />
                                     <h3>Rate your overall experience</h3>
                                     <br /><br /><br />
-                                    <h3>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
-                                    <div id="s36_whattowrite">
-                    	                <h4><?=$form_question?></h4>
-                                    </div>
+                                    <h3>Tell us what you think in 200 words or less</h3>
                                 </div>
                                 <div style="float:left;width:473px;">
                                 	<br />
@@ -151,7 +148,7 @@
                                     </div>
                                     <br />
                                     <div class="feedback">
-                                        <textarea id="feedback_text" class="regular-textarea"></textarea>
+                                        <textarea id="feedback_text" class="regular-textarea" title="<?=trim($form_question)?>"></textarea>
                                     </div>
                                 </div>
                             </div>
