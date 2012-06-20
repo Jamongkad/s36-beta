@@ -64,7 +64,9 @@ class InboxService {
                 $this->filters['offset'] = $offset;
 
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);
-
+                
+                Helpers::dump($date_result);
+                /*
                 $this->pagination->records($date_result->total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
                     
@@ -84,6 +86,7 @@ class InboxService {
                 }
                
                 return $data_obj; 
+                */
             } else {
                 //echo "from cache";
                 return json_decode($data_obj);
