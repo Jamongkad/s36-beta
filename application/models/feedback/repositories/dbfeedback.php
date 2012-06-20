@@ -82,6 +82,7 @@ class DBFeedback extends S36DataObject {
         $date_sql = '
             SELECT 
                 DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
+              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
             FROM
                 Feedback
             INNER JOIN
