@@ -144,7 +144,7 @@
                     -->
                     <div class="feedback">
                         <textarea id="feedback_text" class="regular-textarea">
-<?=$form_question?>
+<?=trim($form_question)?>
                         </textarea>
                     </div>
                 </div>
