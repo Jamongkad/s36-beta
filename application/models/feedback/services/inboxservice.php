@@ -97,7 +97,7 @@ class InboxService {
 
         $date_statement = "Feedback.dtAdded DESC";
 
-        $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.intName = "default"';       
+        $filters['filed_statement'] = ($filters['filter'] == 'filed') ? 'AND Category.intName != "default"' : 'AND Category.categoryId = 23';       
         $filters['featured'] = 0;
         $filters['published'] = 0;
         $filters['deleted'] = 0;
@@ -224,8 +224,7 @@ class InboxService {
         });
 
         $category_statement = $this->_sql_statement_decorator($filters['category'], function($category) { 
-            //return "AND Category.intName = $category";      
-            return "AND Category.categoryId = 23";
+            return "AND Category.intName = $category";      
         });
 
         $status_statement = $this->_sql_statement_decorator($filters['status'], function($status) { 
