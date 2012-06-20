@@ -309,11 +309,9 @@
                                                 <tr class="tr-photo-upload">
                                                     <td>
                                                         <div class="avatar">
-
                                                             <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture'
                                                                                                                 , 'style' => 'border:2px solid #CCC;'
-                                                                                                                , 'width' => 97))?>
-                                                        
+                                                                                                                , 'width' => 97))?> 
                                                         </div>
                                                     </td>
                                                     <td valign="top">

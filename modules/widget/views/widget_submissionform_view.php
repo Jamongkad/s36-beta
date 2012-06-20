@@ -135,10 +135,14 @@
                         </ul>
                     </div>
                     <br />
-                    <h3>Tell us what you think in 200 words or less <a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a></h3>
+                    <h3>Tell us what you think in 200 words or less 
+                    <!--<a href="javascript:;" id="s36_tip" class="s36_tip">What to write?</a>-->
+                    </h3>
+                    <!--
                     <div id="s36_whattowrite">
                     	<h4><?=$form_question?></h4>
                     <br />
+                    -->
                     </div>
                     <div class="feedback">
                         <textarea id="feedback_text" class="regular-textarea"></textarea>
@@ -286,12 +290,10 @@
                             </td></tr>                         
                             <tr bgcolor="#e6e8e8"> 
                                  <td colspan="2"> 
-                                     <div class="avatar"> 
-                                     
-                                     <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture' 
-                                                                                         , 'style' => ' border:2px solid #CCC;' 
-                                                                                         , 'width' => 97))?> 
-                                      
+                                     <div class="avatar">  
+                                         <?=HTML::image('img/blank-avatar.jpg', false, array( 'id' => 'profile_picture' 
+                                                                                             , 'style' => ' border:2px solid #CCC;' 
+                                                                                             , 'width' => 97))?>  
                                      </div> 
                                      <div class="avatartext"> 
                                          <div style="padding-left:10px;font-weight:bold;"> 
