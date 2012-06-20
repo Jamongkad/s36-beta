@@ -98,7 +98,14 @@ class DBFeedback extends S36DataObject {
                    ON Category.categoryId = Feedback.categoryId
             WHERE 1=1
                 AND Company.companyId = :company_id
+                '.$opts['siteid_statement'].'
                 '.$opts['category_statement'].'
+                '.$opts['rating_statement'].'
+                '.$opts['filed_statement'].'
+                '.$opts['category_statement'].'
+                '.$opts['status_statement'].'
+                '.$opts['priority_statement'].'
+                '.$opts['sql_statement'].'
             GROUP BY
                 date_format
             ORDER BY
