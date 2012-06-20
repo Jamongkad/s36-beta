@@ -141,9 +141,9 @@
                     <!--
                     <div id="s36_whattowrite">
                     	<h4><?=$form_question?></h4>
-                    <br />
-                    -->
+                        <br />
                     </div>
+                    -->
                     <div class="feedback">
                         <textarea id="feedback_text" class="regular-textarea"></textarea>
                     </div>
