@@ -84,6 +84,7 @@ class DBFeedback extends S36DataObject {
             SELECT 
                 DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
+              , COUNT(DISTINCT Feedback.feedbackId) AS feedcount
             FROM
                 Feedback
             INNER JOIN
