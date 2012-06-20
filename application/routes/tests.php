@@ -204,7 +204,6 @@ return array(
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("New Algorithm: ".$time." seconds");
-
     }, 
 
     'GET /tests/compress' => function() {
