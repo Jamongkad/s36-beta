@@ -95,8 +95,10 @@ class DBFeedback extends S36DataObject {
                    ON Category.categoryId = Feedback.categoryId
             WHERE 1=1
                 AND Company.companyId = :company_id
+            /*
             GROUP BY
                 1
+            */
         ';
 
         $company_id = $this->company_id;
