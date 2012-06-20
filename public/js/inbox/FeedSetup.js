@@ -269,10 +269,10 @@ jQuery(function($) {
             $(this).val($(this)[0].title);
         }
     });
+
     $(".large-textarea, .regular-textarea, .form-text, .large-text").each(function() {
         $(this).val($(this)[0].title);
     });
-
 
     $('.display-option').click(function(){
         run_display_option();

@@ -62,4 +62,9 @@ jQuery(function($) {
     $('#edit-review-feedback').click(function(){S36Form.edit_feedback()});
     $('#save-edited-feedback').hide();
     $('#save-edited-feedback').click(function(){S36Form.save_edited_feedback()});
+    
+    //feedback helper text
+    $("#feedback_text").each(function() {
+        $(this).val($(this)[0].title);
+    });
 });

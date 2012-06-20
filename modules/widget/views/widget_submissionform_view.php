@@ -136,16 +136,8 @@
                     </div>
                     <br />
                     <h3>Tell us what you think in 200 words or less</h3>
-                    <!--
-                    <div id="s36_whattowrite">
-                    	<h4></h4>
-                        <br />
-                    </div>
-                    -->
                     <div class="feedback">
-                        <textarea id="feedback_text" class="regular-textarea">
-<?=trim($form_question)?>
-                        </textarea>
+                        <textarea id="feedback_text" class="regular-textarea" title="<?=trim($form_question)?>"></textarea>
                     </div>
                 </div>
             </div>
