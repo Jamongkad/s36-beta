@@ -121,11 +121,6 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
-                /*
-                AND Feedback.isDeleted = :is_deleted
-                AND Feedback.isPublished = :is_published
-                AND Feedback.isFeatured = :is_featured
-                */
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
                 '.$opts['category_statement'].'
