@@ -100,10 +100,7 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        /* DEPRECATED
-        $addfeedback = new AddFeedback;
-        $addfeedback->create_feedback_with_profile(); 
-        */ 
+        /*
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
                          , new FeedbackDetails
@@ -111,6 +108,8 @@ return array(
                          , new HalcyonicService
                         );  
         return $addfeedback->perform();
+        */
+        Helpers::dump(Input::get());
     }), 
 
     //TODO: REFACTOR THIS BITCH

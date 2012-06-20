@@ -30,6 +30,7 @@ class SubmissionService {
 
         $this->dbdashboard->company_id = $this->company_id;
         $this->dbdashboard->write_summary();
+
         //Upon new feedback always invalidate cache       
         $halcyon = new HalcyonicService;
         $halcyon->company_id = $this->company_id;
