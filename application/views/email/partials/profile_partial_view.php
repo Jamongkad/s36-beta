@@ -11,7 +11,7 @@
             <strong><?=$feedback_data->position?></strong><br />
             <?=$feedback_data->companyname?><br />
             <a href="#" target="_blank"><?=$feedback_data->url?></a><br />
-            <?=$feedback_data->city?> 
+            <?=$feedback_data->city?>, <?=$feedback_data->country?>
         <?endif?>
     </td>
 </tr>
