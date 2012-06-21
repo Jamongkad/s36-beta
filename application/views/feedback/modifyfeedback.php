@@ -210,7 +210,7 @@ $(function() {
                  <tr>
                      <td class="title">Position:</td>
                      <td><?=$feedback->position?></td>
-                     <?if(!$feedback->position):?>
+                     <?if($feedback->position == false):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null), $null_options)?></td>
@@ -218,7 +218,7 @@ $(function() {
                  <tr>
                      <td class="title">Website:</td>
                      <td><?=$feedback->url?></td> 
-                     <?if(!$feedback->url):?>
+                     <?if($feedback->url == false):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null), $null_options)?></td>
@@ -227,7 +227,7 @@ $(function() {
                      <td class="title">Country:</td>
                      <td> 
                          <?if($feedback->countryname != "Nil"):?>
-                              <?=$feedback->countryname?> <?=$feedback->countrycode?>
+                              <?=$feedback->countryname?>, <?=$feedback->countrycode?>
                          <?endif?>
                      </td> 
                      <?if($feedback->countryname == "Nil" && $feedback->countrycode == 0):?>
