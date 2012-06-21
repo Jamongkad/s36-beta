@@ -59,6 +59,7 @@ var S36Form = new function() {
             $('#hostform_info').css({'width': '50%', 'float': 'left'});
             $('#hostform_photo').show();
 		} else {
+            console.log("Pwet si Boss");
 			$('#form_complete').hide();
             $('#hostform_info').css({'width': '50%', 'position': 'absolute', 'left': '25%'});
             $('#hostform_photo').hide();
