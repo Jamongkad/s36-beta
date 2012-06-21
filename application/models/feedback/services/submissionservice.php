@@ -33,8 +33,6 @@ class SubmissionService {
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $this->company_id;
         $this->halcyonic->save_latest_feedid();
-
-        Helpers::dump(Input::get());
     }
 
     public function metric_response() {

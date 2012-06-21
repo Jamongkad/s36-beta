@@ -58,9 +58,14 @@ class FeedbackDetails extends FeedbackDataTypes {
     }
 
     public function send_email_notification() { 
-        $submission_data = new NewFeedbackSubmissionData;
-        $submission_data->set_feedback($this->dbfeedback->pull_feedback_by_id($this->new_feedback_id))
-                        ->set_sendtoaddresses($this->dbuser->pull_user_emails_by_company_id($this->company_id));
+        $submission_data = new NewFeedbackSubmissionData; 
+        $feedback = $this->dbfeedback->pull_feedback_by_id($this->new_feedback_id);
+        $account_users = $this->dbuser->pull_user_emails_by_company_id($this->company_id);
+
+        Helpers::dump($feedback);
+
+        $submission_data->set_feedback($feedback)
+                        ->set_sendtoaddresses($account_users);
 
         $emailservice = new EmailService($submission_data);
         $emailservice->send_email();
