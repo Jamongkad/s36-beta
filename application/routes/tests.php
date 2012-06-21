@@ -250,7 +250,7 @@ return array(
 
         $test->fetch_hosted_feedback(); 
         $test->build_data();
-        Helpers::dump($test->view_fragment());    
+        Helpers::dump($test);    
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
