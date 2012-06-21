@@ -6,11 +6,11 @@ use \Feedback\Entities\Types\FeedbackDataTypes;
 use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use DBBadWords, DBUser;
-use Input, DB;
+use Input, DB Helpers;
 
 class FeedbackDetails extends FeedbackDataTypes {
 
-    private $feedback_id, $contact_id, $company_id, $feedback_data;
+    private $feedback_id, $contact_id, $company_id, $feedback_data, $feedback_text;
 
     public function __construct() {
         $this->dbfeedback = new DBFeedback;     
@@ -32,6 +32,9 @@ class FeedbackDetails extends FeedbackDataTypes {
      
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
+
+        $this->feedback_text = Helpers::html_cleaner(Input::get('feedback'));
+
         $this->feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $this->contact_id
@@ -39,7 +42,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => Input::get('rating')
-          , 'text' => Input::get('feedback')
+          , 'text' => $this->feedback_text
           , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => date('Y-m-d H:i:s')
         );
@@ -49,7 +52,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $this->new_feedback_id = DB::table('Feedback')->insert_get_id($this->feedback_data);
 
         $post = (object) Array(
-            'feedback_text' => Input::get('feedback')
+            'feedback_text' => $this->feedback_text
           , 'feed_id' => $this->new_feedback_id
         );
 
@@ -61,8 +64,6 @@ class FeedbackDetails extends FeedbackDataTypes {
         $submission_data = new NewFeedbackSubmissionData; 
         $feedback = $this->dbfeedback->pull_feedback_by_id($this->new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->company_id);
-
-        //Helpers::dump($feedback);
 
         $submission_data->set_feedback($feedback)
                         ->set_sendtoaddresses($account_users);
