@@ -32,9 +32,8 @@ class SubmissionService {
         $this->dbdashboard->write_summary();
 
         //Upon new feedback always invalidate cache       
-        $halcyon = new HalcyonicService;
-        $halcyon->company_id = $this->company_id;
-        $halcyon->save_latest_feedid();
+        $this->halcyonic->company_id = $this->company_id;
+        $this->halcyonic->save_latest_feedid();
     }
 
     public function metric_response() {

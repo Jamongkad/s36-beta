@@ -106,7 +106,8 @@ return array(
                          , new DBDashboard
                          , new HalcyonicService
                         );  
-        return $addfeedback->perform(); 
+
+        $addfeedback->perform(); 
         //Helpers::dump(Input::get());
     }), 
 
