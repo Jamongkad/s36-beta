@@ -230,7 +230,7 @@ $(function() {
                               <?=$feedback->countryname?>, <?=$feedback->countrycode?>
                          <?endif?>
                      </td> 
-                     <?if($feedback->countrycode == 0):?>
+                     <?if($feedback->countrycode == '0'):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null), $null_options)?></td>
