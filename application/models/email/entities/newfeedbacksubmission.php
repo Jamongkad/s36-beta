@@ -25,10 +25,12 @@ class NewFeedbackSubmission extends EmailFixture {
             ))->get();     
             
             Helpers::dump($email_html);
+            /*
             $this->postmark->to($address->email)
                            ->subject($this->get_subject())
                            ->html_message($email_html)
                            ->send();         
+            */
         }    
     }
 
