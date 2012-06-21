@@ -13,7 +13,7 @@ return array(
  
         $submission_data = new Email\Entities\NewFeedbackSubmissionData;
         $submission_data->set_feedback($feedback->pull_feedback_by_id(90))
-                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(2));
+                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(1));
 
         $emailservice = new Email\Services\EmailService($submission_data);
         Helpers::dump($emailservice->send_email()); 
@@ -26,7 +26,7 @@ return array(
         $published_data = new Email\Entities\PublishedFeedbackData;
         $published_data->set_publisher_email("ryanchua6@gmail.com")
                        ->set_feedback($feedback->pull_feedback_by_id(90))
-                       ->set_sendtoaddresses($user->pull_user_emails_by_company_id(2));
+                       ->set_sendtoaddresses($user->pull_user_emails_by_company_id(1));
     
         $emailservice = new Email\Services\EmailService($published_data);
         Helpers::dump($emailservice->send_email()); 
