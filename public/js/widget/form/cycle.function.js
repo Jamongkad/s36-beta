@@ -138,9 +138,11 @@ PageCycle.prototype.cycle_prev = function() {
 			if(this.feedback.length > 0){
 				if((this.rating == 2) || (this.rating == 1)){
 					S36Form.show_complete_form(false);
+                    console.log("Chumanga");
 					return 3;
 				}else{
 					S36Form.show_complete_form(true);
+                    console.log("Cheemanga");
 					return 1;
 				}
 			}else{
