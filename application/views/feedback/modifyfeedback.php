@@ -232,6 +232,7 @@ $(function() {
                      </td> 
                      <?if($feedback->countrycode == '0'):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
+                         <?="Choo";?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null), $null_options)?></td>
                  </tr>
