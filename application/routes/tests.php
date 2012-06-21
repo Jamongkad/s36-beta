@@ -257,6 +257,12 @@ return array(
         Helpers::dump("Algorithm: ".$time." seconds");
     },
 
+    'GET /tests/url_in_string' => function() {
+        $str = "My name is mathew of http://mathew.com and http://www.dickie.com";
+        $str = Helpers::html_cleaner($str);
+        Helpers::dump($str);
+    },
+
     'GET /tests/hosted_feedback_cache_invalidate' => function() { 
         $test = new Feedback\Services\HostedService(1);
         $test->invalidate_hosted_feeds_cache(); 
