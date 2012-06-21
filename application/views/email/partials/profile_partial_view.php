@@ -10,8 +10,20 @@
         <?if($feedback_data->rating != "POOR"):?>
             <strong><?=$feedback_data->position?></strong><br />
             <?=$feedback_data->companyname?><br />
-            <a href="<?=$feedback_data->url?>" target="_blank"><?=$feedback_data->url?></a><br />
-            <?=$feedback_data->city?>, <?=$feedback_data->countryname?>
+            <?if($feedback_data->url):?>
+                <a href="<?=$feedback_data->url?>" target="_blank"><?=$feedback_data->url?></a><br />
+            <?endif?>
+            <?if($feedback_data->city && $feedback_data->countryname):?>
+                <?=$feedback_data->city?>, <?=$feedback_data->countryname?>
+            <?endif?>
+
+            <?if($feedback_data->city == true && $feedback_data->countryname == false):?>
+                <?=$feedback_data->city?>
+            <?endif?>
+
+            <?if($feedback_data->city == false && $feedback_data->countryname == true):?>
+                <?=$feedback_data->countryname?>
+            <?endif?>
         <?endif?>
     </td>
 </tr>
