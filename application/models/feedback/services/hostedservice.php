@@ -123,9 +123,9 @@ class HostedService {
             }
         }
         */
-            for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
+            for($i=0; /*$i < $this->featured_count && */$i < $children_collection; $i++) {
                 $final_node = new StdClass;
-                $final_node->head = $featured_feeds[$i];
+                //$final_node->head = $featured_feeds[$i];
                 //if(isset($children_collection[$i])) {
                     $final_node->children = $children_collection[$i];
                 //}
