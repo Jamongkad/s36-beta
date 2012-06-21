@@ -243,7 +243,7 @@ $(function() {
                      <td class="title">Country:</td>
                      <td> 
                          <?if($feedback->countryname != "Nil"):?>
-                              <?=$feedback->countryname?>, <?=$feedback->countrycode?>
+                              <?=$feedback->countryname?>
                          <?endif?>
                      </td> 
                      <?$null_country = ($feedback->countryname == "Nil" && $feedback->countrycode == 0) ? Array('disabled' => 'disabled') : Array();?>
