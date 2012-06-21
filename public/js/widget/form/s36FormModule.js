@@ -479,7 +479,7 @@ var S36Form = new function() {
         $("#back").fadeOut("fast");
 
 		$('#review-name').html(fname+" "+lname);
-		$('#review-position').html(position +" "+company);
+		$('#review-position').html(position +", "+company);
 		$('#review-location').html(location+" "+flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
