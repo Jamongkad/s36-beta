@@ -199,7 +199,7 @@ $(function() {
                  <tr>
                      <td class="title">Company:</td>
                      <td><?=($feedback->companyname == true) ? 'pwet' : 'choo'?></td>
-                     <?if(!$feedback->companyname):?>
+                     <?if($feedback->companyname == false):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
