@@ -62,7 +62,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $feedback = $this->dbfeedback->pull_feedback_by_id($this->new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->company_id);
 
-        Helpers::dump($feedback);
+        //Helpers::dump($feedback);
 
         $submission_data->set_feedback($feedback)
                         ->set_sendtoaddresses($account_users);
