@@ -198,11 +198,11 @@ $(function() {
                  </tr>
                  <tr>
                      <td class="title">Company:</td>
-                     <td><?=$feedback->companyname == false?></td>
+                     <td><?=$feedback->companyname ?></td>
                      <?if($feedback->companyname == false):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
-                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
+                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null), $null_options)?></td>
                  </tr>
                  <tr>
                      <td class="title">Position:</td>
@@ -210,7 +210,7 @@ $(function() {
                      <?if(!$feedback->position):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
-                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null))?></td>
+                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null), $null_options)?></td>
                  </tr>
                  <tr>
                      <td class="title">Website:</td>
