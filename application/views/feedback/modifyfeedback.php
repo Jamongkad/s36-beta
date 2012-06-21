@@ -229,11 +229,12 @@ $(function() {
                          <?if($feedback->countryname != "Nil"):?>
                               <?=$feedback->countryname?>, <?=$feedback->countrycode?>
                          <?endif?>
+
+                         <?if($feedback->countryname == "Nil" && $feedback->countrycode == 0):?>
+                             <?$null_options = Array('disabled' => 'disabled')?>
+                             <?="Mathew"?>
+                         <?endif?>
                      </td> 
-                     <?if($feedback->countrycode == '0'):?>
-                         <?$null_options = Array('disabled' => 'disabled')?>
-                         <?="Choo";?>
-                     <?endif?>
                      <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null), $null_options)?></td>
                  </tr>
                  <tr>
