@@ -40,13 +40,14 @@ class ContactDetails extends FeedbackDataTypes {
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
                 $avatar = $this->profile_img->auto_resize($orig_image_dir, Input::get('login_type'));     
             }
-           
-            $this->position = Input::get('position');
-            $this->city    = Input::get('city');
-            $this->company = Input::get('company');
-            $this->website = Input::get('website');
-            $this->profilelink = Input::get('profile_link');
+   
         }  
+
+        $this->position = Input::get('position');
+        $this->city    = Input::get('city');
+        $this->company = Input::get('company');
+        $this->website = Input::get('website');
+        $this->profilelink = Input::get('profile_link');
 
         $login_type = (Input::get('login_type')) ? Input::get('login_type') : '36';
 
