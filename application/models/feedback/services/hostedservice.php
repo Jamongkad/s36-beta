@@ -126,7 +126,7 @@ class HostedService {
 
         foreach($children_collection as $kid) { 
             $final_node = new StdClass;
-            $final_node->children_collection = $kid;
+            $final_node->children = $kid;
 
             $collection[] = $final_node;
         }
