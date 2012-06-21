@@ -8,7 +8,6 @@ $(function() {
 })
 </script>
 <? $id = $feedback->id ?>
-<? $null_options = Array() ?>
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
@@ -189,39 +188,56 @@ $(function() {
                  <tr>
                      <td class="title">Name:</td>
                      <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
-                     <td align="center"><?=Form::checkbox('displayName', $feedback->displayname, ($feedback->displayname ? True : Null), Array('disabled' => 'disabled'))?></td>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayName'
+                                             , $feedback->displayname
+                                             , ($feedback->displayname ? True : Null)
+                                             , Array('disabled' => 'disabled')
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Image:</td>
                      <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
-                     <?if($feedback->avatar == false):?>
-                         <?$null_options = Array('disabled' => 'disabled')?>
-                     <?endif?>
-                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null), $null_options)?></td>
+                     <?$null_avatar = ($feedback->avatar == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayImg'
+                                             , $feedback->displayimg
+                                             , ($feedback->displayimg ? True : Null)
+                                             , $null_avatar
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Company:</td>
                      <td><?=$feedback->companyname ?></td>
-                     <?if($feedback->companyname == false):?>
-                         <?$null_options = Array('disabled' => 'disabled')?>
-                     <?endif?>
-                     <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null), $null_options)?></td>
+                     <?$null_company = ($feedback->companyname == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayCompany'
+                                             , $feedback->displaycompany
+                                             , ($feedback->displaycompany ? True : Null)
+                                             , $null_company
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Position:</td>
                      <td><?=$feedback->position?></td>
-                     <?if($feedback->position == false):?>
-                         <?$null_options = Array('disabled' => 'disabled')?>
-                     <?endif?>
-                     <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null), $null_options)?></td>
+                     <?$null_position = ($feedback->position == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayPosition'
+                                             , $feedback->displayposition
+                                             , ($feedback->displayposition ? True : Null)
+                                             , $null_position
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Website:</td>
                      <td><?=$feedback->url?></td> 
-                     <?if($feedback->url == false):?>
-                         <?$null_options = Array('disabled' => 'disabled')?>
-                     <?endif?>
-                     <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null), $null_options)?></td>
+                     <?$null_url = ($feedback->url == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayURL'
+                                             , $feedback->displayurl
+                                             , ($feedback->displayurl ? True : Null)
+                                             , $null_url
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Country:</td>
@@ -229,16 +245,14 @@ $(function() {
                          <?if($feedback->countryname != "Nil"):?>
                               <?=$feedback->countryname?>, <?=$feedback->countrycode?>
                          <?endif?>
-
-                         <?if($feedback->countryname == "Nil" && $feedback->countrycode == 0):?>
-                             <?$null_options = Array('disabled' => 'disabled')?>
-                             <?="Mathew"?>
-                         <?else:?>
-                             <?="Wong"?>
-                         <?endif?>
-
                      </td> 
-                     <td align="center"><?=Form::checkbox('displayCountry', $feedback->displaycountry, ($feedback->displaycountry ? True : Null), $null_options)?></td>
+                     <?$null_country = ($feedback->countryname == "Nil" && $feedback->countrycode == 0) ? Array('disabled' => 'disabled') : Array();?>
+                     <td align="center"><?=Form::checkbox(
+                                               'displayCountry'
+                                             , $feedback->displaycountry
+                                             , ($feedback->displaycountry ? True : Null)
+                                             , $null_country
+                                        )?></td>
                  </tr>
                  <tr>
                      <td class="title">Date:</td>
