@@ -108,7 +108,6 @@ return array(
                         );  
 
         $addfeedback->perform(); 
-        //Helpers::dump(Input::get());
     }), 
 
     //TODO: REFACTOR THIS BITCH
