@@ -8,8 +8,8 @@ $badwords = new DBBadWords;
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
         $admin_check = S36Auth::user();
-        Helpers::dump($feedback->pull_feedback_by_id($id));
-        /*
+        //Helpers::dump($feedback->pull_feedback_by_id($id));
+
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
            , 'categories' => $category->pull_site_categories()
@@ -17,7 +17,7 @@ return array(
            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
            , 'admin_check' => $admin_check
         ));
-        */
+
     }),
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
