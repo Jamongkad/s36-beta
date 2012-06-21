@@ -193,8 +193,11 @@ $(function() {
                  </tr>
                  <tr>
                      <td class="title">Image:</td>
-                     <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?><?=$feedback->avatar?></td>
-                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
+                     <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
+                     <?if($feedback->avatar == false):?>
+                         <?$null_options = Array('disabled' => 'disabled')?>
+                     <?endif?>
+                     <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null), $null_options)?></td>
                  </tr>
                  <tr>
                      <td class="title">Company:</td>
