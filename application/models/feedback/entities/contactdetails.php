@@ -42,12 +42,14 @@ class ContactDetails extends FeedbackDataTypes {
             }
    
         }  
-
-        $this->position = Input::get('position');
-        $this->city    = Input::get('city');
-        $this->company = Input::get('company');
-        $this->website = Input::get('website');
-        $this->profilelink = Input::get('profile_link');
+        
+        if(Input::get('rating') > 2) { 
+            $this->position = Input::get('position');
+            $this->city    = Input::get('city');
+            $this->company = Input::get('company');
+            $this->website = Input::get('website');
+            $this->profilelink = Input::get('profile_link');
+        }
 
         $login_type = (Input::get('login_type')) ? Input::get('login_type') : '36';
 
