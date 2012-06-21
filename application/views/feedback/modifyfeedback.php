@@ -198,7 +198,7 @@ $(function() {
                  </tr>
                  <tr>
                      <td class="title">Company:</td>
-                     <td><?=$feedback->companyname == true?></td>
+                     <td><?=($feedback->companyname == true) ? 'pwet' : null?></td>
                      <?if(!$feedback->companyname):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
