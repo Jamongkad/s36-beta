@@ -85,7 +85,7 @@ class HostedService {
         
         //Debugger
         if($this->debug == True) {          
-
+            /*
             Helpers::dump("Featured");
             Helpers::dump($featured_feeds);
 
@@ -94,7 +94,7 @@ class HostedService {
 
             Helpers::dump("Children"); 
             Helpers::dump($children_collection);         
-
+            */
         }
 
         //pre count for performance.
@@ -126,9 +126,9 @@ class HostedService {
             for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
                 $final_node = new StdClass;
                 $final_node->head = $featured_feeds[$i];
-                if(isset($children_collection[$i])) {
+                //if(isset($children_collection[$i])) {
                     $final_node->children = $children_collection[$i];
-                }
+                //}
                 $collection[] = $final_node;
             }
 
