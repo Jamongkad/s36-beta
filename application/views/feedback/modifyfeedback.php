@@ -222,7 +222,11 @@ $(function() {
                  </tr>
                  <tr>
                      <td class="title">Country:</td>
-                     <td><?=$feedback->countryname?> <?=$feedback->countrycode?></td> 
+                     <td> 
+                         <?if($feedback->countryname != "Nil"):?>
+                              <?=$feedback->countryname?> <?=$feedback->countrycode?>
+                         <?endif?>
+                     </td> 
                      <?if($feedback->countryname == "Nil"):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
