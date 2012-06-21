@@ -216,7 +216,7 @@ class Helpers {
         return $login_url;
     }
 
-    public static function html_cleaner($str) {
+    public static function html_cleaner($url) {
         $U = explode(' ',$url);
 
         $W =array();
