@@ -193,7 +193,7 @@ $(function() {
                  </tr>
                  <tr>
                      <td class="title">Image:</td>
-                     <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
+                     <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?><?=$feedback->displayimg?></td>
                      <td align="center"><?=Form::checkbox('displayImg', $feedback->displayimg, ($feedback->displayimg ? True : Null))?></td>
                  </tr>
                  <tr>
