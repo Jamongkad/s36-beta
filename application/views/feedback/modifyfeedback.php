@@ -8,7 +8,7 @@ $(function() {
 })
 </script>
 <? $id = $feedback->id ?>
-<? $null_options = null?>
+
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
@@ -199,7 +199,7 @@ $(function() {
                  <tr>
                      <td class="title">Company:</td>
                      <td><?=$feedback->companyname?></td>
-                     <?if($feedback->companyname == false):?>
+                     <?if(!$feedback->companyname):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayCompany', $feedback->displaycompany, ($feedback->displaycompany ? True : Null))?></td>
@@ -207,7 +207,7 @@ $(function() {
                  <tr>
                      <td class="title">Position:</td>
                      <td><?=$feedback->position?></td>
-                     <?if($feedback->position == false):?>
+                     <?if(!$feedback->position):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayPosition', $feedback->displayposition, ($feedback->displayposition ? True : Null))?></td>
@@ -215,7 +215,7 @@ $(function() {
                  <tr>
                      <td class="title">Website:</td>
                      <td><?=$feedback->url?></td> 
-                     <?if($feedback->url == false):?>
+                     <?if(!$feedback->url):?>
                          <?$null_options = Array('disabled' => 'disabled')?>
                      <?endif?>
                      <td align="center"><?=Form::checkbox('displayURL', $feedback->displayurl, ($feedback->displayurl ? True : Null), $null_options)?></td>
