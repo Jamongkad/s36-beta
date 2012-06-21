@@ -37,7 +37,6 @@ class ContactDetails extends FeedbackDataTypes {
             $orig_image_dir = Input::get('orig_image_dir');
 
             //return 0 if avatar is blank.
-            $avatar = '0';
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
                 $avatar = $this->profile_img->auto_resize($orig_image_dir, Input::get('login_type'));     
             }
