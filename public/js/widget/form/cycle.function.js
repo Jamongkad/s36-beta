@@ -137,12 +137,10 @@ PageCycle.prototype.cycle_prev = function() {
             
 			if(this.feedback.length > 0){
 				if((this.rating == 2) || (this.rating == 1)){
-					S36Form.show_complete_form(false);
-                    console.log("Chumanga");
+					S36Form.show_complete_form(false); 
 					return 3;
 				}else{
 					S36Form.show_complete_form(true);
-                    console.log("Cheemanga");
 					return 1;
 				}
 			}else{
@@ -232,6 +230,7 @@ PageCycle.prototype.cycle_prev = function() {
 			if((this.rating == 2) || (this.rating == 1)){
 				var val = S36Form.validate_form('partial'); // validate_form returns 3;
 				var bad_rating = true;
+                console.log("Chumanga");
                 console.log(val);
 			}else{
 				var val = S36Form.validate_form('full'); 	// validate_form returns 3;
