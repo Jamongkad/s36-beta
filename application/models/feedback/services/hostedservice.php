@@ -123,14 +123,13 @@ class HostedService {
             }
         }
         */
-            for($i=0; /*$i < $this->featured_count && */$i < $children_collection; $i++) {
-                $final_node = new StdClass;
-                //$final_node->head = $featured_feeds[$i];
-                //if(isset($children_collection[$i])) {
-                    $final_node->children = $children_collection[$i];
-                //}
-                $collection[] = $final_node;
-            }
+
+        foreach($children_collection as $kid) { 
+            $final_node = new StdClass;
+            $final_node->children_collection = $kid;
+
+            $collection[] = $final_node;
+        }
 
         return $collection;
     }
