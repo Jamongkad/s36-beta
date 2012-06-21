@@ -126,8 +126,8 @@ class HostedService {
 
         foreach($children_collection as $kid) { 
             $final_node = new StdClass;
-            if(isset($featured_feeds[$i])) {
-                $final_node->head = $featured_feeds[$i];
+            if(isset($featured_feeds[$kid])) {
+                $final_node->head = $featured_feeds[$kid];
             } else {
                 $final_node->head = null;
             }
