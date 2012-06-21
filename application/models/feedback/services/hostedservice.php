@@ -125,6 +125,10 @@ class HostedService {
         return $collection;
     }
 
+    public function expose_collection_data() {
+        return $this->collection;     
+    }
+
     public function fetch_data_by_set() {
 
         if(!$this->page_number) { 
