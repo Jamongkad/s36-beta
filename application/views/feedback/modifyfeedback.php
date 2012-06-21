@@ -8,7 +8,7 @@ $(function() {
 })
 </script>
 <? $id = $feedback->id ?>
-<? $null_options = null ?>
+<? $null_options = Array() ?>
 <div class="block noborder">
     <div class="grids">
         <div class="g3of4">
