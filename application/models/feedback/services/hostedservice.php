@@ -101,7 +101,10 @@ class HostedService {
         $this->featured_count  = count($featured_feeds);
         $this->published_count = count($published_feeds); 
         //decision tree
- 
+
+        Helpers::dump($this->featured_count); 
+        Helpers::dump($this->published_count);
+
         if($this->featured_count == 1)  {
             $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
@@ -120,10 +123,12 @@ class HostedService {
                 } else {
                     $final_node->head = null;
                 }
+
                 //$final_node->head = $featured_feeds[$i];
                 if(isset($children_collection[$i])) {
                     $final_node->children = $children_collection[$i];
                 }
+                
                 $collection[] = $final_node;
             }
         }
