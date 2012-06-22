@@ -6,7 +6,7 @@ use \Feedback\Entities\Types\FeedbackDataTypes;
 use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use DBBadWords, DBUser;
-use Input, DB Helpers;
+use Input, DB, Helpers;
 
 class FeedbackDetails extends FeedbackDataTypes {
 
