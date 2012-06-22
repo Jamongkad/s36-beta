@@ -18,8 +18,8 @@ class HostedService {
     private $number_of_pages;
     private $pages;
 
-    private $featured_count;
-    private $published_count;
+    //private $featured_count;
+    //private $published_count;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -98,12 +98,11 @@ class HostedService {
         }
 
         //pre count for performance.
+        /*
         $this->featured_count  = count($featured_feeds);
         $this->published_count = count($published_feeds); 
+        */
         //decision tree
-
-        Helpers::dump($this->featured_count); 
-        Helpers::dump($this->published_count);
         /*
         if($this->featured_count == 1)  {
             echo "first";
@@ -140,22 +139,21 @@ class HostedService {
         foreach($feeds->result as $ky => $vl) { 
 
             $final_node = new StdClass;
-
             if(isset($featured_feeds[$ky]) || isset($children_collection[$ky])) { 
+                $final_node->head = null;
+                $final_node->children = null;
+
                 if(isset($featured_feeds[$ky])) {
                     $final_node->head = $featured_feeds[$ky];
-                } else {
-                    $final_node->head = null;
-                }
+                } 
 
                 if(isset($children_collection[$ky])) {
                     $final_node->children = $children_collection[$ky];
-                } else {
-                    $final_node->children = null;
-                }
+                } 
 
                 $collection[] = $final_node;
             } 
+
         }
 
 
