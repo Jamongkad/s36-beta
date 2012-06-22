@@ -420,8 +420,11 @@ class DBFeedback extends S36DataObject {
 
         $sth->execute();
 
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+
         $result_obj = new StdClass;
         $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
     
