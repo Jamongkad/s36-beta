@@ -14,7 +14,7 @@
             $color = "#109CA5";
         }
     ?>
-    <span style="font-size:12px;">Feedback rating: </span> 
+    <span style="font-size:12px;">feedback rating: </span> 
     <span style="background:<?=$color?>;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;">
         <?=$feedback_data->rating?>
     </span>
