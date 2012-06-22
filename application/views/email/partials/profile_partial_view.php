@@ -1,8 +1,22 @@
 <tr>
 <?if($feedback_data->rating != "POOR"):?>
+    <?
+        $color = null;
+        if($feedback_data->rating == "POOR") {
+            $color = "#C1431C";
+        }
+
+        if($feedback_data->rating == "AVERAGE") {
+            $color = "#8BA510";
+        }
+
+        if($feedback_data->rating == "EXCELLENT" || $feedback_data->rating == "GOOD") {
+            $color = "#109CA5";
+        }
+    ?>
     <span style="font-size:12px;">Feedback rating: </span> 
-    <span style="background:#109CA5;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;">
-        EXCELLENT
+    <span style="background:<?=$color?>;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;">
+        <?=$feedback_data->rating?>
     </span>
     <br/><br/>
     <?if($feedback_data->avatar):?>
