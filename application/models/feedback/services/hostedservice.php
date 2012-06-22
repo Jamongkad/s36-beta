@@ -139,19 +139,24 @@ class HostedService {
 
         foreach($feeds->result as $ky => $vl) { 
             $final_node = new StdClass;
-            if(isset($featured_feeds[$ky])) {
-                $final_node->head = $featured_feeds[$ky];
-            } else {
-                $final_node->head = null;
-            }
 
-            if(isset($children_collection[$ky])) {
-                $final_node->children = $children_collection[$ky];
-            } else {
-                $final_node->children = null;
+            if(isset($featured_feeds[$ky]) || isset($children_collection[$ky])) { 
+                if(isset($featured_feeds[$ky])) {
+                    $final_node->head = $featured_feeds[$ky];
+                } else {
+                    $final_node->head = null;
+                }
+
+                if(isset($children_collection[$ky])) {
+                    $final_node->children = $children_collection[$ky];
+                } else {
+                    $final_node->children = null;
+                }
+
+               $collection[] = $final_node;
             }
            
-            $collection[] = $final_node;
+
         }
 
 
