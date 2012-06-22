@@ -128,8 +128,7 @@ class HostedService {
                 if(isset($children_collection[$i])) {
                     $final_node->children = $children_collection[$i];
                 }
-                
-                print_r($i);
+            
                 $collection[] = $final_node;
             }
         }
