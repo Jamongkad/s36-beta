@@ -1,6 +1,6 @@
 <tr>
 <?if($feedback_data->rating != "POOR"):?>
-    <span style="font-size:12px;">Feedback rating :</span> 
+    <span style="font-size:12px;">Feedback rating: </span> 
     <span style="background:#109CA5;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;">
         EXCELLENT
     </span>
