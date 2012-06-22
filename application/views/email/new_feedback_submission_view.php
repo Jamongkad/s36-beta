@@ -29,9 +29,7 @@
                                 </table>
                             </td>
                         </tr>
-                        <tr height="20">
-                        	<td colspan="3"></td>
-                        </tr>
+                        
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
                             "<?=$feedback_data->text?>"
