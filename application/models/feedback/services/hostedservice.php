@@ -129,6 +129,7 @@ class HostedService {
                     $final_node->children = $children_collection[$i];
                 }
                 
+                print_r($i);
                 $collection[] = $final_node;
             }
         }
