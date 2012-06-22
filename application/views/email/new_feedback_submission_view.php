@@ -35,39 +35,42 @@
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
                             "<?=$feedback_data->text?>"
-                                <br /><br /> 
-                                <?if($feedback_data->permission == "FULL PERMISSION"):?>
-                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
-                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
-                                    <span style="vertical-align: middle; " >
-                                	<?=$feedback_data->firstname?> 
-                                    has granted you FULL permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
-                                    </span>
-                                </div>
-                                <?endif?>
-
-                                <?if($feedback_data->permission == "LIMITED PERMISSION"):?>
-                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
-                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
-                                    <span style="vertical-align: middle; " >
-                                	<?=$feedback_data->firstname?> 
-                                    has granted you LIMITED permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
-                                    </span>
-                                </div>
-                                <?endif?>
-
-
-                                <?if($feedback_data->permission == "PRIVATE"):?>
-
-                                 <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
-                                 <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
-                                    <span style="vertical-align: middle; ">
-                                	<?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
-                                    </span>
-                                    <br style="clear:both" />
-                                </div>
-                                <?endif?> 
                                 <br />
+                                <?if($feedback_data->rating != "POOR"):?>
+                                <br /> 
+                                    <?if($feedback_data->permission == "FULL PERMISSION"):?>
+                                     <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                     <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                        <span style="vertical-align: middle; " >
+                                        <?=$feedback_data->firstname?> 
+                                        has granted you FULL permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
+                                        </span>
+                                    </div>
+                                    <?endif?>
+
+                                    <?if($feedback_data->permission == "LIMITED PERMISSION"):?>
+                                     <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                     <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                        <span style="vertical-align: middle; " >
+                                        <?=$feedback_data->firstname?> 
+                                        has granted you LIMITED permission to quote his/her feedback and profile as a quote in your website and marketing collaterals.
+                                        </span>
+                                    </div>
+                                    <?endif?>
+
+
+                                    <?if($feedback_data->permission == "PRIVATE"):?>
+
+                                     <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
+                                     <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
+                                        <span style="vertical-align: middle; ">
+                                        <?=$feedback_data->firstname?> has asked you keep his/her feedback and profile PRIVATE.
+                                        </span>
+                                        <br style="clear:both" />
+                                    </div>
+                                    <?endif?> 
+                                <br />
+                                <?endif?>
                                 <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
                                     <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                     <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
