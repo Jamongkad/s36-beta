@@ -104,7 +104,6 @@ class HostedService {
 
         Helpers::dump($this->featured_count); 
         Helpers::dump($this->published_count);
-        Helpers::dump($feeds->total_rows);
         /*
         if($this->featured_count == 1)  {
             echo "first";
@@ -137,36 +136,24 @@ class HostedService {
             }
         }
         */
-            for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
-                $final_node = new StdClass;
 
-                if(isset($featured_feeds[$i])) {
-                    $final_node->head = $featured_feeds[$i];
-                } else {
-                    $final_node->head = null;
-                }
-
-                //$final_node->head = $featured_feeds[$i];
-                if(isset($children_collection[$i])) {
-                    $final_node->children = $children_collection[$i];
-                }
-            
-                $collection[] = $final_node;
-            }
-
-        /*
-        foreach($children_collection as $ky => $kid) { 
+        foreach($feeds->result as $ky => $vl) { 
             $final_node = new StdClass;
             if(isset($featured_feeds[$ky])) {
                 $final_node->head = $featured_feeds[$ky];
             } else {
                 $final_node->head = null;
             }
-            $final_node->children = $kid;
 
+            if(isset($children_collection[$ky])) {
+                $final_node->children = $children_collection[$ky];
+            } else {
+                $final_node->children = null;
+            }
+           
             $collection[] = $final_node;
         }
-        */
+
 
         return $collection;
     }
