@@ -104,7 +104,7 @@ class HostedService {
 
         Helpers::dump($this->featured_count); 
         Helpers::dump($this->published_count);
-        Helpers::dump($feed->total_rows);
+        Helpers::dump($feeds->total_rows);
         /*
         if($this->featured_count == 1)  {
             echo "first";
