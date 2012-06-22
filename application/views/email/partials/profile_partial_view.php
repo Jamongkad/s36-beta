@@ -1,6 +1,6 @@
 <tr>
 <td>
-<?if($feedback_data->rating != "POOR"):?>
+
     <?
         $color = null;
         if($feedback_data->rating == "POOR") {
@@ -23,6 +23,7 @@
 </td>
 </tr>
 <tr height="20"><td></td></tr>
+<?if($feedback_data->rating != "POOR"):?>
 <tr>
     <?if($feedback_data->avatar):?>
         <td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar')?></td>
