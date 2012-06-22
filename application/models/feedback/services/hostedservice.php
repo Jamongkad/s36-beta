@@ -53,7 +53,9 @@ class HostedService {
         $published_feeds = Array();
         $children_collection = Array();
 
-        foreach($feeds->result as $feed) {           
+        $result = $feeds->result;
+
+        foreach($result as $feed) {           
             if($feed->isfeatured == 0 and $feed->ispublished == 1) {
                 if($this->debug == True) { 
                     $published_feeds[] = Array($feed->id, $feed->date);                   
@@ -102,40 +104,7 @@ class HostedService {
         $this->published_count = count($published_feeds); 
 
         //decision tree
-        /*
-        if($this->featured_count == 1)  {
-            echo "first";
-            $final_node = new StdClass; 
-            $final_node->head = $featured_feeds[0];
-            $final_node->children = $published_feeds; 
-            $collection[] = $final_node;
-        } else if($this->featured_count == 0 and $this->published_count > 0) {
-            echo "second";
-            $final_node = new StdClass; 
-            $final_node->children = $published_feeds;
-            $collection[] = $final_node;
-        } else { 
-            echo "third";
-            for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
-                $final_node = new StdClass;
-
-                if(isset($featured_feeds[$i])) {
-                    $final_node->head = $featured_feeds[$i];
-                } else {
-                    $final_node->head = null;
-                }
-
-                //$final_node->head = $featured_feeds[$i];
-                if(isset($children_collection[$i])) {
-                    $final_node->children = $children_collection[$i];
-                }
-            
-                $collection[] = $final_node;
-            }
-        }
-        */
-
-        foreach($feeds->result as $ky => $vl) { 
+        foreach($result as $ky => $vl) { 
 
             $final_node = new StdClass;
             if(isset($featured_feeds[$ky]) || isset($children_collection[$ky])) { 
