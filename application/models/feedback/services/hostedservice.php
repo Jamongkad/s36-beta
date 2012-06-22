@@ -153,7 +153,7 @@ class HostedService {
 
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $total_set !== $total_collection) {
-            echo "Processing";
+            //echo "Processing";
             //process data into redis
             $this->redis->hset($key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
@@ -161,7 +161,7 @@ class HostedService {
                 $this->redis->hset($key_name, "set:".$index, json_encode($vl));
             }
         } else {
-            echo "No processing";
+            //echo "No processing";
         }
     }
 
