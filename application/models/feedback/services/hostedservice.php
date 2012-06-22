@@ -150,9 +150,8 @@ class HostedService {
             } else {
                 $final_node->children = null;
             }
-            
-            if($final_node->children)
-                $collection[] = $final_node;
+           
+            $collection[] = $final_node;
         }
 
 
