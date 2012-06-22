@@ -34,8 +34,9 @@
                         	<td colspan="3" style="line-height:20px;">
                             "<?=$feedback_data->text?>"
                                 <br />
-                                <?if($feedback_data->rating != "POOR"):?>
                                 <br /> 
+                                <?if($feedback_data->rating != "POOR"):?>
+
                                     <?if($feedback_data->permission == "FULL PERMISSION"):?>
                                      <div style="padding:15px 20px 15px 0px;font-size:12px;background:#d9ebd6;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">
                                      <?=HTML::image('img/ico-large-check.png', 'Icon Large', array('vertical-align' => 'middle', 'margin-right' => '5px', 'align' => 'left'))?>
