@@ -31,6 +31,7 @@ return array(
 
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
-        echo $hosted->view_fragment();
+        Helpers::dump($hosted->expose_collection_data());
+        //echo $hosted->view_fragment();
     }
 );
