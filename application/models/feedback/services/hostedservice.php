@@ -112,6 +112,7 @@ class HostedService {
             $final_node->children = $published_feeds;
             $collection[] = $final_node;
         } else { 
+            echo "third";
             for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
                 $final_node = new StdClass;
                 $final_node->head = $featured_feeds[$i];
