@@ -138,6 +138,7 @@ class HostedService {
         */
 
         foreach($feeds->result as $ky => $vl) { 
+
             $final_node = new StdClass;
 
             if(isset($featured_feeds[$ky]) || isset($children_collection[$ky])) { 
@@ -153,10 +154,8 @@ class HostedService {
                     $final_node->children = null;
                 }
 
-               $collection[] = $final_node;
-            }
-           
-
+                $collection[] = $final_node;
+            } 
         }
 
 
