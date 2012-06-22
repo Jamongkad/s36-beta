@@ -18,8 +18,8 @@ class HostedService {
     private $number_of_pages;
     private $pages;
 
-    //private $featured_count;
-    //private $published_count;
+    private $featured_count;
+    private $published_count;
     
     public function __construct($company_name) {
         $this->company_name = $company_name;
@@ -98,10 +98,9 @@ class HostedService {
         }
 
         //pre count for performance.
-        /*
         $this->featured_count  = count($featured_feeds);
         $this->published_count = count($published_feeds); 
-        */
+
         //decision tree
         /*
         if($this->featured_count == 1)  {
