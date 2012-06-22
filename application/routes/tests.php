@@ -255,6 +255,7 @@ return array(
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");
+
     },
 
     'GET /tests/url_in_string' => function() {
