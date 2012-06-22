@@ -99,12 +99,9 @@ class HostedService {
 
         //pre count for performance.
         $this->featured_count  = count($featured_feeds);
-        $this->published_count = count($published_feeds);
-        print_r($this->featured_count);
-        print_r($this->published_count);
-        
+        $this->published_count = count($published_feeds); 
         //decision tree
-        /*
+
         if($this->featured_count == 1)  {
             $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
@@ -124,8 +121,8 @@ class HostedService {
                 $collection[] = $final_node;
             }
         }
-        */
 
+        /*
         foreach($children_collection as $ky => $kid) { 
             $final_node = new StdClass;
             if(isset($featured_feeds[$ky])) {
@@ -137,6 +134,7 @@ class HostedService {
 
             $collection[] = $final_node;
         }
+        */
 
         return $collection;
     }
