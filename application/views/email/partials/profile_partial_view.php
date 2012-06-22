@@ -1,4 +1,5 @@
 <tr>
+<td>
 <?if($feedback_data->rating != "POOR"):?>
     <?
         $color = null;
@@ -14,15 +15,20 @@
             $color = "#109CA5";
         }
     ?>
+
     <span style="font-size:12px;">feedback rating: </span> 
     <span style="background:<?=$color?>;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;">
         <?=$feedback_data->rating?>
     </span>
-    <br/><br/>
+</td>
+</tr>
+<tr height="20"><td></td></tr>
+<tr>
     <?if($feedback_data->avatar):?>
         <td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar')?></td>
         <td width="10"></td>
     <?endif?>
+
 <?endif?>
     <td style="font-size:12px;">
         <h2 style="color:#0078aa;margin:0px;"><?=$feedback_data->firstname?> <?=$feedback_data->lastname?></h2> 
