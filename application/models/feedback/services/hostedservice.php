@@ -147,10 +147,7 @@ class HostedService {
 
             if(isset($children_collection[$ky])) {
                 $final_node->children = $children_collection[$ky];
-            } else {
-                $final_node->children = null;
-            }
-           
+            }            
             $collection[] = $final_node;
         }
 
