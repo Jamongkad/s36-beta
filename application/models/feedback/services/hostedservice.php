@@ -106,16 +106,18 @@ class HostedService {
         Helpers::dump($this->published_count);
 
         if($this->featured_count == 1)  {
+            echo "first";
             $final_node = new StdClass; 
             $final_node->head = $featured_feeds[0];
             $final_node->children = $published_feeds; 
             $collection[] = $final_node;
         } else if($this->featured_count == 0 and $this->published_count > 0) {
+            echo "second";
             $final_node = new StdClass; 
             $final_node->children = $published_feeds;
             $collection[] = $final_node;
         } else { 
-            echo "Mathew";
+            echo "third";
             for($i=0; $i < $this->featured_count && $i < $children_collection; $i++) {
                 $final_node = new StdClass;
 
