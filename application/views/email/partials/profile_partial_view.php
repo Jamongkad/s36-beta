@@ -1,8 +1,9 @@
 <tr>
 <?if($feedback_data->rating != "POOR"):?>
-    Feedback rating: <span style="color:#FFF;padding:1px 4px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;">
-                         <p style="background:#8ba510;text-shadow:#677a0c 0px -1px;"><?=strtolower($feedback_data->rating)?></p>
-                     </span> <br/>
+    <span style=”font-size:12px;”>Feedback rating :</span> 
+    <span style=”background:#109CA5;font-size:10px;color:white;padding: 2px 8px;-webkit-border-radius: 6px;-moz-border-radius: 6px;border-radius:6px;”>
+        EXCELLENT
+    </span>
     <?if($feedback_data->avatar):?>
         <td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar')?></td>
         <td width="10"></td>
