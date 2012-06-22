@@ -100,6 +100,8 @@ class HostedService {
         //pre count for performance.
         $this->featured_count  = count($featured_feeds);
         $this->published_count = count($published_feeds);
+        print_r($this->featured_count);
+        print_r($this->published_count);
         
         //decision tree
         /*
