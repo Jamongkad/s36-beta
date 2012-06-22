@@ -124,7 +124,6 @@ class HostedService {
 
         }
 
-
         return $collection;
     }
 
