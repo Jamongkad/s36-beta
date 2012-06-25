@@ -316,6 +316,7 @@ return array(
         $urllinker = new UrlLinker\UrlLinker;
         $text = "<p> Dan is gay http://pwet.com </p>";
         Helpers::dump($urllinker->html_escape_linkurls($text));
+        Helpers::dump(Helpers::html_cleaner($text));
     },
 
     //reserved route for Leica and Ryan testing
