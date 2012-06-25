@@ -27,14 +27,19 @@ class CompanySettings {
                 $this->errors = $filename . " already exists.";
             } else {
 
-                $imagine = new Imagine\Gd\Imagine();
-                $size = new Imagine\Image\Box(250, 180);
-                $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+                $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
 
-                $options = Array('quality' => 100);
-                $imagine->open($final_file)
-                        ->thumbnail($size, $mode)
-                        ->save($this->company_dir.$filename, $options);
+                if($move_attempt) { 
+                    $imagine = new Imagine\Gd\Imagine();
+                    $size = new Imagine\Image\Box(250, 180);
+                    $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+                    $options = Array('quality' => 100);
+                    $imagine->open($final_file)
+                            ->thumbnail($size, $mode)
+                            ->save($this->company_dir.$filename, $options);
+                }
+
                 /*
                 $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
                 if($move_attempt == True) {
