@@ -126,11 +126,18 @@ var S36Form = new function() {
     };
 
     this.validate_email = function(email) { 
+        /*
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
             return true;
         }else{
             return false;
         }
+        */
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\
+        ".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA
+        -Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        return re.test(email);
     };
 
     this.validate_field = function(value, default_val, type) {
