@@ -2,7 +2,7 @@
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
 use Contact\Repositories\DBContact;
-use Input, DB, UserInfo, Profile\Services\ProfileImage;
+use Input, DB, UserInfo, Profile\Services\ProfileImage, Helpers;
 
 class ContactDetails extends FeedbackDataTypes { 
 
