@@ -397,7 +397,10 @@
                                  <div style="width:70%;float:left;"> 
                                     <div class="review-feedback-box" id="review-feedback-box">
                                         <div id="review-feedback" class="review-feedback"></div>
-                                        <div class="review-edit-feedback"><a href="javascript:;" id="edit-review-feedback">edit</a><a href="javascript:;" id="save-edited-feedback">save</a></div>
+                                        <div class="review-edit-feedback">
+                                            <a href="javascript:;" id="edit-review-feedback">edit</a>
+                                            <a href="javascript:;" id="save-edited-feedback">save</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
