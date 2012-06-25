@@ -314,7 +314,7 @@ return array(
 
     'GET /tests/urllinker' => function() {
         $urllinker = new UrlLinker\UrlLinker;
-        $text = "<p>Dan is gay http://pwet.com</p>";
+        $text = "<p> <ul>Dan is gay http://pwet.com</ul> </p>";
         Helpers::dump($urllinker->html_escape_linkurls($text));
         Helpers::dump(Helpers::html_cleaner($text));
     },
