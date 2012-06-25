@@ -443,6 +443,7 @@ jQuery(function($) {
           , type: 'POST'
           , data: { feed_id: feed_id, feedback_text: textarea.val() } 
           , success: function(msg) { 
+                console.log(msg);
                 var myStatus = new Status();
                 myStatus.notify("Processing...", 1000);
             }

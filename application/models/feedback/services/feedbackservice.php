@@ -10,9 +10,9 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        $http_check = Helpers::contains_tld(strip_tags($post->feedback_text));
-        if($http_check) {
-            echo "Mathew";
+        $tld_check = Helpers::contains_tld(strip_tags($post->feedback_text));
+        if($tld_check) {
+            return -1; 
         } else {            
             $text = Helpers::html_cleaner($post->feedback_text);
             $feed_id = $post->feed_id;
