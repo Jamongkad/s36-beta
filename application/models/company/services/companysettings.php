@@ -39,7 +39,7 @@ class CompanySettings {
                             ->thumbnail($size, $mode)
                             ->save($this->company_dir.$filename, $options);
 
-                    unlink($final_file);     
+                    //unlink($final_file);     
                     $this->filename = $filename;
                 }
 
