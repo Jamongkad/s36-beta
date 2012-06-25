@@ -133,7 +133,7 @@
                             <!-- end of category picker-->
 
                             <div class="options">
-                                <?if($feed->rating != "POOR" || $feed->permission_css != 'private-permission'):?>
+                                <?if($feed->rating != "POOR" || $feed->permission_css === 'private-permission'):?>
                                     <?if($admin_check->inbox_approve == 0):?>
                                         <input type="button" class="check" tooltip="Option Disabled" tt_width="75" style="background-position: 0px -51px"/>
                                     <?else:?>
