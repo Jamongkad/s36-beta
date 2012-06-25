@@ -10,6 +10,9 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
+
+        Helpers::dump($post->feedback_text);
+
         $text = Helpers::html_cleaner($post->feedback_text);
         $feed_id = $post->feed_id;
         $profanity = $this->dbbadwords->profanity_detection($text);         
