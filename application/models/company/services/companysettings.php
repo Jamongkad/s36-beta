@@ -25,6 +25,16 @@ class CompanySettings {
             } else if(file_exists($final_file) or file_exists($this->company_dir.$filename)) {
                 $this->errors = $filename . " already exists.";
             } else {
+
+                $imagine = new Imagine\Gd\Imagine();
+                $size = new Imagine\Image\Box(250, 180);
+                $mode = Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+                $options = Array('quality' => 100);
+                $imagine->open($final_file)
+                        ->thumbnail($size, $mode)
+                        ->save($this->company_dir.$filename, $options);
+                /*
                 $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
                 if($move_attempt == True) {
                     $imagesize = getimagesize($final_file);
@@ -42,6 +52,7 @@ class CompanySettings {
                         } 
                     }              
                 } 
+                */
             }
         }     
     }
