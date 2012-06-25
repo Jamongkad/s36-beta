@@ -10,7 +10,7 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        $str = $post->feedback_text;
+        $str = strip_tags($post->feedback_text);
         $str = preg_replace('~^https?://~', '', $str);
         Helpers::dump($str);
         //return Helpers::html_cleaner( $post->feedback_text );
