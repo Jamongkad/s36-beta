@@ -98,9 +98,12 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
+        print_r(Input::get());
+        /*
         $addfeedback = new AddFeedback;
         $addfeedback->create_feedback_with_profile();
         return Redirect::to('feedback/addfeedback'); 
+        */
     }),
 
     //Ajax Routes...
