@@ -1,6 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Halcyonic, DBBadWords;
+use UrlLinker;
 use S36Auth, Input, Exception, Helpers, DB, StdClass;
 
 class FeedbackService {
@@ -10,8 +11,7 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        $str = strip_tags($post->feedback_text);
-        $str = preg_replace('#https?://#', '', $str);
+        $str = html_escape_linkurls($post->feedback_text);
         Helpers::dump($str);
         //return Helpers::html_cleaner( $post->feedback_text );
         /*
