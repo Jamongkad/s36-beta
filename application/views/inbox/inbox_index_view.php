@@ -133,12 +133,13 @@
                             <!-- end of category picker-->
 
                             <div class="options">
-                                <?if($feed->rating != "POOR" || $feed->permission != "PRIVATE"):?>
+                                <?if($feed->rating != "POOR"):?>
                                     <?if($admin_check->inbox_approve == 0):?>
                                         <input type="button" class="check" tooltip="Option Disabled" tt_width="75" style="background-position: 0px -51px"/>
                                     <?else:?>
                                         <input type="button" class="check" tooltip="<?=($feed->ispublished) ? "Return to Inbox" : "Publish Feedback"?>"  tt_width="85"
                                         <?=Helpers::switchable($feed->ispublished, $id, $feed->categoryid, URL::to('/feedback/change_feedback_state'), ' style="background-position: 0px -34px"') ?>/>
+                                        <?=$feed->permission_css?>  
                                     <?endif?>
                                 <?else:?>
                                     <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" 
