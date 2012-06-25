@@ -11,7 +11,8 @@ class FeedbackService {
 
     public function save_feedback($post) {
         echo "Mathew";
-        Helpers::dump(Helpers::html_cleaner( $post->feedback_text ));
+        return Helpers::html_cleaner( $post->feedback_text );
+
         /*
         $text = Helpers::html_cleaner($post->feedback_text);
         $feed_id = $post->feed_id;
