@@ -12,7 +12,7 @@ class FeedbackService {
     public function save_feedback($post) {
         $tld_check = Helpers::contains_tld(strip_tags($post->feedback_text));
         if($tld_check) {
-            return -1; 
+            return json_encode(Array("error" => "Mathew"));
         } else {            
             $text = Helpers::html_cleaner($post->feedback_text);
             $feed_id = $post->feed_id;
