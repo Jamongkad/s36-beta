@@ -10,7 +10,7 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        $http_check = Helpers::contains_tld($post->feedback_text);
+        $http_check = Helpers::contains_tld(strip_tags($post->feedback_text));
         if($http_check) {
             return "Mathew";
         } else {            
