@@ -30,9 +30,11 @@ class ContactDetails extends FeedbackDataTypes {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $country_id = $country->countryid;
         }
+
+        $rating_check = Input::get('rating') > 3;
         
         //if no cropped photo and feedback rating is above average
-        if ($avatar == '0' and Input::get('rating') > 3) {
+        if ($avatar == '0' and $rating_check) {
 
             $orig_image_dir = Input::get('orig_image_dir');
 
@@ -44,7 +46,7 @@ class ContactDetails extends FeedbackDataTypes {
         }  
         
         //If rating is above average get profile information
-        if(Input::get('rating') > 3) { 
+        if($rating_check) { 
             $this->position = Input::get('position');
             $this->city    = Input::get('city');
             $this->company = Input::get('company');
