@@ -12,7 +12,7 @@ class FeedbackService {
     public function save_feedback($post) {
         $tld_check = Helpers::contains_tld(strip_tags($post->feedback_text));
         if($tld_check) {
-            echo json_encode(Array("error" => "Mathew"));
+            echo json_encode(Array("error" => "Your text contains http links. Please edit your feedback text without them."));
         } else {            
             $text = Helpers::html_cleaner($post->feedback_text);
             $feed_id = $post->feed_id;
