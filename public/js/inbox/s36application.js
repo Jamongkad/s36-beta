@@ -441,7 +441,7 @@ jQuery(function($) {
         $.ajax({
             url: '/feedback/edit_feedback_text'              
           , type: 'POST'
-          , dataType: 'json', 
+          , dataType: 'json'
           , data: { feed_id: feed_id, feedback_text: textarea.val() } 
           , success: function(msg) { 
                 console.log(msg);
