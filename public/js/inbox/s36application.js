@@ -444,7 +444,11 @@ jQuery(function($) {
           , dataType: 'json'
           , data: { feed_id: feed_id, feedback_text: textarea.val() } 
           , success: function(msg) { 
-                console.log(msg);
+               
+                if(msg) {
+                    alert(msg.error);
+                }
+
                 var myStatus = new Status();
                 myStatus.notify("Processing...", 1000);
             }
