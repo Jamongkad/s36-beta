@@ -13,6 +13,7 @@ class FeedbackService {
     public function save_feedback($post) {
         $str = html_escape_linkurls($post->feedback_text);
         Helpers::dump($str);
+
         //return Helpers::html_cleaner( $post->feedback_text );
         /*
         $text = Helpers::html_cleaner($post->feedback_text);
