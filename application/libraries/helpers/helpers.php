@@ -217,14 +217,14 @@ class Helpers {
     }
 
     public static function html_cleaner($url) {
-        $U = explode(' ',$url);
+        $U = explode(' ', $url);
 
-        $W =array();
+        $W = array();
         foreach ($U as $k => $u) {
             if (stristr($u,".")) { //only preg_match if there is a dot    
                 if (self::contains_tld($u) === true) {
                     unset($U[$k]);
-                    return self::html_cleaner( implode(' ',$U));
+                    return self::html_cleaner(implode(' ',$U));
                 }      
             }
         }
@@ -238,7 +238,6 @@ class Helpers {
             $M);
         $has_tld = (count($M) > 0) ? true : false;
         return $has_tld;
-
     }
 
     public static function relative_time($time, $short=False) {
