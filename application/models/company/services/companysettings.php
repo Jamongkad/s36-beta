@@ -38,6 +38,9 @@ class CompanySettings {
                     $imagine->open($final_file)
                             ->thumbnail($size, $mode)
                             ->save($this->company_dir.$filename, $options);
+
+                    unlink($final_file);     
+                    $this->filename = $filename;
                 }
 
                 /*
