@@ -12,7 +12,7 @@ class FeedbackService {
     public function save_feedback($post) {
         $http_check = Helpers::contains_tld(strip_tags($post->feedback_text));
         if($http_check) {
-            return "Mathew";
+            echo "Mathew";
         } else {            
             $text = Helpers::html_cleaner($post->feedback_text);
             $feed_id = $post->feed_id;
