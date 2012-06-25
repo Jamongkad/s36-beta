@@ -11,7 +11,7 @@ class ContactDetails extends FeedbackDataTypes {
     private $city = false;
     private $company = false;
     private $website = false;
-    private $profilelink = '0';
+    private $profilelink = false;
 
     private $contact_data = Array();
     private $contact_id;
