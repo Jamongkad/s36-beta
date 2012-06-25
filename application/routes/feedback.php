@@ -5,6 +5,10 @@ $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
 
+use Feedback\Entities\ContactDetails;
+use Feedback\Entities\FeedbackDetails;
+use Halcyonic\Services\HalcyonicService;
+
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
         $admin_check = S36Auth::user();
@@ -98,12 +102,14 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
-        Helpers::dump(Input::get());
-        /*
-        $addfeedback = new AddFeedback;
-        $addfeedback->create_feedback_with_profile();
-        return Redirect::to('feedback/addfeedback'); 
-        */
+        $addfeedback = new Feedback\Services\SubmissionService(
+                           new ContactDetails
+                         , new FeedbackDetails
+                         , new DBDashboard
+                         , new HalcyonicService
+                        );  
+
+        $addfeedback->perform(); 
     }),
 
     //Ajax Routes...
