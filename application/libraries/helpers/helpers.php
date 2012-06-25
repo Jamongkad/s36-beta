@@ -219,11 +219,11 @@ class Helpers {
     public static function html_cleaner($url) {
         $U = explode(' ', $url);
 
-        $W = array();
+        self::dump($U);
+         
         foreach ($U as $k => $u) {
             if (stristr($u,".")) { //only preg_match if there is a dot    
                 if (self::contains_tld($u) === true) {
-                    self::dump($k."pwet");
                     unset($U[$k]);
                     return self::html_cleaner(implode(' ',$U));
                 }      
