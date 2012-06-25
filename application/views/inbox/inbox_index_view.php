@@ -152,12 +152,13 @@
                                     <?endif?>
                                 <?else:?>
                                     <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" 
-                                                                                                                   style="background-position: 0px -51px !important;"/>
+                                           style="background-position: 0px -51px !important;"/>
                                 <?endif?>
 
                                 <?if($feed->rating != "POOR"):?>
                                     <?if($admin_check->inbox_feature == 0) :?>
-                                        <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" style="background-position: -60px -51px;" />
+                                        <input type="button" class="feature" tooltip="Option Disabled" tt_width="75" 
+                                               style="background-position: -60px -51px;" />
                                     <?else:?>
 
                                         <?if($feed->permission_css != 'private-permission'):?>  
@@ -168,15 +169,14 @@
                                                                  , URL::to('/feedback/change_feedback_state')
                                                                  , ' style="background-position: -60px -34px"') ?>/>
                                         <?else:?>
-                                            <input type="button" class="check" tooltip="This feedback cannot be published" tt_width="165" 
-                                                                 style="background-position: 0px -51px !important;"/>
-
+                                            <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" 
+                                                                 style="background-position: -60px -51px;"/>
                                         <?endif?>
 
                                     <?endif?>
                                 <?else:?>
                                     <input type="button" class="feature" tooltip="This feedback cannot be featured" tt_width="160" 
-                                                                                                                    style="background-position: -60px -51px;"/>
+                                                         style="background-position: -60px -51px;"/>
                                 <?endif?>
 
                                 <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
