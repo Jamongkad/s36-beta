@@ -123,14 +123,14 @@
                         //check if position is available:  
                         $comp = '&nbsp;';								
 
-                        $companyname = $r->companyname;
+                        $companyname = ucwords($r->companyname);
                         if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
+                            $companyname = "<a href='".$r->url."' target='_blank'>".ucwords($r->companyname)."</a>";    
                         }
 
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                             if($r->position && $r->companyname) {
-                                $comp = $r->position.', <span class="highlight">'.$companyname.'</span>';     
+                                $comp = ucwords($r->position).', <span class="highlight">'.$companyname.'</span>';     
                             } 
                         }
                         
@@ -140,7 +140,7 @@
                         
                         if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
                             if($r->position) {
-                                $comp = $r->position;								     
+                                $comp = ucwords($r->position);
                             } 
                         }                                            
                         $text = strip_tags($r->text); 
@@ -220,14 +220,14 @@
                             		
                         $comp = '&nbsp;';								
 
-                        $companyname = $r->companyname;
+                        $companyname = ucwords($r->companyname);
                         if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
+                            $companyname = "<a href='".$r->url."' target='_blank'>".ucwords($r->companyname)."</a>";    
                         }
 
                         if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
                             if($r->position && $r->companyname) {
-                                $comp = $r->position.', '.$companyname;								     
+                                $comp = ucwords($r->position).', '.$companyname;								     
                             }  
                         }
                         
@@ -237,7 +237,7 @@
                         
                         if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
                             if($r->position) {
-                                $comp = $r->position;								     
+                                $comp = ucwords($r->position);
                             } 
                         }                         
 

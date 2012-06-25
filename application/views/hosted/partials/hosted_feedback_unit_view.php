@@ -21,15 +21,15 @@
                 <?php
                     $comp = null;        
                     if($feed->companyname && $feed->position) {
-                        $comp = $feed->companyname.', '."<span>".$feed->position."</span>";
+                        $comp = ucwords($feed->companyname).', '."<span>".ucwords($feed->position)."</span>";
                     }
 
                     if($feed->companyname && $feed->position == false) {
-                        $comp = $feed->companyname; 
+                        $comp = ucwords($feed->companyname); 
                     }
 
                     if($feed->companyname == false && $feed->position) {
-                        $comp = "<span>".$feed->position."</span>";
+                        $comp = "<span>".ucwords($feed->position)."</span>";
                     }
  
                 ?>

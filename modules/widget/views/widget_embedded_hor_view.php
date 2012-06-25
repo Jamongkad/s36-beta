@@ -149,14 +149,14 @@
                                  
                                 $comp = '&nbsp;';								
 
-                                $companyname = $r->companyname;
+                                $companyname = ucwords($r->companyname);
                                 if($r->rules->displayurl == 1) {
                                     $companyname = "<a href='".$r->url."' target='_blank'>".$r->companyname."</a>";    
                                 }
 
                                 if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){
                                     if($r->position && $r->companyname) {
-                                        $comp = $r->position.', '.$companyname;								     
+                                        $comp = ucwords($r->position).', '.$companyname;								     
                                     } 
                                 }
                                 
@@ -166,7 +166,7 @@
                                 
                                 if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){						
                                     if($r->position) {
-                                        $comp = $r->position;								     
+                                        $comp = ucwords($r->position);
                                     } 
                                 }                             
 

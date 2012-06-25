@@ -31,8 +31,8 @@ class ContactDetails extends FeedbackDataTypes {
             $country_id = $country->countryid;
         }
         
-        //if no cropped photo and feedback rating is above 2
-        if ($avatar == '0' and Input::get('rating') > 2) {
+        //if no cropped photo and feedback rating is above average
+        if ($avatar == '0' and Input::get('rating') > 3) {
 
             $orig_image_dir = Input::get('orig_image_dir');
 
@@ -43,7 +43,8 @@ class ContactDetails extends FeedbackDataTypes {
    
         }  
         
-        if(Input::get('rating') > 2) { 
+        //If rating is above average get profile information
+        if(Input::get('rating') > 3) { 
             $this->position = Input::get('position');
             $this->city    = Input::get('city');
             $this->company = Input::get('company');
