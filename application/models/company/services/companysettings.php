@@ -2,6 +2,7 @@
 
 use Input, Exception, Helpers, StdClass;
 use Company\Repositories\DBCompany;
+use Imagine;
 
 class CompanySettings {
     
