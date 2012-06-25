@@ -140,6 +140,7 @@ function slide_track_to(y,rating){
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <input type="hidden" id="cropped_photo" value="0"/ >
 <input type="hidden" id="native_flag" value="0" />
+<input type="hidden" id="profile_link" value="">
 
 <div class="block">
     <div id="add-feedback-setup-block">
