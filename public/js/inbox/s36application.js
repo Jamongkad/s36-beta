@@ -447,10 +447,11 @@ jQuery(function($) {
                
                 if(msg) {
                     alert(msg.error);
+                } else { 
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000);
                 }
 
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 1000);
             }
         });
 
