@@ -10,15 +10,14 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        $str = UrlLinker\html_escape_linkurls($post->feedback_text);
-        Helpers::dump($str);
-
-        //return Helpers::html_cleaner( $post->feedback_text );
-        /*
-        $text = Helpers::html_cleaner($post->feedback_text);
-        $feed_id = $post->feed_id;
-        $profanity = $this->dbbadwords->profanity_detection($text);         
-        return $this->dbfeedback->update_feedback_text($feed_id, $text, $profanity);
-        */
+        $http_check = Helpers::contains_tld($post->feedback_text);
+        if($http_check) {
+            return "Mathew";
+        } else {            
+            $text = Helpers::html_cleaner($post->feedback_text);
+            $feed_id = $post->feed_id;
+            $profanity = $this->dbbadwords->profanity_detection($text);         
+            return $this->dbfeedback->update_feedback_text($feed_id, $text, $profanity);
+        }
     }
 }
