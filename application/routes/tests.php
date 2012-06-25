@@ -312,6 +312,12 @@ return array(
         } 
     },
 
+    'GET /tests/urllinker' => function() {
+        $urlinker = new UrlLinker\UrlLinker;
+        $text = "<p>Dan is gay http://pwet.com</p>";
+        Helpers::dump($urllinker->html_escape_linkurls($text));
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
