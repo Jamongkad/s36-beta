@@ -141,7 +141,7 @@ $(function() {
                 <div class="feedback-info-menu">
                     <?=HTML::link('feedback/reply_to/'.$id, 'REPLY TO USER', Array('class' => 'replyto'))?>  
                     <?=HTML::link('feedback/fastforward/', 'FORWARD', Array('class' => 'forward', 'id' => $id))?> 
-                    <?if($feedback->rating != "POOR"):?>
+                    <?if($feedback->rating != "POOR" || $feedback->permission_css != 'private-permission'):?>
                         <?=HTML::link('feedback/change_state/publish/'.$id, 'PUBLISH', 
                            Array('class' => 'menubtn publish'.(($feedback->ispublished) ? " matched" : null)))?> 
                         <?=HTML::link('feedback/change_state/feature/'.$id, 'FEATURE', 
