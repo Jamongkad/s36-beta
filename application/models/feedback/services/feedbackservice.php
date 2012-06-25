@@ -10,7 +10,10 @@ class FeedbackService {
     }
 
     public function save_feedback($post) {
-        return Helpers::html_cleaner( $post->feedback_text );
+        $str = $post->feedback_text;
+        $str = preg_replace('~^https?://~', '', $str);
+        Helpers::dump($str);
+        //return Helpers::html_cleaner( $post->feedback_text );
         /*
         $text = Helpers::html_cleaner($post->feedback_text);
         $feed_id = $post->feed_id;
