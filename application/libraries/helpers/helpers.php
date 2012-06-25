@@ -218,8 +218,6 @@ class Helpers {
 
     public static function html_cleaner($url) {
         $U = explode(' ', $url);
-
-        self::dump($U);
          
         foreach ($U as $k => $u) {
             if (stristr($u,".")) { //only preg_match if there is a dot    
