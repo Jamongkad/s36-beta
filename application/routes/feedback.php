@@ -110,6 +110,7 @@ return array(
                         );  
 
         $addfeedback->perform(); 
+        return Redirect::to('inbox/all');  
     }),
 
     //Ajax Routes...
