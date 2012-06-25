@@ -8,7 +8,6 @@ $badwords = new DBBadWords;
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
         $admin_check = S36Auth::user();
-        //Helpers::dump($feedback->pull_feedback_by_id($id));
 
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
