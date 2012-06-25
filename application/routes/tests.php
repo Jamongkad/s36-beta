@@ -314,8 +314,8 @@ return array(
 
     'GET /tests/urllinker' => function() {
         $urllinker = new UrlLinker\UrlLinker;
-        $text = "Dan is gay http://pwet.com";
-        Helpers::dump($text);
+        $text = "<p> Dan is gay http://pwet.com </p>";
+        Helpers::dump($urllinker->html_escape_linkurls($text));
     },
 
     //reserved route for Leica and Ryan testing
