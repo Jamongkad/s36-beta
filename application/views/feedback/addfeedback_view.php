@@ -129,10 +129,18 @@ function slide_track_to(y,rating){
             .ratings{color:#adafb0;font-size:12px;font-weight:bold;}
             .ratings ul{margin:0px;padding:0px;position:relative;height:30px;}
             .ratings ul li	   	  {list-style:none;display:inline;margin:0px;padding:0px;position:absolute;top:0px;background:none !important;text-shadow:none !important;}
+            /*
             .ratings ul li.good	  {left:117px;}
             .ratings ul li.average{left:234px;}
             .ratings ul li.poor	  {left:370px;}
             .ratings ul li.bad	  {left:490px;}
+            */
+
+            .ratings ul li.poor	  {left:117px;}
+            .ratings ul li.average{left:234px;}
+            .ratings ul li.good	  {left:370px;}
+            .ratings ul li.excellent {left:490px;}
+
             .rate{float:right;width:517px;}
             .rate-text{float:left;padding-top:16px;}
 </style>
