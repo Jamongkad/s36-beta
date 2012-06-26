@@ -140,7 +140,6 @@ function slide_track_to(y,rating){
 <?=Form::open('feedback/addfeedback')?>
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <input type="hidden" id="cropped_photo" value="0"/ >
-<input type="hidden" id="native_flag" value="1" />
 <input type="hidden" name="profile_link" value="">
 
 <div class="block">
@@ -154,7 +153,7 @@ function slide_track_to(y,rating){
                         <div class="rate-text"><label><strong>Rating :</strong></label> </div>
                         <div class="rate">
                             <div class="rate-slider" id="smart-slider">
-                                <input type="hidden" id="rating" name="rating" value="5" >
+                                <input type="hidden" id="rating" name="rating" value="3" >
                                 <div id="track_ball"></div>
                                 <div id="rate_b"></div>
                                 <div id="rate_p"></div>
