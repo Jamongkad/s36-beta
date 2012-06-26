@@ -155,11 +155,11 @@ function slide_track_to(y,rating){
                             <div class="rate-slider" id="smart-slider">
                                 <input type="hidden" id="rating" name="rating" value="5" >
                                 <div id="track_ball"></div>
-                                <div id="rate_e"></div>
-                                <div id="rate_g"></div>
-                                <div id="rate_a"></div>
-                                <div id="rate_p"></div>
                                 <div id="rate_b"></div>
+                                <div id="rate_p"></div>
+                                <div id="rate_a"></div>
+                                <div id="rate_g"></div>
+                                <div id="rate_e"></div>
                             </div>
                             <div class="ratings">
                                 <ul>
