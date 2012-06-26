@@ -120,7 +120,7 @@ function slide_track_to(y,rating){
             .float-right{float:right;}
             
             /* rating page */
-            .rate-slider{width:517px;height:33px;background:url(/img/rate-slider-blue.png);margin-top:8px;position:relative;}
+            .rate-slider{width:517px;height:33px;background:url(/img/rate-slider.png);margin-top:8px;position:relative;}
             .rate-slider #rate_e,.rate-slider #rate_g,.rate-slider #rate_a,.rate-slider #rate_p,.rate-slider #rate_b{float:left;height:33px;position:relative;cursor:pointer;}
             .rate-slider #track_ball{width:30px;height:33px;position:absolute;background:url(/img/trackball.png) no-repeat;left:244px;}
             .rate-slider #rate_e,.rate-slider #rate_b{width:65px;}
