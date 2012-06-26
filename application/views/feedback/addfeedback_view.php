@@ -139,7 +139,7 @@ function slide_track_to(y,rating){
             .ratings ul li.poor	  {left:117px;}
             .ratings ul li.average{left:234px;}
             .ratings ul li.good	  {left:370px;}
-            .ratings ul li.excellent {left:490px;}
+            .ratings ul li.excellent {left:418px;}
 
             .rate{float:right;width:517px;}
             .rate-text{float:left;padding-top:16px;}
