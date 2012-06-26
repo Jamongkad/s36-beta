@@ -18,9 +18,9 @@ class SubmissionService {
     }
 
     public function perform() {        
-        Helpers::dump(Input::get());
-        //$this->contact_details->read_data(); 
-        //Helpers::dump($this->contact_details);
+
+        $this->contact_details->read_data(); 
+        Helpers::dump($this->contact_details);
         /*
         $this->contact_details->write_new_contact();
      
