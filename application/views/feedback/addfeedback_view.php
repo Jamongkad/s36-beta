@@ -122,24 +122,17 @@ function slide_track_to(y,rating){
             /* rating page */
             .rate-slider{width:517px;height:33px;background:url(/img/rate-slider-blue.png);margin-top:8px;position:relative;}
             .rate-slider #rate_e,.rate-slider #rate_g,.rate-slider #rate_a,.rate-slider #rate_p,.rate-slider #rate_b{float:left;height:33px;position:relative;cursor:pointer;}
-            .rate-slider #track_ball{width:30px;height:33px;position:absolute;background:url(/img/trackball.png) no-repeat;left:-4px;}
+            .rate-slider #track_ball{width:30px;height:33px;position:absolute;background:url(/img/trackball.png) no-repeat;left:223px;}
             .rate-slider #rate_e,.rate-slider #rate_b{width:65px;}
             .rate-slider #rate_g,.rate-slider #rate_a,.rate-slider #rate_p{width:129px;}
             
             .ratings{color:#adafb0;font-size:12px;font-weight:bold;}
             .ratings ul{margin:0px;padding:0px;position:relative;height:30px;}
             .ratings ul li	   	  {list-style:none;display:inline;margin:0px;padding:0px;position:absolute;top:0px;background:none !important;text-shadow:none !important;}
-            /*
-            .ratings ul li.good	  {left:117px;}
-            .ratings ul li.average{left:234px;}
-            .ratings ul li.poor	  {left:370px;}
-            .ratings ul li.bad	  {left:490px;}
-            */
-
             .ratings ul li.poor	  {left:117px;}
             .ratings ul li.average{left:234px;}
             .ratings ul li.good	  {left:370px;}
-            .ratings ul li.excellent {left:418px;}
+            .ratings ul li.excellent {left:446px;}
 
             .rate{float:right;width:517px;}
             .rate-text{float:left;padding-top:16px;}
