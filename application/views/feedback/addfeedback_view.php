@@ -163,11 +163,11 @@ function slide_track_to(y,rating){
                             </div>
                             <div class="ratings">
                                 <ul>
-                                    <li class="excellent">EXCELLENT</li>
-                                    <li class="good">GOOD</li>
-                                    <li class="average">AVERAGE</li> 
-                                    <li class="poor">POOR</li>
                                     <li class="bad">BAD</li>
+                                    <li class="poor">POOR</li>
+                                    <li class="average">AVERAGE</li> 
+                                    <li class="good">GOOD</li>
+                                    <li class="excellent">EXCELLENT</li>
                                 </ul>
                             </div>
                         </div>

@@ -10,15 +10,14 @@ use Feedback\Entities\FeedbackDetails;
 use Halcyonic\Services\HalcyonicService;
 
 return array(
-    'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {             
-        $admin_check = S36Auth::user();
-
+    'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
+         
         return View::of_layout()->partial('contents', 'feedback/modifyfeedback', Array(
              'feedback' => $feedback->pull_feedback_by_id($id)
            , 'categories' => $category->pull_site_categories()
            , 'status' => DB::table('Status', 'master')->get()
            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
-           , 'admin_check' => $admin_check
+           , 'admin_check' => S36Auth::user()
         ));
 
     }),
