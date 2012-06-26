@@ -23,8 +23,6 @@ class ContactDetails extends FeedbackDataTypes {
 
     public function read_data() { 
 
-        Helpers::dump(Input::get());
-
         $avatar = Input::get('cropped_image_nm');
 
         $country_id = 895;
@@ -38,8 +36,7 @@ class ContactDetails extends FeedbackDataTypes {
         if ($avatar == '0' and $rating_check) {
 
             $orig_image_dir = Input::get('orig_image_dir');
-
-            //return 0 if avatar is blank.
+ 
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
                 $avatar = $this->profile_img->auto_resize($orig_image_dir, Input::get('login_type'));     
             }

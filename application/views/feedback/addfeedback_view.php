@@ -141,6 +141,7 @@ function slide_track_to(y,rating){
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <input type="hidden" id="cropped_photo" name="cropped_image_nm" value="0" />
 <input type="hidden" name="profile_link" value="">
+<input type="hidden" name="orig_image_dir" value="" />
 
 <div class="block">
     <div id="add-feedback-setup-block">
@@ -242,10 +243,8 @@ function slide_track_to(y,rating){
                             <label><strong>Position</strong></label><br />
                             <input type="text" name="position" class="regular-text" id="position" />
                         </div>
-
                         <div class="g1of3">&nbsp;</div>
                     </div>
-
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>Preview :</strong></label><br />
@@ -294,8 +293,7 @@ function slide_track_to(y,rating){
                                     </form>
                                 </div>
 
-                                <div style="height:100px"></div>
-                                <input type="hidden" name="orig_image_dir" value="" />
+                                <div style="height:100px"></div> 
                                 <input type="button" value="crop" class="large-btn" id="cropbtn"/>
                             </div>   
                         </div>
