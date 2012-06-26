@@ -29,14 +29,12 @@ return array(
     },
 
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
-
         if($state == 'flag') { 
             return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
         } else {   
             $feed_obj = Array('feedid' => $id);
             return $feedback->_toggle_multiple($state, Array($feed_obj)); 
         }
-
     },
 
     'GET /feedback/requestfeedback' => Array('before' => 's36_auth', 'do' => function() use ($dbwidget) { 
@@ -109,7 +107,7 @@ return array(
                         );  
 
         $addfeedback->perform(); 
-        return Redirect::to('inbox/all');  
+        //return Redirect::to('inbox/all');  
     }),
 
     //Ajax Routes...
