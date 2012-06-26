@@ -23,6 +23,8 @@ class ContactDetails extends FeedbackDataTypes {
 
     public function read_data() { 
 
+        Helpers::dump(Input::get());
+
         $avatar = Input::get('cropped_image_nm');
 
         $country_id = 895;
