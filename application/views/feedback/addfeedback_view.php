@@ -9,11 +9,11 @@ jQuery(function($){
 });
 
 function start_slider(){
-	$('#rate_b').click(function(){ slide_track_to('-3px'  ,'5'); });
-	$('#rate_p').click(function(){ slide_track_to('+119px','4'); });
-	$('#rate_a').click(function(){ slide_track_to('+244px','3'); });
-	$('#rate_g').click(function(){ slide_track_to('+369px','2'); });
-	$('#rate_e').click(function(){ slide_track_to('+492px','1'); });
+	$('#rate_b').click(function(){ slide_track_to('-3px'  , 1); });
+	$('#rate_p').click(function(){ slide_track_to('+119px', 2); });
+	$('#rate_a').click(function(){ slide_track_to('+244px', 3); });
+	$('#rate_g').click(function(){ slide_track_to('+369px', 4); });
+	$('#rate_e').click(function(){ slide_track_to('+492px', 5); });
 }
 
 function slide_track_to(y,rating){
