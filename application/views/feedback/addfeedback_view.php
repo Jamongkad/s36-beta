@@ -258,7 +258,6 @@ function slide_track_to(y,rating){
                         <div class="g1of3">
                             <span id="ajax-upload-url" hrefaction="<?=URL::to('/widget/form/upload')?>"></span>
                             <span id="ajax-crop-url" hrefaction="<?=URL::to('/widget/form/crop')?>"></span>
-                            <input type="hidden" value="" name="cropped_image_nm" />
                             <label><strong>Add Photo :</strong> </label> <br />
                             <div style="padding-left:10px;font-weight:bold;">
                                 <div style="margin:5px 0px;">
