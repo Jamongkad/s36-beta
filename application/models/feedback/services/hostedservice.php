@@ -175,8 +175,8 @@ class HostedService {
             echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
-            foreach($this->scale_feeds() as $ky => $vl) {
-                if($ky == "start_collection") {
+            foreach($this->scale_feeds() as $data) {
+                if($data->start_collection) {
                     Helpers::dump($vl);      
                 }
 
