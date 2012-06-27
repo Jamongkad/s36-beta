@@ -129,6 +129,8 @@ class HostedService {
     
     public function scale_feeds() {
 
+        $end = count($this->collection);
+
         $start_collection = Array();
         $end_collection = Array();
 
@@ -139,7 +141,7 @@ class HostedService {
         }
         
         if($this->starting_units_onload < $end) { 
-            foreach(new LimitIterator($iter, $this->starting_units_onload, count($this->collection)) as $fr) { 
+            foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
                 $end_collection[] = $fr;
             }
         }
