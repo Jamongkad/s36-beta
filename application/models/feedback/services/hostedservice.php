@@ -183,7 +183,7 @@ class HostedService {
 
                 if($ky == "end_collection") {
                     foreach($vl as $k => $v)  {
-                        $index = $k + 1; //page numbers
+                        $index = $k + 2; //page numbers
                         Helpers::dump($index);
                         //$this->redis->hset($this->key_name, "set:".$index, json_encode($v)); 
                     }
