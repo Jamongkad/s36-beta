@@ -129,18 +129,24 @@ class HostedService {
     
     public function scale_feeds() {
 
-        $total_collection = count($this->collection);
+        $end = count($this->collection);
 
-        print_r($total_collection);
+        $start_collection = Array();
+        $end_collection = Array();
 
-        $collection = Array();
         $iter = new ArrayIterator($this->collection);
-        foreach(new LimitIterator($iter, $this->starting_units_onload, 9) as $fr) { 
-            $collection[] = $fr;
+
+        foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
+            $start_collection[] = $fr;
         }
-    
+
+        foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
+            $end_collection[] = $fr;
+        }
+ 
         Helpers::dump("Scaled Feeds");
-        Helpers::dump($collection);
+        Helpers::dump($start_collection);
+        Helpers::dump($end_collection);
         Helpers::dump("Scaled Feeds");
     }
 
