@@ -33,7 +33,7 @@ return array(
 
         $deploy_env = Config::get('application.deploy_env');
 
-        return View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
+        echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $hosted->view_fragment()
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
 
