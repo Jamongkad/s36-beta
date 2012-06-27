@@ -176,7 +176,7 @@ class HostedService {
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
             foreach($this->scale_feeds() as $ky => $vl) {
-                Helpers::dump($vl);
+                Helpers::dump($ky);
                 //$index = $ky + 1; //page numbers
                 /*
                 $this->redis->hset($this->key_name, "set:".$index, json_encode($vl));
