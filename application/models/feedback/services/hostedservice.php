@@ -148,8 +148,7 @@ class HostedService {
 
         if(!$this->page_number) { $this->page_number = 1; }
 
-        $key_exists = $this->redis->hexists($this->key_name, "set:".$this->page_number);
-        if($key_exists) {
+        if($this->redis->hexists($this->key_name, "set:".$this->page_number)) {
             $data = $this->redis->hget($this->key_name, "set:".$this->page_number);     
             return json_decode($data);
         }
