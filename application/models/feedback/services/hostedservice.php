@@ -127,7 +127,7 @@ class HostedService {
     }
     
     public function scale_feeds() {
-        print_r($this->collection);
+        Helpers::dump($this->collection);
         $iter = new ArrayIterator($this->collection);
         $limit = new LimitIterator($iter, 0, $this->starting_units_onload);
         Helpers::dump($limit);
