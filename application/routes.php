@@ -19,6 +19,7 @@ return array(
 	|
 	*/
     'GET /' => function() { 
+        //consider placing this into a View Object
         $company_name = Input::get('subdomain');
         
         $company = new Company\Repositories\DBCompany;
