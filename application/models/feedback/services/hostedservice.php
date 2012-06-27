@@ -131,9 +131,9 @@ class HostedService {
     public function scale_feeds() {
         Helpers::dump($this->collection);
         $iter = new ArrayIterator($this->collection);
-        $limit = new LimitIterator($iter, 0, $this->starting_units_onload);
-        Helpers::dump($limit);
-        //foreach(new LimitIterator($iter, $ctr, $this->units) as $fr) { 
+        foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
+            var_dump($fr);
+        }
     }
 
     public function expose_collection_data() {
