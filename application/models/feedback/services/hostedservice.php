@@ -134,17 +134,19 @@ class HostedService {
         $standard_collection = new StdClass;
         $standard_collection->start_collection = Array();
         $standard_collection->end_collection = Array();
-
-        $iter = new ArrayIterator($this->collection);
         
-        foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
-            $standard_collection->start_collection[] = $fr;
-        }
- 
-        if($this->starting_units_onload < $end) { 
-            foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
-                $standard_collection->end_collection[] = $fr;
+        if($end > 0) {
+            $iter = new ArrayIterator($this->collection);
+            
+            foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
+                $standard_collection->start_collection[] = $fr;
             }
+     
+            if($this->starting_units_onload < $end) { 
+                foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
+                    $standard_collection->end_collection[] = $fr;
+                }
+            } 
         }
 
         return $standard_collection;
@@ -172,20 +174,18 @@ class HostedService {
         
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $redis_total_set !== $total_collection) {
-            echo "Processing: Insert Data into Redis";
+            //echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
             foreach($this->scale_feeds() as $ky => $vl) {
                 if($ky == "start_collection") {
-                    //$this->redis->hset($this->key_name, "set:1", json_encode($vl));
-                    Helpers::dump($vl);
+                    $this->redis->hset($this->key_name, "set:1", json_encode($vl));
                 }
 
                 if($ky == "end_collection") {
                     foreach($vl as $k => $v)  {
                         $index = $k + 2; //page numbers
-                        Helpers::dump($index);
-                        //$this->redis->hset($this->key_name, "set:".$index, json_encode($v)); 
+                        $this->redis->hset($this->key_name, "set:".$index, json_encode($v)); 
                     }
                 }   
             }
