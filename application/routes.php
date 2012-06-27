@@ -26,6 +26,7 @@ return array(
         $company_info = $company->get_company_info($company_name); 
 
         $hosted = new Feedback\Services\HostedService($company_name);
+        $hosted->starting_units_onload = 3;
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
 
