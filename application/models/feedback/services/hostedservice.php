@@ -139,9 +139,11 @@ class HostedService {
         foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
             $start_collection[] = $fr;
         }
-
-        foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
-            $end_collection[] = $fr;
+        
+        if($this->starting_units_onload < $end) { 
+            foreach(new LimitIterator($iter, $this->starting_units_onload, $end) as $fr) { 
+                $end_collection[] = $fr;
+            }
         }
  
         Helpers::dump("Scaled Feeds");
