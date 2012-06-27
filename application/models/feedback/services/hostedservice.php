@@ -7,8 +7,7 @@ class HostedService {
     
     public $page_number = 0;
     public $units = 4;
-    public $limit = 8;
-    public $offset = 0;
+    public $total_units_onload = 8;
     public $ignore_cache = False; 
     public $debug = False;
 
@@ -87,7 +86,7 @@ class HostedService {
         
         //Debugger
         if($this->debug == True) {          
-            /*
+            Helpers::dump('-------------------------');
             Helpers::dump("Featured");
             Helpers::dump($featured_feeds);
 
@@ -96,7 +95,7 @@ class HostedService {
 
             Helpers::dump("Children"); 
             Helpers::dump($children_collection);         
-            */
+            Helpers::dump('-------------------------');
         }
 
         //pre count for performance.
@@ -133,9 +132,7 @@ class HostedService {
 
     public function fetch_data_by_set() {
 
-        if(!$this->page_number) { 
-            $this->page_number = 1; 
-        }
+        if(!$this->page_number) { $this->page_number = 1; }
 
         $key_exists = $this->redis->hexists($this->key_name, "set:".$this->page_number);
         if($key_exists) {
@@ -147,22 +144,19 @@ class HostedService {
 
     public function build_data() {
 
-        $key_name = $this->company_name.":fullpage:data";
         $total_collection = $this->featured_count + $this->published_count;
         $total_set        = (int)$this->redis->hget($this->key_name, 'total:set');       
 
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $total_set !== $total_collection) {
             //echo "Processing";
-            //process data into redis
-            $this->redis->hset($key_name, 'total:set', $total_collection);
+            //insert data into redis
+            $this->redis->hset($this->key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
-                $index = $ky + 1;
-                $this->redis->hset($key_name, "set:".$index, json_encode($vl));
+                $index = $ky + 1; //page numbers
+                $this->redis->hset($this->key_name, "set:".$index, json_encode($vl));
             }
-        } else {
-            //echo "No processing";
-        }
+        } 
     }
 
     public function bust_hostfeed_data() {
