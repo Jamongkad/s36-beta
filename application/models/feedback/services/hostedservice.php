@@ -128,6 +128,7 @@ class HostedService {
     
     public function scale_feeds() {
         print_r($this->starting_units_onload);
+        print_r($this->collection);
     }
 
     public function expose_collection_data() {
