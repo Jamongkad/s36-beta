@@ -247,6 +247,7 @@ return array(
 
         $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
+        $test->starting_units_onload = 16;
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
         $test->build_data();

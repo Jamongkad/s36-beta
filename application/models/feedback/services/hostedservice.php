@@ -7,7 +7,7 @@ class HostedService {
     
     public $page_number = 0;
     public $units = 4;
-    public $total_units_onload = 25;
+    public $starting_units_onload = 25;
     public $ignore_cache = False; 
     public $debug = False;
 
@@ -149,7 +149,7 @@ class HostedService {
 
         print_r($total_collection);
         print_r($redis_total_set);
-        print_r($this->total_units_onload);
+        print_r($this->starting_units_onload);
 
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $redis_total_set !== $total_collection) {
