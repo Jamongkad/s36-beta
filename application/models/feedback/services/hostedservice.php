@@ -131,7 +131,7 @@ class HostedService {
 
         $collection = Array();
         $iter = new ArrayIterator($this->collection);
-        foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
+        foreach(new LimitIterator($iter, $this->starting_units_onload, 9) as $fr) { 
             $collection[] = $fr;
         }
     
