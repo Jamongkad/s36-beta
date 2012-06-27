@@ -129,9 +129,9 @@ class HostedService {
     
     public function scale_feeds() {
 
-        $total_collection_one = count($this->collection);
+        $total_collection = count($this->collection);
 
-        print_r($total_collection_one);
+        print_r($total_collection);
 
         $collection = Array();
         $iter = new ArrayIterator($this->collection);
