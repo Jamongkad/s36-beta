@@ -146,8 +146,8 @@ class HostedService {
                 $standard_collection->end_collection[] = $fr;
             }
         }
- 
-        Helpers::dump($standard_collection);
+
+        return $standard_collection;
     }
 
     public function expose_collection_data() {
@@ -175,9 +175,12 @@ class HostedService {
             echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
-            foreach($this->collection as $ky => $vl) {
-                $index = $ky + 1; //page numbers
+            foreach($this->scale_feeds() as $ky => $vl) {
+                Helpers::dump($vl);
+                //$index = $ky + 1; //page numbers
+                /*
                 $this->redis->hset($this->key_name, "set:".$index, json_encode($vl));
+                */
             }
         } 
     }

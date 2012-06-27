@@ -250,7 +250,6 @@ return array(
         $test->starting_units_onload = 5;
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
-        $test->scale_feeds();
         $test->build_data();
 
         $time_end = microtime(True);
