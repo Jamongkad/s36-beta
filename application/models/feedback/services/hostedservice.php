@@ -145,10 +145,13 @@ class HostedService {
     public function build_data() {
 
         $total_collection = $this->featured_count + $this->published_count;
-        $total_set        = (int)$this->redis->hget($this->key_name, 'total:set');       
+        $redis_total_set        = (int)$this->redis->hget($this->key_name, 'total:set');       
+
+        print_r($total_collection);
+        print_r($redis_total_set);
 
         $key = $this->redis->hgetall($this->key_name);
-        if(!$key || $total_set !== $total_collection) {
+        if(!$key || $redis_total_set !== $total_collection) {
             echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
