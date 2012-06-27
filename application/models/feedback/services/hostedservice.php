@@ -75,8 +75,7 @@ class HostedService {
         foreach($published_feeds as $published_feed) {
             $children = Array();
             if(($ctr % $this->units) == 0) { 
-                $iter = new ArrayIterator($published_feeds);
-                foreach(new LimitIterator($iter, $ctr, $this->units) as $fr) { 
+                foreach(new LimitIterator(new ArrayIterator($published_feeds), $ctr, $this->units) as $fr) { 
                     $children[] = $fr;     
                 }
                 $children_collection[] = $children;
@@ -130,7 +129,7 @@ class HostedService {
     
     public function scale_feeds() {
         $iter = new ArrayIterator($this->collection);
-        foreach(new LimitIterator($iter, 0, $this->starting_units_onload) as $fr) { 
+        foreach(new LimitIterator($iter, 2, $this->starting_units_onload) as $fr) { 
             Helpers::dump($fr);
         }
     }
