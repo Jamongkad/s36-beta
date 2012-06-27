@@ -125,7 +125,7 @@ class HostedService {
 
         return $collection;
     }
-
+    
     public function expose_collection_data() {
         return $this->collection;     
     }
@@ -146,10 +146,12 @@ class HostedService {
 
         $total_collection = $this->featured_count + $this->published_count;
         $redis_total_set        = (int)$this->redis->hget($this->key_name, 'total:set');       
-
+        
+        /*
         print_r($total_collection);
         print_r($redis_total_set);
         print_r($this->starting_units_onload);
+        */
 
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $redis_total_set !== $total_collection) {
