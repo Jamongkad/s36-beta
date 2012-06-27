@@ -244,12 +244,13 @@ return array(
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
 
         $time_start = microtime(True);
+
         $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
         $test->debug = True;
-
         $test->fetch_hosted_feedback(); 
         $test->build_data();
+
         Helpers::dump($test->expose_collection_data());    
 
         $time_end = microtime(True);

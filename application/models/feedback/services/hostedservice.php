@@ -149,7 +149,7 @@ class HostedService {
 
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $total_set !== $total_collection) {
-            //echo "Processing";
+            echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
             foreach($this->collection as $ky => $vl) {
