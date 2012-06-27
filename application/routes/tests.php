@@ -247,13 +247,13 @@ return array(
 
         $test = new Feedback\Services\HostedService($company_name);
         $test->page_number = $page;
-        $test->starting_units_onload = 5;
+        $test->starting_units_onload = 4;
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
         $test->scale_feeds();
         $test->build_data();
 
-        Helpers::dump($test->expose_collection_data());    
+        //Helpers::dump($test->expose_collection_data());    
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
