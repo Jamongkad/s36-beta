@@ -175,19 +175,19 @@ class HostedService {
             echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
-            foreach($this->scale_feeds() as $data) {
-                if($data->start_collection) {
-                    Helpers::dump($vl);      
+            foreach($this->scale_feeds() as $ky => $vl) {
+                if($ky == "start_collection") {
+                    //$this->redis->hset($this->key_name, "set:1", json_encode($vl));
+                    Helpers::dump($vl);
                 }
 
                 if($ky == "end_collection") {
-                    
-                }
-               
-                //$index = $ky + 1; //page numbers
-                /*
-                $this->redis->hset($this->key_name, "set:".$index, json_encode($vl));
-                */
+                    foreach($vl as $k => $v)  {
+                        $index = $k + 1; //page numbers
+                        Helpers::dump($v);
+                        //$this->redis->hset($this->key_name, "set:".$index, json_encode($v)); 
+                    }
+                }   
             }
         } 
     }
