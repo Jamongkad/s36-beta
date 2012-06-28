@@ -227,7 +227,7 @@ function slide_track_to(y,rating){
                         <div class="g1of3">
                             <label><strong>Country</strong></label><br />
                             <select class="regular-select" name="country" id="country"> 
-                                <option>Not Applicable</option>
+                                <option value="">Not Applicable</option>
                                 <?foreach($countries as $country):?>
                                     <option value="<?=$country->code?>"><?=$country->name?></option>
                                 <?endforeach?>
