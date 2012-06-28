@@ -39,8 +39,7 @@
                         <label><strong>Feedback : </strong></label><br />
                         <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('feedback')."</p>" : null?>
                         <textarea class="regular-text" id="feedback" name="feedback" style="width:400px;float:left" rows="7">
-<?=$input['feedback']?>
-                        </textarea>
+<?=$input['feedback']?></textarea>
                     </div>
                     <br />
                     <div class="grids">

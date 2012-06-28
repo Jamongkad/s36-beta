@@ -59,7 +59,6 @@ return array (
             $company_settings->save_companysettings();
             return Redirect::to('settings/company');           
         } else {
-            //Helpers::dump($company_settings->get_errors());           
             return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
         } 
 
