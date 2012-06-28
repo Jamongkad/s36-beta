@@ -99,10 +99,20 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => Array('do' => function() { 
+        $data = Input::get();
+        $rules = Array(
+            'first_name' => 'required'
+          , 'last_name' => 'required'
+          , 'email' => 'email'
+          , 'feedback' => 'required'
+        );
 
-        $validator = new SimpleValidator\SimpleValidator;
-        Helpers::dump($validator); 
-        Helpers::dump(Input::get());
+        $validator = Validator::make($data, $rules);
+        if(! $validator->valid() ) {
+            Helpers::dump($validator->errors);
+        } else {
+            echo "Ok go";
+        }
         /*
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
@@ -225,12 +235,12 @@ return array(
         $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
 
-        $rules = Array(
+        $rules = array(
             'subject' => 'required'
           , 'message' => 'required'
         );
  
-        $validator = Validator::make($data, $rules);
+        $validator = validator::make($data, $rules);
         
         if(!$validator->valid()) {
             $user = S36Auth::user();         
