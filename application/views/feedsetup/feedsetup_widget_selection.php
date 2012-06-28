@@ -26,7 +26,6 @@
                         <br />
                         <br />
                     </div>
-                    <br />
                     <p>
                         Embed and integrate your endorsements and testimonials in your website.
                     </p>
@@ -40,7 +39,6 @@
                         <br />
                         <br />
                     </div>
-                    <br />
                     <p>
                        Display your endorsements and testimonials through a modal window.
                     </p>
@@ -54,7 +52,6 @@
                         <br />
                         <br />
                     </div>
-                    <br />
                     <p>
                        Create your form for visitors and customers leave feedback.
                     </p>
