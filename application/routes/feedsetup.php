@@ -103,6 +103,7 @@ return array(
     }),
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
+        Helpers::dump($feedback);
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_widgets_view');
     }),
     
