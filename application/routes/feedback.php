@@ -105,6 +105,8 @@ return array(
           , 'last_name' => 'required'
           , 'email' => 'email'
           , 'feedback' => 'required'
+          , 'city' => 'required'
+          , 'country' => 'required'
         );
 
         $validator = Validator::make($data, $rules);
