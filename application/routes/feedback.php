@@ -99,6 +99,10 @@ return array(
     }),
 
     'POST /feedback/addfeedback' => Array('do' => function() { 
+
+        $validator = new SimpleValidator\SimpleValidator;
+        Helpers::dump($validator);
+        /*
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
                          , new FeedbackDetails
@@ -107,6 +111,7 @@ return array(
                         );  
 
         $addfeedback->perform(); 
+        */
         //return Redirect::to('inbox/all');  
     }),
 

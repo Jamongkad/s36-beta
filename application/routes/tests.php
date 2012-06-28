@@ -8,7 +8,7 @@ return array(
     }),
 
     'GET /tests/test_validator' => function() {
-        $test = new SimpleValidator\SimpleValidator   
+        $test = new SimpleValidator\SimpleValidator;
         Helpers::dump($test);
     }, 
 
