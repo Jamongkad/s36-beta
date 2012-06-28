@@ -280,4 +280,3 @@
 
 <!-- div need to clear floated divs -->
 <div class="c"></div>
-</div>
