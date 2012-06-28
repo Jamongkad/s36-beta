@@ -38,7 +38,8 @@
                     <div class="grids">
                         <label><strong>Feedback : </strong></label><br />
                         <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('feedback')."</p>" : null?>
-                        <textarea class="regular-text" id="feedback" name="feedback" style="width:400px;float:left" rows="7"></textarea>
+                        <textarea class="regular-text" id="feedback" 
+                                  value="<?=$input['feedback']?>" name="feedback" style="width:400px;float:left" rows="7"></textarea>
                     </div>
                     <br />
                     <div class="grids">
@@ -62,12 +63,12 @@
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>First Name</strong></label><br />
-                            <input type="text" name="first_name" class="regular-text" id="firstname" />
+                            <input type="text" name="first_name" value="<?=$input['first_name']?>" class="regular-text" id="firstname" />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('first_name')."</p>" : null?>
                         </div>
                         <div class="g1of3">
                             <label><strong>Last Name</strong></label><br />
-                            <input type="text" name="last_name" class="regular-text" id="lastname" />
+                            <input type="text" name="last_name" value="<?=$input['last_name']?>" class="regular-text" id="lastname" />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
                         </div>
                         <div class="g1of3">&nbsp;</div>
@@ -75,7 +76,7 @@
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>Email Address</strong></label><br />
-                            <input type="text" name="email" class="regular-text" id="email" />
+                            <input type="text" name="email" value="<?=$input['email']?>" class="regular-text" id="email" />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
                         </div>
                         <div class="g1of3">
@@ -87,7 +88,7 @@
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>City</strong></label><br />
-                            <input type="text" name="city" class="regular-text" id="city" />
+                            <input type="text" name="city" value="<?=$input['city']?>" class="regular-text" id="city" />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('city')."</p>" : null?>
                         </div>
                         <div class="g1of3">

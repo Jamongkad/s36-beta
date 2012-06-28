@@ -96,6 +96,7 @@ return array(
           , 'countries' => DB::Table('Country', 'master')->get()
           , 'company_id' => $company_id
           , 'errors' => Array()
+          , 'input' => Array('first_name' => null, 'last_name' => null, 'email' => null, 'feedback' => "", 'city' => null)
         ));
     }),
 
@@ -117,10 +118,9 @@ return array(
               , 'countries' => DB::Table('Country', 'master')->get()
               , 'company_id' => $data['company_id']
               , 'errors' => $validator->errors
+              , 'input' => $data
             ));
         } else {
-            echo "Ok go";
-            /*
             $addfeedback = new Feedback\Services\SubmissionService(
                                new ContactDetails
                              , new FeedbackDetails
@@ -130,7 +130,6 @@ return array(
 
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
-            */ 
         }
     }),
 
