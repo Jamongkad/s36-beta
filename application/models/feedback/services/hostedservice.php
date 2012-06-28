@@ -7,7 +7,7 @@ class HostedService {
     
     public $page_number = 0;
     public $units = 4;
-    public $starting_units_onload = 25;
+    public $starting_units_onload = 5;
     public $ignore_cache = False; 
     public $debug = False;
 
