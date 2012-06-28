@@ -98,7 +98,7 @@ return array(
         ));
     }),
 
-    'POST /feedback/addfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() { 
+    'POST /feedback/addfeedback' => Array('do' => function() { 
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
                          , new FeedbackDetails

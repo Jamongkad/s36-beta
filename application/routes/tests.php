@@ -7,6 +7,11 @@ return array(
         Enhance::runTests();
     }),
 
+    'GET /tests/test_validator' => function() {
+        $test = new SimpleValidator\SimpleValidator   
+        Helpers::dump($test);
+    }, 
+
     'GET /tests/test_email_new' => function() {
         $user = new DBUser; 
         $feedback = new Feedback\Repositories\DBFeedback;
@@ -137,24 +142,6 @@ return array(
         Helpers::dump($emailservice->send_email()); 
     },
 
-    'GET /tests/worklog' => function() {   
-        $auth = new S36Auth;
-        $userId = $auth->user()->userid;
-        $feedbackId = 56;
-        $status = "publish";
-
-        $fb = new FeedbackActivity($userId, $feedbackId, $status);
-        $result = $fb->log_activity();
-        Helpers::show_data($result);
-    },
-
-    'GET /tests/test_dbdashboard' => function() {
-        $dash = new DBDashboard; 
-        $dash->company_id = 1;
-        $d = $dash->write_summary();
-        Helpers::show_data($d);
-    },
-
     'GET /tests/widget_data/(:any)' => function($widget_id) {
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_widget_by_id($widget_id);
@@ -229,10 +216,6 @@ return array(
         $redis = new redisent\Redis;       
     }, 
 
-    'GET /tests/imagine' => function() {
-        $imagine = new Imagine\Gd\Imagine();
-    },
-
     'POST /tests/submissionservice' => function() {
         $contact = new Feedback\Entities\ContactDetails;
         $feedback_details = new Feedback\Entities\FeedbackDetails;
@@ -269,38 +252,10 @@ return array(
         $test->invalidate_hosted_feeds_cache(); 
     },
 
-    'GET /tests/contact' => function() {
-        $contact = new Contact\Repositories\DBContact;
-        $metric = new DBMetric;
-        $metric->company_id = 1;
-        $auth = new S36Auth;
-        /*
-        $get_data = (object) Array(
-            'name'  => 'Mathew'
-          , 'email' => 'wrm932@gmail.com'
-          , 'offset' => 0
-          , 'limit' => 5
-        );
-        $contact_feedback = $contact->get_contact_feedback($get_data);
-        Helpers::dump($contact_feedback);
-        */
-        $contact_info = $contact->get_contact_info("henry_s_castor@yahoo.com");
-        Helpers::dump($contact_info);
-    },
-
     'GET /tests/company_info/(:any)' => function($company_id) {
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_id);
         Helpers::dump($company_info);
-    },
-
-    'GET /tests/encrypt' => function() {
-        $encrypt = new Encryption\Encryption;
-        $email = "wrm932@gmail.com";
-        $password_string = "stuarttan668";
-        $encrypt_string = $encrypt->encrypt($email."|".$password_string);
-        $decode = $encrypt->decrypt($encrypt_string);
-        Helpers::dump($decode);
     },
 
     'GET /tests/mobile' => function() {
