@@ -298,14 +298,14 @@
         width:25px;
         height:80px;
         cursor:pointer;
-        background:url(images/btn-prev.png) no-repeat center center;
+        background:url(/img/btn-prev.png) no-repeat center center;
     }
     
     .form-design-next{
         float:right;
         width:25px;
         height:80px;
-        background:url(images/btn-next.png) no-repeat center center;
+        background:url(/img/btn-next.png) no-repeat center center;
         cursor:pointer;
     }
     .l-design-prev,.r-design-prev,.br-design-prev,.bl-design-prev,.tr-design-prev,.tl-design-prev{
@@ -313,13 +313,13 @@
         width:25px;
         height:80px;
         cursor:pointer;
-        background:url(images/btn-prev.png) no-repeat center center;
+        background:url(/img/btn-prev.png) no-repeat center center;
     }
     .l-design-next,.r-design-next,.br-design-next,.bl-design-next,.tr-design-next,.tl-design-next{
         float:right;
         width:25px;
         height:80px;
-        background:url(images/btn-next.png) no-repeat center center;
+        background:url(/img/btn-next.png) no-repeat center center;
         cursor:pointer; 
     }
     .form-designs,.l-designs,.r-designs,.br-designs,.bl-designs,.tr-designs,.tl-designs{
@@ -384,7 +384,7 @@
         font-size: 11px;
         color: #777;}
     a.button-gray{
-    background:#eceff1 url(images/button-highlight.png) top repeat-x;
+    background:#eceff1 url(/img/button-highlight.png) top repeat-x;
     color:#6b8194;
     padding:4px 11px;
     text-decoration:none !important;
