@@ -1,4 +1,4 @@
-<?php namespace SimpleValidator
+<?php namespace SimpleValidator;
 /**
  * Validator class based on anonymous functions.
  *
