@@ -101,7 +101,8 @@ return array(
     'POST /feedback/addfeedback' => Array('do' => function() { 
 
         $validator = new SimpleValidator\SimpleValidator;
-        Helpers::dump($validator);
+        Helpers::dump($validator); 
+        Helpers::dump(Input::get());
         /*
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
