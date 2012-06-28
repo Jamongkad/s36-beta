@@ -112,7 +112,12 @@ return array(
 
         $validator = Validator::make($data, $rules);
         if(! $validator->valid() ) {
-            Helpers::dump($validator->errors);
+            return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
+                'sites' => DB::Table('Site', 'master')->where('companyId', '=', $data['company_id'])->get()
+              , 'countries' => DB::Table('Country', 'master')->get()
+              , 'company_id' => $data['company_id']
+              , 'errors' => $validator->errors
+            ));
         } else {
             echo "Ok go";
             /*
