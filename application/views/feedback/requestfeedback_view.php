@@ -1,3 +1,95 @@
+<div class="block">
+    <?if($submission_widgets->form_widgets->widget->total_rows > 0):?>
+    <div id="request-setup-block">                    
+        <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'requestForm'))?>
+        <div class="request-options">
+            <h2>Request Feedback</h2>
+            <div class="request-types">
+                <h3><label for="full_page_type">Recepient Details</label></h3>
+                <div class="request-form" id="full_page_request">
+                    <table width="100%">
+                        <tr>
+                            <td width="120">
+                            <label>First Name : </label><br />
+                            <input type="text" name="first_name" class="regular-text" id="recipient-fname" value="<?=$input['first_name']?>"/>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('first_name')."</p>" : null?>
+                            </td>
+                            <td width="120">
+                            <label>Last Name :</label><br />
+                            <input type="text" name="last_name" class="regular-text" id="recipient-lname" value="<?=$input['last_name']?>"/>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="120">
+                            <label>Email : </label><br />
+                            <input type="text" name="email" class="regular-text" id="recipient-email" value="<?=$input['email']?>"/>
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
+                            </td>
+                            <td width="120">
+                            <label>Website : </label><br />
+                            <select name="site_id">
+                                <?foreach($sites as $site):?>
+                                    <option value="<?=$site->siteid?>"><?=$site->domain?></option>
+                                <?endforeach?>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="120">
+                            <div style="padding-left:6px">
+                                <label>Submission Forms: </label><br />
+                                <select name="widgetkey">
+                                    <?foreach($submission_widgets->form_widgets->widget->widgets as $widgets):?>
+                                        <option value="<?=$widgets->widgetkey?>">
+                                            <?=$widgets->widget_obj->theme_name?>
+                                        </option>
+                                    <?endforeach?>
+                                </select>
+                            </div>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                            <label>Message : </label> <br />
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
+                            <textarea class="regular-text" name="message" style="width:400px;float:left" rows="7" id="message" ><?=$input['message']?></textarea>
+
+                            <ul class="custom-message">
+                                <li>Custom Message #1</li>
+                                <li>Custom Message #2</li>
+                                <li>Custom Message #3</li>
+                            </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <h3>&nbsp;</h3>
+                <div class="request-opts">
+                    <span class="gray">Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. For a sample of the email, click here.</span>
+                </div>
+            </div> 
+        </div>
+        <div class="request-setup-border"></div>  
+        <div style="padding:10px">
+            <br /> 
+            <input type="submit" class="large-btn" value="Request Feedback" id="send_request"/>
+            <br /><br />
+        </div>
+        <?=Form::close()?>
+    </div>
+
+    <?else:?>
+        <div class="woops">
+            <h2>Woops. You cannot request feedback without creating a submission form first.</h2><br/><br/>
+            <p>
+             Fortunately it's super easy to create one! 
+             <strong style="font-size:12px"><?=HTML::link('feedsetup/submission_widgets', 'click here', Array('class' => 'woops-a'))?> </strong>
+             to create your submission form. </p>
+        </div> 
+    <?endif?>
+</div>
+
 <style type="text/css">
 #request-setup-block{
 background:#f4f4f4;	
@@ -98,94 +190,3 @@ padding:5px 10px;
 .error-message{background:url(/img/yellow-error.png) repeat;padding:10px 30px;color:#565758;margin:0px -20px;font-weight:bold;}
 .float-right{float:right;}
 </style>
-<div class="block">
-    <?if($submission_widgets->form_widgets->widget->total_rows > 0):?>
-    <div id="request-setup-block">                    
-        <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'requestForm'))?>
-        <div class="request-options">
-            <h2>Request Feedback</h2>
-            <div class="request-types">
-                <h3><label for="full_page_type">Recepient Details</label></h3>
-                <div class="request-form" id="full_page_request">
-                    <table width="100%">
-                        <tr>
-                            <td width="120">
-                            <label>First Name : </label><br />
-                            <input type="text" name="first_name" class="regular-text" id="recipient-fname" value="<?=$input['first_name']?>"/>
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('first_name')."</p>" : null?>
-                            </td>
-                            <td width="120">
-                            <label>Last Name :</label><br />
-                            <input type="text" name="last_name" class="regular-text" id="recipient-lname" value="<?=$input['last_name']?>"/>
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="120">
-                            <label>Email : </label><br />
-                            <input type="text" name="email" class="regular-text" id="recipient-email" value="<?=$input['email']?>"/>
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
-                            </td>
-                            <td width="120">
-                            <label>Website : </label><br />
-                            <select name="site_id">
-                                <?foreach($sites as $site):?>
-                                    <option value="<?=$site->siteid?>"><?=$site->domain?></option>
-                                <?endforeach?>
-                            </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="120">
-                            <div style="padding-left:6px">
-                                <label>Submission Forms: </label><br />
-                                <select name="widgetkey">
-                                    <?foreach($submission_widgets->form_widgets->widget->widgets as $widgets):?>
-                                        <option value="<?=$widgets->widgetkey?>">
-                                            <?=$widgets->widget_obj->theme_name?>
-                                        </option>
-                                    <?endforeach?>
-                                </select>
-                            </div>
-                            </td> 
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                            <label>Message : </label> <br />
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
-                            <textarea class="regular-text" name="message" style="width:400px;float:left" rows="7" id="message" ><?=$input['message']?></textarea>
-
-                            <ul class="custom-message">
-                                <li>Custom Message #1</li>
-                                <li>Custom Message #2</li>
-                                <li>Custom Message #3</li>
-                            </ul>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <h3>&nbsp;</h3>
-                <div class="request-opts">
-                    <span class="gray">Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. For a sample of the email, click here.</span>
-                </div>
-            </div> 
-        </div>
-        <div class="request-setup-border"></div>  
-        <div style="padding:10px">
-            <br /> 
-            <input type="submit" class="large-btn" value="Request Feedback" id="send_request"/>
-            <br /><br />
-        </div>
-        <?=Form::close()?>
-    </div>
-
-    <?else:?>
-        <div class="woops">
-            <h2>Woops. You cannot request feedback without creating a submission form first.</h2><br/><br/>
-            <p>
-             Fortunately it's super easy to create one! 
-             <strong style="font-size:12px"><?=HTML::link('feedsetup/submission_widgets', 'click here', Array('class' => 'woops-a'))?> </strong>
-             to create your submission form. </p>
-        </div> 
-    <?endif?>
-</div>

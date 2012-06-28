@@ -95,6 +95,7 @@ return array(
             'sites' => DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get()
           , 'countries' => DB::Table('Country', 'master')->get()
           , 'company_id' => $company_id
+          , 'errors' => Array()
         ));
     }),
 
@@ -114,18 +115,18 @@ return array(
             Helpers::dump($validator->errors);
         } else {
             echo "Ok go";
-        }
-        /*
-        $addfeedback = new Feedback\Services\SubmissionService(
-                           new ContactDetails
-                         , new FeedbackDetails
-                         , new DBDashboard
-                         , new HalcyonicService
-                        );  
+            /*
+            $addfeedback = new Feedback\Services\SubmissionService(
+                               new ContactDetails
+                             , new FeedbackDetails
+                             , new DBDashboard
+                             , new HalcyonicService
+                            );  
 
-        $addfeedback->perform(); 
-        */
-        //return Redirect::to('inbox/all');  
+            $addfeedback->perform(); 
+            return Redirect::to('inbox/all');  
+            */ 
+        }
     }),
 
     //Ajax Routes...
