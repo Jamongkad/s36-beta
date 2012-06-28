@@ -101,6 +101,10 @@ return array(
           , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
         ));
     }),
+
+    'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
+        print_r("Hosted Widgets");
+    }),
     
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
     'POST /feedsetup/save_form_widget' => function() { 
