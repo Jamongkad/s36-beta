@@ -46,8 +46,20 @@
                        Create your form for visitors and customers leave feedback.
                     </p>
                 </div>
-            </div>
-                
+                <div class="widget-preview-box">
+                    <div class="widget-previews">
+                        <h4>HOSTED SETUP</h4>
+                        <img src="/img/hosted-widget-preview.jpg" />
+                        <br />
+                        <?=HTML::link('feedsetup/hosted_widgets', 'Select', Array('class' => 'white-button'))?>
+                        <br />
+                        <br />
+                    </div>
+                    <p>
+                        Create your hosted feedback and hosted form.
+                    </p>
+                </div>
+            </div>                
         </div>
     </div>
     <div class="c"></div>
