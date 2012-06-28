@@ -98,7 +98,7 @@ return array(
         ));
     }),
 
-    'POST /feedback/addfeedback' => Array('needs''do' => function() { 
+    'POST /feedback/addfeedback' => Array('do' => function() { 
         $data = Input::get();
         $rules = Array(
             'first_name' => 'required'
