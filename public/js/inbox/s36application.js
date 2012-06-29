@@ -375,7 +375,7 @@ jQuery(function($) {
             fileElementId:'your_photo',
             dataType: 'json', 
             success: function (data, status) {	  
-                console.log(data);
+
                 var myStatus = new Status();
                 myStatus.notify("Photo Upload Success!", 1000);
 
