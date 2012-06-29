@@ -44,10 +44,10 @@ class ContactDetails extends FeedbackDataTypes {
         
         //If rating is above average get profile information
         if($rating_check) { 
-            $this->position = Input::get('position');
-            $this->city    = Input::get('city');
-            $this->company = Input::get('company');
-            $this->website = Input::get('website');
+            $this->position = $this->_sentence_case(Input::get('position'));
+            $this->city     = $this->_sentence_case(Input::get('city'));
+            $this->company  = $this->_sentence_case(Input::get('company'));
+            $this->website  = Input::get('website');
             $this->profilelink = Input::get('profile_link');
         }
 
@@ -55,8 +55,8 @@ class ContactDetails extends FeedbackDataTypes {
 
         $this->contact_data = Array(
             'siteId'    => Input::get('site_id')
-          , 'firstName' => ucwords(strtolower(Input::get('first_name')))
-          , 'lastName'  => ucwords(strtolower(Input::get('last_name')))
+          , 'firstName' => $this->_sentence_case(Input::get('first_name'))
+          , 'lastName'  => $this->_sentence_case(Input::get('last_name'))
           , 'email'     => Input::get('email')
           , 'countryId' => $country_id
           , 'avatar'    => $avatar
@@ -79,5 +79,9 @@ class ContactDetails extends FeedbackDataTypes {
     public function get_contact_id() {
         if($this->contact_id)
             return $this->contact_id;     
+    }
+
+    public function _sentence_case($string) {
+        return ucwords(strtolower($string));
     }
 }
