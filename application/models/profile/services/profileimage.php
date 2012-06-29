@@ -215,6 +215,8 @@ class ProfileImage {
                 }       
         } 
 
+        print_r($error);
+
         echo json_encode(Array(
             "error" => $error
           , "dir" => $filedir
