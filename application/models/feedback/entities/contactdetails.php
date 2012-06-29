@@ -36,7 +36,8 @@ class ContactDetails extends FeedbackDataTypes {
         if ($avatar == '0' and $rating_check) {
 
             $orig_image_dir = Input::get('orig_image_dir');
- 
+            
+            //if original image directory does not contain blank-avatar name...assume a photo will be auto cropped
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
                 $avatar = $this->profile_img->auto_resize($orig_image_dir, Input::get('login_type'));     
             }   
