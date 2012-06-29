@@ -55,8 +55,8 @@ class ContactDetails extends FeedbackDataTypes {
 
         $this->contact_data = Array(
             'siteId'    => Input::get('site_id')
-          , 'firstName' => ucwords(Input::get('first_name'))
-          , 'lastName'  => ucwords(Input::get('last_name'))
+          , 'firstName' => ucwords(strtolower(Input::get('first_name')))
+          , 'lastName'  => ucwords(strtolower(Input::get('last_name')))
           , 'email'     => Input::get('email')
           , 'countryId' => $country_id
           , 'avatar'    => $avatar
