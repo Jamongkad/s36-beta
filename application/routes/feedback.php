@@ -129,7 +129,7 @@ return array(
                             );  
 
             $addfeedback->perform(); 
-            return Redirect::to('inbox/all');  
+            //return Redirect::to('inbox/all');  
         }
     }),
 
