@@ -375,7 +375,7 @@ jQuery(function($) {
             fileElementId:'your_photo',
             dataType: 'json', 
             success: function (data, status) {	  
-
+                console.log(data);
                 var myStatus = new Status();
                 myStatus.notify("Photo Upload Success!", 1000);
 
@@ -402,7 +402,6 @@ jQuery(function($) {
                 jcrop_div.css({'width':width});
                 $('input[name="orig_image_dir"]').val(file); 
                 initJcrop();
-
             }
 		}); 
     });
