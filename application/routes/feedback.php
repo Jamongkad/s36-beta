@@ -110,7 +110,7 @@ return array(
           , 'city' => 'required'
           , 'country' => 'required'
         );
-        /*
+
         $validator = Validator::make($data, $rules);
         if(! $validator->valid() ) {
             return View::of_layout()->partial('contents', 'feedback/addfeedback_view', Array(
@@ -131,16 +131,6 @@ return array(
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
         }
-        */
-
-        $addfeedback = new Feedback\Services\SubmissionService(
-                           new ContactDetails
-                         , new FeedbackDetails
-                         , new DBDashboard
-                         , new HalcyonicService
-                        );  
-
-        $addfeedback->perform(); 
     }),
 
     //Ajax Routes...
