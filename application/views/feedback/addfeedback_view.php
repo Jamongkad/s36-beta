@@ -3,7 +3,7 @@
 <input type="hidden" id="cropped_photo" name="cropped_image_nm" value="0" />
 <input type="hidden" name="login_type" value="36" />
 <input type="hidden" name="profile_link" value="">
-<input type="hidden" name="orig_image_dir" value="/img/sample-avatar.png" />
+<input type="hidden" name="orig_image_dir" value="/img/blank-avatar.png" />
 
 <div class="block">
     <div id="add-feedback-setup-block">
