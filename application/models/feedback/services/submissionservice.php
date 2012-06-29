@@ -19,6 +19,8 @@ class SubmissionService {
 
     public function perform() {        
         $this->contact_details->read_data(); 
+        Helpers::dump($this->contact_details);
+        /*
         $this->contact_details->write_new_contact();
      
         $this->feedback_details->set_contact_id($this->contact_details->get_contact_id());
@@ -33,6 +35,7 @@ class SubmissionService {
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $this->company_id;
         $this->halcyonic->save_latest_feedid();
+        */
     }
 
     public function metric_response() {
