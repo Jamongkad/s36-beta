@@ -31,7 +31,7 @@ class ContactDetails extends FeedbackDataTypes {
             $country_id = $country->countryid;
         }
 
-        $rating_check = Input::get('rating') > 2;    
+        $rating_check = Input::get('rating') > 3;    
         //if no cropped photo and feedback rating is above average
         if ($avatar == '0' and $rating_check) {
 
