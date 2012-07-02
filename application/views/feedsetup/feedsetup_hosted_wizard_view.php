@@ -480,8 +480,7 @@ a.button-gray:hover{background:#dce9f5;}
         $('#hosted-wizard-back').hide();
 
         $('#hosted-wizard-next').click(function(e){
-            var cur_step = check_current_hosted_wizard_step();
-            hosted_wizard_slide.cycle('next');
+            var cur_step = check_current_hosted_wizard_step(); 
             $('#hosted-wizard-back').fadeIn();		
             
             console.log(cur_step);
