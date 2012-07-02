@@ -2,13 +2,11 @@
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
     </div>
-
     <div class="block noborder">
         <div id="wizard">
             <div id="wizard-step-1" class="wizard-steps current">
                 <h2 class="large-black">Step 1 Choose a design theme from the follow categories:</h2>
-                <br />
-                
+                <br />                
                 <div class="grids">
                     <div class="">
                         <select class="regular-select" id="theme-select">
@@ -255,9 +253,7 @@
                         &nbsp;
                     </div>
                 </div>
-            </div>                    
-            
-            
+            </div>                     
             <div id="wizard-step-4" class="wizard-steps">
                 <span class="blue">Forwarding to our integration menu now…</span>
             </div>
@@ -468,3 +464,12 @@ a.button-gray:hover{background:#dce9f5;}
 #wizard-preview-feedback-text .read-full{font-size:10px;color:#86bde4}
 .large-black{font-size:14px;color:#2f2f2f;}
 </style>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        
+        $('#wizard-next').click(function(e){
+            console.log("Mathew");
+        });
+    })
+</script>
