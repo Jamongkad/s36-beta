@@ -30,7 +30,13 @@ class DBWidgetThemes {
         foreach($this->main_categories_build as $key => $val) {
             $key_name = "$key:widget:themes";
             foreach($val as $k => $v) {
-                $this->redis->sadd($key_name, $k);      
+                //save category children
+                $this->redis->sadd($key_name, $k);       
+
+                $widget_theme_key = "$k:theme:value:label";
+                $this->redis->hset($widget_theme_key, $k, $v);
+                $this->redis->hset($widget_theme_key, $k.'-heart', ucwords($v)." ".$v."-heart");
+                $this->redis->hset($widget_theme_key, $k.'-like', ucwords($v)." ".$v."-like");
             }
         }
     }
