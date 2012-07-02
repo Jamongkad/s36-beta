@@ -14,7 +14,7 @@ class DBWidgetThemes {
           , 'contrast' => 'Contrast'
           , 'dark'   => 'Dark'
           , 'matte'    => 'Matte'
-          , 'silver-gray' => 'Silver Gray'
+          , 'silver' => 'Silver'
         )
       , 'minimalist' => Array()
       , 'creative' => Array(
