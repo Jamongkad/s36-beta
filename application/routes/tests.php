@@ -276,7 +276,7 @@ return array(
 
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;    
-        Helpers::dump($test);
+        Helpers::dump($test->build_data());
     },
 
     //reserved route for Leica and Ryan testing

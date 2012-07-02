@@ -28,6 +28,11 @@ class DBWidgetThemes {
     }
 
     public function build_data() {
-        
+        foreach($this->main_categories_build as $key => $val) {
+            $key_name = "$key:corporate:widgets";
+            foreach($val as $k => $v) {
+                $this->redis->sadd($key_name, $k);      
+            }
+        }
     }
 }
