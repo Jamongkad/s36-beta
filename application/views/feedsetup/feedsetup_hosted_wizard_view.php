@@ -481,13 +481,13 @@ a.button-gray:hover{background:#dce9f5;}
         $('#hosted-wizard-back').hide();
 
         $('#hosted-wizard-next').click(function(e){
-            //console.log(cur_step);
+            console.log(cur_step);
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
         });
 
         $('#hosted-wizard-back').click(function(){
-            //console.log(cur_step);
+            console.log(cur_step);
             hosted_wizard_slide.cycle('prev');
         });
 
