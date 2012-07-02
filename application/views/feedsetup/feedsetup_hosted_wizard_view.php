@@ -478,15 +478,12 @@ a.button-gray:hover{background:#dce9f5;}
 
         var cur_step = check_current_hosted_wizard_step();
 
+        $('#hosted-wizard-back').hide();
+
         $('#hosted-wizard-next').click(function(e){
             //console.log(cur_step);
             hosted_wizard_slide.cycle('next');
-
-            if(cur_step != 'hosted-wizard-step-1'){
-                $('#hosted-wizard-back').fadeIn();		
-            }else{
-                $('#hosted-wizard-back').fadeOut();
-            }
+            $('#hosted-wizard-back').fadeIn();		
         });
 
         $('#hosted-wizard-back').click(function(){
