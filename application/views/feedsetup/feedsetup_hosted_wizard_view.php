@@ -480,14 +480,14 @@ a.button-gray:hover{background:#dce9f5;}
 
         $('#hosted-wizard-next').click(function(e){
             var cur_step = check_current_hosted_wizard_step();
-            //console.log(cur_step);
+            console.log(cur_step);
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
         });
 
         $('#hosted-wizard-back').click(function(){
             var cur_step = check_current_hosted_wizard_step();
-            //console.log(cur_step);
+            console.log(cur_step);
             hosted_wizard_slide.cycle('prev');
         });
 
@@ -501,13 +501,6 @@ a.button-gray:hover{background:#dce9f5;}
 
         function check_current_hosted_wizard_step(){
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
-            console.log(cur_step);
-            if(cur_step != 'hosted-wizard-step-1'){
-                console.log("I found love");
-                $('#hosted-wizard-back').fadeIn();		
-            }else{
-                $('#hosted-wizard-back').fadeOut();
-            }
             return cur_step;
         }
     })
