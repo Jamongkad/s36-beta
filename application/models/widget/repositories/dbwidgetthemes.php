@@ -54,9 +54,9 @@ class DBWidgetThemes {
                 $like_key = $k."-like";
 
                 $data = new StdClass;
-                $data->$k = $main;
-                $data->$heart_key = $heart;
-                $data->$like_key = $like;
+                $data->main = array($v => $main);
+                $data->heart = array($heart_key => $heart);
+                $data->like = array($like_key => $like);
 
                 Helpers::dump($data);
 
