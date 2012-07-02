@@ -483,6 +483,13 @@ a.button-gray:hover{background:#dce9f5;}
             var cur_step = check_current_hosted_wizard_step();
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
+
+            if(cur_step == 'wizard-step-3') {
+                $('.create-widget-button').fadeIn('fast');
+                $('#hosted-wizard-next').fadeOut('fast');
+                wizard_slide.cycle('next');
+            }   
+
         });
 
         $('#hosted-wizard-back').click(function(){
