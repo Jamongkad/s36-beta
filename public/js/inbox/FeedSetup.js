@@ -371,11 +371,6 @@ function isDefined(target, path) {
 
 function check_current_wizard_step(){
     var cur_step = $('#wizard').find('.current').attr('id');
-    if(cur_step != 'wizard-step-1'){
-        $('#wizard-back').fadeIn();		
-    }else{
-        $('#wizard-back').fadeOut();
-    }
     return cur_step;
 }
 
