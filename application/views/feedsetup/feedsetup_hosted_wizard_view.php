@@ -475,11 +475,16 @@ a.button-gray:hover{background:#dce9f5;}
             pause : 1,
             before: adjust_height
         });
+        var cur_step = check_current_hosted_wizard_step();
+
         $('#hosted-wizard-next').click(function(e){
-            var cur_step = check_current_hosted_wizard_step();
-            console.log("Mathew");
             console.log(cur_step);
             hosted_wizard_slide.cycle('next');
+        });
+
+        $('#hosted-wizard-back').click(function(){
+            console.log(cur_step);
+            hosted_wizard_slide.cycle('prev');
         });
 
         function adjust_height(curr, next, opts, fwd) {		
