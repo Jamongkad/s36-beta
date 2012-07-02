@@ -1,6 +1,6 @@
 <?php namespace Widget\Repositories;
 
-use redisent, Helpers;
+use redisent, Helpers, StdClass;
 
 class DBWidgetThemes {
 
@@ -50,9 +50,14 @@ class DBWidgetThemes {
                 $heart = $this->redis->hget($widget_theme_key, $k."-heart");
                 $like = $this->redis->hget($widget_theme_key, $k."-like");
 
-                Helpers::dump($main);
-                Helpers::dump($heart);
-                Helpers::dump($like);
+                $data = new StdClass;
+                $data->$k = $main;
+                /*
+                $data->$k."-heart" = $heart;
+                $data->$k."-like" = $like;
+                */
+
+                Helpers::dump($data);
 
             }
         }
