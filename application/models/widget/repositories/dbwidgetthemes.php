@@ -50,12 +50,13 @@ class DBWidgetThemes {
                 $heart = $this->redis->hget($widget_theme_key, $k."-heart");
                 $like = $this->redis->hget($widget_theme_key, $k."-like");
 
+                $heart_key = $k."-heart";
+                $like_key = $k."-like";
+
                 $data = new StdClass;
                 $data->$k = $main;
-                /*
-                $data->$k."-heart" = $heart;
-                $data->$k."-like" = $like;
-                */
+                $data->$heart_key = $heart;
+                $data->$like_key = $like;
 
                 Helpers::dump($data);
 
