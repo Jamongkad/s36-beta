@@ -476,8 +476,6 @@ a.button-gray:hover{background:#dce9f5;}
             before: adjust_height
         });
 
-
-
         $('#hosted-wizard-back').hide();
 
         $('#hosted-wizard-next').click(function(e){
@@ -503,6 +501,7 @@ a.button-gray:hover{background:#dce9f5;}
 
         function check_current_hosted_wizard_step(){
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
+            console.log(cur_step);
             return cur_step;
         }
     })
