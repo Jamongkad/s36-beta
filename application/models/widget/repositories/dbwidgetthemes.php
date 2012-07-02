@@ -8,12 +8,11 @@ class DBWidgetThemes {
     private $main_categories_build = Array(
         'corporate' =>  Array(
             'aglow'  => 'Aglow'
-          , 'silver' => 'Silver'
+          , 'alum'   => 'Aluminum'
           , 'chrome' => 'Chrome'
           , 'classic'=> 'Classic'
-          , 'dark'   => 'Dark'
-          , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
+          , 'dark'   => 'Dark'
           , 'matte'    => 'Matte'
           , 'silver-gray' => 'Silver Gray'
         )
