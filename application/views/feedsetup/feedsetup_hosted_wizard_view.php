@@ -224,7 +224,7 @@
                     </div>
                 </div>
                 <div class="grids" style="height:285px">
-                    <img src="images/hosted-display-preview.jpg" />
+                    <img src="/img/hosted-display-preview.jpg" />
                 </div>
             </div>
             <div id="hosted-wizard-step-3" class="wizard-steps">
@@ -240,7 +240,7 @@
                     </div>
                 </div>
                 <div class="grids" style="height:314px">
-                    <img src="images/hosted-form-preview.jpg" />
+                    <img src="/img/hosted-form-preview.jpg" />
                 </div>
                 <div class="grids">
                     <h2 class="large-black">Configure your fedback prompt to encourage users to say something specific about your brand, product or service.</h2>
