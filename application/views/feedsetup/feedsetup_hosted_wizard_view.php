@@ -40,12 +40,8 @@
                                                 $color_name = 'form-'.$form_colors;
                                                 $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                                     <img src="/img/display-thumb.png "/>
+                                                                    <br/>
                                                                     <span>'.$val.'</span>
-                                                                    <!--
-                                                                    <div id="preview" class="preview button-gray">
-                                                                        Preview
-                                                                    </div>
-                                                                    -->
                                                                 </div>';
                                             
                                              if(($end == $units) || $ctr == ($max - 1)){
