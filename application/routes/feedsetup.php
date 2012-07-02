@@ -103,7 +103,7 @@ return array(
     }),
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_widgets_view');
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view');
     }),
     
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
