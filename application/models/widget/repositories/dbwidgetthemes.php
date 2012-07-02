@@ -45,7 +45,7 @@ class DBWidgetThemes {
         foreach($this->main_categories_build as $key => $val) {
             foreach($val as $k => $v) {
                 $widget_theme_key = "$k:theme:value:label";
-                $theme = $this->redis->hgetall($widget_theme_key);
+                $theme = $this->redis->hget($widget_theme_key, $k);
                 Helpers::dump($theme);
             }
         }
