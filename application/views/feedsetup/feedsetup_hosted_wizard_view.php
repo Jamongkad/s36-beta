@@ -502,9 +502,9 @@ a.button-gray:hover{background:#dce9f5;}
         function check_current_hosted_wizard_step(){
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
             if(cur_step != 'hosed-wizard-step-1'){
-                $('#hosed-wizard-back').fadeIn();		
+                $('#hosted-wizard-back').fadeIn();		
             }else{
-                $('#hosed-wizard-back').fadeOut();
+                $('#hosted-wizard-back').fadeOut();
             }
             return cur_step;
         }
