@@ -476,17 +476,19 @@ a.button-gray:hover{background:#dce9f5;}
             before: adjust_height
         });
 
-        var cur_step = check_current_hosted_wizard_step();
+
 
         $('#hosted-wizard-back').hide();
 
         $('#hosted-wizard-next').click(function(e){
+            var cur_step = check_current_hosted_wizard_step();
             console.log(cur_step);
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
         });
 
         $('#hosted-wizard-back').click(function(){
+            var cur_step = check_current_hosted_wizard_step();
             console.log(cur_step);
             hosted_wizard_slide.cycle('prev');
         });
