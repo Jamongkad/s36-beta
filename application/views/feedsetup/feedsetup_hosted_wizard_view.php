@@ -257,10 +257,6 @@
                     </div>
                 </div>
             </div>                     
-            <div id="hosted-wizard-step-4" class="wizard-steps">
-                <span class="blue">Forwarding to our integration menu now…</span>
-                <input type="submit" class="large-btn create-widget-button" value="Save Hosted Page" / >
-            </div>
         </div>
         <div id="wizard-error-prompt">
             
@@ -269,6 +265,7 @@
             <a href="javascript:;" class="wizard-btn" id="hosted-wizard-back">Back</a>
             &nbsp;
             <a href="javascript:;" class="wizard-btn" id="hosted-wizard-next">Next</a>
+            <input type="submit" class="large-btn create-widget-button" value="save widget" style="display:none" / >
         </div>
     </div>
     <div class="block noborder" style="height:150px;">
