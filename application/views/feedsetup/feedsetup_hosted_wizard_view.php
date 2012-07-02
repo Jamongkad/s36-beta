@@ -2,7 +2,7 @@
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
     </div>
-    <br />
+
     <div class="block noborder">
         <div id="wizard">
             <div id="wizard-step-1" class="wizard-steps current">

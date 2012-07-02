@@ -74,13 +74,10 @@
                                 $feedsetup_nav = Array(
                                      'feedsetup'  => 'DASHBOARD'
                                    , 'feedsetup/widget_selection' => 'CREATE'
-                                );
-                                
-                            } //Default Nav
-                            
+                                );           
+                            } //Default Nav     
                         }
-                    ?>
-                    
+                    ?> 
                     <?foreach($feedsetup_nav as $name => $value):?>
                         <li>
                             <?=HTML::link(  $name.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), $value
