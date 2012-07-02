@@ -483,17 +483,21 @@ a.button-gray:hover{background:#dce9f5;}
             var cur_step = check_current_hosted_wizard_step();
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
+            
+            console.log(cur_step);
 
             if(cur_step == 'hosted-wizard-step-3') {
                 $('.create-widget-button').fadeIn('fast');
                 $('#hosted-wizard-next').fadeOut('fast');
                 hosted_wizard_slide.cycle('next');
             }   
-
         });
 
         $('#hosted-wizard-back').click(function(){
             var cur_step = check_current_hosted_wizard_step();
+
+            console.log(cur_step);
+
             if(cur_step == 'hosted-wizard-step-2'){
                 $(this).fadeOut();
             } else {
