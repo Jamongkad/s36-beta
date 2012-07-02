@@ -1,6 +1,6 @@
 <?php namespace Widget\Repositories;
 
-use redisent;
+use redisent, Helpers;
 
 class DBWidgetThemes {
 
@@ -40,4 +40,17 @@ class DBWidgetThemes {
             }
         }
     }
+
+    public function show_all() { 
+        foreach($this->main_categories_build as $key => $val) {
+            foreach($val as $k => $v) {
+                $widget_theme_key = "$k:theme:value:label";
+                $theme = $this->redis->hgetall($widget_theme_key);
+                Helpers::dump($theme);
+            }
+        }
+    }
+
+    public function insert_category() {}
+    public function insert_theme() {}
 }
