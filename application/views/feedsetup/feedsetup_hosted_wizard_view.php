@@ -480,16 +480,19 @@ a.button-gray:hover{background:#dce9f5;}
 
         $('#hosted-wizard-next').click(function(e){
             var cur_step = check_current_hosted_wizard_step();
-            console.log(cur_step);
-            console.log($('.current'));
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
         });
 
         $('#hosted-wizard-back').click(function(){
             var cur_step = check_current_hosted_wizard_step();
-            console.log(cur_step);
-            console.log($('.current'));
+            if(cur_step == 'hosted-wizard-step-2'){
+                $(this).fadeOut();
+            } else {
+                $('#hosted-wizard-next').fadeIn('fast');     
+                $('.create-widget-button').hide(); 
+            }
+
             hosted_wizard_slide.cycle('prev');
         });
 
