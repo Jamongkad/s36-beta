@@ -5,9 +5,29 @@ use redisent;
 class DBWidgetThemes {
 
     private $redis;
-    private $main_categories = Array('corporate', 'minimalist', 'creative');
+    private $main_categories_build = Array(
+        'corporate' =>  Array(
+            'aglow'  => 'Aglow'
+          , 'silver' => 'Silver'
+          , 'chrome' => 'Chrome'
+          , 'classic'=> 'Classic'
+          , 'dark'   => 'Dark'
+          , 'alum'   => 'Aluminum'
+          , 'contrast' => 'Contrast'
+          , 'matte'    => 'Matte'
+          , 'silver-gray' => 'Silver Gray'
+        )
+      , 'minimalist' => Array()
+      , 'creative' => Array(
+            'cloudy'  => 'Cloudy'
+          , 'salad' => 'Salad'
+      ));
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
+    }
+
+    public function build_data() {
+        
     }
 }
