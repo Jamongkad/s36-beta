@@ -481,6 +481,7 @@ a.button-gray:hover{background:#dce9f5;}
         $('#hosted-wizard-next').click(function(e){
             var cur_step = check_current_hosted_wizard_step();
             console.log(cur_step);
+            console.log($('.current'));
             hosted_wizard_slide.cycle('next');
             $('#hosted-wizard-back').fadeIn();		
         });
@@ -488,6 +489,7 @@ a.button-gray:hover{background:#dce9f5;}
         $('#hosted-wizard-back').click(function(){
             var cur_step = check_current_hosted_wizard_step();
             console.log(cur_step);
+            console.log($('.current'));
             hosted_wizard_slide.cycle('prev');
         });
 
