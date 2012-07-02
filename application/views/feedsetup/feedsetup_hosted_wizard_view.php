@@ -55,7 +55,7 @@
                                         <div class="form-design" id="form-blue">
                                             <img src="images/tab-designs/blue-form.png" height="60">
                                             <br>
-                                            <span>Ocean Blue 2</span>
+                                            <span>Ocean Blue</span>
                                         </div>
                                         <div class="form-design" id="form-green">
                                             <img src="images/tab-designs/green-form.png" height="60">
@@ -90,7 +90,7 @@
                                         <div class="form-design selected-form" id="form-blue">
                                             <img src="images/tab-designs/blue-form.png" height="60">
                                             <br>
-                                            <span>Ocean Blue</span>
+                                            <span>Ocean Blue Min</span>
                                         </div>
                                         <div class="form-design" id="form-green">
                                             <img src="images/tab-designs/green-form.png" height="60">
