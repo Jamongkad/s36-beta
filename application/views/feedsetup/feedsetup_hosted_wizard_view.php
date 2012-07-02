@@ -1,3 +1,6 @@
+<?=Form::open('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
+<?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
@@ -276,7 +279,7 @@
 
 <!-- div need to clear floated divs -->
 <div class="c"></div>
-
+<?=Form::close()?>
 <style type="text/css">
     /* submission widget */
     input.large-text{padding:10px;width:80%;}
