@@ -475,6 +475,7 @@ a.button-gray:hover{background:#dce9f5;}
             pause : 1,
             before: adjust_height
         });
+
         var cur_step = check_current_hosted_wizard_step();
 
         $('#hosted-wizard-next').click(function(e){
@@ -498,9 +499,9 @@ a.button-gray:hover{background:#dce9f5;}
         function check_current_hosted_wizard_step(){
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
             if(cur_step != 'hosted-wizard-step-1'){
-                $('#wizard-back').fadeIn();		
+                $('#hosted-wizard-back').fadeIn();		
             }else{
-                $('#wizard-back').fadeOut();
+                $('#hosted-wizard-back').fadeOut();
             }
             return cur_step;
         }
