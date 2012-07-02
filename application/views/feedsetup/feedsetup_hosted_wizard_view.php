@@ -503,6 +503,7 @@ a.button-gray:hover{background:#dce9f5;}
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
             console.log(cur_step);
             if(cur_step != 'hosted-wizard-step-1'){
+                console.log("I found love");
                 $('#hosted-wizard-back').fadeIn();		
             }else{
                 $('#hosted-wizard-back').fadeOut();
