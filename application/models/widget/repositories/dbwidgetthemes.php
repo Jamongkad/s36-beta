@@ -58,7 +58,7 @@ class DBWidgetThemes {
                 $data->heart = array($heart_key => $heart);
                 $data->like = array($like_key => $like);
 
-                Helpers::dump(array_keys($data->main));
+                Helpers::dump($data);
             }
         }
     }
