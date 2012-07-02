@@ -274,6 +274,11 @@ return array(
         Helpers::dump(Helpers::html_cleaner($text));
     },
 
+    'GET /tests/widget_themes' = function() {
+        $test = new Widget\Repositories\DBWidgetThemes;    
+        Helpers::dump($test);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');

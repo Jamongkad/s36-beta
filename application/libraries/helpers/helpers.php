@@ -6,6 +6,7 @@ class Helpers {
 
     private static $request;
     private static $regex;
+
     //TODO: From zeh database this should be Helpers Class managing too many things at once
     public static $tab_themes = Array(
             'aglow'=>'Aglow'
@@ -28,15 +29,15 @@ class Helpers {
     );
 
     public static $form_themes = Array(
-            'aglow'=>'Aglow'
-          , 'silver'=>'Silver'
-          , 'chrome'=>'Chrome'
-          , 'classic'=>'Classic'
-          , 'dark' => 'Dark'
+            'aglow'  => 'Aglow'
+          , 'silver' => 'Silver'
+          , 'chrome' => 'Chrome'
+          , 'classic'=> 'Classic'
+          , 'dark'   => 'Dark'
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
-          , 'matte'  => 'Matte'
-          , 'silver-gray'=>'Silver Gray'
+          , 'matte'    => 'Matte'
+          , 'silver-gray' => 'Silver Gray'
     );
 
     public static $display_themes = Array( 
@@ -47,14 +48,15 @@ class Helpers {
           , 'dark'   => 'Dark'
           , 'alum'   => 'Aluminum'
           , 'contrast' => 'Contrast'
-          , 'matte'  => 'Matte'
-          , 'silver-gray'=>'Silver Gray'
+          , 'matte'    => 'Matte'
+          , 'silver-gray' => 'Silver Gray'
     );
 
     public static function request() {
         return Request::uri();
     }
-
+    
+    //TODO: Refactor
     public static function switchable($element, $id, $catid, $hrefaction, $background) { 
         echo "state='".(($element) == 0 ? 0 : 1)."'";
         echo "catid='".$catid."'";

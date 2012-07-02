@@ -18,8 +18,7 @@ return array(
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_widget_selection');
     }),
 
-    'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) use ($dbw) { 
- 
+    'GET /feedsetup/overview/(:any)' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($type) use ($dbw) {  
         $widgy = $dbw->fetch_paginated_widgets($type);
 
         if($type == 'display') {

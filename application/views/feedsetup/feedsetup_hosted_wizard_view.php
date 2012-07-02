@@ -17,8 +17,8 @@
                             <option value="minimalist">Minimalist</option>
                             <option value="creative">Creative</option>
                         </select>
-                        <input type="hidden" value="1" id="selected-theme" name="selected-theme" />
-                        <a href="#">View all Categories</a>
+                        <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
+                        <!--<a href="#">View all Categories</a>-->
                         <div class="grids">
                         <br />
                             <div id="corporate" class="form-design-slide" style="margin-left:-10px;">
