@@ -3,7 +3,7 @@
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
     </div>
     <div class="block noborder">
-        <div id="wizard">
+        <div id="hosted-wizard">
             <div id="hosted-wizard-step-1" class="wizard-steps current">
                 <h2 class="large-black">Step 1 Choose a design theme from the follow categories:</h2>
                 <br />                
@@ -466,10 +466,37 @@ a.button-gray:hover{background:#dce9f5;}
 </style>
 
 <script type="text/javascript">
-    jQuery(function($) {
-        
-        $('#hosted-wizard-next').click(function(e){
-            console.log("Mathew");
+    jQuery(function($) { 
+
+        var hosted_wizard_slide = $('#hosted-wizard').cycle({
+            fx:      'fade', 
+            speed:    200, 
+            timeout:  0 ,
+            pause : 1,
+            before: adjust_height
         });
+        $('#hosted-wizard-next').click(function(e){
+            var cur_step = check_current_hosted_wizard_step();
+            console.log("Mathew");
+            console.log(cur_step);
+        });
+
+        function adjust_height(curr, next, opts, fwd) {		
+            var index = opts.currSlide;
+            var $ht = $(this).height();
+            $(this).parent().animate({height: $ht},200);				
+            $(this).parent().find('div.current').removeClass('current'); 
+            $(this).addClass('current');
+        }
+
+        function check_current_hosted_wizard_step(){
+            var cur_step = $('#hosted-wizard').find('.current').attr('id');
+            if(cur_step != 'hosted-wizard-step-1'){
+                $('#wizard-back').fadeIn();		
+            }else{
+                $('#wizard-back').fadeOut();
+            }
+            return cur_step;
+        }
     })
 </script>
