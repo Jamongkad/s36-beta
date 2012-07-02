@@ -481,6 +481,12 @@ a.button-gray:hover{background:#dce9f5;}
         $('#hosted-wizard-next').click(function(e){
             //console.log(cur_step);
             hosted_wizard_slide.cycle('next');
+
+            if(cur_step != 'hosted-wizard-step-1'){
+                $('#hosted-wizard-back').fadeIn();		
+            }else{
+                $('#hosted-wizard-back').fadeOut();
+            }
         });
 
         $('#hosted-wizard-back').click(function(){
@@ -497,15 +503,7 @@ a.button-gray:hover{background:#dce9f5;}
         }
 
         function check_current_hosted_wizard_step(){
-
             var cur_step = $('#hosted-wizard').find('.current').attr('id');
-            console.log(cur_step);
-
-            if(cur_step != 'hosted-wizard-step-1'){
-                $('#hosted-wizard-back').fadeIn();		
-            }else{
-                $('#hosted-wizard-back').fadeOut();
-            }
             return cur_step;
         }
     })
