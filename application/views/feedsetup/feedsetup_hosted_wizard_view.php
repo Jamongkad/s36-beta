@@ -479,7 +479,7 @@ a.button-gray:hover{background:#dce9f5;}
             var cur_step = check_current_hosted_wizard_step();
             console.log("Mathew");
             console.log(cur_step);
-            wizard_slide.cycle('next');
+            hosted_wizard_slide.cycle('next');
         });
 
         function adjust_height(curr, next, opts, fwd) {		
