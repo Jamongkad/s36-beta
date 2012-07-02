@@ -448,8 +448,8 @@ function validate_field(value, default_val, type){
 }
 function validate_email(email) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
-    return true;
+        return true;
     }else{
-    return false;
+        return false;
     }
 }

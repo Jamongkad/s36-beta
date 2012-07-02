@@ -487,8 +487,8 @@ a.button-gray:hover{background:#dce9f5;}
             console.log(cur_step);
 
             if(cur_step == 'hosted-wizard-step-3') {
-                $('.create-widget-button').fadeIn('fast');
                 $('#hosted-wizard-next').fadeOut('fast');
+                $('.create-widget-button').fadeIn('fast'); 
                 hosted_wizard_slide.cycle('next');
             }   
         });
@@ -501,6 +501,7 @@ a.button-gray:hover{background:#dce9f5;}
             if(cur_step == 'hosted-wizard-step-2'){
                 $(this).fadeOut();
             } else {
+                console.log("Meh");
                 $('#hosted-wizard-next').fadeIn('fast');     
                 $('.create-widget-button').hide(); 
             }
