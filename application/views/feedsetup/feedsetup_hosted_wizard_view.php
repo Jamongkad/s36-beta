@@ -4,7 +4,7 @@
     </div>
     <div class="block noborder">
         <div id="wizard">
-            <div id="wizard-step-1" class="wizard-steps current">
+            <div id="hosted-wizard-step-1" class="wizard-steps current">
                 <h2 class="large-black">Step 1 Choose a design theme from the follow categories:</h2>
                 <br />                
                 <div class="grids">
@@ -211,7 +211,7 @@
                     </div>
                 </div>
             </div>
-            <div id="wizard-step-2" class="wizard-steps">
+            <div id="hosted-wizard-step-2" class="wizard-steps">
                 <h2 class="large-black">Configure your hosted page to suit your website and theme - you can direct visitors to your hosted page to view existing published feedback, or to get them to send in feedback.</h2>
                 <br />
                 <div class="grids">
@@ -227,7 +227,7 @@
                     <img src="images/hosted-display-preview.jpg" />
                 </div>
             </div>
-            <div id="wizard-step-3" class="wizard-steps">
+            <div id="hosted-wizard-step-3" class="wizard-steps">
                 <h2 class="large-black">Configure your feedback submission form to encourage your users to leave feedback about company/service/product</h2>
                 <br />
                 <div class="grids">
@@ -254,7 +254,7 @@
                     </div>
                 </div>
             </div>                     
-            <div id="wizard-step-4" class="wizard-steps">
+            <div id="hosted-wizard-step-4" class="wizard-steps">
                 <span class="blue">Forwarding to our integration menu now…</span>
             </div>
         </div>
@@ -262,9 +262,9 @@
             
         </div>
         <div class="wizard-buttons">
-            <a href="javascript:;" class="wizard-btn" id="wizard-back">Back</a>
+            <a href="javascript:;" class="wizard-btn" id="hosted-wizard-back">Back</a>
             &nbsp;
-            <a href="javascript:;" class="wizard-btn" id="wizard-next">Next</a>
+            <a href="javascript:;" class="wizard-btn" id="hosted-wizard-next">Next</a>
         </div>
     </div>
     <div class="block noborder" style="height:150px;">
@@ -468,7 +468,7 @@ a.button-gray:hover{background:#dce9f5;}
 <script type="text/javascript">
     jQuery(function($) {
         
-        $('#wizard-next').click(function(e){
+        $('#hosted-wizard-next').click(function(e){
             console.log("Mathew");
         });
     })
