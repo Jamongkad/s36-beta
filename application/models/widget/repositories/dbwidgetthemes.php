@@ -51,14 +51,15 @@ class DBWidgetThemes {
         $collection = Array();
 
         foreach($this->main_categories_build as $key => $val) {
+
             $key_name = "$key:widget:themes";
             $smembers = $this->redis->smembers($key_name);
+
             $data = new StdClass;
             $data->head = $key_name;
             $data->children = Array();
 
             foreach($smembers as $v) {
-
                 $widget_theme_key = "$v:theme:value:label";
                 $main  = $this->redis->hget($widget_theme_key, $v);
                 $heart = $this->redis->hget($widget_theme_key, $v."-heart");
@@ -79,6 +80,7 @@ class DBWidgetThemes {
         }
 
         $this->collection = $collection;
+        //conserb mems
         $collection = Null;
     }
 

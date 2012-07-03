@@ -278,7 +278,8 @@ return array(
         $test = new Widget\Repositories\DBWidgetThemes;    
         $test->build_data();
         $test->build_menu_structure();
-        Helpers::dump($test->show_all());
+        $ref = $test->show_all();
+        Helpers::dump($ref->corporate);
     },
 
     //reserved route for Leica and Ryan testing
