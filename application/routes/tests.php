@@ -277,6 +277,7 @@ return array(
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;    
         $test->build_data();
+        $test->build_menu_structure();
         Helpers::dump($test->show_all());
     },
 

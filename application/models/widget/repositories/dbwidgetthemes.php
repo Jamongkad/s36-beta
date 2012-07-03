@@ -5,6 +5,7 @@ use redisent, Helpers, StdClass;
 class DBWidgetThemes {
 
     private $redis;
+    private $collection;
     private $main_categories_build = Array(
         'corporate' =>  Array(
             'aglow'  => 'Aglow'
@@ -42,7 +43,11 @@ class DBWidgetThemes {
     }
 
     public function show_all() { 
+        return $this->collection;
+    }
 
+    public function build_menu_structure() {
+        
         $collection = Array();
 
         foreach($this->main_categories_build as $key => $val) {
@@ -71,28 +76,10 @@ class DBWidgetThemes {
             }
 
             $collection[] = $data;
-            /*
-            foreach($val as $k => $v) {
-                $widget_theme_key = "$k:theme:value:label";
-                
-                $main = $this->redis->hget($widget_theme_key, $k);
-                $heart = $this->redis->hget($widget_theme_key, $k."-heart");
-                $like = $this->redis->hget($widget_theme_key, $k."-like");
-
-                $heart_key = $k."-heart";
-                $like_key = $k."-like";
-
-                $data = new StdClass;
-                $data->main = array($v => $main);
-                $data->heart = array($heart_key => $heart);
-                $data->like = array($like_key => $like);
-
-                Helpers::dump($data);
-            }
-            */
         }
- 
-        Helpers::dump($collection);
+
+        $this->collection = $collection;
+        unset($collection);
     }
 
     public function insert_category() {}
