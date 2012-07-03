@@ -194,11 +194,22 @@ a.cropbtn:hover{
 	height:38px;
 	margin:0 auto;
 }
+
+.full .s36_perm_details{background:#daeec9;border:3px solid #daeec9;}
+.full .s36_perm_icon{background:#daeec9;}
+.limited .s36_perm_details{background:#faf1d4;border:3px solid #faf1d4;}
+.limited .s36_perm_icon{background:#faf1d4;}
+.private .s36_perm_details{background:#F4F4F4;border:3px solid #F4F4F4;}
+.private .s36_perm_icon{background:#F4F4F4;}
+
+.full .active_perm{border:3px solid #4d9a12;}
+.limited .active_perm{border:3px solid #e3b013;}
+.private .active_perm{border:3px solid #8a979b;}
+
 .full,.limited,.private{float:left;}
 .full{width:280px;}
 .limited,.private{width:210px;margin-left:13px;}
-.full .s36_perm_details{}
-.full .s36_perm_radio{padding-top:58px;}
+
 	.s36_perm_details .s36_perm_icon1,
 	.s36_perm_details .s36_perm_icon2,
 	.s36_perm_details .s36_perm_icon3{

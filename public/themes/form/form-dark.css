@@ -151,14 +151,6 @@ a.cropbtn:hover{
 	display:none;
 }
 
-.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
-.full .s36_perm_icon{background:#daeec9;}
-.full .s36_perm_radio{padding-top:58px;}
-.limited .s36_perm_details{background:#faf1d4;}
-.limited .s36_perm_icon{background:#faf1d4;}
-.private .s36_perm_details{background:#202020;}
-.private .s36_perm_icon{background:#202020;}
-
 .s36_perm_details{
 	border-radius:6px;
 	-moz-border-radius:6px;
@@ -177,7 +169,7 @@ a.cropbtn:hover{
 .s36_perm_details .s36_perm_icon2,
 .s36_perm_details .s36_perm_icon3{
     width:40px;height:38px;margin:0 auto;margin-top:20px;
-    background:url(../../img/ico-perms.png) no-repeat;
+    background:url(images/dark/ico-perms.png) no-repeat;
     background-position:0px 0px;
 }
 .s36_perm_details .s36_perm_icon2{
@@ -194,6 +186,19 @@ a.cropbtn:hover{
 .s36_perm_text p, .s36_perm_text h3{padding:0px;margin:0px;}
 .s36_perm_text p{font-size:11px;color:#7d8082;margin-top:4px;}
 
+.full .s36_perm_details{background:#4c9a12;color:FFF;border:2px solid #4c9a12;}
+.full .s36_perm_icon{background:#4c9a12;}
+.limited .s36_perm_details{background:#e2b011;color:FFF;border:2px solid #e2b011;}
+.limited .s36_perm_icon{background:#e2b011;}
+.private .s36_perm_details{background:#647273;color:FFF;border:2px solid #647273;}
+.private .s36_perm_icon{background:#647273;}
+
+.full    .s36_perm_details.active_perm{border:2px solid #c3ff97;}
+.limited .s36_perm_details.active_perm{border:2px solid #ffeeba;}
+.private .s36_perm_details.active_perm{border:2px solid #ccd1d1;}
+
+.s36_perm_text h3{color:#FFF;}
+.s36_perm_text p{color:#FFF;}
 /* form styles */
 .regular-textarea{
 	background:#141414;
