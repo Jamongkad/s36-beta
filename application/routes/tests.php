@@ -279,7 +279,7 @@ return array(
         $test->build_data();
         $test->build_menu_structure();
         $ref = $test->show_all();
-        Helpers::dump($ref);
+        Helpers::dump($ref['corporate']);
     },
 
     //reserved route for Leica and Ryan testing
