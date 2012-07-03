@@ -48,10 +48,14 @@ class DBWidgetThemes {
         foreach($this->main_categories_build as $key => $val) {
             $key_name = "$key:widget:themes";
             $smembers = $this->redis->smembers($key_name);
+            $data = new StdClass;
+            $data->head = $key_name;
+            $data->children = Array();
             foreach($smembers as $v) {
                 $widget_theme_key = "$v:theme:value:label";
-                Helpers::dump($widget_theme_key);
+                $data->children[] = $widget_theme_key;
             }
+            $collection[] = $data;
             /*
             foreach($val as $k => $v) {
                 $widget_theme_key = "$k:theme:value:label";
@@ -72,6 +76,8 @@ class DBWidgetThemes {
             }
             */
         }
+ 
+        Helpers::dump($collection);
     }
 
     public function insert_category() {}
