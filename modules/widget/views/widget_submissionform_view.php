@@ -20,6 +20,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){ 
         S36Form.start_slider();
+
+        $('#s36_pemissions .s36_perm_details').click(function(){
+            $('#s36_pemissions .s36_perm_details').removeClass('active_perm');
+            $(this).addClass('active_perm');
+        });
     });
 </script>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">

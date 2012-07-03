@@ -148,6 +148,7 @@ a.cropbtn:hover{
 	width:37px;
 	text-align:center;
 	padding-top:30px;
+	display:none;
 }
 
 .full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
