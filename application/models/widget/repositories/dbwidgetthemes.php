@@ -48,7 +48,7 @@ class DBWidgetThemes {
 
     public function build_menu_structure() {
         
-        $collection = Array();
+        $collection = new StdClass; 
 
         foreach($this->main_categories_build as $key => $val) {
 
@@ -76,7 +76,7 @@ class DBWidgetThemes {
                 $data->children[] = $child_data;
             }
 
-            $collection[$key] = $data;
+            $collection->$key = $data;
         }
 
         $this->collection = $collection;
