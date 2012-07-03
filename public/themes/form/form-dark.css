@@ -150,8 +150,13 @@ a.cropbtn:hover{
 	padding-top:30px;
 }
 
-.full .s36_perm_details{padding-top:30px;padding-bottom:30px;}
+.full .s36_perm_details{background:#daeec9;padding-top:30px;padding-bottom:30px;}
+.full .s36_perm_icon{background:#daeec9;}
 .full .s36_perm_radio{padding-top:58px;}
+.limited .s36_perm_details{background:#faf1d4;}
+.limited .s36_perm_icon{background:#faf1d4;}
+.private .s36_perm_details{background:#202020;}
+.private .s36_perm_icon{background:#202020;}
 
 .s36_perm_details{
 	border-radius:6px;

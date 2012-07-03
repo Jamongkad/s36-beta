@@ -125,12 +125,13 @@ a.cropbtn:hover{
 	width:37px;
 	text-align:center;
 	padding-top:30px;
+    display:none;
 }
 .s36_perm_details{
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	width:350px;height:75px;
+	width:380px;height:75px;
 	float:left;
 	overflow:hidden;cursor:pointer;
 }
