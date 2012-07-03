@@ -68,9 +68,9 @@ class DBWidgetThemes {
                 $like_key  = $v."-like";
 
                 $child_data = new StdClass;
-                $child_data->default = array($v => $main);
-                $child_data->heart = array($heart_key => $heart);
-                $child_data->like = array($like_key => $like);
+                $child_data->default = (object)array($v => $main);
+                $child_data->heart = (object)array($heart_key => $heart);
+                $child_data->like = (object)array($like_key => $like);
 
                 $data->children[] = $child_data;
             }
