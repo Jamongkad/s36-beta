@@ -75,7 +75,7 @@ class DBWidgetThemes {
                 $data->children[] = $child_data;
             }
 
-            $collection[$key_name] = $data;
+            $collection[$key] = $data;
         }
 
         $this->collection = $collection;
