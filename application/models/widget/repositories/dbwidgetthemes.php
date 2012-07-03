@@ -51,10 +51,25 @@ class DBWidgetThemes {
             $data = new StdClass;
             $data->head = $key_name;
             $data->children = Array();
+
             foreach($smembers as $v) {
+
                 $widget_theme_key = "$v:theme:value:label";
-                $data->children[] = $widget_theme_key;
+                $main  = $this->redis->hget($widget_theme_key, $v);
+                $heart = $this->redis->hget($widget_theme_key, $v."-heart");
+                $like  = $this->redis->hget($widget_theme_key, $v."-like");
+
+                $heart_key = $v."-heart";
+                $like_key  = $v."-like";
+
+                $child_data = new StdClass;
+                $child_data->main = array($v => $main);
+                $child_data->heart = array($heart_key => $heart);
+                $child_data->like = array($like_key => $like);
+
+                $data->children[] = $child_data;
             }
+
             $collection[] = $data;
             /*
             foreach($val as $k => $v) {
