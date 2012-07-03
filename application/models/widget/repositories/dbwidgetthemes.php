@@ -48,7 +48,10 @@ class DBWidgetThemes {
         foreach($this->main_categories_build as $key => $val) {
             $key_name = "$key:widget:themes";
             $smembers = $this->redis->smembers($key_name);
-            Helpers::dump($smembers);
+            foreach($smembers as $v) {
+                $widget_theme_key = "$v:theme:value:label";
+                Helpers::dump($widget_theme_key);
+            }
             /*
             foreach($val as $k => $v) {
                 $widget_theme_key = "$k:theme:value:label";
