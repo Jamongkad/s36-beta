@@ -42,7 +42,14 @@ class DBWidgetThemes {
     }
 
     public function show_all() { 
+
+        $collection = Array();
+
         foreach($this->main_categories_build as $key => $val) {
+            $key_name = "$key:widget:themes";
+            $smembers = $this->redis->smembers($key_name);
+            Helpers::dump($smembers);
+            /*
             foreach($val as $k => $v) {
                 $widget_theme_key = "$k:theme:value:label";
                 
@@ -60,6 +67,7 @@ class DBWidgetThemes {
 
                 Helpers::dump($data);
             }
+            */
         }
     }
 
