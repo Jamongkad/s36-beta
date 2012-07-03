@@ -79,7 +79,7 @@ class DBWidgetThemes {
         }
 
         $this->collection = $collection;
-        unset($collection);
+        $collection = Null;
     }
 
     public function insert_category() {}
