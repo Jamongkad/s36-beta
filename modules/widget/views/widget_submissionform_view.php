@@ -189,7 +189,7 @@
                             </div>
                             </label>
                         </div>
-                        <div class="s36_block">
+                        <div class="s36_block private">
                         	<div class="s36_perm_radio">
                             	<input type="radio" id="permission3" name="your_permission" value="3" />
                             </div>

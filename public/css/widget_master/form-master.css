@@ -181,8 +181,8 @@ a.cropbtn:hover{
 .full .s36_perm_radio{padding-top:58px;}
 .limited .s36_perm_details{background:#faf1d4;}
 .limited .s36_perm_icon{background:#faf1d4;}
-.private .s36_perm_details{background:#202020;}
-.private .s36_perm_icon{background:#202020;}
+.private .s36_perm_details{background:#f4f4f4;}
+.private .s36_perm_icon{background:#f4f4f4;}
 
 /* connect page */
 .s36_block .company{background:url(../../img/s36-logo.png);background-repeat:no-repeat;background-position:center left;padding:15px 15px 15px 160px;font-size:11px;}
