@@ -113,6 +113,10 @@ return array(
           , 'company_id' => S36Auth::user()->companyid 
         ));
     }),
+
+    'POST /feedsetup/update_hosted_settings' => function() {
+        Helpers::dump(Input::get());
+    },
     
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
     'POST /feedsetup/save_form_widget' => function() { 
