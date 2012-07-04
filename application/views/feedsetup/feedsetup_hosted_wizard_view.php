@@ -1,12 +1,6 @@
 <?=Form::open('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
-
-<? $under = new Underscore;
-   print_r(count($themes->corporate->children ));
-   foreach($themes->corporate->children as $value):?>
-    <p><?=$under->first($value->default)?> <?=$under->last($value->default)?></p>
-<? endforeach?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
@@ -32,22 +26,23 @@
                                 </div>
                                 <div class="form-designs grids" >
                                     <?php
+                                        $under = new Underscore;
                                         $form_slides = '';
                                         $units = 5;
                                         $ctr = 0;
-                                        $max = count($form_themes);
+                                        $max = count($themes->corporate->children);//count($form_themes);
                                         
-                                        foreach($form_themes as $form_colors => $val){
+                                        foreach($themes->corporate->children as $value){
                                             if (($ctr % $units) == 0) {
                                                 $form_slides .= '<div class="form-design-group grids">';
                                                 $end = 1;
                                             }
 
-                                                $color_name = 'form-'.$form_colors;
+                                                $color_name = 'form-'.$under->first($value->default);
                                                 $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                                                     <img src="/img/display-thumb.png "/>
                                                                     <br/>
-                                                                    <span>'.$val.'</span>
+                                                                    <span>'.$under->last($value->default).'</span>
                                                                 </div>';
                                             
                                              if(($end == $units) || $ctr == ($max - 1)){
