@@ -27,7 +27,7 @@ class DBWidgetThemes {
         }
     }
 
-    public function show_all() { 
+    public function perform() { 
         return $this->collection;
     }
     

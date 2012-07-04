@@ -283,10 +283,10 @@ return array(
         $test = new Widget\Repositories\DBWidgetThemes;        
         $test->write_data();
         $test->build_menu_structure();
-        $ref = $test->show_all(); 
+        $ref = $test->perform(); 
 
         $service = new Widget\Services\WidgetTheme;
-        Helpers::dump($service);
+        Helpers::dump($ref);
     },
 
     //reserved route for Leica and Ryan testing
