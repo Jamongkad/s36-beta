@@ -24,6 +24,7 @@ return array(
     'PostMark' => 'PostMark\\PostMark',
     'Helpers' => 'Helpers\\Helpers',
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
+    'Underscore' => 'Underscore\\Underscore',
 	'Auth' => 'System\\Auth',
 	'Asset' => 'System\\Asset',
 	'Benchmark' => 'System\\Benchmark',

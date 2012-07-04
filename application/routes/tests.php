@@ -284,8 +284,8 @@ return array(
         $test->build_menu_structure();
         $ref = $test->perform(); 
 
-        $service = new Widget\Services\WidgetTheme;
-        Helpers::dump($ref);
+        $under = new Underscore;
+        Helpers::dump($under);
     },
 
     //reserved route for Leica and Ryan testing
