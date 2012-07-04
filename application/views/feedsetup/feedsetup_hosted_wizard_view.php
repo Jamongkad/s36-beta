@@ -1,6 +1,6 @@
 <?=Form::open('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('company_id', $company_id)?>
-<?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
+<?=Form::hidden('theme_type', 'hosted-matte', Array('id' => 'selected-form'))?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
