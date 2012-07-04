@@ -4,6 +4,7 @@
 class S36Themes {
     
     public $main_categories_build = Array(
+
         'corporate' =>  Array(
             'aglow'  => 'Aglow'
           , 'alum'   => 'Aluminum'
@@ -13,11 +14,15 @@ class S36Themes {
           , 'dark'   => 'Dark'
           , 'matte'    => 'Matte'
           , 'silver' => 'Silver'
-        )
-      //, 'minimalist' => Array()
+      )
+
+      , 'minimalist' => Array(
+      )
+
       , 'creative' => Array(
             'cloudy'  => 'Cloudy'
           , 'salad' => 'Salad'
-      ));
+      )
+    );
  
 }

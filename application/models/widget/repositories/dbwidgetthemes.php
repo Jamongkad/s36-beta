@@ -12,11 +12,11 @@ class DBWidgetThemes {
         $this->categories = new S36Themes;
     }
 
-    public function build_data() {
+    //Write data
+    public function write_data() {
         foreach($this->categories->main_categories_build as $key => $val) {
             $key_name = "$key:widget:themes";
             foreach($val as $k => $v) {
-
                 //save category children
                 $this->redis->sadd($key_name, $k);       
                 $widget_theme_key = "$k:theme:value:label";
@@ -30,7 +30,8 @@ class DBWidgetThemes {
     public function show_all() { 
         return $this->collection;
     }
-
+    
+    //Grab data
     public function build_menu_structure() {
         
         $collection = new StdClass; 

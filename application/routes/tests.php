@@ -281,10 +281,12 @@ return array(
 
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;        
-        $test->build_data();
+        $test->write_data();
         $test->build_menu_structure();
         $ref = $test->show_all(); 
-        Helpers::dump($ref);
+
+        $service = new Widget\Services\WidgetTheme;
+        Helpers::dump($service);
     },
 
     //reserved route for Leica and Ryan testing
