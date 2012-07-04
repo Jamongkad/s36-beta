@@ -103,7 +103,7 @@ return array(
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $display_themes) {
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array( 
-            'form_themes'  => $display_themes
+            'form_themes' => $display_themes
           , 'company_id' => S36Auth::user()->companyid 
         ));
     }),
