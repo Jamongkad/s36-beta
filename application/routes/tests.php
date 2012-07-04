@@ -284,7 +284,8 @@ return array(
         $test->build_data();
         $test->build_menu_structure();
         $ref = $test->show_all();
-        Helpers::dump($ref);
+        $themes = new S36Themes;
+        Helpers::dump($themes);
     },
 
     //reserved route for Leica and Ryan testing
