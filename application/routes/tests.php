@@ -3,6 +3,11 @@
 Package::load('S36ValueObjects');
 
 return array(
+    
+    'GET /tests' => function() {
+        print_r("Hallo welcome to the 36Stories Test Suite! - Mathew");
+    },
+
     'GET /tests/test_blob' => Array('needs' => 'EnhanceTestFramework, S36ValueObjects', 'do' => function() { 
         Enhance::runTests();
     }),
