@@ -12,7 +12,7 @@
             $end = 1;
         }
 
-            $color_name = 'form-'.$under->first($value->default);
+            $color_name = 'hosted-'.$under->first($value->default);
             $form_slides .= '<div class="form-design" id="'.$color_name.'">
                                 <img src="/img/display-thumb.png "/>
                                 <br/>
