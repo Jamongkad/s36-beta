@@ -96,6 +96,7 @@
 </div>
 <div id="bodyWrapper">
     <div id="bodyContent">
+        <!--
         <div id="companyDetails" class="block">
         	<div class="companyLogo">
                 <?if($company->logo):?>
@@ -134,6 +135,7 @@
                 </div>
             </div>
         </div>
+        -->
             <!--this is where the magic starts-->
             <div id="theFeedbacks">
                 <?=$feeds?> 
