@@ -25,8 +25,8 @@
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
                                 <div class="form-designs grids" >
-                                    <?php
-                                        $under = new Underscore;
+                                    <?$under = new Underscore;?>
+                                    <?php 
                                         $form_slides = '';
                                         $units = 5;
                                         $ctr = 0;
@@ -60,61 +60,34 @@
                             <div id="minimalist" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
-                                <div class="form-designs grids" >
-                                    <div class="form-design-group grids">
-                                        <div class="form-design selected-form" id="form-blue">
-                                            <img src="images/tab-designs/blue-form.png" height="60">
-                                            <br>
-                                            <span>Ocean Blue Min</span>
-                                        </div>
-                                        <div class="form-design" id="form-green">
-                                            <img src="images/tab-designs/green-form.png" height="60">
-                                            <br>
-                                            <span>Forest Green</span>
-                                        </div>
-                                        <div class="form-design" id="form-yellow">
-                                            <img src="images/tab-designs/yellow-form.png" height="60">
-                                            <br>
-                                            <span>Mandarin</span>
-                                        </div>
-                                        <div class="form-design" id="form-orange">
-                                            <img src="images/tab-designs/orange-form.png" height="60">
-                                            <br>
-                                            <span>Sleek Orange</span>
-                                        </div>
-                                        <div class="form-design" id="form-red">
-                                            <img src="images/tab-designs/red-form.png" height="60">
-                                            <br>
-                                            <span>Thin Red</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-design-group grids">
-                                        <div class="form-design" id="form-blue">
-                                            <img src="images/tab-designs/blue-form.png" height="60">
-                                            <br>
-                                            <span>Ocean Blue</span>
-                                        </div>
-                                        <div class="form-design" id="form-green">
-                                            <img src="images/tab-designs/green-form.png" height="60">
-                                            <br>
-                                            <span>Forest Green</span>
-                                        </div>
-                                        <div class="form-design" id="form-yellow">
-                                            <img src="images/tab-designs/yellow-form.png" height="60">
-                                            <br>
-                                            <span>Mandarin</span>
-                                        </div>
-                                        <div class="form-design" id="form-orange">
-                                            <img src="images/tab-designs/orange-form.png" height="60">
-                                            <br>
-                                            <span>Sleek Orange</span>
-                                        </div>
-                                        <div class="form-design" id="form-red">
-                                            <img src="images/tab-designs/red-form.png" height="60">
-                                            <br>
-                                            <span>Thin Red</span>
-                                        </div>
-                                    </div>                                                                    
+                                <div class="form-designs grids" >                                                                    
+                                    <?php 
+                                        $form_slides = '';
+                                        $units = 5;
+                                        $ctr = 0;
+                                        $max = count($themes->minimalist->children);//count($form_themes);
+                                        
+                                        foreach($themes->minimalist->children as $value){
+                                            if (($ctr % $units) == 0) {
+                                                $form_slides .= '<div class="form-design-group grids">';
+                                                $end = 1;
+                                            }
+
+                                                $color_name = 'form-'.$under->first($value->default);
+                                                $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                                    <img src="/img/display-thumb.png "/>
+                                                                    <br/>
+                                                                    <span>'.$under->last($value->default).'</span>
+                                                                </div>';
+                                            
+                                             if(($end == $units) || $ctr == ($max - 1)){
+                                                $form_slides .= '</div>';
+                                            }
+                                            $end++;
+                                            $ctr++;
+                                        }
+                                        echo $form_slides
+                                    ?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
@@ -122,61 +95,34 @@
                             <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
-                                <div class="form-designs grids" >
-                                    <div class="form-design-group grids">
-                                        <div class="form-design selected-form" id="form-blue">
-                                            <img src="images/tab-designs/blue-form.png" height="60">
-                                            <br>
-                                            <span>Ocean Blue</span>
-                                        </div>
-                                        <div class="form-design" id="form-green">
-                                            <img src="images/tab-designs/green-form.png" height="60">
-                                            <br>
-                                            <span>Forest Green</span>
-                                        </div>
-                                        <div class="form-design" id="form-yellow">
-                                            <img src="images/tab-designs/yellow-form.png" height="60">
-                                            <br>
-                                            <span>Mandarin</span>
-                                        </div>
-                                        <div class="form-design" id="form-orange">
-                                            <img src="images/tab-designs/orange-form.png" height="60">
-                                            <br>
-                                            <span>Sleek Orange</span>
-                                        </div>
-                                        <div class="form-design" id="form-red">
-                                            <img src="images/tab-designs/red-form.png" height="60">
-                                            <br>
-                                            <span>Thin Red</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-design-group grids">
-                                        <div class="form-design" id="form-blue">
-                                            <img src="images/tab-designs/blue-form.png" height="60">
-                                            <br>
-                                            <span>Ocean Blue</span>
-                                        </div>
-                                        <div class="form-design" id="form-green">
-                                            <img src="images/tab-designs/green-form.png" height="60">
-                                            <br>
-                                            <span>Forest Green</span>
-                                        </div>
-                                        <div class="form-design" id="form-yellow">
-                                            <img src="images/tab-designs/yellow-form.png" height="60">
-                                            <br>
-                                            <span>Mandarin</span>
-                                        </div>
-                                        <div class="form-design" id="form-orange">
-                                            <img src="images/tab-designs/orange-form.png" height="60">
-                                            <br>
-                                            <span>Sleek Orange</span>
-                                        </div>
-                                        <div class="form-design" id="form-red">
-                                            <img src="images/tab-designs/red-form.png" height="60">
-                                            <br>
-                                            <span>Thin Red</span>
-                                        </div>
-                                    </div>                                                                    
+                                <div class="form-designs grids" >                                                                   
+                                    <?php 
+                                        $form_slides = '';
+                                        $units = 5;
+                                        $ctr = 0;
+                                        $max = count($themes->creative->children);//count($form_themes);
+                                        
+                                        foreach($themes->creative->children as $value){
+                                            if (($ctr % $units) == 0) {
+                                                $form_slides .= '<div class="form-design-group grids">';
+                                                $end = 1;
+                                            }
+
+                                                $color_name = 'form-'.$under->first($value->default);
+                                                $form_slides .= '<div class="form-design" id="'.$color_name.'">
+                                                                    <img src="/img/display-thumb.png "/>
+                                                                    <br/>
+                                                                    <span>'.$under->last($value->default).'</span>
+                                                                </div>';
+                                            
+                                             if(($end == $units) || $ctr == ($max - 1)){
+                                                $form_slides .= '</div>';
+                                            }
+                                            $end++;
+                                            $ctr++;
+                                        }
+                                        echo $form_slides
+                                    ?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
