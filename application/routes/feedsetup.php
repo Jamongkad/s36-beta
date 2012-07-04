@@ -102,6 +102,13 @@ return array(
     }),
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $display_themes) {
+
+        $themes = new Widget\Repositories\DBWidgetThemes;        
+        $themes->build_menu_structure();
+        $ref = $themes->perform(); 
+
+        Helpers::dump($ref);
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array( 
             'form_themes' => $display_themes
           , 'company_id' => S36Auth::user()->companyid 

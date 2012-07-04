@@ -73,6 +73,12 @@ class DBWidgetThemes {
         $collection = Null;
     }
 
-    public function insert_category() {}
-    public function insert_theme() {}
+    public function remove_category($category) {
+        $this->write_data();
+        $key_name = "$category:widget:themes";
+    }
+    public function remove_theme($theme_name) { 
+        $this->write_data();
+        $widget_theme_key = "$theme_name:theme:value:label";
+    }
 }
