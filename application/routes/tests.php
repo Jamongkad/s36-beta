@@ -287,7 +287,7 @@ return array(
         $under = new Underscore;
         Helpers::dump($under);
         foreach($ref->corporate as $value) {
-            Helpers::dump($value->default);
+            Helpers::dump($value);
         }
     },
 
