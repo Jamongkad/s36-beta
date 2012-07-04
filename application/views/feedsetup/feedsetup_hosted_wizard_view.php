@@ -2,9 +2,10 @@
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
 
-<?foreach($themes->corporate->children as $value):?>
+<? $under = new Underscore;
+   foreach($themes->corporate->children as $value):?>
     <p><?=$under->first($value->default)?> <?=$under->last($value->default)?></p>
-<?endforeach?>
+<? endforeach?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
