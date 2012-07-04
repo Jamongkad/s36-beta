@@ -3,6 +3,7 @@
 <?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
 
 <? $under = new Underscore;
+   print_r(count($themes->corporate->children ));
    foreach($themes->corporate->children as $value):?>
     <p><?=$under->first($value->default)?> <?=$under->last($value->default)?></p>
 <? endforeach?>
