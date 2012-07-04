@@ -325,35 +325,20 @@ a.button-gray:hover{background:#dce9f5;}
             var cur_step = check_current_hosted_wizard_step(); 
             $('#hosted-wizard-back').fadeIn();		
             
-            console.log(cur_step);
             if(cur_step == 'hosted-wizard-step-1'){
                 hosted_wizard_slide.cycle('next');
                 $('#hosted-wizard-back').fadeIn();
             }
 
             if(cur_step == 'hosted-wizard-step-2'){
-                /*
-                hosted_wizard_slide.cycle('next');
-                $('#hosted-wizard-back').fadeIn();
-                */
-
                 $('#hosted-wizard-next').fadeOut('fast');
                 $('.create-widget-button').fadeIn('fast'); 
                 hosted_wizard_slide.cycle('next');
             }
-            /*
-            if(cur_step == 'hosted-wizard-step-3') {
-                $('#hosted-wizard-next').fadeOut('fast');
-                $('.create-widget-button').fadeIn('fast'); 
-                hosted_wizard_slide.cycle('next');
-            }   
-            */
         });
 
         $('#hosted-wizard-back').click(function(){
             var cur_step = check_current_hosted_wizard_step();
-
-            console.log(cur_step);
 
             if(cur_step == 'hosted-wizard-step-2'){
                 $(this).fadeOut();
