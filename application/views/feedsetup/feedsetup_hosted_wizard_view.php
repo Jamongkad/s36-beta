@@ -14,7 +14,7 @@
                     <div class="">
                         <select class="regular-select" id="theme-select">
                             <option value="corporate">Corporate</option>
-                            <option value="minimalist">Minimalist</option>
+                            <!--<option value="minimalist">Minimalist</option>-->
                             <option value="creative">Creative</option>
                         </select>
                         <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
@@ -34,7 +34,7 @@
                             <div id="minimalist" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
-                                <div class="form-designs grids" >                                                                    
+                                <div class="form-designs grids" >                                                               
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
                                            array('themes'=> $themes->minimalist->children))?>
                                 </div>
