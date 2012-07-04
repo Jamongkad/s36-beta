@@ -25,34 +25,8 @@
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
                                 <div class="form-designs grids" >
-                                    <?$under = new Underscore;?>
-                                    <?php 
-                                        $form_slides = '';
-                                        $units = 5;
-                                        $ctr = 0;
-                                        $max = count($themes->corporate->children);//count($form_themes);
-                                        
-                                        foreach($themes->corporate->children as $value){
-                                            if (($ctr % $units) == 0) {
-                                                $form_slides .= '<div class="form-design-group grids">';
-                                                $end = 1;
-                                            }
-
-                                                $color_name = 'form-'.$under->first($value->default);
-                                                $form_slides .= '<div class="form-design" id="'.$color_name.'">
-                                                                    <img src="/img/display-thumb.png "/>
-                                                                    <br/>
-                                                                    <span>'.$under->last($value->default).'</span>
-                                                                </div>';
-                                            
-                                             if(($end == $units) || $ctr == ($max - 1)){
-                                                $form_slides .= '</div>';
-                                            }
-                                            $end++;
-                                            $ctr++;
-                                        }
-                                        echo $form_slides
-                                    ?>
+                                    <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                           array('themes'=> $themes->corporate->children))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
