@@ -102,9 +102,7 @@
                 </div>
             </div>                     
         </div>
-        <div id="wizard-error-prompt">
-            
-        </div>
+        <div id="wizard-error-prompt"></div>
         <div class="wizard-buttons">
             <a href="javascript:;" class="wizard-btn" id="hosted-wizard-back">Back</a>
             &nbsp;
@@ -334,15 +332,22 @@ a.button-gray:hover{background:#dce9f5;}
             }
 
             if(cur_step == 'hosted-wizard-step-2'){
+                /*
                 hosted_wizard_slide.cycle('next');
                 $('#hosted-wizard-back').fadeIn();
-            }
+                */
 
+                $('#hosted-wizard-next').fadeOut('fast');
+                $('.create-widget-button').fadeIn('fast'); 
+                hosted_wizard_slide.cycle('next');
+            }
+            /*
             if(cur_step == 'hosted-wizard-step-3') {
                 $('#hosted-wizard-next').fadeOut('fast');
                 $('.create-widget-button').fadeIn('fast'); 
                 hosted_wizard_slide.cycle('next');
             }   
+            */
         });
 
         $('#hosted-wizard-back').click(function(){
