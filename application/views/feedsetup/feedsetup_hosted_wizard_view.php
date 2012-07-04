@@ -3,7 +3,7 @@
 <?=Form::hidden('theme_type', 'hosted-aglow', Array('id' => 'selected-form'))?>
 
 <?foreach($themes->corporate->children as $value):?>
-    <p><?Helpers::dump($value['default'])?></p>
+    <p><?Helpers::dump($value->default)?></p>
 <?endforeach?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
