@@ -14,7 +14,7 @@ class S36Themes {
           , 'matte'    => 'Matte'
           , 'silver' => 'Silver'
         )
-      , 'minimalist' => Array()
+      //, 'minimalist' => Array()
       , 'creative' => Array(
             'cloudy'  => 'Cloudy'
           , 'salad' => 'Salad'
