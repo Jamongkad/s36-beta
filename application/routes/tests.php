@@ -280,14 +280,11 @@ return array(
     },
 
     'GET /tests/widget_themes' => function() {
-        $test = new Widget\Repositories\DBWidgetThemes;    
-        /*
+        $test = new Widget\Repositories\DBWidgetThemes;        
         $test->build_data();
         $test->build_menu_structure();
-        $ref = $test->show_all();
-        $themes = new S36Themes;
-        */
-        Helpers::dump($test);
+        $ref = $test->show_all(); 
+        Helpers::dump($ref);
     },
 
     //reserved route for Leica and Ryan testing

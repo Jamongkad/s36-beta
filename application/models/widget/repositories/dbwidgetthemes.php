@@ -9,11 +9,11 @@ class DBWidgetThemes {
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
-        $this->main_categories_build = new S36Themes;
+        $this->categories = new S36Themes;
     }
 
     public function build_data() {
-        foreach($this->main_categories_build as $key => $val) {
+        foreach($this->categories->main_categories_build as $key => $val) {
             $key_name = "$key:widget:themes";
             foreach($val as $k => $v) {
 
@@ -35,7 +35,7 @@ class DBWidgetThemes {
         
         $collection = new StdClass; 
 
-        foreach($this->main_categories_build as $key => $val) {
+        foreach($this->categories->main_categories_build as $key => $val) {
 
             $key_name = "$key:widget:themes";
             $smembers = $this->redis->smembers($key_name);
