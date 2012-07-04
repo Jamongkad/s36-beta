@@ -4,7 +4,7 @@
 
 <?Helpers::dump($themes->corporate)?>
 <?foreach($themes->corporate->children as $value):?>
-    <p><?=$value->default?></p>
+    <p><?Helpers::dump($value->default)?></p>
 <?endforeach?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
