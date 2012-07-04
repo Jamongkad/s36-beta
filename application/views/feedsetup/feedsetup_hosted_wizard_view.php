@@ -64,7 +64,8 @@
                 <div class="grids">
                     <div class="g3of4">
                         <span>Configure your feedback header text</span>
-                        <input type="text" id="header-text" class="wizard-text-field" title="Hear what our customers have to say" />
+                        <input type="text" name="form_text" id="header-text" class="wizard-text-field" 
+                               title="Hear what our customers have to say" />
                     </div>
                     <div class="g1of4">
                         &nbsp;
@@ -80,7 +81,7 @@
                 <div class="grids">
                     <div class="g3of4">
                         <span>Customize your submission form header title</span>
-                        <input type="text" id="header-title-text" class="wizard-text-field" title="Header Title" />
+                        <input type="text" name="submit_form_text" id="header-title-text" class="wizard-text-field" title="Header Title" />
                     </div>
                     <div class="g1of4">
                         &nbsp;
@@ -90,11 +91,11 @@
                     <img src="/img/hosted-form-preview.jpg" />
                 </div>
                 <div class="grids">
-                    <h2 class="large-black">Configure your fedback prompt to encourage users to say something specific about your brand, product or service.</h2>
+                    <h2 class="large-black">Configure your feedback prompt to encourage users to say something specific about your brand, product or service.</h2>
                     <br />
                     <div class="g3of4">
                         <span>Customize your submission form feedback prompt:</span>
-                        <textarea id="form-what-to-write" class="wizard-text-field" rows="6" title="What do you like about our products?"></textarea>
+                        <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?"></textarea>
                     </div>
                     <div class="g1of4">
                         &nbsp;
