@@ -11,15 +11,25 @@
                     <div class="widget-info">
                         <div class="grids">
                             <div class="g2of3">
-                            <div class="widget-title">Hosted</div>
-                                <table width="100%" cellpadding="0" cellspacing="0">
-                                    <tr><td width="90"><strong>Widget Type :</strong></td>
-                                        <td>Fullpage</td>
-                                    </tr>
-                                    <tr><td width="90"><strong>Theme :</strong></td>
-                                        <td>Chrome</td>
-                                    </tr>
-                                </table>
+                                <div class="widget-title">Hosted</div>
+                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tr><td width="90"><strong>Widget Type :</strong></td>
+                                            <td>Fullpage</td>
+                                        </tr>
+                                        <tr><td width="90"><strong>Theme :</strong></td>
+                                            <td><?=ucwords($hosted_full_page->theme_type)?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="g1of3">
+                                <div class="right-align">
+                                    <ul class="widget-button-list">
+                                        <li>
+                                            <?=HTML::link('feedsetup/edit/'.$hosted_full_page->companyid, 'Edit', array('class' => 'button-gray'))?> 
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
