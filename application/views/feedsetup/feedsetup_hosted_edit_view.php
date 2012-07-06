@@ -106,6 +106,8 @@
         </div>
         <input type="submit" class="large-btn create-widget-button" value="save widget" / >
     </div>
+    <div class="block noborder" style="height:70px;">        
+    </div>
 </div>
 
 <div class="c"></div>
