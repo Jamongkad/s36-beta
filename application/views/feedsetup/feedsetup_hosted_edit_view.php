@@ -45,7 +45,7 @@
                             <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
-                                <div class="form-designs grids" >                                                                   
+                                <div class="form-designs grids" >                                                               
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
                                            array('themes'=> $themes->creative->children))?>
                                 </div>
@@ -65,7 +65,7 @@
                 <div class="grids">
                     <div class="g3of4">
                         <span>Configure your feedback header text</span>
-                        <input type="text" name="header_text" id="header-text" class="wizard-text-field" 
+                        <input type="text" name="header_text" value="<?=$hosted_full_page->header_text?>" id="header-text" class="wizard-text-field" 
                                title="Hear what our customers have to say" />
                     </div>
                     <div class="g1of4">
@@ -82,7 +82,7 @@
                 <div class="grids">
                     <div class="g3of4">
                         <span>Customize your submission form header title</span>
-                        <input type="text" name="submit_form_text" id="header-title-text" class="wizard-text-field" title="Header Title" />
+                        <input type="text" value="<?=$hosted_full_page->submit_form_text?> " name="submit_form_text" id="header-title-text" class="wizard-text-field" title="Header Title" />
                     </div>
                     <div class="g1of4">
                         &nbsp;
@@ -96,7 +96,9 @@
                     <br />
                     <div class="g3of4">
                         <span>Customize your submission form feedback prompt:</span>
-                        <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?"></textarea>
+                        <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?">
+<?=$hosted_full_page->submit_form_question?> 
+                        </textarea>
                     </div>
                     <div class="g1of4">
                         &nbsp;
@@ -106,7 +108,7 @@
         </div>
         <input type="submit" class="large-btn create-widget-button" value="save widget" / >
     </div>
-    <div class="block noborder" style="height:70px;">        
+    <div class="block noborder" style="height:50px;">        
     </div>
 </div>
 
