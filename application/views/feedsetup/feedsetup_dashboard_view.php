@@ -3,18 +3,11 @@
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget widget">
-                <?=HTML::link('feedsetup/overview/display', 'Feedback Display Setup', Array('class' => 'widget-overview-btn'))?> 
-                <small style="font-weight:normal;">(for displaying feedback on your websites)</small>
+                <?=HTML::link('feedsetup/hosted_editor', 'Fullpage Feedback Display', Array('class' => 'widget-overview-btn'))?> 
+                <small style="font-weight:normal;">(configure your fullpage feedback display)</small>
             </h2>
-            <?if($widgets->display_widgets->widget->widgets != null):?>
-                <span id="display-overview-target">
-                    <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
-                        'widgets' => $widgets->display_widgets->widget
-                      , 'pagination' => $widgets->display_widgets->pagination
-                      , 'widget_type' => 'display'
-                    ))->get();?>
-                </span> 
-            <?endif;?>
+            <span id="display-overview-target">
+            </span> 
         </div>
     </div>
 
