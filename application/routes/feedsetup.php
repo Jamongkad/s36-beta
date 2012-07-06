@@ -10,11 +10,10 @@ $display_themes = Helpers::$display_themes;
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
         $widgets = $dbw->fetch_widgets_by_company();
-        
-        print_r($hosted);
-
+        $hosted->set_hosted_settings(Array('companyId'  =>  S36Auth::user()->companyid));
+            
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
-            'widgets' => $widgets
+            'widgets' => $widgets, 'hosted_full_page' => $hosted->record_exists()
         ));
     }),
 
@@ -121,6 +120,7 @@ return array(
     'POST /feedsetup/update_hosted_settings' => function() { 
         $hosted = new Widget\Repositories\DBHostedSettings(Input::get());
         $hosted->save();
+        return Redirect::to('feedsetup');  
     },
     
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
