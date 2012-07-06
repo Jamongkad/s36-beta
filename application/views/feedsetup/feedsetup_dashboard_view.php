@@ -22,15 +22,6 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="g1of3">
-                                <div class="right-align">
-                                    <ul class="widget-button-list">
-                                        <li>
-                                            <?=HTML::link('feedsetup/edit/'.$hosted_full_page->companyid, 'Edit', array('class' => 'button-gray'))?> 
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div> 
