@@ -117,12 +117,16 @@ return array(
     }),
 
     'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) { 
+
         $hosted = new Widget\Repositories\DBHostedSettings;
+        $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
+
         $themes = new Widget\Repositories\DBWidgetThemes;        
         $themes->build_menu_structure();
-
+ 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
-            'form_themes' => $themes->perform(); 
+            'themes' => $themes->perform()
+          , 'hosted_full_page' => $hosted->record_exists()
         ));
     },
 
