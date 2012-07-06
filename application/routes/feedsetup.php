@@ -117,6 +117,11 @@ return array(
         ));
     }),
 
+    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) { 
+        $hosted = new Widget\Repositories\DBHostedSettings;
+        Helpers::dump($company_id);
+    },
+
     'POST /feedsetup/update_hosted_settings' => function() { 
         $hosted = new Widget\Repositories\DBHostedSettings;
         $hosted->set_hosted_settings(Input::get());

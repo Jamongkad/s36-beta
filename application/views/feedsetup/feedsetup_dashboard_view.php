@@ -1,6 +1,5 @@
 <div class="block">
     <?if($hosted_full_page):?>
-        <?Helpers::dump($hosted_full_page)?>
         <div id="widget-setup-block">
             <div class="widget-options">
                 <h2 class="ico-widget widget">
