@@ -6,8 +6,23 @@
                 <?=HTML::link('feedsetup/hosted_editor', 'Fullpage Feedback Display', Array('class' => 'widget-overview-btn'))?> 
                 <small style="font-weight:normal;">(configure your fullpage feedback display)</small>
             </h2>
-            <span id="display-overview-target">
-            </span> 
+            <div class="widget-types">
+                <div class="widget-info">
+                    <div class="grids">
+                        <div class="g2of3">
+                        <div class="widget-title">Hosted</div>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr><td width="90"><strong>Widget Type :</strong></td>
+                                    <td>Fullpage</td>
+                                </tr>
+                                <tr><td width="90"><strong>Theme :</strong></td>
+                                    <td>Chrome</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
     </div>
 
