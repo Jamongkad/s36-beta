@@ -115,7 +115,8 @@ return array(
     }),
 
     'POST /feedsetup/update_hosted_settings' => function() { 
-        Helpers::dump(Input::get());
+        $hosted = new Widget\Repositories\DBHostedSettings(Input::get());
+        $hosted->save();
     },
     
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
