@@ -294,7 +294,15 @@ return array(
     },
 
     'GET /tests/hosted_settings' => function() {
-        $hosted = new Widget\Repositories\DBHostedSettings('mathew');
+        $hosted_settings_data = Array(
+            'company_id'  => 1
+          , 'theme_type' => 'chrome'
+          , 'form_text' => 'Awww yeaaa mah nigguhs'
+          , 'submit_form_text' => 'Share your feeds with us...'
+          , 'submit_form_question' => 'What do you think of our niggarly services'
+        );
+        $hosted = new Widget\Repositories\DBHostedSettings($hosted_settings_data);
+        //$hosted->save();
         Helpers::dump($hosted);
     },
 
