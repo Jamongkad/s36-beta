@@ -41,8 +41,7 @@
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
-                            </div>
-                            <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
+                            </div> <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
                                 <div class="form-designs grids" >                                                               
@@ -111,6 +110,16 @@
     <div class="block noborder" style="height:50px;">        
     </div>
 </div>
+
+<script>
+jQuery(function($) { 
+    $('#theme-select').change(function(){
+        var theme = $(this).val();
+        $('.form-design-slide').hide();
+        $('#'+theme).fadeIn();
+    });
+})
+</script>
 
 <div class="c"></div>
 <?=Form::close()?>
