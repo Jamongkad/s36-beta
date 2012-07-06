@@ -36,7 +36,7 @@ return array(
         $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $full_page_theme = $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        Helpers::dump($full_page_theme);
+        Helpers::dump($full_page_theme->record_exists());
 
         $deploy_env = Config::get('application.deploy_env');
 
