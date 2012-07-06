@@ -295,8 +295,8 @@ return array(
 
     'GET /tests/hosted_settings' => function() {
         $hosted_settings_data = Array(
-            'companyId'  => 1
-          , 'theme_type' => 'chrome'
+            'companyId'  => 2
+          , 'theme_type' => 'dark'
           , 'header_text' => 'Awww yeaaa mah nigguhs Leica is cute'
           , 'submit_form_text' => 'Share your feeds with us...'
           , 'submit_form_question' => 'What do you think of our niggarly services'
