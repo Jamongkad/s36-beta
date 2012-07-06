@@ -1,6 +1,6 @@
 <?php namespace Widget\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
+use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Exception;
 
 class DBHostedSettings extends S36DataObject {
 

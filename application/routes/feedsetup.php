@@ -8,7 +8,7 @@ $tab_themes  = Helpers::$tab_themes;
 $display_themes = Helpers::$display_themes;
 
 return array(
-    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) {
+    'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
         $widgets = $dbw->fetch_widgets_by_company();
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
             'widgets' => $widgets
