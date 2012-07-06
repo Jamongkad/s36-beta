@@ -294,7 +294,7 @@ return array(
     },
 
     'GET /tests/hosted_settings' => function() {
-        $hosted = new Widget\Repositories\DBHostedSettings;
+        $hosted = new Widget\Repositories\DBHostedSettings('mathew');
         Helpers::dump($hosted);
     },
 
