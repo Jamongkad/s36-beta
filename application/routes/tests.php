@@ -302,7 +302,7 @@ return array(
           , 'submit_form_question' => 'What do you think of our niggarly services'
         );
         $hosted = new Widget\Repositories\DBHostedSettings;
-        //$hosted->set_hosted_settings($hosted_settings_data);
+        $hosted->set_hosted_settings($hosted_settings_data);
         $hosted->save();
         Helpers::dump($hosted->record_exists());
     },
