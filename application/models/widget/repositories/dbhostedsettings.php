@@ -6,16 +6,19 @@ class DBHostedSettings extends S36DataObject {
 
     private $hosted_settings;
 
-    public function __construct($hosted_settings) {
-        parent::__construct();
-        $this->hosted_settings = $hosted_settings;
+    public function set_hosted_settings($hosted_settings)  {
+        $this->hosted_settings = $hosted_settings;    
     }
-    
+
     public function save() { 
-        if(!$this->record_exists()) 
-            DB::table('HostedSettings', $this->db_name)->insert($this->hosted_settings);           
-        else
-            $this->update();
+        if($this->hosted_settings) { 
+            if(!$this->record_exists()) 
+                DB::table('HostedSettings', $this->db_name)->insert($this->hosted_settings);           
+            else
+                $this->update();
+        } else {
+            throw new Exception("Please provided a Hosted Settings array.");
+        }
     } 
 
     public function update() {
