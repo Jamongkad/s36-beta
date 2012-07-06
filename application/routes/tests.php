@@ -295,7 +295,7 @@ return array(
 
     'GET /tests/hosted_settings' => function() {
         $hosted_settings_data = Array(
-            'companyId'  => 2
+            'companyId'  => 3
           , 'theme_type' => 'dark'
           , 'header_text' => 'Awww yeaaa mah nigguhs Leica is cute'
           , 'submit_form_text' => 'Share your feeds with us...'
