@@ -10,7 +10,7 @@ class DBHostedSettings extends S36DataObject {
     }
     
     public function save() { 
-        DB::table('HostedSettings', 'master')->insert($this->feedback_data);
+        DB::table('HostedSettings', $this->db_name)->insert($this->feedback_data);
     } 
     public function update() {
         
