@@ -64,7 +64,7 @@
                 <div class="grids">
                     <div class="g3of4">
                         <span>Configure your feedback header text</span>
-                        <input type="text" name="form_text" id="header-text" class="wizard-text-field" 
+                        <input type="text" name="header_text" id="header-text" class="wizard-text-field" 
                                title="Hear what our customers have to say" />
                     </div>
                     <div class="g1of4">

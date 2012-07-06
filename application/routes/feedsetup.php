@@ -3,7 +3,7 @@ $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
 
 $form_themes = Helpers::$form_themes;
-$tab_themes = Helpers::$tab_themes;
+$tab_themes  = Helpers::$tab_themes;
 $display_themes = Helpers::$display_themes;
 
 return array(
@@ -115,6 +115,7 @@ return array(
     }),
 
     'POST /feedsetup/update_hosted_settings' => function() {
+        
         Helpers::dump(Input::get());
     },
     
@@ -126,10 +127,10 @@ return array(
             'widgetkey'   => Input::get('submit_widgetkey')
           , 'widget_type' => 'submit'
           , 'site_id'     => Input::get('site_id')
-          , 'company_id' => Input::get('company_id')
-          , 'theme_type' => Input::get('theme_type')
-          , 'theme_name' => Input::get('theme_name')
-          , 'embed_type' => 'form'
+          , 'company_id'  => Input::get('company_id')
+          , 'theme_type'  => Input::get('theme_type')
+          , 'theme_name'  => Input::get('theme_name')
+          , 'embed_type'  => 'form'
           , 'submit_form_text'     => Input::get('submit_form_text')
           , 'submit_form_question' => Input::get('submit_form_question')
           , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))

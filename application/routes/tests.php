@@ -293,6 +293,11 @@ return array(
         }
     },
 
+    'GET /tests/hosted_settings' => function() {
+        $hosted = new Widget\Repositories\DBHostedSettings;
+        Helpers::dump($hosted);
+    },
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
