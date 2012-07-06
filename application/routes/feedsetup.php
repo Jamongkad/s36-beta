@@ -118,7 +118,8 @@ return array(
     }),
 
     'POST /feedsetup/update_hosted_settings' => function() { 
-        $hosted = new Widget\Repositories\DBHostedSettings(Input::get());
+        $hosted = new Widget\Repositories\DBHostedSettings;
+        $hosted->set_hosted_settings(Input::get());
         $hosted->save();
         return Redirect::to('feedsetup');  
     },
