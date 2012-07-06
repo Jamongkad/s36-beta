@@ -34,8 +34,9 @@ return array(
         $widget = $dbw->fetch_canonical_widget($company_name);
 
         $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $full_page_theme = $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        print_r($company_info);
+        Helpers::dump($full_page_theme);
 
         $deploy_env = Config::get('application.deploy_env');
 
