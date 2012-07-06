@@ -302,8 +302,8 @@ return array(
           , 'submit_form_question' => 'What do you think of our niggarly services'
         );
         $hosted = new Widget\Repositories\DBHostedSettings($hosted_settings_data);
-        $hosted->save();
-        Helpers::dump($hosted);
+        //$hosted->save();
+        Helpers::dump($hosted->record_exists());
     },
 
     //reserved route for Leica and Ryan testing

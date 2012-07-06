@@ -114,8 +114,7 @@ return array(
         ));
     }),
 
-    'POST /feedsetup/update_hosted_settings' => function() {
-        
+    'POST /feedsetup/update_hosted_settings' => function() { 
         Helpers::dump(Input::get());
     },
     
