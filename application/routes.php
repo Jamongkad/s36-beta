@@ -1,6 +1,7 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
+$hosted = new Widget\Repositories\DBHostedSettings;
 
 return array(
 
@@ -31,6 +32,10 @@ return array(
 
         $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_canonical_widget($company_name);
+
+        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+
+        print_r($company_info);
 
         $deploy_env = Config::get('application.deploy_env');
 
