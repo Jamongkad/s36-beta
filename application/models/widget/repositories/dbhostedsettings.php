@@ -41,7 +41,16 @@ class DBHostedSettings extends S36DataObject {
     }
 
     public function record_exists() {
-        $sql = "SELECT companyId FROM HostedSettings WHERE 1=1 AND companyId = :company_id";
+        $sql = "SELECT 
+                    companyId
+                  , theme_type
+                  , header_text
+                  , submit_form_text
+                  , submit_form_question
+                FROM 
+                    HostedSettings 
+                WHERE 1=1 
+                    AND companyId = :company_id";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
         $sth->execute();
