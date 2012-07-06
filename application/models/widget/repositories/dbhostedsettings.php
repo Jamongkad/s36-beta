@@ -14,11 +14,19 @@ class DBHostedSettings extends S36DataObject {
     public function save() { 
         DB::table('HostedSettings', $this->db_name)->insert($this->hosted_settings);
     } 
+
     public function update() {
         
     }
-    public function _exists() {
-        
+
+    public function record_exists() {
+        $sql = "SELECT companyId FROM HostedSettings WHERE 1=1 AND companyId = :company_id";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
+        $sth->execute();
+
+        $result = $sth->fetch(PDO::FETCH_OBJ); 
+        return $result;
     }
 
 }
