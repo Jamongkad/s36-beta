@@ -4,7 +4,8 @@
         <div id="widget-setup-block">
             <div class="widget-options">
                 <h2 class="ico-widget widget">
-                    <?=HTML::link('feedsetup/hosted_editor', 'Fullpage Feedback Display', Array('class' => 'widget-overview-btn'))?> 
+                    <?=HTML::link('feedsetup/hosted_editor/'.$hosted_full_page->companyid
+                                  , 'Fullpage Feedback Display', Array('class' => 'widget-overview-btn'))?> 
                     <small style="font-weight:normal;">(configure your fullpage feedback display)</small>
                 </h2>
                 <div class="widget-types">
@@ -22,15 +23,14 @@
                                 </table>
                             </div>
                             <div class="g1of3">
-                                <div class="widget-title">Hosted</div>
-                                <table width="100%" cellpadding="0" cellspacing="0">
-                                    <tr><td width="90"><strong>Widget Type :</strong></td>
-                                        <td>Fullpage</td>
-                                    </tr>
-                                    <tr><td width="90"><strong>Theme :</strong></td>
-                                        <td><?=ucwords($hosted_full_page->theme_type)?></td>
-                                    </tr>
-                                </table>
+                                <div class="right-align">
+                                    <ul class="widget-button-list">
+                                        <li>
+                                            <?=HTML::link('feedsetup/hosted_editor/'.$hosted_full_page->companyid, 'Edit'
+                                                          , array('class' => 'button-gray'))?>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
