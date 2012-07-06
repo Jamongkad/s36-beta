@@ -75,13 +75,10 @@ function display_codes(i){
                                       , 'bl' => 'Bottom Left Corner'
                                     );
 
-
                                     $string = "";
-
                                     foreach($select as $key => $value) {
                                         $string .= "<option value='$key' ".(($key == $match[1]) ? "selected" : null).">$value</option>";
                                     }
-
                                     echo $string;      
                                 ?>
                             </select>
