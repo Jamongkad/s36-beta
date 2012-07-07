@@ -85,9 +85,6 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
-            <?if($widget):?>
-                <span><a href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
-            <?endif?>
        
             <?if($company->domain):?>
                 <span class="right padfix">
