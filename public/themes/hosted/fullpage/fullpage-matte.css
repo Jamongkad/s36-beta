@@ -27,7 +27,7 @@ a:hover{color:#54a1c0;}
 .companyDetails p{color:#000;}
 .companyLinks{background:none;}
 .companyLinks ul li{border-right:1px solid #EEE;}
-.companyLinks ul li a{background:url(../../img/companyLinkIcons.png) no-repeat;}
+.companyLinks ul li a{background:url(../../../img/companyLinkIcons.png) no-repeat;}
 
 
 /* feedbacks */
