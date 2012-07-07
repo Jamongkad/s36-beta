@@ -86,8 +86,7 @@
             <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
 
-            <span><a href="/">Send in feedback</a></span>
-
+            <span><a href="/">View all feedback</a></span>
        
             <?if($company->domain):?>
                 <span class="right padfix">
@@ -106,6 +105,7 @@
                     <h1>Hear what our customers have to say</h1>
                 </div>
                 <div class="g1of5" align="right"> 
+                    <br/>
                     <a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a>
                 </div>
             </div>
