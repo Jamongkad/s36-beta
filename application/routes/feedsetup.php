@@ -126,12 +126,11 @@ return array(
 
         $hosted_settings = $hosted->hosted_settings();
         $themes_parent = $themes->get_parent($hosted_settings->theme_type);
-
-        Helpers::dump($themes_parent);
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
             'themes' => $themes->perform()
           , 'hosted_full_page' => $hosted_settings 
+          , 'themes_parent' => $themes_parent
         ));
     },
 
