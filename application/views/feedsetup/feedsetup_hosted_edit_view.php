@@ -118,6 +118,10 @@ jQuery(function($) {
         $('.form-design-slide').hide();
         $('#'+theme).fadeIn();
     });
+    
+    //this little guy will show set the children based on a styles parent
+    var my_parent = $('#theme-select option:selected').val();
+    $('#'+my_parent).fadeIn();
 })
 </script>
 
