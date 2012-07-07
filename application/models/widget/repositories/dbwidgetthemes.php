@@ -1,6 +1,6 @@
 <?php namespace Widget\Repositories;
 
-use redisent, Helpers, StdClass, S36Themes;
+use redisent, Helpers, StdClass, S36Themes, Underscore;
 
 class DBWidgetThemes {
 
@@ -10,6 +10,7 @@ class DBWidgetThemes {
     public function __construct() {
         $this->redis = new redisent\Redis; 
         $this->categories = new S36Themes;
+        $this->underscore = new Underscore;
     }
 
     //Write data
@@ -74,11 +75,11 @@ class DBWidgetThemes {
         $collection = Null;
     }
 
-    public function get_parent($theme_key) {
+    public function get_parent($theme_key) { 
         foreach($this->collection as $parent) {
             foreach($parent->children as $key => $value) {
                 //if($theme_key == $key)     
-                Helpers::dump($value);
+                Helpers::dump($this->underscore->first($value->default));
             }
         }
     }
