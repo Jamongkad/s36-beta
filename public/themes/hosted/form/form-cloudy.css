@@ -88,10 +88,7 @@ a.cropbtn:hover{
 		background:url(../../../img/ico-question.png) no-repeat top left;
 	}
 	#s36_whattowrite ul{}
-/* trackbar styles */
-#s36_trackbar{
-	background:url(../../../img/trackbar.png) no-repeat;
-}
+
 
 /* rating page */
 #track_ball{background:url(../../../img/trackball.png) no-repeat;}
