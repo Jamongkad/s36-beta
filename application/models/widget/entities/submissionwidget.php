@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings;
+use Config, View, DB, Widget\Entities\Types\FormWidgets;
 
 class SubmissionWidget extends FormWidgets {
 
@@ -33,7 +33,7 @@ class SubmissionWidget extends FormWidgets {
 
     public function render_data() {
         $widget_view = 'widget::widget_submissionform_view';
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings = new \Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
@@ -52,7 +52,7 @@ class SubmissionWidget extends FormWidgets {
 
     public function render_hosted() {
 
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings = new \Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
 
         return View::make('widget::widget_hostedform_view', Array(
