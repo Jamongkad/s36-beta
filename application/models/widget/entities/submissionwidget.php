@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets;
+use Config, View, DB, Widget\Entities\Types\FormWidgets, Widget\Repositories\DBHostedSettings;
 
 class SubmissionWidget extends FormWidgets {
 
@@ -33,6 +33,9 @@ class SubmissionWidget extends FormWidgets {
 
     public function render_data() {
         $widget_view = 'widget::widget_submissionform_view';
+        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
+
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
@@ -42,6 +45,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
+          , 'hosted' => $hosted->record_exists() 
           , 'response' => 0
         ))->get();  
     }

@@ -102,7 +102,11 @@
         <div id="pageTitle">
             <div class="grids">
                 <div class="g4of5">
-                    <h1>Hear what our customers have to say</h1>
+                    <?if($hosted):?>
+                        <h1><?=$hosted->submit_form_text?></h1>
+                    <?else:?>
+                        <h1>Hear what our customers have to say</h1>
+                    <?endif?>
                 </div>
                 <div class="g1of5" align="right"> 
                     <br/>

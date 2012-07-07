@@ -148,7 +148,14 @@
                                     </div>
                                     <br />
                                     <div class="feedback">
-                                        <textarea id="feedback_text" class="regular-textarea" title="<?=trim($form_question)?>"></textarea>
+                                        <textarea id="feedback_text" class="regular-textarea" 
+                                            <?if($hosted):?>
+                                                  title="<?=trim($hosted->submit_form_question)?>"
+                                            <?else:?>
+                                                  title="<?=trim($form_question)?>"
+                                            <?endif?> 
+                                            >
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
