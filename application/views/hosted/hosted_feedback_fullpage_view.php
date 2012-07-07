@@ -86,7 +86,7 @@
             <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
 
-            <a href="/">Send in feedback</a>
+            <span><a href="/">Send in feedback</a></span>
 
        
             <?if($company->domain):?>
