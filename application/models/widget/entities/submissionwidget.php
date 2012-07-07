@@ -51,6 +51,10 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
+
+        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
+
         return View::make('widget::widget_hostedform_view', Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
@@ -60,6 +64,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
+          , 'hosted' => $hosted->record_exists() 
           , 'response' => 0
         ))->get();
     }
