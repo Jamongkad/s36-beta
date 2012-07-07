@@ -1,7 +1,7 @@
 <?=HTML::style('css/widget_master/hosted-form.css');?>
 
 <?if($hosted):?>
-    <?=HTML::style('themes/hosted/form/form-'.$hosted->theme_type.'.css');?>
+    <?//=HTML::style('themes/hosted/form/form-'.$hosted->theme_type.'.css');?>
 <?endif?>
 
 <div id="headerWrapper">
