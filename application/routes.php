@@ -55,8 +55,12 @@ return array(
         
         $hostname = Config::get('application.hostname');
 
+        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
+
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
             'widget' => $widget->render_hosted(), 'company' => $company_info, 'hostname' => $hostname
+          , 'hosted' => $hosted_settings->record_exists()
         ));
     },
 
