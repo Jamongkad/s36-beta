@@ -80,7 +80,7 @@ class DBWidgetThemes {
             foreach($parent->children as $key => $value) {
                 $match_key = $this->underscore->first($value->default);
                 if($theme_key == $match_key) {
-                    Helpers::dump($value->parent);     
+                    return $value->parent;     
                 } 
             }
         }
