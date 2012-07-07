@@ -108,7 +108,11 @@
                         <!-- page 1 (rating and feedback text) -->
                         <div id="step_1" class="s36_pages current">
                             <div class="formTitle">
-                                <h2>Share Your Feedback About Us</h2>
+                                <?if($hosted):?> 
+                                    <h2><?=$hosted->submit_form_text?></h2> 
+                                <?else:?>
+                                    <h2>Share Your Feedback About Us</h2> 
+                                <?endif?> 
                             </div>
                             <div class="step-contents">
                                 <div style="float:left;width:235px;padding:0px 30px 0px 0px;">
