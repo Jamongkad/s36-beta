@@ -13,7 +13,7 @@ return array(
         $hosted->set_hosted_settings(Array('companyId'  =>  S36Auth::user()->companyid));
             
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
-            'widgets' => $widgets, 'hosted_full_page' => $hosted->record_exists()
+            'widgets' => $widgets, 'hosted_full_page' => $hosted->hosted_settings()
         ));
     }),
 
@@ -126,7 +126,7 @@ return array(
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
             'themes' => $themes->perform()
-          , 'hosted_full_page' => $hosted->record_exists()
+          , 'hosted_full_page' => $hosted->hosted_settings()
         ));
     },
 

@@ -41,7 +41,7 @@ return array(
         echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $hosted->view_fragment()
                                                           , 'widget' => $widget, 'deploy_env' => $deploy_env 
-                                                          , 'hosted' => $hosted_settings->record_exists() ));        
+                                                          , 'hosted' => $hosted_settings->hosted_settings() ));        
     },
 
     'GET /(:any)/submit' => function($company_name) {
@@ -60,7 +60,7 @@ return array(
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
             'widget' => $widget->render_hosted(), 'company' => $company_info, 'hostname' => $hostname
-          , 'hosted' => $hosted_settings->record_exists()
+          , 'hosted' => $hosted_settings->hosted_settings()
         ));
     },
 

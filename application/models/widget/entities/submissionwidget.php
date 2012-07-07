@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets;
+use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories;
 
 class SubmissionWidget extends FormWidgets {
 
@@ -29,12 +29,13 @@ class SubmissionWidget extends FormWidgets {
         $this->theme_type = $options->theme_type;
         $this->tab_pos  = $options->tab_pos;
         $this->tab_type = $options->tab_type;
+
+        $this->hosted_settings = new DBHostedSettings;
+        $this->hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
     }
 
     public function render_data() {
         $widget_view = 'widget::widget_submissionform_view';
-        $hosted_settings = new \Widget\Repositories\DBHostedSettings;
-        $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
@@ -45,7 +46,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
-          , 'hosted' => $hosted_settings->record_exists() 
+          , 'hosted' => $this->hosted_settings->hosted_settings() 
           , 'response' => 0
         ))->get();  
     }
@@ -64,7 +65,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
-          , 'hosted' => $hosted_settings->record_exists() 
+          , 'hosted' => $this->hosted_settings->hosted_settings() 
           , 'response' => 0
         ))->get();
     }

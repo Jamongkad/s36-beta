@@ -58,5 +58,10 @@ class DBHostedSettings extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ); 
         return $result;
     }
+    
+    //this method makes more sense....retrieves hosted settings
+    public function hosted_settings() {
+        return $this->record_exists();
+    }
 
 }
