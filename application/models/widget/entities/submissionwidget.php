@@ -45,7 +45,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
-          , 'hosted' => $hosted->record_exists() 
+          , 'hosted' => $hosted_settings->record_exists() 
           , 'response' => 0
         ))->get();  
     }
@@ -64,7 +64,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
-          , 'hosted' => $hosted->record_exists() 
+          , 'hosted' => $hosted_settings->record_exists() 
           , 'response' => 0
         ))->get();
     }
