@@ -285,6 +285,7 @@ select.reg-text-active{font-weight:normal;}
 .review-location{float:left;}
 #review-location{color:#5c8ba9;}
 .review-feedback-box .regular-textarea{width:340px;}
+.regular-textarea.reg-text-active{color:#555;}
 #edit-review-feedback,#save-edited-feedback{position:absolute;}
 
 /* jcrop css */

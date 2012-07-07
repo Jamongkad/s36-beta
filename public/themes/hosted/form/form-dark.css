@@ -117,6 +117,7 @@ a.cropbtn:hover{
 }
 
 /* form styles */
+.regular-textarea.reg-text-active{color:#AAA;}
 input.regular-text{background:#131313;border:1px solid #272727;color:#666;box-shadow:#1c1c1c 0px 0px 0px 3px;}
 input.reg-text-active{color:#999;}
 select.regular-select{background:#131313;border:1px solid #272727;color:#666;-webkit-box-shadow:#1c1c1c 0px 0px 0px 3px;box-shadow:#1c1c1c 0px 0px 0px 3px;}
