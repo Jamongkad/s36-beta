@@ -46,7 +46,7 @@ class DBHostedSettings extends S36DataObject {
                   , theme_type
                   , header_text
                   , submit_form_text
-                  , TRIM(submit_form_question)
+                  , TRIM(submit_form_question) AS submit_form_question
                 FROM 
                     HostedSettings 
                 WHERE 1=1 
