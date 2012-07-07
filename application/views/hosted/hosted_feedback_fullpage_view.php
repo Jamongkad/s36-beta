@@ -103,7 +103,7 @@
             <div class="grids">
                 <div class="g4of5">
                     <?if($hosted):?>
-                        <h1><?=$hosted->submit_form_text?></h1>
+                        <h1><?=$hosted->header_text?></h1>
                     <?else:?>
                         <h1>Hear what our customers have to say</h1>
                     <?endif?>
