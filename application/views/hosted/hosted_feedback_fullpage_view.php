@@ -88,54 +88,59 @@
             <?if($widget):?>
                 <span><a href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
             <?endif?>
-
+            <!--
             <?if($company->domain):?>
                 <span class="right padfix">
                     <a href="http://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
+            -->
+            <span class="right padfix">
+                <?if($company->social_links):?> 
+                    <ul>
+                        <li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
+                <?else:?>
+                    <ul>
+                        <li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
+                <?endif?>
+            </span>
         </div>
     </div>
 </div>
 <div id="bodyWrapper">
     <div id="bodyContent">
+        <div id="pageTitle">
+            <div class="grids">
+                <div class="g4of5">
+                    <h1>Hear what our customers have to say</h1>
+                </div>
+                <div class="g1of5" align="right"> 
+                    <a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a>
+                </div>
+            </div>
+        </div>
         <!--
         <div id="companyDetails" class="block">
-        	<div class="companyLogo">
-                <?if($company->logo):?>
-                    <?=HTML::image('company_logos/'.$company->logo)?>
+            <div class="companyLinks">
+                <?if($company->social_links):?> 
+                    <ul>
+                        <li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
                 <?else:?>
-                    <?=HTML::image('img/company-logo-filler.jpg')?>
+                    <ul>
+                        <li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
                 <?endif?>
-            </div>
-            <div class="companyDetails">
-            	<h2>Company Profile</h2>
-                <p>
-                    <?if($company->description):?>
-                        <?=$company->description?> 
-                    <?else:?>
-                        Acme in specializes in creating widgets for everyday use. Thousands of 
-                        customers worldwideuse Acme products and get better each and everyday. 
-                        Visit Acme's website today for more information. 
-                    <?endif?>
-                </p>
-
-				<br />
-                <div class="companyLinks">
-                    <?if($company->social_links):?> 
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?else:?>
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?endif?>
-                </div>
             </div>
         </div>
         -->

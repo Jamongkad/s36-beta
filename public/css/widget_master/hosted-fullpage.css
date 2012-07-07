@@ -178,3 +178,22 @@ img.large-avatar {
     margin-right:auto; 
     display:none;
 }
+
+#pageTitle {
+    padding:0 7px;
+}
+
+#pageTitle a.green-cross {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.green-cross {
+    background: url("../../img/green-cross.png") no-repeat scroll left center transparent;
+    padding-left: 15px;
+}
+
+a {
+    color: #4894B3;
+}
