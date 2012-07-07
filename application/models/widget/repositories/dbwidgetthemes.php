@@ -74,6 +74,15 @@ class DBWidgetThemes {
         $collection = Null;
     }
 
+    public function get_parent($theme_key) {
+        foreach($this->collection as $parent) {
+            foreach($parent->children as $key => $value) {
+                //if($theme_key == $key)     
+                Helpers::dump($value);
+            }
+        }
+    }
+
     public function remove_category($category) {
         $this->write_data();
         $key_name = "$category:widget:themes";

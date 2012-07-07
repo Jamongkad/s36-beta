@@ -282,6 +282,7 @@ return array(
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;        
         $test->build_menu_structure();
+        $test->get_parent('matte');
         $ref = $test->perform(); 
 
         $under = new Underscore;
