@@ -88,28 +88,13 @@
             <?if($widget):?>
                 <span><a href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
             <?endif?>
-            <!--
+       
             <?if($company->domain):?>
                 <span class="right padfix">
                     <a href="http://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
-            -->
-            <span class="right padfix">
-                <?if($company->social_links):?> 
-                    <ul>
-                        <li><a href="#" class="website">Visit Our Website</a></li>
-                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                    </ul>
-                <?else:?>
-                    <ul>
-                        <li><a href="#" class="website">Visit Our Website</a></li>
-                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                    </ul>
-                <?endif?>
-            </span>
+        
         </div>
     </div>
 </div>
