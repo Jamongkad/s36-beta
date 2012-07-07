@@ -36,8 +36,6 @@ return array(
         $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        Helpers::dump($hosted_settings->record_exists());
-
         $deploy_env = Config::get('application.deploy_env');
 
         echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'

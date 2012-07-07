@@ -36,7 +36,7 @@ a:hover{color:#54a1c0;}
 .featured .feedbackAuthor img{border:1px solid #CCC;}
 .featured .feedbackAuthor h2{color:#1982ad;}
 .featured .feedbackAuthor h4{color:#2c2a2a;}
-.featured .feedbackTextTail{background:url(../../img/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextTail{background:url(../../../img/featured-bubble-tail.png) no-repeat;}
 .featured .feedbackTextBubble{background:#FFF;color:#1e1e1e;}
 .featured .feedbackDate{color:#666666;text-shadow:#FFF 0px 1px;}
 /* normal */
