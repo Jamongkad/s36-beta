@@ -282,12 +282,13 @@ return array(
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;        
         $test->build_menu_structure();
-        $test->get_parent('matte');
+        
         $ref = $test->perform(); 
 
         $under = new Underscore;
         Helpers::dump($under);
         Helpers::dump($ref);
+        Helpers::dump($test->get_parent('matte'));
         /*
         foreach($ref->creative->children as $value) {
             //Helpers::dump($value->default);
