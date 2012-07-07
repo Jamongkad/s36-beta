@@ -85,6 +85,9 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
+
+            <a href="/">Send in feedback</a>
+
        
             <?if($company->domain):?>
                 <span class="right padfix">
