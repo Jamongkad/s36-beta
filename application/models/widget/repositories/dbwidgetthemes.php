@@ -78,8 +78,10 @@ class DBWidgetThemes {
     public function get_parent($theme_key) { 
         foreach($this->collection as $parent) {
             foreach($parent->children as $key => $value) {
-                //if($theme_key == $key)     
-                Helpers::dump($this->underscore->first($value->default));
+                $match_key = $this->underscore->first($value->default);
+                if($theme_key == $match_key) {
+                    Helpers::dump($value->parent);     
+                } 
             }
         }
     }
