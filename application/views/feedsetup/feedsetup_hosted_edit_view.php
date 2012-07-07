@@ -16,7 +16,7 @@
                         <select class="regular-select" id="theme-select">
                             <option value="corporate" <?=($themes_parent == 'corporate') ? 'selected' : null?>>Corporate</option>
                             <!--<option value="minimalist" <?=($themes_parent == 'minimalist') ? 'selected' : null?>>Minimalist</option>-->
-                            <option value="creative"  <?=($themes_parent == 'createive') ? 'selected' : null?>>Creative</option>
+                            <option value="creative"  <?=($themes_parent == 'creative') ? 'selected' : null?>>Creative</option>
                         </select>
                         <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
                         <!--<a href="#">View all Categories</a>-->
