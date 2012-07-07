@@ -286,11 +286,14 @@ return array(
 
         $under = new Underscore;
         Helpers::dump($under);
+        Helpers::dump($ref);
+        /*
         foreach($ref->creative->children as $value) {
             //Helpers::dump($value->default);
             Helpers::dump($under->first($value->default));
             Helpers::dump($under->last($value->default));
         }
+        */
     },
 
     'GET /tests/hosted_settings' => function() {
