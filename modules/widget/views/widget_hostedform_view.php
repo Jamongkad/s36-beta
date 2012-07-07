@@ -152,7 +152,7 @@
                                     </div>
                                     <br />
                                     <div class="feedback">
-                                        <textarea id="feedback_text" class="regular-textarea" 
+                                        <textarea id="feedback_text" class="regular-textarea reg-text-active" 
                                             <?if($hosted):?>
                                                   title="<?=trim($hosted->submit_form_question)?>"
                                             <?else:?>

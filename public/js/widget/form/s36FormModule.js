@@ -209,14 +209,14 @@ var S36Form = new function() {
 
     this.default_text = function() { 
         
-		$(".regular-text").focus(function(i){          		 
+		$(".regular-text, .regular-textarea").focus(function(i){          		 
             if ($(this).val() == $(this)[0].title){
                 $(this).removeClass("reg-text-active");
                 $(this).val("");
             }
 		});
 
-		$(".regular-text").blur(function(){
+		$(".regular-text, .regular-textarea").blur(function(){
             if ($.trim($(this).val()) == ""){
                 $(this).addClass("reg-text-active");
                 $(this).val($(this)[0].title);
@@ -229,7 +229,7 @@ var S36Form = new function() {
                 $(this).removeClass("reg-text-active");
             }
         });
-		$(".regular-text").blur();
+		$(".regular-text, .regular-textarea").blur();
 		$(".regular-select").blur();
     };
 
