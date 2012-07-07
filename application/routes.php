@@ -42,8 +42,8 @@ return array(
 
         echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view'
                                                   , Array(  'company' => $company_info, 'feeds' => $hosted->view_fragment()
-                                                          , 'widget' => $widget, 'deploy_env' => $deploy_env ));        
-
+                                                          , 'widget' => $widget, 'deploy_env' => $deploy_env 
+                                                          , 'hosted' => $hosted_settings->record_exists() ));        
     },
 
     'GET /(:any)/submit' => function($company_name) {

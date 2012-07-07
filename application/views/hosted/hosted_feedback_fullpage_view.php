@@ -1,5 +1,8 @@
 <title><?=ucfirst($company->company_name);?> - Customer's Stories</title>
 <?=HTML::style('css/widget_master/hosted-fullpage.css');?>
+<?if($hosted):?>
+    <?=HTML::style('themes/fullpage/hosted-'.$hosted->theme_type.'.css');?>
+<?endif?>
 
 <div id="fb-root"></div>
 <script>
