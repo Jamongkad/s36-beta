@@ -339,6 +339,11 @@ jQuery(function($) {
         $('#selected-form').val(value);
     });
         
+    $('#theme-select').change(function(){
+        var theme = $(this).val();
+        $('.form-design-slide').hide();
+        $('#'+theme).fadeIn();
+    });
 });
 
 function expose_index(selector) {

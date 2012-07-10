@@ -351,12 +351,6 @@ a.button-gray:hover{background:#dce9f5;}
             hosted_wizard_slide.cycle('prev');
         });
 
-        $('#theme-select').change(function(){
-            var theme = $(this).val();
-            $('.form-design-slide').hide();
-            $('#'+theme).fadeIn();
-        });
-
         function adjust_height(curr, next, opts, fwd) {		
             var index = opts.currSlide;
             var $ht = $(this).height();
