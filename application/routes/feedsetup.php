@@ -2,6 +2,7 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
+$widget_themes = new new Widget\Repositories\DBWidgetThemes; 
 
 $form_themes = Helpers::$form_themes;
 $tab_themes  = Helpers::$tab_themes;
@@ -61,6 +62,7 @@ return array(
 
     'GET /feedsetup/edit/(:any)/([a-z]+)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
                                                    , 'do' => function($widget_id, $type) use ($form_themes, $display_themes) {  
+                                 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         $themes = $form_themes;
@@ -104,11 +106,10 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback) {
+    'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
 
-        $themes = new Widget\Repositories\DBWidgetThemes;        
-        $themes->build_menu_structure();
-        $ref = $themes->perform(); 
+        $widget_themes->build_menu_structure();
+        $ref = $widget_themes->perform(); 
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
             'themes' => $ref
@@ -116,9 +117,8 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) { 
+    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted) { 
 
-        $hosted = new Widget\Repositories\DBHostedSettings;
         $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
 
         $themes = new Widget\Repositories\DBWidgetThemes;        
@@ -134,8 +134,7 @@ return array(
         ));
     },
 
-    'POST /feedsetup/update_hosted_settings' => function() { 
-        $hosted = new Widget\Repositories\DBHostedSettings;
+    'POST /feedsetup/update_hosted_settings' => function() use ($hosted) { 
         $hosted->set_hosted_settings(Input::get());
         $hosted->save();
         return Redirect::to('feedsetup');  
