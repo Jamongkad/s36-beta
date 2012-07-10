@@ -66,12 +66,8 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         $themes = $form_themes;
-
-        Helpers::dump($widget);
         
         $widget_themes->build_menu_structure();
-        $parent = $widget_themes->get_parent($widget->theme_type);
-        Helpers::dump($parent);
 
         if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
@@ -90,6 +86,7 @@ return array(
           , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
+          , 'themes_parent' => $widget_themes->get_parent($widget->theme_type)
         ));
     }),
 
