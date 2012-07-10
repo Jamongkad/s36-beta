@@ -111,7 +111,7 @@ return array(
         $widget_themes->build_menu_structure();
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
-            'themes' =>  $widget_themes->perform();
+            'themes' =>  $widget_themes->perform()
           , 'company_id' => S36Auth::user()->companyid 
         ));
     }),
