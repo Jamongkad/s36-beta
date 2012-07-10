@@ -92,8 +92,7 @@ return array(
         $widget_themes->build_menu_structure();
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view', Array(
-            'form_themes'  => $display_themes
-          , 'themes' =>  $widget_themes->perform()
+            'themes' =>  $widget_themes->perform()
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
