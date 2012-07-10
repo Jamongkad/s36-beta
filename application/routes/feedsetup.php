@@ -109,28 +109,25 @@ return array(
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
 
         $widget_themes->build_menu_structure();
-        $ref = $widget_themes->perform(); 
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
-            'themes' => $ref
+            'themes' =>  $widget_themes->perform();
           , 'company_id' => S36Auth::user()->companyid 
         ));
     }),
 
-    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted) { 
+    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes) { 
 
         $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
 
-        $themes = new Widget\Repositories\DBWidgetThemes;        
-        $themes->build_menu_structure();
+        $widget_themes->build_menu_structure();
 
         $hosted_settings = $hosted->hosted_settings();
-        $themes_parent = $themes->get_parent($hosted_settings->theme_type);
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
-            'themes' => $themes->perform()
+            'themes' => $widget_themes->perform()
           , 'hosted_full_page' => $hosted_settings 
-          , 'themes_parent' => $themes_parent
+          , 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
         ));
     },
 
