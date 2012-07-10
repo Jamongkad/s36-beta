@@ -107,10 +107,9 @@
             <br />
             <span>Choose your theme : </span>
             <br />
-
             <div class="form-design-slide" style="margin-left:-10px;">
-                <div class="form-design-prev">
-                </div>
+            <!--
+                <div class="form-design-prev"></div>
                     <div class="form-designs grids">  
                     <?php
                         $form_slides = '';
@@ -142,11 +141,10 @@
                             $ctr++;
                         }
                         echo $form_slides
-                    ?>
-                    
+                    ?>  
                     </div>
-                <div class="form-design-next">
-                </div>
+                <div class="form-design-next"></div>
+                -->
             </div>
 
         </div>                    
