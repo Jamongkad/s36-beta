@@ -70,6 +70,8 @@ return array(
         Helpers::dump($widget);
         
         $widget_themes->build_menu_structure();
+        $parent = $widget_themes->get_parent($widget->theme_type);
+        Helpers::dump($parent);
 
         if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
