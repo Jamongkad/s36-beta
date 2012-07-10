@@ -107,9 +107,50 @@
             <br />
             <span>Choose your theme : </span>
             <br />
-            <div class="form-design-slide" style="margin-left:-10px;">
-                <div class="form-design-prev">
+            <div class="">
+                <select class="regular-select" id="theme-select">
+                    <option value="corporate">Corporate</option>
+                    <!--<option value="minimalist">Minimalist</option>-->
+                    <option value="creative">Creative</option>
+                </select>
+                <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
+                <!--<a href="#">View all Categories</a>-->
+                <div class="grids"> 
+                    <div id="corporate" class="form-design-slide" style="margin-left:-10px;">
+                        <div class="form-design-prev" style="margin-top:15px;">
+                        </div>
+                        <div class="form-designs grids" >
+                            <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                   array('themes'=> $themes->corporate->children))?>
+                        </div>
+                        <div class="form-design-next" style="margin-top:15px;">
+                        </div>
+                    </div>
+                    <div id="minimalist" class="form-design-slide" style="margin-left:-10px;display:none;">
+                        <div class="form-design-prev" style="margin-top:15px;">
+                        </div>
+                        <div class="form-designs grids" >                                                               
+                            <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                   array('themes'=> $themes->minimalist->children))?>
+                        </div>
+                        <div class="form-design-next" style="margin-top:15px;">
+                        </div>
+                    </div>
+                    <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
+                        <div class="form-design-prev" style="margin-top:15px;">
+                        </div>
+                        <div class="form-designs grids" >                                                                   
+                            <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                   array('themes'=> $themes->creative->children))?>
+                        </div>
+                        <div class="form-design-next" style="margin-top:15px;">
+                        </div>
+                    </div>
                 </div>
+            </div> 
+            <!--
+            <div class="form-design-slide" style="margin-left:-10px;">
+                <div class="form-design-prev"></div>
                     <div class="form-designs grids">  
                     <?php
                         $form_slides = '';
@@ -144,9 +185,9 @@
                     ?>
                     
                     </div>
-                <div class="form-design-next">
-                </div>
+                <div class="form-design-next"></div>
             </div>
+            -->
         </div>                    
         <div id="wizard-step-4" class="wizard-steps">
             <span><strong>Step 4 </strong><span class="blue">Feedback detail display options </span></span>
