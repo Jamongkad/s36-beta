@@ -107,6 +107,7 @@
             <br />
             <span>Choose your theme : </span>
             <br />
+            <!--
             <div class="form-design-slide" style="margin-left:-10px;">
                 <div class="form-design-prev">
                 </div>
@@ -147,6 +148,7 @@
                 <div class="form-design-next">
                 </div>
             </div>
+            -->
         </div>                    
         <div id="wizard-step-4" class="wizard-steps">
             <span><strong>Step 4 </strong><span class="blue">Feedback detail display options </span></span>
