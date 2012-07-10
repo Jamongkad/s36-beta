@@ -2,7 +2,7 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
-$widget_themes = new new Widget\Repositories\DBWidgetThemes; 
+$widget_themes = new Widget\Repositories\DBWidgetThemes; 
 
 $form_themes = Helpers::$form_themes;
 $tab_themes  = Helpers::$tab_themes;
