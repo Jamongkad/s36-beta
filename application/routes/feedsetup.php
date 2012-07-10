@@ -61,11 +61,16 @@ return array(
     },
 
     'GET /feedsetup/edit/(:any)/([a-z]+)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
-                                                   , 'do' => function($widget_id, $type) use ($form_themes, $display_themes) {  
-                                 
+                                                   , 'do' => function($widget_id, $type) use ($form_themes, $display_themes, $widget_themes) { 
+
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
         $themes = $form_themes;
+
+        Helpers::dump($widget);
+        
+        $widget_themes->build_menu_structure();
+
         if($widget->widget_type == 'display') {
             //TODO: this is just bad engineering
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
