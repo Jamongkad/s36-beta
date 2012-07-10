@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="form-designs grids" >
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->corporate->children))?>
+                                           array('themes'=> $themes->corporate->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="form-designs grids" >                                                               
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->minimalist->children))?>
+                                           array('themes'=> $themes->minimalist->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="form-designs grids" >                                                                   
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->creative->children))?>
+                                           array('themes'=> $themes->creative->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
