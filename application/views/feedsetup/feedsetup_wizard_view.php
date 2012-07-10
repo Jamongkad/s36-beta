@@ -107,8 +107,6 @@
             <br />
             <span>Choose your theme : </span>
             <br />
-            <div class="form-design-slide" style="margin-left:-10px;">
-            </div>
 
         </div>                    
         <div id="wizard-step-4" class="wizard-steps">
