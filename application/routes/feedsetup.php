@@ -166,9 +166,9 @@ return array(
         */
 
         $form_data = new Widget\Entities\FormValueObject(Input::get());
-        Helpers::dump($form_data->data());
+        $form->set_widgetdata($form_data->data()); 
+        Helpers::dump($form);
         /*
-        $form->set_widgetdata($form_data); 
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
