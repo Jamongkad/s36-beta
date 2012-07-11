@@ -77,6 +77,10 @@ class DBWidgetThemes {
         $collection = Null;
     }
 
+    public function main_themes() {
+        return $this->categories->main_categories_build;
+    }
+
     public function get_parent($theme_key) { 
         foreach($this->collection as $parent) {
             foreach($parent->children as $key => $value) {

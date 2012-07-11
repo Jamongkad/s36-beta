@@ -115,13 +115,9 @@ return array(
     }),
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
-        $s36_themes = new S36Themes;
-
-        foreach($s36_themes->main_categories_build as $key => $value) {
-            Helpers::dump($key);     
-        }
        
         $widget_themes->build_menu_structure();
+        Helpers::dump($widget_themes->main_themes());
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
             'themes' =>  $widget_themes->perform()
