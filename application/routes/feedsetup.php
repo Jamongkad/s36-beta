@@ -117,7 +117,7 @@ return array(
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
         $s36_themes = new S36Themes;
 
-        foreach($s36_themes as $key => $value) {
+        foreach($s36_themes->main_categories_build as $key => $value) {
             Helpers::dump($key);     
         }
        
