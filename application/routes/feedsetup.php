@@ -116,6 +116,8 @@ return array(
 
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
 
+        Helpers::dump(new S36Themes);
+
         $widget_themes->build_menu_structure();
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  

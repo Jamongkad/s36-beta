@@ -2,6 +2,7 @@
 
 use redisent, Helpers, StdClass, S36Themes, Underscore;
 
+//Redis backed WidgetThemes
 class DBWidgetThemes {
 
     private $redis;
@@ -20,6 +21,7 @@ class DBWidgetThemes {
             foreach($val as $k => $v) {
                 //save category children
                 $this->redis->sadd($key_name, $k);       
+
                 $widget_theme_key = "$k:theme:value:label";
                 $this->redis->hset($widget_theme_key, $k, ucwords($v));
                 $this->redis->hset($widget_theme_key, $k.'-heart', $v." Heart");
@@ -85,11 +87,13 @@ class DBWidgetThemes {
             }
         }
     }
-
+    
+    //TODO: incomplete implementation
     public function remove_category($category) {
         $this->write_data();
         $key_name = "$category:widget:themes";
     }
+
     public function remove_theme($theme_name) { 
         $this->write_data();
         $widget_theme_key = "$theme_name:theme:value:label";
