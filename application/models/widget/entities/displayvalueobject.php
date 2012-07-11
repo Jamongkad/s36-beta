@@ -4,16 +4,16 @@ use Input;
 use \Widget\Entities\Types\WidgetValueObject;
 
 class DisplayValueObject extends WidgetValueObject { 
-    $widgetKey;
-    $site_id;
-    $company_id;
-    $theme_type;
-    $theme_name
-    $form_text;
-    $embed_type;
-    $embed_block_type;
-    $embed_effects;
-    $modal_effects;
-    $perms;
-    $widget_type = 'display';
+    public $widgetKey;
+    public $site_id;
+    public $company_id;
+    public $theme_type;
+    public $theme_name;
+    public $form_text;
+    public $embed_type;
+    public $embed_block_type;
+    public $embed_effects;
+    public $modal_effects;
+    public $perms;
+    public $widget_type = 'display';
 }
