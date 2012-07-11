@@ -164,16 +164,12 @@ return array(
           , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
         );
         */
-
         $form_data = new Widget\Entities\FormValueObject(Input::get());
         $form->set_widgetdata($form_data->data()); 
-        Helpers::dump($form);
-        /*
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
-        */
     },
     
     'POST /feedsetup/save_display_widget' => function() { 
