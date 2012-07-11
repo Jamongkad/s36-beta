@@ -4,12 +4,13 @@ use Input, Helpers;
 use \Widget\Entities\Types\WidgetValueObject;
 
 class FormValueObject extends WidgetValueObject {  
+
     public $widget_type = 'submit';
     public $embed_type = 'form';
 
     public function data() { 
         $tab_type = null;
-        if($this->input_data['tab_type']) {
+        if(in_array('tab_type', $this->input_data)) {
             $tab_type = $this->input_data['tab_type'];
         }
 
