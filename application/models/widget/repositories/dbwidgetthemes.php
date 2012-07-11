@@ -78,7 +78,7 @@ class DBWidgetThemes {
     }
 
     public function main_themes() {
-        return $this->categories->main_categories_build;
+        return array_keys($this->categories->main_categories_build);
     }
 
     public function get_parent($theme_key) { 
