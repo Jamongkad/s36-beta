@@ -166,7 +166,7 @@ return array(
         */
 
         $form_data = new Widget\Entities\FormValueObject(Input::get());
-        Helpers::dump($form_data);
+        Helpers::dump($form_data->data());
         /*
         $form->set_widgetdata($form_data); 
         $form->save();
