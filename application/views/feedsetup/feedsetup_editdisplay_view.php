@@ -180,6 +180,11 @@
             <br/>
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#000;">Select your display theme</strong>
+                    <select class="regular-select" id="theme-select">
+                        <?foreach($main_themes as $main_theme):?>
+                            <option value="<?=$main_theme?>"><?=ucwords($main_theme)?></option>
+                        <?endforeach?>
+                    </select>
                     <div class="widget-opts" style="margin-left: -18px">
                         <br />
                             <div id="corporate" class="form-design-slide" style="margin-left:-10px;">
