@@ -69,6 +69,8 @@ return array(
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
+
+        $theme_type = explode("-", $widget->theme_type);
         
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -78,8 +80,8 @@ return array(
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
           , 'themes' =>  $widget_themes->perform()
-          , 'themes_parent' => $widget_themes->get_parent($widget->theme_type)
-          , 'main_themes' => $widget_themes->main_themes()
+          , 'themes_parent' => $widget_themes->get_parent($theme_type[1])
+          , 'main_themes'   => $widget_themes->main_themes()
         ));
     }),
 
