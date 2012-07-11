@@ -137,6 +137,7 @@ return array(
             'themes' => $widget_themes->perform()
           , 'hosted_full_page' => $hosted_settings 
           , 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
+          , 'main_themes' => $widget_themes->main_themes()
         ));
     },
 

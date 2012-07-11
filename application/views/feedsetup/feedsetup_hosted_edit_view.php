@@ -14,9 +14,10 @@
                 <div class="grids">
                     <div class="">
                         <select class="regular-select" id="theme-select">
-                            <option value="corporate" <?=($themes_parent == 'corporate') ? 'selected' : null?>>Corporate</option>
-                            <!--<option value="minimalist" <?=($themes_parent == 'minimalist') ? 'selected' : null?>>Minimalist</option>-->
-                            <option value="creative"  <?=($themes_parent == 'creative') ? 'selected' : null?>>Creative</option>
+
+                            <?foreach($main_themes as $main_theme):?>
+                                <option value="<?=$main_theme?>" <?=($themes_parent == $main_theme) ? 'selected' : null?>><?=ucwords($main_theme)?></option>
+                            <?endforeach?>
                         </select>
                         <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
                         <!--<a href="#">View all Categories</a>-->
