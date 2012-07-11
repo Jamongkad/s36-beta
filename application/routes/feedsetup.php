@@ -50,7 +50,6 @@ return array(
         $view =  View::make('feedsetup/ajax_views/ajax_overview_view', Array(
             'widgets' => $widgy->widget
           , 'pagination' => $widgy->pagination
-          , 'widget_type' => $type
         ))->get();
 
         $view_data = Array(
