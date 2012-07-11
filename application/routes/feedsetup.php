@@ -117,11 +117,11 @@ return array(
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
        
         $widget_themes->build_menu_structure();
-        Helpers::dump($widget_themes->main_themes());
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
             'themes' =>  $widget_themes->perform()
           , 'company_id' => S36Auth::user()->companyid 
+          , 'main_themes' => $widget_themes->main_themes()
         ));
     }),
 
