@@ -82,10 +82,10 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
-          , 'form_themes'     => $themes
+          //, 'form_themes'     => $themes
           , 'themes' =>  $widget_themes->perform()
           //for edit form WHY???
-          , 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
+          //, 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
           , 'themes_parent' => $widget_themes->get_parent($widget->theme_type)
