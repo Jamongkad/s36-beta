@@ -147,7 +147,6 @@ return array(
         return Redirect::to('feedsetup');  
     },
     
-    //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
         /* 
@@ -167,9 +166,9 @@ return array(
         */
 
         $form_data = new Widget\Entities\FormValueObject(Input::get());
-        $form->set_widgetdata($form_data);
-        Helpers::dump($form);
+        Helpers::dump($form_data);
         /*
+        $form->set_widgetdata($form_data); 
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
