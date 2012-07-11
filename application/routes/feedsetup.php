@@ -80,7 +80,7 @@ return array(
           , 'widget'          => $widget
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
-          , 'themes' =>  $widget_themes->perform()
+          , 'themes'        =>  $widget_themes->perform()
           , 'themes_parent' => $widget_themes->get_parent($theme_type)
           , 'main_themes'   => $widget_themes->main_themes()
         ));
@@ -151,7 +151,7 @@ return array(
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
        
-        $data = (object) Array(
+        $form_data = (object) Array(
             'widgetkey'   => Input::get('submit_widgetkey')
           , 'widget_type' => 'submit'
           , 'site_id'     => Input::get('site_id')
@@ -165,7 +165,7 @@ return array(
           , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
         );
 
-        $form->set_widgetdata($data);
+        $form->set_widgetdata($form_data);
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()

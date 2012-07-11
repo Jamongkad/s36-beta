@@ -281,21 +281,21 @@ return array(
 
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;        
-        $test->build_menu_structure();
-        
+        $test->build_menu_structure(); 
         $ref = $test->perform(); 
-
-        $under = new Underscore;
-        Helpers::dump($under);
         Helpers::dump($ref);
         Helpers::dump($test->get_parent('matte'));
-        /*
-        foreach($ref->creative->children as $value) {
-            //Helpers::dump($value->default);
-            Helpers::dump($under->first($value->default));
-            Helpers::dump($under->last($value->default));
-        }
-        */
+    },
+
+    'GET /tests/a_matter_of_time' => function() {
+        $dummy_data = Array('name' => 'mathew', 'age' => 30, 'sex' => 'frequently');
+
+        $dvo = new Widget\Entities\DisplayValueObject($dummy_data);
+        $fvo = new Widget\Entities\FormValueObject($dummy_data);
+
+        Helpers::dump($dvo);
+        Helpers::dump($fvo);
+
     },
 
     'GET /tests/hosted_settings' => function() {
