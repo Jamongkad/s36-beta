@@ -150,7 +150,7 @@ return array(
     //TODO: try shoving widget data structures into seperate objects. Embed Type should be inferred based on Widget Entity
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
-       
+        /* 
         $form_data = (object) Array(
             'widgetkey'   => Input::get('submit_widgetkey')
           , 'widget_type' => 'submit'
@@ -164,12 +164,17 @@ return array(
           , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))
           , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
         );
+        */
 
+        $form_data = new Widget\Entities\FormValueObject(Input::get());
         $form->set_widgetdata($form_data);
+        Helpers::dump($form);
+        /*
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
+        */
     },
     
     'POST /feedsetup/save_display_widget' => function() { 
@@ -207,6 +212,11 @@ return array(
           , 'modal_effects'    => Input::get('modal_effects')
           , 'perms'   => $perms 
         );
+
+        /*
+        $dvo = new Widget\Entities\DisplayValueObject(Input::get());
+        $fvo = new Widget\Entities\FormValueObject(Input::get());
+        */
 
         $display = new Widget\Entities\DisplayWidget;
         $display->set_widgetdata($display_data);

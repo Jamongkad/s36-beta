@@ -292,10 +292,6 @@ return array(
 
         $dvo = new Widget\Entities\DisplayValueObject($dummy_data);
         $fvo = new Widget\Entities\FormValueObject($dummy_data);
-
-        Helpers::dump($dvo);
-        Helpers::dump($fvo);
-
     },
 
     'GET /tests/hosted_settings' => function() {
