@@ -72,9 +72,7 @@ return array(
             $theme_type = explode("-", $widget->theme_type);
             $theme_type = $theme_type[1];
         }
-
-
-        
+ 
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()

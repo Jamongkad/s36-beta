@@ -344,6 +344,13 @@ jQuery(function($) {
         $('.form-design-slide').hide();
         $('#'+theme).fadeIn();
     });
+
+    //this little guy will show set the children based on a styles parent
+    var my_parent = $('#theme-select option:selected').val();
+    if(my_parent) {
+        $('.form-design-slide').hide();
+        $('#'+my_parent).fadeIn();     
+    }
 });
 
 function expose_index(selector) {
