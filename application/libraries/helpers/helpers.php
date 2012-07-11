@@ -28,30 +28,6 @@ class Helpers {
           , 'silver-gray'=>'Silver Gray'
     );
 
-    public static $form_themes = Array(
-            'aglow'  => 'Aglow'
-          , 'silver' => 'Silver'
-          , 'chrome' => 'Chrome'
-          , 'classic'=> 'Classic'
-          , 'dark'   => 'Dark'
-          , 'alum'   => 'Aluminum'
-          , 'contrast' => 'Contrast'
-          , 'matte'    => 'Matte'
-          , 'silver-gray' => 'Silver Gray'
-    );
-
-    public static $display_themes = Array( 
-            'aglow'  => 'Aglow'
-          , 'silver' => 'Silver'
-          , 'chrome' => 'Chrome'
-          , 'classic'=> 'Classic'
-          , 'dark'   => 'Dark'
-          , 'alum'   => 'Aluminum'
-          , 'contrast' => 'Contrast'
-          , 'matte'    => 'Matte'
-          , 'silver-gray' => 'Silver Gray'
-    );
-
     public static function request() {
         return Request::uri();
     }

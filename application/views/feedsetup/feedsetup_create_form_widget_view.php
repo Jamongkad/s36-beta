@@ -84,7 +84,6 @@
             <div class="widget-types">
                 <strong style="font-size:14px;">Form Theme Design :</strong>
                 <div class="widget-info">
-                    <?//=$themepicker_view?>
                     <select class="regular-select" id="theme-select" style="margin:0px 38px;">
                         <?foreach($main_themes as $main_theme):?>
                             <option value="<?=$main_theme?>"><?=ucwords($main_theme)?></option>

@@ -4,9 +4,7 @@ $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes; 
 
-$form_themes = Helpers::$form_themes;
 $tab_themes  = Helpers::$tab_themes;
-$display_themes = Helpers::$display_themes;
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
@@ -279,7 +277,6 @@ return array(
     
     //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
-        //$wf = new WidgetFactory; 
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->site_id    = 1;
