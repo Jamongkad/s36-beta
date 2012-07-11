@@ -181,7 +181,37 @@
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#000;">Select your display theme</strong>
                     <div class="widget-opts" style="margin-left: -18px">
-
+                        <br />
+                            <div id="corporate" class="form-design-slide" style="margin-left:-10px;">
+                                <div class="form-design-prev" style="margin-top:15px;">
+                                </div>
+                                <div class="form-designs grids" >
+                                    <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                           array('themes'=> $themes->corporate->children, 'data_type' => null))?>
+                                </div>
+                                <div class="form-design-next" style="margin-top:15px;">
+                                </div>
+                            </div>
+                            <div id="minimalist" class="form-design-slide" style="margin-left:-10px;display:none;">
+                                <div class="form-design-prev" style="margin-top:15px;">
+                                </div>
+                                <div class="form-designs grids" >                                                               
+                                    <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                           array('themes'=> $themes->minimalist->children, 'data_type' => null))?>
+                                </div>
+                                <div class="form-design-next" style="margin-top:15px;">
+                                </div>
+                            </div>
+                            <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
+                                <div class="form-design-prev" style="margin-top:15px;">
+                                </div>
+                                <div class="form-designs grids" >                                                                   
+                                    <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
+                                           array('themes'=> $themes->creative->children, 'data_type' => null))?>
+                                </div>
+                                <div class="form-design-next" style="margin-top:15px;">
+                                </div>
+                            </div>
                     <div class="c"></div>
                 </div>
             </div>
