@@ -86,7 +86,7 @@ return array(
     }),
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
-                                            , 'do' => function($widget_select=false) use ($feedback, $display_themes, $widget_themes) { 
+                                            , 'do' => function($widget_select=false) use ($feedback, $widget_themes) { 
 
         $widget_themes->build_menu_structure();
 
@@ -100,11 +100,16 @@ return array(
         ));
     }),
     
-    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($form_themes) { 
+    'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($widget_themes) { 
+
+        $widget_themes->build_menu_structure();
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
             'site'             => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'company_id'       => S36Auth::user()->companyid
           //, 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
+          , 'themes' =>  $widget_themes->perform()
+          , 'main_themes' => $widget_themes->main_themes()
         ));
     }),
 
