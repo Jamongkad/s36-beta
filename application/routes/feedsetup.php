@@ -60,8 +60,7 @@ return array(
         echo json_encode($view_data);
     },
 
-    'GET /feedsetup/edit/(:any)/([a-z]+)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
-                                                   , 'do' => function($widget_id, $type) use ($widget_themes) { 
+    'GET /feedsetup/edit/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) use ($widget_themes) { 
 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;

@@ -52,7 +52,6 @@
                     <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
                         'widgets' => $widgets->display_widgets->widget
                       , 'pagination' => $widgets->display_widgets->pagination
-                      , 'widget_type' => 'display'
                     ))->get();?>
                 </span>
             <?else:?>
@@ -82,7 +81,6 @@
                     <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
                         'widgets' => $widgets->form_widgets->widget
                       , 'pagination' => $widgets->form_widgets->pagination
-                      , 'widget_type' => 'submit'
                     ))->get();?>
                 </span>
             <?else:?>
