@@ -61,18 +61,15 @@ return array(
     },
 
     'GET /feedsetup/edit/(:any)/([a-z]+)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
-                                                   , 'do' => function($widget_id, $type) use ($form_themes, $display_themes, $widget_themes) { 
+                                                   , 'do' => function($widget_id, $type) use ($widget_themes) { 
 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
-        $themes = $form_themes;
         
         $widget_themes->build_menu_structure();
 
         if($widget->widget_type == 'display') {
-            //TODO: this is just bad engineering
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
-            $themes = $display_themes;
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
@@ -82,12 +79,9 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
-          //, 'form_themes'     => $themes
-          , 'themes' =>  $widget_themes->perform()
-          //for edit form WHY???
-          //, 'themepicker_view' => View::make('feedsetup/partials/feedsetup_formthemes_picker_view', Array('form_themes' => $form_themes))
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
+          , 'themes' =>  $widget_themes->perform()
           , 'themes_parent' => $widget_themes->get_parent($widget->theme_type)
           , 'main_themes' => $widget_themes->main_themes()
         ));
