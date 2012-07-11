@@ -180,6 +180,7 @@
             <br/>
             <div class="widget-types">
                 <strong style="padding-left:3px;color:#000;">Select your display theme</strong>
+                <br/>
                     <select class="regular-select" id="theme-select">
                         <?foreach($main_themes as $main_theme):?>
                             <option value="<?=$main_theme?>"><?=ucwords($main_theme)?></option>
@@ -192,7 +193,7 @@
                                 </div>
                                 <div class="form-designs grids" >
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->corporate->children, 'data_type' => null))?>
+                                           array('themes'=> $themes->corporate->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
@@ -202,7 +203,7 @@
                                 </div>
                                 <div class="form-designs grids" >                                                               
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->minimalist->children, 'data_type' => null))?>
+                                           array('themes'=> $themes->minimalist->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
@@ -212,7 +213,7 @@
                                 </div>
                                 <div class="form-designs grids" >                                                                   
                                     <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->creative->children, 'data_type' => null))?>
+                                           array('themes'=> $themes->creative->children, 'data_type' => 'form'))?>
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
