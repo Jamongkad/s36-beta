@@ -89,6 +89,7 @@ return array(
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
           , 'themes_parent' => $widget_themes->get_parent($widget->theme_type)
+          , 'main_themes' => $widget_themes->main_themes()
         ));
     }),
 
