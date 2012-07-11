@@ -69,6 +69,8 @@ return array(
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
         }
+
+        Helpers::dump($widget->theme_type);
         
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
