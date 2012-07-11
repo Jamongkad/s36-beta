@@ -4,7 +4,7 @@
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('submit_widgetkey', false)?>
 <!--lets provide a default tab type-->
-<?=Form::hidden('theme_type', 'form-aglow', Array('id' => 'selected-form'))?>
+<?=Form::hidden('theme_type', 'form-matte', Array('id' => 'selected-form'))?>
 <?=Form::hidden('embed_type', 'form')?>
 
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
