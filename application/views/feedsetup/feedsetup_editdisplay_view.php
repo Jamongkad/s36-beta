@@ -4,7 +4,7 @@
 <?=Form::hidden('site_id', $widget->site_id)?>
 <?=Form::hidden('display_widgetkey', $widget->widgetkey)?>
 <?=Form::hidden('submit_widgetkey', $widget->children[0]->widgetkey)?>
-<?=Form::hidden('widget_select', $widget_select)?>
+<?=Form::hidden('widget_select', (($widget->embed_type == 'embedded') ? 'embed' : 'modal'))?>
 
 <?=Form::hidden('theme_type', 'form-'.$widget->theme_type, Array('id' => 'selected-form'))?>
 <span id="preview-form-widget-url" hrefaction="<?=URL::to('feedsetup/preview_widget_style')?>"></span>
