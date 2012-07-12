@@ -51,8 +51,7 @@
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="form-text" style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
-                        title="What do you like about our products?">
-                        </textarea>
+                        title="What do you like about our products?"></textarea>
                     </td>
                 </tr>
                 <!--
