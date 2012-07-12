@@ -7,7 +7,7 @@ use Permission;
 class DisplayValueObject extends WidgetValueObject { 
 
     public $widget_type = 'display'; 
-    public $modal_effects, $embed_effects;
+    public $modal_effects, $embed_effects, $embed_block_type;
 
     public function data() {
         
@@ -20,6 +20,7 @@ class DisplayValueObject extends WidgetValueObject {
     
         if($this->input_data['widget_select'] == 'embed') { 
             $this->embed_effects = $this->input_data['embed_effects'];
+            $this->embed_block_type = $this->input_data['embed_block_type'];
         }
 
         return (object) Array( 
@@ -31,7 +32,7 @@ class DisplayValueObject extends WidgetValueObject {
           , 'theme_name' => $this->input_data['theme_name']
           , 'form_text'  => $this->input_data['form_text']
           , 'embed_type' => $this->input_data['embed_type']
-          , 'embed_block_type' => $this->input_data['embed_block_type']
+          , 'embed_block_type' => $this->embed_block_type 
           , 'embed_effects'    => $this->embed_effects
           , 'modal_effects'    => $this->modal_effects
           , 'perms'   => $perms 
