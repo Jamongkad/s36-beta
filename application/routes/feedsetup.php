@@ -62,6 +62,8 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id); 
         $widget = $wl->widget_obj;
 
+        Helpers::dump($widget);
+
         $widget_themes->build_menu_structure();
 
         if($widget->widget_type == 'display') {

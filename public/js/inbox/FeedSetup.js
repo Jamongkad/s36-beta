@@ -112,6 +112,7 @@ jQuery(function($) {
         embed_up();
         $("#full_page_widget tr td").children('select').val(0);
         $("#modal_widget tr td").children('select').val(0);
+        $('input[name="widget_select"]').val('embed');
     });
 
     $('#modal_type').click(function(){
@@ -119,6 +120,7 @@ jQuery(function($) {
         $("#full_page_widget tr td").children('select').val(0); 
         $("#embed_widget tr td").children('select, input[type="text"]').val(0).end()
         .children('input[type="radio"]').attr('checked', null);                   
+        $('input[name="widget_select"]').val('modal');
     });
 
     if($('input[value="embedded"]').attr('checked')) {

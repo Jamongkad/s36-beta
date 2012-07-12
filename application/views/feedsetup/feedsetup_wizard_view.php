@@ -1,7 +1,7 @@
 <?=Form::open('feedsetup/save_display_widget', 'POST', Array('id' => 'create-widget'))?>
 <?=Form::hidden('widget_type', 'display')?>
-<?=Form::hidden('site_id', $site[0]->siteid)?>
 <?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('site_id', $site[0]->siteid)?>
 <?=Form::hidden('display_widgetkey', false)?>
 <?=Form::hidden('submit_widgetkey', false)?>
 <?=Form::hidden('widget_select', $widget_select)?>
