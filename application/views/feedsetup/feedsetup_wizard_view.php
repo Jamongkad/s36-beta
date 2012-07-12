@@ -2,6 +2,7 @@
 <?=Form::hidden('widget_type', 'display')?>
 <?=Form::hidden('site_id', $site[0]->siteid)?>
 <?=Form::hidden('company_id', $company_id)?>
+<?=Form::hidden('display_widgetkey', false)?>
 <?=Form::hidden('theme_type', 'form-matte', Array('id' => 'selected-form'))?>
 <?=Form::hidden('perms[feedbacksetupdisplay][displayname]', 1);?>
 <?=Form::hidden('perms[feedbacksetupdisplay][displayimg]', 1);?>
