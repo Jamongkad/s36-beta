@@ -7,12 +7,21 @@ use Permission;
 class DisplayValueObject extends WidgetValueObject { 
 
     public $widget_type = 'display'; 
+    public $modal_effects, $embed_effects;
 
     public function data() {
         
         $theme_type = $this->derive_theme_type();
         $perms = $this->derive_perms();
+
+        if($this->input_data['widget_select'] == 'modal') { 
+            $this->modal_effects = $this->input_data['modal_effects'];
+        }
     
+        if($this->input_data['widget_select'] == 'embed') { 
+            $this->embed_effects = $this->input_data['embed_effects'];
+        }
+
         return (object) Array( 
             'widgetkey'   => $this->input_data['display_widgetkey']
           , 'widget_type' => $this->widget_type
@@ -23,8 +32,8 @@ class DisplayValueObject extends WidgetValueObject {
           , 'form_text'  => $this->input_data['form_text']
           , 'embed_type' => $this->input_data['embed_type']
           , 'embed_block_type' => $this->input_data['embed_block_type']
-          , 'embed_effects'    => $this->input_data['embed_effects']
-          , 'modal_effects'    => $this->input_data['modal_effects']
+          , 'embed_effects'    => $this->embed_effects
+          , 'modal_effects'    => $this->modal_effects
           , 'perms'   => $perms 
         );
     }
