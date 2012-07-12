@@ -144,21 +144,6 @@ return array(
     
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
-        /* ERASE when given a certain amount of confidence
-        $form_data = (object) Array(
-            'widgetkey'   => Input::get('submit_widgetkey')
-          , 'widget_type' => 'submit'
-          , 'site_id'     => Input::get('site_id')
-          , 'company_id'  => Input::get('company_id')
-          , 'theme_type'  => Input::get('theme_type')
-          , 'theme_name'  => Input::get('theme_name')
-          , 'embed_type'  => 'form'
-          , 'submit_form_text'     => Input::get('submit_form_text')
-          , 'submit_form_question' => Input::get('submit_form_question')
-          , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))
-          , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
-        );
-        */
         $form_data = new Widget\Entities\FormValueObject(Input::get());
         $form->set_widgetdata($form_data->data()); 
         $form->save();
@@ -167,45 +152,7 @@ return array(
         )); 
     },
     
-    'POST /feedsetup/save_display_widget' => function() { 
-        /*
-        $form_data = (object) Array(
-            'widgetkey'   => Input::get('submit_widgetkey')
-          , 'widget_type' => 'submit'
-          , 'site_id'     => Input::get('site_id')
-          , 'company_id' => Input::get('company_id')
-          , 'theme_type' => Input::get('theme_type')
-          , 'theme_name' => Input::get('theme_name')
-          , 'embed_type' => 'form'
-          , 'submit_form_text'     => Input::get('submit_form_text')
-          , 'submit_form_question' => Input::get('submit_form_question')
-          , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))
-          , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
-        );
-        */
-        /*
-        $perm_factory = new Permission(Input::get('perms'));
-        $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
-
-        $theme_type = explode('-', Input::get('theme_type'));
-        $theme_type = $theme_type[1];
-
-        $display_data = (object) Array(
-            'widgetkey'   => Input::get('display_widgetkey')
-          , 'widget_type' => 'display'
-          , 'site_id'    => Input::get('site_id')
-          , 'company_id' => Input::get('company_id')
-          , 'theme_type' => $theme_type
-          , 'theme_name' => Input::get('theme_name')
-          , 'form_text'  => Input::get('form_text')
-          , 'embed_type' => Input::get('embed_type')
-          , 'embed_block_type' => Input::get('embed_block_type')
-          , 'embed_effects'    => Input::get('embed_effects')
-          , 'modal_effects'    => Input::get('modal_effects')
-          , 'perms'   => $perms 
-        );
-        */
-      
+    'POST /feedsetup/save_display_widget' => function() {  
         $display_data = new Widget\Entities\DisplayValueObject(Input::get());
         $form_data    = new Widget\Entities\FormValueObject(Input::get());
 
