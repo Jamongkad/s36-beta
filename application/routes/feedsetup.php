@@ -91,7 +91,6 @@ return array(
                                             , 'do' => function($widget_select=false) use ($feedback, $widget_themes) { 
 
         $widget_themes->build_menu_structure();
-
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view', Array(
             'themes' =>  $widget_themes->perform()
           , 'effects_options' => DB::table('Effects', 'master')->get()
@@ -105,11 +104,10 @@ return array(
     'GET /feedsetup/submission_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($widget_themes) { 
 
         $widget_themes->build_menu_structure();
-
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
             'site'             => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'company_id'       => S36Auth::user()->companyid
-          , 'themes' =>  $widget_themes->perform()
+          , 'themes'      =>  $widget_themes->perform()
           , 'main_themes' => $widget_themes->main_themes()
         ));
     }),
@@ -117,7 +115,6 @@ return array(
     'GET /feedsetup/hosted_widgets' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($feedback, $widget_themes) {
        
         $widget_themes->build_menu_structure();
-
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
             'themes' =>  $widget_themes->perform()
           , 'company_id' => S36Auth::user()->companyid 
@@ -128,9 +125,7 @@ return array(
     'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes) { 
 
         $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
-
         $widget_themes->build_menu_structure();
-
         $hosted_settings = $hosted->hosted_settings();
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
@@ -149,7 +144,7 @@ return array(
     
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
-        /* 
+        /* ERASE when given a certain amount of confidence
         $form_data = (object) Array(
             'widgetkey'   => Input::get('submit_widgetkey')
           , 'widget_type' => 'submit'
@@ -173,6 +168,7 @@ return array(
     },
     
     'POST /feedsetup/save_display_widget' => function() { 
+        /*
         $form_data = (object) Array(
             'widgetkey'   => Input::get('submit_widgetkey')
           , 'widget_type' => 'submit'
@@ -186,7 +182,8 @@ return array(
           , 'tab_pos'  => Helpers::tab_position(Input::get('tab_type'))
           , 'tab_type' => (Input::get('tab_type')) ? Input::get('tab_type') : 'tab-l-aglow'
         );
-
+        */
+        /*
         $perm_factory = new Permission(Input::get('perms'));
         $perms = $perm_factory->cherry_pick('feedbacksetupdisplay');        
 
@@ -207,16 +204,20 @@ return array(
           , 'modal_effects'    => Input::get('modal_effects')
           , 'perms'   => $perms 
         );
-
-        /*
-        $dvo = new Widget\Entities\DisplayValueObject(Input::get());
-        $fvo = new Widget\Entities\FormValueObject(Input::get());
         */
+      
+        $display_data = new Widget\Entities\DisplayValueObject(Input::get());
+        $form_data    = new Widget\Entities\FormValueObject(Input::get());
 
+        Helpers::dump($display_data->data());
+        Helpers::dump($form_data->data());
+        
+        /*
         $display = new Widget\Entities\DisplayWidget;
-        $display->set_widgetdata($display_data);
+        $display->set_widgetdata($display_data->data());
+
         $form = new Widget\Entities\FormWidget; 
-        $form->set_widgetdata($form_data);
+        $form->set_widgetdata($form_data->data());
 
         $display->save();
         $form->save();
@@ -226,6 +227,7 @@ return array(
              'display' => $display->emit()
            , 'submit' => $form->emit()
         ));     
+        */
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
