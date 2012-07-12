@@ -3,6 +3,7 @@
 <?=Form::hidden('site_id', $site[0]->siteid)?>
 <?=Form::hidden('company_id', $company_id)?>
 <?=Form::hidden('display_widgetkey', false)?>
+<?=Form::hidden('submit_widgetkey', false)?>
 <?=Form::hidden('widget_select', $widget_select)?>
 
 <?=Form::hidden('theme_type', 'form-matte', Array('id' => 'selected-form'))?>
