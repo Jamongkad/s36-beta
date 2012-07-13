@@ -50,12 +50,13 @@ spl_autoload_register(array('System\\Loader', 'load'));
 // --------------------------------------------------------------
 // Set the error reporting and display levels.
 // --------------------------------------------------------------
-//error_reporting(E_ALL | E_STRICT);
-//ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');
 
 // --------------------------------------------------------------
 // Register the error handlers.
 // --------------------------------------------------------------
+/*
 set_exception_handler(function($e)
 {
 	require_once SYS_PATH.'exception/handler'.EXT;
@@ -87,7 +88,7 @@ register_shutdown_function(function()
 		Exception\Handler::make(new \ErrorException($message, $type, 0, $file, $line))->handle();
 	}	
 });
-
+*/
 // --------------------------------------------------------------
 // Set the default timezone.
 // --------------------------------------------------------------
