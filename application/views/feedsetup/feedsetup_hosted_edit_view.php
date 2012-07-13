@@ -97,7 +97,7 @@
                     <div class="g3of4">
                         <span>Customize your submission form feedback prompt:</span>
                         <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?">
-<?=$hosted_full_page->submit_form_question?> 
+<?=trim($hosted_full_page->submit_form_question)?> 
                         </textarea>
                     </div>
                     <div class="g1of4">
