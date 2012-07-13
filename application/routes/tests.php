@@ -289,9 +289,9 @@ return array(
 
     'GET /tests/a_matter_of_time' => function() {
         $dummy_data = Array('name' => 'mathew', 'age' => 30, 'sex' => 'frequently');
-
         $dvo = new Widget\Entities\DisplayValueObject($dummy_data);
         $fvo = new Widget\Entities\FormValueObject($dummy_data);
+        Helpers::dump($j);
     },
 
     'GET /tests/hosted_settings' => function() {
