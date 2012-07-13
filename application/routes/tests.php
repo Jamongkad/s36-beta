@@ -281,6 +281,7 @@ return array(
 
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;        
+        $test->write_data();
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
         Helpers::dump($ref);
