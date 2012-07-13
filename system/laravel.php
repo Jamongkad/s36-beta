@@ -56,7 +56,7 @@ ini_set('display_errors', 'On');
 // --------------------------------------------------------------
 // Register the error handlers.
 // --------------------------------------------------------------
-/*
+/* TODO: Using new exception handlers
 set_exception_handler(function($e)
 {
 	require_once SYS_PATH.'exception/handler'.EXT;
