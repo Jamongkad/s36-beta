@@ -87,6 +87,7 @@
                             }
                                 
                             //avatar
+
                             $pic = trim($r->avatar);
                             if ($r->rules->displayimg == 1) {
                                 if ($pic == false) {
