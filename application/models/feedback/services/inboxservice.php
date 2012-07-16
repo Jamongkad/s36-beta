@@ -65,7 +65,7 @@ class InboxService {
                 $this->filters['offset'] = $offset;
 
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
-
+                Helpers::dump($date_result);
                 $this->pagination->records($date_result->total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
                     
@@ -86,8 +86,6 @@ class InboxService {
                 if(!$this->ignore_cache) {
                     $this->cache->set_cache($data_obj);     
                 }
-
-                Helpers::dump($date_result);
  
                 return $data_obj; 
             } else {
