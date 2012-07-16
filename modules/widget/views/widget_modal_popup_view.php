@@ -79,12 +79,12 @@
                     $ctr = 0;
                     $units = 3;
                     $max = $row_count; 
-                    foreach($result as $r) {
+                    foreach($result as $main) {
                         //avatar
-                        $pic = trim($r->avatar);
+                        $pic = trim($main->avatar);
                         $avatar = null;
                         $no_avatar_class = null;
-                        if ($r->rules->displayimg == 1)  {
+                        if ($main->rules->displayimg == 1)  {
                             if($pic == false){
                                 $no_avatar_class = "no-avatar-class";
                             }else{
@@ -96,17 +96,17 @@
                                 
                         //country code for the class
                         $cc = '&nbsp;'; 	
-                        if($r->rules->displaycountry == 1) {
-                            if($r->countrycode) {
-                                $cc = strtolower($r->countrycode);             
+                        if($main->rules->displaycountry == 1) {
+                            if($main->countrycode) {
+                                $cc = strtolower($main->countrycode);             
                             } 
                         }
                         
                         //date
                         $date = '&nbsp;'; 
-                        if($r->rules->displaysbmtdate == 1)  { 
-                            if(trim($r->date) != ""){
-                                $date 	= date('F d, Y',strtotime($r->date));
+                        if($main->rules->displaysbmtdate == 1)  { 
+                            if(trim($main->date) != ""){
+                                $date 	= date('F d, Y',strtotime($main->date));
                             }else{
                                 $date	= '';
                             }
@@ -114,44 +114,44 @@
                         
                         //check if name is available:
                         $name = '&nbsp;';
-                        if ($r->rules->displayname == 1) {
-                            if ($r->firstname != false) {
-                               $name = '<span class="left">'.$r->firstname.' '.$r->lastname.'</span> &nbsp;&nbsp;<span class="flag flag-'.$cc.' left" style="margin-top:6px;"></span>'; 
+                        if ($main->rules->displayname == 1) {
+                            if ($main->firstname != false) {
+                               $name = '<span class="left">'.$main->firstname.' '.$main->lastname.'</span> &nbsp;&nbsp;<span class="flag flag-'.$cc.' left" style="margin-top:6px;"></span>'; 
                             } 
                         } 
                         
                         //check if position is available:  
                         $comp = '&nbsp;';								
 
-                        $companyname = ucwords($r->companyname);
-                        if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."' target='_blank'>".ucwords($r->companyname)."</a>";    
+                        $companyname = ucwords($main->companyname);
+                        if($main->rules->displayurl == 1) {
+                            $companyname = "<a href='".$main->url."' target='_blank'>".ucwords($main->companyname)."</a>";    
                         }
 
-                        if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                            if($r->position && $r->companyname) {
-                                $comp = ucwords($r->position).', <span class="highlight">'.$companyname.'</span>';     
+                        if(($main->rules->displayposition == 1) && ($main->rules->displaycompany == 1)){								
+                            if($main->position && $main->companyname) {
+                                $comp = ucwords($main->position).', <span class="highlight">'.$companyname.'</span>';     
                             } 
                         }
                         
-                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                        if(($main->rules->displaycompany == 1) && ($main->rules->displayposition != 1)){								
                             $comp = $companyname;								
                         }
                         
-                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            if($r->position) {
-                                $comp = ucwords($r->position);
+                        if(($main->rules->displaycompany != 1) && ($main->rules->displayposition == 1)){								
+                            if($main->position) {
+                                $comp = ucwords($main->position);
                             } 
                         }                                            
-                        $text = strip_tags($r->text); 
-                        $hidden_text = htmlspecialchars($r->text);
+                        $text = strip_tags($main->text); 
+                        $hidden_text = htmlspecialchars($main->text);
                         echo '<div class="soloFeedback">
                                 <div class="soloFeedbackAvatar">
                                     '.$avatar .'
                                 </div>
                                 <div class="soloFeedbackDetails '.$no_avatar_class.'">
                                     <div class="soloFeedbackText">
-                                        '.trim($r->text).'
+                                        '.trim($main->text).'
                                     </div>
                                     <div class="soloFeedbackAuthor">
                                         <ul>
@@ -170,7 +170,7 @@
         <div id="theLoopBox">
             <div id="theSlides">
 				<?php 
-                    foreach($result as $r){
+                    foreach($result as $second){
                         if(($ctr % $units) == 0){
                             echo '<div class="theFeedbacks grids">';
                             $end = 1;
@@ -184,8 +184,8 @@
                         }
                         
                         //avatar
-                        $pic = trim($r->avatar);
-                        if ($r->rules->displayimg == 1) {
+                        $pic = trim($second->avatar);
+                        if ($second->rules->displayimg == 1) {
                             if ($pic == false) {
                                 $avatar = "/img/48x48-blank-avatar.jpg";
                             }else{
@@ -196,63 +196,63 @@
                         }
                             
                         $cc = '&nbsp;';
-                        if($r->rules->displaycountry == 1) {
-                            if($r->countrycode) {
-                                $cc = strtolower($r->countrycode);             
+                        if($second->rules->displaycountry == 1) {
+                            if($second->countrycode) {
+                                $cc = strtolower($second->countrycode);             
                             }  
                         }
                         
                         //date 
                         $date	= '&nbsp;';
-                        if($r->rules->displaysbmtdate == 1)  { 
-                            if($r->date != false){
-                                $date 	= '<div class="date">'.date('F d, Y',strtotime($r->date)).'</div>';
+                        if($second->rules->displaysbmtdate == 1)  { 
+                            if($second->date != false){
+                                $date 	= '<div class="date">'.date('F d, Y',strtotime($second->date)).'</div>';
                             }                        
                         }
                               
                         //check if name is available: 
                         $name = '&nbsp;'; 
-                        if ($r->rules->displayname == 1) { 
-                            if($r->firstname != false){  
-                                $name = $r->firstname.' '.$r->lastname; 
+                        if ($second->rules->displayname == 1) { 
+                            if($second->firstname != false){  
+                                $name = $second->firstname.' '.$second->lastname; 
                             }                        
                         }
                             		
                         $comp = '&nbsp;';								
 
-                        $companyname = ucwords($r->companyname);
-                        if($r->rules->displayurl == 1) {
-                            $companyname = "<a href='".$r->url."' target='_blank'>".ucwords($r->companyname)."</a>";    
+                        $companyname = ucwords($second->companyname);
+                        if($second->rules->displayurl == 1) {
+                            $companyname = "<a href='".$second->url."' target='_blank'>".ucwords($second->companyname)."</a>";    
                         }
 
-                        if(($r->rules->displayposition == 1) && ($r->rules->displaycompany == 1)){								
-                            if($r->position && $r->companyname) {
-                                $comp = ucwords($r->position).', '.$companyname;								     
+                        if(($second->rules->displayposition == 1) && ($second->rules->displaycompany == 1)){								
+                            if($second->position && $second->companyname) {
+                                $comp = ucwords($second->position).', '.$companyname;								     
                             }  
                         }
                         
-                        if(($r->rules->displaycompany == 1) && ($r->rules->displayposition != 1)){								
+                        if(($second->rules->displaycompany == 1) && ($second->rules->displayposition != 1)){								
                             $comp = $companyname;								
                         }
                         
-                        if(($r->rules->displaycompany != 1) && ($r->rules->displayposition == 1)){								
-                            if($r->position) {
-                                $comp = ucwords($r->position);
+                        if(($second->rules->displaycompany != 1) && ($second->rules->displayposition == 1)){								
+                            if($second->position) {
+                                $comp = ucwords($second->position);
                             } 
                         }                         
 
                         $loc = '&nbsp;';								
-                        if($r->rules->displaycountry == 1) {
-                            if($r->countryname && $r->city) {
-                                $loc = $r->countryname.', '.$r->city;
+                        if($second->rules->displaycountry == 1) {
+                            if($second->countryname && $second->city) {
+                                $loc = $second->countryname.', '.$second->city;
                             }
 
-                            if($r->countryname && $r->city == false) {
-                                $loc = $r->countryname; 
+                            if($second->countryname && $second->city == false) {
+                                $loc = $second->countryname; 
                             }
 
-                            if($r->countryname == false && $r->city) {
-                                $loc = $r->city;
+                            if($second->countryname == false && $second->city) {
+                                $loc = $second->city;
                             }
                         } 
                                                 
@@ -260,10 +260,10 @@
                         if(strlen(trim($text)) <= $maxchars){
                             $text = $text;
                         }else{
-                            $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$r->id.'"> (read full feedback)</span>';								
+                            $text = substr($text,0,$maxchars) . '<span style="color:#88bae8;font-size:10px;" feed-id="'.$second->id.'"> (read full feedback)</span>';								
                         }							
                            echo '<div class="g1of3" index-id="'.$ctr.'">
-                                    <div class="'.$feedback_class.'" id="feedbackid-'.$r->id.'">
+                                    <div class="'.$feedback_class.'" id="feedbackid-'.$second->id.'">
                                         <input type="hidden" class="theFullFeedbackText" data-flag="'.$cc.'" value="'.$hidden_text.'"/>                        	
                                         <div class="block">
                                             <div class="theFeedbackAvatar">
@@ -277,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div class="block">
-                                            <div class="theFeedbackText" feed-id="'.$r->id.'">
+                                            <div class="theFeedbackText" feed-id="'.$second->id.'">
                                                 '.$text.'
                                             </div>
                                         </div>
@@ -285,7 +285,7 @@
                                             <div class="theFeedbackShare">
                                                 <div class="grids">
                                                     <div class="g1of3">
-                                                        <div class="theShareIcon"><a href="javascript:;" feed-id="'.$r->id.'" class="share" style="display: inline; "></a>&nbsp;</div>
+                                                        <div class="theShareIcon"><a href="javascript:;" feed-id="'.$second->id.'" class="share" style="display: inline; "></a>&nbsp;</div>
                                                     </div>
                                                     <div class="g2of3">
                                                         <div class="theFeedbackDate small align-right">'.$date.'</div>
