@@ -79,6 +79,13 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
+
+        $inbox_statements = '
+                AND Feedback.isDeleted = :is_deleted
+                AND Feedback.isPublished = :is_published
+                AND Feedback.isFeatured = :is_featured
+            ';
+
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
@@ -120,9 +127,7 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
-                AND Feedback.isDeleted = :is_deleted
-                AND Feedback.isPublished = :is_published
-                AND Feedback.isFeatured = :is_featured
+                '.$inbox_statements.'
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
                 '.$opts['category_statement'].'
