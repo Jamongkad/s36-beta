@@ -29,6 +29,7 @@ return array(
     },
 
     'GET /api/inbox' => function() {
+        /* TODO Under RENOVATION
         $company = Input::get('subdomain');
         $token = Input::get('token');
          
@@ -56,6 +57,7 @@ return array(
         $feedback = $inbox_service->present_feedback();
         Helpers::dump($feedback);
         //echo json_encode(Array('msg' => 'request successful', 'data' => $feedback));
+        */
     },
 
     'POST /api/logout' => function() {

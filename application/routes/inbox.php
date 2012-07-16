@@ -22,7 +22,7 @@ return array(
             , 'company_id' => S36Auth::user()->companyid
         );
 
-        Helpers::dump($filters);
+        //Helpers::dump($filters);
 
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;

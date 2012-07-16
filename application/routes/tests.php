@@ -173,6 +173,7 @@ return array(
     },
 
     'GET /tests/inboxservice/(:num)' => function($company_id) {
+
         $inbox_service = new Feedback\Services\InboxService;
         $time_start = microtime(True);
 
@@ -196,6 +197,7 @@ return array(
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("New Algorithm: ".$time." seconds");
+
     }, 
 
     'GET /tests/compress' => function() {

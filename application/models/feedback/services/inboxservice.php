@@ -58,6 +58,7 @@ class InboxService {
 
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
+                //main logic
                 $this->pagination->selectable_pages(4);
                 $offset = ($page_number - 1) * $this->filters['limit'];
 
