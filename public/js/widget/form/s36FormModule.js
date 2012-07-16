@@ -472,12 +472,26 @@ var S36Form = new function() {
 		if(company == "Company Name"){
 			company  = "";
 		}
+
+        var review_position;
+        if(position && company) {
+            review_position = position + ", " + company;
+        }
+
+        if(position && company == false) { 
+            review_position = position;
+        }
+
+        if(position == false && company) {
+            review_position = company; 
+        }
+
         $("#next").fadeOut("fast");
         $("#back").fadeOut("fast");
 
-		$('#review-name').html(fname+" "+lname);
-		$('#review-position').html(position +", "+company);
-		$('#review-location').html(location+" "+flag);
+		$('#review-name').html(fname + " " + lname);
+		$('#review-position').html(review_position);
+		$('#review-location').html(location + " " + flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
         })
