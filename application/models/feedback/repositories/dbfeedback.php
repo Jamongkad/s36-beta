@@ -79,7 +79,8 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
-
+         
+        Helpers::dump($opts);
         $inbox_statements = '
                 AND Feedback.isDeleted = :is_deleted
                 AND Feedback.isPublished = :is_published
