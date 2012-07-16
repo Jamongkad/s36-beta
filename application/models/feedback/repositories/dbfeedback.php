@@ -79,7 +79,6 @@ class DBFeedback extends S36DataObject {
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
-
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
