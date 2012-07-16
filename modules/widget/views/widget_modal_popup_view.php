@@ -257,6 +257,7 @@
                         } 
                                                 
                         $maxchars = 157;							
+                        $text = $second->text;
                         if(strlen(trim($text)) <= $maxchars){
                             $text = $text;
                         }else{
