@@ -2,6 +2,7 @@
 
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
+
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
         $limit = 10;
@@ -20,6 +21,8 @@ return array(
             , 'status' => Input::get('status') //new inprogress closed
             , 'company_id' => S36Auth::user()->companyid
         );
+
+        Helpers::dump($filters);
 
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
