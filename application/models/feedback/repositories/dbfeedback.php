@@ -84,13 +84,17 @@ class DBFeedback extends S36DataObject {
         if(array_key_exists('filter', $opts)) {
             Helpers::dump($opts);            
             Helpers::dump($opts['filter']);
+            $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
+                                 AND Feedback.isDeleted = 0";
+        } else {
+            
+            $inbox_statements = '
+                    AND Feedback.isDeleted = :is_deleted
+                    AND Feedback.isPublished = :is_published
+                    AND Feedback.isFeatured = :is_featured
+                ';
         }
       
-        $inbox_statements = '
-                AND Feedback.isDeleted = :is_deleted
-                AND Feedback.isPublished = :is_published
-                AND Feedback.isFeatured = :is_featured
-            ';
 
         $date_sql = '
             SELECT   
