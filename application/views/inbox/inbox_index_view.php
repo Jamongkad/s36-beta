@@ -12,7 +12,7 @@
         <?foreach($feeds->children->result as $feed):?>
             <p></p>
             <? $id = $feed->id ?>
-            <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #EEE8AA"' : null?>>
+            <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFAA"' : null?>>
                 <div class="left">      
                     <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
                     <input type="hidden" name="rating" value="<?=$feed->rating?>" class="feed-ratings" />
