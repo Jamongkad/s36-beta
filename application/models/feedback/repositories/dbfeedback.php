@@ -82,6 +82,7 @@ class DBFeedback extends S36DataObject {
          
         Helpers::dump(in_array('filter', $opts));
         Helpers::dump($opts['filter']);
+        Helpers::dump($opts);
 
         $inbox_statements = '
                 AND Feedback.isDeleted = :is_deleted
