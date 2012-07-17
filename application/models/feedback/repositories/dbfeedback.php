@@ -80,8 +80,8 @@ class DBFeedback extends S36DataObject {
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
          
-       
-        if(array_key_exists('filter', $opts)) {
+        $is_published_filter = array_key_exists('filter', $opts);
+        if($is_published_filter) {
             Helpers::dump($opts);            
             Helpers::dump($opts['filter']);
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
@@ -158,9 +158,13 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
-        $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
-        $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
-        $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
+         
+        if(!$is_published_filter) { 
+            $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+            $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+            $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
+        }
+
         $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
