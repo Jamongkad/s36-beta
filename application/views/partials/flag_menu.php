@@ -11,7 +11,7 @@
     $links = Helpers::nav_switcher(); 
     $nav_regex = Helpers::nav_regex();
 
-    Helpers::dump($nav_regex);
+    Helpers::dump($nav_regex->published);
 
     $nav_links_name = Array(
           Array('key' => 'SHOW ALL', 'val' => 'all')
