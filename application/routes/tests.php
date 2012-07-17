@@ -180,8 +180,8 @@ return array(
         $filters = array(
               'limit'=> 10
             , 'site_id'=> false 
-            , 'filter'=> 'published' //(new arrivals) all (show only) featured published
-            , 'choice'=> 'all' //positive negative neutral profanity flagged mostcontent
+            , 'filter'=> 'all' //(new arrivals) all (show only) featured published
+            , 'choice'=> false //positive negative neutral profanity flagged mostcontent
             , 'date'  => false //date_new date_old
             , 'rating' => false //5 4 3 2 1
             , 'category' => false 
