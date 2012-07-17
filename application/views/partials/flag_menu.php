@@ -7,7 +7,7 @@
 <!--end of undo bar-->
 <!-- top navigation bar -->
 <? 
-    $nav_links = Array('inbox', 'inbox/published', 'inbox/filed');
+    $nav_links = Array('inbox', 'inbox/published', /*'inbox/featured',*/ 'inbox/filed');
     $links = Helpers::nav_switcher();
     $nav_links_name = Array(
           Array('key' => 'SHOW ALL', 'val' => 'all')

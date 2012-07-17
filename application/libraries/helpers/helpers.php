@@ -66,12 +66,16 @@ class Helpers {
             return Array('inbox/all', 'inbox/positive', 'inbox/negative', 'inbox/neutral', 'inbox/profanity', 'inbox/flagged', 'inbox/mostcontent');
         }
 
-        $the_navs = Array('published', 'featured', 'filed');
+        $the_navs = Array('published', /*'featured',*/ 'filed');
 
         foreach($the_navs as $nav) {    
             if(self::$regex->{$nav}) { 
-                return Array('inbox/'.$nav.'/all', 'inbox/'.$nav.'/positive', 'inbox/'.$nav.'/negative', 'inbox/'.$nav.'/neutral', 
-                             'inbox/'.$nav.'/profanity', 'inbox/'.$nav.'/flagged', 'inbox/'.$nav.'/mostcontent');
+                if($nav == 'published') { 
+                    return Array('inbox/'.$nav.'/all',  'inbox/'.$nav.'/profanity', 'inbox/'.$nav.'/flagged', 'inbox/'.$nav.'/mostcontent');
+                } else { 
+                    return Array('inbox/'.$nav.'/all', 'inbox/'.$nav.'/positive', 'inbox/'.$nav.'/negative', 'inbox/'.$nav.'/neutral', 
+                                 'inbox/'.$nav.'/profanity', 'inbox/'.$nav.'/flagged', 'inbox/'.$nav.'/mostcontent');
+                }
             }
         }
 
