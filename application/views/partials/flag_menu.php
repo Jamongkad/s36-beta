@@ -9,6 +9,7 @@
 <? 
     $nav_links = Array('inbox', 'inbox/published', /*'inbox/featured',*/ 'inbox/filed');
     $links = Helpers::nav_switcher();
+    
     $nav_links_name = Array(
           Array('key' => 'SHOW ALL', 'val' => 'all')
         , Array('key' => 'POSITIVE', 'val' => 'positive')

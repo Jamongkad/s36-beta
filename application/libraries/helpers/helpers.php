@@ -62,6 +62,8 @@ class Helpers {
     public static function nav_switcher() { 
         self::$regex = self::nav_regex();
 
+        self::dump(self::$regex);
+
         if(self::$regex->inbox) {
             return Array('inbox/all', 'inbox/positive', 'inbox/negative', 'inbox/neutral', 'inbox/profanity', 'inbox/flagged', 'inbox/mostcontent');
         }
