@@ -178,7 +178,7 @@ return array(
         $time_start = microtime(True);
 
         $filters = array(
-              'limit'=> 20
+              'limit'=> 10
             , 'site_id'=> false 
             , 'filter'=> 'published' //(new arrivals) all (show only) featured published
             , 'choice'=> 'all' //positive negative neutral profanity flagged mostcontent
