@@ -130,6 +130,12 @@ class DBFeedback extends S36DataObject {
             INNER JOIN
                 Category
                    ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                   ON Contact.contactId = Feedback.contactId 
+            INNER JOIN 
+                Country
+                   ON Country.countryId = Contact.countryId
             WHERE 1=1
                 '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
