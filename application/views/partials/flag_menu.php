@@ -11,17 +11,25 @@
     $links = Helpers::nav_switcher(); 
     $nav_regex = Helpers::nav_regex();
 
-    Helpers::dump($nav_regex->published);
+    if($nav_regex->published) { 
+        $nav_links_name = Array(
+              Array('key' => 'SHOW ALL', 'val' => 'all')
+            , Array('key' => 'CONTAINS PROFANITY', 'val' => 'profanity') 
+            , Array('key' => 'FLAGGED', 'val' => 'flagged')
+            , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
+        );
+    } else {  
+        $nav_links_name = Array(
+              Array('key' => 'SHOW ALL', 'val' => 'all')
+            , Array('key' => 'POSITIVE', 'val' => 'positive')
+            , Array('key' => 'NEGATIVE', 'val' => 'negative')
+            , Array('key' => 'NEUTRAL', 'val' => 'neutral')  
+            , Array('key' => 'CONTAINS PROFANITY', 'val' => 'profanity') 
+            , Array('key' => 'FLAGGED', 'val' => 'flagged')
+            , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
+        );
+    }
 
-    $nav_links_name = Array(
-          Array('key' => 'SHOW ALL', 'val' => 'all')
-        , Array('key' => 'POSITIVE', 'val' => 'positive')
-        , Array('key' => 'NEGATIVE', 'val' => 'negative')
-        , Array('key' => 'NEUTRAL', 'val' => 'neutral')  
-        , Array('key' => 'CONTAINS PROFANITY', 'val' => 'profanity') 
-        , Array('key' => 'FLAGGED', 'val' => 'flagged')
-        , Array('key' => 'MOST CONTENT', 'val' => 'mostcontent')
-    );
 ?>
 <?if(!preg_match('/(deleted|contacts)/', Request::uri())):?>
     <div class="admin-nav-bar">
