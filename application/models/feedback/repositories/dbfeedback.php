@@ -81,6 +81,7 @@ class DBFeedback extends S36DataObject {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
          
         Helpers::dump(in_array('filter', $opts));
+        Helpers::dump($opts);
 
         $inbox_statements = '
                 AND Feedback.isDeleted = :is_deleted
