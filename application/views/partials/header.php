@@ -171,11 +171,13 @@
                         PUBLISHED <!--<span>There were 27 new feedback since your last visit.</span>--> 
                     </div>
                 <?endif?>
+                <!--
                 <?if($regex->featured):?>
                     <div class="current-page featured"> 
-                        FEATURED <!--<span>There were 27 new feedback since your last visit.</span>--> 
+                        FEATURED 
                     </div>
                 <?endif?>
+                -->
                 <?if($regex->filed):?>
                     <div class="current-page filed"> 
                         FILED <!--<span>There were 27 new feedback since your last visit.</span>--> 
@@ -236,7 +238,7 @@
             </div>
             <!-- end of gray status bar -->
             <?if(Request::route_is('inbox') 
-                 or Request::route_is('featured') 
+                 //or Request::route_is('featured') 
                  or Request::route_is('filed') 
                  or Request::route_is('feedsetup') 
                  or Request::route_is('contacts')
