@@ -1,7 +1,7 @@
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
-        <?if($feeds->children):?>
+        <?if($feeds->children->result):?>
             <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children->total_rows?>">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
