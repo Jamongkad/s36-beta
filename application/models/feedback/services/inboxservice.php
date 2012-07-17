@@ -39,6 +39,9 @@ class InboxService {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
         $this->cache = new Halcyonic\Services\Cache;
+
+        $this->pagination->selectable_pages(4);
+        $this->page_number = $this->pagination->get_page();
     }
 
     public function set_filters(Array $filters) {
@@ -48,9 +51,8 @@ class InboxService {
 
     public function present_feedback() {
         if ($this->filters) {
-            //pass filters to dbfeedback                 
-            $page_number = $this->pagination->get_page();
-            $this->raw_filters['page_no'] = $page_number;
+            //pass filters to dbfeedback                  
+            $this->raw_filters['page_no'] = $this->page_number;
             
             $this->cache->key_name = "inbox:feeds";
             $this->cache->filter_array = $this->raw_filters;
@@ -59,10 +61,7 @@ class InboxService {
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 //main logic
-                $this->pagination->selectable_pages(4);
-                $offset = ($page_number - 1) * $this->filters['limit'];
-
-                $this->filters['offset'] = $offset;
+                $this->filters['offset'] = ($this->page_number - 1) * $this->filters['limit'];
 
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
                 $this->pagination->records($date_result->total_rows);

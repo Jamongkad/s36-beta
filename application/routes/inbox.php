@@ -32,7 +32,6 @@ return array(
         $company_id = S36Auth::user()->companyid;
         $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
         
-        //TODO: Place this fucker in a function
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
 
