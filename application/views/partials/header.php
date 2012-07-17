@@ -88,10 +88,12 @@
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
                        <?=($regex->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
+                    <!--
                     <li<?=($regex->featured ? ' class="selected featured"' : ' class="featured"')?>>
                         <?=HTML::link('inbox/featured/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Featured')?>
                        <?=($regex->featured ? '<div class="arrow-right"></div>' : null)?>
                     </li>
+                    -->
                     <li<?=($regex->filed ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('inbox/filed/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Filed Feedback')?>
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
