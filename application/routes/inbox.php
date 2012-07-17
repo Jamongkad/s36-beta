@@ -22,8 +22,6 @@ return array(
             , 'company_id' => S36Auth::user()->companyid
         );
 
-        //Helpers::dump($filters);
-
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
@@ -36,13 +34,7 @@ return array(
         
         //TODO: Place this fucker in a function
         //Resets UI code for clicky action function
-        $company_key = "inbox:check-action:".$company_id;
-        if($hkeys = $redis->hkeys($company_key)) {
-            foreach($hkeys as $hseek) {  
-                $redis->del($hseek);
-            }
-        } 
-        $redis->del($company_key);
+        reset_inbox_ui($company_id, $redis);
 
         $category = new DBCategory;
         $view_data = Array(
@@ -64,3 +56,13 @@ return array(
         } 
     }), 
 );
+
+function reset_inbox_ui($company_id, $redis) { 
+    $company_key = "inbox:check-action:".$company_id;
+    if($hkeys = $redis->hkeys($company_key)) {
+        foreach($hkeys as $hseek) {  
+            $redis->del($hseek);
+        }
+    } 
+    $redis->del($company_key);
+}

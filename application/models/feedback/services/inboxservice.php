@@ -65,7 +65,6 @@ class InboxService {
                 $this->filters['offset'] = $offset;
 
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
-                Helpers::dump($date_result);
                 $this->pagination->records($date_result->total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
                     
@@ -73,6 +72,7 @@ class InboxService {
                 foreach($date_result->result as $feeds) {
                    $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
                    $data[] = $feeds;
+                   Helpers::dump($feeds);
                 }
                             
                 $data_obj = new StdClass;
