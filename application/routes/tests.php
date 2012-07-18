@@ -285,7 +285,7 @@ return array(
         $test = new Widget\Repositories\DBWidgetThemes;         
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
-        Helpers::dump($ref);
+        //Helpers::dump($ref);
         foreach($ref as $main_themes) {    
             Helpers::dump($main_themes);
         }
