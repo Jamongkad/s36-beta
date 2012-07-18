@@ -64,13 +64,14 @@ class DBWidgetThemes {
                 $like  = $this->redis->hget($widget_theme_key, $like_key);
 
                 $child_data = new StdClass;
-                $child_data->parent = $key;
+                $child_data->parent  = $key;
                 $child_data->default = array($v, $main);
                 $child_data->heart   = array($heart_key, $heart);
                 $child_data->like    = array($like_key, $like);
 
+                Helpers::dump(count($child_data));
+
                 $data->children[] = $child_data;
-                $count += 1;
             }
 
             $collection->$key = $data;
