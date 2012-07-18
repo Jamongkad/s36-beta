@@ -286,6 +286,9 @@ return array(
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
         Helpers::dump($ref);
+        foreach($ref as $main_themes) {    
+            Helpers::dump($main_themes);
+        }
         /*
         Helpers::dump($test->get_parent('matte'));
         */
