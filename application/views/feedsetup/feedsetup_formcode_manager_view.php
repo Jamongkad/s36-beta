@@ -87,12 +87,9 @@ function display_codes(i){
                             <?php 
                                 $positions = Array();
                                 foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-                                    $positions[$v] = $themes;
+                                    $positions[$v] = $form_themes;
                                 }
 
-                                Helpers::dump($positions);
-                               
-                                /*
                                 $theme_slides = '';
                                 foreach($positions as $pos => $theme){
                                     $theme_slides .= '<div class="'.$pos.'-design-slide">
@@ -129,7 +126,7 @@ function display_codes(i){
                                                 </div>';
                                 }
                                 echo $theme_slides;	
-                                */ 
+                                
                             ?> 
                         </div>
 
