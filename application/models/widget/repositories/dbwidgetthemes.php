@@ -38,6 +38,9 @@ class DBWidgetThemes {
     public function build_menu_structure() {
         
         $collection = new StdClass; 
+        
+        //always check for new styles write them to main themes directory
+        $this->write_data();
 
         foreach($this->categories->main_categories_build as $key => $val) {
 

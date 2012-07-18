@@ -221,9 +221,6 @@ return array(
 
     'GET /tests/redis' => function() { 
         $redis = new redisent\Redis;       
-        $themes = new S36Themes; 
-        Helpers::dump($redis->smembers('corporate:widget:themes'));
-        Helpers::dump($themes->main_categories_build);
     }, 
 
     'POST /tests/submissionservice' => function() {
