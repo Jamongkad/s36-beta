@@ -290,7 +290,7 @@ return array(
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) {
-                        Helpers::dump($value);
+                        Helpers::dump($v);
                         /*
                         Helpers::dump($v->default[0]." ".$v->default[1]);               
                         Helpers::dump($v->heart[0]." ".$v->heart[1]);               
