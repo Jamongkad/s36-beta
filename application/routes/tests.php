@@ -288,7 +288,7 @@ return array(
         //Helpers::dump($ref);
         foreach($ref as $main_themes) {    
             foreach($main_themes as $key => $value) {
-                Helpers::dump($key);     
+                Helpers::dump($value);     
             } 
         }
         /*
