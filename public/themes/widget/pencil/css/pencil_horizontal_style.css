@@ -27,7 +27,7 @@
 /* here comes the css styles for this widget! */
 #widgetHeader{
 	padding:9px 15px 9px;
-	background:url(images/header-bg.png);
+	background:url(../images/header-bg.png);
 	-webkit-border-radius:0px;
 	-moz-border-radius:0px;
 	border-radius:0px;
@@ -55,7 +55,7 @@
 		}
 		.viewAllFeedbackButton input{
 			margin-top:4px;
-			background: url(images/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;

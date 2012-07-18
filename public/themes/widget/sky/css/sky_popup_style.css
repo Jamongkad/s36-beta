@@ -32,7 +32,7 @@
 	-webkit-border-radius:0px;
 	-moz-border-radius:0px;
 	border-radius:0px;
-	background:url(images/header-bg.png);
+	background:url(../images/header-bg.png);
 	border-bottom:3px solid #257bb3;
 }
 	.theWidgetTitle{
@@ -62,7 +62,7 @@
 			font-weight:bold;
 		}
 		.viewAllFeedbackButton input{
-			background: url(images/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
