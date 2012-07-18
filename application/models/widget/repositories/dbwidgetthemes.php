@@ -91,8 +91,10 @@ class DBWidgetThemes {
             }
         }
     }
-    
+ 
     //TODO: incomplete implementation
+    public function check_theme_changes() {}
+
     public function remove_category($category) {
         $this->write_data();
         $key_name = "$category:widget:themes";

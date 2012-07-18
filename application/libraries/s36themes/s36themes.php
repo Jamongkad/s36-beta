@@ -12,17 +12,17 @@ class S36Themes {
           , 'classic'=> 'Classic'
           , 'contrast' => 'Contrast'
           , 'dark'   => 'Dark'
-          , 'matte'    => 'Matte'
+          , 'matte'  => 'Matte'
           , 'silver' => 'Silver'
       )
 
       , 'minimalist' => Array(
             'sky'  => 'Sky'
-          , 'pencil'   => 'Pencil'
+          , 'pencil' => 'Pencil'
       )
 
       , 'creative' => Array(
-            'cloudy'  => 'Cloudy'
+            'cloudy' => 'Cloudy'
           , 'salad' => 'Salad'
       )
     );

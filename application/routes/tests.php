@@ -223,7 +223,7 @@ return array(
         $redis = new redisent\Redis;       
         $themes = new S36Themes; 
         Helpers::dump($redis->smembers('corporate:widget:themes'));
-        Helpers::dump($themes->main_categories_build['minimalist']);
+        Helpers::dump($themes->main_categories_build);
     }, 
 
     'POST /tests/submissionservice' => function() {
