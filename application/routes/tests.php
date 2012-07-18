@@ -287,8 +287,8 @@ return array(
         $ref = $test->perform(); 
         //Helpers::dump($ref);
         foreach($ref as $main_themes) {    
-            foreach($main_themes as $child_themes) {
-                Helpers::dump($child_themes->children);     
+            foreach($main_themes as $key => $value) {
+                Helpers::dump($key);     
             } 
         }
         /*
