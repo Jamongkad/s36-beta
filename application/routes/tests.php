@@ -291,11 +291,9 @@ return array(
                 if(is_array($value)) {
                     foreach($value as $v) {
                         Helpers::dump($v->default);               
+                        Helpers::dump($v->heart);          
+                        Helpers::dump($v->like);          
                     }
-                    /*
-                    Helpers::dump($value->heart);          
-                    Helpers::dump($value->like);          
-                    */
                 } 
             } 
         }
