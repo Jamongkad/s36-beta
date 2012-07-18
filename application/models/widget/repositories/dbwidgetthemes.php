@@ -52,6 +52,7 @@ class DBWidgetThemes {
             $data->head = $key_name;
             $data->children = Array();
 
+            $count = 0;
             foreach($smembers as $v) {
 
                 $widget_theme_key = "$v:theme:value:label";
@@ -68,12 +69,11 @@ class DBWidgetThemes {
                 $child_data->default = array($v, $main);
                 $child_data->heart   = array($heart_key, $heart);
                 $child_data->like    = array($like_key, $like);
-
-                Helpers::dump(count(get_object_vars($child_data)));
-
+                 
+                $count += 3;
+                //Helpers::dump(count(get_object_vars($child_data)));
                 $data->children[] = $child_data;
             }
-
             $collection->$key = $data;
         }
 
