@@ -286,10 +286,12 @@ return array(
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
         //Helpers::dump($ref);
+        $count = 0;
         foreach($ref as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) {
+                        $count += 1;
                         Helpers::dump($v->default[0]." ".$v->default[1]);               
                         Helpers::dump($v->heart[0]." ".$v->heart[1]);               
                         Helpers::dump($v->like[0]." ".$v->like[1]);               
@@ -297,6 +299,7 @@ return array(
                 } 
             } 
         }
+        Helpers::dump($count);
         /*
         Helpers::dump($test->get_parent('matte'));
         */
