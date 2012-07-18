@@ -285,21 +285,24 @@ return array(
         $test = new Widget\Repositories\DBWidgetThemes;         
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
-        //Helpers::dump($ref);
+        Helpers::dump($ref);
+        /*
+        $count = 0;
         foreach($ref as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) {
                         Helpers::dump($v);
-                        /*
+         
                         Helpers::dump($v->default[0]." ".$v->default[1]);               
                         Helpers::dump($v->heart[0]." ".$v->heart[1]);               
                         Helpers::dump($v->like[0]." ".$v->like[1]);               
-                        */
+        
                     }
                 } 
             } 
         }
+        */
         //Helpers::dump($test->get_parent('matte'));
     },
 
