@@ -289,7 +289,9 @@ return array(
         foreach($ref as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
-                    Helpers::dump($value);          
+                    Helpers::dump($value->default);          
+                    Helpers::dump($value->heart);          
+                    Helpers::dump($value->like);          
                 } 
             } 
         }
