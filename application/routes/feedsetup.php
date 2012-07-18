@@ -180,12 +180,12 @@ return array(
         $cl = new Widget\Services\ClientRender($widget);  
 
         $widget_themes->build_menu_structure();
-        Helpers::dump($widget_themes->perform());
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
           , 'widget_type'     => get_parent_class($widget)
           , 'form_themes'     => $tab_themes
+          , 'themes'          => $widget_themes->perform()
           , 'loader_url'      => $cl->widget_loader_url.$widget->widgetkey
           , 'link_js_output'  => $cl->link_js_output()
           , 'link_native_output' => $cl->iframe_output()
