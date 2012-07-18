@@ -282,12 +282,13 @@ return array(
     },
 
     'GET /tests/widget_themes' => function() {
-        $test = new Widget\Repositories\DBWidgetThemes;        
-        $test->write_data();
+        $test = new Widget\Repositories\DBWidgetThemes;         
         $test->build_menu_structure(); 
         $ref = $test->perform(); 
         Helpers::dump($ref);
+        /*
         Helpers::dump($test->get_parent('matte'));
+        */
     },
 
     'GET /tests/a_matter_of_time' => function() {
