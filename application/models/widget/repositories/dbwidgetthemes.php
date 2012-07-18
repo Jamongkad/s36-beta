@@ -38,6 +38,7 @@ class DBWidgetThemes {
     public function build_menu_structure() {
         
         $collection = new StdClass; 
+        $count = 0;
         
         //always check for new styles write them to main themes directory
         $this->write_data();
@@ -69,12 +70,13 @@ class DBWidgetThemes {
                 $child_data->like    = array($like_key, $like);
 
                 $data->children[] = $child_data;
-
+                $count += 1;
             }
 
             $collection->$key = $data;
         }
 
+        Helpers::dump($count);
         $this->collection = $collection;
         //conserb mems
         $collection = Null;
