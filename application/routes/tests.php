@@ -284,8 +284,10 @@ return array(
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;         
         $test->build_menu_structure(); 
+        $total_theme_count = $test->get_theme_count();
         $ref = $test->perform(); 
         Helpers::dump($ref);
+        Helpers::dump($total_theme_count);
         /*
         $count = 0;
         foreach($ref as $main_themes) {    

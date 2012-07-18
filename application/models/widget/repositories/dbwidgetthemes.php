@@ -7,6 +7,7 @@ class DBWidgetThemes {
 
     private $redis;
     private $collection;
+    private $total_theme_count;
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
@@ -69,16 +70,21 @@ class DBWidgetThemes {
                 $child_data->heart   = array($heart_key, $heart);
                 $child_data->like    = array($like_key, $like);
                  
+                //hard coded value to get total amount object vars
                 $count += 3; 
                 $data->children[] = $child_data;
             }
             $collection->$key = $data;
         }
 
-        Helpers::dump($count);
+        $this->total_theme_count = $count;
         $this->collection = $collection;
         //conserb mems
         $collection = Null;
+    }
+
+    public function get_theme_count() {
+        return $this->total_theme_count;     
     }
 
     public function main_themes() {
