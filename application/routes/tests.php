@@ -291,18 +291,16 @@ return array(
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) {
-                        $count += 1;
                         Helpers::dump($v->default[0]." ".$v->default[1]);               
                         Helpers::dump($v->heart[0]." ".$v->heart[1]);               
                         Helpers::dump($v->like[0]." ".$v->like[1]);               
+                        $count += 1;
                     }
                 } 
             } 
         }
         Helpers::dump($count);
-        /*
-        Helpers::dump($test->get_parent('matte'));
-        */
+        //Helpers::dump($test->get_parent('matte'));
     },
 
     'GET /tests/a_matter_of_time' => function() {
