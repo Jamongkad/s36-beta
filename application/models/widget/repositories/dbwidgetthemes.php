@@ -69,7 +69,7 @@ class DBWidgetThemes {
                 $child_data->heart   = array($heart_key, $heart);
                 $child_data->like    = array($like_key, $like);
 
-                Helpers::dump(count((array)$child_data));
+                Helpers::dump(count(get_object_vars($child_data)));
 
                 $data->children[] = $child_data;
             }
