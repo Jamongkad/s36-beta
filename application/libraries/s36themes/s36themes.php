@@ -17,6 +17,8 @@ class S36Themes {
       )
 
       , 'minimalist' => Array(
+            'sky'  => 'Sky'
+          , 'pencil'   => 'Pencil'
       )
 
       , 'creative' => Array(
