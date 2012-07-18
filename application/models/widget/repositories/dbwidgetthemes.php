@@ -42,7 +42,7 @@ class DBWidgetThemes {
         
         //always check for new styles write them to main themes directory
         $this->write_data();
-
+        $count = 0;
         foreach($this->categories->main_categories_build as $key => $val) {
 
             $key_name = "$key:widget:themes";
@@ -52,7 +52,6 @@ class DBWidgetThemes {
             $data->head = $key_name;
             $data->children = Array();
 
-            $count = 0;
             foreach($smembers as $v) {
 
                 $widget_theme_key = "$v:theme:value:label";
@@ -70,7 +69,7 @@ class DBWidgetThemes {
                 $child_data->heart   = array($heart_key, $heart);
                 $child_data->like    = array($like_key, $like);
                  
-                $count = $count + 3;
+                $count += 1;
                 //Helpers::dump(count(get_object_vars($child_data)));
                 $data->children[] = $child_data;
             }
