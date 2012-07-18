@@ -173,11 +173,14 @@ return array(
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
-                                                       , 'do' => function($id=false) use ($tab_themes) {
+                                                       , 'do' => function($id=false) use ($tab_themes, $widget_themes) {
 
         $wl = new Widget\Services\WidgetLoader($id); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);  
+
+        $widget_themes->build_menu_structure();
+        Helpers::dump($widget->perform());
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
