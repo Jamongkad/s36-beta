@@ -181,6 +181,8 @@ return array(
 
         $widget_themes->build_menu_structure();
 
+        Helpers::dump($widget_themes->perform());
+
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
           , 'widget_type'     => get_parent_class($widget)
