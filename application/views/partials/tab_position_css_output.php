@@ -89,4 +89,4 @@
 		}
 	}
     $class .= '</style>';
-	echo trim($class);
+	echo preg_replace('/\s+/', '', $class);
