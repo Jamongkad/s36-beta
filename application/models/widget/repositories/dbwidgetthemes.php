@@ -90,19 +90,16 @@ class DBWidgetThemes {
     public function tab_themes() {
         
         $ctr = 0;
+        $units = 5;
         foreach($this->collection as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
                             if($prop != 'parent') {
-                                /*
-                                foreach($vl as $theme) {
-                                    print_r($theme."\n");
-                                    $ctr += 1;
-                                }
-                                */
-                                print_r($vl[0]." ".$vl[1]."\n");
+                                if(($ctr % $units) == 0) {
+                                    print_r($vl[0]." ".$vl[1]."\n");     
+                                } 
                                 $ctr += 1;
                             }             
                         }
