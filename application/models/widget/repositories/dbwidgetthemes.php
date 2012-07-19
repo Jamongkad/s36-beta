@@ -5,9 +5,7 @@ use redisent, Helpers, StdClass, S36Themes, Underscore;
 //Redis backed WidgetThemes
 class DBWidgetThemes {
 
-    private $redis;
-    private $collection;
-    private $total_theme_count;
+    private $redis, $collection, $total_theme_count, $tab_themes;
 
     public function __construct() {
         $this->redis = new redisent\Redis; 
