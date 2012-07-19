@@ -168,6 +168,8 @@ class Helpers {
         foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
             $positions[$v] = self::$tab_themes;//$widget->perform()->tab_themes; 
         }
+
+        Helpers::dump("Mathew");
         
         return View::make('partials/tab_position_css_output', Array('positions' => $positions));
     }
