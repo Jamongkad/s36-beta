@@ -281,7 +281,7 @@ return array(
         Helpers::dump(Helpers::html_cleaner($text));
     },
 
-    'POST /tests/widget_themes' => function() {
+    'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;         
         $test->build_menu_structure(); 
         $total_theme_count = $test->get_theme_count();
