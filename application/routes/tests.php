@@ -287,6 +287,8 @@ return array(
         $total_theme_count = $test->get_theme_count();
         $ref = $test->perform(); 
         //Helpers::dump($ref);
+        print_r(Input::get());
+        /*
         print_r($total_theme_count);
         $count = 0;
         foreach($ref as $main_themes) {    
@@ -301,6 +303,7 @@ return array(
             } 
         }
         //Helpers::dump($test->get_parent('matte'));
+        */
     },
 
     'GET /tests/a_matter_of_time' => function() {
