@@ -4,9 +4,8 @@
     session_cache_limiter("private_no_expire"); 
 	header("Content-type: text/css; charset=UTF-8", true);
     */
-    $class = "<style>";
-	$class .= '@charset "utf-8";
-			/* CSS Document */
+    $class = '<style>';
+	$class .= '
 			.tab-cornertab{
 				position:fixed;
 				width:76px;
@@ -89,5 +88,5 @@
 			}
 		}
 	}
-    $class .= "</style>";
+    $class .= '</style>';
 	echo $class;
