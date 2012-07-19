@@ -80,7 +80,7 @@ return array(
           , 'widget'          => $widget
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
-          , 'themes'        =>  $widget_themes->perform()
+          , 'themes'        =>  $widget_themes->perform()->collection
           , 'themes_parent' => $widget_themes->get_parent($theme_type)
           , 'main_themes'   => $widget_themes->main_themes()
         ));
@@ -92,7 +92,7 @@ return array(
 
         $widget_themes->build_menu_structure();
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_wizard_view', Array(
-            'themes' =>  $widget_themes->perform()
+            'themes' =>  $widget_themes->perform()->collection
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid 
           , 'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
@@ -116,7 +116,7 @@ return array(
        
         $widget_themes->build_menu_structure();
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_wizard_view', Array(  
-            'themes' =>  $widget_themes->perform()
+            'themes' =>  $widget_themes->perform()->collection
           , 'company_id' => S36Auth::user()->companyid 
           , 'main_themes' => $widget_themes->main_themes()
         ));
@@ -129,7 +129,7 @@ return array(
         $hosted_settings = $hosted->hosted_settings();
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
-            'themes' => $widget_themes->perform()
+            'themes' => $widget_themes->perform()->collection
           , 'hosted_full_page' => $hosted_settings 
           , 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
           , 'main_themes' => $widget_themes->main_themes()
@@ -186,8 +186,8 @@ return array(
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
           , 'widget_type'     => get_parent_class($widget)
-          , 'form_themes'     => $tab_themes
-          , 'themes'          => $widget_themes->perform()
+          , 'form_themes'     => $widget_themes->perform()->tab_themes
+          , 'themes'          => $widget_themes->perform()->collection
           , 'loader_url'      => $cl->widget_loader_url.$widget->widgetkey
           , 'link_js_output'  => $cl->link_js_output()
           , 'link_native_output' => $cl->iframe_output()
