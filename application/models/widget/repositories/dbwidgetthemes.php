@@ -94,12 +94,12 @@ class DBWidgetThemes {
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) { 
-                        print_r($v->default[0]." ".$v->default[1]);               
-                        print_r($v->heart[0]." ".$v->heart[1]);               
-                        print_r($v->like[0]." ".$v->like[1]);                
+                        print_r($v->default[0]." ".$v->default[1]."\n");               
+                        print_r($v->heart[0]." ".$v->heart[1]."\n");               
+                        print_r($v->like[0]." ".$v->like[1]."\n");                
+                        $ctr += 1;
                     }
                 } 
-                $ctr += 1;
             } 
         }
         
