@@ -82,10 +82,6 @@ class DBWidgetThemes {
         $collection = Null;
     }
 
-    public function get_theme_count() {
-        return $this->total_theme_count;     
-    }
-
     public function build_tab_themes() {  
         $ctr = 0;
         $result = Array();
