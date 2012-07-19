@@ -96,7 +96,6 @@ class DBWidgetThemes {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
                             if($prop != 'parent') {
-                                print_r($prop."\n");
                                 foreach($vl as $theme) {
                                     print_r($theme."\n");
                                     $ctr += 1;
