@@ -1,7 +1,6 @@
 <?
     //CSS preprocessor
     session_cache_limiter("private_no_expire"); 
-    ini_set('default_mimetype', 'text/css');
 	header("Content-type: text/css; charset=UTF-8", true);
 	$class = '@charset "utf-8";
 			/* CSS Document */
@@ -30,7 +29,7 @@
                 z-index: 100000;
             }
             ';
-	
+    /*	
 	foreach($positions as $pos => $theme){
 		if($pos == 'bl'){
 			foreach($theme as $key => $val){
@@ -88,4 +87,5 @@
 			}
 		}
 	}
+    */
 	echo $class;
