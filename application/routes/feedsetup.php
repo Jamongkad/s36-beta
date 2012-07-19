@@ -180,8 +180,7 @@ return array(
         $cl = new Widget\Services\ClientRender($widget);  
 
         $widget_themes->build_menu_structure();
-
-        //Helpers::dump($widget_themes->perform());
+        $widget_themes->build_tab_themes();
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
