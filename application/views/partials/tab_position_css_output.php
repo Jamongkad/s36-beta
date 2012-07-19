@@ -1,10 +1,11 @@
 <?
     //CSS preprocessor
+    /*
     session_cache_limiter("private_no_expire"); 
 	header("Content-type: text/css; charset=UTF-8", true);
-    error_reporting(E_ALL | E_STRICT);
-    ini_set('display_errors', 'On');
-	$class = '@charset "utf-8";
+    */
+    $class = "<style type='text/css'>";
+	$class .= '@charset "utf-8";
 			/* CSS Document */
 			.tab-cornertab{
 				position:fixed;
@@ -31,7 +32,6 @@
                 z-index: 100000;
             }
             ';
-     /*	
 	foreach($positions as $pos => $theme){
 		if($pos == 'bl'){
 			foreach($theme as $key => $val){
@@ -89,5 +89,5 @@
 			}
 		}
 	}
-    */
+    $class .= "</style>";
 	echo $class;
