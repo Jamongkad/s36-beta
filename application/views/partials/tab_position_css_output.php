@@ -1,5 +1,6 @@
 <?
     //CSS preprocessor
+    echo "mathew";
     session_cache_limiter("private_no_expire"); 
 	header("Content-type: text/css; charset=UTF-8", true);
     error_reporting(E_ALL | E_STRICT);
@@ -90,4 +91,4 @@
 		}
 	}
     */
-	echo $class;
+	//echo $class;
