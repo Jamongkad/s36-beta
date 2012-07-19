@@ -32,7 +32,11 @@ class DBWidgetThemes {
     }
 
     public function perform() { 
-        return $this->collection;
+        $result_obj = new StdClass;
+        $result_obj->collection = $this->collection;
+        $result_obj->tab_themes = $this->tab_themes;
+        $result_obj->total_theme_count = $this->total_theme_count;
+        return $result_obj;
     }
     
     //Grab data
@@ -93,7 +97,6 @@ class DBWidgetThemes {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
                             if($prop != 'parent') {
-                                //print_r($vl[0]." ".$vl[1]."\n");
                                 $result[$vl[0]] = $vl[1];
                                 $ctr += 1;
                             }             
@@ -103,8 +106,9 @@ class DBWidgetThemes {
             } 
         }
 
-        print_r($result);
         $this->total_theme_count = $ctr;
+        $this->tab_themes = $result;
+        $result = Null;
     }
 
     public function main_themes() {

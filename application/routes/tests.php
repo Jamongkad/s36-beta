@@ -283,13 +283,12 @@ return array(
 
     'GET /tests/widget_themes' => function() {
         $test = new Widget\Repositories\DBWidgetThemes;         
-        $test->build_menu_structure(); 
-        //$total_theme_count = $test->get_theme_count();
-        $tab_themes = $test->tab_themes();
+        $test->build_menu_structure();  
+        $test->build_tab_themes();
+        $test->get_theme_count();
         $ref = $test->perform(); 
-        //Helpers::dump($ref);
+        Helpers::dump($ref);
         //print_r($total_theme_count);
-        print_r($tab_themes);
         //Helpers::dump($test->get_parent('matte'));
     },
 
