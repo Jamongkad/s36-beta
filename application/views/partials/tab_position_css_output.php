@@ -89,4 +89,4 @@
 		}
 	}
     $class .= '</style>';
-	echo $class;
+	echo trim($class);
