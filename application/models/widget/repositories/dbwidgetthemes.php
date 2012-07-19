@@ -99,7 +99,9 @@ class DBWidgetThemes {
                             if($prop != 'parent') {
                                 if(($ctr % $units) == 0) {
                                     print_r($vl[0]." ".$vl[1]."\n");     
-                                } 
+                                } else { 
+                                    print_r($vl[0]." ".$vl[1]."\n");     
+                                }
                                 $ctr += 1;
                             }             
                         }
