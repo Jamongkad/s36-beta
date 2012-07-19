@@ -287,7 +287,7 @@ return array(
         $total_theme_count = $test->get_theme_count();
         $ref = $test->perform(); 
         //Helpers::dump($ref);
-        Helpers::dump($total_theme_count);
+        print_r($total_theme_count);
         $count = 0;
         foreach($ref as $main_themes) {    
             foreach($main_themes as $key => $value) {
