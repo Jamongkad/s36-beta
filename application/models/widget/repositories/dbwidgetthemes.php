@@ -87,6 +87,20 @@ class DBWidgetThemes {
         return $this->total_theme_count;     
     }
 
+    public function tab_themes() {
+        foreach($this->collection as $main_themes) {    
+            foreach($main_themes as $key => $value) {
+                if(is_array($value)) {
+                    foreach($value as $v) { 
+                        print_r($v->default[0]." ".$v->default[1]);               
+                        print_r($v->heart[0]." ".$v->heart[1]);               
+                        print_r($v->like[0]." ".$v->like[1]);                
+                    }
+                } 
+            } 
+        }
+    }
+
     public function main_themes() {
         return array_keys($this->categories->main_categories_build);
     }
