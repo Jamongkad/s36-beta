@@ -102,7 +102,7 @@ class DBWidgetThemes {
                                     $ctr += 1;
                                 }
                                 */
-                                print_r($vl);
+                                print_r($vl[0]." ".$vl[1]);
                                 $ctr += 1;
                             }             
                         }
