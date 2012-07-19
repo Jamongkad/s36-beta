@@ -1,7 +1,10 @@
 <?
     //CSS preprocessor
+    echo "mathew";
     session_cache_limiter("private_no_expire"); 
 	header("Content-type: text/css; charset=UTF-8", true);
+    error_reporting(E_ALL | E_STRICT);
+    ini_set('display_errors', 'on');
 	$class = '@charset "utf-8";
 			/* CSS Document */
 			.tab-cornertab{
@@ -29,7 +32,7 @@
                 z-index: 100000;
             }
             ';
-    /*	
+     /*	
 	foreach($positions as $pos => $theme){
 		if($pos == 'bl'){
 			foreach($theme as $key => $val){
