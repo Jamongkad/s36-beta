@@ -71,13 +71,10 @@ class DBWidgetThemes {
                 $child_data->like    = array($like_key, $like);
                  
                 //hard coded value to get total amount object vars
-                $count += 3; 
                 $data->children[] = $child_data;
             }
             $collection->$key = $data;
         }
-
-        $this->total_theme_count = $count;
         $this->collection = $collection;
         //conserb mems
         $collection = Null;
@@ -87,21 +84,17 @@ class DBWidgetThemes {
         return $this->total_theme_count;     
     }
 
-    public function tab_themes() {
-        
+    public function tab_themes() {  
         $ctr = 0;
-        $units = 5;
+        $result = Array();
         foreach($this->collection as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
                             if($prop != 'parent') {
-                                print_r("---------------------"."\n");
-                                if(($ctr % $units) == 0) {
-                                    print_r($vl[0]." ".$vl[1]."\n");     
-                                } 
-                                print_r("---------------------"."\n");
+                                //print_r($vl[0]." ".$vl[1]."\n");
+                                $result[$vl[0]] = $vl[1];
                                 $ctr += 1;
                             }             
                         }
@@ -109,8 +102,9 @@ class DBWidgetThemes {
                 } 
             } 
         }
-        
-        print_r($ctr);
+
+        print_r($result);
+        $this->total_theme_count = $ctr;
     }
 
     public function main_themes() {
