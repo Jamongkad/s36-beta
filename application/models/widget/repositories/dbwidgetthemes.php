@@ -78,7 +78,6 @@ class DBWidgetThemes {
             $collection->$key = $data;
         }
         $this->collection = $collection;
-        //conserb mems
         $collection = Null;
     }
 
@@ -90,7 +89,7 @@ class DBWidgetThemes {
                 if(is_array($value)) {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
-                            if($prop != 'parent') {
+                            if($prop !== 'parent') {
                                 $result[$vl[0]] = $vl[1];
                                 $ctr += 1;
                             }             
