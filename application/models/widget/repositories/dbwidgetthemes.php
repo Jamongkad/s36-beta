@@ -88,6 +88,8 @@ class DBWidgetThemes {
     }
 
     public function tab_themes() {
+        
+        $ctr = 0;
         foreach($this->collection as $main_themes) {    
             foreach($main_themes as $key => $value) {
                 if(is_array($value)) {
@@ -97,8 +99,11 @@ class DBWidgetThemes {
                         print_r($v->like[0]." ".$v->like[1]);                
                     }
                 } 
+                $ctr += 1;
             } 
         }
+        
+        print_r($ctr);
     }
 
     public function main_themes() {
