@@ -160,7 +160,7 @@ class Helpers {
     public static function tab_position_css_output() { 	
         $positions = Array();
         
-        $widget = new Widget\Repositories\DBWidgetThemes;         
+        $widget = new \Widget\Repositories\DBWidgetThemes;         
         $widget->build_menu_structure();  
         $widget->build_tab_themes();
 
