@@ -88,7 +88,7 @@ class DBWidgetThemes {
         return $this->total_theme_count;     
     }
 
-    public function tab_themes() {  
+    public function build_tab_themes() {  
         $ctr = 0;
         $result = Array();
         foreach($this->collection as $main_themes) {    
