@@ -91,4 +91,4 @@
 		}
 	}
     */
-	echo $class;
+	//echo $class;
