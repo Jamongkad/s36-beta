@@ -169,7 +169,7 @@ class Helpers {
             $positions[$v] = $widget->perform()->tab_themes; //self::$tab_themes;//
         }
 
-        Helpers::dump(View::make('partials/tab_position_css_output', Array('positions' => $positions))->get());
+        echo View::make('partials/tab_position_css_output', Array('positions' => $positions))->get();
     }
 
     public static function sanitize($string) {
