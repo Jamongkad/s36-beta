@@ -160,8 +160,12 @@ class Helpers {
     public static function tab_position_css_output() { 	
         $positions = Array();
         
+        $widget = new Widget\Repositories\DBWidgetThemes;         
+        $widget->build_menu_structure();  
+        $widget->build_tab_themes();
+
         foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-            $positions[$v] = self::$tab_themes;
+            $positions[$v] = $widget->perform()->tab_themes; 
         }
         
         return View::make('partials/tab_position_css_output', Array('positions' => $positions));
