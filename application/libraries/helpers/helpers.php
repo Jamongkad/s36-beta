@@ -165,7 +165,7 @@ class Helpers {
         $widget->build_tab_themes();
 
         foreach(Array('r', 'l', 'br', 'bl', 'tr', 'tl') as $v) {
-            $positions[$v] = $widget->perform()->tab_themes; 
+            $positions[$v] = self::$tab_themes;//$widget->perform()->tab_themes; 
         }
         
         return View::make('partials/tab_position_css_output', Array('positions' => $positions));

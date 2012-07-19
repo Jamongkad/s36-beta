@@ -9,7 +9,7 @@ return array(
     
     //these routes are used by js loaders for source construction
     'GET /widget/tab_position' => function() {
-        echo trim(Helpers::tab_position_css_output());
+        echo Helpers::tab_position_css_output();
     },
      
     'GET /widget/js_output' => function() { 
