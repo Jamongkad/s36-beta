@@ -26,6 +26,9 @@ class Helpers {
           , 'matte-heart'  => 'Matte Heart'
           , 'matte-like'  => 'Matte Like'
           , 'silver-gray'=>'Silver Gray'
+          , 'pencil'  => 'Pencil' 
+          , 'pencil-heart'  => 'Pencil Heart'
+          , 'pencil-like'  => 'Pencil Like'
     );
 
     public static function request() {

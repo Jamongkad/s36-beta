@@ -79,6 +79,7 @@ class DBWidgetThemes {
 
         $this->total_theme_count = $count;
         $this->collection = $collection;
+
         //conserb mems
         $collection = Null;
     }
