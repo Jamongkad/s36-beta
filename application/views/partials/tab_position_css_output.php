@@ -1,7 +1,7 @@
 <?
     //CSS preprocessor
     session_cache_limiter("private_no_expire"); 
-	header("Content-type: text/css", true);
+	header("Content-type: text/css; charset=UTF-8", true);
 	$class = '@charset "utf-8";
 			/* CSS Document */
 			.tab-cornertab{
