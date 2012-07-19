@@ -168,7 +168,9 @@ class Helpers {
             $positions[$v] = $widget->perform()->tab_themes; 
         }
         
-        return View::make('partials/tab_position_css_output', Array('positions' => $positions));
+        return View::make('partials/tab_position_css_output', Array(
+            'positions' => $positions, 'url' => Config::get('application.deploy_env')
+        ));
     }
 
     public static function sanitize($string) {

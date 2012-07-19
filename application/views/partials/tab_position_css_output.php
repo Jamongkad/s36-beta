@@ -35,7 +35,7 @@
 		if($pos == 'bl'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'left:0px;';
@@ -44,7 +44,7 @@
 		}elseif($pos == 'br'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'right:0px;';
@@ -53,7 +53,7 @@
 		}elseif($pos == 'tl'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'left:0px;';
@@ -62,7 +62,7 @@
 		}elseif($pos == 'tr'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'right:0px;';
@@ -71,7 +71,7 @@
 		}elseif($pos == 'l'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'left:0px;';
@@ -80,7 +80,7 @@
 		}elseif($pos == 'r'){
 			foreach($theme as $key => $val){
 				$class .= '.tab-'.$pos.'-'.$key.'{';
-				$class .= 'background:url(/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
+				$class .= 'background:url('.$url.'/img/tab-designs/'.$pos.'-'.$key.'-tab-design.png);';
                 $class .= 'background-color:transparent;';
                 $class .= 'border:none;';
 				$class .= 'right:0px;';
