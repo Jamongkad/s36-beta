@@ -97,11 +97,11 @@ class DBWidgetThemes {
                     foreach($value as $v) { 
                         foreach($v as $prop => $vl) {
                             if($prop != 'parent') {
+                                print_r("---------------------"."\n");
                                 if(($ctr % $units) == 0) {
                                     print_r($vl[0]." ".$vl[1]."\n");     
-                                } else { 
-                                    print_r($vl[0]." ".$vl[1]."\n");     
-                                }
+                                } 
+                                print_r("---------------------"."\n");
                                 $ctr += 1;
                             }             
                         }
