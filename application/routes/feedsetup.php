@@ -107,7 +107,7 @@ return array(
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_create_form_widget_view', Array(
             'site'             => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'company_id'       => S36Auth::user()->companyid
-          , 'themes'      =>  $widget_themes->perform()
+          , 'themes'      =>  $widget_themes->perform()->collection
           , 'main_themes' => $widget_themes->main_themes()
         ));
     }),
@@ -181,7 +181,7 @@ return array(
 
         $widget_themes->build_menu_structure();
 
-        Helpers::dump($widget_themes->perform());
+        //Helpers::dump($widget_themes->perform());
 
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget

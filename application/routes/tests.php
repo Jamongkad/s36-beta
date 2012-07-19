@@ -295,7 +295,6 @@ return array(
         $dummy_data = Array('name' => 'mathew', 'age' => 30, 'sex' => 'frequently');
         $dvo = new Widget\Entities\DisplayValueObject($dummy_data);
         $fvo = new Widget\Entities\FormValueObjec($dummy_data);
-        Helpers::dump($j);
     },
 
     'GET /tests/hosted_settings' => function() {
