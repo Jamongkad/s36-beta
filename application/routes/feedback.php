@@ -168,12 +168,15 @@ return array(
         if($cat_state === "default") {
             echo "Default Category";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
-        } 
-        
+        } else { 
+            echo "Archived Category";
+        }
+        /* 
         if($cat_state !== "default"){
             echo "Archived Category";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
         }
+        */
        
         if($cat_state === null) {
             echo "Inbox Operation";
