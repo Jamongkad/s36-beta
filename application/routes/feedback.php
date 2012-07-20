@@ -164,7 +164,7 @@ return array(
         $cat_id    = Input::get('cat_id');
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
-        $company_id = S36Auth::user()->companyid;
+        //$company_id = S36Auth::user()->companyid;
         /* 
         if($cat_state == "default") {
             //echo "Default Category";
