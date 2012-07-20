@@ -172,6 +172,7 @@ return array(
         $category = DB::Table('Category')->where('categoryId', '=', $cat_id)
                                          ->first(Array('categoryId', 'intName', 'name'));
         print_r($category);
+        print_r($catstate);
         /*
         if($catstate == "default") {
             //echo "Default Category";
