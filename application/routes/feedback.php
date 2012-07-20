@@ -27,7 +27,8 @@ return array(
         $feedbackservice = new Feedback\Services\FeedbackService($feedback, $badwords);
         $feedbackservice->save_feedback($post);
     },
-
+    
+    //mothafucking route is used in modifyfeedback tab
     'GET /feedback/change_state/(\w+)/(\d+)' => function($state, $id) use($feedback) {
         if($state == 'flag') { 
             return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
@@ -179,8 +180,6 @@ return array(
             echo "Inbox Operation";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
-
-        //print_r(Input::get()); 
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
