@@ -14,6 +14,8 @@ class FeedbackState {
       , 'flag'    => 'SET isFlagged = 1'
     );
 
+    private $category_vars = Array('categoryId', 'intName', 'name')
+
     public function __construct($mode, $block_id, $company_id, $category_id) {
         $this->mode = $mode;     
         $this->block_id = $block_id;
@@ -39,16 +41,16 @@ class FeedbackState {
         */
     }
 
-    public function expose_default_category_id() { 
+    public function default_category_id() { 
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
-                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
-        return $category->categoryid;
+                                         ->where('intName', '=', 'default')->first($this->category_vars);
+        return $category;
     }
 
-    public function expose_category_id() { 
+    public function selected_category_id() { 
         $category = DB::Table('Category')->where('categoryId', '=', $this->category_id)
-                                         ->first(Array('categoryId', 'intName', 'name'));
-        return $category->categoryid
+                                         ->first($this->category_vars);
+        return $category;
     }
 
     public function state_change_rules() { 
