@@ -164,24 +164,23 @@ return array(
         $cat_id    = Input::get('cat_id');
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
-        //$company_id = S36Auth::user()->companyid;
-        /* 
+
         if($cat_state == "default") {
-            //echo "Default Category";
-            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
+            echo "Default Category";
+            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($cat_state != "default" && $cat_state != null){
-            //echo "Archived Category";
-            return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
+            echo "Archived Category";
+            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
         }
        
         if($cat_state == null) {
-            //echo "Inbox Operation";
-            return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
+            echo "Inbox Operation";
+            //return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
-        */
-        print_r(Input::get()); 
+
+        //print_r(Input::get()); 
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
