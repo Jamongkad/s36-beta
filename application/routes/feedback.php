@@ -176,7 +176,8 @@ return array(
         /*
         if($catstate == "default") {
             //echo "Default Category";
-            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", isArchived = 0, categoryId = $cat_id");     
+            //return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", isArchived = 0, categoryId = $cat_id");     
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id);     
         } 
         
         if($catstate != "default" && $catstate != null){
