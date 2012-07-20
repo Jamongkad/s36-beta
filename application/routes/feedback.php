@@ -160,27 +160,31 @@ return array(
     },
      
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
-        $feed_ids  = Input::get('feed_ids');
-        $cat_id    = Input::get('cat_id');
-        $catstate = Input::get('catstate');
-        $mode      = Input::get('mode');         
-        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
+        $feed_ids   = Input::get('feed_ids');
+        $cat_id     = Input::get('cat_id');
+        $catstate   = Input::get('catstate');
+        $mode       = Input::get('mode');         
+        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
+        //TODO: Here's a suggestion mothafucka how about inferring the category name by doing a query against the DB??
+        //What is catstate truly for? To determine feedback state placement. THERE MUST BE A BETTER WAY! original approach is hacky as hell.
+        //quicky prototype
+        $category = DB::Table('Category')->where('categoryId', '=', $cat_id)
+                                         ->first(Array('categoryId', 'intName', 'name'));
         if($catstate == "default") {
             //echo "Default Category";
-            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 0, categoryId = $cat_id");     
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($catstate != "default" && $catstate != null){
             //echo "Archived Category";
-            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 1, categoryId = $cat_id");
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", isArchived = 1, categoryId = $cat_id");
         }
        
         if($catstate == null) {
             //echo "Inbox Operation";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", categoryId = $cat_id");      
         }
-
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {

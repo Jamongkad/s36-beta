@@ -103,7 +103,8 @@
                                         <div class="grids">
                                             <div class="label g1of2">Status</div>
                                             <div class="dropdown g1of2">
-                                                <select class="catmenu-status" name="status" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changestatus')?>">
+                                                <select class="catmenu-status" name="status" feedid="<?=$id?>" 
+                                                        feedurl="<?=URL::to('feedback/changestatus')?>">
                                                     <?foreach($status as $option):?>
                                                         <?$option_match = str_replace(" ", "", strtolower($option->name));?>  
                                                         <option <?=($feed->status == $option->name) ? 'selected' : null?> value="<?=$option_match?>"><?=$option->name?></option>
@@ -115,7 +116,8 @@
                                         <div class="grids">
                                             <div class="label g1of2">Priority</div>
                                             <div class="dropdown g1of2">
-                                                <select class="catmenu-priority" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
+                                                <select class="catmenu-priority" name="priority" feedid="<?=$id?>" 
+                                                        feedurl="<?=URL::to('feedback/changepriority')?>">
                                                     <?foreach($priority_obj as $key => $val):?>
                                                         <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
                                                             <?=ucfirst($val)?>
@@ -158,8 +160,7 @@
                                             <?else:?>
                                                 <input type="button" class="feature" 
                                                        tooltip="<?=($feed->isfeatured) ? "Return to Inbox" : "Feature Feedback"?>" tt_width="85"
-                                                <?=Helpers::switchable($feed->isfeatured, $id
-                                                                     , $feed->categoryid
+                                                <?=Helpers::switchable($feed->isfeatured, $id, $feed->categoryid
                                                                      , URL::to('/feedback/change_feedback_state')
                                                                      , ' style="background-position: -60px -34px"') ?>/>
 

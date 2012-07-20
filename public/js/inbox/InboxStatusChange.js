@@ -225,6 +225,5 @@ InboxStatusChange.prototype.initialize = function() {
             remove.process();
             remove.undo();
         }
-
     })
 }

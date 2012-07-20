@@ -466,18 +466,26 @@ class DBFeedback extends S36DataObject {
 
     public function _toggle_multiple($mode, $block_id, $company_id, $extra=False) { 
         //We need this to reset internal category id to default
-        //S36Auth::user()->companyid;
         $category = DB::Table('Category')->where('companyId', '=', $company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId'));
 
         $categoryId = $category->categoryid;
         //TODO consolidate inbox and restore nigguh
         $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
+            'inbox'   => 'SET isDeleted = 0
+                            , isPublished = 0
+                            , isFeatured = 0
+                            , isFlagged = 0
+                            , isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
           , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
           , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$categoryId.''
           , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$categoryId.''
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
+          , 'delete'  => 'SET isDeleted = 1
+                            , isPublished = 0
+                            , isFeatured = 0
+                            , isFlagged = 0
+                            , isSticked = 0
+                            , isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
           , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
@@ -488,13 +496,7 @@ class DBFeedback extends S36DataObject {
          
         print_r($column);
         /*
-        $sql = "
-            UPDATE Feedback
-                    $column
-                WHERE 1=1
-                    AND Feedback.feedbackId IN ($in_query)
-        ";
-
+        $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
         $sth = $this->dbh->prepare($sql); 
         foreach($block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
