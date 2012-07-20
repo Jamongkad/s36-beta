@@ -23,10 +23,7 @@ class FeedbackState {
         $this->category_id = $category_id;
     } 
 
-    public function set_data() {
-
-        $category_id = $this->expose_default_category_id();
-        
+    public function set_data() {        
         /*
         $lookup = Array(
             'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
@@ -41,13 +38,13 @@ class FeedbackState {
         */
     }
 
-    public function default_category_id() { 
+    public function default_category() { 
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                          ->where('intName', '=', 'default')->first($this->category_vars);
         return $category;
     }
 
-    public function selected_category_id() { 
+    public function selected_category() { 
         $category = DB::Table('Category')->where('categoryId', '=', $this->category_id)
                                          ->first($this->category_vars);
         return $category;

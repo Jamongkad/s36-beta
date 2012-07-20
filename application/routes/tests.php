@@ -310,8 +310,8 @@ return array(
         $feed_obj_1 = Array('feedid' => 478);
 
         $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1), 1, 4);
-        Helpers::dump($feedbackstate->default_category_id());
-        Helpers::dump($feedbackstate->selected_category_id());
+        Helpers::dump($feedbackstate->default_category());
+        Helpers::dump($feedbackstate->selected_category());
         Helpers::dump($feedbackstate->state_change_rules());
         Helpers::dump($feedbackstate);
     },
