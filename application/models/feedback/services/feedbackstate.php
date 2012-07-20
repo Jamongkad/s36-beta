@@ -14,7 +14,7 @@ class FeedbackState {
       , 'flag'    => 'SET isFlagged = 1'
     );
 
-    private $category_vars = Array('categoryId', 'intName', 'name')
+    private $category_vars = Array('categoryId', 'intName', 'name');
 
     public function __construct($mode, $block_id, $company_id, $category_id) {
         $this->mode = $mode;     
