@@ -165,17 +165,17 @@ return array(
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
 
-        if($cat_state == "default") {
+        if($cat_state === "default") {
             echo "Default Category";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
-        if($cat_state != "default"){
+        if($cat_state !== "default"){
             echo "Archived Category";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
         }
        
-        if($cat_state == null) {
+        if($cat_state === null) {
             echo "Inbox Operation";
             //return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
         }
