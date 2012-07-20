@@ -167,17 +167,17 @@ return array(
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
         if($cat_state == "default") {
-            echo "Default Category";
+            //echo "Default Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($cat_state != "default" && $cat_state != null){
-            echo "Archived Category";
+            //echo "Archived Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 1, categoryId = $cat_id");
         }
        
         if($cat_state == null) {
-            echo "Inbox Operation";
+            //echo "Inbox Operation";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", categoryId = $cat_id");      
         }
 
