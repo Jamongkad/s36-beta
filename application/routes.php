@@ -221,6 +221,10 @@ return array(
 
             return View::of_home_layout()->partial('contents', 'home/reset_password_success_view');        
         }
+    },
+
+    'GET /hello' => function() {
+        print_r("hello world");
     }
 );
 
