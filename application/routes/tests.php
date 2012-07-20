@@ -311,6 +311,7 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1), 1);
         Helpers::dump($feedbackstate->expose_default_category_id());
+        Helpers::dump($feedbackstate->state_change_rules());
         Helpers::dump($feedbackstate);
     },
 

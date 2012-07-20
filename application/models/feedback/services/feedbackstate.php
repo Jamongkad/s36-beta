@@ -4,6 +4,16 @@ use DB;
 
 class FeedbackState {
 
+    private $lookup = Array(
+        'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1'
+      , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1'
+      , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0'
+      , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0'
+      , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0'
+      , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
+      , 'flag'    => 'SET isFlagged = 1'
+    );
+
     public function __construct($mode, $block_id, $company_id) {
         $this->mode = $mode;     
         $this->block_id = $block_id;
@@ -32,6 +42,12 @@ class FeedbackState {
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId'));
         return $category->categoryid;
+    }
+
+    public function state_change_rules() { 
+        if(array_key_exists($this->mode, $this->lookup)) { 
+            return $this->lookup[$this->mode]; 
+        }
     }
 
     public function process_data() {
