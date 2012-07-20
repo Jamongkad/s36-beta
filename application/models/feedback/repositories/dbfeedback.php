@@ -464,9 +464,10 @@ class DBFeedback extends S36DataObject {
                   ->update(array('indLock' => $state));    
     }
 
-    public function _toggle_multiple($mode, $block_id, $extra=False) { 
+    public function _toggle_multiple($mode, $block_id, $company_id, $extra=False) { 
         //We need this to reset internal category id to default
-        $category = DB::Table('Category')->where('companyId', '=', S36Auth::user()->companyid)
+        //S36Auth::user()->companyid;
+        $category = DB::Table('Category')->where('companyId', '=', $company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId'));
 
         $categoryId = $category->categoryid;
@@ -484,7 +485,9 @@ class DBFeedback extends S36DataObject {
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
 
         $in_query = implode(',', array_fill(0, count($block_id), '?'));
-
+         
+        print_r($column);
+        /*
         $sql = "
             UPDATE Feedback
                     $column
@@ -498,6 +501,7 @@ class DBFeedback extends S36DataObject {
         }
 
         return $sth->execute();       
+        */
     }
 
     public function _permanent_delete($opts) { 

@@ -24,9 +24,8 @@ class FireMultiple {
                 $this->feedback->permanently_remove_feedback($feed_id['feedid']);    
             } 
         } else {
-            $this->feedback->_toggle_multiple($this->mode, $this->feed_ids);    
-        }
-        
+            $this->feedback->_toggle_multiple($this->mode, $this->feed_ids, $this->company_id);    
+        } 
     }
 
     private function _group_ui_cluster($feeds) {

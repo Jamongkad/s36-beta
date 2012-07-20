@@ -19,7 +19,6 @@ return array(
            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high')
            , 'admin_check' => S36Auth::user()
         ));
-
     }),
 
     'POST /feedback/edit_feedback_text' => function() use ($feedback, $badwords) {
@@ -34,7 +33,7 @@ return array(
             return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
         } else {   
             $feed_obj = Array('feedid' => $id);
-            return $feedback->_toggle_multiple($state, Array($feed_obj)); 
+            return $feedback->_toggle_multiple($state, Array($feed_obj), S36Auth::user()->companyid); 
         }
     },
 
@@ -165,20 +164,21 @@ return array(
         $cat_id    = Input::get('cat_id');
         $cat_state = Input::get('catstate');
         $mode      = Input::get('mode');         
+        $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
         if($cat_state == "default") {
-            echo "Default Category";
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 0, categoryId = $cat_id");     
+            //echo "Default Category";
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
         if($cat_state != "default" && $cat_state != null){
-            echo "Archived Category";
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ",isArchived = 1, categoryId = $cat_id");          
+            //echo "Archived Category";
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 1, categoryId = $cat_id");
         }
        
         if($cat_state == null) {
-            echo "Inbox Operation";
-            //return $feedback->_toggle_multiple($mode, $feed_ids, ", categoryId = $cat_id");      
+            //echo "Inbox Operation";
+            return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", categoryId = $cat_id");      
         }
     },
 
@@ -203,15 +203,15 @@ return array(
 
     'POST /feedback/fire_multiple' => function() use ($feedback) {
         $feed_ids = Input::get('feed_ids');
-        $mode     = Input::get('col'); 
-        
+        $mode     = Input::get('col');  
+
         $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
         return $fire->execute();
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feed_obj = Array('feedid' => $id);
-        $feedback->_toggle_multiple('delete', Array($feed_obj));
+        $feedback->_toggle_multiple('delete', Array($feed_obj), S36Auth::user()->companyid);
         return Redirect::to('inbox/deleted');  
     },
 
