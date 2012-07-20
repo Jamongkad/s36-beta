@@ -307,7 +307,10 @@ return array(
     
     'GET /tests/feedbackstate' => function() {
         $feed_obj = Array('feedid' => 360);
-        $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj), 1);
+        $feed_obj_1 = Array('feedid' => 478);
+
+        $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1), 1);
+        Helpers::dump($feedbackstate->expose_default_category_id());
         Helpers::dump($feedbackstate);
     },
 
