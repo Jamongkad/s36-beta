@@ -291,12 +291,6 @@ return array(
         //Helpers::dump($test->get_parent('matte'));
     },
 
-    'GET /tests/a_matter_of_time' => function() {
-        $dummy_data = Array('name' => 'mathew', 'age' => 30, 'sex' => 'frequently');
-        $dvo = new Widget\Entities\DisplayValueObject($dummy_data);
-        $fvo = new Widget\Entities\FormValueObjec($dummy_data);
-    },
-
     'GET /tests/hosted_settings' => function() {
         $hosted_settings_data = Array(
             'companyId'  => 3
@@ -309,6 +303,12 @@ return array(
         $hosted->set_hosted_settings($hosted_settings_data);
         $hosted->save();
         Helpers::dump($hosted->record_exists());
+    },
+    
+    'GET /tests/feedbackstate' => function() {
+        $feed_obj = Array('feedid' => 360);
+        $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj), 1);
+        Helpers::dump($feedbackstate);
     },
 
     //reserved route for Leica and Ryan testing

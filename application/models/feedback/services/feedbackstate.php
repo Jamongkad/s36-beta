@@ -3,12 +3,18 @@
 use DB;
 
 class FeedbackState {
-    public function process_data($mode, $block_id, $company_id, $extra=False) {
-        $category = DB::Table('Category')->where('companyId', '=', $company_id)
-                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
 
-        $categoryId = $category->categoryid;
+    public function __construct($mode, $block_id, $company_id) {
+        $this->mode = $mode;     
+        $this->block_id = $block_id;
+        $this->company_id = $company_id;
+    } 
 
+    public function set_data() {
+
+        $category_id = $this->expose_default_category_id();
+        
+        /*
         $lookup = Array(
             'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
           , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
@@ -19,7 +25,17 @@ class FeedbackState {
           , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
           , 'flag'    => 'SET isFlagged = 1'
         );
-        
+        */
+    }
+
+    public function expose_default_category_id() { 
+        $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
+                                         ->where('intName', '=', 'default')->first(Array('categoryId'));
+        return $category->categoryid;
+    }
+
+    public function process_data() {
+  
         $column = null;
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
 
