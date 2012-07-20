@@ -171,7 +171,7 @@ return array(
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
-        if($catstate != "default" && $cat_state != null){
+        if($catstate != "default" && $catstate != null){
             //echo "Archived Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 1, categoryId = $cat_id");
         }
