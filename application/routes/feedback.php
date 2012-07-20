@@ -171,6 +171,8 @@ return array(
         //quicky prototype
         $category = DB::Table('Category')->where('categoryId', '=', $cat_id)
                                          ->first(Array('categoryId', 'intName', 'name'));
+        print_r($category);
+        /*
         if($catstate == "default") {
             //echo "Default Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", isArchived = 0, categoryId = $cat_id");     
@@ -185,6 +187,7 @@ return array(
             //echo "Inbox Operation";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", categoryId = $cat_id");      
         }
+        */
     },
 
     'POST /feedback/toggle_feedback_display' => function() use ($feedback) {
