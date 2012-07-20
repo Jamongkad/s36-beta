@@ -297,7 +297,7 @@ return array(
           , 'theme_type' => 'dark'
           , 'header_text' => 'Awww yeaaa mah nigguhs Leica is cute'
           , 'submit_form_text' => 'Share your feeds with us...'
-          , 'submit_form_question' => 'What do you think of our niggarly services'
+          , 'submit_form_question' => 'What do you think of our awesome services?'
         );
         $hosted = new Widget\Repositories\DBHostedSettings;
         $hosted->set_hosted_settings($hosted_settings_data);
@@ -309,8 +309,9 @@ return array(
         $feed_obj = Array('feedid' => 360);
         $feed_obj_1 = Array('feedid' => 478);
 
-        $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1), 1, 10);
+        $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1), 1, 4);
         Helpers::dump($feedbackstate->expose_default_category_id());
+        Helpers::dump($feedbackstate->expose_category_id());
         Helpers::dump($feedbackstate->state_change_rules());
         Helpers::dump($feedbackstate);
     },

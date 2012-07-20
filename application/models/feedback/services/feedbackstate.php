@@ -45,6 +45,12 @@ class FeedbackState {
         return $category->categoryid;
     }
 
+    public function expose_category_id() { 
+        $category = DB::Table('Category')->where('categoryId', '=', $this->category_id)
+                                         ->first(Array('categoryId', 'intName', 'name'));
+        return $category->categoryid
+    }
+
     public function state_change_rules() { 
         if(array_key_exists($this->mode, $this->lookup)) { 
             return $this->lookup[$this->mode]; 
