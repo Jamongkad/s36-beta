@@ -14,10 +14,11 @@ class FeedbackState {
       , 'flag'    => 'SET isFlagged = 1'
     );
 
-    public function __construct($mode, $block_id, $company_id) {
+    public function __construct($mode, $block_id, $company_id, $category_id) {
         $this->mode = $mode;     
         $this->block_id = $block_id;
         $this->company_id = $company_id;
+        $this->category_id = $category_id;
     } 
 
     public function set_data() {
