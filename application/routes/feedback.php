@@ -162,21 +162,21 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids  = Input::get('feed_ids');
         $cat_id    = Input::get('cat_id');
-        $cat_state = Input::get('catstate');
+        $catstate = Input::get('catstate');
         $mode      = Input::get('mode');         
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
-        if($cat_state == "default") {
+        if($catstate == "default") {
             //echo "Default Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 0, categoryId = $cat_id");     
         } 
         
-        if($cat_state != "default" && $cat_state != null){
+        if($catstate != "default" && $cat_state != null){
             //echo "Archived Category";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ",isArchived = 1, categoryId = $cat_id");
         }
        
-        if($cat_state == null) {
+        if($catstate == null) {
             //echo "Inbox Operation";
             return $feedback->_toggle_multiple($mode, $feed_ids, $company_id, ", categoryId = $cat_id");      
         }
