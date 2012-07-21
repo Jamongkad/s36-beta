@@ -1,6 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Helpers, S36Auth;
+use Feedback\Services\FeedbackState;
 use Underscore, redisent;
 
 class FireMultiple {
@@ -23,8 +24,9 @@ class FireMultiple {
             foreach($this->feed_ids as $feed_id) {
                 $this->feedback->permanently_remove_feedback($feed_id['feedid']);    
             } 
-        } else {
-            $this->feedback->_toggle_multiple($this->mode, $this->feed_ids, $this->company_id);    
+        } else {  
+            $feedbackstate = new FeedbackState($this->mode, $this->feed_ids, $this->company_id);
+            $feedbackstate->change_state();
         } 
     }
 

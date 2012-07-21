@@ -130,7 +130,8 @@ return array(
             $status = 'publish'; 
             //publish feedback this bitch
             $feed_obj = Array('feedid' => $feedback_id);
-            $publish_success = $feedback->_toggle_multiple($status, array($feed_obj), $company_id);  
+            $feedbackstate = new Feedback\Services\FeedbackState($status, Array($feed_obj), $company_id);
+            $publish_success = $feedbackstate->change_state();
 
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
