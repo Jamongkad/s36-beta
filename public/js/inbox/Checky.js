@@ -1,3 +1,5 @@
+//Object that controls Checkbox Feed Status
+
 function Checky(opts) {
     this.feed_selection   = opts.feed_selection;
     this.check_feed_id    = opts.check_feed_id;
