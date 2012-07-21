@@ -30,11 +30,15 @@ class FeedbackState {
 
         if($this->mode == 'fileas') { 
             echo "Archived Category";
-            return $rules.", categoryId = ".$selected_category->categoryid;
+            return $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
             echo "Default Category";
-            return $rules.", categoryId = ".$default_category->categoryid;
+            return $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
+    }
+
+    public function _sql_statement_attach($category_id) {
+        return ", categoryId = ".$category_id;
     }
 
     public function default_category() { 
@@ -55,13 +59,7 @@ class FeedbackState {
         }
     }
 
-    public function process_data() {
-  
-        $column = null;
-        if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
-
-        $in_query = implode(',', array_fill(0, count($block_id), '?'));
-         
-        print_r($column);
+    public function block_id_query() { 
+        return implode(',', array_fill(0, count($this->block_id), '?'));
     }
 }
