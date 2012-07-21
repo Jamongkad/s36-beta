@@ -38,7 +38,12 @@ InboxStateObject.prototype.process = function() {
     console.log(me.mode);
     console.log(me.currentUrl);
     var in_published_tab = me.currentUrl.match(/published/g);
-    console.log(in_published_tab);
+    if(in_published_tab) {
+        console.log(in_published_tab);    
+    } else {
+        console.log("No in published tab muthafuckas");
+    }
+    
     //TODO: if in Published Folder do not animate else animate in Inbox Folder only.
     /* 
     if(is_single) { 
