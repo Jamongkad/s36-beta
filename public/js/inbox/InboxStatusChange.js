@@ -68,6 +68,7 @@ InboxStateObject.prototype.process = function() {
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
+
             console.log(state_data);
 
             $.ajax({ type: "POST"
