@@ -50,6 +50,8 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '-60px -34px'
                   , 'sibling': '.check'
                 };
+
+                switch_to(state_view_data); 
             }
 
             if(mode == 'publish') {
@@ -59,13 +61,13 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '0px -34px'
                   , 'sibling': '.feature'
                 };
+
+                switch_to(state_view_data); 
             }
 
             if(mode == 'inbox') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
-
-            switch_to(state_view_data); 
             console.log(state_data);
         } else {
             console.log("Not in Published tab");
