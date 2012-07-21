@@ -69,7 +69,8 @@ InboxStateObject.prototype.process = function() {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
 
-            change_state(state_data);
+            checky_bar_message(me);
+            //change_state(state_data);
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
@@ -217,24 +218,25 @@ CatPickObject.prototype.process = function() {
             var checky = $('.checky-bar');
 
             if(me.state == 0) {   
-                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
-                    {
-
-                        var myStatus = new Status();
-                        myStatus.notify("Processing...", 1000);
-                        checky.html(notify).show();
-                    } 
+                $.ajax({ type: "POST"
+                       , url: me.href
+                       , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+                       , success: function() {
+                            var myStatus = new Status();
+                            myStatus.notify("Processing...", 1000);
+                            checky.html(notify).show();
+                         } 
                 });
             } else {  
                 //if state is 1 then we're going back to the inbox
-                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
-                    { 
-
-                        var myStatus = new Status();
-                        myStatus.notify("Processing...", 1000);
-                        checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky +"</div>")
-                        .show();
-                    } 
+                $.ajax({ type: "POST"
+                       , url: me.href
+                       , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
+                       , success: function() { 
+                            var myStatus = new Status();
+                            myStatus.notify("Processing...", 1000);
+                            checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky +"</div>").show();
+                        } 
                 });
             }
         });
@@ -279,6 +281,12 @@ InboxStatusChange.prototype.initialize = function() {
         }
 
     })
+}
+
+function checky_bar_message(opts) { 
+    console.log(opts.href);
+    console.log(opts.identifier);
+    console.log(opts.message);
 }
 
 function change_view(opts) { 
