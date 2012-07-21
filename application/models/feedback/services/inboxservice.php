@@ -51,6 +51,8 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback                  
+            Helpers::dump($this->filters);
+
             $this->raw_filters['page_no'] = $this->page_number;
             
             $this->cache->key_name = "inbox:feeds";
