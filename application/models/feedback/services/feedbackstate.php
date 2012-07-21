@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use DB;
+use DB, StdClass;
 
 class FeedbackState {
 
@@ -27,14 +27,18 @@ class FeedbackState {
         $rules = $this->state_change_rules();
         $default_category = $this->default_category();
         $selected_category = $this->selected_category();
-
+        $block_id_query = $this->block_id_query();
+        
+        $result = new StdClass;
         if($this->mode == 'fileas') { 
             echo "Archived Category";
-            return $rules.$this->_sql_statement_attach($selected_category->categoryid);
+            $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
             echo "Default Category";
-            return $rules.$this->_sql_statement_attach($default_category->categoryid);
+            $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
+        $result->query = $block_id_query;
+        return $result;
     }
 
     public function _sql_statement_attach($category_id) {
