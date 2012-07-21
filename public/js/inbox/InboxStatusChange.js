@@ -44,6 +44,7 @@ InboxStateObject.prototype.process = function() {
 
             if(me.state == 0) {   
                 console.log(me.href);
+                console.log(me.state);
                 /* 
                 $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
                        , success: function() {
@@ -56,6 +57,7 @@ InboxStateObject.prototype.process = function() {
             } else {  
                 //if state is 1 then we're going back to the inbox 
                 console.log(me.href);
+                console.log(me.state);
                 /*
                 $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
                       , success: function() { 
@@ -106,7 +108,6 @@ function FeatureStateObject(elem) {
     this.catstate = $(elem).attr('cat-state');
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
-
     this.identifier = $(elem).attr('class');
 }
 FeatureStateObject.prototype = new InboxStateObject();
