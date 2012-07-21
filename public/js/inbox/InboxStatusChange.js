@@ -72,7 +72,7 @@ InboxStateObject.prototype.process = function() {
 
             $.ajax({ type: "POST"
                    , url: me.href
-                   , data: state_date
+                   , data: state_data
                    , success: function() {
                          checky.html(notify).show();
                          var myStatus = new Status();
