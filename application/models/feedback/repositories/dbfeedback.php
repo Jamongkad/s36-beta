@@ -80,9 +80,8 @@ class DBFeedback extends S36DataObject {
     public function pull_feedback_grouped_dates($opts) {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
          
-        $filter_present = array_key_exists('filter', $opts);
         $is_published_filter = false;
-        if($filter_present) {
+        if(array_key_exists('filter', $opts)) {
             if($opts['filter'] == 'published') { 
                 $is_published_filter = true;
             }  
