@@ -46,6 +46,7 @@ InboxStateObject.prototype.process = function() {
             if(mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
                 $(me.elem).css({'background-position': '-60px -34px'});
+                $(me.elem).attr('state', 1);
                 $(me.elem).siblings('.check').removeAttr('style');
                 $(me.elem).siblings('.check').attr('state', 0);
             }
@@ -53,6 +54,7 @@ InboxStateObject.prototype.process = function() {
             if(mode == 'publish') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
                 $(me.elem).css({'background-position': '0px -34px'});
+                $(me.elem).attr('state', 1);
                 $(me.elem).siblings('.feature').removeAttr('style');
                 $(me.elem).siblings('.feature').attr('state', 0);
             }
