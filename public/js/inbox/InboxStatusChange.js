@@ -63,7 +63,8 @@ InboxStateObject.prototype.process = function() {
 
                 change_view(state_view_data); 
             }
-
+            
+            //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
