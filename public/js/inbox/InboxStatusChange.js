@@ -1,6 +1,7 @@
 //abstract base class
 function InboxStateObject() {
     this.baseUrl = $("input[name='baseUrl']").val();
+    this.currentUrl = window.location.pathname;
 }
 
 InboxStateObject.prototype.undo = function() {
@@ -35,7 +36,7 @@ InboxStateObject.prototype.process = function() {
     var is_single = $(me).attr('feedid');
     console.log(is_single);
     console.log(me.mode);
-    console.log(me.baseUrl);
+    console.log(me.currentUrl);
     //TODO: if publish or feature do not animate if in Published Folder animate in Inbox Folder only.
     /* 
     if(is_single) { 
