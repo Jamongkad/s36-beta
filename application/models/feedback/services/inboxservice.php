@@ -15,7 +15,6 @@ class InboxService {
     private $filter_structure = Array(
             'all' => 'all'
           , 'published' => 'published'
-          , 'featured'  => 'featured'
           , 'filed'   => 'filed'
           , 'deleted' => 'deleted'
     );
