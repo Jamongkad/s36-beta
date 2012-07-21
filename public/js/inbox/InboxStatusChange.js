@@ -77,9 +77,9 @@ InboxStateObject.prototype.process = function() {
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
+                checky_bar_message(me);
             }
 
-            checky_bar_message(me);
             //change_state(state_data);
         } else {
             //console.log("Not in Published tab");
