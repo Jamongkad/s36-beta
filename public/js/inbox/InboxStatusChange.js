@@ -30,7 +30,7 @@ InboxStateObject.prototype.undo = function() {
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
         console.log(state_data);
-        //change_state(state_data); 
+        change_state(state_data); 
         e.preventDefault(); 
     });     
 }
