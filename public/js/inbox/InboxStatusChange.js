@@ -178,6 +178,7 @@ function RemoveStateObject(elem) {
     this.elem = elem;
     this.message = "Feedback has been " + "<a href='" +this.baseUrl+ "inbox/deleted'>deleted</a>"; 
     this.mode    = "delete";
+    /*
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
     this.catid  = $(elem).attr('catid');
@@ -185,6 +186,7 @@ function RemoveStateObject(elem) {
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
+    */
 }
 RemoveStateObject.prototype = new InboxStateObject();
 
@@ -199,6 +201,7 @@ function CatPickObject(elem) {
     } 
     this.mode    = "fileas";
     $(elem).parents('div.category-picker-holder').hide();
+    /*
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
     this.catid  = $(elem).attr('catid');
@@ -206,6 +209,7 @@ function CatPickObject(elem) {
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
+    */
 }
 
 CatPickObject.prototype = new InboxStateObject();
@@ -299,7 +303,7 @@ function checky_bar_message(opts) {
     console.log(opts.message);
 
     var check_message = $('.checky-bar');
-    check_message.html().show();
+    check_message.html(opts.message).show();
 }
 
 function change_view(opts) { 
