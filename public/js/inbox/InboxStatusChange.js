@@ -77,7 +77,7 @@ InboxStateObject.prototype.process = function() {
 }
 
 //child implementation classes
-function CheckStateObject(elem) {
+function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
     this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
@@ -90,7 +90,7 @@ function CheckStateObject(elem) {
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
 }
-CheckStateObject.prototype = new InboxStateObject();
+PublishStateObject.prototype = new InboxStateObject();
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
@@ -207,9 +207,10 @@ InboxStatusChange.prototype.initialize = function() {
         var us = $(this);
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
-
+        console.log(identifier);
+        /*
         if(identifier == 'check') {
-            var check = new CheckStateObject(us);
+            var check = new PublishStateObject(us);
             check.process();
             check.undo();
         }
@@ -225,5 +226,6 @@ InboxStatusChange.prototype.initialize = function() {
             remove.process();
             remove.undo();
         }
+        */
     })
 }
