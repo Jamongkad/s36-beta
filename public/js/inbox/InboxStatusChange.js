@@ -76,7 +76,7 @@ InboxStateObject.prototype.process = function() {
               , url: me.href
               , data: state_data
               , success: function() {
-                    checky.html(notify).show();
+                    //checky.html(notify).show();
                     var myStatus = new Status();
                     myStatus.notify("Processing...", 1000);
                 } 
