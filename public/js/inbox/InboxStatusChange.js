@@ -2,6 +2,7 @@
 function InboxStateObject() {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
+    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
 }
 
 InboxStateObject.prototype.undo = function() {
@@ -136,7 +137,6 @@ InboxStateObject.prototype.process = function() {
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
     this.mode    = "publish"; 
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
@@ -147,6 +147,20 @@ function PublishStateObject(elem) {
     this.identifier = $(elem).attr('class');
 }
 PublishStateObject.prototype = new InboxStateObject();
+
+function FeatureStateObject(elem) { 
+    InboxStateObject.apply(this, arguments);
+    this.elem = elem;
+    this.mode    = "feature"; 
+    this.feedid = $(elem).attr('feedid');      
+    this.href   = $(elem).attr('hrefaction'); 
+    this.catid  = $(elem).attr('catid');
+    this.catstate = $(elem).attr('cat-state');
+    this.state  = $(elem).attr('state');
+    this.feeds = {feedid: this.feedid};
+    this.identifier = $(elem).attr('class');
+}
+FeatureStateObject.prototype = new InboxStateObject();
 
 function RemoveStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
