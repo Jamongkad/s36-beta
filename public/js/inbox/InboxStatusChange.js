@@ -80,10 +80,17 @@ InboxStateObject.prototype.process = function() {
             });
         } else {
             console.log("Not in Published tab");
-            $(me.elem).parents('.feedback').fadeOut(350, function() {
-                console.log("pwet");
+            $(me.elem).parents('.feedback').fadeOut(350);
+
+            $.ajax({ 
+                type: "POST"
+              , url: me.href
+              , data: state_data
+              , success: function() {
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000);
+                } 
             });
-            console.log(state_data);
         }
     }
     
