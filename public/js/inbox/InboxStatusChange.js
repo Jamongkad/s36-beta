@@ -77,7 +77,10 @@ InboxStateObject.prototype.process = function() {
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
-                me.message = "feedback returned to inbox";
+                if(mode == 'inbox') {
+                    me.message = "feedback returned to inbox";     
+                }
+ 
                 checky_bar_message(me);
             }
 
