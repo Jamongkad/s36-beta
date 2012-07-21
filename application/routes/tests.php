@@ -318,7 +318,7 @@ return array(
         $config = HTMLPurifier_Config::createDefault();
         $purifier = new HTMLPurifier($config);
         //$clean_html = $purifier->purify();
-        Helpers::dump("<IMG SRC='javascript:alert('XSS');'> <p>Mathew is kewl</p>");
+        Helpers::dump("<IMG SRC=\"javascript:alert('XSS');\"> <p>Mathew is kewl</p>");
     },
 
     //reserved route for Leica and Ryan testing
