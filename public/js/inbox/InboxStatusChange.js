@@ -74,7 +74,7 @@ InboxStateObject.prototype.process = function() {
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
-            change_state(me.href, state_data);
+            //change_state(me.href, state_data);
         }
     }
     
@@ -147,21 +147,6 @@ function PublishStateObject(elem) {
     this.identifier = $(elem).attr('class');
 }
 PublishStateObject.prototype = new InboxStateObject();
-
-function FeatureStateObject(elem) { 
-    InboxStateObject.apply(this, arguments);
-    this.elem = elem;
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
-    this.mode    = "feature"; 
-    this.feedid = $(elem).attr('feedid');      
-    this.href   = $(elem).attr('hrefaction'); 
-    this.catid  = $(elem).attr('catid');
-    this.catstate = $(elem).attr('cat-state');
-    this.state  = $(elem).attr('state');
-    this.feeds = {feedid: this.feedid};
-    this.identifier = $(elem).attr('class');
-}
-FeatureStateObject.prototype = new InboxStateObject();
 
 function RemoveStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
@@ -268,14 +253,6 @@ InboxStatusChange.prototype.initialize = function() {
             check.undo();
         }
         
-        /*
-        if(identifier == 'feature') { 
-            var feature = new FeatureStateObject(us);
-            feature.process();
-            feature.undo();
-        }
-        */
-
         if(identifier == 'remove' || identifier == 'popup-delete') { 
             var remove = new RemoveStateObject(us);
             remove.process();
