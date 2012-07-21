@@ -316,6 +316,10 @@ return array(
 
     'GET /tests/htmlpurifier' => function() { 
         Package::load('HTMLPurifier');
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $clean_html = $purifier->purify("<p>Mathew</p>");
+        Helpers::dump($clean_html);
     },
 
     //reserved route for Leica and Ryan testing
