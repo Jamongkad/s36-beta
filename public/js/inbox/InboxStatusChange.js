@@ -2,7 +2,6 @@
 function InboxStateObject() {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
 }
 
 InboxStateObject.prototype.undo = function() {
@@ -29,7 +28,6 @@ InboxStateObject.prototype.undo = function() {
                });  
         e.preventDefault(); 
     });     
-
 }
 
 InboxStateObject.prototype.process = function() {
@@ -39,8 +37,6 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
-    
-    console.log(mode);
 
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
@@ -140,6 +136,7 @@ InboxStateObject.prototype.process = function() {
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
+    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
     this.mode    = "publish"; 
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
@@ -154,6 +151,7 @@ PublishStateObject.prototype = new InboxStateObject();
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
     this.elem = elem;
+    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
     this.mode    = "feature"; 
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
@@ -264,18 +262,18 @@ InboxStatusChange.prototype.initialize = function() {
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
 
-        if(identifier == 'check' || identifier == 'feature') {
+        if(identifier == 'check') {
             var check = new PublishStateObject(us);
             check.process();
             check.undo();
         }
 
-        if(identifier == 'feature') {
-            var check = new FeatureStateObject(us);
-            check.process();
-            check.undo();
+        if(identifier == 'feature') { 
+            var feature = new FeatureStateObject(us);
+            feature.process();
+            feature.undo();
         }
-        
+
         if(identifier == 'remove' || identifier == 'popup-delete') { 
             var remove = new RemoveStateObject(us);
             remove.process();
