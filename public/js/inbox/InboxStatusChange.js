@@ -47,7 +47,7 @@ InboxStateObject.prototype.process = function() {
     var state_view_data;
 
     if(is_single) { 
-        if(me.currentUrl.match(/published|contacts|filed|modifyfeedback/g)) {
+        if(me.currentUrl.match(/published|contacts/g)) {
             //console.log("In Published tab");                 
             //HTML view transforms
             if(mode == 'feature') {
@@ -145,11 +145,10 @@ function CatPickObject(elem) {
 }
 
 CatPickObject.prototype = new InboxStateObject();
-/*
 CatPickObject.prototype.process = function() {
     var me = this;
     if(me.currentUrl.match(/filed|modifyfeedback/)) {
- 
+        /*
         $.ajax({ type: "POST"
                , url: me.href
                , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
@@ -161,7 +160,7 @@ CatPickObject.prototype.process = function() {
                      myStatus.notify("Processing...", 1000);
                  }
         });
-
+        */
     } else {  
         $(this.elem).parents('.feedback').fadeOut(350, function() {
             var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
@@ -171,7 +170,7 @@ CatPickObject.prototype.process = function() {
             var checky = $('.checky-bar');
 
             if(me.state == 0) {   
-
+                /*
                 $.ajax({ type: "POST"
                        , url: me.href
                        , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
@@ -181,10 +180,10 @@ CatPickObject.prototype.process = function() {
                             checky.html(notify).show();
                          } 
                 });
-
+                */
             } else {  
                 //if state is 1 then we're going back to the inbox
-
+                /*
                 $.ajax({ type: "POST"
                        , url: me.href
                        , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
@@ -194,7 +193,7 @@ CatPickObject.prototype.process = function() {
                             checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky +"</div>").show();
                         } 
                 });
-
+                */
             }
         });
 
@@ -205,7 +204,7 @@ CatPickObject.prototype.process = function() {
         e.preventDefault(); 
     })
 }
-*/
+
 //Factory
 function InboxStatusChange(opts)  {
     this.inbox_controls = opts;    
