@@ -43,27 +43,30 @@ InboxStateObject.prototype.process = function() {
             var checky = $('.checky-bar');
 
             if(me.state == 0) {   
-         
-                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }, success: function() 
-                    {
-                        checky.html(notify).show();
-                        var myStatus = new Status();
-                        myStatus.notify("Processing...", 1000);
-                    } 
+                console.log(me.href);
+                /* 
+                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+                       , success: function() {
+                             checky.html(notify).show();
+                             var myStatus = new Status();
+                             myStatus.notify("Processing...", 1000);
+                         } 
                 });
-        
+                */ 
             } else {  
                 //if state is 1 then we're going back to the inbox 
-                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }, success: function() 
-                    { 
-                        checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
-                        .show();
+                console.log(me.href);
+                /*
+                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
+                      , success: function() { 
+                            checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
+                            .show();
 
-                        var myStatus = new Status();
-                        myStatus.notify("Processing...", 1000);
-                    } 
+                            var myStatus = new Status();
+                            myStatus.notify("Processing...", 1000);
+                        } 
                 });
-      
+                */ 
             }
 
         });
