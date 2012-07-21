@@ -45,12 +45,12 @@ InboxStateObject.prototype.process = function() {
 
             if(mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
-                console.log($(me.elem).siblings('.check'));
+                $(me.elem).siblings('.check').removeAttr('style');
             }
 
             if(mode == 'publish') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
-                console.log($(me.elem).siblings('.feature'));
+                $(me.elem).siblings('.feature').removeAttr('style');
             }
 
             if(mode == 'inbox') {
