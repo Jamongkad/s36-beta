@@ -71,14 +71,15 @@ InboxStateObject.prototype.process = function() {
 
             console.log(state_data);
 
-            $.ajax({ type: "POST"
-                   , url: me.href
-                   , data: state_data
-                   , success: function() {
-                         checky.html(notify).show();
-                         var myStatus = new Status();
-                         myStatus.notify("Processing...", 1000);
-                     } 
+            $.ajax({ 
+                type: "POST"
+              , url: me.href
+              , data: state_data
+              , success: function() {
+                    checky.html(notify).show();
+                    var myStatus = new Status();
+                    myStatus.notify("Processing...", 1000);
+                } 
             });
         } else {
             console.log("Not in Published tab");
