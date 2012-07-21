@@ -68,7 +68,7 @@ InboxStateObject.prototype.process = function() {
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
-
+            /*
             $.ajax({ 
                 type: "POST"
               , url: me.href
@@ -78,10 +78,12 @@ InboxStateObject.prototype.process = function() {
                     myStatus.notify("Processing...", 1000);
                 } 
             });
+            */
+            change_state(me.href, state_data);
         } else {
             console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
-
+            /*
             $.ajax({ 
                 type: "POST"
               , url: me.href
@@ -91,6 +93,8 @@ InboxStateObject.prototype.process = function() {
                     myStatus.notify("Processing...", 1000);
                 } 
             });
+            */
+            change_state(me.href, state_data);
         }
     }
     
@@ -304,4 +308,16 @@ function switch_to(opts) {
     $(opts.elem).attr('state', 1);
     $(opts.elem).siblings(opts.sibling).removeAttr('style');
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
+}
+
+function change_state(href, state_data) { 
+    $.ajax({ 
+        type: "POST"
+      , url: href
+      , data: state_data
+      , success: function() {
+            var myStatus = new Status();
+            myStatus.notify("Processing...", 1000);
+        } 
+    });
 }
