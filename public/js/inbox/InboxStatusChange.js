@@ -44,12 +44,21 @@ InboxStateObject.prototype.process = function() {
             */
             console.log(me.state);
             console.log("In Published tab");    
-            if(me.mode == 'feature') {
+
+            var mode = (me.state == 1) ? "inbox" : me.mode;
+
+            if(mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
             }
 
-            if(me.mode == 'publish') {
+            if(mode == 'publish') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
+            }
+
+            if(mode == 'inbox') {
+                $(me.elem).parents('.feedback').fadeOut(350, function() {
+                    console.log("pwet");
+                });
             }
             
         } else {
