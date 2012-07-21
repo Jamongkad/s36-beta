@@ -5,7 +5,6 @@ if(!preg_match('~inbox/deleted/all~', Request::uri(), $matches)):?>
     <?
     $links = Array(
         'none' => '-'
-      //, 'inbox' => 'Inbox'
       , 'publish' => 'Publish'
       , 'feature' => 'Feature'
       , 'delete' => 'Delete'
@@ -13,9 +12,6 @@ if(!preg_match('~inbox/deleted/all~', Request::uri(), $matches)):?>
 
     if(preg_match_all('~inbox/published~', Request::uri(), $matches)) {
         unset($links['publish']);     
-    }
-
-    if(preg_match_all('~inbox/featured~', Request::uri(), $matches)) {
         unset($links['feature']);     
     }
 

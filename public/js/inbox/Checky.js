@@ -80,9 +80,6 @@ Checky.prototype.init = function() {
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
                 if(collection.length > 0) { 
-                    console.log(collection);
-                    console.log($(this).attr('hrefaction'));
-                    /*
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -113,13 +110,12 @@ Checky.prototype.init = function() {
                             , 'text-align': 'center'
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
-                            }).html(message).show();
+                          }).html(message).show();
 
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
                        }
                     });
-                    */
                 }
 
             }
