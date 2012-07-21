@@ -66,7 +66,8 @@ class FeedbackState {
     public function block_id_query() { 
 
         foreach($this->block_id as $k => $id) {
-            Helpers::dump($k+1."-".$id['feedid']);
+            Helpers::dump($k+1);
+            Helpers::dump($id['feedid']);
         }
 
         return implode(',', array_fill(0, count($this->block_id), '?'));
