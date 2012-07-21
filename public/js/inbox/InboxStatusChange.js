@@ -262,17 +262,19 @@ InboxStatusChange.prototype.initialize = function() {
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
 
-        if(identifier == 'check') {
+        if(identifier == 'check' || identifier == 'feature') {
             var check = new PublishStateObject(us);
             check.process();
             check.undo();
         }
-
+        
+        /*
         if(identifier == 'feature') { 
             var feature = new FeatureStateObject(us);
             feature.process();
             feature.undo();
         }
+        */
 
         if(identifier == 'remove' || identifier == 'popup-delete') { 
             var remove = new RemoveStateObject(us);
