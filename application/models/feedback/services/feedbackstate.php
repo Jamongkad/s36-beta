@@ -17,7 +17,7 @@ class FeedbackState {
 
     private $category_vars = Array('categoryId', 'intName', 'name');
 
-    public function __construct($mode, $block_id, $company_id, $category_id) {
+    public function __construct($mode, $block_id, $company_id, $category_id=False) {
         $this->mode = $mode;     
         $this->block_id    = $block_id;
         $this->company_id  = $company_id;

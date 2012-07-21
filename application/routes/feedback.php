@@ -199,7 +199,10 @@ return array(
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feed_obj = Array('feedid' => $id);
-        $feedback->_toggle_multiple('delete', Array($feed_obj), S36Auth::user()->companyid);
+        //$feedback->_toggle_multiple('delete', Array($feed_obj), S36Auth::user()->companyid);
+        $feedbackstate = new Feedback\Services\FeedbackState('delete', Array($feed_obj), S36Auth::user()->companyid);
+        $feedbackstate->change_state();
+
         return Redirect::to('inbox/deleted');  
     },
 
