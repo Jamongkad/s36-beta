@@ -318,7 +318,7 @@ return array(
         Package::load('HTMLPurifier');
         $config = HTMLPurifier_Config::createDefault();
         $purifier = new HTMLPurifier($config);
-        $clean_html = $purifier->purify("<p>Mathew</p>");
+        $clean_html = $purifier->purify("<IMG SRC='javascript:alert('XSS');'>");
         Helpers::dump($clean_html);
     },
 
