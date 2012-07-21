@@ -1,5 +1,5 @@
 //abstract base class
-function InboxStateObject() {
+function InboxStateObject(elem) {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
     this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
