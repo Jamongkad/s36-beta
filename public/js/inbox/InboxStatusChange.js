@@ -37,8 +37,10 @@ InboxStateObject.prototype.process = function() {
     console.log(is_single);
     console.log(me.mode);
     console.log(me.currentUrl);
+
     var published_tab = me.currentUrl.match(/published|contacts/g);
     if(published_tab) {
+        console.log(me.elem);
         console.log("In Published tab");    
     } else {
         console.log("Not in Published tab");
