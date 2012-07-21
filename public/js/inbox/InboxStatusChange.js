@@ -23,10 +23,13 @@ InboxStateObject.prototype.undo = function() {
         var undo_mode = $('.inbox-state').val();
 
         var current_catid = me.elem.attr('catid');
+        var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid}
         var sec = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
+       
+        console.log(state_data);
         /*
         $.ajax({  type: "POST"
                 , url: href
@@ -136,10 +139,10 @@ CatPickObject.prototype.process = function() {
 
     if(is_single) { 
         if(me.currentUrl.match(/filed|modifyfeedback/)) {
-            console.log(state_data);
+            //console.log(state_data);
             change_state(state_data);
         } else { 
-            console.log(state_data);
+            //console.log(state_data);
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
             change_state(state_data); 
