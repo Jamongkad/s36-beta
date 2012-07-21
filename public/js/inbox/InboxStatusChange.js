@@ -149,15 +149,6 @@ function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
     this.mode    = "publish"; 
-    /*
-    this.feedid = $(elem).attr('feedid');      
-    this.href   = $(elem).attr('hrefaction'); 
-    this.catid  = $(elem).attr('catid');
-    this.catstate = $(elem).attr('cat-state');
-    this.state  = $(elem).attr('state');
-    this.feeds = {feedid: this.feedid};
-    this.identifier = $(elem).attr('class');
-    */
 }
 PublishStateObject.prototype = new InboxStateObject();
 
@@ -165,15 +156,6 @@ function FeatureStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem;
     this.mode    = "feature"; 
-    /*
-    this.feedid = $(elem).attr('feedid');      
-    this.href   = $(elem).attr('hrefaction'); 
-    this.catid  = $(elem).attr('catid');
-    this.catstate = $(elem).attr('cat-state');
-    this.state  = $(elem).attr('state');
-    this.feeds = {feedid: this.feedid};
-    this.identifier = $(elem).attr('class');
-    */
 }
 FeatureStateObject.prototype = new InboxStateObject();
 
@@ -182,15 +164,6 @@ function RemoveStateObject(elem) {
     this.elem = elem;
     this.message = "Feedback has been " + "<a href='" +this.baseUrl+ "inbox/deleted'>deleted</a>"; 
     this.mode    = "delete";
-    /*
-    this.feedid = $(elem).attr('feedid');      
-    this.href   = $(elem).attr('hrefaction'); 
-    this.catid  = $(elem).attr('catid');
-    this.catstate = $(elem).attr('cat-state');
-    this.state  = $(elem).attr('state');
-    this.feeds = {feedid: this.feedid};
-    this.identifier = $(elem).attr('class');
-    */
 }
 RemoveStateObject.prototype = new InboxStateObject();
 
