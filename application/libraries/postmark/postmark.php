@@ -1,5 +1,4 @@
-<?php namespace PostMark;
-	
+<?php namespace PostMark;	
 	/**
 	 * This is a simple library for sending emails with Postmark created by Matthew Loberg (http://mloberg.com)
 	 */	

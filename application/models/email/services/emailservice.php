@@ -1,6 +1,6 @@
 <?php namespace Email\Services;
-use Email\Entities\Types\EmailData;
 
+use Email\Entities\Types\EmailData;
 use Email\Entities\NewFeedbackSubmission;
 use Email\Entities\PublishedFeedback;
 use Email\Entities\RequestFeedback;

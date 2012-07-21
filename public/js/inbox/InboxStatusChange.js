@@ -34,14 +34,13 @@ InboxStateObject.prototype.process = function() {
 
     var me = this; 
     var is_single = $(me).attr('feedid');
-    var published_tab = me.currentUrl.match(/published|contacts/g);
     var mode = (me.state == 1) ? "inbox" : me.mode;
-    var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
+    var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
 
     if(is_single) { 
-        if(published_tab) {
-            console.log("In Published tab");                 
+        if(me.currentUrl.match(/published|contacts/g)) {
+            //console.log("In Published tab");                 
             //HTML view transforms
             if(mode == 'feature') {
                 state_view_data = {
@@ -51,7 +50,7 @@ InboxStateObject.prototype.process = function() {
                   , 'sibling': '.check'
                 };
 
-                switch_to(state_view_data); 
+                change_view(state_view_data); 
             }
 
             if(mode == 'publish') {
@@ -62,38 +61,17 @@ InboxStateObject.prototype.process = function() {
                   , 'sibling': '.feature'
                 };
 
-                switch_to(state_view_data); 
+                change_view(state_view_data); 
             }
 
             if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
-            /*
-            $.ajax({ 
-                type: "POST"
-              , url: me.href
-              , data: state_data
-              , success: function() {
-                    var myStatus = new Status();
-                    myStatus.notify("Processing...", 1000);
-                } 
-            });
-            */
-            change_state(me.href, state_data);
+
+            change_state(state_data);
         } else {
-            console.log("Not in Published tab");
+            //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
-            /*
-            $.ajax({ 
-                type: "POST"
-              , url: me.href
-              , data: state_data
-              , success: function() {
-                    var myStatus = new Status();
-                    myStatus.notify("Processing...", 1000);
-                } 
-            });
-            */
             change_state(me.href, state_data);
         }
     }
@@ -302,7 +280,7 @@ InboxStatusChange.prototype.initialize = function() {
     })
 }
 
-function switch_to(opts) { 
+function change_view(opts) { 
     $(opts.elem).parents('.feedback').css({'background-color': opts.color});
     $(opts.elem).css({'background-position': opts.position});
     $(opts.elem).attr('state', 1);
@@ -310,10 +288,10 @@ function switch_to(opts) {
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
 
-function change_state(href, state_data) { 
+function change_state(state_data) { 
     $.ajax({ 
         type: "POST"
-      , url: href
+      , url: state_data.href
       , data: state_data
       , success: function() {
             var myStatus = new Status();
