@@ -60,12 +60,10 @@ InboxStateObject.prototype.process = function() {
             }
 
             if(mode == 'inbox') {
-                $(me.elem).parents('.feedback').fadeOut(350, function() {
-                    console.log("pwet");
-                });
+                $(me.elem).parents('.feedback').fadeOut(350);
             }
 
-            var state_data = {"mode": mode ,"feed_ids": [me.feeds], "cat_id": me.catid }
+            var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
             console.log(state_data);
         } else {
             console.log("Not in Published tab");
