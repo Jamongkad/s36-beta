@@ -2,6 +2,7 @@
 function InboxStateObject() {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
+    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
 }
 
 InboxStateObject.prototype.undo = function() {
@@ -74,7 +75,7 @@ InboxStateObject.prototype.process = function() {
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
-            //change_state(me.href, state_data);
+            //change_state(state_data);
         }
     }
     
@@ -136,7 +137,7 @@ InboxStateObject.prototype.process = function() {
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
+    //this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
     this.mode    = "publish"; 
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
@@ -151,7 +152,7 @@ PublishStateObject.prototype = new InboxStateObject();
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
     this.elem = elem;
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
+    //this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
     this.mode    = "feature"; 
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
