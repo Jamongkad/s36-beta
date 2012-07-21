@@ -10,7 +10,7 @@ class FeedbackState {
       , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0'
       , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0'
       , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0, isSticked = 0, isArchived = 0, indLock = 0'
-      , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'
+      , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isArchived = 1'
       , 'flag'    => 'SET isFlagged = 1'
     );
 
@@ -23,19 +23,18 @@ class FeedbackState {
         $this->category_id = $category_id;
     } 
 
-    public function set_data() {        
-        /*
-        $lookup = Array(
-            'inbox'   => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
-          , 'restore' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0, isFlagged = 0, isArchived = 0, indLock = 1, categoryId = '.$categoryId.''
-          , 'publish' => 'SET isDeleted = 0, isPublished = 1, isFeatured = 0, isArchived = 0, categoryId = '.$categoryId.''
-          , 'feature' => 'SET isDeleted = 0, isPublished = 0, isFeatured = 1, isArchived = 0, categoryId = '.$categoryId.''
-          , 'delete'  => 'SET isDeleted = 1, isPublished = 0, isFeatured = 0, isFlagged = 0
-                                           , isSticked = 0, isArchived = 0, indLock = 0, categoryId = '.$categoryId.''
-          , 'fileas'  => 'SET isDeleted = 0, isPublished = 0, isFeatured = 0'.$extra
-          , 'flag'    => 'SET isFlagged = 1'
-        );
-        */
+    public function perform() {        
+        $rules = $this->state_change_rules();
+        $default_category = $this->default_category();
+        $selected_category = $this->selected_category();
+
+        if($this->mode == 'fileas') { 
+            echo "Archived Category";
+            return $rules.", categoryId = ".$selected_category->categoryid;
+        } else { 
+            echo "Default Category";
+            return $rules.", categoryId = ".$default_category->categoryid;
+        }
     }
 
     public function default_category() { 

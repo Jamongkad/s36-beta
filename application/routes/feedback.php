@@ -169,10 +169,10 @@ return array(
         //TODO: Here's a suggestion mothafucka how about inferring the category name by doing a query against the DB??
         //What is catstate truly for? To determine feedback state placement. THERE MUST BE A BETTER WAY! original approach is hacky as hell.
         //quicky prototype
-        $category = DB::Table('Category')->where('categoryId', '=', $cat_id)
-                                         ->first(Array('categoryId', 'intName', 'name'));
         print_r($category);
         print_r($catstate);
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
+        Helpers::dump($feedbackstate->perform());
         /*
         if($catstate == "default") {
             //echo "Default Category";
