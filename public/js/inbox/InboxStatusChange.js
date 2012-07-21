@@ -65,7 +65,7 @@ InboxStateObject.prototype.process = function() {
                 switch_to(state_view_data); 
             }
 
-            if(mode == 'inbox') {
+            if(mode == 'inbox' || mode == 'delete') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
             console.log(state_data);
