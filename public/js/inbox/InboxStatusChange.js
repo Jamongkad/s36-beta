@@ -37,46 +37,35 @@ InboxStateObject.prototype.process = function() {
     var published_tab = me.currentUrl.match(/published|contacts/g);
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
+    var state_view_data;
 
     if(is_single) { 
         if(published_tab) {
             console.log("In Published tab");                 
             //HTML view transforms
             if(mode == 'feature') {
-                /*
-                $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
-                $(me.elem).css({'background-position': '-60px -34px'});
-                $(me.elem).attr('state', 1);
-                $(me.elem).siblings('.check').removeAttr('style');
-                $(me.elem).siblings('.check').attr('state', 0);
-                */
-                switch_to({
+                state_view_data = {
                     'elem': me.elem
                   , 'color': '#FFFFE0'
                   , 'position': '-60px -34px'
                   , 'sibling': '.check'
-                });
+                };
             }
 
             if(mode == 'publish') {
-                /*
-                $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
-                $(me.elem).css({'background-position': '0px -34px'});
-                $(me.elem).attr('state', 1);
-                $(me.elem).siblings('.feature').removeAttr('style');
-                $(me.elem).siblings('.feature').attr('state', 0);
-               */
-                switch_to({
+                state_view_data = {
                     'elem': me.elem
                   , 'color': '#FFFFFF'
                   , 'position': '0px -34px'
                   , 'sibling': '.feature'
-                });
+                };
             }
 
             if(mode == 'inbox') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
+
+            switch_to(state_view_data); 
             console.log(state_data);
         } else {
             console.log("Not in Published tab");
