@@ -23,7 +23,7 @@ InboxStateObject.prototype.undo = function() {
         var undo_mode = $('.inbox-state').val();
 
         var current_catid = me.elem.attr('catid');
-        var sec       = 350;
+        var sec = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
