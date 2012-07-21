@@ -314,7 +314,7 @@ return array(
         $feedbackstate->change_state();
     },
 
-    'GET /test/htmlpurifier' => function() { 
+    'GET /tests/htmlpurifier' => function() { 
         Package::load('HTMLPurifier');
     },
 
