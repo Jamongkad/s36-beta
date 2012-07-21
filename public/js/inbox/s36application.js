@@ -45,10 +45,7 @@ jQuery(function($) {
         if(!deselect_this) {
             $(this).addClass('Matched');
         }
-
-        var catpick = new CatPickObject($(this));
-        //console.log(catpick.undo());
-
+ 
         var catpick = new CatPickObject($(this));
         catpick.process();
         catpick.undo();
