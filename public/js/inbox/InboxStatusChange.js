@@ -29,6 +29,7 @@ InboxStateObject.prototype.undo = function() {
                });  
         e.preventDefault(); 
     });     
+
 }
 
 InboxStateObject.prototype.process = function() {
@@ -263,6 +264,12 @@ InboxStatusChange.prototype.initialize = function() {
 
         if(identifier == 'check' || identifier == 'feature') {
             var check = new PublishStateObject(us);
+            check.process();
+            check.undo();
+        }
+
+        if(identifier == 'feature') {
+            var check = new FeatureStateObject(us);
             check.process();
             check.undo();
         }
