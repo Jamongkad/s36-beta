@@ -2,7 +2,7 @@
 function InboxStateObject(elem) {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
-    this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
+    this.message = "Feedback is broadcasted and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
     this.catid  = $(elem).attr('catid');
@@ -46,8 +46,6 @@ InboxStateObject.prototype.process = function() {
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
 
-    console.log(me);
-
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
             //console.log("In Published tab");                 
@@ -83,63 +81,17 @@ InboxStateObject.prototype.process = function() {
  
                 checky_bar_message(me);
             }
-
+            console.log(state_data) ;
             //change_state(state_data);
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
             //change_state(state_data);
+            console.log(state_data) ;
         }
     }
-    
-    //TODO: if in Published Folder do not animate else animate in Inbox Folder only.
-    /* 
-    if(is_single) { 
-        $(me.elem).parents('.feedback').fadeOut(350, function() {
-            var undo       = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
-            var close_checky = "  <a class='close-checky' href='#'>Close</a>";
-            var notify_msg = me.message + undo + close_checky; 
-            var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
-            var checky = $('.checky-bar');
-
-            if(me.state == 0) {   
-                console.log(me.href);
-                console.log(me.state);
-
-                $.ajax({ type: "POST"
-                       , url: me.href
-                       , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid }
-                       , success: function() {
-                             checky.html(notify).show();
-                             var myStatus = new Status();
-                             myStatus.notify("Processing...", 1000);
-                         } 
-                });
-
-            } else {  
-                //if state is 1 then we're going back to the inbox 
-                console.log(me.href);
-                console.log(me.state);
-
-                $.ajax({ type: "POST"
-                      , url: me.href
-                      , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
-                      , success: function() { 
-                            checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
-                            .show();
-
-                            var myStatus = new Status();
-                            myStatus.notify("Processing...", 1000);
-                        } 
-                });
-
-            }
-
-        });
-    }
-    */
-    
+     
     $(document).delegate('a.close-checky', 'click', function(e) { 
         $(this).parents('.check').remove();
         e.preventDefault(); 
@@ -305,3 +257,51 @@ function change_state(state_data) {
         } 
     });
 }
+
+
+//TODO: if in Published Folder do not animate else animate in Inbox Folder only.
+    /* 
+    if(is_single) { 
+        $(me.elem).parents('.feedback').fadeOut(350, function() {
+            var undo       = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
+            var close_checky = "  <a class='close-checky' href='#'>Close</a>";
+            var notify_msg = me.message + undo + close_checky; 
+            var notify     = $('<div/>').addClass(me.identifier).html(notify_msg);
+            var checky = $('.checky-bar');
+
+            if(me.state == 0) {   
+                console.log(me.href);
+                console.log(me.state);
+
+                $.ajax({ type: "POST"
+                       , url: me.href
+                       , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid }
+                       , success: function() {
+                             checky.html(notify).show();
+                             var myStatus = new Status();
+                             myStatus.notify("Processing...", 1000);
+                         } 
+                });
+
+            } else {  
+                //if state is 1 then we're going back to the inbox 
+                console.log(me.href);
+                console.log(me.state);
+
+                $.ajax({ type: "POST"
+                      , url: me.href
+                      , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
+                      , success: function() { 
+                            checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
+                            .show();
+
+                            var myStatus = new Status();
+                            myStatus.notify("Processing...", 1000);
+                        } 
+                });
+
+            }
+
+        });
+    }
+    */
