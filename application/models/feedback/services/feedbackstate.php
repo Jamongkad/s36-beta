@@ -25,16 +25,16 @@ class FeedbackState {
 
     public function perform() {        
         $rules = $this->state_change_rules();
-        $default_category = $this->default_category();
-        $selected_category = $this->selected_category();
         $block_id_query = $this->block_id_query();
         
         $result = new StdClass;
         if($this->mode == 'fileas') { 
             echo "Archived Category";
+            $selected_category = $this->selected_category();
             $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
             echo "Default Category";
+            $default_category = $this->default_category();
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
         $result->query = $block_id_query;

@@ -311,11 +311,13 @@ return array(
         $feed_obj_2 = Array('feedid' => 500);
 
         $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1, $feed_obj_2), 1, 4);
+        /*
         Helpers::dump($feedbackstate->default_category());
         Helpers::dump($feedbackstate->selected_category());
         Helpers::dump($feedbackstate->state_change_rules());
         Helpers::dump($feedbackstate->block_id_query());
-        //Helpers::dump($feedbackstate);
+        */
+        Helpers::dump($feedbackstate->perform());
     },
 
     //reserved route for Leica and Ryan testing
