@@ -30,16 +30,7 @@ InboxStateObject.prototype.undo = function() {
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
         console.log(state_data);
-        /*
-        $.ajax({  type: "POST"
-                , url: href
-                , data: {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "catstate": true} 
-                , success: function () {
-                    var myStatus = new Status();
-                    myStatus.notify("Processing...", 1000); 
-                  }
-               });  
-        */
+        //change_state(state_data); 
         e.preventDefault(); 
     });     
 }
@@ -52,9 +43,9 @@ InboxStateObject.prototype.process = function() {
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
 
+    //console.log(state_data);
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
-            console.log(state_data);
             //HTML view transforms
             if(mode == 'feature') {
                 state_view_data = {
@@ -86,12 +77,11 @@ InboxStateObject.prototype.process = function() {
                 } 
                 checky_bar_message(me);
             }
-            //change_state(state_data);
+            change_state(state_data);
         } else {
-            console.log(state_data);
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
-            //change_state(state_data);
+            change_state(state_data);
         }
     }
      
@@ -136,13 +126,13 @@ CatPickObject.prototype.process = function() {
     var is_single = $(me).attr('feedid');
     var mode = me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
-
+    //console.log(state_data);
+    //
     if(is_single) { 
-        if(me.currentUrl.match(/filed|modifyfeedback/)) {
-            //console.log(state_data);
+        if(me.currentUrl.match(/filed|modifyfeedback/g)) {
+
             change_state(state_data);
-        } else { 
-            //console.log(state_data);
+        } else {  
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
             change_state(state_data); 
