@@ -3,6 +3,13 @@ function InboxStateObject() {
     this.baseUrl = $("input[name='baseUrl']").val();
     this.currentUrl = window.location.pathname;
     this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
+    this.feedid = $(elem).attr('feedid');      
+    this.href   = $(elem).attr('hrefaction'); 
+    this.catid  = $(elem).attr('catid');
+    this.catstate = $(elem).attr('cat-state');
+    this.state  = $(elem).attr('state');
+    this.feeds = {feedid: this.feedid};
+    this.identifier = $(elem).attr('class');
 }
 
 InboxStateObject.prototype.undo = function() {
@@ -137,8 +144,8 @@ InboxStateObject.prototype.process = function() {
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
     this.elem = elem; 
-    //this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/published/all'>Published Folder</a>";
     this.mode    = "publish"; 
+    /*
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
     this.catid  = $(elem).attr('catid');
@@ -146,14 +153,15 @@ function PublishStateObject(elem) {
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
+    */
 }
 PublishStateObject.prototype = new InboxStateObject();
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
     this.elem = elem;
-    //this.message = "Feedback has been published and moved to " + "<a href='" +this.baseUrl+ "inbox/featured/all'>Featured Folder</a>"; 
     this.mode    = "feature"; 
+    /*
     this.feedid = $(elem).attr('feedid');      
     this.href   = $(elem).attr('hrefaction'); 
     this.catid  = $(elem).attr('catid');
@@ -161,6 +169,7 @@ function FeatureStateObject(elem) {
     this.state  = $(elem).attr('state');
     this.feeds = {feedid: this.feedid};
     this.identifier = $(elem).attr('class');
+    */
 }
 FeatureStateObject.prototype = new InboxStateObject();
 
@@ -288,6 +297,9 @@ function checky_bar_message(opts) {
     console.log(opts.href);
     console.log(opts.identifier);
     console.log(opts.message);
+
+    var check_message = $('.checky-bar');
+    check_message.html().show();
 }
 
 function change_view(opts) { 
