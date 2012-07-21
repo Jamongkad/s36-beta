@@ -84,7 +84,7 @@ class DBFeedback extends S36DataObject {
         if($filter_present) {
             Helpers::dump($opts['filter']);
         } 
-       
+        $is_published_filter = false;  
         if($is_published_filter) {
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
                                  AND Feedback.isDeleted = 0";
