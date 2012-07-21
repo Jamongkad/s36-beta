@@ -236,7 +236,7 @@ function checky_bar_message(opts) {
     var close_checky = "  <a class='close-checky' href='#'>Close</a>";
     var notify_msg = opts.message + undo + close_checky; 
 
-    var notify  = $('<div/>').addClass(opts.identifier).html(notify_msg);
+    var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
 
     check_message.html(notify).show();
 }
