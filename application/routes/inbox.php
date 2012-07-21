@@ -23,6 +23,7 @@ return array(
         );
 
         $inbox->set_filters($filters);
+        Helpers::dump($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
 
@@ -34,8 +35,8 @@ return array(
         
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
-
         $category = new DBCategory;
+
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination

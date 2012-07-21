@@ -19,10 +19,10 @@ class FeedbackState {
 
     public function __construct($mode, $block_id, $company_id, $category_id) {
         $this->mode = $mode;     
-        $this->block_id = $block_id;
-        $this->company_id = $company_id;
+        $this->block_id    = $block_id;
+        $this->company_id  = $company_id;
         $this->category_id = $category_id;
-        $this->feedback = new DBFeedback;
+        $this->feedback    = new DBFeedback;
     } 
 
     public function change_state() {        
