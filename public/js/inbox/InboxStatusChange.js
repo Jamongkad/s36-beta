@@ -33,7 +33,8 @@ InboxStateObject.prototype.process = function() {
 
     var me = this; 
     var is_single = $(me).attr('feedid');
-    
+    console.log(is_single);
+    /* 
     if(is_single) { 
         $(me.elem).parents('.feedback').fadeOut(350, function() {
             var undo       = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
@@ -45,7 +46,7 @@ InboxStateObject.prototype.process = function() {
             if(me.state == 0) {   
                 console.log(me.href);
                 console.log(me.state);
-                /* 
+
                 $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
                        , success: function() {
                              checky.html(notify).show();
@@ -53,12 +54,12 @@ InboxStateObject.prototype.process = function() {
                              myStatus.notify("Processing...", 1000);
                          } 
                 });
-                */ 
+
             } else {  
                 //if state is 1 then we're going back to the inbox 
                 console.log(me.href);
                 console.log(me.state);
-                /*
+
                 $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
                       , success: function() { 
                             checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
@@ -68,11 +69,12 @@ InboxStateObject.prototype.process = function() {
                             myStatus.notify("Processing...", 1000);
                         } 
                 });
-                */ 
+
             }
 
         });
     }
+    */
     
     $(document).delegate('a.close-checky', 'click', function(e) { 
         $(this).parents('.check').remove();
