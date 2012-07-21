@@ -35,6 +35,8 @@ InboxStateObject.prototype.process = function() {
     var is_single = $(me).attr('feedid');
     console.log(is_single);
     console.log(me.mode);
+    console.log(me.baseUrl);
+    //TODO: if publish or feature do not animate if in Published Folder animate in Inbox Folder only.
     /* 
     if(is_single) { 
         $(me.elem).parents('.feedback').fadeOut(350, function() {
