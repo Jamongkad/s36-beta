@@ -46,6 +46,8 @@ InboxStateObject.prototype.process = function() {
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
 
+    console.log(me);
+
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
             //console.log("In Published tab");                 
@@ -82,6 +84,7 @@ InboxStateObject.prototype.process = function() {
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
+            checky_bar_message(me);
             //change_state(state_data);
         }
     }
