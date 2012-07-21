@@ -208,9 +208,7 @@ InboxStatusChange.prototype.initialize = function() {
         var us = $(this);
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
-        console.log(identifier);
-        console.log(us);
-        /*
+
         if(identifier == 'check') {
             var check = new PublishStateObject(us);
             check.process();
@@ -228,6 +226,6 @@ InboxStatusChange.prototype.initialize = function() {
             remove.process();
             remove.undo();
         }
-        */
+
     })
 }
