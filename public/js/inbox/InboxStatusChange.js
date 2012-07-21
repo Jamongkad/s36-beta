@@ -35,14 +35,12 @@ InboxStateObject.prototype.process = function() {
     var me = this; 
     var is_single = $(me).attr('feedid');
     var published_tab = me.currentUrl.match(/published|contacts/g);
+    var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
 
     if(is_single) { 
         if(published_tab) {
-            console.log("In Published tab");    
-
-            var mode = (me.state == 1) ? "inbox" : me.mode;
-             
+            console.log("In Published tab");                 
             //HTML view transforms
             if(mode == 'feature') {
                 /*
