@@ -77,8 +77,7 @@ InboxStateObject.prototype.process = function() {
                 $(me.elem).parents('.feedback').fadeOut(350);
                 if(mode == 'inbox') {
                     me.message = "feedback returned to inbox";     
-                }
- 
+                } 
                 checky_bar_message(me);
             }
             console.log(state_data);
@@ -156,6 +155,8 @@ CatPickObject.prototype.process = function() {
         if(me.currentUrl.match(/filed|modifyfeedback/)) {
             console.log(state_data);
         } else { 
+            checky_bar_message(me);
+            $(me.elem).parents('.feedback').fadeOut(350);
             console.log(state_data);
         }
     }
