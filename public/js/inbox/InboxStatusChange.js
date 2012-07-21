@@ -230,12 +230,14 @@ InboxStatusChange.prototype.initialize = function() {
 }
 
 function checky_bar_message(opts) { 
-    console.log(opts.href);
-    console.log(opts.identifier);
-    console.log(opts.message);
-
     var check_message = $('.checky-bar');
-    check_message.html(opts.message).show();
+    var undo = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
+    var close_checky = "  <a class='close-checky' href='#'>Close</a>";
+    var notify_msg = me.message + undo + close_checky; 
+
+    var notify  = $('<div/>').addClass(me.identifier).html(notify_msg);
+
+    check_message.html(notify).show();
 }
 
 function change_view(opts) { 
