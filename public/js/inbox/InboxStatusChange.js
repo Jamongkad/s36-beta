@@ -231,11 +231,12 @@ InboxStatusChange.prototype.initialize = function() {
 
 function checky_bar_message(opts) { 
     var check_message = $('.checky-bar');
-    var undo = "  <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
-    var close_checky = "  <a class='close-checky' href='#'>Close</a>";
-    var notify_msg = me.message + undo + close_checky; 
 
-    var notify  = $('<div/>').addClass(me.identifier).html(notify_msg);
+    var undo = "  <a class='undo' hrefaction='" + opts.href + "' href='#' undo-type='" + opts.identifier + "'>Undo</a>";
+    var close_checky = "  <a class='close-checky' href='#'>Close</a>";
+    var notify_msg = opts.message + undo + close_checky; 
+
+    var notify  = $('<div/>').addClass(opts.identifier).html(notify_msg);
 
     check_message.html(notify).show();
 }
