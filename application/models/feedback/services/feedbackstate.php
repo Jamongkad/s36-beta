@@ -25,7 +25,12 @@ class FeedbackState {
         $this->feedback = new DBFeedback;
     } 
 
-    public function perform() {        
+    public function change_state() {        
+        $feed_obj = $this->feedback_state_obj();
+        return $this->feedback->_toggle_multiple($feed_obj);
+    }
+
+    public function feedback_state_obj() {
         $rules = $this->state_change_rules();
         
         $result = new StdClass;
@@ -39,7 +44,7 @@ class FeedbackState {
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
         $result->query = $this->block_id_query();
-        return $result;
+        return $result;     
     }
 
     public function _sql_statement_attach($category_id) {

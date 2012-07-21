@@ -166,12 +166,8 @@ return array(
         $catstate   = Input::get('catstate');
         $mode       = Input::get('mode');         
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
-        //TODO: Here's a suggestion mothafucka how about inferring the category name by doing a query against the DB??
-        //What is catstate truly for? To determine feedback state placement. THERE MUST BE A BETTER WAY! original approach is hacky as hell.
-        //quicky prototype
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
-        //Helpers::dump($feedbackstate->perform());
-        $feedback->_toggle_multiple($feedbackstate->perform());
+        Helpers::dump($feedbackstate->change_state());
         /*
         if($catstate == "default") {
             //echo "Default Category";

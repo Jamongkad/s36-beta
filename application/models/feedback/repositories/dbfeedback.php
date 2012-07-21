@@ -495,7 +495,6 @@ class DBFeedback extends S36DataObject {
         foreach($feedbackstate->block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
         }
-
         return $sth->execute();       
     }
 
