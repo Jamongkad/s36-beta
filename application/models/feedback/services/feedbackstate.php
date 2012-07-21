@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use DB, StdClass;
+use DB, StdClass, Helpers;
 
 class FeedbackState {
 
@@ -64,6 +64,11 @@ class FeedbackState {
     }
 
     public function block_id_query() { 
+
+        foreach($this->block_id as $k => $id) {
+            Helpers::dump($k+1."-".$id['feedid']);
+        }
+
         return implode(',', array_fill(0, count($this->block_id), '?'));
     }
 }
