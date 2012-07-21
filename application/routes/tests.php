@@ -316,8 +316,9 @@ return array(
         Helpers::dump($feedbackstate->selected_category());
         Helpers::dump($feedbackstate->state_change_rules());
         Helpers::dump($feedbackstate->block_id_query());
-        */
         Helpers::dump($feedbackstate->perform());
+        */
+        Helpers::dump($feedbackstate);
     },
 
     //reserved route for Leica and Ryan testing

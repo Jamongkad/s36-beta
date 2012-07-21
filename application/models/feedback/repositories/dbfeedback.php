@@ -464,8 +464,9 @@ class DBFeedback extends S36DataObject {
                   ->update(array('indLock' => $state));    
     }
 
-    public function _toggle_multiple($mode, $block_id, $company_id, $extra=False) { 
+    public function _toggle_multiple($feedbackstate) { 
         //We need this to reset internal category id to default
+        /*
         $category = DB::Table('Category')->where('companyId', '=', $company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId'));
 
@@ -484,18 +485,18 @@ class DBFeedback extends S36DataObject {
 
         if(array_key_exists($mode, $lookup)) { $column = $lookup[$mode]; }
 
-        $in_query = implode(',', array_fill(0, count($block_id), '?'));
-         
+        $in_query = implode(',', array_fill(0, count($block_id), '?')); 
         print_r($column);
-        /*
+        */
+        $column   = $feedbackstate->column;
+        $in_query = $feedbackstate->query;
         $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
         $sth = $this->dbh->prepare($sql); 
-        foreach($block_id as $k => $id) {
+        foreach($feedbackstate->block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
         }
 
         return $sth->execute();       
-        */
     }
 
     public function _permanent_delete($opts) { 

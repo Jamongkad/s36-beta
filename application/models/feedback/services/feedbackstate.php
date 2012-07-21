@@ -1,6 +1,7 @@
 <?php namespace Feedback\Services;
 
 use DB, StdClass, Helpers;
+use Feedback\Repositories\DBFeedback;
 
 class FeedbackState {
 
@@ -21,23 +22,23 @@ class FeedbackState {
         $this->block_id = $block_id;
         $this->company_id = $company_id;
         $this->category_id = $category_id;
+        $this->feedback = new DBFeedback;
     } 
 
     public function perform() {        
         $rules = $this->state_change_rules();
-        $block_id_query = $this->block_id_query();
         
         $result = new StdClass;
         if($this->mode == 'fileas') { 
-            echo "Archived Category";
+            //echo "Archived Category";
             $selected_category = $this->selected_category();
             $result->column = $rules.$this->_sql_statement_attach($selected_category->categoryid);
         } else { 
-            echo "Default Category";
+            //echo "Default Category";
             $default_category = $this->default_category();
             $result->column = $rules.$this->_sql_statement_attach($default_category->categoryid);
         }
-        $result->query = $block_id_query;
+        $result->query = $this->block_id_query();
         return $result;
     }
 
@@ -64,12 +65,6 @@ class FeedbackState {
     }
 
     public function block_id_query() { 
-
-        foreach($this->block_id as $k => $id) {
-            Helpers::dump($k+1);
-            Helpers::dump($id['feedid']);
-        }
-
         return implode(',', array_fill(0, count($this->block_id), '?'));
     }
 }

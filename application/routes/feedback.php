@@ -170,7 +170,8 @@ return array(
         //What is catstate truly for? To determine feedback state placement. THERE MUST BE A BETTER WAY! original approach is hacky as hell.
         //quicky prototype
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
-        Helpers::dump($feedbackstate->perform());
+        //Helpers::dump($feedbackstate->perform());
+        $feedback->_toggle_multiple($feedbackstate->perform());
         /*
         if($catstate == "default") {
             //echo "Default Category";
