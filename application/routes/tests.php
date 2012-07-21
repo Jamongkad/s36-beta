@@ -1,6 +1,7 @@
 <?php
 
 Package::load('S36ValueObjects');
+Package::load('HTMLPurifier');
 
 return array(
     
@@ -245,7 +246,6 @@ return array(
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");
-
     },
 
     'GET /tests/url_in_string' => function() {
@@ -312,6 +312,10 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState('publish', Array($feed_obj, $feed_obj_1, $feed_obj_2), 1, 4);
         $feedbackstate->change_state();
+    },
+
+    'GET /test/htmlpurifier' => function() { 
+        Package::load('HTMLPurifier');
     },
 
     //reserved route for Leica and Ryan testing

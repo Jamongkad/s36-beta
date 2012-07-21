@@ -39,7 +39,7 @@ InboxStateObject.prototype.process = function() {
     console.log(me.currentUrl);
     var in_published_tab = me.currentUrl.match(/published/g);
     console.log(in_published_tab);
-    //TODO: if publish or feature do not animate if in Published Folder animate in Inbox Folder only.
+    //TODO: if in Published Folder do not animate else animate in Inbox Folder only.
     /* 
     if(is_single) { 
         $(me.elem).parents('.feedback').fadeOut(350, function() {
