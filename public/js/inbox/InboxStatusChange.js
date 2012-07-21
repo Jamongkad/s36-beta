@@ -39,6 +39,8 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
+    
+    console.log(mode);
 
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
