@@ -37,7 +37,6 @@ InboxStateObject.prototype.process = function() {
     var published_tab = me.currentUrl.match(/published|contacts/g);
     if(is_single) { 
         if(published_tab) {
-            console.log(me.elem);
             console.log(is_single);
             console.log(me.mode);
             console.log(me.currentUrl);
@@ -52,6 +51,9 @@ InboxStateObject.prototype.process = function() {
             
         } else {
             console.log("Not in Published tab");
+            $(me.elem).parents('.feedback').fadeOut(350, function() {
+                console.log("pwet");
+            });
         }
     }
     
