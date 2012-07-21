@@ -96,10 +96,6 @@ function PublishStateObject(elem) {
     this.identifier = $(elem).attr('class');
 }
 PublishStateObject.prototype = new InboxStateObject();
-PublishStateObject.prototype.process = function() { 
-    var me = this;
-    console.log("Pwet");
-}
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
