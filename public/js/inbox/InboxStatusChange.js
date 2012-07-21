@@ -203,11 +203,10 @@ InboxStatusChange.prototype.initialize = function() {
     $(document).delegate(me.inbox_controls, 'click', function(e) {
         var identifier = $(this).attr('class');         
         var us = $(this);
-        var identifier = $(this).attr('class');         
-        var us = $(this);
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
         console.log(identifier);
+        console.log(us);
         /*
         if(identifier == 'check') {
             var check = new PublishStateObject(us);
