@@ -81,10 +81,13 @@ class DBFeedback extends S36DataObject {
         $this->dbh->query("SET GLOBAL group_concat_max_len=1048576"); 
          
         $filter_present = array_key_exists('filter', $opts);
+        $is_published_filter = false;
         if($filter_present) {
-            Helpers::dump($opts['filter']);
+            if($opts['filter'] == 'published') { 
+                $is_published_filter = true;
+            }  
         } 
-        $is_published_filter = false;  
+
         if($is_published_filter) {
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
                                  AND Feedback.isDeleted = 0";
