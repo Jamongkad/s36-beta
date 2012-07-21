@@ -27,6 +27,7 @@ InboxStateObject.prototype.undo = function() {
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
+        /*
         $.ajax({  type: "POST"
                 , url: href
                 , data: {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "catstate": true} 
@@ -35,6 +36,7 @@ InboxStateObject.prototype.undo = function() {
                     myStatus.notify("Processing...", 1000); 
                   }
                });  
+        */
         e.preventDefault(); 
     });     
 }
@@ -49,7 +51,7 @@ InboxStateObject.prototype.process = function() {
 
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
-            //console.log("In Published tab");                 
+            console.log(state_data);
             //HTML view transforms
             if(mode == 'feature') {
                 state_view_data = {
@@ -81,14 +83,12 @@ InboxStateObject.prototype.process = function() {
                 } 
                 checky_bar_message(me);
             }
-            console.log(state_data);
             //change_state(state_data);
         } else {
-            //console.log("Not in Published tab");
+            console.log(state_data);
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
             //change_state(state_data);
-            console.log(state_data);
         }
     }
      
@@ -102,21 +102,18 @@ InboxStateObject.prototype.process = function() {
 //child implementation classes
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
-    //this.elem = elem; 
     this.mode    = "publish"; 
 }
 PublishStateObject.prototype = new InboxStateObject();
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
-    //this.elem = elem;
     this.mode    = "feature"; 
 }
 FeatureStateObject.prototype = new InboxStateObject();
 
 function RemoveStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
-    //this.elem = elem;
     this.message = "Feedback has been " + "<a href='" +this.baseUrl+ "inbox/deleted'>deleted</a>"; 
     this.mode    = "delete";
 }
@@ -124,7 +121,6 @@ RemoveStateObject.prototype = new InboxStateObject();
 
 function CatPickObject(elem) {
     InboxStateObject.apply(this, arguments);
-    //this.elem = elem;
     this.message = "Feedback has been sent to " + "<a href='" +this.baseUrl+ "inbox/filed/all'>Filed Feedback</a>";       
     this.mode    = "fileas";
     $(elem).parents('div.category-picker-holder').hide();
@@ -141,12 +137,12 @@ CatPickObject.prototype.process = function() {
     if(is_single) { 
         if(me.currentUrl.match(/filed|modifyfeedback/)) {
             console.log(state_data);
-            //change_state(state_data);
+            change_state(state_data);
         } else { 
+            console.log(state_data);
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
-            //change_state(state_data);
-            console.log(state_data);
+            change_state(state_data); 
         }
     }
 
@@ -220,7 +216,6 @@ function change_state(state_data) {
         } 
     });
 }
-
 
 //TODO: if in Published Folder do not animate else animate in Inbox Folder only.
     /* 
