@@ -35,6 +35,7 @@ InboxStateObject.prototype.process = function() {
     var me = this; 
     var is_single = $(me).attr('feedid');
     var published_tab = me.currentUrl.match(/published|contacts/g);
+    var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
 
     if(is_single) { 
         if(published_tab) {
@@ -62,14 +63,13 @@ InboxStateObject.prototype.process = function() {
             if(mode == 'inbox') {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
-
-            var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid }
             console.log(state_data);
         } else {
             console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350, function() {
                 console.log("pwet");
             });
+            console.log(state_data);
         }
     }
     
