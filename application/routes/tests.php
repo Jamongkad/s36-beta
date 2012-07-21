@@ -315,7 +315,7 @@ return array(
     },
 
     'GET /tests/htmlpurifier' => function() { 
-        Package::load('HTMLPurifier');
+        //Package::load('HTMLPurifier');
         $config = HTMLPurifier_Config::createDefault();
         $purifier = new HTMLPurifier($config);
         $clean_html = $purifier->purify("<IMG SRC='javascript:alert('XSS');'>");
