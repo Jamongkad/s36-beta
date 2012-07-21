@@ -69,14 +69,11 @@ InboxStateObject.prototype.process = function() {
                 $(me.elem).parents('.feedback').fadeOut(350);
             }
 
-            console.log(state_data);
-
             $.ajax({ 
                 type: "POST"
               , url: me.href
               , data: state_data
               , success: function() {
-                    //checky.html(notify).show();
                     var myStatus = new Status();
                     myStatus.notify("Processing...", 1000);
                 } 
