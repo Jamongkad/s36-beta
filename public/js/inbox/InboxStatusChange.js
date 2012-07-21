@@ -37,9 +37,12 @@ InboxStateObject.prototype.process = function() {
     var published_tab = me.currentUrl.match(/published|contacts/g);
     if(is_single) { 
         if(published_tab) {
+            /*
             console.log(is_single);
             console.log(me.mode);
             console.log(me.currentUrl);
+            */
+            console.log(me.state);
             console.log("In Published tab");    
             if(me.mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
@@ -50,6 +53,7 @@ InboxStateObject.prototype.process = function() {
             }
             
         } else {
+            console.log(me.state);
             console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350, function() {
                 console.log("pwet");
@@ -71,7 +75,9 @@ InboxStateObject.prototype.process = function() {
                 console.log(me.href);
                 console.log(me.state);
 
-                $.ajax({ type: "POST", url: me.href, data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
+                $.ajax({ type: "POST"
+                       , url: me.href
+                       , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid }
                        , success: function() {
                              checky.html(notify).show();
                              var myStatus = new Status();
@@ -84,7 +90,9 @@ InboxStateObject.prototype.process = function() {
                 console.log(me.href);
                 console.log(me.state);
 
-                $.ajax({ type: "POST", url: me.href, data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
+                $.ajax({ type: "POST"
+                      , url: me.href
+                      , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
                       , success: function() { 
                             checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky + "</div>")
                             .show();
