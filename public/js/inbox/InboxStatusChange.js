@@ -38,11 +38,11 @@ InboxStateObject.prototype.process = function() {
 
     if(is_single) { 
         if(published_tab) {
-            console.log(me.state);
             console.log("In Published tab");    
 
             var mode = (me.state == 1) ? "inbox" : me.mode;
-
+             
+            //HTML view transforms
             if(mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
                 $(me.elem).css({'background-position': '-60px -34px'});
@@ -64,9 +64,10 @@ InboxStateObject.prototype.process = function() {
                     console.log("pwet");
                 });
             }
-            
+
+            var state_data = {"mode": mode ,"feed_ids": [me.feeds], "cat_id": me.catid }
+            console.log(state_data);
         } else {
-            console.log(me.state);
             console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350, function() {
                 console.log("pwet");
