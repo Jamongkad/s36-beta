@@ -81,14 +81,14 @@ InboxStateObject.prototype.process = function() {
  
                 checky_bar_message(me);
             }
-            console.log(state_data) ;
+            console.log(state_data);
             //change_state(state_data);
         } else {
             //console.log("Not in Published tab");
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
             //change_state(state_data);
-            console.log(state_data) ;
+            console.log(state_data);
         }
     }
      
@@ -146,9 +146,22 @@ function CatPickObject(elem) {
 
 CatPickObject.prototype = new InboxStateObject();
 CatPickObject.prototype.process = function() {
+
     var me = this;
+    var is_single = $(me).attr('feedid');
+    var mode = (me.state == 1) ? "inbox" : me.mode;
+    var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
+
+    if(is_single) { 
+        if(me.currentUrl.match(/filed|modifyfeedback/)) {
+            console.log(state_data);
+        } else { 
+            console.log(state_data);
+        }
+    }
+    /*
     if(me.currentUrl.match(/filed|modifyfeedback/)) {
-        /*
+   
         $.ajax({ type: "POST"
                , url: me.href
                , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
@@ -160,7 +173,7 @@ CatPickObject.prototype.process = function() {
                      myStatus.notify("Processing...", 1000);
                  }
         });
-        */
+  
     } else {  
         $(this.elem).parents('.feedback').fadeOut(350, function() {
             var undo       = " <a class='undo' hrefaction='" + me.href + "' href='#' undo-type='" + me.identifier + "'>Undo</a>";
@@ -170,7 +183,7 @@ CatPickObject.prototype.process = function() {
             var checky = $('.checky-bar');
 
             if(me.state == 0) {   
-                /*
+ 
                 $.ajax({ type: "POST"
                        , url: me.href
                        , data: {"mode": me.mode ,"feed_ids": [me.feeds], "cat_id": me.catid, "catstate": me.catstate }
@@ -180,10 +193,10 @@ CatPickObject.prototype.process = function() {
                             checky.html(notify).show();
                          } 
                 });
-                */
+
             } else {  
                 //if state is 1 then we're going back to the inbox
-                /*
+
                 $.ajax({ type: "POST"
                        , url: me.href
                        , data: {"mode": "inbox" ,"feed_ids": [me.feeds], "cat_id": me.catid }
@@ -193,12 +206,11 @@ CatPickObject.prototype.process = function() {
                             checky.html("<div class='" + me.identifier + "'>Feedback has been sent to the " + "<a href='" + me.baseUrl + "inbox/all'>Inbox</a> " + undo + close_checky +"</div>").show();
                         } 
                 });
-                */
+
             }
         });
-
     }
-
+    */
     $(document).delegate('a.close-checky', 'click', function(e) { 
         $(this).parents('.check').remove();
         e.preventDefault(); 
