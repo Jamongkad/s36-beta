@@ -45,19 +45,35 @@ InboxStateObject.prototype.process = function() {
              
             //HTML view transforms
             if(mode == 'feature') {
+                /*
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
                 $(me.elem).css({'background-position': '-60px -34px'});
                 $(me.elem).attr('state', 1);
                 $(me.elem).siblings('.check').removeAttr('style');
                 $(me.elem).siblings('.check').attr('state', 0);
+                */
+                switch_to({
+                    'elem': me.elem
+                  , 'color': '#FFFFE0'
+                  , 'position': '-60px -34px'
+                  , 'sibling': '.check'
+                });
             }
 
             if(mode == 'publish') {
+                /*
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
                 $(me.elem).css({'background-position': '0px -34px'});
                 $(me.elem).attr('state', 1);
                 $(me.elem).siblings('.feature').removeAttr('style');
                 $(me.elem).siblings('.feature').attr('state', 0);
+               */
+                switch_to({
+                    'elem': me.elem
+                  , 'color': '#FFFFFF'
+                  , 'position': '0px -34px'
+                  , 'sibling': '.feature'
+                });
             }
 
             if(mode == 'inbox') {
@@ -275,4 +291,12 @@ InboxStatusChange.prototype.initialize = function() {
         }
 
     })
+}
+
+function switch_to(opts) { 
+    $(opts.elem).parents('.feedback').css({'background-color': opts.color});
+    $(opts.elem).css({'background-position': opts.position});
+    $(opts.elem).attr('state', 1);
+    $(opts.elem).siblings(opts.sibling).removeAttr('style');
+    $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
