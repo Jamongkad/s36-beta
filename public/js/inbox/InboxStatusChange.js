@@ -37,6 +37,9 @@ InboxStateObject.prototype.process = function() {
     console.log(is_single);
     console.log(me.mode);
     console.log(me.currentUrl);
+    var publish_reg = /published/g
+    var res = me.currentUrl.match(publish_reg);
+    console.log(res);
     //TODO: if publish or feature do not animate if in Published Folder animate in Inbox Folder only.
     /* 
     if(is_single) { 
