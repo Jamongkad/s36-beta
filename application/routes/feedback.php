@@ -203,7 +203,7 @@ return array(
         $feedbackstate = new Feedback\Services\FeedbackState('delete', Array($feed_obj), S36Auth::user()->companyid);
         $feedbackstate->change_state();
 
-        return Redirect::to('inbox/deleted');  
+        return Redirect::to('inbox/deleted/all');  
     },
 
     'GET /feedback/undodelete/(:any)' => function($id) use ($feedback) {  
