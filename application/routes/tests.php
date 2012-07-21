@@ -1,7 +1,6 @@
 <?php
 
 Package::load('S36ValueObjects');
-Package::load('HTMLPurifier');
 
 return array(
     
