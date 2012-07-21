@@ -35,13 +35,9 @@ InboxStateObject.prototype.process = function() {
     var me = this; 
     var is_single = $(me).attr('feedid');
     var published_tab = me.currentUrl.match(/published|contacts/g);
+
     if(is_single) { 
         if(published_tab) {
-            /*
-            console.log(is_single);
-            console.log(me.mode);
-            console.log(me.currentUrl);
-            */
             console.log(me.state);
             console.log("In Published tab");    
 
@@ -49,10 +45,12 @@ InboxStateObject.prototype.process = function() {
 
             if(mode == 'feature') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFE0'});
+                console.log($(me.elem).siblings('.check'));
             }
 
             if(mode == 'publish') {
                 $(me.elem).parents('.feedback').css({'background-color': '#FFFFFF'});
+                console.log($(me.elem).siblings('.feature'));
             }
 
             if(mode == 'inbox') {
