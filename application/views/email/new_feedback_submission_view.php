@@ -77,7 +77,14 @@
                                     </a> 
                                 <?endif?>
 
-                                <a href="<?=$login_url?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#d2dbe1;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                <?//quick and dirty css fix to move damn manage feedback button to the right
+                                $poor_style = null;
+                                if($feedback_data->rating == "POOR") {
+                                    $poor_style = "margin-left:10px;" 
+                                }
+                                ?>
+                                    
+                                <a href="<?=$login_url?>" style="text-decoration:none;<?=$poor_style?>margin-right:10px;font-size:11px;background:#d2dbe1;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
                                 <?=HTML::image('img/ico-manage.png', 'Icon Manage', array('style' => 'vertical-align:middle'))?>
                                 <span style="vertical-align: middle">Manage Feedback</span>
                                 </a>
