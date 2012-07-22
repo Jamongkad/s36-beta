@@ -32,7 +32,7 @@
                         
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                            "<?=$feedback_data->text?>"
+                            <div style="padding:10px">"<?=$feedback_data->text?>"</div>
                                 <br />
                                 <br /> 
                                 <?if($feedback_data->rating != "POOR"):?>

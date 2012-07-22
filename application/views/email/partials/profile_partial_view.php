@@ -1,6 +1,5 @@
 <tr>
 <td>
-
     <?
         $color = null;
         if($feedback_data->rating == "POOR") {
