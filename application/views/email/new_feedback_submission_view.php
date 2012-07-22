@@ -99,8 +99,8 @@
                         <tr>
                         	<td colspan="3">
                                 <div style="padding:10px">
-                                Thanks, <br />
-                                The 36Stories Team
+                                    Thanks, <br />
+                                    The 36Stories Team
                                 </div>
                             </td>
                         </tr>
