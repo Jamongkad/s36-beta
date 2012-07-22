@@ -32,7 +32,7 @@
                         
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                            <div style="padding:10px">"<?=$feedback_data->text?>"</div>
+                            <div style="padding:20px">"<?=$feedback_data->text?>"</div>
                                 <br />
                                 <br /> 
                                 <?if($feedback_data->rating != "POOR"):?>
@@ -80,7 +80,7 @@
                                 <?//quick and dirty css fix to move damn manage feedback button to the right
                                 $poor_style = null;
                                 if($feedback_data->rating == "POOR") {
-                                    $poor_style = "margin-left:10px;";
+                                    $poor_style = "margin-left:20px;";
                                 }
                                 ?>
                                     
@@ -98,7 +98,7 @@
                         <!-- sig -->
                         <tr>
                         	<td colspan="3">
-                                <div style="padding:10px">
+                                <div style="padding:20px">
                                     Thanks, <br />
                                     The 36Stories Team
                                 </div>
