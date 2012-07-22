@@ -80,7 +80,7 @@
                                 <?//quick and dirty css fix to move damn manage feedback button to the right
                                 $poor_style = null;
                                 if($feedback_data->rating == "POOR") {
-                                    $poor_style = "margin-left:10px;" 
+                                    $poor_style = "margin-left:10px;";
                                 }
                                 ?>
                                     
