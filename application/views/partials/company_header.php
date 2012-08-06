@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+        <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::style('css/widget_master/flags_widget.css')?>
