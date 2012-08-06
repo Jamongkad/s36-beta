@@ -25,7 +25,7 @@
     });
 </script>
 
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
 
   <?if($env == 'dev' or $env == 'local'):?>
   //DEV API KEY
@@ -70,7 +70,7 @@
 
 <!-- facebook scripts -->
 <div id="fb-root"></div>
-<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
   FB.init({appId: '<?=$fb_app_id?>', status: true,
 		   cookie: false, xfbml: true});

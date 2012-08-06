@@ -10,11 +10,11 @@
             <?$company_name = ucfirst($company->company_name);?>
 
         	<strong><?=$company_name?></strong>  
-            <span><a href="http://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
+            <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
             
             <?if($company->domain):?>
                 <span class="right padfix">
-                    <a href="http://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
+                    <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
         </div>
