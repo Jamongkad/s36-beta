@@ -34,13 +34,13 @@ class Determiner {
        //Staging
        if($my_url[1] == 'gearfish') {
            $obj->hostname = $my_url[1];
-           $obj->host = 'http://'.$subdomain.'.gearfish.com';
+           $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
            );
-           $obj->deploy_env = 'http://dev.gearfish.com';
+           $obj->deploy_env = 'https://dev.gearfish.com';
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
