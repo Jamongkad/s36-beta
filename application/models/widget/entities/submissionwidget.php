@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings; \Company\Repositories\DBCompany;
+use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings, \Company\Repositories\DBCompany;
 
 class SubmissionWidget extends FormWidgets {
 
