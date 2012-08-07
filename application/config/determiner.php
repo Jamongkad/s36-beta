@@ -13,8 +13,7 @@ class Determiner {
 
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
-       print_r($_GET);
-       $subdomain = ($_GET['subdomain'] and in_array('subdomain', $_GET)) ? $_GET['subdomain'] : $this->http_subdomain();
+       $subdomain = (in_array('subdomain', $_GET)) ? $_GET['subdomain'] : $this->http_subdomain();
        
        //Development
        if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
