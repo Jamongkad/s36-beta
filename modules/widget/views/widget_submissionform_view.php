@@ -105,7 +105,7 @@
                   link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
                   name: $("#company_name").val() + ' just got excellent feedback!', //The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
                   caption: 'This is awesome!',	//Optional. small text under the title
-                  description: $("#feedback_text").val(),	//The Feedback the feedback!!!
+                  description: $(".all-done-feedback-box").text(),	//The Feedback the feedback!!!
                   actions : { name : 'Post A Feedback', link : hosted_feedback}
                 };
                 
