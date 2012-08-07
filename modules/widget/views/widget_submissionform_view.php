@@ -5,10 +5,10 @@
 <?=HTML::script('/js/widget/form/s36FormModule.js')?>
 <?
     $js_scripts = Array(
-         '/js/jquery.jcrop.js' 
-       , '/js/jquery.ajaxfileupload.js'
-       , '/js/widget/form/cycle.function.js'
-       , '/js/widget/form/form.js'
+         HTML::script('/js/jquery.jcrop.js')
+       , HTML::script('/js/jquery.ajaxfileupload.js')
+       , HTML::script('/js/widget/form/cycle.function.js')
+       , HTML::script('/js/widget/form/form.js')
     );
 ?>
 <script text="text/javascript">
