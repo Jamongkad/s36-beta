@@ -667,12 +667,14 @@ var S36Form = new function() {
                  $("#submission-loader-header").hide();
                  $("#submission-success").show();
                  $("#submission-success-header").show();
-                 $("#feedback_text").val("");
                  $("#next").hide();
 
                  if($("#rating").val() == 5) {
                      $("#share-panel").show();
+                     $(".all-done-feedback-box").html($("#feedback_text").val());
                  }
+
+                 $("#feedback_text").val("");
             }
 		}); 
     };
