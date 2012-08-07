@@ -84,7 +84,7 @@ class WidgetLoader {
         $html = '
             <script type="text/javascript">
                 var widgetId = '.$widgetkey.';
-                var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");
+                var host = (("https:" == document.location.protocol) ? "https://" : "http://");
                 document.write(unescape("%3Cscript src=\'" + host + "'.$frame_url.'\' type=\'text/javascript\'%3E%3C/script%3E"));
             </script>
         ';

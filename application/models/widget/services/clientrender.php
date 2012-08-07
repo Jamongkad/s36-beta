@@ -13,7 +13,6 @@ class ClientRender {
         $this->form_loader_script = trim(HTML::script('js/s36_client_script.js'));
         $this->form_loader_css    = trim(HTML::style('css/s36_client_style.css'));
         $this->tab_position_css_output = Helpers::tab_position_css_output();
-        //trim(HTML::style(Config::get('application.deploy_env')."/widget/tab_position"));
     }  
 
     public function js_output() {

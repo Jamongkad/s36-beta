@@ -135,7 +135,7 @@ return array(
         $data = Input::get();
         $opts = new StdClass; 
         $opts->username = "wrm932@gmail.com";
-        $opts->options = Array('company' => Input::get('subdomain'));
+        $opts->options = Array('company' => Config::get('application.subdomain'));
         $user = $admin->fetch_admin_details($opts);
 
         $data = new Email\Entities\ResendPasswordData;
