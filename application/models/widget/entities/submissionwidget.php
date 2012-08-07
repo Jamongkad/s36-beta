@@ -34,7 +34,7 @@ class SubmissionWidget extends FormWidgets {
         $company = new DBCompany;
         $this->company = $company->get_company_info($options->company_id);
 
-        $this->site = DB::Table('Site')->where('siteId', '=', $data->site_id)->first(Array('domain'));
+        $this->site = DB::Table('Site')->where('siteId', '=', $options->site_id)->first(Array('domain'));
 
         $this->hosted_settings = new DBHostedSettings;
         $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
