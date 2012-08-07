@@ -100,6 +100,7 @@ class Determiner {
    public function http_subdomain() {     
         $parsed_url = parse_url($this->http_host);
         $host = explode('.', $parsed_url['path']);
+        print_("chipple");
         return $host[0];
    }
 }

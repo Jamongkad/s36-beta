@@ -6,7 +6,7 @@ return array(
         $dash->company_id = S36Auth::user()->companyid;
         $dashboard_summary = $dash->pull_summary();
 
-        Helpers::dump(Config::get('application.subdomain'));
+        //Helpers::dump(Config::get('application.subdomain'));
 
         return View::of_layout()->partial('contents', 'dashboard/dashboard_index_view', Array(
             'dashboard_summary' => $dashboard_summary
