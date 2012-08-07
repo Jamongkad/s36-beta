@@ -90,10 +90,10 @@
   $(document).ready(function() {
       
     $("#shareToFB").click(function(){
-        shareToFacebook();
+        share_on_facebook();
     });
 
-    function shareToFacebook(){
+    function share_on_facebook(){
         FB.login(function(response){
             if (response.status == 'connected'){
                 
@@ -101,7 +101,7 @@
                 var publish = {
                   method: 'stream.publish', 								//Action that will tell facebook to post this message (do not change)
                   message: 'Well I just posted an excellent Feedback!',		//Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
-                  picture : 'http://dev.gearfish.com/img/36logo2.png',		//36Stories Logo or Company Logo?
+                  picture : 'https://dev.gearfish.com/img/36logo2.png',		//36Stories Logo or Company Logo?
                   link : 'http://webmumu.com/s36-facebook',					//When the title is clicked, this is where the user is redirected this can be the company page
                   name: 'Webmumu just got an excellent feedback!',			//The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
                   caption: 'This is awesome!',								//Optional. small text under the title
@@ -438,14 +438,15 @@
                             <br />
                             <br/>
                             <h3>Like us on Facebook and follow us on Twitter</h3>
+                            <!--TODO when company sets up FB page on settings reveal fb-like-link
                             <div class="fb-like-link">
-                                <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=307884662596382" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                             </div>
-
                             <div class="tw-follow-link">
                                 <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                             </div>
+                            -->
                         </div>
                     </p>
                 </div>
