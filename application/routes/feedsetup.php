@@ -145,14 +145,13 @@ return array(
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;
         $form_data = new Widget\Entities\FormValueObject(Input::get());
-        Helpers::dump($form_data->data());
-        /*
+
         $form->set_widgetdata($form_data->data()); 
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
-        */
+
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
