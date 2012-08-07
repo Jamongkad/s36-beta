@@ -60,6 +60,7 @@ class Determiner {
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+           print_r($obj);
            return $obj;
        }
        
