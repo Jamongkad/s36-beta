@@ -23,6 +23,7 @@ return array(
         //consider placing this into a View Object
         //$company_name = Input::get('subdomain');
         $company_name = Config::get('application.hostname');
+        print_r($company_name);
         /*        
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
