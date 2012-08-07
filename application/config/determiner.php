@@ -7,6 +7,7 @@ class Determiner {
    public function __construct() {
        $this->http_host = $_SERVER['SERVER_NAME'];
        $this->d = $this->_host();
+       print_r($this->http_host);
    }
 
    public function _host() {
