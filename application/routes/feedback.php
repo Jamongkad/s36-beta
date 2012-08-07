@@ -137,7 +137,7 @@ return array(
     //Ajax Routes...
     'GET /feedback/bust_hostfeed_data' => function() { 
         //$company_name = Input::get('subdomain');
-        $company_name = Config::get('application.hostname');
+        $company_name = Config::get('application.subdomain');
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->bust_hostfeed_data();
     },

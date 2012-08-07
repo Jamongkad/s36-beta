@@ -22,7 +22,7 @@ return array(
     'GET /' => function() { 
         //consider placing this into a View Object
         //$company_name = Input::get('subdomain');
-        $company_name = Config::get('application.hostname');
+        $company_name = Config::get('application.subdomain');
         print_r($company_name);
         /*        
         $company = new Company\Repositories\DBCompany;
@@ -80,7 +80,7 @@ return array(
     'GET /login' => function() {
         $auth = new S36Auth;
         //$company = Input::get('subdomain');
-        $company = Config::get('application.hostname');
+        $company = Config::get('application.subdomain');
 
         if($auth->check()) { 
             return forward_or_dash();
@@ -95,7 +95,7 @@ return array(
     'POST /login' => function() {
         $input = Input::get();        
         $auth = new S36Auth;
-        $company = Config::get('application.hostname');
+        $company = Config::get('application.subdomain');
 
         $rules = Array(
             'username' => 'required'
@@ -146,7 +146,7 @@ return array(
     },
 
     'GET /resend_password' => function() {  
-        $company = Config::get('application.hostname');
+        $company = Config::get('application.subdomain');
         return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                    'errors'  => Array()
                                                  , 'warning' => null
@@ -156,7 +156,7 @@ return array(
     'POST /resend_password' => function() {
         $admin = new DBadmin; 
         $data = Input::get();
-        $company = Config::get('application.hostname');
+        $company = Config::get('application.subdomain');
 
         $rules = Array('email' => 'required|email');
  
@@ -194,7 +194,7 @@ return array(
     'GET /password_reset' => function() { 
         $data = Input::get();
         $encrypt = new Encryption\Encryption;
-        $company = Config::get('application.hostname');
+        $company = Config::get('application.subdomain');
 
         $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA

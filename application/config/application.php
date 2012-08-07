@@ -18,6 +18,7 @@ return array(
     'hostname'   => $determine->d->hostname,
     'fb_id'      => $determine->d->fb_id,
     'fb_secret'  => $determine->d->fb_secret,
+    'subdomain'  => $determine->d->subdomain,
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index

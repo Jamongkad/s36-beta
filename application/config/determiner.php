@@ -14,11 +14,11 @@ class Determiner {
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
        $subdomain = (isset($_GET['subdomain'])) ? $_GET['subdomain'] : $this->http_subdomain();
-       //print_r($subdomain);
        
        //Development
        if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
            $obj->hostname = '36storiesdev';
+           $obj->subdomain = $subdomain;
            $obj->host = 'http://'.$subdomain.'.36storiesdev.localhost';
            $obj->db   = Array(
                 'host' => 'localhost'//'173.255.211.107'
@@ -35,8 +35,8 @@ class Determiner {
        //Staging
 
        if($this->http_host == 'mathew-staging.gearfish.com') {
-           //print_r("Mathew");
-           $obj->hostname = $subdomain; 
+           $obj->hostname = $my_url[1];
+           $obj->subdomain = $subdomain;
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
@@ -52,8 +52,8 @@ class Determiner {
 
 
        if($my_url[1] == 'gearfish') {
-           //print_r("Irene");
            $obj->hostname = $my_url[1];
+           $obj->subdomain = $subdomain;
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
@@ -70,6 +70,7 @@ class Determiner {
        //Production
        if($my_url[1] == '36storiesapp') {
            $obj->hostname = $my_url[1];
+           $obj->subdomain = $subdomain;
            $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
            $obj->db   = Array(
                 'host' => 'localhost'
@@ -97,8 +98,6 @@ class Determiner {
    }
   
    public function http_subdomain() {     
-        //$sub = $_SERVER['HTTP_HOST'];
-        print_r("lord of the homies");
         $parsed_url = parse_url($this->http_host);
         $host = explode('.', $parsed_url['path']);
         return $host[0];
