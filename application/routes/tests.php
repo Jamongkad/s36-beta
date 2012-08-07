@@ -230,8 +230,8 @@ return array(
         $halcyon   = new Halcyonic\Services\HalcyonicService;
         $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details, $dashboard, $halcyon);
         $result = $addfeedback;//$addfeedback->perform();
-        print_r($result);
-        return true;
+        //print_r($result);
+        echo true;
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
