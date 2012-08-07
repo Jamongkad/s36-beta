@@ -34,6 +34,7 @@ class Determiner {
        
        //Staging
        if($this->http_host == 'mathew-staging.gearfish.com') {
+           print_r("Mathew");
            $obj->hostname = $subdomain; 
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
@@ -49,6 +50,7 @@ class Determiner {
        }
 
        if($my_url[1] == 'gearfish') {
+           print_r("Irene");
            $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
