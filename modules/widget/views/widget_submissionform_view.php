@@ -106,7 +106,7 @@
                   name: $("#company_name").val() + ' just got excellent feedback!', //The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
                   caption: 'This is awesome!',	//Optional. small text under the title
                   description: $(".all-done-feedback-box").text(),	//The Feedback the feedback!!!
-                  actions : { name : 'Post A Feedback', link : hosted_feedback}
+                  actions : { name : 'Leave feedback for ' + $("#domain").val(), link : hosted_feedback}
                 };
                 
                 console.log(publish);
