@@ -27,6 +27,9 @@ return array(
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
+        Helpers::dump($company_name);
+        Helpers::dump($company_info);
+
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
