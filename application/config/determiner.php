@@ -98,6 +98,7 @@ class Determiner {
   
    public function http_subdomain() {     
         //$sub = $_SERVER['HTTP_HOST'];
+        print_r("lord of the homies");
         $parsed_url = parse_url($this->http_host);
         $host = explode('.', $parsed_url['path']);
         return $host[0];
