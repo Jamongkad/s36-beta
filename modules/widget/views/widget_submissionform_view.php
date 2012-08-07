@@ -119,6 +119,7 @@
     
     function publish_post(publish){
         FB.api('/me/feed', 'POST', publish, function(response) {
+            console.log(response);
             $('#fb-share-post-success').fadeIn();
         });
     }
@@ -437,14 +438,14 @@
                                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://companyname.com" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
                                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>
-                            </div>
-                            
-                            <div id="fb-share-post-success">
-                                <span class="share-success">Feedback has been successfully shared on Facebook. Thank you!</span>
-                            </div>
+                            </div> 
                             <br />
                             <br/>
                             <h3>Like us on Facebook and follow us on Twitter</h3>
+
+                            <div id="fb-share-post-success">
+                                <span class="share-success">Feedback has been successfully shared on Facebook. Thank you!</span>
+                            </div>
                             <!--TODO when company sets up FB page on settings reveal fb-like-link
                             <div class="fb-like-link">
                                 <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
