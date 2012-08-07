@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings;
+use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings; \Company\Repositories\DBCompany;
 
 class SubmissionWidget extends FormWidgets {
 
@@ -29,9 +29,13 @@ class SubmissionWidget extends FormWidgets {
         $this->theme_type = $options->theme_type;
         $this->tab_pos  = $options->tab_pos;
         $this->tab_type = $options->tab_type;
+        $this->country  = DB::Table('Country', 'master')->order_by('name')->get();
+
+        $company = new DBCompany;
+        $this->company = $company->get_company_info($options->company_id);
 
         $this->hosted_settings = new DBHostedSettings;
-        $this->hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
+        $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
     }
 
     public function render_data() {
@@ -40,9 +44,10 @@ class SubmissionWidget extends FormWidgets {
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
-          , 'country' => DB::Table('Country', 'master')->order_by('name')->get()
+          , 'country' => $this->country 
           , 'site_id' => $this->site_id
           , 'company_id' => $this->company_id
+          , 'company_name' =>  $this->company->company_name
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
@@ -59,9 +64,10 @@ class SubmissionWidget extends FormWidgets {
         return View::make('widget::widget_hostedform_view', Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
-          , 'country' => DB::Table('Country', 'master')->order_by('name')->get()
+          , 'country' => $this->country
           , 'site_id' => $this->site_id
           , 'company_id' => $this->company_id
+          , 'company_name' =>  $this->company->company_name
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type

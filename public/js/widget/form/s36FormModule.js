@@ -671,7 +671,8 @@ var S36Form = new function() {
 
                  if($("#rating").val() == 5) {
                      $("#share-panel").show();
-                     $(".all-done-feedback-box").html($("#feedback_text").val());
+                     var feedback_phrase = "Just sent " + $("#company_name").val() + " this feedback: ";
+                     $(".all-done-feedback-box").html(feedback_phrase + $("#feedback_text").val());
                  }
 
                  $("#feedback_text").val("");
