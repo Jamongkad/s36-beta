@@ -157,7 +157,7 @@ return array(
  
         $validator = Validator::make($data, $rules);
         if(!$validator->valid()) {
-            return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors, 'warning' => null));
+            return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors' => $validator->errors, 'warning' => null, 'company' => $company));
         } else {
             $opts = new StdClass; 
             $opts->username = $data['email'];
