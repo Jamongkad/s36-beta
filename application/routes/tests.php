@@ -231,6 +231,7 @@ return array(
         $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details, $dashboard, $halcyon);
         $result = $addfeedback;//$addfeedback->perform();
         print_r($result);
+        return true;
     },
 
     'GET /tests/full_page_algo/(:any)/(:num?)' => function($company_name, $page=false) { 
