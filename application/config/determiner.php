@@ -7,7 +7,6 @@ class Determiner {
    public function __construct() {
        $this->http_host = $_SERVER['SERVER_NAME'];
        $this->d = $this->_host();
-       print_r($this->http_host);
    }
 
    public function _host() {
@@ -34,7 +33,7 @@ class Determiner {
        }
        
        //Staging
-       if($this->host_host == 'mathew-staging.gearfish.com') {
+       if($this->http_host == 'mathew-staging.gearfish.com') {
            print_r("mathew-staging");
            $obj->hostname = $subdomain; 
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
