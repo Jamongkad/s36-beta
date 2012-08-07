@@ -79,7 +79,7 @@ class WidgetLoader {
     public function load_widget_init_js_code() {
         $deploy_env = Config::get('application.deploy_env');
         $widgetkey = "'".$this->widget_obj->widgetkey."'";
-        $frame_url = str_replace("http://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\"";  
+        $frame_url = str_replace("https://", '', $deploy_env)."/widget/js_output?widgetId=\"+widgetId+\"";  
         Helpers::dump($frame_url);
 
         $html = '
