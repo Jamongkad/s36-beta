@@ -444,7 +444,7 @@
                             <h3>Like us on Facebook and follow us on Twitter</h3>
 
                             <div id="fb-share-post-success">
-                                <span class="share-success">Feedback has been successfully shared on Facebook. Thank you!</span>
+                                <span class="share-success">Feedback has been successfully shared on Facebook</span>
                             </div>
                             <!--TODO when company sets up FB page on settings reveal fb-like-link
                             <div class="fb-like-link">
