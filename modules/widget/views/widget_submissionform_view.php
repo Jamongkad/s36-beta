@@ -27,7 +27,7 @@
         });
     });
 </script>
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
 
   <?if($env == 'dev' or $env == 'local'):?>
   //DEV API KEY
@@ -73,7 +73,7 @@
 <body style="background:#000">
 <!-- facebook scripts -->
 <div id="fb-root"></div>
-<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
   FB.init({appId: '<?=$fb_app_id?>', status: true,
 		   cookie: false, xfbml: true});
@@ -85,6 +85,42 @@
 		  alert('error logging in to facebook');  
 	   }
 	 });        
+  });
+
+  $(document).ready(function() {
+      
+    $("#shareToFB").click(function(){
+        shareToFacebook();
+    });
+
+    function shareToFacebook(){
+        FB.login(function(response){
+            if (response.status == 'connected'){
+                
+                var hosted_feedback = 'http://webmumu.com/s36-facebook';	//Link where the user is redirected after clicking Post A Feedback
+                var publish = {
+                  method: 'stream.publish', 								//Action that will tell facebook to post this message (do not change)
+                  message: 'Well I just posted an excellent Feedback!',		//Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
+                  picture : 'http://dev.gearfish.com/img/36logo2.png',		//36Stories Logo or Company Logo?
+                  link : 'http://webmumu.com/s36-facebook',					//When the title is clicked, this is where the user is redirected this can be the company page
+                  name: 'Webmumu just got an excellent feedback!',			//The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
+                  caption: 'This is awesome!',								//Optional. small text under the title
+                  description: 'Webmumu is an awesome website! Dan Oliver is a good web developer, he is awesome! Very good at web design and development! Works very fast and on time!',	//The Feedback the feedback!!!
+                  actions : { name : 'Post A Feedback', link : hosted_feedback}
+                };
+                
+                publishPost(publish);
+            }else{
+                //console.log('login failed');
+            }
+        }, {scope:'publish_stream'});
+    }
+    
+    function publishPost(publish){
+        FB.api('/me/feed', 'POST', publish, function(response) {
+            $('#fb-share-post-success').fadeIn();
+        });
+    }
   });
 </script>
 <!-- end of facebook script -->
@@ -383,6 +419,33 @@
                         Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                         <br/><br/>
                         Please press the (X) button on the upper right hand corner of the form to close this box.
+                   
+                        <div id="share-panel">
+                            <div class="all-done-feedback-box">
+                                <p></p>
+                            </div>
+                            <div class="share-buttons">
+                                <div class="fb-share-button"><a href="javascript:;" id="shareToFB"><img src="images/fb-share-btn.png" alt="Share to Facebook" title="Share to Facebook" /></a></div>
+                                <div class="tw-share-button">
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://companyname.com" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                </div>
+                            </div>
+                            
+                            <div id="fb-share-post-success">
+                                <span class="share-success">Feedback has been successfully shared on Facebook. Thank you!</span>
+                            </div>
+                            <br />
+                            <h3>Like us on Facebook and follow us on Twitter</h3>
+                            <div class="fb-like-link">
+                                <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=307884662596382" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                            </div>
+
+                            <div class="tw-follow-link">
+                                <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                        </div>
                     </p>
                 </div>
             </div>
