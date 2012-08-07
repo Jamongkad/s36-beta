@@ -21,7 +21,8 @@ return array(
 	*/
     'GET /' => function() { 
         //consider placing this into a View Object
-        $company_name = Input::get('subdomain');
+        //$company_name = Input::get('subdomain');
+        $company_name = Config::get('application.hostname');
         
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
