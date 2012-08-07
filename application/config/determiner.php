@@ -13,7 +13,8 @@ class Determiner {
 
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
-       $subdomain = $_GET['subdomain'];
+       $subdomain = (in_array('subdomain', $_GET)) ? $_GET['subdomain'] : $this->http_subdomain();
+       //print_r($subdomain);
        
        //Development
        if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
@@ -32,6 +33,21 @@ class Determiner {
        }
        
        //Staging
+       if($this->http_host == 'mathew-staging.gearfish.com') {
+           $obj->hostname = $subdomain; 
+           $obj->host = 'https://'.$subdomain.'.gearfish.com';
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+           );
+           $obj->deploy_env = 'https://dev.gearfish.com';
+           $obj->env_name = 'dev';
+           $obj->fb_id = '171323469605899';
+           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+           return $obj;
+       }
+
        if($my_url[1] == 'gearfish') {
            $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
@@ -46,7 +62,7 @@ class Determiner {
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
            return $obj;
        }
-       
+     
        //Production
        if($my_url[1] == '36storiesapp') {
            $obj->hostname = $my_url[1];
@@ -75,5 +91,11 @@ class Determiner {
        }
        */ 
    }
-
+  
+   public function http_subdomain() {     
+        //$sub = $_SERVER['HTTP_HOST'];
+        $parsed_url = parse_url($this->http_host);
+        $host = explode('.', $parsed_url['path']);
+        return $host[0];
+   }
 }
