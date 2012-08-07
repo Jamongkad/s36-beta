@@ -19,7 +19,7 @@
 ?>
 <script text="text/javascript">
     <?//foreach($js_scripts as $scripts):?>
-       //head.js('<?=$scripts?>');
+       //head.js('<?//=$scripts?>');
     <?//endforeach?>
 </script>
 <!-- linked in -->
