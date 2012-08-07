@@ -49,6 +49,7 @@ class Determiner {
        
 
        if($this->host_host == 'mathew-staging.gearfish.com') {
+           print_r($my_url);
            $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
