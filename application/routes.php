@@ -23,7 +23,7 @@ return array(
         //consider placing this into a View Object
         //$company_name = Input::get('subdomain');
         $company_name = Config::get('application.hostname');
-        
+        /*        
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
@@ -43,6 +43,7 @@ return array(
                                                      'company' => $company_info, 'feeds' => $hosted->view_fragment()
                                                    , 'widget' => $widget, 'deploy_env' => $deploy_env 
                                                    , 'hosted' => $hosted_settings->hosted_settings()));        
+        */
     },
 
     'GET /(:any)/submit' => function($company_name) {
