@@ -97,26 +97,26 @@
         FB.login(function(response){
             if (response.status == 'connected'){
                 
-                var hosted_feedback = 'http://webmumu.com/s36-facebook';	//Link where the user is redirected after clicking Post A Feedback
+                var hosted_feedback = $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
                 var publish = {
-                  method: 'stream.publish', 								//Action that will tell facebook to post this message (do not change)
-                  message: 'Well I just posted an excellent Feedback!',		//Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
-                  picture : 'https://dev.gearfish.com/img/36logo2.png',		//36Stories Logo or Company Logo?
-                  link : 'http://webmumu.com/s36-facebook',					//When the title is clicked, this is where the user is redirected this can be the company page
-                  name: 'Webmumu just got an excellent feedback!',			//The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
-                  caption: 'This is awesome!',								//Optional. small text under the title
-                  description: 'Webmumu is an awesome website! Dan Oliver is a good web developer, he is awesome! Very good at web design and development! Works very fast and on time!',	//The Feedback the feedback!!!
+                  method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
+                  message: 'Just sent ' + $("#company_name").val() + ' this feedback.', //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
+                  picture: 'https://dev.gearfish.com/img/36logo2.png',	//36Stories Logo or Company Logo?
+                  link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
+                  name: $("#company_name").val() + ' just got excellent feedback!', //The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
+                  caption: 'This is awesome!',	//Optional. small text under the title
+                  description: $("#feedback_text").val(),	//The Feedback the feedback!!!
                   actions : { name : 'Post A Feedback', link : hosted_feedback}
                 };
                 
-                publishPost(publish);
+                publish_post(publish);
             }else{
                 //console.log('login failed');
             }
         }, {scope:'publish_stream'});
     }
     
-    function publishPost(publish){
+    function publish_post(publish){
         FB.api('/me/feed', 'POST', publish, function(response) {
             $('#fb-share-post-success').fadeIn();
         });
@@ -155,6 +155,7 @@
                         <input type="hidden" id="native_flag" value="0" />
 
                         <input type="hidden" id="company_name" value="<?=$company_name?>" />
+                        <input type="hidden" id="domain" value="<?=$site_domain?>" />
                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
                         <input type="hidden" id="response_flag" value="<?=$response?>" />

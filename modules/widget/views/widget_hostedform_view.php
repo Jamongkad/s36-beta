@@ -130,6 +130,7 @@
                                         <input type="hidden" id="native_flag" value="0" />
 
                                         <input type="hidden" id="company_name" value="<?=$company_name?>" />
+                                        <input type="hidden" id="domain" value="<?=$site_domain?>" />
                                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
                                         <input type="hidden" id="response_flag" value="<?=$response?>" />
