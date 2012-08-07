@@ -97,7 +97,7 @@
         FB.login(function(response){
             if (response.status == 'connected'){
                 
-                var hosted_feedback = $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
+                var hosted_feedback = 'http://' + $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
                 var publish = {
                   method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
                   message: 'Just sent ' + $("#company_name").val() + ' this feedback.', //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
