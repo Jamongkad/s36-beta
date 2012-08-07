@@ -109,6 +109,7 @@
                   actions : { name : 'Post A Feedback', link : hosted_feedback}
                 };
                 
+                console.log(publish);
                 publish_post(publish);
             }else{
                 //console.log('login failed');
