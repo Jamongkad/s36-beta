@@ -13,6 +13,7 @@ class Determiner {
 
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
+       print_r($_GET);
        $subdomain = ($_GET['subdomain'] and in_array('subdomain', $_GET)) ? $_GET['subdomain'] : $this->http_subdomain();
        
        //Development
