@@ -151,7 +151,6 @@ return array(
         echo json_encode(Array(
             'submit' => $form->emit()
         )); 
-
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
