@@ -14,7 +14,7 @@ class Determiner {
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
        $subdomain = (in_array('subdomain', $_GET)) ? $_GET['subdomain'] : $this->http_subdomain();
-       print_r($subdomain);
+       //print_r($subdomain);
        
        //Development
        if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
@@ -34,7 +34,6 @@ class Determiner {
        
        //Staging
        if($my_url[1] == 'gearfish') {
-           print_r("gearfish");
            $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
