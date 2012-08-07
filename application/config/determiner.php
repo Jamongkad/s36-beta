@@ -33,9 +33,9 @@ class Determiner {
        }
        
        //Staging
-       if($this->http_host == 'mathew-staging.gearfish.com') {
-           print_r("mathew-staging");
-           $obj->hostname = $subdomain; 
+       if($my_url[1] == 'gearfish') {
+           print_r("gearfish");
+           $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
@@ -49,9 +49,9 @@ class Determiner {
            return $obj;
        }
 
-       if($my_url[1] == 'gearfish') {
-           print_r("gearfish");
-           $obj->hostname = $my_url[1];
+       if($this->http_host == 'mathew-staging.gearfish.com') {
+           print_r("mathew-staging");
+           $obj->hostname = $subdomain; 
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
