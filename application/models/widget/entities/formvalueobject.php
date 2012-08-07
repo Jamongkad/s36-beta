@@ -10,7 +10,7 @@ class FormValueObject extends WidgetValueObject {
 
     public function data() { 
         $tab_type = null;
-        if(in_array('tab_type', $this->input_data)) {
+        if(isset($this->input_data['tab_type'])) {
             $tab_type = $this->input_data['tab_type'];
         }
 
