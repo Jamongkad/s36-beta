@@ -77,7 +77,7 @@ class Determiner {
               , 'username' => 'root'
               , 'password' => 'brx4*svv'
            );
-           //$obj->deploy_env = 'http://1.36storiesapp.com';
+
            $obj->deploy_env = 'http://feedback.36storiesapp.com';
            $obj->env_name = 'prod';
            $obj->fb_id = '259670914062599';
