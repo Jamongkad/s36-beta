@@ -671,8 +671,9 @@ var S36Form = new function() {
 
                  if($("#rating").val() == 5) {
                      $("#share-panel").show();
-                     var feedback_phrase = "Just sent " + $("#company_name").val() + " this feedback: ";
-                     $(".all-done-feedback-box").html(feedback_phrase + $("#feedback_text").val());
+                     var feedback_phrase = "Just sent " + $("#company_name").val() + " this feedback: " + $("#feedback_text").val();
+                     var domain = "<br/><br/>Be sure to visit them at http://" + $("#domain").val();
+                     $(".all-done-feedback-box").html(feedback_phrase + domain);
                  }
 
                  $("#feedback_text").val("");
