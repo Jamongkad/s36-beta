@@ -7,7 +7,7 @@
             <h2 style="text-align: center; padding-bottom: 30px">Forgot your password?</h2>
             <div id="login-box" style="text-align:center">
                 <?=Form::open('resend_password')?>
-                    <?=Form::hidden('company', Input::get('subdomain'))?>
+                    <?=Form::hidden('company', $company)?>
                     <table width="100%" align="center">
                         <tr><td>Enter your email:</td>
                             <td>

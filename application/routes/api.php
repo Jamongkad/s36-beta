@@ -17,8 +17,9 @@ return array(
     'POST /api/login' => function() {
         $auth = new S36Auth;
         $input = Input::get();
+        $company_name = Config::get('application.hostname');
 
-        $auth->login($input['username'], $input['password'], Array('company' => $input['subdomain'])); 
+        $auth->login($input['username'], $input['password'], Array('company' => $company_name)); 
         
         if($auth->check()) {
             $token = $auth->user()->encryptstring;
@@ -30,7 +31,8 @@ return array(
 
     'GET /api/inbox' => function() {
         /* TODO Under RENOVATION
-        $company = Input::get('subdomain');
+        //$company = Input::get('subdomain');
+        $company = Config::get('application.hostname');
         $token = Input::get('token');
          
         $encrypt = new Encryption\Encryption;

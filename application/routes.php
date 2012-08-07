@@ -27,9 +27,6 @@ return array(
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
-        Helpers::dump($company_name);
-        Helpers::dump($company_info);
-
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
@@ -79,7 +76,8 @@ return array(
 
     'GET /login' => function() {
         $auth = new S36Auth;
-        $company = Input::get('subdomain');
+        //$company = Input::get('subdomain');
+        $company = Config::get('application.hostname');
 
         if($auth->check()) { 
             return forward_or_dash();
@@ -94,6 +92,7 @@ return array(
     'POST /login' => function() {
         $input = Input::get();        
         $auth = new S36Auth;
+        $company = Config::get('application.hostname');
 
         $rules = Array(
             'username' => 'required'
@@ -103,12 +102,12 @@ return array(
         $validator = Validator::make($input, $rules);
 
         if(!$validator->valid()) { 
-            return View::of_home_layout()->partial('contents', 'home/login', Array(  'company' => $_GET['subdomain']
+            return View::of_home_layout()->partial('contents', 'home/login', Array(  'company' => $company 
                                                                               , 'errors' => $validator->errors
                                                                               , 'warning' => null));      
         } else {
 
-            $auth->login($input['username'], $input['password'], Array('company' => $_GET['subdomain'])); 
+            $auth->login($input['username'], $input['password'], Array('company' => $company)); 
 
             if($auth->check()) {
 
@@ -122,7 +121,7 @@ return array(
                 return forward_or_dash();
             } else {
                 return View::of_home_layout()->partial('contents', 'home/login', Array(  
-                    'company' => $_GET['subdomain']
+                    'company' => $company
                   , 'errors' => Array()
                   , 'warning' => 'Invalid login - try again.')); 
             } 
@@ -143,12 +142,14 @@ return array(
     },
 
     'GET /resend_password' => function() {  
-        return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors'  => Array(), 'warning' => null));       
+        $company = Config::get('application.hostname');
+        return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array('errors'  => Array(), 'warning' => null, 'company' => $company));       
     },
 
     'POST /resend_password' => function() {
         $admin = new DBadmin; 
         $data = Input::get();
+        $company = Config::get('application.hostname');
 
         $rules = Array(
             'email' => 'required|email'
@@ -160,7 +161,7 @@ return array(
         } else {
             $opts = new StdClass; 
             $opts->username = $data['email'];
-            $opts->options = Array('company' => $_GET['subdomain']);
+            $opts->options = Array('company' => $company);
             $user = $admin->fetch_admin_details($opts);
 
             if(!$user) { 
@@ -185,12 +186,13 @@ return array(
     'GET /password_reset' => function() { 
         $data = Input::get();
         $encrypt = new Encryption\Encryption;
+        $company = Config::get('application.hostname');
 
         $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA
         if($params[0] === "jamongkad") {  
             return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(
-                'subdomain' => $data['subdomain'], 'email' => $data['email'], 'user_id' => $params[1], 'errors' => array()
+                'subdomain' => $company, 'email' => $data['email'], 'user_id' => $params[1], 'errors' => array()
             ));       
         }
        
