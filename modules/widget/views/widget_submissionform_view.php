@@ -3,18 +3,24 @@
 <?endif?>
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
 <?=HTML::script('/js/widget/form/s36FormModule.js')?>
+
+<?=HTML::script('/js/jquery.jcrop.js')?>
+<?=HTML::script('/js/jquery.ajaxfileupload.js')?>
+<?=HTML::script('/js/widget/form/cycle.function.js')?>
+<?=HTML::script('/js/widget/form/form.js')?>
+
 <?
     $js_scripts = Array(
-         HTML::script('/js/jquery.jcrop.js')
-       , HTML::script('/js/jquery.ajaxfileupload.js')
-       , HTML::script('/js/widget/form/cycle.function.js')
-       , HTML::script('/js/widget/form/form.js')
+         '/js/jquery.jcrop.js' 
+       , '/js/jquery.ajaxfileupload.js'
+       , '/js/widget/form/cycle.function.js'
+       , '/js/widget/form/form.js'
     );
 ?>
 <script text="text/javascript">
-    <?foreach($js_scripts as $scripts):?>
-       head.js('<?=$scripts?>');
-    <?endforeach?>
+    <?//foreach($js_scripts as $scripts):?>
+       //head.js('<?=$scripts?>');
+    <?//endforeach?>
 </script>
 <!-- linked in -->
 <script type="text/javascript">
