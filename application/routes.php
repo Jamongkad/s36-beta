@@ -2,7 +2,7 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $hosted = new Widget\Repositories\DBHostedSettings;
-
+$company_name = Config::get('application.subdomain');
 return array(
 
 	/*
@@ -19,12 +19,10 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() { 
+    'GET /' => function() use($company_name) { 
         //consider placing this into a View Object
         //$company_name = Input::get('subdomain');
-        $company_name = Config::get('application.subdomain');
-        print_r($company_name);
-        /*        
+
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
@@ -44,7 +42,6 @@ return array(
                                                      'company' => $company_info, 'feeds' => $hosted->view_fragment()
                                                    , 'widget' => $widget, 'deploy_env' => $deploy_env 
                                                    , 'hosted' => $hosted_settings->hosted_settings()));        
-        */
     },
 
     'GET /(:any)/submit' => function($company_name) {
@@ -77,25 +74,25 @@ return array(
         ));
     },
 
-    'GET /login' => function() {
+    'GET /login' => function() use($company_name) {
         $auth = new S36Auth;
         //$company = Input::get('subdomain');
-        $company = Config::get('application.subdomain');
+        //$company = Config::get('application.subdomain');
 
         if($auth->check()) { 
             return forward_or_dash();
         } else {
             return View::of_home_layout()->partial('contents', 'home/login', Array(
-                'company' => $company, 'errors' => array(), 'warning' => null
+                'company' => $company_name, 'errors' => array(), 'warning' => null
             ));      
         }		
 
     },
 
-    'POST /login' => function() {
+    'POST /login' => function() use($company_name) {
         $input = Input::get();        
         $auth = new S36Auth;
-        $company = Config::get('application.subdomain');
+        //$company = Config::get('application.subdomain');
 
         $rules = Array(
             'username' => 'required'
@@ -106,12 +103,12 @@ return array(
 
         if(!$validator->valid()) { 
             return View::of_home_layout()->partial('contents', 'home/login', Array(  
-                                                       'company' => $company 
+                                                       'company' => $company_name
                                                      , 'errors' => $validator->errors
                                                      , 'warning' => null));      
         } else {
 
-            $auth->login($input['username'], $input['password'], Array('company' => $company)); 
+            $auth->login($input['username'], $input['password'], Array('company' => $company_name)); 
 
             if($auth->check()) {
 
@@ -125,7 +122,7 @@ return array(
                 return forward_or_dash();
             } else {
                 return View::of_home_layout()->partial('contents', 'home/login', Array(  
-                    'company' => $company
+                    'company' => $company_name
                   , 'errors' => Array()
                   , 'warning' => 'Invalid login - try again.')); 
             } 
@@ -145,18 +142,18 @@ return array(
         return View::of_home_layout()->partial('contents', 'home/user_auth_thankyou_view');       
     },
 
-    'GET /resend_password' => function() {  
-        $company = Config::get('application.subdomain');
+    'GET /resend_password' => function() use($company_name) {  
+        //$company = Config::get('application.subdomain');
         return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                    'errors'  => Array()
                                                  , 'warning' => null
-                                                 , 'company' => $company));       
+                                                 , 'company' => $company_name));       
     },
 
-    'POST /resend_password' => function() {
+    'POST /resend_password' => function() use($company_name) {
         $admin = new DBadmin; 
         $data = Input::get();
-        $company = Config::get('application.subdomain');
+        //$company = Config::get('application.subdomain');
 
         $rules = Array('email' => 'required|email');
  
@@ -165,11 +162,11 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                        'errors' => $validator->errors
                                                      , 'warning' => null
-                                                     , 'company' => $company));
+                                                     , 'company' => $company_name));
         } else {
             $opts = new StdClass; 
             $opts->username = $data['email'];
-            $opts->options = Array('company' => $company);
+            $opts->options = Array('company' => $company_name);
             $user = $admin->fetch_admin_details($opts);
 
             if(!$user) { 
@@ -191,16 +188,16 @@ return array(
 
     },
     
-    'GET /password_reset' => function() { 
+    'GET /password_reset' => function() use($company_name) { 
         $data = Input::get();
         $encrypt = new Encryption\Encryption;
-        $company = Config::get('application.subdomain');
+        //$company = Config::get('application.subdomain');
 
         $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA
         if($params[0] === "jamongkad") {  
             return View::of_home_layout()->partial('contents', 'home/password_reset_view', Array(
-                                                       'subdomain' => $company
+                                                       'subdomain' => $company_name
                                                      , 'email' => $data['email']
                                                      , 'user_id' => $params[1]
                                                      , 'errors' => array()));       
