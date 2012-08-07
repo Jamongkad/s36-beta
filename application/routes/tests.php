@@ -226,8 +226,10 @@ return array(
     'POST /tests/submissionservice' => function() {
         $contact = new Feedback\Entities\ContactDetails;
         $feedback_details = new Feedback\Entities\FeedbackDetails;
-        $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details);
-        $result = $addfeedback->perform();
+        $dashboard = new DBDashboard;
+        $halcyon   = new Halcyonic\Services\HalcyonicService;
+        $addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details, $dashboard, $halcyon);
+        $result = $addfeedback;//$addfeedback->perform();
         print_r($result);
     },
 
