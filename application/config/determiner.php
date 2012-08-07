@@ -7,7 +7,6 @@ class Determiner {
    public function __construct() {
        $this->http_host = $_SERVER['SERVER_NAME'];
        $this->d = $this->_host();
-       print_r($_SERVER['SERVER_NAME']);
    }
 
    public function _host() {
@@ -34,6 +33,22 @@ class Determiner {
        
        //Staging
        if($my_url[1] == 'gearfish') {
+           $obj->hostname = $my_url[1];
+           $obj->host = 'https://'.$subdomain.'.gearfish.com';
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+           );
+           $obj->deploy_env = 'https://dev.gearfish.com';
+           $obj->env_name = 'dev';
+           $obj->fb_id = '171323469605899';
+           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+           return $obj;
+       }
+       
+
+       if($this->host_host == 'mathew-staging.gearfish.com') {
            $obj->hostname = $my_url[1];
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
