@@ -100,7 +100,7 @@
                 var hosted_feedback = 'http://' + $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
                 var publish = {
                   method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
-                  message: $('#your_fname').val() + " has given excellent feedback for " + $("company_name").val(), //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
+                  message: $('#your_fname').val() + " has given excellent feedback for " + $("#company_name").val() + ".", //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
                   picture: 'https://dev.gearfish.com/img/36logo2.png',	//36Stories Logo or Company Logo?
                   link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
                   name: $("#company_name").val() + ' was given an excellent feedback review!', //The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
