@@ -24,6 +24,8 @@ class DBCompany extends S36DataObject {
             ->update(Array( 
                 'description'  => $post->company_desc
               , 'social_links' => $post->social_links 
+              , 'fb_link' => $post->fb_link
+              , 'twit_link' => $post->twit_link
               , 'logo' => $post->logo
             )); 
     }
