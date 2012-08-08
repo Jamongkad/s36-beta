@@ -668,7 +668,8 @@ var S36Form = new function() {
                  $("#submission-success").show();
                  $("#submission-success-header").show();
                  $("#next").hide();
-
+                 
+                 //if rating is excellent allow user to share his feedback on facebook.
                  if($("#rating").val() == 5) {
                      $("#share-panel").show();
                      var feedback_phrase = "Just sent " + $("#company_name").val() + " this feedback: " + $("#feedback_text").val();

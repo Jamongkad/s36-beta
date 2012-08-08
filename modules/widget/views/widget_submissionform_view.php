@@ -94,7 +94,7 @@
     });
 
     function share_on_facebook(){
-        FB.login(function(response){
+        FB.login(function(response) {
             if (response.status == 'connected'){
                 
                 var hosted_feedback = 'http://' + $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
@@ -108,18 +108,14 @@
                   description: $(".all-done-feedback-box").html(),	//The Feedback the feedback!!!
                   actions : { name : 'Leave feedback for ' + $("#company_name").val(), link : hosted_feedback}
                 };
-                
-                console.log(publish);
+
                 publish_post(publish);
-            }else{
-                //console.log('login failed');
-            }
+            }        
         }, {scope:'publish_stream'});
     }
     
     function publish_post(publish){
         FB.api('/me/feed', 'POST', publish, function(response) {
-            console.log(response);
             $('#fb-share-post-success').fadeIn();
         });
     }
@@ -422,8 +418,7 @@
                         Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                         Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                         <br/><br/>
-                        Please press the (X) button on the upper right hand corner of the form to close this box.
-                   
+                        Please press the (X) button on the upper right hand corner of the form to close this box.                   
                         <div id="share-panel">
                             <div class="all-done-feedback-box">
                                 <p></p>
