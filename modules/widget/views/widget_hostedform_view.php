@@ -83,6 +83,39 @@
 	   }
 	 });        
   });
+
+   $(document).ready(function() {
+      
+       $("#shareToFB").click(function(){ share_on_facebook(); });
+
+       function share_on_facebook(){
+           FB.login(function(response) {
+               if (response.status == 'connected'){
+                
+                var hosted_feedback = 'http://' + $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
+                    var publish_data = {
+                        method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
+                        message: $("#feedback_text").val(), //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
+                        picture: 'https://dev.gearfish.com/img/36logo2.png',	//36Stories Logo or Company Logo?
+                        link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
+                        name: $("#company_name").val() + ' was given an excellent feedback review!', //The Title of the Post. This is the blue link.
+                        caption: '',	//Optional. small text under the title
+                        description: $(".all-done-feedback-box").html(),	//The Feedback the feedback!!!
+                        actions : { name : 'Leave feedback for ' + $("#company_name").val(), link : hosted_feedback}
+                   };
+                                    
+                   publish_post(publish_data);
+               }        
+        }, { scope: 'publish_stream' });
+    }
+    
+    function publish_post(publish){
+        FB.api('/me/feed', 'POST', publish, function(response) {
+            $('#fb-share-post-success').fadeIn();
+            $("#feedback_text").val("");
+        });
+    }
+   });
 </script>
 <!-- end of facebook script -->
 
