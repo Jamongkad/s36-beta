@@ -302,7 +302,7 @@ var S36Form = new function() {
             $("#profile_link").val( $.trim(obj.link) );
         }
 
-		var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';		
+		var photo = 'https://graph.facebook.com/'+obj.id+'/picture?type=large';		
 		that.change_jcrop_div(200);
 		that.change_images(photo, 'fb');
 		that.default_text();	
