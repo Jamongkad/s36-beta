@@ -435,8 +435,6 @@
                                 <p id="submission-success">
                                     Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                                     Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
-
-                                    <br/>
                                     Click <a href="submit">here</a> to submit more feedback.
 
                                     <div id="share-panel">
