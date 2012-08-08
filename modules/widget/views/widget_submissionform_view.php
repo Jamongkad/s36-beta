@@ -437,12 +437,11 @@
                             </div> 
                             <br />
                             <br/>
-                            <h3>Like us on Facebook and follow us on Twitter</h3>
-
                             <div id="fb-share-post-success">
                                 <span class="share-success">Feedback has been successfully shared on Facebook</span>
                             </div>
                             <!--TODO when company sets up FB page on settings reveal fb-like-link
+                            <h3>Like us on Facebook and follow us on Twitter</h3>
                             <div class="fb-like-link">
                                 <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                             </div>
