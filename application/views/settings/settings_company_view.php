@@ -11,6 +11,16 @@
     <span class="light-blue">socials links are your company homepages on social networking sites. (e.g.) Facebook, Twitter etc.</span>
     </p>
 
+    <div class="label"><label>Facebook Company Link: </label></div>
+    <div class="input-field">
+        <input type="text" name="fb_link" class="regular-text" value="<?=$company->fb_link?>"/> 
+    </div>
+
+    <div class="label"><label>Twitter Company Link: </label></div>
+    <div class="input-field">
+        <input type="text" name="twit_link" class="regular-text" value="<?=$company->twit_link?>"/> 
+    </div>
+
     <? $social_links = json_decode($company->social_links); ?>
     <div class="label"><label>Social Link 1: </label></div>
     <div class="input-field">
