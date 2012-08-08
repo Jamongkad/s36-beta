@@ -435,6 +435,59 @@
                                 <p id="submission-success">
                                     Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                                     Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+
+                                    <div id="share-panel">
+                                        <div class="all-done-feedback-box">
+                                            <p></p>
+                                        </div>
+                                        <div class="share-buttons">
+                                            <div class="fb-share-button">
+                                                <a href="javascript:;" id="shareToFB">
+                                                    <?=HTML::image('img/fb-share-btn.png', 'Share to Facebook')?>
+                                                </a>
+                                            </div>
+                                            <div class="tw-share-button">
+                                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://companyname.com" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
+                                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                            </div>
+                                        </div> 
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <div id="fb-share-post-success">
+                                            <span class="share-success">Feedback has been successfully shared on Facebook</span>
+                                        </div>
+                                        <?if($company->fb_link and $company->twit_link):?>
+                                            <h3>Like us on Facebook and follow us on Twitter</h3>
+                                            <div class="fb-like-link">
+                                                <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                            </div>
+                                            <br/>
+                                            <div class="tw-follow-link">
+                                                <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                                    Follow @<?=$company->company_name?>
+                                                </a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                            </div>
+                                        <?endif?>
+                    
+                                        <?if($company->fb_link and $company->twit_link == false):?>
+                                            <h3>Like us on Facebook</h3>
+                                            <div class="fb-like-link">
+                                                <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                            </div>
+                                        <?endif?>
+
+                                        <?if($company->fb_link == false and $company->twit_link):?>
+                                            <h3>Follow us on Twitter</h3>
+                                            <div class="tw-follow-link">
+                                                <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                                    Follow @<?=$company->company_name?>
+                                                </a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                            </div>
+                                        <?endif?>
+                                    </div>
                                     <br/><br/>
                                     Click <a href="submit">here</a> to submit more feedback.
                                 </p>

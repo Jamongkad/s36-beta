@@ -352,3 +352,22 @@ select.reg-text-active{font-weight:normal;}
 div.feedback {
     padding-top:25px;  
 }
+
+.all-done-feedback-box{
+    margin:15px 0px;
+    padding:10px;
+    overflow-y:auto;
+    background:#f7f7f7;
+    border:1px solid #e1e1e1;
+    color:#595959;
+    height:140px;
+    line-height:18px;
+}
+.all-done-feedback-box p{margin:0px;line-height:18px;}
+
+.share-buttons .fb-share-button{width:190px;float:left;margin-right:10px;}
+.share-buttons .tw-share-button{float:left;width:78px;}
+#fb-share-post-success{margin-top:10px;display:none;}
+.share-success{color:#9c9b9b;background:url(../../img/ico-check.png) no-repeat left center;padding-left:35px;margin-left:-16px}
+.fb-like-link{margin-top:5px;}
+.tw-follow-link{margin-top:5px;
