@@ -436,6 +436,9 @@
                                     Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                                     Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
 
+                                    <br/>
+                                    Click <a href="submit">here</a> to submit more feedback.
+
                                     <div id="share-panel">
                                         <div class="all-done-feedback-box">
                                             <p></p>
@@ -462,7 +465,6 @@
                                             <div class="fb-like-link">
                                                 <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                                             </div>
-                                            <br/>
                                             <div class="tw-follow-link">
                                                 <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
                                                     Follow @<?=$company->company_name?>
@@ -488,8 +490,6 @@
                                             </div>
                                         <?endif?>
                                     </div>
-                                    <br/><br/>
-                                    Click <a href="submit">here</a> to submit more feedback.
                                 </p>
                             </div>
                         </div> 
