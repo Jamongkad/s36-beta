@@ -668,16 +668,17 @@ var S36Form = new function() {
                  $("#submission-success").show();
                  $("#submission-success-header").show();
                  $("#next").hide();
-                 
+
                  //if rating is excellent allow user to share his feedback on facebook.
                  if($("#rating").val() == 5) {
+                     //feedback text will clear upon FB sharing
                      $("#share-panel").show();
                      var feedback_phrase = "Just sent " + $("#company_name").val() + " this feedback: " + $("#feedback_text").val();
-                     var domain = '<br/><br/>\b\bBe sure to visit them at http://' + $("#domain").val();
+                     var domain = "<br/><br/>\n\n\n\nBe sure to visit them at http://" + $("#domain").val();
                      $(".all-done-feedback-box").html(feedback_phrase + domain);
-                 }
-
-                 $("#feedback_text").val("");
+                 } else {
+                     $("#feedback_text").val("");     
+                 } 
             }
 		}); 
     };
