@@ -452,14 +452,16 @@
                             <?if($company->fb_link and $company->twit_link == false):?>
                                 <h3>Like us on Facebook</h3>
                                 <div class="fb-like-link">
-                                    <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                                 </div>
                             <?endif?>
 
                             <?if($company->fb_link == false and $company->twit_link):?>
                                 <h3>Follow us on Twitter</h3>
                                 <div class="tw-follow-link">
-                                    <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
+                                    <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                        Follow @<?=$company->company_name?>
+                                    </a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>
                             <?endif?>
