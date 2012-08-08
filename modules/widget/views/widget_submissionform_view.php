@@ -436,7 +436,7 @@
                             <div id="fb-share-post-success">
                                 <span class="share-success">Feedback has been successfully shared on Facebook</span>
                             </div>
-                            <?($company->fb_link and $company->twit_link):?>
+                            <?if($company->fb_link and $company->twit_link):?>
                                 <h3>Like us on Facebook and follow us on Twitter</h3>
                                 <div class="fb-like-link">
                                     <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
@@ -449,14 +449,14 @@
                                 </div>
                             <?endif?>
         
-                            <?($company->fb_link and $company->twit_link == false):?>
+                            <?if($company->fb_link and $company->twit_link == false):?>
                                 <h3>Like us on Facebook</h3>
                                 <div class="fb-like-link">
                                     <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                                 </div>
                             <?endif?>
 
-                            <?($company->fb_link == false and $company->twit_link):?>
+                            <?if($company->fb_link == false and $company->twit_link):?>
                                 <h3>Follow us on Twitter</h3>
                                 <div class="tw-follow-link">
                                     <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
@@ -466,8 +466,7 @@
                         </div>
                     </p>
                 </div>
-            </div>
-            
+            </div>            
         </div>
     </div>
     <div class="error-message">
