@@ -50,7 +50,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_id' => $this->site_id
           , 'site_domain' => $this->site->domain
           , 'company_id' => $this->company_id
-          , 'company_name' =>  $this->company->company_name
+          , 'company' =>  $this->company
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
@@ -71,7 +71,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_id' => $this->site_id
           , 'site_domain' => $this->site->domain
           , 'company_id' => $this->company_id
-          , 'company_name' =>  $this->company->company_name
+          , 'company' =>  $this->company
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type

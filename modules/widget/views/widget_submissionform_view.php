@@ -20,7 +20,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){ 
         S36Form.start_slider();
-
         $('#s36_pemissions .s36_perm_details').click(function(){
             $('#s36_pemissions .s36_perm_details').removeClass('active_perm');
             $(this).addClass('active_perm');
@@ -75,43 +74,40 @@
 <div id="fb-root"></div>
 <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-  FB.init({appId: '<?=$fb_app_id?>', status: true,
-		   cookie: false, xfbml: true});
-  FB.Event.subscribe('auth.login', function(response) {
-	FB.api('/me', function(user) {
-	   if(user != null) {
-		  S36Form.fb_connect_success(user);
-	   }else{
-		  alert('error logging in to facebook');  
-	   }
-	 });        
-  });
-
-  $(document).ready(function() {
-      
-    $("#shareToFB").click(function(){
-        share_on_facebook();
+    FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: false, xfbml: true});
+    FB.Event.subscribe('auth.login', function(response) {
+        FB.api('/me', function(user) {
+           if(user != null) {
+              S36Form.fb_connect_success(user);
+           }else{
+              alert('error logging in to facebook');  
+           }
+         });        
     });
 
-    function share_on_facebook(){
-        FB.login(function(response) {
-            if (response.status == 'connected'){
+   $(document).ready(function() {
+      
+       $("#shareToFB").click(function(){ share_on_facebook(); });
+
+       function share_on_facebook(){
+           FB.login(function(response) {
+               if (response.status == 'connected'){
                 
                 var hosted_feedback = 'http://' + $("#domain").val(); //Link where the user is redirected after clicking Post A Feedback
-                var publish = {
-                  method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
-                  message: $("#feedback_text").val(), //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
-                  picture: 'https://dev.gearfish.com/img/36logo2.png',	//36Stories Logo or Company Logo?
-                  link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
-                  name: $("#company_name").val() + ' was given an excellent feedback review!', //The Title of the Post. This is the blue link title e.g "Company Name just got an excellent feedback!"
-                  caption: '',	//Optional. small text under the title
-                  description: $(".all-done-feedback-box").html(),	//The Feedback the feedback!!!
-                  actions : { name : 'Leave feedback for ' + $("#company_name").val(), link : hosted_feedback}
-                };
-
-                publish_post(publish);
-            }        
-        }, {scope:'publish_stream'});
+                    var publish_data = {
+                        method: 'stream.publish', //Action that will tell facebook to post this message (do not change)
+                        message: $("#feedback_text").val(), //Post message, not the feedback. e.g "I just posted an excellent Feedback for ???"
+                        picture: 'https://dev.gearfish.com/img/36logo2.png',	//36Stories Logo or Company Logo?
+                        link: $("#domain").val(), //When the title is clicked, this is where the user is redirected this can be the company page
+                        name: $("#company_name").val() + ' was given an excellent feedback review!', //The Title of the Post. This is the blue link.
+                        caption: '',	//Optional. small text under the title
+                        description: $(".all-done-feedback-box").html(),	//The Feedback the feedback!!!
+                        actions : { name : 'Leave feedback for ' + $("#company_name").val(), link : hosted_feedback}
+                   };
+                                    
+                   publish_post(publish_data);
+               }        
+        }, { scope: 'publish_stream' });
     }
     
     function publish_post(publish){
@@ -120,7 +116,7 @@
             $("#feedback_text").val("");
         });
     }
-  });
+   });
 </script>
 <!-- end of facebook script -->
 
@@ -153,7 +149,7 @@
                         <input type="hidden" id="ln_flag" value="0" />
                         <input type="hidden" id="native_flag" value="0" />
 
-                        <input type="hidden" id="company_name" value="<?=$company_name?>" />
+                        <input type="hidden" id="company_name" value="<?=$company->company_name?>" />
                         <input type="hidden" id="domain" value="<?=$site_domain?>" />
                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
@@ -440,16 +436,33 @@
                             <div id="fb-share-post-success">
                                 <span class="share-success">Feedback has been successfully shared on Facebook</span>
                             </div>
-                            <!--TODO when company sets up FB page on settings reveal fb-like-link
-                            <h3>Like us on Facebook and follow us on Twitter</h3>
-                            <div class="fb-like-link">
-                                <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
-                            </div>
-                            <div class="tw-follow-link">
-                                <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                            </div>
-                            -->
+                            <?($company->fb_link and $company->twit_link):?>
+                                <h3>Like us on Facebook and follow us on Twitter</h3>
+                                <div class="fb-like-link">
+                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                </div>
+                                <div class="tw-follow-link">
+                                    <a href="https://twitter.com/<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                        Follow @<?=$company->company_name?>
+                                    </a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                </div>
+                            <?endif?>
+        
+                            <?($company->fb_link and $company->twit_link == false):?>
+                                <h3>Like us on Facebook</h3>
+                                <div class="fb-like-link">
+                                    <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                </div>
+                            <?endif?>
+
+                            <?($company->fb_link == false and $company->twit_link):?>
+                                <h3>Follow us on Twitter</h3>
+                                <div class="tw-follow-link">
+                                    <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                </div>
+                            <?endif?>
                         </div>
                     </p>
                 </div>
