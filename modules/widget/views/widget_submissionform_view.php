@@ -417,7 +417,7 @@
                             Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                         </div>
                         <div id="success-message-excellent">
-                            We'd greatly appreciate it if you would share your feedback with others!
+                            <h3>We'd greatly appreciate it if you would share your feedback with others!</h3>
                         </div>
 
                         <br/><br/>
