@@ -54,7 +54,7 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '-60px -34px'
                   , 'sibling': '.check'
                 };
-                checky_bar_message(me);
+                checky_bar_message(me, true);
                 change_view(state_view_data); 
             }
 
@@ -65,7 +65,7 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '0px -34px'
                   , 'sibling': '.feature'
                 };
-                checky_bar_message(me);
+                checky_bar_message(me, true);
                 change_view(state_view_data); 
             }
             
@@ -179,11 +179,19 @@ InboxStatusChange.prototype.initialize = function() {
     })
 }
 
-function checky_bar_message(opts) { 
+function checky_bar_message(opts, undo_msg) { 
+
+    var undo_msg = typeof undo_msg !== 'undefined' ? undo_msg : false;
+
     var check_message = $('.checky-bar');
     var undo = "  <a class='undo' hrefaction='" + opts.href + "' href='#' undo-type='" + opts.identifier + "'>Undo</a>";
     var close_checky = "  <a class='close-checky' href='#'>Close</a>";
+
     var notify_msg = opts.message + undo + close_checky; 
+
+    if(undo_msg) {
+        var notify_msg = opts.message;        
+    }
 
     var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
 
