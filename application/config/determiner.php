@@ -84,7 +84,6 @@ class Determiner {
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
            return $obj;
        }
-
        //AWS PRODUCTION
        /*
        $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
