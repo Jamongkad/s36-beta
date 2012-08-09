@@ -415,13 +415,13 @@
                         <div id="success-message-ord">
                             Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                             Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                            <br/><br/>
+                            Please press the (X) button on the upper right hand corner of the form to close this box.                   
                         </div>
                         <div id="success-message-excellent">
                             <h3>We'd greatly appreciate it if you would share your feedback with others!</h3>
                         </div>
 
-                        <br/><br/>
-                        Please press the (X) button on the upper right hand corner of the form to close this box.                   
                         <div id="share-panel">
                             <div class="all-done-feedback-box">
                                 <p></p>
