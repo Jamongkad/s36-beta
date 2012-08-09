@@ -54,7 +54,7 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '-60px -34px'
                   , 'sibling': '.check'
                 };
-
+                checky_bar_message(me);
                 change_view(state_view_data); 
             }
 
@@ -65,7 +65,7 @@ InboxStateObject.prototype.process = function() {
                   , 'position': '0px -34px'
                   , 'sibling': '.feature'
                 };
-
+                checky_bar_message(me);
                 change_view(state_view_data); 
             }
             
@@ -95,12 +95,14 @@ InboxStateObject.prototype.process = function() {
 //child implementation classes
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
+    this.message = "Feedback has been published."; 
     this.mode    = "publish"; 
 }
 PublishStateObject.prototype = new InboxStateObject();
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
+    this.message = "Feedback has been featured.";
     this.mode    = "feature"; 
 }
 FeatureStateObject.prototype = new InboxStateObject();
@@ -130,7 +132,6 @@ CatPickObject.prototype.process = function() {
     //
     if(is_single) { 
         if(me.currentUrl.match(/filed|modifyfeedback/g)) {
-
             change_state(state_data);
         } else {  
             $(me.elem).parents('.feedback').fadeOut(350);
@@ -180,7 +181,6 @@ InboxStatusChange.prototype.initialize = function() {
 
 function checky_bar_message(opts) { 
     var check_message = $('.checky-bar');
-
     var undo = "  <a class='undo' hrefaction='" + opts.href + "' href='#' undo-type='" + opts.identifier + "'>Undo</a>";
     var close_checky = "  <a class='close-checky' href='#'>Close</a>";
     var notify_msg = opts.message + undo + close_checky; 
