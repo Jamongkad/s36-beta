@@ -71,14 +71,14 @@ class Determiner {
        if($my_url[1] == '36storiesapp') {
            $obj->hostname = $my_url[1];
            $obj->subdomain = $subdomain;
-           $obj->host = 'http://'.$subdomain.'.36storiesapp.com';
+           $obj->host = 'https://'.$subdomain.'.36storiesapp.com';
            $obj->db   = Array(
                 'host' => 'localhost'
               , 'username' => 'root'
               , 'password' => 'brx4*svv'
            );
 
-           $obj->deploy_env = 'http://feedback.36storiesapp.com';
+           $obj->deploy_env = 'https://feedback.36storiesapp.com';
            $obj->env_name = 'prod';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
