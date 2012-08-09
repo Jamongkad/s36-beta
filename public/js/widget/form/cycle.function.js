@@ -327,6 +327,12 @@ PageCycle.prototype.cycle_prev = function() {
 		|  Next button pressed
 		-------------------------*/
 	    this._debug("Page 6");		
+
+        if(this.rating == 5) {
+            $("#success-message-excellent").show();
+            $("#success-message-ord").hide();
+        }
+
 		if(next){
 			this.next_button.hide();
 			S36Form.send_form_data();	
