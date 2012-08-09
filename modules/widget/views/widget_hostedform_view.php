@@ -466,9 +466,15 @@
                                     <?=HTML::image('img/submission-loader.gif', 'submission')?><br/>
                                 </p>
                                 <p id="submission-success">
-                                    Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
-                                    Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
-                                    Click <a href="submit">here</a> to submit more feedback.
+                                    <div id="success-message-ord">
+                                        Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
+                                        Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
+                                        Click <a href="submit">here</a> to submit more feedback.
+                                    </div>
+                                    <div id="success-message-excellent">
+                                        We'd greatly appreciate it if you would share your feedback with others! 
+                                        Click <a href="submit">here</a> to submit more feedback.
+                                    </div>
 
                                     <div id="share-panel">
                                         <div class="all-done-feedback-box">
