@@ -331,6 +331,9 @@ PageCycle.prototype.cycle_prev = function() {
         if(this.rating == 5) {
             $("#success-message-excellent").show();
             $("#success-message-ord").hide();
+        } else {
+            $("#success-message-excellent").hide();
+            $("#success-message-ord").show(); 
         }
 
 		if(next){
