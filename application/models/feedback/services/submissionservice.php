@@ -9,12 +9,13 @@ class SubmissionService {
    
     private $company_id;
 
-    public function __construct(ContactDetails $contact, FeedbackDetails $feedback_details, DBDashboard $dbdashboard, HalcyonicService $halcyonic) {
-        $this->company_id = Input::get('company_id');
-        $this->contact_details = $contact;     
-        $this->dbdashboard = $dbdashboard;
-        $this->halcyonic = $halcyonic;
-        $this->feedback_details = $feedback_details;
+    public function __construct(ContactDetails $contact, FeedbackDetails $feedbackdetails, DBDashboard $dbdashboard, HalcyonicService $halcyonic) {
+        //TODO: This is bad. Remove this shit from the class.
+        $this->company_id       = Input::get('company_id');
+        $this->contact_details  = $contact;     
+        $this->dbdashboard      = $dbdashboard;
+        $this->halcyonic        = $halcyonic;
+        $this->feedback_details = $feedbackdetails;
     }
 
     public function perform() {        
