@@ -4,8 +4,6 @@ return array(
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function(  $filter=False
                                                                                                       , $choice=False ) {  
 
-        print("Ser Rodrik");
-
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
         $limit = 10;
