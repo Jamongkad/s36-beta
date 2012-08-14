@@ -62,6 +62,7 @@ a.s36_btn:hover{
 	background:url(images/sky/button-bg.png) no-repeat center center;
 	color:#FFF;
 	text-shadow:#257bb3 0px 1px;
+	border:none;
 }
 /* crop button */
 a.cropbtn{
@@ -74,6 +75,7 @@ a.cropbtn:hover{
 	background:url(images/sky/button-bg.png) no-repeat center center;
 	color:#FFF;
 	text-shadow:#257bb3 0px 1px;
+	border:none;	
 }
 /* crop button */
 /* pages class */
