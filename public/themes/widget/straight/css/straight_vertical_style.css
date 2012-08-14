@@ -1,0 +1,173 @@
+#widget{
+	width:250px;
+	height:500px;
+	padding:0px;
+	margin:0px;
+	min-width:250px;
+	position:relative;
+	background:#FFF;
+	}
+.block{
+	display:block;
+}
+
+/* new clear fix dawg! */
+.block:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.widgetStyledBorder{
+	height:7px;
+	/* background:url(../images/border.png); */
+	margin:0px 15px;
+}
+#widgetHeader{
+	padding:10px 15px;
+	background:#4a6b9a url(../images/straight/headerbg.png) no-repeat left center;
+}
+	.theWidgetTitle{
+		font-size: 12px;
+		font-weight: bold;
+		color: #ffffff;
+		width: 100%;
+		text-align:center;
+	}
+	.theWidgetButtons{
+		margin:2px 15px;
+	}
+	.sendFeedbackButton{
+			padding-top:8px;
+		}
+		.sendFeedbackButton a{
+			color: #6C6C6C;
+			text-decoration: underline;
+			font-size: 11px;
+			font-weight:bold;
+		}
+	.viewAllFeedbackButton input{
+			background: url(../images/straight/viewallbtn.png) no-repeat;
+			background-position: top;
+			width: 96px;
+			height: 27px;
+			border: none;
+			cursor: pointer;
+			border-image: initial;
+		}
+#widgetBody{
+	margin:10px 15px;
+	height:360px;	
+}
+	#theLoopBox,
+	#theSoloBox{
+		position:absolute;	
+		top:0px;
+		left:0px;
+		width:100%;
+	}
+	.theFeedback{
+		margin-bottom:10px;
+	}
+	.theFeedbackAvatar{
+			width:48px;
+			float:left;
+		}
+		.theFeedbackAuthorInfo{
+			margin-left:58px;
+		}
+		.theFeedbackAuthorCompany{
+			max-height:22px;
+		}
+		.theFeedbackText{
+			height:48px;
+			padding:5px 0px 5px;
+			line-height:15px;
+			overflow:hidden;
+			text-align:justify;
+			color: #969696;
+			font-size:11px;
+			cursor:pointer;
+		}
+#widgetFooter{
+	position:absolute;bottom:0px;
+	margin:0px 15px;
+	padding:5px 0px;
+	right:0px;
+}
+.theFooterText{
+	position:relative;right:0px;
+	bottom:0px;
+	float:right;
+}
+	.theFooterText a{
+		font-size: 11px;
+		color: #D8D8D8;
+	}
+.share{
+	padding-left: 16px;
+	background: url(../images/ico-share.png) no-repeat left top;
+	margin-left:4px;
+}
+.theSocialButtons{
+	background:#f3f3f3;
+	padding:6px 8px;
+	border:1px solid #e4e4e4;
+	position:absolute;
+	bottom:18px;
+	left:0px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px
+	}
+
+.theSoloFeedback{
+	display:block;
+}
+	.soloFeedbackAvatar{
+		width:50px;float:left;
+		text-align:center;
+	}
+	.soloFeedbackDetails{
+		margin-left:58px;
+	}
+	.soloFeedbackAuthor ul{
+		margin:0px;
+		padding:0px;
+		list-style:none;
+	}
+	.soloFeedbackAuthorCompany{
+		max-height:22px;
+	}
+	.soloFeedbackText{
+		height:280px;
+		line-height:18px;
+		margin:10px 0px;
+		color: #969696;
+	}
+	.back{
+		padding-left:7px;
+		background:url(../images/ico-back.png) left center no-repeat;
+	}
+	.back a{
+		color:#919191;
+	}
+.shareTail{background:url(../images/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
+	.twitter-button{margin-top:0px;float:left;width:80px;}
+	.facebook-button{float:left;width:80px;}
+	
+.thePagination{
+	margin-top:10px;
+	text-align:center;
+	position:relative;
+	width:100%;
+	color:#969696;
+	font-size:11px;
+}
+.pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
+	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
+	.pagination a.activeSlide{background:#bcbdbe;color:#FFF;}
+		#prev,#next{cursor:pointer;}
+		#prev:hover,#next:hover{color:#bcbdbe;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}

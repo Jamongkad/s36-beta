@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	color:#666;
+	background: #faf3e4;
+}
+a{color:#5c8ac0;}
+a:hover{color:#6896cb;}
+#s36_main{
+	background:#faf3e4 top repeat-x;
+}
+#s36_whitebar{
+	background:transparent;
+}
+
+.error-message{
+	background:url(../images/error-bg.png) repeat;
+	color:#212121;
+	border-top:2px solid #e5db58;
+	border-bottom:2px solid #e5db58;
+}
+/* classes */	
+
+/* crop button */
+a.cropbtn{
+	background:#8fa09b;
+	border:1px solid #8fa09b;
+	color:#FFF;
+	text-shadow:none;
+}
+a.cropbtn:hover{
+	background:#aab9b5;
+	border:1px solid #8fa09b;
+	color:#FFF;
+	text-shadow:none;
+}
+/* crop button */
+/* pages class */
+
+a.s36_btn{
+	background:#8fa09b;
+	border:1px solid #8fa09b;
+	color:#FFF;
+}
+a.s36_btn:hover{
+	background:#aab9b5;
+	border:1px solid #8fa09b;
+	color:#FFF;
+}
+
+	.s36_pages h1{background:#3d3c3a;color:#FFF;}
+	.s36_pages h3{color:#303030;}
+	.s36_pages h3 a.s36_tip{color:#c3c3c3;}
+	.s36_pages h4{color:#6f7375;}
+	#s36_whattowrite{
+		background:url(../images/ico-question.png) no-repeat top left
+	}
+/* trackbar styles */
+#s36_trackbar{
+	background:url(../images/boxy/trackbar.png) no-repeat;
+}
+
+/* rating page */
+#track_ball{background:url(../images/trackball.png) no-repeat;}
+
+#s36_ratings{color:#adafb0;}
+
+/* permission page */
+#s36_permissions{background:#900;}
+.s36_perm_details{
+	background:#f4f4f4;
+}
+.s36_perm_details .s36_perm_icon{
+	background:#ececec;
+}
+.full .s36_perm_details{background:#daeec9;}
+.full .s36_perm_icon{background:#daeec9;}
+.limited .s36_perm_details{background:#faf1d4;}
+.limited .s36_perm_icon{background:#faf1d4;}
+	.s36_perm_details .s36_perm_icon1,
+	.s36_perm_details .s36_perm_icon2,
+	.s36_perm_details .s36_perm_icon3{
+		background:url(../images/ico-perms.png) no-repeat;
+		background-position:0px 0px;
+	}
+	.s36_perm_details .s36_perm_icon2{
+		background-position:-40px 0px;
+	}
+	.s36_perm_details .s36_perm_icon3{
+		background-position:-80px 0px;
+	}
+	.s36_perm_text p{color:#7d8082;}
+/* form styles */
+.regular-textarea{
+	background:#f7f7f7;
+	border:1px solid #e1e1e1;
+}
+
+/* connect page */
+.s36_block .company{background:url(../images/s36-logo.png);}
+.s36_block .warning{background:#d1d4d4;}
+.gray{
+	background:#f0f0f0;
+}
+.s36_blue_btn{
+	background:#84b1ce;
+	color:#FFF;
+}
+.s36_blue_btn:hover{
+	background:#97c2de;
+}
+
+/* form styles */
+input.regular-text{border:1px solid #c5c9cb;color:#666;box-shadow:#f0f0f0 0px 0px 0px 3px;}
+input.reg-text-active{color:#999;}
+select.regular-select{border:1px solid #c5c9cb;color:#666;-webkit-box-shadow:#f0f0f0 0px 0px 0px 3px;box-shadow:#f0f0f0 0px 0px 0px 3px;}
+select.reg-text-active{color:#AAA;}
+select:focus{border:1px solid #b1d1e4;outline:#b1d1e4;-webkit-box-shadow:#daecf8 0px 0px 0px 3px;box-shadow:#daecf8 0px 0px 0px 3px;}
+input:focus{border:1px solid #b1d1e4;outline:#b1d1e4;box-shadow:#daecf8 0px 0px 0px 3px;}
+
+/* review page */
+
+/* review page slide */
+.review-avatar{background:#e6e8e8;}
+.review-feedback-box{background:#f7f7f7;border:1px solid #e1e1e1;}
+.review-edit-feedback a{color:#afb1b2;}
+.review-feedback-box .regular-textarea{background:#FFF;}
