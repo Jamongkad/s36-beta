@@ -368,12 +368,10 @@ jQuery(function($) {
     $(document).delegate("#your_photo", "change", function() {   
 		$.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
-            secureuri:true,
+            secureuri:false,
             fileElementId:'your_photo',
             dataType: 'json', 
             success: function (data, status) {	  
-
-                console.log(data);
 
                 var myStatus = new Status();
                 myStatus.notify("Photo Upload Success!", 1000);
