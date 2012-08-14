@@ -24,6 +24,9 @@ class S36Themes {
       , 'creative' => Array(
             'cloudy' => 'Cloudy'
           , 'salad' => 'Salad'
+          , 'boxy' => 'Boxy'
+          , 'blueshift' => 'Blue Shift'
+          , 'straight' => 'Straight'
       )
     );
  
