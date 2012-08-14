@@ -1,11 +1,11 @@
 #widget{
-	width:250px;
-	height:500px;
+	width:244px;
+	height:497px;
 	padding:0px;
 	margin:0px;
 	min-width:250px;
 	position:relative;
-	background:#f6f6f6;
+	background:#e6eaef url(../images/mainbg.png) top repeat-x;
 }
 .block{
 	display:block;
@@ -20,10 +20,9 @@
 	visibility: hidden;
 }
 .widgetStyledBorder{
-	border-top:1px solid #e0e0e0;
-	height:6px;
-	background:url(/img/border.png) center;
-	margin:0px 0px;
+	height:7px;
+	/* background:url(../images/border.png); */
+	margin:0px 15px;
 }
 #widgetHeader{
 	padding:10px 15px;
@@ -31,9 +30,10 @@
 	.theWidgetTitle{
 		font-size: 12px;
 		font-weight: bold;
-		color: #72777A;
+		color: #ffffff;
 		width: 100%;
 		text-align:center;
+		font-family:Georgia, "Times New Roman", Times, serif;
 	}
 	.theWidgetButtons{
 		margin:2px 15px;
@@ -48,7 +48,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(/img/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
@@ -68,16 +68,18 @@
 		width:100%;
 	}
 	.theFeedback{
-		margin-bottom:7px;
-		border-bottom:1px solid #e0e0e0;
-		padding-bottom:3px;
+		margin-bottom:10px;
+		background:#FFF;
 	}
 	.theFeedbackAvatar{
 			width:48px;
 			float:left;
+			padding-top:3px;
+			padding-left:3px;
 		}
 		.theFeedbackAuthorInfo{
 			margin-left:58px;
+			padding-top:3px;
 		}
 		.theFeedbackAuthorCompany{
 			max-height:22px;
@@ -169,7 +171,7 @@
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#d6d6d6;color:#898989;}
-		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#9c9c9c;}	
-		.pagination a:hover{color:#9c9c9c;text-decoration:underline;}		
+	.pagination a.activeSlide{background:#728ba1;color:#FFF;}
+		#prev,#next{cursor:pointer;color:#728ba1;}
+		#prev:hover,#next:hover{color:#8e9f9a;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}

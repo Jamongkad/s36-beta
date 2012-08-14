@@ -77,9 +77,6 @@ return array(
 
     'GET /login' => function() use($company_name) {
         $auth = new S36Auth;
-        //$company = Input::get('subdomain');
-        //$company = Config::get('application.subdomain');
-
         if($auth->check()) { 
             return forward_or_dash();
         } else {
@@ -93,7 +90,6 @@ return array(
     'POST /login' => function() use($company_name) {
         $input = Input::get();        
         $auth = new S36Auth;
-        //$company = Config::get('application.subdomain');
 
         $rules = Array(
             'username' => 'required'
@@ -144,7 +140,6 @@ return array(
     },
 
     'GET /resend_password' => function() use($company_name) {  
-        //$company = Config::get('application.subdomain');
         return View::of_home_layout()->partial('contents', 'home/resend_password_view', Array(
                                                    'errors'  => Array()
                                                  , 'warning' => null
@@ -154,8 +149,6 @@ return array(
     'POST /resend_password' => function() use($company_name) {
         $admin = new DBadmin; 
         $data = Input::get();
-        //$company = Config::get('application.subdomain');
-
         $rules = Array('email' => 'required|email');
  
         $validator = Validator::make($data, $rules);

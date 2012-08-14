@@ -1,11 +1,14 @@
 #widget{
-	width:250px;
-	height:500px;
+	width:244px;
+	height:497px;
 	padding:0px;
 	margin:0px;
 	min-width:250px;
 	position:relative;
-	background:#f6f6f6;
+	background:#faf3e4;
+	border-left:3px solid #3d3c3a;
+	border-right:3px solid #3d3c3a;
+	border-bottom:3px solid #3d3c3a;
 }
 .block{
 	display:block;
@@ -20,20 +23,21 @@
 	visibility: hidden;
 }
 .widgetStyledBorder{
-	border-top:1px solid #e0e0e0;
-	height:6px;
-	background:url(/img/border.png) center;
-	margin:0px 0px;
+	height:7px;
+	/* background:url(../images/border.png); */
+	margin:0px 15px;
 }
 #widgetHeader{
 	padding:10px 15px;
+	background:#ededed url(../images/boxy-header-bg.jpg) bottom repeat-x;
 }
 	.theWidgetTitle{
 		font-size: 12px;
 		font-weight: bold;
-		color: #72777A;
+		color: #ffffff;
 		width: 100%;
 		text-align:center;
+		font-family:Georgia, "Times New Roman", Times, serif;
 	}
 	.theWidgetButtons{
 		margin:2px 15px;
@@ -48,7 +52,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(/img/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
@@ -68,9 +72,7 @@
 		width:100%;
 	}
 	.theFeedback{
-		margin-bottom:7px;
-		border-bottom:1px solid #e0e0e0;
-		padding-bottom:3px;
+		margin-bottom:10px;
 	}
 	.theFeedbackAvatar{
 			width:48px;
@@ -169,7 +171,7 @@
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#d6d6d6;color:#898989;}
+	.pagination a.activeSlide{background:#8fa09b;color:#FFF;}
 		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#9c9c9c;}	
-		.pagination a:hover{color:#9c9c9c;text-decoration:underline;}		
+		#prev:hover,#next:hover{color:#8fa09b;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}	

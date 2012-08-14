@@ -3,8 +3,8 @@
 	height:300px;
 	padding:0px;
 	margin:0px;	
-	min-width:760px;
-	background:#f6f6f6;
+	min-width:750px;
+	background:#FFF;
 }
 .block{
 	display:block;
@@ -20,24 +20,27 @@
 	visibility: hidden;
 }
 .widgetStyledBorder{
-	height:8px;
-	background:url(/img/border.png) no-repeat center;
-	margin:0px;
+	height:7px;
+	/*background:url(../images/border.png);*/
+	margin:0px 15px;
 }
 
 /* here comes the css styles for this widget! */
 #widgetHeader{
-	padding:10px 15px;
+	padding:7px 15px 6px;
+	background:#5b80b6 url(../images/headerbg.png) no-repeat right center;
+	-webkit-border-radius:0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
 }
 	.theWidgetTitle{
 		font-size: 18px;
-		font-weight: bold;
-		color: #CCC;
+		font-weight: normal;
+		color: #FFF;
 		text-align: left;
 		width: 70%;
 		float: left;
-		padding-top:4px;
-		text-shadow:#FFF 0px 1px;
+		padding-top:2px;
 	}
 	.theWidgetButtons{
 	
@@ -52,16 +55,13 @@
 			font-weight:bold;
 		}
 		.viewAllFeedbackButton input{
-			background: url(/img/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
 			border: none;
 			cursor: pointer;
 			border-image: initial;
-		}
-		.viewAllFeedbackButton input:hover{
-			background-position: bottom;
 		}
 /* end of header styles */
 #widgetBody{
@@ -184,10 +184,10 @@
 }
 .pagination{text-align:center;font-size:11px;padding:0px 0px;margin-bottom:3px;overflow:hidden}
 	.pagination a{padding:2px 3px;color:#929191;text-decoration:none;}
-	.pagination a.activeSlide{background:#bdbdbf;color:#FFF;}
+	.pagination a.activeSlide{background:#bcbdbe;color:#FFF;}
 		#prev,#next{cursor:pointer;}
-		#prev:hover,#next:hover{color:#CCC;}	
-		.pagination a:hover{color:#CCC;text-decoration:underline;}
+		#prev:hover,#next:hover{color:#bcbdbe;}	
+		.pagination a:hover{color:#dbdbdb;text-decoration:underline;}
 
 /*fb like button hack*/
 .fb_send_button_form_widget{top:-198px !important;}
