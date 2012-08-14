@@ -9,7 +9,7 @@ a:hover{color:#54a1c0;}
 
 #headerWrapper{
 	padding-bottom:10px;
-	background:#FFF url(images/cloudy/bot-curve.jpg) repeat-x bottom;
+	background:#3fafd4 url(images/cloudy/bot-curve.jpg) repeat-x bottom;
 }
 
 #headerTitle{
@@ -32,11 +32,11 @@ a:hover{color:#54a1c0;}
 /* feedbacks */
 .feedback{background:#FFF;border:1px solid #54c3e8;box-shadow:#DDD 0px 1px 3px;}
 .featured{background:#3fafd4;border:1px solid #2995b8;}
-.featured .feedbackAuthor h2{color:#1982ad;}
+.featured .feedbackAuthor h2{color:#FFF;}
 .featured .feedbackAuthor h4{color:#2c2a2a;}
 .featured .feedbackTextTail{background:url(../../../img/featured-bubble-tail.png) no-repeat;}
 .featured .feedbackTextBubble{background:#FFF;}
-.featured .feedbackDate{color:#7bb5e5;text-shadow:#FFF 0px 1px;}
+.featured .feedbackDate{color:#FFF;}
 /* normal */
 .normal .feedbackAuthor h2{color:#1982ad;}
 .normal .feedbackAuthor h4{color:#2c2a2a;}
