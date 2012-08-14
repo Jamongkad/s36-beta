@@ -39,12 +39,13 @@ div{
 	color:#aaa;
 	text-shadow:#EEE 0px 1px;
 }
+.padfix{padding-top:5px;}
+.padfix a{font-weight:normal !important;font-size:12px !important; }
+.right{float:right}
 #headerTitle strong{color:#5d96d5;}
 #headerTitle span {padding-left:20px;text-shadow:#EEE 0px 1px;}
 #headerTitle span a{color:#000;font-size:14px;font-weight:bold;}
 #headerTitle a:hover{color:#666;}
-.padfix{padding-top:5px;}
-.padfix a{font-weight:normal !important;font-size:12px !important; }
 #bodyWrapper{
 	width:100%;
 }
@@ -90,9 +91,9 @@ div{
 
 /* page style not the form style */
 .companyLogo{float:left;width:252px;}
-.companyDetails{margin-left:272px;display:block;color:#000;}
-.companyDetails h2{font-weight:normal;font-size:22px;margin-left:2px;margin:10px 0px 6px;}
-.companyDetails p{line-height:1.8em;font-size:14px;color:#000;margin-left:2px;}
+.companyDetails{float:left;width:618px;padding-left:30px;}
+.companyDetails h2{font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;margin-top:2px;}
+.companyDetails p{line-height:1.6em;font-size:14px;}
 .companyLinks{background:#FFF;padding:5px;border-bottom:1px solid #CCC;}
 .companyLinks ul{list-style:none;margin:0px;padding:5px;}
 .companyLinks ul li{display:inline;padding:5px 5px 5px 10px;}
