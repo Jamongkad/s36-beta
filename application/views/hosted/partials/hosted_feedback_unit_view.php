@@ -71,7 +71,6 @@
                                <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span>
                            <?endif?>
                         <?endif?>
-
                     </p> 
                 </div>
             </div>
