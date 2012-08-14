@@ -4,7 +4,7 @@
             <div class="feedbackAuthor">
                 <div class="feedbackAuthorAvatar">
                     <?if($type == 'featured'):?>
-                        <?if($feed->avatar):?>
+                        <?if($feed->avatar or $feed->displayimg):?>
                             <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
                         <?else:?>
                             <img src="/img/blank-avatar.png" />
