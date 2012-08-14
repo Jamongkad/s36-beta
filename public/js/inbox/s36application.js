@@ -366,6 +366,8 @@ jQuery(function($) {
 
     $('div.adjust-crop').hide();
     $(document).delegate("#your_photo", "change", function() {   
+        console.log("pwet");
+        /*
 		$.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
             secureuri:false,
@@ -401,6 +403,7 @@ jQuery(function($) {
                 initJcrop();
             }
 		}); 
+        */
     });
 
     $('#cropbtn').click(function(){ 
