@@ -26,7 +26,7 @@
 }
 #widgetHeader{
 	padding:10px 15px;
-	background:#4a6b9a url(../images/straight/headerbg.png) no-repeat left center;
+	background:#4a6b9a url(images/straight/headerbg.png) no-repeat left center;
 }
 	.theWidgetTitle{
 		font-size: 12px;
@@ -48,7 +48,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(../images/straight/viewallbtn.png) no-repeat;
+			background: url(images/straight/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
@@ -107,7 +107,7 @@
 	}
 .share{
 	padding-left: 16px;
-	background: url(../images/ico-share.png) no-repeat left top;
+	background: url(/img/ico-share.png) no-repeat left top;
 	margin-left:4px;
 }
 .theSocialButtons{
@@ -148,12 +148,12 @@
 	}
 	.back{
 		padding-left:7px;
-		background:url(../images/ico-back.png) left center no-repeat;
+		background:url(/img/ico-back.png) left center no-repeat;
 	}
 	.back a{
 		color:#919191;
 	}
-.shareTail{background:url(../images/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
+.shareTail{background:url(/img/share-arrow.png) no-repeat;width:11px;height:7px;position:absolute;bottom:-7px;left:3px;}
 	.twitter-button{margin-top:0px;float:left;width:80px;}
 	.facebook-button{float:left;width:80px;}
 	
