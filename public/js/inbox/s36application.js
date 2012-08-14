@@ -365,13 +365,15 @@ jQuery(function($) {
     };
 
     $('div.adjust-crop').hide();
+    /*
     $("#your_photo").fileupload({
         dataType: 'json'  
       , done: function(e, data) {
             console.log(data.result);
         }
     });
-    /*
+    */
+
     $(document).delegate("#your_photo", "change", function() {   
 		$.ajaxFileUpload ({
             url: $("#ajax-upload-url").attr('hrefaction'),
@@ -409,7 +411,7 @@ jQuery(function($) {
             }
 		}); 
     });
-    */
+
     $('#cropbtn').click(function(){ 
         var x_coords = $('#x').val();
         var y_coords = $('#y').val();
