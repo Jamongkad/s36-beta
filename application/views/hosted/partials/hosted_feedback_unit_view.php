@@ -4,12 +4,15 @@
             <div class="feedbackAuthor">
                 <div class="feedbackAuthorAvatar">
                     <?if($type == 'featured'):?>
-                        <?if($feed->avatar or $feed->displayimg):?>
-                            <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
+                        <?if($feed->displayimg):?>
+                            <?if($feed->avatar):?>
+                                <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
+                            <?else:?>
+                                <img src="/img/blank-avatar.png" />
+                            <?endif?>
                         <?else:?>
                             <img src="/img/blank-avatar.png" />
                         <?endif?>
-                        <?=$feed->displayimg?>
                     <?else:?>
                         <?if($feed->avatar):?>
                             <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
