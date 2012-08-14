@@ -11,6 +11,10 @@
         <?=HTML::style('css/widget_master/grids.css')?> 
         <?=HTML::style('css/widget_master/hosted-single.css');?>
 
+        <?if($hosted):?>
+            <?=HTML::style('themes/hosted/single/hosted-single-'.$hosted->theme_type.'.css');?>
+        <?endif?>
+
         <meta property="og:title" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:description" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:type" content="article"/> 
