@@ -163,10 +163,10 @@ return array(
     'POST /feedback/change_feedback_state' => function() use ($feedback) { 
         $feed_ids   = Input::get('feed_ids');
         $cat_id     = Input::get('cat_id');
-        $catstate   = Input::get('catstate');
         $mode       = Input::get('mode');         
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
+        //$catstate   = Input::get('catstate');
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
     },

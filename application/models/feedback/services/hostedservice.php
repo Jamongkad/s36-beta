@@ -85,7 +85,6 @@ class HostedService {
         
         //Debugger
         if($this->debug == True) {          
-
             /*
             Helpers::dump('-------------------------');
             Helpers::dump("Featured");
