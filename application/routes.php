@@ -1,8 +1,11 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
-$hosted = new Widget\Repositories\DBHostedSettings;
+$hosted_settings = new Widget\Repositories\DBHostedSettings;
+$dbw = new Widget\Repositories\DBWidget;
+$company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
+
 return array(
 
 	/*
@@ -19,21 +22,17 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name) { 
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company) { 
         //consider placing this into a View Object
-        $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_name); 
 
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
 
-        $dbw = new Widget\Repositories\DBWidget;
         $widget = $dbw->fetch_canonical_widget($company_name);
 
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
-
         $deploy_env = Config::get('application.deploy_env');
 
         echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view', Array(  
@@ -42,18 +41,15 @@ return array(
                                                    , 'hosted' => $hosted_settings->hosted_settings()));        
     },
 
-    'GET /(:any)/submit' => function($company_name) {
-        $dbw = new Widget\Repositories\DBWidget;
+    'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
-        $company = new Company\Repositories\DBCompany;
         $widget = $wl->load();
+
         $company_info = $company->get_company_info($widget->company_id);
         
         $hostname = Config::get('application.hostname');
-
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
@@ -63,12 +59,12 @@ return array(
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },
 
-    'GET /single/(:num)' => function($id) use ($feedback) { 
+    'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings) { 
+
         $feedback = $feedback->pull_feedback_by_id($id);
         $fb_id = Config::get('application.fb_id');
         $deploy_env = Config::get('application.deploy_env');
 
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));
 
         return View::make('hosted/hosted_feedback_single_view', Array(
@@ -196,7 +192,6 @@ return array(
     'GET /password_reset' => function() use($company_name) { 
         $data = Input::get();
         $encrypt = new Encryption\Encryption;
-        //$company = Config::get('application.subdomain');
 
         $params = explode("|", $encrypt->decrypt($data['k']));
         //I am the only key to user passwords!!! MWHAHAHA
