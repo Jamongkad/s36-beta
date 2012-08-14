@@ -89,9 +89,9 @@
                         <?=HTML::link('single/'.$feed->id, 'view feedback')?>
                     </div>
                 <?endif?>
-                <?$date = $feed->date;
-                  $unix = strtotime($date);
-                  echo date('M j, Y', $unix)?>
+                <?if($feed->displaysbmtdate):?>
+                    <?=date('M j, Y', strtotime($feed->date))?>
+                <?endif?>
             </div>
         </div>
         <?php
