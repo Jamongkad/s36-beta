@@ -246,7 +246,6 @@ return array(
         $test->build_data();
         Helpers::dump($test->fetch_data_by_set());
 
-
         $time_end = microtime(True);
         $time = $time_end - $time_start;
         Helpers::dump("Algorithm: ".$time." seconds");

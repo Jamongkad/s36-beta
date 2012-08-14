@@ -9,6 +9,7 @@
                         <?else:?>
                             <img src="/img/blank-avatar.png" />
                         <?endif?>
+                        <?=$feed->displayimg?>
                     <?else:?>
                         <?if($feed->avatar):?>
                             <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
