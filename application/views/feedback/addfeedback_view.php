@@ -134,8 +134,7 @@
                                     <input type="file" 
                                            id="your_photo" 
                                            class="fileupload" 
-                                           name="your_photo" 
-                                           data-url="<?=URL::to('/widget/form/upload')?>"/> 
+                                           name="your_photo" /> 
                                 </div>
                             </div>
                         </div>
