@@ -497,14 +497,13 @@ jQuery(function($) {
     });
 
     $(document).delegate('.feedback-data-table input[type=checkbox]', 'click', function(e) {
-        //console.log($(this).val()); 
         var column_name = $(this).attr('name');
         var check_val = $(this).attr('checked');
         var feedid = $('.fast-forward-holder').attr('id');
         
         $.ajax({ 
             type: "POST"     
-          , url: $("#toggle_url").attr("hrefaction")
+          , url: '/feedback/toggle_feedback_display'//$("#toggle_url").attr("hrefaction")
           , data: {column_name: column_name, check_val: check_val, feedid: feedid}
           , success: function(msg) {
                 var myStatus = new Status();
