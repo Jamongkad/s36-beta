@@ -501,8 +501,7 @@ jQuery(function($) {
         var check_val = $(this).attr('checked');
         var feedid = $('.fast-forward-holder').attr('id');
 
-        $.ajax({url: "/feedback/bust_hostfeed_data"});
-        
+        $.ajax({url: "/feedback/bust_hostfeed_data"}); 
         $.ajax({ 
             type: "POST"     
           , url: '/feedback/toggle_feedback_display'//$("#toggle_url").attr("hrefaction")
