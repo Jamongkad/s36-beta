@@ -30,8 +30,7 @@
 
                     if($feed->companyname == false && $feed->position) {
                         $comp = "<span>".ucwords($feed->position)."</span>";
-                    }
- 
+                    } 
                 ?>
                 <?php 
                    $location = null;
