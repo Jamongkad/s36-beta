@@ -21,9 +21,6 @@ div{
 	background:url(../../img/gray-bg.jpg) repeat-x;
 	height:42px;
 	width:100%;
-	box-shadow:#aaa 0px 1px 5px;
-	border-top:#DDD 1px solid;
-	border-bottom:#BBB 1px solid;
 }
 
 .left{float:left;text-align:left !important;}
