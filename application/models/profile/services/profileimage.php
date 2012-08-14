@@ -198,7 +198,7 @@ class ProfileImage {
         }else{
                                 
                 $filename = date("Ydmhis").$_FILES[$file]['name'];
-                $filedir = "uploaded_tmp/".$filename;
+                $filedir = "/var/www/s36-upload-images/uploaded_tmp/".$filename;
                 $maxwidth = 350;
                 $maxheight = 230;
                 $move = move_uploaded_file($_FILES[$file]['tmp_name'], "/var/www/s36-upload-images/uploaded_tmp/".$filename);

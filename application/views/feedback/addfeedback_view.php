@@ -131,7 +131,10 @@
                             <label><strong>Add Photo :</strong> </label> <br />
                             <div style="padding-left:10px;font-weight:bold;">
                                 <div style="margin:5px 0px;">
-                                    <input type="file" id="your_photo" class="fileupload" name="your_photo" 
+                                    <input type="file" 
+                                           id="your_photo" 
+                                           class="fileupload" 
+                                           name="your_photo" 
                                            data-url="<?=URL::to('/widget/form/upload')?>"/> 
                                 </div>
                             </div>
