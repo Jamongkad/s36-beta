@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#FFF;
+}
+a{color:#4894b3;text-decoration:none;}
+a:hover{color:#54a1c0;}
+
+#headerWrapper{
+	padding-bottom:10px;
+	background:#3fafd4 url(images/cloudy/bot-curve.jpg) repeat-x bottom;
+}
+
+#headerTitle{
+	color:#FFF;
+}
+#headerTitle strong{color:#FFF;}
+#headerTitle span {text-shadow:none;}
+#headerTitle span a{color:#FFF;}
+#headerTitle a:hover{color:#EEE;}
+
+#feedbackBox{background:#FFF;border:1px solid #54c3e8;box-shadow:#DDD 0px 1px 3px;}
+#feedbackBox{background:#3fafd4;border:1px solid #2995b8;}
+.theAuthorName{color:#FFF;}
+.theAuthorCompany{color:#EEE;}
+.theDate{color:#DDD;}
+.theText{color:#FFF;}
+.gray-text{color:#FFF}
+.gray-text a{color:#036;}
+.gray-text a:hover{color:#039;}
+.theAvatar{
+	border:1px solid #AAA;
+}
+
+	

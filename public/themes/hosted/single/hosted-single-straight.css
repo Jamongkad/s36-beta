@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#FFF;
+}
+a{color:#4894b3;text-decoration:none;}
+a:hover{color:#54a1c0;}
+
+#headerWrapper{
+	background:#5b80b6 url(../images/straight/headerbg.png)  center no-repeat;
+	/* box-shadow:#CCC 0px 1px 5px; */
+}
+
+#headerTitle{
+	color:#aaa;
+}
+#headerContent{
+	
+}
+#pageTitle h1{color:#171616;}
+#headerTitle strong{color:#FFF;}
+#headerTitle span {text-shadow:none;}
+#headerTitle span a{color:#EEE;}
+#headerTitle a:hover{color:#FFF;}
+
+#feedbackBox{background:#e6eaef;box-shadow:none;}
+#feedbackBox{background:#e6eaef;border:1px solid #e6eaef;}
+.gray-text{color:#666}
+.gray-text a{color:#222;}
+.gray-text a:hover{color:#333;}
+.theAvatar{
+	border:1px solid #AAA;
+}

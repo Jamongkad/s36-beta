@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#FFF;
+}
+a{color:#4894b3;text-decoration:none;}
+a:hover{color:#54a1c0;}
+
+#headerWrapper{
+	padding-bottom:10px;
+	background:#FFF url(../images/salad/salad-bg.png) repeat-x bottom;
+}
+
+#headerTitle{
+	color:#000;
+}
+#headerTitle strong{color:#000;}
+#headerTitle span {}
+#headerTitle span a{color:#000;}
+#headerTitle a:hover{color:#999;}
+
+#feedbackBox{background:#FFF;border:1px solid #e0e0e0;box-shadow:#DDD 0px 1px 3px;}
+#feedbackBox{background:#ebebeb;border:1px solid #e0e0e0;}
+.gray-text{color:#666}
+.gray-text a{color:#222;}
+.gray-text a:hover{color:#333;}
+.theAvatar{
+	border:1px solid #AAA;
+}

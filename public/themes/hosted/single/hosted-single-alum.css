@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#FFF;
+}
+a{color:#4894b3;text-decoration:none;}
+a:hover{color:#54a1c0;}
+
+#headerWrapper{
+	background:#f6f6f6;
+	box-shadow:#CCC 0px 1px 5px;
+}
+
+#headerTitle{
+	color:#aaa;
+}
+#headerTitle strong{color:#5d96d5;}
+#headerTitle span {}
+#headerTitle span a{color:#000;}
+#headerTitle a:hover{color:#666;}
+
+#feedbackBox{background:#FFF;border:1px solid #c3c7ca;box-shadow:#DDD 0px 1px 4px;}
+#feedbackBox{background:#efefef;border:1px solid #c3c7ca;}
+
+.gray-text{color:#a0a0a0}
+.theAvatar{
+	border:1px solid #AAA;
+}
+
+	
