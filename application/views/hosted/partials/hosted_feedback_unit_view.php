@@ -68,9 +68,12 @@
                             </span>
                         <?endif?>
 
-                       <?if($feed->countrycode):?>
-                           <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span>
-                       <?endif?>
+                        <?if($feed->displaycountry):?>
+                           <?if($feed->countrycode):?>
+                               <span class="flag flag-<?=strtolower($feed->countrycode)?>"></span>
+                           <?endif?>
+                        <?endif?>
+
                     </p> 
                 </div>
             </div>
