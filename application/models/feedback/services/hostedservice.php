@@ -33,9 +33,13 @@ class HostedService {
     }
 
     public function view_fragment() { 
-        //Helpers::dump($this->fetch_data_by_set());
-        return View::make('hosted/partials/hosted_feedback_partial_view', 
-            Array('collection' => $this->fetch_data_by_set(), 'fb_id' => Config::get('application.fb_id')))->get();
+        if($this->debug == True) {
+            Helpers::dump($this->fetch_data_by_set());     
+        } else { 
+            return View::make('hosted/partials/hosted_feedback_partial_view', 
+                Array('collection' => $this->fetch_data_by_set(), 'fb_id' => Config::get('application.fb_id')))->get();
+        }
+       
     }
 
     public function cached_data($data_obj) {
