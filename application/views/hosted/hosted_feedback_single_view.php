@@ -80,8 +80,7 @@
                     <div class="theDate">
                         <span>
                             <?
-                            $date = $feedback->date;
-                            $unix = strtotime($date);
+                            $unix = strtotime($feedback->date);
                             echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
                         </span>
                     	<span class="flag flag-<?=strtolower($feedback->countrycode)?> flag-fix"></span>

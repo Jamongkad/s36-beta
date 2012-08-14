@@ -3,7 +3,7 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 
 return array(
-
+    /* DEPRECATED
     'GET /hosted/form/(:any)' => function($widget_id) { 
 
         $wl = new Widget\Services\WidgetLoader($widget_id); 
@@ -18,6 +18,7 @@ return array(
         ));
 
     },
+    */
 
     'GET /hosted/single/(:num)' => function($id) use ($feedback) { 
         $feedback = $feedback->pull_feedback_by_id($id);
