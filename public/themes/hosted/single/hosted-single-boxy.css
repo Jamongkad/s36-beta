@@ -9,13 +9,12 @@ a:hover{color:#54a1c0;}
 
 #headerWrapper{
 	padding-bottom:0px;
-	background:url(../images/boxy/boxy-header-bg.jpg) repeat-x bottom;
+	background:url(images/boxy/boxy-header-bg.jpg) repeat-x bottom;
 }
 
 #headerTitle{
 	color:#b5b5b5;
-		text-shadow:none;
-		
+	text-shadow:none;		
 }
 #pageTitle h1{color:#171616}
 #headerTitle strong{color:#FFF;	text-shadow:none;}

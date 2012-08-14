@@ -8,7 +8,7 @@ a{color:#4894b3;text-decoration:none;}
 a:hover{color:#54a1c0;}
 
 #headerWrapper{
-	background: url(../images/silver/header-bg.png) repeat-x;
+	background: url(images/silver/header-bg.png) repeat-x;
 	border-top:1px solid #CCC;
 	border-bottom:1px solid #AAA;
 	box-shadow:#999 0px 0px 6px;
@@ -23,7 +23,7 @@ a:hover{color:#54a1c0;}
 #headerTitle a:hover{color:#999;}
 
 #feedbackBox{background:#000;box-shadow:none;color:#AAA}
-#feedbackBox{background:#FFF url(../images/silver/featured-bg.png) repeat-x;border:1px solid #CCC;}
+#feedbackBox{background:#FFF url(images/silver/featured-bg.png) repeat-x;border:1px solid #CCC;}
 .gray-text{color:#666}
 .gray-text a{color:#222;}
 .gray-text a:hover{color:#333;}
