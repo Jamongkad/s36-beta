@@ -201,7 +201,7 @@ class ProfileImage {
                 $filedir = "/var/www/s36-upload-images/uploaded_tmp/".$filename;
                 $maxwidth = 350;
                 $maxheight = 230;
-                $move = move_uploaded_file($_FILES[$file]['tmp_name'], "/var/www/s36-upload-images/uploaded_tmp/".$filename);
+                $move = move_uploaded_file($_FILES[$file]['tmp_name'], $filedir);
                 if($move){    
                      //start image resizing..
                      //Change this...
@@ -217,7 +217,7 @@ class ProfileImage {
 
         echo json_encode(Array(
             "error" => $error
-          , "dir" => $filedir
+          , "dir" => "uploaded_temp/".$filename
           , "wid" => $width
         ));
     }
