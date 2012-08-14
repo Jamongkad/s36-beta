@@ -109,7 +109,6 @@
                     <?endif?>
                 </div>
                 <div class="g1of5" align="right"> 
-                    <br/>
                     <a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a>
                 </div>
             </div>
