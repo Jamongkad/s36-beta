@@ -39,19 +39,20 @@
                     } 
                 ?>
                 <?php 
-                   $location = null;
-                    if($feed->countryname && $feed->city) {
-                        $location = $feed->countryname.', '.$feed->city;
-                    }
+                    $location = null;
+                    if($feed->displaycountry) { 
+                        if($feed->countryname && $feed->city) {
+                            $location = $feed->countryname.', '.$feed->city;
+                        }
 
-                    if($feed->countryname && $feed->city == false) {
-                        $location = $feed->countryname; 
-                    }
+                        if($feed->countryname && $feed->city == false) {
+                            $location = $feed->countryname; 
+                        }
 
-                    if($feed->countryname == false && $feed->city) {
-                        $location = $feed->city;
+                        if($feed->countryname == false && $feed->city) {
+                            $location = $feed->city;
+                        }
                     }
-
                 ?>
                 <div class="feedbackAuthorDetails">
                     <h2><?=$feed->firstname?> <?=$feed->lastname?></h2>
