@@ -244,6 +244,8 @@ return array(
         $test->debug = True;
         $test->fetch_hosted_feedback(); 
         $test->build_data();
+        Helpers::dump($test->fetch_data_by_set());
+
 
         $time_end = microtime(True);
         $time = $time_end - $time_start;
