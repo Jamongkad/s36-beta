@@ -368,7 +368,7 @@ jQuery(function($) {
     $("#your_photo").fileupload({
         dataType: 'json'  
       , done: function(e, data) {
-            console.log(data);
+            console.log(data.result);
         }
     });
     /*
