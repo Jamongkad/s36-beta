@@ -500,6 +500,8 @@ jQuery(function($) {
         var column_name = $(this).attr('name');
         var check_val = $(this).attr('checked');
         var feedid = $('.fast-forward-holder').attr('id');
+
+        $.ajax({url: "/feedback/bust_hostfeed_data"});
         
         $.ajax({ 
             type: "POST"     
