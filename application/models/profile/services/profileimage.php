@@ -217,7 +217,7 @@ class ProfileImage {
 
         echo json_encode(Array(
             "error" => $error
-          , "dir" => "uploaded_temp/".$filename
+          , "dir" => "uploaded_tmp/".$filename
           , "wid" => $width
         ));
     }
