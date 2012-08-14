@@ -14,5 +14,4 @@ abstract class EmailFixture {
     public function gather($email_data) {}
     public function send() {}
     public function get_subject() {}
-
 }
