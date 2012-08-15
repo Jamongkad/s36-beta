@@ -7,6 +7,17 @@ body{
 }
 a{color:#5c8ac0;}
 a:hover{color:#6896cb;}
+#headerWrapper{
+	background:#232323;
+}
+
+#headerTitle{
+	color:#FFF;
+}
+#headerTitle strong{color:#FFF;text-shadow:none;}
+#headerTitle span {text-shadow:none;}
+#headerTitle span a{color:#AAA;text-shadow:none;}
+#headerTitle a:hover{color:#FFF;text-shadow:none;}
 #s36_main{
 	background:#FFF;
 }
@@ -62,6 +73,10 @@ a.cropbtn:hover{
 		background:url(../../../img/ico-question.png) no-repeat top left;
 	}
 	#s36_whattowrite ul{}
+/* trackbar styles */
+#s36_trackbar{
+	/*background:url(../../../img/dark/trackbar.png) no-repeat !important;*/
+}
 
 /* rating page */
 #track_ball{background:url(../../../img/trackball.png) no-repeat;}
@@ -117,7 +132,6 @@ a.cropbtn:hover{
 }
 
 /* form styles */
-.regular-textarea.reg-text-active{color:#AAA;}
 input.regular-text{background:#131313;border:1px solid #272727;color:#666;box-shadow:#1c1c1c 0px 0px 0px 3px;}
 input.reg-text-active{color:#999;}
 select.regular-select{background:#131313;border:1px solid #272727;color:#666;-webkit-box-shadow:#1c1c1c 0px 0px 0px 3px;box-shadow:#1c1c1c 0px 0px 0px 3px;}
@@ -131,3 +145,15 @@ input:focus{border:1px solid #AAA;outline:#5d5d5d;box-shadow:#222 0px 0px 0px 3p
 .review-edit-feedback a{color:#afb1b2;}
 .review-feedback-box .regular-textarea{background:#000;}
 .regular-textarea{background:#000;border:1px solid #333;color:#FFF;}
+
+/* Company Details Block */
+.companyDetails h2,.companyDetails p{
+	color:#999;
+}
+.companyLinks{
+	background:#1e1e1e;
+	border-bottom:#333;
+}
+.companyLinks ul li{
+	border-right:1px solid #333;
+}
