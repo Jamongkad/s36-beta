@@ -5,7 +5,7 @@
 	margin:0px;
 	min-width:250px;
 	position:relative;
-	background:#e6eaef url(images/blueshift/mainbg.png) top repeat-x;
+	background:#e6eaef url(../images/mainbg.png) top repeat-x;
 }
 .block{
 	display:block;
@@ -48,7 +48,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(images/blueshift/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;

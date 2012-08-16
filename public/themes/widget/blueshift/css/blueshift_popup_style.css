@@ -62,7 +62,7 @@
 			font-weight:bold;
 		}
 		.viewAllFeedbackButton input{
-			background: url(images/blueshift/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;

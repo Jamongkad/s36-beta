@@ -33,7 +33,7 @@
 	-webkit-border-radius:0px;
 	-moz-border-radius:0px;
 	border-radius:0px;
-	background:url(images/boxy/boxy-header-bg.jpg) repeat-x bottom;
+	background:url(../images/boxy-header-bg.jpg) repeat-x bottom;
 }
 	.theWidgetTitle{
 		font-size: 21px;
@@ -62,7 +62,7 @@
 			font-weight:bold;
 		}
 		.viewAllFeedbackButton input{
-			background: url(images/boxy/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;

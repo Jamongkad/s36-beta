@@ -29,7 +29,7 @@
 }
 #widgetHeader{
 	padding:10px 15px;
-	background:#ededed url(images/boxy/boxy-header-bg.jpg) bottom repeat-x;
+	background:#ededed url(../images/boxy-header-bg.jpg) bottom repeat-x;
 }
 	.theWidgetTitle{
 		font-size: 12px;
@@ -52,7 +52,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(images/boxy/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;

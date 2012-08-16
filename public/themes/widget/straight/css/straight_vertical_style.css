@@ -26,7 +26,7 @@
 }
 #widgetHeader{
 	padding:10px 15px;
-	background:#4a6b9a url(images/straight/headerbg.png) no-repeat left center;
+	background:#4a6b9a url(../images/headerbg.png) no-repeat left center;
 }
 	.theWidgetTitle{
 		font-size: 12px;
@@ -48,7 +48,7 @@
 			font-weight:bold;
 		}
 	.viewAllFeedbackButton input{
-			background: url(images/straight/viewallbtn.png) no-repeat;
+			background: url(../images/viewallbtn.png) no-repeat;
 			background-position: top;
 			width: 96px;
 			height: 27px;
