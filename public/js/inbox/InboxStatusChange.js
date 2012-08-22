@@ -19,7 +19,8 @@ InboxStateObject.prototype.undo = function() {
     $(document).delegate("a.undo", "click", function(e) {
         //var feedid    = $(this).attr('href');
         //var href      = $(this).attr('hrefaction'); 
-        //var undo_type = $(this).attr('undo-type');
+
+        var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
 
         var current_catid = me.elem.attr('catid');
