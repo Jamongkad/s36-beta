@@ -154,10 +154,11 @@ a.cropbtn:hover{
 #s36_ratings{font-size:12px;font-weight:bold;}
 #s36_ratings ul{margin:0px;padding:0px;position:relative;height:25px;}
 #s36_ratings ul li	   	  {list-style:none;display:inline;margin:0px;padding:0px;position:absolute;top:0px;}
-#s36_ratings ul li.good	  {left:114px;}
+#s36_ratings ul li.good	  {left:330px;}
 #s36_ratings ul li.average{left:211px;}
-#s36_ratings ul li.poor	  {left:330px;}
-#s36_ratings ul li.bad	  {left:437px;}
+#s36_ratings ul li.poor	  {left:114px;}
+#s36_ratings ul li.bad	  {left:0px;}
+#s36_ratings ul li.excellent {left:407px;}
 
 /* permission page */
 #s36_permissions{}
@@ -342,3 +343,30 @@ select.reg-text-active{font-weight:normal;}
 .companyLinks ul li a.twitter{background-position:0px -50px;}
 
 p:first-child{margin-top:0px;}
+
+/* thank you page styles */
+.the-thank-you-page{
+	
+}
+
+.all-done-feedback-box{
+	margin:15px 0px;
+	padding:10px;
+	overflow-y:auto;
+	background:#f7f7f7;
+	border:1px solid #e1e1e1;
+	color:#595959;
+	height:140px;
+	line-height:18px;
+}
+.all-done-feedback-box p{margin:0px;line-height:18px;}
+
+.share-buttons{
+	
+}
+.share-buttons .fb-share-button{width:190px;float:left;margin-right:10px;}
+.share-buttons .tw-share-button{float:left;width:78px;}
+#fb-share-post-success{margin-top:10px;display:none;}
+.share-success{color:#9c9b9b;background:url(../images/ico-check.png) no-repeat left center;padding-left:15px;}
+.fb-like-link{margin-top:5px;}
+.tw-follow-link{margin-top:5px;}
