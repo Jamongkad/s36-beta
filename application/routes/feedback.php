@@ -166,7 +166,6 @@ return array(
         $mode       = Input::get('mode');         
         $company_id = (Input::get('company_id')) ? Input::get('company_id') : S36Auth::user()->companyid;
 
-        //$catstate   = Input::get('catstate');
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $company_id, $cat_id);
         $feedbackstate->change_state();
     },
