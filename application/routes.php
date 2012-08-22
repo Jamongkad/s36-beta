@@ -35,10 +35,10 @@ return array(
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $deploy_env = Config::get('application.deploy_env');
 
-        echo View::of_company_layout()->partial( 'contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                     'company' => $company_info, 'feeds' => $hosted->view_fragment()
-                                                   , 'widget' => $widget, 'deploy_env' => $deploy_env 
-                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
+        echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
+                                                    'company' => $company_info, 'feeds' => $hosted->view_fragment()
+                                                  , 'widget' => $widget, 'deploy_env' => $deploy_env 
+                                                  , 'hosted' => $hosted_settings->hosted_settings()));        
     },
 
     'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
