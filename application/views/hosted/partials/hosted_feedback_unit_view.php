@@ -28,23 +28,31 @@
                         || ($feed->companyname && $feed->position == false) 
                         || ($feed->companyname == false && $feed->position)
                       ) { 
-                        
-                        if($feed->displaycompany && $feed->displayposition) {
 
-                            $companyname = null;
-                            if($feed->companyname) {
-                                $companyname = ucwords($feed->companyname).', ';     
-                            }
-                           
-                            $comp = $companyname."<span>".ucwords($feed->position)."</span>";
+                        $companyname = null;
+                        $position = null;
+                        if($feed->companyname && $feed->position) {
+                            $companyname = ucwords($feed->companyname).', ';     
+                        }
+
+                        if($feed->companyname && $feed->position == false) {
+                            $companyname = ucwords($feed->companyname);
+                        }
+
+                        if($feed->position) {
+                            $position = "<span>".ucwords($feed->position)."</span>";
+                        }
+ 
+                        if($feed->displaycompany && $feed->displayposition) { 
+                            $comp = $companyname.$position;
                         }
 
                         if($feed->displaycompany && $feed->displayposition == false) {
-                            $comp = ucwords($feed->companyname); 
+                            $comp = ucwords($feed->companyname);
                         }
 
                         if($feed->displaycompany == false && $feed->displayposition) {
-                            $comp = "<span>".ucwords($feed->position)."</span>";
+                            $comp = $position; 
                         } 
 
                     }
