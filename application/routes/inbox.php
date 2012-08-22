@@ -36,6 +36,8 @@ return array(
         reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
 
+        print_r("Chiong Aaaah");
+
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination
