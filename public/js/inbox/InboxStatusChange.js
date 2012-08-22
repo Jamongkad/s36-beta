@@ -25,10 +25,10 @@ InboxStateObject.prototype.undo = function() {
         var sec = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
-        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
+        //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
         console.log(state_data);
-        change_state(state_data); 
+        //change_state(state_data); 
         e.preventDefault(); 
     });     
 }
