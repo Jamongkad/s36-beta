@@ -2,26 +2,23 @@
     <div class="feedbackContents">
         <div class="feedbackBlock">
             <div class="feedbackAuthor">
-                <div class="feedbackAuthorAvatar">
+                
                     <?if($type == 'featured'):?>
                         <?if($feed->displayimg):?>
                             <?if($feed->avatar):?>
+                            <div class="feedbackAuthorAvatar">
                                 <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
-                            <?else:?>
-                                <img src="/img/blank-avatar.png" />
+                            </div>
                             <?endif?>
-                        <?else:?>
-                            <img src="/img/blank-avatar.png" />
                         <?endif?>
                     <?else:?>
                         <?if($feed->avatar):?>
-                            <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
-                            <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
-                        <?else:?>
-                            <img src="/img/48x48-blank-avatar.jpg" />
+                        	<div class="feedbackAuthorAvatar">
+	                            <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
+	                            <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
+                            </div>
                         <?endif?>
                     <?endif?>
-                </div>
                 <?php
                     $comp = null;        
                     if(    ($feed->companyname && $feed->position) 

@@ -92,8 +92,8 @@ div{position:relative;}
 
 /* normal */
 .normal .feedbackAuthor{display:block;}
-.normal .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;}
-.normal .feedbackAuthor .feedbackAuthorDetails{margin-left:58px;}
+.normal .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;margin-right:5px;}
+.normal .feedbackAuthor .feedbackAuthorDetails{margin-left:0px;}
 .normal .feedbackAuthor h2{font-size:14px;color:#1982ad;margin:0px;margin-top:5px;}
 .normal .feedbackAuthor h4{margin:0px;font-size:11px;color:#2c2a2a;margin-top:3px;}
 .normal .feedbackAuthor p{margin:0px;padding:0px;margin-top:3px;font-size:11px;}
