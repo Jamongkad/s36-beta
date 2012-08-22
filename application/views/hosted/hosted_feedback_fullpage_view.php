@@ -60,6 +60,7 @@
 
 		var container = $('#theFeedbacks');
         var page_counter = counter + 1;
+
         $.ajax({
               url: '/hosted/fullpage_partial/<?=strtolower($company->company_name)?>/' + page_counter
             , success: function(msg) {
@@ -77,6 +78,7 @@
                 });
             }
         });
+
 	}
 </script>
 
