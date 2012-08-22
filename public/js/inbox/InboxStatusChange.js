@@ -81,7 +81,7 @@ InboxStateObject.prototype.process = function() {
         } else {
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
-            change_state(state_data);
+            //change_state(state_data);
         }
     }
      
