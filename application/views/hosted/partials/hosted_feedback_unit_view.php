@@ -30,7 +30,13 @@
                       ) { 
                         
                         if($feed->displaycompany && $feed->displayposition) {
-                            $comp = ucwords($feed->companyname).', '."<span>".ucwords($feed->position)."</span>";
+
+                            $companyname = null;
+                            if($feed->companyname) {
+                                $companyname = ucwords($feed->companyname).', ';     
+                            }
+                           
+                            $comp = $companyname."<span>".ucwords($feed->position)."</span>";
                         }
 
                         if($feed->displaycompany && $feed->displayposition == false) {
