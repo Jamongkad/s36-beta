@@ -17,9 +17,6 @@ InboxStateObject.prototype.undo = function() {
 
     var me = this;
     $(document).delegate("a.undo", "click", function(e) {
-        //var feedid    = $(this).attr('href');
-        //var href      = $(this).attr('hrefaction'); 
-
         var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
 
@@ -29,6 +26,8 @@ InboxStateObject.prototype.undo = function() {
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
+
+        console.log(me.feeds);
        
         console.log(state_data);
         change_state(state_data); 
