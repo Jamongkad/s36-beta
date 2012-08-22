@@ -29,8 +29,8 @@ InboxStateObject.prototype.undo = function() {
         $("#" + me.feeds.feedid).fadeIn(sec);
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
-        //console.log(state_data);
-        change_state(state_data); 
+        console.log(state_data);
+        //change_state(state_data); 
         e.preventDefault(); 
     });     
 }
