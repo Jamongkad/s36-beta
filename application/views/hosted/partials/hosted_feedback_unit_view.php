@@ -24,17 +24,22 @@
                 </div>
                 <?php
                     $comp = null;        
-                    if($feed->displaycompany && $feed->displayposition) {
-                        $comp = ucwords($feed->companyname).', '."<span>".ucwords($feed->position)."</span>";
-                    }
+                    if(    ($feed->companyname && $feed->position) 
+                        || ($feed->companyname && $feed->position == false) 
+                        || ($feed->companyname == false && $feed->position)
+                      ) { 
+                        if($feed->displaycompany && $feed->displayposition) {
+                            $comp = ucwords($feed->companyname).', '."<span>".ucwords($feed->position)."</span>";
+                        }
 
-                    if($feed->displaycompany && $feed->displayposition == false) {
-                        $comp = ucwords($feed->companyname); 
-                    }
+                        if($feed->displaycompany && $feed->displayposition == false) {
+                            $comp = ucwords($feed->companyname); 
+                        }
 
-                    if($feed->displaycompany == false && $feed->displayposition) {
-                        $comp = "<span>".ucwords($feed->position)."</span>";
-                    } 
+                        if($feed->displaycompany == false && $feed->displayposition) {
+                            $comp = "<span>".ucwords($feed->position)."</span>";
+                        } 
+                    }
                 ?>
                 <?php 
                     $location = null;
