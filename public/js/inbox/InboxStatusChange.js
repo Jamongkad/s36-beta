@@ -17,9 +17,9 @@ InboxStateObject.prototype.undo = function() {
 
     var me = this;
     $(document).delegate("a.undo", "click", function(e) {
-        var feedid    = $(this).attr('href');
-        var href      = $(this).attr('hrefaction'); 
-        var undo_type = $(this).attr('undo-type');
+        //var feedid    = $(this).attr('href');
+        //var href      = $(this).attr('hrefaction'); 
+        //var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
 
         var current_catid = me.elem.attr('catid');
@@ -81,7 +81,7 @@ InboxStateObject.prototype.process = function() {
         } else {
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
-            //change_state(state_data);
+            change_state(state_data);
         }
     }
      
@@ -129,7 +129,6 @@ CatPickObject.prototype.process = function() {
     var mode = me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     //console.log(state_data);
-    //
     if(is_single) { 
         if(me.currentUrl.match(/filed|modifyfeedback/g)) {
             change_state(state_data);
