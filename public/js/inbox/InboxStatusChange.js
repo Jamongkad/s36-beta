@@ -60,7 +60,9 @@ InboxStateObject.prototype.process = function() {
         } else {
             $(me.elem).parents('.feedback').fadeOut(350, function() { 
                 var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
-                console.log(child_counts);
+                if(child_counts == 0) {
+                    $("#" + me.feeds.feedid).parents('.feedback-group').hide();
+                } 
             });
             checky_bar_message(me);
 
