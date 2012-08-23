@@ -27,7 +27,7 @@ InboxStateObject.prototype.undo = function() {
         feed_elem.fadeIn(sec);
         
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });    
-        //change_state(state_data); 
+        change_state(state_data); 
         e.preventDefault();  
     });
 }
@@ -56,19 +56,14 @@ InboxStateObject.prototype.process = function() {
                 checky_bar_message(me);
             }
 
-            //change_state(state_data);
+            change_state(state_data);
 
         } else {
             $(me.elem).parents('.feedback').fadeOut(350, function() { 
-                var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
-                if(child_counts == 0) {
-                    $("#" + me.feeds.feedid).parents('.feedback-group').hide();
-                } 
+
             });
             checky_bar_message(me);
-
-            //change_state(state_data);
-
+            change_state(state_data);
         }
     }
      
@@ -190,6 +185,13 @@ function change_view(opts) {
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
 
+function feedback_group_display(opts) { 
+    var feed_group = $("#" + opts.feeds.feedid).parents('.feedback-group');
+    var child_counts = feed_group.children('.feedback:visible').length;
+
+    if(child_counts == 0) { feed_group.hide(); } 
+}
+
 function featured_feed_view_change(me) { 
     state_view_data = {
         'elem': me.elem
@@ -224,5 +226,3 @@ function change_state(state_data) {
         } 
     });
 }
-
-
