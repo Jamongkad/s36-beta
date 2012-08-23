@@ -25,11 +25,9 @@ InboxStateObject.prototype.undo = function() {
         var sec = 350;
 
         $("#" + me.feeds.feedid).fadeIn(sec);
-        //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
-       
+        //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
         console.log(me.feeds.feedid);
         //change_state(state_data); 
-
         e.preventDefault(); 
     });     
 }
@@ -138,6 +136,8 @@ InboxStatusChange.prototype.initialize = function() {
     $(document).delegate(me.inbox_controls, 'click', function(e) {
         var identifier = $(this).attr('class');         
         var us = $(this);
+
+        console.log(us);
 
         $.ajax({url: "/feedback/bust_hostfeed_data"});
 
