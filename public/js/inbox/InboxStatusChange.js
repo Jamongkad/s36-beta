@@ -16,7 +16,8 @@ function InboxStateObject(elem) {
 InboxStateObject.prototype.undo = function() {
 
     var me = this;
-    $(document).delegate("a.undo", "click", function(e) {
+    /*
+    $(document).bind("a.undo", "click", function(e) {
         var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
 
@@ -31,6 +32,22 @@ InboxStateObject.prototype.undo = function() {
         //change_state(state_data); 
         e.preventDefault(); 
     });     
+    */
+    $("a.undo").bind("click", function(e) {
+        var undo_type = $(this).attr('undo-type');
+        var undo_mode = $('.inbox-state').val();
+
+        var current_catid = me.elem.attr('catid');
+        var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "href": me.href}
+        var sec = 350;
+
+        $("#" + me.feeds.feedid).fadeIn(sec);
+        
+        //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
+        console.log($(this).attr('feedid'));
+        //change_state(state_data); 
+        e.preventDefault();  
+    }, false);
 }
 
 InboxStateObject.prototype.process = function() {
