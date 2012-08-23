@@ -26,7 +26,7 @@ InboxStateObject.prototype.undo = function() {
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
-        console.log(me.feeds.feedid);
+        //console.log(me.feeds.feedid);
         //change_state(state_data); 
         e.preventDefault(); 
     });     
@@ -166,7 +166,7 @@ function checky_bar_message(opts, undo_msg) {
     var undo_msg = typeof undo_msg !== 'undefined' ? undo_msg : false;
 
     var check_message = $('.checky-bar');
-    var undo = "  <a class='undo' hrefaction='" + opts.href + "' href='#' undo-type='" + opts.identifier + "'>Undo</a>";
+    var undo = "  <a class='undo' hrefaction='" + opts.href + "' href='#' undo-type='" + opts.identifier + "'>Undo" + me.feedid  + "</a>";
     var close_checky = "  <a class='close-checky' href='#'>Close</a>";
 
     var notify_msg = opts.message + undo + close_checky; 
