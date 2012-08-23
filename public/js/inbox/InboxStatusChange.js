@@ -14,7 +14,6 @@ function InboxStateObject(elem) {
 }
 
 InboxStateObject.prototype.undo = function() {
-
     var me = this;
     $("a.undo").bind("click", function(e) {
         var undo_type = $(this).attr('undo-type');
@@ -27,9 +26,9 @@ InboxStateObject.prototype.undo = function() {
         $("#" + me.feeds.feedid).fadeIn(sec);
         
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
-        console.log(me.feeds.feedid);
-        console.log(state_data);
-        console.log($(this).parents("."+undo_type));
+
+        var my_parent = $("#" + me.feeds.feedid).parents('.feedback-group');
+        console.log(my_parent);
         //change_state(state_data); 
         e.preventDefault();  
     });
