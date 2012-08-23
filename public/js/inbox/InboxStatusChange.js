@@ -27,7 +27,7 @@ InboxStateObject.prototype.undo = function() {
         $("#" + me.feeds.feedid).fadeIn(sec);
         //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
-        console.log(undo_type);
+        console.log(me.feeds.feedid);
         //change_state(state_data); 
 
         e.preventDefault(); 
