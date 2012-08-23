@@ -14,25 +14,22 @@ function InboxStateObject(elem) {
 }
 
 InboxStateObject.prototype.undo = function() {
-
     var me = this;
-    $(document).delegate("a.undo", "click", function(e) {
-        var feedid    = $(this).attr('href');
-        var href      = $(this).attr('hrefaction'); 
+    $("a.undo").bind("click", function(e) {
         var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
-
         var current_catid = me.elem.attr('catid');
+        var feed_elem = $("#" + me.feeds.feedid);
         var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "href": me.href}
         var sec = 350;
 
-        $("#" + me.feeds.feedid).fadeIn(sec);
-        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
-       
-        //console.log(state_data);
+        feed_elem.parents('.feedback-group').show();
+        feed_elem.fadeIn(sec);
+        
+        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });    
         change_state(state_data); 
-        e.preventDefault(); 
-    });     
+        e.preventDefault();  
+    });
 }
 
 InboxStateObject.prototype.process = function() {
@@ -42,32 +39,13 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
-
-    //console.log(state_data);
+     
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
-            //HTML view transforms
-            if(mode == 'feature') {
-                state_view_data = {
-                    'elem': me.elem
-                  , 'color': '#FFFFE0'
-                  , 'position': '-60px -34px'
-                  , 'sibling': '.check'
-                };
-                checky_bar_message(me, true);
-                change_view(state_view_data); 
-            }
 
-            if(mode == 'publish') {
-                state_view_data = {
-                    'elem': me.elem
-                  , 'color': '#FFFFFF'
-                  , 'position': '0px -34px'
-                  , 'sibling': '.feature'
-                };
-                checky_bar_message(me, true);
-                change_view(state_view_data); 
-            }
+            //HTML view transforms
+            if(mode == 'feature') { featured_feed_view_change(me); }
+            if(mode == 'publish') { published_feed_view_change(me); }
             
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
@@ -77,9 +55,11 @@ InboxStateObject.prototype.process = function() {
                 } 
                 checky_bar_message(me);
             }
+
             change_state(state_data);
+
         } else {
-            $(me.elem).parents('.feedback').fadeOut(350);
+            $(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
             checky_bar_message(me);
             change_state(state_data);
         }
@@ -88,8 +68,7 @@ InboxStateObject.prototype.process = function() {
     $(document).delegate('a.close-checky', 'click', function(e) { 
         $(this).parents('.check').remove();
         e.preventDefault(); 
-    })
-
+    });
 }
 
 //child implementation classes
@@ -129,7 +108,6 @@ CatPickObject.prototype.process = function() {
     var mode = me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     //console.log(state_data);
-    //
     if(is_single) { 
         if(me.currentUrl.match(/filed|modifyfeedback/g)) {
             change_state(state_data);
@@ -194,7 +172,6 @@ function checky_bar_message(opts, undo_msg) {
     }
 
     var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
-
     check_message.html(notify).show();
 }
 
@@ -206,6 +183,36 @@ function change_view(opts) {
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
 
+function feedback_group_display(opts) { 
+    var feed_group = $("#" + opts.feeds.feedid).parents('.feedback-group');
+    var child_counts = feed_group.children('.feedback:visible').length;
+
+    if(child_counts == 0) { feed_group.hide(); } 
+}
+
+function featured_feed_view_change(me) { 
+    state_view_data = {
+        'elem': me.elem
+      , 'color': '#FFFFE0'
+      , 'position': '-60px -34px'
+      , 'sibling': '.check'
+    };
+    checky_bar_message(me, true);
+    change_view(state_view_data); 
+}
+
+function published_feed_view_change(me) {
+    state_view_data = {
+        'elem': me.elem
+      , 'color': '#FFFFFF'
+      , 'position': '0px -34px'
+      , 'sibling': '.feature'
+    };
+    checky_bar_message(me, true);
+    change_view(state_view_data);  
+}
+
+//server side processing
 function change_state(state_data) { 
     $.ajax({ 
         type: "POST"
