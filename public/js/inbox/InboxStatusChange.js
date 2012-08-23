@@ -59,9 +59,7 @@ InboxStateObject.prototype.process = function() {
             change_state(state_data);
 
         } else {
-            $(me.elem).parents('.feedback').fadeOut(350, function() { 
-
-            });
+            $(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
             checky_bar_message(me);
             change_state(state_data);
         }
