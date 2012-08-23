@@ -38,11 +38,7 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
-    
-    var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
-
-    console.log(child_counts);
- 
+     
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
 
@@ -177,6 +173,9 @@ function checky_bar_message(opts, undo_msg) {
     }
 
     var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
+
+    var child_counts = $("#" + opts.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
+    console.log(child_counts);
 
     check_message.html(notify).show();
 }
