@@ -23,6 +23,9 @@ InboxStateObject.prototype.undo = function() {
         var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "href": me.href}
         var sec = 350;
 
+
+        $("#" + me.feeds.feedid).parents('.feedback-group').show();
+
         $("#" + me.feeds.feedid).fadeIn(sec);
         
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });    
