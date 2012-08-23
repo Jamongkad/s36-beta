@@ -27,7 +27,7 @@ InboxStateObject.prototype.undo = function() {
         $("#" + me.feeds.feedid).fadeIn(sec);
         //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); }); 
        
-        console.log(state_data);
+        console.log(undo_type);
         //change_state(state_data); 
 
         e.preventDefault(); 
@@ -44,14 +44,10 @@ InboxStateObject.prototype.process = function() {
  
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
-            //HTML view transforms
-            if(mode == 'feature') {
-                featured_feed_view_change(me);
-            }
 
-            if(mode == 'publish') {
-                published_feed_view_change(me);
-            }
+            //HTML view transforms
+            if(mode == 'feature') { featured_feed_view_change(me); }
+            if(mode == 'publish') { published_feed_view_change(me); }
             
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
