@@ -58,7 +58,10 @@ InboxStateObject.prototype.process = function() {
             //change_state(state_data);
 
         } else {
-            $(me.elem).parents('.feedback').fadeOut(350);
+            $(me.elem).parents('.feedback').fadeOut(350, function() { 
+                var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
+                console.log(child_counts);
+            });
             checky_bar_message(me);
 
             //change_state(state_data);
@@ -173,10 +176,6 @@ function checky_bar_message(opts, undo_msg) {
     }
 
     var notify  = $('<div/>').addClass(opts.identifier).css({'text-align': 'center'}).html(notify_msg);
-
-    var child_counts = $("#" + opts.feeds.feedid).parents('.feedback-group').children('.feedback:visible').length;
-    console.log(child_counts);
-
     check_message.html(notify).show();
 }
 
