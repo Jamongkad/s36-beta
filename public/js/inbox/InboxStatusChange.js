@@ -28,6 +28,7 @@ InboxStateObject.prototype.undo = function() {
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
 
         var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback');
+
         console.log(child_counts);
         //change_state(state_data); 
         e.preventDefault();  
