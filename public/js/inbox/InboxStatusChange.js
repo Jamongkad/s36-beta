@@ -18,15 +18,13 @@ InboxStateObject.prototype.undo = function() {
     $("a.undo").bind("click", function(e) {
         var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
-
         var current_catid = me.elem.attr('catid');
+        var feed_elem = $("#" + me.feeds.feedid);
         var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "href": me.href}
         var sec = 350;
 
-
-        $("#" + me.feeds.feedid).parents('.feedback-group').show();
-
-        $("#" + me.feeds.feedid).fadeIn(sec);
+        feed_elem.parents('.feedback-group').show();
+        feed_elem.fadeIn(sec);
         
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });    
         //change_state(state_data); 
