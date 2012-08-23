@@ -16,23 +16,6 @@ function InboxStateObject(elem) {
 InboxStateObject.prototype.undo = function() {
 
     var me = this;
-    /*
-    $(document).bind("a.undo", "click", function(e) {
-        var undo_type = $(this).attr('undo-type');
-        var undo_mode = $('.inbox-state').val();
-
-        var current_catid = me.elem.attr('catid');
-        var state_data = {"mode": undo_mode, "feed_ids": [me.feeds], "cat_id": current_catid, "href": me.href}
-        var sec = 350;
-
-        $("#" + me.feeds.feedid).fadeIn(sec);
-        
-        //$(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
-        console.log($(this).attr('feedid'));
-        //change_state(state_data); 
-        e.preventDefault(); 
-    });     
-    */
     $("a.undo").bind("click", function(e) {
         var undo_type = $(this).attr('undo-type');
         var undo_mode = $('.inbox-state').val();
@@ -46,6 +29,7 @@ InboxStateObject.prototype.undo = function() {
         $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
         console.log(me.feeds.feedid);
         console.log(state_data);
+        console.log($(this).parents("."+undo_type));
         //change_state(state_data); 
         e.preventDefault();  
     });
