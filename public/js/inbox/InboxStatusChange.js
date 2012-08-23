@@ -29,6 +29,7 @@ InboxStateObject.prototype.undo = function() {
        
         console.log(state_data);
         //change_state(state_data); 
+
         e.preventDefault(); 
     });     
 }
@@ -40,31 +41,16 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
-
-    //console.log(state_data);
+ 
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
             //HTML view transforms
             if(mode == 'feature') {
-                state_view_data = {
-                    'elem': me.elem
-                  , 'color': '#FFFFE0'
-                  , 'position': '-60px -34px'
-                  , 'sibling': '.check'
-                };
-                checky_bar_message(me, true);
-                change_view(state_view_data); 
+                featured_feed_view_change(me);
             }
 
             if(mode == 'publish') {
-                state_view_data = {
-                    'elem': me.elem
-                  , 'color': '#FFFFFF'
-                  , 'position': '0px -34px'
-                  , 'sibling': '.feature'
-                };
-                checky_bar_message(me, true);
-                change_view(state_view_data); 
+                published_feed_view_change(me);
             }
             
             //these modes will fadeout feeds in the publish and contact modules
@@ -75,19 +61,22 @@ InboxStateObject.prototype.process = function() {
                 } 
                 checky_bar_message(me);
             }
-            change_state(state_data);
+
+            //change_state(state_data);
+
         } else {
             $(me.elem).parents('.feedback').fadeOut(350);
             checky_bar_message(me);
-            change_state(state_data);
+
+            //change_state(state_data);
+
         }
     }
      
     $(document).delegate('a.close-checky', 'click', function(e) { 
         $(this).parents('.check').remove();
         e.preventDefault(); 
-    })
-
+    });
 }
 
 //child implementation classes
@@ -203,6 +192,29 @@ function change_view(opts) {
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
 
+function featured_feed_view_change(me) { 
+    state_view_data = {
+        'elem': me.elem
+      , 'color': '#FFFFE0'
+      , 'position': '-60px -34px'
+      , 'sibling': '.check'
+    };
+    checky_bar_message(me, true);
+    change_view(state_view_data); 
+}
+
+function published_feed_view_change(me) {
+    state_view_data = {
+        'elem': me.elem
+      , 'color': '#FFFFFF'
+      , 'position': '0px -34px'
+      , 'sibling': '.feature'
+    };
+    checky_bar_message(me, true);
+    change_view(state_view_data);  
+}
+
+//server side processing
 function change_state(state_data) { 
     $.ajax({ 
         type: "POST"
@@ -214,3 +226,5 @@ function change_state(state_data) {
         } 
     });
 }
+
+
