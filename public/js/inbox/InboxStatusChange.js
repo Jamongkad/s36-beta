@@ -49,7 +49,10 @@ InboxStateObject.prototype.process = function() {
             
             //these modes will fadeout feeds in the publish and contact modules
             if(mode == 'inbox' || mode == 'delete') {
-                $(me.elem).parents('.feedback').fadeOut(350);
+
+                //$(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
+                feed_fadeout(me);
+
                 if(mode == 'inbox') {
                     me.message = "feedback returned to inbox";     
                 } 
@@ -59,7 +62,9 @@ InboxStateObject.prototype.process = function() {
             change_state(state_data);
 
         } else {
-            $(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
+
+            //$(me.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(me); });
+            feed_fadeout(me);
             checky_bar_message(me);
             change_state(state_data);
         }
@@ -183,8 +188,12 @@ function change_view(opts) {
     $(opts.elem).siblings(opts.sibling).attr('state', 0);
 }
 
-function feedback_group_display(opts) { 
-    var feed_group = $("#" + opts.feeds.feedid).parents('.feedback-group');
+function feed_fadeout(opts) { 
+    $(opts.elem).parents('.feedback').fadeOut(350, function() { feedback_group_display(opts.feeds.feedid); });
+}
+
+function feedback_group_display(feedid) { 
+    var feed_group = $("#" + feedid).parents('.feedback-group');
     var child_counts = feed_group.children('.feedback:visible').length;
 
     if(child_counts == 0) { feed_group.hide(); } 
