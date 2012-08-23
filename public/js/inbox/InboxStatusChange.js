@@ -47,7 +47,7 @@ InboxStateObject.prototype.undo = function() {
         console.log($(this).attr('feedid'));
         //change_state(state_data); 
         e.preventDefault();  
-    }, false);
+    });
 }
 
 InboxStateObject.prototype.process = function() {
