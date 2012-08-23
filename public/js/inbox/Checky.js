@@ -63,7 +63,7 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
-                            console.log(window.location.pathname.match(/published|contacts/g));
+                            //console.log(window.location.pathname.match(/published|contacts/g));
 
                             if(my_ratings != 'POOR') { 
                                 process_feedbacks(collection, data, feed_unit); 

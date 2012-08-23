@@ -25,11 +25,7 @@ InboxStateObject.prototype.undo = function() {
 
         $("#" + me.feeds.feedid).fadeIn(sec);
         
-        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });   
-
-        var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible');
-
-        console.log(child_counts);
+        $(this).parents("."+undo_type).fadeOut(sec, function() { $(this).remove(); });    
         //change_state(state_data); 
         e.preventDefault();  
     });
@@ -42,6 +38,10 @@ InboxStateObject.prototype.process = function() {
     var mode = (me.state == 1) ? "inbox" : me.mode;
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
+    
+    var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible');
+
+    console.log(child_counts);
  
     if(is_single) { 
         if(me.currentUrl.match(/published|contacts/g)) {
