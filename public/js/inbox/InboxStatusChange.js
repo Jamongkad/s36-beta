@@ -39,7 +39,7 @@ InboxStateObject.prototype.process = function() {
     var state_data = { "mode": mode, "feed_ids": [me.feeds], "cat_id": me.catid, "href": me.href }
     var state_view_data;
     
-    var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:visible');
+    var child_counts = $("#" + me.feeds.feedid).parents('.feedback-group').children('.feedback:invisible');
 
     console.log(child_counts);
  
