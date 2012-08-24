@@ -311,6 +311,7 @@ li.c{float:none !important;width:0px !important;height:0px !important;}
 #admin-panel .main-panel .block .checkboxes-field label{width:70px;top:1px;float:left;}
 #admin-panel .main-panel .block .input-field input{margin-left:-1px;}
 #admin-panel .main-panel .block .what-it-looks{background:#eaeff5;display:block;height:230px;}
+#admin-panel .main-panel .block .border-bottom{border-bottom:1px solid #dfdfdf;padding-bottom:10px;margin-bottom:10px;}
 /*miscs*/
 #admin-panel .innerblock{padding:2px 5px;font-size:11px;color:#999;}
 #admin-panel .nomargin{margin:0px;}
@@ -945,3 +946,22 @@ color: #777;}
 #wizard-preview-feedback-date{text-align:right;color:#b8b3ba;font-size:11px;}
 #wizard-preview-feedback-text{padding:10px 0px;}
 #wizard-preview-feedback-text .read-full{font-size:10px;color:#86bde4}
+
+.facebook-icon{
+	margin-top:8px;display:block;
+	padding:1px 0px 4px 30px;
+	background:url(/img/companyLinkIcons.png) no-repeat center left;
+}
+.twitter-icon{
+	margin-top:8px;display:block;
+	padding:1px 0px 4px 30px;
+	background:url(/img/companyLinkIcons.png) no-repeat;
+	background-position:bottom left;
+}
+.website-icon{
+	margin-top:8px;display:block;
+	padding:2px 0px 4px 30px;
+	background:url(/img/companyLinkIcons.png) no-repeat top left;
+	background-position:top left;
+}
+a.dark-blue{color:#51708d;}
