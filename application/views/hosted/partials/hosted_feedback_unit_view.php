@@ -3,17 +3,21 @@
         <div class="feedbackBlock">
             <div class="feedbackAuthor">                
                     <?if($type == 'featured'):?>
-                        <?if($feed->displayimg || $feed->avatar):?>
-                            <div class="feedbackAuthorAvatar">
-                                <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
-                            </div>
+                        <?if($feed->displayimg):?>
+                            <?if($feed->avatar):?>
+                                <div class="feedbackAuthorAvatar">
+                                    <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
+                                </div>
+                            <?endif?>
                         <?endif?>
                     <?else:?>
-                        <?if($feed->displayimg || $feed->avatar):?>
-                            <div class="feedbackAuthorAvatar">
-                                <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
-                                <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
-                            </div>
+                        <?if($feed->displayimg):?>
+                            <?if($feed->avatar):?>
+                                <div class="feedbackAuthorAvatar">
+                                    <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
+                                    <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
+                                </div>
+                            <?endif?>
                         <?endif?>
                     <?endif?>
                 <?php
@@ -90,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="feedbackText" <?=($feed->displayimg || $feed->avatar) ? null : " style='margin-left:10px'"?>>
+            <div class="feedbackText" <?=($feed->displayimg) ? null : " style='margin-left: 50px'"?>>
                 <div class="feedbackTextTail"></div>
                 <div class="feedbackTextBubble">
                     <p><?=$feed->text?></p>
