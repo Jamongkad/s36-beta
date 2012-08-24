@@ -16,7 +16,7 @@
             </div>
             <br />
             <div class="grids">
-                <div class="g1of3"><strong>Add Company Logo</strong> <br />Select your company's logo and upload it here, you can  adjust it once it's been uploaded.</div>
+                <div class="g1of3"><strong>Add Company Logo</strong> <br />Select your company's logo and upload it here, it will be uploaded upon pressing the 'Save Settings' button.</div>
                 <div class="g2of3"><br /><input type="file" id="your_photo" class="fileupload regular-text" name="your_photo" /> </div>
             </div>
             
@@ -29,11 +29,12 @@
             <div class="grids">
                 <div id="image-container">
                 <span id="ajax-upload-url" hrefaction="<?=URL::to('/settings/upload')?>"></span>
-                <?if($company->logo):?>
-            	    <?=HTML::image('company_logos/'.$company->logo)?>
-	            <?else:?>
-    	            <?=HTML::image('img/company-logo-filler.jpg')?>
-        	    <?endif?></div>
+                    <?if($company->logo):?>
+                        <?=HTML::image('company_logos/'.$company->logo)?>
+                    <?else:?>
+                        <?=HTML::image('img/company-logo-filler.jpg')?>
+                    <?endif?>
+                </div>
             </div>
             <br />
             <div class="grids">
