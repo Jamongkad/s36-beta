@@ -419,7 +419,7 @@
                             Please press the (X) button on the upper right hand corner of the form to close this box.                   
                         </div>
                         <div id="success-message-excellent">
-                            <h3>We'd greatly appreciate it if you would share your feedback with others!</h3>
+                            <h3>Thank you! We'd greatly appreciate it if you would share your feedback with others!</h3>
                         </div>
 
                         <div id="share-panel">
