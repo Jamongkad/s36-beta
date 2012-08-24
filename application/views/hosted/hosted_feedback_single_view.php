@@ -54,6 +54,7 @@
                     <a href="https://<?=$feedback->sitedomain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
+
             <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
         </div>
     </div>
