@@ -6,17 +6,19 @@
                     <?if($type == 'featured'):?>
                         <?if($feed->displayimg):?>
                             <?if($feed->avatar):?>
-                            <div class="feedbackAuthorAvatar">
-                                <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
-                            </div>
+                                <div class="feedbackAuthorAvatar">
+                                    <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
+                                </div>
                             <?endif?>
                         <?endif?>
                     <?else:?>
-                        <?if($feed->avatar):?>
-                        	<div class="feedbackAuthorAvatar">
-	                            <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
-	                            <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
-                            </div>
+                        <?if($feed->displayimg):?>
+                            <?if($feed->avatar):?>
+                                <div class="feedbackAuthorAvatar">
+                                    <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
+                                    <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
+                                </div>
+                            <?endif?>
                         <?endif?>
                     <?endif?>
                 <?php
