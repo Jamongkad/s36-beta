@@ -33,8 +33,7 @@ class Determiner {
        }
        
        //Staging
-
-       if($this->http_host == 'mathew-staging.gearfish.com') {
+       if($this->http_host == 'mathew-staging.gearfish.com' || $this->http_host == 'dan-staging.gearfish.com') {
            $obj->hostname = $my_url[1];
            $obj->subdomain = $subdomain;
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
