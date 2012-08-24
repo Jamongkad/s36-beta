@@ -89,7 +89,8 @@
         	<strong><?=$company_name?></strong>              
 
             <span><a href="/">View all feedback</a></span>
-       
+       		<span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
+            
             <?if($company->domain):?>
                 <span class="right padfix">
                     <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
@@ -111,7 +112,7 @@
                     <?endif?>
                 </div>
                 <div class="g1of5" align="right"> 
-                    <a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a>
+                    
                 </div>
             </div>
         </div>
