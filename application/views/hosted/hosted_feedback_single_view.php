@@ -69,7 +69,7 @@
                         </div>
                     <?endif?>
                 <?endif?>
-                <div class="theAuthor">
+                <div class="theAuthor" <?=(($feedback->displayimg == false) or ($feedback->avatar == false)) ? " style='padding-left: 0px;padding-top: 0px'" : null?>>
                 	<div class="theAuthorName">
                     	<span><?=$feedback->firstname?> <?=$feedback->lastname?></span>
                     </div>
