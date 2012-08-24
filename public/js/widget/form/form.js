@@ -8,7 +8,7 @@ jQuery(function($) {
 
     //hide what to write, error message
     $('#s36_whattowrite').hide();
-    $('#good-feedback-message, #bad-feedback-message, #submission-success, #submission-success-header, #share-panel, #submission-message-excellent').hide();
+    $('#good-feedback-message, #bad-feedback-message, #submission-success, #submission-success-header, #share-panel, #submission-message-excellent, #success-message-ord').hide();
     
     $('#s36_tip').click(function(){
         $('#s36_whattowrite').slideToggle();
