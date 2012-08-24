@@ -40,7 +40,7 @@
             <div class="grids">
                 <div class="g1of3"><strong>Company Description</strong> <br />A short description about<br /> your company 500 char<br /> limit.</div>
                 <div class="g2of3">
-                <textarea class="regular-text" rows="20" name="company_desc"><?=$company->description?></textarea>
+                <textarea class="regular-text" rows="8" name="company_desc"><?=$company->description?></textarea>
 				</div>
             </div>
             <br />
@@ -85,7 +85,7 @@
     <div class="grids">
         <div class="g3of4">
             <div class="grids">
-                <strong><a href="#" style="text-decoration:underline">Preview this on your public feedback page</a></strong>
+                <strong><a href="#" class="dark-blue" style="text-decoration:underline">Preview this on your public feedback page</a></strong>
                 <p>If you leave a field empty, it will not appear on your <a href="#" style="text-decoration:underline">public feedback page</a></p>
                 <br />
                 <input type="submit" class="large-btn" value="Save Settings" />
