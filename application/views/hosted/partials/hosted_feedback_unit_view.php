@@ -1,24 +1,19 @@
 <div class="feedback <?=$type?>">
     <div class="feedbackContents">
         <div class="feedbackBlock">
-            <div class="feedbackAuthor">
-                
+            <div class="feedbackAuthor">                
                     <?if($type == 'featured'):?>
-                        <?if($feed->displayimg):?>
-                            <?if($feed->avatar):?>
-                                <div class="feedbackAuthorAvatar">
-                                    <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
-                                </div>
-                            <?endif?>
+                        <?if($feed->displayimg || $feed->avatar):?>
+                            <div class="feedbackAuthorAvatar">
+                                <img src="/uploaded_cropped/150x150/<?=$feed->avatar?>"  />
+                            </div>
                         <?endif?>
                     <?else:?>
-                        <?if($feed->displayimg):?>
-                            <?if($feed->avatar):?>
-                                <div class="feedbackAuthorAvatar">
-                                    <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
-                                    <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
-                                </div>
-                            <?endif?>
+                        <?if($feed->displayimg || $feed->avatar):?>
+                            <div class="feedbackAuthorAvatar">
+                                <img src="/uploaded_cropped/48x48/<?=$feed->avatar?>"  class="small-avatar"/>
+                                <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false, array('class' => 'large-avatar'))?>
+                            </div>
                         <?endif?>
                     <?endif?>
                 <?php
@@ -94,12 +89,14 @@
                     </p> 
                 </div>
             </div>
-            <div class="feedbackText">
+
+            <div class="feedbackText" <?=($feed->displayimg || $feed->avatar) ? null : " style='margin-left:10px'"?>>
                 <div class="feedbackTextTail"></div>
                 <div class="feedbackTextBubble">
                     <p><?=$feed->text?></p>
                 </div>
             </div>
+
             <div class="feedbackDate"> 
                 <?if($type == 'featured'):?>
                     <div class="feedbackSocialView" style="float:left;padding-right:10px">
