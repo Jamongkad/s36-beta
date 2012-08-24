@@ -33,7 +33,7 @@ return array(
             return $feedback->_change_feedback('isFlagged', $id, Input::get('state'));
         } else {   
             $feed_obj = Array('feedid' => $id);
-            $feedbackstate = new Feedback\Services\FeedbackState($state, Array($feed_obj), S36Auth::user()->companyid, $cat_id);
+            $feedbackstate = new Feedback\Services\FeedbackState($state, Array($feed_obj), S36Auth::user()->companyid);
             $feedbackstate->change_state();
         }
     },
