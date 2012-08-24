@@ -61,5 +61,6 @@ class EmailService {
             $email->gather($this->email_data);
             return $email->send();
         }
+
     }
 }

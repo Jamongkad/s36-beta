@@ -39,7 +39,8 @@ return array(
                        ->set_sendtoaddresses($user->pull_user_emails_by_company_id(1));
     
         $emailservice = new Email\Services\EmailService($published_data);
-        Helpers::dump($emailservice->send_email()); 
+        $emailservice->send_email();
+        //Helpers::dump(); 
     },
 
     'GET /tests/test_email_request' => function() {
