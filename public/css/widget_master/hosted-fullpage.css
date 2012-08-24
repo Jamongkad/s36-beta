@@ -187,13 +187,13 @@ padding: 0px;
 margin: 0px;
 margin-top: -5px;
 }
-#pageTitle a.green-cross {
+a.green-cross {
     font-size: 14px;
     font-weight: bold;
     margin-top: 5px;
 }
 
-.green-cross {
+a.green-cross {
     background: url("../../img/green-cross.png") no-repeat scroll left center transparent;
     padding-left: 15px;
 }

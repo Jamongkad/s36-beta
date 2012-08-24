@@ -102,3 +102,14 @@ div{
 .companyLinks ul li a.twitter{background-position:0px -50px;}
 
 .feedbackSocial {float:left;}
+
+a.green-cross {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+a.green-cross {
+    background: url("../../img/green-cross.png") no-repeat scroll left center transparent;
+    padding-left: 15px;
+}

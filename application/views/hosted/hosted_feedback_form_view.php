@@ -11,7 +11,7 @@
 
         	<strong><?=$company_name?></strong>  
             <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
-            
+            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in Feedback</a></span>
             <?if($company->domain):?>
                 <span class="right padfix">
                     <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
