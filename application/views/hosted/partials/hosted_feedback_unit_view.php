@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="feedbackText" <?=($feed->displayimg) ? null : " style='margin-left: 50px'"?>>
+            <div class="feedbackText" <?=(($feed->displayimg == false) or ($feed->avatar == false)) ? " style='margin-left: 210px'" : null?>>
                 <div class="feedbackTextTail"></div>
                 <div class="feedbackTextBubble">
                     <p><?=$feed->text?></p>
