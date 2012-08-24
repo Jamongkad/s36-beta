@@ -50,12 +50,15 @@ return array(
         $company_info = $company->get_company_info($widget->company_id);
         
         $hostname = Config::get('application.hostname');
+        $deploy_env = Config::get('application.deploy_env');
+
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company' => $company_info
                                                     , 'hostname' => $hostname
+                                                    , 'deploy_env' => $deploy_env
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },
 
