@@ -274,7 +274,6 @@ PageCycle.prototype.cycle_prev = function() {
 		else{
 			if((this.rating == 2) || (this.rating == 1)){
                 //this.next_button.hide();
-                console.log("Pwets");
 				S36Form.show_complete_form(false);
 				return 0;
 			}else{ 
@@ -327,15 +326,7 @@ PageCycle.prototype.cycle_prev = function() {
 		|  Next button pressed
 		-------------------------*/
 	    this._debug("Page 6");		
-
-        if(this.rating == 5) {
-            $("#success-message-excellent").show();
-            $("#success-message-ord").hide();
-        } else {
-            $("#success-message-excellent").hide();
-            $("#success-message-ord").show(); 
-        }
-
+        
 		if(next){
 			this.next_button.hide();
 			S36Form.send_form_data();	
