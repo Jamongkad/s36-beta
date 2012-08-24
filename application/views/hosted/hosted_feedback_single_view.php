@@ -62,14 +62,13 @@
 	<div id="bodyContent">
     	<div id="feedbackBox">
         	<div class="block">
-            	<div class="theAvatar">
+                <?if($feedback->displayimg):?>
                     <?if($feedback->avatar):?>
-                        <?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>
-                    <?else:?>
-                        <?=HTML::image('img/blank-avatar.jpg')?>
+            	        <div class="theAvatar">
+                            <?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>
+                        </div>
                     <?endif?>
-
-                </div>
+                <?endif?>
                 <div class="theAuthor">
                 	<div class="theAuthorName">
                     	<span><?=$feedback->firstname?> <?=$feedback->lastname?></span>
