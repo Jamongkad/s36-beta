@@ -41,7 +41,7 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_data() {
-        $widget_view = 'widget::widget_submissionform_view';
+        $widget_view = 'widget/widget_submissionform_view';
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  

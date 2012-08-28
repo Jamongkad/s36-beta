@@ -18,7 +18,7 @@ class HorizontalEmbedWidget extends DisplayWidgets {
     }
 
     public function render_data() { 
-        $widget_view = 'widget::widget_embedded_hor_view';
+        $widget_view = 'widget/widget_embedded_hor_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $this->fixed_data, 'row_count' => $this->total_rows, 'flavor_text' => $this->form_text, 'css' => $this->css))->get();
     }
