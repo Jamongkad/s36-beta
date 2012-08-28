@@ -18,7 +18,7 @@ class VerticalEmbedWidget extends DisplayWidgets {
     }
 
     public function render_data() { 
-        $widget_view = 'widget::widget_embedded_ver_view';
+        $widget_view = 'widget/widget_embedded_ver_view';
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'result' => $this->fixed_data
          , 'row_count' => $this->total_rows

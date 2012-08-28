@@ -41,7 +41,7 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_data() {
-        $widget_view = 'widget::widget_submissionform_view';
+        $widget_view = 'widget/widget_submissionform_view';
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id' => $this->fb_id  
@@ -64,7 +64,7 @@ class SubmissionWidget extends FormWidgets {
         $hosted_settings = new \Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
 
-        return View::make('widget::widget_hostedform_view', Array(
+        return View::make('widget/widget_hostedform_view', Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
           , 'country' => $this->country
