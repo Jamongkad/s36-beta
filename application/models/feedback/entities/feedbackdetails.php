@@ -6,7 +6,9 @@ use \Feedback\Entities\Types\FeedbackDataTypes;
 use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use DBBadWords, DBUser;
-use Input, DB, Helpers;
+use Input, DB, Helpers, Package;
+
+Package::load('HTMLPurifier');
 
 class FeedbackDetails extends FeedbackDataTypes {
 
@@ -35,6 +37,10 @@ class FeedbackDetails extends FeedbackDataTypes {
 
         $this->feedback_text = Helpers::html_cleaner(Input::get('feedback'));
 
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $this->feedback_text = $purifier->purify($this->feedback_text);
+        
         $this->feedback_data = Array(
             'siteId' => Input::get('site_id')
           , 'contactId' => $this->contact_id

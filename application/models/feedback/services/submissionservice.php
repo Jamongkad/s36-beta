@@ -20,7 +20,6 @@ class SubmissionService {
 
     public function perform() {        
         $this->contact_details->read_data(); 
-
         $this->contact_details->write_new_contact();
      
         $this->feedback_details->set_contact_id($this->contact_details->get_contact_id());
