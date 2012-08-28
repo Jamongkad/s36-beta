@@ -1,7 +1,6 @@
 <?php
 
 return array(
-
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
         $wl = new Widget\Services\WidgetLoader($widget_key); 
         return $wl->load()->render_data();
@@ -19,6 +18,7 @@ return array(
         return $js->js_output();
     },
     //end of these muthafuckas
+
     'POST /widget/form/crop' => function() {
         $img_upload = (object)Input::get();
         $profile_img = new Profile\Services\ProfileImage();
@@ -31,7 +31,7 @@ return array(
     },
 );
 
-function getRightClass($units){
+function getRightClass($units) {
     if($units == '1'){
         $class = "g1of1";
     }elseif($units == '2'){
