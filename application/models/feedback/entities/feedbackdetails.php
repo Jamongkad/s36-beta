@@ -37,8 +37,8 @@ class FeedbackDetails extends FeedbackDataTypes {
 
         $this->feedback_text = Helpers::html_cleaner(Input::get('feedback'));
 
-        $config = HTMLPurifier_Config::createDefault();
-        $purifier = new HTMLPurifier($config);
+        $config = \HTMLPurifier_Config::createDefault();
+        $purifier = new \HTMLPurifier($config);
         $this->feedback_text = $purifier->purify($this->feedback_text);
         
         $this->feedback_data = Array(
