@@ -471,13 +471,11 @@
                                     <h3 id="success-message-ord">
                                         Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
                                         Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
-                                        
                                     </h3>
                                     							
                                     <div id="share-panel">
                                         <div id="success-message-excellent">
-                                            <h3>Thank You! We'd greatly appreciate it if you would share your feedback with others!</h3>
-                                       
+                                            <h3>Thank You! We'd greatly appreciate it if you would share your feedback with others!</h3> 
                                         </div>
                                         <div class="all-done-feedback-box">
                                             <p></p>
