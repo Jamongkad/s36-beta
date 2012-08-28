@@ -1,6 +1,11 @@
 <?php
 
 return array(
+    
+    'GET /widget' => function() {
+        print_r("Blah");
+    },
+   
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
         $wl = new Widget\Services\WidgetLoader($widget_key); 
         return $wl->load()->render_data();
