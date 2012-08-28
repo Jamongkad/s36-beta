@@ -30,18 +30,3 @@ return array(
         $profile_img->upload();
     },
 );
-
-function getRightClass($units) {
-    if($units == '1'){
-        $class = "g1of1";
-    }elseif($units == '2'){
-        $class = "g1of2";
-    }elseif($units == '3'){
-        $class = "g1of3";
-    }elseif($units == '4'){
-        $class = "g1of4";
-    }elseif($units == '5'){
-        $class = "g1of5";
-    }
-    return $class;
-}
