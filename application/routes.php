@@ -68,17 +68,14 @@ return array(
         $company_info = $company->get_company_info($feedback->companyid);
 
         $fb_id = Config::get('application.fb_id');
-        $hostname = Config::get('application.hostname');
-        $deploy_env = Config::get('application.deploy_env');
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
 
         return View::make('hosted/hosted_feedback_single_view', Array(
-            'feedback' => $feedback
-          , 'company' => $company_info
+            'feedback' => $feedback 
+          , 'company_header' => $header_view 
           , 'fb_id' => $fb_id
-          , 'deploy_env' => $deploy_env
-          , 'hostname' => $hostname
           , 'hosted' => $hosted_settings->hosted_settings()
         ));
     },
