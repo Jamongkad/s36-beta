@@ -34,10 +34,14 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $deploy_env = Config::get('application.deploy_env');
+        $hostname = Config::get('application.hostname');
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company' => $company_info, 'feeds' => $hosted->view_fragment()
-                                                  , 'widget' => $widget, 'deploy_env' => $deploy_env 
+                                                    'company' => $company_info
+                                                  , 'feeds' => $hosted->view_fragment()
+                                                  , 'widget' => $widget
+                                                  , 'deploy_env' => $deploy_env 
+                                                  , 'hostname' => $hostname
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
 
