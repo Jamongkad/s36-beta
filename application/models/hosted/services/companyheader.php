@@ -17,6 +17,6 @@ class CompanyHeader {
          , 'hostname' => $this->hostname
          , 'deploy_env' => $this->deploy_env
          , 'domain' => $this->domain 
-       ));     
+       ))->get();     
    }
 }
