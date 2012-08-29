@@ -65,9 +65,12 @@ class CompanySettings {
             } else {
                 $post_data->social_links = Null;     
             }
-
+            
+            Helpers::dump($post_data);
+            /*
             $db = new DBCompany;
             $db->update_companyinfo($post_data);
+            */
         }
     }
 
