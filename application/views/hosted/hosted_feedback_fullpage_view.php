@@ -87,8 +87,7 @@
     	<div id="headerTitle">
             <?$company_name = ucfirst($company->company_name);?>
         	<strong><?=$company_name?></strong>              
-
-            <span><a href="/">View all feedback</a></span>
+            <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
        		<span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
             
             <?if($company->domain):?>
