@@ -468,7 +468,7 @@ class DBFeedback extends S36DataObject {
 
     public function count_todays_feedback($company_id) {
         $sql = "
-            SELECT COUNT(*) FROM Feedback
+            SELECT COUNT(*) as feed_count FROM Feedback
             INNER JOIN 
                 Site
                     ON Site.siteId = Feedback.siteId
