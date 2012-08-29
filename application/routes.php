@@ -37,13 +37,17 @@ return array(
         $hostname = Config::get('application.hostname');
         $deploy_env = Config::get('application.deploy_env');
 
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
                                                   , 'feeds' => $hosted->view_fragment()
                                                   , 'widget' => $widget
+                                                  /*
                                                   , 'deploy_env' => $deploy_env 
                                                   , 'hostname' => $hostname
+                                                  */
+                                                  , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
 
