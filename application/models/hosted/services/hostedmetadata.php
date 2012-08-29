@@ -21,6 +21,7 @@ class HostedMetadata {
     }
 
     public function perform() {
+        //TODO: caching candidate
         $result = new StdClass;
         $result->todays_count = $this->todays_count->feed_count;
         $result->published_feed_count = $this->published_feed_count->total_rows; 

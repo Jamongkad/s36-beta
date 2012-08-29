@@ -94,7 +94,7 @@
                     <?endif?>
                 </div>
                 <div class="g1of5" align="right"> 
-                    
+                    <?=$feed_count->todays_count?>
                 </div>
             </div>
         </div>

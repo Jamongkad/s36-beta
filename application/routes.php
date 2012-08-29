@@ -38,10 +38,17 @@ return array(
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
 
+        $meta = new Hosted\Services\HostedMetadata(Array(
+             'company_name' => $company_info->company_name
+           , 'company_id' => $company_info->company_id
+        ));
+        $meta->calculate_metrics();
+
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
                                                   , 'feeds' => $hosted->view_fragment()
                                                   , 'widget' => $widget
+                                                  , 'feed_count' => $meta->perform()
                                                   , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
