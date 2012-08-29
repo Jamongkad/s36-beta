@@ -40,7 +40,7 @@ return array(
 
         $meta = new Hosted\Services\HostedMetadata(Array(
              'company_name' => $company_info->company_name
-           , 'company_id' => $company_info->company_id
+           , 'company_id' => $company_info->companyid
         ));
         $meta->calculate_metrics();
 
