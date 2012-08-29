@@ -325,7 +325,9 @@ return array(
         );
 
         $test = new Hosted\Services\HostedMetadata($params);
-        Helpers::dump($test);
+        $test->calculate_metrics();
+        $count = $test->perform();
+        Helpers::dump($count);
     },
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
