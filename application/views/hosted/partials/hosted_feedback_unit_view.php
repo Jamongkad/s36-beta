@@ -108,7 +108,7 @@
                     </div>
                 <?endif?>
                 <?if($feed->displaysbmtdate):?>
-                    <?="Posted " . strtotime($feed->date);//$feed->daysago;//=date('M j, Y', strtotime($feed->date))?>
+                    <?="Posted " . Helpers::relative_time(strtotime($feed->date));//$feed->daysago;//=date('M j, Y', strtotime($feed->date))?>
                 <?endif?>
             </div>
         </div>
