@@ -23,7 +23,7 @@ class HostedMetadata {
     public function perform() {
         $result = new StdClass;
         $result->todays_count = $this->todays_count;
-        $result->published_feed_count = $this->published_feed_count; 
+        $result->published_feed_count = $this->published_feed_count['total_rows']; 
         return $result; 
     }
 }
