@@ -59,12 +59,9 @@ class CompanySettings {
                
                 $post_data->logo = $this->filename;  
             } 
-            
-            Helpers::dump($post_data);
-            /*
+             
             $db = new DBCompany;
             $db->update_companyinfo($post_data);
-            */
         }
     }
     
