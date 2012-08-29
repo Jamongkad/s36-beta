@@ -314,7 +314,6 @@ class DBFeedback extends S36DataObject {
                 , Company.billTo AS company_billto
                 , Company.description AS company_description
                 , Company.logo AS company_logo 
-                , Company.social_links AS company_social_links
             FROM 
                 Feedback
                     INNER JOIN

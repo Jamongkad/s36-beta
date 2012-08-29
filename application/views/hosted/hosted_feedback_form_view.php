@@ -30,19 +30,11 @@
 
 				<br />
                 <div class="companyLinks">
-                    <?if($company->social_links):?> 
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?else:?>
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?endif?>
+                    <ul>
+                        <li><a href="#" class="website">Visit Our Website</a></li>
+                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -60,12 +60,6 @@ class CompanySettings {
                 $post_data->logo = $this->filename;  
             } 
             
-            if(!$this->is_sociallinks_empty($post_data->social_links)) {
-                $post_data->social_links = $this->jsonify_sociallinks($post_data->social_links);
-            } else {
-                $post_data->social_links = Null;     
-            }
-            
             Helpers::dump($post_data);
             /*
             $db = new DBCompany;
@@ -73,7 +67,8 @@ class CompanySettings {
             */
         }
     }
-
+    
+    /*
     public function jsonify_sociallinks($social_links) {
         $array = array_filter($social_links, function($arr) { if($arr) return $arr; });
         return json_encode($array);
@@ -82,6 +77,7 @@ class CompanySettings {
     public function is_sociallinks_empty($social_links) {
         foreach($social_links as $link) return empty($link);
     }
+    */
 
     public function get_errors() { 
         if($this->errors)     

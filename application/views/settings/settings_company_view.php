@@ -12,7 +12,7 @@
         <div class="g4of5">
             <div class="grids">
                 <div class="g2of5"><strong>Name</strong> <br />This name will appear <br />on your hosted page</div>
-                <div class="g3of5"><input type="text" class="regular-text" name="fullpagecompanyname"/></div>
+                <div class="g3of5"><input type="text" class="regular-text" name="fullpagecompanyname" value="<?=$company->fullpagecompanyname?>"/></div>
             </div>
             <br />
             <div class="grids">
@@ -56,8 +56,7 @@
             <br />
             <div class="grids">
                 <div class="g2of5"><strong class="website-icon">Website : </strong></div>
-                <div class="g3of5"><input type="text" name="website_link" class="regular-text" 
-                value=""/> 
+                <div class="g3of5"><input type="text" name="website_link" class="regular-text" value="<?=$company->website_link?>"/> 
                 </div>
             </div> 
             <br /> 
