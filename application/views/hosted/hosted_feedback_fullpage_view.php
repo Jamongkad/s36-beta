@@ -94,7 +94,7 @@
                     <?endif?>
                 </div>
             </div>
-            <div>
+            <div style="padding-top:5px">
                 <?=$feed_count->published_feed_count?> testimonials in total - <?=$feed_count->todays_count?> were just sent in today.
             </div>
         </div>
