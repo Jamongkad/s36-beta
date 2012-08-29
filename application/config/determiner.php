@@ -42,8 +42,8 @@ class Determiner {
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
            );
-           $obj->deploy_env = 'https://mathew-staging.gearfish.com';
-           $obj->env_name = 'mathew-staging';
+           $obj->deploy_env = 'https://'.$subdomain.'.gearfish.com';
+           $obj->env_name = 'dev';
            $obj->fb_id = '238865422903471';
            $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
            return $obj;
@@ -64,7 +64,6 @@ class Determiner {
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
            return $obj;
        }
-
 
        if($my_url[1] == 'gearfish') {
            $obj->hostname = $my_url[1];

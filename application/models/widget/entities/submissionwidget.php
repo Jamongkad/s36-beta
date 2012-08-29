@@ -10,7 +10,7 @@ class SubmissionWidget extends FormWidgets {
     public function __construct($options) {
 
         $this->env = Config::get('application.env_name');
-
+        /* 
         if($this->env == 'dev' or $this->env == 'local') { 
             $this->fb_id = '171323469605899';
             $fb_secret   = 'b60766ccb12c32c92029a773f7716be8';
@@ -20,7 +20,9 @@ class SubmissionWidget extends FormWidgets {
             $this->fb_id = '259670914062599';
             $fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
         }
+        */
         
+        $this->fb_id = Config::get('application.fb_id');
         $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
