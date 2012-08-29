@@ -45,7 +45,7 @@
        'company_name' => $company->company_name
      , 'hostname' => $hostname
      , 'deploy_env' => $deploy_env
-     , 'domain' => $company->sitedomain 
+     , 'domain' => $company->domain 
 ))?>
 
 <div id="bodyWrapper">
