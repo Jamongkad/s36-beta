@@ -34,7 +34,9 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
+                                                       , $company_info->fullpagecompanyname
+                                                       , $company_info->domain);
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info

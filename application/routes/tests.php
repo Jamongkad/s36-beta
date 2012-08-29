@@ -317,10 +317,10 @@ return array(
         Helpers::dump($clean_html);
     },
 
-    'GET /tests/count_todays_feedback/(:any)' => function($company_id) { 
-        $test = new Feedback\Repositories\DBFeedback;
-        $count = $test->count_todays_feedback(1); 
-        Helpers::dump($count);
+    'GET /tests/hosted_metadata' => function() { 
+        $company_id = 1;
+        $test = new Hosted\Services\HostedMetadata;
+        Helpers::dump($test);
     },
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
