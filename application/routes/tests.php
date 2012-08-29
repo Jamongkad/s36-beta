@@ -318,8 +318,13 @@ return array(
     },
 
     'GET /tests/hosted_metadata' => function() { 
-        $company_id = 1;
-        $test = new Hosted\Services\HostedMetadata;
+
+        $params = Array(
+             'company_name' => 'razer'
+           , 'company_id' => 1
+        );
+
+        $test = new Hosted\Services\HostedMetadata($params);
         Helpers::dump($test);
     },
     //reserved route for Leica and Ryan testing
