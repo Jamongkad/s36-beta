@@ -465,6 +465,26 @@ class DBFeedback extends S36DataObject {
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
+
+    public function count_todays_feedback($company_id) {
+        $sql = "
+            SELECT COUNT(*) FROM Feedback
+            INNER JOIN 
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN
+                Company
+                    ON Company.companyId = Site.companyId
+            WHERE 1=1
+                AND Feedback.dtAdded BETWEEN date_sub(now(), INTERVAL 24 hour) AND now()
+                AND Company.companyId = :company_id
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute(); 
+        return $sth->fetch(PDO::FETCH_OBJ);
+    }
     
     //DB WRITES
     public function _change_feedback($column, $feedback_id, $state) {
