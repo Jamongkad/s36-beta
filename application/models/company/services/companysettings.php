@@ -42,26 +42,6 @@ class CompanySettings {
                     unlink($final_file);     
                     $this->filename = $filename;
                 }
-
-                /*
-                $move_attempt = move_uploaded_file($this->files['your_photo']['tmp_name'], $final_file);           
-                if($move_attempt == True) {
-                    $imagesize = getimagesize($final_file);
-                    list($width, $height, $type, $attr) = $imagesize;
-
-                    if($width !== 250 and $height !== 180) {
-                        $this->errors = "Company logo is not the right size. Please adjust it to 250px width and 180px height.";
-                        unlink($final_file);
-                    } else {
-                        if(!copy($final_file, $this->company_dir.$filename)) {
-                            $this->errors = "Failed to copy file to company logo folder"; 
-                        } else {
-                            unlink($final_file);     
-                            $this->filename = $filename;
-                        } 
-                    }              
-                } 
-                */
             }
         }     
     }

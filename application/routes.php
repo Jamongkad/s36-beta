@@ -68,9 +68,11 @@ return array(
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },
 
-    'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings) { 
+    'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
 
         $feedback = $feedback->pull_feedback_by_id($id);
+        $company_info = $company->get_company_info($feedback->companyid);
+
         $fb_id = Config::get('application.fb_id');
         $hostname = Config::get('application.hostname');
         $deploy_env = Config::get('application.deploy_env');
@@ -79,6 +81,7 @@ return array(
 
         return View::make('hosted/hosted_feedback_single_view', Array(
             'feedback' => $feedback
+          , 'company' => $company_info
           , 'fb_id' => $fb_id
           , 'deploy_env' => $deploy_env
           , 'hostname' => $hostname

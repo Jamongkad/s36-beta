@@ -42,10 +42,10 @@
 <div id="fb-root"></div>
 
 <?=View::make('hosted/partials/hosted_feedback_header_view', Array(
-       'company_name' => $feedback->company_name
+       'company_name' => $company->company_name
      , 'hostname' => $hostname
      , 'deploy_env' => $deploy_env
-     , 'domain' => $feedback->sitedomain 
+     , 'domain' => $company->sitedomain 
 ))?>
 
 <div id="bodyWrapper">
