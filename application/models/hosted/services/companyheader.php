@@ -1,6 +1,6 @@
 <?php namespace Hosted\Services;
 
-use Input, Exception, Helpers, StdClass, Helpers, Config;
+use Input, Exception, StdClass, Helpers, Config;
 use Company\Repositories\DBCompany;
 
 class CompanyHeader {
