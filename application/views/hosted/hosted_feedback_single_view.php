@@ -45,7 +45,6 @@
 	<div id="headerContent">
     	<div id="headerTitle">
             <?$company_name = ucfirst($feedback->company_name);?>
-
         	<strong><?=$company_name?></strong>  
             <span><a href="https://<?=strtolower($feedback->company_name).".".$hostname?>.com">View all feedback</a></span> 
             <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
@@ -57,6 +56,7 @@
         </div>
     </div>
 </div>
+
 <div id="bodyWrapper">
 	<div id="bodyContent">
     	<div id="feedbackBox">

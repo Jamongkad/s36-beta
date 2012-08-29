@@ -81,23 +81,12 @@
 
 	}
 </script>
-
-<div id="headerWrapper">
-	<div id="headerContent">
-    	<div id="headerTitle">
-            <?$company_name = ucfirst($company->company_name);?>
-        	<strong><?=$company_name?></strong>              
-            <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
-       		<span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
-            
-            <?if($company->domain):?>
-                <span class="right padfix">
-                    <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
-                </span>
-            <?endif?>        
-        </div>
-    </div>
-</div>
+<?=View::make('hosted/partials/hosted_feedback_header_view', Array(
+       'company_name' => $company->company_name
+     , 'hostname' => $hostname
+     , 'deploy_env' => $deploy_env
+     , 'domain' => $company->domain 
+))?>
 <div id="bodyWrapper">
     <div id="bodyContent">
         <div id="pageTitle">
