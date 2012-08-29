@@ -93,9 +93,9 @@
                         <h1>Hear what our customers have to say</h1>
                     <?endif?>
                 </div>
-                <div class="g1of5" align="right"> 
-                    <?=$feed_count->todays_count?>
-                </div>
+            </div>
+            <div>
+                <?=$feed_count->published_feed_count?> testimonials in total - <?=$feed_count->todays_count?> were just sent in today.
             </div>
         </div>
         <!--
