@@ -1,7 +1,7 @@
 <?php namespace Hosted\Services;
 
 use Input, Exception, StdClass, View, Helpers, Config;
-use Feedback\Repositories\DBFeedback;
+use \Feedback\Repositories\DBFeedback;
 use redisent;
 
 class HostedMetadata {
@@ -11,7 +11,7 @@ class HostedMetadata {
     public function __construct($company_params) {
         $this->company_params = $company_params;     
         $this->key_name = $company_params['company_name']."fullpage:metadata";
-        $this->feedback = new Feedback\Repositories\DBFeedback;
+        $this->feedback = new DBFeedback;
         $this->redis = new redisent\Redis;
     }    
 
