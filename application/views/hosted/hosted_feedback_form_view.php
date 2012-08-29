@@ -4,22 +4,6 @@
     <?=HTML::style('themes/hosted/form/form-'.$hosted->theme_type.'.css');?>
 <?endif?>
 
-<div id="headerWrapper">
-	<div id="headerContent">
-    	<div id="headerTitle">
-            <?$company_name = ucfirst($company->company_name);?>
-        	<strong><?=$company_name?></strong>  
-            <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
-            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in Feedback</a></span>
-            <?if($company->domain):?>
-                <span class="right padfix">
-                    <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
-                </span>
-            <?endif?>
-        </div>
-    </div>
-</div>
-
 <?=$widget?>
 
 <div class="block" style="height:40px;"></div>
