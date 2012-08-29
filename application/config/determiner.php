@@ -42,8 +42,8 @@ class Determiner {
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
            );
-           $obj->deploy_env = 'https://dev.gearfish.com';
-           $obj->env_name = 'dev';
+           $obj->deploy_env = 'https://mathew-staging.gearfish.com';
+           $obj->env_name = 'mathew-staging';
            $obj->fb_id = '238865422903471';
            $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
            return $obj;
