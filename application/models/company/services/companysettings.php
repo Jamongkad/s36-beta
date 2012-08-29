@@ -68,17 +68,6 @@ class CompanySettings {
         }
     }
     
-    /*
-    public function jsonify_sociallinks($social_links) {
-        $array = array_filter($social_links, function($arr) { if($arr) return $arr; });
-        return json_encode($array);
-    }
-
-    public function is_sociallinks_empty($social_links) {
-        foreach($social_links as $link) return empty($link);
-    }
-    */
-
     public function get_errors() { 
         if($this->errors)     
             return $this->errors;
