@@ -34,7 +34,7 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
@@ -51,7 +51,7 @@ return array(
         $widget = $wl->load();
 
         $company_info = $company->get_company_info($widget->company_id);
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
 
@@ -69,8 +69,8 @@ return array(
 
         $fb_id = Config::get('application.fb_id');
 
-        $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
+        $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));  
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
 
         return View::make('hosted/hosted_feedback_single_view', Array(
             'feedback' => $feedback 
