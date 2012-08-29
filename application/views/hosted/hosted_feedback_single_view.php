@@ -47,15 +47,13 @@
             <?$company_name = ucfirst($feedback->company_name);?>
 
         	<strong><?=$company_name?></strong>  
-            <span><?=HTML::link('/', 'View all feedback')?></span>
-            
+            <span><a href="https://<?=strtolower($feedback->company_name).".".$hostname?>.com">View all feedback</a></span> 
+            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
             <?if($feedback->sitedomain):?>
                 <span class="right padfix">
                     <a href="https://<?=$feedback->sitedomain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
             <?endif?>
-
-            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
         </div>
     </div>
 </div>

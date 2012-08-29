@@ -94,8 +94,7 @@
                 <span class="right padfix">
                     <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
                 </span>
-            <?endif?>
-        
+            <?endif?>        
         </div>
     </div>
 </div>

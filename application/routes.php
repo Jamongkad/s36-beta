@@ -33,8 +33,10 @@ return array(
         $widget = $dbw->fetch_canonical_widget($company_name);
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
-        $deploy_env = Config::get('application.deploy_env');
+
         $hostname = Config::get('application.hostname');
+        $deploy_env = Config::get('application.deploy_env');
+
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
@@ -70,6 +72,7 @@ return array(
 
         $feedback = $feedback->pull_feedback_by_id($id);
         $fb_id = Config::get('application.fb_id');
+        $hostname = Config::get('application.hostname');
         $deploy_env = Config::get('application.deploy_env');
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));
@@ -78,6 +81,7 @@ return array(
             'feedback' => $feedback
           , 'fb_id' => $fb_id
           , 'deploy_env' => $deploy_env
+          , 'hostname' => $hostname
           , 'hosted' => $hosted_settings->hosted_settings()
         ));
     },
