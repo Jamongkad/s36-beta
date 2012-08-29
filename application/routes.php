@@ -34,19 +34,12 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
-        $hostname = Config::get('application.hostname');
-        $deploy_env = Config::get('application.deploy_env');
-
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
 
         echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
                                                   , 'feeds' => $hosted->view_fragment()
                                                   , 'widget' => $widget
-                                                  /*
-                                                  , 'deploy_env' => $deploy_env 
-                                                  , 'hostname' => $hostname
-                                                  */
                                                   , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
@@ -58,17 +51,14 @@ return array(
         $widget = $wl->load();
 
         $company_info = $company->get_company_info($widget->company_id);
-        
-        $hostname = Config::get('application.hostname');
-        $deploy_env = Config::get('application.deploy_env');
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->domain);
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company' => $company_info
-                                                    , 'hostname' => $hostname
-                                                    , 'deploy_env' => $deploy_env
+                                                    , 'company_header' => $header_view 
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },
 
