@@ -81,7 +81,7 @@
 
 	}
 </script>
-
+<?=$company_header?>
 <?/*=View::make('hosted/partials/hosted_feedback_header_view', Array(
        'company_name' => $company->company_name
      , 'hostname' => $hostname
