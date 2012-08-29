@@ -29,21 +29,23 @@
                 </p>
 
 				<br />
-                <div class="companyLinks">
-                    <ul>
-                        <?if($company->website_link):?>
-                            <li><a href="<?=$company->website_link?>" class="website">Visit Our Website</a></li>
-                        <?endif?>
+                <?if($company->website_link || $company->fb_link || $company->twit_link):?>
+                    <div class="companyLinks">
+                        <ul>
+                            <?if($company->website_link):?>
+                                <li><a href="<?=$company->website_link?>" class="website">Visit Our Website</a></li>
+                            <?endif?>
 
-                        <?if($company->fb_link):?>
-                            <li><a href="<?=$company->fb_link?>" class="facebook">Join us on Facebook</a></li>
-                        <?endif?>
+                            <?if($company->fb_link):?>
+                                <li><a href="<?=$company->fb_link?>" class="facebook">Join us on Facebook</a></li>
+                            <?endif?>
 
-                        <?if($company->twit_link):?>
-                            <li><a href="<?=$company->twit_link?>" class="twitter">Follow us on Twitter</a></li>
-                        <?endif?>
-                    </ul>
-                </div>
+                            <?if($company->twit_link):?>
+                                <li><a href="<?=$company->twit_link?>" class="twitter">Follow us on Twitter</a></li>
+                            <?endif?>
+                        </ul>
+                    </div>
+                <?endif?>
             </div>
         </div>
         <div class="block" style="height:20px;"></div>
