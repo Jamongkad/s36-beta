@@ -59,6 +59,7 @@ Checky.prototype.init = function() {
                               , "contactid": $(this).siblings('.contact-feed-id').val()
                               , "siteid": $(this).siblings('.site-feed-id').val()
                               , "rating": $(this).siblings('.feed-ratings').val()
+                              , "perm": $(this).siblings('.perm-state').val()
                               , "parent_id": my_parent.attr('id')
                               , "total_units": my_parent.attr('data-total') 
                             };
