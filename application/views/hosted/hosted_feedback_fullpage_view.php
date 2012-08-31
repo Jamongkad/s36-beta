@@ -81,25 +81,7 @@
 
 	}
 </script>
-
-<div id="headerWrapper">
-	<div id="headerContent">
-    	<div id="headerTitle">
-            <?$company_name = ucfirst($company->company_name);?>
-        	<strong><?=$company_name?></strong>              
-
-            <span><a href="/">View all feedback</a></span>
-       		<span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in feedback</a></span>
-            
-            <?if($company->domain):?>
-                <span class="right padfix">
-                    <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
-                </span>
-            <?endif?>
-        
-        </div>
-    </div>
-</div>
+<?=$company_header?>
 <div id="bodyWrapper">
     <div id="bodyContent">
         <div id="pageTitle">
@@ -111,27 +93,19 @@
                         <h1>Hear what our customers have to say</h1>
                     <?endif?>
                 </div>
-                <div class="g1of5" align="right"> 
-                    
-                </div>
+            </div>
+            <div style="padding-top:10px">
+                <?=$feed_count->published_feed_count?> testimonials in total - <?=$feed_count->todays_count?> were just sent in today.
             </div>
         </div>
         <!--
         <div id="companyDetails" class="block">
             <div class="companyLinks">
-                <?if($company->social_links):?> 
-                    <ul>
-                        <li><a href="#" class="website">Visit Our Website</a></li>
-                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                    </ul>
-                <?else:?>
-                    <ul>
-                        <li><a href="#" class="website">Visit Our Website</a></li>
-                        <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                        <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                    </ul>
-                <?endif?>
+                <ul>
+                    <li><a href="#" class="website">Visit Our Website</a></li>
+                    <li><a href="#" class="facebook">Join us on Facebook</a></li>
+                    <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                </ul>
             </div>
         </div>
         -->

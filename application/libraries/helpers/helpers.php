@@ -220,6 +220,7 @@ class Helpers {
         }
         return implode(' ',$U);
     }
+    
 
     public static function relative_time($time, $short=False) {
         $SECOND = 1;

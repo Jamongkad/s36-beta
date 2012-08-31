@@ -41,24 +41,8 @@
 <body>
 <div id="fb-root"></div>
 
-<div id="headerWrapper">
-	<div id="headerContent">
-    	<div id="headerTitle">
-            <?$company_name = ucfirst($feedback->company_name);?>
+<?=$company_header?>
 
-        	<strong><?=$company_name?></strong>  
-            <span><?=HTML::link('/', 'View all feedback')?></span>
-            
-            <?if($feedback->sitedomain):?>
-                <span class="right padfix">
-                    <a href="https://<?=$feedback->sitedomain?>" target="_blank"><?="Visit $company_name's Website"?></a>
-                </span>
-            <?endif?>
-
-            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($feedback->company_name).'/submit'?>">Send in feedback</a></span>
-        </div>
-    </div>
-</div>
 <div id="bodyWrapper">
 	<div id="bodyContent">
     	<div id="feedbackBox">

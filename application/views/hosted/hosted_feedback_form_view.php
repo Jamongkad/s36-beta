@@ -4,23 +4,7 @@
     <?=HTML::style('themes/hosted/form/form-'.$hosted->theme_type.'.css');?>
 <?endif?>
 
-<div id="headerWrapper">
-	<div id="headerContent">
-    	<div id="headerTitle">
-            <?$company_name = ucfirst($company->company_name);?>
-
-        	<strong><?=$company_name?></strong>  
-            <span><a href="https://<?=strtolower($company->company_name).".".$hostname?>.com">View all feedback</a></span>
-            <span><a class="green-cross" href="<?=$deploy_env.'/'.strtolower($company->company_name).'/submit'?>">Send in Feedback</a></span>
-            <?if($company->domain):?>
-                <span class="right padfix">
-                    <a href="https://<?=$company->domain?>" target="_blank"><?="Visit $company_name's Website"?></a>
-                </span>
-            <?endif?>
-        </div>
-    </div>
-</div>
-
+<?=$company_header?>
 <?=$widget?>
 
 <div class="block" style="height:40px;"></div>
@@ -45,21 +29,23 @@
                 </p>
 
 				<br />
-                <div class="companyLinks">
-                    <?if($company->social_links):?> 
+                <?if($company->website_link || $company->fb_link || $company->twit_link):?>
+                    <div class="companyLinks">
                         <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
+                            <?if($company->website_link):?>
+                                <li><a href="<?=$company->website_link?>" class="website">Visit Our Website</a></li>
+                            <?endif?>
+
+                            <?if($company->fb_link):?>
+                                <li><a href="<?=$company->fb_link?>" class="facebook">Join us on Facebook</a></li>
+                            <?endif?>
+
+                            <?if($company->twit_link):?>
+                                <li><a href="<?=$company->twit_link?>" class="twitter">Follow us on Twitter</a></li>
+                            <?endif?>
                         </ul>
-                    <?else:?>
-                        <ul>
-                            <li><a href="#" class="website">Visit Our Website</a></li>
-                            <li><a href="#" class="facebook">Join us on Facebook</a></li>
-                            <li><a href="#" class="twitter">Follow us on Twitter</a></li>
-                        </ul>
-                    <?endif?>
-                </div>
+                    </div>
+                <?endif?>
             </div>
         </div>
         <div class="block" style="height:20px;"></div>

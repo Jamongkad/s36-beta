@@ -23,9 +23,10 @@ class DBCompany extends S36DataObject {
             ->where('companyId', '=', $post->companyid)
             ->update(Array( 
                 'description'  => $post->company_desc
-              , 'social_links' => $post->social_links 
+              , 'fullpageCompanyName' => $post->fullpagecompanyname 
               , 'fb_link' => $post->fb_link
               , 'twit_link' => $post->twit_link
+              , 'website_link' => $post->website_link
               , 'logo' => $post->logo
             )); 
     }

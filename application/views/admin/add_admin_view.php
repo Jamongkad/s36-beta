@@ -1,6 +1,5 @@
 <?=Form::open('admin/add_admin')?>
 <?//=Form::open('admin/test_invite_email')?>
-
 <input type="hidden" name="companyId" value="<?=$admin->companyid?>" />
 <div class="block">
     <div class="label">&nbsp;</div><div class="input-field">Required Information</div>

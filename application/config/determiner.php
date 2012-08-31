@@ -33,7 +33,23 @@ class Determiner {
        }
        
        //Staging
-       if($this->http_host == 'mathew-staging.gearfish.com' || $this->http_host == 'dan-staging.gearfish.com') {
+       if($this->http_host == 'mathew-staging.gearfish.com') {
+           $obj->hostname = $my_url[1];
+           $obj->subdomain = $subdomain;
+           $obj->host = 'https://'.$subdomain.'.gearfish.com';
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+           );
+           $obj->deploy_env = 'https://'.$subdomain.'.gearfish.com';
+           $obj->env_name = 'dev';
+           $obj->fb_id = '238865422903471';
+           $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
+           return $obj;
+       }
+       
+       if($this->http_host == 'dan-staging.gearfish.com') { 
            $obj->hostname = $my_url[1];
            $obj->subdomain = $subdomain;
            $obj->host = 'https://'.$subdomain.'.gearfish.com';
@@ -48,7 +64,6 @@ class Determiner {
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
            return $obj;
        }
-
 
        if($my_url[1] == 'gearfish') {
            $obj->hostname = $my_url[1];

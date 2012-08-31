@@ -26,7 +26,7 @@ class ClientRender {
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
               , 'tab_position_css' => $this->tab_position_css_output
             );
-            return View::make('widget::widget_js_output_form', $data)->get();
+            return View::make('widget/widget_js_output_form', $data)->get();
         }
 
         if($obj instanceof DisplayWidgets) {
@@ -41,7 +41,7 @@ class ClientRender {
               , 'class_name' => $obj->my_name()
             );
 
-            return View::make('widget::widget_js_output_display', $data)->get(); 
+            return View::make('widget/widget_js_output_display', $data)->get(); 
         }
     }
 
@@ -54,7 +54,7 @@ class ClientRender {
               , 'css_load' => $this->form_loader_css
               , 'widget_loader_url' => $this->_widget_loader($obj->widgetkey)
             );
-            return View::make('widget::widget_link_js_output_form', $data)->get();
+            return View::make('widget/widget_link_js_output_form', $data)->get();
         }
     }
 

@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="feedbackText" <?=($type == 'featured' && ($feed->displayimg == false) or ($feed->avatar == false)) ? " style='margin-left: 210px'" : null?>>
+            <div class="feedbackText" <?=($type == 'featured' && (($feed->displayimg == false) or ($feed->avatar == false))) ? " style='margin-left: 210px'" : null?>>
                 <div class="feedbackTextTail"></div>
                 <div class="feedbackTextBubble">
                     <p><?=$feed->text?></p>
@@ -108,7 +108,7 @@
                     </div>
                 <?endif?>
                 <?if($feed->displaysbmtdate):?>
-                    <?=date('M j, Y', strtotime($feed->date))?>
+                    <?="Posted " . Helpers::relative_time(strtotime($feed->date));//=date('M j, Y', strtotime($feed->date))?>
                 <?endif?>
             </div>
         </div>

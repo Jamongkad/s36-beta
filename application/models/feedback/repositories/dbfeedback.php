@@ -22,6 +22,20 @@ class DBFeedback extends S36DataObject {
                   END AS priority
                 , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
                 , Feedback.dtAdded AS date
+                , CASE
+                      WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
+                          THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
+                       WHEN datediff(now(), dtAdded) = 1 
+                          THEN "Yesterday"
+                       WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
+                          THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
+                       WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
+                          THEN concat(datediff(now(), dtAdded)," days ago")
+                       WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
+                          THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
+                       ELSE    
+                          "about a year ago"
+                  END as daysAgo
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
                     WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
@@ -300,7 +314,6 @@ class DBFeedback extends S36DataObject {
                 , Company.billTo AS company_billto
                 , Company.description AS company_description
                 , Company.logo AS company_logo 
-                , Company.social_links AS company_social_links
             FROM 
                 Feedback
                     INNER JOIN
@@ -331,8 +344,8 @@ class DBFeedback extends S36DataObject {
     public function total_feedback_by_company($company_id) {
         $sql = "   
             SELECT 
-                  SQL_CALC_FOUND_ROWS
-                  Feedback.feedbackId
+                SQL_CALC_FOUND_ROWS
+                Feedback.feedbackId
             FROM 
                 Feedback
                     INNER JOIN
@@ -347,7 +360,6 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
-
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         return $row_count->fetchColumn();
     }
@@ -451,6 +463,22 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
+    }
+
+    public function count_todays_feedback($company_id) {
+        $sql = "
+            SELECT COUNT(*) as feed_count FROM Feedback
+            INNER JOIN Site ON Site.siteId = Feedback.siteId
+            INNER JOIN Company ON Company.companyId = Site.companyId
+            WHERE 1=1
+                AND Feedback.dtAdded BETWEEN date_sub(now(), INTERVAL 24 hour) AND now()
+                AND Company.companyId = :company_id
+        ";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+        $sth->execute(); 
+        return $sth->fetch(PDO::FETCH_OBJ);
     }
     
     //DB WRITES
