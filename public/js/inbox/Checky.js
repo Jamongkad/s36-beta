@@ -63,6 +63,7 @@ Checky.prototype.init = function() {
                               , "rating": $(this).siblings('.feed-ratings').val()
                               , "parent_id": my_parent.attr('id')
                               , "perm": my_perm
+                              , "mode": mode
                               , "total_units": my_parent.attr('data-total') 
                             };
 
@@ -88,11 +89,11 @@ Checky.prototype.init = function() {
                 });    
 
                 var limited_perm_feeds = exam_collection.filter(function(el) {
-                    return el.perm == 3;
+                    return el.perm == 3 && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
                 var poor_feeds = exam_collection.filter(function(el) {
-                    return el.rating == 'POOR';
+                    return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
                 console.log(limited_perm_feeds);
                 console.log(poor_feeds);
