@@ -52,6 +52,7 @@ Checky.prototype.init = function() {
                             
                             var my_parent  = $(this).parents('div.feedback-group')
                             var my_ratings = $(this).siblings('.feed-ratings').val();
+                            var my_perm = $(this).siblings('.perm-state').val();
                             var feed_unit  = '#' + $(this).val();
 
                             var data = {  
@@ -59,14 +60,13 @@ Checky.prototype.init = function() {
                               , "contactid": $(this).siblings('.contact-feed-id').val()
                               , "siteid": $(this).siblings('.site-feed-id').val()
                               , "rating": $(this).siblings('.feed-ratings').val()
-                              , "perm": $(this).siblings('.perm-state').val()
                               , "parent_id": my_parent.attr('id')
                               , "total_units": my_parent.attr('data-total') 
                             };
 
                             //console.log(window.location.pathname.match(/published|contacts/g));
-
-                            if(my_ratings != 'POOR') { 
+                           
+                            if(my_ratings != 'POOR' && my_perm == 1) { 
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
