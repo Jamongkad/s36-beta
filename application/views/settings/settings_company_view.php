@@ -84,3 +84,11 @@
 </div>
 
 <?=Form::close()?>
+
+<script type="text/javascript">
+jQuery(function($) {
+    $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) {
+        console.log($(this).val());
+    });
+})
+</script>
