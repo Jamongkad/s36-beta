@@ -70,7 +70,7 @@
         <div class="g3of4">
             <div class="grids">
                 <strong><a href="#" class="dark-blue" style="text-decoration:underline">Link preview this on your public feedback page</a></strong>
-                <p>If you leave a field empty, it will not appear on your <a href="#" style="text-decoration:underline">public feedback page</a></p>
+                <p>If you leave a field empty, it will not appear on your public feedback page</p>
                 <br />
                 <input type="submit" class="large-btn" value="Save Settings" />
             </div>
