@@ -87,7 +87,7 @@ Checky.prototype.init = function() {
                     }
                 });    
 
-                var result = exam_collection.filter(function(el)) {
+                var result = exam_collection.filter(function(el) {
                     return el.perm == 2 || el.perm == 3;
                 }
 
