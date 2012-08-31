@@ -87,11 +87,12 @@ Checky.prototype.init = function() {
                     }
                 });    
 
-                var result = exam_collection.filter(function(el) {
-                    return el.perm == 2 || el.perm == 3;
-                }
 
-                console.log(result);
+                console.log(  
+                    exam_collection.filter(function(el) {
+                        return el.perm == 2 || el.perm == 3;
+                    }
+                );
 
                          
                 $("option:first", this).prop("selected", true);
