@@ -83,11 +83,13 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
+
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
                 if(collection.length > 0) { 
+                    console.log(collection);
                     $.ajax({
                         type: "POST"      
                       , data: {  
