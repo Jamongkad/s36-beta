@@ -193,10 +193,8 @@ return array(
         $feed_ids = Input::get('feed_ids');
         $mode     = Input::get('col');  
 
-        print_r($feed_ids);
-        print_r($mode);
-        //$fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
-        //return $fire->execute();
+        $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
+        return $fire->execute();
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
