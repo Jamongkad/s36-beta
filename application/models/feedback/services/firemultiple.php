@@ -18,8 +18,9 @@ class FireMultiple {
     }
 
     public function execute() {
+        //emits json for jquery ui manipulation
         $this->_group_ui_cluster($this->feed_ids);
-        /*
+
         if($this->mode == "remove") {
             foreach($this->feed_ids as $feed_id) {
                 $this->feedback->permanently_remove_feedback($feed_id['feedid']);    
@@ -28,7 +29,7 @@ class FireMultiple {
             $feedbackstate = new FeedbackState($this->mode, $this->feed_ids, $this->company_id);
             $feedbackstate->change_state();
         } 
-        */
+
     }
 
     private function _group_ui_cluster($feeds) {
