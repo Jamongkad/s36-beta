@@ -86,11 +86,13 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-                /*
-                    exam_collection.filter(function(el) {
+
+                var result = exam_collection.filter(function(el) {
                         return el.perm == 2 || el.perm == 3;
-                    });
-                */
+                });
+
+                console.log(result);
+
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
