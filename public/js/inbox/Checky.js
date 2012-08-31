@@ -73,16 +73,16 @@ Checky.prototype.init = function() {
                             } 
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
-                                //console.log("poor rated feeds cannot pass");
-                                exam_collection.push(data);
+                                //console.log("poor rated feeds cannot pass");  
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
                             if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
-                                exam_collection.push(data);
+
                                 process_feedbacks(collection, data, feed_unit); 
                             }
+                            exam_collection.push(data);
                         } 
                     }
                 });    
