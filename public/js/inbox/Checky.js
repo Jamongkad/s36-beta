@@ -67,14 +67,17 @@ Checky.prototype.init = function() {
                             //console.log(window.location.pathname.match(/published|contacts/g));
                            
                             if(my_ratings != 'POOR' && my_perm == 1) { 
+                                console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
+                                console.log("poor rated feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
 
                             if((my_ratings != 'POOR' && (my_perm == 2 || my_perm == 3)) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                                console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
 
