@@ -88,7 +88,7 @@ Checky.prototype.init = function() {
                 });    
 
                 var result = exam_collection.filter(function(el) {
-                        return el.perm == 2 || el.perm == 3;
+                    return el.perm == 2 || el.perm == 3 || el.rating == 'POOR';
                 });
 
                 console.log(result);
