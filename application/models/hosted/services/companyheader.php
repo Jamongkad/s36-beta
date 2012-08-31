@@ -10,6 +10,7 @@ class CompanyHeader {
        $this->domain = $domain;
        $this->deploy_env = Config::get('application.deploy_env');
        $this->hostname = Config::get('application.hostname');
+       $this->sample_name = Input::get('sample_name');
    }
 
    public function __toString() {
@@ -19,6 +20,7 @@ class CompanyHeader {
          , 'hostname' => $this->hostname
          , 'deploy_env' => $this->deploy_env
          , 'domain' => $this->domain 
+         , 'sample_name' => $this->sample_name
        ))->get();     
    }
 }
