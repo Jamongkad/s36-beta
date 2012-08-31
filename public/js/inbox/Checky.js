@@ -74,11 +74,31 @@ Checky.prototype.init = function() {
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
                                 console.log("poor rated feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
+                            } else { 
+                                  checkyBar.css({
+                                      'background': '#fef1b5'
+                                    , 'width': '200px'
+                                    , 'right': '35%'
+                                    , 'top': '15%'
+                                    , 'text-align': 'center'
+                                    , 'padding': '5px'
+                                    , 'font-weight': 'bold'
+                                  }).html("Poor").show();
                             }
 
                             if((my_ratings != 'POOR' && (my_perm == 2 || my_perm == 3)) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
+                            } else { 
+                                  checkyBar.css({
+                                      'background': '#fef1b5'
+                                    , 'width': '200px'
+                                    , 'right': '35%'
+                                    , 'top': '15%'
+                                    , 'text-align': 'center'
+                                    , 'padding': '5px'
+                                    , 'font-weight': 'bold'
+                                  }).html("Private").show();
                             }
 
                         } 
