@@ -66,8 +66,6 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
-                            exam_collection.push(data);
-
                             //console.log(window.location.pathname.match(/published|contacts/g)); 
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 //console.log("all can pass");
@@ -76,24 +74,35 @@ Checky.prototype.init = function() {
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
                                 //console.log("poor rated feeds cannot pass");
+                                exam_collection.push(data);
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if((my_ratings != 'POOR' && (my_perm == 2 || my_perm == 3)) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                            if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
+                                exam_collection.push(data);
                                 process_feedbacks(collection, data, feed_unit); 
                             }
                         } 
                     }
                 });    
 
-                var result = exam_collection.filter(function(el) {
-                    return el.perm == 2 || el.perm == 3 || el.rating == 'POOR';
+                var limited_perm_feeds = exam_collection.filter(function(el) {
+                    return el.perm == 3;
                 });
 
-                console.log(result);
+                var poor_feeds = exam_collection.filter(function(el) {
+                    return el.rating == 'POOR';
+                });
 
-                         
+                if(limited_perm_feeds) {
+                    confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                }
+
+                if(poor_feeds) {
+                    confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                }
+       
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
