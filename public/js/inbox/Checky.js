@@ -20,6 +20,7 @@ Checky.prototype.init = function() {
         var baseUrl     = $(this).attr('base-url');
         var checkyBar   = $('.checky-bar');
         var collection  = new Array();
+        var anti_collecton = new Array();
 
         if (ifChecked && mode != 'none') { 
 
@@ -69,18 +70,22 @@ Checky.prototype.init = function() {
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
+                            } else {
+                                anti_collecton.push(data);
                             } 
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
                                 //console.log("poor rated feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             } else { 
-                                confirm("Are you sure want to delete these feedbacks?");     
+                                anti_collecton.push(data);
                             }
 
                             if((my_ratings != 'POOR' && (my_perm == 2 || my_perm == 3)) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
+                            } else { 
+                                anti_collecton.push(data);
                             }
                         } 
                     }
@@ -89,6 +94,8 @@ Checky.prototype.init = function() {
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
+
+                console.log(anti_collecton);
                 
                 if(collection.length > 0) { 
                     $.ajax({
