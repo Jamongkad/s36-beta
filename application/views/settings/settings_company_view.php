@@ -70,7 +70,7 @@
         <div class="g3of4">
             <div class="grids">
                 <strong>
-                    <a href="<?=$url?>" class="dark-blue" target="_blank" style="text-decoration:underline">Link preview this on your public feedback page</a>
+                    <a href="<?=$url?>?sample_name=" class="dark-blue" target="_blank" style="text-decoration:underline">Link preview this on your public feedback page</a>
                 </strong>
                 <p>If you leave a field empty, it will not appear on your public feedback page</p>
                 <br />
