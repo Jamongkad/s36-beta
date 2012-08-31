@@ -96,15 +96,15 @@ Checky.prototype.init = function() {
                 });
                 console.log(limited_perm_feeds);
                 console.log(poor_feeds);
-                /*
-                if(limited_perm_feeds) {
+
+                if(limited_perm_feeds.length > 0) {
                     confirm("Warning: There is feedback that has been set as private and will not be processed.");
                 }
 
-                if(poor_feeds) {
+                if(poor_feeds.length > 0) {
                     confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
                 }
-                */
+
        
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
