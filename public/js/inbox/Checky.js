@@ -95,8 +95,6 @@ Checky.prototype.init = function() {
                 var poor_feeds = exam_collection.filter(function(el) {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
-                console.log(limited_perm_feeds);
-                console.log(poor_feeds);
 
                 if(limited_perm_feeds.length > 0) {
                     confirm("Warning: There is feedback that has been set as private and will not be processed.");
