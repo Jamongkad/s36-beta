@@ -87,8 +87,13 @@
 
 <script type="text/javascript">
 jQuery(function($) {
-    $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) {
-        console.log($(this).val());
+    var fullname = $('input[name="fullpagecompanyname"]');
+
+    if(fullname.val() > 0) { 
+        $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ fullname.val());
+    }
+
+    $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) { 
         $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ $(this).val());
     });
 })
