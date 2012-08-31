@@ -20,7 +20,7 @@ Checky.prototype.init = function() {
         var baseUrl     = $(this).attr('base-url');
         var checkyBar   = $('.checky-bar');
         var collection  = new Array();
-        var anti_collecton = new Array();
+        var exam_collection = new Array();
 
         if (ifChecked && mode != 'none') { 
 
@@ -66,36 +66,36 @@ Checky.prototype.init = function() {
                               , "total_units": my_parent.attr('data-total') 
                             };
 
+                            exam_collection.push(data);
+
                             //console.log(window.location.pathname.match(/published|contacts/g)); 
                             if(my_ratings != 'POOR' && my_perm == 1) { 
                                 //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
-                            } else {
-                                anti_collecton.push(data);
                             } 
 
                             if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
                                 //console.log("poor rated feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
-                            } else { 
-                                anti_collecton.push(data);
-                            }
+                            } 
 
                             if((my_ratings != 'POOR' && (my_perm == 2 || my_perm == 3)) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
-                            } else { 
-                                anti_collecton.push(data);
                             }
                         } 
                     }
                 });    
 
+                var result = exam_collection.filter(function(el)) {
+                    return el.perm == 2 || el.perm == 3;
+                }
+
+                console.log(result);
+
                          
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-
-                console.log(anti_collecton);
                 
                 if(collection.length > 0) { 
                     $.ajax({
