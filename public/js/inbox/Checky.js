@@ -61,6 +61,7 @@ Checky.prototype.init = function() {
                               , "siteid": $(this).siblings('.site-feed-id').val()
                               , "rating": $(this).siblings('.feed-ratings').val()
                               , "parent_id": my_parent.attr('id')
+                              , "perm": my_perm
                               , "total_units": my_parent.attr('data-total') 
                             };
 
@@ -79,7 +80,6 @@ Checky.prototype.init = function() {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
-
                         } 
                     }
                 });    
@@ -89,7 +89,6 @@ Checky.prototype.init = function() {
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
                 if(collection.length > 0) { 
-                    console.log(collection);
                     $.ajax({
                         type: "POST"      
                       , data: {  
