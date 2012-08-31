@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Repositories\DBFeedback, Exception, Helpers, StdClass, ArrayIterator, LimitIterator, View, Config;
-use Halcyonic, redisent;
+use redisent;
 
 class HostedService {
     
@@ -23,7 +23,6 @@ class HostedService {
     public function __construct($company_name) {
         $this->company_name = $company_name;
         $this->feedback     = new DBFeedback;
-        $this->cache = new Halcyonic\Services\Cache;
         $this->redis = new redisent\Redis;
         $this->key_name = $this->company_name.":fullpage:data";
     }

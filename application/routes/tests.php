@@ -254,11 +254,6 @@ return array(
         Helpers::dump($str);
     },
 
-    'GET /tests/hosted_feedback_cache_invalidate' => function() { 
-        $test = new Feedback\Services\HostedService(1);
-        $test->invalidate_hosted_feeds_cache(); 
-    },
-
     'GET /tests/company_info/(:any)' => function($company_id) {
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($company_id);
@@ -322,6 +317,18 @@ return array(
         Helpers::dump($clean_html);
     },
 
+    'GET /tests/hosted_metadata' => function() { 
+
+        $params = Array(
+             'company_name' => 'razer'
+           , 'company_id' => 1
+        );
+
+        $test = new Hosted\Services\HostedMetadata($params);
+        $test->calculate_metrics();
+        $count = $test->perform();
+        Helpers::dump($count);
+    },
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');

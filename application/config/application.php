@@ -12,6 +12,7 @@ return array(
 	| The URL used to access your application. No trailing slash.
 	|
 	*/
+
     'url'        => $determine->d->host,
     'deploy_env' => $determine->d->deploy_env,
     'env_name'   => $determine->d->env_name,
@@ -19,6 +20,7 @@ return array(
     'fb_id'      => $determine->d->fb_id,
     'fb_secret'  => $determine->d->fb_secret,
     'subdomain'  => $determine->d->subdomain,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index
@@ -30,6 +32,7 @@ return array(
 	| cleaner URLs, set this option to an empty string.
 	|
 	*/
+
 	'index' => '',
 
 	/*
