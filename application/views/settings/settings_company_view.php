@@ -89,7 +89,7 @@
 jQuery(function($) {
     var fullname = $('input[name="fullpagecompanyname"]');
 
-    if(fullname.val() > 0) { 
+    if(fullname.val() != "") { 
         $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ fullname.val());
     }
 
