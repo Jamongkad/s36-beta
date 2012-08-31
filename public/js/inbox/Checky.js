@@ -20,6 +20,7 @@ Checky.prototype.init = function() {
         var baseUrl     = $(this).attr('base-url');
         var checkyBar   = $('.checky-bar');
         var collection  = new Array();
+        var exam_collection = new Array();
 
         if (ifChecked && mode != 'none') { 
 
@@ -52,6 +53,7 @@ Checky.prototype.init = function() {
                             
                             var my_parent  = $(this).parents('div.feedback-group')
                             var my_ratings = $(this).siblings('.feed-ratings').val();
+                            var my_perm = $(this).siblings('.perm-state').val();
                             var feed_unit  = '#' + $(this).val();
 
                             var data = {  
@@ -60,22 +62,49 @@ Checky.prototype.init = function() {
                               , "siteid": $(this).siblings('.site-feed-id').val()
                               , "rating": $(this).siblings('.feed-ratings').val()
                               , "parent_id": my_parent.attr('id')
+                              , "perm": my_perm
+                              , "mode": mode
                               , "total_units": my_parent.attr('data-total') 
                             };
 
-                            //console.log(window.location.pathname.match(/published|contacts/g));
-
-                            if(my_ratings != 'POOR') { 
+                            //console.log(window.location.pathname.match(/published|contacts/g)); 
+                            if(my_ratings != 'POOR' && my_perm == 1) { 
+                                //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
 
-                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                            if(my_ratings == 'POOR' && (mode == 'delete' || mode == 'restore' || mode == 'remove')) { 
+                                //console.log("poor rated feeds cannot pass");  
+                                process_feedbacks(collection, data, feed_unit); 
+                            } 
+
+                            if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
+                                //console.log("private and limited feeds cannot pass");
+
                                 process_feedbacks(collection, data, feed_unit); 
                             }
+                            exam_collection.push(data);
                         } 
                     }
                 });    
-                         
+
+                var limited_perm_feeds = exam_collection.filter(function(el) {
+                    return el.perm == 3 && (el.mode == 'publish' || el.mode == 'feature');
+                });
+
+                var poor_feeds = exam_collection.filter(function(el) {
+                    return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
+                });
+
+                if(limited_perm_feeds.length > 0) {
+                    confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                }
+
+                if(poor_feeds.length > 0) {
+                    confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                }
+
+       
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 

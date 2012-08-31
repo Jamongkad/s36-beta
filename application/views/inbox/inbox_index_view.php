@@ -21,6 +21,7 @@
                             <input type="hidden" name="site_id" value="<?=$feed->siteid?>" class="site-feed-id" />
                             <input type="hidden" name="cat_id" value="<?=$feed->categoryid?>" class="category-feed-id"/>
                             <input type="hidden" name="inbox_state" value="<?=$inbox_state?>" class="inbox-state"/>
+                            <input type="hidden" name="perm_state" value="<?=$feed->perm_val?>" class="perm-state"/>
                         </div>
                         <div class="right">
                             <div class="g4of5">

@@ -18,6 +18,7 @@ class FireMultiple {
     }
 
     public function execute() {
+        //emits json for jquery ui manipulation
         $this->_group_ui_cluster($this->feed_ids);
 
         if($this->mode == "remove") {
@@ -28,11 +29,13 @@ class FireMultiple {
             $feedbackstate = new FeedbackState($this->mode, $this->feed_ids, $this->company_id);
             $feedbackstate->change_state();
         } 
+
     }
 
     private function _group_ui_cluster($feeds) {
          
-        //$ratings = $this->underscore->groupBy($feeds, 'rating');
+        //$perms = $this->underscore->groupBy($feeds, 'perm');
+        //Helpers::dump($perms);
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         $company_key = "inbox:check-action:".$this->company_id;
 
