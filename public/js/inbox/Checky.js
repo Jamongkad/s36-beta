@@ -91,7 +91,7 @@ Checky.prototype.init = function() {
                 console.log(  
                     exam_collection.filter(function(el) {
                         return el.perm == 2 || el.perm == 3;
-                    }
+                    });
                 );
 
                          
