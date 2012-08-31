@@ -89,7 +89,7 @@
 jQuery(function($) {
     $(document).delegate('input[name="fullpagecompanyname"]', 'keyup', function(e) {
         console.log($(this).val());
-        $("a#preview-link").attr('href', <?=$url?> + '?sample_name='+ $(this).val());
+        $("a#preview-link").attr('href', '<?=$url?>' + '?sample_name='+ $(this).val());
     });
 })
 </script>
