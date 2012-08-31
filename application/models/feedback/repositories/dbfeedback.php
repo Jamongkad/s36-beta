@@ -53,6 +53,7 @@ class DBFeedback extends S36DataObject {
                     WHEN Feedback.permission = 2 THEN "limited-permission"
                     WHEN Feedback.permission = 3 THEN "private-permission"
                   END AS permission_css
+                , Feedback.permission AS perm_val
                 , Feedback.isFeatured
                 , Feedback.isFlagged
                 , Feedback.isPublished
