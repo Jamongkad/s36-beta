@@ -40,7 +40,7 @@ return array(
 		'master' => array(
 			'driver'   => 'mysql',
 			'host'     => $determine->d->db['host'],
-			'database' => 's36',
+			'database' => $determine->d->db['db'],
 			'username' => $determine->d->db['username'],
 			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8',
@@ -49,7 +49,7 @@ return array(
 		'slave' => array(
 			'driver'   => 'mysql',
 			'host'     => $determine->d->db['host'],
-			'database' => 's36',
+			'database' => $determine->d->db['db'],
 			'username' => $determine->d->db['username'],
 			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8',
@@ -58,7 +58,7 @@ return array(
         'test' => array(
 			'driver'   => 'mysql',
 			'host'     => $determine->d->db['host'],
-			'database' => 's36_test',
+			'database' => $determine->d->db['db'],
 			'username' => $determine->d->db['username'],
 			'password' => $determine->d->db['password'],
 			'charset'  => 'utf8', 

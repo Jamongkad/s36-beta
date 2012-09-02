@@ -14,35 +14,21 @@ class Determiner {
        $obj = new StdClass; 
        $my_url = explode(".", $this->http_host);
        $subdomain = (isset($_GET['subdomain'])) ? $_GET['subdomain'] : $this->http_subdomain();
-       
-       //Development
-       if($my_url[1] == '36storiesdev' && $my_url[2] == 'localhost') {
-           $obj->hostname = '36storiesdev';
-           $obj->subdomain = $subdomain;
-           $obj->host = 'http://'.$subdomain.'.36storiesdev.localhost';
-           $obj->db   = Array(
-                'host' => 'localhost'//'173.255.211.107'
-              , 'username' => 'root'//'mathew'
-              , 'password' => 'brx4*svv'
-           );
-           $obj->deploy_env = 'http://'.$subdomain.'.36storiesdev.localhost';
-           $obj->env_name = 'local';
-           $obj->fb_id = '171323469605899';
-           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-           return $obj;
-       }
-       
-       //Staging
-       if($this->http_host == 'mathew-staging.gearfish.com') {
-           $obj->hostname = $my_url[1];
-           $obj->subdomain = $subdomain;
-           $obj->host = 'https://'.$subdomain.'.gearfish.com';
+           
+       $obj->hostname = $my_url[1];
+       $obj->subdomain = $subdomain;
+       $obj->host = 'https://'.$subdomain.'.gearfish.com';
+       $obj->deploy_env = 'https://'.$subdomain.'.gearfish.com';
+
+       //Staging || Development
+       if($this->http_host == 'mathew-staging.gearfish.com') {      
            $obj->db   = Array(
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
+             , 'db' => 's36'
            );
-           $obj->deploy_env = 'https://'.$subdomain.'.gearfish.com';
+
            $obj->env_name = 'dev';
            $obj->fb_id = '238865422903471';
            $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
@@ -50,15 +36,25 @@ class Determiner {
        }
        
        if($this->http_host == 'dan-staging.gearfish.com') { 
-           $obj->hostname = $my_url[1];
-           $obj->subdomain = $subdomain;
-           $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
+             , 'db' => 's36'
            );
-           $obj->deploy_env = 'https://dev.gearfish.com';
+           $obj->env_name = 'dev';
+           $obj->fb_id = '171323469605899';
+           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+           return $obj;
+       }
+
+       if($this->http_host == 'robert-staging.gearfish.com') { 
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+             , 'db' => 's36_robert'
+           );
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
@@ -66,13 +62,11 @@ class Determiner {
        }
 
        if($my_url[1] == 'gearfish') {
-           $obj->hostname = $my_url[1];
-           $obj->subdomain = $subdomain;
-           $obj->host = 'https://'.$subdomain.'.gearfish.com';
            $obj->db   = Array(
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
+             , 'db' => 's36'
            );
            $obj->deploy_env = 'https://dev.gearfish.com';
            $obj->env_name = 'dev';
@@ -83,13 +77,12 @@ class Determiner {
      
        //Production
        if($my_url[1] == '36storiesapp') {
-           $obj->hostname = $my_url[1];
-           $obj->subdomain = $subdomain;
            $obj->host = 'https://'.$subdomain.'.36storiesapp.com';
            $obj->db   = Array(
                 'host' => 'localhost'
               , 'username' => 'root'
               , 'password' => 'brx4*svv'
+              , 'db' => 's36'
            );
 
            $obj->deploy_env = 'https://feedback.36storiesapp.com';
