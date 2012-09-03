@@ -759,7 +759,9 @@ function strtolower(str) {
 }
 
 function camel_case(str) {
-    console.log(str);
+    if(typeof str === "undefined") {
+        return "";
+    } 
     return ucwords(strtolower(str));
     /*
     if(str.length > 0)
