@@ -156,9 +156,11 @@ var S36Form = new function() {
 		}
         
         if(type == "website"){ //if type is url
-			if(that.validate_url(value)){
+			if(value.length <=0 && that.validate_url(value)){
 				return false;	
 			}		
+
+            return true;
         }
 
         if(type == "phone"){
