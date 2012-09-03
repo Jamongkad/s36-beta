@@ -419,7 +419,7 @@ var S36Form = new function() {
         }
 
         if(!that.validate_field(website.val(), website.attr('title'), "website")){
-            email.focus();
+            website.focus();
             that.add_error('Please Enter A Valid URL');
             return false;
         }
