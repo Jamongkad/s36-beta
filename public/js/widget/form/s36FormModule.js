@@ -156,6 +156,7 @@ var S36Form = new function() {
 		}
         
         if(type == "website"){ //if type is url
+            console.log(value.length);
             if(value.length > 0) { 
                 console.log("String detected");
                 if(!that.validate_url(value)){
