@@ -130,6 +130,11 @@ var S36Form = new function() {
         return re.test(email); 
     };
 
+    this.validate_url = function(url) {
+        var re = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        return re.test(url)
+    };
+
     this.validate_field = function(value, default_val, type) {
         
 	    if(type == "regular") {   // check if type is only regular
@@ -150,6 +155,12 @@ var S36Form = new function() {
 			}
 		}
         
+        if(type == "website"){ //if type is url
+			if(that.validate_url(value)){
+				return false;	
+			}		
+        }
+
         if(type == "phone"){
 			//phone only allows '+',','," " and numeric values 
 			var phone = new RegExp('[+0-9 ,]');
@@ -386,6 +397,7 @@ var S36Form = new function() {
         var email		= $('#your_email');
         var city 		= $('#your_city');
         var country 	= $('#your_country');
+        var website     = $('#your_website');
 
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric 
         if(!that.validate_field(fname.val(), fname.attr('title'), "regular") ){
@@ -403,6 +415,12 @@ var S36Form = new function() {
         if(!that.validate_field(email.val(), email.attr('title'), "email")){
             email.focus();
             that.add_error('Please Enter A Valid Email');
+            return false;
+        }
+
+        if(!that.validate_field(website.val(), website.attr('title'), "website")){
+            email.focus();
+            that.add_error('Please Enter A Valid URL');
             return false;
         }
 
