@@ -759,8 +759,12 @@ function strtolower(str) {
 }
 
 function camel_case(str) {
+    console.log(str);
+    return ucwords(strtolower(str));
+    /*
     if(str.length > 0)
         return ucwords(strtolower(str));
     else
         return "";
+    */
 }
