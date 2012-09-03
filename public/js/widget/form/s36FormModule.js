@@ -156,7 +156,7 @@ var S36Form = new function() {
 		}
         
         if(type == "website"){ //if type is url
-            if(value.length <=0) { 
+            if(value.length > 0) { 
                 if(that.validate_url(value)){
                     return false;	
                 }		
@@ -759,5 +759,8 @@ function strtolower(str) {
 }
 
 function camel_case(str) {
-    return ucwords(strtolower(str));
+    if(str.length > 0)
+        return ucwords(strtolower(str));
+    else
+        return "";
 }
