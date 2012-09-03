@@ -56,8 +56,8 @@ class Determiner {
              , 'db' => 's36_robert'
            );
            $obj->env_name = 'dev';
-           $obj->fb_id = '171323469605899';
-           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
+           $obj->fb_id = '201862876610477';
+           $obj->fb_secret = 'abb9a2a6b21385ed820beaac8f332d9a';
            return $obj;
        }
 
