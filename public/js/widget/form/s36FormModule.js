@@ -461,7 +461,7 @@ var S36Form = new function() {
 		var company		= 	$('#your_company').val();
 		var flag_class  =	that.get_flag(country); 
 		var flag 		=   '<div class="flag-form '+flag_class+'"></div>';
-		var location 	=   '<div class="review-location">'+city+', '+country+'</div>';
+		var my_location =   '<div class="review-location">'+city+', '+country+'</div>';
 		if(!photo){
 			var photo = $('#your_photo').attr('src');
 		}
@@ -489,9 +489,9 @@ var S36Form = new function() {
         $("#next").fadeOut("fast");
         $("#back").fadeOut("fast");
 
-		$('#review-name').html(fname + " " + lname);
-		$('#review-position').html(review_position);
-		$('#review-location').html(location + " " + flag);
+		$('#review-name').html(capitalise_first_letter(fname + " " + lname));
+		$('#review-position').html(capitalise_first_letter(review_position));
+		$('#review-location').html(capitalise_first_letter(my_location) + " " + flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
         })
@@ -725,3 +725,7 @@ var S36Form = new function() {
     }; 
 };
 // END OF 36stories Javascript
+//helper functions
+function capitalise_first_letter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
