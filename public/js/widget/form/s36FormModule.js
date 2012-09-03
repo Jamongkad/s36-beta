@@ -489,9 +489,9 @@ var S36Form = new function() {
         $("#next").fadeOut("fast");
         $("#back").fadeOut("fast");
 
-		$('#review-name').html(capitalise_first_letter(fname + " " + lname));
-		$('#review-position').html(capitalise_first_letter(review_position));
-		$('#review-location').html(capitalise_first_letter(my_location) + " " + flag);
+		$('#review-name').html(camel_case(fname + " " + lname));
+		$('#review-position').html(camel_case(review_position));
+		$('#review-location').html(camel_case(my_location) + " " + flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
         })
@@ -726,6 +726,16 @@ var S36Form = new function() {
 };
 // END OF 36stories Javascript
 //helper functions
-function capitalise_first_letter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+function ucwords(str) {
+    return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+        return $1.toUpperCase();
+    });
+}
+
+function strtolower(str) {
+    return (str+'').toLowerCase();
+}
+
+function camel_case(str) {
+    return ucwords(strtolower(str));
 }
