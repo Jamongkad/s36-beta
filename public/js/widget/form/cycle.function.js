@@ -229,11 +229,9 @@ PageCycle.prototype.cycle_prev = function() {
 			if((this.rating == 2) || (this.rating == 1)){
 				var val = S36Form.validate_form('partial'); // validate_form returns 3;
 				var bad_rating = true;
-                console.log(val);
 			}else{
 				var val = S36Form.validate_form('full'); 	// validate_form returns 3;
 				var bad_rating = false;
-                console.log(val);
 			}
 			if(val){ 
 				// if form is validated..				

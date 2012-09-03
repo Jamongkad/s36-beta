@@ -320,7 +320,7 @@
                             </div>
                             <div id="bad-feedback-message">
                                 <h3 style="padding-top:25px;text-align:center">
-                                    Thanks for your feedback. In order for us to get back to you fill in your contact details below.
+                                    In order for us to get back to you fill in your contact details below.
                                 </h3> 
                             </div>
 
