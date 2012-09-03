@@ -157,11 +157,12 @@ var S36Form = new function() {
         
         if(type == "website"){ //if type is url
             if(value.length > 0) { 
-                if(that.validate_url(value)){
+                console.log("String detected");
+                if(!that.validate_url(value)){
+                    console.log("Not a valid Url");
                     return false;	
                 }		
             }
-
             return true;
         }
 
@@ -763,10 +764,4 @@ function camel_case(str) {
         return "";
     } 
     return ucwords(strtolower(str));
-    /*
-    if(str.length > 0)
-        return ucwords(strtolower(str));
-    else
-        return "";
-    */
 }
