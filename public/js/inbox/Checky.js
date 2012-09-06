@@ -97,11 +97,29 @@ Checky.prototype.init = function() {
                 });
 
                 if(limited_perm_feeds.length > 0) {
-                    confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                    //confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                    checkyBar.css({
+                          'background': '#ff6666'
+                        , 'width': '200px'
+                        , 'right': '35%'
+                        , 'top': '15%'
+                        , 'text-align': 'center'
+                        , 'padding': '5px'
+                        , 'font-weight': 'bold'
+                    }).html("Warning: There is feedback that has been set as private and will not be processed.").show();
                 }
 
                 if(poor_feeds.length > 0) {
-                    confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                    //confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                    checkyBar.css({
+                          'background': '#ff6666'
+                        , 'width': '200px'
+                        , 'right': '35%'
+                        , 'top': '15%'
+                        , 'text-align': 'center'
+                        , 'padding': '5px'
+                        , 'font-weight': 'bold'
+                    }).html("Warning: There is feedback that has been rated as poor and will not be processed.").show();
                 }
 
        
