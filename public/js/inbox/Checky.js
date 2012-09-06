@@ -134,10 +134,10 @@ Checky.prototype.init = function() {
                     $.each(restricted_feeds, function(index, value) {
                         $("#" + value.feedid).animate({
                            backgroundColor: '#ff6666'
-                        }, 500, function() {
+                        }, 800, function() {
                             $(this).animate({
                                 backgroundColor: '#fff'
-                            }, 500);
+                            }, 800);
                         })
                     });
                 }
