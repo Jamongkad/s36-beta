@@ -94,6 +94,10 @@ Checky.prototype.init = function() {
                 var poor_feeds = exam_collection.filter(function(el) {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
+
+                var restricted_feeds = exam_collection.filter(function(el) {
+                    return (el.perm == 3 || el.perm == 2 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
+                });
                 
                 if(limited_perm_feeds.length > 0 && poor_feeds.length > 0) {   
                     confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
@@ -114,6 +118,10 @@ Checky.prototype.init = function() {
                         confirm("Warning: There is feedback that has been rated as poor and will not be processed.");     
                     } 
                 }
+
+                restricted_feeds.each(function() {
+                    console.log(this);
+                });
  
                 $("option:first", this).prop("selected", true);
                 if(collection.length > 0) { 
