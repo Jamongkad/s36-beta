@@ -80,7 +80,6 @@ Checky.prototype.init = function() {
 
                             if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
-
                                 process_feedbacks(collection, data, feed_unit); 
                             }
                             exam_collection.push(data);
@@ -89,30 +88,23 @@ Checky.prototype.init = function() {
                 });    
 
                 var limited_perm_feeds = exam_collection.filter(function(el) {
-                    return el.perm == 3 && (el.mode == 'publish' || el.mode == 'feature');
+                    return (el.perm == 3 || el.perm == 2) && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
                 var poor_feeds = exam_collection.filter(function(el) {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
+                console.log(limited_perm_feeds);
+                console.log(poor_feeds);
+                
+                /*
                 if(limited_perm_feeds.length > 0) {
                     if(limited_perm_feeds.length == 1) {
                         confirm("Warning: This feedback has been set as private and will not be processed.");     
                     } else {
                         confirm("Warning: There is feedback that has been set as private and will not be processed.");    
-                    }
-                    
-                    /*
-                    checkyBar.css({
-                          'background': '#ff6666'
-                        , 'right': '30%'
-                        , 'top': '15%'
-                        , 'text-align': 'center'
-                        , 'padding': '5px'
-                        , 'font-weight': 'bold'
-                    }).html("Warning: There is feedback that has been set as private and will not be processed. <a class='close-checky' href='#'>Close</a>").show();
-                    */
+                    }    
                 }
 
                 if(poor_feeds.length > 0) {
@@ -121,22 +113,12 @@ Checky.prototype.init = function() {
                     } else {
                         confirm("Warning: There is feedback that has been rated as poor and will not be processed.");     
                     } 
-                    /*
-                    checkyBar.css({
-                          'background': '#ff6666'
-                        , 'right': '30%'
-                        , 'top': '15%'
-                        , 'text-align': 'center'
-                        , 'padding': '5px'
-                        , 'font-weight': 'bold'
-                    }).html("Warning: There is feedback that has been rated as poor and will not be processed. <a class='close-checky' href='#'>Close</a>").show();
-                    */
                 }
+                */
  
                 $("option:first", this).prop("selected", true);
-                var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                
                 if(collection.length > 0) { 
+                    /*
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -173,6 +155,7 @@ Checky.prototype.init = function() {
                           mouse_is_inside = false;  
                        }
                     });
+                    */
                 }
 
             }
