@@ -127,10 +127,10 @@ Checky.prototype.init = function() {
 
                 $.each(restricted_feeds, function(index, value) {
                     $("#" + value.feedid).animate({
-                       color: '#ff6666'
+                       backgroundColor: '#ff6666'
                     }, 500, function() {
                         $(this).animate({
-                            color: '#fff'
+                            backgroundColor: '#fff'
                         }, 500);
                     })
                 });
