@@ -129,7 +129,7 @@ Checky.prototype.init = function() {
                         'background': '#ff6666'
                     })
                     */
-                    $("#" + valude.feedid).animate({
+                    $("#" + value.feedid).animate({
                        'background': '#ff6666'
                     }, 5000, "linear", function() {
                         console.log(this); 
