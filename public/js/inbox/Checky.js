@@ -125,7 +125,7 @@ Checky.prototype.init = function() {
 
                 $.each(restricted_feeds, function(index, value) {
                     $("#" + value.feedid).animate({
-                       color: '#ff6666'
+                       backgroundColor: '#ff6666'
                     }, 5000, "linear", function() {
                         console.log(this); 
                     }) 
