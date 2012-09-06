@@ -97,7 +97,13 @@ Checky.prototype.init = function() {
                 });
 
                 if(limited_perm_feeds.length > 0) {
-                    //confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                    if(limited_perm_feeds.length == 1) {
+                        confirm("Warning: This feedback has been set as private and will not be processed.");     
+                    } else {
+                        confirm("Warning: There is feedback that has been set as private and will not be processed.");    
+                    }
+                    
+                    /*
                     checkyBar.css({
                           'background': '#ff6666'
                         , 'right': '30%'
@@ -105,13 +111,17 @@ Checky.prototype.init = function() {
                         , 'text-align': 'center'
                         , 'padding': '5px'
                         , 'font-weight': 'bold'
-                    }).html("Warning: There is feedback that has been set as private and will not be processed.").show();
-
-                    mouse_is_inside = false;  
+                    }).html("Warning: There is feedback that has been set as private and will not be processed. <a class='close-checky' href='#'>Close</a>").show();
+                    */
                 }
 
                 if(poor_feeds.length > 0) {
-                    //confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                    if(poor_feeds.length == 1) { 
+                        confirm("Warning: This feedback has been rated as poor and will not be processed.");     
+                    } else {
+                        confirm("Warning: There is feedback that has been rated as poor and will not be processed.");     
+                    } 
+                    /*
                     checkyBar.css({
                           'background': '#ff6666'
                         , 'right': '30%'
@@ -119,12 +129,10 @@ Checky.prototype.init = function() {
                         , 'text-align': 'center'
                         , 'padding': '5px'
                         , 'font-weight': 'bold'
-                    }).html("Warning: There is feedback that has been rated as poor and will not be processed.").show();
-
-                    mouse_is_inside = false;  
+                    }).html("Warning: There is feedback that has been rated as poor and will not be processed. <a class='close-checky' href='#'>Close</a>").show();
+                    */
                 }
-
-       
+ 
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
                 
