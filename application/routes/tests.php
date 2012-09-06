@@ -331,7 +331,7 @@ return array(
     },
 
     'GET /tests/staffmode' => function() {
-        $stringfromfile = file('.git/HEAD', FILE_USE_INCLUDE_PATH);
+        $stringfromfile = file('../../.git/HEAD', FILE_USE_INCLUDE_PATH);
         $stringfromfile = $stringfromfile[0]; //get the string from the array
         $explodedstring = explode("/", $stringfromfile); //seperate out by the "/" in the string
         $branchname = $explodedstring[2]; //get the one that is always the branch name
