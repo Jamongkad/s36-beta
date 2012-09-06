@@ -124,17 +124,23 @@ Checky.prototype.init = function() {
                     confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
                 }
                 */
-
-                $.each(restricted_feeds, function(index, value) {
-                    $("#" + value.feedid).animate({
-                       backgroundColor: '#ff6666'
-                    }, 500, function() {
-                        $(this).animate({
-                            backgroundColor: '#fff'
-                        }, 500);
-                    })
-                });
-                console.log(restricted_feeds);
+                if(restricted_feeds.length > 0) { 
+                    if(restricted_feeds.length == 1) {
+                        confirm("Warning: There is feedback that has been marked as private/limited or poor and will not be processed.");         
+                    } else { 
+                        confirm("Warning: There are feedback that have been marked as private/limited or poor and will not be processed.");     
+                    }
+                    
+                    $.each(restricted_feeds, function(index, value) {
+                        $("#" + value.feedid).animate({
+                           backgroundColor: '#ff6666'
+                        }, 500, function() {
+                            $(this).animate({
+                                backgroundColor: '#fff'
+                            }, 500);
+                        })
+                    });
+                }
 
                 $("option:first", this).prop("selected", true);
                 if(collection.length > 0) { 
