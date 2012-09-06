@@ -7,6 +7,7 @@
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
@@ -41,7 +42,6 @@
              , '/js/inbox/FeedSetup.js'
              , '/js/inbox/Status.js'
              , '/js/inbox/s36application.js'
-             , '/js/jquery.animate-colors-min.js'
              //, '/js/inbox/combined-min.js'
            );
            //$string = '"' . implode('","', $js_scripts) . '"';
