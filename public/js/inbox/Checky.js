@@ -120,7 +120,11 @@ Checky.prototype.init = function() {
                 }
 
                 $.each(restricted_feeds, function(index, value) {
-                    console.log(value.feedid);
+                    $("#" + value.feedid).animate({
+                       color: '#ff6666'
+                    }, 200, "linear", function() {
+                        console.log(this); 
+                    }) 
                 });
 
                 console.log(restricted_feeds);
