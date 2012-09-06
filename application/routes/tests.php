@@ -335,7 +335,7 @@ return array(
         $stringfromfile = $stringfromfile[0]; //get the string from the array
         $explodedstring = explode("/", $stringfromfile); //seperate out by the "/" in the string
         $branchname = $explodedstring[2]; //get the one that is always the branch name
-        echo "<div style='clear: both; width: 100%; font-size: 14px; font-family: Helvetica; color: #30121d; background: #bcbf77; padding: 20px; text-align: center;'>Current branch: <span style='color:#fff; font-weight: bold; text-transform: uppercase;'>" . $branchname . "</span>span></div>div>"; 
+        echo "<div style='clear: both; width: 100%; font-size: 14px; font-family: Helvetica; color: #30121d; background: #bcbf77; padding: 20px; text-align: center;'>Current branch: <span style='color:#fff; font-weight: bold; text-transform: uppercase;'>" . $branchname . "</span></div>"; 
     },
 
     //reserved route for Leica and Ryan testing
