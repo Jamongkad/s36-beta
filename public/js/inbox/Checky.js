@@ -98,7 +98,10 @@ Checky.prototype.init = function() {
                 var restricted_feeds = exam_collection.filter(function(el) {
                     return (el.perm == 3 || el.perm == 2 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
-                
+
+                console.log(limited_perm_feeds);  
+                console.log(poor_feeds);
+
                 if(limited_perm_feeds.length > 0 && poor_feeds.length > 0) {   
                     confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
                 }
