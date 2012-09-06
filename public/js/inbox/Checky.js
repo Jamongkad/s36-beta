@@ -106,6 +106,7 @@ Checky.prototype.init = function() {
                         , 'text-align': 'center'
                         , 'padding': '5px'
                         , 'font-weight': 'bold'
+                        , 'display': 'block'
                     }).html("Warning: There is feedback that has been set as private and will not be processed.").show();
                 }
 
@@ -119,6 +120,7 @@ Checky.prototype.init = function() {
                         , 'text-align': 'center'
                         , 'padding': '5px'
                         , 'font-weight': 'bold'
+                        , 'display': 'block'
                     }).html("Warning: There is feedback that has been rated as poor and will not be processed.").show();
                 }
 
