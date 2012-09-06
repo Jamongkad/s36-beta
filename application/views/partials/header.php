@@ -41,6 +41,7 @@
              , '/js/inbox/FeedSetup.js'
              , '/js/inbox/Status.js'
              , '/js/inbox/s36application.js'
+             , '/js/jquery.animate-colors-min.js'
              //, '/js/inbox/combined-min.js'
            );
            //$string = '"' . implode('","', $js_scripts) . '"';
