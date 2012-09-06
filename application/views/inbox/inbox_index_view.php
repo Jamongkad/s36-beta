@@ -205,7 +205,7 @@
                                                 </span>
                                             <?endif?>
                                         </h3>
-                                        <p><?=strip_tags($feed->text)?></p>
+                                        <p><?=$feed->text?></p>
                                     </div> 
                                     <div class="feedback-meta">
                                         <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
