@@ -95,6 +95,33 @@ Checky.prototype.init = function() {
                 var poor_feeds = exam_collection.filter(function(el) {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
+
+                if(limited_perm_feeds.length > 0) {
+                    //confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                    checkyBar.css({
+                          'background': '#ff6666'
+                        , 'width': '200px'
+                        , 'right': '35%'
+                        , 'top': '15%'
+                        , 'text-align': 'center'
+                        , 'padding': '5px'
+                        , 'font-weight': 'bold'
+                    }).html("Warning: There is feedback that has been set as private and will not be processed.").show();
+                }
+
+                if(poor_feeds.length > 0) {
+                    //confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                    checkyBar.css({
+                          'background': '#ff6666'
+                        , 'width': '200px'
+                        , 'right': '35%'
+                        , 'top': '15%'
+                        , 'text-align': 'center'
+                        , 'padding': '5px'
+                        , 'font-weight': 'bold'
+                    }).html("Warning: There is feedback that has been rated as poor and will not be processed.").show();
+                }
+
        
                 $("option:first", this).prop("selected", true);
                 var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
@@ -131,34 +158,6 @@ Checky.prototype.init = function() {
                             , 'padding': '5px'
                             , 'font-weight': 'bold'
                           }).html(message).show();
-
-                          if(limited_perm_feeds.length > 0) {
-                                //confirm("Warning: There is feedback that has been set as private and will not be processed.");
-                              checkyBar.css({
-                                      'background': '#ff6666'
-                                    , 'width': '200px'
-                                    , 'right': '35%'
-                                    , 'top': '15%'
-                                    , 'text-align': 'center'
-                                    , 'padding': '5px'
-                                    , 'font-weight': 'bold'
-                                    , 'display': 'block'
-                              }).html("Warning: There is feedback that has been set as private and will not be processed.").show();
-                          }
-
-                            if(poor_feeds.length > 0) {
-                                //confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
-                                checkyBar.css({
-                                      'background': '#ff6666'
-                                    , 'width': '200px'
-                                    , 'right': '35%'
-                                    , 'top': '15%'
-                                    , 'text-align': 'center'
-                                    , 'padding': '5px'
-                                    , 'font-weight': 'bold'
-                                    , 'display': 'block'
-                                }).html("Warning: There is feedback that has been rated as poor and will not be processed.").show();
-                            }
 
                           //this is for clicking to make this mothafucka vanish                          
                           mouse_is_inside = false;  
