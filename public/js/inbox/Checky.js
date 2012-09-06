@@ -119,6 +119,11 @@ Checky.prototype.init = function() {
                     } 
                 }
 
+                $.each(restricted_feeds, function(index, value) {
+                    console.log(index);
+                    console.log(value);
+                });
+
                 console.log(restricted_feeds);
 
                 $("option:first", this).prop("selected", true);
