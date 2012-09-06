@@ -86,7 +86,7 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-
+                /*
                 var limited_perm_feeds = exam_collection.filter(function(el) {
                     return (el.perm == 3 || el.perm == 2) && (el.mode == 'publish' || el.mode == 'feature');
                 });
@@ -95,12 +95,14 @@ Checky.prototype.init = function() {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
+                console.log(limited_perm_feeds);  
+                console.log(poor_feeds);
+                */
+
                 var restricted_feeds = exam_collection.filter(function(el) {
                     return (el.perm == 3 || el.perm == 2 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
-                console.log(limited_perm_feeds);  
-                console.log(poor_feeds);
                 /*
                 if(limited_perm_feeds.length > 0 && poor_feeds.length == 0) {  
                     if(limited_perm_feeds.length == 1) {
@@ -130,9 +132,11 @@ Checky.prototype.init = function() {
                     })
                     */
                     $("#" + value.feedid).animate({
-                       'background': '#ff6666'
-                    }, 5000, "linear", function() {
-                        console.log(this); 
+                       opacity: 0.25
+                    }, 5000, function() {
+                        $(this).css({
+                            'opacity': 1
+                        })
                     })
                 });
                 console.log(restricted_feeds);
