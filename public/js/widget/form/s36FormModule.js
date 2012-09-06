@@ -131,7 +131,7 @@ var S36Form = new function() {
     };
 
     this.validate_url = function(url) {
-        var re = /(\b[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        var re = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
         return re.test(url)
     };
 
