@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>

@@ -101,8 +101,8 @@ Checky.prototype.init = function() {
 
                 console.log(limited_perm_feeds);  
                 console.log(poor_feeds);
-
-                if(limited_perm_feeds.length > 0) {  
+                /*
+                if(limited_perm_feeds.length > 0 && poor_feeds.length == 0) {  
                     if(limited_perm_feeds.length == 1) {
                         confirm("Warning: This feedback has been marked as private/limited and will not be processed.");    
                     } else { 
@@ -110,7 +110,7 @@ Checky.prototype.init = function() {
                     }    
                 }
 
-                if(poor_feeds.length > 0) { 
+                if(poor_feeds.length > 0 && limited_perm_feeds.length == 0) { 
                     if(poor_feeds.length == 1) { 
                         confirm("Warning: This feedback has been rated as poor and will not be processed.");     
                     } else {
@@ -121,15 +121,15 @@ Checky.prototype.init = function() {
                 if(limited_perm_feeds.length > 0 && poor_feeds.length > 0) {   
                     confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
                 }
+                */
 
                 $.each(restricted_feeds, function(index, value) {
                     $("#" + value.feedid).animate({
                        color: '#ff6666'
-                    }, 200, "linear", function() {
+                    }, 5000, "linear", function() {
                         console.log(this); 
                     }) 
                 });
-
                 console.log(restricted_feeds);
 
                 $("option:first", this).prop("selected", true);
