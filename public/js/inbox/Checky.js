@@ -124,11 +124,14 @@ Checky.prototype.init = function() {
                 */
 
                 $.each(restricted_feeds, function(index, value) {
-                    $("#" + value.feedid).animate({
+                    $("#" + value.feedid).css({ 
+                        'background': '#ff6666'
+                    })
+                    /*.animate({
                        backgroundColor: '#ff6666'
                     }, 5000, "linear", function() {
                         console.log(this); 
-                    }) 
+                    })*/
                 });
                 console.log(restricted_feeds);
 
