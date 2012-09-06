@@ -105,7 +105,6 @@ return array(
         $data = Input::get();
         $rules = Array(
             'first_name' => 'required'
-          //, 'last_name' => 'required'
           , 'email' => 'email'
           , 'feedback' => 'required'
           , 'city' => 'required'

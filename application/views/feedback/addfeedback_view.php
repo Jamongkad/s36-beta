@@ -1,3 +1,12 @@
+<script type="text/javascript">
+$(function() { 
+    $('#feedback').tinymce({
+        script_url : '<?=URL::to('/')?>js/tiny_mce.js',
+        mode : "textareas",
+        theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
+    });
+})
+</script>
 <?=Form::open('feedback/addfeedback')?>
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <input type="hidden" id="cropped_photo" name="cropped_image_nm" value="0" />
