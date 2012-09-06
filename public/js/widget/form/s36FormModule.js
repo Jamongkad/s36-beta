@@ -131,7 +131,7 @@ var S36Form = new function() {
     };
 
     this.validate_url = function(url) {
-        var re = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        var re = /(\b[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
         return re.test(url)
     };
 
@@ -484,7 +484,7 @@ var S36Form = new function() {
 		var company		= 	$('#your_company').val();
 		var flag_class  =	that.get_flag(country); 
 		var flag 		=   '<div class="flag-form '+flag_class+'"></div>';
-		var my_location =   '<div class="review-location">'+city+', '+country+'</div>';
+		var my_location =   '<div class="review-location">'+camel_case(city)+', '+camel_case(country)+'</div>';
 		if(!photo){
 			var photo = $('#your_photo').attr('src');
 		}
@@ -514,7 +514,7 @@ var S36Form = new function() {
 
 		$('#review-name').html(camel_case(fname + " " + lname));
 		$('#review-position').html(camel_case(review_position));
-		$('#review-location').html(camel_case(my_location) + " " + flag);
+		$('#review-location').html(my_location + " " + flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
         })

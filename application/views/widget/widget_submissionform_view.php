@@ -414,7 +414,7 @@
                     </p>
                     <p id="submission-success">
                         <div id="success-message-ord">
-                            Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
+                            Thank you for taking the time to send in your feedback, we will get back to you very shortly. 
                             Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                             <br/><br/>
                             Please press the (X) button on the upper right hand corner of the form to close this box.                   
