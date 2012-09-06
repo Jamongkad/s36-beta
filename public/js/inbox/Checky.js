@@ -133,10 +133,10 @@ Checky.prototype.init = function() {
                     */
                     $("#" + value.feedid).animate({
                        opacity: 0.25
-                    }, 5000, function() {
-                        $(this).css({
-                            'opacity': 1
-                        })
+                    }, 1000, function() {
+                        $(this).animate({
+                            opacity: 1
+                        }, 1000);
                     })
                 });
                 console.log(restricted_feeds);
