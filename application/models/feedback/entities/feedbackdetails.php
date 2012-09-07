@@ -35,7 +35,8 @@ class FeedbackDetails extends FeedbackDataTypes {
 
 
         Helpers::dump($this->post_data);
-        return $this->underscore->find($this->post_data, function($p) { print_r($p); return $p === 'date_change'; });
+        $arr = new SimpleArray($this->post_data);
+        return $arr->get('company_id');
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])

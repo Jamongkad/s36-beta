@@ -23,6 +23,7 @@ return array(
     'Resize'  => 'Resize\\Resize',
     'PostMark' => 'PostMark\\PostMark',
     'Helpers' => 'Helpers\\Helpers',
+    'SimpleArray' => 'Helpers\\SimpleArray',
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
     'Underscore' => 'Underscore\\Underscore',
 	'Auth' => 'System\\Auth',
