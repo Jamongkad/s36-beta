@@ -32,35 +32,29 @@ class FeedbackDetails extends FeedbackDataTypes {
     */ 
     public function generate_data() {
 
-        Helpers::dump($this->post_data->get('date_change'));
-        Helpers::dump($this->post_data->get('pwet'));
-        /* 
-        $permission = Input::get('permission');     
-        $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
+        $permission = $this->post_data->get('permission');
+        $category = DB::Table('Category')->where('companyId', '=', $this->post_data->get('company_id'))
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
-        $this->feedback_text = Helpers::html_cleaner(Input::get('feedback'));
+        $this->feedback_text = Helpers::html_cleaner($this->post_data->get('feedback'));
 
         $config = \HTMLPurifier_Config::createDefault();
         $purifier = new \HTMLPurifier($config);
         $this->feedback_text = $purifier->purify($this->feedback_text);
         
-        $this->feedback_data = Array(
-            'siteId' => Input::get('site_id')
+        return Array(
+            'siteId' => $this->post_data->get('site_id')
           , 'contactId' => $this->contact_id
           , 'categoryId' => $category->categoryid
           , 'formId' => 1
           , 'status' => 'new'
-          , 'rating' => Input::get('rating')
+          , 'rating' => $this->post_data->get('rating')
           , 'text' => $this->feedback_text
           , 'permission' => ($permission) ? $permission : 3
-          , 'dtAdded' => date('Y-m-d H:i:s')
+          , 'dtAdded' => ($this->post_data->get('date_change')) ? $this->post_data->get('date_change') : date('Y-m-d H:i:s')
         );
-
-        return $this->feedback_data;
-        */
     }
-
+    /*
     public function write_new_feedback() {  
         $this->new_feedback_id = DB::table('Feedback')->insert_get_id($this->feedback_data);
 
@@ -84,4 +78,5 @@ class FeedbackDetails extends FeedbackDataTypes {
         $emailservice = new EmailService($submission_data);
         $emailservice->send_email();
     }
+    */
 }
