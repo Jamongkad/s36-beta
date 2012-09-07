@@ -38,6 +38,7 @@ class DBFeedback extends S36DataObject {
                        ELSE    
                           "about a year ago"
                   END as daysAgo
+                , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
                     WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
