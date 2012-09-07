@@ -27,10 +27,12 @@ class SubmissionService {
     }
 
     public function perform() {        
-        return Array(
-            $this->feedback_details->generate_data()
-          , $this->contact_details->generate_data()
-        );
+        $contact_data  = $this->contact_details->generate_data();
+        $feedback_data = $this->feedback_details->generate_data();
+        $feedback_data['contactId'] = $contact_data['contact_id'];
+
+        Helper::dump($feedback_data);
+
         /*
         $this->contact_details_data->generate_data();
         $this->feedback_details->generate_data();
