@@ -191,7 +191,11 @@ return array(
     },
 
     'POST /feedback/change_feedback_date' => function() use ($feedback) {
-        Helpers::dump(Input::get());
+        $date = date("Y-m-d H:i:s", strtotime(Input::get('change_date')));
+        $affected = DB::table('Feedback', 'master')
+            ->where('feedbackId', '=', Input::get('feedback_id'))
+            ->update(Array('dtAdded' => $date));
+        return $affected;
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
