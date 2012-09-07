@@ -130,7 +130,6 @@ $(function() {
                         <div class="g1of3">
                             <label><strong>Feedback Submission Date</strong></label><br />
                             <input type="text" name="date_change" value="" class="regular-text datepicker" id="date" />
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
                         </div>
                         <div class="g1of3">&nbsp;</div>
                     </div>
