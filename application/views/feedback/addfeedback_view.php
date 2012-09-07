@@ -124,8 +124,6 @@ $(function() {
                         </div>
                         <div class="g1of3">&nbsp;</div>
                     </div>
-
-
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>Preview :</strong></label><br />
