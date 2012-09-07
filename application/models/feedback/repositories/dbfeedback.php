@@ -33,7 +33,7 @@ class DBFeedback extends S36DataObject {
                           THEN concat(datediff(now(), dtAdded)," days ago")
                        WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                           THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
-                       WHEN dtAdded >= now()
+                       WHEN dtAdded >= CURDATE()
                           "future event" 
                        ELSE    
                           "about a year ago"
