@@ -121,14 +121,6 @@ return array(
               , 'input' => $data
             ));
         } else {
-            /*
-            $addfeedback = new Feedback\Services\SubmissionService(
-                               new ContactDetails
-                             , new FeedbackDetails
-                             , new DBDashboard
-                             , new HalcyonicService
-                            );  
-            */
             $addfeedback = new Feedback\Services\SubmissionService(Input::get());
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
