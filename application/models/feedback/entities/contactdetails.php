@@ -79,7 +79,7 @@ class ContactDetails extends FeedbackDataTypes {
 
     public function write_new_contact($contact_info) {
         $dbcontact = new DBContact;        
-        $this->contact_id = $dbcontact->insert_new_contact($contact_data);
+        return $dbcontact->insert_new_contact($contact_info);
     }
     
     public function get_contact_id() {
