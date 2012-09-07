@@ -7,7 +7,7 @@ use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use DBBadWords, DBUser;
 use Input, DB, Helpers, Package;
-use \System\Arr;
+use Underscore;
 
 Package::load('HTMLPurifier');
 
@@ -16,10 +16,11 @@ class FeedbackDetails extends FeedbackDataTypes {
     private $feedback_id, $contact_id, $company_id, $feedback_data, $feedback_text;
 
     public function __construct($post_data) {
-        $this->post_data = Arr::get($this->post_data);
+        $this->post_data = $post_data;
         $this->dbfeedback = new DBFeedback;     
         $this->dbbadwords = new DBBadWords;
         $this->dbuser = new DBUser;
+        $this->underscore = new Underscore;
     }
     /*
     public function set_contact_id($contact_id) {
@@ -32,7 +33,9 @@ class FeedbackDetails extends FeedbackDataTypes {
     */ 
     public function generate_data() {
 
-        return $this->post_data;
+
+
+        return $this->underscore->find($this->post_data, function($p) { return $p === 'date_change'; });
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
