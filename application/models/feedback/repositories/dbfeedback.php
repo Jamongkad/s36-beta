@@ -137,7 +137,7 @@ class DBFeedback extends S36DataObject {
 
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                         THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
-                    WHERE dtAdded > CURDATE()
+                    WHEN dtAdded > CURDATE()
                         THEN "future event"
                     ELSE    
                         "about a year ago"
