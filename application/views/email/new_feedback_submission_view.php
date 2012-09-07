@@ -39,7 +39,7 @@
                         
                         <tr>
                         	<td colspan="3" style="line-height:20px;">
-                            <div style="padding:<?=$poor_style?>">"<?=strip_tags($feedback_data->text)?>"</div>
+                            <div style="padding:<?=$poor_style?>">"<?=strip_tags($feedback_data->text)?>mat"</div>
                                 <br />
                                 <br /> 
                                 <?if($feedback_data->rating != "POOR"):?>
