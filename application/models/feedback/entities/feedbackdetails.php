@@ -36,11 +36,11 @@ class FeedbackDetails extends FeedbackDataTypes {
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data->get('company_id'))
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
-        $this->feedback_text = Helpers::html_cleaner($this->post_data->get('feedback'));
+        $feedback_text = Helpers::html_cleaner($this->post_data->get('feedback'));
 
         $config = \HTMLPurifier_Config::createDefault();
         $purifier = new \HTMLPurifier($config);
-        $this->feedback_text = $purifier->purify($this->feedback_text);
+        $feedback_text = $purifier->purify($feedback_text);
         
         return Array(
             'siteId' => $this->post_data->get('site_id')
@@ -49,7 +49,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => $this->post_data->get('rating')
-          , 'text' => $this->feedback_text
+          , 'text' => $feedback_text
           , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
         );

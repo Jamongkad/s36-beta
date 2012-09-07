@@ -3,6 +3,7 @@
 use \Feedback\Entities\Types\FeedbackDataTypes;
 use Contact\Repositories\DBContact;
 use Input, DB, UserInfo, Profile\Services\ProfileImage, Helpers;
+use SimpleArray;
 
 class ContactDetails extends FeedbackDataTypes { 
 
@@ -17,49 +18,49 @@ class ContactDetails extends FeedbackDataTypes {
     private $contact_id;
 
     public function __construct($post_data) {
-        $this->post_data = $post_data;
+        $this->post_data = new SimpleArray($post_data);
         $this->userinfo = new UserInfo;
         $this->profile_img = new ProfileImage;
     }
 
-    public function read_data() { 
+    public function generate_data() { 
 
-        $avatar = Input::get('cropped_image_nm');
+        $avatar = $this->post_data->get('cropped_image_nm');
 
         $country_id = 895;
-        if ($country_input = Input::get('country')) {
+        if ($country_input = $this->post_data->get('country')) {
             $country = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $country_id = $country->countryid;
         }
 
-        $rating_check = Input::get('rating') > 3;    
+        $rating_check = $this->post_data->get('rating') > 3;    
         //if no cropped photo and feedback rating is above average
         if ($avatar == '0' and $rating_check) {
 
-            $orig_image_dir = Input::get('orig_image_dir');
+            $orig_image_dir = $this->post_data->get('orig_image_dir');
             
             //if original image directory does not contain blank-avatar name...assume a photo will be auto cropped
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
-                $avatar = $this->profile_img->auto_resize($orig_image_dir, Input::get('login_type'));     
+                $avatar = $this->profile_img->auto_resize($orig_image_dir, $this->post_data->get('login_type'));     
             }   
         }  
         
         //If rating is above average get profile information
         if($rating_check) { 
-            $this->position = $this->_sentence_case(Input::get('position'));
-            $this->city     = $this->_sentence_case(Input::get('city'));
-            $this->company  = $this->_sentence_case(Input::get('company'));
-            $this->website  = Input::get('website');
-            $this->profilelink = Input::get('profile_link');
+            $this->position = $this->_sentence_case($this->post_data->get('position'));
+            $this->city     = $this->_sentence_case($this->post_data->get('city'));
+            $this->company  = $this->_sentence_case($this->post_data->get('company'));
+            $this->website  = $this->post_data->get('website');
+            $this->profilelink = $this->post_data->get('profile_link');
         }
 
-        $login_type = (Input::get('login_type')) ? Input::get('login_type') : '36';
+        $login_type = ($this->post_data->get('login_type')) ? $this->post_data->get('login_type') : '36';
 
         $this->contact_data = Array(
-            'siteId'    => Input::get('site_id')
-          , 'firstName' => $this->_sentence_case(Input::get('first_name'))
-          , 'lastName'  => $this->_sentence_case(Input::get('last_name'))
-          , 'email'     => Input::get('email')
+            'siteId'    => $this->post_data->get('site_id')
+          , 'firstName' => $this->_sentence_case($this->post_data->get('first_name'))
+          , 'lastName'  => $this->_sentence_case($this->post_data->get('last_name'))
+          , 'email'     => $this->post_data->get('email')
           , 'countryId' => $country_id
           , 'avatar'    => $avatar
           , 'position'  => $this->position
@@ -72,7 +73,7 @@ class ContactDetails extends FeedbackDataTypes {
           , 'browser' => $this->userinfo->browser()->getBrowser()
         ); 
     }
-
+    /*
     public function write_new_contact() {
         $dbcontact = new DBContact;        
         $this->contact_id = $dbcontact->insert_new_contact($this->contact_data);
@@ -82,7 +83,7 @@ class ContactDetails extends FeedbackDataTypes {
         if($this->contact_id)
             return $this->contact_id;     
     }
-
+    */
     public function _sentence_case($string) {
         return ucwords(strtolower($string));
     }
