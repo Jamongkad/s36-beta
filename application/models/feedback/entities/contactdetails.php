@@ -2,7 +2,7 @@
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
 use Contact\Repositories\DBContact;
-use Input, DB, UserInfo, Profile\Services\ProfileImage, Helpers;
+use DB, UserInfo, Profile\Services\ProfileImage, Helpers;
 use SimpleArray;
 
 class ContactDetails extends FeedbackDataTypes { 
@@ -82,11 +82,6 @@ class ContactDetails extends FeedbackDataTypes {
         return $dbcontact->insert_new_contact($contact_info);
     }
     
-    public function get_contact_id() {
-        if($this->contact_id)
-            return $this->contact_id;     
-    }
-
     public function _sentence_case($string) {
         return ucwords(strtolower($string));
     }

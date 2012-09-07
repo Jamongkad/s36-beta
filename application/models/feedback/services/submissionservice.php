@@ -44,7 +44,7 @@ class SubmissionService {
 
         $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
         $feedbackservice->save_feedback($post);
-        /*
+
         $submission_data = new NewFeedbackSubmissionData; 
         $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->post_data->get('company_id'));
@@ -53,19 +53,7 @@ class SubmissionService {
 
         $emailservice = new EmailService($submission_data);
         $emailservice->send_email();
-        */
         /*
-        $this->contact_details_data->generate_data();
-        $this->feedback_details->generate_data();
-
-        $this->contact_details  = new ContactDetails($contact_details_data);
-        $new_contact = $this->contact_details->create_contact();
-
-        $this->feedback_details = new FeedbackDetails($feedback_details_data); 
-        $this->feedback_details->attach($new_contact);
-        $this->feedback_details->create_feedback();
-        $this->feedback_details->send_email_notification();
-
         $this->dbdashboard->company_id = $this->company_id;
         $this->dbdashboard->write_summary();
 

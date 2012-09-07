@@ -130,8 +130,7 @@ return array(
                             );  
             */
             $addfeedback = new Feedback\Services\SubmissionService(Input::get());
-            Helpers::dump($addfeedback->perform());
-            //
+            $addfeedback->perform(); 
             //return Redirect::to('inbox/all');  
         }
     }),
