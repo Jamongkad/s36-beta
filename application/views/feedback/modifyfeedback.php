@@ -61,7 +61,7 @@ $(function() {
                         <!--<tr><td>License:		</td><td>Full license</td>-->
                         <tr><td>Submission Date:</td><td>
                             <input type="text" name="date_change" 
-                                   value="<?=date("Y-m-d H:i:s", strtotime($feedback->unix_timestamp))?>" 
+                                   value="<?=date("Y-m-d H:i:s", $feedback->unix_timestamp)?>" 
                                    class="regular-text datepicker" id="date" />
                         </td>
                     </table>
