@@ -79,4 +79,8 @@ jQuery(function($) {
             $(this).val($(this)[0].title);
         }
     });
+
+    $("#your_website").bind("focus", function(e) {
+        $(this).val("http://");
+    });
 });
