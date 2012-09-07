@@ -131,7 +131,7 @@ return array(
             */
             $addfeedback = new Feedback\Services\SubmissionService(Input::get());
             $addfeedback->perform(); 
-            //return Redirect::to('inbox/all');  
+            return Redirect::to('inbox/all');  
         }
     }),
 

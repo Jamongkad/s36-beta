@@ -103,6 +103,7 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
+        /*
         $addfeedback = new Feedback\Services\SubmissionService(
                            new ContactDetails
                          , new FeedbackDetails
@@ -110,6 +111,9 @@ return array(
                          , new HalcyonicService
                         );  
 
+        $addfeedback->perform(); 
+        */
+        $addfeedback = new Feedback\Services\SubmissionService(Input::get());
         $addfeedback->perform(); 
     }), 
 
