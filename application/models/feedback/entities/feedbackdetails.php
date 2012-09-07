@@ -30,6 +30,8 @@ class FeedbackDetails extends FeedbackDataTypes {
     }
     */ 
     public function generate_data() {
+
+        return $this->post_data['pwet'];
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
