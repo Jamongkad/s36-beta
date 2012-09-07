@@ -13,8 +13,6 @@
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?//=HTML::style('css/datepicker.css')?>
-
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
@@ -27,8 +25,6 @@
              , '/js/jquery.jcrop.js'
              , '/js/jquery.ajaxfileupload.js' 
              /*
-             , '/js/bootstrap-datepicker.js'
-             , '/js/jquery.ui.widget.js'
              , '/js/jquery.iframe-transport.js'
              , '/js/jquery.fileupload.js'
              */
