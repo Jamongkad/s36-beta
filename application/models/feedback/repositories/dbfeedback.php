@@ -36,7 +36,7 @@ class DBFeedback extends S36DataObject {
                        WHEN dtAdded >= CURDATE()
                           THEN "future event" 
                        ELSE    
-                          "about a year ago"
+                          "about a year ago pwet"
                   END as daysAgo
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
