@@ -104,8 +104,6 @@ Checky.prototype.init = function() {
                     return (el.perm == 3 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
-                console.log(restricted_feeds);
-
                 /*
                 if(limited_perm_feeds.length > 0 && poor_feeds.length == 0) {  
                     if(limited_perm_feeds.length == 1) {
