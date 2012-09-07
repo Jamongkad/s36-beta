@@ -60,7 +60,9 @@ $(function() {
                                                                       ($feedback->indlock ? True : Null))?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
                         <tr><td>Submission Date:</td><td>
-                            <input type="text" name="date_change" value="<?=$feedback->unix_timestamp?>" class="regular-text datepicker" id="date" />
+                            <input type="text" name="date_change" 
+                                   value="<?=date("Y-m-d H:i:s", strtotime($feedback->unix_timestamp))?>" 
+                                   class="regular-text datepicker" id="date" />
                         </td>
                     </table>
                 </div>
