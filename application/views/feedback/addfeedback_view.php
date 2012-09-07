@@ -24,7 +24,7 @@ $(function() {
                 <h3><label for="full_page_type">Recepient Details</label></h3>
                 <div class="add-feedback-form" id="full_page_add-feedback">    
                     <div class="grids">
-                        <div class="rate-text"><label><strong>Rating :</strong></label> </div>
+                        <div class="rate-text"><label><strong>Rating :<br/></strong></label> </div>
                         <div class="rate">
                             <div class="rate-slider" id="smart-slider">
                                 <input type="hidden" id="rating" name="rating" value="3" >
