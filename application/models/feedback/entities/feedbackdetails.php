@@ -32,7 +32,7 @@ class FeedbackDetails extends FeedbackDataTypes {
     public function generate_data() {
         
         $permission = Input::get('permission');     
-        $category = DB::Table('Category')->where('companyId', '=', $post_data['company_id'])
+        $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
         $this->feedback_text = Helpers::html_cleaner(Input::get('feedback'));
