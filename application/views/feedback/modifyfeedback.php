@@ -6,7 +6,9 @@ $(function() {
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
 
-    var mdate = new Date(<?=date("Y", $feedback->unix_timestamp)?>, <?=date("m", $feedback->unix_timestamp>)?>, <?=date("d", $feedback->unix_timestamp)?>);
+    var mdate = new Date(<?=date("Y", $feedback->unix_timestamp)?>
+                       , <?=date("m", $feedback->unix_timestamp)?>
+                       , <?=date("d", $feedback->unix_timestamp)?>);
 
     $("#date").datepicker({
         dateFormat: "yy-mm-dd"
@@ -18,7 +20,7 @@ $(function() {
             $.ajax({ 
                 type: "POST"     
               , url: '/feedback/change_feedback_date'
-              , data: {change_date: datetext, feedback_id: <?=$feedback->id?>, }
+              , data: {change_date: datetext, feedback_id: <?=$feedback->id?>}
               , success: function(msg) {
                     var myStatus = new Status();
                     myStatus.notify("Changing Submission Date...", 850);
