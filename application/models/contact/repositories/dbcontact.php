@@ -83,7 +83,7 @@ class DBContact extends S36DataObject {
               , Contact.firstname
               , Contact.lastname
               , Contact.avatar
-              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
+              , GROUP_CONCAT(Feedback.feedbackId ORDER BY Feedback.dtAdded DESC SEPARATOR '|') AS feedbackIds
               , COUNT(Feedback.feedbackId) AS feedbackIdCount
             FROM 
                 Contact
@@ -102,7 +102,7 @@ class DBContact extends S36DataObject {
             WHERE 1=1
                 AND Company.companyId = :company_id
             GROUP BY
-                Contact.email
+                Contact.email, Contact.firstName, Contact.lastName
             ORDER BY 
                 Contact.contactId DESC
             LIMIT :offset, :limit
