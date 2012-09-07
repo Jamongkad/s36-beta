@@ -25,7 +25,7 @@ class SubmissionService {
     }
     */
     public function __construct($post_input) {
-        $this->post_data        = new SimpleArray($post_data);
+        $this->post_data        = new SimpleArray($post_input);
         $this->dbdashboard      = new DBDashboard;
         $this->halcyonic        = new HalcyonicService; 
         $this->contact_details  = new ContactDetails($this->post_data);
