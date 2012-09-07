@@ -22,22 +22,21 @@ class SubmissionService {
     public function __construct($post_input) {
         $this->dbdashboard      = new DBDashboard;
         $this->halcyonic        = new HalcyonicService; 
-        $this->contact_details_data = new ContactDetailsData($post_input);
-        $this->feedback_details_data = new FeedbackDetailsData($post_input);
+        $this->contact_details_data  = new ContactDetails($post_input);
+        $this->feedback_details_data = new FeedbackDetails($post_input);
     }
 
     public function perform() {        
         /*
+        $this->contact_details_data->generate_data();
+        $this->feedback_details->generate_data();
+
         $this->contact_details  = new ContactDetails($contact_details_data);
+        $new_contact = $this->contact_details->create_contact();
+
         $this->feedback_details = new FeedbackDetails($feedback_details_data); 
-  
-        $this->contact_details->read_data(); 
-        $this->contact_details->write_new_contact();
-     
-        $this->feedback_details->set_contact_id($this->contact_details->get_contact_id());
-        $this->feedback_details->set_company_id($this->company_id);
-        $this->feedback_details->read_data();
-        $this->feedback_details->write_new_feedback();
+        $this->feedback_details->attach($new_contact);
+        $this->feedback_details->create_feedback();
         $this->feedback_details->send_email_notification();
 
         $this->dbdashboard->company_id = $this->company_id;

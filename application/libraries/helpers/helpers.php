@@ -131,7 +131,9 @@ class Helpers {
     
     //wrapper
     public static function dump($data) {
+
         return self::show_data($data);
+
     }
 
 
