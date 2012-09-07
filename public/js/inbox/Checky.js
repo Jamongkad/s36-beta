@@ -68,7 +68,7 @@ Checky.prototype.init = function() {
                             };
 
                             //console.log(window.location.pathname.match(/published|contacts/g)); 
-                            if(my_ratings != 'POOR' && my_perm == 1) { 
+                            if(my_ratings != 'POOR' && (my_perm == 1 || my_perm == 2)) { 
                                 //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
@@ -83,7 +83,6 @@ Checky.prototype.init = function() {
                                 process_feedbacks(collection, data, feed_unit); 
                             }
 
-                            console.log(data);
                             exam_collection.push(data);
                         } 
                     }
