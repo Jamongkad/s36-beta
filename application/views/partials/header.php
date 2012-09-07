@@ -18,6 +18,7 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        <?=HTML::script('js/bootstrap-datepicker.js')?>
         <?
             $js_scripts = Array(
                '/js/jquery.switcharoo.js'
