@@ -1,11 +1,7 @@
 <?php namespace Feedback\Entities;
 
-use Email\Entities\NewFeedbackSubmissionData;
-use Email\Services\EmailService;
 use \Feedback\Entities\Types\FeedbackDataTypes;
-use Feedback\Services\FeedbackService;
-use Feedback\Repositories\DBFeedback;
-use DBBadWords, DBUser;
+use DBUser;
 use Input, DB, Helpers, Package;
 use SimpleArray;
 
@@ -15,11 +11,8 @@ class FeedbackDetails extends FeedbackDataTypes {
 
     private $feedback_id, $contact_id, $company_id, $feedback_data, $feedback_text;
 
-    public function __construct($post_data) {
-        $this->post_data = new SimpleArray($post_data);
-        $this->dbfeedback = new DBFeedback;     
-        $this->dbbadwords = new DBBadWords;
-        $this->dbuser = new DBUser; 
+    public function __construct(SimpleArray $post_data) {
+        $this->post_data = $post_data;
     }
 
     public function generate_data() {
