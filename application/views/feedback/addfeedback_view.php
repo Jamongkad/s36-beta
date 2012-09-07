@@ -80,11 +80,6 @@ $(function() {
                             <input type="text" name="last_name" value="<?=$input['last_name']?>" class="regular-text" id="lastname" />
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
                         </div>
-                        <div class="g1of3">
-                            <label><strong>Last Name</strong></label><br />
-                            <input type="text" name="last_name" value="<?=$input['last_name']?>" class="regular-text" id="lastname" />
-                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
-                        </div>
                         <div class="g1of3">&nbsp;</div>
                     </div>
                     <div class="grids">
@@ -129,6 +124,16 @@ $(function() {
                         </div>
                         <div class="g1of3">&nbsp;</div>
                     </div>
+
+                    <div class="grids">
+                        <div class="g1of3">
+                            <label><strong>Feedback Submission Date</strong></label><br />
+                            <input type="text" name="email" value="<?=$input['email']?>" class="regular-text" id="email" />
+                            <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
+                        </div>
+                        <div class="g1of3">&nbsp;</div>
+                    </div>
+
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>Preview :</strong></label><br />
