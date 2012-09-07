@@ -16,7 +16,7 @@ class FeedbackDetails extends FeedbackDataTypes {
     private $feedback_id, $contact_id, $company_id, $feedback_data, $feedback_text;
 
     public function __construct($post_data) {
-        $this->post_data = $post_data;
+        $this->post_data = new SimpleArray($post_data);
         $this->dbfeedback = new DBFeedback;     
         $this->dbbadwords = new DBBadWords;
         $this->dbuser = new DBUser; 
@@ -32,10 +32,8 @@ class FeedbackDetails extends FeedbackDataTypes {
     */ 
     public function generate_data() {
 
-
-        Helpers::dump($this->post_data);
-        $arr = new SimpleArray($this->post_data);
-        return $arr->get('company_id');
+        Helpers::dump($this->post_data->get('date_change'));
+        Helpers::dump($this->post_data->get('pwet'));
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
