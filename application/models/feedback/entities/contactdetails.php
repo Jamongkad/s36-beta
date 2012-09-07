@@ -56,7 +56,7 @@ class ContactDetails extends FeedbackDataTypes {
 
         $login_type = ($this->post_data->get('login_type')) ? $this->post_data->get('login_type') : '36';
 
-        return Array(
+        $contact_info = Array(
             'siteId'    => $this->post_data->get('site_id')
           , 'firstName' => $this->_sentence_case($this->post_data->get('first_name'))
           , 'lastName'  => $this->_sentence_case($this->post_data->get('last_name'))
@@ -72,18 +72,21 @@ class ContactDetails extends FeedbackDataTypes {
           , 'ipaddress'   => $this->userinfo->get_ip_long()
           , 'browser' => $this->userinfo->browser()->getBrowser()
         ); 
+
+        $contact_info['contact_id'] = $this->write_new_contact($contact_info);
+        return $contact_info;
     }
-    /*
-    public function write_new_contact() {
+
+    public function write_new_contact($contact_info) {
         $dbcontact = new DBContact;        
-        $this->contact_id = $dbcontact->insert_new_contact($this->contact_data);
+        $this->contact_id = $dbcontact->insert_new_contact($contact_data);
     }
     
     public function get_contact_id() {
         if($this->contact_id)
             return $this->contact_id;     
     }
-    */
+
     public function _sentence_case($string) {
         return ucwords(strtolower($string));
     }

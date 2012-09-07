@@ -21,15 +21,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $this->dbbadwords = new DBBadWords;
         $this->dbuser = new DBUser; 
     }
-    /*
-    public function set_contact_id($contact_id) {
-        $this->contact_id = $contact_id;    
-    }
 
-    public function set_company_id($company_id) {
-        $this->company_id = $company_id; 
-    }
-    */ 
     public function generate_data() {
 
         $permission = $this->post_data->get('permission');
