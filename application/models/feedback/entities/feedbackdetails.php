@@ -34,7 +34,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
         Helpers::dump($this->post_data->get('date_change'));
         Helpers::dump($this->post_data->get('pwet'));
-        
+        /* 
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
@@ -58,6 +58,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         );
 
         return $this->feedback_data;
+        */
     }
 
     public function write_new_feedback() {  
