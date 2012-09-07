@@ -121,15 +121,20 @@ return array(
               , 'input' => $data
             ));
         } else {
+            /*
             $addfeedback = new Feedback\Services\SubmissionService(
                                new ContactDetails
                              , new FeedbackDetails
                              , new DBDashboard
                              , new HalcyonicService
                             );  
-
+            */
+            Helpers::dump(Input::get());
+            /*
+            $addfeedback = new Feedback\Services\SubmissionService(Input::get());
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
+            */
         }
     }),
 

@@ -8,7 +8,7 @@ use Helpers, Input, DB;
 class SubmissionService {
    
     private $company_id;
-
+    /*
     public function __construct(ContactDetails $contact, FeedbackDetails $feedbackdetails, DBDashboard $dbdashboard, HalcyonicService $halcyonic) {
         //TODO: This is bad. Remove this shit from the class.
         $this->company_id       = Input::get('company_id');
@@ -16,6 +16,13 @@ class SubmissionService {
         $this->dbdashboard      = $dbdashboard;
         $this->halcyonic        = $halcyonic;
         $this->feedback_details = $feedbackdetails;
+    }
+    */
+    public function __construct($post_input) {
+        $this->contact_details  = new ContactDetails($post_input);
+        $this->feedback_details = new FeedbackDetails($post_input); 
+        $this->dbdashboard      = new DBDashboard;
+        $this->halcyonic        = new HalcyonicService; 
     }
 
     public function perform() {        
