@@ -35,7 +35,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
 
         Helpers::dump($this->post_data);
-        $arr = new Helpers\SimpleArray($this->post_data);
+        $arr = new SimpleArray\SimpleArray($this->post_data);
         return $arr->get('company_id');
         
         $permission = Input::get('permission');     
