@@ -6,11 +6,11 @@ $(function() {
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
 
-    var my_date = new Date(<?=date("Y", $feedback->unix_timestamp)?>);
+    var mdate = new Date(<?=date("Y", $feedback->unix_timestamp)?>, <?=date("m", $feedback->unix_timestamp>), <?=date("d", $feedback->unix_timestamp)?>);
 
     $("#date").datepicker({
         dateFormat: "yy-mm-dd"
-      , defaultDate: my_date
+      , defaultDate: mdate
       , onSelect: function(dateText, inst) {
 
             var datetext = dateText;
