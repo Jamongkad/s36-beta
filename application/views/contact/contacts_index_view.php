@@ -55,14 +55,7 @@
             <!-- end of feedback list -->
             <div class="admin-sorter-bar">
             	<div class="sorter-bar">
-                    <div class="left">
-                    	&nbsp;
-                    </div>
-                    <div class="right">
-                        <div class="g1of5">
-                            <?=$pagination?>
-                        </div>
-                    </div>
+                    <?=$pagination?> 
                     <div class="c"></div>
                 </div>
             </div>
