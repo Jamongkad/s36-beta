@@ -129,12 +129,9 @@ return array(
                              , new HalcyonicService
                             );  
             */
-            Helpers::dump(Input::get());
-            /*
             $addfeedback = new Feedback\Services\SubmissionService(Input::get());
             $addfeedback->perform(); 
-            return Redirect::to('inbox/all');  
-            */
+            //return Redirect::to('inbox/all');  
         }
     }),
 

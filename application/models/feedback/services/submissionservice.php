@@ -19,13 +19,17 @@ class SubmissionService {
     }
     */
     public function __construct($post_input) {
-        $this->contact_details  = new ContactDetails($post_input);
-        $this->feedback_details = new FeedbackDetails($post_input); 
         $this->dbdashboard      = new DBDashboard;
         $this->halcyonic        = new HalcyonicService; 
+        $this->contact_details_data = new ContactDetailsData($post_input);
+        $this->feedback_details_data = new FeedbackDetailsData($post_input);
     }
 
     public function perform() {        
+        /*
+        $this->contact_details  = new ContactDetails($contact_details_data);
+        $this->feedback_details = new FeedbackDetails($feedback_details_data); 
+  
         $this->contact_details->read_data(); 
         $this->contact_details->write_new_contact();
      
@@ -41,6 +45,7 @@ class SubmissionService {
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $this->company_id;
         $this->halcyonic->save_latest_feedid();
+        */
     }
 
     public function metric_response() {

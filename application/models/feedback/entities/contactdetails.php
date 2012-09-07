@@ -16,7 +16,8 @@ class ContactDetails extends FeedbackDataTypes {
     private $contact_data = Array();
     private $contact_id;
 
-    public function __construct() {
+    public function __construct($post_data) {
+        $this->post_data = $post_data;
         $this->userinfo = new UserInfo;
         $this->profile_img = new ProfileImage;
     }

@@ -14,7 +14,8 @@ class FeedbackDetails extends FeedbackDataTypes {
 
     private $feedback_id, $contact_id, $company_id, $feedback_data, $feedback_text;
 
-    public function __construct() {
+    public function __construct($post_data) {
+        $this->post_data = $post_data;
         $this->dbfeedback = new DBFeedback;     
         $this->dbbadwords = new DBBadWords;
         $this->dbuser = new DBUser;
@@ -30,8 +31,7 @@ class FeedbackDetails extends FeedbackDataTypes {
     
     public function read_data() {
         
-        $permission = Input::get('permission');
-     
+        $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
