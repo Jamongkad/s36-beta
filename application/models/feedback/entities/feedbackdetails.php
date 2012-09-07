@@ -7,7 +7,7 @@ use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use DBBadWords, DBUser;
 use Input, DB, Helpers, Package;
-use Underscore;
+use SimpleArray;
 
 Package::load('HTMLPurifier');
 
@@ -35,7 +35,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
 
         Helpers::dump($this->post_data);
-        $arr = new Helpers\SimpleArray($this->post_data);
+        $arr = new SimpleArray($this->post_data);
         return $arr->get('company_id');
         
         $permission = Input::get('permission');     
