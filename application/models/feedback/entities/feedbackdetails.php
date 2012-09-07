@@ -19,8 +19,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $this->post_data = $post_data;
         $this->dbfeedback = new DBFeedback;     
         $this->dbbadwords = new DBBadWords;
-        $this->dbuser = new DBUser;
-        $this->underscore = new Underscore;
+        $this->dbuser = new DBUser; 
     }
     /*
     public function set_contact_id($contact_id) {
