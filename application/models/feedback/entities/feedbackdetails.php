@@ -34,7 +34,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
 
 
-        return Arr::get($this->post_data, 'pwet');
+        return Arr::get($this->post_data, 'date_change');
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data['company_id'])
