@@ -189,6 +189,10 @@ return array(
         $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
         return $fire->execute();
     },
+
+    'POST /feedback/change_feedback_date' => function() use ($feedback) {
+        Helpers::dump(Input::get());
+    },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
         $feed_obj = Array('feedid' => $id);
