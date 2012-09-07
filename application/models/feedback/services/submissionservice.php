@@ -9,6 +9,7 @@ use DBBadWords, DBDashboard, DBUser;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
 use Email\Services\EmailService;
+use SimpleArray;
 
 class SubmissionService {
    
