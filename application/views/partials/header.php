@@ -7,12 +7,14 @@
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <!--
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        -->
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?//=HTML::style('css/datepicker.css')?>
+        <?=HTML::style('css/datepicker.css')?>
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
@@ -23,9 +25,10 @@
              , '/js/jquery.form.js'
              , '/js/jquery.tmpl.js'
              , '/js/jquery.jcrop.js'
-             , '/js/jquery.ajaxfileupload.js'
-             //, '/js/bootstrap-datepicker.js'
+             , '/js/jquery.ajaxfileupload.js' 
+             , '/js/bootstrap-datepicker.js'
              /*
+
              , '/js/jquery.ui.widget.js'
              , '/js/jquery.iframe-transport.js'
              , '/js/jquery.fileupload.js'
