@@ -82,6 +82,8 @@ Checky.prototype.init = function() {
                                 //console.log("private and limited feeds cannot pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             }
+
+                            console.log(data);
                             exam_collection.push(data);
                         } 
                     }
