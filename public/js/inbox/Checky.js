@@ -144,7 +144,6 @@ Checky.prototype.init = function() {
 
                 $("option:first", this).prop("selected", true);
                 if(collection.length > 0) { 
-                    /*
                     $.ajax({
                         type: "POST"      
                       , data: {  
@@ -181,7 +180,6 @@ Checky.prototype.init = function() {
                           mouse_is_inside = false;  
                        }
                     });
-                    */
                 }
 
             }
