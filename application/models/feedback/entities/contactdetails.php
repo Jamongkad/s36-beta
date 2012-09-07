@@ -56,7 +56,7 @@ class ContactDetails extends FeedbackDataTypes {
 
         $login_type = ($this->post_data->get('login_type')) ? $this->post_data->get('login_type') : '36';
 
-        $this->contact_data = Array(
+        return Array(
             'siteId'    => $this->post_data->get('site_id')
           , 'firstName' => $this->_sentence_case($this->post_data->get('first_name'))
           , 'lastName'  => $this->_sentence_case($this->post_data->get('last_name'))
