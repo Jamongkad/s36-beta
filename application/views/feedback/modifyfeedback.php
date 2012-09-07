@@ -6,9 +6,6 @@ $(function() {
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
 
-    //var mdate = new Date(<?=date("Y", $feedback->unix_timestamp)?>, <?=date("n", $feedback->unix_timestamp)?>, <?=date("j", $feedback->unix_timestamp)?>);
-
-
     $("#date").datepicker({
         dateFormat: "yy-mm-dd"
       , defaultDate: '<?=date("Y-m-d", $feedback->unix_timestamp)?>'
