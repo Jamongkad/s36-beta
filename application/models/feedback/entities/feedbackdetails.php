@@ -34,7 +34,7 @@ class FeedbackDetails extends FeedbackDataTypes {
     public function generate_data() {
 
 
-
+        Helpers::dump($this->post_data);
         return $this->underscore->find($this->post_data, function($p) { return $p === 'date_change'; });
         
         $permission = Input::get('permission');     
