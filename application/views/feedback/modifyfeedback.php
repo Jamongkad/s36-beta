@@ -14,12 +14,12 @@ $(function() {
             $.ajax({ 
                 type: "POST"     
               , url: '/feedback/change_feedback_date'
-              , data: {change_date: datetext, feedback_id: <?=$feedback->id, }
+              , data: {change_date: datetext, feedback_id: <?=$feedback->id?>, }
               , success: function(msg) {
                     var myStatus = new Status();
                     myStatus.notify("Changing Submission Date...", 850);
                 }
-        })
+            })
         }
     });
 })
