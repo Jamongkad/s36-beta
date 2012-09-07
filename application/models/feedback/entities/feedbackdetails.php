@@ -29,7 +29,7 @@ class FeedbackDetails extends FeedbackDataTypes {
         $this->company_id = $company_id; 
     }
     */ 
-    public function read_data() {
+    public function generate_data() {
         
         $permission = Input::get('permission');     
         $category = DB::Table('Category')->where('companyId', '=', $this->company_id)
@@ -52,6 +52,8 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'permission' => ($permission) ? $permission : 3
           , 'dtAdded' => date('Y-m-d H:i:s')
         );
+
+        return $this->feedback_data;
     }
 
     public function write_new_feedback() {  
