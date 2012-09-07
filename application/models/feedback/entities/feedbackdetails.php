@@ -51,7 +51,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'rating' => $this->post_data->get('rating')
           , 'text' => $this->feedback_text
           , 'permission' => ($permission) ? $permission : 3
-          , 'dtAdded' => ($this->post_data->get('date_change')) ? $this->post_data->get('date_change') : date('Y-m-d H:i:s')
+          , 'dtAdded' => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
         );
     }
     /*
