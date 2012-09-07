@@ -100,7 +100,7 @@ Checky.prototype.init = function() {
                 */
 
                 var restricted_feeds = exam_collection.filter(function(el) {
-                    return (el.perm == 3 || el.perm == 2 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
+                    return (el.perm == 3 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
                 /*
