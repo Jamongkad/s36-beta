@@ -103,9 +103,9 @@
                         $settings = Array(
                              'settings' => 'SETTINGS'
                            , 'settings/company' => 'COMPANY'
-                           //, 'settings/upgrade' => 'UPGRADE'
-                           //, 'settings/change_card' => 'CHANGE CREDIT CARD'
-                           //, 'settings/cancel_account' => 'CANCEL ACCOUNT'
+                           , 'settings/upgrade' => 'UPGRADE'
+                           , 'settings/change_card' => 'CHANGE CREDIT CARD'
+                           , 'settings/cancel_account' => 'CANCEL ACCOUNT'
                         );
                     ?>
 

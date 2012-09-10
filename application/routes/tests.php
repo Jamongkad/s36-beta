@@ -340,5 +340,13 @@ return array(
 
     'GET /tests/aryann' => function() {
         return View::make('tests/aryann_view');
-    }
+    },
+    
+    'GET /tests/b3' =>function(){
+ 			$user = S36Auth::user();
+			Package::load('braintree');
+			$S36Braintree = new 	S36Braintree($user->bt_customer_id);
+			Helpers::show_data($S36Braintree->get_next_billing_info()); 
+			exit();
+    	}
 );

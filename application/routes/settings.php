@@ -65,16 +65,49 @@ return array (
         } 
 
     },
+    
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_index_view');
-    }),
+			$plan = new Plan\Repositories\DBPlan;
+			$accountService = new Account\Services\AccountService;
+			$planId 		= Input::get('planId');
+			$action		= Input::get('action');
+    	  switch($action){
+				case 'confirm' :
+						return View::of_layout()->partial('contents', 'settings/settings_upgrade_account_view',
+			        			array(
+								'newPlanInfo' 		=> $plan->get_planInfo($planId),
+								'accountInfo'		=> $accountService->get_accountInfo()
+								)  
+			        );
+					break;
+				case 'success' :
+							$result = $accountService->update_plan($planId);							
+							Helpers::show_data($result);
+					break;
+				default:
+						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+							array(
+								'planList' 		=> $plan->get_planInfo(),
+								'accountInfo'	=> $accountService->get_accountInfo()
+							)     
+			      	);
+					break;			
+				
+			}
+    	  
+    	  
+    	  
+      	
+    }  
+    ),
 
     'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_index_view');
+        return View::of_layout()->partial('contents', 'settings/settings_change_card_view');
     }),
 
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_index_view');
+        return View::of_layout()->partial('contents', 'settings/settings_cancel_account_view');
     }),
 );
+
