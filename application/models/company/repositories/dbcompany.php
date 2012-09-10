@@ -99,6 +99,14 @@ class DBCompany extends S36DataObject {
     			);
     	endif;
     }
+    
+    public function update_plan($planId){
+			$user = S36Auth::user();
+    		$result = DB::table('Company')
+    		->where('companyId','=',$user->companyid)
+    		->update(array('planId'=>$planId));
+    		return $result;
+    }
 }
 
 
