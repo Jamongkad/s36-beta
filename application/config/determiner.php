@@ -21,6 +21,25 @@ class Determiner {
        $obj->deploy_env = 'https://'.$subdomain.'.gearfish.com';
 
        //Staging || Development
+       if($this->http_host == 'mathew-dev.gearfish.com') {      
+           $obj->hostname = $my_url[1];
+           $obj->subdomain = $subdomain;
+           $obj->host = 'http://'.$subdomain.'.gearfish.com';
+           $obj->deploy_env = 'http://'.$subdomain.'.gearfish.com';
+
+           $obj->db   = Array(
+               'host' => 'localhost'
+             , 'username' => 'root'
+             , 'password' => 'brx4*svv'
+             , 'db' => 's36_mathew'
+           );
+
+           $obj->env_name = 'dev';
+           $obj->fb_id = '238865422903471';
+           $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
+           return $obj;
+       }
+
        if($this->http_host == 'mathew-staging.gearfish.com') {      
            $obj->db   = Array(
                'host' => 'localhost'
