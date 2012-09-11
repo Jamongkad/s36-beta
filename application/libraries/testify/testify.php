@@ -12,6 +12,8 @@
  * @license		GPL
  */
 
+use Exception;
+
 class Testify{
 	
 	private $tests = array();
