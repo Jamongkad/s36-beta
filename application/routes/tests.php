@@ -19,6 +19,11 @@ return array(
             $tf->assert($num);
         });
 
+        $tf->test("Testing enequality", function($tf) {
+            $num = $tf->data->calc;     
+            $tf->assertEqual($num, 1);
+        });
+
         $tf->run();
     }, 
 
