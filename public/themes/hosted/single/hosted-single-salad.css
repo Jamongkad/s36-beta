@@ -15,7 +15,7 @@ a:hover{color:#54a1c0;}
 #headerTitle{
 	color:#000;
 }
-#headerTitle strong{color:#000;}
+#headerTitle strong a{color:#000;}
 #headerTitle span {}
 #headerTitle span a{color:#000;}
 #headerTitle a:hover{color:#999;}

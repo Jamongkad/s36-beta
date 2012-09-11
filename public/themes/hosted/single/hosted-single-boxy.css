@@ -17,7 +17,7 @@ a:hover{color:#54a1c0;}
 	text-shadow:none;		
 }
 #pageTitle h1{color:#171616}
-#headerTitle strong{color:#FFF;	text-shadow:none;}
+#headerTitle strong a{color:#FFF;	text-shadow:none;}
 #headerTitle span {}
 #headerTitle span a{color:#EEE;	text-shadow:none;}
 #headerTitle a:hover{color:#FFF;	text-shadow:none;}
