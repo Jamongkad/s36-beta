@@ -227,7 +227,7 @@
                                             </select>
                                         </span>
                                         <span class="modify">
-                                            <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional info')?> 
+                                            <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional Info')?> 
                                         </span>
                                     </div>
                                 </div>

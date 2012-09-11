@@ -65,7 +65,7 @@ $(function() {
                             </span> 
                         </div>
                         <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'save feedback', Array('class' => 'save-feedback-text'))?>
+                             <?=HTML::link('/', 'Save feedback', Array('class' => 'save-feedback-text'))?>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ $(function() {
                   <?endforeach?>
                 </ul>
                 <div>
-                    <?=HTML::link('settings', 'manage categories →') ?>
+                    <?=HTML::link('settings', 'Manage categories →') ?>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@ $(function() {
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
-                 </td><td>display?</td></tr>
+                 </td><td>Display?</td></tr>
                  <tr>
                      <td class="title">Name:</td>
                      <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>
