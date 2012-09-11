@@ -4,12 +4,18 @@
             <?$company_name = ucfirst($company_name);?>
             <?if(!$sample_name):?>
                 <?if($fullpage_company_name):?>
-                    <strong><?=$fullpage_company_name?></strong>              
+                    <strong>
+                        <a href="https://<?=strtolower($company_name).".".$hostname?>.com"><?=$fullpage_company_name?></a>
+                    </strong>              
                 <?else:?>
-                    <strong><?=$company_name?></strong>              
+                    <strong> 
+                        <a href="https://<?=strtolower($company_name).".".$hostname?>.com"><?=$company_name?></a>
+                    </strong>              
                 <?endif?>
             <?else:?>
-                <strong><?=$sample_name?></strong>              
+                <strong> 
+                    <a href="https://<?=strtolower($company_name).".".$hostname?>.com"><?=$sample_name?></a>
+                </strong>              
             <?endif?>
 
             <span><a href="https://<?=strtolower($company_name).".".$hostname?>.com">View all feedback</a></span>
