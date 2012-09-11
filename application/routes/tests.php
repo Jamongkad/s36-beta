@@ -17,6 +17,8 @@ return array(
         $tf->test("Testing the add method", function($tf) {
             $num = $tf->data->calc;     
             $tf->assert($num);
+            $tf->assert(True);
+            $tf->assert(True);
         });
 
         $tf->test("Testing enequality", function($tf) {
