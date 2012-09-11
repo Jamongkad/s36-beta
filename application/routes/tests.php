@@ -10,7 +10,16 @@ return array(
 
     'GET /tests/testify' => function() {
         $tf = new Testify("Mathew Test");
-        Helpers::dump($tf);
+        $tf->beforeEach(function($tf) {
+            $tf->data->calc = 3;  
+        });
+        
+        $tf->test("Testing the add method", function($tf) {
+            $num = $tf->data->calc;     
+            $tf->assert($num);
+        });
+
+        $tf->run();
     }, 
 
     'GET /tests/test_email_new' => function() {
