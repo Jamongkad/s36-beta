@@ -5,7 +5,7 @@ $(function() {
         mode : "textareas",
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
-    $("#date").datepicker({dateFormat: "yy-mm-dd"});
+    $("#date").datepicker({dateFormat: "dd-mm-yy"});
 })
 </script>
 <?=Form::open('feedback/addfeedback')?>
