@@ -127,8 +127,8 @@ $(function() {
                     </div>
 
                     <div class="grids">
-                        <div class="g1of3">
-                            <label><strong>Feedback Submission Date (yyyy-mm-dd)</strong></label><br />
+                        <div class="g1of2">
+                            <label><strong>Feedback Submission Date (dd-mm-yyyy)</strong></label><br />
                             <input type="text" name="date_change" value="" class="regular-text datepicker" id="date" />
                         </div>
                         <div class="g1of3">&nbsp;</div>
