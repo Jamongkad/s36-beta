@@ -5,7 +5,7 @@ $(function() {
         mode : "textareas",
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
-    $("#date").datepicker({dateFormat: "yy-mm-dd"});
+    $("#date").datepicker({dateFormat: "dd-mm-yy"});
 })
 </script>
 <?=Form::open('feedback/addfeedback')?>
@@ -127,8 +127,8 @@ $(function() {
                     </div>
 
                     <div class="grids">
-                        <div class="g1of3">
-                            <label><strong>Feedback Submission Date</strong></label><br />
+                        <div class="g1of2">
+                            <label><strong>Feedback Submission Date (dd-mm-yyyy)</strong></label><br />
                             <input type="text" name="date_change" value="" class="regular-text datepicker" id="date" />
                         </div>
                         <div class="g1of3">&nbsp;</div>

@@ -7,8 +7,8 @@ $(function() {
     });
 
     $("#date").datepicker({
-        dateFormat: "yy-mm-dd"
-      , defaultDate: '<?=date("Y-m-d", $feedback->unix_timestamp)?>'
+        dateFormat: "dd-mm-yy"
+      , defaultDate: '<?=date("d-m-y", $feedback->unix_timestamp)?>'
       , onSelect: function(dateText, inst) {
 
             var datetext = dateText;
@@ -77,10 +77,10 @@ $(function() {
                         <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, 
                                                                       ($feedback->indlock ? True : Null))?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
-                        <tr><td>Submission Date:</td><td>
+                        <tr><td>Submission Date (dd-mm-yyyy):</td><td>
                             <input type="text" name="date_change" 
-                                   value="<?=date("Y-m-d H:i:s", $feedback->unix_timestamp)?>" 
-                                   class="regular-text datepicker" id="date" />
+                                   value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
+                                   class="regular-text datepicker" id="date" /> 
                         </td>
                     </table>
                 </div>
