@@ -8,9 +8,9 @@ return array(
         Enhance::runTests();
     }),
 
-    'GET /tests/test_validator' => function() {
-        $test = new SimpleValidator\SimpleValidator;
-        Helpers::dump($test);
+    'GET /tests/testify' => function() {
+        $tf = new Testify("Mathew Test");
+        Helpers::dump($tf);
     }, 
 
     'GET /tests/test_email_new' => function() {

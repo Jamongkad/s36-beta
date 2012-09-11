@@ -26,6 +26,7 @@ return array(
     'SimpleArray' => 'Helpers\\SimpleArray',
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
     'Underscore' => 'Underscore\\Underscore',
+    'Testify' => 'Testify\\Testify'
 	'Auth' => 'System\\Auth',
 	'Asset' => 'System\\Asset',
 	'Benchmark' => 'System\\Benchmark',
