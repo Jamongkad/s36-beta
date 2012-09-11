@@ -24,6 +24,7 @@ return array(
         $tf->test("Testing enequality", function($tf) {
             $num = $tf->data->calc;     
             $tf->assertEqual($num, 1);
+            $tf->assertEqual($num, 3);
         });
 
         $tf->run();
