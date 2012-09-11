@@ -24,6 +24,7 @@ return array(
 	*/
     'GET /' => function() use($company_name, $hosted_settings, $dbw, $company) { 
         //consider placing this into a View Object
+        print_r(Config::get('application.url'));
         $company_info = $company->get_company_info($company_name); 
 
         $hosted = new Feedback\Services\HostedService($company_name);
