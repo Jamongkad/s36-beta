@@ -12,7 +12,7 @@
  * @license		GPL
  */
 
-use Exception;
+use Exception, StdClass;
 
 class Testify{
 	
