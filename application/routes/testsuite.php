@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'GET /' => function() { 
+    'GET /testsuite' => function() { 
         $tf = new Testify("Mathew Test");
         $tf->beforeEach(function($tf) {
             $tf->data->calc = 3;  
