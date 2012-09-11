@@ -82,8 +82,18 @@ return array (
 			        );
 					break;
 				case 'success' :
-							$result = $accountService->update_plan($planId);							
-							Helpers::show_data($result);
+							$result = $accountService->update_plan($planId);			
+							if($result){
+								header('Location: /settings/upgrade ');							
+							}
+					break;
+				case 'downgrade' :
+						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
+			        			array(
+								'newPlanInfo' 		=> $plan->get_planInfo($planId),
+								'accountInfo'		=> $accountService->get_accountInfo()
+								)  
+			        );
 					break;
 				default:
 						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
@@ -95,12 +105,44 @@ return array (
 					break;			
 				
 			}
-    	  
-    	  
-    	  
-      	
     }  
     ),
+    
+    /*
+   'GET /settings/downgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
+			$plan = new Plan\Repositories\DBPlan;
+			$accountService = new Account\Services\AccountService;
+			$planId 		= Input::get('planId');
+			$action		= Input::get('action');
+    	  switch($action){
+				case 'confirm' :
+						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
+			        			array(
+								'newPlanInfo' 		=> $plan->get_planInfo($planId),
+								'accountInfo'		=> $accountService->get_accountInfo()
+								)  
+			        );
+					break;
+				case 'success' :
+							$result = $accountService->update_plan($planId);			
+							if($result){
+								header('Location: /settings/upgrade ');							
+							}
+					break;
+				default:
+						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+							array(
+								'planList' 		=> $plan->get_planInfo(),
+								'accountInfo'	=> $accountService->get_accountInfo()
+							)     
+			      	);
+					break;			
+				
+			}
+    }  
+    ),
+    */
+    
 
     'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'settings/settings_change_card_view');

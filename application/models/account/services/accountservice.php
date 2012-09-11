@@ -39,9 +39,12 @@ function get_accountInfo(){
 }
 
 function update_plan($planId){
-		$this->DBCompany->update_plan($planId);
 		$newPlan = $this->DBPlan->get_PlanInfo($planId);
-		$this->S36Braintree->update_subscription($newPlan->name);
+		if( ($this->DBCompany->update_plan($planId)) && $this->S36Braintree->update_subscription($newPlan->name) )
+		{
+				return true;
+		}
+
 	}
 
 

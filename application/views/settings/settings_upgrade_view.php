@@ -60,7 +60,7 @@
 											echo HTML::link("settings/upgrade/?planId=$plan->planid&action=confirm",'Upgrade',array('class'=>'gray-btn')); 										
 										}
 										else{
-											echo HTML::link("settings/downgrade/?planId=$plan->planid",'Downgrade',array('class'=>'gray-btn'));
+											echo HTML::link("settings/upgrade/?planId=$plan->planid&action=downgrade",'Downgrade',array('class'=>'gray-btn'));
 										}
 							       	?>
 							       </td>
@@ -85,16 +85,21 @@
                     	<div class="white-box">
                         	<h3>Invoices</h3>
                             <p>Each time you are billed, an invoice is emailed to <strong><?=$accountInfo->companyInfo->replyto?></strong>. The invoice includes a custom 'Bill to' field where you can provide your company's address and any other billing notes. You can change this at any time.</p>
-                            <h3>Invoices & Charges Sent to Date</h3>
-                            <ul>
-                            	<?php foreach($billingHistory as $bill): ?>
-                            	<li>
-                            		<a href="#">
-                            			<?=Str::title($bill->plan_id)?>, $<?=$bill->amount?> on <?=date("M d, Y",strtotime($bill->date->date))?>
-                            		</a>
-                            	</li>
-                            	<?php endforeach; ?>
-                            </ul>
+                            
+                            <?php if(sizeof($billingHistory)>0):?>
+	                            <h3>Invoices & Charges Sent to Date</h3>
+	                            <ul>
+	                            	<?php foreach($billingHistory as $bill): ?>
+	                            	<li>
+	                            		<a href="#">
+	                            			<?=Str::title($bill->plan_id)?>, $<?=$bill->amount?> on <?=date("M d, Y",strtotime($bill->date->date))?>
+	                            		</a>
+	                            	</li>
+	                            	<?php endforeach; ?>
+	                            </ul>
+									<?php endif;?>                  
+                            
+                            
                             <?php if(sizeof($accountInfo->companyInfo->account_user) > 1 ): ?>
                             <h3>Change Account Owner</h3>
                             <p>The account owner is the only person that can access this account page, upgrade, downgrade, change billing information, access invoices, and cancel the account. The account owner also has permanent access to all projects. Once you make this change you'll no longer be the account owner.</p>
