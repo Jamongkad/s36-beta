@@ -19,7 +19,7 @@ a:hover{color:#54a1c0;}
 	
 }
 #pageTitle h1{color:#171616;}
-#headerTitle strong{color:#FFF;}
+#headerTitle strong a{color:#FFF;}
 #headerTitle span {}
 #headerTitle span a{color:#EEE;}
 #headerTitle a:hover{color:#FFF;}
