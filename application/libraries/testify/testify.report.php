@@ -80,9 +80,7 @@
         	span.result{ color: #DCDCDC;display: block;padding: 0.6em; }
         	.green{color:#94c25d;}
         	.red{ color:#fb4357;}
-        	
-        	
-        	
+        	        	
         	ul{
         		list-style:none;
         		font-size:19px;
@@ -169,6 +167,10 @@
         		-webkit-transition:0.25s;
         		transition:0.25s;
         	}
+
+            div.dump pre {
+                word-wrap: break-word;     
+            }
         	
         	li:hover div.source{
         		color:#444;
