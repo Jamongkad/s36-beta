@@ -34,4 +34,8 @@ return array(
 
         $tf->run();
     }
+    'GET /testify/api' => function() { 
+        $tf = new Testify("API Bug Fix");
+        $tf->run();
+    }
 );
