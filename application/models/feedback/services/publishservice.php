@@ -30,7 +30,7 @@ class PublishService {
         $feed_obj = Array('feedid' => $this->feedback_id);
         $feedbackstate = new FeedbackState($status, Array($feed_obj), $this->company_id);
 
-        if($feedbackstate->change_state())  {  
+        if($state = $feedbackstate->change_state())  {  
             //Record action on activity log 
             $fba = new FeedbackActivity($this->user_id, $this->feedback_id, $status);
             
@@ -60,6 +60,7 @@ class PublishService {
               , 'hostname' => $hostname
             ));       
             */
+            return $state;
         } 
     }
 }

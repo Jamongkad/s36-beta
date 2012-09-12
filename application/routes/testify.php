@@ -45,7 +45,7 @@ return array(
             $tf->assertFalse($t);
         });
 
-        $tf->test('Publishing Service Test: Full Operation', function($tf) {
+        $tf->test('Feedback Activity Test: Full Operation', function($tf) {
             $act = $tf->data->fba->check_activity_status();
             $tf->assertFalse($act);
 
@@ -71,6 +71,10 @@ return array(
 
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
+        });
+
+        $tf->test('Test Publish', function($tf) {
+            $tf->dump($tf->data->pub);
         });
 
         $tf->run(); 
