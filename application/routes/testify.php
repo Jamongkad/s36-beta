@@ -22,7 +22,6 @@ return array(
 
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id, $status) {
             $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
-            $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
         });
         
         $tf->test('Before logging in activity', function($tf) {
@@ -60,5 +59,21 @@ return array(
         });
 
         $tf->run();
+    },
+
+    'GET /testify/publish' => function() {
+
+        $feedback_id = 522; 
+        $company_id = 6;
+        $user_id    = 15;
+
+        $tf = new Testify("Feedback Publish Tests");
+
+        $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
+            $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
+        });
+        
     }
+
+
 );
