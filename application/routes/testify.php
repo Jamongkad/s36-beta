@@ -40,7 +40,7 @@ return array(
         $encrypt = new Encryption\Encryption;
 
         $obj = new StdClass;
-        $obj->username = 'mathew-staging';
+        $obj->username = 'jamongkad';
         $obj->company_id = 6;
         $me = $user->pull_user($obj);
 
