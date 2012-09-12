@@ -246,7 +246,7 @@ class Testify{
 
     public function dump($arg){
         //$this->data_dump = $arg;
-        return $this->recordTest($arg, True)
+        return $this->recordTest($arg, True);
     }
 	
 	/**
