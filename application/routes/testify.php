@@ -64,12 +64,12 @@ return array(
             $t = $tf->data->fba->check_activity_status();
             $tf->assert($t);
         });
-        /* 
+
         //Clean up at aisle Activity!!
         $tf->afterEach(function($tf) {
             $tf->data->fba->delete_activity();
         });
-        */
+
 
         $tf->run();
     }
