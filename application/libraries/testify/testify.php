@@ -289,6 +289,7 @@ class Testify{
 		$result = $pass ? "pass" : "fail";
 
         if($dump_data) {
+            echo "pass";
             $result = "pass";     
             $this->data_dump = $pass;
         }
