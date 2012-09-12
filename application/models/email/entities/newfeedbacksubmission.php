@@ -30,12 +30,8 @@ class NewFeedbackSubmission extends EmailFixture {
                 , 'profile_partial_view' => View::make('email/partials/profile_partial_view'
                                                        , Array('feedback_data' => $this->feedback_data))
             ))->get();     
-
             //Helpers::dump($email_html); 
-            $this->postmark->to($address->email)
-                           ->subject($this->get_subject())
-                           ->html_message($email_html)
-                           ->send();          
+            $this->postmark->to($address->email)->subject($this->get_subject())->html_message($email_html)->send();          
         }    
     }
 
