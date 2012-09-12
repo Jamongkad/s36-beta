@@ -71,7 +71,7 @@ return array(
 
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
-            $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array('feedid' => $feedback_id), $company_id);
+            $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array('feedid' => $feedback_id), $company_id, 19);
         });
 
         $tf->test('Feedback State Test', function($tf) {
