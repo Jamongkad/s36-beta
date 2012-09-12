@@ -324,4 +324,16 @@ class Helpers {
         $has_tld = (count($M) > 0) ? true : false;
         return $has_tld;
     }
+    
+    public static function arrayToObject($data){
+    	
+    	if(is_array($data)) {
+			$data = json_encode($data);
+         $data = json_decode($data);
+        return $data;
+      }else{
+      	return $data;
+      }
+
+    }
 }
