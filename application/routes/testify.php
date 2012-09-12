@@ -72,7 +72,8 @@ return array(
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
         });
-        
+
+        $tf->run(); 
     }
 
 
