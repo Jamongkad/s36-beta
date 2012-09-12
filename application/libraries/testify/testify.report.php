@@ -196,12 +196,7 @@
 					<span class="green">Far out! Everything passed!</span>
 					<span class="red">Bummer! You have failing tests!</span>
 				</div>
-
-                <?if($data):?>
-					<span class="green">Data Dump</span> 
-			        <div class="dump"><pre><?php print_r($data)?></pre></div>
-                <?endif?>
-
+  
 				<?php
 				foreach($cases as $caseTitle => $case){ ?>
 					

@@ -245,7 +245,8 @@ class Testify{
 	 */
 
     public function dump($arg){
-        $this->data_dump = $arg;
+        //$this->data_dump = $arg;
+        return $this->recordTest($arg, True)
     }
 	
 	/**
@@ -258,7 +259,6 @@ class Testify{
 		$title = $this->suiteTitle;
 		$suiteResults = $this->suiteResults;
 		$cases = $this->stack;
-        $data = $this->data_dump;
 		
 		include dirname(__FILE__).'/testify.report.php';
 		
@@ -272,7 +272,7 @@ class Testify{
 	 * @return boolean
 	 */
 	
-	private function recordTest($pass){
+	private function recordTest($pass, $dump_data=False){
 		
 		if(	!array_key_exists($this->currentTestCase, $this->stack) ||
 			!is_array($this->stack[$this->currentTestCase])){
@@ -287,6 +287,11 @@ class Testify{
 		$bt[1]['file'] = basename($bt[1]['file']);
 		
 		$result = $pass ? "pass" : "fail";
+
+        if($dump_data) {
+            $result = $pass;     
+        }
+
 		$this->stack[$this->currentTestCase]['tests'][] = array(
 			"type"		=> $bt[1]['function'],
 			"result"	=> $result,
