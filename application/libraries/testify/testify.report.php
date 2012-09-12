@@ -207,6 +207,7 @@
 								<span class="line">line <?php echo $test['line']?></span>
 								<span class="file"><?php echo $test['file']?></span>
 								<div class="source"><?php echo htmlspecialchars($test['source'])?></div>
+								<div class="dump"><pre><?php echo $test['data']?></pre></div>
 							</li>
 							
 						<?php } ?>

@@ -27,6 +27,7 @@ class Testify{
 	private $after = NULL;
 	private $beforeEach = NULL;
 	private $afterEach = NULL;
+    private $data_dump = NULL;
 	
 	/**
 	 * A public object for storing state and other variables across test cases and method calls.
@@ -244,9 +245,7 @@ class Testify{
 	 */
 
     public function dump($arg){
-        echo "<pre>";
-        print_r($arg);
-        echo "</pre>"; 
+        $this->data_dump = $arg;
     }
 	
 	/**
@@ -292,7 +291,8 @@ class Testify{
 			"result"	=> $result,
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
-			"source"	=> $source
+			"source"	=> $source,
+            "data"      => $this->data_dump 
 		);
 		
 		$this->stack[$this->currentTestCase][$result]++;
