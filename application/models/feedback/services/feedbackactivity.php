@@ -41,6 +41,7 @@ class FeedbackActivity {
     
     //hmmmmm subject to approval muthafucka
     //Not yet being used
+    /*
     public function update_activity_status() { 
         $affected = DB::Table('FeedbackActivity', 'master')
             ->where('userId', '=', $this->user_id)
@@ -53,4 +54,5 @@ class FeedbackActivity {
             ));
         return $affected; 
     }
+    */
 }
