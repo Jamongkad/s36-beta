@@ -12,8 +12,8 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/api' => function() { 
-        $tf = new Testify("API Bug Fix");
+    'GET /testify/activity' => function() { 
+        $tf = new Testify("Feedback Activity Tests");
          
         $feedback_id = 522; 
         $company_id = 6;
