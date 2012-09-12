@@ -49,12 +49,10 @@ return array(
 
         $tf->test('Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
-            Helpers::dump($t);
+            $tf->assert($t);
         });
 
         //$activity_check = $fba->log_activity();
-
-
         $tf->run();
     }
 );
