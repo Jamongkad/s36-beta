@@ -31,14 +31,11 @@ class PublishService {
         $feedbackstate = new FeedbackState($status, Array($feed_obj), $this->company_id);
 
         if($feedbackstate->change_state())  {  
-            //$publisher = Array('name' => $username, 'company_id' => $this->company_id, 'email' => $email); 
-            //Record action on activity log
-            //$fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
+            //Record action on activity log 
             $fba = new FeedbackActivity($this->user_id, $this->feedback_id, $status);
-            $activity_check = $fba->log_activity();
             
             //if no record of activity
-            if(!is_object($activity_check)) { 
+            if($fba->check_activity_status() == False) { 
                 $published_data = new PublishedFeedbackData;
                 $published_data->set_publisher_email($email)
                                ->set_feedback($feedback->pull_feedback_by_id($this->feedback_id))
@@ -47,6 +44,8 @@ class PublishService {
                 $emailservice = new EmailService($published_data);
                 $emailservice->send_email(); 
             }
+
+            $fba->log_activity();
             //fireoff redirect somewhere here...
             /*
             $contact = DB::Table('Contact', 'master')

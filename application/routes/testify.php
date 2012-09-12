@@ -46,6 +46,14 @@ return array(
             $tf->assertFalse($t);
         });
 
+        $tf->test('Publishing Service Test: Full Operation', function($tf) {
+            $act = $tf->data->fba->check_activity_status();
+            $tf->assert($act);
+
+            $t = $tf->data->fba->log_activity();
+            $tf->assert($t); 
+        });
+
         //Clean up at aisle Activity!!
         $tf->afterEach(function($tf) {
             $tf->data->fba->delete_activity();
