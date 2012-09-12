@@ -18,14 +18,13 @@ class PublishService {
         $this->feedback_id = $feedback_id; 
         $this->company_id  = $company_id;
         $this->user_id     = $user_id; 
+        $this->dbuser      = new DBUser;
+        $this->dbfeedback    = new DBFeedback;
     }
 
     public function perform() {
 
-        $user     = new DBUser; 
-        $feedback = new DBFeedback;
         $status   = 'publish'; 
-
         //publish feedback this bitch
         $feed_obj = Array('feedid' => $this->feedback_id);
         $feedbackstate = new FeedbackState($status, Array($feed_obj), $this->company_id);
@@ -38,8 +37,8 @@ class PublishService {
             if($fba->check_activity_status() == False) { 
                 $published_data = new PublishedFeedbackData;
                 $published_data->set_publisher_email($email)
-                               ->set_feedback($feedback->pull_feedback_by_id($this->feedback_id))
-                               ->set_sendtoaddresses($user->pull_user_emails_by_company_id($this->company_id));
+                               ->set_feedback($this->dbfeedback->pull_feedback_by_id($this->feedback_id))
+                               ->set_sendtoaddresses($this->dbuser->pull_user_emails_by_company_id($this->company_id));
             
                 $emailservice = new EmailService($published_data);
                 $emailservice->send_email(); 
