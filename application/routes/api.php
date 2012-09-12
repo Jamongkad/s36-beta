@@ -116,7 +116,7 @@ return array(
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
 
-        Helpers::dump($params);
+        Helpers::dump($decrypt_string);
 
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
