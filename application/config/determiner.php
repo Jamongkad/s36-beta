@@ -43,7 +43,7 @@ class Determiner {
        if($this->http_host == 'mathew-staging.gearfish.com') {      
            $obj->db   = Array(
                'host' => '173.255.254.8'//'localhost'
-             , 'username' => 'root'
+             , 'username' => 'mathew'
              , 'password' => 'brx4*svv'
              , 'db' => 's36'//'s36_mathew'
            );
