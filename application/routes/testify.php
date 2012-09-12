@@ -48,7 +48,7 @@ return array(
 
         $tf->test('Publishing Service Test: Full Operation', function($tf) {
             $act = $tf->data->fba->check_activity_status();
-            $tf->assert($act);
+            $tf->assertFalse($act);
 
             $t = $tf->data->fba->log_activity();
             $tf->assert($t); 
