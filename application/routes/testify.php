@@ -41,7 +41,7 @@ return array(
         $obj = new StdClass;
         $obj->username = 'mathew-staging';
         $obj->company_id = 6;
-        Helpers::dump($user->pull_users($obj));
+        Helpers::dump($user->pull_user($obj));
 
         $tf->run();
     }
