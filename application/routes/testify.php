@@ -31,7 +31,6 @@ return array(
         //create single contact identity for CRUD operations
         //aggregate feedback under contact identity
         //TODO: 09-13-2012 this feature will be temporarily closed off until further notice.
-
         $tf->run();
     },
 
