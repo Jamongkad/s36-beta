@@ -223,7 +223,7 @@ jQuery(function($) {
             $('.email-picker').show();
             $('textarea[name="email_comment"]').val("");
         } 
-    })
+    });
 
     //End of FastForward
     new InboxStatusChange('.check, .feature, .remove, .popup-delete').initialize(); 

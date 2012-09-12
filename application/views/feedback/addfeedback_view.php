@@ -1,3 +1,13 @@
+<script type="text/javascript">
+$(function() { 
+    $('#feedback').tinymce({
+        script_url : '<?=URL::to('/')?>js/tiny_mce.js',
+        mode : "textareas",
+        theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
+    });
+    $("#date").datepicker({dateFormat: "dd-mm-yy"});
+})
+</script>
 <?=Form::open('feedback/addfeedback')?>
 <input type="hidden" value="<?=$company_id?>" name="company_id" />
 <input type="hidden" id="cropped_photo" name="cropped_image_nm" value="0" />
@@ -10,7 +20,7 @@
         <div class="add-feedback-options">
             <h2>Add Feedback</h2>
             <div class="add-feedback-types">
-                <h3><label for="full_page_type">Recepient Details</label></h3>
+                <h3><label for="full_page_type">Recipient Details</label></h3>
                 <div class="add-feedback-form" id="full_page_add-feedback">    
                     <div class="grids">
                         <div class="rate-text"><label><strong>Rating :</strong></label> </div>
@@ -115,6 +125,15 @@
                         </div>
                         <div class="g1of3">&nbsp;</div>
                     </div>
+
+                    <div class="grids">
+                        <div class="g1of2">
+                            <label><strong>Feedback Submission Date (dd-mm-yyyy)</strong></label><br />
+                            <input type="text" name="date_change" value="" class="regular-text datepicker" id="date" />
+                        </div>
+                        <div class="g1of3">&nbsp;</div>
+                    </div>
+
                     <div class="grids">
                         <div class="g1of3">
                             <label><strong>Preview :</strong></label><br />
@@ -178,7 +197,7 @@
         <div class="add-feedback-setup-border"></div> 
         <div style="padding-left:10px">
             <br />
-            <input type="submit" class="large-btn" value="add feedback" />
+            <input type="submit" class="large-btn" value="Add Feedback" />
             <br /><br />
         </div>
     </div>

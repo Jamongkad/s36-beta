@@ -1,8 +1,5 @@
 <?php
 
-use Feedback\Entities\ContactDetails;
-use Feedback\Entities\FeedbackDetails;
-use Halcyonic\Services\HalcyonicService;
 use Feedback\Repositories\DBFeedback;
 
 $feedback = new DBFeedback;
@@ -103,13 +100,7 @@ return array(
     }, 
 
     'POST /api/submit_feedback' => Array('do' => function() { 
-        $addfeedback = new Feedback\Services\SubmissionService(
-                           new ContactDetails
-                         , new FeedbackDetails
-                         , new DBDashboard
-                         , new HalcyonicService
-                        );  
-
+        $addfeedback = new Feedback\Services\SubmissionService(Input::get());
         $addfeedback->perform(); 
     }), 
 

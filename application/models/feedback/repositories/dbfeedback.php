@@ -33,9 +33,12 @@ class DBFeedback extends S36DataObject {
                           THEN concat(datediff(now(), dtAdded)," days ago")
                        WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                           THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
+                       WHEN dtAdded >= CURDATE()
+                          THEN "future event" 
                        ELSE    
                           "about a year ago"
                   END as daysAgo
+                , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
                     WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
@@ -135,6 +138,8 @@ class DBFeedback extends S36DataObject {
 
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                         THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
+                    WHEN dtAdded > CURDATE()
+                        THEN "future event"
                     ELSE    
                         "about a year ago"
                 END as daysAgo

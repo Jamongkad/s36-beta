@@ -291,7 +291,7 @@
             	<h1>Please check your details below</h1>
                 <div id="bad-feedback-message">
                     <p style="font-size:14px;padding-left:25px;padding-right:15px;padding-top:25px;">
-                        Thanks for your feedback. In order for us to get back to you <br/>fill in your contact details below.
+                        In order for us to get back to you <br/>fill in your contact details below.
                     </p> 
                 </div>
                 <input type="hidden" id="profile_link" value="">
@@ -414,7 +414,7 @@
                     </p>
                     <p id="submission-success">
                         <div id="success-message-ord">
-                            Thank you for taking the time to send in your feedback, and we will get back to you very shortly. 
+                            Thank you for taking the time to send in your feedback, we will get back to you very shortly. 
                             Feedback submitted to our team typically takes about 24-48 working hours to be reviewed and processed.
                             <br/><br/>
                             Please press the (X) button on the upper right hand corner of the form to close this box.                   

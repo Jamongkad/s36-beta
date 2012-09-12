@@ -18,7 +18,7 @@ a:hover{color:#54a1c0;}
 	color:#073870;
 	text-shadow:none;	
 }
-#headerTitle strong{color:#3e92c7;	text-shadow:none;}
+#headerTitle strong a{color:#3e92c7;	text-shadow:none;}
 #headerTitle span {color:#55a3d4;}
 #headerTitle span a{color:#3e92c7;	text-shadow:none;}
 #headerTitle a:hover{color:#55a3d4;	text-shadow:none;}
@@ -28,6 +28,3 @@ a:hover{color:#54a1c0;}
 .gray-text{color:#666}
 .gray-text a{color:#222;}
 .gray-text a:hover{color:#333;}
-.theAvatar{
-	border:1px solid #AAA;
-}

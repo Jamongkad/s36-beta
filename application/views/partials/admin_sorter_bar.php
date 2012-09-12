@@ -14,26 +14,26 @@ if(!preg_match_all($regex, Request::uri(), $matches) and S36Auth::check()):?>
                 <label>Date</label>
                 <select name="date-filter">
                     <option value="default">-</option>
-                    <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>newest</option>
-                    <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>oldest</option>
+                    <option value="date_new" <?=(Input::get('date') == "date_new") ? "selected" : null?>>Newest</option>
+                    <option value="date_old" <?=(Input::get('date') == "date_old") ? "selected" : null?>>Oldest</option>
                 </select>
             </div>
             <div class="select-options">
                 <label>Priority</label>
                 <select name="priority-filter">
                     <option value="default">-</option>
-                    <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>low</option>
-                    <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>medium</option>
-                    <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>high</option>
+                    <option value="low" <?=(Input::get('priority') == "low") ? "selected" : null?>>Low</option>
+                    <option value="medium" <?=(Input::get('priority') == "medium") ? "selected" : null?>>Medium</option>
+                    <option value="high" <?=(Input::get('priority') == "high") ? "selected" : null?>>High</option>
                 </select>
             </div>
             <div class="select-options">
                 <label>Status</label>
                 <select name="status-filter">
                     <option value="default">-</option>
-                    <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>new</option>
-                    <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>in progress</option>
-                    <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>closed</option>
+                    <option value="new" <?=(Input::get('status') == "new") ? "new" : null?>>New</option>
+                    <option value="inprogress" <?=(Input::get('status') == "inprogress") ? "selected" : null?>>In progress</option>
+                    <option value="closed" <?=(Input::get('status') == "closed") ? "selected" : null?>>Closed</option>
                 </select>
             </div>
             <div class="select-options">

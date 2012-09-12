@@ -14,7 +14,7 @@ a:hover{color:#54a1c0;}
 #headerTitle{
 	color:#FFF;
 }
-#headerTitle strong{color:#FFF;}
+#headerTitle strong a{color:#FFF;}
 #headerTitle span {text-shadow:none;}
 #headerTitle span a{color:#AAA;}
 #headerTitle a:hover{color:#FFF;}
@@ -26,6 +26,3 @@ a:hover{color:#54a1c0;}
 .gray-text{color:#666}
 .gray-text a{color:#AAA;}
 .gray-text a:hover{color:#FFF;}
-.theAvatar{
-	border:1px solid #AAA;
-}	

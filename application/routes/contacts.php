@@ -7,13 +7,13 @@ $contact_metrics = new ContactMetrics($contact, new DBMetric, new S36Auth);
 
 return array(
     'GET /contacts' => Array('name' => 'contacts', 'before' => 's36_auth', 'do' => function() use ($contact, $contact_metrics) { 
-
         $limit = 7;
 
         $pagination = new ZebraPagination;
         $offset = ($pagination->get_page() - 1) * $limit;
 
         $contacts = $contact->fetch_contacts($offset, $limit);
+        $pagination->selectable_pages(4);
         $pagination->records($contacts->total_rows);
         $pagination->records_per_page($limit);
 

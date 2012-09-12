@@ -84,7 +84,7 @@
             <h2>Woops. You cannot request feedback without creating a submission form first.</h2><br/><br/>
             <p>
              Fortunately it's super easy to create one! 
-             <strong style="font-size:12px"><?=HTML::link('feedsetup/submission_widgets', 'click here', Array('class' => 'woops-a'))?> </strong>
+             <strong style="font-size:12px"><?=HTML::link('feedsetup/submission_widgets', 'Click here', Array('class' => 'woops-a'))?> </strong>
              to create your submission form. </p>
         </div> 
     <?endif?>

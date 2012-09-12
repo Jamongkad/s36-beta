@@ -31,10 +31,11 @@ div{position:relative;}
 	color:#aaa;
 	text-shadow:#EEE 0px 1px;
 }
-#headerTitle strong{color:#5d96d5;}
+#headerTitle strong a{color:#5d96d5;}
 #headerTitle span {padding-left:20px;text-shadow:#EEE 0px 1px;}
 #headerTitle span a{color:#000;font-size:14px;font-weight:bold;}
 #headerTitle a:hover{color:#666;}
+
 .padfix{padding-top:5px;}
 .padfix a{font-weight:normal !important;font-size:12px !important; }
 #bodyWrapper{
@@ -202,3 +203,9 @@ a {
     color: #4894B3;
 }
 
+.meta {
+    opacity: .7;
+    font-size: 11px;
+    margin-top: 6px;
+    color: inherit;
+}

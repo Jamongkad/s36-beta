@@ -54,15 +54,12 @@
             </div>
             <!-- end of feedback list -->
             <div class="admin-sorter-bar">
-            	<div class="sorter-bar">
-                    <div class="left">
-                    	&nbsp;
-                    </div>
-                    <div class="right">
-                        <div class="g1of5">
+            	<div class="sorter-bar"> 
+                    <?if($pagination):?>
+                        <div style="padding:10px 28px 30px"> 
                             <?=$pagination?>
                         </div>
-                    </div>
+                    <?endif?>
                     <div class="c"></div>
                 </div>
             </div>

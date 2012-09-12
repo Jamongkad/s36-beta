@@ -1,7 +1,7 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Halcyonic, DBBadWords;
-use S36Auth, Input, Exception, Helpers, DB, StdClass;
+use Feedback\Repositories\DBFeedback, DBBadWords;
+use Exception, Helpers;
 
 class FeedbackService {
     public function __construct(DBFeedback $dbfeedback, DBBadWords $dbbadwords) {

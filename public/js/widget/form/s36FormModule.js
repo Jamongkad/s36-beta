@@ -130,6 +130,12 @@ var S36Form = new function() {
         return re.test(email); 
     };
 
+    this.validate_url = function(url) {
+        //var re = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+        var re = /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/;
+        return re.test(url)
+    };
+
     this.validate_field = function(value, default_val, type) {
         
 	    if(type == "regular") {   // check if type is only regular
@@ -150,6 +156,17 @@ var S36Form = new function() {
 			}
 		}
         
+        if(type == "website"){ //if type is url
+            if(value !== default_val) { 
+                console.log("String detected");
+                if(!that.validate_url(value)){
+                    console.log("Not a valid Url");
+                    return false;	
+                }		
+            }
+            return true;
+        }
+
         if(type == "phone"){
 			//phone only allows '+',','," " and numeric values 
 			var phone = new RegExp('[+0-9 ,]');
@@ -386,6 +403,7 @@ var S36Form = new function() {
         var email		= $('#your_email');
         var city 		= $('#your_city');
         var country 	= $('#your_country');
+        var website     = $('#your_website');
 
         //validate_field function arguments : element ID, element's user input value, element's default value, type = regular|email|phone|numeric 
         if(!that.validate_field(fname.val(), fname.attr('title'), "regular") ){
@@ -403,6 +421,12 @@ var S36Form = new function() {
         if(!that.validate_field(email.val(), email.attr('title'), "email")){
             email.focus();
             that.add_error('Please Enter A Valid Email');
+            return false;
+        }
+
+        if(!that.validate_field(website.val(), website.attr('title'), "website")){
+            website.focus();
+            that.add_error('Please Enter A Valid URL');
             return false;
         }
 
@@ -461,7 +485,7 @@ var S36Form = new function() {
 		var company		= 	$('#your_company').val();
 		var flag_class  =	that.get_flag(country); 
 		var flag 		=   '<div class="flag-form '+flag_class+'"></div>';
-		var location 	=   '<div class="review-location">'+city+', '+country+'</div>';
+		var my_location =   '<div class="review-location">'+camel_case(city)+', '+camel_case(country)+'</div>';
 		if(!photo){
 			var photo = $('#your_photo').attr('src');
 		}
@@ -489,9 +513,9 @@ var S36Form = new function() {
         $("#next").fadeOut("fast");
         $("#back").fadeOut("fast");
 
-		$('#review-name').html(fname + " " + lname);
-		$('#review-position').html(review_position);
-		$('#review-location').html(location + " " + flag);
+		$('#review-name').html(camel_case(fname + " " + lname));
+		$('#review-position').html(camel_case(review_position));
+		$('#review-location').html(my_location + " " + flag);
 		$('#review-photo').attr('src', photo).load(function() {
             $('#next').fadeIn('fast');
         })
@@ -725,3 +749,20 @@ var S36Form = new function() {
     }; 
 };
 // END OF 36stories Javascript
+//helper functions
+function ucwords(str) {
+    return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+        return $1.toUpperCase();
+    });
+}
+
+function strtolower(str) {
+    return (str+'').toLowerCase();
+}
+
+function camel_case(str) {
+    if(typeof str === "undefined") {
+        return "";
+    } 
+    return ucwords(strtolower(str));
+}

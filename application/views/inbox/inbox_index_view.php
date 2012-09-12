@@ -205,7 +205,7 @@
                                                 </span>
                                             <?endif?>
                                         </h3>
-                                        <p><?=strip_tags($feed->text)?></p>
+                                        <p><?=$feed->text?></p>
                                     </div> 
                                     <div class="feedback-meta">
                                         <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
@@ -219,15 +219,17 @@
                                             </select> 
                                         </span>
                                         <span class="priority-change priority">
-                                            Priority: <span class="priority-target"><?=$feed->priority?></span>
+                                            Priority: <span class="priority-target"><?=ucfirst($feed->priority)?></span>
                                             <select style="display:none" name="priority" feedid="<?=$id?>" feedurl="<?=URL::to('feedback/changepriority')?>">
                                                 <?foreach($priority_obj as $key => $val):?>
-                                                    <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>"><?=$val?></option>
+                                                    <option <?=($feed->priority == $val) ? 'selected' : null?> value="<?=$val?>">
+                                                        <?=ucfirst($val)?>
+                                                    </option>
                                                 <?endforeach?>
                                             </select>
                                         </span>
                                         <span class="modify">
-                                            <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional info')?> 
+                                            <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional Info')?> 
                                         </span>
                                     </div>
                                 </div>

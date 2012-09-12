@@ -5,6 +5,25 @@ $(function() {
         mode : "textareas",
         theme_advanced_font_sizes : "12px,14px,16px,18px,24px"
     });
+
+    $("#date").datepicker({
+        dateFormat: "dd-mm-yy"
+      , defaultDate: '<?=date("d-m-y", $feedback->unix_timestamp)?>'
+      , onSelect: function(dateText, inst) {
+
+            var datetext = dateText;
+            
+            $.ajax({ 
+                type: "POST"     
+              , url: '/feedback/change_feedback_date'
+              , data: {change_date: datetext, feedback_id: <?=$feedback->id?>}
+              , success: function(msg) {
+                    var myStatus = new Status();
+                    myStatus.notify("Changing Submission Date...", 850);
+                }
+            })
+        }
+    });
 })
 </script>
 <? $id = $feedback->id ?>
@@ -46,7 +65,7 @@ $(function() {
                             </span> 
                         </div>
                         <div class="g1of4" style="text-align:right;">
-                             <?=HTML::link('/', 'save feedback', Array('class' => 'save-feedback-text'))?>
+                             <?=HTML::link('/', 'Save feedback', Array('class' => 'save-feedback-text'))?>
                         </div>
                     </div>
                 </div>
@@ -58,6 +77,11 @@ $(function() {
                         <tr><td>DEFAULT DISPLAY RULES:</td><td><?=Form::checkbox('resetIndLock', 1, 
                                                                       ($feedback->indlock ? True : Null))?></td></tr>
                         <!--<tr><td>License:		</td><td>Full license</td>-->
+                        <tr><td>Submission Date (dd-mm-yyyy):</td><td>
+                            <input type="text" name="date_change" 
+                                   value="<?=date("d-m-Y", $feedback->unix_timestamp)?>" 
+                                   class="regular-text datepicker" id="date" /> 
+                        </td>
                     </table>
                 </div>
             </div>                            
@@ -83,7 +107,7 @@ $(function() {
                   <?endforeach?>
                 </ul>
                 <div>
-                    <?=HTML::link('settings', 'manage categories →') ?>
+                    <?=HTML::link('settings', 'Manage categories →') ?>
                 </div>
             </div>
         </div>
@@ -183,7 +207,7 @@ $(function() {
         <div class="g1of3">
                 <table cellpadding="2" class="feedback-data-table user-info">
                  <tr><td colspan="2" class="header">Display Information
-                 </td><td>display?</td></tr>
+                 </td><td>Display?</td></tr>
                  <tr>
                      <td class="title">Name:</td>
                      <td><?=$feedback->firstname?> <?=$feedback->lastname?></td>

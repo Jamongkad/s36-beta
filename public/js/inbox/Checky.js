@@ -68,7 +68,7 @@ Checky.prototype.init = function() {
                             };
 
                             //console.log(window.location.pathname.match(/published|contacts/g)); 
-                            if(my_ratings != 'POOR' && my_perm == 1) { 
+                            if(my_ratings != 'POOR' && (my_perm == 1 || my_perm == 2)) { 
                                 //console.log("all can pass");
                                 process_feedbacks(collection, data, feed_unit); 
                             } 
@@ -80,34 +80,70 @@ Checky.prototype.init = function() {
 
                             if((my_ratings != 'POOR' && my_perm == 3/*(my_perm == 2 || my_perm == 3)*/) && (mode == 'delete' || mode == 'restore' || mode == 'remove')) {
                                 //console.log("private and limited feeds cannot pass");
-
                                 process_feedbacks(collection, data, feed_unit); 
                             }
+
                             exam_collection.push(data);
                         } 
                     }
                 });    
-
+                /*
                 var limited_perm_feeds = exam_collection.filter(function(el) {
-                    return el.perm == 3 && (el.mode == 'publish' || el.mode == 'feature');
+                    return (el.perm == 3 || el.perm == 2) && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
                 var poor_feeds = exam_collection.filter(function(el) {
                     return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
-                if(limited_perm_feeds.length > 0) {
-                    confirm("Warning: There is feedback that has been set as private and will not be processed.");
+                console.log(limited_perm_feeds);  
+                console.log(poor_feeds);
+                */
+
+                var restricted_feeds = exam_collection.filter(function(el) {
+                    return (el.perm == 3 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
+                });
+
+                /*
+                if(limited_perm_feeds.length > 0 && poor_feeds.length == 0) {  
+                    if(limited_perm_feeds.length == 1) {
+                        confirm("Warning: This feedback has been marked as private/limited and will not be processed.");    
+                    } else { 
+                        confirm("Warning: There are feedback that has been marked as private/limited and will not be processed.");    
+                    }    
                 }
 
-                if(poor_feeds.length > 0) {
-                    confirm("Warning: There is feedback that has been rated as poor and will not be processed.");
+                if(poor_feeds.length > 0 && limited_perm_feeds.length == 0) { 
+                    if(poor_feeds.length == 1) { 
+                        confirm("Warning: This feedback has been rated as poor and will not be processed.");     
+                    } else {
+                        confirm("Warning: There is feedback that has been rated as poor and will not be processed.");     
+                    } 
                 }
 
-       
+                if(limited_perm_feeds.length > 0 && poor_feeds.length > 0) {   
+                    confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
+                }
+                */
+                if(restricted_feeds.length > 0) { 
+                    if(restricted_feeds.length == 1) {
+                        confirm("Warning: There is feedback that has been marked as private/limited or poor and will not be processed.");         
+                    } else { 
+                        confirm("Warning: There are feedback that have been marked as private/limited or poor and will not be processed.");     
+                    }
+                    
+                    $.each(restricted_feeds, function(index, value) {
+                        $("#" + value.feedid).animate({
+                           backgroundColor: '#ff6666'
+                        }, 800, function() {
+                            $(this).animate({
+                                backgroundColor: '#fff'
+                            }, 800);
+                        })
+                    });
+                }
+
                 $("option:first", this).prop("selected", true);
-                var hideLink = " <a href='#' class='hide-checkybar'>Close</a>";
-                
                 if(collection.length > 0) { 
                     $.ajax({
                         type: "POST"      

@@ -1,13 +1,14 @@
 <?php namespace Contact\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
+use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB;
 use ZebraPagination\ZebraPagination;
 use Feedback\Entities\ContactDetails;
 
 class DBContact extends S36DataObject {
 
     public function insert_new_contact($opts) {
-        return DB::table('Contact', 'master')->insert_get_id($opts);
+        if($opts)
+            return DB::table('Contact', 'master')->insert_get_id($opts);
     }
 
     public function count_total_contacts() { 
@@ -83,7 +84,7 @@ class DBContact extends S36DataObject {
               , Contact.firstname
               , Contact.lastname
               , Contact.avatar
-              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.feedbackId DESC SEPARATOR '|') AS feedbackIds
+              , GROUP_CONCAT(Feedback.feedbackId ORDER BY Feedback.dtAdded DESC SEPARATOR '|') AS feedbackIds
               , COUNT(Feedback.feedbackId) AS feedbackIdCount
             FROM 
                 Contact
@@ -102,7 +103,7 @@ class DBContact extends S36DataObject {
             WHERE 1=1
                 AND Company.companyId = :company_id
             GROUP BY
-                Contact.email
+                Contact.email, Contact.firstName, Contact.lastName
             ORDER BY 
                 Contact.contactId DESC
             LIMIT :offset, :limit

@@ -70,7 +70,7 @@ div{
 .formTitle h2{color:#bbbdbf;text-shadow:#FFF 0px 1px;font-size:22px;padding:0px;margin:0px;}
 
 .theAvatar{
-	border:1px solid #AAA;
+	/*border:1px solid #AAA;*/
 	width:150px;
 	float:left;
     text-align:center;

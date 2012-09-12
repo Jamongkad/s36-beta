@@ -105,7 +105,6 @@ return array(
         $data = Input::get();
         $rules = Array(
             'first_name' => 'required'
-          , 'last_name' => 'required'
           , 'email' => 'email'
           , 'feedback' => 'required'
           , 'city' => 'required'
@@ -122,13 +121,7 @@ return array(
               , 'input' => $data
             ));
         } else {
-            $addfeedback = new Feedback\Services\SubmissionService(
-                               new ContactDetails
-                             , new FeedbackDetails
-                             , new DBDashboard
-                             , new HalcyonicService
-                            );  
-
+            $addfeedback = new Feedback\Services\SubmissionService(Input::get());
             $addfeedback->perform(); 
             return Redirect::to('inbox/all');  
         }
@@ -195,6 +188,14 @@ return array(
 
         $fire = new Feedback\Services\FireMultiple($feedback, $feed_ids, $mode);
         return $fire->execute();
+    },
+
+    'POST /feedback/change_feedback_date' => function() use ($feedback) {
+        $date = date("Y-m-d H:i:s", strtotime(Input::get('change_date')));
+        $affected = DB::table('Feedback', 'master')
+            ->where('feedbackId', '=', Input::get('feedback_id'))
+            ->update(Array('dtAdded' => $date));
+        return $affected;
     },
     
     'GET /feedback/deletefeedback/(:num)' => function($id) use ($feedback) {
