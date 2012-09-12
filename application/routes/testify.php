@@ -38,10 +38,10 @@ return array(
         $tf = new Testify("API Bug Fix");
         $user = new DBUser;
 
-        $user = new StdClass;
-        $user->name = 'mathew-staging';
-        $user->company_id = 6;
-        Helpers::dump($user->pull_users($user_obj));
+        $obj = new StdClass;
+        $obj->name = 'mathew-staging';
+        $obj->company_id = 6;
+        Helpers::dump($user->pull_users($obj));
 
         $tf->run();
     }
