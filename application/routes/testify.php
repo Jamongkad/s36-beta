@@ -33,7 +33,8 @@ return array(
         //TODO: 09-13-2012 this feature will be temporarily closed off until further notice.
 
         $tf->run();
-    }
+    },
+
     'GET /testify/api' => function() { 
         $tf = new Testify("API Bug Fix");
         $tf->run();
