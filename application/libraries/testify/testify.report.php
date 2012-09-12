@@ -159,7 +159,7 @@
         		transition:0.25s;
         	}
 
-        	div.dump{
+        	div.dump {
         		font-size:11px;
         		color:#444;
         		
@@ -169,7 +169,11 @@
         	}
 
             div.dump pre {
-                word-wrap: break-word;     
+                white-space: pre-wrap;       /* css-3 */
+                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                white-space: -pre-wrap;      /* Opera 4-6 */
+                white-space: -o-pre-wrap;    /* Opera 7 */
+                word-wrap: break-word;  
             }
         	
         	li:hover div.source{
