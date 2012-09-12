@@ -245,7 +245,7 @@ class Testify{
 	 */
 
     public function dump($arg){
-        return $this->data_dump = $arg;
+        $this->data_dump = $arg;
     }
 	
 	/**
@@ -258,6 +258,7 @@ class Testify{
 		$title = $this->suiteTitle;
 		$suiteResults = $this->suiteResults;
 		$cases = $this->stack;
+        $data = $this->data_dump;
 		
 		include dirname(__FILE__).'/testify.report.php';
 		
@@ -291,8 +292,7 @@ class Testify{
 			"result"	=> $result,
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
-			"source"	=> $source,
-            "data"      => $this->data_dump 
+			"source"	=> $source 
 		);
 		
 		$this->stack[$this->currentTestCase][$result]++;
