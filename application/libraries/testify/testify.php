@@ -290,6 +290,7 @@ class Testify{
 
         if($dump_data) {
             $result = "pass";     
+            $this->data_dump = $pass;
         }
 
 		$this->stack[$this->currentTestCase]['tests'][] = array(
@@ -297,7 +298,8 @@ class Testify{
 			"result"	=> $result,
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
-			"source"	=> $source 
+			"source"	=> $source, 
+            "data"      => $this->dump_data 
 		);
 	    
 		$this->stack[$this->currentTestCase][$result]++;
