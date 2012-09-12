@@ -289,7 +289,7 @@ class Testify{
 		$result = $pass ? "pass" : "fail";
 
         if($dump_data) {
-            $result = $pass;     
+            $result = "pass";     
         }
 
 		$this->stack[$this->currentTestCase]['tests'][] = array(
@@ -302,10 +302,6 @@ class Testify{
 	    
 		$this->stack[$this->currentTestCase][$result]++;
 		$this->suiteResults[$result]++;
-
-        echo "<pre>";
-        print_r($this->stack);
-        echo "</pre>";
 		
 		return $pass;
 	}
