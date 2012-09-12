@@ -55,11 +55,9 @@ return array(
         });
 
         //Clean up at aisle Activity!!
-        /*
         $tf->afterEach(function($tf) {
             $tf->data->fba->delete_activity();
         });
-        */
 
         $tf->run();
     }
