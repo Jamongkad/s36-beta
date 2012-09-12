@@ -65,8 +65,6 @@ return array(
             $tf->assertFalse($t);
             $tf->assertEqual($t, False);
         });
-
-        //$activity_check = $fba->log_activity();
         $tf->run();
     }
 );
