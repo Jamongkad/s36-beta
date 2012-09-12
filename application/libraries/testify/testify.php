@@ -251,8 +251,7 @@ class Testify{
 	 * 
 	 */
 
-    public function dump($arg){
-        //$this->data_dump = $arg;
+    public function dump($arg){ 
         return $this->recordTest($arg, True);
     }
 	
@@ -305,7 +304,7 @@ class Testify{
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
 			"source"	=> $source, 
-            "data"      => $pass
+            "data"      => ($dump_data) ? $pass : NULL
 		);
 	    
 		$this->stack[$this->currentTestCase][$result]++;
