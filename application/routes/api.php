@@ -116,12 +116,11 @@ return array(
         $params = explode("|", $decrypt_string); 
         */
         $key = Config::get('application.key');
-
-        Helpers::dump(Input::get());
-        /* TODO remove s36authentication. Encryption procedure is too buggy.
-        //decrypt string use username and password to authenticate into application. 
-        if($key != null && S36Auth::login($params[0], $params[1])) {  
-
+        $feedback_id = Input::get('fid');
+        $company_id = Input::get('cid');
+        $user_id = Input::get('uid');
+        /*
+        if($key != null) {  
             $user = new DBUser; 
             $status = 'publish'; 
             //publish feedback this bitch
@@ -131,7 +130,7 @@ return array(
 
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
-                $publisher = Array('name' => $username, 'company_id' => $company_id, 'email' => $email);//S36Auth::user();
+                $publisher = Array('name' => $username, 'company_id' => $company_id, 'email' => $email);
                 
                 //Record action on activity log
                 //$fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
@@ -149,9 +148,6 @@ return array(
                     $emailservice->send_email(); 
                 }
 
-                //After publishing feedback logout...
-                //S36Auth::logout();
-
                 $contact = DB::Table('Contact', 'master')
                               ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
                               ->where('Feedback.feedbackId', '=', $feedback_id)
@@ -160,7 +156,6 @@ return array(
                 $hostname = Config::get('application.hostname');
 
                 //fireoff redirect somewhere here...
-
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                     'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
@@ -168,7 +163,6 @@ return array(
                   , 'hostname' => $hostname
                 ));       
             } else {
-                //S36Auth::logout();
                 throw new Exception("Feedback $feedback_id was not published!");
             }
         } else {
