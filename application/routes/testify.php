@@ -55,19 +55,21 @@ return array(
         $tf->test('Testing Log Activity', function($tf) { 
             $t = $tf->data->fba->log_activity();
             $tf->assert($t);
+
+            $status = $tf->data->fba->check_activity_status();
+            $tf->dump($status);
         });
 
         $tf->test('After Testing Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
-            $tf->dump($t);
             $tf->assert($t);
-            $tf->assertFalse($t);
-            $tf->assertEqual($t, False);
         });
-
+        /* 
+        //Clean up at aisle Activity!!
         $tf->afterEach(function($tf) {
             $tf->data->fba->delete_activity();
         });
+        */
 
         $tf->run();
     }
