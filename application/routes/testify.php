@@ -39,7 +39,7 @@ return array(
         $user = new DBUser;
 
         $obj = new StdClass;
-        $obj->name = 'mathew-staging';
+        $obj->username = 'mathew-staging';
         $obj->company_id = 6;
         Helpers::dump($user->pull_users($obj));
 
