@@ -44,7 +44,10 @@ return array(
         $obj->company_id = 14;
         $me = $user->pull_user($obj);
 
-        $decrypt_string = $encrypt->decrypt( $me->encryptstring );
+        $d = '0dfKD8nNuh4ah4IElUDoprSkSuCBNwi8XUDeBooCqc4';
+
+        $decrypt_string = $encrypt->decrypt( $d );
+
 
         $tf->assertEqual($me->username, 'Aryann');
         Helpers::dump($decrypt_string);
