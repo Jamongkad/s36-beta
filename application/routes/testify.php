@@ -74,8 +74,8 @@ return array(
             $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array('feedid' => $feedback_id), $company_id);
         });
 
-        $tf->test('Feedback State Test', function($tf) {
-            $tf->dump($tf->data->feedstate->feedback_state_obj());
+        $tf->test('Feedback State Test', function($tf) { 
+            $tf->assert($tf->data->feedstate->change_state());
         });
         
         /*
