@@ -105,7 +105,7 @@ return array(
     }), 
 
     //TODO: REFACTOR THIS BITCH
-    'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
+    'GET /api/publish' => Array('do' => function() use ($feedback) { 
 
         $encrypt = new Encryption\Encryption;
         $string_params = Input::get('params');
