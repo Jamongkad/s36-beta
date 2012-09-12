@@ -14,9 +14,11 @@ class NewFeedbackSubmission extends EmailFixture {
         foreach($this->address as $address) {
 
             $login_url = Helpers::make_forward_url($address->companyid, '/feedback/modifyfeedback/'.$this->feedback_data->id);
+
             $email_html = View::make('email/new_feedback_submission_view', Array(
                   'feedback_data' => $this->feedback_data
                 , 'address' => $address->email
+                , 'usercreds' => rawurlencode($address->username.'|'.$address->email)
                 , 'encryptstring' => $address->encryptstring
                 , 'companyid' => $address->companyid
                 , 'login_url' => $login_url
