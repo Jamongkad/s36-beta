@@ -63,6 +63,7 @@ return array(
             $t = $tf->data->fba->check_activity_status();
             $tf->dump($t);
             $tf->assert($t);
+            $tf->assertFalse($t);
         });
 
         //$activity_check = $fba->log_activity();
