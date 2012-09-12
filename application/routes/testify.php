@@ -1,28 +1,6 @@
 <?php
 
 return array(
-    'GET /testify' => function() { 
-        $tf = new Testify("Mathew Test");
-        $tf->beforeEach(function($tf) {
-            $tf->data->calc = 3;  
-        });
-        
-        $tf->test("Testing the add method", function($tf) {
-            $num = $tf->data->calc;     
-            $tf->assert($num);
-            $tf->assert(True);
-            $tf->assert(True);
-        });
-
-        $tf->test("Testing enequality", function($tf) {
-            $num = $tf->data->calc;     
-            $tf->assertEqual($num, 1);
-            $tf->assertEqual($num, 3);
-        });
-
-        $tf->run();
-    }, 
-
     'GET /testify/contact' => function() { 
         $tf = new Testify("Contact Module Refactor");
         //requirements for contact key first:lastname:email:city:country
@@ -47,12 +25,12 @@ return array(
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
         });
         
-        $tf->test('Before Activity Status', function($tf) {
+        $tf->test('Before logging in activity', function($tf) {
             $t = $tf->data->fba->check_activity_status();
             $tf->assertFalse($t);
         });
 
-        $tf->test('Testing Log Activity', function($tf) { 
+        $tf->test('Logging in activity', function($tf) { 
             $t = $tf->data->fba->log_activity();
             $tf->assert($t);
 
@@ -63,7 +41,7 @@ return array(
             $tf->dump($status);
         });
 
-        $tf->test('After Activity Status', function($tf) {
+        $tf->test('After logging in activity with database cleanup', function($tf) {
             $t = $tf->data->fba->check_activity_status();
             $tf->assertFalse($t);
         });
