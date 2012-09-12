@@ -289,7 +289,6 @@ class Testify{
 		$result = $pass ? "pass" : "fail";
 
         if($dump_data) {
-            print_r($pass);
             $result = "pass";     
             $this->data_dump = $pass;
         }
