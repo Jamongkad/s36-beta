@@ -47,8 +47,12 @@ return array(
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
         });
 
+        $tf->test('Testing Log Activity', function($tf) { 
+            $t = $tf->data->fba->log_activity();
+            $tf->assert($t);
+        });
+
         $tf->test('Testing Activity Status', function($tf) {
-            $tf->data->fba->log_activity();
             $t = $tf->data->fba->check_activity_status();
             $tf->assert($t);
         });
