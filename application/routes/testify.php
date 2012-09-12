@@ -37,13 +37,17 @@ return array(
     'GET /testify/api' => function() { 
         $tf = new Testify("API Bug Fix");
         $user = new DBUser;
+        $encrypt = new Encryption\Encryption;
 
         $obj = new StdClass;
         $obj->username = 'jamongkad';
         $obj->company_id = 6;
-        $mathew = $user->pull_user($obj);
+        $me = $user->pull_user($obj);
 
-        $tf->assertEqual($mathew->username, 'jamongkad');
+        //$decrypt_string = $encrypt->decrypt($string_params);
+
+        $tf->assertEqual($me->username, 'jamongkad');
+        Helpers::dump($me);
         $tf->run();
     }
 );
