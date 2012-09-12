@@ -112,11 +112,11 @@ return array(
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
 
-        $decrypt_string = $encrypt->decrypt(rawurldecode($string_params));
+        $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
 
-        Helpers::dump($decrypt_string);
+        Helpers::dump(rawurldecode($string_params));
         /*
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
