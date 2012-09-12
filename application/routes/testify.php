@@ -40,13 +40,13 @@ return array(
         $encrypt = new Encryption\Encryption;
 
         $obj = new StdClass;
-        $obj->username = 'jamongkad';
-        $obj->company_id = 6;
+        $obj->username = 'ryan';
+        $obj->company_id = 1;
         $me = $user->pull_user($obj);
 
         $decrypt_string = $encrypt->decrypt( $me->encryptstring );
 
-        $tf->assertEqual($me->username, 'jamongkad');
+        $tf->assertEqual($me->username, 'ryan');
         Helpers::dump($decrypt_string);
         $tf->run();
     }
