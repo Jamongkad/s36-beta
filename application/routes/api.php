@@ -108,7 +108,7 @@ return array(
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
 
         $encrypt = new Encryption\Encryption;
-        $string_params  = Input::get('params');
+        $string_params = Input::get('params');
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
 
@@ -130,16 +130,17 @@ return array(
 
             if($publish_success)  { 
                 //since we're already logged in...we just need one property here...the publisher's email
-                $publisher = S36Auth::user();
+                $publisher = Array('name' => $username, 'company_id' => $company_id, 'email' => $email);//S36Auth::user();
                 
                 //Record action on activity log
-                $fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
+                //$fba = new Feedback\Services\FeedbackActivity($publisher->userid, $feedback_id, $status);
+                $fba = new Feedback\Services\FeedbackActivity($publisher, $feedback_id, $status);
                 $activity_check = $fba->log_activity();
                 
                 //if no record of activity
                 if(!is_object($activity_check)) { 
                     $published_data = new Email\Entities\PublishedFeedbackData;
-                    $published_data->set_publisher_email($publisher->email)
+                    $published_data->set_publisher_email($email)
                                    ->set_feedback($feedback->pull_feedback_by_id($feedback_id))
                                    ->set_sendtoaddresses($user->pull_user_emails_by_company_id($company_id));
                 
@@ -148,7 +149,7 @@ return array(
                 }
 
                 //After publishing feedback logout...
-                S36Auth::logout();
+                //S36Auth::logout();
 
                 $contact = DB::Table('Contact', 'master')
                               ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
@@ -157,6 +158,8 @@ return array(
 
                 $hostname = Config::get('application.hostname');
 
+                //fireoff redirect somewhere here...
+
                 return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                     'company' => DB::Table('Company', 'master')->where('companyId', '=', $company_id)->first(array('name'))
                   , 'contact_name' => $contact->firstname
@@ -164,7 +167,7 @@ return array(
                   , 'hostname' => $hostname
                 ));       
             } else {
-                S36Auth::logout();
+                //S36Auth::logout();
                 throw new Exception("Feedback $feedback_id was not published!");
             }
         } else {
