@@ -302,8 +302,9 @@ class Testify{
 	    
 		$this->stack[$this->currentTestCase][$result]++;
 		$this->suiteResults[$result]++;
-
+        echo "<pre>";
         print_r($this->stack);
+        echo "</pre>";
 		
 		return $pass;
 	}
