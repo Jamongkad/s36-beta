@@ -42,10 +42,10 @@ class Determiner {
 
        if($this->http_host == 'mathew-staging.gearfish.com') {      
            $obj->db   = Array(
-               'host' => 'localhost'
+               'host' => '173.255.254.8'//'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
-             , 'db' => 's36_mathew'
+             , 'db' => 's36'//'s36_mathew'
            );
 
            $obj->env_name = 'dev';

@@ -116,7 +116,7 @@ return array(
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
 
-        Helpers::dump($string_params);
+        Helpers::dump($decrypt_string);
         /* TODO remove s36authentication. Encryption procedure is too buggy.
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  

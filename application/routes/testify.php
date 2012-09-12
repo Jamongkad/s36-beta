@@ -41,7 +41,7 @@ return array(
 
         $obj = new StdClass;
         $obj->username = 'ryan';
-        $obj->company_id = 1;
+        $obj->company_id = 4;
         $me = $user->pull_user($obj);
 
         $decrypt_string = $encrypt->decrypt( $me->encryptstring );
