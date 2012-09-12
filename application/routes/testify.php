@@ -21,5 +21,12 @@ return array(
         });
 
         $tf->run();
+    }, 
+
+    'GET /testify/contact' => function() { 
+        $tf = new Testify("Contact Bug Fix");
+        //requirements for contact aggregation is first:lastname:email:city:country
+
+        $tf->run();
     }
 );
