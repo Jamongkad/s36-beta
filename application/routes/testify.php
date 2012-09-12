@@ -47,29 +47,31 @@ return array(
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
         });
         
-        $tf->test('Before Testing Activity Status', function($tf) {
+        $tf->test('Before Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
-            $tf->assert($t);
+            $tf->assertFalse($t);
         });
 
         $tf->test('Testing Log Activity', function($tf) { 
             $t = $tf->data->fba->log_activity();
             $tf->assert($t);
 
+            $act = $tf->data->fba->check_activity_status();
+            $tf->assert($act);
+
             $status = $tf->data->fba->check_activity_status();
             $tf->dump($status);
         });
 
-        $tf->test('After Testing Activity Status', function($tf) {
+        $tf->test('After Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
-            $tf->assert($t);
+            $tf->assertFalse($t);
         });
 
         //Clean up at aisle Activity!!
         $tf->afterEach(function($tf) {
             $tf->data->fba->delete_activity();
         });
-
 
         $tf->run();
     }
