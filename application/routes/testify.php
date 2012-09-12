@@ -39,11 +39,11 @@ return array(
         $user = new DBUser;
 
         $obj = new StdClass;
-        $obj->username = 'mathew-staging';
+        $obj->username = 'jamongkad';
         $obj->company_id = 6;
         $mathew = $user->pull_user($obj);
 
-        $tf->assertEqual($mathew, new StdClass);
+        $tf->assertEqual($mathew->username, 'jamongkad');
         $tf->run();
     }
 );
