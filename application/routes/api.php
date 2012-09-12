@@ -106,7 +106,7 @@ return array(
 
     //TODO: REFACTOR THIS BITCH
     'GET /api/publish' => Array('do' => function() use ($feedback) { 
-
+        /*
         $encrypt = new Encryption\Encryption;
         $string_params = Input::get('params');
         $feedback_id = Input::get('feedback_id');
@@ -114,9 +114,10 @@ return array(
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
+        */
         $key = Config::get('application.key');
 
-        Helpers::dump($string_params);
+        Helpers::dump(Input::get());
         /* TODO remove s36authentication. Encryption procedure is too buggy.
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
