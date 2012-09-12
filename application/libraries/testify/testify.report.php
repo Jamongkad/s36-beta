@@ -216,7 +216,7 @@
 								<span class="line">line <?php echo $test['line']?></span>
 								<span class="file"><?php echo $test['file']?></span>
 								<div class="source"><?php echo htmlspecialchars($test['source'])?></div>
-								<div class="dump"><?php print_r($test['data'])?></div>
+								<div class="dump"><pre><?php print_r($test['data'])?></pre></div>
 							</li>
 							
 						<?php } ?>

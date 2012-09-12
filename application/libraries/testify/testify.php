@@ -10,7 +10,15 @@
  * @link		http://tutorialzine.com/testify/
  * @throws		TestifyException
  * @license		GPL
+ *
+ *
+ * @version     0.4
+ * @author      Mathew Wong
+ * @license     GPL
+ *   
  */
+
+
 
 use Exception, StdClass;
 
@@ -27,7 +35,6 @@ class Testify{
 	private $after = NULL;
 	private $beforeEach = NULL;
 	private $afterEach = NULL;
-    private $data_dump = NULL;
 	
 	/**
 	 * A public object for storing state and other variables across test cases and method calls.
@@ -290,7 +297,6 @@ class Testify{
 
         if($dump_data) {
             $result = "pass";     
-            $this->data_dump = $pass;
         }
 
 		$this->stack[$this->currentTestCase]['tests'][] = array(
