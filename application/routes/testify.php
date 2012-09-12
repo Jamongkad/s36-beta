@@ -36,6 +36,13 @@ return array(
 
     'GET /testify/api' => function() { 
         $tf = new Testify("API Bug Fix");
+        $user = new DBUser;
+
+        $user = new StdClass;
+        $user->name = 'mathew-staging';
+        $user->company_id = 6;
+        Helpers::dump($user->pull_users($user_obj));
+
         $tf->run();
     }
 );
