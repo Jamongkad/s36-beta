@@ -237,6 +237,17 @@ class Testify{
 		// This check fails every time
 		return $this->recordTest(false);
 	}
+
+	/**
+	 * Dump Data
+	 * 
+	 */
+
+    public function dump($arg){
+        echo "<pre>";
+        print_r($arg);
+        echo "</pre>"; 
+    }
 	
 	/**
 	 * Generates a pretty HTML5 report of the test suite status. Called implicitly by {@see run}
