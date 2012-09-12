@@ -210,7 +210,7 @@
 					<ul class="tests">
 						<?php
 						foreach ($case['tests'] as $test){ ?>
-						    <?if($test['data']):?>
+							
 							<li>
 								<span class="type <?php echo $test['result']?>"><?php echo $test['type']?>()</span>
 								<span class="line">line <?php echo $test['line']?></span>
@@ -218,7 +218,7 @@
 								<div class="source"><?php echo htmlspecialchars($test['source'])?></div>
 								<div class="dump"><pre><?php print_r($test['data'])?></pre></div>
 							</li>
-                            <?endif?>	
+							
 						<?php } ?>
 					
 					</ul>
