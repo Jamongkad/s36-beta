@@ -299,7 +299,7 @@ class Testify{
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
 			"source"	=> $source, 
-            "data"      => $this->dump_data 
+            "data"      => $this->data_dump 
 		);
 	    
 		$this->stack[$this->currentTestCase][$result]++;
