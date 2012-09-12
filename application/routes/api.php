@@ -111,13 +111,15 @@ return array(
         $string_params  = Input::get('params');
         $feedback_id = Input::get('feedback_id');
         $company_id  = Input::get('company_id');
+        
+        $string_params = urldecode($string_params);
 
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         $key = Config::get('application.key');
 
-        Helpers::dump(urldecode($string_params));
-
+        Helpers::dump($params);
+        /*
         //decrypt string use username and password to authenticate into application. 
         if($key != null && S36Auth::login($params[0], $params[1])) {  
 
@@ -170,7 +172,7 @@ return array(
         } else {
             print_r("Something went wrong");
         }
-
+        */
     }),
 
     'GET /api/create_user' => Array('do' => function() {     
