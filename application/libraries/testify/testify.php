@@ -299,9 +299,11 @@ class Testify{
 			"file"		=> $bt[1]['file'],
 			"source"	=> $source 
 		);
-		
+	    
 		$this->stack[$this->currentTestCase][$result]++;
 		$this->suiteResults[$result]++;
+
+        print_r($this->stack);
 		
 		return $pass;
 	}
