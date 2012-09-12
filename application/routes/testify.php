@@ -24,8 +24,12 @@ return array(
     }, 
 
     'GET /testify/contact' => function() { 
-        $tf = new Testify("Contact Bug Fix");
-        //requirements for contact aggregation is first:lastname:email:city:country
+        $tf = new Testify("Contact Module Refactor");
+        //requirements for contact key first:lastname:email:city:country
+        //use redis hash to pull out records of a company's contacts
+        //increment by 1 if contact key exists, create new one if not
+        //create single contact identity for CRUD operations
+        //aggregate feedback under contact identity
 
         $tf->run();
     }
