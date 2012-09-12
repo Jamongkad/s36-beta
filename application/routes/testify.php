@@ -46,7 +46,7 @@ return array(
             $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
         });
-        
+        /* 
         $tf->test('Before Testing Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
             $tf->assert($t);
@@ -56,7 +56,7 @@ return array(
             $t = $tf->data->fba->log_activity();
             $tf->assert($t);
         });
-
+        */
 
         $tf->test('After Testing Activity Status', function($tf) {
             $t = $tf->data->fba->check_activity_status();
