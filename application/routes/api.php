@@ -115,10 +115,11 @@ return array(
         $decrypt_string = $encrypt->decrypt($string_params);
         $params = explode("|", $decrypt_string); 
         */
-        $key = Config::get('application.key');
+        //$key = Config::get('application.key');
         $feedback_id = Input::get('fid');
         $company_id = Input::get('cid');
         $user_id = Input::get('uid');
+
         /*
         if($key != null) {  
             $user = new DBUser; 

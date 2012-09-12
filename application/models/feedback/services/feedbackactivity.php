@@ -24,6 +24,8 @@ class FeedbackActivity {
                         ->where('FeedbackActivity.feedbackId', '=', $this->feedback_id)
                         ->where('FeedbackActivity.feedbackStatus', '=', $this->status)
                         ->first();
+
+        //if(is_object($db_check)) 
         return $db_check;
     }
 

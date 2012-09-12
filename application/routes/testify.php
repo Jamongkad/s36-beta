@@ -36,6 +36,24 @@ return array(
 
     'GET /testify/api' => function() { 
         $tf = new Testify("API Bug Fix");
+         
+        $feedback_id = 522; 
+        $company_id = 6;
+        $user_id    = 15;
+        $status = 'publish';
+
+        $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id, $status) {
+            $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
+            $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id); 
+        });
+
+        $tf->test('Activity Status', function($tf) {
+            $t = $tf->data->fba->check_activity_status();
+            Helpers::dump($t);
+        });
+
+        //$activity_check = $fba->log_activity();
+
 
         $tf->run();
     }
