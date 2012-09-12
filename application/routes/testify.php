@@ -71,11 +71,19 @@ return array(
 
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
             $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
+            $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array('feedid' => $feedback_id), $company_id);
         });
 
-        $tf->test('Test Publish', function($tf) {
-            $tf->dump($tf->data->pub);
+        $tf->test('Feedback State Test', function($tf) {
+            $tf->dump($tf->data->feedstate);
         });
+        
+        /*
+        $tf->test('Test Publish', function($tf) {
+            $t = $tf->data->pub->perform();
+            $tf->assert();   
+        });
+        */
 
         $tf->run(); 
     }
