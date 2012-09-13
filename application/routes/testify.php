@@ -102,6 +102,12 @@ return array(
             $tf->assert($tf->data->pub->perform());
         });
 
+        //cleanup return feedback to inbox
+        $tf->afterEach(function($tf) use ($feedback_id, $company_id) {
+            $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
+            $tf->data->feedstate->change_state();
+        });
+
         $tf->run(); 
     },
 
