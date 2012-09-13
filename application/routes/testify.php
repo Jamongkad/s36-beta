@@ -75,8 +75,12 @@ return array(
         });
 
         $tf->test('Feedback State Test', function($tf) {
-            $tf->dump($tf->data->feedstate->feedback_state_obj());
             $tf->dump($tf->data->feedstate->change_state());
+        });
+
+        $tf->afterEach(function($tf) {
+            $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
+            $tf->data->feedstate->change_state();
         });
         
         /*
