@@ -8,8 +8,10 @@ class PublishedFeedback extends EmailFixture {
     public function gather($email_data) {
         $this->address = $email_data->get_addresses();
         $this->feedback_data = $email_data->get_feedback();
+        /*
         $this->publisher_email = DB::Table('User', 'master')->where('email', '=', $email_data->get_publisher_email())
                                                             ->first(Array('username'));
+        */
     }
 
     public function send() {
