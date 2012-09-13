@@ -68,9 +68,7 @@ return array(
         $user_id    = 15;
 
         $tf = new Testify("Feedback Publish Tests");
-
-        $tf->beforeEach(function($tf) use ($feedback_id, $company_id) { 
-            //$tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
+        $tf->beforeEach(function($tf) use ($feedback_id, $company_id) {  
             $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array(Array('feedid' => $feedback_id)), $company_id);
         });
 
@@ -81,14 +79,29 @@ return array(
             $tf->assertEqual($state[0]->ispublished, 1);
         });
         
-        //return feedback to inbox
+        //cleanup return feedback to inbox
         $tf->afterEach(function($tf) use ($feedback_id, $company_id) {
             $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
             $tf->data->feedstate->change_state();
         });
         
         $tf->run(); 
-    }
+    }, 
+
+    'GET /testify/publishservice' => function() { 
+        $feedback_id = 522; 
+        $company_id = 6;
+        $user_id    = 15;
+
+        $tf = new Testify("Feedback Publish Service Tests");
+        $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) {
+            $tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);              
+        });
+       
+        $tf->test('Service Test', function($tf) {
+            $tf->data->pub->perform();
+        });
+    },
 
 
 );
