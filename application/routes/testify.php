@@ -92,6 +92,7 @@ return array(
         $feedback_id = 522; 
         $company_id = 6;
         $user_id    = 15;
+        $status = 'publish';
 
         $tf = new Testify("Feedback Publish Service Tests");
         $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) {
@@ -103,9 +104,14 @@ return array(
         });
 
         //cleanup return feedback to inbox
-        $tf->afterEach(function($tf) use ($feedback_id, $company_id) {
+        $tf->afterEach(function($tf) use ($feedback_id, $company_id, $user_id, $status) {
+            /*
             $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
             $tf->data->feedstate->change_state();
+        
+            $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
+            $tf->data->fba->delete_activity();
+            */
         });
 
         $tf->run(); 
