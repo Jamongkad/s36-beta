@@ -101,6 +101,8 @@ return array(
         $tf->test('Service Test', function($tf) {
             $tf->data->pub->perform();
         });
+
+        $tf->run(); 
     },
 
 
