@@ -76,7 +76,9 @@ return array(
 
         $tf->test('Feedback State Test', function($tf) {
             $tf->assert($tf->data->feedstate->change_state());
-            $tf->dump($tf->data->feedstate->status());
+
+            $state = $tf->data->feedstate->status();
+            $tf->assertEqual($state[0]->ispublished, 1);
         });
         
         //return feedback to inbox
