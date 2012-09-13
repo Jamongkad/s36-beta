@@ -511,6 +511,7 @@ class DBFeedback extends S36DataObject {
         $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
         $sth = $this->dbh->prepare($sql); 
         foreach($feedbackstate->block_id as $k => $id) {
+            print_r($id['feedid']);
             $sth->bindValue(($k+1), $id['feedid']);
         }
         return $sth->execute();       
