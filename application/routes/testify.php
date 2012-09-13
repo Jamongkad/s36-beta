@@ -69,7 +69,7 @@ return array(
 
         $tf = new Testify("Feedback Publish Tests");
 
-        $tf->beforeEach(function($tf) use ($feedback_id, $company_id, $user_id) { 
+        $tf->beforeEach(function($tf) use ($feedback_id, $company_id) { 
             //$tf->data->pub = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);     
             $tf->data->feedstate = new Feedback\Services\FeedbackState('publish', Array(Array('feedid' => $feedback_id)), $company_id);
         });
@@ -78,7 +78,7 @@ return array(
             $tf->dump($tf->data->feedstate->change_state());
         });
 
-        $tf->afterEach(function($tf) {
+        $tf->afterEach(function($tf) use ($feedback_id, $company_id) {
             $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
             $tf->data->feedstate->change_state();
         });
