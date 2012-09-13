@@ -75,7 +75,7 @@ return array(
         });
 
         $tf->test('Feedback State Test', function($tf) {
-            $tf->dump($tf->data->feedstate->change_state());
+            $tf->assert($tf->data->feedstate->change_state());
             $tf->dump($tf->data->feedstate->status());
         });
         
