@@ -1,11 +1,12 @@
 				<?php
-				if(isset($_GET['debug'])) { Helpers::show_data($planList); }
-				
 				$companyInfo 			= 	$accountInfo->companyPlanInfo;
 				$companyBillingInfo	=	$accountInfo->companyBillingInfo;
 				?>
             <?php	/*List of Plans Start*/  ?>
             <div class="block">
+				<?php if(isset($result) && $result == 'completed'){?>            	
+            	<div class="alert alert-success">Your subscription plan has been updated.</div>
+            <?php } ?>
             	<h3>Your account details</h3>
             	<?php
 					$nextBill 			=	$companyBillingInfo->nextBill;

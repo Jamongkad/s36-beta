@@ -30,6 +30,7 @@ function get_accountInfo(){
 		$result = array(
 			'companyInfo'			=> $company_info,
 			'companyPlanInfo'		=>	$company_plan_info,
+			'companyCreditCardInfo'		=>	$this->S36Braintree->get_credit_card_info(),
 			'companyBillingInfo'	=>	array(
 											'nextBill'			=>	$this->S36Braintree->get_next_billing_info(),
 											'billingHistory'	=>	$this->S36Braintree->get_billing_history()
@@ -46,6 +47,16 @@ function update_plan($planId){
 		}
 
 	}
+	
+function update_credit_card($data){
+	$card_number 	= 	$data['card_number'];
+	$card_cvv 	= 	$data['card_cvv'];
+	$expire_month	=	$data['expire_month'];
+	$expire_year	=	$data['expire_year'];
+	$billing_zip	=	$data['billing_zip'];
+	
+	return ($this->S36Braintree->update_credit_card($card_number,$card_cvv,$expire_month,$expire_year,$billing_zip)) ? true : false;
+}
 
 
 }

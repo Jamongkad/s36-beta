@@ -84,7 +84,14 @@ return array (
 				case 'success' :
 							$result = $accountService->update_plan($planId);			
 							if($result){
-								header('Location: /settings/upgrade ');							
+								return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+								array(
+										'result' 		=> 'completed',
+										'newPlanInfo'	=> $plan->get_planInfo($planId),
+										'planList' 		=> $plan->get_planInfo(),
+										'accountInfo'	=> $accountService->get_accountInfo()
+									)     
+					      	);					
 							}
 					break;
 				case 'downgrade' :
@@ -108,44 +115,51 @@ return array (
     }  
     ),
     
-    /*
-   'GET /settings/downgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-			$plan = new Plan\Repositories\DBPlan;
-			$accountService = new Account\Services\AccountService;
-			$planId 		= Input::get('planId');
-			$action		= Input::get('action');
-    	  switch($action){
-				case 'confirm' :
-						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
-			        			array(
-								'newPlanInfo' 		=> $plan->get_planInfo($planId),
-								'accountInfo'		=> $accountService->get_accountInfo()
-								)  
-			        );
-					break;
-				case 'success' :
-							$result = $accountService->update_plan($planId);			
-							if($result){
-								header('Location: /settings/upgrade ');							
-							}
-					break;
-				default:
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
-							array(
-								'planList' 		=> $plan->get_planInfo(),
-								'accountInfo'	=> $accountService->get_accountInfo()
-							)     
-			      	);
-					break;			
-				
-			}
-    }  
-    ),
-    */
-    
-
+    		
     'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_change_card_view');
+    		$accountService = new Account\Services\AccountService;
+			return View::of_layout()->partial('contents', 'settings/settings_change_card_view',
+					array(
+						'accountInfo'	=> $accountService->get_accountInfo()
+					) 			
+			);		     
+    }),
+    
+	'POST /settings/change_card' => Array('needs' => 'S36ValueObjects', 'do' => function() {
+		$card_data = Input::all();
+		$rules = array(
+				'card_number'	=>		'required|numeric|min:16',
+				'card_cvv'		=>		'required|numeric',
+				'expire_month'	=>		'required',
+				'expire_year'	=>		'required',
+				'billing_zip'	=>		'required|numeric'
+		);
+		 	$validator = Validator::make($card_data, $rules);
+		 	/*validation fails*/
+			if((!$validator->valid()) || (($card_data['expire_month'] < date('m')) &&($card_data['expire_year'] == date('Y'))  )) {
+				if($card_data['expire_month'] < date('M')){				
+					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
+				}
+				return json_encode(array(
+										'error'=>true,
+										'messages'=>$validator->errors->messages
+										));
+			}
+			/*validation are all good*/
+			else{
+				$accountService = new Account\Services\AccountService;
+				/*catch unexpected errors during update*/
+				if(!$accountService->update_credit_card($card_data)){
+						return json_encode(array(
+										'error'=>true,
+										'messages'=>'Credit card was not updated due to an unexpected error.'
+										));
+				}
+				/*on success*/
+				return json_encode(array(
+										'error'=>false,
+										'messages'=>'Your credit card has been updated.'));
+			}		     
     }),
 
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {

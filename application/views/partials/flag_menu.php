@@ -104,7 +104,7 @@
                              'settings' => 'SETTINGS'
                            , 'settings/company' => 'COMPANY'
                            , 'settings/upgrade' => 'UPGRADE'
-                           , 'settings/change_card' => 'CHANGE CREDIT CARD'
+                           , 'settings/change_card' => 'UPDATE CREDIT CARD'
                            , 'settings/cancel_account' => 'CANCEL ACCOUNT'
                         );
                     ?>
