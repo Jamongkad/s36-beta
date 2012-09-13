@@ -36,7 +36,8 @@ class PublishService {
             //if no record of activity
             if($fba->check_activity_status() == False) { 
                 $published_data = new PublishedFeedbackData;
-                $published_data->set_feedback($this->dbfeedback->pull_feedback_by_id($this->feedback_id))
+                $published_data->set_publisher_email($this->dbuser->pull_user_by_id($this->user_id))
+                               ->set_feedback($this->dbfeedback->pull_feedback_by_id($this->feedback_id))
                                ->set_sendtoaddresses($this->dbuser->pull_user_emails_by_company_id($this->company_id));
             
                 $emailservice = new EmailService($published_data);
