@@ -76,20 +76,15 @@ return array(
 
         $tf->test('Feedback State Test', function($tf) {
             $tf->dump($tf->data->feedstate->change_state());
+            $tf->dump($tf->data->feedstate->status());
         });
-
+        
+        //return feedback to inbox
         $tf->afterEach(function($tf) use ($feedback_id, $company_id) {
             $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
             $tf->data->feedstate->change_state();
         });
         
-        /*
-        $tf->test('Test Publish', function($tf) {
-            $t = $tf->data->pub->perform();
-            $tf->assert();   
-        });
-        */
-
         $tf->run(); 
     }
 
