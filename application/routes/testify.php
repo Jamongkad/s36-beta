@@ -80,15 +80,16 @@ return array(
         });
         */ 
         $feedstate = new Feedback\Services\FeedbackState('publish', Array('feedid' => $feedback_id), $company_id);
-        $feedback->change_state();
+        $feedstate->change_state();
         /*
         $tf->test('Test Publish', function($tf) {
             $t = $tf->data->pub->perform();
             $tf->assert();   
         });
+        $tf->run(); 
         */
 
-        $tf->run(); 
+
     }
 
 
