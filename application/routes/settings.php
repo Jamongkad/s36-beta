@@ -84,16 +84,19 @@ return array (
 				case 'success' :
 							$result = $accountService->update_plan($planId);			
 							if($result){
-								return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
-								array(
-										'result' 		=> 'completed',
-										'newPlanInfo'	=> $plan->get_planInfo($planId),
-										'planList' 		=> $plan->get_planInfo(),
-										'accountInfo'	=> $accountService->get_accountInfo()
-									)     
-					      	);					
+							header('Location: /settings/upgrade/?action=completed');			
 							}
 					break;
+				case 'completed' :
+						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+							array(
+									'result' 		=> 'completed',
+									'newPlanInfo'	=> $plan->get_planInfo($planId),
+									'planList' 		=> $plan->get_planInfo(),
+									'accountInfo'	=> $accountService->get_accountInfo()
+								)     
+				      	);
+					 break;		
 				case 'downgrade' :
 						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
 			        			array(

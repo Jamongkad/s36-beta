@@ -1,6 +1,7 @@
 				<?php
-				$companyInfo 			= 	$accountInfo->companyPlanInfo;
-				$companyBillingInfo	=	$accountInfo->companyBillingInfo;
+				$companyInfo				=	$accountInfo->companyInfo;
+				$companyPlanInfo 			= 	$accountInfo->companyPlanInfo;
+				$companyBillingInfo		=	$accountInfo->companyBillingInfo;
 				?>
             <?php	/*List of Plans Start*/  ?>
             <div class="block">
@@ -15,11 +16,13 @@
                 <p class="small"><strong>Next charge: $<?=$nextBill->amount?> on <?php echo date("d M Y",strtotime($nextBill->date->date)); ?> on <?=$nextBill->card_type?> (<a href="change_card">change card</a>)</strong></p>
                 <br />
                 <div class="upgrade-box">
-                	<div class="upgrade-box-arrow"></div>
-                    <div class="box1 <?=$companyInfo->upgrade_images->current?>">
-                    </div>
-                    <div class="box2 <?=$companyInfo->upgrade_images->upgrade?>">
-                    </div>
+                	<?php if($companyPlanInfo->name == 'Premium'){ ?>
+                		<div class="box3 <?=$companyPlanInfo->upgrade_images->current?>"></div>
+                	<?php } else { ?>
+                		<div class="upgrade-box-arrow"></div>
+                    	<div class="box1 <?=$companyPlanInfo->upgrade_images->current?>"></div>
+                    	<div class="box2 <?=$companyPlanInfo->upgrade_images->upgrade?>"></div>
+                  <?php } ?>
                 </div>
                 <br />
                 <table width="100%" class="regular-table" cellpadding="0" cellspacing="0">
@@ -34,7 +37,7 @@
                     </thead>
                     <tbody>
                     	<?php	foreach($planList as $plan):?>
-								<tr <?=($plan->planid == $companyInfo->planid) ? "class='current-plan'" : ''?> >
+								<tr <?=($plan->planid == $companyPlanInfo->planid) ? "class='current-plan'" : ''?> >
 							       <td class="align-left">
 							       		<?=$plan->name?>
 							       		<?=($plan->price>0) ? "$plan->price$/month" : '' ?>
@@ -53,11 +56,11 @@
 							       </td>
 							       <td>
 							       	<?php
-							       	$companyId = $accountInfo->companyInfo->companyid;
-										if($plan->planid == $companyInfo->planid){
+							       	$companyId = $companyInfo->companyid;
+										if($plan->planid == $companyPlanInfo->planid){
 											echo "<strong>Current plan</strong>";										
 										}
-										elseif($plan->price > $companyInfo->price){
+										elseif($plan->price > $companyPlanInfo->price){
 											echo HTML::link("settings/upgrade/?planId=$plan->planid&action=confirm",'Upgrade',array('class'=>'gray-btn')); 										
 										}
 										else{
@@ -85,7 +88,7 @@
                     <div class="g2of3">
                     	<div class="white-box">
                         	<h3>Invoices</h3>
-                            <p>Each time you are billed, an invoice is emailed to <strong><?=$accountInfo->companyInfo->replyto?></strong>. The invoice includes a custom 'Bill to' field where you can provide your company's address and any other billing notes. You can change this at any time.</p>
+                            <p>Each time you are billed, an invoice is emailed to <strong><?=$companyInfo->replyto?></strong>. The invoice includes a custom 'Bill to' field where you can provide your company's address and any other billing notes. You can change this at any time.</p>
                             
                             <?php if(sizeof($billingHistory)>0):?>
 	                            <h3>Invoices & Charges Sent to Date</h3>
@@ -101,12 +104,12 @@
 									<?php endif;?>                  
                             
                             
-                            <?php if(sizeof($accountInfo->companyInfo->account_user) > 1 ): ?>
+                            <?php if(sizeof($companyInfo->account_user) > 1 ): ?>
                             <h3>Change Account Owner</h3>
                             <p>The account owner is the only person that can access this account page, upgrade, downgrade, change billing information, access invoices, and cancel the account. The account owner also has permanent access to all projects. Once you make this change you'll no longer be the account owner.</p>
                             <p>
                             	<select name="account_owner" id="account_owner" class="regular-select">
-											<?php foreach($accountInfo->companyInfo->account_user as $user): ?>                            		
+											<?php foreach($companyInfo->account_user as $user): ?>                            		
                             		<?php if($user->account_owner!=1){ echo "<option value='$user->userid'>$user->fullname</option>";}?>
                             		<?php endforeach; ?>
                             		</select>
