@@ -135,12 +135,14 @@ return array (
 				'card_cvv'		=>		'required|numeric',
 				'expire_month'	=>		'required',
 				'expire_year'	=>		'required',
-				'billing_zip'	=>		'required|numeric'
+				'billing_zip'	=>		'required|alpha_num|min:3'
 		);
 		 	$validator = Validator::make($card_data, $rules);
 		 	/*validation fails*/
 			if((!$validator->valid()) || (($card_data['expire_month'] < date('m')) &&($card_data['expire_year'] == date('Y'))  )) {
-				if((!empty($card_data['expire_month']) && !empty($card_data['expire_year'])) && $card_data['expire_month'] < date('M')){				
+				if((!empty($card_data['expire_month']) && !empty($card_data['expire_year'])) &&
+					($card_data['expire_month'] < date('m') && $card_data['expire_year'] <= date('Y')))				
+				{
 					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
 				}
 				return json_encode(array(
