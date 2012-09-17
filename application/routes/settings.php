@@ -140,7 +140,7 @@ return array (
 		 	$validator = Validator::make($card_data, $rules);
 		 	/*validation fails*/
 			if((!$validator->valid()) || (($card_data['expire_month'] < date('m')) &&($card_data['expire_year'] == date('Y'))  )) {
-				if($card_data['expire_month'] < date('M')){				
+				if((!empty($card_data['expire_month']) && !empty($card_data['expire_year'])) && $card_data['expire_month'] < date('M')){				
 					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
 				}
 				return json_encode(array(
@@ -151,11 +151,12 @@ return array (
 			/*validation are all good*/
 			else{
 				$accountService = new Account\Services\AccountService;
+				$result = $accountService->update_credit_card($card_data);
 				/*catch unexpected errors during update*/
-				if(!$accountService->update_credit_card($card_data)){
+				if(!$result['success']){
 						return json_encode(array(
 										'error'=>true,
-										'messages'=>'Credit card was not updated due to an unexpected error.'
+										'messages'=>$result['message']
 										));
 				}
 				/*on success*/
