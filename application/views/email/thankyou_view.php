@@ -8,7 +8,7 @@
             <?if(is_object($activity_check)):?>
                 <h2>This feedback has already been published by <?=ucfirst($activity_check->username)?>.</h2>
             <?else:?>
-                <h2>Sweet! You have just published <?=$contact_name?>'s feedback onto your website!</h2>
+                <h2>Sweet! You have just published <?=$contact_name?>'s feedback!</h2>
             <?endif?>
             </div>
             <br/>
