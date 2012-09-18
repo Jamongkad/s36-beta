@@ -1,5 +1,8 @@
 <style>
-    .reply-text {font-size: 10px;}
+    a.linky { 
+        color: #707D87;     
+        text-decoration:none;
+    } 
 </style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
@@ -12,7 +15,7 @@
         <tr>
             <td width="15%"><strong>Reply To :</strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-            <td class="small"><span class="reply-text">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure')?>)</span></td>
+            <td class="small">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)</td>
         </tr>
         <?endif?>
         <tr>
