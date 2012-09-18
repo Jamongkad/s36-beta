@@ -3,7 +3,7 @@
 <?=Form::hidden('emailto', $feedback->email)?>
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
-<div class="block">
+<div class="block" style="padding:30px">
     <table cellpadding="5" width="100%">
         <?if($user->replyto):?>
         <tr>
