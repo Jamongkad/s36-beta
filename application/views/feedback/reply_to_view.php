@@ -1,4 +1,5 @@
 <style>
+    .reply-text { font-size: 11px }
     a.linky { 
         color: #707D87;     
         text-decoration:none;
@@ -15,7 +16,9 @@
         <tr>
             <td width="15%"><strong>Reply To :</strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-            <td class="small">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)</td>
+            <td class="small"> 
+                <span class="reply-text">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)</span> 
+            </td>
         </tr>
         <?endif?>
         <tr>
@@ -31,7 +34,9 @@
             <td id="bcc-target">
                 <input id="first-bcc" class="regular-text" type="text" name="bcc[]" value="" />
             </td>
-            <td class="small" valign="top">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward')?>)</td>
+            <td class="small" valign="top">
+                <span class="reply-text">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) </span>
+            </td>
         </tr>
         <?if($user->ffemail1):?>
         <tr>
