@@ -105,7 +105,7 @@ return array(
     }), 
 
     //TODO: REFACTOR THIS BITCH
-    'GET /api/publish' => Array('do' => function() use ($feedback) { 
+    'GET /api/publish' => Array('do' => function() { 
         /*
         $encrypt = new Encryption\Encryption;
         $string_params = Input::get('params');
@@ -119,6 +119,9 @@ return array(
         $feedback_id = Input::get('fid');
         $company_id = Input::get('cid');
         $user_id = Input::get('uid');
+
+        $publish = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);              
+        $publish->perform();
 
         /*
         if($key != null) {  
