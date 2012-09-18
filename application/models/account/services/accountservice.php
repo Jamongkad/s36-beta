@@ -24,7 +24,7 @@ function __construct(){
 
 function get_accountInfo(){
 
-		$company_info 						= $this->DBCompany->get_company_info();
+		$company_info 					= $this->DBCompany->get_company_info();
 		$company_info->account_user 	= $this->DBCompany->get_account_user();
 		$company_plan_info 				= $this->DBPlan->get_planInfo($company_info->planid);
 		$result = array(
@@ -36,7 +36,7 @@ function get_accountInfo(){
 											'billingHistory'	=>	$this->S36Braintree->get_billing_history()
 											)
 		);
-		return \Helpers::arrayToObject($result);
+		return Helpers::arrayToObject($result);
 }
 
 function update_plan($planId){

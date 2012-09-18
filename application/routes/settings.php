@@ -66,12 +66,12 @@ return array (
 
     },
     
-
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-			$plan = new Plan\Repositories\DBPlan;
-			$accountService = new Account\Services\AccountService;
-			$planId 		= Input::get('planId');
-			$action		= Input::get('action');
+
+		  $plan = new Plan\Repositories\DBPlan;
+		  $accountService = new Account\Services\AccountService;
+		  $planId 		= Input::get('planId');
+		  $action		= Input::get('action');
     	  switch($action){
 				case 'confirm' :
 						return View::of_layout()->partial('contents', 'settings/settings_upgrade_account_view',
@@ -84,7 +84,8 @@ return array (
 				case 'success' :
 							$result = $accountService->update_plan($planId);			
 							if($result){
-							header('Location: /settings/upgrade/?action=completed');			
+							    //header('Location: /settings/upgrade/?action=completed');			
+                                Redirect::to('settings/upgrade/?action=completed');
 							}
 					break;
 				case 'completed' :
