@@ -10,7 +10,7 @@
         margin: 0px;
     }
     ul.add-bcc li {
-        padding-left: 14px; 
+        padding-left: 12px; 
 
     }
 </style>
