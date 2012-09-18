@@ -113,7 +113,7 @@ jQuery(function($) {
     var seen = {};
     $('.add-bcc > li').bind("click", function(e) {
         var pointer = $(this).index();
-        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
+        var input = "<input type='text' class='regular-text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
         var first_bcc = $("#first-bcc");
         
         if(first_bcc.val().length === 0) {
