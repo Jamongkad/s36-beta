@@ -31,6 +31,7 @@
 											$('#success_box').html(messages);
 											$('#error_box').css('display','none');
 											$('#card_number').val('');
+											$('#card_cvv').val('');
 											$('#billing_zip').val('');
 										}
 										$('#progress_box').css('display','none');
@@ -71,6 +72,7 @@
                         	<td><label class="regular-label">Expires On </label> </td>
                         	<td>
                         		<select id="expire_month" class="regular-select">
+											<option value="">select month</option>
                         			<option value="01">01 January</option>
                         			<option value="02">02 February</option>
                         			<option value="03">03 March</option>
@@ -85,6 +87,7 @@
 											<option value="12">12 December</option>
                         		</select>
                         		<select id="expire_year" class="regular-select">
+											<option value="">select year</option>
                         			<?php 
 											$current_year = date('Y');
 											echo "<option value='$current_year'>$current_year</option>";                        			           			                        			

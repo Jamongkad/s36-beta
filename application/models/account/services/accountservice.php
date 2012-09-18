@@ -55,7 +55,13 @@ function update_credit_card($data){
 	$expire_year	=	$data['expire_year'];
 	$billing_zip	=	$data['billing_zip'];
 	
-	return ($this->S36Braintree->update_credit_card($card_number,$card_cvv,$expire_month,$expire_year,$billing_zip)) ? true : false;
+	$result = $this->S36Braintree->update_credit_card($card_number,$card_cvv,$expire_month,$expire_year,$billing_zip);
+	if($result['success']==1){
+		return array('success'=>true);	
+	}
+	else{
+		return array('success'=>false,'message'=>$result['message']);
+	}
 }
 
 
