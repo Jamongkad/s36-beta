@@ -35,7 +35,8 @@ jQuery(function($) {
     });
 
     $(document).delegate('.reply-to', 'click', function(e) {
-        $(this).siblings('.dialog-form').dialog('open');
+        console.log($(this));
+        //$(this).siblings('.dialog-form').dialog('open');
     });
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
