@@ -35,7 +35,7 @@ jQuery(function($) {
     });
 
     $(document).delegate('.reply-to', 'click', function(e) {
-        console.log($(this).siblings());
+        console.log($(this).attr('feedid'));
         //$(this).siblings('.dialog-form').dialog('open');
     });
 

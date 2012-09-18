@@ -11,8 +11,8 @@
                     <p></p>
                     <? $id = $feed->id ?>
 
-                    <button class="reply-to">Reply</button>
-                    <div class="dialog-form" title="reply to">
+                    <button class="reply-to" feedid="<?=$id?>">Reply</button>
+                    <div class="dialog-form" feedid="<?=$id?>" title="reply to">
                         <p>All form fields are required.</p>
                         <form>
                             <input type="text" name="dickie" value="" />
