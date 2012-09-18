@@ -51,7 +51,7 @@
         <tr>
             <td><strong>Subject : </strong> </td>
             <td>
-                <input type="text" class="regular-text" name="subject" value="" /> 
+                <input type="text" class="regular-text" name="subject" value="Re: Subject on <?=$feedback->site?>" /> 
             </td>
             <td></td>
         </tr>
