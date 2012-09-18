@@ -25,8 +25,8 @@ jQuery(function($) {
     */
     $('.dialog-form').dialog({
         autoOpen: false  
-      , height: 700 
-      , width: 500
+      , height: 500 
+      , width: 700
       , modal: true
       , buttons: { 
             "Send Reply": function() {}
