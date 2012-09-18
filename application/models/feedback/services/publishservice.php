@@ -67,10 +67,12 @@ class PublishService {
             $contact = new DBContact;
             $user = $contact->get_contact_by_feedback_id($this->feedback_id);
 
+            $fba->log_activity();
+
             return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                 'company' => DB::Table('Company', 'master')->where('companyId', '=', $this->company_id)->first(array('name'))
               , 'contact_name' => $user->firstname
-              , 'activity_check' => $fba->log_activity()
+              , 'activity_check' => $fba->check_activity_status() 
               , 'hostname' => Config::get('application.hostname')
             ));       
         } 
