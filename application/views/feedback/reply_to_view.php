@@ -11,7 +11,7 @@
     }
     ul.add-bcc li {
         padding-left: 5px; 
-        line-height: 21px;
+        line-height: 18px;
     }
 </style>
 <?if($user->replyto):?>
@@ -92,7 +92,7 @@
             </td>
             -->
         </tr>
-        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="yes"/> 
+        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="yes" /> 
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
     </table>
 </div>
