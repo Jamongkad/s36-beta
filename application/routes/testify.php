@@ -14,8 +14,8 @@ return array(
 
     'GET /testify/publishservice' => function() { 
 
-        $feedback_id = ''; 
-        $company_id = 6;
+        $feedback_id = 522; 
+        $company_id = null;
         $user_id    = 15;
         $status = 'publish';
 
