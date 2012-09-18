@@ -13,7 +13,7 @@
             </div>
             <br/>
             <div style="text-align:center; font-size:1.3em">
-                To view more feedback, <a href="http://<?=strtolower($company->name).".".$hostname?>.com/login">sign in now!</a>
+                To view more feedback, <a href="https://<?=strtolower($company->name).".".$hostname?>.com/login">sign in now!</a>
             </div>
         </div>
     </div>

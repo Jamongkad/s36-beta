@@ -1,6 +1,6 @@
 <?php namespace Feedback\Services;
 
-use \DBUser;
+use \DBUser, \DBContact;
 
 use \Feedback\Services\FeedbackState; 
 use \Feedback\Services\FeedbackActivity;
@@ -10,7 +10,7 @@ use \Email\Entities\PublishedFeedbackData;
 use \Email\Services\EmailService;
 
 
-use DB, Config, Helpers;
+use DB, Config, Helpers, Views;
 
 class PublishService {
 
@@ -19,7 +19,7 @@ class PublishService {
         $this->company_id  = $company_id;
         $this->user_id     = $user_id; 
         $this->dbuser      = new DBUser;
-        $this->dbfeedback    = new DBFeedback;
+        $this->dbfeedback  = new DBFeedback;
     }
 
     public function perform() {
@@ -44,22 +44,15 @@ class PublishService {
                 $emailservice->send_email(); 
             }
 
-            $fba->log_activity();
-            //fireoff redirect somewhere here...
-            /*
-            $contact = DB::Table('Contact', 'master')
-                          ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
-                          ->where('Feedback.feedbackId', '=', $this->feedback_id)
-                          ->first(Array('firstName'));
-            $hostname = Config::get('application.hostname');
+            $contact = new DBContact;
+            $user = $contact->get_contact_by_feedback_id($this->feedback_id);
+
             return View::of_home_layout()->partial('contents', 'email/thankyou_view', Array(
                 'company' => DB::Table('Company', 'master')->where('companyId', '=', $this->company_id)->first(array('name'))
-              , 'contact_name' => $contact->firstname
-              , 'activity_check' => $activity_check
-              , 'hostname' => $hostname
+              , 'contact_name' => $user->firstname
+              , 'activity_check' => $fba->log_activity()
+              , 'hostname' => Config::get('application.hostname')
             ));       
-            */
-            return $state;
         } 
     }
 }
