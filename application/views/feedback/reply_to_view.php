@@ -92,7 +92,7 @@
             </td>
             -->
         </tr>
-        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="yes" /> 
+        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
     </table>
 </div>
