@@ -1,6 +1,8 @@
 <?php namespace Feedback\Services;
 
-use \DBUser, \DBContact;
+use \DBUser;
+
+use \Contact\Repositories\DBContact;
 
 use \Feedback\Services\FeedbackState; 
 use \Feedback\Services\FeedbackActivity;
@@ -8,7 +10,6 @@ use \Feedback\Repositories\DBFeedback;
 
 use \Email\Entities\PublishedFeedbackData;
 use \Email\Services\EmailService;
-
 
 use DB, Config, Helpers, Views;
 
