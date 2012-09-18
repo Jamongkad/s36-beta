@@ -35,7 +35,7 @@ jQuery(function($) {
     });
 
     $(document).delegate('.reply-to', 'click', function(e) {
-        console.log($(this));
+        console.log($(this).siblings());
         //$(this).siblings('.dialog-form').dialog('open');
     });
 
