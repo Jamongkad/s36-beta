@@ -1,7 +1,7 @@
 jQuery(function($) {
     $('.dialog-form').dialog({
         autoOpen: false  
-      , height: 550 
+      , height: 570 
       , width: 700
       , modal: true
       , buttons: { 
