@@ -52,16 +52,14 @@
         <tr>
             <td><strong>Subject : </strong> </td>
             <td>
-                <input type="text" class="regular-text" name="subject" value="<?=$input['subject']?>" /> 
-                <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('subject')."</p>" : null?>
+                <input type="text" class="regular-text" name="subject" value="" /> 
             </td>
             <td></td>
         </tr>
         <tr>
             <td valign="top"><strong>Message : </strong> </td>
             <td>
-                <textarea class="regular-text" rows="6" name="message"><?=$input['message']?></textarea>
-                <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('message')."</p>" : null?>
+                <textarea class="regular-text" rows="6" name="message"></textarea>
             </td>
             <!--
             <td>

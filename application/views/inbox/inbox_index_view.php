@@ -14,7 +14,11 @@
                     <div class="dialog-form" feedid="<?=$id?>" title="Reply to <?=$feed->firstname?> <?=$feed->lastname?>"> 
                         <p>All form fields are required.</p> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
-                            <input type="text" name="dickie" value="" />
+                            <?=View::make('feedback/reply_to_view', Array(
+                                'user' => S36Auth::user();         
+                              , 'feedid' => $id
+                              , 'feedback'=> $feed
+                            ))?>
                         <?=Form::close()?>
                     </div>
 
