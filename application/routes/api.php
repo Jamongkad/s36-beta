@@ -121,7 +121,7 @@ return array(
         $user_id = Input::get('uid');
 
         $publish = new Feedback\Services\PublishService($feedback_id, $company_id, $user_id);              
-        $publish->perform();
+        return $publish->perform();
 
         /*
         if($key != null) {  
