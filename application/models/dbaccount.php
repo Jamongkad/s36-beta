@@ -139,6 +139,5 @@ class DBAccount extends S36DataObject {
             //Helpers::dump($form);
             $form->save();
         }
-
     }
 }

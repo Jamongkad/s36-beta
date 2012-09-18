@@ -18,8 +18,7 @@
                         </tr>
                         <tr height="20">
                         	<td colspan="3"></td>
-                        </tr>
-                        
+                        </tr>                        
                         <!-- end of header -->
                         <!-- contents -->
                         <tr>
@@ -30,7 +29,7 @@
                             </td>
                         </tr>
 
-                        <?//quick and dirty css fix to move damn manage feedback button to the right
+                        <?//quick and dirty css fix to move the damned manage feedback button to the right
                         $poor_style = null;
                         if($feedback_data->rating == "POOR") {
                             $poor_style = "20px;";
@@ -80,9 +79,11 @@
                                 <br />
                                 <?endif?>
                                 <?if($feedback_data->rating != "POOR" && $feedback_data->permission != "PRIVATE"):?>
-                                    <a href="<?=URL::to("api/publish?params=".rawurlencode($encryptstring)."&feedback_id={$feedback_data->id}&company_id={$companyid}")?>" style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
-                                    <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
-                                    <span style="vertical-align: middle">Publish this feedback now</span>
+                                    <a href="<?=URL::to("api/publish?$usercreds")?>" 
+                                       style="text-decoration:none;margin-right:10px;font-size:11px;background:#ccf2cd;padding:7px 20px 7px 2px;
+                                              color:#464646;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;">
+                                        <?=HTML::image('img/ico-check.png', 'Icon Check', array('style' => 'vertical-align:middle'))?>
+                                        <span style="vertical-align: middle">Publish this feedback now</span>
                                     </a> 
                                 <?endif?>
                                     

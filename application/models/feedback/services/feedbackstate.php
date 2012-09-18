@@ -49,6 +49,11 @@ class FeedbackState {
         return $result;     
     }
 
+    public function status() {
+        $feed_obj = $this->feedback_state_obj();
+        return $this->feedback->_gather_multiple($feed_obj);
+    }
+
     public function _sql_statement_attach($category_id) {
         return ", categoryId = ".$category_id;
     }

@@ -449,5 +449,13 @@ class DBContact extends S36DataObject {
         $sth->bindParam(':email', $email, PDO::PARAM_STR); 
         $sth->execute();
     }
+    
+    public function get_contact_by_feedback_id($feedback_id) { 
+        $contact = DB::Table('Contact', 'master')
+                      ->join('Feedback', 'Feedback.contactId', '=', 'Contact.contactId')
+                      ->where('Feedback.feedbackId', '=', $feedback_id)
+                      ->first(Array('firstName'));
 
+        return $contact;
+    }
 }
