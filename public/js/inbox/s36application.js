@@ -29,7 +29,10 @@ jQuery(function($) {
       , width: 700
       , modal: true
       , buttons: { 
-            "Send Reply": function() {}
+            "Send Reply": function() { 
+                 alert("Reply Successful!");
+                 $(this).dialog('close');
+            }
           , Cancel: function() { $(this).dialog('close'); }
         }
     });

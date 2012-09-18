@@ -12,10 +12,10 @@
                     <? $id = $feed->id ?>
 
                     <div class="dialog-form" feedid="<?=$id?>" title="reply to">
-                        <p>All form fields are required.</p>
-                        <form>
+                        <p>All form fields are required.</p> 
+                        <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
                             <input type="text" name="dickie" value="" />
-                        </form> 
+                        <?=Form::close()?>
                     </div>
 
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
@@ -140,7 +140,6 @@
                                         </div> 
                                     </div>
                                     <!-- end of category picker-->
-
                                     <div class="options">
                                         <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
                                             <?if($admin_check->inbox_approve == 0):?>
