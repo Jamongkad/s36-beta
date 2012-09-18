@@ -610,3 +610,5 @@ li.configure-ff-link a {
 li.configure-ff-link a:hover {
     background: none !important;
 }
+
+div.dialog-form { display:none; }
