@@ -10,19 +10,14 @@
         private $subscription_id;
         private $credit_card_info;
 
-
-
         // set the braintree's config keys.
-        private static function set_keys(){
-            
+        private static function set_keys(){            
             \Braintree_Configuration::environment('sandbox');
             \Braintree_Configuration::merchantId('nq9jcgbqntjg9ktd');
             \Braintree_Configuration::publicKey('2y99t792gdwy8bqz');
             \Braintree_Configuration::privateKey('0c410ba21ac3498d755c9fd6ad5cd491');
 
         }
-
-
 
         // create new braintree object using company id.
         function __construct($customer_id){
@@ -90,7 +85,6 @@
             // if customer updated his credit card, transactions that he made with previous 
             // credit card is kept recorded.
             $this->next_billing_info['card_type'] = $customer->creditCards[0]->cardType;
-
 
             // store the default credit card's info.
             $this->credit_card_info['card_type'] = $customer->creditCards[0]->cardType;
