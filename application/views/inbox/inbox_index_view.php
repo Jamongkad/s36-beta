@@ -13,7 +13,7 @@
 
                     <div class="dialog-form" feedid="<?=$id?>" title="reply to">
                         <p>All form fields are required.</p> 
-                        <?=Form::open('feedback/fastforward', 'POST', array('class' => 'ff-form'))?>
+                        <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
                             <input type="text" name="dickie" value="" />
                         <?=Form::close()?>
                     </div>

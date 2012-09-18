@@ -230,6 +230,9 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         $data = Input::get();
+        Helpers::dump($data);
+        /*
+        $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
 
         $rules = array(
@@ -266,7 +269,7 @@ return array(
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
                                               array("linkback" => "reply_to/".$data['feedbackid']));  
         }
-        
+        */ 
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
