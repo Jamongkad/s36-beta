@@ -6,8 +6,10 @@ jQuery(function($) {
       , modal: true
       , buttons: { 
             "Send Reply": function() { 
-                 alert("Reply Successful!");
-                 $(this).dialog('close');
+                 //alert("Reply Successful!");
+                 //$(this).dialog('close');
+                 var inputs = $(this).serialize();
+                 console.log(inputs);
             }
           , Cancel: function() { $(this).dialog('close'); }
         }
