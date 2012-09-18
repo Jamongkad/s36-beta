@@ -11,7 +11,7 @@
     }
     ul.add-bcc li {
         padding-left: 5px; 
-        line-height: 23px;
+        line-height: 21px;
     }
 </style>
 <?if($user->replyto):?>
@@ -35,7 +35,6 @@
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
             <td></td>
         </tr>
-
         <tr>
             <td>
                 <strong>Bcc :</strong>
@@ -82,8 +81,7 @@
                 <textarea class="regular-text" rows="6" name="message"></textarea>
             </td>
             <!--
-            <td>
-           
+            <td> 
                 <ul class="no-list-style">
                     <li>Thank you for your suggestion</li>
                     <li>Technical Support Issue</li>
@@ -94,7 +92,7 @@
             </td>
             -->
         </tr>
-        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" /> 
+        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="yes"/> 
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
     </table>
 </div>
