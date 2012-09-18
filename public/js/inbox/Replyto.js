@@ -8,8 +8,13 @@ jQuery(function($) {
             "Send Reply": function() { 
                  //alert("Reply Successful!");
                  //$(this).dialog('close');
-                 var form_inputs = $(this).children('form').serialize();
-                 console.log(form_inputs);
+                 var form = $(this).children('form');
+                 form.ajaxSubmit({
+                     dataType: 'json'     
+                   , success: function(data, textStatus) {
+                       
+                    }
+                 });
             }
           , Cancel: function() { $(this).dialog('close'); }
         }
