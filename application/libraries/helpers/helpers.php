@@ -314,7 +314,7 @@ class Helpers {
     }
 
     public static function isnull_or_emptystring($string) {
-        return (!isset($question) || trim($question)===''); 
+        return (!isset($string) || trim($string)===''); 
     }
 
     public static function contains_tld($string) {
