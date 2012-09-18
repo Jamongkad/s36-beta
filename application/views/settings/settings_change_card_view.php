@@ -119,6 +119,8 @@
                     </table>
                     </form>
                 </div>
+                <!--
                 <h4>Any questions? Just <a href="#">contact us</a>, we'll help. <a href="#">36Stories support</a></h4>
+                -->
             </div>
 				<div style="height:300px;" class="block noborder"></div>
