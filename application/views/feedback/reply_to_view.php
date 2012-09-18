@@ -3,13 +3,13 @@
 <?=Form::hidden('emailto', $feedback->email)?>
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
-<div class="block" style="padding:30px">
+<div class="block" style="padding:25px">
     <table cellpadding="5" width="100%">
         <?if($user->replyto):?>
         <tr>
             <td width="15%"><strong>Reply To :</strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-            <td class="small">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure')?>)</td>
+            <td class="small"><span class="grey">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure')?>)</span></td>
         </tr>
         <?endif?>
         <tr>
