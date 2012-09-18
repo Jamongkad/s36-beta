@@ -11,7 +11,6 @@
                     <p></p>
                     <? $id = $feed->id ?>
 
-                    <button class="reply-to" feedid="<?=$id?>">Reply</button>
                     <div class="dialog-form" feedid="<?=$id?>" title="reply to">
                         <p>All form fields are required.</p>
                         <form>
@@ -177,7 +176,7 @@
                                                                  style="background-position: -60px -51px;"/>
                                         <?endif?>
 
-                                        <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
+                                        <input type="button" feedid="<?=$id?>" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
                                         <?if($admin_check->inbox_fastforward == 0):?>
                                             <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.2; filter:alpha(opacity=40)"/> 
                                         <?else:?>

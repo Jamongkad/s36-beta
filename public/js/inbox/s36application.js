@@ -34,11 +34,19 @@ jQuery(function($) {
         }
     });
 
-    $(document).delegate('.reply-to', 'click', function(e) {
-        console.log();
+    $(document).delegate('.reply', 'click', function(e) {
         var feedid = $(this).attr('feedid');
         $('.dialog-form[feedid='+feedid+']').dialog('open');
+        e.preventDefault();
     });
+
+    /* Old reply implementation
+    $('.reply').bind("click", function(e) {     
+        var href = $(this).attr('hrefaction');
+        window.location = href;
+        e.preventDefault();
+    })
+    */
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {
@@ -126,17 +134,7 @@ jQuery(function($) {
         } 
         e.preventDefault();
     });
-
-    $('.reply').bind("click", function(e) {     
-        var href = $(this).attr('hrefaction');
-        window.location = href;
-        e.preventDefault();
-        /*TODO WORK ON THIS LATER This should be a modal popup
-        $.ajax({
-            url: href
-        });*/
-    })
-    
+     
     var seen = {};
     $('.add-bcc > li').bind("click", function(e) {
         var pointer = $(this).index();
