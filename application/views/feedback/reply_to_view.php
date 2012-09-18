@@ -4,6 +4,14 @@
         color: #707D87;     
         text-decoration:none;
     } 
+    ul.add-bcc {
+        list-style-type: none;     
+        padding: 0px;
+        margin: 0px;
+    }
+    ul.add-bcc li {
+        padding-left: 14px; 
+    }
 </style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
@@ -45,7 +53,7 @@
                 <strong>Add to Bcc : </strong>
             </td>
             <td>
-                <ul class="no-list-style add-bcc">
+                <ul class="add-bcc">
                     <?if($user->ffemail1):?>
                         <li><?=$user->ffemail1?></li>
                     <?endif?>
