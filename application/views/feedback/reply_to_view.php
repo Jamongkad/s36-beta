@@ -11,6 +11,7 @@
     }
     ul.add-bcc li {
         padding-left: 14px; 
+
     }
 </style>
 <?if($user->replyto):?>
@@ -55,7 +56,7 @@
             <td>
                 <ul class="add-bcc">
                     <?if($user->ffemail1):?>
-                        <li><?=$user->alias1?><<?=$user->ffemail1?>></li>
+                        <li><?=HTML::link('', $user->alias1."<".$user->ffemail.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail2):?>
                         <li><?=$user->ffemail2?></li>
