@@ -59,10 +59,10 @@
                         <li><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail2):?>
-                        <li><?=$user->ffemail2?></li>
+                        <li><?=HTML::link('', $user->alias2."<".$user->ffemail2.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail3):?>
-                        <li><?=$user->ffemail3?></li>
+                        <li><?=HTML::link('', $user->alias3."<".$user->ffemail3.">", array('class' => 'linky'))?></li>
                     <?endif?>
                 </ul>
             </td>
