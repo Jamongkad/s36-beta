@@ -56,7 +56,7 @@
             <td>
                 <ul class="add-bcc">
                     <?if($user->ffemail1):?>
-                        <li><?=HTML::link('', $user->alias1."<".$user->ffemail.">", array('class' => 'linky'))?></li>
+                        <li><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail2):?>
                         <li><?=$user->ffemail2?></li>
