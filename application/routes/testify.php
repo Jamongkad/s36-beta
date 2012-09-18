@@ -13,7 +13,7 @@ return array(
     },
 
     'GET /testify/publishservice' => function() { 
-        $feedback_id = 521; 
+        $feedback_id = 522; 
         $company_id = 6;
         $user_id    = 15;
         $status = 'publish';
@@ -25,6 +25,13 @@ return array(
        
         $tf->test('Service Test', function($tf) {
             $tf->assert($tf->data->pub->perform());
+        });
+
+        $tf->afterEach(function($tf) use ($feedback_id, $company_id, $user_id, $status) {
+            $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
+            $tf->data->fba->delete_activity();
+            $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
+            $tf->data->feedstate->change_state();
         });
 
         $tf->run(); 
