@@ -112,6 +112,9 @@ jQuery(function($) {
      
     var seen = {};
     $('.add-bcc > li a').bind("click", function(e) {
+
+        var pointer = $(this).index();
+        console.log(pointer);
         /*
         var pointer = $(this).index();
         var input = "<input type='text' class='regular-text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
