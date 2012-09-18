@@ -26,7 +26,7 @@ jQuery(function($) {
     $('.dialog-form').dialog({
         autoOpen: false  
       , height: 700 
-      , width: 700
+      , width: 500
       , modal: true
       , buttons: { 
             "Send Reply": function() {}
