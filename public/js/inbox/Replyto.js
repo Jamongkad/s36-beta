@@ -9,11 +9,12 @@ jQuery(function($) {
                  //alert("Reply Successful!");
                  //$(this).dialog('close');
                  var form = $(this).children('form');
+                 var me = $(this);
                  form.ajaxSubmit({
                      dataType: 'json'     
                    , success: function(data, textStatus) {
-                       
-                    }
+                         me.dialog('close');
+                     }
                  });
             }
           , Cancel: function() { $(this).dialog('close'); }
