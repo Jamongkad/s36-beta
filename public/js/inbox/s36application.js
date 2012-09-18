@@ -24,8 +24,6 @@ jQuery(function($) {
     });
     */
 
-    $("abbr.timeago").timeago();
-
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {
             $('.large-avatar', this).show();
