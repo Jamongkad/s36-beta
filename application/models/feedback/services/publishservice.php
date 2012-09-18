@@ -11,11 +11,22 @@ use \Feedback\Repositories\DBFeedback;
 use \Email\Entities\PublishedFeedbackData;
 use \Email\Services\EmailService;
 
-use DB, Config, Helpers, View;
+use DB, Config, Helpers, View, Exception;
 
 class PublishService {
 
+    private $feedback_id;
+    private $company_id;
+    private $user_id;
+    private $dbuser;
+    private $dbfeedback;
+
     public function __construct($feedback_id, $company_id, $user_id) { 
+
+        if($feedback_id == null) {
+            throw new Exception("Feedback ID cannot be empty.");
+        }
+
         $this->feedback_id = $feedback_id; 
         $this->company_id  = $company_id;
         $this->user_id     = $user_id; 
