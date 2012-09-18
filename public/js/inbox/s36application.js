@@ -23,6 +23,20 @@ jQuery(function($) {
         e.preventDefault();
     });
     */
+    $('.dialog-form').dialog({
+        autoOpen: false  
+      , height: 300 
+      , width: 350
+      , modal: true
+      , buttons: { 
+            "Send Reply": function() {}
+          , Cancel: function() { $(this).dialog('close'); }
+        }
+    });
+
+    $(document).delegate('.reply-to', 'click', function(e) {
+        $(this).siblings('.dialog-form').dialog('open');
+    });
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {

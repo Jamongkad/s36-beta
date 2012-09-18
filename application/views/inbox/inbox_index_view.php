@@ -10,12 +10,15 @@
                 <?foreach($feeds->children->result as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?>
-                    <div id="dialog-form" title="reply to">
+
+                    <button class="reply-to">Reply</button>
+                    <div class="dialog-form" title="reply to">
                         <p>All form fields are required.</p>
                         <form>
                             <input type="text" name="dickie" value="" />
                         </form> 
                     </div>
+
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
                             <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
