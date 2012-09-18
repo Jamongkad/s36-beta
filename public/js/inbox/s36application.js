@@ -136,8 +136,7 @@ jQuery(function($) {
             delete seen[del_pointer];
             e.preventDefault();
         })
-        */
-        
+        */ 
         e.preventDefault();
     })
 
