@@ -11,7 +11,7 @@
                     <p></p>
                     <? $id = $feed->id ?>
 
-                    <div class="dialog-form" feedid="<?=$id?>" title="reply to">
+                    <div class="dialog-form" feedid="<?=$id?>" title="reply to" style="display:none">
                         <p>All form fields are required.</p> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
                             <input type="text" name="dickie" value="" />
