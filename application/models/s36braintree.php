@@ -9,6 +9,8 @@
         private $next_billing_info;
         private $subscription_id;
         private $credit_card_info;
+        public $exists = true;
+        private $existence_err = '';
 
         // set the braintree's config keys.
         private static function set_keys(){            
@@ -23,10 +25,23 @@
         function __construct($customer_id){
             
             self::set_keys();
+            $result_arr = array('success' => true, 'message' => array());
 
-            // get all the data of company from braintree server.
-            $customer = \Braintree_Customer::find($customer_id);
-            
+
+            // get data of company from braintree server.
+            try{
+                
+                $customer = \Braintree_Customer::find($customer_id);
+
+            // if company is not found, stop execution and store existence status and error.
+            }catch(Exception $e){
+                
+                $this->exists = false;
+                $this->existence_err = 'Customer with id ' . $customer_id . ' not found';
+                return;
+
+            }
+
 
             // store customer_id and payment method token.
             $this->customer_id = $customer_id;
@@ -96,6 +111,109 @@
         }
 
 
+
+        // return existence status of company.
+        function exists(){
+            
+            return $this->exists;
+
+        }
+
+
+
+        // return existence error of the company.
+        function get_existence_error(){
+            
+            return $this->existence_err;
+
+        }
+
+
+
+        // return existence result of the company.
+        // this is to be used as returned result array in other functions
+        // so this will follow the format of other result array.
+        function get_existence_result(){
+            
+            $err['success'] = $this->exists;
+            $err['message'] = array($this->existence_err);
+
+            return $err;
+
+        }
+
+
+
+
+
+
+		/*
+		* Create account by RM
+		*/
+        static function create_account2($input){
+            
+            self::set_keys();
+            
+            //$plan = new \DBPlan(Input::get('plan'));
+            //$plan_id = strtolower($plan->get_name());
+            $result_arr = array('success' => true, 'message' => array());
+
+            
+            // create braintree customer account.
+           $result = \Braintree_Customer::create(array(
+                 //'firstName' => $input->company_info->,
+                 //'lastName' => Input::get('last_name'),
+                 'email'                     => $input->company_info->account_owner->email,
+                 'company'                   => $input->company_info->name,
+                 'website'                   => $input->company_info->domain,
+                 'creditCard'                => array(
+                     'number'                => $input->billing_info->billing_card_number,
+                     'expirationMonth'   => $input->billing_info->billing_expire_month,
+                     'expirationYear'    => $input->billing_info->billing_expire_year,
+                     'cvv'                   => $input->billing_info->billing_card_cvv,
+                     'billingAddress'    => array(
+                         'firstName'     => $input->billing_info->billing_first_name,
+                         'lastName'      => $input->billing_info->billing_last_name,
+                         'streetAddress'=> $input->billing_info->billing_address,
+                         'locality'      => $input->billing_info->billing_city,
+                         'region'        => $input->billing_info->billing_state,
+                         'countryName'   => $input->billing_info->billing_country,
+                         'postalCode'    => $input->billing_info->billing_zip,
+                     )
+                 )
+             ));
+
+
+            // if account creation fails, store only the status and error message.
+            if( ! $result->success ){
+                
+                $result_arr['success'] = $result->success;
+                $result_arr['message'] = explode("\n", $result->message);
+
+                return $result_arr;
+
+            }
+
+
+            // if account creation succeeds, store status, customer_id, token.
+            $result_arr['success'] = $result->success;
+            $result_arr['customer_id'] = $result->customer->id;
+            $result_arr['token'] = $result->customer->creditCards[0]->token;
+
+
+            // create subscription.
+            $result = \Braintree_Subscription::create(array(
+                'paymentMethodToken' => $result_arr['token'],
+                'planId' => 'basic'
+            ));
+
+            
+            // return all the shit from account and subscription creation.
+            return $result_arr;
+            
+        }
+
+        
         
         // create account with braintree.
         static function create_account(){
@@ -104,7 +222,7 @@
             
             $plan = new DBPlan(Input::get('plan'));
             $plan_id = strtolower($plan->get_name());
-            $result_arr = array();
+            $result_arr = array('success' => true, 'message' => array());
 
             
             // create braintree customer account.
@@ -136,7 +254,7 @@
             if( ! $result->success ){
                 
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = $result->message;
+                $result_arr['message'] = explode("\n", $result->message);
 
                 return $result_arr;
 
@@ -166,8 +284,12 @@
         // update subscription.
         function update_subscription($plan_id){
             
+            // say something if company doesn't exist.
+            if( ! $this->exists() ) return $this->get_existence_result();
+
+            
             self::set_keys();
-            $result_arr = array();
+            $result_arr = array('success' => true, 'message' => array());
             
 
             // create new subscription.
@@ -182,7 +304,7 @@
             if( ! $result->success ){
 
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = $result->message;
+                $result_arr['message'] = explode("\n", $result->message);
 
                 return $result_arr;
                 
@@ -195,7 +317,6 @@
             // update subscription_id.
             $this->subscription_id = $result->subscription->id;
 
-            $result_arr['success'] = $result->success;
 
             return $result_arr;
 
@@ -206,6 +327,10 @@
         // get next billing info of the subscription.
         function get_next_billing_info(){
             
+            // say something if company doesn't exist.
+            if( ! $this->exists() ) return $this->get_existence_result();
+
+
             return $this->next_billing_info;
             
         }
@@ -215,6 +340,10 @@
         // get billing history.
         function get_billing_history(){
             
+            // say something if company doesn't exist.
+            if( ! $this->exists() ) return $this->get_existence_result();
+
+
             return $this->transactions;
             
         }
@@ -224,8 +353,12 @@
         // update credit card info.
         function update_credit_card($number, $cvv, $exp_month, $exp_year, $zip){
             
+            // say something if company doesn't exist.
+            if( ! $this->exists() ) return $this->get_existence_result();
+
+
             self::set_keys();
-            $result_arr = array();
+            $result_arr = array('success' => true, 'message' => array());
 
 
             $result = \Braintree_CreditCard::update(
@@ -247,9 +380,11 @@
 
 
             // return the status of the update. also the error msg is there is.
-            if( ! $result->success ) $result_arr['message'] = $result->message;
+            if( ! $result->success ){
+                $result_arr['success'] = $result->success;
+                $result_arr['message'] = explode("\n", $result->message);
+            }
 
-            $result_arr['success'] = $result->success;
 
             return $result_arr;
 
@@ -260,6 +395,10 @@
         // get current credit card info.
         function get_credit_card_info(){
             
+            // say something if company doesn't exist.
+            if( ! $this->exists() ) return $this->get_existence_result();
+
+
             return $this->credit_card_info;
 
         }

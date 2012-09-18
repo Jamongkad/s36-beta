@@ -67,67 +67,145 @@ return array (
     },
     
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-
-		  $plan = new Plan\Repositories\DBPlan;
-		  $accountService = new Account\Services\AccountService;
-		  $planId 		= Input::get('planId');
-		  $action		= Input::get('action');
-    	  switch($action){
-				case 'confirm' :
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_account_view',
-			        			array(
-								'newPlanInfo' 		=> $plan->get_planInfo($planId),
-								'accountInfo'		=> $accountService->get_accountInfo()
-								)  
-			        );
-					break;
-				case 'success' :
-							$result = $accountService->update_plan($planId);			
-							if($result){
-								return Redirect::to('/settings/upgrade/?action=completed');			
-							}
-					break;
-				case 'completed' :
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+			$plan = new Plan\Repositories\DBPlan;
+			$accountService = new Account\Services\AccountService;
+			$planId 		= Input::get('planId');
+			$action		= Input::get('action');
+			if($accountService->braintree_exist()){
+		    	  switch($action){
+						case 'confirm' :
+								return View::of_layout()->partial('contents', 'settings/settings_upgrade_account_view',
+					        			array(
+										'newPlanInfo' 		=> $plan->get_planInfo($planId),
+										'accountInfo'		=> $accountService->get_accountInfo()
+										)  
+					        );
+							break;
+						case 'success' :
+									$result = $accountService->update_plan($planId);			
+									if($result){
+										return Redirect::to('/settings/upgrade/?action=completed');			
+									}
+							break;
+						case 'completed' :
+								return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+									array(
+											'result' 		=> 'completed',
+											'newPlanInfo'	=> $plan->get_planInfo($planId),
+											'planList' 		=> $plan->get_planInfo(),
+											'accountInfo'	=> $accountService->get_accountInfo()
+										)     
+						      	);
+							 break;		
+						case 'downgrade' :
+								return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
+					        			array(
+										'newPlanInfo' 		=> $plan->get_planInfo($planId),
+										'accountInfo'		=> $accountService->get_accountInfo()
+										)  
+					        );
+							break;
+						default:
+								return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
+									array(
+										'planList' 		=> $plan->get_planInfo(),
+										'accountInfo'	=> $accountService->get_accountInfo()
+									)     
+					      	);
+							break;			
+					}
+				}
+			else{
+					$DBCountry = new DBCountry;
+					return View::of_layout()->partial('contents', 'settings/settings_add_braintree',
 							array(
-									'result' 		=> 'completed',
-									'newPlanInfo'	=> $plan->get_planInfo($planId),
-									'planList' 		=> $plan->get_planInfo(),
-									'accountInfo'	=> $accountService->get_accountInfo()
-								)     
-				      	);
-					 break;		
-				case 'downgrade' :
-						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
-			        			array(
-								'newPlanInfo' 		=> $plan->get_planInfo($planId),
-								'accountInfo'		=> $accountService->get_accountInfo()
-								)  
-			        );
-					break;
-				default:
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
-							array(
-								'planList' 		=> $plan->get_planInfo(),
-								'accountInfo'	=> $accountService->get_accountInfo()
+								'accountInfo' 			=> $accountService->get_accountInfo(),
+								'countries'				=>	$DBCountry->get_country_list()
 							)     
-			      	);
-					break;			
-				
-			}
+			   	);		
+			}	
     }  
     ),
-    
+    /*handle ajax request from upgrade_plan view with braintree account creation*/
+    'POST /settings/add_billing_info' => Array('needs' => 'S36ValueObjects', 'do' => function() {
+    		$billing_info = Input::all();
+			$rules = array(
+				'plan_selected'			=>		'required',
+				'billing_first_name'		=>		'required',
+				'billing_last_name'		=>		'required',
+				'billing_address'			=>		'required',
+				'billing_city'				=>		'required',
+				'billing_state'			=>		'required',
+				'billing_country'			=>		'required',
+				'billing_zip'				=>		'required|alpha_num|min:3',
+				'billing_card_number'	=>		'required|numeric|min:16',
+				'billing_card_cvv'		=>		'required|numeric'
+			);
+			
+			$messages = array(
+		    'required' 	=> 'required.',
+			 'numeric' 		=> 'must be a number.',
+			 'min'			=>	'must be at least :min'
+			);
+			$validator = Validator::make($billing_info, $rules,$messages);
+			/*validation fails*/
+			if((!$validator->valid()) || (($billing_info['billing_expire_month'] < date('m')) &&($billing_info['billing_expire_year'] == date('Y'))  )) {
+			
+				/*custom error messages*/
+				if(empty($billing_info['plan_selected'])) { $validator->errors->messages['plan_selected'][0] = 'Please select your subscription plan.'; }			
+				if(empty($billing_info['billing_expire_month']) || empty($billing_info['billing_expire_year'])){
+						$validator->errors->messages['billing_expire_date'][0]='required.';
+				}
+				elseif($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')){
+						$validator->errors->messages['billing_expire_date'][0]='The expiration date must be valid.';
+				}
+				/*return the results*/	
+				return json_encode(array(
+							'error'=>true,
+							'messages'=>$validator->errors->messages
+							));
+			}
+			/*initial validations are good*/
+			else{
+				$accountService 	= 	new Account\Services\AccountService;
+				$account_info		=	$accountService->get_accountInfo();
+				$obj = new stdclass;
+				$obj->company_info	=	$account_info->companyInfo;
+				$obj->billing_info	=	\Helpers::arrayToObject($billing_info);
+				$result = $accountService->create_braintree_account($obj);
+				/*successful account creation*/
+				if($result['success']==true){				
+					return json_encode(array(
+							'error'=>false,
+							));
+				}
+				/*unexpected errors occured during account creation*/
+				else{
+					return json_encode(array(
+							'error'=>false,
+							'unexpected_error'=>true,
+							'messages'=>$result['message']
+							));
+				}
+			}
+			
+			
+    }),
     		
     'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
     		$accountService = new Account\Services\AccountService;
+			if($accountService->braintree_exist()){
 			return View::of_layout()->partial('contents', 'settings/settings_change_card_view',
 					array(
 						'accountInfo'	=> $accountService->get_accountInfo()
 					) 			
-			);		     
+			);
+			}
+			else{
+					return Redirect::to('settings/upgrade');
+			}
     }),
-    
+    /*handle ajax request from change_card view*/
 	'POST /settings/change_card' => Array('needs' => 'S36ValueObjects', 'do' => function() {
 		$card_data = Input::all();
 		$rules = array(
