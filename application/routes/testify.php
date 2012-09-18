@@ -101,6 +101,7 @@ return array(
        
         $tf->test('Service Test', function($tf) {
             $tf->assert($tf->data->pub->perform());
+            $tf->data->pub->perform();
         });
 
         $tf->run(); 
