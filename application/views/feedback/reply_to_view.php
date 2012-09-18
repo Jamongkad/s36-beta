@@ -11,7 +11,7 @@
     }
     ul.add-bcc li {
         padding-left: 5px; 
-
+        line-height: 3px;
     }
 </style>
 <?if($user->replyto):?>
