@@ -94,7 +94,8 @@
             </td>
             -->
         </tr>
-        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" /> send me a copy <?=$user->replyto?></td></tr>
+        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" /> 
+                                           <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
     </table>
 </div>
 <?else:?>
