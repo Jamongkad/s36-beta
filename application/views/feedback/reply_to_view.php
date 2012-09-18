@@ -33,7 +33,7 @@
             </td>
             <td id="bcc-target">
                 <!--<input id="first-bcc" class="regular-text" type="text" name="bcc[]" value="" />-->
-                <textarea class="regular-text" name="bcc" rows="3"></textarea>
+                <textarea class="regular-text" name="bcc" rows="2"></textarea>
             </td>
             <td class="small" valign="top">
                 <span class="reply-text">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) </span>
