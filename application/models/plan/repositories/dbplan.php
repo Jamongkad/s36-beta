@@ -7,16 +7,21 @@ use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 class DBPlan extends S36DataObject{
 
 
-function get_planInfo($planId = NULL){
+public function get_planInfo($planId = NULL){
 		$tbl_plan = DB::table('Plan');
-		$planInfo = (!empty($planId)) ? $tbl_plan->where('planid','=',$planId)->order_by('price','desc')->first() : $tbl_plan->order_by('price','desc')->get();
-		@$planInfo->upgrade_images = $this->get_upgradePlanImages($planId);
-		$result = $planInfo;
-		return $result;
+		if(!empty($planId)){
+			$planInfo = $tbl_plan->where('planid','=',$planId)
+										->order_by('price','desc')->first();
+			$planInfo->upgrade_images = $this->get_upgradePlanImages($planId);
+			return $planInfo;
+		}
+		else{
+			return $tbl_plan->order_by('price','desc')->get();
+		}
 }
 
 
-function get_upgradePlanImages($planId = NULL){		
+public function get_upgradePlanImages($planId = NULL){		
 
 	
 	if(!empty($planId)):

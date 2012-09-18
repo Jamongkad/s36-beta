@@ -84,7 +84,7 @@ return array (
 				case 'success' :
 							$result = $accountService->update_plan($planId);			
 							if($result){
-							header('Location: /settings/upgrade/?action=completed');			
+								return Redirect::to('/settings/upgrade/?action=completed');			
 							}
 					break;
 				case 'completed' :

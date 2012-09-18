@@ -7,12 +7,12 @@ use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 
 class AccountService{
 
-var $user;
-var $DBCompany;
-var $DBPlan;
-var $S36Braintree;
+public  $user;
+private $DBCompany;
+private $DBPlan;
+private $S36Braintree;
 
-function __construct(){
+public function __construct(){
 		// initialize associate models
 		$this->user 			= S36Auth::user();		
 		$this->DBCompany 		= new \Company\Repositories\DBCompany;
@@ -22,7 +22,7 @@ function __construct(){
 }
 
 
-function get_accountInfo(){
+public function get_accountInfo(){
 
 		$company_info 						= $this->DBCompany->get_company_info();
 		$company_info->account_user 	= $this->DBCompany->get_account_user();
@@ -39,7 +39,7 @@ function get_accountInfo(){
 		return \Helpers::arrayToObject($result);
 }
 
-function update_plan($planId){
+public function update_plan($planId){
 		$newPlan = $this->DBPlan->get_PlanInfo($planId);
 		if( ($this->DBCompany->update_plan($planId)) && $this->S36Braintree->update_subscription($newPlan->name) )
 		{
@@ -48,9 +48,9 @@ function update_plan($planId){
 
 	}
 	
-function update_credit_card($data){
+public function update_credit_card($data){
 	$card_number 	= 	$data['card_number'];
-	$card_cvv 	= 	$data['card_cvv'];
+	$card_cvv 		= 	$data['card_cvv'];
 	$expire_month	=	$data['expire_month'];
 	$expire_year	=	$data['expire_year'];
 	$billing_zip	=	$data['billing_zip'];
