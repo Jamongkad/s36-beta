@@ -11,7 +11,7 @@ use \Feedback\Repositories\DBFeedback;
 use \Email\Entities\PublishedFeedbackData;
 use \Email\Services\EmailService;
 
-use DB, Config, Helpers, Views;
+use DB, Config, Helpers, View;
 
 class PublishService {
 
