@@ -1,3 +1,6 @@
+<style>
+    .reply-text {font-size: 10px;}
+</style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -9,7 +12,7 @@
         <tr>
             <td width="15%"><strong>Reply To :</strong></td>
             <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-            <td class="small"><span class="grey">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure')?>)</span></td>
+            <td class="small"><span class="reply-text">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure')?>)</span></td>
         </tr>
         <?endif?>
         <tr>
