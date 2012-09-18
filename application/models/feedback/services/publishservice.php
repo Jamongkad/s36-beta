@@ -27,6 +27,14 @@ class PublishService {
             throw new Exception("Feedback ID cannot be empty.");
         }
 
+        if(Helpers::isnull_or_emptystring($company_id)) {
+            throw new Exception("Company ID cannot be empty.");
+        }
+
+        if(Helpers::isnull_or_emptystring($user_id)) {
+            throw new Exception("User ID cannot be empty.");
+        }
+
         $this->feedback_id = $feedback_id; 
         $this->company_id  = $company_id;
         $this->user_id     = $user_id; 
