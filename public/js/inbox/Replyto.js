@@ -8,8 +8,8 @@ jQuery(function($) {
             "Send Reply": function() { 
                  //alert("Reply Successful!");
                  //$(this).dialog('close');
-                 var inputs = $(this).children('form').serialize();
-                 console.log(inputs);
+                 var form_inputs = $(this).children('form').serialize();
+                 console.log(form_inputs);
             }
           , Cancel: function() { $(this).dialog('close'); }
         }
