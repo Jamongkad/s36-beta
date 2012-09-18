@@ -15,7 +15,7 @@
                         <p>All form fields are required.</p> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
                             <?=View::make('feedback/reply_to_view', Array(
-                                'user' => S36Auth::user();         
+                                'user' => S36Auth::user()
                               , 'feedid' => $id
                               , 'feedback'=> $feed
                             ))?>
