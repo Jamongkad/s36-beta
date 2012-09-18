@@ -35,8 +35,9 @@ jQuery(function($) {
     });
 
     $(document).delegate('.reply-to', 'click', function(e) {
-        console.log($(this).attr('feedid'));
-        //$(this).siblings('.dialog-form').dialog('open');
+        console.log();
+        var feedid = $(this).attr('feedid');
+        $('.dialog-form[feedid='+feedid+']').dialog('open');
     });
 
     $(document).delegate(".feedback-avatar", "hover", function(e) {
