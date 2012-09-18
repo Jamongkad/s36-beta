@@ -23,7 +23,7 @@ class PublishService {
 
     public function __construct($feedback_id, $company_id, $user_id) { 
 
-        if($feedback_id == null) {
+        if(Helpers::isnull_or_emptystring($feedback_id)) {
             throw new Exception("Feedback ID cannot be empty.");
         }
 

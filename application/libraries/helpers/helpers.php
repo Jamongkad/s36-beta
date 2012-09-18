@@ -131,9 +131,7 @@ class Helpers {
     
     //wrapper
     public static function dump($data) {
-
         return self::show_data($data);
-
     }
 
 
@@ -313,6 +311,10 @@ class Helpers {
         }
 
         return $time;       
+    }
+
+    public static function isnull_or_emptystring($string) {
+        return (!isset($question) || trim($question)===''); 
     }
 
     public static function contains_tld($string) {
