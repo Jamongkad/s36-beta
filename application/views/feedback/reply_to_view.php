@@ -55,13 +55,19 @@
             <td>
                 <ul class="add-bcc" >
                     <?if($user->ffemail1):?>
-                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
+                        <li>
+                            <?=HTML::link($user->ffemail1, $user->alias1."<".$user->ffemail1.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                        </li>
                     <?endif?>
                     <?if($user->ffemail2):?>
-                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias2."<".$user->ffemail2.">", array('class' => 'linky'))?></li>
+                        <li>
+                            <?=HTML::link($user->ffemail2, $user->alias2."<".$user->ffemail2.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                        </li>
                     <?endif?>
                     <?if($user->ffemail3):?>
-                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias3."<".$user->ffemail3.">", array('class' => 'linky'))?></li>
+                        <li>
+                            <?=HTML::link($user->ffemail3, $user->alias3."<".$user->ffemail3.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                        </li>
                     <?endif?>
                 </ul>
             </td>

@@ -38,7 +38,7 @@ jQuery(function($) {
     var seen = {};
     $('.add-bcc > li a').bind("click", function(e) {
 
-        var my_id = $(this).parents('li').attr('feedid');
+        var my_id = $(this).attr('feedid');
         var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
 
         console.log(textarea);
