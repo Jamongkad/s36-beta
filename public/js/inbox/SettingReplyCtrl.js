@@ -39,7 +39,7 @@ function SettingReplyCtrl($scope) {
         $event.preventDefault();
     };
 
-    $scope.delete_msg = function(data) {
+    $scope.delete_msg = function(data, $event) {
         console.log(data);
         /*
          *
