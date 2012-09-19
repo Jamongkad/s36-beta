@@ -72,7 +72,7 @@
             </ul>
 
             <ul>
-                <li ng-repeat="msg in msgs">
+                <li ng-repeat="msg in get_msgs()">
                     <span>
                         {{msg.name}} {{msg.age}}
                     </span>
