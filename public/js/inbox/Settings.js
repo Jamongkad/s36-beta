@@ -61,6 +61,7 @@ jQuery(function($) {
     }
     
     $(document).delegate('a.add-new-message', 'click', function(e) {  
+        console.log($("#replymsg-list"));
         e.preventDefault();
     })
 })

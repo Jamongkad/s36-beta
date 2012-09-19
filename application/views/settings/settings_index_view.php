@@ -55,8 +55,11 @@
             <br/>
             <span style="margin-left:6px;">Write custom messages to reply to a person with a single click.</span>
         </div>
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
+        
+        <div id="replymsg-list">
+            <div class="grids">
+                <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
+            </div>
         </div>
 
         <div class="grids" style="background:#fffde5">
