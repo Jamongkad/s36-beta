@@ -231,7 +231,7 @@ return array(
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         Helpers::dump(Input::get());
         $bcc = Input::get('bcc');
-        $bcc = substr($bcc, '', -1);
+        $bcc = substr($bcc, 0, -1);
         echo $bcc;
         /*
         $data = Input::get();
