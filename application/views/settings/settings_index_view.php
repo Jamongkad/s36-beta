@@ -61,7 +61,6 @@
                 <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
             </div>
             <h2>{{get_total_todos()}}</h2>
-            <h2>{{get_msgs()}}</h2>
             <ul>
                 <li ng-repeat="todo in todos">
                     <input type="checkbox" ng-model="todo.done" />

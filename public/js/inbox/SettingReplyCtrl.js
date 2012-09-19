@@ -10,11 +10,6 @@ function SettingReplyCtrl($scope) {
       , dataType: 'json'
       , async: true
       , url: 'settings/get_msgs'
-      , success: function(data) {
-            $scope.$apply(function() {
-                $scope.msgs = data;     
-            })   
-        }
     });
 
 
