@@ -19,9 +19,9 @@ function SettingReplyCtrl($scope) {
         }
         
         $.ajax({
-            url: 'feedback/save_todos'     
-          , type: "POST"
-          , data: $scope.todos
+            type: "POST"
+          , url: 'settings/save_reply_msg'     
+          , data: {"msg": $scope.todos}
         })
 
         $event.preventDefault();

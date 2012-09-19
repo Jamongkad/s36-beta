@@ -249,5 +249,9 @@ return array (
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'settings/settings_cancel_account_view');
     }),
+
+    'POST /settings/save_reply_msg' => function() {
+        Helpers::dump(Input::get());
+    }
 );
 
