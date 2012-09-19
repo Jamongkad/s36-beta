@@ -57,19 +57,16 @@
         </div>
         
         <div ng-controller="SettingReplyCtrl" id="replymsg-list">
-            <div class="grids">
-                <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
-            </div>
  
-            <ul>
-                <li ng-repeat="msg in get_msgs()">
-                    <span>
-                        {{msg.name}} {{msg.age}}
-                    </span>
-                </li>
-            </ul>
+            <div ng-repeat="msg in get_msgs()">
+                <div class="grids">
+                    <div class="g1of2">
+                        {{msg.age}}<input type="text" class="regular-text" name="reply_message["+{{msg.name}}+"]" value=""/>
+                    </div>
+                </div>
+            </div>
 
-            <div class="grids" style="background:#fffde5">
+            <div class="grids" style="background:#fffde5">                
                 <div class="g1of3">
                     <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
                 </div>
