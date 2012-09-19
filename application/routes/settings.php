@@ -257,8 +257,14 @@ return array (
     'GET /settings/get_msgs' => function() {
         $redis = new redisent\Redis;
         $key = Config::get('application.subdomain').":settings:msg";
-        Helpers::dump($key);
         $data = $redis->hgetall($key);
+
+        $final_data = Array();
+        foreach($data as $key => $val) {
+            $final_data[$key] => $val;
+        }
+
+        Helpers::dump($final_data); 
         echo json_encode($data);
     }
 );
