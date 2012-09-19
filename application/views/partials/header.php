@@ -17,6 +17,7 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
         <?
             $js_scripts = Array(
                '/js/jquery.switcharoo.js'
@@ -42,8 +43,7 @@
              , '/js/inbox/InboxFilters.js'
              , '/js/inbox/FeedSetup.js'
              , '/js/inbox/Status.js'
-             , '/js/inbox/Replyto.js'
-             , '/js/inbox/SettingReplyCtrl.js'
+             , '/js/inbox/Replyto.js' 
              , '/js/inbox/Settings.js'
              , '/js/inbox/s36application.js'
              //, '/js/inbox/combined-min.js'
