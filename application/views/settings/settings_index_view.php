@@ -62,7 +62,7 @@
             </div>
             <ul>
                 <li ng-repeat="todo in todos">
-                    {{todo.text}} 
+                    {{todo.text}} <input type="checkbox" ng-model="todo.done" />
                 </li>
             </ul>
         </div>
