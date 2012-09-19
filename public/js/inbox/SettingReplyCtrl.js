@@ -16,6 +16,10 @@ function SettingReplyCtrl($scope) {
         return $scope.todos.length;           
     };
 
+    $scope.get_msgs = function() {
+        return $scope.msgs;   
+    };
+
     $scope.add_todo = function($event) {
         if(!$scope.form_todo_text) {
             alert("cannot be blank!");
