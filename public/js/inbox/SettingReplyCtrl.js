@@ -19,4 +19,9 @@ function SettingReplyCtrl($scope) {
         }
         $event.preventDefault();
     };
+
+    $scope.clear_completed = function($event) {
+        
+        $event.preventDefault();
+    }
 }
