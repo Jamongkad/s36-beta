@@ -265,7 +265,7 @@ return array (
         }
 
         Helpers::dump($final_data); 
-        echo json_encode($data);
+        //echo json_encode($data);
     }
 );
 
