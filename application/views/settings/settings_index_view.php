@@ -59,15 +59,12 @@
         <div ng-controller="SettingReplyCtrl" id="replymsg-list">
              
             <div ng-repeat="msg in get_msgs()">
-                <script>
-                    var data = {{msg.id}};
-                </script>
                 <div class="grids">
                     <div class="g1of3">
                         <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3" style="padding-top:8px;">
-                         <a href="#" class="gray-btn" ng-click="delete_msg(data, $event)">- Delete Message</a>
+                         <a href="#" class="gray-btn" ng-click="delete_msg(msg.id, $event)">- Delete Message</a>
                     </div>
                 </div>
             </div>
