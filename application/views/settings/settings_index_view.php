@@ -70,7 +70,7 @@
                 </li>
             </ul>
 
-            <!-- 
+
             <ul>
                 <li ng-repeat="msg in msgs">
                     <span>
@@ -78,7 +78,7 @@
                     </span>
                 </li>
             </ul>
-            -->
+
 
             <input type="text" ng-model="form_todo_text" ng-model-instant>
             <button class="btn" ng-click="add_todo($event)">Add</button>
