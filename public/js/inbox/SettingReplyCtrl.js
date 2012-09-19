@@ -1,12 +1,5 @@
 function SettingReplyCtrl($scope) {
-
-    $scope.todos = [
-        {text: 'Mathew is kewl', done: true}
-      , {text: 'He loves Irene.', done: true}
-    ];
-
-    $scope.msgs;
-    
+ 
     $.ajax({
         type: 'GET'    
       , dataType: 'json'
@@ -18,10 +11,6 @@ function SettingReplyCtrl($scope) {
             }) 
         }
     });
-
-    $scope.get_total_msgs = function() {
-        return $scope.msgs.length;           
-    };
 
     $scope.get_msgs = function() {
         return $scope.msgs;   

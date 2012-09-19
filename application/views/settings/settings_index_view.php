@@ -60,15 +60,7 @@
             <div class="grids">
                 <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
             </div>
-            <ul>
-                <li ng-repeat="todo in todos">
-                    <input type="checkbox" ng-model="todo.done" />
-                    <span class="done-{{todo.done}}">
-                        {{todo.text}} 
-                    </span>
-                </li>
-            </ul>
-
+ 
             <ul>
                 <li ng-repeat="msg in get_msgs()">
                     <span>
