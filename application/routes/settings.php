@@ -260,7 +260,7 @@ return array (
         $final_data['text'] = $redis->hget($key, $rand_key);
         $final_data['id'] = $rand_key;
 
-        echo json_encode(Array($final_data));
+        echo json_encode($final_data);
     },
 
     'GET /settings/get_msgs' => function() {
