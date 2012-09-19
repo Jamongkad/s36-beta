@@ -50,6 +50,7 @@ function SettingReplyCtrl($scope) {
         })
  
         $scope.todos = todos; 
+
         $event.preventDefault();
     }
 }
