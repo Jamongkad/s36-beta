@@ -1,14 +1,22 @@
 function SettingReplyCtrl($scope) {
     
-    $scope.get_msgs = function() { 
-        var d = $.ajax({
+    function my_msg() { 
+        $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: true
           , url: 'settings/get_msgs'
+          , success: function(data) {
+                $scope.$apply(function(){
+                    $scope.msgs = data;      
+                }) 
+            }
         });
+    }
 
-        return d;
+    $scope.get_msgs = function() {
+        my_msg();
+        return $scope.msgs;   
     };
 
     $scope.add_msg = function($event) {
