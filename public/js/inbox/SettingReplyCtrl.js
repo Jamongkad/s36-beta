@@ -47,7 +47,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.edit_msg = function(id, $event) {        
-        var input = $("#"+id+"input[name=reply_message]");
+        var input = $("input#"+ id +"[name=reply_message]");
         console.log(input);
         $event.preventDefault();
     };
