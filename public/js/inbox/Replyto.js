@@ -40,8 +40,10 @@ jQuery(function($) {
 
         var my_id = $(this).attr('feedid');
         var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
+        var email = $(this).attr('email');
 
         console.log(textarea);
+        console.log(email);
         console.log(my_id);
         
         /*

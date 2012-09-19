@@ -56,17 +56,20 @@
                 <ul class="add-bcc" >
                     <?if($user->ffemail1):?>
                         <li>
-                            <?=HTML::link($user->ffemail1, $user->alias1."<".$user->ffemail1.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                            <?=HTML::link('', $user->alias1."<".$user->ffemail1.">"
+                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail1))?>
                         </li>
                     <?endif?>
                     <?if($user->ffemail2):?>
                         <li>
-                            <?=HTML::link($user->ffemail2, $user->alias2."<".$user->ffemail2.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                            <?=HTML::link('', $user->alias2."<".$user->ffemail2.">"
+                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail2))?>
                         </li>
                     <?endif?>
                     <?if($user->ffemail3):?>
                         <li>
-                            <?=HTML::link($user->ffemail3, $user->alias3."<".$user->ffemail3.">", array('class' => 'linky', 'feedid' => $feedback->id))?>
+                            <?=HTML::link('', $user->alias3."<".$user->ffemail3.">"
+                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail3))?>
                         </li>
                     <?endif?>
                 </ul>
