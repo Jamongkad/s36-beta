@@ -17,21 +17,19 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.add_msg = function($event) {
-        $scope.msgs.push({text: $scope.form_msg_text});
-        /*
-        if(!$scope.form_todo_text) {
+        if(!$scope.form_msg_text) {
             alert("cannot be blank!");
         } else { 
-            $scope.todos.push({text: $scope.form_todo_text, done: false});
-            $scope.form_todo_text = null;
+            $scope.msgs.push({text: $scope.form_msg_text});
+            $scope.msgs.form_msg_text = null;
+
+            $.ajax({
+                type: 'POST'
+              , url: 'settings/save_reply_msg'     
+              , data: {"msg": $scope.form_msg_text}
+            })
+
         }
-        
-        $.ajax({
-            type: 'POST'
-          , url: 'settings/save_reply_msg'     
-          , data: {"msg": $scope.todos}
-        })
-        */
 
         $event.preventDefault();
     };
