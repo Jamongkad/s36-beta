@@ -1,4 +1,6 @@
 function SettingReplyCtrl($scope) {
+
+    $scope.msgs;
     
     function my_msg() { 
         $.ajax({
