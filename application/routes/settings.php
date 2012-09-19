@@ -252,7 +252,7 @@ return array (
 
     'POST /settings/save_reply_msg' => function() {
         Helpers::dump(Input::get());
-    }
+    },
 
     'GET /settings/get_msgs' => function() {
         $data = Array(
