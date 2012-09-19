@@ -1,4 +1,9 @@
  <!-- contents -->
+<style>
+    .replymsg-list {
+       margin-top:10px;    
+    }
+</style>
 <?=Form::open('settings/savesettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
