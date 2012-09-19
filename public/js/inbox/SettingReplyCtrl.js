@@ -23,10 +23,9 @@ function SettingReplyCtrl($scope) {
     $scope.clear_completed = function($event) {
         console.log($scope.todos);
 
-        var todos = jQuery.grep($scope.todos, function(index, value) { 
-            return !value.todos; 
+        var todos = _.filter($scope.todos, function(todo) {
+            return !todo.done;     
         })
-
         console.log(todos);
        
         $event.preventDefault();
