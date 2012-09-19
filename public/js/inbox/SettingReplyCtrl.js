@@ -11,7 +11,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.add_todo = function($event) {
-        if(typeof $scope.form_todo_text === 'undefined') {
+        if(!$scope.form_todo_text) {
             alert("cannot be blank!");
         } else { 
             $scope.todos.push({text: $scope.form_todo_text, done: false});
