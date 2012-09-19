@@ -6,8 +6,9 @@ function SettingReplyCtrl($scope) {
       , {text: 'He loves Irene.', done: true}
     ];
 
-    $scope.add_todo = function() {
+    $scope.add_todo = function($event) {
         $scope.todos.push({text: $scope.form_todo_text, done: false});
         $scope.form_todo_text = '';
+        $event.preventDefault();
     };
 }
