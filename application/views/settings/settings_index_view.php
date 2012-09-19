@@ -51,34 +51,35 @@
     <p class="small"><strong></strong></p>
     <div class="grids border-bottom">
         <div class="grids">
-            <strong style="margin-left:6px;">Fast forwarding Options</strong>
+            <strong style="margin-left:6px;">Feedback Reply Messages</strong>
             <br/>
-            <span style="margin-left:6px;">Fast forward allows you to forward feedback to a specific person with a single click.</span>
-        </div>
-        <div class="grids" style="padding-top:6px">
-            <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
-            <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
+            <span style="margin-left:6px;">Write custom messages to reply to a person with a single click.</span>
         </div>
         <div class="grids">
             <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
-            <div class="g1of2"><input type="text" class="regular-text" name="alias1" value="<?=$user->alias1?>"/></div>
         </div>
         <div class="grids">
             <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
-            <div class="g1of2"><input type="text" class="regular-text" name="alias2" value="<?=$user->alias2?>"/></div>
         </div>
         <div class="grids">
             <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
-            <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
         </div>                    
     </div>
     <div class="grids border-bottom">
         <div style="padding:8px 0px 0px;">
-            <strong style="margin-left:6px;">Reply–To Email Address</strong>
+            <strong style="margin-left:6px;">Feedback Request Messages</strong> 
             <br/>
-            <span style="margin-left:6px;">Configure the email address that you would like to reply to your customers with.</span>
+            <span style="margin-left:6px;">Write custom request feedback messages you can send to a person with a single click.</span>
         </div> 
-        <input type="text" class="regular-text" name="replyTo" style="width:240px" value="<?=$user->replyto?>"/>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
+        </div>                     
     </div>
 
 </div>
