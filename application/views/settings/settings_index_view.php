@@ -57,7 +57,6 @@
         </div>
         
         <div ng-controller="ReplyCtrl" id="replymsg-list">
-            {{total_todos}}
             <div class="grids">
                 <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
             </div>

@@ -65,7 +65,3 @@ jQuery(function($) {
         e.preventDefault();
     })
 })
-
-function ReplyCtrl($scope) {
-    $scope.total_todos = 4;    
-}
