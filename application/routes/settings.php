@@ -253,5 +253,19 @@ return array (
     'POST /settings/save_reply_msg' => function() {
         Helpers::dump(Input::get());
     }
+
+    'GET /settings/get_msgs' => function() {
+        $data = Array(
+            array(
+                'name' =>  'Mathew'
+              , 'age' => 30
+            )
+          , array(   
+                'name' =>  'Irene'
+              , 'age' => 27
+            )
+        );
+        echo json_encode($data);
+    }
 );
 

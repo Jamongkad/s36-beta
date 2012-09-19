@@ -5,6 +5,12 @@ function SettingReplyCtrl($scope) {
       , {text: 'He loves Irene.', done: true}
     ];
 
+    $scope.msgs = $.ajax({
+        type: 'GET'    
+      , async: false
+      , url: 'settings/get_msgs'
+    });
+
 
     $scope.get_total_todos = function() {
         return $scope.todos.length;           
