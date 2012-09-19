@@ -35,17 +35,18 @@ function SettingReplyCtrl($scope) {
             })
             $scope.form_msg_text = null;
         }
-
         $event.preventDefault();
     };
 
     $scope.delete_msg = function(data, $event) {
         $.ajax({
             url: 'settings/delete_msg/' + data
-          , success: function() { 
-                my_msg();
-            }
+          , success: function() { my_msg(); }
         }); 
         $event.preventDefault();
     };
+
+    $scope.edit_msg = function(id, $event) {        
+        $event.preventDefault();
+    }
 }
