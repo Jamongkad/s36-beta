@@ -259,13 +259,15 @@ return array (
         $key = Config::get('application.subdomain').":settings:msg";
         $data = $redis->hgetall($key);
 
-        $final_data = Array();
+        $collection = Array();
         foreach($redis->hkeys($key) as $val) {
-            $final_data[$val] = $redis->hget($key, $val);
+            $final_data = Array();
+            $final_data['text'] = $redis->hget($key, $val);
+            $final_data['id'] = $val;
+            $collection[] = $final_data;
         }
 
-        Helpers::dump($final_data); 
-        //echo json_encode($data);
+        echo json_encode($collection);
     }
 );
 
