@@ -45,17 +45,7 @@ function SettingReplyCtrl($scope) {
           , success: function() { 
                 my_msg();
             }
-        });
-        /*
-         *
-        $scope.msgs.pop(); 
-        var todos = _.filter($scope.todos, function(todo) {
-            return !todo.done;     
-        })
- 
-        $scope.todos = todos; 
-        */
-         
+        }); 
         $event.preventDefault();
-    }
+    };
 }
