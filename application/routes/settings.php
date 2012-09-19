@@ -261,7 +261,7 @@ return array (
 
         $final_data = Array();
         foreach($data as $key => $val) {
-            $final_data[$key] => $val;
+            $final_data[$key] = $val;
         }
 
         Helpers::dump($final_data); 
