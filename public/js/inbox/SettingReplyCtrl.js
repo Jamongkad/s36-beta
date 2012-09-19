@@ -5,4 +5,9 @@ function SettingReplyCtrl($scope) {
         {text: 'Mathew is kewl', done: true}
       , {text: 'He loves Irene.', done: true}
     ];
+
+    $scope.add_todo = function() {
+        $scope.todos.push({text: $scope.form_todo_text, done: false});
+        $scope.form_todo_text = '';
+    };
 }
