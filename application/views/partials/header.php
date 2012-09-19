@@ -11,15 +11,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
+        <?=HTML::script('js/head.min.js')?>
+        <?=HTML::script('js/jquery.tinymce.js')?>
+        <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
+
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?=HTML::script('js/head.min.js')?>
-        <?=HTML::script('js/jquery.tinymce.js')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
         <?
             $js_scripts = Array(
                '/js/jquery.switcharoo.js'
