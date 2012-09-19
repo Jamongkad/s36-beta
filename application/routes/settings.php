@@ -1,5 +1,6 @@
 <?php
 
+use redisent;
 $category = new DBCategory;
 
 return array (
@@ -255,14 +256,9 @@ return array (
     },
 
     'GET /settings/get_msgs' => function() {
-        $data = Array(
-            array(
-                'text' =>  'Mathew'
-            )
-          , array(   
-                'text' =>  'Irene'
-            )
-        );
+        $redis = new redisent\Redis;
+        $key = Config::get('application.subdomain')."settings:msg";
+        $data = $redis->smembers($key);
         echo json_encode($data);
     }
 );
