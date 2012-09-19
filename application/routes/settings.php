@@ -261,7 +261,7 @@ return array (
 
         $final_data = Array();
         foreach($redis->hkeys($key) as $val) {
-            $final_data[$val] = $redis->hget($val);
+            $final_data[$val] = $redis->hget($key, $val);
         }
 
         Helpers::dump($final_data); 
