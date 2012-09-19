@@ -59,5 +59,8 @@ jQuery(function($) {
            e.preventDefault();
        })
     }
-
+    
+    $(document).delegate('a.add-new-message', 'click', function(e) {  
+        e.preventDefault();
+    })
 })
