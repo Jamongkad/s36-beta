@@ -229,7 +229,7 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
-        Helpers::dump(Input::get());
+        //Helpers::dump(Input::get());
         echo "success";
         /*
         $data = Input::get();
