@@ -274,7 +274,9 @@ return array (
     },
 
     'GET /settings/delete_msg/(:any)' => function($id) {
-        Helpers::dump($id);
+        $redis = new redisent\Redis;
+        $key = Config::get('application.subdomain').":settings:msg";
+        $redis->hdel($key, $id); 
     }
 );
 
