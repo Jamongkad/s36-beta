@@ -34,7 +34,6 @@ function SettingReplyCtrl($scope) {
               , data: {"msg": $scope.form_msg_text}
               , success: function(data) {
                     $scope.$apply(function(){
-                        console.log(data);
                         $scope.msgs.push(data);
                     }) 
                 }
@@ -47,7 +46,7 @@ function SettingReplyCtrl($scope) {
     $scope.delete_msg = function(data, $event) {
         $.ajax({
             url: 'settings/delete_msg/' + data
-          , success: function() { my_msg(); }
+          , success: function() { console.log(data); }
         }); 
         $event.preventDefault();
     };
