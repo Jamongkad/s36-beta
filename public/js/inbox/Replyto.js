@@ -20,8 +20,7 @@ jQuery(function($) {
           , Cancel: function() { $(this).dialog('close'); }
         }
       , close: function(e, ui) {    
-          $(".regular-text[name=bcc], .regular-text[name=message]").val("");
-
+            $(".regular-text[name=bcc], .regular-text[name=message]").val("");
         }
     });
 
