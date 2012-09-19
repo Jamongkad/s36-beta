@@ -31,7 +31,9 @@ function SettingReplyCtrl($scope) {
               , dataType: 'json'
               , data: {"msg": $scope.form_msg_text}
               , success: function(data) {
-                    console.log(data) ;
+                    $scope.$apply(function(){
+                        $scope.msgs = data;      
+                    }) 
                 }
             })
             $scope.form_msg_text = null;
