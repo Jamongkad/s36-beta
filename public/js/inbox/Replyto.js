@@ -21,8 +21,9 @@ jQuery(function($) {
         }
       , close: function(e, ui) {    
             var form = $(this).children('form');
-            form.children('.regular-text').val("");
+            $(form, "input, textarea").val("");
             console.log(form);
+
         }
     });
 
