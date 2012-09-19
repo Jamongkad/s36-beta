@@ -64,6 +64,7 @@
                         <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/> 
                     </div>
                      <div class="g2of2">
+                         <br/>
                          <a href="#" class="gray-btn" style="margin-top:5px" ng-click="delete_msg($event)">- delete</a>
                     </div>
                 </div>
