@@ -1,6 +1,5 @@
 <?php
 
-use redisent;
 $category = new DBCategory;
 
 return array (
