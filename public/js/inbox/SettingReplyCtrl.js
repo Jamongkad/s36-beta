@@ -5,23 +5,25 @@ function SettingReplyCtrl($scope) {
       , {text: 'He loves Irene.', done: true}
     ];
     
+    $scope.msgs = $.ajax({
+        type: 'GET'    
+      , dataType: 'json'
+      , async: true
+      , url: 'settings/get_msgs'
+      , success: function(data) {
+            $scope.$apply(function() {
+                $scope.msgs = data;     
+            })   
+        }
+    });
+
+
     $scope.get_total_todos = function() {
         return $scope.todos.length;           
     };
 
     $scope.get_msgs = function() {
-        $.ajax({
-                type: 'GET'    
-              , async: false
-              , dataType: 'json'
-              , url: 'settings/get_msgs'
-              , success: function(data) {
-                    console.log(data);
-                    $scope.$apply(function() {
-                        $scope.msgs = data;     
-                    })   
-                }
-        });
+        return $scope.msgs;   
     };
 
     $scope.add_todo = function($event) {
