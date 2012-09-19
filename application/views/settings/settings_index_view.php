@@ -68,8 +68,10 @@
                     </span>
                 </li>
             </ul>
-            <input type="text" ng-model="form_todo_text" ng-model-instant>
-            <button class="btn" ng-click="add_todo()">Add</button>
+            <form class="form-hor">
+                <input type="text" ng-model="form_todo_text" ng-model-instant>
+                <button class="btn" ng-click="add_todo()">Add</button>
+            </input>
         </div>
 
         <div class="grids" style="background:#fffde5">
