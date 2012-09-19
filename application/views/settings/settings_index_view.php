@@ -56,7 +56,8 @@
             <span style="margin-left:6px;">Write custom messages to reply to a person with a single click.</span>
         </div>
         
-        <div id="replymsg-list">
+        <div ng-controller="ReplyCtrl" id="replymsg-list">
+            {{total_todos}}
             <div class="grids">
                 <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
             </div>
