@@ -46,7 +46,7 @@ function SettingReplyCtrl($scope) {
     $scope.delete_msg = function(data, $event) {
         $.ajax({
             url: 'settings/delete_msg/' + data
-          , success: function() { $("div#" + id + ".grids").remove(); }
+          , success: function() { $("div#" + data + ".grids").remove(); }
         }); 
         $event.preventDefault();
     };
