@@ -19,6 +19,10 @@ jQuery(function($) {
             }
           , Cancel: function() { $(this).dialog('close'); }
         }
+      , close: function(e, ui) {    
+            var form = $(this).children('form');
+            form.children('.regular-text').val("");
+        }
     });
 
     $(document).delegate('.reply', 'click', function(e) {
