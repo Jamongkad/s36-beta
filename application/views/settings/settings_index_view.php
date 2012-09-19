@@ -45,11 +45,33 @@
     -->
 </div>
 <div class="block graybg">
-    <h3>TEMPLATE REPLY</h3>
+    <h3>TEMPLATE REPLY MESSAGES</h3>
 </div>
 <div class="block">
-    <p class="border-bottom"><input type="checkbox" /> Tag incomming items not acted on after <select class="regular-select"><option>10 days</option></select> as inactive. </p>
-    <p><input type="checkbox" /> Delete ignored posts permanently after 30 days.  </p>
+    <p class="small"><strong></strong></p>
+    <div class="grids border-bottom">
+        <div class="grids">
+            <strong style="margin-left:6px;">Fast forwarding Options</strong>
+            <br/>
+            <span style="margin-left:6px;">Fast forward allows you to forward feedback to a specific person with a single click.</span>
+        </div>
+        <div class="grids" style="padding-top:6px">
+            <div class="g1of2"><strong style="margin-left:6px;">Email Address</strong></div>
+            <div class="g1of2"><strong style="margin-left:6px;">Alias</strong></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias1" value="<?=$user->alias1?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias2" value="<?=$user->alias2?>"/></div>
+        </div>
+        <div class="grids">
+            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
+        </div>                    
+    </div>
 </div>
 <!--
 <div class="block graybg">
