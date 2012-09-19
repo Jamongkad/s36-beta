@@ -20,8 +20,8 @@ jQuery(function($) {
           , Cancel: function() { $(this).dialog('close'); }
         }
       , close: function(e, ui) {    
-            $(this).children('form > input, textarea').val("");
-
+            var form = $(this).children('form');
+            console.log(form);
         }
     });
 
