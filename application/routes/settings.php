@@ -251,7 +251,10 @@ return array (
     }),
 
     'POST /settings/save_reply_msg' => function() {
-        echo Helpers::randid();
+        $rand = Helpers::randid();
+        $key = Config::get('application.subdomain').":settings:msg";
+        $redis = new redisent\Redis;
+        $redis->hset($key, "msg-".$rand, Input::get('msg'));
     },
 
     'GET /settings/get_msgs' => function() {
