@@ -7,23 +7,24 @@ function SettingReplyCtrl($scope) {
 
     $scope.msgs;
     
-    $.ajax({
-        type: 'GET'    
-      , dataType: 'json'
-      , async: true
-      , url: 'settings/get_msgs'
-      , success: function(data) {
-            $scope.$apply(function(){
-                $scope.msgs = data;      
-            }) 
-        }
-    });
-
-    $scope.get_total_todos = function() {
-        return $scope.todos.length;           
+    $scope.get_total_msgs = function() {
+        return $scope.msgs.length;           
     };
 
     $scope.get_msgs = function() {
+
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: true
+          , url: 'settings/get_msgs'
+          , success: function(data) {
+                $scope.$apply(function(){
+                    $scope.msgs = data;      
+                }) 
+            }
+        });
+
         return $scope.msgs;   
     };
 
@@ -50,7 +51,6 @@ function SettingReplyCtrl($scope) {
         })
  
         $scope.todos = todos; 
-
         $event.preventDefault();
     }
 }
