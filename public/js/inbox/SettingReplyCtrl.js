@@ -4,8 +4,6 @@ function SettingReplyCtrl($scope) {
         {text: 'Mathew is kewl', done: true}
       , {text: 'He loves Irene.', done: true}
     ];
-
-    $scope.msgs;
     
     $.ajax({
         type: 'GET'    
