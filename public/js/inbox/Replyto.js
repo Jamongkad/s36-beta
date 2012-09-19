@@ -43,6 +43,7 @@ jQuery(function($) {
         var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
 
         console.log(textarea);
+        console.log(my_id);
         
         /*
         var pointer = $(this).index();

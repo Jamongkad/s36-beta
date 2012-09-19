@@ -53,15 +53,15 @@
                 <strong>Add to Bcc : </strong>
             </td>
             <td>
-                <ul class="add-bcc" feedid="<?=$feedback->id?>">
+                <ul class="add-bcc" >
                     <?if($user->ffemail1):?>
-                        <li><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
+                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail2):?>
-                        <li><?=HTML::link('', $user->alias2."<".$user->ffemail2.">", array('class' => 'linky'))?></li>
+                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias2."<".$user->ffemail2.">", array('class' => 'linky'))?></li>
                     <?endif?>
                     <?if($user->ffemail3):?>
-                        <li><?=HTML::link('', $user->alias3."<".$user->ffemail3.">", array('class' => 'linky'))?></li>
+                        <li feedid="<?=$feedback->id?>"><?=HTML::link('', $user->alias3."<".$user->ffemail3.">", array('class' => 'linky'))?></li>
                     <?endif?>
                 </ul>
             </td>
