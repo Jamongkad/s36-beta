@@ -60,7 +60,7 @@
              
             <div ng-repeat="msg in get_msgs()">
                 <script>
-                    var data = msg.id;
+                    var data = {{msg.id}};
                 </script>
                 <div class="grids">
                     <div class="g1of3">
