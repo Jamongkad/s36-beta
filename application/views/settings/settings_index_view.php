@@ -57,6 +57,10 @@
         </div>
         
         <div ng-controller="SettingReplyCtrl" id="replymsg-list">
+            
+            <script>
+                var data = 10;
+            </script>
  
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids">

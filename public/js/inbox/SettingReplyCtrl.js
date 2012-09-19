@@ -29,6 +29,7 @@ function SettingReplyCtrl($scope) {
               , url: 'settings/save_reply_msg'     
               , data: {"msg": $scope.form_msg_text}
               , success: function() {
+                  /*
                     $.ajax({
                         type: 'GET'    
                       , dataType: 'json'
@@ -40,17 +41,18 @@ function SettingReplyCtrl($scope) {
                             }) 
                         }
                     });
+                  */
                 }
             })
-
         }
 
         $event.preventDefault();
     };
 
     $scope.delete_msg = function($event) {
-        $scope.msgs.pop(); 
         /*
+         *
+        $scope.msgs.pop(); 
         var todos = _.filter($scope.todos, function(todo) {
             return !todo.done;     
         })
