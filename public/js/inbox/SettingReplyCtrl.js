@@ -5,7 +5,10 @@ function SettingReplyCtrl($scope) {
       , {text: 'He loves Irene.', done: true}
     ];
 
-    $scope.total_todos = $scope.todos.length;    
+
+    $scope.get_total_todos = function() {
+        return $scope.todos.length;           
+    };
 
     $scope.add_todo = function($event) {
         $scope.todos.push({text: $scope.form_todo_text, done: false});
