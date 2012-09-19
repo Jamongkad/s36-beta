@@ -273,8 +273,8 @@ return array (
         echo json_encode($collection);
     },
 
-    'POST /settings/delete_msg' => function() {
-        
+    'GET /settings/delete_msg/(:any)' => function($id) {
+        Helpers::dump($id);
     }
 );
 

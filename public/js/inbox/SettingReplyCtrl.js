@@ -40,7 +40,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.delete_msg = function(data, $event) {
-        console.log(data);
+        $.ajax({url: 'settings/delete_msg/' + data});
         /*
          *
         $scope.msgs.pop(); 
