@@ -15,7 +15,6 @@ function SettingReplyCtrl($scope) {
     }
 
     $scope.get_msgs = function() {
-        my_msg();
         return $scope.msgs;   
     };
 
