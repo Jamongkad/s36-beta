@@ -4,14 +4,16 @@ function SettingReplyCtrl($scope) {
         {text: 'Mathew is kewl', done: true}
       , {text: 'He loves Irene.', done: true}
     ];
+
+    $scope.msgs;
     
-    $scope.msgs = $.ajax({
+    $.ajax({
         type: 'GET'    
       , dataType: 'json'
       , async: true
       , url: 'settings/get_msgs'
       , success: function(data) {
-            console.log(data);
+            $scope.msgs = data; 
         }
     });
 
