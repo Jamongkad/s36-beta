@@ -6,8 +6,7 @@ jQuery(function($) {
       , modal: true
       , buttons: { 
             "Send Reply": function() { 
-                 //alert("Reply Successful!");
-                 //$(this).dialog('close');
+                 //alert("Reply Successful!"); 
                  var form = $(this).children('form');
                  var me = $(this);
                  form.ajaxSubmit({
