@@ -34,6 +34,7 @@ function SettingReplyCtrl($scope) {
               , data: {"msg": $scope.form_msg_text}
               , success: function(data) {
                     $scope.$apply(function(){
+                        console.log(data);
                         $scope.msgs.push(data);
                     }) 
                 }
