@@ -31,19 +31,7 @@ function SettingReplyCtrl($scope) {
               , url: 'settings/save_reply_msg'     
               , data: {"msg": $scope.form_msg_text}
               , success: function() {
-                  /*
-                    $.ajax({
-                        type: 'GET'    
-                      , dataType: 'json'
-                      , async: true
-                      , url: 'settings/get_msgs'
-                      , success: function(data) {
-                            $scope.$apply(function(){
-                                $scope.msgs = data;      
-                            }) 
-                        }
-                    });
-                  */
+                    my_msq();
                 }
             })
             $scope.form_msg_text = null;
