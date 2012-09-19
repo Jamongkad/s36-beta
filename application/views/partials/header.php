@@ -42,6 +42,7 @@
              , '/js/inbox/FeedSetup.js'
              , '/js/inbox/Status.js'
              , '/js/inbox/Replyto.js'
+             , '/js/inbox/Settings.js'
              , '/js/inbox/s36application.js'
              //, '/js/inbox/combined-min.js'
            );
