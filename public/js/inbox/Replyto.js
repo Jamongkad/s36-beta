@@ -12,12 +12,12 @@ jQuery(function($) {
                  form.ajaxSubmit({
                      dataType: 'json'     
                    , success: function(data, textStatus) {
-                         me.dialog('close');
                          console.log(textStatus);
                          console.log(data);
                          console.log(me);
                      }
                  });
+                 me.dialog('close');
             }
           , Cancel: function() { $(this).dialog('close'); }
         }
