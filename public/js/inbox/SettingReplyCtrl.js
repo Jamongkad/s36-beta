@@ -34,6 +34,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.delete_msg = function($event) {
+        $scope.msgs.pop(); 
         /*
         var todos = _.filter($scope.todos, function(todo) {
             return !todo.done;     
@@ -41,7 +42,7 @@ function SettingReplyCtrl($scope) {
  
         $scope.todos = todos; 
         */
-
+         
         $event.preventDefault();
     }
 }
