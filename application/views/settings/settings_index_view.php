@@ -61,6 +61,7 @@
                 <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
             </div>
             <h2>{{get_total_todos()}}</h2>
+            <h2>{{get_msgs()}}</h2>
             <ul>
                 <li ng-repeat="todo in todos">
                     <input type="checkbox" ng-model="todo.done" />
@@ -70,7 +71,7 @@
                 </li>
             </ul>
 
-
+            <!-- 
             <ul>
                 <li ng-repeat="msg in msgs">
                     <span>
@@ -78,7 +79,7 @@
                     </span>
                 </li>
             </ul>
-
+            -->
 
             <input type="text" ng-model="form_todo_text" ng-model-instant>
             <button class="btn" ng-click="add_todo($event)">Add</button>

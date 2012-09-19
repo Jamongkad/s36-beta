@@ -12,7 +12,6 @@ function SettingReplyCtrl($scope) {
       , url: 'settings/get_msgs'
     });
 
-
     $scope.get_total_todos = function() {
         return $scope.todos.length;           
     };
