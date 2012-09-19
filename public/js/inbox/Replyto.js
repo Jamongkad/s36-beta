@@ -21,7 +21,7 @@ jQuery(function($) {
         }
       , close: function(e, ui) {    
             var form = $(this).children('form');
-            console.log($(form).children(".block").children());
+            console.log($(form).children(".block").children('table').children('input'));
         }
     });
 
