@@ -264,7 +264,6 @@ jQuery(function($) {
 
               if(that.text() == "Update") {
                   var ctgy_nm_val = $('input[name="ctgy_nm"]').val()
-                  console.log("Rename");
                   that.text("Rename") 
                         .parents('div')
                         .siblings('div')
