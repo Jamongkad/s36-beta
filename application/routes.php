@@ -7,7 +7,6 @@ $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
 
 return array(
-
 	/*
 	|--------------------------------------------------------------------------
 	| Application Routes
