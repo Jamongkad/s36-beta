@@ -22,6 +22,7 @@ jQuery(function($) {
       , close: function(e, ui) {    
             var form = $(this).children('form');
             form.children('.regular-text').val("");
+            console.log(form);
         }
     });
 
@@ -46,11 +47,7 @@ jQuery(function($) {
         var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
         var email = $(this).attr('email');
 
-        console.log(textarea);
-        console.log(email);
-        console.log(my_id);
-        textarea.val(textarea.val() + email + ",");
-        
+        textarea.val(textarea.val() + email + ","); 
         /*
         var pointer = $(this).index();
         var input = "<input type='text' class='regular-text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
