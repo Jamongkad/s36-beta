@@ -71,15 +71,15 @@
                 </li>
             </ul>
 
-            <!-- 
+
             <ul>
-                <li ng-repeat="msg in msgs">
+                <li ng-repeat="msg in get_msgs()">
                     <span>
                         {{msg.name}} {{msg.age}}
                     </span>
                 </li>
             </ul>
-            -->
+
 
             <input type="text" ng-model="form_todo_text" ng-model-instant>
             <button class="btn" ng-click="add_todo($event)">Add</button>
