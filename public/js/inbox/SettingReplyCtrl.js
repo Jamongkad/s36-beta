@@ -16,7 +16,7 @@ function SettingReplyCtrl($scope) {
         return $scope.msgs;   
     };
 
-    $scope.add_todo = function($event) {
+    $scope.add_msg = function($event) {
         $scope.msgs.push({text: $scope.form_msg_text});
         /*
         if(!$scope.form_todo_text) {
