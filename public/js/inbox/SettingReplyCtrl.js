@@ -15,7 +15,7 @@ function SettingReplyCtrl($scope) {
             alert("cannot be blank!");
         } else { 
             $scope.todos.push({text: $scope.form_todo_text, done: false});
-            $scope.form_todo_text = '';
+            $scope.form_todo_text = null;
         }
         $event.preventDefault();
     };
