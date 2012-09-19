@@ -17,6 +17,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.add_todo = function($event) {
+        /*
         if(!$scope.form_todo_text) {
             alert("cannot be blank!");
         } else { 
@@ -29,6 +30,7 @@ function SettingReplyCtrl($scope) {
           , url: 'settings/save_reply_msg'     
           , data: {"msg": $scope.todos}
         })
+        */
 
         $event.preventDefault();
     };

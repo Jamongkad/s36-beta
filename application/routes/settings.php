@@ -255,19 +255,16 @@ return array (
     },
 
     'GET /settings/get_msgs' => function() {
-        /*
         $data = Array(
             array(
-                'name' =>  'Mathew'
-              , 'age' => 30
+                'text' =>  'Mathew'
+              , 'id' => 30
             )
           , array(   
-                'name' =>  'Irene'
-              , 'age' => 27
+                'text' =>  'Irene'
+              , 'id' => 27
             )
         );
-        */
-        $data = null;
         echo json_encode($data);
     }
 );

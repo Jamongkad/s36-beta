@@ -61,7 +61,7 @@
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids">
                     <div class="g1of2">
-                        {{msg.age}}<input type="text" class="regular-text" name="reply_message["+{{msg.name}}+"]" value=""/>
+                        <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/>
                     </div>
                 </div>
             </div>
