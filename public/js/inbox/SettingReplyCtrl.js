@@ -21,7 +21,7 @@ function SettingReplyCtrl($scope) {
             alert("cannot be blank!");
         } else { 
             $scope.msgs.push({text: $scope.form_msg_text});
-            $scope.msgs.form_msg_text = "";
+            $scope.form_msg_text = null;
 
             $.ajax({
                 type: 'POST'
