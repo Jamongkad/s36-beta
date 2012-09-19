@@ -338,4 +338,8 @@ class Helpers {
       }
 
     }
+
+    public static function randid() {
+        return substr(uniqid ('', true), -3);
+    }
 }
