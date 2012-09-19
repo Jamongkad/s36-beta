@@ -22,6 +22,7 @@ function SettingReplyCtrl($scope) {
 
     $scope.clear_completed = function($event) {
         console.log($scope.todos);
+        console.log(jQuery);
         $event.preventDefault();
     }
 }
