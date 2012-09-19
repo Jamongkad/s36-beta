@@ -10,7 +10,7 @@ function SettingReplyCtrl($scope) {
     $.ajax({
         type: 'GET'    
       , dataType: 'json'
-      , async: false
+      , async: true
       , url: 'settings/get_msgs'
       , success: function(data) {
             $scope.$apply(function(){
