@@ -13,6 +13,9 @@ jQuery(function($) {
                      dataType: 'json'     
                    , success: function(data, textStatus) {
                          me.dialog('close');
+                         console.log(textStatus);
+                         console.log(data);
+                         console.log(me);
                      }
                  });
             }
