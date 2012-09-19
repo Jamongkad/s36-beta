@@ -47,8 +47,11 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.edit_msg = function(id, $event) {        
-        var input = $("input#"+ id +"[name=reply_message]");
+        var input = $("input#" + id + "[name=reply_message]");
+        var span = $("span#" + id + ".replymsg-text");
+
         console.log(input);
+        console.log(span);
         $event.preventDefault();
     };
 }

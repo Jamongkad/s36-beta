@@ -3,6 +3,9 @@
     #replymsg-list {
        margin-top:10px;    
     }
+    .replymsg-text {
+      margin:3px;padding:4px;font-weight:bold;
+    }
 </style>
 <?=Form::open('settings/savesettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
@@ -66,7 +69,7 @@
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids">
                     <div class="g1of3">
-                        <span style="margin:3px;padding:4px;font-weight:bold"> {{msg.text}} </span>
+                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
                         <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3" style="padding-top:8px;">
