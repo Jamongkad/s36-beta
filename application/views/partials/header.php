@@ -27,7 +27,6 @@
              , '/js/jquery.jcrop.js'
              , '/js/jquery.ajaxfileupload.js' 
              /*
-             , '/js/jquery.iframe-transport.js'
              , '/js/jquery.fileupload.js'
              */
              , '/js/jquery.zclip.js' 
