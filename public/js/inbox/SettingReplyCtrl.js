@@ -1,5 +1,5 @@
 function SettingReplyCtrl($scope) {
- 
+    
     $.ajax({
         type: 'GET'    
       , dataType: 'json'
@@ -17,19 +17,34 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.add_msg = function($event) {
+
         if(!$scope.form_msg_text) {
             alert("cannot be blank!");
         } else { 
-            $scope.msgs.push({text: $scope.form_msg_text});
+            //$scope.msgs.push({text: $scope.form_msg_text});
             $scope.form_msg_text = null;
 
             $.ajax({
                 type: 'POST'
               , url: 'settings/save_reply_msg'     
               , data: {"msg": $scope.form_msg_text}
+              , success: function() {
+                    $.ajax({
+                        type: 'GET'    
+                      , dataType: 'json'
+                      , async: true
+                      , url: 'settings/get_msgs'
+                      , success: function(data) {
+                            $scope.$apply(function(){
+                                $scope.msgs = data;      
+                            }) 
+                        }
+                    });
+                }
             })
 
         }
+
         $event.preventDefault();
     };
 
