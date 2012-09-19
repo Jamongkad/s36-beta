@@ -110,36 +110,6 @@ jQuery(function($) {
         e.preventDefault();
     });
      
-    var seen = {};
-    $('.add-bcc > li a').bind("click", function(e) {
-
-        var pointer = $(this).index();
-        console.log(pointer);
-        /*
-        var pointer = $(this).index();
-        var input = "<input type='text' class='regular-text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
-        var first_bcc = $("#first-bcc");
-         
-        if(first_bcc.val().length === 0) {
-            first_bcc.val($(this).text());
-            seen[pointer] = true;
-        } else {
-             if(typeof seen[pointer] == 'undefined') {  
-               $("#bcc-target").append(input);
-               seen[pointer] = true;
-            }   
-        }
- 
-        $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
-            var del_pointer = $(this).attr('id');
-            $(this).prev('input').remove().end().remove();
-            delete seen[del_pointer];
-            e.preventDefault();
-        })
-        */ 
-        e.preventDefault();
-    })
-
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
     
