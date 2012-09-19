@@ -23,10 +23,11 @@ function SettingReplyCtrl($scope) {
     $scope.clear_completed = function($event) {
         console.log($scope.todos);
 
-        jQuery.each($scope.todos, function(index, value) {
-            console.log(index);     
-            console.log(value);     
+        var todos = jQuery.grep($scope.todos, function(index, value) { 
+            return !value.todos; 
         })
+
+        console.log(todos);
        
         $event.preventDefault();
     }
