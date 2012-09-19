@@ -87,13 +87,14 @@
         <div class="grids">
             <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
         </div>                     
-    </div>
-    <div class="grids" style="background:#fffde5">
-        <div class="g1of3"><input type="text" class="regular-text" name="category_nm"/></div>
-        <div class="g1of3 align-center" style="padding-top:8px;">
-            <a href="#" class="gray-btn add-new-ctgy">+ Add New Category</a>
+
+        <div class="grids" style="background:#fffde5">
+            <div class="g1of3"><input type="text" class="regular-text" name="category_nm"/></div>
+            <div class="g1of3 align-center" style="padding-top:8px;">
+                <a href="#" class="gray-btn add-new-ctgy">+ Add New Category</a>
+            </div>
+            <div class="g1of3"></div>
         </div>
-        <div class="g1of3"></div>
     </div>
 </div>
 <!--
