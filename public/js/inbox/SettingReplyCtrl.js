@@ -13,6 +13,8 @@ function SettingReplyCtrl($scope) {
             }
         });
     }
+    
+    my_msg();
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
