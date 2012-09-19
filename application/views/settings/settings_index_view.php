@@ -45,13 +45,13 @@
     -->
 </div>
 <div class="block graybg">
-    <h3>TEMPLATE MESSAGES</h3>
+    <h3>TEMPLATE REPLY</h3>
 </div>
 <div class="block">
     <p class="small"><strong></strong></p>
     <div class="grids border-bottom">
         <div class="grids">
-            <strong style="margin-left:6px;">Reply to Messages</strong>
+            <strong style="margin-left:6px;">Fast forwarding Options</strong>
             <br/>
             <span style="margin-left:6px;">Fast forward allows you to forward feedback to a specific person with a single click.</span>
         </div>
@@ -71,16 +71,16 @@
             <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
             <div class="g1of2"><input type="text" class="regular-text" name="alias3" value="<?=$user->alias3?>"/></div>
         </div>                    
-    
-        <div class="grids border-bottom">
-            <div style="padding:8px 0px 0px;">
-                <strong style="margin-left:6px;">Reply–To Email Address</strong>
-                <br/>
-                <span style="margin-left:6px;">Configure the email address that you would like to reply to your customers with.</span>
-            </div> 
-            <input type="text" class="regular-text" name="replyTo" style="width:240px" value="<?=$user->replyto?>"/>
-        </div>
     </div>
+    <div class="grids border-bottom">
+        <div style="padding:8px 0px 0px;">
+            <strong style="margin-left:6px;">Reply–To Email Address</strong>
+            <br/>
+            <span style="margin-left:6px;">Configure the email address that you would like to reply to your customers with.</span>
+        </div> 
+        <input type="text" class="regular-text" name="replyTo" style="width:240px" value="<?=$user->replyto?>"/>
+    </div>
+
 </div>
 <!--
 <div class="block graybg">
