@@ -230,6 +230,9 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         Helpers::dump(Input::get());
+        $bcc = Input::get('bcc');
+        $bcc = substr($bcc, '', -1);
+        echo $bcc;
         /*
         $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
