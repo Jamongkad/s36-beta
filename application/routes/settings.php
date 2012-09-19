@@ -271,6 +271,10 @@ return array (
         }
 
         echo json_encode($collection);
+    },
+
+    'POST /settings/delete_msg' => function() {
+        
     }
 );
 

@@ -25,7 +25,6 @@ function SettingReplyCtrl($scope) {
         if(!$scope.form_msg_text) {
             alert("cannot be blank!");
         } else { 
-            //$scope.msgs.push({text: $scope.form_msg_text});
             $.ajax({
                 type: 'POST'
               , url: 'settings/save_reply_msg'     
@@ -40,7 +39,7 @@ function SettingReplyCtrl($scope) {
         $event.preventDefault();
     };
 
-    $scope.delete_msg = function(data, $event) {
+    $scope.delete_msg = function(data) {
         console.log(data);
         /*
          *
