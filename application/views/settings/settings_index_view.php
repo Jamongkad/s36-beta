@@ -62,6 +62,7 @@
                 <div class="grids">
                     <div class="g1of2">
                         <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/>
+                        <a href="#" class="gray-btn add-new-message" ng-click="delete_msg($event)">- delete</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +70,6 @@
             <div class="grids" style="background:#fffde5">                
                 <div class="g1of3">
                     <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
-                    <a href="#" class="gray-btn add-new-message" ng-click="delete_msg($event)">- delete</a>
                 </div>
                 <div class="g1of3 align-center" style="padding-top:8px;">
                     <a href="#" class="gray-btn add-new-message" ng-click="add_msg($event)">+ Add Reply Message</a>
