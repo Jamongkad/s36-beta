@@ -66,13 +66,13 @@ class DBCompany extends S36DataObject {
         return $result;
     }
     
-    public function get_account_owner($company_id = NULL){
-		if(!empty($company_id) && is_numeric($company_id)){
-    		return DB::table('User')
+    public function get_account_owner($id = NULL){
+    	$user 		= S36Auth::user();
+		$company_id = (!empty($id) && is_numeric($id)) ? $id :$user->companyid; 	
+    	return DB::table('User')
     			->where('companyId','=',$company_id)
     			->where('account_owner','=',1)
     			->first();
-    	}
     }
     public function get_account_user($company_id = NULL){
 		$company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
@@ -106,6 +106,13 @@ class DBCompany extends S36DataObject {
     			->where('companyId','=',$user->companyid)
     			->update(array('planId'=>$planId));
     		return $result;
+    }
+    
+    public function update_bt_customer_id($id){
+    		$user = S36Auth::user();
+    		return DB::table('Company')
+    			->where('companyId','=',$user->companyid)
+    			->update(array('bt_customer_id'=>$id));
     }
 }
 
