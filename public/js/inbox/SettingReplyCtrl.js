@@ -21,13 +21,12 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.clear_completed = function($event) {
-        console.log($scope.todos);
-
         var todos = _.filter($scope.todos, function(todo) {
             return !todo.done;     
         })
-        console.log(todos);
-       
+ 
+        $scope.todos = todos; 
+
         $event.preventDefault();
     }
 }
