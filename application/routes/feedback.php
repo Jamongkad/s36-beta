@@ -233,9 +233,10 @@ return array(
         $bcc = substr($bcc, 0, -1);
         $bcc = explode(",", $bcc);
         $bcc = array_unique($bcc);
-        //Helpers::dump(Input::get());
+
         Helpers::dump($bcc);
         /*
+        Helpers::dump(Input::get());
         $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
 

@@ -44,6 +44,13 @@
     </div>
     -->
 </div>
+<div class="block graybg">
+    <h3>TEMPLATE REPLY</h3>
+</div>
+<div class="block">
+    <p class="border-bottom"><input type="checkbox" /> Tag incomming items not acted on after <select class="regular-select"><option>10 days</option></select> as inactive. </p>
+    <p><input type="checkbox" /> Delete ignored posts permanently after 30 days.  </p>
+</div>
 <!--
 <div class="block graybg">
     <h3>FLAGGED ITEMS MANAGEMENT</h3>
