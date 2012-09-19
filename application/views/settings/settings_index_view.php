@@ -56,14 +56,8 @@
             <span style="margin-left:6px;">Write custom messages to reply to a person with a single click.</span>
         </div>
         <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="reply_message[]" value=""/></div>
         </div>
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
-        </div>
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
-        </div>                    
 
         <div class="grids" style="background:#fffde5">
             <div class="g1of3"><input type="text" class="regular-text" name="category_nm"/></div>
@@ -80,14 +74,8 @@
             <span style="margin-left:6px;">Write custom request feedback messages you can send to a person with a single click.</span>
         </div> 
         <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail1" value="<?=$user->ffemail1?>"/></div>
+            <div class="g1of2"><input type="text" class="regular-text" name="request_message[]" value=""/></div>
         </div>
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail2" value="<?=$user->ffemail2?>"/></div>
-        </div>
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="ffEmail3" value="<?=$user->ffemail3?>"/></div>
-        </div>                     
 
         <div class="grids" style="background:#fffde5">
             <div class="g1of3"><input type="text" class="regular-text" name="category_nm"/></div>
