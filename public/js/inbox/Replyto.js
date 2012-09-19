@@ -11,11 +11,13 @@ jQuery(function($) {
                  var me = $(this);
                  form.ajaxSubmit({
                      dataType: 'json'     
-                   , success: function(data, textStatus) {
+                   /*
+                   , success: function(data, textStatus, jqXHR) {
                          console.log(textStatus);
                          console.log(data);
                          console.log(me);
                      }
+                   */
                  });
                  me.dialog('close');
             }

@@ -229,8 +229,7 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
-        //Helpers::dump(Input::get());
-        echo "success";
+        Helpers::dump(Input::get());
         /*
         $data = Input::get();
         $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
