@@ -73,15 +73,15 @@
             <button class="btn" ng-click="add_todo($event)">Add</button>
             <button class="btn" ng-click="clear_completed($event)">Clear mah nigguhs</button>
 
+            <div class="grids" style="background:#fffde5">
+                <div class="g1of3"><input type="text" class="regular-text" name="reply_message"/></div>
+                <div class="g1of3 align-center" style="padding-top:8px;">
+                    <a href="#" class="gray-btn add-new-message">+ Add Reply Message</a>
+                </div>
+                <div class="g1of3"></div>
+            </div>
         </div>
 
-        <div class="grids" style="background:#fffde5">
-            <div class="g1of3"><input type="text" class="regular-text" name="reply_message"/></div>
-            <div class="g1of3 align-center" style="padding-top:8px;">
-                <a href="#" class="gray-btn add-new-message">+ Add Reply Message</a>
-            </div>
-            <div class="g1of3"></div>
-        </div>
     </div>
     <div class="grids border-bottom">
         <div style="padding:8px 0px 0px;">
