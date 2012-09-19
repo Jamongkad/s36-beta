@@ -39,7 +39,9 @@ jQuery(function($) {
     $('.add-bcc > li a').bind("click", function(e) {
 
         var pointer = $(this).index();
-        var textarea = $(this).siblings('textarea[name=bcc]');
+        var my_id = $(this).attr('feedid');
+        var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
+
         console.log(textarea);
         
         /*

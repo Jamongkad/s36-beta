@@ -39,7 +39,7 @@
             <td>
                 <strong>Bcc :</strong>
             </td>
-            <td id="bcc-target">
+            <td class="bcc-target" feedid="<?=$feedback->id?>">
                 <!--<input id="first-bcc" class="regular-text" type="text" name="bcc[]" value="" />-->
                 <textarea class="regular-text" name="bcc" rows="2"></textarea>
             </td>
@@ -53,7 +53,7 @@
                 <strong>Add to Bcc : </strong>
             </td>
             <td>
-                <ul class="add-bcc">
+                <ul class="add-bcc" feedid="<?=$feedback->id?>">
                     <?if($user->ffemail1):?>
                         <li><?=HTML::link('', $user->alias1."<".$user->ffemail1.">", array('class' => 'linky'))?></li>
                     <?endif?>
