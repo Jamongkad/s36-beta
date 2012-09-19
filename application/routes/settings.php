@@ -251,7 +251,7 @@ return array (
     }),
 
     'POST /settings/save_reply_msg' => function() {
-     
+        echo Helpers::randid();
     },
 
     'GET /settings/get_msgs' => function() {
