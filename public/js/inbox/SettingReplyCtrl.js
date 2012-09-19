@@ -28,9 +28,10 @@ function SettingReplyCtrl($scope) {
             $.ajax({
                 type: 'POST'
               , url: 'settings/save_reply_msg'     
+              , dataType: 'json'
               , data: {"msg": $scope.form_msg_text}
-              , success: function() {
-                    my_msg();
+              , success: function(data) {
+                    console.log(data) ;
                 }
             })
             $scope.form_msg_text = null;
