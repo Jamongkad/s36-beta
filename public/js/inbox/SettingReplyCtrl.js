@@ -50,8 +50,8 @@ function SettingReplyCtrl($scope) {
         var input = $("input#" + id + "[name=reply_message]");
         var span = $("span#" + id + ".replymsg-text");
 
-        console.log(input);
-        console.log(span);
+        input.show();
+        span.hide();
         $event.preventDefault();
     };
 }
