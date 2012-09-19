@@ -258,11 +258,9 @@ return array (
         $data = Array(
             array(
                 'text' =>  'Mathew'
-              , 'id' => 30
             )
           , array(   
                 'text' =>  'Irene'
-              , 'id' => 27
             )
         );
         echo json_encode($data);
