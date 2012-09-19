@@ -31,7 +31,7 @@ function SettingReplyCtrl($scope) {
               , url: 'settings/save_reply_msg'     
               , data: {"msg": $scope.form_msg_text}
               , success: function() {
-                    my_msq();
+                    my_msg();
                 }
             })
             $scope.form_msg_text = null;
