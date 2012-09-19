@@ -13,7 +13,9 @@ function SettingReplyCtrl($scope) {
       , async: true
       , url: 'settings/get_msgs'
       , success: function(data) {
-            $scope.msgs = data; 
+            $scope.$apply(function(){
+                $scope.msgs = data;      
+            }) 
         }
     });
 
