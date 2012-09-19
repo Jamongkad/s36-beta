@@ -20,9 +20,7 @@ jQuery(function($) {
           , Cancel: function() { $(this).dialog('close'); }
         }
       , close: function(e, ui) {    
-            var form = $(this).children('form');
-            $(form, "input, textarea").val("");
-            console.log(form);
+            $(this).children('form > input, textarea').val("");
 
         }
     });
