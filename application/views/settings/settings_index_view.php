@@ -1,6 +1,6 @@
  <!-- contents -->
 <style>
-    .replymsg-list {
+    #replymsg-list {
        margin-top:10px;    
     }
 </style>
