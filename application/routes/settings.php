@@ -255,6 +255,7 @@ return array (
     },
 
     'GET /settings/get_msgs' => function() {
+        /*
         $data = Array(
             array(
                 'name' =>  'Mathew'
@@ -265,6 +266,8 @@ return array (
               , 'age' => 27
             )
         );
+        */
+        $data = null;
         echo json_encode($data);
     }
 );
