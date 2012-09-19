@@ -17,6 +17,13 @@ function SettingReplyCtrl($scope) {
             $scope.todos.push({text: $scope.form_todo_text, done: false});
             $scope.form_todo_text = null;
         }
+        
+        $.ajax({
+            url: 'feedback/save_todos'     
+          , type: "POST"
+          , data: $scope.todos
+        })
+
         $event.preventDefault();
     };
 
