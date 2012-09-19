@@ -20,8 +20,8 @@ jQuery(function($) {
           , Cancel: function() { $(this).dialog('close'); }
         }
       , close: function(e, ui) {    
-            var form = $(this).children('form');
-            console.log($(form).children(".block").children('table').children('input'));
+          $(".regular-text[name=bcc], .regular-text[name=message]").val("");
+
         }
     });
 

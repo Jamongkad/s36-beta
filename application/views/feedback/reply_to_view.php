@@ -40,7 +40,6 @@
                 <strong>Bcc :</strong>
             </td>
             <td class="bcc-target" feedid="<?=$feedback->id?>">
-                <!--<input id="first-bcc" class="regular-text" type="text" name="bcc[]" value="" />-->
                 <textarea class="regular-text" name="bcc" rows="2"></textarea>
             </td>
             <td class="small" valign="top">
