@@ -45,7 +45,7 @@ jQuery(function($) {
         console.log(textarea);
         console.log(email);
         console.log(my_id);
-        textarea.val(textarea.val() + email + ",");
+        textarea.val("<span>" + textarea.val() + email + "," + "</span>");
         
         /*
         var pointer = $(this).index();
