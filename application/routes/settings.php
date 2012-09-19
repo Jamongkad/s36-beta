@@ -260,8 +260,8 @@ return array (
         $data = $redis->hgetall($key);
 
         $final_data = Array();
-        foreach($data as $key => $val) {
-            $final_data[$key] = $val;
+        foreach($redis->hkeys($key) as $val) {
+            $final_data[$val] = $redis->hget($val);
         }
 
         Helpers::dump($final_data); 
