@@ -57,12 +57,11 @@
         </div>
         
         <div ng-controller="SettingReplyCtrl" id="replymsg-list">
-            
-            <script>
-                var data = 10;
-            </script>
- 
+             
             <div ng-repeat="msg in get_msgs()">
+                <script>
+                    var data = 10;
+                </script>
                 <div class="grids">
                     <div class="g1of3">
                         <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/> 

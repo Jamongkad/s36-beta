@@ -258,7 +258,7 @@ return array (
         $redis = new redisent\Redis;
         $key = Config::get('application.subdomain').":settings:msg";
         Helpers::dump($key);
-        $data = $redis->smembers($key);
+        $data = $redis->hgetall($key);
         echo json_encode($data);
     }
 );
