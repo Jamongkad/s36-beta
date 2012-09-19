@@ -10,6 +10,9 @@ function SettingReplyCtrl($scope) {
       , dataType: 'json'
       , async: true
       , url: 'settings/get_msgs'
+      , success: function(data) {
+            console.log(data);
+        }
     });
 
     $scope.get_total_todos = function() {
