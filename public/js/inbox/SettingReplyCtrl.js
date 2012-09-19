@@ -33,12 +33,14 @@ function SettingReplyCtrl($scope) {
         $event.preventDefault();
     };
 
-    $scope.clear_completed = function($event) {
+    $scope.delete_msg = function($event) {
+        /*
         var todos = _.filter($scope.todos, function(todo) {
             return !todo.done;     
         })
  
         $scope.todos = todos; 
+        */
 
         $event.preventDefault();
     }
