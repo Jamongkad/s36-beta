@@ -60,11 +60,10 @@
  
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids">
-                    <div class="g1of2">
+                    <div class="g1of3">
                         <input type="text" class="regular-text" name="reply_message[]" value="{{msg.text}}"/> 
                     </div>
-                     <div class="g2of2">
-                         <br/>
+                     <div class="g1of3">
                          <a href="#" class="gray-btn" style="margin-top:5px" ng-click="delete_msg($event)">- delete</a>
                     </div>
                 </div>
