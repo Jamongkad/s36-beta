@@ -1,6 +1,6 @@
 function SettingReplyCtrl($scope) {
 
-    $scope.msgs;
+    $scope.msgs = null;
     
     function my_msg() { 
         $.ajax({
