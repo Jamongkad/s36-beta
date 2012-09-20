@@ -57,10 +57,24 @@ return array(
             $tf->dump($tf->data->sm->jsonify());
         });
 
+        $tf->test('Test Update Message', function($tf) {
+            $tf->assert($tf->data->sm->update_message('msg-533', 'Mathew Wong'));
+        });
+
+        $tf->test('Test Delete Message', function($tf) {
+            $tf->assert($tf->data->sm->delete('msg-737'));
+        });
+
         $tf->test('Test Get Message', function($tf) {
             $tf->data->sm->get_messages();
             $tf->dump($tf->data->sm->jsonify());
         });
+
+        /*
+        //clean up
+        $tf->afterEach(function($tf) {
+        });
+        */
 
         $tf->run(); 
     }
