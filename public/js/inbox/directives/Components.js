@@ -20,3 +20,14 @@ angular.module('Components', [])
       , link: msgsel_fn
     }  
 })
+.directive('reply', function() {
+    return {
+        restrict: 'C'     
+      , link: function(scope, element, attrs) {
+            $(document).delegate(element, 'click', function(e) {
+                console.log(element);
+                e.preventDefault();
+            });
+        }
+    }   
+})
