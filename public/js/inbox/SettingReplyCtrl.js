@@ -19,7 +19,7 @@ myModule.factory('mySettingsService', function($rootScope) {
 
 function SettingReplyCtrl($scope, mySettingsService) {
 
-    $scope.msgs = null;
+    $scope.msgs = mySettingsService.message;
     $scope.resource = mySettingsService;
     /* 
     function my_msg() { 
