@@ -123,7 +123,7 @@
 
 <!-- 36Stories DataExchange URLs -->
 <?if(Input::get('test')):?>
-    <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/tests/submissionservice')?>"></span>
+     <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/tests/submissionservice')?>"></span>
 <?else:?>
      <span id="ajax-submit-feedback" hrefaction="<?=URL::to('/api/submit_feedback')?>"></span>
 <?endif?>
@@ -495,7 +495,9 @@
 
         <div class="s36_footerbtn">
         	<a href="javascript:;" id="cropbtn" class="s36_btn cropbtn">Crop</a>
-            <a href="javascript:;" id="next" class="s36_btn">Next</a>
+            <?if(!Input::get('preview')):?>
+                <a href="javascript:;" id="next" class="s36_btn">Next</a>
+            <?endif?>
         </div>
     </div>
 </div>

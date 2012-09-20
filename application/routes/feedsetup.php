@@ -228,7 +228,7 @@ return array(
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
         $company = Config::get('application.subdomain');
         $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme.'/'.$company
-                                                          .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
+                                                          .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question').'&preview=1';
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
