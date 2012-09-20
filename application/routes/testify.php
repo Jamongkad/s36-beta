@@ -38,4 +38,19 @@ return array(
 
         $tf->run(); 
     },
+
+    'GET /testify/settingmessage' => function() {
+
+        $tf = new Testify("Setting Message Services Test");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->sm = new Message\Services\SettingMessage;       
+        });
+        
+        $tf->test('Service Test', function($tf) {
+            $tf->assert($tf->data->sm);
+        });
+
+        $tf->run(); 
+    }
 );

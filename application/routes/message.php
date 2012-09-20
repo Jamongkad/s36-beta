@@ -1,5 +1,7 @@
 <?php
 
+use Message\Services;
+
 return array(
     'POST /message/save_reply_msg' => function() {
         $rand_key = "msg-".Helpers::randid();
