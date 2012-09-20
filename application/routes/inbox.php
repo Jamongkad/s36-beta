@@ -35,6 +35,10 @@ return array(
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
+        
+        //Reply messages
+        $sm = new Message\Services\SettingMessage(Input::get('type'));       
+        Helpers::dump($sm->get_messages());
 
         $view_data = Array(
               'feedback' => $feedback->result
