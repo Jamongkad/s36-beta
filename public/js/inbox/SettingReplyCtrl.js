@@ -94,4 +94,4 @@ function SettingReplyCtrl($scope, mySettingsService) {
     };
 }
 
-SettingReplyCtrl.$inject = ['$scope', 'mySettingsService'];
+//SettingReplyCtrl.$inject = ['$scope', 'mySettingsService'];
