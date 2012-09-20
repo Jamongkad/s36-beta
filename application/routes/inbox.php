@@ -38,7 +38,7 @@ return array(
         
         //Reply messages
         $sm = new Message\Services\SettingMessage('msg');       
-        echo $sm->get_messages();
+        Helpers::dump($sm);
 
         $view_data = Array(
               'feedback' => $feedback->result
