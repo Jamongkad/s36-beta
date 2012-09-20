@@ -6,9 +6,8 @@ myModule.factory('mySettingsService', function($rootScope) {
     shared_service.message;
 
     shared_service.get_messages = function() {
-        var my_msg = this.message; 
 
-        $.ajax({
+        this.message = $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: true
