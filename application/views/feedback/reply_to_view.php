@@ -93,8 +93,9 @@
                 <?if($reply_message):?>
                     <ul class="msgsel">
                         <?foreach($reply_message as $val):?>
-                            <li id="<?=$val->id?>"><?=$val->text?></li>
+                            <li id="<?=$val->id?>"><a href="#"><?=$val->text?></a></li>
                         <?endforeach?>
+                        <li><?=HTML::link('settings', '(configure template reply)')?></li>
                     </ul> 
                 <?endif?>
             </td>
