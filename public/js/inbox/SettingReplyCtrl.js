@@ -13,7 +13,7 @@ function SettingReplyCtrl($scope, MessageService) {
         } else { 
             $.ajax({
                 type: 'POST'
-              , url: 'message/save__msg'     
+              , url: 'message/save_msg'     
               , dataType: 'json'
               , data: {"msg": $scope.form_msg_text, "type": "msg"}
               , success: function(data) {
