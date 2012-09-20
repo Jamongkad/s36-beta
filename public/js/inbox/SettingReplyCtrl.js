@@ -9,11 +9,11 @@ myModule.factory('mySettingsService', function($rootScope) {
       , dataType: 'json'
       , async: true
       , url: 'settings/get_msgs'
-      /*
+
       , success: function(data) {
-            shared_service.message = data;
+            shared_service.msg = data;
         }
-      */
+
     });
 
     return shared_service;
