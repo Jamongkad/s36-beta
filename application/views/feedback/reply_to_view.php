@@ -103,13 +103,16 @@
         </tr>
         <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
-        <tr>
-            <td width="%15">&nbsp;</td>
-            <td>
-                <input type="submit" class="large-btn" value="Send" />
-            </td>                 
-        </tr>
     </table>
+
+        <div class="widget-options">
+            <div class="block noborder" style="margin-left:-10px;">
+                <input type="submit" class="large-btn create-widget-button" value="Save" />
+                <!--
+                <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
+                -->
+            </div>
+        </div>
 </div>
 <?else:?>
 <div class="block">
