@@ -21,23 +21,6 @@ myModule.factory('mySettingsService', function($rootScope) {
 function SettingReplyCtrl($scope, mySettingsService) {
 
     $scope.msgs = mySettingsService.message;
-    /* 
-    function my_msg() { 
-        $.ajax({
-            type: 'GET'    
-          , dataType: 'json'
-          , async: true
-          , url: 'settings/get_msgs'
-          , success: function(data) {
-                $scope.$apply(function(){
-                    $scope.msgs = data;      
-                }) 
-            }
-        });
-    }
-    
-    my_msg();
-    */
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
