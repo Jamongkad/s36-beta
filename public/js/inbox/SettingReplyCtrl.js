@@ -32,7 +32,7 @@ function SettingReplyCtrl($scope, MessageService) {
             url: 'message/delete_msg'
           , type: 'POST' 
           , data: {"id": id, "type": "msg"}
-          , success: function() { $("div#" + data + ".grids").remove(); }
+          , success: function() { $("div#" + id + ".grids").remove(); }
         }); 
         $event.preventDefault();
     };
