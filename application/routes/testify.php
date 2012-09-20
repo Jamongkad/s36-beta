@@ -55,7 +55,8 @@ return array(
             $tf->assert($tf->data->sm->save_message('Mathew'));
             $tf->data->sm->get_messages();
             $tf->dump($tf->data->sm->jsonify());
-            //$tf->dump($tf->data->sm->last_insert()->jsonify());
+            $tf->data->sm->last_insert();
+            $tf->dump($tf->data->sm->jsonify());
         });
 
         $tf->run(); 

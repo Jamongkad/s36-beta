@@ -33,7 +33,6 @@ class SettingMessage {
             $leaf->id   = $val;
             $tree[] = $leaf;
         }
-        //return json_encode($collection);
         $this->result = $tree;
     }
 
@@ -41,8 +40,7 @@ class SettingMessage {
         $leaf = Array();
         $leaf['text'] = $this->redis->hget($this->hash_nm, $this->hash_key);
         $leaf['id']   = $this->hash_key;
-        //return json_encode($final_data);
-        return $this;
+        $this->result = $leaf;
     }
 
     public function jsonify() {
