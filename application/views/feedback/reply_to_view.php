@@ -88,7 +88,7 @@
             <td>
                 <textarea class="regular-text" rows="6" name="message"></textarea>
             </td>
-            <!--
+
             <td> 
                 <ul class="no-list-style">
                     <li>Thank you for your suggestion</li>
@@ -98,7 +98,7 @@
                 </ul>
     
             </td>
-            -->
+
         </tr>
         <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
