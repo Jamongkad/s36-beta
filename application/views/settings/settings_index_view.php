@@ -12,6 +12,7 @@
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <h3>EMAIL SETTINGS</h3>
+    <hello-settings></hello-settings>
 </div>
 <div class="block">    
     <p class="small"><strong></strong></p>
