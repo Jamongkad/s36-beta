@@ -238,8 +238,7 @@ return array(
         $company = Config::get('application.subdomain');
         //fucking quick fix 
         $comp = DB::table('Company', 'master')
-                            ->join('Site', 'Site.companyId', '=', 'User.companyId')
-                            ->join('Company', 'User.companyId', '=', 'Company.companyId')
+                            ->join('Site', 'Site.companyId', '=', 'Company.companyId')
                             ->where('Company.name', '=', $company)
                             ->first(Array('Site.siteId', 'Company.companyid'));
 
