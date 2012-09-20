@@ -49,6 +49,7 @@ return array(
         
         $tf->test('Service Test', function($tf) {
             $tf->assert($tf->data->sm);
+            $tf->dump($tf->data->sm);
         });
 
         $tf->run(); 
