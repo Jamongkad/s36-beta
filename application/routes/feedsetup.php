@@ -242,13 +242,10 @@ return array(
                             ->where('Company.name', '=', $company)
                             ->first(Array('Site.siteId', 'Company.companyid'));
 
-        Helpers::dump($comp);
-        Helpers::dump($company);
-
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = $comp->siteid;
-        $option->company_id = $comp->companyid;
+        $option->site_id    = 9;
+        $option->company_id = 3;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
