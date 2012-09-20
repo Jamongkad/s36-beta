@@ -115,19 +115,10 @@
                     <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
                 </div>
                 <div class="g1of3 align-center" style="padding-top:8px;">
-                    <a href="#" class="gray-btn add-new-message" ng-click="add_msg($event)">+ Add Reply Message</a>
+                    <a href="#" class="gray-btn add-new-message" ng-click="add_msg($event)">+ Add Request Message</a>
                 </div>
                 <div class="g1of3"></div>
             </div>
-        </div>
-
-
-        <div class="grids" style="background:#fffde5; margin-top:10px">
-            <div class="g1of3"><input type="text" class="regular-text" name="request_message"/></div>
-            <div class="g1of3 align-center" style="padding-top:8px;">
-                <a href="#" class="gray-btn add-new-request">+ Add Request Message</a>
-            </div>
-            <div class="g1of3"></div>
         </div>
     </div>
 </div>
