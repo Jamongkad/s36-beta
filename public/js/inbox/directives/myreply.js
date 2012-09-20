@@ -1,4 +1,4 @@
-angular.module('Components.reply', [])
+angular.module('reply', [])
 .directive('myReply', function() {
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
