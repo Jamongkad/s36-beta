@@ -9,7 +9,7 @@ angular.module('Services', [])
             type: 'GET'    
           , dataType: 'json'
           , async: false
-          , url: 'message/get_msgs'
+          , url: '/message/get_msgs'
           , data: {"type": type}
           , success: function(data) {
                 shared_service.message = data;
