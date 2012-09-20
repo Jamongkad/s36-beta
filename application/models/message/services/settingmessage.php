@@ -31,7 +31,7 @@ class SettingMessage {
             $collection[] = $final_data;
         }
 
-        echo json_encode($collection);
+        return json_encode($collection);
     }
 
     public function last_insert() { 
