@@ -25,7 +25,7 @@ angular.module('Components', [])
         restrict: 'C'     
       , link: function(scope, element, attrs) {
             $(document).delegate(element, 'click', function(e) {
-                console.log(element);
+                console.log(this) 
                 e.preventDefault();
             });
         }
