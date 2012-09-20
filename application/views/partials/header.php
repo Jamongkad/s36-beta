@@ -6,45 +6,11 @@
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
-        <?=HTML::script('js/head.min.js')?>
-        <?=HTML::script('js/jquery.tinymce.js')?>
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?
-            $js_scripts = Array(
-               '/js/jquery.switcharoo.js'
-             , '/js/jquery.fancytips.js'
-             , '/js/jquery.form.js'
-             , '/js/jquery.tmpl.js'
-             , '/js/jquery.jcrop.js'
-             , '/js/jquery.ajaxfileupload.js' 
-             //, '/js/jquery.fileupload.js'
-             , '/js/jquery.zclip.js' 
-             , '/js/jquery.flot.js'
-             , '/js/jquery.flot.pie.js'
-             , '/js/jquery.pjax.js'
-             //, '/js/jquery.timeago.js'
-             , '/js/inbox/s36LightBox.js'
-             , '/js/inbox/ZClip.js'
-             , '/js/inbox/Checky.js'
-             , '/js/inbox/DropDownChange.js'
-             , '/js/inbox/InboxStatusChange.js'
-             , '/js/inbox/InboxFilters.js'
-             , '/js/inbox/FeedSetup.js'
-             , '/js/inbox/Status.js'
-             , '/js/inbox/Replyto.js' 
-             , '/js/inbox/Settings.js'
-             , '/js/inbox/s36application.js'
-           );
-       ?> 
-        <script text="text/javascript">
-            <?foreach($js_scripts as $scripts):?>
-               head.js('<?=$scripts?>');
-            <?endforeach?>
-        </script>
     </meta>    
 </head>
 <body>
