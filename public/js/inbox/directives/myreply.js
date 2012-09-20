@@ -14,6 +14,7 @@ $('.dialog-form').dialog({
   , height: 600
   , width: 700
   , modal: true
+  /*
   , buttons: { 
         "Send Reply": function() { 
              //alert("Reply Successful!"); 
@@ -21,13 +22,6 @@ $('.dialog-form').dialog({
              var me = $(this);
              form.ajaxSubmit({
                  dataType: 'json'     
-               /*
-               , success: function(data, textStatus, jqXHR) {
-                     console.log(textStatus);
-                     console.log(data);
-                     console.log(me);
-                 }
-               */
              });
              me.dialog('close');
         }
@@ -36,4 +30,5 @@ $('.dialog-form').dialog({
   , close: function(e, ui) {    
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
+    */
 });
