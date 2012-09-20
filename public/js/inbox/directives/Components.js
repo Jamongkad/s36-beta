@@ -21,13 +21,10 @@ angular.module('Components', [])
     }  
 })
 .directive('myReply', function() {
-    return {
-        restrict: 'C'     
-      , link: function(scope, element, attrs) {
-            $(document).delegate(element, 'click', function(e) {
-                console.log(this);
-                e.preventDefault();
-            });
-        }
-    }   
+    return function(scope, element, attrs) {
+        $(document).delegate(element, 'click', function(e) {
+            console.log(this);
+            e.preventDefault();
+        });
+    }
 })
