@@ -58,7 +58,8 @@ return array(
             $tf->dump($tf->data->sm->jsonify());
 
             $tf->data->sm->last_insert();
-            $tf->dump($tf->data->sm->jsonify());
+            //$tf->dump($tf->data->sm->jsonify());
+            echo $tf->data->sm->jsonify();
         });
 
         $tf->run(); 
