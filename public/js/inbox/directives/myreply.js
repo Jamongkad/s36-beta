@@ -1,9 +1,4 @@
 
-angular.module('reply', [])
-.directive('myReply', function() {
-
-    var linkfn = function(scope, element, attrs) {
-
         $('.dialog-form').dialog({
             autoOpen: false  
           , height: 600
@@ -32,12 +27,14 @@ angular.module('reply', [])
                 $(".regular-text[name=bcc], .regular-text[name=message]").val("");
             }
         });
+angular.module('reply', [])
+.directive('myReply', function() {
+
+    var linkfn = function(scope, element, attrs) {
 
         $(element).bind('click', function(e) {
             var feedid = $(this).attr('feedid'); 
-            $('.dialog-form[feedid='+feedid+']').dialog(
-            
-            ); 
+            $('.dialog-form[feedid='+feedid+']').dialog('open'); 
             console.log(feedid);
             e.preventDefault();
         });
