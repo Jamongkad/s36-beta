@@ -79,7 +79,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="grids" style="background:#fffde5; margin-top:10px">                
                 <div class="g1of3">
                     <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
@@ -97,9 +96,7 @@
             <br/>
             <span style="margin-left:6px;">Write custom request feedback messages you can send to a person with a single click.</span>
         </div> 
-        <div class="grids">
-            <div class="g1of2"><input type="text" class="regular-text" name="request_message[]" value=""/></div>
-        </div>
+
         <div class="grids" style="background:#fffde5; margin-top:10px">
             <div class="g1of3"><input type="text" class="regular-text" name="request_message"/></div>
             <div class="g1of3 align-center" style="padding-top:8px;">
