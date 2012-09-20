@@ -1,6 +1,28 @@
-function SettingReplyCtrl($scope) {
+var myModule = angular.module('myModule', []);
+myModule.factory('SettingsService', function($rootScope) {
+    var shared_service = {};
+
+    shared_service.message = null;
+
+    function my_msg() { 
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: true
+          , url: 'settings/get_msgs'
+          , success: function(data) {
+                shared_service.message = data;
+            }
+        });
+    }
+
+    return shared_service;
+});
+
+function SettingReplyCtrl($scope, SettingsService) {
 
     $scope.msgs = null;
+    $scope.resource = SettingsService;
     
     function my_msg() { 
         $.ajax({
@@ -67,6 +89,7 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.update_msg = function(id, $event) {
+
         var me = $($event.target);
         var sib = me.prev();
  
@@ -89,3 +112,5 @@ function SettingReplyCtrl($scope) {
         $event.preventDefault();
     };
 }
+
+SettingReplyCtrl.$inject = ['$scope', 'SettingsService'];
