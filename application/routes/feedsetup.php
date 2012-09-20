@@ -242,6 +242,9 @@ return array(
                             ->where('Company.name', '=', $company)
                             ->first(Array('Site.siteId', 'Company.companyid'));
 
+        Helpers::dump($comp);
+        Helpers::dump($company);
+
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->site_id    = $comp->siteid;
