@@ -90,7 +90,7 @@
             </td>
 
             <td>   
-                <ul msg-sel="link">
+                <ul class="msgsel">
                     <li>Thank you for your suggestion</li>
                     <li>Technical Support Issue</li>
                     <li>Refund and RMA</li>

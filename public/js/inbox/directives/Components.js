@@ -5,7 +5,7 @@ angular.module('Components', [])
       , template: '<h3>EMAIL SETTINGS</h3>'
     }  
 })
-.directive('msgSel', function() {
+.directive('msgsel', function() {
     var msgsel_fn;
 
     msgsel_fn = function(scope, element, attrs) {
@@ -16,7 +16,7 @@ angular.module('Components', [])
     }
 
     return {
-        restrict: 'E'     
+        restrict: 'C'     
       , link: msgsel_fn
     }  
 })
