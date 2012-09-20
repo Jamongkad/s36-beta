@@ -44,12 +44,16 @@ return array(
         $tf = new Testify("Setting Message Services Test");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->sm = new Message\Services\SettingMessage;       
+            $tf->data->sm = new Message\Services\SettingMessage('request');       
         });
         
         $tf->test('Service Test', function($tf) {
             $tf->assert($tf->data->sm);
             $tf->dump($tf->data->sm);
+        });
+
+        $tf->test('Test Get Message', function($tf) {
+            $tf->dump($tf->data->sm->get_messages());
         });
 
         $tf->run(); 
