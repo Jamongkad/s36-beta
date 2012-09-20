@@ -14,4 +14,4 @@ angular.module('S36Module', []).factory('mySettingsService', function($rootScope
     });
 
     return shared_service;
-}
+});
