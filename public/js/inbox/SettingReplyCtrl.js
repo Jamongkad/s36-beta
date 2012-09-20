@@ -1,3 +1,4 @@
+/*
 var myModule = angular.module('S36Module', []);
 myModule.factory('mySettingsService', function($rootScope) {
 
@@ -16,6 +17,7 @@ myModule.factory('mySettingsService', function($rootScope) {
 
     return shared_service;
 });
+*/
 
 function SettingReplyCtrl($scope, mySettingsService) {
 
@@ -93,5 +95,3 @@ function SettingReplyCtrl($scope, mySettingsService) {
         $event.preventDefault();
     };
 }
-
-//SettingReplyCtrl.$inject = ['$scope', 'mySettingsService'];
