@@ -235,7 +235,7 @@ return array(
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false, $company) {
+    'GET /feedsetup/preview_widget/(:any?)/(:any?)' => function($theme=false, $company) {
         //fucking quick fix 
         $comp = DB::table('Company', 'master')
                             ->join('Site', 'Site.companyId', '=', 'Company.companyId')
