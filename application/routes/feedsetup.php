@@ -235,10 +235,11 @@ return array(
     
     //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
+        $auth = S36Auth::user_site();
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = 1;
-        $option->company_id = 1;
+        $option->site_id    = $auth->siteid;
+        $option->company_id = $auth->companyid;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
