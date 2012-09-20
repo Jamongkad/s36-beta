@@ -52,7 +52,7 @@ return array(
         });
 
         $tf->test('Test Get Message', function($tf) {
-            $td->data->sm->save_message('Mathew');
+            $tf->data->sm->save_message('Mathew');
             $tf->dump($tf->data->sm->get_messages());
         });
 
