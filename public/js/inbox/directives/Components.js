@@ -4,7 +4,7 @@ angular.module('Components', [])
         restrict: 'E'     
       , template: '<h3>EMAIL SETTINGS</h3>'
     }  
-});
+})
 .directive('msgSel', function() {
     var msgsel_fn;
 
