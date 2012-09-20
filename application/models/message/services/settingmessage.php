@@ -8,6 +8,6 @@ class SettingMessage {
     private $redis;
 
     public function __construct() {
-        $this->redis = new Redis; 
+        $this->redis = new redisent\Redis; 
     }
 }
