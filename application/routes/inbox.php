@@ -37,7 +37,7 @@ return array(
         $category = new DBCategory;
         
         //Reply messages
-        $sm = new Message\Services\SettingMessage(Input::get('type'));       
+        $sm = new Message\Services\SettingMessage('msg');       
         Helpers::dump($sm->get_messages());
 
         $view_data = Array(
