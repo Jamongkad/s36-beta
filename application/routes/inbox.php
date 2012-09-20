@@ -39,7 +39,8 @@ return array(
         //Reply messages
         $sm = new Message\Services\SettingMessage('msg');       
         $sm->get_messages();
-        Helpers::dump($sm->jsonify());
+        $reply_message = json_decode($sm->jsonify());
+        Helpers::dump($reply_message);
 
         $view_data = Array(
               'feedback' => $feedback->result
