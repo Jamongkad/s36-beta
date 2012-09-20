@@ -14,6 +14,7 @@ $('.dialog-form').dialog({
   , height: 550
   , width: 700
   , modal: true
+  , dialogClass: 'alert'
   /*
   , buttons: { 
         "Send Reply": function() { 
