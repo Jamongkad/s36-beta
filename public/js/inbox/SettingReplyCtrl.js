@@ -80,8 +80,7 @@ function SettingReplyCtrl($scope) {
           , data: {"msg": input.val(), "id": id}
         }); 
 
-        $scope.replymsg_text = "mathew";
-        console.log($scope);
+        span.text(input.val());
         
         me.hide();
         sib.show();
