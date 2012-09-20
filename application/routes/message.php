@@ -16,6 +16,10 @@ return array(
     },
 
     'GET /message/get_msgs' => function() {
+        $sm = new Message\Services\SettingMessage(Input::get('type'));       
+        $sm->get_messages();
+        echo $sm->jsonify();
+        /*
         $redis = new redisent\Redis;
         $key = Config::get('application.subdomain').":settings:msg";
         $data = $redis->hgetall($key);
@@ -27,17 +31,12 @@ return array(
             $final_data['id'] = $val;
             $collection[] = $final_data;
         }
-
         echo json_encode($collection);
+        */
     },
 
     'POST /message/delete_msg' => function() {
         $sm = new Message\Services\SettingMessage(Input::get('type'));       
         $sm->update_message(Input::get('id'));
-        /*
-        $redis = new redisent\Redis;
-        $key = Config::get('application.subdomain').":settings:msg";
-        $redis->hdel($key, $id); 
-        */
     }
 );

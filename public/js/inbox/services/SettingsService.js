@@ -9,6 +9,7 @@ angular.module('S36Module', [])
       , dataType: 'json'
       , async: false
       , url: 'message/get_msgs'
+      , data: {"type": "msg"}
       , success: function(data) {
             shared_service.message = data;
         }
@@ -26,6 +27,7 @@ angular.module('S36Module', [])
       , dataType: 'json'
       , async: false
       , url: 'message/get_request_msgs'
+      , data: {"type": "rqs"}
       , success: function(data) {
             shared_service.message = data;
         }
