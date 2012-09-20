@@ -31,9 +31,13 @@ return array(
         echo json_encode($collection);
     },
 
-    'GET /message/delete_msg/(:any)' => function($id) {
+    'POST /message/delete_msg' => function() {
+        $sm = new Message\Services\SettingMessage(Input::get('type'));       
+        $sm->update_message(Input::get('id'));
+        /*
         $redis = new redisent\Redis;
         $key = Config::get('application.subdomain').":settings:msg";
         $redis->hdel($key, $id); 
+        */
     }
 );

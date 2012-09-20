@@ -27,9 +27,11 @@ function SettingReplyCtrl($scope, MessageService) {
         $event.preventDefault();
     };
 
-    $scope.delete_msg = function(data, $event) {
+    $scope.delete_msg = function(id, $event) {
         $.ajax({
-            url: 'message/delete_msg/' + data
+            url: 'message/delete_msg'
+          , type: 'POST' 
+          , data: {"id": id, "type": "msg"}
           , success: function() { $("div#" + data + ".grids").remove(); }
         }); 
         $event.preventDefault();
