@@ -11,7 +11,7 @@ angular.module('reply', [])
 
 $('.dialog-form').dialog({
     autoOpen: false  
-  , height: 500
+  , height: 540
   , width: 700
   , modal: true
   /*
