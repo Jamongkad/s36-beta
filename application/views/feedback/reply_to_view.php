@@ -90,14 +90,14 @@
             </td>
 
             <td>   
-                <?if($reply_message):?>
-                    <ul class="msgsel">
+                <ul class="msgsel">
+                    <?if($reply_message):?>
                         <?foreach($reply_message as $val):?>
                             <li id="<?=$val->id?>"><a href="#"><?=$val->text?></a></li>
                         <?endforeach?>
-                        <li><?=HTML::link('settings', '(configure template reply)')?></li>
-                    </ul> 
-                <?endif?>
+                    <?endif?>
+                    <li><?=HTML::link('settings', '(configure template reply)')?></li>
+                </ul> 
             </td>
 
         </tr>
