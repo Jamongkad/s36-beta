@@ -53,8 +53,10 @@ return array(
 
         $tf->test('Test Get Message', function($tf) {
             $tf->assert($tf->data->sm->save_message('Mathew'));
+
             $tf->data->sm->get_messages();
             $tf->dump($tf->data->sm->jsonify());
+
             $tf->data->sm->last_insert();
             $tf->dump($tf->data->sm->jsonify());
         });
