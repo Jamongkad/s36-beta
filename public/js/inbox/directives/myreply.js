@@ -19,8 +19,7 @@ angular.module('reply', [])
     }
 
     return {
-        restrict: 'E'     
-      , link: linkfn
+        link: linkfn
     }
 
 })
