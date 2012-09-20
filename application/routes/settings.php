@@ -264,7 +264,7 @@ return array (
     },
 
     'POST /settings/update_reply_msg' => function() {
-       
+        Helpers::dump(Input::get());
     },
 
     'GET /settings/get_msgs' => function() {

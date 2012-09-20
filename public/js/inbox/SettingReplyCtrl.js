@@ -73,8 +73,13 @@ function SettingReplyCtrl($scope) {
         var input = $("input#" + id + "[name=reply_message]");
         var span = $("span#" + id + ".replymsg-text");
 
-        console.log(input.val());
-        console.log(id);
+        $.ajax({
+            type: 'POST'
+          , url: 'settings/update_reply_msg' 
+          , dataType: 'json'
+          , data: {"msg": input.val(), "id": id}
+          //, success: function() { }
+        }); 
         
         me.hide();
         sib.show();
