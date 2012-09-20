@@ -9,7 +9,7 @@ angular.module('Components', [])
     var msgsel_fn;
 
     msgsel_fn = function(scope, element, attrs) {
-        $(element).children().hasAttr('id').bind('click', function(e) {
+        $(element).children().attr('id').bind('click', function(e) {
             console.log($(this).text());     
             e.preventDefault();
         });
