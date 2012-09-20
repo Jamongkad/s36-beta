@@ -10,6 +10,7 @@ class SettingMessage {
     private $hash_key; 
     private $company;
     private $hash_nm;
+    private $result;
 
     public function __construct($msg_type) {
         $this->redis    = new redisent\Redis;  
@@ -23,22 +24,28 @@ class SettingMessage {
     }
 
     public function get_messages() { 
-        $collection = Array();
-        foreach($this->redis->hkeys($this->hash_nm) as $val) {
-            $final_data = new StdClass;
-            $final_data->text = $this->redis->hget($this->hash_nm, $val);
-            $final_data->id   = $val;
-            $collection[] = $final_data;
-        }
 
-        return json_encode($collection);
+        $tree = Array();
+
+        foreach($this->redis->hkeys($this->hash_nm) as $val) {
+            $leaf = new StdClass;
+            $leaf->text = $this->redis->hget($this->hash_nm, $val);
+            $leaf->id   = $val;
+            $tree[] = $final_data;
+        }
+        //return json_encode($collection);
+        $this->result = $tree;
     }
 
     public function last_insert() { 
-        $final_data = Array();
-        $final_data['text'] = $this->redis->hget($this->hash_nm, $this->hash_key);
-        $final_data['id'] = $this->hash_key;
+        $leaf = Array();
+        $leaf['text'] = $this->redis->hget($this->hash_nm, $this->hash_key);
+        $leaf['id']   = $this->hash_key;
+        //return json_encode($final_data);
+        return $this;
+    }
 
-        return json_encode($final_data);
+    public function jsonify() {
+        return json_encode($this->result);
     }
 }
