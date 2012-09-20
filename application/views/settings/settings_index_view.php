@@ -72,7 +72,7 @@
                         <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
                         <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
-                     <div class="g1of3" style="padding-top:8px;">
+                     <div class="g1of3">
                          <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
                          <a href="#" class="gray-btn" style="display:none" ng-click="update_msg(msg.id, $event)">+ Update Message</a>
                          <a href="#" class="gray-btn" ng-click="delete_msg(msg.id, $event)">- Delete Message</a>
