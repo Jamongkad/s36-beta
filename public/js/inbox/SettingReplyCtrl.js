@@ -4,7 +4,7 @@ myModule.factory('mySettingsService', function($rootScope) {
 
     shared_service.message = null;
 
-    $.ajax({
+    shared_service.msg = $.ajax({
         type: 'GET'    
       , dataType: 'json'
       , async: true
@@ -20,7 +20,6 @@ myModule.factory('mySettingsService', function($rootScope) {
 function SettingReplyCtrl($scope, mySettingsService) {
 
     console.log(mySettingsService);
-
     $scope.msgs = mySettingsService.message;
     /* 
     function my_msg() { 
