@@ -1,11 +1,11 @@
 var myModule = angular.module('myModule', []);
 myModule.factory('mySettingsService', function($rootScope) {
+
     var shared_service = {};
 
     shared_service.message;
 
     shared_service.get_messages = function() {
-
         var my_msg = this.message; 
 
         $.ajax({
@@ -17,7 +17,6 @@ myModule.factory('mySettingsService', function($rootScope) {
                 my_msg = data;
             }
        });
-
     }
 
     return shared_service;
