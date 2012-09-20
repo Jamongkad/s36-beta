@@ -28,14 +28,12 @@
              , '/js/jquery.tmpl.js'
              , '/js/jquery.jcrop.js'
              , '/js/jquery.ajaxfileupload.js' 
-             /*
-             , '/js/jquery.fileupload.js'
-             */
+             //, '/js/jquery.fileupload.js'
              , '/js/jquery.zclip.js' 
              , '/js/jquery.flot.js'
              , '/js/jquery.flot.pie.js'
              , '/js/jquery.pjax.js'
-             , '/js/jquery.timeago.js'
+             //, '/js/jquery.timeago.js'
              , '/js/inbox/s36LightBox.js'
              , '/js/inbox/ZClip.js'
              , '/js/inbox/Checky.js'
@@ -47,9 +45,7 @@
              , '/js/inbox/Replyto.js' 
              , '/js/inbox/Settings.js'
              , '/js/inbox/s36application.js'
-             //, '/js/inbox/combined-min.js'
            );
-           //$string = '"' . implode('","', $js_scripts) . '"';
        ?> 
         <script text="text/javascript">
             <?foreach($js_scripts as $scripts):?>
