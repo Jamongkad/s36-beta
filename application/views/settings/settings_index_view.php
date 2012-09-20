@@ -93,7 +93,7 @@
         <div style="padding:8px 0px 0px;">
             <strong style="margin-left:6px;">Feedback Request Messages</strong> 
             <br/>
-            <span style="margin-left:6px;">Write custom request feedback messages you can send to a person with a single click.</span>
+            <span style="margin-left:6px;">Write a custom request message you can send to a person with a single click.</span>
         </div> 
 
         <div ng-controller="SettingRequestCtrl" id="replymsg-list">      

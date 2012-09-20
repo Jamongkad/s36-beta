@@ -5,7 +5,6 @@ angular.module('S36Module', [])
     shared_service.message;
 
     shared_service.get_messages = function(type) { 
-
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
