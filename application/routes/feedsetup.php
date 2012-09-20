@@ -235,13 +235,18 @@ return array(
     
     //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
-        $auth = S36Auth::user();
-        Helpers::dump($auth);
+        $company = Config::get('application.subdomain');
+        //fucking quick fix 
+        $comp = DB::table('Company', 'master')
+                            ->join('Site', 'Site.companyId', '=', 'User.companyId')
+                            ->join('Company', 'User.companyId', '=', 'Company.companyId')
+                            ->where('Company.name', '=', $company)
+                            ->first(Array('Site.siteId', 'Company.companyid'));
 
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = $auth->siteid;
-        $option->company_id = $auth->companyid;
+        $option->site_id    = $comp->siteid;
+        $option->company_id = $comp->companyid;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
