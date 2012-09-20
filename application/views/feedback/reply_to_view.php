@@ -92,9 +92,9 @@
             <td>   
                 <?if($reply_message):?>
                     <ul class="msgsel">
-                        <?foreach($reply_message as $$val):?>
+                        <?foreach($reply_message as $val):?>
                             <li id="<?=$val->id?>"><?=$val->text?></li>
-                        <?endif?>
+                        <?endforeach?>
                     </ul> 
                 <?endif?>
             </td>
