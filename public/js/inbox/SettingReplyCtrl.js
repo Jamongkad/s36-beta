@@ -52,15 +52,26 @@ function SettingReplyCtrl($scope) {
     };
 
     $scope.edit_msg = function(id, $event) {        
-        var input = $("input#" + id + "[name=reply_message]");
-        var span = $("span#" + id + ".replymsg-text");
+
         var me = $($event.target);
         var sib = me.next();
-        
+
+        var input = $("input#" + id + "[name=reply_message]");
+        var span = $("span#" + id + ".replymsg-text");
+     
         me.hide();
         sib.show();
         input.show();
         span.hide();
+        $event.preventDefault();
+    };
+
+    $scope.update_msg = function(id, $event) {
+        var me = $($event.target);
+        var sib = me.prev();
+        
+        me.hide();
+        sib.show();
         $event.preventDefault();
     };
 }

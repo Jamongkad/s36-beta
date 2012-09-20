@@ -70,7 +70,7 @@
                 <div class="grids" id="{{msg.id}}">
                     <div class="g1of3">
                         <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
-                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
+                        <input type="text" style="display:none" class="regular-text" name="my_msg" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3" style="padding-top:8px;">
                          <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
