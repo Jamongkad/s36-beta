@@ -81,15 +81,19 @@ function ParentCtrl($scope) {
 function SettingReplyCtrl($scope, $injector, MessageService) { 
     $injector.invoke(ParentCtrl, this, {$scope: $scope});
 
-    MessageService.get_messages("msg");
+    var type = "msg";
+    MessageService.get_messages(type);
     $scope.msgs = MessageService.message;
-    $scope.type = "msg";
+    $scope.type = type;
 }
 
-function SettingRequestCtrl($scope, $injector, RequestMessageService) { 
+function SettingRequestCtrl($scope, $injector, MessageService) { 
     $injector.invoke(ParentCtrl, this, {$scope: $scope});
-    $scope.msgs = RequestMessageService.message;
-    $scope.type = "rqs";
+    
+    var type = "rqs";
+    MessageService.get_messages(type);
+    $scope.msgs = MessageService.message;
+    $scope.type = type;
 }
 
 SettingReplyCtrl.prototype = Object.create(ParentCtrl.prototype);
