@@ -4,7 +4,7 @@ myModule.factory('mySettingsService', function($rootScope) {
 
     shared_service.message;
 
-    shared_service.get_messages() {
+    shared_service.get_messages = function() {
 
         var my_msg = this.message; 
 
