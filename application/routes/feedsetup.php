@@ -226,20 +226,26 @@ return array(
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
-        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme
-                                                          .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
+        $company = Config::get('application.subdomain');
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme.'/'.$company
+                                                          .'?preview=1&submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
-        $auth = S36Auth::user_site();
+    'GET /feedsetup/preview_widget/(:any?)/(:any?)' => function($theme=false, $company) {
+        //fucking quick fix 
+        $comp = DB::table('Company', 'master')
+                            ->join('Site', 'Site.companyId', '=', 'Company.companyId')
+                            ->where('Company.name', '=', $company)
+                            ->first(Array('Site.siteId', 'Company.companyid'));
+
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = $auth->siteid;
-        $option->company_id = $auth->companyid;
+        $option->site_id    = $comp->siteid;
+        $option->company_id = $comp->companyid;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
