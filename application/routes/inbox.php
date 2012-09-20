@@ -39,8 +39,6 @@ return array(
         //Reply messages
         $sm = new Message\Services\SettingMessage('msg');       
         $sm->get_messages();
-        $reply_message = json_decode($sm->jsonify());
-        Helpers::dump($reply_message);
 
         $view_data = Array(
               'feedback' => $feedback->result
@@ -52,6 +50,7 @@ return array(
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
             , 'filter' => $filter
             , 'company_id' => $company_id
+            , 'reply_message' => json_decode($sm->jsonify())
         );
         
         if(!Input::get('_pjax')) { 

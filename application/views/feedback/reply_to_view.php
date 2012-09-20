@@ -90,12 +90,13 @@
             </td>
 
             <td>   
-                <ul class="msgsel">
-                    <li>Thank you for your suggestion</li>
-                    <li>Technical Support Issue</li>
-                    <li>Refund and RMA</li>
-                    <li>Configure Template Reply</li>
-                </ul> 
+                <?if($reply_message):?>
+                    <ul class="msgsel">
+                        <?foreach($reply_message as $$val):?>
+                            <li id="<?=$val->id?>"><?=$val->text?></li>
+                        <?endif?>
+                    </ul> 
+                <?endif?>
             </td>
 
         </tr>
