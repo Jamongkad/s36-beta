@@ -48,11 +48,11 @@ return array(
         });
         
         $tf->test('Service Test', function($tf) {
-            $tf->dump($tf->data->sm);
+            $tf->assert($tf->data->sm);
         });
 
         $tf->test('Test Get Message', function($tf) {
-            $tf->data->sm->save_message('Mathew');
+            $tf->assert($tf->data->sm->save_message('Mathew'));
             $tf->dump($tf->data->sm->get_messages());
             $tf->dump($tf->data->sm->last_insert());
         });
