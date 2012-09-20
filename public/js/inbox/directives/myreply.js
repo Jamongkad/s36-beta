@@ -1,20 +1,12 @@
 angular.module('reply', [])
 .directive('myReply', function() {
-
-    var linkfn = function(scope, element, attrs) {
-
+    return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
             var feedid = $(this).attr('feedid'); 
             $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-            console.log(feedid);
             e.preventDefault();
         });
     }
-
-    return {
-        link: linkfn
-    }
-
 })
 
 $('.dialog-form').dialog({
