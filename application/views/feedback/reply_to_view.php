@@ -90,8 +90,8 @@
             </td>
 
             <td ng-controller="SettingReplyCtrl">   
-                <ul class="msgsel" ng-repeat="msg in get_msgs()">
-                    <li>{{msg.text}}</li>
+                <ul class="msgsel">
+                    <li ng-repeat="msg in get_msgs()">{{msg.text}}</li>
                 </ul> 
             </td>
 
