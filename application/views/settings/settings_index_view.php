@@ -74,7 +74,7 @@
                     </div>
                      <div class="g1of3" style="padding-top:8px;">
                          <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
-                         <a href="#" class="gray-btn" style="display:none" ng-click="updated_msg(msg.id, $event)">+ Update Message</a>
+                         <a href="#" class="gray-btn" style="display:none" ng-click="update_msg(msg.id, $event)">+ Update Message</a>
                          <a href="#" class="gray-btn" ng-click="delete_msg(msg.id, $event)">- Delete Message</a>
                     </div>
                 </div>
