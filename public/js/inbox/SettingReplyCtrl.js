@@ -86,7 +86,7 @@ function SettingReplyCtrl($scope, $injector, MessageService) {
 
 function SettingRequestCtrl($scope, $injector, RequestMessageService) { 
     $injector.invoke(ParentCtrl, this, {$scope: $scope});
-    $scope.msgs = MessageService.message;
+    $scope.msgs = RequestMessageService.message;
     $scope.type = "rsq";
 }
 
