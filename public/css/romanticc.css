@@ -614,5 +614,5 @@ li.configure-ff-link a:hover {
 div.dialog-form { display:none; }
 
 ul.msgsel {margin:0;padding:0;list-style:none;}
-ul.msgsel li a{color:#6e7e8e;}
-ul.msgsel li a:hover{color:#3a4c5a;}
+ul.msgsel li a{color:#6e7e8e;text-decoration:underline}
+ul.msgsel li a:hover{color:#3a4c5a;text-decoration:underline}
