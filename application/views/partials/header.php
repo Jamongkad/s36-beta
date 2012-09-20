@@ -7,6 +7,7 @@
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
         <?=HTML::script('js/head.min.js')?>
+        <?=HTML::script('js/jquery.tinymce.js')?>
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
