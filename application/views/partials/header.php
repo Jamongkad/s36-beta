@@ -14,6 +14,7 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
+        <?=HTML::script('js/inbox/services/SettingsService.js')?>
         <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
