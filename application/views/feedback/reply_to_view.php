@@ -89,9 +89,12 @@
                 <textarea class="regular-text" rows="6" name="message"></textarea>
             </td>
 
-            <td ng-controller="SettingReplyCtrl">   
+            <td>   
                 <ul class="msgsel">
-                    <li ng-repeat="msg in get_msgs()">{{msg.text}}</li>
+                    <li>Thank you for your suggestion</li>
+                    <li>Technical Support Issue</li>
+                    <li>Refund and RMA</li>
+                    <li>Configure Template Reply</li>
                 </ul> 
             </td>
 
