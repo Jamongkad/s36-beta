@@ -13,6 +13,12 @@
         padding-left: 5px; 
         line-height: 18px;
     }
+
+    .msgsel ul{margin:0;padding:0;list-style:none;}
+    .msgsel ul li:hover{cursor:pointer;}
+    .msgsel ul li a{color:#767676;padding:3px 5px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;}
+    .msgsel ul li a.Matched,.base-popup ul li:hover a{color:#6e7f8d;background:#f5f5f7;}
+    .msgsel a{font-weight:normal;}
 </style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
