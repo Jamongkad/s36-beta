@@ -50,28 +50,6 @@ jQuery(function($) {
         var email = $(this).attr('email');
 
         textarea.val(textarea.val() + email + ","); 
-        /*
-        var pointer = $(this).index();
-        var input = "<input type='text' class='regular-text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
-        var first_bcc = $("#first-bcc");
-         
-        if(first_bcc.val().length === 0) {
-            first_bcc.val($(this).text());
-            seen[pointer] = true;
-        } else {
-             if(typeof seen[pointer] == 'undefined') {  
-               $("#bcc-target").append(input);
-               seen[pointer] = true;
-            }   
-        }
- 
-        $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
-            var del_pointer = $(this).attr('id');
-            $(this).prev('input').remove().end().remove();
-            delete seen[del_pointer];
-            e.preventDefault();
-        })
-        */ 
         e.preventDefault();
     })
 });
