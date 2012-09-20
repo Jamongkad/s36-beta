@@ -612,3 +612,7 @@ li.configure-ff-link a:hover {
 }
 
 div.dialog-form { display:none; }
+
+ul.msgsel {margin:0;padding:0;list-style:none;}
+ul.msgsel li:hover{cursor:pointer;}
+ul.msgsel li a{color:#767676;padding:3px 5px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;}
