@@ -1,9 +1,6 @@
-function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
+function SettingReplyCtrl($scope, MessageService) {
 
     $scope.msgs = MessageService.message;
-    $scope.rqs = RequestMessageService;
-
-    console.log(RequestMessageService);
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
@@ -16,7 +13,7 @@ function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
         } else { 
             $.ajax({
                 type: 'POST'
-              , url: 'settings/save_reply_msg'     
+              , url: 'message/save_reply_msg'     
               , dataType: 'json'
               , data: {"msg": $scope.form_msg_text}
               , success: function(data) {
@@ -32,7 +29,7 @@ function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
 
     $scope.delete_msg = function(data, $event) {
         $.ajax({
-            url: 'settings/delete_msg/' + data
+            url: 'message/delete_msg/' + data
           , success: function() { $("div#" + data + ".grids").remove(); }
         }); 
         $event.preventDefault();
@@ -63,7 +60,7 @@ function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
 
         $.ajax({
             type: 'POST'
-          , url: 'settings/update_reply_msg' 
+          , url: 'message/update_reply_msg' 
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id}
         }); 
