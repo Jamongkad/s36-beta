@@ -69,7 +69,7 @@
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids" id="{{msg.id}}">
                     <div class="g1of3">
-                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
+                        <span class="replymsg-text" id="{{msg.id}}" ng-model="replymsg_text" ng-model-instant> {{msg.text}} </span>
                         <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3" style="padding-top:8px;">
