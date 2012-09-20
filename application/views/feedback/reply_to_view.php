@@ -12,7 +12,10 @@
     ul.add-bcc li {
         padding-left: 5px; 
         line-height: 18px;
-    }
+   }
+
+   .large-btn{background:#6a7881;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:8px 26px;font-weight:bold;text-shadow:#3c4349 0px -1px;cursor:pointer;}
+   .large-btn:hover{background:#8194a0;}
 </style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
@@ -105,14 +108,11 @@
                                            <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
     </table>
 
-        <div class="widget-options">
-            <div class="block noborder" style="margin-left:-10px;">
-                <input type="submit" class="large-btn create-widget-button" value="Save" />
-                <!--
-                <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
-                -->
-            </div>
-        </div>
+    
+    <div class="block noborder" style="margin-left:-10px;">
+        <input type="submit" class="large-btn" value="Send" /> 
+    </div>
+   
 </div>
 <?else:?>
 <div class="block">
