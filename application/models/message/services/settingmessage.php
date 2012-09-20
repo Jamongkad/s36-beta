@@ -39,6 +39,6 @@ class SettingMessage {
         $final_data['text'] = $redis->hget($this->hash_nm, $this->hash_key);
         $final_data['id'] = $this->hash_key;
 
-        echo json_encode($final_data);
+        return json_encode($final_data);
     }
 }

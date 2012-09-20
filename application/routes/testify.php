@@ -54,6 +54,7 @@ return array(
         $tf->test('Test Get Message', function($tf) {
             $tf->data->sm->save_message('Mathew');
             $tf->dump($tf->data->sm->get_messages());
+            $tf->dump($tf->data->sm->last_insert());
         });
 
         $tf->run(); 
