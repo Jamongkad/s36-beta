@@ -1,4 +1,4 @@
-jQuery(function($) {
+jQuery(function($) { 
     /*
     $('.admin-nav-bar').delegate('li a', 'click', function(e) {
         var url = $(this).attr('href');

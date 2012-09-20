@@ -2,6 +2,7 @@ angular.module('reply', [])
 .directive('myReply', function() {
     return function(scope, element, attrs) {
         $(element).bind('click', function(e) {
+            $('.ul-dialog-titlebar').hide();
             var feedid = $(this).attr('feedid'); 
             $('.dialog-form[feedid='+feedid+']').dialog('open'); 
             e.preventDefault();
@@ -33,4 +34,4 @@ $('.dialog-form').dialog({
     */
 });
 
-$('.ul-dialog-titlebar').hide();
+//fucking fix
