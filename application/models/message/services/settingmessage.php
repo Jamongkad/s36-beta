@@ -15,4 +15,8 @@ class SettingMessage {
         $this->rand_key = "msg-".Helpers::randid();
         $this->msg_type = $msg_type;
     }
+
+    public function get_messages() {
+        return true; 
+    }
 }
