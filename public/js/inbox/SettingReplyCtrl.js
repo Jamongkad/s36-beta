@@ -1,5 +1,5 @@
 var myModule = angular.module('myModule', []);
-myModule.factory('SettingsService', function($rootScope) {
+myModule.factory('mySettingsService', function($rootScope) {
     var shared_service = {};
 
     shared_service.message = null;
@@ -17,10 +17,10 @@ myModule.factory('SettingsService', function($rootScope) {
     return shared_service;
 });
 
-function SettingReplyCtrl($scope, SettingsService) {
+function SettingReplyCtrl($scope, mySettingsService) {
 
     $scope.msgs = null;
-    $scope.resource = SettingsService;
+    $scope.resource = mySettingsService;
     /* 
     function my_msg() { 
         $.ajax({
@@ -112,4 +112,4 @@ function SettingReplyCtrl($scope, SettingsService) {
     };
 }
 
-SettingReplyCtrl.$inject = ['$scope', 'SettingsService'];
+SettingReplyCtrl.$inject = ['$scope', 'mySettingsService'];
