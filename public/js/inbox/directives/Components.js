@@ -22,8 +22,8 @@ angular.module('Components', [])
 })
 .directive('myReply', function() {
     return function(scope, element, attrs) {
-        $(document).delegate(element, 'click', function(e) {
-            console.log(this);
+        $(element).bind('click', function(e) {
+            console.log($(this));
             e.preventDefault();
         });
     }
