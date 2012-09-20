@@ -81,6 +81,7 @@ function SettingReplyCtrl($scope) {
         }); 
 
         $scope.replymsg_text = "mathew";
+        console.log($scope);
         
         me.hide();
         sib.show();
