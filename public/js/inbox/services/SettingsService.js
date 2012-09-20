@@ -1,4 +1,5 @@
-angular.module('S36Module', []).factory('mySettingsService', function($rootScope) {
+angular.module('S36Module', [])
+.factory('MessageService', function($rootScope) {
 
     var shared_service = {};
     shared_service.message;
@@ -14,4 +15,8 @@ angular.module('S36Module', []).factory('mySettingsService', function($rootScope
     });
 
     return shared_service;
-});
+})
+.factory('RequestMessageService', function($rootScope) {
+    var shared_service = {};
+    return shared_service; 
+})

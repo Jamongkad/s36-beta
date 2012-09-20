@@ -1,27 +1,7 @@
-/*
-var myModule = angular.module('S36Module', []);
-myModule.factory('mySettingsService', function($rootScope) {
+function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
 
-    var shared_service = {};
-    shared_service.message;
-
-    $.ajax({
-        type: 'GET'    
-      , dataType: 'json'
-      , async: false
-      , url: 'settings/get_msgs'
-      , success: function(data) {
-            shared_service.message = data;
-        }
-    });
-
-    return shared_service;
-});
-*/
-
-function SettingReplyCtrl($scope, mySettingsService) {
-
-    $scope.msgs = mySettingsService.message;
+    $scope.msgs = MessageService.message;
+    $scope.rqs = RequestMessageService;
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
