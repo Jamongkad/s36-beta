@@ -44,7 +44,7 @@ return array(
         $tf = new Testify("Setting Message Services Test");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->sm = new Message\Services\SettingMessage('request');       
+            $tf->data->sm = new Message\Services\SettingMessage('reqmsg');       
         });
         
         $tf->test('Service Test', function($tf) {
