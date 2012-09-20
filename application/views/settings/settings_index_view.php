@@ -64,8 +64,7 @@
             <span style="margin-left:6px;">Write custom messages to reply to a person with a single click.</span>
         </div>
         
-        <div ng-controller="SettingReplyCtrl" id="replymsg-list">
-             
+        <div ng-controller="SettingReplyCtrl" id="replymsg-list">      
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                     <div class="g1of3">
@@ -96,6 +95,31 @@
             <br/>
             <span style="margin-left:6px;">Write custom request feedback messages you can send to a person with a single click.</span>
         </div> 
+
+        <div ng-controller="SettingRequestCtrl" id="replymsg-list">      
+            <div ng-repeat="msg in get_msgs()">
+                <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
+                    <div class="g1of3">
+                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
+                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
+                    </div>
+                     <div class="g1of3">
+                         <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
+                         <a href="#" class="gray-btn" style="display:none" ng-click="update_msg(msg.id, $event)">+ Update Message</a>
+                         <a href="#" class="gray-btn" ng-click="delete_msg(msg.id, $event)">- Delete Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="grids" style="background:#fffde5; margin-top:10px">                
+                <div class="g1of3">
+                    <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
+                </div>
+                <div class="g1of3 align-center" style="padding-top:8px;">
+                    <a href="#" class="gray-btn add-new-message" ng-click="add_msg($event)">+ Add Reply Message</a>
+                </div>
+                <div class="g1of3"></div>
+            </div>
+        </div>
 
 
         <div class="grids" style="background:#fffde5; margin-top:10px">
