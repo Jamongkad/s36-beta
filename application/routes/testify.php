@@ -58,7 +58,8 @@ return array(
         });
 
         $tf->test('Test Update Message', function($tf) {
-            $tf->assert($tf->data->sm->update_message('msg-533', 'Mathew Wong'));
+            $tf->data->sm->update_message('msg-533', 'Mathew Wong');
+            $tf->pass();
         });
 
         $tf->test('Test Delete Message', function($tf) {
