@@ -4,17 +4,15 @@ myModule.factory('SettingsService', function($rootScope) {
 
     shared_service.message = null;
 
-    function my_msg() { 
-        $.ajax({
-            type: 'GET'    
-          , dataType: 'json'
-          , async: true
-          , url: 'settings/get_msgs'
-          , success: function(data) {
-                shared_service.message = data;
-            }
-        });
-    }
+    $.ajax({
+        type: 'GET'    
+      , dataType: 'json'
+      , async: true
+      , url: 'settings/get_msgs'
+      , success: function(data) {
+            shared_service.message = data;
+        }
+    });
 
     return shared_service;
 });
@@ -23,7 +21,7 @@ function SettingReplyCtrl($scope, SettingsService) {
 
     $scope.msgs = null;
     $scope.resource = SettingsService;
-    
+    /* 
     function my_msg() { 
         $.ajax({
             type: 'GET'    
@@ -39,6 +37,7 @@ function SettingReplyCtrl($scope, SettingsService) {
     }
     
     my_msg();
+    */
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
