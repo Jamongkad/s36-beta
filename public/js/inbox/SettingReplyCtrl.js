@@ -78,7 +78,6 @@ function SettingReplyCtrl($scope) {
           , url: 'settings/update_reply_msg' 
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id}
-          //, success: function() { }
         }); 
 
         $scope.replymsg_text = input.val();
