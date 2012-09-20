@@ -36,7 +36,7 @@ class SettingMessage {
 
     public function last_insert() { 
         $final_data = Array();
-        $final_data['text'] = $redis->hget($this->hash_nm, $this->hash_key);
+        $final_data['text'] = $this->redis->hget($this->hash_nm, $this->hash_key);
         $final_data['id'] = $this->hash_key;
 
         return json_encode($final_data);
