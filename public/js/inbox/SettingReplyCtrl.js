@@ -62,7 +62,7 @@ function SettingReplyCtrl($scope, MessageService) {
             type: 'POST'
           , url: 'message/update_reply_msg' 
           , dataType: 'json'
-          , data: {"msg": input.val(), "id": id}
+          , data: {"msg": input.val(), "id": id, "type": "msg"}
         }); 
 
         span.text(input.val());
