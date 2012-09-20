@@ -4,6 +4,8 @@ return array(
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function(  $filter=False
                                                                                                       , $choice=False ) {  
 
+        Helpers::dump(Config::get('application.subdomain'));
+
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
         $limit = 10;
