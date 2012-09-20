@@ -24,8 +24,9 @@ myModule.factory('mySettingsService', function($rootScope) {
 
 function SettingReplyCtrl($scope, mySettingsService) {
 
-    console.log(mySettingsService);
-    $scope.msgs = mySettingsService.get_messages();
+    var m = mySettingsService.get_messages();
+    console.log(m);
+    $scope.msgs = null;
     /* 
     function my_msg() { 
         $.ajax({
