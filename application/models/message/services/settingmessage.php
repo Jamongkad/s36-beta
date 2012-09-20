@@ -17,7 +17,7 @@ class SettingMessage {
         $this->company  = Config::get('application.subdomain');
         $this->hash_key = "msg-".Helpers::randid();
         $this->msg_type = $msg_type;
-        $this->hash_nm  = $this->company.':'.$this->msg_type;
+        $this->hash_nm  = $this->company.':settings:'.$this->msg_type;
     }
 
     public function get_messages() { 

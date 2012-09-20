@@ -52,7 +52,6 @@ return array(
         });
 
         $tf->test('Test Get Message', function($tf) {
-            $tf->assert($tf->data->sm->get_messages());
             $tf->dump($tf->data->sm->get_messages());
         });
 
