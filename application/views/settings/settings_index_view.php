@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="grids" style="background:#fffde5">                
+            <div class="grids" style="background:#fffde5; margin-top:10px">                
                 <div class="g1of3">
                     <input type="text" ng-model="form_msg_text" class="regular-text" name="reply_message" ng-model-instant/>
                 </div>
