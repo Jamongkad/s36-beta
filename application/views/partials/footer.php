@@ -20,6 +20,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
+<?=HTML::script('js/inbox/directives/InboxDirectives.js')?>
 <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/S36Module.js')?>
 
