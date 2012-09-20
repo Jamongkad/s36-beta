@@ -11,6 +11,7 @@ angular.module('Components', [])
     msgsel_fn = function(scope, element, attrs) {
         $(element).children().bind('click', function(e) {
             console.log($(this).text());
+            e.prevendDefault();
         });
     }
 
