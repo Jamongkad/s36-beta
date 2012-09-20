@@ -31,7 +31,7 @@ class SettingMessage {
             $leaf = new StdClass;
             $leaf->text = $this->redis->hget($this->hash_nm, $val);
             $leaf->id   = $val;
-            $tree[] = $final_data;
+            $tree[] = $leaf;
         }
         //return json_encode($collection);
         $this->result = $tree;
