@@ -226,7 +226,8 @@ return array(
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
-        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme
+        $company = Config::get('application.subdomain');
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme.'/'.$company
                                                           .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
@@ -234,8 +235,7 @@ return array(
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
-        $company = Config::get('application.subdomain');
+    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false, $company) {
         //fucking quick fix 
         $comp = DB::table('Company', 'master')
                             ->join('Site', 'Site.companyId', '=', 'Company.companyId')
