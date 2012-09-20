@@ -6,15 +6,6 @@
     <link rel="shortcut icon" href="<?=URL::to('/')?>img/favicon.png">
 	<title>36Stories - Get amazing feedback for your brand and business.</title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
-
-        <?=HTML::script('js/head.min.js')?>
-        <?=HTML::script('js/jquery.tinymce.js')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
