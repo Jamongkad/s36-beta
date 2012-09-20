@@ -1,6 +1,7 @@
-function Parent($scope) {
+function ParentCtrl($scope) {
 
     $scope.msgs;
+    $scope.type;
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
@@ -15,7 +16,7 @@ function Parent($scope) {
                 type: 'POST'
               , url: 'message/save_msg'     
               , dataType: 'json'
-              , data: {"msg": $scope.form_msg_text, "type": "msg"}
+              , data: {"msg": $scope.form_msg_text, "type": $scope.type}
               , success: function(data) {
                     $scope.$apply(function(){
                         $scope.msgs.push(data);
@@ -31,7 +32,7 @@ function Parent($scope) {
         $.ajax({
             url: 'message/delete_msg'
           , type: 'POST' 
-          , data: {"id": id, "type": "msg"}
+          , data: {"id": id, "type": $scope.type}
           , success: function() { $("div#" + id + ".grids").remove(); }
         }); 
         $event.preventDefault();
@@ -64,7 +65,7 @@ function Parent($scope) {
             type: 'POST'
           , url: 'message/update_reply_msg' 
           , dataType: 'json'
-          , data: {"msg": input.val(), "id": id, "type": "msg"}
+          , data: {"msg": input.val(), "id": id, "type": $scope.type}
         }); 
 
         span.text(input.val());
@@ -78,8 +79,9 @@ function Parent($scope) {
 }
 
 function SettingReplyCtrl($scope, $injector, MessageService) { 
-    $injector.invoke(Parent, this, {$scope: $scope});
+    $injector.invoke(ParentCtrl, this, {$scope: $scope});
     $scope.msgs = MessageService.message;
+    $scope.type = "msg";
 }
 
-SettingReplyCtrl.prototype = Object.create(Parent.prototype);
+SettingReplyCtrl.prototype = Object.create(ParentCtrl.prototype);
