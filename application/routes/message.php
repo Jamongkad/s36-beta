@@ -3,7 +3,12 @@
 use Message\Services;
 
 return array(
-    'POST /message/save_reply_msg' => function() {
+    'POST /message/save_msg' => function() {
+        $sm = new Message\Services\SettingMessage(Input::get('type'));       
+        $sm->save_message(Input::get('msg'));
+        $sm->last_insert();
+        echo $sm->jsonify();
+        /*
         $rand_key = "msg-".Helpers::randid();
         $key = Config::get('application.subdomain').":settings:msg";
         $redis = new redisent\Redis;
@@ -14,6 +19,7 @@ return array(
         $final_data['id'] = $rand_key;
 
         echo json_encode($final_data);
+        */
     },
 
     'POST /message/update_reply_msg' => function() {
