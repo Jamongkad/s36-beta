@@ -264,7 +264,9 @@ return array (
     },
 
     'POST /settings/update_reply_msg' => function() {
-        Helpers::dump(Input::get());
+        $redis = new redisent\Redis;
+        $key = Config::get('application.subdomain').":settings:msg";
+        $redis->hset($key, Input::get('id'), Input::get('msg'));
     },
 
     'GET /settings/get_msgs' => function() {
