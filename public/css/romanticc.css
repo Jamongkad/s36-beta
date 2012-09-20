@@ -616,6 +616,3 @@ div.dialog-form { display:none; }
 ul.msgsel {margin:-17px;padding:0;list-style:none;line-height:1.3em}
 ul.msgsel li a{color:#6e7e8e;text-decoration:underline}
 ul.msgsel li a:hover{color:#3a4c5a;text-decoration:underline}
-
-/*jqueryui title bar hide*/
-.noTitleStuff .ui-dialog-titlebar { display: none; }

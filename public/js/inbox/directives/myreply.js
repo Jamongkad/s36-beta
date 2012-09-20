@@ -32,3 +32,5 @@ $('.dialog-form').dialog({
     }
     */
 });
+
+$('.ul-dialog-titlebar').hide();
