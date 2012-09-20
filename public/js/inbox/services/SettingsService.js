@@ -18,5 +18,3 @@ angular.module('Services', [])
     }
     return shared_service;
 });
-
-angular.module('S36Module', ['Services']);
