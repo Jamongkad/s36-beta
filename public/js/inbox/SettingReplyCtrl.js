@@ -77,7 +77,8 @@ function Parent($scope) {
     };
 }
 
-function SettingReplyCtrl($scope, MessageService) { 
+function SettingReplyCtrl($scope, $injector, MessageService) { 
+    $injector.invoke(Parent, this, {$scope: $scope});
     $scope.msgs = MessageService.message;
 }
 
