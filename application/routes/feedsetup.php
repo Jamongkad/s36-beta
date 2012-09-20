@@ -236,7 +236,6 @@ return array(
     //this muthafucka gets called by JS code
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
         $auth = S36Auth::user_site();
-        Helpers::dump(S36Auth::user_site());
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->site_id    = $auth->siteid;
