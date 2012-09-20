@@ -57,9 +57,8 @@ function SettingReplyCtrl($scope) {
         var me = $($event.target);
         var sib = me.next();
         
-        console.log(sib);
-
         me.hide();
+        sib.show();
         input.show();
         span.hide();
         $event.preventDefault();
