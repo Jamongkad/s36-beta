@@ -20,6 +20,7 @@
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
 <div class="block" style="padding:25px">
+    <h1>{{name}}</h1>
     <table cellpadding="5" width="100%">
         <?if($user->replyto):?>
         <tr>
