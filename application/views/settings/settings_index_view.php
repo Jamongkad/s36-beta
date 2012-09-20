@@ -67,7 +67,7 @@
         <div ng-controller="SettingReplyCtrl" id="replymsg-list">
              
             <div ng-repeat="msg in get_msgs()">
-                <div class="grids" id="{{msg.id}}">
+                <div class="grids" id="{{msg.id}}" style="padding: 10px">
                     <div class="g1of3">
                         <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
                         <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
