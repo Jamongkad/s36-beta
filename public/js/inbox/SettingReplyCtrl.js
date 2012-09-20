@@ -1,6 +1,6 @@
-function SettingReplyCtrl($scope, MessageService) {
+function Parent($scope) {
 
-    $scope.msgs = MessageService.message;
+    $scope.msgs;
 
     $scope.get_msgs = function() {
         return $scope.msgs;   
@@ -76,3 +76,9 @@ function SettingReplyCtrl($scope, MessageService) {
         $event.preventDefault();
     };
 }
+
+function SettingReplyCtrl($scope, MessageService) { 
+    $scope.msgs = MessageService.message;
+}
+
+SettingReplyCtrl.prototype = Object.create(Parent.prototype);

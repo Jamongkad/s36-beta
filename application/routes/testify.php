@@ -70,11 +70,6 @@ return array(
             $tf->data->sm->get_messages();
             $tf->dump($tf->data->sm->jsonify());
         });
-        /*
-        //clean up
-        $tf->afterEach(function($tf) {
-        });
-        */
 
         $tf->run(); 
     }

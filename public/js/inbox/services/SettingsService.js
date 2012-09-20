@@ -26,7 +26,7 @@ angular.module('S36Module', [])
         type: 'GET'    
       , dataType: 'json'
       , async: false
-      , url: 'message/get_request_msgs'
+      , url: 'message/get_msgs'
       , data: {"type": "rqs"}
       , success: function(data) {
             shared_service.message = data;
