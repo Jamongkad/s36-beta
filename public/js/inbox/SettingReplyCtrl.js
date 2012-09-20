@@ -1,4 +1,4 @@
-var myModule = angular.module('myModule', []);
+var myModule = angular.module('S36Module', []);
 myModule.factory('mySettingsService', function($rootScope) {
 
     var shared_service = {};
