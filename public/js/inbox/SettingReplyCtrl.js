@@ -80,6 +80,8 @@ function ParentCtrl($scope) {
 
 function SettingReplyCtrl($scope, $injector, MessageService) { 
     $injector.invoke(ParentCtrl, this, {$scope: $scope});
+
+    MessageService.get_messages("msg");
     $scope.msgs = MessageService.message;
     $scope.type = "msg";
 }
