@@ -1,6 +1,7 @@
 var myModule = angular.module('myModule', []);
 myModule.factory('mySettingsService', function($rootScope) {
     var shared_service = {};
+
     shared_service.message;
 
     shared_service.msg = $.ajax({
@@ -18,7 +19,7 @@ myModule.factory('mySettingsService', function($rootScope) {
 
 function SettingReplyCtrl($scope, mySettingsService) {
 
-    console.log(mySettingsService.message);
+    console.log(mySettingsService.msg);
     $scope.msgs = mySettingsService.message;
     /* 
     function my_msg() { 
