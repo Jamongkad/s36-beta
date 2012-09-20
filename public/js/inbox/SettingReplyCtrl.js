@@ -3,6 +3,8 @@ function SettingReplyCtrl($scope, MessageService, RequestMessageService) {
     $scope.msgs = MessageService.message;
     $scope.rqs = RequestMessageService;
 
+    console.log(RequestMessageService);
+
     $scope.get_msgs = function() {
         return $scope.msgs;   
     };
