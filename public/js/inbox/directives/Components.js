@@ -9,9 +9,8 @@ angular.module('Components', [])
     var msgsel_fn;
 
     msgsel_fn = function(scope, element, attrs) {
-        console.log($(element).children());
-        $(element).bind('click', function(e) {
-            alert("mathew");
+        $(element).children().bind('click', function(e) {
+            console.log($(this));
         });
     }
 
