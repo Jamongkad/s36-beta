@@ -16,46 +16,47 @@
         </script>                     
     <?endif?>
 
-<?endif?>
-
-</div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
+<?=HTML::script('js/head.min.js')?>
+<?
+    $js_scripts = Array(
+       '/js/jquery.switcharoo.js'
+     , '/js/jquery.fancytips.js'
+     , '/js/jquery.form.js'
+     , '/js/jquery.tmpl.js'
+     , '/js/jquery.jcrop.js'
+     , '/js/jquery.ajaxfileupload.js' 
+     //, '/js/jquery.fileupload.js'
+     , '/js/jquery.zclip.js' 
+     , '/js/jquery.flot.js'
+     , '/js/jquery.flot.pie.js'
+     , '/js/jquery.pjax.js'
+     //, '/js/jquery.timeago.js'
+     , '/js/inbox/s36LightBox.js'
+     , '/js/inbox/ZClip.js'
+     , '/js/inbox/Checky.js'
+     , '/js/inbox/DropDownChange.js'
+     , '/js/inbox/InboxStatusChange.js'
+     , '/js/inbox/InboxFilters.js'
+     , '/js/inbox/FeedSetup.js'
+     , '/js/inbox/Status.js'
+     , '/js/inbox/Replyto.js' 
+     , '/js/inbox/Settings.js'
+     , '/js/inbox/s36application.js'
+   );
+?> 
+<script text="text/javascript">
+    <?foreach($js_scripts as $scripts):?>
+       head.js('<?=$scripts?>');
+    <?endforeach?>
+</script>
 
-        <?
-            $js_scripts = Array(
-               '/js/jquery.switcharoo.js'
-             , '/js/jquery.fancytips.js'
-             , '/js/jquery.form.js'
-             , '/js/jquery.tmpl.js'
-             , '/js/jquery.jcrop.js'
-             , '/js/jquery.ajaxfileupload.js' 
-             //, '/js/jquery.fileupload.js'
-             , '/js/jquery.zclip.js' 
-             , '/js/jquery.flot.js'
-             , '/js/jquery.flot.pie.js'
-             , '/js/jquery.pjax.js'
-             //, '/js/jquery.timeago.js'
-             , '/js/inbox/s36LightBox.js'
-             , '/js/inbox/ZClip.js'
-             , '/js/inbox/Checky.js'
-             , '/js/inbox/DropDownChange.js'
-             , '/js/inbox/InboxStatusChange.js'
-             , '/js/inbox/InboxFilters.js'
-             , '/js/inbox/FeedSetup.js'
-             , '/js/inbox/Status.js'
-             , '/js/inbox/Replyto.js' 
-             , '/js/inbox/Settings.js'
-             , '/js/inbox/s36application.js'
-           );
-       ?> 
-        <script text="text/javascript">
-            <?foreach($js_scripts as $scripts):?>
-               head.js('<?=$scripts?>');
-            <?endforeach?>
-        </script>
+<?endif?>
+
+</div>
 
 <div id="notification">
 	<div id="notification-design">
