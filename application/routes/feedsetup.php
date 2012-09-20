@@ -244,8 +244,8 @@ return array(
 
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = 9;
-        $option->company_id = 3;
+        $option->site_id    = $comp->siteid;
+        $option->company_id = $comp->companyid;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
