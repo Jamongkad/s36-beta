@@ -89,14 +89,13 @@
                 <textarea class="regular-text" rows="6" name="message"></textarea>
             </td>
 
-            <td> 
-                <ul class="no-list-style">
+            <td>   
+                <ul>
                     <li>Thank you for your suggestion</li>
                     <li>Technical Support Issue</li>
                     <li>Refund and RMA</li>
                     <li>Configure Template Reply</li>
-                </ul>
-    
+                </ul> 
             </td>
 
         </tr>

@@ -1,4 +1,4 @@
-angular.module('S36Module', [])
+angular.module('Services', [])
 .service('MessageService', function($rootScope) {
 
     var shared_service = {};
@@ -16,6 +16,7 @@ angular.module('S36Module', [])
             }
         });
     }
-
     return shared_service;
 });
+
+angular.module('S36Module', ['Services']);
