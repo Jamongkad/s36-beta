@@ -19,7 +19,7 @@ class SettingMessage {
     }
 
     public function save_message($msg) { 
-        $this->redis->hset($this->hash_nm, $this->hash_key, $msg);
+        $this->redis->hsetnx($this->hash_nm, $this->hash_key, $msg);
     }
 
     public function get_messages() { 
