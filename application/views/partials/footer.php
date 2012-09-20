@@ -21,7 +21,7 @@
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 <?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
-<?=HTML::script('js/inbox/S36Module.js')?>
+<?//=HTML::script('js/inbox/S36Module.js')?>
 
 <?=HTML::script('js/head.min.js')?>
 <?
