@@ -30,11 +30,11 @@ class SettingMessage {
         $this->purifier = new \HTMLPurifier($config);
     }
 
-    public function save_message($msg) { 
+    public function save($msg) { 
         return $this->redis->hsetnx($this->hash_nm, $this->hash_key, $this->purifier->purify($msg));
     }
 
-    public function update_message($hash_key, $msg) { 
+    public function update($hash_key, $msg) { 
         return $this->redis->hset($this->hash_nm, $hash_key, $this->purifier->purify($msg));
     }
 
