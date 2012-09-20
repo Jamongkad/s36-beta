@@ -71,6 +71,8 @@
         /* change display to block when error is not shown to preserve the height */
         padding:20px 30px;display:none;
     }
+
+    .noTitleStuff .ui-dialog-titlebar { display: none; }
 </style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
