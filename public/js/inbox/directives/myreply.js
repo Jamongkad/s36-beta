@@ -1,10 +1,10 @@
 angular.module('reply', [])
 .directive('myReply', function() {
     return function(scope, element, attrs) {
-        $(element).bind('click', function(e) {
-            $('.ul-dialog-titlebar').hide();
+        $(element).bind('click', function(e) { 
             var feedid = $(this).attr('feedid'); 
             $('.dialog-form[feedid='+feedid+']').dialog('open'); 
+            $('.ul-dialog-titlebar').hide();
             e.preventDefault();
         });
     }
