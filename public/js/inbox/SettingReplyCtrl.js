@@ -2,8 +2,6 @@ var myModule = angular.module('myModule', []);
 myModule.factory('mySettingsService', function($rootScope) {
     var shared_service = {};
 
-    shared_service.message = null;
-
     shared_service.msg = $.ajax({
         type: 'GET'    
       , dataType: 'json'
