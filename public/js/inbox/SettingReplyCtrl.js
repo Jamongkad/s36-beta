@@ -72,6 +72,9 @@ function SettingReplyCtrl($scope) {
  
         var input = $("input#" + id + "[name=reply_message]");
         var span = $("span#" + id + ".replymsg-text");
+
+        console.log(input.val());
+        console.log(id);
         
         me.hide();
         sib.show();

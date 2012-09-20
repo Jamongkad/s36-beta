@@ -263,6 +263,10 @@ return array (
         echo json_encode($final_data);
     },
 
+    'POST /settings/update_reply_msg' => function() {
+       
+    },
+
     'GET /settings/get_msgs' => function() {
         $redis = new redisent\Redis;
         $key = Config::get('application.subdomain').":settings:msg";
