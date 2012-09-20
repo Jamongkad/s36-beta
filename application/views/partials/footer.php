@@ -20,6 +20,9 @@
 
 </div>
 
+<?=HTML::script('js/inbox/services/SettingsService.js')?>
+<?=HTML::script('js/inbox/SettingReplyCtrl.js')?>
+
 <div id="notification">
 	<div id="notification-design">
     	<div id="notification-message" style="display:none">

@@ -14,8 +14,6 @@
         <?=HTML::script('js/head.min.js')?>
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?=HTML::script('js/inbox/services/SettingsService.js')?>
-        <?//=HTML::script('js/inbox/SettingReplyCtrl.js')?>
 
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
         <?=HTML::style('css/grid.css')?> 
@@ -24,9 +22,7 @@
         <?=HTML::style('css/zebra_pagination.css')?>
         <?
             $js_scripts = Array(
-               //'js/inbox/services/SettingsService.js'
-               'js/inbox/SettingReplyCtrl.js'
-             , '/js/jquery.switcharoo.js'
+               '/js/jquery.switcharoo.js'
              , '/js/jquery.fancytips.js'
              , '/js/jquery.form.js'
              , '/js/jquery.tmpl.js'
