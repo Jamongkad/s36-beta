@@ -20,11 +20,3 @@ angular.module('Components', [])
       , link: msgsel_fn
     }  
 })
-.directive('myReply', function() {
-    return function(scope, element, attrs) {
-        $(element).bind('click', function(e) {
-            console.log($(this));
-            e.preventDefault();
-        });
-    }
-})
