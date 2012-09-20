@@ -8,7 +8,7 @@ angular.module('S36Module', [])
         type: 'GET'    
       , dataType: 'json'
       , async: false
-      , url: 'settings/get_msgs'
+      , url: 'message/get_msgs'
       , success: function(data) {
             shared_service.message = data;
         }
