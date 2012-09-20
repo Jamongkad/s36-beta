@@ -54,10 +54,12 @@ function SettingReplyCtrl($scope) {
     $scope.edit_msg = function(id, $event) {        
         var input = $("input#" + id + "[name=reply_message]");
         var span = $("span#" + id + ".replymsg-text");
-
         var me = $($event.target);
-        console.log(me);
+        var sib = me.next();
+        
+        console.log(sib);
 
+        me.hide();
         input.show();
         span.hide();
         $event.preventDefault();
