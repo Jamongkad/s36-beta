@@ -230,17 +230,19 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         $bcc = Input::get('bcc');
-        if($bcc) { 
-            $bcc = substr($bcc, 0, -1);
-            $bcc = explode(",", $bcc);
-            $bcc = array_unique($bcc);
-        }
 
         $feedback_data = $feedback->pull_feedback_by_id(Input::get('feedbackid')); 
 
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject = Input::get('subject');
-        $replydata->bcc = $bcc;
+
+        if($bcc) { 
+            $bcc = substr($bcc, 0, -1);
+            $bcc = explode(",", $bcc);
+            $bcc = array_unique($bcc);
+            $replydata->bcc = $bcc;
+        }
+        
         $replydata->sendto = Input::get('emailto');
         $replydata->from = (object) Array(
             "replyto" => Input::get('replyto')
