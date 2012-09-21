@@ -19,6 +19,7 @@
 
     #lightbox{
         width:700px;
+        margin-left:-350px;
     }
     .lightbox-styles{
         display:block;
