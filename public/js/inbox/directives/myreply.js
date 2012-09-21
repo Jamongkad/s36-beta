@@ -4,7 +4,6 @@ angular.module('reply', [])
         $(element).bind('click', function(e) { 
             var feedid = $(this).attr('feedid'); 
             $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-            $('.ui-dialog-titlebar').hide();
             e.preventDefault();
         });
     }
