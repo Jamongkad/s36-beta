@@ -32,7 +32,12 @@ angular.module('reply', [])
 .directive('replyBcc', function() {
     return function(scope, element, attrs){
         $(element).children('li').bind('click', function(e) {
-            console.log($(this).children('a').attr('email'));
+            var children = $(this).children('a');
+            var email = children.attr('email');
+            var my_id = children.attr('feedid');
+            var textarea = $(".bcc-target[feedid="+my_id+"]").children('textarea');
+
+            textarea.val(textarea.val() + email + ","); 
             e.preventDefault();
         });
     }
