@@ -242,8 +242,13 @@ return array(
             $bcc = array_unique($bcc);
             $replydata->bcc = $bcc;
         }
+
+        $copyme = null;
+        if(Input::get('email_me')) {
+            $copyme = ",".Input:get('replyto');
+        }
         
-        $replydata->sendto = Input::get('emailto');
+        $replydata->sendto = Input::get('emailto').$copyme;
         $replydata->from = (object) Array(
             "replyto" => Input::get('replyto')
           , "username"  => ucfirst(Input::get('username'))
