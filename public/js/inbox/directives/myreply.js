@@ -12,7 +12,7 @@ angular.module('reply', [])
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
         $(element).bind('click', function(e) {
-            console.log($(this));
+            console.log($(this).parents('.dialog-form').dialog('close'));
             e.preventDefault();
         });
     }
