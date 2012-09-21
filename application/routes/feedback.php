@@ -245,7 +245,7 @@ return array(
 
         $copyme = null;
         if(Input::get('email_me')) {
-            $copyme = ",".Input:get('replyto');
+            $copyme = ",".Input::get('replyto');
         }
         
         $replydata->sendto = Input::get('emailto').$copyme;
