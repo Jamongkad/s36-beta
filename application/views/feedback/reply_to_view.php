@@ -18,8 +18,7 @@
    .large-btn:hover{background:#8194a0;}
 
     #reply-box{
-        width:700px;
-        margin-left:-350px;
+
     }
     .reply-box-styles{
         display:block;
