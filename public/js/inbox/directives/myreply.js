@@ -21,6 +21,7 @@ angular.module('reply', [])
     return function(scope, element, attrs){
         $(element).bind('click', function(e) {
             var form = $(this).parents('form');
+            $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             form.ajaxSubmit({
                 dataType: 'json'     
             })
