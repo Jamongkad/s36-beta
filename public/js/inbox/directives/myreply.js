@@ -33,7 +33,7 @@ angular.module('reply', [])
 
 $('.dialog-form').dialog({
     autoOpen: false  
-  , height: 613
+  , height: 600
   , width: 700 
   , modal: true
   /*
