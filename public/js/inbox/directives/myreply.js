@@ -32,7 +32,7 @@ angular.module('reply', [])
 .directive('replyBcc', function() {
     return function(scope, element, attrs){
         $(element).children('li').bind('click', function(e) {
-            console.log($(this, 'a'));
+            console.log($(this).text());
             e.preventDefault();
         });
     }
