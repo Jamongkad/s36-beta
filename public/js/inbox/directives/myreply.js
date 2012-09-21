@@ -22,7 +22,7 @@ angular.module('reply', [])
 $('.dialog-form').dialog({
     autoOpen: false  
   , height: 650
-  , width: 680 
+  , width: 650 
   , modal: true
   /*
   , buttons: { 
