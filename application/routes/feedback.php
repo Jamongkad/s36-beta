@@ -230,9 +230,11 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
         $bcc = Input::get('bcc');
-        $bcc = substr($bcc, 0, -1);
-        $bcc = explode(",", $bcc);
-        $bcc = array_unique($bcc);
+        if($bcc) { 
+            $bcc = substr($bcc, 0, -1);
+            $bcc = explode(",", $bcc);
+            $bcc = array_unique($bcc);
+        }
 
         Helpers::dump($bcc);
         /*

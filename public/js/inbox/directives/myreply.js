@@ -26,7 +26,7 @@ angular.module('reply', [])
 
             form.ajaxSubmit({
                 dataType: 'json'     
-              , success: function() {
+              , success: function(data) {
                     myparent.dialog('close');
                 }
             })
