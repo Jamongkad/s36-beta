@@ -163,7 +163,7 @@
         <div class="reply-box-padding"></div>
         <div class="reply-box-footer">
             <div class="reply-box-buttons">
-                <input type="button" class="large-btn" value="Cancel" />
+                <input type="button" class="large-btn" value="Cancel" reply-cancel/>
                 <input type="button" class="large-btn" value="Send" />
             </div>
         </div>
