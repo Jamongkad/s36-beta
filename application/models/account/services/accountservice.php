@@ -7,10 +7,10 @@ use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 
 class AccountService{
 
-public  $user;
-public  $DBCompany;
-public $DBPlan;
-public $S36Braintree;
+private	$user;
+private	$DBCompany;
+private	$DBPlan;
+private	$S36Braintree;
 
 public function __construct(){
 		// initialize associate models
@@ -26,21 +26,6 @@ public function braintree_exist(){
 }
 
 public function get_accountInfo(){
-		/*
-		$company_info 						= $this->DBCompany->get_company_info();
-		$company_info->account_user 	= $this->DBCompany->get_account_user();
-		$company_plan_info 				= $this->DBPlan->get_planInfo($company_info->planid);
-		$result = array(
-			'companyInfo'			=> $company_info,
-			'companyPlanInfo'		=>	$company_plan_info,
-			'companyCreditCardInfo'		=>	$this->S36Braintree->get_credit_card_info(),
-			'companyBillingInfo'	=>	array(
-											'nextBill'			=>	$this->S36Braintree->get_next_billing_info(),
-											'billingHistory'	=>	$this->S36Braintree->get_billing_history()
-											)
-		);
-		return \Helpers::arrayToObject($result);
-		*/
 		$obj = new stdclass;
 		$obj->companyInfo 					=	$this->DBCompany->get_company_info();
 		$obj->companyInfo->account_owner	=	$this->DBCompany->get_account_owner();
@@ -48,6 +33,7 @@ public function get_accountInfo(){
 		if($this->braintree_exist()){
 			$obj->companyCreditCardInfo					=	\Helpers::arrayToObject($this->S36Braintree->get_credit_card_info());
 			$obj->companyBillingInfo = new stdclass;
+			$obj->companyBillingInfo						=	\Helpers::ArrayToObject($this->S36Braintree->get_billing_info());
 			$obj->companyBillingInfo->nextBill			=	\Helpers::arrayToObject($this->S36Braintree->get_next_billing_info());	
 			$obj->companyBillingInfo->billingHistory	=	\Helpers::arrayToObject($this->S36Braintree->get_billing_history());	
 		} 
@@ -85,6 +71,10 @@ public function update_credit_card($data){
 	else{
 		return array('success'=>false,'message'=>$result['message']);
 	}
+}
+
+public function update_billing_address($data){
+	return $this->S36Braintree->update_billing_address($data);
 }
 
 

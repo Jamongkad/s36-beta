@@ -11,12 +11,14 @@
 		$('#error_'+id).html('');
 	}
 				$(document).ready(function(){
-					
+
+
 						$('.plan-image').click(function(){
 							$('.plan-image').removeClass('plan-active');
 							$('#'+this.id).addClass('plan-active');
 							$('#plan_selected').val(this.id);
 							$('#plan_selected_name').html(this.id.toUpperCase());
+							$('#info_select_plan').css('display','none');
 							show('success_plan_selected');
 							hide_error('plan_selected');
 						});					
@@ -26,7 +28,7 @@
 								$('.alert-error').css('display','none');
 								$('#progress_box').css('display','block');
 								$('#success_box').css('display','none');
-								$('#error_billing_box').css('display','none');	
+								$('#info_select_plan').css('display','none');
 								$.ajax({
 									type: "POST",
 									url:	"/settings/add_billing_info",
@@ -35,16 +37,20 @@
 										var result = $.parseJSON(q);
 										var messages = result['messages'];
 										//validation errors occured
-										if(result['error']){							
+										if(result['error']){
 											if($.isArray(messages) || $.isPlainObject(messages)){
-												$.each(messages, function(key, value) { 
-												 	show_error(key,value);
+												$.each(messages, function(key, value) {
+													value = (value+'').replace(/\./g,'<br>');
+													err = (value+'').replace(/\,/g,'');
+													show_error(key,err);
+													if(key=='plan_selected'){
+														$('#success_plan_selected').css('display','none');
+														$('#info_select_plan').removeClass('alert-info');
+														$('#info_select_plan').addClass('alert-error');
+														show('info_select_plan');											
+													}								 	
 												});
 											}
-										}
-										//unexpected errors
-										else if(result['unexpected_error']){
-											show_error('unexpected',messages);
 										}
 										else{
 											$('.alert').css('display','none');
@@ -70,29 +76,32 @@
 </div>
 
 <div class="alert">
-	You do not have an existing customer ID for payment processor.<br>
-	In order to obtain one please select from our following plans.
+	You are trying to upgrade your subscription plan.<br>
+	In order to complete this transaction, please add your Billing Informations by submitting the form below.
 </div>
-
 <div id="pring_plans">
-	<div class="plan-box"><img id="basic" class="plan-image" src="../img/plan_basic.png"/></div>
-	<div class="plan-box"><img id="enhanced" class="plan-image" src="../img/plan_enhanced.png"/></div>
-	<div class="plan-box"><img id="premium" class="plan-image" src="../img/plan_premium.png"/></div>
+	<div class="plan-box"><img id="basic" class="plan-image <?=(strtolower($planInfo->name)=='basic') ? 'plan-active' : '' ?>" src="/img/plan_basic.png"/></div>
+	<div class="plan-box"><img id="enhanced" class="plan-image <?=(strtolower($planInfo->name)=='enhanced') ? 'plan-active' : '' ?>" src="/img/plan_enhanced.png"/></div>
+	<div class="plan-box"><img id="premium" class="plan-image <?=(strtolower($planInfo->name)=='premium') ? 'plan-active' : '' ?>" src="/img/plan_premium.png"/></div>
 </div>
 
-<div id="success_plan_selected" class="alert alert-info" style="display:none">
-	You selected <strong><span id="plan_selected_name"></span> PLAN</strong>.<br>
+<div id="success_plan_selected" class="alert alert-info" style="display:<?=(isset($planInfo->name)) ? 'block' : 'none'?>">
+	<strong><span id="plan_selected_name"><?=(isset($planInfo)) ? strtoupper($planInfo->name) :'' ?></span> PLAN</strong> has been selected.
+	<br>*you can also change the plan you want to obtain by clicking the images above.<br>
 </div>
-<span id="error_plan_selected" style="margin: 0pt; padding: 4px; display: none;" class="alert alert-error"></span>
-<span id="error_unexpected" style="margin: 0pt; padding: 4px; display: none;" class="alert alert-error"></span>
+
+	<div id="info_select_plan" class="alert alert-info" style="display:<?=(isset($planInfo->name)) ? 'none' : 'block'?>">
+	*please select the plan you want to obtain by clicking the plan options above.
+</div>
+
 <div id="progress_box" class="alert" style="display:none">Processing...</div>
 
 
             	<h3>Please input your Billing Information below to complete the transaction</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-                	<h4>Credit card details (this information is secure)</h4>
+                	<h4>Billing address and credit card details (this information is secure)</h4>
                 	<form id="add_billing_info" autocomplete="off" action="" method="post">
-                	<input type="hidden" id="plan_selected" name="plan_selected">
+                	<input type="hidden" id="plan_selected" name="plan_selected" value="<?=(isset($planInfo->name)) ? strtolower($planInfo->name) :'' ?>">
                    <table>
                     	<tbody>
                     		<tr>
@@ -151,16 +160,25 @@
                            </td>
 									<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
-                        <tr>
+                        <tr style="vertical-align:top;height:1px;">
                         	<td class="label">Card Number : </td>
                         	<td>
                            <input type="text" id="billing_card_number" name="billing_card_number" class="regular-text " maxlength="16">
                             </td>
-                            <td><span id="error_billing_card_number" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                            <td rowspan="2">
+                            <span id="error_billing_card" class="alert alert-error" style="margin:0;padding:4px;display:none"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td class="label">CVV : </td>
+                        	<td style="vertical-align:top;">
+                           <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
+	
+                           </td>
                         </tr>
                         <tr>
                             <td class="label">Expiry Date : </td>
-                            <td>
+                            <td style="vertical-align:top;height:1px;">
                               <select id="billing_expire_month" name="billing_expire_month" class="regular-select">
 											<option value="">select month</option>
                         			<option value="01">01 January</option>
@@ -189,13 +207,6 @@
                         		</select>
                              </td>
 									<td><span id="error_billing_expire_date" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">CVV : </td>
-                        	<td>
-                           <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
-                           </td>
-                           <td><span id="error_billing_card_cvv" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
 								<tr>
 									<td></td>

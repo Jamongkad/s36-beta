@@ -7,7 +7,7 @@
 								$.ajax({
 									type: "POST",
 									url:	"/settings/change_card/?action=confirm",
-									data: "card_number="+$('#card_number').val()+"&card_cvv="+$('#card_cvv').val()+"&expire_month="+$('#expire_month').val()+"&expire_year="+$('#expire_year').val()+"&billing_zip="+$('#billing_zip').val(),
+									data: "card_number="+$('#card_number').val()+"&card_cvv="+$('#card_cvv').val()+"&expire_month="+$('#expire_month').val()+"&expire_year="+$('#expire_year').val(),
 									success: function(q){
 										var result = $.parseJSON(q);
 										var messages = result['messages'];
@@ -53,7 +53,7 @@
 			<div class="block noborder">
             	<h3>Update your credit card</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-					 <div id="progress_box" class="alert" style="display:none">Processing...</div>
+					 <div id="progress_box" class="alert" style="display:none">Updating records...</div>
                 <div id="error_box" class="alert alert-error" style="display:none"></div>
                 <div id="success_box" class="alert alert-success" style="display:none"></div>
                 	<h4>Credit card details (this information is secure)</h4>
@@ -100,13 +100,6 @@
                         	</td>
                         	<td></td>
                         	<td></td>
-                        </tr>
-                        <tr>
-                        	<td><label class="regular-label">Billing Zip</label> </td>
-                        	<td>
-                        		<input id="billing_zip" type="text" class="regular-text small-text">
-                        	</td>
-                        	<td><span id="billing_zip_error" style="color:red;"></span></td>
                         </tr>
                         <tr>
                         	<td colspan="4">

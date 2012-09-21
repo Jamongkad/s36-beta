@@ -1,29 +1,32 @@
 				<?php
 				//Helpers::show_data($accountInfo);
-				$companyInfo				=	$accountInfo->companyInfo;
-				$companyPlanInfo 			= 	$accountInfo->companyPlanInfo;
-				$companyBillingInfo		=	$accountInfo->companyBillingInfo;
+				$companyInfo				=	(isset($accountInfo->companyInfo))        ? $accountInfo->companyInfo : false;
+				$companyPlanInfo 			= 	(isset($accountInfo->companyPlanInfo))		? $accountInfo->companyPlanInfo : false;
+				$companyBillingInfo		=	(isset($accountInfo->companyBillingInfo)) ? $accountInfo->companyBillingInfo : false;
 				?>
             <?php	/*List of Plans Start*/  ?>
             <div class="block">
 				<?php if(isset($result) && $result == 'completed'){?>            	
             	<div class="alert alert-success">Your subscription plan has been updated.</div>
             <?php } ?>
-            	<h3>Your account details</h3>
             	<?php
+            	if($companyBillingInfo){
 					$nextBill 			=	$companyBillingInfo->nextBill;
 					$billingHistory	=	$companyBillingInfo->billingHistory;          		
            		?>
+           		 <h3>Your account details</h3>
                 <p class="small"><strong>Next charge: $<?=$nextBill->amount?> on <?php echo date("d M Y",strtotime($nextBill->date->date)); ?> on <?=$nextBill->card_type?> (<a href="change_card">change card</a>)</strong></p>
                 <br />
+               <?php } ?>
                 <div class="upgrade-box">
+                	<?php if(isset($companyPlanInfo)){?>
                 	<?php if($companyPlanInfo->name == 'Premium'){ ?>
                 		<div class="box3 <?=$companyPlanInfo->upgrade_images->current?>"></div>
                 	<?php } else { ?>
                 		<div class="upgrade-box-arrow"></div>
                     	<div class="box1 <?=$companyPlanInfo->upgrade_images->current?>"></div>
                     	<div class="box2 <?=$companyPlanInfo->upgrade_images->upgrade?>"></div>
-                  <?php } ?>
+                  <?php }} ?>
                 </div>
                 <br />
                 <table width="100%" class="regular-table" cellpadding="0" cellspacing="0">
@@ -75,7 +78,7 @@
                     <tfoot>
                     	<tr>
                     		<td colspan="6">
-                    			You can also <a href="#" style="text-decoration:underline">downgrade</a> to a lower plan if you don't need as many features.
+                    			You can also downgrade to a lower plan if you don't need as many features.
 								</td>
 							</tr>
                     </tfoot>
@@ -90,8 +93,8 @@
                     	<div class="white-box">
                         	<h3>Invoices</h3>
                             <p>Each time you are billed, an invoice is emailed to <strong><?=$companyInfo->replyto?></strong>. The invoice includes a custom 'Bill to' field where you can provide your company's address and any other billing notes. You can change this at any time.</p>
-                            
-                            <?php if(sizeof($billingHistory)>0):?>
+                            <?php if($companyBillingInfo){ ?>
+                            <?php if(sizeof($billingHistory)>0){?>
 	                            <h3>Invoices & Charges Sent to Date</h3>
 	                            <ul>
 	                            	<?php foreach($billingHistory as $bill): ?>
@@ -102,7 +105,7 @@
 	                            	</li>
 	                            	<?php endforeach; ?>
 	                            </ul>
-									<?php endif;?>                  
+									<?php }}?>                  
                             
                             <!--
                             <?php if(sizeof($companyInfo->account_user) > 1 ): ?>
@@ -126,7 +129,7 @@
                     <div class="g1of3">
                     	<div class="gray-box">
                         	<h3>What happens if we upgrade, downgrade, or cancel in the middle of a billing cycle?</h3>
-                            <p>If you upgrade or downgrade you'll be charged the new rate for your new plan starting on your next billing cycle. If you cancel you'll be cancelled immediately and you won't be charged again.</p>
+                            <p>If you upgrade or downgrade you'll be charged the new rate for your new plan starting on your next billing cycle. If you cancel, your account will be cancelled immediately and you won't be charged again.</p>
                             <h3>We Accept <img src="../img/creditcards.png" style="vertical-align:middle;padding-left:10px;"  width="80"/></h3>
                             <p>We accept Visa, Mastercard, and American Express. We don't accept PayPal, checks, or POs, sorry.</p>
                             <p></p>

@@ -3,13 +3,15 @@
     class S36Braintree{
         
         private $customer_id;
+        private $billing_address_id;
+        private $billing_info;
         private $token;
         private $subscriptions;
         private $transactions = array();
         private $next_billing_info;
         private $subscription_id;
         private $credit_card_info;
-        public $exists = true;
+        public  $exists = true;
         private $existence_err = '';
 
 
@@ -105,6 +107,11 @@
             // if customer updated his credit card, transactions that he made with previous 
             // credit card is kept recorded.
             $this->next_billing_info['card_type'] = $customer->creditCards[0]->cardType;
+            
+            //Billing Informations
+            $this->billing_info 							= $customer->creditCards[0]->billingAddress;
+            $this->billing_info->next_billing_info = $this->next_billing_info;
+            $this->billing_info->transactions 		= $this->transactions;
 
 
             // store the default credit card's info.
@@ -167,26 +174,26 @@
             
             // create braintree customer account.
            $result = \Braintree_Customer::create(array(
-                 //'firstName' => $input->company_info->,
-                 //'lastName' => Input::get('last_name'),
-                 'email'                     => $input->company_info->account_owner->email,
-                 'company'                   => $input->company_info->name,
-                 'website'                   => $input->company_info->domain,
-                 'creditCard'                => array(
-                     'number'                => $input->billing_info->billing_card_number,
-                     'expirationMonth'   => $input->billing_info->billing_expire_month,
-                     'expirationYear'    => $input->billing_info->billing_expire_year,
-                     'cvv'                   => $input->billing_info->billing_card_cvv,
-                     'billingAddress'    => array(
-                         'firstName'     => $input->billing_info->billing_first_name,
-                         'lastName'      => $input->billing_info->billing_last_name,
-                         'streetAddress'=> $input->billing_info->billing_address,
-                         'locality'      => $input->billing_info->billing_city,
-                         'region'        => $input->billing_info->billing_state,
-                         'countryName'   => $input->billing_info->billing_country,
-                         'postalCode'    => $input->billing_info->billing_zip,
-                     )
-                 )
+                 'firstName'		=> $input->billing_info->billing_first_name,
+                 'lastName'		=> $input->billing_info->billing_last_name,
+                 'email'         => $input->company_info->account_owner->email,
+                 'company'       => $input->company_info->name,
+                 'website'       => $input->company_info->domain,
+                 'creditCard'    => array(
+                     'number'           => $input->billing_info->billing_card_number,
+                     'expirationMonth'  => $input->billing_info->billing_expire_month,
+                     'expirationYear'   => $input->billing_info->billing_expire_year,
+                     'cvv'              => $input->billing_info->billing_card_cvv,
+                     'billingAddress'   => array(
+                         'firstName'    		=> $input->billing_info->billing_first_name,
+                         'lastName'     		=> $input->billing_info->billing_last_name,
+                         'streetAddress'		=> $input->billing_info->billing_address,
+                         'locality'      		=> $input->billing_info->billing_city,
+                         'region'        		=> $input->billing_info->billing_state,
+                         'countryName'   		=> $input->billing_info->billing_country,
+                         'postalCode'    		=> $input->billing_info->billing_zip,
+                     								)
+                 							)
              ));
 
 
@@ -288,7 +295,7 @@
 
 
         // update subscription.
-        function update_subscription($plan_id){
+        public function update_subscription($plan_id){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
@@ -331,7 +338,7 @@
 
 
         // get next billing info of the subscription.
-        function get_next_billing_info(){
+        public function get_next_billing_info(){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
@@ -345,11 +352,8 @@
 
         // get billing history.
         function get_billing_history(){
-            
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
-
-
             return $this->transactions;
             
         }
@@ -357,7 +361,7 @@
 
 
         // update credit card info.
-        function update_credit_card($number, $cvv, $exp_month, $exp_year, $zip){
+        public function update_credit_card($number, $cvv, $exp_month, $exp_year, $zip){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
@@ -396,10 +400,24 @@
 
         }
 
-
-
+		public function get_billing_info(){
+			return $this->billing_info;
+		}
+		public function update_billing_address($input){
+			
+			$result = Braintree_Address::update($this->billing_info->customerId,$this->billing_info->id, array(
+						 'firstName'    		=> $input->billing_first_name,
+	                'lastName'     		=> $input->billing_last_name,
+	                'streetAddress'		=> $input->billing_address,
+	                'locality'      		=> $input->billing_city,
+	                'region'        		=> $input->billing_state,
+	                'countryName'   		=> $input->billing_country,
+	                'postalCode'    		=> $input->billing_zip
+						));
+			return $result;			
+		}
         // get current credit card info.
-        function get_credit_card_info(){
+      public function get_credit_card_info(){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
