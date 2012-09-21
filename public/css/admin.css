@@ -471,12 +471,12 @@ div.button-gray:hover{ background:#dce9f5;}
 
 .feedback-td-font { font-size: 12px; }
 
-/*
+
 #lightbox {
 	position: absolute;top: 0;left: 50%;width: 400px;margin-left: -200px;padding:0px;background: #FFF;z-index: 100001;display: none;
     border:2px solid #6b7984;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;text-align:center;
 }
-*/
+
 #lightbox-shadow{
 	position: fixed;
 	top: 0;

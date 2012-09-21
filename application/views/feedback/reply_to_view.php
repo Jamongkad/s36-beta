@@ -17,45 +17,45 @@
    .large-btn{background:#6a7881;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:8px 26px;font-weight:bold;text-shadow:#3c4349 0px -1px;cursor:pointer;}
    .large-btn:hover{background:#8194a0;}
 
-    #lightbox{
+    #reply-box{
         width:700px;
         margin-left:-350px;
     }
-    .lightbox-styles{
+    .reply-box-styles{
         display:block;
         overflow:hidden;
         text-align:left;
     }
-    .lightbox-styles h2{
+    .reply-box-styles h2{
         padding:15px 30px;
         background:#efefef;
         border-bottom:1px solid #e0e0e0;
         text-align:left;
         font-size:14px;
     }
-    .lightbox-content{
+    .reply-box-content{
         padding:30px;
     }
-    .lightbox-form{
+    .reply-box-form{
     }
-    .lightbox-form h3{
+    .reply-box-form h3{
         font-size:12px;
     }
-    .lightbox-footer{
+    .reply-box-footer{
         background:#babfc2;
         padding:15px 30px;
     }
-    .lightbox-buttons{text-align:right;}
-    #lightbox .custom-message{position:absolute;left:530px;list-style:none;font-size:11px;color:#9ba4ab;top:290px;}
+    .reply-box-buttons{text-align:right;}
+    #reply-box .custom-message{position:absolute;left:530px;list-style:none;font-size:11px;color:#9ba4ab;top:290px;}
     
-    .lightbox-error{
+    .reply-box-error{
         padding:20px 30px;
         background:#ffa801;
         color:#000;font-weight:bold;
         font-size:13px;
         display:block;
     }
-    .lightbox-padding{
+    .reply-box-padding{
         /* change display to block when error is not shown to preserve the height */
         padding:20px 30px;display:none;
     }
@@ -66,11 +66,11 @@
 <?=Form::hidden('emailto', $feedback->email)?>
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
-<div id="lightbox" style="display:block">
-    <div class="lightbox-styles">
+<div id="reply-box" style="display:block">
+    <div class="reply-box-styles">
         <h2>Reply To User</h2>
-        <div class="lightbox-content">
-        <div class="lightbox-form">
+        <div class="reply-box-content">
+        <div class="reply-box-form">
             <table cellpadding="5" width="100%">
             <!--
             <tr>
@@ -161,15 +161,15 @@
                 
             </div>
         </div>
-        <div class="lightbox-padding"></div>
-        <div class="lightbox-footer">
-            <div class="lightbox-buttons">
+        <div class="reply-box-padding"></div>
+        <div class="reply-box-footer">
+            <div class="reply-box-buttons">
                 <input type="button" class="large-btn" value="Cancel" />
                 <input type="button" class="large-btn" value="Send" />
             </div>
         </div>
     </div>
-    <!-- end of lightbox styles -->
+    <!-- end of reply-box styles -->
 </div>
 <!--
 <div class="block" style="padding:25px">
