@@ -16,23 +16,7 @@
 
    .large-btn{background:#6a7881;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;color:#FFF;font-size:12px;border:none;padding:8px 26px;font-weight:bold;text-shadow:#3c4349 0px -1px;cursor:pointer;}
    .large-btn:hover{background:#8194a0;}
-    #lightbox{
-        position:absolute;
-        z-index:100000;
-        top:10%;
-        left:50%;
-        width:700px;
-        margin-left:-350px;
-    }
-    .lightbox-close{
-        background:url(images/lightbox-close.png) no-repeat;
-        width:21px;
-        height:21px;
-        position:absolute;
-        z-index:100001;
-        right:20px;top:12px;
-        cursor:pointer;
-    }
+
     .lightbox-styles{
         display:block;
         overflow:hidden;
@@ -62,7 +46,7 @@
     
     .lightbox-error{
         padding:20px 30px;
-        background:#ffa801 url(images/yellow-error.png);
+        background:#ffa801;
         color:#000;font-weight:bold;
         font-size:13px;
         display:block;
