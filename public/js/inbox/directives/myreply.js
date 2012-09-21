@@ -16,6 +16,17 @@ angular.module('reply', [])
         });
     }
 })
+.directive('replySend', function() {
+    return function(scope, element, attrs){
+        $(element).bind('click', function(e) {
+            var form = $(this).parents('form');
+            form.ajaxSubmit({
+                dataType: 'json'     
+            })
+            e.preventDefault();
+        });
+    }
+})
 
 
 $('.dialog-form').dialog({

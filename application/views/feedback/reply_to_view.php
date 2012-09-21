@@ -164,7 +164,7 @@
         <div class="reply-box-footer">
             <div class="reply-box-buttons">
                 <input type="button" class="large-btn" value="Cancel" reply-cancel/>
-                <input type="button" class="large-btn" value="Send" />
+                <input type="button" class="large-btn" value="Send" reply-send/>
             </div>
         </div>
     </div>
