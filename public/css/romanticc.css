@@ -616,4 +616,4 @@ ul.msgsel li a{color:#6e7e8e;text-decoration:underline}
 ul.msgsel li a:hover{color:#3a4c5a;text-decoration:underline}
 
 div.dialog-form, .ui-dialog-titlebar { display:none; }
-.ui-dialog-content, .ui-dialog { padding:0; }
+.ui-dialog .ui-dialog-content{ padding:0 !important; }
