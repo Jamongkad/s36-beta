@@ -31,8 +31,8 @@ angular.module('reply', [])
 })
 .directive('replyBcc', function() {
     return function(scope, element, attrs){
-        console.log(element.children('li'));
         $(element).children('li').bind('click', function(e) {
+            console.log($(this, 'a'));
             e.preventDefault();
         });
     }
