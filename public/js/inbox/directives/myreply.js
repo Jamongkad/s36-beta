@@ -13,7 +13,7 @@ angular.module('reply', [])
 $('.dialog-form').dialog({
     autoOpen: false  
   , height: 680
-  , width: 730
+  , width: 720
   , modal: true
   /*
   , buttons: { 
@@ -28,10 +28,9 @@ $('.dialog-form').dialog({
         }
       , Cancel: function() { $(this).dialog('close'); }
     }
+    */
   , close: function(e, ui) {    
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
-    */
 });
 
-//fucking fix
