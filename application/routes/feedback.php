@@ -240,7 +240,7 @@ return array(
 
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject = Input::get('subject');
-        $replydata->bcc = $bcc
+        $replydata->bcc = $bcc;
         $replydata->sendto Input::get('emailto');
         $replydata->from = (object) Array(
             "replyto" => Input::get('replyto')
@@ -251,7 +251,7 @@ return array(
 
         $emailservice = new Email\Services\EmailService($replydata);  
         $emailservice->send_email(); 
-
+        return true;
         /*
         Helpers::dump(Input::get());
         $data = Input::get();
