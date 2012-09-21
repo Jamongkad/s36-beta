@@ -29,6 +29,14 @@ angular.module('reply', [])
         });
     }
 })
+.directive('replyBcc', function() {
+    return function(scope, element, attrs){
+        $(element).bind('click', function(e) {
+            e.preventDefault();
+        });
+    }
+ 
+})
 
 
 $('.dialog-form').dialog({

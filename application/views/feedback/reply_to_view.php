@@ -105,7 +105,7 @@
                     <strong>Add to Bcc : </strong>
                 </td>
                 <td>
-                    <ul class="add-bcc" >
+                    <ul class="add-bcc" reply-bcc>
                         <?if($user->ffemail1):?>
                             <li>
                                 <?=HTML::link('', $user->alias1."<".$user->ffemail1.">"
@@ -170,100 +170,6 @@
     </div>
     <!-- end of reply-box styles -->
 </div>
-<!--
-<div class="block" style="padding:25px">
-    <table cellpadding="5" width="100%">
-        <?if($user->replyto):?>
-        <tr>
-            <td width="15%"><strong>Reply To :</strong></td>
-            <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-            <td class="small"> 
-                <span class="reply-text">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)</span> 
-            </td>
-        </tr>
-        <?endif?>
-        <tr>
-            <td width="15%"><strong>To :</strong> </td>
-            <td width="50%" class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Bcc :</strong>
-            </td>
-            <td class="bcc-target" feedid="<?=$feedback->id?>">
-                <textarea class="regular-text" name="bcc" rows="2"></textarea>
-            </td>
-            <td class="small" valign="top">
-                <span class="reply-text">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) </span>
-            </td>
-        </tr>
-        <?if($user->ffemail1):?>
-        <tr>
-            <td valign="top">
-                <strong>Add to Bcc : </strong>
-            </td>
-            <td>
-                <ul class="add-bcc" >
-                    <?if($user->ffemail1):?>
-                        <li>
-                            <?=HTML::link('', $user->alias1."<".$user->ffemail1.">"
-                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail1))?>
-                        </li>
-                    <?endif?>
-                    <?if($user->ffemail2):?>
-                        <li>
-                            <?=HTML::link('', $user->alias2."<".$user->ffemail2.">"
-                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail2))?>
-                        </li>
-                    <?endif?>
-                    <?if($user->ffemail3):?>
-                        <li>
-                            <?=HTML::link('', $user->alias3."<".$user->ffemail3.">"
-                                         , array('class' => 'linky', 'feedid' => $feedback->id, 'email' => $user->ffemail3))?>
-                        </li>
-                    <?endif?>
-                </ul>
-            </td>
-            <td class="small" valign="top"></td>
-        </tr>
-        <?endif?>
-        <tr>
-            <td><strong>Subject : </strong> </td>
-            <td>
-                <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" /> 
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td valign="top"><strong>Message : </strong> </td>
-            <td>
-                <textarea class="regular-text" rows="6" name="message"></textarea>
-            </td>
-
-            <td>   
-                <ul class="msgsel">
-                    <?if($reply_message):?>
-                        <?foreach($reply_message as $val):?>
-                            <li id="<?=$val->id?>"><a href="#"><?=$val->text?></a></li>
-                        <?endforeach?>
-                    <?endif?>
-                    <li><?=HTML::link('settings', '(configure template reply)')?></li>
-                </ul> 
-            </td>
-
-        </tr>
-        <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 
-                                           <span class="reply-text">send me a copy (<?=$user->replyto?>)</span></td></tr>
-    </table>
-
-    
-    <div class="block noborder" style="margin-left:-10px;">
-        <input type="submit" class="large-btn" value="Send" /> 
-    </div>
-   
-</div>
--->
 <?else:?>
 <div class="block">
     <div class="woops">
