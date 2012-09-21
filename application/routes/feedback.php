@@ -241,7 +241,7 @@ return array(
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject = Input::get('subject');
         $replydata->bcc = $bcc;
-        $replydata->sendto Input::get('emailto');
+        $replydata->sendto = Input::get('emailto');
         $replydata->from = (object) Array(
             "replyto" => Input::get('replyto')
           , "username"  => ucfirst(Input::get('username'))
