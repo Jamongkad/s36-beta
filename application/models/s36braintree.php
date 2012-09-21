@@ -174,8 +174,8 @@
             
             // create braintree customer account.
            $result = \Braintree_Customer::create(array(
-                 'firstName'		=> $input->billing_info->billing_first_name,
-                 'lastName'		=> $input->billing_info->billing_last_name,
+                 'firstName'		=> $input->billing_info->account_owner->firstname,
+                 'lastName'		=> $input->billing_info->account_owner->lastname,
                  'email'         => $input->company_info->account_owner->email,
                  'company'       => $input->company_info->name,
                  'website'       => $input->company_info->domain,
