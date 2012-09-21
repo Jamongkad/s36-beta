@@ -33,7 +33,6 @@ angular.module('reply', [])
     return function(scope, element, attrs){
         $(element).children('li').bind('click', function(e) {
             console.log($(this).children('a').attr('email'));
-
             e.preventDefault();
         });
     }
