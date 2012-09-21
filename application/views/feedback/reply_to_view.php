@@ -93,7 +93,7 @@
                     <strong>Bcc :</strong>
                 </td>
                 <td class="bcc-target" feedid="<?=$feedback->id?>">
-                    <textarea class="regular-text" name="bcc" rows="2"></textarea>
+                    <textarea class="regular-text" name="bcc" rows="2" style='width: 338px'></textarea>
                 </td>
                 <td class="small" valign="top">
                     <span class="reply-text">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) </span>
