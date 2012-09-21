@@ -27,6 +27,7 @@ angular.module('reply', [])
             form.ajaxSubmit({
                 dataType: 'json'     
               , success: function(data) {
+                    alert("Email has been successfully sent!");
                     myparent.dialog('close');
                 }
             })
