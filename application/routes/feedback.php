@@ -236,7 +236,22 @@ return array(
             $bcc = array_unique($bcc);
         }
 
-        Helpers::dump($bcc);
+        $feedback_data = $feedback->pull_feedback_by_id(Input::get('feedbackid')); 
+
+        $replydata = new Email\Entities\ReplyData; 
+        $replydata->subject = Input::get('subject');
+        $replydata->bcc = $bcc
+        $replydata->sendto Input::get('emailto');
+        $replydata->from = (object) Array(
+            "replyto" => Input::get('replyto')
+          , "username"  => ucfirst(Input::get('username'))
+        );
+        $replydata->message = Input::get('message');
+        $replydata->feedback = $feedback_data;
+
+        $emailservice = new Email\Services\EmailService($replydata);  
+        $emailservice->send_email(); 
+
         /*
         Helpers::dump(Input::get());
         $data = Input::get();
