@@ -108,7 +108,7 @@
 									<?php }}?>                  
                             
                             <!--
-                            <?php if(sizeof($companyInfo->account_user) > 1 ): ?>
+                            <?php if(isset($companyInfo->account_user) && sizeof($companyInfo->account_user) > 1 ): ?>
                             <h3>Change Account Owner</h3>
                             <p>The account owner is the only person that can access this account page, upgrade, downgrade, change billing information, access invoices, and cancel the account. The account owner also has permanent access to all projects. Once you make this change you'll no longer be the account owner.</p>
                             <p>
