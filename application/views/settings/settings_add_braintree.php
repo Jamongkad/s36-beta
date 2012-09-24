@@ -77,7 +77,7 @@
 
 <div class="alert">
 	You are trying to upgrade your subscription plan.<br>
-	In order to complete this transaction, please add your Billing Informations by submitting the form below.
+	In order to complete this transaction, please add your billing information by submitting the form below.
 </div>
 <div id="pring_plans">
 	<div class="plan-box"><img id="basic" class="plan-image <?=(strtolower($planInfo->name)=='basic') ? 'plan-active' : '' ?>" src="/img/plan_basic.png"/></div>
@@ -87,7 +87,7 @@
 
 <div id="success_plan_selected" class="alert alert-info" style="display:<?=(isset($planInfo->name)) ? 'block' : 'none'?>">
 	<strong><span id="plan_selected_name"><?=(isset($planInfo)) ? strtoupper($planInfo->name) :'' ?></span> PLAN</strong> has been selected.
-	<br>*you can also change the plan you want to obtain by clicking the images above.<br>
+	<br>*You can also change the plan you want to obtain by clicking the images above.<br>
 </div>
 
 	<div id="info_select_plan" class="alert alert-info" style="display:<?=(isset($planInfo->name)) ? 'none' : 'block'?>">

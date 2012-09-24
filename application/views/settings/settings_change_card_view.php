@@ -1,7 +1,8 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
 						$('#change_card_submit').click(function(){
-								$('#progress_box').css('display','block');
+								$('.alert').css('display','none');
+								$('#progress_box_card').css('display','block');
 								$('#success_box').css('display','none');
 								$('#error_box').css('display','none');	
 								$.ajax({
@@ -34,7 +35,7 @@
 											$('#card_cvv').val('');
 											$('#billing_zip').val('');
 										}
-										$('#progress_box').css('display','none');
+										$('#progress_box_card').css('display','none');
 									}
 								});
 								return false;
@@ -51,17 +52,17 @@
 				</div>
          </div>	
 			<div class="block noborder">
-            	<h3>Update your credit card</h3>
+            	<h3>Change your credit card</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-					 <div id="progress_box" class="alert" style="display:none">Updating records...</div>
+					 <div id="progress_box_card" class="alert" style="display:none">Updating credit card details...</div>
                 <div id="error_box" class="alert alert-error" style="display:none"></div>
                 <div id="success_box" class="alert alert-success" style="display:none"></div>
                 	<h4>Credit card details (this information is secure)</h4>
                 		<form id="change_card" autocomplete="off" action="" method="post">
-                    <table cellspacing="0" cellpadding="0">
+                    <table>
                     	<tbody>
 								<tr>
-									<td><label class="regular-label">Card Number</label></td>
+									<td><label class="regular-label">Card Number:</label></td>
                     			<td>
                     				<input id="card_number" name="card_number" type="text" class="regular-text" maxlength="16">
                     			</td>
@@ -69,7 +70,7 @@
                     			<td><input id="card_cvv" name="card_cvv" type="text" class="regular-text" maxlength="4" size="4"></td>
                     		</tr>
                         <tr>
-                        	<td><label class="regular-label">Expires On </label> </td>
+                        	<td><label class="regular-label">Expires On: </label> </td>
                         	<td>
                         		<select id="expire_month" class="regular-select">
 											<option value="">select month</option>
@@ -102,7 +103,8 @@
                         	<td></td>
                         </tr>
                         <tr>
-                        	<td colspan="4">
+                        	<td></td>
+                        	<td colspan="3">
 										<strong>
                 						<a class="gray-btn" id="change_card_submit" href="">Change my Credit Card</a> 
                 					</strong>                        	
@@ -116,4 +118,3 @@
                 <h4>Any questions? Just <a href="#">contact us</a>, we'll help. <a href="#">36Stories support</a></h4>
                 -->
             </div>
-				<div style="height:300px;" class="block noborder"></div>

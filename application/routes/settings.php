@@ -148,7 +148,6 @@ return array (
 				'billing_last_name'		=>		'required',
 				'billing_address'			=>		'required',
 				'billing_city'				=>		'required',
-				'billing_state'			=>		'required',
 				'billing_country'			=>		'required',
 				'billing_zip'				=>		'required|alpha_num|min:3',
 				'billing_card_number'	=>		'required|numeric|min:16',
@@ -233,8 +232,8 @@ return array (
 					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
 				}
 				return json_encode(array(
-										'error'=>true,
-										'messages'=>$validator->errors->messages
+										'error'		=>true,
+										'messages'	=>$validator->errors->messages
 										));
 			}
 			/*validation are all good*/
@@ -244,8 +243,8 @@ return array (
 				/*catch unexpected errors during update*/
 				if(!$result['success']){
 						return json_encode(array(
-										'error'=>true,
-										'messages'=>$result['message']
+										'error'		=>true,
+										'messages'	=>$result['message']
 										));
 				}
 				/*on success*/
@@ -262,8 +261,9 @@ return array (
     		if(!$accountService->braintree_exist()){ Redirect::to('settings/upgrade');}
 			return View::of_layout()->partial('contents', 'settings/settings_change_billing_info',
 						array(
+							'accountInfo'			=> $accountService->get_accountInfo(),
 							'companyBillingInfo'	=>	$accountService->get_accountInfo()->companyBillingInfo,
-							'countries'				=>$DBCountry->get_country_list()
+							'countries'				=> $DBCountry->get_country_list()
 						));
 					
     }),
@@ -276,7 +276,6 @@ return array (
 				'billing_last_name'		=>		'required',
 				'billing_address'			=>		'required',
 				'billing_city'				=>		'required',
-				'billing_state'			=>		'required',
 				'billing_country'			=>		'required',
 				'billing_zip'				=>		'required|alpha_num|min:3'
 			);

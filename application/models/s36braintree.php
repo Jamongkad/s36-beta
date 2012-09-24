@@ -361,7 +361,7 @@
 
 
         // update credit card info.
-        public function update_credit_card($number, $cvv, $exp_month, $exp_year, $zip){
+        public function update_credit_card($number, $cvv, $exp_month, $exp_year){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
@@ -377,14 +377,10 @@
                     'number' => $number,
                     'cvv' => $cvv,
                     'expirationMonth' => $exp_month,
-                    'expirationYear' => $exp_year,
-                    'billingAddress' => array(
-                        'postalCode' => $zip,
-                        'options' => array(
-                            'updateExisting' => true
-                        )
-                    )
-                    
+                    'expirationYear'  => $exp_year,
+						  'options' => array(
+							      'makeDefault' => true
+							)
                 )
             );
 

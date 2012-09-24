@@ -110,8 +110,8 @@
                         );
                         $user =  S36Auth::user();
                         if(!empty($user->bt_customer_id)){
-                        	$settings['settings/change_billing_info'] = 'UPDATE BILLING INFORMATIONS';
-                        	$settings['settings/change_card'] = 'UPDATE CREDIT CARD';
+                        	$settings['settings/change_billing_info'] = 'UPDATE BILLING INFORMATION';
+                        	//$settings['settings/change_card'] = 'UPDATE CREDIT CARD';
                         }
                     ?>
 
