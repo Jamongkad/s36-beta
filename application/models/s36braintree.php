@@ -379,7 +379,8 @@
                     'expirationMonth' => $exp_month,
                     'expirationYear'  => $exp_year,
 						  'options' => array(
-							      'makeDefault' => true
+							      'makeDefault' 	=> true,
+							      'verifyCard'	=> false
 							)
                 )
             );
