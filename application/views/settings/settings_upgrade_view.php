@@ -1,26 +1,34 @@
 				<?php
-				//Helpers::show_data($accountInfo);
 				$companyInfo				=	(isset($accountInfo->companyInfo))        ? $accountInfo->companyInfo : false;
 				$companyPlanInfo 			= 	(isset($accountInfo->companyPlanInfo))		? $accountInfo->companyPlanInfo : false;
 				$companyBillingInfo		=	(isset($accountInfo->companyBillingInfo)) ? $accountInfo->companyBillingInfo : false;
 				?>
             <?php	/*List of Plans Start*/  ?>
             <div class="block">
-				<?php if(isset($result) && $result == 'completed'){?>            	
-            	<div class="alert alert-success">Your subscription plan has been updated.</div>
-            <?php } ?>
+				
+					<?php
+					if(isset($result) && $result == 'completed'){?>            	
+            		<div class="alert alert-success">Your subscription plan has been updated.</div>
+            	<?php } ?>
             	<?php
-            	if($companyBillingInfo){
-					$nextBill 			=	$companyBillingInfo->nextBill;
-					$billingHistory	=	$companyBillingInfo->billingHistory;          		
+            	if($companyBillingInfo && $companyPlanInfo->planid!=1){
+						$nextBill 			=	$companyBillingInfo->nextBill;
+						$billingHistory	=	$companyBillingInfo->billingHistory;          		
            		?>
            		 <h3>Your account details</h3>
-                <p class="small"><strong>Next charge: $<?=$nextBill->amount?> on <?php echo date("d M Y",strtotime($nextBill->date->date)); ?> on <?=$nextBill->card_type?> (<a href="change_card">change card</a>)</strong></p>
+                <p class="small">
+                <strong>
+                Next charge: $<?=$nextBill->amount?> 
+                on <?php echo date("d M Y",strtotime($nextBill->date->date)); ?> 
+                on <?=$nextBill->card_type?> 
+                (<a href="/settings/change_billing_info">change card</a>)
+                </strong>
+                </p>
                 <br />
                <?php } ?>
                 <div class="upgrade-box">
                 	<?php if(isset($companyPlanInfo)){?>
-                	<?php if($companyPlanInfo->name == 'Premium'){ ?>
+                	<?php if($companyPlanInfo->planid == 4){ ?>
                 		<div class="box3 <?=$companyPlanInfo->upgrade_images->current?>"></div>
                 	<?php } else { ?>
                 		<div class="upgrade-box-arrow"></div>
@@ -53,10 +61,10 @@
 											<?=($plan->adminnum > 0) ? "$plan->adminnum" : "unlimited" ?>
 							       </td>
 							       <td>
-							       		<?=($plan->hasmoderation > 0) ? "<img src='../img/ico-green-check.png' />": "" ?>						       
+							       		<?=($plan->hasmoderation > 0) ? "<img src='/img/ico-green-check.png' />": "" ?>						       
 							       </td>
 							       <td>
-											<?=($plan->hasssl > 0) ? "<img src='../img/ico-green-check.png' />": "" ?>							       
+											<?=($plan->hasssl > 0) ? "<img src='/img/ico-green-check.png' />": "" ?>							       
 							       </td>
 							       <td>
 							       	<?php
@@ -107,7 +115,8 @@
 	                            </ul>
 									<?php }}?>                  
                             
-                            <!--
+                            <?php 
+                            /* not implemented
                             <?php if(isset($companyInfo->account_user) && sizeof($companyInfo->account_user) > 1 ): ?>
                             <h3>Change Account Owner</h3>
                             <p>The account owner is the only person that can access this account page, upgrade, downgrade, change billing information, access invoices, and cancel the account. The account owner also has permanent access to all projects. Once you make this change you'll no longer be the account owner.</p>
@@ -123,14 +132,15 @@
                             <p>We'll be sorry to see you go. Once your account is cancelled, all your feedback information will be immediately and permanently deleted. If you have a paying account you won't be charged again after your official cancellation date. Please familiarize yourself with our refund policy.</p>
                             
                             <p><a href="cancel_account" class="gray-btn">Please cancel my account</a></p>
-                            -->
+                            */
+                            ?>
                         </div>
                     </div>
                     <div class="g1of3">
                     	<div class="gray-box">
                         	<h3>What happens if we upgrade, downgrade, or cancel in the middle of a billing cycle?</h3>
                             <p>If you upgrade or downgrade you'll be charged the new rate for your new plan starting on your next billing cycle. If you cancel, your account will be cancelled immediately and you won't be charged again.</p>
-                            <h3>We Accept <img src="../img/creditcards.png" style="vertical-align:middle;padding-left:10px;"  width="80"/></h3>
+                            <h3>We Accept <img src="/img/creditcards.png" style="vertical-align:middle;padding-left:10px;"  width="80"/></h3>
                             <p>We accept Visa, Mastercard, and American Express. We don't accept PayPal, checks, or POs, sorry.</p>
                             <p></p>
                             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -139,8 +149,3 @@
                 </div>
             </div>
 				<?php	/*Billing History End*/  ?>
-            <!--
-            <div class="block noborder" style="height:300px;background:#f4f4f4">
-            </div>
-            -->
-            <!-- spacer -->

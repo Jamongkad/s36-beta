@@ -41,16 +41,15 @@ public function get_accountInfo(){
 }
 
 public function create_braintree_account($input){
-	$result	=	$this->S36Braintree->create_account2($input);
-	if($result['success']==1){
+	if(isset($result['customer_id'])){
 			$this->DBCompany->update_bt_customer_id($result['customer_id']);
 	}
-	return $result;
+	return $this->S36Braintree->create_account2($input);
 }
 
 public function update_plan($planId){
 		$newPlan = $this->DBPlan->get_PlanInfo($planId);
-		if( ($this->DBCompany->update_plan($planId)) && $this->S36Braintree->update_subscription($newPlan->name) )
+		if( ($this->DBCompany->update_plan($newPlan->planid)) && $this->S36Braintree->update_subscription($newPlan->name) )
 		{
 				return true;
 		}
@@ -58,25 +57,16 @@ public function update_plan($planId){
 	}
 	
 public function update_credit_card($data){
-	$card_number 	= 	$data['card_number'];
-	$card_cvv 		= 	$data['card_cvv'];
-	$expire_month	=	$data['expire_month'];
-	$expire_year	=	$data['expire_year'];
-	
-	$result = $this->S36Braintree->update_credit_card($card_number,$card_cvv,$expire_month,$expire_year);
-	if($result['success']==1){
-		return array('success'=>true);	
-	}
-	else{
-		return array('success'=>false,'message'=>$result['message']);
-	}
+	$card_number 	= 	$data['billing_card_number'];
+	$card_cvv 		= 	$data['billing_card_cvv'];
+	$expire_month	=	$data['billing_expire_month'];
+	$expire_year	=	$data['billing_expire_year'];
+	return $this->S36Braintree->update_credit_card($card_number,$card_cvv,$expire_month,$expire_year);
 }
 
 public function update_billing_address($data){
 	return $this->S36Braintree->update_billing_address($data);
 }
-
-
 }
 
 

@@ -63,6 +63,39 @@
 								});
 								return false;
 						});
+						
+						
+						/*The country onchange starts here*/
+						var orig_html;
+						var orig_value;
+						var state_value;
+				
+						var us_states = {AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California', CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming'};
+						var $el = $("#billing_country");
+						$el.data('oldval', $el.val());
+						$el.change(function(){
+							var $this = $(this);
+							if(this.value=="US" && $this.data('oldval')!="US"){
+								var str = '<select id="billing_state" name="billing_state" class="regular-select">';
+								orig_html = $("#billing_state_div").html();
+								orig_value = $("#billing_state").val();
+								for(var st in us_states){
+									if(st == state_value)
+										str += '<option value="'+st+'" selected="selected">'+us_states[st]+'</option>';
+									else
+										str += '<option value="'+st+'">'+us_states[st]+'</option>';
+								}
+								str += "</select>";
+								$("#billing_state_div").html(str);
+								$this.data('oldval', $this.val());
+							}
+							else if($this.data('oldval')=="US" && $this.val()!="US"){
+								state_value = $("#billing_state").val();
+								$("#billing_state_div").html(orig_html);
+								$("#billing_state").val(orig_value);
+								$this.data('oldval', $this.val());
+							}
+						});
 				});			
 			</script>
 
@@ -99,73 +132,17 @@
 
             	<h3>Please input your Billing Information below to complete the transaction</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-                	<h4>Billing address and credit card details (this information is secure)</h4>
+                	<h4>Credit card and billing address information</h4>
                 	<form id="add_billing_info" autocomplete="off" action="" method="post">
                 	<input type="hidden" id="plan_selected" name="plan_selected" value="<?=(isset($planInfo->name)) ? strtolower($planInfo->name) :'' ?>">
                    <table>
                     	<tbody>
-                    		<tr>
-                    			<td class="label">First Name : </td>
-                        	<td>
-                           <input type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
-                           </td>
-                           <td width="215px"><span id="error_billing_first_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Last Name : </td>
-                        	<td>
-                           <input type="text" id="billing_last_name" name="billing_last_name" class="regular-text ">
-                           </td>
-                           <td><span id="error_billing_last_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Billing Address : </td>
-                        	<td>
-                           <input type="text" id="billing_address" name="billing_address" class="regular-text ">
-                           </td>
-                           <td><span id="error_billing_address" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Billing City : </td>
-                        	<td>
-                           <input type="text" id="billing_city" name="billing_city" class="regular-text ">
-                           </td>
-									<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Billing State : </td>
-                        	<td>
-                            <input type="text" id="billing_state" name="billing_state" class="regular-text ">
-                           </td>
-                           <td><span id="error_billing_state" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Billing Country : </td>
-                        	<td>
-                               <select id="billing_country" name="billing_country" class="regular-select">
-											<option value="">select country</option>
-                        			<?php 
-											foreach($countries as $country):
-												echo "<option value='$country->name'>$country->name</option>";       			
-                        			endforeach;
-                        			?>
-                        		</select>
-						    		</td>
-						    		<td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                        	<td class="label">Billing ZIP : </td>
-                        	<td>
-                           <input type="text" id="billing_zip" name="billing_zip" class="regular-text ">
-                           </td>
-									<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr style="vertical-align:top;height:1px;">
+                    	   <tr style="vertical-align:top;height:1px;">
                         	<td class="label">Card Number : </td>
                         	<td>
                            <input type="text" id="billing_card_number" name="billing_card_number" class="regular-text " maxlength="16">
                             </td>
-                            <td rowspan="2">
+                            <td>
                             <span id="error_billing_card" class="alert alert-error" style="margin:0;padding:4px;display:none"></span>
                             </td>
                         </tr>
@@ -173,8 +150,8 @@
                         	<td class="label">CVV : </td>
                         	<td style="vertical-align:top;">
                            <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
-	
                            </td>
+                           <td><span id="error_billing_card_cvv" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                             <td class="label">Expiry Date : </td>
@@ -208,6 +185,67 @@
                              </td>
 									<td><span id="error_billing_expire_date" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
+                    		<tr>
+                    			<td class="label">First Name : </td>
+                        	<td>
+                           <input type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
+                           </td>
+                           <td width="215px"><span id="error_billing_first_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Last Name : </td>
+                        	<td>
+                           <input type="text" id="billing_last_name" name="billing_last_name" class="regular-text ">
+                           </td>
+                           <td><span id="error_billing_last_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Billing Address : </td>
+                        	<td>
+                           <input type="text" id="billing_address" name="billing_address" class="regular-text ">
+                           </td>
+                           <td><span id="error_billing_address" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Billing City : </td>
+                        	<td>
+                           <input type="text" id="billing_city" name="billing_city" class="regular-text ">
+                           </td>
+									<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Billing State : </td>
+                        	<td>
+                            <div id="billing_state_div">
+                            	<input type="text" id="billing_state" name="billing_state" class="regular-text ">
+	                           </div>
+                           </td>
+                           <td><span id="error_billing_state" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Billing ZIP : </td>
+                        	<td>
+                           <input type="text" id="billing_zip" name="billing_zip" class="regular-text ">
+                           </td>
+									<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                        	<td class="label">Billing Country : </td>
+                        	<td>
+                               <div id="billing_country_div">
+                               <select id="billing_country" name="billing_country" class="regular-select">
+											<option value="">select country</option>
+                        			<?php foreach($countries as $country): ?>
+												<option value="<?=$country->code?>"><?=$country->name?></option>
+											<?php endforeach; ?>
+                        		</select>
+                        		</div>
+						    		</td>
+						    		<td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        
+
+                        
 								<tr>
 									<td></td>
                         	<td colspan="4">

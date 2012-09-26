@@ -173,6 +173,7 @@
 
             
             // create braintree customer account.
+            
            $result = \Braintree_Customer::create(array(
                  'firstName'		=> $input->company_info->account_owner->firstname,
                  'lastName'		=> $input->company_info->account_owner->lastname,
@@ -184,6 +185,9 @@
                      'expirationMonth'  => $input->billing_info->billing_expire_month,
                      'expirationYear'   => $input->billing_info->billing_expire_year,
                      'cvv'              => $input->billing_info->billing_card_cvv,
+                     'options' => array(
+            							'verifyCard' => true
+        									),
                      'billingAddress'   => array(
                          'firstName'    		=> $input->billing_info->billing_first_name,
                          'lastName'     		=> $input->billing_info->billing_last_name,
@@ -201,7 +205,7 @@
             if( ! $result->success ){
                 
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = explode("\n", $result->message);
+                $result_arr['message'] = self::get_validation_errors($result);
 
                 return $result_arr;
 
@@ -209,9 +213,9 @@
 
 
             // if account creation succeeds, store status, customer_id, token.
-            $result_arr['success'] = $result->success;
+            $result_arr['success'] 		= $result->success;
             $result_arr['customer_id'] = $result->customer->id;
-            $result_arr['token'] = $result->customer->creditCards[0]->token;
+            $result_arr['token'] 		= $result->customer->creditCards[0]->token;
 
 
             // create subscription.
@@ -267,7 +271,7 @@
             if( ! $result->success ){
                 
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = explode("\n", $result->message);
+                $result_arr['message'] = $this->get_validation_errors($result);
 
                 return $result_arr;
 
@@ -317,7 +321,7 @@
             if( ! $result->success ){
 
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = explode("\n", $result->message);
+                $result_arr['message'] = $this->get_validation_errors($result);
 
                 return $result_arr;
                 
@@ -369,18 +373,25 @@
 
             self::set_keys();
             $result_arr = array('success' => true, 'message' => array());
-
-
             $result = \Braintree_CreditCard::update(
                 $this->token,
                 array(
-                    'number' => $number,
-                    'cvv' => $cvv,
-                    'expirationMonth' => $exp_month,
-                    'expirationYear'  => $exp_year,
+                    'number' 				=> $number,
+                    'cvv'					 => $cvv,
+                    'expirationMonth'	=> $exp_month,
+                    'expirationYear' 	=> $exp_year,
+                    'billingAddress' 	=> array(
+                        'firstName' 	=> $this->billing_info->firstName,
+                        'lastName' 		=> $this->billing_info->lastName,
+                        'streetAddress'=> $this->billing_info->streetAddress,
+                        'locality' 		=> $this->billing_info->locality,
+                        'region' 		=> $this->billing_info->region,
+                        'countryName' 	=> $this->billing_info->countryName,
+                        'postalCode' 	=> $this->billing_info->postalCode
+                   		 ),
 						  'options' => array(
 							      'makeDefault' 	=> true,
-							      'verifyCard'	=> false
+							      'verifyCard'	=> true
 							)
                 )
             );
@@ -389,7 +400,7 @@
             // return the status of the update. also the error msg is there is.
             if( ! $result->success ){
                 $result_arr['success'] = $result->success;
-                $result_arr['message'] = explode("\n", $result->message);
+                $result_arr['message'] = $this->get_validation_errors($result);
             }
 
 
@@ -403,15 +414,19 @@
 		public function update_billing_address($input){
 			
 			$result = Braintree_Address::update($this->billing_info->customerId,$this->billing_info->id, array(
-						 'firstName'    		=> $input->billing_first_name,
-	                'lastName'     		=> $input->billing_last_name,
-	                'streetAddress'		=> $input->billing_address,
-	                'locality'      		=> $input->billing_city,
-	                'region'        		=> $input->billing_state,
-	                'countryName'   		=> $input->billing_country,
-	                'postalCode'    		=> $input->billing_zip
+						 'firstName'    		=> $input['billing_first_name'],
+	                'lastName'     		=> $input['billing_last_name'],
+	                'streetAddress'		=> $input['billing_address'],
+	                'locality'      		=> $input['billing_city'],
+	                'region'        		=> $input['billing_state'],
+	                'countryName'   		=> $input['billing_country'],
+	                'postalCode'    		=> $input['billing_zip']
 						));
-			return $result;			
+			if( ! $result->success ){
+                $result_arr['success'] = $result->success;
+                $result_arr['message'] = $this->get_validation_errors($result);
+            }
+			return $result;		
 		}
         // get current credit card info.
       public function get_credit_card_info(){
@@ -423,6 +438,15 @@
             return $this->credit_card_info;
 
         }
+        
+     static function get_validation_errors($action){
+			$errors = $action->errors->deepAll();
+			$error_array = array();
+			foreach($errors as $error){
+				$error_array[$error->attribute][] = $error->message;			
+			}
+			return $error_array;
+     	}
 
     }
 

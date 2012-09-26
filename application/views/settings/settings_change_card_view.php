@@ -8,7 +8,7 @@
 								$.ajax({
 									type: "POST",
 									url:	"/settings/change_card/?action=confirm",
-									data: "card_number="+$('#card_number').val()+"&card_cvv="+$('#card_cvv').val()+"&expire_month="+$('#expire_month').val()+"&expire_year="+$('#expire_year').val(),
+									data: "billing_card_number="+$('#billing_card_number').val()+"&billing_card_cvv="+$('#billing_card_cvv').val()+"&billing_expire_month="+$('#billing_expire_month').val()+"&billing_expire_year="+$('#billing_expire_year').val(),
 									success: function(q){
 										var result = $.parseJSON(q);
 										var messages = result['messages'];
@@ -17,9 +17,13 @@
 										$('#error_box').css('display','block');										
 											var err = '<ul>';
 											if($.isArray(messages) || $.isPlainObject(messages)){
-												$.each(messages, function(key, value) { 
-												 	err += '<li>'+ value + '</li>';
+												
+												$.each(messages, function(key, value) {
+													value = (value+'').replace(/\./g,'<br>');
+													value = (value+'').replace(/\,/g,'');
+													err += '<li>'+ value + '</li>';					 	
 												});
+												
 											}
 											else{
 													err += '<li>'+messages+'</li>';
@@ -43,7 +47,7 @@
 				});			
 			</script>
 			<?php $cardInfo = $accountInfo->companyCreditCardInfo;?>
-			<div class="block noborder">
+			<div id="credit_card" class="block noborder">
 			<h3>Your current credit card</h3>
 				<div style="background:#f4f4f4" class="block noborder">
 					<p><label class="regular-label">Card Type:&nbsp;</label><?=$cardInfo->card_type?></p>
@@ -61,18 +65,26 @@
                 		<form id="change_card" autocomplete="off" action="" method="post">
                     <table>
                     	<tbody>
-								<tr>
-									<td><label class="regular-label">Card Number:</label></td>
-                    			<td>
-                    				<input id="card_number" name="card_number" type="text" class="regular-text" maxlength="16">
-                    			</td>
-                    			<td><label class="regular-label">CVV:</label></td>
-                    			<td><input id="card_cvv" name="card_cvv" type="text" class="regular-text" maxlength="4" size="4"></td>
-                    		</tr>
-                        <tr>
-                        	<td><label class="regular-label">Expires On: </label> </td>
+								<tr style="vertical-align:top;height:1px;">
+                        	<td class="regular-label">Card Number : </td>
                         	<td>
-                        		<select id="expire_month" class="regular-select">
+                           <input type="text" id="billing_card_number" name="billing_card_number" class="regular-text " maxlength="16">
+                            </td>
+                            <td>
+                            <span id="error_billing_card_number" class="alert alert-error" style="margin:0;padding:4px;display:none"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td class="regular-label">CVV : </td>
+                        	<td style="vertical-align:top;">
+                           <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
+                           </td>
+                           <td><span id="error_billing_card_cvv" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="regular-label">Expiry Date : </td>
+                            <td style="vertical-align:top;height:1px;">
+                              <select id="billing_expire_month" name="billing_expire_month" class="regular-select">
 											<option value="">select month</option>
                         			<option value="01">01 January</option>
                         			<option value="02">02 February</option>
@@ -87,7 +99,7 @@
 											<option value="11">11 November</option>
 											<option value="12">12 December</option>
                         		</select>
-                        		<select id="expire_year" class="regular-select">
+										<select id="billing_expire_year" name="billing_expire_year"class="regular-select">
 											<option value="">select year</option>
                         			<?php 
 											$current_year = date('Y');
@@ -98,9 +110,8 @@
                         			}
                         			?>
                         		</select>
-                        	</td>
-                        	<td></td>
-                        	<td></td>
+                             </td>
+									<td><span id="error_billing_expire_date" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td></td>

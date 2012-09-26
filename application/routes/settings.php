@@ -155,7 +155,7 @@ return array (
 			);
 			
 			$messages = array(
-		    'required' 	=> 'Required.',
+		    
 			 'numeric' 		=> 'Must be a number.',
 			 'min'			=>	'Must be at least :min'
 			);
@@ -169,20 +169,23 @@ return array (
 			
 			$validator = Validator::make($billing_info, $rules,$messages);
 			/*validation fails*/
-			if((!$validator->valid()) || (($billing_info['billing_expire_month'] < date('m')) &&($billing_info['billing_expire_year'] == date('Y'))  )) {
+			if(!$validator->valid() || $result['success']==false) {
 			
 				/*custom error messages*/
 				if(empty($billing_info['plan_selected'])){ 
 						$validator->errors->messages['plan_selected'][0] = 'Please select your subscription plan.';
 				}			
-				if(empty($billing_info['billing_expire_month']) || empty($billing_info['billing_expire_year'])){
-						$validator->errors->messages['billing_expire_date'][]='Required.';				
-				}
 				if($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')){
-						$validator->errors->messages['billing_expire_date'][]='The expiration month and year must be valid.';
+						$validator->errors->messages['billing_expire_date'][]='Expiration month and year is invalid';
 				}
+				
 				if($result['success']==false){
-						$validator->errors->messages['billing_card'] = $result['message'];
+					$error = $result['message'];
+					if(isset($error['number']))			{$validator->errors->messages['billing_card']			= $error['number'];}
+					if(isset($error['cvv']))				{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
+					if(isset($error['expirationMonth'])){$validator->errors->messages['billing_expire_date'][]= $error['expirationMonth'];}
+					if(isset($error['expirationYear']))	{$validator->errors->messages['billing_expire_date'][]= $error['expirationYear'];}
+					if(isset($error['postalCode']))		{$validator->errors->messages['billing_zip']				= $error['postalCode'];}
 				}
 				/*return the results*/	
 				return json_encode(array(
@@ -191,7 +194,8 @@ return array (
 							));
 			}
 			/*successful account creation*/
-			if($result['success']==true){		
+			if($result['success']==true){
+					$accountService->update_plan($billing_info['plan_selected']);
 					return json_encode(array(
 							'error'=>false,
 							));			
@@ -217,36 +221,25 @@ return array (
     /*handle ajax request from settings/change_card view*/
 	'POST /settings/change_card' => Array('needs' => 'S36ValueObjects', 'do' => function() {
 		$card_data = Input::all();
-		$rules = array(
-				'card_number'	=>		'required|numeric|min:16',
-				'card_cvv'		=>		'required|numeric',
-				'expire_month'	=>		'required',
-				'expire_year'	=>		'required',
-		);
-		 	$validator = Validator::make($card_data, $rules);
+		$accountService = new Account\Services\AccountService;
+		$result = $accountService->update_credit_card($card_data);
 		 	/*validation fails*/
-			if((!$validator->valid()) || (($card_data['expire_month'] < date('m')) &&($card_data['expire_year'] == date('Y'))  )) {
-				if((!empty($card_data['expire_month']) && !empty($card_data['expire_year'])) &&
-					($card_data['expire_month'] < date('m') && $card_data['expire_year'] <= date('Y')))				
-				{
-					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
+			if($result['success']==false) {
+
+					$error = $result['message'];
+					if(isset($error['number']))			{$validator->errors->messages['billing_card_number']	= $error['number'];}
+					if(isset($error['cvv']))				{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
+					if(isset($error['postalCode']))		{$validator->errors->messages['billing_zip']				= $error['postalCode'];}
+				if($card_data['billing_expire_month'] < date('m') && $card_data['billing_expire_year'] <= date('Y')){
+						$validator->errors->messages['billing_expire_date'][]='Expiration date is invalid';
 				}
-				return json_encode(array(
+					return json_encode(array(
 										'error'		=>true,
 										'messages'	=>$validator->errors->messages
 										));
 			}
 			/*validation are all good*/
 			else{
-				$accountService = new Account\Services\AccountService;
-				$result = $accountService->update_credit_card($card_data);
-				/*catch unexpected errors during update*/
-				if(!$result['success']){
-						return json_encode(array(
-										'error'		=>true,
-										'messages'	=>$result['message']
-										));
-				}
 				/*on success*/
 				return json_encode(array(
 										'error'=>false,
@@ -279,15 +272,13 @@ return array (
 				'billing_country'			=>		'required',
 				'billing_zip'				=>		'required|alpha_num|min:3'
 			);
-			$messages = array('required' 	=> 'Required.');	
-			$validator = Validator::make($billing_info, $rules,$messages);
+			$validator = Validator::make($billing_info, $rules);
 			if(!$validator->valid()){
 				return json_encode(array(
 										'error'		=>true,
 										'messages'	=>$validator->errors->messages
 										));
 			}else{
-				$billing_info = \Helpers::arrayToObject($billing_info);
 				$result = $accountService->update_billing_address($billing_info);
 				return json_encode(array(
 										'error'		=>false,
