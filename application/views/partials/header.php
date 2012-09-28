@@ -86,8 +86,7 @@
         <!-- end of the left panel -->
 
         <!-- request feedback popup -->
-        <div class="request-dialog" id="reply-box" style="display:block;display:none">
-            <div class="reply-box-close"></div>
+        <div class="request-dialog" id="reply-box" style="display:none">
             <div class="reply-box-styles">
                 <h2>Request Feedback</h2>
                 <div class="reply-box-content">
