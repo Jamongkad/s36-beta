@@ -91,7 +91,7 @@
                 <div class="reply-box-styles">
                     <h2>Request Feedback</h2>
                     <div class="reply-box-content">
-                    <span style="padding:10px">
+                    <span>
                     Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. 
                     </span>
                     
