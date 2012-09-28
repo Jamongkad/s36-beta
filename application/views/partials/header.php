@@ -134,7 +134,8 @@
                                         <textarea class="regular-text" name="message" style="float:left" rows="7" id="message" ></textarea>
                                         <?
                                             $sm = new Message\Services\SettingMessage('rqs');       
-                                            $reply_message = $sm->get_messages();
+                                            $sm->get_messages();
+                                            $reply_message = json_decode($sm->jsonify()); 
                                         ?>
                                         <ul class="custom-message">   
                                             <?if($reply_message):?>
