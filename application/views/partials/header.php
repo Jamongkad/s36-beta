@@ -86,7 +86,135 @@
         <!-- end of the left panel -->
 
         <!-- request feedback popup -->
-
+        <div class="request-dialog" id="reply-box" style="display:block;display:none">
+            <div class="reply-box-close"></div>
+            <div class="reply-box-styles">
+                <h2>Request Feedback</h2>
+                <div class="reply-box-content">
+                <span class="gray">Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. For a sample of the email, click here.</span>
+                
+                <br />
+                <div class="reply-box-form">
+                        <h3>Recepient Details</h3>
+                        <div class="widget-form" id="full_page_widget">
+                            <table width="80%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="130">
+                                    <label>First Name : </label>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="regular-text" id="recipient-fname" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <label>Last Name : </label>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="regular-text" id="recipient-lname" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <label>Email : </label>
+                                    </td>
+                                    <td>
+                                    <input type="text" class="regular-text" id="recipient-email" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <label>Message : </label> <br />
+                                    </td>
+                                    <td>
+                                    <textarea class="regular-text" style="float:left" rows="7" id="message" ></textarea>
+                                    <ul class="custom-message">
+                                        <li>Custom Message #1</li>
+                                        <li>Custom Message #2</li>
+                                        <li>Custom Message #3</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="reply-box-padding"></div>
+                <div class="reply-box-error">
+                       <div class="reply-box-text">
+                            Please Enter Name
+                       </div>
+                </div>
+                <div class="reply-box-footer">
+                    <div class="reply-box-buttons">
+                        <input type="button" class="large-btn" value="Cancel" />
+                        <input type="button" class="large-btn" value="Send" />
+                    </div>
+                </div>
+            </div>
+            <!-- end of reply-box styles -->
+        </div>
+        <!-- end of reply-box -->
+        <div class="block">
+            <div id="widget-setup-block">
+                <form>
+                <div class="widget-options">
+                    <h2>Request Feedback</h2>
+                    <div class="widget-types">
+                        <h3><label for="full_page_type">Recepient Details</label></h3>
+                        <div class="widget-form" id="full_page_widget">
+                            <table width="100%">
+                                <tr>
+                                    <td width="120">
+                                    <label>First Name : </label><br />
+                                    <input type="text" class="regular-text" id="recipient-fname" />
+                                    </td>
+                                    <td width="120">
+                                    <label>Last Name :</label><br />
+                                    <input type="text" class="regular-text" id="recipient-lname" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120">
+                                    <label>Email : </label><br />
+                                    <input type="text" class="regular-text" id="recipient-email" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                    <label>Message : </label> <br />
+                                    
+                                    <textarea class="regular-text" style="width:400px;float:left" rows="7" id="message" ></textarea>
+                                    <ul class="custom-message">
+                                        <li>Custom Message #1</li>
+                                        <li>Custom Message #2</li>
+                                        <li>Custom Message #3</li>
+                                    </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3>&nbsp;</h3>
+                        <div class="widget-opts">
+                            <span class="gray">Drop a request to someone you want to get feedback from. You can write your own custom message, or use one of our template messages. The recipient will receive a custom email with a link to send in their feedback with. For a sample of the email, click here.</span>
+                        </div>
+                        <div class="error-message">
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                </form>
+                <div class="widget-setup-border"></div>
+                
+                <div class="widget-opts float-right">
+                    <br />
+                     <a href="javascript:;" id="send_request" class="button">Send</a>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
         <!-- end of request feedback popup -->
 
         <!--
