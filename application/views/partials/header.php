@@ -86,7 +86,8 @@
         <!-- end of the left panel -->
 
         <!-- request feedback popup -->
-        <div class="request-dialog" style="display:none">
+        <div class="request-dialog" style="display:none">  
+        <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'requestForm'))?>
             <div  id="reply-box" >
                 <div class="reply-box-styles">
                     <h2>Request Feedback</h2>
@@ -106,7 +107,7 @@
                                         <label>First Name : </label>
                                         </td>
                                         <td>
-                                        <input type="text" class="regular-text" id="recipient-fname" />
+                                        <input type="text" name="first_name" class="regular-text" id="recipient-fname" value=""/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -114,7 +115,7 @@
                                         <label>Last Name : </label>
                                         </td>
                                         <td>
-                                        <input type="text" class="regular-text" id="recipient-lname" />
+                                        <input type="text" name="last_name" class="regular-text" id="recipient-lname" value=""/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,7 +123,7 @@
                                         <label>Email : </label>
                                         </td>
                                         <td>
-                                        <input type="text" class="regular-text" id="recipient-email" />
+                                        <input type="text" name="email" class="regular-text" id="recipient-email" value=""/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -130,11 +131,17 @@
                                         <label>Message : </label> <br />
                                         </td>
                                         <td>
-                                        <textarea class="regular-text" style="float:left" rows="7" id="message" ></textarea>
-                                        <ul class="custom-message">
-                                            <li>Custom Message #1</li>
-                                            <li>Custom Message #2</li>
-                                            <li>Custom Message #3</li>
+                                        <textarea class="regular-text" name="message" style="float:left" rows="7" id="message" ></textarea>
+                                        <?
+                                            $sm = new Message\Services\SettingMessage('rsq');       
+                                            $reply_message = $sm->get_messages();
+                                        ?>
+                                        <ul class="custom-message">   
+                                            <?if($reply_message):?>
+                                                <?foreach($reply_message as $val):?>
+                                                    <li id="<?=$val->id?>"><a href="#"><?=$val->text?></a></li>
+                                                <?endforeach?>
+                                            <?endif?>
                                         </ul>
                                         </td>
                                     </tr>
@@ -159,6 +166,7 @@
                 <!-- end of reply-box styles -->
             </div>
         <!-- end of reply-box -->
+        <?=Form::close()?>
         </div>
         <!-- end of request feedback popup -->
 
