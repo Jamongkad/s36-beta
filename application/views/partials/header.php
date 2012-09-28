@@ -76,7 +76,7 @@
             </div>
             <div class="left-buttons">
                 <ul>
-                    <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request a Feedback')?></li>
+                    <li class="request" my-request><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
                     <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?></li>
                 </ul>
@@ -84,6 +84,10 @@
 
         </div>
         <!-- end of the left panel -->
+
+        <!-- request feedback popup -->
+
+        <!-- end of request feedback popup -->
 
         <!--
         	The main panel
