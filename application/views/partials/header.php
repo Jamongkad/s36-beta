@@ -159,7 +159,7 @@
                     -->
                     <div class="reply-box-footer">
                         <div class="reply-box-buttons">
-                            <input type="button" class="large-btn" value="Cancel" />
+                            <input type="button" class="large-btn" value="Cancel" my-request-close/>
                             <input type="button" class="large-btn" value="Send" />
                         </div>
                     </div>

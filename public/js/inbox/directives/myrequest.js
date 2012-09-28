@@ -7,6 +7,15 @@ angular.module('request', [])
         })
     }
 })
+.directive('myRequestClose', function() {
+    return function(scope, element, attr) {
+        $(element).bind('click', function(e) {
+            $('.request-dialog').dialog('close');
+            e.preventDefault();
+        })
+    }
+    
+})
 
 $('.request-dialog').dialog({
     autoOpen: false  
