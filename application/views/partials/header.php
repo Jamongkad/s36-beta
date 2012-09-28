@@ -98,7 +98,7 @@
                     <br />
                     <div class="reply-box-form">
                             <h3>Recepient Details</h3>
-                            <div class="widget-form" id="full_page_widget">
+                            <div>
                                 <table width="80%" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td width="130">
@@ -142,11 +142,12 @@
                         </div>
                     </div>
                     <div class="reply-box-padding"></div>
+                    <!--
                     <div class="reply-box-error">
                            <div class="reply-box-text">
-                                Please Enter Name
                            </div>
                     </div>
+                    -->
                     <div class="reply-box-footer">
                         <div class="reply-box-buttons">
                             <input type="button" class="large-btn" value="Cancel" />
