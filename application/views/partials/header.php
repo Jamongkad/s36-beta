@@ -60,12 +60,6 @@
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
                        <?=($regex->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <!--
-                    <li<?=($regex->featured ? ' class="selected featured"' : ' class="featured"')?>>
-                        <?=HTML::link('inbox/featured/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Featured')?>
-                       <?=($regex->featured ? '<div class="arrow-right"></div>' : null)?>
-                    </li>
-                    -->
                     <li<?=($regex->filed ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('inbox/filed/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Filed Feedback')?>
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
@@ -82,7 +76,7 @@
             </div>
             <div class="left-buttons">
                 <ul>
-                    <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
+                    <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request a Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
                     <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?></li>
                 </ul>
