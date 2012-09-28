@@ -96,6 +96,7 @@
                     </span>
                     
                     <br />
+                    <br />
                     <div class="reply-box-form">
                         <h3>Recepient Details</h3>
                             <div>
