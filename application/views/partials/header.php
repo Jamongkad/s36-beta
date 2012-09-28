@@ -133,7 +133,7 @@
                                         <td>
                                         <textarea class="regular-text" name="message" style="float:left" rows="7" id="message" ></textarea>
                                         <?
-                                            $sm = new Message\Services\SettingMessage('rsq');       
+                                            $sm = new Message\Services\SettingMessage('rqs');       
                                             $reply_message = $sm->get_messages();
                                         ?>
                                         <ul class="custom-message">   
