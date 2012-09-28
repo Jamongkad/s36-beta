@@ -97,7 +97,7 @@
                     
                     <br />
                     <div class="reply-box-form">
-                            <h3>Recepient Details</h3>
+                        <h3>Recepient Details</h3>
                             <div>
                                 <table width="80%" cellpadding="0" cellspacing="0">
                                     <tr>
