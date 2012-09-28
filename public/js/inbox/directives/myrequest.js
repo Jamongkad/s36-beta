@@ -10,7 +10,7 @@ angular.module('request', [])
 
 $('.request-dialog').dialog({
     autoOpen: false  
-  , height: 470
+  , height: 457
   , width: 700 
   , modal: true
 });
