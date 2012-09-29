@@ -24,29 +24,45 @@ angular.module('request', [])
         var error_msg = $(".reply-box-error");
 
         $(element).bind('click', function(e) {
-            $.each($("input[name=first_name], input[name=last_name], textarea[name=message]", me), function(index, value) {
-                var elem = $(value); 
-                if( elem.val() == 0 ) {
-                     elem.css({'border': '1px solid red'}); 
-                     go = false;
-                     error_msg.show().children().text("pwet")
-                }  else { 
-                     elem.css({'border': '1px solid #CCCCCC'}); 
-                     go = true;
-                     error_msg.hide()
-                }
-                e.preventDefault();
-            });
+            /*
+            var first_name = $("input[name=first_name]");
+            if( first_name.val() == 0 ) {
+                 first_name.css({'border': '1px solid red'}); 
+                 go = false;
+            }  else { 
+                 first_name.css({'border': '1px solid #CCCCCC'}); 
+                 go = true;
+            }
+
+            var last_name = $("input[name=last_name]");
+            if( last_name.val() == 0 ) {
+                 last_name.css({'border': '1px solid red'}); 
+                 go = false;
+            }  else { 
+                 last_name.css({'border': '1px solid #CCCCCC'}); 
+                 go = true;
+            }
+
+            var message = $("input[name=message]");
+            if( messagej.val() == 0 ) {
+                 messagej.css({'border': '1px solid red'}); 
+                 go = false;
+            }  else { 
+                 messagej.css({'border': '1px solid #CCCCCC'}); 
+                 go = true;
+            }
+            */
  
-            var email = $('#recipient-email');
+            validate($("input[name=first_name]"), go);
+            validate($("input[name=last_name]"), go);
+            validate($("input[name=message]"), go);
+
             if(validate_email(email.val()) && email.val() > 0) { 
                 go = true;
                 email.css({'border': '1px solid #CCCCCC'});
-                error_msg.hide()
             } else { 
                 go = false;
                 email.css({'border': '1px solid red '});
-                error_msg.show().children().text("pwet foo")
             }
 
             if(go) { 
@@ -77,3 +93,16 @@ function validate_email(email) {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email); 
 };
+
+function validate(elem, go) {
+    
+    if( elem.val() == 0 ) {
+        elem.css({'border': '1px solid red'}); 
+        go = false;
+    }  else { 
+        elem.css({'border': '1px solid #CCCCCC'}); 
+        go = true;
+    }
+
+    return go;
+}
