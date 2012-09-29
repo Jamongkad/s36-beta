@@ -23,19 +23,24 @@ angular.module('reply', [])
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             var message_textarea = $("textarea[name=message]", form);
-            $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
+ 
      
-            console.log(message_textarea.val().length);
-            /*
-            form.ajaxSubmit({
-                dataType: 'json'     
-              , success: function(data) {
-                    alert("Your reply has been sent!");
-                    myparent.dialog('close');
-                }
-            })
-            */
+            if(message_textarea.val().length == 0) { 
+                message_textarea.css({'border', '2px solid red'}) 
+                e.preventDefault();
+            } else { 
+                message_textarea.css({'border', '1px solid #CCCCCC'})
+                form.ajaxSubmit({
+                    dataType: 'json'     
+                  , success: function(data) {
+                        alert("Your reply has been sent!");
+                        myparent.dialog('close');
+                    }
+                })
+                $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
 
+            }
+           
             e.preventDefault();
         });
     }
