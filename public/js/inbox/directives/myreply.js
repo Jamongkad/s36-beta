@@ -29,7 +29,15 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
-        console.log($(element).parents('form'));
+        //console.log();
+        //$(element).parents('form')
+        $(element).bind('click', function(e) {
+            
+            var form = $(this).parents('form');
+            form.submit();
+
+            e.preventDefault();
+        });
         //var error_msg = $(".reply-box-error");
 
         //$(element).bind('submit', function(e) {
