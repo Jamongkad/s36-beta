@@ -82,7 +82,7 @@ return array(
                 "replyto" => "mathew@36stories.com"
             );
 
-            $email_data->bcc     = "leicaaah18@gmail.com";
+            $email_data->bcc = null;//"leicaaah18@gmail.com";
 
             $tf->data->slug->gather($email_data);
             $tf->dump($tf->data->slug);
