@@ -24,7 +24,6 @@ angular.module('request', [])
 
         $(element).bind('click', function(e) {
             $.each($("input[name=first_name], input[name=last_name], textarea[name=message]", me), function(index, value) {
-
                 var elem = $(value); 
                 if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
@@ -35,8 +34,7 @@ angular.module('request', [])
                 }
                 e.preventDefault();
             });
-
-            
+ 
             var email = $('#recipient-email');
             if(validate_email(email.val()) && email.val() > 0) { 
                 go = true;
