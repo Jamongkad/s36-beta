@@ -30,7 +30,13 @@ angular.module('reply', [])
 .directive('replySend', function() {
     return function(scope, element, attrs){
         //console.log();
-        //$(element).parents('form')
+        //
+        $(element).parents('form').submit(function(e) {
+            $(this).ajaxSubmit();
+            e.preventDefault();
+        })
+        /*
+         *
         $(element).bind('click', function(e) {
             
             var form = $(this).parents('form');
@@ -38,6 +44,7 @@ angular.module('reply', [])
 
             e.preventDefault();
         });
+        */
         //var error_msg = $(".reply-box-error");
 
         //$(element).bind('submit', function(e) {
