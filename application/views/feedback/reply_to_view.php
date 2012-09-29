@@ -95,7 +95,7 @@
                     </ul> 
                 </td>
                 <td> 
-                    <div class="reply-configure">
+                    <div>
                         {{name}} 
                     <div>
                 </td>
