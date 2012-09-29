@@ -43,7 +43,7 @@ angular.module('request', [])
                     }
                 }
                   
-                if( elem.val() == 0 || (index == 2 && !validate_email(elem.val()) && elem.val() == 0) ) {
+                if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
                      go = false;
                 }  else { 
