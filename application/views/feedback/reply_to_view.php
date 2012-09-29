@@ -70,7 +70,7 @@
             <tr>
                 <td><strong>Subject : </strong> </td>
                 <td>
-                    <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" /> 
+                    <input type="text" class="regular-text validate[required]" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" />
                 </td>
                 <td></td>
             </tr>
