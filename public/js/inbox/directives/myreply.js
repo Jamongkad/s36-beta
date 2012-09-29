@@ -32,10 +32,10 @@ angular.module('reply', [])
         //console.log();
         //
         $(element).parents('form').submit(function(e) {
+            var me = $(this);
             $(this).ajaxSubmit({
                 beforeSubmit: function(formData, jqForm, options) {
-                    console.log(jqForm);
-                    console.log($(jqForm).validationEngine('validate'));
+                    console.log($('textarea[name=message]', me).validationEngine('validate'));
                 }
             })
             e.preventDefault();
