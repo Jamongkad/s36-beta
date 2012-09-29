@@ -71,11 +71,15 @@ angular.module('reply', [])
     }  
 })
 .directive('configureReply', function() { 
-    return function(scope, element, attrs) {
-        $(element).bind('click', function(e) {  
-            e.preventDefault();
-        })
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {  
+                e.preventDefault();
+            })
+        }
     }
+    
 })
 
 //dialog form init
