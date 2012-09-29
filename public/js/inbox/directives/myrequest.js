@@ -35,17 +35,15 @@ angular.module('request', [])
                 e.preventDefault();
             });
 
-            console.log(go);
-            
-            /*
-            me.ajaxSubmit({
-                success: function(data) {
-                    alert("Your request has been sent!");
-                    me.clearForm();
-                    $('.request-dialog').dialog('close');
-                }
-            });
-            */
+            if(go) { 
+                me.ajaxSubmit({
+                    success: function(data) {
+                        alert("Your request has been sent!");
+                        me.clearForm();
+                        $('.request-dialog').dialog('close');
+                    }
+                });
+            }
 
             e.preventDefault(); 
         })
