@@ -28,9 +28,9 @@ angular.module('request', [])
             go = true;
         }
         */
-        console.log( validate_email($('#recipient-email').val()) );
 
         $(element).bind('click', function(e) {
+            console.log( validate_email($('#recipient-email').val()) );
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
 
