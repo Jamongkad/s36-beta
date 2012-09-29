@@ -37,6 +37,9 @@ angular.module('request', [])
                 if(index == 2) {
                     if(validate_email(elem.val())) {
                         console.log(elem);
+                        elem.css({'border': '1px solid #CCCCCC'}); 
+                    } else { 
+                        elem.css({'border': '1px solid red'}); 
                     }
                 }
                   
