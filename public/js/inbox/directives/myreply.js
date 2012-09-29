@@ -35,6 +35,7 @@ angular.module('reply', [])
             var me = $(this);
             $(this).ajaxSubmit({
                 beforeSubmit: function(formData, jqForm, options) {
+                    console.log(formData);
                     console.log($(me).validationEngine('validate'));
                     //console.log($('textarea[name=message]', me).validationEngine('validate'));
                 }
