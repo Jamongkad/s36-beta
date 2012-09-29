@@ -81,7 +81,7 @@ function validate(elem, go, text) {
     }  else { 
         elem.css({'border': '1px solid #CCCCCC'}); 
         error_msg.css({"background": "#fff"});
-        error_msg.text(text);
+        error_msg.hide();
         go = true;
     }
 
