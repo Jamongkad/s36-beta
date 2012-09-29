@@ -131,7 +131,7 @@
                                         <label>Message : </label> <br />
                                         </td>
                                         <td>
-                                        <textarea class="regular-text" name="message" style="float:left" rows="7" id="message" ></textarea>
+                                        <textarea class="regular-text" name="message" style="float:left" rows="7" id="recipient-message" ></textarea>
                                         <?  //GROSS!!
                                             $sm = new Message\Services\SettingMessage('rqs');       
                                             $sm->get_messages();
