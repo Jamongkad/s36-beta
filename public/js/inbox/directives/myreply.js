@@ -87,6 +87,11 @@ angular.module('reply', [])
         restrict: 'C'     
       , controller: function($scope, MessageService) {
             $scope.name = "Mathew Wong";
+ 
+            var type = "msg";
+            MessageService.get_messages(type);
+            $scope.msgs = MessageService.message;
+            $scope.type = type;
         }
     }   
 })
