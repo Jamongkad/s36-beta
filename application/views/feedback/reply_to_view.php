@@ -92,10 +92,12 @@
                         <li configure-reply>
                             <?=HTML::link('settings', '(configure template reply)')?>
                         </li>
-                        <li class="reply-configure">
-                            <h1>{{name}}</h1>
-                        </li>
                     </ul> 
+                </td>
+                <td> 
+                    <div class="reply-configure">
+                        <h1>{{name}}</h1>
+                    <div>
                 </td>
             </tr>
             
