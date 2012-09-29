@@ -18,7 +18,8 @@ angular.module('request', [])
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
-       
+        console.log($(element).parents('form'));
+        /*       
         var me = $("#request-form");
         var go;
         var error_msg = $(".reply-box-error");
@@ -85,8 +86,8 @@ angular.module('request', [])
 
             e.preventDefault(); 
         })
-    }
-    
+        */
+    } 
 })
 
 //dialog form init
@@ -96,18 +97,3 @@ $('.request-dialog').dialog({
   , width: 700 
   , modal: true
 });
-
-function validate_email(email) { 
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email); 
-};
-
-function validate(elem) {    
-    if( elem.val() == 0 ) {
-        elem.css({'border': '1px solid red'}); 
-        return true;
-    }  else { 
-        elem.css({'border': '1px solid #CCCCCC'}); 
-        return false;
-    }
-}

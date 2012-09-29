@@ -11,25 +11,14 @@ angular.module('reply', [])
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
         $(element).bind('click', function(e) {
-
-            var error_msg = $(".reply-box-error");
-            error_msg.css({'background': '#fff'})
-            error_msg.html("");
-
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents('.dialog-form').dialog('close');
-
-            var form = $(this).parents('form');
-            var message_textarea = $("textarea[name=message]", form);
-            message_textarea.css({'border': '1px solid #CCCCCC'})
-
             e.preventDefault();
         });
     }
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
-
         $(element).parents('form').validate({
             submitHandler: function(form) {
                 $(form).ajaxSubmit({
@@ -47,80 +36,6 @@ angular.module('reply', [])
                 }
             }
         });
-        /* 
-        .submit(function(e) {
-            var me = $(this);
-            $(this).ajaxSubmit({
-                beforeSubmit: function(formData, jqForm, options) {
-                    console.log($(jqForm).validate());
-                }
-            })
-            e.preventDefault();
-        })
-        */
-        /*
-         *
-        $(element).bind('click', function(e) {
-            
-            var form = $(this).parents('form');
-            form.ajaxSubmit();
-
-            e.preventDefault();
-        });
-        */
-        //var error_msg = $(".reply-box-error");
-
-        //$(element).bind('submit', function(e) {
-            /*
-            var form = $(this).parents('form');
-            var myparent = $(this).parents('.dialog-form')
-            console.log(form);
-            form.ajaxSubmit({
-                dataType: 'json'     
-              , success: function(data) {
-                    alert("Your reply has been sent!");
-                    myparent.dialog('close');
-                }
-            })
-            /*
-            var form = $(this).parents('form');
-            var myparent = $(this).parents('.dialog-form')
-            form.ajaxSubmit({
-                dataType: 'json'     
-              , success: function(data) {
-                    alert("Your reply has been sent!");
-                    myparent.dialog('close');
-                }
-            })
-            $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-            */
-            /*
-            var form = $(this).parents('form');
-            var myparent = $(this).parents('.dialog-form')
-            var message_textarea = $("textarea[name=message]", form);
-  
-            if(message_textarea.val().length == 0) { 
-                message_textarea.css({'border': '2px solid red'}) 
-                error_msg.show();
-                error_msg.css({'background': '#ffa801'})
-                error_msg.html("reply message required");
-            } else { 
-                message_textarea.css({'border': '1px solid #CCCCCC'})
-                error_msg.css({'background': '#fff'})
-                error_msg.html("");
-                form.ajaxSubmit({
-                    dataType: 'json'     
-                  , success: function(data) {
-                        alert("Your reply has been sent!");
-                        myparent.dialog('close');
-                    }
-                })
-                $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-            }
-            */
-           
-            //e.preventDefault();
-        //});
     }
 })
 .directive('replyBcc', function() {
@@ -167,4 +82,3 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
-//$('.reply-form').validationEngine('validate')
