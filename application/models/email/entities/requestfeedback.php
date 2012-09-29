@@ -16,6 +16,7 @@ class RequestFeedback extends EmailFixture {
         $email_html = View::make('email/request_feedback_view', Array(
             'email_data' => $this->email_data
           , 'deploy_env' => Config::get('application.deploy_env')
+          , 'subdomain'  => Config::get('application.subdomain')
         ))->get();     
         $this->postmark->to($this->email_data->sendto->email)->subject($this->get_subject())->html_message($email_html)->send();
     }
