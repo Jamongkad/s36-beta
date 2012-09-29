@@ -13,6 +13,11 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents('.dialog-form').dialog('close');
+
+            var form = $(this).parents('form');
+            var message_textarea = $("textarea[name=message]", form);
+            message_textarea.css({'border': '1px solid #CCCCCC'})
+
             e.preventDefault();
         });
     }
