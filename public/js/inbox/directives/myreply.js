@@ -75,7 +75,7 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log($(this).parents('td').next());
+                console.log($(this).parents('td').next().children('div'));
                 e.preventDefault();
             })
         }
