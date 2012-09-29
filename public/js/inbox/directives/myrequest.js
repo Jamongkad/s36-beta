@@ -23,6 +23,8 @@ angular.module('request', [])
         var go;
         var error_msg = $(".reply-box-error");
 
+        error_msg.css({"background": "#fff"});
+
         $(element).bind('click', function(e) {
  
             validate($("#recipient-fname"), go);

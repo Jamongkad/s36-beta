@@ -670,11 +670,14 @@ ul.add-bcc li {
 #reply-box .custom-message{position:absolute;left:530px;list-style:none;font-size:11px;color:#9ba4ab;top:290px;}
 
 .reply-box-error{
-    padding:20px 30px;
+    /*padding:20px 30px;*/
     background:#ffa801;
     color:#000;font-weight:bold;
     font-size:13px;
+    text-align: center;
     display:block;
+    padding-top: 15px;
+    height:25px;
 }
 .reply-box-padding{
     /* change display to block when error is not shown to preserve the height */
