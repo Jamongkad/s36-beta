@@ -94,6 +94,11 @@
                         </li>
                     </ul> 
                 </td>
+                <td> 
+                    <div class="reply-configure">
+                        {{name}} 
+                    </div>
+                </td>
             </tr>
             
             <tr><td width="%15">&nbsp;</td><td><input type="checkbox" name="email_me" value="1" /> 

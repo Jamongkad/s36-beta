@@ -18,10 +18,7 @@
                                ))?>
                         <?=Form::close()?>
                     </div>
-                    <div class="reply-configure">
-
-                    </div>
-                
+     
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
                             <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>

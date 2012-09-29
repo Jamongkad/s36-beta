@@ -93,6 +93,7 @@ $('.dialog-form').dialog({
     }
 });
 
+
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
