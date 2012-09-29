@@ -20,7 +20,7 @@
                     </div>
                     <div class="reply-configure">
 
-                    <div>
+                    </div>
                 
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
