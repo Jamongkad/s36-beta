@@ -26,10 +26,32 @@ angular.module('request', [])
         error_msg.css({"background": "#fff"});
 
         $(element).bind('click', function(e) {
- 
+           
+            /*
             validate($("#recipient-fname"), go, "first name required");
             validate($("#recipient-lname"), go, "last name required");
             validate($("#recipient-message"), go, "message required");
+            */
+            if( validate($("#recipient-fname")) ) {  
+                go = false;
+                error_msg.html("first name required.");
+            } else {
+                go = true;
+            }
+
+            if( validate($("#recipient-lname")) ) {
+                go = false;
+                error_msg.html("last name required.");
+            } else {
+                go = true;     
+            }
+
+            if( validate($("#recipient-message")) ) {
+                go = false;
+                error_msg.html("email message required.");
+            } else {
+                go = true;     
+            }
 
             var email = $("#recipient-email");
             if(validate_email(email.val()) || email.val() > 0) { 
@@ -69,21 +91,17 @@ function validate_email(email) {
     return re.test(email); 
 };
 
-function validate(elem, go, text) {
-
-    var error_msg = $(".reply-box-error"); 
-    
+function validate(elem) {    
     if( elem.val() == 0 ) {
         elem.css({'border': '1px solid red'}); 
-        error_msg.css({"background": "#ffa801"});
-        error_msg.html(text);
-        go = false;
+        return false;
+        //error_msg.css({"background": "#ffa801"});
+        //go = false;
     }  else { 
         elem.css({'border': '1px solid #CCCCCC'}); 
-        error_msg.css({"background": "#fff"});
-        error_msg.hide();
-        go = true;
+        return true;
+        //error_msg.css({"background": "#fff"});
+        //error_msg.hide();
+        //go = true;
     }
-
-    return go;
 }
