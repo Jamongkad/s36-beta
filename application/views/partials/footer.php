@@ -28,6 +28,9 @@
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
 
+<?=HTML::script('js/jquery.validationEngine.js')?>
+<?=HTML::script('js/jquery.validationEngine-en.js')?>
+
 <?=HTML::script('js/inbox/S36InboxModule.js')?>
 
 <?=HTML::script('js/head.min.js')?>
@@ -55,8 +58,6 @@
      , '/js/inbox/Status.js'
      , '/js/inbox/Settings.js'
      , '/js/inbox/s36application.js'
-     , '/js/jquery.validationEngine.js' 
-     , '/js/jquery.validationEngine-en.js'
    );
 ?> 
 <script text="text/javascript">
