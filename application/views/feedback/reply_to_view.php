@@ -91,9 +91,9 @@
                         <?endif?>
                         <li configure-reply>
                             <?=HTML::link('settings', '(configure template reply)')?>
-                            <div class="reply-configure" style="display:none">
-                                <h1>{{name}}</h1>
-                            </div>
+                        </li>
+                        <li class="reply-configure" style="display:none">
+                            <h1>{{name}}</h1>
                         </li>
                     </ul> 
                 </td>
