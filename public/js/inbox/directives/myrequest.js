@@ -32,6 +32,8 @@ angular.module('request', [])
             */
 
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
+
+                var elem = $(value);
                   
                 if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
@@ -44,11 +46,9 @@ angular.module('request', [])
             });
 
             
-            if( validate_email($("#recipient-email").val()) ) { 
-                elem.css({'border': '1px solid #CCCCCC'}); 
+            if(validate_email($('#recipient-email').val())) { 
                 go = true;
             } else { 
-                elem.css({'border': '1px solid red'}); 
                 go = false;
             }
 
