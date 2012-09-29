@@ -69,8 +69,8 @@ angular.module('request', [])
             } else { 
                 go = false;
                 email.focus();
-                return error_msg.html("valid email required");
                 email.css({'border': '1px solid red '});
+                return error_msg.html("valid email required");
             }
 
             if(go) { 
