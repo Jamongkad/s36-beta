@@ -69,7 +69,7 @@ return array(
 
         $tf->test('Email Test', function($tf) {
 
-            $email_data = StdClass;
+            $email_data = new StdClass;
             $email_data->sendto  = "wrm932@gmail.com";
             $email_data->replyto = "mathew@36stories.com";
 
