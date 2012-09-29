@@ -64,28 +64,31 @@ return array(
         $tf = new Testify("Email Test Service");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->slug = new Email\Entities\Slug;
+            $tf->data->slug = new Email\Entities\Slug;  
+            $tf->data->feedback = new Feedback\Repositories\DBFeedback;
+            $tf->data->replydata = new Email\Entities\ReplyData;
         });
 
-        $tf->test('Email Test', function($tf) { 
-
-            $bcc = 'leicaaah18@gmail.com,klemengkid@gmail.com,';
-            $bcc = substr($bcc, 0, -1);
-            $bcc = explode(",", $bcc);
-            $bcc = array_unique($bcc);
-            $bcc = implode(",", $bcc);
-
-            $email_data = new StdClass;
-            $email_data->sendto  = "wrm932@gmail.com";
-
-            $email_data->from = (object) Array(
-                "replyto" => "mathew@36stories.com"
-            );
-
-            $email_data->bcc = $bcc;
-            $tf->data->slug->gather($email_data);
-            $tf->dump($tf->data->slug);
-            $tf->assert($tf->data->slug->send());
+        $tf->test('Email Test', function($tf) {  
+            $replyto = "ryanchu6@gmail.com";
+            $tf->data->replydata
+                      ->subject("Mathew is a dickie")
+                      ->bcc("wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,")
+                      ->copyme("", $replyto)
+                      ->sendto("wrm932@gmail.com")
+                      ->from( (object) Array(
+                                "replyto" => $replyto 
+                              , "username"  => "Mathew"
+                            ) )
+                      ->message("Mathew is kewl")
+                      ->feedbackdata($feedback->pull_feedback_by_id(528));
+            
+            /*
+            $emailservice = new Email\Services\EmailService($replydata);
+            $emailservice->send_email();
+            */
+            $tf->dump($tf->data->replydata);
+       
         });
 
         $tf->run();  

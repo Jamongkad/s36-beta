@@ -101,25 +101,6 @@ return array(
      },
 
     'GET /tests/test_email_replyto' => function() {        
-        $feedback  = new Feedback\Repositories\DBFeedback;
-        $replydata = new Email\Entities\ReplyData;
-        
-        $replydata->subject = "Mathew is a dickie";
-        $replydata->bcc = Array(
-            "wrm932@gmail.com" 
-          , "karen_cayamanda@yahoo.com"
-          , "klemengkid@gmail.com"
-        );
-        $replydata->sendto = "wrm932@gmail.com";
-        $replydata->from = (object) Array(
-            "replyto" => "ryanchu6@gmail.com"
-          , "username"  => "Mathew"
-        );
-        $replydata->message = "Mathew is kewl";
-        $replydata->feedback = $feedback->pull_feedback_by_id(213);
-                 
-        $emailservice = new Email\Services\EmailService($replydata);
-        Helpers::dump($emailservice->send_email()); 
     },
 
     'GET /tests/test_email_resend' => function() {

@@ -256,8 +256,10 @@ return array(
     }),
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
-        $bcc = Input::get('bcc');
 
+        $bcc = Input::get('bcc');
+        
+        //networking logic
         $feedback_data = $feedback->pull_feedback_by_id(Input::get('feedbackid')); 
 
         $replydata = new Email\Entities\ReplyData; 
