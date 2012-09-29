@@ -33,13 +33,7 @@ angular.module('reply', [])
         //
         $(element).parents('form').submit(function(e) {
             var me = $(this);
-            $(this).ajaxSubmit({
-                beforeSubmit: function(formData, jqForm, options) {
-                    console.log(formData);
-                    console.log($(me).validationEngine('validate'));
-                    //console.log($('textarea[name=message]', me).validationEngine('validate'));
-                }
-            })
+            $(this).ajaxSubmit()
             e.preventDefault();
         })
         /*
@@ -151,5 +145,6 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
-$('.reply-form').validationEngine('validate')
+//$('.reply-form').validationEngine('validate')
+$('.reply-form').validate();
 
