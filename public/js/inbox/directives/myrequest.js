@@ -23,14 +23,6 @@ angular.module('request', [])
         var go;
 
         $(element).bind('click', function(e) {
-            /* 
-            if( validate_email($('#recipient-email').val()) ) {
-                go = true; 
-            } else { 
-                go = false;
-            }
-            */
-
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
 
                 var elem = $(value);
