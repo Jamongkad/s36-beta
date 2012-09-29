@@ -68,14 +68,21 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {
+            
+            /*
+            $bcc = substr($bcc, 0, -1);
+            $bcc = explode(",", $bcc);
+            $bcc = array_unique($bcc);
+            */
 
             $email_data = new StdClass;
             $email_data->sendto  = "wrm932@gmail.com";
             $email_data->replyto = "mathew@36stories.com";
-            $email_data->bcc     = "mocha@gmail.com,pwet@gmail.com";
+            $email_data->bcc     = "wrm932@gmail.com,wrm932@gmail.com";
 
             $tf->data->slug->gather($email_data);
             $tf->dump($tf->data->slug);
+            $tf->assert($tf->data->slug->send());
 
         });
 
