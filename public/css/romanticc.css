@@ -684,3 +684,7 @@ ul.add-bcc li {
     padding:20px 30px;display:block;
 }
 
+em.error {
+  padding-left: 16px;
+}
+em.error { color: red; }
