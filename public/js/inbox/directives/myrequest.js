@@ -21,6 +21,7 @@ angular.module('request', [])
        
         var me = $("#request-form");
         var go;
+        var error_msg = $(".reply-box-error");
 
         $(element).bind('click', function(e) {
             $.each($("input[name=first_name], input[name=last_name], textarea[name=message]", me), function(index, value) {
@@ -28,9 +29,11 @@ angular.module('request', [])
                 if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
                      go = false;
+                     error_msg.show().children().text("pwet")
                 }  else { 
                      elem.css({'border': '1px solid #CCCCCC'}); 
                      go = true;
+                     error_msg.hide()
                 }
                 e.preventDefault();
             });
@@ -42,6 +45,7 @@ angular.module('request', [])
             } else { 
                 go = false;
                 email.css({'border': '1px solid red '});
+                error_msg.show().children().text("pwet foo")
             }
 
             if(go) { 
