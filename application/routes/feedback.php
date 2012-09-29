@@ -51,6 +51,8 @@ return array(
 
     'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($dbwidget){
         $data = Input::get();
+        Helpers::dump($data);
+        /*
         $rules = Array(
             'first_name' => 'required'
           , 'last_name' => 'required'
@@ -67,11 +69,11 @@ return array(
               , 'input' => $data
             ));
         } else {      
-            /*
+         
             $metric = new DBMetric;
             $metric->company_id = $auth->user()->companyid;
             $metric->increment_request();  
-            */
+        
             $request_data = new Email\Entities\RequestFeedbackData;
             $request_data->sendto = (object) Array(
                 'first_name' => $data['first_name']
@@ -88,6 +90,7 @@ return array(
             return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
                                               array("linkback" => "requestfeedback"));  
         }
+        */
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {
