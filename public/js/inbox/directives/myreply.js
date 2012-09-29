@@ -25,7 +25,7 @@ angular.module('reply', [])
             var message_textarea = $("textarea[name=message]", form);
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
      
-            console.log(message_textarea);
+            console.log(message_textarea.val().length);
             /*
             form.ajaxSubmit({
                 dataType: 'json'     
