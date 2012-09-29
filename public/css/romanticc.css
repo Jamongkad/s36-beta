@@ -671,7 +671,7 @@ ul.add-bcc li {
 
 .reply-box-error{
     /*padding:20px 30px;*/
-    background:#ffa801;
+    background:#fff;/*#ffa801;*/
     color:#000;font-weight:bold;
     font-size:13px;
     text-align: center;
