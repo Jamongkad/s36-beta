@@ -32,18 +32,6 @@ angular.module('request', [])
             */
 
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
-                var elem = $(value);
-
-                if(index == 2) {
-                    if(validate_email(elem.val())) {
-                        console.log(elem); 
-                        elem.css({'border': '1px solid #CCCCCC'}); 
-                        go = true;
-                    } else { 
-                        elem.css({'border': '1px solid red'}); 
-                        go = false;
-                    }
-                }
                   
                 if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
@@ -54,6 +42,15 @@ angular.module('request', [])
                 }
                 e.preventDefault();
             });
+
+            
+            if( validate_email($("#recipient-email").val()) ) { 
+                elem.css({'border': '1px solid #CCCCCC'}); 
+                go = true;
+            } else { 
+                elem.css({'border': '1px solid red'}); 
+                go = false;
+            }
 
             console.log(go);
              
