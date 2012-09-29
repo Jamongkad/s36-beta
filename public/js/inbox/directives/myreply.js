@@ -32,7 +32,7 @@ angular.module('reply', [])
 
         //var error_msg = $(".reply-box-error");
 
-        $(element).click('submit', function(e) {
+        $(element).bind('submit', function(e) {
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             console.log(form);
