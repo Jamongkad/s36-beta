@@ -66,6 +66,9 @@ function ParentCtrl($scope) {
           , url: 'message/update_reply_msg' 
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id, "type": $scope.type}
+          , success: function(data) {
+                console.log(data);
+            }
         }); 
         
         me.hide();
