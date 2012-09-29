@@ -59,7 +59,7 @@ angular.module('request', [])
 //dialog form init
 $('.request-dialog').dialog({
     autoOpen: false  
-  , height: 459
+  , height: 539
   , width: 700 
   , modal: true
 });
