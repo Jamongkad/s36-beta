@@ -146,3 +146,5 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
+$('.reply-form').validationEngine('validate')
+
