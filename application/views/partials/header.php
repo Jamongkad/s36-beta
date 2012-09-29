@@ -152,8 +152,6 @@
                     </div>
                     <div class="reply-box-padding"></div>
                     <div class="reply-box-error">
-                           <div class="reply-box-text">
-                           </div>
                     </div>
                     <div class="reply-box-footer">
                         <div class="reply-box-buttons">

@@ -27,11 +27,6 @@ angular.module('request', [])
 
         $(element).bind('click', function(e) {
            
-            /*
-            validate($("#recipient-fname"), go, "first name required");
-            validate($("#recipient-lname"), go, "last name required");
-            validate($("#recipient-message"), go, "message required");
-            */
             if( validate($("#recipient-fname")) ) {  
                 go = false;
                 error_msg.html("first name required.");
