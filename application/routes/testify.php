@@ -51,28 +51,25 @@ return array(
             $tf->assert($tf->data->sm);
         });
         
-        /*
-        $tf->test('Test Save Message', function($tf) {
-            $tf->assert($tf->data->sm->save('Mathew'));
-            $tf->data->sm->last_insert();
-            $tf->dump($tf->data->sm->jsonify());
-        });
-
-        $tf->test('Test Update Message', function($tf) {
-            $tf->data->sm->update('msg-533', 'Mathew Wong');
-            $tf->pass();
-        });
-
-        $tf->test('Test Delete Message', function($tf) {
-            $tf->assert($tf->data->sm->delete('msg-737'));
-        });
-        */
-
         $tf->test('Test Get Message', function($tf) {
             $tf->data->sm->get_messages();
             $tf->dump($tf->data->sm->jsonify());
         });
 
         $tf->run(); 
-    }
+    },
+
+    'GET /testify/email' => function() {       
+
+        $tf = new Testify("Email Test Service");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->slug = new Email\Entities\Slug;
+        });
+
+        $tf->test('Email Test', function($tf) {
+            $tf->dump($tf->data->slug);
+        });
+       
+    },
 );
