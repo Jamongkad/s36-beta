@@ -35,10 +35,10 @@ angular.module('request', [])
                 var elem = $(value);
 
                 if(index == 2) {
-                    console.log(elem);
+                    if(validate_email(elem.val())) {
+                        console.log(elem);
+                    }
                 }
-
-                console.log(index);
                   
                 if( elem.val() == 0 || (index == 2 && !validate_email(elem.val()) && elem.val() == 0) ) {
                      elem.css({'border': '1px solid red'}); 
