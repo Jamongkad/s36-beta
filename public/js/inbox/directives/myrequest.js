@@ -20,18 +20,24 @@ angular.module('request', [])
     return function(scope, element, attr) {
        
         var me = $("#request-form");
+        var go;
 
         $(element).bind('click', function(e) {
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
                 if(elem.val() == 0) {
                      elem.css({'border': '1px solid red'}); 
+                     go = false;
                 }  else { 
                      elem.css({'border': '1px solid #CCCCCC'}); 
+                     go = true;
                 }
                 e.preventDefault();
             });
 
+            console.log(go);
+            
+            /*
             me.ajaxSubmit({
                 success: function(data) {
                     alert("Your request has been sent!");
@@ -39,6 +45,8 @@ angular.module('request', [])
                     $('.request-dialog').dialog('close');
                 }
             });
+            */
+
             e.preventDefault(); 
         })
     }
