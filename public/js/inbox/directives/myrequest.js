@@ -25,6 +25,13 @@ angular.module('request', [])
         $(element).bind('click', function(e) {
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
+
+                if(!validate_email($('#recipient-email').val())) {
+                    go = false; 
+                } else { 
+                    go = true;
+                }
+
                 if(elem.val() == 0) {
                      elem.css({'border': '1px solid red'}); 
                      go = false;
@@ -58,3 +65,8 @@ $('.request-dialog').dialog({
   , width: 700 
   , modal: true
 });
+
+function validate_email(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email); 
+};
