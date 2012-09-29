@@ -87,8 +87,8 @@ return array(
                       ->message("Mathew is a kewl dude.")
                       ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));            
 
-            $emailservice = new Email\Services\EmailService($tf->data->replydata);
-            //$tf->dump($tf->data->replydata);  
+            $tf->dump($tf->data->replydata);  
+            $emailservice = new Email\Services\EmailService($tf->data->replydata); 
             $tf->assert($emailservice->send_email());  
         });
 
