@@ -19,7 +19,14 @@ angular.module('request', [])
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
-            $("#request-form").ajaxSubmit();
+            me = $("#request-form");
+            me.ajaxSubmit({
+                success: function(data) {
+                    alert("Your request has been sent!");
+                    me.clearFields();
+                    $('.request-dialog').dialog('close');
+                }
+            });
             e.preventDefault();
         })
     }

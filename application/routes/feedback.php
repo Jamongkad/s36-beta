@@ -74,7 +74,7 @@ return array(
         $request_data->widgetkey = $widgets->widgetkey;
         
         $emailservice = new Email\Services\EmailService($request_data);
-        $emailservice->send_email();
+        return $emailservice->send_email();
         /*
         $rules = Array(
             'first_name' => 'required'
