@@ -44,6 +44,7 @@ angular.module('reply', [])
           , success: function() {
                 alert("Your reply has been sent!");
                 myparent.dialog('close'); 
+                $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             }
         })
         /* 
