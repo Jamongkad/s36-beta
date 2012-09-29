@@ -60,12 +60,23 @@ class SettingMessage {
     }
 
     public function last_insert() { 
+        $this->result = $this->_get_leaf($this->hash_nm, $this->hash_key);
+    }
+
+    public function get($hash_key) {
+        $this->result = $this->_get_leaf($this->hash_nm, $hash_key);
+    }
+
+    public function _get_leaf($hash, $hash_key) {
+
         $leaf = Array();
-        $text = $this->redis->hget($this->hash_nm, $this->hash_key);
+        $text = $this->redis->hget($hash, $hash_key);
+
         $leaf['text'] = $text; 
         $leaf['short_text'] = Helpers::limit_text($text, $this->text_limit);
-        $leaf['id']   = $this->hash_key;
-        $this->result = $leaf;
+        $leaf['id']   = $hash_key;
+
+        return $leaf; 
     }
 
     public function jsonify() {

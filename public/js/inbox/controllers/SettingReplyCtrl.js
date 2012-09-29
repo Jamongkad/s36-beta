@@ -67,8 +67,6 @@ function ParentCtrl($scope) {
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id, "type": $scope.type}
         }); 
-
-        //span.text(input.val());
         
         me.hide();
         sib.show();

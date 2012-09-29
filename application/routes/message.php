@@ -13,6 +13,8 @@ return array(
     'POST /message/update_reply_msg' => function() {
         $sm = new Message\Services\SettingMessage(Input::get('type'));       
         $sm->update(Input::get('id'), Input::get('msg'));
+        $sm->get(Input::get('id'));
+        echo $sm->jsonify();
     },
 
     'GET /message/get_msgs' => function() {
