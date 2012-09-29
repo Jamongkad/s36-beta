@@ -42,17 +42,19 @@ angular.module('request', [])
         });
     } 
 })
-.directive('customeMessage', function() {
+.directive('customMessage', function() {
     var msgsel_fn;
 
     msgsel_fn = function(scope, element, attrs) {
         $(element).children('li[id]').bind('click', function(e) {
-            //console.log($(this).text());     
+            console.log($(this).text());     
+            /*
             var quickmessage = $(this).text();
             var textarea = $(this).parents('td').prev('td').children('textarea');
 
             textarea.val(quickmessage); 
             e.preventDefault();
+            */
         });
     }
 
