@@ -74,7 +74,7 @@ angular.module('reply', [])
     return {
         restrict: 'A'     
       , controller: function($scope) {
-            $scope.name = "Mathew";
+            $scope.name = "Mathew Wong";
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
@@ -97,11 +97,9 @@ $('.dialog-form').dialog({
     }
 });
 
-/*
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
   , width: 200
   , modal: true
 });
-*/
