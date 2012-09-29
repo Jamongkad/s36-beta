@@ -26,10 +26,10 @@ angular.module('reply', [])
  
      
             if(message_textarea.val().length == 0) { 
-                message_textarea.css({'border', '2px solid red'}) 
+                message_textarea.css({'border': '2px solid red'}) 
                 e.preventDefault();
             } else { 
-                message_textarea.css({'border', '1px solid #CCCCCC'})
+                message_textarea.css({'border': '1px solid #CCCCCC'})
                 form.ajaxSubmit({
                     dataType: 'json'     
                   , success: function(data) {
