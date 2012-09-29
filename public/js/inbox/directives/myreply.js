@@ -70,6 +70,13 @@ angular.module('reply', [])
       , link: msgsel_fn
     }  
 })
+.directive('configureReply', function() { 
+    return function(scope, element, attrs) {
+        $(element).bind('click', function(e) {  
+            e.preventDefault();
+        })
+    }
+})
 
 //dialog form init
 $('.dialog-form').dialog({
