@@ -29,7 +29,7 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
-        var myparent = $(element).parents('.dialog-form')
+
         $(element).parents('form').validate({
             submitHandler: function(form) {
                 $(form).ajaxSubmit();
@@ -43,10 +43,10 @@ angular.module('reply', [])
             }
           , success: function() {
                 alert("Your reply has been sent!");
-                myparent.dialog('close'); 
+                $(element).parents('.dialog-form').dialog('close'); 
                 $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             }
-        })
+        });
         /* 
         .submit(function(e) {
             var me = $(this);
