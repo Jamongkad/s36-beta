@@ -34,8 +34,7 @@ angular.module('reply', [])
   
             if(message_textarea.val().length == 0) { 
                 message_textarea.css({'border': '2px solid red'}) 
-                error_msg.html("reply message required");
-                e.preventDefault();
+                return error_msg.html("reply message required");
             } else { 
                 message_textarea.css({'border': '1px solid #CCCCCC'})
                 form.ajaxSubmit({
