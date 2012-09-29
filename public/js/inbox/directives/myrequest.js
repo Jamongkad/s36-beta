@@ -37,6 +37,7 @@ angular.module('request', [])
                   
                 if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
+                     elem.focus();
                      go = false;
                 }  else { 
                      elem.css({'border': '1px solid #CCCCCC'}); 
@@ -52,6 +53,7 @@ angular.module('request', [])
                 email.css({'border': '1px solid #CCCCCC'});
             } else { 
                 go = false;
+                email.focus();
                 email.css({'border': '1px solid red '});
             }
 
