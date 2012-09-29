@@ -81,6 +81,7 @@ angular.module('reply', [])
         }
     }   
 })
+/*
 .directive('replyConfigure', function() {
     return {
         restrict: 'E'     
@@ -89,6 +90,7 @@ angular.module('reply', [])
         }
     }    
 })
+*/
 
 //dialog form init
 $('.dialog-form').dialog({
