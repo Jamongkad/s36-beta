@@ -72,6 +72,7 @@ return array(
             $email_data = new StdClass;
             $email_data->sendto  = "wrm932@gmail.com";
             $email_data->replyto = "mathew@36stories.com";
+            $email_data->bcc     = "mocha@gmail.com,pwet@gmail.com";
 
             $tf->data->slug->gather($email_data);
             $tf->dump($tf->data->slug);
