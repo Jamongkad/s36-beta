@@ -1,5 +1,3 @@
-<style>
-</style>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -101,6 +99,7 @@
             </div>
         </div>
         <div class="reply-box-padding"></div>
+        <div class="reply-box-error"></div>
         <div class="reply-box-footer">
             <div class="reply-box-buttons">
                 <input type="button" class="large-btn" value="Cancel" reply-cancel/>

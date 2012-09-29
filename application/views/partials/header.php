@@ -151,8 +151,7 @@
                         </div>
                     </div>
                     <div class="reply-box-padding"></div>
-                    <div class="reply-box-error">
-                    </div>
+                    <div class="reply-box-error"></div>
                     <div class="reply-box-footer">
                         <div class="reply-box-buttons">
                             <input type="button" class="large-btn" value="Cancel" my-request-close/>
