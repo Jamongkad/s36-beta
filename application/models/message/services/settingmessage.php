@@ -44,7 +44,10 @@ class SettingMessage {
 
         foreach($this->redis->hkeys($this->hash_nm) as $val) {
             $leaf = new StdClass;
-            $leaf->text = $this->redis->hget($this->hash_nm, $val);
+            $text = $this->redis->hget($this->hash_nm, $val);
+
+            $leaf->text = $text;
+            $leaf->short_text = Helpers::limit_string($text);
             $leaf->id   = $val;
             $tree[] = $leaf;
         }
@@ -57,7 +60,9 @@ class SettingMessage {
 
     public function last_insert() { 
         $leaf = Array();
-        $leaf['text'] = $this->redis->hget($this->hash_nm, $this->hash_key);
+        $text = $this->redis->hget($this->hash_nm, $this->hash_key);
+        $leaf['text'] = $text; 
+        $leaf['short_text'] = Helpers::limit_string($text);
         $leaf['id']   = $this->hash_key;
         $this->result = $leaf;
     }
