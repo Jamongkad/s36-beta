@@ -72,7 +72,7 @@ return array(
         $tf->test('Email Test', function($tf) {  
 
             $replyto = "wrm932@gmail.com";
-            $bcc = "wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,";
+            $bcc = null;//"wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,";
             $tf->data->replydata
                       ->subject("Hey Mathew what's up?")
                       ->bcc($bcc)
