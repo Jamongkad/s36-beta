@@ -35,7 +35,7 @@ angular.module('reply', [])
             $(this).ajaxSubmit({
                 beforeSubmit: function(formData, jqForm, options) {
                     console.log(jqForm);
-                    $(jqForm).validationEngine('validate')   
+                    console.log($(jqForm).validationEngine('validate'));
                 }
             })
             e.preventDefault();
