@@ -611,11 +611,11 @@ li.configure-ff-link a:hover {
     background: none !important;
 }
 
-ul.msgsel {margin-left:-20px;padding:0;list-style:none;line-height:1.3em}
+ul.msgsel {margin-left:-20px;padding:0;list-style:none;line-height:1.3em;margin-top:-25px}
 ul.msgsel li a{color:#6e7e8e;text-decoration:underline}
 ul.msgsel li a:hover{color:#3a4c5a;text-decoration:underline}
 
-ul.custom-message {padding:0;list-style:none;line-height:1.3em}
+ul.custom-message {padding:0;list-style:none;line-height:1.3em;margin-top:-30px}
 ul.custom-message li a{color:#6e7e8e;text-decoration:underline}
 ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
 
