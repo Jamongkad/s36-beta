@@ -678,6 +678,6 @@ ul.add-bcc li {
 }
 .reply-box-padding{
     /* change display to block when error is not shown to preserve the height */
-    padding:20px 30px;display:none;
+    padding:20px 30px;display:block;
 }
 
