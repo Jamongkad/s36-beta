@@ -25,9 +25,12 @@ angular.module('request', [])
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
                 if(elem.val() == 0) {
-                     elem.css({'border': '1px solid red'});
-                     e.preventDefault();
-                } 
+                     elem.css({'border': '1px solid red'}); 
+                }  else { 
+                     elem.css({'border': '1px solid #CCCCCC'}); 
+                }
+
+                e.preventDefault();
             });
             /*
             if($("input[type=text], textarea[name=message]", me).val() == 0) { 
