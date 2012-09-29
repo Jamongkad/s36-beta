@@ -68,8 +68,8 @@
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                     <div class="g1of3">
-                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
-                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.short_text}}"/> 
+                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.short_text}} </span>
+                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3">
                          <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
@@ -100,8 +100,8 @@
             <div ng-repeat="msg in get_msgs()">
                 <div class="grids" id="{{msg.id}}" style="padding-top: 10px">
                     <div class="g1of3">
-                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.text}} </span>
-                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.short_text}}"/> 
+                        <span class="replymsg-text" id="{{msg.id}}"> {{msg.short_text}} </span>
+                        <input type="text" style="display:none" class="regular-text" name="reply_message" id="{{msg.id}}" value="{{msg.text}}"/> 
                     </div>
                      <div class="g1of3">
                          <a href="#" class="gray-btn"  ng-click="edit_msg(msg.id, $event)">+ Edit Message</a>
