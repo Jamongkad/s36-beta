@@ -32,7 +32,19 @@ angular.module('reply', [])
 
         //var error_msg = $(".reply-box-error");
 
-        $(element).bind('click', function(e) {
+        $(element).bind('submit', function(e) {
+            /*
+            var form = $(this).parents('form');
+            var myparent = $(this).parents('.dialog-form')
+            form.ajaxSubmit({
+                dataType: 'json'     
+              , success: function(data) {
+                    alert("Your reply has been sent!");
+                    myparent.dialog('close');
+                }
+            })
+            $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
+            */
             /*
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
@@ -55,7 +67,6 @@ angular.module('reply', [])
                     }
                 })
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-
             }
             */
            
