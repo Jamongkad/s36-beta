@@ -55,9 +55,6 @@ angular.module('request', [])
                 email.css({'border': '1px solid red '});
             }
 
-            console.log(go);
-             
-            /*
             if(go) { 
                 me.ajaxSubmit({
                     success: function(data) {
@@ -67,7 +64,6 @@ angular.module('request', [])
                     }
                 });
             }
-            */
 
             e.preventDefault(); 
         })
