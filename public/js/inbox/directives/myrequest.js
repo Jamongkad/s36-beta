@@ -18,16 +18,24 @@ angular.module('request', [])
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
+       
+        var me = $("#request-form");
+
         $(element).bind('click', function(e) {
-            me = $("#request-form");
-            me.ajaxSubmit({
-                success: function(data) {
-                    alert("Your request has been sent!");
-                    me.clearForm();
-                    $('.request-dialog').dialog('close');
-                }
-            });
-            e.preventDefault();
+
+            if($("input[type=text], textarea[name=message]", me).val() == 0) { 
+                alert("All input fields are required!");
+                e.preventDefault(); 
+            } else {
+                me.ajaxSubmit({
+                    success: function(data) {
+                        alert("Your request has been sent!");
+                        me.clearForm();
+                        $('.request-dialog').dialog('close');
+                    }
+                });
+                e.preventDefault(); 
+            }
         })
     }
     
