@@ -31,7 +31,13 @@ angular.module('reply', [])
     return function(scope, element, attrs){
         //console.log();
         //
-        $(element).parents('form').submit(function(e) {
+        $(element).parents('form').validate({
+            submitHandler: function(form) {
+                console.log(form);
+            }
+        })
+        /* 
+        .submit(function(e) {
             var me = $(this);
             $(this).ajaxSubmit({
                 beforeSubmit: function(formData, jqForm, options) {
@@ -40,6 +46,7 @@ angular.module('reply', [])
             })
             e.preventDefault();
         })
+        */
         /*
          *
         $(element).bind('click', function(e) {
@@ -150,5 +157,3 @@ $('.dialog-form').dialog({
     }
 });
 //$('.reply-form').validationEngine('validate')
-$('.reply-form').validate();
-
