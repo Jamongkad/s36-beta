@@ -285,47 +285,6 @@ return array(
 
         $emailservice = new Email\Services\EmailService($replydata);  
         return $emailservice->send_email(); 
-
-        /*
-        Helpers::dump(Input::get());
-        $data = Input::get();
-        $feedback_data = $feedback->pull_feedback_by_id($data['feedbackid']); 
-
-        $rules = array(
-            'subject' => 'required'
-          , 'message' => 'required'
-        );
- 
-        $validator = validator::make($data, $rules);
-        
-        if(!$validator->valid()) {
-            $user = S36Auth::user();         
-            return View::of_layout()->partial('contents', 'feedback/reply_to_view', Array(
-                'user' => $user 
-              , 'feedback' => $feedback_data 
-              , 'feedid' => $data['feedbackid']
-              , 'errors' => $validator->errors
-              , 'input' => $data
-            ));
-        } else { 
-            $replydata = new Email\Entities\ReplyData;
-            
-            $replydata->subject = $data['subject'];
-            $replydata->bcc = $data['bcc'];
-            $replydata->sendto = $data['emailto'] ;
-            $replydata->from = (object) Array(
-                "replyto" => $data['replyto'] 
-              , "username"  => ucfirst($data['username'])
-            );
-            $replydata->message = $data['message'];
-            $replydata->feedback = $feedback_data;
- 
-            $emailservice = new Email\Services\EmailService($replydata);  
-            $emailservice->send_email(); 
-            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
-                                              array("linkback" => "reply_to/".$data['feedbackid']));  
-        }
-        */ 
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {

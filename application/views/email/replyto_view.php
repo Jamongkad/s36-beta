@@ -33,10 +33,10 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h4 style="line-height:normal"><?=$sender?> has read your feedback and wants to get into contact with you.</h4>  
+                            	<h4 style="line-height:normal"><?=ucfirst($sender)?> has read your feedback and wants to get into contact with you.</h4>  
                                 <div style="padding:10px;background:#f4f4f4;">
-                                    <?=$sender?> says,<br/>
-                                    "<?=$message?>"
+                                    <?=ucfirst($sender)?> says,<br/>
+                                    "<?=ucfirst($message)?>"
                                 </div>
                             </td>
                         </tr>

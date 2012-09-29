@@ -35,9 +35,9 @@
                         	<td colspan="3" style="padding-right:140px;line-height:20px;color:#464646;">
                             	<h1 style="line-height:normal">Hi there. We'd really like to hear from you.</h1>
 								<br />                           		
-                                Hi <?=$email_data->sendto->first_name?>,
+                                Hi <?=ucfirst($email_data->sendto->first_name)?>,
 								<br /><br />
-								<?=$email_data->from->fullname?> from <?=$email_data->from->companyname?> has requested to have your feedback.
+								<?=ucfirst($email_data->from->fullname)?> from <?=$email_data->from->companyname?> has requested to have your feedback.
 								<br /><br />
 								To leave feedback all you need to do is to follow the URL below. It won't take long!
                         		<br /><br /><br />
@@ -52,7 +52,7 @@
 								<br /><br />
                                 <?=ucfirst($email_data->from->username)?> also has this to add:
 								<br /><br />                                
-                                <h3>"<?=$email_data->message?>"</h3>
+                                <h3>"<?=ucfirst($email_data->message)?>"</h3>
                             </td>
                         </tr>
                         <tr height="80">
