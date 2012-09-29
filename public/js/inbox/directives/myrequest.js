@@ -29,6 +29,7 @@ angular.module('request', [])
             var fname = $("#recipient-fname");
             var lname = $("#recipient-lname");
             var message = $("#recipient-message");
+            var email = $("#recipient-email");
 
             if( validate(fname) ) {  
                 go = false;
@@ -54,13 +55,21 @@ angular.module('request', [])
                 go = true;     
             }
 
-            var email = $("#recipient-email");
-            if(validate_email(email.val()) || email.val() > 0) { 
+            if( validate(email) ) { 
+                go = false;
+                email.focus();
+                return error_msg.html("email required.");
+            } else {
+                go = true; 
+            }
+
+            if(validate_email(email.val())) { 
                 go = true;
                 email.css({'border': '1px solid #CCCCCC'});
             } else { 
                 go = false;
                 email.focus();
+                return error_msg.html("valid email required");
                 email.css({'border': '1px solid red '});
             }
 
