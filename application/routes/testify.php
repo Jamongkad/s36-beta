@@ -81,7 +81,7 @@ return array(
                               , "username"  => "Mathew"
                             ) )
                       ->message("Mathew is kewl")
-                      ->feedbackdata($this->data->feedback->pull_feedback_by_id(528));
+                      ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));
             
             /*
             $emailservice = new Email\Services\EmailService($replydata);
