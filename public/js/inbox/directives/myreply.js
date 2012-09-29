@@ -73,7 +73,7 @@ angular.module('reply', [])
 .directive('configureReply', function() { 
     return {
         restrict: 'A'     
-      , controller: function($scope, $element, $attr, $transclude) {
+      , controller: function($scope) {
             $scope.onDerp = function() {
                 alert("Mathew");
             }
