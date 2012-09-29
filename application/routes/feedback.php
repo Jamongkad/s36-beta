@@ -49,9 +49,16 @@ return array(
         ));
     }),
 
-    'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($dbwidget){
+    'POST /feedback/requestfeedback' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($dbwidget) {
         $data = Input::get();
+        $company_id = S36Auth::user()->companyid;
+        $widgets = $dbwidget->fetch_widgets_by_company();
+        $site = DB::Table('Site', 'master')->where('companyId', '=', $company_id)->get();
+
         Helpers::dump($data);
+        Helpers::dump($company_id);
+        Helpers::dump($widgets);
+        Helpers::dump($site);
         /*
         $rules = Array(
             'first_name' => 'required'
