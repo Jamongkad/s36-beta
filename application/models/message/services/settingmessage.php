@@ -47,7 +47,7 @@ class SettingMessage {
             $text = $this->redis->hget($this->hash_nm, $val);
 
             $leaf->text = $text;
-            $leaf->short_text = Helpers::limit_string($text, 1000);
+            $leaf->short_text = Helpers::limit_string($text, 200);
             $leaf->id   = $val;
             $tree[] = $leaf;
         }
@@ -62,7 +62,7 @@ class SettingMessage {
         $leaf = Array();
         $text = $this->redis->hget($this->hash_nm, $this->hash_key);
         $leaf['text'] = $text; 
-        $leaf['short_text'] = Helpers::limit_string($text, 1000);
+        $leaf['short_text'] = Helpers::limit_string($text, 200);
         $leaf['id']   = $this->hash_key;
         $this->result = $leaf;
     }
