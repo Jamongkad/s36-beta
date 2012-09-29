@@ -23,13 +23,11 @@ angular.module('request', [])
         var go;
 
         $(element).bind('click', function(e) {
-            $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
+            $.each($("input[name=first_name], input[name=last_name], textarea[name=message]", me), function(index, value) {
 
-                var elem = $(value);
-                  
-                if( elem.val() == 0 && index !== 2 ) {
+                var elem = $(value); 
+                if( elem.val() == 0 ) {
                      elem.css({'border': '1px solid red'}); 
-                     elem.focus();
                      go = false;
                 }  else { 
                      elem.css({'border': '1px solid #CCCCCC'}); 
@@ -40,12 +38,11 @@ angular.module('request', [])
 
             
             var email = $('#recipient-email');
-            if(validate_email(email.val())) { 
+            if(validate_email(email.val()) && email.val() > 0) { 
                 go = true;
                 email.css({'border': '1px solid #CCCCCC'});
             } else { 
                 go = false;
-                email.focus();
                 email.css({'border': '1px solid red '});
             }
 
