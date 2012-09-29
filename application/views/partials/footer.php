@@ -34,6 +34,8 @@
 <?
     $js_scripts = Array(
        '/js/jquery.switcharoo.js'
+     , '/js/jquery.validationEngine.js' 
+     , '/js/jquery.validationEngine-en.js'
      , '/js/jquery.fancytips.js'
      , '/js/jquery.form.js'
      , '/js/jquery.tmpl.js'
@@ -53,7 +55,6 @@
      , '/js/inbox/InboxFilters.js'
      , '/js/inbox/FeedSetup.js'
      , '/js/inbox/Status.js'
-     //, '/js/inbox/Replyto.js' 
      , '/js/inbox/Settings.js'
      , '/js/inbox/s36application.js'
    );
