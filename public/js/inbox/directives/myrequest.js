@@ -27,9 +27,9 @@ angular.module('request', [])
 
         $(element).bind('click', function(e) {
  
-            validate($("#recipient-fname"), go);
-            validate($("#recipient-lname"), go);
-            validate($("#recipient-message"), go);
+            validate($("#recipient-fname"), go, "first name required");
+            validate($("#recipient-lname"), go, "last name required");
+            validate($("#recipient-message"), go, "message required");
 
             var email = $("#recipient-email");
             if(validate_email(email.val()) || email.val() > 0) { 
@@ -69,13 +69,19 @@ function validate_email(email) {
     return re.test(email); 
 };
 
-function validate(elem, go) {
+function validate(elem, go, text) {
+
+    var error_msg = $(".reply-box-error"); 
     
     if( elem.val() == 0 ) {
         elem.css({'border': '1px solid red'}); 
+        error_msg.css({"background": "#ffa801"});
+        error_msg.text(text);
         go = false;
     }  else { 
         elem.css({'border': '1px solid #CCCCCC'}); 
+        error_msg.css({"background": "#fff"});
+        error_msg.text(text);
         go = true;
     }
 
