@@ -29,6 +29,7 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
+        var myparent = $(element).parents('.dialog-form')
         $(element).parents('form').validate({
             submitHandler: function(form) {
                 $(form).ajaxSubmit();
@@ -39,6 +40,10 @@ angular.module('reply', [])
                     required: true     
 				  , minlength: 3
                 }
+            }
+          , success: function() {
+                alert("Your reply has been sent!");
+                myparent.dialog('close'); 
             }
         })
         /* 
