@@ -26,23 +26,29 @@ angular.module('request', [])
         error_msg.css({"background": "#fff"});
 
         $(element).bind('click', function(e) {
-           
-            if( validate($("#recipient-fname")) ) {  
+            var fname = $("#recipient-fname");
+            var lname = $("#recipient-lname");
+            var message = $("#recipient-message");
+
+            if( validate(fname) ) {  
                 go = false;
+                fname.focus();
                 return error_msg.html("first name required.");
             } else {
                 go = true;
             }
 
-            if( validate($("#recipient-lname")) ) {
+            if( validate(lname) ) {
                 go = false;
+                lname.focus();
                 return error_msg.html("last name required.");
             } else {
                 go = true;     
             }
 
-            if( validate($("#recipient-message")) ) {
+            if( validate(message) ) {
                 go = false;
+                message.focus();
                 return error_msg.html("email message required.");
             } else {
                 go = true;     
@@ -54,6 +60,7 @@ angular.module('request', [])
                 email.css({'border': '1px solid #CCCCCC'});
             } else { 
                 go = false;
+                email.focus();
                 email.css({'border': '1px solid red '});
             }
 
