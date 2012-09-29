@@ -89,13 +89,13 @@
                                 </li>
                             <?endforeach?>
                         <?endif?>
-                        <li configure-reply>
+                        <li configure-reply id="<?=$feedback->id?>">
                             <?=HTML::link('settings', '(configure template reply)')?>
                         </li>
                     </ul> 
                 </td>
                 <td> 
-                    <div class="reply-configure"> 
+                    <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h1>Mathew</h1>
                     </div>
                 </td>

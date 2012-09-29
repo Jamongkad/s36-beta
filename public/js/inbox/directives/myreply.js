@@ -75,9 +75,18 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log($(this).parents('td').next().children('div').dialog('open'));
+                var id = $(this).attr('id');  
+                $('.reply-configure[id='+id+']').dialog('open'); 
                 e.preventDefault();
             })
+        }
+    }   
+})
+.directive('replyConfigure', function() { 
+    return {
+        restrict: 'C'     
+      , controller: function($scope) {
+            $scope.name = "Mathew Wong";
         }
     }   
 })
@@ -92,11 +101,10 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
-/*
+
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
   , width: 200
   , modal: true
 });
-*/
