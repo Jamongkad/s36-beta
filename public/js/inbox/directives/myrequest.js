@@ -106,13 +106,8 @@ function validate(elem) {
     if( elem.val() == 0 ) {
         elem.css({'border': '1px solid red'}); 
         return true;
-        //error_msg.css({"background": "#ffa801"});
-        //go = false;
     }  else { 
         elem.css({'border': '1px solid #CCCCCC'}); 
         return false;
-        //error_msg.css({"background": "#fff"});
-        //error_msg.hide();
-        //go = true;
     }
 }

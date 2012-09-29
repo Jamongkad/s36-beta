@@ -39,6 +39,7 @@ angular.module('reply', [])
             if(message_textarea.val().length == 0) { 
                 message_textarea.css({'border': '2px solid red'}) 
                 error_msg.show();
+                error_msg.css({'background': '#ffa801'})
                 error_msg.html("reply message required");
             } else { 
                 message_textarea.css({'border': '1px solid #CCCCCC'})
