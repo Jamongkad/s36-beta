@@ -14,6 +14,7 @@ angular.module('reply', [])
 
             var error_msg = $(".reply-box-error");
             error_msg.hide();
+
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents('.dialog-form').dialog('close');
 
@@ -37,6 +38,7 @@ angular.module('reply', [])
   
             if(message_textarea.val().length == 0) { 
                 message_textarea.css({'border': '2px solid red'}) 
+                error_msg.show();
                 error_msg.html("reply message required");
             } else { 
                 message_textarea.css({'border': '1px solid #CCCCCC'})
