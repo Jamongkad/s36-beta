@@ -24,7 +24,6 @@ angular.module('request', [])
                     success: function(data) {
                         alert("Your request has been sent!");
                         $(form).clearForm();
-                        console.log(form);
                         $(element).parents('.request-dialog').dialog('close'); 
 
                     }
@@ -32,90 +31,35 @@ angular.module('request', [])
             }
           , errorElement: "em"
           , rules: {
-                first_name: {
-                    required: true     
-                }    
-              , last_name: {  
-                    required: true     
-                }
-              , message: {
-                    required: true   
-                }
+                first_name: { required: true }    
+              , last_name: { required: true }
+              , message: { required: true }
               , email: {
                     required: true   
                   , email: true 
                 }
             }
         });
-        /*       
-        var me = $("#request-form");
-        var go;
-        var error_msg = $(".reply-box-error");
-
-        error_msg.css({"background": "#fff"});
-
-        $(element).bind('click', function(e) {
-            var fname = $("#recipient-fname");
-            var lname = $("#recipient-lname");
-            var message = $("#recipient-message");
-            var email = $("#recipient-email");
-
-            if( validate(fname) ) {  
-                go = false;
-                fname.focus();
-                return error_msg.html("first name required.");
-            } else {
-                go = true;
-            }
-
-            if( validate(lname) ) {
-                go = false;
-                lname.focus();
-                return error_msg.html("last name required.");
-            } else {
-                go = true;     
-            }
-
-            if( validate(message) ) {
-                go = false;
-                message.focus();
-                return error_msg.html("email message required.");
-            } else {
-                go = true;     
-            }
-
-            if( validate(email) ) { 
-                go = false;
-                email.focus();
-                return error_msg.html("email required.");
-            } else {
-                go = true; 
-            }
-
-            if(validate_email(email.val())) { 
-                go = true;
-                email.css({'border': '1px solid #CCCCCC'});
-            } else { 
-                go = false;
-                email.focus();
-                email.css({'border': '1px solid red '});
-                return error_msg.html("valid email required");
-            }
-
-            if(go) { 
-                me.ajaxSubmit({
-                    success: function(data) {
-                        alert("Your request has been sent!");
-                        me.clearForm();
-                        $('.request-dialog').dialog('close');
-                    }
-                });
-            }
-
-            e.preventDefault(); 
-        })
-        */
     } 
+})
+.directive('customeMessage', function() {
+    var msgsel_fn;
+
+    msgsel_fn = function(scope, element, attrs) {
+        $(element).children('li[id]').bind('click', function(e) {
+            //console.log($(this).text());     
+            var quickmessage = $(this).text();
+            var textarea = $(this).parents('td').prev('td').children('textarea');
+
+            textarea.val(quickmessage); 
+            e.preventDefault();
+        });
+    }
+
+    return {
+        restrict: 'C'     
+      , link: msgsel_fn
+    }  
 })
 
 //dialog form init
