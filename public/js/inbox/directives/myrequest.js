@@ -42,6 +42,7 @@ angular.module('request', [])
             if(validate_email(email.val()) && email.val() > 0) { 
                 go = true;
                 email.css({'border': '1px solid #CCCCCC'});
+                error_msg.hide()
             } else { 
                 go = false;
                 email.css({'border': '1px solid red '});
