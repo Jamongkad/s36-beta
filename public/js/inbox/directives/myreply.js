@@ -35,7 +35,7 @@ angular.module('reply', [])
             submitHandler: function(form) {
                 console.log(form);
             }
-          , rules {
+          , rules: {
                 message: {
                     required: true     
 				  , minlength: 3
