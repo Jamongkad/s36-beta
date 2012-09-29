@@ -70,6 +70,7 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {  
+
             $replyto = "ryanchu6@gmail.com";
             $tf->data->replydata
                       ->subject("Mathew is a dickie")
@@ -84,12 +85,10 @@ return array(
                         )
                       ->message("Mathew is kewl")
                       ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));            
-            /*
-            $emailservice = new Email\Services\EmailService($replydata);
-            $emailservice->send_email();
-            */
-            $tf->dump($tf->data->replydata);
-       
+
+            $emailservice = new Email\Services\EmailService($tf->data->replydata);
+            //$tf->dump($tf->data->replydata);  
+            $tf->assert($emailservice->send_email());  
         });
 
         $tf->run();  
