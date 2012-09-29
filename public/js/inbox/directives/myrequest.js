@@ -18,17 +18,17 @@ angular.module('request', [])
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
-        $(element).parents('form').validate({
+        $(element).parents('#request-form').validate({
             submitHandler: function(form) {
                 //$(form).ajaxSubmit()
                 console.log(form);
             }
           , errorElement: "em"
           , rules: {
-                firstname: {
+                first_name: {
                     required: true     
                 }    
-              , lastname: {  
+              , last_name: {  
                     required: true     
                 }
               , message: {
