@@ -33,6 +33,7 @@ angular.module('reply', [])
         var error_msg = $(".reply-box-error");
 
         $(element).bind('click', function(e) {
+            /*
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             var message_textarea = $("textarea[name=message]", form);
@@ -56,6 +57,7 @@ angular.module('reply', [])
                 $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
 
             }
+            */
            
             e.preventDefault();
         });
@@ -105,3 +107,5 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
+
+$('.reply-form').validationEngine();
