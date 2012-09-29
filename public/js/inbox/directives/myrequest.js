@@ -22,11 +22,14 @@ angular.module('request', [])
         var me = $("#request-form");
 
         $(element).bind('click', function(e) {
-
+            $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
+                console.log(value);
+            });
+            /*
             if($("input[type=text], textarea[name=message]", me).val() == 0) { 
                 alert("All input fields are required!");
                 e.preventDefault(); 
-            } else {
+            } else { 
                 me.ajaxSubmit({
                     success: function(data) {
                         alert("Your request has been sent!");
@@ -36,6 +39,7 @@ angular.module('request', [])
                 });
                 e.preventDefault(); 
             }
+            */
         })
     }
     
