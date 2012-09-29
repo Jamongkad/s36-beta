@@ -29,24 +29,17 @@ angular.module('request', [])
                 }  else { 
                      elem.css({'border': '1px solid #CCCCCC'}); 
                 }
-
                 e.preventDefault();
             });
-            /*
-            if($("input[type=text], textarea[name=message]", me).val() == 0) { 
-                alert("All input fields are required!");
-                e.preventDefault(); 
-            } else { 
-                me.ajaxSubmit({
-                    success: function(data) {
-                        alert("Your request has been sent!");
-                        me.clearForm();
-                        $('.request-dialog').dialog('close');
-                    }
-                });
-                e.preventDefault(); 
-            }
-            */
+
+            me.ajaxSubmit({
+                success: function(data) {
+                    alert("Your request has been sent!");
+                    me.clearForm();
+                    $('.request-dialog').dialog('close');
+                }
+            });
+            e.preventDefault(); 
         })
     }
     
