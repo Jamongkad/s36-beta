@@ -23,7 +23,9 @@ angular.module('reply', [])
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-
+     
+            console.log(form.children('textarea[name=message]'));
+            /*
             form.ajaxSubmit({
                 dataType: 'json'     
               , success: function(data) {
@@ -31,6 +33,7 @@ angular.module('reply', [])
                     myparent.dialog('close');
                 }
             })
+            */
 
             e.preventDefault();
         });
@@ -70,6 +73,7 @@ angular.module('reply', [])
     }  
 })
 
+//dialog form init
 $('.dialog-form').dialog({
     autoOpen: false  
   , height: 585

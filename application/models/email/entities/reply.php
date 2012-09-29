@@ -23,7 +23,7 @@ class Reply extends EmailFixture {
                                                  , Array('feedback_data' => $this->email_data->feedback))
         ))->get();
 
-        $this->postmark->to($this->email_data->sendto)
+        return $this->postmark->to($this->email_data->sendto)
                        ->bcc($this->email_data->process_bcc())
                        ->replyto($this->email_data->from->replyto)
                        ->subject($this->get_subject())

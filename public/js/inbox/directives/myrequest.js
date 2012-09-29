@@ -33,6 +33,7 @@ angular.module('request', [])
     
 })
 
+//dialog form init
 $('.request-dialog').dialog({
     autoOpen: false  
   , height: 459
