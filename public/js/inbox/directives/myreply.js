@@ -24,7 +24,7 @@ angular.module('reply', [])
             var myparent = $(this).parents('.dialog-form')
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
      
-            console.log(form.children('textarea[name=message]'));
+            console.log(form);
             /*
             form.ajaxSubmit({
                 dataType: 'json'     
