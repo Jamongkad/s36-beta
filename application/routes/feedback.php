@@ -267,6 +267,7 @@ return array(
             $bcc = substr($bcc, 0, -1);
             $bcc = explode(",", $bcc);
             $bcc = array_unique($bcc);
+            $bcc = implode(",", $bcc);
             $replydata->bcc = $bcc;
         }
 
