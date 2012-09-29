@@ -18,7 +18,28 @@ angular.module('request', [])
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
-        console.log($(element).parents('form'));
+        $(element).parents('form').validate({
+            submitHandler: function(form) {
+                //$(form).ajaxSubmit()
+                console.log(form);
+            }
+          , errorElement: "em"
+          , rules: {
+                first_name: {
+                    required: true     
+                }    
+              , last_name: {  
+                    required: true     
+                }
+              , message: {
+                    required: true   
+                }
+              , email: {
+                    required: true   
+                  , email: true 
+                }
+            }
+        })
         /*       
         var me = $("#request-form");
         var go;
