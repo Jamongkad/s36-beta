@@ -32,19 +32,19 @@ angular.module('reply', [])
 
         $(element).parents('form').validate({
             submitHandler: function(form) {
-                $(form).ajaxSubmit();
+                $(form).ajaxSubmit({
+                    success: function() {
+                        alert("Your reply has been sent!");
+                        $(element).parents('.dialog-form').dialog('close'); 
+                        $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
+                    }        
+                });
             }
 		  , errorElement: "em"
           , rules: {
                 message: {
                     required: true     
-				  , minlength: 3
                 }
-            }
-          , success: function() {
-                alert("Your reply has been sent!");
-                $(element).parents('.dialog-form').dialog('close'); 
-                $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             }
         });
         /* 
