@@ -21,16 +21,18 @@ angular.module('request', [])
        
         var me = $("#request-form");
         var go;
+        /*
+        if() {
+            go = false; 
+        } else { 
+            go = true;
+        }
+        */
+        console.log( validate_email($('#recipient-email').val()) );
 
         $(element).bind('click', function(e) {
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
-
-                if(!validate_email($('#recipient-email').val())) {
-                    go = false; 
-                } else { 
-                    go = true;
-                }
 
                 if(elem.val() == 0) {
                      elem.css({'border': '1px solid red'}); 
@@ -41,7 +43,8 @@ angular.module('request', [])
                 }
                 e.preventDefault();
             });
-
+             
+            /*
             if(go) { 
                 me.ajaxSubmit({
                     success: function(data) {
@@ -51,6 +54,7 @@ angular.module('request', [])
                     }
                 });
             }
+            */
 
             e.preventDefault(); 
         })
