@@ -257,12 +257,10 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
 
-        $replyto = Input::get('replyto');
-        $bcc = Input::get('bcc'); 
-        
+        $replyto = Input::get('replyto'); 
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject(Input::get('subject'))
-                  ->bcc($bcc)
+                  ->bcc(Input::get('bcc'))
                   ->sendto(Input::get('emailto'))
                   ->copyme(Input::get('email_me'), $replyto)
                   ->from( 
@@ -273,40 +271,9 @@ return array(
                     )
                   ->message(Input::get('message'))
                   ->feedbackdata($feedback->pull_feedback_by_id(Input::get('feedbackid')));            
-
-        Helpers::dump($replydata);
-        /*
-        $bcc = Input::get('bcc'); 
-        //networking logic
-        $feedback_data = $feedback->pull_feedback_by_id(Input::get('feedbackid')); 
-        $replydata = new Email\Entities\ReplyData; 
-        $replydata->subject = Input::get('subject');
-
-        if($bcc) { 
-            $bcc = substr($bcc, 0, -1);
-            $bcc = explode(",", $bcc);
-            $bcc = array_unique($bcc);
-            $bcc = implode(",", $bcc);
-            $replydata->bcc = $bcc;
-        }
-
-        $copyme = null;
-        if(Input::get('email_me')) {
-            $copyme = ",".Input::get('replyto');
-        }
-        
-        $replydata->sendto = Input::get('emailto').$copyme;
-        $replydata->from = (object) Array(
-            "replyto" => Input::get('replyto')
-          , "username"  => ucfirst(Input::get('username'))
-        );
-        $replydata->message = Input::get('message');
-        $replydata->feedback = $feedback_data;
-
-        Helpers::dump($replydata);
-        */
-        //$emailservice = new Email\Services\EmailService($replydata);  
-        //return $emailservice->send_email(); 
+ 
+        $emailservice = new Email\Services\EmailService($replydata);  
+        return $emailservice->send_email(); 
     }),
 
     'POST /feedback/fastforward' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) {
