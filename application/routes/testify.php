@@ -77,7 +77,7 @@ return array(
                       ->subject("Hey Mathew what's up?")
                       ->bcc($bcc)
                       ->sendto("wrm932@gmail.com")
-                      ->copyme("", $replyto)
+                      ->copyme(1, $replyto)
                       ->from( 
                           (object) Array(
                             "replyto" => $replyto 
