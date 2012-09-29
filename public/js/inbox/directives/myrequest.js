@@ -48,10 +48,9 @@ angular.module('request', [])
     msgsel_fn = function(scope, element, attrs) {
         $(element).children('li[id]').bind('click', function(e) {
 
-
             var quickmessage = $(this).text();
-            var textarea = $(this).parents('td').prev('td').children('textarea');
-
+            var textarea = $(this).parents('td').children('textarea');
+          
             textarea.val(quickmessage); 
             e.preventDefault();
 
