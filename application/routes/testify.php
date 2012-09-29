@@ -71,19 +71,20 @@ return array(
 
         $tf->test('Email Test', function($tf) {  
 
-            $replyto = "ryanchu6@gmail.com";
+            $replyto = "wrm932@gmail.com";
+            $bcc = "wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,";
             $tf->data->replydata
-                      ->subject("Mathew is a dickie")
-                      ->bcc("wrm932@gmail.com,karen_cayamanda@yahoo.com,klemengkid@gmail.com,")
-                      ->sendto("wrm932@gmail.com")
-                      ->copyme(1, $replyto)
+                      ->subject("Hey Mathew what's up?")
+                      ->bcc($bcc)
+                      ->sendto("mathew@36stories.com")
+                      ->copyme("", $replyto)
                       ->from( 
                           (object) Array(
                             "replyto" => $replyto 
                           , "username"  => "Mathew"
                           ) 
                         )
-                      ->message("Mathew is kewl")
+                      ->message("Mathew is a kewl dude.")
                       ->feedbackdata($tf->data->feedback->pull_feedback_by_id(528));            
 
             $emailservice = new Email\Services\EmailService($tf->data->replydata);
