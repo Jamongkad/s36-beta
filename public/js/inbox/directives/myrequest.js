@@ -39,7 +39,7 @@ angular.module('request', [])
                   , email: true 
                 }
             }
-        })
+        });
         /*       
         var me = $("#request-form");
         var go;
