@@ -10,7 +10,6 @@ class ReplyData extends EmailData {
     public $bcc;
     public $message; 
     public $feedback;
-    public $copyme;
 
     public function subject($subject) {
         $this->subject = $subject;
