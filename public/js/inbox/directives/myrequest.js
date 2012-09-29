@@ -55,7 +55,7 @@ angular.module('request', [])
  
             validate($("input[name=first_name]"), go);
             validate($("input[name=last_name]"), go);
-            validate($("input[name=message]"), go);
+            validate($("textarea[name=message]"), go);
 
             var email = $("#recipient-email");
             if(validate_email(email.val()) && email.val() > 0) { 
