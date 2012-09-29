@@ -67,14 +67,7 @@ return array(
             $tf->data->slug = new Email\Entities\Slug;
         });
 
-        $tf->test('Email Test', function($tf) {
-            
-            /*
-            $bcc = substr($bcc, 0, -1);
-            $bcc = explode(",", $bcc);
-            $bcc = array_unique($bcc);
-            */
-
+        $tf->test('Email Test', function($tf) { 
             $email_data = new StdClass;
             $email_data->sendto  = "wrm932@gmail.com";
 
@@ -83,14 +76,11 @@ return array(
             );
 
             $email_data->bcc = null;//"leicaaah18@gmail.com";
-
             $tf->data->slug->gather($email_data);
             $tf->dump($tf->data->slug);
             $tf->assert($tf->data->slug->send());
-
         });
 
-        $tf->run(); 
-       
+        $tf->run();  
     },
 );
