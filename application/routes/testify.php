@@ -52,13 +52,13 @@ return array(
         });
 
         $tf->test('Test Save Message', function($tf) {
-            $tf->assert($tf->data->sm->save_message('Mathew'));
+            $tf->assert($tf->data->sm->save('Mathew'));
             $tf->data->sm->last_insert();
             $tf->dump($tf->data->sm->jsonify());
         });
 
         $tf->test('Test Update Message', function($tf) {
-            $tf->data->sm->update_message('msg-533', 'Mathew Wong');
+            $tf->data->sm->update('msg-533', 'Mathew Wong');
             $tf->pass();
         });
 
