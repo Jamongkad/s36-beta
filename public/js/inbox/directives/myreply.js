@@ -57,7 +57,6 @@ angular.module('reply', [])
 
     msgsel_fn = function(scope, element, attrs) {
         $(element).children('li[id]').bind('click', function(e) {
-            //console.log($(this).text());     
             var quickmessage = $(this).attr('text');
             var textarea = $(this).parents('td').prev('td').children('textarea');
 
