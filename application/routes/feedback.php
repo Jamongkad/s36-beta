@@ -264,7 +264,7 @@ return array(
         $replydata->subject(Input::get('subject'))
                   ->bcc($bcc)
                   ->sendto(Input::get('emailto'))
-                  ->copyme(1, $replyto)
+                  ->copyme(Input::get('email_me'), $replyto)
                   ->from( 
                       (object) Array(
                         "replyto" => $replyto 
