@@ -35,7 +35,7 @@ angular.module('request', [])
 
                 var elem = $(value);
                   
-                if( elem.val() == 0 ) {
+                if( elem.val() == 0 && index !== 2 ) {
                      elem.css({'border': '1px solid red'}); 
                      elem.focus();
                      go = false;
