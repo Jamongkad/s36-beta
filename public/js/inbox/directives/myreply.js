@@ -13,7 +13,7 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
 
             var error_msg = $(".reply-box-error");
-            error_msg.hide();
+            error_msg.html("");
 
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents('.dialog-form').dialog('close');
@@ -42,7 +42,7 @@ angular.module('reply', [])
                 error_msg.html("reply message required");
             } else { 
                 message_textarea.css({'border': '1px solid #CCCCCC'})
-                error_msg.hide();
+                error_msg.html("");
                 form.ajaxSubmit({
                     dataType: 'json'     
                   , success: function(data) {
