@@ -87,7 +87,7 @@
 
         <!-- request feedback popup -->
         <div class="request-dialog" style="display:none">  
-        <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'requestForm'))?>
+        <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
             <div  id="reply-box" >
                 <div class="reply-box-styles">
                     <h2>Request Feedback</h2>
@@ -160,7 +160,7 @@
                     <div class="reply-box-footer">
                         <div class="reply-box-buttons">
                             <input type="button" class="large-btn" value="Cancel" my-request-close/>
-                            <input type="button" class="large-btn" value="Send" />
+                            <input type="button" class="large-btn" value="Send" my-request-send/>
                         </div>
                     </div>
                 </div>

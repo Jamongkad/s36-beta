@@ -16,6 +16,15 @@ angular.module('request', [])
     }
     
 })
+.directive('myRequestSend', function() {
+    return function(scope, element, attr) {
+        $(element).bind('click', function(e) {
+            $("#request-form").ajaxSubmit();
+            e.preventDefault();
+        })
+    }
+    
+})
 
 $('.request-dialog').dialog({
     autoOpen: false  
