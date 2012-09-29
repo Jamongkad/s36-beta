@@ -64,7 +64,6 @@ return array(
         $tf = new Testify("Email Test Service");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->slug = new Email\Entities\Slug;  
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
             $tf->data->replydata = new Email\Entities\ReplyData;
         });

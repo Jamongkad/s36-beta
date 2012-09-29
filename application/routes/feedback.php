@@ -257,11 +257,28 @@ return array(
 
     'POST /feedback/reply_to' => Array('do' => function() use ($feedback) { 
 
-        $bcc = Input::get('bcc');
+        $replyto = Input::get('replyto');
+        $bcc = Input::get('bcc'); 
         
+        $replydata = new Email\Entities\ReplyData; 
+        $replydata->subject(Input::get('subject'))
+                  ->bcc($bcc)
+                  ->sendto(Input::get('emailto'))
+                  ->copyme(1, $replyto)
+                  ->from( 
+                      (object) Array(
+                        "replyto" => $replyto 
+                      , "username"  => ucfirst(Input::get('username'))
+                      ) 
+                    )
+                  ->message(Input::get('message'))
+                  ->feedbackdata($feedback->pull_feedback_by_id(Input::get('feedbackid')));            
+
+        Helpers::dump($replydata);
+        /*
+        $bcc = Input::get('bcc'); 
         //networking logic
         $feedback_data = $feedback->pull_feedback_by_id(Input::get('feedbackid')); 
-
         $replydata = new Email\Entities\ReplyData; 
         $replydata->subject = Input::get('subject');
 
@@ -287,6 +304,7 @@ return array(
         $replydata->feedback = $feedback_data;
 
         Helpers::dump($replydata);
+        */
         //$emailservice = new Email\Services\EmailService($replydata);  
         //return $emailservice->send_email(); 
     }),
