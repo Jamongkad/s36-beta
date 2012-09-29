@@ -74,12 +74,11 @@ angular.module('reply', [])
     return {
         restrict: 'A'     
       , controller: function($scope) {
-            $scope.onDerp = function() {
-                alert("Mathew");
-            }
+            $scope.name = "Mathew";
         }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
+                $(this).children('.reply-configure').dialog('open');
                 e.preventDefault();
             })
         }
@@ -96,4 +95,11 @@ $('.dialog-form').dialog({
   , close: function(e, ui) {    
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
+});
+
+$('.reply-configure').dialog({
+    autoOpen: false  
+  , height: 200
+  , width: 200
+  , modal: true
 });

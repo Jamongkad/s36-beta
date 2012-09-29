@@ -89,7 +89,12 @@
                                 </li>
                             <?endforeach?>
                         <?endif?>
-                        <li configure-reply ng-click="onDerp()"><?=HTML::link('settings', '(configure template reply)')?></li>
+                        <li configure-reply>
+                            <?=HTML::link('settings', '(configure template reply)')?>
+                            <div class="reply-configure" style="display:none">
+                                <h1>{{name}}</h1>
+                            </div>
+                        </li>
                     </ul> 
                 </td>
             </tr>
