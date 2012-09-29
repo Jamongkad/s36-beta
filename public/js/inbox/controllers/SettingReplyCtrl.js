@@ -67,7 +67,7 @@ function ParentCtrl($scope) {
           , dataType: 'json'
           , data: {"msg": input.val(), "id": id, "type": $scope.type}
           , success: function(data) {
-                console.log(data);
+                span.html(data.short_text);
             }
         }); 
         
