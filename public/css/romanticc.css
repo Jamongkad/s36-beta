@@ -615,6 +615,10 @@ ul.msgsel {margin:-17px;padding:0;list-style:none;line-height:1.3em}
 ul.msgsel li a{color:#6e7e8e;text-decoration:underline}
 ul.msgsel li a:hover{color:#3a4c5a;text-decoration:underline}
 
+ul.custom-message {margin:-17px;padding:0;list-style:none;line-height:1.3em}
+ul.custom-message li a{color:#6e7e8e;text-decoration:underline}
+ul.custom-message li a:hover{color:#3a4c5a;text-decoration:underline}
+
 div.dialog-form, .ui-dialog-titlebar { display:none; }
 .ui-dialog .ui-dialog-content{ padding:0 !important; }
 
