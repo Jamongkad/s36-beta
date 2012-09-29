@@ -87,7 +87,7 @@ angular.module('reply', [])
 //dialog form init
 $('.dialog-form').dialog({
     autoOpen: false  
-  , height: 585
+  , height: 627
   , width: 700 
   , modal: true
   , close: function(e, ui) {    
