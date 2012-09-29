@@ -24,14 +24,17 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
+
+        var error_msg = $(".reply-box-error");
+
         $(element).bind('click', function(e) {
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             var message_textarea = $("textarea[name=message]", form);
- 
-     
+  
             if(message_textarea.val().length == 0) { 
                 message_textarea.css({'border': '2px solid red'}) 
+                return error_msg.html("reply message required");
                 e.preventDefault();
             } else { 
                 message_textarea.css({'border': '1px solid #CCCCCC'})
