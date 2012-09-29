@@ -35,6 +35,7 @@ angular.module('reply', [])
             submitHandler: function(form) {
                 console.log(form);
             }
+		  , errorElement: "em"
           , rules: {
                 message: {
                     required: true     
