@@ -29,21 +29,21 @@ angular.module('request', [])
            
             if( validate($("#recipient-fname")) ) {  
                 go = false;
-                error_msg.html("first name required.");
+                return error_msg.html("first name required.");
             } else {
                 go = true;
             }
 
             if( validate($("#recipient-lname")) ) {
                 go = false;
-                error_msg.html("last name required.");
+                return error_msg.html("last name required.");
             } else {
                 go = true;     
             }
 
             if( validate($("#recipient-message")) ) {
                 go = false;
-                error_msg.html("email message required.");
+                return error_msg.html("email message required.");
             } else {
                 go = true;     
             }
