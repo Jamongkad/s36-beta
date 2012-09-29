@@ -33,7 +33,11 @@ angular.module('reply', [])
         //
         $(element).parents('form').submit(function(e) {
             var me = $(this);
-            $(this).ajaxSubmit()
+            $(this).ajaxSubmit({
+                beforeSubmit: function(formData, jqForm, options) {
+                    console.log($(jqForm).validate());
+                }
+            })
             e.preventDefault();
         })
         /*
