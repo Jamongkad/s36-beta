@@ -20,8 +20,13 @@ angular.module('request', [])
     return function(scope, element, attr) {
         $(element).parents('#request-form').validate({
             submitHandler: function(form) {
-                //$(form).ajaxSubmit()
-                console.log(form);
+                $(form).ajaxSubmit(
+                    success: function(data) {
+                        alert("Your request has been sent!");
+                        form.clearForm();
+                        $('.request-dialog').dialog('close');
+                    }
+                ) 
             }
           , errorElement: "em"
           , rules: {
