@@ -55,11 +55,26 @@ return array(
         $company_id = S36Auth::user()->companyid;
         $widgets = $underscore->first($dbwidget->fetch_widgets_by_company()->form_widgets->widget->widgets);
         $site = DB::Table('Site', 'master')->where('companyId', '=', $company_id)->first();
-
-        Helpers::dump($data);
-        Helpers::dump($company_id);
-        Helpers::dump($widgets);
-        Helpers::dump($site);
+        
+        /*
+        $metric = new DBMetric;
+        $metric->company_id = $company_id 
+        $metric->increment_request();  
+        */
+    
+        $request_data = new Email\Entities\RequestFeedbackData;
+        $request_data->sendto = (object) Array(
+            'first_name' => $data['first_name']
+          , 'last_name' => $data['last_name']
+          , 'email' => $data['email']
+        );
+        $request_data->message = $data['message'];
+        $request_data->from = S36Auth::user(); 
+        $request_data->sites = $site->siteid;
+        $request_data->widgetkey = $widgets->widgetkey;
+        
+        $emailservice = new Email\Services\EmailService($request_data);
+        $emailservice->send_email();
         /*
         $rules = Array(
             'first_name' => 'required'
