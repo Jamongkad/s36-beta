@@ -23,8 +23,10 @@ angular.module('request', [])
                 $(form).ajaxSubmit({ 
                     success: function(data) {
                         alert("Your request has been sent!");
-                        form.clearForm();
-                        $('.request-dialog').dialog('close');
+                        $(form).clearForm();
+                        console.log(form);
+                        $(element).parents('.request-dialog').dialog('close'); 
+
                     }
                 }) 
             }
