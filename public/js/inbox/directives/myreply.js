@@ -73,6 +73,11 @@ angular.module('reply', [])
 .directive('configureReply', function() { 
     return {
         restrict: 'A'     
+      , controller: function($scope, $element, $attr, $transclude) {
+            $scope.onDerp = function() {
+                alert("Mathew");
+            }
+        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 e.preventDefault();
