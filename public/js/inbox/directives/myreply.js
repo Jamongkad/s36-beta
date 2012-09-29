@@ -34,7 +34,7 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             
             var form = $(this).parents('form');
-            form.submit();
+            form.ajaxSubmit();
 
             e.preventDefault();
         });
