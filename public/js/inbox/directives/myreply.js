@@ -30,7 +30,7 @@ angular.module('reply', [])
 .directive('replySend', function() {
     return function(scope, element, attrs){
 
-        var error_msg = $(".reply-box-error");
+        //var error_msg = $(".reply-box-error");
 
         $(element).bind('click', function(e) {
             /*

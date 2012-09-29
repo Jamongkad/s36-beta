@@ -77,10 +77,7 @@
             <tr>
                 <td valign="top"><strong>Message : </strong> </td>
                 <td>
-                    <textarea class="regular-text" 
-                              data-validation-engine="validate[required]" 
-                              data-errormessage-value-missing="Message is required!"
-                              rows="6" name="message"></textarea>
+                    <textarea class="regular-text validate[required]" rows="6" name="message"></textarea>
                 </td>
 
                 <td>   
