@@ -73,17 +73,21 @@ angular.module('reply', [])
 .directive('configureReply', function() { 
     return {
         restrict: 'A'     
-      , controller: function($scope) {
-            $scope.name = "Mathew Wong";
-        }
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                $(this).children('.reply-configure').dialog('open');
+                console.log($(this).parents('td').next());
                 e.preventDefault();
             })
         }
-    }
-    
+    }   
+})
+.directive('replyConfigure', function() {
+    return {
+        restrict: 'E'     
+      , controller: function($scope) {
+            $scope.name = "Mathew Wong";
+        }
+    }    
 })
 
 //dialog form init

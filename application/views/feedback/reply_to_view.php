@@ -96,7 +96,7 @@
                 </td>
                 <td> 
                     <div class="reply-configure">
-                        <h1>{{name}}</h1>
+                        {{name}} 
                     <div>
                 </td>
             </tr>
