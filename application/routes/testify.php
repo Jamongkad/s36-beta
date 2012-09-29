@@ -68,8 +68,17 @@ return array(
         });
 
         $tf->test('Email Test', function($tf) {
+
+            $email_data = StdClass;
+            $email_data->sendto  = "wrm932@gmail.com";
+            $email_data->replyto = "mathew@36stories.com";
+
+            $tf->data->slug->gather($email_data);
             $tf->dump($tf->data->slug);
+
         });
+
+        $tf->run(); 
        
     },
 );
