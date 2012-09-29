@@ -14,6 +14,7 @@ class SettingMessage {
     private $hash_nm;
     private $result;
     private $purifier;
+    private $text_limit = 3;
 
     public function __construct($msg_type) {
 
@@ -47,7 +48,7 @@ class SettingMessage {
             $text = $this->redis->hget($this->hash_nm, $val);
 
             $leaf->text = $text;
-            $leaf->short_text = Helpers::limit_text($text);
+            $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
             $leaf->id   = $val;
             $tree[] = $leaf;
         }
@@ -62,7 +63,7 @@ class SettingMessage {
         $leaf = Array();
         $text = $this->redis->hget($this->hash_nm, $this->hash_key);
         $leaf['text'] = $text; 
-        $leaf['short_text'] = Helpers::limit_string($text);
+        $leaf['short_text'] = Helpers::limit_text($text, $this->text_limit);
         $leaf['id']   = $this->hash_key;
         $this->result = $leaf;
     }
