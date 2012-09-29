@@ -77,7 +77,7 @@
             <tr>
                 <td valign="top"><strong>Message : </strong> </td>
                 <td>
-                    <textarea class="regular-text" rows="6" name="message" required></textarea>
+                    <textarea class="regular-text {validate:{required:true, messages:{required:'Please enter your email address', email:'Please enter a valid email address'}}}"rows="6" name="message"></textarea>
                 </td>
 
                 <td>   
