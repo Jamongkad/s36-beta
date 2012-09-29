@@ -25,10 +25,10 @@ angular.module('request', [])
             }
           , errorElement: "em"
           , rules: {
-                first_name: {
+                firstname: {
                     required: true     
                 }    
-              , last_name: {  
+              , lastname: {  
                     required: true     
                 }
               , message: {

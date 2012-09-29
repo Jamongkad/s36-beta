@@ -107,7 +107,7 @@
                                         <label>First Name : </label>
                                         </td>
                                         <td>
-                                        <input type="text" name="first_name" class="regular-text" id="recipient-fname" value=""/>
+                                        <input type="text" name="firstname" class="regular-text" id="recipient-fname" value=""/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -115,7 +115,7 @@
                                         <label>Last Name : </label>
                                         </td>
                                         <td>
-                                        <input type="text" name="last_name" class="regular-text" id="recipient-lname" value=""/>
+                                        <input type="text" name="lastname" class="regular-text" id="recipient-lname" value=""/>
                                         </td>
                                     </tr>
                                     <tr>
