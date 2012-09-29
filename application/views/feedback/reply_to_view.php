@@ -95,7 +95,7 @@
                     </ul> 
                 </td>
                 <td> 
-                    <div class="reply-configure" title="Configure" id="<?=$feedback->id?>"> 
+                    <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h3>{{name}}</h3>
                         <?if($reply_message):?>
                             <?foreach($reply_message as $val):?>
