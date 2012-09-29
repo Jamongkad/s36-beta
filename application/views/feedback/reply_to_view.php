@@ -96,7 +96,7 @@
                 </td>
                 <td> 
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
-                        <h1>Mathew</h1>
+                        <h1>{{name}}</h1>
                     </div>
                 </td>
             </tr>
