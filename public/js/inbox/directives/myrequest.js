@@ -76,7 +76,7 @@ function validate(elem, go, text) {
     if( elem.val() == 0 ) {
         elem.css({'border': '1px solid red'}); 
         error_msg.css({"background": "#ffa801"});
-        error_msg.text(text);
+        error_msg.html(text);
         go = false;
     }  else { 
         elem.css({'border': '1px solid #CCCCCC'}); 
