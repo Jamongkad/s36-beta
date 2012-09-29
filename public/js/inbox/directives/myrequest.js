@@ -24,34 +24,6 @@ angular.module('request', [])
         var error_msg = $(".reply-box-error");
 
         $(element).bind('click', function(e) {
-            /*
-            var first_name = $("input[name=first_name]");
-            if( first_name.val() == 0 ) {
-                 first_name.css({'border': '1px solid red'}); 
-                 go = false;
-            }  else { 
-                 first_name.css({'border': '1px solid #CCCCCC'}); 
-                 go = true;
-            }
-
-            var last_name = $("input[name=last_name]");
-            if( last_name.val() == 0 ) {
-                 last_name.css({'border': '1px solid red'}); 
-                 go = false;
-            }  else { 
-                 last_name.css({'border': '1px solid #CCCCCC'}); 
-                 go = true;
-            }
-
-            var message = $("input[name=message]");
-            if( messagej.val() == 0 ) {
-                 messagej.css({'border': '1px solid red'}); 
-                 go = false;
-            }  else { 
-                 messagej.css({'border': '1px solid #CCCCCC'}); 
-                 go = true;
-            }
-            */
  
             validate($("#recipient-fname"), go);
             validate($("#recipient-lname"), go);
