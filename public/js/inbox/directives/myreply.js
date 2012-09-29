@@ -101,9 +101,11 @@ $('.dialog-form').dialog({
     }
 });
 
+/*
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
   , width: 200
   , modal: true
 });
+*/
