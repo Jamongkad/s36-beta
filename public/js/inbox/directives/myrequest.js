@@ -21,16 +21,15 @@ angular.module('request', [])
        
         var me = $("#request-form");
         var go;
-        /*
-        if() {
-            go = false; 
-        } else { 
-            go = true;
-        }
-        */
 
         $(element).bind('click', function(e) {
-            console.log( validate_email($('#recipient-email').val()) );
+            
+            if( validate_email($('#recipient-email').val()) ) {
+                go = true; 
+            } else { 
+                go = false;
+            }
+
             $.each($("input[type=text], textarea[name=message]", me), function(index, value) {
                 var elem = $(value);
 
@@ -43,6 +42,8 @@ angular.module('request', [])
                 }
                 e.preventDefault();
             });
+
+            console.log(go);
              
             /*
             if(go) { 
