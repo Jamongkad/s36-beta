@@ -95,8 +95,8 @@
                     </ul> 
                 </td>
                 <td> 
-                    <div class="reply-configure">
-                        {{name}} 
+                    <div class="reply-configure"> 
+                        <h1>Mathew</h1>
                     </div>
                 </td>
             </tr>

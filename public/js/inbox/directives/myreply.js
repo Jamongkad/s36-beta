@@ -92,11 +92,11 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
-
-
+/*
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
   , width: 200
   , modal: true
 });
+*/
