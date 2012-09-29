@@ -284,7 +284,7 @@ return array(
         $replydata->feedback = $feedback_data;
 
         $emailservice = new Email\Services\EmailService($replydata);  
-        //return $emailservice->send_email(); 
+        return $emailservice->send_email(); 
 
         /*
         Helpers::dump(Input::get());

@@ -29,11 +29,9 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
-        //console.log();
-        //
         $(element).parents('form').validate({
             submitHandler: function(form) {
-                console.log(form);
+                $(form).ajaxSubmit();
             }
 		  , errorElement: "em"
           , rules: {
