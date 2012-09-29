@@ -36,6 +36,13 @@ angular.module('reply', [])
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             console.log(form);
+            form.ajaxSubmit({
+                dataType: 'json'     
+              , success: function(data) {
+                    alert("Your reply has been sent!");
+                    myparent.dialog('close');
+                }
+            })
             /*
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
