@@ -38,7 +38,6 @@ class ReplyData extends EmailData {
     }
 
     public function copyme($email_me, $replyto) {
-        print_r($email_me);
         if($email_me) {
             $this->sendto .= ",".$replyto;
         }
