@@ -22,9 +22,10 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
+            var message_textarea = $("textarea[name=message]", form);
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
      
-            console.log(form);
+            console.log(message_textarea);
             /*
             form.ajaxSubmit({
                 dataType: 'json'     
