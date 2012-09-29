@@ -11,6 +11,9 @@ angular.module('reply', [])
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
         $(element).bind('click', function(e) {
+
+            var error_msg = $(".reply-box-error");
+            error_msg.hide();
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents('.dialog-form').dialog('close');
 
