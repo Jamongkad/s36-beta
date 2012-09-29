@@ -57,6 +57,7 @@ angular.module('request', [])
             validate($("input[name=last_name]"), go);
             validate($("input[name=message]"), go);
 
+            var email = $("#recipient-email");
             if(validate_email(email.val()) && email.val() > 0) { 
                 go = true;
                 email.css({'border': '1px solid #CCCCCC'});
