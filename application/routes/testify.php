@@ -76,7 +76,7 @@ return array(
             $tf->data->replydata
                       ->subject("Hey Mathew what's up?")
                       ->bcc($bcc)
-                      ->sendto("wrm932@gmaile.com")
+                      ->sendto("wrm932@gmail.com")
                       ->copyme("", $replyto)
                       ->from( 
                           (object) Array(
