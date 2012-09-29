@@ -45,11 +45,15 @@ class ReplyData extends EmailData {
     }
 
     public function bcc($bcc) { 
-        $bcc = substr($bcc, 0, -1);
-        $bcc = explode(",", $bcc);
-        $bcc = array_unique($bcc);
-        $bcc = implode(",", $bcc);
-        $this->bcc = $bcc;
+
+        if($bcc) { 
+            $bcc = substr($bcc, 0, -1);
+            $bcc = explode(",", $bcc);
+            $bcc = array_unique($bcc);
+            $bcc = implode(",", $bcc);
+            $this->bcc = $bcc;
+        }
+
         return $this;
     }
 }
