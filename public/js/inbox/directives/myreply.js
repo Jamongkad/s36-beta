@@ -75,22 +75,12 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log($(this).parents('td').next().children('div'));
+                console.log($(this).parents('td').next().children('div').dialog('open'));
                 e.preventDefault();
             })
         }
     }   
 })
-/*
-.directive('replyConfigure', function() {
-    return {
-        restrict: 'E'     
-      , controller: function($scope) {
-            $scope.name = "Mathew Wong";
-        }
-    }    
-})
-*/
 
 //dialog form init
 $('.dialog-form').dialog({
@@ -103,11 +93,10 @@ $('.dialog-form').dialog({
     }
 });
 
-/*
+
 $('.reply-configure').dialog({
     autoOpen: false  
   , height: 200
   , width: 200
   , modal: true
 });
-*/
