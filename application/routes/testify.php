@@ -77,7 +77,11 @@ return array(
 
             $email_data = new StdClass;
             $email_data->sendto  = "wrm932@gmail.com";
-            $email_data->from->replyto = "mathew@36stories.com";
+
+            $email_data->from = (object) Array(
+                "replyto" => "mathew@36stories.com"
+            );
+
             $email_data->bcc     = "wrm932@gmail.com,wrm932@gmail.com";
 
             $tf->data->slug->gather($email_data);
