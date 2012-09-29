@@ -46,6 +46,7 @@
                                 </a>
                                 -->
                             	<a href="<?=$deploy_env."/".$subdomain."/submit"."?response=1"?>" target="new" style="padding:15px 20px;color:#0d8eae;background:#c2dcc9;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px;">Our Feedback Form
+                                </a>
                             	<br /><br /><br />
                             	We greatly appreciate your time.
 								<br /><br />
