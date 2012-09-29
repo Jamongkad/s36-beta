@@ -85,13 +85,8 @@ angular.module('reply', [])
 .directive('replyConfigure', function() { 
     return {
         restrict: 'C'     
-      , controller: function($scope, MessageService) {
-            $scope.name = "Mathew Wong";
- 
-            var type = "msg";
-            MessageService.get_messages(type);
-            $scope.msgs = MessageService.message;
-            $scope.type = type;
+      , controller: function($scope) {
+            $scope.name = "Mathew Wong"; 
         }
     }   
 })

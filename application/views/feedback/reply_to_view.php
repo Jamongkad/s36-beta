@@ -97,6 +97,13 @@
                 <td> 
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h1>{{name}}</h1>
+                        <?if($reply_message):?>
+                            <?foreach($reply_message as $val):?>
+                                <li id="<?=$val->id?>" text="<?=$val->text?>">
+                                    <a href="#"><?=$val->short_text?></a>
+                                </li>
+                            <?endforeach?>
+                        <?endif?>
                     </div>
                 </td>
             </tr>
