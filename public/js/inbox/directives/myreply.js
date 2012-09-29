@@ -29,10 +29,11 @@ angular.module('reply', [])
 })
 .directive('replySend', function() {
     return function(scope, element, attrs){
-
+        console.log($(element).parents('form'));
         //var error_msg = $(".reply-box-error");
 
-        $(element).bind('submit', function(e) {
+        //$(element).bind('submit', function(e) {
+            /*
             var form = $(this).parents('form');
             var myparent = $(this).parents('.dialog-form')
             console.log(form);
@@ -80,8 +81,8 @@ angular.module('reply', [])
             }
             */
            
-            e.preventDefault();
-        });
+            //e.preventDefault();
+        //});
     }
 })
 .directive('replyBcc', function() {
