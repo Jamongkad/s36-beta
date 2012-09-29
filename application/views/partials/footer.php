@@ -21,6 +21,7 @@
 
 <?=HTML::script('js/jquery.validationEngine.js')?>
 <?=HTML::script('js/jquery.validationEngine-en.js')?>
+<?=HTML::script('js/jquery.validate.js')?>
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 
