@@ -46,10 +46,13 @@ angular.module('request', [])
             });
 
             
-            if(validate_email($('#recipient-email').val())) { 
+            var email = $('#recipient-email');
+            if(validate_email(email.val())) { 
                 go = true;
+                email.css({'border': '1px solid #CCCCCC'});
             } else { 
                 go = false;
+                email.css({'border': '1px solid red '});
             }
 
             console.log(go);
