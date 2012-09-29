@@ -32,7 +32,9 @@ angular.module('reply', [])
         //console.log();
         //
         $(element).parents('form').submit(function(e) {
-            $(this).ajaxSubmit();
+            $(this).ajaxSubmit({
+                beforeSubmit: $('.reply-form').validationEngine('validate')
+            })
             e.preventDefault();
         })
         /*
@@ -144,5 +146,3 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
-
-$('.reply-form').validationEngine();
