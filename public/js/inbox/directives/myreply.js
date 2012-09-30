@@ -3,6 +3,7 @@ angular.module('reply', [])
     
     return {
         restrict: 'A'      
+      , template: "<h1>Mathew</h1>"
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
 
