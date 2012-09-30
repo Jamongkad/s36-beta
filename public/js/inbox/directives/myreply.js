@@ -16,8 +16,10 @@ angular.module('reply', [])
 
                 dialog_form.dialog('open'); 
 
-                console.log(mes);
-
+                $.each(mes, function(index, value) {
+                    console.log(index);
+                    console.log(value);
+                })
 
                 e.preventDefault();
             });
