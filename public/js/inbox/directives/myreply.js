@@ -8,13 +8,14 @@ angular.module('reply', [])
 
                 var feedid = $(this).attr('feedid'); 
                 var dialog_form = $('.dialog-form[feedid='+feedid+']');
-                var type = "msg";//"rqs";
-                
-                MessageService.get_messages(type);
-                console.log(MessageService.message);
+                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel')
+                var type = "msg";//"rqs"; 
+                var mes = MessageService.get_messages(type).message;
 
                 dialog_form.dialog('open'); 
-                console.log(dialog_form.children('form'));
+
+                console.log(mes);
+
 
                 e.preventDefault();
             });
