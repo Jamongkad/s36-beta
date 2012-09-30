@@ -29,7 +29,7 @@ angular.module('reply', [])
                 */
                 var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
                 $.template("li_template", markup);
-                $.tmpl("li_template", mes).appendTo(msgsel);
+                $.tmpl("li_template", mes).appendTo(msgsel.empty());
 
                 e.preventDefault();
             });
