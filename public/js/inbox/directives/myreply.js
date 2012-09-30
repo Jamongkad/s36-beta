@@ -14,22 +14,11 @@ angular.module('reply', [])
                 MessageService.get_messages(type);
                 var mes = MessageService.message;
 
-                dialog_form.dialog('open'); 
-                /*
-                var li = [];
-                $.each(mes, function(index, value) {
-                    console.log(value);
-                    //li.push("<li>" + value.short_text + "</li>");
-                 
-                    //var parent_li = $("</li>", { id: value.id, text: value.text});
-                    //parent_li.add($("</a>", {text: value.short_text}));
-                    //li.push(parent_li); 
-                })
-                msgsel.html(li.join(" "));
-                */
                 var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
                 $.template("li_template", markup);
                 $.tmpl("li_template", mes).appendTo(msgsel.empty());
+
+                dialog_form.dialog('open'); 
 
                 e.preventDefault();
             });

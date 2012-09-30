@@ -82,10 +82,11 @@
 
                 <td>   
                     <ul class="msgsel">
-                        <li configure-reply id="<?=$feedback->id?>">
-                            <?=HTML::link('settings', '(configure template reply)')?>
-                        </li>
                     </ul> 
+
+                    <div configure-reply id="<?=$feedback->id?>">
+                        <?=HTML::link('settings', '(configure template reply)')?>
+                    </div>
                 </td>
                 <td> 
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
