@@ -1,15 +1,20 @@
-angular.module('reply', [])
+angular.module('reply')
 .directive('myReply', function() {
     
     return {
         restrict: 'A'      
-      , link: function(scope, element, attrs, MessageService) {
+      , controller: function($scope, MessageService) {
+            console.log(MessageService);
+        }
+      , link: function(scope, element, attrs) {
+          /*
             var type = "msg";
             var msg = MessageService.get_messages(type);
+            */
 
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
-                console.log(msg);
+                //console.log(msg);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
