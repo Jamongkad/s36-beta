@@ -29,7 +29,7 @@ angular.module('reply', [])
                 */
                 var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
                 $.template("li_template", markup);
-                $.tmpl("li_template", mes).appendTo('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel li');
+                $.tmpl("li_template", mes).html('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel li');
 
                 e.preventDefault();
             });
