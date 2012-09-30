@@ -1,4 +1,4 @@
-angular.module('reply')
+angular.module('reply', [])
 .directive('myReply', function() {
     
     return {
