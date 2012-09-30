@@ -4,11 +4,10 @@ angular.module('reply', [])
     return {
         restrict: 'A'      
       , controller: function($scope, MessageService) {
-            //console.log(MessageService);
             $scope.name = "amthew";
         }
-      , link: function(scope, element, attrs, controller) {
-            console.log(controller);
+      , link: function(scope, element, attrs) {
+            console.log(scope);
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
