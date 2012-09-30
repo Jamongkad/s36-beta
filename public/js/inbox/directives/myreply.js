@@ -3,7 +3,7 @@ angular.module('reply', [])
     
     return {
         restrict: 'A'      
-      , link: function(scope, element, attrs) {
+      , link: function(scope, element, attrs, MessageService) {
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
