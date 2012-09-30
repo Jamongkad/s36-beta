@@ -342,7 +342,9 @@ return array(
  			$user = S36Auth::user();
 			Package::load('braintree');
 			$S36Braintree = new 	S36Braintree($user->bt_customer_id);
-			Helpers::show_data($S36Braintree->get_next_billing_info()); 
+			//Helpers::show_data($S36Braintree->get_next_billing_info()); */
+            $DBPlan = new \Plan\Repositories\DBPlan;
+            Helpers::show_data($S36Braintree->update_subscription('free'));
 			exit();
     	}
 );
