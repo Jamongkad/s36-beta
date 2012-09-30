@@ -18,7 +18,7 @@ angular.module('reply', [])
 
                 $.each(mes, function(index, value) {
                     console.log(value);
-                    msgsel.html(value.short_text);
+                    msgsel.append(value.short_text);
                 })
 
                 e.preventDefault();
