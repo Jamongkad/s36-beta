@@ -11,15 +11,18 @@ angular.module('reply', [])
                 var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel li')
                 var type = "msg";//"rqs"; 
 
+
                 MessageService.get_messages(type);
                 var mes = MessageService.message;
 
                 dialog_form.dialog('open'); 
 
+                var li = '';
                 $.each(mes, function(index, value) {
                     console.log(value);
-                    msgsel.append(value.short_text);
+                    li += "<li>" + value.short_text + "</li>"; 
                 })
+                msgsel.html(li);
 
                 e.preventDefault();
             });
