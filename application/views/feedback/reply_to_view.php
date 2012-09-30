@@ -82,13 +82,6 @@
 
                 <td>   
                     <ul class="msgsel">
-                        <?if($reply_message):?>
-                            <?foreach($reply_message as $val):?>
-                                <li id="<?=$val->id?>" text="<?=$val->text?>">
-                                    <a href="#"><?=$val->short_text?></a>
-                                </li>
-                            <?endforeach?>
-                        <?endif?>
                         <li configure-reply id="<?=$feedback->id?>">
                             <?=HTML::link('settings', '(configure template reply)')?>
                         </li>

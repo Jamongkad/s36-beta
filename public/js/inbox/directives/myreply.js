@@ -2,18 +2,19 @@ angular.module('reply', [])
 .directive('myReply', function(MessageService) {
     
     return {
-        restrict: 'A'      
-      , template: "<h1>Mathew</h1>"
+        restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
 
                 var feedid = $(this).attr('feedid'); 
+                var dialog_form = $('.dialog-form[feedid='+feedid+']');
                 var type = "msg";//"rqs";
                 
                 MessageService.get_messages(type);
                 console.log(MessageService.message);
 
-                $('.dialog-form[feedid='+feedid+']').dialog('open'); 
+                dialog_form.dialog('open'); 
+                console.log(dialog_form.children('form'));
 
                 e.preventDefault();
             });
