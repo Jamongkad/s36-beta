@@ -6,7 +6,7 @@ angular.module('reply', [])
       , controller: function($scope, MessageService) {
             //console.log(MessageService);
         }
-      , link: function(scope, element, MessageService) {
+      , link: function(scope, element, attrs, MessageService) {
             console.log(MessageService);
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
