@@ -10,7 +10,9 @@ angular.module('reply', [])
                 var dialog_form = $('.dialog-form[feedid='+feedid+']');
                 var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel')
                 var type = "msg";//"rqs"; 
-                var mes = MessageService.get_messages(type).message;
+
+                MessageService.get_messages(type);
+                var mes = MessageService.message;
 
                 dialog_form.dialog('open'); 
 
