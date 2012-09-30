@@ -21,7 +21,7 @@ angular.module('reply', [])
                     console.log(value);
                     li.push("<li>" + value.short_text + "</li>");
                 })
-                msgsel.html(li.join());
+                msgsel.html(li.join(" "));
 
                 e.preventDefault();
             });
