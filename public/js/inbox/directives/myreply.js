@@ -20,6 +20,14 @@ angular.module('reply', [])
 
                 dialog_form.dialog('open'); 
 
+                msgsel.children('li[id]').bind('click', function(e) {
+                    var quickmessage = $(this).attr('text');
+                    var textarea = $(this).parents('td').prev('td').children('textarea');
+
+                    textarea.val(quickmessage); 
+                    e.preventDefault();
+                });
+
                 e.preventDefault();
             });
         }
