@@ -19,7 +19,10 @@ angular.module('reply', [])
                 var li = [];
                 $.each(mes, function(index, value) {
                     console.log(value);
-                    li.push("<li>" + value.short_text + "</li>");
+                    //li.push("<li>" + value.short_text + "</li>");
+                    var parent_li = $("</li>", { id: value.id, text: value.text});
+                    parent_li.add($("</a>", {text: value.short_text}));
+                    li.push(parent_li);
                 })
                 msgsel.html(li.join(" "));
 
