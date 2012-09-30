@@ -5,6 +5,7 @@ angular.module('reply', [])
         restrict: 'A'      
       , controller: function($scope, MessageService) {
             //console.log(MessageService);
+            $scope.name = "amthew";
         }
       , link: function(scope, element, attrs, MessageService) {
             console.log(MessageService);
