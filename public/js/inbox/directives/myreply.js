@@ -7,8 +7,8 @@ angular.module('reply', [])
             //console.log(MessageService);
             $scope.name = "amthew";
         }
-      , link: function(scope, element, attrs, MessageService) {
-            console.log(MessageService);
+      , link: function(scope, element, attrs, controller) {
+            console.log(controller);
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
