@@ -4,17 +4,12 @@ angular.module('reply', [])
     return {
         restrict: 'A'      
       , controller: function($scope, MessageService) {
-            console.log(MessageService);
+            //console.log(MessageService);
         }
-      , link: function(scope, element, attrs) {
-          /*
-            var type = "msg";
-            var msg = MessageService.get_messages(type);
-            */
-
+      , link: function(scope, element, MessageService) {
+            console.log(MessageService);
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
-                //console.log(msg);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
