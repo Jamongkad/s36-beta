@@ -1,12 +1,17 @@
 angular.module('reply', [])
 .directive('myReply', function() {
-    return function(scope, element, attrs) {
-        $(element).bind('click', function(e) { 
-            var feedid = $(this).attr('feedid'); 
-            $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-            e.preventDefault();
-        });
-    }
+    
+    return {
+        restrict: 'A'      
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) { 
+                var feedid = $(this).attr('feedid'); 
+                $('.dialog-form[feedid='+feedid+']').dialog('open'); 
+                e.preventDefault();
+            });
+        }
+    } 
+
 })
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
