@@ -1,13 +1,10 @@
 angular.module('reply', [])
-.directive('myReply', function() {
+.directive('myReply', function(MessageService) {
     
     return {
         restrict: 'A'      
-      , controller: function($scope, MessageService) {
-            $scope.name = "amthew";
-        }
       , link: function(scope, element, attrs) {
-            console.log(scope);
+            console.log(MessageService);
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
