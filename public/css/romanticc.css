@@ -692,3 +692,15 @@ em.error {
   padding-left: 5px;
 }
 em.error { color: red; }
+
+.conf-repl { 
+    margin-left:-20px;padding:0
+}
+
+.conf-repl a {
+    color:#6e7e8e;text-decoration:underline   
+}
+
+.conf-repl a:hover {
+    color:#3a4c5a;text-decoration:underline
+}
