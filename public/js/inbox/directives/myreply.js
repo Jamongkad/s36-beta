@@ -1,4 +1,4 @@
-angular.module('reply', ['Services'])
+angular.module('reply', [])
 .directive('myReply', function() {
     
     return {
