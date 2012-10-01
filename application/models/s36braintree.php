@@ -164,30 +164,26 @@
 		* Create account by RM
 		*/
         static function create_account2($input){
-            
             self::set_keys();
-            
-            //$plan = new \DBPlan(Input::get('plan'));
-            //$plan_id = strtolower($plan->get_name());
             $result_arr = array('success' => true, 'message' => array());
 
             
             // create braintree customer account.
             
            $result = \Braintree_Customer::create(array(
-                 'firstName'		=> $input->company_info->account_owner->firstname,
+                 'firstName'	=> $input->company_info->account_owner->firstname,
                  'lastName'		=> $input->company_info->account_owner->lastname,
-                 'email'         => $input->company_info->account_owner->email,
-                 'company'       => $input->company_info->name,
-                 'website'       => $input->company_info->domain,
-                 'creditCard'    => array(
+                 'email'        => $input->company_info->account_owner->email,
+                 'company'      => $input->company_info->name,
+                 'website'      => $input->company_info->domain,
+                 'creditCard'   => array(
                      'number'           => $input->billing_info->billing_card_number,
                      'expirationMonth'  => $input->billing_info->billing_expire_month,
                      'expirationYear'   => $input->billing_info->billing_expire_year,
                      'cvv'              => $input->billing_info->billing_card_cvv,
-                     'options' => array(
-            							'verifyCard' => true
-        									),
+                     'options'          => array(
+            							         'verifyCard' => true
+        								        ),
                      'billingAddress'   => array(
                          'firstName'    		=> $input->billing_info->billing_first_name,
                          'lastName'     		=> $input->billing_info->billing_last_name,
@@ -197,7 +193,7 @@
                          'countryName'   		=> $input->billing_info->billing_country,
                          'postalCode'    		=> $input->billing_info->billing_zip,
                      								)
-                 							)
+                 						)
              ));
 
 
@@ -214,14 +210,14 @@
 
             // if account creation succeeds, store status, customer_id, token.
             $result_arr['success'] 		= $result->success;
-            $result_arr['customer_id'] = $result->customer->id;
+            $result_arr['customer_id']  = $result->customer->id;
             $result_arr['token'] 		= $result->customer->creditCards[0]->token;
 
 
             // create subscription.
             $result = \Braintree_Subscription::create(array(
                 'paymentMethodToken' => $result_arr['token'],
-                'planId' => 'basic'
+                'planId'             => $input->billing_info->plan_selected
             ));
 
             

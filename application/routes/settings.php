@@ -73,7 +73,6 @@ return array (
 			$accountService 	= new Account\Services\AccountService;
 			$planId 				= Input::get('planId');
 			$action				= Input::get('action');
-			//if($accountService->braintree_exist()){
 		    	  switch($action){
 						case 'confirm' :
 								if($accountService->braintree_exist()){
@@ -127,16 +126,6 @@ return array (
 					      	);
 							break;			
 					}
-			/*	}
-			else{
-					$DBCountry = new DBCountry;
-					return View::of_layout()->partial('contents', 'settings/settings_add_braintree',
-							array(
-								'accountInfo' 			=> $accountService->get_accountInfo(),
-								'countries'				=>	$DBCountry->get_country_list()
-							)     
-			   	);		
-			}*/
     }  
     ),
     /*handle ajax request from upgrade_plan view with braintree account creation*/
@@ -144,20 +133,19 @@ return array (
     		$billing_info = Input::all();
 			$rules = array(
 				'plan_selected'			=>		'required',
-				'billing_first_name'		=>		'required',
+				'billing_first_name'	=>		'required',
 				'billing_last_name'		=>		'required',
-				'billing_address'			=>		'required',
-				'billing_city'				=>		'required',
-				'billing_country'			=>		'required',
-				'billing_zip'				=>		'required|alpha_num|min:3',
+				'billing_address'		=>		'required',
+				'billing_city'			=>		'required',
+				'billing_country'		=>		'required',
+				'billing_zip'			=>		'required|alpha_num|min:3',
 				'billing_card_number'	=>		'required|numeric|min:16',
 				'billing_card_cvv'		=>		'required|numeric'
 			);
 			
 			$messages = array(
-		    
 			 'numeric' 		=> 'Must be a number.',
-			 'min'			=>	'Must be at least :min'
+			 'min'			=> 'Must be at least :min digits'
 			);
 			
 				$accountService 	= 	new Account\Services\AccountService;
@@ -169,23 +157,24 @@ return array (
 			
 			$validator = Validator::make($billing_info, $rules,$messages);
 			/*validation fails*/
-			if(!$validator->valid() || $result['success']==false) {
+			if(!$validator->valid() || $result['success']==false || ($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')) ) {
 			
 				/*custom error messages*/
 				if(empty($billing_info['plan_selected'])){ 
 						$validator->errors->messages['plan_selected'][0] = 'Please select your subscription plan.';
-				}			
-				if($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')){
-						$validator->errors->messages['billing_expire_date'][]='Expiration month and year is invalid';
 				}
+				if(!empty($billing_info['billing_expire_month']) && !empty($billing_info['billing_expire_year'])){
+				if($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')){
+						$validator->errors->messages['billing_expire_date'][]='Expiration month is invalid';
+				}}
 				
 				if($result['success']==false){
 					$error = $result['message'];
 					if(isset($error['number']))			{$validator->errors->messages['billing_card']			= $error['number'];}
-					if(isset($error['cvv']))				{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
-					if(isset($error['expirationMonth'])){$validator->errors->messages['billing_expire_date'][]= $error['expirationMonth'];}
-					if(isset($error['expirationYear']))	{$validator->errors->messages['billing_expire_date'][]= $error['expirationYear'];}
-					if(isset($error['postalCode']))		{$validator->errors->messages['billing_zip']				= $error['postalCode'];}
+					if(isset($error['cvv']))			{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
+					if(isset($error['expirationMonth'])){$validator->errors->messages['billing_expire_date'][]	= $error['expirationMonth'];}
+					if(isset($error['expirationYear']))	{$validator->errors->messages['billing_expire_date'][]	= $error['expirationYear'];}
+					if(isset($error['postalCode']))		{$validator->errors->messages['billing_zip']			= 'Correct postal code is required';}
 				}
 				/*return the results*/	
 				return json_encode(array(
@@ -195,7 +184,6 @@ return array (
 			}
 			/*successful account creation*/
 			if($result['success']==true){
-					$accountService->update_plan($billing_info['plan_selected']);
 					return json_encode(array(
 							'error'=>false,
 							));			
@@ -224,19 +212,23 @@ return array (
 		$accountService = new Account\Services\AccountService;
 		$result = $accountService->update_credit_card($card_data);
 		 	/*validation fails*/
-			if($result['success']==false) {
-
+			if($result['success']==false || ($card_data['billing_expire_month'] < date('m') && $card_data['billing_expire_year'] <= date('Y'))) {
+				if($result['success']==false){
 					$error = $result['message'];
 					if(isset($error['number']))			{$validator->errors->messages['billing_card_number']	= $error['number'];}
-					if(isset($error['cvv']))				{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
+					if(isset($error['cvv']))			{$validator->errors->messages['billing_card_cvv'] 		= $error['cvv'];}
 					if(isset($error['postalCode']))		{$validator->errors->messages['billing_zip']				= $error['postalCode'];}
-				if($card_data['billing_expire_month'] < date('m') && $card_data['billing_expire_year'] <= date('Y')){
-						$validator->errors->messages['billing_expire_date'][]='Expiration date is invalid';
+					if(isset($error['expirationMonth'])){$validator->errors->messages['billing_expire_date'][]	= $error['expirationMonth'];}
+					if(isset($error['expirationYear']))	{$validator->errors->messages['billing_expire_date'][]	= $error['expirationYear'];}
 				}
-					return json_encode(array(
-										'error'		=>true,
-										'messages'	=>$validator->errors->messages
-										));
+				if(!empty($card_data['billing_expire_month']) && !empty($card_data['billing_expire_year'])){
+				if($card_data['billing_expire_month'] < date('m') && $card_data['billing_expire_year'] <= date('Y')) {
+						$validator->errors->messages['billing_expire_date'][]='Expiration month is invalid';
+				}}
+				return json_encode(array(
+									'error'		=>true,
+									'messages'	=>$validator->errors->messages
+									));
 			}
 			/*validation are all good*/
 			else{
@@ -265,15 +257,18 @@ return array (
 			$accountService = new Account\Services\AccountService;
 			$billing_info = Input::all();
 			$rules = array(
-				'billing_first_name'		=>		'required',
+				'billing_first_name'	=>		'required',
 				'billing_last_name'		=>		'required',
-				'billing_address'			=>		'required',
-				'billing_city'				=>		'required',
-				'billing_country'			=>		'required',
-				'billing_zip'				=>		'required|alpha_num|min:3'
+				'billing_address'		=>		'required',
+				'billing_city'			=>		'required',
+				'billing_country'		=>		'required',
+				'billing_zip'			=>		'required|alpha_num|min:3'
 			);
 			$validator = Validator::make($billing_info, $rules);
 			if(!$validator->valid()){
+
+				$validator->errors->messages['billing_zip']='Correct postal code is required';
+
 				return json_encode(array(
 										'error'		=>true,
 										'messages'	=>$validator->errors->messages
@@ -282,7 +277,7 @@ return array (
 				$result = $accountService->update_billing_address($billing_info);
 				return json_encode(array(
 										'error'		=>false,
-										'messages'	=> $result
+										'messages'	=>$result
 										));
 			}
     }),    

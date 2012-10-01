@@ -33,7 +33,7 @@ public function get_accountInfo(){
 		if($this->braintree_exist()){
 			$obj->companyCreditCardInfo					=	\Helpers::arrayToObject($this->S36Braintree->get_credit_card_info());
 			$obj->companyBillingInfo = new stdclass;
-			$obj->companyBillingInfo						=	\Helpers::ArrayToObject($this->S36Braintree->get_billing_info());
+			$obj->companyBillingInfo					=	\Helpers::ArrayToObject($this->S36Braintree->get_billing_info());
 			$obj->companyBillingInfo->nextBill			=	\Helpers::arrayToObject($this->S36Braintree->get_next_billing_info());	
 			$obj->companyBillingInfo->billingHistory	=	\Helpers::arrayToObject($this->S36Braintree->get_billing_history());	
 		} 
@@ -41,19 +41,21 @@ public function get_accountInfo(){
 }
 
 public function create_braintree_account($input){
-	if(isset($result['customer_id'])){
+	$result = $this->S36Braintree->create_account2($input);
+	if(isset($result['success']) && $result['success']==true){
 			$this->DBCompany->update_bt_customer_id($result['customer_id']);
+			$newPlan = $this->DBPlan->get_PlanInfo($input->billing_info->plan_selected);
+			$this->DBCompany->update_plan($newPlan->planid);
 	}
-	return $this->S36Braintree->create_account2($input);
+	return $result;
 }
 
 public function update_plan($planId){
 		$newPlan = $this->DBPlan->get_PlanInfo($planId);
-		if( ($this->DBCompany->update_plan($newPlan->planid)) && $this->S36Braintree->update_subscription($newPlan->name) )
-		{
-				return true;
+		if($this->DBCompany->update_plan($newPlan->planid) && $this->S36Braintree->update_subscription('premium'));
+		{ 
+			return true; 
 		}
-
 	}
 	
 public function update_credit_card($data){

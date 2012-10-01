@@ -40,8 +40,7 @@
 										if(result['error']){
 											if($.isArray(messages) || $.isPlainObject(messages)){
 												$.each(messages, function(key, value) {
-													value = (value+'').replace(/\./g,'<br>');
-													err = (value+'').replace(/\,/g,'');
+													err = (value+'').replace(/\,/g,'<br>');
 													show_error(key,err);
 													if(key=='plan_selected'){
 														$('#success_plan_selected').css('display','none');
@@ -132,63 +131,15 @@
 
             	<h3>Please input your Billing Information below to complete the transaction</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-                	<h4>Credit card and billing address information</h4>
-                	<form id="add_billing_info" autocomplete="off" action="" method="post">
-                	<input type="hidden" id="plan_selected" name="plan_selected" value="<?=(isset($planInfo->name)) ? strtolower($planInfo->name) :'' ?>">
+                <form id="add_billing_info" autocomplete="off" action="" method="post">
+                <input type="hidden" id="plan_selected" name="plan_selected" value="<?=(isset($planInfo->name)) ? strtolower($planInfo->name) :'' ?>">
+                   <h4>Billing information</h4>
                    <table>
-                    	<tbody>
-                    	   <tr style="vertical-align:top;height:1px;">
-                        	<td class="label">Card Number : </td>
+					<tbody>
+                    	<tr>
+                    		<td class="label">First Name : </td>
                         	<td>
-                           <input type="text" id="billing_card_number" name="billing_card_number" class="regular-text " maxlength="16">
-                            </td>
-                            <td>
-                            <span id="error_billing_card" class="alert alert-error" style="margin:0;padding:4px;display:none"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<td class="label">CVV : </td>
-                        	<td style="vertical-align:top;">
-                           <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
-                           </td>
-                           <td><span id="error_billing_card_cvv" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                        <tr>
-                            <td class="label">Expiry Date : </td>
-                            <td style="vertical-align:top;height:1px;">
-                              <select id="billing_expire_month" name="billing_expire_month" class="regular-select">
-											<option value="">select month</option>
-                        			<option value="01">01 January</option>
-                        			<option value="02">02 February</option>
-                        			<option value="03">03 March</option>
-                        			<option value="04">04 April</option>
-											<option value="05">05 May</option>
-											<option value="06">06 June</option>
-                        			<option value="07">07 July</option>
-                        			<option value="08">08 August</option>
-                        			<option value="09">09 September</option>
-                        			<option value="10">10 October</option>
-											<option value="11">11 November</option>
-											<option value="12">12 December</option>
-                        		</select>
-										<select id="billing_expire_year" name="billing_expire_year"class="regular-select">
-											<option value="">select year</option>
-                        			<?php 
-											$current_year = date('Y');
-											echo "<option value='$current_year'>$current_year</option>";                        			           			                        			
-                        			for($i=1;$i<10;$i++){
-												$year=$current_year+$i;
-												echo "<option value='$year'>$year</option>";          			
-                        			}
-                        			?>
-                        		</select>
-                             </td>
-									<td><span id="error_billing_expire_date" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
-                        </tr>
-                    		<tr>
-                    			<td class="label">First Name : </td>
-                        	<td>
-                           <input type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
+                           		<input type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
                            </td>
                            <td width="215px"><span id="error_billing_first_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
@@ -211,14 +162,14 @@
                         	<td>
                            <input type="text" id="billing_city" name="billing_city" class="regular-text ">
                            </td>
-									<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+							<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="label">Billing State : </td>
                         	<td>
-                            <div id="billing_state_div">
+                            	<div id="billing_state_div">
                             	<input type="text" id="billing_state" name="billing_state" class="regular-text ">
-	                           </div>
+	                          	</div>
                            </td>
                            <td><span id="error_billing_state" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
@@ -227,7 +178,7 @@
                         	<td>
                            <input type="text" id="billing_zip" name="billing_zip" class="regular-text ">
                            </td>
-									<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+							<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="label">Billing Country : </td>
@@ -240,19 +191,67 @@
 											<?php endforeach; ?>
                         		</select>
                         		</div>
-						    		</td>
-						    		<td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+						    </td>
+						    <td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
-                        
-
-                        
-								<tr>
-									<td></td>
+                		<tr>
+                			<td colspan=3><h4>Payment Information</h4></td>
+                		</tr>
+                    	<tr style="vertical-align:top;height:1px;">
+                        	<td class="label">Card Number : </td>
+                        	<td>
+                           <input type="text" id="billing_card_number" name="billing_card_number" class="regular-text " maxlength="16">
+                            </td>
+                            <td width="215px">
+                            <span id="error_billing_card" class="alert alert-error" style="margin:0;padding:4px;display:none"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td class="label">CVV : </td>
+                        	<td style="vertical-align:top;">
+                           <input type="text" id="billing_card_cvv" name="billing_card_cvv" class="regular-text " maxlength="4">
+                           </td>
+                           <td><span id="error_billing_card_cvv" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Expiry Date : </td>
+                            <td style="vertical-align:top;height:1px;">
+                              <select id="billing_expire_month" name="billing_expire_month" class="regular-select">
+									<option value="">select month</option>
+                        			<option value="01">01 January</option>
+                        			<option value="02">02 February</option>
+                        			<option value="03">03 March</option>
+                        			<option value="04">04 April</option>
+									<option value="05">05 May</option>
+									<option value="06">06 June</option>
+                        			<option value="07">07 July</option>
+                        			<option value="08">08 August</option>
+                        			<option value="09">09 September</option>
+                        			<option value="10">10 October</option>
+									<option value="11">11 November</option>
+									<option value="12">12 December</option>
+                        		</select>
+										<select id="billing_expire_year" name="billing_expire_year"class="regular-select">
+											<option value="">select year</option>
+                        					<?php 
+											$current_year = date('Y');
+												echo "<option value='$current_year'>$current_year</option>";                        			           			                        			
+                        						for($i=1;$i<10;$i++){
+													$year=$current_year+$i;
+													echo "<option value='$year'>$year</option>";          			
+                        						}
+                        					?>
+                        		</select>
+                             </td>
+							<td><span id="error_billing_expire_date" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                        </tr>
+                        <tr>
+							<td></td>
                         	<td colspan="4">
-										<strong><a class="gray-btn" id="proceed_btn" href="">Save all changes</a></strong>                					                        	
+								<strong><a class="gray-btn" id="proceed_btn" href="">Save all changes</a></strong>                					                        	
                         	</td>
                         </tr>
-                    </tbody>
+                    	</tbody>		
                     </table>
                     </form>
                 </div>

@@ -27,8 +27,7 @@
 										if(result['error']){
 											if($.isArray(messages) || $.isPlainObject(messages)){
 												$.each(messages, function(key, value) {
-													value = (value+'').replace(/\./g,'<br>');
-													err = (value+'').replace(/\,/g,'');
+													err = (value+'').replace(/\,/g,'<br>');
 													show_error(key,err);							 	
 												});
 											}
@@ -81,53 +80,51 @@
 				});			
 			</script>
 <div style="margin-top:10px;border-top:1px solid #dedede;" class="block graybg">
-    <h3>COMPANY BILLING INFORMATION</h3>
+    <h3>COMPANY BILLING AND PAYMENT INFORMATION</h3>
 </div>
  				<?php
-				include('settings_change_card_view.php'); 
 				/*
 				*	BILLINNG ADDRESS INFORMATION UPDATE
 				*
 				*/
 				?>
-<div id="billing_address_box" class="block border-bottom">
-
-            	<h3>Your billing address</h3>
+			<div id="billing_address_box" class="block border-bottom">
+				<h3>Billing Information</h3>
                 <div style="background:#f4f4f4" class="block noborder">
-					<div id="success_address_update" class="alert alert-success" style="display:none">
-						Your billing address has been updated.
-					</div>
-					<div id="progress_box_address" class="alert" style="display:none">Updating billing address information...</div>
-                	<form id="change_billing_info" autocomplete="off" action="" method="post">
+				<div id="success_address_update" class="alert alert-success" style="display:none">
+					Your billing information has been updated.
+				</div>
+				<div id="progress_box_address" class="alert" style="display:none">Updating billing information information...</div>
+                <form id="change_billing_info" action="" method="post">
                    <table>
-                    	<tbody>
-                    		<tr>
-                    			<td class="regular-label">First Name : </td>
+                    <tbody>
+                    	<tr>
+                    		<td class="regular-label">First Name : </td>
                         	<td>
-                           <input value="<?=$companyBillingInfo->firstName?>" type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
+                    	       <input value="<?=$companyBillingInfo->firstName?>" type="text" id="billing_first_name" name="billing_first_name" class="regular-text">
                            </td>
                            <td width="215px"><span id="error_billing_first_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Last Name : </td>
                         	<td>
-                           <input value="<?=$companyBillingInfo->lastName?>" type="text" id="billing_last_name" name="billing_last_name" class="regular-text ">
+                        	   <input value="<?=$companyBillingInfo->lastName?>" type="text" id="billing_last_name" name="billing_last_name" class="regular-text ">
                            </td>
                            <td><span id="error_billing_last_name" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Billing Address : </td>
                         	<td>
-                           <input value="<?=$companyBillingInfo->streetAddress?>" type="text" id="billing_address" name="billing_address" class="regular-text ">
-                           </td>
-                           <td><span id="error_billing_address" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                           		<input value="<?=$companyBillingInfo->streetAddress?>" type="text" id="billing_address" name="billing_address" class="regular-text ">
+                           	</td>
+                           	<td><span id="error_billing_address" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Billing City : </td>
                         	<td>
-                           <input value="<?=$companyBillingInfo->locality?>" type="text" id="billing_city" name="billing_city" class="regular-text ">
-                           </td>
-									<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                           		<input value="<?=$companyBillingInfo->locality?>" type="text" id="billing_city" name="billing_city" class="regular-text ">
+                           	</td>
+							<td><span id="error_billing_city" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Billing State : </td>
@@ -135,34 +132,34 @@
                         		<div id="billing_state_div">
                             	<input value="<?=$companyBillingInfo->region?>" type="text" id="billing_state" name="billing_state" class="regular-text ">
 	                           </div>
-                           </td>
-                           <td><span id="error_billing_state" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                           	</td>
+                           	<td><span id="error_billing_state" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Billing Country : </td>
                         	<td>
                         		 <div id="billing_country_div">
-                               <select id="billing_country" name="billing_country" class="regular-select">
-											<option value="">select country</option>
-                        			<?php foreach($countries as $country): ?>
+                            	   <select id="billing_country" name="billing_country" class="regular-select">
+										<option value="">select country</option>
+                        				<?php foreach($countries as $country): ?>
 												<option value="<?=$country->code?>" <?=($companyBillingInfo->countryCodeAlpha2==$country->code) ? 'selected':''?>><?=$country->name?></option>
-											<?php endforeach; ?>
-                        		</select>
+										<?php endforeach; ?>
+                        			</select>
                         		</div>
-						    		</td>
-						    		<td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+						    </td>
+						    <td><span id="error_billing_country" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
                         <tr>
                         	<td class="regular-label">Billing ZIP : </td>
                         	<td>
-                           <input value="<?=$companyBillingInfo->postalCode?>" type="text" id="billing_zip" name="billing_zip" class="regular-text ">
-                           </td>
-									<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
+                           		<input value="<?=$companyBillingInfo->postalCode?>" type="text" id="billing_zip" name="billing_zip" class="regular-text ">
+                           	</td>
+							<td><span id="error_billing_zip" class="alert alert-error" style="margin:0;padding:4px;display:none"></span></td>
                         </tr>
-								<tr>
-									<td></td>
+						<tr>
+							<td></td>
                         	<td colspan="4">
-										<strong><a class="gray-btn" id="proceed_btn" href="">Update my billing address</a></strong>                					                        	
+								<strong><a class="gray-btn" id="proceed_btn" href="">Update my billing address</a></strong>                					                        	
                         	</td>
                         </tr>
                     </tbody>
@@ -173,6 +170,7 @@
                 <h4>Any questions? Just <a href="#">contact us</a>, we'll help. <a href="#">36Stories support</a></h4>
                 -->
             </div>
+            	<?php include('settings_change_card_view.php');  ?>
 				<div style="height:300px;" class="block noborder"></div>
 				
 				
