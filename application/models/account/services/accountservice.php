@@ -57,7 +57,10 @@ public function update_plan($planId){
 			return true; 
 		}
 	}
-	
+public function update_billing_info($input){
+	return $this->S36Braintree->update_billing_info($input);
+}
+
 public function update_credit_card($data){
 	$card_number 	= 	$data['billing_card_number'];
 	$card_cvv 		= 	$data['billing_card_cvv'];

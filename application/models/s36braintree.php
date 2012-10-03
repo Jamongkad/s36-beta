@@ -361,33 +361,35 @@
 
 
         // update credit card info.
-        public function update_credit_card($number, $cvv, $exp_month, $exp_year){
+        public function update_billing_info($input){
             
             // say something if company doesn't exist.
             if( ! $this->exists() ) return $this->get_existence_result();
-
 
             self::set_keys();
             $result_arr = array('success' => true, 'message' => array());
             $result = \Braintree_CreditCard::update(
                 $this->token,
                 array(
-                    'number' 				=> $number,
-                    'cvv'					 => $cvv,
-                    'expirationMonth'	=> $exp_month,
-                    'expirationYear' 	=> $exp_year,
+                    'number' 			=> $input['billing_card_number'],
+                    'cvv'				=> $input['billing_card_cvv'],
+                    'expirationMonth'	=> $input['billing_expire_month'],
+                    'expirationYear' 	=> $input['billing_expire_year'],
                     'billingAddress' 	=> array(
-                        'firstName' 	=> $this->billing_info->firstName,
-                        'lastName' 		=> $this->billing_info->lastName,
-                        'streetAddress'=> $this->billing_info->streetAddress,
-                        'locality' 		=> $this->billing_info->locality,
-                        'region' 		=> $this->billing_info->region,
-                        'countryName' 	=> $this->billing_info->countryName,
-                        'postalCode' 	=> $this->billing_info->postalCode
+                        'firstName' 	=> $input['billing_first_name'],
+                        'lastName' 		=> $input['billing_last_name'],
+                        'streetAddress' => $input['billing_address'],
+                        'locality' 		=> $input['billing_city'],
+                        'region' 		=> $input['billing_state'],
+                        'countryName' 	=> $input['billing_country'],
+                        'postalCode' 	=> $input['billing_zip'],
+                        'options'       => array(
+                                            'updateExisting' => true
+                                        )
                    		 ),
-						  'options' => array(
-							      'makeDefault' 	=> true,
-							      'verifyCard'	=> true
+					'options' => array(
+						     'makeDefault' 	    => true,
+						     'verifyCard'	    => true
 							)
                 )
             );
@@ -410,13 +412,13 @@
 		public function update_billing_address($input){
 			
 			$result = Braintree_Address::update($this->billing_info->customerId,$this->billing_info->id, array(
-						 'firstName'    		=> $input['billing_first_name'],
+				    'firstName'    		=> $input['billing_first_name'],
 	                'lastName'     		=> $input['billing_last_name'],
 	                'streetAddress'		=> $input['billing_address'],
-	                'locality'      		=> $input['billing_city'],
-	                'region'        		=> $input['billing_state'],
-	                'countryName'   		=> $input['billing_country'],
-	                'postalCode'    		=> $input['billing_zip']
+	                'locality'      	=> $input['billing_city'],
+	                'region'        	=> $input['billing_state'],
+	                'countryName'   	=> $input['billing_country'],
+	                'postalCode'    	=> $input['billing_zip']
 						));
 			if( ! $result->success ){
                 $result_arr['success'] = $result->success;
