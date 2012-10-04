@@ -33,9 +33,9 @@ angular.module('Services', [])
             e.preventDefault();
 
         }).hover(function() {
-            console.log($(this));
+            $(this).parents('li').siblings('div.edit-controls').show();
         }, function()  { 
-            console.log($(this));
+            $(this).parents('li').siblings('div.edit-controls').hide();
         });
     }
 
