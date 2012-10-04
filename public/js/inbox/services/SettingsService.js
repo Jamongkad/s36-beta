@@ -24,9 +24,13 @@ angular.module('Services', [])
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
                    + "<li style='width: 150px;'>"
                    + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
-                   + "<div id='${id}' class='msg-reply-text'>"
-                   + "<textarea name='msg' class='regular-text' rows='6'>${text}</textarea>"
-                   + "</div>"
+                       + "<div id='${id}' class='msg-reply-text'>"
+                           + "<input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
+                               + "<div class='add-msg-box-buttons'>"
+                                   + "<input type='button' class='small-btn' value='Cancel' cancel-add/>"
+                                   + "<input type='submit' class='small-btn' value='Add Item' add-item/>"
+                               + "</div>"
+                       + "</div>"
                    + "</li>"; 
         
         $.template("li_template", markup);
