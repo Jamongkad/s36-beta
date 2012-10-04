@@ -117,10 +117,17 @@ angular.module('reply', [])
         }
     }    
 })
-
-function ReplyConfigure($scope) {
-    $scope.name = "Add Mathew Item";
-}
+.directive('addItem', function() { 
+    return {
+        require: '^replyConfigure'   
+      , restrict: 'A'
+      , link: function(scope, element, attr, ctrl) {
+            element.bind("click", function(e) {
+                console.log($("form", ctrl.me()));    
+            })
+        }
+    }    
+})
 
 //dialog form init
 $('.dialog-form').dialog({

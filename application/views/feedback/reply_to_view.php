@@ -94,7 +94,7 @@
                             <input type="text" class="regular-text" name="msg" value="" /><br/>
                             <div class="add-msg-box-buttons">
                                 <input type="button" class="small-btn" value="Cancel" cancel-add/>
-                                <input type="submit" class="small-btn" value="Add Item" />
+                                <input type="submit" class="small-btn" value="Add Item" add-item/>
                             </div>
                         <?=Form::close()?>
                     </div>
