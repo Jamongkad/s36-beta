@@ -29,6 +29,7 @@
 
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
+<?=HTML::script('js/inbox/controllers/msgsel.js')?>
 
 
 <?=HTML::script('js/inbox/S36InboxModule.js')?>
