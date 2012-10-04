@@ -23,7 +23,7 @@ angular.module('Services', [])
         var markup = "<div class='edit-controls'><a id='${id}' class='edit-reply-msg' href='#'>edit</a>"
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
                    + "<li style='width: 150px;'>"
-                   + "<a id='${id}' text='${text}' href='#'>${short_text}</a>"
+                   + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
                    + "<input id='${id}' class='msg-reply-text' type='text' name='msg' value='${text}' style='display:none'/>"
                    + "</li>"; 
         
@@ -41,7 +41,8 @@ angular.module('Services', [])
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             console.log($(this));
             var id = $(this).attr('id');
-            $("#"++"input")
+            $("#"+id+".msg-reply-text").show();
+            $("#"+id+".msg-reply-link").hide();
             e.preventDefault();
         })
 
