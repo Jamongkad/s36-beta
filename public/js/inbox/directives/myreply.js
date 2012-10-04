@@ -2,7 +2,7 @@ angular.module('reply', [])
 
 .directive('myReply', function() { 
     return {
-      , restrict: 'A'       
+        restrict: 'A'       
       , link: function(scope, element, attrs, ctrl) {
             $(element).bind('click', function(e) { 
 
