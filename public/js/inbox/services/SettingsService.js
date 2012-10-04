@@ -25,7 +25,7 @@ angular.module('Services', [])
                    + "<li style='width: 150px;'>"
                    + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
                    + "<div id='${id}' class='msg-reply-text'>"
-                   + "<input type='text' name='msg' value='${text}'/>"
+                   + "<textarea name='msg' class='regular-text' rows='6'>${text}<textarea>"
                    + "</div>"
                    + "</li>"; 
         
