@@ -120,6 +120,8 @@ angular.module('reply', [])
       , link: function(scope, element, attr, ctrl) {
             element.bind("click", function(e) {
                 var text = $("input.regular-text", ctrl.me());
+                console.log(text.val().length);
+                /*
                 if(text.val().length < 0) {
                     alert("This field cannot be blank.");
                 } else { 
@@ -132,6 +134,7 @@ angular.module('reply', [])
                         }
                     });
                 }
+                */
             })
         }
     }    
