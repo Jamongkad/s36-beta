@@ -36,7 +36,7 @@ angular.module('Services', [])
 
         });
 
-
+        console.log($("a#msg-"+feedid+".edit-reply-msg"));
         $("a#msg-"+feedid+".edit-reply-msg").bind("click", function(e) {
             console.log($(this));
             e.preventDefault();
