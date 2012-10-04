@@ -13,10 +13,13 @@ angular.module('reply', [])
                 MessageService.render_message(feedid);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 */
+                $('.dialog-form').load('/message/pwet');
+                $('.dialog-form').dialog('open');
                 e.preventDefault();
             });
         }
     } 
+
 })
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
