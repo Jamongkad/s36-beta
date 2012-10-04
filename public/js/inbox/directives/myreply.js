@@ -146,7 +146,7 @@ $('.dialog-form').dialog({
     }
 });
 
-$('.reply-configure').dialog({
+$('.reply-configure, .msg-reply-text').dialog({
     autoOpen: false  
   , height: 110
   , width: 200
