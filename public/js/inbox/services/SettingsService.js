@@ -32,10 +32,6 @@ angular.module('Services', [])
             textarea.val(quickmessage); 
             e.preventDefault();
 
-        }).hover(function() {
-            $(this).parents('li').siblings('div.edit-controls').show();
-        }, function()  { 
-            $(this).parents('li').siblings('div.edit-controls').hide();
         });
     }
 
