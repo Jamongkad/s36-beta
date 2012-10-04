@@ -22,7 +22,7 @@ angular.module('Services', [])
 
         var markup = "<div class='edit-controls'><a id='${id}' class='edit-reply-msg' href='#'>edit</a>"
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
-                   + "<li><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
+                   + "<li style='width: 100px;'><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
         
         $.template("li_template", markup);
         $.tmpl("li_template", shared_service.message).appendTo(msgsel.empty());
