@@ -92,7 +92,6 @@ angular.module('reply', [])
 .directive('replyConfigure', function() { 
     return {
         restrict: 'C'     
-      , scope: {}
       , controller: function($scope, $element, $rootScope) {
             $scope.name = "Add Message Item"; 
         }
@@ -104,7 +103,7 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, replyConfigureCtrl) {
             console.log(element);
-            console.log(replyConfigureCtrl);
+            console.log(replyConfigureCtrl.name);
         }
     }    
 })
