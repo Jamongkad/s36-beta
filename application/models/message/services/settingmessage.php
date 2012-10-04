@@ -42,7 +42,7 @@ class SettingMessage {
     public function get_messages() { 
 
         $tree = Array();
-
+        /*
         foreach($this->redis->hkeys($this->hash_nm) as $val) {
             $leaf = new StdClass;
             $text = $this->redis->hget($this->hash_nm, $val);
@@ -52,6 +52,8 @@ class SettingMessage {
             $leaf->id   = $val;
             $tree[] = $leaf;
         }
+        */
+        $tree = $this->redis->hgetall($this->hash_nm);
         $this->result = $tree;
     }
 
