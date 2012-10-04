@@ -31,10 +31,11 @@ angular.module('Services', [])
 
             textarea.val(quickmessage); 
             e.preventDefault();
+
         }).hover(function() {
-            console.log("Mathew");
+            console.log($(this));
         }, function()  { 
-            console.log("Mathew");
+            console.log($(this));
         });
     }
 
