@@ -1,5 +1,5 @@
 angular.module('reply', [])
-.directive('myReply', function(MessageService) {
+.directive('myReply', function(MessageService, MsgSel) {
     
     return {
         restrict: 'A'       
