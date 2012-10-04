@@ -86,7 +86,7 @@
                     <ul class="msg-sel" id="<?=$feedback->id?>">
                     </ul> 
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
-                        <?=HTML::link('settings', '(add template reply)')?>
+                        <?=HTML::link('settings', '(add message)')?>
                     </div>
                 </td>
                 <td> 

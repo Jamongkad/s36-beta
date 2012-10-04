@@ -119,7 +119,14 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
             element.bind("click", function(e) {
-                console.log(ctrl.me());    
+                var text = $("input.regular-text", ctrl.me());
+                $.ajax({
+                    url: "message/save_msg" 
+                  , data: {type: "msg", msg: text.val()}
+                  , success: function(data) {
+                        console.log(data);
+                    }
+                })
             })
         }
     }    
