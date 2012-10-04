@@ -91,8 +91,9 @@ angular.module('reply', [])
 })
 .directive('replyConfigure', function() { 
     return {
-        controller: function($scope, $element, $rootScope) {
-            $scope.name = "Add Message Item"; 
+        restrict: 'C'     
+      , controller: function($scope, $element, $rootScope) {
+            this.name = "Add Message Item"; 
         }
     }   
 })
