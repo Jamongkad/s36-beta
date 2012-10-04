@@ -97,11 +97,18 @@ angular.module('reply', [])
       , controller: function($scope, $element, $rootScope) {
             $scope.name = "Add Message Item"; 
         }
+    }   
+})
+.directive('cancelAdd', function() { 
+    return {
+        require: '^replyConfigure'   
+      , restrict: 'A'
+      , transclude: true
       , link: function(scope, element, attr, tabsCtrl) {
             console.log(element);
             console.log(tabsCtrl);
         }
-    }   
+    }    
 })
 
 function ReplyConfigure($scope) {

@@ -88,12 +88,12 @@
                     </div>
                 </td>
                 <td> 
-                    <div ng-controller="ReplyConfigure" class="reply-configure" id="<?=$feedback->id?>"> 
+                    <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h4>{{name}}</h4>
                         <?=Form::open('feedback/add_msg', 'POST')?>
                             <input type="text" class="regular-text" name="msg" value="" /><br/>
                             <div class="add-msg-box-buttons">
-                                <input type="button" class="small-btn" value="Cancel" />
+                                <input type="button" class="small-btn" value="Cancel" cancel-add/>
                                 <input type="submit" class="small-btn" value="Add Item" />
                             </div>
                         <?=Form::close()?>
