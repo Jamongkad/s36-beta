@@ -90,7 +90,7 @@
                     </div>
                 </td>
                 <td> 
-                    <div class="reply-configure" id="<?=$feedback->id?>"> 
+                    <div class="reply-configure" id="<?=$feedback->id?>" style="display:none"> 
                         <h4>{{name}}</h4>
                         <input type="text" class="regular-text" name="msg" value="" /><br/>
                         <div class="add-msg-box-buttons">
