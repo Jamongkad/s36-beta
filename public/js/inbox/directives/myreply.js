@@ -1,5 +1,5 @@
 angular.module('reply', [])
-.directive('myReply', function(MessageService, ReplyCtrl) {
+.directive('myReply', function(MessageService) {
     
     return {
         restrict: 'A'       
@@ -9,7 +9,7 @@ angular.module('reply', [])
                 console.log(MsgSel);
 
                 var feedid = $(this).attr('feedid'); 
-                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msg-sel')
+                var msgsel = $('ul.msg-sel[id='+feedid+']')
                 var type = "msg";//"rqs"; 
 
                 MessageService.get_messages(type);
@@ -126,10 +126,6 @@ angular.module('reply', [])
         }
     }    
 })
-
-function MsgSel($scope) {
-    $scope.name = "Irene";
-}
 
 //dialog form init
 $('.dialog-form').dialog({
