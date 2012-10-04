@@ -93,7 +93,7 @@ angular.module('reply', [])
     return {
         restrict: 'C'     
       , controller: function($scope) {
-            $scope.name = "Mathew Wong"; 
+            $scope.name = "Add Message Item"; 
         }
       , link: function(scope, element, attr) {
             console.log(element);
