@@ -1,7 +1,6 @@
 <?php
 
 use Message\Services;
-use Feedback\Repositories;
 
 return array(
     'POST /message/save_msg' => function() {
@@ -36,7 +35,7 @@ return array(
         $reply_message = json_decode($sm->jsonify());
         $admin_check = S36Auth::user();
 
-        $fb = new DBFeedback;
+        $fb = new Feedback\Repositories\DBFeedback;
         $feed = $fb->pull_feedback_by_id($feedid);
  
         $str = '';
