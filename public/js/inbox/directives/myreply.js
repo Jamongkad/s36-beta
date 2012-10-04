@@ -107,8 +107,10 @@ angular.module('reply', [])
         require: '^replyConfigure'   
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
+            var text = $("input.regular-text", ctrl.me());
             element.bind("click", function(e) {
                 ctrl.me().dialog("close");                    
+                text.val("");
             })
         }
     }    
@@ -135,22 +137,8 @@ angular.module('reply', [])
                             ctrl.me().dialog("close");                    
                             
                             var feedid = ctrl.me().attr('id');
-                            var msgsel = $('ul.msg-sel[id='+feedid+']')
-
                             MessageService.get_messages("msg");
-                            var mes = MessageService.message;
-
-                            var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
-                            $.template("li_template", markup);
-                            $.tmpl("li_template", mes).appendTo(msgsel.empty());
-
-                            msgsel.children('li[id]').bind('click', function(e) {
-                                var quickmessage = $(this).attr('text');
-                                var textarea = $(this).parents('td').prev('td').children('textarea');
-
-                                textarea.val(quickmessage); 
-                                e.preventDefault();
-                            });
+                            MessageService.render_message(feedid);
                         }
                     });
                 }
