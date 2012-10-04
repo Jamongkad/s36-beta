@@ -5,7 +5,7 @@ angular.module('reply', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-
+                /*
                 var feedid = $(this).attr('feedid'); 
                 var msgsel = $('ul.msg-sel[id='+feedid+']')
                 var type = "msg";//"rqs"; 
@@ -14,6 +14,7 @@ angular.module('reply', [])
                 MessageService.render_message(feedid);
 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
+                */
 
                 e.preventDefault();
             });
