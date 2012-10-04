@@ -33,19 +33,18 @@ angular.module('Services', [])
 
             textarea.val(quickmessage); 
             e.preventDefault();
-
         });
 
-        console.log("a#msg-"+feedid+".edit-reply-msg");
-        $("a#msg-"+feedid+".edit-reply-msg").bind("click", function(e) {
+        msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             console.log($(this));
             e.preventDefault();
-        });
+        })
 
-        $("a#msg-"+feedid+".del-reply-msg").bind("click", function(e) { 
+        msgsel.children('div.edit-controls').children('a.del-reply-msg').bind('click', function(e) {
             console.log($(this));
             e.preventDefault();
-        });
+        })
+ 
     }
 
     return shared_service;
