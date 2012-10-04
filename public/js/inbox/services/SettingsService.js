@@ -48,7 +48,12 @@ angular.module('Services', [])
             var msg_reply_text = $("#"+id+".msg-reply-text");
 
             msg_reply_text.dialog('open');
-            console.log(msg_reply_text.children('input'));
+
+            msg_reply_text.children('div.add-msg-box-buttons').children('input[type=button]').on('click', function(e)  {    
+                msg_reply_text.dialog('close');
+                e.preventDefault();
+            })
+           
             
             e.preventDefault();
         })
