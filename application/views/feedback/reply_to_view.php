@@ -19,7 +19,9 @@
             <tr>
                 <td><strong>Reply To :</strong></td>
                 <td class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
-                <td class="small">Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)</td>
+                <td class="small">
+                    Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
+                </td>
             </tr>
             <tr>
                 <td><strong>To :</strong> </td>
