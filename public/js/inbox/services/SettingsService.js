@@ -53,7 +53,6 @@ angular.module('Services', [])
                 msg_reply_text.dialog('close');
                 e.preventDefault();
             })
-           
             
             e.preventDefault();
         })
