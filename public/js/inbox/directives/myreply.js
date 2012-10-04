@@ -102,9 +102,9 @@ angular.module('reply', [])
     return {
         require: '^replyConfigure'   
       , restrict: 'A'
-      , link: function(scope, element, attr, tabsCtrl) {
+      , link: function(scope, element, attr, replyConfigureCtrl) {
             console.log(element);
-            console.log(tabsCtrl);
+            console.log(replyConfigureCtrl);
         }
     }    
 })
