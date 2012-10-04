@@ -126,6 +126,7 @@ angular.module('reply', [])
                 } else { 
                     $.ajax({
                         url: "/message/save_msg" 
+                      , dataType: "JSON"
                       , type: "POST"  
                       , data: {"type": "msg", "msg": text.val()}
                       , success: function(data) {
