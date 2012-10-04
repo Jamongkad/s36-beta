@@ -122,7 +122,8 @@ angular.module('reply', [])
                 var text = $("input.regular-text", ctrl.me());
                 $.ajax({
                     url: "/message/save_msg" 
-                  , data: {type: "msg", msg: text.val()}
+                  , type: "POST"  
+                  , data: {"type": "msg", "msg": text.val()}
                   , success: function(data) {
                         console.log(data);
                     }
