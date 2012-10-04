@@ -53,6 +53,12 @@ angular.module('Services', [])
             e.preventDefault();
         })
  
+        $('.msg-reply-text').dialog({
+            autoOpen: false  
+          , height: 110
+          , width: 200
+          , modal: true
+        });
     }
 
     return shared_service;
