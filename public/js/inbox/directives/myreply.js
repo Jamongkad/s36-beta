@@ -101,6 +101,7 @@ angular.module('reply', [])
 })
 .directive('cancelAdd', function() { 
     return {
+        require: '^replyConfigure'   
       , restrict: 'A'
       , link: function(scope, element, attr, tabsCtrl) {
             console.log(element);
