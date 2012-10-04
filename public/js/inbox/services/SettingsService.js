@@ -40,7 +40,7 @@ angular.module('Services', [])
 
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             console.log($(this));
-            $(this).
+            console.log($(this).attr('id'));
             e.preventDefault();
         })
 
