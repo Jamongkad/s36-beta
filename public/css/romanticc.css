@@ -615,7 +615,7 @@ ul.msg-sel {margin-left:-20px;padding:0;list-style:none;line-height:1.3em;margin
 ul.msg-sel li a{color:#6e7e8e;text-decoration:underline}
 ul.msg-sel li a:hover{color:#3a4c5a;text-decoration:underline}
 
-ul.msg-sel div.edit-controls {float: right;}
+ul.msg-sel div.edit-controls {float: right;display:block}
 ul.msg-sel div.edit-controls a.edit-reply-msg {color:#6e7e8e;text-decoration:underline;cursor:pointer}
 ul.msg-sel div.edit-controls a.del-reply-msg {color:#6e7e8e;text-decoration:underline;cursor:pointer}
 
