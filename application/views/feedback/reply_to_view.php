@@ -91,10 +91,10 @@
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <?=Form::open('feedback/add_msg', 'POST')?>
                             <input type="text" class="regular-text" name="msg" value="" /><br/>
-                            <div class="reply-box-buttons">
-                                <input type="button" class="large-btn" value="Cancel" />
-                                <input type="submit" class="large-btn" value="Add Item" />
-                            </div>
+
+                            <input type="button" class="small-btn" value="Cancel" />
+                            <input type="submit" class="small-btn" value="Add Item" />
+
                         <?=Form::close()?>
                     </div>
                 </td>
