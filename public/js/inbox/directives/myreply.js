@@ -1,5 +1,5 @@
 angular.module('reply', [])
-.directive('msgsel', function(MessageService) {
+.directive('msgSel', function(MessageService) {
     return {
         restrict: 'C'     
       , controller: function($scope, $element, $rootscope) {
@@ -18,7 +18,7 @@ angular.module('reply', [])
     
     return {
         restrict: 'A'       
-      , require: '^msgsel'
+      , require: '^msgSel'
       , link: function(scope, element, attrs, ctrl) {
             $(element).bind('click', function(e) { 
 
