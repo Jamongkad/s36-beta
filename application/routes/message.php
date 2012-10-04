@@ -20,7 +20,8 @@ return array(
     , 'GET /message/get_msgs' => function() {
         $sm = new Message\Services\SettingMessage(Input::get('type'));       
         $sm->get_messages();
-        Helpers::dump($sm->jsonify());
+        Helpers::dump($sm);
+        //echo $sm->jsonify();
     }
 
     , 'POST /message/delete_msg' => function() {
