@@ -83,7 +83,6 @@
                 <td>   
                     <ul class="msgsel">
                     </ul> 
-                    <input type="text" name="msg_add" value="" class="regular-text" style="width:200px"/>
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
                         <?=HTML::link('settings', '(configure template reply)')?>
                     </div>
@@ -91,13 +90,10 @@
                 <td> 
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h3>{{name}}</h3>
-                        <?if($reply_message):?>
-                            <?foreach($reply_message as $val):?>
-                                <li id="<?=$val->id?>" text="<?=$val->text?>">
-                                    <a href="#"><?=$val->short_text?></a>
-                                </li>
-                            <?endforeach?>
-                        <?endif?>
+                        <?=Form::open('feedback/add_msg', 'POST')?>
+                            <input type="text" class="regular-text" name="msg" value="" /><br/>
+                            <input type="submit" class="large-btn" value="Send" />
+                        <?=Form::close()?>
                     </div>
                 </td>
             </tr>
