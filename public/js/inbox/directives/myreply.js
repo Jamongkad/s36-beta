@@ -7,7 +7,7 @@ angular.module('reply', [])
             $(element).bind('click', function(e) { 
 
                 var feedid = $(this).attr('feedid'); 
-                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel')
+                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msg-sel')
                 var type = "msg";//"rqs"; 
 
                 MessageService.get_messages(type);
