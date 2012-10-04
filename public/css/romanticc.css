@@ -700,3 +700,11 @@ em.error { color: red; }
 .add-msg-box-buttons{float:right;}
 .add-msg-box-buttons .small-btn{padding:2px 4px;background:#b7b7b7;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;font-size:11px;color:#FFF;border:none;cursor:pointer;}
 .add-msg-box-buttons .small-btn:hover{background:#767676;}
+
+.reply-configure h4{
+    padding:15px 30px;
+    background:#efefef;
+    border-bottom:1px solid #e0e0e0;
+    text-align:left;
+    font-size:14px;
+}
