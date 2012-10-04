@@ -24,8 +24,8 @@ angular.module('Services', [])
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
                    + "<li style='width: 150px;'>"
                    + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
-                   + "<div style='width:200px;height:200px;display:block;background-color:#a1a1a1'>"
-                   + "<input id='${id}' class='msg-reply-text' type='text' name='msg' value='${text}' style='display:none'/>"
+                   + "<div id='${id}' class='msg-reply-text'>"
+                   + "<input type='text' name='msg' value='${text}'/>"
                    + "</div>"
                    + "</li>"; 
         
