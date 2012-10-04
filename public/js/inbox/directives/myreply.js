@@ -92,7 +92,6 @@ angular.module('reply', [])
 .directive('replyConfigure', function() { 
     return {
         restrict: 'C'     
-      , transclude: true
       , scope: {}
       , controller: function($scope, $element, $rootScope) {
             $scope.name = "Add Message Item"; 
@@ -103,7 +102,6 @@ angular.module('reply', [])
     return {
         require: '^replyConfigure'   
       , restrict: 'A'
-      , transclude: true
       , link: function(scope, element, attr, tabsCtrl) {
             console.log(element);
             console.log(tabsCtrl);
