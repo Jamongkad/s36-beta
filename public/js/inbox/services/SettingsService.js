@@ -24,7 +24,7 @@ angular.module('Services', [])
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
                    + "<li style='width: 150px;'>"
                    + "<a id='${id}' text='${text}' href='#'>${short_text}</a>"
-                   + "<input id='${id} 'type='text' name='msg' value='${text}' style='display:none'/>"
+                   + "<input id='${id}' class='msg-reply-text' type='text' name='msg' value='${text}' style='display:none'/>"
                    + "</li>"; 
         
         $.template("li_template", markup);
@@ -40,7 +40,8 @@ angular.module('Services', [])
 
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             console.log($(this));
-            console.log($(this).attr('id'));
+            var id = $(this).attr('id');
+            $("#"++"input")
             e.preventDefault();
         })
 
