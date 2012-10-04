@@ -18,18 +18,18 @@ angular.module('Services', [])
     }
 
     shared_service.render_message = function(feedid) { 
-        var msgsel = $('ul.msg-sel[id='+feedid+']')
 
+        var msgsel = $('ul.msg-sel[id='+feedid+']')
         var markup = "<div class='edit-controls'><a id='${id}' class='edit-reply-msg' href='#'>edit</a>"
                    + "&nbsp;&nbsp;<a id='${id}' class='del-reply-msg' href='#'>del</a></div>"
                    + "<li style='width: 150px;'>"
-                   + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
+                       + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
                        + "<div id='${id}' class='msg-reply-text'>"
                            + "<h4>Edit</h4><input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
-                               + "<div class='add-msg-box-buttons'>"
-                                + "<input type='button' class='small-btn' value='Cancel' />&nbsp;&nbsp;"
-                                + "<input type='submit' class='small-btn' value='Add Item' />"
-                               + "</div>"
+                           + "<div class='add-msg-box-buttons'>"
+                              + "<input type='button' class='small-btn' value='Cancel' />&nbsp;"
+                              + "<input type='submit' class='small-btn' value='Add Item' />"
+                           + "</div>"
                        + "</div>"
                    + "</li>"; 
         
@@ -39,13 +39,11 @@ angular.module('Services', [])
         msgsel.children('li').children('a[id]').bind('click', function(e) {
             var quickmessage = $(this).attr('text');
             var textarea = $(this).parents('td').prev('td').children('textarea');
-
             textarea.val(quickmessage); 
             e.preventDefault();
         });
 
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
-            console.log($(this));
             var id = $(this).attr('id');
             $("#"+id+".msg-reply-text").dialog('open');
             e.preventDefault();
@@ -55,7 +53,8 @@ angular.module('Services', [])
             console.log($(this));
             e.preventDefault();
         })
- 
+        
+        //initialize dialog fuck this is durty
         $('.msg-reply-text').dialog({
             autoOpen: false  
           , height: 110

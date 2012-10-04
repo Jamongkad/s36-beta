@@ -10,7 +10,8 @@
                 <?foreach($feeds->children->result as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?>
-
+                   
+                    <!--Try looking up documentation for jqueryui for modal ajaxifying-->
                     <div class="dialog-form" feedid="<?=$id?>"> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form', 'ng-controller' => 'ReplyCtrl'))?>
                             <?=View::make('feedback/reply_to_view', array(

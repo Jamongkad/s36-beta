@@ -19,7 +19,6 @@ angular.module('reply', [])
             });
         }
     } 
-
 })
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
