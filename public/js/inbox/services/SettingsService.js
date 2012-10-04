@@ -24,7 +24,7 @@ angular.module('Services', [])
         $.template("li_template", markup);
         $.tmpl("li_template", shared_service.message).appendTo(msgsel.empty());
 
-        msgsel.children('li a[id]').bind('click', function(e) {
+        msgsel.children('li').children('a[id]').bind('click', function(e) {
             var quickmessage = $(this).attr('text');
             var textarea = $(this).parents('td').prev('td').children('textarea');
 
