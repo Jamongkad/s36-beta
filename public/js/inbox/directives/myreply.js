@@ -137,7 +137,7 @@ angular.module('reply', [])
                             var feedid = ctrl.me().attr('id');
                             var msgsel = $('ul.msg-sel[id='+feedid+']')
 
-                            MessageService.get_messages(type);
+                            MessageService.get_messages("msg");
                             var mes = MessageService.message;
 
                             var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
