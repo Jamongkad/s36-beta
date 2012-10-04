@@ -93,7 +93,12 @@ angular.module('reply', [])
     return {
         restrict: 'C'     
       , controller: function($scope, $element, $rootScope) {
-            $scope.name = "Add Message Item Chikka Sicane"; 
+
+            $scope.name = "Add Message Item"; 
+
+            this.me = function() {
+                return $element;     
+            }
 
             this.show_name = function() {
                 return $scope.name;     
@@ -107,7 +112,7 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
             console.log(element);
-            console.log(ctrl.show_name());
+            console.log(ctrl.me());
         }
     }    
 })
