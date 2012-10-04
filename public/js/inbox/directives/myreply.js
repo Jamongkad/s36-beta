@@ -123,7 +123,7 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
             element.bind("click", function(e) {
-                console.log($("form", ctrl.me()));    
+                console.log($(ctrl.me()));    
             })
         }
     }    
