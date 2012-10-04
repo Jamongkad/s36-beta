@@ -19,7 +19,7 @@ angular.module('Services', [])
 
     shared_service.render_message = function(feedid) { 
         var msgsel = $('ul.msg-sel[id='+feedid+']')
-        var markup = "<div style='float: right'><a href='#'>edit</a></div>"
+        var markup = "<div class='edit-controls'><a href='#'>edit</a></div>"
                    + "<li><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
         $.template("li_template", markup);
         $.tmpl("li_template", shared_service.message).appendTo(msgsel.empty());
