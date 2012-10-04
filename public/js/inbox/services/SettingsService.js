@@ -33,6 +33,16 @@ angular.module('Services', [])
             e.preventDefault();
 
         });
+
+        $("a.edit-reply-msg[id="+feedid+"]").bind("click", function(e) {
+            console.log($(this));
+            e.preventDefault();
+        });
+
+        $("a.del-reply-msg[id="+feedid+"]").bind("click", function(e) { 
+            console.log($(this));
+            e.preventDefault();
+        });
     }
 
     return shared_service;
