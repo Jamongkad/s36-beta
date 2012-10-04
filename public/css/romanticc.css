@@ -623,7 +623,7 @@ ul.msg-sel div.edit-controls a.edit-reply-msg:hover {color:#3a4c5a;text-decorati
 ul.msg-sel div.edit-controls a.del-reply-msg:hover {color:#3a4c5a;text-decoration:underline;cursor:pointer}
 
 .msg-reply-text { 
-    display:none;width:200px;height:200px;background-color:#a1a1a1
+    display:none;width:145px;
 }
 
 ul.custom-message {padding:0;list-style:none;line-height:1.3em;margin-top:-30px}
