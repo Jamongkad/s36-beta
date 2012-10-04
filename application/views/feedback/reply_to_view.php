@@ -88,7 +88,7 @@
                     </div>
                 </td>
                 <td> 
-                    <div class="reply-configure" id="<?=$feedback->id?>"> 
+                    <div class="reply-configure" id="<?=$feedback->id?>" ng-transclude> 
                         <h4>{{name}}</h4>
                         <?=Form::open('feedback/add_msg', 'POST')?>
                             <input type="text" class="regular-text" name="msg" value="" /><br/>
