@@ -702,7 +702,7 @@ em.error { color: red; }
 .add-msg-box-buttons .small-btn:hover{background:#767676;}
 
 .reply-configure h4{
-    padding:15px 30px;
+    padding:5px 20px;
     background:#efefef;
     border-bottom:1px solid #e0e0e0;
     text-align:left;
