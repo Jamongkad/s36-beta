@@ -84,6 +84,7 @@
 
                 <td>   
                     <ul ng-controller="MsgSel" class="msg-sel" id="<?=$feedback->id?>">
+                        {{name}}
                     </ul> 
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
                         <?=HTML::link('settings', '(add template reply message)')?>
