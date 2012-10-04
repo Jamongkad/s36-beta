@@ -1,10 +1,12 @@
 angular.module('reply', [])
-.directive('myReply', function(MessageService) {
+.directive('myReply', function(MessageService, MsgSel) {
     
     return {
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
+
+                console.log(MsgSel);
 
                 var feedid = $(this).attr('feedid'); 
                 var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msg-sel')
@@ -124,6 +126,10 @@ angular.module('reply', [])
         }
     }    
 })
+
+function MsgSel($scope) {
+    $scope.name = "Irene";
+}
 
 //dialog form init
 $('.dialog-form').dialog({
