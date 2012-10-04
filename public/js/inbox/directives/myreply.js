@@ -1,34 +1,17 @@
 angular.module('reply', [])
-.directive('msgSel', function() {
-    return {
-        restrict: 'C'     
-      , controller: function($scope, $element, $rootscope) {
-            $scope.msgs;
 
-            this.render_msg = function() { 
-                /*
-                MessageService.get_messages(type);
-                var mes = MessageService.message;
-                return mes;
-                */
-            }
-        }
-    }    
-})
 .directive('myReply', function() { 
     return {
-        require: '^msgSel'
       , restrict: 'A'       
       , link: function(scope, element, attrs, ctrl) {
             $(element).bind('click', function(e) { 
 
                 var feedid = $(this).attr('feedid'); 
-                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msgsel')
+                var msgsel = $('.dialog-form[feedid='+feedid+'] form div.reply-box-form table td ul.msg-sel')
                 var type = "msg";//"rqs"; 
                                  
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-                console.log(ctrl.render_msg());
-                /*
+
                 MessageService.get_messages(type);
                 var mes = MessageService.message;
 
@@ -43,7 +26,7 @@ angular.module('reply', [])
                     textarea.val(quickmessage); 
                     e.preventDefault();
                 });
-                */
+
                 e.preventDefault();
             });
         }
