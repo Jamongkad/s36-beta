@@ -1,26 +1,25 @@
 angular.module('reply', [])
-/*
-.directive('msgSel', function(MessageService) {
+.directive('msgSel', function() {
     return {
         restrict: 'C'     
       , controller: function($scope, $element, $rootscope) {
-
             $scope.msgs;
 
             this.render_msg = function() { 
+                /*
                 MessageService.get_messages(type);
                 var mes = MessageService.message;
                 return mes;
+                */
             }
         }
     }    
 })
-*/
-.directive('myReply', function(MsgSel) {
-    
+.directive('myReply', function() { 
     return {
-        restrict: 'A'        
-      , link: function(scope, element, attrs) {
+        require: '^msgSel'
+      , restrict: 'A'       
+      , link: function(scope, element, attrs, ctrl) {
             $(element).bind('click', function(e) { 
 
                 var feedid = $(this).attr('feedid'); 
@@ -28,7 +27,7 @@ angular.module('reply', [])
                 var type = "msg";//"rqs"; 
                                  
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-                console.log(MsgSel.render_msg());
+                console.log(ctrl.render_msg());
                 /*
                 MessageService.get_messages(type);
                 var mes = MessageService.message;
@@ -142,17 +141,6 @@ angular.module('reply', [])
         }
     }    
 })
-
-function MsgSel($scope, MessageService) {
-
-    $scope.msgs;
-
-    this.render_msg = function() { 
-        MessageService.get_messages(type);
-        var mes = MessageService.message;
-        return mes;
-    } 
-}
 
 //dialog form init
 $('.dialog-form').dialog({
