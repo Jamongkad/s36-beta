@@ -88,7 +88,7 @@
                     </div>
                 </td>
                 <td> 
-                    <div class="reply-configure" id="<?=$feedback->id?>"> 
+                    <div ng-controller="ReplyConfigure" class="reply-configure" id="<?=$feedback->id?>"> 
                         <h4>{{name}}</h4>
                         <?=Form::open('feedback/add_msg', 'POST')?>
                             <input type="text" class="regular-text" name="msg" value="" /><br/>

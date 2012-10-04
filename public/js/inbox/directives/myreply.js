@@ -92,14 +92,21 @@ angular.module('reply', [])
 .directive('replyConfigure', function() { 
     return {
         restrict: 'C'     
-      , controller: function($scope) {
+      , transclude: true
+      , scope: {}
+      , controller: function($scope, $element, $rootScope) {
             $scope.name = "Add Message Item"; 
         }
-      , link: function(scope, element, attr) {
+      , link: function(scope, element, attr, tabsCtrl) {
             console.log(element);
+            console.log(tabsCtrl);
         }
     }   
 })
+
+function ReplyConfigure($scope) {
+    $scope.name = "Add Mathew Item";
+}
 
 //dialog form init
 $('.dialog-form').dialog({
