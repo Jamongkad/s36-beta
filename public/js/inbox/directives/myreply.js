@@ -112,7 +112,7 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
             console.log(element);
-            console.log(ctrl.me());
+            ctrl.me().dialog("close");
         }
     }    
 })
