@@ -6,8 +6,6 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
 
-                console.log(MsgSel);
-
                 var feedid = $(this).attr('feedid'); 
                 var msgsel = $('ul.msg-sel[id='+feedid+']')
                 var type = "msg";//"rqs"; 
