@@ -113,7 +113,7 @@ angular.module('reply', [])
         }
     }    
 })
-.directive('addItem', function() { 
+.directive('addItem', function(MessageService) { 
     return {
         require: '^replyConfigure'   
       , restrict: 'A'
@@ -130,6 +130,7 @@ angular.module('reply', [])
                       , type: "POST"  
                       , data: {"type": "msg", "msg": text.val()}
                       , success: function(data) {
+
                             text.val("");
                             ctrl.me().dialog("close");                    
                             
