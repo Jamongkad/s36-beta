@@ -19,7 +19,8 @@ angular.module('Services', [])
 
     shared_service.render_message = function(feedid) { 
         var msgsel = $('ul.msg-sel[id='+feedid+']')
-        var markup = "<div class='edit-controls'><a class='edit-reply-msg' href='#'>edit</a></div>"
+        var markup = "<div class='edit-controls'><a class='edit-reply-msg' href='#'>edit</a> 
+                   + "&nbsp;&nbsp;<a class='edit-reply-msg' href='#'>del</a></div>"
                    + "<li><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
         $.template("li_template", markup);
         $.tmpl("li_template", shared_service.message).appendTo(msgsel.empty());
@@ -30,6 +31,10 @@ angular.module('Services', [])
 
             textarea.val(quickmessage); 
             e.preventDefault();
+        }).hover(function() {
+            console.log("Mathew");
+        }, function()  { 
+            console.log("Mathew");
         });
     }
 
