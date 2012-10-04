@@ -25,7 +25,7 @@ angular.module('Services', [])
                    + "<li style='width: 150px;'>"
                    + "<a id='${id}' text='${text}' class='msg-reply-link' href='#'>${short_text}</a>"
                        + "<div id='${id}' class='msg-reply-text'>"
-                           + "<input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
+                           + "<h4>Edit</h4><input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
                                + "<div class='add-msg-box-buttons'>"
                                    + "<input type='button' class='small-btn' value='Cancel' cancel-add/>"
                                    + "<input type='submit' class='small-btn' value='Add Item' add-item/>"
