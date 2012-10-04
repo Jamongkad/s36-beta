@@ -105,9 +105,9 @@ angular.module('reply', [])
     return {
         require: '^replyConfigure'   
       , restrict: 'A'
-      , link: function(scope, element, attr, replyConfigureCtrl) {
+      , link: function(scope, element, attr, ctrl) {
             console.log(element);
-            console.log(replyConfigureCtrl.show_name());
+            console.log(ctrl.show_name());
         }
     }    
 })
