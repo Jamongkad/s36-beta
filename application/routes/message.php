@@ -19,8 +19,8 @@ return array(
 
     , 'GET /message/get_msgs' => function() {
         $sm = new Message\Services\SettingMessage(Input::get('type'));       
-        Helpers::dump($sm->get_messages());
-        //echo $sm->jsonify();
+        $sm->get_messages();
+        Helpers::dump($sm->jsonify());
     }
 
     , 'POST /message/delete_msg' => function() {
