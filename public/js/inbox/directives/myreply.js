@@ -93,7 +93,7 @@ angular.module('reply', [])
     return {
         restrict: 'C'     
       , controller: function($scope, $element, $rootScope) {
-            $scope.name = "Add Message Item"; 
+            $scope.name = "Add Message Item Chikka Sicane"; 
 
             this.show_name = function() {
                 return $scope.name;     
