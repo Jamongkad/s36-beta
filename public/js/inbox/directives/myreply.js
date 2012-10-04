@@ -131,14 +131,6 @@ angular.module('reply', [])
         }
     }    
 })
-.directive('cancelEdit', function()  {
-    return {
-        restrict: 'A'
-      , link: function(scope, element, attr) {
-            console.log(element);
-        }
-    }    
-})
 
 //dialog form init
 $('.dialog-form').dialog({

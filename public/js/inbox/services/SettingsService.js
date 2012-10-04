@@ -27,7 +27,7 @@ angular.module('Services', [])
                        + "<div id='${id}' class='msg-reply-text'>"
                            + "<h4>Edit</h4><input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
                            + "<div class='add-msg-box-buttons'>"
-                              + "<input type='button' class='small-btn' value='Cancel' cancel-edit/>&nbsp;"
+                              + "<input type='button' class='small-btn' value='Cancel'/>&nbsp;"
                               + "<input type='submit' class='small-btn' value='Update' />"
                            + "</div>"
                        + "</div>"
@@ -45,7 +45,11 @@ angular.module('Services', [])
 
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             var id = $(this).attr('id');
-            $("#"+id+".msg-reply-text").dialog('open');
+            var msg_reply_text = $("#"+id+".msg-reply-text");
+
+            msg_reply_text.dialog('open');
+            console.log(msg_reply_text.children('input'));
+            
             e.preventDefault();
         })
 
