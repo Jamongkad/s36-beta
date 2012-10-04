@@ -36,15 +36,13 @@ angular.module('Services', [])
 
         });
 
-        console.log($("a#"+feedid+".edit-reply-msg"));
-        console.log(feedid);
 
-        $("a#"+feedid+".edit-reply-msg").bind("click", function(e) {
+        $("a#msg-"+feedid+".edit-reply-msg").bind("click", function(e) {
             console.log($(this));
             e.preventDefault();
         });
 
-        $("a#"+feedid+".del-reply-msg").bind("click", function(e) { 
+        $("a#msg-"+feedid+".del-reply-msg").bind("click", function(e) { 
             console.log($(this));
             e.preventDefault();
         });
