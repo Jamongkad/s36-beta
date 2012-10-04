@@ -1,10 +1,3 @@
-<script>
-
-function MsgSel($scope) {
-    $scope.name = "Mathew";
-}
-
-</script>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -90,8 +83,7 @@ function MsgSel($scope) {
                 </td>
 
                 <td>   
-                    <ul ng-controller="MsgSel" class="msg-sel" id="<?=$feedback->id?>">
-                        {{name}}
+                    <ul class="msg-sel" id="<?=$feedback->id?>">
                     </ul> 
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
                         <?=HTML::link('settings', '(add template reply message)')?>

@@ -9,15 +9,13 @@
 
                 <?foreach($feeds->children->result as $feed):?>
                     <p></p>
-                    <? $id = $feed->id ?>
-                   
-                    <!--Try looking up documentation for jqueryui for modal ajaxifying-->
+                    <? $id = $feed->id ?> 
                     <div class="dialog-form" feedid="<?=$id?>"> 
-                        <?//=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form', 'ng-controller' => 'ReplyCtrl'))?>
-                            <?/*=View::make('feedback/reply_to_view', array(
+                        <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form', 'ng-controller' => 'ReplyCtrl'))?>
+                            <?=View::make('feedback/reply_to_view', array(
                                    'user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message
-                               ))*/?>
-                        <?//=Form::close()?>
+                               ))?>
+                        <?=Form::close()?>
                     </div>
      
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>

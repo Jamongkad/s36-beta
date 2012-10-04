@@ -6,15 +6,15 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid'); 
-                /*
+
                 var feedid = $(this).attr('feedid');  
                 var type = "msg";//"rqs"; 
                 MessageService.get_messages(type);
                 MessageService.render_message(feedid);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-                */
-                $('.dialog-form').load('/message/reply_view/' + feedid);
-                $('.dialog-form').dialog('open');
+
+                //$('.dialog-form').load('/message/reply_view/' + feedid);
+                //$('.dialog-form').dialog('open');
                 e.preventDefault();
             });
         }
