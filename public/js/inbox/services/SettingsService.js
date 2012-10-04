@@ -19,7 +19,7 @@ angular.module('Services', [])
 
     shared_service.render_message = function(feedid) { 
         var msgsel = $('ul.msg-sel[id='+feedid+']')
-        var markup = "<div class='edit-controls'><a class='edit-reply-msg' href='#'>edit</a> 
+        var markup = "<div class='edit-controls'><a class='edit-reply-msg' href='#'>edit</a>"
                    + "&nbsp;&nbsp;<a class='edit-reply-msg' href='#'>del</a></div>"
                    + "<li><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
         $.template("li_template", markup);
