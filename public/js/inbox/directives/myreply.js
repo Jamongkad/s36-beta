@@ -5,17 +5,14 @@ angular.module('reply', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                /*
                 var feedid = $(this).attr('feedid'); 
-                var msgsel = $('ul.msg-sel[id='+feedid+']')
+                /*
+                var feedid = $(this).attr('feedid');  
                 var type = "msg";//"rqs"; 
-
                 MessageService.get_messages(type);
                 MessageService.render_message(feedid);
-
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 */
-
                 e.preventDefault();
             });
         }
