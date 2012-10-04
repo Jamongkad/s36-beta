@@ -715,3 +715,11 @@ em.error { color: red; }
     text-align:left;
     font-size:11px;
 }
+
+.msg-reply-text h4{
+    padding:5px 20px;
+    background:#efefef;
+    border-bottom:1px solid #e0e0e0;
+    text-align:left;
+    font-size:11px;
+}

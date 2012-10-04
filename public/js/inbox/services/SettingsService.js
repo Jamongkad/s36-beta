@@ -27,8 +27,8 @@ angular.module('Services', [])
                        + "<div id='${id}' class='msg-reply-text'>"
                            + "<h4>Edit</h4><input type='text' class='regular-text' name='msg' value='${text}' /><br/>"
                                + "<div class='add-msg-box-buttons'>"
-                                   + "<input type='button' class='small-btn' value='Cancel' cancel-add/>"
-                                   + "<input type='submit' class='small-btn' value='Add Item' add-item/>"
+                                   + "<input type='button' class='small-btn' value='Cancel' />"
+                                   + "<input type='submit' class='small-btn' value='Add Item' />"
                                + "</div>"
                        + "</div>"
                    + "</li>"; 
