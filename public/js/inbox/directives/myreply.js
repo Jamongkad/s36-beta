@@ -131,6 +131,7 @@ angular.module('reply', [])
                       , data: {"type": "msg", "msg": text.val()}
                       , success: function(data) {
                             console.log(data);
+                            ctrl.me().dialog("close");                    
                         }
                     });
                 }
