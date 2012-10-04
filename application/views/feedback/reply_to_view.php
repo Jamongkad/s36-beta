@@ -83,7 +83,7 @@
                 <td>   
                     <ul class="msgsel">
                     </ul> 
-
+                    <input type="text" name="msg_add" value="" class="regular-text" style="width:200px"/>
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
                         <?=HTML::link('settings', '(configure template reply)')?>
                     </div>
