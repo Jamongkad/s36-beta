@@ -95,6 +95,9 @@ angular.module('reply', [])
       , controller: function($scope) {
             $scope.name = "Mathew Wong"; 
         }
+      , link: function(scope, element, attr) {
+            console.log(element);
+        }
     }   
 })
 
