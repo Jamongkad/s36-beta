@@ -20,11 +20,11 @@ angular.module('Services', [])
     shared_service.render_message = function(feedid) { 
         var msgsel = $('ul.msg-sel[id='+feedid+']')
         var markup = "<div style='float: right'><a href='#'>edit</a></div>"
-                   + "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>"; 
+                   + "<li><a id='${id}' text='${text}' href='#'>${short_text}</a></li>"; 
         $.template("li_template", markup);
         $.tmpl("li_template", shared_service.message).appendTo(msgsel.empty());
 
-        msgsel.children('li[id]').bind('click', function(e) {
+        msgsel.children('li a[id]').bind('click', function(e) {
             var quickmessage = $(this).attr('text');
             var textarea = $(this).parents('td').prev('td').children('textarea');
 
