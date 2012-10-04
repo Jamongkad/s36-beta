@@ -1,6 +1,5 @@
 angular.module('reply', [])
-
-.directive('myReply', function() { 
+.directive('myReply', function(MessageService) { 
     return {
         restrict: 'A'       
       , link: function(scope, element, attrs, ctrl) {
