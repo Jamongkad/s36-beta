@@ -43,8 +43,7 @@ angular.module('Services', [])
         msgsel.children('div.edit-controls').children('a.edit-reply-msg').bind('click', function(e) {
             console.log($(this));
             var id = $(this).attr('id');
-            $("#"+id+".msg-reply-text").show();
-            $("#"+id+".msg-reply-link").hide();
+            $("#"+id+".msg-reply-text").dialog('open');
             e.preventDefault();
         })
 
