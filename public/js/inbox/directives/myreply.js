@@ -93,7 +93,11 @@ angular.module('reply', [])
     return {
         restrict: 'C'     
       , controller: function($scope, $element, $rootScope) {
-            this.name = "Add Message Item"; 
+            $scope.name = "Add Message Item"; 
+
+            this.show_name = function() {
+                return $scope.name;     
+            }
         }
     }   
 })
@@ -103,7 +107,7 @@ angular.module('reply', [])
       , restrict: 'A'
       , link: function(scope, element, attr, replyConfigureCtrl) {
             console.log(element);
-            console.log(replyConfigureCtrl.name);
+            console.log(replyConfigureCtrl.show_name());
         }
     }    
 })
