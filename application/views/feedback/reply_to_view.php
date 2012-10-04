@@ -90,13 +90,11 @@
                 <td> 
                     <div class="reply-configure" id="<?=$feedback->id?>"> 
                         <h4>{{name}}</h4>
-                        <?=Form::open('feedback/add_msg', 'POST', array('class' => 'add-reply-msg'))?>
-                            <input type="text" class="regular-text" name="msg" value="" /><br/>
-                            <div class="add-msg-box-buttons">
-                                <input type="button" class="small-btn" value="Cancel" cancel-add/>
-                                <input type="submit" class="small-btn" value="Add Item" add-item/>
-                            </div>
-                        <?=Form::close()?>
+                        <input type="text" class="regular-text" name="msg" value="" /><br/>
+                        <div class="add-msg-box-buttons">
+                            <input type="button" class="small-btn" value="Cancel" cancel-add/>
+                            <input type="submit" class="small-btn" value="Add Item" add-item/>
+                        </div>
                     </div>
                 </td>
             </tr>
