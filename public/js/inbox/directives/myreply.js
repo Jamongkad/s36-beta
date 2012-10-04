@@ -120,14 +120,18 @@ angular.module('reply', [])
       , link: function(scope, element, attr, ctrl) {
             element.bind("click", function(e) {
                 var text = $("input.regular-text", ctrl.me());
-                $.ajax({
-                    url: "/message/save_msg" 
-                  , type: "POST"  
-                  , data: {"type": "msg", "msg": text.val()}
-                  , success: function(data) {
-                        console.log(data);
-                    }
-                })
+                if(!text) {
+                    alert("This field cannot be blank.");
+                } else { 
+                    $.ajax({
+                        url: "/message/save_msg" 
+                      , type: "POST"  
+                      , data: {"type": "msg", "msg": text.val()}
+                      , success: function(data) {
+                            console.log(data);
+                        }
+                    });
+                }
             })
         }
     }    
