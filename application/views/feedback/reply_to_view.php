@@ -1,3 +1,4 @@
+
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -83,7 +84,8 @@
                 </td>
 
                 <td>   
-                    <ul class="msg-sel" id="<?=$feedback->id?>">
+                    <ul ng-controller="MsgSel" class="msg-sel" id="<?=$feedback->id?>">
+                        {{name}}
                     </ul> 
                     <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
                         <?=HTML::link('settings', '(add template reply message)')?>
