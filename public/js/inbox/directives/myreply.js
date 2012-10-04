@@ -11,19 +11,7 @@ angular.module('reply', [])
                 var type = "msg";//"rqs"; 
 
                 MessageService.get_messages(type);
-                var mes = MessageService.message;
-
-                var markup = "<li id='${id}' text='${text}'><a href='#'>${short_text}</a></li>";
-                $.template("li_template", markup);
-                $.tmpl("li_template", mes).appendTo(msgsel.empty());
-
-                msgsel.children('li[id]').bind('click', function(e) {
-                    var quickmessage = $(this).attr('text');
-                    var textarea = $(this).parents('td').prev('td').children('textarea');
-
-                    textarea.val(quickmessage); 
-                    e.preventDefault();
-                });
+                MessageService.render_message(feedid);
 
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
 
