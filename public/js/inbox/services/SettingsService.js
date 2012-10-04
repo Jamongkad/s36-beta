@@ -34,12 +34,12 @@ angular.module('Services', [])
 
         });
 
-        $("a.edit-reply-msg[id="+feedid+"]").bind("click", function(e) {
+        $("a#"+feedid+".edit-reply-msg").bind("click", function(e) {
             console.log($(this));
             e.preventDefault();
         });
 
-        $("a.del-reply-msg[id="+feedid+"]").bind("click", function(e) { 
+        $("a#"+feedid+".del-reply-msg").bind("click", function(e) { 
             console.log($(this));
             e.preventDefault();
         });
