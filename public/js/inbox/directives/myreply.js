@@ -13,7 +13,7 @@ angular.module('reply', [])
                 MessageService.render_message(feedid);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 */
-                $('.dialog-form').load('/message/pwet');
+                $('.dialog-form').load('/message/reply_view/' + feedid);
                 $('.dialog-form').dialog('open');
                 e.preventDefault();
             });
