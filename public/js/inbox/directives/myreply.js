@@ -135,10 +135,6 @@ angular.module('reply', [])
     }    
 })
 
-function MsgSel($scope) {
-    $scope.name = "Mathew";
-}
-
 //dialog form init
 $('.dialog-form').dialog({
     autoOpen: false  

@@ -1,4 +1,10 @@
+<script>
 
+function MsgSel($scope) {
+    $scope.name = "Mathew";
+}
+
+</script>
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
