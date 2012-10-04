@@ -5,16 +5,11 @@ angular.module('reply', [])
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
-                var feedid = $(this).attr('feedid'); 
-
                 var feedid = $(this).attr('feedid');  
                 var type = "msg";//"rqs"; 
                 MessageService.get_messages(type);
                 MessageService.render_message(feedid);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
-
-                //$('.dialog-form').load('/message/reply_view/' + feedid);
-                //$('.dialog-form').dialog('open');
                 e.preventDefault();
             });
         }
@@ -95,7 +90,9 @@ angular.module('reply', [])
         require: '^replyConfigure'   
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
+
             var text = $("input.regular-text", ctrl.me());
+
             element.bind("click", function(e) {
                 ctrl.me().dialog("close");                    
                 text.val("");
@@ -131,6 +128,14 @@ angular.module('reply', [])
                     });
                 }
             })
+        }
+    }    
+})
+.directive('cancelEdit', function()  {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attr) {
+            console.log(element);
         }
     }    
 })
