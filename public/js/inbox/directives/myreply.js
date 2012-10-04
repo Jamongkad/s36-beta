@@ -114,7 +114,7 @@ $('.dialog-form').dialog({
 
 $('.reply-configure').dialog({
     autoOpen: false  
-  , height: 100
+  , height: 110
   , width: 200
   , modal: true
 });

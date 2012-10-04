@@ -697,7 +697,7 @@ em.error { color: red; }
 .conf-repl a {color:#6e7e8e;text-decoration:underline}
 .conf-repl a:hover {color:#3a4c5a;text-decoration:underline}
 
-.add-msg-box-buttons{float:right;}
+.add-msg-box-buttons{float:right; padding:5px}
 .add-msg-box-buttons .small-btn{padding:2px 4px;background:#b7b7b7;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;font-size:11px;color:#FFF;border:none;cursor:pointer;}
 .add-msg-box-buttons .small-btn:hover{background:#767676;}
 
