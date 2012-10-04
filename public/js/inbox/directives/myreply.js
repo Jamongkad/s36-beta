@@ -92,7 +92,6 @@ angular.module('reply', [])
 .directive('replyConfigure', function() { 
     return {
         restrict: 'C'     
-      , transclude: true
       , scope: {}
       , controller: function($scope, $element, $rootScope) {
             $scope.name = "Add Message Item"; 
