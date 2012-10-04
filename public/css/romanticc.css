@@ -616,7 +616,7 @@ ul.msg-sel li a{color:#6e7e8e;text-decoration:underline}
 ul.msg-sel li a:hover{color:#3a4c5a;text-decoration:underline}
 
 ul.msg-sel div.edit-controls {float: left;}
-ul.msg-sel div.edit-controls a {display: none;}
+a.edit-reply-msg {display: none;}
 
 ul.custom-message {padding:0;list-style:none;line-height:1.3em;margin-top:-30px}
 ul.custom-message li a{color:#6e7e8e;text-decoration:underline}
