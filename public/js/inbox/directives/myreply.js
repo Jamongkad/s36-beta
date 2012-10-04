@@ -111,8 +111,9 @@ angular.module('reply', [])
         require: '^replyConfigure'   
       , restrict: 'A'
       , link: function(scope, element, attr, ctrl) {
-            console.log(element);
-            ctrl.me().dialog("close");
+            element.bind("click", function(e) {
+                ctrl.me().dialog("close");                    
+            })
         }
     }    
 })
