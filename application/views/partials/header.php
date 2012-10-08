@@ -133,7 +133,10 @@
                                         <td>
                                         <textarea class="regular-text" name="message" style="float:left" rows="7" id="recipient-message" ></textarea>
                                         <?  //GROSS!!
-                                            $sm = new Message\Services\SettingMessage('rqs');       
+                                            $type = 'rqs';
+                                            $dbm = new Message\Repositories\DBMessage($type);
+                                            //$rdm = new Message\Repositories\RDMessage($type);       
+                                            $sm = new Message\Services\SettingMessage($dbm);       
                                             $sm->get_messages();
                                             $reply_message = json_decode($sm->jsonify()); 
                                         ?>

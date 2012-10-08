@@ -52,13 +52,48 @@ angular.module('Services', [])
             msg_reply_text.children('div.add-msg-box-buttons').children('input[type=button]').on('click', function(e)  {    
                 msg_reply_text.dialog('close');
                 e.preventDefault();
-            })
+            });
+
+            msg_reply_text.children('div.add-msg-box-buttons').children('input[type=submit]').on('click', function(e)  {                   
+                var msgid = $(this).parents('div.msg-reply-text').attr('id')
+                var text = $(this).parents('div.msg-reply-text').children('input.regular-text');
+
+
+                $.ajax({
+                    type: 'POST'
+                  , url: '/message/update_reply_msg' 
+                  , dataType: 'json'
+                  , data: {"msg": text.val(), "id": msgid, "type": "msg"}
+                  , success: function(data) {
+                        text.val(data.text); 
+
+                        $("a#"+msgid+".msg-reply-link").attr("text", data.text);
+                        $("a#"+msgid+".msg-reply-link").text(data.short_text);
+                    }
+                }); 
+
+                msg_reply_text.dialog('close');
+                e.preventDefault();
+            });
             
             e.preventDefault();
         })
 
         msgsel.children('div.edit-controls').children('a.del-reply-msg').bind('click', function(e) {
-            console.log($(this));
+            var msgid = $(this).attr('id'); 
+            var li_link = $("a#"+msgid+".msg-reply-link").parents('li');
+            var edit_controls = $(this).parents('div.edit-controls');
+
+            $.ajax({
+                url: '/message/delete_msg'
+              , type: 'POST' 
+              , data: {"id": msgid, "type": "msg"}
+              , success: function() { 
+                    li_link.remove();
+                    edit_controls.remove();
+                }
+            }); 
+
             e.preventDefault();
         })
         

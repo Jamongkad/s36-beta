@@ -39,7 +39,7 @@ class RDMessage {
         $tree = Array();
         foreach($this->redis->hkeys($this->hash_nm) as $val) {
             $leaf = new StdClass;
-            $text = $this->redis->hget($this->hash_nm, $val);
+            $text = ucfirst(strtolower($this->redis->hget($this->hash_nm, $val)));
 
             $leaf->text = $text;
             $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
@@ -68,7 +68,7 @@ class RDMessage {
     public function _get_leaf($hash, $hash_key) {
 
         $leaf = Array();
-        $text = $this->redis->hget($hash, $hash_key);
+        $text = ucfirst(strtolower($this->redis->hget($hash, $hash_key)));
 
         $leaf['text'] = $text; 
         $leaf['short_text'] = Helpers::limit_text($text, $this->text_limit);

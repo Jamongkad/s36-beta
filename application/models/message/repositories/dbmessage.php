@@ -39,7 +39,7 @@ class DBMessage extends S36DataObject {
         $tree = Array();
         foreach($result as $value) {
             $leaf = new StdClass;
-            $text = $value->msgtext;
+            $text = ucfirst(strtolower($value->msgtext));
 
             $leaf->text = $text;
             $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
@@ -61,7 +61,7 @@ class DBMessage extends S36DataObject {
         $sth->execute();
 
         $last_insert_id = $this->dbh->query("SELECT LAST_INSERT_ID()");
-        $this->last_insert_result = $last_insert_id->fetchColumn();
+        $this->last_insert_result = $this->_get_leaf($last_insert_id->fetchColumn());
     }
 
     public function delete($msgid) {
@@ -81,21 +81,7 @@ class DBMessage extends S36DataObject {
     }
 
     public function get($msgid) {
-        $sql = "SELECT * FROM MessageSettings WHERE 1=1 AND msgid = :msgid AND companyId = :company_id";
-        $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(':msgid', $msgid, PDO::PARAM_INT);       
-        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
-        $sth->execute();
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-
-        $leaf = new StdClass;
-        $text = $result->msgtext;
-
-        $leaf->text = $text;
-        $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
-        $leaf->id   = $result->msgid;
-
-        $this->result = $leaf;
+        $this->result = $this->_get_leaf($msgid);
     }
 
     public function last_insert() { 
@@ -104,5 +90,24 @@ class DBMessage extends S36DataObject {
 
     public function jsonify() {
         return json_encode($this->result);
+    }
+
+    public function _get_leaf($msgid) {
+
+        $sql = "SELECT * FROM MessageSettings WHERE 1=1 AND msgid = :msgid AND companyId = :company_id";
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(':msgid', $msgid, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $this->company_id, PDO::PARAM_INT);       
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+
+        $leaf = new StdClass;
+        $text = ucfirst(strtolower($result->msgtext));
+
+        $leaf->text = $text;
+        $leaf->short_text = Helpers::limit_text($text, $this->text_limit);
+        $leaf->id   = $result->msgid;
+
+        return $leaf; 
     }
 }

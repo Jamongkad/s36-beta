@@ -37,9 +37,13 @@ return array(
         $category = new DBCategory;
         
         //Reply messages
-        $sm = new Message\Services\SettingMessage('msg');       
-        $sm->get_messages();
+        $type = 'msg';
+        $dbm = new Message\Repositories\DBMessage($type);
+        $rdm = new Message\Repositories\RDMessage($type);       
 
+        $sm = new Message\Services\SettingMessage($dbm);       
+        $sm->get_messages();
+        
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination
@@ -58,6 +62,7 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
+       
     }), 
 );
 

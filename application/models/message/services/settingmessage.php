@@ -1,16 +1,14 @@
 <?php namespace Message\Services;
 
-use Input, Config, Helpers;
-use StdClass, Exception;
-use Message\Repositories\DBMessage, Message\Repositories\RDMessage;
+use Exception;
 
 class SettingMessage {
 
     private $datastore;
     
-    public function __construct($msg_type, $datastore=false) {
+    public function __construct($datastore) {
 
-        if(!$msg_type) {
+        if(!$datastore) {
             throw new Exception('Message Type is required!');
         }
 

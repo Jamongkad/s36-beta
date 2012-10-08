@@ -1,3 +1,5 @@
+//Move DOM changing elements to Directive bitch
+
 function ParentCtrl($scope) {
 
     $scope.msgs;
@@ -43,13 +45,16 @@ function ParentCtrl($scope) {
         var me = $($event.target);
         var sib = me.next();
 
-        var input = $("input#" + id + "[name=reply_message]");
+        console.log(id);
+
+        var input = $("input#" + id + ".regular-text");
         var span = $("span#" + id + ".replymsg-text");
-     
+
         me.hide();
         sib.show();
         input.show();
         span.hide();
+
         $event.preventDefault();
     };
 
@@ -58,7 +63,7 @@ function ParentCtrl($scope) {
         var me = $($event.target);
         var sib = me.prev();
  
-        var input = $("input#" + id + "[name=reply_message]");
+        var input = $("input#" + id + ".regular-text");
         var span = $("span#" + id + ".replymsg-text");
 
         $.ajax({
