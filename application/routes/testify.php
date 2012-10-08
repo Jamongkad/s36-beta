@@ -30,7 +30,7 @@ return array(
         
         //clean up
         $tf->afterEach(function($tf) use ($feedback_id, $company_id, $user_id, $status) {
-            $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);;  
+            $tf->data->fba = new Feedback\Services\FeedbackActivity($user_id, $feedback_id, $status);
             $tf->data->fba->delete_activity();
             $tf->data->feedstate = new Feedback\Services\FeedbackState('inbox', Array(Array('feedid' => $feedback_id)), $company_id);
             $tf->data->feedstate->change_state();
@@ -93,4 +93,37 @@ return array(
 
         $tf->run();  
     },
+
+    'GET /testify/message' => function() {  
+        $tf = new Testify("Message Services/DB");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->dbm = new Message\Repositories\DBMessage("msg");
+            $tf->data->rdm = new Message\Repositories\RDMessage("msg");       
+        });
+ 
+        $tf->test("SettingMessage Test", function($tf)  {
+             
+            $tf->data->dbmset = new Message\Services\SettingMessage("msg", $tf->data->dbm);
+            $tf->data->dbmset->get_messages();
+            $tf->dump($tf->data->dbmset->jsonify());
+           
+            //$tf->data->rdmset = new Message\Services\SettingMessage("msg", $tf->data->rdm);
+            //$tf->data->rdmset->get_messages();
+            //$tf->dump($tf->data->rdmset->jsonify());
+
+
+            /*$tf->data->dbmset->save('Mathew Wong is the dickiest guy I have had the pleasure of coming to know.');
+            $tf->data->dbmset->last_insert();
+            $tf->dump($tf->data->dbmset->jsonify());*/
+            //$tf->data->dbmset->get(7);
+            //$tf->dump($tf->data->dbmset->jsonify());
+            $id = 4;
+            $tf->data->dbmset->update($id, "I have to give. Without you I dont think I can live. I wish I could give the world to you...my love is all I have to give."); 
+            $tf->data->dbmset->get($id); 
+            $tf->dump($tf->data->dbmset->jsonify());
+        });
+
+        $tf->run();  
+    }
 );
