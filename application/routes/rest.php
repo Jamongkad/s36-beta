@@ -25,7 +25,7 @@ return array(
         } 
 	}),
 
-	'POST /rest/account/logout' => array('name'=>'logout','do'=>function(){
+	'GET /rest/account/logout' => array('name'=>'logout','do'=>function(){
         $auth = new S36Auth;
         $auth->logout();
         echo return_json(array('success'=>true));
@@ -83,6 +83,7 @@ return array(
     }),
 
     'GET /rest/feedback/(:num)'=>array('name'=>'feedback','before' => 's36_auth','do'=>function($id){
+        $feedback = new Feedback\Repositories\DBFeedback;
         echo return_json(array('data'=>$feedback->pull_feedback_by_id($id)));
     }),
 
