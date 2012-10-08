@@ -140,7 +140,8 @@
                                             $sm->get_messages();
                                             $reply_message = json_decode($sm->jsonify()); 
                                         ?>
-                                            <ul class="custom-message">   
+                                            <ul ng-controller="RequestCtrl" class="custom-message">   
+                                                {{name}}
                                                 <?if($reply_message):?>
                                                     <?foreach($reply_message as $val):?>
                                                         <li id="<?=$val->id?>" text="<?=$val->text?>">
@@ -148,7 +149,6 @@
                                                         </li>
                                                     <?endforeach?>
                                                 <?endif?>
-                                                <li><?=HTML::link('settings', '(configure template reply)')?></li>
                                             </ul>
                                         </td>
                                     </tr>
