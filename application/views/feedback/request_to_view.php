@@ -73,3 +73,13 @@
     </div>
 <!-- end of reply-box -->
 <?=Form::close()?>
+
+<div class="request-configure" style="display:none">  
+    <h4>{{name}}</h4>
+    <input type="text" class="regular-text" name="msg" value="" /><br/>
+    <input type="hidden" name="msgid" value="" />
+    <div class="add-msg-box-buttons">
+        <input type="button" class="small-btn" value="Cancel" cancel-request-add/>
+        <input type="submit" class="small-btn" value="Add Item" add-request-item/>
+    </div>
+</div>
