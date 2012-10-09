@@ -325,6 +325,28 @@ return array(
         Helpers::dump($count);
     },
 
+    'GET /tests/testify' => function() {
+        $tf = new Testify("Mathew Test");
+        $tf->beforeEach(function($tf) {
+            $tf->data->calc = 3;  
+        });
+        
+        $tf->test("Testing the add method", function($tf) {
+            $num = $tf->data->calc;     
+            $tf->assert($num);
+            $tf->assert(True);
+            $tf->assert(True);
+        });
+
+        $tf->test("Testing enequality", function($tf) {
+            $num = $tf->data->calc;     
+            $tf->assertEqual($num, 1);
+            $tf->assertEqual($num, 3);
+        });
+
+        $tf->run();
+    }, 
+
     //reserved route for Leica and Ryan testing
     'GET /tests/leica' => function() {
         return View::make('tests/leica_view');
@@ -336,13 +358,5 @@ return array(
 
     'GET /tests/aryann' => function() {
         return View::make('tests/aryann_view');
-    },
-    
-    'GET /tests/b3' =>function(){
- 			$user = S36Auth::user();
-			Package::load('braintree');
-			$S36Braintree = new 	S36Braintree($user->bt_customer_id);
-			Helpers::show_data($S36Braintree->get_next_billing_info()); 
-			exit();
-    	}
+    }
 );

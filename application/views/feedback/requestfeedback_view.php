@@ -5,7 +5,7 @@
         <div class="request-options">
             <h2>Request Feedback</h2>
             <div class="request-types">
-                <h3><label for="full_page_type">Recipient Details</label></h3>
+                <h3><label for="full_page_type">Recepient Details</label></h3>
                 <div class="request-form" id="full_page_request">
                     <table width="100%">
                         <tr>

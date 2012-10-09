@@ -65,111 +65,16 @@ return array (
         } 
 
     },
-    
-    'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
 
-		  $plan = new Plan\Repositories\DBPlan;
-		  $accountService = new Account\Services\AccountService;
-		  $planId 		= Input::get('planId');
-		  $action		= Input::get('action');
-    	  switch($action){
-				case 'confirm' :
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_account_view',
-			        			array(
-								'newPlanInfo' 		=> $plan->get_planInfo($planId),
-								'accountInfo'		=> $accountService->get_accountInfo()
-								)  
-			        );
-					break;
-				case 'success' :
-							$result = $accountService->update_plan($planId);			
-							if($result){
-								return Redirect::to('/settings/upgrade/?action=completed');			
-							}
-					break;
-				case 'completed' :
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
-							array(
-									'result' 		=> 'completed',
-									'newPlanInfo'	=> $plan->get_planInfo($planId),
-									'planList' 		=> $plan->get_planInfo(),
-									'accountInfo'	=> $accountService->get_accountInfo()
-								)     
-				      	);
-					 break;		
-				case 'downgrade' :
-						return View::of_layout()->partial('contents', 'settings/settings_downgrade_account_view',
-			        			array(
-								'newPlanInfo' 		=> $plan->get_planInfo($planId),
-								'accountInfo'		=> $accountService->get_accountInfo()
-								)  
-			        );
-					break;
-				default:
-						return View::of_layout()->partial('contents', 'settings/settings_upgrade_view',
-							array(
-								'planList' 		=> $plan->get_planInfo(),
-								'accountInfo'	=> $accountService->get_accountInfo()
-							)     
-			      	);
-					break;			
-				
-			}
-    }  
-    ),
-    
-    		
-    'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-    		$accountService = new Account\Services\AccountService;
-			return View::of_layout()->partial('contents', 'settings/settings_change_card_view',
-					array(
-						'accountInfo'	=> $accountService->get_accountInfo()
-					) 			
-			);		     
+    'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
-    
-	'POST /settings/change_card' => Array('needs' => 'S36ValueObjects', 'do' => function() {
-		$card_data = Input::all();
-		$rules = array(
-				'card_number'	=>		'required|numeric|min:16',
-				'card_cvv'		=>		'required|numeric',
-				'expire_month'	=>		'required',
-				'expire_year'	=>		'required',
-				'billing_zip'	=>		'required|alpha_num|min:3'
-		);
-		 	$validator = Validator::make($card_data, $rules);
-		 	/*validation fails*/
-			if((!$validator->valid()) || (($card_data['expire_month'] < date('m')) &&($card_data['expire_year'] == date('Y'))  )) {
-				if((!empty($card_data['expire_month']) && !empty($card_data['expire_year'])) &&
-					($card_data['expire_month'] < date('m') && $card_data['expire_year'] <= date('Y')))				
-				{
-					$validator->errors->messages['expire_month'][]='The expiration date must be valid.';
-				}
-				return json_encode(array(
-										'error'=>true,
-										'messages'=>$validator->errors->messages
-										));
-			}
-			/*validation are all good*/
-			else{
-				$accountService = new Account\Services\AccountService;
-				$result = $accountService->update_credit_card($card_data);
-				/*catch unexpected errors during update*/
-				if(!$result['success']){
-						return json_encode(array(
-										'error'=>true,
-										'messages'=>$result['message']
-										));
-				}
-				/*on success*/
-				return json_encode(array(
-										'error'=>false,
-										'messages'=>'Your credit card has been updated.'));
-			}		     
+
+    'GET /settings/change_card' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
 
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_cancel_account_view');
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
 );
-

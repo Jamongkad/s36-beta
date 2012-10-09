@@ -6,9 +6,10 @@ class DBUser extends S36DataObject {
         return $user;
     }
 
-    public function pull_user_by_id($user_id) {    
+    public function pull_user($user_obj) {    
         $user = DB::table('User', 'master')
-                    ->where('userId', '=', $user_id)
+                    ->where('username', '=', $user_obj->username)
+                    ->where('companyId', '=', $user_obj->company_id)
                     ->first();
         return $user;
     }
