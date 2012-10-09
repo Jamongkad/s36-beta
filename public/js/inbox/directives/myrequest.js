@@ -42,22 +42,39 @@ angular.module('request', [])
         });
     } 
 })
-.directive('customMessage', function() {
-    var msgsel_fn;
-
-    msgsel_fn = function(scope, element, attrs) {
-        $(element).children('li[id]').bind('click', function(e) {
-            var quickmessage = $(this).attr('text');
-            var textarea = $(this).parents('td').children('textarea');
-          
-            textarea.val(quickmessage); 
-            e.preventDefault();
-        });
-    }
-
+.directive('addRequest', function() {
     return {
-        restrict: 'C'     
-      , link: msgsel_fn
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                var quickmessage = $(this).attr('req-text');
+                var textarea = $(this).parents('td').children('textarea');              
+                textarea.val(quickmessage); 
+                e.preventDefault();
+            });
+        }
+    }  
+})
+.directive('deleteRequest', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                $(this).parents('li').remove();
+                e.preventDefault();
+            });
+        }
+    }  
+})
+.directive('editRequest', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log($(this).attr('id'));
+                e.preventDefault();
+            });
+        }
     }  
 })
 
