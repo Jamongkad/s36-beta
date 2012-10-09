@@ -135,8 +135,7 @@
                                         <textarea class="regular-text" name="message" style="float:left" rows="7" id="recipient-message" ></textarea>
                                         <?  //GROSS!!
                                             $type = 'rqs';
-                                            $dbm = new Message\Repositories\DBMessage($type);
-                                            //$rdm = new Message\Repositories\RDMessage($type);       
+                                            $dbm = new Message\Repositories\DBMessage($type); 
                                             $sm = new Message\Services\SettingMessage($dbm);       
                                             $sm->get_messages();
                                             $reply_message = json_decode($sm->jsonify()); 
