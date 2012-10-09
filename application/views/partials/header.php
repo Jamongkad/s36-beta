@@ -41,6 +41,7 @@
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <?
+                       //todo: ajaxify this use motherfuckin Angular mah nigguh
                        $redis = new redisent\Redis;
                        $user_id = S36Auth::user()->userid;
                        $company_id = S36Auth::user()->companyid;
