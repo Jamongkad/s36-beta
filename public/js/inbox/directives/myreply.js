@@ -1,14 +1,13 @@
 angular.module('reply', [])
-.directive('myReply', function(MessageService) {
-    
+.directive('myReply', function(MessageService) {    
     return {
         restrict: 'A'       
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid');  
-                var type = "msg";//"rqs"; 
-                MessageService.get_messages(type);
-                MessageService.render_message(feedid);
+                //var type = "msg";
+                //MessageService.get_messages(type);
+                //MessageService.render_message(feedid);
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
@@ -135,7 +134,7 @@ angular.module('reply', [])
 //dialog form init
 $('.dialog-form').dialog({
     autoOpen: false  
-  , height: 670
+  , height: 680
   , width: 700 
   , modal: true
   , close: function(e, ui) {    

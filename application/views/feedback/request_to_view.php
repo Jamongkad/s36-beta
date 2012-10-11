@@ -88,7 +88,6 @@
     <h4 ng-model="name">{{name}}</h4>
     <input type="text" class="regular-text" name="msg" value="" /><br/>
     <input type="hidden" name="msgid" value="" id="msgid"/>
-    <input type="hidden" name="msgurl" value="" id="msgurl"/>
     <div class="add-msg-box-buttons">
         <input type="button" class="small-btn" value="Cancel" cancel-request-add/>
         <input type="submit" class="small-btn" value="" exec-request-item/>

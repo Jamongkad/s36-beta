@@ -12,4 +12,11 @@ function RequestCtrl($scope, MessageService) {
         console.log(id);
         $event.preventDefault();
     }
+    
+    //Broadcast Messages
+    $scope.$on('addRequestMessage', function()  {
+        $scope.$apply(function() {
+            $scope.requests.push(MessageService.pushdata); 
+        })
+    });
 }

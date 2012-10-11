@@ -3,6 +3,8 @@ angular.module('Services', [])
 
     var shared_service = {};
     shared_service.message;
+    shared_service.pushdata;
+    shared_service.editdata;
 
     shared_service.get_messages = function(type) { 
         $.ajax({
@@ -17,6 +19,42 @@ angular.module('Services', [])
         });
     }
 
+    shared_service.add_request_message = function(text) {    
+        $.ajax({
+            url: "/message/save_msg"  
+          , type: 'POST'
+          , data: {'type': 'rqs', 'msg': text}
+          , async: false
+          , dataType: 'json'
+          , success: function(data) {
+                shared_service.pushdata = data;             
+            }
+        });
+        this.register_request_message();
+    }
+
+    shared_service.edit_request_message = function(msg_obj) {
+        $.ajax({
+            url: "/message/update_reply_msg"  
+          , type: 'POST'
+          , data: {'type': 'rqs', 'msg': msg_obj.text, 'id': msg_obj.msgid}
+          , async: false
+          , dataType: 'json'
+          , success: function(data) {
+                shared_service.editdata = data;
+            }
+        }); 
+    }
+
+    shared_service.register_request_message = function()  {
+        $rootScope.$broadcast('addRequestMessage');
+    }
+
+    shared_service.register_reply_message = function()  {
+        $rootScope.$broadcast('fetchReplyMessage');
+    }
+    
+    //TODO FUCKING REFACTOR THIS MAN
     shared_service.render_message = function(feedid) { 
 
         var msgsel = $('ul.msg-sel[id='+feedid+']')
@@ -58,7 +96,6 @@ angular.module('Services', [])
                 var msgid = $(this).parents('div.msg-reply-text').attr('id')
                 var text = $(this).parents('div.msg-reply-text').children('input.regular-text');
 
-
                 $.ajax({
                     type: 'POST'
                   , url: '/message/update_reply_msg' 
@@ -66,7 +103,6 @@ angular.module('Services', [])
                   , data: {"msg": text.val(), "id": msgid, "type": "msg"}
                   , success: function(data) {
                         text.val(data.text); 
-
                         $("a#"+msgid+".msg-reply-link").attr("text", data.text);
                         $("a#"+msgid+".msg-reply-link").text(data.short_text);
                     }

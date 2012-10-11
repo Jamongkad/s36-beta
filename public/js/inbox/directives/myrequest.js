@@ -77,7 +77,6 @@ angular.module('request', [])
 
                 request_configure.dialog("open"); 
                 request_configure.children('#msgid').val(msgid);
-                request_configure.children('#msgurl').val('/message/editrequest');
                 request_configure.children('.regular-text').val(req_text);
                 request_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
 
@@ -96,7 +95,6 @@ angular.module('request', [])
 
                 request_configure.dialog("open");
                 request_configure.children('#msgid').val(msgid);
-                request_configure.children('#msgurl').val('/message/addrequest');
                 request_configure.children('.regular-text').val('');
                 request_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
 
@@ -109,16 +107,7 @@ angular.module('request', [])
     return {
         restrict: 'C' 
       , controller: function($scope, $element, $rootScope) {
-
             $scope.name = "Request Message";
-
-            this.my_scope = function() {
-                return $scope;
-            }
-
-            this.me = function() {
-                return $element;     
-            }
         }
     }    
 })
@@ -135,7 +124,7 @@ angular.module('request', [])
         }
     }     
 })
-.directive('addRequestItem', function() {
+.directive('execRequestItem', function(MessageService) {
     return {
         require: '^requestConfigure'
       , restrict: 'A' 
@@ -143,11 +132,24 @@ angular.module('request', [])
             $(element).bind('click', function(e) {
                 var request_configure = $('.request-configure');
                 var msgid  = request_configure.children('#msgid').val();
-                var msgurl = request_configure.children('#msgurl').val();
-               
-                console.log(ctrl.me());
-                console.log(msgurl);
-                console.log(msgid);
+                var text = request_configure.children('.regular-text').val();
+                
+                //if msgid present means we're editing
+                if(msgid || msgid.length > 0) {
+                    MessageService.edit_request_message({
+                        'text': text
+                      , 'msgid': msgid
+                    });
+                    $("a#"+msgid).attr('req-text', MessageService.editdata.text);
+                    $("a#"+msgid).attr('id', MessageService.editdata.id);
+                    $("a#"+msgid).html(MessageService.editdata.short_text);
+                } else { 
+                //else we're adding new message
+                    MessageService.add_request_message(text);
+                }
+
+                request_configure.dialog("close");
+ 
                 e.preventDefault();
             });
         }
