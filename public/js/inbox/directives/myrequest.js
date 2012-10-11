@@ -73,20 +73,52 @@ angular.module('request', [])
             $(element).bind('click', function(e) {
                 var msgid = $(this).attr('id');
                 var request_configure = $('.request-configure');
+                var req_text = $(this).parents('span').siblings('a').attr('req-text');
 
-                request_configure.dialog("open");
-                request_configure.children('input[type=hidden]').val(msgid);
-                request_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update Item");
+                request_configure.dialog("open"); 
+                request_configure.children('#msgid').val(msgid);
+                request_configure.children('#msgurl').val('/message/editrequest');
+                request_configure.children('.regular-text').val(req_text);
+                request_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
 
                 e.preventDefault();
             });
         }
-    }  })
+    }  
+})
+.directive('addRequestMsg', function() {
+    return {
+        restrict: 'C'
+      , link: function(scope, element, attrs) { 
+            $(element).bind('click', function(e) {
+                var msgid = $(this).attr('id');
+                var request_configure = $('.request-configure');
+
+                request_configure.dialog("open");
+                request_configure.children('#msgid').val(msgid);
+                request_configure.children('#msgurl').val('/message/addrequest');
+                request_configure.children('.regular-text').val('');
+                request_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
+
+                e.preventDefault();
+            });
+        }
+    }    
+})
 .directive('requestConfigure', function() {
     return {
         restrict: 'C' 
       , controller: function($scope, $element, $rootScope) {
-            $scope.name = "Update Request Message";
+
+            $scope.name = "Request Message";
+
+            this.my_scope = function() {
+                return $scope;
+            }
+
+            this.me = function() {
+                return $element;     
+            }
         }
     }    
 })
@@ -103,12 +135,30 @@ angular.module('request', [])
         }
     }     
 })
+.directive('addRequestItem', function() {
+    return {
+        require: '^requestConfigure'
+      , restrict: 'A' 
+      , link: function(scope, element, attr, ctrl) {
+            $(element).bind('click', function(e) {
+                var request_configure = $('.request-configure');
+                var msgid  = request_configure.children('#msgid').val();
+                var msgurl = request_configure.children('#msgurl').val();
+               
+                console.log(ctrl.me());
+                console.log(msgurl);
+                console.log(msgid);
+                e.preventDefault();
+            });
+        }
+    }     
+})
 
 //dialog form init
 $('.request-dialog').dialog({
     autoOpen: false  
-  , height: 539
-  , width: 700 
+  , height: 618
+  , width: 672 
   , modal: true
 });
 

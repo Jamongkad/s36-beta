@@ -8,7 +8,7 @@
         <h2>Reply To User</h2>
         <div class="reply-box-content">
         <div class="reply-box-form">
-            <table cellpadding="5" width="100%">
+            <table cellpadding="5" width="100%" cellspacing="0">
             <!--
             <tr>
                 <td width="15%"><strong>From :</strong></td>
