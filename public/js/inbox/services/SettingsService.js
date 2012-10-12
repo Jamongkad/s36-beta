@@ -21,7 +21,6 @@ angular.module('Services', [])
 
     shared_service.fetch_reply_messages = function() {
         shared_service.get_messages('msg');
-        this.register_reply_message();
     }
 
     shared_service.save = function(msg_obj) {    
@@ -35,7 +34,6 @@ angular.module('Services', [])
                 shared_service.pushdata = data;             
             }
         });
-        this.register_request_message();
     }
 
     shared_service.update = function(msg_obj) {

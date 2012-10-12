@@ -54,7 +54,7 @@
                                                 <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                                                 <span style="float:right">
                                                     <a href='#' edit-request req-text="{{msg.text}}" id="{{msg.id}}">edit</a> 
-                                                    <a href='#' delete-request ng-click="del_request(msg.id, $event)" req-text="{{msg.text}}" id="{{msg.id}}">delete</a>
+                                                    <a href='#' delete-request ng-click="del_request(msg.id, $event)">delete</a>
                                                 </span>
                                             </li>
                                         </ul>
@@ -84,4 +84,3 @@
     </div>
 <!-- end of reply-box -->
 <?=Form::close()?>
-<?=View::make('feedback/partials/modal_message_configure');?>

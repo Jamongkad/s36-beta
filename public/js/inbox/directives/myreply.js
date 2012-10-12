@@ -6,6 +6,7 @@ angular.module('reply', [])
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid');  
                 MessageService.fetch_reply_messages();
+                MessageService.register_reply_message();
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
@@ -43,6 +44,19 @@ angular.module('reply', [])
         });
     }
 })
+.directive('addReply', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                var quickmessage = $(this).attr('req-text');
+                var textarea = $("textarea[name=message]");
+                textarea.val(quickmessage); 
+                e.preventDefault();
+            });
+        }
+    }  
+})
 .directive('deleteReply', function() {
     return {
         restrict: 'A'
@@ -61,12 +75,13 @@ angular.module('reply', [])
             $(element).bind("click", function(e) { 
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
-                var reply_configure = $('.modal-configure');
+                var configure = $('.modal-configure');
 
-                reply_configure.dialog('open');
-                reply_configure.children('#msgid').val(msgid);
-                reply_configure.children('.regular-text').val(req_text);
-                reply_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
+                configure.dialog('open');
+                configure.children('#msgid').val(msgid);
+                configure.children('.regular-text').val(req_text);
+                configure.children('#msgtype').val("msg");
+                configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
                 e.preventDefault();
             }) 
         }
@@ -91,11 +106,12 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                var reply_configure = $('.modal-configure');
-                reply_configure.dialog('open');
-                reply_configure.children('.regular-text').val("");
-                reply_configure.children('#msgid').val("");
-                reply_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
+                var configure = $('.modal-configure');
+                configure.dialog('open');
+                configure.children('.regular-text').val("");
+                configure.children('#msgid').val("");
+                configure.children('#msgtype').val("msg");
+                configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
                 e.preventDefault();
             })
         }
@@ -106,41 +122,9 @@ angular.module('reply', [])
         restrict: 'A'
       , link: function(scope, element, attr) {
             $(element).bind("click", function(e) { 
-                var reply_configure = $('.modal-configure');
-                reply_configure.dialog('close');
+                var configure = $('.modal-configure');
+                configure.dialog('close');
             })
-        }
-    }    
-})
-.directive('execReplyItem', function(MessageService) { 
-    return {
-        restrict: 'A'
-      , link: function(scope, element, attr) {
-            $(element).bind("click", function(e) {
-                var reply_configure = $('.modal-configure');
-                var msgid = reply_configure.children('#msgid').val();
-                var text  = reply_configure.children('.regular-text').val();
-
-                if(text.length == 0) {
-                    alert("This field cannot be blank.");
-                } else {      
-                    if(msgid || msgid.length > 0) {
-
-                        var msg_obj = {'type': 'msg', 'msg': text, 'id': msgid}
-                        MessageService.update(msg_obj);
-
-                        var a_msg = $("a#"+msgid);
-                        a_msg.attr('req-text', MessageService.editdata.text);
-                        a_msg.attr('id', MessageService.editdata.id);
-                        a_msg.html(MessageService.editdata.short_text);
-
-                    } else {    
-                        MessageService.save({'type': 'msg', 'msg': text});
-                        MessageService.fetch_reply_messages();
-                    }
-                    reply_configure.dialog("close");
-                }
-            });
         }
     }    
 })

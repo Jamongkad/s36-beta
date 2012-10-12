@@ -92,6 +92,9 @@
         </div>
         <!-- end of request feedback popup -->
 
+        <!-- Reply|Request Configuration Modal Window -->
+        <?=View::make('feedback/partials/modal_message_configure');?>
+
         <!--
         	The main panel
             All contents, session details, records will be displayed here.

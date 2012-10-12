@@ -708,24 +708,8 @@ em.error { color: red; }
 .add-msg-box-buttons .small-btn{padding:2px 4px;background:#b7b7b7;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;font-size:11px;color:#FFF;border:none;cursor:pointer;}
 .add-msg-box-buttons .small-btn:hover{background:#767676;}
 
-.reply-configure h4{
-    padding:5px 20px;
-    background:#efefef;
-    border-bottom:1px solid #e0e0e0;
-    text-align:left;
-    font-size:11px;
-}
-
-.msg-reply-text h4{
-    padding:5px 20px;
-    background:#efefef;
-    border-bottom:1px solid #e0e0e0;
-    text-align:left;
-    font-size:11px;
-}
-
-.request-configure h4{
-    padding:5px 20px;
+.modal-configure h4{
+    padding:5px 10px;
     background:#efefef;
     border-bottom:1px solid #e0e0e0;
     text-align:left;

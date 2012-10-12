@@ -84,9 +84,9 @@
 
                 <td>   
                     <span ng-controller="ReplyCtrl">
-                        <ul  class="custom-message" id="<?=$feedback->id?>">
+                        <ul class="custom-message">
                             <li ng-repeat="msg in get_reply_messages()"> 
-                                <a href='#'  add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
+                                <a href='#'  add-reply req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
                                 <span style="float:right">
                                     <a href='#' edit-reply>edit</a> 
                                     <a href='#' delete-reply ng-click="del_reply(msg.id, $event)">delete</a>
