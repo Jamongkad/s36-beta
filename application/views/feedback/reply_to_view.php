@@ -83,20 +83,19 @@
                 </td>
 
                 <td>   
-                    <ul ng-controller="ReplyCtrl" class="msg-sel" id="<?=$feedback->id?>">
-                    </ul> 
-                    <div class="conf-repl" configure-reply id="<?=$feedback->id?>">
+                    <span ng-controller="ReplyCtrl">
+                        <ul  class="custom-message" id="<?=$feedback->id?>">
+                            <li ng-repeat="msg in get_reply_messages()"> 
+                                <a href='#'  add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
+                                <span style="float:right">
+                                    <a href='#' edit-reply>edit</a> 
+                                    <a href='#' delete-reply ng-click="del_reply(msg.id, $event)">delete</a>
+                                </span>
+                            </li>
+                        </ul> 
+                    </span>
+                    <div class="conf-repl" configure-reply>
                         <?=HTML::link('settings', '(add template reply message)')?>
-                    </div>
-                </td>
-                <td> 
-                    <div class="reply-configure" id="<?=$feedback->id?>" style="display:none"> 
-                        <h4>{{name}}</h4>
-                        <input type="text" class="regular-text" name="msg" value="" /><br/>
-                        <div class="add-msg-box-buttons">
-                            <input type="button" class="small-btn" value="Cancel" cancel-add/>
-                            <input type="submit" class="small-btn" value="Add Item" add-item/>
-                        </div>
                     </div>
                 </td>
             </tr>

@@ -678,7 +678,7 @@ ul.add-bcc li {
     padding:15px 30px;
 }
 .reply-box-buttons{text-align:right;}
-#reply-box .custom-message{list-style:none;font-size:12px;color:#9ba4ab;margin-left:-20px;}
+#reply-box .custom-message{list-style:none;font-size:12px;color:#9ba4ab;margin-left:-20px;width:240px}
 
 .reply-box-error{
     /*padding:20px 30px;*/

@@ -1,4 +1,13 @@
 <?if($feedback != null):?>
+<div class="reply-configure" style="display:none"> 
+    <h4>{{replyname}}</h4>
+    <textarea class="regular-text" style="width: 436px; height: 301px" name="msg"></textarea><br/>
+    <input type="hidden" name="msgid" value="" id="msgid"/>
+    <div class="add-msg-box-buttons">
+        <input type="button" class="small-btn" value="Cancel" cancel-reply/>
+        <input type="submit" class="small-btn" value="" exec-reply-item/>
+    </div>
+</div>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
         <?if($feeds->children->result):?>

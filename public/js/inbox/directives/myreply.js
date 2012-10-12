@@ -5,9 +5,7 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid');  
-                //var type = "msg";
-                //MessageService.get_messages(type);
-                //MessageService.render_message(feedid);
+                MessageService.fetch_reply_messages();
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
@@ -45,6 +43,35 @@ angular.module('reply', [])
         });
     }
 })
+.directive('deleteReply', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            $(element).bind("click", function(e) {
+                $(this).parents('li').remove();
+                e.preventDefault();
+            })
+        }
+    }    
+})
+.directive('editReply', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            $(element).bind("click", function(e) { 
+                var msgid    = $(this).parents('span').siblings('a').attr('id');
+                var req_text = $(this).parents('span').siblings('a').attr('req-text');
+                var reply_configure = $('.modal-configure');
+
+                reply_configure.dialog('open');
+                reply_configure.children('#msgid').val(msgid);
+                reply_configure.children('.regular-text').val(req_text);
+                reply_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Update");
+                e.preventDefault();
+            }) 
+        }
+    }     
+})
 .directive('replyBcc', function() {
     return function(scope, element, attrs){
         $(element).children('li').bind('click', function(e) {
@@ -64,69 +91,56 @@ angular.module('reply', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                var id = $(this).attr('id');  
-                $('.reply-configure[id='+id+']').dialog('open'); 
+                var reply_configure = $('.modal-configure');
+                reply_configure.dialog('open');
+                reply_configure.children('.regular-text').val("");
+                reply_configure.children('#msgid').val("");
+                reply_configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
                 e.preventDefault();
             })
         }
     }   
 })
-.directive('replyConfigure', function() { 
+.directive('cancelReply', function() { 
     return {
-        restrict: 'C'     
-      , controller: function($scope, $element, $rootScope) {
-
-            $scope.name = "Add Message Item"; 
-
-            this.me = function() {
-                return $element;     
-            }
-        }
-    }   
-})
-.directive('cancelAdd', function() { 
-    return {
-        require: '^replyConfigure'   
-      , restrict: 'A'
-      , link: function(scope, element, attr, ctrl) {
-
-            var text = $("input.regular-text", ctrl.me());
-
-            element.bind("click", function(e) {
-                ctrl.me().dialog("close");                    
-                text.val("");
+        restrict: 'A'
+      , link: function(scope, element, attr) {
+            $(element).bind("click", function(e) { 
+                var reply_configure = $('.modal-configure');
+                reply_configure.dialog('close');
             })
         }
     }    
 })
-.directive('addItem', function(MessageService) { 
+.directive('execReplyItem', function(MessageService) { 
     return {
-        require: '^replyConfigure'   
-      , restrict: 'A'
-      , link: function(scope, element, attr, ctrl) {
-            element.bind("click", function(e) {
-                var text = $("input.regular-text", ctrl.me());
+        restrict: 'A'
+      , link: function(scope, element, attr) {
+            $(element).bind("click", function(e) {
+                var reply_configure = $('.modal-configure');
+                var msgid = reply_configure.children('#msgid').val();
+                var text  = reply_configure.children('.regular-text').val();
 
-                if(text.val().length == 0) {
+                if(text.length == 0) {
                     alert("This field cannot be blank.");
-                } else { 
-                    $.ajax({
-                        url: "/message/save_msg" 
-                      , dataType: "JSON"
-                      , type: "POST"  
-                      , data: {"type": "msg", "msg": text.val()}
-                      , success: function(data) {
+                } else {      
+                    if(msgid || msgid.length > 0) {
 
-                            text.val("");
-                            ctrl.me().dialog("close");                    
-                            
-                            var feedid = ctrl.me().attr('id');
-                            MessageService.get_messages("msg");
-                            MessageService.render_message(feedid);
-                        }
-                    });
+                        var msg_obj = {'type': 'msg', 'msg': text, 'id': msgid}
+                        MessageService.update(msg_obj);
+
+                        var a_msg = $("a#"+msgid);
+                        a_msg.attr('req-text', MessageService.editdata.text);
+                        a_msg.attr('id', MessageService.editdata.id);
+                        a_msg.html(MessageService.editdata.short_text);
+
+                    } else {    
+                        MessageService.save({'type': 'msg', 'msg': text});
+                        MessageService.fetch_reply_messages();
+                    }
+                    reply_configure.dialog("close");
                 }
-            })
+            });
         }
     }    
 })
@@ -140,11 +154,4 @@ $('.dialog-form').dialog({
   , close: function(e, ui) {    
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
-});
-
-$('.reply-configure').dialog({
-    autoOpen: false  
-  , height: 110
-  , width: 200
-  , modal: true
 });

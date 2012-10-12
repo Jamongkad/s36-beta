@@ -21,7 +21,7 @@ return array(
         echo $sm->jsonify();
     }
 
-    , 'POST /message/update_reply_msg' => function() {
+    , 'POST /message/update' => function() {
         $type = Input::get('type'); 
         $dbm = new Message\Repositories\DBMessage($type);
         //$rdm = new Message\Repositories\RDMessage($type);       

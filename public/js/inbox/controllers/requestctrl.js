@@ -9,7 +9,7 @@ function RequestCtrl($scope, MessageService) {
     }
 
     $scope.del_request = function(id, $event) {
-        console.log(id);
+        MessageService.delete_msg({'id': id, 'type': 'rqs'});
         $event.preventDefault();
     }
     

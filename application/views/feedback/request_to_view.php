@@ -45,23 +45,24 @@
                                 <label>Message : </label> <br />
                                 </td>
                                 <td>
-                                <textarea class="regular-text" name="message" style="float:left" rows="7" id="recipient-message" ></textarea>
+                                <textarea class="regular-text" name="message" style="width: 300px" rows="7" id="recipient-message" ></textarea>
                                 </td>
-                                <td width="125"> 
+                                <td> 
                                     <span ng-controller="RequestCtrl" >
-                                        <ul class="custom-message">   
+                                        <ul class="custom-message" style="margin-left:-10px">   
                                             <li ng-repeat="msg in get_request_msgs()">
                                                 <a href='#' add-request req-text="{{msg.text}}" id="{{msg.id}}">{{msg.short_text}}</a> 
-                                                <span style="margin-left:10px">
+                                                <span style="float:right">
                                                     <a href='#' edit-request req-text="{{msg.text}}" id="{{msg.id}}">edit</a> 
                                                     <a href='#' delete-request ng-click="del_request(msg.id, $event)" req-text="{{msg.text}}" id="{{msg.id}}">delete</a>
                                                 </span>
                                             </li>
                                         </ul>
-                                        <div class="conf-repl">
-                                            <?=HTML::link('settings', '(add request message)', array('class' => 'add-request-msg'))?>
-                                        </div>
                                     </span>
+
+                                    <div class="conf-repl" style="margin-left:-10px">
+                                        <?=HTML::link('settings', '(add request message)', array('class' => 'add-request-msg'))?>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -83,13 +84,4 @@
     </div>
 <!-- end of reply-box -->
 <?=Form::close()?>
-
-<div class="request-configure" style="display:none">  
-    <h4 ng-model="name">{{name}}</h4>
-    <input type="text" class="regular-text" name="msg" value="" /><br/>
-    <input type="hidden" name="msgid" value="" id="msgid"/>
-    <div class="add-msg-box-buttons">
-        <input type="button" class="small-btn" value="Cancel" cancel-request-add/>
-        <input type="submit" class="small-btn" value="" exec-request-item/>
-    </div>
-</div>
+<?=View::make('feedback/partials/modal_message_configure');?>
