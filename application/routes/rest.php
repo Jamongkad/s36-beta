@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
@@ -12,7 +12,7 @@ return array(
 *****************/
 
 	'POST /rest/account/login'=>array('name'=>'login','do'=>function(){
-        $input = Input::get();
+        $input = Input::all();
         $auth = new S36Auth;
         $company_name = Config::get('application.subdomain');
         $auth->login($input['username'],$input['password'], Array('company' => $company_name)); 
