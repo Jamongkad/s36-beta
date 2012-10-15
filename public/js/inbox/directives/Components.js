@@ -32,11 +32,12 @@ angular.module('Components', ['reply', 'request'])
                         MessageService.save({'type': msgtype, 'msg': text});
 
                         if(msgtype == 'msg') {
-                            MessageService.fetch_reply_messages();     
+                            MessageService.fetch_messages(msgtype);     
                             MessageService.register_reply_message();
                         }
 
                         if(msgtype == 'rqs') {
+                            MessageService.fetch_messages(msgtype);     
                             MessageService.register_request_message();
                         }
                        

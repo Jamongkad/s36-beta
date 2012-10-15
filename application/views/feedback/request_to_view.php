@@ -10,7 +10,7 @@
             <br />
             <br />
             <div class="reply-box-form">
-                <h3>Recepient Details</h3>
+                <h3>Recipient Details</h3>
                     <div>
                         <table width="100%" cellpadding="5" cellspacing="0">
                             <tr>
@@ -45,7 +45,7 @@
                                 <label>Message : </label> <br />
                                 </td>
                                 <td>
-                                <textarea class="regular-text" name="message" style="width: 300px" rows="7" id="recipient-message" ></textarea>
+                                <textarea class="regular-text" name="message" style="width: 266px" rows="7" id="recipient-message" ></textarea>
                                 </td>
                                 <td> 
                                     <span ng-controller="RequestCtrl" >

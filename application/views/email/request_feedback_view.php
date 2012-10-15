@@ -52,7 +52,7 @@
 								<br /><br />
                                 <?=ucfirst($email_data->from->username)?> also has this to add:
 								<br /><br />                                
-                                <h3>"<?=ucfirst($email_data->message)?>"</h3>
+                                <h3>"<?=ucfirst(strtolower($email_data->message))?>"</h3>
                             </td>
                         </tr>
                         <tr height="80">

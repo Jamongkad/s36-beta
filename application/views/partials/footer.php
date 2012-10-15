@@ -32,6 +32,8 @@
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
 
 <?=HTML::script('js/inbox/S36InboxModule.js')?>
+<?=HTML::script('js/jquery.flot.js')?>
+<?=HTML::script('js/jquery.flot.pie.js')?>
 
 <?=HTML::script('js/head.min.js')?>
 <?
@@ -44,10 +46,7 @@
      , '/js/jquery.ajaxfileupload.js' 
      //, '/js/jquery.fileupload.js'
      , '/js/jquery.zclip.js' 
-     , '/js/jquery.flot.js'
-     , '/js/jquery.flot.pie.js'
      , '/js/jquery.pjax.js'
-     //, '/js/jquery.timeago.js'
      , '/js/inbox/s36LightBox.js'
      , '/js/inbox/ZClip.js'
      , '/js/inbox/Checky.js'

@@ -9,28 +9,21 @@
         <div class="reply-box-content">
         <div class="reply-box-form">
             <table cellpadding="5" width="100%" cellspacing="0">
-            <!--
             <tr>
-                <td width="15%"><strong>From :</strong></td>
-                <td width="50%"><input type="text" class="regular-text"/></td>
-                <td class="small">Configure your brand/company name here that your user will recognize (e.g. Razer)</td>
-            </tr>
-            -->
-            <tr>
-                <td><strong>Reply To :</strong></td>
+                <td><label>Reply To:</label></td>
                 <td class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
                 <td class="small">
                     Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
                 </td>
             </tr>
             <tr>
-                <td><strong>To :</strong> </td>
+                <td><label>To:</label> </td>
                 <td class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    <strong>Bcc :</strong>
+                    <label>Bcc:</label>
                 </td>
                 <td class="bcc-target" feedid="<?=$feedback->id?>">
                     <textarea class="regular-text" name="bcc" rows="2" style='width: 338px'></textarea>
@@ -42,7 +35,7 @@
             <?if($user->ffemail1):?>
             <tr>
                 <td valign="top">
-                    <strong>Add to Bcc : </strong>
+                    <label>+ Bcc: </label>
                 </td>
                 <td>
                     <ul class="add-bcc" reply-bcc>
@@ -70,14 +63,14 @@
             </tr>
             <?endif?>
             <tr>
-                <td><strong>Subject : </strong> </td>
+                <td><label>Subject: </label> </td>
                 <td>
                     <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" />
                 </td>
                 <td></td>
             </tr>
             <tr>
-                <td valign="top"><strong>Message : </strong> </td>
+                <td><label>Message: </label> </td>
                 <td>
                     <textarea class="regular-text" rows="6" name="message"></textarea>
                 </td>

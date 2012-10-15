@@ -19,8 +19,8 @@ angular.module('Services', [])
         });
     }
 
-    shared_service.fetch_reply_messages = function() {
-        shared_service.get_messages('msg');
+    shared_service.fetch_messages = function(msgtype) {
+        shared_service.get_messages(msgtype);
     }
 
     shared_service.save = function(msg_obj) {    

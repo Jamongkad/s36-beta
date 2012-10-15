@@ -36,14 +36,14 @@
                             	<h4 style="line-height:normal"><?=ucfirst($sender)?> has read your feedback and wants to get into contact with you.</h4>  
                                 <div style="padding:10px;background:#f4f4f4;">
                                     <?=ucfirst($sender)?> says,<br/>
-                                    "<?=ucfirst($message)?>"
+                                    "<?=ucfirst(strtolower($message))?>"
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
                                 <br/><br/>
-                                <h5 style="line-height:normal">Your feedback submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
+                                <h5 style="line-height:normal">Your feedback was submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
                             </td>
                         </tr>
                         <tr>

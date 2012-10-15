@@ -16,7 +16,7 @@ function RequestCtrl($scope, MessageService) {
     //Broadcast Messages
     $scope.$on('addRequestMessage', function()  {
         $scope.$apply(function() {
-            $scope.requests.push(MessageService.pushdata); 
+            $scope.requests = MessageService.message;
         })
     });
 }
