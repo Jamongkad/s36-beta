@@ -6,7 +6,7 @@ return array(
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
-        $limit = 2;
+        $limit = 1;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
