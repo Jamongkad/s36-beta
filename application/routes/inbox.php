@@ -8,6 +8,8 @@ return array(
         $redis = new redisent\Redis;
         $limit = 5;
 
+        print_r("Mathew");
+
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
         $filters = array(
