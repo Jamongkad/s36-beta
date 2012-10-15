@@ -112,7 +112,6 @@ return array(
             $tf->data->rdmset = new Message\Services\SettingMessage($tf->data->rdm);
             $tf->data->rdmset->get_messages();
             $tf->dump($tf->data->rdmset->jsonify());
-
         });
 
         $tf->run();  
