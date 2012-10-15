@@ -118,6 +118,6 @@ return array(
     },
 
     'GET /testify/inbox' => function() {  
-        Helpers::dump("mathew");
+        Helpers::dump("mathew is the shit");
     }
 );
