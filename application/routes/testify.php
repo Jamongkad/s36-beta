@@ -118,6 +118,30 @@ return array(
     },
 
     'GET /testify/inbox' => function() {  
-        Helpers::dump("mathew is the shit");
+        $tf = new Testify("Inbox Service");
+        $tf->beforeEach(function($tf) {
+            $tf->data->inbox_service = new Feedback\Services\InboxService;
+        });
+
+        $tf->test("Inbox Testing", function($tf)  {
+            
+            $filters = array(
+                  'limit'=> 3
+                , 'site_id'=> false 
+                , 'filter'=> 'published' //(new arrivals) all (show only) featured published
+                , 'choice'=> 'all' //positive negative neutral profanity flagged mostcontent
+                , 'date'  => false //date_new date_old
+                , 'rating' => false //5 4 3 2 1
+                , 'category' => false 
+                , 'priority' => false //low medium high
+                , 'status' => false //new inprogress closed
+                , 'company_id' => 6
+            );
+            $tf->data->inbox_service->ignore_cache = True;
+            $tf->data->inbox_service->set_filters($filters);
+            $feedback = $tf->data->inbox_service->present_feedback();
+            $tf->dump($feedback);
+        });
+        $tf->run();
     }
 );

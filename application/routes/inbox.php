@@ -38,8 +38,7 @@ return array(
         //Reply messages
         $type = 'msg';
         $dbm = new Message\Repositories\DBMessage($type);
-        $rdm = new Message\Repositories\RDMessage($type);       
-
+        //$rdm = new Message\Repositories\RDMessage($type);       
         $sm = new Message\Services\SettingMessage($dbm);       
         $sm->get_messages();
         
