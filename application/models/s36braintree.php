@@ -20,7 +20,6 @@
             \Braintree_Configuration::merchantId('nq9jcgbqntjg9ktd');
             \Braintree_Configuration::publicKey('2y99t792gdwy8bqz');
             \Braintree_Configuration::privateKey('0c410ba21ac3498d755c9fd6ad5cd491');
-
         }
 
         // create new braintree object using company id.
