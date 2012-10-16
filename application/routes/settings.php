@@ -125,10 +125,6 @@ return array (
 					      	);
 							break;			
 					}
-<<<<<<< HEAD
-=======
-
->>>>>>> 7f227a773e2cdbd28f61301edcc4e8f0e46bfb1d
     }  
     ),
     /*handle ajax request from upgrade_plan view with braintree account creation*/
