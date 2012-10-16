@@ -67,6 +67,7 @@ return array (
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
+
 			$plan 				= new Plan\Repositories\DBPlan;
 			$DBCountry 			= new DBCountry;
 			$accountService 	= new Account\Services\AccountService;

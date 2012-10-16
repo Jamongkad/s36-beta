@@ -5,14 +5,19 @@
             <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children->total_rows?>">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
-                    <!--
-                    (<abbr class="timeago" title="<?=date("Y-m-d h:i:s", $feeds->unix_timestamp)?>"></abbr>)
-                    -->
                 </div>
 
                 <?foreach($feeds->children->result as $feed):?>
                     <p></p>
-                    <? $id = $feed->id ?>
+                    <? $id = $feed->id ?> 
+                    <div class="dialog-form" feedid="<?=$id?>"> 
+                        <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
+                            <?=View::make('feedback/reply_to_view', array(
+                                   'user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message
+                               ))?>
+                        <?=Form::close()?>
+                    </div>
+     
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
                             <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
@@ -135,7 +140,6 @@
                                         </div> 
                                     </div>
                                     <!-- end of category picker-->
-
                                     <div class="options">
                                         <?if($feed->rating != "POOR" and $feed->permission_css != 'private-permission'):?>
                                             <?if($admin_check->inbox_approve == 0):?>
@@ -171,7 +175,7 @@
                                                                  style="background-position: -60px -51px;"/>
                                         <?endif?>
 
-                                        <input type="button" class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
+                                        <input type="button" feedid="<?=$id?>" my-reply class="reply" hrefaction="<?=URL::to('/feedback/reply_to/'.$id)?>" tooltip="Reply to user" tt_width="65"/>
                                         <?if($admin_check->inbox_fastforward == 0):?>
                                             <input type="button" class="contact" tooltip="Option Disabled" tt_width="75" style="opacity:0.2; filter:alpha(opacity=40)"/> 
                                         <?else:?>
