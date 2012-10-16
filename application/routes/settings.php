@@ -145,7 +145,7 @@ return array (
 			
 			$messages = array(
 			 'numeric' 		=> 'Must be a number.',
-			 'min'			=> 'Must be at least :min digits'
+			 'min'			=> 'Must be at least :min digits.'
 			);
 			
 				$accountService 	= 	new Account\Services\AccountService;
@@ -161,17 +161,17 @@ return array (
 			
 				/*custom error messages*/
 				if(isset($validator->errors->messages['billing_first_name'])){
-					$validator->errors->messages['billing_first_name'] = 'The first name field is required';
+					$validator->errors->messages['billing_first_name'] = 'The first name field is required.';
 				}
 				if(isset($validator->errors->messages['billing_first_name'])){
-					$validator->errors->messages['billing_last_name'] = 'The last name field is required';
+					$validator->errors->messages['billing_last_name'] = 'The last name field is required.';
 				}
 				if(empty($billing_info['plan_selected'])){ 
 						$validator->errors->messages['plan_selected'][0] = 'Please select your subscription plan.';
 				}
 				if(!empty($billing_info['billing_expire_month']) && !empty($billing_info['billing_expire_year'])){
 				if($billing_info['billing_expire_month'] < date('m') && $billing_info['billing_expire_year'] <= date('Y')){
-						$validator->errors->messages['billing_expire_date'][]='Expiration date is invalid';
+						$validator->errors->messages['billing_expire_date'][]='Expiration date is invalid.';
 				}}
 				
 				if($result['success']==false){
@@ -229,7 +229,7 @@ return array (
 				}
 				if(!empty($card_data['billing_expire_month']) && !empty($card_data['billing_expire_year'])){
 				if($card_data['billing_expire_month'] < date('m') && $card_data['billing_expire_year'] <= date('Y')) {
-						$validator->errors->messages['billing_expire_date'][]='Expiration month is invalid';
+						$validator->errors->messages['billing_expire_date'][]='Expiration date is invalid.';
 				}}
 				return json_encode(array(
 									'error'		=>true,

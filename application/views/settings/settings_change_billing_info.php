@@ -10,8 +10,13 @@
 		$('#error_'+id).css('display','none');
 		$('#error_'+id).html('');
 	}
+    function capitalize(id){
+        $('#'+id).css('text-transform','capitalize');
+    }
 				$(document).ready(function(){
-
+                        $('#billing_first_name, #billing_last_name, #billing_city').blur(function(){
+                            capitalize(this.id);
+                        });
 						$('#save_all').click(function(){
 								$('.alert').css('display','none');
 								$('#progress_box_address').css('display','block');
