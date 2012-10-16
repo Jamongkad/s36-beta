@@ -513,23 +513,11 @@ class DBFeedback extends S36DataObject {
         $column   = $feedbackstate->column;
         $in_query = $feedbackstate->query;
         $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
-        $sth = $this->dbh->prepare($sql);  
+        $sth = $this->dbh->prepare($sql); 
         foreach($feedbackstate->block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
         }
         return $sth->execute();       
-    }
-
-    public function _gather_multiple($feedbackstate) { 
-        $in_query = $feedbackstate->query;
-        $sql = "SELECT * FROM Feedback WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
-        $sth = $this->dbh->prepare($sql);  
-        foreach($feedbackstate->block_id as $k => $id) {
-            $sth->bindValue(($k+1), $id['feedid']);
-        }
-
-        $sth->execute();       
-        return $sth->fetchAll(PDO::FETCH_CLASS);
     }
 
     public function _permanent_delete($opts) { 
