@@ -368,5 +368,5 @@ return array(
             $DBPlan = new \Plan\Repositories\DBPlan;
             Helpers::show_data($S36Braintree->update_subscription('free'));
 			exit();
-    }
+    	}
 );

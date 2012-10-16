@@ -3,6 +3,13 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 
 class DBCompany extends S36DataObject {
+
+    var $companyId;
+
+    public function set_companyId($id) {
+        $this->companyId = $id;     
+    }
+
     public function update_company_emails($post) {
         DB::Table('Company', 'master') 
             ->where('companyId', '=', $post->companyid)
@@ -58,7 +65,7 @@ class DBCompany extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
-    }
+    } 
     
     public function get_account_owner($id = NULL){
     	$user 		= S36Auth::user();
@@ -108,4 +115,8 @@ class DBCompany extends S36DataObject {
     			->where('companyId','=',$user->companyid)
     			->update(array('bt_customer_id'=>$id));
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

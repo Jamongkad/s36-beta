@@ -242,7 +242,6 @@ return array (
 										'error'=>false,
 										'messages'=>'Your credit card has been updated.'));
 			}		     
-        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
  
     'GET /settings/change_billing_info' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
