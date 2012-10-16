@@ -38,8 +38,8 @@ class DBCompany extends S36DataObject {
             )); 
     }
 
-    public function get_company_info($company_id) {
-
+    public function get_company_info($company_id = null) {
+        $company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
         if(is_numeric($company_id)) {
             $company_sql = "Company.companyId = :company_id";
         } else { 
@@ -115,8 +115,4 @@ class DBCompany extends S36DataObject {
     			->where('companyId','=',$user->companyid)
     			->update(array('bt_customer_id'=>$id));
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 }
