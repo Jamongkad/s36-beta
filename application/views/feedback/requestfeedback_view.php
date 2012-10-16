@@ -10,24 +10,24 @@
                     <table width="100%">
                         <tr>
                             <td width="120">
-                            <label>First Name : </label><br />
+                            <label>First Name: </label><br />
                             <input type="text" name="first_name" class="regular-text" id="recipient-fname" value="<?=$input['first_name']?>"/>
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('first_name')."</p>" : null?>
                             </td>
                             <td width="120">
-                            <label>Last Name :</label><br />
+                            <label>Last Name: </label><br />
                             <input type="text" name="last_name" class="regular-text" id="recipient-lname" value="<?=$input['last_name']?>"/>
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('last_name')."</p>" : null?>
                             </td>
                         </tr>
                         <tr>
                             <td width="120">
-                            <label>Email : </label><br />
+                            <label>Email: </label><br />
                             <input type="text" name="email" class="regular-text" id="recipient-email" value="<?=$input['email']?>"/>
                             <?=($errors) ? "<p style='color:red; padding-left:10px'>".$errors->first('email')."</p>" : null?>
                             </td>
                             <td width="120">
-                            <label>Website : </label><br />
+                            <label>Website: </label><br />
                             <select name="site_id">
                                 <?foreach($sites as $site):?>
                                     <option value="<?=$site->siteid?>"><?=$site->domain?></option>

@@ -15,7 +15,7 @@
                         <table width="100%" cellpadding="5" cellspacing="0">
                             <tr>
                                 <td width="130">
-                                <label>First Name : </label>
+                                <label>First Name: </label>
                                 </td>
                                 <td>
                                 <input type="text" name="first_name" class="regular-text" id="first_name" value=""/>
@@ -24,7 +24,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                <label>Last Name : </label>
+                                <label>Last Name: </label>
                                 </td>
                                 <td>
                                 <input type="text" name="last_name" class="regular-text" id="last_name" value=""/>
@@ -33,7 +33,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Email : </label>
+                                    <label>Email: </label>
                                 </td>
                                 <td>
                                     <input type="text" name="email" class="regular-text" id="recipient-email" value=""/>
@@ -41,8 +41,8 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>
-                                <label>Message : </label> <br />
+                                <td valign="top">
+                                <label>Message: </label>
                                 </td>
                                 <td>
                                 <textarea class="regular-text" name="message" style="width: 266px" rows="7" id="recipient-message" ></textarea>
