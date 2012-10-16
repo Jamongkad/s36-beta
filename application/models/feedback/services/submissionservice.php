@@ -49,6 +49,7 @@ class SubmissionService {
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $this->post_data->get('company_id');
         $this->halcyonic->save_latest_feedid(); 
+        return ($feedbackservice) ? DB::table('Feedback')->where('feedbackId','=',$new_feedback_id)->first() : false;
     }
 
     public function metric_response() {

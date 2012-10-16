@@ -206,10 +206,11 @@ class DBFeedback extends S36DataObject {
     }
 
     //TODO: Caching Candidate -> Priority Number One
-    public function pull_feedback_by_company($opts) {
-        $published_statement = Null;
-        $featured_statement = Null;
-        $combined_statement = Null;
+    public function pull_feedback_by_company(array $opts=null) {
+        $published_statement=   Null;
+        $featured_statement =   Null;
+        $combined_statement =   Null;
+        $siteid_statement   =   Null;
 
         if($opts['is_published'] == 1 && $opts['is_featured'] == 0) {
            $published_statement = "AND Feedback.isPublished = 1";
@@ -221,6 +222,9 @@ class DBFeedback extends S36DataObject {
  
         if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
            $combined_statement = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1)";
+        }
+        if(isset($opts['site_id']) && !empty($opts['site_id'])){
+            $siteid_statement  = "AND Site.siteId = '".$opts['site_id']."'";
         }
 
         $sql = '
@@ -244,8 +248,8 @@ class DBFeedback extends S36DataObject {
                         Company
                         ON Company.companyId = Site.companyId
                     WHERE 1=1
-                        AND Site.siteId = :site_id 
                         AND Company.companyId = :company_id
+                        '.$siteid_statement.'
                         '.$published_statement.'
                         '.$featured_statement.'
                         '.$combined_statement.'
@@ -255,17 +259,17 @@ class DBFeedback extends S36DataObject {
         
         
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $opts['company_id'], PDO::PARAM_INT);              
-        $sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
+        $sth->bindParam(':company_id', S36Auth::user()->companyid, PDO::PARAM_INT);              
+        //$sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
         $sth->execute();       
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         $result_obj = new StdClass;
-        $result_obj->result = $result;
-        $result_obj->site_id = $opts['site_id'];
+        $result_obj->site_id    = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
+        $result_obj->result = $result;
         return $result_obj;       
     }
 
@@ -603,7 +607,11 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
-
+    public function update_feedback($id,$fields){
+        return DB::table('Feedback','master')
+                    ->where('feedbackId','=',$id)
+                    ->update($fields);
+    }
     public function update_feedback_text($feedback_id, $text, $is_profane)  { 
         $affected = DB::table('Feedback', 'master')
             ->where('feedbackId', '=', $feedback_id)

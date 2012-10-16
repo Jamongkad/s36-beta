@@ -8,18 +8,17 @@ class DBPlan extends S36DataObject{
 
 
 public function get_planInfo($planId = NULL){
-		$tbl_plan = DB::table('Plan');
 		if(!empty($planId)){
-			$planInfo = $tbl_plan->where('planid','=',$planId)
+			$planInfo = DB::table('Plan')->where('planid','=',$planId)
+										->or_where('name','=',$planId)
 										->order_by('price','desc')->first();
-			$planInfo->upgrade_images = $this->get_upgradePlanImages($planId);
+			$planInfo->upgrade_images = $this->get_upgradePlanImages($planInfo->planid);
 			return $planInfo;
 		}
 		else{
-			return $tbl_plan->order_by('price','desc')->get();
+			return DB::table('Plan')->order_by('price','desc')->get();
 		}
 }
-
 
 public function get_upgradePlanImages($planId = NULL){		
 
@@ -27,25 +26,25 @@ public function get_upgradePlanImages($planId = NULL){
 	if(!empty($planId)):
 	
 		switch($planId){
-			case 1://free
+			case 1:
 				$return = array(
 					'current'=>'current-free',
 					'upgrade'=>'upgrade-basic'					
 					);
 				break;
-			case 2://Basic
+			case 2:
 				$return = array(
 					'current'=> 'current-basic',
 					'upgrade'=> 'upgrade-enhanced'					
 					);
 				break;
-			case 3://Enhanced
+			case 3:
 				$return = array(
 					'current'=> 'current-enhanced',
 					'upgrade'=> 'upgrade-premium'					
 					);
 				break;
-			case 4://Premium
+			case 4:
 				$return = array(
 					'current'=> 'current-premium',
 					'upgrade'=> false					
