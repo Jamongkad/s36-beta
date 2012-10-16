@@ -80,7 +80,9 @@
         	span.result{ color: #DCDCDC;display: block;padding: 0.6em; }
         	.green{color:#94c25d;}
         	.red{ color:#fb4357;}
-        	        	
+        	
+        	
+        	
         	ul{
         		list-style:none;
         		font-size:19px;
@@ -158,24 +160,6 @@
         		-webkit-transition:0.25s;
         		transition:0.25s;
         	}
-
-        	div.dump {
-        		font-size:11px;
-        		color:#444;
-        		
-        		-moz-transition:0.25s;
-        		-webkit-transition:0.25s;
-        		transition:0.25s;
-        	}
-
-            div.dump pre {
-                font-size:15px;
-                white-space: pre-wrap;       /* css-3 */
-                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-                white-space: -pre-wrap;      /* Opera 4-6 */
-                white-space: -o-pre-wrap;    /* Opera 7 */
-                word-wrap: break-word;  
-            }
         	
         	li:hover div.source{
         		color:#444;
@@ -203,7 +187,7 @@
 					<span class="green">Far out! Everything passed!</span>
 					<span class="red">Bummer! You have failing tests!</span>
 				</div>
-  
+				
 				<?php
 				foreach($cases as $caseTitle => $case){ ?>
 					
@@ -223,7 +207,6 @@
 								<span class="line">line <?php echo $test['line']?></span>
 								<span class="file"><?php echo $test['file']?></span>
 								<div class="source"><?php echo htmlspecialchars($test['source'])?></div>
-								<div class="dump"><pre><?php print_r($test['data'])?></pre></div>
 							</li>
 							
 						<?php } ?>

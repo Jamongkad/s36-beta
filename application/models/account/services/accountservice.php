@@ -48,7 +48,6 @@ public function create_braintree_account($input){
 			$this->DBCompany->update_plan($newPlan->planid);
 	}
 	return $result;
-
 }
 
 public function update_plan($planId){

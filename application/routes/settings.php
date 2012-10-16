@@ -65,7 +65,7 @@ return array (
         } 
 
     },
-    
+
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
 			$plan 				= new Plan\Repositories\DBPlan;
 			$DBCountry 			= new DBCountry;
@@ -125,6 +125,10 @@ return array (
 					      	);
 							break;			
 					}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7f227a773e2cdbd28f61301edcc4e8f0e46bfb1d
     }  
     ),
     /*handle ajax request from upgrade_plan view with braintree account creation*/
@@ -242,9 +246,9 @@ return array (
 										'error'=>false,
 										'messages'=>'Your credit card has been updated.'));
 			}		     
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
-    
-    
+ 
     'GET /settings/change_billing_info' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
 			$accountService = new Account\Services\AccountService;		
     		$DBCountry = new DBCountry;
@@ -312,7 +316,6 @@ return array (
     
 
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_cancel_account_view');
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
 );
-

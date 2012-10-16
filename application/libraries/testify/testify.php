@@ -10,15 +10,7 @@
  * @link		http://tutorialzine.com/testify/
  * @throws		TestifyException
  * @license		GPL
- *
- *
- * @version     0.4
- * @author      Mathew Wong
- * @license     GPL
- *   
  */
-
-
 
 use Exception, StdClass;
 
@@ -245,15 +237,6 @@ class Testify{
 		// This check fails every time
 		return $this->recordTest(false);
 	}
-
-	/**
-	 * Dump Data
-	 * 
-	 */
-
-    public function dump($arg){ 
-        return $this->recordTest($arg, True);
-    }
 	
 	/**
 	 * Generates a pretty HTML5 report of the test suite status. Called implicitly by {@see run}
@@ -278,7 +261,7 @@ class Testify{
 	 * @return boolean
 	 */
 	
-	private function recordTest($pass, $dump_data=False){
+	private function recordTest($pass){
 		
 		if(	!array_key_exists($this->currentTestCase, $this->stack) ||
 			!is_array($this->stack[$this->currentTestCase])){
@@ -293,20 +276,14 @@ class Testify{
 		$bt[1]['file'] = basename($bt[1]['file']);
 		
 		$result = $pass ? "pass" : "fail";
-
-        if($dump_data) {
-            $result = "pass";     
-        }
-
 		$this->stack[$this->currentTestCase]['tests'][] = array(
 			"type"		=> $bt[1]['function'],
 			"result"	=> $result,
 			"line"		=> $bt[1]['line'],
 			"file"		=> $bt[1]['file'],
-			"source"	=> $source, 
-            "data"      => ($dump_data) ? $pass : NULL
+			"source"	=> $source
 		);
-	    
+		
 		$this->stack[$this->currentTestCase][$result]++;
 		$this->suiteResults[$result]++;
 		
