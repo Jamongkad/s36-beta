@@ -137,6 +137,7 @@ return array(
                 , 'status' => false //new inprogress closed
                 , 'company_id' => 6
             );
+
             $tf->data->inbox_service->ignore_cache = True;
             $tf->data->inbox_service->set_filters($filters);
             $feedback = $tf->data->inbox_service->present_feedback();
