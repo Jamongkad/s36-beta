@@ -1,10 +1,25 @@
 <?php
-header('Access-Control-Allow-Origin: *');
 $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
+    if (isset($_SERVER['HTTP_ORIGIN'])) {
+        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Max-Age: 86400');    // cache for 1 day
+    }
 
+    // Access-Control headers are received during OPTIONS requests
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+        exit(0);
+    }
 return array(
 
 /****************
@@ -15,52 +30,56 @@ return array(
         $input = Input::all();
         $auth = new S36Auth;
         $company_name = Config::get('application.subdomain');
-        $auth->login($input['username'],$input['password'], Array('company' => $company_name)); 
+        $username = (isset($input['username'])) ? $input['username'] : null;
+        $password = (isset($input['password'])) ? $input['password'] : null;
+        $auth->login($username,$password, Array('company' => $company_name)); 
         if($auth->check()) {
             $token  = $auth->user()->encryptstring;
+            Cookie::put('authcookie', $token,60);
             $result = array('user' => $auth->user(),'token' =>$token);
             echo return_json(array('data'=>$result));
         } else {
-            echo return_json(array('success'=>false,'message'=>'Invalid login credentials'));
+            echo return_json(array('success'=>false,'message'=>'Authentication failed'));
         } 
 	}),
 
 	'GET /rest/account/logout' => array('name'=>'logout','do'=>function(){
         $auth = new S36Auth;
+        Cookie::forget('authcookie');
         $auth->logout();
-        echo return_json(array('success'=>true));
+        echo return_json(array('success'=>true,'message'=>'Log out has been completed'));
     }),
 
 /**************
 *	FEEDBACK
 ***************/
-    'GET /rest/feedback'=>array('name'=>'feedback','before' => 's36_auth','do'=>function(){
+    'GET /rest/feedback'=>array('name'=>'feedback','before' => 's36_auth_rest','do'=>function(){
        echo return_json(array('data'=>getFeedback()));
     }),
 
-	'GET /rest/feedback/inbox'=>array('name'=>'inbox','before' => 's36_auth','do'=>function(){
+	'GET /rest/feedback/inbox'=>array('name'=>'inbox','before' => 's36_auth_rest','do'=>function(){
         echo return_json(array('data'=>getFeedback()));
 	}),
 
-    'GET /rest/feedback/published'=>array('name'=>'published_feedback','before' => 's36_auth','do'=>function(){
+    'GET /rest/feedback/published'=>array('name'=>'published_feedback','before' => 's36_auth_rest','do'=>function(){
         echo return_json(array('data'=>getFeedback(array(
                                             'filter'   =>   'published'
         ))));
     }),
 
-    'GET /rest/feedback/filed'=>array('name'=>'filed_feedback','before' => 's36_auth','do'=>function(){
+    'GET /rest/feedback/filed'=>array('name'=>'filed_feedback','before' => 's36_auth_rest','do'=>function(){
         echo return_json(array('data'=>getFeedback(array(
                                             'filter'   =>   'filed'
         ))));
     }),
 
-    'GET /rest/feedback/featured'=>array('name'=>'featured_feedback','before' => 's36_auth','do'=>function(){
+    'GET /rest/feedback/featured'=>array('name'=>'featured_feedback','before' => 's36_auth_rest','do'=>function(){
        echo return_json(array('data'=>getFeedback(array(
                                             'is_featured'    =>   1
         ))));
     }),
 
-    'POST /rest/feedback'=>array('name'=>'add_feedback','before' => 's36_auth','do'=>function(){
+    'POST /rest/feedback'=>array('name'=>'add_feedback','before' => 's36_auth_rest','do'=>function(){
         $data   = Input::all();
         $data['company_id'] = S36Auth::user()->companyid;
         $rules  = Array(
@@ -82,18 +101,18 @@ return array(
         }
     }),
 
-    'GET /rest/feedback/(:num)'=>array('name'=>'feedback','before' => 's36_auth','do'=>function($id){
+    'GET /rest/feedback/(:num)'=>array('name'=>'feedback','before' => 's36_auth_rest','do'=>function($id){
         $feedback = new Feedback\Repositories\DBFeedback;
         echo return_json(array('data'=>$feedback->pull_feedback_by_id($id)));
     }),
 
 
-    'POST /rest/feedback/(:num)'=>array('name'=>'modify_feedback','before' => 's36_auth','do'=>function($id)use ($feedback, $badwords){
+    'POST /rest/feedback/(:num)'=>array('name'=>'modify_feedback','before' => 's36_auth_rest','do'=>function($id)use ($feedback, $badwords){
         $feedbackService = new Feedback\Services\FeedbackService($feedback,$badwords);
         echo return_json(array('data'=>$feedbackService->update_feedback($id,Input::all()))); 
     }),
     
-    'POST /rest/feedback/fastforward'=>array('name'=>'fastforward_feedback','before' => 's36_auth','do'=>function()use ($feedback, $badwords){
+    'POST /rest/feedback/fastforward'=>array('name'=>'fastforward_feedback','before' => 's36_auth_rest','do'=>function()use ($feedback, $badwords){
         $data = Input::all();
         $rules = Array(
             'site_id'    => 'required'
