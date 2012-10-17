@@ -51,4 +51,17 @@ return array(
     's36_is_admin' => function() { 
         return (S36Auth::user()->itemname != "Admin") ? Redirect::to('admin') : Null;
     },
+
+    's36_auth_rest' => function() {
+    	$auth = Cookie::get('authcookie');
+        if(isset($auth) && !empty($auth) && (S36Auth::user()->encryptstring==$auth)) {
+            return null;     
+        } else {
+            return json_encode(array(
+				'success'	=>	false,
+				'message'	=>	'Authentication failed',
+				'data'		=>	null
+			));
+        }
+    },
 );
