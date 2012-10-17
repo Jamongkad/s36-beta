@@ -3,6 +3,7 @@ $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
+
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         header('Access-Control-Allow-Credentials: true');
@@ -20,6 +21,7 @@ $badwords = new DBBadWords;
 
         exit(0);
     }
+
 return array(
 
 /****************
@@ -158,9 +160,6 @@ function return_json(array $result){
 		'data'		=>	isset($result['data'])    ? $result['data']    : null
 	));
 }
-
-
-
 
 function set_filters(array $input=null){
     $filters['site_id']     = (isset($input['site_id']))    ? $input['site_id']     : null;
