@@ -65,5 +65,10 @@ return array(
         $view->partial('company_header', 'partials/company_header');
         $view->partial('company_footer', 'partials/company_footer'); 
         return $view; 
+    }),
+     'partials/fullpage_layout' => array('name' => 'fullpage_layout', function($view) {
+        $view->partial('company_header', 'partials/fullpage_header');
+        $view->partial('company_footer', 'partials/fullpage_footer'); 
+        return $view; 
     })
 );

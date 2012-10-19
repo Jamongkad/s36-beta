@@ -5,6 +5,8 @@ $hosted_settings = new Widget\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
+$twitter = new \twitter\twitter('danOliverC');
+$user = S36Auth::user();
 
 return array(
 
@@ -21,7 +23,7 @@ return array(
 	| Need more breathing room? Organize your routes in their own directory.
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
-	*/
+	*//*
     'GET /' => function() use($company_name, $hosted_settings, $dbw, $company) { 
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
@@ -52,6 +54,113 @@ return array(
                                                   , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
+*/
+        'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
+        //consider placing this into a View Object
+        $company_info = $company->get_company_info($company_name); 
+        $tweets = $twitter->findTwitts('codiqa');
+        $hosted = new Feedback\Services\HostedService($company_name);
+        $hosted->fetch_hosted_feedback(); 
+        $hosted->build_data();         
+
+        $widget = $dbw->fetch_canonical_widget($company_name);
+
+        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
+                                                       , $company_info->fullpagecompanyname
+                                                       , $company_info->domain);
+
+        $meta = new Hosted\Services\HostedMetadata(Array(
+             'company_name' => $company_info->company_name
+           , 'company_id' => $company_info->companyid
+        ));
+        $meta->calculate_metrics();
+        //\Helpers::show_data($tweets);
+        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
+                                                    'company' => $company_info
+                                                  , 'user' => $user
+                                                  , 'feeds' => $hosted->view_fragment()
+                                                  , 'tweets' => $tweets
+                                                  , 'widget' => $widget
+                                                  , 'feed_count' => $meta->perform()
+                                                  , 'company_header' => $header_view
+                                                  , 'hosted' => $hosted_settings->hosted_settings()));        
+    },
+    'POST /savecoverphoto' => function() use($company){
+      $data = Input::all();
+      $company->update_coverphoto($data);
+      return json_encode($data);
+    },
+    'POST /ajaxfileupload' => function(){
+        $error = "";
+        $msg = "";
+        $filedir = "";
+        $width = "";
+        $file = 'clientLogoImg';
+        if(!empty($_FILES[$file]['error']))
+        {
+          switch($_FILES[$file]['error'])
+          {
+
+            case '1':
+              $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
+              break;
+            case '2':
+              $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
+              break;
+            case '3':
+              $error = 'The uploaded file was only partially uploaded';
+              break;
+            case '4':
+              $error = 'No file was uploaded.';
+              break;
+            case '6':
+              $error = 'Missing a temporary folder';
+              break;
+            case '7':
+              $error = 'Failed to write file to disk';
+              break;
+            case '8':
+              $error = 'File upload stopped by extension';
+              break;
+            case '999':
+            default:
+              $error = 'No error code avaiable';
+          }
+        }elseif(empty($_FILES[$file]['tmp_name']) || $_FILES[$file]['tmp_name'] == 'none'){
+          $error = 'No file was uploaded..';
+        }elseif(($_FILES[$file]['type'] != "image/jpeg") && 
+            ($_FILES[$file]['type'] != "image/gif")  && 
+            ($_FILES[$file]['type'] != "image/pjpeg")&& 
+            ($_FILES[$file]['type'] != "image/x-png")&& 
+            ($_FILES[$file]['type'] != "image/png")){
+            $error = 'Please Upload Image Files Only';
+        }elseif($_FILES[$file]['size'] > 2000000){
+          $error = "Please Upload Images Not Greater than 2MB";
+        }else{
+            //$msg .= " File Size: " . @filesize($_FILES['your_photo']['tmp_name']);
+            //for security reason, we force to remove all uploaded file
+              $filename = date("Ydmhis").$_FILES[$file]['name'];
+              $filedir = "uploaded_images/coverphoto/".$filename;
+              $maxwidth = 800;
+              $maxheight = 140;
+              $move = move_uploaded_file($_FILES[$file]['tmp_name'],"uploaded_images/coverphoto/".$filename);
+              if($move){
+                 //start image resizing..
+                 $resizeObj = new \resize\Resize($filedir);
+                 $resizeObj -> resizeImage($maxwidth, $maxheight, 'landscape');
+                 $resizeObj -> saveImage($filedir, 100);
+              }
+            
+        }
+        echo "{";
+        echo        "error: '" . $error . "',\n";
+        echo        "msg: '" . $filedir  . "',\n";
+        echo        "wid: '" . $width  . "'\n";
+        echo "}";
+    },
+
 
     'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
         $canon_widget = $dbw->fetch_canonical_widget($company_name);

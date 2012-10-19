@@ -8,7 +8,7 @@ a{color:#4894b3;}
 a:hover{color:#54a1c0;}
 
 #headerWrapper{
-	background:url(../images/gray-bg.jpg) repeat-x;
+	background:url(/img/gray-bg.jpg) repeat-x;
 	box-shadow:#aaa 0px 1px 5px;
 	border-top:#DDD 1px solid;
 	border-bottom:#BBB 1px solid;
@@ -18,7 +18,7 @@ a:hover{color:#54a1c0;}
 	color:#aaa;
 	text-shadow:#EEE 0px 1px;
 }
-#headerTitle strong a{color:#5d96d5;}
+#headerTitle strong{color:#5d96d5;}
 #headerTitle span {text-shadow:#EEE 0px 1px;}
 #headerTitle span a{color:#000;}
 #headerTitle a:hover{color:#666;}
@@ -31,7 +31,7 @@ a:hover{color:#54a1c0;}
 .companyLinks ul{}
 .companyLinks ul li{}
 .companyLinks ul li{border-right:1px solid #EEE;}
-.companyLinks ul li a{background:url(../images/companyLinkIcons.png) no-repeat;}
+.companyLinks ul li a{background:url(/img/companyLinkIcons.png) no-repeat;}
 
 
 /* feedbacks */
@@ -43,7 +43,7 @@ a:hover{color:#54a1c0;}
 .featured .feedbackText{}
 .featured .feedbackText p{}
 .featured .feedbackText p:last-child{}
-.featured .feedbackTextTail{background:url(../images/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextTail{background:url(/img/featured-bubble-tail.png) no-repeat;}
 .featured .feedbackTextBubble{background:#FFF;}
 .featured .feedbackMeta{}
 .featured .feedbackMeta{}
@@ -63,7 +63,7 @@ a:hover{color:#54a1c0;}
 .normal .feedbackText{}
 .normal .feedbackText p{color:#595959;}
 .normal .feedbackText p:last-child{}
-.normal .feedbackTextTail{background:url(../images/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextTail{background:url(/img/normal-bubble-tail.png) no-repeat;}
 .normal .feedbackTextBubble{background:#efefef;}
 .normal .feedbackMeta{color:#CCC;}
 .normal .feedbackDate{color:#999;}

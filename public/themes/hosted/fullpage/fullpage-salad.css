@@ -10,13 +10,13 @@ a:hover{color:#54a1c0;}
 
 #headerWrapper{
 	padding-bottom:10px;
-	background:#FFF url(images/salad/salad-bg.png) repeat-x bottom;
+	background:#FFF url(/img/salad/salad-bg.png) repeat-x bottom;
 }
 
 #headerTitle{
 	color:#000;
 }
-#headerTitle strong a{color:#000;}
+#headerTitle strong{color:#000;}
 #headerTitle span {}
 #headerTitle span a{color:#000;}
 #headerTitle a:hover{color:#999;}
@@ -27,7 +27,7 @@ a:hover{color:#54a1c0;}
 .companyDetails p{color:#000;}
 .companyLinks{background:#FFF;}
 .companyLinks ul li{border-right:1px solid #EEE;}
-.companyLinks ul li a{background:url(../../../img/companyLinkIcons.png) no-repeat;}
+.companyLinks ul li a{background:url(/img/companyLinkIcons.png) no-repeat;}
 
 
 /* feedbacks */
@@ -35,14 +35,14 @@ a:hover{color:#54a1c0;}
 .featured{background:#ebebeb;border:1px solid #e0e0e0;}
 .featured .feedbackAuthor h2{color:#222;}
 .featured .feedbackAuthor h4{color:#2c2a2a;}
-.featured .feedbackTextTail{background:url(../../../img/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextTail{background:url(/img/featured-bubble-tail.png) no-repeat;}
 .featured .feedbackTextBubble{background:#FFF;}
 .featured .feedbackDate{color:#7bb5e5;text-shadow:#FFF 0px 1px;}
 /* normal */
 .normal .feedbackAuthor h2{color:#222;}
 .normal .feedbackAuthor h4{color:#2c2a2a;}
 .normal .feedbackText p{color:#595959;}
-.normal .feedbackTextTail{background:url(../../../img/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextTail{background:url(/img/normal-bubble-tail.png) no-repeat;}
 .normal .feedbackTextBubble{background:#efefef;}
 .normal .feedbackMeta{color:#CCC;}
 .normal .feedbackDate{color:#999;}

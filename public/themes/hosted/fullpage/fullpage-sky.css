@@ -3,7 +3,7 @@
 
 body{
 	color:#666;
-	background:#f6f6f6;
+	/* background:#f6f6f6; */
 }
 a{color:#5c8ac0;}
 a:hover{color:#6896cb;}
@@ -19,7 +19,7 @@ a:hover{color:#6896cb;}
 	color:#073870;
 	text-shadow:none;	
 }
-#headerTitle strong a{color:#3e92c7;	text-shadow:none;}
+#headerTitle strong{color:#3e92c7;	text-shadow:none;}
 #headerTitle span {color:#55a3d4;}
 #headerTitle span a{color:#3e92c7;	text-shadow:none;}
 #headerTitle a:hover{color:#55a3d4;	text-shadow:none;}
@@ -30,23 +30,23 @@ a:hover{color:#6896cb;}
 .companyDetails p{color:#000;}
 .companyLinks{background:none;}
 .companyLinks ul li{border-right:1px solid #EEE;}
-.companyLinks ul li a{background:url(../../../img/companyLinkIcons.png) no-repeat;}
+.companyLinks ul li a{background:url(/img/companyLinkIcons.png) no-repeat;}
 
 
 /* feedbacks */
 .feedback{background:#FFF;border:1px solid #cdcdcd;box-shadow:none;}
-.featured{background:#efefef url(images/sky/feedback-bg.png) top repeat-x;border:1px solid #cdcdcd;}
+.featured{background:#efefef url(/img/sky/feedback-bg.png) top repeat-x;border:1px solid #cdcdcd;}
 .featured .feedbackAuthor h2{color:#1982ad;}
 .featured .feedbackAuthor h4{color:#2c2a2a;}
-.featured .feedbackTextTail{background:url(../../../img/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextTail{background:url(/img/featured-bubble-tail.png) no-repeat;}
 .featured .feedbackTextBubble{background:#FFF;}
 .featured .feedbackDate{color:#666666;text-shadow:#FFF 0px 1px;}
 /* normal */
-.normal{background:#ededed url(images/sky/feedback-bg.png) top repeat-x;border:1px solid #cdcdcd;}
+.normal{background:#ededed url(/img/sky/feedback-bg.png) top repeat-x;border:1px solid #cdcdcd;}
 .normal .feedbackAuthor h2{color:#1982ad;}
 .normal .feedbackAuthor h4{color:#2c2a2a;}
 .normal .feedbackText p{color:#595959;}
-.normal .feedbackTextTail{background:url(../../../img/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextTail{background:url(/img/normal-bubble-tail.png) no-repeat;}
 .normal .feedbackTextBubble{background:#efefef;}
 .normal .feedbackMeta{color:#CCC;}
 .normal .feedbackDate{color:#999;}

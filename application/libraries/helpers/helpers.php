@@ -336,4 +336,38 @@ class Helpers {
       }
 
     }
+
+    public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality, $x, $y){
+        // Takes the sourcefile (path/to/image.jpg) and makes a thumbnail from it
+        // and places it at endfile (path/to/thumb.jpg).
+
+        // Load image and get image size.
+        $img = imagecreatefromjpeg($sourcefile);
+        $width = imagesx( $img );
+        $height = imagesy( $img );
+
+        if ($width > $height) {
+            $newwidth = $thumbwidth;
+            $divisor = $width / $thumbwidth;
+            $newheight = floor( $height / $divisor);
+        }
+        else {
+            $newheight = $thumbheight;
+            $divisor = $height / $thumbheight;
+            $newwidth = floor( $width / $divisor );
+        }
+
+        // Create a new temporary image.
+        $tmpimg = imagecreatetruecolor( 150, 150 );
+
+        // Copy and resize old image into new image.
+        imagecopyresampled( $tmpimg, $img, 0, 0, $x, $y, 150, 150, $width, $height );
+
+        // Save thumbnail into a file.
+        imagejpeg( $tmpimg, $endfile, $quality);
+
+        // release the memory
+        imagedestroy($tmpimg);
+        imagedestroy($img);
+    }
 }

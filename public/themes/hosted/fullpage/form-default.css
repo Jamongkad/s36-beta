@@ -15,7 +15,7 @@ a:hover{color:#6896cb;}
 #s36_pages,#s36_steps{
 }
 .error-message{
-	background:url(../images/error-bg.png) repeat;
+	background:url(/img/error-bg.png) repeat;
 	color:#212121;
 	border-top:2px solid #e5db58;
 	border-bottom:2px solid #e5db58;
@@ -23,7 +23,7 @@ a:hover{color:#6896cb;}
 
 /* classes */	
 a.s36_btn{
-	background: url(../images/btnbg.jpg) repeat-x #5892d1;
+	background: url(/img/btnbg.jpg) repeat-x #5892d1;
 	border:1px solid #295691;
 	color:#FFF;
 	text-shadow:#295691 0px 1px;
@@ -58,16 +58,16 @@ a.cropbtn:hover{
 	.s36_pages .step-contents{}
 	
 	#s36_whattowrite{
-		background:url(../images/ico-question.png) no-repeat top left;
+		background:url(/img/ico-question.png) no-repeat top left;
 	}
 	#s36_whattowrite ul{}
 /* trackbar styles */
 #s36_trackbar{
-	background:url(../images/trackbar.png) no-repeat;
+	background:url(/img/trackbar.png) no-repeat;
 }
 
 /* rating page */
-#track_ball{background:url(../images/trackball.png) no-repeat;}
+#track_ball{background:url(/img/trackball.png) no-repeat;}
 
 #s36_ratings{color:#adafb0;}
 
@@ -90,7 +90,7 @@ a.cropbtn:hover{
 	.s36_perm_details .s36_perm_icon1,
 	.s36_perm_details .s36_perm_icon2,
 	.s36_perm_details .s36_perm_icon3{
-		background:url(../images/ico-perms.png) no-repeat;
+		background:url(/img/ico-perms.png) no-repeat;
 	}
 	.s36_perm_details .s36_perm_icon2{
 		background-position:-40px 0px;
@@ -105,7 +105,7 @@ a.cropbtn:hover{
 	border:1px solid #e1e1e1;
 }
 /* connect page */
-.s36_block .company{background:url(../images/s36-logo.png);}
+.s36_block .company{background:url(/img/s36-logo.png);}
 .s36_block .warning{background:#d1d4d4;}
 .gray{
 	background:#f0f0f0;
