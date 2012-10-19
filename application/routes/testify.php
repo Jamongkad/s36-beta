@@ -144,5 +144,19 @@ return array(
             $tf->dump($feedback);
         });
         $tf->run();
+    },
+
+    'GET /testify/twitter' => function() { 
+        $tf = new Testify("Twitter Service");
+        $tf->beforeEach(function($tf) {
+            $tf->data->twitter = new Twitter\twitter('#codiqa'); 
+        });
+
+        $tf->test("Twitter Inbox Testing", function($tf) {
+            $tf->dump($tf->data->twitter->findTwitts('codiqa')); 
+        });
+
+        $tf->run();
     }
+
 );

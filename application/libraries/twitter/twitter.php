@@ -13,6 +13,7 @@ class twitter
 
     public function getMyTimeline($limit = 10, $formatLinks = TRUE)
     {
+        //not working 404 error
         $data = file_get_contents('http://twitter.com/statuses/user_timeline.json?screen_name=' . $this->_screenName . '&count=' . $limit);
         $twitts = json_decode($data);
 
@@ -34,6 +35,7 @@ class twitter
 
     public function getPublicTimeline($limit = 10, $formatLinks = TRUE)
     {
+        //not working 404 error
         $data = file_get_contents('http://twitter.com/statuses/public_timeline.json');
         $twitts = json_decode($data);
 
@@ -48,6 +50,7 @@ class twitter
 
     public function getFriendsStatus($formatLinks = TRUE)
     {
+        //not working 404 error
         $data = file_get_contents('http://twitter.com/statuses/friends.json?screen_name=' . $this->_screenName);
         $status = json_decode($data);
 
@@ -57,6 +60,7 @@ class twitter
 
     public function getUserRelationship($targetScreenname)
     {
+        //not working 404 error
         $data = file_get_contents('http://twitter.com/friendships/show.json?source_screen_name=' . $this->_screenName . '&target_screen_name=' . $targetScreenname);
         $relationship = json_decode($data);
 
@@ -83,6 +87,7 @@ class twitter
 
     public function getUserInformation($tweetname)
     {
+        //not working 404 error
         $data = file_get_contents('http://twitter.com/users/show.json?screen_name=' . $tweetname);
         $userInformation = json_decode($data);
 		
