@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html ng-app="S36Module">
 <head> 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
@@ -8,49 +8,16 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <?=HTML::script('js/jquery.tinymce.js')?>
+        <?=HTML::script('js/jquery.cycle.all.min.js')?>
+
         <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
+
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?=HTML::script('js/head.min.js')?>
-        <?=HTML::script('js/jquery.tinymce.js')?>
-        <?=HTML::script('js/jquery.cycle.all.min.js')?>
-        <?
-            $js_scripts = Array(
-               '/js/jquery.switcharoo.js'
-             , '/js/jquery.fancytips.js'
-             , '/js/jquery.form.js'
-             , '/js/jquery.tmpl.js'
-             , '/js/jquery.jcrop.js'
-             , '/js/jquery.ajaxfileupload.js' 
-             /*
-             , '/js/jquery.iframe-transport.js'
-             , '/js/jquery.fileupload.js'
-             */
-             , '/js/jquery.zclip.js' 
-             , '/js/jquery.flot.js'
-             , '/js/jquery.flot.pie.js'
-             , '/js/jquery.pjax.js'
-             , '/js/jquery.timeago.js'
-             , '/js/inbox/s36LightBox.js'
-             , '/js/inbox/ZClip.js'
-             , '/js/inbox/Checky.js'
-             , '/js/inbox/DropDownChange.js'
-             , '/js/inbox/InboxStatusChange.js'
-             , '/js/inbox/InboxFilters.js'
-             , '/js/inbox/FeedSetup.js'
-             , '/js/inbox/Status.js'
-             , '/js/inbox/s36application.js'
-             //, '/js/inbox/combined-min.js'
-           );
-           //$string = '"' . implode('","', $js_scripts) . '"';
-       ?> 
-        <script text="text/javascript">
-            <?foreach($js_scripts as $scripts):?>
-               head.js('<?=$scripts?>');
-            <?endforeach?>
-        </script>
+
     </meta>    
 </head>
 <body>
@@ -74,6 +41,7 @@
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <?
+                       //todo: ajaxify this use motherfuckin Angular mah nigguh
                        $redis = new redisent\Redis;
                        $user_id = S36Auth::user()->userid;
                        $company_id = S36Auth::user()->companyid;
@@ -93,12 +61,6 @@
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
                        <?=($regex->published ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <!--
-                    <li<?=($regex->featured ? ' class="selected featured"' : ' class="featured"')?>>
-                        <?=HTML::link('inbox/featured/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Featured')?>
-                       <?=($regex->featured ? '<div class="arrow-right"></div>' : null)?>
-                    </li>
-                    -->
                     <li<?=($regex->filed ? ' class="selected filed"' : ' class="filed"')?>>
                         <?=HTML::link('inbox/filed/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Filed Feedback')?>
                        <?=($regex->filed ? '<div class="arrow-right"></div>' : null)?>
@@ -115,7 +77,7 @@
             </div>
             <div class="left-buttons">
                 <ul>
-                    <li class="request"><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
+                    <li class="request" my-request><?=HTML::link('/feedback/requestfeedback', 'Request Feedback')?></li>
                     <li class="add"><?=HTML::link('/feedback/addfeedback', 'Add Feedback')?></li>
                     <li class="delete"><?=HTML::link('/inbox/deleted/all', 'Deleted Feedback')?></li>
                 </ul>
@@ -123,6 +85,15 @@
 
         </div>
         <!-- end of the left panel -->
+
+        <!-- request feedback popup -->
+        <div class="request-dialog" style="display:none">  
+            <?=View::make('feedback/request_to_view')?>
+        </div>
+        <!-- end of request feedback popup -->
+
+        <!-- Reply|Request Configuration Modal Window -->
+        <?=View::make('feedback/partials/modal_message_configure');?>
 
         <!--
         	The main panel

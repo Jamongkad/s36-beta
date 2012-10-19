@@ -104,8 +104,7 @@
                              'settings' => 'SETTINGS'
                            , 'settings/company' => 'COMPANY'
                            , 'settings/upgrade' => 'UPGRADE'
-                           //, 'settings/change_card' => 'UPDATE CREDIT CARD'
-                           //, 'settings/change_billing_info' => 'UPDATE BILLING INFORMATIONS'
+                           , 'settings/change_card' => 'UPDATE CREDIT CARD'
                            //, 'settings/cancel_account' => 'CANCEL ACCOUNT'
                         );
                         $user =  S36Auth::user();

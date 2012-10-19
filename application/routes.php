@@ -9,7 +9,6 @@ $twitter = new \twitter\twitter('danOliverC');
 $user = S36Auth::user();
 
 return array(
-
 	/*
 	|--------------------------------------------------------------------------
 	| Application Routes

@@ -146,6 +146,15 @@ class Helpers {
         return $matches[1]."...";
     }
 
+    public static function limit_text($text, $limit = 5) {
+        if (str_word_count($text, 0) > $limit) {
+            $words = str_word_count($text, 2);
+            $pos = array_keys($words);
+            $text = substr($text, 0, $pos[$limit]) . '...';
+        }
+        return $text;                                          
+    }
+
     public static function render_iframe_code($frame_url, $width, $height) { 
         $iframe = "<span style='z-index:100001'>
                     <iframe id='s36Widget' 
@@ -324,17 +333,21 @@ class Helpers {
         $has_tld = (count($M) > 0) ? true : false;
         return $has_tld;
     }
-    
-    public static function arrayToObject($data){
-    	
-    	if(is_array($data)) {
-			$data = json_encode($data);
-         $data = json_decode($data);
-        return $data;
-      }else{
-      	return $data;
-      }
 
+    public static function arrayToObject($data){
+
+        if(is_array($data)) {
+            $data = json_encode($data);
+            $data = json_decode($data);
+            return $data;
+        }else{
+            return $data;
+        }
+
+    }
+
+    public static function randid() {
+        return substr(uniqid ('', true), -3);
     }
 
     public function makeThumbnail($sourcefile, $endfile, $thumbwidth, $thumbheight, $quality, $x, $y){

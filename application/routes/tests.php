@@ -31,7 +31,6 @@ return array(
     
         $emailservice = new Email\Services\EmailService($published_data);
         $emailservice->send_email();
-        //Helpers::dump(); 
     },
 
     'GET /tests/test_email_request' => function() {
@@ -101,25 +100,6 @@ return array(
      },
 
     'GET /tests/test_email_replyto' => function() {        
-        $feedback  = new Feedback\Repositories\DBFeedback;
-        $replydata = new Email\Entities\ReplyData;
-        
-        $replydata->subject = "Mathew is a dickie";
-        $replydata->bcc = Array(
-            "wrm932@gmail.com" 
-          , "karen_cayamanda@yahoo.com"
-          , "klemengkid@gmail.com"
-        );
-        $replydata->sendto = "wrm932@gmail.com";
-        $replydata->from = (object) Array(
-            "replyto" => "ryanchu6@gmail.com"
-          , "username"  => "Mathew"
-        );
-        $replydata->message = "Mathew is kewl";
-        $replydata->feedback = $feedback->pull_feedback_by_id(213);
-                 
-        $emailservice = new Email\Services\EmailService($replydata);
-        Helpers::dump($emailservice->send_email()); 
     },
 
     'GET /tests/test_email_resend' => function() {
@@ -207,7 +187,6 @@ return array(
         }
 
         $compressed_file = $yui->compress();
-
         print($compressed_file);
     },
 
@@ -296,7 +275,7 @@ return array(
     },
     
     'GET /tests/feedbackstate' => function() {
-        $feed_obj = Array('feedid' => 360);
+        $feed_obj   = Array('feedid' => 360);
         $feed_obj_1 = Array('feedid' => 478);  
         $feed_obj_2 = Array('feedid' => 500);
 
@@ -361,12 +340,12 @@ return array(
     },
     
     'GET /tests/b3' =>function(){
- 			$user = S36Auth::user();
-			Package::load('braintree');
-			$S36Braintree = new 	S36Braintree($user->bt_customer_id);
-			//Helpers::show_data($S36Braintree->get_next_billing_info()); */
-            $DBPlan = new \Plan\Repositories\DBPlan;
-            Helpers::show_data($S36Braintree->update_subscription('free'));
-			exit();
-    	}
+        $user = S36Auth::user();
+        Package::load('braintree');
+        $S36Braintree = new 	S36Braintree($user->bt_customer_id);
+        //Helpers::show_data($S36Braintree->get_next_billing_info()); */
+        $DBPlan = new \Plan\Repositories\DBPlan;
+        Helpers::show_data($S36Braintree->update_subscription('free'));
+        exit();
+    }
 );

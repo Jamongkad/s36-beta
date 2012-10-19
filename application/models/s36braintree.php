@@ -14,19 +14,13 @@
         public  $exists = true;
         private $existence_err = '';
 
-
-
         // set the braintree's config keys.
-        private static function set_keys(){
-            
+        private static function set_keys(){            
             \Braintree_Configuration::environment('sandbox');
             \Braintree_Configuration::merchantId('nq9jcgbqntjg9ktd');
             \Braintree_Configuration::publicKey('2y99t792gdwy8bqz');
             \Braintree_Configuration::privateKey('0c410ba21ac3498d755c9fd6ad5cd491');
-
         }
-
-
 
         // create new braintree object using company id.
         function __construct($customer_id){
@@ -112,7 +106,6 @@
             $this->billing_info 							= $customer->creditCards[0]->billingAddress;
             $this->billing_info->next_billing_info = $this->next_billing_info;
             $this->billing_info->transactions 		= $this->transactions;
-
 
             // store the default credit card's info.
             $this->credit_card_info['card_type'] = $customer->creditCards[0]->cardType;

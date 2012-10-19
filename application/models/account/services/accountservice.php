@@ -73,5 +73,3 @@ public function update_billing_address($data){
 	return $this->S36Braintree->update_billing_address($data);
 }
 }
-
-

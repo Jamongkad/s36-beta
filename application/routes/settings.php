@@ -65,9 +65,9 @@ return array (
         } 
 
     },
-    
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
+
 			$plan 				= new Plan\Repositories\DBPlan;
 			$DBCountry 			= new DBCountry;
 			$accountService 	= new Account\Services\AccountService;
@@ -244,8 +244,7 @@ return array (
 										'messages'=>'Your credit card has been updated.'));
 			}		     
     }),
-    
-    
+ 
     'GET /settings/change_billing_info' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
 			$accountService = new Account\Services\AccountService;		
     		$DBCountry = new DBCountry;
@@ -313,7 +312,6 @@ return array (
     
 
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
-        return View::of_layout()->partial('contents', 'settings/settings_cancel_account_view');
+        return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),
 );
-

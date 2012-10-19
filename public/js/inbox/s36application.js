@@ -1,4 +1,4 @@
-jQuery(function($) {
+jQuery(function($) { 
     /*
     $('.admin-nav-bar').delegate('li a', 'click', function(e) {
         var url = $(this).attr('href');
@@ -23,9 +23,6 @@ jQuery(function($) {
         e.preventDefault();
     });
     */
-
-    $("abbr.timeago").timeago();
-
     $(document).delegate(".feedback-avatar", "hover", function(e) {
         if (e.type === "mouseenter")  {
             $('.large-avatar', this).show();
@@ -112,43 +109,7 @@ jQuery(function($) {
         } 
         e.preventDefault();
     });
-
-    $('.reply').bind("click", function(e) {     
-        var href = $(this).attr('hrefaction');
-        window.location = href;
-        e.preventDefault();
-        /*TODO WORK ON THIS LATER This should be a modal popup
-        $.ajax({
-            url: href
-        });*/
-    })
-    
-    var seen = {};
-    $('.add-bcc > li').bind("click", function(e) {
-        var pointer = $(this).index();
-        var input = "<input type='text' name='bcc[]' value='"+$(this).text()+"' />  <a class='delete-bcc' id='" + pointer + "' href='#'>[x]</a>";       
-        var first_bcc = $("#first-bcc");
-        
-        if(first_bcc.val().length === 0) {
-            first_bcc.val($(this).text());
-            seen[pointer] = true;
-        } else {
-             if(typeof seen[pointer] == 'undefined') {  
-               $("#bcc-target").append(input);
-               seen[pointer] = true;
-            }   
-        }
- 
-        $(".delete-bcc").unbind("click.delete-bcc").bind("click.delete-bcc", function(e) {
-            var del_pointer = $(this).attr('id');
-            $(this).prev('input').remove().end().remove();
-            delete seen[del_pointer];
-            e.preventDefault();
-        })
-        
-        e.preventDefault();
-    })
-
+     
     //check theme 1 by default
     $("#themeId_1 input:radio").attr('checked', true);
     
@@ -267,69 +228,6 @@ jQuery(function($) {
         } 
         e.preventDefault();
     });
-
-    CategoryControl();
-
-    $('a.add-new-ctgy').bind("click", function(e) {
-        var ctgy_nm = $("input[name='category_nm']");
-        var ctgy_list = $("#ctgy-list");
-        
-        if(ctgy_nm.val() == false) 
-            alert("Category Name cannot be blank.");           
-        else 
-            $.ajax({
-                url: ctgy_list.attr('hrefaction')
-              , type: "POST" 
-              , data: {ctgy_nm: ctgy_nm.val(), companyId: $("input[name='companyid']").val()}
-              , success: function(msg) {
-                  ctgy_list.append(msg);
-                  ctgy_nm.val("");
-                  CategoryControl();
-              }
-            }); 
-       
-        e.preventDefault();
-    })
-
-    function CategoryControl() {
-       $('a.rename-ctgy, a.delete-ctgy').unbind('click.ctgy-controls').bind('click.ctgy-controls', function(e) {
-           var class_name = $(this).attr('class');
-           var that = $(this);
-
-           if(class_name == 'rename-ctgy') {
-               var input = $('<input type="text" name="ctgy_nm"/>').val(
-                   that.parents('div').siblings('div').children('.ctgy-name').html()
-               );
-
-              if(that.text() == "Update") {
-                  var ctgy_nm_val = $('input[name="ctgy_nm"]').val()
-                  console.log("Rename");
-                  that.text("Rename") 
-                        .parents('div')
-                        .siblings('div')
-                        .children('.ctgy-name')
-                        .html( ctgy_nm_val ).end().end().end()
-                  $.ajax({ url: that.attr('href'), type: "POST", data: {ctgy_nm: ctgy_nm_val} });
-              } else {
-                  that.text("Update")     
-                        .parents('div')
-                        .siblings('div')
-                        .children('.ctgy-name')
-                        .html( input ).end().end().end()
-              }
-              
-           }
-
-           if(class_name == 'delete-ctgy') {
-              var d = that.parents('div.grids');
-              if(confirm("Are you sure you want to delete this category? There is no undo.")) {
-                  $.ajax({ url: $(this).attr('href'), success: function(msg) { d.fadeOut(); } });
-              }
-           }
-
-           e.preventDefault();
-       })
-    }
 
     var jcrop_api, set_image;
     function initJcrop() { 

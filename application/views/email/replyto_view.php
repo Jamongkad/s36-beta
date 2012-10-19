@@ -33,17 +33,17 @@
                         <!-- contents -->
                         <tr>                        	
 							<td colspan="3" style="padding-right:100px;line-height:20px;color:#464646;">
-                            	<h4 style="line-height:normal"><?=$sender?> has read your feedback and wants to get into contact with you.</h4>  
+                            	<h4 style="line-height:normal"><?=ucfirst($sender)?> has read your feedback and wants to get into contact with you.</h4>  
                                 <div style="padding:10px;background:#f4f4f4;">
-                                    <?=$sender?> says,<br/>
-                                    "<?=$message?>"
+                                    <?=ucfirst($sender)?> says,<br/>
+                                    "<?=ucfirst(strtolower($message))?>"
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
                                 <br/><br/>
-                                <h5 style="line-height:normal">Your feedback submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
+                                <h5 style="line-height:normal">Your feedback was submitted on <?=date('F j, Y', strtotime($submission_date));?>.</h5> 
                             </td>
                         </tr>
                         <tr>

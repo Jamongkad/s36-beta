@@ -1,6 +1,6 @@
 <?php namespace Hosted\Services;
 
-use Input, Exception, StdClass, View, Helpers, Config;
+use Input, Exception, StdClass, View, Helpers;
 use \Feedback\Repositories\DBFeedback;
 use redisent;
 

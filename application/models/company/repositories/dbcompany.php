@@ -3,12 +3,13 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
 
 class DBCompany extends S36DataObject {
-	
-	var $companyId;
-	
-	public function set_companyId($id){
-		$this->companyId = $id;	
-	}	
+
+    var $companyId;
+
+    public function set_companyId($id) {
+        $this->companyId = $id;     
+    }
+
     public function update_company_emails($post) {
         DB::Table('Company', 'master') 
             ->where('companyId', '=', $post->companyid)
@@ -38,7 +39,7 @@ class DBCompany extends S36DataObject {
     }
 
     public function get_company_info($company_id = null) {
-		  $company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
+        $company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
         if(is_numeric($company_id)) {
             $company_sql = "Company.companyId = :company_id";
         } else { 
@@ -48,7 +49,7 @@ class DBCompany extends S36DataObject {
         $sql = "
             SELECT 
                 * 
-              , Company.name AS company_name
+              , Company.name AS company_name 
             FROM 
                 Company
             INNER JOIN
@@ -64,7 +65,7 @@ class DBCompany extends S36DataObject {
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
-    }
+    } 
     
     public function get_account_owner($id = NULL){
     	$user 		= S36Auth::user();
@@ -125,5 +126,3 @@ class DBCompany extends S36DataObject {
                 ->update(array('coverphoto_src'=>$src,'coverphoto_top'=>$top,'coverphoto_left'=>$left));   
     }
 }
-
-

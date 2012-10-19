@@ -3,10 +3,9 @@
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function(  $filter=False
                                                                                                       , $choice=False ) {  
-
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
-        $limit = 10;
+        $limit = 3;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
@@ -35,6 +34,14 @@ return array(
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
+        
+        //Reply messages
+        $type = 'msg';
+        $dbm = new Message\Repositories\DBMessage($type);
+        //$rdm = new Message\Repositories\RDMessage($type);       
+        $sm = new Message\Services\SettingMessage($dbm);       
+        $sm->get_messages();
+        
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination
@@ -45,6 +52,7 @@ return array(
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
             , 'filter' => $filter
             , 'company_id' => $company_id
+            , 'reply_message' => json_decode($sm->jsonify())
         );
         
         if(!Input::get('_pjax')) { 
@@ -52,6 +60,7 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
+       
     }), 
 );
 
