@@ -36,7 +36,6 @@ return array(
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
-        \Helpers::show_data($feedback->result);
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination
