@@ -1,0 +1,411 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	padding:0px;
+	margin:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background:url(../images/sample-bg.jpg) repeat center top;
+	background-attachment:fixed;
+}
+
+a{text-decoration:none;}
+a:hover{}
+div{position:relative;}
+
+#headerWrapper{
+	background:url(../../img/gray-bg.jpg) repeat-x;
+	height:42px;
+	width:100%;
+}
+
+#headerContent{
+	margin:0 auto;
+	width:800px;
+	padding:8px 0px;
+}
+#headerTitle{
+	font-size:19px;
+}
+/* green cross */
+.green-cross{padding-left:15px; background:url(../images/green-cross.png) no-repeat left center;}
+
+#headerTitle strong{}
+#headerTitle span {padding-left:20px;}
+#headerTitle span a{font-size:14px;font-weight:bold;}
+#headerTitle a:hover{}
+#pageTitle{padding:15px 10px;text-align:left;background:url(../images/page-title-bg.png) repeat-x top;margin:0px 0px;border-top:1px solid #FFF;}
+#pageTitle h1{color:#4396b6;font-size:22px;padding:0px;margin:0px;margin-top:-5px;}
+.meta{font-size:11px;color:inherit;margin-top:6px;color:#8f8f8f;}
+#pageTitle a.green-cross{font-weight:bold;font-size:14px;margin-top:5px;}
+
+/* new css Oct 4 2012 */
+#pageHeader{padding:0px 7px 20px;}
+#clientLogo img{
+	
+}
+.admin img{
+	border:2px dotted #066;
+}
+.admin img:hover{
+	cursor:crosshair;
+	border:2px dotted #390;
+}
+.change-text{
+	position:absolute;
+	background:#033;
+	color:#FFF;
+	display:none;
+	bottom:0px;
+	left:0px;
+	font-size:10px;
+	padding:2px;
+}
+.save-logo-button{
+	position:	absolute;
+	top:0px;
+	left:0px;
+	cursor:pointer;
+	font-size:10px;
+	background:#33F;
+	border:none;color:#FFF;
+}
+.save-logo-button:hover{
+	background:#069;
+}
+.social-buttons{
+	position:absolute;
+	right:10px;
+	bottom:5px;
+}
+.social-buttons ul{
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+.social-buttons ul li{
+	display:inline;
+	margin-left:4px;
+}
+#pageDesc{
+	padding:0px 7px 20px 7px;
+	border-bottom:1px solid #CCC;
+}
+.the-description{
+	padding:10px;
+	font-size:12px;
+	background:url(../images/body-bg.png);
+	color:#666;
+}
+.the-description p{
+	margin:0px;
+	margin-bottom:3px;
+}
+.the-description p:last-child{
+	margin-bottom:0px;
+}
+.send-feedback{
+	margin-left:15px;
+	text-align:center;
+	font-weight:bold;
+}
+#changeCoverButton{
+	position:absolute;
+	background:#FFF;
+	border:1px solid #CCC;
+	right:10px;
+	top:10px;
+	z-index:1;
+	padding:2px 4px;
+	font-size:10px;
+	cursor:pointer;
+	color:#666;
+	font-family:Verdana, Geneva, sans-serif;
+	font-weight:bold;
+}
+#changeCoverButton:active{
+	background:#EEE;
+}
+#saveCoverButton{
+	position:absolute;
+	background:#FFF;
+	border:1px solid #CCC;
+	right:10px;
+	top:10px;
+	z-index:1;
+	padding:2px 4px;
+	font-size:10px;
+	cursor:pointer;
+	color:#666;
+	font-family:Verdana, Geneva, sans-serif;
+	font-weight:bold;
+	display:none;
+}
+#saveCoverButton:active{
+	background:#EEE;
+}
+#dragPhoto{
+	background: url(../images/drag-bg.png);
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	position:absolute;
+	font-weight:bold;
+	color:#FFF;
+	z-index:1000;
+	top:10px;
+	left:10px;
+	padding:2px 6px;
+	-webkit-border-radius:2px;
+	-moz-border-radius:2px;
+	border-radius:2px;
+	display:none;
+}
+#theCover{
+	overflow:hidden;
+	width:800px;
+	height:140px;
+	position:relative;
+}
+#theCover img{position:relative}
+#theCover.draggable{
+	cursor:move;
+}
+/* new css Oct 4 2012 */
+
+.padfix{padding-top:5px;}
+.padfix a{font-weight:normal !important;font-size:12px !important; }
+#bodyWrapper{
+	width:100%;
+}
+#pageCover{
+	margin-bottom:20px;
+	height:140px;
+	position:relative;
+}
+#bodyContent{
+	margin:0 auto;
+	width:800px;
+	padding-top:0px;
+	background:url(../images/body-bg.png);
+	box-shadow:#222 0px 3px 5px;
+}
+
+#theFeedbacks{display:block;margin-top:0px;width:800px;}
+
+/* page style not the form style */
+.companyLogo{float:left;width:252px;height:182px;margin-left:10px;}
+.companyDetails{margin-left:282px;display:block;margin-right:10px;}
+.companyDetails h2{font-weight:normal;font-size:22px;margin-left:2px;margin:10px 0px 6px;}
+.companyDetails p{line-height:1.8em;font-size:14px;margin-left:2px;}
+.companyLinks{padding:5px;}
+.companyLinks ul{list-style:none;margin:0px;padding:5px;}
+.companyLinks ul li{display:inline;padding:5px 5px 5px 10px;}
+.companyLinks ul li{}
+.companyLinks ul li:last-child{border:none;}
+.companyLinks ul li a{padding:5px 2px 5px 24px;margin-right:10px;}
+.companyLinks ul li a.website{background-position:0px 1px;}
+.companyLinks ul li a.facebook{background-position:0px -25px;}
+.companyLinks ul li a.twitter{background-position:0px -50px;}
+
+
+/* feedbacks */
+.feedbackBlock{margin-bottom:5px;}
+.feedbackBlock:last-child{margin-bottom:0px;}
+.feedback{width:342px;margin:9px 8px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
+.featured{width:722px;padding:30px;}
+.featured .feedbackAuthor{float:left;width:195px;}
+.featured .feedbackAuthor .feedbackAuthorAvatar{width:150px;height:150px;}
+.featured .feedbackAuthor h2{font-size:20px;margin:0px;margin-top:5px;}
+.featured .feedbackAuthor h4{margin:0px;font-size:12px;margin-top:3px;}
+.featured .feedbackAuthor p{margin:0px;padding:0px;margin-top:3px}
+.featured .feedbackText{margin-left:195px;}
+.featured .feedbackText p{margin:0px 0px 15px;line-height:1.8em;font-size:16px;}
+.featured .feedbackText p:last-child{margin-bottom:0px;}
+.featured .feedbackTextTail{width:22px;height:22px;position:absolute;top:20px;left:-22px;}
+.featured .feedbackTextBubble{padding:20px;}
+.featured .feedbackMeta{text-align:right;}
+.featured .feedbackMeta{float:left;bottom:-15px;}
+.featured .feedbackTimestamp,
+.featured .feedbackSocial,
+.featured .feedbackSocialTwitter,
+.featured .feedbackSocialFacebook{float:left;}
+.featured .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
+.featured .feedbackSocialTwitter{width:90px;}
+.featured .feedbackSocialFacebook{width:90px;}
+.featured .feedbackDate{position:absolute;bottom:-40px;right:0px;font-weight:bold;}
+/* normal */
+.normal .feedbackAuthor{display:block;}
+.normal .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;}
+.normal .feedbackAuthor .feedbackAuthorAvatar{margin-right:5px;}
+.normal .feedbackAuthor .feedbackAuthorDetails{margin-left:0px;}
+.normal .feedbackAuthor h2{font-size:14px;margin:0px;margin-top:5px;}
+.normal .feedbackAuthor h4{margin:0px;font-size:11px;margin-top:3px;}
+.normal .feedbackAuthor p{margin:0px;padding:0px;margin-top:3px;font-size:11px;}
+.normal .feedbackText{display:block;}
+.normal .feedbackText p{margin:0px 0px 10px;line-height:1.4em;font-size:12px;}
+.normal .feedbackText p:last-child{margin-bottom:0px;}
+.normal .feedbackTextTail{width:22px;height:22px;position:absolute;top:-18px;left:6px;}
+.normal .feedbackTextBubble{padding:12px;margin-top:14px;}
+.normal .feedbackMeta{text-align:left;font-size:11px;}
+.normal .feedbackDate{position:absolute;top:-10px;right:0px;font-size:11px;}
+.normal .feedbackMeta{padding-top:5px;}
+.normal .feedbackTimestamp,
+.normal .feedbackSocial,
+.normal .feedbackSocialTwitter,
+.normal .feedbackSocialFacebook{float:left;}
+.normal .feedbackTimestamp{padding-right:7px;padding-top:2px;float:left;}
+.normal .feedbackSocialTwitter{width:85px;}
+.normal .feedbackSocialFacebook{width:90px;}
+/* twitter block */
+.feedback.twt-feedback{background:#c1e5ee;}
+.twt-feedback .feedbackAuthorDetails{margin-left:54px;}
+.twt-feedback .feedbackAuthor{}
+.twt-feedback .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;}
+.twt-feedback .feedbackAuthor h2{font-size:11px;margin:0px;margin-top:5px;}
+.twt-feedback .feedbackAuthor h4{margin:0px;font-size:10px;margin-top:3px;}
+.twt-feedback .feedbackAuthor p{margin:0px;padding:0px;margin-top:3px}
+.twt-feedback .twitter-username{font-size:10px;}
+.twt-feedback .feedbackText{margin-left:54px;}
+.twt-feedback .feedbackText p{margin:0px 0px 15px;line-height:1.5em;font-size:11px;}
+.twt-feedback .feedbackText p:last-child{margin-bottom:0px;}
+.twt-feedback .feedbackTextTail{width:22px;height:22px;position:absolute;top:20px;left:-22px;}
+.twt-feedback .feedbackTextBubble{padding:2px;}
+.twt-feedback .feedbackMeta{text-align:right;}
+.twt-feedback .feedbackMeta{float:left;bottom:-15px;}
+.twt-feedback .feedbackTimestamp,
+.twt-feedback .feedbackSocial,
+.twt-feedback .feedbackSocialTwitter,
+.twt-feedback .feedbackSocialFacebook{float:left;}
+.twt-feedback .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
+.twt-feedback .feedbackSocialTwitter{width:90px;}
+.twt-feedback .feedbackSocialFacebook{width:90px;}
+.twt-feedback .feedbackDate{margin-left:54px;font-size:10px;padding-left:2px;color:#0086a8;}
+
+.featured .feedbackSocial{height:20px;}
+.normal .feedbackSocial{height:20px;}
+.feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook{display:none;text-align:left;}
+
+.masonry,
+.masonry .masonry-brick {
+  -webkit-transition-duration: 0.7s;
+     -moz-transition-duration: 0.7s;
+       -o-transition-duration: 0.7s;
+          transition-duration: 0.7s;
+}
+
+.masonry {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.masonry .masonry-brick {
+  -webkit-transition-property: left, right, bottom;
+     -moz-transition-property: left, right, bottom;
+       -o-transition-property: left, right, bottom;
+          transition-property: left, right, bottom;
+}
+
+/* clear fixes */
+.companyDetails:after,#theFeedbacks:after,.feedbackAuthor p:after,.feedbackBlock:after,.feedbackMeta:after,.feedbackSocial:after{
+  content: ".";  
+ display: block; 
+ height: 0; 
+ clear: both;
+ visibility: hidden;}
+
+.large-avatar {
+    box-shadow: 5px 5px 3px #888888;
+    display: none;
+    left: -1%;
+    position: absolute !important;
+    top: -1%;
+    z-index: 999999;
+}
+img.small-avatar {
+    display:block;    
+    margin-left:auto;
+    margin-right:auto;
+}
+
+img.large-avatar {
+    display:block;    
+    margin-left:auto;
+    margin-right:auto; 
+    display:none;
+}
+
+ /* floats and alignments */
+.align-right{text-align:right}
+.align-center{text-align:center}
+.align-left{text-align:left}
+.left{float:left}
+.right{float:right}
+.center{margin:0 auto}
+
+.twitter span.twitter-username{background:url(../images/twitter-bird.png) no-repeat left center;padding-left:18px;font-weight:bold;color:#6d6e71;}
+
+
+.funky-button{
+	background:url(../images/send-feedback-btn-bg.jpg) repeat-x;
+	background-position:top;
+	background-color:#4ca5c7;
+	border: 1px solid #4ca5c5;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	text-align:center;
+	font-family: Arial;
+	font-size: 12px;
+	width:172px;
+	height:51px;
+	color: #FFF;
+	cursor: pointer;
+	font-weight:bold;
+}
+
+.funky-button:hover{
+	background: #68b7d5;
+}
+.funky-button:active{
+	background:#4ca5c7;
+}
+.feedback-header{
+	padding:3px 10px;
+	margin-top:15px;
+	background:#ebf5f6;
+}
+.feedback-header:after{
+ content: ".";  
+ display: block; 
+ height: 0; 
+ clear: both;
+ visibility: hidden;
+}
+.feedback-header span{float:right;}
+.feedback-header h2.twitter{font-size:14px;color:#292929;margin:0px;float:left;padding:2px 10px 2px 0px;font-weight:normal;}
+.feedback-header h2.s36{font-size:14px;color:#333;margin:0px;float:left;}
+.load-more-block {
+	margin-top:15px;
+}
+.load-more-tweets{
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;		
+	background:#cac5bd;
+	padding:4px 12px;
+	color:#333;
+	font-size:11px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+.load-more-tweets:hover{
+	background:#d5d1ca;
+	color:#222;
+}
+.fb-like-btn{
+	width:312px;
+	height:32px;
+	margin-top:10px;
+}

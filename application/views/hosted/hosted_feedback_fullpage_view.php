@@ -37,8 +37,8 @@
             </div>
             <div class="social-buttons">
                 <ul>
-                    <li><a href="#"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>
-                    <li><a href="#"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>
+                    <li><a href="<?=$company->fb_link?>"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>
+                    <li><a href="<?=$company->twit_link?>"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>
                 </ul>
             </div>
 
@@ -97,9 +97,9 @@ Visit Acme's website today for more information. </p>
         </div>
         --> 
         <div class="feedback-header">
-            <h2 class="twitter">Recently on Twitter (via @Codiqa) </h2>
+            <h2 class="twitter">Recently on Twitter (via @<?=basename($company->twit_link)?>) </h2>
             <span>
-            <a href="https://twitter.com/codiqa" class="twitter-follow-button" data-show-count="false">Follow @codiqa</a>
+            <a href="https://twitter.com/<?=basename($company->twit_link)?>" class="twitter-follow-button" data-show-count="false">Follow @<?=basename($company->twit_link)?></a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </span>
         </div>
