@@ -1,15 +1,14 @@
 <?php
 namespace Twitter;
 
-class twitter
+class Twitter
 {
     protected $_screenName;
 	
-    public function __construct($screenName)
+    public function __construct($screenName = False)
     {
         $this->_screenName = $screenName;
     }
-
 
     public function getMyTimeline($limit = 10, $formatLinks = TRUE)
     {
@@ -24,6 +23,7 @@ class twitter
 
         return $twitts;
     }
+
 	public function getRateLimit()
     {
         $data = file_get_contents('http://twitter.com/account/rate_limit_status.json');
@@ -31,7 +31,6 @@ class twitter
 
         return $twitts;
     }
-
 
     public function getPublicTimeline($limit = 10, $formatLinks = TRUE)
     {
@@ -47,7 +46,6 @@ class twitter
         return $twitts;
     }
 
-
     public function getFriendsStatus($formatLinks = TRUE)
     {
         //not working 404 error
@@ -56,7 +54,6 @@ class twitter
 
         return $status;
     }
-
 
     public function getUserRelationship($targetScreenname)
     {
@@ -84,7 +81,6 @@ class twitter
         return $twitts;
     }
 
-
     public function getUserInformation($tweetname)
     {
         //not working 404 error
@@ -94,23 +90,16 @@ class twitter
         return $userInformation;
     }
 
-
     protected function _formatLinks($twitts)
     {
         for ($i = 0; $i < count($twitts); $i++)
         {
           
-            $twitts[$i]->text = preg_replace('/((http|ftp|https|ftps|irc):\/\/[^()<>\s]+)/i', '<a href="$1" target="_blank">$1</a>', $twitts[$i]->text);
-
-          
-            $twitts[$i]->text = preg_replace('/@([a-zA-Z-+_]+)/i', '<a href="http://www.twitter.com/$1" target="_blank">@$1</a>', $twitts[$i]->text);
-
-           
+            $twitts[$i]->text = preg_replace('/((http|ftp|https|ftps|irc):\/\/[^()<>\s]+)/i', '<a href="$1" target="_blank">$1</a>', $twitts[$i]->text);          
+            $twitts[$i]->text = preg_replace('/@([a-zA-Z-+_]+)/i', '<a href="http://www.twitter.com/$1" target="_blank">@$1</a>', $twitts[$i]->text);  
             $twitts[$i]->text = preg_replace('/#([a-zA-Z-+_]+)/i', '<a href="http://twitter.com/search?q=%23$1" target="_blank">#$1</a>', $twitts[$i]->text);
         }
 
         return $twitts;
     }
 }
-
-?>

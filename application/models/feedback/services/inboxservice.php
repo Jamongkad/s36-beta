@@ -7,6 +7,7 @@ use Halcyonic;
 class InboxService {
 
     public $ignore_cache = False; 
+    public $selectable_pages = 4;
 
     private $limit = 10;
     private $filters = Array();
@@ -38,9 +39,6 @@ class InboxService {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
         $this->cache = new Halcyonic\Services\Cache;
-
-        $this->pagination->selectable_pages(4);
-        $this->page_number = $this->pagination->get_page();
     }
 
     public function set_filters(Array $filters) {
@@ -51,6 +49,9 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback                  
+            $this->pagination->selectable_pages($this->selectable_pages);
+            $this->page_number = $this->pagination->get_page();
+
             $this->raw_filters['page_no'] = $this->page_number;
             
             $this->cache->key_name = "inbox:feeds";
@@ -64,6 +65,7 @@ class InboxService {
                 $offset = ($this->page_number - 1) * $this->filters['limit'];
 
                 $this->filters['offset'] = $offset;
+
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
                 
                 Helpers::dump($date_result);

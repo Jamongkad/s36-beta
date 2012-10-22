@@ -149,11 +149,12 @@ return array(
     'GET /testify/twitter' => function() { 
         $tf = new Testify("Twitter Service");
         $tf->beforeEach(function($tf) {
-            $tf->data->twitter = new Twitter\twitter('#codiqa'); 
+            $tf->data->twitter = new Feedback\Repositories\TWFeedback;//new Twitter\Twitter('#codiqa'); 
         });
 
         $tf->test("Twitter Inbox Testing", function($tf) {  
-
+            $tf->dump($tf->data->twitter);
+            /*
             $twits = $tf->data->twitter->findTwitts('codiqa');
 
             $collection = Array();
@@ -202,7 +203,7 @@ return array(
             }
 
             $tf->dump($final_collection);
-
+            */
         });
 
         $tf->run();
