@@ -152,11 +152,59 @@ return array(
             $tf->data->twitter = new Twitter\twitter('#codiqa'); 
         });
 
-        $tf->test("Twitter Inbox Testing", function($tf) {
-            $tf->dump($tf->data->twitter->findTwitts('codiqa')); 
+        $tf->test("Twitter Inbox Testing", function($tf) {  
+
+            $twits = $tf->data->twitter->findTwitts('codiqa');
+
+            $collection = Array();
+            foreach($twits as $data) {  
+
+                $snode = Array(); 
+                $d = new DateTime($data->created_at);
+                $snode['id'] = $data->id_str;
+                $snode['firstname'] = $data->from_user;
+                $snode['avatar'] = $data->profile_image_url_https;
+                $snode['text'] = $data->text;
+                $snode['twit_date'] = $data->created_at;
+                $snode['date'] = $d->format("Y-m-d H:i:s");
+                $snode['head_date'] = $d->format("d.m.Y");
+                $snode['unix_timestamp'] = $d->getTimestamp();
+                $collection[] = $snode;
+            }
+
+            $underscore = new Underscore\Underscore;
+            $groupies = $underscore->groupBy($collection, 'head_date');            
+
+            $final_collection = Array();
+            foreach($groupies as $date => $children) { 
+
+                $p = new StdClass;
+                $p->date = $date;
+                $p->children = Array();
+
+                print_r(count($children)."<br/>");
+
+                foreach($children as $child) {
+                    $p->daysago = Helpers::relative_time($child['unix_timestamp']);
+                    $p->unix_timestamp = $child['unix_timestamp'];
+                    $node = new \Feedback\Entities\FeedbackNode;
+                    $node->id             = $child['id'];
+                    $node->firstname      = $child['firstname'];
+                    $node->avatar         = $child['avatar'];
+                    $node->text           = $child['text'];
+                    $node->twit_date      = $child['twit_date'];
+                    $node->date           = $child['date'];
+                    $node->unix_timestamp = $child['unix_timestamp']; 
+                    $p->children[] = $node;
+                }                
+
+                $final_collection[] = $p;
+            }
+
+            $tf->dump($final_collection);
+
         });
 
         $tf->run();
     }
-
 );

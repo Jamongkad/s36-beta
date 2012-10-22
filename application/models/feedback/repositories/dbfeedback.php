@@ -119,7 +119,7 @@ class DBFeedback extends S36DataObject {
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
-                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
+                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "EUR")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
               , COUNT(DISTINCT Feedback.feedbackId) AS feedcount
               , dtAdded
@@ -180,14 +180,15 @@ class DBFeedback extends S36DataObject {
         ';
 
         $company_id = $this->company_id;
-        if(!$this->company_id) {
+
+        if (!$this->company_id) {
             $company_id = $opts['company_id'];
         }
 
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
          
-        if(!$is_published_filter) { 
+        if (!$is_published_filter) { 
             $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
             $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
             $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
@@ -198,8 +199,8 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
 
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result_obj = new StdClass;
+        $row_count   = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
@@ -307,11 +308,44 @@ class DBFeedback extends S36DataObject {
 
         $sth->execute();
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $total = $row_count->fetchColumn();
+        $results = $sth->fetchAll(PDO::FETCH_CLASS);
+        
+        $collection = Array();
+        foreach($results as $data)  {
+            $node = new \Feedback\Entities\FeedbackNode;
+            $node->id = $data->id;      
+            $node->firstname = $data->firstname;
+            $node->lastname = $data->lastname;
+            $node->logintype = $data->logintype;
+            $node->countryname = $data->countryname;
+            $node->countrycode = $data->countrycode;
+            $node->profilelink = $data->profilelink;
+            $node->date = $data->date;
+            $node->status = $data->status;
+            $node->text = $data->text;
+            $node->categoryid = $data->categoryid;  
+            $node->category = $data->category;  
+            $node->priority = $data->priority;  
+            $node->rating = $data->rating;
+            $node->ispublished = $data->ispublished;
+            $node->isdeleted = $data->isdeleted;
+            $node->isfeatured = $data->isfeatured;
+            $node->permission_css = $data->permission_css;
+            $node->permission = $data->permission;
+            $node->contactid = $data->contactid;
+            $node->siteid = $data->siteid;
+            $node->perm_val = $data->perm_val;
+            $node->email = $data->email;
+            $node->unix_timestamp = $data->unix_timestamp;
+            $node->daysago = $data->daysago;
+            $node->sitedomain = $data->sitedomain;
+            $node->avatar = $data->avatar;
+            $collection[] = $node; 
+        }
    
         $result_obj = new StdClass;
-        $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $result_obj->total_rows = $total;
+        $result_obj->result = $collection; 
+        $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
 

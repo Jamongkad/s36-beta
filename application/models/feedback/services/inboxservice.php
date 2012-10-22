@@ -60,9 +60,14 @@ class InboxService {
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 //main logic
-                $this->filters['offset'] = ($this->page_number - 1) * $this->filters['limit'];
+                //use DI to dynamically insert feeds from any source. FB, Twitter, 36Stories. Create merge logic here!
+                $offset = ($this->page_number - 1) * $this->filters['limit'];
+
+                $this->filters['offset'] = $offset;
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
- 
+                
+                Helpers::dump($date_result);
+                 
                 $data = Array();
                 foreach($date_result->result as $feeds) {
                    $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
@@ -74,7 +79,6 @@ class InboxService {
                 $this->pagination->records_per_page($this->filters['limit']);
 
                 $data_obj->result = $data;
-                $data_obj->num_rows = $date_result->total_rows;
                 $data_obj->pagination = $this->pagination->render();
 
                 if(!$this->ignore_cache) {
