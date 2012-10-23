@@ -153,34 +153,51 @@ return array(
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
         });
 
-        $tf->test("Twitter Inbox Testing", function($tf) {  
-            $twits = $tf->data->twitter->pull_twits_for('codiqa');
-            $tf->assert($twits);
-        });
-
         $tf->test("Feedback Inbox Testing Company ID 6", function($tf) {  
+
+            $pagination = new ZebraPagination;
+            $offset = ($pagination->get_page() - 1) * 3; 
+           
+            print_r($offset);
+
             $params = Array(
                 'is_published' => 0
               , 'is_featured'  => 0
               , 'company_id' => 6
             );
+
             $feeds   = $tf->data->dbfeedback->pull_feedback_by_company($params);
             $twfeeds = $tf->data->twitter->pull_twits_for('codiqa');
 
-            $comb = array_merge($feeds->result, $twfeeds->result);
+            $tests = Array($twfeeds->result);
 
-            usort($comb, function($a1, $a2) {
-                return ($a1->datetimeobj > $a2->datetimeobj)   ? -1 : 1;
+            foreach($tests as $val) {
+                $comb = array_merge($feeds->result, $val);     
+            }
+ 
+            usort($comb, function($a, $b) {
+                $t1 = $a->unix_timestamp;
+                $t2 = $b->unix_timestamp;
+                return $t2 - $t1;
             });
-
-            //$tf->dump($comb);
+            
+            $children = Array();
+            foreach(new LimitIterator(new ArrayIterator($comb), $offset, 3) as $fr) { 
+                $children[] = $fr;      
+            }
 
             $collection = Array();
-            foreach($comb as $v) {
+            foreach($children as $v) {
                 $collection[$v->head_date][] = $v;
             }
-            $tf->dump($collection);
 
+            $tf->dump($comb);
+
+            //$tf->dump($collection);
+            $pagination->selectable_pages(4);
+            $pagination->records(count($comb));
+            $pagination->records_per_page(3);
+            echo $pagination->render();
         });
 
         $tf->run();

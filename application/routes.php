@@ -22,7 +22,8 @@ return array(
 	| Need more breathing room? Organize your routes in their own directory.
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
-	*//*
+	*/
+    /*
     'GET /' => function() use($company_name, $hosted_settings, $dbw, $company) { 
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
@@ -53,7 +54,7 @@ return array(
                                                   , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
-*/
+    */
         'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
