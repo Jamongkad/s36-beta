@@ -1,11 +1,12 @@
 <?php
-
+$twitter = new \twitter\twitter('danOliverC');
 return array( 
     'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function(  $filter=False
-                                                                                                      , $choice=False ) {  
+                                                                                                      , $choice=False ) use($twitter){  
+
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
-        $limit = 3;
+        $limit = 10;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
@@ -25,6 +26,7 @@ return array(
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
+        $tweets = $twitter->findTwitts('codiqa');
 
         $admin_check = S36Auth::user();
         $user_id = S36Auth::user()->userid;
@@ -34,14 +36,6 @@ return array(
         //Resets UI code for clicky action function
         reset_inbox_ui($company_id, $redis);
         $category = new DBCategory;
-        
-        //Reply messages
-        $type = 'msg';
-        $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);       
-        $sm = new Message\Services\SettingMessage($dbm);       
-        $sm->get_messages();
-        
         $view_data = Array(
               'feedback' => $feedback->result
             , 'pagination' => $feedback->pagination
@@ -52,7 +46,6 @@ return array(
             , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
             , 'filter' => $filter
             , 'company_id' => $company_id
-            , 'reply_message' => json_decode($sm->jsonify())
         );
         
         if(!Input::get('_pjax')) { 
@@ -60,7 +53,6 @@ return array(
         } else {
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
-       
     }), 
 );
 

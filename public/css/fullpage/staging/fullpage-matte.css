@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#f6f6f6;
+}
+a{color:#4894b3;}
+a:hover{color:#54a1c0;}
+
+#headerWrapper{
+	background:#e5e5e5;
+	box-shadow:#CCC 0px 1px 5px;
+	border-bottom:4px solid #FFF;
+}
+
+#headerTitle{
+	color:#aaa;
+}
+#headerTitle strong{color:#0d3f7c;}
+#headerTitle span {}
+#headerTitle span a{color:#6b6b6b;}
+#headerTitle a:hover{color:#777;}
+
+/* page style not the form style */
+.companyDetails{color:#000;}
+.companyDetails h2{}
+.companyDetails p{color:#000;}
+.companyLinks{background:none;}
+.companyLinks ul li{border-right:1px solid #EEE;}
+.companyLinks ul li a{background:url(../../../img/companyLinkIcons.png) no-repeat;}
+
+
+/* feedbacks */
+.feedback{background:#FFF;box-shadow:#AAA 0px 2px 2px;}
+.featured{background:#efefef;border:2px solid #FFF;padding:30px 28px;}
+.featured .feedbackAuthor img{border:1px solid #CCC;}
+.featured .feedbackAuthor h2{color:#1982ad;}
+.featured .feedbackAuthor h4{color:#2c2a2a;}
+.featured .feedbackTextTail{background:url(../../../img/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextBubble{background:#FFF;color:#1e1e1e;}
+.featured .feedbackDate{color:#666666;text-shadow:#FFF 0px 1px;}
+/* normal */
+.normal{background:#efefef;border:2px solid #FFF;padding:20px 18px;}
+.normal .feedbackAuthor h2{color:#1982ad;}
+.normal .feedbackAuthor h4{color:#2c2a2a;}
+.normal .feedbackText p{color:#333;}
+.normal .feedbackTextTail{background:url(images/matte/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextBubble{background:#FFF;color:#333;}
+.normal .feedbackMeta{color:#CCC;}
+.normal .feedbackDate{color:#999;}

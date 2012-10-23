@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	color:#666;
+	background:#f6f6f6;
+}
+
+a{color:#b5b5b5;}
+a:hover{color:#6896cb;}
+
+#headerWrapper{
+	padding-bottom:0px;
+	background:url(../images/boxy/boxy-header-bg.jpg) repeat-x bottom;
+}
+
+#headerTitle{
+	color:#b5b5b5;
+		text-shadow:none;
+		
+}
+#pageTitle h1{color:#171616}
+.green-cross{color:#171616;}
+#headerTitle strong{color:#FFF;	text-shadow:none;}
+#headerTitle span {}
+#headerTitle span a{color:#EEE;	text-shadow:none;}
+#headerTitle a:hover{color:#FFF;	text-shadow:none;}
+/* page style not the form style */
+.companyDetails{color:#000;}
+.companyDetails h2{}
+.companyDetails p{color:#000;}
+.companyLinks{background:none;}
+.companyLinks ul li{border-right:1px solid #EEE;}
+.companyLinks ul li a{background:url(../images/companyLinkIcons.png) no-repeat;}
+
+
+/* feedbacks */
+.feedback{background:#faf3e4;box-shadow:none;}
+.featured{background:#faf3e4;border:1px solid #faf3e4;}
+.featured .feedbackAuthor img{border:1px solid #CCC;}
+.featured .feedbackAuthor h2{color:#1982ad;}
+.featured .feedbackAuthor h4{color:#2c2a2a;}
+.featured .feedbackTextTail{background:url(../images/boxy/featured-bubble-tail.png) no-repeat;}
+.featured .feedbackTextBubble{background:#3d3c3a;color:#FFF;}
+.featured .feedbackDate{color:#666666;text-shadow:#FFF 0px 1px;}
+/* normal */
+.normal{background:#faf3e4;border:1px solid #faf3e4}
+.normal .feedbackAuthor h2{color:#1982ad;}
+.normal .feedbackAuthor h4{color:#2c2a2a;}
+.normal .feedbackText p{color:#FFF;}
+.normal .feedbackTextTail{background:url(../images/boxy/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextBubble{background:#8fa09b;color:#FFF;}
+.normal .feedbackMeta{color:#CCC;}
+.normal .feedbackDate{color:#999;}
