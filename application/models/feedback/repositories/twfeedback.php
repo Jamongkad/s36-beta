@@ -3,42 +3,40 @@
 use Underscore\Underscore;
 use \Twitter\Twitter;
 use \Feedback\Entities\FeedbackNode;
-use DateTime, StdClass, Helpers;
+use DateTime, StdClass;
+use Package, Helpers, Config;
+
+Package::load('eden');
 
 class TWFeedback {
     public function __construct() { 
         $this->twitter = new Twitter;
         $this->underscore = new Underscore;
+
+        $this->twitter_key    = Config::get('application.twitter_key');
+        $this->twitter_secret = Config::get('application.twitter_secret');
+        $this->access_token   = Config::get('application.twitter_access_token');
+        $this->access_secret  = Config::get('application.twitter_access_secret');
     }
 
     public function pull_twits_for($twitter_account) {
-        
-        $twits = $this->twitter->findTwitts($twitter_account);
+        eden()->setLoader();       
+        eden('twitter')->auth($this->twitter_key, $this->twitter_secret);
+        $search = eden('twitter')->search($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
+        $twits = $search->search($twitter_account);
+        //$twits = $this->twitter->findTwitts($twitter_account);
 
         $collection = Array();
-        foreach($twits as $data) {  
-            /*
-            $snode = Array(); 
-            $d = new DateTime($data->created_at);
+        foreach($twits['statuses'] as $data) {  
 
-            $snode['id'] = $data->id_str;
-            $snode['firstname'] = $data->from_user;
-            $snode['avatar'] = $data->profile_image_url_https;
-            $snode['text'] = $data->text;
-            $snode['twit_date'] = $data->created_at;
-            $snode['date'] = $d->format("Y-m-d H:i:s");
-            $snode['head_date'] = $d->format("d.m.Y");
-            $snode['unix_timestamp'] = $d->getTimestamp();
-            $collection[] = $snode;
-            */
-            $d = new DateTime($data->created_at);
+            $d = new DateTime($data['created_at']);
             $node = new FeedbackNode;
 
-            $node->id             = $data->id_str;
-            $node->firstname      = $data->from_user;
-            $node->avatar         = $data->profile_image_url_https;
-            $node->text           = $data->text;
-            $node->twit_date      = $data->created_at;
+            $node->id             = $data['user']['id_str'];
+            $node->firstname      = $data['user']['name'];
+            $node->avatar         = $data['user']['profile_image_url_https'];
+            $node->text           = $data['text'];
+            $node->twit_date      = $data['created_at'];
             $node->daysago        = Helpers::relative_time($d->getTimestamp());
             $node->date           = $d->format("Y-m-d H:i:s");
             $node->head_date      = $d->format("d.m.Y");
@@ -51,6 +49,7 @@ class TWFeedback {
         $obj->result = $collection;
 
         return $obj;
+
         /*
         $groupies = $this->underscore->groupBy($collection, 'head_date');            
 

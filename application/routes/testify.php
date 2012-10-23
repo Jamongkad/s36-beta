@@ -158,8 +158,6 @@ return array(
             $pagination = new ZebraPagination;
             $offset = ($pagination->get_page() - 1) * 3; 
            
-            print_r($offset);
-
             $params = Array(
                 'is_published' => 0
               , 'is_featured'  => 0
@@ -167,7 +165,7 @@ return array(
             );
 
             $feeds   = $tf->data->dbfeedback->pull_feedback_by_company($params);
-            $twfeeds = $tf->data->twitter->pull_twits_for('codiqa');
+            $twfeeds = $tf->data->twitter->pull_twits_for('@codiqa');
 
             $tests = Array($twfeeds->result);
 
@@ -191,9 +189,8 @@ return array(
                 $collection[$v->head_date][] = $v;
             }
 
-            $tf->dump($comb);
-
-            //$tf->dump($collection);
+            //$tf->dump($comb);
+            $tf->dump($collection);
             $pagination->selectable_pages(4);
             $pagination->records(count($comb));
             $pagination->records_per_page(3);

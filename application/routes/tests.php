@@ -9,16 +9,16 @@ return array(
         eden('debug')->output('Hello World'); //--> Hello world!
         
             eden()->setLoader();
-            $twitter_key = 'ypY64BMq29xvKa8nUfzcBw';
-            $twitter_secret = 'AASYDQ188KrJfBUzdqU44wpFmSULRRWnsnPhSjTKffs';
-            $access_token = '612524250-WeyvPfgcWWah6lWZeZWwUecEHNi2qLgzykgABP20';
-            $access_secret = 'QDOMXzbVMb97Tbf7YUtABvR6LExvdh1n35iHDqaDg';
+            $twitter_key    = Config::get('application.twitter_key');
+            $twitter_secret = Config::get('application.twitter_secret');
+            $access_token   = Config::get('application.twitter_access_token');
+            $access_secret  = Config::get('application.twitter_access_secret');
 
             $auth = eden('twitter')->auth($twitter_key, $twitter_secret);
             $search = eden('twitter')->search($twitter_key, $twitter_secret, $access_token, $access_secret);
-            $q = $search->search('codiqa');
+            $q = $search->search('@codiqa');
             echo "<pre>";
-            print_r($q);
+            print_r($q['statuses']);
             echo "</pre>";
     }),
     

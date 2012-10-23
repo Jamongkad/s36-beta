@@ -124,4 +124,13 @@ return array(
 
 	'key' => '76wbf0w8c08ws1nbo9gbgyxn3iwfy0xg',
 
+	/*
+	|--------------------------------------------------------------------------
+	| Twitter Application Keys
+	|--------------------------------------------------------------------------
+	*/
+    'twitter_key' => 'ypY64BMq29xvKa8nUfzcBw', 
+    'twitter_secret' => 'AASYDQ188KrJfBUzdqU44wpFmSULRRWnsnPhSjTKffs',
+    'twitter_access_token' => '612524250-WeyvPfgcWWah6lWZeZWwUecEHNi2qLgzykgABP20',
+    'twitter_access_secret' => 'QDOMXzbVMb97Tbf7YUtABvR6LExvdh1n35iHDqaDg',
 );
