@@ -20,43 +20,6 @@ return array(
             echo "<pre>";
             print_r($q);
             echo "</pre>";
-
-            session_start();
-            /*
-            //if we have no access token
-            if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
-                //if we do not have the request secret
-                if(!isset($_SESSION['request_secret'])) {
-                    //we are still in the middle of authenticating
-                    //get the request token from twitter
-                    $token = $auth->getRequestToken();
-                    //and store it in a session
-                    $_SESSION['request_secret'] = $token['oauth_token_secret'];
-                    //with the request token we can form a login URL the 
-                    //user will need to go to inorder to complete the authenication process
-                    $login = $auth->getLoginUrl($token['oauth_token'], 'http://local/eden/index.php');
-
-                    header('Location:'.$login);
-                    exit;
-                }
-               
-                //either way we should have a request secret at this point
-                //at this point the user has already authorize our app
-                //if we got something back in a URL query
-                if(isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
-                    //we need to convert that to an access token
-                    $token = $auth->getAccessToken($_GET['oauth_token'], $_SESSION['request_secret'], $_GET['oauth_verifier']);
-                    //lastly, save the token in session
-                    $_SESSION['access_token']   = $token['oauth_token'];
-                    $_SESSION['access_secret']  = $token['oauth_token_secret'];
-                    //clean up
-                    unset($_SESSION['request_secret']);
-                }
-            } 
-            */
-            
-        
-
     }),
     
     'GET /tests/test_blob' => Array('needs' => 'EnhanceTestFramework, S36ValueObjects', 'do' => function() { 

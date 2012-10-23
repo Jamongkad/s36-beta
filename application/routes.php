@@ -55,7 +55,7 @@ return array(
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
     */
-        'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
         $tweets = $twitter->findTwitts('codiqa');
