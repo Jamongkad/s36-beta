@@ -23,6 +23,7 @@ class DBFeedback extends S36DataObject {
                   END AS priority
                 , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
                 , Feedback.dtAdded AS date
+                , DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "EUR")) AS head_date_format 
                 , CASE
                       WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
                           THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
@@ -78,6 +79,7 @@ class DBFeedback extends S36DataObject {
                 , Contact.email AS email
                 , Contact.profileLink
                 , Contact.position AS position
+
                 , Contact.website AS url
                 , Contact.city AS city
                 , Contact.companyName AS companyname
@@ -225,9 +227,12 @@ class DBFeedback extends S36DataObject {
         if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
            $combined_statement = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1)";
         }
+
+        /*
         if(isset($opts['site_id']) && !empty($opts['site_id'])){
             $siteid_statement  = "AND Site.siteId = '".$opts['site_id']."'";
         }
+        */
 
         $sql = '
             SELECT 
@@ -258,20 +263,60 @@ class DBFeedback extends S36DataObject {
                     ORDER BY  
                         Feedback.dtAdded DESC
         ';
-        
-        
+                
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', S36Auth::user()->companyid, PDO::PARAM_INT);              
-        //$sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
+
+        $company_id = $this->company_id;
+
+        if (!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();       
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $results = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $collection = Array();
+        foreach($results as $data)  {
+            $node = new \Feedback\Entities\FeedbackNode;
+            $node->id = $data->id;      
+            $node->firstname = $data->firstname;
+            $node->lastname = $data->lastname;
+            $node->logintype = $data->logintype;
+            $node->countryname = $data->countryname;
+            $node->countrycode = $data->countrycode;
+            $node->profilelink = $data->profilelink;
+            $node->date = $data->date;
+            $node->status = $data->status;
+            $node->text = $data->text;
+            $node->categoryid = $data->categoryid;  
+            $node->category = $data->category;  
+            $node->priority = $data->priority;  
+            $node->rating = $data->rating;
+            $node->ispublished = $data->ispublished;
+            $node->isdeleted = $data->isdeleted;
+            $node->isfeatured = $data->isfeatured;
+            $node->permission_css = $data->permission_css;
+            $node->permission = $data->permission;
+            $node->contactid = $data->contactid;
+            $node->siteid = $data->siteid;
+            $node->perm_val = $data->perm_val;
+            $node->email = $data->email;
+            $node->unix_timestamp = $data->unix_timestamp;
+            $node->daysago = $data->daysago;
+            $node->sitedomain = $data->sitedomain;
+            $node->avatar = $data->avatar;
+            $node->head_date = $data->head_date_format;
+            $node->datetimeobj = new \DateTime($data->head_date_format);
+            $collection[] = $node; 
+        }
+
         $result_obj = new StdClass;
-        $result_obj->site_id    = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
-        $result_obj->result = $result;
+        $result_obj->result = $collection;
         return $result_obj;       
     }
 

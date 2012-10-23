@@ -149,61 +149,38 @@ return array(
     'GET /testify/twitter' => function() { 
         $tf = new Testify("Twitter Service");
         $tf->beforeEach(function($tf) {
-            $tf->data->twitter = new Feedback\Repositories\TWFeedback;//new Twitter\Twitter('#codiqa'); 
+            $tf->data->twitter = new Feedback\Repositories\TWFeedback;
+            $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
         });
 
         $tf->test("Twitter Inbox Testing", function($tf) {  
-            $tf->dump($tf->data->twitter);
-            /*
-            $twits = $tf->data->twitter->findTwitts('codiqa');
+            $twits = $tf->data->twitter->pull_twits_for('codiqa');
+            $tf->assert($twits);
+        });
+
+        $tf->test("Feedback Inbox Testing Company ID 6", function($tf) {  
+            $params = Array(
+                'is_published' => 0
+              , 'is_featured'  => 0
+              , 'company_id' => 6
+            );
+            $feeds   = $tf->data->dbfeedback->pull_feedback_by_company($params);
+            $twfeeds = $tf->data->twitter->pull_twits_for('codiqa');
+
+            $comb = array_merge($feeds->result, $twfeeds->result);
+
+            usort($comb, function($a1, $a2) {
+                return ($a1->datetimeobj > $a2->datetimeobj)   ? -1 : 1;
+            });
+
+            //$tf->dump($comb);
 
             $collection = Array();
-            foreach($twits as $data) {  
-
-                $snode = Array(); 
-                $d = new DateTime($data->created_at);
-                $snode['id'] = $data->id_str;
-                $snode['firstname'] = $data->from_user;
-                $snode['avatar'] = $data->profile_image_url_https;
-                $snode['text'] = $data->text;
-                $snode['twit_date'] = $data->created_at;
-                $snode['date'] = $d->format("Y-m-d H:i:s");
-                $snode['head_date'] = $d->format("d.m.Y");
-                $snode['unix_timestamp'] = $d->getTimestamp();
-                $collection[] = $snode;
+            foreach($comb as $v) {
+                $collection[$v->head_date][] = $v;
             }
+            $tf->dump($collection);
 
-            $underscore = new Underscore\Underscore;
-            $groupies = $underscore->groupBy($collection, 'head_date');            
-
-            $final_collection = Array();
-            foreach($groupies as $date => $children) { 
-
-                $p = new StdClass;
-                $p->date = $date;
-                $p->children = Array();
-
-                print_r(count($children)."<br/>");
-
-                foreach($children as $child) {
-                    $p->daysago = Helpers::relative_time($child['unix_timestamp']);
-                    $p->unix_timestamp = $child['unix_timestamp'];
-                    $node = new \Feedback\Entities\FeedbackNode;
-                    $node->id             = $child['id'];
-                    $node->firstname      = $child['firstname'];
-                    $node->avatar         = $child['avatar'];
-                    $node->text           = $child['text'];
-                    $node->twit_date      = $child['twit_date'];
-                    $node->date           = $child['date'];
-                    $node->unix_timestamp = $child['unix_timestamp']; 
-                    $p->children[] = $node;
-                }                
-
-                $final_collection[] = $p;
-            }
-
-            $tf->dump($final_collection);
-            */
         });
 
         $tf->run();
