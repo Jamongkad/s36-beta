@@ -157,7 +157,7 @@
 		$.ajaxFileUpload
 		(
 			{
-				url:'ajaxfileupload',
+				url:'imageprocessing/upload_coverphoto',
 				type:'POST',
 				secureuri:false,
 				fileElementId:'logoUpload',
@@ -178,7 +178,7 @@
 						{
 							fetch_new_image(data.msg);
 							change_logo(data.msg);
-							$('#coverPhoto').css('top',0);
+							
 						}
 					}
 					
@@ -206,6 +206,7 @@
 					$('#dragPhoto').fadeIn('fast');
 					$('#saveCoverButton').fadeIn('fast');
 				});
+				$('#coverPhoto').css('top',0);
 		});
 		make_cover_undraggable(false);
 	}
