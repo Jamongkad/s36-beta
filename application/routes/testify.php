@@ -149,9 +149,9 @@ return array(
     'GET /testify/twitter' => function() { 
         $tf = new Testify("Twitter Service");
         $tf->beforeEach(function($tf) {
-            $tf->data->twitter = new Feedback\Repositories\TWFeedback;
+            $tf->data->twitter    = new Feedback\Repositories\TWFeedback;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
-            $tf->data->stub = new Feedback\Repositories\Stub;
+            $tf->data->stub       = new Feedback\Repositories\Stub;
         });
 
         $tf->test("Feedback Inbox Testing Company ID 6", function($tf) {  
@@ -159,13 +159,11 @@ return array(
             $pagination = new ZebraPagination;
             $offset = ($pagination->get_page() - 1) * 3; 
            
-            $params = Array(
+            $feeds   = $tf->data->dbfeedback->pull_feedback_by_company(Array(
                 'is_published' => 0
               , 'is_featured'  => 0
               , 'company_id' => 6
-            );
-
-            $feeds   = $tf->data->dbfeedback->pull_feedback_by_company($params);
+            ));
             $twfeeds = $tf->data->twitter->pull_twits_for('@codiqa');
             $stub    = $tf->data->stub->pull_stubs();
 

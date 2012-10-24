@@ -1,8 +1,7 @@
 <?php
-$twitter = new \twitter\twitter('danOliverC');
+
 return array( 
-    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function(  $filter=False
-                                                                                                      , $choice=False ) use($twitter){  
+    'GET /inbox/(:any?)/(:any?)' => Array('name' => 'inbox', 'before' => 's36_auth', 'do' => function($filter=False, $choice=False) {  
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
@@ -11,23 +10,21 @@ return array(
         if(Input::get('limit')) $limit = (int)Input::get('limit');
 
         $filters = array(
-              'limit'=> $limit
-            , 'site_id'=> Input::get('site_id')
-            , 'filter'=> $filter
-            , 'choice'=> $choice
-            , 'date'  => Input::get('date')
-            , 'rating' => Input::get('rating')
-            , 'category' => Input::get('category')
-            , 'priority' => Input::get('priority') //low medium high
-            , 'status' => Input::get('status') //new inprogress closed
+              'limit'      => $limit
+            , 'site_id'    => Input::get('site_id')
+            , 'filter'     => $filter
+            , 'choice'     => $choice
+            , 'date'       => Input::get('date')
+            , 'rating'     => Input::get('rating')
+            , 'category'   => Input::get('category')
+            , 'priority'   => Input::get('priority') //low medium high
+            , 'status'     => Input::get('status') //new inprogress closed
             , 'company_id' => S36Auth::user()->companyid
         );
 
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
-        $tweets = $twitter->findTwitts('codiqa');
-
         $admin_check = S36Auth::user();
         $user_id = S36Auth::user()->userid;
         $company_id = S36Auth::user()->companyid;
