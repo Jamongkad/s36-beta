@@ -27,6 +27,7 @@ return array(
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
     'Underscore' => 'Underscore\\Underscore',
     'Testify' => 'Testify\\Testify',
+    'Pimple' => 'Pimple\\Pimple',
 	'Auth' => 'System\\Auth',
 	'Asset' => 'System\\Asset',
 	'Benchmark' => 'System\\Benchmark',

@@ -92,6 +92,7 @@ return array(
       $company->update_coverphoto($data);
       return json_encode($data);
     },
+
     'POST /ajaxfileupload' => function(){
         $error = "";
         $msg = "";

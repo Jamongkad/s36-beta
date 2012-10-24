@@ -79,7 +79,6 @@ class DBFeedback extends S36DataObject {
                 , Contact.email AS email
                 , Contact.profileLink
                 , Contact.position AS position
-
                 , Contact.website AS url
                 , Contact.city AS city
                 , Contact.companyName AS companyname
@@ -280,36 +279,44 @@ class DBFeedback extends S36DataObject {
 
         $collection = Array();
         foreach($results as $data)  {
-            $node = new \Feedback\Entities\FeedbackNode;
+            $node = new FeedbackNode;
             $node->id = $data->id;      
             $node->firstname = $data->firstname;
-            $node->lastname = $data->lastname;
+            $node->lastname  = $data->lastname;
             $node->logintype = $data->logintype;
             $node->countryname = $data->countryname;
             $node->countrycode = $data->countrycode;
             $node->profilelink = $data->profilelink;
-            $node->date = $data->date;
+            $node->date   = $data->date;
             $node->status = $data->status;
-            $node->text = $data->text;
+            $node->text   = $data->text;
             $node->categoryid = $data->categoryid;  
-            $node->category = $data->category;  
-            $node->priority = $data->priority;  
-            $node->rating = $data->rating;
+            $node->category   = $data->category;  
+            $node->priority   = $data->priority;  
+            $node->rating     = $data->rating;
             $node->ispublished = $data->ispublished;
-            $node->isdeleted = $data->isdeleted;
-            $node->isfeatured = $data->isfeatured;
+            $node->isdeleted   = $data->isdeleted;
+            $node->isfeatured  = $data->isfeatured;
             $node->permission_css = $data->permission_css;
-            $node->permission = $data->permission;
-            $node->contactid = $data->contactid;
-            $node->siteid = $data->siteid;
+            $node->permission     = $data->permission;
+            $node->contactid      = $data->contactid;
+            $node->siteid   = $data->siteid;
             $node->perm_val = $data->perm_val;
-            $node->email = $data->email;
+            $node->email    = $data->email;
             $node->unix_timestamp = $data->unix_timestamp;
-            $node->daysago = $data->daysago;
-            $node->sitedomain = $data->sitedomain;
-            $node->avatar = $data->avatar;
-            $node->head_date = $data->head_date_format;
-            $node->datetimeobj = new \DateTime($data->head_date_format);
+            $node->daysago        = $data->daysago;
+            $node->sitedomain     = $data->sitedomain;
+            $node->avatar         = $data->avatar;
+            $node->head_date      = $data->head_date_format;
+            $node->datetimeobj    = new \DateTime($data->head_date_format);
+            $node->displayname     = $data->displayname;
+            $node->displayimg      = $data->displayimg;
+            $node->displaycompany  = $data->displaycompany;
+            $node->displayposition = $data->displayposition;
+            $node->displayurl      = $data->displayurl;
+            $node->displaycountry  = $data->displaycountry;
+            $node->displaysbmtdate = $data->displaysbmtdate;
+            $node->indlock         = $data->indlock;
             $collection[] = $node; 
         }
 
@@ -358,7 +365,7 @@ class DBFeedback extends S36DataObject {
         
         $collection = Array();
         foreach($results as $data)  {
-            $node = new \Feedback\Entities\FeedbackNode;
+            $node = new FeedbackNode;
             $node->id = $data->id;      
             $node->firstname = $data->firstname;
             $node->lastname = $data->lastname;

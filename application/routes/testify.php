@@ -151,6 +151,7 @@ return array(
         $tf->beforeEach(function($tf) {
             $tf->data->twitter = new Feedback\Repositories\TWFeedback;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
+            $tf->data->stub = new Feedback\Repositories\Stub;
         });
 
         $tf->test("Feedback Inbox Testing Company ID 6", function($tf) {  
@@ -166,8 +167,9 @@ return array(
 
             $feeds   = $tf->data->dbfeedback->pull_feedback_by_company($params);
             $twfeeds = $tf->data->twitter->pull_twits_for('@codiqa');
+            $stub    = $tf->data->stub->pull_stubs();
 
-            $tests = Array($twfeeds->result);
+            $tests = Array($twfeeds->result, $stub);
 
             foreach($tests as $val) {
                 $comb = array_merge($feeds->result, $val);     
@@ -195,6 +197,7 @@ return array(
             $pagination->records(count($comb));
             $pagination->records_per_page(3);
             echo $pagination->render();
+
         });
 
         $tf->run();

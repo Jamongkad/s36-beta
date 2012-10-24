@@ -1,7 +1,6 @@
 <?php namespace Feedback\Repositories;
 
 use Underscore\Underscore;
-use \Twitter\Twitter;
 use \Feedback\Entities\FeedbackNode;
 use DateTime, StdClass;
 use Package, Helpers, Config;
@@ -10,9 +9,6 @@ Package::load('eden');
 
 class TWFeedback {
     public function __construct() { 
-        $this->twitter = new Twitter;
-        $this->underscore = new Underscore;
-
         $this->twitter_key    = Config::get('application.twitter_key');
         $this->twitter_secret = Config::get('application.twitter_secret');
         $this->access_token   = Config::get('application.twitter_access_token');
