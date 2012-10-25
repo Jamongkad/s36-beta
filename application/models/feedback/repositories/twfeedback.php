@@ -33,6 +33,7 @@ class TWFeedback {
             $node->avatar         = $data['user']['profile_image_url_https'];
             $node->text           = $data['text'];
             $node->twit_date      = $data['created_at'];
+            $node->feed_type      = 'twitter';
             $node->daysago        = Helpers::relative_time($d->getTimestamp());
             $node->date           = $d->format("Y-m-d H:i:s");
             $node->head_date      = $d->format("d.m.Y");

@@ -32,7 +32,7 @@ class DBCompany extends S36DataObject {
                 'description'  => $post->company_desc
               , 'fullpageCompanyName' => $post->fullpagecompanyname 
               , 'fb_link' => $post->fb_link
-              , 'twit_link' => $post->twit_link
+              , 'twitter_username' => $post->twitter_username
               , 'website_link' => $post->website_link
               , 'logo' => $post->logo
             )); 

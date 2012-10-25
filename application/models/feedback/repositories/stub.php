@@ -11,12 +11,12 @@ class Stub {
             "2012-10-24 11:36:38"
           , "2012-10-23 10:20:58"
           , "2012-10-02 11:20:58"
+          , "2012-10-19 11:20:58"
         );
         
         $stubs = Array();
         $i = 0;
         foreach($stub_dates as $dates) {
-
             $d = new DateTime($dates);
             $node = new FeedbackNode;
             $node->id             = $i++;

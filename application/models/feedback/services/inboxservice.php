@@ -1,6 +1,8 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
+use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, Helpers, DB;
+use Company\Repositories\DBCompany;
+use Exception, StdClass;
 use Halcyonic;
 
 //Compose this in order to receive via constructor
@@ -61,24 +63,27 @@ class InboxService {
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 //main logic
-                //use DI to dynamically insert feeds from any source. FB, Twitter, 36Stories. Create merge logic here!
                 $offset = ($this->page_number - 1) * $this->filters['limit'];
 
                 $this->filters['offset'] = $offset;
-
-                $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
-                                 
+                
+                //if twitter name is set and filter is at all
+                //display feedback + twitter
+                //use DI to dynamically insert feeds from any source. FB, Twitter, 36Stories. Create merge logic here!
+                $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);                                  
+                $total_rows = $date_result->total_rows;
                 $data = Array();
                 foreach($date_result->result as $feeds) {
-                   $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
+                   $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
+                   $feeds->children_count = $feeds->children->total_rows;
                    $data[] = $feeds;
-                }
-                            
-                $this->pagination->records($date_result->total_rows);
+                } 
+
+                $this->pagination->records($total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
 
                 $data_obj = new StdClass;
-                $data_obj->result = $data;
+                $data_obj->grouped_feeds = $data;
                 $data_obj->pagination = $this->pagination->render();
 
                 if(!$this->ignore_cache) {

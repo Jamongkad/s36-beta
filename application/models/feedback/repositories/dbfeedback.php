@@ -123,7 +123,6 @@ class DBFeedback extends S36DataObject {
                 SQL_CALC_FOUND_ROWS
                 DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "EUR")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
-              , COUNT(DISTINCT Feedback.feedbackId) AS feedcount
               , dtAdded
               , CASE
                     WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
@@ -146,7 +145,6 @@ class DBFeedback extends S36DataObject {
                         "about a year ago"
                 END as daysAgo
               , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
-              , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
             FROM 
                 Feedback
             INNER JOIN
@@ -226,12 +224,15 @@ class DBFeedback extends S36DataObject {
         if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
            $combined_statement = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1)";
         }
-
-        /*
-        if(isset($opts['site_id']) && !empty($opts['site_id'])){
-            $siteid_statement  = "AND Site.siteId = '".$opts['site_id']."'";
+        
+        $inbox_statements = null;
+        if($opts['is_published'] == 0 && $opts['is_featured'] == 0) { 
+            $inbox_statements = '
+                AND Feedback.isDeleted = :is_deleted
+                AND Feedback.isPublished = :is_published
+                AND Feedback.isFeatured = :is_featured
+            ';
         }
-        */
 
         $sql = '
             SELECT 
@@ -255,14 +256,14 @@ class DBFeedback extends S36DataObject {
                         ON Company.companyId = Site.companyId
                     WHERE 1=1
                         AND Company.companyId = :company_id
+                        '.$inbox_statements.'
                         '.$siteid_statement.'
                         '.$published_statement.'
                         '.$featured_statement.'
                         '.$combined_statement.'
                     ORDER BY  
                         Feedback.dtAdded DESC
-        ';
-                
+        '; 
         $sth = $this->dbh->prepare($sql);
 
         $company_id = $this->company_id;
@@ -272,6 +273,14 @@ class DBFeedback extends S36DataObject {
         }
 
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+
+        if ($opts['is_published'] == 0 && $opts['is_featured'] == 0) { 
+            $zero = 0;
+            $sth->bindParam(':is_deleted', $zero, PDO::PARAM_INT);
+            $sth->bindParam(':is_published', $zero, PDO::PARAM_INT);
+            $sth->bindParam(':is_featured', $zero, PDO::PARAM_INT);
+        }
+
         $sth->execute();       
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
@@ -317,6 +326,7 @@ class DBFeedback extends S36DataObject {
             $node->displaycountry  = $data->displaycountry;
             $node->displaysbmtdate = $data->displaysbmtdate;
             $node->indlock         = $data->indlock;
+            $node->feed_type       = '36Stories';
             $collection[] = $node; 
         }
 
@@ -327,7 +337,7 @@ class DBFeedback extends S36DataObject {
         return $result_obj;       
     }
 
-    public function pull_feedback_by_group_id($feedbackids) {
+    public function pull_feedback_group($feedbackids) {
 
         $ids      = explode("|", $feedbackids);
         $in_query = implode(',', array_fill(0, count($ids), '?'));
@@ -393,11 +403,12 @@ class DBFeedback extends S36DataObject {
             $node->daysago = $data->daysago;
             $node->sitedomain = $data->sitedomain;
             $node->avatar = $data->avatar;
+            $node->feed_type = '36Stories';
             $collection[] = $node; 
         }
    
         $result_obj = new StdClass;
-        $result_obj->result = $collection; 
+        $result_obj->feedback = $collection; 
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
