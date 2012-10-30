@@ -62,7 +62,10 @@
         <div id="pageTitle">
             <div class="grids">
                 <div class="g4of5">
-                        <h1>Hear what our customers have to say</h1>
+                    <h1><?=ucfirst($company->name)?>'s Reviews and Testimonials</h1> 
+                    <title>
+                        <?=ucfirst($company->name)?>'s Reviews and Testimonials
+                    </title>
                 </div>
             </div>
             <div class="meta">

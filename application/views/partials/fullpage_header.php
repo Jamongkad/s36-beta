@@ -2,8 +2,6 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Full Page Feedbacks</title>
-
 <meta property="og:title" content="Send Us Your Feedback" />
 <meta property="og:description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit enean nec lorem nibh hac platea dictumst ras posuere sollicitudin justo, at viverra magna malesuada quis ed interdum accumsan aliquet auris nec purus suscipit elit feugiat sagittis orbi tristique augue felis orbi commodo interdum aliquet. " />
 <meta property="og:type" content="article" />

@@ -1,13 +1,13 @@
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
-        <?if($feeds->children->feedback):?>
+        <?if($feeds->children):?>
             <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children_count?>">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
 
-                <?foreach($feeds->children->feedback as $feed):?>
+                <?foreach($feeds->children as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?> 
                     <div class="dialog-form" feedid="<?=$id?>"> 

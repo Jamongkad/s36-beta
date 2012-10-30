@@ -127,16 +127,12 @@ class DBFeedback extends S36DataObject {
               , CASE
                     WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
                         THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
-
                     WHEN datediff(now(), dtAdded) = 1 
                         THEN "Yesterday"
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
                         THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
                         THEN concat(datediff(now(), dtAdded)," days ago")
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                         THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
                     WHEN dtAdded > CURDATE()
@@ -163,8 +159,8 @@ class DBFeedback extends S36DataObject {
                 Country
                    ON Country.countryId = Contact.countryId
             WHERE 1=1
-                '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
+                '.$opts['siteid_statement'].'
                 '.$inbox_statements.'
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
@@ -207,12 +203,91 @@ class DBFeedback extends S36DataObject {
     }
 
     //TODO: Caching Candidate -> Priority Number One
-    public function pull_feedback_by_company(array $opts=null) {
-        $published_statement=   Null;
-        $featured_statement =   Null;
-        $combined_statement =   Null;
-        $siteid_statement   =   Null;
+    public function gather_feedback($opts) {
+        $is_published_filter = false;
+        if(array_key_exists('filter', $opts)) {
+            if($opts['filter'] == 'published') { 
+                $is_published_filter = true;
+            }  
+        } 
 
+        if($is_published_filter) {
+            $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
+                                 AND Feedback.isDeleted = 0";
+        } else { 
+            $inbox_statements = '
+                    AND Feedback.isDeleted = :is_deleted
+                    AND Feedback.isPublished = :is_published
+                    AND Feedback.isFeatured = :is_featured
+                ';
+        }
+    
+        $sql = '
+            SELECT '.$this->select_vars.' FROM 
+                Feedback
+            INNER JOIN
+                Site
+                    ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                    ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                   ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                   ON Contact.contactId = Feedback.contactId 
+            INNER JOIN 
+                Country
+                   ON Country.countryId = Contact.countryId
+            WHERE 1=1
+                AND Company.companyId = :company_id
+                '.$opts['siteid_statement'].'
+                '.$inbox_statements.'
+                '.$opts['rating_statement'].'
+                '.$opts['filed_statement'].'
+                '.$opts['category_statement'].'
+                '.$opts['status_statement'].'
+                '.$opts['priority_statement'].'
+                '.$opts['sql_statement'].'
+            ORDER BY 
+                '.$opts['date_statement'].' 
+            LIMIT :offset, :limit
+        ';
+
+        $company_id = $this->company_id;
+
+        if (!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
+         
+        if (!$is_published_filter) { 
+            $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
+            $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
+            $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
+        }
+
+        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
+        $sth->execute();
+
+        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        $row_count   = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj  = new StdClass;
+        $result_obj->result = $date_result;
+        $result_obj->total_rows = $row_count->fetchColumn();
+        return $result_obj;  
+    }
+
+    public function pull_feedback_by_company(array $opts=null) {
+        $published_statement =   Null;
+        $featured_statement  =   Null;
+        $combined_statement  =   Null;
+        $siteid_statement    =   Null;
+ 
         if($opts['is_published'] == 1 && $opts['is_featured'] == 0) {
            $published_statement = "AND Feedback.isPublished = 1";
         }
@@ -406,11 +481,8 @@ class DBFeedback extends S36DataObject {
             $node->feed_type = '36Stories';
             $collection[] = $node; 
         }
-   
-        $result_obj = new StdClass;
-        $result_obj->feedback = $collection; 
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj; 
+
+        return $collection;
     }
 
     public function pull_feedback_by_id($feedback_id) { 
@@ -619,6 +691,7 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _permanent_delete($opts) { 
+        
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
         
@@ -693,11 +766,13 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
+
     public function update_feedback($id,$fields){
         return DB::table('Feedback','master')
                     ->where('feedbackId','=',$id)
                     ->update($fields);
     }
+
     public function update_feedback_text($feedback_id, $text, $is_profane)  { 
         $affected = DB::table('Feedback', 'master')
             ->where('feedbackId', '=', $feedback_id)

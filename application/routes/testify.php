@@ -152,28 +152,41 @@ return array(
             $tf->data->twitter    = new Feedback\Repositories\TWFeedback;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
             $tf->data->stub       = new Feedback\Repositories\Stub;
-            $tf->data->dbcompany  = new Company\Repositories\DBCompany; 
+            $tf->data->redis      = new redisent\Redis;
         });
 
         $tf->test("Feedback Inbox Testing Company ID 6", function($tf) {  
 
             $pagination = new ZebraPagination;
-            $limit = 5;
+            $limit = 4;
             $offset = ($pagination->get_page() - 1) * $limit; 
 
             $params = Array(
                 'is_published' => 0
               , 'is_featured'  => 0
-              , 'company_id'   => 6
+              , 'company_id'   => 1
+            );
+            
+            //filters for new inbox
+            $filters = array(
+                  'limit'=> 3
+                , 'site_id'=> false 
+                , 'filter'=> 'all' //(new arrivals) all (show only) featured published
+                , 'choice'=> false //positive negative neutral profanity flagged mostcontent
+                , 'date'  => false //date_new date_old
+                , 'rating' => false //5 4 3 2 1
+                , 'category' => false 
+                , 'priority' => false //low medium high
+                , 'status' => false //new inprogress closed
+                , 'company_id' => 6
             );
 
             $feeds    = $tf->data->dbfeedback->pull_feedback_by_company($params);
             $twfeeds  = $tf->data->twitter->pull_twits_for('@microsourcing');
-            $twfeeds1 = $tf->data->twitter->pull_twits_for('@codiqa');
-            $stub     = $tf->data->stub->pull_stubs();
-
+            //$twfeeds1 = $tf->data->twitter->pull_twits_for('@codiqa');
+            //$stub     = $tf->data->stub->pull_stubs();
             //$tests = Array($feeds->result, $twfeeds->result, $stub, $twfeeds1->result); 
-            $tests = Array($feeds->result);
+            $tests = Array($twfeeds->result, $feeds->result);
             
             $comb = Array();
             foreach($tests as $val) {
@@ -200,12 +213,59 @@ return array(
             $pagination->selectable_pages(4);
             $pagination->records(count($comb));
             $pagination->records_per_page($limit);
-
+            $pagination->get_page();
+ 
+            $tf->dump($pagination->_total_pages);
             $obj = new StdClass;
             $obj->grouped_feeds = $children;
             $obj->pagination = $pagination->render();
-            $tf->assert($obj);
+            //$tf->dump(count($comb));
+            //$tf->dump($feeds->result);
+            //$tf->dump($obj);
+            //$tf->dump($tf->data->redis);
         });
+        $tf->run();
+    }, 
+
+    'GET /testify/dbfeedback' => function() { 
+        $tf = new Testify("New Inbox Test");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->feedback = new Feedback\Repositories\DBFeedback;
+            $tf->data->pagination = new ZebraPagination;
+            $tf->data->inboxservice = new Feedback\Services\InboxService;
+        });
+
+        $tf->test("Feedback Inbox", function($tf)  {
+
+            $filters = array(
+                  'limit'=> 300
+                , 'offset' => Input::get('o')
+                , 'site_id'=> false 
+                , 'filter'=> 'all' //(new arrivals) all (show only) featured published
+                , 'choice'=> false //positive negative neutral profanity flagged mostcontent
+                , 'date'  => false //date_new date_old
+                , 'rating' => false //5 4 3 2 1
+                , 'category' => false 
+                , 'priority' => false //low medium high
+                , 'status' => false //new inprogress closed
+                , 'company_id' => 1
+            );
+
+            $checked_filters = $tf->data->inboxservice->_check_filters($filters);
+            $feeds = $tf->data->feedback->gather_feedback($checked_filters);
+            //$tf->dump(count($feeds->result));
+            //$tf->dump($feeds->result);
+            $tf->dump(range(0, (int)$feeds->total_rows, 100)); 
+
+            $tf->data->pagination->selectable_pages(4);
+            $tf->data->pagination->records(count($feeds->result));
+            $tf->data->pagination->records_per_page(10);
+            $tf->data->pagination->get_page();
+            $tf->dump($tf->data->pagination);
+            $tf->dump($tf->data->pagination->render());
+        });
+
         $tf->run();
     }
 );
