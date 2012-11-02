@@ -192,37 +192,6 @@ return array(
                     $comb[] = $d;
                 }
             } 
-
-            usort($comb, function($a, $b) {
-                $t1 = $a->unix_timestamp;
-                $t2 = $b->unix_timestamp;
-                return $t2 - $t1;
-            });
-
-            //$tf->dump(count($comb));
-            //$tf->dump($feeds->total_rows);
-            $tf->dump(range(0, $feedback_struct['limit'], $feedback_struct['step'])); 
-
-            $tf->data->pagination->variable_name('p');
-            $tf->data->pagination->selectable_pages(2);
-            $tf->data->pagination->records(count($comb));
-            $tf->data->pagination->offset_step(0);
-            $tf->data->pagination->records_per_page(10);
-            $tf->data->pagination->get_page();
-            $tf->dump($tf->data->pagination);
-            $tf->dump($tf->data->pagination->render());
-
-            $children = Array();
-            foreach(new LimitIterator(new ArrayIterator($comb), (($tf->data->pagination->get_page() - 1) * 10), 10) as $fr) { 
-                $children[$fr->head_date]['date_format'] = $fr->head_date;
-                $children[$fr->head_date]['daysago'] = $fr->daysago;
-                $children[$fr->head_date]['dtadded'] = $fr->date;
-                $children[$fr->head_date]['children'][] = $fr;
-                $children[$fr->head_date]['children_count'] = count($children[$fr->head_date]['children']);
-            }
-
-            $tf->dump($children);
-
         });
 
         $tf->run();

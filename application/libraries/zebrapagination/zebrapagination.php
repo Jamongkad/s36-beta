@@ -294,11 +294,6 @@ class ZebraPagination
         $this->records_per_page = (int)$records_per_page;
 
     }
-
-    function offset_step($step) {
-        $this->offset_step = (int)$step;
-    }
-
     /**
      *  Generates the output.
      *
@@ -320,19 +315,6 @@ class ZebraPagination
     function render($return_output = false)
     {
         // get some properties of the class
-        $offset = 0;
-        /*
-        if($this->page == 1) {
-            $offset = $this->offset_step - 100;
-        }
-        */
-
-        if($this->page == $this->_total_pages) {
-            $offset = $this->offset_step + 100;
-        }
-
-        $off_add = isset($_GET['o']) ? (int) $_GET['o'] : 0;
-        $offset = $off_add + $offset;
         $this->get_page();
 
         // if there is a single page, or no pages at all, don't display anything
@@ -347,7 +329,7 @@ class ZebraPagination
             $output .= '<a href="' .
 
                 // the href is different if we're on the first page
-                ($this->page == 1 ? $this->_build_uri(1, $offset) /*'javascript:void(0)'*/ : $this->_build_uri($this->page - 1)) .
+                ($this->page == 1 ? 'javascript:void(0)' : $this->_build_uri($this->page - 1)) .
 
                 // if we're on the first page, the link is disabled
                 '" class="navigation z-left' . ($this->page == 1 ? ' disabled' : '') . '"' .
@@ -363,7 +345,7 @@ class ZebraPagination
             for ($i = 1; $i <= $this->_total_pages; $i++) {
 
                 // render the link for each page
-                $output .= '<a href="' . $this->_build_uri($i, $offset) . '" ' .
+                $output .= '<a href="' . $this->_build_uri($i) . '" ' .
 
                     // make sure to highlight the currently selected page
                     ($this->page == $i ? 'class="current"' : '') . '>' .
@@ -379,7 +361,7 @@ class ZebraPagination
         } else {
 
             // put a link to the first page
-            $output .= '<a href="' . $this->_build_uri(1, $offset) . '" ' .
+            $output .= '<a href="' . $this->_build_uri(1) . '" ' .
 
                 // highlight if it is the currently selected page
                 ($this->page == 1 ? 'class="current"' : '') . '>' .
@@ -452,7 +434,7 @@ class ZebraPagination
             if ($this->_total_pages - $ending_page > 1) $output .= '<span>&hellip;</span>';
 
             // put a link to the last page
-            $output .= '<a href="' . $this->_build_uri($this->_total_pages, $offset) . '" ' .
+            $output .= '<a href="' . $this->_build_uri($this->_total_pages) . '" ' .
 
                 // highlight if it is the currently selected page
                 ($this->page == $i ? 'class="current"' : '') . '>' .
@@ -468,7 +450,7 @@ class ZebraPagination
                 $output .= '<a href="' .
 
                     // the href is different if we're on the last page
-                    ($this->page == $this->_total_pages ? $this->_build_uri(1, $offset)/*.'javascript:void(0)'*/ : $this->_build_uri($this->page + 1, $offset)) .
+                    ($this->page == $this->_total_pages ? 'javascript:void(0)' : $this->_build_uri($this->page + 1)) .
 
                     // if we're on the last page, the link is disabled
                     '" class="navigation z-right' . ($this->page == $this->_total_pages ? ' disabled' : '') . '"' .
@@ -581,7 +563,7 @@ class ZebraPagination
      *
      *  @return void
      */
-    function _build_uri($page, $offset=0)
+    function _build_uri($page)
     {
 
         // if page propagation method is through SEO friendly URLs
@@ -647,14 +629,6 @@ class ZebraPagination
 
                 );
 
-                if($offset > 0) {
-                    $offset_string = preg_replace(
-                        '/o=([^\&]*)[\&]*?/i',
-                        'o' . '=' . $offset,
-                        $query_string
-                    );
-                    $query_string = $offset_string;
-                }     
             // if the current page is not already set in GET
             } else {
                 // set the current page to whatever it was set to
