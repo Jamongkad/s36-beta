@@ -295,6 +295,10 @@ class ZebraPagination
 
     }
 
+    function offset_step($step) {
+        $this->offset_step = (int)$step;
+    }
+
     /**
      *  Generates the output.
      *
@@ -315,8 +319,20 @@ class ZebraPagination
      */
     function render($return_output = false)
     {
-
         // get some properties of the class
+        $offset = 0;
+        /*
+        if($this->page == 1) {
+            $offset = $this->offset_step - 100;
+        }
+        */
+
+        if($this->page == $this->_total_pages) {
+            $offset = $this->offset_step + 100;
+        }
+
+        $off_add = isset($_GET['o']) ? (int) $_GET['o'] : 0;
+        $offset = $off_add + $offset;
         $this->get_page();
 
         // if there is a single page, or no pages at all, don't display anything
@@ -327,12 +343,11 @@ class ZebraPagination
 
         // if the number of total pages available is greater than the number of selectable pages
         // it means we can show the "previous page" link
-        if ($this->_total_pages > $this->selectable_pages) {
-
+        if ($this->_total_pages > $this->selectable_pages) {   
             $output .= '<a href="' .
 
                 // the href is different if we're on the first page
-                ($this->page == 1 ? 'javascript:void(0)' : $this->_build_uri($this->page - 1)) .
+                ($this->page == 1 ? $this->_build_uri(1, $offset) /*'javascript:void(0)'*/ : $this->_build_uri($this->page - 1)) .
 
                 // if we're on the first page, the link is disabled
                 '" class="navigation z-left' . ($this->page == 1 ? ' disabled' : '') . '"' .
@@ -348,7 +363,7 @@ class ZebraPagination
             for ($i = 1; $i <= $this->_total_pages; $i++) {
 
                 // render the link for each page
-                $output .= '<a href="' . $this->_build_uri($i) . '" ' .
+                $output .= '<a href="' . $this->_build_uri($i, $offset) . '" ' .
 
                     // make sure to highlight the currently selected page
                     ($this->page == $i ? 'class="current"' : '') . '>' .
@@ -364,7 +379,7 @@ class ZebraPagination
         } else {
 
             // put a link to the first page
-            $output .= '<a href="' . $this->_build_uri(1) . '" ' .
+            $output .= '<a href="' . $this->_build_uri(1, $offset) . '" ' .
 
                 // highlight if it is the currently selected page
                 ($this->page == 1 ? 'class="current"' : '') . '>' .
@@ -437,7 +452,7 @@ class ZebraPagination
             if ($this->_total_pages - $ending_page > 1) $output .= '<span>&hellip;</span>';
 
             // put a link to the last page
-            $output .= '<a href="' . $this->_build_uri($this->_total_pages) . '" ' .
+            $output .= '<a href="' . $this->_build_uri($this->_total_pages, $offset) . '" ' .
 
                 // highlight if it is the currently selected page
                 ($this->page == $i ? 'class="current"' : '') . '>' .
@@ -453,7 +468,7 @@ class ZebraPagination
                 $output .= '<a href="' .
 
                     // the href is different if we're on the last page
-                    ($this->page == $this->_total_pages ? 'javascript:void(0)' : $this->_build_uri($this->page + 1)) .
+                    ($this->page == $this->_total_pages ? $this->_build_uri(1, $offset)/*.'javascript:void(0)'*/ : $this->_build_uri($this->page + 1, $offset)) .
 
                     // if we're on the last page, the link is disabled
                     '" class="navigation z-right' . ($this->page == $this->_total_pages ? ' disabled' : '') . '"' .
@@ -566,7 +581,7 @@ class ZebraPagination
      *
      *  @return void
      */
-    function _build_uri($page)
+    function _build_uri($page, $offset=0)
     {
 
         // if page propagation method is through SEO friendly URLs
@@ -616,7 +631,7 @@ class ZebraPagination
 
             );
            
-            //TODO FUCK I hate this...remove subdomain
+            //TODO FUCK I hate this...removing subdomain 
             $url = preg_replace('/(subdomain=[a-zA-Z-0-9]+&)/', false, $_SERVER['QUERY_STRING']);
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
@@ -632,16 +647,23 @@ class ZebraPagination
 
                 );
 
+                if($offset > 0) {
+                    $offset_string = preg_replace(
+                        '/o=([^\&]*)[\&]*?/i',
+                        'o' . '=' . $offset,
+                        $query_string
+                    );
+                    $query_string = $offset_string;
+                }     
             // if the current page is not already set in GET
             } else {
-
                 // set the current page to whatever it was set to
                 $query_string = $url/*$_SERVER['QUERY_STRING']*/ .
 
                     //(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? '&' : '') .
                     (isset($url) && $url != '' ? '&' : '') .
 
-                    $this->variable_name . '=' . $page;
+                    $this->variable_name . '=' . $page."&o=0";
 
             }
 

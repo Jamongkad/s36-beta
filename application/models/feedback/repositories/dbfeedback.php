@@ -274,10 +274,54 @@ class DBFeedback extends S36DataObject {
         $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
 
-        $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
+        $result = $sth->fetchAll(PDO::FETCH_CLASS); 
         $row_count   = $this->dbh->query("SELECT FOUND_ROWS()");
+
+        $collection = Array();
+        foreach($result as $data)  {
+            $node = new FeedbackNode;
+            $node->id = $data->id;      
+            $node->firstname = $data->firstname;
+            $node->lastname  = $data->lastname;
+            $node->logintype = $data->logintype;
+            $node->countryname = $data->countryname;
+            $node->countrycode = $data->countrycode;
+            $node->profilelink = $data->profilelink;
+            $node->date   = $data->date;
+            $node->status = $data->status;
+            $node->text   = $data->text;
+            $node->categoryid = $data->categoryid;  
+            $node->category   = $data->category;  
+            $node->priority   = $data->priority;  
+            $node->rating     = $data->rating;
+            $node->ispublished = $data->ispublished;
+            $node->isdeleted   = $data->isdeleted;
+            $node->isfeatured  = $data->isfeatured;
+            $node->permission_css = $data->permission_css;
+            $node->permission     = $data->permission;
+            $node->contactid      = $data->contactid;
+            $node->siteid   = $data->siteid;
+            $node->perm_val = $data->perm_val;
+            $node->email    = $data->email;
+            $node->unix_timestamp = $data->unix_timestamp;
+            $node->daysago        = $data->daysago;
+            $node->sitedomain     = $data->sitedomain;
+            $node->avatar         = $data->avatar;
+            $node->head_date      = $data->head_date_format;
+            $node->datetimeobj    = new \DateTime($data->head_date_format);
+            $node->displayname     = $data->displayname;
+            $node->displayimg      = $data->displayimg;
+            $node->displaycompany  = $data->displaycompany;
+            $node->displayposition = $data->displayposition;
+            $node->displayurl      = $data->displayurl;
+            $node->displaycountry  = $data->displaycountry;
+            $node->displaysbmtdate = $data->displaysbmtdate;
+            $node->indlock         = $data->indlock;
+            $node->feed_type       = '36Stories';
+            $collection[] = $node; 
+        }
         $result_obj  = new StdClass;
-        $result_obj->result = $date_result;
+        $result_obj->result = $collection;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj;  
     }

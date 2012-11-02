@@ -1,7 +1,6 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackDetails;
-use Feedback\Entities\ContactDetailsData, Feedback\Entities\FeedbackDetailsData;
 use Feedback\Services\FeedbackService;
 use Halcyonic\Services\HalcyonicService; 
 use Feedback\Repositories\DBFeedback;
