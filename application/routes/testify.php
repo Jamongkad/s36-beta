@@ -153,15 +153,30 @@ return array(
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
             $tf->data->pagination = new ZebraPagination;
             $tf->data->inboxservice = new Feedback\Services\InboxService;
-            $tf->data->twitter    = new Feedback\Repositories\TWFeedback; 
-            $tf->data->stub       = new Feedback\Repositories\Stub;
-            $tf->data->redis      = new redisent\Redis;
+            $tf->data->twitter = new Feedback\Repositories\TWFeedback; 
+            $tf->data->stub    = new Feedback\Repositories\Stub;
+            $tf->data->redis   = new redisent\Redis;
+            $tf->data->dbcontact = new Contact\Repositories\DBContact;        
         });
 
         $tf->test("Feedback Inbox", function($tf)  {
-            $tf->assert(true);
-            $tf->dump(strtotime("+2 days"));
-            $tf->dump(date("Y-m-d h:i:s", strtotime("+2 days")));
+            $contacts = $tf->data->twitter->pull_tweets_for('codiqa');
+            //$tf->dump($contacts); 
+
+            foreach($contacts->result as $contact) {
+
+                $contact_info = Array(
+                    'firstName' => $contact->firstname
+                  , 'countryId' => 895
+                  , 'avatar'    => $contact->avatar 
+                  , 'profileLink' => 'http://twitter.com/'.$contact->screen_name
+                  , 'loginType'   => 'tw'
+                  , 'website' => 'http://twitter.com'
+                ); 
+
+                $tf->data->dbcontact->insert_new_contact($contact_info);     
+            } 
+
         });
 
         $tf->run();
