@@ -126,11 +126,11 @@ return array(
         $tf->test("Inbox Testing", function($tf)  {
             
             $filters = array(
-                  'limit'=> 3
-                , 'site_id'=> false 
-                , 'filter'=> 'all' //(new arrivals) all (show only) featured published
-                , 'choice'=> false //positive negative neutral profanity flagged mostcontent
-                , 'date'  => false //date_new date_old
+                  'limit'   => 3
+                , 'site_id' => false 
+                , 'filter' => 'all' //(new arrivals) all (show only) featured published
+                , 'choice' => false //positive negative neutral profanity flagged mostcontent
+                , 'date'   => false //date_new date_old
                 , 'rating' => false //5 4 3 2 1
                 , 'category' => false 
                 , 'priority' => false //low medium high
@@ -146,8 +146,8 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/dbfeedback' => function() { 
-        $tf = new Testify("New Inbox Test");
+    'GET /testify/drivers' => function() { 
+        $tf = new Testify("Inbox Drivers Test");
 
         $tf->beforeEach(function($tf) {
             $tf->data->feedback = new Feedback\Repositories\DBFeedback;
@@ -159,39 +159,9 @@ return array(
         });
 
         $tf->test("Feedback Inbox", function($tf)  {
-
-            $feedback_struct = array(
-                'limit' => 300
-              , 'offset' => Input::get('o')
-              , 'step' => 100
-            );
-
-            $filters = array(
-                  'limit'=> $feedback_struct['limit']
-                , 'offset' => $feedback_struct['offset']
-                , 'site_id'=> false 
-                , 'filter'=> 'all' //(new arrivals) all (show only) featured published
-                , 'choice'=> false //positive negative neutral profanity flagged mostcontent
-                , 'date'  => false //date_new date_old
-                , 'rating' => false //5 4 3 2 1
-                , 'category' => false 
-                , 'priority' => false //low medium high
-                , 'status' => false //new inprogress closed
-                , 'company_id' => 1
-            );
-
-            $checked_filters = $tf->data->inboxservice->_check_filters($filters);
-            $feeds = $tf->data->feedback->gather_feedback($checked_filters);
-            $mtwfeeds  = $tf->data->twitter->pull_twits_for('microsourcing');
-            $ctwfeeds  = $tf->data->twitter->pull_twits_for('codiqa');
-            $tests = Array($feeds->result, $mtwfeeds->result);
-
-            $comb = Array();
-            foreach($tests as $val) {
-                foreach($val as $d)  {
-                    $comb[] = $d;
-                }
-            } 
+            $tf->assert(true);
+            $tf->dump(strtotime("+2 days"));
+            $tf->dump(date("Y-m-d h:i:s", strtotime("+2 days")));
         });
 
         $tf->run();

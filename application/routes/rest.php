@@ -4,23 +4,23 @@ $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
 
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-        header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Max-Age: 86400');    // cache for 1 day
-    }
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');    // cache for 1 day
+}
 
-    // Access-Control headers are received during OPTIONS requests
-    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+// Access-Control headers are received during OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
 
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
-        exit(0);
-    }
+    exit(0);
+}
 
 return array(
 
@@ -55,7 +55,7 @@ return array(
 /**************
 *	FEEDBACK
 ***************/
-    'GET /rest/feedback'=>array('name'=>'feedback','before' => 's36_auth_rest','do'=>function(){
+    'GET /rest/feedback'=>array('name'=>'feedback','before' => 's36_auth_rest', 'do'=>function(){
        echo return_json(array('data'=>getFeedback()));
     }),
 
@@ -108,10 +108,14 @@ return array(
         echo return_json(array('data'=>$feedback->pull_feedback_by_id($id)));
     }),
 
-
     'POST /rest/feedback/(:num)'=>array('name'=>'modify_feedback','before' => 's36_auth_rest','do'=>function($id)use ($feedback, $badwords){
         $feedbackService = new Feedback\Services\FeedbackService($feedback,$badwords);
         echo return_json(array('data'=>$feedbackService->update_feedback($id,Input::all()))); 
+    }),
+
+    'GET /rest/category'=>array('name'=>'feedback','before' => 's36_auth_rest','do'=>function(){
+        $categories = new DBCategory;
+        echo return_json(array('data' => $categories->pull_site_categories())); 
     }),
     
     'POST /rest/feedback/fastforward'=>array('name'=>'fastforward_feedback','before' => 's36_auth_rest','do'=>function()use ($feedback, $badwords){
@@ -145,8 +149,6 @@ return array(
             echo return_json(array('success'=>false,'data'=>$request_data));
         }
     }),
-
-
 );
 
 /*************
