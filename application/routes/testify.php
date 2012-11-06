@@ -155,8 +155,6 @@ return array(
             $tf->data->stub      = new Feedback\Repositories\Stub;
             $tf->data->redis     = new redisent\Redis;
             $tf->data->dbcontact = new Contact\Repositories\DBContact;        
-            $tf->data->social    = new Feedback\Services\SocialFeedback;
-            $tf->data->dbsocial  = new Feedback\Repositories\DBSocialFeedback;
         });
 
         $insert_sql = "
@@ -168,9 +166,8 @@ return array(
 
         $tf->test("Feedback Inbox", function($tf)  {
             $contacts = $tf->data->twitter->pull_tweets_for('codiqa');
-            //$tf->dump($contacts); 
-            $tf->dump($tf->data->social); 
-            $tf->dump($tf->data->dbsocial); 
+            $tf->data->social = new Feedback\Services\SocialFeedback($contacts);
+            $tf->dump($tf->data->social->perform()); 
             /*
             foreach($contacts->result as $contact) {
 
