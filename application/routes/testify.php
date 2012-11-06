@@ -150,23 +150,29 @@ return array(
         $tf = new Testify("Inbox Drivers Test");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->feedback = new Feedback\Repositories\DBFeedback;
-            $tf->data->pagination = new ZebraPagination;
-            $tf->data->inboxservice = new Feedback\Services\InboxService;
-            $tf->data->twitter = new Feedback\Repositories\TWFeedback; 
-            $tf->data->stub    = new Feedback\Repositories\Stub;
-            $tf->data->redis   = new redisent\Redis;
+            $tf->data->feedback  = new Feedback\Repositories\DBFeedback; 
+            $tf->data->twitter   = new Feedback\Repositories\TWFeedback; 
+            $tf->data->stub      = new Feedback\Repositories\Stub;
+            $tf->data->redis     = new redisent\Redis;
             $tf->data->dbcontact = new Contact\Repositories\DBContact;        
         });
+
+        $insert_sql = "
+            insert into Contact (firstName, siteId, countryId, loginType) 
+            select * from (select 'Mathew Wong', 8, 895, 'tw') as tmp where not exists (
+                select Contact.contactId from FeedbackContactOrigin inner join Contact on Contact.contactId = FeedbackContactOrigin.contactId
+            )
+        ";
 
         $tf->test("Feedback Inbox", function($tf)  {
             $contacts = $tf->data->twitter->pull_tweets_for('codiqa');
             //$tf->dump($contacts); 
-
+            /*
             foreach($contacts->result as $contact) {
 
                 $contact_info = Array(
                     'firstName' => $contact->firstname
+                  , 'siteId' => 8
                   , 'countryId' => 895
                   , 'avatar'    => $contact->avatar 
                   , 'profileLink' => 'http://twitter.com/'.$contact->screen_name
@@ -176,7 +182,7 @@ return array(
 
                 $tf->data->dbcontact->insert_new_contact($contact_info);     
             } 
-
+            */
         });
 
         $tf->run();
