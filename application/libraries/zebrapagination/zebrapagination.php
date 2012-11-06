@@ -637,7 +637,7 @@ class ZebraPagination
                     //(isset($_SERVER['QUERY_STRING']) && $_SERVER['QUERY_STRING'] != '' ? '&' : '') .
                     (isset($url) && $url != '' ? '&' : '') .
 
-                    $this->variable_name . '=' . $page."&o=0";
+                    $this->variable_name . '=' . $page;
 
             }
 

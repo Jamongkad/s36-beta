@@ -155,6 +155,10 @@ class DBFeedback extends S36DataObject {
             INNER JOIN
                 Contact
                    ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                   ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                   AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
                    ON Country.countryId = Contact.countryId
@@ -475,6 +479,10 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
                     INNER JOIN
                         Country
                         ON Country.countryId = Contact.countryId

@@ -68,9 +68,6 @@ class InboxService {
 
                 $this->filters['offset'] = $offset;
                 
-                //if twitter name is set and filter is at all
-                //display feedback + twitter
-                //use DI to dynamically insert feeds from any source. FB, Twitter, 36Stories. Create merge logic here!
                 $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);                                  
                 $total_rows = $date_result->total_rows;
                 $data = Array();
@@ -79,43 +76,6 @@ class InboxService {
                    $feeds->children_count = count($feeds->children);
                    $data[] = $feeds;
                 } 
-                /*
-                $twitter = new TWFeedback;
-                $stub    = new Stub;
-                $feeds   = $this->dbfeedback->pull_feedback_by_company(Array(
-                    'is_published' => 0
-                  , 'is_featured'  => 0
-                  , 'company_id'   => 6
-                ));
-                $twfeeds  = $twitter->pull_twits_for('@microsourcing');
-                $twfeeds1 = $twitter->pull_twits_for('@codiqa');
-                $stub     = $stub->pull_stubs();
-
-                $tests = Array($feeds->result, $twfeeds, $twfeeds1, $stub);
-                
-                $comb = Array();
-                foreach($tests as $val) {
-                    foreach($val as $d)  {
-                        $comb[] = $d;
-                    }
-                } 
-
-                usort($comb, function($a, $b) {
-                    $t1 = $a->unix_timestamp;
-                    $t2 = $b->unix_timestamp;
-                    return $t2 - $t1;
-                });
-
-                $data = Array();
-                foreach(new LimitIterator(new ArrayIterator($comb), $offset, $this->filters['limit']) as $fr) { 
-                    $data[$fr->head_date]['date_format'] = $fr->head_date;
-                    $data[$fr->head_date]['daysago'] = $fr->daysago;
-                    $data[$fr->head_date]['dtadded'] = $fr->date;
-                    $data[$fr->head_date]['children'][] = $fr;
-                    $data[$fr->head_date]['children_count'] = count($data[$fr->head_date]['children']);
-                }
-                $total_rows = count($comb);
-                */
 
                 $this->pagination->records($total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
