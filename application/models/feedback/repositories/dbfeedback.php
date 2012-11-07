@@ -208,129 +208,6 @@ class DBFeedback extends S36DataObject {
     }
 
     //TODO: Caching Candidate -> Priority Number One
-    public function gather_feedback($opts) {
-        $is_published_filter = false;
-        if(array_key_exists('filter', $opts)) {
-            if($opts['filter'] == 'published') { 
-                $is_published_filter = true;
-            }  
-        } 
-
-        if($is_published_filter) {
-            $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
-                                 AND Feedback.isDeleted = 0";
-        } else { 
-            $inbox_statements = '
-                    AND Feedback.isDeleted = :is_deleted
-                    AND Feedback.isPublished = :is_published
-                    AND Feedback.isFeatured = :is_featured
-                ';
-        }
-    
-        $sql = '
-            SELECT '.$this->select_vars.' FROM 
-                Feedback
-            INNER JOIN
-                Site
-                    ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                Company
-                    ON Company.companyId = Site.companyId
-            INNER JOIN
-                Category
-                   ON Category.categoryId = Feedback.categoryId
-            INNER JOIN
-                Contact
-                   ON Contact.contactId = Feedback.contactId 
-            INNER JOIN 
-                Country
-                   ON Country.countryId = Contact.countryId
-            WHERE 1=1
-                AND Company.companyId = :company_id
-                '.$opts['siteid_statement'].'
-                '.$inbox_statements.'
-                '.$opts['rating_statement'].'
-                '.$opts['filed_statement'].'
-                '.$opts['category_statement'].'
-                '.$opts['status_statement'].'
-                '.$opts['priority_statement'].'
-                '.$opts['sql_statement'].'
-            ORDER BY 
-                '.$opts['date_statement'].' 
-            LIMIT :offset, :limit
-        ';
-
-        $company_id = $this->company_id;
-
-        if (!$this->company_id) {
-            $company_id = $opts['company_id'];
-        }
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
-         
-        if (!$is_published_filter) { 
-            $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
-            $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
-            $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
-        }
-
-        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
-        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
-        $sth->execute();
-
-        $result = $sth->fetchAll(PDO::FETCH_CLASS); 
-        $row_count   = $this->dbh->query("SELECT FOUND_ROWS()");
-
-        $collection = Array();
-        foreach($result as $data)  {
-            $node = new FeedbackNode;
-            $node->id = $data->id;      
-            $node->firstname = $data->firstname;
-            $node->lastname  = $data->lastname;
-            $node->logintype = $data->logintype;
-            $node->countryname = $data->countryname;
-            $node->countrycode = $data->countrycode;
-            $node->profilelink = $data->profilelink;
-            $node->date   = $data->date;
-            $node->status = $data->status;
-            $node->text   = $data->text;
-            $node->categoryid = $data->categoryid;  
-            $node->category   = $data->category;  
-            $node->priority   = $data->priority;  
-            $node->rating     = $data->rating;
-            $node->ispublished = $data->ispublished;
-            $node->isdeleted   = $data->isdeleted;
-            $node->isfeatured  = $data->isfeatured;
-            $node->permission_css = $data->permission_css;
-            $node->permission     = $data->permission;
-            $node->contactid      = $data->contactid;
-            $node->siteid   = $data->siteid;
-            $node->perm_val = $data->perm_val;
-            $node->email    = $data->email;
-            $node->unix_timestamp = $data->unix_timestamp;
-            $node->daysago        = $data->daysago;
-            $node->sitedomain     = $data->sitedomain;
-            $node->avatar         = $data->avatar;
-            $node->head_date      = $data->head_date_format;
-            $node->datetimeobj    = new \DateTime($data->head_date_format);
-            $node->displayname     = $data->displayname;
-            $node->displayimg      = $data->displayimg;
-            $node->displaycompany  = $data->displaycompany;
-            $node->displayposition = $data->displayposition;
-            $node->displayurl      = $data->displayurl;
-            $node->displaycountry  = $data->displaycountry;
-            $node->displaysbmtdate = $data->displaysbmtdate;
-            $node->indlock         = $data->indlock;
-            $node->feed_type       = '36Stories';
-            $collection[] = $node; 
-        }
-        $result_obj  = new StdClass;
-        $result_obj->result = $collection;
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj;  
-    }
-
     public function pull_feedback_by_company(array $opts=null) {
         $published_statement =   Null;
         $featured_statement  =   Null;
@@ -372,6 +249,10 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
                     INNER JOIN 
                         Country
                         ON Country.countryId = Contact.countryId
@@ -563,6 +444,10 @@ class DBFeedback extends S36DataObject {
                         Contact
                         ON Contact.contactId = Feedback.contactId 
                     INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+                    INNER JOIN
                         Country
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
@@ -666,16 +551,20 @@ class DBFeedback extends S36DataObject {
                 Feedback
             INNER JOIN
                 Site
-                    ON Site.siteId = Feedback.siteId
+                ON Site.siteId = Feedback.siteId
             INNER JOIN 
                 Company
-                    ON Company.companyId = Site.companyId
+                ON Company.companyId = Site.companyId
             INNER JOIN
                 Category
-                    ON Category.categoryId = Feedback.categoryId
+                ON Category.categoryId = Feedback.categoryId
             INNER JOIN
                 Contact
-                    ON Contact.contactId = Feedback.contactId
+                ON Contact.contactId = Feedback.contactId
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+               AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
                     ON Contact.countryId = Country.countryId
