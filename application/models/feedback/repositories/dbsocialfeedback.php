@@ -1,6 +1,7 @@
 <?php namespace Feedback\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB;
+use S36DataObject\S36DataObject, Helpers, DB, Config;
+use PDO, StdClass;
 
 class DBSocialFeedback extends S36DataObject {
    

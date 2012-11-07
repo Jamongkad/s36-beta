@@ -94,6 +94,7 @@ class DBFeedback extends S36DataObject {
                 , Site.siteId AS siteid
                 , Site.name AS sitename
                 , Site.domain AS sitedomain
+                , FeedbackContactOrigin.origin AS origin
                 , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
     
     //DB Reads
@@ -531,6 +532,7 @@ class DBFeedback extends S36DataObject {
             $node->sitedomain = $data->sitedomain;
             $node->avatar = $data->avatar;
             $node->feed_type = '36Stories';
+            $node->origin = $data->origin;
             $collection[] = $node; 
         }
 

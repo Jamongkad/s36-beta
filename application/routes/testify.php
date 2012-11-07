@@ -167,7 +167,8 @@ return array(
         $tf->test("Feedback Inbox", function($tf)  {
             $contacts = $tf->data->twitter->pull_tweets_for('codiqa');
             $tf->data->social = new Feedback\Services\SocialFeedback($contacts);
-            $tf->dump($tf->data->social->perform()); 
+            $tf->dump($tf->data->social); 
+            //$tf->dump($tf->data->social->perform()); 
             /*
             foreach($contacts->result as $contact) {
 
