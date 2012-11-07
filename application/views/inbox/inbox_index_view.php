@@ -215,7 +215,10 @@
                                                 </span>
                                             <?endif?>
                                         </h3>
-                                        <p><?=$feed->text?></p>
+                                        <p>
+                                            <?=$feed->text?> 
+                                            <?=($feed->origin == 'tw') ? ' via '.'<a style="color:#567aa7" href="'.$feed->profilelink.'/status/'.$feed->socialid.'">Twitter</a>': null?>
+                                        </p>
                                     </div> 
                                     <div class="feedback-meta">
                                         <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>

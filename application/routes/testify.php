@@ -157,34 +157,11 @@ return array(
             $tf->data->dbcontact = new Contact\Repositories\DBContact;        
         });
 
-        $insert_sql = "
-            insert into Contact (firstName, siteId, countryId, loginType) 
-            select * from (select 'Mathew Wong', 8, 895, 'tw') as tmp where not exists (
-                select Contact.contactId from FeedbackContactOrigin inner join Contact on Contact.contactId = FeedbackContactOrigin.contactId
-            )
-        ";
-
         $tf->test("Feedback Inbox", function($tf)  {
             $contacts = $tf->data->twitter->pull_tweets_for('codiqa');
             $tf->data->social = new Feedback\Services\SocialFeedback($contacts);
-            $tf->dump($tf->data->social); 
-            //$tf->dump($tf->data->social->perform()); 
-            /*
-            foreach($contacts->result as $contact) {
-
-                $contact_info = Array(
-                    'firstName' => $contact->firstname
-                  , 'siteId' => 8
-                  , 'countryId' => 895
-                  , 'avatar'    => $contact->avatar 
-                  , 'profileLink' => 'http://twitter.com/'.$contact->screen_name
-                  , 'loginType'   => 'tw'
-                  , 'website' => 'http://twitter.com'
-                ); 
-
-                $tf->data->dbcontact->insert_new_contact($contact_info);     
-            } 
-            */
+            //$tf->dump($tf->data->social); 
+            $tf->dump($tf->data->social->perform()); 
         });
 
         $tf->run();

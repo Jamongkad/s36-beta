@@ -24,8 +24,9 @@ class TWFeedback {
         $collection = Array();
         foreach($tweets['statuses'] as $data) {  
             $d = new DateTime($data['created_at']);
+
             $node = new FeedbackNode;
-            $node->id             = $data['user']['id_str'];
+            $node->id             = $data['id_str'];//$data['user']['id_str'];
             $node->firstname      = $data['user']['name'];
             $node->screen_name    = $data['user']['screen_name'];
             $node->avatar         = $data['user']['profile_image_url_https'];
@@ -41,6 +42,7 @@ class TWFeedback {
         }
 
         $obj = new StdClass;
+        $obj->status = $tweets['statuses'];
         $obj->result = $collection;
 
         return $obj;

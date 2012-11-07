@@ -46,5 +46,6 @@ class FeedbackNode {
     public $sitename;
     public $sitedomain;
     public $word_count;
-    public $feed_type;
+    public $origin;
+    public $socialid;
 }
