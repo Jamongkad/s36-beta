@@ -7,18 +7,19 @@ class SocialFeedback {
     private $socialfeeds;
     private $dbsocial;
 
-    public function __construct($socialfeeds) {
+    public function __construct(Array $socialfeeds, $dbsocial) {
         $this->socialfeeds = $socialfeeds;     
-        $this->dbsocial    = new DBSocialFeedback;
+        $this->dbsocial    = $dbsocial;
     }
 
-    public function perform() {
-        foreach($this->socialfeeds->result as $feed) {
+    public function save_social_feeds() {
+        $twitter = $this->socialfeeds['twitter'];
+        foreach($twitter->result as $feed) {
             $this->dbsocial->convert($feed);    
         }
     }
 
-    public function delete_all() {
-        $this->dbsocial->delete_all();
+    public function clear_social_feeds() {
+        $this->dbsocial->delete_all();     
     }
 }

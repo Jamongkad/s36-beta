@@ -8,12 +8,10 @@ class DBSocialFeedback extends S36DataObject {
     public function convert($data) {
         try { 
             $this->dbh->beginTransaction();
-
-            $company_name = Config::get('application.subdomain');
             
             $site_sql = "SELECT s.siteId FROM Company AS c INNER JOIN Site AS s ON c.companyId = s.companyId WHERE c.name = :company_name";
             $sth = $this->dbh->prepare($site_sql); 
-            $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
+            $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
             $sth->execute();
             $site_id = $sth->fetch(PDO::FETCH_OBJ); 
  
@@ -27,7 +25,7 @@ class DBSocialFeedback extends S36DataObject {
                              AND cmp.name = :company_name and ctg.intName = 'default'";
 
             $sth = $this->dbh->prepare($ctgy_sql); 
-            $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
+            $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
             $sth->execute();
             $ctgy_id = $sth->fetch(PDO::FETCH_OBJ); 
 
@@ -37,25 +35,26 @@ class DBSocialFeedback extends S36DataObject {
 
              //check if socialId exists in FeedbackContactOrigin table if not continue...           
             if(!$social_id_exists) {
+                
                 $contact = Array(
                     'firstName' => $data->firstname
-                  , 'siteId' => $site_id->siteid
+                  , 'siteId'    => $site_id->siteid
                   , 'countryId' => 895
                   , 'avatar'    => $data->avatar 
                   , 'profileLink' => 'http://twitter.com/'.$data->screen_name
                   , 'loginType'   => 'tw'
-                  , 'website' => 'http://twitter.com'
+                  , 'website'     => 'http://twitter.com'
                 );  
 
                 $contact_insert_id = DB::table('Contact', $this->db_name)->insert_get_id($contact);
 
                 $feedback = Array(
-                    'text' => $data->text
-                  , 'siteId' => $site_id->siteid
+                    'text'    => $data->text
+                  , 'siteId'  => $site_id->siteid
                   , 'dtAdded' => $data->date
-                  , 'contactId' => $contact_insert_id
+                  , 'contactId'  => $contact_insert_id
                   , 'categoryId' => $ctgy_id->categoryid
-                  , 'status' => 'new'
+                  , 'status'     => 'new'
                   , 'permission' => 0
                 );
 
@@ -72,7 +71,6 @@ class DBSocialFeedback extends S36DataObject {
             }
 
             $this->dbh->commit();
-
         } catch(PDOException $e) {
             $this->dbh->rollBack();
         }
@@ -101,9 +99,8 @@ class DBSocialFeedback extends S36DataObject {
                 AND Company.name = :company_name
         ";
 
-        $company_name = Config::get('application.subdomain');
         $sth = $this->dbh->prepare($sql); 
-        $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
-        $sth->execute();
+        $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
+        return $sth->execute();
     }
 }

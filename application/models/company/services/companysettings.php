@@ -1,7 +1,12 @@
 <?php namespace Company\Services;
 
-use Input, Exception, Helpers, StdClass;
+use Input, Helpers;
+use Exception, StdClass;
 use Company\Repositories\DBCompany;
+use Feedback\Repositories\DBSocialFeedback;
+use Feedback\Repositories\TWFeedback; 
+use \Feedback\Services\SocialFeedback;
+
 use Imagine;
 
 class CompanySettings {
@@ -59,8 +64,34 @@ class CompanySettings {
                
                 $post_data->logo = $this->filename;  
             } 
-             
+
             $db = new DBCompany;
+            $dbsocial = new DBSocialFeedback;  
+
+            if($post_data->twitter_username) { 
+
+                $twitter = new TWFeedback; 
+
+                $social_services = Array(
+                    'twitter' => $twitter->pull_tweets_for($post_data->twitter_username)
+                ); 
+                $socialfeedback = new SocialFeedback($social_services, $dbsocial);
+
+                $company = $db->get_company_info($post_data->companyid);
+
+                //check if Company has existing twitter name
+                if($company->twit_link) {
+                    if($post_data->twitter_username != $company->twit_link) {
+                        //erase old twitter feeds
+                        $socialfeedback->clear_social_feeds();
+                        //replace with new
+                        $socialfeedback->save_social_feeds();
+                    }
+                } else {
+                    //no existing twitter link? ok then make a new one
+                    $socialfeedback->save_social_feeds(); 
+                }
+            }  
             $db->update_companyinfo($post_data);
         }
     }
