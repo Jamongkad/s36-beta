@@ -17,4 +17,8 @@ class SocialFeedback {
             $this->dbsocial->convert($feed);    
         }
     }
+
+    public function delete_all() {
+        $this->dbsocial->delete_all();
+    }
 }

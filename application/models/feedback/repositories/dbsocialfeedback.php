@@ -9,15 +9,37 @@ class DBSocialFeedback extends S36DataObject {
         try { 
             $this->dbh->beginTransaction();
 
-            //check if socialId exists in FeedbackContactOrigin table if not continue...
+            $company_name = Config::get('application.subdomain');
+            
+            $site_sql = "SELECT s.siteId FROM Company AS c INNER JOIN Site AS s ON c.companyId = s.companyId WHERE c.name = :company_name";
+            $sth = $this->dbh->prepare($site_sql); 
+            $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
+            $sth->execute();
+            $site_id = $sth->fetch(PDO::FETCH_OBJ); 
+ 
+            $ctgy_sql = "SELECT 
+                             ctg.categoryId 
+                         FROM 
+                             Company AS cmp 
+                         INNER JOIN 
+                             Category AS ctg ON ctg.companyId = cmp.companyId 
+                         WHERE 1=1 
+                             AND cmp.name = :company_name and ctg.intName = 'default'";
+
+            $sth = $this->dbh->prepare($ctgy_sql); 
+            $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
+            $sth->execute();
+            $ctgy_id = $sth->fetch(PDO::FETCH_OBJ); 
+
             $social_id_exists = DB::Table('FeedbackContactOrigin', $this->db_name)
                                          ->where('socialId', '=', $data->id)
                                          ->first();
-            
+
+             //check if socialId exists in FeedbackContactOrigin table if not continue...           
             if(!$social_id_exists) {
                 $contact = Array(
                     'firstName' => $data->firstname
-                  , 'siteId' => 8
+                  , 'siteId' => $site_id->siteid
                   , 'countryId' => 895
                   , 'avatar'    => $data->avatar 
                   , 'profileLink' => 'http://twitter.com/'.$data->screen_name
@@ -29,10 +51,10 @@ class DBSocialFeedback extends S36DataObject {
 
                 $feedback = Array(
                     'text' => $data->text
-                  , 'siteId' => 8
+                  , 'siteId' => $site_id->siteid
                   , 'dtAdded' => $data->date
                   , 'contactId' => $contact_insert_id
-                  , 'categoryId' => 6
+                  , 'categoryId' => $ctgy_id->categoryid
                   , 'status' => 'new'
                   , 'permission' => 0
                 );
@@ -55,5 +77,33 @@ class DBSocialFeedback extends S36DataObject {
             $this->dbh->rollBack();
         }
     }
+    
+    public function delete_all() {
+        $sql = "
+            DELETE 
+                Feedback, Contact, FeedbackContactOrigin 
+            FROM 
+                Feedback 
+            INNER JOIN 
+                Contact 
+                ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                Site
+                ON Feedback.siteId = Site.siteId
+            INNER JOIN
+                Company
+                ON Company.companyId = Site.companyId
+            INNER JOIN 
+                FeedbackContactOrigin 
+                ON FeedbackContactOrigin.contactId = Feedback.contactId 
+            WHERE 1=1 
+                AND FeedbackContactOrigin.origin = 'tw'
+                AND Company.name = :company_name
+        ";
 
+        $company_name = Config::get('application.subdomain');
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(":company_name", $company_name, PDO::PARAM_STR);
+        $sth->execute();
+    }
 }
