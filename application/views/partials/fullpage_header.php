@@ -2,13 +2,6 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta property="og:title" content="Send Us Your Feedback" />
-<meta property="og:description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit enean nec lorem nibh hac platea dictumst ras posuere sollicitudin justo, at viverra magna malesuada quis ed interdum accumsan aliquet auris nec purus suscipit elit feugiat sagittis orbi tristique augue felis orbi commodo interdum aliquet. " />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="images/bianca.jpg" />
-<meta property="og:site_name" content="Webmumu" />
-<meta property="og:url" content="http://webmumu.com/single_page_feedback/single.html" />
-<meta property="fb:app_id" content="307884662596382" />
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/fullpage-matte.css" />
@@ -54,12 +47,12 @@
 		});
 		
 		$('.feedback').hover(function(){
-			$(this).find('.feedbackSocialTwitter').fadeIn();
+		    $(this).find('.feedbackSocialTwitter').fadeIn();
 			$(this).find('.feedbackSocialFacebook').fadeIn();
-			},function(){
+		},function(){
 			$(this).find('.feedbackSocialTwitter').fadeOut();
 			$(this).find('.feedbackSocialFacebook').fadeOut();
-			});
+		});
 
 		// New scripts for the Logo Upload Oct 4 2012
 		make_cover_undraggable(true);
@@ -99,11 +92,8 @@
 					var imgW = $(this).width();
 					var parW = $(this).parent().width();  
 					var ipH = imgH-parH;
-					var ipW = imgW-parW-offsetX;
-					
-					
-					$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});
-				
+					var ipW = imgW-parW-offsetX;			
+					$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
 				});
 			});
 		}else{
@@ -119,14 +109,14 @@
 	}
 	function upload_to_server(data){
 		/*save data to database*/
-			$.ajax({
-		        url: "savecoverphoto",
-		        type: "POST",
-		        data: data,
-		        success: function(q) {
-		            console.log(q);
-		        }
-		    });
+        $.ajax({
+            url: "savecoverphoto",
+            type: "POST",
+            data: data,
+            success: function(q) {
+                console.log(q);
+            }
+        });
 
 		/**/
 		
@@ -195,10 +185,10 @@
 	}
 	
 	function fetch_new_image(src){
-		$('#changeCoverButton #changeButtonText').html('Crunching Image...');
+	    $('#changeCoverButton #changeButtonText').html('Crunching Image...');
 		$('<img />')
 			.attr('src', src)
-			.load(function(){
+			.load(function() {
 				$('#changeCoverButton').fadeOut('fast',function(){
 					$(this).find('#changeButtonText').html('Change Cover');
 					$('#dragPhoto').fadeIn('fast');

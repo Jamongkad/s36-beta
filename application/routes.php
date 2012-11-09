@@ -5,7 +5,7 @@ $hosted_settings = new Widget\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
-$twitter = new \twitter\twitter('danOliverC');
+
 $user = S36Auth::user();
 
 return array(
@@ -23,11 +23,9 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    /*
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company) { 
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
-
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
@@ -45,52 +43,20 @@ return array(
            , 'company_id' => $company_info->companyid
         ));
         $meta->calculate_metrics();
-
-        echo View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company' => $company_info
-                                                  , 'feeds' => $hosted->view_fragment()
-                                                  , 'widget' => $widget
-                                                  , 'feed_count' => $meta->perform()
-                                                  , 'company_header' => $header_view
-                                                  , 'hosted' => $hosted_settings->hosted_settings()));        
-    },
-    */
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
-        //consider placing this into a View Object
-        $company_info = $company->get_company_info($company_name); 
-        $tweets = $twitter->findTwitts('codiqa');
-        $hosted = new Feedback\Services\HostedService($company_name);
-        $hosted->fetch_hosted_feedback(); 
-        $hosted->build_data();         
-
-        $widget = $dbw->fetch_canonical_widget($company_name);
-
-        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
-
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
-                                                       , $company_info->fullpagecompanyname
-                                                       , $company_info->domain);
-
-        $meta = new Hosted\Services\HostedMetadata(Array(
-             'company_name' => $company_info->company_name
-           , 'company_id' => $company_info->companyid
-        ));
-        $meta->calculate_metrics();
-        //\Helpers::show_data($tweets);
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
                                                   , 'user' => $user
                                                   , 'feeds' => $hosted->view_fragment()
-                                                  , 'tweets' => $tweets
                                                   , 'widget' => $widget
                                                   , 'feed_count' => $meta->perform()
                                                   , 'company_header' => $header_view
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
+
     'POST /savecoverphoto' => function() use($company){
-      $data = Input::all();
-      $company->update_coverphoto($data);
-      return json_encode($data);
+        $data = Input::all();
+        $company->update_coverphoto($data);
+        return json_encode($data);
     },
 
     'POST /ajaxfileupload' => function(){

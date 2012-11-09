@@ -108,28 +108,6 @@ Visit Acme's website today for more information. </p>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </span>
         </div>
-        <div id="twitterFeedbacks">
-
-            <?php foreach($tweets as $tweet): ?>
-            <div class="feedback twt-feedback">
-                <div class="feedbackContents">
-                    <div class="feedbackBlock">
-                        <div class="feedbackAuthor">
-                            <div class="feedbackAuthorAvatar"><img src="<?=$tweet->profile_image_url?>" width="48" height="48" /></div>
-                            <div class="feedbackAuthorDetails">
-                                <h2><?=$tweet->from_user_name?> <a href="#">@<?=$tweet->from_user?></a></h2>
-                            </div>
-                        </div>
-                        <div class="feedbackText">
-                            <div class="feedbackTextTail"></div>
-                            <div class="feedbackTextBubble"><p><?=$tweet->text?></p></div>
-                        </div>
-                        <div class="feedbackDate"><?=$tweet->created_at?></div>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
         <div class="load-more-block align-center">
             <a href="#" class="load-more-tweets">Load More Tweets</a>
         </div> 
