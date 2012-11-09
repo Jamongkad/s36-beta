@@ -434,7 +434,7 @@
                                     </a>
                                 </div>
                                 <div class="tw-share-button">
-                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=$company->twit_link?>" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<?=$company->twitter_username?>" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
                                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>
                             </div> 
@@ -444,31 +444,31 @@
                             <div id="fb-share-post-success">
                                 <span class="share-success">Feedback has been successfully shared on Facebook</span>
                             </div>
-                            <?if($company->fb_link and $company->twit_link):?>
+                            <?if($company->facebook_username and $company->twitter_username):?>
                                 <h3>Like us on Facebook and follow us on Twitter</h3>
                                 <div class="fb-like-link">
-                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->facebook_username?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                                 </div>
                                 <br/>
                                 <div class="tw-follow-link">
-                                    <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                    <a href="<?=$company->twitter_username?>" class="twitter-follow-button" data-show-count="false">
                                         Follow @<?=$company->company_name?>
                                     </a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>
                             <?endif?>
         
-                            <?if($company->fb_link and $company->twit_link == false):?>
+                            <?if($company->facebook_username and $company->twitter_username == false):?>
                                 <h3>Like us on Facebook</h3>
                                 <div class="fb-like-link">
-                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->fb_link?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                                    <iframe src="https://www.facebook.com/plugins/like.php?href=<?=$company->facebook_username?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                                 </div>
                             <?endif?>
 
-                            <?if($company->fb_link == false and $company->twit_link):?>
+                            <?if($company->facebook_username == false and $company->twitter_username):?>
                                 <h3>Follow us on Twitter</h3>
                                 <div class="tw-follow-link">
-                                    <a href="<?=$company->twit_link?>" class="twitter-follow-button" data-show-count="false">
+                                    <a href="<?=$company->twitter_username?>" class="twitter-follow-button" data-show-count="false">
                                         Follow @<?=$company->company_name?>
                                     </a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
