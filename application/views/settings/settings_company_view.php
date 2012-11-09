@@ -46,7 +46,7 @@
             <br />
             <div class="grids">
                 <div class="g2of5"><strong class="facebook-icon">Facebook: </strong></div>
-                <div class="g3of5"><input type="text" name="fb_link" class="regular-text" value="<?=$company->fb_link?>"/></div>
+                <div class="g3of5"><input type="text" name="facebook_username" class="regular-text" value="<?=$company->facebook_username?>"/></div>
             </div>
             <br />
             <div class="grids">

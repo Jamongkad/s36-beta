@@ -31,7 +31,7 @@ class DBCompany extends S36DataObject {
             ->update(Array( 
                 'description'  => $post->company_desc
               , 'fullpageCompanyName' => $post->fullpagecompanyname 
-              , 'fb_link' => $post->fb_link
+              , 'facebook_username' => $post->facebook_username
               , 'twitter_username' => $post->twitter_username
               , 'website_link' => $post->website_link
               , 'logo' => $post->logo
