@@ -69,7 +69,7 @@ class CompanySettings {
             $dbsocial = new DBSocialFeedback;  
 
             if($post_data->twitter_username) { 
-                Helpers::dump("Twitter Intent is there");
+                ////Helpers::dump("Twitter Intent is there");
                 $twitter = new TWFeedback; 
 
                 $social_services = Array(
@@ -78,24 +78,24 @@ class CompanySettings {
                 $socialfeedback = new SocialFeedback($social_services, $dbsocial);
 
                 $company = $db->get_company_info($post_data->companyid);
-                Helpers::dump($company);
+                //Helpers::dump($company);
 
                 //check if Company has existing twitter name
                 if($company->twitter_username) {
-                    Helpers::dump("ok we have a twitter link");
-                    Helpers::dump($post_data->twitter_username);
-                    Helpers::dump($company->twitter_username);
+                    //Helpers::dump("ok we have a twitter link");
+                    //Helpers::dump($post_data->twitter_username);
+                    //Helpers::dump($company->twitter_username);
                     if($post_data->twitter_username != $company->twitter_username) {
-                        Helpers::dump("shit dont match");
+                        //Helpers::dump("shit dont match");
                         //erase old twitter feeds
-                        //$socialfeedback->clear_social_feeds();
+                        $socialfeedback->clear_social_feeds();
                         //replace with new
-                        //$socialfeedback->save_social_feeds();
+                        $socialfeedback->save_social_feeds();
                     }
                 } else {
-                    Helpers::dump("Create new social feed");
+                    //Helpers::dump("Create new social feed");
                     //no existing twitter link? ok then make a new one
-                    //$socialfeedback->save_social_feeds(); 
+                    $socialfeedback->save_social_feeds(); 
                 }
             }  
             $db->update_companyinfo($post_data);

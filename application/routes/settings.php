@@ -59,9 +59,9 @@ return array (
 
         if(!$company_settings->get_errors()) {
             $company_settings->save_companysettings();
-            //return Redirect::to('settings/company');           
+            return Redirect::to('settings/company');           
         } else {
-            //return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
+            return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
         } 
     },
 
