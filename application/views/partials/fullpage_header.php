@@ -2,15 +2,7 @@
 <html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Full Page Feedbacks</title>
 
-<meta property="og:title" content="Send Us Your Feedback" />
-<meta property="og:description" content="Lorem ipsum dolor sit amet consectetur adipiscing elit enean nec lorem nibh hac platea dictumst ras posuere sollicitudin justo, at viverra magna malesuada quis ed interdum accumsan aliquet auris nec purus suscipit elit feugiat sagittis orbi tristique augue felis orbi commodo interdum aliquet. " />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="images/bianca.jpg" />
-<meta property="og:site_name" content="Webmumu" />
-<meta property="og:url" content="http://webmumu.com/single_page_feedback/single.html" />
-<meta property="fb:app_id" content="307884662596382" />
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/fullpage-matte.css" />
@@ -25,6 +17,7 @@
 <script type="text/javascript">
 		
 	$(document).ready(function(){
+
 		$('#theFeedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,

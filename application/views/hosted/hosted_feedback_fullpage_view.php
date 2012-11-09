@@ -6,10 +6,18 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
 <?php
     $admin = (!empty($user))? 1 : 0;
 ?>
+<script type="text/javascript">
+$(document).ready(function(){
+    <?php if(isset($hosted->background_image) && !empty($hosted->background_image)) { ?>
+        $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
+    <?php } ?>
+});
+
+</script>
+
 <div id="bodyWrapper">
     <div id="bodyContent">
         <!-- new header October 4 2012 -->

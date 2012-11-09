@@ -28,6 +28,7 @@ class DBHostedSettings extends S36DataObject {
                       , header_text = :header_text 
                       , submit_form_text = :submit_form_text 
                       , submit_form_question = :submit_form_question
+                      , background_image = :background_image
                 WHERE 1=1 
                     AND companyId = :company_id";
 
@@ -36,7 +37,8 @@ class DBHostedSettings extends S36DataObject {
         $sth->bindParam(':theme_type', $this->hosted_settings['theme_type'], PDO::PARAM_STR);
         $sth->bindParam(':header_text', $this->hosted_settings['header_text'], PDO::PARAM_STR);       
         $sth->bindParam(':submit_form_text', $this->hosted_settings['submit_form_text'], PDO::PARAM_STR);       
-        $sth->bindParam(':submit_form_question', $this->hosted_settings['submit_form_question'], PDO::PARAM_STR);       
+        $sth->bindParam(':submit_form_question', $this->hosted_settings['submit_form_question'], PDO::PARAM_STR);
+        $sth->bindParam(':background_image', $this->hosted_settings['background_image'], PDO::PARAM_STR);       
         $sth->execute();
     }
 
@@ -46,6 +48,7 @@ class DBHostedSettings extends S36DataObject {
                   , theme_type
                   , header_text
                   , submit_form_text
+                  , background_image
                   , TRIM(submit_form_question) AS submit_form_question
                 FROM 
                     HostedSettings 

@@ -1,7 +1,6 @@
-<?=Form::open('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
+<?=Form::open_for_files('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('companyId', $hosted_full_page->companyid)?>
 <?=Form::hidden('theme_type', $hosted_full_page->theme_type, Array('id' => 'selected-form'))?>
-
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
@@ -59,6 +58,15 @@
                     </div>
                 </div>
             </div>
+
+            <div id="hosted-wizard-step-2123" class="wizard-steps">
+               <div class="grids">
+                    <div class="g2of3"><strong>Choose a Background Image</strong> <br>Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.</div>
+                    <div class="g2of3"><br><input type="file" id="hosted_background" class="fileupload regular-text" name="hosted_background"> </div>
+                </div>
+            </div>
+            <br>
+
             <div id="hosted-wizard-step-2" class="wizard-steps">
                 <h2 class="large-black">Configure your hosted page to suit your website and theme - you can direct visitors to your hosted page to view existing published feedback, or to get them to send in feedback.</h2>
                 <br />

@@ -4,7 +4,7 @@ $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes; 
 
-$tab_themes  = Helpers::$tab_themes;
+$tab_themes  = \Helpers::$tab_themes;
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
@@ -136,11 +136,22 @@ return array(
         ));
     },
 
-    'POST /feedsetup/update_hosted_settings' => function() use ($hosted) { 
-        $hosted->set_hosted_settings(Input::get());
+    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
+
+      $input = Input::get();
+      $hosted_settings = $hosted->hosted_settings();
+      $input['background_image'] = $hosted_settings->background_image;
+      if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
+        $file       = 'hosted_background';
+        $targetpath = "uploaded_images/hosted_background/";
+        $options    = array('rename'=>S36Auth::user()->companyid);
+        $result     = json_decode(\Helpers::upload_image($file,$targetpath,$options));
+        $input['background_image'] = $result->filename;
+      }
+        $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup');  
-    },
+    }),
     
     'POST /feedsetup/save_form_widget' => function() { 
         $form = new Widget\Entities\FormWidget;

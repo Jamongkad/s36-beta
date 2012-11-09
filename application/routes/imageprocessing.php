@@ -29,9 +29,11 @@ function upload($file=null,$targetpath=null,$options=null){
         if(empty($file))        { die("Please provide a file to be uploaded");}
         if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
 
-        $maxsize = isset($options['maxsize'])    ? $options['maxsize']     : 2000000;
-        $width   = isset($options['width'])      ? $options['width']       : 800;
-        $height  = isset($options['height'])     ? $options['height']      : 140;
+        $options['options']  = array(
+                                'quality'=>100
+                              );
+
+        $maxsize  = isset($options['maxsize'])    ? $options['maxsize']     : 2000000;
 
         
         if(!empty($_FILES[$file]['error']))
@@ -79,13 +81,10 @@ function upload($file=null,$targetpath=null,$options=null){
               $filename     = date("Ydmhis").$_FILES[$file]['name'];
               $filedir      = $targetpath.$filename;
               $image = $imagine->open($_FILES[$file]['tmp_name']);
-              $image->resize(new Box($width,$height))
-                    ->save($filedir,
-                        array(
-                            'quality'=>100,
-                            'resolution-x'=>$width,
-                            'resolution-y'=>$height,
-                            ));
+              if(isset($options['width']) && isset($options['height'])){
+                $image->resize(new Box($options['width'],$options['height']));
+              }
+              $image->save($filedir,$options['options']);
         }
          echo json_encode(Array(
             "error" => $error
