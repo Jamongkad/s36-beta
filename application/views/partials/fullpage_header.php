@@ -4,11 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/fullpage-matte.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.24/jquery.min.js"></script>
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>

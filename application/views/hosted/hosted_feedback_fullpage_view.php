@@ -98,26 +98,12 @@ Visit Acme's website today for more information. </p>
             </div>
           
         </div>
-        --> 
-        <div class="feedback-header">
-            <h2 class="twitter">Recently on Twitter (via @<?=$company->twitter_username?>) </h2>
-            <span>
-            <a href="https://twitter.com/<?=$company->twitter_username?>" class="twitter-follow-button" data-show-count="false">
-                Follow @<?=$company->twitter_username?>
-            </a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</span>
-        </div>
-        <div class="load-more-block align-center">
-            <a href="#" class="load-more-tweets">Load More Tweets</a>
-        </div> 
-        
+        -->  
         <div class="feedback-header">
             <h2 class="s36">Recently Posted Feedback</h2>
         </div> 
-        <div id="theFeedbacks">
-            
-<?=$feeds?>
+        <div id="theFeedbacks"> 
+            <?=$feeds?>
         </div>
         <div class="block" style="text-align:center;font-size:11px;color:#333;padding-bottom:10px;">Powered by 36Stories</div>
     </div>
