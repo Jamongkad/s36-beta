@@ -158,15 +158,36 @@ return array(
         });
 
         $tf->test("Feedback Inbox", function($tf)  {
+            /*
             $social_services = Array(
                 'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
             $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            */
+            $tf->assert(True);
         });
 
         $tf->test("Twitter Feed Rate Status", function($tf)  {
             $rate_limit = $tf->data->twitter->get_rate_limit();
-            Helpers::dump($rate_limit);
+            $tf->dump($rate_limit);
+        });
+
+        $tf->test("Twitter Limit Rate", function($tf)  {
+            $key = 'mathew-staging:twitter:feedback' ;
+            if($tf->data->redis->hgetall($key)) {   
+                if($tf->data->redis->hget($key, 'requests') != 3) {
+                    $tf->data->redis->hincrby($key, 'requests', 1);     
+                } 
+            } else {
+                $tf->data->redis->hsetnx($key, 'requests', 0);  
+                $tf->data->redis->expireat($key, strtotime('tomorrow'));
+            }
+
+            if($tf->data->redis->hget($key, 'requests') == 3) {
+                Helpers::dump("No more requests at this time");
+            } else { 
+                Helpers::dump("Keep requesting");
+            }
         });
 
         $tf->run();

@@ -20,40 +20,36 @@ class TWFeedback {
         eden('twitter')->auth($this->twitter_key, $this->twitter_secret);
         $search = eden('twitter')->search($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
         $tweets  = $search->search($twitter_account); 
-        Helpers::dump($tweets);
-        /*
+
         $collection = Array();
         foreach($tweets['statuses'] as $data) {  
-            $d = new DateTime($data['created_at']);
-
+            $dt = new DateTime($data['created_at']);
             $node = new FeedbackNode;
-            $node->id             = $data['id_str'];//$data['user']['id_str'];
+            $node->id             = $data['id_str'];
             $node->firstname      = $data['user']['name'];
             $node->screen_name    = $data['user']['screen_name'];
             $node->avatar         = $data['user']['profile_image_url_https'];
             $node->text           = $data['text'];
             $node->twit_date      = $data['created_at'];
             $node->feed_type      = 'tw';
-            $node->daysago        = Helpers::relative_time($d->getTimestamp());
-            $node->date           = $d->format("Y-m-d H:i:s");
-            $node->head_date      = $d->format("d.m.Y");
-            $node->unix_timestamp = $d->getTimestamp();
-            $node->datetimeobj    = $d; 
+            $node->daysago        = Helpers::relative_time($dt->getTimestamp());
+            $node->date           = $dt->format("Y-m-d H:i:s");
+            $node->head_date      = $dt->format("d.m.Y");
+            $node->unix_timestamp = $dt->getTimestamp();
+            $node->datetimeobj    = $dt; 
             $collection[] = $node;
         }
 
         $obj = new StdClass;
-        $obj->status = $tweets['statuses'];
         $obj->result = $collection;
-
         return $obj;
-        */
     }
+
     public function get_rate_limit() { 
         eden()->setLoader();       
         eden('twitter')->auth($this->twitter_key, $this->twitter_secret);
         $help = eden('twitter')->help($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
-        $resources = 'help,users,search,statuses';
+        $resources = 'search';
         $result = $help->getRateLimitStatus($resources);
         return $result;
     }
