@@ -129,8 +129,15 @@ return array(
 	| Twitter Application Keys
 	|--------------------------------------------------------------------------
 	*/
-    'twitter_key' => 'ypY64BMq29xvKa8nUfzcBw', 
-    'twitter_secret' => 'AASYDQ188KrJfBUzdqU44wpFmSULRRWnsnPhSjTKffs',
-    'twitter_access_token' => '612524250-WeyvPfgcWWah6lWZeZWwUecEHNi2qLgzykgABP20',
-    'twitter_access_secret' => 'QDOMXzbVMb97Tbf7YUtABvR6LExvdh1n35iHDqaDg',
+    //Dev
+    'dev_twitter_key' => 'xG9l1q5eziCV8sA1CbIw', 
+    'dev_twitter_secret' => 'RM7UTrpucb5uPOAbdTicSt4iXeMRiSQfl7htmrsq4xI',
+    'dev_twitter_access_token' => '942732308-HHy4iqcRsv4nqTr1fYCH8j8TWfo87Z0cFYBDjpON',
+    'dev_twitter_access_secret' => 'tGbbfd0FCj4nP5C94luz9TPJK5llj1vJnZCH8Eto',
+
+    //Prod
+    'prod_twitter_key' => 'WVqRJvcb13366Fbo4DlCBQ', 
+    'prod_twitter_secret' => 'zesy83kVSpCZcVk0SJptABwBtAHfB3OqJV0zAblKw',
+    'prod_twitter_access_token' => '942732308-dA31dLX08wovYj2W8Nh7IMEbYCZlYnP158DJRA2k',
+    'prod_twitter_access_secret' => 'Md3Zq0tMyj7i5dPJHFgciRFgQ5eZ8HwmwhUMJG0vyus',
 );

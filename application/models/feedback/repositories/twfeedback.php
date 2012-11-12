@@ -9,10 +9,10 @@ Package::load('eden');
 
 class TWFeedback {
     public function __construct() { 
-        $this->twitter_key    = Config::get('application.twitter_key');
-        $this->twitter_secret = Config::get('application.twitter_secret');
-        $this->access_token   = Config::get('application.twitter_access_token');
-        $this->access_secret  = Config::get('application.twitter_access_secret');
+        $this->twitter_key    = Config::get('application.dev_twitter_key');
+        $this->twitter_secret = Config::get('application.dev_twitter_secret');
+        $this->access_token   = Config::get('application.dev_twitter_access_token');
+        $this->access_secret  = Config::get('application.dev_twitter_access_secret');
     }
 
     public function pull_tweets_for($twitter_account) {
@@ -20,7 +20,8 @@ class TWFeedback {
         eden('twitter')->auth($this->twitter_key, $this->twitter_secret);
         $search = eden('twitter')->search($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
         $tweets  = $search->search($twitter_account); 
-
+        Helpers::dump($tweets);
+        /*
         $collection = Array();
         foreach($tweets['statuses'] as $data) {  
             $d = new DateTime($data['created_at']);
@@ -46,6 +47,7 @@ class TWFeedback {
         $obj->result = $collection;
 
         return $obj;
+        */
     }
     public function get_rate_limit() { 
         eden()->setLoader();       
