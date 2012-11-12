@@ -47,4 +47,12 @@ class TWFeedback {
 
         return $obj;
     }
+    public function get_rate_limit() { 
+        eden()->setLoader();       
+        eden('twitter')->auth($this->twitter_key, $this->twitter_secret);
+        $help = eden('twitter')->help($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
+        $resources = 'help,users,search,statuses';
+        $result = $help->getRateLimitStatus($resources);
+        return $result;
+    }
 }
