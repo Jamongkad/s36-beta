@@ -174,6 +174,7 @@ return array(
 
         $tf->test("Twitter Limit Rate", function($tf)  {
             $key = 'mathew-staging:twitter:feedback' ;
+            print_r(date("y-m-d h:i:s", strtotime('tomorrow')));
             if($tf->data->redis->hgetall($key)) {   
                 if($tf->data->redis->hget($key, 'requests') != 3) {
                     $tf->data->redis->hincrby($key, 'requests', 1);     
