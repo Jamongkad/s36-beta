@@ -6,7 +6,7 @@ body{
 	margin:0px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
-	background:url(/img/sample-bg.jpg) repeat center top;
+	/* background:url(../images/sample-bg.jpg) repeat center top; */
 	background-attachment:fixed;
 }
 
@@ -15,7 +15,7 @@ a:hover{}
 div{position:relative;}
 
 #headerWrapper{
-	background:url(/img/gray-bg.jpg) repeat-x;
+	background:url(../../img/gray-bg.jpg) repeat-x;
 	height:42px;
 	width:100%;
 }
@@ -29,14 +29,14 @@ div{position:relative;}
 	font-size:19px;
 }
 /* green cross */
-.green-cross{padding-left:15px; background:url(/img/green-cross.png) no-repeat left center;}
+.green-cross{padding-left:15px; background:url(../images/green-cross.png) no-repeat left center;}
 
 #headerTitle strong{}
 #headerTitle span {padding-left:20px;}
 #headerTitle span a{font-size:14px;font-weight:bold;}
 #headerTitle a:hover{}
-#pageTitle{padding:15px 10px;text-align:left;background:url(/img/page-title-bg.png) repeat-x top;margin:0px 0px;border-top:1px solid #FFF;}
-#pageTitle h1{color:#4396b6;font-size:22px;padding:0px;margin:0px;margin-top:-5px;}
+#pageTitle{padding:55px 10px;text-align:left;margin:0px 0px;border-top:1px solid #e6e6e6;text-align:center;}
+#pageTitle h1{color:#000;font-size:33px;padding:0px;margin:0px;margin-top:-5px;}
 .meta{font-size:11px;color:inherit;margin-top:6px;color:#8f8f8f;}
 #pageTitle a.green-cross{font-weight:bold;font-size:14px;margin-top:5px;}
 
@@ -90,12 +90,11 @@ div{position:relative;}
 }
 #pageDesc{
 	padding:0px 7px 20px 7px;
-	border-bottom:1px solid #CCC;
 }
 .the-description{
 	padding:10px;
 	font-size:12px;
-	background:url(/img/body-bg.png);
+	background:url(../images/body-bg.png);
 	color:#666;
 }
 .the-description p{
@@ -146,7 +145,7 @@ div{position:relative;}
 	background:#EEE;
 }
 #dragPhoto{
-	background: url(/img/drag-bg.png);
+	background: url(../images/drag-bg.png);
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:10px;
 	position:absolute;
@@ -187,8 +186,7 @@ div{position:relative;}
 	margin:0 auto;
 	width:800px;
 	padding-top:0px;
-	background:url(/img/body-bg.png);
-	box-shadow:#222 0px 3px 5px;
+	background:url(../images/body-bg.png);
 }
 
 #theFeedbacks{display:block;margin-top:0px;width:800px;}
@@ -212,8 +210,8 @@ div{position:relative;}
 /* feedbacks */
 .feedbackBlock{margin-bottom:5px;}
 .feedbackBlock:last-child{margin-bottom:0px;}
-.feedback{width:342px;margin:9px 8px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
-.featured{width:722px;padding:30px;}
+.feedback{width:325px;margin:25px 8px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
+.featured{width:727px;padding:30px;border:none;}
 .featured .feedbackAuthor{float:left;width:195px;}
 .featured .feedbackAuthor .feedbackAuthorAvatar{width:150px;height:150px;}
 .featured .feedbackAuthor h2{font-size:20px;margin:0px;margin-top:5px;}
@@ -258,19 +256,21 @@ div{position:relative;}
 .normal .feedbackSocialTwitter{width:85px;}
 .normal .feedbackSocialFacebook{width:90px;}
 /* twitter block */
-.feedback.twt-feedback{background:#c1e5ee;}
-.twt-feedback .feedbackAuthorDetails{margin-left:54px;}
+.feedback.twt-feedback.twt-featured{width:747px;border:none;background:#ececec;}
+.feedback.twt-feedback.twt-featured .feedbackTextBubble {font-size:13px;}
+.feedback.twt-feedback.featured{} 
+.twt-feedback .feedbackAuthorDetails{}
 .twt-feedback .feedbackAuthor{}
 .twt-feedback .feedbackAuthor .feedbackAuthorAvatar{width:48px;height:48px;float:left;}
-.twt-feedback .feedbackAuthor h2{font-size:11px;margin:0px;margin-top:5px;}
+.twt-feedback .feedbackAuthorDetails h2{font-size:11px;margin:0px;margin-top:5px;}
 .twt-feedback .feedbackAuthor h4{margin:0px;font-size:10px;margin-top:3px;}
 .twt-feedback .feedbackAuthor p{margin:0px;padding:0px;margin-top:3px}
 .twt-feedback .twitter-username{font-size:10px;}
-.twt-feedback .feedbackText{margin-left:54px;}
-.twt-feedback .feedbackText p{margin:0px 0px 15px;line-height:1.5em;font-size:11px;}
+.twt-feedback .feedbackText{margin-left:64px;}
+.twt-feedback .feedbackText p{margin:4px 0px 4px;line-height:1.5em;font-size:11px;}
 .twt-feedback .feedbackText p:last-child{margin-bottom:0px;}
-.twt-feedback .feedbackTextTail{width:22px;height:22px;position:absolute;top:20px;left:-22px;}
-.twt-feedback .feedbackTextBubble{padding:2px;}
+.twt-feedback .feedbackTextTail{width:22px;height:22px;position:absolute;top:0px;left:-16px;}
+.twt-feedback .feedbackTextBubble{padding:6px 8px;}
 .twt-feedback .feedbackMeta{text-align:right;}
 .twt-feedback .feedbackMeta{float:left;bottom:-15px;}
 .twt-feedback .feedbackTimestamp,
@@ -280,8 +280,8 @@ div{position:relative;}
 .twt-feedback .feedbackTimestamp{width:350px;text-align:right;padding-right:10px;padding-top:2px;}
 .twt-feedback .feedbackSocialTwitter{width:90px;}
 .twt-feedback .feedbackSocialFacebook{width:90px;}
-.twt-feedback .feedbackDate{margin-left:54px;font-size:10px;padding-left:2px;color:#0086a8;}
-
+.twt-feedback .feedbackDate{font-size:10px;padding-left:2px;color:#0086a8;}
+.twt-feedback .twitter-marker{width:40px;height:40px;background:url(../images/twitter-marker.png) no-repeat;position:absolute;bottom:0px;right:0px;z-index:100;}
 .featured .feedbackSocial{height:20px;}
 .normal .feedbackSocial{height:20px;}
 .feedbackSocial .feedbackSocialTwitter,.feedbackSocial .feedbackSocialFacebook{display:none;text-align:left;}
@@ -345,11 +345,11 @@ img.large-avatar {
 .right{float:right}
 .center{margin:0 auto}
 
-.twitter span.twitter-username{background:url(/img/twitter-bird.png) no-repeat left center;padding-left:18px;font-weight:bold;color:#6d6e71;}
+.twitter span.twitter-username{background:url(../images/twitter-bird.png) no-repeat left center;padding-left:18px;font-weight:bold;color:#6d6e71;}
 
 
 .funky-button{
-	background:url(/img/send-feedback-btn-bg.jpg) repeat-x;
+	background:url(../images/send-feedback-btn-bg.jpg) repeat-x;
 	background-position:top;
 	background-color:#4ca5c7;
 	border: 1px solid #4ca5c5;
@@ -408,4 +408,80 @@ img.large-avatar {
 	width:312px;
 	height:32px;
 	margin-top:10px;
+}
+
+/* fullpage 2 styles */
+.feedback-date-block{
+	display:block;
+	position:relative;
+}
+.feedback-date-block .feedback-date{
+	width:139px;
+	height:139px;
+	background:url(../images/circle-date.png);
+	background-repeat:no-repeat;
+	left:50%;
+	margin-left:-70px;
+	z-index:1;
+}
+.feedback-date-block .feedback-date h2{
+	font-size:30px;
+	color:#6b8506;
+	padding-top:45px;
+	text-align:center;
+	margin:0px;
+}
+.feedback-date-block .feedback-date span{
+	text-align:center;
+	display:block;
+}
+.feedback-date-block .feedback-spine{
+	width:10px;
+	position:absolute;
+	height:100%;
+	left:50%;
+	margin-left:-5px;
+	background:#ececec;
+	top:0px;
+	bottom:0px;
+}
+.feedback-branch{
+	position:absolute;
+	width:21px;
+	height:10px;
+	background:#ececec;
+	right:-24px;
+	z-index:1;
+}
+.featured .feedback-branch,.twt-featured .feedback-branch{
+	display:none;
+}
+.feedback.twt-feedback.twt-featured .feedbackAuthor,.feedback.twt-feedback.twt-featured .feedbackTextTail{display:none;}
+.feedback.twt-feedback.twt-featured .feedbackTextBubble{background:none;}
+.feedback.twt-feedback.twt-featured .feedbackText{margin-left:0px;}
+.feedbackDate{display:none;}
+.feedback.twt-feedback.twt-featured .feedbackText .feedbackTextContent{
+	top:0px;
+	position:relative;
+	padding-bottom:30px;
+	font-size:26px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+}
+.feedback.twt-feedback.twt-featured .feedbackText .feedbackTextContent p{
+	font-size:26px;
+	text-align:center;
+}
+.feedback.twt-feedback.twt-featured .feedbackText .feedbackAuthorDetails{
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	text-align:center;
+}
+.feedback.twt-feedback.twt-featured .feedbackText .feedbackAuthorDetails h2{
+	font-size:18px;
+	color:#1982ad;
+}
+.spine-spacer{
+	height:120px;
+	display:block;
 }

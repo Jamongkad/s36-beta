@@ -1,6 +1,6 @@
 <?=Form::open_for_files('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('companyId', $hosted_full_page->companyid)?>
-<?=Form::hidden('theme_type', $hosted_full_page->theme_type, Array('id' => 'selected-form'))?>
+<?=Form::hidden('theme_name', $hosted_full_page->theme_name, Array('id' => 'selected-form'))?>
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
         <h3>HOSTED FEEDBACK DISPLAY SETUP</h3>
@@ -8,30 +8,37 @@
     <div class="block noborder">
         <div id="hosted-wizard">
             <div id="hosted-wizard-step-1" class="wizard-steps current">
-                <h2 class="large-black">Step 1 Choose a design theme from the follow categories:</h2>
+                <h2 class="large-black">Step 1: Choose your theme:</h2>
                 <br />                
                 <div class="grids">
                     <div class="">
+                        <?php /*
                         <select class="regular-select" id="theme-select">
-
                             <?foreach($main_themes as $main_theme):?>
                                 <option value="<?=$main_theme?>" <?=($themes_parent == $main_theme) ? 'selected' : null?>><?=ucwords($main_theme)?></option>
                             <?endforeach?>
                         </select>
+                        */ ?>
                         <!--<input type="hidden" value="1" id="selected-theme" name="selected-theme" />-->
                         <!--<a href="#">View all Categories</a>-->
                         <div class="grids">
                         <br />
-                            <div id="corporate" class="form-design-slide" style="margin-left:-10px;">
-                                <div class="form-design-prev" style="margin-top:15px;">
+                        <div id="asdf" class="form-design-slide" style="margin-left: -10px; display: block; ">
+                            <!-- <div class="form-design-prev" style="margin-top:15px;"></div> -->
+                            <div class="form-designs grids">                                            
+                            <div class="form-design-group grids">
+                                <?php foreach($themes as $theme): ?>
+                                <div class="form-design" id="<?=$theme->theme_name?>">
+                                    <img src="/img/display-thumb.png ">
+                                    <br>
+                                    <span><?=$theme->theme_name?></span>
                                 </div>
-                                <div class="form-designs grids" >
-                                    <?=View::make('feedsetup/partials/feedsetup_hostedthemes_picker_view', 
-                                           array('themes'=> $themes->corporate->children, 'data_type' => null))?>
-                                </div>
-                                <div class="form-design-next" style="margin-top:15px;">
-                                </div>
+                                <?php endforeach; ?>
                             </div>
+                            </div>
+                            <!-- <div class="form-design-next" style="margin-top:15px;"></div> -->
+                        </div>
+                            <?php /*
                             <div id="minimalist" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
@@ -41,7 +48,8 @@
                                 </div>
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
-                            </div> <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
+                            </div>
+                            <div id="creative" class="form-design-slide" style="margin-left:-10px;display:none;">
                                 <div class="form-design-prev" style="margin-top:15px;">
                                 </div>
                                 <div class="form-designs grids" >                                                               
@@ -51,6 +59,7 @@
                                 <div class="form-design-next" style="margin-top:15px;">
                                 </div>
                             </div>
+                            */ ?>
                         </div>
                     </div>
                     <div class="g1of4">

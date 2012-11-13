@@ -17,7 +17,7 @@
                                         <td>Fullpage</td>
                                     </tr>
                                     <tr><td width="90"><strong>Theme :</strong></td>
-                                        <td><?=ucwords($hosted_full_page->theme_type)?></td>
+                                        <td><?=ucwords($hosted_full_page->theme_name)?></td>
                                     </tr>
                                 </table>
                             </div>

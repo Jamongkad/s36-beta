@@ -3,9 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/fullpage-matte.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -17,8 +15,7 @@
 <script type="text/javascript">
 		
 	$(document).ready(function(){
-
-		$('#theFeedbacks').masonry({
+		$('.the-feedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
 			isAnimated: !Modernizr.csstransitions,
@@ -38,9 +35,6 @@
 				queue: false
 			  }
 		});
-		$('#append').click(function(){
-			add_boxes();		
-		});
 		
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -59,6 +53,7 @@
 		// New scripts for the Logo Upload Oct 4 2012
 		make_cover_undraggable(true);
 		$('#changeCoverButton').click(function(){
+			trigger_file_upload();
 		});
 		
 		$('#changeCoverButton').mousemove(function(e){
@@ -74,9 +69,26 @@
 				top : src.offset().top,
 				left: '0'
 			}
+			
 			upload_to_server(data);
 		});
 		// end of new scripts
+		$('.feedback').each(function(){
+			var leftOffset = $(this).css('left');
+			
+			if(leftOffset == '400px'){
+				$(this).css('left','418px');
+				$(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+			}
+			
+		});
+		$('.twt-featured').each(function(){
+			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
+			var nameContent = nameContainer.html();
+			var appendDash = '— '+nameContent;
+			
+			nameContainer.html(appendDash);
+		});
 	});
 	/* end of document ready function. below are custom functions for this form */	
 	
@@ -113,17 +125,7 @@
 		ajax_file_upload();
 	}
 	function upload_to_server(data){
-		/*save data to database*/
-			$.ajax({
-		        url: "savecoverphoto",
-		        type: "POST",
-		        data: data,
-		        success: function(q) {
-		            console.log(q);
-		        }
-		    });
-
-		/**/
+		/* pass the variables from here to the database then initialize the codes below if upload to db is successful */
 		
 		$('#saveCoverButton').html('Cover Saved');
 		var timeout;
@@ -171,7 +173,6 @@
 						{
 							fetch_new_image(data.msg);
 							change_logo(data.msg);
-							
 						}
 					}
 					
@@ -199,7 +200,6 @@
 					$('#dragPhoto').fadeIn('fast');
 					$('#saveCoverButton').fadeIn('fast');
 				});
-				$('#coverPhoto').css('top',0);
 		});
 		make_cover_undraggable(false);
 	}
@@ -217,7 +217,7 @@
 									.append('<a href="'+link+'" class="twitter-share-button">Tweet</a>'))
 				  .append(
 						$('<div />').addClass('facebook-button')
-									.append('<lo><iframe src="//www.facebook.com/plugins/like.php?href='+link+'&amp;send=false&amp;layout=button_count&amp;width=450&a</lo>mp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>')
+									.append('<lo><iframe src="//www.facebook.com/plugins/like.php?href='+link+'&amp;send=false&amp;layout=buwaltton_count&amp;width=450&a</lo>mp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>')
 				  );
 			
 			twttr.widgets.load(); // parse the twitter widgets
@@ -226,6 +226,16 @@
 		target.slideToggle('fast');
 	}
 
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 
 </head>

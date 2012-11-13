@@ -2,6 +2,7 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $hosted_settings = new Widget\Repositories\DBHostedSettings;
+$themes = new Themes\Repositories\DBThemes;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
@@ -54,7 +55,7 @@ return array(
                                                   , 'hosted' => $hosted_settings->hosted_settings()));        
     },
 */
-        'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter) {
+        'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter, $feedback, $themes) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
         $tweets = $twitter->findTwitts('codiqa');
@@ -65,6 +66,9 @@ return array(
         $widget = $dbw->fetch_canonical_widget($company_name);
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+        $hosted_settings_info = $hosted_settings->hosted_settings();
+        $theme = $themes->get_theme_by_name($hosted_settings_info->theme_name);
+
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
@@ -76,6 +80,22 @@ return array(
         ));
         $meta->calculate_metrics();
         //\Helpers::show_data($tweets);
+        $inbox = new Feedback\Services\InboxService;
+        $filters = array(
+              'limit'=> 100
+            , 'site_id'=> false
+            , 'filter'=> 'published'
+            , 'date'=> false
+            , 'rating'=> false
+            , 'priority'=> false
+            , 'category'=> false
+            , 'status'=> false
+            , 'choice'=> 'all'
+            , 'company_id' => S36Auth::user()->companyid
+        );
+        //$inbox->set_filters($filters);
+        //$feedback = $inbox->present_feedback();
+        //Helpers::show_data($feedback->result);exit();
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
                                                   , 'user' => $user
@@ -84,7 +104,8 @@ return array(
                                                   , 'widget' => $widget
                                                   , 'feed_count' => $meta->perform()
                                                   , 'company_header' => $header_view
-                                                  , 'hosted' => $hosted_settings->hosted_settings()));        
+                                                  , 'theme' => $theme
+                                                  , 'hosted' => $hosted_settings_info));        
     },
     'POST /savecoverphoto' => function() use($company){
       $data = Input::all();

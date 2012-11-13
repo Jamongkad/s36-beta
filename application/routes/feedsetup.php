@@ -2,7 +2,8 @@
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
-$widget_themes = new Widget\Repositories\DBWidgetThemes; 
+$widget_themes = new Widget\Repositories\DBWidgetThemes;
+$themes = new Themes\Repositories\DBThemes; 
 
 $tab_themes  = \Helpers::$tab_themes;
 
@@ -122,18 +123,25 @@ return array(
         ));
     }),
 
-    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes) { 
+    'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes, $themes) { 
 
         $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
         $widget_themes->build_menu_structure();
         $hosted_settings = $hosted->hosted_settings();
+        $themes=$themes->get_themes();
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
-            'themes' => $widget_themes->perform()->collection
+            //'themes' => $widget_themes->perform()->collection
+            'themes' => $themes
           , 'hosted_full_page' => $hosted_settings 
-          , 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
-          , 'main_themes' => $widget_themes->main_themes()
+          //, 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
+          //, 'main_themes' => $widget_themes->main_themes()
         ));
+    },
+
+    'GET /feedsetup/themes' =>function() use($themes){
+      $q=$themes->get_themes();
+      \Helpers::show_data($q);
     },
 
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 

@@ -103,7 +103,13 @@ class DBFeedback extends S36DataObject {
             if($opts['filter'] == 'published') { 
                 $is_published_filter = true;
             }  
-        } 
+        }
+
+        if(array_key_exists('limit', $opts)) {
+            $limit_statement = "LIMIT :offset, :limit";
+        }else{
+            $limit_statement ="";
+        }
 
         if($is_published_filter) {
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
@@ -175,8 +181,8 @@ class DBFeedback extends S36DataObject {
             GROUP BY 
                 date_format 
             ORDER BY 
-                '.$opts['date_statement'].' 
-            LIMIT :offset, :limit
+                '.$opts['date_statement'].'
+            '.$limit_statement.'
         ';
 
         $company_id = $this->company_id;
@@ -192,9 +198,10 @@ class DBFeedback extends S36DataObject {
             $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
             $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         }
-
-        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
-        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
+        if(array_key_exists('limit', $opts)) {
+            $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
+            $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
+        }
         $sth->execute();
 
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
