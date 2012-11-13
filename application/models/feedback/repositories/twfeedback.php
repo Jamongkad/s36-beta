@@ -9,6 +9,9 @@ use redisent\Redis;
 Package::load('eden');
 
 class TWFeedback {
+
+    public $request_count = 3;
+
     public function __construct() { 
         $this->twitter_key    = Config::get('application.dev_twitter_key');
         $this->twitter_secret = Config::get('application.dev_twitter_secret');
@@ -16,26 +19,26 @@ class TWFeedback {
         $this->access_secret  = Config::get('application.dev_twitter_access_secret');
         $this->social_network = 'twitter';
         $this->redis          = new Redis;
+        $this->redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
     }
 
     public function pull_tweets_for($twitter_account) {
 
-        $key = Config::get('application.subdomain').':twitter:feedback';
-        $count = 3;
         $timestamp = strtotime('tomorrow');
+        $collection = Null; 
 
-        if($this->redis->hgetall($key)) {   
-            if($this->redis->hget($key, 'requests') != $count) {
-                Helpers::dump($key." ".'incrementing');
-                $this->redis->hincrby($key, 'requests', 1);     
+        $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
+
+        if($this->redis->hgetall($this->redis_twitter_key)) {   
+            if($request_count_check) {
+                $this->redis->hincrby($this->redis_twitter_key, 'requests', 1);     
             } 
         } else {
-            $this->redis->hsetnx($key, 'requests', 0);  
-            $this->redis->expireat($key, $timestamp);
+            $this->redis->hsetnx($this->redis_twitter_key, 'requests', 0);  
+            $this->redis->expireat($this->redis_twitter_key, $timestamp);
         }
 
-        $collection = Null; 
-        if($this->redis->hget($key, 'requests') != $count) { 
+        if($request_count_check) {
             eden()->setLoader();       
             eden($this->social_network)->auth($this->twitter_key, $this->twitter_secret);
             $search = eden($this->social_network)->search($this->twitter_key, $this->twitter_secret
@@ -61,11 +64,15 @@ class TWFeedback {
                 $collection[] = $node;
             }
         }
-        
+  
         $obj = new StdClass;
         $obj->result = $collection;
         return $obj;
 
+    }
+
+    public function reset_request_count() {
+        $this->redis->del($this->redis_twitter_key);   
     }
 
     public function get_rate_limit() { 

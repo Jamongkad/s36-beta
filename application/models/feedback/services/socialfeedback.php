@@ -18,7 +18,7 @@ class SocialFeedback {
             foreach($tw as $feed) {
                 $this->dbsocial->convert($feed);    
             }
-        }
+        }     
     }
 
     public function clear_social_feeds() {

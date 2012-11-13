@@ -76,6 +76,8 @@ class CompanySettings {
                 if($company->twitter_username) {
                     //Helpers::dump("ok we have a twitter link");
                     if($post_data->twitter_username != $company->twitter_username) { 
+                        //reset twitter request count
+                        $this->twitter->reset_request_count();
                         //erase old twitter feeds
                         $socialfeedback->clear_social_feeds();
                         //replace with new

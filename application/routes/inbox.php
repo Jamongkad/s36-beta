@@ -5,6 +5,8 @@ return array(
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
+        $dbcompany = new Company\Repositories\DBCompany;
+
         $limit = 3;
 
         if(Input::get('limit')) $limit = (int)Input::get('limit');
@@ -38,9 +40,18 @@ return array(
         //Reply messages
         $type = 'msg';
         $dbm = new Message\Repositories\DBMessage($type);
-        //$rdm = new Message\Repositories\RDMessage($type);
         $sm = new Message\Services\SettingMessage($dbm);
         $sm->get_messages();
+
+        $company = $dbcompany->get_company_info($company_id);
+        $twitter   = new Feedback\Repositories\TWFeedback; 
+
+        $social_services = Array(
+            'twitter' => $twitter->pull_tweets_for($company->twitter_username)
+        );
+
+        $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+        $social->save_social_feeds();
 
         $view_data = Array(
               'feedback' => $feedback->grouped_feeds
