@@ -125,7 +125,16 @@
 		ajax_file_upload();
 	}
 	function upload_to_server(data){
-		/* pass the variables from here to the database then initialize the codes below if upload to db is successful */
+	/*save data to database*/
+      $.ajax({
+            url: "savecoverphoto",
+            type: "POST",
+            data: data,
+            success: function(q) {
+                console.log(q);
+          }
+      });
+    /**/
 		
 		$('#saveCoverButton').html('Cover Saved');
 		var timeout;
