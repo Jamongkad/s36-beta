@@ -65,7 +65,7 @@ class CompanySettings {
             } 
 
             if($post_data->twitter_username) { 
-                ////Helpers::dump("Twitter Intent is there");
+                //Helpers::dump("Twitter Intent is there");
                 $social_services = Array(
                     'twitter' => $this->twitter->pull_tweets_for($post_data->twitter_username)
                 ); 

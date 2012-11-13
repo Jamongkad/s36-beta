@@ -158,13 +158,12 @@ return array(
         });
 
         $tf->test("Feedback Inbox", function($tf)  {
-            /*
+
             $social_services = Array(
                 'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
-            $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-            */
-            $tf->assert(True);
+            //$tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            $tf->dump($social_services);
         });
 
         $tf->test("Twitter Feed Rate Status", function($tf)  {
@@ -173,18 +172,25 @@ return array(
         });
 
         $tf->test("Twitter Limit Rate", function($tf)  {
-            $key = 'mathew-staging:twitter:feedback' ;
-            print_r(date("y-m-d h:i:s", strtotime('tomorrow')));
+
+            $key = Config::get('application.subdomain').':twitter:feedback';
+            $count = 3;
+            $timestamp = strtotime('tomorrow');
+
+            print_r(date("y-m-d h:i:s a", $timestamp));
             if($tf->data->redis->hgetall($key)) {   
-                if($tf->data->redis->hget($key, 'requests') != 3) {
+                Helpers::dump($key." ".'existing');
+                if($tf->data->redis->hget($key, 'requests') != $count) {
+                    Helpers::dump($key." ".'incrementing');
                     $tf->data->redis->hincrby($key, 'requests', 1);     
                 } 
             } else {
+                Helpers::dump($key." ".'new and creating');
                 $tf->data->redis->hsetnx($key, 'requests', 0);  
-                $tf->data->redis->expireat($key, strtotime('tomorrow'));
+                $tf->data->redis->expireat($key, $timestamp);
             }
 
-            if($tf->data->redis->hget($key, 'requests') == 3) {
+            if($tf->data->redis->hget($key, 'requests') == $count) {
                 Helpers::dump("No more requests at this time");
             } else { 
                 Helpers::dump("Keep requesting");

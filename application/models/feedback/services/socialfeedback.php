@@ -14,8 +14,10 @@ class SocialFeedback {
 
     public function save_social_feeds() {
         $twitter = $this->socialfeeds['twitter'];
-        foreach($twitter->result as $feed) {
-            $this->dbsocial->convert($feed);    
+        if($tw = $twitter->result) { 
+            foreach($tw as $feed) {
+                $this->dbsocial->convert($feed);    
+            }
         }
     }
 
