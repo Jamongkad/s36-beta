@@ -52,14 +52,14 @@ class HostedService {
         foreach($feeds->result as $feed) {
             if($feed->isfeatured) { 
                 $obj = new StdClass;   
-                $obj->sort_id = 'head_'.$feed->id;          
-                //$obj->feed_data = $feed;
+                $obj->sort_id = 'featured_'.$feed->id;          
+                $obj->feed_data = $feed;
             }
 
             if($feed->ispublished) { 
                 $obj = new StdClass;   
-                $obj->sort_id = 'child_'.$feed->id;          
-                //$obj->feed_data = $feed;
+                $obj->sort_id = 'published_'.$feed->id;          
+                $obj->feed_data = $feed;
             }
             $collection[$feed->head_date_format][] = $obj;        
         }  
@@ -69,7 +69,7 @@ class HostedService {
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
             $children_collection = Array();
-            rsort($children);
+            sort($children);
             foreach($children as $val) {
                 $arranged_collection = Array();
                 if(($ctr % $this->units) == 0) { 
@@ -88,8 +88,8 @@ class HostedService {
         //clear memory
         $collection = Null; 
         $feeds = Null;
-
-        Helpers::dump($repack);
+        //Helpers::dump($repack);
+        return $repack;
     }
 
     public function collection_data() {

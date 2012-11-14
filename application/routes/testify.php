@@ -185,7 +185,7 @@ return array(
         $tf->test('Televised Feedback', function($tf) {
             $tf->data->hosted->debug = True;
             $data = $tf->data->hosted->collection_data_alt();
-            //Helpers::dump($data);
+            Helpers::dump($data);
             //$tf->dump($tf->data->hosted->collection_data_alt());
         });
         
