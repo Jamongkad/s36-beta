@@ -1,6 +1,7 @@
 <?php namespace Feedback\Repositories;
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
+use \Feedback\Entities\FeedbackNode;
 
 class DBFeedback extends S36DataObject {
 
@@ -22,6 +23,7 @@ class DBFeedback extends S36DataObject {
                   END AS priority
                 , TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) AS text
                 , Feedback.dtAdded AS date
+                , DATE_FORMAT(Feedback.dtAdded, GET_FORMAT(DATE, "EUR")) AS head_date_format 
                 , CASE
                       WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
                           THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
@@ -92,6 +94,8 @@ class DBFeedback extends S36DataObject {
                 , Site.siteId AS siteid
                 , Site.name AS sitename
                 , Site.domain AS sitedomain
+                , FeedbackContactOrigin.origin AS origin
+                , FeedbackContactOrigin.socialId AS socialid
                 , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
     
     //DB Reads
@@ -103,13 +107,7 @@ class DBFeedback extends S36DataObject {
             if($opts['filter'] == 'published') { 
                 $is_published_filter = true;
             }  
-        }
-
-        if(array_key_exists('limit', $opts)) {
-            $limit_statement = "LIMIT :offset, :limit";
-        }else{
-            $limit_statement ="";
-        }
+        } 
 
         if($is_published_filter) {
             $inbox_statements = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1) 
@@ -125,23 +123,18 @@ class DBFeedback extends S36DataObject {
         $date_sql = '
             SELECT   
                 SQL_CALC_FOUND_ROWS
-                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "USA")) AS date_format 
+                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "EUR")) AS date_format 
               , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
-              , COUNT(DISTINCT Feedback.feedbackId) AS feedcount
               , dtAdded
               , CASE
                     WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
                         THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
-
                     WHEN datediff(now(), dtAdded) = 1 
                         THEN "Yesterday"
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
                         THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
                         THEN concat(datediff(now(), dtAdded)," days ago")
-
                     WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
                         THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
                     WHEN dtAdded > CURDATE()
@@ -150,7 +143,6 @@ class DBFeedback extends S36DataObject {
                         "about a year ago"
                 END as daysAgo
               , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
-              , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
             FROM 
                 Feedback
             INNER JOIN
@@ -165,12 +157,16 @@ class DBFeedback extends S36DataObject {
             INNER JOIN
                 Contact
                    ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                   ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                   AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
                    ON Country.countryId = Contact.countryId
             WHERE 1=1
-                '.$opts['siteid_statement'].'
                 AND Company.companyId = :company_id
+                '.$opts['siteid_statement'].'
                 '.$inbox_statements.'
                 '.$opts['rating_statement'].'
                 '.$opts['filed_statement'].'
@@ -181,32 +177,32 @@ class DBFeedback extends S36DataObject {
             GROUP BY 
                 date_format 
             ORDER BY 
-                '.$opts['date_statement'].'
-            '.$limit_statement.'
+                '.$opts['date_statement'].' 
+            LIMIT :offset, :limit
         ';
 
         $company_id = $this->company_id;
-        if(!$this->company_id) {
+
+        if (!$this->company_id) {
             $company_id = $opts['company_id'];
         }
 
         $sth = $this->dbh->prepare($date_sql);
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
          
-        if(!$is_published_filter) { 
+        if (!$is_published_filter) { 
             $sth->bindParam(':is_deleted', $opts['deleted'], PDO::PARAM_INT);
             $sth->bindParam(':is_published', $opts['published'], PDO::PARAM_INT);
             $sth->bindParam(':is_featured', $opts['featured'], PDO::PARAM_INT);
         }
-        if(array_key_exists('limit', $opts)) {
-            $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
-            $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
-        }
+
+        $sth->bindparam(':limit', $opts['limit'], PDO::PARAM_INT);
+        $sth->bindparam(':offset', $opts['offset'], PDO::PARAM_INT);
         $sth->execute();
 
         $date_result = $sth->fetchAll(PDO::FETCH_CLASS); 
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result_obj = new StdClass;
+        $row_count   = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result_obj  = new StdClass;
         $result_obj->result = $date_result;
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
@@ -214,11 +210,11 @@ class DBFeedback extends S36DataObject {
 
     //TODO: Caching Candidate -> Priority Number One
     public function pull_feedback_by_company(array $opts=null) {
-        $published_statement=   Null;
-        $featured_statement =   Null;
-        $combined_statement =   Null;
-        $siteid_statement   =   Null;
-
+        $published_statement =   Null;
+        $featured_statement  =   Null;
+        $combined_statement  =   Null;
+        $siteid_statement    =   Null;
+ 
         if($opts['is_published'] == 1 && $opts['is_featured'] == 0) {
            $published_statement = "AND Feedback.isPublished = 1";
         }
@@ -230,8 +226,14 @@ class DBFeedback extends S36DataObject {
         if($opts['is_published'] == 1 && $opts['is_featured'] == 1) {
            $combined_statement = "AND (Feedback.isPublished = 1 OR Feedback.isFeatured = 1)";
         }
-        if(isset($opts['site_id']) && !empty($opts['site_id'])){
-            $siteid_statement  = "AND Site.siteId = '".$opts['site_id']."'";
+        
+        $inbox_statements = null;
+        if($opts['is_published'] == 0 && $opts['is_featured'] == 0) { 
+            $inbox_statements = '
+                AND Feedback.isDeleted = :is_deleted
+                AND Feedback.isPublished = :is_published
+                AND Feedback.isFeatured = :is_featured
+            ';
         }
 
         $sql = '
@@ -248,6 +250,10 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
                     INNER JOIN 
                         Country
                         ON Country.countryId = Contact.countryId
@@ -256,31 +262,49 @@ class DBFeedback extends S36DataObject {
                         ON Company.companyId = Site.companyId
                     WHERE 1=1
                         AND Company.companyId = :company_id
+                        '.$inbox_statements.'
                         '.$siteid_statement.'
                         '.$published_statement.'
                         '.$featured_statement.'
                         '.$combined_statement.'
                     ORDER BY  
                         Feedback.dtAdded DESC
-        ';
-        
-        
+        '; 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', S36Auth::user()->companyid, PDO::PARAM_INT);              
-        //$sth->bindParam(':site_id', $opts['site_id'], PDO::PARAM_INT);
+
+        $company_id = $this->company_id;
+
+        if (!$this->company_id) {
+            $company_id = $opts['company_id'];
+        }
+
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
+
+        if ($opts['is_published'] == 0 && $opts['is_featured'] == 0) { 
+            $zero = 0;
+            $sth->bindParam(':is_deleted', $zero, PDO::PARAM_INT);
+            $sth->bindParam(':is_published', $zero, PDO::PARAM_INT);
+            $sth->bindParam(':is_featured', $zero, PDO::PARAM_INT);
+        }
+
         $sth->execute();       
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $results = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $collection = Array();
+        foreach($results as $data)  {
+            $collection[] = $this->_feedback_node($data); 
+        }
+
         $result_obj = new StdClass;
-        $result_obj->site_id    = $opts['site_id'];
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
-        $result_obj->result = $result;
+        $result_obj->result = $collection;
         return $result_obj;       
     }
 
-    public function pull_feedback_by_group_id($feedbackids) {
+    public function pull_feedback_group($feedbackids) {
 
         $ids      = explode("|", $feedbackids);
         $in_query = implode(',', array_fill(0, count($ids), '?'));
@@ -300,6 +324,10 @@ class DBFeedback extends S36DataObject {
                         Contact
                         ON Contact.contactId = Feedback.contactId 
                     INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+                    INNER JOIN
                         Country
                         ON Country.countryId = Contact.countryId
                     WHERE 1=1
@@ -314,12 +342,14 @@ class DBFeedback extends S36DataObject {
 
         $sth->execute();
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        $total = $row_count->fetchColumn();
-   
-        $result_obj = new StdClass;
-        $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $result_obj->total_rows = $total;
-        return $result_obj; 
+        $results = $sth->fetchAll(PDO::FETCH_CLASS);
+        
+        $collection = Array();
+        foreach($results as $data)  {
+            $collection[] = $this->_feedback_node($data);
+        }
+
+        return $collection;
     }
 
     public function pull_feedback_by_id($feedback_id) { 
@@ -345,6 +375,10 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN
                         Contact
                         ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
                     INNER JOIN
                         Country
                         ON Country.countryId = Contact.countryId
@@ -441,6 +475,101 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
+    public function televised_feedback_alt($company_name) { 
+        $grouped_sql = '
+             SELECT   
+                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "EUR")) AS date_format 
+              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
+              , dtAdded
+              , CASE
+                    WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
+                        THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
+                    WHEN datediff(now(), dtAdded) = 1 
+                        THEN "Yesterday"
+                    WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
+                        THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
+                    WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
+                        THEN concat(datediff(now(), dtAdded)," days ago")
+                    WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
+                        THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
+                    WHEN dtAdded > CURDATE()
+                        THEN "future event"
+                    ELSE    
+                        "about a year ago"
+                END as daysAgo
+              , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
+            FROM 
+                Feedback
+            INNER JOIN
+                Site
+                ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+            INNER JOIN 
+                Country
+                ON Country.countryId = Contact.countryId
+            WHERE 1=1
+                AND Company.name = :company_name
+                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
+            GROUP BY 
+                date_format
+            ORDER BY 
+                Feedback.dtAdded DESC
+        ';
+
+        $sql = '
+            SELECT
+                '.$this->select_vars.' 
+            FROM 
+                Feedback
+            INNER JOIN
+                Site
+                ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+            INNER JOIN 
+                Country
+                ON Country.countryId = Contact.countryId  
+            WHERE 1=1
+                AND Company.name = :company_name
+                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
+            ORDER BY 
+                Feedback.dtAdded DESC
+        ';
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
+        $sth->execute();
+
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        $result_obj = new StdClass;
+        $result_obj->result = $result;
+        return $result_obj; 
+    }
+
     public function televised_feedback($company_name) {
         $sql = "
             SELECT 
@@ -449,16 +578,20 @@ class DBFeedback extends S36DataObject {
                 Feedback
             INNER JOIN
                 Site
-                    ON Site.siteId = Feedback.siteId
+                ON Site.siteId = Feedback.siteId
             INNER JOIN 
                 Company
-                    ON Company.companyId = Site.companyId
+                ON Company.companyId = Site.companyId
             INNER JOIN
                 Category
-                    ON Category.categoryId = Feedback.categoryId
+                ON Category.categoryId = Feedback.categoryId
             INNER JOIN
                 Contact
-                    ON Contact.contactId = Feedback.contactId
+                ON Contact.contactId = Feedback.contactId
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+               AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
                     ON Contact.countryId = Country.countryId
@@ -528,6 +661,7 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _permanent_delete($opts) { 
+        
         $ids = array_map(function($obj) { return $obj['feedid']; }, $opts);
         $block_ids = implode(',', $ids);
         
@@ -602,11 +736,13 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':user_id', $this->user_id, PDO::PARAM_INT);
         $sth->execute();
     }
+
     public function update_feedback($id,$fields){
         return DB::table('Feedback','master')
                     ->where('feedbackId','=',$id)
                     ->update($fields);
     }
+
     public function update_feedback_text($feedback_id, $text, $is_profane)  { 
         $affected = DB::table('Feedback', 'master')
             ->where('feedbackId', '=', $feedback_id)
@@ -674,5 +810,41 @@ class DBFeedback extends S36DataObject {
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
                              ->delete();
+    }
+
+    public function _feedback_node($data) { 
+
+        $node = new FeedbackNode;
+        $node->id        = $data->id;      
+        $node->firstname = $data->firstname;
+        $node->lastname  = $data->lastname;
+        $node->logintype = $data->logintype;
+        $node->countryname = $data->countryname;
+        $node->countrycode = $data->countrycode;
+        $node->profilelink = $data->profilelink;
+        $node->date   = $data->date;
+        $node->status = $data->status;
+        $node->text   = $data->text;
+        $node->categoryid = $data->categoryid;  
+        $node->category = $data->category;  
+        $node->priority = $data->priority;  
+        $node->rating   = $data->rating;
+        $node->ispublished = $data->ispublished;
+        $node->isdeleted   = $data->isdeleted;
+        $node->isfeatured  = $data->isfeatured;
+        $node->permission_css = $data->permission_css;
+        $node->permission = $data->permission;
+        $node->contactid  = $data->contactid;
+        $node->siteid   = $data->siteid;
+        $node->perm_val = $data->perm_val;
+        $node->email = $data->email;
+        $node->unix_timestamp = $data->unix_timestamp;
+        $node->daysago = $data->daysago;
+        $node->sitedomain = $data->sitedomain;
+        $node->avatar = $data->avatar;
+        $node->origin = $data->origin;
+        $node->socialid = $data->socialid;
+        return $node;
+
     }
 }

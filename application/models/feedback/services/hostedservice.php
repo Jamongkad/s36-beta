@@ -23,12 +23,12 @@ class HostedService {
     public function __construct($company_name) {
         $this->company_name = $company_name;
         $this->feedback     = new DBFeedback;
-        $this->redis = new redisent\Redis;
+        $this->redis    = new redisent\Redis;
         $this->key_name = $this->company_name.":fullpage:data";
     }
 
     public function fetch_hosted_feedback() {
-        $this->collection = $this->collection_data(); 
+        $this->collection = $this->collection_data_alt();//$this->collection_data(); 
     }
 
     public function view_fragment() { 
@@ -42,6 +42,54 @@ class HostedService {
 
     public function cached_data($data_obj) {
         return json_decode($data_obj);
+    }
+
+    public function collection_data_alt() { 
+
+        $feeds = $this->feedback->televised_feedback_alt($this->company_name);
+        $collection = Array();
+
+        foreach($feeds->result as $feed) {
+            if($feed->isfeatured) { 
+                $obj = new StdClass;   
+                $obj->sort_id = 'featured_'.$feed->id;          
+                $obj->feed_data = $feed;
+            }
+
+            if($feed->ispublished) { 
+                $obj = new StdClass;   
+                $obj->sort_id = 'published_'.$feed->id;          
+                $obj->feed_data = $feed;
+            }
+            $collection[$feed->head_date_format][] = $obj;        
+        }  
+
+        //Helpers::dump($collection);
+        $repack = Array();
+        foreach($collection as $date_key => $children) {
+            $ctr = 0;            
+            $children_collection = Array();
+            sort($children);
+            foreach($children as $val) {
+                $arranged_collection = Array();
+                if(($ctr % $this->units) == 0) { 
+                    foreach(new LimitIterator(new ArrayIterator($children), $ctr, $this->units) as $fr) {    
+                        $arranged_collection[] = $fr;     
+                    }
+                    $children_collection[] = $arranged_collection;
+                    $arranged_collection   = Null;
+                }
+                $ctr += 1;
+            }
+            $repack[$date_key]   = $children_collection;
+            $children_collection = Null;
+        }
+        
+        //clear memory
+        $collection = Null; 
+        $feeds = Null;
+        //Helpers::dump($repack);
+        return $repack;
     }
 
     public function collection_data() {
