@@ -73,15 +73,6 @@
 			upload_to_server(data);
 		});
 		// end of new scripts
-		$('.feedback').each(function(){
-			var leftOffset = $(this).css('left');
-			
-			if(leftOffset == '400px'){
-				$(this).css('left','418px');
-				$(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
-			}
-			
-		});
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
 			var nameContent = nameContainer.html();

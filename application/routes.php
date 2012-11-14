@@ -65,9 +65,14 @@ return array(
 
         $widget = $dbw->fetch_canonical_widget($company_name);
 
+        //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
+
+        //fullpage theme
         $theme = $themes->get_theme_by_name($hosted_settings_info->theme_name);
+        $theme->theme_css = (!empty($theme->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$theme->theme_css.'" />' : '';
+        $theme->theme_js  = (!empty($theme->theme_js))  ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$theme->theme_js.'"></script>'    : '';
 
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
@@ -79,7 +84,6 @@ return array(
            , 'company_id' => $company_info->companyid
         ));
         $meta->calculate_metrics();
-        //\Helpers::show_data($tweets);
         $inbox = new Feedback\Services\InboxService;
         $filters = array(
               'limit'=> 100
@@ -93,19 +97,17 @@ return array(
             , 'choice'=> 'all'
             , 'company_id' => S36Auth::user()->companyid
         );
-        //$inbox->set_filters($filters);
-        //$feedback = $inbox->present_feedback();
-        //Helpers::show_data($feedback->result);exit();
+        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company' => $company_info
-                                                  , 'user' => $user
-                                                  , 'feeds' => $hosted->view_fragment()
-                                                  , 'tweets' => $tweets
-                                                  , 'widget' => $widget
-                                                  , 'feed_count' => $meta->perform()
-                                                  , 'company_header' => $header_view
-                                                  , 'theme' => $theme
-                                                  , 'hosted' => $hosted_settings_info));        
+                                                  , 'user'    => $user
+                                                  , 'feeds'   => $hosted->view_fragment()
+                                                  , 'tweets'  => $tweets
+                                                  , 'widget'  => $widget
+                                                  , 'feed_count'      => $meta->perform()
+                                                  , 'company_header'  => $header_view
+                                                  , 'theme'   => $theme
+                                                  , 'hosted'  => $hosted_settings_info));        
     },
     'POST /savecoverphoto' => function() use($company){
       $data = Input::all();

@@ -131,23 +131,17 @@ return array(
         $themes=$themes->get_themes();
  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
-            //'themes' => $widget_themes->perform()->collection
             'themes' => $themes
           , 'hosted_full_page' => $hosted_settings 
-          //, 'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
-          //, 'main_themes' => $widget_themes->main_themes()
+          //'themes' => $widget_themes->perform()->collection
+          //,'themes_parent' => $widget_themes->get_parent($hosted_settings->theme_type)
+          //,'main_themes' => $widget_themes->main_themes()
         ));
     },
 
-    'GET /feedsetup/themes' =>function() use($themes){
-      $q=$themes->get_themes();
-      \Helpers::show_data($q);
-    },
-
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
-
-      $input = Input::get();
       $hosted_settings = $hosted->hosted_settings();
+      $input = Input::get();
       $input['background_image'] = $hosted_settings->background_image;
       if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
         $file       = 'hosted_background';

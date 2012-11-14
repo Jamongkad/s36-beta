@@ -2,10 +2,12 @@
 <?php
 $admin = (!empty($user))? 1 : 0;
 /*
-/ pull theme information for customed css
+/ pull theme information for customed css and js
 */
+echo $theme->theme_css;
+echo $theme->theme_js;
 ?>
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/<?=$theme->theme_css?>" />
+
 
 <?php 
 /*start document load*/ 
@@ -14,11 +16,11 @@ $admin = (!empty($user))? 1 : 0;
 $(document).ready(function(){
     
     <?php 
-    /* Change fullpage background if set from admin
+    /* Change fullpage background if set from admin */
     
     if(isset($hosted->background_image) && !empty($hosted->background_image)) { ?>
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
-    <?php } */?>
+    <?php } ?>
     
 });
 </script>
@@ -81,11 +83,7 @@ $(document).ready(function(){
         <!-- end of new header October 4 2012 -->
         
        <div id="pageTitle">
-            <div class="grids">
-                <div class="g4of5">
-                        <h1>Hear what our customers have to say</h1>
-                </div>
-            </div>
+            <h1><?=$hosted->header_text?></h1>
             <div class="meta">
                 <?=$feed_count->published_feed_count?> testimonials in total 
                 <?if($feed_count->todays_count > 0):?>

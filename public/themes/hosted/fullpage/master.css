@@ -35,7 +35,7 @@ div{position:relative;}
 #headerTitle span {padding-left:20px;}
 #headerTitle span a{font-size:14px;font-weight:bold;}
 #headerTitle a:hover{}
-#pageTitle{padding:55px 10px;text-align:left;margin:0px 0px;border-top:1px solid #e6e6e6;text-align:center;}
+#pageTitle{padding:25px 10px;text-align:left;margin:0px 0px;border-top:1px solid #e6e6e6;text-align:center;}
 #pageTitle h1{color:#000;font-size:33px;padding:0px;margin:0px;margin-top:-5px;}
 .meta{font-size:11px;color:inherit;margin-top:6px;color:#8f8f8f;}
 #pageTitle a.green-cross{font-weight:bold;font-size:14px;margin-top:5px;}
@@ -482,6 +482,6 @@ img.large-avatar {
 	color:#1982ad;
 }
 .spine-spacer{
-	height:120px;
+	height:30px;
 	display:block;
 }
