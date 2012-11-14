@@ -33,6 +33,13 @@ class SubmissionService {
 
         $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
         $feedbackservice->save_feedback($post);
+        
+        DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
+            'contactId' => $contact_data['contact_id']
+          , 'feedbackId' => $new_feedback_id
+          , 'origin' => 's36'
+          , 'socialId' => $new_feedback_id
+        ));
 
         $submission_data = new NewFeedbackSubmissionData; 
 
