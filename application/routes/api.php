@@ -25,45 +25,6 @@ return array(
             echo json_encode(Array('msg' => 'Invalid Login Credentials', 'error' => 'invalid'));
         } 
     },
-
-    'GET /api/inbox' => function() {
-        /* TODO Under RENOVATION
-        //$company = Input::get('subdomain');
-        $company = Config::get('application.subdomain');
-        $token = Input::get('token');
-         
-        $encrypt = new Encryption\Encryption;
-        $decrypt_string = $encrypt->decrypt($token);
-        $params = explode("|", $decrypt_string); 
-        $key = Config::get('application.key');
-
-        $inbox_service = new Feedback\Services\InboxService;
-
-        $filters = array(
-              'limit'=> Input::get('limit')
-            , 'site_id'=> false 
-            , 'filter'=> Input::get('filter') //(new arrivals) all (show only) featured published
-            , 'choice'=> Input::get('choice') //positive negative neutral profanity flagged mostcontent
-            , 'date'  => Input::get('date') //date_new date_old
-            , 'rating' => Input::get('rating') //5 4 3 2 1
-            , 'category' => false 
-            , 'priority' => Input::get('priority') //low medium high
-            , 'status' => Input::get('status') //new inprogress closed
-            , 'company_id' => Input::get('company_id')
-        );
-        $inbox_service->ignore_cache = True;
-        $inbox_service->set_filters($filters);
-        $feedback = $inbox_service->present_feedback();
-        Helpers::dump($feedback);
-        //echo json_encode(Array('msg' => 'request successful', 'data' => $feedback));
-        */
-    },
-
-    'POST /api/logout' => function() {
-        $auth = new S36Auth;
-        $auth->logout();
-        echo json_encode(Array('msg' => 'Logout'));
-    },
      
     'GET /api/pull_feedback' => function() use($feedback) { 
 

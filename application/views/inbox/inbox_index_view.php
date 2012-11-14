@@ -1,13 +1,13 @@
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
-        <?if($feeds->children->result):?>
-            <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children->total_rows?>">
+        <?if($feeds->children):?>
+            <div class="feedback-group" id="feed-grp-<?=$feeds->unix_timestamp?>" data-total="<?=$feeds->children_count?>">
                 <div class="feedback-date-header">
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
 
-                <?foreach($feeds->children->result as $feed):?>
+                <?foreach($feeds->children as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?> 
                     <div class="dialog-form" feedid="<?=$id?>"> 
@@ -17,7 +17,6 @@
                                ))?>
                         <?=Form::close()?>
                     </div>
-     
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
                             <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>
@@ -31,12 +30,17 @@
                         <div class="right">
                             <div class="g4of5">
                                 <div class="feedback-avatar"> 
-                                    <?if($feed->avatar):?> 
-                                        <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
-                                        <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false
-                                                       , array('class' => 'large-avatar'))?>
-                                    <?else:?>
-                                        <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                                    <?if($feed->origin == 's36'):?>
+                                        <?if($feed->avatar):?> 
+                                            <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
+                                            <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false
+                                                           , array('class' => 'large-avatar'))?>
+                                        <?else:?>
+                                            <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                                        <?endif?>
+                                    <?endif?>
+                                    <?if($feed->origin == 'tw'):?>
+                                        <img src="<?=$feed->avatar?>" />
                                     <?endif?>
                                 </div>
 
@@ -187,8 +191,10 @@
                                     <div class="author-info">
                                         <h3>
                                             <?=$feed->firstname?> <?=$feed->lastname?>
-                                            <?if($feed->rating != "POOR"):?>
-                                                <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
+                                            <?if($feed->origin == 's36'):?>
+                                                <?if($feed->rating != "POOR"):?>
+                                                    <span><?=$feed->countryname?>, <?=$feed->countrycode?></span>
+                                                <?endif?>
                                             <?endif?>
 
                                             <?if($feed->logintype == 'fb'):?>
@@ -209,7 +215,10 @@
                                                 </span>
                                             <?endif?>
                                         </h3>
-                                        <p><?=$feed->text?></p>
+                                        <p>
+                                            <?=$feed->text?> 
+                                            <?=($feed->origin == 'tw') ? ' via '.'<a style="color:#567aa7" href="'.$feed->profilelink.'/status/'.$feed->socialid.'">Twitter</a>': null?>
+                                        </p>
                                     </div> 
                                     <div class="feedback-meta">
                                         <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>

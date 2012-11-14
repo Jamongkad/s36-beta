@@ -53,8 +53,8 @@ class ProfileImage {
             }
         } 
         
-        $this->_save_pic($file_name, $this->dir48, 48, 48);
-        $this->_save_pic($file_name, $this->dir150, 150, 150);
+        $this->_save_pic($file_name, $this->dir48, $this->targ_w_small, $this->targ_h_large);
+        $this->_save_pic($file_name, $this->dir150, $this->targ_w_large, $this->targ_h_large);
         @unlink($file_name);
         return $this->date."-cropped.jpg";
     }

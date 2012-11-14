@@ -37,8 +37,7 @@ class ContactDetails extends FeedbackDataTypes {
         //if no cropped photo and feedback rating is above average
         if ($avatar == '0' and $rating_check) {
 
-            $orig_image_dir = $this->post_data->get('orig_image_dir');
-            
+            $orig_image_dir = $this->post_data->get('orig_image_dir');            
             //if original image directory does not contain blank-avatar name...assume a photo will be auto cropped
             if(strpos($orig_image_dir, 'blank-avatar') === false) {
                 $avatar = $this->profile_img->auto_resize($orig_image_dir, $this->post_data->get('login_type'));     

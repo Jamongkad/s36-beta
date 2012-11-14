@@ -37,11 +37,11 @@ return array(
         $auth->login($username,$password, Array('company' => $company_name)); 
         if($auth->check()) {
             $token  = $auth->user()->encryptstring;
-            Cookie::put('authcookie', $token,60);
+            Cookie::put('authcookie', $token, 60);
             $result = array('user' => $auth->user(),'token' =>$token);
             echo return_json(array('data'=>$result));
         } else {
-            echo return_json(array('success'=>false,'message'=>'Authentication failed'));
+            echo return_json(array('success'=>false,'message'=>'Authentication failed', 'data' => $input));
         } 
 	}),
 

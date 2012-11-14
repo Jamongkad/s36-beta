@@ -63,7 +63,6 @@ return array (
         } else {
             return Redirect::to('settings/company?error_msg="'.$company_settings->get_errors().'"');
         } 
-
     },
 
     'GET /settings/upgrade' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
@@ -309,8 +308,6 @@ return array (
 			}
     }),    
     
-    
-
     'GET /settings/cancel_account' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() {
         return View::of_layout()->partial('contents', 'settings/settings_index_view');
     }),

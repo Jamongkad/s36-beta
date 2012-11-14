@@ -1,12 +1,16 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, S36Auth, Input, Exception, Helpers, DB, StdClass;
+use Feedback\Repositories\DBFeedback, ZebraPagination\ZebraPagination, Helpers, DB;
+use Feedback\Repositories\TWFeedback, Feedback\Repositories\Stub;
+use Company\Repositories\DBCompany;
+use Exception, StdClass, LimitIterator, ArrayIterator;
 use Halcyonic;
 
 //Compose this in order to receive via constructor
 class InboxService {
 
     public $ignore_cache = False; 
+    public $selectable_pages = 4;
 
     private $limit = 10;
     private $filters = Array();
@@ -38,9 +42,6 @@ class InboxService {
         $this->dbfeedback = new DBFeedback;     
         $this->pagination = new ZebraPagination;
         $this->cache = new Halcyonic\Services\Cache;
-
-        $this->pagination->selectable_pages(4);
-        $this->page_number = $this->pagination->get_page();
     }
 
     public function set_filters(Array $filters) {
@@ -51,6 +52,9 @@ class InboxService {
     public function present_feedback() {
         if ($this->filters) {
             //pass filters to dbfeedback                  
+            $this->pagination->selectable_pages($this->selectable_pages);
+            $this->page_number = $this->pagination->get_page();
+
             $this->raw_filters['page_no'] = $this->page_number;
             
             $this->cache->key_name = "inbox:feeds";
@@ -60,21 +64,24 @@ class InboxService {
             if($this->ignore_cache or !$data_obj = $this->cache->get_cache()) { 
                 //echo "no cache";
                 //main logic
-                $this->filters['offset'] = ($this->page_number - 1) * $this->filters['limit'];
-                $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters); 
- 
+                $offset = ($this->page_number - 1) * $this->filters['limit'];
+
+                $this->filters['offset'] = $offset;
+                
+                $date_result = $this->dbfeedback->pull_feedback_grouped_dates($this->filters);                                  
+                $total_rows = $date_result->total_rows;
                 $data = Array();
                 foreach($date_result->result as $feeds) {
-                   $feeds->children = $this->dbfeedback->pull_feedback_by_group_id($feeds->feedbackids);
+                   $feeds->children = $this->dbfeedback->pull_feedback_group($feeds->feedbackids);
+                   $feeds->children_count = count($feeds->children);
                    $data[] = $feeds;
-                }
-                            
-                $data_obj = new StdClass;
-                $this->pagination->records($date_result->total_rows);
+                } 
+
+                $this->pagination->records($total_rows);
                 $this->pagination->records_per_page($this->filters['limit']);
 
-                $data_obj->result = $data;
-                $data_obj->num_rows = $date_result->total_rows;
+                $data_obj = new StdClass;
+                $data_obj->grouped_feeds = $data;
                 $data_obj->pagination = $this->pagination->render();
 
                 if(!$this->ignore_cache) {

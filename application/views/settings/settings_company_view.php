@@ -45,17 +45,17 @@
             </div>
             <br />
             <div class="grids">
-                <div class="g2of5"><strong class="facebook-icon">Facebook URL : </strong></div>
-                <div class="g3of5"><input type="text" name="fb_link" class="regular-text" value="<?=$company->fb_link?>"/></div>
+                <div class="g2of5"><strong class="facebook-icon">Facebook: </strong></div>
+                <div class="g3of5"><input type="text" name="facebook_username" class="regular-text" value="<?=$company->facebook_username?>"/></div>
             </div>
             <br />
             <div class="grids">
-                <div class="g2of5"><strong class="twitter-icon">Twitter URL : </strong></div>
-                <div class="g3of5"><input type="text" name="twit_link" class="regular-text" value="<?=$company->twit_link?>"/></div>
+                <div class="g2of5"><strong class="twitter-icon">Twitter: </strong></div>
+                <div class="g3of5"><input type="text" name="twitter_username" class="regular-text" value="<?=$company->twitter_username?>"/></div>
             </div>
             <br />
             <div class="grids">
-                <div class="g2of5"><strong class="website-icon">Website : </strong></div>
+                <div class="g2of5"><strong class="website-icon">Website: </strong></div>
                 <div class="g3of5"><input type="text" name="website_link" class="regular-text" value="<?=$company->website_link?>"/> 
                 </div>
             </div> 

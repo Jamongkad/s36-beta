@@ -7,7 +7,8 @@
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.24/jquery.min.js"></script>
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
@@ -43,12 +44,12 @@
 		});
 		
 		$('.feedback').hover(function(){
-			$(this).find('.feedbackSocialTwitter').fadeIn();
+		    $(this).find('.feedbackSocialTwitter').fadeIn();
 			$(this).find('.feedbackSocialFacebook').fadeIn();
-			},function(){
+		},function(){
 			$(this).find('.feedbackSocialTwitter').fadeOut();
 			$(this).find('.feedbackSocialFacebook').fadeOut();
-			});
+		});
 
 		// New scripts for the Logo Upload Oct 4 2012
 		make_cover_undraggable(true);
@@ -97,11 +98,8 @@
 					var imgW = $(this).width();
 					var parW = $(this).parent().width();  
 					var ipH = imgH-parH;
-					var ipW = imgW-parW-offsetX;
-					
-					
-					$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});
-				
+					var ipW = imgW-parW-offsetX;			
+					$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
 				});
 			});
 		}else{
@@ -116,17 +114,16 @@
 		ajax_file_upload();
 	}
 	function upload_to_server(data){
-	/*save data to database*/
-      $.ajax({
+		/*save data to database*/
+        $.ajax({
             url: "savecoverphoto",
             type: "POST",
             data: data,
             success: function(q) {
                 console.log(q);
           }
-      });
-    /**/
-		
+        });
+	
 		$('#saveCoverButton').html('Cover Saved');
 		var timeout;
 		if(timeout) {
@@ -191,10 +188,10 @@
 	}
 	
 	function fetch_new_image(src){
-		$('#changeCoverButton #changeButtonText').html('Crunching Image...');
+	    $('#changeCoverButton #changeButtonText').html('Crunching Image...');
 		$('<img />')
 			.attr('src', src)
-			.load(function(){
+			.load(function() {
 				$('#changeCoverButton').fadeOut('fast',function(){
 					$(this).find('#changeButtonText').html('Change Cover');
 					$('#dragPhoto').fadeIn('fast');

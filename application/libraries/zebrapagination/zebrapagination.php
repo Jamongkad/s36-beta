@@ -294,7 +294,6 @@ class ZebraPagination
         $this->records_per_page = (int)$records_per_page;
 
     }
-
     /**
      *  Generates the output.
      *
@@ -315,7 +314,6 @@ class ZebraPagination
      */
     function render($return_output = false)
     {
-
         // get some properties of the class
         $this->get_page();
 
@@ -327,8 +325,7 @@ class ZebraPagination
 
         // if the number of total pages available is greater than the number of selectable pages
         // it means we can show the "previous page" link
-        if ($this->_total_pages > $this->selectable_pages) {
-
+        if ($this->_total_pages > $this->selectable_pages) {   
             $output .= '<a href="' .
 
                 // the href is different if we're on the first page
@@ -616,7 +613,7 @@ class ZebraPagination
 
             );
            
-            //TODO FUCK I hate this...remove subdomain
+            //TODO FUCK I hate this...removing subdomain 
             $url = preg_replace('/(subdomain=[a-zA-Z-0-9]+&)/', false, $_SERVER['QUERY_STRING']);
             // if the current page is already set in GET
             if (isset($_GET[$this->variable_name])) {
@@ -634,7 +631,6 @@ class ZebraPagination
 
             // if the current page is not already set in GET
             } else {
-
                 // set the current page to whatever it was set to
                 $query_string = $url/*$_SERVER['QUERY_STRING']*/ .
 

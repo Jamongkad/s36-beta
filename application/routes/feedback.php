@@ -76,45 +76,6 @@ return array(
         
         $emailservice = new Email\Services\EmailService($request_data);
         return $emailservice->send_email();
-        /*
-        $rules = Array(
-            'first_name' => 'required'
-          , 'last_name' => 'required'
-          , 'email' => 'required|email'
-          , 'message' => 'required'
-        );
-
-        $validator = Validator::make($data, $rules);
-        if(! $validator->valid() ) {
-            return View::of_layout()->partial('contents', 'feedback/requestfeedback_view', Array(
-                'sites' => DB::Table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
-              , 'submission_widgets' => $dbwidget->fetch_widgets_by_company() 
-              , 'errors' => $validator->errors
-              , 'input' => $data
-            ));
-        } else {      
-         
-            $metric = new DBMetric;
-            $metric->company_id = $auth->user()->companyid;
-            $metric->increment_request();  
-        
-            $request_data = new Email\Entities\RequestFeedbackData;
-            $request_data->sendto = (object) Array(
-                'first_name' => $data['first_name']
-              , 'last_name' => $data['last_name']
-              , 'email' => $data['email']
-            );
-            $request_data->message = $data['message'];
-            $request_data->from = S36Auth::user(); 
-            $request_data->sites = $data['site_id'];
-            $request_data->widgetkey = $data['widgetkey'];
-            
-            $emailservice = new Email\Services\EmailService($request_data);
-            $emailservice->send_email();
-            return View::of_layout()->partial('contents', 'feedback/requestfeedback_thankyou_view',
-                                              array("linkback" => "requestfeedback"));  
-        }
-        */
     }),
 
     'GET /feedback/addfeedback' => Array('before' => 's36_auth', 'do' => function() {

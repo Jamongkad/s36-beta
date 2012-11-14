@@ -1,7 +1,6 @@
 <?php namespace Feedback\Services;
 
 use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackDetails;
-use Feedback\Entities\ContactDetailsData, Feedback\Entities\FeedbackDetailsData;
 use Feedback\Services\FeedbackService;
 use Halcyonic\Services\HalcyonicService; 
 use Feedback\Repositories\DBFeedback;
@@ -24,6 +23,7 @@ class SubmissionService {
     }
 
     public function perform() {        
+
         $contact_data  = $this->contact_details->generate_data();
         $feedback_data = $this->feedback_details->generate_data();
         $feedback_data['contactId'] = $contact_data['contact_id'];
@@ -35,8 +35,10 @@ class SubmissionService {
         $feedbackservice->save_feedback($post);
 
         $submission_data = new NewFeedbackSubmissionData; 
+
         $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->post_data->get('company_id'));
+
         $submission_data->set_feedback($feedback)
                         ->set_sendtoaddresses($account_users);
 

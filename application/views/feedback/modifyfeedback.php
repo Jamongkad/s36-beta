@@ -187,11 +187,16 @@ $(function() {
         <div class="g1of3">
             <div class="grids">
                 <div class="g1of5" style="margin-top:-4px">
-                     <?if($feedback->avatar):?> 
-                         <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar)?>
-                     <?else:?>
-                         <?=HTML::image('img/48x48-blank-avatar.jpg')?>
-                     <?endif?>
+                    <?if($feedback->origin == 's36'):?>
+                        <?if($feedback->avatar):?> 
+                            <?=HTML::image('uploaded_cropped/48x48/'.$feedback->avatar, false, array('class' => 'small-avatar'))?>
+                        <?else:?>
+                            <?=HTML::image('img/48x48-blank-avatar.jpg')?>
+                        <?endif?>
+                    <?endif?>
+                    <?if($feedback->origin == 'tw'):?>
+                        <img src="<?=$feedback->avatar?>" />
+                    <?endif?>
                 </div>
                 <div class="g4of5">
                     <table cellpadding="2" class="feedback-data-table">
@@ -199,7 +204,10 @@ $(function() {
                         <tr><td class="title">Name: </td><td><?=$feedback->firstname?> <?=$feedback->lastname?></td></tr>
                         <tr><td class="title">Email:</td><td><?=$feedback->email?></td></tr>
                         <tr><td class="title">City:</td><td><?=$feedback->city?></td></tr>
-                        <tr><td class="title">Country:</td><td><?=$feedback->countryname?></td></tr>
+                        <tr>
+                            <td class="title">Country:</td>
+                            <td><?=($feedback->countryname != 'Nil') ? $feedback->countryname : null?></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -221,7 +229,7 @@ $(function() {
                  <tr>
                      <td class="title">Image:</td>
                      <td><?=($feedback->displayimg) ? "Image displayed" : "Image not displayed"?></td>
-                     <?$null_avatar = ($feedback->avatar == false) ? Array('disabled' => 'disabled') : Array();?>
+                     <?$null_avatar = ($feedback->avatar == false || $feedback->origin == 'tw') ? Array('disabled' => 'disabled') : Array();?>
                      <td align="center"><?=Form::checkbox(
                                                'displayImg'
                                              , $feedback->displayimg

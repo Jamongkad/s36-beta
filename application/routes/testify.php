@@ -126,11 +126,11 @@ return array(
         $tf->test("Inbox Testing", function($tf)  {
             
             $filters = array(
-                  'limit'=> 3
-                , 'site_id'=> false 
-                , 'filter'=> 'published' //(new arrivals) all (show only) featured published
-                , 'choice'=> 'all' //positive negative neutral profanity flagged mostcontent
-                , 'date'  => false //date_new date_old
+                  'limit'   => 3
+                , 'site_id' => false 
+                , 'filter' => 'all' //(new arrivals) all (show only) featured published
+                , 'choice' => false //positive negative neutral profanity flagged mostcontent
+                , 'date'   => false //date_new date_old
                 , 'rating' => false //5 4 3 2 1
                 , 'category' => false 
                 , 'priority' => false //low medium high
@@ -143,6 +143,51 @@ return array(
             $feedback = $tf->data->inbox_service->present_feedback();
             $tf->dump($feedback);
         });
+        $tf->run();
+    },
+
+    'GET /testify/drivers' => function() { 
+        $tf = new Testify("Inbox Drivers Test");
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->feedback  = new Feedback\Repositories\DBFeedback; 
+            $tf->data->twitter   = new Feedback\Repositories\TWFeedback; 
+            $tf->data->stub      = new Feedback\Repositories\Stub;
+            $tf->data->redis     = new redisent\Redis;
+            $tf->data->dbcontact = new Contact\Repositories\DBContact;        
+        });
+
+        $tf->test("Feedback Inbox", function($tf)  {
+
+            $social_services = Array(
+                'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
+            );
+            $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            $tf->dump($tf->data->social->save_social_feeds());
+        });
+
+        $tf->test("Twitter Feed Rate Status", function($tf)  {
+            $rate_limit = $tf->data->twitter->get_rate_limit();
+            $tf->dump($rate_limit);
+        });
+
+        $tf->run();
+    },
+
+    'GET /testify/hosted_feeds' => function() {
+        $tf = new Testify("Hosted Feeds Test");
+        $tf->beforeEach(function($tf) {
+            $mycompany = Config::get('application.subdomain');
+            $razer = 'razer';
+            $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
+        });
+
+        $tf->test('Televised Feedback', function($tf) { 
+            $data = $tf->data->hosted->collection_data_alt();
+            //Helpers::dump($data);
+            $tf->assert($tf->data->hosted->collection_data_alt());
+        });
+        
         $tf->run();
     }
 );
