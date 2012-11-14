@@ -172,5 +172,23 @@ return array(
         });
 
         $tf->run();
+    },
+
+    'GET /testify/hosted_feeds' => function() {
+        $tf = new Testify("Hosted Feeds Test");
+        $tf->beforeEach(function($tf) {
+            $mycompany = Config::get('application.subdomain');
+            $razer = 'razer';
+            $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
+        });
+
+        $tf->test('Televised Feedback', function($tf) {
+            $tf->data->hosted->debug = True;
+            $data = $tf->data->hosted->collection_data_alt();
+            //Helpers::dump($data);
+            //$tf->dump($tf->data->hosted->collection_data_alt());
+        });
+        
+        $tf->run();
     }
 );
