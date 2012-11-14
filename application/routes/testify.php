@@ -182,11 +182,10 @@ return array(
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
         });
 
-        $tf->test('Televised Feedback', function($tf) {
-            $tf->data->hosted->debug = True;
+        $tf->test('Televised Feedback', function($tf) { 
             $data = $tf->data->hosted->collection_data_alt();
-            Helpers::dump($data);
-            //$tf->dump($tf->data->hosted->collection_data_alt());
+            //Helpers::dump($data);
+            $tf->assert($tf->data->hosted->collection_data_alt());
         });
         
         $tf->run();

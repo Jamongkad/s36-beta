@@ -28,7 +28,7 @@ class HostedService {
     }
 
     public function fetch_hosted_feedback() {
-        $this->collection = $this->collection_data(); 
+        $this->collection = $this->collection_data_alt();//$this->collection_data(); 
     }
 
     public function view_fragment() { 

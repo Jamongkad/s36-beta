@@ -26,6 +26,7 @@ return array(
     'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name); 
+
         $hosted = new Feedback\Services\HostedService($company_name);
         $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
