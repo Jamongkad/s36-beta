@@ -61,9 +61,8 @@ class HostedService {
                 $obj->sort_id = 'published_'.$feed->id;          
                 $obj->feed_data = $feed;
             }
-            $collection[$feed->head_date_format][] = $obj;        
+            $collection[strtotime($feed->head_date_format)][] = $obj;        
         }  
-
         //Helpers::dump($collection);
         $repack = Array();
         foreach($collection as $date_key => $children) {
@@ -83,8 +82,7 @@ class HostedService {
             }
             $repack[$date_key]   = $children_collection;
             $children_collection = Null;
-        }
-        
+        } 
         //clear memory
         $collection = Null; 
         $feeds = Null;
