@@ -32,7 +32,7 @@
                                 <div class="form-design" id="<?=$theme->theme_name?>">
                                     <img src="/img/display-thumb.png ">
                                     <br>
-                                    <span><?=$theme->theme_name?></span>
+                                    <span><?=ucfirst($theme->theme_name)?></span>
                                 </div>
                                 <?php endforeach; ?>
                             </div>

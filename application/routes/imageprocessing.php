@@ -33,9 +33,6 @@ function upload($file=null,$targetpath=null,$options=null){
                                 'quality'=>100
                               );
 
-        $maxsize  = isset($options['maxsize'])    ? $options['maxsize']     : 2000000;
-
-        
         if(!empty($_FILES[$file]['error']))
         {
           switch($_FILES[$file]['error'])
@@ -74,8 +71,6 @@ function upload($file=null,$targetpath=null,$options=null){
             ($_FILES[$file]['type']     != "image/x-png")&& 
             ($_FILES[$file]['type']     != "image/png")){
             $error = 'Please Upload Image Files Only';
-        }elseif($_FILES[$file]['size'] > $maxsize){
-          $error = "Please Upload Images with smaller file size";
         }else{
               $imagine = new \Imagine\Gd\Imagine();
               $filename     = date("Ydmhis").$_FILES[$file]['name'];
