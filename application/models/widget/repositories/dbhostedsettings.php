@@ -24,28 +24,31 @@ class DBHostedSettings extends S36DataObject {
     public function update() {
         $sql = "UPDATE HostedSettings 
                     SET 
-                        theme_type = :theme_type
+                        theme_name = :theme_name
                       , header_text = :header_text 
                       , submit_form_text = :submit_form_text 
                       , submit_form_question = :submit_form_question
+                      , background_image = :background_image
                 WHERE 1=1 
                     AND companyId = :company_id";
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
-        $sth->bindParam(':theme_type', $this->hosted_settings['theme_type'], PDO::PARAM_STR);
+        $sth->bindParam(':theme_name', $this->hosted_settings['theme_name'], PDO::PARAM_STR);
         $sth->bindParam(':header_text', $this->hosted_settings['header_text'], PDO::PARAM_STR);       
         $sth->bindParam(':submit_form_text', $this->hosted_settings['submit_form_text'], PDO::PARAM_STR);       
-        $sth->bindParam(':submit_form_question', $this->hosted_settings['submit_form_question'], PDO::PARAM_STR);       
+        $sth->bindParam(':submit_form_question', $this->hosted_settings['submit_form_question'], PDO::PARAM_STR);
+        $sth->bindParam(':background_image', $this->hosted_settings['background_image'], PDO::PARAM_STR);       
         $sth->execute();
     }
 
     public function record_exists() {
         $sql = "SELECT 
                     companyId
-                  , theme_type
+                  , theme_name
                   , header_text
                   , submit_form_text
+                  , background_image
                   , TRIM(submit_form_question) AS submit_form_question
                 FROM 
                     HostedSettings 
@@ -55,7 +58,7 @@ class DBHostedSettings extends S36DataObject {
         $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
         $sth->execute();
 
-        $result = $sth->fetch(PDO::FETCH_OBJ); 
+        $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
     

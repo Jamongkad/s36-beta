@@ -2,6 +2,7 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $hosted_settings = new Widget\Repositories\DBHostedSettings;
+$themes = new Themes\Repositories\DBThemes;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
@@ -23,17 +24,26 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user) {
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback, $themes) {
         //consider placing this into a View Object
-        $company_info = $company->get_company_info($company_name); 
+        $company_info = $company->get_company_info($company_name);
 
         $hosted = new Feedback\Services\HostedService($company_name);
-        $hosted->fetch_hosted_feedback(); 
-        $hosted->build_data();         
+        
+        //Feeds
+        $feeds = $hosted->fetch_hosted_feedback();
+        //$hosted->build_data(); <---- I will take care of this - Mathew
 
         $widget = $dbw->fetch_canonical_widget($company_name);
 
+        //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+        $hosted_settings_info = $hosted_settings->hosted_settings();
+
+        //fullpage theme
+        $theme = $themes->get_theme_by_name($hosted_settings_info->theme_name);
+        $theme->theme_css = (!empty($theme->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$theme->theme_css.'" />' : '';
+        $theme->theme_js  = (!empty($theme->theme_js))  ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$theme->theme_js.'"></script>'    : '';
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
@@ -43,92 +53,23 @@ return array(
              'company_name' => $company_info->company_name
            , 'company_id' => $company_info->companyid
         ));
-
         $meta->calculate_metrics();
-
+        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company' => $company_info
-                                                  , 'user' => $user
-                                                  , 'feeds' => $hosted->view_fragment()
-                                                  , 'widget' => $widget
-                                                  , 'feed_count' => $meta->perform()
-                                                  , 'company_header' => $header_view
-                                                  , 'hosted' => $hosted_settings->hosted_settings()));        
+                                                    'company'         => $company_info
+                                                  , 'user'            => $user
+                                                  , 'feeds'           => $feeds
+                                                  , 'widget'          => $widget
+                                                  , 'feed_count'      => $meta->perform()
+                                                  , 'company_header'  => $header_view
+                                                  , 'theme'           => $theme
+                                                  , 'hosted'          => $hosted_settings_info));        
     },
 
     'POST /savecoverphoto' => function() use($company){
         $data = Input::all();
         $company->update_coverphoto($data);
         return json_encode($data);
-    },
-
-    'POST /ajaxfileupload' => function(){
-        $error = "";
-        $msg = "";
-        $filedir = "";
-        $width = "";
-        $file = 'clientLogoImg';
-        if(!empty($_FILES[$file]['error']))
-        {
-          switch($_FILES[$file]['error'])
-          {
-
-            case '1':
-              $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
-              break;
-            case '2':
-              $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
-              break;
-            case '3':
-              $error = 'The uploaded file was only partially uploaded';
-              break;
-            case '4':
-              $error = 'No file was uploaded.';
-              break;
-            case '6':
-              $error = 'Missing a temporary folder';
-              break;
-            case '7':
-              $error = 'Failed to write file to disk';
-              break;
-            case '8':
-              $error = 'File upload stopped by extension';
-              break;
-            case '999':
-            default:
-              $error = 'No error code avaiable';
-          }
-        }elseif(empty($_FILES[$file]['tmp_name']) || $_FILES[$file]['tmp_name'] == 'none'){
-          $error = 'No file was uploaded..';
-        }elseif(($_FILES[$file]['type'] != "image/jpeg") && 
-            ($_FILES[$file]['type'] != "image/gif")  && 
-            ($_FILES[$file]['type'] != "image/pjpeg")&& 
-            ($_FILES[$file]['type'] != "image/x-png")&& 
-            ($_FILES[$file]['type'] != "image/png")){
-            $error = 'Please Upload Image Files Only';
-        }elseif($_FILES[$file]['size'] > 2000000){
-          $error = "Please Upload Images Not Greater than 2MB";
-        }else{
-            //$msg .= " File Size: " . @filesize($_FILES['your_photo']['tmp_name']);
-            //for security reason, we force to remove all uploaded file
-              $filename = date("Ydmhis").$_FILES[$file]['name'];
-              $filedir = "uploaded_images/coverphoto/".$filename;
-              $maxwidth = 800;
-              $maxheight = 140;
-              $move = move_uploaded_file($_FILES[$file]['tmp_name'],"uploaded_images/coverphoto/".$filename);
-              if($move){
-                 //start image resizing..
-                 $resizeObj = new \resize\Resize($filedir);
-                 $resizeObj -> resizeImage($maxwidth, $maxheight, 'landscape');
-                 $resizeObj -> saveImage($filedir, 100);
-              }
-            
-        }
-        echo "{";
-        echo        "error: '" . $error . "',\n";
-        echo        "msg: '" . $filedir  . "',\n";
-        echo        "wid: '" . $width  . "'\n";
-        echo "}";
     },
 
 
