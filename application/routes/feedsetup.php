@@ -4,7 +4,7 @@ $dbw = new Widget\Repositories\DBWidget;
 $hosted = new Widget\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes;
 $themes = new Themes\Repositories\DBThemes; 
-
+$company_name = Config::get('application.subdomain');
 $tab_themes  = \Helpers::$tab_themes;
 
 return array(
@@ -139,7 +139,10 @@ return array(
         ));
     },
 
-    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
+    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted,$company_name) { 
+      $company = new \Company\Repositories\DBCompany;
+      $company_info = $company->get_company_info($company_name);
+      $hosted->set_hosted_settings(Array('companyId'  =>  $company_info->companyid));
       $hosted_settings = $hosted->hosted_settings();
       $input = Input::get();
       $input['background_image'] = $hosted_settings->background_image;

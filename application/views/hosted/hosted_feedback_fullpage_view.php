@@ -1,7 +1,5 @@
 <?php
-
 $admin = (!empty($user))? 1 : 0;
-
 /*
 
 / pull theme information for customed css and js
@@ -148,7 +146,7 @@ $(document).ready(function(){
 
                     <div class="send-feedback">
 
-                        <input type="button" class="funky-button" value="Send in Feedback" />
+                        <a href="<?=$company->company_name?>/submit"><input type="button" class="funky-button" value="Send in Feedback" /></a>
 
                     </div>
 
@@ -163,150 +161,100 @@ $(document).ready(function(){
         <!-- end of new header October 4 2012 --> 
        <div id="pageTitle">
             <h1><?=$hosted->header_text?></h1>
-            <div class="grids">
-
-                <div class="g4of5">
-
-                    <h1><?=ucfirst($company->name)?>'s Reviews and Testimonials</h1> 
-
-                    <title>
-
-                        <?=ucfirst($company->name)?>'s Reviews and Testimonials
-
-                    </title>
-
-                </div>
-
-            </div>
-
             <div class="meta">
-
                 <?=$feed_count->published_feed_count?> testimonials in total 
-
                 <?if($feed_count->todays_count > 0):?>
-
                     - <?=$feed_count->todays_count?> were just sent in today.
-
                 <?endif?>
-
             </div>
-
         </div>
         <!-- feedbacks are seperated by date which are held inside feedback-date-block container -->
-
+        <?php 
+        /*
+        /   START FEEDBACK LOOP
+        */
+        foreach ($feeds as $feed_group=>$feed_list) : 
+        ?>
         <div class="feedback-date-block">
-
-            <!-- the big circle at the start of each feedback blocks. sorted by date -->
-
             <div class="feedback-date">
-
-                <h2>Oct 30</h2>
-
-                <span>Today</span>
-
+                <h2><?=date('M d',$feed_group)?></h2>
+                <span><?=ucfirst(Helpers::relative_time($feed_group))?></span>
             </div>
-
-            <!-- end of big circle -->
-
-            <!-- the fullpage spine -->
-
             <div class="feedback-spine"></div>
-
-            <!-- end of the spine -->
-
-            <!-- space between the circled date and the feedbacks -->
-
             <div class="spine-spacer"></div>
-
-            <!-- end of space -->
-
-            <!-- the feedbacks! -->
-
             <div class="the-feedbacks">
+        <?php /*start feedback info*/ 
+            foreach ($feed_list[0] as $feed) :
+                $twfeedback = '';
+                $class      = '';
+                switch ($feed->feed_data->origin) {
+                    case 's36':
+                        if($feed->feed_data->isfeatured==1){
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? '/uploaded_cropped/150x150/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="large-avatar"/>';
+                            $class  = 'featured';
+                        }
+                        else{
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? '/uploaded_cropped/48x48/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="small-avatar"/>';   
+                            $class  = 'normal';
+                        }
+                        break;
+                    case 'tw':
+                        $twfeedback = 'twt-feedback';
+                        if($feed->feed_data->isfeatured==1){
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? $feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="large-avatar"/>';
+                            $class = 'twt-featured';
+                        }else{
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? $feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="small-avatar"/>';
+                        }
+                        break;
+                    default:
+                        break;
+                }
+        ?>
+        <div class="feedback <?=$twfeedback?> <?=$class?>">
+            <div class="feedback-branch"></div>
+            <div class="twitter-marker"></div>
+            <div class="feedbackContents">
+                <div class="feedbackBlock">
 
-                <?php 
-
-                    $ctr = 0;
-
-                foreach($tweets as $tweet): ?>
-
-                <?php 
-
-                    $ctr++;
-
-                if(($ctr % 7)== 0):
-
-                    $class = 'twt-featured';
-
-                else:
-
-                    $class = '';
-
-                endif;
-
-                ?>
-
-                
-
-                <div class="feedback twt-feedback <?php echo $class?>">
-
-                    <div class="feedback-branch"></div>
-
-                    <div class="twitter-marker"></div>
-
-                    <div class="feedbackContents">
-
-                        <div class="feedbackBlock">
-
-                            <div class="feedbackAuthor">
-
-                                <div class="feedbackAuthorAvatar"><img src="<?php echo $tweet->profile_image_url?>" width="48" height="48" /></div>
-
-                            </div>
-
-                            <div class="feedbackText">
-
-                                <div class="feedbackTextTail"></div>
-
-                                <div class="feedbackTextBubble">
-
-                                    <div class="feedbackAuthorDetails">
-
-                                        <h2><?php echo $tweet->from_user_name?> <a href="#">@<?php echo $tweet->from_user?></a></h2>
-
-                                    </div>
-
-                                    <div class="feedbackTextContent"><p><?php echo $tweet->text?></p></div>
-
-                                    <div class="feedbackDate"><?php echo $tweet->created_at?></div>
-
-                                </div>
-
-                            </div>
-
+                    <div class="feedbackAuthor">
+                        <div class="feedbackAuthorAvatar">
+                            <?=$avatar?>
                         </div>
-
+                       <div class="feedbackAuthorDetails">
+                            <h2><?=$feed->feed_data->firstname.' '.$feed->feed_data->lastname?></h2>
+                            <!--<h4>Marketing Manager, <span>Davis LLP</span></h4>-->
+                            <p><span style="float:left"><?=$feed->feed_data->countryname?></span><span class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></span></p>
+                        </div>
                     </div>
-
+                    <div class="feedbackText">
+                        <div class="feedbackTextTail"></div>
+                        <div class="feedbackTextBubble">
+                           <?=$feed->feed_data->text?>
+                        </div>
+                    </div>
+                    <div class="feedbackDate"><?=date('W F Y',$feed->feed_data->unix_timestamp)?></div>
                 </div>
-
-                
-
-                <?php endforeach; ?>
-
+                <div class="feedbackBlock">
+                    <div class="feedbackMeta">
+                        <!-- <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div>  -->
+                        <div class="feedbackSocial">
+                            <div class="feedbackSocialTwitter"><a href="http://webmumu.com" class="twitter-share-button">Tweet</a></div>
+                            <div class="feedbackSocialFacebook"><fb:like href="http://dev.gearfish.com/hosted/single/230" send="false" layout="button_count" width="100" show_faces="false" style="float:left"></fb:like></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- end of feedbacks -->
-
-            <!-- start of another spacer -->
-
-            <div class="spine-spacer"></div>
-
-            <!-- end of spacer -->
-
-            
-
         </div>
+        <?php endforeach; //end feedback box?>
+        <div class="spine-spacer"></div>
+        </div>
+        <?php endforeach; //end feedback list?>
+
 
         <?php /* 
 

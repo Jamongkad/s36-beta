@@ -29,6 +29,7 @@ class HostedService {
 
     public function fetch_hosted_feedback() {
         $this->collection = $this->collection_data_alt();//$this->collection_data(); 
+        return $this->collection_data_alt();
     }
 
     public function view_fragment() { 
@@ -61,7 +62,7 @@ class HostedService {
                 $obj->sort_id = 'published_'.$feed->id;          
                 $obj->feed_data = $feed;
             }
-            $collection[$feed->head_date_format][] = $obj;        
+            $collection[strtotime($feed->head_date_format)][] = $obj;        
         }  
 
         //Helpers::dump($collection);

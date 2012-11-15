@@ -44,7 +44,7 @@ a:hover{color:#54a1c0;}
 .normal .feedbackAuthor h2{color:#1982ad;}
 .normal .feedbackAuthor h4{color:#2c2a2a;}
 .normal .feedbackText p{color:#333;}
-.normal .feedbackTextTail{background:url(../images/matte/normal-bubble-tail.png) no-repeat;}
+.normal .feedbackTextTail{background:url(../images/normal-bubble-tail.png) no-repeat;}
 .normal .feedbackTextBubble{background:#FFF;color:#333;}
 .normal .feedbackMeta{color:#CCC;}
 .normal .feedbackDate{color:#999;}
@@ -53,7 +53,7 @@ a:hover{color:#54a1c0;}
 .twt-feedback .feedbackAuthor h2{color:#1982ad;}
 .twt-feedback .feedbackAuthor h4{color:#2c2a2a;}
 .twt-feedback .feedbackText p{color:#333;}
-.twt-feedback .feedbackTextTail{background:url(../images/matte/normal-bubble-tail.png) no-repeat;}
+.twt-feedback .feedbackTextTail{background:url(../images/normal-bubble-tail.png) no-repeat;}
 .twt-feedback .feedbackTextBubble{background:#FFF;color:#333;}
 .twt-feedback .feedbackMeta{color:#CCC;}
 .twt-feedback .feedbackDate{color:#999;}

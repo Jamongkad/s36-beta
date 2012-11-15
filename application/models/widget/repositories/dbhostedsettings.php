@@ -55,10 +55,10 @@ class DBHostedSettings extends S36DataObject {
                 WHERE 1=1 
                     AND companyId = :company_id";
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', S36Auth::user()->companyid, PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
         $sth->execute();
 
-        $result = $sth->fetch(PDO::FETCH_OBJ); 
+        $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
     }
     

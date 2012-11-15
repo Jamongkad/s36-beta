@@ -24,12 +24,14 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $twitter, $feedback, $themes) {
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback, $themes) {
         //consider placing this into a View Object
-        $company_info = $company->get_company_info($company_name); 
-        $tweets = $twitter->findTwitts('codiqa');
+        $company_info = $company->get_company_info($company_name);
+
         $hosted = new Feedback\Services\HostedService($company_name);
-        $hosted->fetch_hosted_feedback(); 
+        
+        //Feeds
+        $feeds = $hosted->fetch_hosted_feedback();
         //$hosted->build_data(); <---- I will take care of this - Mathew
 
         $widget = $dbw->fetch_canonical_widget($company_name);
@@ -43,7 +45,6 @@ return array(
         $theme->theme_css = (!empty($theme->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$theme->theme_css.'" />' : '';
         $theme->theme_js  = (!empty($theme->theme_js))  ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$theme->theme_js.'"></script>'    : '';
 
-
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
@@ -53,30 +54,16 @@ return array(
            , 'company_id' => $company_info->companyid
         ));
         $meta->calculate_metrics();
-        $inbox = new Feedback\Services\InboxService;
-        $filters = array(
-              'limit'=> 100
-            , 'site_id'=> false
-            , 'filter'=> 'published'
-            , 'date'=> false
-            , 'rating'=> false
-            , 'priority'=> false
-            , 'category'=> false
-            , 'status'=> false
-            , 'choice'=> 'all'
-            , 'company_id' => S36Auth::user()->companyid
-        );
         
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company' => $company_info
-                                                  , 'user'    => $user
-                                                  , 'feeds'   => $hosted->view_fragment()
-                                                  , 'tweets'  => $tweets
-                                                  , 'widget'  => $widget
+                                                    'company'         => $company_info
+                                                  , 'user'            => $user
+                                                  , 'feeds'           => $feeds
+                                                  , 'widget'          => $widget
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
-                                                  , 'theme'   => $theme
-                                                  , 'hosted'  => $hosted_settings_info));        
+                                                  , 'theme'           => $theme
+                                                  , 'hosted'          => $hosted_settings_info));        
     },
 
     'POST /savecoverphoto' => function() use($company){

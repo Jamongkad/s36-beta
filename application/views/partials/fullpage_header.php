@@ -7,15 +7,30 @@
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<!--<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.24/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>!window.jQuery && document.write('<script src="https://code.jquery.com/jquery-1.4.2.min.js"><\/script>');</script>
+-->
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript">
 		
 	$(document).ready(function(){
+
+		$('.feedback').each(function(){
+			var leftOffset = $(this).css('left');
+			
+			if(leftOffset == '400px'){
+				$(this).css('left','418px');
+				$(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+			}
+			
+		});
+
+
 		$('.the-feedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
@@ -53,6 +68,16 @@
 
 		// New scripts for the Logo Upload Oct 4 2012
 		make_cover_undraggable(true);
+		$('#changeCoverButton').hide();
+		$('#pageCover').mouseover(function(){
+			if($('#saveCoverButton').css('display')=='none'){
+				$('#changeCoverButton').show();
+			}
+		});
+		$('#pageCover').mouseout(function(){
+			$('#changeCoverButton').hide();
+		});
+
 		$('#changeCoverButton').click(function(){
 			trigger_file_upload();
 		});

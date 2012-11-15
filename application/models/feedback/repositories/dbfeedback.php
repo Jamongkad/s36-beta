@@ -553,14 +553,14 @@ class DBFeedback extends S36DataObject {
                 Country
                 ON Country.countryId = Contact.countryId  
             WHERE 1=1
-                AND Company.name = :company_name
+                AND Company.name = "robert-staging"
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC
         ';
 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
+        $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->execute();
 
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
