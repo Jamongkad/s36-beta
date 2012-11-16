@@ -3,7 +3,12 @@ angular.module('fileupload', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).fileupload();
+
+            $(element).fileupload({
+                change: function(e, data) {
+ 		            $('#changeCoverButton #changeButtonText').html('Uploading...');                       
+                }
+            });
         }
     }    
 })
