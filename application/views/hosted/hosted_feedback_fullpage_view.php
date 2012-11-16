@@ -1,15 +1,8 @@
 <?php
 $admin = (!empty($user))? 1 : 0;
-/*
-
-/ pull theme information for customed css and js
-
-*/
-
-echo $theme->theme_css;
-
-echo $theme->theme_js;
-
+/*pull theme information for customed css and js*/
+echo (isset($hosted->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$hosted->theme_css.'" />' : null;
+echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$hosted->theme_js.'"></script>' : null;
 ?>
 
 
