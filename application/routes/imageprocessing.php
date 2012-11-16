@@ -21,7 +21,7 @@ return array(
     }),
 );
 
-function upload($file=null,$targetpath=null,$options=null){
+function upload($file=null, $targetpath="uploaded_images/coverphoto/", $options=null){
 
         $error      = "";
         $msg        = "";
@@ -30,10 +30,6 @@ function upload($file=null,$targetpath=null,$options=null){
 
         if(empty($file))        { die("Please provide a file to be uploaded");}
         if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
-
-        $options['options']  = array(
-                                'quality'=>100
-                              );
 
         if(!empty($_FILES[$file]['error']))
         {
@@ -74,14 +70,14 @@ function upload($file=null,$targetpath=null,$options=null){
             ($_FILES[$file]['type']     != "image/png")){
             $error = 'Please Upload Image Files Only';
         }else{
-              $imagine = new \Imagine\Gd\Imagine();
-              $filename     = date("Ydmhis").$_FILES[$file]['name'];
-              $filedir      = $targetpath.$filename;
-              $image = $imagine->open($_FILES[$file]['tmp_name']);
-              if(isset($options['width']) && isset($options['height'])){
-                $image->resize(new Box($options['width'],$options['height']));
-              }
-              $image->save($filedir,$options['options']);
+            $imagine = new \Imagine\Gd\Imagine();
+            $filename     = date("Ydmhis").$_FILES[$file]['name'];
+            $filedir      = $targetpath.$filename;
+            $image = $imagine->open($_FILES[$file]['tmp_name']);
+            if(isset($options['width']) && isset($options['height'])){
+                $image->resize(new Box($options['width'], $options['height']));
+            }
+            $image->save($filedir, array('quality'=>100));
         }
          echo json_encode(Array(
             "error" => $error
