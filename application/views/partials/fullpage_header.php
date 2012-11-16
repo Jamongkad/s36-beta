@@ -13,6 +13,13 @@
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
+
+<!--new ajax file upload plugin -->
+<script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
+<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/jquery.fileupload.js"></script>
+<!--new ajax file upload plugin -->
+
 <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript">
 		
@@ -76,11 +83,7 @@
 		$('#pageCover').mouseout(function(){
 			$('#changeCoverButton').hide();
 		});
-
-		$('#changeCoverButton').click(function(){
-			trigger_file_upload();
-		});
-		
+	
 		$('#changeCoverButton').mousemove(function(e){
 			$('#logoUpload').css('left',e.clientX-5);
 			$('#logoUpload').css('top' ,e.clientY-5);
@@ -130,13 +133,10 @@
 		}
 	}
 
-	function trigger_file_upload(){
-		console.log('File Upload Initialize!');
-		//document.getElementById('logoUpload').click();
-	}
 	function upload_new_logo(){
 		ajax_file_upload();
 	}
+
 	function upload_to_server(data){
 		/*save data to database*/
         $.ajax({

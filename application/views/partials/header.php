@@ -11,7 +11,7 @@
         <?=HTML::script('js/jquery.tinymce.js')?>
         <?=HTML::script('js/jquery.cycle.all.min.js')?>
 
-        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" media="all "href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
 
         <?=HTML::style('css/grid.css')?> 
         <?=HTML::style('css/romanticc.css')?>

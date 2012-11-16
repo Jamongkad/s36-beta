@@ -5,10 +5,6 @@ echo (isset($hosted->theme_css)) ? '<link type="text/css" rel="stylesheet" href=
 echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$hosted->theme_js.'"></script>' : null;
 ?>
 
-
-
-
-
 <?php 
 
 /*start document load*/ 
@@ -18,34 +14,17 @@ echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/ho
 <script type="text/javascript">
 
 $(document).ready(function(){
-
-    
-
     <?php 
 
     /* Change fullpage background if set from admin */
-
-    
-
-    if(isset($hosted->background_image) && !empty($hosted->background_image)) { ?>
+    if(isset($hosted->background_image) && !empty($hosted->background_image)):?>
 
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
 
-    <?php } ?>
-
-    
-
+    <?php endif ?>
 });
 
 </script>
-
-<?php 
-
-/*end document load*/ 
-
-?>
-
-
 
 <div id="bodyWrapper">
 
@@ -60,17 +39,16 @@ $(document).ready(function(){
             <div id="changeCoverButton">
 
                 <div id="changeButtonText">            
-
                     Change Cover
-
                 </div>
-
+                <!--
                 <form action="" method="post" enctype="multipart/form-data">
 
                     <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="upload_new_logo()" />
 
                 </form>
-
+                --> 
+                <input id="logoUpload" type="file" name="files[]" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple>
             </div>
 
             

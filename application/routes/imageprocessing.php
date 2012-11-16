@@ -8,6 +8,7 @@ return array(
     }),
 
     'POST /imageprocessing/upload_coverphoto'=>array('name'=>'upload_coverphoto','do'=>function(){
+        /*
         $file       = 'clientLogoImg';
         $targetpath = "uploaded_images/coverphoto/";
         $options    = array(
@@ -15,6 +16,7 @@ return array(
             'height'     => 500
         );
         upload($file, $targetpath, $options);
+        */
     }),
 );
 
