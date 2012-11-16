@@ -21,12 +21,12 @@ return array(
     }),
 );
 
-function upload($file=null, $targetpath="uploaded_images/coverphoto/", $options=null){
+function upload($file, $targetpath="uploaded_images/coverphoto/", $options=null){
 
-        $error      = "";
-        $msg        = "";
-        $filedir    = "";
-        $width      = "";
+        $error      = Null;
+        $msg        = Null;
+        $filedir    = Null;
+        $width      = Null;
 
         if(empty($file))        { die("Please provide a file to be uploaded");}
         if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
