@@ -3,9 +3,7 @@ angular.module('fileupload', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).fileupload({
-                dataType: 'json'     
-            });
+            $(element).fileupload();
         }
     }    
 })
