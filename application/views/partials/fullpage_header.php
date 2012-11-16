@@ -6,12 +6,10 @@
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.24/jquery.min.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="https://code.jquery.com/jquery-1.4.2.min.js"><\/script>');</script>
--->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
@@ -74,6 +72,7 @@
 				$('#changeCoverButton').show();
 			}
 		});
+
 		$('#pageCover').mouseout(function(){
 			$('#changeCoverButton').hide();
 		});
@@ -94,8 +93,7 @@
 				src : src.attr('src'),
 				top : src.offset().top,
 				left: '0'
-			}
-			
+			}	
 			upload_to_server(data);
 		});
 		// end of new scripts
@@ -131,6 +129,7 @@
 			$("#theCover img").draggable({disabled: true});
 		}
 	}
+
 	function trigger_file_upload(){
 		console.log('File Upload Initialize!');
 		//document.getElementById('logoUpload').click();
@@ -180,9 +179,7 @@
 				fileElementId:'logoUpload',
 				dataType: 'json',
 				success: function (data, status)
-				{	
-					
-					
+				{				
 					if(typeof(data.error) != 'undefined')
 					{
 						
@@ -191,8 +188,7 @@
 							$('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose Files Again' );
 							console.log(data.error);
 							return false;
-						}else
-						{
+						}else {
 							fetch_new_image(data.msg);
 							change_logo(data.msg);
 						}

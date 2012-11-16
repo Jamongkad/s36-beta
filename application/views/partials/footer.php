@@ -44,7 +44,6 @@
      , '/js/jquery.tmpl.js'
      , '/js/jquery.jcrop.js'
      , '/js/jquery.ajaxfileupload.js' 
-     //, '/js/jquery.fileupload.js'
      , '/js/jquery.zclip.js' 
      , '/js/jquery.pjax.js'
      , '/js/inbox/s36LightBox.js'

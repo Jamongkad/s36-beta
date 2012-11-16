@@ -44,22 +44,26 @@ class DBHostedSettings extends S36DataObject {
 
     public function record_exists() {
         $sql = "SELECT 
-                    companyId
-                  , theme_name
-                  , header_text
-                  , submit_form_text
-                  , background_image
-                  , TRIM(submit_form_question) AS submit_form_question
+                    HostedSettings.companyId
+                  , HostedSettings.theme_name
+                  , HostedSettings.header_text
+                  , HostedSettings.submit_form_text
+                  , HostedSettings.background_image
+                  , TRIM(HostedSettings.submit_form_question) AS submit_form_question
+                  , Themes.theme_css
+                  , Themes.theme_js
                 FROM 
                     HostedSettings 
+                INNER JOIN
+                    Themes
+                    ON HostedSettings.theme_name = Themes.theme_name
                 WHERE 1=1 
                     AND companyId = :company_id";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
         $sth->execute();
 
-        $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
+        return $sth->fetch(PDO::FETCH_OBJ);
     }
     
     //this method makes more sense....retrieves hosted settings
