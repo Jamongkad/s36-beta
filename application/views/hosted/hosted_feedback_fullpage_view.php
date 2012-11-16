@@ -41,7 +41,7 @@ $(document).ready(function(){
                 <!--
                 <form action="" method="post" enctype="multipart/form-data">
 
-                    <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="upload_new_logo()" />
+                    <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="ajax_file_upload()" />
 
                 </form>
                 --> 

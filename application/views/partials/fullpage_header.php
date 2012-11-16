@@ -136,10 +136,6 @@
 		}
 	}
 
-	function upload_new_logo(){
-		ajax_file_upload();
-	}
-
 	function upload_to_server(data){
 		/*save data to database*/
         $.ajax({

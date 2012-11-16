@@ -7,7 +7,8 @@ return array(
         var_dump($imagine);
     }),
 
-    'POST /imageprocessing/upload_coverphoto'=>array('name'=>'upload_coverphoto','do'=>function(){
+    'POST /imageprocessing/upload_coverphoto'=>array('name'=>'upload_coverphoto', 'do' => function() {
+        print_r(Input::all());
         /*
         $file       = 'clientLogoImg';
         $targetpath = "uploaded_images/coverphoto/";

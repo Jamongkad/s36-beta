@@ -1,2 +1,2 @@
 //S36Module Angular JS
-angular.module('S36FullPageModule', ['Services', 'Components']);
+angular.module('S36FullPageModule', ['Components']);
