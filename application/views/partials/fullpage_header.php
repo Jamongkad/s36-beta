@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:fb="http://ogp.me/ns/fb#">
+<html ng-app="S36FullPageModule">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -12,7 +12,10 @@
 
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
+
+<!--Temporarily removing
 <script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
+-->
 
 <!--new ajax file upload plugin -->
 <script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
@@ -203,7 +206,6 @@
 		)
 	}  
 	
-	
 	function change_logo(src){
 		$('#coverPhoto').attr('src',src);
 	}
@@ -221,10 +223,7 @@
 		});
 		make_cover_undraggable(false);
 	}
-	// end of new functions
-	
-	
- 
+	// end of new functions 
  function loadSocialButtons(id,target){
 		
 		var link = 'http://www.36stories.com/stand-alone/'+id;

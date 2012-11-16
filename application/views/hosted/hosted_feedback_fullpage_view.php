@@ -29,9 +29,6 @@ $(document).ready(function(){
 <div id="bodyWrapper">
 
     <div id="bodyContent">
-
-        <!-- new header October 4 2012 -->
-
         <div id="pageCover">
 
             <?php if($admin == 1): ?>
@@ -48,7 +45,7 @@ $(document).ready(function(){
 
                 </form>
                 --> 
-                <input id="logoUpload" type="file" name="files[]" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple>
+                <input id="logoUpload" type="file" name="files[]" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload>
             </div>
 
             
