@@ -53,7 +53,7 @@ function upload($file, $options=null){
           $error = 'No error code avaiable';
       }
     } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
-      $error = 'No file was uploaded..';
+        $error = 'No file was uploaded..';
     } else {
         $imagine = new \Imagine\Gd\Imagine();
         $filename     = date("Ydmhis").'-'.$file['name'];

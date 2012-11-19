@@ -30,7 +30,6 @@ angular.module('fileupload', [])
 })
 
 //make_cover_undraggable(true);
-
 function make_cover_undraggable(opt){
     if(!opt){
         $("#theCover img").load(function(){	

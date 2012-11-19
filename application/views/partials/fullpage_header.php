@@ -88,8 +88,8 @@
 		});
 	
 		$('#changeCoverButton').mousemove(function(e){
-			$('#logoUpload').css('left',e.clientX-5);
-			$('#logoUpload').css('top' ,e.clientY-5);
+			$('#logoUpload').css('left', e.clientX - 5);
+			$('#logoUpload').css('top' , e.clientY - 5);
 			$('#logoUpload').css('cursor','pointer');
 		});
 		
@@ -135,9 +135,8 @@
 		}
 	}
     */
-
-	function upload_to_server(data){
-		/*save data to database*/
+    /*    
+	function upload_to_server(data){	
         $.ajax({
             url: "savecoverphoto",
             type: "POST",
@@ -164,6 +163,7 @@
 		$('#dragPhoto').fadeOut('fast');
 		make_cover_undraggable(true);
 	}
+    */
 	
 	function ajax_file_upload()
 	{
