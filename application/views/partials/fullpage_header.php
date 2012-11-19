@@ -75,7 +75,7 @@
 		});
 
 		// New scripts for the Logo Upload Oct 4 2012
-		make_cover_undraggable(true);
+		//make_cover_undraggable(true);
 		$('#changeCoverButton').hide();
 		$('#pageCover').mouseover(function(){
 			if($('#saveCoverButton').css('display')=='none'){
@@ -114,14 +114,13 @@
 	/* end of document ready function. below are custom functions for this form */	
 	
 	// New Functions for the Logo Upload Oct 4 2012
+    /*
 	function make_cover_undraggable(opt){
 		if(!opt){
-			$("#theCover img").load(function(){
-				
+			$("#theCover img").load(function(){	
 				var offset = $(this).parent().offset();
 				var offsetX = offset.left;
-				$(this).each(function(){
-					
+				$(this).each(function(){	
 					var imgH = $(this).height();
 					var parH = $(this).parent().height();
 					var imgW = $(this).width();
@@ -135,6 +134,7 @@
 			$("#theCover img").draggable({disabled: true});
 		}
 	}
+    */
 
 	function upload_to_server(data){
 		/*save data to database*/

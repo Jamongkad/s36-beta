@@ -19,7 +19,6 @@ function upload($file, $options=null){
     $error      = Null;
     $msg        = Null;
     $filedir    = Null;
-    $width      = Null;
 
     if(empty($file)) { die("Please provide a file to be uploaded");}
     if(empty($options['targetpath'])) { die("Please set the target path for the uploaded file");}
@@ -69,6 +68,5 @@ function upload($file, $options=null){
     echo json_encode(Array(
         "error" => $error
       , "msg"   => $filedir
-      , "wid"   => $width
     )); 
 }
