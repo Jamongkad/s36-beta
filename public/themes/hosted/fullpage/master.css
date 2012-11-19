@@ -485,3 +485,18 @@ img.large-avatar {
 	height:30px;
 	display:block;
 }
+
+.noPhotoText {
+    padding:10px;
+    position:absolute;
+    z-index:100; 
+    font-weight:bold;
+    color:#FFF;
+    top:50px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;  
+    text-shadow:#000 0px 1px;
+    left:50%;
+    margin-left:-101px;
+}

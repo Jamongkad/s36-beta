@@ -62,6 +62,10 @@ $(document).ready(function(){
 
             </div>
 
+            <div class="noPhotoText">
+                Please Upload Your Cover Photo
+            </div>
+
             <?php endif; ?>
 
             
