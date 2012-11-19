@@ -57,7 +57,7 @@ function upload($file, $options=null){
       $error = 'No file was uploaded..';
     } else {
         $imagine = new \Imagine\Gd\Imagine();
-        $filename     = date("Ydmhis").$file['name'];
+        $filename     = date("Ydmhis").'-'.$file['name'];
         $filedir      = $options['targetpath'].$filename;
         $image = $imagine->open($file['tmp_name']);
         if(isset($options['width']) && isset($options['height'])){
