@@ -5,9 +5,9 @@ angular.module('fileupload', [])
       , link: function(scope, element, attrs) {
 
             $(element).fileupload({
-                change: function(e, data) {
+                dataType: 'json'
+              , change: function(e, data) {
  		            $('#changeCoverButton #changeButtonText').html('Uploading...');                       
-                    console.log(data);
                 }
             });
 
