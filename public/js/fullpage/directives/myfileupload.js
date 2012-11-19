@@ -9,6 +9,7 @@ angular.module('fileupload', [])
  		            $('#changeCoverButton #changeButtonText').html('Uploading...');                       
                 }
             });
+
         }
     }    
 })

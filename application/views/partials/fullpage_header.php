@@ -201,11 +201,7 @@
 			}
 		)
 	}  
-	
-	function change_logo(src){
-		$('#coverPhoto').attr('src',src);
-	}
-	
+		
 	function fetch_new_image(src){
 	    $('#changeCoverButton #changeButtonText').html('Crunching Image...');
 		$('<img />')
@@ -218,6 +214,10 @@
 				});
 		});
 		make_cover_undraggable(false);
+	}
+
+	function change_logo(src){
+		$('#coverPhoto').attr('src',src);
 	}
 	// end of new functions 
  function loadSocialButtons(id,target){
