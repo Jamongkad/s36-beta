@@ -499,4 +499,5 @@ img.large-avatar {
     text-shadow:#000 0px 1px;
     left:50%;
     margin-left:-101px;
+	background:url(/img/drag-bg.png);
 }

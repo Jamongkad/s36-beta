@@ -33,43 +33,43 @@ $(document).ready(function(){
 
             <?php if($admin == 1): ?>
 
-            <div id="changeCoverButton">
+                <div id="changeCoverButton">
 
-                <div id="changeButtonText">            
-                    Change Cover
+                    <div id="changeButtonText">            
+                        Change Cover
+                    </div>
+                    <!--
+                    <form action="" method="post" enctype="multipart/form-data">
+
+                        <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="ajax_file_upload()" />
+
+                    </form>
+                    --> 
+                    <input id="logoUpload" type="file" name="clientLogoImg" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload>
                 </div>
-                <!--
-                <form action="" method="post" enctype="multipart/form-data">
 
-                    <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="ajax_file_upload()" />
+                <div id="saveCoverButton">
 
-                </form>
-                --> 
-                <input id="logoUpload" type="file" name="clientLogoImg" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload>
-            </div>
+                    Save Cover
 
-            
+                </div>
 
-            <div id="saveCoverButton">
+                <div id="dragPhoto">
 
-                Save Cover
+                    Drag Image to Reposition Cover
 
-            </div>
+                </div>
 
-            <div id="dragPhoto">
+                <?if(!$company->coverphoto_src):?>
+                    <div class="noPhotoText">
 
-                Drag Image to Reposition Cover
+                        Please Upload Your Cover Photo
 
-            </div>
-
-            <div class="noPhotoText">
-                Please Upload Your Cover Photo
-            </div>
+                    </div>
+                <?endif;?>
 
             <?php endif; ?>
-
-            
-
+ 
             <div id="theCover" class="draggable">
 
                 <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
