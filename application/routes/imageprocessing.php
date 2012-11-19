@@ -25,8 +25,8 @@ function upload($file, $options=null){
     $filedir    = Null;
     $width      = Null;
 
-    if(empty($file))        { die("Please provide a file to be uploaded");}
-    if(empty($options['targetpath']))  { die("Please set the target path for the uploaded file");}
+    if(empty($file)) { die("Please provide a file to be uploaded");}
+    if(empty($options['targetpath'])) { die("Please set the target path for the uploaded file");}
 
     if(!empty($file['error']))
     {
@@ -54,11 +54,10 @@ function upload($file, $options=null){
         case '8':
           $error = 'File upload stopped by extension';
           break;
-        case '999':
         default:
           $error = 'No error code avaiable';
       }
-    } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none'){
+    } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
       $error = 'No file was uploaded..';
     } elseif(($file['type'] != "image/jpeg") ||
              ($file['type'] != "image/gif") ||
