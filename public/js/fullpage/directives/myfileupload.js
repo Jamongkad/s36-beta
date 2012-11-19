@@ -7,6 +7,7 @@ angular.module('fileupload', [])
             $(element).fileupload({
                 change: function(e, data) {
  		            $('#changeCoverButton #changeButtonText').html('Uploading...');                       
+                    console.log(data);
                 }
             });
 

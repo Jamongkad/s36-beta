@@ -3,10 +3,6 @@ use \Imagine\Image\Box;
 use \Imagine\Image\Point;
 
 return array(
-    'GET /imageprocessing'=>array('name'=>'imageprocessing','do'=>function(){
-        var_dump($imagine);
-    }),
-
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
         $file = Input::all();
         $options    = array(
@@ -59,12 +55,6 @@ function upload($file, $options=null){
       }
     } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
       $error = 'No file was uploaded..';
-    } elseif(($file['type'] != "image/jpeg") ||
-             ($file['type'] != "image/gif") ||
-             ($file['type'] != "image/pjpeg") ||
-             ($file['type'] != "image/x-png") ||
-             ($file['type'] != "image/png")) {
-        $error = 'Please Upload Image Files Only';
     } else {
         $imagine = new \Imagine\Gd\Imagine();
         $filename     = date("Ydmhis").$file['name'];
