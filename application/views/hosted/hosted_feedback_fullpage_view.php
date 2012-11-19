@@ -60,20 +60,15 @@ $(document).ready(function(){
 
                 </div>
 
-                <?if(!$company->coverphoto_src):?>
-                    <div class="noPhotoText">
-
-                        Please Upload Your Cover Photo
-
-                    </div>
-                <?endif;?>
 
             <?php endif; ?>
  
             <div id="theCover" class="draggable">
+                <?if($company->coverphoto_src):?>
+                     <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
+                <?else:?>
 
-                <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
-
+                <?endif;?>
             </div>
 
             <div class="social-buttons">
