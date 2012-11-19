@@ -67,7 +67,7 @@ $(document).ready(function(){
                 <?if($company->coverphoto_src):?>
                      <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
                 <?else:?>
-
+                     <img src="/img/cover-photo-placeholder.jpg"  />
                 <?endif;?>
             </div>
 
