@@ -29,7 +29,6 @@ angular.module('fileupload', [])
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
                         });
-
                         //make_cover_undraggable(false);
                     }
 
