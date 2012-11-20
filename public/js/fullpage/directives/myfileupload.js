@@ -13,8 +13,7 @@ angular.module('fileupload', [])
 
                     if(data.error) {
                          
-                        $('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose Files Again' );
-                        console.log(data.error);
+                        $('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose File Again' );
 
                     } else { 
 
@@ -31,7 +30,7 @@ angular.module('fileupload', [])
                                 });
                         });
 
-                        make_cover_undraggable(false);
+                        //make_cover_undraggable(false);
                     }
 
                 }

@@ -184,8 +184,8 @@ return array(
 
         $tf->test('Televised Feedback', function($tf) { 
             $data = $tf->data->hosted->collection_data_alt();
-            //Helpers::dump($data);
-            $tf->assert($tf->data->hosted->collection_data_alt());
+            Helpers::dump($data);
+            //$tf->assert($tf->data->hosted->collection_data_alt());
         });
         
         $tf->run();
