@@ -92,7 +92,7 @@
 			$('#logoUpload').css('top' , e.clientY - 5);
 			$('#logoUpload').css('cursor','pointer');
 		});
-		
+	    /*	
 		$('#saveCoverButton').click(function(){
 			var src = $('#theCover img');
 			var data = {
@@ -102,6 +102,7 @@
 			}	
 			upload_to_server(data);
 		});
+        */
 		// end of new scripts
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
@@ -163,11 +164,10 @@
 		$('#dragPhoto').fadeOut('fast');
 		make_cover_undraggable(true);
 	}
-    */
+    
 	
 	function ajax_file_upload()
 	{
-		//starting setting some animation when the ajax starts and completes
 		$('#changeCoverButton #changeButtonText').html('Uploading...');
 		$.ajaxFileUpload
 		(
@@ -218,6 +218,7 @@
 	function change_logo(src){
 		$('#coverPhoto').attr('src',src);
 	}
+    */
 	// end of new functions 
  function loadSocialButtons(id,target){
 		
