@@ -36,7 +36,17 @@ angular.module('fileupload', [])
         }
     }    
 })
-
+.directive('myFileupload', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {
+                console.log("Dirty Beats");
+                e.preventDefault();
+            });
+        }
+    }
+})
 //make_cover_undraggable(true);
 function make_cover_undraggable(opt) {
     if(!opt) {

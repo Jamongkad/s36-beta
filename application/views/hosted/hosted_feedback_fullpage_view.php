@@ -48,7 +48,7 @@ $(document).ready(function(){
                     <input id="logoUpload" type="file" name="clientLogoImg" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload>
                 </div>
 
-                <div id="saveCoverButton">
+                <div id="saveCoverButton" save-myupload>
 
                     Save Cover
 
