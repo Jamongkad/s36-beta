@@ -31,7 +31,6 @@ angular.module('fileupload', [])
                         });
                         make_cover_undraggable(false);
                     }
-
                 }
             });
         }
@@ -39,13 +38,13 @@ angular.module('fileupload', [])
 })
 
 //make_cover_undraggable(true);
-function make_cover_undraggable(opt){
-    if(!opt){
+function make_cover_undraggable(opt) {
+    if(!opt) {
+        console.log('Making Draggable');
         $("#theCover img").load(function(){	
             var offset = $(this).parent().offset();
             var offsetX = offset.left;
-            $(this).each(function(){
-                
+            $(this).each(function(){ 
                 var imgH = $(this).height();
                 var parH = $(this).parent().height();
                 var imgW = $(this).width();
@@ -55,7 +54,8 @@ function make_cover_undraggable(opt){
                 $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
             });
         });
-    }else{
+    } else {
+        console.log('Draggable Disabled');
         $("#theCover img").draggable({disabled: true});
     }
 }
