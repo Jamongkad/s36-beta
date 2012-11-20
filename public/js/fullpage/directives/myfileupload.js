@@ -10,19 +10,30 @@ angular.module('fileupload', [])
                 }
               , success: function(data) { 
 	                $('#changeCoverButton #changeButtonText').html('Crunching Image...');
-		            $('#coverPhoto').attr('src', data.msg);
 
-                    $('<img />')
-                        .attr('src', data.msg)
-                        .load(function() {
-                            $('#changeCoverButton').fadeOut('fast',function(){
-                                $(this).find('#changeButtonText').html('Change Cover');
-                                $('#dragPhoto').fadeIn('fast');
-                                $('#saveCoverButton').fadeIn('fast');
-                            });
-                    });
+                    if(data.error) {
+                         
+                        $('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose Files Again' );
+                        console.log(data.error);
 
-		            make_cover_undraggable(false);
+                    } else { 
+
+                        $('#coverPhoto').attr('src', data.msg);
+                        $('#defaultCoverPhoto').remove();
+
+                        $('<img />')
+                            .attr('src', data.msg)
+                            .load(function() {
+                                $('#changeCoverButton').fadeOut('fast',function(){
+                                    $(this).find('#changeButtonText').html('Change Cover');
+                                    $('#dragPhoto').fadeIn('fast');
+                                    $('#saveCoverButton').fadeIn('fast');
+                                });
+                        });
+
+                        make_cover_undraggable(false);
+                    }
+
                 }
             });
         }

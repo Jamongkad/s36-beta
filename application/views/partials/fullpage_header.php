@@ -180,8 +180,7 @@
 				success: function (data, status)
 				{				
 					if(typeof(data.error) != 'undefined')
-					{
-						
+					{	
 						if(data.error != '')
 						{
 							$('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose Files Again' );
