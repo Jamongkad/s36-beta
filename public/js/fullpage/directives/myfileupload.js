@@ -36,7 +36,7 @@ angular.module('fileupload', [])
         }
     }    
 })
-.directive('myFileupload', function() {
+.directive('saveMyupload', function() {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
