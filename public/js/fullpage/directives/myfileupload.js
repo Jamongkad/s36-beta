@@ -41,14 +41,23 @@ angular.module('fileupload', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("Dirty Beats");
+
                 var cover_src = $('#theCover img');
-                var data = {
+                var img_src_attrs = {
                     src : cover_src.attr('src'),
                     top : cover_src.offset().top,
                     left: 0
                 }	
-                console.log(data);
+                
+                $.ajax({
+                    url: "/imageprocessing/savecoverphoto",
+                    type: "POST",
+                    data: img_src_attrs,
+                    success: function(q) {
+                        console.log(q);
+                  }
+                });
+
                 e.preventDefault();
             });
         }

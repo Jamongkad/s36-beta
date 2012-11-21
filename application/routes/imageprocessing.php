@@ -12,6 +12,10 @@ return array(
         );
         upload($file['clientLogoImg'], $options);
     }),
+
+    'POST /imageprocessing/savecoverphoto' => function() {
+        
+    }
 );
 
 function upload($file, $options=null){
