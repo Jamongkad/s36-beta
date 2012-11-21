@@ -55,8 +55,8 @@ angular.module('fileupload', [])
                     dataType: "JSON",
                     data: img_src_attrs,
                     success: function(q) {
-                        console.log(q);
-                  }
+     		            $(element).html('Cover Saved');
+                    }
                 });
 
                 e.preventDefault();

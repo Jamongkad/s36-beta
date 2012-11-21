@@ -1,6 +1,7 @@
 <?php
 use \Imagine\Image\Box;
 use \Imagine\Image\Point;
+$company = new Company\Repositories\DBCompany;
 
 return array(
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
@@ -13,8 +14,9 @@ return array(
         upload($file['clientLogoImg'], $options);
     }),
 
-    'POST /imageprocessing/savecoverphoto' => function() { 
+    'POST /imageprocessing/savecoverphoto' => function() use ($company) { 
         $data = Input::all();
+        //$company->update_coverphoto($data);
         echo json_encode($data);
     }
 );

@@ -58,14 +58,7 @@ return array(
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
     },
-
-    'POST /savecoverphoto' => function() use($company){
-        $data = Input::all();
-        $company->update_coverphoto($data);
-        return json_encode($data);
-    },
-
-
+     
     'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
