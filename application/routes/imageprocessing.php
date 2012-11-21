@@ -13,8 +13,9 @@ return array(
         upload($file['clientLogoImg'], $options);
     }),
 
-    'POST /imageprocessing/savecoverphoto' => function() {
-        
+    'POST /imageprocessing/savecoverphoto' => function() { 
+        $data = Input::all();
+        Helpers::dump($data);
     }
 );
 
