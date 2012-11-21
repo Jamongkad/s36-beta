@@ -117,11 +117,11 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_coverphoto($data){
-            $user = S36Auth::user();
             $src = (isset($data['src'])) ? $data['src']     : '';
             $top = (isset($data['top'])) ? $data['top']     : 0;
+            $company_id = $data['company_id'];
             return DB::table('Company')
-                ->where('companyId','=',$user->companyid)
-                ->update(array('coverphoto_src'=>$src,'coverphoto_top'=>$top));   
+                ->where('companyId', '=', $company_id)
+                ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
     }
 }
