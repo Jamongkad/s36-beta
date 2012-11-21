@@ -52,6 +52,7 @@ angular.module('fileupload', [])
                 $.ajax({
                     url: "/imageprocessing/savecoverphoto",
                     type: "POST",
+                    dataType: "JSON",
                     data: img_src_attrs,
                     success: function(q) {
                         console.log(q);

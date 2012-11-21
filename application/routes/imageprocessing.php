@@ -15,7 +15,7 @@ return array(
 
     'POST /imageprocessing/savecoverphoto' => function() { 
         $data = Input::all();
-        Helpers::dump($data);
+        echo json_encode($data);
     }
 );
 
