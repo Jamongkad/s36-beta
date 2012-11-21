@@ -164,8 +164,7 @@
 		$('#dragPhoto').fadeOut('fast');
 		make_cover_undraggable(true);
 	}
-    
-	
+    	
 	function ajax_file_upload()
 	{
 		$('#changeCoverButton #changeButtonText').html('Uploading...');

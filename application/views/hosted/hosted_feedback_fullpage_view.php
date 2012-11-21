@@ -49,18 +49,12 @@ $(document).ready(function(){
                 </div>
 
                 <div id="saveCoverButton" save-myupload>
-
                     Save Cover
-
                 </div>
 
                 <div id="dragPhoto">
-
                     Drag Image to Reposition Cover
-
                 </div>
-
-
             <?php endif; ?>
  
             <div id="theCover" class="draggable">

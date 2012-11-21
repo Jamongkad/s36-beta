@@ -42,6 +42,13 @@ angular.module('fileupload', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
                 console.log("Dirty Beats");
+                var cover_src = $('#theCover img');
+                var data = {
+                    src : cover_src.attr('src'),
+                    top : cover_src.offset().top,
+                    left: 0
+                }	
+                console.log(data);
                 e.preventDefault();
             });
         }
