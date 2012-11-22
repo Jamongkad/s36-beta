@@ -39,7 +39,7 @@
         </div>
     <?endif?>
     
-    <!--
+
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget widget">
@@ -67,7 +67,7 @@
             <?endif;?>
         </div>
     </div>
-    -->
+
 
     <div id="widget-setup-block">
         <div class="widget-options">
