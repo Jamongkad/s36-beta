@@ -12,7 +12,7 @@ return array(
         $widgets = $dbw->fetch_widgets_by_company();
         $hosted->set_hosted_settings(Array('companyId'  =>  S36Auth::user()->companyid));
             
-        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_dashboard_view', Array(
+        return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
             'widgets' => $widgets, 'hosted_full_page' => $hosted->hosted_settings()
         ));
     }),
