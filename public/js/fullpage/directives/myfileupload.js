@@ -87,7 +87,7 @@ function deactivate_drag(flag) {
                 var parW = $(this).parent().width();  
                 var ipH = imgH-parH;
                 var ipW = imgW-parW-offsetX;			
-                $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
+                $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: flag});	
             });
         });
     } else {
