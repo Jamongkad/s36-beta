@@ -29,7 +29,7 @@ angular.module('fileupload', [])
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
                         });
-                        make_cover_undraggable(false);
+                        make_cover_draggable(true);
                     }
                 }
             });
@@ -74,8 +74,8 @@ angular.module('fileupload', [])
     }
 })
 
-function make_cover_undraggable(opt) {
-    if(!opt) {
+function make_cover_draggable(opt) {
+    if(opt) {
         console.log('Making Draggable');
         $("#theCover img").load(function(){	
             var offset = $(this).parent().offset();
@@ -102,5 +102,5 @@ function hide_save_button(){
     });
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
-    make_cover_undraggable(true);
+    make_cover_draggable(false);
 }
