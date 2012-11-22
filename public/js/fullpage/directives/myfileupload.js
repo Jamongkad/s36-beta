@@ -28,7 +28,7 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                console.log("Image Loading done")
+                                console.log("Image Loading done");
                                 activate_drag(true);
                             });
                     }
