@@ -41,7 +41,6 @@
     
 
     <div id="widget-setup-block">
-        <!--
         <div class="widget-options">
             <h2 class="ico-widget widget">
                 <?=HTML::link('feedsetup/overview/display', 'Feedback Display Setup', Array('class' => 'widget-overview-btn'))?> 
@@ -67,7 +66,6 @@
                 </div>
             <?endif;?>
         </div>
-        -->
     </div>
 
 
