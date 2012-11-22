@@ -54,11 +54,14 @@
 				easing: 'linear',
 				queue: false
 			  }
-		});
-		
+		});	
+
+	    var counter = 0;	
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-				/*add_boxes();		 */
+                count += 1;
+                var page_counter = counter + 1;
+                console.log(page_counter);
 		   }
 		});
 		
@@ -70,8 +73,6 @@
 			$(this).find('.feedbackSocialFacebook').fadeOut();
 		});
 
-		// New scripts for the Logo Upload Oct 4 2012
-		// end of new scripts
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
 			var nameContent = nameContainer.html();

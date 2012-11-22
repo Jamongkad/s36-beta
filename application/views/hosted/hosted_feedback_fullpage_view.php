@@ -5,22 +5,13 @@ echo (isset($hosted->theme_css)) ? '<link type="text/css" rel="stylesheet" href=
 echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$hosted->theme_js.'"></script>' : null;
 ?>
 
-<?php 
-
-/*start document load*/ 
-
-?>
-
 <script type="text/javascript">
 
 $(document).ready(function(){
     <?php 
-
     /* Change fullpage background if set from admin */
     if(isset($hosted->background_image) && !empty($hosted->background_image)):?>
-
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
-
     <?php endif ?>
 });
 
