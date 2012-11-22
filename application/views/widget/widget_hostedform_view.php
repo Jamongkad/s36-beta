@@ -13,6 +13,7 @@
     <?endforeach?>
 </script>
 
+
 <script type="text/javascript">
 	$(document).ready(function(){ 
 
@@ -22,7 +23,45 @@
 			$('.s36_perm_details').css('opacity','0.6').parent().parent().css('border','solid 2px #FFF');
 			$(this).css('opacity','1').parent().parent().css('border','solid 2px #CCC');
 		});
+        
+        
+        // start of star rating script.
+        
+        function unhighlight_star(){
+            $('.star_rating').removeClass('active');
+            $('.star_rating:lt('+ ($('.star_rating').index($('.star_rating.selected')) + 1) +')').addClass('active');
+        }
+        
+        function highlight_star(i){
+            $('.star_rating').removeClass('active');
+            $('.star_rating:lt('+ i +')').addClass('active');
+        }
+        
+        
+        // set the default rating to 3.
+        $('.star_rating').eq(2).addClass('selected');
+        highlight_star(3);
+        
+        
+        $('.star_rating').hover(
+            function(){
+                highlight_star( $('.star_rating').index( $(this) ) + 1 );
+            },
+            function(){
+                unhighlight_star();
+            }
+        );
+        
+        $('.star_rating').click(function(){
+            $('#rating').val( $('.star_rating').index( $(this) ) + 1 );
+            $('.star_rating').removeClass('selected');
+            $(this).addClass('selected');
+        });
+        
+        // end of star rating script.
+        
     });
+    
 </script>
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
@@ -150,14 +189,14 @@
                                 <?endif?> 
                             </div>
                             <div class="step-contents">
-                                <div style="float:left;width:235px;padding:0px 30px 0px 0px;">
-                                	<br /><br />
+                                <div style="float:left;width:235px;padding: 10px 30px 0px 0px;">
                                     <h3>Rate your overall experience</h3>
-                                    <br /><br /><br />
+                                    <br /><br />
                                     <h3>Tell us what you think in 200 words or less</h3>
                                 </div>
                                 <div style="float:left;width:473px;">
                                 	<br />
+                                    <!--
                                     <div id="s36_trackbar">
                                         <input type="hidden" id="cropped_photo" value="0"/ >
                                         <input type="hidden" id="fb_flag" value="0" />
@@ -186,6 +225,14 @@
                                             <li class="good">GOOD</li>
                                             <li class="excellent">EXCELLENT</li>
                                         </ul>
+                                    </div>
+                                    -->
+                                    <div id="star_rating_container">
+                                        <span class="star_rating" title="BAD"></span>
+                                        <span class="star_rating" title="POOR"></span>
+                                        <span class="star_rating" title="AVERAGE"></span>
+                                        <span class="star_rating" title="GOOD"></span>
+                                        <span class="star_rating" title="EXCELLENT"></span>
                                     </div>
                                     <br />
                                     <div class="feedback">

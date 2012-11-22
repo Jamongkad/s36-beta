@@ -10,5 +10,8 @@
         <?=HTML::style('css/widget_master/flags_widget.css')?>
         <?=HTML::style('css/widget_master/grids.css')?>
         <?=HTML::style('css/widget_master/form-default.css')?>
+        
+        <?=HTML::style('bootstrap/css/bootstrap.css')?>
+        <?=HTML::script('bootstrap/js/bootstrap.js')?>
     </head>
 <body>
