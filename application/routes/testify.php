@@ -162,8 +162,11 @@ return array(
             $social_services = Array(
                 'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
+            /*
             $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             $tf->dump($tf->data->social->save_social_feeds());
+            */
+            $tf->dump($social_services['twitter']);
         });
 
         $tf->test("Twitter Feed Rate Status", function($tf)  {
