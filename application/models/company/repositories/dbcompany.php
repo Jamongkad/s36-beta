@@ -75,6 +75,7 @@ class DBCompany extends S36DataObject {
     			->where('account_owner','=',1)
     			->first();
     }
+
     public function get_account_user($company_id = NULL){
 		$company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
 		if(!empty($company_id) && is_numeric($company_id)):
@@ -102,34 +103,35 @@ class DBCompany extends S36DataObject {
     }
     
     public function update_plan($planId){
-			$user = S36Auth::user();
-    		$result = DB::table('Company')
-    			->where('companyId','=',$user->companyid)
-    			->update(array('planId'=>$planId));
-    		return $result;
+        $user = S36Auth::user();
+        $result = DB::table('Company')
+            ->where('companyId','=',$user->companyid)
+            ->update(array('planId'=>$planId));
+        return $result;
     }
     
     public function update_bt_customer_id($id){
-    		$user = S36Auth::user();
-    		return DB::table('Company')
-    			->where('companyId','=',$user->companyid)
-    			->update(array('bt_customer_id'=>$id));
+        $user = S36Auth::user();
+        return DB::table('Company')
+            ->where('companyId','=',$user->companyid)
+            ->update(array('bt_customer_id'=>$id));
     }
 
     public function update_coverphoto($data){
-            $src = (isset($data['src'])) ? $data['src'] : null;
-            $top = (isset($data['top'])) ? $data['top'] : 0;
-            $company_id = $data['company_id'];
+        $src = (isset($data['src'])) ? $data['src'] : null;
+        $top = (isset($data['top'])) ? $data['top'] : 0;
+        $company_id = $data['company_id'];
 
-            $existing_cover_photo = DB::table('Company')
-                ->where('companyId', '=', $company_id)
-                ->first(Array('coverphoto_src'));
+        $existing_cover_photo = DB::table('Company')
+            ->where('companyId', '=', $company_id)
+            ->first(Array('coverphoto_src'));
 
-            return $existing_cover_photo;
-            /*
-            DB::table('Company')
-                ->where('companyId', '=', $company_id)
-                ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
-            */
+        DB::table('Company')
+            ->where('companyId', '=', $company_id)
+            ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
+
+        if($existing_cover_photo->coverphoto_src) {
+            unlink($existing_cover_photo->coverphoto_src);
+        }
     }
 }
