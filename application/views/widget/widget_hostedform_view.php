@@ -25,6 +25,7 @@
 		});
         
         
+        
         // start of star rating script.
         
         function unhighlight_star(){
