@@ -104,6 +104,10 @@ class HostedService {
 
         $total_collection = (int)$this->feeds->total_rows;
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
+
+        return Array(
+            $total_collection, $redis_total_set 
+        );
         
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $redis_total_set !== $total_collection) {
