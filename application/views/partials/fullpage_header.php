@@ -58,9 +58,9 @@
 
 	    var counter = 0;	
 		$(window).scroll(function() {
-		   if($(window).scrollTop() + $(window).height() == $(document).height()) { 
-                var page_counter = counter + 1;
-                console.log(page_counter);
+		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                counter += 1;
+                console.log(counter);
 		   }
 		});
 		
