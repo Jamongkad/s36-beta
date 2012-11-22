@@ -46,12 +46,14 @@ return array(
         $company = $dbcompany->get_company_info($company_id);
         $twitter   = new Feedback\Repositories\TWFeedback; 
 
-        $social_services = Array(
-            'twitter' => $twitter->pull_tweets_for($company->twitter_username)
-        );
+        if($company->twitter_username) { 
+            $social_services = Array(
+                'twitter' => $twitter->pull_tweets_for($company->twitter_username)
+            );
 
-        $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-        $social->save_social_feeds();
+            $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            $social->save_social_feeds();
+        }
 
         $view_data = Array(
               'feedback' => $feedback->grouped_feeds
