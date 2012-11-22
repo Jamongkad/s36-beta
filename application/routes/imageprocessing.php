@@ -19,8 +19,7 @@ return array(
         $data = Input::all();
         $data['company_id'] = $user->companyid;
         $result = $company->update_coverphoto($data);
-        Helpers::dump($result);
-        //echo json_encode($data);
+        echo json_encode($result);
     }
 );
 

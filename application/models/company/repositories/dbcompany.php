@@ -127,13 +127,21 @@ class DBCompany extends S36DataObject {
             ->where('companyId', '=', $company_id)
             ->first(Array('coverphoto_src'));
 
-        DB::table('Company')
+        $updated = DB::table('Company')
             ->where('companyId', '=', $company_id)
             ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
-
+        
+        /*
         if($existing_cover_photo->coverphoto_src) {
             unlink($existing_cover_photo->coverphoto_src);
         }
+        */
+        $result = new StdClass;
+        $result->company_id = $company_id;
+        $result->src = $src;
+        $result->top = $top;
+        $result->update_success = $updated;
+        return $result;
 
     }
 }
