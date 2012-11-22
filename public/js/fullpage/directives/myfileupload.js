@@ -28,8 +28,8 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                        });
-                        make_cover_draggable(false);
+                                make_cover_draggable(true);
+                            });
                     }
                 }
             });
@@ -74,8 +74,8 @@ angular.module('fileupload', [])
     }
 })
 
-function make_cover_draggable(opt) {
-    if(!opt) {
+function make_cover_draggable(flag) {
+    if(flag) {
         console.log('Making Draggable');
         $("#theCover img").load(function(){	
             var offset = $(this).parent().offset();
