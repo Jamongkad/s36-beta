@@ -54,12 +54,12 @@ class Determiner {
            return $obj;
        }
        
-       if($this->http_host == 'dan-staging.gearfish.com') { 
+       if($this->http_host == 'kennwel-staging.gearfish.com') { 
            $obj->db   = Array(
                'host' => 'localhost'
              , 'username' => 'root'
              , 'password' => 'brx4*svv'
-             , 'db' => 's36'
+             , 'db' => 's36_kennwel'
            );
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
