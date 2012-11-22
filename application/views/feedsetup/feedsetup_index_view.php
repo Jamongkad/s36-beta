@@ -66,10 +66,7 @@
             <?endif?>
         </div>
     </div>
-    </div>
-</div>
 
-<!-- move this bitch back when embedded widgets return
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget widget">
@@ -97,4 +94,7 @@
             <?endif;?>
         </div>
     </div>
--->
+</div>
+
+
+
