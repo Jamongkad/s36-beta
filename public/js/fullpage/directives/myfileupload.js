@@ -28,7 +28,7 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                make_cover_draggable(true);
+                                deactivate_drag(false);
                             });
                     }
                 }
@@ -74,9 +74,12 @@ angular.module('fileupload', [])
     }
 })
 
-function make_cover_draggable(flag) {
+function deactivate_drag(flag) {
     if(flag) {
-        console.log('Making Draggable');
+        console.log('Draggable Disabled');
+        $("#theCover img").draggable({disabled: true});
+    } else {
+        console.log('Draggable Enabled');
         $("#theCover img").load(function(){	
             var offset = $(this).parent().offset();
             var offsetX = offset.left;
@@ -90,9 +93,6 @@ function make_cover_draggable(flag) {
                 $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
             });
         });
-    } else {
-        console.log('Draggable Disabled');
-        $("#theCover img").draggable({disabled: true});
     }
 }
 
@@ -102,5 +102,5 @@ function hide_save_button(){
     });
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
-    make_cover_draggable(false);
+    deactivate_drag(true);
 }
