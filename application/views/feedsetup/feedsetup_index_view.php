@@ -66,6 +66,7 @@
             <?endif?>
         </div>
     </div>
+    </div>
 </div>
 
 <!-- move this bitch back when embedded widgets return
