@@ -58,8 +58,7 @@
 
 	    var counter = 0;	
 		$(window).scroll(function() {
-		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                count += 1;
+		   if($(window).scrollTop() + $(window).height() == $(document).height()) { 
                 var page_counter = counter + 1;
                 console.log(page_counter);
 		   }
