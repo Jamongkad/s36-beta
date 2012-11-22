@@ -143,7 +143,7 @@ $(document).ready(function(){
             <div class="spine-spacer"></div>
             <div class="the-feedbacks">
         <?php /*start feedback info*/ 
-            foreach ($feed_list[0] as $feed) :
+            foreach ($feed_list as $feed) :
                 $twfeedback = '';
                 $class      = '';
                 switch ($feed->feed_data->origin) {
