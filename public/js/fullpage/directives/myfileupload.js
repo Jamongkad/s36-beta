@@ -56,12 +56,15 @@ angular.module('fileupload', [])
                     data: img_src_attrs,
                     success: function(res) {
      		            $(element).html('Cover Saved');
+                        /*
                         var timeout;
                         if(timeout) {
                             clearTimeout(timeout);
                             timeout = null;
                         }
                         timeout = setTimeout(hide_save_button, 1000);
+                        */
+                        hide_save_button();
                     }
                 });
 
