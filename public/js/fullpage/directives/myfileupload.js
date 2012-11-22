@@ -65,7 +65,6 @@ angular.module('fileupload', [])
                         }
 
                         timeout = setTimeout(hide_save_button, 1000); 
-                        //hide_save_button();
                     }
                 });
 
