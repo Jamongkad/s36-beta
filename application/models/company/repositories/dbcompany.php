@@ -118,6 +118,7 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_coverphoto($data){
+
         $src = (isset($data['src'])) ? $data['src'] : null;
         $top = (isset($data['top'])) ? $data['top'] : 0;
         $company_id = $data['company_id'];
@@ -133,5 +134,6 @@ class DBCompany extends S36DataObject {
         if($existing_cover_photo->coverphoto_src) {
             unlink($existing_cover_photo->coverphoto_src);
         }
+
     }
 }
