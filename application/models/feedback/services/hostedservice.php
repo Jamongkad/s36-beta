@@ -71,11 +71,12 @@ class HostedService {
             $ctr = 0;            
             $children_collection = Array();
             sort($children);
-            Helpers::dump(count($children));
+            //Helpers::dump(count($children));
+            $units = count($children);
             foreach($children as $val) {
                 $arranged_collection = Array();
-                if(($ctr % $this->units) == 0) { 
-                    foreach(new LimitIterator(new ArrayIterator($children), $ctr, $this->units) as $fr) {    
+                if(($ctr % $units) == 0) { 
+                    foreach(new LimitIterator(new ArrayIterator($children), $ctr, $units) as $fr) {    
                         $arranged_collection[] = $fr;     
                     }
                     $children_collection[] = $arranged_collection;
