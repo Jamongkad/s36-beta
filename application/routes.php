@@ -49,7 +49,8 @@ return array(
         ));
 
         $meta->calculate_metrics();        
-        //Helpers::dump($feeds);
+        Helpers::dump($feeds);
+        /*
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'         => $company_info
                                                   , 'user'            => $user
@@ -58,6 +59,7 @@ return array(
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
+        */
     },
      
     'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
