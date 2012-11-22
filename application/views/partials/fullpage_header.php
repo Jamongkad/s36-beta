@@ -92,17 +92,6 @@
 			$('#logoUpload').css('top' , e.clientY - 5);
 			$('#logoUpload').css('cursor','pointer');
 		});
-	    /*	
-		$('#saveCoverButton').click(function(){
-			var src = $('#theCover img');
-			var data = {
-				src : src.attr('src'),
-				top : src.offset().top,
-				left: '0'
-			}	
-			upload_to_server(data);
-		});
-        */
 		// end of new scripts
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
@@ -114,111 +103,6 @@
 	});
 	/* end of document ready function. below are custom functions for this form */	
 	
-	// New Functions for the Logo Upload Oct 4 2012
-    /*
-	function make_cover_undraggable(opt){
-		if(!opt){
-			$("#theCover img").load(function(){	
-				var offset = $(this).parent().offset();
-				var offsetX = offset.left;
-				$(this).each(function(){	
-					var imgH = $(this).height();
-					var parH = $(this).parent().height();
-					var imgW = $(this).width();
-					var parW = $(this).parent().width();  
-					var ipH = imgH-parH;
-					var ipW = imgW-parW-offsetX;			
-					$(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
-				});
-			});
-		}else{
-			$("#theCover img").draggable({disabled: true});
-		}
-	}
-    */
-    /*    
-	function upload_to_server(data){	
-        $.ajax({
-            url: "savecoverphoto",
-            type: "POST",
-            data: data,
-            success: function(q) {
-                console.log(q);
-          }
-        });
-	
-		$('#saveCoverButton').html('Cover Saved');
-		var timeout;
-		if(timeout) {
-			clearTimeout(timeout);
-			timeout = null;
-		}
-		timeout = setTimeout(hide_save_button, 1000);
-	}
-	
-	function hide_save_button(){
-		$('#saveCoverButton').fadeOut('fast',function(){
-			$(this).html('Save Cover');
-		});
-		$('#changeCoverButton').fadeIn('fast');
-		$('#dragPhoto').fadeOut('fast');
-		make_cover_undraggable(true);
-	}
-    	
-	function ajax_file_upload()
-	{
-		$('#changeCoverButton #changeButtonText').html('Uploading...');
-		$.ajaxFileUpload
-		(
-			{
-				url:'imageprocessing/upload_coverphoto',
-				type:'POST',
-				secureuri:false,
-				fileElementId:'logoUpload',
-				dataType: 'json',
-				success: function (data, status)
-				{				
-					if(typeof(data.error) != 'undefined')
-					{	
-						if(data.error != '')
-						{
-							$('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose Files Again' );
-							console.log(data.error);
-							return false;
-						}else {
-							fetch_new_image(data.msg);
-							change_logo(data.msg);
-						}
-					}
-					
-				},
-				error: function (data, status, e)
-				{
-					return false;
-				}
-			}
-		)
-	}  
-		
-	function fetch_new_image(src){
-	    $('#changeCoverButton #changeButtonText').html('Crunching Image...');
-		$('<img />')
-			.attr('src', src)
-			.load(function() {
-				$('#changeCoverButton').fadeOut('fast',function(){
-					$(this).find('#changeButtonText').html('Change Cover');
-					$('#dragPhoto').fadeIn('fast');
-					$('#saveCoverButton').fadeIn('fast');
-				});
-		});
-		make_cover_undraggable(false);
-	}
-
-	function change_logo(src){
-		$('#coverPhoto').attr('src',src);
-	}
-    */
-	// end of new functions 
  function loadSocialButtons(id,target){
 		
 		var link = 'http://www.36stories.com/stand-alone/'+id;

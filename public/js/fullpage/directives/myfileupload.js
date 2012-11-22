@@ -28,20 +28,7 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                //make_cover_draggable(true);
-                                $("#theCover img").load(function(){	
-                                    var offset = $(this).parent().offset();
-                                    var offsetX = offset.left;
-                                    $(this).each(function(){ 
-                                        var imgH = $(this).height();
-                                        var parH = $(this).parent().height();
-                                        var imgW = $(this).width();
-                                        var parW = $(this).parent().width();  
-                                        var ipH = imgH-parH;
-                                        var ipW = imgW-parW-offsetX;			
-                                        $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: opt});	
-                                    });
-                                });
+                                make_cover_draggable(true);
                             });
                     }
                 }
