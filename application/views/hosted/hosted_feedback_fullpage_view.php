@@ -29,7 +29,7 @@ $(document).ready(function(){
 <div id="bodyWrapper">
 
     <div id="bodyContent">
-        <div id="pageCover">
+        <div id="pageCover" <?=(!$admin and !$company->coverphoto_src) ? "style='height: 80px;'" : null?>>
 
             <?php if($admin == 1): ?>
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
                 </div>
             <?php endif; ?>
  
-            <div id="theCover" class="draggable" <?=(!$admin) ? "style='height: 80px;'" : null?>>
+            <div id="theCover" class="draggable">
                 <?if($company->coverphoto_src):?>
                      <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
                 <?else:?>
