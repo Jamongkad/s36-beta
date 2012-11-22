@@ -48,7 +48,6 @@ class HostedService {
     public function collection_data_alt() { 
 
         $feeds = $this->feedback->televised_feedback_alt($this->company_name);
-        Helpers::dump($feeds);
         $collection = Array();
 
         foreach($feeds->result as $feed) {
