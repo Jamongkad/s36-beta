@@ -10,7 +10,7 @@ return array(
             'width'      => 800
           , 'height'     => 500
           , 'targetpath' => 'uploaded_images/coverphoto/'
-        );
+        );     
         upload($file['clientLogoImg'], $options);
     }),
 
@@ -24,7 +24,7 @@ return array(
     }
 );
 
-function upload($file, $options=null){
+function upload($file, $options){
     $error      = Null;
     $msg        = Null;
     $filedir    = Null;
@@ -32,35 +32,32 @@ function upload($file, $options=null){
     if(empty($file)) { die("Please provide a file to be uploaded");}
     if(empty($options['targetpath'])) { die("Please set the target path for the uploaded file");}
 
-    if(!empty($file['error']))
-    {
-      switch($file['error'])
-      {
-
-        case '1':
-          $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
-          break;
-        case '2':
-          $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
-          break;
-        case '3':
-          $error = 'The uploaded file was only partially uploaded';
-          break;
-        case '4':
-          $error = 'No file was uploaded.';
-          break;
-        case '6':
-          $error = 'Missing a temporary folder';
-          break;
-        case '7':
-          $error = 'Failed to write file to disk';
-          break;
-        case '8':
-          $error = 'File upload stopped by extension';
-          break;
-        default:
-          $error = 'No error code avaiable';
-      }
+    if(!empty($file['error'])) {
+        switch($file['error']) {
+            case '1':
+                $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
+                break;
+            case '2':
+                $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
+                break;
+            case '3':
+                $error = 'The uploaded file was only partially uploaded';
+                break;
+            case '4':
+                $error = 'No file was uploaded.';
+                break;
+            case '6':
+                $error = 'Missing a temporary folder';
+                break;
+            case '7':
+                $error = 'Failed to write file to disk';
+                break;
+            case '8':
+                $error = 'File upload stopped by extension';
+                break;
+            default:
+                $error = 'No error code avaiable';
+        }
     } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
         $error = 'No file was uploaded..';
     } else {
@@ -74,8 +71,5 @@ function upload($file, $options=null){
         $image->save($filedir, array('quality'=>100));
     }
 
-    echo json_encode(Array(
-        "error" => $error
-      , "msg"   => $filedir
-    )); 
+    echo json_encode(Array("error" => $error, "msg" => $filedir)); 
 }
