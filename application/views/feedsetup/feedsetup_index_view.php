@@ -66,15 +66,13 @@
             <?endif?>
         </div>
     </div>
-
+    <!--
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget widget">
                 <?=HTML::link('feedsetup/overview/display', 'Feedback Display Setup', Array('class' => 'widget-overview-btn'))?> 
                 <small style="font-weight:normal;">(for displaying feedback on your websites)</small>
             </h2>
-            <?//=HTML::link('feedsetup/display_widgets', 'Create Display Widget', array('class' => 'widget-create'))?>   
-
             <?if($widgets->display_widgets->widget->widgets != null):?>
                 <span id="display-overview-target">
                     <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
@@ -94,6 +92,7 @@
             <?endif;?>
         </div>
     </div>
+    -->
 </div>
 
 
