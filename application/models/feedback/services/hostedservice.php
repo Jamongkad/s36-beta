@@ -51,6 +51,8 @@ class HostedService {
 
         foreach($feeds->result as $feed) {
 
+            $head_date = strtotime($feed->head_date_format);
+
             if($feed->isfeatured) { 
                 $obj = new StdClass;   
                 $obj->sort_id = 'featured_'.$feed->id;          
@@ -63,7 +65,8 @@ class HostedService {
                 $obj->feed_data = $feed;
             }
 
-            $collection[strtotime($feed->head_date_format)][] = $obj;        
+            $collection[$head_date][] = $obj;        
+            $head_date = Null;
         }  
 
         $repack = Array();
