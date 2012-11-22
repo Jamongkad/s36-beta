@@ -142,6 +142,5 @@ class DBCompany extends S36DataObject {
         $result->top = $top;
         $result->update_success = $updated;
         return $result;
-
     }
 }

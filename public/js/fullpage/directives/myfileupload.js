@@ -29,7 +29,7 @@ angular.module('fileupload', [])
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
                             });
-                        activate_drag(true);
+                        activate_drag();
                     }
                 }
             });
@@ -65,6 +65,7 @@ angular.module('fileupload', [])
                         }
 
                         timeout = setTimeout(hide_save_button, 1000); 
+                        deactivate_drag();
                     }
                 });
 
@@ -75,25 +76,26 @@ angular.module('fileupload', [])
 })
 
 function activate_drag(flag) {
-    if(flag) {
-        console.log('Draggable Enabled');
-        $("#theCover img").load(function(){	
-            var offset = $(this).parent().offset();
-            var offsetX = offset.left;
-            $(this).each(function(){ 
-                var imgH = $(this).height();
-                var parH = $(this).parent().height();
-                var imgW = $(this).width();
-                var parW = $(this).parent().width();  
-                var ipH = imgH-parH;
-                var ipW = imgW-parW-offsetX;			
-                $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: false});	
-            });
+    console.log('Draggable Enabled');
+    $("#theCover img").load(function(){	
+        var offset = $(this).parent().offset();
+        var offsetX = offset.left;
+        $(this).each(function(){ 
+            var imgH = $(this).height();
+            var parH = $(this).parent().height();
+            var imgW = $(this).width();
+            var parW = $(this).parent().width();  
+            var ipH = imgH-parH;
+            var ipW = imgW-parW-offsetX;			
+            $(this).draggable({ containment: [-ipW, -ipH, offsetX, 0], scroll: false, disabled: false});	
         });
-    } else {
-        console.log('Draggable Disabled');
-        $("#theCover img").draggable({disabled: true});
-    }
+    });
+
+}
+
+function deactivate_drag() { 
+    console.log('Draggable Disabled');
+    $("#theCover img").draggable({disabled: true});
 }
 
 function hide_save_button(){
@@ -102,5 +104,4 @@ function hide_save_button(){
     });
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
-    activate_drag(false);
 }
