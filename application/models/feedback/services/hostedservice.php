@@ -63,7 +63,7 @@ class HostedService {
                 $obj->feed_data = $feed;
             }
 
-            $collection[strtotime($feed->head_date_format)] = $obj;        
+            $collection[strtotime($feed->head_date_format)][] = $obj;        
         }  
 
         $repack = Array();
