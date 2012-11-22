@@ -29,8 +29,8 @@ angular.module('fileupload', [])
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
                                 console.log("Image Loading done");
-                                activate_drag(true);
                             });
+                        activate_drag(true);
                     }
                 }
             });
