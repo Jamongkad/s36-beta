@@ -38,14 +38,11 @@ $(document).ready(function(){
                     <div id="changeButtonText">            
                         Change Cover
                     </div>
-                    <!--
-                    <form action="" method="post" enctype="multipart/form-data">
-
-                        <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="ajax_file_upload()" />
-
-                    </form>
-                    --> 
-                    <input id="logoUpload" type="file" name="clientLogoImg" data-url="imageprocessing/upload_coverphoto" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload>
+                    <input id="logoUpload" 
+                           type="file" 
+                           name="clientLogoImg" 
+                           data-url="imageprocessing/upload_coverphoto" 
+                           style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" multiple my-fileupload />
                 </div>
 
                 <div id="saveCoverButton" save-myupload>
@@ -57,7 +54,7 @@ $(document).ready(function(){
                 </div>
             <?php endif; ?>
  
-            <div id="theCover" class="draggable">
+            <div id="theCover" class="draggable" <?=(!$admin) ? "style='height: 80px;'" : null?>>
                 <?if($company->coverphoto_src):?>
                      <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
                 <?else:?>
