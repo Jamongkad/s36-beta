@@ -28,8 +28,8 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                deactivate_drag(false);
                             });
+                        deactivate_drag(false);
                     }
                 }
             });
