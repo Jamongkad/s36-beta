@@ -29,7 +29,7 @@ $(document).ready(function(){
 <div id="bodyWrapper">
 
     <div id="bodyContent">
-        <div id="pageCover" <?=(!$admin and !$company->coverphoto_src) ? "style='height: 80px;'" : null?>>
+        <div id="pageCover" <?=(!$admin and !$company->coverphoto_src) ? "style='height: 40px;'" : null?>>
 
             <?php if($admin == 1): ?>
 
