@@ -16,19 +16,17 @@ class HostedService {
     private $num_rows;
     private $number_of_pages;
     private $pages;
+    private $feeds;
 
     private $featured_count;
     private $published_count;
     
     public function __construct($company_name) {
-        $this->company_name = $company_name;
-        $this->feedback     = new DBFeedback;
         $this->redis    = new redisent\Redis;
-        $this->key_name = $this->company_name.":fullpage:data";
-    }
+        $this->key_name = $company_name.":fullpage:data";
 
-    public function fetch_hosted_feedback() {
-        return $this->collection_data_alt();
+        $feedback     = new DBFeedback;
+        $this->feeds = $this->feedback->televised_feedback_alt($company_name);
     }
 
     public function view_fragment() { 
@@ -40,16 +38,11 @@ class HostedService {
         } 
     }
 
-    public function cached_data($data_obj) {
-        return json_decode($data_obj);
-    }
+    public function fetch_hosted_feedback() { 
 
-    public function collection_data_alt() { 
-
-        $feeds = $this->feedback->televised_feedback_alt($this->company_name);
         $collection = Array();
 
-        foreach($feeds->result as $feed) {
+        foreach($this->feeds->result as $feed) {
 
             $head_date = strtotime($feed->head_date_format);
             if($feed->isfeatured) { 
@@ -96,10 +89,6 @@ class HostedService {
         return $repack;
     }
  
-    public function expose_collection_data() {
-        return $this->collection;     
-    }
-
     public function fetch_data_by_set() {
 
         if(!$this->page_number) { $this->page_number = 1; }
@@ -113,7 +102,7 @@ class HostedService {
 
     public function build_data() {
 
-        $total_collection = $this->featured_count + $this->published_count;
+        $total_collection = (int)$this->feeds->total_rows;
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
         
         $key = $this->redis->hgetall($this->key_name);
@@ -121,6 +110,7 @@ class HostedService {
             //echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
+            /*
             foreach($this->scale_feeds() as $ky => $vl) {
                 if($ky == "start_collection") {
                     $this->redis->hset($this->key_name, "set:1", json_encode($vl));
@@ -133,6 +123,7 @@ class HostedService {
                     }
                 }   
             }
+            */
         } 
     }
 
