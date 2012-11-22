@@ -38,7 +38,7 @@
             </div>
         </div>
     <?endif?>
-
+    <!--
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget widget">
@@ -64,10 +64,9 @@
                     </p>
                 </div>
             <?endif;?>
-
         </div>
     </div>
-
+    -->
     <div id="widget-setup-block">
         <div class="widget-options">
             <h2 class="ico-widget form">
