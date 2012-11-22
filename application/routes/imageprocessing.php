@@ -24,7 +24,6 @@ return array(
 );
 
 function upload($file, $options=null){
-
     $error      = Null;
     $msg        = Null;
     $filedir    = Null;
