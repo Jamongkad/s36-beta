@@ -15,8 +15,8 @@ return array(
     }),
 
     'POST /imageprocessing/savecoverphoto' => function() use ($company) { 
-        $data = Input::all();
         $user = S36Auth::user();
+        $data = Input::all();
         $data['company_id'] = $user->companyid;
         $company->update_coverphoto($data);
         echo json_encode($data);
