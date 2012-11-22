@@ -25,8 +25,8 @@ class HostedService {
         $this->redis    = new redisent\Redis;
         $this->key_name = $company_name.":fullpage:data";
 
-        $feedback     = new DBFeedback;
-        $this->feeds = $this->feedback->televised_feedback_alt($company_name);
+        $feedback = new DBFeedback;
+        $this->feeds = $feedback->televised_feedback_alt($company_name);
     }
 
     public function view_fragment() { 
