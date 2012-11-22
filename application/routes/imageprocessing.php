@@ -18,8 +18,9 @@ return array(
         $user = S36Auth::user();
         $data = Input::all();
         $data['company_id'] = $user->companyid;
-        $company->update_coverphoto($data);
-        echo json_encode($data);
+        $result = $company->update_coverphoto($data);
+        Helpers::dump($result);
+        //echo json_encode($data);
     }
 );
 

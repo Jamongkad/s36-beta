@@ -19,7 +19,7 @@ angular.module('fileupload', [])
 
                         $('#coverPhoto').attr('src', data.msg);
                         $('#defaultCoverPhoto').remove();
-
+                         
                         $('<img />')
                             .attr('src', data.msg)
                             .load(function() {
@@ -28,7 +28,6 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                console.log("Image Loading done");
                             });
                         activate_drag(true);
                     }

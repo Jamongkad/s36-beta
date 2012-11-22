@@ -120,8 +120,16 @@ class DBCompany extends S36DataObject {
             $src = (isset($data['src'])) ? $data['src'] : null;
             $top = (isset($data['top'])) ? $data['top'] : 0;
             $company_id = $data['company_id'];
-            return DB::table('Company')
+
+            $existing_cover_photo = DB::table('Company')
+                ->where('companyId', '=', $company_id)
+                ->first(Array('coverphoto_src'));
+
+            return $existing_cover_photo;
+            /*
+            DB::table('Company')
                 ->where('companyId', '=', $company_id)
                 ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
+            */
     }
 }
