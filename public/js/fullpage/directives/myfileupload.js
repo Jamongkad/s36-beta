@@ -28,7 +28,7 @@ angular.module('fileupload', [])
                                     $('#dragPhoto').fadeIn('fast');
                                     $('#saveCoverButton').fadeIn('fast');
                                 });
-                                deactivate_drag(false);
+                                deactivate_drag(true);
                             });
                     }
                 }
@@ -75,7 +75,7 @@ angular.module('fileupload', [])
 })
 
 function deactivate_drag(flag) {
-    if(flag) {
+    if(!flag) {
         console.log('Draggable Disabled');
         $("#theCover img").draggable({disabled: true});
     } else {
@@ -102,5 +102,5 @@ function hide_save_button(){
     });
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
-    deactivate_drag(true);
+    deactivate_drag(false);
 }
