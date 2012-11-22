@@ -148,7 +148,7 @@ $(document).ready(function(){
                 $class      = '';
                 switch ($feed->feed_data->origin) {
                     case 's36':
-                        if($feed->feed_data->isfeatured==1){
+                        if($feed->feed_data->isfeatured == 1){
                             $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? '/uploaded_cropped/150x150/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
                             $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="large-avatar"/>';
                             $class  = 'featured';
@@ -179,8 +179,7 @@ $(document).ready(function(){
                                         <div class="feedbackDate"><?=date('W F Y',$feed->feed_data->unix_timestamp)?></div>
                                     </div>
                                     <div class="feedbackBlock">
-                                        <div class="feedbackMeta">
-                                            <!-- <div class="feedbackTimestamp">21 minutes ago via <span><a href="#">36Stories</a></span></div>  -->
+                                        <div class="feedbackMeta"> 
                                             <div class="feedbackSocial">
                                                 <div class="feedbackSocialTwitter"><a href="http://webmumu.com" class="twitter-share-button">Tweet</a></div>
                                                 <div class="feedbackSocialFacebook"><fb:like href="http://dev.gearfish.com/hosted/single/230" send="false" layout="button_count" width="100" show_faces="false" style="float:left"></fb:like></div>
@@ -194,7 +193,7 @@ $(document).ready(function(){
                         break;
                     case 'tw':
                         $twfeedback = 'twt-feedback';
-                        if($feed->feed_data->isfeatured==1){
+                        if($feed->feed_data->isfeatured == 1){
                             $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? $feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
                             $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="large-avatar"/>';
                             $class = 'twt-featured';
