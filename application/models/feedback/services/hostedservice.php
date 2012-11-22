@@ -28,7 +28,7 @@ class HostedService {
     }
 
     public function fetch_hosted_feedback() {
-        $this->collection = $this->collection_data_alt();//$this->collection_data(); 
+        $this->collection = $this->collection_data_alt();
         return $this->collection_data_alt();
     }
 
@@ -46,6 +46,8 @@ class HostedService {
     }
 
     public function collection_data_alt() { 
+
+        Helpers::dump($this->company_name);
 
         $feeds = $this->feedback->televised_feedback_alt($this->company_name);
         $collection = Array();
