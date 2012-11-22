@@ -60,7 +60,8 @@
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
-                console.log(counter);
+                var page_counter = counter + 1;
+                console.log(page_counter);
 		   }
 		});
 		
