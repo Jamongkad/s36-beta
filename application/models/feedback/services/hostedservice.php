@@ -28,7 +28,6 @@ class HostedService {
     }
 
     public function fetch_hosted_feedback() {
-        $this->collection = $this->collection_data_alt();
         return $this->collection_data_alt();
     }
 
@@ -51,6 +50,7 @@ class HostedService {
         $collection = Array();
 
         foreach($feeds->result as $feed) {
+
             if($feed->isfeatured) { 
                 $obj = new StdClass;   
                 $obj->sort_id = 'featured_'.$feed->id;          
@@ -62,9 +62,10 @@ class HostedService {
                 $obj->sort_id = 'published_'.$feed->id;          
                 $obj->feed_data = $feed;
             }
-            $collection[strtotime($feed->head_date_format)][] = $obj;        
+
+            $collection[strtotime($feed->head_date_format)] = $obj;        
         }  
-        //Helpers::dump($collection);
+
         $repack = Array();
         foreach($collection as $date_key => $children) {
             $ctr = 0;            
