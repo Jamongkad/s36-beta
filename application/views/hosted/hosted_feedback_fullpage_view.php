@@ -132,7 +132,7 @@ $(document).ready(function(){
         /*
         /   START FEEDBACK LOOP
         */
-        foreach ($feeds as $feed_group=>$feed_list) : 
+        foreach ($feeds as $feed_group => $feed_list) : 
         ?>
         <div class="feedback-date-block">
             <div class="feedback-date">
