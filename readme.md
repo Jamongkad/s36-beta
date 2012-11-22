@@ -1,1 +1,1 @@
-### 36Stories - StarFox build 0.3.0 (Mathew Branch).
+### 36Stories - StarFox build 0.3.0 (Mathew Branch)
