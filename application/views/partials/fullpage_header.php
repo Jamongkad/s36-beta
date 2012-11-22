@@ -13,10 +13,6 @@
 <script type="text/javascript" src="js/masonry.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 
-<!--Temporarily removing
-<script type="text/javascript" src="js/jquery.ajaxfileupload.js"></script>
--->
-
 <!--new ajax file upload plugin -->
 <script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
 <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
@@ -75,23 +71,6 @@
 		});
 
 		// New scripts for the Logo Upload Oct 4 2012
-		//make_cover_undraggable(true);
-		$('#changeCoverButton').hide();
-		$('#pageCover').mouseover(function(){
-			if($('#saveCoverButton').css('display')=='none'){
-				$('#changeCoverButton').show();
-			}
-		});
-
-		$('#pageCover').mouseout(function(){
-			$('#changeCoverButton').hide();
-		});
-	
-		$('#changeCoverButton').mousemove(function(e){
-			$('#logoUpload').css('left', e.clientX - 5);
-			$('#logoUpload').css('top' , e.clientY - 5);
-			$('#logoUpload').css('cursor','pointer');
-		});
 		// end of new scripts
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');

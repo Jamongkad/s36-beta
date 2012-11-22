@@ -103,3 +103,20 @@ function hide_save_button(){
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
 }
+
+$('#changeCoverButton').hide();
+$('#pageCover').mouseover(function(){
+    if($('#saveCoverButton').css('display')=='none'){
+        $('#changeCoverButton').show();
+    }
+});
+
+$('#pageCover').mouseout(function(){
+    $('#changeCoverButton').hide();
+});
+
+$('#changeCoverButton').mousemove(function(e){
+    $('#logoUpload').css('left', e.clientX - 5);
+    $('#logoUpload').css('top' , e.clientY - 5);
+    $('#logoUpload').css('cursor','pointer');
+});
