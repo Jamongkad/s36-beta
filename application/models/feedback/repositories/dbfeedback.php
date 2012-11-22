@@ -505,7 +505,7 @@ class DBFeedback extends S36DataObject {
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
-            LIMIT 0, 10
+            LIMIT 10, 10
         ';
 
         $sth = $this->dbh->prepare($sql);
