@@ -11,10 +11,8 @@ angular.module('fileupload', [])
               , success: function(data) { 
 	                $('#changeCoverButton #changeButtonText').html('Crunching Image...');
 
-                    if(data.error) {
-                         
+                    if(data.error) {      
                         $('#changeCoverButton #changeButtonText').html(data.error + ' Click to Choose File Again' );
-
                     } else { 
 
                         $('#coverPhoto').attr('src', data.msg);
@@ -44,9 +42,9 @@ angular.module('fileupload', [])
 
                 var cover_src = $('#theCover img');
                 var img_src_attrs = {
-                    src : cover_src.attr('src'),
-                    top : cover_src.offset().top,
-                    left: 0
+                    src : cover_src.attr('src')
+                  , top : cover_src.offset().top
+                  , left: 0
                 }	
                 
                 $.ajax({

@@ -32,9 +32,7 @@ $(document).ready(function(){
         <div id="pageCover" <?=(!$admin and !$company->coverphoto_src) ? "style='height: 40px;'" : null?>>
 
             <?php if($admin == 1): ?>
-
                 <div id="changeCoverButton">
-
                     <div id="changeButtonText">            
                         Change Cover
                     </div>
