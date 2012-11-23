@@ -52,7 +52,7 @@
                 counter += 1;
                 var page_counter = counter + 1;
 		        var container = $('#feedback-landing');
-                console.log(page_counter);
+                console.log( '/hosted/fullpage_partial/' + page_counter );
                 /*
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
