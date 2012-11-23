@@ -189,10 +189,11 @@ return array(
         });
 
         $tf->test('Televised Feedback', function($tf) { 
-            $tf->data->hosted->debug = True;
+            $tf->data->hosted->debug = False;
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->build_data();
-            $tf->data->hosted->view_fragment();
+            $data = $tf->data->hosted->view_fragment();
+            Helpers::dump($data);
         });
         
         $tf->run();
