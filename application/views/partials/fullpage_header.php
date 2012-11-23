@@ -47,7 +47,7 @@
 		});
     
 	    var counter = 0;	
-		$(window).unbind('scroll.fullpage').bind('scroll.fullpage', function() {
+		$(window).bind('scroll.fullpage', function() {
 		   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                 counter += 1;
                 //var page_counter = counter + 1;
