@@ -210,7 +210,7 @@ div{position:relative;}
 /* feedbacks */
 .feedbackBlock{margin-bottom:5px;}
 .feedbackBlock:last-child{margin-bottom:0px;}
-.feedback{width:311px;margin:25px 15px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
+.feedback{width:330px;margin:25px 15px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
 .featured{width:711px;padding:30px;border:none;}
 .featured .feedbackAuthor{float:left;width:195px;}
 .featured .feedbackAuthor .feedbackAuthorAvatar{width:150px;height:150px;}

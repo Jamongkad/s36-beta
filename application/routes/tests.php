@@ -365,5 +365,11 @@ return array(
         $DBPlan = new \Plan\Repositories\DBPlan;
         Helpers::show_data($S36Braintree->update_subscription('free'));
         exit();
+    },
+    'GET /tests/adminreply' =>function(){
+        $adminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
+        $q = $adminReply->add_admin_reply(array('feedbackId'=>529,'adminReply'=>'hello world'));
+        $q = $adminReply->get_admin_reply();
+        \Helpers::show_data($q);
     }
 );

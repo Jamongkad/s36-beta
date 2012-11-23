@@ -54,7 +54,6 @@ return array(
            , 'company_id' => $company_info->companyid
         ));
         $meta->calculate_metrics();
-        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'         => $company_info
                                                   , 'user'            => $user

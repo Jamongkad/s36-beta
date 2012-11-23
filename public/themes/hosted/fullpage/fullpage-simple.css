@@ -62,8 +62,10 @@ a:hover{color:#54a1c0;}
 .feedback-spacer{display:none;}
 .feedback-branch{display:none;}
 .feedback{
+	/*
 	width:342px;
 	margin:9px 8px;
+	*/
 }
 .feedback.twt-feedback.twt-featured{
 	background:none;
