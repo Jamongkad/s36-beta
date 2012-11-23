@@ -80,7 +80,7 @@
                 */
 		   }
 		}
-        var throttled = _.throttle(update, 100);
+        var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 		
 		$('.feedback').hover(function(){
