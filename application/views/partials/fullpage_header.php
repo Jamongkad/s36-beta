@@ -61,18 +61,19 @@
 
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
-                          , columnWidth: 100
+                          , columnWidth: function(containerWidth) {
+                                console.log(containerWidth);
+                                return containerWidth / 5;   
+                            }
                         });
 
                         $('.feedback').each(function(){
                             var leftOffset = $(this).css('left');
-                            console.log(leftOffset);
-                            /*
                             if(leftOffset == '400px'){
+                                console.log('moove');
                                 $(this).css('left','418px');
-                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+                                //$(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
                             }
-                            */
                             
                         });
                         /*
