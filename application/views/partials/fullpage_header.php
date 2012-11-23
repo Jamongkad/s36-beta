@@ -86,9 +86,11 @@
 		$(window).scroll(throttled);
 		
 		$('.feedback').hover(function(){
+            console.log('pwet');
 		    $(this).find('.feedbackSocialTwitter').fadeIn();
 			$(this).find('.feedbackSocialFacebook').fadeIn();
 		},function(){
+            console.log('titi');
 			$(this).find('.feedbackSocialTwitter').fadeOut();
 			$(this).find('.feedbackSocialFacebook').fadeOut();
 		});
