@@ -60,8 +60,8 @@
                         container.append( boxes );
 
                         $('.the-feedbacks').masonry({
-                            itemSelector: '.feedback',
-                            columnWidth: 100, 
+                            itemSelector: '.feedback'
+                          , columnWidth: 100
                         });
 
                         $('.feedback').each(function(){
