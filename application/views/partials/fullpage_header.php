@@ -56,7 +56,8 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         var boxes = $(msg);
-                        console.log(boxes.children('.the-feedbacks').masonry({ 
+                        container.append(boxes);
+                        boxes.children('.the-feedbacks').masonry({ 
                             itemSelector: '.feedback',
                             columnWidth: 100,
                             isAnimated: !Modernizr.csstransitions,
@@ -66,8 +67,7 @@
                                 queue: false
                             }
                             
-                        }));
-                        container.append(boxes)                        
+                        })
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
