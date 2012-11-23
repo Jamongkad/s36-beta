@@ -9,11 +9,9 @@ return array(
         return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
-    'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($company_name, $page=False) {
-        $hosted = new Feedback\Services\HostedService($company_name);
+    'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($page=False) {
+        $hosted = new Feedback\Services\HostedService(Config::get('application.subdomain'));
         $hosted->page_number = $page;
-
-        $hosted->fetch_hosted_feedback(); 
         $hosted->build_data();         
         echo $hosted->view_fragment();
     }

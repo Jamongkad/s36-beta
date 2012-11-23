@@ -61,7 +61,10 @@
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 var page_counter = counter + 1;
-                console.log(page_counter);
+		        var container = $('.the-feedbacks');
+                $.ajax({
+                    
+                })
 		   }
 		});
 		

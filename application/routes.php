@@ -28,12 +28,13 @@ return array(
         $company_info = $company->get_company_info($company_name);
 
         $hosted = new Feedback\Services\HostedService($company_name); 
-        //Feeds
-        $feeds = $hosted->fetch_hosted_feedback();
-        //$hosted->build_data(); <---- I will take care of this - Mathew
+
+        //Feeds 
+        $hosted->page_number = 1;
+        $hosted->build_data();
+        $feeds = $hosted->fetch_data_by_set();
 
         $widget = $dbw->fetch_canonical_widget($company_name);
-
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
