@@ -190,7 +190,7 @@ return array(
         $tf->test('Televised Feedback', function($tf) { 
             $tf->data->page_number = 1;
             $tf->data->hosted->build_data();
-            $set = $tf->data->fetch_data_by_set();
+            $set = $tf->data->hosted->fetch_data_by_set();
             Helpers::dump($set);
         });
         
