@@ -23,18 +23,6 @@
 <script type="text/javascript">
 		
 	$(document).ready(function(){
-        /*
-		$('.feedback').each(function(){
-			var leftOffset = $(this).css('left');
-			
-			if(leftOffset == '400px'){
-				$(this).css('left','418px');
-				$(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
-			}
-			
-		});
-        */
-
 		$('.the-feedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
@@ -76,12 +64,7 @@
                             }
                             
                         });
-                        /*  
-                        $('.the-feedbacks').masonry({
-                            itemSelector: '.feedback'
-                          , columnWidth: 100    
-                        }); 
-              
+                        /*
                         FB.XFBML.parse() ;
                         $('.feedback').hover(function(){
                             $(this).find('.feedbackSocialTwitter').fadeIn();
@@ -90,7 +73,7 @@
                             $(this).find('.feedbackSocialTwitter').fadeOut();
                             $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
-                        */ 
+                        */
                     }
                 });
 		   }
