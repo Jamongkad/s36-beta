@@ -210,5 +210,7 @@ $(document).ready(function(){
         <div class="spine-spacer"></div>
         </div>
         <?php endforeach; //end feedback list?>
+<!--
     <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
 </div>
+-->
