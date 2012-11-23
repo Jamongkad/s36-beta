@@ -188,7 +188,7 @@ return array(
         $tf->test('Televised Feedback', function($tf) { 
             $hosted_data = $tf->data->hosted->fetch_hosted_feedback();
             $page = 0;
-            foreach($this->fetch_hosted_feedback() as $feed_group => $feed_list) {
+            foreach($hosted_data as $feed_group => $feed_list) {
                 Helpers::dump(++$page);
             }
             //$build = $tf->data->hosted->build_data();
