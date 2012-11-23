@@ -56,7 +56,9 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         var boxes = $(msg);
-                        container.append(boxes).masonry('reload');
+                        container.append(boxes)
+                        .masonry()
+                        .masonry('reload');
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
