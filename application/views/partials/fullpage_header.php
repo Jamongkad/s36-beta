@@ -47,7 +47,7 @@
 		});
     
 	    var counter = 0;	
-		$(window).scroll(function() {
+        function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 //var page_counter = counter + 1;
@@ -79,7 +79,9 @@
                 });
                 */
 		   }
-		});
+		}
+        var throttled = _.throttle(update, 100);
+		$(window).scroll(throttled);
 		
 		$('.feedback').hover(function(){
 		    $(this).find('.feedbackSocialTwitter').fadeIn();
