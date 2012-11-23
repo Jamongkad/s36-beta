@@ -66,7 +66,7 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-                        container.append($(msg));
+                        container.after($(msg));
                     }
                 })
 		   }
