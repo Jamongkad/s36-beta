@@ -59,6 +59,17 @@
                         //container.append( boxes ).masonry( 'appended', boxes ); 
                         container.append( boxes );
 
+                        $('.the-feedbacks').masonry({
+                            itemSelector: '.feedback',
+                            columnWidth: 100,
+                            isAnimated: !Modernizr.csstransitions,
+                            animationOptions: {
+                                duration: 750,
+                                easing: 'linear',
+                                queue: false
+                            }
+                        });
+
                         $('.feedback').each(function(){
                             var leftOffset = $(this).css('left');
                             
