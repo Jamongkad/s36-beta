@@ -57,10 +57,7 @@
                   , success: function(msg) { 
                         var boxes = $(msg);
                         //container.append( boxes ).masonry( 'appended', boxes ); 
-                        container.append( boxes );
-                        $('.the-feedbacks').masonry({
-                            itemSelector: '.feedback',
-                        });
+                        container.append( boxes ).masonry('appended', boxes);
                         /*
                         FB.XFBML.parse() ;
 
