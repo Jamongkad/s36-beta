@@ -61,7 +61,8 @@
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 var page_counter = counter + 1;
-		        var container = $('.the-feedbacks');
+		        var container = $('.feedback-date-block');
+
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
