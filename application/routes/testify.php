@@ -177,7 +177,7 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/hosted_feeds/(:any?)' => function($id) {
+    'GET /testify/hosted_feeds/(:any?)' => function($id=null) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($id) {
             $mycompany = Config::get('application.subdomain');
