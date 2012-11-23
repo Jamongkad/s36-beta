@@ -79,7 +79,7 @@
                 });
                 */
 		   }
-		});
+		}).unbind('scroll.fullpage');
 		
 		$('.feedback').hover(function(){
 		    $(this).find('.feedbackSocialTwitter').fadeIn();
