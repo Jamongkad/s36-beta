@@ -47,13 +47,12 @@
 		});
     
 	    var counter = 0;	
-		$(window).scroll(function() {
+		$(window).unbind('scroll.fullpage').bind('scroll.fullpage', function() {
 		   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                 counter += 1;
                 //var page_counter = counter + 1;
 		        var container = $('#feedback-landing');
                 console.log( '/hosted/fullpage_partial/' + counter );
-                $(window).unbind('scroll');
                 /*
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
