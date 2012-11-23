@@ -66,11 +66,13 @@
 
                         $('.feedback').each(function(){
                             var leftOffset = $(this).css('left');
-                            
+                            console.log(leftOffset);
+                            /*
                             if(leftOffset == '400px'){
                                 $(this).css('left','418px');
                                 $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
                             }
+                            */
                             
                         });
                         /*
