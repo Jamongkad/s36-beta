@@ -64,8 +64,10 @@
                             }
                             
                         });
+   
+                        twttr.widgets.load(); // parse the twitter widgets
+                        FB.XFBML.parse();	  // parse the facebook widgets
                         /*
-                        FB.XFBML.parse() ;
                         $('.feedback').hover(function(){
                             $(this).find('.feedbackSocialTwitter').fadeIn();
                             $(this).find('.feedbackSocialFacebook').fadeIn();
@@ -74,6 +76,7 @@
                             $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
                         */
+                         
                     }
                 });
 		   }
@@ -99,7 +102,7 @@
 		});
 	});
 	/* end of document ready function. below are custom functions for this form */	
-	
+/*	
  function loadSocialButtons(id,target){
 		
 		var link = 'http://www.36stories.com/stand-alone/'+id;
@@ -118,7 +121,7 @@
 		}
 		target.slideToggle('fast');
 	}
-
+*/
 </script>
 
 <div id="fb-root"></div>
