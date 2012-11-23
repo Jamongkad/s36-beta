@@ -68,6 +68,17 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         container.append($(msg));
+
+                        $('.feedback').each(function(){
+                            var leftOffset = $(this).css('left');
+                            
+                            if(leftOffset == '400px'){
+                                $(this).css('left','418px');
+                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+                            }
+                            
+                        });
+
                     }
                 })
 		   }
