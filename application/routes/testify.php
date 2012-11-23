@@ -177,15 +177,15 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/hosted_feeds/(:any?)' => function($page) {
+    'GET /testify/hosted_feeds/(:any?)' => function($id) {
         $tf = new Testify("Hosted Feeds Test");
-        $tf->beforeEach(function($tf) use ($page) {
+        $tf->beforeEach(function($tf) use ($id) {
             $mycompany = Config::get('application.subdomain');
             $razer = 'razer';
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
-            $tf->data->page = $page;
+            $tf->data->page = $id;
         });
 
         $tf->test('Televised Feedback', function($tf) { 
