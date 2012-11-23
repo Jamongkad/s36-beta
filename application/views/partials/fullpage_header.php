@@ -57,16 +57,8 @@
                   , success: function(msg) { 
                         var boxes = $(msg);
                         container.append(boxes)
-                        .masonry({
-                            itemSelector: '.feedback',
-                            columnWidth: 100,
-                            isAnimated: !Modernizr.csstransitions,
-                            animationOptions: {
-                                duration: 750,
-                                easing: 'linear',
-                                queue: false
-                            }
-		                }).masonry('appended', boxes, true);
+                        $('.the-feedbacks').masonry('reload');
+                        
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
