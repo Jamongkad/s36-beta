@@ -45,18 +45,7 @@
 				queue: false
 			}
 		});
-
-		$('#twitterFeedbacks').masonry({
-			itemSelector: '.feedback',
-			columnWidth: 100,
-			isAnimated: !Modernizr.csstransitions,
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			  }
-		});	
-
+    
 	    var counter = 0;	
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -79,17 +68,6 @@
                                 queue: false
                             }
                         });
-
-                        $('.feedback').each(function(){
-                            var leftOffset = $(this).css('left');
-                            
-                            if(leftOffset == '400px'){
-                                $(this).css('left','418px');
-                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
-                            }
-                            
-                        });
-
                     }
                 })
 		   }
