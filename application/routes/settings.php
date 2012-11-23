@@ -1,14 +1,24 @@
 <?php
 
-$category = new DBCategory;
+$category 			= new DBCategory;
+$company 			= new Company\Repositories\DBCompany;
+$hosted_settings 	= new Widget\Repositories\DBHostedSettings;
+
 
 return array (
 
-    'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category) {
-        $user = S36Auth::user();
+    'GET /settings' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($category,$company,$hosted_settings) {
+        $user 				= S36Auth::user();
+        $company_name 		= Config::get('application.subdomain');
+        $company_info 		= $company->get_company_info($company_name);
+
+        //get hosted settings
+        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+
         return View::of_layout()->partial('contents', 'settings/settings_index_view', Array(
             'user' => $user
           , 'category' => $category->pull_site_categories()
+          , 'hosted_settings' => $hosted_settings->hosted_settings()
         ));
     }),
 
@@ -29,8 +39,27 @@ return array (
 
     'POST /settings/savesettings' => function() {
         $company = new Company\Repositories\DBCompany;
-
+        $hosted_settings = new Widget\Repositories\DBHostedSettings;
         $post = (object)Input::get();
+
+        //autoposting start
+        if(isset($post->autopost_enable) && $post->autopost_enable){
+        	$hosted_settings->update_autoposting(array(
+        		 'companyid' 		=> $post->companyid
+        		,'autopost_enable' 	=> 1
+        		,'autopost_rating' 	=> $post->autopost_rating
+        	));
+        }else{
+        	$hosted_settings->update_autoposting(array(
+        		 'companyid' 		=> $post->companyid
+        		,'autopost_enable' 	=> 0
+        		,'autopost_rating' 	=> 0
+        	));
+        }
+        unset($post->autopost_enable);
+        unset($post->autopost_rating);
+        //autoposting end
+
         $company->update_company_emails($post);
  
         //lets help the user along!

@@ -49,6 +49,8 @@ class DBHostedSettings extends S36DataObject {
                   , header_text
                   , submit_form_text
                   , background_image
+                  , autopost_enable
+                  , autopost_rating
                   , TRIM(submit_form_question) AS submit_form_question
                 FROM 
                     HostedSettings 
@@ -65,6 +67,10 @@ class DBHostedSettings extends S36DataObject {
     //this method makes more sense....retrieves hosted settings
     public function hosted_settings() {
         return $this->record_exists();
+    }
+
+    public function update_autoposting($data){
+        return DB::table('HostedSettings')->where('companyId','=',$data['companyid'])->update($data); 
     }
 
 }
