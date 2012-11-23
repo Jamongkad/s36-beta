@@ -87,7 +87,7 @@
 		   }
         }
 
-		$(window).scroll(bind_scroll());
+		$(window).scroll(bind_scroll);
 		
 		$('.feedback').hover(function(){
 		    $(this).find('.feedbackSocialTwitter').fadeIn();
