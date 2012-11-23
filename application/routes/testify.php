@@ -177,7 +177,7 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/hosted_feeds' => function() {
+    'GET /testify/hosted_feeds/(:any?)' => function($page) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) {
             $mycompany = Config::get('application.subdomain');
@@ -188,7 +188,7 @@ return array(
         });
 
         $tf->test('Televised Feedback', function($tf) { 
-            $tf->data->page_number = 1;
+            $tf->data->page_number = $page;
             $tf->data->hosted->build_data();
             $set = $tf->data->hosted->fetch_data_by_set();
             Helpers::dump($set);
