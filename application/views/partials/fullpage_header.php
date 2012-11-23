@@ -61,18 +61,7 @@
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
                           , columnWidth: 100    
-                        });
-
-                        $('.feedback').each(function(){
-                            var leftOffset = $(this).css('left');
-                            if(leftOffset == '400px'){
-                                console.log('moove')
-                                $(this).css('left','418px');
-                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
-                            }
-                            
-                        });
-                      
+                        }); 
                         /*
                         FB.XFBML.parse() ;
 
@@ -86,6 +75,16 @@
                         */
                     }
                 })
+
+                $('.feedback').each(function(){
+                    var leftOffset = $(this).css('left');
+                    if(leftOffset == '400px'){
+                        console.log('moove')
+                        $(this).css('left','418px');
+                        $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+                    }
+                    
+                });
 		   }
 		});
 		
