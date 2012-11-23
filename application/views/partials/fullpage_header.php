@@ -62,8 +62,11 @@
                 counter += 1;
                 var page_counter = counter + 1;
 		        var container = $('.the-feedbacks');
-                $.ajax({
-                    
+                $.ajax({ 
+                    url: '/hosted/fullpage_partial/' + page_counter
+                  , success: function(msg) { 
+                        container.append($(msg));
+                    }
                 })
 		   }
 		});
