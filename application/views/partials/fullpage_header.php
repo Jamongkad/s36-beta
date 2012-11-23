@@ -67,16 +67,16 @@
    
                         twttr.widgets.load(); // parse the twitter widgets
                         FB.XFBML.parse();	  // parse the facebook widgets
-                        /*
+                         
                         $('.feedback').hover(function(){
+                            console.log('pwet');
                             $(this).find('.feedbackSocialTwitter').fadeIn();
                             $(this).find('.feedbackSocialFacebook').fadeIn();
                         },function(){
+                            console.log('titi');
                             $(this).find('.feedbackSocialTwitter').fadeOut();
                             $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
-                        */
-                         
                     }
                 });
 		   }
