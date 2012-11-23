@@ -65,9 +65,17 @@
                                 duration: 750,
                                 easing: 'linear',
                                 queue: false
+                            } 
+                        })
+                        $('.feedback').each(function(){
+                            var leftOffset = $(this).css('left');
+                            
+                            if(leftOffset == '400px'){
+                                $(this).css('left','418px');
+                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
                             }
                             
-                        })
+                        });
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
