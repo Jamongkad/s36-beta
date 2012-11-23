@@ -55,15 +55,14 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-                        var boxes = $(msg);
-                        container.append( boxes ).masonry( 'appended', boxes ); 
+                        var $boxes = $(msg);
+                        container.append( boxes ).masonry( 'appended', $boxes ); 
                         //container.append( boxes );
                         /*
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
                           , columnWidth: 100    
                         });
-                        */
 
                         $('.feedback').each(function(){
                             var leftOffset = $(this).css('left');
@@ -74,6 +73,7 @@
                             }
                             
                         });
+                        */
                         /*
                         FB.XFBML.parse() ;
 
