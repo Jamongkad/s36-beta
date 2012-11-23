@@ -57,8 +57,8 @@
                   , success: function(msg) { 
                         var boxes = $(msg);
                         container.append(boxes)
-                        .masonry()
-                        .masonry('appended', boxes);
+                        //.masonry()
+                        .masonry('appended', boxes, true);
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
