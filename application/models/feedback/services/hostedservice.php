@@ -110,6 +110,10 @@ class HostedService {
             echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
+            $page = 0;
+            foreach($this->fetch_hosted_feedback() as $feed_group => $feed_list) {
+                Helpers::dump(++$page);
+            }
             /*
             foreach($this->scale_feeds() as $ky => $vl) {
                 if($ky == "start_collection") {

@@ -187,8 +187,12 @@ return array(
 
         $tf->test('Televised Feedback', function($tf) { 
             $hosted_data = $tf->data->hosted->fetch_hosted_feedback();
-            $build = $tf->data->hosted->build_data();
-            Helpers::dump($build);
+            $page = 0;
+            foreach($this->fetch_hosted_feedback() as $feed_group => $feed_list) {
+                Helpers::dump(++$page);
+            }
+            //$build = $tf->data->hosted->build_data();
+            //Helpers::dump($build);
             //$tf->assert($tf->data->hosted->collection_data_alt());
         });
         
