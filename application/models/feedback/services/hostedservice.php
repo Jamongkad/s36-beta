@@ -113,8 +113,9 @@ class HostedService {
             $page = 0;
             foreach($this->fetch_hosted_feedback() as $feed_group => $feed_list) {
                 $page_number = ++$page;
-                $g = Array($feed_group => $feed_list);
-                $this->redis->hset($this->key_name, "set:$page_number", json_encode($g));
+                $spring_data = Array($feed_group => $feed_list);
+                $this->redis->hset($this->key_name, "set:$page_number", json_encode($spring_data));
+                $spring_data = Null;
             }
         } 
     }
