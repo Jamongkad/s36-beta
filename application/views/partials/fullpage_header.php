@@ -60,7 +60,7 @@
                         container.append( boxes );
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback',
-                            columnWidth: 100,
+                            columnWidth: 110,
                         });
                         /*
                         FB.XFBML.parse() ;
