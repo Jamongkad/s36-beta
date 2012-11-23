@@ -50,9 +50,9 @@
 		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
-                var page_counter = counter + 1;
+                //var page_counter = counter + 1;
 		        var container = $('#feedback-landing');
-                console.log( '/hosted/fullpage_partial/' + page_counter );
+                console.log( '/hosted/fullpage_partial/' + counter );
                 /*
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
