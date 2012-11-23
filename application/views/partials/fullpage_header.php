@@ -57,7 +57,7 @@
                   , success: function(msg) { 
                         var boxes = $(msg);
                         container.append( boxes );
-                        /*
+                       
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
                           , columnWidth: 100    
@@ -72,7 +72,7 @@
                             }
                             
                         });
-                        */
+                      
                         /*
                         FB.XFBML.parse() ;
 
