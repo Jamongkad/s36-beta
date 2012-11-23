@@ -183,13 +183,17 @@ return array(
             $mycompany = Config::get('application.subdomain');
             $razer = 'razer';
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
+            $tf->data->redis     = new redisent\Redis;
+            $tf->data->key_name = $mycompany.":fullpage:data";
         });
 
         $tf->test('Televised Feedback', function($tf) { 
             $hosted_data = $tf->data->hosted->fetch_hosted_feedback();
             $page = 0;
             foreach($hosted_data as $feed_group => $feed_list) {
-                Helpers::dump(++$page);
+                $page_number = ++$page;
+                Helpers::dump($page_number);
+                //$tf->data->redis->hset($this->key_name, "set:1", json_encode($vl));
             }
             //$build = $tf->data->hosted->build_data();
             //Helpers::dump($build);
