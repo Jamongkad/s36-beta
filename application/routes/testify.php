@@ -188,16 +188,10 @@ return array(
         });
 
         $tf->test('Televised Feedback', function($tf) { 
-            $hosted_data = $tf->data->hosted->fetch_hosted_feedback();
-            $page = 0;
-            foreach($hosted_data as $feed_group => $feed_list) {
-                $page_number = ++$page;
-                $g = Array($feed_group => $feed_list);
-                $tf->data->redis->hset($tf->data->key_name, "set:$page_number", json_encode($g));
-            }
-            //$build = $tf->data->hosted->build_data();
-            //Helpers::dump($build);
-            //$tf->assert($tf->data->hosted->collection_data_alt());
+            $tf->data->page_number = 1;
+            $tf->data->hosted->build_data();
+            $set = $tf->data->fetch_data_by_set();
+            Helpers::dump($set);
         });
         
         $tf->run();

@@ -107,27 +107,15 @@ class HostedService {
  
         $key = $this->redis->hgetall($this->key_name);
         if(!$key || $redis_total_set !== $total_collection) {
-            echo "Processing: Insert Data into Redis";
+            //echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
             $page = 0;
             foreach($this->fetch_hosted_feedback() as $feed_group => $feed_list) {
-                Helpers::dump(++$page);
+                $page_number = ++$page;
+                $g = Array($feed_group => $feed_list);
+                $this->redis->hset($this->key_name, "set:$page_number", json_encode($g));
             }
-            /*
-            foreach($this->scale_feeds() as $ky => $vl) {
-                if($ky == "start_collection") {
-                    $this->redis->hset($this->key_name, "set:1", json_encode($vl));
-                }
-
-                if($ky == "end_collection") {
-                    foreach($vl as $k => $v)  {
-                        $index = $k + 2; //page numbers
-                        $this->redis->hset($this->key_name, "set:".$index, json_encode($v)); 
-                    }
-                }   
-            }
-            */
         } 
     }
 
