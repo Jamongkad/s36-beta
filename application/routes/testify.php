@@ -192,8 +192,7 @@ return array(
             $page = 0;
             foreach($hosted_data as $feed_group => $feed_list) {
                 $page_number = ++$page;
-                Helpers::dump($page_number);
-                //$tf->data->redis->hset($this->key_name, "set:1", json_encode($vl));
+                $tf->data->redis->hset($tf->data->key_name, "set:$feed_group:$page_number", $feed_list);
             }
             //$build = $tf->data->hosted->build_data();
             //Helpers::dump($build);
