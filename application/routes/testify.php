@@ -190,9 +190,10 @@ return array(
         $tf->test('Televised Feedback', function($tf) { 
             $hosted_data = $tf->data->hosted->fetch_hosted_feedback();
             $page = 0;
-            foreach($hosted_data as $feed) {
+            foreach($hosted_data as $feed_group => $feed_list) {
                 $page_number = ++$page;
-                $tf->data->redis->hset($tf->data->key_name, "set:$page_number", json_encode($feed));
+                $g = Array($feed_group => $feed_list);
+                $tf->data->redis->hset($tf->data->key_name, "set:$page_number", json_encode($g));
             }
             //$build = $tf->data->hosted->build_data();
             //Helpers::dump($build);
