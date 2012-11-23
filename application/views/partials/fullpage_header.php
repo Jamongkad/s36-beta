@@ -58,7 +58,7 @@
                         var boxes = $(msg);
                         container.append(boxes)
                         .masonry()
-                        .masonry('reload');
+                        .masonry('appended', boxes);
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
