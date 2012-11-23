@@ -57,7 +57,11 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         var boxes = $(msg);
-                        container.append( boxes ).masonry( 'appended', boxes ); 
+                        container.append( boxes ).masonry({
+                            appended: boxes     
+                          , columnWidth: 100
+			              , isAnimated: !Modernizr.csstransitions
+                        }); 
                         FB.XFBML.parse() ;
 
                         $('.feedback').hover(function(){
