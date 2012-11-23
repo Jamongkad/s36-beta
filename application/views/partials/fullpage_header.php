@@ -50,22 +50,19 @@
         function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
-                //var page_counter = counter + 1;
-		        var container = $('#feedback-landing');
-                console.log( '/hosted/fullpage_partial/' + counter );
-                /*
+                var page_counter = counter + 1;
+		        var container = $('#feedback-landing'); 
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         var boxes = $(msg);
                         container.append(boxes);
-               
+                        /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
                           , columnWidth: 100    
                         }); 
               
-                 
                         FB.XFBML.parse() ;
                         $('.feedback').hover(function(){
                             $(this).find('.feedbackSocialTwitter').fadeIn();
@@ -74,12 +71,12 @@
                             $(this).find('.feedbackSocialTwitter').fadeOut();
                             $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
-                
+                        */ 
                     }
                 });
-                */
 		   }
 		}
+        //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 		
