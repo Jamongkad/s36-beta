@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html ng-app="S36FullPageModule">
+<html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
@@ -56,17 +56,16 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-                        container.append($(msg));
+                        var boxes = $(msg);
+                        container.append( boxes ).masonry( 'appended', boxes ); 
+                        FB.XFBML.parse() ;
 
-                        $('.the-feedbacks').masonry({
-                            itemSelector: '.feedback',
-                            columnWidth: 100,
-                            isAnimated: !Modernizr.csstransitions,
-                            animationOptions: {
-                                duration: 750,
-                                easing: 'linear',
-                                queue: false
-                            }
+                        $('.feedback').hover(function(){
+                            $(this).find('.feedbackSocialTwitter').fadeIn();
+                            $(this).find('.feedbackSocialFacebook').fadeIn();
+                        },function(){
+                            $(this).find('.feedbackSocialTwitter').fadeOut();
+                            $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
                     }
                 })
