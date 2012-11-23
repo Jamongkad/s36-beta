@@ -47,47 +47,39 @@
 		});
     
 	    var counter = 0;	
-        function load_more() { 
-            counter += 1;
-            //var page_counter = counter + 1;
-            var container = $('#feedback-landing');
-            console.log( '/hosted/fullpage_partial/' + counter );
-            $(window).bind('scroll', bind_scroll());
-            /*
-            $.ajax({ 
-                url: '/hosted/fullpage_partial/' + page_counter
-              , success: function(msg) { 
-                    var boxes = $(msg);
-                    container.append(boxes);
-           
-                    $('.the-feedbacks').masonry({
-                        itemSelector: '.feedback'
-                      , columnWidth: 100    
-                    }); 
-          
-             
-                    FB.XFBML.parse() ;
-                    $('.feedback').hover(function(){
-                        $(this).find('.feedbackSocialTwitter').fadeIn();
-                        $(this).find('.feedbackSocialFacebook').fadeIn();
-                    },function(){
-                        $(this).find('.feedbackSocialTwitter').fadeOut();
-                        $(this).find('.feedbackSocialFacebook').fadeOut();
-                    });
-            
-                }
-            });
-            */
-        }
-
-        function bind_scroll() {  
+		$(window).scroll(function() {
 		   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-               $(window).unbind('scroll');
-               load_more();
+                counter += 1;
+                //var page_counter = counter + 1;
+		        var container = $('#feedback-landing');
+                console.log( '/hosted/fullpage_partial/' + counter );
+                /*
+                $.ajax({ 
+                    url: '/hosted/fullpage_partial/' + page_counter
+                  , success: function(msg) { 
+                        var boxes = $(msg);
+                        container.append(boxes);
+               
+                        $('.the-feedbacks').masonry({
+                            itemSelector: '.feedback'
+                          , columnWidth: 100    
+                        }); 
+              
+                 
+                        FB.XFBML.parse() ;
+                        $('.feedback').hover(function(){
+                            $(this).find('.feedbackSocialTwitter').fadeIn();
+                            $(this).find('.feedbackSocialFacebook').fadeIn();
+                        },function(){
+                            $(this).find('.feedbackSocialTwitter').fadeOut();
+                            $(this).find('.feedbackSocialFacebook').fadeOut();
+                        });
+                
+                    }
+                });
+                */
 		   }
-        }
-
-		$(window).scroll(bind_scroll);
+		});
 		
 		$('.feedback').hover(function(){
 		    $(this).find('.feedbackSocialTwitter').fadeIn();
