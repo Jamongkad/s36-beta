@@ -48,7 +48,7 @@
     
 	    var counter = 0;	
 		$(window).scroll(function() {
-		   if(($(window).scrollTop() + $(window).innerHeight()) >= $(document).height()) {
+		   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
                 counter += 1;
                 //var page_counter = counter + 1;
 		        var container = $('#feedback-landing');
