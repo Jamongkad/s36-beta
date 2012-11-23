@@ -45,6 +45,7 @@
 				queue: false
 			  }
 		});
+
 		$('#twitterFeedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
@@ -67,6 +68,16 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                         container.append($(msg));
+                        $('.the-feedbacks').masonry({
+                            itemSelector: '.feedback',
+                            columnWidth: 100,
+                            isAnimated: !Modernizr.csstransitions,
+                            animationOptions: {
+                                duration: 750,
+                                easing: 'linear',
+                                queue: false
+                              }
+                        });
                     }
                 })
 		   }
