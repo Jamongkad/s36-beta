@@ -57,8 +57,16 @@
                   , success: function(msg) { 
                         var boxes = $(msg);
                         container.append(boxes)
-                        //.masonry()
-                        .masonry('appended', boxes, true);
+                        .masonry({
+                            itemSelector: '.feedback',
+                            columnWidth: 100,
+                            isAnimated: !Modernizr.csstransitions,
+                            animationOptions: {
+                                duration: 750,
+                                easing: 'linear',
+                                queue: false
+                            }
+		                }).masonry('appended', boxes, true);
                         /*  
                         $('.the-feedbacks').masonry({
                             itemSelector: '.feedback'
