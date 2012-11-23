@@ -23,6 +23,9 @@
 <script type="text/javascript">
 		
 	$(document).ready(function(){
+
+        twttr.widgets.load(); // parse the twitter widgets
+        FB.XFBML.parse();	  // parse the facebook widgets
 		$('.the-feedbacks').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,

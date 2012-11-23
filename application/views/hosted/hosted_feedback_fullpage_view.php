@@ -156,7 +156,10 @@ $(document).ready(function(){
                                     <div class="feedbackBlock">
                                         <div class="feedbackMeta"> 
                                             <div class="feedbackSocial">
-                                                <div class="feedbackSocialTwitter"><a href="/single/<?=$feed->feed_data->id?>" class="twitter-share-button">Tweet</a></div>
+                                                <div class="feedbackSocialTwitter">
+                                                <a href="/single/<?=$feed->feed_data->id?>" class="twitter-share-button">Tweet</a>
+                                                
+                                                </div>
                                                 <div class="feedbackSocialFacebook">
                                                     <fb:like href="/single/<?=$feed->feed_data->id?>" send="false" 
                                                              layout="button_count" width="100" show_faces="false" style="float:left">
