@@ -198,7 +198,7 @@ jQuery(function($) {
             window.location = $(this).children('a').attr('href');
         });
     });
-     
+    /* 
     var check = new Checky({   
         feed_selection: '.feed-selection'
       , check_feed_id: '.check-feed-id'
@@ -208,6 +208,7 @@ jQuery(function($) {
 
     check.init(); 
     check.clickAll();
+    */
 
     var statusChange = new DropDownChange({status_element: 'span.status-change', status_selector: 'change.status'});
     statusChange.enable();
