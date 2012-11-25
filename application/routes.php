@@ -33,8 +33,6 @@ return array(
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
 
-        Helpers::dump($feeds);
-
         $widget = $dbw->fetch_canonical_widget($company_name);
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
