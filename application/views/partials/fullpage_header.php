@@ -79,16 +79,7 @@
                         });
    
                         twttr.widgets.load(); // parse the twitter widgets
-                        FB.XFBML.parse();	  // parse the facebook widgets
-                        /* 
-                        $('.feedback').hover(function(){
-                            $(this).find('.feedbackSocialTwitter').fadeIn();
-                            $(this).find('.feedbackSocialFacebook').fadeIn();
-                        },function(){
-                            $(this).find('.feedbackSocialTwitter').fadeOut();
-                            $(this).find('.feedbackSocialFacebook').fadeOut();
-                        });
-                        */
+                        FB.XFBML.parse();	  // parse the facebook widgets 
                     }
                 });
 		   }
@@ -97,16 +88,6 @@
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 		
-		$('.feedback').hover(function(){
-            console.log('pwet');
-		    $(this).find('.feedbackSocialTwitter').fadeIn();
-			$(this).find('.feedbackSocialFacebook').fadeIn();
-		},function(){
-            console.log('titi');
-			$(this).find('.feedbackSocialTwitter').fadeOut();
-			$(this).find('.feedbackSocialFacebook').fadeOut();
-		});
-
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
 			var nameContent = nameContainer.html();
