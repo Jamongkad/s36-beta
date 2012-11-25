@@ -111,7 +111,8 @@ Checky.prototype.init = function() {
                 }
 
                 $("option:first", this).prop("selected", true);
-                if(exam_collection.length > 0) { 
+                console.log(collection);
+                if(collection.length > 0) { 
                     $.ajax({
                         type: "POST"      
                       , data: {  
