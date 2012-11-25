@@ -43,7 +43,7 @@
                                             <p><?=$feed->feed_data->text?></p>
                                         </div>
                                     </div>
-                                    <div class="feedbackDate"><?=date('F j, y',$feed->feed_data->unix_timestamp)?></div>
+                                    <div class="feedbackDate"><?=date('F j, Y',$feed->feed_data->unix_timestamp)?></div>
                                 </div>
                                 <div class="feedbackBlock">
                                     <div class="feedbackMeta"> 
