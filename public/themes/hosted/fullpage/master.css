@@ -456,7 +456,7 @@ img.large-avatar {
 .feedback.twt-feedback.twt-featured .feedbackAuthor,.feedback.twt-feedback.twt-featured .feedbackTextTail{display:none;}
 .feedback.twt-feedback.twt-featured .feedbackTextBubble{background:none;}
 .feedback.twt-feedback.twt-featured .feedbackText{margin-left:0px;}
-.feedbackDate{display:none;}
+
 .feedback.twt-feedback.twt-featured .feedbackText .feedbackTextContent{
 	top:0px;
 	position:relative;
