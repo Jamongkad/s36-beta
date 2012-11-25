@@ -66,7 +66,7 @@
                                                 </div>
                                             
                                             </div>
-                                            <div style="float:left">
+                                            <div style="float:left;display:block">
                                                 <fb:like href="/single/<?=$feed->feed_data->id?>" send="false" layout="button_count" width="100" show_faces="false">
                                                 </fb:like>
                                             </div>
