@@ -101,7 +101,8 @@
                 </div>
              
                 <div style="float:left "> 
-                    <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
+                    <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false">
+                    </fb:like> 
                 </div>
 
             </div>

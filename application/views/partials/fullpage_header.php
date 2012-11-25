@@ -2,6 +2,7 @@
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>"/>
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
@@ -18,8 +19,16 @@
 <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="js/jquery.fileupload.js"></script>
 <!--new ajax file upload plugin -->
-
-<script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <script type="text/javascript">
 		
 	$(document).ready(function(){
@@ -70,16 +79,15 @@
    
                         twttr.widgets.load(); // parse the twitter widgets
                         FB.XFBML.parse();	  // parse the facebook widgets
-                         
+                        /* 
                         $('.feedback').hover(function(){
-                            console.log('pwet');
                             $(this).find('.feedbackSocialTwitter').fadeIn();
                             $(this).find('.feedbackSocialFacebook').fadeIn();
                         },function(){
-                            console.log('titi');
                             $(this).find('.feedbackSocialTwitter').fadeOut();
                             $(this).find('.feedbackSocialFacebook').fadeOut();
                         });
+                        */
                     }
                 });
 		   }
@@ -127,16 +135,6 @@
 		target.slideToggle('fast');
 	}
 */
-</script>
-
-<script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
 </script>
 </head>
 <body>
