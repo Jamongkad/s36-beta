@@ -70,10 +70,9 @@
                                                 <div class="fb-like" 
                                                      data-href="/single/<?=$feed->feed_data->id?>" 
                                                      data-send="true" 
-                                                     data-width="450" 
+                                                     data-width="100" 
                                                      data-show-faces="true"
                                                      data-font="arial"></div>
-
                                             </div>
                                         </div>
                                     </div>
