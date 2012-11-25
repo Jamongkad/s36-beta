@@ -87,44 +87,11 @@ Checky.prototype.init = function() {
                         } 
                     }
                 });    
-                /*
-                var limited_perm_feeds = exam_collection.filter(function(el) {
-                    return (el.perm == 3 || el.perm == 2) && (el.mode == 'publish' || el.mode == 'feature');
-                });
-
-                var poor_feeds = exam_collection.filter(function(el) {
-                    return el.rating == 'POOR' && (el.mode == 'publish' || el.mode == 'feature');
-                });
-
-                console.log(limited_perm_feeds);  
-                console.log(poor_feeds);
-                */
 
                 var restricted_feeds = exam_collection.filter(function(el) {
                     return (el.perm == 3 || el.rating == 'POOR') && (el.mode == 'publish' || el.mode == 'feature');
                 });
 
-                /*
-                if(limited_perm_feeds.length > 0 && poor_feeds.length == 0) {  
-                    if(limited_perm_feeds.length == 1) {
-                        confirm("Warning: This feedback has been marked as private/limited and will not be processed.");    
-                    } else { 
-                        confirm("Warning: There are feedback that has been marked as private/limited and will not be processed.");    
-                    }    
-                }
-
-                if(poor_feeds.length > 0 && limited_perm_feeds.length == 0) { 
-                    if(poor_feeds.length == 1) { 
-                        confirm("Warning: This feedback has been rated as poor and will not be processed.");     
-                    } else {
-                        confirm("Warning: There is feedback that has been rated as poor and will not be processed.");     
-                    } 
-                }
-
-                if(limited_perm_feeds.length > 0 && poor_feeds.length > 0) {   
-                    confirm("Warning: There are feedback that have been marked as private/limited and poor and will not be processed.");     
-                }
-                */
                 if(restricted_feeds.length > 0) { 
                     if(restricted_feeds.length == 1) {
                         confirm("Warning: There is feedback that has been marked as private/limited or poor and will not be processed.");         
@@ -143,10 +110,8 @@ Checky.prototype.init = function() {
                     });
                 }
 
-                console.log(exam_collection);
-
                 $("option:first", this).prop("selected", true);
-                if(collection.length > 0) { 
+                if(exam_collection.length > 0) { 
                     $.ajax({
                         type: "POST"      
                       , data: {  
