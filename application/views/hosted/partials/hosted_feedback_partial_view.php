@@ -109,13 +109,6 @@
                                             </div>
                                             <div class="feedbackTextContent"><p><?=$feed->feed_data->text?></p></div>
                                             <div class="feedbackDate"><?=date('W F Y',$feed->feed_data->unix_timestamp)?></div>
-                                            <div class="fb-like" 
-                                                 data-href="/single/<?=$feed->feed_data->id?>" 
-                                                 data-send="true" 
-                                                 data-width="100" 
-                                                 data-show-faces="true"
-                                                 data-font="arial"></div>
-
                                         </div>
                                     </div>
                                 </div>
