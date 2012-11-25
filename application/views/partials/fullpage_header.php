@@ -2,6 +2,7 @@
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="fb:app_id" content="<?=Config::get('application.fb_id');?>"/>
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
