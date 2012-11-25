@@ -28,11 +28,12 @@ return array(
         $company_info = $company->get_company_info($company_name);
 
         $hosted = new Feedback\Services\HostedService($company_name); 
-
         //Feeds 
         $hosted->page_number = 1;
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
+
+        Helpers::dump($feeds);
 
         $widget = $dbw->fetch_canonical_widget($company_name);
         //hosted settings
