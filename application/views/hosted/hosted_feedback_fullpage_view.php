@@ -103,6 +103,6 @@ $(document).ready(function(){
             </div>
         </div>
         <!-- feedbacks are seperated by date which are held inside feedback-date-block container -->
-        <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feed))?>
+        <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds))?>
         <div id="feedback-landing"></div>
         <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
