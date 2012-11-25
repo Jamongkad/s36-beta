@@ -133,7 +133,6 @@ $(document).ready(function(){
                             $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="small-avatar"/>';   
                             $class  = 'normal';
                         }?>
-
                             <div class="feedback <?=$class?>">
                                 <div class="feedback-branch"></div>
                                 <div class="feedbackContents">
