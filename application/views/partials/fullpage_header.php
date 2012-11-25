@@ -76,6 +76,14 @@
                             }
                             
                         });
+
+                        (function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<?=Config::get('application.fb_id');?>";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
    
                         console.log(twttr.widgets.load()); // parse the twitter widgets
                         console.log(FB.XFBML.parse());	  // parse the facebook widgets
