@@ -316,8 +316,7 @@ div{position:relative;}
  visibility: hidden;}
 
 .large-avatar {
-    box-shadow: 5px 5px 3px #888888;
-    display: none;
+    box-shadow: 5px 5px 3px #888888; 
     left: -1%;
     position: absolute !important;
     top: -1%;
