@@ -41,7 +41,7 @@
 <body>
 <div id="fb-root"></div>
 
-<?=$company_header?>
+<?//=$company_header?>
 
 <div id="bodyWrapper">
 	<div id="bodyContent">

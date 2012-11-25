@@ -76,15 +76,7 @@
                             }
                             
                         });
-
-                        (function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<?=Config::get('application.fb_id');?>";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));
-   
+ 
                         console.log(twttr.widgets.load()); // parse the twitter widgets
                         console.log(FB.XFBML.parse());	  // parse the facebook widgets
                     }
@@ -104,26 +96,6 @@
 		});
 	});
 	/* end of document ready function. below are custom functions for this form */	
-/*	
- function loadSocialButtons(id,target){
-		
-		var link = 'http://www.36stories.com/stand-alone/'+id;
-		
-		if(target.find('.twitter-button').length == 0){
-			target.append(
-						$('<div />').addClass('twitter-button')
-									.append('<a href="'+link+'" class="twitter-share-button">Tweet</a>'))
-				  .append(
-						$('<div />').addClass('facebook-button')
-									.append('<lo><iframe src="//www.facebook.com/plugins/like.php?href='+link+'&amp;send=false&amp;layout=buwaltton_count&amp;width=450&a</lo>mp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=154673521284687" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe>')
-				  );
-			
-			twttr.widgets.load(); // parse the twitter widgets
-			FB.XFBML.parse();	  // parse the facebook widgets
-		}
-		target.slideToggle('fast');
-	}
-*/
 </script>
 </head>
 <body>
