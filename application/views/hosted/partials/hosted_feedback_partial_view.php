@@ -67,7 +67,6 @@
                                             
                                             </div>
                                             <div style="float:left">
-                                                Pwet
                                                 <div class="fb-like" 
                                                      data-href="/single/<?=$feed->feed_data->id?>" 
                                                      data-send="true" 
