@@ -48,10 +48,25 @@
                                 <div class="feedbackBlock">
                                     <div class="feedbackMeta"> 
                                         <div class="feedbackSocial">
-                                            <div class="">
-                                                <a href="/single/<?=$feed->feed_data->id?>" class="twitter-share-button">Tweet</a> 
+                                            <div style="float:left">
+                                                <?php
+                                                    $maxchars = 74;							
+                                                    $text = strip_tags($feed->feed_data->text);
+                                                    if(strlen(trim($text)) <= $maxchars){
+                                                        $text = $text;
+                                                    }else{
+                                                        $text = substr($text, 0, $maxchars)."...";
+                                                    }							
+                                                ?>
+                                                <div style="float:left"> 
+                                                    <a href="/single/<?=$feed->feed_data->id?>" 
+                                                       data-url="/single/<?=$feed->feed_data->id?>" 
+                                                       data-text="<?=$text?>"
+                                                       class="twitter-share-button">Tweet</a>
+                                                </div>
+                                            
                                             </div>
-                                            <div class="">
+                                            <div style="float:left">
                                                 <fb:like href="/single/<?=$feed->feed_data->id?>" send="false" 
                                                          layout="button_count" width="100" show_faces="false" style="float:left">
                                                 </fb:like>

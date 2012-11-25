@@ -19,7 +19,8 @@
 <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
 <script type="text/javascript" src="js/jquery.fileupload.js"></script>
 <!--new ajax file upload plugin -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script>
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
