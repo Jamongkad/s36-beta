@@ -27,19 +27,18 @@
         <meta property="og:url" content="<?=URL::to('single/'.$feedback->id)?>"/> 
         <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
-
-        <script>
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
     </head>
 <body>
 <div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <?//=$company_header?>
 
@@ -101,6 +100,11 @@
                 </div>
              
                 <div style="float:left"> 
+                    <!--
+                    <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false">
+                    </fb:like> 
+                    -->
+
                     <div class="fb-like" 
                          data-href="/single/<?=$feed->feed_data->id?>" 
                          data-send="true" 
