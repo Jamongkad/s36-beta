@@ -309,7 +309,7 @@ div{position:relative;}
 }
 
 /* clear fixes */
-.companyDetails:after,#theFeedbacks:after,.feedbackAuthor p:after,.feedbackBlock:after,.feedbackMeta:after,.feedbackSocial:after{
+.companyDetails:after,#theFeedbacks:after,.feedbackAuthor p:after,.feedbackBlock:after,.feedbackMeta:after{
   content: ".";  
  display: block; 
  height: 0; 
