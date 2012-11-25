@@ -45,13 +45,27 @@
                                             </div>
                                             <div class="feedbackDate"><?=date('W F Y',$feed->feed_data->unix_timestamp)?></div>
                                         </div>
+                                        <?php
+                                            $maxchars = 74;							
+                                            $text = strip_tags($feed->feed_data->text);
+                                            if(strlen(trim($text)) <= $maxchars){
+                                                $text = $text;
+                                            }else{
+                                                $text = substr($text, 0, $maxchars)."...";
+                                            }							
+                                        ?>
                                         <div class="feedbackBlock">
                                             <div class="feedbackMeta"> 
                                                 <div class="feedbackSocial">
-                                                    <div class=""><a href="/single/<?=$feed->feed_data->id?>" class="twitter-share-button">Tweet</a></div>
+                                                    <div class="">
+                                                        <a href="/single/<?=$feed->feed_data->id?>" 
+                                                           data-url="/single/<?=$feed->feed_data->id?>" 
+                                                           data-text="<?=$text?>"
+                                                           class="twitter-share-button">Tweet</a>
+                                                    </div>
                                                     <div class="">
                                                         <fb:like href="/single/<?=$feed->feed_data->id?>" send="false" 
-                                                                 layout="button_count" width="100" show_faces="false" style="float:left">
+                                                                 layout="button_count" width="100" show_faces="false">
                                                         </fb:like>
                                                     </div>
                                             </div>
@@ -60,6 +74,15 @@
                                 </div>
 
                             <?php
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
                             break;
                         case 'tw':
                             $twfeedback = 'twt-feedback';
