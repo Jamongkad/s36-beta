@@ -57,6 +57,9 @@
             </tbody></table>
             </div>
         </div>
+        <div class="widget-options">
+            <h2><span>Step 3 :</span> Create custom fields for your form</h2>
+        </div>
         <!--
         <div class="widget-options"> 
             <h2><span>Step 3 :</span> Select a theme for both your feedback form and floating tab</h2>
