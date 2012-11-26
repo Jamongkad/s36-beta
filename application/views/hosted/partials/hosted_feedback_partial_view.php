@@ -59,8 +59,8 @@
                                                     }							
                                                 ?>
                                                 <div style="float:left"> 
-                                                    <a href="/single/<?=$feed->feed_data->id?>" 
-                                                       data-url="/single/<?=$feed->feed_data->id?>" 
+                                                    <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                                       data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                                        data-text="<?=$text?>"
                                                        class="twitter-share-button">Tweet</a>
                                                 </div>
@@ -68,11 +68,11 @@
                                             </div>
                                             <div style="float:left">
                                                 <div class="fb-like" 
-                                                     data-href="https://mathew-staging.gearfish.com/single/<?=$feed->feed_data->id?>" 
+                                                     data-href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                                     data-layout="button_count"
                                                      data-send="false" 
-                                                     data-width="100" 
-                                                     data-show-faces="false"
-                                                     data-font="arial"></div>
+                                                     data-width="80" 
+                                                     data-show-faces="false"></div>
                                             </div>
                                         </div>
                                     </div>
