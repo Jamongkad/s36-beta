@@ -3,7 +3,7 @@
         <div class="widget-options" style="position:relative;">
             <strong style="color:#000">PLEASE SELECT A WIDGET</strong>
             <br /><br /> 
-            <div class="the-widget-selection-block" style="padding-left:90px">
+            <div class="the-widget-selection-block" style="padding-left:230px">
                 <!-- Let's Hide these guys temporarily for now.
                 <div class="widget-preview-box">
                     <div class="widget-previews">

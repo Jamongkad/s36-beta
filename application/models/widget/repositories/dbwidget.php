@@ -188,7 +188,6 @@ class DBWidget extends S36DataObject {
                 WidgetStore.widgetStoreId
             HAVING 
                 NOT COUNT(*) > 1
-                /* NOT COUNT(WidgetStore.widgetStoreId) */
             ORDER BY 
                 WidgetStore.widgetStoreId DESC 
             LIMIT :offset, :limit 

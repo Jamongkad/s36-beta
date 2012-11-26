@@ -194,8 +194,21 @@ return array(
             $tf->data->hosted->build_data();
             $data = $tf->data->hosted->view_fragment();
             Helpers::dump($data);
-        });
-        
+        });    
         $tf->run();
+    }, 
+
+    'GET /testify/widgets' => function() { 
+        $tf = new Testify("Widgets Test");
+        
+        $tf->beforeEach(function($tf) {
+            $tf->data->dbw = new Widget\Repositories\DBWidget;
+        });
+
+        $tf->test('DBWidget', function($tf) {
+            $tf->dump($tf->data->dbw);
+        });
     }
+
+
 );
