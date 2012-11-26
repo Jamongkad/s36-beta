@@ -89,7 +89,10 @@
                             }
                             
                         });
-                     }
+ 
+                        console.log(twttr.widgets.load()); // parse the twitter widgets
+                        console.log(FB.XFBML.parse());	  // parse the facebook widgets
+                    }
                 });
 		   }
 		}
