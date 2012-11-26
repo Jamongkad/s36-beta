@@ -49,6 +49,7 @@
                                     <div class="feedbackMeta"> 
                                         <div class="feedbackSocial">
                                             <div style="float:left">
+                                                <div style="float:left;width:85px;"> 
                                                 <?php
                                                     $maxchars = 74;							
                                                     $text = strip_tags($feed->feed_data->text);
@@ -58,7 +59,6 @@
                                                         $text = substr($text, 0, $maxchars)."...";
                                                     }							
                                                 ?>
-                                                <div style="float:left"> 
                                                     <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                                        data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                                        data-text="<?=$text?>"
