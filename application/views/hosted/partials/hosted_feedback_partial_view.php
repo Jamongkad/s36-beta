@@ -68,7 +68,7 @@
                                             </div>
                                             <div style="float:left">
                                                 <div class="fb-like" 
-                                                     data-href="/single/<?=$feed->feed_data->id?>" 
+                                                     data-href="https://mathew-staging.gearfish.com/single/<?=$feed->feed_data->id?>" 
                                                      data-send="false" 
                                                      data-width="100" 
                                                      data-show-faces="false"
