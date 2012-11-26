@@ -241,7 +241,7 @@ class DBWidget extends S36DataObject {
         return $result; 
     }
 
-    public function fetch_canonical_widget($company_id) { 
+    public function fetch_canonical_widget($company_name) { 
         $sql = "
                 SELECT 
                     WidgetStore.widgetKey 
@@ -251,11 +251,11 @@ class DBWidget extends S36DataObject {
                     WidgetStore
                         ON Company.companyId = WidgetStore.companyId
                 WHERE 1=1 
-                    AND Company.name = :company_id
+                    AND Company.name = :company_name
                     AND WidgetStore.isDefault = 1      
                 ";
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $company_id);
+        $sth->bindParam(':company_name', $company_name);
         $sth->execute();
 
         $result = $sth->fetch(PDO::FETCH_OBJ);
