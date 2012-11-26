@@ -17,7 +17,7 @@
                         Create your hosted feedback and hosted form.
                     </p>
                 </div>
-                <!--
+                <!-- Let's Hide these guys temporarily for now.
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>EMBEDDED BLOCK</h4>
