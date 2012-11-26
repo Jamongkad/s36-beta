@@ -208,6 +208,8 @@ return array(
         $tf->test('DBWidget', function($tf) {
             $tf->dump($tf->data->dbw);
         });
+
+        $tf->run();
     }
 
 
