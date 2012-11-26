@@ -96,6 +96,8 @@ class DBWidget extends S36DataObject {
         } else { 
             $statement = "AND WidgetStore.widgetStoreId = :widget_store_id";
         }
+
+        Helpers::dump($statement);
  
         $sql = "
             SELECT 
