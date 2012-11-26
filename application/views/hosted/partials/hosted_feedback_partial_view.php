@@ -66,7 +66,7 @@
                                                 </div>
                                             
                                             </div>
-                                            <div style="float:left">
+                                            <div style="float:left;position:absolute;z-index:999">
                                                 <div class="fb-like" 
                                                      data-href="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                                      data-layout="button_count"
