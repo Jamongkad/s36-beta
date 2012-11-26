@@ -83,6 +83,9 @@
             </div>
 
         </div>
+        <div class="widget-options">
+            <h2><span>Step 3 :</span> Update custom fields for your form (optional)</h2>
+        </div>
         <!--
         <div class="widget-options"> 
             <h2><span>Step 3 :</span> Select a theme for both your feedback form and floating tab</h2>
