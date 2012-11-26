@@ -17,6 +17,7 @@
                         Create your hosted feedback and hosted form.
                     </p>
                 </div>
+                <!--
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>EMBEDDED BLOCK</h4>
@@ -30,6 +31,7 @@
                         Embed and integrate your endorsements and testimonials in your website.
                     </p>
                 </div>
+
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>POPUP DISPLAY</h4>
@@ -43,6 +45,7 @@
                        Display your endorsements and testimonials through a modal window.
                     </p>
                 </div>
+                -->
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>SUBMISSION FORM</h4>
