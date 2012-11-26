@@ -83,6 +83,7 @@
             </div>
 
         </div>
+        <!--
         <div class="widget-options"> 
             <h2><span>Step 3 :</span> Select a theme for both your feedback form and floating tab</h2>
             <div class="widget-types">
@@ -127,12 +128,10 @@
                 </div> 
             </div>
         </div> 
+        -->
         <div class="widget-options">
             <div class="block noborder" style="margin-left:-10px;">
                 <input type="submit" class="large-btn create-widget-button" value="Update" />
-                <!--
-                <input type="submit" class="large-btn preview-form-widget-button" value="Preview Form" />
-                -->
             </div>
         </div>
     </div>
