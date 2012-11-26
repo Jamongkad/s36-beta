@@ -85,7 +85,7 @@
                             
                             if(leftOffset == '400px'){
                                 $(this).css('left','418px');
-                                $(this).find('.feedback-branch').css({'left':'-23px','top':'40px'});
+                                $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
                             }
                             
                         });
