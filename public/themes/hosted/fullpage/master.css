@@ -6,6 +6,7 @@ body{
 	margin:0px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
+	 background:url(../images/sample-bg.jpg) repeat center top; 
 	background-attachment:fixed;
 }
 
@@ -209,8 +210,8 @@ div{position:relative;}
 /* feedbacks */
 .feedbackBlock{margin-bottom:5px;}
 .feedbackBlock:last-child{margin-bottom:0px;}
-.feedback{width:325px;margin:25px 8px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
-.featured{width:727px;padding:30px;border:none;}
+.feedback{width:330px;margin:25px 15px;box-shadow:#DDD 0px 1px 3px;padding:20px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
+.featured{width:711px;padding:30px;border:none;}
 .featured .feedbackAuthor{float:left;width:195px;}
 .featured .feedbackAuthor .feedbackAuthorAvatar{width:150px;height:150px;}
 .featured .feedbackAuthor h2{font-size:20px;margin:0px;margin-top:5px;}
@@ -255,7 +256,7 @@ div{position:relative;}
 .normal .feedbackSocialTwitter{width:85px;}
 .normal .feedbackSocialFacebook{width:90px;}
 /* twitter block */
-.feedback.twt-feedback.twt-featured{width:747px;border:none;background:#ececec;}
+.feedback.twt-feedback.twt-featured{width:733px;border:none;background:#ececec;}
 .feedback.twt-feedback.twt-featured .feedbackTextBubble {font-size:13px;}
 .feedback.twt-feedback.featured{} 
 .twt-feedback .feedbackAuthorDetails{}
@@ -308,7 +309,7 @@ div{position:relative;}
 }
 
 /* clear fixes */
-.companyDetails:after,#theFeedbacks:after,.feedbackAuthor p:after,.feedbackBlock:after,.feedbackMeta:after{
+.companyDetails:after,#theFeedbacks:after,.feedbackAuthor p:after,.feedbackBlock:after,.feedbackMeta:after,.feedbackSocial:after{
   content: ".";  
  display: block; 
  height: 0; 
@@ -316,7 +317,8 @@ div{position:relative;}
  visibility: hidden;}
 
 .large-avatar {
-    box-shadow: 5px 5px 3px #888888; 
+    box-shadow: 5px 5px 3px #888888;
+    display: none;
     left: -1%;
     position: absolute !important;
     top: -1%;
@@ -332,6 +334,7 @@ img.large-avatar {
     display:block;    
     margin-left:auto;
     margin-right:auto; 
+    display:none;
 }
 
  /* floats and alignments */
@@ -444,10 +447,10 @@ img.large-avatar {
 }
 .feedback-branch{
 	position:absolute;
-	width:21px;
+	width:28px;
 	height:10px;
 	background:#ececec;
-	right:-24px;
+	right:-31px;
 	z-index:1;
 }
 .featured .feedback-branch,.twt-featured .feedback-branch{
@@ -456,7 +459,7 @@ img.large-avatar {
 .feedback.twt-feedback.twt-featured .feedbackAuthor,.feedback.twt-feedback.twt-featured .feedbackTextTail{display:none;}
 .feedback.twt-feedback.twt-featured .feedbackTextBubble{background:none;}
 .feedback.twt-feedback.twt-featured .feedbackText{margin-left:0px;}
-
+.feedbackDate{display:none;}
 .feedback.twt-feedback.twt-featured .feedbackText .feedbackTextContent{
 	top:0px;
 	position:relative;
@@ -482,19 +485,18 @@ img.large-avatar {
 	height:30px;
 	display:block;
 }
-
-.noPhotoText {
-    padding:10px;
-    position:absolute;
-    z-index:100; 
-    font-weight:bold;
-    color:#FFF;
-    top:50px;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    border-radius:3px;  
-    text-shadow:#000 0px 1px;
-    left:50%;
-    margin-left:-101px;
-	background:url(/img/drag-bg.png);
+.nophototext{
+	padding:10px;
+	position:absolute;
+	z-index:100;
+	background:url(../images/drag-bg.png) repeat;
+	font-weight:bold;
+	color:#FFF;
+	top:50px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;		
+	text-shadow:#000 0px 1px;
+	left:50%;
+	margin-left:-101px;
 }
