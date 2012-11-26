@@ -207,8 +207,7 @@ return array(
 
         $tf->test('DBWidget', function($tf) {
             $tf->dump($tf->data->dbw);
-            //$tf->dump($tf->data->dbw->fetch_widget_by_id('1x5ao'));
-            $tf->dump($tf->data->dbw->delete_widget('1x5ao'));
+            $tf->dump($tf->data->dbw->fetch_widget_by_id('47w09'));
         });
 
         $tf->run();
