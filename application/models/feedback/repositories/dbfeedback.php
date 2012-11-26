@@ -553,7 +553,7 @@ class DBFeedback extends S36DataObject {
                 Country
                 ON Country.countryId = Contact.countryId  
             WHERE 1=1
-                AND Company.name = "robert-staging"
+                AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC

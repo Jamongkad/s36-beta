@@ -49,7 +49,8 @@ class DBCompany extends S36DataObject {
         $sql = "
             SELECT 
                 * 
-              , Company.name AS company_name 
+                , Company.name AS company_name 
+                , (SELECT AVG(rating) FROM Feedback WHERE siteId = Site.siteId) AS avg_rating
             FROM 
                 Company
             INNER JOIN

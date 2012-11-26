@@ -12,6 +12,7 @@ echo $theme->theme_js;
 
 ?>
 
+<?=HTML::script('/js/jquery.raty.min.js')?>
 
 
 
@@ -39,8 +40,21 @@ $(document).ready(function(){
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
 
     <?php } ?>
-
     
+    
+    // start of jquery raty.
+        
+    $('#star_rating').raty({
+        path: '/img/',
+        hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+        score: <?php echo round($company->avg_rating); ?>,
+        starOn: 'star-on.png',
+        starOff: 'star-off.png',
+        readOnly: true,
+        width: '200px'
+    });
+    
+    // end of jquery raty.
 
 });
 
@@ -141,7 +155,7 @@ $(document).ready(function(){
                     </div>
 
                 </div>
-
+                
                 <div class="g1of4">
 
                     <div class="send-feedback">
@@ -151,9 +165,13 @@ $(document).ready(function(){
                     </div>
 
                 </div>
-
+                
+                <div id="star_rating_container">
+                    <div id="star_rating"></div>
+                </div>
+                
             </div>
-
+            
         </div>
 
         

@@ -131,8 +131,3 @@ input:focus{border:1px solid #b1d1e4;outline:#b1d1e4;box-shadow:#daecf8 0px 0px 
 .review-feedback-box{background:#f7f7f7;border:1px solid #e1e1e1;}
 .review-edit-feedback a{color:#afb1b2;}
 .review-feedback-box .regular-textarea{background:#FFF;}
-
-
-/* star rating styles */
-.star_rating{ cursor: pointer; background: url(../../img/ico-featured.png) top; width: 23px; height: 24px; display: inline-block; }
-.star_rating.active{ background: url(../../img/ico-featured.png) center; }

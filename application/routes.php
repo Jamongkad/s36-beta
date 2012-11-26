@@ -55,15 +55,18 @@ return array(
         ));
         $meta->calculate_metrics();
         
-        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company'         => $company_info
-                                                  , 'user'            => $user
-                                                  , 'feeds'           => $feeds
-                                                  , 'widget'          => $widget
-                                                  , 'feed_count'      => $meta->perform()
-                                                  , 'company_header'  => $header_view
-                                                  , 'theme'           => $theme
-                                                  , 'hosted'          => $hosted_settings_info));        
+        echo View::of_fullpage_layout()->partial(
+          'contents', 'hosted/hosted_feedback_fullpage_view', Array(  
+            'company'          => $company_info
+            ,'user'            => $user
+            ,'feeds'           => $feeds
+            ,'widget'          => $widget
+            ,'feed_count'      => $meta->perform()
+            ,'company_header'  => $header_view
+            ,'theme'           => $theme
+            ,'hosted'          => $hosted_settings_info
+          )
+        );        
     },
 
     'POST /savecoverphoto' => function() use($company){

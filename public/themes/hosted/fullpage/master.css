@@ -89,7 +89,7 @@ div{position:relative;}
 	margin-left:4px;
 }
 #pageDesc{
-	padding:0px 7px 20px 7px;
+	padding:0px 7px 10px 7px; 
 }
 .the-description{
 	padding:10px;
@@ -500,3 +500,8 @@ img.large-avatar {
 	left:50%;
 	margin-left:-101px;
 }
+
+
+/* star rating styles. */
+#star_rating_container{ width: 75%; clear: both; float: left; margin-top: -13px; }
+#star_rating{ padding: 0px 10px; }

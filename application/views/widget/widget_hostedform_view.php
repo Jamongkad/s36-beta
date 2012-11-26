@@ -1,4 +1,5 @@
 <?=HTML::script('/js/widget/form/s36FormModule.js')?>
+<?=HTML::script('/js/jquery.raty.min.js')?>
 <?
     $js_scripts = Array(
          '/js/jquery.jcrop.js' 
@@ -26,40 +27,21 @@
         
         
         
-        // start of star rating script.
+        // start of jquery raty.
         
-        function unhighlight_star(){
-            $('.star_rating').removeClass('active');
-            $('.star_rating:lt('+ ($('.star_rating').index($('.star_rating.selected')) + 1) +')').addClass('active');
-        }
-        
-        function highlight_star(i){
-            $('.star_rating').removeClass('active');
-            $('.star_rating:lt('+ i +')').addClass('active');
-        }
-        
-        
-        // set the default rating to 3.
-        $('.star_rating').eq(2).addClass('selected');
-        highlight_star(3);
-        
-        
-        $('.star_rating').hover(
-            function(){
-                highlight_star( $('.star_rating').index( $(this) ) + 1 );
-            },
-            function(){
-                unhighlight_star();
+        $('#star_rating').raty({
+            path: '/img/',
+            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+            score: 3,
+            starOn: 'star-on.png',
+            starOff: 'star-off.png',
+            width: '200px',
+            click: function(rating, e){
+                $('#rating').val( rating );
             }
-        );
-        
-        $('.star_rating').click(function(){
-            $('#rating').val( $('.star_rating').index( $(this) ) + 1 );
-            $('.star_rating').removeClass('selected');
-            $(this).addClass('selected');
         });
         
-        // end of star rating script.
+        // end of jquery raty.
         
     });
     
@@ -199,24 +181,19 @@
                                 	<br />
                                     <!--
                                     <div id="s36_trackbar">
+                                        
                                         <input type="hidden" id="cropped_photo" value="0"/ >
                                         <input type="hidden" id="fb_flag" value="0" />
                                         <input type="hidden" id="ln_flag" value="0" />
                                         <input type="hidden" id="native_flag" value="0" />
-
-                                        <input type="hidden" id="company_name" value="<?=$company->company_name?>" />
-                                        <input type="hidden" id="domain" value="<?=$site_domain?>" />
-                                        <input type="hidden" id="site_id" value="<?=$site_id?>" />
-                                        <input type="hidden" id="company_id" value="<?=$company_id?>" />
-                                        <input type="hidden" id="response_flag" value="<?=$response?>" />
-                                        <input type="hidden" id="rating" value="3" />
-
+                                        <? // former place of hidden fields. ?>
                                         <div id="track_ball"></div>
                                         <div id="rate_b"></div>
                                         <div id="rate_p"></div>
                                         <div id="rate_a"></div>
                                         <div id="rate_g"></div>
                                         <div id="rate_e"></div>
+                                        
                                     </div>
                                     <div id="s36_ratings">
                                         <ul>
@@ -228,13 +205,16 @@
                                         </ul>
                                     </div>
                                     -->
-                                    <div id="star_rating_container">
-                                        <span class="star_rating" title="BAD"></span>
-                                        <span class="star_rating" title="POOR"></span>
-                                        <span class="star_rating" title="AVERAGE"></span>
-                                        <span class="star_rating" title="GOOD"></span>
-                                        <span class="star_rating" title="EXCELLENT"></span>
-                                    </div>
+                                    <? // hidden fields. ?>
+                                    <input type="hidden" id="company_name" value="<?=$company->company_name?>" />
+                                    <input type="hidden" id="domain" value="<?=$site_domain?>" />
+                                    <input type="hidden" id="site_id" value="<?=$site_id?>" />
+                                    <input type="hidden" id="company_id" value="<?=$company_id?>" />
+                                    <input type="hidden" id="response_flag" value="<?=$response?>" />
+                                    <input type="hidden" id="rating" value="3" />
+                                    
+                                    <div id="star_rating"></div>
+                                    
                                     <br />
                                     <div class="feedback">
                                         <textarea id="feedback_text" class="regular-textarea reg-text-active" 
