@@ -69,9 +69,9 @@
                                             <div style="float:left">
                                                 <div class="fb-like" 
                                                      data-href="/single/<?=$feed->feed_data->id?>" 
-                                                     data-send="true" 
+                                                     data-send="false" 
                                                      data-width="100" 
-                                                     data-show-faces="true"
+                                                     data-show-faces="false"
                                                      data-font="arial"></div>
                                             </div>
                                         </div>
