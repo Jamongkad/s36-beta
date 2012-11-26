@@ -4,6 +4,7 @@
             <strong style="color:#000">PLEASE SELECT A WIDGET</strong>
             <br /><br /> 
             <div class="the-widget-selection-block" style="padding-left:90px">
+                <!-- Let's Hide these guys temporarily for now.
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>HOSTED SETUP</h4>
@@ -17,7 +18,7 @@
                         Create your hosted feedback and hosted form.
                     </p>
                 </div>
-                <!-- Let's Hide these guys temporarily for now.
+
                 <div class="widget-preview-box">
                     <div class="widget-previews">
                         <h4>EMBEDDED BLOCK</h4>
