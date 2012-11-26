@@ -203,12 +203,14 @@ return array(
         
         $tf->beforeEach(function($tf) {
             $tf->data->dbw = new Widget\Repositories\DBWidget;
+            $tf->data->widgetloader = new Widget\Services\WidgetLoader('47w09'); 
         });
 
         $tf->test('DBWidget', function($tf) {
             $tf->dump($tf->data->dbw);
             $tf->dump($tf->data->dbw->fetch_widget_by_id('47w09'));
             $tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
+            $tf->dump($tf->data->widgetloader->load());
         });
 
         $tf->run();

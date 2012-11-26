@@ -9,6 +9,7 @@ class WidgetLoader {
     public $widget_obj;
 
     public function __construct($widget_id) {
+        //TODO: Dude can you make a fucking JOIN statement here??
         $this->dbw = new DBWidget;
         $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
     }
