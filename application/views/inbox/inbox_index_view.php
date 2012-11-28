@@ -10,7 +10,7 @@
                 <?foreach($feeds->children as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?> 
-                    <div class="dialog-form" feedid="<?=$id?>"> 
+                    <div class="dialog-form" feedid="<?=$id?>" style="height:558px !important;"> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
                             <?=View::make('feedback/reply_to_view', array(
                                    'user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message
