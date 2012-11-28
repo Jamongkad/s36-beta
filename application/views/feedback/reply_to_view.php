@@ -11,7 +11,7 @@
             <table cellpadding="5" width="100%" cellspacing="0">
             <tr>
                 <td><label>Reply To:</label></td>
-                <td class="small"><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
+                <td class="small" style='width: 500px'><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
                 <td class="small">
                     Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
                 </td>
@@ -26,7 +26,7 @@
                     <label>Bcc:</label>
                 </td>
                 <td class="bcc-target" feedid="<?=$feedback->id?>">
-                    <textarea class="regular-text" name="bcc" rows="2" style='width: 338px'></textarea>
+                    <textarea class="regular-text" name="bcc" rows="2" style='width: 95%'></textarea>
                 </td>
                 <td class="small" valign="top">
                     <span class="reply-text">Click on email addresses below to add to the bcc (<?=HTML::link('/settings', 'configure fastforward', array('class' => 'linky'))?>) </span>
@@ -65,14 +65,14 @@
             <tr>
                 <td><label>Subject: </label> </td>
                 <td>
-                    <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" />
+                    <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" style='width: 95%' />
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td><label>Message: </label> </td>
                 <td>
-                    <textarea class="regular-text" rows="6" name="message"></textarea>
+                    <textarea class="regular-text" rows="6" name="message" style='width: 95%'></textarea>
                 </td>
 
                 <td>   
@@ -87,7 +87,7 @@
                             </li>
                         </ul> 
                     </span>
-                    <div class="conf-repl" configure-reply>
+                    <div class="conf-repl" configure-reply style="margin-left:0px !important;">
                         <?=HTML::link('settings', '(add template reply message)')?>
                     </div>
                 </td>
