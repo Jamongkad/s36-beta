@@ -18,8 +18,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	/* Constants
 	-------------------------------*/
 	const REQUEST_URL 		= 'https://api.twitter.com/oauth/request_token'; 
-	//const AUTHORIZE_URL		= 'https://api.twitter.com/oauth/authorize';
-	const AUTHORIZE_URL		= 'https://twitter.com/oauth/authenticate';
+	const AUTHORIZE_URL		= 'https://api.twitter.com/oauth/authorize';
 	const ACCESS_URL		= 'https://api.twitter.com/oauth/access_token';
 	
 	/* Public Properties
@@ -105,10 +104,11 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	 * 
 	 * @return string
 	 */
-	public function getRequestToken() {
+	public function getRequestToken($callback_url=False) {
+
 		return Eden_Oauth::i()
 			->consumer(
-				self::REQUEST_URL, 
+				self::REQUEST_URL."?oauth_callback=".$callback_url, 
 				$this->_key, 
 				$this->_secret)
 			->useAuthorization()
