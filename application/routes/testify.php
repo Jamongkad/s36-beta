@@ -239,6 +239,9 @@ return array(
             $callback_url = Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
 
+            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
+            $tf->dump($login_url);
+            /*
             switch($tf->data->twitoauth->http_code) {
                 case 200:     
                     $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
@@ -247,6 +250,7 @@ return array(
                 default:
                     echo "Could not connect to Twitter. Refresh the page or try again later.";
             }
+            */
 
 
             /*
