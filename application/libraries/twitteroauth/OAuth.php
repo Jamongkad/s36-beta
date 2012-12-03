@@ -1,4 +1,4 @@
-<?php
+<?php namespace OAuth;
 // vim: foldmethod=marker
 
 /* Generic exception class
