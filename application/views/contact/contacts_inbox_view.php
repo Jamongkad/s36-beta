@@ -4,7 +4,6 @@
     $(window).scroll(function() {
        if($(window).scrollTop() + $(window).height() == $(document).height()) {
            counter += 1;
-            //add_boxes(counter);		 
            var page_counter = counter + 1;
 		   var container = $('.the-feedbacks');
            $.ajax({

@@ -162,8 +162,11 @@ return array(
             $social_services = Array(
                 'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
+            /*
             $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             $tf->dump($tf->data->social->save_social_feeds());
+            */
+            $tf->dump($social_services['twitter']);
         });
 
         $tf->test("Twitter Feed Rate Status", function($tf)  {
@@ -174,18 +177,23 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/hosted_feeds' => function() {
+    'GET /testify/hosted_feeds/(:any?)' => function($id=null) {
         $tf = new Testify("Hosted Feeds Test");
-        $tf->beforeEach(function($tf) {
+        $tf->beforeEach(function($tf) use ($id) {
             $mycompany = Config::get('application.subdomain');
             $razer = 'razer';
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
+            $tf->data->redis     = new redisent\Redis;
+            $tf->data->key_name = $mycompany.":fullpage:data";
+            $tf->data->page = $id;
         });
 
         $tf->test('Televised Feedback', function($tf) { 
-            $data = $tf->data->hosted->collection_data_alt();
-            //Helpers::dump($data);
-            $tf->assert($tf->data->hosted->collection_data_alt());
+            $tf->data->hosted->debug = True;
+            $tf->data->hosted->page_number = $tf->data->page;
+            $tf->data->hosted->build_data();
+            $data = $tf->data->hosted->view_fragment();
+            Helpers::dump($data);
         });
         
         $tf->run();

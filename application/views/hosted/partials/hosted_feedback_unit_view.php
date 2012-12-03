@@ -131,7 +131,8 @@
                            class="twitter-share-button">Tweet</a>
                     </div>
                    <div class="feedbackSocialFacebook">
-                   <fb:like href="<?=URL::to('single/'.$feed->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
+                   <fb:like href="<?=URL::to('single/'.$feed->id)?>" send="false" layout="button_count" width="100" show_faces="false">
+                   </fb:like> 
                    </div>
                 </div>
                 <?if($type != 'featured'):?>

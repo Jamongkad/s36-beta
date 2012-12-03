@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 
         <?=HTML::script('js/head.min.js')?>
@@ -11,9 +11,9 @@
         <?=HTML::style('css/widget_master/grids.css')?> 
         <?=HTML::style('css/widget_master/hosted-single.css');?>
 
-        <?if($hosted):?>
-            <?=HTML::style('themes/hosted/single/hosted-single-'.$hosted->theme_type.'.css');?>
-        <?endif?>
+        <?//if($hosted):?>
+            <?//=HTML::style('themes/hosted/single/hosted-single-'.$hosted->theme_type.'.css');?>
+        <?//endif?>
 
         <meta property="og:title" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:description" content="<?=strip_tags($feedback->text)?>"/> 
@@ -27,21 +27,31 @@
         <meta property="og:url" content="<?=URL::to('single/'.$feedback->id)?>"/> 
         <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
         <meta property="fb:app_id" content="<?=$fb_id?>"/>
-
-        <script>
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
     </head>
 <body>
-<div id="fb-root"></div>
 
-<?=$company_header?>
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+            // init the FB JS SDK
+        FB.init({
+            appId      : '<?=Config::get('application.fb_id');?>', // App ID from the App Dashboard
+            status     : true, // check the login status upon init?
+            cookie     : true, // set sessions cookies to allow your server to access the session?
+            xfbml      : true  // parse XFBML tags on this page?
+        });
+    };
+
+    (function(d, debug){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document, /*debug*/ false))
+</script>
+
+<?//=$company_header?>
 
 <div id="bodyWrapper">
 	<div id="bodyContent">
@@ -67,9 +77,8 @@
                     </div>
                     <div class="theDate">
                         <span>
-                            <?
-                            $unix = strtotime($feedback->date);
-                            echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
+                            <?$unix = strtotime($feedback->date);
+                              echo date('F j, Y', $unix)." ".date('h:i:m a', $unix);?>
                         </span>
                     	<span class="flag flag-<?=strtolower($feedback->countrycode)?> flag-fix"></span>
                     </div>
@@ -100,8 +109,17 @@
                        class="twitter-share-button">Tweet</a>
                 </div>
              
-                <div style="float:left "> 
-                    <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false"></fb:like> 
+                <div style="float:left"> 
+                    <!--
+                    <fb:like href="<?=URL::to('single/'.$feedback->id)?>" send="false" layout="button_count" width="100" show_faces="false">
+                    </fb:like> 
+                    -->
+
+                    <div class="fb-like" 
+                         data-href="/single/<?=$feed->feed_data->id?>" 
+                         data-send="false" 
+                         data-width="100" 
+                         data-show-faces="false"></div>
                 </div>
 
             </div>

@@ -79,14 +79,14 @@ InboxStateObject.prototype.process = function() {
 //child implementation classes
 function PublishStateObject(elem) {
     InboxStateObject.apply(this, arguments);
-    this.message = "Feedback has been published."; 
+    this.message = "Feedback has been published to your page."; 
     this.mode    = "publish"; 
 }
 PublishStateObject.prototype = new InboxStateObject();
 
 function FeatureStateObject(elem) { 
     InboxStateObject.apply(this, arguments);
-    this.message = "Feedback has been featured.";
+    this.message = "Feedback has been featured to your page.";
     this.mode    = "feature"; 
 }
 FeatureStateObject.prototype = new InboxStateObject();

@@ -55,7 +55,8 @@ class DBSocialFeedback extends S36DataObject {
                   , 'contactId'  => $contact_insert_id
                   , 'categoryId' => $ctgy_id->categoryid
                   , 'status'     => 'new'
-                  , 'permission' => 0
+                  , 'permission' => 1
+                  , 'rating'     => 5
                 );
 
                 $feedback_insert_id = DB::table('Feedback', $this->db_name)->insert_get_id($feedback);

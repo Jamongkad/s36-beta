@@ -476,58 +476,6 @@ class DBFeedback extends S36DataObject {
     }
 
     public function televised_feedback_alt($company_name) { 
-        $grouped_sql = '
-             SELECT   
-                DATE_FORMAT(dtAdded, GET_FORMAT(DATE, "EUR")) AS date_format 
-              , GROUP_CONCAT(DISTINCT Feedback.feedbackId ORDER BY Feedback.rating DESC SEPARATOR "|") AS feedbackIds
-              , dtAdded
-              , CASE
-                    WHEN dtAdded between date_sub(now(), INTERVAL 60 minute) and now() 
-                        THEN concat(minute(TIMEDIFF(now(), dtAdded)), " minutes ago")
-                    WHEN datediff(now(), dtAdded) = 1 
-                        THEN "Yesterday"
-                    WHEN dtAdded between date_sub(now(), INTERVAL 24 hour) and now() 
-                        THEN concat(hour(TIMEDIFF(NOW(), dtAdded)), " hours ago")
-                    WHEN dtAdded between date_sub(now(), INTERVAL 1 MONTH) and now()
-                        THEN concat(datediff(now(), dtAdded)," days ago")
-                    WHEN dtAdded between date_sub(now(), INTERVAL 1 YEAR) and now()
-                        THEN concat(period_diff(date_format(now(), "%Y%m"), date_format(dtAdded, "%Y%m")), " months ago") 
-                    WHEN dtAdded > CURDATE()
-                        THEN "future event"
-                    ELSE    
-                        "about a year ago"
-                END as daysAgo
-              , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
-            FROM 
-                Feedback
-            INNER JOIN
-                Site
-                ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                Company
-                ON Company.companyId = Site.companyId
-            INNER JOIN
-                Category
-                ON Category.categoryId = Feedback.categoryId
-            INNER JOIN
-                Contact
-                ON Contact.contactId = Feedback.contactId 
-            INNER JOIN
-                FeedbackContactOrigin
-                ON Feedback.contactid  = FeedbackContactOrigin.contactid
-                AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
-            INNER JOIN 
-                Country
-                ON Country.countryId = Contact.countryId
-            WHERE 1=1
-                AND Company.name = :company_name
-                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
-            GROUP BY 
-                date_format
-            ORDER BY 
-                Feedback.dtAdded DESC
-        ';
-
         $sql = '
             SELECT
                 '.$this->select_vars.' 
@@ -556,17 +504,18 @@ class DBFeedback extends S36DataObject {
                 AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
-                Feedback.dtAdded DESC
+                Feedback.dtAdded DESC 
         ';
 
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->execute();
 
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
 
         $result_obj = new StdClass;
-        $result_obj->result = $result;
+        $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
+        $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
 

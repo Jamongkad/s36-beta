@@ -17,7 +17,7 @@ class HostedMetadata {
 
     public function calculate_metrics() {
         $this->todays_count = $this->feedback->count_todays_feedback($this->company_params['company_id']); 
-        $this->published_feed_count = $this->feedback->televised_feedback($this->company_params['company_name']);
+        $this->published_feed_count = $this->feedback->televised_feedback_alt($this->company_params['company_name']);
     }
 
     public function perform() {
