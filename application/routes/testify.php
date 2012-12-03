@@ -231,7 +231,8 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            $tf->dump($tf->data->auth);
+            $token = $tf->data->auth->getRequestToken();
+            $tf->dump($token);
         });
 
         $tf->run();
