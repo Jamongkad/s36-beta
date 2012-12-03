@@ -718,9 +718,6 @@ class OAuthUtil {
   public static function urlencode_rfc3986($input) {
   if (is_array($input)) {
     $map = array_map(array('OAuth\OAuthUtil', 'urlencode_rfc3986'), $input);
-    echo "<pre>";
-    print_r($map);
-    echo "</pre>";
     return $map;
   } else if (is_scalar($input)) {
     return str_replace(

@@ -232,7 +232,7 @@ return array(
             $access_token_secret = Config::get('application.dev_twitter_access_secret');
 
             $tf->data->auth = eden('twitter')->auth($twitter_key, $twitter_secret);    
-            $tf->data->twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $access_token, $access_token_secret);
+            $tf->data->twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
         });
 
         $tf->test('Twitter', function($tf) {
