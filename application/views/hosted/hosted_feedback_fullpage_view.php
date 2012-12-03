@@ -1,159 +1,75 @@
 <?php
 $admin = (!empty($user))? 1 : 0;
 /*
-
 / pull theme information for customed css and js
-
 */
-
 echo $theme->theme_css;
-
 echo $theme->theme_js;
-
 ?>
-
-
-
-
 
 <?php 
-
 /*start document load*/ 
-
 ?>
-
 <script type="text/javascript">
-
-$(document).ready(function(){
-
-    
-
+$(document).ready(function(){   
     <?php 
-
     /* Change fullpage background if set from admin */
-
-    
-
     if(isset($hosted->background_image) && !empty($hosted->background_image)) { ?>
-
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
-
     <?php } ?>
-
-    
-
 });
-
 </script>
 
 <?php 
-
 /*end document load*/ 
-
 ?>
 
 
 
 <div id="bodyWrapper">
-
     <div id="bodyContent">
-
         <!-- new header October 4 2012 -->
-
         <div id="pageCover">
-
             <?php if($admin == 1): ?>
-
             <div id="changeCoverButton">
-
                 <div id="changeButtonText">            
-
                     Change Cover
-
                 </div>
-
                 <form action="" method="post" enctype="multipart/form-data">
-
                     <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="upload_new_logo()" />
-
                 </form>
-
             </div>
-
-            
-
             <div id="saveCoverButton">
-
                 Save Cover
-
             </div>
-
             <div id="dragPhoto">
-
                 Drag Image to Reposition Cover
-
             </div>
-
             <?php endif; ?>
-
-            
-
             <div id="theCover" class="draggable">
-
                 <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
-
             </div>
-
             <div class="social-buttons">
-
                 <ul>
-
                     <li><a href="https://www.facebook.com/<?=$company->facebook_username?>"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>
-
                     <li><a href="https://www.twitter.com/<?=$company->twitter_username?>"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>
-
                 </ul>
-
             </div>
-
-
-
-           
-
         </div>
-
-        
-
         <!-- end of page cover -->
-
-        
-
         <div id="pageDesc">
-
             <div class="grids">
-
                 <div class="g3of4">
-
                     <div class="the-description">
-
                         <?=$company->description?>
-
                     </div>
-
                 </div>
-
                 <div class="g1of4">
-
                     <div class="send-feedback">
-
                         <a href="<?=$company->company_name?>/submit"><input type="button" class="funky-button" value="Send in Feedback" /></a>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
         
