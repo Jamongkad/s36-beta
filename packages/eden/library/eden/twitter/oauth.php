@@ -108,7 +108,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 
 		return Eden_Oauth::i()
 			->consumer(
-				self::REQUEST_URL."?oauth_callback=".$callback_url, 
+				self::REQUEST_URL, 
 				$this->_key, 
 				$this->_secret)
 			->useAuthorization()
