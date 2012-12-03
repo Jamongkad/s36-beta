@@ -130,8 +130,8 @@ return array(
 	|--------------------------------------------------------------------------
 	*/
     //Dev
-    'dev_twitter_key' => 'xG9l1q5eziCV8sA1CbIw', 
-    'dev_twitter_secret' => 'RM7UTrpucb5uPOAbdTicSt4iXeMRiSQfl7htmrsq4xI',
+    'dev_twitter_key' => 'xWBm4zMz9q3cgiTnzZf6Rg', 
+    'dev_twitter_secret' => 'TbCPpdcteB4pRAXqQGba8njhDYmg7LjfHq7YLgKlE',
     'dev_twitter_access_token' => '942732308-HHy4iqcRsv4nqTr1fYCH8j8TWfo87Z0cFYBDjpON',
     'dev_twitter_access_secret' => 'tGbbfd0FCj4nP5C94luz9TPJK5llj1vJnZCH8Eto',
 
