@@ -717,7 +717,9 @@ class OAuthDataStore {
 class OAuthUtil {
   public static function urlencode_rfc3986($input) {
   if (is_array($input)) {
-    return array_map(array('OAuth\OAuthUtil', 'urlencode_rfc3986'), $input);
+    $map = array_map(array('OAuth\OAuthUtil', 'urlencode_rfc3986'), $input);
+    print_r($map);
+    return $map;
   } else if (is_scalar($input)) {
     return str_replace(
       '+',
