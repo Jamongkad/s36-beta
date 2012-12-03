@@ -19,7 +19,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	-------------------------------*/
 	const REQUEST_URL 		= 'https://api.twitter.com/oauth/request_token'; 
 	//const AUTHORIZE_URL		= 'https://api.twitter.com/oauth/authorize';
-	const AUTHORIZE_URL		= 'https://api.twitter.com/oauth/authenticate';
+	const AUTHORIZE_URL		= 'https://twitter.com/oauth/authenticate';
 	const ACCESS_URL		= 'https://api.twitter.com/oauth/access_token';
 	
 	/* Public Properties
