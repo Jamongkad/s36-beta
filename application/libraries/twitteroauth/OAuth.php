@@ -716,19 +716,19 @@ class OAuthDataStore {
 
 class OAuthUtil {
   public static function urlencode_rfc3986($input) {
-  if (is_array($input)) {
-    $map = array_map(array('OAuth\OAuthUtil', 'urlencode_rfc3986'), $input);
-    return $map;
-  } else if (is_scalar($input)) {
-    return str_replace(
-      '+',
-      ' ',
-      str_replace('%7E', '~', rawurlencode($input))
-    );
-  } else {
-    return '';
+      if (is_array($input)) {
+        $map = array_map(array('OAuth\OAuthUtil', 'urlencode_rfc3986'), $input);
+        return $map;
+      } else if (is_scalar($input)) {
+        return str_replace(
+          '+',
+          ' ',
+          str_replace('%7E', '~', rawurlencode($input))
+        );
+      } else {
+        return '';
+      }
   }
-}
 
 
   // This decode function isn't taking into consideration the above
@@ -813,16 +813,13 @@ class OAuthUtil {
   // array('a' => array('b','c'), 'd' => 'e')
   public static function parse_parameters( $input ) {
     if (!isset($input) || !$input) return array();
-    echo "<pre>";
-    print_r($input);
-    echo "</pre>";
     $pairs = explode('&', $input);
 
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       $split = explode('=', $pair, 2);
-      $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
-      $value = isset($split[1]) ? OAuthUtil::urldecode_rfc3986($split[1]) : '';
+      $parameter = urldecode($split[0]);//OAuthUtil::urldecode_rfc3986($split[0]);
+      $value = isset($split[1]) ? urldecode($split[1]) : '';
 
       if (isset($parsed_parameters[$parameter])) {
         // We have already recieved parameter(s) with this name, so add to the list
