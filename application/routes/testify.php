@@ -231,9 +231,26 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            $token = $tf->data->auth->getRequestToken();
-            $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login', True);
-            header('Location:'.$login);
+            session_start();
+            if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
+                if(!isset($_SESSION['request_secret'])) { 
+                    $token = $tf->data->auth->getRequestToken();
+                    $_SESSION['request_secret'] = $token['oauth_token_secret'];
+                    $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login', True);
+                    header('Location:'.$login);
+                    exit;
+                }
+
+                if(isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
+                    //we need to convert that to an access token
+                    $token = $tf->data->auth->getAccessToken($_GET['oauth_token'], $_SESSION['request_secret'], $_GET['oauth_verifier']);
+                    //lastly, save the token in session
+                    $_SESSION['access_token']   = $token['oauth_token'];
+                    $_SESSION['access_secret']  = $token['oauth_token_secret'];
+                    //clean up
+                    unset($_SESSION['request_secret']);
+                }
+            }
             //$tf->dump($login);
         });
 
