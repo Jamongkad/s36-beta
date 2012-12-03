@@ -251,7 +251,6 @@ return array(
                     unset($_SESSION['request_secret']);
                 }
             }
-            //$tf->dump($login);
         });
 
         $tf->run();
