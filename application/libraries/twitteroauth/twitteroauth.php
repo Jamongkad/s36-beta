@@ -185,8 +185,10 @@ class TwitterOAuth {
     $request->sign_request($this->sha1_method, $this->consumer, $this->token);
     switch ($method) {
     case 'GET':
+      echo "GET";
       return $this->http($request->to_url(), 'GET');
     default:
+      echo "DEFAULT";
       return $this->http($request->get_normalized_http_url(), $method, $request->to_postdata());
     }
   }
