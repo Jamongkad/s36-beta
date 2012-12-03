@@ -232,7 +232,7 @@ return array(
 
         $tf->test('Twitter', function($tf) {
             $token = $tf->data->auth->getRequestToken();
-            $login = $tf->data->auth->getLoginUrl($token['oauth_token'], 'http://pwet.com/auth');
+            $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url'));
             $tf->dump($login);
         });
 
