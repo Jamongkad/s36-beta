@@ -231,12 +231,11 @@ return array(
             $access_token        = Config::get('application.dev_twitter_access_token');
             $access_token_secret = Config::get('application.dev_twitter_access_secret');
 
-            //$tf->data->auth = eden('twitter')->auth($twitter_key, $twitter_secret);    
             $tf->data->twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
         });
 
         $tf->test('Twitter', function($tf) {
-            $callback_url = urlencode(Config::get('application.url').'/testify/twitter_login');
+            $callback_url = "https://google.com";//urlencode(Config::get('application.url').'/testify/twitter_login');
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
             $tf->dump($token);
             /*
