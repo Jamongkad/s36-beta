@@ -227,13 +227,21 @@ return array(
 
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
+
+            $access_token        = Config::get('application.dev_twitter_access_token');
+            $access_token_secret = Config::get('application.dev_twitter_access_secret');
+
             $tf->data->auth = eden('twitter')->auth($twitter_key, $twitter_secret);    
+            $tf->data->twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $access_token, $access_token_secret);
         });
 
         $tf->test('Twitter', function($tf) {
+            $tf->dump($tf->data->twitoauth);
+            /*
             $callback_url = Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->auth->getRequestToken($callback_url);
             $tf->dump($token);
+            */
             /*
             session_start();
             if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {

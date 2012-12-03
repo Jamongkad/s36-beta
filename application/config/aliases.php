@@ -26,6 +26,7 @@ return array(
     'SimpleArray' => 'Helpers\\SimpleArray',
     'ZebraPagination' => 'ZebraPagination\\ZebraPagination',
     'Underscore' => 'Underscore\\Underscore',
+    'TwitterOAuth' => 'TwitterOAuth\\TwitterOAuth',
     'Testify' => 'Testify\\Testify',
     'Pimple' => 'Pimple\\Pimple',
 	'Auth' => 'System\\Auth',
