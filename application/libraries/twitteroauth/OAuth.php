@@ -7,7 +7,7 @@ class OAuthException extends Exception {
   // pass
 }
 
-use OAuthException;
+use \OAuthException;
 
 class OAuthConsumer {
   public $key;
