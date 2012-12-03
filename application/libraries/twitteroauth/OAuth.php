@@ -1,11 +1,10 @@
 <?php namespace OAuth;
 // vim: foldmethod=marker
 
+use Exception, OAuthException\OAuthException;
+
 /* Generic exception class
  */
-class OAuthException extends \Exception {
-  // pass
-}
 
 class OAuthConsumer {
   public $key;
