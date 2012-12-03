@@ -232,7 +232,7 @@ return array(
 
         $tf->test('Twitter', function($tf) {
             $token = $tf->data->auth->getRequestToken();
-            $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login');
+            $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login', True);
             $tf->dump($login);
             $tf->dump($_GET);
         });
