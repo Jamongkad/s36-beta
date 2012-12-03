@@ -236,7 +236,8 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            $token = $tf->data->twitoauth->getRequestToken();
+            $callback_url = Config::get('application.url').'/testify/twitter_login';
+            $token = $tf->data->twitoauth->getRequestToken($callback_url);
             $tf->assert($token);
             $tf->dump($token);
             /*
