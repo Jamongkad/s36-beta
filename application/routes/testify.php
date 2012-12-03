@@ -231,11 +231,10 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            /*
             $callback_url = Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->auth->getRequestToken();
             $tf->dump($token);
-            */
+            /*
             session_start();
             if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
                 if(!isset($_SESSION['request_secret'])) { 
@@ -257,6 +256,7 @@ return array(
                     unset($_SESSION['request_secret']);
                 }
             }
+            */
         });
 
         $tf->run();
