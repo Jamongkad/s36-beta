@@ -98,6 +98,16 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
+
+        $('.feedback').each(function(){
+            var leftOffset = $(this).css('left');
+            
+            if(leftOffset == '400px'){
+                $(this).css('left','418px');
+                $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
+            }
+            
+        });
 		
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
