@@ -236,17 +236,16 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-
-
             session_start();
             if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
                 if(!isset($_SESSION['request_secret'])) {   
                     $callback_url = Config::get('application.url').'/testify/twitter_login';
                     $token = $tf->data->twitoauth->getRequestToken($callback_url);
+                    $tf->dump($token);
                     $_SESSION['request_secret'] = $token['oauth_token_secret'];
                     $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
-                    header('Location:'.$login_url);
-                    exit;
+                    //header('Location:'.$login_url);
+                    //exit;
                 }
 
                 if(isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
