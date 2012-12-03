@@ -8,7 +8,7 @@
 
 /* Load OAuth lib. You can find it at http://oauth.net */
 //require_once('OAuth.php');
-use OAuth;
+use \OAuth;
 
 /**
  * Twitter OAuth class
@@ -58,10 +58,10 @@ class TwitterOAuth {
    * construct TwitterOAuth object
    */
   function __construct($consumer_key, $consumer_secret, $oauth_token = NULL, $oauth_token_secret = NULL) {
-    $this->sha1_method = new OAuth\OAuthSignatureMethod_HMAC_SHA1();
-    $this->consumer = new OAuth\OAuthConsumer($consumer_key, $consumer_secret);
+    $this->sha1_method = new \OAuth\OAuthSignatureMethod_HMAC_SHA1();
+    $this->consumer = new \OAuth\OAuthConsumer($consumer_key, $consumer_secret);
     if (!empty($oauth_token) && !empty($oauth_token_secret)) {
-      $this->token = new OAuth\OAuthConsumer($oauth_token, $oauth_token_secret);
+      $this->token = new \OAuth\OAuthConsumer($oauth_token, $oauth_token_secret);
     } else {
       $this->token = NULL;
     }
