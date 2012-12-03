@@ -236,37 +236,19 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            $callback_url = Config::get('application.url').'/testify/twitter_login';
-            $token = $tf->data->twitoauth->getRequestToken($callback_url);
 
-            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
+
+      
             $tf->dump($login_url);
-            /*
-            switch($tf->data->twitoauth->http_code) {
-                case 200:     
-                    $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
-                    header('Location:'.$login_url);
-                    break;
-                default:
-                    echo "Could not connect to Twitter. Refresh the page or try again later.";
-            }
-            */
 
-
-            /*
-            $callback_url = Config::get('application.url').'/testify/twitter_login';
-            $token = $tf->data->auth->getRequestToken($callback_url);
-            $tf->dump($token);
-            */
-            /*
             session_start();
             if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
-                if(!isset($_SESSION['request_secret'])) { 
-                    $token = $tf->data->auth->getRequestToken();
+                if(!isset($_SESSION['request_secret'])) {   
+                    $token = $tf->data->twitoauth->getRequestToken($callback_url);
                     $_SESSION['request_secret'] = $token['oauth_token_secret'];
-                    $url = Config::get('application.url').'/testify/twitter_login';
-                    $login = $tf->data->auth->getLoginUrl($token['oauth_token'], $url);
-                    header('Location:'.$login);
+                    $callback_url = Config::get('application.url').'/testify/twitter_login';
+                    $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
+                    header('Location:'.$login_url);
                     exit;
                 }
 
@@ -279,6 +261,15 @@ return array(
                     //clean up
                     unset($_SESSION['request_secret']);
                 }
+            }
+            /*
+            switch($tf->data->twitoauth->http_code) {
+                case 200:     
+                    $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
+                    header('Location:'.$login_url);
+                    break;
+                default:
+                    echo "Could not connect to Twitter. Refresh the page or try again later.";
             }
             */
         });
