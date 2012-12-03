@@ -104,7 +104,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	 * 
 	 * @return string
 	 */
-	public function getRequestToken($callback_url=False) {
+	public function getRequestToken() {
 
 		return Eden_Oauth::i()
 			->consumer(
