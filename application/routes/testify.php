@@ -236,6 +236,10 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
+            $callback_url = Config::get('application.url').'/testify/twitter_login';
+            $token = $tf->data->twitoauth->getRequestToken($callback_url);
+            $tf->dump($token);
+            /*
             session_start();
             if(!isset($_SESSION['access_token'], $_SESSION['access_secret'])) {
                 if(!isset($_SESSION['request_secret'])) {   
@@ -250,22 +254,13 @@ return array(
 
                 if(isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
                     //we need to convert that to an access token
-                    $token = $tf->data->auth->getAccessToken($_GET['oauth_token'], $_SESSION['request_secret'], $_GET['oauth_verifier']);
+                    $token = $tf->data->auth->getAccessToken($_GET['oauth_verifier']);
                     //lastly, save the token in session
                     $_SESSION['access_token']   = $token['oauth_token'];
                     $_SESSION['access_secret']  = $token['oauth_token_secret'];
                     //clean up
                     unset($_SESSION['request_secret']);
                 }
-            }
-            /*
-            switch($tf->data->twitoauth->http_code) {
-                case 200:     
-                    $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']); 
-                    header('Location:'.$login_url);
-                    break;
-                default:
-                    echo "Could not connect to Twitter. Refresh the page or try again later.";
             }
             */
         });
