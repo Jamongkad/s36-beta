@@ -234,6 +234,7 @@ return array(
             $token = $tf->data->auth->getRequestToken();
             $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login');
             $tf->dump($login);
+            $tf->dump($_GET);
         });
 
         $tf->run();
