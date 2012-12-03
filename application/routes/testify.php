@@ -236,7 +236,9 @@ return array(
                 if(!isset($_SESSION['request_secret'])) { 
                     $token = $tf->data->auth->getRequestToken();
                     $_SESSION['request_secret'] = $token['oauth_token_secret'];
-                    $login = $tf->data->auth->getLoginUrl($token['oauth_token'], Config::get('application.url').'/testify/twitter_login', True);
+                    $url = html_entity_decode(Config::get('application.url').'/testify/twitter_login');
+                    $login = $tf->data->auth->getLoginUrl($token['oauth_token'], $url, True);
+                    $tf->dump($login); exit;
                     header('Location:'.$login);
                     exit;
                 }
