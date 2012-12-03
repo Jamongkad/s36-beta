@@ -80,15 +80,8 @@
                                 queue: false
                             } 
                         })
-                        $('.feedback').each(function(){
-                            var leftOffset = $(this).css('left');
-                            
-                            if(leftOffset == '400px'){
-                                $(this).css('left','418px');
-                                $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
-                            }
-                            
-                        });
+
+                        auto_adjust_feedback_branch();
                         twttr.widgets.load();
                         FB.XFBML.parse();
                     }
@@ -98,16 +91,19 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
+        auto_adjust_feedback_branch();
 
-        $('.feedback').each(function(){
-            var leftOffset = $(this).css('left');
-            
-            if(leftOffset == '400px'){
-                $(this).css('left','418px');
-                $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
-            }
-            
-        });
+        function auto_adjust_feedback_branch() {
+            $('.feedback').each(function(){
+                var leftOffset = $(this).css('left');
+                
+                if(leftOffset == '400px'){
+                    $(this).css('left','418px');
+                    $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
+                }
+            });
+        }
+
 		
 		$('.twt-featured').each(function(){
 			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');

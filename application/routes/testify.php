@@ -214,7 +214,27 @@ return array(
         });
 
         $tf->run();
-    }
+    },
 
+    'GET /testify/twitter_login' => function() { 
+
+        Package::load('eden');
+
+        $tf = new Testify("Twitter Login Test");
+        
+        $tf->beforeEach(function($tf) {
+            eden()->setLoader();       
+
+            $twitter_key    = Config::get('application.dev_twitter_key');
+            $twitter_secret = Config::get('application.dev_twitter_secret');
+            $tf->data->auth = eden('twitter')->auth($twitter_key, $twitter_secret);    
+        });
+
+        $tf->test('Twitter', function($tf) {
+            $tf->dump($tf->data->auth);
+        });
+
+        $tf->run();
+    }
 
 );
