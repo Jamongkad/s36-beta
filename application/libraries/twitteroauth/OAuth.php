@@ -819,7 +819,7 @@ class OAuthUtil {
     foreach ($pairs as $pair) {
       $split = explode('=', $pair, 2);
       echo "<pre>";
-      print_r($split);
+      print_r($split[0]);
       echo "</pre>";
       
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
