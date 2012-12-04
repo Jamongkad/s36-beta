@@ -255,6 +255,11 @@ return array(
                                             , $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
                 $token_credentials = $twitoauth->getAccessToken();
                 $tf->dump($token_credentials);
+
+                $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
+                                             , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
+
+                $tf->dump($connection);
             }
 
         });
