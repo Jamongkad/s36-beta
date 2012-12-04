@@ -236,13 +236,13 @@ return array(
 
         $tf->test('Twitter', function($tf) {
             $callback_url = Config::get('application.url').'/testify/twitter_login';
-            $token = $tf->data->twitoauth->getRequestToken($callback_url);
-            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
+            //$token = $tf->data->twitoauth->getRequestToken($callback_url);
+            //$login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
             $access_token = $tf->data->twitoauth->getAccessToken($_GET['oauth_verifier']);
 
             $tf->dump($access_token);
-            $tf->dump($token);
-            $tf->dump($login_url);
+            //$tf->dump($token);
+            //$tf->dump($login_url);
 
 
             /*
