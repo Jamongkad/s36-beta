@@ -246,7 +246,7 @@ return array(
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 
-                $tf->dump($connection);
+                $tf->dump($connection->get('account/verify_credentials'));
                 /*     
                 $tweets = $connection->get('statuses/home_timeline');
                 $collection = Array();
