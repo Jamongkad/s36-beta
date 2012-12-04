@@ -230,7 +230,7 @@ return array(
 
         $tf->test('Twitter', function($tf) {
             
-            if(!isset($_SESSION)) {   
+            if(!Session::get('oauth_token_secret')) {   
                 $callback_url = Config::get('application.url').'/settings/social';
                 $token = $twitoauth->getRequestToken($callback_url);
                 Session::put('oauth_token', $token['oauth_token']);
