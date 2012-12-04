@@ -815,6 +815,8 @@ class OAuthUtil {
     if (!isset($input) || !$input) return array();
     $pairs = explode('&', $input);
 
+    print_r($pairs);
+
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       $split = explode('=', $pair, 2);
