@@ -829,7 +829,6 @@ class OAuthUtil {
 
       echo "<pre>";
       print_r($split);
-      echo "-------------------------------";
       echo "</pre>";
 
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
