@@ -13,8 +13,7 @@
             </div>
             <br />
             <div class="grids">
-                <div class="g2of5"><strong class="twitter-icon">Connect to Twitter: </strong></div>
-                <div class="g3of5"><?=$company->twitter_username?></div>
+                <div><strong class="twitter-icon">Connect to Twitter: </strong> <?=$company->twitter_username?></div>
             </div>
             <!--
             <br />
