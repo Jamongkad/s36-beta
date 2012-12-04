@@ -299,6 +299,8 @@ class OAuthRequest {
 
     $parameters = array_merge($defaults, $parameters);
 
+    print_r($parameters);
+
     return new OAuthRequest($http_method, $http_url, $parameters);
   }
 
