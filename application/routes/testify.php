@@ -284,9 +284,9 @@ return array(
                     $tf->dump($collection); 
                 }                
             } else { 
-
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $account->oauthtoken, $account->oauthtokensecret);
                 $tf->dump($connection);
+                $tf->dump($connection->get('account/verify_credentials'));
             }
         });
 
