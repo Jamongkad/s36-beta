@@ -229,63 +229,65 @@ return array(
 
         $tf->test('Twitter', function($tf) { 
 
-            $tf->dump(Cookie::get('oauth_token'));
-            $tf->dump(Cookie::get('oauth_token_secret'));
+            $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first();
+            
+            if(!$account) {
+                if(!Cookie::get('oauth_token_secret')) {   
+                    $callback_url = Config::get('application.url').'/testify/twitter_login';
+                    $token = $tf->data->twitoauth->getRequestToken($callback_url);
+                    Cookie::put('oauth_token', $token['oauth_token']);
+                    Cookie::put('oauth_token_secret', $token['oauth_token_secret']);
+                    $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
+                    header('Location:'.$login_url);
+                    exit;
+                } else {
+                    $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
+                                                , Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
+                    $token_credentials = $twitoauth->getAccessToken();
 
-            if(!Cookie::get('oauth_token_secret')) {   
-                $callback_url = Config::get('application.url').'/testify/twitter_login';
-                $token = $tf->data->twitoauth->getRequestToken($callback_url);
-                Cookie::put('oauth_token', $token['oauth_token']);
-                Cookie::put('oauth_token_secret', $token['oauth_token_secret']);
-                $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
-                header('Location:'.$login_url);
-                exit;
+                    $tf->dump($token_credentials);
+                    
+                    if(!$account) { 
+                        $data = Array(
+                            'companyId' => $tf->data->companyid
+                          , 'accountName' => $token_credentials['screen_name']
+                          , 'oauthToken' => $token_credentials['oauth_token']
+                          , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
+                        );
+                        DB::Table('CompanyTwitterAccount', 'master')->insert($data);
+                    }
+
+                    $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
+                                                 , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
+                    
+                    $tf->dump($connection->get('account/verify_credentials'));
+            
+                    $tweets = $connection->get('statuses/home_timeline');
+                    $collection = Array();
+                    foreach($tweets as $tweet) {
+                        $dt = new DateTime($tweet->created_at);
+                        $node = new StdClass;
+                        $node->id             = $tweet->id_str;
+                        $node->firstname      = $tweet->user->name;
+                        $node->screen_name    = $tweet->user->screen_name;
+                        $node->avatar         = $tweet->user->profile_image_url_https;
+                        $node->text           = $tweet->text;
+                        $node->twit_date      = $tweet->created_at;
+                        $node->feed_type      = 'tw';
+                        $node->daysago        = Helpers::relative_time($dt->getTimestamp());
+                        $node->date           = $dt->format("Y-m-d H:i:s");
+                        $node->head_date      = $dt->format("d.m.Y");
+                        $node->unix_timestamp = $dt->getTimestamp();
+                        $node->datetimeobj    = $dt; 
+                        $collection[] = $node;
+                    }
+                    $tf->dump($collection); 
+                }                
             } else {
-                $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
-                                            , Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
-                $token_credentials = $twitoauth->getAccessToken();
-
-                $tf->dump($token_credentials);
                 
-                $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first();
-
-                if(!$account) { 
-                    $data = Array(
-                        'companyId' => $tf->data->companyid
-                      , 'accountName' => $token_credentials['screen_name']
-                      , 'oauthToken' => $token_credentials['oauth_token']
-                      , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
-                    );
-                    DB::Table('CompanyTwitterAccount', 'master')->insert($data);
-                }
-
-                $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
-                                             , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
-                
-                $tf->dump($connection->get('account/verify_credentials'));
-        
-                $tweets = $connection->get('statuses/home_timeline');
-                $collection = Array();
-                foreach($tweets as $tweet) {
-                    $dt = new DateTime($tweet->created_at);
-                    $node = new StdClass;
-                    $node->id             = $tweet->id_str;
-                    $node->firstname      = $tweet->user->name;
-                    $node->screen_name    = $tweet->user->screen_name;
-                    $node->avatar         = $tweet->user->profile_image_url_https;
-                    $node->text           = $tweet->text;
-                    $node->twit_date      = $tweet->created_at;
-                    $node->feed_type      = 'tw';
-                    $node->daysago        = Helpers::relative_time($dt->getTimestamp());
-                    $node->date           = $dt->format("Y-m-d H:i:s");
-                    $node->head_date      = $dt->format("d.m.Y");
-                    $node->unix_timestamp = $dt->getTimestamp();
-                    $node->datetimeobj    = $dt; 
-                    $collection[] = $node;
-                }
-                $tf->dump($collection); 
+                    $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $account->oauth_token, $account->oauth_token_secret);
+                    $tf->dump($connection);
             }
-
         });
 
         $tf->run();
