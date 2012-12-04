@@ -247,11 +247,11 @@ return array(
 
                 $tf->dump($token_credentials);
                 
-                $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->user->companyid)->first();
+                $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first();
 
                 if(!$account) { 
                     $data = Array(
-                        'companyId' => $tf->user->companyid
+                        'companyId' => $tf->data->companyid
                       , 'accountName' => $token_credentials['screen_name']
                       , 'oauthToken' => $token_credentials['oauth_token']
                       , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
