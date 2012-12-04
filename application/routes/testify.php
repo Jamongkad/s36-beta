@@ -252,7 +252,7 @@ return array(
                 $content = $connection->get('account/verify_credentials');
                 $tf->dump($content);
                 
-                $show = $connection->get('users/show');
+                $show = $connection->get('statuses/home_timeline');
                 $tf->dump($show);
             }
 
