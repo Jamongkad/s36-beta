@@ -186,6 +186,8 @@ class TwitterOAuth {
 
     echo "<pre>";
     print_r($request);
+    print_r($request->to_url());
+    print_r($request->get_normalized_http_url());
     echo "</pre>";
 
     switch ($method) {
