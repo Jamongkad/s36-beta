@@ -298,7 +298,10 @@ class OAuthRequest {
       $defaults['oauth_token'] = $token->key;
 
     $parameters = array_merge($defaults, $parameters);
+    //this seems right
     print_r($parameters);
+    print_r($http_method);
+    print_r($http_url);
 
     return new OAuthRequest($http_method, $http_url, $parameters);
   }
