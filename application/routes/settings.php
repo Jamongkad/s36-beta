@@ -65,6 +65,14 @@ return array (
         ));
     }),
 
+    'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
+        Helpers::dump($social);
+    }),
+
+    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) { 
+        Helpers::dump($social);
+    }),
+
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
         $company_settings->upload_companylogo($_FILES);

@@ -4,7 +4,6 @@
 
 <div class="block">    
     <p class="small"><strong>Connect to your social accounts.</strong></p>
-
     <div class="grids">
         <div class="g4of5">
             <!--
@@ -31,6 +30,6 @@
             </div> 
             -->
         </div>
-        <div style="height:100px"></div>
+        <div style="height:300px"></div>
     </div>
 </div>
