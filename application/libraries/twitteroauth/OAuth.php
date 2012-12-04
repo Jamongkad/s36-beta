@@ -822,9 +822,10 @@ class OAuthUtil {
       $pair = str_replace("amp;", "", $pair);
 
       $split = explode('=', $pair, 2);
+      $esplit = explode('=', $pair);
 
       echo "<pre>";
-      print_r($pair);
+      print_r($esplit);
       echo "</pre>";
       
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
