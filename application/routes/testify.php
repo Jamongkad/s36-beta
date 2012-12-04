@@ -228,8 +228,13 @@ return array(
             $tf->data->twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
         });
 
-        $tf->test('Twitter', function($tf) {
+        $tf->test('Twitter!', function($tf) { 
+            $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', 6)->first();
+            $tf->dump($account);
+        });
 
+        /*
+        $tf->test('Twitter', function($tf) {
             session_start(); 
             if(!isset($_SESSION['oauth_token_secret'])) {   
                 $callback_url = Config::get('application.url').'/testify/twitter_login';
@@ -247,7 +252,7 @@ return array(
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 
                 $tf->dump($connection->get('account/verify_credentials'));
-                /*     
+        
                 $tweets = $connection->get('statuses/home_timeline');
                 $collection = Array();
                 foreach($tweets as $tweet) {
@@ -268,9 +273,10 @@ return array(
                     $collection[] = $node;
                 }
                 $tf->dump($collection);
-                */
+         
             }
         });
+        */
 
         $tf->run();
     }
