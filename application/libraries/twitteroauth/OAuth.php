@@ -818,19 +818,7 @@ class OAuthUtil {
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       
-      //fucking bug appears when insertig a callback url removes amp; characters
-      $pair = str_replace("amp;", "", $pair);
-      echo "<pre>";
-      echo "-------------------------------<br/>";
-      print_r($pair);
-      echo "</pre>";
-
       $split = explode('=', $pair, 2);
-
-      echo "<pre>";
-      print_r($split);
-      echo "</pre>";
-
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
       $value = isset($split[1]) ? OAuthUtil::urldecode_rfc3986($split[1]) : '';
 
