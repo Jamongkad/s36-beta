@@ -3,8 +3,8 @@
 use Input, Helpers;
 use Exception, StdClass;
 use Company\Repositories\DBCompany;
-use Feedback\Repositories\DBSocialFeedback;
-use Feedback\Repositories\TWFeedback; 
+//use Feedback\Repositories\DBSocialFeedback;
+//use Feedback\Repositories\TWFeedback; 
 use \Feedback\Services\SocialFeedback;
 
 use Imagine;
@@ -17,7 +17,7 @@ class CompanySettings {
         $this->upload_dir  = "/var/www/s36-upload-images/uploaded_tmp/";
         $this->company_dir = "/var/www/s36-upload-images/company_logos/";
         $this->dbcompany   = new DBCompany;
-        $this->twitter     = new TWFeedback;  
+        //$this->twitter     = new TWFeedback;  
     }
 
     public function upload_companylogo($files)  {
@@ -63,7 +63,8 @@ class CompanySettings {
                 } 
                 $post_data->logo = $this->filename;  
             } 
-
+            
+            /*
             if($post_data->twitter_username) { 
                 //Helpers::dump("Twitter Intent is there");
                 $social_services = Array(
@@ -89,6 +90,7 @@ class CompanySettings {
                     $socialfeedback->save_social_feeds(); 
                 }
             }  
+            */
             $this->dbcompany->update_companyinfo($post_data);
         }
     }

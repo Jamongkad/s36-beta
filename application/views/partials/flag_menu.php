@@ -101,8 +101,9 @@
                 <?if(preg_match_all('/settings/', Request::uri(), $matches)):?>
                     <?
                         $settings = Array(
-                             'settings' => 'SETTINGS'
+                             'settings' => 'APPLICATION'
                            , 'settings/company' => 'COMPANY'
+                           , 'settings/social'  => 'SOCIAL'
                            , 'settings/upgrade' => 'UPGRADE'
                            //, 'settings/change_card' => 'UPDATE CREDIT CARD'
                            //, 'settings/cancel_account' => 'CANCEL ACCOUNT'

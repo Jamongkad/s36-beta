@@ -52,6 +52,10 @@ return array (
             'user' => $user, 'company' => $company_info, 'error' => Input::get('error_msg'), 'url' => $url
         ));
     }),
+    
+    'GET /settings/social'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
+
+    }),
 
     'POST /settings/save_companysettings' => function() {
         $company_settings = new Company\Services\CompanySettings;
