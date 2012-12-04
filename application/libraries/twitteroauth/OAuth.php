@@ -821,7 +821,7 @@ class OAuthUtil {
       //fucking bug appears when insertig a callback url removes amp; characters
       $pair = str_replace("amp;", "", $pair);
       echo "<pre>";
-      echo "-------------------------------";
+      echo "-------------------------------<br/>";
       print_r($pair);
       echo "</pre>";
 
