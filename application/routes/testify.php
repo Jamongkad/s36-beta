@@ -223,8 +223,8 @@ return array(
         $tf->beforeEach(function($tf) {
             $tf->data->twitter_key    = Config::get('application.dev_twitter_key');
             $tf->data->twitter_secret = Config::get('application.dev_twitter_secret');
-
             $tf->data->twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
+            $tf->data->companyid = 6;
         });
 
         $tf->test('Twitter', function($tf) { 
@@ -246,6 +246,18 @@ return array(
                 $token_credentials = $twitoauth->getAccessToken();
 
                 $tf->dump($token_credentials);
+                
+                $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->user->companyid)->first();
+
+                if(!$account) { 
+                    $data = Array(
+                        'companyId' => $tf->user->companyid
+                      , 'accountName' => $token_credentials['screen_name']
+                      , 'oauthToken' => $token_credentials['oauth_token']
+                      , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
+                    );
+                    DB::Table('CompanyTwitterAccount', 'master')->insert($data);
+                }
 
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
