@@ -251,6 +251,9 @@ return array(
                 
                 $content = $connection->get('account/verify_credentials');
                 $tf->dump($content);
+                
+                $show = $connection->get('users/show');
+                $tf->dump($show);
             }
 
         });
