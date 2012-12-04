@@ -235,23 +235,30 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
+            /*
             $callback_url = Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
             $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token'], False);    
             $tf->dump($token);  
             $tf->dump($login_url); 
-            /*
+            $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, );
+            */
+
             session_start(); 
-            if(!isset($_SESSION['request_secret'])) {   
+            if(!isset($_SESSION['oauth_token_secret'])) {   
                 $callback_url = Config::get('application.url').'/testify/widgets';
                 $token = $tf->data->twitoauth->getRequestToken($callback_url);
-                $tf->dump($token);
-                $_SESSION['request_secret'] = $token['oauth_token_secret'];
+                $_SESSION['oauth_token'] = $token['oauth_token'];
+                $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
                 $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
-            }  
-            */
+            } else {
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+                $token_credentials = $twitoauth->getAccessToken();
+                $tf->dmp($token_credentials);
+            }
+
         });
 
         $tf->run();
