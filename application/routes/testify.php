@@ -246,7 +246,7 @@ return array(
 
             session_start(); 
             if(!isset($_SESSION['request_secret'])) {   
-                $callback_url = Config::get('application.url').'/testify/twitter_login';
+                $callback_url = Config::get('application.url').'/testify/widgets';
                 $token = $tf->data->twitoauth->getRequestToken($callback_url);
                 $tf->dump($token);
                 $_SESSION['request_secret'] = $token['oauth_token_secret'];
@@ -254,12 +254,7 @@ return array(
                 header('Location:'.$login_url);
                 exit;
             } 
-
-            if(isset($_GET)) {
-                $access_token = $tf->data->twitoauth->getAccessToken($_GET['oauth_verifier']);         
-                $tf->dump($access_token);
-            }
-           
+ 
         });
 
         $tf->run();
