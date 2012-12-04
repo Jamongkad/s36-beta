@@ -7,13 +7,19 @@
 
     <div class="grids">
         <div class="g4of5">
+            <!--
             <div class="grids">
                 <div class="g2of5"><strong class="facebook-icon">Connect to Facebook: </strong></div>
                 <div class="g3of5"><?=$company->facebook_username?></div>
             </div>
             <br />
+            -->
             <div class="grids">
-                <div><strong class="twitter-icon">Connect to Twitter: </strong> <?=$company->twitter_username?></div>
+                <?if($company->twitter_username):?>
+                    <strong class="twitter-icon">@<?=$company->twitter_username?> <a href="">Disconnect?</a></strong> 
+                <?else:?>
+                    <strong class="twitter-icon"><a href="">Connect to Twitter</a></strong>
+                <?endif?>
             </div>
             <!--
             <br />
