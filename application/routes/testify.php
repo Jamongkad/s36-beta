@@ -232,14 +232,6 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            /*
-            $callback_url = Config::get('application.url').'/testify/twitter_login';
-            $token = $tf->data->twitoauth->getRequestToken($callback_url);
-            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token'], False);    
-            $tf->dump($token);  
-            $tf->dump($login_url); 
-            $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, );
-            */
 
             session_start(); 
             if(!isset($_SESSION['oauth_token_secret'])) {   
@@ -256,8 +248,9 @@ return array(
                 $token_credentials = $twitoauth->getAccessToken();
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
-
-                $tf->dump($connection);
+                
+                $content = $connection->get('account/verify_credentials');
+                $tf->dump($content);
             }
 
         });
