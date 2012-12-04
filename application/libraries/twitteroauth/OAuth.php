@@ -814,8 +814,10 @@ class OAuthUtil {
   public static function parse_parameters( $input ) {
     if (!isset($input) || !$input) return array();
     $pairs = explode('&', $input);
-
+    
+    echo "<pre>";
     print_r($pairs);
+    echo "</pre>";
 
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
