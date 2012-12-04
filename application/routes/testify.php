@@ -228,27 +228,19 @@ return array(
             $tf->data->twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
         });
 
-        $tf->test('Twitter!', function($tf) { 
-            $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', 6)->first();
-            $oauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $account->oauthtoken, $account->oauthtokensecret);
-            $token_credentials = $oauth->getAccessToken();
-            $tf->dump($token_credentials);
-        });
-
-        /*
         $tf->test('Twitter', function($tf) {
-            session_start(); 
-            if(!isset($_SESSION['oauth_token_secret'])) {   
-                $callback_url = Config::get('application.url').'/testify/twitter_login';
-                $token = $tf->data->twitoauth->getRequestToken($callback_url);
-                $_SESSION['oauth_token'] = $token['oauth_token'];
-                $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
-                $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
+            
+            if(!isset($_SESSION)) {   
+                $callback_url = Config::get('application.url').'/settings/social';
+                $token = $twitoauth->getRequestToken($callback_url);
+                Session::put('oauth_token', $token['oauth_token']);
+                Session::put('oauth_token_secret', $token['oauth_token_secret']);
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
             } else {
                 $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
-                                            , $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+                                            , Session::get('oauth_token'), Session::get('oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
@@ -274,11 +266,9 @@ return array(
                     $node->datetimeobj    = $dt; 
                     $collection[] = $node;
                 }
-                $tf->dump($collection);
-         
+                $tf->dump($collection); 
             }
         });
-        */
 
         $tf->run();
     }
