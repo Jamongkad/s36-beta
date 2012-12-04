@@ -79,10 +79,12 @@ class TwitterOAuth {
       $parameters['oauth_callback'] = $oauth_callback;
     } 
     $request = $this->oAuthRequest($this->requestTokenURL(), 'GET', $parameters);
-    print_r($request);
     $token = OAuth\OAuthUtil::parse_parameters($request);
-
-    $this->token = new OAuth\OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
+   
+    $atoken = '942732308-HHy4iqcRsv4nqTr1fYCH8j8TWfo87Z0cFYBDjpON';
+    $asecret = 'tGbbfd0FCj4nP5C94luz9TPJK5llj1vJnZCH8Eto';
+    //$this->token = new OAuth\OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
+    $this->token = new OAuth\OAuthConsumer($atoken, $asecret);
     return $token;
   }
 
@@ -184,8 +186,6 @@ class TwitterOAuth {
     }
     $request = OAuth\OAuthRequest::from_consumer_and_token($this->consumer, $this->token, $method, $url, $parameters);
     $request->sign_request($this->sha1_method, $this->consumer, $this->token);
-
-    print_r($request->to_url());
 
     switch ($method) {
         case 'GET':
