@@ -229,6 +229,7 @@ class OAuthRequest {
     @$parameters or $parameters = array();
     $parameters = array_merge( OAuthUtil::parse_parameters(parse_url($http_url, PHP_URL_QUERY)), $parameters);
     print_r($parameters);
+    print_r("Pwet");
     $this->parameters = $parameters;
     $this->http_method = $http_method;
     $this->http_url = $http_url;
