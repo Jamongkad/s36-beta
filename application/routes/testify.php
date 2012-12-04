@@ -225,13 +225,10 @@ return array(
         $tf->beforeEach(function($tf) {
             eden()->setLoader();       
 
-            $twitter_key    = Config::get('application.dev_twitter_key');
-            $twitter_secret = Config::get('application.dev_twitter_secret');
+            $tf->data->twitter_key    = Config::get('application.dev_twitter_key');
+            $tf->data->twitter_secret = Config::get('application.dev_twitter_secret');
 
-            $access_token        = Config::get('application.dev_twitter_access_token');
-            $access_token_secret = Config::get('application.dev_twitter_access_secret');
-
-            $tf->data->twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
+            $tf->data->twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret);
         });
 
         $tf->test('Twitter', function($tf) {
@@ -254,7 +251,8 @@ return array(
                 header('Location:'.$login_url);
                 exit;
             } else {
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+                $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
+                                            , $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
                 $token_credentials = $twitoauth->getAccessToken();
                 $tf->dmp($token_credentials);
             }
