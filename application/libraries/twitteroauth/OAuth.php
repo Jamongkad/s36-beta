@@ -228,6 +228,7 @@ class OAuthRequest {
   function __construct($http_method, $http_url, $parameters=NULL) {
     @$parameters or $parameters = array();
     $parameters = array_merge( OAuthUtil::parse_parameters(parse_url($http_url, PHP_URL_QUERY)), $parameters);
+    print_r($parameters);
     $this->parameters = $parameters;
     $this->http_method = $http_method;
     $this->http_url = $http_url;
@@ -298,10 +299,6 @@ class OAuthRequest {
       $defaults['oauth_token'] = $token->key;
 
     $parameters = array_merge($defaults, $parameters);
-    //this seems right
-    print_r($parameters);
-    print_r($http_method);
-    print_r($http_url);
 
     return new OAuthRequest($http_method, $http_url, $parameters);
   }
