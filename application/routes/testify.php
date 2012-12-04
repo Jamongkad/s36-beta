@@ -230,7 +230,10 @@ return array(
         $tf->test('Twitter', function($tf) { 
 
             $tf->dump(Cookie::get('oauth_token_secret'));
-            $tf->dump(Cookie::get('oauth_token'));
+            $tf->dump(Cookie::get('oauth_token_secret'));
+
+            $tf->dump(Cookie::get('real_oauth_token'));
+            $tf->dump(Cookie::get('real_oauth_token_secret'));
 
             if(!Cookie::get('oauth_token_secret')) {   
                 $callback_url = Config::get('application.url').'/testify/twitter_login';
@@ -244,6 +247,10 @@ return array(
                 $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                             , Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
+
+                Cookie::put('real_oauth_token', $token_credentials['oauth_token']);
+                Cookie::put('real_oauth_token_secret', $token_credentials['oauth_token_secret']);
+
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 
