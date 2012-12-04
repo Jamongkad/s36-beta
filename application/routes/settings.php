@@ -66,7 +66,30 @@ return array (
     }),
 
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
-        Helpers::dump($social);
+        
+        if($social == 'twitter') { 
+
+            $twitter_key    = Config::get('application.dev_twitter_key');
+            $twitter_secret = Config::get('application.dev_twitter_secret');
+            $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
+
+            session_start(); 
+            if(!isset($_SESSION['oauth_token_secret'])) {   
+                $callback_url = Config::get('application.url').'/settings/social';
+                $token = $twitoauth->getRequestToken($callback_url);
+                $_SESSION['oauth_token'] = $token['oauth_token'];
+                $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
+                header('Location:'.$login_url);
+                exit;
+            } else {
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+                $token_credentials = $twitoauth->getAccessToken();
+                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);     
+                Helpers::dump($connection);
+            }
+
+        }
     }),
 
     'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) { 

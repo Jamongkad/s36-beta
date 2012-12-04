@@ -38,9 +38,7 @@ return array(
         $category = new DBCategory;
 
         //Reply messages
-        $type = 'msg';
-        $dbm = new Message\Repositories\DBMessage($type);
-        $sm = new Message\Services\SettingMessage($dbm);
+        $sm = new Message\Services\SettingMessage(new Message\Repositories\DBMessage('msg'));
         $sm->get_messages();
 
         $company = $dbcompany->get_company_info($company_id);
@@ -52,7 +50,7 @@ return array(
             );
 
             $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-            $social->save_social_feeds();
+            $social->save_social_feeds('twitter');
         }
 
         $view_data = Array(

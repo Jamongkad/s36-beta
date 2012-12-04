@@ -157,13 +157,13 @@ return array(
         $tf->test("Feedback Inbox", function($tf)  {
 
             $social_services = Array(
-                'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
+                'tw' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
 
             $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-            $tf->data->social->clear_social_feeds('tw');
+            $tf->dump($tf->data->social->save_social_feeds('tw'));
+            //$tf->data->social->clear_social_feeds('tw');
             /*
-            $tf->dump($tf->data->social->save_social_feeds('twitter'));
             $tf->dump($tf->data->social->save_social_feeds('facebook'));
             $tf->dump($tf->data->social->save_social_feeds('google'));
             */
