@@ -257,6 +257,8 @@ return array(
                 $tweets = $connection->get('statuses/home_timeline');
                 $collection = Array();
                 foreach($tweets as $tweet) {
+                    Helpers::dump($tweet->created_at);
+                    /*
                     $dt = new DateTime($tweet['created_at']);
                     $node = new StdClass;
                     $node->id             = $tweet['id_str'];
@@ -272,6 +274,7 @@ return array(
                     $node->unix_timestamp = $dt->getTimestamp();
                     $node->datetimeobj    = $dt; 
                     $collection[] = $node;
+                    */
                 }
                 $tf->dump($collection);
             }
