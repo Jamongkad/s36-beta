@@ -398,6 +398,7 @@ class OAuthRequest {
    */
   public function to_url() {
     $post_data = $this->to_postdata();
+    print_r($post_data);
     $out = $this->get_normalized_http_url();
     if ($post_data) {
       $out .= '?'.$post_data;
