@@ -77,7 +77,7 @@ class DBSocialFeedback extends S36DataObject {
         }
     }
     
-    public function delete_all() {
+    public function delete_all($social) {
         $sql = "
             DELETE 
                 Feedback, Contact, FeedbackContactOrigin 
@@ -96,12 +96,13 @@ class DBSocialFeedback extends S36DataObject {
                 FeedbackContactOrigin 
                 ON FeedbackContactOrigin.contactId = Feedback.contactId 
             WHERE 1=1 
-                AND FeedbackContactOrigin.origin = 'tw'
+                AND FeedbackContactOrigin.origin = :origin
                 AND Company.name = :company_name
         ";
 
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
+        $sth->bindParam(":origin", $social, PDO::PARAM_STR);
         return $sth->execute();
     }
 }

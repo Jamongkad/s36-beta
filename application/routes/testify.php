@@ -150,11 +150,8 @@ return array(
         $tf = new Testify("Inbox Drivers Test");
 
         $tf->beforeEach(function($tf) {
-            $tf->data->feedback  = new Feedback\Repositories\DBFeedback; 
             $tf->data->twitter   = new Feedback\Repositories\TWFeedback; 
-            $tf->data->stub      = new Feedback\Repositories\Stub;
-            $tf->data->redis     = new redisent\Redis;
-            $tf->data->dbcontact = new Contact\Repositories\DBContact;        
+            $tf->data->stub      = new Feedback\Repositories\Stub; 
         });
 
         $tf->test("Feedback Inbox", function($tf)  {
@@ -162,11 +159,16 @@ return array(
             $social_services = Array(
                 'twitter' => $tf->data->twitter->pull_tweets_for('codiqa')
             );
-            /*
+
             $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-            $tf->dump($tf->data->social->save_social_feeds());
+            $tf->data->social->clear_social_feeds();
+            /*
+            $tf->dump($tf->data->social->save_social_feeds('twitter'));
+            $tf->dump($tf->data->social->save_social_feeds('facebook'));
+            $tf->dump($tf->data->social->save_social_feeds('google'));
             */
-            $tf->dump($social_services['twitter']);
+
+            //$tf->dump($social_services['twitter']);
         });
 
         $tf->test("Twitter Feed Rate Status", function($tf)  {
