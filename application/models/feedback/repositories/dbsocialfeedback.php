@@ -103,8 +103,8 @@ class DBSocialFeedback extends S36DataObject {
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
         $sth->bindParam(":origin", $social, PDO::PARAM_STR);
-        $this->dbh->query("SET foreign_key_check = 0");
+        $this->dbh->query("SET foreign_key_checks = 0");
         $sth->execute();
-        $this->dbh->query("SET foreign_key_check = 1");
+        $this->dbh->query("SET foreign_key_checks = 1");
     }
 }
