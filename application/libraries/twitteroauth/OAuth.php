@@ -815,12 +815,12 @@ class OAuthUtil {
     if (!isset($input) || !$input) return array();
     $pairs = explode('&', $input);
     
-    echo "<pre>";
-    print_r($pairs);
-    echo "</pre>";
-
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
+      echo "<pre>";
+      print_r(preg_replace("/&#?[a-z0-9]+;/i", "", $pair));
+      echo "</pre>";
+
       $split = explode('=', $pair, 2);
       
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
