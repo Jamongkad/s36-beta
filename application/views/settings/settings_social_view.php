@@ -16,11 +16,11 @@
             -->
             <div class="grids">
                 <?if($company->twitter_username):?>
-                    <strong class="twitter-icon" style="font-size:15px">
+                    <strong class="twitter-icon" style="font-size:17px">
                         connected to @<?=$company->twitter_username?> <a href="/settings/disconnect/twitter">disconnect?</a>
                     </strong>
                 <?else:?>
-                    <strong class="twitter-icon" style="font-size:15px"><a href="/settings/connect/twitter">Connect to Twitter</a></strong>
+                    <strong class="twitter-icon" style="font-size:17px"><a href="/settings/connect/twitter">Connect to Twitter</a></strong>
                 <?endif?>
             </div>
             <!--
@@ -31,5 +31,6 @@
             </div> 
             -->
         </div>
+        <div style="height:100px"></div>
     </div>
 </div>
