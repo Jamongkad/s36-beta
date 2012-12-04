@@ -232,10 +232,10 @@ return array(
             
             if(!Session::get('oauth_token_secret')) {   
                 $callback_url = Config::get('application.url').'/settings/social';
-                $token = $twitoauth->getRequestToken($callback_url);
+                $token = $tf->data->twitoauth->getRequestToken($callback_url);
                 Session::put('oauth_token', $token['oauth_token']);
                 Session::put('oauth_token_secret', $token['oauth_token_secret']);
-                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
+                $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
             } else {
