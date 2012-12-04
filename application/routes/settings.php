@@ -66,6 +66,8 @@ return array (
     }),
 
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
+
+        $user = S36Auth::user();
         
         if($social == 'twitter') { 
 
@@ -83,10 +85,20 @@ return array (
                 header('Location:'.$login_url);
                 exit;
             } else {
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-                $token_credentials = $twitoauth->getAccessToken();
-                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);     
-                Helpers::dump($connection);
+                $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first();
+                if(!$account) { 
+                    $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+                    $token_credentials = $twitoauth->getAccessToken();
+                    $data = Array(
+                        'companyId' => $user->companyid
+                      , 'accountName' => ''
+                    );
+                    DB::Table('CompanyTwitterAccount', 'master')->insert($data);
+                    /*
+                    $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);     
+                    Helpers::dump($connection);
+                    */
+                }
             }
 
         }

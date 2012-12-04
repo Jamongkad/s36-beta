@@ -219,14 +219,9 @@ return array(
     },
 
     'GET /testify/twitter_login' => function() { 
-
-        Package::load('eden');
-
         $tf = new Testify("Twitter Login Test");
         
         $tf->beforeEach(function($tf) {
-            eden()->setLoader();       
-
             $tf->data->twitter_key    = Config::get('application.dev_twitter_key');
             $tf->data->twitter_secret = Config::get('application.dev_twitter_secret');
 
@@ -251,7 +246,8 @@ return array(
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                              , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 
-     
+                $tf->dump($connection);
+                /*     
                 $tweets = $connection->get('statuses/home_timeline');
                 $collection = Array();
                 foreach($tweets as $tweet) {
@@ -272,6 +268,7 @@ return array(
                     $collection[] = $node;
                 }
                 $tf->dump($collection);
+                */
             }
         });
 
