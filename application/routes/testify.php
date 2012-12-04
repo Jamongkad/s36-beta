@@ -246,17 +246,15 @@ return array(
                     $token_credentials = $twitoauth->getAccessToken();
 
                     $tf->dump($token_credentials);
-                    
-                    if(!$account) { 
-                        $data = Array(
-                            'companyId' => $tf->data->companyid
-                          , 'accountName' => $token_credentials['screen_name']
-                          , 'oauthToken' => $token_credentials['oauth_token']
-                          , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
-                        );
-                        DB::Table('CompanyTwitterAccount', 'master')->insert($data);
-                    }
-
+                      
+                    $data = Array(
+                        'companyId' => $tf->data->companyid
+                      , 'accountName' => $token_credentials['screen_name']
+                      , 'oauthToken' => $token_credentials['oauth_token']
+                      , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
+                    );
+                    DB::Table('CompanyTwitterAccount', 'master')->insert($data);
+             
                     $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                                  , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                     
