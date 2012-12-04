@@ -825,6 +825,10 @@ class OAuthUtil {
       $esplit = explode('=', $pair);
 
       echo "<pre>";
+      print_r($pair);
+      echo "</pre>";
+
+      echo "<pre>";
       print_r($esplit);
       echo "</pre>";
       
