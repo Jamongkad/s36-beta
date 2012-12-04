@@ -238,7 +238,7 @@ return array(
             $callback_url = Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
             $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
-            $access_token = $tf->data->auth->getAccessToken($_GET['oauth_verifier']);
+            $access_token = $tf->data->twitoauth->getAccessToken($_GET['oauth_verifier']);
 
             $tf->dump($access_token);
             $tf->dump($token);
@@ -260,7 +260,7 @@ return array(
 
                 if(isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
                     //we need to convert that to an access token
-                    $token = $tf->data->auth->getAccessToken($_GET['oauth_verifier']);
+                    $token = $tf->data->twitoauth->getAccessToken($_GET['oauth_verifier']);
                     //lastly, save the token in session
                     $_SESSION['access_token']   = $token['oauth_token'];
                     $_SESSION['access_secret']  = $token['oauth_token_secret'];
