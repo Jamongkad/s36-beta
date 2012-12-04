@@ -185,7 +185,6 @@ class TwitterOAuth {
     $request->sign_request($this->sha1_method, $this->consumer, $this->token);
 
     echo "<pre>";
-    print_r($request);
     print_r($request->to_url());
     print_r($request->get_normalized_http_url());
     echo "</pre>";
