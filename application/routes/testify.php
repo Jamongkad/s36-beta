@@ -235,7 +235,7 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            $callback_url = "https://google.com";//Config::get('application.url').'/testify/twitter_login';
+            $callback_url = "pwet";//Config::get('application.url').'/testify/twitter_login';
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
             $tf->dump($token);
             /*
