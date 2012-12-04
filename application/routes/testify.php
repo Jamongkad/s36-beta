@@ -257,16 +257,14 @@ return array(
                 $tweets = $connection->get('statuses/home_timeline');
                 $collection = Array();
                 foreach($tweets as $tweet) {
-                    Helpers::dump($tweet->created_at);
-                    /*
-                    $dt = new DateTime($tweet['created_at']);
+                    $dt = new DateTime($tweet->created_at);
                     $node = new StdClass;
-                    $node->id             = $tweet['id_str'];
-                    $node->firstname      = $tweet['user']['name'];
-                    $node->screen_name    = $tweet['user']['screen_name'];
-                    $node->avatar         = $tweet['user']['profile_image_url_https'];
-                    $node->text           = $tweet['text'];
-                    $node->twit_date      = $tweet['created_at'];
+                    $node->id             = $tweet->id_str;
+                    $node->firstname      = $tweet->user->name;
+                    $node->screen_name    = $tweet->user->screen_name;
+                    $node->avatar         = $tweet->user->profile_image_url_https;
+                    $node->text           = $tweet->text;
+                    $node->twit_date      = $tweet->created_at;
                     $node->feed_type      = 'tw';
                     $node->daysago        = Helpers::relative_time($dt->getTimestamp());
                     $node->date           = $dt->format("Y-m-d H:i:s");
@@ -274,7 +272,6 @@ return array(
                     $node->unix_timestamp = $dt->getTimestamp();
                     $node->datetimeobj    = $dt; 
                     $collection[] = $node;
-                    */
                 }
                 $tf->dump($collection);
             }
