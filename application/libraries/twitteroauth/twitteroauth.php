@@ -183,7 +183,7 @@ class TwitterOAuth {
     $request = OAuth\OAuthRequest::from_consumer_and_token($this->consumer, $this->token, $method, $url, $parameters);
     $request->sign_request($this->sha1_method, $this->consumer, $this->token);
 
-    print_r($request->to_url());
+    print_r($request->to_url()."&oauth_callback=http%3A%2F%2Fmyapp.com%3A3005%2Ftwitter%2Fprocess_callback");
 
     switch ($method) {
         case 'GET':
