@@ -3,9 +3,9 @@
 </div>
 
 <div class="block">    
-    <p class="small"><strong></strong></p>
+    <p class="small"><strong>Connect to your social accounts.</strong></p>
 
-    <div class="grids border-bottom">
+    <div class="grids">
         <div class="g4of5">
             <div class="grids">
                 <div class="g2of5"><strong class="facebook-icon">Facebook: </strong></div>
@@ -22,7 +22,6 @@
                 <div class="g3of5"><input type="text" name="website_link" class="regular-text" value="<?=$company->website_link?>"/> 
                 </div>
             </div> 
-            <br /> 
         </div>
     </div>
 </div>
