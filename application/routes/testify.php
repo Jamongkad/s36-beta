@@ -254,8 +254,26 @@ return array(
                 $tf->dump($content);
                 */
                 
-                $show = $connection->get('statuses/home_timeline');
-                $tf->dump($show);
+                $tweets = $connection->get('statuses/home_timeline');
+                $collection = Array();
+                foreach($tweets as $tweet) {
+                    $dt = new DateTime($data['created_at']);
+                    $node = new StdClass;
+                    $node->id             = $data['id_str'];
+                    $node->firstname      = $data['user']['name'];
+                    $node->screen_name    = $data['user']['screen_name'];
+                    $node->avatar         = $data['user']['profile_image_url_https'];
+                    $node->text           = $data['text'];
+                    $node->twit_date      = $data['created_at'];
+                    $node->feed_type      = 'tw';
+                    $node->daysago        = Helpers::relative_time($dt->getTimestamp());
+                    $node->date           = $dt->format("Y-m-d H:i:s");
+                    $node->head_date      = $dt->format("d.m.Y");
+                    $node->unix_timestamp = $dt->getTimestamp();
+                    $node->datetimeobj    = $dt; 
+                    $collection[] = $node;
+                }
+                $tf->dump($collection);
             }
 
         });
