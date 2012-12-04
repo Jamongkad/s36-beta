@@ -821,14 +821,15 @@ class OAuthUtil {
       //fucking bug appears when insertig a callback url removes amp; characters
       $pair = str_replace("amp;", "", $pair);
       echo "<pre>";
+      echo "-------------------------------";
       print_r($pair);
       echo "</pre>";
 
       $split = explode('=', $pair, 2);
-      //$esplit = explode('=', $pair);
 
       echo "<pre>";
       print_r($split);
+      echo "-------------------------------";
       echo "</pre>";
 
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
