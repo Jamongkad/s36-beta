@@ -254,6 +254,12 @@ return array(
                 header('Location:'.$login_url);
                 exit;
             } 
+
+            if(isset($_GET)) {
+                $access_token = $tf->data->twitoauth->getAccessToken($_GET['oauth_verifier']);         
+                $tf->dump($access_token);
+            }
+           
         });
 
         $tf->run();
