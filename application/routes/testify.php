@@ -235,15 +235,12 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            /*
-            $callback_url = Config::get('application.url').'/testify/twitter_login';
+            $callback_url = Config::get('application.url').'/testify/widgets';
             $token = $tf->data->twitoauth->getRequestToken($callback_url);
-            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
-     
-            $tf->dump($token);
-            $tf->dump($login_url);
-            */
-
+            $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token'], False);    
+            $tf->dump($token);  
+            $tf->dump($login_url); 
+            /*
             session_start(); 
             if(!isset($_SESSION['request_secret'])) {   
                 $callback_url = Config::get('application.url').'/testify/widgets';
@@ -253,8 +250,8 @@ return array(
                 $login_url = $tf->data->twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
-            } 
- 
+            }  
+            */
         });
 
         $tf->run();
