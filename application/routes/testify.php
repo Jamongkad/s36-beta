@@ -229,6 +229,7 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
+            Session::put('oauth_token_secret', 'pwet');
             $tf->dump(Session::get('oauth_token_secret'));
             /* 
             if(!Session::get('oauth_token_secret')) {   
