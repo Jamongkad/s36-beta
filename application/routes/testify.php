@@ -254,7 +254,7 @@ return array(
                 $twitoauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                             , $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
                 $token_credentials = $twitoauth->getAccessToken();
-                $tf->dmp($token_credentials);
+                $tf->dump($token_credentials);
             }
 
         });
