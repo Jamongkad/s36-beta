@@ -1,5 +1,4 @@
 <?php
-use Session, Cookie;
 return array(
     'GET /testify/contact' => function() { 
         $tf = new Testify("Contact Module Refactor");
@@ -229,8 +228,8 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) { 
-            //Session::put('oauth_token_secret', 'pwet');
-            $tf->dump(Session::get('oauth_token_secret'));
+            Cookie::put('oauth_token_secret', 'pwet');
+            $tf->dump(Cookie::get('oauth_token_secret'));
             /* 
             if(!Session::get('oauth_token_secret')) {   
                 $callback_url = Config::get('application.url').'/testify/twitter_login';
