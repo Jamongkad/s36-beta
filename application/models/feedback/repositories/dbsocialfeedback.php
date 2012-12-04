@@ -79,6 +79,7 @@ class DBSocialFeedback extends S36DataObject {
     
     public function delete_all($social) {
         $sql = "
+            SET foreign_key_checks = 0;
             DELETE 
                 Feedback, Contact, FeedbackContactOrigin 
             FROM 
@@ -97,7 +98,8 @@ class DBSocialFeedback extends S36DataObject {
                 ON FeedbackContactOrigin.contactId = Feedback.contactId 
             WHERE 1=1 
                 AND FeedbackContactOrigin.origin = :origin
-                AND Company.name = :company_name
+                AND Company.name = :company_name;
+            SET foreign_key_checks = 1;
         ";
 
         $sth = $this->dbh->prepare($sql); 
