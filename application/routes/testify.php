@@ -246,7 +246,7 @@ return array(
 
             session_start(); 
             if(!isset($_SESSION['oauth_token_secret'])) {   
-                $callback_url = Config::get('application.url').'/testify/widgets';
+                $callback_url = Config::get('application.url').'/testify/twitter_login';
                 $token = $tf->data->twitoauth->getRequestToken($callback_url);
                 $_SESSION['oauth_token'] = $token['oauth_token'];
                 $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
