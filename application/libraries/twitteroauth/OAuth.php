@@ -849,6 +849,7 @@ class OAuthUtil {
         $parsed_parameters[$parameter] = $value;
       }
     }
+    print_r($parsed_parameters);
     return $parsed_parameters;
   }
 
