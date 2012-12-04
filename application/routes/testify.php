@@ -230,7 +230,9 @@ return array(
 
         $tf->test('Twitter!', function($tf) { 
             $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', 6)->first();
-            $tf->dump($account);
+            $oauth = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret, $account->oauthtoken, $account->oauthtokensecret);
+            $token_credentials = $oauth->getAccessToken();
+            $tf->dump($token_credentials);
         });
 
         /*
