@@ -825,12 +825,12 @@ class OAuthUtil {
       echo "</pre>";
 
       $split = explode('=', $pair, 2);
-      $esplit = explode('=', $pair);
-      /*
+      //$esplit = explode('=', $pair);
+
       echo "<pre>";
-      print_r($esplit);
+      print_r($split);
       echo "</pre>";
-      */ 
+
       $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
       $value = isset($split[1]) ? OAuthUtil::urldecode_rfc3986($split[1]) : '';
 
