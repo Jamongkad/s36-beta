@@ -229,7 +229,8 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) {
-            
+            $tf->dump(Session::get('oauth_token_secret'));
+            /* 
             if(!Session::get('oauth_token_secret')) {   
                 $callback_url = Config::get('application.url').'/testify/twitter_login';
                 $token = $tf->data->twitoauth->getRequestToken($callback_url);
@@ -268,6 +269,7 @@ return array(
                 }
                 $tf->dump($collection); 
             }
+            */
         });
 
         $tf->run();
