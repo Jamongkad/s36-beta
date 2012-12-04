@@ -818,7 +818,7 @@ class OAuthUtil {
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       echo "<pre>";
-      print_r(preg_replace("/&#?[a-z0-9]+;/i", "", $pair));
+      print_r(str_replace("amp;", "", $pair));
       echo "</pre>";
 
       $split = explode('=', $pair, 2);
