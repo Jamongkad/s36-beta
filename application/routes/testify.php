@@ -228,7 +228,7 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) { 
-            Cookie::put('oauth_token_secret', 'pwet');
+            //Cookie::put('oauth_token_secret', 'pwet');
             $tf->dump(Cookie::get('oauth_token_secret'));
             /* 
             if(!Session::get('oauth_token_secret')) {   
