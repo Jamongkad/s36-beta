@@ -78,8 +78,7 @@ class TwitterOAuth {
     if (!empty($oauth_callback)) {
       $parameters['oauth_callback'] = $oauth_callback;
     } 
-    $request = $this->oAuthRequest($this->requestTokenURL(), 'GET', $parameters);
-    //print_r($request);
+    $request = $this->oAuthRequest($this->requestTokenURL(), 'GET', $parameters); 
     $token = OAuth\OAuthUtil::parse_parameters($request);
     $this->token = new OAuth\OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
     return $token;
@@ -186,6 +185,7 @@ class TwitterOAuth {
 
     switch ($method) {
         case 'GET':
+          print_r($this->http($request->to_url(), 'GET'));
           return $this->http($request->to_url(), 'GET');
         default:
           return $this->http($request->get_normalized_http_url(), $method, $request->to_postdata());
