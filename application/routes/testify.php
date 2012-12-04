@@ -245,12 +245,6 @@ return array(
                                             , Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
 
-                Cookie::put('real_oauth_token', $token_credentials['oauth_token']);
-                Cookie::put('real_oauth_token_secret', $token_credentials['oauth_token_secret']);
-
-                $tf->dump(Cookie::get('real_oauth_token'));
-                $tf->dump(Cookie::get('real_oauth_token'));
-
                 $tf->dump($token_credentials);
 
                 $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
