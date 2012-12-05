@@ -96,7 +96,7 @@ return array (
 
             } else {
 
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->get($redis_oauth_key, 'oauth_token_secret'));
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
 
                 if(!$account) { 
