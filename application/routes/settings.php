@@ -119,6 +119,8 @@ return array (
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
+            Cookie::forget('oauth_token');
+            Cookie::forget('oauth_token_secret');
         }
         return Redirect::to('settings/social');           
     }),
