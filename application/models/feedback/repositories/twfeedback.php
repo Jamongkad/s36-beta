@@ -31,6 +31,7 @@ class TWFeedback {
         $timestamp = strtotime('tomorrow');
         $collection = Null; 
         
+        //check if we have an existing twitter profile on tap.
         if($this->company_social) {
             $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
 

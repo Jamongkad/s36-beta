@@ -3,6 +3,7 @@
 $category = new DBCategory;
 $redis = new redisent\Redis;
 $redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
+$redis_twitter_key = config::get('application.subdomain').':twitter:feedback';
 
 return array (
 
@@ -117,12 +118,15 @@ return array (
         return Redirect::to('settings/social');           
     }),
 
-    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) { 
+    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key, $redis_twitter_key) { 
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             $redis->del($redis_oauth_key);
+            $redis->del($redis_twitter_key);
+
             $dbsocial = new Feedback\Repositories\DBSocialFeedback;
             $dbsocial->delete_all('tw');
+
             DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
         }
         return Redirect::to('settings/social');           
