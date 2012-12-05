@@ -22,11 +22,11 @@ class TWFeedback {
         $this->redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
         
         $dbcompany = new DBCompany;
-        $this->company = $dbcompany->get_company_info(Config::get('application.subdomain'));
-        $this->company_social = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $this->company->companyid)->first();
+        $company = $dbcompany->get_company_info(Config::get('application.subdomain'));
+        $this->company_social = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $company->companyid)->first();
     }
 
-    public function pull_tweets_for($twitter_account) {
+    public function pull_tweets() {
 
         $timestamp = strtotime('tomorrow');
         $collection = Null; 
@@ -43,73 +43,38 @@ class TWFeedback {
         }
 
         if($request_count_check) {
-            /*
-            Package::load('eden');
-            eden()->setLoader();       
-            eden($this->social_network)->auth($this->twitter_key, $this->twitter_secret);
-            $search = eden($this->social_network)->search($this->twitter_key, $this->twitter_secret
-                                                        , $this->access_token, $this->access_secret);
-            $tweets  = $search->search($twitter_account); 
-            
-            $collection = Array();
-            foreach($tweets['statuses'] as $data) {  
-                $dt = new DateTime($data['created_at']);
-                $node = new FeedbackNode;
-                $node->id             = $data['id_str'];
-                $node->firstname      = $data['user']['name'];
-                $node->screen_name    = $data['user']['screen_name'];
-                $node->avatar         = $data['user']['profile_image_url_https'];
-                $node->text           = $data['text'];
-                $node->twit_date      = $data['created_at'];
-                $node->feed_type      = 'tw';
-                $node->daysago        = Helpers::relative_time($dt->getTimestamp());
-                $node->date           = $dt->format("Y-m-d H:i:s");
-                $node->head_date      = $dt->format("d.m.Y");
-                $node->unix_timestamp = $dt->getTimestamp();
-                $node->datetimeobj    = $dt; 
-                $collection[] = $node;
-            }
-            */
-            $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
-            $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
-            
-            $tweets = $connection->get('statuses/home_timeline');
-            $collection = Array();
-            foreach($tweets as $tweet) {
-                $dt = new DateTime($tweet->created_at);
-                $node = new StdClass;
-                $node->id             = $tweet->id_str;
-                $node->firstname      = $tweet->user->name;
-                $node->screen_name    = $tweet->user->screen_name;
-                $node->avatar         = $tweet->user->profile_image_url_https;
-                $node->text           = $tweet->text;
-                $node->twit_date      = $tweet->created_at;
-                $node->feed_type      = 'tw';
-                $node->daysago        = Helpers::relative_time($dt->getTimestamp());
-                $node->date           = $dt->format("Y-m-d H:i:s");
-                $node->head_date      = $dt->format("d.m.Y");
-                $node->unix_timestamp = $dt->getTimestamp();
-                $node->datetimeobj    = $dt; 
-                $collection[] = $node;
+            if($this->company_social) { 
+                $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
+                $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
+                
+                $tweets = $connection->get('statuses/home_timeline');
+                $collection = Array();
+                foreach($tweets as $tweet) {
+                    $dt = new DateTime($tweet->created_at);
+                    $node = new StdClass;
+                    $node->id             = $tweet->id_str;
+                    $node->firstname      = $tweet->user->name;
+                    $node->screen_name    = $tweet->user->screen_name;
+                    $node->avatar         = $tweet->user->profile_image_url_https;
+                    $node->text           = $tweet->text;
+                    $node->twit_date      = $tweet->created_at;
+                    $node->feed_type      = 'tw';
+                    $node->daysago        = Helpers::relative_time($dt->getTimestamp());
+                    $node->date           = $dt->format("Y-m-d H:i:s");
+                    $node->head_date      = $dt->format("d.m.Y");
+                    $node->unix_timestamp = $dt->getTimestamp();
+                    $node->datetimeobj    = $dt; 
+                    $collection[] = $node;
+                }
             }
         }
   
         $obj = new StdClass;
         $obj->result = $collection;
         return $obj;
-
     }
 
     public function reset_request_count() {
         $this->redis->del($this->redis_twitter_key);   
-    }
-
-    public function get_rate_limit() { 
-        eden()->setLoader();       
-        eden($this->social_network)->auth($this->twitter_key, $this->twitter_secret);
-        $help = eden($this->social_network)->help($this->twitter_key, $this->twitter_secret, $this->access_token, $this->access_secret);
-        $resources = 'search';
-        $result = $help->getRateLimitStatus($resources);
-        return $result;
     }
 }
