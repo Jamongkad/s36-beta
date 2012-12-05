@@ -14,12 +14,14 @@ class SocialFeedback {
     }
 
     public function save_social_feeds($social) {
-
         $social_fd = $this->socialfeeds[$social];
         if($social_feed = $social_fd->result) { 
+            /*
             foreach($social_feed as $feed) {
                 $this->dbsocial->convert($feed);    
             }
+            */
+            return true;
         } else {     
             throw new Exception("Social Feed is missing!");
         }
