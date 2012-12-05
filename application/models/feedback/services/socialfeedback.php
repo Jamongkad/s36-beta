@@ -20,6 +20,7 @@ class SocialFeedback {
             foreach($social_feed as $feed) {
                 $this->dbsocial->convert($feed);    
             }
+            return true;
         } else {
             return false;     
         }  

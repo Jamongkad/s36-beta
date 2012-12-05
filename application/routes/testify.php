@@ -161,8 +161,9 @@ return array(
             );
             $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             $tf->dump($social_services['tw']);
-            /*
             $tf->assert($social->save_social_feeds('tw'));
+            /*
+
             $tf->dump($social->save_social_feeds('tw'));
             */
         });
