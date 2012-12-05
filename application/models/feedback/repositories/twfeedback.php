@@ -71,9 +71,8 @@ class TWFeedback {
             }
             */
             $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
-            Helpers::dump($token_credentials);
-            /*
-            $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']); 
+            $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
+            
             $tweets = $connection->get('statuses/home_timeline');
             $collection = Array();
             foreach($tweets as $tweet) {
@@ -93,10 +92,8 @@ class TWFeedback {
                 $node->datetimeobj    = $dt; 
                 $collection[] = $node;
             }
-            */
         }
   
-
         $obj = new StdClass;
         $obj->result = $collection;
         return $obj;

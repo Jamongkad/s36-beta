@@ -175,10 +175,12 @@ return array(
             $tf->dump($social_services['tw']);
         });
 
+        /*
         $tf->test("Twitter Feed Rate Status", function($tf)  {
             $rate_limit = $tf->data->twitter->get_rate_limit();
             $tf->dump($rate_limit);
         });
+        */
 
         $tf->run();
     },
