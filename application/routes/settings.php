@@ -1,6 +1,7 @@
 <?php
 
 $category = new DBCategory;
+$social_account = new Company\Repositories\DBCompanySocialAccount;
 $redis = new redisent\Redis;
 $redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
 $redis_twitter_key = config::get('application.subdomain').':twitter:feedback';
@@ -56,23 +57,17 @@ return array (
         ));
     }),
     
-    'GET /settings/social'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
+    'GET /settings/social'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function() use ($social_account) {  
 
         $user = S36Auth::user();
-        $twitter_account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
-        
-        /*
-        Helpers::dump(Cookie::get('oauth_token_secret'));
-        Helpers::dump(Cookie::get('oauth_token'));
-        */
-
-        $url = Config::get('application.url');
+        $twitter_account = $social_account->fetch_social_account('twitter');
+         
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
             'user' => $user, 'twitter_account' => $twitter_account
         ));
     }),
 
-    'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) {
+    'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key, $social_account) {
 
         $user = S36Auth::user(); 
           
@@ -93,9 +88,11 @@ return array (
                 header('Location:'.$login_url);
                 exit;
             } else {
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, 
+                                              $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
+
                 $token_credentials = $twitoauth->getAccessToken();
-                $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
+                $account = $social_account->fetch_social_account('twitter');
                 if(!$account) { 
                    
                     $twitter_account_data = Array( 
@@ -110,7 +107,7 @@ return array (
                       , 'socialAccountValue' => Helpers::wrap($twitter_account_data)
                     );
 
-                    DB::Table('CompanySocialAccount', 'master')->insert($data); 
+                    $social_account->save_social_account($data);
                 } 
             }                
         }
@@ -118,7 +115,8 @@ return array (
         return Redirect::to('settings/social');           
     }),
 
-    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key, $redis_twitter_key) { 
+    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key
+                                                                                                                          , $redis_twitter_key, $social_account) { 
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             $redis->del($redis_oauth_key);
@@ -126,8 +124,7 @@ return array (
 
             $dbsocial = new Feedback\Repositories\DBSocialFeedback;
             $dbsocial->delete_all('tw');
-
-            DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
+            $social_account->delete_social_account();
         }
         return Redirect::to('settings/social');           
     }),

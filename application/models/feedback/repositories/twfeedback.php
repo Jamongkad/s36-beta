@@ -2,7 +2,7 @@
 
 use Underscore\Underscore;
 use TwitterOAuth\TwitterOAuth;
-use Company\Repositories\DBCompany;
+use Company\Repositories\DBCompany, Company\Repositories\DBCompanySocialAccount;
 use \Feedback\Entities\FeedbackNode;
 use DateTime, StdClass;
 use Package, Helpers, Config, DB;
@@ -22,8 +22,10 @@ class TWFeedback {
         $this->redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
         
         $dbcompany = new DBCompany;
+        $dbcompany_social = new DBCompanySocialAccount;
         $company = $dbcompany->get_company_info(Config::get('application.subdomain'));
-        $this->company_social = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $company->companyid)->first();
+
+        $this->company_social = $dbcompany_social->fetch_social_account();
     }
 
     public function pull_tweets() {

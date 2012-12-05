@@ -20,4 +20,12 @@ class DBCompanySocialAccount extends S36DataObject {
         return $result;
     }
 
+    public function save_social_account($data) { 
+        return DB::Table('CompanySocialAccount', 'master')->insert($data); 
+    }
+
+    public function delete_social_account() {
+        return DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $this->company_id)->delete();     
+    }
+
 }
