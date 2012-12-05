@@ -67,14 +67,51 @@ return array (
 
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
 
-        $user = S36Auth::user();
-        
+        $user = S36Auth::user(); 
+        $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
+
         if($social == 'twitter') { 
 
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
+
+            if(!Cookie::get('oauth_token_secret')) {   
+                //redirects back to /settings/connect/twitter
+                $callback_url = Config::get('application.url').'/settings/connect/twitter';
+                $token = $twitoauth->getRequestToken($callback_url);
+                Cookie::put('oauth_token', $token['oauth_token']);
+                Cookie::put('oauth_token_secret', $token['oauth_token_secret']);
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
+                header('Location:'.$login_url);
+                exit;
+            } else {
+
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
+                $token_credentials = $twitoauth->getAccessToken();
+
+                if(!$account) { 
+                    $data = Array(
+                        'companyId' => $user->companyid
+                      , 'accountName' => $token_credentials['screen_name']
+                      , 'oauthToken' => $token_credentials['oauth_token']
+                      , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
+                    );
+                    DB::Table('CompanyTwitterAccount', 'master')->insert($data); 
+                }
+                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
+                
+                //place redirect code here...should go back to /settings/social 
+                return Redirect::to('settings/social');           
+            }                
+            /*
+            } else { 
+                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $account->oauthtoken, $account->oauthtokensecret);
+                Helpers::dump($connection);
+                Helpers::dump($connection->get('account/verify_credentials'));
+            }
+            */
         }
     }),
 

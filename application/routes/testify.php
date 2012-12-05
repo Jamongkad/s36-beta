@@ -228,11 +228,9 @@ return array(
         });
 
         $tf->test('Twitter', function($tf) { 
-
             //this call should be in /settings/social
-            
-            
-            if(!$account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first()) {
+            $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first(); 
+            if(!$account) {
                 if(!Cookie::get('oauth_token_secret')) {   
                     //redirects back to /settings/connect/twitter
                     $callback_url = Config::get('application.url').'/testify/twitter_login';
