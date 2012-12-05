@@ -58,6 +58,9 @@ return array (
         $user = S36Auth::user();
         $twitter_account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
+        Helpers::dump(Cookie::get('oauth_token_secret'));
+        Helpers::dump(Cookie::get('oauth_token'));
+
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
             'user' => $user, 'twitter_account' => $twitter_account
