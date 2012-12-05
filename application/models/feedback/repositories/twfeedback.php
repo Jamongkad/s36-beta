@@ -30,20 +30,20 @@ class TWFeedback {
 
         $timestamp = strtotime('tomorrow');
         $collection = Null; 
+        
+        if($this->company_social) {
+            $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
 
-        $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
+            if($this->redis->hgetall($this->redis_twitter_key)) {   
+                if($request_count_check) {
+                    $this->redis->hincrby($this->redis_twitter_key, 'requests', 1);     
+                } 
+            } else {
+                $this->redis->hsetnx($this->redis_twitter_key, 'requests', 0);  
+                $this->redis->expireat($this->redis_twitter_key, $timestamp);
+            }
 
-        if($this->redis->hgetall($this->redis_twitter_key)) {   
             if($request_count_check) {
-                $this->redis->hincrby($this->redis_twitter_key, 'requests', 1);     
-            } 
-        } else {
-            $this->redis->hsetnx($this->redis_twitter_key, 'requests', 0);  
-            $this->redis->expireat($this->redis_twitter_key, $timestamp);
-        }
-
-        if($request_count_check) {
-            if($this->company_social) { 
                 $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
                 $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauthToken'], $token_credentials['oauthTokenSecret']);
                 
