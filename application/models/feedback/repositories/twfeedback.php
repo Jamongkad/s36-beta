@@ -1,12 +1,12 @@
 <?php namespace Feedback\Repositories;
 
 use Underscore\Underscore;
+use TwitterOAuth\TwitterOAuth;
+use Company\Repositories\DBCompany;
 use \Feedback\Entities\FeedbackNode;
 use DateTime, StdClass;
-use Package, Helpers, Config;
+use Package, Helpers, Config, DB;
 use redisent\Redis;
-
-Package::load('eden');
 
 class TWFeedback {
 
@@ -20,6 +20,10 @@ class TWFeedback {
         $this->social_network = 'twitter';
         $this->redis          = new Redis;
         $this->redis_twitter_key = Config::get('application.subdomain').':twitter:feedback';
+        
+        $dbcompany = new DBCompany;
+        $this->company = $dbcompany->get_company_info(Config::get('application.subdomain'));
+        $this->company_social = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $this->company->companyid)->first();
     }
 
     public function pull_tweets_for($twitter_account) {
@@ -39,15 +43,14 @@ class TWFeedback {
         }
 
         if($request_count_check) {
+            /*
+            Package::load('eden');
             eden()->setLoader();       
             eden($this->social_network)->auth($this->twitter_key, $this->twitter_secret);
             $search = eden($this->social_network)->search($this->twitter_key, $this->twitter_secret
                                                         , $this->access_token, $this->access_secret);
             $tweets  = $search->search($twitter_account); 
             
-            Helpers::dump($tweets);
-
-
             $collection = Array();
             foreach($tweets['statuses'] as $data) {  
                 $dt = new DateTime($data['created_at']);
@@ -66,8 +69,33 @@ class TWFeedback {
                 $node->datetimeobj    = $dt; 
                 $collection[] = $node;
             }
+            */
+            $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
+            $connection = new TwitterOAuth($tf->twitter_key, $tf->twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
+            
+            //place redirect code here...should go back to /settings/social
+            $tweets = $connection->get('statuses/home_timeline');
+            $collection = Array();
+            foreach($tweets as $tweet) {
+                $dt = new DateTime($tweet->created_at);
+                $node = new StdClass;
+                $node->id             = $tweet->id_str;
+                $node->firstname      = $tweet->user->name;
+                $node->screen_name    = $tweet->user->screen_name;
+                $node->avatar         = $tweet->user->profile_image_url_https;
+                $node->text           = $tweet->text;
+                $node->twit_date      = $tweet->created_at;
+                $node->feed_type      = 'tw';
+                $node->daysago        = Helpers::relative_time($dt->getTimestamp());
+                $node->date           = $dt->format("Y-m-d H:i:s");
+                $node->head_date      = $dt->format("d.m.Y");
+                $node->unix_timestamp = $dt->getTimestamp();
+                $node->datetimeobj    = $dt; 
+                $collection[] = $node;
+            }
         }
   
+
         $obj = new StdClass;
         $obj->result = $collection;
         return $obj;
