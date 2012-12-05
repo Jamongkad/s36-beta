@@ -84,7 +84,7 @@ return array (
                 $redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
                 $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
-                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], true);    
                 header('Location:'.$login_url);
                 exit;
             } else {
