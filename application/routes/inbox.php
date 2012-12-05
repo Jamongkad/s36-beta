@@ -5,7 +5,7 @@ return array(
 
         $inbox = new Feedback\Services\InboxService; 
         $redis = new redisent\Redis;
-        $dbcompany = new Company\Repositories\DBCompany;
+        $dbcompany_social = new Company\Repositories\DBCompanySocialAccount;
 
         $limit = 3;
 
@@ -41,16 +41,14 @@ return array(
         $sm = new Message\Services\SettingMessage(new Message\Repositories\DBMessage('msg'));
         $sm->get_messages();
 
-        $company = $dbcompany->get_company_info($company_id);
-        $twitter   = new Feedback\Repositories\TWFeedback; 
-
-        if($company->twitter_username) { 
+        if($dbcompany_social->fetch_social_account('twitter')) { 
+            $twitter   = new Feedback\Repositories\TWFeedback; 
             $social_services = Array(
-                'twitter' => $twitter->pull_tweets_for($company->twitter_username)
+                'tw' => $twitter->pull_tweets()
             );
 
             $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
-            $social->save_social_feeds('twitter');
+            $social->save_social_feeds('tw');
         }
 
         $view_data = Array(
