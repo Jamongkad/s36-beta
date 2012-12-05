@@ -76,8 +76,10 @@ return array (
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
+            //if denied fly the user back to the social page 
             if(Input::get('denied')) {
                 $redis->del($redis_oauth_key);
+                return Redirect::to('settings/social');           
             }
 
             if($redis->hgetall($redis_oauth_key) == false) {   
