@@ -62,7 +62,9 @@ return array(
                                                   , 'hosted'          => $hosted_settings_info));        
     },
      
-    'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company, $company_social) {
+    'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company, $company_social) {
+        Helpers::dump($company_social);
+        /*
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
@@ -79,6 +81,7 @@ return array(
                                                     , 'company_social' => $company_social
                                                     , 'company_header' => $header_view 
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
+        */
     },
 
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
