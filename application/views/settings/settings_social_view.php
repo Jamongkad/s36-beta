@@ -16,7 +16,7 @@
             <div class="grids">
                 <?if($twitter_account):?>
                     <strong class="twitter-icon" style="font-size:17px">
-                        connected to @<? $t = (object) Helpers::unwrap($twitter_account);
+                        connected to @<? $t = (object) Helpers::unwrap($twitter_account['socialAccountValue']);
                                         echo $t->accountName
                                      ?><a href="/settings/disconnect/twitter">disconnect?</a>
                     </strong>
