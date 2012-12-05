@@ -31,8 +31,9 @@ class TWFeedback {
     public function pull_tweets() {
 
         $timestamp = strtotime('tomorrow');
-        $collection = Null; 
-        
+        $collection = Null;  
+        $error = Null;
+        $status = Null;
         //check if we have an existing twitter profile on tap.
         if($this->company_social) {
             $request_count_check = $this->redis->hget($this->redis_twitter_key, 'requests') != $this->request_count;
@@ -69,11 +70,19 @@ class TWFeedback {
                     $node->datetimeobj    = $dt; 
                     $collection[] = $node;
                 }
+
+                $status = "Processing Twitter Feedback for account @".$token_credentials['accountName'];
+            } else {
+                $status = "Request Limit reached!";
             }
+        } else {
+           $error = "No existing social profile for company ".Config::get('application.subdomain');
         }
   
         $obj = new StdClass;
         $obj->result = $collection;
+        $obj->status = $status; 
+        $obj->error  = $error; 
         return $obj;
     }
 
