@@ -53,6 +53,7 @@ return array(
         $meta->calculate_metrics();        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'         => $company_info
+                                                  , 'company_social'  => $company_social
                                                   , 'user'            => $user
                                                   , 'feeds'           => $feeds
                                                   , 'widget'          => $widget

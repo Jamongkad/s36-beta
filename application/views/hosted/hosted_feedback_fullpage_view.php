@@ -55,14 +55,23 @@ $(document).ready(function(){
             </div>
 
             <div class="social-buttons">
+                <ul>
                 <?
-                    if($company->socialaccountorigin && $company->socialaccountorigin == 'twitter') {
-                        
+                    $twitter = $company_social->fetch_social_account('twitter');
+                    $facebook = $company_social->fetch_social_account('facebook');
+
+                    if($twitter) {
+                        $tw = Helpers::unwrap($twitter->socialaccountvalue);
+                        echo '<li><a href="https://www.twitter.com/'.$tw['accountName'].'"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>';
+                    }
+
+                    if($facebook) {
+                        $fb = Helpers::unwrap($facebook->socialaccountvalue);
+                        echo '<li><a href="https://www.facebook.com/'.$tw['accountName'].'"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>';
                     }
                 ?>
-                <ul>
-                    <li><a href="https://www.facebook.com/<?=$company->facebook_username?>"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>
-                    <li><a href="https://www.twitter.com/<?=$company->twitter_username?>"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>
+                 
+
                 </ul>
 
             </div>
