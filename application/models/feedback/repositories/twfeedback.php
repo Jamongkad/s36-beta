@@ -71,9 +71,9 @@ class TWFeedback {
             }
             */
             $token_credentials = Helpers::unwrap($this->company_social->socialaccountvalue);
-            $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
-            
-            //place redirect code here...should go back to /settings/social
+            Helpers::dump($token_credentials);
+            /*
+            $connection = new TwitterOAuth($this->twitter_key, $this->twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']); 
             $tweets = $connection->get('statuses/home_timeline');
             $collection = Array();
             foreach($tweets as $tweet) {
@@ -93,6 +93,7 @@ class TWFeedback {
                 $node->datetimeobj    = $dt; 
                 $collection[] = $node;
             }
+            */
         }
   
 
