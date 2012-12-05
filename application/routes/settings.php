@@ -81,9 +81,8 @@ return array (
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
-            Helpers::dump($redis->hgetall($redis_oauth_key) == false);
-            /*
-            if(!$redis->hgetall($redis_oauth_key)) {   
+
+            if($redis->hgetall($redis_oauth_key) == false) {   
                 //redirects back to /settings/connect/twitter
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
                 $token = $twitoauth->getRequestToken($callback_url);
@@ -96,7 +95,7 @@ return array (
                 exit;
 
             } else {
-              
+
                 $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
 
@@ -119,7 +118,6 @@ return array (
                 //place redirect code here...should go back to /settings/social 
                 return Redirect::to('settings/social');           
             }                
-            */
         }
     }),
 
