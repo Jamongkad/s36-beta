@@ -1,6 +1,8 @@
 <?php namespace Widget\Entities;
 
-use Config, View, DB, Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings, \Company\Repositories\DBCompany;
+use Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings;
+use \Company\Repositories\DBCompany, \Company\Repositories\DBCompanySocialAccount;
+use Config, View, DB;
 
 class SubmissionWidget extends FormWidgets {
 
@@ -25,6 +27,9 @@ class SubmissionWidget extends FormWidgets {
         $company = new DBCompany;
         $this->company = $company->get_company_info($options->company_id);
 
+        $company_social = new DBCompanySocialAccount;
+        $this->company_social = $company_social;
+
         $this->site = DB::Table('Site')->where('siteId', '=', $options->site_id)->first(Array('domain'));
 
         $this->hosted_settings = new DBHostedSettings;
@@ -42,6 +47,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_domain' => $this->site->domain
           , 'company_id' => $this->company_id
           , 'company' =>  $this->company
+          , 'company_social' => $this->company_social
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
@@ -60,6 +66,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_domain' => $this->site->domain
           , 'company_id' => $this->company_id
           , 'company' =>  $this->company
+          , 'company_social' => $this->company_social
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
