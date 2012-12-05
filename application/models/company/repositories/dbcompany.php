@@ -31,8 +31,6 @@ class DBCompany extends S36DataObject {
             ->update(Array( 
                 'description'         => $post->company_desc
               , 'fullpageCompanyName' => $post->fullpagecompanyname 
-              , 'facebook_username'   => $post->facebook_username
-              , 'twitter_username'    => $post->twitter_username
               , 'website_link'        => $post->website_link
               , 'logo'                => $post->logo
             )); 
@@ -52,6 +50,9 @@ class DBCompany extends S36DataObject {
               , Company.name AS company_name 
             FROM 
                 Company
+            LEFT JOIN
+                CompanySocialAccount
+                    ON CompanySocialAccount.companyId = Company.companyId
             INNER JOIN
                 Site
                     ON Site.companyId = Company.companyId
@@ -59,8 +60,8 @@ class DBCompany extends S36DataObject {
                 AND $company_sql
             LIMIT 1
         ";
-        $sth = $this->dbh->prepare($sql);     
 
+        $sth = $this->dbh->prepare($sql);     
         $sth->bindParam(':company_id', $company_id);
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);

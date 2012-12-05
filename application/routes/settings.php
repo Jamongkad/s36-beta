@@ -56,7 +56,7 @@ return array (
     'GET /settings/social'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
 
         $user = S36Auth::user();
-        $twitter_account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
+        $twitter_account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
@@ -67,14 +67,13 @@ return array (
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
 
         $user = S36Auth::user(); 
-        $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
+        $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
         if($social == 'twitter') { 
 
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
-
 
             if(!Cookie::get('oauth_token_secret')) {   
                 //redirects back to /settings/connect/twitter
@@ -91,12 +90,19 @@ return array (
                 $token_credentials = $twitoauth->getAccessToken();
 
                 if(!$account) { 
-                    $data = Array(
-                        'companyId' => $user->companyid
-                      , 'accountName' => $token_credentials['screen_name']
+
+                    $twitter_account_data = Array( 
+                        'accountName' => $token_credentials['screen_name']
                       , 'oauthToken' => $token_credentials['oauth_token']
                       , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
                     );
+
+                    $data = Array(
+                        'companyId' => $user->companyid
+                      , 'socialAccountOrigin' => 'twitter'
+                      , 'socialAccountValue' => Helpers::wrap($twitter_account_data)
+                    );
+
                     DB::Table('CompanyTwitterAccount', 'master')->insert($data); 
                 }
                 $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);

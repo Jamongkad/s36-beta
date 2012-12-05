@@ -14,9 +14,9 @@
             <br />
             -->
             <div class="grids">
-                <?if($twitter_account->accountname):?>
+                <?if($twitter_account):?>
                     <strong class="twitter-icon" style="font-size:17px">
-                        connected to @<?=$twitter_account->accountname?> <a href="/settings/disconnect/twitter">disconnect?</a>
+                        connected to Twitter <a href="/settings/disconnect/twitter">disconnect?</a>
                     </strong>
                 <?else:?>
                     <strong class="twitter-icon" style="font-size:17px"><a href="/settings/connect/twitter">Connect to Twitter</a></strong>

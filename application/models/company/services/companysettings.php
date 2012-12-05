@@ -64,33 +64,6 @@ class CompanySettings {
                 $post_data->logo = $this->filename;  
             } 
             
-            /*
-            if($post_data->twitter_username) { 
-                //Helpers::dump("Twitter Intent is there");
-                $social_services = Array(
-                    'twitter' => $this->twitter->pull_tweets_for($post_data->twitter_username)
-                ); 
-
-                $socialfeedback = new SocialFeedback($social_services, new DBSocialFeedback);
-                $company = $this->dbcompany->get_company_info($post_data->companyid);
-                //check if Company has existing twitter name
-                if($company->twitter_username) {
-                    //Helpers::dump("ok we have a twitter link");
-                    if($post_data->twitter_username != $company->twitter_username) { 
-                        //reset twitter request count
-                        $this->twitter->reset_request_count();
-                        //erase old twitter feeds
-                        $socialfeedback->clear_social_feeds();
-                        //replace with new
-                        $socialfeedback->save_social_feeds();
-                    }
-                } else {
-                    //Helpers::dump("Create new social feed");
-                    //no existing twitter link? ok then make a new one
-                    $socialfeedback->save_social_feeds(); 
-                }
-            }  
-            */
             $this->dbcompany->update_companyinfo($post_data);
         }
     }
