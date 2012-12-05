@@ -44,6 +44,9 @@ class TWFeedback {
             $search = eden($this->social_network)->search($this->twitter_key, $this->twitter_secret
                                                         , $this->access_token, $this->access_secret);
             $tweets  = $search->search($twitter_account); 
+            
+            Helpers::dump($tweets);
+
 
             $collection = Array();
             foreach($tweets['statuses'] as $data) {  
