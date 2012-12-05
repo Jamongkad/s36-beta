@@ -103,7 +103,7 @@ return array (
                       , 'socialAccountValue' => Helpers::wrap($twitter_account_data)
                     );
 
-                    DB::Table('CompanyTwitterAccount', 'master')->insert($data); 
+                    DB::Table('CompanySocialAccount', 'master')->insert($data); 
 
                     Cookie::forget('oauth_token');
                     Cookie::forget('oauth_token_secret');
