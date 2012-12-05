@@ -163,7 +163,7 @@ return array(
                 'tw' => $tf->data->twitter->pull_tweets_for($twitter['accountName'])
             );
 
-
+            $tf->dump($twitter['accountName']);
 
             //$tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             //$tf->dump($tf->data->social->save_social_feeds('tw'));
