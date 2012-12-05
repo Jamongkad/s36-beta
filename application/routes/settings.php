@@ -80,7 +80,7 @@ return array (
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
-            if(!Cookie::get('oauth_token_secret')) {   
+            if(!Cookie::has('oauth_token_secret')) {   
                 //redirects back to /settings/connect/twitter
                 echo "etits";
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
