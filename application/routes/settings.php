@@ -58,22 +58,6 @@ return array (
         $user = S36Auth::user();
         $company = new Company\Repositories\DBCompany;
         $company_info = $company->get_company_info($user->companyid);
-        /*
-        $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first();
-        if(!$account) { 
-            $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-            $token_credentials = $twitoauth->getAccessToken();
-            $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);     
-            $twitter_user = $connection->get('account/verify_credentials');
-            $data = Array(
-                'companyId' => $user->companyid
-              , 'accountName' => $twitter_user->name
-              , 'oauthToken' => $token_credentials['oauth_token']
-              , 'oauthTokenSecret' => $token_credentials['oauth_token_secret']
-            );
-            DB::Table('CompanyTwitterAccount', 'master')->insert($data);
-        }
-        */
 
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 

@@ -9,12 +9,14 @@ class DBSocialFeedback extends S36DataObject {
         try { 
             $this->dbh->beginTransaction();
             
+            //set default site id
             $site_sql = "SELECT s.siteId FROM Company AS c INNER JOIN Site AS s ON c.companyId = s.companyId WHERE c.name = :company_name";
             $sth = $this->dbh->prepare($site_sql); 
             $sth->bindParam(":company_name", $this->company_name, PDO::PARAM_STR);
             $sth->execute();
             $site_id = $sth->fetch(PDO::FETCH_OBJ); 
  
+            //set default category
             $ctgy_sql = "SELECT 
                              ctg.categoryId 
                          FROM 

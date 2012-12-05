@@ -229,10 +229,12 @@ return array(
 
         $tf->test('Twitter', function($tf) { 
 
-            $account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first();
+            //this call should be in /settings/social
             
-            if(!$account) {
+            
+            if(!$account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $tf->data->companyid)->first()) {
                 if(!Cookie::get('oauth_token_secret')) {   
+                    //redirects back to /settings/connect/twitter
                     $callback_url = Config::get('application.url').'/testify/twitter_login';
                     $token = $tf->data->twitoauth->getRequestToken($callback_url);
                     Cookie::put('oauth_token', $token['oauth_token']);
@@ -258,6 +260,7 @@ return array(
                     $connection = new TwitterOAuth($tf->data->twitter_key, $tf->data->twitter_secret
                                                  , $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                     
+                    //place redirect code here...should go back to /settings/social
                     $tf->dump($connection->get('account/verify_credentials'));
             
                     $tweets = $connection->get('statuses/home_timeline');
