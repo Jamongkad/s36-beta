@@ -74,10 +74,8 @@ return array (
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) {
 
         $user = S36Auth::user(); 
-        $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
-         
+          
         if($social == 'twitter') { 
-
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
@@ -96,7 +94,7 @@ return array (
             } else {
                 $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
-
+                $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
                 if(!$account) { 
                    
                     $twitter_account_data = Array( 
@@ -112,11 +110,11 @@ return array (
                     );
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
-                }
-                //place redirect code here...should go back to /settings/social 
-                return Redirect::to('settings/social');           
+                } 
             }                
         }
+
+        return Redirect::to('settings/social');           
     }),
 
     'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) { 
