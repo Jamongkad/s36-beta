@@ -1,6 +1,8 @@
 <?php
 
 $category = new DBCategory;
+$redis = new redisent\Redis;
+$redis_oauth_key = Config::get('application.subdomain').':twitter:oauth';
 
 return array (
 
@@ -69,12 +71,10 @@ return array (
         ));
     }),
 
-    'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) {
+    'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) {
 
         $user = S36Auth::user(); 
         $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
-
-        session_start();
          
         if($social == 'twitter') { 
 
@@ -82,23 +82,21 @@ return array (
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
-            if(!$_SESSION['oauth_token']) {   
+            if(!$redis->hgetall($redis_oauth_key)) {   
                 //redirects back to /settings/connect/twitter
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
                 $token = $twitoauth->getRequestToken($callback_url);
 
-                $_SESSION['oauth_token'] = $token['oauth_token'];
-                $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
-                /*
-                Cookie::put('oauth_token', $token['oauth_token']);
-                Cookie::put('oauth_token_secret', $token['oauth_token_secret']);
-                */
+                $redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
+                $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
+
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
+
             } else {
-                //$twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $redis->hget($redis_oauth_key, 'oauth_token'), $redis->get($redis_oauth_key, 'oauth_token_secret'));
                 $token_credentials = $twitoauth->getAccessToken();
 
                 if(!$account) { 
@@ -117,18 +115,16 @@ return array (
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
                 }
-
-                unset($_SESSION['oauth_token_secret']);
-                unset($_SESSION['oauth_token']);
                 //place redirect code here...should go back to /settings/social 
                 return Redirect::to('settings/social');           
             }                
         }
     }),
 
-    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) { 
+    'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key) { 
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
+            $redis->del($redis_oauth_key);
             DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
         }
         return Redirect::to('settings/social');           
