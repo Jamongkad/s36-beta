@@ -113,7 +113,7 @@ return array (
             }                
         }
 
-        return Redirect::to('settings/social');           
+        //return Redirect::to('settings/social');           
     }),
 
     'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key
