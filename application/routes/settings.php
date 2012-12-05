@@ -117,6 +117,9 @@ return array (
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
                 }
+
+                unset($_SESSION['oauth_token_secret']);
+                unset($_SESSION['oauth_token']);
                 //place redirect code here...should go back to /settings/social 
                 return Redirect::to('settings/social');           
             }                
