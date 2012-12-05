@@ -29,6 +29,7 @@ class DBCompanySocialAccount extends S36DataObject {
                         AND CompanySocialAccount.socialAccountOrigin = :origin
                     LIMIT 1";
             
+            $sth = $this->dbh->prepare($sql);
             $sth->bindParam(':company_name', $this->company_name);
             $sth->bindParam(':origin', $social);
             $sth->execute();
