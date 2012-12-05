@@ -111,8 +111,6 @@ return array (
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
                 }
-                Cookie::forget('oauth_token');
-                Cookie::forget('oauth_token_secret');
                 Helpers::dump(Cookie::get('oauth_token'));
                 Helpers::dump(Cookie::get('oauth_token_secret'));
                 //place redirect code here...should go back to /settings/social 
