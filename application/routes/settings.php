@@ -81,7 +81,7 @@ return array (
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
-            Helpers::dump($redis->hgetall($redis_oauth_key));
+            Helpers::dump($redis->hgetall($redis_oauth_key) == false);
             /*
             if(!$redis->hgetall($redis_oauth_key)) {   
                 //redirects back to /settings/connect/twitter
