@@ -63,7 +63,7 @@ return array(
     },
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company, $company_social) {
-        Helpers::dump($company_social);
+        Helpers::dump($company_social->fetch_social_account('twitter'));
         /*
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
