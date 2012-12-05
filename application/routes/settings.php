@@ -84,10 +84,9 @@ return array (
                 $redis->hsetnx($redis_oauth_key, 'oauth_token', $token['oauth_token']);
                 $redis->hsetnx($redis_oauth_key, 'oauth_token_secret', $token['oauth_token_secret']);
 
-                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
-                Helpers::dump($login_url);
-                //header('Location:'.$login_url);
-                //exit;
+                $login_url = $twitoauth->getAuthorizeURL($token['oauth_token'], $sign_in_with_twitter=False);     
+                header('Location:'.$login_url);
+                exit;
             } else {
                 $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, 
                                               $redis->hget($redis_oauth_key, 'oauth_token'), $redis->hget($redis_oauth_key, 'oauth_token_secret'));
@@ -113,7 +112,7 @@ return array (
             }                
         }
 
-        //return Redirect::to('settings/social');           
+        return Redirect::to('settings/social');           
     }),
 
     'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key
