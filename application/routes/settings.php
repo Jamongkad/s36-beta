@@ -74,29 +74,35 @@ return array (
         $user = S36Auth::user(); 
         $account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
+        session_start();
+         
         if($social == 'twitter') { 
 
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
-            if(!Cookie::has('oauth_token_secret')) {   
+            if(!$_SESSION['oauth_token']) {   
                 //redirects back to /settings/connect/twitter
-                echo "etits";
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
                 $token = $twitoauth->getRequestToken($callback_url);
+
+                $_SESSION['oauth_token'] = $token['oauth_token'];
+                $_SESSION['oauth_token_secret'] = $token['oauth_token_secret'];
+                /*
                 Cookie::put('oauth_token', $token['oauth_token']);
                 Cookie::put('oauth_token_secret', $token['oauth_token_secret']);
+                */
                 $login_url = $twitoauth->getAuthorizeURL($token['oauth_token']);    
                 header('Location:'.$login_url);
                 exit;
             } else {
-
-                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
+                //$twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, Cookie::get('oauth_token'), Cookie::get('oauth_token_secret'));
+                $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
                 $token_credentials = $twitoauth->getAccessToken();
 
                 if(!$account) { 
-
+                   
                     $twitter_account_data = Array( 
                         'accountName' => $token_credentials['screen_name']
                       , 'oauthToken' => $token_credentials['oauth_token']
@@ -111,10 +117,8 @@ return array (
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
                 }
-                Helpers::dump(Cookie::get('oauth_token'));
-                Helpers::dump(Cookie::get('oauth_token_secret'));
                 //place redirect code here...should go back to /settings/social 
-                //return Redirect::to('settings/social');           
+                return Redirect::to('settings/social');           
             }                
         }
     }),
