@@ -104,6 +104,9 @@ return array (
                     );
 
                     DB::Table('CompanyTwitterAccount', 'master')->insert($data); 
+
+                    Cookie::forget('oauth_token');
+                    Cookie::forget('oauth_token_secret');
                 }
                 $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
                 
