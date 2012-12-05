@@ -113,8 +113,10 @@ return array (
                 }
                 Cookie::forget('oauth_token');
                 Cookie::forget('oauth_token_secret');
+                Helpers::dump(Cookie::get('oauth_token'));
+                Helpers::dump(Cookie::get('oauth_token_secret'));
                 //place redirect code here...should go back to /settings/social 
-                return Redirect::to('settings/social');           
+                //return Redirect::to('settings/social');           
             }                
         }
     }),
@@ -123,8 +125,6 @@ return array (
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
-            Cookie::forget('oauth_token');
-            Cookie::forget('oauth_token_secret');
         }
         return Redirect::to('settings/social');           
     }),
