@@ -110,12 +110,9 @@ return array (
                     );
 
                     DB::Table('CompanySocialAccount', 'master')->insert($data); 
-
-                    Cookie::forget('oauth_token');
-                    Cookie::forget('oauth_token_secret');
                 }
-                echo Cookie::get('oauth_token');
-                echo Cookie::get('oauth_token_secret');
+                Cookie::forget('oauth_token');
+                Cookie::forget('oauth_token_secret');
                 echo "pwet";
                 //place redirect code here...should go back to /settings/social 
                 //return Redirect::to('settings/social');           
