@@ -25,7 +25,7 @@ class TWFeedback {
         $dbcompany_social = new DBCompanySocialAccount;
         $company = $dbcompany->get_company_info(Config::get('application.subdomain'));
 
-        $this->company_social = $dbcompany_social->fetch_social_account();
+        $this->company_social = $dbcompany_social->fetch_social_account($this->social_network);
     }
 
     public function pull_tweets() {
