@@ -76,6 +76,10 @@ return array (
             $twitter_secret = Config::get('application.dev_twitter_secret');
             $twitoauth = new TwitterOAuth($twitter_key, $twitter_secret);
 
+            if(Input::get('denied')) {
+                $redis->del($redis_oauth_key);
+            }
+
             if($redis->hgetall($redis_oauth_key) == false) {   
                 //redirects back to /settings/connect/twitter
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
