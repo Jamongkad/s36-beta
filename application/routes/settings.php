@@ -57,9 +57,11 @@ return array (
 
         $user = S36Auth::user();
         $twitter_account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
-
+        
+        /*
         Helpers::dump(Cookie::get('oauth_token_secret'));
         Helpers::dump(Cookie::get('oauth_token'));
+        */
 
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
@@ -80,6 +82,7 @@ return array (
 
             if(!Cookie::get('oauth_token_secret')) {   
                 //redirects back to /settings/connect/twitter
+                echo "etits";
                 $callback_url = Config::get('application.url').'/settings/connect/twitter';
                 $token = $twitoauth->getRequestToken($callback_url);
                 Cookie::put('oauth_token', $token['oauth_token']);
@@ -111,9 +114,9 @@ return array (
                     Cookie::forget('oauth_token');
                     Cookie::forget('oauth_token_secret');
                 }
-                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);         
+                echo "pwet";
                 //place redirect code here...should go back to /settings/social 
-                return Redirect::to('settings/social');           
+                //return Redirect::to('settings/social');           
             }                
         }
     }),
