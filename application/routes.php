@@ -62,7 +62,7 @@ return array(
                                                   , 'hosted'          => $hosted_settings_info));        
     },
      
-    'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
+    'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company, $company_social) {
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
@@ -76,6 +76,7 @@ return array(
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company' => $company_info
+                                                    , 'company_social' => $company_social
                                                     , 'company_header' => $header_view 
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },

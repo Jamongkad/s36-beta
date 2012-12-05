@@ -57,17 +57,15 @@ $(document).ready(function(){
             <div class="social-buttons">
                 <ul>
                 <?
-                    $twitter = $company_social->fetch_social_account('twitter');
-                    $facebook = $company_social->fetch_social_account('facebook');
-
-                    if($twitter) {
+                    
+                    if($twitter = $company_social->fetch_social_account('twitter')) {
                         $tw = Helpers::unwrap($twitter->socialaccountvalue);
                         echo '<li><a href="https://www.twitter.com/'.$tw['accountName'].'"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>';
                     }
 
-                    if($facebook) {
+                    if($facebook = $company_social->fetch_social_account('facebook')) {
                         $fb = Helpers::unwrap($facebook->socialaccountvalue);
-                        echo '<li><a href="https://www.facebook.com/'.$tw['accountName'].'"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>';
+                        echo '<li><a href="https://www.facebook.com/'.$fb['accountName'].'"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>';
                     }
                 ?>
                  
