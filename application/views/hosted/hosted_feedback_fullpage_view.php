@@ -55,10 +55,16 @@ $(document).ready(function(){
             </div>
 
             <div class="social-buttons">
+                <?
+                    if($company->socialaccountorigin && $company->socialaccountorigin == 'twitter') {
+                        
+                    }
+                ?>
                 <ul>
                     <li><a href="https://www.facebook.com/<?=$company->facebook_username?>"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>
                     <li><a href="https://www.twitter.com/<?=$company->twitter_username?>"><img src="img/twitter.png" title="Follow us on Twitter!" /></a></li>
                 </ul>
+
             </div>
         </div>
         <!-- end of page cover -->

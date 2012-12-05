@@ -215,6 +215,7 @@ return array(
 
         $tf->test('DBWidget', function($tf) {
             $tf->dump($tf->data->dbw->fetch_social_account('twitter'));
+            $tf->dump($tf->data->dbw->fetch_social_account('facebook'));
         });
 
         $tf->run();

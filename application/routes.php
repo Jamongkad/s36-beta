@@ -4,6 +4,7 @@ $feedback = new Feedback\Repositories\DBFeedback;
 $hosted_settings = new Widget\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
+$company_social = new Company\Repositories\DBCompanySocialAccount;
 $company_name = Config::get('application.subdomain');
 
 $user = S36Auth::user();
@@ -23,11 +24,12 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback) {
+    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback, $company_social) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
 
         $hosted = new Feedback\Services\HostedService($company_name); 
+
         //Feeds 
         $hosted->page_number = 1;
         $hosted->build_data();

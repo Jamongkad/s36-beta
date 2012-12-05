@@ -50,9 +50,6 @@ class DBCompany extends S36DataObject {
               , Company.name AS company_name 
             FROM 
                 Company
-            LEFT JOIN
-                CompanySocialAccount
-                    ON CompanySocialAccount.companyId = Company.companyId
             INNER JOIN
                 Site
                     ON Site.companyId = Company.companyId
