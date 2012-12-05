@@ -23,15 +23,5 @@ class SocialFeedback {
         } else {     
             throw new Exception("Social Feed is missing!");
         }
-
-    }
-
-    public function clear_social_feeds($social) {
-        if($social) {
-            $this->dbsocial->delete_all($social);          
-        } else {
-            throw new Exception("You must provide a Social Network abbrevation! fb, tw, g+");
-        }
-       
     }
 }

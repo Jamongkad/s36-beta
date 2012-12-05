@@ -121,6 +121,8 @@ return array (
         $user = S36Auth::user(); 
         if($social == 'twitter') { 
             $redis->del($redis_oauth_key);
+            $dbsocial = new Feedback\Repositories\DBSocialFeedback;
+            $dbsocial->delete_all('tw');
             DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
         }
         return Redirect::to('settings/social');           

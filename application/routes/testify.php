@@ -159,14 +159,14 @@ return array(
             $social_services = Array(
                 'tw' => $tf->data->twitter->pull_tweets()
             );
+            $tf->dump($social_services['tw']);
             $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             //$tf->dump($social->save_social_feeds('tw'));
-            //$social->clear_social_feeds('tw');
             /*
             $tf->dump($social->save_social_feeds('facebook'));
             $tf->dump($social->save_social_feeds('google'));
             */
-            $tf->dump($social_services['tw']);
+
         });
 
         /*
