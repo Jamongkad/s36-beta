@@ -56,12 +56,11 @@ return array (
     'GET /settings/social'  => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function(){  
 
         $user = S36Auth::user();
-        $company = new Company\Repositories\DBCompany;
-        $company_info = $company->get_company_info($user->companyid);
+        $twitter_account = DB::Table('CompanyTwitterAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
-            'user' => $user, 'company' => $company_info, 'url' => $url
+            'user' => $user, 'twitter_account' => $twitter_account
         ));
     }),
 
