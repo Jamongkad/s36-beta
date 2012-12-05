@@ -58,8 +58,6 @@ return array (
         $user = S36Auth::user();
         $twitter_account = DB::Table('CompanySocialAccount', 'master')->where('companyId', '=', $user->companyid)->first(); 
 
-        Helpers::dump(Helpers::unwrap($twitter_account->socialaccountvalue));
-
         $url = Config::get('application.url');
         return View::of_layout()->partial('contents', 'settings/settings_social_view', Array( 
             'user' => $user, 'twitter_account' => $twitter_account
@@ -110,23 +108,19 @@ return array (
                     Cookie::forget('oauth_token');
                     Cookie::forget('oauth_token_secret');
                 }
-                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);
-                
+                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $token_credentials['oauth_token'], $token_credentials['oauth_token_secret']);         
                 //place redirect code here...should go back to /settings/social 
                 return Redirect::to('settings/social');           
             }                
-            /*
-            } else { 
-                $connection = new TwitterOAuth($twitter_key, $twitter_secret, $account->oauthtoken, $account->oauthtokensecret);
-                Helpers::dump($connection);
-                Helpers::dump($connection->get('account/verify_credentials'));
-            }
-            */
         }
     }),
 
     'GET /settings/disconnect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) { 
-        Helpers::dump($social);
+        $user = S36Auth::user(); 
+        if($social == 'twitter') { 
+            DB::Table('CompanySocialAccount', 'master')->where('CompanySocialAccount.companyId', '=', $user->companyid)->delete(); 
+        }
+        return Redirect::to('settings/social');           
     }),
 
     'POST /settings/save_companysettings' => function() {
