@@ -113,9 +113,8 @@ return array (
                 }
                 Cookie::forget('oauth_token');
                 Cookie::forget('oauth_token_secret');
-                echo "pwet";
                 //place redirect code here...should go back to /settings/social 
-                //return Redirect::to('settings/social');           
+                return Redirect::to('settings/social');           
             }                
         }
     }),
