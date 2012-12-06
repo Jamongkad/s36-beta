@@ -171,6 +171,10 @@ return array(
         )); 
         */
     },
+
+    'POST /feedsetup/formbuilder' => function() { 
+        Helpers::dump(Input::get());
+    },
     
     'POST /feedsetup/save_display_widget' => function() {  
         $display_data = new Widget\Entities\DisplayValueObject(Input::get());
