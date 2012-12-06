@@ -33,8 +33,7 @@
 				remove				: "Remove",
 				radio_group			: "Radio Group",
 				selections_message	: "Allow Multiple Selections",
-				hide				: "Hide",
-				required			: "Required",
+				hide				: "Hide",	
 				show				: "Show"
 			}
 		};
