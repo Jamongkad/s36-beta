@@ -316,15 +316,14 @@ class Formbuilder {
 				// set the default checked value
                 //todo bug happens here -> $item['default'] == 'true' ? true : false;	
                 //$checked = $item['default'] == 'true' ? true : false;
-                $checked = $item['baseline'] == 'checked' ? true : false;
+                $checked_box = $item['baseline'] == 'checked' ? true : false;
                 
 				// load post value
 				$val = $this->getPostValue($this->elemId($item['value']));
 				$checked = !empty($val);
 
 				// if checked, set html
-                print_r($checked);
-				$checked = $checked ? ' checked="checked"' : '';
+				$checked = $checked_box ? ' checked="checked"' : '';
 
 
 				$checkbox 	= '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";
