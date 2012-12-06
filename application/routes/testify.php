@@ -226,6 +226,7 @@ return array(
         $tf = new Testify("Form Builder");  
 
         $tf->test('Form Structure', function($tf) {
+            //fucking correct json
             $fake_db_vals = Array( 'form_structure' => '[
                 {"cssClass":"input_text","required":"undefined","values":"First Name"}
                ,{"cssClass":"input_text","required":"undefined","values":"Last Name"}
