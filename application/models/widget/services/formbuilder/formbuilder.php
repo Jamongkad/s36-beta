@@ -316,6 +316,7 @@ class Formbuilder {
 				// set the default checked value
                 //todo bug happens here -> $item['default'] == 'true' ? true : false;	
                 //$checked = $item['default'] == 'true' ? true : false;
+                print_r($item['baseline']);
                 $checked = $item['baseline'] == 'checked' ? true : false;
                 
 				// load post value
