@@ -323,8 +323,9 @@ class Formbuilder {
 				$checked = !empty($val);
 
 				// if checked, set html
-				$checked = $checked ? ' checked="checked"' : '';
                 print_r($checked);
+				$checked = $checked ? ' checked="checked"' : '';
+
 
 				$checkbox 	= '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";
 				$html .= sprintf($checkbox, $this->elemId($field['title']), $this->elemId($item['value']), $this->elemId($field['title']), $this->elemId($item['value']), $item['value'], $checked, $this->elemId($field['title']), $this->elemId($item['value']), $item['value']);
