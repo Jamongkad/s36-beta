@@ -365,7 +365,7 @@ class Formbuilder {
 
 				// set the default checked value
 				//$checked = $item['default'] == 'true' ? true : false;
-				$checked_radio = $item['baseline'] == 'true' ? true : false;
+				$checked_radio = $item['baseline'] == 'checked' ? true : false;
 
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
@@ -412,7 +412,6 @@ class Formbuilder {
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$multiple = $field['multiple'] == "checked" ? ' multiple="multiple"' : '';
-            print_r($multiple);
 			$html .= sprintf('<select name="%s" id="%s"%s>' . "\n", $this->elemId($field['title']), $this->elemId($field['title']), $multiple);
 			if($field['required']){ $html .= '<option value="">Selection Required</label>'; }
 			
@@ -422,15 +421,13 @@ class Formbuilder {
 
 				// set the default checked value
 				//$checked = $item['default'] == 'true' ? true : false;
-				$checked_multiple = $item['baseline'] == 'true' ? true : false;
-
+				$checked_multiple = $item['baseline'] == 'checked' ? true : false;
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
 				$checked = !empty($val);
 
 				// if checked, set html
 				$checked = $checked_multiple ? ' checked="checked"' : '';
-                print_r($checked);
 
 				$option 	= '<option value="%s"%s>%s</option>' . "\n";
 				$html .= sprintf($option, $item['value'], $checked, $item['value']);
