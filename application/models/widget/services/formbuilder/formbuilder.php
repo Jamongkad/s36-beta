@@ -363,7 +363,8 @@ class Formbuilder {
 				$item = (array)$item;
 
 				// set the default checked value
-				$checked = $item['default'] == 'true' ? true : false;
+				//$checked = $item['default'] == 'true' ? true : false;
+				$checked = $item['baseline'] == 'true' ? true : false;
 
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
@@ -418,7 +419,8 @@ class Formbuilder {
 				$item = (array)$item;
 
 				// set the default checked value
-				$checked = $item['default'] == 'true' ? true : false;
+				//$checked = $item['default'] == 'true' ? true : false;
+				$checked = $item['baseline'] == 'true' ? true : false;
 
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
