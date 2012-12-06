@@ -178,7 +178,6 @@ return array(
         $data = $form->get_encoded_form_array();
         Helpers::dump($data);
         $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
-        $form_render->process();
         Helpers::dump($form_render->render_html());
  
     },
