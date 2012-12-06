@@ -315,10 +315,10 @@ class Formbuilder {
 				$item = (array)$item;
 
 				// set the default checked value
-                $item_default = isset($item['default']) ? $item['default'] : null;
-				//$checked = $item['default'] == 'true' ? true : false;
-				$checked = $item_default == 'true' ? true : false;
-
+                //$item_default = isset($item['default']) ? $item['default'] : null;
+                //$checked = $item_default == 'true' ? true : false;
+				$checked = $item['default'] == 'true' ? true : false;
+				
 				// load post value
 				$val = $this->getPostValue($this->elemId($item['value']));
 				$checked = !empty($val);
