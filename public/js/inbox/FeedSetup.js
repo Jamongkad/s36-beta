@@ -65,14 +65,14 @@ jQuery(function($) {
 
     //TODO: abstract this
     $(document).delegate("#create-form-widget", "submit", function(e) {
-        
+        var form_db_id;
         //save form builder alongside other submission form shit
         $.ajax({
             type: "POST",
             url: "/feedsetup/formbuilder",
             data: $("ul[id^=frmb-]").serializeFormList({
                 prepend: "frmb"
-            })
+            }) + "&form_id=" + form_db_id
         });
 
         $(this).ajaxSubmit({
