@@ -8,8 +8,27 @@ angular.module('formbuilder', [])
               , 'load_url': 'irene'
               , 'useJson': true
               , messages: { 
-                    save				: "Pwet",
-                    add_new_field		: "Add New Pwet...",
+                    save				: "Save",
+                    add_new_field		: "Add New Field...",
+                    text				: "Text Field",
+                    title				: "Title",
+                    paragraph			: "Paragraph",
+                    checkboxes			: "Checkboxes",
+                    radio				: "Radio",
+                    select				: "Select List",
+                    text_field			: "Text Field",
+                    label				: "Label",
+                    paragraph_field		: "Paragraph Field",
+                    select_options		: "Select Options",
+                    add					: "Add",
+                    checkbox_group		: "Checkbox Group",
+                    remove_message		: "Are you sure you want to remove this element?",
+                    remove				: "Remove",
+                    radio_group			: "Radio Group",
+                    selections_message	: "Allow Multiple Selections",
+                    hide				: "Hide",
+                    required			: "Required",
+                    show				: "Show"
                 }
             });
 
