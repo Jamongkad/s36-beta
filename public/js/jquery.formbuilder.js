@@ -84,6 +84,7 @@
 					});
 					// Add a callback to the select element
 					$('#' + box_id).change(function () {
+                        console.log("pwet");
 						appendNewField($(this).val());
 						$(this).val(0).blur();
 						// This solves the scrollTo dependency
