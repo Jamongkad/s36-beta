@@ -365,14 +365,14 @@ class Formbuilder {
 
 				// set the default checked value
 				//$checked = $item['default'] == 'true' ? true : false;
-				$checked = $item['baseline'] == 'true' ? true : false;
+				$checked_radio = $item['baseline'] == 'true' ? true : false;
 
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
 				$checked = !empty($val);
 
 				// if checked, set html
-				$checked = $checked ? ' checked="checked"' : '';
+				$checked = $checked_radio ? ' checked="checked"' : '';
 
 				$radio 		= '<span class="row clearfix"><input type="radio" id="%s-%s" name="%1$s" value="%s"%s /><label for="%1$s-%2$s">%3$s</label></span>' . "\n";
 				$html .= sprintf($radio,
@@ -421,14 +421,14 @@ class Formbuilder {
 
 				// set the default checked value
 				//$checked = $item['default'] == 'true' ? true : false;
-				$checked = $item['baseline'] == 'true' ? true : false;
+				$checked_multiple = $item['baseline'] == 'true' ? true : false;
 
 				// load post value
 				$val = $this->getPostValue($this->elemId($field['title']));
 				$checked = !empty($val);
 
 				// if checked, set html
-				$checked = $checked ? ' checked="checked"' : '';
+				$checked = $checked_multiple ? ' checked="checked"' : '';
 
 				$option 	= '<option value="%s"%s>%s</option>' . "\n";
 				$html .= sprintf($option, $item['value'], $checked, $item['value']);
