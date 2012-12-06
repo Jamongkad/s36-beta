@@ -173,6 +173,7 @@ return array(
     },
 
     'POST /feedsetup/formbuilder' => function() { 
+        Helpers::dump(new Widget\Services\Formbuilder\Formbuilder);
         Helpers::dump(Input::get());
     },
     
