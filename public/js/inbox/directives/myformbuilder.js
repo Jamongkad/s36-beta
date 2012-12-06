@@ -3,7 +3,7 @@ angular.module('formbuilder', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            console.log(element);
+            console.log($(element));
         }
     }    
 })
