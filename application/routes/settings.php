@@ -70,7 +70,7 @@ return array (
     'GET /settings/connect/(:any)' => Array('name' => 'settings', 'before' => 's36_auth', 'do' => function($social) use ($redis, $redis_oauth_key, $social_account) {
 
         $user = S36Auth::user(); 
-          
+        //todo: FUCK REFACTOR THIS! 
         if($social == 'twitter') { 
             $twitter_key    = Config::get('application.dev_twitter_key');
             $twitter_secret = Config::get('application.dev_twitter_secret');
