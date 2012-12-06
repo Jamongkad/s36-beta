@@ -429,6 +429,7 @@ class Formbuilder {
 
 				// if checked, set html
 				$checked = $checked_multiple ? ' checked="checked"' : '';
+                print_r($checked);
 
 				$option 	= '<option value="%s"%s>%s</option>' . "\n";
 				$html .= sprintf($option, $item['value'], $checked, $item['value']);
