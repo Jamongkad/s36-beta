@@ -84,14 +84,20 @@
 					});
 					// Add a callback to the select element
 					$('#' + box_id).change(function () {
-                        console.log(ul_obj.children('li').length);
-						appendNewField($(this).val());
-						$(this).val(0).blur();
-						// This solves the scrollTo dependency
-						$('html, body').animate({
-							scrollTop: $('#frm-' + (last_id - 1) + '-item').offset().top
-						}, 500);
-						return false;
+                        
+                        if(ul_obj.children('li').length !== 2) { 
+                            console.log(ul_obj.children('li').length);
+                            appendNewField($(this).val());
+                            $(this).val(0).blur();
+                            // This solves the scrollTo dependency
+                            $('html, body').animate({
+                                scrollTop: $('#frm-' + (last_id - 1) + '-item').offset().top
+                            }, 500);
+                            return false;
+                        } else {
+                            alert("Limit has been reached");
+                        }
+
 					});
 				}(opts.control_box_target);
 			// Json parser to build the form builder
