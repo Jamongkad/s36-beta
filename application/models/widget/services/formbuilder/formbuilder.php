@@ -310,14 +310,12 @@ class Formbuilder {
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$html .= sprintf('<span class="multi-row clearfix">') . "\n";
-            print_r($field['values']);
 			foreach($field['values'] as $item){
 				
 				$item = (array)$item;
 				// set the default checked value
-                //$item_default = isset($item['default']) ? $item['default'] : null;
-                //$checked = $item_default == 'true' ? true : false;
-				$checked = true;//$item['default'] == 'true' ? true : false;	
+                //todo bug happens here -> $item['default'] == 'true' ? true : false;	
+                $item['default'] == 'true' ? true : false;
 				// load post value
 				$val = $this->getPostValue($this->elemId($item['value']));
 				$checked = !empty($val);
