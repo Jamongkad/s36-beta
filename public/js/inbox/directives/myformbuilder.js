@@ -7,7 +7,7 @@ angular.module('formbuilder', [])
                 'save_url': 'pwet'
               , 'load_url': 'irene'
               , 'useJson': true
-              , messages { 
+              , messages: { 
                     save				: "Pwet",
                     add_new_field		: "Add New Pwet...",
                 }
