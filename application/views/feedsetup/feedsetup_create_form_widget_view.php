@@ -59,7 +59,7 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span> Create custom fields for your form (optional)</h2>
-            <div my-formbuilder style="padding: 10px"></div>
+            <div my-formbuilder style="padding: 10px 20px 0"></div>
         </div>
         <!--
         <div class="widget-options"> 
