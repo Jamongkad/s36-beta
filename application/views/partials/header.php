@@ -17,7 +17,7 @@
         <?=HTML::style('css/romanticc.css')?>
         <?=HTML::style('css/admin.css')?>
         <?=HTML::style('css/zebra_pagination.css')?>
-        <?=HTML::script('css/jquery.formbuilder.css')?>
+        <?=HTML::style('css/jquery.formbuilder.css')?>
 
     </meta>    
 </head>
