@@ -75,7 +75,7 @@
 						$(target).append(box_content);
 					}
 					// Insert the search button
-					$(ul_obj).after(save_button);
+					//$(ul_obj).after(save_button);
 					// Set the form save action
 					$('#' + save_id).click(function () {
 						save();
