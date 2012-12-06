@@ -310,6 +310,7 @@ class Formbuilder {
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$html .= sprintf('<span class="multi-row clearfix">') . "\n";
+            print_r($field['values']);
 			foreach($field['values'] as $item){
 				
 				$item = (array)$item;
