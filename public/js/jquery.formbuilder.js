@@ -67,7 +67,7 @@
 					select += '<option value="select">' + opts.messages.select + '</option>';
 					// Build the control box and search button content
 					box_content = '<select id="' + box_id + '" class="frmb-control">' + select + '</select>';
-					save_button = '<input type="submit" id="' + save_id + '" class="frmb-submit large-btn create-widget-button" value="' + opts.messages.save + '"/>';
+					save_button = '<input type="submit" id="' + save_id + '" class="frmb-submit large-btn create-widget-button" style="margin-top:65px" value="' + opts.messages.save + '"/>';
 					// Insert the control box into page
 					if (!target) {
 						$(ul_obj).before(box_content);
