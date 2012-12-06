@@ -85,7 +85,7 @@
 					// Add a callback to the select element
 					$('#' + box_id).change(function () {
                         
-                        if(ul_obj.children('li').length !== 2) { 
+                        if(ul_obj.children('li').length !== 3) { 
                             console.log(ul_obj.children('li').length);
                             appendNewField($(this).val());
                             $(this).val(0).blur();
