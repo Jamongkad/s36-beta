@@ -47,6 +47,15 @@ jQuery(function($) {
             form_what_to_write.focus();
         } else {
 
+            $.ajax({
+                type: "POST",
+                url: "pwet",
+                data: $("ul[id^=frmb-]").serializeFormList({
+                    prepend: "frmb"
+                }) + "&form_id=" + 1,
+                success: function () {}
+            });
+
             $(this).ajaxSubmit({
                 dataType: 'json'
               , beforeSubmit: function(formData, jqForm, options) {
