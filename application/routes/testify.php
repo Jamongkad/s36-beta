@@ -232,6 +232,6 @@ return array(
             $tf->dump($form_render);
         });
 
-
+        $tf->run();          
     }
 );
