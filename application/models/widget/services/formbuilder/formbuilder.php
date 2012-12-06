@@ -411,7 +411,7 @@ class Formbuilder {
 		}
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
-			$multiple = $field['multiple'] == "true" ? ' multiple="multiple"' : '';
+			$multiple = $field['multiple'] == "checked" ? ' multiple="multiple"' : '';
             print_r($multiple);
 			$html .= sprintf('<select name="%s" id="%s"%s>' . "\n", $this->elemId($field['title']), $this->elemId($field['title']), $multiple);
 			if($field['required']){ $html .= '<option value="">Selection Required</label>'; }
