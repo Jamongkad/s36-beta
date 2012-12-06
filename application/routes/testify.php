@@ -219,5 +219,19 @@ return array(
         });
 
         $tf->run();          
+    },
+
+    'GET /testify/formbuilder' => function() {
+
+        $tf = new Testify("Form Builder");  
+
+        $tf->test('Form Structure', function($tf) {
+            $fake_db_vals = Array( 'form_structure' => '[{"cssClass":"input_text","required":"undefined","values":"First Name"},{"cssClass":"input_text","required":"undefined","values":"Last Name"},{"cssClass":"textarea","required":"undefined","values":"Bio"},{"cssClass":"checkbox","required":"undefined","title":"What\'s on your pizza?","values":{"2":{"value":"Extra Cheese","baseline":"undefined"},"3":{"value":"Pepperoni","baseline":"undefined"},"4":{"value":"Beef","baseline":"undefined"}}}]');
+            $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
+
+            $tf->dump($form_render);
+        });
+
+
     }
 );
