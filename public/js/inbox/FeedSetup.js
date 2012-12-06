@@ -47,15 +47,6 @@ jQuery(function($) {
             form_what_to_write.focus();
         } else {
 
-            $.ajax({
-                type: "POST",
-                url: "pwet",
-                data: $("ul[id^=frmb-]").serializeFormList({
-                    prepend: "frmb"
-                }) + "&form_id=" + 1,
-                success: function () {}
-            });
-
             $(this).ajaxSubmit({
                 dataType: 'json'
               , beforeSubmit: function(formData, jqForm, options) {
@@ -74,6 +65,16 @@ jQuery(function($) {
 
     //TODO: abstract this
     $(document).delegate("#create-form-widget", "submit", function(e) {
+
+        $.ajax({
+            type: "POST",
+            url: "pwet",
+            data: $("ul[id^=frmb-]").serializeFormList({
+                prepend: "frmb"
+            }) + "&form_id=" + 2,
+            success: function () {}
+        });
+
         $(this).ajaxSubmit({
             dataType: 'json'       
           , beforeSubmit: function(formData, jqForm, options) {

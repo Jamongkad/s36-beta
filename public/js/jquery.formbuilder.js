@@ -85,7 +85,6 @@
 					$('#' + box_id).change(function () {
                         
                         if(ul_obj.children('li').length !== 3) { 
-                            console.log($(ul_obj));
                             appendNewField($(this).val());
                             $(this).val(0).blur();
                             // This solves the scrollTo dependency
