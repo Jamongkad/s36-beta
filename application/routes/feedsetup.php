@@ -173,8 +173,8 @@ return array(
     },
 
     'POST /feedsetup/formbuilder' => function() { 
-        Helpers::dump(new Widget\Services\Formbuilder\Formbuilder);
-        Helpers::dump(Input::get());
+        $form = new Widget\Services\Formbuilder\Formbuilder(Input::get('frmb'));
+        Helpers::dump($form->get_encoded_form_array());
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
