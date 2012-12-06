@@ -71,8 +71,7 @@ jQuery(function($) {
             url: "pwet",
             data: $("ul[id^=frmb-]").serializeFormList({
                 prepend: "frmb"
-            }) + "&form_id=" + 2,
-            success: function () {}
+            })
         });
 
         $(this).ajaxSubmit({

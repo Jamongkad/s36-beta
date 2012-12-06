@@ -4,8 +4,6 @@ angular.module('formbuilder', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
             $(element).formbuilder({
-                'save_url': 'pwet'
-              , 'load_url': 'irene'
               , 'useJson': true
               , messages: { 
                     save				: "Save",
