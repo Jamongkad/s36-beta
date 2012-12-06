@@ -84,7 +84,7 @@
 					});
 					// Add a callback to the select element
 					$('#' + box_id).change(function () {
-                        console.log($(this).children('li').length);
+                        console.log(ul_obj);
 						appendNewField($(this).val());
 						$(this).val(0).blur();
 						// This solves the scrollTo dependency
