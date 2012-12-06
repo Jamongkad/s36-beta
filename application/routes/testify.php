@@ -218,7 +218,6 @@ return array(
             $tf->dump($tf->data->dbw->fetch_social_account('facebook'));
         });
 
-        $tf->run();
-          
+        $tf->run();          
     }
 );

@@ -20,6 +20,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
 
 <?=HTML::script('js/jquery.validate.js')?>
+<?=HTML::script('js/jquery.formbuilder.js')?>
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 
