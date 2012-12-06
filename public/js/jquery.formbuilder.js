@@ -15,7 +15,7 @@
 			control_box_target: false,
 			serialize_prefix: 'frmb',
 			messages: {
-				save				: "Save",
+				save				: "Pwet",
 				add_new_field		: "Add New Field...",
 				text				: "Text Field",
 				title				: "Title",
