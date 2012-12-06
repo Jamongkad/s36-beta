@@ -85,7 +85,7 @@
 					$('#' + box_id).change(function () {
                         
                         if(ul_obj.children('li').length !== 3) { 
-                            console.log($(ul_obj).serializeFormList());
+                            console.log($(ul_obj));
                             appendNewField($(this).val());
                             $(this).val(0).blur();
                             // This solves the scrollTo dependency
@@ -94,7 +94,7 @@
                             }, 500);
                             return false;
                         } else {
-                            alert("Limit has been reached");
+                            alert("You can only create 3 custom fields.");
                         }
 
 					});
