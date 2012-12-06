@@ -232,8 +232,8 @@ return array(
                ,{"cssClass":"textarea","required":"undefined","values":"Bio"}
                ,{"cssClass":"checkbox","required":"checked","title":"What\'s on your pizza?",
                    "values":{
-                       "2":{"value":"Extra Cheese","baseline":"undefined","default":"undefined"}
-                      ,"3":{"value":"Pepperoni","baseline":"undefined","default":"undefined"}
+                       "2":{"value":"Extra Cheese","baseline":"undefined","default":"true"}
+                      ,"3":{"value":"Pepperoni","baseline":"undefined","default":"true"}
                       ,"4":{"value":"Beef","baseline":"undefined","default":"undefined"}
                     }
                 }
