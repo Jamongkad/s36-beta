@@ -316,7 +316,6 @@ class Formbuilder {
 				// set the default checked value
                 //todo bug happens here -> $item['default'] == 'true' ? true : false;	
                 //$checked = $item['default'] == 'true' ? true : false;
-                print_r($item['baseline']);
                 $checked = $item['baseline'] == 'checked' ? true : false;
                 
 				// load post value
@@ -325,6 +324,7 @@ class Formbuilder {
 
 				// if checked, set html
 				$checked = $checked ? ' checked="checked"' : '';
+                print_r($checked);
 
 				$checkbox 	= '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";
 				$html .= sprintf($checkbox, $this->elemId($field['title']), $this->elemId($item['value']), $this->elemId($field['title']), $this->elemId($item['value']), $item['value'], $checked, $this->elemId($field['title']), $this->elemId($item['value']), $item['value']);
