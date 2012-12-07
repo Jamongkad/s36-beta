@@ -19,7 +19,7 @@
 				add_new_field		: "Add New Field...",
 				text				: "Text Field",
 				title				: "Title",
-				//paragraph			: "Paragraph",
+				paragraph			: "Paragraph",
 				checkboxes			: "Checkboxes",
 				radio				: "Radio",
 				select				: "Select List",
@@ -61,7 +61,7 @@
 					// Add the available options
 					select += '<option value="0">' + opts.messages.add_new_field + '</option>';
 					select += '<option value="input_text">' + opts.messages.text + '</option>';
-					select += '<option value="textarea">' + opts.messages.paragraph + '</option>';
+					//select += '<option value="textarea">' + opts.messages.paragraph + '</option>';
 					select += '<option value="checkbox">' + opts.messages.checkboxes + '</option>';
 					select += '<option value="radio">' + opts.messages.radio + '</option>';
 					select += '<option value="select">' + opts.messages.select + '</option>';
