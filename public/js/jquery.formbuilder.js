@@ -385,7 +385,7 @@
 			$('.add_rd').live('click', function () {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 
-                if(radio_child_count === 2) {
+                if(radio_child_count === 3) {
                     console.log('limit has been reached');
                 } else {
             	    $(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));        
