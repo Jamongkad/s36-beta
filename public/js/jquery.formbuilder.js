@@ -383,8 +383,8 @@
 			});
 			// Attach a callback to add new radio fields
 			$('.add_rd').live('click', function () {
-                console.log("Add Radio");
-                console.log($(this).parents('.fields').children('div input[type=radio]'));
+                var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
+                console.log(radio_child_count);
 				$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));
 				return false;
 			});
