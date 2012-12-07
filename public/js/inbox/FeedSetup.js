@@ -69,10 +69,8 @@ jQuery(function($) {
         //save form builder alongside other submission form shit
         $.ajax({
             type: "POST",
-            url: "/feedsetup/formbuilder",
-            data: $("ul[id^=frmb-]").serializeFormList({
-                prepend: "frmb"
-            }) + "&form_id=" + form_db_id
+            url: "/feedsetup/buildmetadata_options",
+            data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + form_db_id
         });
 
         $(this).ajaxSubmit({

@@ -6,7 +6,7 @@
  *
  * This PHP object is the server-side component of the jquery formbuilder
  * plugin. The Formbuilder allows you to provide users with a way of
- * creating a formand saving that structure to the database.
+ * creating a form and saving that structure to the database.
  *
  * Using this class you can easily prepare the structure for storage,
  * rendering the xml file needed for the builder, or render the html of the form.
@@ -65,7 +65,7 @@ class Formbuilder {
 	 * @return array
 	 */
 	public function get_encoded_form_array(){
-		return array('form_id'=>$this->_form_array['form_id'],'form_structure'=>json_encode($this->_form_array['form_structure']));
+		return array('form_id'=>$this->_form_array['form_id'], 'form_structure'=>json_encode($this->_form_array['form_structure']));
 	}
 
 
@@ -107,7 +107,7 @@ class Formbuilder {
 
 		if(is_array($this->_form_array['form_structure'])){
 
-            //commented out	
+            //commented out	because we already have a working form
 			//$html .= '<form class="frm-bldr" method="post" action="'.$form_action.'">' . "\n";
 			$html .= '<ol class="frmb">'."\n";
 

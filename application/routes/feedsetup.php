@@ -172,14 +172,11 @@ return array(
         */
     },
 
-    'POST /feedsetup/formbuilder' => function() { 
-
+    'POST /feedsetup/buildmetadata_options' => function() { 
         $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
         $data = $form->get_encoded_form_array();
-        Helpers::dump($data);
         $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
-        Helpers::dump($form_render->render_html('mathew'));
- 
+        Helpers::dump($form_render->render_html()); 
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
