@@ -371,16 +371,19 @@
 			});
 			// Attach a callback to add new checkboxes
 			$('.add_ck').live('click', function () {
+                console.log("Add Checkbox");
 				$(this).parent().before(checkboxFieldHtml());
 				return false;
 			});
 			// Attach a callback to add new options
 			$('.add_opt').live('click', function () {
+                console.log("Add Option");
 				$(this).parent().before(selectFieldHtml('', false));
 				return false;
 			});
 			// Attach a callback to add new radio fields
 			$('.add_rd').live('click', function () {
+                console.log("Add Radio");
 				$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));
 				return false;
 			});
