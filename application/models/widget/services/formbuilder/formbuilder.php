@@ -106,17 +106,18 @@ class Formbuilder {
 		$form_action = $form_action ? $form_action : $_SERVER['PHP_SELF'];
 
 		if(is_array($this->_form_array['form_structure'])){
-	
-			$html .= '<form class="frm-bldr" method="post" action="'.$form_action.'">' . "\n";
+
+            //commented out	
+			//$html .= '<form class="frm-bldr" method="post" action="'.$form_action.'">' . "\n";
 			$html .= '<ol class="frmb">'."\n";
 
 			foreach($this->_form_array['form_structure'] as $field){
 				$html .= $this->loadField((array)$field);
 			}
 			
-			$html .= '<li class="btn-submit"><input type="submit" name="submit" value="Submit" /></li>' . "\n";
+			//$html .= '<li class="btn-submit"><input type="submit" name="submit" value="Submit" /></li>' . "\n";
 			$html .=  '</ol>' . "\n";
-			$html .=  '</form>' . "\n";
+			//$html .=  '</form>' . "\n";
 			
 		}
 

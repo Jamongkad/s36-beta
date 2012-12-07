@@ -247,13 +247,9 @@ return array(
             ]');
             $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
 
-            $tf->dump($form_render->render_html('/testify/formbuilder'));
+            $tf->dump($form_render->render_html());
         });
 
         $tf->run();          
     },
-
-    'POST /testify/formbuilder' => function() { 
-        Helpers::dump(Input::get());
-    }
 );
