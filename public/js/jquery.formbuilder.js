@@ -384,7 +384,11 @@
 			// Attach a callback to add new radio fields
 			$('.add_rd').live('click', function () {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
-                console.log(radio_child_count);
+
+                if(radio_child_count === 3) {
+                    console.log('limit has been reached');
+                }
+               
 				$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));
 				return false;
 			});
