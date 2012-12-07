@@ -210,7 +210,7 @@
 					field += '<div>';
 					field += '<input type="checkbox"' + (checked ? ' checked="checked"' : '') + ' />';
 					field += '<input type="text" value="' + value + '" />';
-					field += '<a href="#" class="remove" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
+					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
 				};
@@ -251,7 +251,7 @@
 					field += '<div>';
 					field += '<input type="radio"' + (checked ? ' checked="checked"' : '') + ' name="radio_' + name + '" />';
 					field += '<input type="text" value="' + value + '" />';
-					field += '<a href="#" class="remove" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
+					field += '<a href="#" class="remove_elm" title="' + opts.messages.remove_message + '">' + opts.messages.remove + '</a>';
 					field += '</div>';
 					return field;
 				};
@@ -324,7 +324,7 @@
 					last_id++;
 				};
 			// handle field delete links
-			$('.remove').live('click', function () {
+			$('.remove_elm').live('click', function () {
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
