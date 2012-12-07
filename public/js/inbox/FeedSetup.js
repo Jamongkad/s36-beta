@@ -67,12 +67,6 @@ jQuery(function($) {
     $(document).delegate("#create-form-widget", "submit", function(e) {
         var form_db_id;
         //save form builder alongside other submission form shit
-        $.ajax({
-            type: "POST",
-            url: "/feedsetup/buildmetadata_options",
-            data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + form_db_id
-        });
-
         $(this).ajaxSubmit({
             dataType: 'json'       
           , beforeSubmit: function(formData, jqForm, options) {
@@ -80,7 +74,16 @@ jQuery(function($) {
             }
           , success: function(responseText, statusText, xhr, $form) {     
                 var widget_key = responseText.submit.widget.widgetkey;
+                var widget_store_id = responseText.submit.widget.widgetstoreid;
+
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/feedsetup/buildmetadata_options",
+                    data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id
+                });
+                 
                 window.location = formcode_url;
             }
         });
