@@ -372,8 +372,11 @@
 			// Attach a callback to add new checkboxes
 			$('.add_ck').live('click', function () { 
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;
-                console.log(checkbox_child_count);
-				$(this).parent().before(checkboxFieldHtml());
+                
+                if(checkbox_child_count !== 3) {
+				    $(this).parent().before(checkboxFieldHtml());
+                }
+
 				return false;
 			});
 			// Attach a callback to add new options for select dropdowns
