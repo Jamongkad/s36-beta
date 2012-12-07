@@ -234,7 +234,7 @@ return array(
                    "values":{
                        "2":{"value":"Extra Cheese","baseline":"undefined"}
                       ,"3":{"value":"Pepperoni","baseline":"checked"}
-                      ,"4":{"value":"Beef","baseline":"undefined"}
+                      ,"4":{"value":"Beef","baseline":"checked"}
                     }
                 }
             ]');
