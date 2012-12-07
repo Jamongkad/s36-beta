@@ -370,14 +370,14 @@
 				return false;
 			});
 			// Attach a callback to add new checkboxes
-			$('.add_ck').live('click', function () {
-                console.log("Add Checkbox");
+			$('.add_ck').live('click', function () { 
+                var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
+                console.log(checkbox_child_count);
 				$(this).parent().before(checkboxFieldHtml());
 				return false;
 			});
-			// Attach a callback to add new options
+			// Attach a callback to add new options for select dropdowns
 			$('.add_opt').live('click', function () {
-                console.log("Add Option");
 				$(this).parent().before(selectFieldHtml('', false));
 				return false;
 			});
@@ -385,9 +385,7 @@
 			$('.add_rd').live('click', function () {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 
-                if(radio_child_count === 3) {
-                    console.log('limit has been reached');
-                } else {
+                if(radio_child_count !== 3) {
             	    $(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));        
                 }
                	
