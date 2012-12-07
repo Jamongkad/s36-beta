@@ -237,6 +237,13 @@ return array(
                       ,"4":{"value":"Beef","baseline":"checked"}
                     }
                 }
+               ,{"cssClass":"radio","required":"checked","title":"What\'s on your pizza?",
+                   "values":{
+                       "2":{"value":"Extra Cheese","baseline":"checked"}
+                      ,"3":{"value":"Pepperoni","baseline":"checked"}
+                      ,"4":{"value":"Beef","baseline":"checked"}
+                    }
+                }
             ]');
             $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
 
