@@ -384,7 +384,7 @@
 			// Attach a callback to add new radio fields
 			$('.add_rd').live('click', function () {
                 console.log("Add Radio");
-                console.log($(this).parents('.fields div input[type=radio]'));
+                console.log($(this).parents('.fields').children('div input[type=radio]'));
 				$(this).parent().before(radioFieldHtml(false, $(this).parents('.frm-holder').attr('id')));
 				return false;
 			});
