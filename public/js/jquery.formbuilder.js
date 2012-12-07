@@ -19,7 +19,7 @@
 				add_new_field		: "Add New Field...",
 				text				: "Text Field",
 				title				: "Title",
-				paragraph			: "Paragraph",
+				//paragraph			: "Paragraph",
 				checkboxes			: "Checkboxes",
 				radio				: "Radio",
 				select				: "Select List",
