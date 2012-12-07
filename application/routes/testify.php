@@ -239,9 +239,9 @@ return array(
                 }
                ,{"cssClass":"radio","required":"checked","title":"What\'s on your pizza?",
                    "values":{
-                       "2":{"value":"Extra Cheese","baseline":"checked"}
-                      ,"3":{"value":"Pepperoni","baseline":"checked"}
-                      ,"4":{"value":"Beef","baseline":"checked"}
+                       "2":{"value":"Extra Cheese","baseline":"undefined"}
+                      ,"3":{"value":"Pepperoni","baseline":"undefined"}
+                      ,"4":{"value":"Beef","baseline":"undefined"}
                     }
                 }
             ]');
