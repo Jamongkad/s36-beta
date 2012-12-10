@@ -159,17 +159,17 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
-        /*
-        $form = new Widget\Entities\FormWidget;
+
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
+        $form = new Widget\Entities\FormWidget;
         $form->set_widgetdata($form_data->data()); 
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
         ));  
-        */
 
+        /*
         $stub = new StdClass;
         $stub->widgetkey = 12345;
         $stub->widgetstoreid = 130;
@@ -179,7 +179,7 @@ return array(
         echo json_encode(Array(
             'submit' => $widget 
         )); 
-
+        */
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
@@ -187,15 +187,11 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
-            Helpers::dump($data['form_structure']);
-            
-            /*
             return DB::table('WidgetFormMetadata', 'master')->insert(Array(
                 'widgetStoreId' => Input::get('form_id')
               , 'companyId' => Input::get('company_id')
-              , 'formStructure' => $data
+              , 'formStructure' => $data['form_structure']
             ));
-            */
             /*
             $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
             Helpers::dump($form_render->render_html()); 
