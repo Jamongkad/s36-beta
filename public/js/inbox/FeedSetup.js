@@ -78,6 +78,8 @@ jQuery(function($) {
 
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
+                console.log("Kennwel is gay");
+
                 $.ajax({
                     type: "POST",
                     url: "/feedsetup/buildmetadata_options",
