@@ -11,16 +11,10 @@ class DBWidget extends S36DataObject {
         $child_id = Null;
 
         //if widget has children....kill them...
+        $this->dbh->beginTransaction();
         if($obj->children) {
-
-            $wc = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = ?"); 
-            $ws = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = ?");
-
             foreach($obj->children as $rows) {
                 $child_id = $rows->widgetstoreid;
-                $ws->execute(Array($child_id));
-                $wc->execute(Array($child_id));
-                /*
                 $sth = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = :child_id"); 
                 $sth->bindParam(':child_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
@@ -28,8 +22,6 @@ class DBWidget extends S36DataObject {
                 $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id");
                 $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
-                */
-
             }
         }
 
@@ -42,6 +34,7 @@ class DBWidget extends S36DataObject {
         $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id");
         $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
+        $this->dbh->commit();
     }
 
     public function save_widget($widget_obj, $make_default=false) {
