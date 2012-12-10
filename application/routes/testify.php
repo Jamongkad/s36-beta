@@ -201,6 +201,8 @@ return array(
             $tf->dump($tf->data->dbw->fetch_widget_by_id('47w09'));
             $tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
             $tf->dump($tf->data->widgetloader->load());
+
+            $tf->dbw->delete_widget('tqk7o');
         });
 
         $tf->run();

@@ -75,7 +75,7 @@ jQuery(function($) {
           , success: function(responseText, statusText, xhr, $form) {     
                 var widget_key = responseText.submit.widget.widgetkey;
                 var widget_store_id = responseText.submit.widget.widgetstoreid;
-                var company_id = responseText.submit.widget.companyid;
+                var company_id = responseText.submit.widget.company_id;
 
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
