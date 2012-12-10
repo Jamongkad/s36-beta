@@ -169,7 +169,7 @@ return array(
             'submit' => $form->emit()
         ));  
         */
-        Helpers::dump("Foo");
+        Helpers::dump(Input::get());
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
