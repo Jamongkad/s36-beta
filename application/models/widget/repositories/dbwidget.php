@@ -102,6 +102,7 @@ class DBWidget extends S36DataObject {
                   WidgetStore.widgetStoreId
                 , WidgetStore.widgetKey
                 , WidgetStore.widgetObjString
+                , WidgetStore.companyId
                 , WidgetClosure.path_length
             FROM 
                 WidgetStore
