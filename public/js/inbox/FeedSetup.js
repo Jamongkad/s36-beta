@@ -50,7 +50,7 @@ jQuery(function($) {
             $(this).ajaxSubmit({
                 dataType: 'json'
               , beforeSubmit: function(formData, jqForm, options) {
-                    new Status().notify("Processing...p", 1000); 
+                    new Status().notify("Processing...", 1000); 
                 }
               , success: function(responseText, statusText, xhr, $form) {   
                     var widget_key = responseText.display.widget.widgetkey;
@@ -70,7 +70,7 @@ jQuery(function($) {
         $(this).ajaxSubmit({
             dataType: 'json'       
           , beforeSubmit: function(formData, jqForm, options) {
-                new Status().notify("Processing...c", 1000); 
+                new Status().notify("Processing...", 1000); 
             }
           , success: function(responseText, statusText, xhr, $form) {     
                 var widget_key = responseText.submit.widget.widgetkey;
@@ -84,7 +84,7 @@ jQuery(function($) {
                     data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id
                 });
                  
-                window.location = formcode_url;
+                //window.location = formcode_url;
             }
         });
         e.preventDefault();    
