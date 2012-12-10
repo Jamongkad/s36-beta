@@ -42,14 +42,6 @@ class DBWidget extends S36DataObject {
         $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id");
         $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
-
-        /*  what the fuck is this call then??
-        if($obj->children) { 
-            $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id");
-            $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
-            $sth->execute();
-        }
-        */
     }
 
     public function save_widget($widget_obj, $make_default=false) {
