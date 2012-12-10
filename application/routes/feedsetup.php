@@ -187,7 +187,7 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
-            Helpers::dump($data);
+            Helpers::dump($data['form_structure']);
             
             /*
             return DB::table('WidgetFormMetadata', 'master')->insert(Array(
