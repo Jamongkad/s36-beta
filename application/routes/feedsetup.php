@@ -159,7 +159,6 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
-        /*
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
         $form = new Widget\Entities\FormWidget;
@@ -168,8 +167,6 @@ return array(
         echo json_encode(Array(
             'submit' => $form->emit()
         ));  
-        */
-        Helpers::dump(Input::get());
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
@@ -179,13 +176,14 @@ return array(
 
             return DB::table('WidgetFormMetadata', 'master')->insert(Array(
                 'widgetStoreId' => Input::get('form_id')
-              , 'companyId' => Input::get('company_id')
+              , 'companyId'     => Input::get('company_id')
               , 'formStructure' => $data['form_structure']
             ));
         } 
     },
     
     'POST /feedsetup/save_display_widget' => function() {  
+
         $display_data = new Widget\Entities\DisplayValueObject(Input::get());
         $form_data    = new Widget\Entities\FormValueObject(Input::get());
 
