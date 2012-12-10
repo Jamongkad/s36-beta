@@ -9,6 +9,8 @@ class DBWidget extends S36DataObject {
         $obj = $this->fetch_widget_by_id($widget_id);
         $parent_id = $obj->widgetstoreid;
         $child_id = Null;
+
+        //if widget has children....kill them...
         if($obj->children) {
             foreach($obj->children as $rows) {
                 $child_id = $rows->widgetstoreid;
@@ -17,20 +19,24 @@ class DBWidget extends S36DataObject {
                 $sth->execute();
             }
         }
- 
+
+        //delete parent's closure identity
         $sth = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = :parent_id"); 
         $sth->bindParam(':parent_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
-
+        
+        //delete parent's main widgetstore id
         $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id");
         $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
-       
+
+        /*  what the fuck is this call then??
         if($obj->children) { 
             $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id");
             $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
             $sth->execute();
         }
+        */
     }
 
     public function save_widget($widget_obj, $make_default=false) {
