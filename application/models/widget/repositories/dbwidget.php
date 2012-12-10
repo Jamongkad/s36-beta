@@ -12,11 +12,24 @@ class DBWidget extends S36DataObject {
 
         //if widget has children....kill them...
         if($obj->children) {
+
+            $wc = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = ?"); 
+            $ws = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = ?");
+
             foreach($obj->children as $rows) {
                 $child_id = $rows->widgetstoreid;
+                $wc->execute($child_id);
+                $ws->execute($child_id);
+                /*
                 $sth = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = :child_id"); 
                 $sth->bindParam(':child_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
+
+                $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id");
+                $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
+                $sth->execute();
+                */
+
             }
         }
 
