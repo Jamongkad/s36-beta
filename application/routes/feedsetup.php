@@ -173,7 +173,7 @@ return array(
         $stub = new StdClass;
         $stub->widgetkey = 12345;
         $stub->widgetstoreid = 130;
-        $stub->companyId = 6; 
+        $stub->companyid = 6; 
         $widget = Array('widget' => $stub);
 
         echo json_encode(Array(

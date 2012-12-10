@@ -75,13 +75,14 @@ jQuery(function($) {
           , success: function(responseText, statusText, xhr, $form) {     
                 var widget_key = responseText.submit.widget.widgetkey;
                 var widget_store_id = responseText.submit.widget.widgetstoreid;
+                var company_id = responseText.submit.widget.companyid;
 
                 var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
                 $.ajax({
                     type: "POST",
                     url: "/feedsetup/buildmetadata_options",
-                    data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id
+                    data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                 });
                  
                 //window.location = formcode_url;
