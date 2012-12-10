@@ -119,11 +119,16 @@ class DBWidget extends S36DataObject {
                 , WidgetStore.widgetObjString
                 , WidgetStore.companyId
                 , WidgetClosure.path_length
+                , WidgetFormMetadata.widgetFormMetadataId
+                , WidgetFormMetadata.formStructure
             FROM 
                 WidgetStore
             INNER JOIN
                 WidgetClosure
                     ON WidgetStore.widgetStoreId = WidgetClosure.descendant_id
+            LEFT JOIN
+                WidgetFormMetadata
+                    ON WidgetFormMetadata.widgetStoreId = WidgetStore.widgetStoreId
             WHERE 1=1
                 AND WidgetClosure.ancestor_id = (
                     SELECT 
