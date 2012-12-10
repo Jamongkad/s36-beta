@@ -152,6 +152,7 @@ class DBWidget extends S36DataObject {
         $sth->execute();
         
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        Helpers::dump($result);
         
         if($result) {
             $node = new StdClass;
