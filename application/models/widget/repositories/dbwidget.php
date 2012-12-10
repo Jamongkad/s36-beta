@@ -161,6 +161,7 @@ class DBWidget extends S36DataObject {
                 if ( $rows->path_length == 0 ) { 
                     $node = $this->_load_object_code($rows->widgetobjstring);
                     $node->widgetstoreid = $rows->widgetstoreid; 
+                    $node->formstructure = $rows->formstructure; 
                 } else {
                     $my_kid = $this->_load_object_code($rows->widgetobjstring);
                     $my_kid->widgetstoreid = $rows->widgetstoreid;
