@@ -14,6 +14,7 @@ angular.module('formbuilder', [])
       , link: function(scope, element, attrs) {
             $(element).bind('submit', function(e) {
                 console.log("pwets");
+                e.preventDefault();
             })
             /* 
             $(document).delegate("#create-form-widget", "submit", function(e) {
