@@ -171,11 +171,12 @@ return array(
         */
 
         $stub = new StdClass;
-        $stub->widget->widgetkey = 12345;
-        $stub->widget->widgetstoreid = 130;
+        $stub->widgetkey = 12345;
+        $stub->widgetstoreid = 130;
+        $widget = Array('widget' => $stub);
 
         echo json_encode(Array(
-            'submit' => $stub 
+            'submit' => $widget 
         )); 
     },
 
