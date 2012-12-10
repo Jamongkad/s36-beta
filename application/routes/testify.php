@@ -201,7 +201,29 @@ return array(
             //$tf->dump($tf->data->dbw->fetch_widget_by_id('0x7ed'));
             //$tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
             //$tf->dump($tf->data->widgetloader->load());
-            $tf->data->dbw->delete_widget('0x7ed');
+            //$tf->data->dbw->delete_widget('0x7ed');
+        });
+
+        $tf->test('Widget Creation', function($tf) {
+            
+            $display_data = new Widget\Entities\DisplayValueObject(Input::get());
+            $form_data    = new Widget\Entities\FormValueObject(Input::get());
+
+            $display = new Widget\Entities\DisplayWidget;
+            $display->set_widgetdata($display_data->data());
+
+            $form = new Widget\Entities\FormWidget; 
+            $form->set_widgetdata($form_data->data());
+
+            $display->save();
+            $form->save();
+            $display->adopt($form);
+            
+            echo json_encode(Array(
+                 'display' => $display->emit()
+               , 'submit' => $form->emit()
+            ));     
+
         });
 
         $tf->run();
