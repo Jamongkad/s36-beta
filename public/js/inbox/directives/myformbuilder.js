@@ -13,7 +13,7 @@ angular.module('formbuilder', [])
         restrict: 'A'      
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {
-                console.log("pwets");
+                console.log(element);
                 e.preventDefault();
             })
             /* 
