@@ -212,8 +212,7 @@ return array(
 
         $form = new Widget\Entities\FormWidget; 
         $form->set_widgetdata($form_data->data());
-        
-        /*
+
         $display->save();
         $form->save();
         $display->adopt($form);
@@ -222,8 +221,6 @@ return array(
              'display' => $display->emit()
            , 'submit' => $form->emit()
         ));     
-        */
-        Helpers::dump(Input::get());
     },
 
     'GET /feedsetup/formcode_manager/(:any?)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'

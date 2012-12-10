@@ -205,9 +205,37 @@ return array(
         });
 
         $tf->test('Widget Creation', function($tf) {
+
+            $data = Array(
+                'widget_type' => 'display'
+              , 'company_id' => 6
+              , 'site_id' => 8
+              , 'display_widgetkey' => Null
+              , 'submit_widgetkey' => Null
+              , 'widget_select' => 'embed'
+              , 'theme_type' => 'form-contrast'
+              , 'perms' => Array(
+                    'feedbacksetupdisplay'  => Array(
+                        'displayname' => 1
+                      , 'displayimg' => 1
+                      , 'displaycompany' => 1
+                      , 'displayposition' => 1
+                      , 'displayurl' => 1
+                      , 'displaycountry' => 1
+                      , 'displaysbmtdate' => 1
+                    )
+                )
+              , 'theme_name' => 'Pewts'
+              , 'form_text' => 'adshdkashd'
+              , 'embed_effects' => 1
+              , 'embed_type' => 'embedded'
+              , 'embed_block_type' => 'embed_block_y'
+              , 'submit_form_text' => 'asdasd'
+              , 'submit_form_question' => 'Is Kennwel gay?'
+            );
             
-            $display_data = new Widget\Entities\DisplayValueObject(Input::get());
-            $form_data    = new Widget\Entities\FormValueObject(Input::get());
+            $display_data = new Widget\Entities\DisplayValueObject($data);
+            $form_data    = new Widget\Entities\FormValueObject($data);
 
             $display = new Widget\Entities\DisplayWidget;
             $display->set_widgetdata($display_data->data());
@@ -215,6 +243,10 @@ return array(
             $form = new Widget\Entities\FormWidget; 
             $form->set_widgetdata($form_data->data());
 
+            Helpers::dump($display_data);
+            Helpers::dump($form_data);
+            
+            /*
             $display->save();
             $form->save();
             $display->adopt($form);
@@ -223,6 +255,7 @@ return array(
                  'display' => $display->emit()
                , 'submit' => $form->emit()
             ));     
+            */
 
         });
 
