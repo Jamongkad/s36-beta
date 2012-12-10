@@ -201,7 +201,7 @@ return array(
             //$tf->dump($tf->data->dbw->fetch_widget_by_id('t2bje'));
             //$tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
             //$tf->dump($tf->data->widgetloader->load());
-            $tf->data->dbw->delete_widget('h84uc');
+            $tf->data->dbw->delete_widget('9wyeu');
         });
          
         $tf->test('Widget Creation', function($tf) {
