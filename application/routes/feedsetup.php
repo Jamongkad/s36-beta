@@ -168,18 +168,6 @@ return array(
         echo json_encode(Array(
             'submit' => $form->emit()
         ));  
-
-        /*
-        $stub = new StdClass;
-        $stub->widgetkey = 12345;
-        $stub->widgetstoreid = 130;
-        $stub->company_id = 6; 
-        $widget = Array('widget' => $stub);
-
-        echo json_encode(Array(
-            'submit' => $widget 
-        )); 
-        */
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
@@ -192,10 +180,6 @@ return array(
               , 'companyId' => Input::get('company_id')
               , 'formStructure' => $data['form_structure']
             ));
-            /*
-            $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
-            Helpers::dump($form_render->render_html()); 
-            */
         } 
     },
     
