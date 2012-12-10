@@ -23,6 +23,10 @@ class DBWidget extends S36DataObject {
                 $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :child_store_id");
                 $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
+
+                $sth = $this->dbh->prepare("DELETE FROM WidgetFormMetadata WHERE widgetStoreId = :child_store_id");
+                $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
+                $sth->execute();
             }
             $this->dbh->query("SET foreign_key_checks = 1");
         }
@@ -34,6 +38,11 @@ class DBWidget extends S36DataObject {
         
         //delete parent's main widgetstore id
         $sth = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = :widget_store_id");
+        $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
+        $sth->execute();
+
+        //delete parent's widget form meta data
+        $sth = $this->dbh->prepare("DELETE FROM WidgetFormMetadata WHERE widgetStoreId = :widget_store_id");
         $sth->bindParam(':widget_store_id', $parent_id, PDO::PARAM_STR);
         $sth->execute();
         $this->dbh->commit();
