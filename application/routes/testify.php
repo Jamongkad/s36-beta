@@ -243,10 +243,6 @@ return array(
             $form = new Widget\Entities\FormWidget; 
             $form->set_widgetdata($form_data->data());
 
-            Helpers::dump($display);
-            Helpers::dump($form);
-            
-            /*
             $display->save();
             $form->save();
             $display->adopt($form);
@@ -255,7 +251,6 @@ return array(
                  'display' => $display->emit()
                , 'submit' => $form->emit()
             ));     
-            */
 
         });
 
