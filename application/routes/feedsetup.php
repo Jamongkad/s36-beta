@@ -159,7 +159,6 @@ return array(
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
-        /*
         $form = new Widget\Entities\FormWidget;
         $form_data = new Widget\Entities\FormValueObject(Input::get());
 
@@ -167,9 +166,8 @@ return array(
         $form->save();
         echo json_encode(Array(
             'submit' => $form->emit()
-        )); 
-        */
-
+        ));  
+        /*
         $stub = new StdClass;
         $stub->widgetkey = 12345;
         $stub->widgetstoreid = 130;
@@ -179,6 +177,7 @@ return array(
         echo json_encode(Array(
             'submit' => $widget 
         )); 
+        */
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
