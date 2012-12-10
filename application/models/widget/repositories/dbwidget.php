@@ -196,6 +196,9 @@ class DBWidget extends S36DataObject {
             INNER JOIN
                 WidgetClosure
                     ON WidgetStore.widgetStoreId = WidgetClosure.descendant_id
+            LEFT JOIN
+                WidgetFormMetadata
+                    ON WidgetFormMetadata.widgetStoreId = WidgetStore.widgetStoreId
             WHERE 1=1
                 AND WidgetStore.companyId = :company_id
                 AND WidgetStore.widgetType = :widget_type
