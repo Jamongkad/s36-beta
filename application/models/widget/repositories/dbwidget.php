@@ -13,6 +13,7 @@ class DBWidget extends S36DataObject {
         //if widget has children....kill them...
         $this->dbh->beginTransaction();
         if($obj->children) {
+            $this->dbh->query("SET foreign_key_checks = 0");
             foreach($obj->children as $rows) {
                 $child_id = $rows->widgetstoreid;
                 $sth = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = :child_id"); 
@@ -23,6 +24,7 @@ class DBWidget extends S36DataObject {
                 $sth->bindParam(':child_store_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
             }
+            $this->dbh->query("SET foreign_key_checks = 1");
         }
 
         //delete parent's closure identity
