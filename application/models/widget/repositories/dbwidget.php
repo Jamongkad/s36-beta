@@ -13,7 +13,7 @@ class DBWidget extends S36DataObject {
         //if widget has children....kill them...
         if($obj->children) {
 
-            $wc = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = ?;"); 
+            $wc = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = ?"); 
             $ws = $this->dbh->prepare("DELETE FROM WidgetStore WHERE widgetStoreId = ?");
 
             foreach($obj->children as $rows) {
