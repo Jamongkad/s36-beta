@@ -198,12 +198,12 @@ return array(
 
         $tf->test('DBWidget', function($tf) {
             //$tf->dump($tf->data->dbw);
-            //$tf->dump($tf->data->dbw->fetch_widget_by_id('0x7ed'));
+            $tf->dump($tf->data->dbw->fetch_widget_by_id('biusy'));
             //$tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
             //$tf->dump($tf->data->widgetloader->load());
             //$tf->data->dbw->delete_widget('0x7ed');
         });
-
+        /*
         $tf->test('Widget Creation', function($tf) {
 
             $data = Array(
@@ -253,6 +253,7 @@ return array(
             ));     
 
         });
+        */
 
         $tf->run();
     },
