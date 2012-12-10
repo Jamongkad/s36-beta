@@ -15,7 +15,6 @@ class DBWidget extends S36DataObject {
                 $sth = $this->dbh->prepare("DELETE FROM WidgetClosure WHERE ancestor_id = :child_id"); 
                 $sth->bindParam(':child_id', $child_id, PDO::PARAM_STR);
                 $sth->execute();
-
             }
         }
  
