@@ -185,9 +185,13 @@ return array(
         if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
-            Helpers::dump($data);
 
-            Helpers::dump(Input::get('company_id'));
+            return DB::table('WidgetFormMetadata', 'master')->insert(Array(
+                'widgetStoreId' => Input::get('form_id')
+              , 'companyId' => Input::get('company_id')
+              , 'formStructure' => $data
+            ));
+
             /*
             $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
             Helpers::dump($form_render->render_html()); 
