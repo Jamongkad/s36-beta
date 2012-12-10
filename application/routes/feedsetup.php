@@ -181,8 +181,9 @@ return array(
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
-        Helpers::dump(Input::has('frmb')); 
-        Helpers::dump(Input::get()); 
+        if(Input::has('frmb')) {
+            Helpers::dump(Input::get());      
+        } 
         /*
         $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
         $data = $form->get_encoded_form_array();
