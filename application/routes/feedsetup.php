@@ -181,7 +181,7 @@ return array(
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
-        if(Input::has('frmb')) {
+        if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
             Helpers::dump($data);
