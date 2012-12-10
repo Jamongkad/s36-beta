@@ -243,8 +243,8 @@ return array(
             $form = new Widget\Entities\FormWidget; 
             $form->set_widgetdata($form_data->data());
 
-            Helpers::dump($display_data);
-            Helpers::dump($form_data);
+            Helpers::dump($display);
+            Helpers::dump($form);
             
             /*
             $display->save();
