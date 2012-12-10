@@ -186,6 +186,8 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
             Helpers::dump($data);
+
+            Helpers::dump(Input::get('company_id'));
             /*
             $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
             Helpers::dump($form_render->render_html()); 
