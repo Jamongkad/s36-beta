@@ -19,6 +19,7 @@ return array(
 
     'GET /feedsetup/widget_selection' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw) { 
         $single_submit_widget = $dbw->fetch_single_submission_widget();
+        Helpers::dump($single_submit_widget);
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_widget_selection', Array('single_submit_widget' => $single_submit_widget));
     }),
 
