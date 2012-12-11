@@ -86,7 +86,6 @@ return array(
           , 'effects_options' => DB::table('Effects', 'master')->get()
           , 'company_id'      => S36Auth::user()->companyid
           , 'widget'          => $widget
-          , 'form_render'     => $form_render
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
           , 'themes'        =>  $widget_themes->perform()->collection
@@ -95,6 +94,31 @@ return array(
         ));
 
     }),
+
+    'GET /feedsetup/load_formbuilder' => function() {     
+        $fake_db_vals = Array( 'form_structure' => '[
+            {"cssClass":"input_text","required":"undefined","values":"First Name"}
+           ,{"cssClass":"input_text","required":"undefined","values":"Last Name"}
+           ,{"cssClass":"textarea","required":"undefined","values":"Bio"}
+           ,{"cssClass":"checkbox","required":"checked","title":"What\'s on your pizza?",
+               "values":{
+                   "2":{"value":"Extra Cheese","baseline":"checked"}
+                  ,"3":{"value":"Pepperoni","baseline":"checked"}
+                  ,"4":{"value":"Beef","baseline":"checked"}
+                }
+            }
+           ,{"cssClass":"radio","required":"checked","title":"What\'s on your pizza?",
+               "values":{
+                   "2":{"value":"Extra Cheese","baseline":"undefined"}
+                  ,"3":{"value":"Pepperoni","baseline":"checked"}
+                  ,"4":{"value":"Beef","baseline":"undefined"}
+                }
+            }
+        ]');
+        $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
+
+        return $form_render->render_json();
+    },
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
                                             , 'do' => function($widget_select=false) use ($feedback, $widget_themes) { 

@@ -3,8 +3,16 @@ angular.module('formbuilder', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
-            $(element).formbuilder({'load_url': 'example-json.php', 'useJson': true});
-					
+            $(element).formbuilder({'useJson': true});	
+            $(element).children('ul').sortable({ opacity: 0.6, cursor: 'move', axis: "y" });
+        }
+    }    
+})
+.directive('myFormbuilderload', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) { 
+            $(element).formbuilder({'load_url': '/feedsetup/load_formbuilder', 'useJson': true});	
             $(element).children('ul').sortable({ opacity: 0.6, cursor: 'move', axis: "y" });
         }
     }    
