@@ -287,7 +287,7 @@ class DBWidget extends S36DataObject {
 
     public function fetch_single_submission_widget() {
         $sql = "SELECT 
-                    COUNT(*) 
+                    COUNT(*) AS submit_count
                 FROM 
                     WidgetStore
                 WHERE 1=1

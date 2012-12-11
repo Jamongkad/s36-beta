@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 -->
-                <?if(!$single_submit_widget):?>
+                <?if($single_submit_widget->submit_count == 0):?>
                     <div class="widget-preview-box">
                         <div class="widget-previews">
                             <h4>SUBMISSION FORM</h4>
