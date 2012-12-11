@@ -37,6 +37,7 @@ jQuery(function($) {
 
     var preview_widget = ".preview-display-widget-button, .preview-form-widget-button";
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
+    /*
     $(document).delegate("#create-widget", "submit", function(e) {
       
         var form_header_text = $('#form-header-text');
@@ -72,6 +73,7 @@ jQuery(function($) {
         }
         e.preventDefault(); 
     });
+    */
  
     //preview picked out of form theme slider and other preview buttons
     $(document).delegate(".preview-form-widget-button, div#preview.button-gray", "click", function(e) {
