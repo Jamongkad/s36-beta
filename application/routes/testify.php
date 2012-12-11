@@ -272,7 +272,7 @@ return array(
         $tf->run();          
     },
 
-    'GET /testify/formbuilder' => function() {
+    'GET /testify/formbuilder()' => function() {
 
         $tf = new Testify("Form Builder");  
 

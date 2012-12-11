@@ -95,7 +95,8 @@ return array(
 
     }),
 
-    'GET /feedsetup/load_formbuilder' => function() {     
+    'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
+        /*
         $fake_db_vals = Array( 'form_structure' => '[
             {"cssClass":"input_text","required":"undefined","values":"First Name"}
            ,{"cssClass":"input_text","required":"undefined","values":"Last Name"}
@@ -115,9 +116,13 @@ return array(
                 }
             }
         ]');
+        */
+        /*
         $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
 
         return $form_render->render_json();
+        */
+        return $widget_key;
     },
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
