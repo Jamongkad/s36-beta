@@ -96,33 +96,15 @@ return array(
     }),
 
     'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
-        /*
-        $fake_db_vals = Array( 'form_structure' => '[
-            {"cssClass":"input_text","required":"undefined","values":"First Name"}
-           ,{"cssClass":"input_text","required":"undefined","values":"Last Name"}
-           ,{"cssClass":"textarea","required":"undefined","values":"Bio"}
-           ,{"cssClass":"checkbox","required":"checked","title":"What\'s on your pizza?",
-               "values":{
-                   "2":{"value":"Extra Cheese","baseline":"checked"}
-                  ,"3":{"value":"Pepperoni","baseline":"checked"}
-                  ,"4":{"value":"Beef","baseline":"checked"}
-                }
-            }
-           ,{"cssClass":"radio","required":"checked","title":"What\'s on your pizza?",
-               "values":{
-                   "2":{"value":"Extra Cheese","baseline":"undefined"}
-                  ,"3":{"value":"Pepperoni","baseline":"checked"}
-                  ,"4":{"value":"Beef","baseline":"undefined"}
-                }
-            }
-        ]');
-        */
-        /*
-        $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
 
-        return $form_render->render_json();
-        */
-        return $widget_key;
+        $wl = new Widget\Services\WidgetLoader($widget_key); 
+        $widget = $wl->widget_obj;
+
+        if($formstructure = $widget->formstructure) {
+            $data = Array('form_structure' => $formstructure);
+            $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
+            return $form_render->render_json();
+        }
     },
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
