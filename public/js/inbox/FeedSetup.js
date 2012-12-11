@@ -29,52 +29,10 @@ jQuery(function($) {
             $("input[type='submit']").attr("disabled", true).css({'opacity' : '0.5'});
         }
     });
-
-    window.onbeforeunload = function() {
-        return "Are you sure you want to navigate away from this page?";
-    };
     */
 
     var preview_widget = ".preview-display-widget-button, .preview-form-widget-button";
-    $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'});
-    /*
-    $(document).delegate("#create-widget", "submit", function(e) {
-      
-        var form_header_text = $('#form-header-text');
-        var form_what_to_write =  $('#form-what-to-write');
-        if (!validate_field(form_header_text.val(), true, "regular")) { 
-            form_header_text.focus();
-        } else if (!validate_field(form_what_to_write.val(), true, "regular")) {
-            form_what_to_write.focus();
-        } else {
-
-            $(this).ajaxSubmit({
-                dataType: 'json'
-              , beforeSubmit: function(formData, jqForm, options) {
-                    new Status().notify("Processing...", 1000); 
-                }
-              , success: function(responseText, statusText, xhr, $form) {   
-                    var widget_key = responseText.display.widget.widgetkey;
-                    var widget_store_id = responseText.submit.widget.widgetstoreid;
-                    var company_id      = responseText.submit.widget.company_id;
-
-                    var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
-
-                    $.ajax({
-                        type: "POST",
-                        url: "/feedsetup/buildmetadata_options",
-                        data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id + "&company_id=" + company_id
-                    });
-
-                    window.location = formcode_url;
-                }
-            }); 
-
-        }
-        e.preventDefault(); 
-    });
-    */
- 
+    $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'}); 
     //preview picked out of form theme slider and other preview buttons
     $(document).delegate(".preview-form-widget-button, div#preview.button-gray", "click", function(e) {
         var action = $("#preview-form-widget-url").attr("hrefaction");
