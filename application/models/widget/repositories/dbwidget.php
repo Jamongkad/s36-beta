@@ -285,6 +285,24 @@ class DBWidget extends S36DataObject {
         return $result;
     }
 
+    public function fetch_single_submission_widget() {
+        $sql = "SELECT 
+                    COUNT(*) 
+                FROM 
+                    WidgetStore
+                WHERE 1=1
+                    AND companyId = :companyid 
+                    AND isDefault = 0
+                    AND widgetType = 'submit'
+                "; 
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':companyid', $this->company_id);
+        $sth->execute();
+
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     private function _load_object_code($widget_obj_string) {      
         $obj = base64_decode($widget_obj_string);
         $obj = unserialize($obj); 
