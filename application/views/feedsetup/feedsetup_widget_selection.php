@@ -47,19 +47,22 @@
                     </p>
                 </div>
                 -->
-                <div class="widget-preview-box">
-                    <div class="widget-previews">
-                        <h4>SUBMISSION FORM</h4>
-                        <img src="/img/submission-widget-preview.jpg" />
-                        <br />
-                        <?=HTML::link('feedsetup/submission_widgets', 'Select', Array('class' => 'white-button'))?>
-                        <br />
-                        <br />
+                <?if(!$single_submit_widget):?>
+                    <div class="widget-preview-box">
+                        <div class="widget-previews">
+                            <h4>SUBMISSION FORM</h4>
+                            <img src="/img/submission-widget-preview.jpg" />
+                            <br />
+                            <?=HTML::link('feedsetup/submission_widgets', 'Select', Array('class' => 'white-button'))?>
+                            <br />
+                            <br />
+                        </div>
+                        <p>
+                           Create your form for visitors and customers leave feedback.
+                        </p>
                     </div>
-                    <p>
-                       Create your form for visitors and customers leave feedback.
-                    </p>
-                </div>
+                <?endif?>
+
             </div>                
         </div>
     </div>
