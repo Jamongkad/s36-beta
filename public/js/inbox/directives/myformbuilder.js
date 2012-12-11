@@ -22,9 +22,13 @@ angular.module('formbuilder', [])
     return {
         restrict: 'A'      
       , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {
+
+           $(element.parents('form')).validate({
+            submitHandler: function(form) {
+
                 var form_db_id; 
-                $(element.parents('form')).ajaxSubmit({
+
+                $(form).ajaxSubmit({
                     dataType: 'json'       
                   , beforeSubmit: function(formData, jqForm, options) {
                         new Status().notify("Processing...", 1000); 
@@ -46,9 +50,19 @@ angular.module('formbuilder', [])
                         });
                     }
                 });
+            }
+          , errorElement: "em"
+          , rules: {
+                theme_name: { required: true }    
+            }
+        });
+          /*
+            $(element).bind('click', function(e) {
+                $(element.parents('form')).ajaxSubmit();
                 e.preventDefault();
             })
         }
+        */
     }    
 })
 /*

@@ -21,7 +21,7 @@
                         <td width="120">
                             <strong style="font-size:14px;">Form Name :</strong>
                         </td>
-                        <td><input type="text" class="large-text" name="theme_name" value="" title="Name your form" /></td>
+                        <td><input type="text" class="large-text" name="theme_name" value="" title="" /></td>
                     </tr>
                 </table>
             </div>
