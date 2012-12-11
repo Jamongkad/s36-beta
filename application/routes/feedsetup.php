@@ -210,7 +210,6 @@ return array(
                            ->where('companyId', '=', Input::get('company_id'))
                            ->update(array('formStructure' => $data['form_structure']));
             }
-
         } 
     },
     
