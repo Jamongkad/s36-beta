@@ -81,7 +81,6 @@ return array(
             $form_render = $form_render->render_html();
         }
 
-
         Helpers::dump($form_render);
 
         return View::of_layout()->partial('contents', $edit_view, Array( 

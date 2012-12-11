@@ -85,6 +85,7 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span> Update custom fields for your form (optional)</h2>
+            Pwet
             <?=$form_render?>
         </div>
         <!--
