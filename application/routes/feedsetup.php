@@ -210,6 +210,10 @@ return array(
                            ->where('companyId', '=', Input::get('company_id'))
                            ->update(array('formStructure' => $data['form_structure']));
             }
+        } else {
+            return DB::table('WidgetFormMetadata', 'master')
+                       ->where('widgetStoreId', '=', Input::get('form_id'))
+                       ->delete();
         } 
     },
     
