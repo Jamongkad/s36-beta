@@ -24,46 +24,40 @@ angular.module('formbuilder', [])
       , link: function(scope, element, attrs) {
 
            $(element.parents('form')).validate({
-            submitHandler: function(form) {
+                submitHandler: function(form) {
 
-                var form_db_id; 
+                    var form_db_id; 
 
-                $(form).ajaxSubmit({
-                    dataType: 'json'       
-                  , beforeSubmit: function(formData, jqForm, options) {
-                        new Status().notify("Processing...", 1000); 
-                    }
-                  , success: function(responseText, statusText, xhr, $form) {     
-                        var widget_key      = responseText.submit.widget.widgetkey;
-                        var widget_store_id = responseText.submit.widget.widgetstoreid;
-                        var company_id      = responseText.submit.widget.company_id;
+                    $(form).ajaxSubmit({
+                        dataType: 'json'       
+                      , beforeSubmit: function(formData, jqForm, options) {
+                            new Status().notify("Processing...", 1000); 
+                        }
+                      , success: function(responseText, statusText, xhr, $form) {     
+                            var widget_key      = responseText.submit.widget.widgetkey;
+                            var widget_store_id = responseText.submit.widget.widgetstoreid;
+                            var company_id      = responseText.submit.widget.company_id;
 
-                        var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
+                            var formcode_url = $("#formcode-manager-url").attr('hrefaction') + "/" + widget_key;
 
-                        $.ajax({
-                            type: "POST"
-                          , url: "/feedsetup/buildmetadata_options"
-                          , data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id + "&company_id=" + company_id
-                          , success: function() {
-                                window.location = formcode_url;                             
-                            }
-                        });
-                    }
-                });
-            }
-          , errorElement: "em"
-          , rules: {
-                theme_name: { required: true }    
-            }
-        });
-          /*
-            $(element).bind('click', function(e) {
-                $(element.parents('form')).ajaxSubmit();
-                e.preventDefault();
-            })
-        }
-        */
-    }    
+                            $.ajax({
+                                type: "POST"
+                              , url: "/feedsetup/buildmetadata_options"
+                              , data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id + "&company_id=" + company_id
+                              , success: function() {
+                                    window.location = formcode_url;                             
+                                }
+                            });
+                        }
+                    });
+                }
+              , errorElement: "em"
+              , rules: {
+                    theme_name: { required: true }    
+                }
+            });
+        }    
+    }
 })
 /*
 window.onbeforeunload = function() {
