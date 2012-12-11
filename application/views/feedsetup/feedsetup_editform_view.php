@@ -85,7 +85,7 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span> Update custom fields for your form (optional)</h2>
-            <?=$form_render?>
+            <?=$form_render->render_html()?>
         </div>
         <!--
         <div class="widget-options"> 
