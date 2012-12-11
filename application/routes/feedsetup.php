@@ -81,8 +81,6 @@ return array(
             $form_render = $form_render->render_html();
         }
 
-        Helpers::dump($form_render);
-
         return View::of_layout()->partial('contents', $edit_view, Array( 
             'site'            => DB::table('Site', 'master')->where('companyId', '=', S36Auth::user()->companyid)->get()
           , 'effects_options' => DB::table('Effects', 'master')->get()
