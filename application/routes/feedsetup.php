@@ -198,23 +198,17 @@ return array(
             $metadata_exists = DB::table('WidgetFormMetadata', 'master')
                                    ->where('widgetStoreId', '=', Input::get('form_id'))->first();
 
-            if(!$metadata_exists) { 
-                Helpers::dump('No metadata');
-                /*
-                return DB::table('WidgetFormMetadata', 'master')->update(Array(
+            if($metadata_exists) { 
+                return DB::table('WidgetFormMetadata', 'master')->insert(Array(
                     'widgetStoreId' => Input::get('form_id')
                   , 'companyId'     => Input::get('company_id')
                   , 'formStructure' => $data['form_structure']
                 ));
-                */
             } else {                
-                Helpers::dump('Existing metadata');
-                /*
                 return DB::table('WidgetFormMetadata', 'master')
                            ->where('widgetStoreId', '=', Input::get('form_id'))
                            ->where('companyId', '=', Input::get('company_id'))
                            ->update(array('formStructure' => $data['form_structure']));
-                */
             }
         } 
     },
