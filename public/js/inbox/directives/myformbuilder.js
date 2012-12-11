@@ -41,7 +41,7 @@ angular.module('formbuilder', [])
                             url: "/feedsetup/buildmetadata_options",
                             data: $("ul[id^=frmb-]").serializeFormList({prepend: "frmb"}) + "&form_id=" + widget_store_id + "&company_id=" + company_id
                         });
-                        //window.location = formcode_url;
+                        window.location = formcode_url;
                     }
                 });
                 e.preventDefault();
