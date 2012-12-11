@@ -85,7 +85,9 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span> Update custom fields for your form (optional)</h2>
-            <?=$form_render?>
+            <div my-formbuilder style="padding: 25px">
+                <?=$form_render?>
+            </div>
         </div>
         <!--
         <div class="widget-options"> 
