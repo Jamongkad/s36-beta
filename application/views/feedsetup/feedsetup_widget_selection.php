@@ -61,6 +61,13 @@
                            Create your form for visitors and customers leave feedback.
                         </p>
                     </div>
+                <?else:?>
+                    <div class="woops">
+                        <h2 class="woops-header">Woops. Well this is embarrassing.</h2><br/><br/>
+                        <p class="woops-content">
+                            You already have an existing submission form widget.
+                        </p>
+                    </div>
                 <?endif?>
 
             </div>                
