@@ -195,7 +195,8 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
-            $metadata_exists = DB::table('WidgetFormMetadata', 'master')->where('widgetStoreId', '=', Input::get('form_id'))->first();
+            $metadata_exists = DB::table('WidgetFormMetadata', 'master')
+                                   ->where('widgetStoreId', '=', Input::get('form_id'))->first();
 
             if(!$metadata_exists) { 
                 return DB::table('WidgetFormMetadata', 'master')->update(Array(
