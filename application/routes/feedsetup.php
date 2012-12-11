@@ -76,9 +76,10 @@ return array(
         
         $form_render = Null;
         if($widget->formstructure) {
-            $form_render = new Widget\Services\Formbuilder\Formbuilder($widget->formstructure);    
-            Helpers::dump($widget->formstructure);
+            $data = Array('form_structure' => $widget->formstructure);
+            $form_render = new Widget\Services\Formbuilder\Formbuilder($data);    
             $form_render = $form_render->render_html();
+            Helpers::dump($form_render);
         }
 
 
