@@ -88,7 +88,7 @@ class Formbuilder {
 	 * @uses generate_html
 	 */
 	public function render_html($form_action = false){
-		return $this->generate_html($form_action);
+		print $this->generate_html($form_action);
 	}
 
 

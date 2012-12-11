@@ -78,7 +78,7 @@ return array(
         if($widget->formstructure) {
             $data = Array('form_structure' => $widget->formstructure);
             $form_render = new Widget\Services\Formbuilder\Formbuilder($data);    
-            $form_render = $form_render->render_html();
+            $form_render = $form_render->generate_html();
         }
 
         return View::of_layout()->partial('contents', $edit_view, Array( 
