@@ -198,7 +198,7 @@ return array(
             $metadata_exists = DB::table('WidgetFormMetadata', 'master')
                                    ->where('widgetStoreId', '=', Input::get('form_id'))->first();
 
-            if($metadata_exists) { 
+            if(!$metadata_exists) { 
                 return DB::table('WidgetFormMetadata', 'master')->insert(Array(
                     'widgetStoreId' => Input::get('form_id')
                   , 'companyId'     => Input::get('company_id')
