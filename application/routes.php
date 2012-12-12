@@ -24,7 +24,7 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback, $company_social) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
 
@@ -35,7 +35,6 @@ return array(
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
 
-        $widget = $dbw->fetch_canonical_widget($company_name);
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
@@ -55,8 +54,7 @@ return array(
                                                     'company'         => $company_info
                                                   , 'company_social'  => $company_social
                                                   , 'user'            => $user
-                                                  , 'feeds'           => $feeds
-                                                  , 'widget'          => $widget
+                                                  , 'feeds'           => $feeds 
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
