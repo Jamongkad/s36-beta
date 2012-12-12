@@ -96,18 +96,6 @@ return array(
 
     }),
 
-    'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
-
-        $wl = new Widget\Services\WidgetLoader($widget_key); 
-        $widget = $wl->widget_obj;
-
-        if($formstructure = $widget->formstructure) {
-            $data = Array('form_structure' => $formstructure);
-            $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
-            return $form_render->render_json();
-        }
-    },
-
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
                                             , 'do' => function($widget_select=false) use ($feedback, $widget_themes) { 
 
@@ -189,6 +177,18 @@ return array(
             'submit' => $form->emit()
         ));  
         
+    },
+
+    'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
+
+        $wl = new Widget\Services\WidgetLoader($widget_key); 
+        $widget = $wl->widget_obj;
+
+        if($formstructure = $widget->formstructure) {
+            $data = Array('form_structure' => $formstructure);
+            $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
+            return $form_render->render_json();
+        }
     },
 
     'POST /feedsetup/buildmetadata_options' => function() { 
