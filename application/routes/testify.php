@@ -193,15 +193,13 @@ return array(
         
         $tf->beforeEach(function($tf) {
             $tf->data->dbw = new Widget\Repositories\DBWidget;
-            $tf->data->widgetloader = new Widget\Services\WidgetLoader('47w09'); 
+
         });
 
         $tf->test('DBWidget', function($tf) {
-            $tf->dump($tf->data->dbw);
-            $tf->dump($tf->data->dbw->show_process_list());
-            //$tf->dump($tf->data->dbw->fetch_widget_by_id('t2bje'));
-            $tf->dump($tf->data->dbw->fetch_canonical_widget('mathew-staging'));
-            $tf->dump($tf->data->widgetloader->load());
+            $widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
+            $widgetloader = new Widget\Services\WidgetLoader($widget->widgetkey); 
+            $tf->dump($widgetloader->load());
             //$tf->data->dbw->delete_widget('92v6d');
         });
          
