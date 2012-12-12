@@ -10,10 +10,11 @@ class WidgetLoader {
     public $load_canonical = False;
     public $widget_obj;
 
-    public function __construct($widget_id) {
-        //TODO: Dude can you make a fucking JOIN statement here??
-        $this->dbw = new DBWidget;
-        $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
+    public function __construct($widget_id=False) {
+        if($widget_id and $this->load_submission_forms == False and $this->load_canonical == False) { 
+            $this->dbw = new DBWidget;
+            $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
+        }
     }
 
     public function load() {
