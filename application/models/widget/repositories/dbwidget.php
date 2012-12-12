@@ -276,6 +276,8 @@ class DBWidget extends S36DataObject {
                 WHERE 1=1 
                     AND Company.name = :company_name
                     AND WidgetStore.isDefault = 1      
+                    AND WidgetStore.widgetType = 'submit'
+                LIMIT 1
                 ";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name);
