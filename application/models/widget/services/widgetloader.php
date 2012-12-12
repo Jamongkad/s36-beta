@@ -19,11 +19,11 @@ class WidgetLoader {
         }
         
         //temporary workaround
-        if($widget and $this->load_submission_form == True and $this->load_canonical == False) {
+        if($widget_id and $this->load_submission_form == True and $this->load_canonical == False) {
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id);
         }
 
-        if($widget and $this->load_submission_form == True and $this->load_canonical == True) {
+        if($widget_id and $this->load_submission_form == True and $this->load_canonical == True) {
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id, $this->load_canonical);
         }
     }
