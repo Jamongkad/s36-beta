@@ -197,10 +197,11 @@ return array(
         });
 
         $tf->test('DBWidget', function($tf) {
-            $widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
-            $tf->dump($widget);
-            $widgetloader = new Widget\Services\WidgetLoader(); 
-            $tf->dump($widgetloader->load());
+            //$widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
+            //$tf->dump($widget->widgetkey);
+            $widgetloader = new Widget\Services\WidgetLoader('i710h'); 
+            $widgetloader->load_submission_form = True;
+            $tf->dump($widgetloader->widget_obj);
         });
          
         $tf->test('Widget Creation', function($tf) {

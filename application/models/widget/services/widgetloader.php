@@ -6,14 +6,25 @@ use Widget\Repositories\DBWidget;
 class WidgetLoader {
 
     private $dbh;
-    public $load_submission_forms = False;
+    public $load_submission_form = False;
     public $load_canonical = False;
     public $widget_obj;
 
     public function __construct($widget_id=False) {
+
+        $this->dbw = new DBWidget;
+
         if($widget_id and $this->load_submission_forms == False and $this->load_canonical == False) { 
-            $this->dbw = new DBWidget;
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
+        }
+        
+        //temporary workaround
+        if($widget and $this->load_submission_form == True and $this->load_canonical == False) {
+            $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id);
+        }
+
+        if($widget and $this->load_submission_form == True and $this->load_canonical == True) {
+            $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id, $this->load_canonical);
         }
     }
 

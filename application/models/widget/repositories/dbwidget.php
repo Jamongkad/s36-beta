@@ -181,6 +181,65 @@ class DBWidget extends S36DataObject {
         }
     }
 
+    public function fetch_widget_by_id_alt($widget_id, $is_canonical=False) { 
+
+        $statement = "AND WidgetStore.widgetKey = :widget_id";
+        
+        if($is_canonical == True) {
+            $statement = "
+                AND WidgetStore.isDefault = 1 
+                AND WidgetStore.widgetType = 'submit'
+                AND Company.companyId = (
+                    SELECT Company.companyId FROM Company WHERE name = :company_name 
+                )
+            ";
+        }
+
+        $sql = "
+            SELECT 
+                  WidgetStore.widgetStoreId
+                , WidgetStore.widgetKey
+                , WidgetStore.widgetObjString
+                , WidgetStore.companyId
+                , WidgetClosure.path_length
+                , WidgetFormMetadata.widgetFormMetadataId
+                , WidgetFormMetadata.formStructure
+                , Site.domain 
+                , Site.siteId
+                , HostedSettings.header_text
+                , HostedSettings.submit_form_text
+                , HostedSettings.submit_form_question
+                , Company.name
+            FROM 
+                WidgetStore
+            INNER JOIN
+                Company
+                    ON Company.companyId = WidgetStore.companyId
+            INNER JOIN
+                HostedSettings
+                    ON HostedSettings.companyId = WidgetStore.companyId
+            INNER JOIN
+                Site
+                    ON Site.companyId = WidgetStore.companyId
+            LEFT JOIN
+                WidgetFormMetadata
+                    ON WidgetFormMetadata.companyId = WidgetStore.companyId OR WidgetFormMetadata.widgetStoreId = WidgetStore.widgetStoreId
+            WHERE 1=1
+                $statement
+        ";
+ 
+        $sth = $this->dbh->prepare($sql);  
+        if($is_canonical == True) {
+            $sth->bindParam(':company_name', $widget_id);
+        } else { 
+            $sth->bindParam(':widget_id', $widget_id);
+        }
+
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     public function fetch_widgets_by_company() {
         $widgets = new StdClass;
         $widgets->display_widgets = $this->fetch_paginated_widgets('display');
