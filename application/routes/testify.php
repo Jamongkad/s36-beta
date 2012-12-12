@@ -199,7 +199,7 @@ return array(
         $tf->test('DBWidget', function($tf) {
             //$widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
             //$tf->dump($widget->widgetkey);
-            $widgetloader = new Widget\Services\WidgetLoader('ovns8'); 
+            $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
             $tf->dump($widgetloader->widget_obj);
         });
          
