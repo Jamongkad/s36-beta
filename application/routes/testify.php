@@ -198,9 +198,9 @@ return array(
 
         $tf->test('DBWidget', function($tf) {
             $widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
+            $tf->dump($widget);
             $widgetloader = new Widget\Services\WidgetLoader($widget->widgetkey); 
             $tf->dump($widgetloader->load());
-            //$tf->data->dbw->delete_widget('92v6d');
         });
          
         $tf->test('Widget Creation', function($tf) {

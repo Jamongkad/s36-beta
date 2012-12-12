@@ -11,9 +11,9 @@ class SubmissionWidget extends FormWidgets {
     
     public function __construct($options) {
 
-        $this->env = Config::get('application.env_name');
-        
+        $this->env = Config::get('application.env_name');        
         $this->fb_id = Config::get('application.fb_id');
+
         $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
@@ -51,7 +51,6 @@ class SubmissionWidget extends FormWidgets {
           , 'form_text' => $this->form_text
           , 'form_question' => $this->form_question
           , 'theme_name' => $this->theme_type
-          , 'hosted' => $this->hosted_settings->hosted_settings() 
           , 'response' => 0
         ))->get();  
     }
