@@ -198,6 +198,9 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
+            $dbw = new Widget\Repositories\DBWidgetMetadata($form_id, $company_id, $data);
+            $dbw->perform();
+
             $metadata_exists = DB::table('WidgetFormMetadata', 'master')
                                    ->where('widgetStoreId', '=', Input::get('form_id'))->first();
 

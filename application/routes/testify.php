@@ -302,4 +302,15 @@ return array(
 
         $tf->run();          
     },
+
+    'GET /testify/widgetform_metadata' => function() {   
+        $tf = new Testify("Widget Form Metadata");  
+
+        $tf->test('Form Structure', function($tf) {
+            $dbw = new Widget\Repositories\DBWidgetMetadata(66, 6, Array('pwet'));
+            $tf->dump($dbw);
+        });
+
+        $tf->run();          
+    }
 );

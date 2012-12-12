@@ -34,6 +34,7 @@ class SubmissionWidget extends FormWidgets {
 
         $this->hosted_settings = new DBHostedSettings;
         $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
+
     }
 
     public function render_data() {
