@@ -45,7 +45,7 @@ class DBCompany extends S36DataObject {
         } else { 
             $company_sql = "Company.name = :company_id";
         }
-
+        /*
         $sql = "
             SELECT 
                 * 
@@ -60,6 +60,22 @@ class DBCompany extends S36DataObject {
                 AND $company_sql
             LIMIT 1
         ";
+        */
+        $sql = "
+            SELECT 
+                * 
+                , Company.name AS company_name 
+                , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS avg_rating
+            FROM 
+                Company
+            INNER JOIN
+                Site
+                    ON Site.companyId = Company.companyId
+            WHERE 1=1
+                AND $company_sql
+            LIMIT 1
+        ";
+        
         $sth = $this->dbh->prepare($sql);     
 
         $sth->bindParam(':company_id', $company_id);
