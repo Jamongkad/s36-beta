@@ -198,28 +198,15 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
-            $dbw = new Widget\Repositories\DBWidgetMetadata($form_id, $company_id, $data);
-            $dbw->perform();
+            $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
 
-            $metadata_exists = DB::table('WidgetFormMetadata', 'master')
-                                   ->where('widgetStoreId', '=', Input::get('form_id'))->first();
-
-            if(!$metadata_exists) { 
-                return DB::table('WidgetFormMetadata', 'master')->insert(Array(
-                    'widgetStoreId' => Input::get('form_id')
-                  , 'companyId'     => Input::get('company_id')
-                  , 'formStructure' => $data['form_structure']
-                ));
+            if(!$dbw->metadata_exists()) { 
+                return $dbw->save();
             } else {                
-                return DB::table('WidgetFormMetadata', 'master')
-                           ->where('widgetStoreId', '=', Input::get('form_id'))
-                           ->where('companyId', '=', Input::get('company_id'))
-                           ->update(array('formStructure' => $data['form_structure']));
+                return $dbw->update();
             }
         } else {
-            return DB::table('WidgetFormMetadata', 'master')
-                       ->where('widgetStoreId', '=', Input::get('form_id'))
-                       ->delete();
+            return $dbw->delete();
         } 
     },
     

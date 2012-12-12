@@ -24,7 +24,6 @@ class DBWidgetMetadata extends S36DataObject {
           , 'companyId'     => $this->company_id
           , 'formStructure' => $this->form_structure_data
         ));
-
     }
 
     public function update() { 
