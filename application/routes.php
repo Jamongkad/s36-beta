@@ -59,8 +59,6 @@ return array(
     },
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
-        Helpers::dump($company_name);
-
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
         $widget = $wl->load();
