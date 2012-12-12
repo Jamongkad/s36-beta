@@ -39,4 +39,8 @@ abstract class S36DataObject {
     public function quote($string) {
         return $this->dbh->quote($string);
     }
+
+    public function show_process_list() {
+        return $this->dbh->query('SHOW FULL PROCESSLIST');
+    }
 }
