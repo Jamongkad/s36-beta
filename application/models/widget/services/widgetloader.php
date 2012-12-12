@@ -6,28 +6,23 @@ use Widget\Repositories\DBWidget;
 class WidgetLoader {
 
     private $dbh;
-    public $load_submission_form = False;
-    public $load_canonical = False;
     public $widget_obj;
 
-    public function __construct($widget_id=False) {
+    public function __construct($widget_id=False, $load_submission_form=False, $load_canonical=False) {
 
         $this->dbw = new DBWidget;
 
-        if($widget_id and $this->load_submission_form == False and $this->load_canonical == False) { 
-            echo "loading basic";
+        if($widget_id and $load_submission_form == False and $load_canonical == False) { 
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
         }
         
         //temporary workaround
-        if($widget_id and $this->load_submission_form == True and $this->load_canonical == False) {
-            echo "loading new form";
+        if($widget_id and $load_submission_form == True and $load_canonical == False) {
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id);
         }
 
-        if($widget_id and $this->load_submission_form == True and $this->load_canonical == True) {
-            echo "loading canonical";
-            $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id, $this->load_canonical);
+        if($widget_id and $load_submission_form == True and $load_canonical == True) {
+            $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id, $load_canonical);
         }
     }
 
