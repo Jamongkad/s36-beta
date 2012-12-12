@@ -15,15 +15,18 @@ class WidgetLoader {
         $this->dbw = new DBWidget;
 
         if($widget_id and $this->load_submission_form == False and $this->load_canonical == False) { 
+            echo "loading basic";
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
         }
         
         //temporary workaround
         if($widget_id and $this->load_submission_form == True and $this->load_canonical == False) {
+            echo "loading new form";
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id);
         }
 
         if($widget_id and $this->load_submission_form == True and $this->load_canonical == True) {
+            echo "loading canonical";
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id, $this->load_canonical);
         }
     }
