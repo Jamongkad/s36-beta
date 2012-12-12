@@ -60,17 +60,14 @@ return array(
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         Helpers::dump($company_name);
-        /*
-        $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
+        $canon_widget = $dbw->fetch_canonical_widget($company_name);
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
         $widget = $wl->load();
-        */
 
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-
-        $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
+        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
 
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
