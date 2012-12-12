@@ -6,6 +6,8 @@ use Widget\Repositories\DBWidget;
 class WidgetLoader {
 
     private $dbh;
+    public $load_submission_forms = False;
+    public $load_canonical = False;
     public $widget_obj;
 
     public function __construct($widget_id) {
