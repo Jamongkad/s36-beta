@@ -35,7 +35,6 @@ class DBWidgetMetadata extends S36DataObject {
 
     public function delete() { 
         return DB::table($this->table, $this->db)
-                   ->where('widgetStoreId', '=', $this->widgetstore_id)
-                   ->delete();
+                   ->where('widgetStoreId', '=', $this->widgetstore_id)->delete();
     }
 }
