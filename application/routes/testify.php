@@ -200,7 +200,7 @@ return array(
             //$widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
             //$tf->dump($widget->widgetkey);
             $widgetloader = new Widget\Services\WidgetLoader('i710h'); 
-            $widgetloader->load_submission_form = True;
+            //$widgetloader->load_submission_form = True;
             $tf->dump($widgetloader->widget_obj);
         });
          
