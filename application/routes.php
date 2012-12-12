@@ -27,9 +27,7 @@ return array(
     'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
-
         $hosted = new Feedback\Services\HostedService($company_name); 
-
         //Feeds 
         $hosted->page_number = 1;
         $hosted->build_data();
@@ -62,12 +60,14 @@ return array(
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         Helpers::dump($company_name);
+        /*
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
         $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
         $widget = $wl->load();
+        */
 
-        $company_info = $company->get_company_info($widget->company_id);
+        $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
