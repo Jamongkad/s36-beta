@@ -198,12 +198,12 @@ return array(
 
         $tf->test('DBWidget Alt a937i', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('a937i', $load_submission_form=True); 
-            $tf->dump($widgetloader->widget_obj);
+            $tf->dump($widgetloader->load());
         });
 
         $tf->test('DBWidget Alt upnjz', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('upnjz', $load_submission_form=True); 
-            $tf->dump($widgetloader->widget_obj);
+            $tf->dump($widgetloader->load());
         });
 
         $tf->test('DBWidget Canonical', function($tf) {

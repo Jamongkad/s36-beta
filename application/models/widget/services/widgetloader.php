@@ -32,7 +32,7 @@ class WidgetLoader {
         $obj = $this->widget_obj;
 
         if($obj) {
-            if($obj->widget_type == 'display') {
+            if($obj->widgettype == 'display') {
                 $params = Array(
                     'company_id'   => $obj->company_id
                   , 'site_id'      => $obj->site_id
@@ -71,7 +71,7 @@ class WidgetLoader {
                 return $this->wf->load_widget($obj); 
             }
 
-            if($obj->widget_type == 'submit') {
+            if($obj->widgettype == 'submit') {
                 $obj->widget = $obj->widgetattr->embed_type;
                 /*
                 $option = new StdClass;
