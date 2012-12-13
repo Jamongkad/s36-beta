@@ -11,6 +11,8 @@ class WidgetLoader {
     public function __construct($widget_id=False, $load_submission_form=False, $load_canonical=False) {
 
         $this->dbw = new DBWidget;
+        $this->wf  = new WidgetFactory; 
+        $this->feedback = new \Feedback\Repositories\DBFeedback;       
 
         if($widget_id and $load_submission_form == False and $load_canonical == False) { 
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
@@ -29,7 +31,6 @@ class WidgetLoader {
     public function load() {
 
         $obj = $this->widget_obj;
-        $wf = new WidgetFactory; 
 
         if($obj) {
             if($obj->widget_type == 'display') {
@@ -40,8 +41,7 @@ class WidgetLoader {
                   , 'is_featured'  => 1
                 );
 
-                $feedback = new \Feedback\Repositories\DBFeedback;       
-                $data = $feedback->pull_feedback_by_company($params);
+                $data = $this->feedback->pull_feedback_by_company($params);
 
                 $fixed_data = Array();
                 foreach ($data->result as $rows) {
@@ -69,10 +69,12 @@ class WidgetLoader {
                 $obj->fixed_data = $fixed_data; 
                 $obj->total_rows = $data->total_rows;
                 
-                return $wf->load_widget($obj); 
+                return $this->wf->load_widget($obj); 
             }
 
             if($obj->widget_type == 'submit') {
+                $obj->widget = $obj->widgetattr->embed_type;
+                /*
                 $option = new StdClass;
                 $option->site_id    = $obj->site_id;
                 $option->company_id = $obj->company_id;
@@ -83,7 +85,8 @@ class WidgetLoader {
                 $option->widgetkey = $obj->widgetkey;
                 $option->tab_type = $obj->tab_type;
                 $option->tab_pos  = $obj->tab_pos;
-                return $wf->load_widget($option);
+                */
+                return $this->wf->load_widget($option);
             } 
         }
 

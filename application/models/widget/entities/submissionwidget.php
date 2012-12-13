@@ -13,7 +13,9 @@ class SubmissionWidget extends FormWidgets {
 
         $this->env = Config::get('application.env_name');        
         $this->fb_id = Config::get('application.fb_id');
-
+        $this->widget_options = $options;
+        $this->country  = DB::Table('Country', 'master')->order_by('name')->get();
+        /*
         $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
         $this->company_id = $options->company_id;
@@ -34,7 +36,7 @@ class SubmissionWidget extends FormWidgets {
 
         $this->hosted_settings = new DBHostedSettings;
         $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
-
+        */
     }
 
     public function render_data() {

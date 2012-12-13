@@ -196,23 +196,18 @@ return array(
 
         });
 
-        $tf->test('DBWidget Alt', function($tf) {
+        $tf->test('DBWidget Alt a937i', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('a937i', $load_submission_form=True); 
             $tf->dump($widgetloader->widget_obj);
         });
 
-        $tf->test('DBWidget Old', function($tf) {
-            $widgetloader = new Widget\Services\WidgetLoader('a937i'); 
-            $tf->dump($widgetloader->widget_obj);
-        });
-
-        $tf->test('DBWidget Alt', function($tf) {
+        $tf->test('DBWidget Alt upnjz', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('upnjz', $load_submission_form=True); 
             $tf->dump($widgetloader->widget_obj);
         });
 
-        $tf->test('DBWidget Old', function($tf) {
-            $widgetloader = new Widget\Services\WidgetLoader('upnjz'); 
+        $tf->test('DBWidget Canonical', function($tf) {
+            $widgetloader = new Widget\Services\WidgetLoader('mathew-stagin', $load_submission_form=True, $load_canonical=True); 
             $tf->dump($widgetloader->widget_obj);
         });
          
