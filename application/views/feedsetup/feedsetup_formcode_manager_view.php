@@ -1,6 +1,6 @@
-<?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('submit_widgetkey', $widget->widget_options->widgetkey)?>
 <?if($widget_type == 'Widget\Entities\Types\FormWidgets'):?>
-    <?=Form::hidden('tab_type', $widget->tab_type, Array('id' => 'selected-tab'))?>
+    <?=Form::hidden('tab_type', $widget->widget_options->widgetattr->tab_type, Array('id' => 'selected-tab'))?>
 <?endif?>
 <span id="update-tabtype-url" hrefaction="<?=URL::to('feedsetup/update_tabtype/')?>"></span>
 
