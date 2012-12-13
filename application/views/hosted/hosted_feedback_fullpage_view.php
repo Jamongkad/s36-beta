@@ -58,13 +58,23 @@ $(document).ready(function(){
     
     
     // start of description inline editing.
+    $('.g3of4, #pageTitle').hover(
+        function(){
+            if( $(this).find('.textbox_container').css('display') != 'block' ){
+                $(this).find('.edit').css('display', 'inline');
+            }
+        },
+        function(){
+            $(this).find('.edit').css('display', 'none');
+        }
+    );
     
     $('.edit').click(function(){
         var parent = $( $(this).attr('for') );
-        parent.find('.save, .cancel').css('display', 'inline');
         parent.find('.edit').css('display', 'none');
-        parent.find('.textbox_container').css('display', 'block');
         parent.find('.text_container').css('display', 'none');
+        parent.find('.save, .cancel').css('display', 'inline');
+        parent.find('.textbox_container').css('display', 'block');
     });
     
     $('.cancel').click(function(){
@@ -73,8 +83,8 @@ $(document).ready(function(){
         var textarea = parent.find('.textbox_container textarea');
         
         parent.find('.save, .cancel').css('display', 'none');
-        parent.find('.edit').css('display', 'inline');
         parent.find('.textbox_container').css('display', 'none');
+        parent.find('.edit').css('display', 'none');
         text_container.css('display', 'block');
         textarea.val( text_container.html() );
     });
@@ -99,12 +109,13 @@ $(document).ready(function(){
                 if( result == 1 ){
                     alert('ei, no way, you should be logged in');
                 }else{
+                    parent.find('.save, .cancel').css('display', 'none');
+                    parent.find('.textbox_container').css('display', 'none');
+                    parent.find('.edit').css('display', 'none');
+                    text_container.css('display', 'block');
+                    
                     if( textarea.is('#header_text') ) textarea_value = textarea_value.substr(0, 125);
                     text_container.html( textarea_value );
-                    parent.find('.save, .cancel').css('display', 'none');
-                    parent.find('.edit').css('display', 'inline');
-                    parent.find('.textbox_container').css('display', 'none');
-                    text_container.css('display', 'block');
                 }
             }
         });
@@ -213,11 +224,13 @@ $(document).ready(function(){
                         
                         <div class="action_buttons">
                             <span class="edit" for=".g3of4">edit</span>
-                            <span class="save" for=".g3of4">save</span>
-                            <span class="cancel" for=".g3of4">cancel</span>
                         </div>
                         <div class="textbox_container">
                             <textarea id="description" style="width: 85%;"><?=$company->description?></textarea>
+                            <div class="action_buttons">
+                                <span class="save" for=".g3of4">save</span>
+                                <span class="cancel" for=".g3of4">cancel</span>
+                            </div>
                         </div>
                         
                     <?php endif ?>

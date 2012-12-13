@@ -506,11 +506,9 @@ img.large-avatar {
 #star_rating_container{ width: 75%; clear: both; float: left; margin-top: -13px; }
 #star_rating{ padding: 0px 10px; }
 
-/* hosted page description inline editing. */
-/*.the-description{ position: relative; }*/
+/* hosted page ajax editing. */
 .textbox_container{ display: none; }
-.action_buttons{ position: absolute; top: 0px; right: 0px; z-index: 10; display: none; }
+.action_buttons{ position: absolute; top: 0px; right: 0px; z-index: 10; }
+.action_buttons .edit,
 .action_buttons .save,
 .action_buttons .cancel{ display: none; }
-.g3of4:hover .action_buttons{ display: block; }
-#pageTitle:hover .action_buttons{ display: block; }
