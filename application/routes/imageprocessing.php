@@ -83,9 +83,5 @@ function upload($file, $options){
         $image->save($filedir, array('quality'=>100));
     }
 
-    echo json_encode(Array(
-        "error" => $error
-      , "msg"   => $filedir
-      , "wid"   => $width
-    ));
+    echo json_encode(Array("error" => $error, "msg"   => $filedir));
 }
