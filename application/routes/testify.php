@@ -198,7 +198,7 @@ return array(
 
         $tf->test('DBWidget Alt a937i', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('a937i', $load_submission_form=True); 
-            $tf->dump($widgetloader->load()->render_html());
+            $tf->dump($widgetloader->load());
         });
 
         $tf->test('DBWidget Alt upnjz', function($tf) {
