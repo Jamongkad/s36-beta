@@ -5,8 +5,10 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) { 
                 var feedid = $(this).attr('feedid');  
+
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
+
                 $('.dialog-form[feedid='+feedid+']').dialog('open'); 
                 e.preventDefault();
             });
