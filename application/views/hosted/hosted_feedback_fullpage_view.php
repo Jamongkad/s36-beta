@@ -48,7 +48,7 @@ $(document).ready(function(){
                 <?else:?>
                      <?if($admin):?>
                          <img src="" id="coverPhoto" />
-                        <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
+                         <img src="/img/cover-photo-placeholder.jpg" id="defaultCoverPhoto" width="100%" />
                      <?endif?>
                 <?endif;?>
             </div>
@@ -100,5 +100,3 @@ $(document).ready(function(){
         <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds))?>
         <div id="feedback-landing"></div>
         <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
-</div>
-
