@@ -202,6 +202,7 @@ class DBWidget extends S36DataObject {
                 , WidgetStore.widgetObjString
                 , WidgetStore.companyId
                 , WidgetStore.isDefault
+                , WidgetStore.widgetType
                 , WidgetFormMetadata.widgetFormMetadataId
                 , WidgetFormMetadata.formStructure
                 , Site.domain 
@@ -239,9 +240,10 @@ class DBWidget extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
 
         if($result) { 
-            $node = new StdClass;
+
+            $node = $this->_load_object_code($result->widgetobjstring);
             $node = $result;
-            $node->widgetattr = $this->_load_object_code($result->widgetobjstring);
+
             return $node;
         }
     }
