@@ -292,15 +292,21 @@ return array(
     'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
-        $option->site_id    = 1;
-        $option->company_id = 1;
+        $option->widgetstoreid    = 1;
+        $option->companyid = 1;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
-        $option->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
-        $option->widget = 'form';
-        $option->widgetkey = 'sample';  
-        $option->tab_type = 'tab-l-aglow';
-        $option->tab_pos  = 'l';
+
+        $fakewidget = new StdClass;
+        $fakewidget->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
+        $fakewidget->widget = 'form';
+        $fakewidget->widgetkey = 'sample';  
+        $fakewidget->tab_type = 'tab-l-aglow';
+        $fakewidget->tab_pos  = 'l';
+
+        $option->widgetattr = $fakewidget;
+
+
         $load_widget = $wf->load_widget($option);
         return $load_widget->render_data();
     },
