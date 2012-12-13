@@ -59,18 +59,11 @@ return array(
     },
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
-        /*
-        $canon_widget = $dbw->fetch_canonical_widget($company_name);
-        $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
-        $widget = $wl->load();
-        */
-        $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
+        $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
         $widget = $widgetloader->load();
 
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-        //$hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
-        //, 'hosted' => $hosted_settings->hosted_settings()
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company_header' => $header_view));

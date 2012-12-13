@@ -234,7 +234,7 @@ return array(
     'GET /feedsetup/formcode_manager/(:any?)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
                                                        , 'do' => function($id=false) use ($tab_themes, $widget_themes) {
 
-        $wl = new Widget\Services\WidgetLoader($id); 
+        $wl = new Widget\Services\WidgetLoader($id, $load_submission_form=True); 
         $widget = $wl->load();
         $cl = new Widget\Services\ClientRender($widget);  
 
