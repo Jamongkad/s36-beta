@@ -64,6 +64,9 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
+        Helpers::dump($widget);
+
+        /*
         $widget_themes->build_menu_structure();
 
         if($widget->widgettype == 'display') {
@@ -93,7 +96,7 @@ return array(
           , 'themes_parent' => $widget_themes->get_parent($theme_type)
           , 'main_themes'   => $widget_themes->main_themes()
         ));
-
+        */
     }),
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
