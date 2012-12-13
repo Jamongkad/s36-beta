@@ -54,26 +54,6 @@ $(document).ready(function(){
             </div>
 
         <!-- new header October 4 2012 -->
-        <div id="pageCover">
-            <?php if($admin == 1): ?>
-            <div id="changeCoverButton">
-                <div id="changeButtonText">            
-                    Change Cover
-                </div>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="upload_new_logo()" />
-                </form>
-            </div>
-            <div id="saveCoverButton">
-                Save Cover
-            </div>
-            <div id="dragPhoto">
-                Drag Image to Reposition Cover
-            </div>
-            <?php endif; ?>
-            <div id="theCover" class="draggable">
-                <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
-            </div>
             <div class="social-buttons">
                 <ul>
                 <?
