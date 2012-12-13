@@ -72,7 +72,8 @@ class WidgetLoader {
             }
 
             if($obj->widgettype == 'submit') {
-                $obj->widget = $obj->widgetattr->embed_type;
+                $obj->widget = $obj->widgetattr->embed_type; 
+                return $this->wf->load_widget($obj);
                 /*
                 $option = new StdClass;
                 $option->site_id    = $obj->site_id;
@@ -84,8 +85,8 @@ class WidgetLoader {
                 $option->widgetkey = $obj->widgetkey;
                 $option->tab_type = $obj->tab_type;
                 $option->tab_pos  = $obj->tab_pos;
-                */
                 return $this->wf->load_widget($option);
+                */
             } 
         }
 
