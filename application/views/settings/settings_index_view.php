@@ -10,6 +10,46 @@
 <?=Form::open('settings/savesettings')?>
 <?=Form::hidden('companyid', $user->companyid)?>
 <?=Form::hidden('forward_to', Input::get('forward_to'))?>
+<div class="block graybg">
+    <h3>FEEDBACK SETTINGS</h3>
+</div>
+<div class="block">
+    <p class="small"><strong></strong></p>
+    <div class="grids border-bottom">
+        <div class="grids">
+            <strong style="margin-left:6px;">Auto Posting Options</strong>
+            <br/>
+            <span style="margin-left:6px;">Auto Posting allows you to automatically publish submitted feedback for a given rating value.</span>
+        </div>
+        <div class="grids" style="padding-top:6px">
+                <input id="autopost_enable" name="autopost_enable" type="checkbox" <?=($hosted_settings->autopost_enable==1) ? 'checked="checked"' : '' ?>>                
+                <strong style="margin-left:6px;">Enable</strong>
+        </div>
+        <div id="autopost_div" class="grids" style="padding-top:6px;display:<?=($hosted_settings->autopost_enable==1) ? 'block"' : 'none' ?>">
+            <span style="margin-left:29px;">I want to publicly post feedback with ratings from
+            <select id="autopost_rating" name="autopost_rating">
+                <?php for($rating=1;$rating<6;$rating++){?>
+                    <option value="<?=$rating?>" <?=($rating==$hosted_settings->autopost_rating) ? 'selected' : '' ?> ><?=$rating?></option>
+                <?php } ?>
+            </select>
+            stars onwards.
+            </span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#autopost_enable').click(function(){
+        if(this.checked==false){
+            $('#autopost_div').fadeOut('slow');
+        }else{
+            $('#autopost_div').fadeIn('slow');
+        }
+    })
+});
+</script>
+
+
 <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
     <hello-settings></hello-settings>
 </div>

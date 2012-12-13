@@ -3,7 +3,9 @@ use \Imagine\Image\Box;
 use \Imagine\Image\Point;
 $company = new Company\Repositories\DBCompany;
 
+
 return array(
+
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
         $file = Input::all();
         $options    = array(
@@ -20,7 +22,17 @@ return array(
         $data['company_id'] = $user->companyid;
         $result = $company->update_coverphoto($data);
         echo json_encode($result);
-    }
+    },
+
+    'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
+      $uploader = new JqueryFileUploader();
+    }),
+
+    'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
+        $link_preview = new LinkPreview();
+        $link_preview->text_crawler();
+    }),
+
 );
 
 function upload($file, $options){
@@ -67,8 +79,13 @@ function upload($file, $options){
         if(isset($options['width']) && isset($options['height'])){
             $image->resize(new Box($options['width'], $options['height']));
         }
+
         $image->save($filedir, array('quality'=>100));
     }
 
-    echo json_encode(Array("error" => $error, "msg" => $filedir)); 
+    echo json_encode(Array(
+        "error" => $error
+      , "msg"   => $filedir
+      , "wid"   => $width
+    ));
 }

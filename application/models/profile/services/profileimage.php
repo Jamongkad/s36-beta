@@ -28,7 +28,7 @@ class ProfileImage {
         $src = Null;
         $file_name = Null;
 
-        if($img_src_location == '36') {
+        if($img_src_location == 's36') {
             $file_name = '/var/www/s36-upload-images'.$img_src;
         }
 

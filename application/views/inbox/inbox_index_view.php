@@ -1,4 +1,13 @@
 <?if($feedback != null):?>
+<script type="text/javascript">
+$(document).ready(function(){
+$('.dialog-form').parent().css('position','fixed');
+
+
+
+console.log('bg=>'+$('.dialog-form').parent().css('background'));
+});
+</script>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
         <?if($feeds->children):?>
@@ -9,14 +18,16 @@
 
                 <?foreach($feeds->children as $feed):?>
                     <p></p>
-                    <? $id = $feed->id ?> 
-                    <div class="dialog-form" feedid="<?=$id?>"> 
+                    <? $id = $feed->id ?>
+                    
+                    <div class="dialog-form" feedid="<?=$id?>" style="height:538px !important;overflow:hidden;"> 
                         <?=Form::open('feedback/reply_to', 'POST', array('class' => 'reply-form'))?>
                             <?=View::make('feedback/reply_to_view', array(
                                    'user' => $admin_check, 'feedback'=> $feed, 'reply_message' => $reply_message
                                ))?>
                         <?=Form::close()?>
                     </div>
+                    
                     <div class="feedback" id="<?=$id?>" <?=($feed->isfeatured) ? 'style="background-color: #FFFFE0"' : null?>>
                         <div class="left">      
                             <input type="checkbox" name="id" value="<?=$id?>" class="check-feed-id"/>

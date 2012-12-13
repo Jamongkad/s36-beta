@@ -51,7 +51,7 @@ class Eden_Oauth_Consumer extends Eden_Oauth_Base {
 		return self::_getMultiple(__CLASS__);
 	}
 	
-	public function __construct($url, $key, $secret) {
+	public function __construct($url, $key, $secret, $callback) {
 		//argument test
 		Eden_Oauth_Error::i()
 			->argument(1, 'string')		//Argument 1 must be a string
@@ -62,6 +62,7 @@ class Eden_Oauth_Consumer extends Eden_Oauth_Base {
 		$this->_consumerSecret 	= $secret;
 		
 		$this->_url		= $url;
+		$this->_callback= $callback;
 		$this->_time 	= time();
 		$this->_nonce 	= md5(uniqid(rand(), true));
 		

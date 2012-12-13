@@ -7,6 +7,7 @@ echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/ho
 
 <script type="text/javascript">
 
+
 $(document).ready(function(){
     <?php 
     /* Change fullpage background if set from admin */
@@ -14,11 +15,9 @@ $(document).ready(function(){
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
     <?php endif ?>
 });
-
 </script>
 
 <div id="bodyWrapper">
-
     <div id="bodyContent">
         <div id="pageCover" <?=(!$admin and !$company->coverphoto_src) ? "style='height: 40px;'" : null?>>
 
@@ -54,6 +53,27 @@ $(document).ready(function(){
                 <?endif;?>
             </div>
 
+        <!-- new header October 4 2012 -->
+        <div id="pageCover">
+            <?php if($admin == 1): ?>
+            <div id="changeCoverButton">
+                <div id="changeButtonText">            
+                    Change Cover
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <input type="file" id="logoUpload" name="clientLogoImg" style="width:88px;height:18px;position:fixed;z-index:1000;cursor:pointer;opacity:0;" onchange="upload_new_logo()" />
+                </form>
+            </div>
+            <div id="saveCoverButton">
+                Save Cover
+            </div>
+            <div id="dragPhoto">
+                Drag Image to Reposition Cover
+            </div>
+            <?php endif; ?>
+            <div id="theCover" class="draggable">
+                <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
+            </div>
             <div class="social-buttons">
                 <ul>
                 <?
@@ -68,45 +88,27 @@ $(document).ready(function(){
                         echo '<li><a href="https://www.facebook.com/'.$fb['accountName'].'"><img src="img/facebook.png" title="Visit us on Facebook!" /></a></li>';
                     }
                 ?>
-                 
-
                 </ul>
-
             </div>
         </div>
         <!-- end of page cover -->
         <div id="pageDesc">
-
             <div class="grids">
-
                 <div class="g3of4">
-
                     <div class="the-description">
-
                         <?=$company->description?>
-
                     </div>
-
                 </div>
-
                 <div class="g1of4">
-
                     <div class="send-feedback">
-
                         <a href="<?=$company->company_name?>/submit"><input type="button" class="funky-button" value="Send in Feedback" /></a>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-        
-
         <!-- end of new header October 4 2012 --> 
-       <div id="pageTitle">
+        <div id="pageTitle">
             <h1><?=$hosted->header_text?></h1>
             <div class="meta">
                 <?=$feed_count->published_feed_count?> testimonials in total 
@@ -119,3 +121,5 @@ $(document).ready(function(){
         <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds))?>
         <div id="feedback-landing"></div>
         <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
+</div>
+

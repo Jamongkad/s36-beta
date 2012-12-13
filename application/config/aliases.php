@@ -40,6 +40,8 @@ return array(
 	'Eloquent' => 'System\\DB\\Eloquent\\Model',
 	'File' => 'System\\File',
 	'Form' => 'System\\Form',
+	'JqueryFileUploader' => 'JqueryFileUploader\\JqueryFileUploader',
+	'LinkPreview' => 'LinkPreview\\LinkPreview',
 	'Hash' => 'System\\Hash',
 	'HTML' => 'System\\HTML',
 	'Inflector' => 'System\\Inflector',
@@ -56,4 +58,5 @@ return array(
 	'Text' => 'System\\Text',
 	'View' => 'System\\View',
     'Validator' => 'System\\Validator',
+
 );

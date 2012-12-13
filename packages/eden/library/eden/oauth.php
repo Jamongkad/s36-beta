@@ -44,8 +44,8 @@ class Eden_Oauth extends Eden_Class {
 	 * 
 	 * @return Eden_Oauth_Consumer
 	 */
-	public function consumer($url, $key, $secret) {
-		return Eden_Oauth_Consumer::i($url, $key, $secret);
+	public function consumer($url, $key, $secret,$callback=null) {
+		return Eden_Oauth_Consumer::i($url, $key, $secret,$callback);
 	}
 	
 	/**

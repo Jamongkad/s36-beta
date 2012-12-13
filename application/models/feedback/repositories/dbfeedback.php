@@ -62,6 +62,7 @@ class DBFeedback extends S36DataObject {
                 , Feedback.isFeatured
                 , Feedback.isFlagged
                 , Feedback.isPublished
+                , Feedback.isRecommended
                 , Feedback.isArchived
                 , Feedback.isSticked
                 , Feedback.isDeleted

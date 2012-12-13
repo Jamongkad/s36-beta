@@ -6,6 +6,8 @@ $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
 $company_name = Config::get('application.subdomain');
+Package::load('eden');
+eden()->setLoader();
 
 $user = S36Auth::user();
 
@@ -47,7 +49,8 @@ return array(
            , 'company_id' => $company_info->companyid
         ));
 
-        $meta->calculate_metrics();        
+        $meta->calculate_metrics();
+
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'         => $company_info
                                                   , 'company_social'  => $company_social
@@ -68,6 +71,13 @@ return array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company_header' => $header_view));
     },
+    
+    'POST /submit_feedback' => function(){
+        $addfeedback = new Feedback\Services\SubmissionService(Input::get());
+        $addfeedback->perform();
+    },
+    
+
 
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
 
