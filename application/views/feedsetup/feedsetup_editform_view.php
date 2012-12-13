@@ -22,7 +22,7 @@
                         <td width="120">
                             <strong style="font-size:14px;">Form Name :</strong>
                         </td>
-                        <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->theme_name?>" title="<?=$widget->theme_name?>" /></td>
+                        <td><input type="text" class="large-text" name="theme_name" value="<?=$widget->widgetattr->theme_name?>" title="<?=$widget->widgetattr->theme_name?>" /></td>
                     </tr>
                 </table>
             </div>
