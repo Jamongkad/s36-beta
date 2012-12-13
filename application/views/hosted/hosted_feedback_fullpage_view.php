@@ -55,7 +55,56 @@ $(document).ready(function(){
     });
     
     // end of jquery raty.
-
+    
+    
+    // start of description inline editing.
+    
+    $('.edit').click(function(){
+        var parents = $(this).parents();
+        parents.find('.save, .cancel').css('display', 'inline');
+        parents.find('.edit').css('display', 'none');
+        $('.the-description').css('display', 'none')
+        parents.find('.textbox_container').css('display', 'block');
+    });
+    
+    $('.cancel').click(function(){
+        var parents = $(this).parents();
+        $('#description').val( $('.the-description').html() );
+        parents.find('.save, .cancel').css('display', 'none');
+        parents.find('.edit').css('display', 'inline');
+        $('.the-description').css('display', 'block')
+        parents.find('.textbox_container').css('display', 'none');
+    });
+    
+    $('.save').click(function(){
+        
+        var parents = $(this).parents();
+        var data = {};
+        data['description'] = $('#description').val();
+        
+        $.ajax({
+            url: '/update_desc_header',
+            type: 'post',
+            data: data,
+            success: function(result){
+                console.log(result);
+                // if not result returned 1, it means he's not logged in.
+                if( result == 1 ){
+                    alert('ei, no way, you should be logged in');
+                }else{
+                    $('.the-description').html( $('#description').val() );
+                    parents.find('.save, .cancel').css('display', 'none');
+                    parents.find('.edit').css('display', 'inline');
+                    $('.the-description').css('display', 'block')
+                    parents.find('.textbox_container').css('display', 'none');
+                }
+            }
+        });
+        
+    });
+    
+    // end of description inline editing.
+    
 });
 
 </script>
@@ -147,13 +196,24 @@ $(document).ready(function(){
             <div class="grids">
 
                 <div class="g3of4">
-
-                    <div class="the-description">
-
-                        <?=$company->description?>
-
-                    </div>
-
+                    
+                    <? // intended to be a one-liner. ?>
+                    <div class="the-description"><?=$company->description?></div>
+                    
+                    <? // show the inline editing stuff only if the user is logged in. ?>
+                    <?php if( ! is_null( $user ) ): ?>
+                        
+                        <div class="action_buttons">
+                            <span class="edit">edit</span>
+                            <span class="save">save</span>
+                            <span class="cancel">cancel</span>
+                        </div>
+                        <div class="textbox_container">
+                            <textarea id="description" class="tiny_mceXXX" style="width: 85%;"><?=$company->description?></textarea>
+                        </div>
+                        
+                    <?php endif ?>
+                    
                 </div>
                 
                 <div class="g1of4">
@@ -178,7 +238,23 @@ $(document).ready(function(){
 
         <!-- end of new header October 4 2012 --> 
        <div id="pageTitle">
+            
             <h1><?=$hosted->header_text?></h1>
+            
+            <? // show the inline editing stuff only if the user is logged in. ?>
+            <?php if( ! is_null( $user ) ): ?>
+                
+                <div class="action_buttons">
+                    <span class="edit">edit</span>
+                    <span class="save">save</span>
+                    <span class="cancel">cancel</span>
+                </div>
+                <div class="textbox_container">
+                    <!--<textarea id="description" class="tiny_mceXXX" style="width: 85%;"><?=$company->description?></textarea>-->
+                </div>
+                
+            <?php endif ?>
+            
             <div class="meta">
                 <?=$feed_count->published_feed_count?> testimonials in total 
                 <?if($feed_count->todays_count > 0):?>

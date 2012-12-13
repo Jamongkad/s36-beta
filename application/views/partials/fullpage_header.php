@@ -21,6 +21,16 @@
 
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
+
+<script type="text/javascript" src="js/tiny_mce.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        //mode : "textareas",
+        mode : "specific_textareas",
+        editor_selector: 'tiny_mce',
+        theme : "simple"
+    });
+</script>
 </head>
 <body>
 <div id="fb-root"></div>
