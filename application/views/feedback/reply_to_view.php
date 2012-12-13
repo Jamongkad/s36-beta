@@ -1,3 +1,9 @@
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.ui-dialog').css('box-shadow','#000 0px 0px 4px');
+});
+</script>
+
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
@@ -6,24 +12,25 @@
 <div id="reply-box" style="display:block">
     <div class="reply-box-styles">
         <h2>Reply To User</h2>
+        <div class="lightbox-close"></div>
         <div class="reply-box-content">
         <div class="reply-box-form">
             <table cellpadding="5" width="100%" cellspacing="0">
             <tr>
-                <td><label>Reply To:</label></td>
+                <td style="width:80px"><label style="font-size:11px;font-weight:bold;">Reply To:</label></td>
                 <td class="small" style='width: 500px'><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
                 <td class="small">
                     Your user replies will go to this email address (<?=HTML::link('/settings', 'configure', array('class' => 'linky'))?>)
                 </td>
             </tr>
             <tr>
-                <td><label>To:</label> </td>
+                <td><label style="font-size:11px;font-weight:bold;">To:</label> </td>
                 <td class="small"><span>&nbsp;&nbsp;</span><?=$feedback->email?></td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    <label>Bcc:</label>
+                    <label style="font-size:11px;font-weight:bold;">Bcc:</label>
                 </td>
                 <td class="bcc-target" feedid="<?=$feedback->id?>">
                     <textarea class="regular-text" name="bcc" rows="2" style='width: 95%'></textarea>
@@ -35,7 +42,7 @@
             <?if($user->ffemail1):?>
             <tr>
                 <td valign="top">
-                    <label>+ Bcc: </label>
+                    <label style="font-size:11px;font-weight:bold;">+ Bcc: </label>
                 </td>
                 <td>
                     <ul class="add-bcc" reply-bcc>
@@ -63,14 +70,14 @@
             </tr>
             <?endif?>
             <tr>
-                <td><label>Subject: </label> </td>
+                <td><label style="font-size:11px;font-weight:bold;">Subject: </label> </td>
                 <td>
                     <input type="text" class="regular-text" name="subject" value="Re: Feedback on <?=$feedback->sitedomain?>" style='width: 95%' />
                 </td>
                 <td></td>
             </tr>
             <tr>
-                <td><label>Message: </label> </td>
+                <td><label style="font-size:11px;font-weight:bold;">Message: </label> </td>
                 <td>
                     <textarea class="regular-text" rows="6" name="message" style='width: 95%'></textarea>
                 </td>

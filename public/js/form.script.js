@@ -12,53 +12,119 @@ $(document).keypress(function(event){
 			   if (response.authResponse) {
 			    FB.api('/me', function(response) {
 			       fb_connect_success(response);
+			       $('#loginType').val('fb');
 			     });
 			   }
 			},{scope:"email,user_location,user_website,user_work_history,user_photos"});
 		});
 		$('#tw-login').click(function(){
-			  $.ajax({
-		            url: "http://robert-staging.gearfish.com/socialnetwork/twitter",
+			  $.oauthpopup({
+	            path: '/socialnetwork/twitter',
+	            callback: function(){
+	            	$('#loginType').val('tw'); //set loginType
+	            	$.ajax({
+		            url: "/socialnetwork/twitter/userinfo",
 		            type: "GET",
-		            success: function(q) {
-		            	console.log(q);
-		                var response = $.parseJSON(q);
-		                //window.open(response['url']);
-		          }
-		        });
+			            success: function(data) {
+			            	var user = $.parseJSON(data);
+			            	if(undefined != user.name){
+			            		var name = user.name.split(" ");
+			            		$('#your_fname').val($.trim(name[0]));
+			            		$('#your_lname').val($.trim(name[1]));
+			            		$('#your_fname').removeClass('default-text');
+			            		$('#your_lname').removeClass('default-text');
+			            	}
+			            	if(undefined != user.location){
+			            		var location = user.location.split(","); 
+						    	$('#your_city').val($.trim(location[0]));
+			            		$('#your_country').val($.trim(location[1]));
+			            		$('#your_city').removeClass('default-text');
+			            	}
+			            	if(undefined != user.profile_image_url){
+			            		$('#preview_photo').attr('src',user.profile_image_url)
+			            	}
+			            	//$('#profileLink').val()
+			            	//$('#your_email').val()
+			            	console.log(user);
+			          }
+			        });
+	            }});
 		});
 		function submit_feedback(){
-		
-		var attachments = new Array();
-		$('.attachment').each(function(i, obj) {
-			var src = $(this).attr('src');
-			attachments[i] = src;
-		});
-		var data = {
-				text 		: $('#feedbackText').val(),
-				rating 		: $('#rating').val(),
-				recommend 	: $('#recommend').val(),
-				fname 		: $('#your_fname').val(),
-				lname 		: $('#your_lname').val(),
-				email 		: $('#your_email').val(),
-				city 		: $('#your_city').val(),
-				country 	: $('#your_country').val(),
-				company 	: $('#your_company').val(),
-				occupation 	: $('#your_occupation').val(),
-				website 	: $('#your_website').val(),
-				photo 		: $('#preview_photo').attr('src'),
-				premission	: $('#your_permission').val(),
-				attachments : attachments
-			}
 
-			$.ajax({
-		            url: "http://robert-staging.gearfish.com/socialnetwork/test",
+			/*get empty values for optional fields with default value*/
+			if($('#your_company').hasClass('default-text')){
+				var company = ''
+			}else{
+				var company = $('#your_company').val();
+			}
+			if($('#your_occupation').hasClass('default-text')){
+				var position = ''
+			}else{
+				var position = $('#your_occupation').val();
+			}
+			if($('#your_website').hasClass('default-text')){
+				var website = ''
+			}else{
+				var website = $('#your_website').val();
+			}
+			/*start creating attachment array*/
+			//getattached images first
+			var uploaded_images = new Array;
+			$('#review-images .e_img_check').each(function(){
+				uploaded_images.push({
+					'url'		   :$(this).find('.img-url').val(),
+					'thumbnail_url':$(this).find('img').attr('src'),
+				});
+			});
+			//get attached link data
+			if($('#hasLink').val()==1){
+				var attachedLink = {
+					title			: $('#link-title').val(),
+					description		: $('#link-description').val(),
+					image			: $('#link-image').val(),
+					url				: $('#link-url').val(),
+					video			: $('#link-video').val(),
+				};
+			}
+			//build attached link and uploaded images array
+			var attachments = {
+					'attached_link'		:attachedLink,
+					'uploaded_images'	:uploaded_images
+			};
+			/*end attachment*/
+
+			//collect  all data plus attachment data
+			var data = {
+					site_id		: $('#siteId').val(),
+					company_id	: $('#company_id').val(),
+					feedback 	: $('#feedbackText').val(),
+					rating 		: $('#rating').val(),
+					recommend 	: $('#recommend').val(),
+					first_name	: $('#your_fname').val(),
+					last_name	: $('#your_lname').val(),
+					email 		: $('#your_email').val(),
+					city 		: $('#your_city').val(),
+					country 	: $('#your_country').val(),
+					loginType	: $('#loginType').val(),
+					profileLink	: $('#profileLink').val(),
+					avatar 		: $('#preview_photo').attr('src'),
+					permission	: $('#your_permission').val(),
+					company 	: company,
+					position 	: position,
+					website 	: website,
+					attachments : attachments
+				}
+			/*submit all data for server side scripting*/
+				$.ajax({
+		            url: "/submit_feedback",
 		            data: data,
-		            type: "GET",
+		            type: "POST",
 		            success: function(q) {
 		            	console.log(q);
 		          }
 		        });
+		    
 		}
 
 		$('#in-login').click(function(){});
@@ -70,6 +136,7 @@ $(document).keypress(function(event){
 			    var loc = obj.location.name;
 			    var location = loc.split(","); 
 			    $('#your_city').val( $.trim(location[0]) );
+			    $('#your_city').removeClass('default-text');
 			    $('#your_country option').each(function(){
 			     if($.trim(location[1]) == $(this).text()){
 			       $(this).selected(true);
@@ -79,22 +146,27 @@ $(document).keypress(function(event){
 			  }
 			  if(obj.first_name != undefined){
 			   $('#your_fname').val( $.trim(obj.first_name) );
+			   $('#your_fname').removeClass('default-text');
 			  }
 			  if(obj.last_name != undefined){
 			   $('#your_lname').val( $.trim(obj.last_name) );
+			   $('#your_lname').removeClass('default-text');
 			  }
 			  if(obj.email != undefined){
 			   $('#your_email').val( $.trim(obj.email) ); 
+			   $('#your_email').removeClass('default-text');
 			  }
 			  if(obj.work != undefined){
 			   if(obj.work[0].employer != undefined){
 			    if(obj.work[0].employer.name != undefined){
 			     $('#your_company').val( $.trim(obj.work[0].employer.name) ); 
+			     $('#your_company').removeClass('default-text');
 			    }
 			   }
 			   if(obj.work[0].position != undefined){
 			    if(obj.work[0].position.name != undefined){
 			     $('#your_occupation').val( $.trim(obj.work[0].position.name) ); 
+			     $('#your_occupation').removeClass('default-text');
 			    }
 			   }
 			  }
@@ -103,11 +175,12 @@ $(document).keypress(function(event){
 			   var matches = site.split(/\r/);//explode the string
 			   site = matches.length > 0 ? matches[0] : ""; // put it inside
 			   $('#your_website').val( site );
+			   $('#your_website').removeClass('default-text');
 			  }
 
 			  var photo = 'http://graph.facebook.com/'+obj.id+'/picture?type=large';
+			  $('#profileLink').val(obj.link);
 			  $('#preview_photo').attr('src',photo);
-			  $('input').removeClass('default-text')
 			  $('#fb_flag').val("1");
 		}
 
@@ -150,21 +223,16 @@ $(document).keypress(function(event){
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append(
-								$('<img />')
-									.attr({'src':data.result[0].thumbnail_url,'width':'100%'})
-								)
+							.append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}))
+							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
 							); 
 				$('#review-images')
 					.append(
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append(
-								$('<img />')
-									.attr({'src':data.result[0].thumbnail_url,'width':'100%'})
-									.addClass('attachment')
-								)
+							.append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}).addClass('attachment'))
+							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
 							);
 				
 				//resize the textbox when done
@@ -174,8 +242,7 @@ $(document).keypress(function(event){
 				init_thumbnail_close_btn();
 				
 				//close the file upload window
-				close_file_upload();
-			}
+				close_file_upload();			}
 		});
 		// initialize the photo upload script
 		$('#your_photo').fileupload({
@@ -201,7 +268,6 @@ $(document).keypress(function(event){
 					$.post(delete_url);
 				}
 			},done: function(e, data){
-				
 				$('<img />')
 					.attr('src', data.result[0].thumbnail_url)
 					.load(function(e){
@@ -214,7 +280,6 @@ $(document).keypress(function(event){
 						$('.loading-box').fadeOut('fast');
 						$('#preview_photo').attr({'src':data.result[0].thumbnail_url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
 				});
-
 			}
 		});
 		

@@ -106,12 +106,12 @@ $(document).ready(function(){
                 switch ($feed->feed_data->origin) {
                     case 's36':
                         if($feed->feed_data->isfeatured==1){
-                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? '/uploaded_cropped/150x150/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? $feed->feed_data->avatar : '/img/150x150-blank-avatar.jpg';
                             $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="large-avatar"/>';
                             $class  = 'featured';
                         }
                         else{
-                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? '/uploaded_cropped/48x48/'.$feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
+                            $feed->feed_data->avatar = (!empty($feed->feed_data->avatar)) ? $feed->feed_data->avatar : '/img/48x48-blank-avatar.jpg';
                             $avatar = '<img src="'.$feed->feed_data->avatar.'"  class="small-avatar"/>';   
                             $class  = 'normal';
                         }?>

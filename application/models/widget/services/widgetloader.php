@@ -47,29 +47,29 @@ class WidgetLoader {
                        $feed_rules->displaysbmtdate = $rows->displaysbmtdate;
                    }
 
-                   $rows->rules = (object)$feed_rules;
-                   $fixed_data[] = $rows;
+                   $rows->rules   = (object)$feed_rules;
+                   $fixed_data[]  = $rows;
                 }
  
-                $obj->widget = $obj->embed_type;
+                $obj->widget           = $obj->embed_type;
                 $obj->embed_block_type = (property_exists($obj, 'embed_block_type') && $obj->embed_block_type) ? $obj->embed_block_type : 'embed_block_x';
-                $obj->fixed_data = $fixed_data; 
-                $obj->total_rows = $data->total_rows;
+                $obj->fixed_data       = $fixed_data; 
+                $obj->total_rows       = $data->total_rows;
                 
                 return $wf->load_widget($obj); 
             }
 
             if($obj->widget_type == 'submit') {
                 $option = new StdClass;
-                $option->site_id    = $obj->site_id;
-                $option->company_id = $obj->company_id;
-                $option->submit_form_text  = $obj->submit_form_text;
+                $option->site_id              = $obj->site_id;
+                $option->company_id           = $obj->company_id;
+                $option->submit_form_text     = $obj->submit_form_text;
                 $option->submit_form_question = $obj->submit_form_question;
-                $option->theme_type = $obj->theme_type;
-                $option->widget = $obj->embed_type;
-                $option->widgetkey = $obj->widgetkey;
-                $option->tab_type = $obj->tab_type;
-                $option->tab_pos  = $obj->tab_pos;
+                $option->theme_type           = $obj->theme_type;
+                $option->widget               = $obj->embed_type;
+                $option->widgetkey            = $obj->widgetkey;
+                $option->tab_type             = $obj->tab_type;
+                $option->tab_pos              = $obj->tab_pos;
                 return $wf->load_widget($option);
             } 
         }

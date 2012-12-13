@@ -6,6 +6,8 @@ $themes = new Themes\Repositories\DBThemes;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_name = Config::get('application.subdomain');
+Package::load('eden');
+eden()->setLoader();
 
 $user = S36Auth::user();
 
@@ -71,7 +73,7 @@ return array(
         return json_encode($data);
     },
 
-
+    
     'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
         $canon_widget = $dbw->fetch_canonical_widget($company_name);
 
@@ -83,12 +85,20 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
 
+
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
                                                       'widget' => $widget->render_hosted()
                                                     , 'company' => $company_info
                                                     , 'company_header' => $header_view 
                                                     , 'hosted' => $hosted_settings->hosted_settings()));
     },
+    
+    'POST /submit_feedback' => function(){
+        $addfeedback = new Feedback\Services\SubmissionService(Input::get());
+        $addfeedback->perform();
+    },
+    
+
 
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
 

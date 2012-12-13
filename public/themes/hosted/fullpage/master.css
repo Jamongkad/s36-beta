@@ -317,6 +317,8 @@ div{position:relative;}
  visibility: hidden;}
 
 .large-avatar {
+	width:150px;
+	height:150px;
     box-shadow: 5px 5px 3px #888888;
     display: none;
     left: -1%;
@@ -325,6 +327,8 @@ div{position:relative;}
     z-index: 999999;
 }
 img.small-avatar {
+	width:48px;
+	height:48px;
     display:block;    
     margin-left:auto;
     margin-right:auto;

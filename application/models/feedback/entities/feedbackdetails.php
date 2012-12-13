@@ -25,17 +25,30 @@ class FeedbackDetails extends FeedbackDataTypes {
         $config = \HTMLPurifier_Config::createDefault();
         $purifier = new \HTMLPurifier($config);
         $feedback_text = $purifier->purify($feedback_text);
+
+        /*start autoposting*/
+        $hosted = new \Widget\Repositories\DBHostedSettings;
+        $hosted->set_hosted_settings(Array('companyId' => $this->post_data->get('company_id')));
+        $hosted_settings = $hosted->hosted_settings();
+        $isPublished = 0;
+        if($hosted_settings->autopost_enable==1){
+          $isPublished = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
+        }
+        /*end autoposting*/
         
         return Array(
-            'siteId' => $this->post_data->get('site_id')
-          , 'contactId' => Null
-          , 'categoryId' => $category->categoryid
-          , 'formId' => 1
-          , 'status' => 'new'
-          , 'rating' => $this->post_data->get('rating')
-          , 'text' => $feedback_text
-          , 'permission' => ($permission) ? $permission : 3
-          , 'dtAdded' => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
+            'siteId'            => $this->post_data->get('site_id')
+          , 'contactId'         => Null
+          , 'categoryId'        => $category->categoryid
+          , 'formId'            => 1
+          , 'status'            => 'new'
+          , 'isRecommended'     => $this->post_data->get('recommend')
+          , 'isPublished'       => $isPublished
+          , 'rating'            => $this->post_data->get('rating')
+          , 'text'              => $feedback_text
+          , 'permission'        => ($permission) ? $permission : 1
+          , 'dtAdded'           => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
+          , 'attachments'       => json_encode($this->post_data->get('attachments'))
         );
     }
 }

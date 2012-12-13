@@ -55,10 +55,10 @@ class SubmissionWidget extends FormWidgets {
         $hosted_settings = new \Widget\Repositories\DBHostedSettings;
         $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
 
-        return View::make('widget/widget_hostedform_view', Array(
+        return View::make('widget/widget_newhostedform_view', Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
-          , 'country' => $this->country
+          , 'countries' => $this->country
           , 'site_id' => $this->site_id
           , 'site_domain' => $this->site->domain
           , 'company_id' => $this->company_id

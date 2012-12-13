@@ -2,14 +2,23 @@
 use \Imagine\Image\Box;
 use \Imagine\Image\Point;
 
+
 return array(
     'GET /imageprocessing'=>array('name'=>'imageprocessing','do'=>function(){
-        var_dump($imagine);
+        exit();
     }),
     'POST /imageprocessing/upload_coverphoto'=>array('name'=>'upload_coverphoto','do'=>function(){
         $file       = 'clientLogoImg';
         $targetpath = "uploaded_images/coverphoto/";
         upload($file,$targetpath);
+    }),
+
+    'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
+      $uploader = new JqueryFileUploader();
+    }),
+    'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
+        $link_preview = new LinkPreview();
+        $link_preview->text_crawler();
     }),
 );
 
@@ -81,4 +90,4 @@ function upload($file=null,$targetpath=null,$options=null){
           , "wid"   => $width
         ));
    
-}
+  }

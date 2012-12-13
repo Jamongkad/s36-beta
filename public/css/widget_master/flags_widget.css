@@ -2,7 +2,7 @@
     float: left;
 	width: 16px;
 	height: 11px;
-	background:url(/img/flags.jpg) no-repeat;
+	background:url(/img/flags.png) no-repeat;
 	margin-left:5px;
 	margin-top:1px;
     position:relative;
@@ -10,7 +10,7 @@
 .flag-form {
     width: 16px;
     height: 11px;
-    background:url(/img/flags.jpg) no-repeat;
+    background:url(/img/flags.png) no-repeat;
     float:left;
     margin-left:5px;
 }

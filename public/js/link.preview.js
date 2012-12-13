@@ -23,7 +23,7 @@
 				if( urlRegex.test(text)){
 					$('.loading-box').fadeIn('fast');
 					$.get('/imageprocessing/linkpreview/', {text: text}, function(answer) {
-						
+						console.log(answer);
 						if(answer.url == null) answer.url = "";
 						if(answer.pageUrl == null) answer.pageUrl = "";
 						if(answer.title == null) answer.title = answer.titleEsc;
@@ -41,11 +41,18 @@
 						e_desc = e_desc + ( e_desc != answer.description ? '...' : '' );
 						
 						var result = 
-							'url => ' + answer.url + '\n\n' +
-							'title => ' + answer.title + '\n\n' +
-							'desc => ' + answer.description + '\n\n' +
-							'images => ' + answer.images + '\n\n' + 
-							'video => ' + answer.video + '\n\n';
+					       'url => ' + answer.url + '\n\n' +
+					       'title => ' + answer.title + '\n\n' +
+					       'desc => ' + answer.description + '\n\n' +
+					       'images => ' + answer.images + '\n\n' + 
+					       'video => ' + answer.video + '\n\n';
+				       
+				      $('#link-data #hasLink').val(1);
+				      $('#link-data #link-title').val(answer.title);
+				      $('#link-data #link-description').val(answer.description);
+				      $('#link-data #link-image').val(answer.images);
+				      $('#link-data #link-url').val(answer.url);
+				      $('#link-data #link-video').val(answer.video);
 
 						$('.form-video-thumbs')
 							.html(
