@@ -201,6 +201,7 @@ class DBWidget extends S36DataObject {
                 , WidgetStore.widgetKey
                 , WidgetStore.widgetObjString
                 , WidgetStore.companyId
+                , WidgetStore.isDefault
                 , WidgetFormMetadata.widgetFormMetadataId
                 , WidgetFormMetadata.formStructure
                 , Site.domain 
