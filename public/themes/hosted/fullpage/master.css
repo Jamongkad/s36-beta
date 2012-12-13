@@ -508,7 +508,12 @@ img.large-avatar {
 
 /* hosted page ajax editing. */
 .textbox_container{ display: none; }
+.textbox_container #description{ width: 90%; }
+.textbox_container #header_text{ width: 100%; }
 .action_buttons{ position: absolute; top: 0px; right: 0px; z-index: 10; }
 .action_buttons .edit,
 .action_buttons .save,
-.action_buttons .cancel{ display: none; }
+.action_buttons .cancel{ display: none; width: 20px; height: 17px; cursor: pointer; }
+.action_buttons .edit{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -140px 0px; }
+.action_buttons .save{ background: url(../../../img/ico-green-check.png) no-repeat; }
+.action_buttons .cancel{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -160px 0px; }

@@ -61,7 +61,7 @@ $(document).ready(function(){
     $('.g3of4, #pageTitle').hover(
         function(){
             if( $(this).find('.textbox_container').css('display') != 'block' ){
-                $(this).find('.edit').css('display', 'inline');
+                $(this).find('.edit').css('display', 'inline-block');
             }
         },
         function(){
@@ -73,7 +73,7 @@ $(document).ready(function(){
         var parent = $( $(this).attr('for') );
         parent.find('.edit').css('display', 'none');
         parent.find('.text_container').css('display', 'none');
-        parent.find('.save, .cancel').css('display', 'inline');
+        parent.find('.save, .cancel').css('display', 'inline-block');
         parent.find('.textbox_container').css('display', 'block');
     });
     
@@ -223,14 +223,12 @@ $(document).ready(function(){
                     <?php if( ! is_null( $user ) ): ?>
                         
                         <div class="action_buttons">
-                            <span class="edit" for=".g3of4">edit</span>
+                            <div class="edit" for=".g3of4"></div>
+                            <div class="save" for=".g3of4"></div>
+                            <div class="cancel" for=".g3of4"></div>
                         </div>
                         <div class="textbox_container">
-                            <textarea id="description" style="width: 85%;"><?=$company->description?></textarea>
-                            <div class="action_buttons">
-                                <span class="save" for=".g3of4">save</span>
-                                <span class="cancel" for=".g3of4">cancel</span>
-                            </div>
+                            <textarea id="description"><?=$company->description?></textarea>
                         </div>
                         
                     <?php endif ?>
@@ -267,12 +265,12 @@ $(document).ready(function(){
             <?php if( ! is_null( $user ) ): ?>
                 
                 <div class="action_buttons">
-                    <span class="edit" for="#pageTitle">edit</span>
-                    <span class="save" for="#pageTitle">save</span>
-                    <span class="cancel" for="#pageTitle">cancel</span>
+                    <div class="edit" for="#pageTitle"></div>
+                    <div class="save" for="#pageTitle"></div>
+                    <div class="cancel" for="#pageTitle"></div>
                 </div>
                 <div class="textbox_container">
-                    <textarea maxlength="125" id="header_text" style="width: 90%;"><?=$hosted->header_text?></textarea>
+                    <textarea maxlength="125" id="header_text"><?=$hosted->header_text?></textarea>
                 </div>
                 
             <?php endif ?>
