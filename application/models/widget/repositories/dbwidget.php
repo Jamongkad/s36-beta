@@ -241,7 +241,7 @@ class DBWidget extends S36DataObject {
 
         if($result) { 
 
-            $node = $this->_load_object_code($result->widgetobjstring);
+            //$node = $this->_load_object_code($result->widgetobjstring);
             $node = $result;
 
             return $node;
