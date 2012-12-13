@@ -308,6 +308,6 @@ return array(
         $option->widgetattr = $fakewidget;
 
         $load_widget = $wf->load_widget($option);
-        return $load_widget->render_data();
+        return $load_widget->render_html();
     },
 );
