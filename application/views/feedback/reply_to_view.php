@@ -1,14 +1,119 @@
 <script type="text/javascript">
 $(document).ready(function(){
-    $('.ui-dialog').css('box-shadow','#000 0px 0px 4px');
+    //$('.ui-dialog').css('box-shadow','#000 0px 0px 4px');
+    $('.lightbox-close').click(function(){
+        $(this).parents('.dialog-form').dialog('close');
+    });
 });
 </script>
+
+<style type="text/css">
+                .ui-widget-content .dialog-form{
+                    background: white;
+                    margin:4px;
+                    -webkit-border-top-left-radius:inherit;
+                    -moz-border-top-left-radius:inherit;
+                    border-top-left-radius:inherit;                                     
+                    -webkit-border-top-right-radius:inherit;
+                    -moz-border-top-right-radius:inherit;
+                    border-top-left-right:inherit; 
+                }
+                .ui-dialog{
+                    position:fixed;
+                    z-index:100000;
+                    top:10%;
+                    left:50%;
+                    width:780px;
+                    margin-left:-390px;
+                    color:#626262;
+                    overflow:hidden;
+                    background: url(../img/faded-bg.png) repeat;
+                    border:none;
+                    font-size:11px;
+                    -webkit-border-radius:5px;
+                    -moz-border-radius:5px;
+                    border-radius:5px;                                      
+                }
+                .lightbox-close{
+                    background:url(../img/lightbox-close.png) no-repeat;
+                    width:21px;
+                    height:21px;
+                    position:absolute;
+                    z-index:100001;
+                    right:25px;top:22px;
+                    cursor:pointer;
+                    top:12px !important;
+                }
+                .lightbox-styles{
+                    display:block;
+                    overflow:hidden;
+                    text-align:left;
+                    background:#FFF;
+                    -webkit-border-radius:inherit;
+                    -moz-border-radius:inherit;
+                    border-radius:inherit;      
+                    margin:4px 5px;                             
+                }
+                .lightbox-styles h2{
+                    padding:20px 30px;
+                    background:#efefef;
+                    border-bottom:1px solid #e0e0e0;
+                    text-align:left;
+                    font-size:14px;
+                    color:#363636;
+                    -webkit-border-top-left-radius:inherit;
+                    -moz-border-top-left-radius:inherit;
+                    border-top-left-radius:inherit;                                     
+                    -webkit-border-top-right-radius:inherit;
+                    -moz-border-top-right-radius:inherit;
+                    border-top-left-right:inherit;                                      
+                    
+                }
+                .lightbox-content{
+                    padding:30px;
+                }
+                .lightbox-form td.small{
+                    color:#9a9fa3;
+                }
+                .lightbox-form td {
+                    
+                }
+                .lightbox-form td .regular-text{
+                    width:92%;
+                    -webkit-border-radius:0px;
+                    -moz-border-radius:0px;
+                    border-radius:0px;                                      
+                }
+                .lightbox-form h3{
+                    font-size:12px;
+                }
+                .lightbox-footer{
+                    background:#babfc2;
+                    padding:15px 30px;
+                }
+                .lightbox-buttons{text-align:right;}
+                #lightbox .custom-message{position:absolute;left:530px;list-style:none;font-size:11px;color:#9ba4ab;top:290px;}
+                
+                .lightbox-error{
+                    padding:20px 30px;
+                    background:#ffa801 url(../img/yellow-error.png);
+                    color:#000;font-weight:bold;
+                    font-size:13px;
+                    display:block;
+                }
+                .lightbox-padding{
+                    /* change display to block when error is not shown to preserve the height */
+                    padding:20px 30px;display:none;
+                }
+                .lightbox-form{}
+</style>
 
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
+
 <div id="reply-box" style="display:block">
     <div class="reply-box-styles">
         <h2>Reply To User</h2>
@@ -117,6 +222,7 @@ $(document).ready(function(){
     </div>
     <!-- end of reply-box styles -->
 </div>
+
 <?else:?>
 <div class="block">
     <div class="woops">
