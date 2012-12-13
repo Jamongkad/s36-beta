@@ -48,12 +48,11 @@ $(document).ready(function(){
                 <?else:?>
                      <?if($admin):?>
                          <img src="" id="coverPhoto" />
-                         <img src="/img/cover-photo-placeholder.jpg" id="defaultCoverPhoto" width="100%" />
+                        <img src="<?=$company->coverphoto_src?>" id="coverPhoto" style="top:<?=$company->coverphoto_top?>px;" />
                      <?endif?>
                 <?endif;?>
             </div>
 
-        <!-- new header October 4 2012 -->
             <div class="social-buttons">
                 <ul>
                 <?
