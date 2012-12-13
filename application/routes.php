@@ -65,7 +65,7 @@ return array(
         $widget = $wl->load();
         */
         $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
-        $widget = $wl->load();
+        $widget = $widgetloader->load();
 
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
