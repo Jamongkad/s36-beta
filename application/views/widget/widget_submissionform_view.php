@@ -161,7 +161,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                         <input type="hidden" id="ln_flag" value="0" />
                         <input type="hidden" id="native_flag" value="0" />
 
-                        <input type="hidden" id="company_name" value="<?=$company->company_name?>" />
+                        <input type="hidden" id="company_name" value="<?=$company_name?>" />
                         <input type="hidden" id="domain" value="<?=$site_domain?>" />
                         <input type="hidden" id="site_id" value="<?=$site_id?>" />
                         <input type="hidden" id="company_id" value="<?=$company_id?>" />
@@ -463,7 +463,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                 <br/>
                                 <div class="tw-follow-link">
                                     <a href="<?=$twitter_username?>" class="twitter-follow-button" data-show-count="false">
-                                        Follow @<?=$company->company_name?>
+                                        Follow @<?=$company_name?>
                                     </a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>
@@ -480,7 +480,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                 <h3>Follow us on Twitter</h3>
                                 <div class="tw-follow-link">
                                     <a href="<?=$twitter_username?>" class="twitter-follow-button" data-show-count="false">
-                                        Follow @<?=$company->company_name?>
+                                        Follow @<?=$company_name?>
                                     </a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                                 </div>

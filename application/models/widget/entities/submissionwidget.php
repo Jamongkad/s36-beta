@@ -52,7 +52,7 @@ class SubmissionWidget extends FormWidgets {
           , 'site_id'        => $this->widget_options->siteid
           , 'site_domain'    => $this->widget_options->domain
           , 'company_id'     => $this->widget_options->companyid
-          , 'company'        => $this->company
+          , 'company_name'   => $this->widget_options->name
           , 'company_social' => $this->company_social
           , 'form_text'      => $this->widget_options->widgetattr->submit_form_text
           , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
@@ -69,10 +69,10 @@ class SubmissionWidget extends FormWidgets {
           , 'site_id'        => $this->widget_options->siteid
           , 'site_domain'    => $this->widget_options->domain
           , 'company_id'     => $this->widget_options->companyid
-          , 'company'        => $this->company
+          , 'company_name'   => $this->widget_options->name
           , 'company_social' => $this->company_social
-          , 'form_text'      => $this->widget_options->widgetattr->submit_form_text
-          , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
+          , 'form_text'      => $this->widget_options->submit_form_text
+          , 'form_question'  => $this->widget_options->submit_form_question
           , 'theme_name'     => $this->widget_options->widgetattr->theme_type
           , 'response'       => 0
         ))->get();
