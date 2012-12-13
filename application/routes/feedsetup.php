@@ -61,7 +61,7 @@ return array(
 
     'GET /feedsetup/edit/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth', 'do' => function($widget_id) use ($widget_themes) { 
 
-        $wl = new Widget\Services\WidgetLoader($widget_id); 
+        $wl = new Widget\Services\WidgetLoader($widget_id, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
         $widget_themes->build_menu_structure();
