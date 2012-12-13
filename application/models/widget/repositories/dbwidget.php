@@ -236,7 +236,13 @@ class DBWidget extends S36DataObject {
 
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $result;
+
+        if($result) { 
+            $node = new StdClass;
+            $node = $result;
+            $node->widgetattr = $this->_load_object_code($result->widgetobjstring);
+            return $node;
+        }
     }
 
     public function fetch_widgets_by_company() {
