@@ -65,7 +65,7 @@ function display_codes(i){
                         <strong>Floating Tab Position : 
                             <select id="tab-position" class="regular-select" style="font-size:12px;padding:5px;">
                                 <?php 
-                                    preg_match('~tab-(br|bl|tr|tl|r|l)~', $widget->tab_type, $match);
+                                    preg_match('~tab-(br|bl|tr|tl|r|l)~', $widget->widget_options->widgetattr->tab_type, $match);
                                     $select = Array(
                                         'l' => 'Left Side Tab'
                                       , 'r' => 'Right Side Tab'
