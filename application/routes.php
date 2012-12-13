@@ -65,13 +65,14 @@ return array(
         $widget = $wl->load();
         */
         $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
+        $widget = $wl->load();
 
         $company_info = $company->get_company_info($company_name);
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
         //$hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         //, 'hosted' => $hosted_settings->hosted_settings()
         return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
-                                                      'widget' => $widgetloader->render_hosted()
+                                                      'widget' => $widget->render_hosted()
                                                     , 'company_header' => $header_view));
     },
 
