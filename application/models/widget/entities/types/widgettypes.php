@@ -5,7 +5,7 @@ abstract class WidgetTypes {
     protected $height;
     protected $width;
 
-    public function render_data() {}
+    public function render_html() {}
     public function render_hosted() {}
 
     public function get_height() {

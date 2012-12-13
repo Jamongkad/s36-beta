@@ -198,7 +198,7 @@ return array(
 
         $tf->test('DBWidget Alt a937i', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('a937i', $load_submission_form=True); 
-            $tf->dump($widgetloader->load());
+            $tf->dump($widgetloader->load()->render_html());
         });
 
         $tf->test('DBWidget Alt upnjz', function($tf) {
@@ -208,7 +208,7 @@ return array(
 
         $tf->test('DBWidget Canonical', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
-            $tf->dump($widgetloader->widget_obj);
+            $tf->dump($widgetloader->load());
         });
          
         $tf->test('Widget Creation', function($tf) {
