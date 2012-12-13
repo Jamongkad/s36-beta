@@ -205,6 +205,16 @@ return array(
             $widgetloader = new Widget\Services\WidgetLoader('a937i'); 
             $tf->dump($widgetloader->widget_obj);
         });
+
+        $tf->test('DBWidget Alt', function($tf) {
+            $widgetloader = new Widget\Services\WidgetLoader('upnjz', $load_submission_form=True); 
+            $tf->dump($widgetloader->widget_obj);
+        });
+
+        $tf->test('DBWidget Old', function($tf) {
+            $widgetloader = new Widget\Services\WidgetLoader('upnjz'); 
+            $tf->dump($widgetloader->widget_obj);
+        });
          
         $tf->test('Widget Creation', function($tf) {
         /*
