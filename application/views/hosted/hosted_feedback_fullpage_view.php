@@ -60,43 +60,49 @@ $(document).ready(function(){
     // start of description inline editing.
     
     $('.edit').click(function(){
-        var parents = $(this).parents();
-        parents.find('.save, .cancel').css('display', 'inline');
-        parents.find('.edit').css('display', 'none');
-        $('.the-description').css('display', 'none')
-        parents.find('.textbox_container').css('display', 'block');
+        var parent = $( $(this).attr('for') );
+        parent.find('.save, .cancel').css('display', 'inline');
+        parent.find('.edit').css('display', 'none');
+        parent.find('.textbox_container').css('display', 'block');
+        parent.find('.text_container').css('display', 'none');
     });
     
     $('.cancel').click(function(){
-        var parents = $(this).parents();
-        $('#description').val( $('.the-description').html() );
-        parents.find('.save, .cancel').css('display', 'none');
-        parents.find('.edit').css('display', 'inline');
-        $('.the-description').css('display', 'block')
-        parents.find('.textbox_container').css('display', 'none');
+        var parent = $( $(this).attr('for') );
+        var text_container = parent.find('.text_container');
+        var textarea = parent.find('.textbox_container textarea');
+        
+        parent.find('.save, .cancel').css('display', 'none');
+        parent.find('.edit').css('display', 'inline');
+        parent.find('.textbox_container').css('display', 'none');
+        text_container.css('display', 'block');
+        textarea.val( text_container.html() );
     });
     
     $('.save').click(function(){
         
-        var parents = $(this).parents();
+        var parent = $( $(this).attr('for') );
+        var text_container = parent.find('.text_container');
+        var textarea = parent.find('.textbox_container textarea');
+        
         var data = {};
         data['description'] = $('#description').val();
+        data['header_text'] = $('#header_text').val();
         
         $.ajax({
             url: '/update_desc_header',
             type: 'post',
             data: data,
             success: function(result){
-                console.log(result);
                 // if not result returned 1, it means he's not logged in.
                 if( result == 1 ){
                     alert('ei, no way, you should be logged in');
                 }else{
-                    $('.the-description').html( $('#description').val() );
-                    parents.find('.save, .cancel').css('display', 'none');
-                    parents.find('.edit').css('display', 'inline');
-                    $('.the-description').css('display', 'block')
-                    parents.find('.textbox_container').css('display', 'none');
+                    text_container.html( textarea.val() );
+                    parent.find('.save, .cancel').css('display', 'none');
+                    parent.find('.edit').css('display', 'inline');
+                    parent.find('.textbox_container').css('display', 'none');
+                    text_container.css('display', 'block');
                 }
             }
         });
@@ -198,18 +204,18 @@ $(document).ready(function(){
                 <div class="g3of4">
                     
                     <? // intended to be a one-liner. ?>
-                    <div class="the-description"><?=$company->description?></div>
+                    <div class="the-description text_container"><?=$company->description?></div>
                     
                     <? // show the inline editing stuff only if the user is logged in. ?>
                     <?php if( ! is_null( $user ) ): ?>
                         
                         <div class="action_buttons">
-                            <span class="edit">edit</span>
-                            <span class="save">save</span>
-                            <span class="cancel">cancel</span>
+                            <span class="edit" for=".g3of4">edit</span>
+                            <span class="save" for=".g3of4">save</span>
+                            <span class="cancel" for=".g3of4">cancel</span>
                         </div>
                         <div class="textbox_container">
-                            <textarea id="description" class="tiny_mceXXX" style="width: 85%;"><?=$company->description?></textarea>
+                            <textarea id="description" style="width: 85%;"><?=$company->description?></textarea>
                         </div>
                         
                     <?php endif ?>
@@ -239,18 +245,18 @@ $(document).ready(function(){
         <!-- end of new header October 4 2012 --> 
        <div id="pageTitle">
             
-            <h1><?=$hosted->header_text?></h1>
+            <h1 class="text_container"><?=$hosted->header_text?></h1>
             
             <? // show the inline editing stuff only if the user is logged in. ?>
             <?php if( ! is_null( $user ) ): ?>
                 
                 <div class="action_buttons">
-                    <span class="edit">edit</span>
-                    <span class="save">save</span>
-                    <span class="cancel">cancel</span>
+                    <span class="edit" for="#pageTitle">edit</span>
+                    <span class="save" for="#pageTitle">save</span>
+                    <span class="cancel" for="#pageTitle">cancel</span>
                 </div>
                 <div class="textbox_container">
-                    <!--<textarea id="description" class="tiny_mceXXX" style="width: 85%;"><?=$company->description?></textarea>-->
+                    <textarea id="header_text" style="width: 85%;"><?=$hosted->header_text?></textarea>
                 </div>
                 
             <?php endif ?>

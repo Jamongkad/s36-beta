@@ -507,7 +507,7 @@ img.large-avatar {
 #star_rating{ padding: 0px 10px; }
 
 /* hosted page description inline editing. */
-.the-description{ position: relative; }
+/*.the-description{ position: relative; }*/
 .textbox_container{ display: none; }
 .action_buttons{ position: absolute; top: 0px; right: 0px; z-index: 10; display: none; }
 .action_buttons .save,

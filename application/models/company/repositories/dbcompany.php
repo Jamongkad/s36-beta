@@ -165,10 +165,11 @@ class DBCompany extends S36DataObject {
     public function update_desc_header($data, $company_id){
         
         // don't proceed if there's no input.
-        if( ! array_key_exists('description', $input) ) return;
+        if( ! array_key_exists('description', $data) ) return;
+        if( ! array_key_exists('header_text', $data) ) return;
         
-        //DB::table('Company')->where('companyId', '=', $company_id)->update($data);
         DB::table('Company')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
+        DB::table('HostedSettings')->where('companyId', '=', $company_id)->update( array('header_text' => $data['header_text']) );
         
     }
 }
