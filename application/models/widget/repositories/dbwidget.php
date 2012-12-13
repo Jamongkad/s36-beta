@@ -240,10 +240,9 @@ class DBWidget extends S36DataObject {
         $result = $sth->fetch(PDO::FETCH_OBJ);
 
         if($result) { 
-
-            //$node = $this->_load_object_code($result->widgetobjstring);
+            $node = new StdClass;
             $node = $result;
-
+            $node->widgetattr = $this->_load_object_code($result->widgetobjstring);
             return $node;
         }
     }
