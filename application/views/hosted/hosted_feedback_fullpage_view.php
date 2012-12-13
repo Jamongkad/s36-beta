@@ -84,10 +84,11 @@ $(document).ready(function(){
         var parent = $( $(this).attr('for') );
         var text_container = parent.find('.text_container');
         var textarea = parent.find('.textbox_container textarea');
-        
+        var textarea_value = textarea.val();
         var data = {};
-        data['description'] = $('#description').val();
-        data['header_text'] = $('#header_text').val();
+        
+        if( textarea.is('#description') ) data['description'] = textarea_value;
+        if( textarea.is('#header_text') ) data['header_text'] = textarea_value;
         
         $.ajax({
             url: '/update_desc_header',
@@ -98,7 +99,8 @@ $(document).ready(function(){
                 if( result == 1 ){
                     alert('ei, no way, you should be logged in');
                 }else{
-                    text_container.html( textarea.val() );
+                    if( textarea.is('#header_text') ) textarea_value = textarea_value.substr(0, 125);
+                    text_container.html( textarea_value );
                     parent.find('.save, .cancel').css('display', 'none');
                     parent.find('.edit').css('display', 'inline');
                     parent.find('.textbox_container').css('display', 'none');
@@ -245,6 +247,7 @@ $(document).ready(function(){
         <!-- end of new header October 4 2012 --> 
        <div id="pageTitle">
             
+            <? // intended to be a one-liner. ?>
             <h1 class="text_container"><?=$hosted->header_text?></h1>
             
             <? // show the inline editing stuff only if the user is logged in. ?>
@@ -256,7 +259,7 @@ $(document).ready(function(){
                     <span class="cancel" for="#pageTitle">cancel</span>
                 </div>
                 <div class="textbox_container">
-                    <textarea id="header_text" style="width: 85%;"><?=$hosted->header_text?></textarea>
+                    <textarea maxlength="125" id="header_text" style="width: 90%;"><?=$hosted->header_text?></textarea>
                 </div>
                 
             <?php endif ?>
