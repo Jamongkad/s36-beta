@@ -85,7 +85,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	 * @param boolean force user re-login
 	 * @return string
 	 */
-	public function getLoginUrl($token, $redirect, $force_login = false) {
+	public function getLoginUrl($token, $force_login = false) {
 		//Argument tests
 		Eden_Twitter_Error::i()
 			->argument(1, 'string')		//Argument 1 must be a string
@@ -93,7 +93,7 @@ class Eden_Twitter_Oauth extends Eden_Class {
 			->argument(3, 'bool');  	//Argument 3 must be a boolean
 		
 		//build the query
-		$query = array('oauth_token' => $token, 'oauth_callback' => $redirect, 'force_login' => (int)$force_login);
+		$query = array('oauth_token' => $token, 'force_login' => (int)$force_login);
 		$query = http_build_query($query);
 		
 		return self::AUTHORIZE_URL.'?'.$query;
@@ -104,12 +104,13 @@ class Eden_Twitter_Oauth extends Eden_Class {
 	 * 
 	 * @return string
 	 */
-	public function getRequestToken() {
+	public function getRequestToken($oauth_callback) {
 		return Eden_Oauth::i()
 			->consumer(
 				self::REQUEST_URL, 
 				$this->_key, 
-				$this->_secret)
+				$this->_secret,
+				$oauth_callback)
 			->useAuthorization()
 			->setMethodToPost()
 			->setSignatureToHmacSha1()
