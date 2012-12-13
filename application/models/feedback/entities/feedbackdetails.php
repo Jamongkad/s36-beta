@@ -30,6 +30,7 @@ class FeedbackDetails extends FeedbackDataTypes {
             'siteId' => $this->post_data->get('site_id')
           , 'contactId' => Null
           , 'categoryId' => $category->categoryid
+          , 'companyId' => $this->post_data->get('company_id')
           , 'formId' => 1
           , 'status' => 'new'
           , 'rating' => $this->post_data->get('rating')
