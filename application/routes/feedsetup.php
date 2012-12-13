@@ -294,6 +294,8 @@ return array(
         $option = new StdClass;
         $option->widgetstoreid    = 1;
         $option->companyid = 1;
+        $option->siteid = 1;
+        $option->domain = 'https://mathew.com';
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->widget = 'form';
