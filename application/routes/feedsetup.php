@@ -296,6 +296,7 @@ return array(
         $option->companyid = 1;
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
+        $option->widget = 'form';
 
         $fakewidget = new StdClass;
         $fakewidget->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
@@ -305,7 +306,6 @@ return array(
         $fakewidget->tab_pos  = 'l';
 
         $option->widgetattr = $fakewidget;
-
 
         $load_widget = $wf->load_widget($option);
         return $load_widget->render_data();
