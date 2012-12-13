@@ -15,6 +15,9 @@ class SubmissionWidget extends FormWidgets {
         $this->fb_id = Config::get('application.fb_id');
         $this->widget_options = $options;
         $this->country  = DB::Table('Country', 'master')->order_by('name')->get();
+
+        $company_social = new DBCompanySocialAccount;
+        $this->company_social = $company_social;
         /*
         $this->widgetkey  = $options->widgetkey;
         $this->site_id    = $options->site_id;
@@ -43,23 +46,37 @@ class SubmissionWidget extends FormWidgets {
         $widget_view = 'widget/widget_submissionform_view';
 
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
-            'fb_app_id' => $this->fb_id  
-          , 'env' => $this->env
-          , 'country' => $this->country 
-          , 'site_id' => $this->site_id
-          , 'site_domain' => $this->site->domain
-          , 'company_id' => $this->company_id
-          , 'company' =>  $this->company
+            'fb_app_id'      => $this->fb_id  
+          , 'env'            => $this->env
+          , 'country'        => $this->country 
+          , 'site_id'        => $this->widget_options->siteid
+          , 'site_domain'    => $this->widget_options->domain
+          , 'company_id'     => $this->widget_options->companyid
+          , 'company'        => $this->company
           , 'company_social' => $this->company_social
-          , 'form_text' => $this->form_text
-          , 'form_question' => $this->form_question
-          , 'theme_name' => $this->theme_type
-          , 'response' => 0
+          , 'form_text'      => $this->widget_options->widgetattr->submit_form_text
+          , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
+          , 'theme_name'     => $this->widget_options->widgetattr->theme_type
+          , 'response'       => 0
         ))->get();  
     }
 
     public function render_hosted() {
-
+        return View::make('widget/widget_hostedform_view', Array(
+            'fb_app_id'      => $this->fb_id  
+          , 'env'            => $this->env
+          , 'country'        => $this->country 
+          , 'site_id'        => $this->widget_options->siteid
+          , 'site_domain'    => $this->widget_options->domain
+          , 'company_id'     => $this->widget_options->companyid
+          , 'company'        => $this->company
+          , 'company_social' => $this->company_social
+          , 'form_text'      => $this->widget_options->widgetattr->submit_form_text
+          , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
+          , 'theme_name'     => $this->widget_options->widgetattr->theme_type
+          , 'response'       => 0
+        ))->get();
+        /*   
         return View::make('widget/widget_hostedform_view', Array(
             'fb_app_id' => $this->fb_id  
           , 'env' => $this->env
@@ -75,6 +92,7 @@ class SubmissionWidget extends FormWidgets {
           , 'hosted' => $this->hosted_settings->hosted_settings() 
           , 'response' => 0
         ))->get();
+        */
     }
 
     public function get_tab_type() { 
