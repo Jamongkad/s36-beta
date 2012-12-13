@@ -241,20 +241,18 @@ return array(
         $widget_themes->build_menu_structure();
         $widget_themes->build_tab_themes();
 
-        Helpers::dump($widget);
-        /*
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_formcode_manager_view', Array( 
             'widget'          => $widget
           , 'widget_type'     => get_parent_class($widget)
           , 'form_themes'     => $widget_themes->perform()->tab_themes
           , 'themes'          => $widget_themes->perform()->collection
-          , 'loader_url'      => $cl->widget_loader_url.$widget->widgetkey
+          , 'loader_url'      => $cl->widget_loader_url.$widget->widget_options->widgetkey
           , 'link_js_output'  => $cl->link_js_output()
           , 'link_native_output' => $cl->iframe_output()
           , 'embed_js_code'   => $wl->load_widget_init_js_code()
           , 'iframe_code'     => $wl->load_iframe_code()
         ));
-        */
+
     }),
 
     'GET /feedsetup/update_tabtype/(:any?)/(:any?)' => function($widgetkey, $tab_type) use ($dbw) {  
