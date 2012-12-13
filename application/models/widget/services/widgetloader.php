@@ -18,7 +18,6 @@ class WidgetLoader {
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
         }
         
-        //temporary workaround
         if($widget_id and $load_submission_form == True and $load_canonical == False) {
             $this->widget_obj = $this->dbw->fetch_widget_by_id_alt($widget_id);
         }

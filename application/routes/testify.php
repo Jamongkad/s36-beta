@@ -207,7 +207,7 @@ return array(
         });
 
         $tf->test('DBWidget Canonical', function($tf) {
-            $widgetloader = new Widget\Services\WidgetLoader('mathew-stagin', $load_submission_form=True, $load_canonical=True); 
+            $widgetloader = new Widget\Services\WidgetLoader('mathew-staging', $load_submission_form=True, $load_canonical=True); 
             $tf->dump($widgetloader->widget_obj);
         });
          
