@@ -196,10 +196,13 @@ return array(
 
         });
 
-        $tf->test('DBWidget', function($tf) {
-            //$widget = $tf->data->dbw->fetch_canonical_widget('mathew-staging');
-            //$tf->dump($widget->widgetkey);
+        $tf->test('DBWidget Alt', function($tf) {
             $widgetloader = new Widget\Services\WidgetLoader('a937i', $load_submission_form=True); 
+            $tf->dump($widgetloader->widget_obj);
+        });
+
+        $tf->test('DBWidget Old', function($tf) {
+            $widgetloader = new Widget\Services\WidgetLoader('a937i'); 
             $tf->dump($widgetloader->widget_obj);
         });
          
