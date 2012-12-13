@@ -296,6 +296,7 @@ return array(
         $option->companyid = 1;
         $option->siteid = 1;
         $option->domain = 'https://mathew.com';
+        $option->name = Config::get('application.subdomain');
         $option->submit_form_text = Input::get('submit_form_text');
         $option->submit_form_question  = Input::get('submit_form_question');
         $option->widget = 'form';
