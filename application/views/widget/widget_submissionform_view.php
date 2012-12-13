@@ -4,6 +4,8 @@
 <?=HTML::style('themes/form/'.$theme_name.'.css')?>
 <?=HTML::script('/js/widget/form/s36FormModule.js')?>
 <?
+$facebook_username = Null;
+$twitter_username = Null;
 if($twitter = $company_social->fetch_social_account('twitter')) {
     $tw = Helpers::unwrap($twitter->socialaccountvalue);
     $twitter_username = $tw['accountName'];
