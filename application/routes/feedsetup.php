@@ -64,9 +64,6 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
-        Helpers::dump($widget);
-
-        /*
         $widget_themes->build_menu_structure();
 
         if($widget->widgettype == 'display') {
@@ -74,7 +71,7 @@ return array(
             $theme_type = $widget->theme_type;
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
-            $theme_type = explode("-", $widget->widget_options->widgetattr->theme_type);
+            $theme_type = explode("-", $widget->widgetattr->theme_type);
             $theme_type = $theme_type[1];
         }
         
@@ -96,7 +93,7 @@ return array(
           , 'themes_parent' => $widget_themes->get_parent($theme_type)
           , 'main_themes'   => $widget_themes->main_themes()
         ));
-        */
+        
     }),
 
     'GET /feedsetup/wizard/(:any)' => Array(  'name' => 'feedsetup', 'before' => 's36_auth'
