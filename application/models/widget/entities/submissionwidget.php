@@ -14,7 +14,10 @@ class SubmissionWidget extends FormWidgets {
         $this->env = Config::get('application.env_name');        
         $this->fb_id = Config::get('application.fb_id');
         $this->widget_options = $options;
+
         $this->country  = DB::Table('Country', 'master')->order_by('name')->get();
+        $this->tab_pos  = $options->widgetattr->tab_pos;
+        $this->tab_type = $options->widgetattr->tab_type;
 
         $company_social = new DBCompanySocialAccount;
         $this->company_social = $company_social;
