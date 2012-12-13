@@ -66,12 +66,12 @@ return array(
 
         $widget_themes->build_menu_structure();
 
-        if($widget->widget_type == 'display') {
+        if($widget->widgettype == 'display') {
             $edit_view = 'feedsetup/feedsetup_editdisplay_view';
             $theme_type = $widget->theme_type;
         } else { 
             $edit_view = 'feedsetup/feedsetup_editform_view';
-            $theme_type = explode("-", $widget->theme_type);
+            $theme_type = explode("-", $widget->widget_options->widgetattr->theme_type);
             $theme_type = $theme_type[1];
         }
         
