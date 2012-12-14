@@ -1073,15 +1073,15 @@ margin-bottom: 3px;
 }
 
 #admin-panel .main-panel .the-feedbacks div.lightbox{
-    position:fixed;
-    margin-left:-390px;
-   }
+    position:fixed;
+    margin-left:-390px;
+}
 #admin-panel .main-panel .the-feedbacks div.lightbox-close{
-    position:absolute;
+    position:absolute;
 }
 #admin-panel .main-panel .the-feedbacks div.lightbox-content{
     padding:30px;
 }
 #admin-panel .main-panel .the-feedbacks div.lightbox-footer{
-    padding:15px 30px;
+    padding:15px 30px;
 }
