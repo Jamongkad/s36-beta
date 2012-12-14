@@ -1,6 +1,6 @@
 <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
 <!-- start of lightbox request feedback -->
-<div id="request-feedback" class="lightbox" style="display:block">
+<div id="request-feedback" class="lightbox">
     <div class="lightbox-close"></div>
     <div class="lightbox-styles">
         <h2>Request Feedback</h2>
@@ -14,7 +14,7 @@
                 <br />
                 <h3>Recepient Details</h3>
                 <br />
-                <div class="widget-form" id="full_page_widget">
+                <div class="widget-form">
                     <table width="80%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="110">
