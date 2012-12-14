@@ -1086,3 +1086,6 @@ margin-bottom: 3px;
 #admin-panel .main-panel .the-feedbacks div.lightbox-footer{
     padding:15px 30px;
 }
+#admin-panel .main-panel .the-feedbacks div.lightbox-styles{
+    margin:4px;
+}
