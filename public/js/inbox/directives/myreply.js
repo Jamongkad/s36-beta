@@ -9,8 +9,6 @@ angular.module('reply', [])
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
 
-                //$('.dialog-form[feedid='+feedid+']').dialog('open'); 
-                //open_lighbox(feedid);
                 $(".dialog-form[feedid="+feedid+"]").fadeIn();
                 e.preventDefault();
             });
@@ -24,6 +22,7 @@ angular.module('reply', [])
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             //$(this).parents('.dialog-form').dialog('close');
             $(this).parents(".dialog-form").fadeOut();
+            console.log("this should close");
             e.preventDefault();
         });
     }
