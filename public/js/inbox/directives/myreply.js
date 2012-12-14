@@ -10,7 +10,9 @@ angular.module('reply', [])
                 MessageService.register_reply_message();
 
                 //$('.dialog-form[feedid='+feedid+']').dialog('open'); 
-                open_lighbox(feedid);
+                //open_lighbox(feedid);
+                console.log(feedid);
+
                 e.preventDefault();
             });
         }
