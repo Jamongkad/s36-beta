@@ -10,7 +10,7 @@ angular.module('request', [])
 .directive('myRequestClose', function() {
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
-            $('.request-dialog').dialog('close');
+            $('.request-dialog').fadeOut();
             e.preventDefault();
         })
     }
@@ -91,13 +91,13 @@ angular.module('request', [])
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
                 var configure = $('.modal-configure');
+
                 configure.dialog({ zIndex: 100001 });
                 configure.dialog("open");
                 configure.children('#msgid').val('');
                 configure.children('.regular-text').val('');
                 configure.children('#msgtype').val("rqs");
                 configure.children('.add-msg-box-buttons').children('input[type=submit]').val("Add");
-
                 e.preventDefault();
             });
         }
