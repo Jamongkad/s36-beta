@@ -1,13 +1,4 @@
 <?if($feedback != null):?>
-<script type="text/javascript">
-$(document).ready(function(){
-$('.dialog-form').parent().css('position','fixed');
-
-
-
-console.log('bg=>'+$('.dialog-form').parent().css('background'));
-});
-</script>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
         <?if($feeds->children):?>

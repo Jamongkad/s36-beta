@@ -9,7 +9,8 @@ angular.module('reply', [])
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
 
-                $('.dialog-form[feedid='+feedid+']').dialog('open'); 
+                //$('.dialog-form[feedid='+feedid+']').dialog('open'); 
+                open_lighbox(feedid);
                 e.preventDefault();
             });
         }
@@ -132,6 +133,7 @@ angular.module('reply', [])
 })
 
 //dialog form init
+/*
 $('.dialog-form').dialog({
     autoOpen: false  
   , height: 680
@@ -141,3 +143,4 @@ $('.dialog-form').dialog({
         $(".regular-text[name=bcc], .regular-text[name=message]").val("");
     }
 });
+*/
