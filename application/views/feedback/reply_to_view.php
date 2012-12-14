@@ -15,20 +15,13 @@
 <?=Form::hidden('feedbackid', $feedback->id)?>
 <?=Form::hidden('username', $user->username)?>
 
-<div id="reply-to-user" class="lightbox" style="display:none">
+<div id="reply-to-user" class="lightbox">
     <div class="lightbox-close"></div>
     <div class="lightbox-styles">
         <h2>Reply To User</h2>
         <div class="lightbox-content">
         <div class="lightbox-form">
             <table cellpadding="1" width="100%">
-            <!--
-            <tr>
-                <td width="15%"><strong>From :</strong></td>
-                <td width="50%"><input type="text" class="regular-text"/></td>
-                <td class="small">Configure your brand/company name here that your user will recognize (e.g. Razer)</td>
-            </tr>
-            -->
             <tr>
                 <td><strong>Reply To :</strong></td>
                 <td class="small" style='width: 500px'><span>&nbsp;&nbsp;</span><?=$user->replyto?></td>
