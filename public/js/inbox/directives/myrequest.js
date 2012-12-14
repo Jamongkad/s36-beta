@@ -2,7 +2,7 @@ angular.module('request', [])
 .directive('myRequest', function() {
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
-            $('.request-dialog').dialog('open');
+            $('.request-dialog').fadeIn();
             e.preventDefault();
         })
     }
@@ -24,7 +24,7 @@ angular.module('request', [])
                     success: function(data) {
                         alert("Your request has been sent!");
                         $(form).clearForm();
-                        $(element).parents('.request-dialog').dialog('close'); 
+                        $(element).parents('.request-dialog').fadeOut(); 
                     }
                 }) 
             }
@@ -74,6 +74,7 @@ angular.module('request', [])
                 var configure = $('.modal-configure');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
 
+                configure.dialog({ zIndex: 100001 });
                 configure.dialog("open"); 
                 configure.children('#msgid').val(msgid);
                 configure.children('.regular-text').val(req_text);
@@ -90,7 +91,7 @@ angular.module('request', [])
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
                 var configure = $('.modal-configure');
-
+                configure.dialog({ zIndex: 100001 });
                 configure.dialog("open");
                 configure.children('#msgid').val('');
                 configure.children('.regular-text').val('');
@@ -114,11 +115,3 @@ angular.module('request', [])
         }
     }     
 })
-
-//dialog form init
-$('.request-dialog').dialog({
-    autoOpen: false  
-  , height: 618
-  , width: 672 
-  , modal: true
-});

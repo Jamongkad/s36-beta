@@ -8,7 +8,6 @@ angular.module('reply', [])
 
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
-
                 $(".dialog-form[feedid="+feedid+"]").fadeIn();
                 e.preventDefault();
             });
@@ -20,7 +19,6 @@ angular.module('reply', [])
     return function(scope, element, attrs){
         $(element).bind('click', function(e) {
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
-            //$(this).parents('.dialog-form').dialog('close');
             $(this).parents(".dialog-form").fadeOut();
             console.log("this should close");
             e.preventDefault();
@@ -34,7 +32,6 @@ angular.module('reply', [])
                 $(form).ajaxSubmit({
                     success: function() {
                         alert("Your reply has been sent!");
-                        //$(element).parents('.dialog-form').dialog('close'); 
                         $(element).parents(".dialog-form").fadeOut();
                         $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
                     }        
