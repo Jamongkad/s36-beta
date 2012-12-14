@@ -1071,3 +1071,17 @@ margin-bottom: 3px;
     /* change display to block when error is not shown to preserve the height */
     padding:20px 30px;display:none;
 }
+
+#admin-panel .main-panel .the-feedbacks div.lightbox{
+    position:fixed;
+    margin-left:-390px;
+   }
+#admin-panel .main-panel .the-feedbacks div.lightbox-close{
+    position:absolute;
+}
+#admin-panel .main-panel .the-feedbacks div.lightbox-content{
+    padding:30px;
+}
+#admin-panel .main-panel .the-feedbacks div.lightbox-footer{
+    padding:15px 30px;
+}
