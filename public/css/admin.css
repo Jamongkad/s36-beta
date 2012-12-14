@@ -1044,7 +1044,7 @@ margin-bottom: 3px;
     -webkit-border-top-right-radius:inherit;
     -moz-border-top-right-radius:inherit;
     border-top-left-right:inherit;										
-    cursor: crosshair;
+    cursor: move;
     
 }
 .lightbox-content{
