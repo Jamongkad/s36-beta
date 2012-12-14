@@ -114,6 +114,7 @@ angular.module('reply', [])
             $(element).bind('click', function(e) {  
                 var configure = $('.modal-configure');
                 configure.dialog('open');
+                configure.dialog({ zIndex: 100001 });
                 configure.children('.regular-text').val("");
                 configure.children('#msgid').val("");
                 configure.children('#msgtype').val("msg");
@@ -134,16 +135,3 @@ angular.module('reply', [])
         }
     }    
 })
-
-//dialog form init
-/*
-$('.dialog-form').dialog({
-    autoOpen: false  
-  , height: 680
-  , width: 700 
-  , modal: true
-  , close: function(e, ui) {    
-        $(".regular-text[name=bcc], .regular-text[name=message]").val("");
-    }
-});
-*/
