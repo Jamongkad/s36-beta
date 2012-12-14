@@ -3,7 +3,7 @@ angular.module('request', [])
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
             $('.request-dialog').fadeIn();
-            $('.request-dialog').draggable();
+            $('div#request-feedback').draggable();
             e.preventDefault();
         })
     }
@@ -12,6 +12,7 @@ angular.module('request', [])
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
             $('.request-dialog').fadeOut();
+            $('div#request-feedback').draggable("destroy");
             e.preventDefault();
         })
     }
@@ -25,6 +26,7 @@ angular.module('request', [])
                     success: function(data) {
                         alert("Your request has been sent!");
                         $(form).clearForm();
+                        $('div#request-feedback').draggable("destroy");
                         $(element).parents('.request-dialog').fadeOut(); 
                     }
                 }) 

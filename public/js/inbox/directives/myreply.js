@@ -8,6 +8,8 @@ angular.module('reply', [])
 
                 MessageService.fetch_messages('msg');
                 MessageService.register_reply_message();
+
+                $('div#reply-to-user').draggable();
                 $(".dialog-form[feedid="+feedid+"]").fadeIn();
                 e.preventDefault();
             });
