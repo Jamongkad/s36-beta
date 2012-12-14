@@ -1,7 +1,7 @@
 <?=Form::open('feedback/requestfeedback', 'POST', array('id' => 'request-form'))?>
 <!-- start of lightbox request feedback -->
 <div id="request-feedback" class="lightbox">
-    <div class="lightbox-close"></div>
+    <div class="lightbox-close" my-request-close></div>
     <div class="lightbox-styles">
         <h2>Request Feedback</h2>
         <div class="lightbox-content">

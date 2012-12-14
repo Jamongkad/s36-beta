@@ -3,6 +3,7 @@ angular.module('request', [])
     return function(scope, element, attr) {
         $(element).bind('click', function(e) {
             $('.request-dialog').fadeIn();
+            $('.request-dialog').draggable();
             e.preventDefault();
         })
     }
