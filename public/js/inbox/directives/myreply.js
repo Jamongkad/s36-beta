@@ -82,7 +82,7 @@ angular.module('reply', [])
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
                 var configure = $('.modal-configure');
-
+                configure.dialog({ zIndex: 100001 });
                 configure.dialog('open');
                 configure.children('#msgid').val(msgid);
                 configure.children('.regular-text').val(req_text);
@@ -113,8 +113,8 @@ angular.module('reply', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 var configure = $('.modal-configure');
-                configure.dialog('open');
                 configure.dialog({ zIndex: 100001 });
+                configure.dialog('open');
                 configure.children('.regular-text').val("");
                 configure.children('#msgid').val("");
                 configure.children('#msgtype').val("msg");
