@@ -22,6 +22,8 @@ angular.module('reply', [])
         $(element).bind('click', function(e) {
             $(this).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
             $(this).parents(".dialog-form").fadeOut();
+
+            $('div#reply-to-user').draggable("destroy");
             console.log("this should close");
             e.preventDefault();
         });
@@ -35,6 +37,7 @@ angular.module('reply', [])
                     success: function() {
                         alert("Your reply has been sent!");
                         $(element).parents(".dialog-form").fadeOut();
+                        $('div#reply-to-user').draggable("destroy");
                         $(element).parents('form textarea[name=bcc] textarea[name=message]').clearFields();
                     }        
                 });
