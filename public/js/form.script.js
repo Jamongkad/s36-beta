@@ -202,7 +202,6 @@ $(document).keypress(function(event){
                               $(this).attr("selected", "selected");
                           }
                       });
-                      //$('#your_country option[text='+ mylocation[1] +']').attr("selected", "selected");
                   }
 			  }
  
