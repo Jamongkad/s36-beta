@@ -186,11 +186,11 @@ $(document).keypress(function(event){
 			      if(obj.location.name != undefined) {
                       var loc = obj.location.name;
                       var mylocation = loc.split(","); 
-                      console.log(mylocation[1]);
 
                       $('#your_city').val( $.trim(mylocation[0]) );
                       $('#your_city').removeClass('default-text');
                       $('#your_country option').filter(function() {
+                          console.log(mylocation[1]);
                           return $.trim( $(this).text() ) == mylocation[1];  
                       }).attr('selected', 'selected');
                   }
