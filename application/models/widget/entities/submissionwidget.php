@@ -52,7 +52,7 @@ class SubmissionWidget extends FormWidgets {
         return View::of_widget_layout()->partial('contents', $widget_view, Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
-          , 'country'        => $this->country 
+          , 'countries'      => $this->country 
           , 'site_id'        => $this->widget_options->siteid
           , 'site_domain'    => $this->widget_options->domain
           , 'company_id'     => $this->widget_options->companyid
@@ -69,7 +69,7 @@ class SubmissionWidget extends FormWidgets {
         return View::make('widget/new_hostedform_view', Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
-          , 'country'        => $this->country 
+          , 'countries'      => $this->country 
           , 'site_id'        => $this->widget_options->siteid
           , 'site_domain'    => $this->widget_options->domain
           , 'company_id'     => $this->widget_options->companyid
