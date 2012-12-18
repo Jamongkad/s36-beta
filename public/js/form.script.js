@@ -182,21 +182,18 @@ $(document).keypress(function(event){
 		}
 
 		 function fb_connect_success(obj){
-			  if(obj.location != undefined){
-			   if(obj.location.name != undefined){
-			    var loc = obj.location.name;
-			    var mylocation = loc.split(","); 
-                console.log(loc);
-                console.log(mylocation);
-			    $('#your_city').val( $.trim(location[0]) );
-			    $('#your_city').removeClass('default-text');
-			    $('#your_country option').each(function(){
-                     if($.trim(mylocation[1]) == $(this).text()){
-                       $(this).selected(true);
-                     }
-			    })
-			   }
+			  if(obj.location != undefined) {
+			      if(obj.location.name != undefined) {
+                      var loc = obj.location.name;
+                      var mylocation = loc.split(","); 
+                      $('#your_city').val( $.trim(location[0]) );
+                      $('#your_city').removeClass('default-text');
+                      $('#your_country option').filter(function() {
+                          return $.trim( $(this).text() ) == mylocation[1];  
+                      }).attr('selected', 'selected');
+                  }
 			  }
+
 			  if(obj.first_name != undefined){
 			   $('#your_fname').val( $.trim(obj.first_name) );
 			   $('#your_fname').removeClass('default-text');
