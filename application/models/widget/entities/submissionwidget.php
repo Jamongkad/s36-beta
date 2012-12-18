@@ -43,13 +43,8 @@ class SubmissionWidget extends FormWidgets {
         $this->hosted_settings = new DBHostedSettings;
         $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
         */
-    }
 
-    public function render_html() {
-        //$widget_view = 'widget/widget_submissionform_view';
-        $widget_view = 'widget/widget_submissionform_new_view';
-
-        return View::of_widget_layout()->partial('contents', $widget_view, Array(
+        $this->form_vars = Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
           , 'countries'      => $this->country 
@@ -62,7 +57,13 @@ class SubmissionWidget extends FormWidgets {
           , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
           , 'theme_name'     => $this->widget_options->widgetattr->theme_type
           , 'response'       => 0
-        ))->get();  
+        );
+    }
+
+    public function render_html() {
+        //$widget_view = 'widget/widget_submissionform_view';
+        $widget_view = 'widget/widget_submissionform_new_view';
+        return View::of_widget_layout()->partial('contents', $widget_view, $this->form_vars)->get();  
     }
 
     public function render_hosted() {
