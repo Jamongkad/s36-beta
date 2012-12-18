@@ -16,6 +16,19 @@
 <!--[if lt IE 8]>
     <script src="js/ie7.js"></script>
 <![endif]-->
+<?
+$facebook_username = Null;
+$twitter_username = Null;
+if($twitter = $company_social->fetch_social_account('twitter')) {
+    $tw = Helpers::unwrap($twitter->socialaccountvalue);
+    $twitter_username = $tw['accountName'];
+}
+
+if($facebook = $company_social->fetch_social_account('facebook')) {
+    $fb = Helpers::unwrap($facebook->socialaccountvalue);
+    $facebook_username = $fb['accountName'];
+}
+?>
 
 <div id="fb-root"></div>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
@@ -382,13 +395,29 @@ with others!</p>
                     </div>
                     <div id="like-boxes">
                         <h2 class="like-us-title">Like us on facebook and follow us on Twitter!</h2>
-                        <div class="like-button">
-                            <iframe src="//www.facebook.com/plugins/like.php?href=https://36stories.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=307884662596382" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
-                        </div>
-                        <div class="twitter-button">
-                            <a href="https://twitter.com/36stories" class="twitter-follow-button" data-show-count="false">Follow @36stories</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                        </div>
+                        <?if($facebook_username and $twitter_username):?>
+                            <div class="like-button">
+                                <iframe src="//www.facebook.com/plugins/like.php?href=<?=$facebook_username?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                            </div>
+                            <div class="twitter-button">
+                                <a href="<?=$twitter_username?>" class="twitter-follow-button" data-show-count="false">Follow @<?=$company_name?></a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                        <?endif?>
+
+                        <?if($facebook_username and $twitter_username == false):?>
+                            <div class="like-button">
+                                <iframe src="//www.facebook.com/plugins/like.php?href=<?=$facebook_username?>&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=<?=$fb_app_id?>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                            </div>
+                        <?endif?>
+
+                        <?if($facebook_username == false and $twitter_username):?>
+                            <div class="twitter-button">
+                                <a href="<?=$twitter_username?>" class="twitter-follow-button" data-show-count="false">Follow @<?=$company_name?></a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
+                        <?endif?>
+
                     </div>
                 </div>
                 <!-- end of form page body window 4 -->
