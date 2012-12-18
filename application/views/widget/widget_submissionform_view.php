@@ -52,6 +52,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
   api_key: 1b773lzkdw3f
   <?endif?>
   authorize: true
+
 </script>
 <style type="text/css">
 #fb-false-connect{

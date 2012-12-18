@@ -17,15 +17,24 @@
     <script src="js/ie7.js"></script>
 <![endif]-->
 
-
 <div id="fb-root"></div>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-FB.init({appId: "396019640480197", status: true, cookie: true});
+//FB.init({appId: "396019640480197", status: true, cookie: true});
+FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
 
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: d8w6wxxoh71z
+  <?if($env == 'dev' or $env == 'local'):?>
+  //DEV API KEY
+  api_key: zmekq26qusj2
+  <?endif?>
+
+  <?if($env == 'prod'):?>
+  //PROD API KEY
+  api_key: 1b773lzkdw3f
+  <?endif?>
+
   authorize: true
   scope: r_fullprofile r_emailaddress
 </script>
