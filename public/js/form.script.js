@@ -190,18 +190,10 @@ $(document).keypress(function(event){
 
                       $('#your_city').val( $.trim(mylocation[0]) );
                       $('#your_city').removeClass('default-text');
-                      /*
+
                       $('#your_country option').filter(function() {
-                          return $.trim( $(this).text() ) === '"' + mylocation[1] + '"';
+                          return $.trim($(this).text()) === mylocation[1];
                       })
-                      */
-                      $('#your_country option').each(function() {
-                          if($.trim($(this).text()) == mylocation[1]) {
-                              console.log("matched");
-                              console.log(mylocation[1]);
-                              $(this).attr("selected", "selected");
-                          }
-                      });
                   }
 			  }
  
