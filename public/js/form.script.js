@@ -195,7 +195,8 @@ $(document).keypress(function(event){
                           return $.trim( $(this).text() ) === '"' + mylocation[1] + '"';
                       })
                       */
-                     $('#your_country option[text='+ mylocation[1] +']').attr("selected", "selected");
+                      console.log(mylocation[1]);
+                      //$('#your_country option[text='+ mylocation[1] +']').attr("selected", "selected");
                   }
 			  }
  
