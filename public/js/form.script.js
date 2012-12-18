@@ -195,9 +195,10 @@ $(document).keypress(function(event){
                           return $.trim( $(this).text() ) === '"' + mylocation[1] + '"';
                       })
                       */
-                      console.log(mylocation[1]);
                       $('#your_country option').each(function() {
                           if($(this).text() == mylocation[1]) {
+                              console.log("matched");
+                              console.log(mylocation[1]);
                               $(this).attr("selected", "selected");
                           }
                       });
