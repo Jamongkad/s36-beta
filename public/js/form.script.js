@@ -196,6 +196,11 @@ $(document).keypress(function(event){
                       })
                       */
                       console.log(mylocation[1]);
+                      $('#your_country option').each(function() {
+                          if($(this).text() == mylocation[1]) {
+                              $(this).attr("selected", "selected");
+                          }
+                      });
                       //$('#your_country option[text='+ mylocation[1] +']').attr("selected", "selected");
                   }
 			  }
