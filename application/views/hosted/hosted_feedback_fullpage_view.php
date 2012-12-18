@@ -86,6 +86,7 @@ $(document).ready(function(){
         </div>
         <!-- feedbacks are seperated by date which are held inside feedback-date-block container -->
         <?php 
+        //echo "<pre>";print_r($feeds);echo "</pre>";
         /*
         /   START FEEDBACK LOOP
         */

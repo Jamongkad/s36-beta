@@ -17,16 +17,72 @@ $(document).keypress(function(event){
 			   }
 			},{scope:"email,user_location,user_website,user_work_history,user_photos"});
 		});
+		$('#in-login').click(function(){
+			IN.User.authorize(function(q){
+				IN.API.Profile("me")
+				.fields(["id", "firstName", "lastName","email-address","positions","location", "pictureUrl", "publicProfileUrl"])
+    			.result(function(user){
+    				$('#loginType').val('in');
+    				user = user.values[0];
+    				if(undefined != user.id){
+    					var url = 'http://www.linkedin.com/profile/view?id='+user.id;
+    					$('#profileLink').val(url);
+    				}
+    				
+					if(undefined != user.firstName){
+	            		$('#your_fname').val(user.firstName);
+	            		$('#your_fname').removeClass('default-text');
+	            	}
+	            	if(undefined != user.lastName){
+	            		$('#your_lname').val(user.lastName);
+	            		$('#your_lname').removeClass('default-text');
+	            	}
+	            	
+	            	if(undefined != user.emailAddress){
+	            		$('#your_email').val(user.emailAddress);
+	            		$('#your_email').removeClass('default-text');
+	            	}
+
+	            	if(undefined != user.positions){
+	            		$.each(user.positions.values,function(){
+	            			if(this.isCurrent==true){
+	            				$('#your_company').val(this.company.name);
+	            				$('#your_occupation').val(this.title);
+	            			}
+	            		});
+	            		$('#your_occupation').removeClass('default-text');
+	            		$('#your_company').removeClass('default-text');
+	            	}
+	            	
+	            	if(undefined != user.location){
+				    	$('#your_city').val(user.location.name);
+	            		$('#your_country').val(user.location.country.code);
+	            		$('#your_city').removeClass('default-text');
+	            		$('#your_country').removeClass('default-text');
+	            	}
+	            	if(undefined != user.pictureUrl){
+	            		$('#preview_photo').attr('src',user.pictureUrl)
+	            	}
+	            	
+				});
+			});
+			return false;
+		});
 		$('#tw-login').click(function(){
 			  $.oauthpopup({
 	            path: '/socialnetwork/twitter',
 	            callback: function(){
-	            	$('#loginType').val('tw'); //set loginType
+	            	$('#loginType').val('tw');
 	            	$.ajax({
 		            url: "/socialnetwork/twitter/userinfo",
 		            type: "GET",
 			            success: function(data) {
+			            	console.log(data);
 			            	var user = $.parseJSON(data);
+			            	if(undefined != user.screen_name){
+			            		var url = 'https://twitter.com/'+user.screen_name;
+    							$('#profileLink').val(url);
+			            	}
 			            	if(undefined != user.name){
 			            		var name = user.name.split(" ");
 			            		$('#your_fname').val($.trim(name[0]));
@@ -43,9 +99,6 @@ $(document).keypress(function(event){
 			            	if(undefined != user.profile_image_url){
 			            		$('#preview_photo').attr('src',user.profile_image_url)
 			            	}
-			            	//$('#profileLink').val()
-			            	//$('#your_email').val()
-			            	console.log(user);
 			          }
 			        });
 	            }});
@@ -97,7 +150,7 @@ $(document).keypress(function(event){
 			//collect  all data plus attachment data
 			var data = {
 					site_id		: $('#siteId').val(),
-					company_id	: $('#company_id').val(),
+					companyId	: $('#companyId').val(),
 					feedback 	: $('#feedbackText').val(),
 					rating 		: $('#rating').val(),
 					recommend 	: $('#recommend').val(),
@@ -115,20 +168,18 @@ $(document).keypress(function(event){
 					website 	: website,
 					attachments : attachments
 				}
-			/*submit all data for server side scripting*/
+				/*submit all data for server side scripting*/
 				$.ajax({
 		            url: "/submit_feedback",
 		            data: data,
 		            type: "POST",
 		            success: function(q) {
-		            	console.log(q);
+		            	data = $.parseJSON(q);
+		            	$('.facebook-share-bar').html(data.share_button);
+		            	$('.twitter-share-bar').html(data.tweet_button);
 		          }
 		        });
-		    
 		}
-
-		$('#in-login').click(function(){});
-
 
 		 function fb_connect_success(obj){
 			  if(obj.location != undefined){
@@ -295,6 +346,7 @@ $(document).keypress(function(event){
 				}
 			}else if(cur_page == 'step2'){
 				if(validate_form()){
+					scale_review_textbox();
 					synchronize_inputs();
 					$steps.cycle('next');
 				}

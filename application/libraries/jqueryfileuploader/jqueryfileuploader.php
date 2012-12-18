@@ -38,7 +38,7 @@ class JqueryFileUploader
 
     function __construct($options = null, $initialize = true) {
         $this->options = array(
-            'script_url' => $this->get_full_url().'/js/jquery.fileupload.js',
+            'script_url' => $this->get_full_url().'/imageprocessing/FormImageUploader',
             'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
             'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
             'user_dirs' => false,
@@ -78,8 +78,8 @@ class JqueryFileUploader
             'max_file_size' => 2000000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
-            'max_number_of_files' => null,
-            //'max_number_of_files' => 3,
+            //'max_number_of_files' => null,
+            'max_number_of_files' => 3,
             // Image resolution restrictions:
             'max_width' => null,
             'max_height' => null,

@@ -8,7 +8,7 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-                .ui-widget-content .dialog-form{
+                .ui-widget-content .dialog-form,#reply-box{
                     background: white;
                     margin:4px;
                     -webkit-border-top-left-radius:inherit;

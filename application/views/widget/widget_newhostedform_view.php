@@ -1,7 +1,5 @@
 <?=HTML::style('css/widget_master/new_form.css');?>
 <?=HTML::script('js/jcycle.js');?>
-
-<!-- file upload js requirements -->
 <?=HTML::script('js/jquery.ui.widget.js');?>
 <?=HTML::script('js/jquery.iframe-transport.js');?>
 <?=HTML::script('js/jquery.fileupload.js');?>
@@ -15,17 +13,23 @@
 <!-- link preview js -->
 
 <?=HTML::script('js/form.script.js');?>
-<script src="http://platform.twitter.com/anywhere.js?id=xWBm4zMz9q3cgiTnzZf6Rg&v=1" type="text/javascript"></script>
 <!--[if lt IE 8]>
     <script src="js/ie7.js"></script>
 <![endif]-->
 
+
 <div id="fb-root"></div>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-  FB.init({appId: '396019640480197', status: true,
-           cookie: false, xfbml: true});
+FB.init({appId: "396019640480197", status: true, cookie: true});
 </script>
+
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: d8w6wxxoh71z
+  authorize: true
+  scope: r_fullprofile r_emailaddress
+</script>
+ 
 
 
 <div id="formBox">
@@ -33,7 +37,7 @@
     <input type="hidden" id="rating" name="rating" value="5" />
     <input type="hidden" id="loginType" name="loginType" value="s36" />
     <input type="hidden" id="profileLink" name="profileLink" value="" />
-    <input type="hidden" id="company_id" value="<?=$company_id?>" />
+    <input type="hidden" id="companyId" value="<?=$company_id?>" />
     <input type="hidden" id="siteId" name="siteId" value="<?=$site_id?>" />
     <div id="formContainer">
         <!-- the popup/lightbox shadow -->
@@ -187,20 +191,6 @@
                         </div>
 
                         <div class="button-container">
-                            <!--
-                            <span id="login"></span>
-                            <script type="text/javascript">
- 
-                              twttr.anywhere(function (T) {
-                                T("#login").connectButton({
-                                    authComplete: function(user) {
-                                    console.log(user);
-                                }
-                                });
-                              });
-                             
-                            </script>
-                                -->
                             <a id="tw-login" href="javascript:;"><img src="/img/btn-tw.png" /></a>
                         </div>
                         <div class="button-container">
@@ -259,7 +249,7 @@
                                 <h2>Select your display profile photo.</h2>
                                 <p>You can also use your company logo if 
 you like.</p>
-                                <input type="file" id="your_photo" name="photo" data-url="/imageprocessing/FormImageUploader/" />
+                                <input type="file" id="your_photo" data-url="/imageprocessing/FormImageUploader/" />
                             </div>
                         </div>
                         <div class="one-clm-in">
@@ -327,9 +317,8 @@ one more time.</span>
                         <div class="review-permission" id="review-permission">
                             <h2><img src="/img/check-ico.png" /> You allowed this feedback to be published</h2>
                         </div>
-                        <div id="review-images" class="form-image-thumbs clear">
-                            
-                        </div>
+                        <div id="review-images" class="form-image-thumbs clear"></div>
+                        <div id="review-videos" class="form-video-thumbs clear"></div>
                         <!-- end of uploads -->
                         
                         <div id="link-data">
@@ -341,7 +330,6 @@ one more time.</span>
                             <input type="hidden" id="link-video" name="link-video"  value="" />
                             <input type="hidden" id="link-attachments" name="link-attachments" value="" />
                         </div>
-                        <div class="form-video-thumbs clear"></div>
 
                     </div>
                 </div>
@@ -380,19 +368,17 @@ with others!</p>
                         </div>
                     </div>
                     <div id="share-boxes" class="clear">
-                        <div class="facebook-share-bar"><a href="#"><img src="/img/fb-share-btn.png" /></a></div>
-                        <div class="twitter-share-bar"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://companyname.com" data-text="I recommend co-name, just sent them some great feedback over at co-hosted-page-address. Go check them out!" data-size="large" data-count="none">Tweet</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+                        <div class="facebook-share-bar"></div>
+                        <div class="twitter-share-bar"></div>
                     </div>
                     <div id="like-boxes">
                         <h2 class="like-us-title">Like us on facebook and follow us on Twitter!</h2>
                         <div class="like-button">
-                            <!-- like button here -->
-                            <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwebmumu.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=307884662596382" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
+                            <iframe src="//www.facebook.com/plugins/like.php?href=https://36stories.com&amp;send=false&amp;layout=standard&amp;width=350&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35&amp;appId=307884662596382" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:380px; height:30px;" allowTransparency="true"></iframe>
                         </div>
                         <div class="twitter-button">
-                            <a href="https://twitter.com/danoliverC" class="twitter-follow-button" data-show-count="false">Follow @danoliverC</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            <a href="https://twitter.com/36stories" class="twitter-follow-button" data-show-count="false">Follow @36stories</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                         </div>
                     </div>
                 </div>
