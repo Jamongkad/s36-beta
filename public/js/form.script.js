@@ -187,7 +187,8 @@ $(document).keypress(function(event){
                       var loc = obj.location.name;
                       var mylocation = loc.split(","); 
                       console.log(mylocation[1]);
-                      $('#your_city').val( $.trim(location[0]) );
+
+                      $('#your_city').val( $.trim(mylocation[0]) );
                       $('#your_city').removeClass('default-text');
                       $('#your_country option').filter(function() {
                           return $.trim( $(this).text() ) == mylocation[1];  
