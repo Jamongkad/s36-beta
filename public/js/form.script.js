@@ -185,13 +185,15 @@ $(document).keypress(function(event){
 			  if(obj.location != undefined){
 			   if(obj.location.name != undefined){
 			    var loc = obj.location.name;
-			    var location = loc.split(","); 
+			    var mylocation = loc.split(","); 
+                console.log(loc);
+                console.log(mylocation);
 			    $('#your_city').val( $.trim(location[0]) );
 			    $('#your_city').removeClass('default-text');
 			    $('#your_country option').each(function(){
-			     if($.trim(location[1]) == $(this).text()){
-			       $(this).selected(true);
-			     }
+                     if($.trim(mylocation[1]) == $(this).text()){
+                       $(this).selected(true);
+                     }
 			    })
 			   }
 			  }
