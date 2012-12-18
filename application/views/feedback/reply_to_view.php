@@ -1,14 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function(){
-        //$('.ui-dialog').css('box-shadow','#000 0px 0px 4px');
-        /*
-        $('.lightbox-close').click(function(){
-            $(this).parents('.dialog-form').dialog('close');
-        });
-        */
-    });
-</script>
-
 <?if($user->replyto):?>
 <?=Form::hidden('replyto', $user->replyto)?>
 <?=Form::hidden('emailto', $feedback->email)?>

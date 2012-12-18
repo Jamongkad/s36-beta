@@ -41,12 +41,12 @@ return array(
 	'File' => 'System\\File',
 	'Form' => 'System\\Form',
 	'JqueryFileUploader' => 'JqueryFileUploader\\JqueryFileUploader',
-	'LinkPreview' => 'LinkPreview\\LinkPreview',
 	'Hash' => 'System\\Hash',
 	'HTML' => 'System\\HTML',
 	'Inflector' => 'System\\Inflector',
 	'Input' => 'System\\Input',
 	'Lang' => 'System\\Lang',
+	'LinkPreview' => 'LinkPreview\\LinkPreview',
 	'Loader' => 'System\\Loader',
 	'Package' => 'System\\Package',
 	'URL' => 'System\\URL',
@@ -60,3 +60,4 @@ return array(
     'Validator' => 'System\\Validator',
 
 );
+
