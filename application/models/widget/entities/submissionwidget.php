@@ -80,30 +80,6 @@ class SubmissionWidget extends FormWidgets {
           , 'theme_name'     => $this->widget_options->widgetattr->theme_type
           , 'response'       => 0
         ))->get();
-        /*   
-        return View::make('widget/widget_hostedform_view', Array(
-=======
-
-        $hosted_settings = new \Widget\Repositories\DBHostedSettings;
-        $hosted_settings->set_hosted_settings(Array('companyId' => $this->company_id));
-
-        return View::make('widget/widget_newhostedform_view', Array(
->>>>>>> robert
-            'fb_app_id' => $this->fb_id  
-          , 'env' => $this->env
-          , 'countries' => $this->country
-          , 'site_id' => $this->site_id
-          , 'site_domain' => $this->site->domain
-          , 'company_id' => $this->company_id
-          , 'company' =>  $this->company
-          , 'company_social' => $this->company_social
-          , 'form_text' => $this->form_text
-          , 'form_question' => $this->form_question
-          , 'theme_name' => $this->theme_type
-          , 'hosted' => $this->hosted_settings->hosted_settings() 
-          , 'response' => 0
-        ))->get();
-        */
     }
 
     public function get_tab_type() { 
