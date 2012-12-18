@@ -182,6 +182,7 @@ $(document).keypress(function(event){
 		}
 
 		 function fb_connect_success(obj){
+   
 			  if(obj.location != undefined) {
 			      if(obj.location.name != undefined) {
                       var loc = obj.location.name;
@@ -189,12 +190,15 @@ $(document).keypress(function(event){
 
                       $('#your_city').val( $.trim(mylocation[0]) );
                       $('#your_city').removeClass('default-text');
+                      /*
                       $('#your_country option').filter(function() {
                           return $.trim( $(this).text() ) === '"' + mylocation[1] + '"';
                       })
+                      */
+                     $('#your_country option[text='+ mylocation[1] +']').attr("selected", "selected");
                   }
 			  }
-
+ 
 			  if(obj.first_name != undefined){
 			   $('#your_fname').val( $.trim(obj.first_name) );
 			   $('#your_fname').removeClass('default-text');
