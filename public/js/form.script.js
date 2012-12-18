@@ -190,10 +190,8 @@ $(document).keypress(function(event){
                       $('#your_city').val( $.trim(mylocation[0]) );
                       $('#your_city').removeClass('default-text');
                       $('#your_country option').filter(function() {
-                          console.log( $.trim( $.trim( mylocation[1] ) ) );
-                          console.log( $.trim( $(this).text() ) == $.trim( mylocation[1] ) );
-                          return $.trim( $(this).text() ) == mylocation[1];  
-                      }).attr('selected', 'selected');
+                          return $.trim( $(this).text() ) === '"' + mylocation[1] + '"';
+                      })
                   }
 			  }
 
