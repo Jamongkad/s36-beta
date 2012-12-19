@@ -93,6 +93,23 @@ class Formbuilder {
 
 
 	/**
+	 * Renders the metadata generated html of the form. 
+	 * @access public
+	 */
+    public function render_metadata() {
+
+		$html = '';
+		if(is_array($this->_form_array['form_structure'])){
+            //commented out	because we already have a working form		
+			foreach($this->_form_array['form_structure'] as $field){
+				$html .= $this->loadField((array)$field);
+			}
+		}
+
+		return $html;
+    }
+
+	/**
 	 * Generates the form structure in html.
 	 * 
 	 * @param string $form_action Action attribute of the form element.

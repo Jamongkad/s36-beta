@@ -1,5 +1,5 @@
 <?=HTML::style('css/widget_master/new_form.css');?>
-<?=HTML::style('css/jquery.formbuilder.css')?>
+<?//=HTML::style('css/jquery.formbuilder.css')?>
 <?=HTML::script('js/jcycle.js');?>
 <?=HTML::script('js/jquery.ui.widget.js');?>
 <?=HTML::script('js/jquery.iframe-transport.js');?>
@@ -148,7 +148,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                     <!-- start custom fields block -->
                     <div class="form-custom-fields">
                         <?if($form_render):?>
-                            <?=$form_render->render_html()?>
+                            <?=$form_render->render_metadata()?>
                         <?endif?>
                         <!-- custom meta data goes here....
                         <div class="form-field-block">
