@@ -311,6 +311,6 @@ return array(
         $option->widgetattr = $fakewidget;
 
         $load_widget = $wf->load_widget($option);
-        return $load_widget->render_html();
+        echo $load_widget->render_html();
     },
 );
