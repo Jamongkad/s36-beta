@@ -1,33 +1,12 @@
 <?php
 $admin = (!empty($user))? 1 : 0;
-<<<<<<< HEAD
+
 /*pull theme information for customed css and js*/
 echo (isset($hosted->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$hosted->theme_css.'" />' : null;
 echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$hosted->theme_js.'"></script>' : null;
-=======
-/*
-
-/ pull theme information for customed css and js
-
-*/
-
-echo $theme->theme_css;
-
-echo $theme->theme_js;
 
 ?>
-
 <?=HTML::script('/js/jquery.raty.min.js')?>
-
-
-
-
-<?php 
-
-/*start document load*/ 
-
->>>>>>> kennwel
-?>
 
 <script type="text/javascript">
 
@@ -37,12 +16,7 @@ $(document).ready(function(){
     /* Change fullpage background if set from admin */
     if(isset($hosted->background_image) && !empty($hosted->background_image)):?>
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
-<<<<<<< HEAD
     <?php endif ?>
-=======
-
-    <?php } ?>
-    
     
     // start of jquery raty.
         
@@ -56,8 +30,7 @@ $(document).ready(function(){
         width: '200px'
     });
     
-    // end of jquery raty.
-    
+    // end of jquery raty. 
     
     // start of description inline editing.
     $('.g3of4, #pageTitle').hover(
@@ -125,8 +98,7 @@ $(document).ready(function(){
     });
     
     // end of description inline editing.
-    
->>>>>>> kennwel
+
 });
 </script>
 
