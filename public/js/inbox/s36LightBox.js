@@ -1,13 +1,11 @@
 function s36Lightbox(width, height, insertContent) {	
-    //if(jQuery('.lightbox').size() == 0){
-        var theLightbox = jQuery('<div class="lightbox"></div>');
-        var theShadow = jQuery('<div class="lightbox-shadow"/>');
-        jQuery(theShadow).click(function(e){
-                closeLightbox();
-        });
-        jQuery('body').append(theShadow);
-        jQuery('body').append(theLightbox);
-    //}
+
+    var theLightbox = jQuery('<div class="lightbox"></div>');
+    jQuery(theShadow).click(function(e){
+            closeLightbox();
+    });
+    jQuery('body').append(theLightbox);
+
     jQuery('.lightbox').empty();
     if(insertContent != null){
         //This is just a test
@@ -30,11 +28,8 @@ function s36Lightbox(width, height, insertContent) {
             });
 
     jQuery('.lightbox').fadeIn('fast');
-    jQuery('.lightbox-shadow').fadeIn('fast');
 }
 
 function closeLightbox(){
-    //jQuery('.lightbox').fadeOut('fast',function(){jQuery(this).empty();});
     jQuery('.lightbox').fadeOut('fast');
-    jQuery('.lightbox-shadow').fadeOut('fast');
 }    
