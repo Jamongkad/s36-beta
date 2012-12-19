@@ -41,7 +41,7 @@ jQuery(function($) {
             , data: {submit_form_text: $("input[name=submit_form_text]").val(), submit_form_question: $("textarea[name=submit_form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 
-                  s36Lightbox(data.width, data.height, data.html_view);
+                  console.log(s36Lightbox(data.width, data.height, data.html_view));
               } 
         });
         e.preventDefault();
