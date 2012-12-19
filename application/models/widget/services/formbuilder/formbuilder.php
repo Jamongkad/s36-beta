@@ -383,7 +383,7 @@ class Formbuilder {
 			$html .= sprintf('</span>') . "\n";
 		}
 
-        if($metadata_flag == False) {
+        if($metadata_render == False) {
     	    $html .= '</li>' . "\n";        
         } else { 
     	    $html .= '</div>' . "\n";        
