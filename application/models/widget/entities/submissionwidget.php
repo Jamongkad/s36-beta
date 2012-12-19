@@ -8,6 +8,8 @@ class SubmissionWidget extends FormWidgets {
 
     protected $height = 590;
     protected $width = 447;
+
+    private $form_render;
     
     public function __construct($options) {
 
@@ -21,7 +23,7 @@ class SubmissionWidget extends FormWidgets {
 
         $company_social = new DBCompanySocialAccount;
         $this->company_social = $company_social;
-
+        
         if($formstructure = $options->formstructure) { 
             $data = Array('form_structure' => $formstructure);
             $this->form_render = new Formbuilder($data);    
