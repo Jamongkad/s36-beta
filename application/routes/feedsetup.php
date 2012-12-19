@@ -281,7 +281,7 @@ return array(
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
-        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/?submit_form_text='.Input::get('submit_form_text')
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget?submit_form_text='.Input::get('submit_form_text')
                                                                                 .'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
@@ -289,7 +289,7 @@ return array(
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any?)' => function() {
+    'GET /feedsetup/preview_widget' => function() {
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->widgetstoreid    = 1;
@@ -311,6 +311,6 @@ return array(
         $option->widgetattr = $fakewidget;
 
         $load_widget = $wf->load_widget($option);
-        echo $load_widget->render_html();
+        return $load_widget->render_html();
     },
 );
