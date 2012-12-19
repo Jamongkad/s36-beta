@@ -22,8 +22,8 @@ class SubmissionWidget extends FormWidgets {
         $company_social = new DBCompanySocialAccount;
         $this->company_social = $company_social;
 
-        if($options->formstructure) { 
-            $data = Array('form_structure' => $options->formstructure);
+        if($formstructure = $options->formstructure) { 
+            $data = Array('form_structure' => $formstructure);
             $this->form_render = new Widget\Services\Formbuilder\Formbuilder($data);    
         }
         /*
