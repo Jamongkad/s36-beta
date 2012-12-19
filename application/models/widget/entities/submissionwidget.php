@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Widget\Entities\Types\FormWidgets, \Widget\Repositories\DBHostedSettings;
+use Widget\Entities\Types\FormWidgets, Widget\Repositories\DBHostedSettings, Widget\Services\Formbuilder\Formbuilder;
 use \Company\Repositories\DBCompany, \Company\Repositories\DBCompanySocialAccount;
 use Config, View, DB;
 
@@ -24,7 +24,7 @@ class SubmissionWidget extends FormWidgets {
 
         if($formstructure = $options->formstructure) { 
             $data = Array('form_structure' => $formstructure);
-            $this->form_render = new Widget\Services\Formbuilder\Formbuilder($data);    
+            $this->form_render = new Formbuilder($data);    
         }
         /*
         $this->widgetkey  = $options->widgetkey;
