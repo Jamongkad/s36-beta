@@ -99,14 +99,14 @@ class Formbuilder {
     public function render_metadata() {
 
 		$html = '';
-        /*
+
 		if(is_array($this->_form_array['form_structure'])){
             //commented out	because we already have a working form		
 			foreach($this->_form_array['form_structure'] as $field){
-				$html .= $this->loadField((array)$field);
+				$html .= $this->loadField((array)$field, $metadata_flag=True);
 			}
 		}
-        */
+
 		return $html;
     }
 
@@ -237,19 +237,19 @@ class Formbuilder {
 			switch($field['cssClass']){
 
 				case 'input_text':
-					return $this->loadInputText($field);
+					return $this->loadInputText($field, $metadata_render);
 					break;
 				case 'textarea':
-					return $this->loadTextarea($field);
+					return $this->loadTextarea($field, $metadata_render);
 					break;
 				case 'checkbox':
-					return $this->loadCheckboxGroup($field);
+					return $this->loadCheckboxGroup($field, $metadata_render);
 					break;
 				case 'radio':
-					return $this->loadRadioGroup($field);
+					return $this->loadRadioGroup($field, $metadata_render);
 					break;
 				case 'select':
-					return $this->loadSelectBox($field);
+					return $this->loadSelectBox($field, $metadata_render);
 					break;
 			}
 		}
@@ -266,19 +266,32 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadInputText($field){
+	protected function loadInputText($field, $metadata_render=False){
 
 		$field['required'] = $field['required'] == 'checked' ? ' required' : false;
 
 		$html = '';
-		$html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['values']));
+        if($metadata_render == False) {
+    	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['values']));        
+        } else { 
+    	    $html .= sprintf('<div class="%s%s regular-custom-field" id="fld-%s">' . "\n"
+                            , $this->elemId($field['cssClass'])
+                            , $field['required']
+                            , $this->elemId($field['values']));        
+        }
+	
 		$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);
 		$html .= sprintf('<input type="text" id="%s" name="%s" value="%s" />' . "\n",
 								$this->elemId($field['values']),
 								$this->elemId($field['values']),
 								$this->getPostValue($this->elemId($field['values'])));
-		$html .= '</li>' . "\n";
 
+        if($metadata_render == False) {
+    	    $html .= '</li>' . "\n";        
+        } else { 
+    	    $html .= '</div>' . "\n";        
+        }
+	
 		return $html;
 
 	}
@@ -291,18 +304,32 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadTextarea($field){
+	protected function loadTextarea($field, $metadata_render=False){
 
 		$field['required'] = $field['required'] == 'checked' ? ' required' : false;
 
 		$html = '';
-		$html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['values']));
+        if($metadata_render == False) { 
+    	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['values']));        
+        } else { 
+    	    $html .= sprintf('<div class="%s%s regular-custom-field" id="fld-%s">' . "\n"
+                            , $this->elemId($field['cssClass'])
+                            , $field['required']
+                            , $this->elemId($field['values']));        
+        }
+	
 		$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);
 		$html .= sprintf('<textarea id="%s" name="%s" rows="5" cols="50">%s</textarea>' . "\n",
 								$this->elemId($field['values']),
 								$this->elemId($field['values']),
 								$this->getPostValue($this->elemId($field['values'])));
-		$html .= '</li>' . "\n";
+
+        if($metadata_render == False) {
+    	    $html .= '</li>' . "\n";        
+        } else {
+    	    $html .= '</div>' . "\n";        
+        }
+	
 
 		return $html;
 
@@ -316,12 +343,17 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadCheckboxGroup($field){
+	protected function loadCheckboxGroup($field, $metadata_render=False){
 
 		$field['required'] = $field['required'] == 'checked' ? ' required' : false;
 
 		$html = '';
-		$html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));
+        if($metadata_render == False) {
+    	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
+        } else { 
+    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
+        }
+	
 
 		if(isset($field['title']) && !empty($field['title'])){
 			$html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);
@@ -351,7 +383,12 @@ class Formbuilder {
 			$html .= sprintf('</span>') . "\n";
 		}
 
-		$html .= '</li>' . "\n";
+        if($metadata_flag == False) {
+    	    $html .= '</li>' . "\n";        
+        } else { 
+    	    $html .= '</div>' . "\n";        
+        }
+	
 
 		return $html;
 
@@ -364,14 +401,17 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadRadioGroup($field){
+	protected function loadRadioGroup($field, $metadata_render=False){
 
 		$field['required'] = $field['required'] == 'checked' ? ' required' : false;
 
 		$html = '';
-
-		$html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));
-
+        if($metadata_render == False) {
+    	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
+        } else { 
+    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
+        }
+	
 		if(isset($field['title']) && !empty($field['title'])){
 			$html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);
 		}
@@ -402,8 +442,12 @@ class Formbuilder {
 			}
 			$html .= sprintf('</span>') . "\n";
 		}
-
-		$html .= '</li>' . "\n";
+        
+        if($metadata_render == False) { 
+		    $html .= '</li>' . "\n";
+        } else { 
+		    $html .= '</div>' . "\n";
+        }
 
 		return $html;
 
@@ -417,14 +461,18 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadSelectBox($field){
+	protected function loadSelectBox($field, $metadata_render=False){
 
 		$field['required'] = $field['required'] == 'checked' ? ' required' : false;
 
 		$html = '';
-
-		$html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));
-
+        
+        if($metadata_render == False) {
+    	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
+        } else { 
+    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));
+        }
+	
 		if(isset($field['title']) && !empty($field['title'])){
 			$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['title']), $field['title']);
 		}
@@ -453,8 +501,12 @@ class Formbuilder {
 			}
 
 			$html .= '</select>' . "\n";
-			$html .= '</li>' . "\n";
 
+            if($metadata_render == False) { 
+        	    $html .= '</div>' . "\n";        
+            } else {
+        	    $html .= '</li>' . "\n";        
+            }
 		}
 
 		return $html;
