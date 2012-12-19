@@ -278,6 +278,8 @@ return array(
     
     //TODO: something is wrong here...
     'GET /feedsetup/preview_widget_style' => function() {
+        echo "Mathew";
+        /*
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
@@ -286,6 +288,7 @@ return array(
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
+        */
     },
     
     //this muthafucka gets called by JS code
