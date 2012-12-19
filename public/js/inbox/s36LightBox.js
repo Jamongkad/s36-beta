@@ -34,6 +34,7 @@ function s36Lightbox(width, height, insertContent) {
 }
 
 function closeLightbox(){
-    jQuery('.lightbox').fadeOut('fast',function(){jQuery(this).empty();});
+    //jQuery('.lightbox').fadeOut('fast',function(){jQuery(this).empty();});
+    jQuery('.lightbox').fadeOut('fast');
     jQuery('.lightbox-shadow').fadeOut('fast');
 }    
