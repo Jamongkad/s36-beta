@@ -148,7 +148,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                     <!-- start custom fields block -->
                     <div class="form-custom-fields">
                         <?if($form_render):?>
-                            <?=$form_render->process()?>
+                            <?=$form_render->render_html()?>
                         <?endif?>
                         <!-- custom meta data goes here....
                         <div class="form-field-block">
