@@ -1,9 +1,6 @@
 function s36Lightbox(width, height, insertContent) {	
 
     var theLightbox = jQuery('<div class="lightbox"></div>');
-    jQuery(theShadow).click(function(e){
-            closeLightbox();
-    });
     jQuery('body').append(theLightbox);
 
     jQuery('.lightbox').empty();
