@@ -64,6 +64,7 @@ class SubmissionWidget extends FormWidgets {
           , 'form_question'  => $this->widget_options->widgetattr->submit_form_question
           , 'theme_name'     => $this->widget_options->widgetattr->theme_type
           , 'response'       => 0
+          , 'form_render'    => $this->form_render
         );
     }
 
