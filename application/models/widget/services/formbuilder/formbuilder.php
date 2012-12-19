@@ -99,13 +99,14 @@ class Formbuilder {
     public function render_metadata() {
 
 		$html = '';
+        /*
 		if(is_array($this->_form_array['form_structure'])){
             //commented out	because we already have a working form		
 			foreach($this->_form_array['form_structure'] as $field){
 				$html .= $this->loadField((array)$field);
 			}
 		}
-
+        */
 		return $html;
     }
 
@@ -229,7 +230,7 @@ class Formbuilder {
 	 * @access protected
 	 * @return string
 	 */
-	protected function loadField($field){
+	protected function loadField($field, $metadata_render=False){
 
 		if(is_array($field) && isset($field['cssClass'])){
 
