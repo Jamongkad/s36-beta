@@ -1,5 +1,5 @@
 function s36Lightbox(width, height, insertContent) {	
-    if(jQuery('.lightbox').size() == 0){
+    //if(jQuery('.lightbox').size() == 0){
         var theLightbox = jQuery('<div class="lightbox"></div>');
         var theShadow = jQuery('<div class="lightbox-shadow"/>');
         jQuery(theShadow).click(function(e){
@@ -7,7 +7,7 @@ function s36Lightbox(width, height, insertContent) {
         });
         jQuery('body').append(theShadow);
         jQuery('body').append(theLightbox);
-    }
+    //}
     jQuery('.lightbox').empty();
     if(insertContent != null){
         //This is just a test
