@@ -278,6 +278,7 @@ return array(
     
     //TODO: something is wrong here...
     'GET /feedsetup/preview_widget_style' => function() {
+        return "mathew";
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
