@@ -11,7 +11,7 @@ function s36Lightbox(width, height, insertContent) {
     jQuery('.lightbox').empty();
     if(insertContent != null){
         //This is just a test
-        jQuery('.lightbox').append(insertContent + "<div class='lightbox-comment' style='color:#fff;position:absolute;top:-20px;right:10px;'>This is a preview only | <span style='cursor:pointer'>close</span></div>");
+        jQuery('.lightbox').append(insertContent + "<div class='lightbox-comment' style='color:#fff;position:absolute;top:-20px;right:10px;z-index:100002'>This is a preview only | <span style='cursor:pointer'>close</span></div>");
     }
 
     jQuery('.lightbox-comment').click(function(e){
