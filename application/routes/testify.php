@@ -314,7 +314,6 @@ return array(
                 }
             ]');
             $form_render = new Widget\Services\Formbuilder\Formbuilder($fake_db_vals);
-
             $tf->dump($form_render->render_html());
         });
 
