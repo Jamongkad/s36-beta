@@ -662,7 +662,7 @@ var S36Form = new function() {
 		var form_data = {
 			site_id:		$('#site_id').val(),
 			company_id: 	$('#company_id').val(),
-		   	rating: 		$('#rating').val(),
+            rating:         $('#rating').val(),
 		   	feedback:		$('#feedback_text').val(),
 			first_name: 	$('#your_fname').val(),
 			last_name:  	$('#your_lname').val(),
@@ -747,6 +747,7 @@ var S36Form = new function() {
             });
         }); 
     }; 
+    
 };
 // END OF 36stories Javascript
 //helper functions

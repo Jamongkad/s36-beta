@@ -3,9 +3,7 @@ use \Imagine\Image\Box;
 use \Imagine\Image\Point;
 $company = new Company\Repositories\DBCompany;
 
-
 return array(
-
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
         $file = Input::all();
         $options    = array(
@@ -25,7 +23,8 @@ return array(
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
-      $uploader = new JqueryFileUploader();
+        //ok what else?? upon object initialization all functionality works
+        $uploader = new JqueryFileUploader(); 
     }),
 
     'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
@@ -79,7 +78,6 @@ function upload($file, $options){
         if(isset($options['width']) && isset($options['height'])){
             $image->resize(new Box($options['width'], $options['height']));
         }
-
         $image->save($filedir, array('quality'=>100));
     }
 

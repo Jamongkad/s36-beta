@@ -47,7 +47,8 @@ class DBCompany extends S36DataObject {
         $sql = "
             SELECT 
                 * 
-              , Company.name AS company_name 
+                , Company.name AS company_name 
+                , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS avg_rating
             FROM 
                 Company
             INNER JOIN
@@ -140,5 +141,18 @@ class DBCompany extends S36DataObject {
         $result->top = $top;
         $result->update_success = $updated;
         return $result;
+    }
+    
+    
+    public function update_desc_header($data, $company_id){ 
+        // don't save if there are no input.
+        if( array_key_exists('description', $data) ){
+            DB::table('Company')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
+        }
+        
+        if( array_key_exists('header_text', $data) ){
+            $data['header_text'] = substr($data['header_text'], 0, 125);
+            DB::table('HostedSettings')->where('companyId', '=', $company_id)->update( array('header_text' => $data['header_text']) );
+        }     
     }
 }

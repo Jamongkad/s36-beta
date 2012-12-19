@@ -39,7 +39,6 @@ return array(
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
     
-        //fullpage theme
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
@@ -59,6 +58,15 @@ return array(
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
+    },
+    
+    'POST /update_desc_header' => function() use($user, $company){ 
+        // don't proceed if the user is not logged in.
+        // return 1 for error checking.
+        if( ! is_object($user) ) return 1;
+        
+        $data = Input::get();
+        $company->update_desc_header($data, $user->companyid); 
     },
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {

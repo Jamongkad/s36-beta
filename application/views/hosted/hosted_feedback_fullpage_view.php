@@ -1,8 +1,32 @@
 <?php
 $admin = (!empty($user))? 1 : 0;
+<<<<<<< HEAD
 /*pull theme information for customed css and js*/
 echo (isset($hosted->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$hosted->theme_css.'" />' : null;
 echo (isset($hosted->theme_js)) ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$hosted->theme_js.'"></script>' : null;
+=======
+/*
+
+/ pull theme information for customed css and js
+
+*/
+
+echo $theme->theme_css;
+
+echo $theme->theme_js;
+
+?>
+
+<?=HTML::script('/js/jquery.raty.min.js')?>
+
+
+
+
+<?php 
+
+/*start document load*/ 
+
+>>>>>>> kennwel
 ?>
 
 <script type="text/javascript">
@@ -13,7 +37,96 @@ $(document).ready(function(){
     /* Change fullpage background if set from admin */
     if(isset($hosted->background_image) && !empty($hosted->background_image)):?>
         $('body').css('background-image','url(uploaded_images/hosted_background/<?=$hosted->background_image?>)')
+<<<<<<< HEAD
     <?php endif ?>
+=======
+
+    <?php } ?>
+    
+    
+    // start of jquery raty.
+        
+    $('#star_rating').raty({
+        path: '/img/',
+        hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+        score: <?php echo round($company->avg_rating); ?>,
+        starOn: 'star-on.png',
+        starOff: 'star-off.png',
+        readOnly: true,
+        width: '200px'
+    });
+    
+    // end of jquery raty.
+    
+    
+    // start of description inline editing.
+    $('.g3of4, #pageTitle').hover(
+        function(){
+            if( $(this).find('.textbox_container').css('display') != 'block' ){
+                $(this).find('.edit').css('display', 'inline-block');
+            }
+        },
+        function(){
+            $(this).find('.edit').css('display', 'none');
+        }
+    );
+    
+    $('.edit').click(function(){
+        var parent = $( $(this).attr('for') );
+        parent.find('.edit').css('display', 'none');
+        parent.find('.text_container').css('display', 'none');
+        parent.find('.save, .cancel').css('display', 'inline-block');
+        parent.find('.textbox_container').css('display', 'block');
+    });
+    
+    $('.cancel').click(function(){
+        var parent = $( $(this).attr('for') );
+        var text_container = parent.find('.text_container');
+        var textarea = parent.find('.textbox_container textarea');
+        
+        parent.find('.save, .cancel').css('display', 'none');
+        parent.find('.textbox_container').css('display', 'none');
+        parent.find('.edit').css('display', 'none');
+        text_container.css('display', 'block');
+        textarea.val( text_container.html() );
+    });
+    
+    $('.save').click(function(){
+        
+        var parent = $( $(this).attr('for') );
+        var text_container = parent.find('.text_container');
+        var textarea = parent.find('.textbox_container textarea');
+        var textarea_value = textarea.val();
+        var data = {};
+        
+        if( textarea.is('#description') ) data['description'] = textarea_value;
+        if( textarea.is('#header_text') ) data['header_text'] = textarea_value;
+        
+        $.ajax({
+            url: '/update_desc_header',
+            type: 'post',
+            data: data,
+            success: function(result){
+                // if not result returned 1, it means he's not logged in.
+                if( result == 1 ){
+                    alert('ei, no way, you should be logged in');
+                }else{
+                    parent.find('.save, .cancel').css('display', 'none');
+                    parent.find('.textbox_container').css('display', 'none');
+                    parent.find('.edit').css('display', 'none');
+                    text_container.css('display', 'block');
+                    
+                    if( textarea.is('#header_text') ) textarea_value = textarea_value.substr(0, 125);
+                    text_container.html( textarea_value );
+                }
+            }
+        });
+        
+    });
+    
+    // end of description inline editing.
+    
+>>>>>>> kennwel
 });
 </script>
 
@@ -73,22 +186,53 @@ $(document).ready(function(){
         <!-- end of page cover -->
         <div id="pageDesc">
             <div class="grids">
-                <div class="g3of4">
-                    <div class="the-description">
-                        <?=$company->description?>
-                    </div>
+                <div class="g3of4"> 
+                    <div class="the-description text_container"><?=$company->description?></div> 
+                    <?php if( ! is_null( $user ) ): ?>
+                        
+                        <div class="action_buttons">
+                            <div class="edit" for=".g3of4" title="Edit"></div>
+                            <div class="save" for=".g3of4" title="Save"></div>
+                            <div class="cancel" for=".g3of4" title="Cancel"></div>
+                        </div>
+                        <div class="textbox_container">
+                            <textarea id="description"><?=$company->description?></textarea>
+                        </div>
+                        
+                    <?php endif ?> 
                 </div>
+            
                 <div class="g1of4">
                     <div class="send-feedback">
                         <a href="<?=$company->company_name?>/submit"><input type="button" class="funky-button" value="Send in Feedback" /></a>
                     </div>
                 </div>
+                
+                <div id="star_rating_container">
+                    <div id="star_rating"></div>
+                </div> 
             </div>
         </div>
 
-        <!-- end of new header October 4 2012 --> 
-        <div id="pageTitle">
-            <h1><?=$hosted->header_text?></h1>
+       <div id="pageTitle">
+            
+            <? // intended to be a one-liner. ?>
+            <h1 class="text_container"><?=$hosted->header_text?></h1>
+            
+            <? // show the inline editing stuff only if the user is logged in. ?>
+            <?php if( ! is_null( $user ) ): ?>
+                
+                <div class="action_buttons">
+                    <div class="edit" for="#pageTitle" title="Edit"></div>
+                    <div class="save" for="#pageTitle" title="Save"></div>
+                    <div class="cancel" for="#pageTitle" title="Cancel"></div>
+                </div>
+                <div class="textbox_container">
+                    <textarea maxlength="125" id="header_text"><?=$hosted->header_text?></textarea>
+                </div>
+                
+            <?php endif ?>
+            
             <div class="meta">
                 <?=$feed_count->published_feed_count?> testimonials in total 
                 <?if($feed_count->todays_count > 0):?>

@@ -162,6 +162,16 @@ return array(
             $social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
             $tf->dump($social_services['tw']);
             $tf->assert($social->save_social_feeds('tw'));
+            /*
+            $tf->data->social = new Feedback\Services\SocialFeedback($social_services, new Feedback\Repositories\DBSocialFeedback);
+            $tf->dump($tf->data->social->save_social_feeds());
+            */
+            $tf->dump($social_services['twitter']);
+        });
+
+        $tf->test("Twitter Feed Rate Status", function($tf)  {
+            $rate_limit = $tf->data->twitter->get_rate_limit();
+            $tf->dump($rate_limit);
         });
 
         $tf->run();

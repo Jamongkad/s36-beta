@@ -89,7 +89,7 @@ div{position:relative;}
 	margin-left:4px;
 }
 #pageDesc{
-	padding:0px 7px 20px 7px;
+	padding:0px 7px 10px 7px; 
 }
 .the-description{
 	padding:10px;
@@ -504,3 +504,20 @@ img.large-avatar {
 	left:50%;
 	margin-left:-101px;
 }
+
+
+/* star rating. */
+#star_rating_container{ width: 75%; clear: both; float: left; margin-top: -13px; }
+#star_rating{ padding: 0px 10px; }
+
+/* hosted page ajax editing. */
+.textbox_container{ display: none; }
+.textbox_container #description{ width: 90%; }
+.textbox_container #header_text{ width: 100%; }
+.action_buttons{ position: absolute; top: 0px; right: 0px; z-index: 10; }
+.action_buttons .edit,
+.action_buttons .save,
+.action_buttons .cancel{ display: none; width: 20px; height: 17px; cursor: pointer; }
+.action_buttons .edit{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -140px 0px; }
+.action_buttons .save{ background: url(../../../img/ico-green-check.png) no-repeat; }
+.action_buttons .cancel{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -160px 0px; }

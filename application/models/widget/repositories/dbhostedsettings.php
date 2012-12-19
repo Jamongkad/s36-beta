@@ -61,6 +61,7 @@ class DBHostedSettings extends S36DataObject {
                     ON HostedSettings.theme_name = Themes.theme_name
                 WHERE 1=1 
                     AND companyId = :company_id";
+
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
         $sth->execute();
