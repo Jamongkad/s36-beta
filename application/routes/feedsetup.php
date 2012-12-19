@@ -278,12 +278,12 @@ return array(
     
     //TODO: something is wrong here...
     'GET /feedsetup/preview_widget_style' => function() {
-        return "mathew";
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
         $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget?submit_form_text='.Input::get('submit_form_text')
                                                                                 .'&submit_form_question='.Input::get('submit_form_question');
+        return $frame_url;
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
