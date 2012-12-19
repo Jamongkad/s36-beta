@@ -244,7 +244,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                             <div class="clm two">
                                 <select class="registration-input default-text" name="country" id="your_country" title="Country">
                                        <option>Country</option>
-                                    <?php foreach($countries as $country): ?>
+                                    <?php foreach($countries->get() as $country): ?>
                                        <option value='<?=strtolower($country->code)?>'><?=$country->name?></option>
                                     <?php endforeach; ?>
                                 </select>
