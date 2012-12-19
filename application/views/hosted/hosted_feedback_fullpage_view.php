@@ -223,9 +223,9 @@ $(document).ready(function(){
                     <?php if( ! is_null( $user ) ): ?>
                         
                         <div class="action_buttons">
-                            <div class="edit" for=".g3of4"></div>
-                            <div class="save" for=".g3of4"></div>
-                            <div class="cancel" for=".g3of4"></div>
+                            <div class="edit" for=".g3of4" title="Edit"></div>
+                            <div class="save" for=".g3of4" title="Save"></div>
+                            <div class="cancel" for=".g3of4" title="Cancel"></div>
                         </div>
                         <div class="textbox_container">
                             <textarea id="description"><?=$company->description?></textarea>
@@ -265,9 +265,9 @@ $(document).ready(function(){
             <?php if( ! is_null( $user ) ): ?>
                 
                 <div class="action_buttons">
-                    <div class="edit" for="#pageTitle"></div>
-                    <div class="save" for="#pageTitle"></div>
-                    <div class="cancel" for="#pageTitle"></div>
+                    <div class="edit" for="#pageTitle" title="Edit"></div>
+                    <div class="save" for="#pageTitle" title="Save"></div>
+                    <div class="cancel" for="#pageTitle" title="Cancel"></div>
                 </div>
                 <div class="textbox_container">
                     <textarea maxlength="125" id="header_text"><?=$hosted->header_text?></textarea>
