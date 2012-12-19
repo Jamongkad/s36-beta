@@ -1,20 +1,20 @@
 function s36Lightbox(width, height, insertContent) {	
-    if(jQuery('#lightbox').size() == 0){
-        var theLightbox = jQuery('<div id="lightbox"></div>');
-        var theShadow = jQuery('<div id="lightbox-shadow"/>');
+    if(jQuery('.lightbox').size() == 0){
+        var theLightbox = jQuery('<div class="lightbox"></div>');
+        var theShadow = jQuery('<div class="lightbox-shadow"/>');
         jQuery(theShadow).click(function(e){
                 closeLightbox();
         });
         jQuery('body').append(theShadow);
         jQuery('body').append(theLightbox);
     }
-    jQuery('#lightbox').empty();
+    jQuery('.lightbox').empty();
     if(insertContent != null){
         //This is just a test
-        jQuery('#lightbox').append(insertContent + "<div id='lightbox-comment' style='color:#fff;position:absolute;top:-20px;right:10px;'>This is a preview only | <span style='cursor:pointer'>close</span></div>");
+        jQuery('.lightbox').append(insertContent + "<div class='lightbox-comment' style='color:#fff;position:absolute;top:-20px;right:10px;'>This is a preview only | <span style='cursor:pointer'>close</span></div>");
     }
 
-    jQuery('#lightbox-comment').click(function(e){
+    jQuery('.lightbox-comment').click(function(e){
         closeLightbox();
     });
 
@@ -22,18 +22,18 @@ function s36Lightbox(width, height, insertContent) {
     var margin = Math.round(width / 2);
 
     // set the css and show the lightbox
-    jQuery('#lightbox').css('top', jQuery(window).scrollTop() + 50 + 'px');
-    jQuery('#lightbox').css({
+    jQuery('.lightbox').css('top', jQuery(window).scrollTop() + 50 + 'px');
+    jQuery('.lightbox').css({
             'width':width,
             'height':height,
             'margin-left':"-"+margin+"px"
             });
 
-    jQuery('#lightbox').fadeIn('fast');
-    jQuery('#lightbox-shadow').fadeIn('fast');
+    jQuery('.lightbox').fadeIn('fast');
+    jQuery('.lightbox-shadow').fadeIn('fast');
 }
 
 function closeLightbox(){
-    jQuery('#lightbox').fadeOut('fast',function(){jQuery(this).empty();});
-    jQuery('#lightbox-shadow').fadeOut('fast');
+    jQuery('.lightbox').fadeOut('fast',function(){jQuery(this).empty();});
+    jQuery('.lightbox-shadow').fadeOut('fast');
 }    
