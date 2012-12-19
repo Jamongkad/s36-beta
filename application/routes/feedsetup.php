@@ -285,8 +285,7 @@ return array(
                                                                                 .'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
-        print_r($data);
-        echo json_encode($data); 
+        return json_encode($data); 
     },
     
     //this muthafucka gets called by JS code
