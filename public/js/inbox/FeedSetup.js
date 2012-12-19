@@ -35,12 +35,9 @@ jQuery(function($) {
     $(preview_widget).attr("disabled", true).css({'opacity' : '0.5'}); 
     //preview picked out of form theme slider and other preview buttons
     $(document).delegate(".preview-form-widget-button, div#preview.button-gray", "click", function(e) {
-        var action = $("#preview-form-widget-url").attr("hrefaction");
-        var form_theme = $("#selected-form").val();
-        var action_url = action + "/"  + form_theme;
-    
+        var action = $("#preview-form-widget-url").attr("hrefaction");    
         $.ajax({
-              url: action_url 
+              url: action 
             , data: {submit_form_text: $("input[name=submit_form_text]").val(), submit_form_question: $("textarea[name=submit_form_question]").val()}
             , dataType: 'json'
             , success: function(data) { 

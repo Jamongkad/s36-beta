@@ -277,19 +277,19 @@ return array(
     },
     
     //TODO: something is wrong here...
-    'GET /feedsetup/preview_widget_style/(:any)' => function($theme) {
+    'GET /feedsetup/preview_widget_style' => function() {
         $width  = 447;
         $height = 590;       
         //frame url to insert into fucking iframe...sigh the work arounds we must doooooooooo
-        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/'.$theme
-                                                          .'?submit_form_text='.Input::get('submit_form_text').'&submit_form_question='.Input::get('submit_form_question');
+        $frame_url = Config::get('application.deploy_env').'/feedsetup/preview_widget/?submit_form_text='.Input::get('submit_form_text')
+                                                                                .'&submit_form_question='.Input::get('submit_form_question');
         $iframe = Helpers::render_iframe_code($frame_url, $width, $height);
         $data = Array('html_view' => $iframe, 'width' => $width, 'height' => $height);
         echo json_encode($data); 
     },
     
     //this muthafucka gets called by JS code
-    'GET /feedsetup/preview_widget/(:any?)' => function($theme=false) {
+    'GET /feedsetup/preview_widget/(:any?)' => function() {
         $wf = new Widget\Services\WidgetFactory;
         $option = new StdClass;
         $option->widgetstoreid    = 1;
@@ -300,7 +300,7 @@ return array(
         $option->widget = 'form';
 
         $fakewidget = new StdClass;
-        $fakewidget->theme_type = ($theme=='undefined') ? 'form-aglow' : $theme;
+        $fakewidget->theme_type = 'form-aglow';
         $fakewidget->widget = 'form';
         $fakewidget->widgetkey = 'sample';  
         $fakewidget->tab_type = 'tab-l-aglow';

@@ -38,7 +38,7 @@
                     <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->submit_form_text?>" title="<?=$widget->submit_form_text?>" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                         <br /><br />
-                        <big>See how your form will <br /> appear to your visitors.</big>
+                        <big>Check how your form will <br /> appear to your visitors.</big>
                         <br /><br />
                         <a href="#" class="preview-form-widget-button button-gray">Preview</a>
                     </td>
