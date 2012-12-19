@@ -161,6 +161,16 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                             <input type="text" class="regular-custom-field" value="" title="Please Enter Product Code" name="custom-field-1" />
                         </div>
 
+                        <div class="form-field-block">
+                            <input type="text" class="regular-custom-field" value="" title="" name="custom-field-1" />
+                        </div>
+                        <div class="form-field-block">
+                            <input type="text" class="regular-custom-field" value="" title="" name="custom-field-1" />
+                        </div>
+                        <div class="form-field-block">
+                            <input type="text" class="regular-custom-field" value="" title="Please Enter Product Code" name="custom-field-1" />
+                        </div>
+
                     </div>
                     <!-- end of custom fields block -->
                     
