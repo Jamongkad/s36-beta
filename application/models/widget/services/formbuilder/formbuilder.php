@@ -496,7 +496,8 @@ class Formbuilder {
                     $html .= sprintf($radio, $this->elemId($field['title'])
                                            , $this->elemId($item['value'])
                                            , $item['value']
-                                           , $checked);
+                                           , $checked
+                                           , $item['value']);
                 }
 			}
 
