@@ -539,12 +539,7 @@ class Formbuilder {
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
-            if($metadata_render == False) { 
-    			$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['title']), $field['title']);
-            } else { 
-        	    $html .= sprintf('<div class="title">%s</div>' . "\n", $field['title']);        
-            }
-
+			$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['title']), $field['title']);
 		}
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
