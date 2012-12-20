@@ -279,14 +279,17 @@ class Formbuilder {
                             , $field['required']
                             , $this->elemId($field['values']));        
         }
-          
-        print_r($this->elemId($field['values']));
+         
+        if($metadata_render == False) {
+    	    $html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);        
+        } 	
 
-		$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);
-		$html .= sprintf('<input type="text" class="regular-custom-field" id="%s" name="%s" value="%s" />' . "\n",
+		$html .= sprintf('<input type="text" class="regular-custom-field" id="%s" name="%s" value="%s" title="%s" />' . "\n",
 								$this->elemId($field['values']),
 								$this->elemId($field['values']),
-								$this->getPostValue($this->elemId($field['values'])));
+								$this->getPostValue($this->elemId($field['values'])),
+                                $field['values']        
+                        );
 
         if($metadata_render == False) {
     	    $html .= '</li>' . "\n";        
