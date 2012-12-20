@@ -280,7 +280,8 @@ class Formbuilder {
                             , $this->elemId($field['values']));        
         }
           
-        print_r($field);
+        print_r($this->elemId($field['values']));
+
 		$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);
 		$html .= sprintf('<input type="text" class="regular-custom-field" id="%s" name="%s" value="%s" />' . "\n",
 								$this->elemId($field['values']),
