@@ -568,9 +568,10 @@ class Formbuilder {
 			$html .= '</select>' . "\n";
 
             if($metadata_render == False) { 
-        	    $html .= '</div>' . "\n";        
-            } else {
         	    $html .= '</li>' . "\n";        
+            } else {
+        	    $html .= '</div>' . "\n";        
+
             }
 		}
 
