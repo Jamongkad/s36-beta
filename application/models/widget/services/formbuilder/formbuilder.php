@@ -356,8 +356,8 @@ class Formbuilder {
         if($metadata_render == False) {
     	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
         } else { 
-    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
-    	    $html .= '<div class="checkbox-container clear">';
+    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));
+            $html .= '<div class="checkbox-container clear">';
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
@@ -451,14 +451,25 @@ class Formbuilder {
     	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
         } else { 
     	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
+            $html .= '<div class="radio-container clear">';
         }
 	
-		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);
+		if(isset($field['title']) && !empty($field['title'])){	
+            if($metadata_render == False) {
+        	    $html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);        
+            } else { 
+        	    $html .= sprintf('<div class="title">%s</div>' . "\n", $field['title']);        
+            }
 		}
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
-			$html .= sprintf('<span class="multi-row">') . "\n";
+
+            if($metadata_render == False) {
+        	    $html .= sprintf('<span class="multi-row clearfix">') . "\n";        
+            } else { 
+        	    $html .= sprintf('<div class="inputs">') . "\n";        
+            }
+
 			foreach($field['values'] as $item){
 				
 				$item = (array)$item;
@@ -474,20 +485,32 @@ class Formbuilder {
 				// if checked, set html
 				$checked = $checked_radio ? ' checked="checked"' : '';
 
-				$radio 		= '<span class="row clearfix"><input type="radio" id="%s-%s" name="%1$s" value="%s"%s /><label for="%1$s-%2$s">%3$s</label></span>' . "\n";
-				$html .= sprintf($radio,
-										$this->elemId($field['title']),
-										$this->elemId($item['value']),
-										$item['value'],
-										$checked);
+                if($metadata_render == False) {
+                    $radio 		= '<span class="row clearfix"><input type="radio" id="%s-%s" name="%1$s" value="%s"%s /><label for="%1$s-%2$s">%3$s</label></span>' . "\n";
+                    $html .= sprintf($radio, $this->elemId($field['title'])
+                                           , $this->elemId($item['value'])
+                                           , $item['value']
+                                           , $checked);
+                } else {
+            	    $radio = '<label class="label"><input type="radio" name="%s-%s" value="%s"%s /> %s</label>' . "\n";        
+                    $html .= sprintf($radio, $this->elemId($field['title'])
+                                           , $this->elemId($item['value'])
+                                           , $item['value']
+                                           , $checked);
+                }
 			}
-			$html .= sprintf('</span>') . "\n";
+
+            if($metadata_render == False) {
+        	    $html .= sprintf('</span>') . "\n";        
+            } else {
+        	    $html .= sprintf('</div>') . "\n";         
+            }
 		}
         
         if($metadata_render == False) { 
 		    $html .= '</li>' . "\n";
         } else { 
-		    $html .= '</div>' . "\n";
+		    $html .= '</div></div>' . "\n";
         }
 
 		return $html;
