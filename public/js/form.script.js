@@ -701,6 +701,7 @@ $(document).keypress(function(event){
 			}
 		}
 	}
+
 	function scale_feedback_textbox(){
 
 		/* set the default textbox height px */
