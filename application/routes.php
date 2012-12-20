@@ -80,7 +80,9 @@ return array(
                                                     , 'company_header' => $header_view)); 
     },
 
-    'POST /submit_feedback' => function() use($company_name,$company,$hosted_settings){
+    'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
+        Helpers::dump(Input::get());
+        /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
 
@@ -113,10 +115,9 @@ return array(
         $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj);
+        */
     },
     
-
-
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
 
         $feedback = $feedback->pull_feedback_by_id($id);
