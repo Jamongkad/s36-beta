@@ -357,7 +357,7 @@ class Formbuilder {
     	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
         } else { 
     	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
-    	    $html .= '<div class="checkbox-contain clear">';
+    	    $html .= '<div class="checkbox-container clear">';
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
@@ -371,7 +371,13 @@ class Formbuilder {
 
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
-			$html .= sprintf('<span class="multi-row clearfix">') . "\n";
+            
+            if($metadata_render == False) {
+        	    $html .= sprintf('<span class="multi-row clearfix">') . "\n";        
+            } else { 
+        	    $html .= sprintf('<div class="inputs">') . "\n";        
+            }
+		
 			foreach($field['values'] as $item){
 				
 				$item = (array)$item;
@@ -399,7 +405,7 @@ class Formbuilder {
                                               , $this->elemId($item['value'])
                                               , $item['value']);
                 } else { 
-            	    $checkbox = '<div class="inputs"><label class="label"><input type="checkbox" name="%s-%s" value="%s"%s /> %s</label></div>' . "\n";        
+            	    $checkbox = '<label class="label"><input type="checkbox" name="%s-%s" value="%s"%s /> %s</label>' . "\n";        
                     $html .= sprintf($checkbox, $this->elemId($field['title'])
                                               , $this->elemId($item['value'])
                                               , $item['value'] 
@@ -408,7 +414,14 @@ class Formbuilder {
                 }
 			
 			}
-			$html .= sprintf('</span>') . "\n";
+            
+            if($metadata_render == False) {
+        	    $html .= sprintf('</span>') . "\n";        
+            } else {
+        	    $html .= sprintf('</div>') . "\n";         
+            }
+		
+
 		}
 
         if($metadata_render == False) {
