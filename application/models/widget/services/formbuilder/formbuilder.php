@@ -357,12 +357,18 @@ class Formbuilder {
     	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));        
         } else { 
     	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['title']));  
+    	    $html .= '<div class="checkbox-contain clear">';
         }
 	
-
 		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);
+            if($metadata_render == False) {
+        	    $html .= sprintf('<span class="false_label">%s</span>' . "\n", $field['title']);        
+            } else { 
+        	    $html .= sprintf('<div class="title">%s</div>' . "\n", $field['title']);        
+            }
+		
 		}
+
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$html .= sprintf('<span class="multi-row clearfix">') . "\n";
@@ -381,9 +387,26 @@ class Formbuilder {
 				// if checked, set html
 				$checked = $checked_box ? ' checked="checked"' : '';
 
-
-				$checkbox 	= '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";
-				$html .= sprintf($checkbox, $this->elemId($field['title']), $this->elemId($item['value']), $this->elemId($field['title']), $this->elemId($item['value']), $item['value'], $checked, $this->elemId($field['title']), $this->elemId($item['value']), $item['value']);
+                if($metadata_render == False) {
+            	    $checkbox = '<span class="row clearfix"><input type="checkbox" id="%s-%s" name="%s-%s" value="%s"%s /><label for="%s-%s">%s</label></span>' . "\n";        
+				    $html .= sprintf($checkbox, $this->elemId($field['title'])
+                                              , $this->elemId($item['value'])
+                                              , $this->elemId($field['title'])
+                                              , $this->elemId($item['value'])
+                                              , $item['value']
+                                              , $checked
+                                              , $this->elemId($field['title'])
+                                              , $this->elemId($item['value'])
+                                              , $item['value']);
+                } else { 
+            	    $checkbox = '<div class="inputs"><label class="label"><input type="checkbox" name="%s-%s" value="%s"%s /> %s</label></div>' . "\n";        
+                    $html .= sprintf($checkbox, $this->elemId($field['title'])
+                                              , $this->elemId($item['value'])
+                                              , $item['value'] 
+                                              , $checked
+                                              , $item['value']);
+                }
+			
 			}
 			$html .= sprintf('</span>') . "\n";
 		}
@@ -391,7 +414,7 @@ class Formbuilder {
         if($metadata_render == False) {
     	    $html .= '</li>' . "\n";        
         } else { 
-    	    $html .= '</div>' . "\n";        
+    	    $html .= '</div></div>' . "\n";        
         }
 	
 
