@@ -493,9 +493,7 @@ class Formbuilder {
                                            , $checked);
                 } else {
             	    $radio = '<label class="label"><input type="radio" name="meta_radio" value="%s"%s /> %s</label>' . "\n";        
-                    $html .= sprintf($radio, $this->elemId($field['title'])
-                                           , $this->elemId($item['value'])
-                                           , $item['value']
+                    $html .= sprintf($radio, $item['value']
                                            , $checked
                                            , $item['value']);
                 }
