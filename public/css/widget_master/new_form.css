@@ -710,3 +710,66 @@ h2.h2-fix{
  display:block;
  height:14px;
 }
+
+select.regular-custom-field{
+    width:304px;
+}
+.radio-container,.checkbox-container{
+    padding:4px 0px;
+    font-size:10px;
+    font-weight:normal;
+    color:#000;
+    margin:0px;
+    display:inline-block;
+}
+.radio-container .title{
+    float:left;
+    font-weight:bold;
+    top:-2px;
+}
+.checkbox-container .title{
+    display:block;
+    font-weight:bold;
+}
+.radio-container .inputs{
+    float:left;
+    margin-top:-3px;
+}
+.radio-container .inputs input,.checkbox-container .inputs input{
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: 0px;
+    *overflow: hidden;
+}
+.radio-container .inputs label{
+    display: inline-block;
+    padding-left: 15px;
+    text-indent: -15px;
+    margin-left:5px;
+}
+.checkbox-container .inputs{
+    margin-top:5px;
+}
+.checkbox-container .inputs label{
+    display: inline-block;
+    padding-left: 15px;
+    text-indent: -15px;
+    margin-right:5px;
+}
+.checkbox-container .inputs input:first-child{
+    margin-left:0px; 
+}
+.checkbox-container .inputs input{
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: 1px;
+    *overflow: hidden;
+}
