@@ -105,22 +105,21 @@ $(document).keypress(function(event){
 		});
 		function submit_feedback(){
 
+			var company, position, website, form_metadata;
+
 			/*get empty values for optional fields with default value*/
-			if($('#your_company').hasClass('default-text')){
-				var company = ''
-			}else{
+			if(!$('#your_company').hasClass('default-text')){
 				var company = $('#your_company').val();
 			}
-			if($('#your_occupation').hasClass('default-text')){
-				var position = ''
-			}else{
+			if(!$('#your_occupation').hasClass('default-text')){
 				var position = $('#your_occupation').val();
 			}
-			if($('#your_website').hasClass('default-text')){
-				var website = ''
-			}else{
+			if(!$('#your_website').hasClass('default-text')){
 				var website = $('#your_website').val();
 			}
+            if($('.form-custom-fields :input').length > 0) {
+                var form_metadata = $('.form-custom-fields :input').serializeArray();
+            }
 			/*start creating attachment array*/
 			//getattached images first
 			var uploaded_images = new Array;
@@ -166,17 +165,18 @@ $(document).keypress(function(event){
 					company 	: company,
 					position 	: position,
 					website 	: website,
-					attachments : attachments
+					attachments : attachments,
+                    metadata    : form_metadata
 				}
 				/*submit all data for server side scripting*/
 				$.ajax({
 		            url: "/submit_feedback",
+                    dataType: "json",
 		            data: data,
 		            type: "POST",
 		            success: function(q) {
-		            	data = $.parseJSON(q);
-		            	$('.facebook-share-bar').html(data.share_button);
-		            	$('.twitter-share-bar').html(data.tweet_button);
+		            	$('.facebook-share-bar').html(q.share_button);
+		            	$('.twitter-share-bar').html(q.tweet_button);
 		          }
 		        });
 		}
