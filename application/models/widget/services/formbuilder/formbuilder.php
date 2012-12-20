@@ -274,14 +274,14 @@ class Formbuilder {
         if($metadata_render == False) {
     	    $html .= sprintf('<li class="%s%s" id="fld-%s">' . "\n", $this->elemId($field['cssClass']), $field['required'], $this->elemId($field['values']));        
         } else { 
-    	    $html .= sprintf('<div class="%s%s regular-custom-field" id="fld-%s">' . "\n"
+    	    $html .= sprintf('<div class="%s%s form-field-block" id="fld-%s">' . "\n"
                             , $this->elemId($field['cssClass'])
                             , $field['required']
                             , $this->elemId($field['values']));        
         }
 	
 		$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['values']), $field['values']);
-		$html .= sprintf('<input type="text" id="%s" name="%s" value="%s" />' . "\n",
+		$html .= sprintf('<input type="text" class="regular-custom-field" id="%s" name="%s" value="%s" />' . "\n",
 								$this->elemId($field['values']),
 								$this->elemId($field['values']),
 								$this->getPostValue($this->elemId($field['values'])));
