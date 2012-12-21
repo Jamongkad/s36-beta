@@ -85,7 +85,7 @@ return array(
         if(Input::has('metadata')) {
             $collection = Array();
             foreach(Input::get('metadata') as $data) {
-                $collection[$data->name][] = $data->value;
+                $collection[$data['name']][] = $data['value'];
             }
 
             Helpers::dump($collection);
