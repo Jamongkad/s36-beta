@@ -264,7 +264,7 @@
 						multiple = options[1] === 'true' ? true : false;
 					}
 
-                    console.log(multiple);
+                    console.log(options);
 
 					field += '<div class="opt_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
