@@ -492,10 +492,8 @@ class Formbuilder {
                                            , $item['value']
                                            , $checked);
                 } else {
-            	    $radio = '<label class="label"><input type="radio" name="%s-%s" value="%s"%s /> %s</label>' . "\n";        
-                    $html .= sprintf($radio, $this->elemId($field['title'])
-                                           , $this->elemId($item['value'])
-                                           , $item['value']
+            	    $radio = '<label class="label"><input type="radio" name="meta_radio" value="%s"%s /> %s</label>' . "\n";        
+                    $html .= sprintf($radio, $item['value']
                                            , $checked
                                            , $item['value']);
                 }
@@ -539,8 +537,9 @@ class Formbuilder {
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['title']), $field['title']);
+			$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
 		}
+
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$multiple = $field['multiple'] == "checked" ? ' multiple="multiple"' : '';

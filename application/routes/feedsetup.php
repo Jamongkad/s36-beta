@@ -179,7 +179,7 @@ return array(
         if($formstructure = $widget->formstructure) {
             $data = Array('form_structure' => $formstructure);
             $form_render = new Widget\Services\Formbuilder\Formbuilder($data);
-            return $form_render->render_json();
+            echo $form_render->render_json();
         }
     },
 
