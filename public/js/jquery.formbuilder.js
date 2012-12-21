@@ -264,8 +264,6 @@
 						multiple = options[1] === 'checked' ? true : false;
 					}
 
-                    //console.log(options);
-
 					field += '<div class="opt_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
 					field += '<input type="text" name="title" value="' + title + '" /></div>';
