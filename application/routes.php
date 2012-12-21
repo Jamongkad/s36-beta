@@ -81,7 +81,7 @@ return array(
     },
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
-        Helpers::dump(Input::get());
+        Helpers::dump(Input::get('metadata'));
         /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();

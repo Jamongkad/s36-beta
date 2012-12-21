@@ -60,10 +60,12 @@ return array(
         echo "s36_feedback(" . json_encode($data) . ")";
     }, 
 
+    /* Deprecated
     'POST /api/submit_feedback' => Array('do' => function() { 
         $addfeedback = new Feedback\Services\SubmissionService(Input::get());
         $addfeedback->perform(); 
     }), 
+    */
 
     //TODO: REFACTOR THIS BITCH
     'GET /api/publish' => Array('needs' => 'S36ValueObjects', 'do' => function() use ($feedback) { 
