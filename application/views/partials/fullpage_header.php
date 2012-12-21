@@ -1,17 +1,25 @@
+<?php
+	$layout = "timeline"; //layout
+	$as = false; 		  //set true to admin view
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/master.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/flags.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/grids.css" />
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/master.css" />
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/flags.css" />
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/grids.css" />
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/override.css" />
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/<?php echo $layout ?>.layout.css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="themes/hosted/fullpage/js/jquery.js"></script>
+<script type="text/javascript" src="themes/hosted/fullpage/js/masonry.js"></script>
+<script type="text/javascript" src="themes/hosted/fullpage/js/modernizr.js"></script>
+<script type="text/javascript" src="themes/hosted/fullpage/js/infinitescroll.js"></script>
+<script type="text/javascript" src="themes/hosted/fullpage/js/jquery-ui-1.8.24.custom.min.js"></script>
+<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/js/<?php echo $layout ?>.layout.js" />
 
-<script type="text/javascript" src="js/masonry.js"></script>
-<script type="text/javascript" src="js/modernizr.js"></script>
 
 <!--new ajax file upload plugin -->
 <script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
@@ -112,6 +120,39 @@
 			
 			nameContainer.html(appendDash);
 		});
+
+        $('.feedback-list').masonry({
+            itemSelector: '.feedback',
+            columnWidth: 100,
+            isAnimated: true,
+            gutterWidth: 365,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+              }
+        });
+        $('.feedback').each(function(){
+            
+        });
+        add_branches();
 	});
 	/* end of document ready function. below are custom functions for this form */	
+</script>
+
+<script type="text/javascript">
+    function add_branches(){ 
+        var s = $('.feedback-list').find('.regular');
+        $.each(s,function(i,obj){
+            var posLeft = $(obj).css("left");
+            if(posLeft == "0px"){
+                html = "<span class='left-branch'></span>";
+                $(obj).prepend(html); 
+            }
+            else{
+                html = "<span class='right-branch'></span>";
+                $(obj).prepend(html);
+            }
+        });
+    }
 </script>

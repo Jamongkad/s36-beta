@@ -32,7 +32,7 @@ a:hover{color:#54a1c0;}
 
 /* feedbacks */
 .feedback{width:311px;background:#FFF;box-shadow:#CCC 0px 2px 2px;}
-.featured{background:#ececec;border:none;padding:30px 28px;width:711px}
+.featured{background:#ececec;border:none;padding:30px 28px;}
 .featured .feedbackAuthor img{border:1px solid #CCC;}
 .featured .feedbackAuthor h2{color:#1982ad;}
 .featured .feedbackAuthor h4{color:#2c2a2a;}
