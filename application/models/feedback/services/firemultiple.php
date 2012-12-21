@@ -34,8 +34,6 @@ class FireMultiple {
 
     private function _group_ui_cluster($feeds) {
          
-        //$perms = $this->underscore->groupBy($feeds, 'perm');
-        //Helpers::dump($perms);
         $group = $this->underscore->groupBy($feeds, 'parent_id');
         $company_key = "inbox:check-action:".$this->company_id;
 
