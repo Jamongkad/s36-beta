@@ -82,13 +82,16 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //Helpers::dump(Input::get('metadata'));
+        $_ = new Underscore;
         if(Input::has('metadata')) {
             $collection = Array();
             foreach(Input::get('metadata') as $data) {
                 $collection[$data['name']][] = $data['value'];
             }
 
-            Helpers::dump($collection);
+            //Helpers::dump($collection);
+            $group = $_->groupBy(Input::get('metadata'), 'name'); 
+            Helpers::dump($group);
         }
       
        
