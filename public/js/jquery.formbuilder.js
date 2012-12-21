@@ -261,10 +261,10 @@
 					var title = '';
 					if (typeof (options) === 'object') {
 						title = options[0];
-						multiple = options[1] === 'true' ? true : false;
+						multiple = options[1] === 'checked' ? true : false;
 					}
 
-                    console.log(options);
+                    //console.log(options);
 
 					field += '<div class="opt_group">';
 					field += '<div class="frm-fld"><label>' + opts.messages.title + '</label>';
