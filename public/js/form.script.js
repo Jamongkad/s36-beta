@@ -703,64 +703,30 @@ $(document).keypress(function(event){
 	}
 
 	function scale_feedback_textbox(){
+        /* set the default textbox height px */
+        var default_ht = 280;
+        /* set heights of the elements by px */
+        var im = 78; // image container
+        var vd = 68; // video container
+        var cf_box_ht = $('.form-custom-fields').height();
 
-		/* set the default textbox height px */
-		var default_ht = 280;
-		/* set heights of the elements by px */
-		var cf = 28; // custom fields
-		var im = 78; // image container
-		var vd = 68; // video container
-		/* check if containers are active */
-		var active_cf = $('.form-field-block').length;
-		var active_im = $('.e_img_check').length;
-		var active_vd = $('.e_vid_check').length;
-		console.log(active_vd);
-		/* conditions */
-		if(active_cf == 0){
-			if(active_im && !active_vd){
-				adjust_feedback_textbox_height(default_ht - im);
-			}else if(active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (im + vd));
-			}else if(!active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - vd);
-			}else{
-				adjust_feedback_textbox_height(default_ht);
-			}
-		}else if(active_cf == 1){
-			if(active_im && !active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + im));
-			}else if(active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + im + vd));
-			}else if(!active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + vd));
-			}else{
-				adjust_feedback_textbox_height(default_ht - cf);
-			}
-		}else if(active_cf == 2){
-			cf = cf * 2;
-			if(active_im && !active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + im));
-			}else if(active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + im + vd));
-			}else if(!active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + vd));
-			}else{
-				adjust_feedback_textbox_height(default_ht - cf);
-			}
-		}else if(active_cf == 3){
-			cf = cf * 3;
-			if(active_im && !active_vd){			
-				adjust_feedback_textbox_height(default_ht - (cf + im));
-			}else if(active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + im + vd));
-			}else if(!active_im && active_vd){
-				adjust_feedback_textbox_height(default_ht - (cf + vd));
-			}else{
-				adjust_feedback_textbox_height(default_ht - cf);
-			}
-		}
-		
+
+        var active_im = $('.e_img_check').length;
+        var active_vd = $('.e_vid_check').length;
+
+        /* conditions */
+
+        if(active_im && !active_vd){
+            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im));
+        }else if(active_im && active_vd){
+            adjust_feedback_textbox_height(default_ht - (cf_box_ht + im + vd));
+        }else if(!active_im && active_vd){
+            adjust_feedback_textbox_height(default_ht - (cf_box_ht + vd));
+        }else{
+            adjust_feedback_textbox_height(default_ht - cf_box_ht);
+        }
 	}
+
 	function scale_review_textbox(){
 
 		/* set the default textbox height px */
