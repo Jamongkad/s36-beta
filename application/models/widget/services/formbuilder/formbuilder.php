@@ -537,8 +537,9 @@ class Formbuilder {
         }
 	
 		if(isset($field['title']) && !empty($field['title'])){
-			$html .= sprintf('<label for="%s">%s</label>' . "\n", $this->elemId($field['title']), $field['title']);
+			$html .= sprintf('<label for="%s">%s</label><br/>' . "\n", $this->elemId($field['title']), $field['title']);
 		}
+
 		$field['values'] = (array)$field['values'];
 		if(isset($field['values']) && is_array($field['values'])){
 			$multiple = $field['multiple'] == "checked" ? ' multiple="multiple"' : '';
