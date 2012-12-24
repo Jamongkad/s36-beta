@@ -87,6 +87,7 @@ return array(
             $_ = new Underscore; 
             $group = $_->groupBy(Input::get('metadata'), 'name'); 
             Helpers::dump(json_encode($group));
+            Helpers::dump($group);
         }   
         /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
