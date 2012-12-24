@@ -52,6 +52,7 @@ function display_codes(i){
                       <li class="formcodelink2">Embed Form Code <div class="formcodearrow"></div></li>
                       <li class="formcodelink3">Popup Form Link <div class="formcodearrow"></div></li>
                       <li class="formcodelink4">Link to Form <div class="formcodearrow"></div></li>
+                      <li class="formcodelink4">Return to Form Editor<div class="formcodearrow"></div></li>
                   <?else:?>
                       <li class="formcodelink1 active">Embed Code <div class="formcodearrow"></div></li>
                       <li class="formcodelink2">Link to Display <div class="formcodearrow"></div></li>
