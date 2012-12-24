@@ -43,7 +43,7 @@ function display_codes(i){
 <div class="block">
     <h2 style="margin-left:-8px;color:#3d6285;font-size:17px;">Form Code Manager</h2>
     <br/>
-    <a href="/feedsetup/edit/<?=$widget->widget_options->widgetkey?>" style="margin-left: -8px">Return to Form Editor</a> 
+    <a href="/feedsetup/edit/<?=$widget->widget_options->widgetkey?>" style="margin-left: -8px">---- Return to Form Editor</a> 
     <br/><br/>
     <div id="widget-setup-block">
         <div class="widget-options" style="padding-bottom:0px;border:1px solid #f0f2f3">
