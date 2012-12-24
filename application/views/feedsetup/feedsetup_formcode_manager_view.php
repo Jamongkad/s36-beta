@@ -42,6 +42,7 @@ function display_codes(i){
 
 <div class="block">
     <h2 style="margin-left:-8px;color:#3d6285;font-size:17px;">Form Code Manager</h2>
+    <a href="">Return to Form Editor</a>
     <br/>
     <div id="widget-setup-block">
         <div class="widget-options" style="padding-bottom:0px;border:1px solid #f0f2f3">
@@ -52,7 +53,6 @@ function display_codes(i){
                       <li class="formcodelink2">Embed Form Code <div class="formcodearrow"></div></li>
                       <li class="formcodelink3">Popup Form Link <div class="formcodearrow"></div></li>
                       <li class="formcodelink4">Link to Form <div class="formcodearrow"></div></li>
-                      <li >Form Editor<div class="formcodearrow"></div></li>
                   <?else:?>
                       <li class="formcodelink1 active">Embed Code <div class="formcodearrow"></div></li>
                       <li class="formcodelink2">Link to Display <div class="formcodearrow"></div></li>
