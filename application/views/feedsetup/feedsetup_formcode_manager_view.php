@@ -42,7 +42,7 @@ function display_codes(i){
 
 <div class="block">
     <h2 style="margin-left:-8px;color:#3d6285;font-size:17px;">Form Code Manager</h2>
-    <br/><br/>
+    <br/>
     <a href="">Return to Form Editor</a> 
     <br/><br/>
     <div id="widget-setup-block">
