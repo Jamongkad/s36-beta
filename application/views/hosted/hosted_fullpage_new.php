@@ -1,3 +1,86 @@
+<?= HTML::script('/js/jquery.raty.min.js'); ?>
+<?= HTML::style('css/override.css'); ?>
+
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        
+        // start of jquery raty.
+        
+        $('.star_rating').raty({
+            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+            score: function(){
+                return $(this).attr('rating');
+            },
+            path: '/img/',
+            starOn: 'star-fill.png',
+            starOff: 'star-empty.jpg',
+            readOnly: true
+        });
+        
+        // end of jquery raty. 
+        
+        
+        
+        // start of description ajax edit.
+        
+        $('.company-text').hover(
+            function(){
+                if( $('#desc_textbox_container').css('display') != 'block' ){
+                    $('.edit').css('display', 'inline-block');
+                }
+            },
+            function(){
+                $('.edit').css('display', 'none');
+            }
+        );
+        
+        $('.edit').click(function(){
+            $('.edit').css('display', 'none');
+            $('#desc_text').css('display', 'none');
+            $('.save, .cancel').css('display', 'inline-block');
+            $('#desc_textbox_container').css('display', 'block');
+        });
+        
+        $('.cancel').click(function(){
+            $('.save, .cancel').css('display', 'none');
+            $('#desc_textbox_container').css('display', 'none');
+            $('.edit').css('display', 'none');
+            $('#desc_text').css('display', 'block');
+            $('#desc_textbox').val( $('#desc_text').html() );
+        });
+        
+        $('.save').click(function(){
+            
+            var data = {};
+            data['header_text'] = $('#desc_textbox').val();
+            
+            $.ajax({
+                url: '/update_desc',
+                type: 'post',
+                data: data,
+                success: function(result){
+                    // if not result returned 1, it means he's not logged in.
+                    if( result == 1 ){
+                        alert('ei, no way, you should be logged in');
+                    }else{
+                        $('.save, .cancel').css('display', 'none');
+                        $('#desc_textbox_container').css('display', 'none');
+                        $('.edit').css('display', 'none');
+                        $('#desc_text').css('display', 'block');
+                        $('#desc_text').html( $('#desc_textbox').val() );
+                    }
+                }
+            });
+            
+        });
+        
+        // end of description ajax edit.
+        
+    });
+    
+</script>
+
 <div id="mainWrapper">
 	<div id="fadedContainer">
     	<div id="mainContainer">
@@ -9,7 +92,17 @@
            
             <div class="hosted-block">
                 <div class="company-description clear">
-                    <div class="company-text"><?=$company->description?></div>
+                    <div class="company-text">
+                        <div id="desc_text"><?=$company->description?></div>
+                        <div id="desc_textbox_container">
+                            <textarea id="desc_textbox"><?=$company->description?></textarea>
+                        </div>
+                        <div id="action_buttons">
+                            <div class="edit action_button" title="Edit">edit</div>
+                            <div class="save action_button" title="Save">save</div>
+                            <div class="cancel action_button" title="Cancel">cancel</div>
+                        </div>
+                    </div>
                     <div class="send-button"><a href="javascript:;">Send in feedback</a></div>
                 </div>
             </div>
@@ -21,6 +114,8 @@
                     </div>
                     <div class="company-rating">
                         <div class="review-count">Based on 29 reviews</div>
+                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
+                        <!--
                         <div class="stars blue clear">
                             <div class="star full"></div>
                             <div class="star full"></div>
@@ -28,7 +123,7 @@
                             <div class="star full"></div>
                             <div class="star half"></div>    
                         </div>
-                        
+                        -->
                     </div>
                 </div>
             </div>

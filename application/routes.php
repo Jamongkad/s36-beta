@@ -66,6 +66,10 @@ return array(
                                                   , 'theme'           => $theme
                                                   , 'hosted'          => $hosted_settings_info));        
     },
+    
+    'POST /update_desc' => function(){
+        return 1;
+    },
 
     'POST /savecoverphoto' => function() use($company){
         $data = Input::all();
