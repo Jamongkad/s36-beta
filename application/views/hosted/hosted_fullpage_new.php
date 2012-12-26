@@ -53,7 +53,7 @@
         $('.save').click(function(){
             
             var data = {};
-            data['header_text'] = $('#desc_textbox').val();
+            data['description'] = $('#desc_textbox').val();
             
             $.ajax({
                 url: '/update_desc',

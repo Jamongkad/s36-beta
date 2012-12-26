@@ -144,15 +144,12 @@ class DBCompany extends S36DataObject {
     }
     
     
-    public function update_desc_header($data, $company_id){ 
-        // don't save if there are no input.
+    public function update_desc($data, $company_id){
+        
+        // don't save if there's no input.
         if( array_key_exists('description', $data) ){
             DB::table('Company')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
         }
         
-        if( array_key_exists('header_text', $data) ){
-            $data['header_text'] = substr($data['header_text'], 0, 125);
-            DB::table('HostedSettings')->where('companyId', '=', $company_id)->update( array('header_text' => $data['header_text']) );
-        }     
     }
 }

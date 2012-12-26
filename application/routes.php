@@ -67,8 +67,15 @@ return array(
                                                   , 'hosted'          => $hosted_settings_info));        
     },
     
-    'POST /update_desc' => function(){
-        return 1;
+    'POST /update_desc' => function() use($user, $company){
+        
+        // don't proceed if the user is not logged in.
+        // return 1 for error checking.
+        if( ! is_object($user) ) return 1;
+        
+        $data = Input::get();
+        $company->update_desc($data, $user->companyid);
+        
     },
 
     'POST /savecoverphoto' => function() use($company){
