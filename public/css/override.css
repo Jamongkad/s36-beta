@@ -1,4 +1,5 @@
 .company-rating .stars{ width: 110px; }
-#desc_textbox_container{ display: none; }
-#action_buttons{ position: absolute; top: 0px; right: 10px; }
-#action_buttons .action_button{ float: left; display: none; }
+#desc_textbox_con{ display: none; }
+#action_buttons{ position: absolute; top: -15px; right: 15px; }
+#action_buttons .action_button{ float: left; display: none; cursor: pointer; }
+#desc_textbox{ width: 97%; }

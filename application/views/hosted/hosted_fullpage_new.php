@@ -26,7 +26,7 @@
         
         $('.company-text').hover(
             function(){
-                if( $('#desc_textbox_container').css('display') != 'block' ){
+                if( $('#desc_textbox_con').css('display') != 'block' ){
                     $('.edit').css('display', 'inline-block');
                 }
             },
@@ -39,12 +39,12 @@
             $('.edit').css('display', 'none');
             $('#desc_text').css('display', 'none');
             $('.save, .cancel').css('display', 'inline-block');
-            $('#desc_textbox_container').css('display', 'block');
+            $('#desc_textbox_con').css('display', 'block');
         });
         
         $('.cancel').click(function(){
             $('.save, .cancel').css('display', 'none');
-            $('#desc_textbox_container').css('display', 'none');
+            $('#desc_textbox_con').css('display', 'none');
             $('.edit').css('display', 'none');
             $('#desc_text').css('display', 'block');
             $('#desc_textbox').val( $('#desc_text').html() );
@@ -64,11 +64,8 @@
                     if( result == 1 ){
                         alert('ei, no way, you should be logged in');
                     }else{
-                        $('.save, .cancel').css('display', 'none');
-                        $('#desc_textbox_container').css('display', 'none');
-                        $('.edit').css('display', 'none');
-                        $('#desc_text').css('display', 'block');
                         $('#desc_text').html( $('#desc_textbox').val() );
+                        $('.cancel').trigger('click');
                     }
                 }
             });
@@ -94,7 +91,7 @@
                 <div class="company-description clear">
                     <div class="company-text">
                         <div id="desc_text"><?=$company->description?></div>
-                        <div id="desc_textbox_container">
+                        <div id="desc_textbox_con">
                             <textarea id="desc_textbox"><?=$company->description?></textarea>
                         </div>
                         <div id="action_buttons">
