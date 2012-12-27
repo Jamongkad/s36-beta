@@ -93,7 +93,7 @@ class JqueryFileUploader
                 // Uncomment the following version to restrict the size of
                 // uploaded images:
                 
-                '' => array(
+                'large' => array(
                     'max_width' => 800,
                     'max_height' => 1200,
                     'jpeg_quality' => 95
@@ -107,7 +107,7 @@ class JqueryFileUploader
                     'jpeg_quality' => 80
                 ),
                 
-                'thumbnail' => array(
+                'small' => array(
                     'max_width' => 80,
                     'max_height' => 80
                 )
