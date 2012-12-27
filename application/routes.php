@@ -88,6 +88,7 @@ return array(
             $group = $_->groupBy(Input::get('metadata'), 'name'); 
             Helpers::dump(json_encode($group));
             Helpers::dump($group);
+            Helpers::dump(Input::get('metadata'));
         }   
 
         /*
