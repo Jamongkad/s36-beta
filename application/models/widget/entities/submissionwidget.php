@@ -69,8 +69,8 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_html() {
-        //$widget_view = 'widget/widget_submissionform_view';
-        $widget_view = 'widget/widget_submissionform_new_view';
+        $widget_view = 'widget/widget_submissionform_view';
+        //$widget_view = 'widget/widget_submissionform_new_view';
         return View::of_widget_layout()->partial('contents', $widget_view, $this->form_vars)->get();  
     }
 
