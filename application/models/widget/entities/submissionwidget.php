@@ -75,7 +75,7 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
-        $hosted_view = 'widget/hosted_feedback_form_view';
+        $hosted_view = '/widget/hosted_feedback_form_view';
         return View::make($hosted_view, Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
