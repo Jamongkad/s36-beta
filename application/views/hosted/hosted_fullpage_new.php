@@ -10,7 +10,7 @@
             <div class="hosted-block">
                 <div class="company-description clear">
                     <div class="company-text"><?=$company->description?></div>
-                    <div class="send-button"><a href="javascript:;">Send in feedback</a></div>
+                    <div class="send-button"><a href="<?=$company->company_name?>/submit">Send in feedback</a></div>
                 </div>
             </div>
             
@@ -37,9 +37,8 @@
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
                     <?php 
-                    //echo "<pre>";print_r($feeds); echo "</pre>";
-                    if($feeds):
-                    foreach ($feeds as $feed_group => $feed_list) : 
+                    if($feeds): //if feed exist
+                    foreach ($feeds as $feed_group => $feed_list) : //start feedback group loop
                     ?>
                     <div class="feedback-block">
                         <div class="feedback-spine"></div>                
@@ -52,13 +51,13 @@
                         <div class="feedback-list">
                             <?php
                             foreach ($feed_list as $feed) : 
-                                $feedback_main_class         = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
-                                $feedback_content_class      = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
-                                $tw_marker                   = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
-                                $author_name        = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
-                                $author_company     = $feed->feed_data->position.', '.$feed->feed_data->companyname;
-                                $author_location    = $feed->feed_data->city.', '.$feed->feed_data->countryname;
-                                $text               = $feed->feed_data->text;
+                                $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
+                                $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
+                                $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
+                                $author_name                = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
+                                $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
+                                $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
+                                $text                       = $feed->feed_data->text;
                             ?>
                             <div class="feedback <?=$feedback_main_class?>">
                                 <?=$tw_marker?>
@@ -171,8 +170,8 @@
                         </div>
                     </div>
                     <?php
-                    endforeach;
-                    endif;
+                    endforeach; //end loop for feedback group
+                    endif; //end if feed exists
                     ?>
                 </div>
             </div>

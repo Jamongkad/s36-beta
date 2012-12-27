@@ -30,7 +30,6 @@ class WidgetLoader {
     public function load() {
 
         $obj = $this->widget_obj;
-
         if($obj) {
             if($obj->widgettype == 'display') {
                 $params = Array(
