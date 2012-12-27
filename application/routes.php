@@ -91,6 +91,12 @@ return array(
             Helpers::dump(json_encode($group));
             //this data goes into MetadataTags Table
             Helpers::dump(Input::get('metadata'));
+            foreach(Input::get('metadata') as $data) {
+                DB::Table('MetadataTags', 'master')->insert(Array(
+                    'tagName' => $data['name']
+                  , 'tagValue' => $data['value']
+                ));
+            }
         }   
 
         /*
