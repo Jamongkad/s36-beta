@@ -64,7 +64,12 @@ return array(
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'theme'           => $theme
-                                                  , 'hosted'          => $hosted_settings_info));        
+                                                  , 'hosted'          => $hosted_settings_info));
+        
+        
+        // increment page view count of company.
+        $company->incr_page_view($company_info->companyid);
+        
     },
     
     'POST /update_desc' => function() use($user, $company){

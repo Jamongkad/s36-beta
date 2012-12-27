@@ -49,6 +49,8 @@ class DBCompany extends S36DataObject {
                 * 
                 , Company.name AS company_name 
                 , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS avg_rating
+                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS total_feedback
+                , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId AND isRecommended = 1) AS total_recommendations
             FROM 
                 Company
             INNER JOIN
@@ -144,12 +146,23 @@ class DBCompany extends S36DataObject {
     }
     
     
+    
+    // update description from hosted page.
     public function update_desc($data, $company_id){
         
         // don't save if there's no input.
         if( array_key_exists('description', $data) ){
             DB::table('Company')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
         }
+        
+    }
+    
+    
+    
+    // increment page view count.
+    public function incr_page_view($company_id){
+        
+        DB::query('UPDATE Company SET page_view = page_view + 1 WHERE companyId = ?', array($company_id));
         
     }
 }
