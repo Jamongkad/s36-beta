@@ -148,7 +148,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                     <!-- start of form title -->
                     <div class="form-feedback-title">
                         <div class="form-field-block">
-                            <input type="text" class="regular-custom-field" value="" title="Title of your feedback" name="title" />
+                            <input id="feedbackTitle" type="text" class="regular-custom-field" value="" title="Title of your feedback" name="title" />
                         </div>
                     </div>
                     <!-- end of form title -->
