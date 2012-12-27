@@ -90,7 +90,6 @@ return array(
             Helpers::dump($group);
         }   
 
-        Helpers::dump(Input::get());
         /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
