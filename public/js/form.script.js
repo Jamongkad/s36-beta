@@ -103,6 +103,7 @@ $(document).keypress(function(event){
 			        });
 	            }});
 		});
+
 		function submit_feedback(){
 
 			var company, position, website, form_metadata;
@@ -130,7 +131,7 @@ $(document).keypress(function(event){
 				});
 			});
 			//get attached link data
-			if($('#hasLink').val()==1){
+			if($('#hasLink').val() == 1) {
 				var attachedLink = {
 					title			: $('#link-title').val(),
 					description		: $('#link-description').val(),
@@ -139,6 +140,7 @@ $(document).keypress(function(event){
 					video			: $('#link-video').val(),
 				};
 			}
+
 			//build attached link and uploaded images array
 			var attachments = {
 					'attached_link'		:attachedLink,
@@ -150,6 +152,7 @@ $(document).keypress(function(event){
 			var data = {
 					site_id		: $('#siteId').val(),
 					companyId	: $('#companyId').val(),
+                    title       : $('#feedbackTitle').val(),
 					feedback 	: $('#feedbackText').val(),
 					rating 		: $('#rating').val(),
 					recommend 	: $('#recommend').val(),
@@ -266,7 +269,6 @@ $(document).keypress(function(event){
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
 			},done: function(e, data){
-				console.log('data:'+data);
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
