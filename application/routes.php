@@ -84,10 +84,12 @@ return array(
         //Helpers::dump(Input::get('metadata'));
 
         if(Input::has('metadata')) {
+
             $_ = new Underscore; 
             $group = $_->groupBy(Input::get('metadata'), 'name'); 
+            //this data goes into Feedback Table
             Helpers::dump(json_encode($group));
-            Helpers::dump($group);
+            //this data goes into MetadataTags Table
             Helpers::dump(Input::get('metadata'));
         }   
 
