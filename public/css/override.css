@@ -1,5 +1,10 @@
 .company-rating .stars{ width: 110px; }
 #desc_textbox_con{ display: none; }
+#desc_textbox{ width: 97%; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #CCC; padding: 4px; font-size: 12px; color: #777; }
 #action_buttons{ position: absolute; top: -15px; right: 15px; }
-#action_buttons .action_button{ float: left; display: none; cursor: pointer; }
-#desc_textbox{ width: 97%; }
+#action_buttons .action_button{ float: left; display: none; cursor: pointer; width: 20px; height: 17px; }
+#action_buttons .edit{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -140px 0px; }
+#action_buttons .save{ background: url(../../../img/ico-green-check.png) no-repeat; }
+#action_buttons .cancel{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -160px 0px; }
+
+

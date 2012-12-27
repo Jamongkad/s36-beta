@@ -37,17 +37,18 @@
         
         $('.edit').click(function(){
             $('.edit').css('display', 'none');
-            $('#desc_text').css('display', 'none');
             $('.save, .cancel').css('display', 'inline-block');
+            $('#desc_text').css('display', 'none');
             $('#desc_textbox_con').css('display', 'block');
+            //$('#desc_textbox').val( $('#desc_text').html().replace(/<br>/g, '\n') );
         });
         
         $('.cancel').click(function(){
+            $('.edit').css('display', 'none');
             $('.save, .cancel').css('display', 'none');
             $('#desc_textbox_con').css('display', 'none');
-            $('.edit').css('display', 'none');
-            $('#desc_text').css('display', 'block');
-            $('#desc_textbox').val( $('#desc_text').html() );
+            $('#desc_text').fadeIn();
+            $('#desc_textbox').val( $('#desc_text').html().replace(/<br>/g, '\n') );
         });
         
         $('.save').click(function(){
@@ -64,7 +65,7 @@
                     if( result == 1 ){
                         alert('ei, no way, you should be logged in');
                     }else{
-                        $('#desc_text').html( $('#desc_textbox').val() );
+                        $('#desc_text').html( $('#desc_textbox').val().replace(/\n/g, '<br/>') );
                         $('.cancel').trigger('click');
                     }
                 }
@@ -90,14 +91,14 @@
             <div class="hosted-block">
                 <div class="company-description clear">
                     <div class="company-text">
-                        <div id="desc_text"><?=$company->description?></div>
+                        <div id="desc_text"><?= nl2br( HTML::entities($company->description) ); ?></div>
                         <div id="desc_textbox_con">
-                            <textarea id="desc_textbox"><?=$company->description?></textarea>
+                            <textarea id="desc_textbox" rows="3"><?=$company->description?></textarea>
                         </div>
                         <div id="action_buttons">
-                            <div class="edit action_button" title="Edit">edit</div>
-                            <div class="save action_button" title="Save">save</div>
-                            <div class="cancel action_button" title="Cancel">cancel</div>
+                            <div class="edit action_button" title="Edit"></div>
+                            <div class="save action_button" title="Save"></div>
+                            <div class="cancel action_button" title="Cancel"></div>
                         </div>
                     </div>
                     <div class="send-button"><a href="javascript:;">Send in feedback</a></div>
