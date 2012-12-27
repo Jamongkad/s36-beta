@@ -2,9 +2,9 @@
 
 $feedback = new Feedback\Repositories\DBFeedback;
 $hosted_settings = new Widget\Repositories\DBHostedSettings;
-$themes = new Themes\Repositories\DBThemes;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
+$company_social = new Company\Repositories\DBCompanySocialAccount;
 $company_name = Config::get('application.subdomain');
 Package::load('eden');
 eden()->setLoader();
@@ -26,27 +26,19 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $dbw, $company, $user, $feedback, $themes) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
-
-        $hosted = new Feedback\Services\HostedService($company_name);
-        
-        //Feeds
-        $feeds = $hosted->fetch_hosted_feedback();
-        //$hosted->build_data(); <---- I will take care of this - Mathew
-
-        $widget = $dbw->fetch_canonical_widget($company_name);
+        $hosted = new Feedback\Services\HostedService($company_name); 
+        //Feeds 
+        $hosted->page_number = 1;
+        $hosted->build_data();
+        $feeds = $hosted->fetch_data_by_set();
 
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
-
-        //fullpage theme
-        $theme = $themes->get_theme_by_name($hosted_settings_info->theme_name);
-        $theme->theme_css = (!empty($theme->theme_css)) ? '<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/'.$theme->theme_css.'" />' : '';
-        $theme->theme_js  = (!empty($theme->theme_js))  ? '<script type="text/javascript" src="themes/hosted/fullpage/'.$theme->theme_js.'"></script>'    : '';
-
+    
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
                                                        , $company_info->domain);
@@ -55,52 +47,49 @@ return array(
              'company_name' => $company_info->company_name
            , 'company_id' => $company_info->companyid
         ));
+
         $meta->calculate_metrics();
-        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_fullpage_new', Array(  
+
+        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'         => $company_info
+                                                  , 'company_social'  => $company_social
                                                   , 'user'            => $user
-                                                  , 'feeds'           => $feeds
-                                                  , 'widget'          => $widget
+                                                  , 'feeds'           => $feeds 
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
-                                                  , 'theme'           => $theme
                                                   , 'hosted'          => $hosted_settings_info));        
     },
-
-    'POST /savecoverphoto' => function() use($company){
-        $data = Input::all();
-        $company->update_coverphoto($data);
-        return json_encode($data);
-    },
-
     
-    'GET /(:any)/submit' => function($company_name) use($hosted_settings, $dbw, $company) {
-        $canon_widget = $dbw->fetch_canonical_widget($company_name);
-
-        $wl = new Widget\Services\WidgetLoader($canon_widget->widgetkey); 
-        $widget = $wl->load();
-
-        $company_info = $company->get_company_info($widget->company_id);
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-
-        $hosted_settings->set_hosted_settings(Array('companyId' => $widget->company_id));
-
-
-        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
-                                                      'widget'          => $widget->render_hosted()
-                                                    , 'company'         => $company_info
-                                                    , 'company_header'  => $header_view 
-                                                    , 'hosted'          => $hosted_settings->hosted_settings()));
+    'POST /update_desc_header' => function() use($user, $company){ 
+        // don't proceed if the user is not logged in.
+        // return 1 for error checking.
+        if( ! is_object($user) ) return 1;
+        
+        $data = Input::get();
+        $company->update_desc_header($data, $user->companyid); 
     },
-    'GET /asdf' => function() use($company_name,$company, $hosted_settings){
+     
+    'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
+        $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
+        $widget = $widgetloader->load();
+
         $company_info = $company->get_company_info($company_name);
-        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
-        $hosted_settings_info = $hosted_settings->hosted_settings();
-        echo "<pre>";
-        $q = Redirect::to('');
-        print_r($hosted_settings_info);
+        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
+        return View::of_company_layout()->partial('contents', 'hosted/hosted_feedback_form_view', Array(
+                                                      'widget' => $widget->render_hosted()
+                                                    , 'company_header' => $header_view)); 
     },
-    'POST /submit_feedback' => function() use($company_name,$company,$hosted_settings){
+
+    'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
+        //Helpers::dump(Input::get('metadata'));
+
+        if(Input::has('metadata')) {
+            $_ = new Underscore; 
+            $group = $_->groupBy(Input::get('metadata'), 'name'); 
+            Helpers::dump(json_encode($group));
+            Helpers::dump($group);
+        }   
+        /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
 
@@ -133,10 +122,9 @@ return array(
         $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj);
+        */
     },
     
-
-
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
 
         $feedback = $feedback->pull_feedback_by_id($id);

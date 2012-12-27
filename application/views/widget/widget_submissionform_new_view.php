@@ -144,7 +144,14 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                         </div>
                     </div>
                     <!-- end of star ratings -->
-                    
+                     
+                    <!-- start of feedback form -->
+                    <div class="form-feedback-textbox">
+                        <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
+                        <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
+                    </div>
+                    <!-- end of feedback form -->
+
                     <!-- start custom fields block -->
                     <?if($form_render):?>
                         <div class="form-custom-fields">
@@ -152,13 +159,6 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                         </div>
                     <?endif?>
                     <!-- end of custom fields block -->
-                    
-                    <!-- start of feedback form -->
-                    <div class="form-feedback-textbox">
-                        <div class="fullscreen-icon" alt="Expand Textbox" title="Expand Textbox"></div>
-                        <textarea id="feedbackText" class="feedback-textarea" title="<?=($form_question) ? $form_question : 'Please Enter Your Feedback'?>"></textarea>
-                    </div>
-                    <!-- end of feedback form -->
                     
                     <!-- start of thumbs up! -->
                     <div class="form-recommendation-text clear">

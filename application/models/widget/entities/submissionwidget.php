@@ -75,7 +75,9 @@ class SubmissionWidget extends FormWidgets {
     }
 
     public function render_hosted() {
-        return View::make('widget/new_hostedform_view', Array(
+        //$hosted_view = 'widget/widget_hostedform_view_new';
+        $hosted_view = 'widget/widget_hostedform_view';
+        return View::make($hosted_view, Array(
             'fb_app_id'      => $this->fb_id  
           , 'env'            => $this->env
           , 'countries'      => $this->country 
