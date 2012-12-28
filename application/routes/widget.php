@@ -3,10 +3,6 @@
 return array(
     
     'GET /widget/widget_loader/(:any)' => function($widget_key) {
-        /* TODO Old implementation
-        $wl = new Widget\Services\WidgetLoader($widget_key); 
-        return $wl->load()->render_data();
-        */
         //only submission forms will load :(
         $wl = new Widget\Services\WidgetLoader($widget_key, $load_submission_form=True); 
         return $wl->load()->render_html();
