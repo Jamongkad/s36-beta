@@ -74,19 +74,6 @@ class WidgetLoader {
             if($obj->widgettype == 'submit') {
                 $obj->widget = $obj->widgetattr->embed_type; 
                 return $this->wf->load_widget($obj);
-                /*
-                $option = new StdClass;
-                $option->site_id              = $obj->site_id;
-                $option->company_id           = $obj->company_id;
-                $option->submit_form_text     = $obj->submit_form_text;
-                $option->submit_form_question = $obj->submit_form_question;
-                $option->theme_type = $obj->theme_type;
-                $option->widget = $obj->embed_type;
-                $option->widgetkey = $obj->widgetkey;
-                $option->tab_type = $obj->tab_type;
-                $option->tab_pos  = $obj->tab_pos;
-                return $this->wf->load_widget($option);
-                */
             } 
         }
 
