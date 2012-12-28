@@ -50,7 +50,7 @@ return array(
 
         $meta->calculate_metrics();
 
-        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
+        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_fullpage_new', Array(  
                                                     'company'         => $company_info
                                                   , 'company_social'  => $company_social
                                                   , 'user'            => $user
