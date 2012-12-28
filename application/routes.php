@@ -50,7 +50,7 @@ return array(
 
         $meta->calculate_metrics();
 
-        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
+        echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_fullpage_new', Array(  
                                                     'company'         => $company_info
                                                   , 'company_social'  => $company_social
                                                   , 'user'            => $user
@@ -58,16 +58,23 @@ return array(
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
+        
+        
+        // increment page view count of company.
+        $company->incr_page_view($company_info->companyid); 
     },
     
-    'POST /update_desc_header' => function() use($user, $company){ 
+    'POST /update_desc' => function() use($user, $company){
+        
         // don't proceed if the user is not logged in.
         // return 1 for error checking.
         if( ! is_object($user) ) return 1;
         
         $data = Input::get();
-        $company->update_desc_header($data, $user->companyid); 
+        $company->update_desc($data, $user->companyid);
+        
     },
+    
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
@@ -84,11 +91,21 @@ return array(
         //Helpers::dump(Input::get('metadata'));
 
         if(Input::has('metadata')) {
+
             $_ = new Underscore; 
             $group = $_->groupBy(Input::get('metadata'), 'name'); 
+            //this data goes into Feedback Table
             Helpers::dump(json_encode($group));
-            Helpers::dump($group);
+            //this data goes into MetadataTags Table
+            Helpers::dump(Input::get('metadata'));
+            foreach(Input::get('metadata') as $data) {
+                DB::Table('MetadataTags', 'master')->insert(Array(
+                    'tagName' => $data['name']
+                  , 'tagValue' => $data['value']
+                ));
+            }
         }   
+
         /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
@@ -151,7 +168,7 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/login', Array(
                 'company' => $company_name, 'errors' => array(), 'warning' => null
             ));      
-        }		
+        }       
 
     },
 
