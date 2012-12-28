@@ -30,12 +30,11 @@ class WidgetLoader {
 
     public function load() {
 
-        try {
-            $obj = $this->widget_obj;     
-        } catch(Exception $e) {
-            die($e->getMessage());
+        $obj = $this->widget_obj;
+
+        if(!$obj) {
+            throw new Exception("No Widget Found");
         }
-       
 
         if($obj) {
             if($obj->widgettype == 'display') {
