@@ -30,7 +30,12 @@ class WidgetLoader {
 
     public function load() {
 
-        $obj = $this->widget_obj;
+        try {
+            $obj = $this->widget_obj;     
+        } catch(Exception $e) {
+            die($e->getMessage());
+        }
+       
 
         if($obj) {
             if($obj->widgettype == 'display') {
@@ -76,10 +81,7 @@ class WidgetLoader {
                 $obj->widget = $obj->widgetattr->embed_type; 
                 return $this->wf->load_widget($obj);
             } 
-        } else {
-            throw new Exception("No Widget has been found!");
-        }
-
+        } 
     }
 
     public function load_widget_init_js_code() {
