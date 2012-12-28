@@ -9,7 +9,7 @@ return array(
         */
         //only submission forms will load :(
         $wl = new Widget\Services\WidgetLoader($widget_key, $load_submission_form=True); 
-        return $wl->load();
+        return $wl->load()->render_html();
     },
     
     //these routes are used by js loaders for source construction
