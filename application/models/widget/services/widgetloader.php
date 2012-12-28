@@ -1,6 +1,7 @@
 <?php namespace Widget\Services;
 
-use StdClass, Config, Helpers;
+use StdClass, Exception;
+use Config, Helpers;
 use Widget\Repositories\DBWidget;
 
 class WidgetLoader {
@@ -75,6 +76,8 @@ class WidgetLoader {
                 $obj->widget = $obj->widgetattr->embed_type; 
                 return $this->wf->load_widget($obj);
             } 
+        } else {
+            throw new Exception("No Widget has been found!");
         }
 
     }
