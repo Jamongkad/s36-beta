@@ -58,16 +58,23 @@ return array(
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
                                                   , 'hosted'          => $hosted_settings_info));        
+        
+        
+        // increment page view count of company.
+        $company->incr_page_view($company_info->companyid); 
     },
     
-    'POST /update_desc_header' => function() use($user, $company){ 
+    'POST /update_desc' => function() use($user, $company){
+        
         // don't proceed if the user is not logged in.
         // return 1 for error checking.
         if( ! is_object($user) ) return 1;
         
         $data = Input::get();
-        $company->update_desc_header($data, $user->companyid); 
+        $company->update_desc($data, $user->companyid);
+        
     },
+    
      
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
@@ -161,7 +168,7 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/login', Array(
                 'company' => $company_name, 'errors' => array(), 'warning' => null
             ));      
-        }		
+        }       
 
     },
 
