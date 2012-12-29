@@ -77,7 +77,7 @@ class WidgetLoader {
                 return $this->wf->load_widget($obj);
             } 
         } else { 
-            throw new Exception("No Widget Found");
+            throw new Exception("No Widget Found!");
         }
     }
 
