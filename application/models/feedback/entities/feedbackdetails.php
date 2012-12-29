@@ -1,6 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
+use Underscore\Underscore;
 use DB, Helpers, Package;
 use SimpleArray;
 
@@ -35,7 +36,16 @@ class FeedbackDetails extends FeedbackDataTypes {
           $isPublished = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
         }
         /*end autoposting*/
-        
+
+        /*metadata grouping*/
+        /*
+        $metadata = Null;
+        if($this->post_data->get('metadata')) { 
+            $_ = new Underscore; 
+            $group = $_->groupBy($this->post_data->get('metadata'), 'name'); 
+            $metadata = json_encode($group);
+        }
+        */ 
         return Array(
             'siteId'            => $this->post_data->get('site_id')
           , 'companyId'         => $this->post_data->get('companyId')
@@ -51,6 +61,8 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'permission'        => ($permission) ? $permission : 1
           , 'dtAdded'           => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
           , 'attachments'       => json_encode($this->post_data->get('attachments'))
+          //, 'metadata'        => $metadata
         );
+        //Metadata should be added after attachments key ^^
     }
 }

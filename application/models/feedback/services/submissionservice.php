@@ -40,6 +40,7 @@ class SubmissionService {
         /*archive attachments data into FeedbackAttachment table*/
         //$feedback_attachments  = $this->feedback_attachments->generate_data($new_feedback_id);
         
+        //This is for users how have used the submission form
         DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
             'contactId' => $contact_data['contact_id']
           , 'feedbackId' => $new_feedback_id
@@ -48,7 +49,6 @@ class SubmissionService {
         ));
 
         $submission_data = new NewFeedbackSubmissionData; 
-
         $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->post_data->get('company_id'));
 
