@@ -109,6 +109,7 @@ return array(
                    , 'tagId' => $insert_id
                 ));
             }
+
         }   
 
         /*
