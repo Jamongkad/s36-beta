@@ -98,10 +98,16 @@ return array(
             Helpers::dump(json_encode($group));
             //this data goes into MetadataTags Table
             Helpers::dump(Input::get('metadata'));
+            $random_ids = Array(1055, 1054, 529);
             foreach(Input::get('metadata') as $data) {
-                DB::Table('MetadataTags', 'master')->insert(Array(
+                $insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
                     'tagName' => $data['name']
                   , 'tagValue' => $data['value']
+                ));
+
+                DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
+                     'feedbackId' => $random_ids[array_rand($random_ids)]
+                   , 'tagId' => $insert_id
                 ));
             }
         }   
