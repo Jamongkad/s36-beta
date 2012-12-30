@@ -36,6 +36,7 @@ class ContactDetails extends FeedbackDataTypes {
         $this->profilelink  = $this->post_data->get('profileLink');
         $login_type         = ($this->post_data->get('loginType')) ? $this->post_data->get('loginType') : 's36';
         $avatar             = $this->post_data->get('avatar');
+
         /*
         if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
           $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'),$this->post_data->get('login_type'));
@@ -58,7 +59,6 @@ class ContactDetails extends FeedbackDataTypes {
           , 'ipaddress'     => $this->userinfo->get_ip_long()
           , 'browser'       => $this->userinfo->browser()->getBrowser()
         ); 
-
         //$contact_info['contact_id'] = $this->_write_new_contact($contact_info);
         return $contact_info;
     }
