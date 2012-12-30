@@ -4,6 +4,7 @@ use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackAttachments, Fee
 use Feedback\Services\FeedbackService;
 use Halcyonic\Services\HalcyonicService; 
 use Feedback\Repositories\DBFeedback;
+use Contact\Repositories\DBContact;
 use DBBadWords, DBDashboard, DBUser;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
@@ -20,15 +21,24 @@ class SubmissionService {
         $this->feedback_details = new FeedbackDetails($this->post_data);
         $this->dbfeedback       = new DBFeedback;
         $this->dbuser           = new DBUser; 
+        $this->dbcontact        = new DBContact;
         //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
     }
 
     public function perform() {        
 
-        $contact_data                   = $this->contact_details->generate_data();
-        $feedback_data                  = $this->feedback_details->generate_data();
-        $feedback_data['contactId']     = $contact_data['contact_id'];
+        $contact_data = $this->contact_details->generate_data();
+        $feedback_data = $this->feedback_details->generate_data();
 
+        Helpers::dump($contact_data);
+        Helpers::dump($feedback_data);
+        //$new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
+
+        //$feedback_data                  = $this->feedback_details->generate_data();
+        //$feedback_data['contactId']     = $new_contact_id;
+        //$feedback_data['contactId']     = $contact_data['contact_id'];
+        
+        /*
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
         $post = (object) Array(
             'feedback_text' => $feedback_data['text'], 
@@ -37,7 +47,6 @@ class SubmissionService {
         $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
         $feedbackservice->save_feedback($post);
 
-        /*archive attachments data into FeedbackAttachment table*/
         //$feedback_attachments  = $this->feedback_attachments->generate_data($new_feedback_id);
         
         //This is for users how have used the submission form
@@ -84,6 +93,7 @@ class SubmissionService {
         $this->halcyonic->company_id = $this->post_data->get('company_id');
         $this->halcyonic->save_latest_feedid(); 
         return ($feedbackservice) ? DB::table('Feedback')->where('feedbackId','=',$new_feedback_id)->first() : false;
+        */
     }
 
     public function metric_response() {

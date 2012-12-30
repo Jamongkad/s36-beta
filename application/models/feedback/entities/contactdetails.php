@@ -59,16 +59,16 @@ class ContactDetails extends FeedbackDataTypes {
           , 'browser'       => $this->userinfo->browser()->getBrowser()
         ); 
 
-        $contact_info['contact_id'] = $this->write_new_contact($contact_info);
+        //$contact_info['contact_id'] = $this->_write_new_contact($contact_info);
         return $contact_info;
     }
 
-    public function write_new_contact($contact_info) {
+    private function _write_new_contact($contact_info) {
         $dbcontact = new DBContact;        
         return $dbcontact->insert_new_contact($contact_info);
     }
     
-    public function _sentence_case($string) {
+    private function _sentence_case($string) {
         return ucwords(strtolower($string));
     }
 }

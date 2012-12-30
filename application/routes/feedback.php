@@ -5,10 +5,6 @@ $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
 
-use Feedback\Entities\ContactDetails;
-use Feedback\Entities\FeedbackDetails;
-use Halcyonic\Services\HalcyonicService;
-
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
          

@@ -2,7 +2,6 @@
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB;
 use ZebraPagination\ZebraPagination;
-use Feedback\Entities\ContactDetails;
 
 class DBContact extends S36DataObject {
 
