@@ -44,6 +44,7 @@ class FeedbackDetails extends FeedbackDataTypes {
             $group = $_->groupBy($this->post_data->get('metadata'), 'name'); 
             $metadata = json_encode($group);
         }
+
         return Array(
             'siteId'            => $this->post_data->get('site_id')
           , 'companyId'         => $this->post_data->get('companyId')
@@ -60,6 +61,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'dtAdded'           => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
           , 'attachments'       => json_encode($this->post_data->get('attachments'))
           , 'metadata'          => $metadata
+          , 'title'             => $this->post_data->get('title')
         );
     }
 }
