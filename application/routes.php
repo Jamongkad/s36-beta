@@ -89,13 +89,8 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //Helpers::dump(Input::get('metadata'));
-
-        if(Input::has('metadata')) {
-
-            $_ = new Underscore; 
-            $group = $_->groupBy(Input::get('metadata'), 'name'); 
-            //this data goes into Feedback Table
-            Helpers::dump(json_encode($group));
+        /*
+        if(Input::has('metadata')) {   
             //this data goes into MetadataTags Table
             Helpers::dump(Input::get('metadata'));
             $random_ids = Array(1055, 1054, 529);
@@ -111,8 +106,7 @@ return array(
             }
 
         }   
-
-        /*
+        */
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
 
@@ -145,7 +139,6 @@ return array(
         $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj);
-        */
     },
     
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 

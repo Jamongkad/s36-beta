@@ -48,6 +48,25 @@ class SubmissionService {
           , 'socialId' => $new_feedback_id
         ));
 
+        if($post_metadata = $this->post_data->get('metadata')) { 
+
+            foreach($post_metadata as $data) {
+                //this data goes into MetadataTags Table
+                $insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
+                    'tagName' => $data['name']
+                  , 'tagValue' => $data['value']
+                ));
+
+                //Feedback MetadataTags junction table
+                DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
+                     'feedbackId' => $new_feedback_id
+                   , 'tagId' => $insert_id
+                ));
+
+            }
+
+        }   
+
         $submission_data = new NewFeedbackSubmissionData; 
         $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
         $account_users = $this->dbuser->pull_user_emails_by_company_id($this->post_data->get('company_id'));

@@ -38,14 +38,12 @@ class FeedbackDetails extends FeedbackDataTypes {
         /*end autoposting*/
 
         /*metadata grouping*/
-        /*
         $metadata = Null;
         if($this->post_data->get('metadata')) { 
             $_ = new Underscore; 
             $group = $_->groupBy($this->post_data->get('metadata'), 'name'); 
             $metadata = json_encode($group);
         }
-        */ 
         return Array(
             'siteId'            => $this->post_data->get('site_id')
           , 'companyId'         => $this->post_data->get('companyId')
@@ -61,8 +59,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'permission'        => ($permission) ? $permission : 1
           , 'dtAdded'           => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
           , 'attachments'       => json_encode($this->post_data->get('attachments'))
-          //, 'metadata'        => $metadata
+          , 'metadata'          => $metadata
         );
-        //Metadata should be added after attachments key ^^
     }
 }
