@@ -110,6 +110,22 @@ class Determiner {
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
            return $obj;
        }
+
+       if($my_url[1] == 'fdback') {
+           $obj->host = 'https://'.$subdomain.'.fdback.com';
+           $obj->db   = Array(
+                'host' => 'localhost'
+              , 'username' => 'root'
+              , 'password' => 'brx4*svv'
+              , 'db' => 's36'
+           );
+
+           $obj->deploy_env = 'https://feedback.fdback.com';
+           $obj->env_name = 'prod';
+           $obj->fb_id = '259670914062599';
+           $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
+           return $obj;
+       }
        //AWS PRODUCTION
        /*
        $pattern = '#([a-z]+\.|https?:\/\/){1}[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\S*)#i';
