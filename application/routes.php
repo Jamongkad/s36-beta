@@ -104,7 +104,6 @@ return array(
                     'tagName' => $data['name']
                   , 'tagValue' => $data['value']
                 ));
-
                 DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
                      'feedbackId' => $random_ids[array_rand($random_ids)]
                    , 'tagId' => $insert_id
