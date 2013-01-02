@@ -56,6 +56,7 @@ class ProfileImage {
         //save and resize pics in 48 and 150 directories
         $this->_save_pic($file_name, $this->dir48, $this->targ_w_small, $this->targ_h_large);
         $this->_save_pic($file_name, $this->dir150, $this->targ_w_large, $this->targ_h_large);
+        //garbage collect
         @unlink($file_name);
         return $this->date."-cropped.jpg";
     }

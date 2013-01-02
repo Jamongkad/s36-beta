@@ -39,12 +39,13 @@ class SubmissionService {
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
         $post = (object) Array(
             'feedback_text' => $feedback_data['text'], 
-            'feed_id'       => $new_feedback_id);
+            'feed_id'       => $new_feedback_id
+        );
 
         $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
         $feedbackservice->save_feedback($post);
 
-        //$feedback_attachments  = $this->feedback_attachments->generate_data($new_feedback_id);
+        //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id);
         
         //This is for users how have used the submission form
         DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
@@ -90,7 +91,8 @@ class SubmissionService {
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $this->post_data->get('company_id');
         $this->halcyonic->save_latest_feedid(); 
-        return ($feedbackservice) ? DB::table('Feedback')->where('feedbackId','=',$new_feedback_id)->first() : false;
+        //Why are we checking for feedbackservice object return result?
+        return ($feedbackservice) ? DB::table('Feedback')->where('feedbackId', '=', $new_feedback_id)->first() : false;
         */
     }
 

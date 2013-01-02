@@ -45,7 +45,5 @@ class FeedbackService {
         $fields['displayCountry']  = (isset($field['displayCountry']))  ? $field['displayCountry']  : $feedback->displaycountry;
         $fields['displaySbmtDate'] = (isset($field['displaySbmtDate'])) ? $field['displaySbmtDate'] : $feedback->displaysbmtdate;
         return $this->dbfeedback->update_feedback($id,$fields);
-    }
-
-   
+    }   
 }

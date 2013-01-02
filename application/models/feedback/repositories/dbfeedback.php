@@ -687,7 +687,7 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
     }
 
-    public function update_feedback($id,$fields){
+    public function update_feedback($id, $fields){
         return DB::table('Feedback','master')
                     ->where('feedbackId','=',$id)
                     ->update($fields);
@@ -742,6 +742,7 @@ class DBFeedback extends S36DataObject {
     }
 
     public function permanently_remove_feedback($id) { 
+
         $feedback = DB::table('Feedback', 'master')
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
                         ->where('Feedback.feedbackId', '=', $id)
@@ -760,6 +761,9 @@ class DBFeedback extends S36DataObject {
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
                              ->delete();
+        
+        //let's make sure to add a query for removing tags from the MetadataTags table if need be
+        DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete();
     }
 
     public function _feedback_node($data) { 
