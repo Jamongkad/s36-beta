@@ -26,22 +26,26 @@ class SubmissionService {
     }
 
     public function perform() {        
+       
+        try { 
+            $contact_data   = $this->contact_details->generate_data(); 
+            $new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
+            $feedback_data              = $this->feedback_details->generate_data();
+            $feedback_data['contactId'] = $new_contact_id; 
 
-        $contact_data = $this->contact_details->generate_data(); 
-        $new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
-        $feedback_data                  = $this->feedback_details->generate_data();
-        $feedback_data['contactId']     = $new_contact_id; 
-        Helpers::dump($feedback_data);
+            $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
+
+            $post = (object) Array(
+                'feedback_text' => $feedback_data['text'], 
+                'feed_id'       => $new_feedback_id
+            );
+
+            $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
+            $feedbackservice->save_feedback($post);
+        } catch (Exception $e) {
+            die("Feedback Submission Failed!");
+        }
         /*
-        $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
-        $post = (object) Array(
-            'feedback_text' => $feedback_data['text'], 
-            'feed_id'       => $new_feedback_id
-        );
-
-        $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
-        $feedbackservice->save_feedback($post);
-
         //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id);
         
         //This is for users how have used the submission form
