@@ -767,8 +767,8 @@ class DBFeedback extends S36DataObject {
     }
 
     public function insert_new_feedback($feedback_data) { 
-        $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
-        return $new_feedback_id;
+        if($feedback_data) 
+            return DB::table('Feedback')->insert_get_id($feedback_data);
     }
 
     public function _feedback_node($data) { 

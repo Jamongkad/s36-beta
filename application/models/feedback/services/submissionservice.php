@@ -29,6 +29,8 @@ class SubmissionService {
        
         try { 
             //let's generate data for the contacts table
+
+            //todo: debug
             $this->contact_details->bypass_profilephoto = True;
 
             $contact_data   = $this->contact_details->generate_data(); 
@@ -41,21 +43,22 @@ class SubmissionService {
                 $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
 
                 $post = (object) Array(
-                    'feedback_text' => $feedback_data['text'], 
-                    'feed_id'       => $new_feedback_id
+                    'feedback_text' => $feedback_data['text']
+                  , 'feed_id'       => $new_feedback_id
                 );
                 
                 //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
                 $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
                 $feedbackservice->save_feedback($post);
                 
-                //we determine the origin of the feedback and tag it as coming from the submissio form
+                //we determine the relationship for feedback and contact data
                 DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
                     'contactId'  => $new_contact_id
                   , 'feedbackId' => $new_feedback_id
                   , 'origin'     => 's36'
                   , 'socialId'   => $new_feedback_id
                 )); 
+
             }
 
             //this creates metadata tag relationship between metadata and feedback
@@ -98,8 +101,7 @@ class SubmissionService {
             $this->halcyonic->company_id = $this->post_data->get('company_id');
             $this->halcyonic->save_latest_feedid(); 
 
-            //Why are we checking for feedbackservice object return result?
-            return ($new_feedback_id) ? DB::table('Feedback')->where('feedbackId', '=', $new_feedback_id)->first() : false;
+            if($feedback) return $feedback;
             */
         } catch (Exception $e) {
             die("Feedback Submission Failed!");
