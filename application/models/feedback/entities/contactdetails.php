@@ -39,7 +39,7 @@ class ContactDetails extends FeedbackDataTypes {
         $avatar             = $this->post_data->get('avatar');
 
         if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
-          $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $this->post_data->get('login_type'));
+            $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $this->post_data->get('login_type'));
         }
 
         $contact_info = Array(

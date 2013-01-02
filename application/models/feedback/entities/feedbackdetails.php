@@ -47,22 +47,22 @@ class FeedbackDetails extends FeedbackDataTypes {
         }
 
         return Array(
-            'siteId'            => $this->post_data->get('site_id')
-          , 'companyId'         => $this->post_data->get('companyId')
-          , 'contactId'         => Null
-          , 'categoryId'        => $category->categoryid
-          , 'companyId'         => $this->post_data->get('company_id')
-          , 'formId'            => 1
-          , 'status'            => 'new'
-          , 'isRecommended'     => $this->post_data->get('recommend')
-          , 'isPublished'       => $isPublished
-          , 'rating'            => $this->post_data->get('rating')
-          , 'text'              => $feedback_text
-          , 'permission'        => ($permission) ? $permission : 1
-          , 'dtAdded'           => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
-          , 'attachments'       => json_encode($this->post_data->get('attachments'))
-          , 'metadata'          => $metadata
-          , 'title'             => $this->post_data->get('title')
+            'siteId'        => $this->post_data->get('site_id')
+          , 'companyId'     => $this->post_data->get('companyId')
+          , 'contactId'     => Null
+          , 'categoryId'    => $category->categoryid
+          , 'companyId'     => $this->post_data->get('company_id')
+          , 'formId'        => 1
+          , 'status'        => 'new'
+          , 'isRecommended' => $this->post_data->get('recommend')
+          , 'isPublished'   => $isPublished
+          , 'rating'        => $this->post_data->get('rating')
+          , 'text'          => $feedback_text
+          , 'permission'    => ($permission) ? $permission : 1
+          , 'dtAdded'       => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
+          , 'attachments'   => json_encode($this->post_data->get('attachments'))
+          , 'metadata'      => $metadata
+          , 'title'         => $this->post_data->get('title')
         );
     }
 }
