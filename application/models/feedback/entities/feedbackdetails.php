@@ -31,9 +31,10 @@ class FeedbackDetails extends FeedbackDataTypes {
         $hosted = new \Widget\Repositories\DBHostedSettings;
         $hosted->set_hosted_settings(Array('companyId' => $this->post_data->get('companyId')));
         $hosted_settings = $hosted->hosted_settings();
+
         $isPublished = 0;
-        if($hosted_settings->autopost_enable==1){
-          $isPublished = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
+        if($hosted_settings->autopost_enable == 1) {
+            $isPublished = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
         }
         /*end autoposting*/
 

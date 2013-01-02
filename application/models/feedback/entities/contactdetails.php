@@ -42,20 +42,20 @@ class ContactDetails extends FeedbackDataTypes {
         }
 
         $contact_info = Array(
-            'siteId'        => $this->post_data->get('site_id')
-          , 'firstName'     => $this->_sentence_case($this->post_data->get('first_name'))
-          , 'lastName'      => $this->_sentence_case($this->post_data->get('last_name'))
-          , 'email'         => $this->post_data->get('email')
-          , 'countryId'     => $country_id
-          , 'avatar'        => $avatar
-          , 'position'      => $this->position
-          , 'city'          => $this->city
-          , 'companyName'   => $this->company
-          , 'website'       => $this->website
-          , 'profileLink'   => $this->profilelink
-          , 'loginType'     => $login_type 
-          , 'ipaddress'     => $this->userinfo->get_ip_long()
-          , 'browser'       => $this->userinfo->browser()->getBrowser()
+            'siteId'      => $this->post_data->get('site_id')
+          , 'firstName'   => $this->_sentence_case($this->post_data->get('first_name'))
+          , 'lastName'    => $this->_sentence_case($this->post_data->get('last_name'))
+          , 'email'       => $this->post_data->get('email')
+          , 'countryId'   => $country_id
+          , 'avatar'      => $avatar
+          , 'position'    => $this->position
+          , 'city'        => $this->city
+          , 'companyName' => $this->company
+          , 'website'     => $this->website
+          , 'profileLink' => $this->profilelink
+          , 'loginType'   => $login_type 
+          , 'ipaddress'   => $this->userinfo->get_ip_long()
+          , 'browser'     => $this->userinfo->browser()->getBrowser()
         ); 
         //$contact_info['contact_id'] = $this->_write_new_contact($contact_info);
         return $contact_info;

@@ -33,11 +33,8 @@ class SubmissionService {
         Helpers::dump($contact_data);
         Helpers::dump($feedback_data);
         //$new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
-
         //$feedback_data                  = $this->feedback_details->generate_data();
-        //$feedback_data['contactId']     = $new_contact_id;
-        //$feedback_data['contactId']     = $contact_data['contact_id'];
-        
+        //$feedback_data['contactId']     = $new_contact_id; 
         /*
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
         $post = (object) Array(
