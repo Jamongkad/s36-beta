@@ -32,6 +32,7 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_name); 
         //Feeds 
         $hosted->page_number = 1;
+        $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
 
