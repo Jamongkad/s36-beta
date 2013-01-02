@@ -34,7 +34,7 @@ class SubmissionService {
         $feedback_data['contactId']     = $new_contact_id; 
         Helpers::dump($feedback_data);
         */
-        Helpers::dump($contact_data)
+        Helpers::dump($contact_data);
 
         /*
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
