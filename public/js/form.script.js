@@ -22,7 +22,7 @@ $(document).keypress(function(event){
 				IN.API.Profile("me")
 				.fields(["id", "firstName", "lastName","email-address","positions","location", "pictureUrl", "publicProfileUrl"])
     			.result(function(user){
-    				$('#loginType').val('in');
+    				$('#loginType').val('ln');
     				user = user.values[0];
     				if(undefined != user.id){
     					var url = 'http://www.linkedin.com/profile/view?id='+user.id;
@@ -161,7 +161,7 @@ $(document).keypress(function(event){
 					email 		: $('#your_email').val(),
 					city 		: $('#your_city').val(),
 					country 	: $('#your_country').val(),
-					loginType	: $('#loginType').val(),
+					login_type	: $('#loginType').val(),
 					profileLink	: $('#profileLink').val(),
 					avatar 		: $('#preview_photo').attr('src'),
 					permission	: $('#your_permission').val(),
