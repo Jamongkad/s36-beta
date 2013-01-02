@@ -18,7 +18,7 @@ class FeedbackDetails extends FeedbackDataTypes {
     public function generate_data() {
 
         $permission = $this->post_data->get('permission');
-        $category = DB::Table('Category')->where('companyId', '=', $this->post_data->get('companyId'))
+        $category = DB::Table('Category')->where('companyId', '=', $this->post_data->get('company_id'))
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
         $feedback_text = Helpers::html_cleaner($this->post_data->get('feedback'));
@@ -29,7 +29,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
         /*start autoposting*/
         $hosted = new \Widget\Repositories\DBHostedSettings;
-        $hosted->set_hosted_settings(Array('companyId' => $this->post_data->get('companyId')));
+        $hosted->set_hosted_settings(Array('companyId' => $this->post_data->get('company_id')));
         $hosted_settings = $hosted->hosted_settings();
 
         $isPublished = 0;
@@ -48,7 +48,7 @@ class FeedbackDetails extends FeedbackDataTypes {
 
         return Array(
             'siteId'        => $this->post_data->get('site_id')
-          , 'companyId'     => $this->post_data->get('companyId')
+          , 'companyId'     => $this->post_data->get('company_id')
           , 'contactId'     => Null
           , 'categoryId'    => $category->categoryid
           , 'companyId'     => $this->post_data->get('company_id')
