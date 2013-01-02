@@ -1,6 +1,31 @@
 <?= HTML::script('/js/jquery.raty.min.js'); ?>
 <?= HTML::style('css/override.css'); ?>
+<script type="text/javascript">
+$(document).ready(function(){
 
+    $('.adminReply').click(function(){
+        var parent = $(this).parents('.admin-comment-block');
+        $.ajax({
+            url: "/admin_reply",
+            dataType: "json",
+            data: {
+                feedbackId: $(parent).find('.admin-comment-id').val(),
+                adminReply: $(parent).find('.admin-comment-textbox').val()
+            },
+            type: "POST",
+            success: function(result) {
+                if(undefined != result.feedbackid){
+                    $(parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                    $(parent).find('.admin-comment-box').css('display','none');
+                    $(parent).find('.admin-comment').css('display','block');
+                }
+          }
+        });
+    });
+
+
+});
+</script>
 <script type="text/javascript">
     
     // general functions.
@@ -159,7 +184,6 @@
                     <!-- blocks are separated by dates so we create containers for each dates -->
                     <?php
                     if($feeds):
-                    //echo "<pre>";print_r($feeds); echo "</pre>";
                     foreach ($feeds as $feed_group => $feed_list) : 
                     ?>
                     <div class="feedback-block">
@@ -266,14 +290,37 @@
                                         <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
-
+                                    <?php if(isset($user) && !empty($user)): ?>
                                     <div class="admin-comment-block">
-                                            <div class="admin-name">Amy from Acme Inc says..</div>
-                                            <div class="admin-message clear">
-                                                <div class="admin-avatar"><img src="img/samchloe.png" width="32" height="32" /></div>
-                                                <div class="message">Great choice!</div>
+                                        <?php if(empty($feed->feed_data->adminreply)): ?>
+                                            <div class="admin-comment-box">
+                                            <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
+                                            <div class="admin-comment-textbox-container">
+                                                <textarea class="admin-comment-textbox"></textarea>
+                                                </div>
+                                                <div class="admin-comment-leave-a-reply">
+                                                <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
+                                                <input type="button" class="adminReply regular-button" value="Post Comment" />
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="admin-comment" style="display:none">
+                                                <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
+                                                <div class="admin-message clear">
+                                                    <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                                    <div class="message"><?=$feed->feed_data->adminreply?></div>
+                                                </div>
+                                            </div>
+                                        <?php else:?>
+                                            <div class="admin-comment">
+                                                <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
+                                                <div class="admin-message clear">
+                                                    <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                                    <div class="message"><?=$feed->feed_data->adminreply?></div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                                     </div>
                                     <!-- end of feedback text bubble -->
                                     <!-- feedback user actions -->

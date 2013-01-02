@@ -75,6 +75,7 @@ class DBFeedback extends S36DataObject {
                 , Feedback.displaySbmtDate
                 , Feedback.indLock
                 , Feedback.attachments
+                , FeedbackAdminReply.adminReply
                 , Contact.contactId AS contactid
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
@@ -483,6 +484,9 @@ class DBFeedback extends S36DataObject {
                 '.$this->select_vars.' 
             FROM 
                 Feedback
+            LEFT JOIN
+                FeedbackAdminReply
+                ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId

@@ -35,6 +35,7 @@ return array(
         $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
+        //$feeds = $hosted->fetch_hosted_feedback();
 
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
@@ -64,7 +65,19 @@ return array(
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
     },
-    
+    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() {
+        $DBFeedbackAdminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
+        $feedbackId = Input::get('feedbackId');
+        $adminReply = Input::get('adminReply');
+        if(!empty($feedbackId) && !empty($adminReply) ){
+            $DBFeedbackAdminReply->add_admin_reply(array(
+                 'feedbackId' => $feedbackId
+                ,'adminReply' => $adminReply
+            ));
+            return json_encode($DBFeedbackAdminReply->get_admin_reply($feedbackId));
+        }
+    }),
+
     'POST /update_desc' => function() use($user, $company){
         
         // don't proceed if the user is not logged in.
