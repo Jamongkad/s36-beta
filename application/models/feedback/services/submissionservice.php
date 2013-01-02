@@ -36,7 +36,7 @@ class SubmissionService {
             $feedback_data = $this->feedback_details->generate_data();
             $feedback_data['contactId'] = $new_contact_id; 
 
-            $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
+            $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
 
             $post = (object) Array(
                 'feedback_text' => $feedback_data['text'], 

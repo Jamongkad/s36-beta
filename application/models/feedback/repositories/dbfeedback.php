@@ -766,6 +766,11 @@ class DBFeedback extends S36DataObject {
         DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete();
     }
 
+    public function insert_new_feedback($feedback_data) { 
+        $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
+        return $new_feedback_id;
+    }
+
     public function _feedback_node($data) { 
 
         $node = new FeedbackNode;
