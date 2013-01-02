@@ -39,7 +39,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
 
   <?if($env == 'dev' or $env == 'local'):?>
   //DEV API KEY
-  api_key: dft6gsk4swz6
+  api_key: 1m2dv6lkxpoa
   <?endif?>
 
   <?if($env == 'prod'):?>
