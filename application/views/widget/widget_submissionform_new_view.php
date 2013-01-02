@@ -4,7 +4,7 @@
 <?=HTML::script('js/jquery.ui.widget.js');?>
 <?=HTML::script('js/jquery.iframe-transport.js');?>
 <?=HTML::script('js/jquery.fileupload.js');?>
-<?=HTML::script('http://cloud.github.com/downloads/bytespider/jsOAuth/jsOAuth-1.3.6.min.js');?>
+<?=HTML::script('https://cloud.github.com/downloads/bytespider/jsOAuth/jsOAuth-1.3.6.min.js');?>
 <?=HTML::script('js/jquery.oauth.js');?>
 
 <!-- file upload js requirements -->
@@ -32,13 +32,12 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
 ?>
 
 <div id="fb-root"></div>
-<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-//FB.init({appId: "396019640480197", status: true, cookie: true});
 FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
 
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
   <?if($env == 'dev' or $env == 'local'):?>
   //DEV API KEY
   api_key: zmekq26qusj2
