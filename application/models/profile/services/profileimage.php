@@ -32,7 +32,7 @@ class ProfileImage {
             $file_name = '/var/www/s36-upload-images'.$img_src;
         }
 
-        if($img_src_location == 'fb' || $img_src_location == 'ln') {
+        if($img_src_location == 'fb' || $img_src_location == 'ln' || $img_src_location == 'tw') {
 
             $src = $img_src;
             $url = get_all_redirects($src);
