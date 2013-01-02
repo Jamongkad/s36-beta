@@ -31,7 +31,7 @@ class SubmissionService {
             //let's generate data for the contacts table
             $contact_data   = $this->contact_details->generate_data(); 
             //then we attach the contact id to the feedback object
-            $this->dbcontact->bypass_profilephoto = True;
+            $this->contact_details->bypass_profilephoto = True;
             if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
 
                 $feedback_data = $this->feedback_details->generate_data();
