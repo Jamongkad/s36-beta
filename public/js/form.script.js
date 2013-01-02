@@ -151,7 +151,7 @@ $(document).keypress(function(event){
 			//collect  all data plus attachment data
 			var data = {
 					site_id		: $('#siteId').val(),
-					companyId	: $('#companyId').val(),
+					company_id	: $('#companyId').val(),
                     title       : $('#feedbackTitle').val(),
 					feedback 	: $('#feedbackText').val(),
 					rating 		: $('#rating').val(),
@@ -162,7 +162,7 @@ $(document).keypress(function(event){
 					city 		: $('#your_city').val(),
 					country 	: $('#your_country').val(),
 					login_type	: $('#loginType').val(),
-					profileLink	: $('#profileLink').val(),
+					profile_link: $('#profileLink').val(),
 					avatar 		: $('#preview_photo').attr('src'),
 					permission	: $('#your_permission').val(),
 					company 	: company,

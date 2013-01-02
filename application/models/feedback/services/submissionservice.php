@@ -26,12 +26,15 @@ class SubmissionService {
     }
 
     public function perform() {        
-
+        /*
         $contact_data = $this->contact_details->generate_data();
         $new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
         $feedback_data                  = $this->feedback_details->generate_data();
         $feedback_data['contactId']     = $new_contact_id; 
         Helpers::dump($feedback_data);
+        */
+        $contact_data = $this->contact_details->generate_data();
+        Helpers::dump($contact_data);
         /*
         $new_feedback_id = DB::table('Feedback')->insert_get_id($feedback_data);
         $post = (object) Array(

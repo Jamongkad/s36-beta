@@ -29,17 +29,19 @@ class ContactDetails extends FeedbackDataTypes {
             $country    = DB::table('Country', 'master')->where('code', '=', $country_input)->first();           
             $country_id = $country->countryid;
         }
+
+        $post_login_type = $this->post_data->get('login_type');
         
         $this->position     = $this->_sentence_case($this->post_data->get('position'));
         $this->city         = $this->_sentence_case($this->post_data->get('city'));
         $this->company      = $this->_sentence_case($this->post_data->get('company'));
         $this->website      = $this->post_data->get('website');
-        $this->profilelink  = $this->post_data->get('profileLink');
-        $login_type         = ($this->post_data->get('loginType')) ? $this->post_data->get('loginType') : 's36';
+        $this->profilelink  = $this->post_data->get('profile_link');
+        $logintype         = ($post_login_type) ? $post_login_type : '36';
         $avatar             = $this->post_data->get('avatar');
 
         if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
-            $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $this->post_data->get('login_type'));
+            $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $logintype);
         }
 
         $contact_info = Array(
@@ -54,22 +56,15 @@ class ContactDetails extends FeedbackDataTypes {
           , 'companyName' => $this->company
           , 'website'     => $this->website
           , 'profileLink' => $this->profilelink
-          , 'loginType'   => $login_type 
+          , 'loginType'   => $logintype 
           , 'ipaddress'   => $this->userinfo->get_ip_long()
           , 'browser'     => $this->userinfo->browser()->getBrowser()
         ); 
-        //$contact_info['contact_id'] = $this->_write_new_contact($contact_info);
+
         return $contact_info;
     }
      
     private function _sentence_case($string) {
         return ucwords(strtolower($string));
     }
-
-    /*
-    private function _write_new_contact($contact_info) {
-        $dbcontact = new DBContact;        
-        return $dbcontact->insert_new_contact($contact_info);
-    }
-    */
 }
