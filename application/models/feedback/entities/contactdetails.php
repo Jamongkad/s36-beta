@@ -37,11 +37,9 @@ class ContactDetails extends FeedbackDataTypes {
         $login_type         = ($this->post_data->get('loginType')) ? $this->post_data->get('loginType') : 's36';
         $avatar             = $this->post_data->get('avatar');
 
-        /*
         if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
           $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'),$this->post_data->get('login_type'));
         }
-        */
 
         $contact_info = Array(
             'siteId'        => $this->post_data->get('site_id')
