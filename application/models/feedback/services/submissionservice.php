@@ -61,8 +61,8 @@ class SubmissionService {
 
             }
 
-            //this creates metadata tag relationship between metadata and feedback
             /*
+            //this creates metadata tag relationship between metadata and feedback
             if($post_metadata = $this->post_data->get('metadata')) { 
 
                 foreach($post_metadata as $data) {
