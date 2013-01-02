@@ -10,8 +10,8 @@ class ProfileImage {
 
     public function __construct() { 
 
-        $this->date = date("mdyhis");
-        $this->dir48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
+        $this->date   = date("mdyhis");
+        $this->dir48  = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
         $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
  
         $this->targ_w_large = 150;
@@ -53,6 +53,7 @@ class ProfileImage {
             }
         } 
         
+        //save and resize pics in 48 and 150 directories
         $this->_save_pic($file_name, $this->dir48, $this->targ_w_small, $this->targ_h_large);
         $this->_save_pic($file_name, $this->dir150, $this->targ_w_large, $this->targ_h_large);
         @unlink($file_name);
