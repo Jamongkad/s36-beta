@@ -17,6 +17,7 @@ $(document).keypress(function(event){
 			   }
 			},{scope:"email,user_location,user_website,user_work_history,user_photos"});
 		});
+
 		$('#in-login').click(function(){
 			IN.User.authorize(function(q){
 				IN.API.Profile("me")

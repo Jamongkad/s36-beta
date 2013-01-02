@@ -12,8 +12,6 @@
 <!-- link preview js -->
 <?=HTML::script('js/link.preview.js');?>
 <!-- link preview js -->
-
-<?=HTML::script('js/form.script.js');?>
 <!--[if lt IE 8]>
     <script src="js/ie7.js"></script>
 <![endif]-->
@@ -52,7 +50,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
   scope: r_fullprofile r_emailaddress
 </script>
  
-
+<?=HTML::script('js/form.script.js');?>
 
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">
