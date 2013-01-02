@@ -36,9 +36,10 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
 </script>
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
+
   <?if($env == 'dev' or $env == 'local'):?>
   //DEV API KEY
-  api_key: zmekq26qusj2
+  api_key: dft6gsk4swz6
   <?endif?>
 
   <?if($env == 'prod'):?>
@@ -55,7 +56,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">
     <input type="hidden" id="rating" name="rating" value="5" />
-    <input type="hidden" id="loginType" name="loginType" value="s36" />
+    <input type="hidden" id="loginType" name="loginType" value="36" />
     <input type="hidden" id="profileLink" name="profileLink" value="" />
     <input type="hidden" id="companyId" value="<?=$company_id?>" />
     <input type="hidden" id="siteId" name="siteId" value="<?=$site_id?>" />
