@@ -7,6 +7,8 @@ use SimpleArray;
 
 class ContactDetails extends FeedbackDataTypes { 
 
+    public $bypass_profilephoto = False;
+
     private $country_id     = 895;
     private $position       = false;
     private $city           = false;
@@ -37,12 +39,15 @@ class ContactDetails extends FeedbackDataTypes {
         $this->company      = $this->_sentence_case($this->post_data->get('company'));
         $this->website      = $this->post_data->get('website');
         $this->profilelink  = $this->post_data->get('profile_link');
-        $logintype         = ($post_login_type) ? $post_login_type : '36';
+        $logintype          = ($post_login_type) ? $post_login_type : '36';
         $avatar             = $this->post_data->get('avatar');
 
-        if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
-            $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $logintype);
+        if($this->bypass_profilephoto == False) {            
+            if(strpos($this->post_data->get('avatar'),'blank-avatar') === false) {
+                $avatar = $this->profile_img->auto_resize($this->post_data->get('avatar'), $logintype);
+            }
         }
+
 
         $contact_info = Array(
             'siteId'      => $this->post_data->get('site_id')

@@ -30,30 +30,32 @@ class SubmissionService {
         try { 
             //let's generate data for the contacts table
             $contact_data   = $this->contact_details->generate_data(); 
-            $new_contact_id = $this->dbcontact->insert_new_contact($contact_data);
-
             //then we attach the contact id to the feedback object
-            $feedback_data = $this->feedback_details->generate_data();
-            $feedback_data['contactId'] = $new_contact_id; 
+            $this->dbcontact->bypass_profilephoto = True;
+            if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
 
-            $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
+                $feedback_data = $this->feedback_details->generate_data();
+                $feedback_data['contactId'] = $new_contact_id; 
 
-            $post = (object) Array(
-                'feedback_text' => $feedback_data['text'], 
-                'feed_id'       => $new_feedback_id
-            );
-            
-            //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
-            $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
-            $feedbackservice->save_feedback($post);
-            
-            //we determine the origin of the feedback and tag it as coming from the submissio form
-            DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
-                'contactId'  => $new_contact_id
-              , 'feedbackId' => $new_feedback_id
-              , 'origin'     => 's36'
-              , 'socialId'   => $new_feedback_id
-            ));
+                $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
+
+                $post = (object) Array(
+                    'feedback_text' => $feedback_data['text'], 
+                    'feed_id'       => $new_feedback_id
+                );
+                
+                //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
+                $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
+                $feedbackservice->save_feedback($post);
+                
+                //we determine the origin of the feedback and tag it as coming from the submissio form
+                DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
+                    'contactId'  => $new_contact_id
+                  , 'feedbackId' => $new_feedback_id
+                  , 'origin'     => 's36'
+                  , 'socialId'   => $new_feedback_id
+                )); 
+            }
 
             //this creates metadata tag relationship between metadata and feedback
             /*
