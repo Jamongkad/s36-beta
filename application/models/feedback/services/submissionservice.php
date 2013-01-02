@@ -56,7 +56,8 @@ class SubmissionService {
           , 'origin' => 's36'
           , 'socialId' => $new_feedback_id
         ));
-
+        
+        //this creates metadata tag relationship between metadata and feedback
         if($post_metadata = $this->post_data->get('metadata')) { 
 
             foreach($post_metadata as $data) {
