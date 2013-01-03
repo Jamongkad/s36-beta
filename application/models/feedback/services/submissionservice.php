@@ -29,49 +29,16 @@ class SubmissionService {
        
         try {  
             //then we attach the contact id to the feedback object
-            $feedback = $this->_create_feedback(); 
-            /*
-            //this creates metadata tag relationship between metadata and feedback
-            if($post_metadata = $this->post_data->get('metadata')) { 
-
-                foreach($post_metadata as $data) {
-                    //this data goes into MetadataTags Table
-                    $insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
-                        'tagName' => $data['name']
-                      , 'tagValue' => $data['value']
-                    ));
-
-                    //Feedback MetadataTags junction table
-                    DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
-                         'feedbackId' => $new_feedback_id
-                       , 'tagId' => $insert_id
-                    ));
-
-                }
-
-            }   
-
-            //upon successful feedback submission let's send an email to all parties concern
-            $submission_data = new NewFeedbackSubmissionData; 
-            $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
-            $account_users = $this->dbuser->pull_user_emails_by_company_id($this->post_data->get('company_id'));
-
-            $submission_data->set_feedback($feedback)
-                            ->set_sendtoaddresses($account_users);
-
-            $emailservice = new EmailService($submission_data);
-            $emailservice->send_email();
-      
-            //let's also update the summary for the dashboard analytics
-            $this->dbdashboard->company_id = $this->post_data->get('company_id');
-            $this->dbdashboard->write_summary();
-
-            //Upon new feedback always invalidate cache       
-            $this->halcyonic->company_id = $this->post_data->get('company_id');
-            $this->halcyonic->save_latest_feedid(); 
-
-            if($feedback) return $feedback;
-            */
+            $feedback_created = $this->_create_feedback(); 
+            if($feedback_created) {
+                $company_id = $this->post_data->get('company_id');
+                //this creates metadata tag relationship between metadata and feedback
+                $this->_create_metadata($feedback_created->feedback_id);
+                $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
+                $this->_calculate_dashboard_analytics($company_id);
+                $this->_save_latest_feedid($company_id);
+                return $feedback_created->feedback_obj;
+            }
         } catch (Exception $e) {
             die("Feedback Submission Failed!");
         }
@@ -89,6 +56,7 @@ class SubmissionService {
             $feedback_data['contactId'] = $new_contact_id; 
 
             $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
+            $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
 
             $post = (object) Array(
                 'feedback_text' => $feedback_data['text']
@@ -100,12 +68,54 @@ class SubmissionService {
             $feedbackservice->save_feedback($post);
 
             $result_obj = new StdClass;
-            $result_obj->feedback_id = $new_feedback_id;
-            $result_obj->contact_id = $new_contact_id;
+            $result_obj->feedback_obj = $feedback;
+            $result_obj->feedback_id  = $new_feedback_id;
+            $result_obj->contact_id   = $new_contact_id;
             return $result_obj;
         }
 
         return Null;
+    }
+
+    public function _create_metadata($feedback_id) { 
+        //this creates metadata tag relationship between metadata and feedback
+        if($post_metadata = $this->post_data->get('metadata')) { 
+            foreach($post_metadata as $data) {
+                //this data goes into MetadataTags Table
+                $metatags_insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
+                    'tagName' => $data['name']
+                  , 'tagValue' => $data['value']
+                ));
+
+                //Feedback MetadataTags junction table
+                DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
+                     'feedbackId' => $feedback_id
+                   , 'tagId' => $metatags_insert_id
+                ));
+            }
+        }   
+    }
+
+    public function _send_feedbacksubmission_email($feedback_obj, $account_obj) { 
+        //upon successful feedback submission let's send an email to all parties concern
+        $submission_data = new NewFeedbackSubmissionData; 
+        $submission_data->set_feedback($feedback_obj)
+                        ->set_sendtoaddresses($account_obj);
+
+        $emailservice = new EmailService($submission_data);
+        $emailservice->send_email();
+    }
+    
+    public function _calculate_dashboard_analytics($company_id) { 
+        //let's also update the summary for the dashboard analytics
+        $this->dbdashboard->company_id = $company_id;
+        $this->dbdashboard->write_summary();
+    }
+
+    public function _save_latest_feedid($company_id) { 
+        //Upon new feedback always invalidate cache       
+        $this->halcyonic->company_id = $company_id;
+        $this->halcyonic->save_latest_feedid(); 
     }
 
     public function metric_response() {
