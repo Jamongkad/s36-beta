@@ -23,6 +23,7 @@ class SubmissionService {
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
         //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
+        //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
     }
 
     public function perform() {         
@@ -37,7 +38,6 @@ class SubmissionService {
         } else {
             throw new Exception("Feedback Submission Failed!");
         }
-        //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
     }
 
     public function _create_feedback() {
