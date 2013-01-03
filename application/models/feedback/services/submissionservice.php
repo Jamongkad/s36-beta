@@ -27,40 +27,9 @@ class SubmissionService {
 
     public function perform() {        
        
-        try { 
-            //let's generate data for the contacts table
-
-            //todo: debug
-            $this->contact_details->bypass_profilephoto = True;
-
-            $contact_data   = $this->contact_details->generate_data(); 
+        try {  
             //then we attach the contact id to the feedback object
-            if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
-
-                $feedback_data = $this->feedback_details->generate_data();
-                $feedback_data['contactId'] = $new_contact_id; 
-
-                $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
-
-                $post = (object) Array(
-                    'feedback_text' => $feedback_data['text']
-                  , 'feed_id'       => $new_feedback_id
-                );
-                
-                //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
-                $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
-                $feedbackservice->save_feedback($post);
-                
-                //we determine the relationship for feedback and contact data
-                DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
-                    'contactId'  => $new_contact_id
-                  , 'feedbackId' => $new_feedback_id
-                  , 'origin'     => 's36'
-                  , 'socialId'   => $new_feedback_id
-                )); 
-
-            }
-
+            $feedback = $this->_create_feedback(); 
             /*
             //this creates metadata tag relationship between metadata and feedback
             if($post_metadata = $this->post_data->get('metadata')) { 
@@ -107,6 +76,36 @@ class SubmissionService {
             die("Feedback Submission Failed!");
         }
         //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
+    }
+
+    public function _create_feedback() {
+
+        //let's generate data for the contacts table
+        $this->contact_details->bypass_profilephoto = True;     
+        $contact_data   = $this->contact_details->generate_data(); 
+
+        if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
+            $feedback_data = $this->feedback_details->generate_data();
+            $feedback_data['contactId'] = $new_contact_id; 
+
+            $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
+
+            $post = (object) Array(
+                'feedback_text' => $feedback_data['text']
+              , 'feed_id'       => $new_feedback_id
+            );
+            
+            //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
+            $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
+            $feedbackservice->save_feedback($post);
+
+            $result_obj = new StdClass;
+            $result_obj->feedback_id = $new_feedback_id;
+            $result_obj->contact_id = $new_contact_id;
+            return $result_obj;
+        }
+
+        return Null;
     }
 
     public function metric_response() {
