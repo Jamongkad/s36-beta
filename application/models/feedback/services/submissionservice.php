@@ -73,6 +73,14 @@ class SubmissionService {
             //we check if there is any profanity in the feedback...if so we flip the hasProfanity column to true
             $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
             $feedbackservice->save_feedback($post);
+            
+            //We determine the origin of this feedback is from the Feedback Form
+            DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
+                'contactId'  => $new_contact_id
+              , 'feedbackId' => $new_feedback_id
+              , 'origin'     => 's36'
+              , 'socialId'   => $new_feedback_id
+            ));
 
             $result_obj = new StdClass;
             $result_obj->feedback_obj = $feedback;
