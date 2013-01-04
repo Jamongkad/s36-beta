@@ -34,9 +34,12 @@ class SubmissionService {
         if($feedback_created = $this->_create_feedback()) {
 
             $company_id = $this->post_data->get('company_id');
-
-            //this creates metadata tag relationship between metadata and feedback
+            $this->dbh = DB::connection('master')->pdo;
+            //this creates metadata tag relationship between metadata and feedback 
+            $this->dbh->beginTransaction();
             $this->_create_metadata($feedback_created->feedback_id);
+            $this->dbh->commit();
+
             //$this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             //$this->_calculate_dashboard_analytics($company_id);
             //$this->_save_latest_feedid($company_id);
@@ -58,6 +61,7 @@ class SubmissionService {
        
         $contact_data   = $this->contact_details->generate_data(); 
 
+        
         if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
             $feedback_data = $this->feedback_details->generate_data();
             $feedback_data['contactId'] = $new_contact_id; 
