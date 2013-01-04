@@ -320,8 +320,15 @@ return array(
         $tf->run();          
     },
 
-    'GET /testify/feedback' => function() {
-    
+    'GET /testify/feedback' => function() { 
+        $tf = new Testify("Feedback Functions");  
+        $tf->test("Delete Feedback", function($tf) {
+            $dbfeedback = new DBFeedback;  
+            $feedid = 1063;
+            $dbfeedback->permanently_remove_feedback($feedid);
+        });
+
+        $tf->run();         
     }
 
 );
