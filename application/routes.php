@@ -109,6 +109,7 @@ return array(
         */
         //TODO: refactor this too
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
+        $addfeedback->debug  = True;
         $feedback            = $addfeedback->perform();
         
         /*

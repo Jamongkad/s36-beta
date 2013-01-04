@@ -12,6 +12,8 @@ use Email\Services\EmailService;
 use SimpleArray;
 
 class SubmissionService {
+
+    public $debug = False;
    
     public function __construct($post_input) {
         $this->post_data        = new SimpleArray($post_input);
@@ -34,9 +36,9 @@ class SubmissionService {
 
             //this creates metadata tag relationship between metadata and feedback
             $this->_create_metadata($feedback_created->feedback_id);
-            $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
-            $this->_calculate_dashboard_analytics($company_id);
-            $this->_save_latest_feedid($company_id);
+            //$this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
+            //$this->_calculate_dashboard_analytics($company_id);
+            //$this->_save_latest_feedid($company_id);
 
             return $feedback_created->feedback_obj;
 
@@ -49,7 +51,10 @@ class SubmissionService {
     public function _create_feedback() {
 
         //let's generate data for the contacts table
-        $this->contact_details->bypass_profilephoto = True;     
+        if($this->debug == True) {
+            $this->contact_details->bypass_profilephoto = True;          
+        }
+       
         $contact_data   = $this->contact_details->generate_data(); 
 
         if($new_contact_id = $this->dbcontact->insert_new_contact($contact_data)) {
