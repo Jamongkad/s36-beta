@@ -2,6 +2,7 @@
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
 use \Feedback\Entities\FeedbackNode;
+use \Profile\Services\ProfileImage;
 
 class DBFeedback extends S36DataObject {
 
@@ -750,7 +751,7 @@ class DBFeedback extends S36DataObject {
 
         if($feedback->avatar) { 
             //delete profile photos...
-            $profile_img = new Profile\Services\ProfileImage();
+            $profile_img = new ProfileImage();
             $profile_img->remove_profile_photo($feedback->avatar);
         }
 
