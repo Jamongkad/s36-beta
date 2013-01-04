@@ -10,6 +10,7 @@ use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
 use Email\Services\EmailService;
 use SimpleArray;
+use StdClass;
 
 class SubmissionService {
 
