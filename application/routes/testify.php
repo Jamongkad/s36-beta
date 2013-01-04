@@ -320,11 +320,10 @@ return array(
         $tf->run();          
     },
 
-    'GET /testify/feedback' => function() { 
+    'GET /testify/feedback/(:any?)' => function($feedid) { 
         $tf = new Testify("Feedback Functions");  
-        $tf->test("Delete Feedback", function($tf) {
+        $tf->test("Delete Feedback", function($tf) use ($feedid) {
             $dbfeedback = new Feedback\Repositories\DBFeedback;  
-            $feedid = 1064;
             $dbfeedback->permanently_remove_feedback($feedid);
         });
 
