@@ -135,7 +135,8 @@ $(document).keypress(function(event){
             }
 
             console.log(meta);
-
+            
+            //this shit is not combining...
             var combine = $.extend(form_metadata, meta);
             console.log(combine);
 
