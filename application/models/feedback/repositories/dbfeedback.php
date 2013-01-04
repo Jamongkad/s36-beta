@@ -748,7 +748,7 @@ class DBFeedback extends S36DataObject {
                         ->join('Contact', 'Feedback.contactId', '=', 'Contact.contactId')
                         ->where('Feedback.feedbackId', '=', $id)
                         ->first();
-
+ 
         if($feedback->avatar) { 
             //delete profile photos...
             $profile_img = new ProfileImage();
@@ -756,11 +756,11 @@ class DBFeedback extends S36DataObject {
         }
 
         DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
-        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
-                            ->delete();
+        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
         DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
+        //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                             ->where('Feedback.isDeleted', '=', 1)
+                             //->where('Feedback.isDeleted', '=', 1)
                              ->delete();
         
         //let's make sure to add a query for removing tags from the MetadataTags table if need be
