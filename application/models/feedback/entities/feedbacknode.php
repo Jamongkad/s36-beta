@@ -34,6 +34,7 @@ class FeedbackNode {
     public $displaycountry;
     public $displaysbmtdate;
     public $indlock;
+    public $attachments;
     public $contactid;
     public $email;
     public $profilelink;
@@ -49,3 +50,4 @@ class FeedbackNode {
     public $origin;
     public $socialid;
 }
+
