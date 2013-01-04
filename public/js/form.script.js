@@ -134,6 +134,8 @@ $(document).keypress(function(event){
                 }); 
             }
 
+            console.log(meta);
+
             var combine = $.extend(form_metadata, meta);
             console.log(combine);
 
