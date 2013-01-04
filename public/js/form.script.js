@@ -119,9 +119,22 @@ $(document).keypress(function(event){
 			if(!$('#your_website').hasClass('default-text')){
 				var website = $('#your_website').val();
 			}
-            if($('.form-custom-fields :input').length > 0) {
-                var form_metadata = $('.form-custom-fields :input').serializeArray();
+
+            if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
+                var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
             }
+            
+            //check the existence of custom input fields
+            if($('.form-custom-fields input[type=text]').length > 0) {
+                var meta = {};
+                $('.form-custom-fields input[type=text]').each(function() {
+                    if($(this).title() != $(this).val()) {
+                        meta[$(this).attr('name')] = $(this).val();
+                    }
+                });
+                console.log(meta);
+            }
+
 			/*start creating attachment array*/
 			//getattached images first
 			var uploaded_images = new Array;
@@ -402,6 +415,7 @@ $(document).keypress(function(event){
 		default_text('.feedback-textarea');
 		default_text('.registration-input');
 		default_text('.regular-custom-field');
+
 		$('#recommend-checkbox').click(function(){
 			if($('#recommend').val() == 1){
 				$('#recommend').val(0);
@@ -482,6 +496,7 @@ $(document).keypress(function(event){
 		}
 		return rating;
 	}
+
 	function default_text(elem){
 		$(elem).focus(function(e){
 			if ($(this).val() == $(this)[0].title){

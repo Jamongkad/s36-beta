@@ -1,5 +1,4 @@
 <?=HTML::style('css/widget_master/new_form.css');?>
-<?//=HTML::style('css/jquery.formbuilder.css')?>
 <?=HTML::script('js/jcycle.js');?>
 <?=HTML::script('js/jquery.ui.widget.js');?>
 <?=HTML::script('js/jquery.iframe-transport.js');?>
