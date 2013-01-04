@@ -756,7 +756,8 @@ class DBFeedback extends S36DataObject {
 
         DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
                             ->delete();
-         
+
+        DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.contactId', '=', $feedback->contactid)->delete();  
         DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)

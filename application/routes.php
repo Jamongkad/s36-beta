@@ -89,24 +89,6 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //Helpers::dump(Input::get('metadata'));
-        /*
-        if(Input::has('metadata')) {   
-            //this data goes into MetadataTags Table
-            Helpers::dump(Input::get('metadata'));
-            $random_ids = Array(1055, 1054, 529);
-            foreach(Input::get('metadata') as $data) {
-                $insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
-                    'tagName' => $data['name']
-                  , 'tagValue' => $data['value']
-                ));
-                DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
-                     'feedbackId' => $random_ids[array_rand($random_ids)]
-                   , 'tagId' => $insert_id
-                ));
-            }
-
-        }   
-        */
         //TODO: refactor this too
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $addfeedback->debug  = True;
