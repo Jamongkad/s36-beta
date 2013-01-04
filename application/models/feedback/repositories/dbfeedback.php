@@ -755,10 +755,9 @@ class DBFeedback extends S36DataObject {
             $profile_img->remove_profile_photo($feedback->avatar);
         }
 
+        DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
         DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)
                             ->delete();
-
-        DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
         DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
         DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
                              ->where('Feedback.isDeleted', '=', 1)
