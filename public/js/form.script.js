@@ -133,12 +133,12 @@ $(document).keypress(function(event){
                     }
                 }); 
             }
-
-            console.log(meta);
             
             //this shit is not combining...
-            var combine = $.extend(form_metadata[0], meta);
-            console.log(combine);
+            for(var i=0; i<form_metadata.length; i++) { 
+                var combine = $.extend(form_metadata[i], meta);
+                console.log(combine);
+            }
 
 			/*start creating attachment array*/
 			//getattached images first
