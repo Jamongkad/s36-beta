@@ -144,8 +144,8 @@ $(document).keypress(function(event){
 
 			//build attached link and uploaded images array
 			var attachments = {
-					'attached_link'		:attachedLink,
-					'uploaded_images'	:uploaded_images
+                'attached_link'		:attachedLink,
+                'uploaded_images'	:uploaded_images
 			};
 			/*end attachment*/
 

@@ -89,8 +89,11 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //TODO: refactor this too
+        Helpers::dump(Input::get('metadata'));
+        /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();
+        */
         
         /*
         $company_info        = $company->get_company_info($company_name);
