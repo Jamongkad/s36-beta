@@ -125,15 +125,17 @@ $(document).keypress(function(event){
             }
             
             //check the existence of custom input fields
+            var meta = {};
             if($('.form-custom-fields input[type=text]').length > 0) {
-                var meta = {};
                 $('.form-custom-fields input[type=text]').each(function() {
                     if($(this).attr('title') != $(this).val()) {
                         meta[$(this).attr('name')] = $(this).val();
                     }
-                });
-                console.log(meta);
+                }); 
             }
+
+            var combine = $.extend(form_metadata, meta);
+            console.log(combine);
 
 			/*start creating attachment array*/
 			//getattached images first
