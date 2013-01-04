@@ -1185,7 +1185,7 @@ margin-bottom: 3px;
 }
 
 .lightbox{
-    position:absolute !important;
+    position:absolute;
     z-index:100000;
     top:10%;
     left:50%;
@@ -1199,4 +1199,15 @@ margin-bottom: 3px;
     -moz-border-radius:5px;
     border-radius:5px;      
     display:none;                               
+}
+
+.lightbox-styles{
+    display:block;
+    overflow:hidden;
+    text-align:left;
+    background:#FFF;
+    -webkit-border-radius:inherit;
+    -moz-border-radius:inherit;
+    border-radius:inherit;      
+    margin:4px 5px;                             
 }

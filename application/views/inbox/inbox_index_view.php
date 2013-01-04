@@ -270,50 +270,6 @@
 
                                     <!-- additional info block -->
                                     <div class="additional-info">
-                    <div class="custom-meta-list grids">
-                        <div class="custom-meta">
-                            <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
-                        </div>
-                        <div class="custom-meta">
-                            <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
-                        </div>
-                        <div class="custom-meta">
-                            <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
-                        </div>
-                    </div>
-                    <div class="uploaded-images-and-links grids">
-                        <div class="image-block">
-                            <div class="delete-block">x</div>
-                            <div class="the-thumb">
-                                <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />                       
-                            </div>
-                        </div>
-                        <div class="image-block">
-                            <div class="delete-block">x</div>
-                            <div class="the-thumb">
-                                <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                            </div>
-                        </div>
-                        <div class="image-block">
-                            <div class="delete-block">x</div>
-                            <div class="the-thumb">
-                                <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                            </div>
-                        </div>
-                        <div class="image-block video">
-                            <div class="delete-block">x</div>
-                            <div class="video-circle"></div>
-                            <div class="the-thumb">
-                                <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                                    <?php
-                                    $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
-                                    if($attachments): //start attachments 
-                                    ?>
-                                    <div class="additional-info">
                                         <div class="custom-meta-list grids">
                                             <div class="custom-meta">
                                                 <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
@@ -325,29 +281,65 @@
                                                 <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
                                             </div>
                                         </div>
+                                         <!-- test html view --uncomment to see actual html 
                                         <div class="uploaded-images-and-links grids">
-                                        <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
-                                            <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                <div class="image-block">
-                                                    <div class="delete-block">x</div>
-                                                    <div class="the-thumb">
-                                                        <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
-                                                    </div>
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />                       
                                                 </div>
-                                            <?php endforeach; ?>
-                                        <?php endif; //end uploaded images?>
-                                        <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
-                                                <div class="image-block video">
-                                                    <div class="delete-block">x</div>
-                                                    <div class="video-circle"></div>
-                                                    <div class="the-thumb">
-                                                        <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                    </div>
+                                            </div>
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
                                                 </div>
-                                        <?php endif; //end uploaded link / video?>
+                                            </div>
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
+                                                </div>
+                                            </div>
+                                            <div class="image-block video">
+                                                <div class="delete-block">x</div>
+                                                <div class="video-circle"></div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
+                                                </div>
+                                            </div>
                                         </div>
+                                        -->
+                                        <?php
+                                        //start attachments
+                                        $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
+                                        if($attachments):  
+                                        ?>
+                                            <div class="uploaded-images-and-links grids">
+                                            <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
+                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                    <div class="image-block">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="the-thumb">
+                                                            <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; //end uploaded images?>
+                                            <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
+                                                    <div class="image-block video">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="video-circle"></div>
+                                                        <div class="the-thumb">
+                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                        </div>
+                                                    </div>
+                                            <?php endif; //end uploaded link / video?>
+                                            </div>
+                                        <?php endif; 
+                                        //end attachments 
+                                        ?>
                                     </div>
-                                    <?php endif; //end attachments ?>
                                     <!-- end of additional info block -->
                                     <!-- start lightbox -->
                                     <div class="lightbox">
