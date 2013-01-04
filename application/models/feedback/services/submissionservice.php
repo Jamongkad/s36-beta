@@ -25,6 +25,7 @@ class SubmissionService {
         $this->dbfeedback       = new DBFeedback;
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
+        $this->dbh = DB::connection('master')->pdo;
         //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
         //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
     }
@@ -34,16 +35,8 @@ class SubmissionService {
         if($feedback_created = $this->_create_feedback()) {
 
             $company_id = $this->post_data->get('company_id');
-
-            $dbh = DB::connection('master')->pdo;
-            $dbh->beginTransaction();    
-            try {
-                $this->_create_metadata($feedback_created->feedback_id);   
-                $dbh->commit();
-            } catch (PDOException $e) {
-                $dbh->rollback();
-            }
-           
+ 
+            $this->_create_metadata($feedback_created->feedback_id);    
             //this creates metadata tag relationship between metadata and feedback 
             //$this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             //$this->_calculate_dashboard_analytics($company_id);
@@ -104,6 +97,7 @@ class SubmissionService {
     public function _create_metadata($feedback_id) { 
         //this creates metadata tag relationship between metadata and feedback
         if($post_metadata = $this->post_data->get('metadata')) { 
+            $this->dbh->query("SET foreign_key_checks = 0");
             foreach($post_metadata as $data) {
                 //this data goes into MetadataTags Table
                 $metatags_insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
@@ -117,6 +111,7 @@ class SubmissionService {
                    , 'tagId' => $metatags_insert_id
                 ));
             }
+            $this->dbh->query("SET foreign_key_checks = 1");
         }   
     }
 
