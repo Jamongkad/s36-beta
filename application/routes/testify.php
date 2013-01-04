@@ -324,7 +324,7 @@ return array(
         $tf = new Testify("Feedback Functions");  
         $tf->test("Delete Feedback", function($tf) {
             $dbfeedback = new Feedback\Repositories\DBFeedback;  
-            $feedid = 1063;
+            $feedid = 1064;
             $dbfeedback->permanently_remove_feedback($feedid);
         });
 

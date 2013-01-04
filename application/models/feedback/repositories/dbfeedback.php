@@ -750,7 +750,6 @@ class DBFeedback extends S36DataObject {
                         ->where('Feedback.feedbackId', '=', $id)
                         ->first();
 
-        Helpers::dump($feedback);
         if($feedback) {
             if($feedback->avatar) { 
                 //delete profile photos...
@@ -769,7 +768,7 @@ class DBFeedback extends S36DataObject {
             //let's make sure to add a query for removing tags from the MetadataTags table if need be
             DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
         } else {
-            throw new Exception("Feedback does not exist. Cannot carry no with deletion!");
+            throw new Exception("Feedback does not exist. Cannot carry on with deletion!");
         }
     }
 
