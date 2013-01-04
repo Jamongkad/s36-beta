@@ -74,7 +74,7 @@ class SubmissionService {
             $feedbackservice = new FeedbackService(new DBFeedback, new DBBadWords);
             $feedbackservice->save_feedback($post);
             
-            //We determine the origin of this feedback is from the Feedback Form
+            //We determine the origin of this feedback and its from the Feedback Form
             DB::Table('FeedbackContactOrigin', 'master')->insert(Array(
                 'contactId'  => $new_contact_id
               , 'feedbackId' => $new_feedback_id
