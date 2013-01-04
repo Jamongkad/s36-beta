@@ -128,7 +128,7 @@ $(document).keypress(function(event){
             if($('.form-custom-fields input[type=text]').length > 0) {
                 var meta = {};
                 $('.form-custom-fields input[type=text]').each(function() {
-                    if($(this).title() != $(this).val()) {
+                    if($(this).attr('title') != $(this).val()) {
                         meta[$(this).attr('name')] = $(this).val();
                     }
                 });
