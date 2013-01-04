@@ -3,6 +3,7 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
 use \Feedback\Entities\FeedbackNode;
 use \Profile\Services\ProfileImage;
+use Exception;
 
 class DBFeedback extends S36DataObject {
 
@@ -750,23 +751,26 @@ class DBFeedback extends S36DataObject {
                         ->first();
 
         Helpers::dump($feedback);
- 
-        if($feedback->avatar) { 
-            //delete profile photos...
-            $profile_img = new ProfileImage();
-            $profile_img->remove_profile_photo($feedback->avatar);
-        }
+        if($feedback) {
+            if($feedback->avatar) { 
+                //delete profile photos...
+                $profile_img = new ProfileImage();
+                $profile_img->remove_profile_photo($feedback->avatar);
+            }
 
-        DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
-        DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
-        DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
-        //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
-        DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
-                             //->where('Feedback.isDeleted', '=', 1)
-                             ->delete();
-        
-        //let's make sure to add a query for removing tags from the MetadataTags table if need be
-        DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete();
+            DB::table('FeedbackContactOrigin')->where('FeedbackContactOrigin.feedbackId', '=', $id)->delete();  
+            DB::table('Contact')->where('Contact.contactId', '=', $feedback->contactid)->delete();
+            DB::table('FeedbackActivity')->where('FeedbackActivity.feedbackId', '=', $id)->delete();
+            //Previously I wanted feedback deleted with isDeleted column set to 1. Let's do a hard delete instead...
+            DB::table('Feedback')->where('Feedback.feedbackId', '=', $id)
+                                 //->where('Feedback.isDeleted', '=', 1)
+                                 ->delete();
+            
+            //let's make sure to add a query for removing tags from the MetadataTags table if need be
+            DB::table('FeedbackMetadataTagMap')->where('FeedbackMetadataTagMap.feedbackId', '=', $id)->delete(); 
+        } else {
+            throw new Exception("Feedback does not exist. Cannot carry no with deletion!");
+        }
     }
 
     public function insert_new_feedback($feedback_data) { 
