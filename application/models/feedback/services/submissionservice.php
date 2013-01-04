@@ -27,17 +27,22 @@ class SubmissionService {
     }
 
     public function perform() {         
+
         if($feedback_created = $this->_create_feedback()) {
+
             $company_id = $this->post_data->get('company_id');
             //this creates metadata tag relationship between metadata and feedback
             $this->_create_metadata($feedback_created->feedback_id);
             $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
             $this->_save_latest_feedid($company_id);
+
             return $feedback_created->feedback_obj;
+
         } else {
             throw new Exception("Feedback Submission Failed!");
         }
+
     }
 
     public function _create_feedback() {
