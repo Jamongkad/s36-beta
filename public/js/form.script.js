@@ -124,21 +124,10 @@ $(document).keypress(function(event){
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
             }            
             //check the existence of custom input text fields
-            var collect = new Array();
             if($('.form-custom-fields input[type=text]').length > 0) {
-                $('.form-custom-fields input[type=text]').each(function() {
-                    if($(this).attr('title') != $(this).val()) {
-                        var meta = {};
-                        meta['name'] = $(this).attr('name');
-                        meta['value'] = $(this).val();
-                        collect.push(meta);
-                    }
-                }); 
 
-                var real_array = $.makeArray( $('.form-custom-fields input[type=text]') );
-               
+                var real_array = $.makeArray( $('.form-custom-fields input[type=text]') ); 
                 var collection = $.map( real_array, function(index, val) {
-                    console.log($(index).attr('title'));
                     if($(index).attr('title') != $(index).val()) {
                         var meta = {};
                         meta['name'] = $(index).attr('name');
@@ -146,15 +135,12 @@ $(document).keypress(function(event){
                         return meta;
                     }
                 });
-                console.log(collection);
          
-            }
-
-            if(collect) {
-                $.each(collect, function(index, value) {
+                $.each(collection, function(index, value) {
                     form_metadata.push(value);     
                 }) 
             }
+
 
             console.log(form_metadata);            
             //this shit is not combining...  
