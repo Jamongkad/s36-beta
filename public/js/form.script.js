@@ -133,7 +133,8 @@ $(document).keypress(function(event){
                 $('.form-custom-fields input[type=text]').each(function() {
                     if($(this).attr('title') != $(this).val()) {
                         var meta = {};
-                        meta[$(this).attr('name')] = $(this).val();
+                        meta['name'] = $(this).attr('name');
+                        meta['value'] = $(this).val();
                         collect.push(meta);
                     }
                 }); 
