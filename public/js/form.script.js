@@ -124,7 +124,7 @@ $(document).keypress(function(event){
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
             }
             
-            //check the existence of custom input fields
+            //check the existence of custom input text fields
             var meta = {};
             if($('.form-custom-fields input[type=text]').length > 0) {
                 $('.form-custom-fields input[type=text]').each(function() {
@@ -134,13 +134,16 @@ $(document).keypress(function(event){
                 }); 
             }
 
+            console.log(meta);
             console.log(form_metadata);
             
-            //this shit is not combining...
+            //this shit is not combining...  
+            /*
             for(var i=0; i<form_metadata.length; i++) { 
                 var combine = $.extend(form_metadata[i], meta);
                 console.log(combine);
             }
+            */
 
 			/*start creating attachment array*/
 			//getattached images first
