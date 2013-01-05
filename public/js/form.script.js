@@ -119,10 +119,12 @@ $(document).keypress(function(event){
 			if(!$('#your_website').hasClass('default-text')){
 				var website = $('#your_website').val();
 			}
-
+            
+            //metadata form collection
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
             }            
+
             //check the existence of custom input text fields
             if($('.form-custom-fields input[type=text]').length > 0) {
 
