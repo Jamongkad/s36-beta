@@ -138,7 +138,9 @@ $(document).keypress(function(event){
             }
 
             if(collect) {
-                form_metadata.push(collect);
+                $.each(collection, function(index, value) {
+                    form_metadata.push(value);     
+                }) 
             }
 
             console.log(form_metadata);            
