@@ -141,16 +141,6 @@ $(document).keypress(function(event){
                 }) 
             }
 
-
-            console.log(form_metadata);            
-            //this shit is not combining...  
-            /*
-            for(var i=0; i<form_metadata.length; i++) { 
-                var combine = $.extend(form_metadata[i], meta);
-                console.log(combine);
-            }
-            */
-
 			/*start creating attachment array*/
 			//getattached images first
 			var uploaded_images = new Array;
