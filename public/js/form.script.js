@@ -126,11 +126,11 @@ $(document).keypress(function(event){
             
             //check the existence of custom input text fields
             var meta = {};
-            var collect = [];
+            var collect = new Array();
             if($('.form-custom-fields input[type=text]').length > 0) {
                 $('.form-custom-fields input[type=text]').each(function() {
                     if($(this).attr('title') != $(this).val()) {
-                        collect.append(meta[$(this).attr('name')] = $(this).val());
+                        collect.push(meta[$(this).attr('name')] = $(this).val());
                     }
                 }); 
             }
