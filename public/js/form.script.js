@@ -122,10 +122,7 @@ $(document).keypress(function(event){
 
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
-            }
-
-            var normal = $('.form-custom-fields :input').serializeArray();
-            
+            }            
             //check the existence of custom input text fields
 
             var collect = new Array();
@@ -140,10 +137,11 @@ $(document).keypress(function(event){
                 }); 
             }
 
-            console.log(collect);
-            console.log(form_metadata);
-            console.log(normal);
-            
+            if(collect) {
+                form_metadata.push(collect);
+            }
+
+            console.log(form_metadata);            
             //this shit is not combining...  
             /*
             for(var i=0; i<form_metadata.length; i++) { 
