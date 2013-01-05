@@ -138,6 +138,7 @@ $(document).keypress(function(event){
                 var real_array = $.makeArray( $('.form-custom-fields input[type=text]') );
                
                 var collection = $.map( real_array, function(index, val) {
+                    console.log($(index));
                     if($(index).attr('title') != $(index).val()) {
                         var meta = {};
                         meta['name'] = $(index).attr('name');
