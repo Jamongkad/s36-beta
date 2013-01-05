@@ -130,7 +130,8 @@ $(document).keypress(function(event){
             if($('.form-custom-fields input[type=text]').length > 0) {
                 $('.form-custom-fields input[type=text]').each(function() {
                     if($(this).attr('title') != $(this).val()) {
-                        collect.push(meta[$(this).attr('name')] = $(this).val());
+                        var obj = meta[$(this).attr('name')] = $(this).val();
+                        collect.push(obj);
                     }
                 }); 
             }
