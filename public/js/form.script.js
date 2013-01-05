@@ -124,7 +124,6 @@ $(document).keypress(function(event){
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray();
             }            
             //check the existence of custom input text fields
-
             var collect = new Array();
             if($('.form-custom-fields input[type=text]').length > 0) {
                 $('.form-custom-fields input[type=text]').each(function() {
@@ -135,6 +134,14 @@ $(document).keypress(function(event){
                         collect.push(meta);
                     }
                 }); 
+
+                var real_array = $.makeArray( $('.form-custom-fields input[type=text]') );
+               
+                var collection = $.map( real_array, function(index, val) {
+                    console.log(index);
+                    console.log(val);
+                });
+         
             }
 
             if(collect) {
