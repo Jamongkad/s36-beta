@@ -143,6 +143,7 @@ $(document).keypress(function(event){
                         var meta = {};
                         meta['name'] = $(index).attr('name');
                         meta['value'] = $(index).val();
+                        return meta;
                     }
                 });
                 console.log(collection);
