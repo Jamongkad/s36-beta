@@ -124,7 +124,7 @@ $(document).keypress(function(event){
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
 
-                var ra = $.makeArray( $('.form-custom-fields :input') ); 
+                var ra = $.makeArray( $('.form-custom-fields :input:checked, :input') ); 
                 var cl = $.map(ra, function(index, val) {
                     console.log($(index).val());
                     if($(index).val() != "") {
