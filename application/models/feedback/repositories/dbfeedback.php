@@ -3,6 +3,7 @@
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
 use \Feedback\Entities\FeedbackNode;
 use \Profile\Services\ProfileImage;
+use Underscore\Underscore;
 use Exception;
 
 class DBFeedback extends S36DataObject {
@@ -348,6 +349,8 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
+
+        Helpers::dump(__(Array(1,2,3)));
         
         $collection = Array();
         foreach($results as $data)  {
@@ -814,6 +817,5 @@ class DBFeedback extends S36DataObject {
         $node->attachments = $data->attachments;
         $node->metadata = $data->metadata;
         return $node;
-
     }
 }

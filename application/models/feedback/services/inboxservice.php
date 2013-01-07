@@ -17,10 +17,10 @@ class InboxService {
     private $raw_filters = Array();
 
     private $filter_structure = Array(
-            'all' => 'all'
-          , 'published' => 'published'
-          , 'filed'   => 'filed'
-          , 'deleted' => 'deleted'
+        'all' => 'all'
+      , 'published' => 'published'
+      , 'filed'   => 'filed'
+      , 'deleted' => 'deleted'
     );
 
     private $choice_structure = Array(
