@@ -271,7 +271,7 @@
                                     <div class="additional-info">
                                         <div class="custom-meta-list grids">
                                         <? 
-                                        print_r($feed->feed_data->metadata);
+                                        print_r($feed->metadata);
                                         //start metadata
                                         $metadata = (!empty($feed->feed_data->metadata)) ? json_decode($feed->feed_data->metadata) : false; 
                                         if($metadata):
