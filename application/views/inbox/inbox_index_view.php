@@ -274,7 +274,17 @@
                                         //start metadata
                                         $metadata = (!empty($feed->metadata)) ? json_decode($feed->metadata) : false; 
                                         if($metadata):
+                                            foreach($metadata as $key => $val):
                                         ?>
+                                            <div class="custom-meta">
+                                                <div class="custom-meta-name"><?=$key?>: 
+                                                    <?foreach($val as $k => $v):?>
+                                                        <span class="value"><?=$v?></span>
+                                                    <?endforeach?>
+                                                </div>
+                                            </div>
+
+                                        <?endforeach?>
                                         <?endif?>
                                         <!--
                                             <div class="custom-meta">

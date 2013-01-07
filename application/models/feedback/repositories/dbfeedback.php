@@ -816,8 +816,6 @@ class DBFeedback extends S36DataObject {
 
         $metadata = Null;
         if(!empty($data->metadata)) {
-            $_ = new Underscore;                            
-            //$metadata = $_->groupBy(json_decode($data->metadata), 'name');
             $metadata = json_decode($data->metadata);
         }
 
