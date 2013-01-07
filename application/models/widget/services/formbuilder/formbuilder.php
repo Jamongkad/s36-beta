@@ -492,9 +492,9 @@ class Formbuilder {
                                            , $item['value']
                                            , $checked);
                 } else {
-            	    $radio = '<label class="label"><input type="radio" name="%s[%s]" value="%s"%s /> %s</label>' . "\n";        
-                    $html .= sprintf($radio, $this->elemId($field['cssClass'])
-                                           , $this->elemId($field['title'])
+            	    $radio = '<label class="label"><input type="radio" name="%s" value="%s[%s]"%s /> %s</label>' . "\n";        
+                    $html .= sprintf($radio, $this->elemId($field['title'])
+                                           , $this->elemId($field['cssClass'])
                                            , $this->elemId($item['value'])
                                            , $checked
                                            , $item['value']);
