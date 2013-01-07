@@ -1,3 +1,19 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.delete-block').click(function(){
+            $(this).parent().fadeOut();
+        });
+        $('.uploaded-images-close').click(function(){
+            $(this).parent().fadeOut();
+        });
+        $('.the-thumb,.video-circle').click(function(){
+            $('.lightbox').fadeIn();
+        });
+        $('.video').click(function(){
+            
+        });
+    });
+</script>
 <?if($feedback != null):?>
 <div class="the-feedbacks"> 
     <?foreach($feedback as $feeds):?>
@@ -221,7 +237,10 @@
                                             <?=$feed->text?> 
                                             <?=($feed->origin == 'tw') ? ' via '.'<a style="color:#567aa7" href="'.$feed->profilelink.'/status/'.$feed->socialid.'">Twitter</a>': null?>
                                         </p>
-                                    </div> 
+                                    </div>
+
+
+
                                     <div class="feedback-meta">
                                         <span class="rating <?=strtolower($feed->rating)?>"><?=$feed->rating?></span>
                                         <span class="permission"><?=$feed->permission?></span>
@@ -247,6 +266,100 @@
                                             <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional Info')?> 
                                         </span>
                                     </div>
+
+                                    <!-- additional info block -->
+                                    <div class="additional-info">
+                                        <div class="custom-meta-list grids">
+                                            <div class="custom-meta">
+                                                <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
+                                            </div>
+                                            <div class="custom-meta">
+                                                <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
+                                            </div>
+                                            <div class="custom-meta">
+                                                <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
+                                            </div>
+                                        </div>
+                                         <!-- test html view 
+                                        <div class="uploaded-images-and-links grids">
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />                       
+                                                </div>
+                                            </div>
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
+                                                </div>
+                                            </div>
+                                            <div class="image-block">
+                                                <div class="delete-block">x</div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
+                                                </div>
+                                            </div>
+                                            <div class="image-block video">
+                                                <div class="delete-block">x</div>
+                                                <div class="video-circle"></div>
+                                                <div class="the-thumb">
+                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        -->
+                                        <?php
+                                        //start attachments
+                                        $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
+                                        if($attachments):  
+                                        ?>
+                                            <div class="uploaded-images-and-links grids">
+                                            <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
+                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                    <div class="image-block">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="the-thumb">
+                                                            <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; //end uploaded images?>
+                                            <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
+                                                    <div class="image-block video">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="video-circle"></div>
+                                                        <div class="the-thumb">
+                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                        </div>
+                                                    </div>
+                                            <?php endif; //end uploaded link / video?>
+                                            </div>
+                                        <?php endif; 
+                                        //end attachments 
+                                        ?>
+                                    </div>
+                                    <!-- end of additional info block -->
+                                    <!-- start lightbox -->
+                                    <div class="lightbox">
+                                        <div class="uploaded-images-close"></div>
+                                        <div class="uploaded-images-popup">
+                                            <div class="uploaded-images-container">
+                                                <div class="uploaded-images-view">
+                                                    <div class="uploaded-images-content">
+                                                        <!--  if video -->
+                                                        <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
+                                                    
+                                                        <!-- if image 
+                                                        <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
+                                                    </div> 
+                                                    <!--
+                                                    <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end lightbox -->
                                 </div>
                             </div>
                             <div class="g1of5">
