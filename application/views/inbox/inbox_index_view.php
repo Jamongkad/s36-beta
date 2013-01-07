@@ -271,9 +271,8 @@
                                     <div class="additional-info">
                                         <div class="custom-meta-list grids">
                                         <? 
-                                        print_r($feed->metadata);
                                         //start metadata
-                                        $metadata = (!empty($feed->feed_data->metadata)) ? json_decode($feed->feed_data->metadata) : false; 
+                                        $metadata = (!empty($feed->metadata)) ? json_decode($feed->metadata) : false; 
                                         if($metadata):
                                         ?>
                                             <?php foreach($metadata as $data):?>   
@@ -296,7 +295,7 @@
                                         </div>
                                        <?php
                                         //start attachments
-                                        $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
+                                        $attachments = (!empty($feed->attachments)) ? json_decode($feed->attachments) : false; 
                                         if($attachments):  
                                         ?>
                                             <div class="uploaded-images-and-links grids">
