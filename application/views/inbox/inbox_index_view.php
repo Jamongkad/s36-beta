@@ -277,7 +277,7 @@
                                         ?>
                                             <?php foreach($metadata as $data):?>   
                                                 <div class="custom-meta">
-                                                    <?=print_r($data)?>
+                                                    <div class="custom-meta-name"><?=$data->name?> : <span class="value"><?=$data->value?></span></div>
                                                 </div>
                                             <?php endforeach?>
                                         <?endif?>
