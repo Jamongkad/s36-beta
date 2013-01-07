@@ -270,6 +270,18 @@
                                     <!-- additional info block -->
                                     <div class="additional-info">
                                         <div class="custom-meta-list grids">
+                                        <? 
+                                        //start metadata
+                                        $metadata = (!empty($feed->feed_data->metadata)) ? json_decode($feed->feed_data->metadata) : false; 
+                                        if($metadata):
+                                        ?>
+                                            <?php foreach($metadata as $data):?>   
+                                                <div class="custom-meta">
+                                                    <?=print_r($data)?>
+                                                </div>
+                                            <?php endforeach?>
+                                        <?endif?>
+                                        <!--
                                             <div class="custom-meta">
                                                 <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
                                             </div>
@@ -279,37 +291,9 @@
                                             <div class="custom-meta">
                                                 <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
                                             </div>
-                                        </div>
-                                         <!-- test html view 
-                                        <div class="uploaded-images-and-links grids">
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />                       
-                                                </div>
-                                            </div>
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                            <div class="image-block video">
-                                                <div class="delete-block">x</div>
-                                                <div class="video-circle"></div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                        </div>
                                         -->
-                                        <?php
+                                        </div>
+                                       <?php
                                         //start attachments
                                         $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
                                         if($attachments):  
