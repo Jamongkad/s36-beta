@@ -123,6 +123,20 @@ $(document).keypress(function(event){
             //metadata form collection
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
+
+                var ra = $.makeArray( $('.form-custom-fields :input') ); 
+                var cl = $.map(ra, function(index, val) {
+                    if((index).val()) {
+                        var meta = {};
+                        meta['name']  = $(index).attr('name');
+                        meta['value'] = $(index).val();
+                        meta['type']  = $(index).attr('type');
+                        return meta;
+                    } 
+                });
+
+                console.log(cl);
+                
             }            
 
             //check the existence of custom input text fields
