@@ -278,8 +278,8 @@
                                         ?>
                                             <div class="custom-meta">
                                                 <div class="custom-meta-name"><?=$key?>: 
-                                                    <?foreach($val as $k => $v):?>
-                                                        <span class="value"><?=$v?></span>
+                                                    <?foreach($val as $k):?>
+                                                        <span class="value"><?=$k->value?></span>
                                                     <?endforeach?>
                                                 </div>
                                             </div>
