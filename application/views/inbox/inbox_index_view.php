@@ -272,7 +272,7 @@
                                         <div class="custom-meta-list grids">
                                         <? 
                                         //start metadata
-                                        $metadata = (!empty($feed->metadata)) ? json_decode($feed->metadata) : false; 
+                                        $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
                                         if($metadata):
                                             foreach($metadata as $key => $val):
                                         ?>
