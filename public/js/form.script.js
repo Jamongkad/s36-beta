@@ -146,6 +146,8 @@ $(document).keypress(function(event){
                         return meta;
                     }
                 });
+
+                console.log(collection);
          
                 $.each(collection, function(index, value) {
                     form_metadata.push(value);     
