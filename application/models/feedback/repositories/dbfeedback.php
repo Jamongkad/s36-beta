@@ -811,6 +811,8 @@ class DBFeedback extends S36DataObject {
         $node->avatar = $data->avatar;
         $node->origin = $data->origin;
         $node->socialid = $data->socialid;
+        $node->attachments = $data->attachments;
+        $node->metadata = $data->metadata;
         return $node;
 
     }
