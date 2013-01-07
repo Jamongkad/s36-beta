@@ -122,15 +122,7 @@ $(document).keypress(function(event){
             
             //metadata form collection
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
-                //var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
-                var real_array = $.makeArray( $('.form-custom-fields :input:not(input[type=text])') ); 
-                var form_metadata = $.map( real_array, function(index, val) {
-                    var meta = {};
-                    meta['name'] = $(index).attr('name');
-                    meta['value'] = $(index).val();
-                    meta['type'] = $(index).attr('type')
-                    return meta;
-                });
+                var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
             }            
 
             //check the existence of custom input text fields
@@ -142,13 +134,10 @@ $(document).keypress(function(event){
                         var meta = {};
                         meta['name'] = $(index).attr('name');
                         meta['value'] = $(index).val();
-                        meta['type'] = $(index).attr('type')
                         return meta;
                     }
                 });
-
-                console.log(collection);
-         
+ 
                 $.each(collection, function(index, value) {
                     form_metadata.push(value);     
                 }) 
