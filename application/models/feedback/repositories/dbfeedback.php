@@ -74,8 +74,8 @@ class DBFeedback extends S36DataObject {
                 , Feedback.displayPosition
                 , Feedback.displayURL
                 , Feedback.displayCountry
-                , feedback.displaysbmtdate
-                , feedback.indlock
+                , Feedback.displaySbmtDate
+                , Feedback.indLock
                 , Feedback.attachments
                 , Feedback.metadata
                 , Contact.contactId AS contactid
