@@ -41,7 +41,6 @@ class SubmissionService {
             //$this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             //$this->_calculate_dashboard_analytics($company_id);
             //$this->_save_latest_feedid($company_id);
-
             return $feedback_created->feedback_obj;
 
         } else {
