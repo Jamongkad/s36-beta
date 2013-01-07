@@ -350,7 +350,9 @@ class DBFeedback extends S36DataObject {
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
 
-        Helpers::dump(__(Array(1,2,3)));
+        $_ = new Underscore;
+
+        Helpers::dump( $_->groupBy(Array(1,2,3), 'grp') );
         
         $collection = Array();
         foreach($results as $data)  {
