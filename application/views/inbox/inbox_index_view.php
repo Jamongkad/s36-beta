@@ -274,17 +274,16 @@
                                         //start metadata
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
                                         if($metadata):
-                                            foreach($metadata as $key => $val):
-                                        ?>
-                                            <div class="custom-meta">
-                                                <div class="custom-meta-name"><?=$key?>: 
-                                                    <?foreach($val as $k):?>
-                                                        <span class="value"><?=$k->value?></span>
-                                                    <?endforeach?>
+                                            foreach($metadata as $key => $val):?>
+                                                <div class="custom-meta">
+                                                    <div class="custom-meta-name"><?=$key?>: 
+                                                        <?foreach($val as $k):?>
+                                                            <span class="value"><?=$k->value?></span>
+                                                        <?endforeach?>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                        <?endforeach?>
+                                            <?endforeach?>
                                         <?endif?>
                                         <!--
                                             <div class="custom-meta">
