@@ -280,7 +280,7 @@
                                                     <pre>
                                                         <?=print_r($data)?>
                                                     </pre>
-                                                    <div class="custom-meta-name"><?//=$data->name?> : <span class="value"><?=//$data->value?></span></div>
+                                                    <div class="custom-meta-name"><?//=$data->name?> : <span class="value"><?//=$data->value?></span></div>
                                                 </div>
                                             <?php endforeach?>
                                         <?endif?>
