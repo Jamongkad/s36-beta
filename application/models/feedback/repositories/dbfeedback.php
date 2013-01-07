@@ -349,10 +349,6 @@ class DBFeedback extends S36DataObject {
         $sth->execute();
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
-
-        $_ = new Underscore;
-
-        Helpers::dump( $_->groupBy(Array(1,2,3), 'grp') );
         
         $collection = Array();
         foreach($results as $data)  {
@@ -817,7 +813,15 @@ class DBFeedback extends S36DataObject {
         $node->origin = $data->origin;
         $node->socialid = $data->socialid;
         $node->attachments = $data->attachments;
-        $node->metadata = $data->metadata;
+
+        $metadata = Null;
+        if(!empty($data->metadata)) {
+            $_ = new Underscore;                            
+            $metadata = $_->groupBy(json_decode($data->metadata));
+        }
+
+        $node->metadata = $metadata;
+
         return $node;
     }
 }

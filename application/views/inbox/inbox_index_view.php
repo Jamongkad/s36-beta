@@ -275,14 +275,6 @@
                                         $metadata = (!empty($feed->metadata)) ? json_decode($feed->metadata) : false; 
                                         if($metadata):
                                         ?>
-                                            <?php foreach($metadata as $data):?>   
-                                                <div class="custom-meta">
-                                                    <pre>
-                                                        <?=print_r($data)?>
-                                                    </pre>
-                                                    <div class="custom-meta-name"><?//=$data->name?> : <span class="value"><?//=$data->value?></span></div>
-                                                </div>
-                                            <?php endforeach?>
                                         <?endif?>
                                         <!--
                                             <div class="custom-meta">
