@@ -126,7 +126,7 @@ $(document).keypress(function(event){
 
                 var ra = $.makeArray( $('.form-custom-fields :input') ); 
                 var cl = $.map(ra, function(index, val) {
-                    if((index).val()) {
+                    if($(index).val()) {
                         var meta = {};
                         meta['name']  = $(index).attr('name');
                         meta['value'] = $(index).val();
