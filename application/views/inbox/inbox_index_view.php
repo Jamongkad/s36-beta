@@ -274,7 +274,6 @@
                                             <?=HTML::link('/feedback/modifyfeedback/'.$id, 'Modify Additional Info')?> 
                                         </span>
                                     </div>
-
                                     <!-- additional info block -->
                                     <?
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
@@ -285,17 +284,15 @@
                                             <div class="custom-meta-list grids">
                                             <? 
                                             //start metadata 
-                                            Helpers::dump($metadata);
                                             if($metadata):
                                                 foreach($metadata as $key => $val):?>
                                                     <div class="custom-meta">
-                                                        <div class="custom-meta-name"><?=$key?>: 
-                                                            <?foreach($val as $k):?>
-                                                                <span class="value"><?=$k->value?></span>
-                                                            <?endforeach?>
-                                                        </div>
+                                                        <?foreach($val as $k):?>
+                                                            <div class="custom-meta-name">
+                                                                <?=$k->name?>:<span class="value"><?=$k->value?></span>
+                                                            </div>
+                                                        <?endforeach?>
                                                     </div>
-
                                                 <?endforeach?>
                                             <?endif?>
                                             <!--
