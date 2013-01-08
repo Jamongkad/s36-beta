@@ -10,8 +10,13 @@
         $('.the-thumb,.video-circle').click(function(){
             $('.lightbox').fadeIn();
         });
-        $('.video').click(function(){
-            
+        $('.image-block').click(function(){
+            var html = '<img src="'+$('.the-thumb .large-image-url').val()+'" width="100%" />';
+            $('.uploaded-images-content').html(html);
+        });
+        $('.image-block.video').click(function(){
+            var html  = '<iframe width="770" height="400" src="'+$('.the-thumb .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
+            $('.uploaded-images-content').html(html);
         });
     });
 </script>
@@ -281,86 +286,51 @@
                                                 <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
                                             </div>
                                         </div>
-                                         <!-- test html view --uncomment to see actual html 
-                                        <div class="uploaded-images-and-links grids">
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />                       
-                                                </div>
-                                            </div>
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                            <div class="image-block">
-                                                <div class="delete-block">x</div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                            <div class="image-block video">
-                                                <div class="delete-block">x</div>
-                                                <div class="video-circle"></div>
-                                                <div class="the-thumb">
-                                                    <img src="https://si0.twimg.com/profile_images/1198202452/161498_100000732327141_3656884_q_normal.jpg" width="100%" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        -->
                                         <?php
                                         //start attachments
                                         $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
                                         if($attachments):  
                                         ?>
                                             <div class="uploaded-images-and-links grids">
-                                            <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
+                                            <?php if(isset($attachments->uploaded_images)){ //start uploaded images ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div class="image-block">
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
+                                                            <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
                                                             <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
-                                            <?php endif; //end uploaded images?>
-                                            <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
+                                            <?php } //end uploaded images?>
+                                            <?php if(isset($attachments->attached_link)){ //start uploaded link / video?>
                                                     <div class="image-block video">
                                                         <div class="delete-block">x</div>
-                                                        <div class="video-circle"></div>
-                                                        <div class="the-thumb">
-                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                        </div>
+                                                            <?php 
+                                                            //video attachments
+                                                            if($attachments->attached_link->video=='yes'){?>
+                                                                <div class="video-circle"></div>
+                                                                <div class="the-thumb">
+                                                                    <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
+                                                                    <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                                </div>
+                                                            <?php
+                                                            } 
+                                                            //just an external web link
+                                                            else{
+                                                            ?>
+                                                                <div style="cursor:pointer;">
+                                                                    <a href="<?=$attachments->attached_link->url?>" target="_blank"><img src="<?=$attachments->attached_link->image?>" width="100%" /></a>
+                                                                </div>
+                                                            <?php } ?>
                                                     </div>
-                                            <?php endif; //end uploaded link / video?>
+                                            <?php } //end uploaded link / video?>
                                             </div>
                                         <?php endif; 
                                         //end attachments 
                                         ?>
                                     </div>
                                     <!-- end of additional info block -->
-                                    <!-- start lightbox -->
-                                    <div class="lightbox">
-                                        <div class="uploaded-images-close"></div>
-                                        <div class="uploaded-images-popup">
-                                            <div class="uploaded-images-container">
-                                                <div class="uploaded-images-view">
-                                                    <div class="uploaded-images-content">
-                                                        <!--  if video -->
-                                                        <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
-                                                    
-                                                        <!-- if image 
-                                                        <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
-                                                    </div> 
-                                                    <!--
-                                                    <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end lightbox -->
                                 </div>
                             </div>
                             <div class="g1of5">
@@ -422,3 +392,25 @@
       </div>
 <?endif?>
 <!-- end of feedback list -->
+
+<!-- start lightbox -->
+<div class="lightbox">
+    <div class="uploaded-images-close"></div>
+    <div class="uploaded-images-popup">
+        <div class="uploaded-images-container">
+            <div class="uploaded-images-view">
+                <div class="uploaded-images-content">
+                    <!--  if video 
+                    <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
+                    -->
+                
+                    <!-- if image 
+                    <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
+                </div> 
+                <!--
+                <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end lightbox -->
