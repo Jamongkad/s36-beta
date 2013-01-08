@@ -12,6 +12,14 @@
         $('.video').click(function(){
             
         });
+        $('.image-block').click(function(){
+            var html = '<img src="'+$('.the-thumb .large-image-url').val()+'" width="100%" />';
+            $('.uploaded-images-content').html(html);
+        });
+        $('.image-block.video').click(function(){
+            var html  = '<iframe width="770" height="400" src="'+$('.the-thumb .link-url').val()+'" frameborder="0" allowfullscreen></iframe>iframe>';
+            $('.uploaded-images-content').html(html);
+        });
     });
 </script>
 <?if($feedback != null):?>
@@ -273,65 +281,65 @@
                                         $attachments = (!empty($feed->attachments)) ? json_decode($feed->attachments) : false; 
                                     ?>
                                     <?if($metadata || $attachments):?>
-                                    <div class="additional-info">
-                                        <div class="custom-meta-list grids">
-                                        <? 
-                                        //start metadata 
-                                        if($metadata):
-                                            foreach($metadata as $key => $val):?>
-                                                <div class="custom-meta">
-                                                    <div class="custom-meta-name"><?=$key?>: 
-                                                        <?foreach($val as $k):?>
-                                                            <span class="value"><?=$k->value?></span>
-                                                        <?endforeach?>
+                                        <div class="additional-info">
+                                            <div class="custom-meta-list grids">
+                                            <? 
+                                            //start metadata 
+                                            if($metadata):
+                                                foreach($metadata as $key => $val):?>
+                                                    <div class="custom-meta">
+                                                        <div class="custom-meta-name"><?=$key?>: 
+                                                            <?foreach($val as $k):?>
+                                                                <span class="value"><?=$k->value?></span>
+                                                            <?endforeach?>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                            <?endforeach?>
-                                        <?endif?>
-                                        <!--
-                                            <div class="custom-meta">
-                                                <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
+                                                <?endforeach?>
+                                            <?endif?>
+                                            <!--
+                                                <div class="custom-meta">
+                                                    <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
+                                                </div>
+                                                <div class="custom-meta">
+                                                    <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
+                                                </div>
+                                                <div class="custom-meta">
+                                                    <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
+                                                </div>
+                                            -->
                                             </div>
-                                            <div class="custom-meta">
-                                                <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
-                                            </div>
-                                            <div class="custom-meta">
-                                                <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
-                                            </div>
-                                        -->
+                                           <?php
+                                            //start attachments
+                                            if($attachments):  
+                                            ?>
+                                                <div class="uploaded-images-and-links grids">
+                                                <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
+                                                    <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                        <div class="image-block">
+                                                            <div class="delete-block">x</div>
+                                                            <div class="the-thumb">
+                                                                <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                <?php endif; //end uploaded images?>
+                                                <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
+                                                        <div class="image-block video">
+                                                            <div class="delete-block">x</div>
+                                                            <div class="video-circle"></div>
+                                                            <div class="the-thumb">
+                                                                <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                            </div>
+                                                        </div>
+                                                <?php endif; //end uploaded link / video?>
+                                                </div>
+                                            <?php endif; 
+                                            //end attachments 
+                                            ?>
                                         </div>
-                                       <?php
-                                        //start attachments
-                                        if($attachments):  
-                                        ?>
-                                            <div class="uploaded-images-and-links grids">
-                                            <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
-                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                    <div class="image-block">
-                                                        <div class="delete-block">x</div>
-                                                        <div class="the-thumb">
-                                                            <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
-                                                        </div>
-                                                    </div>
-                                                <?php endforeach; ?>
-                                            <?php endif; //end uploaded images?>
-                                            <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
-                                                    <div class="image-block video">
-                                                        <div class="delete-block">x</div>
-                                                        <div class="video-circle"></div>
-                                                        <div class="the-thumb">
-                                                            <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                        </div>
-                                                    </div>
-                                            <?php endif; //end uploaded link / video?>
-                                            </div>
-                                        <?php endif; 
-                                        //end attachments 
-                                        ?>
-                                    </div>
                                     <?endif?>
-                                    <!-- end of additional info block -->
+                                        <!-- end of additional info block -->
                                 </div>
                             </div>
                             <div class="g1of5">
