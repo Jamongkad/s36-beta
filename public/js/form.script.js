@@ -121,13 +121,13 @@ $(document).keypress(function(event){
 			}
             
             //metadata form collection
-            var d = $(".form-custom-fields").find(":checked, :selected, :text").map(function() {
+            var d = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
                 if(this.value) { 
                     if($(this).attr('title') != $(this).val()) {
                         var meta = {};
-                        meta['name']  = $(this).attr('name');
+                        meta['name']  = ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
                         meta['value'] = $(this).val();
-                        meta['type']  = $(this).attr('type');
+                        meta['type']  = ($(this).attr('type')) ? $(this).attr('type') : "select"
                         return meta; 
                     }
                 }
