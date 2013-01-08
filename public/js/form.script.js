@@ -121,6 +121,7 @@ $(document).keypress(function(event){
 			}
             
             //metadata form collection
+            /*
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
 
@@ -135,10 +136,25 @@ $(document).keypress(function(event){
                         return meta;
                     } 
                 });
-
-                console.log(cl);
-                
+                console.log(cl); 
             }            
+            */
+            if($('.form-custom-fields input[type=radio]:checked)').length > 0) {
+                var real_array = $.makeArray( $('.form-custom-fields input[type=radio]:checked') ); 
+                var collection = $.map( real_array, function(index, val) {
+                    if($(index).attr('title') != $(index).val()) {
+
+                        var meta = {
+                            'name': $(index).attr('name')
+                          , 'value': $(index).val()
+                          , 'type': $(index).attr('type')
+                        };
+
+                        return meta;
+                    }
+                });
+                console.log(collection);
+            }
 
             //check the existence of custom input text fields
             if($('.form-custom-fields input[type=text]').length > 0) {
@@ -146,9 +162,13 @@ $(document).keypress(function(event){
                 var real_array = $.makeArray( $('.form-custom-fields input[type=text]') ); 
                 var collection = $.map( real_array, function(index, val) {
                     if($(index).attr('title') != $(index).val()) {
-                        var meta = {};
-                        meta['name'] = $(index).attr('name');
-                        meta['value'] = $(index).val();
+
+                        var meta = {
+                            'name': $(index).attr('name')
+                          , 'value': $(index).val()
+                          , 'type': $(index).attr('type')
+                        };
+
                         return meta;
                     }
                 });
