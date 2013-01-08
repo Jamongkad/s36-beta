@@ -99,8 +99,9 @@ class SubmissionService {
             foreach($post_metadata as $data) {
                 //this data goes into MetadataTags Table
                 $metatags_insert_id = DB::Table('MetadataTags', 'master')->insert_get_id(Array(
-                    'tagName' => $data['name']
+                    'tagName'  => $data['name']
                   , 'tagValue' => $data['value']
+                  , 'tagType'  => $data['type']
                 ));
 
                 //Feedback MetadataTags junction table
