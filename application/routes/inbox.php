@@ -28,10 +28,7 @@ return array(
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
 
-        //Debug Helpers::dump($feedback);
-        $admin_check = S36Auth::user();
-        Helpers::dump( $admin_check );
-        
+        $admin_check = S36Auth::user();  
         $user_id = S36Auth::user()->userid;
         $company_id = S36Auth::user()->companyid;
         $redis->hset("user:$user_id:$company_id", "feedid_checked", 1);
