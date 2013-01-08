@@ -854,26 +854,21 @@ $(document).keypress(function(event){
 
     function create_metadata(field) {
 
-        $.each(field, function(index, value) {
-            console.log(index);
-            console.log(value);
-        });
-
-        /*
-        var myfield = $(field);
-        if(myfield.length > 0) {
-            var collection = $.map( field, function(index, val) {
-                if($(index).attr('title') != $(index).val()) {
+        return $.each(field, function(index, value) { 
+            var myfield = $(value);
+            if(myfield.length > 0) {
+                if(myfield.attr('title') != myfield.val()) {
                     var meta = {
-                        'name': $(index).attr('name')
-                      , 'value': $(index).val()
-                      , 'type': $(index).attr('type')
+                        'name'  : myfield.attr('name')
+                      , 'value' : myfield.val()
+                      , 'type'  : myfield.attr('type')
                     };
                     return meta;
                 }
-            });
-            return collection;
-        } 
+            } 
+        });
+
+        /*
         */
     }
 	
