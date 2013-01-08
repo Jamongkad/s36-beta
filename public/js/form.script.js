@@ -125,11 +125,17 @@ $(document).keypress(function(event){
                 '.form-custom-fields input[type=text]'  
               , '.form-custom-fields input[type=checkbox]:checked'
               , '.form-custom-fields input[type=radio]:checked'
-              , '.form-custom-fields select option:selected'
+              , '.form-custom-fields select'
             ];
 
             var catastrophe = $.map(metadata_form_list, function(index) {  
                 var myfield = $(index);
+
+                if(myfield.length > 0) {    
+                    console.log(myfield);
+                    console.log(myfield.attr('type'));
+                }
+                /*
                 if(myfield.length > 0) {    
                     if(myfield.attr('title') != myfield.val()) {
                         var meta = {
@@ -140,6 +146,7 @@ $(document).keypress(function(event){
                         return meta;
                     }
                 } 
+                */
             });
 
             console.log(catastrophe);
@@ -161,21 +168,6 @@ $(document).keypress(function(event){
                 console.log(cl); 
             }            
             */
-            if($('.form-custom-fields input[type=radio]:checked').length > 0) {
-                var real_array = $.makeArray( $('.form-custom-fields input[type=radio]:checked') ); 
-                var collection = $.map( real_array, function(index, val) {
-                    if($(index).attr('title') != $(index).val()) {
-                        var meta = {
-                            'name': $(index).attr('name')
-                          , 'value': $(index).val()
-                          , 'type': $(index).attr('type')
-                        };
-                        return meta;
-                    }
-                });
-                console.log(collection)
-            }
-
             //check the existence of custom input text fields
             if($('.form-custom-fields input[type=text]').length > 0) {
 
