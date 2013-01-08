@@ -121,35 +121,20 @@ $(document).keypress(function(event){
 			}
             
             //metadata form collection
-            var metadata_form_list = [
-                '.form-custom-fields input[type=text]'  
-              , '.form-custom-fields input[type=checkbox]:checked'
-              , '.form-custom-fields input[type=radio]:checked'
-              , '.form-custom-fields select'
-            ];
-
-            var catastrophe = $.map(metadata_form_list, function(index) {  
-                var myfield = $(index);
-
-                if(myfield.length > 0) {    
-                    console.log(myfield);
-                    console.log(myfield.attr('type'));
-                }
-                /*
-                if(myfield.length > 0) {    
-                    if(myfield.attr('title') != myfield.val()) {
-                        var meta = {
-                            'name'  : myfield.attr('name')
-                          , 'value' : myfield.val()
-                          , 'type'  : myfield.attr('type')
-                        };
-                        return meta;
+            var d = $(".form-custom-fields").find(":checked, :selected, :text").map(function() {
+                if(this.value) { 
+                    if($(this).attr('title') != $(this).val()) {
+                        var meta = {};
+                        meta['name']  = $(this).attr('name');
+                        meta['value'] = $(this).val();
+                        meta['type']  = $(this).attr('type');
+                        return meta; 
                     }
-                } 
-                */
+                }
             });
 
-            console.log(catastrophe);
+            console.log(d);
+
             /*
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
                 var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
