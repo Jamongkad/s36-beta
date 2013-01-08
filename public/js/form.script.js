@@ -127,7 +127,12 @@ $(document).keypress(function(event){
               , '.form-custom-fields input[type=radio]:checked'
               , '.form-custom-fields select option:selected'
             ];
-            var catastrophe = create_metadata(metadata_form_list);
+
+            var catastrophe = $.map(metadata_form_list, function(index) {  
+                var myfield = $(index);
+                return myfield;
+            });
+
             console.log(catastrophe);
             /*
             if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
@@ -851,24 +856,3 @@ $(document).keypress(function(event){
 		init_thumbnail_close_btn();
 		scale_review_textbox();
 	}
-
-    function create_metadata(field) {
-        var d = $.map(field, function(index, value) { 
-            var myfield = $(index);
-            return myfield;
-            /*
-            if(myfield.length > 0) {
-                if(myfield.attr('title') != myfield.val()) {
-                    var meta = {
-                        'name'  : myfield.attr('name')
-                      , 'value' : myfield.val()
-                      , 'type'  : myfield.attr('type')
-                    };
-                    return meta;
-                }
-            } 
-            */
-        });
-
-        return d;
-    }	
