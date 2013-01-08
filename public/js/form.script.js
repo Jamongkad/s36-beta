@@ -124,10 +124,18 @@ $(document).keypress(function(event){
             var d = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
                 if(this.value) { 
                     if($(this).attr('title') != $(this).val()) {
-                        var meta = {};
+                        var meta = {
+                            'name'  : ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
+                          , 'value' : $(this).val()
+                          , 'type'  : ($(this).attr('type')) ? $(this).attr('type') : "select"
+                        };
+                        
+                        /*
                         meta['name']  = ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
                         meta['value'] = $(this).val();
                         meta['type']  = ($(this).attr('type')) ? $(this).attr('type') : "select"
+                        */
+
                         return meta; 
                     }
                 }
