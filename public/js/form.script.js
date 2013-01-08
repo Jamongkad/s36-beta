@@ -134,7 +134,6 @@ $(document).keypress(function(event){
                 }
             }); 
 
-
 			/*start creating attachment array*/
 			//getattached images first
 			var uploaded_images = new Array;
@@ -183,7 +182,7 @@ $(document).keypress(function(event){
                 position 	: position,
                 website 	: website,
                 attachments : attachments,
-                metadata    : form_metadata
+                metadata    : $.makeArray(form_metadata)
             }
 
             console.log(data);
