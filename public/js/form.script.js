@@ -121,20 +121,19 @@ $(document).keypress(function(event){
 			}
             
             //metadata form collection
-            if(form_metadata == null) {
-                var form_metadata = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
-                    if(this.value) { 
-                        if($(this).attr('title') != $(this).val()) {
-                            var meta = {
-                                'name'  : ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
-                              , 'value' : $(this).val()
-                              , 'type'  : ($(this).attr('type')) ? $(this).attr('type') : "select"
-                            };
-                            return meta; 
-                        }
+            var form_metadata = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
+                if(this.value) { 
+                    if($(this).attr('title') != $(this).val()) {
+                        var meta = {
+                            'name'  : ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
+                          , 'value' : $(this).val()
+                          , 'type'  : ($(this).attr('type')) ? $(this).attr('type') : "select"
+                        };
+                        return meta; 
                     }
-                }); 
-            }
+                }
+            }); 
+
 
 			/*start creating attachment array*/
 			//getattached images first
@@ -197,7 +196,6 @@ $(document).keypress(function(event){
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
                     //cleart form_metadata var
-                    form_metadata = null;
               }
             });
 		}
