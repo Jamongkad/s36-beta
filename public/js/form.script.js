@@ -162,7 +162,7 @@ $(document).keypress(function(event){
 			/*end attachment*/
 
             //collect  all data plus attachment data
-            var data = {
+            var form_data = {
                 site_id		: $('#siteId').val(),
                 company_id	: $('#companyId').val(),
                 title       : $('#feedbackTitle').val(),
@@ -183,23 +183,19 @@ $(document).keypress(function(event){
                 website 	: website,
                 attachments : attachments,
                 metadata    : $.makeArray(form_metadata)
-            }
+            }            
 
-            console.log(data);
-            
             /*submit all data for server side scripting*/
-            /*
             $.ajax({
+                type: "POST",
                 url: "/submit_feedback",
                 dataType: "json",
-                data: data,
-                type: "POST",
+                data: form_data, 
                 success: function(q) {
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
               }
-            });
-            */
+            }); 
 		}
 
 		 function fb_connect_success(obj){
