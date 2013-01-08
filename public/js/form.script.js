@@ -853,7 +853,6 @@ $(document).keypress(function(event){
 	}
 
     function create_metadata(field) {
-
         var d = $.map(field, function(index, value) { 
             var myfield = $(value);
             if(myfield.length > 0) {
@@ -868,9 +867,5 @@ $(document).keypress(function(event){
             } 
         });
 
-        console.log(d);
-
-        /*
-        */
-    }
-	
+        return d;
+    }	
