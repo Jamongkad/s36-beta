@@ -854,7 +854,7 @@ $(document).keypress(function(event){
 
     function create_metadata(field) {
 
-        return $.each(field, function(index, value) { 
+        var d = $.each(field, function(index, value) { 
             var myfield = $(value);
             if(myfield.length > 0) {
                 if(myfield.attr('title') != myfield.val()) {
@@ -867,6 +867,8 @@ $(document).keypress(function(event){
                 }
             } 
         });
+
+        console.log(d);
 
         /*
         */
