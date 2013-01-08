@@ -186,7 +186,10 @@ $(document).keypress(function(event){
                 metadata    : form_metadata
             }
 
+            console.log(data);
+            
             /*submit all data for server side scripting*/
+            /*
             $.ajax({
                 url: "/submit_feedback",
                 dataType: "json",
@@ -195,9 +198,9 @@ $(document).keypress(function(event){
                 success: function(q) {
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
-                    //cleart form_metadata var
               }
             });
+            */
 		}
 
 		 function fb_connect_success(obj){
