@@ -16,6 +16,7 @@ class S36Auth {
             static::$user = DB::table('User', static::$db_name)
                 ->join('AuthAssignment', 'User.userId', '=', 'AuthAssignment.userid')
                 ->join('Company', 'User.companyId', '=', 'Company.companyId')
+                ->join('Plan', 'Company.planId', '=', 'Plan.planId')
                 ->where('User.userId', '=', Session::get(static::$user_id))->first(Array( 
                     '*' 
                   , 'Company.name AS companyname'
