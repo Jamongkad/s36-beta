@@ -285,6 +285,7 @@
                                             <div class="custom-meta-list grids">
                                             <? 
                                             //start metadata 
+                                            Helpers::dump($metadata);
                                             if($metadata):
                                                 foreach($metadata as $key => $val):?>
                                                     <div class="custom-meta">
