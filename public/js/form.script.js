@@ -139,21 +139,19 @@ $(document).keypress(function(event){
                 console.log(cl); 
             }            
             */
-            if($('.form-custom-fields input[type=radio]:checked)').length > 0) {
+            if($('.form-custom-fields input[type=radio]:checked').length > 0) {
                 var real_array = $.makeArray( $('.form-custom-fields input[type=radio]:checked') ); 
                 var collection = $.map( real_array, function(index, val) {
                     if($(index).attr('title') != $(index).val()) {
-
                         var meta = {
                             'name': $(index).attr('name')
                           , 'value': $(index).val()
                           , 'type': $(index).attr('type')
                         };
-
                         return meta;
                     }
                 });
-                console.log(collection);
+                console.log(collection)
             }
 
             //check the existence of custom input text fields
