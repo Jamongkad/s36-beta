@@ -121,66 +121,19 @@ $(document).keypress(function(event){
 			}
             
             //metadata form collection
-            var d = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
-                if(this.value) { 
-                    if($(this).attr('title') != $(this).val()) {
-                        var meta = {
-                            'name'  : ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
-                          , 'value' : $(this).val()
-                          , 'type'  : ($(this).attr('type')) ? $(this).attr('type') : "select"
-                        };
-                        
-                        /*
-                        meta['name']  = ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
-                        meta['value'] = $(this).val();
-                        meta['type']  = ($(this).attr('type')) ? $(this).attr('type') : "select"
-                        */
-
-                        return meta; 
+            if(form_metadata == null) {
+                var form_metadata = $(".form-custom-fields").find(":checked, :selected, :text, textarea").map(function() {
+                    if(this.value) { 
+                        if($(this).attr('title') != $(this).val()) {
+                            var meta = {
+                                'name'  : ($(this).attr('name')) ? $(this).attr('name') : $(this).parent('select').attr('name')
+                              , 'value' : $(this).val()
+                              , 'type'  : ($(this).attr('type')) ? $(this).attr('type') : "select"
+                            };
+                            return meta; 
+                        }
                     }
-                }
-            });
-
-            console.log(d);
-
-            /*
-            if($('.form-custom-fields :input:not(input[type=text])').length > 0) {
-                var form_metadata = $('.form-custom-fields :input:not(input[type=text])').serializeArray(); 
-
-                var ra = $.makeArray( $('.form-custom-fields :input:checked, :input') ); 
-                var cl = $.map(ra, function(index, val) {
-                    console.log($(index).val());
-                    if($(index).val() != "") {
-                        var meta = {};
-                        meta['name']  = $(index).attr('name');
-                        meta['value'] = $(index).val();
-                        meta['type']  = $(index).attr('type');
-                        return meta;
-                    } 
-                });
-                console.log(cl); 
-            }            
-            */
-            //check the existence of custom input text fields
-            if($('.form-custom-fields input[type=text]').length > 0) {
-
-                var real_array = $.makeArray( $('.form-custom-fields input[type=text]') ); 
-                var collection = $.map( real_array, function(index, val) {
-                    if($(index).attr('title') != $(index).val()) {
-
-                        var meta = {
-                            'name': $(index).attr('name')
-                          , 'value': $(index).val()
-                          , 'type': $(index).attr('type')
-                        };
-
-                        return meta;
-                    }
-                });
- 
-                $.each(collection, function(index, value) {
-                    form_metadata.push(value);     
-                }) 
+                }); 
             }
 
 			/*start creating attachment array*/
@@ -210,40 +163,43 @@ $(document).keypress(function(event){
 			};
 			/*end attachment*/
 
-			//collect  all data plus attachment data
-			var data = {
-					site_id		: $('#siteId').val(),
-					company_id	: $('#companyId').val(),
-                    title       : $('#feedbackTitle').val(),
-					feedback 	: $('#feedbackText').val(),
-					rating 		: $('#rating').val(),
-					recommend 	: $('#recommend').val(),
-					first_name	: $('#your_fname').val(),
-					last_name	: $('#your_lname').val(),
-					email 		: $('#your_email').val(),
-					city 		: $('#your_city').val(),
-					country 	: $('#your_country').val(),
-					login_type	: $('#loginType').val(),
-					profile_link: $('#profileLink').val(),
-					avatar 		: $('#preview_photo').attr('src'),
-					permission	: $('#your_permission').val(),
-					company 	: company,
-					position 	: position,
-					website 	: website,
-					attachments : attachments,
-                    metadata    : form_metadata
-				}
-				/*submit all data for server side scripting*/
-				$.ajax({
-		            url: "/submit_feedback",
-                    dataType: "json",
-		            data: data,
-		            type: "POST",
-		            success: function(q) {
-		            	$('.facebook-share-bar').html(q.share_button);
-		            	$('.twitter-share-bar').html(q.tweet_button);
-		          }
-		        });
+            //collect  all data plus attachment data
+            var data = {
+                site_id		: $('#siteId').val(),
+                company_id	: $('#companyId').val(),
+                title       : $('#feedbackTitle').val(),
+                feedback 	: $('#feedbackText').val(),
+                rating 		: $('#rating').val(),
+                recommend 	: $('#recommend').val(),
+                first_name	: $('#your_fname').val(),
+                last_name	: $('#your_lname').val(),
+                email 		: $('#your_email').val(),
+                city 		: $('#your_city').val(),
+                country 	: $('#your_country').val(),
+                login_type	: $('#loginType').val(),
+                profile_link: $('#profileLink').val(),
+                avatar 		: $('#preview_photo').attr('src'),
+                permission	: $('#your_permission').val(),
+                company 	: company,
+                position 	: position,
+                website 	: website,
+                attachments : attachments,
+                metadata    : form_metadata
+            }
+
+            /*submit all data for server side scripting*/
+            $.ajax({
+                url: "/submit_feedback",
+                dataType: "json",
+                data: data,
+                type: "POST",
+                success: function(q) {
+                    $('.facebook-share-bar').html(q.share_button);
+                    $('.twitter-share-bar').html(q.tweet_button);
+                    //cleart form_metadata var
+                    form_metadata = null;
+              }
+            });
 		}
 
 		 function fb_connect_success(obj){
