@@ -268,11 +268,15 @@
                                     </div>
 
                                     <!-- additional info block -->
+                                    <?
+                                        $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
+                                        $attachments = (!empty($feed->attachments)) ? json_decode($feed->attachments) : false; 
+                                    ?>
+                                    <?if($metadata || $attachments):?>
                                     <div class="additional-info">
                                         <div class="custom-meta-list grids">
                                         <? 
-                                        //start metadata
-                                        $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
+                                        //start metadata 
                                         if($metadata):
                                             foreach($metadata as $key => $val):?>
                                                 <div class="custom-meta">
@@ -299,7 +303,6 @@
                                         </div>
                                        <?php
                                         //start attachments
-                                        $attachments = (!empty($feed->attachments)) ? json_decode($feed->attachments) : false; 
                                         if($attachments):  
                                         ?>
                                             <div class="uploaded-images-and-links grids">
@@ -327,27 +330,8 @@
                                         //end attachments 
                                         ?>
                                     </div>
+                                    <?endif?>
                                     <!-- end of additional info block -->
-                                    <!-- start lightbox -->
-                                    <div class="lightbox">
-                                        <div class="uploaded-images-close"></div>
-                                        <div class="uploaded-images-popup">
-                                            <div class="uploaded-images-container">
-                                                <div class="uploaded-images-view">
-                                                    <div class="uploaded-images-content">
-                                                        <!--  if video -->
-                                                        <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
-                                                    
-                                                        <!-- if image 
-                                                        <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
-                                                    </div> 
-                                                    <!--
-                                                    <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end lightbox -->
                                 </div>
                             </div>
                             <div class="g1of5">
@@ -409,3 +393,23 @@
       </div>
 <?endif?>
 <!-- end of feedback list -->
+<!-- start lightbox -->
+<div class="lightbox">
+    <div class="uploaded-images-close"></div>
+    <div class="uploaded-images-popup">
+        <div class="uploaded-images-container">
+            <div class="uploaded-images-view">
+                <div class="uploaded-images-content">
+                    <!--  if video -->
+                    <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
+                
+                    <!-- if image 
+                    <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
+                </div> 
+                <!--
+                <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end lightbox -->
