@@ -130,7 +130,16 @@ $(document).keypress(function(event){
 
             var catastrophe = $.map(metadata_form_list, function(index) {  
                 var myfield = $(index);
-                return myfield;
+                if(myfield.length > 0) {    
+                    if(myfield.attr('title') != myfield.val()) {
+                        var meta = {
+                            'name'  : myfield.attr('name')
+                          , 'value' : myfield.val()
+                          , 'type'  : myfield.attr('type')
+                        };
+                        return meta;
+                    }
+                } 
             });
 
             console.log(catastrophe);
