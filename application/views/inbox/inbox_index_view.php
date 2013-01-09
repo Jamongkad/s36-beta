@@ -306,6 +306,8 @@
                                                                     ?>
                                                                 <?endif?>
 
+                                                                <?=implode(", ", $v)?>
+
                                                                 <?foreach($v as $d):?>
                                                                     <span class="value"><?=$d->value?></span>
                                                                 <?endforeach?>
