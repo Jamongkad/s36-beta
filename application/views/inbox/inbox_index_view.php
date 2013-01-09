@@ -286,7 +286,13 @@
                                             <? 
                                             Helpers::dump($metadata);
                                             //start metadata 
-                                            ?>
+                                            if($metadata):
+                                                foreach($metadata as $key => $val):?>
+                                                    <div class="custom-meta">
+                                                        <?=$key?>
+                                                    </div>
+                                                <?endforeach?>
+                                            <?endif?>
                                             <!--
                                                 <div class="custom-meta">
                                                     <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
