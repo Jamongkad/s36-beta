@@ -305,9 +305,14 @@
                                                                         echo $checkbox_label.":"
                                                                     ?>
                                                                 <?endif?>
-                                                                <?foreach($v as $d):?>
-                                                                    <span class="value">, <?=$d->value?></span>
-                                                                <?endforeach?>
+                                                                <?
+                                                                    $prefix = "";
+                                                                    foreach($v as $d) {
+                                                                        $value_list .= $prefix . "<span class='value'>" . $d->value . "</span>";    
+                                                                        $prefix = ", ";
+                                                                    }
+                                                                    echo $value_list;
+                                                                ?>
                                                             </div>
                                                         </div>
                                                     <?endforeach?> 
