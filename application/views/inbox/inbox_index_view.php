@@ -291,16 +291,17 @@
                                                     <?foreach($val as $k => $v):?>
                                                         <div class="custom-meta">
                                                             <div class="custom-meta-name">
-                                                                <?if($key != 'text'):?>
-                                                                    <?=$k?>:
-                                                                    <?foreach($v as $d):?>
-                                                                        <span class="value"><?=$d->value?></span>
-                                                                    <?endforeach?>
-                                                                <?else:?>
-                                                                    <?foreach($v as $d):?>
-                                                                        <span class="value"><?=$d->value?></span>
-                                                                    <?endforeach?>
+                                                                <?if($key == 'select' || $key == 'radio'):?>
+                                                                    <?=$k?>: 
                                                                 <?endif?>
+
+                                                                <?if($key == 'text'):?>
+                                                                    text:
+                                                                <?endif?>
+
+                                                                <?foreach($v as $d):?>
+                                                                    <span class="value"><?=$d->value?></span>
+                                                                <?endforeach?>
                                                             </div>
                                                         </div>
                                                     <?endforeach?> 
