@@ -293,7 +293,7 @@
                                                             <div class="custom-meta-name">
                                                                 <?=($key != 'text') ? $k.":" : 'text:'?>
                                                                 <?if($key == 'checkbox') {
-                                                                    $checkbox_key = explode($k, "-");
+                                                                    $checkbox_key = explode("-", $k);
                                                                     Helpers::dump($checkbox_key);
                                                                 }?>
                                                                 <?foreach($v as $d):?>
