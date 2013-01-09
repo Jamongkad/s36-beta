@@ -96,7 +96,7 @@ return array(
         //Helpers::dump(Input::get('metadata'));
         $_ = new Underscore; 
         $group = $_->groupBy(Input::get('metadata'), 'type'); 
-        $collection = $_->each($group, function($key, $val) use ($_){
+        $collection = $_->map($group, function($key, $val) use ($_){
             //Helpers::dump($key);
             //Helpers::dump($val);
             return $_->groupBy($val, 'name');
