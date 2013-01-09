@@ -299,6 +299,10 @@
                                                                     text:
                                                                 <?endif?>
 
+                                                                <?if($key == 'checkbox'):?>
+                                                                    checkbox:
+                                                                <?endif?>
+
                                                                 <?foreach($v as $d):?>
                                                                     <span class="value"><?=$d->value?></span>
                                                                 <?endforeach?>
