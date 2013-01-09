@@ -93,14 +93,14 @@ return array(
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
         */
-        Helpers::dump(Input::get('metadata'));
+        //Helpers::dump(Input::get('metadata'));
         $_ = new Underscore; 
         $group = $_->groupBy(Input::get('metadata'), 'type'); 
         $collection = $_->map($group, function($arg) {
             return $arg; 
         });
         Helpers::dump($collection);
-        Helpers::dump($group);
+        //Helpers::dump($group);
         /*
         $company_info        = $company->get_company_info($company_name);
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
