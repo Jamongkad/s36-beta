@@ -288,7 +288,7 @@
                                             //start metadata 
                                             if($metadata):
                                                 foreach($metadata as $key => $val):?>
-                                                    <div class="custom-meta">
+                                                    <div class="custom-meta-name">
                                                         <?=$key?>
                                                         <?foreach($val as $k => $v):?>
                                                             <p><?=$k?></p>
