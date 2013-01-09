@@ -332,7 +332,7 @@
                                                         <div class="image-block">
                                                             <div class="delete-block">x</div>
                                                             <div class="the-thumb">
-                                                                <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
+                                                                <img src="<?=$uploaded_image->url?>" width="100%" />                       
                                                             </div>
                                                         </div>
                                                     <?php endforeach; ?>
