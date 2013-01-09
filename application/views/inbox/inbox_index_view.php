@@ -290,6 +290,7 @@
                                                 foreach($metadata as $key => $val):?>
                                                     <div class="custom-meta">
                                                         <?=$key?>
+                                                        <?print_r($val)?>
                                                     </div>
                                                 <?endforeach?>
                                             <?endif?>
