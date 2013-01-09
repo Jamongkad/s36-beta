@@ -421,14 +421,7 @@
         <div class="uploaded-images-container">
             <div class="uploaded-images-view">
                 <div class="uploaded-images-content">
-                    <!--  if video -->
-                    <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
-                
-                    <!-- if image 
-                    <img src="images/sample-inbox-image2.jpg" width="100%" /> -->
                 </div> 
-                <!--
-                <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
             </div>
         </div>
     </div>
