@@ -78,7 +78,6 @@ $(document).keypress(function(event){
 		            url: "/socialnetwork/twitter/userinfo",
 		            type: "GET",
 			            success: function(data) {
-			            	console.log(data);
 			            	var user = $.parseJSON(data);
 			            	if(undefined != user.screen_name){
 			            		var url = 'https://twitter.com/'+user.screen_name;
@@ -141,7 +140,7 @@ $(document).keypress(function(event){
 				uploaded_images.push({
 					'url'		   :$(this).find('.img-url').val(),
 					'small_url'	   :$(this).find('.img-small-url').val(),
-					'medium_url'       :$(this).find('.img-medium-url').val(),
+					'medium_url'   :$(this).find('.img-medium-url').val(),
 					'large_url'	   :$(this).find('.img-large-url').val()
 				});
 			});
@@ -284,7 +283,7 @@ $(document).keypress(function(event){
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
-			},done: function(e, data){ console.log(data.result[0]);
+			},done: function(e, data){
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
