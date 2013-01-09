@@ -79,6 +79,7 @@ class DBFeedback extends S36DataObject {
                 , Feedback.indLock
                 , Feedback.attachments
                 , Feedback.metadata
+                , FeedbackAdminReply.adminReply
                 , Contact.contactId AS contactid
                 , Contact.firstName AS firstname
                 , Contact.lastName AS lastname
@@ -247,6 +248,9 @@ class DBFeedback extends S36DataObject {
                 '.$this->select_vars.'
             FROM 
                 Feedback
+                    LEFT JOIN
+                        FeedbackAdminReply
+                        ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
                     INNER JOIN 
                         Site
                         ON Feedback.siteId = Site.siteId
@@ -320,6 +324,9 @@ class DBFeedback extends S36DataObject {
                 '.$this->select_vars.'
             FROM
                 Feedback
+                    LEFT JOIN
+                        FeedbackAdminReply
+                        ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
                     INNER JOIN
                         Site
                         ON Site.siteId = Feedback.siteId
@@ -369,6 +376,9 @@ class DBFeedback extends S36DataObject {
                 , Company.logo AS company_logo 
             FROM 
                 Feedback
+                    LEFT JOIN
+                        FeedbackAdminReply
+                        ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
                     INNER JOIN
                         Site
                         ON Site.siteId = Feedback.siteId
@@ -487,6 +497,9 @@ class DBFeedback extends S36DataObject {
                 '.$this->select_vars.' 
             FROM 
                 Feedback
+            LEFT JOIN
+                FeedbackAdminReply
+                ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
@@ -793,6 +806,7 @@ class DBFeedback extends S36DataObject {
         $node->date   = $data->date;
         $node->status = $data->status;
         $node->text   = $data->text;
+        $node->attachments   = $data->attachments;
         $node->categoryid = $data->categoryid;  
         $node->category = $data->category;  
         $node->priority = $data->priority;  

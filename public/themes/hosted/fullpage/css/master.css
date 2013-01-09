@@ -197,3 +197,57 @@ a:hover{
 .padded-5{
 	padding:5px;
 }
+
+.admin-comment-textbox-container{
+	margin-bottom:7px;
+}
+.admin-comment-textbox-container textarea{
+	padding:6px 8px;
+	margin:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	height:80px;
+	border:1px solid #EEE;
+}
+.regular-featured .admin-comment-textbox-container textarea{	
+	width:690px;
+}
+.regular .admin-comment-textbox-container textarea{
+	width:255px;
+	font-size:12px;
+	height:40px;
+}
+.admin-comment-leave-a-reply{
+	text-align:right;
+}
+.regular-button{
+	background:#E3540F;
+	color:#FFF;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;	
+	border:1px solid #f26724;
+	font-weight:bold;
+	padding:5px 10px;
+	cursor:pointer;
+}
+.regular-button:hover{
+	background:#f26724;
+}
+.regular .regular-button{
+	font-size:11px;
+	padding:3px 8px;
+	font-weight:normal;
+}
+.admin-logged-session{
+	margin-right:10px;
+	color:#999;
+	text-shadow:#e6f7fa 0px 1px;
+}
+.regular-featured .admin-logged-session{
+	font-size:12px;
+}
+.regular .admin-logged-session{
+	font-size:10px;
+	margin-right:4px;
+}
