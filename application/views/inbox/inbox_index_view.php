@@ -305,11 +305,8 @@
                                                                         echo $checkbox_label.":"
                                                                     ?>
                                                                 <?endif?>
-
-                                                                <?=implode(", ", $v)?>
-
                                                                 <?foreach($v as $d):?>
-                                                                    <span class="value"><?=$d->value?></span>
+                                                                    <span class="value">, <?=$d->value?></span>
                                                                 <?endforeach?>
                                                             </div>
                                                         </div>
