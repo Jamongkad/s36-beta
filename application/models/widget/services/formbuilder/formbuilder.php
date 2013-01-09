@@ -405,9 +405,16 @@ class Formbuilder {
                                               , $this->elemId($item['value'])
                                               , $item['value']);
                 } else { 
+                    /* producing some funky inputs
             	    $checkbox = '<label class="label"><input type="checkbox" name="%s-%s" value="%s"%s /> %s</label>' . "\n";        
                     $html .= sprintf($checkbox, $this->elemId($field['title'])
                                               , $this->elemId($item['value'])
+                                              , $item['value'] 
+                                              , $checked
+                                              , $item['value']);
+                    */
+            	    $checkbox = '<label class="label"><input type="checkbox" name="%s" value="%s"%s /> %s</label>' . "\n";        
+                    $html .= sprintf($checkbox, $this->elemId($field['title'])
                                               , $item['value'] 
                                               , $checked
                                               , $item['value']);
