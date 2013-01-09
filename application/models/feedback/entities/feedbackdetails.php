@@ -42,11 +42,6 @@ class FeedbackDetails extends FeedbackDataTypes {
         $metadata = Null;
         if($this->post_data->get('metadata')) { 
             $_ = new Underscore; 
-            /*
-            $group = $_->groupBy($this->post_data->get('metadata'), 'type'); 
-            $metadata = json_encode($group);
-            */
-            $_ = new Underscore; 
             $group = $_->groupBy($this->post_data->get('metadata'), 'type'); 
             $collection = Array();
             foreach($group as $key => $value) {

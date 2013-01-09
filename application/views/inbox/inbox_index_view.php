@@ -283,55 +283,44 @@
                                     <?if($metadata || $attachments):?>
                                         <div class="additional-info">
                                             <div class="custom-meta-list grids">
-                                            <? 
-                                            //start metadata 
-                                            if($metadata):
-                                                foreach($metadata as $key => $val):?>
-                                                    <?foreach($val as $k => $v):?>
-                                                        <div class="custom-meta">
-                                                            <div class="custom-meta-name">
-                                                                <?if($key == 'select' || $key == 'radio'):?>
-                                                                    <?=ucwords($k)?>: 
-                                                                <?endif?>
+                                                <? 
+                                                //start metadata 
+                                                if($metadata):
+                                                    foreach($metadata as $key => $val):?>
+                                                        <?foreach($val as $k => $v):?>
+                                                            <div class="custom-meta">
+                                                                <div class="custom-meta-name">
+                                                                    <?if($key == 'select' || $key == 'radio'):?>
+                                                                        <?=ucwords($k)?>: 
+                                                                    <?endif?>
 
-                                                                <?if($key == 'text'):?>
-                                                                    <?
-                                                                        $text_label = ucfirst(str_replace("_", " ", $k));
-                                                                        echo $text_label.":"
-                                                                    ?>
-                                                                <?endif?>
+                                                                    <?if($key == 'text'):?>
+                                                                        <?
+                                                                            $text_label = ucfirst(str_replace("_", " ", $k));
+                                                                            echo $text_label.":"
+                                                                        ?>
+                                                                    <?endif?>
 
-                                                                <?if($key == 'checkbox'):?>
+                                                                    <?if($key == 'checkbox'):?>
+                                                                        <?
+                                                                            $checkbox_label = ucwords(str_replace("_", " ", $k));
+                                                                            echo $checkbox_label.":"
+                                                                        ?>
+                                                                    <?endif?>
                                                                     <?
-                                                                        $checkbox_label = ucwords(str_replace("_", " ", $k));
-                                                                        echo $checkbox_label.":"
+                                                                        $prefix = "";
+                                                                        $value_list = "";
+                                                                        foreach($v as $d) {
+                                                                            $value_list .= "<span class='value'>" . $prefix . $d->value . "</span>";    
+                                                                            $prefix = ", ";
+                                                                        }
+                                                                        echo $value_list;
                                                                     ?>
-                                                                <?endif?>
-                                                                <?
-                                                                    $prefix = "";
-                                                                    $value_list = "";
-                                                                    foreach($v as $d) {
-                                                                        $value_list .= "<span class='value'>" . $prefix . $d->value . "</span>";    
-                                                                        $prefix = ", ";
-                                                                    }
-                                                                    echo $value_list;
-                                                                ?>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    <?endforeach?> 
-                                                <?endforeach?>
-                                            <?endif?>
-                                            <!--
-                                                <div class="custom-meta">
-                                                    <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
-                                                </div>
-                                                <div class="custom-meta">
-                                                    <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
-                                                </div>
-                                                <div class="custom-meta">
-                                                    <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
-                                                </div>
-                                            -->
+                                                        <?endforeach?> 
+                                                    <?endforeach?>
+                                                <?endif?>
                                             </div>
                                            <?php
                                             //start attachments
