@@ -96,13 +96,11 @@ return array(
         //Helpers::dump(Input::get('metadata'));
         $_ = new Underscore; 
         $group = $_->groupBy(Input::get('metadata'), 'type'); 
-        $collection = $_->map($group, function($key, $val) use ($_){
-            //Helpers::dump($key);
-            //Helpers::dump($val);
-            return $_->groupBy($key, 'name');
-        });
+        $collection = Array();
+        foreach($group as $key => $value) {
+            $collection[$key][] = $_->groupBy($value, 'name');
+        }
         Helpers::dump($collection);
-        //Helpers::dump($group);
         /*
         $company_info        = $company->get_company_info($company_name);
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
