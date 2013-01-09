@@ -99,7 +99,7 @@ return array(
         $collection = $_->map($group, function($key, $val) use ($_){
             //Helpers::dump($key);
             //Helpers::dump($val);
-            return $key;//$_->groupBy($val, 'name');
+            return $_->groupBy($key, 'name');
         });
         Helpers::dump($collection);
         //Helpers::dump($group);
