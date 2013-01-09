@@ -1,6 +1,31 @@
 <?= HTML::script('/js/jquery.raty.min.js'); ?>
 <?= HTML::style('css/override.css'); ?>
+<script type="text/javascript">
+$(document).ready(function(){
 
+    $('.adminReply').click(function(){
+        var parent = $(this).parents('.admin-comment-block');
+        $.ajax({
+            url: "/admin_reply",
+            dataType: "json",
+            data: {
+                feedbackId: $(parent).find('.admin-comment-id').val(),
+                adminReply: $(parent).find('.admin-comment-textbox').val()
+            },
+            type: "POST",
+            success: function(result) {
+                if(undefined != result.feedbackid){
+                    $(parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                    $(parent).find('.admin-comment-box').css('display','none');
+                    $(parent).find('.admin-comment').css('display','block');
+                }
+          }
+        });
+    });
+
+
+});
+</script>
 <script type="text/javascript">
     
     // general functions.
@@ -157,8 +182,7 @@
             <div id="feedbackContainer">
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
-                    <?php 
-                    //echo "<pre>";print_r($feeds); echo "</pre>";
+                    <?php
                     if($feeds):
                     foreach ($feeds as $feed_group => $feed_list) : 
                     ?>
@@ -173,13 +197,14 @@
                         <div class="feedback-list">
                             <?php
                             foreach ($feed_list as $feed) : 
-                                $feedback_main_class         = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
-                                $feedback_content_class      = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
-                                $tw_marker                   = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
-                                $author_name        = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
-                                $author_company     = $feed->feed_data->position.', '.$feed->feed_data->companyname;
-                                $author_location    = $feed->feed_data->city.', '.$feed->feed_data->countryname;
-                                $text               = $feed->feed_data->text;
+                                $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
+                                $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
+                                $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
+                                $author_name                = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
+                                $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
+                                $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
+                                $text                       = $feed->feed_data->text;
+                                $attachments                = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false;
                             ?>
                             <div class="feedback <?=$feedback_main_class?>">
                                 <?=$tw_marker?>
@@ -223,53 +248,79 @@
                                         <div class="feedback-text">
                                             <p><?=$text?></p>                                            
                                         </div>
+
+                                    <?php if($attachments): ?>
                                         <div class="additional-contents">
-                                            <!-- is it an image? -->
+                                        <!-- is it an image? -->
+                                        <?php if(isset($attachments->uploaded_images)): ?>
                                             <div class="uploaded-images clear">
+                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                 <div class="uploaded-image">
                                                     <div class="padded-5">
-                                                        <img src="img/sample.jpg" width="100%" />
+                                                        <img src="<?=$uploaded_image->small_url?>" width="100%" />
                                                     </div>
                                                 </div>
-                                                <div class="uploaded-image">
-                                                    <div class="padded-5">
-                                                        <img src="img/sample.jpg" width="100%" />
-                                                    </div>
-                                                </div>
-                                                <div class="uploaded-image">
-                                                    <div class="padded-5">
-                                                        <img src="img/sample-bg.jpg" width="100%" />
-                                                    </div>
-                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
+                                        <?php endif; ?>
+
+                                        <?php if(isset($attachments->attached_link)): ?>
                                             <!-- a video -->
+                                            <?php /*
                                             <div class="uploaded-video">
                                                 <div class="padded-5">
                                                     <iframe width="293" height="220" src="" frameborder="0" allowfullscreen></iframe>
                                                 </div>
                                             </div>
+                                            */ ?>
                                             <!-- or just a preview link? -->
                                             <div class="uploaded-link">
                                                 <div class="padded-5">
                                                     <div class="form-video-meta">
                                                         <div class="video-thumb">
-                                                            <img src="http://i2.ytimg.com/vi/e9iDr1kFZDo/hqdefault.jpg" width="100%">
+                                                            <img src="<?=$attachments->attached_link->image?>" width="100%">
                                                         </div>
                                                         <div class="video-details">
-                                                            <h3>Happy Tree Friends - Remains To Be See...</h3>
-                                                            <p>Watch the NEW Happy Tree Friends episode "Bottled Up"! (Model ship not included) - http://bit.ly/UnwakV Do you want extra exclusive content? Circle us on Goo...</p>
+                                                            <h3><?=$attachments->attached_link->title?></h3>
+                                                            <p><?=$attachments->attached_link->description?></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        <?php endif; ?>
                                         </div>
-                                        <div class="admin-comment-block">
-                                            <div class="admin-name">Amy from Acme Inc says..</div>
-                                            <div class="admin-message clear">
-                                                <div class="admin-avatar"><img src="img/samchloe.png" width="32" height="32" /></div>
-                                                <div class="message">Great choice!</div>
+                                    <?php endif; ?>
+                                    <?php if(isset($user) && !empty($user)): ?>
+                                    <div class="admin-comment-block">
+                                        <?php if(empty($feed->feed_data->adminreply)): ?>
+                                            <div class="admin-comment-box">
+                                            <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
+                                            <div class="admin-comment-textbox-container">
+                                                <textarea class="admin-comment-textbox"></textarea>
+                                                </div>
+                                                <div class="admin-comment-leave-a-reply">
+                                                <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
+                                                <input type="button" class="adminReply regular-button" value="Post Comment" />
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="admin-comment" style="display:none">
+                                                <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
+                                                <div class="admin-message clear">
+                                                    <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                                    <div class="message"><?=$feed->feed_data->adminreply?></div>
+                                                </div>
+                                            </div>
+                                        <?php else:?>
+                                            <div class="admin-comment">
+                                                <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
+                                                <div class="admin-message clear">
+                                                    <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                                    <div class="message"><?=$feed->feed_data->adminreply?></div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                                     </div>
                                     <!-- end of feedback text bubble -->
                                     <!-- feedback user actions -->

@@ -139,10 +139,10 @@ $(document).keypress(function(event){
 			var uploaded_images = new Array;
 			$('#review-images .e_img_check').each(function(){
 				uploaded_images.push({
-					'url'		 : $(this).find('.img-url').val(),
-					'small_url'  : $(this).find('.img-small-url').attr('src'),
-					'medium_url' : $(this).find('.img-medium-url').attr('src'),
-					'large_url'  : $(this).find('.img-large-url').attr('src'),
+					'url'		   :$(this).find('.img-url').val(),
+					'small_url'	   :$(this).find('.img-small-url').val(),
+					'medium_url'       :$(this).find('.img-medium-url').val(),
+					'large_url'	   :$(this).find('.img-large-url').val()
 				});
 			});
 			//get attached link data
@@ -151,7 +151,7 @@ $(document).keypress(function(event){
 					title			: $('#link-title').val(),
 					description		: $('#link-description').val(),
 					image			: $('#link-image').val(),
-					url				: $('#link-url').val(),
+					url		        : $('#link-url').val(),
 					video			: $('#link-video').val(),
 				};
 			}
@@ -167,7 +167,7 @@ $(document).keypress(function(event){
             var form_data = {
                 site_id		: $('#siteId').val(),
                 company_id	: $('#companyId').val(),
-                title       : $('#feedbackTitle').val(),
+                title           : $('#feedbackTitle').val(),
                 feedback 	: $('#feedbackText').val(),
                 rating 		: $('#rating').val(),
                 recommend 	: $('#recommend').val(),
@@ -177,14 +177,14 @@ $(document).keypress(function(event){
                 city 		: $('#your_city').val(),
                 country 	: $('#your_country').val(),
                 login_type	: $('#loginType').val(),
-                profile_link: $('#profileLink').val(),
+                profile_link    : $('#profileLink').val(),
                 avatar 		: $('#preview_photo').attr('src'),
                 permission	: $('#your_permission').val(),
                 company 	: company,
                 position 	: position,
                 website 	: website,
-                attachments : attachments,
-                metadata    : $.makeArray(form_metadata)
+                attachments     : attachments,
+                metadata        : $.makeArray(form_metadata)
             }            
 
             /*submit all data for server side scripting*/
