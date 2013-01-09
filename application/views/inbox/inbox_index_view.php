@@ -287,6 +287,9 @@
                                             //start metadata 
                                             if($metadata):
                                                 foreach($metadata as $key => $val):?>
+                                                    <?
+                                                        $_ = new Underscore; 
+                                                    ?>  
                                                     <div class="custom-meta">
                                                         <div class="custom-meta-name"><?=$key?>: 
                                                             <?foreach($val as $k):?>
