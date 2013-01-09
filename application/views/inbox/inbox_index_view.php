@@ -28,7 +28,7 @@
                     <strong><?=date("jS F, l Y", $feeds->unix_timestamp)?> (<?=$feeds->daysago?>)</strong>
                 </div>
 
-                <?foreach($feeds->children as $feed):?>
+                <?php foreach($feeds->children as $feed):?>
                     <p></p>
                     <? $id = $feed->id ?>
                     
@@ -321,7 +321,6 @@
                                             </div>
                                         <?php
                                         //start attachments
-                                        $attachments = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false; 
                                         if($attachments):  
                                         ?>
                                             <div class="uploaded-images-and-links grids">
@@ -359,11 +358,12 @@
                                                     </div>
                                             <?php } //end uploaded link / video?>
                                             </div>
-                                        <?php endif; 
+                                        <?php endif;
                                         //end attachments 
                                         ?>
                                     </div>
                                     <!-- end of additional info block -->
+                                <?php endif; ?>
                                 </div>
                             </div>
                             <div class="g1of5">
@@ -397,10 +397,10 @@
                             <span class="status-message"></span>
                         </div>
                     </div>
-                <?endforeach?>
+                <?php endforeach;?>
             </div>
-        <?endif?>
-    <?endforeach?>
+        <?endif;?>
+    <?endforeach;?>
     <div class="c"></div>
     
     <?if($pagination):?>
