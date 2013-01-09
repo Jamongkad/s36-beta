@@ -293,6 +293,9 @@
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">
                                                                     <?=$k?>:
+                                                                    <?foreach($v as $d):?>
+                                                                        <span class="value"><?=$d->value?></span>
+                                                                    <?endforeach?>
                                                                 </div>
                                                             </div>
                                                         <?endforeach?>
