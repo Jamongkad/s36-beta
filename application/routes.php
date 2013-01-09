@@ -103,7 +103,7 @@ return array(
         }
         */
         $collect = $_->map($group, function($value, $key, $collection) use ($_) {
-            return $collection[$key];
+            return $key;
         });
         Helpers::dump($collect);
         /*
