@@ -1004,7 +1004,7 @@ margin-bottom: 3px;
     width:780px;
     margin-left:-390px;
     color:#626262;
-    overflow:hidden;
+    overflow:none;
     background: url("../img/faded-bg.png") repeat;
     border:none;
     font-size:11px;
