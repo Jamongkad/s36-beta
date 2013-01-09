@@ -291,7 +291,7 @@
                                                     <?foreach($val as $k => $v):?>
                                                         <div class="custom-meta">
                                                             <div class="custom-meta-name">
-                                                                <?=$k?>:
+                                                                <?=($key != 'text') ? $k.":" : false?>
                                                                 <?foreach($v as $d):?>
                                                                     <span class="value"><?=$d->value?></span>
                                                                 <?endforeach?>
