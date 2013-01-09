@@ -302,7 +302,7 @@
                                                                 <?if($key == 'checkbox'):?>
                                                                     <?
                                                                         $checkbox_label = ucwords(str_replace("_", " ", $k));
-                                                                        echo $checkbox_label
+                                                                        echo $checkbox_label.":"
                                                                     ?>
                                                                 <?endif?>
 
