@@ -341,6 +341,9 @@
                                                 <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
                                                     <div class="image-block video">
                                                        <div class="delete-block">x</div>
+                                                           <?if($attachments->attached_link->video=='yes'):?>
+                                                           <?else:?>
+                                                           <?endif;?>
                                                    </div>
                                                 <?php endif; //end uploaded link / video?>
                                                 </div>
