@@ -288,18 +288,16 @@
                                             //start metadata 
                                             if($metadata):
                                                 foreach($metadata as $key => $val):?>
-                                                        <?//=$key?>
-                                                        <?foreach($val as $k => $v):?>
-                                                            <div class="custom-meta">
-                                                                <div class="custom-meta-name">
-                                                                    <?=$k?>:
-                                                                    <?foreach($v as $d):?>
-                                                                        <span class="value"><?=$d->value?></span>
-                                                                    <?endforeach?>
-                                                                </div>
+                                                    <?foreach($val as $k => $v):?>
+                                                        <div class="custom-meta">
+                                                            <div class="custom-meta-name">
+                                                                <?=$k?>:
+                                                                <?foreach($v as $d):?>
+                                                                    <span class="value"><?=$d->value?></span>
+                                                                <?endforeach?>
                                                             </div>
-                                                        <?endforeach?>
-   
+                                                        </div>
+                                                    <?endforeach?> 
                                                 <?endforeach?>
                                             <?endif?>
                                             <!--
