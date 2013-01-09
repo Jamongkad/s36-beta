@@ -78,8 +78,8 @@ class JqueryFileUploader
             'max_file_size' => 2000000,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:
-            //'max_number_of_files' => null,
-            'max_number_of_files' => 3,
+            'max_number_of_files' => null,
+            //'max_number_of_files' => 3,
             // Image resolution restrictions:
             'max_width' => null,
             'max_height' => null,
