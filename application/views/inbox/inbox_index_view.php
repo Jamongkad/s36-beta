@@ -292,11 +292,11 @@
                                                         <div class="custom-meta">
                                                             <div class="custom-meta-name">
                                                                 <?if($key == 'select' || $key == 'radio'):?>
-                                                                    <?=$k?>: 
+                                                                    <?=ucwords($k)?>: 
                                                                 <?endif?>
 
                                                                 <?if($key == 'text'):?>
-                                                                    text:
+                                                                    Text:
                                                                 <?endif?>
 
                                                                 <?if($key == 'checkbox'):?>
