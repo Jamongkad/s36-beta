@@ -278,7 +278,7 @@
                                     <!-- additional info block -->
                                     <?
                                         $metadata = (!empty($feed->metadata)) ? $feed->metadata : false; 
-                                        $attachments = (!empty($feed->attachments)) ? json_decode($feed->attachments) : false; 
+                                        $attachments = (!empty($feed->attachments)) ? $feed->attachments : false; 
                                     ?>
                                     <?if($metadata || $attachments):?>
                                         <div class="additional-info">
