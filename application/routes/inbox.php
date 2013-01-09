@@ -28,6 +28,8 @@ return array(
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
 
+        Helpers::dump($feedback);
+
         $admin_check = S36Auth::user();  
         $user_id = S36Auth::user()->userid;
         $company_id = S36Auth::user()->companyid;
