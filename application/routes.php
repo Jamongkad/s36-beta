@@ -98,7 +98,7 @@ return array(
         $group = $_->groupBy(Input::get('metadata'), 'type'); 
         $collection = Array();
         foreach($group as $key => $value) {
-            $collection[$key][] = $_->groupBy($value, 'name');
+            $collection[$key]= $_->groupBy($value, 'name');
         }
         Helpers::dump($collection);
         /*
