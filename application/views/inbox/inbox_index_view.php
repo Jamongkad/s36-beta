@@ -332,19 +332,16 @@
                                                         <div class="image-block">
                                                             <div class="delete-block">x</div>
                                                             <div class="the-thumb">
-                                                                <img src="<?=$uploaded_image->url?>" width="100%" />                       
+                                                                <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>" />
+                                                                <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
                                                             </div>
                                                         </div>
                                                     <?php endforeach; ?>
                                                 <?php endif; //end uploaded images?>
                                                 <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
-                                                        <div class="image-block video">
-                                                            <div class="delete-block">x</div>
-                                                            <div class="video-circle"></div>
-                                                            <div class="the-thumb">
-                                                                <img src="<?=$attachments->attached_link->image?>" width="100%" />
-                                                            </div>
-                                                        </div>
+                                                    <div class="image-block video">
+                                                       <div class="delete-block">x</div>
+                                                   </div>
                                                 <?php endif; //end uploaded link / video?>
                                                 </div>
                                             <?php endif; 
