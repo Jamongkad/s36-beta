@@ -342,7 +342,17 @@
                                                     <div class="image-block video">
                                                        <div class="delete-block">x</div>
                                                            <?if($attachments->attached_link->video=='yes'):?>
+                                                               <div class="video-circle"></div>
+                                                               <div class="the-thumb">
+                                                                   <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
+                                                                   <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                               </img>
                                                            <?else:?>
+                                                               <div style="cursor:pointer;">
+                                                                   <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                                                       <img src="<?=$attachments->attached_link->image?>" width="100%" /></img>
+                                                                   </a>
+                                                               </div>
                                                            <?endif;?>
                                                    </div>
                                                 <?php endif; //end uploaded link / video?>
