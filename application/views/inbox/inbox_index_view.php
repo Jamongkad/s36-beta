@@ -289,7 +289,7 @@
                                                 foreach($metadata as $key => $val):?>
                                                     <?
                                                         $_ = new Underscore; 
-                                                        Helpers::dump($val);
+                                                        Helpers::dump($_->groupBy($val, 'name'));
                                                     ?>  
                                                     <div class="custom-meta">
                                                         <div class="custom-meta-name"><?=$key?>: 
