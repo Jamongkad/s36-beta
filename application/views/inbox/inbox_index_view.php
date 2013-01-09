@@ -309,7 +309,7 @@
                                                                     $prefix = "";
                                                                     $value_list = "";
                                                                     foreach($v as $d) {
-                                                                        $value_list .= $prefix . "<span class='value'>" . $d->value . "</span>";    
+                                                                        $value_list .= "<span class='value'>" . $prefix . $d->value . "</span>";    
                                                                         $prefix = ", ";
                                                                     }
                                                                     echo $value_list;
