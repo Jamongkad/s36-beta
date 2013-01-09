@@ -89,19 +89,10 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //TODO: refactor this too
-        /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
-        */
-        //Helpers::dump(Input::get('metadata'));
-        $_ = new Underscore; 
-        $group = $_->groupBy(Input::get('metadata'), 'type'); 
-        $collection = new StdClass;
-        foreach($group as $key => $value) {
-            $collection->{$key} = $_->groupBy($value, 'name');
-        }
 
-        Helpers::dump($collection);
+        //Helpers::dump(Input::get('metadata')); 
         /*
         $company_info        = $company->get_company_info($company_name);
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));

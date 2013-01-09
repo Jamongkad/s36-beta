@@ -284,23 +284,9 @@
                                         <div class="additional-info">
                                             <div class="custom-meta-list grids">
                                             <? 
+                                            Helpers::dump($metadata);
                                             //start metadata 
-                                            if($metadata):
-                                                foreach($metadata as $key => $val):?>
-                                                    <?
-                                                        $_ = new Underscore; 
-                                                        Helpers::dump($val);
-                                                    ?>  
-                                                    <div class="custom-meta">
-                                                        <div class="custom-meta-name"><?=$key?>: 
-                                                            <?foreach($val as $k):?>
-                                                                <span class="value"><?=$k->value?></span>
-                                                            <?endforeach?>
-                                                        </div>
-                                                    </div>
-
-                                                <?endforeach?>
-                                            <?endif?>
+                                            ?>
                                             <!--
                                                 <div class="custom-meta">
                                                     <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
