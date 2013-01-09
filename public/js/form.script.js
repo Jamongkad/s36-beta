@@ -287,17 +287,29 @@ $(document).keypress(function(event){
 			},done: function(e, data){
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
+				$('#uploaded_images_preview')
+					.append(
+						$('<div />')
+							.addClass('image-thumb e_img_check')
+							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
+							.append($('<img />').attr({'src':data.result[0].small_url,'width':'100%'}))
+							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
+							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
+							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
+							.append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
+							); 
 				$('#review-images')
 					.append(
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}).addClass('attachment'))
+							.append($('<img />').attr({'src':data.result[0].small_url,'width':'100%'}).addClass('attachment'))
 							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
 							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
 							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
 							.append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
-							);	
+							);
+				
 				//resize the textbox when done
 				scale_feedback_textbox();
 				
