@@ -295,7 +295,10 @@
                                                                 <?endif?>
 
                                                                 <?if($key == 'text'):?>
-                                                                    Text:
+                                                                    <?
+                                                                        $text_label = ucfirst(str_replace("_", " ", $k));
+                                                                        echo $text_label.":"
+                                                                    ?>
                                                                 <?endif?>
 
                                                                 <?if($key == 'checkbox'):?>
