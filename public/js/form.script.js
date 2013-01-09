@@ -139,8 +139,10 @@ $(document).keypress(function(event){
 			var uploaded_images = new Array;
 			$('#review-images .e_img_check').each(function(){
 				uploaded_images.push({
-					'url'		   :$(this).find('.img-url').val(),
-					'thumbnail_url':$(this).find('img').attr('src'),
+					'url'		 : $(this).find('.img-url').val(),
+					'small_url'  : $(this).find('.img-small-url').attr('src'),
+					'medium_url' : $(this).find('.img-medium-url').attr('src'),
+					'large_url'  : $(this).find('.img-large-url').attr('src'),
 				});
 			});
 			//get attached link data
@@ -285,14 +287,6 @@ $(document).keypress(function(event){
 			},done: function(e, data){
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
-				$('#uploaded_images_preview')
-					.append(
-						$('<div />')
-							.addClass('image-thumb e_img_check')
-							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}))
-							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-							); 
 				$('#review-images')
 					.append(
 						$('<div />')
@@ -300,8 +294,10 @@ $(document).keypress(function(event){
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
 							.append($('<img />').attr({'src':data.result[0].thumbnail_url,'width':'100%'}).addClass('attachment'))
 							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-							);
-				
+							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
+							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
+							.append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
+							);	
 				//resize the textbox when done
 				scale_feedback_textbox();
 				
