@@ -812,14 +812,19 @@ class DBFeedback extends S36DataObject {
         $node->avatar = $data->avatar;
         $node->origin = $data->origin;
         $node->socialid = $data->socialid;
-        $node->attachments = $data->attachments;
+
+        $attachments = Null;
+        if(!empty($data->attachments)) {
+            $attachments = json_decode($data->attachments);
+        }
 
         $metadata = Null;
         if(!empty($data->metadata)) {
             $metadata = json_decode($data->metadata);
         }
 
-        $node->metadata = $metadata;
+        $node->attachments = $attachments;
+        $node->metadata    = $metadata;
 
         return $node;
     }
