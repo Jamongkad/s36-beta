@@ -103,7 +103,6 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
         //TODO: refactor this too
-
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
         /*
