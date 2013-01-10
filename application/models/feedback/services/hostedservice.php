@@ -44,23 +44,16 @@ class HostedService {
         foreach($this->feeds->result as $feed) {
 
             $head_date = strtotime($feed->head_date_format);
+            /*
             if($feed->isfeatured) { 
-                /*
-                $obj = new StdClass;   
-                $obj->sort_id = 'featured_'.$feed->id;          
-                $obj->feed_data = $feed;                    
-                */
                 $obj = $this->_build_leaf($feed);
             }
 
             if($feed->ispublished) { 
-                /*
-                $obj = new StdClass;   
-                $obj->sort_id = 'published_'.$feed->id;          
-                $obj->feed_data = $feed;      
-                */
                 $obj = $this->_build_leaf($feed);
             }
+            */
+            $obj = $this->_build_leaf($feed);
 
             $collection[$head_date][] = $obj;        
             $obj = Null;
