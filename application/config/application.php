@@ -21,6 +21,8 @@ return array(
     'fb_secret'  => $determine->d->fb_secret,
     'subdomain'  => $determine->d->subdomain,
 
+    'upload_dir' => '/var/www/s36-upload-images',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Index

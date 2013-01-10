@@ -1,22 +1,101 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.delete-block').click(function(){
-            $(this).parent().fadeOut();
+            $(this).parent().fadeOut('',function(){
+                var div = $(this).parent('.uploaded-images-and-links');
+                $(this).remove();
+
+                console.log($(this).html());
+                var remove_images = {
+                        'url'          :$(this).find('.image-url').val(),
+                        'small_url'    :$(this).find('.small-image-url').val(),
+                        'medium_url'   :$(this).find('.medium-image-url').val(),
+                        'large_url'    :$(this).find('.large-image-url').val()
+                }
+
+                /*
+                / start re-building attachment array
+                */
+                var attachments = new Array;
+                if(div.find('.image-block').length>0){
+                    var new_uploaded_images = new Array;
+                    div.find('.the-thumb').each(function(){
+                        if(div.find('.image-url').length>0){
+                        new_uploaded_images.push({
+                            'url'          :$(this).find('.image-url').val(),
+                            'small_url'    :$(this).find('.small-image-url').val(),
+                            'medium_url'   :$(this).find('.medium-image-url').val(),
+                            'large_url'    :$(this).find('.large-image-url').val()
+                        });
+                        }
+                    });
+                }
+
+                if(div.find('.video').length>0){
+                    var new_attached_link = {
+                        title           : div.find('.link-title').val(),
+                        description     : div.find('.link-description').val(),
+                        image           : div.find('.link-image').val(),
+                        url             : div.find('.link-url').val(),
+                        video           : div.find('.link-video').val(),
+                    }
+                }
+                var attachments = {
+                        uploaded_images : new_uploaded_images,
+                        attached_link   : new_attached_link
+                }
+                
+                //send to backend
+                $.ajax({
+                    type: "POST",
+                    url: "/inbox/update_feedback_attachment",
+                    dataType: "json",
+                    data: {
+                        feedbackId      : div.find('.attachment_feedback_id').val(),
+                        attachments     : attachments,
+                        remove_images   : remove_images
+                    }, 
+                    success: function(q) {
+                        console.log(q);
+                        //success script here
+                  }
+                }); 
+                
+                /*
+                / end re-building attachment array
+                */
+            });
         });
         $('.uploaded-images-close').click(function(){
             $(this).parent().fadeOut();
         });
         $('.the-thumb,.video-circle').click(function(){
-            $('.lightbox').fadeIn();
+            var scroll_offset = $(document).scrollTop();
+            var top_offset = scroll_offset + 100;
+            $('.lightbox').fadeIn().css('top',top_offset);
         });
         $('.image-block').click(function(){
             var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
             $('.uploaded-images-content').html(html);
         });
         $('.image-block.video').click(function(){
-            var html  = '<iframe width="770" height="400" src="'+$(this).find(' .the-thumb .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
+            var html  = '<iframe width="770" height="400" src="'+$(this).find(' .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
         });
+
+        function remove_attachment(){
+            var uploaded_images = new Array;
+            $('.the-thumb').each(function(){
+                uploaded_images.push({
+                    'url'          :$(this).find('.image-url').val(),
+                    'small_url'    :$(this).find('.small-image-url').val(),
+                    'medium_url'   :$(this).find('.medium-image-url').val(),
+                    'large_url'    :$(this).find('.large-image-url').val()
+                });
+            });
+
+            console.log(uploaded_images);
+        }
     });
 </script>
 <?if($feedback != null):?>
@@ -321,14 +400,19 @@
                                             </div>
                                         <?php
                                         //start attachments
-                                        if($attachments):  
+                                        if($attachments):
+                                        //echo "<pre>";print_r($attachments);echo "</pre>";
                                         ?>
                                             <div class="uploaded-images-and-links grids">
+                                            <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
                                             <?php if(isset($attachments->uploaded_images)){ //start uploaded images ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div class="image-block">
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
+                                                            <input type="hidden" class="image-url" value="<?=$uploaded_image->url?>"/>
+                                                            <input type="hidden" class="small-image-url" value="<?=$uploaded_image->small_url?>"/>
+                                                            <input type="hidden" class="medium-image-url" value="<?=$uploaded_image->medium_url?>"/>
                                                             <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
                                                             <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
                                                         </div>
@@ -337,13 +421,17 @@
                                             <?php } //end uploaded images?>
                                             <?php if(isset($attachments->attached_link)){ //start uploaded link / video?>
                                                     <div class="image-block video">
+                                                        <input type="hidden" class="link-title" value="<?=$attachments->attached_link->title?>"/>
+                                                        <input type="hidden" class="link-description" value="<?=$attachments->attached_link->description?>"/>
+                                                        <input type="hidden" class="link-image" value="<?=$attachments->attached_link->image?>"/>
+                                                        <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
+                                                        <input type="hidden" class="link-video" value="<?=$attachments->attached_link->video?>"/>
                                                         <div class="delete-block">x</div>
                                                             <?php 
                                                             //video attachments
                                                             if($attachments->attached_link->video=='yes'){?>
                                                                 <div class="video-circle"></div>
                                                                 <div class="the-thumb">
-                                                                    <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
                                                                     <img src="<?=$attachments->attached_link->image?>" width="100%" />
                                                                 </div>
                                                             <?php
