@@ -538,51 +538,6 @@ class DBFeedback extends S36DataObject {
         return $result_obj; 
     }
 
-    public function televised_feedback($company_name) {
-        $sql = "
-            SELECT 
-                ".$this->select_vars."
-            FROM 
-                Feedback
-            INNER JOIN
-                Site
-                ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                Company
-                ON Company.companyId = Site.companyId
-            INNER JOIN
-                Category
-                ON Category.categoryId = Feedback.categoryId
-            INNER JOIN
-                Contact
-                ON Contact.contactId = Feedback.contactId
-            INNER JOIN
-                FeedbackContactOrigin
-                ON Feedback.contactid  = FeedbackContactOrigin.contactid
-               AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
-            INNER JOIN 
-                Country
-                    ON Contact.countryId = Country.countryId
-            WHERE 1=1
-                AND Company.name = :company_name
-                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
-            ORDER BY
-                Feedback.dtAdded DESC
-        ";
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
-
-        $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-
-        $result_obj = new StdClass;
-        $result_obj->result = $result;
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj; 
-    }
-
     public function count_todays_feedback($company_id) {
         $sql = "
             SELECT COUNT(*) as feed_count FROM Feedback
