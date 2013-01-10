@@ -364,7 +364,7 @@ class DBFeedback extends S36DataObject {
         }
         */
 
-        return $collection;
+        return $this->_return_feedback_node($results);
     }
 
     public function pull_feedback_by_id($feedback_id) { 
@@ -750,7 +750,7 @@ class DBFeedback extends S36DataObject {
             return DB::table('Feedback')->insert_get_id($feedback_data);
     }
 
-    public function _collect_feedback($feedback) { 
+    public function _return_feedback_node($feedback) { 
         $collection = Array();
         foreach($feedback as $data)  {
             $collection[] = $this->_feedback_node($data); 
