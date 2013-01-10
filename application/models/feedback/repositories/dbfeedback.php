@@ -357,14 +357,13 @@ class DBFeedback extends S36DataObject {
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
         
-        /*
         $collection = Array();
         foreach($results as $data)  {
             $collection[] = $this->_feedback_node($data);
         }
-        */
+        return $collection;
 
-        return $this->_return_feedback_nodes($results);
+        //return $this->_return_feedback_nodes($results);
     }
 
     public function pull_feedback_by_id($feedback_id) { 
