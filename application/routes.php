@@ -35,7 +35,6 @@ return array(
         $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
-        //$feeds = $hosted->fetch_hosted_feedback();
 
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
