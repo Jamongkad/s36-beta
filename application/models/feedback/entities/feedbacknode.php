@@ -50,4 +50,3 @@ class FeedbackNode {
     public $origin;
     public $socialid;
 }
-

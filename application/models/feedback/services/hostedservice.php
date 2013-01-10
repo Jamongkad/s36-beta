@@ -1,7 +1,10 @@
 <?php namespace Feedback\Services;
 
-use Feedback\Repositories\DBFeedback, Exception, Helpers, StdClass, ArrayIterator, LimitIterator, View, Config;
+use Feedback\Repositories\DBFeedback, Feedback\Entities\FeedbackLeaf;
 use redisent;
+use Helpers, View, Config;
+use Exception, StdClass, ArrayIterator, LimitIterator;
+
 
 class HostedService {
     
@@ -31,7 +34,8 @@ class HostedService {
 
     public function view_fragment() { 
         if($this->debug == True) {
-            return $this->fetch_data_by_set();
+            echo "<h1>Hosted Feed Debug Mode ENABLED</h1>";
+            return $this->fetch_hosted_feedback();
         } else { 
             return View::make('hosted/partials/hosted_feedback_partial_view', 
                 Array('collection' => $this->fetch_data_by_set(), 'fb_id' => Config::get('application.fb_id')))->get();
@@ -45,15 +49,21 @@ class HostedService {
 
             $head_date = strtotime($feed->head_date_format);
             if($feed->isfeatured) { 
+                /*
                 $obj = new StdClass;   
                 $obj->sort_id = 'featured_'.$feed->id;          
-                //$obj->feed_data = $feed;
+                $obj->feed_data = $feed;                    
+                */
+                $obj = $this->_build_leaf($feed);
             }
 
             if($feed->ispublished) { 
+                /*
                 $obj = new StdClass;   
                 $obj->sort_id = 'published_'.$feed->id;          
-                //$obj->feed_data = $feed;
+                $obj->feed_data = $feed;      
+                */
+                $obj = $this->_build_leaf($feed);
             }
 
             $collection[$head_date][] = $obj;        
@@ -85,7 +95,7 @@ class HostedService {
         $collection = Null; 
         $feeds = Null;
 
-        Helpers::dump($repack);
+        //debugger Helpers::dump($repack);
         return $repack;
     }
  
@@ -100,14 +110,31 @@ class HostedService {
        
     }
 
+    public function _build_leaf($feed) {
+
+        if($this->debug == True) {   
+            $obj = new StdClass;   
+            $obj->sort_id = $feed->id;
+            return $obj;
+        } else { 
+            $leaf = new FeedbackLeaf($feed);  
+            return $leaf;
+        }
+    }
+
     public function build_data() {
 
         $total_collection = (int)$this->feeds->total_rows;
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
  
         $key = $this->redis->hgetall($this->key_name);
+
+        if($this->debug == True) {
+            $this->bust_hostfeed_data();
+        }
+
         if(!$key || $redis_total_set !== $total_collection) {
-            echo "Processing: Insert Data into Redis";
+            //echo "Processing: Insert Data into Redis";
             //insert data into redis
             $this->redis->hset($this->key_name, 'total:set', $total_collection);
             $page = 0;
