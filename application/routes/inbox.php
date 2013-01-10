@@ -70,6 +70,22 @@ return array(
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
     }), 
+    'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() { 
+        $input = Input::get();
+        $feedback = new Feedback\Repositories\DBFeedback;
+        echo "<pre>";print_r($input);echo "</pre>";
+        /*update feedback attachments in database*/
+        $feedback->update_feedback($input['feedbackId'],array('attachments'=>json_encode($input['attachments'])));
+
+        /*start to remove images from the file system*/
+        if(isset($input['remove_images'])){
+            foreach($input['remove_images'] as $url){ 
+                $url = explode('uploaded_images',$url); //separate the application url from the image path
+                $url = Config::get('application.upload_dir')."/uploaded_images{$url[1]}"; //get the correct image path for removal
+                @unlink($url);
+            }
+        }
+    })
 );
 
 function reset_inbox_ui($company_id, $redis) { 
