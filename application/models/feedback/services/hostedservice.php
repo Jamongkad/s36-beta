@@ -86,7 +86,6 @@ class HostedService {
         $feeds = Null;
 
         Helpers::dump($repack);
-
         return $repack;
     }
  
