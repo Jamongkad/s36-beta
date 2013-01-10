@@ -42,21 +42,8 @@ class HostedService {
 
         $collection = Array();
         foreach($this->feeds->result as $feed) {
-
             $head_date = strtotime($feed->head_date_format);
-            /*
-            if($feed->isfeatured) { 
-                $obj = $this->_build_leaf($feed);
-            }
-
-            if($feed->ispublished) { 
-                $obj = $this->_build_leaf($feed);
-            }
-            */
-            $obj = $this->_build_leaf($feed);
-
-            $collection[$head_date][] = $obj;        
-            $obj = Null;
+            $collection[$head_date][] = $this->_build_leaf($feed);
             $head_date = Null;
         }  
 
@@ -104,6 +91,9 @@ class HostedService {
         if($this->debug == True) {   
             $obj = new StdClass;   
             $obj->sort_id = $feed->id;
+            $obj->isfeatured = $feed->isfeatured;
+            $obj->ispublished = $feed->ispublished;
+
             return $obj;
         } else { 
             $leaf = new FeedbackLeaf($feed);  
@@ -117,17 +107,14 @@ class HostedService {
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
  
         $key = $this->redis->hgetall($this->key_name);
+        $hosted_feeds = $this->fetch_hosted_feedback();       
 
         if($this->debug == True) {
             echo "<h1>HostedService Debug Enabled!</h1>";
-            $this->bust_hostfeed_data();
-            echo "<h2>Cache Busted</h2>";
-        }
-
-        $hosted_feeds = $this->fetch_hosted_feedback();       
-        if($this->debug == True) {
+            if($this->bust_hostfeed_data()) {
+                echo "<h2>Cache Busted</h2>";     
+            } 
             echo "<h2>Redis Caching Disabled!</h2>";
-            return $hosted_feeds;
         } else { 
             if(!$key || $redis_total_set !== $total_collection) {
                 //echo "Processing: Insert Data into Redis";
@@ -145,6 +132,6 @@ class HostedService {
     }
 
     public function bust_hostfeed_data() {
-        $this->redis->del($this->key_name); 
+        return $this->redis->del($this->key_name); 
     }
 }
