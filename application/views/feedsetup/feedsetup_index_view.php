@@ -66,31 +66,4 @@
             <?endif?>
         </div>
     </div>
-    <!--
-    <div id="widget-setup-block">
-        <div class="widget-options">
-            <h2 class="ico-widget widget">
-                <?=HTML::link('feedsetup/overview/display', 'Feedback Display Setup', Array('class' => 'widget-overview-btn'))?> 
-                <small style="font-weight:normal;">(for displaying feedback on your websites)</small>
-            </h2>
-            <?if($widgets->display_widgets->widget->widgets != null):?>
-                <span id="display-overview-target">
-                    <?=View::make('feedsetup/ajax_views/ajax_overview_view', Array(
-                        'widgets' => $widgets->display_widgets->widget
-                      , 'pagination' => $widgets->display_widgets->pagination
-                    ))->get();?>
-                </span>
-            <?else:?>
-                <div class="woops">
-                    <h2 class="woops-header">
-                        <?=HTML::link('feedsetup/widget_selection', 'Create your display widgets ', Array('class' => 'woops-header'))?> 
-                    </h2>
-                    <p class="woops-content">
-                        <?=HTML::link('feedsetup/widget_selection', 'Share your customer testimonials on your website', Array('class' => 'woops-a'))?> 
-                    </p>
-                </div>
-            <?endif;?>
-        </div>
-    </div>
-    -->
 </div>
