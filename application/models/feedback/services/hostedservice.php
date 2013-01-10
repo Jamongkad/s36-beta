@@ -47,13 +47,13 @@ class HostedService {
             if($feed->isfeatured) { 
                 $obj = new StdClass;   
                 $obj->sort_id = 'featured_'.$feed->id;          
-                $obj->feed_data = $feed;
+                //$obj->feed_data = $feed;
             }
 
             if($feed->ispublished) { 
                 $obj = new StdClass;   
                 $obj->sort_id = 'published_'.$feed->id;          
-                $obj->feed_data = $feed;
+                //$obj->feed_data = $feed;
             }
 
             $collection[$head_date][] = $obj;        
@@ -84,6 +84,8 @@ class HostedService {
         //clear memory
         $collection = Null; 
         $feeds = Null;
+
+        Helpers::dump($repack);
 
         return $repack;
     }

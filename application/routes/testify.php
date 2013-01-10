@@ -192,7 +192,7 @@ return array(
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->build_data();
             $data = $tf->data->hosted->view_fragment();
-            Helpers::dump($data);
+            //Helpers::dump($data);
         });    
         $tf->run();
     }, 
