@@ -181,7 +181,6 @@ return array(
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($id) {
             $mycompany = Config::get('application.subdomain');
-            $razer = 'razer';
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
@@ -193,7 +192,8 @@ return array(
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->build_data();
             $data = $tf->data->hosted->view_fragment();
-            Helpers::dump($data);
+            $tf->dump($data);
+            //Helpers::dump($data);
         });    
         $tf->run();
     }, 
