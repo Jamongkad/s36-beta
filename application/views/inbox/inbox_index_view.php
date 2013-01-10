@@ -10,11 +10,11 @@
             $('.lightbox').fadeIn();
         });
         $('.image-block').click(function(){
-            var html = '<img src="'+$('.the-thumb .large-image-url').val()+'" width="100%" />';
+            var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
             $('.uploaded-images-content').html(html);
         });
         $('.image-block.video').click(function(){
-            var html  = '<iframe width="770" height="400" src="'+$('.the-thumb .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
+            var html  = '<iframe width="770" height="400" src="'+$(this).find(' .the-thumb .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
         });
     });
