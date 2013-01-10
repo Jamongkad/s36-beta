@@ -757,6 +757,7 @@ class DBFeedback extends S36DataObject {
         $node->countrycode = $data->countrycode;
         $node->profilelink = $data->profilelink;
         $node->date   = $data->date;
+        $node->head_date_format = $data->head_date_format;
         $node->status = $data->status;
         $node->text   = $data->text;
         $node->attachments   = $data->attachments;
