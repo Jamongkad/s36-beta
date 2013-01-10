@@ -84,7 +84,7 @@ class HostedService {
         //clear memory
         $collection = Null; 
         $feeds = Null;
-        //Helpers::dump($repack);
+
         return $repack;
     }
  

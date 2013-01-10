@@ -70,6 +70,7 @@ return array(
             echo View::make('inbox/inbox_index_view', $view_data);
         } 
     }), 
+
     'POST /inbox/update_feedback_attachment' => Array('name' => 'update_feedback_attachment', 'before' => 's36_auth', 'do' => function() { 
         $input = Input::get();
         $feedback = new Feedback\Repositories\DBFeedback;

@@ -301,16 +301,11 @@ class DBFeedback extends S36DataObject {
         
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
-
-        $collection = Array();
-        foreach($results as $data)  {
-            $collection[] = $this->_feedback_node($data); 
-        }
-
+         
         $result_obj = new StdClass;
         $result_obj->company_id = $opts['company_id'];
         $result_obj->total_rows = $row_count->fetchColumn();
-        $result_obj->result = $collection;
+        $result_obj->result = $this->_return_feedback_nodes($results);
         return $result_obj;       
     }
 
@@ -357,12 +352,7 @@ class DBFeedback extends S36DataObject {
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $results = $sth->fetchAll(PDO::FETCH_CLASS);
         
-        $collection = Array();
-        foreach($results as $data)  {
-            $collection[] = $this->_feedback_node($data);
-        }
-
-        return $collection;
+        return $this->_return_feedback_nodes($results);
     }
 
     public function pull_feedback_by_id($feedback_id) { 
@@ -533,52 +523,7 @@ class DBFeedback extends S36DataObject {
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
 
         $result_obj = new StdClass;
-        $result_obj->result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $result_obj->total_rows = $row_count->fetchColumn();
-        return $result_obj; 
-    }
-
-    public function televised_feedback($company_name) {
-        $sql = "
-            SELECT 
-                ".$this->select_vars."
-            FROM 
-                Feedback
-            INNER JOIN
-                Site
-                ON Site.siteId = Feedback.siteId
-            INNER JOIN 
-                Company
-                ON Company.companyId = Site.companyId
-            INNER JOIN
-                Category
-                ON Category.categoryId = Feedback.categoryId
-            INNER JOIN
-                Contact
-                ON Contact.contactId = Feedback.contactId
-            INNER JOIN
-                FeedbackContactOrigin
-                ON Feedback.contactid  = FeedbackContactOrigin.contactid
-               AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
-            INNER JOIN 
-                Country
-                    ON Contact.countryId = Country.countryId
-            WHERE 1=1
-                AND Company.name = :company_name
-                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
-            ORDER BY
-                Feedback.dtAdded DESC
-        ";
-
-        $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_name', $company_name, PDO::PARAM_INT);
-
-        $sth->execute();
-        $result = $sth->fetchAll(PDO::FETCH_CLASS);
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-
-        $result_obj = new StdClass;
-        $result_obj->result = $result;
+        $result_obj->result = $this->_return_feedback_nodes($sth->fetchAll(PDO::FETCH_CLASS));
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
@@ -791,6 +736,14 @@ class DBFeedback extends S36DataObject {
     public function insert_new_feedback($feedback_data) { 
         if($feedback_data) 
             return DB::table('Feedback')->insert_get_id($feedback_data);
+    }
+
+    public function _return_feedback_nodes($feedback) { 
+        $collection = Array();
+        foreach($feedback as $data)  {
+            $collection[] = $this->_feedback_node($data); 
+        }
+        return $collection;
     }
 
     public function _feedback_node($data) { 
