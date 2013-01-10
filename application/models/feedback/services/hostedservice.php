@@ -100,8 +100,7 @@ class HostedService {
 
             return $obj;
         } else { 
-            $leaf = new FeedbackLeaf($feed);  
-            return $leaf;
+            return new FeedbackLeaf($feed);  
         }
     }
 
