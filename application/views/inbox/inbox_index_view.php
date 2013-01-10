@@ -4,15 +4,15 @@
             $(this).parent().fadeOut('',function(){
                 var div = $(this).parent('.uploaded-images-and-links');
                 $(this).remove();
-
-                console.log($(this).html());
+                /*
+                / remove image
+                */
                 var remove_images = {
                         'url'          :$(this).find('.image-url').val(),
                         'small_url'    :$(this).find('.small-image-url').val(),
                         'medium_url'   :$(this).find('.medium-image-url').val(),
                         'large_url'    :$(this).find('.large-image-url').val()
                 }
-
                 /*
                 / start re-building attachment array
                 */
@@ -56,7 +56,6 @@
                         remove_images   : remove_images
                     }, 
                     success: function(q) {
-                        console.log(q);
                         //success script here
                   }
                 }); 
@@ -79,23 +78,10 @@
             $('.uploaded-images-content').html(html);
         });
         $('.image-block.video').click(function(){
-            var html  = '<iframe width="770" height="400" src="'+$(this).find(' .link-url').val()+'" frameborder="0" allowfullscreen></iframe>';
+            var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
+            var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
         });
-
-        function remove_attachment(){
-            var uploaded_images = new Array;
-            $('.the-thumb').each(function(){
-                uploaded_images.push({
-                    'url'          :$(this).find('.image-url').val(),
-                    'small_url'    :$(this).find('.small-image-url').val(),
-                    'medium_url'   :$(this).find('.medium-image-url').val(),
-                    'large_url'    :$(this).find('.large-image-url').val()
-                });
-            });
-
-            console.log(uploaded_images);
-        }
     });
 </script>
 <?if($feedback != null):?>
