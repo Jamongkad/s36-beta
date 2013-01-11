@@ -176,6 +176,8 @@ $(document).ready(function(){
                     <div id="feedback-infinitescroll-landing"></div>
                 </div>
             </div>
+
+            <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
     </div>
 </div>
 </div>
