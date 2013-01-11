@@ -1,3 +1,4 @@
+/* description ajax edit */
 .company-rating .stars{ width: 110px; }
 #desc_textbox_con{ display: none; }
 #desc_textbox{ width: 97%; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; border: 1px solid #CCC; padding: 4px; font-size: 12px; color: #777; }
@@ -7,4 +8,7 @@
 #action_buttons .save{ background: url(../../../img/ico-green-check.png) no-repeat; }
 #action_buttons .cancel{ background: url(../../../img/ico-sprite-options.png) no-repeat; background-position: -160px 0px; }
 
-
+/* feedback */
+.regular .feedback-actions span{ margin-left: 0px; }
+.share-box{ width: 75px; }
+.btn-block{ text-align: left; }

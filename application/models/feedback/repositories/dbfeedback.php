@@ -516,16 +516,18 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 FeedbackActions
                 ON Feedback.feedbackId = FeedbackActions.feedbackId
-                AND FeedbackActions.ip_address = "' . $_SERVER['REMOTE_ADDR'] . '"
+                AND FeedbackActions.ip_address = :client_ip
             WHERE 1=1
                 AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
         ';
-
+        
+        $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
+        $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         $sth->execute();
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");

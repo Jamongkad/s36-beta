@@ -203,12 +203,14 @@
 	background:url(../images/ico-flag.png) no-repeat;
 	background-position:center left;
 	padding-left:17px;
+	cursor:pointer;
 }
 .share-button{
 	color:#455b61;
 	background:url(../images/ico-share.png) no-repeat;
 	background-position:center left;
 	padding-left:17px;
+	cursor:pointer;
 }
 
 /* end of regular feedback */
@@ -445,4 +447,41 @@
 	height:40px;
 	top:-1px;
 	right:-1px;
+}
+/* share box */
+.share-box{
+	position:absolute;
+	width:100px;
+	padding:10px;
+	background:#FFF;
+	border:1px solid #e4e4e4;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;		
+	box-shadow:#CCC 0px 2px 3px;
+	z-index:1000;
+	display:none;
+}
+.share-box .share-box-arrow{
+	background:url(../images/share-arrow-pointer.png);
+	background-repeat:no-repeat;
+	width:11px;
+	height:7px;
+	position:absolute;
+	top:-7px;
+	right:10px;
+}
+.btn-block{
+	margin-bottom:4px;
+}
+.btn-block:last-child{
+	margin-bottom:0px;
+}
+.regular-featured .share-box{
+	top:20px;
+	right:0px;
+}
+.regular .share-box{
+	top:40px;
+	right:0px;
 }
