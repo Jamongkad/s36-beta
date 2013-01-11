@@ -103,7 +103,8 @@ class DBFeedback extends S36DataObject {
                 , Site.domain AS sitedomain
                 , FeedbackContactOrigin.origin AS origin
                 , FeedbackContactOrigin.socialId AS socialid
-                , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count';
+                , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
+                ';
     
     //DB Reads
     public function pull_feedback_grouped_dates($opts) {
@@ -482,9 +483,12 @@ class DBFeedback extends S36DataObject {
     }
 
     public function televised_feedback_alt($company_name) { 
-        $sql = '
+        $sql = ' 
             SELECT
                 '.$this->select_vars.' 
+                , (SELECT COUNT(*) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
+                , FeedbackActions.useful
+                , FeedbackActions.flagged
             FROM 
                 Feedback
             LEFT JOIN
@@ -509,6 +513,10 @@ class DBFeedback extends S36DataObject {
             INNER JOIN 
                 Country
                 ON Country.countryId = Contact.countryId  
+            LEFT JOIN
+                FeedbackActions
+                ON Feedback.feedbackId = FeedbackActions.feedbackId
+                AND FeedbackActions.ip_address = "' . $_SERVER['REMOTE_ADDR'] . '"
             WHERE 1=1
                 AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
@@ -793,7 +801,83 @@ class DBFeedback extends S36DataObject {
 
         $node->attachments = $attachments;
         $node->metadata    = $metadata;
+        
+        $node->flagged = $data->flagged;
+        $node->useful = $data->useful;
+        $node->vote_count = $data->vote_count;
 
         return $node;
     }
+    
+    
+    // get record of user's action on the feedback.
+    public function get_feedback_actions($data){
+        
+        $result = DB::table('FeedbackActions')
+            ->where('ip_address', '=', $data->ip_address)
+            ->where('feedbackId', '=', $data->feedbackId)
+            ->first();
+        
+        return $result;
+        
+    }
+    
+    
+    // flag feedback as inappropriate.
+    public function flag_feedback($data){
+        
+        // get record of user's action on the feedback.
+        $result = $this->get_feedback_actions($data);
+        
+        
+        // if feedback is already flagged by the user, don't proceed.
+        if( ! is_null($result) && $result->flagged == 1 ) return;
+        
+        
+        // if feedback is not yet flagged, flag it.
+        if( ! is_null($result) && $result->flagged != 1 ){
+            
+            DB::table('FeedbackActions')
+                ->where('ip_address', '=', $data->ip_address)
+                ->where('feedbackId', '=', $data->feedbackId)
+                ->update( $data->flag_insert_data );
+            
+        // if feedback is not yet flagged and user has no action on it yet, insert new flag record.
+        }elseif( is_null($result) ){
+            
+            DB::table('FeedbackActions')->insert( $data->flag_insert_data );
+            
+        }
+        
+    }
+    
+    
+    // vote feedback as useful.
+    public function vote_feedback($data){
+        
+        // get record of user's action on the feedback.
+        $result = $this->get_feedback_actions($data);
+        
+        
+        // if feedback is already voted by the user, don't proceed.
+        if( ! is_null($result) && $result->useful == 1 ) return;
+        
+        
+        // if feedback is not yet voted, vote it.
+        if( ! is_null($result) && $result->useful != 1 ){
+            
+            DB::table('FeedbackActions')
+                ->where('ip_address', '=', $data->ip_address)
+                ->where('feedbackId', '=', $data->feedbackId)
+                ->update( $data->vote_insert_data );
+            
+        // if feedback is not yet voted and user has no action on it yet, insert new vote record.
+        }elseif( is_null($result) ){
+            
+            DB::table('FeedbackActions')->insert( $data->vote_insert_data );
+            
+        }
+        
+    }
+    
 }

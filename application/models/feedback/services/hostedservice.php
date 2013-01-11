@@ -97,6 +97,7 @@ class HostedService {
             $obj->sort_id = $feed->id;
             $obj->isfeatured = $feed->isfeatured;
             $obj->ispublished = $feed->ispublished;
+            $obj->feed_data = $feed;
 
             return $obj;
         } else { 

@@ -6,6 +6,7 @@ $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
 $company_name = Config::get('application.subdomain');
+$hosted_page_url = Config::get('application.url');
 Package::load('eden');
 eden()->setLoader();
 
@@ -26,16 +27,19 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
 
-        //Feeds 
+        //Feeds
         $hosted = new Feedback\Services\HostedService($company_name); 
-        $hosted->page_number = 1; 
+        $hosted->page_number = 1;
+        //$hosted->debug = true;  // remove this after testing.
+        //$hosted->dump_build_data = true;  // remove this after testing.
+        $hosted->bust_hostfeed_data();  // remove this after testing.
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
-
+        
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
@@ -58,7 +62,8 @@ return array(
                                                   , 'feeds'           => $feeds 
                                                   , 'feed_count'      => $meta->perform()
                                                   , 'company_header'  => $header_view
-                                                  , 'hosted'          => $hosted_settings_info));        
+                                                  , 'hosted_page_url' => $hosted_page_url
+                                                  , 'hosted'          => $hosted_settings_info));
         
         
         // increment page view count of company.
@@ -88,7 +93,21 @@ return array(
         
     },
     
-     
+    'POST /flag_feedback' => function() use($feedback){
+        
+        $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
+        $feedback->flag_feedback($data);
+        
+    },
+    
+    'POST /vote_feedback' => function() use($feedback){
+        
+        $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
+        $feedback->vote_feedback($data);
+        
+    },
+    
+    
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
         $widget = $widgetloader->load();
@@ -101,7 +120,7 @@ return array(
     },
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
-        //TODO: refactor this too
+
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
         /*
