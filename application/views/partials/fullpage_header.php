@@ -80,7 +80,7 @@
 
                       var boxes = $(msg);
                       container.append(boxes);
-
+                      /*
                         boxes.children('.feedback').masonry({ 
                             itemSelector: '.feedback',
                             columnWidth: 100,
@@ -92,10 +92,8 @@
                                 queue: false
                             } 
                         })
-
-                        add_branches();
-
-                        //reload_masonry();
+                        */
+                        reload_masonry();
                         twttr.widgets.load();
                         FB.XFBML.parse();
                     }
