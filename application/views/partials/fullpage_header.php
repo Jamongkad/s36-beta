@@ -56,10 +56,11 @@
 		
 	$(document).ready(function(){
 
-		$('.the-feedbacks').masonry({
+		$('.feedbacks-list').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
 			isAnimated: !Modernizr.csstransitions,
+            gutterWidth: 365,
 			animationOptions: {
 				duration: 750,
 				easing: 'linear',
@@ -72,14 +73,15 @@
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 var page_counter = counter + 1;
-		        var container = $('#feedback-infinitescroll-landing'); 
+		        var container = $('#feedback-infinitscroll-landing'); 
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
+                      /*
                         var boxes = $(msg);
                         container.append(boxes);
-                        boxes.children('.the-feedbacks').masonry({ 
-                            itemSelector: '.feedback-list',
+                        boxes.children('.feedback').masonry({ 
+                            itemSelector: '.feedback',
                             columnWidth: 100,
                             isAnimated: !Modernizr.csstransitions,
                             animationOptions: {
@@ -88,7 +90,8 @@
                                 queue: false
                             } 
                         })
-
+                       */
+                        reload_masonry();
                         auto_adjust_feedback_branch();
                         twttr.widgets.load();
                         FB.XFBML.parse();
@@ -100,6 +103,13 @@
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
         auto_adjust_feedback_branch();
+
+        function reload_masonry() {
+            $('.left-branch, .right-branch').remove();
+            $.when($('.feedback-list').masonry()).then(function() {
+                add_branches();
+            })
+        }
 
         function auto_adjust_feedback_branch() {
             $('.feedback').each(function(){
@@ -121,29 +131,13 @@
 			nameContainer.html(appendDash);
 		});
 
-        $('.feedback-list').masonry({
-            itemSelector: '.feedback',
-            columnWidth: 100,
-            isAnimated: true,
-            gutterWidth: 365,
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-              }
-        });
-        $('.feedback').each(function(){
-            
-        });
-        add_branches();
-	});
-	/* end of document ready function. below are custom functions for this form */	
-</script>
 
-<script type="text/javascript">
+	});
+
+    //exclusive for timeline layout 
     function add_branches(){ 
         var s = $('.feedback-list').find('.regular');
-        $.each(s,function(i,obj){
+        $.each(s, function(i, obj){
             var posLeft = $(obj).css("left");
             if(posLeft == "0px"){
                 html = "<span class='left-branch'></span>";
