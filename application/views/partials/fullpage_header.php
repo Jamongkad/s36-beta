@@ -108,6 +108,7 @@
         auto_adjust_feedback_branch();
 
         function reload_masonry() {
+            console.log("REloading");
             $('.left-branch, .right-branch').remove();
             $.when($('.feedback-list').masonry()).then(function() {
                 add_branches();
