@@ -68,6 +68,8 @@
 			}
 		});
 
+        add_branches();
+
 	    var counter = 0;	
         function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
