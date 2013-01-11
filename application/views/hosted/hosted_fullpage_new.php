@@ -273,8 +273,8 @@ $(document).ready(function(){
                     <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds))?>
                 </div>
             </div>
-            
         </div>
+        <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
     </div>
 </div>
 <?= HTML::script('/themes/hosted/fullpage/js/timeline.layout.js'); ?>
