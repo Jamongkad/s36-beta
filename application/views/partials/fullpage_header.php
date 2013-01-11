@@ -79,7 +79,7 @@
                         var boxes = $(msg);
                         container.append(boxes);
                         boxes.children('.the-feedbacks').masonry({ 
-                            itemSelector: '.feedback',
+                            itemSelector: '.feedback-list',
                             columnWidth: 100,
                             isAnimated: !Modernizr.csstransitions,
                             animationOptions: {
