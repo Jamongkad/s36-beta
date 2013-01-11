@@ -55,13 +55,14 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="star half"></div>    
                             </div>
                         </div>
+			<?=($feed->feed_data->isfeatured == 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
                     </div>
                 </div>
                 <!-- end of feedback header -->
                 <!-- feedback text bubble -->
                 <div class="feedback-text-bubble">
                     <div class="feedback-tail"></div>
-                    <div class="rating-stat">87 of 98 people found this useful</div>
+		    <?=($feed->feed_data->isfeatured != 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
                     <div class="feedback-text">
                         <p><?=$text?></p>                                            
                     </div>
