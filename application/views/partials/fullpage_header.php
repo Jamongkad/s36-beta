@@ -110,7 +110,17 @@
     function reload_masonry() {
         console.log("Reloading");
         $('.left-branch, .right-branch').remove();
-        $.when($('.feedback-list').masonry()).then(function() {
+        $.when($('.feedback-list').masonry({
+			itemSelector: '.feedback',
+			columnWidth: 100,
+			isAnimated: !Modernizr.csstransitions,
+            gutterWidth: 365,
+			animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false
+			}
+		})).then(function() {
             add_branches();
         })
     }
