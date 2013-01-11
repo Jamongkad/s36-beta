@@ -2,7 +2,7 @@
 
 use Feedback\Repositories\DBFeedback, Feedback\Entities\FeedbackLeaf;
 use redisent;
-use Helpers, View, Config;
+use Helpers, View;
 use Exception, StdClass, ArrayIterator, LimitIterator;
 
 
@@ -31,12 +31,6 @@ class HostedService {
 
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
-    }
-
-    public function view_fragment() { 
-        return View::make('hosted/partials/hosted_feedback_partial_view', Array(
-            'collection' => $this->fetch_data_by_set(), 'fb_id' => Config::get('application.fb_id'))
-        )->get();
     }
 
     public function fetch_hosted_feedback() { 
