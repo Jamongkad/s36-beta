@@ -104,14 +104,6 @@
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 
-        function reload_masonry() {
-            console.log("Reloading");
-            $('.left-branch, .right-branch').remove();
-            $.when($('.feedback-list').masonry()).then(function() {
-                add_branches();
-            })
-        }
-
         function auto_adjust_feedback_branch() {
             $('.feedback').each(function(){
                 var leftOffset = $(this).css('left');
@@ -136,6 +128,14 @@
 	});
 
     //exclusive for timeline layout 
+    function reload_masonry() {
+        console.log("Reloading");
+        $('.left-branch, .right-branch').remove();
+        $.when($('.feedback-list').masonry()).then(function() {
+            add_branches();
+        })
+    }
+
     function add_branches(){ 
         var s = $('.feedback-list').find('.regular');
         $.each(s, function(i, obj){
