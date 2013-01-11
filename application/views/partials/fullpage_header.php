@@ -93,8 +93,9 @@
                             } 
                         })
 
+                        add_branches();
+
                         //reload_masonry();
-                        auto_adjust_feedback_branch();
                         twttr.widgets.load();
                         FB.XFBML.parse();
                     }
