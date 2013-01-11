@@ -80,22 +80,9 @@
 
                       var boxes = $(msg);
                       container.append(boxes);
-                      /*
-                        boxes.children('.feedback').masonry({ 
-                            itemSelector: '.feedback',
-                            columnWidth: 100,
-                            isAnimated: !Modernizr.csstransitions,
-                            gutterWidth: 365,
-                            animationOptions: {
-                                duration: 750,
-                                easing: 'linear',
-                                queue: false
-                            } 
-                        })
-                        */
-                        reload_masonry();
-                        twttr.widgets.load();
-                        FB.XFBML.parse();
+                      reload_masonry();
+                      twttr.widgets.load();
+                      FB.XFBML.parse();
                     }
                 });
 		   }
@@ -108,7 +95,6 @@
 
     //exclusive for timeline layout 
     function reload_masonry() {
-        console.log("Reloading");
         $('.left-branch, .right-branch').remove();
         $.when($('.feedback-list').masonry({
 			itemSelector: '.feedback',
