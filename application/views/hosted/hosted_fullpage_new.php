@@ -228,7 +228,7 @@ $(document).ready(function(){
                                             </div>  
                                         </div>
                                         <div class="reviews clear">
-                                            <div class="ratings">
+                                            <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                                                 <div class="feedback-timestamp">Posted 3 hours ago</div>
                                                 <div class="stars blue clear">
                                                     <div class="star full"></div>
@@ -238,13 +238,14 @@ $(document).ready(function(){
                                                     <div class="star half"></div>    
                                                 </div>
                                             </div>
+                                            <?=($feed->feed_data->isfeatured == 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
                                         </div>
                                     </div>
                                     <!-- end of feedback header -->
                                     <!-- feedback text bubble -->
                                     <div class="feedback-text-bubble">
                                         <div class="feedback-tail"></div>
-                                        <div class="rating-stat">87 of 98 people found this useful</div>
+                                        <?=($feed->feed_data->isfeatured != 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
                                         <div class="feedback-text">
                                             <p><?=$text?></p>                                            
                                         </div>
