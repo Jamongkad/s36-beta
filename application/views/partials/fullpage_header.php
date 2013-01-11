@@ -80,21 +80,20 @@
 
                       var boxes = $(msg);
                       container.append(boxes);
-                      /*
-                        var boxes = $(msg);
-                        container.append(boxes);
+
                         boxes.children('.feedback').masonry({ 
                             itemSelector: '.feedback',
                             columnWidth: 100,
                             isAnimated: !Modernizr.csstransitions,
+                            gutterWidth: 365,
                             animationOptions: {
                                 duration: 750,
                                 easing: 'linear',
                                 queue: false
                             } 
                         })
-                       */
-                        reload_masonry();
+
+                        //reload_masonry();
                         auto_adjust_feedback_branch();
                         twttr.widgets.load();
                         FB.XFBML.parse();
@@ -108,7 +107,7 @@
         auto_adjust_feedback_branch();
 
         function reload_masonry() {
-            console.log("REloading");
+            console.log("Reloading");
             $('.left-branch, .right-branch').remove();
             $.when($('.feedback-list').masonry()).then(function() {
                 add_branches();
