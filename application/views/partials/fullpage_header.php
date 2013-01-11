@@ -56,10 +56,11 @@
 		
 	$(document).ready(function(){
 
-		$('.the-feedbacks').masonry({
+		$('.feedbacks-list').masonry({
 			itemSelector: '.feedback',
 			columnWidth: 100,
 			isAnimated: !Modernizr.csstransitions,
+            gutterWidth: 365,
 			animationOptions: {
 				duration: 750,
 				easing: 'linear',
@@ -67,31 +68,23 @@
 			}
 		});
 
+        add_branches();
+
 	    var counter = 0;	
         function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 var page_counter = counter + 1;
-		        var container = $('#feedback-landing'); 
+		        var container = $('#feedback-infinitescroll-landing'); 
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-                        var boxes = $(msg);
-                        container.append(boxes);
-                        boxes.children('.the-feedbacks').masonry({ 
-                            itemSelector: '.feedback',
-                            columnWidth: 100,
-                            isAnimated: !Modernizr.csstransitions,
-                            animationOptions: {
-                                duration: 750,
-                                easing: 'linear',
-                                queue: false
-                            } 
-                        })
 
-                        auto_adjust_feedback_branch();
-                        twttr.widgets.load();
-                        FB.XFBML.parse();
+                      var boxes = $(msg);
+                      container.append(boxes);
+                      reload_masonry();
+                      twttr.widgets.load();
+                      FB.XFBML.parse();
                     }
                 });
 		   }
@@ -99,51 +92,30 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
-        auto_adjust_feedback_branch();
 
-        function auto_adjust_feedback_branch() {
-            $('.feedback').each(function(){
-                var leftOffset = $(this).css('left');
-                
-                if(leftOffset == '400px'){
-                    $(this).css('left','418px');
-                    $(this).find('.feedback-branch').css({'left':'-30px','top':'40px'});
-                }
-            });
-        }
-
-		
-		$('.twt-featured').each(function(){
-			var nameContainer  = $(this).find('.feedbackAuthorDetails h2');
-			var nameContent = nameContainer.html();
-			var appendDash = '— '+nameContent;
-			
-			nameContainer.html(appendDash);
-		});
-
-        $('.feedback-list').masonry({
-            itemSelector: '.feedback',
-            columnWidth: 100,
-            isAnimated: true,
-            gutterWidth: 365,
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-              }
-        });
-        $('.feedback').each(function(){
-            
-        });
-        add_branches();
 	});
-	/* end of document ready function. below are custom functions for this form */	
-</script>
 
-<script type="text/javascript">
+    //exclusive for timeline layout 
+    function reload_masonry() {
+        $('.left-branch, .right-branch').remove();
+        $.when($('.feedback-list').masonry({
+			itemSelector: '.feedback',
+			columnWidth: 100,
+			isAnimated: !Modernizr.csstransitions,
+            gutterWidth: 365,
+			animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false
+			}
+		})).then(function() {
+            add_branches();
+        })
+    }
+
     function add_branches(){ 
         var s = $('.feedback-list').find('.regular');
-        $.each(s,function(i,obj){
+        $.each(s, function(i, obj){
             var posLeft = $(obj).css("left");
             if(posLeft == "0px"){
                 html = "<span class='left-branch'></span>";

@@ -29,10 +29,10 @@ return array(
     'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
-        $hosted = new Feedback\Services\HostedService($company_name); 
+
         //Feeds 
-        $hosted->page_number = 1;
-        $hosted->bust_hostfeed_data();
+        $hosted = new Feedback\Services\HostedService($company_name); 
+        $hosted->page_number = 1; 
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
 
