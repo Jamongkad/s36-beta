@@ -73,7 +73,7 @@
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
                 counter += 1;
                 var page_counter = counter + 1;
-		        var container = $('#feedback-infinitscroll-landing'); 
+		        var container = $('#feedback-infinitescroll-landing'); 
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
