@@ -179,7 +179,7 @@ $(document).ready(function(){
             
             <div id="feedbackContainer">
                 <div id="timelineLayout">
-                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new ', Array('collection' => $feeds))?>
+                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds))?>
                 </div>
             </div>
     </div>
