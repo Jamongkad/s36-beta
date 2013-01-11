@@ -1,4 +1,4 @@
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
+<?= HTML::script('js/jquery.raty.min.js'); ?>
 <?= HTML::style('css/override.css'); ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -166,13 +166,6 @@ $(document).ready(function(){
                     <div class="company-rating">
                         <div class="review-count">Based on <?php echo $company->total_feedback; ?> reviews</div>
                         <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
-                        <div class="stars blue clear">
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star half"></div>    
-                        </div>
                     </div>
                 </div>
             </div>
