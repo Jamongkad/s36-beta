@@ -77,6 +77,9 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
+
+                      var boxes = $(msg);
+                      container.append(boxes);
                       /*
                         var boxes = $(msg);
                         container.append(boxes);
