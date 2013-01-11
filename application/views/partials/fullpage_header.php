@@ -103,7 +103,6 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
-        auto_adjust_feedback_branch();
 
         function reload_masonry() {
             console.log("Reloading");
