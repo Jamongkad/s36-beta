@@ -14,6 +14,7 @@ foreach ($collection as $feed_group => $feed_list) :
     <div class="feedback-list">
         <?php
         foreach ($feed_list as $feed) : 
+            $feedback_id                = $feed->feed_data->id;
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
@@ -21,7 +22,13 @@ foreach ($collection as $feed_group => $feed_list) :
             $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
             $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
             $text                       = $feed->feed_data->text;
-            $attachments                = (!empty($feed->feed_data->attachments)) ? json_decode($feed->feed_data->attachments) : false;
+            $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
+            $vote_count                 = $feed->feed_data->vote_count;
+            $voted                      = $feed->feed_data->useful;
+            $flagged                    = $feed->feed_data->flagged;
+            $product                    = '6-Pac Abs Workout DVD';
+            $pricing                    = 'Good';
+            $quality                    = 'Excellent';
         ?>
         <div class="feedback <?=$feedback_main_class?>">
             <?=$tw_marker?>
@@ -29,40 +36,48 @@ foreach ($collection as $feed_group => $feed_list) :
                 <!-- feedback header -->
                 <div class="feedback-header clear">
                     <div class="author">
-                        <div class="author-avatar"><img src="<?=$feed->feed_data->avatar?>" width="48" height="48" /></div>   
+                        <div class="author-avatar"><img src="<?=$feed->feed_data->avatar?>" width="48" height="48" /></div>
                         <div class="author-information">
-                            <div class="author-name clear"><?=$author_name?></div>
-                            <div class="author-company"><?=$author_company?></div>
+                            <div class="author-name clear"><?= HTML::entities($author_name); ?></div>
+                            <div class="author-company"><?= HTML::entities($author_company); ?></div>
                             <div class="author-location-info clear">
-                                <div class="author-location"><?=$author_location?></div><div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                                <div class="author-location"><?= HTML::entities($author_location); ?></div><div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                             </div>
                             <div class="custom-meta-data clear">
-                                <!--
-                                <div class="meta-data"><span class="meta-name">Product Purchased : </span><span class="meta-value"> Spaghetti Bolognese</span></div>
-                                <div class="meta-data"><span class="meta-name">Quality : </span><span class="meta-value"> Excellent</span></div>
-                                -->
+                                <?php if( $product != '' ): ?>
+                                    <div class="meta-data"><span class="meta-name">Product : </span><span class="meta-value"> <?= HTML::entities($product); ?></span></div>
+                                <?php endif; ?>
+                                <?php if( $pricing != '' ): ?>
+                                    <div class="meta-data"><span class="meta-name">Pricing : </span><span class="meta-value"> <?= HTML::entities($pricing); ?></span></div>
+                                <?php endif; ?>
+                                <?php if( $quality != '' ): ?>
+                                    <div class="meta-data"><span class="meta-name">Quality : </span><span class="meta-value"> <?= HTML::entities($quality); ?></span></div>
+                                <?php endif; ?>
                             </div>
                         </div>  
                     </div>
                     <div class="reviews clear">
                         <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                             <div class="feedback-timestamp">Posted 3 hours ago</div>
-                            <div class="stars blue clear">
-                                <div class="star full"></div>
-                                <div class="star full"></div>
-                                <div class="star full"></div>
-                                <div class="star full"></div>
-                                <div class="star half"></div>    
-                            </div>
+                            <!--<div class="feedback-timestamp">Posted <?= Helpers::relative_time($feed->feed_data->date); ?></div>-->
+                            <div class="star_rating" rating="3"></div>
                         </div>
-			            <?=($feed->feed_data->isfeatured == 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
+                        <?php if($feed->feed_data->isfeatured == 1): ?>
+                            <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                                <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <!-- end of feedback header -->
                 <!-- feedback text bubble -->
                 <div class="feedback-text-bubble">
                     <div class="feedback-tail"></div>
-		            <?=($feed->feed_data->isfeatured != 1) ? '<div class="rating-stat">87 of 98 people found this useful</div>' : ''?>
+                    <?php if($feed->feed_data->isfeatured != 1): ?>
+                        <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                            <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                        </div>
+                    <?php endif; ?>
                     <div class="feedback-text">
                         <p><?=$text?></p>                                            
                     </div>
@@ -108,7 +123,10 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php endif; ?>
                     </div>
                 <?php endif; ?>
-                <?php if(isset($user) && !empty($user)): ?>
+                <?php 
+                $user = S36Auth::user();
+                if(isset($user) && !empty($user)): 
+                ?>
                 <div class="admin-comment-block">
                     <?php if(empty($feed->feed_data->adminreply)): ?>
                         <div class="admin-comment-box">
@@ -144,15 +162,38 @@ foreach ($collection as $feed_group => $feed_list) :
                 <!-- feedback user actions -->
                 <div class="feedback-options clear">
                     <div class="feedback-recommendation">
-                        <div class="green-thumb">Recommended by Leica to friends</div>
-                        <div class="vote-block">
-                            <span class="vote-action">Was this useful? <a href="#" class="small-btn-pin">Yes</a> <a href="#" class="small-btn-pin">No</a></span>
-                        </div>
+                        <div class="green-thumb">Recommended by <?php echo HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                        <?php if( $voted != 1 ): ?>
+                            <div class="vote-block">
+                                <span class="vote-action">Was this useful? <a href="#" class="small-btn-pin">Yes</a></span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="feedback-actions clear">
-                        <span class="flag-as">Flag as inappropriate</span>
-                        <span class="share-button">Share</span>
-                    </div>    
+                        <?php if( $flagged != 1 ): ?>
+                            <span class="flag-as">Flag as inappropriate</span>
+                        <?php endif; ?>
+                        <span class="share-button">
+                            Share
+                            <div class="share-box">
+                             <div class="share-box-arrow"></div>
+                                <div class="btn-block">
+                                    <div class="fb_like_dummy" 
+                                        data-href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                        data-layout="button_count"
+                                        data-send="false" 
+                                        data-width="80" 
+                                        data-show-faces="false"></div>
+                                </div>
+                                <div class="btn-block">
+                                    <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                        data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
+                                        data-text="<?=$text?>"
+                                        class="tw_share_dummy">Tweet</a>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
                 </div>
                 <!-- end of feedback user actions -->
             </div>
