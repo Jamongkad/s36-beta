@@ -93,7 +93,7 @@
             <div id="hosted-wizard-step-2" class="wizard-steps">
                 <div class="grids">
                     <div class="g3of4">
-                        <strong>Configure your feedback header text</span><br/>
+                        <strong>Configure your feedback header text</strong><br/>
                         Configure your hosted page to suit your website and theme - you can direct visitors to your hosted page to view existing published feedback, or to get them to send in feedback.
                         <input type="text" name="header_text" value="<?=$hosted_full_page->header_text?>" id="header-text" class="wizard-text-field" 
                                title="Hear what our customers have to say" />
