@@ -486,7 +486,7 @@ class DBFeedback extends S36DataObject {
         $sql = ' 
             SELECT
                 '.$this->select_vars.' 
-                , (SELECT COUNT(*) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
+                , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful
                 , FeedbackActions.flagged
             FROM 
@@ -804,9 +804,9 @@ class DBFeedback extends S36DataObject {
         $node->attachments = $attachments;
         $node->metadata    = $metadata;
         
-        $node->flagged = $data->flagged;
-        $node->useful = $data->useful;
-        $node->vote_count = $data->vote_count;
+        if( property_exists($data, 'flagged') ) $node->flagged = $data->flagged;
+        if( property_exists($data, 'useful') ) $node->useful = $data->useful;
+        if( property_exists($data, 'vote_count') ) $node->vote_count = $data->vote_count;
 
         return $node;
     }

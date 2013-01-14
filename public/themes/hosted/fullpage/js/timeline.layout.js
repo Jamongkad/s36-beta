@@ -118,7 +118,7 @@ $(vote).click(function(e){
         type: 'post',
         data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
         success: function(result){
-            $(rating_stat).css('display', 'block');
+            $(this_vote).parents(feedback).find(rating_stat).css('display', 'block');
             vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
             $(this_vote).parents(feedback).find(vote_container).hide().text('Thanks for your vote!').fadeIn();
         }

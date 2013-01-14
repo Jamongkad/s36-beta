@@ -26,11 +26,9 @@ foreach ($collection as $feed_group => $feed_list) :
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
             $flagged                    = $feed->feed_data->flagged;
-            $product                    = '6-Pac Abs Workout DVD';
-            $pricing                    = 'Good';
-            $quality                    = 'Excellent';
+            $metadata                   = $feed->feed_data->metadata;
         ?>
-        <div class="feedback <?=$feedback_main_class?>">
+        <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
             <?=$tw_marker?>
             <div class="<?=$feedback_content_class?>">
                 <!-- feedback header -->
@@ -44,14 +42,15 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="author-location"><?= HTML::entities($author_location); ?></div><div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                             </div>
                             <div class="custom-meta-data clear">
-                                <?php if( $product != '' ): ?>
-                                    <div class="meta-data"><span class="meta-name">Product : </span><span class="meta-value"> <?= HTML::entities($product); ?></span></div>
-                                <?php endif; ?>
-                                <?php if( $pricing != '' ): ?>
-                                    <div class="meta-data"><span class="meta-name">Pricing : </span><span class="meta-value"> <?= HTML::entities($pricing); ?></span></div>
-                                <?php endif; ?>
-                                <?php if( $quality != '' ): ?>
-                                    <div class="meta-data"><span class="meta-name">Quality : </span><span class="meta-value"> <?= HTML::entities($quality); ?></span></div>
+                                <?php if( ! is_null($metadata) ): ?>
+                                    <?php foreach( $metadata as $group ): ?>
+                                        <?php foreach( $group as $item ): ?>
+                                            <div class="meta-data">
+                                                <span class="meta-name"><?= HTML::entities( ucwords(str_replace('_', ' ', $item[0]->name)) ); ?> : </span>
+                                                <span class="meta-value"> <?= HTML::entities($item[0]->value); ?></span>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
                         </div>  
