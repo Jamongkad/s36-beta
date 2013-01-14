@@ -178,7 +178,7 @@ return array(
 
     'GET /feedsetup/load_formbuilder/(:any?)' => function($widget_key) {     
 
-        $wl = new Widget\Services\WidgetLoader($widget_key); 
+        $wl = new Widget\Services\WidgetLoader($widget_key, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
         if($formstructure = $widget->formstructure) {
