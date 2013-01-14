@@ -443,7 +443,7 @@ class Helpers {
             $filedir      = $targetpath.$filename;
             $image        = $imagine->open($_FILES[$file]['tmp_name']);
             if(!file_exists($targetpath)){
-                mkdir($targetpath,0755,true);
+                mkdir($targetpath, 0755, true);
             }
             if(file_exists($filedir)){
                 unlink($filedir);

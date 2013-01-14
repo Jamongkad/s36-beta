@@ -149,7 +149,13 @@ return array(
         $hosted_settings = $hosted->hosted_settings();
 
         $input = Input::get();
+
+        Helpers::dump($input);
+        Helpers::dump($company_name);
+        Helpers::dump($company_info);
+        /*
         $input['background_image'] = $hosted_settings->background_image;
+        
 
         if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
             $file       = 'hosted_background';
@@ -158,10 +164,13 @@ return array(
             $result     = json_decode(Helpers::upload_image($file, $targetpath, $options));
             $input['background_image'] = $result->filename;
         }
-
+        */
+        
+        /*
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup');  
+        */
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
