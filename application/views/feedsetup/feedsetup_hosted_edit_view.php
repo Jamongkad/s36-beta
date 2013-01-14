@@ -80,7 +80,7 @@
                         <?if($background_image = $hosted_full_page->background_image):?>
                             You already have an existing background image. If you want to replace it choose your replacement background image and press the 'Save Settings' 
                             button.
-                            <img src="/uploaded_images/hosted_background/".<?=$background_image?> id="hosted_bg_img"/>
+                            <img src="/uploaded_images/hosted_background/<?=$background_image?>" id="hosted_bg_img"/>
                         <?else:?>
                             Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.
                         <?endif?>
