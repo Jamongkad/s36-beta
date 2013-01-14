@@ -3,10 +3,9 @@
 <?= HTML::script('/js/s36_client_script.js'); ?>
 <?= HTML::style('css/override.css'); ?>
 <?= HTML::style('css/s36_client_style.css'); ?>
-
 <script type="text/javascript">
+<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
 $(document).ready(function(){
-
     $('.adminReply').click(function(){
         var parent = $(this).parents('.admin-comment-block');
         $.ajax({
@@ -26,8 +25,6 @@ $(document).ready(function(){
           }
         });
     });
-
-
 });
 </script>
 
@@ -85,6 +82,7 @@ $(document).ready(function(){
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
                     <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds))?>
+                    <div id="feedback-infinitescroll-landing"></div>
                 </div>
             </div>
         </div>

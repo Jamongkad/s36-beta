@@ -16,7 +16,7 @@
 <script type="text/javascript" src="themes/hosted/fullpage/js/jquery.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/masonry.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/modernizr.js"></script>
-<script type="text/javascript" src="themes/hosted/fullpage/js/infinitescroll.js"></script>
+<!--<script type="text/javascript" src="themes/hosted/fullpage/js/infinitescroll.js"></script>-->
 <script type="text/javascript" src="themes/hosted/fullpage/js/jquery-ui-1.8.24.custom.min.js"></script>
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/js/<?php echo $layout ?>.layout.js" />
 
@@ -56,19 +56,7 @@
 		
 	$(document).ready(function(){
 
-		$('.feedbacks-list').masonry({
-			itemSelector: '.feedback',
-			columnWidth: 100,
-			isAnimated: !Modernizr.csstransitions,
-            gutterWidth: 365,
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			}
-		});
-
-        add_branches();
+        reload_masonry();
 
 	    var counter = 0;	
         function update() {
