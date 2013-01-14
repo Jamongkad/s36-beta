@@ -79,7 +79,7 @@
                     <div class="g2of3"><strong>Choose a Background Image</strong> <br>
                         <?if($background_image = $hosted_full_page->background_image):?>
                             You already have an existing background image. If you want to replace it, choose a replacement background image via the 'Browse...' button and to save press the 'Save Settings' 
-                            button.
+                            button.<br/>
                             <img src="/uploaded_images/hosted_background/<?=$background_image?>" id="hosted_bg_img"/>
                         <?else:?>
                             Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.
