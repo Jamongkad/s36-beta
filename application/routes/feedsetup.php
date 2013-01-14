@@ -148,7 +148,7 @@ return array(
         $hosted_background = Input::all('hosted_background');
         Helpers::dump(Input::all());
 
-        Helpers::dump($hosted_background['name'] == True);
+        Helpers::dump($hosted_background);
         /*
         $input['background_image'] = $hosted_settings->background_image;
         if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
