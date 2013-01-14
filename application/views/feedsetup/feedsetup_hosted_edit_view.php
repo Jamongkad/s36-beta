@@ -71,7 +71,14 @@
 
             <div id="hosted-wizard-step-2123" class="wizard-steps">
                <div class="grids">
-                    <div class="g2of3"><strong>Choose a Background Image</strong> <br>Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.</div>
+                    <div class="g2of3"><strong>Choose a Background Image</strong> <br>
+                        <?if($hosted_full_page->background_image):?>
+                            You already have an existing background image. If you want to replace it choose your replacement background image and press the 'Save Settings' 
+                            button.
+                        <?else:?>
+                            Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.
+                        <?endif?>
+                    </div>
                     <div class="g2of3"><br><input type="file" id="hosted_background" class="fileupload regular-text" name="hosted_background"> </div>
                 </div>
             </div>

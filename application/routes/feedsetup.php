@@ -127,10 +127,11 @@ return array(
     'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes, $themes) { 
 
         $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
-        $widget_themes->build_menu_structure();
         $hosted_settings = $hosted->hosted_settings();
         Helpers::dump($hosted_settings);
         $themes = $themes->get_themes();  
+
+        //$widget_themes->build_menu_structure();
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
             'themes' => $themes
           , 'hosted_full_page' => $hosted_settings 
@@ -153,8 +154,8 @@ return array(
         if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
             $file       = 'hosted_background';
             $targetpath = "uploaded_images/hosted_background/";
-            $options    = array('rename'=>S36Auth::user()->companyid);
-            $result     = json_decode(\Helpers::upload_image($file,$targetpath,$options));
+            $options    = array('rename' => S36Auth::user()->companyid);
+            $result     = json_decode(Helpers::upload_image($file, $targetpath, $options));
             $input['background_image'] = $result->filename;
         }
 
