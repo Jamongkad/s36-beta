@@ -378,7 +378,7 @@ class Helpers {
         imagedestroy($img);
     }
 
-    public static function upload_image($file=null,$targetpath=null,$options=null){
+    public static function upload_image($file=null, $targetpath=null, $options=null) {
 
         $error      = "";
         $msg        = "";
@@ -388,13 +388,9 @@ class Helpers {
         if(empty($file))        { die("Please provide a file to be uploaded");}
         if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
 
-        $options['options']  = array(
-                                'quality'=>100
-                              );
-
-        $maxsize  = isset($options['maxsize'])    ? $options['maxsize']     : 2000000;
-
-        
+        $options['options']  = array('quality' => 100);
+        $maxsize  = isset($options['maxsize']) ? $options['maxsize'] : 2000000;
+ 
         if(!empty($_FILES[$file]['error']))
         {
           switch($_FILES[$file]['error'])

@@ -33,7 +33,7 @@ class DBHostedSettings extends S36DataObject {
                     AND companyId = :company_id";
 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $this->hosted_settings['company_id'], PDO::PARAM_INT);       
         $sth->bindParam(':theme_name', $this->hosted_settings['theme_name'], PDO::PARAM_STR);
         $sth->bindParam(':header_text', $this->hosted_settings['header_text'], PDO::PARAM_STR);       
         $sth->bindParam(':submit_form_text', $this->hosted_settings['submit_form_text'], PDO::PARAM_STR);       
@@ -58,12 +58,40 @@ class DBHostedSettings extends S36DataObject {
                     HostedSettings 
                 INNER JOIN
                     Themes
-                    ON HostedSettings.theme_name = Themes.theme_name
+                        ON HostedSettings.theme_name = Themes.theme_name
                 WHERE 1=1 
                     AND companyId = :company_id";
 
         $sth = $this->dbh->prepare($sql);
-        $sth->bindParam(':company_id', $this->hosted_settings['companyId'], PDO::PARAM_INT);       
+        $sth->bindParam(':company_id', $this->hosted_settings['company_id'], PDO::PARAM_INT);       
+        $sth->execute();
+
+        return $sth->fetch(PDO::FETCH_OBJ);
+    }
+    
+    //a much straightforward method of fetching hosted settings
+    public function fetch_hosted_settings($company_id) { 
+        $sql = "SELECT 
+                    HostedSettings.companyId
+                  , HostedSettings.theme_name
+                  , HostedSettings.header_text
+                  , HostedSettings.submit_form_text
+                  , HostedSettings.background_image
+                  , HostedSettings.autopost_enable
+                  , HostedSettings.autopost_rating
+                  , TRIM(HostedSettings.submit_form_question) AS submit_form_question
+                  , Themes.theme_css
+                  , Themes.theme_js
+                FROM 
+                    HostedSettings 
+                INNER JOIN
+                    Themes
+                        ON HostedSettings.theme_name = Themes.theme_name
+                WHERE 1=1 
+                    AND companyId = :company_id";
+
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);       
         $sth->execute();
 
         return $sth->fetch(PDO::FETCH_OBJ);
@@ -75,7 +103,6 @@ class DBHostedSettings extends S36DataObject {
     }
 
     public function update_autoposting($data){
-        return DB::table('HostedSettings')->where('companyId','=',$data['companyid'])->update($data); 
+        return DB::table('HostedSettings')->where('companyId', '=' ,$data['companyid'])->update($data); 
     }
-
 }

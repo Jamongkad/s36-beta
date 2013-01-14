@@ -143,28 +143,23 @@ return array(
 
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
 
-        $hosted->set_hosted_settings(Array('companyId'  =>  Input::get('companyId')));
-        $hosted_settings = $hosted->hosted_settings();
-
-        Helpers::dump(Input::all());
+        $hosted_settings   = $hosted->fetch_hosted_settings(Input::get('company_id'));
         $hosted_background = Input::file();
-        Helpers::dump($hosted_background['hosted_background']['name']);
-        /*
+
+        $input = Input::get();
         $input['background_image'] = $hosted_settings->background_image;
-        if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
+
+        if($hosted_background['hosted_background']['name']){
             $file       = 'hosted_background';
             $targetpath = "uploaded_images/hosted_background/";
-            $options    = array('rename' => S36Auth::user()->companyid);
+            $options    = array('rename' => 'company_background_image_'.Input::get('company_id'));
             $result     = json_decode(Helpers::upload_image($file, $targetpath, $options));
             $input['background_image'] = $result->filename;
         }
-        */
-        
-        /*
+
         $hosted->set_hosted_settings($input);
         $hosted->save();
-        return Redirect::to('feedsetup');  
-        */
+        return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 

@@ -1,5 +1,5 @@
 <?=Form::open_for_files('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
-<?=Form::hidden('companyId', $hosted_full_page->companyid)?>
+<?=Form::hidden('company_id', $hosted_full_page->companyid)?>
 <?=Form::hidden('theme_name', $hosted_full_page->theme_name, Array('id' => 'selected-form'))?>
 <script type="text/javascript">
     jQuery(function($) {
