@@ -3,7 +3,7 @@
 <?=Form::hidden('theme_name', $hosted_full_page->theme_name, Array('id' => 'selected-form'))?>
 <script type="text/javascript">
     jQuery(function($) {
-        $("#hosted_bg_img").aeImageResize({ height: 100, width: 100 });
+        $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
     });
 </script>
 
@@ -78,7 +78,7 @@
                <div class="grids">
                     <div class="g2of3"><strong>Choose a Background Image</strong> <br>
                         <?if($background_image = $hosted_full_page->background_image):?>
-                            You already have an existing background image. If you want to replace it choose your replacement background image and press the 'Save Settings' 
+                            You already have an existing background image. If you want to replace it, choose a replacement background image via the 'Browse...' button and to save press the 'Save Settings' 
                             button.
                             <img src="/uploaded_images/hosted_background/<?=$background_image?>" id="hosted_bg_img"/>
                         <?else:?>
