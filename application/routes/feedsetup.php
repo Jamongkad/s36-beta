@@ -130,7 +130,7 @@ return array(
         $widget_themes->build_menu_structure();
         $hosted_settings = $hosted->hosted_settings();
         Helpers::dump($hosted_settings);
-        //$themes = $themes->get_themes();  
+        $themes = $themes->get_themes();  
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_hosted_edit_view', Array( 
             'themes' => $themes
           , 'hosted_full_page' => $hosted_settings 
