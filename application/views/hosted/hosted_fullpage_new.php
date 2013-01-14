@@ -78,6 +78,25 @@ $(document).ready(function(){
             </div>
             <!-- end of Review-aggregate scope -->
             
+            <!-- lightbox notification -->
+            <div class="lightbox-s"></div>
+            <div id="lightboxNotification">
+                <div class="lightbox-pandora">
+                    <div class="lightbox-header">Oops! Something went wrong..</div>
+                    <div class="lightbox-body">
+                        <div class="lightbox-message error">
+                            <ul>
+                                <li>Error Message</li><li>Error Message</li>
+                            </ul>
+                        </div>
+                        <div class="lightbox-buttons">
+                            <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of lightbox notification -->
+            
             <div id="feedbackContainer">
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->

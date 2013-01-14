@@ -17,3 +17,25 @@ function html2entities(s){
 function entities2html(s){
     return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 }
+
+function close_lightbox(){
+    $('.lightbox-s').fadeOut('fast');
+    $('#lightboxNotification').fadeOut('fast');
+    return 0;
+}
+
+function display_error_mes(mes){
+    $('.lightbox-message').addClass('error');
+    $('.lightbox-message ul').html('').each(function(){
+        $.each(mes,function(e,str){
+            $('.lightbox-message ul').append('<li>'+str+'</li>'); 
+        });
+    });
+    display_lightbox();
+}
+
+function display_lightbox(){
+    $('#lightboxNotification').fadeIn();
+    $('.lightbox-s').fadeIn();
+    return false;
+}
