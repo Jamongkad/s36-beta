@@ -56,7 +56,7 @@ $(document).ready(function(){
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="send-button"><a href="javascript:;">Send in feedback</a></div>
+                        <div class="send-button" widgetkey="<?=$company->widgetkey?>"><a href="javascript:;">Send in feedback</a></div>
                     </div>
                 </div>
                 
