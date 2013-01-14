@@ -14,8 +14,7 @@
     <div class="block noborder">
         <div id="hosted-wizard">
             <div id="hosted-wizard-step-1" class="wizard-steps current">
-                <strong>Choose your theme:</strong>
-                <br />                
+                <strong>Choose your theme</strong><br />                
                 <div class="grids">
                     <div class="">
                         <?php /*
@@ -88,8 +87,7 @@
                     <div class="g2of3"><br><input type="file" id="hosted_background" class="fileupload regular-text" name="hosted_background"> </div>
                 </div>
             </div>
-            <br>
-
+            <!--   
             <div id="hosted-wizard-step-2" class="wizard-steps">
                 <div class="grids">
                     <div class="g3of4">
@@ -134,6 +132,7 @@
                 </div>
             </div>                     
         </div>
+        -->
         <input type="submit" class="large-btn create-widget-button" value="save widget" / >
     </div>
     <div class="block noborder" style="height:50px;">        
