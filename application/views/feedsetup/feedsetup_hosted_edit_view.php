@@ -14,7 +14,7 @@
     <div class="block noborder">
         <div id="hosted-wizard">
             <div id="hosted-wizard-step-1" class="wizard-steps current">
-                <h2 class="large-black">Step 1: Choose your theme:</h2>
+                <strong>Choose your theme:</strong>
                 <br />                
                 <div class="grids">
                     <div class="">
@@ -107,11 +107,10 @@
                 </div>
             </div>
             <div id="hosted-wizard-step-3" class="wizard-steps">
-                <h2 class="large-black">Configure your feedback submission form to encourage your users to leave feedback about company/service/product</h2>
-                <br />
                 <div class="grids">
                     <div class="g3of4">
-                        <span>Customize your submission form header title</span>
+                        <strong>Customize your submission form header title</strong><br/>
+                        Configure your feedback submission form to encourage your users to leave feedback about company/service/product
                         <input type="text" value="<?=$hosted_full_page->submit_form_text?> " name="submit_form_text" id="header-title-text" class="wizard-text-field" title="Header Title" />
                     </div>
                     <div class="g1of4">
@@ -122,10 +121,9 @@
                     <img src="/img/hosted-form-preview.jpg" />
                 </div>
                 <div class="grids">
-                    <h2 class="large-black">Configure your feedback prompt to encourage users to say something specific about your brand, product or service.</h2>
-                    <br />
                     <div class="g3of4">
-                        <span>Customize your submission form feedback prompt:</span>
+                        <strong>Customize your submission form feedback prompt</strong><br />
+                        Configure your feedback prompt to encourage users to say something specific about your brand, product or service.
                         <textarea id="form-what-to-write" name="submit_form_question" class="wizard-text-field" rows="6" title="What do you like about our products?">
 <?=trim($hosted_full_page->submit_form_question)?> 
                         </textarea>
