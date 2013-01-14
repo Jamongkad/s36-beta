@@ -56,19 +56,7 @@
 		
 	$(document).ready(function(){
 
-		$('.feedbacks-list').masonry({
-			itemSelector: '.feedback',
-			columnWidth: 100,
-			isAnimated: !Modernizr.csstransitions,
-            gutterWidth: 365,
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			}
-		});
-
-        add_branches();
+        reload_masonry();
 
 	    var counter = 0;	
         function update() {
