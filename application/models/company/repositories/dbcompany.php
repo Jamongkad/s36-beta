@@ -51,11 +51,17 @@ class DBCompany extends S36DataObject {
                 , (SELECT AVG(rating) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS avg_rating
                 , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId) AS total_feedback
                 , (SELECT COUNT(*) FROM Feedback WHERE Feedback.companyId = Company.companyId AND isRecommended = 1) AS total_recommendations
+                , WidgetStore.widgetKey
             FROM 
                 Company
             INNER JOIN
                 Site
                     ON Site.companyId = Company.companyId
+            LEFT JOIN
+                WidgetStore
+                    ON WidgetStore.companyId = Company.companyId
+                   AND WidgetStore.isDefault = 0
+                   AND WidgetStore.widgetType = 'submit'
             WHERE 1=1
                 AND $company_sql
             LIMIT 1
