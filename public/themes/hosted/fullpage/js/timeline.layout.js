@@ -144,7 +144,7 @@ $(share).click(function(){
 });
 
 $(send_button).click(function(){  
-    console.log($(this));
+    console.log($(this).attr('widgetkey'));
     createLightboxes();
     s36_openLightbox(448, 600, '/widget/widget_loader/47w09'); 
 });
