@@ -1,6 +1,10 @@
 <?=Form::open_for_files('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('company_id', $hosted_full_page->companyid)?>
 <?=Form::hidden('theme_name', $hosted_full_page->theme_name, Array('id' => 'selected-form'))?>
+
+<?=Form::hidden('header_text', $hosted_full_page->header_text)?>
+<?=Form::hidden('submit_form_text', $hosted_full_page->submit_form_text)?>
+<?=Form::hidden('submit_form_question', $hosted_full_page->submit_form_question)?>
 <script type="text/javascript">
     jQuery(function($) {
         $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
@@ -131,8 +135,9 @@
                     </div>
                 </div>
             </div>                     
+            -->
         </div>
-        -->
+
         <input type="submit" class="large-btn create-widget-button" value="save widget" / >
     </div>
     <div class="block noborder" style="height:50px;">        
