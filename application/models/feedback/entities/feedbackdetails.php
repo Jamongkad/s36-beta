@@ -1,6 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
+use \Widget\Repositories\DBHostedSettings;
 use Underscore\Underscore;
 use DB, Helpers, Package;
 use SimpleArray;
@@ -28,8 +29,8 @@ class FeedbackDetails extends FeedbackDataTypes {
         $feedback_text = $purifier->purify($feedback_text);
 
         /*start autoposting*/
-        $hosted = new \Widget\Repositories\DBHostedSettings;
-        $hosted->set_hosted_settings(Array('companyId' => $this->post_data->get('company_id')));
+        $hosted = new DBHostedSettings;
+        $hosted->set_hosted_settings(Array('company_id' => $this->post_data->get('company_id')));
         $hosted_settings = $hosted->hosted_settings();
 
         $isPublished = 0;

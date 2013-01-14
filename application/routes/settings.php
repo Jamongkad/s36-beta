@@ -18,7 +18,7 @@ return array (
         $company_info 		= $company->get_company_info($company_name);
 
         //get hosted settings
-        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
 
         return View::of_layout()->partial('contents', 'settings/settings_index_view', Array(
             'user' => $user

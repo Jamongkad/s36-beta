@@ -28,28 +28,6 @@ class SubmissionWidget extends FormWidgets {
             $data = Array('form_structure' => $formstructure);
             $this->form_render = new Formbuilder($data);    
         }
-        /*
-        $this->widgetkey  = $options->widgetkey;
-        $this->site_id    = $options->site_id;
-        $this->company_id = $options->company_id;
-        $this->form_text  = $options->submit_form_text;
-        $this->form_question = $options->submit_form_question;
-        $this->theme_type = $options->theme_type;
-        $this->tab_pos  = $options->tab_pos;
-        $this->tab_type = $options->tab_type;
-        $this->country  = DB::Table('Country', 'master')->order_by('name')->get();
-
-        $company = new DBCompany;
-        $this->company = $company->get_company_info($options->company_id);
-
-        $company_social = new DBCompanySocialAccount;
-        $this->company_social = $company_social;
-
-        $this->site = DB::Table('Site')->where('siteId', '=', $options->site_id)->first(Array('domain'));
-
-        $this->hosted_settings = new DBHostedSettings;
-        $this->hosted_settings->set_hosted_settings(Array('companyId' => $options->company_id));
-        */
 
         $this->form_vars = Array(
             'fb_app_id'      => $this->fb_id  

@@ -10,7 +10,7 @@ $tab_themes  = \Helpers::$tab_themes;
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
         $widgets = $dbw->fetch_widgets_by_company();
-        $hosted->set_hosted_settings(Array('companyId'  =>  S36Auth::user()->companyid));
+        $hosted->set_hosted_settings(Array('company_id'  =>  S36Auth::user()->companyid));
             
         return View::of_layout()->partial('contents', 'feedsetup/feedsetup_index_view', Array(
             'widgets' => $widgets, 'hosted_full_page' => $hosted->hosted_settings()
@@ -126,7 +126,7 @@ return array(
 
     'GET /feedsetup/hosted_editor/([0-9]+)' => function($company_id) use ($hosted, $widget_themes, $themes) { 
 
-        $hosted->set_hosted_settings(Array('companyId'  =>  $company_id));
+        $hosted->set_hosted_settings(Array('company_id'  =>  $company_id));
         $hosted_settings = $hosted->hosted_settings();
         Helpers::dump($hosted_settings);
         $themes = $themes->get_themes();  
