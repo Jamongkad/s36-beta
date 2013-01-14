@@ -60,7 +60,7 @@ class DBCompany extends S36DataObject {
             LEFT JOIN
                 WidgetStore
                     ON WidgetStore.companyId = Company.companyId
-                   AND WidgetStore.isDefault = 0
+                   AND WidgetStore.isDefault = 1
                    AND WidgetStore.widgetType = 'submit'
             WHERE 1=1
                 AND $company_sql
