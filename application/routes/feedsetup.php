@@ -139,20 +139,24 @@ return array(
         ));
     },
 
-    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted,$company_name) { 
-      $company = new \Company\Repositories\DBCompany;
-      $company_info = $company->get_company_info($company_name);
-      $hosted->set_hosted_settings(Array('companyId'  =>  $company_info->companyid));
-      $hosted_settings = $hosted->hosted_settings();
-      $input = Input::get();
-      $input['background_image'] = $hosted_settings->background_image;
-      if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
-        $file       = 'hosted_background';
-        $targetpath = "uploaded_images/hosted_background/";
-        $options    = array('rename'=>S36Auth::user()->companyid);
-        $result     = json_decode(\Helpers::upload_image($file,$targetpath,$options));
-        $input['background_image'] = $result->filename;
-      }
+    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted, $company_name) { 
+
+        $company = new \Company\Repositories\DBCompany;
+        $company_info = $company->get_company_info($company_name);
+        $hosted->set_hosted_settings(Array('companyId'  =>  $company_info->companyid));
+        $hosted_settings = $hosted->hosted_settings();
+
+        $input = Input::get();
+        $input['background_image'] = $hosted_settings->background_image;
+
+        if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
+            $file       = 'hosted_background';
+            $targetpath = "uploaded_images/hosted_background/";
+            $options    = array('rename'=>S36Auth::user()->companyid);
+            $result     = json_decode(\Helpers::upload_image($file,$targetpath,$options));
+            $input['background_image'] = $result->filename;
+        }
+
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup');  
