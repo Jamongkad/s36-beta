@@ -1,6 +1,11 @@
 <?=Form::open_for_files('feedsetup/update_hosted_settings', 'POST', Array('id' => 'update-hosted'))?>
 <?=Form::hidden('companyId', $hosted_full_page->companyid)?>
 <?=Form::hidden('theme_name', $hosted_full_page->theme_name, Array('id' => 'selected-form'))?>
+<script type="text/javascript">
+    jQuery(function($) {
+        $("#hosted_bg_img").aeImageResize({ height: 100, width: 100 });
+    });
+</script>
 
 <div>
     <div class="block graybg" style="margin-top:10px;border-top:1px solid #dedede;">
@@ -72,9 +77,10 @@
             <div id="hosted-wizard-step-2123" class="wizard-steps">
                <div class="grids">
                     <div class="g2of3"><strong>Choose a Background Image</strong> <br>
-                        <?if($hosted_full_page->background_image):?>
+                        <?if($background_image = $hosted_full_page->background_image):?>
                             You already have an existing background image. If you want to replace it choose your replacement background image and press the 'Save Settings' 
                             button.
+                            <img src="/uploaded_images/hosted_background/".<?=$background_image?> id="hosted_bg_img"/>
                         <?else:?>
                             Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.
                         <?endif?>
