@@ -145,7 +145,7 @@ return array(
 
         $hosted->set_hosted_settings(Array('companyId'  =>  Input::get('companyId')));
         $hosted_settings = $hosted->hosted_settings();
-        Helpers::dump(Input::get());
+        Helpers::dump(Input::all());
         /*
         $input['background_image'] = $hosted_settings->background_image;
         if(isset($_FILES['hosted_background']) && !empty($_FILES['hosted_background']['name'])){
