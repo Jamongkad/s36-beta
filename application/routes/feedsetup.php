@@ -128,7 +128,6 @@ return array(
 
         $hosted->set_hosted_settings(Array('company_id'  =>  $company_id));
         $hosted_settings = $hosted->hosted_settings();
-        Helpers::dump($hosted_settings);
         $themes = $themes->get_themes();  
 
         //$widget_themes->build_menu_structure();

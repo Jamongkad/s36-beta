@@ -430,7 +430,7 @@ class Helpers {
             ($_FILES[$file]['type']     != "image/png")){
             $error = 'Please Upload Image Files Only';
         }elseif($_FILES[$file]['size'] > $maxsize){
-          $error = "Please Upload Images with smaller file size";
+            $error = "Please Upload Images with smaller file size";
         }else{
             $name_arr     = explode('.',$_FILES[$file]['name']);
             $ext          = $name_arr[1];
@@ -449,7 +449,7 @@ class Helpers {
                 $image->resize(new Box($options['width'],$options['height']));
             }
 
-            $image->save($filedir,$options['options']);
+            $image->save($filedir, $options['options']);
         }
          return json_encode(array(
             'error'       => $error
