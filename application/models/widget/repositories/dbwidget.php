@@ -89,7 +89,7 @@ class DBWidget extends S36DataObject {
         $sth->bindParam(':widget_key', $widget_key, PDO::PARAM_STR);
         $sth->bindParam(':widget_string', $widget_obj_string, PDO::PARAM_STR);
         $sth->bindParam(':site_id', $widget_obj->site_id, PDO::PARAM_STR);
-        print_r($sth->execute());
+        $sth->execute();
         return Array('status' => 'update', 'widget' => $widget_obj);
     }
 

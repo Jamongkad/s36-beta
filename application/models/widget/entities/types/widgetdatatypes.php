@@ -31,6 +31,7 @@ abstract class WidgetDataTypes {
     public function update() {
         $this->_dbw->update_widget_by_id($this->data->widgetkey, $this->data);
         $obj = $this->_dbw->fetch_widget_by_id($this->data->widgetkey);
+        Helpers::dump($obj);
         $this->_id = $obj->widgetstoreid;
     }
 
