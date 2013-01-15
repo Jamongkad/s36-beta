@@ -364,7 +364,7 @@
                                                                         ?>
                                                                     <?endif?>
 
-                                                                    <?if($key == 'checkbox'):?>
+                                                                    <?if($key == 'checkbox' || $key == 'radio'):?>
                                                                         <?
                                                                             $checkbox_label = ucwords(str_replace("_", " ", $k));
                                                                             echo $checkbox_label.":"
