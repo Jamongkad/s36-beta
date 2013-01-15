@@ -356,25 +356,8 @@
                                                                         <?=ucwords($k)?>: 
                                                                     <?endif?>
 
-                                                                    <?if($key == 'text'):?>
-                                                                        <?
-                                                                            $text_label = ucfirst(str_replace("_", " ", $k));
-                                                                            echo $text_label.":"
-                                                                        ?>
-                                                                    <?endif?>
-
-                                                                    <?if($key == 'checkbox'):?>
-                                                                        <?
-                                                                            $checkbox_label = ucwords(str_replace("_", " ", $k));
-                                                                            echo $checkbox_label.":"
-                                                                        ?>
-                                                                    <?endif?>
-
-                                                                    <?if($key == 'radio'):?>
-                                                                        <?
-                                                                            $radio_label = ucwords(str_replace("_", " ", $k));
-                                                                            echo $radio_label.":"
-                                                                        ?>
+                                                                    <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
+                                                                        <?=ucwords(str_replace("_", " ", $k));?>
                                                                     <?endif?>
 
                                                                     <?
