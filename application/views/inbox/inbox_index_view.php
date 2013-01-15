@@ -437,7 +437,7 @@
                                         ?>
                                     </div>
                                     <!-- end of additional info block -->
-                                <?php endif; ?>
+
                                 </div>
                             </div>
                             <div class="g1of5">

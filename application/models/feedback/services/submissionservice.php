@@ -45,7 +45,6 @@ class SubmissionService {
             $this->_calculate_dashboard_analytics($company_id);
             $this->_save_latest_feedid($company_id);
             */
-
             return $feedback_created->feedback_obj;
 
         } else {
