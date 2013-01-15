@@ -353,7 +353,7 @@
                                                         <?foreach($val as $k => $v):?>
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">
-                                                                    <?if($key == 'select' || $key == 'radio'):?>
+                                                                    <?if($key == 'select'):?>
                                                                         <?=ucwords($k)?>: 
                                                                     <?endif?>
 
