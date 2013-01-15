@@ -47,7 +47,7 @@ class SubmissionService {
             return $feedback_created->feedback_obj;
 
         } else {
-            throw new Exception("Feedback Submission Failed!");
+            throw new Exception("Feedback Submission Failed!!");
         }
 
     }
