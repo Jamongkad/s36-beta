@@ -111,7 +111,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                                 </div>
                                             </div>
                                         <?php else: ?>
-                                            <div class="video-thumb">
+                                            <div style="cursor:pointer">
                                                 <a href="<?=$attachments->attached_link->url?>">
                                                     <img src="<?=$attachments->attached_link->image?>" width="100%">
                                                 </a>
