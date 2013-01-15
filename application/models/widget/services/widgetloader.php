@@ -3,6 +3,7 @@
 use StdClass, Exception;
 use Config, Helpers;
 use Widget\Repositories\DBWidget;
+use \Feedback\Repositories\DBFeedback;
 
 class WidgetLoader {
 
@@ -13,7 +14,7 @@ class WidgetLoader {
 
         $this->dbw = new DBWidget;
         $this->wf  = new WidgetFactory; 
-        $this->feedback = new \Feedback\Repositories\DBFeedback;       
+        $this->feedback = new DBFeedback; 
 
         if($widget_id and $load_submission_form == False and $load_canonical == False) { 
             $this->widget_obj = $this->dbw->fetch_widget_by_id($widget_id); 
