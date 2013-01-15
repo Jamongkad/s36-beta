@@ -65,7 +65,7 @@ $('.save').click(function(){
         success: function(result){
             // if result returned 1, it means he's not logged in.
             if( result == 1 ){
-                alert('You should be logged in to do this action');
+                display_error_mes( ['You should be logged in to do this action'] );
             }else{
                 $('#desc_text').html( nl2br( html2entities($('#desc_textbox').val()) ) );
                 $('.cancel').trigger('click');
@@ -151,11 +151,11 @@ $(send_button).click(function(){
 
 $(document).ready(function(){
 
-		$('.feedback').each(function(){
-			var leftOffset = $(this).css('left');
-			if(leftOffset == '400px'){
-				$(this).css('left','418px');
-				$(this).find('.feedback-branch').css({'left':'-31px','top':'40px'});
-			}
-		});
+	$('.feedback').each(function(){
+		var leftOffset = $(this).css('left');
+		if(leftOffset == '400px'){
+			$(this).css('left','418px');
+			$(this).find('.feedback-branch').css({'left':'-31px','top':'40px'});
+		}
+	});
 });
