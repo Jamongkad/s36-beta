@@ -347,7 +347,6 @@
                                             <div class="custom-meta-list grids">
                                                 <? 
                                                 //start metadata 
-                                                Helpers::dump($metadata);
                                                 if($metadata):
                                                     foreach($metadata as $key => $val):?>
                                                         <?foreach($val as $k => $v):?>
