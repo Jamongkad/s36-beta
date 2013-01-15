@@ -225,7 +225,6 @@ class DBWidget extends S36DataObject {
             LEFT JOIN
                 WidgetFormMetadata
                     ON WidgetFormMetadata.widgetStoreId = WidgetStore.widgetStoreId 
-                    /*(WidgetFormMetadata.companyId = WidgetStore.companyId) OR (WidgetFormMetadata.widgetStoreId = WidgetStore.widgetStoreId)*/
             WHERE 1=1
                 $statement
         ";

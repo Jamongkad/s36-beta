@@ -192,8 +192,6 @@ return array(
             $data = $form->get_encoded_form_array();
 
             $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
-
-            Helpers::dump($dbw->metadata_exists());
         
             if(!$dbw->metadata_exists()) { 
                 return $dbw->save();
