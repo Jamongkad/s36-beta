@@ -5,7 +5,7 @@ $hosted = new Widget\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes;
 $themes = new Themes\Repositories\DBThemes; 
 $company_name = Config::get('application.subdomain');
-$tab_themes  = \Helpers::$tab_themes;
+$tab_themes  = Helpers::$tab_themes;
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
@@ -191,10 +191,10 @@ return array(
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
 
-            Helpers::dump($data);
-
             $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
 
+            Helpers::dump($dbw->metadata_exists());
+        
             if(!$dbw->metadata_exists()) { 
                 return $dbw->save();
             } else {                
