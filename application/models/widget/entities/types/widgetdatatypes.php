@@ -16,10 +16,8 @@ abstract class WidgetDataTypes {
 
     public function save() {
         if($this->data->widgetkey) {
-            echo "update";
             $this->update();     
         } else {
-            echo "save";
             $this->create();         
         } 
     }
