@@ -36,12 +36,10 @@ $(document).ready(function(){
         $('.lightbox').fadeIn().css('top',top_offset);
     });
     $('.uploaded-image').click(function(){
-        console.log('image lightbox');
         var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
         $('.uploaded-images-content').html(html);
     });
     $('.video-thumb,.video-circle').click(function(){
-        console.log('video lightbox');
         var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
         var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
         $('.uploaded-images-content').html(html);
