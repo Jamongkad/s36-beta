@@ -30,16 +30,18 @@ $(document).ready(function(){
     $('.uploaded-images-close').click(function(){
             $(this).parent().fadeOut();
         });
-    $('.image-thumb,.video-thumb,.video-circle').click(function(){
+    $('.the-thumb,.video-circle').click(function(){
         var scroll_offset = $(document).scrollTop();
         var top_offset = scroll_offset + 100;
         $('.lightbox').fadeIn().css('top',top_offset);
     });
     $('.uploaded-image').click(function(){
-        var html = '<img src="'+$(this).find(' .image-thumb .large-image-url').val()+'" width="100%" />';
+        console.log('image lightbox');
+        var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
         $('.uploaded-images-content').html(html);
     });
-    $('.video-thumb').click(function(){
+    $('.video-thumb,.video-circle').click(function(){
+        console.log('video lightbox');
         var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
         var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
         $('.uploaded-images-content').html(html);

@@ -88,7 +88,7 @@ foreach ($collection as $feed_group => $feed_list) :
                             <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                             <div class="uploaded-image">
                                 <div class="padded-5">
-                                    <div class="image-thumb">
+                                    <div class="the-thumb">
                                         <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
                                         <img src="<?=$uploaded_image->small_url?>" width="100%" />
                                     </div>
@@ -105,13 +105,13 @@ foreach ($collection as $feed_group => $feed_list) :
                                         <?php if($attachments->attached_link->video=='yes'): ?>
                                             <div class="video-thumb">
                                                 <div class="video-circle"></div>
-                                                <div class="video-thumb">
+                                                <div class="the-thumb">
                                                     <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
                                                     <img src="<?=$attachments->attached_link->image?>" width="100%">
                                                 </div>
                                             </div>
                                         <?php else: ?>
-                                            <div style="cursor:pointer">
+                                            <div class="video-thumb">
                                                 <a href="<?=$attachments->attached_link->url?>">
                                                     <img src="<?=$attachments->attached_link->image?>" width="100%">
                                                 </a>

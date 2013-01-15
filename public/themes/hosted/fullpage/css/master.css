@@ -295,6 +295,7 @@ a:hover{
 }
 .uploaded-image{
 	cursor:pointer;
+	height: 60px;
 }
 .uploaded-images-popup{
 	margin:5px;
