@@ -64,8 +64,6 @@ return array(
         $wl = new Widget\Services\WidgetLoader($widget_id, $load_submission_form=True); 
         $widget = $wl->widget_obj;
 
-        Helpers::dump($widget);
-
         $widget_themes->build_menu_structure();
 
         if($widget->widgettype == 'display') {
@@ -192,6 +190,8 @@ return array(
         if(Input::has('frmb') and Input::has('form_id')) {
             $form = new Widget\Services\Formbuilder\Formbuilder(Input::get());
             $data = $form->get_encoded_form_array();
+
+            Helpers::dump($data);
 
             $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
 
