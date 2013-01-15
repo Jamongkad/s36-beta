@@ -21,7 +21,7 @@
 
 <?=HTML::script('js/jquery.validate.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
-
+<?=HTML::script('js/jquery.ae.image.resize.min.js')?>
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 
 <?=HTML::script('js/inbox/directives/Components.js')?>
@@ -47,7 +47,7 @@
      , '/js/jquery.jcrop.js'
      , '/js/jquery.ajaxfileupload.js' 
      , '/js/jquery.zclip.js' 
-     , '/js/jquery.pjax.js'
+     , '/js/jquery.zclip.js' 
      , '/js/inbox/s36LightBox.js'
      , '/js/inbox/ZClip.js'
      , '/js/inbox/Checky.js'

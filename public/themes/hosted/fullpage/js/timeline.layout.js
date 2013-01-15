@@ -143,14 +143,11 @@ $(share).click(function(){
     
 });
 
-$(send_button).click(function(){
-    
+$(send_button).click(function(){  
+    var widgetkey = $(this).attr('widgetkey');
     createLightboxes();
-    s36_openLightbox(448, 600, '/widget/widget_loader/47w09');
-    
+    s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
 });
-
-
 
 $(document).ready(function(){
 

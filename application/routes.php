@@ -36,12 +36,12 @@ return array(
         $hosted->page_number = 1;
         //$hosted->debug = true;  // remove this after testing.
         //$hosted->dump_build_data = true;  // remove this after testing.
-        $hosted->bust_hostfeed_data();  // remove this after testing.
+        //$hosted->ignore_cache = true; // remove this after testing.
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
         
         //hosted settings
-        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
     
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
@@ -125,7 +125,7 @@ return array(
         $feedback            = $addfeedback->perform();        
         /*
         $company_info        = $company->get_company_info($company_name);
-        $hosted_settings->set_hosted_settings(Array('companyId' => $company_info->companyid));
+        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
 
         $feedback_redirect   = Redirect::to('single/'.$feedback->feedbackid);
@@ -163,7 +163,7 @@ return array(
 
         $fb_id = Config::get('application.fb_id');
 
-        $hosted_settings->set_hosted_settings(Array('companyId' => $feedback->companyid));  
+        $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
 
         return View::make('hosted/hosted_feedback_single_view', Array(

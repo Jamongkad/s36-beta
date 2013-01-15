@@ -378,7 +378,7 @@ class Helpers {
         imagedestroy($img);
     }
 
-    public static function upload_image($file=null,$targetpath=null,$options=null){
+    public static function upload_image($file=null, $targetpath=null, $options=null) {
 
         $error      = "";
         $msg        = "";
@@ -388,13 +388,9 @@ class Helpers {
         if(empty($file))        { die("Please provide a file to be uploaded");}
         if(empty($targetpath))  { die("Please set the target path for the uploaded file");}
 
-        $options['options']  = array(
-                                'quality'=>100
-                              );
-
-        $maxsize  = isset($options['maxsize'])    ? $options['maxsize']     : 2000000;
-
-        
+        $options['options']  = array('quality' => 100);
+        $maxsize  = isset($options['maxsize']) ? $options['maxsize'] : 2000000;
+ 
         if(!empty($_FILES[$file]['error']))
         {
           switch($_FILES[$file]['error'])
@@ -434,7 +430,7 @@ class Helpers {
             ($_FILES[$file]['type']     != "image/png")){
             $error = 'Please Upload Image Files Only';
         }elseif($_FILES[$file]['size'] > $maxsize){
-          $error = "Please Upload Images with smaller file size";
+            $error = "Please Upload Images with smaller file size";
         }else{
             $name_arr     = explode('.',$_FILES[$file]['name']);
             $ext          = $name_arr[1];
@@ -443,7 +439,7 @@ class Helpers {
             $filedir      = $targetpath.$filename;
             $image        = $imagine->open($_FILES[$file]['tmp_name']);
             if(!file_exists($targetpath)){
-                mkdir($targetpath,0755,true);
+                mkdir($targetpath, 0755, true);
             }
             if(file_exists($filedir)){
                 unlink($filedir);
@@ -453,7 +449,7 @@ class Helpers {
                 $image->resize(new Box($options['width'],$options['height']));
             }
 
-            $image->save($filedir,$options['options']);
+            $image->save($filedir, $options['options']);
         }
          return json_encode(array(
             'error'       => $error
