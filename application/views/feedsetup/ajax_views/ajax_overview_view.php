@@ -12,9 +12,11 @@
                         <tr><td width="90"><strong>Theme :</strong></td>
                             <td><?=$rows->widget_obj->theme_type?></td>
                         </tr>
+                        <!--
                         <tr><td width="90"><strong>URL :</strong></td>
                             <td><?=$rows->widget_obj->site_nm?></td>
                         </tr>
+                        -->
                     </table>
                     </div>
                     <div class="g1of3">
