@@ -386,10 +386,12 @@
                                             </div>
                                         <?php
                                         //start attachments
-                                        if($attachments):?>
+                                        if($attachments):
+                                        //echo "<pre>";print_r($attachments);echo "</pre>";
+                                        ?>
                                             <div class="uploaded-images-and-links grids">
                                             <input type="hidden" class="attachment_feedback_id" value="<?=$feed->id?>"/>
-                                            <?php if(isset($attachments->uploaded_images)): //start uploaded images ?>
+                                            <?php if(isset($attachments->uploaded_images)){ //start uploaded images ?>
                                                 <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                                                     <div class="image-block">
                                                         <div class="delete-block">x</div>
@@ -402,8 +404,8 @@
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
-                                            <?php endif //end uploaded images?>
-                                            <?php if(isset($attachments->attached_link)): //start uploaded link / video?>
+                                            <?php } //end uploaded images?>
+                                            <?php if(isset($attachments->attached_link)){ //start uploaded link / video?>
                                                     <div class="image-block video">
                                                         <input type="hidden" class="link-title" value="<?=$attachments->attached_link->title?>"/>
                                                         <input type="hidden" class="link-description" value="<?=$attachments->attached_link->description?>"/>
@@ -413,27 +415,29 @@
                                                         <div class="delete-block">x</div>
                                                             <?php 
                                                             //video attachments
-                                                            if($attachments->attached_link->video=='yes'):?>
+                                                            if($attachments->attached_link->video=='yes'){?>
                                                                 <div class="video-circle"></div>
                                                                 <div class="the-thumb">
                                                                     <img src="<?=$attachments->attached_link->image?>" width="100%" />
                                                                 </div>
-                                                            <?php 
+                                                            <?php
+                                                            } 
                                                             //just an external web link
-                                                            else:
+                                                            else{
                                                             ?>
                                                                 <div style="cursor:pointer;">
                                                                     <a href="<?=$attachments->attached_link->url?>" target="_blank"><img src="<?=$attachments->attached_link->image?>" width="100%" /></a>
                                                                 </div>
-                                                            <?php endif ?>
+                                                            <?php } ?>
                                                     </div>
-                                            <?php endif //end uploaded link / video?>
+                                            <?php } //end uploaded link / video?>
                                             </div>
                                         <?php endif;
                                         //end attachments 
                                         ?>
                                     </div>
-                                    <!-- end of additional info block --> 
+                                    <!-- end of additional info block -->
+                                <?php endif; ?>
                                 </div>
                             </div>
                             <div class="g1of5">
