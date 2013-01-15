@@ -112,7 +112,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                             </div>
                                         <?php else: ?>
                                             <div class="video-thumb">
-                                                <a href="<?=$attachments->attached_link->url?>">
+                                                <a href="<?=$attachments->attached_link->url?>" target="_blank">
                                                     <img src="<?=$attachments->attached_link->image?>" width="100%">
                                                 </a>
                                             </div>
