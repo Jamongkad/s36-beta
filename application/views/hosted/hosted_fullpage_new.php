@@ -90,7 +90,7 @@ $(document).ready(function(){
                             </ul>
                         </div>
                         <div class="lightbox-buttons">
-                            <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
+                            <a href="" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
                         </div>
                     </div>
                 </div>
