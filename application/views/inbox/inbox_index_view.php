@@ -357,7 +357,7 @@
                                                                     <?endif?>
 
                                                                     <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
-                                                                        <?=ucwords(str_replace("_", " ", $k));?>
+                                                                        <?=ucwords(str_replace("_", " ", $k));?>:
                                                                     <?endif?>
 
                                                                     <?
