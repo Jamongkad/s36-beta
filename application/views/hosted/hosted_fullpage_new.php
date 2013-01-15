@@ -25,6 +25,25 @@ $(document).ready(function(){
           }
         });
     });
+
+    /*lightbox*/
+    $('.uploaded-images-close').click(function(){
+            $(this).parent().fadeOut();
+        });
+    $('.the-thumb,.video-circle').click(function(){
+        var scroll_offset = $(document).scrollTop();
+        var top_offset = scroll_offset + 100;
+        $('.lightbox').fadeIn().css('top',top_offset);
+    });
+    $('.uploaded-image').click(function(){
+        var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
+        $('.uploaded-images-content').html(html);
+    });
+    $('.video-thumb,.video-circle').click(function(){
+        var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
+        var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
+        $('.uploaded-images-content').html(html);
+    });
 });
 </script>
 
@@ -97,6 +116,21 @@ $(document).ready(function(){
             </div>
             <!-- end of lightbox notification -->
             
+            <!-- lightbox container -->
+            <div class="lightbox-s"></div>
+            <div class="lightbox">
+                <div class="uploaded-images-close"></div>
+                <div class="uploaded-images-popup">
+                    <div class="uploaded-images-container">
+                        <div class="uploaded-images-view">
+                            <div class="uploaded-images-content">
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of lightbox container -->
+            
             <div id="feedbackContainer">
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
@@ -109,3 +143,4 @@ $(document).ready(function(){
     </div>
 </div>
 <?= HTML::script('/themes/hosted/fullpage/js/timeline.layout.js'); ?>
+

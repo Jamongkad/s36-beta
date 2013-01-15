@@ -263,16 +263,16 @@ a:hover{
 	width:780px;
 	margin-left:-390px;
 	color:#626262;
-	background: url(../images/faded-bg.png) repeat;
+	background: url(/img/faded-bg.png) repeat;
 	border:none;
 	font-size:11px;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;		
-	display:none;
+	display:none;								
 }
 .lightbox-s{
-	background:url(../images/faded-white.png);
+	background:url(/img/faded-white.png);
 	z-index:980;
 	height:100%;
 	width:100%;
@@ -281,7 +281,7 @@ a:hover{
 	right:0px;
 	bottom:0px;
 	position:fixed;
-	display: none;
+	display:none;
 }
 .lightbox-styles{
 	display:block;
@@ -293,6 +293,10 @@ a:hover{
 	border-radius:inherit;		
 	margin:4px 5px;								
 }
+.uploaded-image{
+	cursor:pointer;
+	height: 60px;
+}
 .uploaded-images-popup{
 	margin:5px;
 }
@@ -302,7 +306,7 @@ a:hover{
 	position:absolute;
 	bottom:5px;
 	padding:10px 10px;
-	background: url(../images/faded-bg-2.png) repeat;
+	background: url(/img/faded-bg-2.png) repeat;
 	display:block;
 	right:5px;
 	left:5px;
@@ -312,7 +316,7 @@ a:hover{
 	background:#FFF;
 }
 .uploaded-images-close{
-	background:url(../images/uploaded-images-close.png) no-repeat;
+	background:url(/img/uploaded-images-close.png) no-repeat;
 	width:45px;
 	height:45px;
 	position:absolute;
@@ -321,7 +325,7 @@ a:hover{
 	cursor:pointer;
 }
 .video-circle{
-	background:url(../images/video-play-circle.png) no-repeat;
+	background:url(/img/video-play-circle.png) no-repeat;
 	width:25px;
 	height:25px;
 	position:absolute;
@@ -387,7 +391,7 @@ a:hover{
 }
 .lightbox-button{
 	width:63px;
-	background:url(../images/form-button.png);
+	background:url(/img/form-button.png);
 	background-repeat:no-repeat;
 	background-position:top center;
 	display:inline-block;
