@@ -274,7 +274,7 @@ class DBWidget extends S36DataObject {
             WHERE 1=1
                 AND WidgetStore.companyId = :company_id
                 AND WidgetStore.widgetType = :widget_type
-                AND WidgetStore.isDefault = 0 
+                AND WidgetStore.isDefault = 1
             GROUP BY 
                 WidgetStore.widgetStoreId
             HAVING 
@@ -333,7 +333,11 @@ class DBWidget extends S36DataObject {
     public function fetch_canonical_widget($company_name) { 
         $sql = "
                 SELECT 
-                    WidgetStore.widgetKey 
+                      WidgetStore.widgetStoreId
+                    , WidgetStore.widgetKey
+                    , WidgetStore.companyId
+                    , WidgetStore.siteId
+                    , WidgetStore.widgetObjString
                 FROM 
                     Company 
                 INNER JOIN
