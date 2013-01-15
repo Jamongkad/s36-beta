@@ -364,12 +364,20 @@
                                                                         ?>
                                                                     <?endif?>
 
-                                                                    <?if($key == 'checkbox' || $key == 'radio'):?>
+                                                                    <?if($key == 'checkbox'):?>
                                                                         <?
                                                                             $checkbox_label = ucwords(str_replace("_", " ", $k));
                                                                             echo $checkbox_label.":"
                                                                         ?>
                                                                     <?endif?>
+
+                                                                    <?if($key == 'radio'):?>
+                                                                        <?
+                                                                            $radio_label = ucwords(str_replace("_", " ", $k));
+                                                                            echo $radio_label.":"
+                                                                        ?>
+                                                                    <?endif?>
+
                                                                     <?
                                                                         $prefix = "";
                                                                         $value_list = "";
