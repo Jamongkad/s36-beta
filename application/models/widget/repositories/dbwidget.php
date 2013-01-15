@@ -79,8 +79,6 @@ class DBWidget extends S36DataObject {
     }
 
     public function update_widget_by_id($widget_key, $widget_obj) {
-        Helpers::dump($widget_obj);
-        Helpers::dump($widget_key);
         $widget_obj_string = base64_encode(serialize($widget_obj));
         $sql = "UPDATE WidgetStore
                     SET widgetObjString = :widget_string, siteId = :site_id
