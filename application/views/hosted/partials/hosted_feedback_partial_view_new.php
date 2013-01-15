@@ -58,7 +58,6 @@ foreach ($collection as $feed_group => $feed_list) :
                     <div class="reviews clear">
                         <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                             <div class="feedback-timestamp">Posted 3 hours ago</div>
-                            <!--<div class="feedback-timestamp">Posted <?= Helpers::relative_time($feed->feed_data->date); ?></div>-->
                             <div class="star_rating" rating="3"></div>
                         </div>
                         <?php if($feed->feed_data->isfeatured == 1): ?>
@@ -89,35 +88,42 @@ foreach ($collection as $feed_group => $feed_list) :
                             <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
                             <div class="uploaded-image">
                                 <div class="padded-5">
-                                    <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                    <div class="the-thumb">
+                                        <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
+                                        <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                    </div>
                                 </div>
                             </div>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if(isset($attachments->attached_link)): ?>
-                        <!-- a video -->
-                        <?php /*
-                        <div class="uploaded-video">
-                            <div class="padded-5">
-                                <iframe width="293" height="220" src="" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        */ ?>
-                        <!-- or just a preview link? -->
+                    <?php if(isset($attachments->attached_link)): ?>                       
                         <div class="uploaded-link">
                             <div class="padded-5">
-                                <div class="form-video-meta">
-                                    <div class="video-thumb">
-                                        <img src="<?=$attachments->attached_link->image?>" width="100%">
-                                    </div>
-                                    <div class="video-details">
-                                        <h3><?=$attachments->attached_link->title?></h3>
-                                        <p><?=$attachments->attached_link->description?></p>
+                                    <div class="form-video-meta">
+                                        <?php if($attachments->attached_link->video=='yes'): ?>
+                                            <div class="video-thumb">
+                                                <div class="video-circle"></div>
+                                                <div class="the-thumb">
+                                                    <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
+                                                    <img src="<?=$attachments->attached_link->image?>" width="100%">
+                                                </div>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="video-thumb">
+                                                <a href="<?=$attachments->attached_link->url?>">
+                                                    <img src="<?=$attachments->attached_link->image?>" width="100%">
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <div class="video-details">
+                                            <h3><?=$attachments->attached_link->title?></h3>
+                                            <p><?=$attachments->attached_link->description?></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     <?php endif; ?>
                     </div>
