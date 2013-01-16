@@ -135,7 +135,7 @@ return array(
         $fb_query = http_build_query(array(
             'app_id'        => Config::get('application.fb_id'),
             'link'          => $obj->feedback_url,
-            'picture'       => '/img/36logo2.png',
+            'picture'       => Url::to('/').'img/36logo2.png',
             'name'          => $obj->company_name,
             'caption'       => $hosted_settings_info->header_text,
             'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
