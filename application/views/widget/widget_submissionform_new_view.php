@@ -266,6 +266,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                         </div>
                         <div class="one-clm-in clear">
                             <div class="registration-avatar" style="overflow:hidden;max-height:105px;">
+                                <input type="hidden" id="avatar_filename" value=""/>
                                 <img src="/img/facebook-blank-avatar.jpg" id="preview_photo" width="105" />
                             </div>
                             <div class="registration-avatar-inst">

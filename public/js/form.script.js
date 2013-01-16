@@ -178,6 +178,7 @@ $(document).keypress(function(event){
                 login_type	: $('#loginType').val(),
                 profile_link    : $('#profileLink').val(),
                 avatar 		: $('#preview_photo').attr('src'),
+                avatar_filename	: $('#avatar_filename').val(),
                 permission	: $('#your_permission').val(),
                 company 	: company,
                 position 	: position,
@@ -356,6 +357,7 @@ $(document).keypress(function(event){
 						}
 						$('.loading-box').fadeOut('fast');
 						$('#preview_photo').attr({'src':data.result[0].url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
+						$('#avatar_filename').val(data.result[0].name);
 				});
 			}
 		});
