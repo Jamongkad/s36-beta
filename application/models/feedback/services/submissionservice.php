@@ -34,12 +34,12 @@ class SubmissionService {
 
         if($feedback_created = $this->_create_feedback()) {
 
+            Helpers::dump($feedback_created);
+
             $company_id = $this->post_data->get('company_id');
 
             //this creates metadata tag relationship between metadata and feedback 
             $this->_create_metadata($feedback_created->feedback_id);    
-            Helpers::dump($feedback_created->feedback_obj);
-
             /*
             $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
@@ -97,6 +97,7 @@ class SubmissionService {
     }
 
     public function _create_metadata($feedback_id) { 
+
         //this creates metadata tag relationship between metadata and feedback
         if($post_metadata = $this->post_data->get('metadata')) { 
             $this->dbh->query("SET foreign_key_checks = 0");
@@ -107,11 +108,10 @@ class SubmissionService {
                   , 'tagValue' => $data['value']
                   , 'tagType'  => $data['type']
                 ));
-
                 //Feedback MetadataTags junction table
                 DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
-                     'feedbackId' => $feedback_id
-                   , 'tagId' => $metatags_insert_id
+                    'feedbackId' => $feedback_id
+                  , 'tagId' => $metatags_insert_id
                 ));
             }
             $this->dbh->query("SET foreign_key_checks = 1");
