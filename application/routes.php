@@ -93,17 +93,18 @@ return array(
         
     },
     
+    
     'POST /flag_feedback' => function() use($feedback){
         
         $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->flag_feedback($data);
+        $feedback->exec_feedback_action('flag', $data);
         
     },
     
     'POST /vote_feedback' => function() use($feedback){
         
         $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->vote_feedback($data);
+        $feedback->exec_feedback_action('vote', $data);
         
     },
     

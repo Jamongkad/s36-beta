@@ -825,58 +825,38 @@ class DBFeedback extends S36DataObject {
     }
     
     
-    // flag feedback as inappropriate.
-    public function flag_feedback($data){
+    // do feedback action.
+    public function exec_feedback_action($type, $data){
+        
+        // set the distinct data needed in feedback actions.
+        $action_data['flag']['field'] = 'flagged';
+        $action_data['flag']['insert_data'] = $data->flag_insert_data;
+        
+        $action_data['vote']['field'] = 'useful';
+        $action_data['vote']['insert_data'] = $data->vote_insert_data;
+        
+        // if the type of action doesn't exist, don't proceed.
+        if( ! array_key_exists($type, $action_data) ) return;
+        
         
         // get record of user's action on the feedback.
         $result = $this->get_feedback_actions($data);
         
+        // if the feedback action was already done, don't proceed.
+        if( ! is_null($result) && $result->$action_data[$type]['field'] == 1 ) return;
         
-        // if feedback is already flagged by the user, don't proceed.
-        if( ! is_null($result) && $result->flagged == 1 ) return;
-        
-        
-        // if feedback is not yet flagged, flag it.
-        if( ! is_null($result) && $result->flagged != 1 ){
+        // if the feedback action hasn't been done, do it.
+        if( ! is_null($result) && $result->$action_data[$type]['field'] != 1 ){
             
             DB::table('FeedbackActions')
                 ->where('ip_address', '=', $data->ip_address)
                 ->where('feedbackId', '=', $data->feedbackId)
-                ->update( $data->flag_insert_data );
+                ->update( $action_data[$type]['insert_data'] );
             
-        // if feedback is not yet flagged and user has no action on it yet, insert new flag record.
+        // if no action has been done on the feedback, insert a new action record.
         }elseif( is_null($result) ){
             
-            DB::table('FeedbackActions')->insert( $data->flag_insert_data );
-            
-        }
-        
-    }
-    
-    
-    // vote feedback as useful.
-    public function vote_feedback($data){
-        
-        // get record of user's action on the feedback.
-        $result = $this->get_feedback_actions($data);
-        
-        
-        // if feedback is already voted by the user, don't proceed.
-        if( ! is_null($result) && $result->useful == 1 ) return;
-        
-        
-        // if feedback is not yet voted, vote it.
-        if( ! is_null($result) && $result->useful != 1 ){
-            
-            DB::table('FeedbackActions')
-                ->where('ip_address', '=', $data->ip_address)
-                ->where('feedbackId', '=', $data->feedbackId)
-                ->update( $data->vote_insert_data );
-            
-        // if feedback is not yet voted and user has no action on it yet, insert new vote record.
-        }elseif( is_null($result) ){
-            
-            DB::table('FeedbackActions')->insert( $data->vote_insert_data );
+            DB::table('FeedbackActions')->insert( $action_data[$type]['insert_data'] );
             
         }
         
