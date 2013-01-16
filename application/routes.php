@@ -93,22 +93,13 @@ return array(
         
     },
     
-    
-    'POST /flag_feedback' => function() use($feedback){
+    'POST /feedback_action/(:any)' => function($action) use($feedback){
         
         $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->exec_feedback_action('flag', $data);
+        $feedback->exec_feedback_action($action, $data);
         
     },
-    
-    'POST /vote_feedback' => function() use($feedback){
         
-        $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->exec_feedback_action('vote', $data);
-        
-    },
-    
-    
     'GET /(:any)/submit' => function($company_name) use ($hosted_settings, $dbw, $company) {
         $widgetloader = new Widget\Services\WidgetLoader($company_name, $load_submission_form=True, $load_canonical=True); 
         $widget = $widgetloader->load();
