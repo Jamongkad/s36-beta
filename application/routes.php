@@ -117,6 +117,9 @@ return array(
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
 
+        Helpers::dump($feedback);
+        
+        /*
         $company_info         = $company->get_company_info($company_name);
         $hosted_settings_info = $hosted_settings->fetch_hosted_settings($company_info->companyid);
 
@@ -145,6 +148,7 @@ return array(
         $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj);
+        */
     },
     
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
