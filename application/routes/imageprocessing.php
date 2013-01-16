@@ -17,6 +17,7 @@ return array(
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_avatar'
+            , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir' => 'uploaded_images/avatar/'
             , 'upload_url' => get_full_url() .'/uploaded_images/avatar/'
             , 'param_name' => 'files'
@@ -45,6 +46,7 @@ return array(
     'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
+            , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir'  => 'uploaded_images/form_upload/'
             , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
             , 'image_versions' => array(

@@ -18,6 +18,7 @@ foreach ($collection as $feed_group => $feed_list) :
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
+            $avatar                     = '/uploaded_images/avatar/48x48/'.$feed->feed_data->avatar;
             $author_name                = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
             $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
             $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
@@ -34,7 +35,7 @@ foreach ($collection as $feed_group => $feed_list) :
                 <!-- feedback header -->
                 <div class="feedback-header clear">
                     <div class="author">
-                        <div class="author-avatar"><img src="<?=$feed->feed_data->avatar?>" width="48" height="48" /></div>
+                        <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>
                         <div class="author-information">
                             <div class="author-name clear"><?= HTML::entities($author_name); ?></div>
                             <div class="author-company"><?= HTML::entities($author_company); ?></div>

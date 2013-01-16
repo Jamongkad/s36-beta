@@ -11,8 +11,8 @@ class ProfileImage {
     public function __construct() { 
 
         $this->date   = date("mdyhis");
-        $this->dir48  = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$this->date."-cropped.jpg";
-        $this->dir150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$this->date."-cropped.jpg";
+        $this->dir48  = '/var/www/s36-upload-images/uploaded_images/avatar/48x48/'.$this->date.".jpg";
+        $this->dir150 = '/var/www/s36-upload-images/uploaded_images/avatar/150x150/'.$this->date.".jpg";
  
         $this->targ_w_large = 150;
         $this->targ_h_large = 150;
@@ -27,11 +27,11 @@ class ProfileImage {
     public function auto_resize($img_src, $img_src_location) {
         $src = Null;
         $file_name = Null;
-
+        /*
         if($img_src_location == 's36') {
-            $file_name = '/var/www/s36-upload-images'.$img_src;
+            //$file_name = '/var/www/s36-upload-images'.$img_src;
         }
-
+        */
         if( $img_src_location == 'fb' || $img_src_location == 'ln' || $img_src_location == 'tw' ) {
 
             $src = $img_src;
@@ -46,19 +46,19 @@ class ProfileImage {
             
             //fucking fix: if user does not like to use his or her pic from FB and LinkedIn
             if(preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", strtolower($src), $match)) { 
-                $file_name = '/var/www/s36-upload-images'.$src;
+                $file_name = '/var/www/s36-upload-images/uploaded_images'.$src;
             } else { 
-                $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+                $file_name = "/var/www/s36-upload-images/uploaded_images/uploaded_tmp/".$this->date.".jpg";      
                 file_put_contents($file_name, file_get_contents($file_src));
             }
-        } 
         
         //save and resize pics in 48 and 150 directories
         $this->_save_pic($file_name, $this->dir48, $this->targ_w_small, $this->targ_h_large);
         $this->_save_pic($file_name, $this->dir150, $this->targ_w_large, $this->targ_h_large);
         //garbage collect
         @unlink($file_name);
-        return $this->date."-cropped.jpg";
+        return $this->date.".jpg";
+        }
     }
 
     private function _save_pic($file_name, $new_file_name, $width, $height) { 
@@ -95,7 +95,7 @@ class ProfileImage {
         }
         
         if($login_type == '36' || preg_match("~/uploaded_tmp/([a-zA-Z-_0-9]+.[jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG]+)~", strtolower($img_src), $match)) {  
-            $image = '/var/www/s36-upload-images'.$img_src;
+            $image = '/var/www/uploaded_tmp'.$img_src;
         }        
    
         if($ophoto != 0){
@@ -142,7 +142,7 @@ class ProfileImage {
         }
         
         if($img) {
-            $file_name = "/var/www/s36-upload-images/uploaded_tmp/".$this->date.".jpg";      
+            $file_name = "/var/www/s36-upload-images/uploaded_images/uploaded_tmp/".$this->date.".jpg";      
             file_put_contents($file_name, file_get_contents($image_src));
             return $file_name;
         } 
@@ -226,8 +226,8 @@ class ProfileImage {
 
     public function remove_profile_photo($name) { 
 
-        $file150 = "/var/www/s36-upload-images/uploaded_cropped/150x150/".$name;
-        $file48 = "/var/www/s36-upload-images/uploaded_cropped/48x48/".$name;
+        $file150 = '/var/www/s36-upload-images/uploaded_images/avatar/150x150/'.$name;
+        $file48 = "/var/www/s36-upload-images/uploaded_images/48x48/".$name;
         
         $check150 = is_file($file150);
         $check48  = is_file($file48);
