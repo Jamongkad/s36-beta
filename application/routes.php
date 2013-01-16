@@ -116,37 +116,35 @@ return array(
 
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();        
-        /*
-        $company_info        = $company->get_company_info($company_name);
-        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
-        $hosted_settings_info = $hosted_settings->hosted_settings();
+
+        $company_info         = $company->get_company_info($company_name);
+        $hosted_settings_info = $hosted_settings->fetch_hosted_settings($company_info->companyid);
 
         $feedback_redirect   = Redirect::to('single/'.$feedback->feedbackid);
         $website_redirect    = Redirect::to('');
 
         $obj = new StdClass;
-        $obj->company_name      = $company_info->company_name;
+        $obj->company_name      = $company_name; 
         $obj->feedback_url      = $feedback_redirect->response->headers['Location'];
         $obj->website_url       = $website_redirect->response->headers['Location'];
 
         $tw_query = http_build_query(array(
-                    'url'       =>$obj->feedback_url,
-                    'text'      =>'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
+            'url'       => $obj->feedback_url,
+            'text'      => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
         ));
         $fb_query = http_build_query(array(
-                    'app_id'        => '396019640480197',
-                    'link'          => $obj->feedback_url,
-                    'picture'       => 'https://robert-staging.gearfish.com/img/36logo2.png',
-                    'name'          => $obj->company_name,
-                    'caption'       => $hosted_settings_info->header_text,
-                    'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
-                    'redirect_uri'  => $obj->feedback_url
+            'app_id'        => Config::get('application.fb_id'),
+            'link'          => $obj->feedback_url,
+            'picture'       => '/img/36logo2.png',
+            'name'          => $obj->company_name,
+            'caption'       => $hosted_settings_info->header_text,
+            'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
+            'redirect_uri'  => $obj->feedback_url
         ));
         $obj->tweet_button      = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
         $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj);
-        */
     },
     
     'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
