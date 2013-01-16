@@ -322,6 +322,7 @@ $(document).keypress(function(event){
 		$('#your_photo').fileupload({
 			dataType: 'json',
 			add: function(e, data){
+				console.log('in add');
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
 				if( image_types.indexOf( data.files[0].type ) == -1 ){
 					var error = ['Please select an image file'];
@@ -342,8 +343,10 @@ $(document).keypress(function(event){
 					$.post(delete_url);
 				}
 			},done: function(e, data){
+				console.log(e);
+				console.log(data);
 				$('<img />')
-					.attr('src', data.result[0].thumbnail_url)
+					.attr('src', data.result[0].url)
 					.load(function(e){
 						var max_ht = 105;
 						var img_ht = e.currentTarget.height;
@@ -352,7 +355,7 @@ $(document).keypress(function(event){
 							margin = 10;
 						}
 						$('.loading-box').fadeOut('fast');
-						$('#preview_photo').attr({'src':data.result[0].thumbnail_url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
+						$('#preview_photo').attr({'src':data.result[0].url,'data-url':data.result[0].delete_url}).css('margin-top','-'+margin+'px');
 				});
 			}
 		});

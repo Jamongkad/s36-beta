@@ -101,7 +101,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
         <!-- end of image upload popup -->
         
         <!-- the lightbox -->
-        <div id="lightbox">
+        <div id="lightbox" style="display:none">
             <div class="lightbox-pandora">
                 <div class="lightbox-header">Oops! Something went wrong..</div>
                 <div class="lightbox-body">
@@ -207,17 +207,20 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                     <!-- start of social buttons -->
                     <div class="social-buttons clear">
                         <div class="button-container">
-                            <a id="fb-login" href="javascript:;"><img src="/img/btn-fb.png" /></a>
+                            <a id="fb-login" href="javascript:;"><img src="/img/fb-connect-btn.png" /></a>
                         </div>
-
+                        <!--
                         <div class="button-container">
                             <a id="tw-login" href="javascript:;"><img src="/img/btn-tw.png" /></a>
                         </div>
                         <div class="button-container">
                             <a id="in-login" href="javascript:;"><img src="/img/btn-in.png" /></a>
                         </div>
+                        -->
                     </div>
+                    <!--
                     <span>or fill out your profile manually..</span>
+                    -->
                     <!-- end of social buttons -->
                     
                     <!-- registration form -->
@@ -269,7 +272,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                                 <h2>Select your display profile photo.</h2>
                                 <p>You can also use your company logo if 
 you like.</p>
-                                <input type="file" id="your_photo" data-url="/imageprocessing/FormImageUploader/" />
+                                <input type="file" id="your_photo" data-url="/imageprocessing/upload_avatar/" />
                             </div>
                         </div>
                         <div class="one-clm-in">

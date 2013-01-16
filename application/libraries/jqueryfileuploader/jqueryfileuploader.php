@@ -38,9 +38,9 @@ class JqueryFileUploader
 
     function __construct($options = null, $initialize = true) {
         $this->options = array(
-            'script_url' => $this->get_full_url().'/imageprocessing/FormImageUploader',
-            'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
-            'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
+            //'script_url' => $this->get_full_url().'/imageprocessing/FormImageUploader',
+            //'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
+            //'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -89,29 +89,6 @@ class JqueryFileUploader
             'discard_aborted_uploads' => true,
             // Set to true to rotate images based on EXIF meta data, if available:
             'orient_image' => false,
-            'image_versions' => array(
-                // Uncomment the following version to restrict the size of
-                // uploaded images:
-                
-                'large' => array(
-                    'max_width' => 800,
-                    'max_height' => 1200,
-                    'jpeg_quality' => 95
-                ),
-                
-                // Uncomment the following to create medium sized images:
-                
-                'medium' => array(
-                    'max_width' => 350,
-                    'max_height' => 600,
-                    'jpeg_quality' => 80
-                ),
-                
-                'small' => array(
-                    'max_width' => 80,
-                    'max_height' => 80
-                )
-            )
         );
         if ($options) {
             $this->options = array_merge($this->options, $options);

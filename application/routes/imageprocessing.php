@@ -14,6 +14,26 @@ return array(
         upload($file['clientLogoImg'], $options);
     }),
 
+    'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
+        $options = array(
+              'script_url' => get_full_url().'/imageprocessing/upload_avatar'
+            , 'upload_dir' => 'uploaded_images/avatar/'
+            , 'upload_url' => get_full_url() .'/uploaded_images/avatar/'
+            , 'param_name' => 'files'
+            , 'image_versions' => array(
+                '48x48' => array(
+                    'max_width'     => 48,
+                    'max_height'    => 48,
+                ),
+                '150x150' => array(
+                    'max_width'     => 150,
+                    'max_height'    => 150
+                )
+            )
+        );
+        $uploader = new JqueryFileUploader($options); 
+    }),
+
     'POST /imageprocessing/savecoverphoto' => function() use ($company) { 
         $user = S36Auth::user();
         $data = Input::all();
@@ -23,8 +43,26 @@ return array(
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
-        //ok what else?? upon object initialization all functionality works
-        $uploader = new JqueryFileUploader(); 
+        $options = array(
+            'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
+            , 'upload_dir'  => 'uploaded_images/form_upload/'
+            , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
+            , 'image_versions' => array(
+                'large' => array(
+                    'max_width'     => 800,
+                    'max_height'    => 1200,
+                ),
+                'medium' => array(
+                    'max_width'     => 350,
+                    'max_height'    => 600,
+                ),
+                'small' => array(
+                    'max_width'     => 80,
+                    'max_height'    => 80
+                )
+            )
+        );
+        $uploader = new JqueryFileUploader($options); 
     }),
 
     'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
@@ -34,52 +72,16 @@ return array(
 
 );
 
-function upload($file, $options){
-    $error      = Null;
-    $msg        = Null;
-    $filedir    = Null;
-
-    if(empty($file)) { die("Please provide a file to be uploaded");}
-    if(empty($options['targetpath'])) { die("Please set the target path for the uploaded file");}
-
-    if(!empty($file['error'])) {
-        switch($file['error']) {
-            case '1':
-                $error = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
-                break;
-            case '2':
-                $error = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
-                break;
-            case '3':
-                $error = 'The uploaded file was only partially uploaded';
-                break;
-            case '4':
-                $error = 'No file was uploaded.';
-                break;
-            case '6':
-                $error = 'Missing a temporary folder';
-                break;
-            case '7':
-                $error = 'Failed to write file to disk';
-                break;
-            case '8':
-                $error = 'File upload stopped by extension';
-                break;
-            default:
-                $error = 'No error code avaiable';
-        }
-    } elseif(empty($file['tmp_name']) || $file['tmp_name'] == 'none') {
-        $error = 'No file was uploaded..';
-    } else {
-        $imagine = new \Imagine\Gd\Imagine();
-        $filename     = date("Ydmhis").'-'.$file['name'];
-        $filedir      = $options['targetpath'].$filename;
-        $image = $imagine->open($file['tmp_name']);
-        if(isset($options['width']) && isset($options['height'])){
-            $image->resize(new Box($options['width'], $options['height']));
-        }
-        $image->save($filedir, array('quality'=>100));
+/*additional methods*/
+function get_full_url() {
+        $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+        return
+            ($https ? 'https://' : 'http://').
+            (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
+            (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
+            ($https && $_SERVER['SERVER_PORT'] === 443 ||
+            $_SERVER['SERVER_PORT'] === 80 ? '' : ':'.$_SERVER['SERVER_PORT']))).
+            substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
     }
 
-    echo json_encode(Array("error" => $error, "msg"   => $filedir));
-}
+
