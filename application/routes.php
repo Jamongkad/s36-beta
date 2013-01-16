@@ -69,6 +69,7 @@ return array(
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
     },
+
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() {
         $DBFeedbackAdminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
         $feedbackId = Input::get('feedbackId');
@@ -92,7 +93,7 @@ return array(
         $company->update_desc($data, $user->companyid);
         
     },
-    
+
     
     'POST /flag_feedback' => function() use($feedback){
         
