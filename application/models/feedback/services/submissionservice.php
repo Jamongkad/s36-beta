@@ -40,6 +40,8 @@ class SubmissionService {
 
             //this creates metadata tag relationship between metadata and feedback 
             $this->_create_metadata($feedback_created->feedback_id);    
+            $feedback = $this->dbfeedback->pull_feedback_by_id($feedback_created->feedback_id);
+            Helpers::dump($feedback);
             /*
             $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
@@ -67,7 +69,6 @@ class SubmissionService {
             $feedback_data['contactId'] = $new_contact_id; 
 
             $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
-            $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
 
             $post = (object) Array(
                 'feedback_text' => $feedback_data['text']
@@ -87,7 +88,6 @@ class SubmissionService {
             ));
 
             $result_obj = new StdClass;
-            $result_obj->feedback_obj = $feedback;
             $result_obj->feedback_id  = $new_feedback_id;
             $result_obj->contact_id   = $new_contact_id;
             return $result_obj;
