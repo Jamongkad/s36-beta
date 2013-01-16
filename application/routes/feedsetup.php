@@ -5,7 +5,7 @@ $hosted = new Widget\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes;
 $themes = new Themes\Repositories\DBThemes; 
 $company_name = Config::get('application.subdomain');
-$tab_themes  = \Helpers::$tab_themes;
+$tab_themes  = Helpers::$tab_themes;
 
 return array(
     'GET /feedsetup' => Array('name' => 'feedsetup', 'before' => 's36_auth', 'do' => function() use ($dbw, $hosted) {
@@ -82,9 +82,9 @@ return array(
           , 'widget'          => $widget
           , 'iframe_code'     => $wl->load_iframe_code()
           , 'js_code'         => $wl->load_widget_init_js_code()
-          , 'themes'        =>  $widget_themes->perform()->collection
-          , 'themes_parent' => $widget_themes->get_parent($theme_type)
-          , 'main_themes'   => $widget_themes->main_themes()
+          , 'themes'          => $widget_themes->perform()->collection
+          , 'themes_parent'   => $widget_themes->get_parent($theme_type)
+          , 'main_themes'     => $widget_themes->main_themes()
         ));
         
     }),
@@ -192,7 +192,7 @@ return array(
             $data = $form->get_encoded_form_array();
 
             $dbw = new Widget\Repositories\DBWidgetMetadata(Input::get('form_id'), Input::get('company_id'), $data['form_structure']);
-
+        
             if(!$dbw->metadata_exists()) { 
                 return $dbw->save();
             } else {                

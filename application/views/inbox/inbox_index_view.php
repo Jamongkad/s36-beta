@@ -352,23 +352,14 @@
                                                         <?foreach($val as $k => $v):?>
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">
-                                                                    <?if($key == 'select' || $key == 'radio'):?>
+                                                                    <?if($key == 'select'):?>
                                                                         <?=ucwords($k)?>: 
                                                                     <?endif?>
 
-                                                                    <?if($key == 'text'):?>
-                                                                        <?
-                                                                            $text_label = ucfirst(str_replace("_", " ", $k));
-                                                                            echo $text_label.":"
-                                                                        ?>
+                                                                    <?if($key == 'checkbox' || $key == 'radio' || $key == 'text'):?>
+                                                                        <?=ucwords(str_replace("_", " ", $k));?>:
                                                                     <?endif?>
 
-                                                                    <?if($key == 'checkbox'):?>
-                                                                        <?
-                                                                            $checkbox_label = ucwords(str_replace("_", " ", $k));
-                                                                            echo $checkbox_label.":"
-                                                                        ?>
-                                                                    <?endif?>
                                                                     <?
                                                                         $prefix = "";
                                                                         $value_list = "";
@@ -437,7 +428,7 @@
                                         ?>
                                     </div>
                                     <!-- end of additional info block -->
-                                <?php endif; ?>
+                                <? endif; ?>
                                 </div>
                             </div>
                             <div class="g1of5">

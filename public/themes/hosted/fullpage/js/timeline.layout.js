@@ -97,7 +97,7 @@ $(flag).click(function(){
     var this_flag = $(this);
     
     $.ajax({
-        url: '/flag_feedback',
+        url: '/feedback_action/flag',
         type: 'post',
         data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
         success: function(result){
@@ -114,7 +114,7 @@ $(vote).click(function(e){
     var vote_count_obj = $(this).parents(feedback).find(vote_count);
     
     $.ajax({
-        url: '/vote_feedback',
+        url: '/feedback_action/vote',
         type: 'post',
         data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
         success: function(result){
