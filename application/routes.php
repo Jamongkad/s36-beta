@@ -37,7 +37,6 @@ return array(
         //$hosted->debug = true;  // remove this after testing.
         //$hosted->dump_build_data = true;  // remove this after testing.
         //$hosted->ignore_cache = true; // remove this after testing.
-        $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
         
