@@ -12,18 +12,20 @@
                         <tr><td width="90"><strong>Theme :</strong></td>
                             <td><?=$rows->widget_obj->theme_type?></td>
                         </tr>
+                        <!--
                         <tr><td width="90"><strong>URL :</strong></td>
                             <td><?=$rows->widget_obj->site_nm?></td>
                         </tr>
+                        -->
                     </table>
                     </div>
                     <div class="g1of3">
                         <div class="right-align">
                             <ul class="widget-button-list">
                                 <li><?=HTML::link('feedsetup/edit/'.$rows->widgetkey, 'Edit', array('class' => 'button-gray'))?></li>
-                                <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li>
-                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetkey, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
+                                <li><?=HTML::link('feedsetup/formcode_manager/'.$rows->widgetkey, 'Integrate', array('class' => 'button-gray'))?></li> 
                                 <!--
+                                <li><?=HTML::link('feedsetup/delete_widget/'.$rows->widgetkey, 'Delete', array('class' => 'button-gray delete-widget'))?></li>
                                 <li><a href="#" class="button-gray">Stat</a></li>
                                 <li><a href="#" class="button">More</a></li>
                                 -->

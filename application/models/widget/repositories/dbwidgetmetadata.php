@@ -10,7 +10,7 @@ class DBWidgetMetadata extends S36DataObject {
     public function __construct($widgetstore_id, $company_id, $form_structure_data) {
         parent::__construct();
         $this->widgetstore_id = $widgetstore_id;
-        $this->company_id = $company_id;
+        $this->company_id     = $company_id;
         $this->form_structure_data = $form_structure_data;
     }
 

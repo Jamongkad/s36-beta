@@ -1,9 +1,9 @@
 <?=Form::open('feedsetup/save_form_widget', 'POST', array('id' => 'create-form-widget'))?>
 <?$site_id = Input::get('site_id')?>
 <?=Form::hidden('widget_type', 'submit')?>
-<?=Form::hidden('company_id', $widget->companyid)?>
-<?=Form::hidden('site_id', $widget->siteid)?>
-<?=Form::hidden('submit_widgetkey', $widget->widgetkey)?>
+<?=Form::hidden('company_id', $widget->widgetattr->company_id)?>
+<?=Form::hidden('site_id', $widget->widgetattr->site_id)?>
+<?=Form::hidden('submit_widgetkey', $widget->widgetattr->widgetkey)?>
 <?=Form::hidden('theme_type', $widget->widgetattr->theme_type, Array('id' => 'selected-form'))?>
 <?=Form::hidden('tab_type', $widget->widgetattr->tab_type, Array('id' => 'selected-tab'))?>
 <?=Form::hidden('embed_type', 'form')?>
@@ -35,7 +35,8 @@
                     <td width="140">
                         <strong style="font-size:14px;">Form Header Text :</strong>
                     </td>
-                    <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->submit_form_text?>" title="<?=$widget->submit_form_text?>" /></td>
+                    <td><input type="text" class="large-text" name="submit_form_text" value="<?=$widget->widgetattr->submit_form_text?>" 
+                                                                                      title="<?=$widget->widgetattr->submit_form_text?>" /></td>
                     <td rowspan="2" width="150" align="center" valign="top">
                     <!-- 
                         <br /><br />
@@ -54,8 +55,9 @@
                     </td>
                     <td valign="top">
                         <textarea name="submit_form_question" class="large-textarea" 
-                                  style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" title="<?=$widget->submit_form_question?>">
-<?=$widget->submit_form_question?>
+                                  style="margin:0px;width:258px;font-family:Arial, Helvetica, sans-serif;padding:5px 8px;" rows="8" 
+                                  title="<?=$widget->widgetattr->submit_form_question?>">
+                                  <?=$widget->widgetattr->submit_form_question?>
                         </textarea>
                     </td>
                 </tr>
@@ -87,7 +89,7 @@
         </div>
         <div class="widget-options">
             <h2><span>Step 3 :</span> Update custom fields for your form (optional)</h2>
-            <div my-formbuilderload widget_key="<?=$widget->widgetkey?>" style="padding: 25px"></div>
+            <div my-formbuilderload widget_key="<?=$widget->widgetattr->widgetkey?>" style="padding: 25px"></div>
         </div>
         <!--
         <div class="widget-options"> 

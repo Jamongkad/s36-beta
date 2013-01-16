@@ -33,18 +33,20 @@ class SubmissionService {
     public function perform() {         
 
         if($feedback_created = $this->_create_feedback()) {
-
             $company_id = $this->post_data->get('company_id');
+            $feedback_id = $feedback_created->feedback_id;
+
+            $feedback = $this->dbfeedback->pull_feedback_by_id($feedback_id);
 
             //this creates metadata tag relationship between metadata and feedback 
-            $this->_create_metadata($feedback_created->feedback_id);    
-            $this->_send_feedbacksubmission_email($feedback_created->feedback_obj, $this->dbuser->pull_user_emails_by_company_id($company_id));
+            $this->_create_metadata($feedback_id);    
+            $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
             $this->_save_latest_feedid($company_id);
-            return $feedback_created->feedback_obj;
 
+            return $feedback;
         } else {
-            throw new Exception("Feedback Submission Failed!");
+            throw new Exception("Feedback Submission Failed!!");
         }
 
     }
@@ -63,7 +65,6 @@ class SubmissionService {
             $feedback_data['contactId'] = $new_contact_id; 
 
             $new_feedback_id = $this->dbfeedback->insert_new_feedback($feedback_data);
-            $feedback = $this->dbfeedback->pull_feedback_by_id($new_feedback_id);
 
             $post = (object) Array(
                 'feedback_text' => $feedback_data['text']
@@ -83,7 +84,6 @@ class SubmissionService {
             ));
 
             $result_obj = new StdClass;
-            $result_obj->feedback_obj = $feedback;
             $result_obj->feedback_id  = $new_feedback_id;
             $result_obj->contact_id   = $new_contact_id;
             return $result_obj;
@@ -93,6 +93,7 @@ class SubmissionService {
     }
 
     public function _create_metadata($feedback_id) { 
+
         //this creates metadata tag relationship between metadata and feedback
         if($post_metadata = $this->post_data->get('metadata')) { 
             $this->dbh->query("SET foreign_key_checks = 0");
@@ -103,11 +104,10 @@ class SubmissionService {
                   , 'tagValue' => $data['value']
                   , 'tagType'  => $data['type']
                 ));
-
                 //Feedback MetadataTags junction table
                 DB::Table('FeedbackMetadataTagMap', 'master')->insert(Array(
-                     'feedbackId' => $feedback_id
-                   , 'tagId' => $metatags_insert_id
+                    'feedbackId' => $feedback_id
+                  , 'tagId' => $metatags_insert_id
                 ));
             }
             $this->dbh->query("SET foreign_key_checks = 1");
