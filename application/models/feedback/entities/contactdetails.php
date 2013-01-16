@@ -48,7 +48,6 @@ class ContactDetails extends FeedbackDataTypes {
             }
         }
 
-
         $contact_info = Array(
             'siteId'      => $this->post_data->get('site_id')
           , 'firstName'   => $this->_sentence_case($this->post_data->get('first_name'))
