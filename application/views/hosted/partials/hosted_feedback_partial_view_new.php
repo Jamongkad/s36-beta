@@ -135,19 +135,8 @@ foreach ($collection as $feed_group => $feed_list) :
                 ?>
                 <div class="admin-comment-block">
                     <?
-                        $companyname = Null; 
-                        if($user->fullpagecompanyname) {
-                            $companyname = $user->fullpagecompanyname;     
-                        } else {
-                            $companyname = $user->companyname;     
-                        }
-
-                        $avatar = null;
-                        if($user->avatar) {
-                            $avatar = $user->avatar;
-                        } else {
-                            $avatar = '/img/48x48-blank-avatar.jpg';
-                        }
+                    $companyname = ($user->fullpagecompanyname) ? $user->fullpagecompanyname : Null;
+                    $avatar = ($user->avatar) ? $user->avatar : Null;
                     ?>
 
                     <?php if(empty($feed->feed_data->adminreply)): ?>
