@@ -24,7 +24,11 @@ class DBFeedbackAdminReply extends S36DataObject {
     				->left_join('Contact', 'Contact.contactId', '=', 'Feedback.contactId')
     				->where('Feedback.feedbackId','=',$data['feedbackId'])
     				->first(array('Contact.email'));
-    		if(!empty($contact->email)){$this->email_admin_reply($contact->email);}
+
+    		if(!empty($contact->email)) {
+                $this->email_admin_reply($contact->email);
+            }
+
 			return true;
 		}else{
 			return false;
@@ -74,6 +78,4 @@ class DBFeedbackAdminReply extends S36DataObject {
 		return ($err==0) ? true : false;
 	}
 
-
 }
-?>

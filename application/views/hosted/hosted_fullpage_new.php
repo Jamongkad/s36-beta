@@ -6,21 +6,21 @@
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
 $(document).ready(function(){
-    $('.adminReply').click(function(){
-        var parent = $(this).parents('.admin-comment-block');
+    $('.adminReply').click(function() {
+        var my_parent = $(this).parents('.admin-comment-block');
         $.ajax({
             url: "/admin_reply",
             dataType: "json",
             data: {
-                feedbackId: $(parent).find('.admin-comment-id').val(),
-                adminReply: $(parent).find('.admin-comment-textbox').val()
+                feedbackId: $(my_parent).find('.admin-comment-id').val(),
+                adminReply: $(my_parent).find('.admin-comment-textbox').val()
             },
             type: "POST",
             success: function(result) {
                 if(undefined != result.feedbackid){
-                    $(parent).find('.admin-comment .admin-message .message').html(result.adminreply);
-                    $(parent).find('.admin-comment-box').css('display','none');
-                    $(parent).find('.admin-comment').css('display','block');
+                    $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                    $(my_parent).find('.admin-comment-box').css('display','none');
+                    $(my_parent).find('.admin-comment').css('display','block');
                 }
           }
         });
