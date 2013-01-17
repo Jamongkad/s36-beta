@@ -2,7 +2,6 @@
 
 use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackAttachments, Feedback\Entities\FeedbackDetails;
 use Feedback\Services\FeedbackService;
-use Halcyonic\Services\HalcyonicService; 
 use Feedback\Repositories\DBFeedback;
 use Contact\Repositories\DBContact;
 use DBBadWords, DBDashboard, DBUser;
@@ -19,7 +18,6 @@ class SubmissionService {
     public function __construct($post_input) {
         $this->post_data        = new SimpleArray($post_input);
         $this->dbdashboard      = new DBDashboard;
-        $this->halcyonic        = new HalcyonicService; 
         $this->contact_details  = new ContactDetails($this->post_data);
         $this->feedback_details = new FeedbackDetails($this->post_data);
         $this->dbfeedback       = new DBFeedback;
@@ -93,7 +91,7 @@ class SubmissionService {
     }
 
     public function _create_metadata($feedback_id) { 
-
+        //TODO: Move this subroutine into a seperate call to the DB.
         //this creates metadata tag relationship between metadata and feedback
         if($post_metadata = $this->post_data->get('metadata')) { 
             $this->dbh->query("SET foreign_key_checks = 0");

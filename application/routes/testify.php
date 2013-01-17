@@ -331,6 +331,19 @@ return array(
         });
 
         $tf->run();         
+    },
+
+    'GET /testify/adminreply' => function() {
+        $tf = new Testify("Admin Reply");  
+        $tf->beforeEach(function($tf) {
+            $tf->data->dbadminreply = new Feedback\Repositories\AdminReply;
+        });
+
+        $tf->test("Testing Admin Reply", function() {
+            $tf->assert($tf->data->dbadminreply);
+        });
+        
+        $tf->run();         
     }
 
 );
