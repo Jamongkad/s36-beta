@@ -1,6 +1,6 @@
 <?php namespace Feedback\Repositories;
 use PDO, StdClass;
-use S36DataObject\S36DataObject, Helpers, DB, S36Auth, Widget;
+use S36DataObject\S36DataObject, Helpers, DB, S36Auth, Widget, URL;
 use \Feedback\Entities\FeedbackNode, \Feedback\Repositories\DBFeedback;
 use \Email\Services\EmailService, \Email\Entities\ReplyData;
 
@@ -72,7 +72,7 @@ class DBAdminReply extends S36DataObject {
                           , "username"  => ucfirst($this->username)
                           ) 
                         )
-                      ->message("Hi I featured and replied to your feedback. Check it out <a href='https://".$this->company_name."'>here</a>")
+                      ->message("Hi we featured and replied to your feedback check it out <a href='".URL::to('/')."'>on our website</a>.")
                       ->feedbackdata($this->dbfeedback->pull_feedback_by_id($feedback_id));            
      
             $emailservice = new EmailService($replydata);  
