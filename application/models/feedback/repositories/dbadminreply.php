@@ -38,13 +38,15 @@ class DBAdminReply extends S36DataObject {
     				->where('Feedback.feedbackId', '=', $feedback_id)
     				->first(array('Contact.email'));
             
-            Helpers::dump($contact->email);
+            Helpers::dump($contact);
             /*
     		if(!empty($contact->email)) {
                 $this->email_admin_reply($contact->email, $feedback_id);
             }
             */
+            echo "Irene";
         }
+        echo "Mathew";
 	}
 
 	public function get_admin_reply($feedback_id) {
