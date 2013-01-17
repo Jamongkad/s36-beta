@@ -494,6 +494,9 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 FeedbackAdminReply
                 ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+            LEFT JOIN
+                User
+                ON FeedbackAdminReply.userId = User.userId
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
