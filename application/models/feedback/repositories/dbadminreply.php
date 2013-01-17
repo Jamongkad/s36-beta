@@ -31,8 +31,10 @@ class DBAdminReply extends S36DataObject {
 	public function add_admin_reply($data) {
         $feedback_id = $data['feedbackId'];
 		if($this->_check_fields($data) && !$this->get_admin_reply($feedback_id)) {
-			//get feedback author's email for sending email message   
+
             $this->insert_admin_reply($data);
+
+			//get feedback author's email for sending email message   
 			$contact = DB::table('Feedback')
     				->left_join('Contact', 'Contact.contactId', '=', 'Feedback.contactId')
     				->where('Feedback.feedbackId', '=', $feedback_id)

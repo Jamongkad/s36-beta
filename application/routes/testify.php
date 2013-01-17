@@ -345,7 +345,6 @@ return array(
                ,'adminReply' => "All the extra love that you gave me."
             );
 
-            $tf->dump($tf->data->dbadminreply);
             $tf->assert($tf->data->dbadminreply->get_admin_reply(1101));
             $tf->dump($tf->data->dbadminreply->add_admin_reply($data));
             $tf->assert($tf->data->dbadminreply->email_admin_reply('mathew@36stories.com', 1101));
