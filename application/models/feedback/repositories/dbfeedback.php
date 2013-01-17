@@ -490,6 +490,7 @@ class DBFeedback extends S36DataObject {
                 , FeedbackActions.useful
                 , FeedbackActions.flagged
                 , FeedbackAdminReply.userId AS admin_userid
+                , FeedbackAdminReply.adminReply AS admin_reply
                 , User.username AS admin_username
                 , User.fullName AS admin_fullname
                 , User.email AS admin_email 
