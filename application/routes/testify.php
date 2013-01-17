@@ -340,14 +340,16 @@ return array(
         });
 
         $tf->test("Testing Admin Reply", function($tf) {
+            $data = array(
+                'feedbackId' => 1081
+               ,'adminReply' => "All the extra love that you gave me"
+            );
             /*
-            $tf->dump($tf->data->dbadminreply->insert_admin_reply(array(
-                 'feedbackId' => 1081
-                ,'adminReply' => "All the extra love that you gave me"
-            )));
+            $tf->dump($tf->data->dbadminreply->insert_admin_reply($data));
             */
 
             $tf->assert($tf->data->dbadminreply->get_admin_reply(1081));
+            $tf->assert($tf->data->dbadminreply->add_admin_reply($data));
         });
         
         $tf->run();         
