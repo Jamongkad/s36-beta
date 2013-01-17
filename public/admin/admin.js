@@ -238,7 +238,7 @@ function upload_to_server(data){
             'top': $('#coverPhoto img').css('top')
         },
         success: function(result){
-            console.log(result);
+            console.log('resuuuulllt');
         }
     });
     
@@ -251,12 +251,12 @@ function upload_to_server(data){
     timeout = setTimeout(hide_save_button, 1000);
 }
 function hide_save_button(){
-    console.log('a');
+    
     $('#saveCoverButton').fadeOut('fast',function(){
         $(this).html('Save Cover');
     });
     $('#changeCoverButton').fadeIn('fast');
     $('#dragPhoto').fadeOut('fast');
     make_cover_undraggable(true);
-    console.log('b');
+    
 }
