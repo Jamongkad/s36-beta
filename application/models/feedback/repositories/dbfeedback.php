@@ -790,6 +790,7 @@ class DBFeedback extends S36DataObject {
         $node->avatar = $data->avatar;
         $node->origin = $data->origin;
         $node->socialid = $data->socialid;
+        $node->adminreply = $data->adminreply;
 
         $attachments = Null;
         if(!empty($data->attachments)) {
