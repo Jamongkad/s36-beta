@@ -160,7 +160,7 @@ foreach ($collection as $feed_group => $feed_list) :
                         </div>
                     <?php else:?>
                         <div class="admin-comment">
-                            <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
+                            <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar">
                                 <img src="<?=$avatar?>" width="32" height="32" /></div>
