@@ -3,6 +3,15 @@
 <?= HTML::script('/js/s36_client_script.js'); ?>
 <?= HTML::style('css/override.css'); ?>
 <?= HTML::style('css/s36_client_style.css'); ?>
+<?php if( ! is_null($user) ): ?>
+    <?= HTML::style('admin/admin.css'); ?>
+    <?= HTML::style('admin/jcarousel.skin.css'); ?>
+    <?= HTML::script('js/jquery.ui.widget.js'); ?>
+    <?= HTML::script('js/jquery.iframe-transport.js'); ?>
+    <?= HTML::script('js/jquery.fileupload.js'); ?>
+    <?= HTML::script('admin/jquery.jcarousel.min.js'); ?>
+    <?= HTML::script('admin/admin.js'); ?>
+<?php endif; ?>
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
 $(document).ready(function(){
@@ -47,13 +56,41 @@ $(document).ready(function(){
 });
 </script>
 
-
+<?php if( ! is_null($user) ): ?>
+<div id="notification">
+    <div id="notification-design">
+        <div id="notification-message">
+            Loading... Please Wait... you bits.
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 <div id="mainWrapper">
     <div id="fadedContainer">
         <div id="mainContainer" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
             <div id="coverPhotoContainer">
+                
+                <?php if( ! is_null($user) ): ?>
+                    <div id="changeCoverButton">
+                        <div id="changeButtonText">            
+                            <span>Change Cover</span>
+                        </div>
+                        <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
+                    </div>
+                    <div id="saveCoverButton">
+                        Save Cover
+                    </div>
+                    <div id="dragPhoto">
+                        Drag Image to Reposition Cover
+                    </div>
+                <?php endif; ?>
+                
                 <div id="coverPhoto">
-                    <img src="img/sample-cover.jpg" />
+                    <?php if( is_null($company->coverphoto_src) ): ?>
+                        <img src="img/sample-cover.jpg" />
+                    <?php else: ?>
+                        <img width="850px" src="<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                    <?php endif; ?>
                 </div>
             </div>
            

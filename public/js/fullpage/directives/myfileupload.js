@@ -104,7 +104,7 @@ function hide_save_button(){
     $('#dragPhoto').fadeOut('fast');
 }
 
-$('#changeCoverButton').hide();
+//$('#changeCoverButton').hide();   // go home line 107, you're drunk!
 $('#pageCover').mouseover(function(){
     if($('#saveCoverButton').css('display')=='none'){
         $('#changeCoverButton').show();

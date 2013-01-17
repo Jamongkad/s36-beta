@@ -6,12 +6,18 @@ $company = new Company\Repositories\DBCompany;
 return array(
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
         $file = Input::all();
-        $options    = array(
-            'width'      => 800
-          , 'height'     => 500
-          , 'targetpath' => 'uploaded_images/coverphoto/'
+        $options = array(
+            'script_url' => get_full_url().'/imageprocessing/coverphoto'
+            , 'file_name'  => date("mdyhis").'.jpg'
+            , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
+            , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
+            , 'param_name' => 'files'
+            , 'width'      => 800
+            , 'height'     => 500
+            , 'image_versions' => array()
         );     
-        upload($file['clientLogoImg'], $options);
+        //upload($file['clientLogoImg'], $options);
+        $uploader = new JqueryFileUploader($options); 
     }),
 
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
@@ -34,8 +40,9 @@ return array(
         );
         $uploader = new JqueryFileUploader($options); 
     }),
-
-    'POST /imageprocessing/savecoverphoto' => function() use ($company) { 
+    
+    // saving of cover photo in db and deletion of old cover photo.
+    'POST /imageprocessing/savecoverphoto' => function() use ($company) {
         $user = S36Auth::user();
         $data = Input::all();
         $data['company_id'] = $user->companyid;

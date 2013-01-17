@@ -140,7 +140,8 @@ class DBCompany extends S36DataObject {
         
 
         if($existing_cover_photo->coverphoto_src) {
-            unlink($existing_cover_photo->coverphoto_src);
+            //unlink($existing_cover_photo->coverphoto_src);
+            unlink('/var/www/s36-upload-images/uploaded_images/coverphoto/' . basename($existing_cover_photo->coverphoto_src));
         }
 
         $result = new StdClass;
