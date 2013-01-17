@@ -346,7 +346,7 @@ return array(
             );
 
             $tf->assert($tf->data->dbadminreply->get_admin_reply(1101));
-            $tf->assert($tf->data->dbadminreply->add_admin_reply($data));
+            $tf->dump($tf->data->dbadminreply->add_admin_reply($data));
         });
         
         $tf->run();         
