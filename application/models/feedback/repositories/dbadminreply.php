@@ -64,15 +64,15 @@ class DBAdminReply extends S36DataObject {
 	public function email_admin_reply($to, $feedback_id) {
 		if($this->send_mail==true) {
             $replydata = new ReplyData; 
-            $replydata->subject("Your feedback has been posted and replied to!")
+            $replydata->subject("and wanted you to know that we posted it on our website.")
                       ->sendto($to)
                       ->from( 
                           (object) Array(
-                            "replyto" => "wrm932@gmail.com"
-                          , "username"  => ucfirst("Mathew")
+                            "replyto" => $this->email 
+                          , "username"  => ucfirst($this->username)
                           ) 
                         )
-                      ->message("Your feedback has been posted and replied to!")
+                      ->message("Hi I featured and replied to your feedback. Check it out <a href='https://".$this->company_name."'>here</a>")
                       ->feedbackdata($this->dbfeedback->pull_feedback_by_id($feedback_id));            
      
             $emailservice = new EmailService($replydata);  
