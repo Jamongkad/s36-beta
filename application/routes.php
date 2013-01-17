@@ -71,7 +71,7 @@ return array(
         $company->incr_page_view($company_info->companyid); 
     },
 
-    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function($dbadmin_reply) {
+    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
         $adminReply = Input::get('adminReply');
         if(!empty($feedbackId) && !empty($adminReply) ) {
