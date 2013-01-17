@@ -1,7 +1,8 @@
 <?php namespace Feedback\Repositories;
-
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth, Widget;
-use \Feedback\Entities\FeedbackNode;
+use PDO, StdClass;
+use S36DataObject\S36DataObject, Helpers, DB, S36Auth, Widget;
+use \Feedback\Entities\FeedbackNode, \Feedback\Repositories\DBFeedback;
+use \Email\Services\EmailService, \Email\Entities\ReplyData;
 
 class DBFeedbackAdminReply extends S36DataObject {
 
@@ -11,22 +12,31 @@ class DBFeedbackAdminReply extends S36DataObject {
 
 	public function __construct() {
 		$this->DB = DB::table($this->table_name);
+        $this->dbfeedback = new DBFeedback;
 	}
 
 	public function set_send_mail($bool) {
 		$this->send_mail = $bool;
 	}
 
+    public function insert_admin_reply($data) {
+        $sql = "INSERT IGNORE INTO $table_name (feedbackId, adminReply) VALUES (:feedback_id, :admin_reply)";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(':feedback_id', $data['feedbackId'], PDO::PARAM_INT);
+        $sth->bindParam(':admin_reply', $data['adminReply'], PDO::PARAM_STR);
+        return $sth->execute();
+    }
+
 	public function add_admin_reply($data) {
-		if($this->_check_fields($data) && $this->DB->insert($data)) {
+		if($this->_check_fields($data) && $this->insert_admin_reply($data)) {
 			//get feedback author's email for sending email message
 			$contact = DB::table('Feedback')
     				->left_join('Contact', 'Contact.contactId', '=', 'Feedback.contactId')
-    				->where('Feedback.feedbackId','=',$data['feedbackId'])
+    				->where('Feedback.feedbackId', '=', $data['feedbackId'])
     				->first(array('Contact.email'));
 
     		if(!empty($contact->email)) {
-                $this->email_admin_reply($contact->email);
+                $this->email_admin_reply($contact->email, $data['feedbackId']);
             }
 
 			return true;
@@ -35,35 +45,40 @@ class DBFeedbackAdminReply extends S36DataObject {
 		}
 	}
 
-	public function get_admin_reply($id = null) {
-		if(!empty($id)) {
-			return $this->DB->where('feedbackId','=',$id)->first();
-		} else {
-			return DB::table($this->table_name)->get();
-		}
-	}
+	public function get_admin_reply($feedback_id) {
+		if(!empty($id)) 
+			return $this->dbfeedback->pull_feedback_by_id($feedback_id);
+    }
 
 	public function update_admin_reply($data) {
 		if($this->_check_fields($data)) {
-			return $this->DB->where('feedbackId','=',$data['feedbackId'])->update($data);
+			return $this->DB->where('feedbackId', '=', $data['feedbackId'])->update($data);
 		}
 	}
 	
-
 	public function delete_admin_reply($id) {
 		$adminReply = $this->get_admin_reply($id);
 		if($adminReply) {
-			return $this->DB->where('feedbackId','=',$id)->delete();
+			return $this->DB->where('feedbackId', '=', $id)->delete();
 		}
 	}
 
-	public function email_admin_reply($to) {
+	public function email_admin_reply($to, $feedback_id) {
 		if($this->send_mail==true) {
-			$subject	=	"Test Subject";
-			$message	=	"Test Message";
-			$headers 	= 	'From: no-reply@36stories.com' . "\r\n" .
-    						'Reply-To: no-reply@36stories.com' . "\r\n";
-			mail($to, $subject, $message, $headers);
+            $replydata = new ReplyData; 
+            $replydata->subject("Your feedback has been posted and replied to!")
+                      ->sendto($to)
+                      ->from( 
+                          (object) Array(
+                            "replyto" => "wrm932@gmail.com"
+                          , "username"  => ucfirst("Mathew")
+                          ) 
+                        )
+                      ->message("Your feedback has been posted and replied to!")
+                      ->feedbackdata($this->dbfeedback->pull_feedback_by_id($feedback_id));            
+     
+            $emailservice = new EmailService($replydata);  
+            return $emailservice->send_email(); 
 		}
 	}
 
