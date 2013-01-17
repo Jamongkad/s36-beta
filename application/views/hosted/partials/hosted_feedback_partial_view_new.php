@@ -146,7 +146,15 @@ foreach ($collection as $feed_group => $feed_list) :
                             </div>
                         </div>
                         <div class="admin-comment" style="display:none">
-                            <div class="admin-name"><?=$user->fullname?> from <?=$user->companyname?> says..</div>
+                            <?
+                            $companyname = Null; 
+                            if($user->fullpagecompanyname) {
+                                $companyname = $user->fullpagecompanyname;     
+                            } else {
+                                $companyname = $user->companyname;     
+                            }
+                            ?>
+                            <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
                                 <div class="message"><?=$feed->feed_data->adminreply?></div>
@@ -154,7 +162,7 @@ foreach ($collection as $feed_group => $feed_list) :
                         </div>
                     <?php else:?>
                         <div class="admin-comment">
-                            <div class="admin-name"><?=$user->fullname?> from <?=$user->companyname?> says..</div>
+                            <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar">
                                 <?
