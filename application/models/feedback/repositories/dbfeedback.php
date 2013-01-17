@@ -752,11 +752,14 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _return_feedback_nodes($feedback) { 
+        Helpers::dump($feedback);
+        /*
         $collection = Array();
         foreach($feedback as $data)  {
             $collection[] = $this->_feedback_node($data); 
         }
         return $collection;
+        */
     }
 
     public function _feedback_node($data) { 
