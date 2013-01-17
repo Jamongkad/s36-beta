@@ -11,6 +11,7 @@ class DBAdminReply extends S36DataObject {
 	public  $send_mail 	=	true;
 
 	public function __construct() {
+        parent::__construct();
 		$this->DB = DB::table($this->table_name);
         $this->dbfeedback = new DBFeedback;
 	}
