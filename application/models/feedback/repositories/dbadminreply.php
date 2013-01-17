@@ -74,7 +74,7 @@ class DBAdminReply extends S36DataObject {
                           , "username"  => ucfirst($this->username)
                           ) 
                         )
-                      ->message("Hi we featured and replied to your feedback check it out <a href='".URL::to('/')."'>on our website</a>.")
+                      ->message("Hello we featured and replied to your feedback check it out <a href='".URL::to('/')."'>on our website</a>.")
                       ->feedbackdata($this->dbfeedback->pull_feedback_by_id($feedback_id));            
      
             $emailservice = new EmailService($replydata);  
