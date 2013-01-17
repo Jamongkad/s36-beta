@@ -1,5 +1,6 @@
 <!-- blocks are separated by dates so we create containers for each dates -->
 <?php
+Helpers::dump($collection);
 if($collection):
 foreach ($collection as $feed_group => $feed_list) : 
 ?>
