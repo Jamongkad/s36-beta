@@ -131,15 +131,13 @@ foreach ($collection as $feed_group => $feed_list) :
                 <?php endif; ?>
                 <?php 
                 $user = S36Auth::user();
-                if(isset($user) && !empty($user)): 
                 ?>
                 <div class="admin-comment-block">
                     <?
                     $companyname = ($user->fullpagecompanyname) ? $user->fullpagecompanyname : Null;
                     $avatar = ($user->avatar) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                     ?>
-
-                    <?php if(empty($feed->feed_data->admin_reply)): ?>
+                    <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-box">
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
@@ -169,7 +167,6 @@ foreach ($collection as $feed_group => $feed_list) :
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php endif; ?>
                 </div>
                 <!-- end of feedback text bubble -->
                 <!-- feedback user actions -->
