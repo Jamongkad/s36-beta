@@ -192,6 +192,7 @@ return array(
             $tf->data->hosted->dump_build_data = True;
             $tf->data->hosted->ignore_cache = True;
             $tf->data->hosted->page_number = $tf->data->page;
+            $tf->data->hosted->bust_hostfeed_data();
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
             $tf->assert($set);
