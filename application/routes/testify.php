@@ -341,6 +341,7 @@ return array(
 
         $tf->test("Testing Admin Reply", function($tf) {
             $tf->assert($tf->data->dbadminreply);
+            $tf->dump($tf->data->dbadminreply);
         });
         
         $tf->run();         
