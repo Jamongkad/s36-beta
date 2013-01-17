@@ -40,6 +40,8 @@ return array(
         $hosted->ignore_cache = true; // remove this after testing.
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
+
+        Helpers::dump($feeds);
         
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
