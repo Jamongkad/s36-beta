@@ -4,7 +4,7 @@ use S36DataObject\S36DataObject, Helpers, DB, S36Auth, Widget;
 use \Feedback\Entities\FeedbackNode, \Feedback\Repositories\DBFeedback;
 use \Email\Services\EmailService, \Email\Entities\ReplyData;
 
-class DBFeedbackAdminReply extends S36DataObject {
+class DBAdminReply extends S36DataObject {
 
 	private $DB;
 	private $table_name = 	"FeedbackAdminReply";

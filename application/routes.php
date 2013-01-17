@@ -5,6 +5,7 @@ $hosted_settings = new Widget\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
+$dbadmin_reply = new Feedback\Repositories\DBAdminReply;
 $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
 Package::load('eden');
@@ -70,16 +71,15 @@ return array(
         $company->incr_page_view($company_info->companyid); 
     },
 
-    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() {
-        $DBFeedbackAdminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
+    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
         $adminReply = Input::get('adminReply');
         if(!empty($feedbackId) && !empty($adminReply) ) {
-            $DBFeedbackAdminReply->add_admin_reply(array(
+            $dbadmin_reply->add_admin_reply(array(
                  'feedbackId' => $feedbackId
                 ,'adminReply' => $adminReply
             ));
-            return json_encode($DBFeedbackAdminReply->get_admin_reply($feedbackId));
+            return json_encode($dbadmin_reply->get_admin_reply($feedbackId));
         }
     }),
 
