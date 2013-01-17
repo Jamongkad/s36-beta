@@ -177,20 +177,20 @@ return array(
         $tf->run();
     },
 
-    'GET /testify/hosted_feeds/(:any?)' => function($id=null) {
+    'GET /testify/hosted_feeds/(:any?)' => function($page=null) {
         $tf = new Testify("Hosted Feeds Test");
-        $tf->beforeEach(function($tf) use ($id) {
+        $tf->beforeEach(function($tf) use ($page) {
             $mycompany = Config::get('application.subdomain');
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
-            $tf->data->page = $id;
+            $tf->data->page = $page;
         });
 
         $tf->test('Televised Feedback', function($tf) { 
             $tf->data->hosted->debug = True;
-            $tf->data->hosted->dump_build_data = False;
-            $tf->data->hosted->ignore_cache = False;
+            $tf->data->hosted->dump_build_data = True;
+            $tf->data->hosted->ignore_cache = True;
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
