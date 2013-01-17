@@ -142,7 +142,9 @@ foreach ($collection as $feed_group => $feed_list) :
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                         <div class="admin-comment-textbox-container">
-                            <textarea class="admin-comment-textbox"></textarea>
+                            <textarea class="admin-comment-textbox">
+                            <?=$feed->feed_data->admin_reply?>
+                            </textarea>
                             </div>
                             <div class="admin-comment-leave-a-reply">
                             <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
