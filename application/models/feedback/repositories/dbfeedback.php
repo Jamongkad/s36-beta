@@ -489,8 +489,10 @@ class DBFeedback extends S36DataObject {
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful
                 , FeedbackActions.flagged
-                , FeedbackAdminReply.userId
-                , User.username
+                , FeedbackAdminReply.userId AS admin_userid
+                , User.username AS admin_username
+                , User.fullName AS admin_fullname
+                , User.email AS admin_email 
             FROM 
                 Feedback
             LEFT JOIN
