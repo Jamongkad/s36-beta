@@ -134,6 +134,22 @@ foreach ($collection as $feed_group => $feed_list) :
                 if(isset($user) && !empty($user)): 
                 ?>
                 <div class="admin-comment-block">
+                    <?
+                        $companyname = Null; 
+                        if($user->fullpagecompanyname) {
+                            $companyname = $user->fullpagecompanyname;     
+                        } else {
+                            $companyname = $user->companyname;     
+                        }
+
+                        $avatar = null;
+                        if($user->avatar) {
+                            $avatar = $user->avatar;
+                        } else {
+                            $avatar = '/img/48x48-blank-avatar.jpg';
+                        }
+                    ?>
+
                     <?php if(empty($feed->feed_data->adminreply)): ?>
                         <div class="admin-comment-box">
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
@@ -146,14 +162,6 @@ foreach ($collection as $feed_group => $feed_list) :
                             </div>
                         </div>
                         <div class="admin-comment" style="display:none">
-                            <?
-                            $companyname = Null; 
-                            if($user->fullpagecompanyname) {
-                                $companyname = $user->fullpagecompanyname;     
-                            } else {
-                                $companyname = $user->companyname;     
-                            }
-                            ?>
                             <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
@@ -165,14 +173,6 @@ foreach ($collection as $feed_group => $feed_list) :
                             <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar">
-                                <?
-                                $avatar = null;
-                                if($user->avatar) {
-                                    $avatar = $user->avatar;
-                                } else {
-                                    $avatar = '/img/48x48-blank-avatar.jpg';
-                                }
-                                ?> 
                                 <img src="<?=$avatar?>" width="32" height="32" /></div>
                                 <div class="message"><?=$feed->feed_data->adminreply?></div>
                             </div>
