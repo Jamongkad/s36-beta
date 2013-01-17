@@ -34,9 +34,9 @@ return array(
         //Feeds
         $hosted = new Feedback\Services\HostedService($company_name); 
         $hosted->page_number = 1;
-        //$hosted->debug = true;  // remove this after testing.
-        //$hosted->dump_build_data = true;  // remove this after testing.
-        //$hosted->ignore_cache = true; // remove this after testing.
+        $hosted->debug = true;  // remove this after testing.
+        $hosted->dump_build_data = true;  // remove this after testing.
+        $hosted->ignore_cache = true; // remove this after testing.
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
         
@@ -74,7 +74,7 @@ return array(
         $DBFeedbackAdminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
         $feedbackId = Input::get('feedbackId');
         $adminReply = Input::get('adminReply');
-        if(!empty($feedbackId) && !empty($adminReply) ){
+        if(!empty($feedbackId) && !empty($adminReply) ) {
             $DBFeedbackAdminReply->add_admin_reply(array(
                  'feedbackId' => $feedbackId
                 ,'adminReply' => $adminReply
