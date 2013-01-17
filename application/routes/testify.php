@@ -336,7 +336,7 @@ return array(
     'GET /testify/adminreply' => function() {
         $tf = new Testify("Admin Reply");  
         $tf->beforeEach(function($tf) {
-            $tf->data->dbadminreply = new Feedback\Repositories\AdminReply;
+            $tf->data->dbadminreply = new Feedback\Repositories\DBAdminReply;
         });
 
         $tf->test("Testing Admin Reply", function() {
