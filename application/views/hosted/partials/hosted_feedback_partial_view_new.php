@@ -139,7 +139,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     $avatar = ($user->avatar) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                     ?>
 
-                    <?php if(empty($feed->feed_data->adminreply)): ?>
+                    <?php if(empty($feed->feed_data->admin_reply)): ?>
                         <div class="admin-comment-box">
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
