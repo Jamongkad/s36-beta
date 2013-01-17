@@ -1,6 +1,5 @@
 <!-- blocks are separated by dates so we create containers for each dates -->
 <?php
-Helpers::dump($collection);
 if($collection):
 foreach ($collection as $feed_group => $feed_list) : 
 ?>
@@ -132,6 +131,7 @@ foreach ($collection as $feed_group => $feed_list) :
                 <?php endif; ?>
                 <?php 
                 $user = S36Auth::user();
+                Helpers::dump($user);
                 if(isset($user) && !empty($user)): 
                 ?>
                 <div class="admin-comment-block">
