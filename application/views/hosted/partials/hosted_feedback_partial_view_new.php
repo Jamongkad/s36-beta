@@ -134,8 +134,8 @@ foreach ($collection as $feed_group => $feed_list) :
                 ?>
                 <div class="admin-comment-block">
                     <?
-                    $companyname = ($user->fullpagecompanyname) ? $user->fullpagecompanyname : Null;
-                    $avatar = ($user->avatar) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
+                    $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
+                    $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                     ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-box">
