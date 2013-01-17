@@ -173,7 +173,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                     $avatar = '/img/48x48-blank-avatar.jpg';
                                 }
                                 ?> 
-                                <img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                <img src="<?=$avatar?>" width="32" height="32" /></div>
                                 <div class="message"><?=$feed->feed_data->adminreply?></div>
                             </div>
                         </div>
