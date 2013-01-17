@@ -136,6 +136,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?
                     $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
                     $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
+                    $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                     ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-box">
@@ -160,7 +161,7 @@ foreach ($collection as $feed_group => $feed_list) :
                         </div>
                     <?php else:?>
                         <div class="admin-comment">
-                            <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$feed->feed_data->admin_companyname?> says..</div>
+                            <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
                             <div class="admin-message clear">
                                 <div class="admin-avatar">
                                 <img src="<?=$avatar?>" width="32" height="32" /></div>
