@@ -339,7 +339,7 @@ return array(
             $tf->data->dbadminreply = new Feedback\Repositories\DBAdminReply;
         });
 
-        $tf->test("Testing Admin Reply", function() {
+        $tf->test("Testing Admin Reply", function($tf) {
             $tf->assert($tf->data->dbadminreply);
         });
         
