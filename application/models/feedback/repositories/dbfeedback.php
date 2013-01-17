@@ -496,6 +496,7 @@ class DBFeedback extends S36DataObject {
                 , User.email AS admin_email 
                 , User.email AS admin_email 
                 , Company.name AS admin_companyname 
+                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
             LEFT JOIN
@@ -806,6 +807,7 @@ class DBFeedback extends S36DataObject {
         $node->admin_fullname = $data->admin_fullname;
         $node->admin_email = $data->admin_email;
         $node->admin_companyname = $data->admin_companyname;
+        $node->admin_fullpagecompanyname = $data->admin_fullpagecompanyname;
 
         $attachments = Null;
         if(!empty($data->attachments)) {
