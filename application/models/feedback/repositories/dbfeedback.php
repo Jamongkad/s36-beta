@@ -9,6 +9,7 @@ use Exception;
 class DBFeedback extends S36DataObject {
 
     private $select_vars = '
+                  EXPLAIN
                   SQL_CALC_FOUND_ROWS
                   Feedback.feedbackId AS id
                 , Category.intName
