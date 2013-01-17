@@ -34,9 +34,9 @@ return array(
         //Feeds
         $hosted = new Feedback\Services\HostedService($company_name); 
         $hosted->page_number = 1;
-        $hosted->debug = true;  // remove this after testing.
-        $hosted->dump_build_data = true;  // remove this after testing.
-        $hosted->ignore_cache = true; // remove this after testing.
+        //$hosted->debug = true;  // remove this after testing.
+        //$hosted->dump_build_data = true;  // remove this after testing.
+        //$hosted->ignore_cache = true; // remove this after testing.
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();
         
@@ -54,7 +54,7 @@ return array(
         ));
 
         $meta->calculate_metrics();
-        /*
+
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_fullpage_new', Array(  
                                                     'company'         => $company_info
                                                   , 'company_social'  => $company_social
@@ -64,10 +64,10 @@ return array(
                                                   , 'company_header'  => $header_view
                                                   , 'hosted_page_url' => $hosted_page_url
                                                   , 'hosted'          => $hosted_settings_info));
-        */ 
+
         
         // increment page view count of company.
-        //$company->incr_page_view($company_info->companyid); 
+        $company->incr_page_view($company_info->companyid); 
     },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() {
