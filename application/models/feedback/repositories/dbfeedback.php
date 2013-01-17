@@ -757,14 +757,11 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _return_feedback_nodes($feedback) { 
-        Helpers::dump($feedback);
-        /*
         $collection = Array();
         foreach($feedback as $data)  {
             $collection[] = $this->_feedback_node($data); 
         }
         return $collection;
-        */
     }
 
     public function _feedback_node($data) { 
@@ -801,10 +798,11 @@ class DBFeedback extends S36DataObject {
         $node->avatar = $data->avatar;
         $node->origin = $data->origin;
         $node->socialid = $data->socialid;
-        $node->adminreply = $data->adminreply;
-        $node->userid = $data->userid;
-        $node->username = $data->username;
-        $node->fullname = $data->fullname;
+        $node->admin_reply = $data->admin_reply;
+        $node->admin_userid = $data->admin_userid;
+        $node->admin_username = $data->admin_username;
+        $node->admin_fullname = $data->admin_fullname;
+        $node->admin_email = $data->admin_email;
 
         $attachments = Null;
         if(!empty($data->attachments)) {
