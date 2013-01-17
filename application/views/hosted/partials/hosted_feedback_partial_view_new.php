@@ -142,6 +142,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php if(empty($feed->feed_data->adminreply)): ?>
                         <div class="admin-comment-box">
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
+                        <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                         <div class="admin-comment-textbox-container">
                             <textarea class="admin-comment-textbox"></textarea>
                             </div>
