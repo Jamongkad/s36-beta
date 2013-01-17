@@ -13,6 +13,7 @@ $(document).ready(function(){
             dataType: "json",
             data: {
                 feedbackId: $(my_parent).find('.admin-comment-id').val(),
+                userId: $(my_parent).find('.admin-user-id').val(),
                 adminReply: $(my_parent).find('.admin-comment-textbox').val()
             },
             type: "POST",

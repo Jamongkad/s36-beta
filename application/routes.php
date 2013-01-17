@@ -74,10 +74,12 @@ return array(
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
         $adminReply = Input::get('adminReply');
+        $userId = Input::get('userId');
         if(!empty($feedbackId) && !empty($adminReply) ) {
             $dbadmin_reply->add_admin_reply(array(
                  'feedbackId' => $feedbackId
-                ,'adminReply' => $adminReply
+               , 'adminReply' => $adminReply
+               , 'userId' => $userId
             ));
             return json_encode($dbadmin_reply->get_admin_reply($feedbackId));
         }

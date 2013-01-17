@@ -5,7 +5,7 @@ use Exception;
 
 abstract class S36DataObject { 
 
-    public $dbh, $user_id, $company_id, $company_name;
+    public $dbh, $user_id, $company_id, $company_name, $email, $username;
     public $db_name = 'master';
 
     public function __construct() { 

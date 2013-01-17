@@ -21,10 +21,11 @@ class DBAdminReply extends S36DataObject {
 	}
 
     public function insert_admin_reply($data) {
-        $sql = "INSERT IGNORE INTO {$this->table_name} (feedbackId, adminReply) VALUES (:feedback_id, :admin_reply)";
+        $sql = "INSERT IGNORE INTO {$this->table_name} (feedbackId, adminReply, userId) VALUES (:feedback_id, :admin_reply, :user_id)";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':feedback_id', $data['feedbackId'], PDO::PARAM_INT);
         $sth->bindParam(':admin_reply', $data['adminReply'], PDO::PARAM_STR);
+        $sth->bindParam(':user_id', $data['userId'], PDO::PARAM_INT);
         return $sth->execute();
     }
 
