@@ -490,6 +490,7 @@ class DBFeedback extends S36DataObject {
                 , FeedbackActions.useful
                 , FeedbackActions.flagged
                 , FeedbackAdminReply.userId
+                , User.username
             FROM 
                 Feedback
             LEFT JOIN
