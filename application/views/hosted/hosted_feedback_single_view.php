@@ -60,7 +60,7 @@
                 <?if($feedback->displayimg):?>
                     <?if($feedback->avatar):?>
             	        <div class="theAvatar">
-                            <?=HTML::image('uploaded_cropped/150x150/'.$feedback->avatar)?>
+                            <?=HTML::image('uploaded_images/avatar/150x150/'.$feedback->avatar)?>
                         </div>
                     <?endif?>
                 <?endif?>

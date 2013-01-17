@@ -153,7 +153,7 @@ foreach ($collection as $feed_group => $feed_list) :
                         <div class="admin-comment" style="display:none">
                             <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                             <div class="admin-message clear">
-                                <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
+                                <div class="admin-avatar"><img src="<?=$avatar?>" width="32" height="32" /></div>
                                 <div class="message"><?=$feed->feed_data->adminreply?></div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@ foreach ($collection as $feed_group => $feed_list) :
                 <!-- feedback user actions -->
                 <div class="feedback-options clear">
                     <div class="feedback-recommendation">
-                        <div class="green-thumb">Recommended by <?php echo HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                        <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                         <?php if( $voted != 1 ): ?>
                             <div class="vote-block">
                                 <span class="vote-action">Was this useful? <a href="#" class="small-btn-pin">Yes</a></span>
