@@ -340,8 +340,10 @@ return array(
         });
 
         $tf->test("Testing Admin Reply", function($tf) {
-            $tf->assert($tf->data->dbadminreply);
-            $tf->dump($tf->data->dbadminreply);
+            $tf->assert($tf->data->dbadminreply->insert_admin_reply(array(
+                 'feedbackId' => 1081
+                ,'adminReply' => "All the extra love that you gave me"
+            )));
         });
         
         $tf->run();         
