@@ -347,6 +347,7 @@ return array(
 
             $tf->assert($tf->data->dbadminreply->get_admin_reply(1101));
             $tf->dump($tf->data->dbadminreply->add_admin_reply($data));
+            $tf->assert($tf->data->dbadminreply->email_admin_reply('mathew@36stories.com', 1101));
         });
         
         $tf->run();         
