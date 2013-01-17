@@ -29,21 +29,24 @@ class DBAdminReply extends S36DataObject {
     }
 
 	public function add_admin_reply($data) {
-		if($this->_check_fields($data) && $this->insert_admin_reply($data)) {
+        $feedback_id = $data['feedbackId'];
+		if($this->_check_fields($data) && !$this->get_admin_reply($feedback_id)) {
 			//get feedback author's email for sending email message
+            return True;
+            /*
+            $this->insert_admin_reply($data);
 			$contact = DB::table('Feedback')
     				->left_join('Contact', 'Contact.contactId', '=', 'Feedback.contactId')
-    				->where('Feedback.feedbackId', '=', $data['feedbackId'])
+    				->where('Feedback.feedbackId', '=', $feedback_id)
     				->first(array('Contact.email'));
 
     		if(!empty($contact->email)) {
-                $this->email_admin_reply($contact->email, $data['feedbackId']);
+                $this->email_admin_reply($contact->email, $feedback_id);
             }
+            */
+        }
 
-			return true;
-		} else {
-			return false;
-		}
+        return False;
 	}
 
 	public function get_admin_reply($feedback_id) {
