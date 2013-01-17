@@ -47,8 +47,7 @@ class DBAdminReply extends S36DataObject {
 	}
 
 	public function get_admin_reply($feedback_id) {
-		if(!empty($id)) 
-			return $this->dbfeedback->pull_feedback_by_id($feedback_id);
+	    return $this->DB->where('feedbackId', '= ', $feedback_id)->get();
     }
 
 	public function update_admin_reply($data) {
