@@ -16,11 +16,13 @@ class FeedbackNode {
         foreach($this->data as $key => $value) {
             if($key) { 
                 $node->$key = $value;
-                if($key == 'metadata') {
+                if($key == 'metadata' || $key == 'attachments') {
                     $node->$key = json_decode($value);
                 }
             } 
         }
+
+        Helpers::dump($node);
 
         return $node;
         /*
