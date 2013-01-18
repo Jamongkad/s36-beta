@@ -28,6 +28,7 @@
 
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
+<?= HTML::script('/js/master.js'); ?>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -66,7 +67,6 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-
                       var boxes = $(msg);
                       container.append(boxes);
                       reload_masonry();
@@ -80,6 +80,47 @@
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 
+        /* admin replies */
+        $('.adminReply').click(function() {
+            var my_parent = $(this).parents('.admin-comment-block');
+            $.ajax({
+                url: "/admin_reply",
+                dataType: "json",
+                data: {
+                    feedbackId: $(my_parent).find('.admin-comment-id').val(),
+                    userId: $(my_parent).find('.admin-user-id').val(),
+                    adminReply: $(my_parent).find('.admin-comment-textbox').val()
+                },
+                type: "POST",
+                success: function(result) {
+                    if(undefined != result.feedbackid){
+                        $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                        $(my_parent).find('.admin-comment-box').css('display','none');
+                        $(my_parent).find('.admin-comment').css('display','block');
+                    }
+              }
+            });
+        });
+
+        /*lightbox attachment code*/
+        $('.uploaded-images-close').click(function(){
+                $(this).parent().fadeOut();
+            });
+        $('.the-thumb,.video-circle').click(function(){
+            var scroll_offset = $(document).scrollTop();
+            var top_offset = scroll_offset + 100;
+            $('.lightbox').fadeIn().css('top',top_offset);
+        });
+
+        $('.uploaded-image').click(function(){
+            var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
+            $('.uploaded-images-content').html(html);
+        });
+        $('.video-thumb,.video-circle').click(function(){
+            var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
+            var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
+            $('.uploaded-images-content').html(html);
+        });
 	});
 
     //exclusive for timeline layout 

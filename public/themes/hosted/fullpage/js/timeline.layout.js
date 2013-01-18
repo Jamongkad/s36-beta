@@ -9,7 +9,6 @@ $('.share-box').hover(function(){},function(){
 });
 
 
-
 // jquery raty.
 
 $('.star_rating').raty({
@@ -50,7 +49,7 @@ $('.cancel').click(function(){
     $('.save, .cancel').css('display', 'none');
     $('#desc_textbox_con').css('display', 'none');
     $('#desc_text').fadeIn();
-    $('#desc_textbox').val( entities2html( br2nl($('#desc_text').html().replace(/\n/g,'')) ) );
+    $('#desc_textbox').val( Helpers.entities2html( Helpers.br2nl($('#desc_text').html().replace(/\n/g,'')) ) );
 });
 
 $('.save').click(function(){
@@ -67,7 +66,7 @@ $('.save').click(function(){
             if( result == 1 ){
                 display_error_mes( ['You should be logged in to do this action'] );
             }else{
-                $('#desc_text').html( nl2br( html2entities($('#desc_textbox').val()) ) );
+                $('#desc_text').html( Helpers.nl2br( Helpers.html2entities($('#desc_textbox').val()) ) );
                 $('.cancel').trigger('click');
             }
         }
@@ -109,7 +108,6 @@ $(flag).click(function(){
 
 $(vote).click(function(e){
     
-    e.preventDefault();
     var this_vote = $(this);
     var vote_count_obj = $(this).parents(feedback).find(vote_count);
     
@@ -123,7 +121,7 @@ $(vote).click(function(e){
             $(this_vote).parents(feedback).find(vote_container).hide().text('Thanks for your vote!').fadeIn();
         }
     });
-    
+    e.preventDefault();
 });
 
 $(share).click(function(){
@@ -147,15 +145,4 @@ $(send_button).click(function(){
     var widgetkey = $(this).attr('widgetkey');
     createLightboxes();
     s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
-});
-
-$(document).ready(function(){
-
-	$('.feedback').each(function(){
-		var leftOffset = $(this).css('left');
-		if(leftOffset == '400px'){
-			$(this).css('left','418px');
-			$(this).find('.feedback-branch').css({'left':'-31px','top':'40px'});
-		}
-	});
 });

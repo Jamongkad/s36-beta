@@ -543,11 +543,13 @@ $(document).keypress(function(event){
 		else
 		$('.loading-box').fadeOut('fast');
 	}
+
 	function display_lightbox(){
 		$('#lightbox').fadeIn();
 		$('#lightbox-s').fadeIn();
 		return false;
 	}
+
 	function display_text_editor(){
 		$('#lightbox-text-editor-container').fadeIn('fast');
 		$('#lightbox-editor-s').fadeIn('fast');
