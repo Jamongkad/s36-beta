@@ -77,7 +77,7 @@
                       twttr.widgets.load();
                       FB.XFBML.parse();
                       S36FeedbackActions.initialize_actions();
-                    }
+                  }
                 });
 		   }
 		}
