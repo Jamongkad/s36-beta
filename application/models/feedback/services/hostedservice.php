@@ -35,10 +35,6 @@ class HostedService {
 
     public function fetch_hosted_feedback() { 
 
-        if($this->debug == True) {
-            $this->bust_hostfeed_data();
-        } 
-
         $collection = Array();
         foreach($this->feeds->result as $feed) {
             $head_date = strtotime($feed->head_date_format);
