@@ -6,6 +6,7 @@
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/flags.css" />
@@ -13,7 +14,7 @@
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/override.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/<?php echo $layout ?>.layout.css" />
 
-<script type="text/javascript" src="themes/hosted/fullpage/js/jquery.js"></script>
+
 <script type="text/javascript" src="themes/hosted/fullpage/js/masonry.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/modernizr.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/jquery-ui-1.8.24.custom.min.js"></script>
