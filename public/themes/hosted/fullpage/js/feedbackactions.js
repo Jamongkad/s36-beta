@@ -62,6 +62,9 @@ var S36FeedbackActions = new function() {
             
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
             var tw_share = $(this).parents(feedback).find(tw_share_dummy);
+
+            console.log(fb_like);
+            console.log(tw_share);
             
             if( ! fb_like.is('.fb-like') ){
                 fb_like.addClass('fb-like');
