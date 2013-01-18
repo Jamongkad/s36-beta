@@ -30,7 +30,7 @@
 
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
-<?= HTML::script('/js/master.js'); ?>
+<?= HTML::script('js/helpers.js'); ?>
 <?= HTML::script('themes/hosted/fullpage/js/feedbackactions.js'); ?>
 </head>
 <body>
