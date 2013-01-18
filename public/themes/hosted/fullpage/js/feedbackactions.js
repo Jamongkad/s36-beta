@@ -76,7 +76,7 @@ var S36FeedbackActions = new function() {
     }
 
     this.open_submission_form = function() { 
-        console.log(this.send_button);
+        console.log(send_button);
         $(me.send_button).click(function(){  
             var widgetkey = $(this).attr('widgetkey');
             createLightboxes();
