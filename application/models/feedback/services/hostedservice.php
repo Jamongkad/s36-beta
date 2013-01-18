@@ -31,12 +31,13 @@ class HostedService {
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
 
-        if($this->debug == True) {
-            $this->bust_hostfeed_data();
-        } 
     }
 
     public function fetch_hosted_feedback() { 
+
+        if($this->debug == True) {
+            $this->bust_hostfeed_data();
+        } 
 
         $collection = Array();
         foreach($this->feeds->result as $feed) {
