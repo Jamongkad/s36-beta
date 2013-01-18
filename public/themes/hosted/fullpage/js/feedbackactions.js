@@ -76,7 +76,11 @@ var S36FeedbackActions = new function() {
                 twttr.widgets.load();
             } 
 
-            $(this).find('.share-box').fadeIn('fast');
+            $(this).find('.share-box').fadeIn('fast').hover(function() { 
+                console.log("hovering in");
+            }, function() {
+                console.log("hovering out");
+            });
         });
     }
 
