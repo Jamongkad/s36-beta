@@ -760,19 +760,18 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _return_feedback_nodes($feedback) { 
+
         $collection = Array();
+        $node = Null;
+
         foreach($feedback as $data)  {
-            $collection[] = $this->_feedback_node($data); 
+            $node = new FeedbackNode($data);
+            $collection[] = $node->generate();
         }
+
         return $collection;
     }
-
-    public function _feedback_node($data) { 
-        $node = new FeedbackNode($data);
-        return $node->generate();
-    }
-    
-    
+ 
     // get record of user's action on the feedback.
     public function get_feedback_actions($data){
         
