@@ -58,6 +58,7 @@
 	$(document).ready(function(){
 
         reload_masonry();
+        S36FeedbackActions.initialize_actions();
 
 	    var counter = 0;	
         function update() {
