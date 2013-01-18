@@ -14,9 +14,11 @@ class FeedbackNode {
     public function generate() {
         $node = new StdClass; 
         foreach($this->data as $key => $value) {
-            Helpers::dump($key);
-            Helpers::dump($value);
+            if($key)
+                $node->$key = $value;
         }
+
+        return $node;
         /*
         $node->id          = $data->id;      
         $node->firstname   = $data->firstname;
