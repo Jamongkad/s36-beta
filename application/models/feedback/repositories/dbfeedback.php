@@ -802,7 +802,6 @@ class DBFeedback extends S36DataObject {
         $node->origin     = $data->origin;
         $node->socialid   = $data->socialid;
         
-        /*
         $node->admin_reply    = $data->admin_reply;
         $node->admin_userid   = $data->admin_userid;
         $node->admin_username = $data->admin_username;
@@ -811,6 +810,7 @@ class DBFeedback extends S36DataObject {
         $node->admin_companyname = $data->admin_companyname;
         $node->admin_fullpagecompanyname = $data->admin_fullpagecompanyname;
 
+        /*
         if( property_exists($data, 'attachments') ) $node->attachments = json_encode($node->attachments);
         if( property_exists($data, 'metadata') ) $node->attachments = json_encode($node->attachments);
         if( property_exists($data, 'flagged') ) $node->flagged = $data->flagged;
