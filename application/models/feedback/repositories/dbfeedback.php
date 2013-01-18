@@ -487,8 +487,8 @@ class DBFeedback extends S36DataObject {
             SELECT
                 '.$this->select_vars.' 
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
-                , FeedbackActions.useful
-                , FeedbackActions.flagged
+                , FeedbackActions.useful 
+                , FeedbackActions.flagged AS flagged_as_inappr
                 , FeedbackAdminReply.userId AS admin_userid
                 , FeedbackAdminReply.adminReply AS admin_reply
                 , User.username AS admin_username
@@ -773,15 +773,13 @@ class DBFeedback extends S36DataObject {
     }
  
     // get record of user's action on the feedback.
-    public function get_feedback_actions($data) {
-        
+    public function get_feedback_actions($data) { 
         $result = DB::table('FeedbackActions')
             ->where('ip_address', '=', $data->ip_address)
             ->where('feedbackId', '=', $data->feedbackId)
             ->first();
         
-        return $result;
-        
+        return $result; 
     }
     
     
