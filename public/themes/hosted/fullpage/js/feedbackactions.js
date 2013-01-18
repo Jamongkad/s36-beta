@@ -72,6 +72,7 @@ var S36FeedbackActions = new function() {
                 tw_share.addClass('twitter-share-button');
                 twttr.widgets.load();
             } 
+            console.log("Mathew");
         });
     }
 
