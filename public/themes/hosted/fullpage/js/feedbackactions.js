@@ -97,14 +97,22 @@ var S36FeedbackActions = new function() {
         /* admin replies */
         $('.adminReply').click(function() {
             var my_parent = $(this).parents('.admin-comment-block');
+            var admin_reply = {
+                feedbackId: $(my_parent).find('.admin-comment-id').val(),
+                userId: $(my_parent).find('.admin-user-id').val(),
+                adminReply: $(my_parent).find('.admin-comment-textbox').val()
+            };
+
+            if($.trim($(my_parent).find('.admin-comment-textbox').val()).length > 0) {
+                console.log(admin_reply);     
+            }
+ 
+           
+            /*
             $.ajax({
                 url: "/admin_reply",
                 dataType: "json",
-                data: {
-                    feedbackId: $(my_parent).find('.admin-comment-id').val(),
-                    userId: $(my_parent).find('.admin-user-id').val(),
-                    adminReply: $(my_parent).find('.admin-comment-textbox').val()
-                },
+                data: admin_reply,
                 type: "POST",
                 success: function(result) {
                     if(undefined != result.feedbackid){
@@ -114,6 +122,7 @@ var S36FeedbackActions = new function() {
                     }
               }
             });
+            */
         }); 
     }
 
