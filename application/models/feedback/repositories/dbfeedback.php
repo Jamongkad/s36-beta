@@ -505,12 +505,17 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 User
                 ON FeedbackAdminReply.userId = User.userId
+            /*
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
             INNER JOIN 
                 Company
                 ON Company.companyId = Site.companyId
+            */
+            INNER JOIN 
+                Company
+                ON Company.companyId = Feedback.companyId
             INNER JOIN
                 Category
                 ON Category.categoryId = Feedback.categoryId
@@ -519,7 +524,7 @@ class DBFeedback extends S36DataObject {
                 ON Contact.contactId = Feedback.contactId 
             INNER JOIN
                 FeedbackContactOrigin
-                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                ON Feedback.contactId  = FeedbackContactOrigin.contactId
                 AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
