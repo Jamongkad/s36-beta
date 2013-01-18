@@ -79,6 +79,7 @@ var S36FeedbackActions = new function() {
             $(this).find('.share-box').fadeIn('fast').hover(function() { 
                 console.log("hovering in");
             }, function() {
+                $(this).fadeOut('fast');
                 console.log("hovering out");
             });
         });
