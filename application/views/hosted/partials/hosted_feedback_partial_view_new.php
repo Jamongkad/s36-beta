@@ -160,7 +160,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="message"><?=$feed->feed_data->admin_reply?></div>
                             </div>
                         </div>
-                    </input>
+                    </div>
                     <?php else:?>
                         <?if($feed->feed_data->admin_reply):?>
                             <div class="admin-comment-block">
