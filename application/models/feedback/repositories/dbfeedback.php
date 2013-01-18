@@ -247,11 +247,22 @@ class DBFeedback extends S36DataObject {
         $sql = '
             SELECT 
                 '.$this->select_vars.'
+                , FeedbackAdminReply.userId AS admin_userid
+                , FeedbackAdminReply.adminReply AS admin_reply
+                , User.username AS admin_username
+                , User.fullName AS admin_fullname
+                , User.email AS admin_email 
+                , User.email AS admin_email 
+                , Company.name AS admin_companyname 
+                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
                     LEFT JOIN
                         FeedbackAdminReply
                         ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+                    LEFT JOIN
+                        User
+                        ON FeedbackAdminReply.userId = User.userId
                     INNER JOIN 
                         Site
                         ON Feedback.siteId = Site.siteId
