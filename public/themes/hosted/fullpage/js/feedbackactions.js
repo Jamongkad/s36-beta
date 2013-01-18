@@ -78,14 +78,6 @@ var S36FeedbackActions = new function() {
 
             $(this).find('.share-box').fadeToggle('fast');
         });
-
-        // share.
-        /*
-        $('.share-box').hover(function(){},function(){
-            $(this).fadeOut('fast');
-        });
-        */
-
     }
 
     this.open_submission_form = function() { 

@@ -72,8 +72,6 @@
                   , success: function(msg) { 
                       var boxes = $(msg);
                       container.append(boxes); 
-                      twttr.widgets.load();
-                      FB.XFBML.parse();
                       S36FeedbackActions.initialize_actions();
                     }
                 });
