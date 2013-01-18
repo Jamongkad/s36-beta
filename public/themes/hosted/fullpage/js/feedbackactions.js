@@ -14,10 +14,10 @@ var S36FeedbackActions = new function() {
     var me = this;
 
     this.initialize_actions = function() {
-        me.flag_inapprt();
+        //me.flag_inapprt();
         //me.vote();
         //me.share();
-        //me.open_submission_form();
+        me.open_submission_form();
     }
 
     this.flag_inapprt = function() {
