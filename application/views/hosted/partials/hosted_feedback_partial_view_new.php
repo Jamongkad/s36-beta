@@ -160,14 +160,16 @@ foreach ($collection as $feed_group => $feed_list) :
                             </div>
                         </div>
                     <?php else:?>
-                        <div class="admin-comment">
-                            <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
-                            <div class="admin-message clear">
-                                <div class="admin-avatar">
-                                <img src="<?=$avatar?>" width="32" height="32" /></div>
-                                <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                        <?if($feed->feed_data->admin_reply):?>
+                            <div class="admin-comment">
+                                <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                                <div class="admin-message clear">
+                                    <div class="admin-avatar">
+                                    <img src="<?=$avatar?>" width="32" height="32" /></div>
+                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                </div>
                             </div>
-                        </div>
+                        <?endif?>
                     <?php endif; ?>
                 </div>
                 </div>
