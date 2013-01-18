@@ -26,7 +26,7 @@ foreach ($collection as $feed_group => $feed_list) :
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
-            $flagged                    = $feed->feed_data->flagged;
+            $flagged                    = $feed->feed_data->flagged_as_inappr;
             $metadata                   = $feed->feed_data->metadata;
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
