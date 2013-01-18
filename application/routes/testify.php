@@ -195,7 +195,7 @@ return array(
             $tf->data->hosted->bust_hostfeed_data();
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
-            $tf->assert($set);
+            $tf->dump($set);
         });    
         $tf->run();
     }, 
