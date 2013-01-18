@@ -121,7 +121,77 @@
             var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
         });
+
+        // feedback actions.
+        var feedback = '.feedback';  // should be the parent of other vars in its group.
+        var flag = '.flag-as';
+        var vote_container = '.vote-action';
+        var vote = '.vote-action a';
+        var vote_count = '.vote_count';
+        var rating_stat = '.rating-stat';
+        var share = '.share-button';
+        var fb_like_dummy = '.fb_like_dummy';  // fb-like
+        var tw_share_dummy = '.tw_share_dummy';  // twitter-share-button
+        var send_button = '.send-button';
+
+
+        $(flag).click(function(){
+            
+            var this_flag = $(this);
+            
+            $.ajax({
+                url: '/feedback_action/flag',
+                type: 'post',
+                data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
+                success: function(result){
+                    this_flag.hide().text('Thanks for your flag!').fadeIn();
+                }
+            });
+            
+        });
+
+        $(vote).click(function(e){
+            
+            var this_vote = $(this);
+            var vote_count_obj = $(this).parents(feedback).find(vote_count);
+            
+            $.ajax({
+                url: '/feedback_action/vote',
+                type: 'post',
+                data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
+                success: function(result){
+                    $(this_vote).parents(feedback).find(rating_stat).css('display', 'block');
+                    vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
+                    $(this_vote).parents(feedback).find(vote_container).hide().text('Thanks for your vote!').fadeIn();
+                }
+            });
+            e.preventDefault();
+        });
+
+        $(share).click(function(){
+            
+            var fb_like = $(this).parents(feedback).find(fb_like_dummy);
+            var tw_share = $(this).parents(feedback).find(tw_share_dummy);
+            
+            if( ! fb_like.is('.fb-like') ){
+                fb_like.addClass('fb-like');
+                FB.XFBML.parse();
+            }
+            
+            if( ! tw_share.is('.twitter-share-button') ){
+                tw_share.addClass('twitter-share-button');
+                twttr.widgets.load();
+            }
+            
+        });
+
+        $(send_button).click(function(){  
+            var widgetkey = $(this).attr('widgetkey');
+            createLightboxes();
+            s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
+        });
 	});
+
 
     //exclusive for timeline layout 
     function reload_masonry() {
