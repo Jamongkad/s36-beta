@@ -77,14 +77,12 @@ var S36FeedbackActions = new function() {
                 tw_share.addClass('twitter-share-button');
                 twttr.widgets.load();
             } 
+
+            $(this).find('.share-box').fadeToggle('fast');
             console.log("Mathew");
         });
 
         // share.
-        $('.share-button').click(function(){
-            $(this).find('.share-box').fadeToggle('fast');
-        });
-
         $('.share-box').hover(function(){},function(){
             $(this).fadeOut('fast');
         });
