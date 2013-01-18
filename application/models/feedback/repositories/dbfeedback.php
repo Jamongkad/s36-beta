@@ -773,7 +773,7 @@ class DBFeedback extends S36DataObject {
     }
  
     // get record of user's action on the feedback.
-    public function get_feedback_actions($data){
+    public function get_feedback_actions($data) {
         
         $result = DB::table('FeedbackActions')
             ->where('ip_address', '=', $data->ip_address)
