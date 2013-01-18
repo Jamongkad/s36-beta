@@ -1,6 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use StdClass;
+use Helpers;
 
 class FeedbackNode {
 
@@ -13,7 +14,7 @@ class FeedbackNode {
     public function generate() {
         $node = new StdClass; 
         foreach($this->data as $key => $value) {
-            print_r($key);
+            Helpers::dump($key);
         }
         /*
         $node->id          = $data->id;      
