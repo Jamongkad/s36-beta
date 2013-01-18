@@ -58,7 +58,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                     <div class="reviews clear">
                         <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
-                            <div class="feedback-timestamp">Posted 3 hours ago</div>
+                            <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                             <div class="star_rating" rating="3"></div>
                         </div>
                         <?php if($feed->feed_data->isfeatured == 1): ?>
