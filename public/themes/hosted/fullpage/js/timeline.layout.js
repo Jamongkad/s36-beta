@@ -1,14 +1,3 @@
-// share.
-
-$('.share-button').click(function(){
-    $(this).find('.share-box').fadeToggle('fast');
-});
-
-$('.share-box').hover(function(){},function(){
-    $(this).fadeOut('fast');
-});
-
-
 // jquery raty.
 
 $('.star_rating').raty({

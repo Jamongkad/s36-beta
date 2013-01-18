@@ -61,7 +61,7 @@ var S36FeedbackActions = new function() {
 
     this.share = function() {      
         $(share).click(function(){
-            
+     
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
             var tw_share = $(this).parents(feedback).find(tw_share_dummy);
 
@@ -79,6 +79,16 @@ var S36FeedbackActions = new function() {
             } 
             console.log("Mathew");
         });
+
+        // share.
+        $('.share-button').click(function(){
+            $(this).find('.share-box').fadeToggle('fast');
+        });
+
+        $('.share-box').hover(function(){},function(){
+            $(this).fadeOut('fast');
+        });
+
     }
 
     this.open_submission_form = function() { 
