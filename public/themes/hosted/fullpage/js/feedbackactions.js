@@ -80,9 +80,11 @@ var S36FeedbackActions = new function() {
         });
 
         // share.
+        /*
         $('.share-box').hover(function(){},function(){
             $(this).fadeOut('fast');
         });
+        */
 
     }
 
