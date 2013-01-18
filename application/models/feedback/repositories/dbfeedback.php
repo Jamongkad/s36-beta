@@ -486,7 +486,7 @@ class DBFeedback extends S36DataObject {
         $sql = ' 
             SELECT
                 '.$this->select_vars.' 
-                /*, (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count*/
+                , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful 
                 , FeedbackActions.flagged AS flagged_as_inappr
                 , FeedbackAdminReply.userId AS admin_userid
@@ -533,6 +533,8 @@ class DBFeedback extends S36DataObject {
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
+            GROUP BY
+                FeedbackActions.useful
         ';
         
         $client_ip = Helpers::get_client_ip();
