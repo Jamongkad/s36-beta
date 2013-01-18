@@ -531,8 +531,6 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
-            GROUP BY
-                FeedbackActions.useful
             ORDER BY 
                 Feedback.dtAdded DESC 
         ';
