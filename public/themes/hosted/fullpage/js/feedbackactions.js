@@ -15,7 +15,7 @@ var S36FeedbackActions = new function() {
 
     this.initialize_actions = function() {
         //me.flag_inapprt();
-        //me.vote();
+        me.vote();
         //me.share();
         me.open_submission_form();
     }
