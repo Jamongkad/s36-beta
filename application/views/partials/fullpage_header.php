@@ -59,10 +59,8 @@
 		
 	$(document).ready(function(){
 
-        //reload_masonry();
         S36FeedbackActions.initialize_actions();
-        
-
+    
 	    var counter = 0;	
         function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -73,11 +71,9 @@
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                       var boxes = $(msg);
-                      container.append(boxes);
-                      //reload_masonry();
+                      container.append(boxes); 
                       twttr.widgets.load();
                       FB.XFBML.parse();
-
                       S36FeedbackActions.initialize_actions();
                     }
                 });
@@ -87,12 +83,4 @@
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
 	});
-
-
-    //exclusive for timeline layout 
-    function reload_masonry() {
-    }
-
-    function add_branches(){ 
-    }
 </script>
