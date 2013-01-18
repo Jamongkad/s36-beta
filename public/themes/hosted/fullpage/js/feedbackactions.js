@@ -76,7 +76,7 @@ var S36FeedbackActions = new function() {
                 twttr.widgets.load();
             } 
 
-            $(this).find('.share-box').fadeToggle('fast');
+            $(this).find('.share-box').fadeIn('fast');
         });
     }
 
