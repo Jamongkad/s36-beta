@@ -107,7 +107,6 @@ class HostedService {
         $hosted_feeds = $this->fetch_hosted_feedback();       
 
         if($this->debug == True) {
-            echo "<h1>HostedService Debug Enabled!</h1>";
             $this->bust_hostfeed_data();
         } 
 
