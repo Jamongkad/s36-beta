@@ -30,6 +30,10 @@ class HostedService {
 
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
+
+        if($this->debug == True) {
+            $this->bust_hostfeed_data();
+        } 
     }
 
     public function fetch_hosted_feedback() { 
@@ -105,10 +109,6 @@ class HostedService {
  
         $key = $this->redis->hgetall($this->key_name);
         $hosted_feeds = $this->fetch_hosted_feedback();       
-
-        if($this->debug == True) {
-            $this->bust_hostfeed_data();
-        } 
 
         if(!$key || $redis_total_set !== $total_collection) {
             //echo "Processing: Insert Data into Redis";
