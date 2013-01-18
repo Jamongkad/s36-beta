@@ -1,5 +1,8 @@
 // convert \n to br tags.
 var Helpers = new function() {
+
+    var me = this;
+
     this.nl2br = function(s) {
         return s.replace(/\n/g,'<br>');       
     };
@@ -15,26 +18,29 @@ var Helpers = new function() {
     this.entities2html = function(s) {
         return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');       
     };
-}
 
-function close_lightbox(){
-    $('.lightbox-s').fadeOut('fast');
-    $('#lightboxNotification').fadeOut('fast');
-    return 0;
-}
+    this.close_lightbox = function() { 
+        $('.lightbox-s').fadeOut('fast');
+        $('#lightbox').fadeOut('fast');
+        $('#lightboxNotification').fadeOut('fast');
+        return 0;
+    };
 
-function display_error_mes(mes){
-    $('.lightbox-message').addClass('error');
-    $('.lightbox-message ul').html('').each(function(){
-        $.each(mes,function(e,str){
-            $('.lightbox-message ul').append('<li>'+str+'</li>'); 
+    this.display_error_mes = function(mes) { 
+        $('.lightbox-message').addClass('error');
+        $('.lightbox-message ul').html('').each(function(){
+            $.each(mes,function(e,str){
+                $('.lightbox-message ul').append('<li>'+str+'</li>'); 
+            });
         });
-    });
-    display_lightbox();
-}
 
-function display_lightbox(){
-    $('#lightboxNotification').fadeIn();
-    $('.lightbox-s').fadeIn();
-    return false;
+        me.display_lightbox();
+    };
+
+    this.display_lightbox = function() { 
+        $('#lightboxNotification').fadeIn();
+        $('#lightbox').fadeIn();
+        $('.lightbox-s').fadeIn();
+        return false;
+    };
 }

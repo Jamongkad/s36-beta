@@ -104,25 +104,23 @@ var S36FeedbackActions = new function() {
             };
 
             if($.trim($(my_parent).find('.admin-comment-textbox').val()).length > 0) {
-                console.log(admin_reply);     
-            }
- 
+                $.ajax({
+                    url: "/admin_reply",
+                    dataType: "json",
+                    data: admin_reply,
+                    type: "POST",
+                    success: function(result) {
+                        if(undefined != result.feedbackid){
+                            $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
+                            $(my_parent).find('.admin-comment-box').css('display','none');
+                            $(my_parent).find('.admin-comment').css('display','block');
+                        }
+                  }
+                });
+            } else {
+                Helpers.display_error_mes(['Cannot be blank.']); 
+            } 
            
-            /*
-            $.ajax({
-                url: "/admin_reply",
-                dataType: "json",
-                data: admin_reply,
-                type: "POST",
-                success: function(result) {
-                    if(undefined != result.feedbackid){
-                        $(my_parent).find('.admin-comment .admin-message .message').html(result.adminreply);
-                        $(my_parent).find('.admin-comment-box').css('display','none');
-                        $(my_parent).find('.admin-comment').css('display','block');
-                    }
-              }
-            });
-            */
         }); 
     }
 

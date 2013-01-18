@@ -525,8 +525,8 @@ $(document).keypress(function(event){
 		});
 		$(elem).blur();   
 	}
-	function display_error_mes(mes){
 
+	function display_error_mes(mes){
 		$('.lightbox-message').addClass('error');
 		$('.lightbox-message ul').html('').each(function(){
 			$.each(mes,function(e,str){
@@ -534,7 +534,6 @@ $(document).keypress(function(event){
 			});
 
 		});
-
 		display_lightbox();
 	}
 	function display_loading(bool){
