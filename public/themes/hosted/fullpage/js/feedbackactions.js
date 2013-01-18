@@ -21,14 +21,14 @@ var S36FeedbackActions = new function() {
     }
 
     this.flag_inapprt = function() {
-        $(me.flag).click(function(){
+        $(flag).click(function(){
             
             var this_flag = $(this);
             
             $.ajax({
                 url: '/feedback_action/flag',
                 type: 'post',
-                data: {'feedbackId' : this_flag.parents(me.feedback).attr('fid')},
+                data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
                 success: function(result){
                     this_flag.hide().text('Thanks for your flag!').fadeIn();
                 }
@@ -38,19 +38,19 @@ var S36FeedbackActions = new function() {
     }
 
     this.vote = function() { 
-        $(me.vote).click(function(e){
+        $(vote).click(function(e){
             
             var this_vote = $(this);
-            var vote_count_obj = $(this).parents(me.feedback).find(me.vote_count);
+            var vote_count_obj = $(this).parents(feedback).find(vote_count);
             
             $.ajax({
                 url: '/feedback_action/vote',
                 type: 'post',
-                data: {'feedbackId' : this_vote.parents(me.feedback).attr('fid')},
+                data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
                 success: function(result){
-                    $(this_vote).parents(me.feedback).find(me.rating_stat).css('display', 'block');
+                    $(this_vote).parents(feedback).find(rating_stat).css('display', 'block');
                     vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
-                    $(this_vote).parents(me.feedback).find(me.vote_container).hide().text('Thanks for your vote!').fadeIn();
+                    $(this_vote).parents(feedback).find(vote_container).hide().text('Thanks for your vote!').fadeIn();
                 }
             });
             e.preventDefault();
@@ -58,10 +58,10 @@ var S36FeedbackActions = new function() {
     }
 
     this.share = function() {      
-        $(me.share).click(function(){
+        $(share).click(function(){
             
-            var fb_like = $(this).parents(me.feedback).find(me.fb_like_dummy);
-            var tw_share = $(this).parents(me.feedback).find(me.tw_share_dummy);
+            var fb_like = $(this).parents(feedback).find(fb_like_dummy);
+            var tw_share = $(this).parents(feedback).find(tw_share_dummy);
             
             if( ! fb_like.is('.fb-like') ){
                 fb_like.addClass('fb-like');
@@ -76,8 +76,7 @@ var S36FeedbackActions = new function() {
     }
 
     this.open_submission_form = function() { 
-        console.log(send_button);
-        $(me.send_button).click(function(){  
+        $(send_button).click(function(){  
             var widgetkey = $(this).attr('widgetkey');
             createLightboxes();
             s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
