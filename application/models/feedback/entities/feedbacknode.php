@@ -14,8 +14,12 @@ class FeedbackNode {
     public function generate() {
         $node = new StdClass; 
         foreach($this->data as $key => $value) {
-            if($key)
+            if($key) { 
                 $node->$key = $value;
+                if($key == 'metadata') {
+                    $node->$key = json_decode($value);
+                }
+            } 
         }
 
         return $node;
