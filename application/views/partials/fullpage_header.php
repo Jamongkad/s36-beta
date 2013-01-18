@@ -6,6 +6,7 @@
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/master.css" />
@@ -30,7 +31,7 @@
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <?= HTML::script('/js/master.js'); ?>
-<?= HTML::script('/themes/hosted/fullpage/js/feedbackactions.js'); ?>
+
 </head>
 <body>
 <div id="fb-root"></div>
