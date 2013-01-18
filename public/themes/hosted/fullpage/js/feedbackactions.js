@@ -20,6 +20,7 @@ var S36FeedbackActions = new function() {
         me.open_submission_form();
         me.admin_reply();
         me.attachment_controls();
+        me.masonry_initialize();
     }
 
     this.flag_inapprt = function() {
@@ -65,9 +66,6 @@ var S36FeedbackActions = new function() {
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
             var tw_share = $(this).parents(feedback).find(tw_share_dummy);
 
-            console.log(fb_like);
-            console.log(tw_share);
-            
             if( ! fb_like.is('.fb-like') ){
                 fb_like.addClass('fb-like');
                 FB.XFBML.parse();
@@ -79,7 +77,6 @@ var S36FeedbackActions = new function() {
             } 
 
             $(this).find('.share-box').fadeToggle('fast');
-            console.log("Mathew");
         });
 
         // share.
@@ -140,6 +137,39 @@ var S36FeedbackActions = new function() {
             var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
             var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
+        });
+    }
+
+    this.masonry_initialize = function() {
+        $('.left-branch, .right-branch').remove();
+        $.when($('.feedback-list').masonry({
+			itemSelector: '.feedback',
+			columnWidth: 100,
+			isAnimated: !Modernizr.csstransitions,
+            gutterWidth: 365,
+			animationOptions: {
+				duration: 750,
+				easing: 'linear',
+				queue: false
+			}
+		})).then(function() {
+            me.add_branches();
+        })
+        
+    }
+
+    this.add_branches = function() { 
+        var s = $('.feedback-list').find('.regular');
+        $.each(s, function(i, obj){
+            var posLeft = $(obj).css("left");
+            if(posLeft == "0px"){
+                html = "<span class='left-branch'></span>";
+                $(obj).prepend(html); 
+            }
+            else{
+                html = "<span class='right-branch'></span>";
+                $(obj).prepend(html);
+            }
         });
     }
 }

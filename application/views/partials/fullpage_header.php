@@ -59,8 +59,9 @@
 		
 	$(document).ready(function(){
 
-        reload_masonry();
+        //reload_masonry();
         S36FeedbackActions.initialize_actions();
+        
 
 	    var counter = 0;	
         function update() {
@@ -73,9 +74,10 @@
                   , success: function(msg) { 
                       var boxes = $(msg);
                       container.append(boxes);
-                      reload_masonry();
+                      //reload_masonry();
                       twttr.widgets.load();
                       FB.XFBML.parse();
+
                       S36FeedbackActions.initialize_actions();
                     }
                 });
@@ -89,34 +91,8 @@
 
     //exclusive for timeline layout 
     function reload_masonry() {
-        $('.left-branch, .right-branch').remove();
-        $.when($('.feedback-list').masonry({
-			itemSelector: '.feedback',
-			columnWidth: 100,
-			isAnimated: !Modernizr.csstransitions,
-            gutterWidth: 365,
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			}
-		})).then(function() {
-            add_branches();
-        })
     }
 
     function add_branches(){ 
-        var s = $('.feedback-list').find('.regular');
-        $.each(s, function(i, obj){
-            var posLeft = $(obj).css("left");
-            if(posLeft == "0px"){
-                html = "<span class='left-branch'></span>";
-                $(obj).prepend(html); 
-            }
-            else{
-                html = "<span class='right-branch'></span>";
-                $(obj).prepend(html);
-            }
-        });
     }
 </script>
