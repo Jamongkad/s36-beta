@@ -15,6 +15,7 @@ class FeedbackNode {
         $node = new StdClass; 
         foreach($this->data as $key => $value) {
             Helpers::dump($key);
+            Helpers::dump($value);
         }
         /*
         $node->id          = $data->id;      
