@@ -78,7 +78,6 @@ var S36FeedbackActions = new function() {
 
             $(this).find('.share-box').fadeIn('fast').hover(function() { 
                 fb_like.addClass('fb-like');
-                FB.XFBML.parse();
             }, function() {
                 $(this).fadeOut('fast');
                 console.log("hovering out");
