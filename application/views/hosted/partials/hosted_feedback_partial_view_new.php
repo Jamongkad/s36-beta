@@ -132,13 +132,14 @@ foreach ($collection as $feed_group => $feed_list) :
                 <?php 
                 $user = S36Auth::user();
                 ?>
-                <div class="admin-comment-block">
+
                     <?
                     $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
                     $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                     $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                     ?>
                     <?php if(isset($user) && !empty($user)): ?>
+                    <div class="admin-comment-block">
                         <div class="admin-comment-box">
                         <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                         <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
@@ -159,19 +160,21 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="message"><?=$feed->feed_data->admin_reply?></div>
                             </div>
                         </div>
+                    </input>
                     <?php else:?>
                         <?if($feed->feed_data->admin_reply):?>
-                            <div class="admin-comment">
-                                <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
-                                <div class="admin-message clear">
-                                    <div class="admin-avatar">
-                                    <img src="<?=$avatar?>" width="32" height="32" /></div>
-                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                            <div class="admin-comment-block">
+                                <div class="admin-comment">
+                                    <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                                    <div class="admin-message clear">
+                                        <div class="admin-avatar">
+                                        <img src="<?=$avatar?>" width="32" height="32" /></div>
+                                        <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                    </div>
                                 </div>
                             </div>
                         <?endif?>
                     <?php endif; ?>
-                </div>
                 </div>
                 <!-- end of feedback text bubble -->
                 <!-- feedback user actions -->
