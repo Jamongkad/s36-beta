@@ -247,22 +247,11 @@ class DBFeedback extends S36DataObject {
         $sql = '
             SELECT 
                 '.$this->select_vars.'
-                , FeedbackAdminReply.userId AS admin_userid
-                , FeedbackAdminReply.adminReply AS admin_reply
-                , User.username AS admin_username
-                , User.fullName AS admin_fullname
-                , User.email AS admin_email 
-                , User.email AS admin_email 
-                , Company.name AS admin_companyname 
-                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
                     LEFT JOIN
                         FeedbackAdminReply
                         ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
-                    LEFT JOIN
-                        User
-                        ON FeedbackAdminReply.userId = User.userId
                     INNER JOIN 
                         Site
                         ON Feedback.siteId = Site.siteId
@@ -779,8 +768,10 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _feedback_node($data) { 
-        
-        $node = new FeedbackNode;
+        Helpers::dump($data);
+        //$node = new FeedbackNode;
+        //$node->get()
+        /*
         $node->id          = $data->id;      
         $node->firstname   = $data->firstname;
         $node->lastname    = $data->lastname;
@@ -821,13 +812,11 @@ class DBFeedback extends S36DataObject {
         $node->admin_companyname = $data->admin_companyname;
         $node->admin_fullpagecompanyname = $data->admin_fullpagecompanyname;
 
-        /*
         if( property_exists($data, 'attachments') ) $node->attachments = json_encode($node->attachments);
-        if( property_exists($data, 'metadata') ) $node->attachments = json_encode($node->attachments);
+        if( property_exists($data, 'metadata') ) $node->metadata = json_encode($node->metadata);
         if( property_exists($data, 'flagged') ) $node->flagged = $data->flagged;
         if( property_exists($data, 'useful') ) $node->useful = $data->useful;
         if( property_exists($data, 'vote_count') ) $node->vote_count = $data->vote_count;
-        */
         
         /*
         $attachments = Null;
@@ -843,7 +832,7 @@ class DBFeedback extends S36DataObject {
         $node->attachments = $attachments;
         $node->metadata    = $metadata;
         */ 
-        return $node;
+        //return $node;
     }
     
     
