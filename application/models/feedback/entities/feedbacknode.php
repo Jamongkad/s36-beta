@@ -2,11 +2,12 @@
 
 class FeedbackNode {
 
-    private $data = Array();
+    private $data;
 
-    public function set($data) {
-        $this->data[$data] = $data;
+    public function __construct($data) {
+        $this->data = $data;     
     }
+
     
     /*
     public function __get($name) {

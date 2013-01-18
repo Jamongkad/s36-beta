@@ -768,8 +768,9 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _feedback_node($data) { 
-        Helpers::dump($data);
-        //$node = new FeedbackNode;
+        $node = new FeedbackNode($data);
+        Helpers::dump($node);
+        return $node;
         //$node->get()
         /*
         $node->id          = $data->id;      
