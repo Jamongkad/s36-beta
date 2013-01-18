@@ -1,52 +1,24 @@
 <?php namespace Feedback\Entities;
 
-use Helpers\SimpleArray;
-
 class FeedbackNode {
-    public $id;    
-    public $intname;
-    public $firstname;
-    public $lastname;
-    public $category;
-    public $categoryid;
-    public $status;
-    public $priority;
-    public $text;
-    public $date;
-    public $head_date_format;
-    public $daysago;
-    public $unix_timestamp;
-    public $permission;
-    public $rating;
-    public $permission_css;
-    public $perm_val;
-    public $isfeatured;
-    public $isflagged;
-    public $ispublished;
-    public $isarchived;
-    public $issticked;
-    public $isdeleted;
-    public $displayname;
-    public $displayimg;
-    public $displaycompany;
-    public $displayposition;
-    public $displayurl;
-    public $displaycountry;
-    public $displaysbmtdate;
-    public $indlock;
-    public $attachments;
-    public $contactid;
-    public $email;
-    public $profilelink;
-    public $position;
-    public $url;
-    public $city;
-    public $companyname;
-    public $avatar;
-    public $siteid;
-    public $sitename;
-    public $sitedomain;
-    public $word_count;
-    public $origin;
-    public $socialid;
+
+    private $data = Array();
+
+    public function __set($name, $value) {
+        $this->data[$name] = $value;
+    }
+
+    public function __get($name) {
+        if(array_key_exists($name, $this->data)) {
+            return $this->data[$name];
+        }
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): '  . $name .
+            ' in ' . $trace[0]['file'] . 
+            ' on line ' . $trace[0]['line'],
+            E_USER_NOTICE
+        );
+        return null;
+    }
 }
