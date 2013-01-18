@@ -12,7 +12,7 @@ class FeedbackNode {
     }
 
     public function generate() {
-        $node = new StdClass; 
+        $node = new FeedbackLeaves; 
 
         foreach($this->data as $key => $value) {
             if($key) { 
@@ -26,3 +26,5 @@ class FeedbackNode {
         return $node;
     }    
 }
+
+class FeedbackLeaves {}
