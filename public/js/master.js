@@ -20,10 +20,12 @@ var Helpers = new function() {
     };
 
     this.close_lightbox = function() { 
-        $('.lightbox-s').fadeOut('fast');
-        $('#lightbox').fadeOut('fast');
-        $('#lightboxNotification').fadeOut('fast');
-        return 0;
+        $('.error-close-button').bind("click", function(e) {
+            $('.lightbox-s').fadeOut('fast');
+            $('#lightbox').fadeOut('fast');
+            $('#lightboxNotification').fadeOut('fast');
+            e.preventDefault();
+        });
     };
 
     this.display_error_mes = function(mes) { 

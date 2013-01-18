@@ -21,6 +21,7 @@ var S36FeedbackActions = new function() {
         me.admin_reply();
         me.attachment_controls();
         me.masonry_initialize();
+        Helpers.close_lightbox();
     }
 
     this.flag_inapprt = function() {
