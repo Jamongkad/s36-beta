@@ -39,6 +39,7 @@ return array(
         //$hosted->dump_build_data = true;  // remove this after testing. 
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();        
+
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
