@@ -137,12 +137,10 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
 
-                            <div class="admin-comment">
-                                <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                            <div class="admin-comment" style="">
+                                <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                                 <div class="admin-message clear">
-                                    <div class="admin-avatar">
-                                    <img src="<?=$avatar?>" width="32" height="32" /></div>
-                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                    <div class="admin-avatar"><img src="<?=$avatar?>" width="32" height="32" /></div>
                                 </div>
                             </div>
 
@@ -156,8 +154,8 @@ foreach ($collection as $feed_group => $feed_list) :
                                     <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
                                     <input type="button" class="adminReply regular-button" value="Post Comment" />
                                 </div>
-                            </div>         
-
+                            </div>
+                                 
                         </div>
                     <?php else:?>
                         <?if($feed->feed_data->admin_reply):?>
