@@ -130,7 +130,6 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                 <?php endif; ?>
                 <?
-                $companyname = ($user->fullpagecompanyname) ? $user->fullpagecompanyname : Null;
                 $admin_avatar = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
                 $admin_companyname = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                 ?>
@@ -139,7 +138,7 @@ foreach ($collection as $feed_group => $feed_list) :
 
                             <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                                 <div class="admin-name">
-                                    <?=$user->fullname?> from <?=$companyname?> says.. 
+                                    <?=$user->fullname?> from <?=$admin_companyname?> says.. 
                                     <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[delete your reply]</a>
                                 </div>
                                 <div class="admin-message clear">
