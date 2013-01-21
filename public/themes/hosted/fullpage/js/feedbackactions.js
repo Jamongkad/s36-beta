@@ -132,7 +132,6 @@ var S36FeedbackActions = new function() {
               , type: "GET"
               , success: function(result) {
                     me.parents('.admin-comment').hide();
-                    me.hide();
                     $('.admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
                     $('.admin-comment-box[feedid=' + feedid + '] textarea').val("");
                 }
