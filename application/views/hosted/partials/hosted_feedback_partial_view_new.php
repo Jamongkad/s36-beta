@@ -139,7 +139,7 @@ foreach ($collection as $feed_group => $feed_list) :
                             <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                                 <div class="admin-name">
                                     <?=$user->fullname?> from <?=$admin_companyname?> says.. 
-                                    <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[delete your reply]</a>
+                                    <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
                                 </div>
                                 <div class="admin-message clear">
                                     <div class="admin-avatar"><img src="<?=$admin_avatar?>" width="32" height="32" /></div>
