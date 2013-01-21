@@ -137,10 +137,11 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
 
-                            <div class="admin-comment" style="">
+                            <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                                 <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                                 <div class="admin-message clear">
                                     <div class="admin-avatar"><img src="<?=$avatar?>" width="32" height="32" /></div>
+                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
                                 </div>
                             </div>
 
