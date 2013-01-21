@@ -95,7 +95,7 @@ $(document).ready(function(){});
             <div id="feedbackContainer">
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
-                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds))?>
+                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds, 'user' => $user))?>
                     <div id="feedback-infinitescroll-landing"></div>
                 </div>
             </div>

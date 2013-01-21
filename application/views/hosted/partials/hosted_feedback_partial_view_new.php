@@ -129,15 +129,11 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php endif; ?>
                     </div>
                 <?php endif; ?>
-                <?php 
-                $user = S36Auth::user();
+                <?
+                $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
+                $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
+                $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                 ?>
-
-                    <?
-                    $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
-                    $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
-                    $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
-                    ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
                             <div class="admin-comment-box">
