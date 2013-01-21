@@ -122,9 +122,17 @@ var S36FeedbackActions = new function() {
                 Helpers.display_error_mes(['Cannot be blank.']); 
             }  
         }); 
-
+        
+        //we do this to prevent multiple event bindings from happening
         $('.admin-delete-reply').unbind('click.delete_admin').bind('click.delete_admin', function(e) {
-            console.log($(this).attr('feedid'));
+            var feedid = $(this).attr('feedid');
+            $.ajax({
+                url: "/delete_admin_reply/" + feedid
+              , type: "GET"
+              , success: function(result) {
+                    console.log(result);
+                }
+            });
             e.preventDefault();
         });
     }

@@ -84,6 +84,10 @@ return array(
         }
     }),
 
+    'GET /delete_admin_reply/(:any?)' => function($feedid) {
+        Helpers::dump($feedid);
+    },
+
     'POST /update_desc' => function() use($user, $company){
         
         // don't proceed if the user is not logged in.
