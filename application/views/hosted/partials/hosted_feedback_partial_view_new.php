@@ -136,7 +136,17 @@ foreach ($collection as $feed_group => $feed_list) :
                 ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
-                            <div class="admin-comment-box">
+
+                            <div class="admin-comment">
+                                <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                                <div class="admin-message clear">
+                                    <div class="admin-avatar">
+                                    <img src="<?=$avatar?>" width="32" height="32" /></div>
+                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                </div>
+                            </div>
+
+                            <div class="admin-comment-box" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                                 <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                                 <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                                 <div class="admin-comment-textbox-container">
@@ -147,6 +157,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                     <input type="button" class="adminReply regular-button" value="Post Comment" />
                                 </div>
                             </div>
+
                             <div class="admin-comment" style="display:none">
                                 <div class="admin-name"><?=$user->fullname?> from <?=$companyname?> says..</div>
                                 <div class="admin-message clear">
