@@ -148,7 +148,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                 </div>
                             </div>
 
-                            <div class="admin-comment-box" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
+                            <div class="admin-comment-box" feedid="<?=$feed->feed_data->id?>" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
                                 <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
                                 <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                                 <div class="admin-comment-textbox-container">

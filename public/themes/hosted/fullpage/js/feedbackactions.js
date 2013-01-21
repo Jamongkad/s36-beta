@@ -126,11 +126,14 @@ var S36FeedbackActions = new function() {
         //we do this to prevent multiple event bindings from happening
         $('.admin-delete-reply').unbind('click.delete_admin').bind('click.delete_admin', function(e) {
             var feedid = $(this).attr('feedid');
+            var me = $(this);
             $.ajax({
                 url: "/delete_admin_reply/" + feedid
               , type: "GET"
               , success: function(result) {
                     console.log(result);
+                    me.parent('admin-comment').hide();
+                    $('admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
                 }
             });
             e.preventDefault();
