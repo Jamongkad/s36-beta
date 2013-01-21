@@ -493,6 +493,7 @@ class DBFeedback extends S36DataObject {
                 , FeedbackAdminReply.adminReply AS admin_reply
                 , User.username AS admin_username
                 , User.fullName AS admin_fullname
+                , User.avatar AS admin_avatar
                 , User.email AS admin_email 
                 , User.email AS admin_email 
                 , Company.name AS admin_companyname 
