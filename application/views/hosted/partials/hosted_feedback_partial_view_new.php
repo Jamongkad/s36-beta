@@ -130,7 +130,6 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                 <?php endif; ?>
                 <?
-                Helpers::dump($user);
                 $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
                 $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                 $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
@@ -138,8 +137,8 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
                             <div class="admin-comment-box">
-                            <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
-                            <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
+                                <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
+                                <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
                                 <div class="admin-comment-textbox-container">
                                     <textarea class="admin-comment-textbox"><?=$feed->feed_data->admin_reply?></textarea>
                                 </div>
