@@ -131,8 +131,9 @@ var S36FeedbackActions = new function() {
                 url: "/delete_admin_reply/" + feedid
               , type: "GET"
               , success: function(result) {
-                    console.log(result);
-                    me.parent('.admin-comment').hide();
+                    console.log(me.parent('.admin-comment'));
+                    console.log($('.admin-comment-box[feedid=' + feedid + ']'));
+                    //me.parent('.admin-comment').hide();
                     $('.admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
                 }
             });
