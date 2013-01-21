@@ -131,9 +131,8 @@ foreach ($collection as $feed_group => $feed_list) :
                 <?php endif; ?>
                 <?
                 $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
-                $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
+                $admin_avatar = (isset($feed->feed_data->admin_avatar)) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
                 $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
-                Helpers::dump($feed->feed_data);
                 ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
@@ -144,7 +143,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                     <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[delete your reply]</a>
                                 </div>
                                 <div class="admin-message clear">
-                                    <div class="admin-avatar"><img src="<?=$avatar?>" width="32" height="32" /></div>
+                                    <div class="admin-avatar"><img src="<?=$admin_avatar?>" width="32" height="32" /></div>
                                     <div class="message"><?=$feed->feed_data->admin_reply?></div>
                                 </div>
                             </div>
@@ -169,7 +168,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                     <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
                                     <div class="admin-message clear">
                                         <div class="admin-avatar">
-                                        <img src="<?=$avatar?>" width="32" height="32" /></div>
+                                        <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
                                         <div class="message"><?=$feed->feed_data->admin_reply?></div>
                                     </div>
                                 </div>
