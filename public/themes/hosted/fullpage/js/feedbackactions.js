@@ -121,6 +121,11 @@ var S36FeedbackActions = new function() {
             } else {
                 Helpers.display_error_mes(['Cannot be blank.']); 
             } 
+
+            $('.admin-delete-reply').bind('click', function(e) {
+                console.log($(this).attr('feedid'));
+                e.preventDefault();
+            });
            
         }); 
     }
