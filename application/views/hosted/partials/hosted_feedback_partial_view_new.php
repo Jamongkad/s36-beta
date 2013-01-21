@@ -130,10 +130,9 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                 <?php endif; ?>
                 <?
-                $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
-                $admin_avatar = (isset($feed->feed_data->admin_avatar)) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
-                print_r($feed->feed_data->admin_avatar);
-                $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
+                $companyname = ($user->fullpagecompanyname) ? $user->fullpagecompanyname : Null;
+                $admin_avatar = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
+                $admin_companyname = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                 ?>
                     <?php if(isset($user) && !empty($user)): ?>
                         <div class="admin-comment-block">
