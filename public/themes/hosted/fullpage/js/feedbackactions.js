@@ -132,8 +132,8 @@ var S36FeedbackActions = new function() {
               , type: "GET"
               , success: function(result) {
                     console.log(result);
-                    me.parent('admin-comment').hide();
-                    $('admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
+                    me.parent('.admin-comment').hide();
+                    $('.admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
                 }
             });
             e.preventDefault();
