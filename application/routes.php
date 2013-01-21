@@ -84,8 +84,8 @@ return array(
         }
     }),
 
-    'GET /delete_admin_reply/(:any?)' => function($feedid) {
-        Helpers::dump($feedid);
+    'GET /delete_admin_reply/(:any?)' => function($feedid) use ($dbadmin_reply) {
+        return $dbadmin_reply->delete_admin_reply($feedid);
     },
 
     'POST /update_desc' => function() use($user, $company){
