@@ -120,8 +120,8 @@
                                 <div class="feedback-avatar"> 
                                     <?if($feed->origin == 's36'):?>
                                         <?if($feed->avatar):?> 
-                                            <?=HTML::image('uploaded_cropped/48x48/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
-                                            <?=HTML::image('uploaded_cropped/150x150/'.$feed->avatar, false
+                                            <?=HTML::image('uploaded_images/avatar/48x48/'.$feed->avatar, false, array('class' => 'small-avatar'))?>
+                                            <?=HTML::image('uploaded_images/avatar/150x150/'.$feed->avatar, false
                                                            , array('class' => 'large-avatar'))?>
                                         <?else:?>
                                             <?=HTML::image('img/48x48-blank-avatar.jpg')?>

@@ -1,8 +1,8 @@
 <?= HTML::script('/js/jquery.raty.min.js'); ?>
-<?= HTML::script('/js/master.js'); ?>
 <?= HTML::script('/js/s36_client_script.js'); ?>
 <?= HTML::style('css/override.css'); ?>
 <?= HTML::style('css/s36_client_style.css'); ?>
+
 <?php if( ! is_null($user) ): ?>
     <?= HTML::style('admin/admin.css'); ?>
     <?= HTML::style('admin/jcarousel.skin.css'); ?>
@@ -12,48 +12,10 @@
     <?= HTML::script('admin/jquery.jcarousel.min.js'); ?>
     <?= HTML::script('admin/admin.js'); ?>
 <?php endif; ?>
+
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
-$(document).ready(function(){
-    $('.adminReply').click(function(){
-        var parent = $(this).parents('.admin-comment-block');
-        $.ajax({
-            url: "/admin_reply",
-            dataType: "json",
-            data: {
-                feedbackId: $(parent).find('.admin-comment-id').val(),
-                adminReply: $(parent).find('.admin-comment-textbox').val()
-            },
-            type: "POST",
-            success: function(result) {
-                if(undefined != result.feedbackid){
-                    $(parent).find('.admin-comment .admin-message .message').html(result.adminreply);
-                    $(parent).find('.admin-comment-box').css('display','none');
-                    $(parent).find('.admin-comment').css('display','block');
-                }
-          }
-        });
-    });
-
-    /*lightbox*/
-    $('.uploaded-images-close').click(function(){
-            $(this).parent().fadeOut();
-        });
-    $('.the-thumb,.video-circle').click(function(){
-        var scroll_offset = $(document).scrollTop();
-        var top_offset = scroll_offset + 100;
-        $('.lightbox').fadeIn().css('top',top_offset);
-    });
-    $('.uploaded-image').click(function(){
-        var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
-        $('.uploaded-images-content').html(html);
-    });
-    $('.video-thumb,.video-circle').click(function(){
-        var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
-        var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
-        $('.uploaded-images-content').html(html);
-    });
-});
+$(document).ready(function(){});
 </script>
 
 <?php if( ! is_null($user) ): ?>
@@ -146,7 +108,7 @@ $(document).ready(function(){
                             </ul>
                         </div>
                         <div class="lightbox-buttons">
-                            <a href="" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
+                            <a href="#" class="lightbox-button error-close-button">CLOSE</a>
                         </div>
                     </div>
                 </div>
@@ -171,7 +133,7 @@ $(document).ready(function(){
             <div id="feedbackContainer">
                 <div id="timelineLayout">
                     <!-- blocks are separated by dates so we create containers for each dates -->
-                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds))?>
+                    <?=View::make('hosted/partials/hosted_feedback_partial_view_new', Array('collection' => $feeds, 'user' => $user))?>
                     <div id="feedback-infinitescroll-landing"></div>
                 </div>
             </div>
@@ -179,5 +141,5 @@ $(document).ready(function(){
         <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
     </div>
 </div>
-<?= HTML::script('/themes/hosted/fullpage/js/timeline.layout.js'); ?>
 
+<?=HTML::script('/themes/hosted/fullpage/js/timeline.layout.js'); ?>

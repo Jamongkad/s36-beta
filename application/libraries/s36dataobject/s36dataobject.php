@@ -5,7 +5,7 @@ use Exception;
 
 abstract class S36DataObject { 
 
-    public $dbh, $user_id, $company_id, $company_name;
+    public $dbh, $user_id, $company_id, $company_name, $email, $username;
     public $db_name = 'master';
 
     public function __construct() { 
@@ -15,6 +15,8 @@ abstract class S36DataObject {
         if(S36Auth::check()) {
             $this->user_id = S36Auth::user()->userid;             
             $this->company_id = S36Auth::user()->companyid;             
+            $this->username = S36Auth::user()->username;             
+            $this->email = S36Auth::user()->email;             
         } 
     }
 

@@ -7,13 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/master.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/flags.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/grids.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/override.css" />
 <link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/<?php echo $layout ?>.layout.css" />
 
-<script type="text/javascript" src="themes/hosted/fullpage/js/jquery.js"></script>
+
 <script type="text/javascript" src="themes/hosted/fullpage/js/masonry.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/modernizr.js"></script>
 <script type="text/javascript" src="themes/hosted/fullpage/js/jquery-ui-1.8.24.custom.min.js"></script>
@@ -28,6 +30,8 @@
 
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
+<?= HTML::script('js/helpers.js'); ?>
+<?= HTML::script('themes/hosted/fullpage/js/feedbackactions.js'); ?>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -55,8 +59,8 @@
 		
 	$(document).ready(function(){
 
-        reload_masonry();
-
+        S36FeedbackActions.initialize_actions();
+    
 	    var counter = 0;	
         function update() {
 		   if($(window).scrollTop() + $(window).height() == $(document).height()) {
@@ -66,12 +70,9 @@
                 $.ajax({ 
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
-
                       var boxes = $(msg);
-                      container.append(boxes);
-                      reload_masonry();
-                      twttr.widgets.load();
-                      FB.XFBML.parse();
+                      container.append(boxes); 
+                      S36FeedbackActions.initialize_actions();
                     }
                 });
 		   }
@@ -79,39 +80,5 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
 		$(window).scroll(throttled);
-
 	});
-
-    //exclusive for timeline layout 
-    function reload_masonry() {
-        $('.left-branch, .right-branch').remove();
-        $.when($('.feedback-list').masonry({
-			itemSelector: '.feedback',
-			columnWidth: 100,
-			isAnimated: !Modernizr.csstransitions,
-            gutterWidth: 365,
-			animationOptions: {
-				duration: 750,
-				easing: 'linear',
-				queue: false
-			}
-		})).then(function() {
-            add_branches();
-        })
-    }
-
-    function add_branches(){ 
-        var s = $('.feedback-list').find('.regular');
-        $.each(s, function(i, obj){
-            var posLeft = $(obj).css("left");
-            if(posLeft == "0px"){
-                html = "<span class='left-branch'></span>";
-                $(obj).prepend(html); 
-            }
-            else{
-                html = "<span class='right-branch'></span>";
-                $(obj).prepend(html);
-            }
-        });
-    }
 </script>
