@@ -133,6 +133,7 @@ var S36FeedbackActions = new function() {
               , success: function(result) {
                     me.parents('.admin-comment').hide();
                     $('.admin-comment-box[feedid=' + feedid + ']').removeAttr('style');
+                    $('.admin-comment-box[feedid=' + feedid + '] textarea').val("");
                 }
             });
             e.preventDefault();
