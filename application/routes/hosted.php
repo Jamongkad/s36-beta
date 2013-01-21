@@ -14,11 +14,12 @@ return array(
         $hosted = new Feedback\Services\HostedService(Config::get('application.subdomain'));
         $hosted->page_number = $page;
         $hosted->build_data();         
-        $feeds = $hosted->fetch_data_by_set();
+        $feeds = $hosted->fetch_data_by_set(); 
+        $user = S36Auth::user();
 
         return View::make('hosted/partials/hosted_feedback_partial_view_new', Array(
-            'collection' => $feeds, 'fb_id' => Config::get('application.fb_id'))
-        )->get();
+            'collection' => $feeds, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
+        ))->get();
 
     }
 );
