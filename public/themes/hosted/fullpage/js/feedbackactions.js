@@ -123,7 +123,7 @@ var S36FeedbackActions = new function() {
             }  
         }); 
 
-        $('.admin-delete-reply').one('click', function(e) {
+        $('.admin-delete-reply').unbind('click.delete_admin').bind('click.delete_admin', function(e) {
             console.log($(this).attr('feedid'));
             e.preventDefault();
         });
