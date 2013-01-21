@@ -130,6 +130,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                 <?php endif; ?>
                 <?
+                Helpers::dump($users);
                 $companyname = (isset($user->fullpagecompanyname)) ? $user->fullpagecompanyname : Null;
                 $avatar = (isset($user->avatar)) ? $user->avatar : '/img/48x48-blank-avatar.jpg';
                 $admin_companyname = (isset($feed->feed_data->admin_fullpagecompanyname)) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
