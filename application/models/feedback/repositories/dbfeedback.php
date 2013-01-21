@@ -540,6 +540,7 @@ class DBFeedback extends S36DataObject {
         $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
+        $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         $sth->execute();
 
