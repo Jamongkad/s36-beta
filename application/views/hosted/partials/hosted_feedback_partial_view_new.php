@@ -161,7 +161,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                  
                         </div>
                     <?php else:?>
-                        <?if($feed->feed_data->admin_reply):?>
+                        <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
                             <div class="admin-comment-block">
                                 <div class="admin-comment">
                                     <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
