@@ -11,9 +11,9 @@
         $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
         $('#hosted_background').fileupload({
             dataType: 'json'
-          , progress: function(e, data) { 
-                var myStatus = new Status();
-                myStatus.notify("Processing...", 2000);
+          , progressall: function(e, data) { 
+              var progress = parseInt(data.loaded / data.total * 100, 10)
+              $("#progress .bar").css('width', progress + '%');
             }
           , done: function(e, data) {
                $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
@@ -101,6 +101,9 @@
                         <?endif?>
                     </div>
                     <div class="g2of3"><br>
+                         <div id="progress">
+                             <div class="bar" style="width: 0%; height: 18px; background: green"></div>
+                         </div>
                         <img id="hosted_bg_img"/>
                         <input type="file" id="hosted_background" class="fileupload regular-text" data-url="/imageprocessing/upload_hosted_background_image">  
                     </div>
