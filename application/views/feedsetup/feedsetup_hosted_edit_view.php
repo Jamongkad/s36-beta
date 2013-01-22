@@ -96,7 +96,7 @@
                         <?endif?>
                     </div>
                     <div class="g2of3"><br>
-                        <input type="file" id="hosted_background" class="fileupload regular-text" data-url="imageprocessing/upload_hosted_background_image">  
+                        <input type="file" id="hosted_background" class="fileupload regular-text" data-url="/imageprocessing/upload_hosted_background_image">  
                     </div>
                 </div>
             </div>
