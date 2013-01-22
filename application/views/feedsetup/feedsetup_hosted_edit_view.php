@@ -8,6 +8,7 @@
 <script type="text/javascript">
     jQuery(function($) {
         $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
+        $('#hosted_background').fileupload();
     });
 </script>
 
@@ -88,7 +89,9 @@
                             Select your company's background image for the fullpage, it will be uploaded upon pressing the 'Save Settings' button.
                         <?endif?>
                     </div>
-                    <div class="g2of3"><br><input type="file" id="hosted_background" class="fileupload regular-text" name="hosted_background"> </div>
+                    <div class="g2of3"><br>
+                        <input type="file" id="hosted_background" class="fileupload regular-text" data-url="imageprocessing/upload_coverphoto">  
+                    </div>
                 </div>
             </div>
             <!--   

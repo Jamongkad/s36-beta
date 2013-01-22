@@ -22,6 +22,10 @@
 <?=HTML::script('js/jquery.validate.js')?>
 <?=HTML::script('js/jquery.formbuilder.js')?>
 <?=HTML::script('js/jquery.ae.image.resize.min.js')?>
+
+<?=HTML::script('js/jquery.iframe-transport.js'); ?>
+<?=HTML::script('js/jquery.fileupload.js'); ?>
+
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
 
 <?=HTML::script('js/inbox/directives/Components.js')?>
