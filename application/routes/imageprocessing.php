@@ -1,12 +1,12 @@
 <?php
-use \Imagine\Image\Box;
-use \Imagine\Image\Point;
+
 $company = new Company\Repositories\DBCompany;
+$user = S36Auth::user();
 
 return array(
-    'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
+    'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() use ($user) {
         // if the user is not logged in, return error msg.
-        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action'; 
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
 
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
@@ -44,9 +44,7 @@ return array(
     }),
     
     // saving of cover photo in db and deletion of old cover photo.
-    'POST /imageprocessing/savecoverphoto' => function() use ($company) {
-        $user = S36Auth::user();
-        
+    'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {        
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action';
         
@@ -55,7 +53,7 @@ return array(
         return $company->update_coverphoto($data);
     },
 
-    'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
+    'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
             , 'file_name'  => date("mdyhis").'.jpg'
@@ -79,17 +77,18 @@ return array(
         new JqueryFileUploader($options); 
     }),
 
-    'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
+    'GET /imageprocessing/linkpreview'=>array('name' => 'linkpreview', 'do' => function() {
         $link_preview = new LinkPreview();
         $link_preview->text_crawler();
     }),
 
-    'POST /imageprocessing/upload_hosted_background_image' => array('name' => 'upload_hosted_background_image', 'do' => function() {
-        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action';
+    'POST /imageprocessing/upload_hosted_background_image' => array('name' => 'upload_hosted_background_image', 'do' => function() use ($user) {
+
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
         
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_hosted_background_image'
-            , 'file_name'  => 'company_background_image_6.jpg'
+            , 'file_name'  => 'company_background_image_' . $user->companyid . '.jpg'
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/hosted_background/'
             , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
             , 'param_name' => 'files'
