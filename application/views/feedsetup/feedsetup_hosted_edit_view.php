@@ -13,7 +13,7 @@
             dataType: 'json',
             done: function(e, data) {
                $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
-               $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name);
+               $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name).aeImageResize({ height: 250, width: 250 });
                console.log($(this));
             }
         });
