@@ -96,7 +96,7 @@ return array(
             , 'image_versions' => array()
         );     
 
-        return new JqueryFileUploader($options);         
+        new JqueryFileUploader($options);         
     }),
 
 );
