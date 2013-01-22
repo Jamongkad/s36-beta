@@ -19,7 +19,7 @@ return array(
             , 'image_versions' => array()
         );     
 
-        return new JqueryFileUploader($options); 
+        new JqueryFileUploader($options); 
     }),
 
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
@@ -40,7 +40,7 @@ return array(
                 )
             )
         );
-        return new JqueryFileUploader($options); 
+        new JqueryFileUploader($options); 
     }),
     
     // saving of cover photo in db and deletion of old cover photo.
@@ -76,7 +76,7 @@ return array(
                 )
             )
         );
-        return new JqueryFileUploader($options); 
+        new JqueryFileUploader($options); 
     }),
 
     'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
