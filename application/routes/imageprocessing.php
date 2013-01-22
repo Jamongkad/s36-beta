@@ -10,7 +10,7 @@ return array(
         
         $file = Input::all();
         $options = array(
-            'script_url' => get_full_url().'/imageprocessing/coverphoto'
+              'script_url' => get_full_url().'/imageprocessing/coverphoto'
             , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
@@ -19,8 +19,8 @@ return array(
             , 'height'     => 500
             , 'image_versions' => array()
         );     
-        //upload($file['clientLogoImg'], $options);
-        $uploader = new JqueryFileUploader($options); 
+
+        return new JqueryFileUploader($options); 
     }),
 
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
