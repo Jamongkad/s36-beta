@@ -25,7 +25,7 @@
 <?if($feedback_data->rating != "POOR"):?>
 <tr>
     <?if($feedback_data->avatar):?>
-        <td><?=HTML::image('uploaded_cropped/150x150/'.$feedback_data->avatar, 'Avatar')?></td>
+        <td><?=HTML::image('uploaded_images/avatar/150x150/'.$feedback_data->avatar, 'Avatar')?></td>
         <td width="10"></td>
     <?endif?>
 

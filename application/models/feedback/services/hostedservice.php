@@ -11,7 +11,6 @@ class HostedService {
     public $page_number = 0;
     public $units = 10;
     public $starting_units_onload = 5;
-    public $ignore_cache = False; 
     public $debug = False;
     public $dump_build_data = False;
 
@@ -31,6 +30,7 @@ class HostedService {
 
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
+
     }
 
     public function fetch_hosted_feedback() { 
@@ -107,29 +107,19 @@ class HostedService {
         $key = $this->redis->hgetall($this->key_name);
         $hosted_feeds = $this->fetch_hosted_feedback();       
 
-        if($this->debug == True) {
-            echo "<h1>HostedService Debug Enabled!</h1>";
-            if($this->bust_hostfeed_data()) {
-                echo "<h2>Cache Busted</h2>";     
-            } 
-        } else { 
-            if($this->ignore_cache == True) {
-                echo "<h2>Cache Ignored</h2>";
-            } else { 
-                if(!$key || $redis_total_set !== $total_collection) {
-                    //echo "Processing: Insert Data into Redis";
-                    //insert data into redis
-                    $this->redis->hset($this->key_name, 'total:set', $total_collection);
-                    $page = 0;
-                    foreach($hosted_feeds as $feed_group => $feed_list) {
-                        $page_number = ++$page;
-                        $spring_data = Array($feed_group => $feed_list);
-                        $this->redis->hset($this->key_name, "set:$page_number", json_encode($spring_data));
-                        $spring_data = Null;
-                    }
-                } 
+        if(!$key || $redis_total_set !== $total_collection) {
+            //echo "Processing: Insert Data into Redis";
+            //insert data into redis
+            $this->redis->hset($this->key_name, 'total:set', $total_collection);
+            $page = 0;
+            foreach($hosted_feeds as $feed_group => $feed_list) {
+                $page_number = ++$page;
+                $spring_data = Array($feed_group => $feed_list);
+                $this->redis->hset($this->key_name, "set:$page_number", json_encode($spring_data));
+                $spring_data = Null;
             }
-        }
+        } 
+        
     }
 
     public function bust_hostfeed_data() {

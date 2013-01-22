@@ -309,7 +309,7 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $this->_return_feedback_nodes($results);
         return $result_obj;       
     }
-
+    
     public function pull_feedback_group($feedbackids) {
 
         $ids      = explode("|", $feedbackids);
@@ -487,13 +487,26 @@ class DBFeedback extends S36DataObject {
             SELECT
                 '.$this->select_vars.' 
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
-                , FeedbackActions.useful
-                , FeedbackActions.flagged
+                , FeedbackActions.useful 
+                , FeedbackActions.flagged AS flagged_as_inappr
+                , FeedbackAdminReply.userId AS admin_userid
+                , FeedbackAdminReply.adminReply AS admin_reply
+                , User.username AS admin_username
+                , User.fullName AS admin_fullname
+                , User.avatar AS admin_avatar
+                , User.email AS admin_email 
+                , User.email AS admin_email 
+                , Company.name AS admin_companyname 
+                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
             FROM 
                 Feedback
             LEFT JOIN
                 FeedbackAdminReply
                 ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+            LEFT JOIN
+                User
+                ON FeedbackAdminReply.userId = User.userId
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name)
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
@@ -508,7 +521,7 @@ class DBFeedback extends S36DataObject {
                 ON Contact.contactId = Feedback.contactId 
             INNER JOIN
                 FeedbackContactOrigin
-                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                ON Feedback.contactId  = FeedbackContactOrigin.contactId
                 AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
             INNER JOIN 
                 Country
@@ -527,13 +540,15 @@ class DBFeedback extends S36DataObject {
         $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
+        $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         $sth->execute();
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
 
         $result_obj = new StdClass;
-        $result_obj->result = $this->_return_feedback_nodes($sth->fetchAll(PDO::FETCH_CLASS));
+        $result_obj->result = $this->_return_feedback_nodes($result);
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
     }
@@ -749,79 +764,26 @@ class DBFeedback extends S36DataObject {
     }
 
     public function _return_feedback_nodes($feedback) { 
+
         $collection = Array();
+        $node = Null;
+
         foreach($feedback as $data)  {
-            $collection[] = $this->_feedback_node($data); 
+            $node = new FeedbackNode($data);
+            $collection[] = $node->generate();
         }
+
         return $collection;
     }
-
-    public function _feedback_node($data) { 
-        
-        $node = new FeedbackNode;
-        $node->id        = $data->id;      
-        $node->firstname = $data->firstname;
-        $node->lastname  = $data->lastname;
-        $node->logintype = $data->logintype;
-        $node->countryname = $data->countryname;
-        $node->countrycode = $data->countrycode;
-        $node->profilelink = $data->profilelink;
-        $node->date   = $data->date;
-        $node->head_date_format = $data->head_date_format;
-        $node->status = $data->status;
-        $node->text   = $data->text;
-        $node->attachments   = $data->attachments;
-        $node->categoryid = $data->categoryid;  
-        $node->category = $data->category;  
-        $node->priority = $data->priority;  
-        $node->rating   = $data->rating;
-        $node->ispublished = $data->ispublished;
-        $node->isdeleted   = $data->isdeleted;
-        $node->isfeatured  = $data->isfeatured;
-        $node->permission_css = $data->permission_css;
-        $node->permission = $data->permission;
-        $node->contactid  = $data->contactid;
-        $node->siteid   = $data->siteid;
-        $node->perm_val = $data->perm_val;
-        $node->email = $data->email;
-        $node->unix_timestamp = $data->unix_timestamp;
-        $node->daysago = $data->daysago;
-        $node->sitedomain = $data->sitedomain;
-        $node->avatar = $data->avatar;
-        $node->origin = $data->origin;
-        $node->socialid = $data->socialid;
-
-        $attachments = Null;
-        if(!empty($data->attachments)) {
-            $attachments = json_decode($data->attachments);
-        }
-
-        $metadata = Null;
-        if(!empty($data->metadata)) {
-            $metadata = json_decode($data->metadata);
-        }
-
-        $node->attachments = $attachments;
-        $node->metadata    = $metadata;
-        
-        if( property_exists($data, 'flagged') ) $node->flagged = $data->flagged;
-        if( property_exists($data, 'useful') ) $node->useful = $data->useful;
-        if( property_exists($data, 'vote_count') ) $node->vote_count = $data->vote_count;
-        
-        return $node;
-    }
-    
-    
+ 
     // get record of user's action on the feedback.
-    public function get_feedback_actions($data){
-        
+    public function get_feedback_actions($data) { 
         $result = DB::table('FeedbackActions')
             ->where('ip_address', '=', $data->ip_address)
             ->where('feedbackId', '=', $data->feedbackId)
             ->first();
         
-        return $result;
-        
+        return $result; 
     }
     
     

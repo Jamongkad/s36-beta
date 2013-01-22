@@ -5,6 +5,7 @@ $hosted_settings = new Widget\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
+$dbadmin_reply = new Feedback\Repositories\DBAdminReply;
 $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
 Package::load('eden');
@@ -33,13 +34,12 @@ return array(
         
         //Feeds
         $hosted = new Feedback\Services\HostedService($company_name); 
-        $hosted->page_number = 1;
-        //$hosted->debug = true;  // remove this after testing.
-        //$hosted->dump_build_data = true;  // remove this after testing.
-        //$hosted->ignore_cache = true; // remove this after testing.
+        $hosted->page_number = 1; 
+        //$hosted->dump_build_data = true;  // remove this after testing. 
+        $hosted->bust_hostfeed_data();
         $hosted->build_data();
-        $feeds = $hosted->fetch_data_by_set();
-        
+        $feeds = $hosted->fetch_data_by_set();        
+
         //hosted settings
         $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
         $hosted_settings_info = $hosted_settings->hosted_settings();
@@ -64,24 +64,29 @@ return array(
                                                   , 'company_header'  => $header_view
                                                   , 'hosted_page_url' => $hosted_page_url
                                                   , 'hosted'          => $hosted_settings_info));
-        
+
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
     },
 
-    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() {
-        $DBFeedbackAdminReply =  new \Feedback\Repositories\DBFeedbackAdminReply;
+    'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
         $adminReply = Input::get('adminReply');
-        if(!empty($feedbackId) && !empty($adminReply) ){
-            $DBFeedbackAdminReply->add_admin_reply(array(
+        $userId = Input::get('userId');
+        if(!empty($feedbackId) && !empty($adminReply) ) {
+            $dbadmin_reply->add_admin_reply(array(
                  'feedbackId' => $feedbackId
-                ,'adminReply' => $adminReply
+               , 'adminReply' => $adminReply
+               , 'userId' => $userId
             ));
-            return json_encode($DBFeedbackAdminReply->get_admin_reply($feedbackId));
+            return json_encode($dbadmin_reply->get_admin_reply($feedbackId));
         }
     }),
+
+    'GET /delete_admin_reply/(:any?)' => function($feedid) use ($dbadmin_reply) {
+        return $dbadmin_reply->delete_admin_reply($feedid);
+    },
 
     'POST /update_desc' => function() use($user, $company){
         

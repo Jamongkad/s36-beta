@@ -26,7 +26,7 @@ foreach ($collection as $feed_group => $feed_list) :
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
-            $flagged                    = $feed->feed_data->flagged;
+            $flagged                    = $feed->feed_data->flagged_as_inappr;
             $metadata                   = $feed->feed_data->metadata;
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
@@ -58,7 +58,7 @@ foreach ($collection as $feed_group => $feed_list) :
                     </div>
                     <div class="reviews clear">
                         <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
-                            <div class="feedback-timestamp">Posted 3 hours ago</div>
+                            <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                             <div class="star_rating" rating="3"></div>
                         </div>
                         <?php if($feed->feed_data->isfeatured == 1): ?>
@@ -129,46 +129,57 @@ foreach ($collection as $feed_group => $feed_list) :
                     <?php endif; ?>
                     </div>
                 <?php endif; ?>
-                <?php 
-                $user = S36Auth::user();
-                if(isset($user) && !empty($user)): 
+                <?
+                $admin_avatar = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
+                $admin_companyname = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname;
                 ?>
-                <div class="admin-comment-block">
-                    <?php if(empty($feed->feed_data->adminreply)): ?>
-                        <div class="admin-comment-box">
-                        <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
-                        <div class="admin-comment-textbox-container">
-                            <textarea class="admin-comment-textbox"></textarea>
+                    <?php if(isset($user) && !empty($user)): ?>
+                        <div class="admin-comment-block">
+
+                            <div class="admin-comment" <?=(!$feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
+                                <div class="admin-name">
+                                    <?=$user->fullname?> from <?=$admin_companyname?> says.. 
+                                    <a href="#" feedid="<?=$feed->feed_data->id?>" class="admin-delete-reply" style="float:right">[x]</a>
+                                </div>
+                                <div class="admin-message clear">
+                                    <div class="admin-avatar"><img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                                    <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                </div>
                             </div>
-                            <div class="admin-comment-leave-a-reply">
-                            <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
-                            <input type="button" class="adminReply regular-button" value="Post Comment" />
+
+                            <div class="admin-comment-box" feedid="<?=$feed->feed_data->id?>" <?=($feed->feed_data->admin_reply) ? 'style="display:none"' : null?>>
+                                <input type="hidden" class="admin-comment-id" value="<?=$feed->feed_data->id?>">
+                                <input type="hidden" class="admin-user-id" value="<?=$user->userid?>">
+                                <div class="admin-comment-textbox-container">
+                                    <textarea class="admin-comment-textbox"></textarea>
+                                </div>
+                                <div class="admin-comment-leave-a-reply">
+                                    <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
+                                    <input type="button" class="adminReply regular-button" value="Post Comment" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="admin-comment" style="display:none">
-                            <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
-                            <div class="admin-message clear">
-                                <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
-                                <div class="message"><?=$feed->feed_data->adminreply?></div>
-                            </div>
+                                 
                         </div>
                     <?php else:?>
-                        <div class="admin-comment">
-                            <div class="admin-name"><?=$user->fullname?> from <?=$user->fullpagecompanyname?> says..</div>
-                            <div class="admin-message clear">
-                                <div class="admin-avatar"><img src="<?=$user->avatar?>" width="32" height="32" /></div>
-                                <div class="message"><?=$feed->feed_data->adminreply?></div>
+                        <?if($feed->feed_data->admin_reply && $feed->feed_data->admin_username):?>
+                            <div class="admin-comment-block">
+                                <div class="admin-comment">
+                                    <div class="admin-name"><?=$feed->feed_data->admin_fullname?> from <?=$admin_companyname?> says..</div>
+                                    <div class="admin-message clear">
+                                        <div class="admin-avatar">
+                                        <img src="<?=$admin_avatar?>" width="32" height="32" /></div>
+                                        <div class="message"><?=$feed->feed_data->admin_reply?></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        <?endif?>
                     <?php endif; ?>
-                </div>
-            <?php endif; ?>
                 </div>
                 <!-- end of feedback text bubble -->
                 <!-- feedback user actions -->
                 <div class="feedback-options clear">
                     <div class="feedback-recommendation">
-                        <div class="green-thumb">Recommended by <?php echo HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                        <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                         <?php if( $voted != 1 ): ?>
                             <div class="vote-block">
                                 <span class="vote-action">Was this useful? <a href="#" class="small-btn-pin">Yes</a></span>
