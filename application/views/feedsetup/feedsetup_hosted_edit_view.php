@@ -8,12 +8,14 @@
 <?=Form::hidden('hosted_background_filename', null)?>
 <script type="text/javascript">
     jQuery(function($) {
+        $("#progress .bar").hide();
         $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
         $('#hosted_background').fileupload({
             dataType: 'json'
           , progressall: function(e, data) { 
                 var progress = parseInt(data.loaded / data.total * 100, 10)
-                $("#progress .bar").animate({width: progress + '%'}, 1000);
+                $("#progress .bar").show().animate({width: progress + '%'}, 1000);
+                $("#progress .bar p").html(progress);
             }
           , done: function(e, data) {
                 $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
@@ -102,7 +104,7 @@
                     </div>
                     <div class="g2of3"><br>
                          <div id="progress">
-                             Uploading...
+                             <p></p> 
                              <div class="bar" style="width: 0%; height: 18px; background: #528b8b"></div>
                          </div>
                         <img id="hosted_bg_img"/>
