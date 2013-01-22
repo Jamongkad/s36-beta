@@ -18,5 +18,6 @@ Status.prototype.notify = function(msg, delay) {
 }
 
 Status.prototype.destroy = function() {
+    var me = this;
 	$(me.message).hide();
 }
