@@ -13,8 +13,7 @@
             dataType: 'json'
           , progressall: function(e, data) { 
                 var progress = parseInt(data.loaded / data.total * 100, 10)
-                console.log(progress);
-                $("#progress .bar").animate({width: progress + '%'}, 1000, 'easeOutBounce');
+                $("#progress .bar").animate({width: progress + '%'}, 1000);
             }
           , done: function(e, data) {
                 $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
