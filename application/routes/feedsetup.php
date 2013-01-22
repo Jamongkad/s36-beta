@@ -144,11 +144,13 @@ return array(
        
         $input = Input::get();
         $hosted_settings   = $hosted->fetch_hosted_settings(Input::get('company_id'));
-
+        
+        /*
         if($hosted_settings->background_image) {
             $input['background_image'] = $hosted_settings->background_image;     
         }
-        
+        */
+               
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  

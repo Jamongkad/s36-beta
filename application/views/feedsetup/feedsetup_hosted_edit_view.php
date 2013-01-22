@@ -5,7 +5,7 @@
 <?=Form::hidden('header_text', $hosted_full_page->header_text)?>
 <?=Form::hidden('submit_form_text', $hosted_full_page->submit_form_text)?>
 <?=Form::hidden('submit_form_question', $hosted_full_page->submit_form_question)?>
-<?=Form::hidden('background_image', null)?>
+<?=Form::hidden('background_image', $hosted_fullpage_new->background_image)?>
 <script type="text/javascript">
     jQuery(function($) {
         $("#progress .bar").hide();
