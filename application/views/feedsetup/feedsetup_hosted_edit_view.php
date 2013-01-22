@@ -12,7 +12,7 @@
         $('#hosted_background').fileupload({
             dataType: 'json',
             done: function(e, data) {
-               console.log(data);
+               console.log(data.result);
             }
         });
     });
