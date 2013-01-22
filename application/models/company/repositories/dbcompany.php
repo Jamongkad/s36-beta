@@ -139,7 +139,7 @@ class DBCompany extends S36DataObject {
             ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
         
         $cover_photo_path = '/var/www/s36-upload-images/uploaded_images/coverphoto/' . basename($existing_cover_photo->coverphoto_src);
-        if( is_readable($cover_photo_path) ) {
+        if( is_file($cover_photo_path) && is_readable($cover_photo_path) ) {
             unlink( $cover_photo_path );
         }
 

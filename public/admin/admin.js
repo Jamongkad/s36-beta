@@ -63,12 +63,12 @@ $(document).ready(function(){
             var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
             if( image_types.indexOf( data.files[0].type ) == -1 ){
                 var error = ['Please select an image file'];
-                display_error_mes(error);
+                Helpers.display_error_mes(error);
                 return false;
             }
             if( data.files[0].size > 2000000 ){
                 var error = ['Please upload an image that is less than 2mb'];
-                display_error_mes(error);
+                Helpers.display_error_mes(error);
                 return false;
             }
             data.submit();
@@ -86,19 +86,18 @@ $(document).ready(function(){
             var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
             if( image_types.indexOf( data.files[0].type ) == -1 ){
                 var error = ['Please select an image file'];
-                display_error_mes(error);
+                Helpers.display_error_mes(error);
                 return false;
             }
             if( data.files[0].size > 2000000 ){
                 var error = ['Changing cover image..'];
-                display_error_mes(error);
+                Helpers.display_error_mes(error);
                 return false;
             }
-            //data.submit();
             
             data.submit().error(function(jqXHR){
                 hideNotification();
-                display_error_mes([jqXHR.responseText]);
+                Helpers.display_error_mes([jqXHR.responseText]);
                 return false;
             });
             
@@ -252,7 +251,7 @@ function upload_to_server(data){
     });
     
     if( $.trim(error) != '' ){
-        display_error_mes([error]);
+        Helpers.display_error_mes([error]);
         return false;
     }
     

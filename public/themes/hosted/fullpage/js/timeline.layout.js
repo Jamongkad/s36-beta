@@ -53,7 +53,7 @@ $('.save').click(function(){
         success: function(result){
             // if result returned 1, it means he's not logged in.
             if( result == 1 ){
-                display_error_mes( ['You should be logged in to do this action'] );
+                Helpers.display_error_mes( ['You should be logged in to do this action'] );
             }else{
                 $('#desc_text').html( Helpers.nl2br( Helpers.html2entities($('#desc_textbox').val()) ) );
                 $('.cancel').trigger('click');
