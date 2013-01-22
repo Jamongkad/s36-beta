@@ -13,6 +13,7 @@
             dataType: 'json',
             done: function(e, data) {
                $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
+               $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name);
                console.log($(this));
             }
         });
@@ -97,7 +98,7 @@
                         <?endif?>
                     </div>
                     <div class="g2of3"><br>
-                        <img src="/uploaded_images/hosted_background/<?=$background_image?>" id="hosted_bg_img"/>
+                        <img id="hosted_bg_img"/>
                         <input type="file" id="hosted_background" class="fileupload regular-text" data-url="/imageprocessing/upload_hosted_background_image">  
                     </div>
                 </div>
