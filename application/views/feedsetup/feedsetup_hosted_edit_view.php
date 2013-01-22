@@ -15,7 +15,7 @@
           , progressall: function(e, data) { 
                 var progress = parseInt(data.loaded / data.total * 100, 10)
                 $("#progress .bar").show().animate({width: progress + '%'}, 1000);
-                $("#progress .bar p").html(progress);
+                $("#progress p").html(progress + "%");
             }
           , done: function(e, data) {
                 $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
