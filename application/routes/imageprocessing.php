@@ -88,7 +88,7 @@ return array(
         
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_hosted_background_image'
-            , 'file_name'  => 'company_background_image_' . $user->companyid . '.jpg'
+            , 'file_name'  => date("mdyhis").'-'.$user->companyid.'.jpg'/*'company_background_image_' . $user->companyid . '.jpg'*/
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/hosted_background/'
             , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
             , 'param_name' => 'files'
