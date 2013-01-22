@@ -12,7 +12,7 @@
         $('#hosted_background').fileupload({
             dataType: 'json',
             done: function(e, data) {
-               console.log(data.result[0].name);
+               $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
             }
         });
     });
