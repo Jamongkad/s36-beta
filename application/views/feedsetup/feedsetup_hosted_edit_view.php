@@ -14,7 +14,7 @@
           , progressall: function(e, data) { 
                 var progress = parseInt(data.loaded / data.total * 100, 10)
                 console.log(progress);
-                $("#progress .bar").css('width', progress + '%');
+                $("#progress .bar").animate({width: progess + '%'}, 1000, 'easeOutBounce');
             }
           , done: function(e, data) {
                 $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
