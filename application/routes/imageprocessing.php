@@ -41,7 +41,7 @@ return array(
                 )
             )
         );
-        $uploader = new JqueryFileUploader($options); 
+        return new JqueryFileUploader($options); 
     }),
     
     // saving of cover photo in db and deletion of old cover photo.
@@ -53,8 +53,7 @@ return array(
         
         $data = Input::all();
         $data['company_id'] = $user->companyid;
-        $result = $company->update_coverphoto($data);
-        //echo json_encode($result);  // removed for temporarily.
+        return $company->update_coverphoto($data);
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){
@@ -78,7 +77,7 @@ return array(
                 )
             )
         );
-        $uploader = new JqueryFileUploader($options); 
+        return new JqueryFileUploader($options); 
     }),
 
     'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
@@ -90,14 +89,14 @@ return array(
 
 /*additional methods*/
 function get_full_url() {
-        $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
-        return
-            ($https ? 'https://' : 'http://').
-            (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
-            (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
-            ($https && $_SERVER['SERVER_PORT'] === 443 ||
-            $_SERVER['SERVER_PORT'] === 80 ? '' : ':'.$_SERVER['SERVER_PORT']))).
-            substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
-    }
+    $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    return
+        ($https ? 'https://' : 'http://').
+        (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
+        (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
+        ($https && $_SERVER['SERVER_PORT'] === 443 ||
+        $_SERVER['SERVER_PORT'] === 80 ? '' : ':'.$_SERVER['SERVER_PORT']))).
+        substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
+}
 
 
