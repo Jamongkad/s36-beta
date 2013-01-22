@@ -11,25 +11,9 @@
         $("#hosted_bg_img").aeImageResize({ height: 250, width: 250 });
         $('#hosted_background').fileupload({
             dataType: 'json',
-            add: function(e, data){
-                var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
-                if( image_types.indexOf( data.files[0].type ) == -1 ){
-                    var error = ['Please select an image file'];
-                    Helpers.display_error_mes(error);
-                    return false;
-                }
-                if( data.files[0].size > 2000000 ){
-                    var error = ['Changing cover image..'];
-                    Helpers.display_error_mes(error);
-                    return false;
-                }
-                
-                data.submit().error(function(jqXHR){
-                    hideNotification();
-                    Helpers.display_error_mes([jqXHR.responseText]);
-                    return false;
-                });         
-            }        
+            done: function(e, data) {
+               console.log(data);
+            }
         });
     });
 </script>
@@ -112,7 +96,7 @@
                         <?endif?>
                     </div>
                     <div class="g2of3"><br>
-                        <input type="file" id="hosted_background" class="fileupload regular-text" data-url="imageprocessing/upload_coverphoto">  
+                        <input type="file" id="hosted_background" class="fileupload regular-text" data-url="imageprocessing/upload_hosted_background_image">  
                     </div>
                 </div>
             </div>
