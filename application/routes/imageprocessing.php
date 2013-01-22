@@ -93,6 +93,7 @@ return array(
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/hosted_background/'
             , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
             , 'param_name' => 'files'
+            , 'image_versions' => array()
         );     
 
         return new JqueryFileUploader($options);         
