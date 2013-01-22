@@ -143,40 +143,15 @@ return array(
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
        
         $input = Input::get();
-        Helpers::dump($input);
-        /*
         $hosted_settings   = $hosted->fetch_hosted_settings(Input::get('company_id'));
-        $hosted_background = Input::file();
 
-        $input = Input::get();
-        $input['background_image'] = $hosted_settings->background_image;
-        
-        /*
-        if($hosted_background['hosted_background']['name']){
-            $file       = 'hosted_background';
-            $targetpath = "uploaded_images/hosted_background/";
-            $options    = array('rename' => 'company_background_image_'.Input::get('company_id'));
-            $result     = json_decode(Helpers::upload_image($file, $targetpath, $options));
-            $input['background_image'] = $result->filename;
+        if($hosted_settings->background_image) {
+            $input['background_image'] = $hosted_settings->background_image;     
         }
-
-        $options = array(
-              'script_url' => get_full_url().'/imageprocessing/coverphoto'
-            , 'file_name'  => date("mdyhis").'.jpg'
-            , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
-            , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
-            , 'param_name' => 'files'
-            , 'width'      => 800
-            , 'height'     => 500
-            , 'image_versions' => array()
-        );     
-
-        new JqueryFileUploader($options); 
-
+        
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  
-        */
     }),
     
     'POST /feedsetup/save_form_widget' => function() { 
