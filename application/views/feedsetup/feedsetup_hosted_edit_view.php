@@ -102,7 +102,7 @@
                     </div>
                     <div class="g2of3"><br>
                          <div id="progress">
-                             <div class="bar" style="width: 0%; height: 18px; background: green"></div>
+                             <div class="bar" style="width: 0%; height: 18px; background: #528b8b"></div>
                          </div>
                         <img id="hosted_bg_img"/>
                         <input type="file" id="hosted_background" class="fileupload regular-text" data-url="/imageprocessing/upload_hosted_background_image">  
