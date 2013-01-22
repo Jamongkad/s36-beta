@@ -79,7 +79,6 @@ $(document).ready(function(){
             hideNotification();
         }
     });
-
     //cover photo file upload script
     $('#cv_image').fileupload({
         dataType: 'json',

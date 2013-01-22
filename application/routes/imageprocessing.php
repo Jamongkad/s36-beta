@@ -6,11 +6,10 @@ $company = new Company\Repositories\DBCompany;
 return array(
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
         // if the user is not logged in, return error msg.
-        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action';
-        
-        $file = Input::all();
+        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action'; 
+
         $options = array(
-              'script_url' => get_full_url().'/imageprocessing/coverphoto'
+              'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
             , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
@@ -83,6 +82,20 @@ return array(
     'GET /imageprocessing/linkpreview'=>array('name'=>'linkpreview','do'=>function(){
         $link_preview = new LinkPreview();
         $link_preview->text_crawler();
+    }),
+
+    'POST /imageprocessing/upload_hosted_background_image' => array('name' => 'upload_hosted_background_image', 'do' => function() {
+        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action';
+        
+        $options = array(
+              'script_url' => get_full_url().'/imageprocessing/upload_hosted_background_image'
+            , 'file_name'  => 'company_background_image_6.jpg'
+            , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/hosted_background/'
+            , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
+            , 'param_name' => 'files'
+        );     
+
+        return new JqueryFileUploader($options);         
     }),
 
 );

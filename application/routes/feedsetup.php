@@ -143,9 +143,7 @@ return array(
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
        
         $input = Input::get();
-        $hosted_background = Input::file();
         Helpers::dump($input);
-        Helpers::dump($hosted_background);
         /*
         $hosted_settings   = $hosted->fetch_hosted_settings(Input::get('company_id'));
         $hosted_background = Input::file();
