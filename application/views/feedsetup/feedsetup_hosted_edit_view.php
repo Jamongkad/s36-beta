@@ -102,6 +102,7 @@
                     </div>
                     <div class="g2of3"><br>
                          <div id="progress">
+                             Uploading...
                              <div class="bar" style="width: 0%; height: 18px; background: #528b8b"></div>
                          </div>
                         <img id="hosted_bg_img"/>
