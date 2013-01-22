@@ -16,3 +16,7 @@ Status.prototype.notify = function(msg, delay) {
 		}
     });
 }
+
+Status.prototype.destroy = function() {
+	$(me.message).hide();
+}
