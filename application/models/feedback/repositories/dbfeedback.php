@@ -793,7 +793,7 @@ class DBFeedback extends S36DataObject {
         $action_data = Array();
 
         // set the distinct data needed in feedback actions.
-        $action_data['flag']['field'] = 'flagged';
+        $action_data['flag']['field'] = 'flagged_as_inappr';
         $action_data['flag']['insert_data'] = $data->flag_insert_data; 
     
         $action_data['vote']['field'] = 'useful';
