@@ -140,10 +140,8 @@ return array(
         ));
     },
 
-    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) { 
-       
+    'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) {  
         $input = Input::get();
-        //$hosted_settings   = $hosted->fetch_hosted_settings(Input::get('company_id')); 
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  
