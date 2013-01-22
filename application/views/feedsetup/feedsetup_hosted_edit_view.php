@@ -12,12 +12,13 @@
         $('#hosted_background').fileupload({
             dataType: 'json'
           , progressall: function(e, data) { 
-              var progress = parseInt(data.loaded / data.total * 100, 10)
-              $("#progress .bar").css('width', progress + '%');
+                var progress = parseInt(data.loaded / data.total * 100, 10)
+                console.log(progress);
+                $("#progress .bar").css('width', progress + '%');
             }
           , done: function(e, data) {
-               $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
-               $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name).aeImageResize({ height: 250, width: 250 });
+                $("input[type=hidden][name=hosted_background_filename]").val(data.result[0].name);
+                $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name).aeImageResize({ height: 250, width: 250 });
             }
         });
     });
