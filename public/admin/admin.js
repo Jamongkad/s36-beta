@@ -34,19 +34,19 @@ $(document).ready(function(){
     $('.btnFontColor').on('change',function(){
         change_button_font_color($(this).val());
     });
-    /*$('#patterns').jcarousel({  // go home! you're drunk!
+    $('#patterns').jcarousel({
         scroll: 5,
         initCallback: function(){},
         buttonNextHTML: '#patternPrev',
         buttonPrevHTML: '#patternNext'
-    });*/
+    });
     $('.patternItem').click(function(){
         $('.patternItem.active').removeClass('active');
         $(this).addClass('active');
         apply_pattern_design($(this).attr('id'));
     });
     
-    /*var $adminPage = $('#adminWindowPages').cycle({  // go home! you're drunk!
+    var $adminPage = $('#adminWindowPages').cycle({
         fx: 'fade', speed: 100, timeout: 0, before: adjust_window_height
     });
     $('#adminWindowMenuBar ul li').click(function(){
@@ -54,7 +54,7 @@ $(document).ready(function(){
         $(this).find('a').addClass('active');
         var index = $(this).index();
         $adminPage.cycle(index);
-    });*/
+    });
     // file upload script
     $('#bg_image').fileupload({
         dropZone: '#bgDragBox',
@@ -94,7 +94,14 @@ $(document).ready(function(){
                 display_error_mes(error);
                 return false;
             }
-            data.submit();
+            //data.submit();
+            
+            data.submit().error(function(jqXHR){
+                hideNotification();
+                display_error_mes([jqXHR.responseText]);
+                return false;
+            });
+            
         },progress: function(e, data){
             showNotification('Changing Cover Photo',0);
         },done: function(e, data){
@@ -230,7 +237,9 @@ function make_cover_undraggable(opt){
 }
 function upload_to_server(data){
     /* pass the variables from here to the database then initialize the codes below if upload to db is successful */
+    var error;
     $.ajax({
+        async: false,
         url: '/imageprocessing/savecoverphoto',
         type: 'post',
         data: {
@@ -238,9 +247,14 @@ function upload_to_server(data){
             'top': $('#coverPhoto img').css('top')
         },
         success: function(result){
-            console.log('resuuuulllt');
+            error = result;
         }
     });
+    
+    if( $.trim(error) != '' ){
+        display_error_mes([error]);
+        return false;
+    }
     
     $('#saveCoverButton').html('Cover Saved');
     var timeout;

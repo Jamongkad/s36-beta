@@ -169,7 +169,7 @@
     border: 1px solid #e09107;
     border-right: 1px solid #e09107;
     border-bottom: 1px solid #e09107;
-    background: #f5b902 url(../images/loader.gif) no-repeat 8px center;
+    background: #f5b902 url(/img/loader.gif) no-repeat 8px center;
     -webkit-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
     -moz-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
     box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
@@ -362,7 +362,7 @@ ul.patternList li div.active{
     background:#EEE;
 }
 #dragPhoto{
-    background: url(../images/drag-bg.png);
+    background: url(/img/drag-bg.png);
     font-family:Verdana, Geneva, sans-serif;
     font-size:10px;
     position:absolute;

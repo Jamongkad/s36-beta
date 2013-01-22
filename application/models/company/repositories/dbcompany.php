@@ -138,10 +138,9 @@ class DBCompany extends S36DataObject {
             ->where('companyId', '=', $company_id)
             ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
         
-
-        if($existing_cover_photo->coverphoto_src) {
-            //unlink($existing_cover_photo->coverphoto_src);
-            unlink('/var/www/s36-upload-images/uploaded_images/coverphoto/' . basename($existing_cover_photo->coverphoto_src));
+        $cover_photo_path = '/var/www/s36-upload-images/uploaded_images/coverphoto/' . basename($existing_cover_photo->coverphoto_src);
+        if( $cover_photo_path ) {
+            unlink( $cover_photo_path );
         }
 
         $result = new StdClass;

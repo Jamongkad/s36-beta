@@ -5,6 +5,9 @@ $company = new Company\Repositories\DBCompany;
 
 return array(
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() {
+        // if the user is not logged in, return error msg.
+        if( ! is_object(S36Auth::user()) ) return 'You should be logged in to do this action';
+        
         $file = Input::all();
         $options = array(
             'script_url' => get_full_url().'/imageprocessing/coverphoto'
@@ -44,10 +47,14 @@ return array(
     // saving of cover photo in db and deletion of old cover photo.
     'POST /imageprocessing/savecoverphoto' => function() use ($company) {
         $user = S36Auth::user();
+        
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
         $data = Input::all();
         $data['company_id'] = $user->companyid;
         $result = $company->update_coverphoto($data);
-        echo json_encode($result);
+        //echo json_encode($result);  // removed for temporarily.
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name'=>'FormImageUploader','do'=>function(){

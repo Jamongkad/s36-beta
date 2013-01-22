@@ -6,6 +6,7 @@
 <?php if( ! is_null($user) ): ?>
     <?= HTML::style('admin/admin.css'); ?>
     <?= HTML::style('admin/jcarousel.skin.css'); ?>
+    <?= HTML::script('admin/jcycle.js'); ?>
     <?= HTML::script('js/jquery.ui.widget.js'); ?>
     <?= HTML::script('js/jquery.iframe-transport.js'); ?>
     <?= HTML::script('js/jquery.fileupload.js'); ?>
@@ -146,7 +147,7 @@ $(document).ready(function(){
                             </ul>
                         </div>
                         <div class="lightbox-buttons">
-                            <a href="" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
+                            <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
                         </div>
                     </div>
                 </div>
