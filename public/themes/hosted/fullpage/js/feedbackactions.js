@@ -25,7 +25,7 @@ var S36FeedbackActions = new function() {
     }
 
     this.flag_inapprt = function() {
-        $(flag).click(function(){
+        $(flag).unbind('click.flag_inapprt').bind('click.flag_inapprt', function(e) {
             
             var this_flag = $(this);
             
@@ -37,12 +37,14 @@ var S36FeedbackActions = new function() {
                     this_flag.hide().text('Thanks for your flag!').fadeIn();
                 }
             });
+
+            e.preventDefault();
             
         }); 
     }
 
     this.vote = function() { 
-        $(vote).click(function(e){
+        $(vote).unbind('click.vote_feedback').bind('click.vote_feedback', function(e) {
             
             var this_vote = $(this);
             var vote_count_obj = $(this).parents(feedback).find(vote_count);
@@ -62,7 +64,7 @@ var S36FeedbackActions = new function() {
     }
 
     this.share = function() {      
-        $(share).click(function(){
+        $(share).unbind('click.share_feedback').bind('click.share_feedback', function(e) {
      
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
             var tw_share = $(this).parents(feedback).find(tw_share_dummy);
@@ -83,20 +85,24 @@ var S36FeedbackActions = new function() {
                 $(this).fadeOut('fast');
                 console.log("hovering out");
             });
+
+            e.preventDefault();
         });
     }
 
     this.open_submission_form = function() { 
-        $(send_button).click(function(){  
+        $(send_button).unbind('click.open_form').bind('click.open_form', function(e) {  
             var widgetkey = $(this).attr('widgetkey');
             createLightboxes();
             s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
+
+            e.preventDefault();
         });
     }
 
     this.admin_reply = function() {
         /* admin replies */
-        $('.adminReply').click(function() {
+        $('.adminReply').unbind('click.admin_reply').bind('click.admin_reply', function(e) {
             var my_parent = $(this).parents('.admin-comment-block');
             var admin_reply = {
                 feedbackId: $(my_parent).find('.admin-comment-id').val(),
@@ -121,6 +127,8 @@ var S36FeedbackActions = new function() {
             } else {
                 Helpers.display_error_mes(['Cannot be blank.']); 
             }  
+
+            e.preventDefault();
         }); 
         
         //we do this to prevent multiple event bindings from happening
@@ -142,23 +150,29 @@ var S36FeedbackActions = new function() {
 
     this.attachment_controls = function() { 
         /*lightbox attachment code*/
-        $('.uploaded-images-close').click(function(){
+        $('.uploaded-images-close').unbind('click.upload_images_close').bind('click.upload_images_close', function(e) {
             $(this).parent().fadeOut();
+            e.preventDefault();
         });
-        $('.the-thumb,.video-circle').click(function(){
+
+        $('.the-thumb, .video-circle').unbind('click.video_link').bind('click.video_link', function(e) {
             var scroll_offset = $(document).scrollTop();
             var top_offset = scroll_offset + 100;
             $('.lightbox').fadeIn().css('top',top_offset);
-        });
-        $('.uploaded-image').click(function(){
-            var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
-            $('.uploaded-images-content').html(html);
+            e.preventDefault();
         });
 
-        $('.video-thumb,.video-circle').click(function(){
+        $('.uploaded-image').unbind('click.upload_image_open').bind('click.upload_image_open', function(e) {
+            var html = '<img src="'+$(this).find(' .the-thumb .large-image-url').val()+'" width="100%" />';
+            $('.uploaded-images-content').html(html);
+            e.preventDefault();
+        });
+
+        $('.video-thumb,.video-circle').unbind('click.video_link_open').bind('click.video_link_open', function(e) {
             var embed_url = $(this).find('.link-url').val().replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
             var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
             $('.uploaded-images-content').html(html);
+            e.preventDefault();
         });
     }
 
