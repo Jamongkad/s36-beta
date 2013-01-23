@@ -30,7 +30,7 @@ $(document).ready(function(){});
 <?php endif; ?>
 <div id="mainWrapper">
     <div id="fadedContainer">
-        <div id="mainContainer" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+        <div id="mainContainer" itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
             <div id="coverPhotoContainer">
                 
                 <?php if( ! is_null($user) ): ?>
@@ -58,7 +58,7 @@ $(document).ready(function(){});
             </div>
            
             <!-- start of Review-aggregate scope -->
-            <div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+            <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
                 <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" /><!-- for rich snippets. -->
                 <div class="hosted-block">
                     <div class="company-description clear">
