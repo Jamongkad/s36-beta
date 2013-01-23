@@ -166,7 +166,7 @@ $(document).keypress(function(event){
             var form_data = {
                 site_id		: $('#siteId').val(),
                 company_id	: $('#companyId').val(),
-                title           : $('#feedbackTitle').val(),
+                title       : $('#feedbackTitle').val(),
                 feedback 	: $('#feedbackText').val(),
                 rating 		: $('#rating').val(),
                 recommend 	: $('#recommend').val(),
@@ -658,15 +658,17 @@ $(document).keypress(function(event){
             var error_mes = [];
 
             if(feedback_rating.val() == "0") { 
+                console.log("feedback rating");
                 error_mes = ['Please provide a rating for your feedback.'];
             }
 
             if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
+                console.log("feedback title");
                 error_mes = ['Please provide a title for your feedback.'];
             } 
 
             if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
-                console.log("coming from here");
+                console.log("feedback text");
                 error_mes = ['Please provide your feedback.']; 
             }
             
