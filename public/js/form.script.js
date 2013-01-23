@@ -655,7 +655,7 @@ $(document).keypress(function(event){
         }
        
         this.validate_feedbacktext = function() {
-            return true;    
+            return false;    
         }
     }
 
