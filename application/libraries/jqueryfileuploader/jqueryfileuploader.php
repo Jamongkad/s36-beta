@@ -42,10 +42,10 @@ class JqueryFileUploader
             //'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
             //'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
             'image_versions' => array(),
-            'overwrite' => false, //user defined option for overwriting existing images
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
+            'overwrite' => true,
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
             //'delete_type' => 'DELETE',
@@ -476,10 +476,11 @@ class JqueryFileUploader
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, $this->options['mkdir_mode'], true);
             }
-            $file_path = $this->get_upload_path($file->name);
-            if($this->options['overwrite'] && file_exists($upload_dir.$file->name)){
-                unlink($file_path);
+            if($this->options['overwrite'] && file_exists($upload_dir.$name)){
+                unlink($upload_dir.$name);
+                $file->name = $this->trim_file_name($name, $type, $index, $content_range);
             }
+            $file_path = $this->get_upload_path($file->name);
             $append_file = $content_range && is_file($file_path) &&
                 $file->size > $this->get_file_size($file_path);
             if ($uploaded_file && is_uploaded_file($uploaded_file)) {

@@ -10,15 +10,11 @@ return array(
 
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
-            //, 'file_name'  => date("mdyhis").'.jpg'
-            , 'file_name'  => 'sample.jpg'
-            //, 'overwrite'  => true;
-            , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/coverphoto/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
             , 'param_name' => 'files'
             , 'width'      => 800
             , 'height'     => 500
-            , 'image_versions' => array()
         );     
 
         new JqueryFileUploader($options); 
@@ -28,7 +24,7 @@ return array(
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_avatar'
             , 'file_name'  => date("mdyhis").'.jpg'
-            , 'upload_dir' => 'uploaded_images/avatar/'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
             , 'upload_url' => get_full_url() .'/uploaded_images/avatar/'
             , 'param_name' => 'files'
             , 'image_versions' => array(
@@ -71,7 +67,7 @@ return array(
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
             , 'file_name'  => date("mdyhis").'.jpg'
-            , 'upload_dir'  => 'uploaded_images/form_upload/'
+            , 'upload_dir'  => Config::get('application.uploaded_images_dir').'/form_upload/'
             , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
             , 'image_versions' => array(
                 'large' => array(
@@ -102,11 +98,10 @@ return array(
         
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_hosted_background_image'
-            , 'file_name'  => date("mdyhis").'-'.$user->companyid.'.jpg'/*'company_background_image_' . $user->companyid . '.jpg'*/
-            , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/hosted_background/'
+            //, 'file_name'  => 'test.jpg'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/hosted_background/'
             , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
             , 'param_name' => 'files'
-            , 'image_versions' => array()
         );     
 
         new JqueryFileUploader($options);         

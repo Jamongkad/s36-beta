@@ -6,6 +6,7 @@
 <?=Form::hidden('submit_form_text', $hosted_full_page->submit_form_text)?>
 <?=Form::hidden('submit_form_question', $hosted_full_page->submit_form_question)?>
 <?=Form::hidden('background_image', $hosted_full_page->background_image)?>
+<?=Form::hidden('update_background_image','false')?>
 <script type="text/javascript">
     jQuery(function($) {
         $("#progress .bar").hide();
@@ -18,6 +19,7 @@
                 $("input[type=submit]").attr('disabled', 'disabled').css({opacity: 0.5});
             }
           , done: function(e, data) {
+                $("input[type=hidden][name=update_background_image]").val(true);
                 $("input[type=hidden][name=background_image]").val(data.result[0].name);
                 $("#hosted_bg_img").attr('src', "/uploaded_images/hosted_background/" + data.result[0].name).aeImageResize({ height: 250, width: 250 });
                 $("input[type=submit]").removeAttr('disabled').css({opacity: 1.0});
