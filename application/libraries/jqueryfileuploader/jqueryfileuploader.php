@@ -41,6 +41,8 @@ class JqueryFileUploader
             //'script_url' => $this->get_full_url().'/imageprocessing/FormImageUploader',
             //'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
             //'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
+            'image_versions' => array(),
+            'overwrite' => false, //user defined option for overwriting existing images
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -202,7 +204,7 @@ class JqueryFileUploader
 
     protected function get_file_object($file_name) {
         if ($this->is_valid_file_object($file_name)) {
-            $file = new \stdClass();  // needed to add a backslash because we used namespace - kennwel.
+            $file = new \stdClass();
             $file->name = $file_name;
             $file->size = $this->get_file_size(
                 $this->get_upload_path($file_name)
@@ -475,6 +477,9 @@ class JqueryFileUploader
                 mkdir($upload_dir, $this->options['mkdir_mode'], true);
             }
             $file_path = $this->get_upload_path($file->name);
+            if($this->options['overwrite'] && file_exists($upload_dir.$file->name)){
+                unlink($file_path);
+            }
             $append_file = $content_range && is_file($file_path) &&
                 $file->size > $this->get_file_size($file_path);
             if ($uploaded_file && is_uploaded_file($uploaded_file)) {
