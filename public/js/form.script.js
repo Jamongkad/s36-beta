@@ -399,7 +399,7 @@ $(document).keypress(function(event){
 		   
 		$('.dynamic-stars .star-container .star').hover(function(){
 			var index = $(this).index();
-			var rating = "Excellent!";
+			var rating = "";
 			$('.star-container .star').css('background-position','bottom');
 			$(this).css('background-position','top');
 			rating = convert_rating_to_text(index);
@@ -503,7 +503,7 @@ $(document).keypress(function(event){
 			break;
 			case 0: rating = "Bad";
 			break;
-			default: rating = "Excellent!";
+			default: rating = "";
 			break;
 		}
 		return rating;

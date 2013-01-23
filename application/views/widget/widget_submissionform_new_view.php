@@ -54,7 +54,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
 
 <div id="formBox">
     <form action="" method="POST" enctype="multipart/form-data">
-    <input type="hidden" id="rating" name="rating" value="5" />
+    <input type="hidden" id="rating" name="rating" value="0" />
     <input type="hidden" id="loginType" name="loginType" value="36" />
     <input type="hidden" id="profileLink" name="profileLink" value="" />
     <input type="hidden" id="companyId" value="<?=$company_id?>" />
@@ -136,7 +136,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                                 <div id="5" class="star full"></div>
                             </div>
                             <div class="star-text">
-                                <span class="">Excellent!</span>
+                                <span class=""></span>
                             </div>
                         </div>
                     </div>
