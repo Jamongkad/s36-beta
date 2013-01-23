@@ -31,9 +31,7 @@ return array(
     'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
-
-        Helpers::dump($company_info);
-        
+ 
         //Feeds
         $hosted = new Feedback\Services\HostedService($company_name); 
         $hosted->page_number = 1; 
