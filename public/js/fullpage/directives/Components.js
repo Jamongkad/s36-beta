@@ -1,1 +1,1 @@
-angular.module('Components', ['fileupload']);
+angular.module('Components', []);
