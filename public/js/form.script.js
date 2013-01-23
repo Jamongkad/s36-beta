@@ -1,9 +1,9 @@
 $(document).keypress(function(event){
-		var keycode = (event.keyCode ? event.keyCode : event.which);
-		if(keycode == '13'){
-			close_lightbox();
-		}
-	});
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        close_lightbox();
+    }
+});
 
 	$(document).ready(function(){
 
@@ -744,6 +744,7 @@ $(document).keypress(function(event){
 			return false;
 		}
 	}
+
 	function validate_form(){		
 		if($('#formBody').find('.current').attr('id') == "step2"){
 			var fname 		= $('#your_fname'); 

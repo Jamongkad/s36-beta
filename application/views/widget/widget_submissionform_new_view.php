@@ -100,7 +100,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
         </div>  
         <!-- end of image upload popup -->
         
-        <!-- the lightbox -->
+        <!-- the lightbox message error-->
         <div id="lightbox" style="display:none">
             <div class="lightbox-pandora">
                 <div class="lightbox-header">Oops! Something went wrong..</div>
