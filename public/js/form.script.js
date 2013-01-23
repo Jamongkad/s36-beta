@@ -659,18 +659,15 @@ $(document).keypress(function(event){
                 error_mes = ['Please provide your feedback.'];
                 display_error_mes(error_mes);
                 return false;
-            } else {
-                return true;
             }
-
+            
             if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
                 error_mes = ['Please provide a title for your feedback.'];
                 display_error_mes(error_mes);
                 return false;
-            } else {
-                return true;
-            }
+            } 
 
+            return true;
         }
     }
 
