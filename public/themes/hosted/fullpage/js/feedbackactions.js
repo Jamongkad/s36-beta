@@ -22,6 +22,16 @@ var S36FeedbackActions = new function() {
         me.attachment_controls();
         me.masonry_initialize();
         Helpers.close_lightbox();
+        $('.star_rating').raty({
+            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+            score: function(){
+                return $(this).attr('rating');
+            },
+            path: '/img/',
+            starOn: 'star-fill.png',
+            starOff: 'star-empty.png',
+            readOnly: true
+        });
     }
 
     this.flag_inapprt = function() {

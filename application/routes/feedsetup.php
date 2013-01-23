@@ -142,6 +142,18 @@ return array(
 
     'POST /feedsetup/update_hosted_settings' => Array('name' => 'update_hosted_settings', 'before' => 's36_auth', 'do' => function() use ($hosted) {  
         $input = Input::get();
+        if($input['update_background_image']=='true'){
+            $file_name  = 'hosted_background_'.S36Auth::user()->companyid.'.jpg';
+            $orig_path  = Config::get('application.uploaded_images_dir').'/hosted_background/'.$input['background_image'];
+            $final_path = Config::get('application.uploaded_images_dir').'/hosted_background/'.$file_name;
+
+            if(file_exists($final_path)){
+                unlink($final_path);
+            }
+            exec("convert {$orig_path} {$final_path}"); //convert and rename uploaded image using image magick
+            unlink($orig_path);
+            $input['background_image'] = $file_name;
+        }
         $hosted->set_hosted_settings($input);
         $hosted->save();
         return Redirect::to('feedsetup/hosted_editor/'.Input::get('company_id'));  

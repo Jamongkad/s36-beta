@@ -41,9 +41,11 @@ class JqueryFileUploader
             //'script_url' => $this->get_full_url().'/imageprocessing/FormImageUploader',
             //'upload_dir' => 'uploaded_images/form_upload/',  // upload folder.
             //'upload_url' => $this->get_full_url() . '/uploaded_images/form_upload/',
+            'image_versions' => array(),
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
+            'overwrite' => true,
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
             //'delete_type' => 'DELETE',
@@ -202,7 +204,7 @@ class JqueryFileUploader
 
     protected function get_file_object($file_name) {
         if ($this->is_valid_file_object($file_name)) {
-            $file = new \stdClass();  // needed to add a backslash because we used namespace - kennwel.
+            $file = new \stdClass();
             $file->name = $file_name;
             $file->size = $this->get_file_size(
                 $this->get_upload_path($file_name)
@@ -473,6 +475,10 @@ class JqueryFileUploader
             $upload_dir = $this->get_upload_path();
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, $this->options['mkdir_mode'], true);
+            }
+            if($this->options['overwrite'] && file_exists($upload_dir.$name)){
+                unlink($upload_dir.$name);
+                $file->name = $this->trim_file_name($name, $type, $index, $content_range);
             }
             $file_path = $this->get_upload_path($file->name);
             $append_file = $content_range && is_file($file_path) &&

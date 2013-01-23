@@ -22,6 +22,7 @@ return array(
     'subdomain'  => $determine->d->subdomain,
 
     'upload_dir' => '/var/www/s36-upload-images',
+    'uploaded_images_dir'=>'/var/www/s36-upload-images/uploaded_images',
 
 	/*
 	|--------------------------------------------------------------------------

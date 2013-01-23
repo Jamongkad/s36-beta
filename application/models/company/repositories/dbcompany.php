@@ -125,29 +125,14 @@ class DBCompany extends S36DataObject {
     }
 
     public function update_coverphoto($data){
-
-        $src = (isset($data['src'])) ? $data['src'] : null;
-        $top = (isset($data['top'])) ? $data['top'] : 0;
-        $company_id = $data['company_id'];
-
-        $existing_cover_photo = DB::table('Company')
-            ->where('companyId', '=', $company_id)
-            ->first(Array('coverphoto_src'));
-
         $updated = DB::table('Company')
-            ->where('companyId', '=', $company_id)
-            ->update(array('coverphoto_src' => $src, 'coverphoto_top' => $top));   
+            ->where('companyId', '=', $data['company_id'])
+            ->update(array('coverphoto_src' => $data['file_name'], 'coverphoto_top' => $data['top']));  
         
-        $cover_photo_path = '/var/www/s36-upload-images/uploaded_images/coverphoto/' . basename($existing_cover_photo->coverphoto_src);
-
-        if( is_file($cover_photo_path) && is_readable($cover_photo_path) ) {
-            unlink( $cover_photo_path );
-        }
-
         $result = new StdClass;
-        $result->company_id = $company_id;
-        $result->src = $src;
-        $result->top = $top;
+        $result->company_id     = $data['company_id'];
+        $result->src            = $data['file_name'];
+        $result->top            = $data['top'];
         $result->update_success = $updated;
         return $result;
     }

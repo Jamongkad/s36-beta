@@ -1,18 +1,3 @@
-// jquery raty.
-
-$('.star_rating').raty({
-    hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
-    score: function(){
-        return $(this).attr('rating');
-    },
-    path: '/img/',
-    starOn: 'star-fill.png',
-    starOff: 'star-empty.png',
-    readOnly: true
-});
-
-
-
 // description ajax edit.
 
 $('.company-text').hover(
