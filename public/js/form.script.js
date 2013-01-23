@@ -657,7 +657,7 @@ $(document).keypress(function(event){
 
             var error_mes = [];
 
-            if(feedback_rating.val() == 0) { 
+            if(feedback_rating.val() == "0") { 
                 error_mes = ['Please provide a rating for your feedback.'];
             }
 
