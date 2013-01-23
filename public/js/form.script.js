@@ -658,30 +658,23 @@ $(document).keypress(function(event){
             var error_mes = [];
 
             if(feedback_rating.val() == "0") { 
-                console.log("feedback rating");
                 error_mes = ['Please provide a rating for your feedback.'];
-
                 display_error_mes(error_mes);     
                 return false;
             }
 
             if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
-                console.log("feedback title");
                 error_mes = ['Please provide a title for your feedback.'];
-
                 display_error_mes(error_mes);     
                 return false;
             } 
 
             if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
-                console.log("feedback text");
                 error_mes = ['Please provide your feedback.']; 
-
                 display_error_mes(error_mes);     
                 return false;
             }
-            
-            
+             
             return true;
         }
     }
