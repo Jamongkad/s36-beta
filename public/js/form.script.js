@@ -666,6 +666,7 @@ $(document).keypress(function(event){
             } 
 
             if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
+                console.log("coming from here");
                 error_mes = ['Please provide your feedback.']; 
             }
             
