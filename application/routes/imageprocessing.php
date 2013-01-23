@@ -50,7 +50,8 @@ return array(
         
         $data = Input::all();
         $data['company_id'] = $user->companyid;
-        return $company->update_coverphoto($data);
+        //return $company->update_coverphoto($data);
+        $company->update_coverphoto($data);
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {

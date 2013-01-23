@@ -50,9 +50,9 @@ $(document).ready(function(){});
                 
                 <div id="coverPhoto">
                     <?php if( is_null($company->coverphoto_src) ): ?>
-                        <img src="img/sample-cover.jpg" />
+                        <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
                     <?php else: ?>
-                        <img width="850px" src="<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                     <?php endif; ?>
                 </div>
             </div>
