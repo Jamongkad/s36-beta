@@ -104,7 +104,7 @@ $(document).ready(function(){
         },progress: function(e, data){
             showNotification('Changing Cover Photo',0);
         },done: function(e, data){
-            change_cover_image(data.result[0].url);
+            change_cover_image(data.result[0].name);
         }
     });
     
@@ -155,12 +155,21 @@ function change_background_image(path){
     $('body').css('background-image','url('+path+')');
     $('#bodyColorOverlay').css('opacity',0);
 }
-function change_cover_image(path){
+function change_cover_image(basename){
+    var dir = $('#coverPhoto img').attr('dir');
+    
     $('<img />')
-        .attr('src', path)
+        .attr({
+            'basename' : basename,
+            'src' : dir + basename
+        })
         .load(function(e){
             make_cover_undraggable(false);          
-            $('#coverPhoto img').attr({'src':path,width:'100%'});
+            $('#coverPhoto img').attr({
+                'basename': basename, 
+                'src': dir + basename, 
+                width:'100%'
+            });
             $('#coverPhoto img').css('top', 0);
             $('#saveCoverButton').show();
             $('#changeCoverButton').hide();
@@ -242,7 +251,7 @@ function upload_to_server(data){
         url: '/imageprocessing/savecoverphoto',
         type: 'post',
         data: {
-            'src': $('#coverPhoto img').attr('src'), 
+            'src': $('#coverPhoto img').attr('basename'), 
             'top': $('#coverPhoto img').css('top')
         },
         success: function(result){
