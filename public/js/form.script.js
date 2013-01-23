@@ -651,7 +651,7 @@ $(document).keypress(function(event){
         var me = this;
 
         this.validate = function() {
-            me.validate_feedbacktext();
+            return me.validate_feedbacktext();
         }
        
         this.validate_feedbacktext = function() {
