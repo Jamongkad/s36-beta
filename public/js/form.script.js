@@ -363,17 +363,21 @@ $(document).keypress(function(event){
 		});
 		
 		// initiate the cycle script for the #steps div
-		var $steps = $('#formBody').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assign_class });
-		
+		var $steps = $('#formBody').cycle({  fx: 'fade', speed: 100, timeout: 0, before: assign_class });	
 		/* clicking back and next buttons */
 		$('#next').click(function(){
 			var cur_page = $('.current').attr('id');
 			if(cur_page == 'step1'){
-				if(validate_feedback()){
+                /*
+				if(validate_feedback()) {
+					$steps.cycle('next');
+				}
+                */
+				if(FormValidatePageOne.validate()) {
 					$steps.cycle('next');
 				}
 			}else if(cur_page == 'step2'){
-				if(validate_form()){
+				if(validate_form()) {
 					scale_review_textbox();
 					synchronize_inputs();
 					$steps.cycle('next');
@@ -634,29 +638,48 @@ $(document).keypress(function(event){
 			return text1;
 		}
 	}
+
 	function push_to_last_window(){
 		$('#all-done-textbox').html($('#feedbackText').val());
 		$('#back').fadeOut('fast');
 		$('#next').fadeOut('fast');
 		return true;
 	}
-	function validate_feedback(elem){
-		if(!elem){
+
+    var FormValidatePageOne = new function() {
+ 
+        var me = this;
+
+        this.validate = function() {
+            me.validate_feedbacktext();
+        }
+       
+        this.validate_feedbacktext = function() {
+            return false;    
+        }
+    }
+
+	function validate_feedback(elem) {
+
+		if(!elem) {
 			var feedback_elem = $('#feedbackText');	
-		}else{
+		} else {
 			var feedback_elem = elem;	
 		}
+
 		var validated = false;
 		var feedback_text = $.trim(feedback_elem.val());
 		var error_mes = [];
-		if((feedback_text.length <= 0) || (feedback_text == feedback_elem.attr('title'))){
+		if((feedback_text.length <= 0) || (feedback_text == feedback_elem.attr('title'))) {
 			error_mes = ['Please Enter A Feedback'];
 			display_error_mes(error_mes);
 			return false;
-		}else{
+		} else {
 			return true;
 		}
+
 	}
+
 	function validate_email(email) {
 		if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
 		return true;
