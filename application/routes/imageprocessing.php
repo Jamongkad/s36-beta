@@ -10,7 +10,8 @@ return array(
 
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
-            , 'file_name'  => date("mdyhis").'.jpg'
+            , 'file_name'  => 'coverphoto_' . $user->userid . '.jpg'
+            , 'overwrite'  => true
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
             , 'param_name' => 'files'
