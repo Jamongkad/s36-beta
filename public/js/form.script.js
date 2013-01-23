@@ -655,18 +655,25 @@ $(document).keypress(function(event){
             var feedback_title = $('#feedbackTitle');
             var feedback_rating = $("#rating");
 
+            var error_mes = [];
+
+            if(feedback_rating.val() == 0) { 
+                error_mes = ['Please provide a title for your feedback.'];
+            }
+
+            if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
+                error_mes = ['Please provide a title for your feedback.'];
+            } 
+
             if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
-                error_mes = ['Please provide your feedback.'];
-                display_error_mes(error_mes);
+                error_mes = ['Please provide your feedback.']; 
+            }
+            
+            if(error_mes.length > 0) {
+                display_error_mes(error_mes);     
                 return false;
             }
             
-            if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
-                error_mes = ['Please provide a title for your feedback.'];
-                display_error_mes(error_mes);
-                return false;
-            } 
-
             return true;
         }
     }
