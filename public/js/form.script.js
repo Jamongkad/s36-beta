@@ -651,11 +651,26 @@ $(document).keypress(function(event){
         var me = this;
 
         this.validate = function() {
-            return me.validate_feedbacktext();
-        }
-       
-        this.validate_feedbacktext = function() {
-            return false;    
+			var feedback_text = $('#feedbackText');	
+            var feedback_title = $('#feedbackTitle');
+            var feedback_rating = $("#rating");
+
+            if((feedback_text.length <= 0) || (feedback_text.val() == feedback_text.attr('title'))) {
+                error_mes = ['Please provide your feedback.'];
+                display_error_mes(error_mes);
+                return false;
+            } else {
+                return true;
+            }
+
+            if((feedback_title.length <= 0) || (feedback_title.val() == feedback_title.attr('title'))) {
+                error_mes = ['Please provide a title for your feedback.'];
+                display_error_mes(error_mes);
+                return false;
+            } else {
+                return true;
+            }
+
         }
     }
 
