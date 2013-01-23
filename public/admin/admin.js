@@ -146,7 +146,7 @@ $(document).ready(function(){
         change_background_repeat('repeat-y');
     });
     $('#saveCoverButton').click(function(){
-        upload_to_server();
+        save_coverphoto();
     });
 });
 function apply_pattern_design(filename){
@@ -244,7 +244,7 @@ function make_cover_undraggable(opt){
         $("#coverPhoto img").draggable({disabled: true});
     }
 }
-function upload_to_server(data){
+function save_coverphoto(data){
     /* pass the variables from here to the database then initialize the codes below if upload to db is successful */
     var error;
     $.ajax({
@@ -252,7 +252,7 @@ function upload_to_server(data){
         url: '/imageprocessing/savecoverphoto',
         type: 'post',
         data: {
-            'src': $('#coverPhoto img').attr('basename'), 
+            'name': $('#coverPhoto img').attr('basename'), 
             'top': $('#coverPhoto img').css('top')
         },
         success: function(result){

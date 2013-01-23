@@ -10,7 +10,9 @@ return array(
 
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
-            , 'file_name'  => date("mdyhis").'.jpg'
+            //, 'file_name'  => date("mdyhis").'.jpg'
+            , 'file_name'  => 'sample.jpg'
+            //, 'overwrite'  => true;
             , 'upload_dir' => '/var/www/s36-upload-images/uploaded_images/coverphoto/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
             , 'param_name' => 'files'
@@ -47,11 +49,22 @@ return array(
     'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {        
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action';
-        
-        $data = Input::all();
-        $data['company_id'] = $user->companyid;
-        //return $company->update_coverphoto($data);
-        $company->update_coverphoto($data);
+        $data       = Input::all();
+        $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
+        $orig_path  = Config::get('application.uploaded_images_dir').'/coverphoto/'.$data['name'];
+        $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
+
+        if(file_exists($final_path)){
+            unlink($final_path);
+        }
+        exec("convert {$orig_path} {$final_path}"); //convert and rename uploaded image using image magick
+        unlink($orig_path);
+        //save to database
+        $company->update_coverphoto(array(
+            'company_id'    =>$user->companyid,
+            'file_name'     =>$file_name,
+            'top'           =>$data['top']
+        ));
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
