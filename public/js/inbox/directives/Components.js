@@ -1,4 +1,4 @@
-angular.module('Components', ['reply', 'request', 'formbuilder'])
+angular.module('Components', ['reply', 'request', 'formbuilder', 'feedback'])
 .directive('helloSettings', function() {
     return {
         restrict: 'E'     
