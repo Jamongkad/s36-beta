@@ -4,6 +4,8 @@ $feedback = new Feedback\Repositories\DBFeedback;
 $category = new DBCategory;
 $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
+$redis = new redisent\Redis;
+$auth = S36Auth::user();
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
@@ -248,5 +250,17 @@ return array(
 
         $emailservice = new Email\Services\EmailService($fastdata);
         return $emailservice->send_email();
-    }) 
+    }),
+
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($feedback, $auth, $redis) 
+    
+        $user_id    = $auth->userid;
+        $company_id = $auth->companyid;
+        $checked    = $redis->hget("user:$user_id:$company_id", "feedid_checked");
+
+        if($checked == 0) {    
+            $count = $feedback->total_newfeedback_by_company(); 
+            echo json_encode(Array('feedback_count' => $count));
+        }               
+    }),
 );
