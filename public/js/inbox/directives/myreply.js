@@ -10,10 +10,7 @@ angular.module('reply', [])
                 MessageService.register_reply_message();
 
                 $('div#reply-to-user').draggable();
-                 
-                console.log($(".dialog-form[feedid="+feedid+"]").fadeIn());
-                s36Lightbox(100, 100, 'Mathew');
-
+                $(".dialog-form[feedid="+feedid+"]").show();
                 e.preventDefault();
             });
         }
@@ -27,6 +24,7 @@ angular.module('reply', [])
             $(this).parents(".dialog-form").fadeOut();
 
             $('div#reply-to-user').draggable("destroy");
+            console.log("this should close");
             e.preventDefault();
         });
     }
