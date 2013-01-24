@@ -10,8 +10,9 @@ angular.module('reply', [])
                 MessageService.register_reply_message();
 
                 $('div#reply-to-user').draggable();
-                $(".dialog-form[feedid="+feedid+"]").fadeIn();
-                console.log("Mathew");
+                 
+                console.log($(".dialog-form[feedid="+feedid+"]").fadeIn());
+
                 e.preventDefault();
             });
         }
