@@ -1011,7 +1011,7 @@ margin-bottom: 3px;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
-    display: none;
+    display: block;
 }
 .lightbox-close{
     background:url("../img/lightbox-close.png") no-repeat;
