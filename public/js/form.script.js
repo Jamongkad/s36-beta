@@ -460,6 +460,12 @@ $(document).keypress(function(event){
 			display_text_editor();
 		});
 		
+		/* add image click to upload */
+		$('#addImage').bind('click',function(e){
+			init_file_upload();
+			e.preventDefault();
+		});
+		
 		init_thumbnail_close_btn();
 		scale_feedback_textbox();
 	});
@@ -780,7 +786,7 @@ $(document).keypress(function(event){
 
 	function scale_feedback_textbox(){
         /* set the default textbox height px */
-        var default_ht = 280;
+        var default_ht = 270;
         /* set heights of the elements by px */
         var im = 78; // image container
         var vd = 68; // video container

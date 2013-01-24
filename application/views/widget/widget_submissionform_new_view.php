@@ -175,7 +175,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                     
                     <!-- start of the image upload -->
                     <div class="form-add-image">
-                        <a href="javascript:;" class="video-icon" title="Just paste any link in the feedback text box and we'll do the rest" alt="Just paste any link in the feedback text box and we'll do the rest"></a><a href="#" class="image-icon" title="Upload Images" alt="Upload Images" onclick="init_file_upload()">Add Image(s)</a><span> - optional (3 maximum)</span>
+                        <a href="javascript:;" class="video-icon" title="Just paste any link in the feedback text box and we'll do the rest" alt="Just paste any link in the feedback text box and we'll do the rest"></a><a href="#" class="image-icon" title="Upload Images" alt="Upload Images" id="addImage">Add Image(s)</a><span> - optional (3 maximum)</span>
                     </div>
                     
                     <div id="uploaded_images_preview" class="form-image-thumbs clear">
