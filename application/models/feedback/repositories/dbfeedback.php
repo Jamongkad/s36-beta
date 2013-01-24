@@ -445,6 +445,7 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.isFlagged = 0
                  AND Feedback.isSticked = 0
                  AND Feedback.isArchived = 0
+                 AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
         ";
         $sth = $this->dbh->prepare($sql);
 
