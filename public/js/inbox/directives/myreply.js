@@ -26,7 +26,6 @@ angular.module('reply', [])
             $(this).parents(".dialog-form").fadeOut();
 
             $('div#reply-to-user').draggable("destroy");
-            console.log("this should close");
             e.preventDefault();
         });
     }
