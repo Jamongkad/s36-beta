@@ -6,7 +6,7 @@ angular.module('request', [])
             $('div#request-feedback').draggable();
             $('div#request-feedback.lightbox').show();
             e.preventDefault();
-        })
+        });
     }
 })
 .directive('myRequestClose', function() {
@@ -16,8 +16,7 @@ angular.module('request', [])
             $('div#request-feedback').draggable("destroy");
             e.preventDefault();
         })
-    }
-    
+    } 
 })
 .directive('myRequestSend', function() {
     return function(scope, element, attr) {
