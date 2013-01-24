@@ -12,6 +12,7 @@ angular.module('reply', [])
                 $('div#reply-to-user').draggable();
                  
                 console.log($(".dialog-form[feedid="+feedid+"]").fadeIn());
+                s36Lightbox(100, 100, 'Mathew');
 
                 e.preventDefault();
             });
