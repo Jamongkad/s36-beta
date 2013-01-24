@@ -4,14 +4,14 @@
 <?= HTML::style('css/s36_client_style.css'); ?>
 
 <?php if( ! is_null($user) ): ?>
-    <?= HTML::style('admin/admin.css'); ?>
-    <?= HTML::style('admin/jcarousel.skin.css'); ?>
-    <?= HTML::script('admin/jcycle.js'); ?>
+    <?= HTML::style('themes/hosted/fullpage/admin/admin.css'); ?>
+    <?= HTML::style('themes/hosted/fullpage/admin/jcarousel.skin.css'); ?>
+    <?= HTML::script('themes/hosted/fullpage/admin/jcycle.js'); ?>
     <?= HTML::script('js/jquery.ui.widget.js'); ?>
     <?= HTML::script('js/jquery.iframe-transport.js'); ?>
     <?= HTML::script('js/jquery.fileupload.js'); ?>
-    <?= HTML::script('admin/jquery.jcarousel.min.js'); ?>
-    <?= HTML::script('admin/admin.js'); ?>
+    <?= HTML::script('themes/hosted/fullpage/admin/jquery.jcarousel.min.js'); ?>
+    <?= HTML::script('themes/hosted/fullpage/admin/admin.js'); ?>
 <?php endif; ?>
 
 <script type="text/javascript">
