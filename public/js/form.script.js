@@ -392,6 +392,7 @@ $(document).keypress(function(event){
 		$('#back').click(function(){
 			$steps.cycle('prev');
 		});
+
 		/* ========================
 		   
 		   Below is Rating Function found on the form page.
@@ -399,8 +400,7 @@ $(document).keypress(function(event){
 		   -Pass a variable to the hidden input when a star is clicked.
 		   -Check console.log for details.
 		   
-		   ========================*/
-		   
+		   ======================== */   
 		$('.dynamic-stars .star-container .star').hover(function(){
 			var index = $(this).index();
 			var rating = "";
@@ -453,7 +453,7 @@ $(document).keypress(function(event){
 		$('#your_email').blur(function(){
 			if(!validate_field( $(this).attr('id')   , $(this).val()   , $(this).attr('title')   , "email")){
 				display_error_mes(['Please Enter A Valid Email']);
-				}
+			}
 		});
 		
 		$('.fullscreen-icon,#edit_text_link').click(function(){
@@ -500,6 +500,7 @@ $(document).keypress(function(event){
 			return 0;
 		}
 	}
+
 	function convert_rating_to_text(val){
 		var rating;
 		switch(val){
@@ -514,7 +515,7 @@ $(document).keypress(function(event){
 			case 0: rating = "Bad";
 			break;
 			default: rating = "";
-			break;
+		    break;
 		}
 		return rating;
 	}
@@ -546,6 +547,7 @@ $(document).keypress(function(event){
 		});
 		display_lightbox();
 	}
+
 	function display_loading(bool){
 		if(bool)
 		$('.loading-box').fadeIn('fast');

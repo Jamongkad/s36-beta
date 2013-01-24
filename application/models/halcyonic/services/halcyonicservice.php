@@ -8,7 +8,7 @@ class HalcyonicService {
     public $company_id;
 
     public function __construct()  {
-        $this->redis = new redisent\Redis; 
+        $this->redis    = new redisent\Redis; 
         $this->feedback = new DBFeedback;
     } 
     
