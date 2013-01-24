@@ -11,6 +11,7 @@ angular.module('reply', [])
 
                 $('div#reply-to-user').draggable();
                 $(".dialog-form[feedid="+feedid+"]").fadeIn();
+                console.log("Mathew");
                 e.preventDefault();
             });
         }
