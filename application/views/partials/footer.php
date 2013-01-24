@@ -27,7 +27,7 @@
 <?=HTML::script('js/jquery.fileupload.js'); ?>
 
 <?=HTML::script('js/inbox/services/SettingsService.js')?>
-<?//=HTML::script('js/inbox/services/FeedbackService.js')?>
+<?=HTML::script('js/inbox/services/FeedbackService.js')?>
 
 <?=HTML::script('js/inbox/directives/Components.js')?>
 <?=HTML::script('js/inbox/directives/myreply.js')?>
