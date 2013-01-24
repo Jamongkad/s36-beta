@@ -1,5 +1,6 @@
 angular.module('Services', [])
 .service('FeedbackService', function($rootScope) {
+
     var shared_service = {};
     shared_service.feedback_count;
 
