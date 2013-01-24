@@ -44,15 +44,15 @@ angular.module('Components', ['reply', 'request', 'formbuilder'])
                     }
                     configure.dialog("close");
                 }
-
             });
         }
     }    
 })
-
+/*
 $('.reply-configure, .request-configure, .modal-configure').dialog({
     autoOpen: false  
   , height: 402
   , width: 456
   , modal: true
 });
+*/

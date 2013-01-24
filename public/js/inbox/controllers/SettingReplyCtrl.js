@@ -1,5 +1,4 @@
 //Move DOM changing elements to Directive bitch
-
 function ParentCtrl($scope) {
 
     $scope.msgs;
