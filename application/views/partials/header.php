@@ -58,12 +58,7 @@
                            <sup></sup>
                        <?endif?>
 
-                       <span ng-controller="FeedbackCountCtrl">                    
-                            <sup ng-repeat="cnt in get_feedback_count()"> 
-                                {{cnt.feedback_count}}
-                                {{cnt.checked}}
-                            <sup>
-                       </span>
+                       <sup my-feedbackcount></sup>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>

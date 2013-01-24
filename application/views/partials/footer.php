@@ -31,12 +31,12 @@
 <?=HTML::script('js/inbox/directives/Components.js')?>
 <?=HTML::script('js/inbox/directives/myreply.js')?>
 <?=HTML::script('js/inbox/directives/myrequest.js')?>
+<?=HTML::script('js/inbox/directives/myfeedbackcount.js')?>
 <?=HTML::script('js/inbox/directives/myformbuilder.js')?>
 
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/requestctrl.js')?>
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
-<?=HTML::script('js/inbox/controllers/feedbackcountctrl.js')?>
 
 <?=HTML::script('js/inbox/S36InboxModule.js')?>
 <?=HTML::script('js/jquery.flot.js')?>
