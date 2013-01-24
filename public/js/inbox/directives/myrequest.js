@@ -4,6 +4,7 @@ angular.module('request', [])
         $(element).bind('click', function(e) {
             $('.request-dialog').fadeIn();
             $('div#request-feedback').draggable();
+            $('div#request-feedback.lightbox').show();
             e.preventDefault();
         })
     }
