@@ -1,0 +1,385 @@
+@charset "utf-8";
+/* ADMIN VIEW CSS Document 
+
+    Date: 01/03/2013
+
+*/
+/*
+ * Grid
+ * A simple, flexible, fluid grid system that can flow nicely inside a fluid or a fixed container or play good with another Grid system.
+ * Brajeshwar, http://brajeshwar.com
+ *
+ * Demo & Details: http://brajeshwar.github.com/grid/
+ * Modified by: Dan Oliver Calpatura
+ */
+ 
+/* grids container - wrap your grids within */
+.grids { display:block }
+.grids:after{
+    content:'.';
+    visibility:hidden;
+    display:block;
+    clear:both;
+}
+
+
+/* grids */
+
+.g1of2, .g1of3, .g1of4, .g1of5, .g1of6,
+.g2of3, .g2of5, .g2of4, .g2of6,
+.g3of4, .g3of5, .g3of6,
+.g4of5, .g4of6, 
+.g5of6{ float: left; }
+
+.g1of2  { width: 50%; }
+.g1of3  { width: 33.333333333%; }
+.g1of4  { width: 25%; }
+.g1of5  { width: 20%; }
+.g1of6  { width: 16.666666666%; }
+
+.g2of3  { width: 66.666666666%; }
+.g2of4  { width: 50%; }
+.g2of5  { width: 40%; }
+.g2of6  { width: 33.333333333%; }
+
+.g3of4  { width: 75%; }
+.g3of5  { width: 60%; }
+.g3of6  { width: 50%;}
+
+.g4of5  { width: 80%; }
+.g4of6  { width: 66.666666666%; }
+
+.g5of6  { width: 83.333333333%;}
+#adminWindowBox{
+    position:fixed;
+    width:520px;
+    height:auto;
+    background:#FFF;
+    -webkit-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+        -moz-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+        box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+    z-index:99999;
+    margin-left:-260px;
+    left:30%;
+    top:10%;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;  
+    display: none;
+}
+
+#adminWindowTitleBar{
+    background:#d84402 url(../images/adminTitleBarBg.jpg) repeat-x;
+    color:#FFF;
+    padding:10px;
+    cursor:move;
+    border-bottom:#b93900 1px solid;
+    -webkit-border-top-right-radius:inherit;
+    -moz-border-top-right-radius:inherit;
+    border-top-right-radius:inherit;
+    -webkit-border-top-left-radius:inherit;
+    -moz-border-top-left-radius:inherit;
+    border-top-left-radius:inherit;
+}
+#adminWindowTitleBar .closeBtn{
+    width:21px;
+    height:21px;
+    background:url(../images/adminWindowClose.png) no-repeat top;
+    position:absolute;
+    right:5px;
+    top:5px;
+    cursor:pointer;
+}
+#adminWindowTitleBar .closeBtn:hover{
+    background-position:bottom;
+}
+#adminWindowTitleBar .minBtn{
+    width:21px;
+    height:21px;
+    background:url(../images/adminWindowMin.png) no-repeat top left;
+    position:absolute;
+    right:30px;
+    top:5px;
+    cursor:pointer;
+}
+#adminWindowTitleBar .minBtn:hover{
+    background-position:top right;
+}
+#adminWindowTitleBar .minBtn.maxBtn{
+    background-position:bottom right;
+}
+#adminWindowTitleBar .minBtn.maxBtn:hover{
+    background-position:bottom left;
+}
+#adminWindowMenuBar{
+    background:#273847 url(../images/adminMenuBarBg.jpg) repeat-x;
+    padding:10px;
+    border-top:#3d5365 1px solid;
+}
+#adminWindowMenuBar ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+#adminWindowMenuBar ul li:first-child{
+    border-left:none;
+}
+#adminWindowMenuBar ul li:last-child{
+    border-right:none;
+}
+#adminWindowMenuBar ul li{
+    display:inline;
+    padding:0px 10px;
+    border-right:1px solid #394b5a;
+    border-left:1px solid #253441;  
+    margin-left:-3px;
+}
+#adminWindowMenuBar ul li a{
+    color:#6b7680;
+}
+#adminWindowMenuBar ul li a:hover{
+    color:#CCC;
+}
+#adminWindowMenuBar ul li a.active{
+    color:#FFF;
+}
+.pageContents{
+    padding:20px 25px;
+}
+.pageTitle{
+    padding:5px 0px 10px;
+    font-size:14px;
+    font-weight:bold;
+    color:#de4c09;
+}
+#adminWindowBox h2{
+    font-weight:bold;
+}
+#notification{
+    position: fixed;
+    bottom: 0;
+    z-index: 100000;
+    margin: 0 -420px 0 0;
+    right: 50%;
+    border-bottom: none;
+    opacity:0;
+    }
+#notification-design{
+    position: relative;
+    border: 1px solid #e09107;
+    border-right: 1px solid #e09107;
+    border-bottom: 1px solid #e09107;
+    background: #f5b902 url(/img/loader.gif) no-repeat 8px center;
+    -webkit-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+    -moz-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+    box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    border-image: initial;
+}
+#notification-message{
+    text-align: left;
+    padding: 0 15px 0 35px;
+    line-height: 32px;
+    color: #FFC;
+    text-shadow:#e09107 0px 1px;
+    font-weight:bold;
+}
+#adminWindowPages{
+    width:520px;
+}
+.adminPage{
+    width:520px;
+}
+#bgDragBox{
+    background:#f4f4f4;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    margin-top:12px;
+    height:135px;
+    width:100%;
+    text-align:center;
+}
+#bgDragBox #dragBoxText{
+    font-size:14px;
+    display:block;
+    padding-top:30px;color:#465868;
+}
+#bgDragBox #dragBoxText span{
+    display:block;
+}
+#bgDragBox #dragBoxText strong{
+    font-weight:bold;
+}
+#bgDragBox #dragBoxText span.uploadBtn{
+    display:inline-block;
+    background:url(../images/adminUploadBtn.png) no-repeat top;
+    width:214px;
+    height:47px;
+    margin-top:5px;
+    cursor:pointer;
+}
+#bgDragBox #dragBoxText span.uploadBtn:hover{
+    background-position:center;
+}
+#bgDragBox #dragBoxText span.uploadBtn:active{
+    background-position:bottom;
+}
+.backgroundChooser{
+    border:4px solid #cecece;
+    width:67px;
+    height:42px;
+    cursor:pointer;
+}
+.backgroundChooser:hover{
+    border-color:#09C;
+}
+#backgroundOptions{
+    margin-top:10px;
+}
+.optionList{
+    padding:10px 5px 10px 0px;
+}
+.optionList .label{
+    float:left;
+    width:80px;
+}
+.optionList strong{
+    font-weight:bold;
+}
+.optionList .input{
+    margin-left:100px;
+    margin-top:-5px;
+}
+.optionList p.companyDescription{
+    color:#465868;
+    font-size:14px;
+    line-height:19px;
+}
+.selectionBtn{
+    background:#069 url(../images/fadedBtn.png) repeat-x top;
+    color:#FFF;
+    margin:0px;
+    padding:5px 10px;
+    margin-left:-3px;
+    font-size:11px;
+}
+.selectionBtn.active,.selectionBtn.active:hover{
+    background-color:#153f54;   
+    color:#FFF;
+}
+.selectionBtn:hover{
+    background-color:#2ba6e2;
+    color:#FFF;
+}
+.minicolors-swatch{
+    width:53px;
+    height:42px;
+}
+
+
+ul.patternList li{
+    display:inline;
+}
+ul.patternList li div{
+    border:4px solid #cecece;
+    width:67px;
+    height:42px;
+    cursor:pointer;
+    display:inline-block;
+}
+ul.patternList li div:hover{
+    border-color:#09C;
+}
+ul.patternList li div.active{
+    border-color:#099;
+}
+#adminWindowBox select{
+    font-size:11px;
+    padding:2px 4px;
+}
+#adminWindowBox input[type=text]{
+    font-size:11px;
+    padding:6px 6px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;      
+    border:1px solid #999;
+    margin:0px;
+    background:#f4f4f4;
+    color:#AAA;
+    border:#e7e7e7 1px solid;
+    width:300px;
+}
+#upload-status-area{
+    margin:5px;
+}
+.upload-preview{
+    display:none;
+}
+.progress-container{ width: 100px; }
+.progress-shade{ width: 0%; height: 15px; background:url(../images/load-bg.jpg) repeat-x;}
+
+#changeCoverButton{
+    position:absolute;
+    background:#FFF;
+    border:1px solid #CCC;
+    right:10px;
+    top:10px;
+    z-index:1;
+    padding:2px 4px;
+    font-size:10px;
+    cursor:pointer;
+    color:#666;
+    font-family:Verdana, Geneva, sans-serif;
+    font-weight:bold;
+}
+#changeCoverButtonText{
+    cursor:pointer;
+}
+#changeCoverButton:active{
+    background:#EEE;
+}
+#saveCoverButton{
+    position:absolute;
+    background:#FFF;
+    border:1px solid #CCC;
+    right:10px;
+    top:10px;
+    z-index:1;
+    padding:2px 4px;
+    font-size:10px;
+    cursor:pointer;
+    color:#666;
+    font-family:Verdana, Geneva, sans-serif;
+    font-weight:bold;
+    display:none;
+}
+#saveCoverButton:active{
+    background:#EEE;
+}
+#dragPhoto{
+    background: url(/img/drag-bg.png);
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:10px;
+    position:absolute;
+    font-weight:bold;
+    color:#FFF;
+    z-index:1000;
+    top:10px;
+    left:10px;
+    padding:2px 6px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    display:none;
+}
+#changeCoverButton input {
+    cursor:pointer;background:#000;position:absolute;top:0px;margin:0px;opacity:0;filter: alpha(opacity=0);transform: translate(-300px, 0) scale(4);
+    direction:rtl;width:88px;
+    height:17px;
+    font-size:17px;
+}
