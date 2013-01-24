@@ -4,7 +4,6 @@ function FeedbackCountCtrl($scope, FeedbackService) {
     $scope.counts = FeedbackService.feedback_count;
 
     $scope.get_feedback_count = function() {
-        console.log($scope.counts);
         return $scope.counts;     
     }
 
