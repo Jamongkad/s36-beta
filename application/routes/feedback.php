@@ -252,7 +252,7 @@ return array(
         return $emailservice->send_email();
     }),
 
-    'GET /feedback/get_feedback_count' => Array('do' => function() use ($feedback, $auth, $redis) 
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($feedback, $auth, $redis) {
     
         $user_id    = $auth->userid;
         $company_id = $auth->companyid;
