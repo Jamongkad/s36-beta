@@ -60,7 +60,7 @@
 
                        <span ng-controller="FeedbackCountCtrl">                    
                             <sup ng:class="get_class(counts.checked)"> 
-                                {{display_count()}}
+                                {{counts}}
                             <sup>
                        </span>
                     </li>                 
