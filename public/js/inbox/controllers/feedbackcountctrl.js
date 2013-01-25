@@ -1,7 +1,10 @@
 function FeedbackCountCtrl($scope, FeedbackService) {
 
+    var self = this;
+
     FeedbackService.get_feedback_count();
     $scope.counts = FeedbackService.feedback_count;
+    self.counts = FeedbackService.feedback_count;
 
     $scope.get_feedback_count = function() {
         return $scope.counts;     
@@ -16,8 +19,8 @@ function FeedbackCountCtrl($scope, FeedbackService) {
     }
 
     $scope.display_count = function() {
-        if($scope.checked == 0)
-            return $scope.feedback_count;
+        if(self.checked == 0)
+            return self.feedback_count;
     }
 
     //Broadcast Messages
