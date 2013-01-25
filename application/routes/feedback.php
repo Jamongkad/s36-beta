@@ -265,6 +265,7 @@ return array(
         }               
         */
         $count = $feedback->total_newfeedback_by_company(); 
-        echo json_encode(Array('feedback_count' => $count, 'checked' => $checked));
+        $count_data = Array('feedback_count' => $count, 'checked' => $checked);
+        echo json_encode($count_data);
     }),
 );
