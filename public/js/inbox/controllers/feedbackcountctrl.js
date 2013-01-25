@@ -10,8 +10,8 @@ function FeedbackCountCtrl($scope, FeedbackService) {
         return $scope.counts;     
     }
 
-    $scope.get_class = function(index) {
-        if(index == "1") {
+    $scope.get_class = function() {
+        if(self.counts.checked == 0) {
             return "count";
         }
 
