@@ -258,14 +258,8 @@ return array(
         $company_id = $auth->companyid;
         $checked    = $redis->hget("user:$user_id:$company_id", "feedid_checked");
         
-        /*
-        if($checked == 0) {    
-            $count = $feedback->total_newfeedback_by_company(); 
-            echo json_encode(Array('feedback_count' => $count));
-        }               
-        */
         $count = $feedback->total_newfeedback_by_company(); 
-        $count_data = Array('feedback_count' => $count, 'checked' => 0);
+        $count_data = Array('feedback_count' => $count, 'checked' => $checked);
         echo json_encode($count_data);
     }),
 );

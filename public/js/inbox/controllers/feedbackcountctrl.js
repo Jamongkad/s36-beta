@@ -15,6 +15,11 @@ function FeedbackCountCtrl($scope, FeedbackService) {
         return "";
     }
 
+    $scope.display_count = function() {
+        if($scope.checked)
+            return $scope.feedback_count;
+    }
+
     //Broadcast Messages
     /*
     $scope.$on('requestFeedbackCount', function()  {
