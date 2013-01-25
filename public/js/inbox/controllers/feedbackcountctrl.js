@@ -16,7 +16,7 @@ function FeedbackCountCtrl($scope, FeedbackService) {
     }
 
     $scope.display_count = function() {
-        if($scope.checked)
+        if($scope.checked == 0)
             return $scope.feedback_count;
     }
 
