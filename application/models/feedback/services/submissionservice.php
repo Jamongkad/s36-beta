@@ -4,6 +4,7 @@ use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackAttachments, Fee
 use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use Contact\Repositories\DBContact;
+use Halcyonic\Services\HalcyonicService;
 use DBBadWords, DBDashboard, DBUser;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
@@ -24,6 +25,7 @@ class SubmissionService {
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
         $this->dbh = DB::connection('master')->pdo;
+        $this->halcyonic        = new HalcyonicService;
         //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
         //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
     }
