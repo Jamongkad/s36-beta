@@ -7,6 +7,14 @@ function FeedbackCountCtrl($scope, FeedbackService) {
         return $scope.counts;     
     }
 
+    $scope.get_class = function(index) {
+        if(index == "1") {
+            return "count";
+        }
+
+        return "";
+    }
+
     //Broadcast Messages
     /*
     $scope.$on('requestFeedbackCount', function()  {
