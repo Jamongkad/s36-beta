@@ -59,8 +59,8 @@
                        <?endif?>
 
                        <span ng-controller="FeedbackCountCtrl">                    
-                            <sup class="count" ng-repeat="cnt in get_feedback_count()"> 
-                                {{cnt.feedback_count}}
+                            <sup class="count"> 
+                                {{counts.feedback_count}}
                             <sup>
                        </span>
                     </li>                 
