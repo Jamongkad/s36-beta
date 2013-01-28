@@ -19,61 +19,6 @@
         <?=HTML::style('css/zebra_pagination.css')?>
         <?=HTML::style('css/jquery.formbuilder.css')?>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
-
-        <?=HTML::script('js/jquery.validate.js')?>
-        <?=HTML::script('js/jquery.formbuilder.js')?>
-        <?=HTML::script('js/jquery.ae.image.resize.min.js')?>
-
-        <?=HTML::script('js/jquery.iframe-transport.js'); ?>
-        <?=HTML::script('js/jquery.fileupload.js'); ?>
-
-        <?=HTML::script('js/inbox/services/SettingsService.js')?>
-
-        <?=HTML::script('js/inbox/directives/Components.js')?>
-        <?=HTML::script('js/inbox/directives/myreply.js')?>
-        <?=HTML::script('js/inbox/directives/myrequest.js')?>
-        <?=HTML::script('js/inbox/directives/myfeedbackcount.js')?>
-        <?=HTML::script('js/inbox/directives/myformbuilder.js')?>
-
-        <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
-        <?=HTML::script('js/inbox/controllers/requestctrl.js')?>
-        <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
-        <?=HTML::script('js/inbox/controllers/feedbackcountctrl.js')?>
-
-        <?=HTML::script('js/inbox/S36InboxModule.js')?>
-        <?=HTML::script('js/jquery.flot.js')?>
-        <?=HTML::script('js/jquery.flot.pie.js')?>
-
-        <?=HTML::script('js/head.min.js')?>
-        <?
-            $js_scripts = Array(
-               '/js/jquery.switcharoo.js'
-             , '/js/jquery.fancytips.js'
-             , '/js/jquery.form.js'
-             , '/js/jquery.tmpl.js'
-             , '/js/jquery.jcrop.js'
-             , '/js/jquery.ajaxfileupload.js' 
-             , '/js/jquery.zclip.js' 
-             , '/js/jquery.zclip.js' 
-             , '/js/inbox/s36LightBox.js'
-             , '/js/inbox/ZClip.js'
-             , '/js/inbox/Checky.js'
-             , '/js/inbox/DropDownChange.js'
-             , '/js/inbox/InboxStatusChange.js'
-             , '/js/inbox/InboxFilters.js'
-             , '/js/inbox/FeedSetup.js'
-             , '/js/inbox/Status.js'
-             , '/js/inbox/Settings.js'
-             , '/js/inbox/s36application.js'
-           );
-        ?> 
-        <script text="text/javascript">
-            <?foreach($js_scripts as $scripts):?>
-               head.js('<?=$scripts?>');
-            <?endforeach?>
-        </script>
     </meta>    
 </head>
 <body>
@@ -96,22 +41,6 @@
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
-
-                       <?
-                       //todo: ajaxify this use motherfuckin Angular mah nigguh
-                       $redis = new redisent\Redis;
-                       $user_id = S36Auth::user()->userid;
-                       $company_id = S36Auth::user()->companyid;
-                       $checked = $redis->hget("user:$user_id:$company_id", "feedid_checked");
-                       if($checked == 0):?> 
-                           <?
-                           $feedback = new Feedback\Repositories\DBFeedback;
-                           $count = $feedback->total_newfeedback_by_company(); 
-                           ?>
-                           <sup class="count"><?=$count?></sup> 
-                       <?else:?>
-                           <sup></sup>
-                       <?endif?>
 
                        <span ng-controller="FeedbackCountCtrl">                    
                             <sup ng:class="get_class()"> 
