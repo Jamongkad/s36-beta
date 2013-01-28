@@ -12,3 +12,9 @@
 .regular .feedback-actions span{ margin-left: 0px; }
 .share-box{ width: 75px; }
 .btn-block{ text-align: left; }
+
+
+/*Fullpage*/
+.author .author-information .author-company{
+	width: 185px;
+}
