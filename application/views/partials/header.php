@@ -44,7 +44,7 @@
 
                        <span ng-controller="FeedbackCountCtrl">                    
                             <sup ng:class="get_class()"> 
-                                {{display_count()}}
+                                {{counts.feedback_counts}}
                             <sup>
                        </span>
 
