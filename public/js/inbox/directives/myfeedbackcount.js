@@ -5,11 +5,11 @@ angular.module('feedback', [])
       , link: function(scope, element, attrs) {
 
             FeedbackService.get_feedback_count();
-            var feedback_counts = FeedbackService.feedback_count;
+            var feedback = FeedbackService.feedback_count;
 
             console.log(feedback_counts);
 
-            $(element).html("mathew");
+            $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");
         }
     }    
 })
