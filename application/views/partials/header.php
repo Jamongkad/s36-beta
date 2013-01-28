@@ -47,6 +47,7 @@
                                 {{counts.feedback_counts}}
                             <sup>
                        </span>
+                       <span my-feedbackcount></span>
 
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
