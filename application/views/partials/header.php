@@ -41,12 +41,13 @@
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
-
+                       <!--
                        <span ng-controller="FeedbackCountCtrl">                    
                             <sup ng:class="get_class()"> 
                                 {{counts.feedback_counts}}
                             <sup>
                        </span>
+                       -->
                        <span my-feedbackcount></span>
 
                     </li>                 
