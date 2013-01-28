@@ -8,8 +8,10 @@ angular.module('feedback', [])
             var feedback = FeedbackService.feedback_count;
 
             console.log(feedback);
-
-            $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");
+            if(feedback.checked == 0) {
+                $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");     
+            }
+           
         }
     }    
 })
