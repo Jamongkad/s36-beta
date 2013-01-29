@@ -41,28 +41,14 @@
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
-
-                       <?
-                       //todo: ajaxify this use motherfuckin Angular mah nigguh
-                       $redis = new redisent\Redis;
-                       $user_id = S36Auth::user()->userid;
-                       $company_id = S36Auth::user()->companyid;
-                       $checked = $redis->hget("user:$user_id:$company_id", "feedid_checked");
-                       if($checked == 0):?> 
-                           <?
-                           $feedback = new Feedback\Repositories\DBFeedback;
-                           $count = $feedback->total_newfeedback_by_company(); 
-                           ?>
-                           <sup class="count"><?=$count?></sup> 
-                       <?else:?>
-                           <sup></sup>
-                       <?endif?>
-
+                       <!--
                        <span ng-controller="FeedbackCountCtrl">                    
                             <sup ng:class="get_class()"> 
-                                {{display_count()}}
+                                {{counts.feedback_counts}}
                             <sup>
                        </span>
+                       -->
+                       <span my-feedbackcount></span>
 
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
