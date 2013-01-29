@@ -7,7 +7,6 @@ angular.module('feedback', [])
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback_count;
 
-            console.log(feedback);
             if(feedback.checked) {
                 $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");     
             }
