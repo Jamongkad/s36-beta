@@ -1,37 +1,30 @@
-<?php
-	$layout = "timeline"; //layout
-	$as = false; 		  //set true to admin view
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html ng-app="S36FullPageModule" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/master.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/flags.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/grids.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/override.css" />
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/css/<?php echo $layout ?>.layout.css" />
-
-
-<script type="text/javascript" src="themes/hosted/fullpage/js/masonry.js"></script>
-<script type="text/javascript" src="themes/hosted/fullpage/js/modernizr.js"></script>
-<script type="text/javascript" src="themes/hosted/fullpage/js/jquery-ui-1.8.24.custom.min.js"></script>
-<link type="text/css" rel="stylesheet" href="themes/hosted/fullpage/js/<?php echo $layout ?>.layout.js" />
-
-
-<!--new ajax file upload plugin -->
-<script type="text/javascript" src="js/jquery.iframe-transport.js"></script>
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="js/jquery.fileupload.js"></script>
-<!--new ajax file upload plugin -->
-
 <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
-<?= HTML::script('js/helpers.js'); ?>
-<?= HTML::script('themes/hosted/fullpage/js/feedbackactions.js'); ?>
+
+<?= HTML::style('/fullpage/common/css/master.css'); ?>
+<?= HTML::style('/fullpage/common/css/flags.css'); ?>
+<?= HTML::style('/fullpage/common/css/grids.css'); ?>
+<?= HTML::style('/fullpage/common/css/override.css'); ?>
+<?= HTML::style('/fullpage/common/css/s36_client_style.css'); ?>
+<?= HTML::style('/fullpage/layout/timeline/css/S36FullpageLayoutTimeline.css'); ?>
+
+<?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?= HTML::script('/js/jquery.raty.min.js'); ?>
+
+<?= HTML::script('/fullpage/common/js/masonry.js'); ?>
+<?= HTML::script('/fullpage/common/js/modernizr.js'); ?>
+<?= HTML::script('/fullpage/common/js/feedbackactions.js'); ?>
+<?= HTML::script('/fullpage/common/js/s36_client_script.js'); ?>
+
 </head>
 <body>
 <div id="fb-root"></div>

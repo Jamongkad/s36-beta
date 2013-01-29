@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+
+#s36_modalshadow {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:url(/img/faded-bg.png) repeat;
+	z-index: 100001;
+}
+
+#s36_modalbox {
+	position: absolute;
+	display: none;
+    margin-top: -295px;
+	top: 50%;
+	left: 50%;
+	background-color: white;
+	z-index:100002;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;	
+}
+
+#s36_modalbox iframe{
+ -webkit-border-radius:10px;
+ -moz-border-radius:10px;
+ border-radius:10px;
+}
+
+#s36PopupWidgetShadow {
+	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:url(/img/faded-bg.png) repeat;
+	z-index: 99998;
+}
+
+#s36PopupWidgetBox{
+	position: absolute;
+	display: none;
+	top: 100px;
+	left: 50%;
+	background-color: white;
+	z-index:99999;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;	
+	width:760px;
+	height:500px;
+	margin-left:-380px;
+}
+
+#s36PopupWidgetSendFeedback{
+	position:absolute;
+    /*same thing here when viewall button returns
+     * left:520px;
+     * */
+	left:620px;
+	top:17px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+}
+
+#s36_closebtn{
+    cursor: pointer;
+    position:absolute;
+    top:-20px;
+    right:-20px;
+    height:45px;
+    width:45px;
+    z-index: 999999;
+    background:url(/img/s36-btn-cl.png) no-repeat; 
+}
+
+#s36_closebtn:hover{background-position:top}
+
+#s36_widget_button{
+	width:76px;
+	height:77px;
+	position:fixed;
+	z-index:100000;
+	right:0px;
+	bottom:0px;
+	background:url(/img/s36-btn-lr.png) bottom center;
+	cursor:pointer;
+}
+
+#s36_widget_button:hover{background-position:top;}
+.s36_embed_block_x{
+    font-family:Arial, Helvetica, sans-serif;font-weight:bold;
+    color:#333;
+    position:absolute;
+    top:11px;
+    /*Temporary until viewall button is fixed*/
+    /*right:170px;*/
+    right:40px;
+    z-index:10000;
+}
+.s36_embed_block_y{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    color:#333;
+    position:absolute;
+    bottom:58px;
+    left:15px;
+    z-index:10000;
+}
+.s36_embed_block_y a,.s36_embed_block_x a{color:#333 !important;font-size:13px !important;font-weight:bold !important;}

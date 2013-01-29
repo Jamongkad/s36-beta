@@ -1,19 +1,12 @@
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
-<?= HTML::script('/js/s36_client_script.js'); ?>
-<?= HTML::style('css/override.css'); ?>
-<?= HTML::style('css/s36_client_style.css'); ?>
-
 <?php if( ! is_null($user) ): ?>
-    <?= HTML::style('themes/hosted/fullpage/admin/admin.css'); ?>
-    <?= HTML::style('themes/hosted/fullpage/admin/jcarousel.skin.css'); ?>
-    <?= HTML::script('themes/hosted/fullpage/admin/jcycle.js'); ?>
-    <?= HTML::script('js/jquery.ui.widget.js'); ?>
-    <?= HTML::script('js/jquery.iframe-transport.js'); ?>
-    <?= HTML::script('js/jquery.fileupload.js'); ?>
-    <?= HTML::script('themes/hosted/fullpage/admin/jquery.jcarousel.min.js'); ?>
-    <?= HTML::script('themes/hosted/fullpage/admin/admin.js'); ?>
+    <?= HTML::style('/fullpage/admin/css/admin.css'); ?>
+    <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
+    <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
+    <?= HTML::script('/fullpage/admin/js/admin.js'); ?>
+    <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
 <?php endif; ?>
 
+<?=HTML::script('/fullpage/layout/timeline/js/S36FullpageLayoutTimeline.js'); ?>
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
 $(document).ready(function(){});
@@ -142,5 +135,3 @@ $(document).ready(function(){});
         <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
     </div>
 </div>
-
-<?=HTML::script('/themes/hosted/fullpage/js/timeline.layout.js'); ?>

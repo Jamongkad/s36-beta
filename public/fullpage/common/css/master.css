@@ -93,7 +93,7 @@ a:hover{
 #fadedContainer{
 	margin:0 auto;
 	width:876px;
-	background:#FFF url(../images/body-bg.png);
+	background:#FFF url(/fullpage/common/img/body-bg.png);
 }
 #mainContainer{
 	margin:0 auto;
@@ -164,7 +164,7 @@ a:hover{
 }
 .green-thumb{
 	padding-left:24px;
-	background:url(../images/green-thumb.png);
+	background:url(/fullpage/common/img/green-thumb.png);
 	background-repeat:no-repeat;
 	background-position:left center;
 	padding-top:5px;
@@ -198,7 +198,7 @@ a:hover{
 }
 .stars .star{
 	width:16px;margin-right:2px;
-	background:url(../images/star-sprites.png) bottom center;
+	background:url(/fullpage/common/img/star-sprites.png) bottom center;
 	background-repeat:no-repeat;
 	height:15px;
 	float:left;
@@ -353,7 +353,7 @@ a:hover{
 #lightboxNotification{
 	position:fixed;
 	width:290px;
-	background:url(../images/faded-bg.png);
+	background:url(/fullpage/common/img/faded-bg.png);
 	z-index:1000;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;

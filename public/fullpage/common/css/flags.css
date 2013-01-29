@@ -1,14 +1,7 @@
 .flag {
 	width: 16px;
 	height: 11px;
-	background:url(../images/flags.jpg) no-repeat;
-	float:left;
-	margin-left:5px;
-}
-.flag-form {
-	width: 16px;
-	height: 11px;
-	background:url(../images/flags.jpg) no-repeat;
+	background:url(../img/flags.jpg) no-repeat;
 	float:left;
 	margin-left:5px;
 }
