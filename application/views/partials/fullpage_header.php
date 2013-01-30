@@ -5,6 +5,21 @@
 <?php
 /*
 |--------------------------------------------------------------------------
+| Global
+|--------------------------------------------------------------------------
+*/
+?>
+
+<?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.raty.min.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+
+<?php
+/*
+|--------------------------------------------------------------------------
 | Third-Party
 |--------------------------------------------------------------------------
 */
@@ -36,17 +51,19 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Global
+| Fullpage Admin
 |--------------------------------------------------------------------------
 */
 ?>
 
-<?= HTML::script('/js/helpers.js'); ?>
-<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
-<?= HTML::script('/js/jquery.ui.widget.js'); ?>
-<?= HTML::script('/js/jquery.fileupload.js'); ?>
-<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
+<?php if( ! is_null(\S36Auth::user()) ): ?>
+<?= HTML::style('/fullpage/admin/css/admin.css'); ?>
+<?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
+
+<?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
+<?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
+<?= HTML::script('/fullpage/admin/js/admin.js'); ?>
+<?php endif; ?> 
 
 <?php
 /*
@@ -100,22 +117,6 @@
         $(window).scroll(throttled);
     });
 </script>
-
-<?php
-/*
-|--------------------------------------------------------------------------
-| Fullpage Admin
-|--------------------------------------------------------------------------
-*/
-?>
-
-<?php if( ! is_null(\S36Auth::user()) ): ?>
-<?= HTML::style('/fullpage/admin/css/admin.css'); ?>
-<?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
-<?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
-<?= HTML::script('/fullpage/admin/js/admin.js'); ?>
-<?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
-<?php endif; ?> 
 
 </head>
 <body>

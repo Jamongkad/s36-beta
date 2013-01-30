@@ -1,17 +1,7 @@
-<?php if( ! is_null($user) ): ?>
-    <?= HTML::style('/fullpage/admin/css/admin.css'); ?>
-    <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
-    <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/admin.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
-<?php endif; ?>
 
-<?=HTML::script('/fullpage/layout/timeline/js/S36FullpageLayoutTimeline.js'); ?>
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
-$(document).ready(function(){});
 </script>
-
 <?php if( ! is_null($user) ): ?>
 <div id="notification">
     <div id="notification-design">
