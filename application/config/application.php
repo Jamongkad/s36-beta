@@ -21,8 +21,20 @@ return array(
     'fb_secret'  => $determine->d->fb_secret,
     'subdomain'  => $determine->d->subdomain,
 
-    'upload_dir' => '/var/www/s36-upload-images',
-    'uploaded_images_dir'=>'/var/www/s36-upload-images/uploaded_images',
+    /*
+	|--------------------------------------------------------------------------
+	| Application Directories
+	|--------------------------------------------------------------------------
+	|
+	| The Directories used to access your different assets. No trailing slash.
+	|
+	*/
+
+    'avatar48_dir'			=> '/uploaded_images/avatar/48x48',
+    'avatar150_dir'			=> '/uploaded_images/avatar/150x150',
+    'coverphoto_dir'		=> '/uploaded_images/coverphoto',
+    'upload_dir'			=> '/var/www/s36-upload-images',
+    'uploaded_images_dir'	=> '/var/www/s36-upload-images/uploaded_images',
 
 	/*
 	|--------------------------------------------------------------------------
