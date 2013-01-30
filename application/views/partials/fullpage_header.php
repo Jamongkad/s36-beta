@@ -5,27 +5,12 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Global
-|--------------------------------------------------------------------------
-*/
-?>
-
-<?= HTML::script('/js/helpers.js'); ?>
-<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
-<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
-<?= HTML::script('/js/jquery.ui.widget.js'); ?>
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
-<?= HTML::script('/js/jquery.fileupload.js'); ?>
-
-<?php
-/*
-|--------------------------------------------------------------------------
 | Third-Party
 |--------------------------------------------------------------------------
 */
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+<?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <div id="fb-root"></div>
 <script type="text/javascript">
@@ -47,6 +32,20 @@
         ref.parentNode.insertBefore(js, ref);
     }(document, /*debug*/ false))
 </script>
+<?php
+/*
+|--------------------------------------------------------------------------
+| Global
+|--------------------------------------------------------------------------
+*/
+?>
+<?= HTML::script('/js/helpers.js'); ?>
+<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
+<?= HTML::script('/js/jquery.ui.widget.js'); ?>
+<?= HTML::script('/js/jquery.raty.min.js'); ?>
+<?= HTML::script('/js/jquery.fileupload.js'); ?>
+
 
 <?php
 /*
@@ -57,12 +56,12 @@
 ?>
 
 <?php if( ! is_null(\S36Auth::user()) ): ?>
-<?= HTML::style('/fullpage/admin/css/admin.css'); ?>
+<?= HTML::style('/fullpage/admin/css/S36FullpageAdmin.css'); ?>
 <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
 
 <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
-<?= HTML::script('/fullpage/admin/js/admin.js'); ?>
+<?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
 <?php endif; ?> 
 
 <?php
