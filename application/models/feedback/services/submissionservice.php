@@ -33,6 +33,7 @@ class SubmissionService {
     public function perform() {         
 
         if($feedback_created = $this->_create_feedback()) {
+
             $company_id = $this->post_data->get('company_id');
             $feedback_id = $feedback_created->feedback_id;
 
@@ -45,6 +46,7 @@ class SubmissionService {
             $this->_save_latest_feedid($company_id);
 
             return $feedback;
+
         } else {
             throw new Exception("Feedback Submission Failed!!");
         }
@@ -86,6 +88,7 @@ class SubmissionService {
             $result_obj = new StdClass;
             $result_obj->feedback_id  = $new_feedback_id;
             $result_obj->contact_id   = $new_contact_id;
+
             return $result_obj;
         }
 
