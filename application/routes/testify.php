@@ -368,14 +368,14 @@ return array(
     },
     
     'GET /testify/messageservice' => function() { 
+
         $tf = new Testify("Message Service");  
-
-
         $tf->test("MessageService", function($tf) { 
             $tf->assert(True);
         });
 
         $tf->run();          
+
     }
 
 );
