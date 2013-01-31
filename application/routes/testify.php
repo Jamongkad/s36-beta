@@ -371,7 +371,9 @@ return array(
 
         $tf = new Testify("Message Service");  
         $tf->test("MessageService", function($tf) { 
-            $tf->assert(True);
+            $im = new InboxMessage;
+            $tf->assert($im);
+            $tf->dump($im);
         });
 
         $tf->run();          
