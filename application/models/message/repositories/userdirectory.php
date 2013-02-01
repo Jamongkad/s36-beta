@@ -54,8 +54,8 @@ class UserDirectory extends S36DataObject {
     }
 
     private function _delete_hash_and_smem_by($user_id) { 
-        $this->redis->del($user);
-        $this->redis->srem($this->redis_key, $user);
+        $this->redis->del($user_id);
+        $this->redis->srem($this->redis_key, $user_id);
     }
 
     private function _build_user_object($members) { 
