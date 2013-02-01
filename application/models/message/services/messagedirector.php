@@ -9,7 +9,7 @@ class MessageDirector {
         $this->directory = new UserDirectory;
     }
 
-    public function use_message($message) {
+    public function send_message($message) {
         $user_dir = $this->directory->fetch_users();
         Helpers::dump($user_dir);
     }
