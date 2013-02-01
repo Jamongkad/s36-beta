@@ -1,4 +1,4 @@
-<?php namespace Message\Services;
+<?php namespace Message\Repositories;
 
 use redisent\Redis;
 use Company\Repositories\DBCompany;
