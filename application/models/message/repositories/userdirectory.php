@@ -39,12 +39,22 @@ class UserDirectory extends S36DataObject {
     }
 
     public function build_user_object($members) { 
+
+        $user_collection = Array();
+
         foreach($members as $member) {
+
             $keys = $this->redis->hkeys($member);
             $vals = $this->redis->hvals($member);
-            Helpers::dump($keys);
-            Helpers::dump($vals);
+
+            for((int)$i=0; $i<count($keys); $i++) {
+                $obj = (object)Array();
+                $obj[$keys[$i]] = $vals[$i];
+                $user_collection[] = $obj;
+            }
         }
+
+        return $user_collection;
     }
 
 }
