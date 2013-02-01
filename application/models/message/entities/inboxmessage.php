@@ -1,4 +1,4 @@
-<?php namespace Message\Services;
+<?php namespace Message\Entities;
 
 use Exception;
 
