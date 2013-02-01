@@ -376,7 +376,7 @@ return array(
             $ud = new Message\Repositories\UserDirectory;
 
             $tf->dump($im);
-            $ud->delete_user('jamongkad:messages');
+            //$ud->delete_user('jamongkad:messages');
             $tf->dump($ud->fetch_users());
         });
 
