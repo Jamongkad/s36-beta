@@ -376,6 +376,7 @@ return array(
             $ud = new Message\Repositories\UserDirectory;
 
             $tf->dump($im);
+            $ud->delete_user('mathew-staging:messages');
             $tf->dump($ud->fetch_users());
         });
 
