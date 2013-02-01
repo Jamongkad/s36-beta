@@ -48,7 +48,7 @@ class UserDirectory extends S36DataObject {
             $vals = $this->redis->hvals($member);
 
             for((int)$i=0; $i<count($keys); $i++) {
-                $obj = (object)Array();
+                $obj = Array();
                 $obj[$keys[$i]] = $vals[$i];
                 $user_collection[] = $obj;
             }
