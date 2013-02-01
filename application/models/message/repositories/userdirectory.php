@@ -3,6 +3,7 @@
 use S36DataObject\S36DataObject;
 use redisent\Redis;
 use Company\Repositories\DBCompany;
+use Helpers;
 
 
 class UserDirectory extends S36DataObject {
@@ -17,9 +18,15 @@ class UserDirectory extends S36DataObject {
     }
     
     public function fetch_users() {
+
+        $user_collection = Array();
+
         if($this->redis->exists($this->redis_key)) {
             //fetch data from redis
-            return $this->redis->smembers($this->redis_key);
+            foreach($this->redis->smembers($this->redis_key) as $member) {
+                $member_query = $this->redis->hgetall($member);
+                Helpers::dump($member_query);
+            }
         } else { 
             //build data from db and insert into redis
             $users = $this->dbcompany->get_account_users();
@@ -28,8 +35,11 @@ class UserDirectory extends S36DataObject {
                 $this->redis->sadd($this->redis_key, $user_key);
                 $this->redis->hset($user_key, "admin:inbox", Null);
             }
-
-            return $this->redis->smembers($this->redis_key);
+            
+            foreach($this->redis->smembers($this->redis_key) as $member) {
+                $member_query = $this->redis->hgetall($member);
+                Helpers::dump($member_query);
+            }
         }
     }
 
