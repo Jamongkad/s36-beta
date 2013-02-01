@@ -15,7 +15,7 @@ class MessageDirector {
         $user_dir = $this->directory->fetch_users();
         
         foreach($user_dir as $user) {
-            Helpers::dump($user->user_id);
+            $this->redis->hset($user->user_id, "admin:inbox", $message->get_message());
         }
     }
 }

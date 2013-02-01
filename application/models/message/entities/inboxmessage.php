@@ -9,4 +9,8 @@ class InboxMessage {
     public function __construct($message) {
         $this->message = $message;
     }
+
+    public function get_message() {
+        return $this->message;
+    }
 }
