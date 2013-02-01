@@ -86,29 +86,28 @@ class DBCompany extends S36DataObject {
     public function get_account_users($company_id = Null){
 
 		$company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
+        $cols = array(
+            'userid',
+            'companyid',
+            'username',
+            'account_owner',
+            'email',
+            'fullname',
+            'title',
+            'phone',
+            'ext',
+            'mobile',
+            'fax',
+            'home',
+            'im',
+            'imid',
+            'avatar'
+		);
 
-		if(!empty($company_id) && is_numeric($company_id)):
+		if(!empty($company_id) && is_numeric($company_id)) 
     		return DB::table('User')
-    				->where('companyId','=',$company_id)
-    				->get(
-						array('userid',
-							'companyid',
-							'username',
-							'account_owner',
-							'email',
-							'fullname',
-							'title',
-							'phone',
-							'ext',
-							'mobile',
-							'fax',
-							'home',
-							'im',
-							'imid',
-							'avatar'
-							)    			
-    			);
-    	endif;
+    				->where('companyId', '=', $company_id)
+    				->get($cols);
     }
     
     public function update_plan($planId){
