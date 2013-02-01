@@ -4,6 +4,7 @@ use S36DataObject\S36DataObject;
 use redisent\Redis;
 use Company\Repositories\DBCompany;
 use Helpers;
+use StdClass;
 
 
 class UserDirectory extends S36DataObject {
@@ -39,9 +40,10 @@ class UserDirectory extends S36DataObject {
 
     public function build_user_object($members) { 
         foreach($members as $member) {
-            Helpers::dump($member);
-            $member_query = $this->redis->hgetall($member);
-            Helpers::dump($member_query);
+            $keys = $this->redis->hkeys($member);
+            $vals = $this->redis->hvals($member);
+            Helpers::dump($keys);
+            Helpers::dump($vals);
         }
     }
 
