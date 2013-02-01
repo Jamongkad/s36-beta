@@ -15,7 +15,7 @@ class MessageDirector {
         $user_dir = $this->directory->fetch_users();
         
         foreach($user_dir as $user) {
-            Helpers::dump($user);
+            Helpers::dump($user->user_id);
         }
     }
 }
