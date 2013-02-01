@@ -83,8 +83,10 @@ class DBCompany extends S36DataObject {
     			->first();
     }
 
-    public function get_account_user($company_id = NULL){
+    public function get_account_users($company_id = Null){
+
 		$company_id = (!empty($this->companyId)) ? $this->companyId : $company_id;
+
 		if(!empty($company_id) && is_numeric($company_id)):
     		return DB::table('User')
     				->where('companyId','=',$company_id)

@@ -370,10 +370,13 @@ return array(
     'GET /testify/messageservice' => function() { 
 
         $tf = new Testify("Message Service");  
+
         $tf->test("MessageService", function($tf) { 
             $im = new Message\Services\InboxMessage;
+            $cp = new Company\Repositories\DBCompany; 
             $tf->assert($im);
             $tf->dump($im);
+            $tf->dump($cp->get_account_users(6));
         });
 
         $tf->run();          
