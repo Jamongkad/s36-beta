@@ -21,38 +21,60 @@ class UserDirectory extends S36DataObject {
     public function fetch_users() {
 
         $user_collection = Array();
+        $users_dir = $this->redis->smembers($this->redis_key);
 
         if($this->redis->exists($this->redis_key)) {
             //fetch data from redis
-            return $this->build_user_object($this->redis->smembers($this->redis_key)); 
+            return $this->_build_user_object($users_dir); 
         } else { 
             //build data from db and insert into redis
-            $users = $this->dbcompany->get_account_users();
-            foreach($users as $user) {
-                $user_key = $user->username.":messages";
-                $this->redis->sadd($this->redis_key, $user_key);
-                $this->redis->hset($user_key, "admin:inbox", Null);
+            if($users = $this->dbcompany->get_account_users()) { 
+                foreach($users as $user) {
+                    //create new user object to hold messages
+                    $user_key = $user->username.":messages";
+                    $this->redis->sadd($this->redis_key, $user_key);
+                    $this->redis->hset($user_key, "admin:inbox", Null);
+                }
             }
             
-            return $this->build_user_object($this->redis->smembers($this->redis_key)); 
+            return $this->_build_user_object($users_dir); 
         }
     }
 
-    public function build_user_object($members) { 
+    public function delete_user($user_id = False) {
+        if($users_dir = $this->redis->smembers($this->redis_key)) {
+            if($user_id) { 
+                $this->_delete_hash_and_smem_by($user_id);
+            } else { 
+                foreach($users_dir as $user) {
+                    $this->_delete_hash_and_smem_by($user);
+                }
+            }
+        } 
+    }
+
+    private function _delete_hash_and_smem_by($user_id) { 
+        $this->redis->del($user);
+        $this->redis->srem($this->redis_key, $user);
+    }
+
+    private function _build_user_object($members) { 
 
         $user_collection = Array();
 
         foreach($members as $member) {
 
-            $keys = $this->redis->hkeys($member);
-            $vals = $this->redis->hvals($member);
             $obj = new UserObject($member);
 
-            for((int)$i=0; $i<count($keys); $i++) {
+            $keys = $this->redis->hkeys($member);
+            $vals = $this->redis->hvals($member);
+
+            for( (int)$i=0; $i<count($keys); $i++ ) {
                 $obj->set_message($keys[$i], $vals[$i]);
             }
 
             $user_collection[] = $obj;
+
         }
 
         return $user_collection;
