@@ -23,10 +23,7 @@ class UserDirectory extends S36DataObject {
 
         if($this->redis->exists($this->redis_key)) {
             //fetch data from redis
-            foreach($this->redis->smembers($this->redis_key) as $member) {
-                $member_query = $this->redis->hgetall($member);
-                Helpers::dump($member_query);
-            }
+            return $this->build_user_object($this->redis->smembers($this->redis_key)); 
         } else { 
             //build data from db and insert into redis
             $users = $this->dbcompany->get_account_users();
@@ -36,10 +33,15 @@ class UserDirectory extends S36DataObject {
                 $this->redis->hset($user_key, "admin:inbox", Null);
             }
             
-            foreach($this->redis->smembers($this->redis_key) as $member) {
-                $member_query = $this->redis->hgetall($member);
-                Helpers::dump($member_query);
-            }
+            return $this->build_user_object($this->redis->smembers($this->redis_key)); 
+        }
+    }
+
+    public function build_user_object($members) { 
+        foreach($members as $member) {
+            Helpers::dump($member);
+            $member_query = $this->redis->hgetall($member);
+            Helpers::dump($member_query);
         }
     }
 
