@@ -373,12 +373,12 @@ return array(
         $tf->test("MessageService", function($tf) { 
             $im = new Message\Entities\InboxMessage("17 New Feedback");
             $ud = new Message\Repositories\UserDirectory;
-            $directory = new Message\Services\MessageDirector;
 
+            $director = new Message\Services\MessageDirector;
 
             $tf->dump($im);
-            $tf->dump($ud->fetch_users());
-            $tf->dump($directory);
+            //$tf->dump($ud->fetch_users());
+            $tf->dump($director);
         });
 
         $tf->run();          
