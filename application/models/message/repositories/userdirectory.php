@@ -68,6 +68,6 @@ class UserObject {
     }
 
     public function set_message($key, $val) {
-        $this->messages[$key] = $val;
+        $this->messages[] = Array('key' => $key, 'val' => $val);
     }
 }
