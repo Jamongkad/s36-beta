@@ -46,9 +46,9 @@ class UserDirectory extends S36DataObject {
 
             $keys = $this->redis->hkeys($member);
             $vals = $this->redis->hvals($member);
+            $obj = new UserObject($member);
 
             for((int)$i=0; $i<count($keys); $i++) {
-                $obj = new UserObject($member);
                 $obj->set_message($keys[$i], $vals[$i]);
                 $user_collection[] = $obj;
             }
