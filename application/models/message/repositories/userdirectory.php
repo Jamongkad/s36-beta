@@ -50,8 +50,9 @@ class UserDirectory extends S36DataObject {
 
             for((int)$i=0; $i<count($keys); $i++) {
                 $obj->set_message($keys[$i], $vals[$i]);
-                $user_collection[] = $obj;
             }
+
+            $user_collection[] = $obj;
         }
 
         return $user_collection;
