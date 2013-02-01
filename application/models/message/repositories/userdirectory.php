@@ -21,9 +21,8 @@ class UserDirectory extends S36DataObject {
     public function fetch_users() {
 
         $user_collection = Array();
-        $users_dir = $this->redis->smembers($this->redis_key);
-
-        if($this->redis->exists($this->redis_key)) {
+        
+        if($users_dir = $this->redis->smembers($this->redis_key)) {
             //fetch data from redis
             return $this->_build_user_object($users_dir); 
         } else { 
