@@ -1,6 +1,8 @@
 <?php namespace Company\Repositories;
 
-use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
+use S36DataObject\S36DataObject;
+use Helpers, DB, S36Auth;
+use PDO, StdClass;
 
 class DBCompany extends S36DataObject {
 
