@@ -48,8 +48,8 @@ class UserDirectory extends S36DataObject {
             $vals = $this->redis->hvals($member);
 
             for((int)$i=0; $i<count($keys); $i++) {
-                $obj = Array();
-                $obj[$keys[$i]] = $vals[$i];
+                $obj = new UserObject($member);
+                $obj->set_message($keys[$i], $vals[$i]);
                 $user_collection[] = $obj;
             }
         }
@@ -57,4 +57,17 @@ class UserDirectory extends S36DataObject {
         return $user_collection;
     }
 
+}
+
+class UserObject {
+
+    private $messages = Array();
+
+    public function __construct($user_id) {
+        $this->user_id = $user_id; 
+    }
+
+    public function set_message($key, $val) {
+        $this->messages[$key] = $val;
+    }
 }
