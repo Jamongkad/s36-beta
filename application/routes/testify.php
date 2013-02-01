@@ -360,7 +360,6 @@ return array(
 
         $tf->test("Testing New Feedback Count ", function($tf) { 
             $count = $tf->data->dbfeedback->total_newfeedback_by_company(); 
-            //$tf->dump($tf->data->dbfeedback);
             $tf->dump($count);
         });
         
@@ -374,10 +373,12 @@ return array(
         $tf->test("MessageService", function($tf) { 
             $im = new Message\Entities\InboxMessage("17 New Feedback");
             $ud = new Message\Repositories\UserDirectory;
+            $directory = new Message\Services\MessageDirector;
+
 
             $tf->dump($im);
-            //$ud->delete_user('jamongkad:messages');
             $tf->dump($ud->fetch_users());
+            $tf->dump($directory);
         });
 
         $tf->run();          
