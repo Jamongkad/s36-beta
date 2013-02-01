@@ -372,8 +372,9 @@ return array(
         $tf = new Testify("Message Service");  
 
         $tf->test("MessageService", function($tf) { 
-            $im = new Message\Services\InboxMessage("17 New Feedback");
+            $im = new Message\Entities\InboxMessage("17 New Feedback");
             $cp = new Company\Repositories\DBCompany; 
+
             $tf->assert($im);
             $tf->dump($im);
             $tf->dump($cp->get_account_users(6));
