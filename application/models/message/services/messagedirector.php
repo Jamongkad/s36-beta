@@ -14,11 +14,11 @@ class MessageDirector {
 
     public function send_message($message) {
         $user_dir = $this->directory->fetch_users();
-
-        Helpers::dump($message instanceof InboxMessage);
         
         foreach($user_dir as $user) {
-            $this->redis->hset($user->user_id, "admin:inbox", $message->get_message());
+            if($message instanceof InboxMessage) {
+                $this->redis->hset($user->user_id, "admin:inbox", $message->get_message());               
+            }
         }
     }
 }
