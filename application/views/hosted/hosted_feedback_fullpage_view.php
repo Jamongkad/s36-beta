@@ -143,7 +143,7 @@
     $(document).ready(function(){
 
         var fullpageCommon = new S36FullpageCommon;
-        var fullpageLayout = new S36FullpageLayout<?=ucfirst($hosted->theme_name)?>;
+        var fullpageLayout = new S36FullpageLayoutTreble;
             fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         <?php if( ! is_null($user) ): //then display the admin bar by default ?>
