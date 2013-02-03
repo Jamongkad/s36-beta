@@ -4,6 +4,7 @@
     <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
     <?= HTML::script('/fullpage/admin/js/admin.js'); ?>
     <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
+    <?= HTML::script('/fullpage/admin/js/s36FullpageAdmin.js'); ?>
 <?php endif; ?>
 
 <?=HTML::script('/fullpage/layout/timeline/js/S36FullpageLayoutTimeline.js'); ?>

@@ -69,6 +69,14 @@ return array(
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
     },
+    
+    'GET /get_panel_settings' => function() use($hosted_settings, $user){
+        return $hosted_settings->get_panel_settings($user->companyid, true);
+    },
+    
+    'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
+    },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
