@@ -23,7 +23,7 @@ class UserDirectory extends S36DataObject {
 
         if( $users_dir = $this->redis->smembers($this->redis_key) ) {
             //fetch data from redis
-            echo "Fetching existing Object";
+            //echo "Fetching existing Object";
             return $this->_build_user_object($users_dir); 
         } else { 
             //build data from db and insert into redis
@@ -34,8 +34,7 @@ class UserDirectory extends S36DataObject {
                     $this->redis->sadd($this->redis_key, $user_key);
                 }
             }
-
-            echo "Creating new Object"; 
+            //echo "Creating new Object"; 
             return $this->_build_user_object($this->redis->smembers($this->redis_key)); 
         }
     }
@@ -58,13 +57,15 @@ class UserDirectory extends S36DataObject {
     }
 
     private function _build_user_object($members) { 
-
+        /*
         $user_collection = Array();
-
         foreach($members as $member) {
             $user_collection[] =  new UserInbox($member);           
         }
-
-        return $user_collection;
+        */
+        return array_map(function($member) { 
+           return new UserInbox($member);
+        }, $members);
+        //return $user_collection;
     }
 }
