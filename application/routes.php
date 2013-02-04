@@ -96,14 +96,14 @@ return array(
         return $dbadmin_reply->delete_admin_reply($feedid);
     },
 
-    'POST /update_desc' => function() use($user, $company){
+    'POST /update_desc' => function() use($user, $hosted_settings){
         
         // don't proceed if the user is not logged in.
         // return 1 for error checking.
         if( ! is_object($user) ) return 1;
         
         $data = Input::get();
-        $company->update_desc($data, $user->companyid);
+        $hosted_settings->update_desc($data, $user->companyid);
         
     },
     

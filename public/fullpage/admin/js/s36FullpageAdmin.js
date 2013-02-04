@@ -20,22 +20,27 @@ var PanelAutoSaver = new function(){
         setInterval('PanelAutoSaver.save()', this.interval);
         
         /*
-        // background events.
+        // background section events.
         $('#bg_image').change(function(){  // is there a change event for file input?
-            PanelAutoSaver.set_data($(this).attr('field'), $('body').css('background-image'));
+            PanelAutoSaver.set_data('background_image', $('body').css('background-image'));
         });
         
         $('.bgPos').click(function(){
-            PanelAutoSaver.set_data($(this).attr('field'), $('body').css('background-position'));
+            PanelAutoSaver.set_data('page_bg_position', $('body').css('background-position'));
         });
         
         $('.bgRepeat').click(function(){
-            PanelAutoSaver.set_data($(this).attr('field'), $('body').css('background-repeat'));
+            PanelAutoSaver.set_data('page_bg_repeat', $('body').css('background-repeat'));
         });
         
-            // pattern event here.
-            
-            // bg color event here.
+        $('.patternItem').click(function(){
+            PanelAutoSaver.set_data('background_image', $(this).attr('id'));
+        });
+        
+        $('.backgroundColorPicker').on('change', function(){
+            PanelAutoSaver.set_data('page_bg_color', $(this).val());
+            PanelAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
+        });
         
         // display section events.
         $('.tickerbox').click(function(){
@@ -43,21 +48,31 @@ var PanelAutoSaver = new function(){
             PanelAutoSaver.set_data($(this).attr('field'), value);
         });
         
-        // description and colors events.
+        // description and colors section events.
         $('#desc_text').blur(function(){  // not yet the actual id.
-            PanelAutoSaver.set_data($(this).attr('field'), $(this).val());
+            PanelAutoSaver.set_data('description', $(this).val());
         });
         
         $('#desc_font_size').change(function(){  // not yet the actual id.
-            PanelAutoSaver.set_data($(this).attr('field'), $(this).val());
+            PanelAutoSaver.set_data('description_font_size', $(this).val());
         });
         
-            // button colors event here.
+        $('.btnBgColor').on('change', function(){
+            PanelAutoSaver.set_data('button_bg_color', $(this).val());
+        });
         
-        // social media events.
+        $('.mbtnBgColor').on('change', function(){
+            PanelAutoSaver.set_data('button_hover_bg_color', $(this).val());
+        });
+        
+        $('.btnFontColor').on('change', function(){
+            PanelAutoSaver.set_data('button_font_color', $(this).val());
+        });
+        
+        // social media section events.
         $('#save_links').click(function(){  // not yet the actual id.
-            PanelAutoSaver.set_data($('#facebook_url').attr('field'), $('#facebook_url').val());
-            PanelAutoSaver.set_data($('#twitter_url').attr('field'), $('#twitter_url').val());
+            PanelAutoSaver.set_data('facebook_url', $('#facebook_url').val());  // not yet the actual id.
+            PanelAutoSaver.set_data('twitter_url', $('#twitter_url').val());  // not yet the actual id.
         });
         */
     }

@@ -6,11 +6,11 @@ class DBHostedSettings extends S36DataObject {
 
     private $hosted_settings;
     private $admin_panel_fields = array(
-        //'page_bg_image',
-        //'page_bg_position',
-        //'page_bg_repeat',
-        //'page_bg_color',
-        //'page_bg_color_opacity',
+        'background_image',
+        'page_bg_position',
+        'page_bg_repeat',
+        'page_bg_color',
+        'page_bg_color_opacity',
         'show_rating',
         'show_votes',
         'show_recommendation',
@@ -27,7 +27,7 @@ class DBHostedSettings extends S36DataObject {
         'show_flag',
         'show_image_attachment',
         'show_video_attachment',
-        //'description', this is in Company table.
+        'description',
         'description_font_size',
         'button_bg_color',
         'button_hover_bg_color',
@@ -162,4 +162,14 @@ class DBHostedSettings extends S36DataObject {
         Db::table('HostedSettings')->where('companyId', '=', $company_id)->update( $valid_data );
         
     }
+    
+    
+    // update description from hosted page.
+    public function update_desc($data, $company_id){        
+        // don't save if there's no input.
+        if( array_key_exists('description', $data) ){
+            DB::table('HostedSettings')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
+        } 
+    }
+    
 }
