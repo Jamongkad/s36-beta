@@ -17,10 +17,12 @@ class MessageDirector {
 
         Helpers::dump($user_dir);
         
+        /*
         foreach($user_dir as $user) {
             if($message instanceof InboxMessage) {
                 $this->redis->hset($user->user_id, "admin:inbox", $message->get_message());               
             }
         }
+        */
     }
 }
