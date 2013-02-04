@@ -65,7 +65,7 @@ class UserDirectory extends S36DataObject {
 
         foreach($members as $member) {
 
-            $obj = new UserObject($member);
+            $obj = new UserInbox($member);
 
             $keys = $this->redis->hkeys($member);
             $vals = $this->redis->hvals($member);
@@ -83,7 +83,7 @@ class UserDirectory extends S36DataObject {
 
 }
 
-class UserObject {
+class UserInbox {
 
     private $messages = Array();
 
