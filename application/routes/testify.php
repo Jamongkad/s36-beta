@@ -371,7 +371,7 @@ return array(
         $tf = new Testify("Message Service");  
 
         $tf->test("MessageService", function($tf) { 
-            $im = new Message\Entities\InboxMessage("17 New Feedback");
+            $im = new Message\Entities\InboxMessage("8 New Feedback");
             $director = new Message\Services\MessageDirector;
             $director->send_message($im);
 
