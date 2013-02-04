@@ -16,6 +16,12 @@ class UserInbox {
     /* return void */
     public function receive(MessageList $messages) {
         Helpers::dump($messages);
+        /*
+        foreach($messages as $message) {
+            $message_parts = $message->read_message();
+            $this->redis->hset($this->user_id, $message_parts->redis_key, $message_parts->message);         
+        }
+        */
     }
 
     /* return void */

@@ -2,13 +2,13 @@
 
 abstract class Message {
 
-    protected $message;    
+    protected $message, $redis_read_key;    
 
     public function __construct($message) {
         $this->message = $message;
     }
 
-    public function get_message() {
-        return $this->message;
+    public function read_message() {
+        return (object)Array('message' => $this->message, 'redis_key' => $this->redis_read_key);
     }
 }
