@@ -14,12 +14,9 @@ class MessageDirector {
 
     public function distribute_messages(MessageList $messages) {
         $user_dir = $this->directory->fetch_users();
-        Helpers::dump($messages);
-        /*
         foreach($user_dir as $user) { 
             $user->receive($messages); 
         }
-        */
          
         /*
         foreach($user_dir as $user) {
