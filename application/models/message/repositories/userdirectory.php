@@ -20,8 +20,10 @@ class UserDirectory extends S36DataObject {
     }
     
     public function fetch_users() {
- 
-        if($users_dir = $this->redis->smembers($this->redis_key)) {
+
+        $users_dir = $this->redis->smembers($this->redis_key);
+
+        if($users_dir) {
             //fetch data from redis
             echo "Fetching existing Object";
             return $this->_build_user_object($users_dir); 
@@ -32,13 +34,10 @@ class UserDirectory extends S36DataObject {
                     //create new user object to hold messages
                     $user_key = $user->username.":messages";
                     $this->redis->sadd($this->redis_key, $user_key);
-                    $this->redis->hset($user_key, "admin:inbox", Null);
                 }
             }
 
-            //ok we are done creating the object. NOW FETCH IT!
-            echo "Creating new Object";
-            $users_dir = $this->redis->smembers($this->redis_key);
+            echo "Creating new Object"; 
             return $this->_build_user_object($users_dir); 
         }
     }
@@ -65,20 +64,7 @@ class UserDirectory extends S36DataObject {
         $user_collection = Array();
 
         foreach($members as $member) {
-
-            $obj = new UserInbox($member);
-            
-            /*
-            $keys = $this->redis->hkeys($member);
-            $vals = $this->redis->hvals($member);
-
-            for( (int)$i=0; $i<count($keys); $i++ ) {
-                $obj->set_message($keys[$i], $vals[$i]);
-            }
-            */
-
-            $user_collection[] = $obj;
-
+            $user_collection[] =  new UserInbox($member);           
         }
 
         return $user_collection;
