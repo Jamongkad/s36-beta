@@ -38,6 +38,7 @@ class UserDirectory extends S36DataObject {
             }
 
             echo "Creating new Object"; 
+            $users_dir = $this->redis->smembers($this->redis_key);
             return $this->_build_user_object($users_dir); 
         }
     }
