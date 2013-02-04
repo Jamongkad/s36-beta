@@ -161,3 +161,28 @@ PanelAutoSaver.set_data('show_votes', '0');
 PanelAutoSaver.set_data('show_recommendation', '0');
 PanelAutoSaver.save();
 */
+
+
+/*
+    $('.social_url').keydown(function(e){  // not yet the actual id.
+        console.log(e);
+        //console.log(e.keyCode);
+        
+        // for twitter.
+        if( $(this).is('#twitter_url') ){  // not yet the actual id.
+            if( (e.keyCode >= 49 && e.keyCode <= 51) && e.shiftKey ) return;  // 1-3 in alphanum keys while shift key is held
+        }
+        
+        if( e.keyCode >= 65 && e.keyCode <= 90 ) return;  // a-z
+        else if( (e.keyCode >= 48 && e.keyCode <= 57) && ! e.shiftKey ) return;  // 0-9 in alphanum keys and shift key is not held
+        else if( e.keyCode >= 96 && e.keyCode <= 105 ) return;  // 0-9 in num keys
+        else if( e.keyCode >= 8 && e.keyCode <= 9 ) return;  // backspace, tab
+        else if( e.keyCode >= 16 && e.keyCode <= 18 ) return;  // shift, ctr, alt
+        else if( e.keyCode >= 35 && e.keyCode <= 40 ) return;  // home, end, left, up, right, down
+        else if( e.keyCode == 13 ) return;  // enter
+        else if( e.keyCode == 46 ) return;  // delete
+        else if( e.keyCode == 20 ) return;  // capslock
+        
+        e.preventDefault();
+    });
+*/
