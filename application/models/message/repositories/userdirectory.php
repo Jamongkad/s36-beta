@@ -3,6 +3,7 @@
 use S36DataObject\S36DataObject;
 use redisent\Redis;
 use Company\Repositories\DBCompany;
+use Message\Entities\UserInbox;
 use Helpers;
 use StdClass;
 
@@ -66,13 +67,15 @@ class UserDirectory extends S36DataObject {
         foreach($members as $member) {
 
             $obj = new UserInbox($member);
-
+            
+            /*
             $keys = $this->redis->hkeys($member);
             $vals = $this->redis->hvals($member);
 
             for( (int)$i=0; $i<count($keys); $i++ ) {
                 $obj->set_message($keys[$i], $vals[$i]);
             }
+            */
 
             $user_collection[] = $obj;
 
@@ -80,20 +83,4 @@ class UserDirectory extends S36DataObject {
 
         return $user_collection;
     }
-
-}
-
-class UserInbox {
-
-    private $messages = Array();
-
-    public function __construct($user_id) {
-        $this->user_id = $user_id; 
-    }
-
-    public function set_message($key, $val) {
-        $this->messages[] = Array('key' => $key, 'val' => $val);
-    }
-
-    public function save_message() {}
 }

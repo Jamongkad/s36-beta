@@ -16,7 +16,7 @@ class MessageDirector {
         $user_dir = $this->directory->fetch_users();
 
         Helpers::dump($user_dir);
-        
+         
         /*
         foreach($user_dir as $user) {
             if($message instanceof InboxMessage) {
