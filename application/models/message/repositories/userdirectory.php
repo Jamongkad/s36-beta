@@ -36,6 +36,7 @@ class UserDirectory extends S36DataObject {
             }
 
             //ok we are done creating the object. NOW FETCH IT!
+            echo "Creating new Object";
             $users_dir = $this->redis->smembers($this->redis_key);
             return $this->_build_user_object($users_dir); 
         }
@@ -93,4 +94,6 @@ class UserObject {
     public function set_message($key, $val) {
         $this->messages[] = Array('key' => $key, 'val' => $val);
     }
+
+    public function save_message() {}
 }
