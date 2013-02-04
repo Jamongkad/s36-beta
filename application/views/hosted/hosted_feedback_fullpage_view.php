@@ -1,7 +1,5 @@
-<script type="text/javascript">
-<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
-</script>
 <?php if( ! is_null($user) ): ?>
+
 <div id="notification">
     <div id="notification-design">
         <div id="notification-message">
@@ -9,9 +7,9 @@
         </div>
     </div>
 </div>
+
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns))?>
 <?php endif; ?>
-
-
 
 <div id="bodyColorOverlay"></div>
 <div id="mainWrapper">
@@ -114,18 +112,8 @@
                 <div class="uploaded-images-popup">
                     <div class="uploaded-images-container">
                         <div class="uploaded-images-view">
-                        
                             <div class="uploaded-images-content">
-                           
-                                <!--  if video 
-                                <iframe width="770" height="400" src="http://www.youtube.com/embed/qg6r-IeH7ss" frameborder="0" allowfullscreen></iframe>
-                
-                                <!-- if image 
-                                
-                                <img src="fullpage/common/img/sample-inbox-image2.jpg" width="100%" /> -->
                             </div> 
-                            <!--
-                            <div class="uploaded-images-name">Example-name-2012.jpg</div>-->
                         </div>
                     </div>
                 </div>
@@ -139,23 +127,60 @@
     </div>
 </div>
 
+<?php
+/*
+|--------------------------------------------------------------------------
+| Start adding some JS and CSS Initialization and Override
+|--------------------------------------------------------------------------
+*/
+?>
+
+<?= HTML::style('/fullpage/layout/treble/css/S36FullpageLayoutTreble.css'); ?>
+<?= HTML::script('/fullpage/layout/treble/js/S36FullpageLayoutTreble.js'); ?>
 <script type="text/javascript">
+<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
     $(document).ready(function(){
 
         var fullpageCommon = new S36FullpageCommon;
         var fullpageLayout = new S36FullpageLayoutTreble;
-            fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
-            fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+        fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
+        fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         <?php if( ! is_null($user) ): //then display the admin bar by default ?>
             var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
-                fullpageAdmin.init_fullpage_admin();
-                fullpageCommon.init_toggle_bar(0);
+            fullpageAdmin.init_fullpage_admin();
+            fullpageCommon.init_toggle_bar(0);
         <?php else:  // then hide the admin bar by default ?>
-                fullpageCommon.init_toggle_bar(1);
+            fullpageCommon.init_toggle_bar(1);
         <?php endif; ?>
 
-        
+        /*
+        / Infinite Scroll
+        */
+        S36FeedbackActions.initialize_actions();
+        var counter = 0;    
+        function update() {
+           if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                counter += 1;
+                var page_counter = counter + 1;
+                var container = $('#feedback-infinitescroll-landing'); 
+                $.ajax({ 
+                    url: '/hosted/fullpage_partial/' + page_counter
+                  , success: function(msg) { 
+                      var boxes = $(msg);
+                      container.append(boxes); 
+                      S36FeedbackActions.initialize_actions();
+                    }
+                });
+           }
+        }
+        //rate limit this bitch
+        var throttled = _.throttle(update, 800);
+        $(window).scroll(throttled);
     });
 </script>
-
-<?php //echo $display->display_options_generate_css(); ?>
+<?php 
+/*
+/ In-line css for fullpage
+*/
+echo $fullpage_css;
+?>
