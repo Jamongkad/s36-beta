@@ -14,7 +14,7 @@ class UserInbox {
     }
      
     /* return void */
-    public function receive($messages) {
+    public function receive(MessageList $messages) {
         Helpers::dump($messages);
     }
 

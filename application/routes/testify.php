@@ -375,15 +375,12 @@ return array(
 
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im);
-            $mq->add_message($im);
-            $tf->dump($mq->uncork());
-            
-            /*
+            $mq->add_message($im);            
+
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq);
-
             $tf->dump($im);
-            */
+
         });
 
         $tf->run();          

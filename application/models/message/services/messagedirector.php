@@ -1,7 +1,7 @@
 <?php namespace Message\Services;
 
 use Message\Repositories\UserDirectory;
-use Message\Entities\InboxMessage;
+use Message\Entities\MessageList;
 use redisent\Redis;
 use Helpers;
 
@@ -12,14 +12,14 @@ class MessageDirector {
         $this->redis     = new Redis;    
     }
 
-    public function distribute_messages($messages) {
+    public function distribute_messages(MessageList $messages) {
         $user_dir = $this->directory->fetch_users();
-        foreach($user_dir as $user) {
-        
-            //$this->redis->hset($user->user_id, "admin:inbox", $message->get_message());               
-            $user->receive($messages);
-       
+        Helpers::dump($messages);
+        /*
+        foreach($user_dir as $user) { 
+            $user->receive($messages); 
         }
+        */
          
         /*
         foreach($user_dir as $user) {
