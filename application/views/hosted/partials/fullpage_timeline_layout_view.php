@@ -13,15 +13,13 @@
     <div class="feedback-list">
         <?php
         foreach ($feed_list as $feed) : 
+            $admin_avatar               = ($feed->feed_data->admin_avatar) ? $feed->feed_data->admin_avatar : '/img/48x48-blank-avatar.jpg';
+            $admin_companyname          = ($feed->feed_data->admin_fullpagecompanyname) ? $feed->feed_data->admin_fullpagecompanyname : $feed->feed_data->admin_companyname; 
             $feedback_id                = $feed->feed_data->id;
             $feedback_main_class        = ($feed->feed_data->isfeatured == 1) ? 'regular-featured' : 'regular';
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
             $avatar                     = Config::get('application.avatar48_dir').'/'.$feed->feed_data->avatar;
-            $author_name                = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
-            $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
-            $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
-            $text                       = $feed->feed_data->text;
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
@@ -38,7 +36,7 @@
                 <div class="author-information">
                     <div class="author-name clear">
                         <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
-                        <span class="last_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
+                        <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
                     </div>
                     <div class="author-company">
                         <span class="job"><?= HTML::entities($feed->feed_data->position); ?></span>
@@ -72,7 +70,7 @@
                     <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                 </div>
-                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>"></div>
             </div>
         </div>
         <!-- end of feedback header -->
@@ -213,7 +211,7 @@
         </div>
     </div>
     <?php endforeach; //endforeach feed_list ?>
-    </div>
+    </div> 
     <!--end feedback-list -->
 
 </div>

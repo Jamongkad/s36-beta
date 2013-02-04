@@ -33,6 +33,7 @@ return array(
     'avatar48_dir'			=> '/uploaded_images/avatar/48x48',
     'avatar150_dir'			=> '/uploaded_images/avatar/150x150',
     'coverphoto_dir'		=> '/uploaded_images/coverphoto',
+    'fullpage_pattern_dir'	=> 'fullpage/common/img/patterns',
     'upload_dir'			=> '/var/www/s36-upload-images',
     'uploaded_images_dir'	=> '/var/www/s36-upload-images/uploaded_images',
 

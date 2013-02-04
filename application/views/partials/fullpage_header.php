@@ -77,33 +77,8 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::style('/fullpage/layout/treble/css/S36FullpageLayoutTreble.css'); ?>
-<?= HTML::script('/fullpage/layout/treble/js/S36FullpageLayoutTreble.js'); ?>
-<script type="text/javascript">
-    $(document).ready(function(){
 
-        S36FeedbackActions.initialize_actions();
-        var counter = 0;    
-        function update() {
-           if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                counter += 1;
-                var page_counter = counter + 1;
-                var container = $('#feedback-infinitescroll-landing'); 
-                $.ajax({ 
-                    url: '/hosted/fullpage_partial/' + page_counter
-                  , success: function(msg) { 
-                      var boxes = $(msg);
-                      container.append(boxes); 
-                      S36FeedbackActions.initialize_actions();
-                    }
-                });
-           }
-        }
-        //rate limit this bitch
-        var throttled = _.throttle(update, 800);
-        $(window).scroll(throttled);        
-    });
-</script>
+
 <?php
 /*
 |--------------------------------------------------------------------------
@@ -117,7 +92,6 @@
 <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
 <?= HTML::style('/fullpage/admin/css/minicolors.css'); ?>
 
-<?= HTML::script('/js/jquery.fileupload.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
 <?= HTML::script('/fullpage/admin/js/minicolors.js'); ?>
