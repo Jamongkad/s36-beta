@@ -1,7 +1,7 @@
 <?php namespace Message\Entities;
 
 use Exception;
-use redisent\Redis;
+use redisent\Redis, Helpers;
 
 class UserInbox {
 
@@ -30,6 +30,10 @@ class UserInbox {
     public function _check_messages() {
         $keys = $this->redis->hkeys($this->user_id);
         $vals = $this->redis->hvals($this->user_id);
+
+        $d = $this->redis->hgetall($this->user_id);
+
+        Helpers::dump($d);
 
         for( (int)$i=0; $i<count($keys); $i++ ) {
             $this->messages[] = Array('key' => $keys[$i], 'val' => $vals[$i]);           
