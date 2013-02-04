@@ -75,6 +75,9 @@ return array(
     },
     
     'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
         $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
     },
 

@@ -114,7 +114,7 @@ var PanelAutoSaver = new function(){
         if( JSON.stringify(this.def_data) === JSON.stringify(this.panel_data) ) return;
         
         // show notif.
-        showNotification('Saving Changes', 0);
+        showNotification('Saving Changes', 1000);
         
         // get the difference in def_data and panel_data then store it in final_data.
         $.each(this.panel_data, function(k, v){
@@ -131,14 +131,17 @@ var PanelAutoSaver = new function(){
             async: false,
             url: '/update_panel_settings',
             type: 'post',
-            data: PanelAutoSaver.final_data
+            data: PanelAutoSaver.final_data,
+            success: function(result){
+                if( $.trim(result) != '' ){
+                    hideNotification();
+                    Helpers.display_error_mes( [result] );
+                }
+            }
         });
         
         // clear the final_data.
         this.final_data = {};
-        
-        // hide notif.
-        hideNotification();
         
     }
     
