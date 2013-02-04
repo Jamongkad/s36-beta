@@ -57,15 +57,6 @@ class UserDirectory extends S36DataObject {
     }
 
     private function _build_user_object($members) { 
-        /*
-        $user_collection = Array();
-        foreach($members as $member) {
-            $user_collection[] =  new UserInbox($member);           
-        }
-        */
-        return array_map(function($member) { 
-           return new UserInbox($member);
-        }, $members);
-        //return $user_collection;
+        return array_map(function($member) { return new UserInbox($member); }, $members);
     }
 }
