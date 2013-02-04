@@ -19,11 +19,10 @@ class UserDirectory extends S36DataObject {
     }
     
     public function fetch_users() {
-
-        $user_collection = Array();
-        
+ 
         if($users_dir = $this->redis->smembers($this->redis_key)) {
             //fetch data from redis
+            echo "Fetching existing Object";
             return $this->_build_user_object($users_dir); 
         } else { 
             //build data from db and insert into redis
@@ -35,7 +34,9 @@ class UserDirectory extends S36DataObject {
                     $this->redis->hset($user_key, "admin:inbox", Null);
                 }
             }
-            
+
+            //ok we are done creating the object. NOW FETCH IT!
+            $users_dir = $this->redis->smembers($this->redis_key);
             return $this->_build_user_object($users_dir); 
         }
     }
