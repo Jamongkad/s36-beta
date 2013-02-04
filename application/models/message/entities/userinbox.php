@@ -32,7 +32,7 @@ class UserInbox {
         $vals = $this->redis->hvals($this->user_id);
 
         for( (int)$i=0; $i<count($keys); $i++ ) {
-            $this->messages[] = Array('key' => $key, 'val' => $val);           
+            $this->messages[] = Array('key' => $key[$i], 'val' => $val[$i]);           
         } 
     }
 }
