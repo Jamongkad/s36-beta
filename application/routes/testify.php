@@ -379,7 +379,8 @@ return array(
 
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq);
-            $tf->dump($im);
+
+            //$tf->dump($im);
 
         });
 
