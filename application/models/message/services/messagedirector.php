@@ -12,10 +12,14 @@ class MessageDirector {
         $this->redis     = new Redis;    
     }
 
-    public function send_message($message) {
+    public function distribute_messages($messages) {
         $user_dir = $this->directory->fetch_users();
-
-        Helpers::dump($user_dir);
+        foreach($user_dir as $user) {
+        
+            //$this->redis->hset($user->user_id, "admin:inbox", $message->get_message());               
+            $user->receive($messages);
+       
+        }
          
         /*
         foreach($user_dir as $user) {

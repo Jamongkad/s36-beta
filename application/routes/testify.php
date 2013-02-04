@@ -372,10 +372,19 @@ return array(
 
         $tf->test("MessageService", function($tf) { 
             $im = new Message\Entities\InboxMessage("8 New Feedback");
+
+            $mq = new Message\Entities\MessageList;
+            $mq->add_message($im);
+            $mq->add_message($im);
+
+            $tf->dump($mq);
+            
+            /*
             $director = new Message\Services\MessageDirector;
-            $director->send_message($im);
+            $director->distribute_messages($mq);
 
             $tf->dump($im);
+            */
         });
 
         $tf->run();          

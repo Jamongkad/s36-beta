@@ -14,8 +14,8 @@ class UserInbox {
     }
      
     /* return void */
-    public function save_message() {
-        
+    public function receive($messages) {
+        Helpers::dump($messages);
     }
 
     /* return void */
@@ -23,6 +23,8 @@ class UserInbox {
         /* fields to be initialized in admin hash for messaging */
         $this->redis->hset($this->user_id, "admin:inbox:notification", Null);
         $this->redis->hset($this->user_id, "admin:inbox:private", Null);
+
+        /* builds internal hash structure */
         $this->_check_messages();
     }
 
@@ -30,10 +32,6 @@ class UserInbox {
     public function _check_messages() {
         $keys = $this->redis->hkeys($this->user_id);
         $vals = $this->redis->hvals($this->user_id);
-
-        $d = $this->redis->hgetall($this->user_id);
-
-        Helpers::dump($d);
 
         for( (int)$i=0; $i<count($keys); $i++ ) {
             $this->messages[] = Array('key' => $keys[$i], 'val' => $vals[$i]);           
