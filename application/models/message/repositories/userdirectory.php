@@ -31,7 +31,7 @@ class UserDirectory extends S36DataObject {
             //build data from db and insert into redis
             if($users = $this->dbcompany->get_account_users()) { 
                 foreach($users as $user) {
-                    //create new user object to hold messages
+                    //add references to user message object
                     $user_key = $user->username.":messages";
                     $this->redis->sadd($this->redis_key, $user_key);
                 }
