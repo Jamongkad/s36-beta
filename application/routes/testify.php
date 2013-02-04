@@ -376,8 +376,7 @@ return array(
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im);
             $mq->add_message($im);
-
-            $tf->dump($mq);
+            $tf->dump($mq->uncork());
             
             /*
             $director = new Message\Services\MessageDirector;

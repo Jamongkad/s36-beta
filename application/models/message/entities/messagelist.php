@@ -9,4 +9,9 @@ class MessageList {
     public function add_message($message) {
         $this->message_pack[] = $message;
     }
+
+    public function uncork() { 
+        if(!empty($this->message_pack))
+            return $this->message_pack;
+    }
 }
