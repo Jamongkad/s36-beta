@@ -6,7 +6,7 @@ class MessageList {
 
     private $message_pack = Array();
 
-    public function add_message($message) {
+    public function add_message(Message $message) {
         $this->message_pack[] = $message;
     }
 
