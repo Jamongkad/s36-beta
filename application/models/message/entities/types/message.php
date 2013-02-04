@@ -1,10 +1,8 @@
-<?php namespace Message\Entities;
+<?php namespace Message\Entities\Types;
 
-use Exception;
+abstract class Message {
 
-class InboxMessage {
-
-    private $message;
+    protected $message;    
 
     public function __construct($message) {
         $this->message = $message;
