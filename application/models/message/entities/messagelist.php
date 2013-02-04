@@ -1,5 +1,7 @@
 <?php namespace Message\Entities;
 
+use Message\Entities\Types\Message;
+
 use Exception;
 
 class MessageList {
