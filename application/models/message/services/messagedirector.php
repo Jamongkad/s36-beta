@@ -11,9 +11,13 @@ class MessageDirector {
     }
 
     public function distribute_messages(MessageList $messages) {
+
+        //pull out all admin inboxes
         $user_dir = $this->directory->fetch_users();
         foreach($user_dir as $user) { 
+            //iterate and insert messages into admin inboxes
             $user->receive($messages); 
         }         
+
     }
 }
