@@ -29,11 +29,16 @@ class DBCompany extends S36DataObject {
         DB::Table('Company', 'master')
             ->where('companyId', '=', $post->companyid)
             ->update(Array( 
-                'description'         => $post->company_desc
-              , 'fullpageCompanyName' => $post->fullpagecompanyname 
-              , 'website_link'        => $post->website_link
-              , 'logo'                => $post->logo
+                //'description'         => $post->company_desc
+                'fullpageCompanyName' => $post->fullpagecompanyname 
+                , 'website_link'        => $post->website_link
+                , 'logo'                => $post->logo
             )); 
+        
+        // description is now on HostedSettings.
+        DB::table('HostedSettings')
+            ->where('companyId', '=', $post->companyid)
+            ->update(array('description' => $post->company_desc));
     }
 
     public function get_company_info($company_id = null) {
@@ -62,6 +67,9 @@ class DBCompany extends S36DataObject {
                     ON WidgetStore.companyId = Company.companyId
                    AND WidgetStore.isDefault = 1
                    AND WidgetStore.widgetType = 'submit'
+            LEFT JOIN
+                HostedSettings
+                    ON HostedSettings.companyId = Company.companyId
             WHERE 1=1
                 AND $company_sql
             LIMIT 1
@@ -137,15 +145,6 @@ class DBCompany extends S36DataObject {
         return $result;
     }
     
-    
-    
-    // update description from hosted page.
-    public function update_desc($data, $company_id){        
-        // don't save if there's no input.
-        if( array_key_exists('description', $data) ){
-            DB::table('Company')->where('companyId', '=', $company_id)->update( array('description' => $data['description']) );
-        } 
-    }
      
     // increment page view count.
     public function incr_page_view($company_id){ 

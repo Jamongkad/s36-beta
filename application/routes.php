@@ -72,6 +72,17 @@ return array(
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
     },
+    
+    'GET /get_panel_settings' => function() use($hosted_settings, $user){
+        return $hosted_settings->get_panel_settings($user->companyid, true);
+    },
+    
+    'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
+        $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
+    },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
         $feedbackId = Input::get('feedbackId');
@@ -91,14 +102,14 @@ return array(
         return $dbadmin_reply->delete_admin_reply($feedid);
     },
 
-    'POST /update_desc' => function() use($user, $company){
+    'POST /update_desc' => function() use($user, $hosted_settings){
         
         // don't proceed if the user is not logged in.
         // return 1 for error checking.
         if( ! is_object($user) ) return 1;
         
         $data = Input::get();
-        $company->update_desc($data, $user->companyid);
+        $hosted_settings->update_desc($data, $user->companyid);
         
     },
     
