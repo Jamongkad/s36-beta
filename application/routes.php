@@ -1,7 +1,7 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
-$hosted_settings = new Widget\Repositories\DBHostedSettings;
+$hosted_settings = new Hosted\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;

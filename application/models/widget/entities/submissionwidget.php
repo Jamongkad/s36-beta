@@ -1,6 +1,6 @@
 <?php namespace Widget\Entities;
 
-use Widget\Entities\Types\FormWidgets, Widget\Repositories\DBHostedSettings, Widget\Services\Formbuilder\Formbuilder;
+use Widget\Entities\Types\FormWidgets, Hosted\Repositories\DBHostedSettings, Widget\Services\Formbuilder\Formbuilder;
 use \Company\Repositories\DBCompany, \Company\Repositories\DBCompanySocialAccount;
 use Config, View, DB;
 

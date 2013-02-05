@@ -1,7 +1,7 @@
 <?php namespace Feedback\Entities;
 
 use \Feedback\Entities\Types\FeedbackDataTypes;
-use \Widget\Repositories\DBHostedSettings;
+use \Hosted\Repositories\DBHostedSettings;
 use Underscore\Underscore;
 use DB, Helpers, Package;
 use SimpleArray;
