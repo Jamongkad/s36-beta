@@ -26,7 +26,7 @@ class UserInbox {
 
     public function _synchronize_inbox() {
         /* fields to be initialized in admin hash for messaging */
-        $this->redis->hset($this->user_id, "admin:inbox:notification", Null);
+        $this->redis->hset($this->user_id, "admin:inbox:notification:newfeedback", Null);
         $this->redis->hset($this->user_id, "admin:inbox:private", Null);
 
         /* builds internal hash structure */
