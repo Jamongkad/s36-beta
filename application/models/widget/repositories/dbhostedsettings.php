@@ -157,6 +157,8 @@ class DBHostedSettings extends S36DataObject {
         // get only the data with valid keys.
         $valid_data = array_intersect_key((array)$data, $panel_fields);
         
+        // extra validatios on some fields.
+        
         // now update db with the selected fields.
         // reminder: laravel automatically escapes all values.
         Db::table('HostedSettings')->where('companyId', '=', $company_id)->update( $valid_data );
