@@ -31,7 +31,7 @@ class UserInbox {
 
         $messages = Array();
         for( (int)$i=0; $i<count($keys); $i++ ) {
-            $messages[] = Array('key' => $keys[$i], 'val' => $vals[$i]);           
+            $messages[] = Array('title' => $keys[$i], 'msg' => $vals[$i]);           
         } 
 
         return $messages;
