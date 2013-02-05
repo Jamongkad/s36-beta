@@ -5,16 +5,13 @@ use redisent\Redis, Helpers;
 
 class UserInbox {
 
-    private $messages = Array();
-
     public function __construct($user_id) {
         $this->user_id = $user_id; 
         $this->redis   = new Redis;    
-        $this->_check_messages();
     }
 
     public function read() { 
-        return $this->messages;
+        return $this->_check_messages();
     }
      
     public function receive(MessageList $messages) {
@@ -28,12 +25,15 @@ class UserInbox {
         } 
     }
 
-    public function _check_messages() {
+    private function _check_messages() {
         $keys = $this->redis->hkeys($this->user_id);
         $vals = $this->redis->hvals($this->user_id);
 
+        $messages = Array();
         for( (int)$i=0; $i<count($keys); $i++ ) {
-            $this->messages[] = Array('key' => $keys[$i], 'val' => $vals[$i]);           
+            $messages[] = Array('key' => $keys[$i], 'val' => $vals[$i]);           
         } 
+
+        return $messages;
     }
 }
