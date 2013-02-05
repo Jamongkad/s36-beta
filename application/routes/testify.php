@@ -372,18 +372,15 @@ return array(
 
         $tf->test("MessageService: Inserting Message", function($tf) { 
             
-            $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
-            $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs");
+            $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback", "notification:newfeedback");
+            $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs", "notification:stub");
 
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im);
             $mq->add_message($st);
-            Helpers::dump($mq->uncork());
 
-            /*
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq); 
-            */
 
         }); 
 

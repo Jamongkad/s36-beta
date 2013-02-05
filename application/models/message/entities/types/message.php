@@ -4,8 +4,9 @@ abstract class Message {
 
     protected $message, $redis_read_key;    
 
-    public function __construct($message) {
+    public function __construct($message, $redis_read_key) {
         $this->message = $message;
+        $this->redis_read_key = $this->redis_read_key.$redis_read_key;
     }
 
     public function read_message() {
