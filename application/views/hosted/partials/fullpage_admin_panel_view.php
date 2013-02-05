@@ -28,7 +28,7 @@
                                 <span>or</span>
                                 <!--
                                 <span class="uploadBtn"></span>
-                                --><input type="file" id="bg_image" data-url="server/" />
+                                --><input type="file" id="bg_image" data-url="/imageprocessing/upload_hosted_background_image" />
                             </div>
                             <div id="upload-status-area">
                                 <div class="upload-preview">
@@ -89,34 +89,34 @@
                     <div class="pageBody">
                         <div class="display-option-box">
                             <h2>General Items</h2>
-                            <p><span class="tickerbox" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
-                            <p><span class="tickerbox" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
-                            <p><span class="tickerbox" display-array="feedback-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
+                            <p><span class="tickerbox" field="show_rating" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
+                            <p><span class="tickerbox" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
+                            <p><span class="tickerbox" field="show_recommendation" display-array="feedback-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
                             
                             <h2>Display Meta Information</h2>
-                            <p><span class="tickerbox" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
+                            <p><span class="tickerbox" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
                             
                             <h2>Display Admin Comment</h2>
-                            <p><span class="tickerbox" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
+                            <p><span class="tickerbox" field="show_admin_comment" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
                             
                             <h2>Sharing Options</h2>
-                            <p><span class="tickerbox" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
+                            <p><span class="tickerbox" field="show_sharing_option" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
                             
                             <h2>Display 'Flag as inappropriate' Option</h2>
-                            <p><span class="tickerbox" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
+                            <p><span class="tickerbox" field="show_flag_inapp" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
                             
                             <h2>User Display Information</h2>
-                            <p><span class="tickerbox" display-array="first_name"></span> <span class="label">Display First Name</span> </p>
-                            <p><span class="tickerbox" display-array="last_name"></span> <span class="label">Display Last Name</span> </p>
-                            <p><span class="tickerbox" display-array="job,company_comma"></span> <span class="label">Display Job Position</span> </p>
-                            <p><span class="tickerbox" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
-                            <p><span class="tickerbox" display-array="city,location_comma"></span> <span class="label">Display City</span> </p>
-                            <p><span class="tickerbox" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
-                            <p><span class="tickerbox" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
+                            <p><span class="tickerbox" field="show_first_name" display-array="first_name"></span> <span class="label">Display First Name</span> </p>
+                            <p><span class="tickerbox" field="show_last_name" display-array="last_name"></span> <span class="label">Display Last Name</span> </p>
+                            <p><span class="tickerbox" field="show_position" display-array="job,company_comma"></span> <span class="label">Display Job Position</span> </p>
+                            <p><span class="tickerbox" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
+                            <p><span class="tickerbox" field="show_city" display-array="city,location_comma"></span> <span class="label">Display City</span> </p>
+                            <p><span class="tickerbox" field="show_country" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
+                            <p><span class="tickerbox" field="show_flag" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
                             
                             <h2>Attachment Options</h2>
-                            <p><span class="tickerbox" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
-                            <p><span class="tickerbox" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
+                            <p><span class="tickerbox" field="show_image_attachment" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
+                            <p><span class="tickerbox" field="show_video_attachment" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
                             
                         </div>
                     </div>
@@ -134,17 +134,6 @@
                                 <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
                             </div>
                         </div>
-                        <div class="optionList clear">
-                            <div class="label"><strong>Font Size</strong> </div>
-                            <div class="input">
-                                <select>
-                                    <option>12</option>
-                                    <option>14</option>
-                                    <option>16</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br />
                         <div class="pageTitle">
                             Button
                         </div>
@@ -191,21 +180,19 @@
                         Social Media
                     </div>
                     <div class="pageBody">
-                        
-                            <h2>Facebook URL: </h2>
-                            <br />
-                            <span>
-                                <input type="text" />
-                            </span>
-                            <br /><br />
-                            <h2>Twitter URL: </h2>
-                            <br />
-                            <span>
-                                <input type="text" />
-                            </span>
-                            <br /><br />
-                            <input type="button" class="regular-button" value="Save Links" />
-                        
+                        <h2>Facebook URL: </h2>
+                        <br />
+                        <span>
+                            <input type="text" id="facebook_url" />
+                        </span>
+                        <br /><br />
+                        <h2>Twitter URL: </h2>
+                        <br />
+                        <span>
+                            <input type="text" id="twitter_url" />
+                        </span>
+                        <br /><br />
+                        <input type="button" id="save_links" class="regular-button" value="Save Links" />
                     </div>
                 </div>
             </div>

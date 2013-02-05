@@ -15,6 +15,12 @@ var S36FullpageAdmin = function(layoutObj){
     var self = this;
     var common = new S36FullpageCommon;
     this.init_fullpage_admin = function(){
+        
+        // initialize the the PanelAutoSaver.
+        // layoutObj is used as param because we use S36FullpageAdmin.show_notification() 
+        // inside PanelAutoSaver.
+        PanelAutoSaver.init(layoutObj);
+        
         /* ========================================
         || Make the admin window box draggable
         ==========================================*/
@@ -417,13 +423,14 @@ var S36FullpageAdmin = function(layoutObj){
 
 
 // class that collects admin panel data and does the auto saving.
-var PanelAutoSaver = new function(){
+var PanelAutoSaver = new function(layoutObj){
     
     this.interval = 5000;
     this.hosted_settings = '';
     this.def_data = {};
     this.panel_data = {};
     this.final_data = {};
+    this.S36FullpageAdmin = new S36FullpageAdmin(layoutObj);
     
     
     // initialize all the class needs.
@@ -437,7 +444,7 @@ var PanelAutoSaver = new function(){
         // start the autosave.
         setInterval('PanelAutoSaver.save()', this.interval);
         
-        /*
+        
         // background section events.
         $('#bg_image').change(function(){  // is there a change event for file input?
             PanelAutoSaver.set_data('background_image', $('body').css('background-image'));
@@ -462,17 +469,13 @@ var PanelAutoSaver = new function(){
         
         // display section events.
         $('.tickerbox').click(function(){
-            var value = ( $(this).is('.off') ? '0' : '1' );
+            var value = ( ! $(this).is('.off') ? '0' : '1' );  // i'm on the right track, baby i was born this way!
             PanelAutoSaver.set_data($(this).attr('field'), value);
         });
         
         // description and colors section events.
         $('#desc_text').blur(function(){  // not yet the actual id.
             PanelAutoSaver.set_data('description', $(this).val());
-        });
-        
-        $('#desc_font_size').change(function(){  // not yet the actual id.
-            PanelAutoSaver.set_data('description_font_size', $(this).val());
         });
         
         $('.btnBgColor').on('change', function(){
@@ -486,7 +489,7 @@ var PanelAutoSaver = new function(){
         $('.btnFontColor').on('change', function(){
             PanelAutoSaver.set_data('button_font_color', $(this).val());
         });
-        
+        /*
         // social media section events.
         $('#save_links').click(function(){  // not yet the actual id.
             PanelAutoSaver.set_data('facebook_url', $('#facebook_url').val());  // not yet the actual id.
@@ -532,7 +535,7 @@ var PanelAutoSaver = new function(){
         if( JSON.stringify(this.def_data) === JSON.stringify(this.panel_data) ) return;
         
         // show notif.
-        showNotification('Saving Changes', 1000);
+        this.S36FullpageAdmin.show_notification('Saving Panel Changes', 0);
         
         // get the difference in def_data and panel_data then store it in final_data.
         $.each(this.panel_data, function(k, v){
@@ -552,7 +555,7 @@ var PanelAutoSaver = new function(){
             data: PanelAutoSaver.final_data,
             success: function(result){
                 if( $.trim(result) != '' ){
-                    hideNotification();
+                    PanelAutoSaver.S36FullpageAdmin.hide_notification();
                     Helpers.display_error_mes( [result] );
                 }
             }
@@ -561,39 +564,9 @@ var PanelAutoSaver = new function(){
         // clear the final_data.
         this.final_data = {};
         
+        // hide notif.
+        setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1500);
+        
     }
     
 }
-
-
-PanelAutoSaver.init();
-/*
-PanelAutoSaver.set_data('show_rating', '0');
-PanelAutoSaver.set_data('show_votes', '0');
-PanelAutoSaver.set_data('show_recommendation', '0');
-*/
-
-
-/*
-    $('.social_url').keydown(function(e){  // not yet the actual id.
-        console.log(e);
-        //console.log(e.keyCode);
-        
-        // for twitter.
-        if( $(this).is('#twitter_url') ){  // not yet the actual id.
-            if( (e.keyCode >= 49 && e.keyCode <= 51) && e.shiftKey ) return;  // 1-3 in alphanum keys while shift key is held
-        }
-        
-        if( e.keyCode >= 65 && e.keyCode <= 90 ) return;  // a-z
-        else if( (e.keyCode >= 48 && e.keyCode <= 57) && ! e.shiftKey ) return;  // 0-9 in alphanum keys and shift key is not held
-        else if( e.keyCode >= 96 && e.keyCode <= 105 ) return;  // 0-9 in num keys
-        else if( e.keyCode >= 8 && e.keyCode <= 9 ) return;  // backspace, tab
-        else if( e.keyCode >= 16 && e.keyCode <= 18 ) return;  // shift, ctr, alt
-        else if( e.keyCode >= 35 && e.keyCode <= 40 ) return;  // home, end, left, up, right, down
-        else if( e.keyCode == 13 ) return;  // enter
-        else if( e.keyCode == 46 ) return;  // delete
-        else if( e.keyCode == 20 ) return;  // capslock
-        
-        e.preventDefault();
-    });
-*/
