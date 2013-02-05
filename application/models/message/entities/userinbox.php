@@ -12,6 +12,10 @@ class UserInbox {
         $this->redis   = new Redis;    
         $this->_init_inbox();
     }
+
+    public function read() {
+
+    }
      
     public function receive(MessageList $messages) {
         return $this->_save_to_redis($messages->uncork());

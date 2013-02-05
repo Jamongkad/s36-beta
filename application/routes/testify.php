@@ -370,7 +370,7 @@ return array(
 
         $tf = new Testify("Message Service");  
 
-        $tf->test("MessageService", function($tf) { 
+        $tf->test("MessageService: Inserting Message", function($tf) { 
 
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
 
@@ -379,9 +379,14 @@ return array(
                ->add_message($im);
 
             $director = new Message\Services\MessageDirector;
-            $director->distribute_messages($mq);
-            //$tf->dump($im);
+            $director->distribute_messages($mq); 
 
+        });
+
+        $tf->test("MessageService: Reading Message", function($tf) { 
+            $auth = S36Auth::user();
+            Helpers::dump($auth);
+            $inbox = Message\Entities\UserInbox("jamongkad:messages");
         });
 
         $tf->run();          
