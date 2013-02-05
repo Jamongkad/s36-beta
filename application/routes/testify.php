@@ -379,8 +379,12 @@ return array(
             $mq->add_message($im);
             $mq->add_message($st);
 
+            Helpers::dump($mq->uncork());
+
+            /*
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq); 
+            */
 
         }); 
 
