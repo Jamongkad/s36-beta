@@ -8,7 +8,7 @@ $redis_twitter_key = config::get('application.subdomain').':twitter:feedback';
 
 $category 			= new DBCategory;
 $company 			= new Company\Repositories\DBCompany;
-$hosted_settings 	= new Widget\Repositories\DBHostedSettings;
+$hosted_settings 	= new Hosted\Repositories\DBHostedSettings;
 
 return array (
 
@@ -44,7 +44,7 @@ return array (
 
     'POST /settings/savesettings' => function() {
         $company = new Company\Repositories\DBCompany;
-        $hosted_settings = new Widget\Repositories\DBHostedSettings;
+        $hosted_settings = new Hosted\Repositories\DBHostedSettings;
         $post = (object)Input::get();
 
         //autoposting start

@@ -1,13 +1,14 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
-$hosted_settings = new Widget\Repositories\DBHostedSettings;
+$hosted_settings = new Hosted\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
 $dbadmin_reply = new Feedback\Repositories\DBAdminReply;
 $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
+$fullpage =  new Hosted\Services\Fullpage;
 Package::load('eden');
 eden()->setLoader();
 
@@ -28,7 +29,7 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url, $fullpage) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
  
@@ -56,14 +57,16 @@ return array(
         $meta->calculate_metrics();
 
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company'         => $company_info
-                                                  , 'company_social'  => $company_social
-                                                  , 'user'            => $user
-                                                  , 'feeds'           => $feeds 
-                                                  , 'feed_count'      => $meta->perform()
-                                                  , 'company_header'  => $header_view
-                                                  , 'hosted_page_url' => $hosted_page_url
-                                                  , 'hosted'          => $hosted_settings_info));
+                                                    'company'           => $company_info
+                                                  , 'company_social'    => $company_social
+                                                  , 'user'              => $user
+                                                  , 'feeds'             => $feeds 
+                                                  , 'feed_count'        => $meta->perform()
+                                                  , 'company_header'    => $header_view
+                                                  , 'hosted_page_url'   => $hosted_page_url
+                                                  , 'hosted'            => $hosted_settings_info
+                                                  , 'fullpage_css'      => $fullpage->get_fullpage_css()
+                                                  , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()));
 
         
         // increment page view count of company.
