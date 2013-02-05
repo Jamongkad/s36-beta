@@ -10,7 +10,7 @@ class UserInbox {
     public function __construct($user_id) {
         $this->user_id = $user_id; 
         $this->redis   = new Redis;    
-        $this->_synchronize_inbox();
+        $this->_init_inbox();
     }
      
     public function receive(MessageList $messages) {
@@ -24,7 +24,7 @@ class UserInbox {
         } 
     }
 
-    public function _synchronize_inbox() {
+    public function _init_inbox() {
         /* fields to be initialized in admin hash for messaging */
         $this->redis->hset($this->user_id, "admin:inbox:notification:newfeedback", Null);
         $this->redis->hset($this->user_id, "admin:inbox:private", Null);
