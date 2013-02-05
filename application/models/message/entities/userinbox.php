@@ -15,8 +15,9 @@ class UserInbox {
      
     /* return void */
     public function receive(MessageList $messages) {
-        Helpers::dump($messages->uncork());
-
+        foreach($messages->uncork() as $message) {
+            Helpers::dump($message);
+        }
         /*
         foreach($messages as $message) {
             $message_parts = $message->read_message();
