@@ -369,7 +369,7 @@ return array(
     'GET /testify/messageservice' => function() { 
 
         $tf = new Testify("Message Service");  
-
+        /*
         $tf->test("MessageService: Inserting Message", function($tf) { 
 
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
@@ -382,6 +382,7 @@ return array(
             $director->distribute_messages($mq); 
 
         });
+        */
 
         $tf->test("MessageService: Reading Message", function($tf) { 
             $auth = S36Auth::user();
