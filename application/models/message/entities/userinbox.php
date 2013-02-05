@@ -10,7 +10,7 @@ class UserInbox {
     public function __construct($user_id) {
         $this->user_id = $user_id; 
         $this->redis   = new Redis;    
-        $this->_init_inbox();
+        $this->_check_messages();
     }
 
     public function read() { 
@@ -26,17 +26,6 @@ class UserInbox {
             $parts = $message->read_message();
             $this->redis->hset($this->user_id, $parts->redis_key, $parts->message);         
         } 
-    }
-
-    public function _init_inbox() {
-        /* fields to be initialized in admin hash for messaging */
-        /*
-        $this->redis->hset($this->user_id, "admin:inbox:notification:newfeedback", Null);
-        $this->redis->hset($this->user_id, "admin:inbox:private", Null);
-        */
-
-        /* builds internal hash structure */
-        $this->_check_messages();
     }
 
     public function _check_messages() {
