@@ -372,12 +372,11 @@ return array(
 
         $tf->test("MessageService", function($tf) { 
 
-            $im = new Message\Entities\Types\InboxMessage("8 New Feedback");
+            $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
 
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im)
                ->add_message($im)
-               ->add_message($im);
 
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq);
