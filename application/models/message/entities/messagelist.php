@@ -10,6 +10,7 @@ class MessageList {
 
     public function add_message(Message $message) {
         $this->message_pack[] = $message;
+        return $this;
     }
 
     public function uncork() { 
