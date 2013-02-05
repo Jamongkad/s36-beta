@@ -374,11 +374,13 @@ return array(
             
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
             $st = new Message\Entities\Types\Inbox\Stub("8 New Feedback");
-            Helpers::dump($st);
-            /*
+
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im);
+            $mq->add_message($st);
+            Helpers::dump($mq->uncork());
 
+            /*
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq); 
             */
@@ -386,9 +388,11 @@ return array(
         }); 
 
         $tf->test("MessageService: Reading Message", function($tf) { 
+            /*
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             Helpers::dump($inbox->read());
+            */
         });
 
         $tf->run();          
