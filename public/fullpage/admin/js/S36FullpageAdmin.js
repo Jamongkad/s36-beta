@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // JavaScript Document
 
 /*=========================================
@@ -414,7 +413,6 @@ var S36FullpageAdmin = function(layoutObj){
 }
 
 
-=======
 // class that collects admin panel data and does the auto saving.
 var PanelAutoSaver = new function(){
     
@@ -603,4 +601,3 @@ PanelAutoSaver.save();
         e.preventDefault();
     });
 */
->>>>>>> 9a190f551c803899179e04ac1ea338bf5d1e5fa8
