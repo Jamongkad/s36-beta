@@ -13,8 +13,8 @@ class UserInbox {
         $this->_init_inbox();
     }
 
-    public function read() {
-
+    public function read() { 
+        return $this->messages;
     }
      
     public function receive(MessageList $messages) {

@@ -385,8 +385,8 @@ return array(
 
         $tf->test("MessageService: Reading Message", function($tf) { 
             $auth = S36Auth::user();
-            Helpers::dump($auth);
-            $inbox = new Message\Entities\UserInbox("jamongkad:messages");
+            $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
+            Helpers::dump($inbox->read());
         });
 
         $tf->run();          
