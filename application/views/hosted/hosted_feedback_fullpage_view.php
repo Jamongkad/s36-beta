@@ -1,8 +1,5 @@
-
-<script type="text/javascript">
-<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
-</script>
 <?php if( ! is_null($user) ): ?>
+
 <div id="notification">
     <div id="notification-design">
         <div id="notification-message">
@@ -10,43 +7,55 @@
         </div>
     </div>
 </div>
+
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns))?>
 <?php endif; ?>
+
+<div id="bodyColorOverlay"></div>
 <div id="mainWrapper">
     <div id="fadedContainer">
-        <div id="mainContainer" itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
+        <div id="mainContainer">
+            <div id="theBarTab" class=""></div>
             <div id="coverPhotoContainer">
                 
-                <?php if( ! is_null($user) ): ?>
-                    <div id="changeCoverButton">
-                        <div id="changeButtonText">            
-                            <span>Change Cover</span>
-                        </div>
-                        <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
-                    </div>
-                    <div id="saveCoverButton">
-                        Save Cover
-                    </div>
-                    <div id="dragPhoto">
-                        Drag Image to Reposition Cover
-                    </div>
-                <?php endif; ?>
                 
-                <div id="coverPhoto">
-                    <?php if( is_null($company->coverphoto_src) ): ?>
-                        <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
-                    <?php else: ?>
-                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                    <?php if( ! is_null($user) ): ?>
+                        <div id="changeCoverButton">
+                            <div id="changeButtonText">            
+                                <span>Change Cover</span>
+                            </div>
+                            <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
+                        </div>
+                        <div id="saveCoverButton">
+                            Save Cover
+                        </div>
+                        <div id="dragPhoto">
+                            Drag Image to Reposition Cover
+                        </div>
                     <?php endif; ?>
+                    
+                    <div id="coverPhoto">
+                        <?php if( is_null($company->coverphoto_src) ): ?>
+                            <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
+                        <?php else: ?>
+                            <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                        <?php endif; ?>
+                    </div>
+                
+                
+                <!-- social link icons 1/28/2013 -->
+                <div id="socialLinkIcons" class="clear">
+                    <div class="social-icon"><a href="#"><img src="/fullpage/common/img/facebook.png" title="Facebook Page" /></a></div>
+                    <div class="social-icon"><a href="#"><img src="/fullpage/common/img/twitter.png" title="Twitter Page" /></a></div>                    
                 </div>
             </div>
-           
-            <!-- start of Review-aggregate scope -->
-            <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
-                <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" /><!-- for rich snippets. -->
-                <div class="hosted-block">
-                    <div class="company-description clear">
-                        <div class="company-text">
-                            <div id="desc_text" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+
+        <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
+        <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
+            <div class="hosted-block">
+                <div class="company-description clear">
+                    <div class="company-text">
+                      <div id="desc_text" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
                             <?php if( ! is_null($user) ): ?>
                                 <div id="desc_textbox_con">
                                     <textarea id="desc_textbox" rows="3"><?=$company->description?></textarea>
@@ -57,12 +66,12 @@
                                     <div class="cancel action_button" title="Cancel"></div>
                                 </div>
                             <?php endif; ?>
-                        </div>
-                        <div class="send-button" widgetkey="<?=$company->widgetkey?>"><a href="javascript:;">Send in feedback</a></div>
                     </div>
+                    <div class="send-button" widgetkey="<?=$company->widgetkey?>"><a href="javascript:;">Send in feedback</a></div>
                 </div>
-                
-                <div class="hosted-block">
+            </div>
+            
+            <div class="hosted-block">
                     <div class="company-reviews clear">
                         <div class="company-recommendation">
                             <div class="green-thumb">
@@ -76,12 +85,10 @@
                             <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
                         </div>
                     </div>
-                </div>
             </div>
-            <!-- end of Review-aggregate scope -->
-            
+        </div>
+
             <!-- lightbox notification -->
-            <div class="lightbox-s"></div>
             <div id="lightboxNotification">
                 <div class="lightbox-pandora">
                     <div class="lightbox-header">Oops! Something went wrong..</div>
@@ -92,13 +99,12 @@
                             </ul>
                         </div>
                         <div class="lightbox-buttons">
-                            <a href="#" class="lightbox-button error-close-button">CLOSE</a>
+                            <a href="#" class="lightbox-button" onclick="javascript:close_lightbox();">CLOSE</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- end of lightbox notification -->
-            
             <!-- lightbox container -->
             <div class="lightbox-s"></div>
             <div class="lightbox">
@@ -115,13 +121,66 @@
             <!-- end of lightbox container -->
             
             <div id="feedbackContainer">
-                <div id="timelineLayout">
-                    <!-- blocks are separated by dates so we create containers for each dates -->
-                    <?=View::make('hosted/partials/hosted_feedback_partial_view', Array('collection' => $feeds, 'user' => $user))?>
-                    <div id="feedback-infinitescroll-landing"></div>
-                </div>
+                <?=View::make('hosted/partials/fullpage_treble_layout_view', Array('collection' => $feeds, 'user' => $user))?>
             </div>
         </div>
-        <div class="block" style="background:#ececec;text-align:center;font-size:11px;color:#a8a8a8;padding:10px 0px;">Powered by 36Stories</div>
     </div>
 </div>
+
+<?php
+/*
+|--------------------------------------------------------------------------
+| Start adding some JS and CSS Initialization and Override
+|--------------------------------------------------------------------------
+*/
+?>
+
+<?= HTML::style('/fullpage/layout/treble/css/S36FullpageLayoutTreble.css'); ?>
+<?= HTML::script('/fullpage/layout/treble/js/S36FullpageLayoutTreble.js'); ?>
+<script type="text/javascript">
+<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
+    $(document).ready(function(){
+
+        var fullpageCommon = new S36FullpageCommon;
+        var fullpageLayout = new S36FullpageLayoutTreble;
+        fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
+        fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+        <?php if( ! is_null($user) ): //then display the admin bar by default ?>
+            var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
+            fullpageAdmin.init_fullpage_admin();
+            fullpageCommon.init_toggle_bar(0);
+        <?php else:  // then hide the admin bar by default ?>
+            fullpageCommon.init_toggle_bar(1);
+        <?php endif; ?>
+
+        /*
+        / Infinite Scroll
+        */
+        S36FeedbackActions.initialize_actions();
+        var counter = 0;    
+        function update() {
+           if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                counter += 1;
+                var page_counter = counter + 1;
+                var container = $('#feedback-infinitescroll-landing'); 
+                $.ajax({ 
+                    url: '/hosted/fullpage_partial/' + page_counter
+                  , success: function(msg) { 
+                      var boxes = $(msg);
+                      container.append(boxes); 
+                      S36FeedbackActions.initialize_actions();
+                    }
+                });
+           }
+        }
+        //rate limit this bitch
+        var throttled = _.throttle(update, 800);
+        $(window).scroll(throttled);
+    });
+</script>
+<?php 
+/*
+/ In-line css for fullpage
+*/
+echo $fullpage_css;
+?>

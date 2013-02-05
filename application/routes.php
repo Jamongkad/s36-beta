@@ -1,13 +1,14 @@
 <?php
 
 $feedback = new Feedback\Repositories\DBFeedback;
-$hosted_settings = new Widget\Repositories\DBHostedSettings;
+$hosted_settings = new Hosted\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
 $company = new Company\Repositories\DBCompany;
 $company_social = new Company\Repositories\DBCompanySocialAccount;
 $dbadmin_reply = new Feedback\Repositories\DBAdminReply;
 $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
+$fullpage =  new Hosted\Services\Fullpage;
 Package::load('eden');
 eden()->setLoader();
 
@@ -28,7 +29,7 @@ return array(
 	| Here's how: http://laravel.com/docs/start/routes#organize
 	|
 	*/
-    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url) {
+    'GET /' => function() use($company_name, $hosted_settings, $company, $user, $feedback, $company_social, $hosted_page_url, $fullpage) {
         //consider placing this into a View Object
         $company_info = $company->get_company_info($company_name);
  
@@ -56,18 +57,31 @@ return array(
         $meta->calculate_metrics();
 
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
-                                                    'company'         => $company_info
-                                                  , 'company_social'  => $company_social
-                                                  , 'user'            => $user
-                                                  , 'feeds'           => $feeds 
-                                                  , 'feed_count'      => $meta->perform()
-                                                  , 'company_header'  => $header_view
-                                                  , 'hosted_page_url' => $hosted_page_url
-                                                  , 'hosted'          => $hosted_settings_info));
+                                                    'company'           => $company_info
+                                                  , 'company_social'    => $company_social
+                                                  , 'user'              => $user
+                                                  , 'feeds'             => $feeds 
+                                                  , 'feed_count'        => $meta->perform()
+                                                  , 'company_header'    => $header_view
+                                                  , 'hosted_page_url'   => $hosted_page_url
+                                                  , 'hosted'            => $hosted_settings_info
+                                                  , 'fullpage_css'      => $fullpage->get_fullpage_css()
+                                                  , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()));
 
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid); 
+    },
+    
+    'GET /get_panel_settings' => function() use($hosted_settings, $user){
+        return $hosted_settings->get_panel_settings($user->companyid, true);
+    },
+    
+    'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        
+        $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
     },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
@@ -88,14 +102,14 @@ return array(
         return $dbadmin_reply->delete_admin_reply($feedid);
     },
 
-    'POST /update_desc' => function() use($user, $company){
+    'POST /update_desc' => function() use($user, $hosted_settings){
         
         // don't proceed if the user is not logged in.
         // return 1 for error checking.
         if( ! is_object($user) ) return 1;
         
         $data = Input::get();
-        $company->update_desc($data, $user->companyid);
+        $hosted_settings->update_desc($data, $user->companyid);
         
     },
     

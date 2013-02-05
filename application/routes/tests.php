@@ -286,7 +286,7 @@ return array(
           , 'submit_form_text' => 'Share your feeds with us...'
           , 'submit_form_question' => 'What do you think of our awesome services?'
         );
-        $hosted = new Widget\Repositories\DBHostedSettings;
+        $hosted = new Hosted\Repositories\DBHostedSettings;
         $hosted->set_hosted_settings($hosted_settings_data);
         $hosted->save();
         Helpers::dump($hosted->record_exists());

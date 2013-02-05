@@ -1,7 +1,7 @@
 <?php
 $feedback = new Feedback\Repositories\DBFeedback;
 $dbw = new Widget\Repositories\DBWidget;
-$hosted = new Widget\Repositories\DBHostedSettings;
+$hosted = new Hosted\Repositories\DBHostedSettings;
 $widget_themes = new Widget\Repositories\DBWidgetThemes;
 $themes = new Themes\Repositories\DBThemes; 
 $company_name = Config::get('application.subdomain');

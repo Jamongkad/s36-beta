@@ -50,11 +50,9 @@ return array(
         $orig_path  = Config::get('application.uploaded_images_dir').'/coverphoto/'.$data['name'];
         $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
 
-        if(file_exists($final_path)){
-            unlink($final_path);
-        }
+        if(file_exists($final_path)){ unlink($final_path); }
         exec("convert {$orig_path} {$final_path}"); //convert and rename uploaded image using image magick
-        unlink($orig_path);
+        if(file_exists($orig_path)){ unlink($orig_path); }
         //save to database
         $company->update_coverphoto(array(
             'company_id'    =>$user->companyid,
