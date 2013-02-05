@@ -376,7 +376,7 @@ return array(
 
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im)
-               ->add_message($im)
+               ->add_message($im);
 
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq);
