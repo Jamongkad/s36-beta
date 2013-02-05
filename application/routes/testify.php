@@ -385,6 +385,10 @@ return array(
         */
 
         $tf->test("MessageService: Reading Message", function($tf) { 
+
+            $ud = new Message\Repositories\DBUserDirectory;
+            Helpers::dump($ud->fetch_users());
+
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             Helpers::dump($inbox->read());
