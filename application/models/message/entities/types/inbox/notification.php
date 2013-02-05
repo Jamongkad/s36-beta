@@ -1,7 +1,6 @@
 <?php namespace Message\Entities\Types\Inbox;
 
 use Message\Entities\Types\Message;
-
 use Exception;
 
 class Notification extends Message {
@@ -11,4 +10,5 @@ class Notification extends Message {
     public function __construct($message) {
         parent::__construct($message);
     }
+
 }
