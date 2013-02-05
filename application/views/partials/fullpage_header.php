@@ -39,12 +39,12 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::script('/js/helpers.js'); ?>
 <?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?= HTML::script('/js/helpers.js'); ?>
 <?= HTML::script('/js/jquery.iframe-transport.js'); ?>
 <?= HTML::script('/js/jquery.ui.widget.js'); ?>
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
 <?= HTML::script('/js/jquery.fileupload.js'); ?>
+<?= HTML::script('/js/jquery.raty.min.js'); ?>
 
 
 <?php

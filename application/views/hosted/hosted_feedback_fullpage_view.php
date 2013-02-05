@@ -13,7 +13,7 @@
 <?php endif; ?>
 <div id="mainWrapper">
     <div id="fadedContainer">
-        <div id="mainContainer" itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
+        <div id="mainContainer">
             <div id="coverPhotoContainer">
                 
                 <?php if( ! is_null($user) ): ?>
