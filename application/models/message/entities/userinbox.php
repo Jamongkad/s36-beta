@@ -13,18 +13,17 @@ class UserInbox {
         $this->_synchronize_inbox();
     }
      
-    /* return void */
     public function receive(MessageList $messages) {
-        Helpers::dump($messages->uncork());
-        /*
-        foreach($messages->uncork() as $message) {
+        return $this->_save_to_redis($messages->uncork());
+    }
+ 
+    private function _save_to_redis($messages) {
+        foreach($messages as $message) {
             $parts = $message->read_message();
             $this->redis->hset($this->user_id, $parts->redis_key, $parts->message);         
-        }
-        */
+        } 
     }
 
-    /* return void */
     public function _synchronize_inbox() {
         /* fields to be initialized in admin hash for messaging */
         $this->redis->hset($this->user_id, "admin:inbox:notification", Null);
@@ -34,7 +33,6 @@ class UserInbox {
         $this->_check_messages();
     }
 
-    /* return void */
     public function _check_messages() {
         $keys = $this->redis->hkeys($this->user_id);
         $vals = $this->redis->hvals($this->user_id);
