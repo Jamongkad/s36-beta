@@ -1,19 +1,397 @@
 <div id="adminWindowBox">
-	<div id="adminWindowTitleBar">
-    	<div class="adminTitleText">Admin Panel</div>
+    <div id="adminWindowTitleBar">
+        <div class="adminTitleText">Admin Panel</div>
         <div class="minBtn"></div>
         <div class="closeBtn"></div>
     </div>
     <div id="adminWindowHolder">
         <div id="adminWindowMenuBar">
             <ul>
-                <li><a href="javascript:;" class="active">Background</a></li>
+                <li><a href="javascript:;" class="active">Quick Inbox</a></li>
+                <li><a href="javascript:;" class="">Background</a></li>
                 <li><a href="javascript:;" class="">Display</a></li>
-                <li><a href="javascript:;" class="">Description &amp; Colors</a></li>
-                <li><a href="javascript:;" class="">Social Media</a></li>
+                <li><a href="javascript:;" class="">Layout</a></li>
+                <li><a href="javascript:;" class="">Other Settings</a></li>
             </ul>
         </div>
         <div id="adminWindowPages">
+            <div id="quickInbox" class="adminPage">
+                <div class="pageContents">
+                    <div class="pageTitle">
+                        Recent Submitted Feedbacks
+                        <span class="light-text"></span>
+                    </div>
+                    <div class="pageBody">
+                        <div id="quickInboxWidget">
+                            <div class="widget-list">
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                            <div class="additional-info">
+                                                <div class="custom-meta-list grids">
+                                                    <div class="custom-meta">
+                                                        <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
+                                                    </div>
+                                                    <div class="custom-meta">
+                                                        <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
+                                                    </div>
+                                                    <div class="custom-meta">
+                                                        <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="uploaded-images-and-links grids">
+                                                    <div class="image-block">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="the-thumb">
+                                                            <img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" />                       
+                                                        </div>
+                                                    </div>
+                                                    <div class="image-block">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="the-thumb">
+                                                            <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="image-block">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="the-thumb">
+                                                            <img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="image-block video">
+                                                        <div class="delete-block">x</div>
+                                                        <div class="video-circle"></div>
+                                                        <div class="the-thumb">
+                                                            <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="widget-item clear">
+                                    <div class="widget-avatar">
+                                        <img src="fullpage/common/img/chris.png" />
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                        <div class="widget-text">
+                                            <p>I like your gaming headset because it gives me an edge in any game I play.</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget-actions">
+                                        <div class="widget-icons">
+                                            <input type="button" class="widget-icon check" />
+                                            <input type="button" class="widget-icon save" />
+                                            <input type="button" class="widget-icon reply" />
+                                            <input type="button" class="widget-icon feature" />
+                                            <input type="button" class="widget-icon contact" />
+                                            <input type="button" class="widget-icon flag" />
+                                        </div>
+                                        <div class="widget-date">
+                                            <div class="the-date">November 12, 2012</div>
+                                            <div class="the-time">10:54:11 am</div>
+                                            <div class="the-delete">
+                                                <input type="button" class="widget-icon delete" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="background" class="adminPage">
                 <div class="pageContents">
                     <div class="pageTitle">
@@ -64,7 +442,7 @@
                         <div class="patternList jcarousel-skin-tango">
                             <ul id="patterns" class="patternList clear">
                                 <?php foreach($patterns as $pattern): ?>
-                                <li><div id="<?=$pattern['basename']?>" class="patternItem" style="background:url(<?=$pattern['path']?>)"></div></li>	
+                                <li><div id="<?=$pattern['basename']?>" class="patternItem" style="background:url(<?=$pattern['path']?>)"></div></li>   
                                 <?php endforeach; ?>
                             </ul>
                             <div class="patternPagination">
@@ -122,10 +500,49 @@
                     </div>
                 </div>
             </div>
+            
+            <div id="layout" class="adminPage">
+                <div class="pageContents">
+                    <div class="pageTitle">
+                        Layout
+                    </div>
+                    <div class="pageBody clear">
+                        
+                            <ul class="layout-list clear">
+                                <li class="selected" id="Traditional">
+                                    <div class="layout">
+                                        <h3 class="layout-name">Traditional</h3>
+                                        <div class="layout-thumb">
+                                            <img src="fullpage/admin/img/layout-thumb-traditional.jpg" />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="Timeline">
+                                    <div class="layout">
+                                        <h3 class="layout-name">Timeline</h3>
+                                        <div class="layout-thumb">
+                                            <img src="fullpage/admin/img/layout-thumb-traditional.jpg" />
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="Treble">
+                                    <div class="layout">
+                                        <h3 class="layout-name">Treble</h3>
+                                        <div class="layout-thumb">
+                                            <img src="fullpage/admin/img/layout-thumb-traditional.jpg" />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p align="right"><input type="hidden" id="selectedLayout" value="Traditional" /><input type="button" class="regular-button" value="Choose Layout" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        
+                    </div>
+                </div>
+            </div>
             <div id="descriptionAndColors" class="adminPage">
                 <div class="pageContents">
                     <div class="pageTitle">
-                        Description
+                        Header Options
                     </div>
                     <div class="pageBody">
                         <div class="optionList clear">
@@ -134,6 +551,7 @@
                                 <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
                             </div>
                         </div>
+                        <!--
                         <div class="optionList clear">
                             <div class="label"><strong>Font Size</strong> </div>
                             <div class="input">
@@ -144,7 +562,22 @@
                                 </select>
                             </div>
                         </div>
-                        <br />
+                        -->
+                        <div class="pageTitle">
+                            Social Media
+                        </div>
+                        <div class="optionList clear">
+                            <div class="label"><strong>Facebook URL: </strong> </div>
+                            <div class="input">
+                                <input type="text" />
+                            </div>
+                        </div>
+                        <div class="optionList clear">
+                            <div class="label"><strong>Twitter URL: </strong> </div>
+                            <div class="input">
+                                <input type="text" />
+                            </div>
+                        </div>
                         <div class="pageTitle">
                             Button
                         </div>
@@ -165,7 +598,7 @@
                                         <br />
                                         <div class="backgroundChooser">
                                             <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="#E3540F" style="visibility:hidden" />
-                                        </div>						
+                                        </div>                      
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +610,7 @@
                                         <br />
                                         <div class="backgroundChooser">
                                             <input type="minicolors" class="btnFontColor" data-textfield="false" value="#FFFFFF" style="visibility:hidden" />
-                                        </div>						
+                                        </div>                      
                                     </div>
                                 </div>
                             </div>
@@ -185,37 +618,13 @@
                     </div>
                 </div>
             </div>
-            <div id="socialMedia" class="adminPage">
-                <div class="pageContents">
-                    <div class="pageTitle">
-                        Social Media
-                    </div>
-                    <div class="pageBody">
-                        
-                            <h2>Facebook URL: </h2>
-                            <br />
-                            <span>
-                                <input type="text" />
-                            </span>
-                            <br /><br />
-                            <h2>Twitter URL: </h2>
-                            <br />
-                            <span>
-                                <input type="text" />
-                            </span>
-                            <br /><br />
-                            <input type="button" class="regular-button" value="Save Links" />
-                        
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 <div id="notification">
-	<div id="notification-design">
-    	<div id="notification-message">
-        	Loading... Please Wait... you bits.
+    <div id="notification-design">
+        <div id="notification-message">
+            Loading... Please Wait... you bits.
         </div>
     </div>
 </div>
