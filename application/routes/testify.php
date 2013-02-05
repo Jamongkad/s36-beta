@@ -373,7 +373,7 @@ return array(
         $tf->test("MessageService: Inserting Message", function($tf) { 
             
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback");
-            $st = new Message\Entities\Types\Inbox\Stub("8 New Feedback");
+            $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs");
 
             $mq = new Message\Entities\MessageList;
             $mq->add_message($im);
