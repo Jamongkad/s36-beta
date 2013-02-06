@@ -10,6 +10,10 @@ class UserInbox {
         $this->redis   = new Redis;    
     }
 
+    public function edit($key, $msg=Null) { 
+        return $this->redis->hset($this->user_id, $key, $msg);         
+    }
+
     public function read() { 
         return $this->_check_messages();
     }

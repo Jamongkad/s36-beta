@@ -390,6 +390,8 @@ return array(
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             Helpers::dump($inbox->read());
+            $inbox->edit("inbox:notification:newfeedback", "Mathew was here");
+            Helpers::dump($inbox->read());
 
         });
 
