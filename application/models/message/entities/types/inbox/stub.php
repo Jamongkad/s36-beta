@@ -4,5 +4,5 @@ use Message\Entities\Types\Message;
 use Exception;
 
 class Stub extends Message { 
-    protected $redis_read_key = "admin:inbox:"; 
+    protected $redis_read_key = "inbox:"; 
 }
