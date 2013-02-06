@@ -55,7 +55,7 @@ return array(
         ));
 
         $meta->calculate_metrics();
-
+        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
@@ -74,7 +74,7 @@ return array(
     },
     
     'GET /get_panel_settings' => function() use($hosted_settings, $user){
-        return $hosted_settings->get_panel_settings($user->companyid, true);
+        return $hosted_settings->get_panel_settings($user->companyid, 'json');
     },
     
     'POST /update_panel_settings' => function() use($hosted_settings, $user){

@@ -15,6 +15,12 @@ var S36FullpageAdmin = function(layoutObj){
     var self = this;
     var common = new S36FullpageCommon;
     this.init_fullpage_admin = function(){
+        
+        // initialize the the PanelAutoSaver.
+        // layoutObj is used as param because we use S36FullpageAdmin.show_notification() 
+        // inside PanelAutoSaver.
+        PanelAutoSaver.init(layoutObj);
+        
         /* ========================================
         || Make the admin window box draggable
         ==========================================*/
@@ -119,6 +125,7 @@ var S36FullpageAdmin = function(layoutObj){
             },done: function(e, data){
                 self.change_background_image(data.result[0].url);
                 self.hide_notification();
+                PanelAutoSaver.set_data('background_image', data.result[0].name);
             }
         });
         /* ========================================
@@ -142,7 +149,7 @@ var S36FullpageAdmin = function(layoutObj){
             },progress: function(e, data){
                 self.show_notification('Changing Cover Photo',0);
             },done: function(e, data){
-                self.change_cover_image(data.result[0].url);
+                self.change_cover_image(data.result[0]);
             }
         });
         /* ========================================
@@ -252,12 +259,13 @@ var S36FullpageAdmin = function(layoutObj){
     /* ========================================
     || Cover Image changer
     ==========================================*/
-    this.change_cover_image = function(path){
+    this.change_cover_image = function(data){
+        console.log(data);
         $('<img />')
-            .attr('src', path)
+            .attr({'basename':data.name,'src':data.url})
             .load(function(e){
                 self.make_cover_undraggable(false);
-                $('#coverPhoto img').attr({'src':path,width:'100%'});
+                $('#coverPhoto img').attr({'basename':data.name,'src':data.url,width:'100%'});
                 $('#saveCoverButton').show();
                 $('#changeCoverButton').hide();
                 self.hide_notification();
@@ -410,4 +418,179 @@ var S36FullpageAdmin = function(layoutObj){
         self.make_cover_undraggable(true);
     }
 
+}
+
+
+
+
+// class that collects admin panel data and does the auto saving.
+var PanelAutoSaver = new function(layoutObj){
+    
+    this.interval = 5000;
+    this.hosted_settings = '';
+    this.def_data = {};
+    this.panel_data = {};
+    this.final_data = {};
+    this.S36FullpageAdmin = new S36FullpageAdmin(layoutObj);
+    
+    
+    // initialize all the class needs.
+    this.init = function(){
+        
+        // load the default data.
+        this.hosted_settings = this.get_hosted_settings();
+        this.def_data = $.parseJSON(this.hosted_settings);
+        this.panel_data = $.parseJSON(this.hosted_settings);
+        
+        // start the autosave.
+        setInterval('PanelAutoSaver.save()', this.interval);
+        
+        
+        // background section events.
+        $('#bg_image').change(function(){
+            // PanelAutoSaver.set_data() of this element is in fileupload().
+        });
+        
+        $('.bgPos').click(function(){
+            PanelAutoSaver.set_data('page_bg_position', $(this).attr('val'));
+        });
+        
+        $('.bgRepeat').click(function(){
+            PanelAutoSaver.set_data('page_bg_repeat', $(this).attr('val'));
+        });
+        
+        $('.patternItem').click(function(){
+            PanelAutoSaver.set_data('background_image', $(this).attr('id'));
+        });
+        
+        $('.backgroundColorPicker').on('change', function(){
+            PanelAutoSaver.set_data('page_bg_color', $(this).val());
+            PanelAutoSaver.set_data('page_bg_color_opacity', $(this).attr('data-opacity'));
+        });
+        
+        // display section events.
+        $('.tickerbox').click(function(){
+            var value = ( ! $(this).is('.off') ? '0' : '1' );  // i'm on the right track, baby i was born this way!
+            PanelAutoSaver.set_data($(this).attr('field'), value);
+        });
+        
+        // description and colors section events.
+        $('#desc_text').blur(function(){  // not yet the actual id.
+            PanelAutoSaver.set_data('description', $(this).val());
+        });
+        
+        $('.btnBgColor').on('change', function(){
+            PanelAutoSaver.set_data('button_bg_color', $(this).val());
+        });
+        
+        $('.mbtnBgColor').on('change', function(){
+            PanelAutoSaver.set_data('button_hover_bg_color', $(this).val());
+        });
+        
+        $('.btnFontColor').on('change', function(){
+            PanelAutoSaver.set_data('button_font_color', $(this).val());
+        });
+        
+        // social media section events.
+        $('.social_url').blur(function(){
+            
+            var url = $(this).val();
+            var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/;
+            var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/;
+            
+            $(this).parent().find('.social_url_msg').hide();
+            
+            if( $(this).is('#fb_url') ){
+                if( url.match(fb_regex) == null ){
+                    $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
+                }else{
+                    $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                    PanelAutoSaver.set_data('facebook_url', url);
+                }
+            }
+            
+            if( $(this).is('#tw_url') ){
+                if( url.match(tw_regex) == null ){
+                    $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
+                }else{
+                    $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                    PanelAutoSaver.set_data('twitter_url', url);
+                }
+            }
+            
+        });
+        
+    }
+    
+    
+    // get hosted settings form db.
+    this.get_hosted_settings = function(){
+        
+        var data;
+        
+        $.ajax({
+            async: false,
+            url: '/get_panel_settings',
+            success: function(result){
+                data = result;
+            }
+        });
+        
+        return data;
+        
+    }
+    
+    
+    // store the field and value.
+    this.set_data = function(field, value){
+        
+        // the value always have to be a string.
+        this.panel_data[field] = value.valueOf();
+        
+    }
+    
+    
+    // save the collected data in admin panel.
+    // this will run on the set interval.
+    this.save = function(){
+        
+        // check if there are differences in def_data and panel_data.
+        // if yes, store the difference in final_data. else, don't proceed.
+        if( JSON.stringify(this.def_data) === JSON.stringify(this.panel_data) ) return;
+        
+        // show notif.
+        this.S36FullpageAdmin.show_notification('Saving Panel Changes', 0);
+        
+        // get the difference in def_data and panel_data then store it in final_data.
+        $.each(this.panel_data, function(k, v){
+            if( PanelAutoSaver.def_data[k] != PanelAutoSaver.panel_data[k] ){
+                PanelAutoSaver.final_data[k] = v;
+                
+                // also copy the different panel_data in def_data.
+                PanelAutoSaver.def_data[k] = v;
+            }
+        });
+        
+        // save the final_data in db.
+        $.ajax({
+            async: false,
+            url: '/update_panel_settings',
+            type: 'post',
+            data: PanelAutoSaver.final_data,
+            success: function(result){
+                if( $.trim(result) != '' ){
+                    PanelAutoSaver.S36FullpageAdmin.hide_notification();
+                    Helpers.display_error_mes( [result] );
+                }
+            }
+        });
+        
+        // clear the final_data.
+        this.final_data = {};
+        
+        // hide notif.
+        setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1500);
+        
+    }
+    
 }

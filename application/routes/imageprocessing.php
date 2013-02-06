@@ -7,7 +7,7 @@ return array(
     'POST /imageprocessing/upload_coverphoto' => array('name'=>'upload_coverphoto', 'do' => function() use ($user) {
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
-
+        
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/coverphoto/'

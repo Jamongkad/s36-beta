@@ -406,7 +406,7 @@
                                 <span>or</span>
                                 <!--
                                 <span class="uploadBtn"></span>
-                                --><input type="file" id="bg_image" data-url="server/" />
+                                --><input type="file" id="bg_image" data-url="/imageprocessing/upload_hosted_background_image" />
                             </div>
                             <div id="upload-status-area">
                                 <div class="upload-preview">
@@ -419,20 +419,20 @@
                             <div class="optionList clear">
                                 <span class="label">Position: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_pos_l" class="selectionBtn bgPos active">Left</a>
-                                    <a href="javascript:;" id="bg_pos_r" class="selectionBtn bgPos">Right</a>
-                                    <a href="javascript:;" id="bg_pos_c" class="selectionBtn bgPos">Center</a>
-                                    <a href="javascript:;" id="bg_pos_t" class="selectionBtn bgPos">Top</a>
-                                    <a href="javascript:;" id="bg_pos_b" class="selectionBtn bgPos">Bottom</a>
+                                    <a href="javascript:;" id="bg_pos_l" val="left" class="selectionBtn bgPos active">Left</a>
+                                    <a href="javascript:;" id="bg_pos_r" val="right" class="selectionBtn bgPos">Right</a>
+                                    <a href="javascript:;" id="bg_pos_c" val="center" class="selectionBtn bgPos">Center</a>
+                                    <a href="javascript:;" id="bg_pos_t" val="top" class="selectionBtn bgPos">Top</a>
+                                    <a href="javascript:;" id="bg_pos_b" val="bottom" class="selectionBtn bgPos">Bottom</a>
                                 </span>
                             </div> 
                             <div class="optionList clear">
                                 <span class="label">Repeat: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_repeat_r" class="selectionBtn bgRepeat">Repeat</a>
-                                    <a href="javascript:;" id="bg_repeat_rh" class="selectionBtn bgRepeat active">Repeat Horizontally</a>
-                                    <a href="javascript:;" id="bg_repeat_rv" class="selectionBtn bgRepeat">Repeat Vertically</a>
-                                    <a href="javascript:;" id="bg_repeat_nr" class="selectionBtn bgRepeat">No Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_r" val="repeat" class="selectionBtn bgRepeat">Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_rh" val="repeat-x" class="selectionBtn bgRepeat active">Repeat Horizontally</a>
+                                    <a href="javascript:;" id="bg_repeat_rv" val="repeat-y" class="selectionBtn bgRepeat">Repeat Vertically</a>
+                                    <a href="javascript:;" id="bg_repeat_nr" val="no-repeat" class="selectionBtn bgRepeat">No Repeat</a>
                                 </span>
                             </div> 
                         </div>
@@ -467,34 +467,34 @@
                     <div class="pageBody">
                         <div class="display-option-box">
                             <h2>General Items</h2>
-                            <p><span class="tickerbox" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
-                            <p><span class="tickerbox" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
-                            <p><span class="tickerbox" display-array="feedback-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
+                            <p><span class="tickerbox" field="show_rating" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
+                            <p><span class="tickerbox" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
+                            <p><span class="tickerbox" field="show_recommendation" display-array="feedback-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
                             
                             <h2>Display Meta Information</h2>
-                            <p><span class="tickerbox" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
+                            <p><span class="tickerbox" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
                             
                             <h2>Display Admin Comment</h2>
-                            <p><span class="tickerbox" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
+                            <p><span class="tickerbox" field="show_admin_comment" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
                             
                             <h2>Sharing Options</h2>
-                            <p><span class="tickerbox" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
+                            <p><span class="tickerbox" field="show_sharing_option" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
                             
                             <h2>Display 'Flag as inappropriate' Option</h2>
-                            <p><span class="tickerbox" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
+                            <p><span class="tickerbox" field="show_flag_inapp" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
                             
                             <h2>User Display Information</h2>
-                            <p><span class="tickerbox" display-array="first_name"></span> <span class="label">Display First Name</span> </p>
-                            <p><span class="tickerbox" display-array="last_name"></span> <span class="label">Display Last Name</span> </p>
-                            <p><span class="tickerbox" display-array="job,company_comma"></span> <span class="label">Display Job Position</span> </p>
-                            <p><span class="tickerbox" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
-                            <p><span class="tickerbox" display-array="city,location_comma"></span> <span class="label">Display City</span> </p>
-                            <p><span class="tickerbox" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
-                            <p><span class="tickerbox" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
+                            <p><span class="tickerbox" field="show_first_name" display-array="first_name"></span> <span class="label">Display First Name</span> </p>
+                            <p><span class="tickerbox" field="show_last_name" display-array="last_name"></span> <span class="label">Display Last Name</span> </p>
+                            <p><span class="tickerbox" field="show_position" display-array="job,company_comma"></span> <span class="label">Display Job Position</span> </p>
+                            <p><span class="tickerbox" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
+                            <p><span class="tickerbox" field="show_city" display-array="city,location_comma"></span> <span class="label">Display City</span> </p>
+                            <p><span class="tickerbox" field="show_country" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
+                            <p><span class="tickerbox" field="show_flag" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
                             
                             <h2>Attachment Options</h2>
-                            <p><span class="tickerbox" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
-                            <p><span class="tickerbox" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
+                            <p><span class="tickerbox" field="show_image_attachment" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
+                            <p><span class="tickerbox" field="show_video_attachment" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
                             
                         </div>
                     </div>
@@ -551,31 +551,23 @@
                                 <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
                             </div>
                         </div>
-                        <!--
-                        <div class="optionList clear">
-                            <div class="label"><strong>Font Size</strong> </div>
-                            <div class="input">
-                                <select>
-                                    <option>12</option>
-                                    <option>14</option>
-                                    <option>16</option>
-                                </select>
-                            </div>
-                        </div>
-                        -->
                         <div class="pageTitle">
                             Social Media
                         </div>
                         <div class="optionList clear">
                             <div class="label"><strong>Facebook URL: </strong> </div>
                             <div class="input">
-                                <input type="text" />
+                                <input type="text" id="fb_url" class="social_url" value="http://www.facebook.com/TheGoodLordAbove" />
+                                <span id="fb_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
+                                <span id="fb_url_success_msg" class="social_url_msg success_msg rounded_corner">you did it boy!</span>
                             </div>
                         </div>
                         <div class="optionList clear">
                             <div class="label"><strong>Twitter URL: </strong> </div>
                             <div class="input">
-                                <input type="text" />
+                                <input type="text" id="tw_url" class="social_url" value="https://twitter.com/TheTweetOfGod" />
+                                <span id="tw_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
+                                <span id="tw_url_success_msg" class="social_url_msg success_msg rounded_corner">you did it boy!</span>
                             </div>
                         </div>
                         <div class="pageTitle">

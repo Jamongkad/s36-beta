@@ -28,7 +28,6 @@ class DBHostedSettings extends S36DataObject {
         'show_image_attachment',
         'show_video_attachment',
         'description',
-        'description_font_size',
         'button_bg_color',
         'button_hover_bg_color',
         'button_font_color',
@@ -138,10 +137,10 @@ class DBHostedSettings extends S36DataObject {
     
     
     // get admin panel settings.
-    public function get_panel_settings($company_id, $json = false){
+    public function get_panel_settings($company_id, $type = null){
         
         $result = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first( $this->admin_panel_fields );
-        return ( $json ? json_encode($result) : $result ) ;
+        return ( $type == 'json' ? json_encode($result) : $result ) ;
         
     }
     
@@ -156,6 +155,8 @@ class DBHostedSettings extends S36DataObject {
         
         // get only the data with valid keys.
         $valid_data = array_intersect_key((array)$data, $panel_fields);
+        
+        // extra validatios on some fields.
         
         // now update db with the selected fields.
         // reminder: laravel automatically escapes all values.
