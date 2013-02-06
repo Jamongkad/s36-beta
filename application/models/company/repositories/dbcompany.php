@@ -90,27 +90,32 @@ class DBCompany extends S36DataObject {
     //this method is to be used regardless of user session is set or not
     public function get_account_users() {
 
-        $cols = Array(
-            'userid',
-            'companyid',
-            'username',
-            'account_owner',
-            'email',
-            'fullname',
-            'title',
-            'phone',
-            'ext',
-            'mobile',
-            'fax',
-            'home',
-            'im',
-            'imid',
-            'avatar'
-		);
+        $sql = "
+            SELECT 
+                User.userId 
+              , User.companyId
+              , User.username
+              , User.account_owner
+              , User.email
+              , User.fullname
+              , User.title
+              , User.phone
+              , User.ext
+              , User.mobile
+              , User.fax
+              , User.home
+              , User.im
+              , User.imid
+              , User.avatar
+            FROM User 
+                INNER JOIN Company 
+                    ON User.companyId = Company.companyId WHERE 1=1 AND Company.name = :company_name";
 
-        return DB::table('User') 
-                ->or_where('name', '=', $this->company_name)
-                ->get($cols);
+        $sth = $this->dbh->prepare($sql); 
+        $sth->bindParam(':company_name', $this->company_name); 
+        $sth->execute();
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        return $result;
     }
     
     public function update_plan($planId){
