@@ -50,8 +50,9 @@ class SubmissionService {
             $this->_calculate_dashboard_analytics($company_id);
             //$this->_save_latest_feedid($company_id);
 
-            $mq = new MessageList;
             $feedbackcount = $this->dbfeedback->total_newfeedback_by_company($company_id);
+
+            $mq = new MessageList;
             $mq->add_message(new Notification("$feedbackcount New Feedback", "inbox:notification:newfeedback"));
             $director = new MessageDirector;
             $director->distribute_messages($mq); 
