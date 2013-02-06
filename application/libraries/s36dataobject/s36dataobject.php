@@ -10,7 +10,7 @@ abstract class S36DataObject {
 
     public function __construct() { 
         $this->dbh = DB::connection($this->db_name)->pdo;       
-        $this->company_name = Config::get('application.subdomain');
+        $this->company_name = $this->_is_valid_company(Config::get('application.subdomain'));
         //TODO: Take note if no login cookie you cannot test inbox specific data retrieval
         if(S36Auth::check()) {
             $this->user_id = S36Auth::user()->userid;             
@@ -18,6 +18,16 @@ abstract class S36DataObject {
             $this->username = S36Auth::user()->username;             
             $this->email = S36Auth::user()->email;             
         } 
+    }
+
+    private function _is_valid_company($company_name) {
+        $sql = "SELECT * FROM Company WHERE Company.name = :company_name LIMIT 1";
+        $sth = $this->dbh->prepare($sql);
+        $sth->bindParam(":company_name", $company_name); 
+        $sth->execute();
+        $result = $sth->fetch(PDO::FETCH_OBJ);
+        if(!$result)  
+            throw new Exception("Company ".$this->company_name." does not exists!");
     }
 
     public function escape($string) {
