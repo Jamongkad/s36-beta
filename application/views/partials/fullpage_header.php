@@ -96,6 +96,8 @@
 <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
 <?= HTML::script('/fullpage/admin/js/minicolors.js'); ?>
 <?= HTML::script('/fullpage/admin/js/colors.min.js'); ?>
+<?= HTML::script('/fullpage/admin/js/jquery.mousewheel.min.js'); ?>
+<?= HTML::script('/fullpage/admin/js/jquery.scroll.js'); ?>
 <?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
 <?php endif; ?> 
 </head>

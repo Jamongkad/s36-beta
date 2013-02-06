@@ -69,7 +69,7 @@
 }
 
 #adminWindowTitleBar{
-	background:#d84402 url(../../common/img/adminTitleBarBg.jpg) repeat-x;
+	background:#d84402 url(/fullpage/common/img/adminTitleBarBg.jpg) repeat-x;
 	color:#FFF;
 	padding:10px;
 	cursor:move;
@@ -84,7 +84,7 @@
 #adminWindowTitleBar .closeBtn{
 	width:21px;
 	height:21px;
-	background:url(../../common/img/adminWindowClose.png) no-repeat top;
+	background:url(/fullpage/common/img/adminWindowClose.png) no-repeat top;
 	position:absolute;
 	right:5px;
 	top:5px;
@@ -96,7 +96,7 @@
 #adminWindowTitleBar .minBtn{
 	width:21px;
 	height:21px;
-	background:url(../../common/img/adminWindowMin.png) no-repeat top left;
+	background:url(/fullpage/common/img/adminWindowMin.png) no-repeat top left;
 	position:absolute;
 	right:30px;
 	top:5px;
@@ -112,7 +112,7 @@
 	background-position:bottom left;
 }
 #adminWindowMenuBar{
-	background:#273847 url(../../common/img/adminMenuBarBg.jpg) repeat-x;
+	background:#273847 url(/fullpage/common/img/adminMenuBarBg.jpg) repeat-x;
 	padding:10px;
 	border-top:#3d5365 1px solid;
 }
@@ -169,7 +169,7 @@
 	border: 1px solid #e09107;
 	border-right: 1px solid #e09107;
 	border-bottom: 1px solid #e09107;
-	background: #f5b902 url(../../common/img/loader.gif) no-repeat 8px center;
+	background: #f5b902 url(/fullpage/common/img/loader.gif) no-repeat 8px center;
 	-webkit-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
 	-moz-box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
 	box-shadow: rgba(0,0,0,.40) 0px 1px 5px;
@@ -216,7 +216,7 @@
 }
 #bgDragBox #dragBoxText span.uploadBtn{
 	display:inline-block;
-	background:url(../../common/img/adminUploadBtn.png) no-repeat top;
+	background:url(/fullpage/common/img/adminUploadBtn.png) no-repeat top;
 	width:214px;
 	height:47px;
 	margin-top:5px;
@@ -260,7 +260,7 @@
 	line-height:19px;
 }
 .selectionBtn{
-	background:#069 url(../../common/img/fadedBtn.png) repeat-x top;
+	background:#069 url(/fullpage/common/img/fadedBtn.png) repeat-x top;
 	color:#FFF;
 	margin:0px;
 	padding:5px 10px;
@@ -321,7 +321,7 @@ ul.patternList li div.active{
 	display:none;
 }
 .progress-container{ width: 100px; }
-.progress-shade{ width: 0%; height: 15px; background:url(../../common/img/load-bg.jpg) repeat-x;}
+.progress-shade{ width: 0%; height: 15px; background:url(/fullpage/common/img/load-bg.jpg) repeat-x;}
 
 #changeCoverButton{
 	position:absolute;
@@ -362,7 +362,7 @@ ul.patternList li div.active{
 	background:#EEE;
 }
 #dragPhoto{
-	background: url(../../common/img/drag-bg.png);
+	background: url(/fullpage/common/img/drag-bg.png);
 	font-family:Verdana, Geneva, sans-serif;
 	font-size:10px;
 	position:absolute;
@@ -413,7 +413,7 @@ ul.patternList li div.active{
 .display-option-box p span.tickerbox{
 	width:14px;
 	height:14px;
-	background:url(../../common/img/tickerbox.jpg) no-repeat;
+	background:url(/fullpage/common/img/tickerbox.jpg) no-repeat;
 	background-position:bottom;	
 	float:left;
 	padding-top:0px;
@@ -425,4 +425,335 @@ ul.patternList li div.active{
 }
 #mainWrapper{
 	top:40px;
+}
+/* NEW! Added scrollbar */
+/* scroll styles */
+
+/*
+ * CSS Styles that are needed by jScrollPane for it to operate correctly.
+ *
+ * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+ * may not operate correctly without them.
+ */
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+}
+
+.jspPane
+{
+	position: absolute;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 9px;
+	height: 100%;
+	background:url(/fullpage/admin/img/scrollTrack.png) center repeat-y;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	
+	position: relative;
+}
+
+.jspDrag
+{
+	background:url(/fullpage/admin/img/scrollDrag-bg.png) repeat;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
+/* end of scrollbar */
+.layout-list{
+	list-style:none;
+	margin-bottom:10px;
+}
+.layout-list li{
+	padding:10px 4px;
+	text-align:center;
+	display:inline;
+	float:left;
+	width:145px;
+	cursor:pointer;
+}
+.layout-list li h3{
+	font-weight:bold;
+	margin-bottom:6px;
+	color:#3e3e3e;
+}
+.layout-list li:hover,.layout-list li.selected{
+	background:#f4f9fa
+}
+.layout-list li:hover h3,.layout-list li.selected h3{
+	color:#fe5100
+}
+.layout-list .layout-thumb{
+	height:137px;
+}
+/* quick inbox widget styles */
+#quickInboxWidget{
+	width:100%;
+	max-height:400px;
+}
+#quickInboxWidget .widget-item{
+	min-height:48px;
+	margin-top:15px;
+	border-bottom:1px solid #EEE;
+	padding-bottom:15px;
+}
+#quickInboxWidget .widget-item:last-child{
+	padding-bottom:0px;
+	border-bottom:none;
+}
+#quickInboxWidget .widget-item:first-child{
+	margin-top:0px;
+}
+.widget-list{
+	max-height:400px;
+	outline:none;
+}
+.widget-item .widget-avatar{
+	width:48px;
+	height:48px;
+	float:left;
+}
+.widget-item .widget-content{
+	width:248px;
+	float:left;
+	margin:0px 10px;
+	font-size:11px;
+}
+.widget-item .widget-content .widget-submitter{
+	margin-bottom:5px;
+}
+.widget-item .widget-content .widget-submitter .name{
+	font-weight:bold;
+	color:#717171;
+}
+.widget-item .widget-content .widget-submitter .social-src{
+	font-size:10px;
+	color:#567aa7;
+}
+.widget-item .widget-content .widget-text{
+	color:#707070;
+	line-height:14px;
+}
+.widget-item .widget-content .widget-text p{
+	margin-bottom:5px;
+}
+.widget-item .widget-actions{
+	width:140px;
+	float:left;
+}
+.widget-icon{
+	margin: 0px 0px;
+	padding: 0px;
+	width: 20px;
+	height: 17px;
+	border: none;
+	background: url(/fullpage/admin/img/ico-sprite-options.png) no-repeat;
+	cursor: pointer
+}
+.widget-icon.check      {background-position: 0px 0px;}/* this input button uses css sprites. change background position to change the images. */
+.widget-icon.save       {background-position: -20px 0px;}
+.widget-icon.reply      {background-position: -40px 0px;}
+.widget-icon.feature    {background-position: -60px 0px;}
+.widget-icon.contact    {background-position: -80px 0px;}
+.widget-icon.flag		{background-position: -100px -34px;float:none;}
+.widget-icon.delete{background-position: -120px -34px;}
+.widget-icon.check:hover{background-position: 0px -17px;}
+.widget-icon.save:hover	{background-position: -20px -17px;}
+.widget-icon.reply:hover	{background-position: -40px -17px;}
+.widget-icon.feature:hover{background-position: -60px -17px;}
+.widget-icon.contact:hover{background-position: -80px -17px;}
+.widget-icon.flag:hover		{background-position: -100px -17px;}
+.widget-icon.delete:hover{background-position: -120px 0px;}
+.widget-icon.check-active  {background-position: 0px -34px;}
+.widget-icon.save-active   {background-position: -20px -34px;}
+.widget-icon.reply-active  {background-position: -40px -34px;}
+.widget-icon.feature-active{background-position: -60px -34px;}
+.widget-icon.contact-active{background-position: -80px -34px;}
+.widget-icon.flag-active{background-position: -100px 0px;}
+
+.widget-date{
+	font-size:10px;
+	margin-top:10px;
+}
+.widget-date .the-delete{
+	position:absolute;
+	top:0px;
+	right:4px;
+}
+
+.widget-content .additional-info{
+	background:#f7f7f7;
+	border:1px solid #dde7ef;
+	padding:15px;
+	margin-top:10px;
+	font-size:10px;
+}
+.widget-content .custom-meta-list{
+	margin-bottom:10px;
+}
+.widget-content .custom-meta{
+	float:left;
+}
+.widget-content .custom-meta-name{
+	font-weight:bold;
+	font-size:10px;
+	color:#6499cd;
+	float:left;
+	margin-right:10px;
+}
+.custom-meta-name span.value{
+	color:#a2a2a2;
+	font-weight:normal;
+}
+.widget-content .uploaded-images-and-links .image-block{
+	width:60px;
+	margin-right:0px;
+	float:left;
+	height:48px;
+	overflow:hidden;
+}
+.widget-content .video-circle{
+	background:url(/fullpage/admin/img/video-play-circle.png) no-repeat;
+	width:25px;
+	height:25px;
+	position:absolute;
+	z-index:100;
+	top:50%;
+	margin-top:-12px;
+	left:50%;
+	margin-left:-12px;
+	cursor:pointer;
+}
+.widget-content .delete-block{
+	position:absolute;
+	top:0px;
+	right:3px;
+	z-index:100;
+	background:#000;
+	color:#FFF;
+	cursor:pointer;
+	margin:0px;
+	padding:0px 2px;
+}
+.widget-content .delete-block:hover{
+	background:#036;
+}
+.widget-content .the-thumb{
+	cursor:pointer;
+}
+.uploaded-images-popup{
+	margin:5px;
+}
+.uploaded-images-name{
+	color:#FFF;
+	text-shadow:#000 0px 1px;
+	position:absolute;
+	bottom:5px;
+	padding:10px 10px;
+	background: url(/fullpage/admin/img/faded-bg-2.png) repeat;
+	display:block;
+	right:5px;
+	left:5px;
+}
+.uploaded-images-view{
+	text-align:center;
+	background:#FFF;
+}
+.uploaded-images-close{
+	background:url(/fullpage/admin/img/uploaded-images-close.png) no-repeat;
+	width:45px;
+	height:45px;
+	position:absolute;
+	z-index:100001;
+	right:-15px;top:-15px;
+	cursor:pointer;
 }
