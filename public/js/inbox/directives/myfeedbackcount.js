@@ -3,6 +3,7 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , template: "<b>Momoji</b>"
+      /*
       , link: function(scope, element, attrs) {
 
             FeedbackService.get_feedback_count();
@@ -13,5 +14,6 @@ angular.module('feedback', [])
             }
            
         }
+        */
     }    
 })
