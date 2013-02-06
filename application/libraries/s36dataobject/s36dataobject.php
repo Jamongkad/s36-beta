@@ -26,8 +26,11 @@ abstract class S36DataObject {
         $sth->bindParam(":company_name", $company_name); 
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_OBJ);
-        if(!$result)  
-            throw new Exception("Company ".$this->company_name." does not exists!");
+        if(!$result) {
+            throw new Exception("Company ".$this->company_name." does not exists!");     
+        }        
+
+        return $result;
     }
 
     public function escape($string) {
