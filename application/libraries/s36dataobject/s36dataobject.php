@@ -21,7 +21,7 @@ abstract class S36DataObject {
     }
 
     private function _is_valid_company($company_name) {
-        $sql = "SELECT * FROM Company WHERE Company.name = :company_name LIMIT 1";
+        $sql = "SELECT Company.name FROM Company WHERE Company.name = :company_name LIMIT 1";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":company_name", $company_name); 
         $sth->execute();
@@ -30,7 +30,7 @@ abstract class S36DataObject {
             throw new Exception("Company ".$this->company_name." does not exists!");     
         }        
 
-        return $result;
+        return $result->name;
     }
 
     public function escape($string) {
