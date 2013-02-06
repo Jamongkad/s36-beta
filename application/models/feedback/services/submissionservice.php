@@ -4,7 +4,12 @@ use Feedback\Entities\ContactDetails, Feedback\Entities\FeedbackAttachments, Fee
 use Feedback\Services\FeedbackService;
 use Feedback\Repositories\DBFeedback;
 use Contact\Repositories\DBContact;
-use Halcyonic\Services\HalcyonicService;
+use Message\Entities\Types\Inbox\Notification;
+use Message\Entities\MessageList;
+use Message\Services\MessageDirector;
+
+
+//use Halcyonic\Services\HalcyonicService;
 use DBBadWords, DBDashboard, DBUser;
 use Helpers, Input, DB;
 use Email\Entities\NewFeedbackSubmissionData;
@@ -25,7 +30,7 @@ class SubmissionService {
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
         $this->dbh = DB::connection('master')->pdo;
-        $this->halcyonic        = new HalcyonicService;
+        //$this->halcyonic        = new HalcyonicService;
         //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
         //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
     }
@@ -43,7 +48,7 @@ class SubmissionService {
             $this->_create_metadata($feedback_id);    
             $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
-            $this->_save_latest_feedid($company_id);
+            //$this->_save_latest_feedid($company_id);
 
             return $feedback;
 
@@ -132,12 +137,14 @@ class SubmissionService {
         $this->dbdashboard->company_id = $company_id;
         $this->dbdashboard->write_summary();
     }
-
+    
+    /*
     public function _save_latest_feedid($company_id) { 
         //Upon new feedback always invalidate cache       
         $this->halcyonic->company_id = $company_id;
         $this->halcyonic->save_latest_feedid(); 
     }
+    */
 
     public function metric_response() {
         $metric = new DBMetric;

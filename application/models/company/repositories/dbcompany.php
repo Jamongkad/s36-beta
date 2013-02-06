@@ -86,10 +86,10 @@ class DBCompany extends S36DataObject {
     			->where('account_owner','=',1)
     			->first();
     }
+    
+    //this method is to be used regardless of user session is set or not
+    public function get_account_users() {
 
-    public function get_account_users($company_id = Null){
-
-		$company_id = (!empty($this->company_id)) ? $this->company_id : $company_id;
         $cols = Array(
             'userid',
             'companyid',
@@ -108,10 +108,9 @@ class DBCompany extends S36DataObject {
             'avatar'
 		);
 
-		if(!empty($company_id) && is_numeric($company_id)) 
-    		return DB::table('User')
-    				->where('companyId', '=', $company_id)
-    				->get($cols);
+        return DB::table('User') 
+                ->or_where('name', '=', $this->company_name)
+                ->get($cols);
     }
     
     public function update_plan($planId){
