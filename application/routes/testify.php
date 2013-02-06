@@ -371,7 +371,7 @@ return array(
         $tf = new Testify("Message Service");  
 
         $tf->test("MessageService: Inserting Message", function($tf) { 
-            
+            /*            
             $im = new Message\Entities\Types\Inbox\Notification("8 New Feedback", "inbox:notification:newfeedback");
             $st = new Message\Entities\Types\Inbox\Stub("8 New Stubs", "inbox:notification:stub");
 
@@ -381,15 +381,16 @@ return array(
 
             $director = new Message\Services\MessageDirector;
             $director->distribute_messages($mq); 
+            */
 
         }); 
 
         $tf->test("MessageService: Reading Message", function($tf) { 
-            /*
+
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             Helpers::dump($inbox->read());
-            */
+
         });
 
         $tf->run();          
