@@ -109,7 +109,9 @@ class DBCompany extends S36DataObject {
               , User.avatar
             FROM User 
                 INNER JOIN Company 
-                    ON User.companyId = Company.companyId WHERE 1=1 AND Company.name = :company_name";
+                    ON User.companyId = Company.companyId 
+            WHERE 1=1 
+                AND Company.name = :company_name";
 
         $sth = $this->dbh->prepare($sql); 
         $sth->bindParam(':company_name', $this->company_name); 
