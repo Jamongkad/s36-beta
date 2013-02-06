@@ -125,6 +125,7 @@ var S36FullpageAdmin = function(layoutObj){
             },done: function(e, data){
                 self.change_background_image(data.result[0].url);
                 self.hide_notification();
+                PanelAutoSaver.set_data('background_image', data.result[0].name);
             }
         });
         /* ========================================
@@ -446,16 +447,16 @@ var PanelAutoSaver = new function(layoutObj){
         
         
         // background section events.
-        $('#bg_image').change(function(){  // is there a change event for file input?
-            PanelAutoSaver.set_data('background_image', $('body').css('background-image'));
+        $('#bg_image').change(function(){
+            // PanelAutoSaver.set_data() of this element is in fileupload().
         });
         
         $('.bgPos').click(function(){
-            PanelAutoSaver.set_data('page_bg_position', $('body').css('background-position'));
+            PanelAutoSaver.set_data('page_bg_position', $(this).attr('val'));
         });
         
         $('.bgRepeat').click(function(){
-            PanelAutoSaver.set_data('page_bg_repeat', $('body').css('background-repeat'));
+            PanelAutoSaver.set_data('page_bg_repeat', $(this).attr('val'));
         });
         
         $('.patternItem').click(function(){
@@ -489,13 +490,32 @@ var PanelAutoSaver = new function(layoutObj){
         $('.btnFontColor').on('change', function(){
             PanelAutoSaver.set_data('button_font_color', $(this).val());
         });
-        /*
+        
         // social media section events.
-        $('#save_links').click(function(){  // not yet the actual id.
-            PanelAutoSaver.set_data('facebook_url', $('#facebook_url').val());  // not yet the actual id.
-            PanelAutoSaver.set_data('twitter_url', $('#twitter_url').val());  // not yet the actual id.
+        $('#save_links').click(function(){
+            var fb_url = $('#fb_url').val();
+            var tw_url = $('#tw_url').val();
+            
+            var fb_regex = /^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/;
+            var tw_regex = /^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/;
+            
+            $('.social_url_msg').hide();
+            
+            if( fb_url.match(fb_regex) == null ){
+                $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
+            }else{
+                $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                PanelAutoSaver.set_data('facebook_url', fb_url);
+            }
+            
+            if( tw_url.match(tw_regex) == null ){
+                $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
+            }else{
+                $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                PanelAutoSaver.set_data('twitter_url', tw_url);
+            }
         });
-        */
+        
     }
     
     

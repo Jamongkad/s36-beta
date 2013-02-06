@@ -41,20 +41,20 @@
                             <div class="optionList clear">
                                 <span class="label">Position: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_pos_l" class="selectionBtn bgPos active">Left</a>
-                                    <a href="javascript:;" id="bg_pos_r" class="selectionBtn bgPos">Right</a>
-                                    <a href="javascript:;" id="bg_pos_c" class="selectionBtn bgPos">Center</a>
-                                    <a href="javascript:;" id="bg_pos_t" class="selectionBtn bgPos">Top</a>
-                                    <a href="javascript:;" id="bg_pos_b" class="selectionBtn bgPos">Bottom</a>
+                                    <a href="javascript:;" id="bg_pos_l" val="left" class="selectionBtn bgPos active">Left</a>
+                                    <a href="javascript:;" id="bg_pos_r" val="right" class="selectionBtn bgPos">Right</a>
+                                    <a href="javascript:;" id="bg_pos_c" val="center" class="selectionBtn bgPos">Center</a>
+                                    <a href="javascript:;" id="bg_pos_t" val="top" class="selectionBtn bgPos">Top</a>
+                                    <a href="javascript:;" id="bg_pos_b" val="bottom" class="selectionBtn bgPos">Bottom</a>
                                 </span>
                             </div> 
                             <div class="optionList clear">
                                 <span class="label">Repeat: </span>
                                 <span>
-                                    <a href="javascript:;" id="bg_repeat_r" class="selectionBtn bgRepeat">Repeat</a>
-                                    <a href="javascript:;" id="bg_repeat_rh" class="selectionBtn bgRepeat active">Repeat Horizontally</a>
-                                    <a href="javascript:;" id="bg_repeat_rv" class="selectionBtn bgRepeat">Repeat Vertically</a>
-                                    <a href="javascript:;" id="bg_repeat_nr" class="selectionBtn bgRepeat">No Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_r" val="repeat" class="selectionBtn bgRepeat">Repeat</a>
+                                    <a href="javascript:;" id="bg_repeat_rh" val="repeat-x" class="selectionBtn bgRepeat active">Repeat Horizontally</a>
+                                    <a href="javascript:;" id="bg_repeat_rv" val="repeat-y" class="selectionBtn bgRepeat">Repeat Vertically</a>
+                                    <a href="javascript:;" id="bg_repeat_nr" val="no-repeat" class="selectionBtn bgRepeat">No Repeat</a>
                                 </span>
                             </div> 
                         </div>
@@ -182,15 +182,15 @@
                     <div class="pageBody">
                         <h2>Facebook URL: </h2>
                         <br />
-                        <span>
-                            <input type="text" id="facebook_url" />
-                        </span>
+                        <span><input type="text" id="fb_url" value="http://www.facebook.com/TheGoodLordAbove" /></span>
+                        <span id="fb_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
+                        <span id="fb_url_success_msg" class="social_url_msg success_msg rounded_corner">Oh boy, you did it!</span>
                         <br /><br />
                         <h2>Twitter URL: </h2>
                         <br />
-                        <span>
-                            <input type="text" id="twitter_url" />
-                        </span>
+                        <span><input type="text" id="tw_url" value="https://twitter.com/TheTweetOfGod" /></span>
+                        <span id="tw_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
+                        <span id="tw_url_success_msg" class="social_url_msg success_msg rounded_corner">Oh boy, you did it!</span>
                         <br /><br />
                         <input type="button" id="save_links" class="regular-button" value="Save Links" />
                     </div>

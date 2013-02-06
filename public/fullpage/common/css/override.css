@@ -16,5 +16,11 @@
 
 /*Fullpage*/
 .author .author-information .author-company{
-	width: 185px;
+    width: 185px;
 }
+
+/* admin panel */
+.rounded_corner{ -webkit-border-radius: 3px; -moz-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; }
+.social_url_msg{ display: none; padding: 6px 8px; width: 120px; margin-left: 5px; }
+.social_url_msg.error_msg{ background-color: #fee; color: #800; border: 1px solid #fdd; }
+.social_url_msg.success_msg{ background-color: #E0F8AE; color: #698B22; border: 1px solid #B8DC6F; }
