@@ -2,6 +2,7 @@ angular.module('feedback', [])
 .directive('myFeedbackcount', function(FeedbackService) {
     return {
         restrict: 'A'     
+      , template: "<b>Momoji</b>"
       , link: function(scope, element, attrs) {
 
             FeedbackService.get_feedback_count();
