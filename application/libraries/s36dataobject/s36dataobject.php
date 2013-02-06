@@ -1,7 +1,7 @@
 <?php namespace S36DataObject;
 
 use DB, S36Auth, Config;
-use Exception;
+use Exception, PDO;
 
 abstract class S36DataObject { 
 
