@@ -218,17 +218,7 @@ return array(
 
             $auth->login($input['username'], $input['password'], Array('company' => $company_name)); 
 
-            if($auth->check()) {
-                
-                /*
-                $user_id = $auth->user()->userid;
-                $company_id = $auth->user()->companyid;
-                
-                $halcyon = new Halcyonic\Services\HalcyonicService;
-                $halcyon->company_id = $company_id;
-                $halcyon->set_user_feedcount($user_id);
-                */
-                
+            if($auth->check()) { 
                 return forward_or_dash();
             } else {
                 return View::of_home_layout()->partial('contents', 'home/login', Array(  
