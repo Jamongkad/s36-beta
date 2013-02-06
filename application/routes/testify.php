@@ -394,7 +394,7 @@ return array(
         });
 
         $tf->test("MessageService: DBUserDirectory", function($tf) { 
-            $db = new Message\Repositories\DBUserDirectory;
+            $db = new Company\Repositories\DBCompany;
             $tf->dump($db->get_account_users());
         });
 
