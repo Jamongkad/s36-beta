@@ -156,7 +156,18 @@ class DBHostedSettings extends S36DataObject {
         // get only the data with valid keys.
         $valid_data = array_intersect_key((array)$data, $panel_fields);
         
+        
         // extra validatios on some fields.
+        
+        // thow away invalid social url.
+        $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/';
+        $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/';
+        
+        if( array_key_exists('facebook_url', $valid_data) && ! preg_match($fb_regex, $valid_data['facebook_url']) ) unset($valid_data['facebook_url']);
+        if( array_key_exists('twitter_url', $valid_data) && ! preg_match($tw_regex, $valid_data['twitter_url']) )  unset($valid_data['twitter_url']);
+        
+        // if there are no data, don't save.
+        if( ! count($valid_data) ) return;
         
         // now update db with the selected fields.
         // reminder: laravel automatically escapes all values.

@@ -8,7 +8,7 @@ var Helpers = new function() {
     };
 
     this.br2nl = function(s) {
-        return s.replace(/<br ?\/?>/g,'\n');       
+        return s.replace(/<br ?\/?>/g,'\n');
     };
 
     this.html2entities = function(s) {

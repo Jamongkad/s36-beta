@@ -49,11 +49,11 @@
 .feedback-header .author .author-avatar{
 	width:48px;
 	float:left;
+	margin-right:10px;
 }
 .feedback-header .author .author-information{
 	float:left;
 	width:462px;
-	margin-left:10px;
 }
 
 .feedback-header .reviews{

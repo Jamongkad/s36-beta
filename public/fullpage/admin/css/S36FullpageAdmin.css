@@ -757,3 +757,77 @@ ul.patternList li div.active{
 	right:-15px;top:-15px;
 	cursor:pointer;
 }
+/* display window additional elements */
+#adminDisplayOptionGeneralItems{
+ position:absolute;
+ right:0px;
+}
+#adminDisplayOptionGeneralItems .display-stars{
+ position:absolute;
+ top:31px;
+ right:0px;
+}
+#adminDisplayOptionGeneralItems .display-useful-count{
+ position:absolute;
+ top:54px;
+ right:0px;
+ width:300px;
+ text-align:right;
+}
+#adminDisplayOptionGeneralItems .display-recommendation{
+ position:absolute;
+ width:300px;
+ text-align:right;
+ top:67px;
+ right:0px;
+}
+#adminDisplayOptionGeneralItems .display-recommendation .feedback-recommendation{
+ float:right;
+}
+#adminDisplayOptionGeneralItems .display-stars .stars{
+ float:right;
+}
+#adminDisplayOptionGeneralItems .display-useful-count .rating-stat{
+ position:relative;
+ text-align:right;
+ top:auto;
+ right:auto;
+}
+#adminDisplayOptionAuthorItems{
+ position:absolute;
+ top:340px;
+ right:0px;
+ width:240px;
+ padding:6px;
+ background:#f0f0f0;
+ -webkit-border-radius:3px;
+ -moz-border-radius:3px;
+ border-radius:3px;  
+ border:1px solid #bad3eb;
+ box-shadow:#CCC 0px 2px 2px;
+}
+#adminDisplayOptionAuthorItems .display-author .author-avatar{
+ float:left;
+ margin-right:10px;
+}
+#adminDisplayOptionAuthorItems .display-author .author-information{
+ float:left
+}
+#adminDisplayOptionAuthorItems .display-author .author-information .author-name{
+ color: #3a99bc;
+ font-size: 18px;
+ font-weight: bold;
+ margin-bottom: 3px;
+}
+#adminDisplayOptionAuthorItems .display-author .author-information .author-company{
+ font-weight: bold;
+ color: #838383;
+ margin-bottom: 4px;
+}
+#adminDisplayOptionAuthorItems .display-author .author-information .author-location-info{
+ color: #a2a2a2;
+ margin-bottom: 3px;
+}
+#adminDisplayOptionAuthorItems .display-author .author-information .author-location{
+    float: left;
+}

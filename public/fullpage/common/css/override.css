@@ -26,3 +26,7 @@
 .social_url_msg.success_msg{ background-color: #E0F8AE; color: #698B22; border: 1px solid #B8DC6F; }
 
 #adminWindowBox input[type="text"]{ width: 250px !important; }
+#panel_desc_container{ height: 100px; cursor: pointer; }
+#panel_desc_container:hover{ background-color: #f4f4f4; }
+.companyDescription{ margin: 2px 6px; }
+#panel_desc_textbox{ display: none; width: 99%; height: 94px; }

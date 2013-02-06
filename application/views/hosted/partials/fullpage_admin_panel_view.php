@@ -465,11 +465,44 @@
                         <span class="light-text">Customize your page display here</span>
                     </div>
                     <div class="pageBody">
+                        <div id="adminDisplayOptionGeneralItems">
+                         <div class="display-stars clear">
+                             <div class="stars blue clear">
+                                    <div class="star full"></div>
+                                    <div class="star full"></div>
+                                    <div class="star full"></div>
+                                    <div class="star full"></div>
+                                    <div class="star half"></div>    
+                                </div>
+                            </div>
+                            <div class="display-useful-count clear">
+                             <div class="rating-stat">87 of 98 people found this useful</div>
+                            </div>
+                            <div class="display-recommendation clear">
+                             <div class="feedback-recommendation">
+                                    <div class="green-thumb">Recommended by Leica to friends</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="adminDisplayOptionAuthorItems">
+                         <div class="display-author clear">
+                             <div class="author-avatar">
+                                <img src="fullpage/common/img/blank.jpg" width="48" height="48"/>
+                                </div>
+                                <div class="author-information">
+                                    <div class="author-name clear"><span class="first_name">John</span> <span class="last_name">Doe</span></div>
+                                    <div class="author-company"><span class="job">Position</span><span class="company_comma">,</span> <span class="company">Company</span></div>
+                                    <div class="author-location-info clear">
+                                        <div class="author-location"><span class="city">City</span><span class="location_comma">,</span> <span class="country">Country</span></div><div class="flag flag-us"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="display-option-box">
                             <h2>General Items</h2>
                             <p><span class="tickerbox" field="show_rating" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
                             <p><span class="tickerbox" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
-                            <p><span class="tickerbox" field="show_recommendation" display-array="feedback-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
+                            <p><span class="tickerbox" field="show_recommendation" display-array="feedback-recommendation,company-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
                             
                             <h2>Display Meta Information</h2>
                             <p><span class="tickerbox" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
@@ -548,7 +581,11 @@
                         <div class="optionList clear">
                             <div class="label"><strong>Text</strong> </div>
                             <div class="input">
-                                <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
+                                <? // keep the content of companyDescription in one line. ?>
+                                <div id="panel_desc_container" class="rounded_corner">
+                                    <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
+                                </div>
+                                <textarea id="panel_desc_textbox"></textarea>
                             </div>
                         </div>
                         <div class="pageTitle">
@@ -557,17 +594,17 @@
                         <div class="optionList clear">
                             <div class="label"><strong>Facebook URL: </strong> </div>
                             <div class="input">
-                                <input type="text" id="fb_url" class="social_url" value="http://www.facebook.com/TheGoodLordAbove" />
+                                <input type="text" id="fb_url" class="social_url" />
                                 <span id="fb_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
-                                <span id="fb_url_success_msg" class="social_url_msg success_msg rounded_corner">you did it boy!</span>
+                                <span id="fb_url_success_msg" class="social_url_msg success_msg rounded_corner">URL is valid</span>
                             </div>
                         </div>
                         <div class="optionList clear">
                             <div class="label"><strong>Twitter URL: </strong> </div>
                             <div class="input">
-                                <input type="text" id="tw_url" class="social_url" value="https://twitter.com/TheTweetOfGod" />
+                                <input type="text" id="tw_url" class="social_url" />
                                 <span id="tw_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
-                                <span id="tw_url_success_msg" class="social_url_msg success_msg rounded_corner">you did it boy!</span>
+                                <span id="tw_url_success_msg" class="social_url_msg success_msg rounded_corner">URL is valid</span>
                             </div>
                         </div>
                         <div class="pageTitle">

@@ -21,6 +21,21 @@ var S36FullpageAdmin = function(layoutObj){
         // inside PanelAutoSaver.
         PanelAutoSaver.init(layoutObj);
         
+        // editing of panel description.
+        $('#panel_desc_container').jScrollPane();
+        $('.companyDescription').click(function(){
+            $('#panel_desc_container').hide();
+            $('#panel_desc_textbox').show().focus();
+            $('#panel_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
+        });
+        
+        $('#panel_desc_textbox').blur(function(){
+            $(this).hide();
+            $('#panel_desc_container').fadeIn();
+            $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
+            $('#panel_desc_container').jScrollPane();
+        });
+        
         /* ========================================
         || Make the admin window box draggable
         ==========================================*/
@@ -45,6 +60,18 @@ var S36FullpageAdmin = function(layoutObj){
                 minClick = 1;
             }
         });
+        /* ========================================
+        || Add Selected Class to the chosen layout *NEW
+        ==========================================*/
+        $('.layout-list li').click(function(){
+            $('.layout-list li.selected').removeClass('selected');   
+            $(this).addClass('selected');
+            $('#selectedLayout').val($(this).attr('id'));
+        });
+        /* ========================================
+        || Add a custom scrollbar on the quickinbox container
+        ==========================================*/
+        $('.widget-list').jScrollPane();
         /* ========================================
         || Change the background color
         ==========================================*/
@@ -475,7 +502,7 @@ var PanelAutoSaver = new function(layoutObj){
         });
         
         // description and colors section events.
-        $('#desc_text').blur(function(){  // not yet the actual id.
+        $('#panel_desc_textbox').blur(function(){
             PanelAutoSaver.set_data('description', $(this).val());
         });
         
@@ -500,7 +527,9 @@ var PanelAutoSaver = new function(layoutObj){
             
             $(this).parent().find('.social_url_msg').hide();
             
-            if( $(this).is('#fb_url') ){
+            if( url == '' ) return;
+            
+            if( $(this).is('#fb_url') && url != PanelAutoSaver.def_data.facebook_url ){
                 if( url.match(fb_regex) == null ){
                     $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }else{
@@ -509,7 +538,7 @@ var PanelAutoSaver = new function(layoutObj){
                 }
             }
             
-            if( $(this).is('#tw_url') ){
+            if( $(this).is('#tw_url') && url != PanelAutoSaver.def_data.twitter_url ){
                 if( url.match(tw_regex) == null ){
                     $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }else{
