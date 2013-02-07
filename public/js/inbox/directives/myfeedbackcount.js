@@ -23,8 +23,16 @@ angular.module('feedback', [])
                return false;
            };
 
-           $(element).children().click(process);
-           $(element).click(process);
+           $(element).children().click(function(e) {
+               e.stopImmediatePropagation();
+               SettingsService.set_inbox_as_read($(location).attr('pathname'));
+               return false;
+           });
+           $(element).click(function(e) {
+               e.stopImmediatePropagation();
+               SettingsService.set_inbox_as_read($(location).attr('pathname'));
+               return false;
+           });
         }
     }    
     
