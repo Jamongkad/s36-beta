@@ -87,7 +87,7 @@ angular.module('Services', [])
         });
     }
 
-    shared_service.set_inbox_as_read(pathname) {
+    shared_service.set_inbox_as_read = function(pathname) {
         /*
         $.ajax({
             type: 'GET'    
