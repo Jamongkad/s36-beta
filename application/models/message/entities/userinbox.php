@@ -19,7 +19,7 @@ class UserInbox {
 
     public function read_all($key=False) { 
         if($this->messages)
-            return $this->messages;
+            return $this->messages[False];
     }
      
     public function receive(MessageList $messages) {
