@@ -2,9 +2,8 @@ angular.module('feedback', [])
 .directive('feedbackcount', function() {
     return {
         restrict: 'A'     
-      , template: '{{score}}'
       , link: function(scope, element, attrs) {
-          scope.score = 10;
+            console.log($(element).html(10));
           /*
             $(element).bind('mouseover', function(e) {
                 console.log("Pwet"); 
