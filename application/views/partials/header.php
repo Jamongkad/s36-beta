@@ -28,14 +28,8 @@
 <div id="admin-container">
     <div id="admin-panel">
 		<div class="left-panel">
-        	<div class="logo">
-
-                <span ng-controller="FeedbackCountCtrl">
-                    {{feedback_count}}
-                    <div feedbackcount countme="call_count(fdbackcount)" feed_count="{{feedback_count}}"></div>
-                </span>
-                <?//=HTML::image('img/logo.jpg')?>
-
+        	<div class="logo"> 
+                <?=HTML::image('img/logo.jpg')?>
             </div>
             <div class="left-menu">
             	<ul id="nav-menu">
@@ -47,6 +41,7 @@
                     <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
+                       <span feedbackcount></span>
                        <!--<span my-feedbackcount></span>-->
                        <!--
                        <span my-feedbackcount></span>
