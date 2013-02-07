@@ -14,7 +14,7 @@ class UserInbox {
     }
 
     public function edit($key, $msg) { 
-        if($key == Null || $msg == Null) {
+        if($key === Null || $msg === Null) {
             throw new Exception("You must provide a key and a message");
         } else {
             return $this->redis->hset($this->user_id, $key, $msg);              
