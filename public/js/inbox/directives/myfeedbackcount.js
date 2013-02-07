@@ -2,7 +2,7 @@ angular.module('feedback', [])
 .directive('feedbackcount', function() {
     return {
         restrict: 'A'     
-      , template: '<div>{{score}}</div>'
+      , template: '{{score}}'
       , link: function(scope, element, attrs) {
           scope.score = 10;
           /*
