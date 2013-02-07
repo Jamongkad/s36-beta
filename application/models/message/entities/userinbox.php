@@ -30,7 +30,7 @@ class UserInbox {
         if(array_key_exists($key, $this->messages)) {
             return $this->messages[$key];     
         } else { 
-            throw new Exception("$key does not exist in messages array!");
+            throw new Exception("The key [$key] does not exist in messages array!");
         } 
     }
      
