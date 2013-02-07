@@ -72,6 +72,7 @@ angular.module('Services', [])
 .service('FeedbackService', function($rootScope) {
 
     var shared_service = {};
+
     shared_service.feedback_count;
 
     shared_service.get_feedback_count = function() { 
@@ -84,10 +85,6 @@ angular.module('Services', [])
                 shared_service.feedback_count = data;
             }
         });
-    }
-
-    shared_service.register_feedback_count = function()  {
-        $rootScope.$broadcast('requestFeedbackCount');
     }
 
     return shared_service;

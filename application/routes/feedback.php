@@ -253,6 +253,7 @@ return array(
     }),
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($feedback, $auth, $redis) { 
+        /*
         $user_id    = $auth->userid;
         $company_id = $auth->companyid;
         $checked    = $redis->hget("user:$user_id:$company_id", "feedid_checked");
@@ -260,5 +261,7 @@ return array(
         $count = $feedback->total_newfeedback_by_company(); 
         $count_data = Array('feedback_count' => $count, 'checked' => $checked);
         echo json_encode($count_data);
+        */
+        echo json_encode(Array('count' => 200));
     }),
 );
