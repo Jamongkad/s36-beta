@@ -1,5 +1,8 @@
 angular.module('feedback', [])
 .controller('FeedbackCountCtrl', function($scope) { 
+
+    $scope.feedback_count = 12;
+
     $scope.call_count = function(count) {
         alert(count);
     }
@@ -9,12 +12,13 @@ angular.module('feedback', [])
         restrict: 'A'     
       , scope: {
             countme: '&'   
+            feed_count: '@'
         }
       , template:  '<input type="text" ng-model="count">'
-                 + '<div>{{score}}</div>'
+                 + '<div>{{feed_count}}</div>'
                  + '<div class="button" ng-click="countme({fdbackcount:count})">Call Count!</div>'
       , link: function(scope, element, attrs) {
-            scope.score = 10;
+          //scope.score = 10;
           /*
             $(element).bind('mouseover', function(e) {
                 console.log("Pwet"); 

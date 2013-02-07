@@ -32,7 +32,7 @@
 
                 <span ng-controller="FeedbackCountCtrl">
                     {{score}}
-                    <div feedbackcount countme="call_count(fdbackcount)"></div>
+                    <div feedbackcount countme="call_count(fdbackcount)" feed_count="{{feedback_count}}"></div>
                 </span>
                 <?//=HTML::image('img/logo.jpg')?>
 
