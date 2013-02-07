@@ -88,18 +88,16 @@ angular.module('Services', [])
     }
 
     shared_service.set_inbox_as_read = function(pathname) {
-        /*
+
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: false
-          , url: '/feedback/get_feedback_count'
+          , url: '/feedback/mark_inbox_as_read'
           , success: function(data) {
-                shared_service.feedback = data;
+                window.location.href = '/inbox/all';
             }
         });
-        */
-        console.log(pathname);
     }
 
     return shared_service;

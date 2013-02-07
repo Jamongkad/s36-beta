@@ -256,4 +256,9 @@ return array(
         $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
+
+    'GET /feedback/mark_inbox_as_read' => function('do' => function() use ($auth) { 
+        $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
+        echo json_encode(Array( 'msg' => true ));
+    })
 );

@@ -19,7 +19,7 @@ angular.module('feedback', [])
 
            var process = function(e) {
                e.stopImmediatePropagation();
-               FeedbackService.set_inbox_as_read($(location).attr('pathname'));
+               FeedbackService.set_inbox_as_read();
                return false;
            };
 
