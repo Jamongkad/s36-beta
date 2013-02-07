@@ -73,7 +73,7 @@ angular.module('Services', [])
 
     var shared_service = {};
 
-    shared_service.feedback_count;
+    shared_service.feedback;
 
     shared_service.get_feedback_count = function() { 
         $.ajax({
@@ -82,7 +82,7 @@ angular.module('Services', [])
           , async: false
           , url: '/feedback/get_feedback_count'
           , success: function(data) {
-                shared_service.feedback_count = data;
+                shared_service.feedback = data;
             }
         });
     }
