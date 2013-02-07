@@ -19,8 +19,7 @@ angular.module('feedback', [])
 
            var process = function(e) {
                e.stopImmediatePropagation();
-               //SettingsService.set_inbox_as_read($(location).attr('pathname'));
-               console.log('mathew');
+               FeedbackService.set_inbox_as_read($(location).attr('pathname'));
                return false;
            };
 
