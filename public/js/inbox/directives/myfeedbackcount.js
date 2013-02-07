@@ -10,10 +10,10 @@ angular.module('feedback', [])
         restrict: 'A'     
       , scope: {
             countme: '&'   
-          , score: '&'
+          , score: '='
         }
       , template:  '<input type="text" ng-model="count">'
-                 + '<div>{{score}}</div>'
+                 + '<div>score</div>'
                  + '<div class="button" ng-click="countme({fdbackcount:count})">Call Count!</div>'
       /*
       , link: function(scope, element, attrs) {
