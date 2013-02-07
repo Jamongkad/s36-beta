@@ -17,11 +17,15 @@ angular.module('feedback', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
            console.log($(element).children());
-           $(element).children().click(function(e) {
+
+           var process = function(e) {
                e.stopImmediatePropagation();
                alert("mathew");
                return false;
-           });
+           };
+
+           $(element).children().click(process);
+           $(element).click(process);
         }
     }    
     
