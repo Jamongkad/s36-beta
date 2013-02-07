@@ -252,7 +252,7 @@ return array(
         return $emailservice->send_email();
     }),
 
-    'GET /feedback/get_feedback_count' => Array('do' => function() use ($feedback, $auth, $redis) { 
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($auth) { 
         /*
         $user_id    = $auth->userid;
         $company_id = $auth->companyid;
@@ -262,6 +262,8 @@ return array(
         $count_data = Array('feedback_count' => $count, 'checked' => $checked);
         echo json_encode($count_data);
         */
+       
+        $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
         echo json_encode(Array('count' => 200));
     }),
 );
