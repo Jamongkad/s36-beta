@@ -388,9 +388,9 @@ return array(
 
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-            //$inbox->edit("inbox:notification:newfeedback", "Mathew was here");
+            $inbox->edit("inbox:notification:newfeedback", Null);
             Helpers::dump($inbox->read_all());
-            Helpers::dump($inbox->read("inbox"));
+            Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
 
         $tf->run();          
