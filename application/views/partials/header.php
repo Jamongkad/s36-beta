@@ -111,6 +111,9 @@
                 </div>
                 <div class="admin-meta">
                     <kid></kid>
+                    <kid></kid>
+                    <kid></kid>
+                    <kid></kid>
                     <div id="bye">
                         <?=HTML::link('logout', 'SIGN OUT')?>
                     </div>
