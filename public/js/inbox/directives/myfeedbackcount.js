@@ -1,7 +1,8 @@
 angular.module('feedback', [])
 .controller('FeedbackCountCtrl', function($scope) { 
+    $scope.score = 10;
     $scope.call_count = function(count) {
-        alert("Mathew " + count);
+        alert(count);
     }
 })
 .directive('feedbackcount', function() {
@@ -9,8 +10,10 @@ angular.module('feedback', [])
         restrict: 'A'     
       , scope: {
             countme: '&'   
+          , score: '&'
         }
       , template:  '<input type="text" ng-model="count">'
+                 + '<div>{{score}}</div>'
                  + '<div class="button" ng-click="countme({fdbackcount:count})">Call Count!</div>'
       /*
       , link: function(scope, element, attrs) {
