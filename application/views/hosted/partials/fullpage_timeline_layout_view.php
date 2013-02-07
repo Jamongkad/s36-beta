@@ -200,7 +200,7 @@
                         <div class="btn-block">
                             <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                 data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
-                                data-text="<?=$text?>"
+                                data-text="<?=$feed->feed_data->text?>"
                                 class="tw_share_dummy">Tweet</a>
                         </div>
                     </div>

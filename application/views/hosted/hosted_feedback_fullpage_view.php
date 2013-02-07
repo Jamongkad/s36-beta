@@ -7,8 +7,7 @@
         </div>
     </div>
 </div>
-
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns))?>
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('hosted'=>$hosted,'patterns' => $fullpage_patterns))?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>
@@ -121,7 +120,7 @@
             <!-- end of lightbox container -->
             
             <div id="feedbackContainer">
-                <?=View::make('hosted/partials/fullpage_treble_layout_view', Array('collection' => $feeds, 'user' => $user))?>
+                <?=View::make('hosted/partials/fullpage_'.strtolower($hosted->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
             </div>
         </div>
     </div>
@@ -135,14 +134,13 @@
 */
 ?>
 
-<?= HTML::style('/fullpage/layout/treble/css/S36FullpageLayoutTreble.css'); ?>
-<?= HTML::script('/fullpage/layout/treble/js/S36FullpageLayoutTreble.js'); ?>
+<?= HTML::style('/fullpage/layout/'.strtolower($hosted->theme_name).'/css/S36FullpageLayout'.ucfirst($hosted->theme_name).'.css'); ?>
+<?= HTML::script('/fullpage/layout/'.strtolower($hosted->theme_name).'/js/S36FullpageLayout'.ucfirst($hosted->theme_name).'.js'); ?>
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
     $(document).ready(function(){
-
         var fullpageCommon = new S36FullpageCommon;
-        var fullpageLayout = new S36FullpageLayoutTreble;
+        var fullpageLayout = new S36FullpageLayout<?php echo ucfirst($hosted->theme_name); ?>;
         fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         <?php if( ! is_null($user) ): //then display the admin bar by default ?>
