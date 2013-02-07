@@ -64,7 +64,7 @@ return array(
                                                   , 'feed_count'        => $meta->perform()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
-                                                  , 'hosted'            => $hosted_settings_info
+                                                  , 'hosted'            => $hosted_settings->get_panel_settings($company_info->companyid)
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css()
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()));
 
@@ -78,10 +78,11 @@ return array(
     },
     
     'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        $input = Input::get();
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
-        
-        $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
+        $hosted_settings->update_panel_settings($user->companyid, (object)$input);
+        return json_encode($input);
     },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {

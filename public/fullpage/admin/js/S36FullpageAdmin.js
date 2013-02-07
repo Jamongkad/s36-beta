@@ -14,6 +14,9 @@ var S36FullpageAdmin = function(layoutObj){
     ==========================================*/
     var self = this;
     var common = new S36FullpageCommon;
+    var robertmordido = function(){
+            alert('hi robskie');
+    }
     this.init_fullpage_admin = function(){
         
         // initialize the the PanelAutoSaver.
@@ -93,6 +96,16 @@ var S36FullpageAdmin = function(layoutObj){
             fx: 'fade', speed: 100, timeout: 0, before: self.adjust_window_height
         });
         /* ========================================
+        || Change admin window screen when redirected with hash
+        ==========================================*/
+        var hash = window.location.hash;
+        if(hash){
+           var cur_window = parseInt(hash.substr(1));
+           $adminPage.cycle(cur_window);
+           $('#adminWindowMenuBar ul li a').removeClass('active');
+           $('#adminWindowMenuBar ul li:eq('+cur_window+') a').addClass('active');
+        }
+        /* ========================================
         || Transition the current panel of the admin window when a tab is clicked
         ==========================================*/
         $('#adminWindowMenuBar ul li').click(function(){
@@ -101,6 +114,7 @@ var S36FullpageAdmin = function(layoutObj){
             var index = $(this).index();
             $adminPage.cycle(index);
         });
+
         /* ========================================
         || Apply the fileupload plugin for the background image
         ==========================================*/
@@ -490,6 +504,18 @@ var PanelAutoSaver = new function(layoutObj){
         $('.btnFontColor').on('change', function(){
             PanelAutoSaver.set_data('button_font_color', $(this).val());
         });
+
+        // layout section events
+        $('.layout-list li').click(function(){
+            $('.layout-list li').each(function(){
+                $(this).removeClass('selected');
+            });
+            $(this).addClass('selected');
+            $('#selectedLayout').val(this.id);
+        });
+        $('#chooseLayout').click(function(){
+            PanelAutoSaver.set_data('theme_name', $('#selectedLayout').val());
+        });
         
         // social media section events.
         $('.social_url').blur(function(){
@@ -571,17 +597,23 @@ var PanelAutoSaver = new function(layoutObj){
             }
         });
         
+        var layoutChanged = false; //capture if layout was changed
         // save the final_data in db.
         $.ajax({
             async: false,
             url: '/update_panel_settings',
             type: 'post',
+            dataType: 'json',
             data: PanelAutoSaver.final_data,
             success: function(result){
+                if(!undefined != result.theme_name){
+                    layoutChanged = true;
+                }
+                /*
                 if( $.trim(result) != '' ){
                     PanelAutoSaver.S36FullpageAdmin.hide_notification();
                     Helpers.display_error_mes( [result] );
-                }
+                }*/
             }
         });
         
@@ -590,7 +622,10 @@ var PanelAutoSaver = new function(layoutObj){
         
         // hide notif.
         setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1500);
-        
+        if(layoutChanged==true){
+            window.location.hash = "#3";
+            window.location.reload(true);
+        }
     }
     
 }

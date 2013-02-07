@@ -1,3 +1,4 @@
+
 <div id="adminWindowBox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
@@ -10,7 +11,7 @@
                 <li><a href="javascript:;" class="active">Quick Inbox</a></li>
                 <li><a href="javascript:;" class="">Background</a></li>
                 <li><a href="javascript:;" class="">Display</a></li>
-                <li><a href="javascript:;" class="">Layout</a></li>
+                <li><a href="javascript:;" class="layoutMenu">Layout</a></li>
                 <li><a href="javascript:;" class="">Other Settings</a></li>
             </ul>
         </div>
@@ -509,7 +510,7 @@
                     <div class="pageBody clear">
                         
                             <ul class="layout-list clear">
-                                <li class="selected" id="Traditional">
+                                <li <?=($hosted->theme_name=='Traditional') ? 'class="selected"' : ''?> id="Traditional">
                                     <div class="layout">
                                         <h3 class="layout-name">Traditional</h3>
                                         <div class="layout-thumb">
@@ -517,7 +518,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li id="Timeline">
+                                <li <?=($hosted->theme_name=='Timeline') ? 'class="selected"' : ''?> id="Timeline">
                                     <div class="layout">
                                         <h3 class="layout-name">Timeline</h3>
                                         <div class="layout-thumb">
@@ -525,7 +526,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li id="Treble">
+                                <li <?=($hosted->theme_name=='Treble') ? 'class="selected"' : ''?> id="Treble">
                                     <div class="layout">
                                         <h3 class="layout-name">Treble</h3>
                                         <div class="layout-thumb">
@@ -534,7 +535,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <p align="right"><input type="hidden" id="selectedLayout" value="Traditional" /><input type="button" class="regular-button" value="Choose Layout" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            <p align="right"><input type="hidden" id="selectedLayout" value="Traditional" /><input id="chooseLayout" type="button" class="regular-button" value="Choose Layout" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         
                     </div>
                 </div>
