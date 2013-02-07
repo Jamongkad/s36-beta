@@ -12,7 +12,7 @@ angular.module('feedback', [])
         }
     }    
 })
-.directive('inboxclick', function(SettingsService) {
+.directive('inboxclick', function(FeedbackService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
