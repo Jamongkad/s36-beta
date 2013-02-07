@@ -20,6 +20,6 @@ angular.module('feedback', [])
 .directive('kid', function() { 
     return {
         restrict: 'E'     
-      , element: '<input type="text" />'
+      , template: '<input type="text" />'
     }
 })
