@@ -10,13 +10,13 @@ angular.module('feedback', [])
         restrict: 'A'     
       , scope: {
             countme: '&'   
-          , score: '@'
         }
       , template:  '<input type="text" ng-model="count">'
                  + '<div>{{score}}</div>'
                  + '<div class="button" ng-click="countme({fdbackcount:count})">Call Count!</div>'
-      /*
       , link: function(scope, element, attrs) {
+            scope.score = 10;
+          /*
             $(element).bind('mouseover', function(e) {
                 console.log("Pwet"); 
             });
@@ -26,8 +26,8 @@ angular.module('feedback', [])
             if(feedback.checked) {
                 $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");     
             }
-       
+           */ 
         }
-       */
+
     }    
 })
