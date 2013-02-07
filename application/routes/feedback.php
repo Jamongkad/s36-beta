@@ -252,18 +252,9 @@ return array(
         return $emailservice->send_email();
     }),
 
-    'GET /feedback/get_feedback_count' => Array('do' => function() use ($auth) { 
-        /*
-        $user_id    = $auth->userid;
-        $company_id = $auth->companyid;
-        $checked    = $redis->hget("user:$user_id:$company_id", "feedid_checked");
-        
-        $count = $feedback->total_newfeedback_by_company(); 
-        $count_data = Array('feedback_count' => $count, 'checked' => $checked);
-        echo json_encode($count_data);
-        */
-       
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($auth) {  
         $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-        echo json_encode(Array('count' => 200));
+        $message = $inbox->read("inbox:notification:newfeedback");
+        echo json_encode(Array('msg' => $message));
     }),
 );

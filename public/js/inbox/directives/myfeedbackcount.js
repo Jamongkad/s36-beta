@@ -5,7 +5,7 @@ angular.module('feedback', [])
       , link: function(scope, element, attrs) {
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback_count;
-            $(element).html(feedback.count);
+            $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
           /*
             $(element).bind('mouseover', function(e) {
                 console.log("Pwet"); 
@@ -13,7 +13,7 @@ angular.module('feedback', [])
             FeedbackService.get_feedback_count();
 
             if(feedback.checked) {
-                $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");     
+                $(element).html();     
             }
            */ 
         }
