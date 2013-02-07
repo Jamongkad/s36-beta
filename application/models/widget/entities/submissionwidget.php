@@ -48,12 +48,10 @@ class SubmissionWidget extends FormWidgets {
 
     public function render_html() {
         $widget_view = 'widget/widget_submissionform_view';
-        //$widget_view = 'widget/widget_submissionform_new_view';
         return View::of_widget_layout()->partial('contents', $widget_view, $this->form_vars)->get();  
     }
 
     public function render_hosted() {
-        //$hosted_view = 'widget/widget_hostedform_view_new';
         $hosted_view = 'widget/widget_hostedform_view';
         return View::make($hosted_view, Array(
             'fb_app_id'      => $this->fb_id  
