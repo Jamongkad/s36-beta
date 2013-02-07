@@ -1,6 +1,5 @@
 angular.module('feedback', [])
 .controller('FeedbackCountCtrl', function($scope) { 
-    $scope.score = 10;
     $scope.call_count = function(count) {
         alert(count);
     }
