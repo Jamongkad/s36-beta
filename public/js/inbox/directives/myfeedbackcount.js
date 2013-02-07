@@ -16,9 +16,8 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-           $(element).click(function(e) {
+           $(element).children().click(function(e) {
                e.preventDefault();
-               return false;
            });
         }
     }    
