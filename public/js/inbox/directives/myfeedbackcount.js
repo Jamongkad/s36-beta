@@ -8,7 +8,7 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , scope: {
-            count: '&'   
+            countme: '&'   
         }
       , template:  '<input type="text" ng-model="count">'
                  + '<div class="button" ng-click="countme({fdbackcount:count})">Call Count!</div>'
