@@ -18,7 +18,7 @@ class DBHostedSettings extends S36DataObject {
         'show_admin_comment',
         'show_sharing_option',
         'show_flag_inapp',
-        'show_first_name',
+        'show_avatar',
         'show_last_name',
         'show_position',
         'show_company',
@@ -36,7 +36,7 @@ class DBHostedSettings extends S36DataObject {
     );
 
     public function set_hosted_settings($hosted_settings)  {
-        $this->hosted_settings = $hosted_settings;    
+        $this->hosted_settings = $hosted_settings;
     }
 
     public function save() { 
@@ -163,8 +163,14 @@ class DBHostedSettings extends S36DataObject {
         $fb_regex = '/^(https?:\/\/)?(www\.)?facebook\.com\/[\w-]+$/';
         $tw_regex = '/^(https?:\/\/)?(www\.)?twitter\.com\/(#!\/)?[\w-]+$/';
         
-        if( array_key_exists('facebook_url', $valid_data) && ! preg_match($fb_regex, $valid_data['facebook_url']) ) unset($valid_data['facebook_url']);
-        if( array_key_exists('twitter_url', $valid_data) && ! preg_match($tw_regex, $valid_data['twitter_url']) )  unset($valid_data['twitter_url']);
+        if( array_key_exists('facebook_url', $valid_data) ){
+            if( $valid_data['facebook_url'] != '' && ! preg_match($fb_regex, $valid_data['facebook_url']) ) unset($valid_data['facebook_url']);
+        }
+        
+        if( array_key_exists('twitter_url', $valid_data) ){
+            if( $valid_data['twitter_url'] != '' && ! preg_match($tw_regex, $valid_data['twitter_url']) ) unset($valid_data['twitter_url']);
+        }
+        
         
         // if there are no data, don't save.
         if( ! count($valid_data) ) return;

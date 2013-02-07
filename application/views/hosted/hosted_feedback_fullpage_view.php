@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns))?>
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel) )?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>
@@ -45,8 +45,12 @@
                 
                 <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
-                    <div class="social-icon"><a href="#"><img src="/fullpage/common/img/facebook.png" title="Facebook Page" /></a></div>
-                    <div class="social-icon"><a href="#"><img src="/fullpage/common/img/twitter.png" title="Twitter Page" /></a></div>                    
+                    <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                        <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
+                    </a></div>
+                    <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
+                        <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
+                    </a></div>
                 </div>
             </div>
 
@@ -55,19 +59,17 @@
             <div class="hosted-block">
                 <div class="company-description clear">
                     <div class="company-text">
-                      <div id="desc_text" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
-                            <?php if( ! is_null($user) ): ?>
-                                <div id="desc_textbox_con">
-                                    <textarea id="desc_textbox" rows="3"><?=$company->description?></textarea>
-                                </div>
-                                <div id="action_buttons">
-                                    <div class="edit action_button" title="Edit"></div>
-                                    <div class="save action_button" title="Save"></div>
-                                    <div class="cancel action_button" title="Cancel"></div>
-                                </div>
-                            <?php endif; ?>
+                        <? // keep the content of fullpage_desc_text in one line. ?>
+                        <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                        <?php if( ! is_null($user) ): ?>
+                            <textarea id="fullpage_desc_textbox" rows="3"></textarea>
+                        <?php endif; ?>
                     </div>
-                    <div class="send-button" widgetkey="<?=$company->widgetkey?>"><a href="javascript:;">Send in feedback</a></div>
+                    <div class="send-button" widgetkey="<?=$company->widgetkey?>">
+                        <a href="javascript:;">
+                            Send in feedback
+                        </a>
+                    </div>
                 </div>
             </div>
             

@@ -476,7 +476,9 @@
                                 </div>
                             </div>
                             <div class="display-useful-count clear">
-                             <div class="rating-stat">87 of 98 people found this useful</div>
+                                <div class="rating-stat">
+                                    87 of 98 people found this useful
+                                </div>
                             </div>
                             <div class="display-recommendation clear">
                              <div class="feedback-recommendation">
@@ -490,44 +492,54 @@
                                 <img src="fullpage/common/img/blank.jpg" width="48" height="48"/>
                                 </div>
                                 <div class="author-information">
-                                    <div class="author-name clear"><span class="first_name">John</span> <span class="last_name">Doe</span></div>
-                                    <div class="author-company"><span class="job">Position</span><span class="company_comma">,</span> <span class="company">Company</span></div>
+                                    <div class="author-name clear">
+                                        <span class="first_name">John</span>
+                                        <span class="last_name">Doe</span>
+                                    </div>
+                                    <div class="author-company">
+                                        <span class="job">Position<span class="company_comma">, </span></span>
+                                        <span class="company">Company</span>
+                                    </div>
                                     <div class="author-location-info clear">
-                                        <div class="author-location"><span class="city">City</span><span class="location_comma">,</span> <span class="country">Country</span></div><div class="flag flag-us"></div>
+                                        <div class="author-location">
+                                            <span class="city">City<span class="location_comma">, </span></span>
+                                            <span class="country">Country</span>
+                                        </div>
+                                        <div class="flag flag-us"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="display-option-box">
                             <h2>General Items</h2>
-                            <p><span class="tickerbox" field="show_rating" display-array="stars"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
-                            <p><span class="tickerbox" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
-                            <p><span class="tickerbox" field="show_recommendation" display-array="feedback-recommendation,company-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_rating == 0 ? 'off' : ''); ?>" field="show_rating" display-array="stars,star_rating"></span> <span class="label">Display Rating Stars - Based on X Reviews </span></p>
+                            <p><span class="tickerbox <?= ($panel->show_votes == 0 ? 'off' : ''); ?>" field="show_votes" display-array="rating-stat,feedback-action"></span> <span class="label">Display 'X found this useful'</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_recommendation == 0 ? 'off' : ''); ?>" field="show_recommendation" display-array="feedback-recommendation,company-recommendation"></span> <span class="label">Display 'Recommended to friends' text</span> </p>
                             
                             <h2>Display Meta Information</h2>
-                            <p><span class="tickerbox" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_metadata == 0 ? 'off' : ''); ?>" field="show_metadata" display-array="custom-meta-data"></span> <span class="label">Display Custom Field</span> </p>
                             
                             <h2>Display Admin Comment</h2>
-                            <p><span class="tickerbox" field="show_admin_comment" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_admin_comment == 0 ? 'off' : ''); ?>" field="show_admin_comment" display-array="admin-comment-block"></span> <span class="label">Disable or enable public admin commenting</span> </p>
                             
                             <h2>Sharing Options</h2>
-                            <p><span class="tickerbox" field="show_sharing_option" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_sharing_option == 0 ? 'off' : ''); ?>" field="show_sharing_option" display-array="share-button"></span> <span class="label">Enable Feedback sharing options by Facebook/Twitter</span> </p>
                             
                             <h2>Display 'Flag as inappropriate' Option</h2>
-                            <p><span class="tickerbox" field="show_flag_inapp" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_flag_inapp == 0 ? 'off' : ''); ?>" field="show_flag_inapp" display-array="flag-as"></span> <span class="label">Allows users to report inappropiate feedback to your administrative team</span> </p>
                             
                             <h2>User Display Information</h2>
-                            <p><span class="tickerbox" field="show_first_name" display-array="first_name"></span> <span class="label">Display First Name</span> </p>
-                            <p><span class="tickerbox" field="show_last_name" display-array="last_name"></span> <span class="label">Display Last Name</span> </p>
-                            <p><span class="tickerbox" field="show_position" display-array="job,company_comma"></span> <span class="label">Display Job Position</span> </p>
-                            <p><span class="tickerbox" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
-                            <p><span class="tickerbox" field="show_city" display-array="city,location_comma"></span> <span class="label">Display City</span> </p>
-                            <p><span class="tickerbox" field="show_country" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
-                            <p><span class="tickerbox" field="show_flag" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_avatar == 0 ? 'off' : ''); ?>" field="show_avatar" display-array="author-avatar"></span> <span class="label">Display Avatar</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_last_name == 0 ? 'off' : ''); ?>" field="show_last_name" display-array="last_name"></span> <span class="label">Display Last Name as initial</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_position == 0 ? 'off' : ''); ?>" field="show_position" display-array="job"></span> <span class="label">Display Job Position</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_company == 0 ? 'off' : ''); ?>" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_city == 0 ? 'off' : ''); ?>" field="show_city" display-array="city"></span> <span class="label">Display City</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_country == 0 ? 'off' : ''); ?>" field="show_country" display-array="country,location_comma"></span> <span class="label">Display Country</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_flag == 0 ? 'off' : ''); ?>" field="show_flag" display-array="flag"></span> <span class="label">Display Country Flag</span> </p>
                             
                             <h2>Attachment Options</h2>
-                            <p><span class="tickerbox" field="show_image_attachment" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
-                            <p><span class="tickerbox" field="show_video_attachment" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_image_attachment == 0 ? 'off' : ''); ?>" field="show_image_attachment" display-array="uploaded-images"></span> <span class="label">Display Image Attachments</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_video_attachment == 0 ? 'off' : ''); ?>" field="show_video_attachment" display-array="uploaded-link,uploaded-video"></span> <span class="label">Display Video Attachments</span> </p>
                             
                         </div>
                     </div>
@@ -583,7 +595,7 @@
                             <div class="input">
                                 <? // keep the content of companyDescription in one line. ?>
                                 <div id="panel_desc_container" class="rounded_corner">
-                                    <p class="companyDescription">Our company strives to bring only the best possible products and services suitable for our clients specific needs. Our business is simple: you describe, we create. Visit us at www.charleskeith.com today and experience the love.</p>
+                                    <p class="companyDescription"><?= nl2br(HTML::entities($panel->description)); ?></p>
                                 </div>
                                 <textarea id="panel_desc_textbox"></textarea>
                             </div>
@@ -594,7 +606,7 @@
                         <div class="optionList clear">
                             <div class="label"><strong>Facebook URL: </strong> </div>
                             <div class="input">
-                                <input type="text" id="fb_url" class="social_url" />
+                                <input type="text" id="fb_url" class="social_url" maxlength="255" value="<?= $panel->facebook_url; ?>" />
                                 <span id="fb_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
                                 <span id="fb_url_success_msg" class="social_url_msg success_msg rounded_corner">URL is valid</span>
                             </div>
@@ -602,7 +614,7 @@
                         <div class="optionList clear">
                             <div class="label"><strong>Twitter URL: </strong> </div>
                             <div class="input">
-                                <input type="text" id="tw_url" class="social_url" />
+                                <input type="text" id="tw_url" class="social_url" maxlength="255" value="<?= $panel->twitter_url; ?>" />
                                 <span id="tw_url_error_msg" class="social_url_msg error_msg rounded_corner">Invalid URL</span>
                                 <span id="tw_url_success_msg" class="social_url_msg success_msg rounded_corner">URL is valid</span>
                             </div>
@@ -617,7 +629,7 @@
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="btnBgColor" data-textfield="false" value="#E3540F" style="visibility:hidden" />
+                                            <input type="minicolors" class="btnBgColor" data-textfield="false" value="<?= $panel->button_bg_color; ?>" style="visibility:hidden" />
                                         </div>
                                     </div>
                                 </div>
@@ -626,7 +638,7 @@
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="#E3540F" style="visibility:hidden" />
+                                            <input type="minicolors" class="mbtnBgColor" data-textfield="false" value="<?= $panel->button_hover_bg_color; ?>" style="visibility:hidden" />
                                         </div>                      
                                     </div>
                                 </div>
@@ -638,7 +650,7 @@
                                     <div>
                                         <br />
                                         <div class="backgroundChooser">
-                                            <input type="minicolors" class="btnFontColor" data-textfield="false" value="#FFFFFF" style="visibility:hidden" />
+                                            <input type="minicolors" class="btnFontColor" data-textfield="false" value="<?= $panel->button_font_color; ?>" style="visibility:hidden" />
                                         </div>                      
                                     </div>
                                 </div>

@@ -34,6 +34,7 @@ var S36FullpageAdmin = function(layoutObj){
             $('#panel_desc_container').fadeIn();
             $('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
             $('#panel_desc_container').jScrollPane();
+            $('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
         });
         
         /* ========================================
@@ -497,7 +498,8 @@ var PanelAutoSaver = new function(layoutObj){
         
         // display section events.
         $('.tickerbox').click(function(){
-            var value = ( ! $(this).is('.off') ? '0' : '1' );  // i'm on the right track, baby i was born this way!
+            // i'm on the right track, baby i was born this way!
+            var value = ( ! $(this).is('.off') ? '0' : '1' );
             PanelAutoSaver.set_data($(this).attr('field'), value);
         });
         
@@ -527,23 +529,29 @@ var PanelAutoSaver = new function(layoutObj){
             
             $(this).parent().find('.social_url_msg').hide();
             
-            if( url == '' ) return;
-            
             if( $(this).is('#fb_url') && url != PanelAutoSaver.def_data.facebook_url ){
-                if( url.match(fb_regex) == null ){
-                    $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
-                }else{
-                    $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                if( url == '' ){
                     PanelAutoSaver.set_data('facebook_url', url);
+                    $('.social-icon.fb a').attr('href', '#');
+                }else if( url.match(fb_regex) != null ){
+                    PanelAutoSaver.set_data('facebook_url', url);
+                    $('.social-icon.fb a').attr('href', url);
+                    $('#fb_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                }else if( url.match(fb_regex) == null ){
+                    $('#fb_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }
             }
             
             if( $(this).is('#tw_url') && url != PanelAutoSaver.def_data.twitter_url ){
-                if( url.match(tw_regex) == null ){
-                    $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
-                }else{
-                    $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                if( url == '' ){
                     PanelAutoSaver.set_data('twitter_url', url);
+                    $('.social-icon.tw a').attr('href', '#');
+                }else if( url.match(tw_regex) != null ){
+                    PanelAutoSaver.set_data('twitter_url', url);
+                    $('.social-icon.tw a').attr('href', url);
+                    $('#tw_url_success_msg').fadeIn(200).css('display', 'inline-block');
+                }else if( url.match(tw_regex) == null ){
+                    $('#tw_url_error_msg').fadeIn(200).css('display', 'inline-block');
                 }
             }
             
@@ -618,7 +626,7 @@ var PanelAutoSaver = new function(layoutObj){
         this.final_data = {};
         
         // hide notif.
-        setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1500);
+        setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1000);
         
     }
     

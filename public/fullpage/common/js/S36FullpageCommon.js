@@ -8,6 +8,31 @@ var S36FullpageCommon = function(){
 	|| Function needed to run by document ready
 	==========================================*/
 	this.init_fullpage_common = function(){
+		$('#fullpage_desc.editable').click(function(){
+			$(this).hide();
+			$('#fullpage_desc_textbox').show().focus();
+			$('#fullpage_desc_textbox').val( Helpers.entities2html( Helpers.br2nl($(this).html().replace(/\n/g,'')) ) );
+		});
+		$('#fullpage_desc_textbox').blur(function(){
+			$(this).hide();
+			$('#fullpage_desc').fadeIn();
+			$('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
+			if( $('.companyDescription').length ){
+				$('.companyDescription').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
+			}
+			
+			$.ajax({
+		        url: '/update_desc',
+		        type: 'post',
+		        data: {description : $('#fullpage_desc_textbox').val()},
+		        success: function(result){
+		        	if( $.trim(result) != '' ){
+	                    Helpers.display_error_mes( [result] );
+	                }
+		        }
+		    });
+		});
+		
 		$('.uploaded-images-close').click(function(){
 			$(this).parent().fadeOut('fast');
 			$('.lightbox-shadow').fadeOut('fast');

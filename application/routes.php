@@ -65,9 +65,9 @@ return array(
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
                                                   , 'hosted'            => $hosted_settings_info
-                                                  , 'fullpage_css'      => $fullpage->get_fullpage_css()
-                                                  , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()));
-
+                                                  , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
+                                                  , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
+                                                  , 'panel'    => $hosted_settings->get_panel_settings($company_info->companyid) ));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);
@@ -103,14 +103,11 @@ return array(
     },
 
     'POST /update_desc' => function() use($user, $hosted_settings){
-        
-        // don't proceed if the user is not logged in.
-        // return 1 for error checking.
-        if( ! is_object($user) ) return 1;
+        // if the user is not logged in, return error msg.
+        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
         
         $data = Input::get();
         $hosted_settings->update_desc($data, $user->companyid);
-        
     },
     
     'POST /feedback_action/(:any)' => function($action) use ($feedback) {
