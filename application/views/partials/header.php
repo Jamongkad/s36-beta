@@ -110,9 +110,9 @@
                     </div>
                 </div>
                 <div class="admin-meta">
-                    <div ng-controller="ChoreCtrl">
-                        <kid done="log_chore(chore)"></kid>
-                    </div>
+
+                    <kid></kid>
+
                     <div id="bye">
                         <?=HTML::link('logout', 'SIGN OUT')?>
                     </div>
