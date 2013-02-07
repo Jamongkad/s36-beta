@@ -7,7 +7,7 @@ angular.module('feedback', [])
             var feedback = FeedbackService.feedback;
 
             if(feedback.msg) {
-                $(element).html("<sup class='count'>" + feedback.msg + "</sup>");     
+                $(element).html("<sup class='count'>" + feedback.msg + "</sup>").fadeOut();     
             }   
         }
     }    

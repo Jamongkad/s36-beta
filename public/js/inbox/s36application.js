@@ -428,8 +428,4 @@ jQuery(function($) {
             }
         })
     });
-
-    $(document).delegate('li.inbox', 'click', function(e) { 
-        e.preventDefault();
-    });
 });
