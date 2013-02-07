@@ -10,7 +10,7 @@ angular.module('feedback', [])
                 $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
             }   
 
-            console.log($(location).attr('href'))
+            console.log($(location).attr('pathname'));
             console.log(window.location.pathname === '/inbox/all');
 
         }
