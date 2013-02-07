@@ -3,7 +3,6 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            console.log(element);
             $(element).bind('mouseover', function(e) {
                 console.log("Pwet"); 
             });
