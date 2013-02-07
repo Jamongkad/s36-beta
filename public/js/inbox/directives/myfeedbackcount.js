@@ -19,20 +19,13 @@ angular.module('feedback', [])
 
            var process = function(e) {
                e.stopImmediatePropagation();
-               SettingsService.set_inbox_as_read($(location).attr('pathname'));
+               //SettingsService.set_inbox_as_read($(location).attr('pathname'));
+               console.log('mathew');
                return false;
            };
 
-           $(element).children().click(function(e) {
-               e.stopImmediatePropagation();
-               SettingsService.set_inbox_as_read($(location).attr('pathname'));
-               return false;
-           });
-           $(element).click(function(e) {
-               e.stopImmediatePropagation();
-               SettingsService.set_inbox_as_read($(location).attr('pathname'));
-               return false;
-           });
+           $(element).children().click(process);
+           $(element).click(process);
         }
     }    
     
