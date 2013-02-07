@@ -11,6 +11,8 @@ angular.module('feedback', [])
             }   
 
             console.log($(location).attr('href'))
+            console.log(window.location);
+
         }
     }    
 })
