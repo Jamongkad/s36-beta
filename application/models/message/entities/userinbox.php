@@ -13,13 +13,25 @@ class UserInbox {
         $this->_fetch_messages();
     }
 
-    public function edit($key, $msg=Null) { 
-        return $this->redis->hset($this->user_id, $key, $msg);         
+    public function edit($key, $msg) { 
+        if($key == Null || $msg == Null) {
+            throw new Exception("You must provide a key and a message");
+        } else {
+            return $this->redis->hset($this->user_id, $key, $msg);              
+        } 
     }
 
-    public function read_all($key=False) { 
+    public function read_all() { 
         if($this->messages)
-            return $this->messages[False];
+            return $this->messages;
+    }
+
+    public function read($key) { 
+        if(array_key_exists($key, $this->messages)) {
+            return $this->messages[$key];     
+        } else { 
+            throw new Exception("$key does not exist in messages array!");
+        } 
     }
      
     public function receive(MessageList $messages) {

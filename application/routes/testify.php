@@ -390,6 +390,7 @@ return array(
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             //$inbox->edit("inbox:notification:newfeedback", "Mathew was here");
             Helpers::dump($inbox->read_all());
+            Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
 
         $tf->run();          
