@@ -12,7 +12,7 @@ angular.module('feedback', [])
         restrict: 'A'     
       , scope: {
             countme: '&'   
-            feed_count: '@'
+          , feed_count: '@'
         }
       , template:  '<input type="text" ng-model="count">'
                  + '<div>{{feed_count}}</div>'
