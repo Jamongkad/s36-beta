@@ -12,15 +12,14 @@ angular.module('feedback', [])
         }
     }    
 })
-.directive('inboxclick', function() {
+.directive('inboxclick', function(SettingsService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-           console.log($(element).children());
 
            var process = function(e) {
                e.stopImmediatePropagation();
-               alert("mathew");
+               SettingsService.set_inbox_as_read($(location).attr('pathname'));
                return false;
            };
 

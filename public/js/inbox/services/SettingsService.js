@@ -87,5 +87,20 @@ angular.module('Services', [])
         });
     }
 
+    shared_service.set_inbox_as_read(pathname) {
+        /*
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/feedback/get_feedback_count'
+          , success: function(data) {
+                shared_service.feedback = data;
+            }
+        });
+        */
+        console.log(pathname);
+    }
+
     return shared_service;
 });
