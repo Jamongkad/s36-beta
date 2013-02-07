@@ -16,10 +16,10 @@ angular.module('feedback', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-           console.log($(element));
            $(element).click(function(e) {
                e.preventDefault();
-           })
+               return false;
+           });
         }
     }    
     
