@@ -42,7 +42,12 @@
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <!--<span my-feedbackcount></span>-->
+                       <span ng-controller="FeedbackCountCtrl">
+                           <div feedbackcount countme="call_count(fdbackcount)"></div>
+                       </span>
+                       <!--
                        <span my-feedbackcount></span>
+                       -->
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>
@@ -110,9 +115,6 @@
                     </div>
                 </div>
                 <div class="admin-meta">
-
-                    <kid></kid>
-
                     <div id="bye">
                         <?=HTML::link('logout', 'SIGN OUT')?>
                     </div>
