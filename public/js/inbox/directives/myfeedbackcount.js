@@ -17,10 +17,18 @@ angular.module('feedback', [])
         }
     }    
 })
+.controller('ChoreCtrl', function($scope) {
+    $scope.log_chore = function(chore) {
+        console.log(chore + " is done!");
+    }
+})
 .directive('kid', function() { 
     return {
         restrict: 'E'     
-      , scope: {}
-      , template: '<input type="text" ng-model="chore"/> {{chore}}'
+      , scope: {
+            done:"&" 
+        }
+      , template: '<input type="text" ng-model="chore"/> {{chore}}' + 
+                  '<div class="button" ng-click="done({chore:chore})">Me done!</div>'
     }
 })
