@@ -6,6 +6,7 @@ $dbwidget = new Widget\Repositories\DBWidget;
 $badwords = new DBBadWords;
 $redis = new redisent\Redis;
 $auth = S36Auth::user();
+$inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
 
 return array(
     'GET /feedback/modifyfeedback/(:num)' => Array('before' => 's36_auth', 'do' => function($id) use ($feedback, $category) {
@@ -252,13 +253,11 @@ return array(
         return $emailservice->send_email();
     }),
 
-    'GET /feedback/get_feedback_count' => Array('do' => function() use ($auth) {  
-        $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
+    'GET /feedback/get_feedback_count' => Array('do' => function() use ($inbox) {  
         echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
 
-    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($auth) { 
-        $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-        echo json_encode(Array( 'msg' => true ));
+    'GET /feedback/mark_inbox_as_read' => Array('do' => function() use ($inbox) {  
+        echo json_encode(Array( 'msg' => $inbox->edit("inbox:notification:newfeedback", "") ));
     })
 );
