@@ -33,7 +33,7 @@
                 <span ng-controller="FeedbackCountCtrl">
                     <div feedbackcount countme="call_count(fdbackcount)"></div>
                 </span>
-                <?=HTML::image('img/logo.jpg')?>
+                <?//=HTML::image('img/logo.jpg')?>
 
             </div>
             <div class="left-menu">
