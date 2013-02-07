@@ -29,13 +29,13 @@ angular.module('feedback', [])
                //SettingsService.set_inbox_as_read($(location).attr('pathname'));
                console.log('mathew');
                return false;
-           };);
+           });
            $(element).click(function(e) {
                e.stopImmediatePropagation();
                //SettingsService.set_inbox_as_read($(location).attr('pathname'));
                console.log('mathew');
                return false;
-           };);
+           });
         }
     }    
     
