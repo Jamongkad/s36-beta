@@ -254,7 +254,6 @@ return array(
 
     'GET /feedback/get_feedback_count' => Array('do' => function() use ($auth) {  
         $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
-        $message = $inbox->read("inbox:notification:newfeedback");
-        echo json_encode(Array('msg' => $message));
+        echo json_encode(Array( 'msg' => $inbox->read("inbox:notification:newfeedback") ));
     }),
 );

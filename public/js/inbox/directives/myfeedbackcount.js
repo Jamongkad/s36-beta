@@ -6,16 +6,9 @@ angular.module('feedback', [])
             FeedbackService.get_feedback_count();
             var feedback = FeedbackService.feedback;
             $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
-          /*
-            $(element).bind('mouseover', function(e) {
-                console.log("Pwet"); 
+            $(element).bind('click', function(e) {
+                e.preventDefault();
             });
-            FeedbackService.get_feedback_count();
-
-            if(feedback.checked) {
-                $(element).html();     
-            }
-           */ 
         }
     }    
 })
