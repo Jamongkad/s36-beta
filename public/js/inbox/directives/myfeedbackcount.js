@@ -18,7 +18,9 @@ angular.module('feedback', [])
       , link: function(scope, element, attrs) {
            console.log($(element).children());
            $(element).children().click(function(e) {
-               e.preventDefault();
+               e.stopImmediatePropagation();
+               alert("mathew");
+               return false;
            });
         }
     }    
