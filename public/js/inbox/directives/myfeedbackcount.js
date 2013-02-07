@@ -9,10 +9,17 @@ angular.module('feedback', [])
             if(feedback.msg) {
                 $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
             }   
-
-            console.log($(location).attr('pathname'));
-            console.log(window.location.pathname === '/inbox/all');
-
         }
     }    
+})
+.directive('inboxclick', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+           $(element).click(function(e) {
+               e.preventDefault();
+           })
+        }
+    }    
+    
 })

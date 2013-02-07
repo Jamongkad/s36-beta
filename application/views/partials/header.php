@@ -38,7 +38,7 @@
                         <?=HTML::link('dashboard', 'Dashboard')?>
                        <?=($regex->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
+                    <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?> inboxclick>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
                        <span feedbackcount></span>
