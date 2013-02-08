@@ -12,6 +12,7 @@
 #fullpage_desc{ width: 98%; }
 #fullpage_desc.editable:hover{ background-color: #f4f4f4; cursor: pointer; }
 #fullpage_desc_textbox{ display: none; width: 97%; font-size: 12px; }
+.last_name{ display: none; }
 
 
 /* admin panel */

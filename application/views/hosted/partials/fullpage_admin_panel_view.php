@@ -495,6 +495,7 @@
                                     <div class="author-name clear">
                                         <span class="first_name">John</span>
                                         <span class="last_name">Doe</span>
+                                        <span class="last_name_ini">D.</span>
                                     </div>
                                     <div class="author-company">
                                         <span class="job">Position<span class="company_comma">, </span></span>
@@ -530,7 +531,7 @@
                             
                             <h2>User Display Information</h2>
                             <p><span class="tickerbox <?= ($panel->show_avatar == 0 ? 'off' : ''); ?>" field="show_avatar" display-array="author-avatar"></span> <span class="label">Display Avatar</span> </p>
-                            <p><span class="tickerbox <?= ($panel->show_last_name == 0 ? 'off' : ''); ?>" field="show_last_name" display-array="last_name"></span> <span class="label">Display Last Name as initial</span> </p>
+                            <p><span class="tickerbox <?= ($panel->show_last_name_as_ini == 0 ? 'off' : ''); ?>" field="show_last_name_as_ini" display-array="last_name,last_name_ini"></span> <span class="label">Display Last Name as initial</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_position == 0 ? 'off' : ''); ?>" field="show_position" display-array="job"></span> <span class="label">Display Job Position</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_company == 0 ? 'off' : ''); ?>" field="show_company" display-array="company,company_comma"></span> <span class="label">Display Company Name</span> </p>
                             <p><span class="tickerbox <?= ($panel->show_city == 0 ? 'off' : ''); ?>" field="show_city" display-array="city"></span> <span class="label">Display City</span> </p>

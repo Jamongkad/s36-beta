@@ -39,14 +39,12 @@
                         <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
                     </div>
                     <div class="author-company">
-                        <span class="job"><?= HTML::entities($feed->feed_data->position); ?></span>
-                        <span class="company_comma">,</span>
+                        <span class="job"><?= HTML::entities($feed->feed_data->position); ?><span class="company_comma">, </span></span>
                         <span class="company"><?= HTML::entities($feed->feed_data->companyname); ?></span>
                     </div>
                     <div class="author-location-info clear">
                         <div class="author-location">
-                            <span class="city"><?= HTML::entities($feed->feed_data->city); ?></span>
-                            <span class="location_comma">,</span>
+                            <span class="city"><?= HTML::entities($feed->feed_data->city); ?><span class="location_comma">, </span></span>
                             <span class="country"><?= HTML::entities($feed->feed_data->countryname); ?></span>
                         </div>
                         <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>

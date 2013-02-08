@@ -19,7 +19,7 @@ class DBHostedSettings extends S36DataObject {
         'show_sharing_option',
         'show_flag_inapp',
         'show_avatar',
-        'show_last_name',
+        'show_last_name_as_ini',
         'show_position',
         'show_company',
         'show_city',

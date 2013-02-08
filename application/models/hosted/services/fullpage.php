@@ -79,10 +79,10 @@ class Fullpage {
         $css .= ( ! $hs->show_sharing_option ? '.share-button{display:none}' : '' );
         $css .= ( ! $hs->show_flag_inapp ? '.flag-as{display:none}' : '' );
         $css .= ( ! $hs->show_avatar ? '.author-avatar{display:none}.author-information{margin-left:0px;}' : '' );
-        $css .= ( ! $hs->show_last_name ? '.last_name{display:none}' : '' );
-        $css .= ( ! $hs->show_position ? '.job{display:none}.company_comma{display:none}' : '' );
+        $css .= ( ! $hs->show_last_name_as_ini ? '.last_name{display:none}' : '' );
+        $css .= ( ! $hs->show_position ? '.job{display:none}' : '' );
         $css .= ( ! $hs->show_company ? '.company{display:none}.company_comma{display:none}' : '' );
-        $css .= ( ! $hs->show_city ? '.city{display:none}.location_comma{display:none}' : '' );
+        $css .= ( ! $hs->show_city ? '.city{display:none}' : '' );
         $css .= ( ! $hs->show_country ? '.country{display:none}.location_comma{display:none}' : '' );
         $css .= ( ! $hs->show_flag ? '.flag{display:none}' : '' );
         $css .= ( ! $hs->show_image_attachment ? '.uploaded-images{display:none}' : '' );
