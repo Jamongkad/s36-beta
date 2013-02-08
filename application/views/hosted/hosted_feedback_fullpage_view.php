@@ -124,6 +124,7 @@
             <div id="feedbackContainer">
                 <?=View::make('hosted/partials/fullpage_'.strtolower($hosted->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
             </div>
+            <div id="feedback-infinitescroll-landing"></div> 
         </div>
     </div>
 </div>
