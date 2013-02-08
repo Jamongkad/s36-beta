@@ -34,6 +34,9 @@
                                                 <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
+                                                    <p ng-repeat="media in feeds.media">
+                                                        {{media.text}}
+                                                    </p>
                                                     <div class="additional-info">
                                                         <div class="custom-meta-list grids">
                                                             <div class="custom-meta">
