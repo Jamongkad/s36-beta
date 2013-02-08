@@ -424,7 +424,7 @@ class DBFeedback extends S36DataObject {
     }
     
     //duplication??
-    public function total_newfeedback_by_company($company_id=False) {
+    public function newfeedback_by_company($company_id=False) {
         $sql = "   
             SELECT 
                ".$this->select_vars."

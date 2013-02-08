@@ -402,8 +402,8 @@ return array(
         });
  
         $tf->test("Quick Inbox: DBFeedback", function($tf) {  
-            $count = $tf->data->dbfeedback->total_newfeedback_by_company(); 
-            $tf->dump($count);
+            $feedback = $tf->data->dbfeedback->newfeedback_by_company(); 
+            $tf->dump($feedback);
         });
 
         $tf->run();          
