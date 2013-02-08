@@ -216,10 +216,6 @@ return array(
         $contact = new Feedback\Entities\ContactDetails;
         $feedback_details = new Feedback\Entities\FeedbackDetails;
         $dashboard = new DBDashboard;
-        $halcyon   = new Halcyonic\Services\HalcyonicService;
-        //$addfeedback = new Feedback\Services\SubmissionService($contact, $feedback_details, $dashboard, $halcyon);
-        //$result = $addfeedback->perform();
-        //print_r($result);
         echo true;
     },
 

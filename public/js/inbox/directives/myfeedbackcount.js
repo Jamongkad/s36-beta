@@ -1,16 +1,31 @@
 angular.module('feedback', [])
-.directive('myFeedbackcount', function(FeedbackService) {
+.directive('feedbackcount', function(FeedbackService) {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            FeedbackService.get_feedback_count();
+            var feedback = FeedbackService.feedback;
+
+            if(feedback.msg) {
+                $(element).html("<sup class='count'>" + feedback.msg + "</sup>");
+            }   
+        }
+    }    
+})
+.directive('inboxclick', function(FeedbackService) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
 
-            FeedbackService.get_feedback_count();
-            var feedback = FeedbackService.feedback_count;
+           var process = function(e) {
+               e.stopImmediatePropagation();
+               FeedbackService.set_inbox_as_read();
+               return false;
+           };
 
-            if(feedback.checked) {
-                $(element).html("<sup class='count'>" + feedback.feedback_count + "</sup>");     
-            }
-           
+           $(element).children().click(process);
+           $(element).click(process);
         }
     }    
+    
 })

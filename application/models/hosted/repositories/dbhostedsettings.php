@@ -6,6 +6,7 @@ class DBHostedSettings extends S36DataObject {
 
     private $hosted_settings;
     private $admin_panel_fields = array(
+        'theme_name',
         'background_image',
         'page_bg_position',
         'page_bg_repeat',
@@ -141,7 +142,6 @@ class DBHostedSettings extends S36DataObject {
         
         $result = Db::table('HostedSettings')->where('companyId', '=', $company_id)->first( $this->admin_panel_fields );
         return ( $type == 'json' ? json_encode($result) : $result ) ;
-        
     }
     
     

@@ -72,7 +72,8 @@ angular.module('Services', [])
 .service('FeedbackService', function($rootScope) {
 
     var shared_service = {};
-    shared_service.feedback_count;
+
+    shared_service.feedback;
 
     shared_service.get_feedback_count = function() { 
         $.ajax({
@@ -81,13 +82,21 @@ angular.module('Services', [])
           , async: false
           , url: '/feedback/get_feedback_count'
           , success: function(data) {
-                shared_service.feedback_count = data;
+                shared_service.feedback = data;
             }
         });
     }
 
-    shared_service.register_feedback_count = function()  {
-        $rootScope.$broadcast('requestFeedbackCount');
+    shared_service.set_inbox_as_read = function(pathname) {
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/feedback/mark_inbox_as_read'
+          , success: function(data) {
+                window.location.href = '/inbox/all';
+            }
+        });
     }
 
     return shared_service;

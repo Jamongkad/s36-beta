@@ -448,7 +448,8 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
         ";
         $sth = $this->dbh->prepare($sql);
-
+        
+        //In case we're logged in...
         if($this->company_id) {
             $company_id = $this->company_id;
         }

@@ -28,7 +28,7 @@
 <div id="admin-container">
     <div id="admin-panel">
 		<div class="left-panel">
-        	<div class="logo">
+        	<div class="logo"> 
                 <?=HTML::image('img/logo.jpg')?>
             </div>
             <div class="left-menu">
@@ -38,18 +38,10 @@
                         <?=HTML::link('dashboard', 'Dashboard')?>
                        <?=($regex->dashboard ? '<div class="arrow-right"></div>' : null)?>
                     </li>
-                    <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?>>
+                    <li<?=($regex->inbox ? ' class="selected inbox"' :' class="inbox"')?> inboxclick>
                         <?=HTML::link('inbox/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Inbox')?>
                        <?=($regex->inbox ? '<div class="arrow-right"></div>' : null)?>
-                       <!--
-                       <span ng-controller="FeedbackCountCtrl">                    
-                            <sup ng:class="get_class()"> 
-                                {{counts.feedback_counts}}
-                            <sup>
-                       </span>
-                       -->
-                       <span my-feedbackcount></span>
-
+                       <span feedbackcount></span>
                     </li>                 
                     <li<?=($regex->published ? ' class="selected published"' : ' class="published"')?>>
                         <?=HTML::link('inbox/published/all'.((Input::get('site_id')) ? '?site_id='.Input::get('site_id') : Null), 'Published')?>

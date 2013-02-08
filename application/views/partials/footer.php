@@ -37,7 +37,6 @@
 <?=HTML::script('js/inbox/controllers/SettingReplyCtrl.js')?>
 <?=HTML::script('js/inbox/controllers/requestctrl.js')?>
 <?=HTML::script('js/inbox/controllers/replyctrl.js')?>
-<?=HTML::script('js/inbox/controllers/feedbackcountctrl.js')?>
 
 <?=HTML::script('js/inbox/S36InboxModule.js')?>
 <?=HTML::script('js/jquery.flot.js')?>

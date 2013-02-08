@@ -3,6 +3,7 @@
 namespace Account\Services;
 
 use S36DataObject\S36DataObject, PDO, StdClass, Helpers, DB, S36Auth;
+use \Company\Repositories\DBCompany, \Plan\Repositories\DBPlan;
 \Package::load('braintree');
 
 class AccountService{
@@ -15,9 +16,8 @@ private	$S36Braintree;
 public function __construct(){
 		// initialize associate models
 		$this->user 			= S36Auth::user();		
-		$this->DBCompany 		= new \Company\Repositories\DBCompany;
-		$this->DBPlan 			= new \Plan\Repositories\DBPlan;
-		$this->DBCompany->set_companyId($this->user->companyid);
+		$this->DBCompany 		= new DBCompany;
+		$this->DBPlan 			= new DBPlan;
 		$this->S36Braintree 	= new \S36Braintree($this->user->bt_customer_id);
 }
 
@@ -31,11 +31,12 @@ public function get_accountInfo(){
 		$obj->companyInfo->account_owner	=	$this->DBCompany->get_account_owner();
 		$obj->companyPlanInfo				= 	$this->DBPlan->get_planInfo($obj->companyInfo->planid);
 		if($this->braintree_exist()){
-			$obj->companyCreditCardInfo					=	\Helpers::arrayToObject($this->S36Braintree->get_credit_card_info());
-			$obj->companyBillingInfo = new stdclass;
-			$obj->companyBillingInfo					=	\Helpers::ArrayToObject($this->S36Braintree->get_billing_info());
-			$obj->companyBillingInfo->nextBill			=	\Helpers::arrayToObject($this->S36Braintree->get_next_billing_info());	
-			$obj->companyBillingInfo->billingHistory	=	\Helpers::arrayToObject($this->S36Braintree->get_billing_history());	
+			$obj->companyCreditCardInfo					=	Helpers::arrayToObject($this->S36Braintree->get_credit_card_info());
+
+			$obj->companyBillingInfo = new StdClass; 
+			$obj->companyBillingInfo					=	Helpers::ArrayToObject($this->S36Braintree->get_billing_info());
+			$obj->companyBillingInfo->nextBill			=	Helpers::arrayToObject($this->S36Braintree->get_next_billing_info());	
+			$obj->companyBillingInfo->billingHistory	=	Helpers::arrayToObject($this->S36Braintree->get_billing_history());	
 		} 
 		return $obj;
 }
@@ -57,6 +58,7 @@ public function update_plan($planId){
 			return true; 
 		}
 	}
+
 public function update_billing_info($input){
 	return $this->S36Braintree->update_billing_info($input);
 }

@@ -78,10 +78,11 @@ return array(
     },
     
     'POST /update_panel_settings' => function() use($hosted_settings, $user){
+        $input = Input::get();
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
-        
-        $hosted_settings->update_panel_settings($user->companyid, (object)Input::get());
+        $hosted_settings->update_panel_settings($user->companyid, (object)$input);
+        return json_encode($input);
     },
 
     'POST /admin_reply' => Array('name' => 'admin_reply', 'before' => 's36_auth', 'do' => function() use ($dbadmin_reply) {
@@ -130,6 +131,7 @@ return array(
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
 
+        /* stash this in a service somewhere...too much shit happening */
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();                
 
@@ -151,7 +153,7 @@ return array(
         $fb_query = http_build_query(array(
             'app_id'        => Config::get('application.fb_id'),
             'link'          => $obj->feedback_url,
-            'picture'       => Url::to('/').'img/36logo2.png',
+            'picture'       => URL::to('/').'img/36logo2.png',
             'name'          => $obj->company_name,
             'caption'       => $hosted_settings_info->header_text,
             'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
@@ -214,15 +216,7 @@ return array(
 
             $auth->login($input['username'], $input['password'], Array('company' => $company_name)); 
 
-            if($auth->check()) {
-
-                $user_id = $auth->user()->userid;
-                $company_id = $auth->user()->companyid;
-
-                $halcyon = new Halcyonic\Services\HalcyonicService;
-                $halcyon->company_id = $company_id;
-                $halcyon->set_user_feedcount($user_id);
-                
+            if($auth->check()) { 
                 return forward_or_dash();
             } else {
                 return View::of_home_layout()->partial('contents', 'home/login', Array(  
