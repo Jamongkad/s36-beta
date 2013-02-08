@@ -26,8 +26,7 @@
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <div ng-click="AppCtrl.say_hi()">Say Hi</div> 
-                                    <div ng-repeat="feeds in AppCtrl.fetch_inbox_feeds()">                                     
-                                        <div class="widget-item clear">
+                                    <div class="widget-item clear" ng-repeat="feeds in AppCtrl.fetch_inbox_feeds()">                                     
                                             <div class="widget-avatar">
                                                 <img src="fullpage/common/img/chris.png" />
                                             </div>
@@ -94,7 +93,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
