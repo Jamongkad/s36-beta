@@ -25,7 +25,7 @@
                     <div class="pageBody">
                         <div id="quickInboxWidget">
                             <div class="widget-list">
-                                
+                                <!-- 
                                 <div class="widget-item clear">
                                     <div class="widget-avatar">
                                         <img src="fullpage/common/img/chris.png" />
@@ -53,8 +53,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                  
+                                </div> 
                                 <div class="widget-item clear">
                                     <div class="widget-avatar">
                                         <img src="fullpage/common/img/chris.png" />
@@ -128,7 +127,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                 
+                                --> 
                             </div>
                         </div>
                     </div>
