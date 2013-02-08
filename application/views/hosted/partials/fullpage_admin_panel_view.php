@@ -26,6 +26,9 @@
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <div ng-click="AppCtrl.say_hi()">Say Hi</div> 
+                                    <div ng-repeat="feeds in AppCtrl.fetch_inbox_feeds()"> 
+                                        <p>{{feeds.text}}</p>
+                                    </div>
                                 </div>
                                 <!-- 
                                 <div class="widget-item clear">
