@@ -14,9 +14,7 @@ var S36FullpageAdmin = function(layoutObj){
     ==========================================*/
     var self = this;
     var common = new S36FullpageCommon;
-    var robertmordido = function(){
-            alert('hi robskie');
-    }
+
     this.init_fullpage_admin = function(){
         
         // initialize the the PanelAutoSaver.
@@ -649,7 +647,7 @@ var PanelAutoSaver = new function(layoutObj){
             dataType: 'json',
             data: PanelAutoSaver.final_data,
             success: function(result){
-                if(!undefined != result.theme_name){
+                if(undefined != result.theme_name){
                     layoutChanged = true;
                 }
                 /*
@@ -666,6 +664,7 @@ var PanelAutoSaver = new function(layoutObj){
         // hide notif.
         setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1000);
         if(layoutChanged==true){
+            layoutChanged=false;
             window.location.hash = "#3";
             window.location.reload(true);
         }
