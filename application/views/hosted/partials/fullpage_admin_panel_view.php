@@ -24,6 +24,9 @@
                     <div class="pageBody">
                         <div id="quickInboxWidget" >
                             <div class="widget-list" ng-app="QuickInbox">
+                                <div ng-controller="AppCtrl">
+                                    <div ng-click="AppCtrl.say_hi()">Say Hi</div> 
+                                </div>
                                 <!-- 
                                 <div class="widget-item clear">
                                     <div class="widget-avatar">
