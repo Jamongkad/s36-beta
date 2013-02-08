@@ -64,7 +64,7 @@ return array(
                                                   , 'feed_count'        => $meta->perform()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
-                                                  , 'hosted'            => $hosted_settings_info
+                                                  , 'hosted'            => $hosted_settings->get_panel_settings($company_info->companyid)
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
                                                   , 'panel'    => $hosted_settings->get_panel_settings($company_info->companyid) ));
