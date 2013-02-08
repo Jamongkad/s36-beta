@@ -11,6 +11,9 @@
 ?>
 <?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'); ?>
 <?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
+<?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
+
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <div id="fb-root"></div>
 <script type="text/javascript">
@@ -87,11 +90,10 @@
 */
 ?>
 
-<?php if( ! is_null(\S36Auth::user()) ): ?>
+<?php if( ! is_null(\S36Auth::user()) ): ?> 
 <?= HTML::style('/fullpage/admin/css/S36FullpageAdmin.css'); ?>
 <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
 <?= HTML::style('/fullpage/admin/css/minicolors.css'); ?>
-
 <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
 <?= HTML::script('/fullpage/admin/js/minicolors.js'); ?>
@@ -99,6 +101,7 @@
 <?= HTML::script('/fullpage/admin/js/jquery.mousewheel.min.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jquery.scroll.js'); ?>
 <?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
+<?= HTML::script('/fullpage/admin/js/S36QuickInbox.js')?>
 <?php endif; ?> 
 </head>
 <body>
