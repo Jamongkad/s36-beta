@@ -385,16 +385,27 @@ return array(
         }); 
 
         $tf->test("MessageService: Reading Message", function($tf) { 
-
             $auth = S36Auth::user();
             $inbox = new Message\Entities\UserInbox("{$auth->username}:messages");
             $inbox->edit("inbox:notification:newfeedback", "8 New Feedback");
             Helpers::dump($inbox->read_all());
             Helpers::dump($inbox->read("inbox:notification:newfeedback"));
         });
+        $tf->run();          
+    },
+
+    'GET /testify/quickinbox' => function() { 
+        $tf = new Testify("Quick Inbox");  
+
+        $tf->beforeEach(function($tf) {
+            $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
+        });
+ 
+        $tf->test("Quick Inbox: DBFeedback", function($tf) {  
+            $count = $tf->data->dbfeedback->total_newfeedback_by_company(); 
+            $tf->dump($count);
+        });
 
         $tf->run();          
-
     }
-
 );

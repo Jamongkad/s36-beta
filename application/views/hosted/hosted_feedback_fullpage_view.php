@@ -162,7 +162,7 @@
         function update() {
            if($(window).scrollTop() + $(window).height() == $(document).height()) {
 
-                //if admin window is present disable 
+                //if admin window is present disable infinite scroll
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
 
                 counter += 1;

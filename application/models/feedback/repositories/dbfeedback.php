@@ -427,16 +427,31 @@ class DBFeedback extends S36DataObject {
     public function total_newfeedback_by_company($company_id=False) {
         $sql = "   
             SELECT 
-                  SQL_CALC_FOUND_ROWS
-                  Feedback.feedbackId
+               ".$this->select_vars."
             FROM 
                 Feedback
+                    LEFT JOIN
+                        FeedbackAdminReply
+                        ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
                     INNER JOIN
                         Site
                         ON Site.siteId = Feedback.siteId 
                     INNER JOIN
                         Company
                         ON Company.companyId = Site.companyId
+                    INNER JOIN
+                        Category
+                        ON Feedback.categoryId = Category.categoryId
+                    INNER JOIN
+                        Contact
+                        ON Contact.contactId = Feedback.contactId 
+                    INNER JOIN
+                        FeedbackContactOrigin
+                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
+                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+                    INNER JOIN
+                        Country
+                        ON Country.countryId = Contact.countryId
              WHERE 1=1
                  AND Company.companyId = :company_id            
                  AND Feedback.isDeleted = 0
@@ -457,8 +472,13 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':company_id', $company_id, PDO::PARAM_INT);
         $sth->execute();
 
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
-        return $row_count->fetchColumn(); 
+
+        $result_obj = new StdClass;
+        $result_obj->row_count = $row_count->fetchColumn();
+        $result_obj->nodes = $this->_return_feedback_nodes($result);
+        return $result_obj;
     }
 
     public function fetch_latest_feedback_id($company_id) {
