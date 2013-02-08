@@ -9,7 +9,7 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'); ?>
 <?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
 <div id="fb-root"></div>
