@@ -23,7 +23,7 @@
                     </div>
                     <div class="pageBody">
                         <div id="quickInboxWidget" >
-                            <div class="widget-list">
+                            <div class="widget-list" ng-app="QuickInbox">
                                 <!-- 
                                 <div class="widget-item clear">
                                     <div class="widget-avatar">

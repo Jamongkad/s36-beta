@@ -9,7 +9,8 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+<?//= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'); ?>
 <?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
 <?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
 <?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
@@ -42,7 +43,8 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?//= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
+<?= HTML::script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js'); ?>
 <?= HTML::script('/js/helpers.js'); ?>
 <?= HTML::script('/js/jquery.iframe-transport.js'); ?>
 <?= HTML::script('/js/jquery.ui.widget.js'); ?>
