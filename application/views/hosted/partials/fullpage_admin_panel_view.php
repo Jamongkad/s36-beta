@@ -26,42 +26,8 @@
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <div ng-click="AppCtrl.say_hi()">Say Hi</div> 
-                                    <div ng-repeat="feeds in AppCtrl.fetch_inbox_feeds()"> 
-                                        <div class="widget-item clear">
-                                            <div class="widget-avatar">
-                                                <img src="fullpage/common/img/chris.png" />
-                                            </div>
-                                            <div class="widget-content">
-                                                <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
-                                                <div class="widget-text">
-                                                    <p>
-                                                       {{feeds.text}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="widget-actions">
-                                                <div class="widget-icons">
-                                                    <input type="button" class="widget-icon check" />
-                                                    <input type="button" class="widget-icon save" />
-                                                    <input type="button" class="widget-icon reply" />
-                                                    <input type="button" class="widget-icon feature" />
-                                                    <input type="button" class="widget-icon contact" />
-                                                    <input type="button" class="widget-icon flag" />
-                                                </div>
-                                                <div class="widget-date">
-                                                    <div class="the-date">November 12, 2012</div>
-                                                    <div class="the-time">10:54:11 am</div>
-                                                    <div class="the-delete">
-                                                        <input type="button" class="widget-icon delete" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 
-                                <div class="widget-item clear">
-                                </div> 
+                                    <div ng-repeat="feeds in AppCtrl.fetch_inbox_feeds()">                                     
+
                                 <div class="widget-item clear">
                                     <div class="widget-avatar">
                                         <img src="fullpage/common/img/chris.png" />
@@ -135,6 +101,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                    </div>
+                                </div>
+                                <!-- 
+                                <div class="widget-item clear">
+                                </div> 
                                 --> 
                             </div>
                         </div>
