@@ -46,7 +46,8 @@ class SubmissionService {
             $this->_create_metadata($feedback_id);    
             $this->_send_feedbacksubmission_email($feedback, $this->dbuser->pull_user_emails_by_company_id($company_id));
             $this->_calculate_dashboard_analytics($company_id);
-
+            
+            //this solution is a bit heavy handed try to find a much faster way to get it.
             $feedbackcount = $this->dbfeedback->newfeedback_by_company($company_id);
             $mq = new MessageList;
             $mq->add_message(new Notification("{$feedbackcount->row_count} New Feedback", "inbox:notification:newfeedback"));
