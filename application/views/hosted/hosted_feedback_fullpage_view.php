@@ -162,6 +162,7 @@
         var counter = 0;    
         function update() {
            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
                 counter += 1;
                 var page_counter = counter + 1;
                 var container = $('#feedback-infinitescroll-landing'); 

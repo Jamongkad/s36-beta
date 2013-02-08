@@ -89,7 +89,7 @@ a:hover{
 	display:none;
 	width:100%;
 	box-shadow:#222 0px 0px 3px;
-	z-index:100000;
+	z-index:4000;
 	position:fixed;
 }
 #theBarTab{
@@ -375,7 +375,7 @@ a:hover{
 /* lightbox styles */
 .lightbox{
 	position:absolute;
-	z-index:100000;
+	z-index:6001;
 	top:10%;
 	left:50%;
 	width:780px;
@@ -391,7 +391,7 @@ a:hover{
 }
 .lightbox-s{
 	background:url(../img/faded-white.png);
-	z-index:980;
+	z-index:5900;
 	height:100%;
 	width:100%;
 	top:0px;
@@ -455,7 +455,7 @@ a:hover{
 	position:fixed;
 	width:290px;
 	background:url(../img/faded-bg.png);
-	z-index:1000;
+	z-index:6000;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;

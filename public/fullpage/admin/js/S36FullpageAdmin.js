@@ -37,10 +37,16 @@ var S36FullpageAdmin = function(layoutObj){
             $('#fullpage_desc').html( Helpers.nl2br( Helpers.html2entities($(this).val()) ) );
         });
         
+        // open the admin window
+        $('.barLinks #admin_panel').click(function(e){
+            e.preventDefault();
+            $('#adminWindowBox').fadeIn('fast');
+        });
+        
         /* ========================================
         || Make the admin window box draggable
         ==========================================*/
-        $('#adminWindowBox').draggable({ handle: '#adminWindowTitleBar',opacity:0.5});
+        $('#adminWindowBox').draggable({ handle: '#adminWindowTitleBar',opacity:0.5, containment: '#bodyColorOverlay'});
         /* ========================================
         || Close the admin window box when close button is clicked
         ==========================================*/

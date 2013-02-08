@@ -108,7 +108,7 @@
         <div id="barLeftContent">
             <div class="barLinks clear">
                 <div id="barImageLogo"><a href="#"><img src="/fullpage/common/img/36stories-logo.png" /></a></div>
-                <?php if( ! is_null(\S36Auth::user()) ): ?>
+                <?php if( is_null(\S36Auth::user()) ): ?>
                 <ul class="left-links">                 
                     <li><a href="#">Create Your Own Feedback Page!</a></li>
                 </ul>
@@ -119,11 +119,11 @@
             <div class="barLinks">
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
-                    <li><a href="/settings">My Settings</a></li>
+                    <li><a href="#" id="admin_panel">Admin Panel</a></li>
                     <li><a href="/dashboard">My Dashboard</a></li>
                     <li><a href="/admin">My Account</a>
                         <ul>
-                            <li><a href="/admin">Account Settings</a>
+                            <li><a href="/settings">My Settings</a>
                             <li><a href="http://36stories.freshdesk.com/">Help</a>
                             <li><a href="/logout">Logout</a>
                         </ul>
