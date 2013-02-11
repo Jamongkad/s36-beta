@@ -14,7 +14,9 @@ var S36FullpageAdmin = function(layoutObj){
     ==========================================*/
     var self = this;
     var common = new S36FullpageCommon;
-
+    var robertmordido = function(){
+            alert('hi robskie');
+    }
     this.init_fullpage_admin = function(){
         
         // initialize the the PanelAutoSaver.
@@ -306,12 +308,11 @@ var S36FullpageAdmin = function(layoutObj){
     || Cover Image changer
     ==========================================*/
     this.change_cover_image = function(data){
-        console.log(data);
         $('<img />')
             .attr({'basename':data.name,'src':data.url})
             .load(function(e){
                 self.make_cover_undraggable(false);
-                $('#coverPhoto img').attr({'basename':data.name,'src':data.url,width:'100%'});
+                $('#coverPhoto img').attr({'basename':data.name,'src':data.url,width:'100%'}).css('top', '0px');
                 $('#saveCoverButton').show();
                 $('#changeCoverButton').hide();
                 self.hide_notification();
@@ -647,7 +648,7 @@ var PanelAutoSaver = new function(layoutObj){
             dataType: 'json',
             data: PanelAutoSaver.final_data,
             success: function(result){
-                if(undefined != result.theme_name){
+                if(!undefined != result.theme_name){
                     layoutChanged = true;
                 }
                 /*
@@ -664,7 +665,6 @@ var PanelAutoSaver = new function(layoutObj){
         // hide notif.
         setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1000);
         if(layoutChanged==true){
-            layoutChanged=false;
             window.location.hash = "#3";
             window.location.reload(true);
         }
