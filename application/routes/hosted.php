@@ -20,6 +20,14 @@ return array(
         return View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $feeds, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
+    },
 
+    'GET /hosted/quick_inbox' => function() {
+        $data = Array(
+            Array('id' => 286, 'name' => 'Mathew Wong', 'text' => 'Ted is a dick.') 
+         ,  Array('id' => 287, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
+        );
+    
+        echo json_encode($data);
     }
 );
