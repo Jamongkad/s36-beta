@@ -791,39 +791,29 @@ class DBFeedback extends S36DataObject {
     
     
     // do feedback action.
-    public function exec_feedback_action($type, $data) {
-        
-        $action_data = Array();
-
-        // set the distinct data needed in feedback actions.
-        $action_data['flag']['field'] = 'flagged';
-        $action_data['flag']['insert_data'] = $data->flag_insert_data; 
-    
-        $action_data['vote']['field'] = 'useful';
-        $action_data['vote']['insert_data'] = $data->vote_insert_data;
-        
-        // if the type of action doesn't exist, don't proceed.
-        if( ! array_key_exists($type, $action_data) ) return;
-        
+    public function exec_feedback_action($data){
         
         // get record of user's action on the feedback.
         $result = $this->get_feedback_actions($data);
         
-        // if the feedback action was already done, don't proceed.
-        if( ! is_null($result) && $result->$action_data[$type]['field'] == 1 ) return;
         
-        // if the feedback action hasn't been done, do it.
-        if( ! is_null($result) && $result->$action_data[$type]['field'] != 1 ){
+        // if the user has not done anyting on the feedback, 
+        // insert new record according to the type of action.
+        if( is_null($result) ){
             
+            DB::table('FeedbackActions')->insert( (array)$data );
+            
+        // if there's already an action done on the feedback before, just update it.
+        }else{
+            
+            // no need to check each column of the feedback record.
+            // user can't insert multiple record of feedback on a single ip.
+            
+            // update the feedback record.
             DB::table('FeedbackActions')
                 ->where('ip_address', '=', $data->ip_address)
                 ->where('feedbackId', '=', $data->feedbackId)
-                ->update( $action_data[$type]['insert_data'] );
-            
-        // if no action has been done on the feedback, insert a new action record.
-        }elseif( is_null($result) ){
-            
-            DB::table('FeedbackActions')->insert( $action_data[$type]['insert_data'] );
+                ->update( (array)$data );
             
         }
         

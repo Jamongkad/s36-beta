@@ -167,16 +167,22 @@
         <div class="feedback-options clear">
             <div class="feedback-recommendation">
                 <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
-                <?php if( $voted != 1 ): ?>
-                    <div class="vote-block">
-                        <span class="vote-action">Was this useful? <a href="#" class="small-btn-pin">Yes</a></span>
-                    </div>
-                <?php endif; ?>
+                <div class="vote-block">
+                    <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
+                        Was this useful? <a href="#" class="small-btn-pin">Yes</a>
+                    </span>
+                    <span class="undo_vote <?= ($voted == 1 ? '' : 'hidden'); ?>">
+                        Undo vote
+                    </span>
+                </div>
             </div>
             <div class="feedback-actions clear">
-                <?php if( $flagged != 1 ): ?>
-                    <span class="flag-as">Flag as inappropriate</span>
-                <?php endif; ?>
+                <span class="flag-as <?= ($flagged != 1 ? '' : 'hidden'); ?>">
+                    Flag as inappropriate
+                </span>
+                <span class="undo_flag <?= ($flagged == 1 ? '' : 'hidden'); ?>">
+                    Undo flag
+                </span>
                 <span class="share-button">
                     Share
                     <div class="share-box">

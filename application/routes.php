@@ -113,8 +113,8 @@ return array(
     
     'POST /feedback_action/(:any)' => function($action) use ($feedback) {
         
-        $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->exec_feedback_action($action, $data);
+        $fd = new Feedback\Entities\FeedbackActionsData( $action, (object)Input::get() );
+        if( ! is_null($fd->data) ) $feedback->exec_feedback_action($fd->data);
         
     },
         

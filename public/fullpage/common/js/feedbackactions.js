@@ -2,8 +2,10 @@ var S36FeedbackActions = new function() {
 
     var feedback = '.feedback';  // should be the parent of other vars in its group.
     var flag = '.flag-as';
+    var undo_flag = '.undo_flag';
     var vote_container = '.vote-action';
     var vote = '.vote-action a';
+    var undo_vote = '.undo_vote';
     var vote_count = '.vote_count';
     var rating_stat = '.rating-stat';
     var share = '.share-button';
@@ -15,7 +17,9 @@ var S36FeedbackActions = new function() {
 
     this.initialize_actions = function() {
         me.flag_inapprt();
+        me.undo_flag();
         me.vote();
+        me.undo_vote();
         me.share();
         me.open_submission_form();
         me.admin_reply();
@@ -44,13 +48,30 @@ var S36FeedbackActions = new function() {
                 type: 'post',
                 data: {'feedbackId' : this_flag.parents(feedback).attr('fid')},
                 success: function(result){
-                    this_flag.hide().text('Thanks for your flag!').fadeIn();
+                    this_flag.addClass('hidden');
+                    this_flag.parents(feedback).find(undo_flag).removeClass('hidden');
                 }
             });
 
             e.preventDefault();
             
         }); 
+    }
+    
+    this.undo_flag = function(){
+        $(undo_flag).unbind('click.undo_flag').bind('click.undo_flag', function(e) {
+            var this_undo = $(this);
+            $.ajax({
+                url: '/feedback_action/unflag',
+                type: 'post',
+                data: {'feedbackId' : this_undo.parents(feedback).attr('fid')},
+                success: function(){
+                    this_undo.addClass('hidden');
+                    this_undo.parents(feedback).find(flag).removeClass('hidden');
+                }
+            });
+            e.preventDefault();
+        });
     }
 
     this.vote = function() { 
@@ -64,9 +85,31 @@ var S36FeedbackActions = new function() {
                 type: 'post',
                 data: {'feedbackId' : this_vote.parents(feedback).attr('fid')},
                 success: function(result){
-                    $(this_vote).parents(feedback).find(rating_stat).css('display', 'block');
+                    this_vote.parents(feedback).find(rating_stat).css('display', 'block');
                     vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
-                    $(this_vote).parents(feedback).find(vote_container).hide().text('Thanks for your vote!').fadeIn();
+                    
+                    this_vote.parents(feedback).find(vote_container).addClass('hidden');
+                    this_vote.parents(feedback).find(undo_vote).removeClass('hidden');
+                }
+            });
+            e.preventDefault();
+        });
+    }
+    
+    this.undo_vote = function(e){
+        $(undo_vote).unbind('click.undo_vote').bind('click.undo_vote', function(e) {
+            var this_undo = $(this);
+            var vote_count_obj = $(this).parents(feedback).find(vote_count);
+            $.ajax({
+                url: '/feedback_action/unvote',
+                type: 'post',
+                data: {'feedbackId' : this_undo.parents(feedback).attr('fid')},
+                success: function(){
+                    vote_count_obj.hide().text( parseInt(vote_count_obj.text()) - 1 ).fadeIn();
+                    if( vote_count_obj.text() == '0' ) this_undo.parents(feedback).find(rating_stat).fadeOut();
+                    
+                    this_undo.parents(feedback).find(vote_container).removeClass('hidden');
+                    this_undo.addClass('hidden');
                 }
             });
             e.preventDefault();
@@ -93,7 +136,6 @@ var S36FeedbackActions = new function() {
                 fb_like.addClass('fb-like');
             }, function() {
                 $(this).fadeOut('fast');
-                console.log("hovering out");
             });
 
             e.preventDefault();

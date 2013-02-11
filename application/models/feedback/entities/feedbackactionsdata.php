@@ -5,24 +5,28 @@
     
     class FeedbackActionsData{
         
-        public $flagged = 1;
-        public $useful = 1;
-        public $ip_address;
-        public $feedbackId;
+        public $data;
         
-        public $flag_insert_data;
-        public $vote_insert_data;
-        
-        
-        public function __construct($input){
+        public function __construct($action, $input){
             
-            $this->flag_insert_data['feedbackId'] = $this->feedbackId = $input->feedbackId;
-            $this->flag_insert_data['ip_address'] = $this->ip_address = Helpers::get_client_ip();
+            $common_data['ip_address'] = Helpers::get_client_ip();
+            $common_data['feedbackId'] = $input->feedbackId;
             
-            $this->vote_insert_data = $this->flag_insert_data;
+            $action_data['flag'] = $common_data;
+            $action_data['flag']['flagged'] = 1;
             
-            $this->flag_insert_data['flagged'] = $this->flagged;
-            $this->vote_insert_data['useful'] = $this->useful;
+            $action_data['unflag'] = $common_data;
+            $action_data['unflag']['flagged'] = null;
+            
+            $action_data['vote'] = $common_data;
+            $action_data['vote']['useful'] = 1;
+            
+            $action_data['unvote'] = $common_data;
+            $action_data['unvote']['useful'] = null;
+            
+            if( ! array_key_exists($action, $action_data) ) return;
+            
+            $this->data = (object) $action_data[$action];
             
         }
         

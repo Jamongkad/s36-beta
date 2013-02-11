@@ -139,6 +139,7 @@
 
 <?= HTML::style('/fullpage/layout/'.strtolower($hosted->theme_name).'/css/S36FullpageLayout'.ucfirst($hosted->theme_name).'.css'); ?>
 <?= HTML::script('/fullpage/layout/'.strtolower($hosted->theme_name).'/js/S36FullpageLayout'.ucfirst($hosted->theme_name).'.js'); ?>
+<?= HTML::style('/fullpage/common/css/override.css');  // i'm on the right track baby, i was born to be moved here. ?>
 <script type="text/javascript">
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
     $(document).ready(function(){
