@@ -55,7 +55,6 @@ return array(
         ));
 
         $meta->calculate_metrics();
-        
         echo View::of_fullpage_layout()->partial('contents', 'hosted/hosted_feedback_fullpage_view', Array(  
                                                     'company'           => $company_info
                                                   , 'company_social'    => $company_social
@@ -67,7 +66,7 @@ return array(
                                                   , 'hosted'            => $hosted_settings->get_panel_settings($company_info->companyid)
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
-                                                  , 'panel'    => $hosted_settings->get_panel_settings($company_info->companyid) ));
+                                                  , 'panel'             => $hosted_settings->get_panel_settings($company_info->companyid) ));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);
@@ -166,21 +165,23 @@ return array(
        
     },
     
-    'GET /single/(:num)' => function($id) use ($feedback, $hosted_settings, $company) { 
+    'GET /single/(:num)' => function($id) use ($user, $feedback, $hosted_settings, $company, $fullpage) { 
 
-        $feedback = $feedback->pull_feedback_by_id($id);
-        $company_info = $company->get_company_info($feedback->companyid);
-
-        $fb_id = Config::get('application.fb_id');
+        $feedback   = $feedback->pull_feedback_by_id($id);
+        $company    = $company->get_company_info($feedback->companyid);
+        $fb_id      = Config::get('application.fb_id');
 
         $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
-        $header_view = new Hosted\Services\CompanyHeader($company_info->company_name, $company_info->fullpagecompanyname, $company_info->domain);
-
+        $header_view = new Hosted\Services\CompanyHeader($company->company_name, $company->fullpagecompanyname, $company->domain);
+        //echo "<pre>";print_r($company);echo "</pre>";
         return View::make('hosted/hosted_feedback_single_view', Array(
-            'feedback' => $feedback 
-          , 'company_header' => $header_view 
-          , 'fb_id' => $fb_id
-          , 'hosted' => $hosted_settings->hosted_settings()
+            'company'           => $company
+          , 'user'              => $user
+          , 'feedback'          => $feedback
+          , 'fullpage_css'      => $fullpage->get_fullpage_css($company->companyid) 
+          , 'company_header'    => $header_view 
+          , 'fb_id'             => $fb_id
+          , 'panel'             => $hosted_settings->get_panel_settings($company->companyid)
         ));
     },
 
