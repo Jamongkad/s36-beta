@@ -24,8 +24,10 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     ];
 
     this.fetch_inbox_feeds = function() {
-        return feedback;     
+        return feeds;//feedback;     
     }
+
+
 
     this.say_hi = function() {
         alert("Mathew");
