@@ -361,6 +361,9 @@ class DBFeedback extends S36DataObject {
         $sth = $this->dbh->prepare('
             SELECT 
                 '.$this->select_vars.'
+                , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
+                , FeedbackActions.useful 
+                , FeedbackActions.flagged AS flagged_as_inappr
                 , Company.companyId
                 , Company.name AS company_name
                 , Company.billTo AS company_billto
@@ -390,11 +393,16 @@ class DBFeedback extends S36DataObject {
                     INNER JOIN
                         Country
                         ON Country.countryId = Contact.countryId
+                    LEFT JOIN
+                        FeedbackActions
+                        ON Feedback.feedbackId = FeedbackActions.feedbackId
+                        AND FeedbackActions.ip_address = :client_ip
                     WHERE 1=1
                         AND Feedback.feedbackId = :feedback_id
         ');
-
+        $client_ip = Helpers::get_client_ip();
         $sth->bindParam(':feedback_id', $feedback_id, PDO::PARAM_INT);
+        $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         $sth->execute();       
         $result = $sth->fetch(PDO::FETCH_OBJ);
         return $result;
