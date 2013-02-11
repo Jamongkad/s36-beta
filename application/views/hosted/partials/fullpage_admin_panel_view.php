@@ -31,7 +31,7 @@
                                                 <img src="fullpage/common/img/chris.png" />
                                             </div>
                                             <div class="widget-content">
-                                                <div class="widget-submitter"><span class="name">Nathan Reddig</span> <span class="social-src">Facebook Verified</span></div>
+                                                <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
                                                     <p ng-repeat="media in feeds.media">
