@@ -18,7 +18,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
             }
         });
 
-        //$('.widget-list').jScrollPane();
+        console.log($('.widget-list').jScrollPane());
         /*
         $http.get('/hosted/quick_inbox').success(function(data) {
             $scope.feedbacks = data;
