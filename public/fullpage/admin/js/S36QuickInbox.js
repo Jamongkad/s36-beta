@@ -41,7 +41,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                 template += '</div>'
             }
             template += '</div>';
-            console.log(template);
             return template;
         }
     }

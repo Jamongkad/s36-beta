@@ -35,7 +35,7 @@
                                                     <p>{{feeds.text}}</p>
                                                     <div class="additional-info">
                                                         <!-- Meta Data -->
-                                                        {{metadata_block(feeds)}}
+                                                        <span ng-bind-html="metadata_block(feeds)"></span>
                                                         <!-- End of Meta data -->
 
                                                         <!-- Media Data -->
