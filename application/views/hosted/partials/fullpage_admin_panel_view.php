@@ -33,9 +33,9 @@
                                                 <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
-                                                    <div class="additional-info" ng-repeat="metadata in feeds.metadata">
+                                                    <div class="additional-info">
                                                         <!-- Meta Data -->
-                                                        <div class="custom-meta-list grids">
+                                                        <div class="custom-meta-list grids" ng-repeat="metadata in feeds.metadata">
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
                                                             </div>
