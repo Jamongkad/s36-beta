@@ -11,8 +11,8 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
-                setTimeout(function() { feed_request(); }, 5000);
                 $scope.feedbacks = data;
+                setTimeout(function() { feed_request(); }, 5000);
             }
         });
     })();
