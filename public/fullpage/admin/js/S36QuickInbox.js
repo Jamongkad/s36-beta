@@ -55,7 +55,6 @@ app.service('QuickInboxService', function($rootScope) {
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
-          , timeout: 2000
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {
