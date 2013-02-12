@@ -7,7 +7,8 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
-          , dataType: 'json' 
+          , dataType: 'json'
+          , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
                 $scope.feedbacks = data;
