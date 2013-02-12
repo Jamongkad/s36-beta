@@ -25,7 +25,6 @@
                         <div id="quickInboxWidget" >
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
-                                    <div ng-click="say_hi()">Say Hi</div> 
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                             <div class="widget-avatar">
                                                 <img src="fullpage/common/img/chris.png" />
@@ -40,29 +39,11 @@
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
                                                             </div>
-                                                            <div class="custom-meta">
-                                                                <div class="custom-meta-name">Pricing : <span class="value">Good</span></div>
-                                                            </div>
-                                                            <div class="custom-meta">
-                                                                <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
-                                                            </div>
                                                         </div>
                                                         <!-- End of Meta data -->
 
                                                         <!-- Media Data -->
                                                         <div class="uploaded-images-and-links grids" ng-repeat="media in feeds.media">
-                                                            <div class="image-block">
-                                                                <div class="delete-block">x</div>
-                                                                <div class="the-thumb">
-                                                                    <img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" />                       
-                                                                </div>
-                                                            </div>
-                                                            <div class="image-block">
-                                                                <div class="delete-block">x</div>
-                                                                <div class="the-thumb">
-                                                                    <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
-                                                                </div>
-                                                            </div>
                                                             <div class="image-block">
                                                                 <div class="delete-block">x</div>
                                                                 <div class="the-thumb">
