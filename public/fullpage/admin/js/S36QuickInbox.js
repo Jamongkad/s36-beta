@@ -2,9 +2,9 @@ var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, QuickInboxService) {
     
-    var feeds = QuickInboxService.fetch_inbox_feeds();
+    QuickInboxService.fetch_inbox_feeds();
 
-    console.log(QuickInboxService.message);
+    var feeds = QuickInboxService.message;
 
     var feedback = [
         {   "feedid": 285
@@ -26,8 +26,8 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     ];
 
     this.fetch_inbox_feeds = function() {
-        console.log(this.feeds);
-        return feeds;//feedback;     
+        console.log(feeds);
+        //return feeds;//feedback;     
     }
 
 
