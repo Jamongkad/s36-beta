@@ -39,7 +39,6 @@ return array(
                       , Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
                   ))
          ,  Array(  'id' => 2
-
                   , 'subcontent' => false
                   , 'name' => 'Irene Paredes'
                   , 'text' => 'Mystical Creatures') 
@@ -64,7 +63,7 @@ return array(
                   , 'name' => 'Kennwel Labarda'
                   , 'text' => 'I love raping people...with my mind.') 
          ,  Array(  'id' => 8
-                  , 'subcontent' => false
+                  , 'subcontent' => true
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
         );
