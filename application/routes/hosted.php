@@ -30,6 +30,7 @@ return array(
          ,  Array('id' => 3, 'name' => 'Meagan Wong', 'text' => 'HEY I LOVE ICECREAM :))') 
          ,  Array('id' => 4, 'name' => 'Robert Mordido', 'text' => 'DOTA 2 Rocks.') 
          ,  Array('id' => 5, 'name' => 'Leica Chang', 'text' => 'I am a cute futtie.') 
+         ,  Array('id' => 7, 'name' => 'Derps Matusoc', 'text' => 'Hi am a derp!') 
         );
     
         echo json_encode($data);
