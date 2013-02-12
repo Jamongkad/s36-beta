@@ -28,6 +28,7 @@ return array(
             Array(  'id' => 1
                   , 'name' => 'Mathew Wong'
                   , 'text' => 'Your service is awesome!'
+                  , 'subcontent' => true
                   , 'media' => Array(
                         Array('mid' => 10, 'type' => 'video', 'src' => 'youtube')     
                       , Array('mid' => 12, 'type' => 'pic', 'src' => 'picpic')     
@@ -38,24 +39,32 @@ return array(
                       , Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
                   ))
          ,  Array(  'id' => 2
+
+                  , 'subcontent' => false
                   , 'name' => 'Irene Paredes'
                   , 'text' => 'Mystical Creatures') 
          ,  Array(  'id' => 3
+                  , 'subcontent' => false
                   , 'name' => 'Meagan Wong'
                   , 'text' => 'HEY I LOVE ICECREAM :))') 
          ,  Array(  'id' => 4
+                  , 'subcontent' => false
                   , 'name' => 'Robert Mordido'
                   , 'text' => 'DOTA 2 Rocks.') 
          ,  Array(  'id' => 5
+                  , 'subcontent' => false
                   , 'name' => 'Leica Chang'
                   , 'text' => 'I am a cute futtie.') 
          ,  Array(  'id' => 6
+                  , 'subcontent' => false
                   , 'name' => 'Derps Matusoc'
                   , 'text' => 'Hi am a derp!') 
          ,  Array(  'id' => 7
+                  , 'subcontent' => false
                   , 'name' => 'Kennwel Labarda'
                   , 'text' => 'I love raping people...with my mind.') 
          ,  Array(  'id' => 8
+                  , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
         );
