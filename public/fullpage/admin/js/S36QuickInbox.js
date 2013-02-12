@@ -31,7 +31,14 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     }
 
     $scope.metadata_block = function(data) {
-        console.log(data);
+        var template = '<div class="custom-meta-list grids">'
+        for(var i=0; i<data.length; i++) {
+            template =+ '<div class="custom-meta">'           
+            template =+ '<div class="custom-meta-name">' + data[i].key + ' : <span class="value">' + data[i].value + '</span></div>'
+            template =+ '</div>'
+        }
+        template =+ '</div>';
+        return template;
     }
 
 });

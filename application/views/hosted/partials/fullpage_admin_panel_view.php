@@ -36,11 +36,6 @@
                                                     <div class="additional-info">
                                                         <!-- Meta Data -->
                                                         {{metadata_block(feeds.metadata)}}
-                                                        <div class="custom-meta-list grids" ng-repeat="metadata in feeds.metadata">
-                                                            <div class="custom-meta">
-                                                                <div class="custom-meta-name">{{metadata.key}} : <span class="value">{{metadata.value}}</span></div>
-                                                            </div>
-                                                        </div>
                                                         <!-- End of Meta data -->
 
                                                         <!-- Media Data -->
