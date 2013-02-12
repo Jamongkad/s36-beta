@@ -1,7 +1,10 @@
 var app = angular.module("QuickInbox", []);
 
-app.controller("AppCtrl", function($scope, $defer, QuickInboxService) {
+app.controller("AppCtrl", function($scope, QuickInboxService) {
+
     $scope.feedbacks = [];
+
+    var self = this;
 
     (function feed_request() { 
         $.ajax({
@@ -11,8 +14,9 @@ app.controller("AppCtrl", function($scope, $defer, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
                 $scope.feedbacks = data;
-                //setTimeout(function() { feed_request(); }, 5000);
-                $defer(feedback_request, 5000);
+                self.$root.$eval();
+                setTimeout(function() { feed_request(); }, 5000);
+                //$defer(feedback_request, 5000);
             }
         });
     })();
