@@ -19,12 +19,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                 }, 10000);
             }
         });
-
     })();
-
-    $scope.say_hi = function() {
-        alert("Mathew");
-    }
 
 });
 
@@ -34,26 +29,9 @@ app.service('QuickInboxService', function($rootScope) {
     var shared_service = {};
     shared_service.message;
 
-    shared_service.fetch_inbox_feeds = function() { 
-        feed_request();
+    shared_service.fetch_inbox_feeds = function(cb) { 
+         
     }
-
-    shared_service.register = function()  {
-        $rootScope.$broadcast('fetchInboxFeeds');
-    }
-
-    function feed_request() { 
-        $.ajax({
-            type: 'GET'    
-          , dataType: 'json'
-          , async: false
-          , url: '/hosted/quick_inbox'
-          , success: function(data) {
-                shared_service.message = data;
-                setTimeout(function() { feed_request(); }, 15000);
-            }
-        });
-    }
-    
+ 
     return shared_service;
 });

@@ -88,10 +88,10 @@
                                             <div class="widget-actions">
                                                 <div class="widget-icons">
                                                     <input type="button" class="widget-icon check" />
-                                                    <input type="button" class="widget-icon save" />
-                                                    <input type="button" class="widget-icon reply" />
                                                     <input type="button" class="widget-icon feature" />
+                                                    <input type="button" class="widget-icon reply" />
                                                     <input type="button" class="widget-icon contact" />
+                                                    <input type="button" class="widget-icon save" />
                                                     <input type="button" class="widget-icon flag" />
                                                 </div>
                                                 <div class="widget-date">
