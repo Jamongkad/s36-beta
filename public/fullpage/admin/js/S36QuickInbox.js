@@ -33,8 +33,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     $scope.metadata_block = function(data) {
         if(data.hasOwnProperty('metadata')) { 
             for(var i=0; i<data['metadata'].length; i++) {
-                console.log(data[i].key);
-                console.log(data[i].value);
+                console.log(data['metadata'][i].key);
+                console.log(data['metadata'][i].value);
             }
             /*
             var template = '<div class="custom-meta-list grids">'
