@@ -37,7 +37,7 @@
                                                         <!-- Meta Data -->
                                                         <div class="custom-meta-list grids" ng-repeat="metadata in feeds.metadata">
                                                             <div class="custom-meta">
-                                                                <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
+                                                                <div class="custom-meta-name">{{metadata.key}} : <span class="value">{{metadata.value}}</span></div>
                                                             </div>
                                                         </div>
                                                         <!-- End of Meta data -->

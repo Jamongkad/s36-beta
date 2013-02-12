@@ -33,9 +33,9 @@ return array(
                       , Array('mid' => 12, 'type' => 'pic', 'src' => 'picpic')     
                   ) 
                   , 'metadata' => Array(
-                        Array('mtid' => 10, 'Had sex recently' => 'yes')     
-                      , Array('mtid' => 12, 'Spa?' => 'Aww Yeahh')     
-                      , Array('mtid' => 13, 'Massage?' => 'Could have been worse')     
+                        Array('mtid' => 10, 'key' => 'Had sex recently', 'value' => 'yes')     
+                      , Array('mtid' => 12, 'key' => 'Spa?', 'value' => 'Aww Yeahh')     
+                      , Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
                   ))
          ,  Array(  'id' => 2
                   , 'name' => 'Irene Paredes'
