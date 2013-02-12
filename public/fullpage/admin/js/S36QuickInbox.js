@@ -4,8 +4,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     
     QuickInboxService.fetch_inbox_feeds();
 
-    var feeds = QuickInboxService.message;
-
     var feedback = [
         {   "feedid": 285
           , "text": "Mathew is Kewl!"
@@ -26,7 +24,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     ];
 
     this.fetch_inbox_feeds = function() {
-        console.log(feeds);
+        console.log(QuickInboxService.message);
         //return feeds;//feedback;     
     }
 
