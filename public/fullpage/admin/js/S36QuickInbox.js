@@ -1,25 +1,27 @@
 var app = angular.module("QuickInbox", []);
 
-app.controller("AppCtrl", function($scope, QuickInboxService) {
+app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
     $scope.feedbacks = [];
 
     (function feed_request() { 
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
-
-                $scope.$apply(function() {
-                    $scope.feedbacks = data;     
-                })
-               
+                $scope.feedbacks = data;
                 setTimeout(function() { feed_request(); }, 5000);
                 //$defer(feedback_request, 5000);
             }
         });
+        */
+        $http.get('/hosted/quick_inbox').success(function(data) {
+            $scope.feedbacks = data;
+            $timeout(feed_request, 5000);
+        })
     })();
     /*
     var feedback = [
