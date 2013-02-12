@@ -25,7 +25,7 @@
                         <div id="quickInboxWidget" >
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
-                                    <div ng-click="AppCtrl.say_hi()">Say Hi</div> 
+                                    <div ng-click="say_hi()">Say Hi</div> 
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                             <div class="widget-avatar">
                                                 <img src="fullpage/common/img/chris.png" />

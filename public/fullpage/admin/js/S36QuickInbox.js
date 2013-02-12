@@ -5,7 +5,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     $scope.feedbacks = [];
 
     (function feed_request() { 
-
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -21,47 +20,12 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
             }
         });
 
-        /* 
-        $http.get('/hosted/quick_inbox').success(function(data) {
-            $scope.feedbacks = data;
-            $scope.$apply($scope.feedbacks);
-            $('.widget-list').jScrollPane();
-            $timeout(feed_request, 5000);
-        })
-        */
-
     })();
-    /*
-    var feedback = [
-        {   "feedid": 285
-          , "text": "Mathew is Kewl!"
-          , "name": "Mathew Wong" 
-          , "media": [  
-                { "media_id": 280, "text": "Video + (girl, girl)" }
-              , { "media_id": 288, "text": "Video + (boy, boy)" }
-            ]
-        } 
-      , {  "feedid": 286
-         , "name": "Irene Paredes"
-         , "text": "Mathew is Hot!"
-         , "media": [
-                { "media_id": 280, "text": "Video + (girl)" }
-              , { "media_id": 288, "text": "Video + (boy)" }
-            ]
-        } 
-    ];
-    */
-    /*
-    this.fetch_inbox_feeds = function() {
-        return $scope.feeds;
-    }
-    */
 
-    this.say_hi = function() {
+    $scope.say_hi = function() {
         alert("Mathew");
     }
 
-    return $scope.AppCtrl = this;
 });
 
 
