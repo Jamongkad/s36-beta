@@ -36,11 +36,11 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
             var template = '<div class="custom-meta-list grids">'
             for(var i=0; i < meta.length; i++) {
-                template =+ '<div class="custom-meta">'           
-                template =+ '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
-                template =+ '</div>'
+                template + '<div class="custom-meta">'           
+                template + '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
+                template + '</div>'
             }
-            template =+ '</div>';
+            template + '</div>';
             console.log(template);
             return template;
         }
