@@ -11,8 +11,11 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
-                $scope.feedbacks = data;
-                $scope.$root.$eval();
+
+                $scope.$apply(function() {
+                    $scope.feedbacks = data;     
+                })
+               
                 setTimeout(function() { feed_request(); }, 5000);
                 //$defer(feedback_request, 5000);
             }
