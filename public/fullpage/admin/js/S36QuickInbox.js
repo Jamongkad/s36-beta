@@ -5,7 +5,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     $scope.feedbacks = [];
 
     (function feed_request() { 
-
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -17,14 +17,14 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                 setTimeout(function() { feed_request(); }, 5000);
             }
         });
+        */
 
-
-        /*
         $http.get('/hosted/quick_inbox').success(function(data) {
             $scope.feedbacks = data;
+            $scope.$apply($scope.feedbacks);
             $timeout(feed_request, 5000);
         })
-        */
+
     })();
     /*
     var feedback = [
