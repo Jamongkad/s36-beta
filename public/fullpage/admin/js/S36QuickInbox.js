@@ -21,7 +21,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
         $http.get('/hosted/quick_inbox').success(function(data) {
             $scope.feedbacks = data;
-            $scope.$apply($scope.feedbacks);
+            //$scope.$apply($scope.feedbacks);
             $('.widget-list').jScrollPane();
             $timeout(feed_request, 5000);
         })
