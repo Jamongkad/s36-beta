@@ -25,9 +25,9 @@ return array(
     'GET /hosted/quick_inbox' => function() {
 
         $data = Array(
-            Array('id' => 1, 'name' => 'Mathew Wong', 'text' => 'Ted is a dick.') 
-         ,  Array('id' => 2, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
-         ,  Array('id' => 3, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
+            Array('id' => 1, 'name' => 'Mathew Wong', 'text' => 'Your service is awesome!') 
+         ,  Array('id' => 2, 'name' => 'Irene Paredes', 'text' => 'Mystical Creatures') 
+         ,  Array('id' => 3, 'name' => 'Meagan Wong', 'text' => 'HEY I LOVE ICECREAM :))') 
         );
     
         echo json_encode($data);
