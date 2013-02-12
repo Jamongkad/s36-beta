@@ -11,7 +11,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
           , dataType: 'json'
           , async: false
           , url: '/hosted/quick_inbox'
-          , cache: false
           , success: function(data) {  
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks);
