@@ -25,7 +25,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     this.fetch_inbox_feeds = function() {
         console.log(QuickInboxService.message);
-        //return feeds;//feedback;     
+        return QuickInboxService.message;
     }
 
 
