@@ -4,7 +4,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
     $scope.feedbacks = [];
 
-    function feed_request() { 
+    (function feed_request() { 
 
         $.ajax({
             type: 'GET'    
@@ -13,6 +13,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
                 $scope.feedbacks = data;
+                $scope.apply($scope.feedbacks);
                 setTimeout(function() { feed_request(); }, 5000);
             }
         });
@@ -23,9 +24,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
             $timeout(feed_request, 5000);
         })
         */
-    }
-
-    feed_request();
+    })();
     /*
     var feedback = [
         {   "feedid": 285
