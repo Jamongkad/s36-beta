@@ -4,7 +4,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.feedbacks = [];
 
-    function feed_request() { 
+    (function feed_request() { 
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -15,7 +15,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                 $scope.feedbacks = data;
             }
         });
-    }
+    })();
     /*
     var feedback = [
         {   "feedid": 285
