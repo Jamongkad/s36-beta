@@ -30,6 +30,10 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         alert("Featuring! " + id);
     }
 
+    $scope.metadata_block = function(data) {
+        console.log(data);
+    }
+
 });
 
 
