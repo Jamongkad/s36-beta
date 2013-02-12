@@ -4,8 +4,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.feedbacks = [];
 
-    var self = this;
-
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
@@ -14,7 +12,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
                 $scope.feedbacks = data;
-                self.$root.$eval();
+                $scope.$root.$eval();
                 setTimeout(function() { feed_request(); }, 5000);
                 //$defer(feedback_request, 5000);
             }
