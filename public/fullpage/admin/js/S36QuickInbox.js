@@ -2,7 +2,20 @@ var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, QuickInboxService) {
 
-    $scope.feedbacks = QuickInboxService.fetch_inbox_feeds().message; 
+    $scope.feedbacks = [];
+
+    function feed_request() { 
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/hosted/quick_inbox'
+          , success: function(data) {  
+                setTimeout(function() { feed_request(); }, 5000);
+                $scope.feedbacks = data;
+            }
+        });
+    }
     /*
     var feedback = [
         {   "feedid": 285
