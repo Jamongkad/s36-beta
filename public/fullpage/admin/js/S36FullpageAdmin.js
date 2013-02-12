@@ -185,12 +185,12 @@ var S36FullpageAdmin = function(layoutObj){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
                     var error = ['Please select an image file'];
-                    self.display_error_mes(error);
+                    Helpers.display_error_mes(error);
                     return false;
                 }
                 if( data.files[0].size > 2000000 ){
-                    var error = ['Changing cover image..'];
-                    self.display_error_mes(error);
+                    var error = ['Please upload an image not greater than 2mb in filesize'];
+                    Helpers.display_error_mes(error);
                     return false;
                 }
                 data.submit();

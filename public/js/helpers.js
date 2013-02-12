@@ -43,6 +43,12 @@ var Helpers = new function() {
         $('#lightboxNotification').fadeIn();
         $('#lightbox').fadeIn();
         $('.lightbox-s').fadeIn();
+        $('#lightboxNotification .lightbox-button').click(function(e){
+            $('.lightbox-s').fadeOut('fast');
+            $('#lightbox').fadeOut('fast');
+            $('#lightboxNotification').fadeOut('fast');
+            e.preventDefault();
+        });
         return false;
     };
 }
