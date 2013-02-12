@@ -645,17 +645,18 @@ var PanelAutoSaver = new function(layoutObj){
             async: false,
             url: '/update_panel_settings',
             type: 'post',
-            dataType: 'json',
+            //dataType: 'json',
             data: PanelAutoSaver.final_data,
             success: function(result){
+                if( $.trim(result) == 'You should be logged in to do this action' ){
+                    PanelAutoSaver.S36FullpageAdmin.hide_notification();
+                    Helpers.display_error_mes( [result] );
+                }
+                
+                result = $.parseJSON(result);
                 if(!undefined != result.theme_name){
                     layoutChanged = true;
                 }
-                /*
-                if( $.trim(result) != '' ){
-                    PanelAutoSaver.S36FullpageAdmin.hide_notification();
-                    Helpers.display_error_mes( [result] );
-                }*/
             }
         });
         
