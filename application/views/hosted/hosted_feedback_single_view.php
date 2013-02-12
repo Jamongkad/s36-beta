@@ -55,7 +55,7 @@
         |--------------------------------------------------------------------------
         */
         ?>
-        <meta property="og:title" content="<?=strip_tags($feedback->text)?>"/> 
+        <meta property="og:title" content="<?=strip_tags($feedback->title)?>"/> 
         <meta property="og:description" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:type" content="article"/> 
         <?if($feedback->avatar):?>
