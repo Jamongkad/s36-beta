@@ -3,6 +3,7 @@ var app = angular.module("QuickInbox", []);
 app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
     $scope.feedbacks = [];
+    $scope.selection = [];
 
     (function feed_request() { 
         $.ajax({
