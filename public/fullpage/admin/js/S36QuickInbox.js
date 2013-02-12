@@ -1,9 +1,9 @@
 var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, QuickInboxService) {
-    QuickInboxService.register();
-    var feeds = QuickInboxService.fetch_inbox_feeds().message;
 
+    $scope.feedbacks = QuickInboxService.fetch_inbox_feeds().message; 
+    /*
     var feedback = [
         {   "feedid": 285
           , "text": "Mathew is Kewl!"
@@ -22,21 +22,16 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             ]
         } 
     ];
-
+    */
+    /*
     this.fetch_inbox_feeds = function() {
-        return feeds;
+        return $scope.feeds;
     }
+    */
 
     this.say_hi = function() {
         alert("Mathew");
     }
-
-    //Broadcast Messages
-    $scope.$on('fetchInboxFeeds', function()  {
-        $scope.$apply(function() {
-            feeds = QuickInboxService.fetch_inbox_feeds().message;
-        })
-    });
 
     return $scope.AppCtrl = this;
 });
@@ -46,8 +41,6 @@ app.service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
     shared_service.message;
-    shared_service.pushdata;
-    shared_service.editdata;
 
     shared_service.fetch_inbox_feeds = function() { 
         feed_request();
