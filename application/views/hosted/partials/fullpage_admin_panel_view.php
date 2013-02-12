@@ -33,9 +33,9 @@
                                                 <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
-                                                    <div class="additional-info">
+                                                    <div class="additional-info" ng-show="feeds.subcontent">
                                                         <!-- Meta Data -->
-                                                        <div class="custom-meta-list grids" ng-repeat="metadata in feeds.metadata">
+                                                        <div class="custom-meta-list grids" ng-show="feeds.metadata" ng-repeat="metadata in feeds.metadata">
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">{{metadata.key}} : <span class="value">{{metadata.value}}</span></div>
                                                             </div>
@@ -43,7 +43,7 @@
                                                         <!-- End of Meta data -->
 
                                                         <!-- Media Data -->
-                                                        <div class="uploaded-images-and-links grids" ng-repeat="media in feeds.media">
+                                                        <div class="uploaded-images-and-links grids" ng-show="feeds.media" ng-repeat="media in feeds.media">
                                                             <div class="image-block {{media.type}}">
                                                                 <div class="delete-block">x</div>
                                                                 <div ng-switch-on="media.type">
