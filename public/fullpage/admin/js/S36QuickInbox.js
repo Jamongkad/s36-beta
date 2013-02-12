@@ -21,6 +21,14 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         });
     })();
 
+    $scope.publish = function(id) {
+        alert("Publishing! " + id);
+    }
+
+    $scope.feature = function(id) { 
+        alert("Featuring! " + id);
+    }
+
 });
 
 
