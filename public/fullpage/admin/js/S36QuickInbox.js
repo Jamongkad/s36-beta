@@ -27,8 +27,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
         return feeds;
     }
 
-
-
     this.say_hi = function() {
         alert("Mathew");
     }
@@ -57,6 +55,7 @@ app.service('QuickInboxService', function($rootScope) {
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
+          , timeout: 2000
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {
