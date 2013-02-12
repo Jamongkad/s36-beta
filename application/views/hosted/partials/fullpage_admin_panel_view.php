@@ -38,6 +38,7 @@
                                                         {{media.text}}
                                                     </p>
                                                     <div class="additional-info">
+                                                        <!-- Meta Data -->
                                                         <div class="custom-meta-list grids">
                                                             <div class="custom-meta">
                                                                 <div class="custom-meta-name">Service : <span class="value">Accomodation</span></div>
@@ -49,6 +50,9 @@
                                                                 <div class="custom-meta-name">Quality : <span class="value">Excellent</span></div>
                                                             </div>
                                                         </div>
+                                                        <!-- End of Meta data -->
+
+                                                        <!-- Media Data -->
                                                         <div class="uploaded-images-and-links grids">
                                                             <div class="image-block">
                                                                 <div class="delete-block">x</div>
@@ -76,6 +80,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- End of Media Data -->
+
                                                     </div>
                                                 </div>
                                             </div>
