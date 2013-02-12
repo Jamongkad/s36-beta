@@ -7,12 +7,10 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
-          , dataType: 'json'
-          , async: false
+          , dataType: 'json' 
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
                 $scope.feedbacks = data;
-                console.log($scope.feedbacks);
                 setTimeout(function() { feed_request(); }, 5000);
             }
         });
