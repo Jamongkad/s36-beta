@@ -28,6 +28,8 @@ return array(
             Array('id' => 1, 'name' => 'Mathew Wong', 'text' => 'Your service is awesome!') 
          ,  Array('id' => 2, 'name' => 'Irene Paredes', 'text' => 'Mystical Creatures') 
          ,  Array('id' => 3, 'name' => 'Meagan Wong', 'text' => 'HEY I LOVE ICECREAM :))') 
+         ,  Array('id' => 4, 'name' => 'Robert Mordido', 'text' => 'DOTA 2 Rocks.') 
+         ,  Array('id' => 5, 'name' => 'Leica Chang', 'text' => 'I am a cute futtie.') 
         );
     
         echo json_encode($data);
