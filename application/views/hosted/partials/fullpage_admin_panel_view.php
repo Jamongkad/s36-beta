@@ -35,7 +35,7 @@
                                                     <p>{{feeds.text}}</p>
                                                     <div class="additional-info">
                                                         <!-- Meta Data -->
-                                                        {{metadata_block(feeds.metadata)}}
+                                                        {{metadata_block(feeds)}}
                                                         <!-- End of Meta data -->
 
                                                         <!-- Media Data -->

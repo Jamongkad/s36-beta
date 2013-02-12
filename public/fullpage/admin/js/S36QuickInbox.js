@@ -31,7 +31,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     }
 
     $scope.metadata_block = function(data) {
-        if(!data) { 
+        if(data.hasOwnProperty('metadata')) { 
             for(var i=0; i<data.length; i++) {
                 console.log(data[i].key);
                 console.log(data[i].value);
