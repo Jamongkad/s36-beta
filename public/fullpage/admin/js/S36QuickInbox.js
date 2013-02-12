@@ -32,20 +32,16 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
     $scope.metadata_block = function(data) {
         if(data.hasOwnProperty('metadata')) { 
-            for(var i=0; i<data['metadata'].length; i++) {
-                console.log(data['metadata'][i].key);
-                console.log(data['metadata'][i].value);
-            }
-            /*
+            var meta = data['metadata'];
+
             var template = '<div class="custom-meta-list grids">'
-            for(var i=0; i<data.length; i++) {
+            for(var i=0; i < meta.length; i++) {
                 template =+ '<div class="custom-meta">'           
-                template =+ '<div class="custom-meta-name">' + data[i].key + ' : <span class="value">' + data[i].value + '</span></div>'
+                template =+ '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
                 template =+ '</div>'
             }
             template =+ '</div>';
             return template;
-            */
         }
     }
 
