@@ -52,6 +52,7 @@ app.service('QuickInboxService', function($rootScope) {
     shared_service.editdata;
 
     shared_service.fetch_inbox_feeds = function() { 
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -61,6 +62,20 @@ app.service('QuickInboxService', function($rootScope) {
                 shared_service.message = data;
             }
         });
+        */
+        (function poll() {
+            $.ajax({
+                type: 'GET'    
+              , dataType: 'json'
+              , complete: poll
+              , timeout: 5000
+              , async: false
+              , url: '/hosted/quick_inbox'
+              , success: function(data) {
+                    shared_service.message = data;
+                }
+            }); 
+        })();
     }
 
     shared_service.register_reply_message = function()  {
