@@ -75,7 +75,7 @@ app.service('QuickInboxService', function($rootScope) {
                         poll();
                     }
                 });  
-            }, 30000);
+            }, 2000);
         })();
     }
 
