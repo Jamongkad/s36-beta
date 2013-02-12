@@ -23,9 +23,11 @@ return array(
     },
 
     'GET /hosted/quick_inbox' => function() {
+
         $data = Array(
-            Array('id' => 286, 'name' => 'Mathew Wong', 'text' => 'Ted is a dick.') 
-         ,  Array('id' => 287, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
+            Array('id' => 1, 'name' => 'Mathew Wong', 'text' => 'Ted is a dick.') 
+         ,  Array('id' => 2, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
+         ,  Array('id' => 3, 'name' => 'Irene Paredes', 'text' => 'Ted is a dick.') 
         );
     
         echo json_encode($data);
