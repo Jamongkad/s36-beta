@@ -64,17 +64,18 @@ app.service('QuickInboxService', function($rootScope) {
         });
         */
         (function poll() {
-            $.ajax({
-                type: 'GET'    
-              , dataType: 'json'
-              , complete: poll
-              , timeout: 30000
-              , async: false
-              , url: '/hosted/quick_inbox'
-              , success: function(data) {
-                    shared_service.message = data;
-                }
-            }); 
+            setTimeout(function() {
+                $.ajax({
+                    type: 'GET'    
+                  , dataType: 'json'
+                  , async: false
+                  , url: '/hosted/quick_inbox'
+                  , success: function(data) {
+                        shared_service.message = data;
+                        poll();
+                    }
+                });  
+            }, 30000);
         })();
     }
 
