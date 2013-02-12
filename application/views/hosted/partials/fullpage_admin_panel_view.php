@@ -44,6 +44,17 @@
 
                                                         <!-- Media Data -->
                                                         <div class="uploaded-images-and-links grids" ng-repeat="media in feeds.media">
+                                                            <div class="image-block {{media.type}}">
+                                                                <div class="delete-block">x</div>
+                                                                <div ng-switch-on="media.type">
+                                                                    <div ng-switch-on="video" class="delete-block">x</div>
+                                                                    <span ng-switch-default></span>
+                                                                </div>
+                                                                <div class="the-thumb">
+                                                                    {{media.src}}
+                                                                </div>
+                                                            </div>
+                                                            <!--
                                                             <div class="image-block">
                                                                 <div class="delete-block">x</div>
                                                                 <div class="the-thumb">
@@ -57,6 +68,7 @@
                                                                     <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
                                                                 </div>
                                                             </div>
+                                                            -->
                                                         </div>
                                                         <!-- End of Media Data -->
 
