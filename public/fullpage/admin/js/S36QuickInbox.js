@@ -3,7 +3,11 @@ var app = angular.module("QuickInbox", []);
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
-    var poll_server = false;
+    var poll_server = true;
+
+    $(".widget-item").bind('mouseover', function() {
+        console.log("I am over you");
+    });
     
     if(poll_server) { 
         (function feed_request() { 
