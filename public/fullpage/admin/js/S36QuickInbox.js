@@ -16,11 +16,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
                     setTimeout(function() { 
-
-                        $(".widget-item").bind('mouseover', function() {
-                            console.log("I am over you");
-                        });
-
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
@@ -31,6 +26,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
     }
 
     $scope.publish = function(id) {
+        this.poll_server = false;
         alert("Publishing! " + id);
     }
 
