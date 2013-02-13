@@ -34,38 +34,6 @@
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
                                                     <span ng-bind-html-unsafe="info_block(feeds)"></span>
-                                                    <!--
-                                                    <div class="additional-info">
-                                                   
-                                                        <span ng-bind-html-unsafe="metadata_block(feeds)"></span>
-                                                    
-
-                                                     
-                                                        <div class="uploaded-images-and-links grids" ng-repeat="media in feeds.media">
-                                                            <div class="image-block {{media.type}}">
-                                                                <div class="delete-block">x</div>
-                                                                <div class="the-thumb">
-                                                                    {{media.src}}
-                                                                </div>
-                                                            </div>
-                                                       
-                                                            <div class="image-block">
-                                                                <div class="delete-block">x</div>
-                                                                <div class="the-thumb">
-                                                                    <img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="image-block video">
-                                                                <div class="delete-block">x</div>
-                                                                <div class="video-circle"></div>
-                                                                <div class="the-thumb">
-                                                                    <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
-                                                                </div>
-                                                            </div> 
-                                                        </div>
-                                                  
-                                                    </div>
-                                                    -->
                                                 </div>
                                             </div>
                                             <div class="widget-actions">

@@ -3,7 +3,6 @@ var app = angular.module("QuickInbox", []);
 app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
     $scope.feedbacks = [];
-    $scope.selection = [];
 
     (function feed_request() { 
         $.ajax({
@@ -16,6 +15,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                 $scope.$apply($scope.feedbacks);
                 setTimeout(function() { 
                     feed_request();  
+                    QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
                 }, 10000);
             }
@@ -72,7 +72,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" mid="' + meta[i].mid + '" delete>x</div>';
+                template += '<div class="delete-block" mid="' + meta[i].mid + '">x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
@@ -96,20 +96,11 @@ app.service('QuickInboxService', function($rootScope) {
     var shared_service = {};
     shared_service.message;
 
-    shared_service.fetch_inbox_feeds = function(cb) { 
-         
+    shared_service.info_block_behavior = function(cb) { 
+        $('.delete-block').bind('click', function(e) {
+            alert('Delete Media Id: ' $(this).attr('mid'));
+        })
     }
  
     return shared_service;
 });
-
-app.directive('delete', function() {
-    return {
-        restrict: "A"     
-      , link: function(scope, element, attrs) {
-           $(element).bind('click', function(e) {
-               alert($(this).attr('mid'));
-           })
-        }
-    }    
-})
