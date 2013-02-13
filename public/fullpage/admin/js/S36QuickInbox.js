@@ -24,11 +24,12 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                 }
             });
         }
+        $('.widget-item').bind('mouseover', function() { console.log('Mathew Rocks'); });
     }
 
     feed_request();
 
-    $('.widget-item').bind('mouseover', function() { console.log('Mathew Rocks'); });
+
 
 
     $scope.publish = function(id) {
