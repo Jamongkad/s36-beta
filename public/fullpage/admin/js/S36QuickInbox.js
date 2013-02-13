@@ -45,6 +45,11 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         }
     }
 
+    $scope.info_block = function(data) {
+        console.log(data['subcontent']);
+        return data['subcontent'];
+    }
+
 });
 
 

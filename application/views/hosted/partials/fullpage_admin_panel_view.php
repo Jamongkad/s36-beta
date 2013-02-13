@@ -33,6 +33,7 @@
                                                 <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
+                                                    <span ng-bind-html-unsafe="info_block(feeds)"></span>
                                                     <div class="additional-info">
                                                         <!-- Meta Data -->
                                                         <span ng-bind-html-unsafe="metadata_block(feeds)"></span>
