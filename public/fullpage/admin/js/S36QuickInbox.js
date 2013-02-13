@@ -30,6 +30,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
             console.log("inbox polling is stopping");
         }, function() {
             feed_request();
+            poll_server = true;      
             console.log("inbox polling is starting");
         });
     }
