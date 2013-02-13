@@ -34,6 +34,7 @@
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
                                                     <span ng-bind-html-unsafe="info_block(feeds)"></span>
+                                                    <!--
                                                     <div class="additional-info">
                                                         <!-- Meta Data -->
                                                         <span ng-bind-html-unsafe="metadata_block(feeds)"></span>
@@ -47,7 +48,7 @@
                                                                     {{media.src}}
                                                                 </div>
                                                             </div>
-                                                            <!--
+                                                       
                                                             <div class="image-block">
                                                                 <div class="delete-block">x</div>
                                                                 <div class="the-thumb">
@@ -60,12 +61,11 @@
                                                                 <div class="the-thumb">
                                                                     <img src="fullpage/admin/img/sample-inbox-image.jpg" width="100%" />
                                                                 </div>
-                                                            </div>
-                                                            -->
+                                                            </div> 
                                                         </div>
                                                         <!-- End of Media Data -->
-
                                                     </div>
+                                                    -->
                                                 </div>
                                             </div>
                                             <div class="widget-actions">

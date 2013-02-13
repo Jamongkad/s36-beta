@@ -46,9 +46,33 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
     }
 
     $scope.info_block = function(data) {
-        console.log(data['subcontent']);
-        return data['subcontent'];
+
+        var template, subcontent_check = data['subcontent']; ;
+
+        if(subcontent_check) {
+            template = '<div class="additional-info">';            
+            template += this.metadata_block(data);
+            template += '</div>';
+        }
+
+        return template;
     }
+
+    this.metadata_block = function(data) {
+        if(data.hasOwnProperty('metadata')) { 
+            var meta = data['metadata'];
+
+            var template = '<div class="custom-meta-list grids">'
+            for(var i=0; i < meta.length; i++) {
+                template += '<div class="custom-meta">'           
+                template += '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
+                template += '</div>'
+            }
+            template += '</div>';
+            return template;
+        }
+    }
+
 
 });
 
