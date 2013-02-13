@@ -63,7 +63,7 @@ return array(
                   , 'name' => 'Kennwel Labarda'
                   , 'text' => 'I love raping people...with my mind.') 
          ,  Array(  'id' => 8
-                  , 'subcontent' => true
+                  , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
         );
