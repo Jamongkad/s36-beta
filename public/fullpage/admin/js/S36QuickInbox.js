@@ -1,6 +1,6 @@
 var app = angular.module("QuickInbox", []);
 
-app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
+app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.feedbacks = [];
     var poll_server = true;
@@ -124,7 +124,7 @@ app.directive('publish', function() {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {
+            $(element).bind('click', function(e) {  
                 console.log('Boobies');
             })
         }
