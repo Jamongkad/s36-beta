@@ -34,6 +34,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
     $scope.feature = function(id) { 
         poll_server = true;
+        feed_request();
         alert("Featuring! " + id);
     }
 
