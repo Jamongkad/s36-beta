@@ -16,7 +16,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
                     setTimeout(function() { 
-                        console.log(poll_server);
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
@@ -115,7 +114,7 @@ app.service('QuickInboxService', function($rootScope) {
     shared_service.message;
 
     shared_service.info_block_behavior = function(cb) { 
-        $('.delete-block').bind('click', function(e) {
+        $('.delete-block').unbind('click.delete-block').bind('click.delete-block', function(e) {
             console.log('Delete Media Id: ' + $(this).attr('mid'));
         })
     }
