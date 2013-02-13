@@ -1,4 +1,4 @@
-var app = angular.module("QuickInbox", []);
+var app = angular.module("QuickInbox", ['AdminDirectives']);
 
 app.controller("AppCtrl", function($scope, QuickInboxService) {
 
