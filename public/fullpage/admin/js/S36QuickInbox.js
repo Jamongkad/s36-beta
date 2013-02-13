@@ -15,7 +15,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                 $scope.$apply($scope.feedbacks);
                 setTimeout(function() { 
                     feed_request();  
-                    //QuickInboxService.info_block_behavior();
+                    QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
                 }, 10000);
             }
@@ -72,7 +72,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" delete ng-click="delete_media(' + meta[i].mid + ')" mid="' + meta[i].mid + '">x</div>';
+                template += '<div class="delete-block" mid="' + meta[i].mid + '">x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
@@ -80,7 +80,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
             }
             template += '</div>';
              
-            return $compile(template)(scope);
+            return template;
         }
         
     }
