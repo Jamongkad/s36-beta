@@ -24,13 +24,17 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                 }
             });
         }
-        $('.widget-item').bind('mouseover', function() { poll_server = false});
+
+        $('.widget-item').hover(function() {
+            poll_server = false;      
+            console.log("inbox polling is stopping");
+        }, function() {
+            feed_request();
+            console.log("inbox polling is starting");
+        });
     }
 
     feed_request();
-
-
-
 
     $scope.publish = function(id) {
         poll_server = false;
