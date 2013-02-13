@@ -2,15 +2,6 @@ var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
 
-    $('.widget-item').hover(function() {
-        poll_server = false;      
-        console.log("inbox polling is stopping");
-    }, function() {
-        poll_server = true;      
-        feed_request();
-        console.log("inbox polling is starting");
-    });
-
     $scope.feedbacks = [];
     var poll_server = true;
  
@@ -33,6 +24,17 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                 }
             });
         }
+
+        $('.widget-item').hover(function() {
+            poll_server = false;      
+            console.log("inbox polling is stopping");
+            console.log($(this));
+        }, function() {
+            poll_server = true;      
+            feed_request();
+            console.log("inbox polling is starting");
+        });
+
     }
 
     feed_request();
