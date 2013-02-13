@@ -102,6 +102,7 @@
 <?= HTML::script('/fullpage/admin/js/jquery.mousewheel.min.js'); ?>
 <?= HTML::script('/fullpage/admin/js/jquery.scroll.js'); ?>
 <?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
+<?= HTML::script('/fullpage/admin/directives/S36QuickInboxDirectives.js')?>
 <?= HTML::script('/fullpage/admin/js/S36QuickInbox.js')?>
 <?php endif; ?> 
 </head>

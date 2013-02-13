@@ -119,14 +119,3 @@ app.service('QuickInboxService', function($rootScope) {
  
     return shared_service;
 });
-
-app.directive('publish', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                console.log('Boobies');
-            })
-        }
-    }    
-})
