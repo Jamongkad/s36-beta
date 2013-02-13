@@ -2,6 +2,8 @@ var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
+    var self = this;
+
     $scope.feedbacks = [];
     $scope.selection = [];
 
@@ -36,8 +38,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
         if(subcontent_check) {
             template = '<div class="additional-info">';            
-            template += this.metadata_block(data);
-            template += this.media_block(data);
+            template += metadata_block(data);
+            template += media_block(data);
             template += '</div>';
         }
 
