@@ -81,7 +81,7 @@
                                                     <div class="the-date">November 12, 2012</div>
                                                     <div class="the-time">10:54:11 am</div>
                                                     <div class="the-delete">
-                                                        <input type="button" class="widget-icon delete" />
+                                                        <input type="button" delete_media mid="10" class="widget-icon delete" />
                                                     </div>
                                                 </div>
                                             </div>
