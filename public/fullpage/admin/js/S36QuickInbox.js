@@ -72,7 +72,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" ng-click="delete_media(' + meta[i].mid + ')">x</div>';
+                template += '<div class="delete-block" mid="' + meta[i].mid + '" delete_media>x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
@@ -102,3 +102,14 @@ app.service('QuickInboxService', function($rootScope) {
  
     return shared_service;
 });
+
+app.directive('delete_media', function() {
+    return {
+        restrict: "A"     
+      , link: function(scope, element, attrs) {
+           $(element).bind('click', function(e) {
+               alert($(this).attr('mid'));
+           })
+        }
+    }    
+})
