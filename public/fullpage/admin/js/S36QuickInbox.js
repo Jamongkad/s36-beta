@@ -4,11 +4,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
     $scope.feedbacks = [];
     var poll_server = true;
-
-    $(".widget-item").bind('mouseover', function() {
-        console.log("I am over you");
-    });
-    
+ 
     if(poll_server) { 
         (function feed_request() { 
             $.ajax({
@@ -20,6 +16,11 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
                     setTimeout(function() { 
+
+                        $(".widget-item").bind('mouseover', function() {
+                            console.log("I am over you");
+                        });
+
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
