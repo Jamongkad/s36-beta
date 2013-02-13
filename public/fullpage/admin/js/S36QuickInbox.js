@@ -98,7 +98,7 @@ app.service('QuickInboxService', function($rootScope) {
 
     shared_service.info_block_behavior = function(cb) { 
         $('.delete-block').bind('click', function(e) {
-            alert('Delete Media Id: ' $(this).attr('mid'));
+            alert('Delete Media Id: ' + $(this).attr('mid'));
         })
     }
  
