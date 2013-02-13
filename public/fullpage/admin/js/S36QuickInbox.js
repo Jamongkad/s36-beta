@@ -24,12 +24,12 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
             });
         }
 
-        $('#quickInboxWidget').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
+        $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
             console.log("inbox polling is stopping");
         });
 
-        $('#quickInboxWidget').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
+        $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
             feed_request();
             console.log("inbox polling is starting");
