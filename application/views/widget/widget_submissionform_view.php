@@ -240,7 +240,7 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                         </div>
                         <div class="two-clm-in clear">
                             <div class="clm one">
-                                <input type="text" id="your_city" name="city" class="registration-input" title="City" />
+                                <input maxlength='20' type="text" id="your_city" name="city" class="registration-input" title="City" />
                             </div>
                             <div class="clm two">
                                 <select class="registration-input default-text" name="country" id="your_country" title="Country">
