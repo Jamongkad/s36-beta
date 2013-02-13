@@ -5,7 +5,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
     $scope.feedbacks = [];
     var poll_server = true;
  
-    function feed_request() { 
+    (function feed_request() { 
         if(poll_server) { 
             $.ajax({
                 type: 'GET'    
@@ -35,9 +35,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
             console.log("inbox polling is starting");
         });
 
-    }
-
-    feed_request();
+    })();
 
     $scope.publish = function(id) {
         console.log("Publishing! " + id);
