@@ -30,21 +30,6 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         alert("Featuring! " + id);
     }
 
-    $scope.metadata_block = function(data) {
-        if(data.hasOwnProperty('metadata')) { 
-            var meta = data['metadata'];
-
-            var template = '<div class="custom-meta-list grids">'
-            for(var i=0; i < meta.length; i++) {
-                template += '<div class="custom-meta">'           
-                template += '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
-                template += '</div>'
-            }
-            template += '</div>';
-            return template;
-        }
-    }
-
     $scope.info_block = function(data) {
 
         var template, subcontent_check = data['subcontent']; ;
@@ -52,6 +37,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         if(subcontent_check) {
             template = '<div class="additional-info">';            
             template += this.metadata_block(data);
+            template += this.media_block(data);
             template += '</div>';
         }
 
@@ -73,6 +59,29 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         }
     }
 
+    this.media_block = function(data) {
+        if(data.hasOwnProperty('media')) { 
+            var meta = data['media'];
+
+            var template = '<div class="uploaded-images-and-links grids">';
+            for(var i=0; i < meta.length; i++) {
+
+                template += '<div class="image-block ' + meta[i].type +'">';
+
+                if(meta[i].type == 'video') {
+                    template += '<div class="video-circle"></div>';
+                }
+               
+                template += '<div class="delete-block">x</div>';
+                template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
+                template += '</div>';
+
+            }
+            template += '</div>';
+            return template;
+        }
+        
+    }
 
 });
 
