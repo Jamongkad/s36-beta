@@ -33,6 +33,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
             feed_request();
             console.log("inbox polling is starting");
         });
+        $('.widget-item').off('mouseenter mouseleave');
     }
 
     feed_request();
