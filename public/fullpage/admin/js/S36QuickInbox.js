@@ -3,7 +3,7 @@ var app = angular.module("QuickInbox", []);
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
-    var poll_server = true;
+    var poll_server = false;
     
     if(poll_server) { 
         (function feed_request() { 
