@@ -1,3 +1,15 @@
+var myModule = angular.module("myModule", []);
+myModule.directive('delete', function() {
+    return {
+       restrict: 'A'     
+     , link: function(scope, element, attrs) {
+           $(element).click(function() {
+               alert("Fuck Yes");
+           })
+       }
+    }    
+})
+
 var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
@@ -105,15 +117,3 @@ app.service('QuickInboxService', function($rootScope) {
  
     return shared_service;
 });
-
-var myModule = angular.module("myModule", []);
-myModule.directive('delete', function() {
-    return {
-       restrict: 'A'     
-     , link: function(scope, element, attrs) {
-           $(element).click(function() {
-               alert("Fuck Yes");
-           })
-       }
-    }    
-})
