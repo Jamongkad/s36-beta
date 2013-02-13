@@ -72,14 +72,14 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" ng-click="delete_media(' + meta[i].mid + ')" mid="' + meta[i].mid + '">x</div>';
+                template += '<div class="delete-block" delete ng-click="delete_media(' + meta[i].mid + ')" mid="' + meta[i].mid + '">x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
 
             }
             template += '</div>';
-            console.log(angular.bootstrap(template, ['QuickInbox']));
+            console.log(angular.bootstrap(template, ['myModule']));
             return template;
         }
         
@@ -106,3 +106,14 @@ app.service('QuickInboxService', function($rootScope) {
     return shared_service;
 });
 
+var myModule = angular.module("myModule", []);
+myModule.directive('delete', function() {
+    return {
+       restrict: 'A'     
+     , link: function(scope, element, attrs) {
+           $(element).click(function() {
+               alert("Fuck Yes");
+           })
+       }
+    }    
+})
