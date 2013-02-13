@@ -36,11 +36,11 @@
                                                     <span ng-bind-html-unsafe="info_block(feeds)"></span>
                                                     <!--
                                                     <div class="additional-info">
-                                                        <!-- Meta Data -->
+                                                   
                                                         <span ng-bind-html-unsafe="metadata_block(feeds)"></span>
-                                                        <!-- End of Meta data -->
+                                                    
 
-                                                        <!-- Media Data -->
+                                                     
                                                         <div class="uploaded-images-and-links grids" ng-repeat="media in feeds.media">
                                                             <div class="image-block {{media.type}}">
                                                                 <div class="delete-block">x</div>
@@ -63,7 +63,7 @@
                                                                 </div>
                                                             </div> 
                                                         </div>
-                                                        <!-- End of Media Data -->
+                                                  
                                                     </div>
                                                     -->
                                                 </div>
