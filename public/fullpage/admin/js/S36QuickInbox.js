@@ -24,7 +24,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                 }
             });
         }
-        $('.widget-item').bind('mouseover', function() { console.log('Mathew Rocks'); });
+        $('.widget-item').bind('mouseover', function() { poll_server = false});
     }
 
     feed_request();
