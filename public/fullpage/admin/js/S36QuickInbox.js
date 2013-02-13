@@ -103,7 +103,7 @@ app.service('QuickInboxService', function($rootScope) {
     return shared_service;
 });
 
-app.directive('delete_media', function() {
+app.directive('delete', function() {
     return {
         restrict: "A"     
       , link: function(scope, element, attrs) {
