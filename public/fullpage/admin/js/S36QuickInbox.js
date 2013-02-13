@@ -79,7 +79,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
             }
             template += '</div>';
-            return angular.bootstrap(template, $scope);
+            angular.bootstrap(template, ['QuickInbox']);
+            return template;
         }
         
     }
@@ -104,3 +105,4 @@ app.service('QuickInboxService', function($rootScope) {
  
     return shared_service;
 });
+
