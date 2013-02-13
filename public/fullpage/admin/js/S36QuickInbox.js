@@ -1,15 +1,3 @@
-var myModule = angular.module("myModule", []);
-myModule.directive('delete', function() {
-    return {
-       restrict: 'A'     
-     , link: function(scope, element, attrs) {
-           $(element).click(function() {
-               alert("Fuck Yes");
-           })
-       }
-    }    
-})
-
 var app = angular.module("QuickInbox", []);
 
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
@@ -91,8 +79,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
             }
             template += '</div>';
-            console.log(angular.bootstrap(template, ['myModule']));
-            return template;
+             
+            return $compile(template)(scope);
         }
         
     }
