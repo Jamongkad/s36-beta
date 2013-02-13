@@ -5,8 +5,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
     $scope.feedbacks = [];
     var poll_server = true;
  
-    if(poll_server) { 
-        (function feed_request() { 
+    (function feed_request() { 
+        if(poll_server) { 
             $.ajax({
                 type: 'GET'    
               , dataType: 'json'
@@ -23,8 +23,9 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
                     }, 10000);
                 }
             });
-        })();
-    }
+        }
+    })();
+
 
     $scope.publish = function(id) {
         poll_server = false;
