@@ -38,18 +38,18 @@
                                             </div>
                                             <div class="widget-actions">
                                                 <div class="widget-icons">
-                                                    <input type="button" class="widget-icon check" ng-click="publish(feeds.id)" />
-                                                    <input type="button" class="widget-icon feature" ng-click="feature(feeds.id)"/>
-                                                    <input type="button" class="widget-icon reply" />
-                                                    <input type="button" class="widget-icon contact" />
-                                                    <input type="button" class="widget-icon save" />
-                                                    <input type="button" class="widget-icon flag" />
+                                                    <input type="button" class="widget-icon check" publish ng-click="publish(feeds.id)" />
+                                                    <input type="button" class="widget-icon feature" feature ng-click="feature(feeds.id)"/>
+                                                    <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
+                                                    <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
+                                                    <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
+                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
                                                 </div>
                                                 <div class="widget-date">
                                                     <div class="the-date">November 12, 2012</div>
                                                     <div class="the-time">10:54:11 am</div>
                                                     <div class="the-delete">
-                                                        <input type="button" delete mid="10" class="widget-icon delete" />
+                                                        <input type="button" class="widget-icon delete" delete ng-click="delete(feeds.id)"/>
                                                     </div>
                                                 </div>
                                             </div>

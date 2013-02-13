@@ -3,24 +3,27 @@ var app = angular.module("QuickInbox", []);
 app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
-
-    (function feed_request() { 
-        $.ajax({
-            type: 'GET'    
-          , dataType: 'json'
-          , async: false
-          , url: '/hosted/quick_inbox'
-          , success: function(data) {  
-                $scope.feedbacks = data;
-                $scope.$apply($scope.feedbacks);
-                setTimeout(function() { 
-                    feed_request();  
-                    QuickInboxService.info_block_behavior();
-                    $('.widget-list').jScrollPane();
-                }, 10000);
-            }
-        });
-    })();
+    var poll_server = True;
+    
+    if(poll_server) { 
+        (function feed_request() { 
+            $.ajax({
+                type: 'GET'    
+              , dataType: 'json'
+              , async: false
+              , url: '/hosted/quick_inbox'
+              , success: function(data) {  
+                    $scope.feedbacks = data;
+                    $scope.$apply($scope.feedbacks);
+                    setTimeout(function() { 
+                        feed_request();  
+                        QuickInboxService.info_block_behavior();
+                        $('.widget-list').jScrollPane();
+                    }, 10000);
+                }
+            });
+        })();
+    }
 
     $scope.publish = function(id) {
         alert("Publishing! " + id);
@@ -28,6 +31,10 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
     $scope.feature = function(id) { 
         alert("Featuring! " + id);
+    }
+
+    $scope.delete = function(id) {
+        alert('Deleting Feedback id of ' + id);
     }
 
     $scope.info_block = function(data) {
@@ -85,12 +92,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
         
     }
 
-    $scope.delete_media = function(id) {
-        alert('Deleting Media id of ' + id);
-    }
-
 });
-
 
 app.service('QuickInboxService', function($rootScope) {
     
