@@ -72,7 +72,8 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block">x</div>';
+                template += '<div class="delete-block" ng-click="delete_media(' + meta[i].mid + ')">x</div>';
+                //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
 
@@ -81,6 +82,10 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
             return template;
         }
         
+    }
+
+    $scope.delete_media = function(id) {
+        alert('Deleting Media id of ' + id);
     }
 
 });

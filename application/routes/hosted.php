@@ -31,7 +31,7 @@ return array(
                   , 'subcontent' => true
                   , 'media' => Array(
                         Array('mid' => 10, 'type' => 'video', 'src' => 'youtube')     
-                      , Array('mid' => 12, 'type' => 'video', 'src' => 'picpic')     
+                      , Array('mid' => 12, 'type' => 'pic', 'src' => 'picpic')     
                   ) 
                   , 'metadata' => Array(
                         Array('mtid' => 10, 'key' => 'Had sex recently', 'value' => 'yes')     
