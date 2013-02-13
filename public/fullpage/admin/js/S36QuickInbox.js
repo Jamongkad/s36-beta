@@ -28,7 +28,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
         $('.widget-item').hover(function() {
             poll_server = false;      
             console.log("inbox polling is stopping");
-            console.log($(this));
+            console.log($(this).off('mouseenter mouseleave'));
         }, function() {
             poll_server = true;      
             feed_request();
