@@ -36,15 +36,15 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
 
         if(subcontent_check) {
             template = '<div class="additional-info">';            
-            template += this.metadata_block(data);
-            template += this.media_block(data);
+            template += $scope.metadata_block(data);
+            template += $scope.media_block(data);
             template += '</div>';
         }
 
         return template;
     }
 
-    this.metadata_block = function(data) {
+    $scope.metadata_block = function(data) {
         if(data.hasOwnProperty('metadata')) { 
             var meta = data['metadata'];
 
@@ -59,7 +59,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, QuickInboxService) {
         }
     }
 
-    this.media_block = function(data) {
+    $scope.media_block = function(data) {
         if(data.hasOwnProperty('media')) { 
             var meta = data['media'];
 
