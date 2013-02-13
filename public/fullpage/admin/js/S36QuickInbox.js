@@ -79,7 +79,7 @@ app.controller("AppCtrl", function($scope, $http, $timeout, $compile, QuickInbox
 
             }
             template += '</div>';
-            angular.bootstrap(template, ['QuickInbox']);
+            console.log(angular.bootstrap(template, ['QuickInbox']));
             return template;
         }
         
