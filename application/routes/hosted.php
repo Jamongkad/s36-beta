@@ -35,9 +35,9 @@ return array(
                   ) 
                   , 'metadata' => Array(
                         Array('mtid' => 10, 'key' => 'Had sex recently', 'value' => 'yes')     
-                      //, Array('mtid' => 12, 'key' => 'Spa?', 'value' => 'Aww Yeahh')     
-                      //, Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
-                  ))
+                      , Array('mtid' => 12, 'key' => 'Spa?', 'value' => 'Aww Yeahh')     
+                      , Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
+                  )) 
          ,  Array(  'id' => 2
                   , 'subcontent' => false
                   , 'name' => 'Irene Paredes'
