@@ -1,4 +1,4 @@
-var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices', 'ngSanitize']);
+var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices']);
 
 app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
