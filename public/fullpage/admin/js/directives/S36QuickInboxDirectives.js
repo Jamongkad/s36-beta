@@ -1,4 +1,4 @@
-angular.module('AdminDirectives', [])
+angular.module('S36QuickInboxDirectives', [])
 .directive('publish', function() {
     return {
         restrict: 'A'     

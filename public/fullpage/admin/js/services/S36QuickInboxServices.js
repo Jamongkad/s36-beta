@@ -1,4 +1,5 @@
-angular.service('QuickInboxService', function($rootScope) {
+angular.module('S36QuickInboxServices', [])
+.service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
 
