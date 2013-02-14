@@ -5,7 +5,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     $scope.feedbacks = [];
     var poll_server = true;
  
-    (function feed_request() { 
+    function feed_request() { 
         if(poll_server) { 
             $.ajax({
                 type: 'GET'    
@@ -38,7 +38,9 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             feed_request();
             //console.log("inbox polling is stopping");
         });
-    })();
+    };
+
+    feed_request();
 
     $scope.publish = function(id) {
         console.log("Publishing! " + id);
