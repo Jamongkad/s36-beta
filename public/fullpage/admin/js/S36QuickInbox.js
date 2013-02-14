@@ -39,7 +39,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                 feed_request();  
             }, 15000);
             */
-            feed_request();  
+            //feed_request();  
         });
     }
 
