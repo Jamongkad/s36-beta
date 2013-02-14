@@ -5,7 +5,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     $scope.feedbacks = [];
     var poll_server = true;
  
-    function feed_request() { 
+    (function feed_request() { 
         if(poll_server) { 
             $.ajax({
                 type: 'GET'    
@@ -15,15 +15,17 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
+                    /*
                     QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
-                    /*
+                    */
+ 
                     setTimeout(function() { 
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
                     }, 10000);
-                    */
+    
                 }
             });
         }
@@ -38,9 +40,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             feed_request();
             //console.log("inbox polling is stopping");
         });
-    };
-
-    feed_request();
+    })();
 
     $scope.publish = function(id) {
         console.log("Publishing! " + id);
