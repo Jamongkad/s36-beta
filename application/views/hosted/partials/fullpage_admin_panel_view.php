@@ -44,10 +44,10 @@
                                                     <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
                                                     <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
                                                     <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
+                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
                                                     -->
                                                     <input type="button" class="small-button publish" value="Publish" />
                                                     <input type="button" class="small-button feature" value="Feature" />
-                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
                                                 </div>
                                                 <div class="widget-date">
                                                     <div class="the-date">November 12, 2012</div>
