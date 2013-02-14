@@ -5,7 +5,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     $scope.feedbacks = [];
     var poll_server = true;
  
-    (function feed_request() { 
+    function feed_request() { 
         if(poll_server) { 
             $.ajax({
                 type: 'GET'    
@@ -41,7 +41,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             */
             feed_request();  
         });
-    })();
+    }
 
     $scope.get_feedback = function() {
         return feed_request();
