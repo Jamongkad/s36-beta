@@ -15,19 +15,22 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
+                    /*
                     QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
+                    */
+                    setTimeout(function() { 
+                        feed_request();  
+                        QuickInboxService.info_block_behavior();
+                        $('.widget-list').jScrollPane();
+                    }, 10000);
                 }
             });
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = true;      
-            setTimeout(function() { 
-                feed_request();  
-                QuickInboxService.info_block_behavior();
-                $('.widget-list').jScrollPane();
-            }, 10000);
+            feed_request();
             console.log("inbox polling is starting");
         });
 
