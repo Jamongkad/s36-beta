@@ -36,7 +36,9 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            console.log(element);
+            scope.$watch(attrs.angularHtmlBind, function() {
+                $compile(element.contents())(scope);
+            })
         }
     }     
 })
