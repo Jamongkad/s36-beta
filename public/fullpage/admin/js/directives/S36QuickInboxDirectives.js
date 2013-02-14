@@ -4,7 +4,7 @@ angular.module('AdminDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log(scope);
+                console.log(scope.published);
                 console.log('Boobies');
             })
         }

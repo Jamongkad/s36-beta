@@ -40,6 +40,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     })();
 
     $scope.publish = function(id) {
+        $scope.published = true;
         console.log("Publishing! " + id);
     }
 
