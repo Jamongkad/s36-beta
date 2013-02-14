@@ -13,6 +13,26 @@
 #fullpage_desc.editable:hover{ background-color: #f4f4f4; cursor: pointer; }
 #fullpage_desc_textbox{ display: none; width: 97%; font-size: 12px; }
 .last_name{ display: none; }
+.undo_flag{
+    color:#455b61;
+    background:url(/fullpage/layout/timeline/img/ico-flag.png) no-repeat;
+    background-position:center left;
+    padding-left:17px;
+    margin-bottom:3px;
+    display:inline-block;
+    padding-top:2px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.undo_vote{
+    color:#455b61;
+    cursor: pointer;
+    font-size: 11px;
+}
+.flag-as.hidden, 
+.undo_flag.hidden,
+.vote-action.hidden,
+.undo_vote.hidden { display: none; }
 
 
 /* admin panel */

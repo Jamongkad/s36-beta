@@ -239,7 +239,7 @@
                                     <div class="layout">
                                         <h3 class="layout-name">Timeline</h3>
                                         <div class="layout-thumb">
-                                            <img src="fullpage/admin/img/layout-thumb-traditional.jpg" />
+                                            <img src="fullpage/admin/img/layout-thumb-timeline.jpg" />
                                         </div>
                                     </div>
                                 </li>
@@ -247,7 +247,7 @@
                                     <div class="layout">
                                         <h3 class="layout-name">Treble</h3>
                                         <div class="layout-thumb">
-                                            <img src="fullpage/admin/img/layout-thumb-traditional.jpg" />
+                                            <img src="fullpage/admin/img/layout-thumb-treble.jpg" />
                                         </div>
                                     </div>
                                 </li>

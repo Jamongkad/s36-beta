@@ -77,9 +77,10 @@ return array(
     },
     
     'POST /update_panel_settings' => function() use($hosted_settings, $user){
-        $input = Input::get();
         // if the user is not logged in, return error msg.
-        if( ! is_object($user) ) return 'You should be logged in to do this action'; 
+        if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
+        $input = Input::get();
         $hosted_settings->update_panel_settings($user->companyid, (object)$input);
         return json_encode($input);
     },
@@ -112,8 +113,8 @@ return array(
     
     'POST /feedback_action/(:any)' => function($action) use ($feedback) {
         
-        $data = new Feedback\Entities\FeedbackActionsData( (object)Input::get() );
-        $feedback->exec_feedback_action($action, $data);
+        $fd = new Feedback\Entities\FeedbackActionsData( $action, (object)Input::get() );
+        if( ! is_null($fd->data) ) $feedback->exec_feedback_action($fd->data);
         
     },
         

@@ -185,12 +185,12 @@ var S36FullpageAdmin = function(layoutObj){
                 var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
                 if( image_types.indexOf( data.files[0].type ) == -1 ){
                     var error = ['Please select an image file'];
-                    self.display_error_mes(error);
+                    Helpers.display_error_mes(error);
                     return false;
                 }
                 if( data.files[0].size > 2000000 ){
-                    var error = ['Changing cover image..'];
-                    self.display_error_mes(error);
+                    var error = ['Please upload an image not greater than 2mb in filesize'];
+                    Helpers.display_error_mes(error);
                     return false;
                 }
                 data.submit();
@@ -308,12 +308,11 @@ var S36FullpageAdmin = function(layoutObj){
     || Cover Image changer
     ==========================================*/
     this.change_cover_image = function(data){
-        console.log(data);
         $('<img />')
             .attr({'basename':data.name,'src':data.url})
             .load(function(e){
                 self.make_cover_undraggable(false);
-                $('#coverPhoto img').attr({'basename':data.name,'src':data.url,width:'100%'});
+                $('#coverPhoto img').attr({'basename':data.name,'src':data.url,width:'100%'}).css('top', '0px');
                 $('#saveCoverButton').show();
                 $('#changeCoverButton').hide();
                 self.hide_notification();
@@ -646,17 +645,18 @@ var PanelAutoSaver = new function(layoutObj){
             async: false,
             url: '/update_panel_settings',
             type: 'post',
-            dataType: 'json',
+            //dataType: 'json',
             data: PanelAutoSaver.final_data,
             success: function(result){
-                if(!undefined != result.theme_name){
-                    layoutChanged = true;
-                }
-                /*
-                if( $.trim(result) != '' ){
+                if( $.trim(result) == 'You should be logged in to do this action' ){
                     PanelAutoSaver.S36FullpageAdmin.hide_notification();
                     Helpers.display_error_mes( [result] );
-                }*/
+                }
+                
+                result = $.parseJSON(result);
+                if(undefined != result.theme_name){
+                    layoutChanged = true;
+                }
             }
         });
         

@@ -66,7 +66,7 @@
 <?= HTML::style('/fullpage/common/css/master.css'); ?>
 <?= HTML::style('/fullpage/common/css/flags.css'); ?>
 <?= HTML::style('/fullpage/common/css/grids.css'); ?>
-<?= HTML::style('/fullpage/common/css/override.css'); ?>
+<? // override.css is moved to application/views/hosted/hosted_feedback_fullpage_view.php. ?>
 <?= HTML::style('/fullpage/common/css/s36_client_style.css'); ?>
 
 <?= HTML::script('/fullpage/common/js/S36FullpageCommon.js'); ?>

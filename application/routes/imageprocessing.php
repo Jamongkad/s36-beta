@@ -10,7 +10,7 @@ return array(
         
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
-            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/coverphoto/'
+            , 'upload_dir' => Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/'
             , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
             , 'param_name' => 'files'
             , 'width'      => 800
@@ -19,7 +19,7 @@ return array(
 
         new JqueryFileUploader($options); 
     }),
-
+    
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_avatar'
@@ -42,23 +42,36 @@ return array(
     }),
     
     // saving of cover photo in db and deletion of old cover photo.
-    'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {        
+    'POST /imageprocessing/savecoverphoto' => function() use ($company, $user) {
+        
         // if the user is not logged in, return error msg.
         if( ! is_object($user) ) return 'You should be logged in to do this action';
+        
         $data       = Input::all();
+        $tmp_dir    = Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/';
         $file_name  = 'coverphoto_'.$user->companyid.'.jpg'; //set the final filename
-        $orig_path  = Config::get('application.uploaded_images_dir').'/coverphoto/'.$data['name'];
+        $orig_path  = $tmp_dir . $data['name'];
         $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
-
+        
         if(file_exists($final_path)){ unlink($final_path); }
-        exec("convert {$orig_path} {$final_path}"); //convert and rename uploaded image using image magick
-        if(file_exists($orig_path)){ unlink($orig_path); }
+        exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
+        
+        // delete the temporary uploads.
+        $tmp_uploads = scandir( $tmp_dir );
+        if( count($tmp_uploads) ){
+            foreach( $tmp_uploads as $v ){
+                if( $v == '.' || $v == '..' ) continue;
+                unlink( $tmp_dir . $v );
+            }
+        }
+        
         //save to database
         $company->update_coverphoto(array(
             'company_id'    =>$user->companyid,
             'file_name'     =>$file_name,
             'top'           =>$data['top']
         ));
+        
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
