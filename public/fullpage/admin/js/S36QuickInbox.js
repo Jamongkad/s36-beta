@@ -4,7 +4,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.feedbacks = [];
     var poll_server = true;
- 
+    /* 
     function feed_request() { 
         if(poll_server) {
         }
@@ -15,16 +15,18 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
-            /*
+     
             setTimeout(function() { 
                 feed_request();  
             }, 15000);
-            */
+    
             //feed_request();  
         });
     }
+    */
 
     $scope.get_feedback = function() { 
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -35,15 +37,16 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                 $scope.$apply($scope.feedbacks);
                 QuickInboxService.info_block_behavior();
                 $('.widget-list').jScrollPane();
-                /*
+     
                 setTimeout(function() { 
                     feed_request();  
                     QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
                 }, 30000); 
-                */
+    
             }
         });
+        */
     }
 
     $scope.publish = function(id) {
