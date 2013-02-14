@@ -1,6 +1,6 @@
 var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices']);
 
-app.controller("AppCtrl", function($scope, QuickInboxService) {
+app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
 
@@ -65,6 +65,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             template += '</div>';
         }
 
+        $compile(template)($scope);
         return template;
     }
 
@@ -103,7 +104,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
             }
             template += '</div>';
-            angular.bootstrap(template, ['S36QuickInboxDirectives']); 
             return template;
         }
         
