@@ -1,4 +1,4 @@
-    //this directive binds dynamically generate html to angular global scope
+//this directive binds dynamically generate html to angular global scope
 angular.module('CompileHtml', [])
 .directive('compileHtml', function($compile) {
     return {
