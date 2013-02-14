@@ -10,15 +10,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.info_block_html = "";
 
-    var poll_server = true;
-    
+    var poll_server = true; 
+    var timer;  
 
-    var timer = new Timer(function() { 
-        feed_request();  
-        $('.widget-list').jScrollPane();
-    }, 30000); 
-  
-    function feed_request() { 
+    (function feed_request() { 
         if(poll_server) { 
             $.ajax({
                 type: 'GET'    
@@ -26,7 +21,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
               , async: false
               , url: '/hosted/quick_inbox'
               , success: function(data) {  
-                    //timer.start();
+
+                    timer = new Timer(function() { 
+                        feed_request();  
+                        $('.widget-list').jScrollPane();
+                    }, 30000); 
+
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks); 
                 }
@@ -44,7 +44,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             timer.resume();
             console.log("Starting");
         });
-    }
+    })();
 
     $scope.publish = function(id) {
         $scope.published = id;
@@ -135,10 +135,5 @@ function Timer(callback, delay) {
         timerId = window.setTimeout(callback, remaining);
     };
 
-    this.start = function() {
-        this.resume();     
-    }
-
-    this.start();
-   
+    this.resume();        
 }
