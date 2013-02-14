@@ -24,7 +24,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
-                    }, 10000);
+                    }, 30000);
     
                 }
             });
