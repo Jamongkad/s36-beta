@@ -46,7 +46,7 @@
                                                     <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
                                                     -->
                                                     <input type="button" class="small-button publish" value="Publish" />
-                                                    <input type="button" class="small-button feature" value="Feature" />
+                                                    <input type="button" class="small-button feature" value="Feature" />
                                                     <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
                                                 </div>
                                                 <div class="widget-date">
