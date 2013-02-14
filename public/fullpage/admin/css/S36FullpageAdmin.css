@@ -831,3 +831,32 @@ ul.patternList li div.active{
 #adminDisplayOptionAuthorItems .display-author .author-information .author-location{
     float: left;
 }
+
+.small-button{
+    margin: 0px 0px;
+    padding: 2px 9px 2px 10px;
+    height: 17px;
+    border: none;
+    cursor: pointer;
+    font-size:11px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;  
+    color:#333;               
+}
+.small-button.publish{
+    background:#45b398;
+    color:#0f4c3d;
+    text-shadow:#58c8ac 0px 1px;
+}
+.small-button.publish:hover{
+     background:#58c8ac;
+}
+.small-button.feature{
+    background:#ffe076;
+    color:#786938;
+    text-shadow:#ffeaa2 0px 1px;
+}
+.small-button.feature:hover{
+     background:#ffeaa2;
+}

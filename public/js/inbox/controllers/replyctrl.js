@@ -6,7 +6,7 @@ function ReplyCtrl($scope, MessageService) {
         return $scope.messages;    
     }
 
-    $scope.del_reply = function(id, $event) { 
+    $scope.del_reply = function(id) { 
         MessageService.delete_msg({'id': id, 'type': 'msg'});
     }
      

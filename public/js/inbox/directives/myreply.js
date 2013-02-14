@@ -16,7 +16,6 @@ angular.module('reply', [])
             });
         }
     } 
-
 })
 .directive('replyCancel', function(){
     return function(scope, element, attrs){
@@ -84,6 +83,7 @@ angular.module('reply', [])
                 var msgid    = $(this).parents('span').siblings('a').attr('id');
                 var req_text = $(this).parents('span').siblings('a').attr('req-text');
                 var configure = $('.modal-configure');
+                
                 configure.dialog({ zIndex: 100001 });
                 configure.dialog('open');
                 configure.children('#msgid').val(msgid);

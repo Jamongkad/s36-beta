@@ -38,11 +38,15 @@
                                             </div>
                                             <div class="widget-actions">
                                                 <div class="widget-icons">
+                                                    <!--
                                                     <input type="button" class="widget-icon check" publish ng-click="publish(feeds.id)" />
                                                     <input type="button" class="widget-icon feature" feature ng-click="feature(feeds.id)"/>
                                                     <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
                                                     <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
                                                     <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
+                                                    -->
+                                                    <input type="button" class="small-button publish" value="Publish" />
+                                                    <input type="button" class="small-button feature" value="Feature" />
                                                     <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
                                                 </div>
                                                 <div class="widget-date">
