@@ -16,17 +16,12 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
 
-                    //feed_request();  
-                    QuickInboxService.info_block_behavior();
-                    $('.widget-list').jScrollPane();
-
-                    /* 
                     setTimeout(function() { 
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
                     }, 30000);
-                    */
+
     
                 }
             });
@@ -39,7 +34,9 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
-            feed_request();
+            setTimeout(function() { 
+                feed_request();  
+            }, 10000);
             //console.log("inbox polling is stopping");
         });
     })();
