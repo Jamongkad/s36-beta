@@ -8,6 +8,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.published;
     $scope.deleted;
 
+    $scope.info_block_html = "";
+
     var poll_server = true;
  
     (function feed_request() { 
@@ -55,6 +57,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     $scope.info_block = function(data) {
+
+        console.log(data);
 
         var template, subcontent_check = data['subcontent']; ;
 
