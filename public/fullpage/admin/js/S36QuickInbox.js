@@ -15,11 +15,15 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
+                    QuickInboxService.info_block_behavior();
+                    $('.widget-list').jScrollPane();
+                    /*
                     setTimeout(function() { 
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
                     }, 30000); 
+                    */
                 }
             });
         }
@@ -30,9 +34,12 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
+            /*
             setTimeout(function() { 
                 feed_request();  
             }, 15000);
+            */
+            feed_request();  
         });
     })();
 
