@@ -43,6 +43,10 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
         });
     })();
 
+    $scope.get_feedback = function() {
+        return feed_request();
+    }
+
     $scope.publish = function(id) {
         console.log("Publishing! " + id);
     }
