@@ -58,8 +58,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.info_block = function(data) {
 
-        console.log(data);
-
         var template, subcontent_check = data['subcontent']; ;
 
         if(subcontent_check) {
