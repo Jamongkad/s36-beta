@@ -96,14 +96,14 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" mid="' + meta[i].mid + '">x</div>';
+                template += '<div class="delete-block" punch mid="' + meta[i].mid + '">x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
 
             }
             template += '</div>';
-             
+            angular.bootstrap(template, ['S36QuickInboxDirectives']); 
             return template;
         }
         
