@@ -15,6 +15,7 @@ angular.module('AdminDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
+                console.log(scope.featured);
                 console.log('Tits');
             })
         }
@@ -25,6 +26,7 @@ angular.module('AdminDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
+                console.log(scope.deleted);
                 console.log('Ass');
             })
         }

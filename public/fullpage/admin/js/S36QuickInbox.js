@@ -41,15 +41,17 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.publish = function(id) {
         $scope.published = id;
-        console.log("Publishing! " + id);
+        //console.log("Publishing! " + id);
     }
 
     $scope.feature = function(id) { 
-        console.log("Featuring! " + id);
+        $scope.featured = id;
+        //console.log("Featuring! " + id);
     }
 
     $scope.delete = function(id) {
-        console.log('Deleting Feedback id of ' + id);
+        $scope.deleted = id;
+        //console.log('Deleting Feedback id of ' + id);
     }
 
     $scope.info_block = function(data) {
