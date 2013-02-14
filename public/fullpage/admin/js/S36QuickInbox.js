@@ -32,10 +32,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
+            console.log("Stopping");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
+            console.log("Starting");
             //feed_request();  
         });
     })();
