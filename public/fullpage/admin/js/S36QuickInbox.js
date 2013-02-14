@@ -27,20 +27,20 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
-                    timer();
+                    timer;
                 }
             });
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
-            clearTimeout(timer());
+            clearTimeout(timer);
             console.log("Stopping");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
-            timer();
+            timer;
             console.log("Starting");
         });
     })();
