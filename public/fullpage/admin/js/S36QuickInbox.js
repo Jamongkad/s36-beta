@@ -15,6 +15,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
+                    QuickInboxService.info_block_behavior();
                     /*
                     setTimeout(function() { 
                         feed_request();  
