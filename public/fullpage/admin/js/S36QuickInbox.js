@@ -41,17 +41,17 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
     $scope.publish = function(id) {
         $scope.published = id;
-        //console.log("Publishing! " + id);
+        QuickInboxService.change_feedback_state(id, 'publish');
     }
 
     $scope.feature = function(id) { 
         $scope.featured = id;
-        //console.log("Featuring! " + id);
+        QuickInboxService.change_feedback_state(id, 'feature');
     }
 
     $scope.delete = function(id) {
         $scope.deleted = id;
-        //console.log('Deleting Feedback id of ' + id);
+        QuickInboxService.change_feedback_state(id, 'delete');
     }
 
     $scope.info_block = function(data) {
@@ -119,7 +119,11 @@ app.service('QuickInboxService', function($rootScope) {
     shared_service.info_block_behavior = function(cb) { 
         $('.delete-block').unbind('click.delete-block').bind('click.delete-block', function(e) {
             console.log('Delete Media Id: ' + $(this).attr('mid'));
-        })
+        });
+    }
+
+    share_service.change_feedback_state = function(id, state) {
+        console.log("Changing State: " + state + " Changing Id:" + id);
     }
  
     return shared_service;
