@@ -98,7 +98,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     template += '<div class="video-circle"></div>';
                 }
                
-                template += '<div class="delete-block" punch mid="' + meta[i].mid + '">x</div>';
+                template += '<div class="delete-block" ng-click="test_punch(20)" punch mid="' + meta[i].mid + '">x</div>';
                 //this should refer to pic or youtube link location...
                 template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
                 template += '</div>';
@@ -108,6 +108,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             return template;
         }
         
+    }
+
+    $scope.test_punch = function(data) {
+        console.log(data);
     }
 
 });
