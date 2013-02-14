@@ -17,26 +17,23 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                     $scope.$apply($scope.feedbacks);
                     QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
-                    /*
-                    setTimeout(function() { 
-                        feed_request();  
-                        QuickInboxService.info_block_behavior();
-                        $('.widget-list').jScrollPane();
-                    }, 10000);
-                    */
                 }
             });
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
-            poll_server = false;      
-            console.log("inbox polling is stopping");
+            poll_server = true;      
+            setTimeout(function() { 
+                feed_request();  
+                QuickInboxService.info_block_behavior();
+                $('.widget-list').jScrollPane();
+            }, 10000);
+            console.log("inbox polling is starting");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
-            poll_server = true;      
-            feed_request();
-            console.log("inbox polling is starting");
+            poll_server = false;      
+            console.log("inbox polling is stopping");
         });
     })();
 
