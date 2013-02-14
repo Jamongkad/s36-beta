@@ -26,7 +26,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     */
 
     $scope.get_feedback = function() { 
-        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -37,16 +36,15 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
                 $scope.$apply($scope.feedbacks);
                 QuickInboxService.info_block_behavior();
                 $('.widget-list').jScrollPane();
-     
+                /* 
                 setTimeout(function() { 
                     feed_request();  
                     QuickInboxService.info_block_behavior();
                     $('.widget-list').jScrollPane();
                 }, 30000); 
-    
+                */ 
             }
         });
-        */
     }
 
     $scope.publish = function(id) {
