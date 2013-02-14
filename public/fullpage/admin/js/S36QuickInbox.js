@@ -15,11 +15,13 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
+                    /*
                     setTimeout(function() { 
                         feed_request();  
                         QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
                     }, 10000);
+                    */
                 }
             });
         }
