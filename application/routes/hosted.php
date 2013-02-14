@@ -63,11 +63,12 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Kennwel Labarda'
                   , 'text' => 'I love raping people...with my mind.') 
+         */
          ,  Array(  'id' => 8
                   , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
-         */
+
         );
     
         echo json_encode($data);
