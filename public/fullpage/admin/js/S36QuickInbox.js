@@ -24,7 +24,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     $scope.$apply($scope.feedbacks);
                     setTimeout(function() { 
                         feed_request();  
-                        QuickInboxService.info_block_behavior();
                         $('.widget-list').jScrollPane();
                     }, 30000); 
                 }
