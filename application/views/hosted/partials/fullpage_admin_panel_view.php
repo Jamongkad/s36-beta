@@ -33,7 +33,7 @@
                                                 <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
-                                                    <span ng-bind-html="info_block(feeds)"></span>
+                                                    <span compile-html="info_block(feeds)"></span>
                                                 </div>
                                             </div>
                                             <div class="widget-actions">

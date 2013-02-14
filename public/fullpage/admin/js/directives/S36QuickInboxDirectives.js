@@ -32,12 +32,14 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }     
 })
-.directive('angularHtmlBind', function($compile) {
+.directive('compileHtml', function($compile) {
     return {
         restrict: 'A'     
+      , scope: { compileHtml: '=' }
+      , replace: true
       , link: function(scope, element, attrs) {
-            scope.$watch(attrs.angularHtmlBind, function() {
-                $compile(element.contents())(scope);
+            scope.$watch('compileHtml', function(value) {
+                element.html ($compile(value)(scope.$parent));
             })
         }
     }     
