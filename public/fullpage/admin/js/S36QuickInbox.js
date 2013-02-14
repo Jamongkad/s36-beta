@@ -36,7 +36,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
             feed_request();
             console.log("inbox polling is starting");
         });
-
     })();
 
     $scope.publish = function(id) {
