@@ -6,26 +6,7 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
     var poll_server = true;
  
     function feed_request() { 
-        if(poll_server) { 
-            $.ajax({
-                type: 'GET'    
-              , dataType: 'json'
-              , async: false
-              , url: '/hosted/quick_inbox'
-              , success: function(data) {  
-                    $scope.feedbacks = data;
-                    $scope.$apply($scope.feedbacks);
-                    QuickInboxService.info_block_behavior();
-                    $('.widget-list').jScrollPane();
-                    /*
-                    setTimeout(function() { 
-                        feed_request();  
-                        QuickInboxService.info_block_behavior();
-                        $('.widget-list').jScrollPane();
-                    }, 30000); 
-                    */
-                }
-            });
+        if(poll_server) {
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
@@ -43,8 +24,26 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
         });
     }
 
-    $scope.get_feedback = function() {
-        return feed_request();
+    $scope.get_feedback = function() { 
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/hosted/quick_inbox'
+          , success: function(data) {  
+                $scope.feedbacks = data;
+                $scope.$apply($scope.feedbacks);
+                QuickInboxService.info_block_behavior();
+                $('.widget-list').jScrollPane();
+                /*
+                setTimeout(function() { 
+                    feed_request();  
+                    QuickInboxService.info_block_behavior();
+                    $('.widget-list').jScrollPane();
+                }, 30000); 
+                */
+            }
+        });
     }
 
     $scope.publish = function(id) {
