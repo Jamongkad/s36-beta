@@ -114,7 +114,6 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 app.service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
-    shared_service.message;
 
     shared_service.info_block_behavior = function(cb) { 
         $('.delete-block').unbind('click.delete-block').bind('click.delete-block', function(e) {
@@ -122,7 +121,7 @@ app.service('QuickInboxService', function($rootScope) {
         });
     }
 
-    share_service.change_feedback_state = function(id, state) {
+    shared_service.change_feedback_state = function(id, state) {
         console.log("Changing State: " + state + " Changing Id:" + id);
     }
  
