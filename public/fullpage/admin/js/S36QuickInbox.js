@@ -36,7 +36,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
-            feed_request();  
+            //feed_request();  
         });
     })();
 
