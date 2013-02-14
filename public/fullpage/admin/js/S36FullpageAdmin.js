@@ -654,7 +654,7 @@ var PanelAutoSaver = new function(layoutObj){
                 }
                 
                 result = $.parseJSON(result);
-                if(!undefined != result.theme_name){
+                if(undefined != result.theme_name){
                     layoutChanged = true;
                 }
             }
