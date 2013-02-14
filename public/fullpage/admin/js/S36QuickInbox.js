@@ -29,15 +29,13 @@ app.controller("AppCtrl", function($scope, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
-            //console.log("inbox polling is starting");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
             setTimeout(function() { 
                 feed_request();  
-            }, 10000);
-            //console.log("inbox polling is stopping");
+            }, 15000);
         });
     })();
 
