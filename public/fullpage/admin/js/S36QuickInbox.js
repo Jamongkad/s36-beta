@@ -11,12 +11,13 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.info_block_html = "";
 
     var poll_server = true;
+    
 
-    var timer = setTimeout(function() { 
+    var timer = new Timer(function() { 
         feed_request();  
         $('.widget-list').jScrollPane();
     }, 30000); 
- 
+  
     (function feed_request() { 
         if(poll_server) { 
             $.ajax({
@@ -25,22 +26,22 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
               , async: false
               , url: '/hosted/quick_inbox'
               , success: function(data) {  
+                    timer.start();
                     $scope.feedbacks = data;
-                    $scope.$apply($scope.feedbacks);
-                    timer;
+                    $scope.$apply($scope.feedbacks); 
                 }
             });
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
-            clearTimeout(timer);
+            timer.pause();
             console.log("Stopping");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
-            timer;
+            timer.resume();
             console.log("Starting");
         });
     })();
@@ -119,3 +120,25 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
 });
+
+function Timer(callback, delay) {
+
+    var timerId, start, remaining = delay;
+
+    this.pause = function() {
+        window.clearTimeout(timerId);
+        remaining -= new Date() - start;
+    };
+
+    this.resume = function() {
+        start = new Date();
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.start = function() {
+        this.resume();     
+    }
+
+    this.start();
+   
+}
