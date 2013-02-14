@@ -11,6 +11,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.info_block_html = "";
 
     var poll_server = true;
+
+    var timer = setTimeout(function() { 
+        feed_request();  
+        $('.widget-list').jScrollPane();
+    }, 30000); 
  
     (function feed_request() { 
         if(poll_server) { 
@@ -22,23 +27,21 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
               , success: function(data) {  
                     $scope.feedbacks = data;
                     $scope.$apply($scope.feedbacks);
-                    setTimeout(function() { 
-                        feed_request();  
-                        $('.widget-list').jScrollPane();
-                    }, 30000); 
+                    timer;
                 }
             });
         }
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             poll_server = false;      
+            clearTimeout(timer);
             console.log("Stopping");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             poll_server = true;      
+            timer;
             console.log("Starting");
-            //feed_request();  
         });
     })();
 
