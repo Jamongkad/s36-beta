@@ -65,7 +65,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             template += '</div>';
         }
 
-        $compile(template)($scope);
         return template;
     }
 

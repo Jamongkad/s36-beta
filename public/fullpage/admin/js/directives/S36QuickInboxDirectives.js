@@ -32,13 +32,11 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }     
 })
-.directive('punch', function() {
+.directive('angularHtmlBind', function($compile) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                console.log('PUNCH');
-            })
+            console.log(element);
         }
-    }      
+    }     
 })
