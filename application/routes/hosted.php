@@ -50,6 +50,7 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Robert Mordido'
                   , 'text' => 'DOTA 2 Rocks.') 
+         /*
          ,  Array(  'id' => 5
                   , 'subcontent' => false
                   , 'name' => 'Leica Chang'
@@ -66,6 +67,7 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
+         */
         );
     
         echo json_encode($data);
