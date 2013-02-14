@@ -4,6 +4,7 @@ angular.module('AdminDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
+                console.log(scope);
                 console.log('Boobies');
             })
         }
@@ -15,6 +16,16 @@ angular.module('AdminDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 console.log('Tits');
+            })
+        }
+    }     
+})
+.directive('delete', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {  
+                console.log('Ass');
             })
         }
     }     
