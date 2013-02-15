@@ -12,33 +12,28 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     var timer;  
 
     (function feed_request() { 
-        if(poll_server) { 
-            $.ajax({
-                type: 'GET'    
-              , dataType: 'json'
-              , async: false
-              , url: '/hosted/quick_inbox'
-              , success: function(data) {  
+        $.ajax({
+            type: 'GET'    
+          , dataType: 'json'
+          , async: false
+          , url: '/hosted/quick_inbox'
+          , success: function(data) {  
+                timer = new Timer(function() { 
+                    feed_request();  
+                    $('.widget-list').jScrollPane();
+                }, 30000); 
 
-                    timer = new Timer(function() { 
-                        feed_request();  
-                        $('.widget-list').jScrollPane();
-                    }, 30000); 
-
-                    $scope.feedbacks = data;
-                    $scope.$apply($scope.feedbacks); 
-                }
-            });
-        }
+                $scope.feedbacks = data;
+                $scope.$apply($scope.feedbacks); 
+            }
+        });
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
-            poll_server = false;      
             timer.pause();
             console.log("Stopping");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
-            poll_server = true;      
             timer.resume();
             console.log("Starting");
         });
