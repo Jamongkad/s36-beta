@@ -5,7 +5,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 console.log(scope.published);
-                $(this).parents('.widget-item').fadeOut(300, function() { 
+                $(this).parents('.widget-item').slideDown(400, function() { 
                     $('.widget-list').jScrollPane();
                 });
             })
