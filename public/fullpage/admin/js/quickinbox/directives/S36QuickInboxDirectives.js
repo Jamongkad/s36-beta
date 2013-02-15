@@ -1,13 +1,13 @@
 angular.module('S36QuickInboxDirectives', [])
-.directive('publish', function($compile) {
+.directive('publish', function() {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 console.log(scope.published);
                 var me = this;
-                $(me).parents('.widget-item').children().fadeOut(400, function() { 
-                    $(me).parents('.widget-item').append($compile('<span undo>Undo?</span>')(scope)).fadeIn();
+                $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
+                    $(me).parents('.widget-item').children('.widget-undo').fadeIn();
                     $('.widget-list').jScrollPane();
                 });
 

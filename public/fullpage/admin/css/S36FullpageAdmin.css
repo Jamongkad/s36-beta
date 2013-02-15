@@ -861,3 +861,6 @@ ul.patternList li div.active{
 .small-button.feature:hover{
      background:#ffeaa2;
 }
+.widget-undo {
+	display:none;
+}
