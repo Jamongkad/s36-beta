@@ -862,6 +862,7 @@ ul.patternList li div.active{
      background:#ffeaa2;
 }
 .widget-undo {
+    padding-top: 20px;
     text-align: center;
 	display:none;
 }
