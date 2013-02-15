@@ -72,5 +72,9 @@ return array(
         );
     
         echo json_encode($data);
+    },
+
+    'POST /hosted/change_feedback_state' => function() {
+        print_r(Input::get());
     }
 );
