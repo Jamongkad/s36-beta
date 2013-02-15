@@ -8,8 +8,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.published;
     $scope.deleted;
 
-    $scope.info_block_html = "";
-
     var poll_server = true; 
     var timer;  
 
