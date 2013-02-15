@@ -1,5 +1,5 @@
 angular.module('S36QuickInboxDirectives', [])
-.directive('publish', function() {
+.directive('publish', function($compile) {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {
@@ -7,7 +7,7 @@ angular.module('S36QuickInboxDirectives', [])
                 console.log(scope.published);
                 var me = this;
                 $(me).parents('.widget-item').children().fadeOut(400, function() { 
-                    $(me).parents('.widget-item').fadeIn().html('Undo?');
+                    $(me).parents('.widget-item').fadeIn().html($compile('<span punch>Undo?</span>')(scope));
                     $('.widget-list').jScrollPane();
                 });
 
