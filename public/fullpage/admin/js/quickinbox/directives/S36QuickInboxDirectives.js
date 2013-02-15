@@ -5,9 +5,12 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 console.log(scope.published);
-                $(this).parents('.widget-item').slideDown(400, function() { 
+                var me = this;
+                $(me).parents('.widget-item').children().fadeOut(400, function() { 
+                    $(me).parents('.widget-item').children().html('Undo?');
                     $('.widget-list').jScrollPane();
                 });
+
             })
         }
     }    
