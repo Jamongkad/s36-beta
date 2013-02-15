@@ -48,7 +48,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 var me = this;
-                feedback_fadein(me);
+                feedback_fadeout(me);
             })
         }
     }          
@@ -62,7 +62,7 @@ function feedback_fadein(elem) {
     });
 }
 
-function feedback_fadein(elem) {
+function feedback_fadeout(elem) {
     $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
         $(elem).parents('.widget-item').children('.widget-undo').hide();
         $('.widget-list').jScrollPane();
