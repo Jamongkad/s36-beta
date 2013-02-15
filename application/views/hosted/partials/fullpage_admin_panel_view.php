@@ -57,7 +57,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h2 class="widget-undo" undo>Undo Action</h2>
+                                        <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
                                     </div>
                                 </div>
                             </div>
