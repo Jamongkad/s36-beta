@@ -52,7 +52,11 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log($(this).parents('.widget-item').children().fadeIn());
+                var me = this;
+                $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
+                    $(me).parents('.widget-item').children('.widget-undo').fadeOut();
+                    $('.widget-list').jScrollPane();
+                })
             })
         }
     }          
