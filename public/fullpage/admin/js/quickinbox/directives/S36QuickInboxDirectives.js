@@ -5,7 +5,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 console.log(scope.published);
-                console.log('Boobies');
+                console.log($(this).parents('.widget-item'));
             })
         }
     }    
