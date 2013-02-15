@@ -48,7 +48,6 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 var me = this;
-                console.log(scope.undo);
                 feedback_fadeout(me);
             })
         }
