@@ -7,6 +7,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.featured;
     $scope.published;
     $scope.deleted;
+    $scope.undo;
 
     var timer;  
 
@@ -51,6 +52,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.delete = function(id) {
         $scope.deleted = id;
         QuickInboxService.change_feedback_state(id, 'delete');
+    }
+
+    $scope.undo = function(id) {
+        $scope.undo = id;
+        QuickInboxService.change_feedback_state(id, 'undo'); 
     }
 
     $scope.test_punch = function(data) {
