@@ -4,10 +4,9 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                console.log(scope.published);
                 var me = this;
                 $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
-                    $(me).parents('.widget-item').children('.widget-undo').fadeIn();
+                    $(me).parents('.widget-item').children('.widget-undo').show();
                     $('.widget-list').jScrollPane();
                 });
 
@@ -54,7 +53,7 @@ angular.module('S36QuickInboxDirectives', [])
             $(element).bind('click', function(e) {  
                 var me = this;
                 $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
-                    $(me).parents('.widget-item').children('.widget-undo').fadeOut();
+                    $(me).parents('.widget-item').children('.widget-undo').hide();
                     $('.widget-list').jScrollPane();
                 })
             })
