@@ -5,11 +5,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 var me = this;
-                $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
-                    $(me).parents('.widget-item').children('.widget-undo').show();
-                    $('.widget-list').jScrollPane();
-                });
-
+                feedback_fadein(me);
             })
         }
     }    
@@ -52,11 +48,23 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
                 var me = this;
-                $(me).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
-                    $(me).parents('.widget-item').children('.widget-undo').hide();
-                    $('.widget-list').jScrollPane();
-                })
+                feedback_fadein(me);
             })
         }
     }          
 })
+
+//helper functions
+function feedback_fadein(elem) { 
+    $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
+        $(elem).parents('.widget-item').children('.widget-undo').show();
+        $('.widget-list').jScrollPane();
+    });
+}
+
+function feedback_fadein(elem) {
+    $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
+        $(elem).parents('.widget-item').children('.widget-undo').hide();
+        $('.widget-list').jScrollPane();
+    }); 
+}
