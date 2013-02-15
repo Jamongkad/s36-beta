@@ -57,7 +57,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="widget-undo" undo>Undo Action</div>
+                                            <h2 class="widget-undo" undo>Undo Action</h2>
                                     </div>
                                 </div>
                             </div>
