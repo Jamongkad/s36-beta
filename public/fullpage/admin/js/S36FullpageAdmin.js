@@ -14,9 +14,7 @@ var S36FullpageAdmin = function(layoutObj){
     ==========================================*/
     var self = this;
     var common = new S36FullpageCommon;
-    var robertmordido = function(){
-            alert('hi robskie');
-    }
+    
     this.init_fullpage_admin = function(){
         
         // initialize the the PanelAutoSaver.
