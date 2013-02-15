@@ -7,7 +7,7 @@ angular.module('S36QuickInboxDirectives', [])
                 console.log(scope.published);
                 var me = this;
                 $(me).parents('.widget-item').children().fadeOut(400, function() { 
-                    $(me).parents('.widget-item').children().html('Undo?');
+                    $(me).parents('.widget-item').children().fadeIn().html('Undo?');
                     $('.widget-list').jScrollPane();
                 });
 
