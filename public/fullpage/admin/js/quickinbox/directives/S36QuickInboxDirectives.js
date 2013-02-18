@@ -73,6 +73,7 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('date', function(nv) {
                 var d = Date.parse(nv);
                 console.log(d.toString('MMMM d, yyyy'));
+                console.log(d.toString('h:mm:ss tt'));
             }) 
         }
       //, template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
