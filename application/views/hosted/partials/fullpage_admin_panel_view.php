@@ -27,7 +27,7 @@
                                 <div ng-controller="AppCtrl">
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="widget-avatar">
-                                            <img src="/uploaded_image/avatar/48x48/{{feeds.avatar}}" />
+                                            <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" />
                                         </div>
                                         <div class="widget-content">
                                             <div class="widget-submitter">
