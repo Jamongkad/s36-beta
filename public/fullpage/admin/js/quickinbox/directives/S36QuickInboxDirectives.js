@@ -63,7 +63,7 @@ angular.module('S36QuickInboxDirectives', [])
                 } 
             }) 
         }
-      , template: "{{socialsrc}}"
+      , template: '<spa compile-html="socialsrc"></span>'
     } 
 })
 
