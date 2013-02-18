@@ -10,6 +10,7 @@ $company_name = Config::get('application.subdomain');
 $hosted_page_url = Config::get('application.url');
 $fullpage =  new Hosted\Services\Fullpage;
 Package::load('eden');
+
 eden()->setLoader();
 
 $user = S36Auth::user();
@@ -333,6 +334,10 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/reset_password_success_view');        
         }
     },
+
+    'GET /min'=>function(){
+        Package::load('minify');
+    }
 );
 
 function forward_or_dash() { 

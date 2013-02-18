@@ -19,36 +19,15 @@
         | Global
         |--------------------------------------------------------------------------
         */
-        ?>
-        <?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
-        <?= HTML::script('/js/helpers.js'); ?>
-        <?= HTML::script('/js/jquery.iframe-transport.js'); ?>
-        <?= HTML::script('/js/jquery.ui.widget.js'); ?>
-        <?= HTML::script('/js/jquery.raty.min.js'); ?>
-
-        <?php
+        echo HTML::script('/min/?g=Global');
+        
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
         |--------------------------------------------------------------------------
         */
-        ?>
-
-        <?= HTML::style('/fullpage/common/css/S36SinglePage.css')?>
-        <?= HTML::style('/fullpage/common/css/S36FullpageCommon.css'); ?>
-        <?= HTML::style('/fullpage/common/css/master.css'); ?>
-        <?= HTML::style('/fullpage/common/css/flags.css'); ?>
-        <?= HTML::style('/fullpage/common/css/grids.css'); ?>
-        <?= HTML::style('/fullpage/common/css/override.css'); ?>
-        <?= HTML::style('/fullpage/common/css/s36_client_style.css'); ?>
-
-        <?= HTML::script('/fullpage/common/js/S36FullpageCommon.js'); ?>
-        <?= HTML::script('/fullpage/common/js/masonry.js'); ?>
-        <?= HTML::script('/fullpage/common/js/modernizr.js'); ?>
-        <?= HTML::script('/fullpage/common/js/feedbackactions.js'); ?>
-        <?= HTML::script('/fullpage/common/js/s36_client_script.js'); ?>
+        echo HTML::script('/min/?g=FullpageCommon');
         
-        <?php
         /*
         |--------------------------------------------------------------------------
         | Facebook Open Graph
