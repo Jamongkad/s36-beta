@@ -8,6 +8,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.published;
     $scope.deleted;
     $scope.undo;
+    $scope.logintype="facebook";
 
     var timer;  
 
