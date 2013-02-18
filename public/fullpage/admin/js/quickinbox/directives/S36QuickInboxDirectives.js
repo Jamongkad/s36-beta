@@ -93,8 +93,7 @@ angular.module('S36QuickInboxDirectives', [])
                             //console.log(pr);
                             console.log(ucwords(pr.replace(/_/g, " ")));
                             for(var i=0; i < submeta.length; i++) {
-                                console.log(submeta[i]);   
-                                console.log(submeta[i].value);   
+                                console.log(submeta[i]);     
                             }
                         }
                         /*
