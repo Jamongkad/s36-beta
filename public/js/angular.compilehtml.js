@@ -7,7 +7,7 @@ angular.module('CompileHtml', [])
       , replace: true
       , link: function(scope, element, attrs) {
             scope.$watch('compileHtml', function(value) {
-                element.html ($compile(value)(scope.$parent));
+                element.html ( $compile(value)(scope.$parent) );
             })
         }
     }     

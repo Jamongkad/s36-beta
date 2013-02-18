@@ -53,11 +53,11 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }         
 })
-.directive('social', function() {
+.directive('social', function($compile) {
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            console.log($(element).attr('login'));
+            console.log( $compile($(element).attr('login'))(scope) );
         }
     } 
 })
