@@ -11,7 +11,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     var timer;  
 
-    (function feed_request() { 
+    (function fked_request() { 
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -69,7 +69,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         if(data['attachments'] || data['metadata']) {
             template = '<div class="additional-info">';            
             template += $scope.metadata_block(data);
-            template += $scope.media_block(data);
+            //template += $scope.media_block(data);
             template += '</div>';
         }
 
@@ -79,7 +79,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.metadata_block = function(data) {
         if(data.hasOwnProperty('metadata')) { 
             var meta = data['metadata'];
-
+            console.log(meta);
+            /*
             var template = '<div class="custom-meta-list grids">'
             for(var i=0; i < meta.length; i++) {
                 template += '<div class="custom-meta">'           
@@ -88,6 +89,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             }
             template += '</div>';
             return template;
+            */
         }
     }
 
