@@ -11,7 +11,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     var timer;  
 
-    (function fked_request() { 
+    (function feed_request() { 
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
