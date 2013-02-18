@@ -91,7 +91,7 @@ angular.module('S36QuickInboxDirectives', [])
                         for(var pr in meta)  {
                             var submeta = meta[pr];
                             //console.log(pr);
-                            console.log(pr.replace(/_/g, " "));
+                            console.log(ucwords(pr.replace(/_/g, " ")));
                             for(var i=0; i < submeta.length; i++) {
                                 console.log(submeta[i]);   
                             }
@@ -129,5 +129,11 @@ function feedback_fadeout(elem) {
     $(elem).parents('.widget-item').children('.widget-undo').hide();
     $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
         $('.widget-list').jScrollPane();
+    });
+}
+
+function ucwords(str) {
+    return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
+        return $1.toUpperCase();
     });
 }
