@@ -66,7 +66,7 @@ angular.module('S36QuickInboxDirectives', [])
       , template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
     } 
 })
-.directive('feedbackDate', function() { 
+.directive('feedbackdate', function() { 
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
