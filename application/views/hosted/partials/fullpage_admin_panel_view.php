@@ -56,7 +56,7 @@
                                                 <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
                                             </div>
                                             <div class="widget-date">
-                                                <div feedbackdate date="{{feeds.dtadded}}"></div>
+                                                <div feedbackdate date="{{feeds.date}}"></div>
                                                 <div class="the-date">November 12, 2012</div>
                                                 <div class="the-time">10:54:11 am</div>
                                                 <div class="the-delete">
