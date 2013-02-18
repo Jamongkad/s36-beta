@@ -50,7 +50,6 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Robert Mordido'
                   , 'text' => 'DOTA 2 Rocks.') 
-         /*
          ,  Array(  'id' => 5
                   , 'subcontent' => false
                   , 'name' => 'Leica Chang'
@@ -63,7 +62,6 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Kennwel Labarda'
                   , 'text' => 'I love raping people...with my mind.') 
-         */
          ,  Array(  'id' => 8
                   , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
