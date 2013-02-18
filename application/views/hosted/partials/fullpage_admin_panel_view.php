@@ -32,8 +32,8 @@
                                         <div class="widget-content">
                                             <div class="widget-submitter">
                                                 <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                <span class="social-src" social login="{{logintype}}">
-                                                    {{logintype}} 
+                                                <span class="social-src" social login="{{feeds.logintype}}">
+                                                   {{feeds.logintype}}
                                                 </span>
                                             </div>
                                             <div class="widget-text">
