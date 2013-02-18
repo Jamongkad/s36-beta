@@ -70,7 +70,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            attrs.$observe('login', function(nv) {
+            attrs.$observe('date', function(nv) {
                 console.log(nv);
             }) 
         }
