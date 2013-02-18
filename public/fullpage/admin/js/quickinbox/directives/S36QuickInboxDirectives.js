@@ -59,7 +59,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('login', function(nv) {
                 if(nv == 'fb') {
-                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
+                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified ASS";     
                 } 
             }) 
         }
