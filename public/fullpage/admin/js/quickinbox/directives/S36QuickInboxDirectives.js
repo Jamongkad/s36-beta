@@ -53,6 +53,14 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }         
 })
+.directive('social', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            console.log(attrs);
+        }
+    } 
+})
 
 //helper functions
 function feedback_fadein(elem) { 

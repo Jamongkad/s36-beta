@@ -32,7 +32,9 @@
                                         <div class="widget-content">
                                             <div class="widget-submitter">
                                                 <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                <span class="social-src">Facebook Verified</span>
+                                                <span class="social-src" social login="{{feeds.logintype}}">
+                                                   
+                                                </span>
                                             </div>
                                             <div class="widget-text">
                                                 <p>{{feeds.text}}</p>
