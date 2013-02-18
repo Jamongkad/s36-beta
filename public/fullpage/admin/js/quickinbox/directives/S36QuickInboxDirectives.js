@@ -15,10 +15,6 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                /*
-                console.log(scope.featured);
-                console.log('Tits');
-                */
                 var me = this;
                 feedback_fadein(me);
             })
@@ -30,10 +26,6 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function(e) {  
-                /*
-                console.log(scope.deleted);
-                console.log('Ass');
-                */
                 var me = this;
                 feedback_fadein(me);
             })
