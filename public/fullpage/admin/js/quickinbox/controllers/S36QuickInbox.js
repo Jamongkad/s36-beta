@@ -22,11 +22,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     feed_request();  
                     $('.widget-list').jScrollPane();
                 }, 30000); 
-                console.log(data);
-                /*
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks); 
-                */
             }
         });
 

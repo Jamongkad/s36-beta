@@ -18,7 +18,7 @@
             <div id="quickInbox" class="adminPage">
                 <div class="pageContents">
                     <div class="pageTitle">
-                        Recent Submitted Feedbacks
+                        Recent Submitted Feedback
                         <span class="light-text"></span>
                     </div>
                     <div class="pageBody">
@@ -27,13 +27,18 @@
                                 <div ng-controller="AppCtrl">
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="widget-avatar">
-                                            <img src="fullpage/common/img/chris.png" />
+                                            <img src="/uploaded_image/avatar/48x48/{{feeds.avatar}}" />
                                         </div>
                                         <div class="widget-content">
-                                            <div class="widget-submitter"><span class="name">{{feeds.name}}</span> <span class="social-src">Facebook Verified</span></div>
+                                            <div class="widget-submitter">
+                                                <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
+                                                <span class="social-src">Facebook Verified</span>
+                                            </div>
                                             <div class="widget-text">
                                                 <p>{{feeds.text}}</p>
+                                                <!--
                                                 <span compile-html="info_block(feeds)"></span>
+                                                -->
                                             </div>
                                         </div>
                                         <div class="widget-actions">
