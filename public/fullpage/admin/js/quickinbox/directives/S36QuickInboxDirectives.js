@@ -88,7 +88,9 @@ angular.module('S36QuickInboxDirectives', [])
                     //console.log(data);
                     for(var prop in data) {
                         var meta = data[prop];
-                        console.log(meta);
+                        for(var pr in meta)  {
+                            console.log(pr);   
+                        }
                         /*
                         for(var i=0; i < meta.length; i++) {
                             console.log(meta);   
