@@ -57,7 +57,9 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            console.log(scope.$eval(attrs.login));
+            attrs.$observe('login', function(nv) {
+                console.log(nv);
+            }) 
         }
     } 
 })
