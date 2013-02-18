@@ -59,7 +59,7 @@ angular.module('S36QuickInboxDirectives', [])
       , scope: {
         }
       , link: function(scope, element, attrs) {
-            console.log(attrs);
+            console.log(attrs.class);
         }
     } 
 })
