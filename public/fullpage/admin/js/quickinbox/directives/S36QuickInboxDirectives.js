@@ -63,7 +63,7 @@ angular.module('S36QuickInboxDirectives', [])
                 } 
             }) 
         }
-      , template: "<b>{{socialsrc}} shit</b>"
+      , template: "{{socialsrc}}"
     } 
 })
 
