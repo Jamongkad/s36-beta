@@ -71,7 +71,8 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) {
             attrs.$observe('date', function(nv) {
-                console.log(nv);
+                var d = Date.parse(nv);
+                console.log(d);
             }) 
         }
       //, template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
