@@ -88,6 +88,7 @@ angular.module('S36QuickInboxDirectives', [])
                     //console.log(data);
                     for(var prop in data) {
                         console.log(prop);
+                        console.log(data[prop]);
                     }
                     /*
                     var template = '<div class="custom-meta-list grids">'
