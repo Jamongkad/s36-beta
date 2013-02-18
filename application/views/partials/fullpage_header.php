@@ -50,8 +50,7 @@
 <?= HTML::script('/js/jquery.fileupload.js'); ?>
 <?= HTML::script('/js/jquery.raty.min.js'); ?>
 <?= HTML::script('/js/angular.compilehtml.js'); ?>
-
-
+<?= HTML::script('/js/date.js'); ?>
 
 
 <?php
