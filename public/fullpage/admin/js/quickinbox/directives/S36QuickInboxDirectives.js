@@ -57,8 +57,8 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            attrs.$observe('login', function(nv) {
-                if(nv == 'fb') {
+            attrs.$observe('login', function(at) {
+                if(at == 'fb') {
                     scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
                 } 
             }) 
@@ -70,15 +70,25 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            attrs.$observe('date', function(nv) {
-                var d = Date.parse(nv);
+            attrs.$observe('date', function(at) {
+                var d = Date.parse(at);
                 scope.time = '<div class="the-date">' + d.toString('MMMM d, yyyy') + '</div>' + '<div class="the-time">' + d.toString('h:mm:ss tt') + '</div>';
-                                                
             }) 
         }
       , template: '<spa ng-bind-html-unsafe="time"></span>'
     } 
 })
+.directive('metadata', function() { 
+    return {
+        restrict: 'A'
+      , scope: {}
+      , link: function(scope, element, attrs) {
+            attrs.$observe('load', function(at) {
+                console.log(at);
+            }) 
+        }
+    } 
+});
 
 //helper functions
 function feedback_fadein(elem) { 

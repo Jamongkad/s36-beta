@@ -37,7 +37,10 @@
                                             </div>
                                             <div class="widget-text">
                                                 <p>{{feeds.text}}</p>
+                                                <!--
                                                 <span compile-html="info_block(feeds)"></span>
+                                                -->
+                                                <span metadata load="{{feeds.metadata}}"></span>
                                             </div>
                                         </div>
                                         <div class="widget-actions">
