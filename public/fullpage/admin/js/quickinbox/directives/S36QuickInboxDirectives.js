@@ -59,9 +59,7 @@ angular.module('S36QuickInboxDirectives', [])
       , scope: {
             logintype:"@"
         }
-      , link: function(scope, element, attrs) {
-            console.log(attrs.logintype);
-        }
+      , template: '{{logintype}}'
     } 
 })
 
