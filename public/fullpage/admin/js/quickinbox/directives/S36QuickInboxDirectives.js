@@ -61,7 +61,7 @@ angular.module('S36QuickInboxDirectives', [])
                 scope.pwet = nv;
             }) 
         }
-      , template: "<b>{{pwet}}</b>"
+      , template: "<b>{{pwet}} shit</b>"
     } 
 })
 
