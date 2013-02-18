@@ -59,11 +59,22 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('login', function(nv) {
                 if(nv == 'fb') {
-                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified ASS";     
+                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
                 } 
             }) 
         }
       , template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
+    } 
+})
+.directive('feedbackDate', function() { 
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            attrs.$observe('login', function(nv) {
+                console.log(nv);
+            }) 
+        }
+      //, template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
     } 
 })
 
