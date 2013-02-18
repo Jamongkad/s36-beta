@@ -488,7 +488,6 @@ class DBFeedback extends S36DataObject {
 
         $result_obj = new StdClass;
         $result_obj->row_count = $row_count->fetchColumn();
-        Helpers::dump($result);
         $result_obj->nodes = $this->_return_feedback_nodes($result);
         return $result_obj;
     }

@@ -22,8 +22,8 @@ return array(
         ))->get();
     },
 
-    'GET /hosted/quick_inbox' => function() {
-
+    'GET /hosted/quick_inbox' => function() use ($feedback) {
+        /*
         $data = Array(
             Array(  'id' => 1
                   , 'name' => 'Mathew Wong'
@@ -69,6 +69,10 @@ return array(
         );
     
         echo json_encode($data);
+        */
+
+        $feedback = $feedback->newfeedback_by_company();  
+        echo json_encode($feedback->node);
     },
 
     'POST /hosted/change_feedback_state' => function() {

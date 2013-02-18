@@ -22,9 +22,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     feed_request();  
                     $('.widget-list').jScrollPane();
                 }, 30000); 
-
+                console.log(data);
+                /*
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks); 
+                */
             }
         });
 
@@ -67,7 +69,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
         var template, subcontent_check = data['subcontent']; ;
 
-        if(subcontent_check) {
+        if(data['attachments'] || data['metadata']) {
             template = '<div class="additional-info">';            
             template += $scope.metadata_block(data);
             template += $scope.media_block(data);
