@@ -56,8 +56,11 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('social', function() {
     return {
         restrict: 'A'
+      , scope: {
+            logintype:"@"
+        }
       , link: function(scope, element, attrs) {
-            console.log(attrs);
+            console.log(attrs.logintype);
         }
     } 
 })
