@@ -59,7 +59,6 @@ angular.module('S36QuickInboxDirectives', [])
       , scope: {
             logintype:"@"
         }
-      , template: '<input type="button" value="{{logintype}}"/>'
     } 
 })
 
