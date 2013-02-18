@@ -32,7 +32,7 @@
                                         <div class="widget-content">
                                             <div class="widget-submitter">
                                                 <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                <span class="social-src" social login="{{feeds.logintype}}">
+                                                <span class="social-src">
                                                    {{feeds.logintype}}
                                                 </span>
                                             </div>
