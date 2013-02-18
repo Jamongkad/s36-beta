@@ -66,7 +66,6 @@ return array(
                   , 'subcontent' => false
                   , 'name' => 'Ryan Chua'
                   , 'text' => 'Ohhhh lah lah.') 
-
         );
     
         echo json_encode($data);
