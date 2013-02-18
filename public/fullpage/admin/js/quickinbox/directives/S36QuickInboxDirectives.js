@@ -90,7 +90,8 @@ angular.module('S36QuickInboxDirectives', [])
                         var meta = data[prop];
                         for(var pr in meta)  {
                             var submeta = meta[pr];
-                            console.log(pr);
+                            //console.log(pr);
+                            console.log(pr.replace(/ /gi, '_'));
                             for(var i=0; i < submeta.length; i++) {
                                 console.log(submeta[i]);   
                             }
