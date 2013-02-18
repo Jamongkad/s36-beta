@@ -87,8 +87,10 @@ angular.module('S36QuickInboxDirectives', [])
                     var data = angular.fromJson(at);
                     //console.log(data);
                     for(var prop in data) {
-                        console.log(prop);
-                        console.log(data[prop]);
+                        var meta = data[prop];
+                        for(var i=0; i < meta.length; i++) {
+                            console.log(meta[i].value);   
+                        }
                     }
                     /*
                     var template = '<div class="custom-meta-list grids">'
