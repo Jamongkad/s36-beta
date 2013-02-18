@@ -72,11 +72,11 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('date', function(nv) {
                 var d = Date.parse(nv);
-                console.log(d.toString('MMMM d, yyyy'));
-                console.log(d.toString('h:mm:ss tt'));
+                scope.time = '<div class="the-date">' + d.toString('MMMM d, yyyy') + '</div>' + '<div class="the-time">' + d.toString('h:mm:ss tt') + '</div>;
+                                                
             }) 
         }
-      //, template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
+      , template: '<spa ng-bind-html-unsafe="time"></span>'
     } 
 })
 
