@@ -58,9 +58,10 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) {
             attrs.$observe('login', function(nv) {
-                console.log(nv);
+                scope.pwet = nv;
             }) 
         }
+      , template: "<b>{{pwet}}</b>"
     } 
 })
 
