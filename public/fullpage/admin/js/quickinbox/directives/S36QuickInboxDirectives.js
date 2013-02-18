@@ -58,10 +58,12 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) {
             attrs.$observe('login', function(nv) {
-                scope.pwet = nv;
+                if(nv == 'fb') {
+                    scope.socialsrc = "<img src='img/small-fb-icon.png'/> Facebook Verified";     
+                } 
             }) 
         }
-      , template: "<b>{{pwet}} shit</b>"
+      , template: "<b>{{socialsrc}} shit</b>"
     } 
 })
 
