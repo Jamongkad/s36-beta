@@ -72,7 +72,7 @@ return array(
         */
 
         $feedback = $feedback->newfeedback_by_company();  
-        echo json_encode($feedback->node);
+        echo json_encode($feedback->nodes);
     },
 
     'POST /hosted/change_feedback_state' => function() {
