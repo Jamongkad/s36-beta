@@ -85,7 +85,19 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    console.log(data);
+                    //console.log(data);
+                    for(var prop in data) {
+                        console.log(prop);
+                    }
+                    /*
+                    var template = '<div class="custom-meta-list grids">'
+                    for(var i=0; i < meta.length; i++) {
+                        template += '<div class="custom-meta">'           
+                        template += '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
+                        template += '</div>'
+                    }
+                    template += '</div>';
+                    */
                 }
             }) 
         }
