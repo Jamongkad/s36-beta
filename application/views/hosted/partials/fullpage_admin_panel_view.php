@@ -57,8 +57,6 @@
                                             </div>
                                             <div class="widget-date">
                                                 <div feedbackdate date="{{feeds.date}}"></div>
-                                                <div class="the-date">November 12, 2012</div>
-                                                <div class="the-time">10:54:11 am</div>
                                                 <div class="the-delete">
                                                     <input type="button" class="widget-icon delete" delete ng-click="delete(feeds.id)"/>
                                                 </div>
