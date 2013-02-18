@@ -81,7 +81,6 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('metadata', function() { 
     return {
         restrict: 'A'
-      , scope: {}
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 console.log(at);
