@@ -136,6 +136,8 @@ angular.module('S36QuickInboxDirectives', [])
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
+
+                        //videos
                         if(links.hasOwnProperty('video') && links.video == 'yes') { 
                             scope.mtemplate += '<div class="image-block video">';
                             scope.mtemplate += '<div class="video-circle-ajs" ng-click="test_punch(1000)" link-url="' + links.url + '"open-video></div>';
@@ -143,12 +145,14 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.mtemplate += '</div>';
                         }
 
+                        //links
                         if(links.hasOwnProperty('video') && links.video == 'no') { 
                             scope.mtemplate += '<div class="image-block">';
                             scope.mtemplate += '<div class="the-thumb-ajs" ng-click="test_punch(1000)"><a href="' + links.url + '">linky</a></div>';
                             scope.mtemplate += '</div>';
                         }
-
+                        
+                        //pics
                         for(var i=0; i<links.length; i++) {
                             /* 
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
@@ -164,6 +168,22 @@ angular.module('S36QuickInboxDirectives', [])
             });
         }
       , template: '<span compile-html="mtemplate"></span>'
+    }    
+})
+.directive('openVideo', function() {
+    return {  
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function() { 
+                var embed_url = $(this).attr('link-url');
+                console.log(embed_url);
+                /*
+                var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
+                $('.uploaded-images-content').html(html);
+                e.preventDefault();
+                */
+            })
+        }
     }    
 });
 
