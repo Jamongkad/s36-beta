@@ -95,10 +95,11 @@ angular.module('S36QuickInboxDirectives', [])
                             var submeta = meta[pr]; 
                             //console.log(ucwords(pr.replace(/_/g, " ")));
                             scope.template += ucwords(pr.replace(/_/g, " ")) + ": ";
+                            var prefix;
                             for(var i=0; i<submeta.length; i++) {
                                 //console.log(" -" + submeta[i].value);   
-                                scope.template += '<span class="value">' + submeta[i].value + '</span>';
-                                scope.template += ', ';
+                                scope.template += '<span class="value">' + prefix + submeta[i].value + '</span>';
+                                prefix = ", ";
                             } 
                             scope.template += '</div>';
                         }
