@@ -123,8 +123,8 @@ angular.module('S36QuickInboxDirectives', [])
                     for(var prop in data) {
                         var links = data[prop];
                         for(var i=0; i<links.length; i++) {
-                            console.log(links[i]);     
                             /* 
+                            console.log(links[i]);     
                             scope.template += '<div class="image-block ' + meta[i].type +'">';
                             if(meta[i].type == 'video') {
                                 scope.template += '<div class="video-circle"></div>';
