@@ -138,8 +138,7 @@ angular.module('S36QuickInboxDirectives', [])
                         var links = data[prop];
                         if(links.hasOwnProperty('video') && links.video == 'yes') { 
                             scope.mtemplate += '<div class="image-block video">';
-                            scope.mtemplate += '<div class="video-circle" open-video></div>';
-                            scope.mtemplate += '<input type="hidden" class="link-url" value="' + links.url + '"/>'
+                            scope.mtemplate += '<div class="video-circle" link-url="' + links.url + '"open-video></div>';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }

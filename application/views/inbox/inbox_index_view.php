@@ -413,7 +413,9 @@
                                                             else{
                                                             ?>
                                                                 <div style="cursor:pointer;">
-                                                                    <a href="<?=$attachments->attached_link->url?>" target="_blank"><img src="<?=$attachments->attached_link->image?>" width="100%" /></a>
+                                                                    <a href="<?=$attachments->attached_link->url?>" target="_blank">
+                                                                        <img src="<?=$attachments->attached_link->image?>" width="100%" />
+                                                                    </a>
                                                                 </div>
                                                             <?php } ?>
                                                     </div>
