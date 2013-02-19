@@ -193,7 +193,13 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
-               console.log(at);
+                $(element).bind('click', function() { 
+                    var scroll_offset = $(document).scrollTop();
+                    var top_offset = scroll_offset + 100;
+                    $('.lightbox').fadeIn().css('top', top_offset);
+                    var html = '<img src="' + at + '" width="100%" />';
+                    $('.uploaded-images-content').html(html);
+                })
             })
         }
     }    
