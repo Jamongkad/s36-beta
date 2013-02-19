@@ -136,19 +136,21 @@ angular.module('S36QuickInboxDirectives', [])
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
-                        if(links.hasOwnProperty('video')) { 
+                        if(links.hasOwnProperty('video') && links.video == 'yes') { 
                             scope.mtemplate += '<div class="image-block video">';
-                            scope.mtemplate += '<div class="video-circle"></div>';
+                            scope.mtemplate += '<div class="video-circle" open-video></div>';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
+                            scope.mtemplate += '</div>';
+                        }
+
+                        if(links.hasOwnProperty('video') && links.video == 'no') { 
+                            scope.mtemplate += '<div class="image-block">';
+                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><a href="' + links.url + '">linky</a></div>';
                             scope.mtemplate += '</div>';
                         }
 
                         for(var i=0; i<links.length; i++) {
                             /* 
-                            scope.mtemplate += '<div class="image-block ' + meta[i].type +'">';
-                            if(meta[i].type == 'video') {
-                                scope.template += '<div class="video-circle"></div>';
-                            }
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="image-block pic">';
