@@ -81,7 +81,6 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('metadata', function() { 
     return {
         restrict: 'A'
-      , scope: {}
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 if(at) {
@@ -116,12 +115,11 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('attachments', function() {
     return {
         restrict: 'A'     
-      , scope: {}
       , link: function(scope, element, attrs) { 
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    scope.template = '<div class="uploaded-images-and-links grids">';
+                    scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
                         for(var i=0; i<links.length; i++) {
@@ -133,15 +131,15 @@ angular.module('S36QuickInboxDirectives', [])
                             }
                             scope.template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
                             */
-                            scope.template += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
-                            scope.template += '</div>';
+                            scope.mtemplate += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.mtemplate += '</div>';
                         }                       
                     }
-                    scope.template = '</div>';
+                    scope.mtemplate = '</div>';
                 }
             });
         }
-      , template: '<span compile-html="template"></span>'
+      , template: '<span compile-html="mtemplate"></span>'
     }    
 });
 
