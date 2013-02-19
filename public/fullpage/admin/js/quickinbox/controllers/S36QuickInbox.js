@@ -29,12 +29,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             timer.pause();
-            console.log("Stopping");
+            console.log("Stopping Poll");
         });
 
         $('#quickInbox').unbind('mouseleave.widget').bind('mouseleave.widget', function() { 
             timer.resume();
-            console.log("Starting");
+            console.log("Starting Poll");
         });
     })();
 
