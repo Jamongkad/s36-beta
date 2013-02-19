@@ -21,7 +21,7 @@ return array(
      			,'//js/jquery.raty.min.js'
      ),
      'FullpageCommon.js' => array(
-     			'//fullpage/common/js/S36FullpageCommon.js'
+      			 '//fullpage/common/js/S36FullpageCommon.js'
      			,'//fullpage/common/js/masonry.js'
      			,'//fullpage/common/js/modernizr.js'
      			,'//fullpage/common/js/feedbackactions.js'
