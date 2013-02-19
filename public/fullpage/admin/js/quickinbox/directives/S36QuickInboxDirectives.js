@@ -125,14 +125,16 @@ angular.module('S36QuickInboxDirectives', [])
                         for(var i=0; i<links.length; i++) {
                             /* 
                             console.log(links[i]);     
-                            scope.template += '<div class="image-block ' + meta[i].type +'">';
+                            scope.mtemplate += '<div class="image-block ' + meta[i].type +'">';
                             if(meta[i].type == 'video') {
                                 scope.template += '<div class="video-circle"></div>';
                             }
                             scope.template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
                             */
+
+                            scope.mtemplate += '<div class="image-block pic">';
                             scope.mtemplate += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
-                            //scope.mtemplate += '</div>';
+                            scope.mtemplate += '</div>';
                         }                       
                     }
                     scope.mtemplate += '</div>';
