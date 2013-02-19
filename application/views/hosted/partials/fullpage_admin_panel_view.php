@@ -40,8 +40,10 @@
                                                 <!--
                                                 <span compile-html="info_block(feeds)"></span>
                                                 -->
-                                                <span metadata load="{{feeds.metadata}}"></span>
-                                                <span attachments load="{{feeds.attachments}}"></span>
+                                                <div class="additional-info">
+                                                    <span metadata load="{{feeds.metadata}}"></span>
+                                                    <span attachments load="{{feeds.attachments}}"></span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="widget-actions">
