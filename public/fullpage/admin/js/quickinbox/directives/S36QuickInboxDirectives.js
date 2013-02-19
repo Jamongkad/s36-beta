@@ -94,25 +94,17 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.template += '<div class="custom-meta-name">';
                             var submeta = meta[pr]; 
                             //console.log(ucwords(pr.replace(/_/g, " ")));
-                            scope.template += ucwords(pr.replace(/_/g, " "));
+                            scope.template += ucwords(pr.replace(/_/g, " ")) + ": ";
                             for(var i=0; i<submeta.length; i++) {
                                 //console.log(" -" + submeta[i].value);   
-                                scope.template += '<span class="value">' + submeta[i].value + '</span>'
+                                scope.template += '<span class="value">' + submeta[i].value + '</span>';
+                                scope.template += ', ';
                             } 
                             scope.template += '</div>';
                         }
                         scope.template += '</div>';
                     }
                     scope.template += '</div>';     
-                    /*
-                    var template = '<div class="custom-meta-list grids">'
-                    for(var i=0; i < meta.length; i++) {
-                        template += '<div class="custom-meta">'           
-                        template += '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
-                        template += '</div>'
-                    }
-                    template += '</div>';
-                    */
                 }
             }) 
         } 
