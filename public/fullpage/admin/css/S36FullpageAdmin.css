@@ -713,6 +713,18 @@ ul.patternList li div.active{
 	margin-left:-12px;
 	cursor:pointer;
 }
+.widget-content .video-circle-ajs{
+	background:url(/fullpage/admin/img/video-play-circle.png) no-repeat;
+	width:25px;
+	height:25px;
+	position:absolute;
+	z-index:100;
+	top:50%;
+	margin-top:-12px;
+	left:50%;
+	margin-left:-12px;
+	cursor:pointer;
+}
 .widget-content .delete-block{
 	position:absolute;
 	top:0px;
