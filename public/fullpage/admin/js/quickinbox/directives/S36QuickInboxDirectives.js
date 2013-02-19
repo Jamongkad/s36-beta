@@ -120,9 +120,13 @@ angular.module('S36QuickInboxDirectives', [])
                 if(at) {
                     var data = angular.fromJson(at);
                     console.log(data);
+                    scope.template = '<div class="uploaded-images-and-links grids">';
+                    for(var prop in data) {
+                        console.log(data[prop]);
+                    }
+                    scope.template = '</div>';
                 }
                 /*
-                var template = '<div class="uploaded-images-and-links grids">';
                 for(var i=0; i < meta.length; i++) {
 
                     template += '<div class="image-block ' + meta[i].type +'">';
@@ -137,7 +141,6 @@ angular.module('S36QuickInboxDirectives', [])
                     template += '</div>';
 
                 }
-                template += '</div>';
                 */
             });
         }
