@@ -42,71 +42,27 @@
 | Global
 |--------------------------------------------------------------------------
 */
-?>
-<?= HTML::script('/js/jquery-ui-1.8.24.custom.min.js'); ?>
-<?= HTML::script('/js/helpers.js'); ?>
-<?= HTML::script('/js/jquery.iframe-transport.js'); ?>
-<?= HTML::script('/js/jquery.ui.widget.js'); ?>
-<?= HTML::script('/js/jquery.fileupload.js'); ?>
-<?= HTML::script('/js/jquery.raty.min.js'); ?>
-<?= HTML::script('/js/angular.compilehtml.js'); ?>
-<?= HTML::script('/js/date.js'); ?>
+echo HTML::script('/min/?g=Global.js');
 
-
-<?php
 /*
 |--------------------------------------------------------------------------
 | Fullpage Common
 |--------------------------------------------------------------------------
 */
-?>
+echo HTML::style('/min/?g=FullpageCommon.css');
+echo HTML::script('/min/?g=FullpageCommon.js');
 
-<?= HTML::style('/fullpage/common/css/S36FullpageCommon.css'); ?>
-<?= HTML::style('/fullpage/common/css/master.css'); ?>
-<?= HTML::style('/fullpage/common/css/flags.css'); ?>
-<?= HTML::style('/fullpage/common/css/grids.css'); ?>
-<? // override.css is moved to application/views/hosted/hosted_feedback_fullpage_view.php. ?>
-<?= HTML::style('/fullpage/common/css/s36_client_style.css'); ?>
-
-<?= HTML::script('/fullpage/common/js/S36FullpageCommon.js'); ?>
-<?= HTML::script('/fullpage/common/js/masonry.js'); ?>
-<?= HTML::script('/fullpage/common/js/modernizr.js'); ?>
-<?= HTML::script('/fullpage/common/js/feedbackactions.js'); ?>
-<?= HTML::script('/fullpage/common/js/s36_client_script.js'); ?>
-
-<?php
-/*
-|--------------------------------------------------------------------------
-| Fullpage Specific
-|--------------------------------------------------------------------------
-*/
-?>
-
-
-<?php
 /*
 |--------------------------------------------------------------------------
 | Fullpage Admin
 |--------------------------------------------------------------------------
 */
+if( ! is_null(\S36Auth::user()) ):
+echo HTML::style('/min/?g=FullpageAdmin.css');
+echo HTML::script('/min/?g=FullpageAdmin.js');
+echo HTML::script('/min/?g=QuickInbox.js');
+endif;
 ?>
-
-<?if( ! is_null(\S36Auth::user()) ): ?> 
-    <?= HTML::style('/fullpage/admin/css/S36FullpageAdmin.css'); ?>
-    <?= HTML::style('/fullpage/admin/css/jcarousel.skin.css'); ?>
-    <?= HTML::style('/fullpage/admin/css/minicolors.css'); ?>
-    <?= HTML::script('/fullpage/admin/js/jcycle.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/jquery.jcarousel.min.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/minicolors.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/colors.min.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/jquery.mousewheel.min.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/jquery.scroll.js'); ?>
-
-    <?= HTML::script('/fullpage/admin/js/S36FullpageAdmin.js'); ?>
-    <?= HTML::script('/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js')?>
-    <?= HTML::script('/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js')?>
-    <?= HTML::script('/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js')?>
-<?endif?> 
 </head>
 <body>
     
