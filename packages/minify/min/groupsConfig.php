@@ -12,7 +12,7 @@
  **/
 
 return array(
-     'Global'	=> array(
+     'Global.js'	=> array(
      			 '//js/jquery-ui-1.8.24.custom.min.js'
      			,'//js/helpers.js'
      			,'//js/jquery.iframe-transport.js'
@@ -20,29 +20,33 @@ return array(
      			,'//js/jquery.fileupload.js'
      			,'//js/jquery.raty.min.js'
      ),
-     'FullpageCommon' => array(
-     			 '//fullpage/common/css/S36FullpageCommon.css'
-     			,'//fullpage/common/css/master.css'
-     			,'//fullpage/common/css/flags.css'
-     			,'//fullpage/common/css/grids.css'
-     			,'//fullpage/common/css/s36_client_style.css'
-     			,'//fullpage/common/js/S36FullpageCommon.js'
+     'FullpageCommon.js' => array(
+     			'//fullpage/common/js/S36FullpageCommon.js'
      			,'//fullpage/common/js/masonry.js'
      			,'//fullpage/common/js/modernizr.js'
      			,'//fullpage/common/js/feedbackactions.js'
      			,'//fullpage/common/js/s36_client_script.js'
      ),
-     'FullpageAdmin' => array(
-				 '//fullpage/admin/css/S36FullpageAdmin.css'
-				,'//fullpage/admin/css/jcarousel.skin.css'
-				,'//fullpage/admin/css/minicolors.css'
-				,'//fullpage/admin/js/jcycle.js'
+     'FullpageCommon.css' => array(
+                     '//fullpage/common/css/S36FullpageCommon.css'
+                    ,'//fullpage/common/css/master.css'
+                    ,'//fullpage/common/css/flags.css'
+                    ,'//fullpage/common/css/grids.css'
+                    ,'//fullpage/common/css/s36_client_style.css'
+     ),
+     'FullpageAdmin.js' => array(
+				'//fullpage/admin/js/jcycle.js'
 				,'//fullpage/admin/js/jquery.jcarousel.min.js'
 				,'//fullpage/admin/js/minicolors.js'
 				,'//fullpage/admin/js/colors.min.js'
 				,'//fullpage/admin/js/jquery.mousewheel.min.js'
 				,'//fullpage/admin/js/jquery.scroll.js'
 				,'//fullpage/admin/js/S36FullpageAdmin.js'
+     ),
+     'FullpageAdmin.css' => array(
+                     '//fullpage/admin/css/S36FullpageAdmin.css'
+                    ,'//fullpage/admin/css/jcarousel.skin.css'
+                    ,'//fullpage/admin/css/minicolors.css'
      ),
 );
 

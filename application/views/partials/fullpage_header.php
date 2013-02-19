@@ -38,14 +38,15 @@
 | Global
 |--------------------------------------------------------------------------
 */
-echo HTML::script('/min/?g=Global');
+echo HTML::script('/min/?g=Global.js');
 
 /*
 |--------------------------------------------------------------------------
 | Fullpage Common
 |--------------------------------------------------------------------------
 */
-echo HTML::script('/min/?g=FullpageCommon');
+echo HTML::style('/min/?g=FullpageCommon.css');
+echo HTML::script('/min/?g=FullpageCommon.js');
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,8 @@ echo HTML::script('/min/?g=FullpageCommon');
 |--------------------------------------------------------------------------
 */
 if( ! is_null(\S36Auth::user()) ):
-echo HTML::script('/min/?g=FullpageAdmin');
+echo HTML::style('/min/?g=FullpageAdmin.css');
+echo HTML::script('/min/?g=FullpageAdmin.js');
 endif;
 
 ?>
