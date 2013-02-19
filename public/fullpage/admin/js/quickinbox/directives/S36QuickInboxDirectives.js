@@ -119,14 +119,14 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    console.log(data);
+                    //console.log(data);
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
                         if(links.hasOwnProperty('video')) { 
                             console.log(links);
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.url + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }
                         for(var i=0; i<links.length; i++) {
