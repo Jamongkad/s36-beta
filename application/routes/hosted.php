@@ -71,7 +71,7 @@ return array(
         echo json_encode($data);
         */
 
-        $feedback = $feedback->newfeedback_by_company();  
+        $feedback = $feedback->newfeedback_by_company(false, $filter='positive');  
         echo json_encode($feedback->nodes);
     },
 

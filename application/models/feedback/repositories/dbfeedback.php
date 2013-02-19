@@ -433,7 +433,13 @@ class DBFeedback extends S36DataObject {
     }
     
     //duplication??
-    public function newfeedback_by_company($company_id=False) {
+    public function newfeedback_by_company($company_id=False, $filter=False) {
+        
+        $filter_statement = Null;
+        if($filter && $filter == 'positive') { 
+            $filter_statement = 'AND (Feedback.rating = 4 OR Feedback.rating = 5)';
+        }
+
         $sql = "   
             SELECT 
                ".$this->select_vars."
@@ -470,6 +476,7 @@ class DBFeedback extends S36DataObject {
                  AND Feedback.isSticked = 0
                  AND Feedback.isArchived = 0
                  AND Feedback.dtAdded BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
+                 ".$filter_statment."
              ORDER BY 
                  Feedback.dtAdded DESC 
         ";
