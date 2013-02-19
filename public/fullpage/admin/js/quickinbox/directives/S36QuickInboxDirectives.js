@@ -86,7 +86,7 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 var data = angular.fromJson(at);
                 if(data.attachments || data.metadata) {
-                    console.log($(element)) ;                        
+                    console.log($(element).addClass("additional-info")) ;                        
                 }
             }) 
         }
