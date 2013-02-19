@@ -2,11 +2,12 @@
 
 class Determiner {
 
-   public $http_host;
+   public $http_host,$assets_base_dir,$assets_dir;
 
    public function __construct() {
-       $this->http_host = $_SERVER['SERVER_NAME'];
-       $this->d = $this->_host();
+       $this->http_host        = $_SERVER['SERVER_NAME'];
+       $this->assets_base_dir  = '/var/www/assets';
+       $this->d                = $this->_host();
    }
 
    public function _host() {
@@ -37,7 +38,6 @@ class Determiner {
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-           return $obj;
        }
 
        if($this->http_host == 'mathew-staging.gearfish.com') {      
@@ -51,7 +51,6 @@ class Determiner {
            $obj->env_name = 'dev';
            $obj->fb_id = '238865422903471';
            $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
-           return $obj;
        }
        
        if($this->http_host == 'kennwel-staging.gearfish.com') { 
@@ -64,7 +63,6 @@ class Determiner {
            $obj->env_name = 'dev';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-           return $obj;
        }
 
        if($this->http_host == 'robert-staging.gearfish.com') { 
@@ -77,23 +75,9 @@ class Determiner {
            $obj->env_name = 'dev';
            $obj->fb_id = '201862876610477';
            $obj->fb_secret = 'abb9a2a6b21385ed820beaac8f332d9a';
-           return $obj;
        }
 
-       if($my_url[1] == 'gearfish') {
-           $obj->db   = Array(
-               'host' => 'localhost'
-             , 'username' => 'root'
-             , 'password' => 'brx4*svv'
-             , 'db' => 's36'
-           );
-           $obj->deploy_env = 'https://dev.gearfish.com';
-           $obj->env_name = 'dev';
-           $obj->fb_id = '171323469605899';
-           $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
-           return $obj;
-       }
-     
+      
        //Production
        if($my_url[1] == '36storiesapp') {
            $obj->host = 'https://'.$subdomain.'.36storiesapp.com';
@@ -108,7 +92,6 @@ class Determiner {
            $obj->env_name = 'prod';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
-           return $obj;
        }
 
        if($my_url[1] == 'fdback') {
@@ -124,7 +107,6 @@ class Determiner {
            $obj->env_name = 'prod';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
-           return $obj;
        }
        //AWS PRODUCTION
        /*
@@ -135,7 +117,15 @@ class Determiner {
            $obj->db   = 'prod-db1.c7lrkmoeb1l2.us-west-1.rds.amazonaws.com';
            return $obj;
        }
-       */ 
+       */
+
+        
+       $this->assets_dir = $this->assets_base_dir.'/'.$obj->env_name.'/'.$this->http_host;
+       if (!is_dir($this->assets_dir)) {
+                mkdir($this->assets_dir,0777,true);
+                $obj->assets_dir = $this->assets_dir;
+        }
+        return $obj;
    }
   
    public function http_subdomain() {     
