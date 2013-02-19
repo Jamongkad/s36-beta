@@ -1,5 +1,5 @@
 <?php if($collection): ?>
-<div id="timelineLayout">
+<div id="timelineLayout" class="timeline">
 <?php foreach ($collection as $feed_group => $feed_list) : ?>
 <div class="feedback-block">
     <div class="feedback-spine"></div>                
