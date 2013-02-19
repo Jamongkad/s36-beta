@@ -64,15 +64,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.info_block = function(data) {
 
-        var template, subcontent_check = data['subcontent']; ;
-
+        var template;
         if(data['attachments'] || data['metadata']) {
-            template = '<div class="additional-info">';            
-            //template += $scope.metadata_block(data);
-            //template += $scope.media_block(data);
-            template += '</div>';
+            template = 'class="additional-info"';            
         }
-
         return template;
     }
 

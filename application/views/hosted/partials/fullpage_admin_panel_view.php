@@ -40,7 +40,7 @@
                                                 <!--
                                                 <span compile-html="info_block(feeds)"></span>
                                                 -->
-                                                <div class="additional-info">
+                                                <div ng-show="info_block(feeds)">
                                                     <span metadata load="{{feeds.metadata}}"></span>
                                                     <span attachments load="{{feeds.attachments}}"></span>
                                                 </div>
