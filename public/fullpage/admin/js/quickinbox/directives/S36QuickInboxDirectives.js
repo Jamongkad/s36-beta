@@ -81,6 +81,7 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('metadata', function() { 
     return {
         restrict: 'A'
+      , scope: {}
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 if(at) {
@@ -115,6 +116,7 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('attachments', function() {
     return {
         restrict: 'A'     
+      , scope: {}
       , link: function(scope, element, attrs) { 
             attrs.$observe('load', function(at) {
                 if(at) {
