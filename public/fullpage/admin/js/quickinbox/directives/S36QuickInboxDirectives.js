@@ -124,6 +124,7 @@ angular.module('S36QuickInboxDirectives', [])
                     for(var prop in data) {
                         var links = data[prop];
                         console.log(links);
+                        console.log(links.hasOwnProperty('video'));
                         for(var i=0; i<links.length; i++) {
                             /*
                             console.log(links[i]);     
