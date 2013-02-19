@@ -123,8 +123,8 @@ angular.module('S36QuickInboxDirectives', [])
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
-                        console.log(links);
                         if(links.hasOwnProperty('video')) { 
+                            console.log(links);
                             scope.mtemplate += '<div class="image-block pic">';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
