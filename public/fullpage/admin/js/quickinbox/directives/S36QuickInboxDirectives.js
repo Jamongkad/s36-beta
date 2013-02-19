@@ -135,7 +135,7 @@ angular.module('S36QuickInboxDirectives', [])
                             //scope.mtemplate += '</div>';
                         }                       
                     }
-                    scope.mtemplate = '</div>';
+                    scope.mtemplate += '</div>';
                 }
             });
         }
