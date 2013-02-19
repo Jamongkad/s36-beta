@@ -122,7 +122,10 @@ angular.module('S36QuickInboxDirectives', [])
                     console.log(data);
                     scope.template = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
-                        console.log(data[prop]);
+                        var links = data[prop];
+                        for(var i=0; i<links.length; i++) {
+                            console.log(links[i]);     
+                        }                       
                     }
                     scope.template = '</div>';
                 }
