@@ -132,12 +132,10 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
-                            scope.mtemplate += '</div>';
+                            //scope.mtemplate += '</div>';
                         }                       
                     }
                     scope.mtemplate = '</div>';
-                    console.log(scope.mtemplate);
-
                 }
             });
         }
