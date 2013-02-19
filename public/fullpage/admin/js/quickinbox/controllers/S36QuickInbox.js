@@ -80,16 +80,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         if(data.hasOwnProperty('metadata')) { 
             var meta = data['metadata'];
             console.log(meta);
-            /*
-            var template = '<div class="custom-meta-list grids">'
-            for(var i=0; i < meta.length; i++) {
-                template += '<div class="custom-meta">'           
-                template += '<div class="custom-meta-name">' + meta[i].key + ' : <span class="value">' + meta[i].value + '</span></div>'
-                template += '</div>'
-            }
-            template += '</div>';
-            return template;
-            */
         }
     }
 

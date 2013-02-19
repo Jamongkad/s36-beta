@@ -107,10 +107,41 @@ angular.module('S36QuickInboxDirectives', [])
                     }
                     scope.template += '</div>';     
                 }
-            }) 
+            });
         } 
       , template: '<span compile-html="template"></span>'
     } 
+})
+.directive('attachments', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) { 
+            attrs.$observe('load', function(at) {
+                if(at) {
+                    var data = angular.fromJson(at);
+                    console.log(data);
+                }
+                /*
+                var template = '<div class="uploaded-images-and-links grids">';
+                for(var i=0; i < meta.length; i++) {
+
+                    template += '<div class="image-block ' + meta[i].type +'">';
+
+                    if(meta[i].type == 'video') {
+                        template += '<div class="video-circle"></div>';
+                    }
+                   
+                    template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
+                    //this should refer to pic or youtube link location...
+                    template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
+                    template += '</div>';
+
+                }
+                template += '</div>';
+                */
+            });
+        }
+    }    
 });
 
 //helper functions
