@@ -119,34 +119,27 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    console.log(data);
                     scope.template = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
                         for(var i=0; i<links.length; i++) {
                             console.log(links[i]);     
+                            /* 
+                            scope.template += '<div class="image-block ' + meta[i].type +'">';
+                            if(meta[i].type == 'video') {
+                                scope.template += '<div class="video-circle"></div>';
+                            }
+                            scope.template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
+                            */
+                            scope.template += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.template += '</div>';
                         }                       
                     }
                     scope.template = '</div>';
                 }
-                /*
-                for(var i=0; i < meta.length; i++) {
-
-                    template += '<div class="image-block ' + meta[i].type +'">';
-
-                    if(meta[i].type == 'video') {
-                        template += '<div class="video-circle"></div>';
-                    }
-                   
-                    template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
-                    //this should refer to pic or youtube link location...
-                    template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
-                    template += '</div>';
-
-                }
-                */
             });
         }
+      , template: '<span compile-html="template"></span>'
     }    
 });
 
