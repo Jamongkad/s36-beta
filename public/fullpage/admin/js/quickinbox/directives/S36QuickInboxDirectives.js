@@ -83,7 +83,12 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            console.log($(element)) ;
+            attrs.$observe('load', function(at) {
+                var data = angular.fromJson(at);
+                if(data.attachments || data.metadata) {
+                    console.log($(element)) ;                        
+                }
+            }) 
         }
     }
 })
