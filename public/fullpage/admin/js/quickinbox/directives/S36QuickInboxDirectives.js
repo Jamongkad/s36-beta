@@ -123,7 +123,9 @@ angular.module('S36QuickInboxDirectives', [])
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
+                        console.log(links);
                         for(var i=0; i<links.length; i++) {
+                            /*
                             console.log(links[i]);     
                             /* 
                             console.log(links[i]);     
@@ -133,10 +135,11 @@ angular.module('S36QuickInboxDirectives', [])
                             }
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
-
+                            /*
                             scope.mtemplate += '<div class="image-block pic">';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
+                            */
                         }                       
                     }
                     scope.mtemplate += '</div>';
