@@ -126,6 +126,7 @@ angular.module('S36QuickInboxDirectives', [])
                         if(links.hasOwnProperty('video')) { 
                             console.log(links);
                             scope.mtemplate += '<div class="image-block pic">';
+                            scope.mtemplate += '<div class="video-circle"></div>';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }
