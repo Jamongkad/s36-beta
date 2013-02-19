@@ -124,10 +124,12 @@ angular.module('S36QuickInboxDirectives', [])
                     for(var prop in data) {
                         var links = data[prop];
                         console.log(links);
-                        console.log(links.hasOwnProperty('video'));
+                        if(links.hasOwnProperty('video')) { 
+                            scope.mtemplate += '<div class="image-block pic">';
+                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.url + '" width="100%" /></div>';
+                            scope.mtemplate += '</div>';
+                        }
                         for(var i=0; i<links.length; i++) {
-                            /*
-                            console.log(links[i]);     
                             /* 
                             console.log(links[i]);     
                             scope.mtemplate += '<div class="image-block ' + meta[i].type +'">';
@@ -136,11 +138,9 @@ angular.module('S36QuickInboxDirectives', [])
                             }
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
-                            /*
                             scope.mtemplate += '<div class="image-block pic">';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
-                            */
                         }                       
                     }
                     scope.mtemplate += '</div>';
