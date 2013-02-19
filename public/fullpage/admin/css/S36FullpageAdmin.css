@@ -742,6 +742,9 @@ ul.patternList li div.active{
 .widget-content .the-thumb{
 	cursor:pointer;
 }
+.widget-content .the-thumb-ajs{
+	cursor:pointer;
+}
 .uploaded-images-popup{
 	margin:5px;
 }
