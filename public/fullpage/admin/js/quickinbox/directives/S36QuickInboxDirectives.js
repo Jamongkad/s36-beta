@@ -129,11 +129,11 @@ angular.module('S36QuickInboxDirectives', [])
                             if(meta[i].type == 'video') {
                                 scope.template += '<div class="video-circle"></div>';
                             }
-                            scope.template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
+                            scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
 
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb"><img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
                     }
