@@ -5,8 +5,8 @@
  * 
  * @package Minify
  */
-
-
+require_once '../application/config/determiner.php';
+$determine = new Determiner;  
 /**
  * Allow use of the Minify URI Builder app. Only set this to true while you need it.
  */
@@ -50,7 +50,7 @@ $min_allowDebugFlag = false;
  * will have to load extra code to guess. Some examples below:
  */
 //$min_cachePath = 'c:\\WINDOWS\\Temp';
-$min_cachePath = '/tmp';
+$min_cachePath = $determine->assets_dir;
 //$min_cachePath = preg_replace('/^\\d+;/', '', session_save_path());
 /**
  * To use APC/Memcache/ZendPlatform for cache storage, require the class and
