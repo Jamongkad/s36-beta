@@ -158,7 +158,7 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic load="{{' + links[i] + '}}"><img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic load="' + links[i] + '"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
 
