@@ -175,13 +175,15 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() { 
-                var embed_url = $(this).attr('link-url');
-                console.log(embed_url.replace('www.youtube.com/watch?v=','www.youtube.com/embed/'));
-                /*
+
+                var scroll_offset = $(document).scrollTop();
+                var top_offset = scroll_offset + 100;
+                var embed_url = $(this).attr('link-url').replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
                 var html  = '<iframe width="770" height="400" src="'+embed_url+'" frameborder="0" allowfullscreen></iframe>';
+
+                $('.lightbox').fadeIn().css('top', top_offset);
                 $('.uploaded-images-content').html(html);
                 e.preventDefault();
-                */
             })
         }
     }    
