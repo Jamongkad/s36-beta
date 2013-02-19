@@ -139,7 +139,7 @@ angular.module('S36QuickInboxDirectives', [])
                 }
             });
         }
-      , template: '<span>{{mtemplate}}</span>'
+      , template: '<span compile-html="mtemplate"></span>'
     }    
 });
 
