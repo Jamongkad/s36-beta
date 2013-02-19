@@ -85,24 +85,25 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    //console.log(data);
+                    //console.log(data); 
+                    scope.template = '<div class="custom-meta-list grids">';     
                     for(var prop in data) {
                         var meta = data[prop];
+                        scope.template += '<div class="custom-meta">';
                         for(var pr in meta)  {
-                            var submeta = meta[pr];
-                            //console.log(pr);
-                            console.log(ucwords(pr.replace(/_/g, " ")));
-                            for(var i=0; i < submeta.length; i++) {
-                                //console.log(submeta[i]);   
-                                console.log(" -" + submeta[i].value);   
-                            }
+                            scope.template += '<div class="custom-meta-name">';
+                            var submeta = meta[pr]; 
+                            //console.log(ucwords(pr.replace(/_/g, " ")));
+                            scope.template += ucwords(pr.replace(/_/g, " "));
+                            for(var i=0; i<submeta.length; i++) {
+                                //console.log(" -" + submeta[i].value);   
+                                scope.template += '<span class="value">' + submeta[i].value + '</span>'
+                            } 
+                            scope.template += '</div>';
                         }
-                        /*
-                        for(var i=0; i < meta.length; i++) {
-                            console.log(meta);   
-                        }
-                        */
+                        scope.template += '</div>';
                     }
+                    scope.template += '</div>';     
                     /*
                     var template = '<div class="custom-meta-list grids">'
                     for(var i=0; i < meta.length; i++) {
@@ -114,7 +115,8 @@ angular.module('S36QuickInboxDirectives', [])
                     */
                 }
             }) 
-        }
+        } 
+      , template: '<spa ng-bind-html-unsafe="template"></span>'
     } 
 });
 
