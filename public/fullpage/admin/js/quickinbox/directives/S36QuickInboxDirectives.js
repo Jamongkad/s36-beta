@@ -78,6 +78,15 @@ angular.module('S36QuickInboxDirectives', [])
       , template: '<spa ng-bind-html-unsafe="time"></span>'
     } 
 })
+.directive('infoblock', function() {
+    
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            console.log($(element)) ;
+        }
+    }
+})
 .directive('metadata', function() { 
     return {
         restrict: 'A'
@@ -124,12 +133,12 @@ angular.module('S36QuickInboxDirectives', [])
                     for(var prop in data) {
                         var links = data[prop];
                         if(links.hasOwnProperty('video')) { 
-                            console.log(links);
                             scope.mtemplate += '<div class="image-block video">';
                             scope.mtemplate += '<div class="video-circle"></div>';
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }
+
                         for(var i=0; i<links.length; i++) {
                             /* 
                             scope.mtemplate += '<div class="image-block ' + meta[i].type +'">';
@@ -142,6 +151,7 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
+
                     }
                     scope.mtemplate += '</div>';
                 }
