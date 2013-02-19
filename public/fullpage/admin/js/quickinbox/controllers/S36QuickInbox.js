@@ -62,47 +62,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         console.log(data);
     }
 
-    $scope.info_block = function(data) {
-
-        var template;
-        if(data['attachments'] || data['metadata']) {
-            template = 'class="additional-info"';            
-        }
-        return template;
-    }
-
-    $scope.metadata_block = function(data) {
-        if(data.hasOwnProperty('metadata')) { 
-            var meta = data['metadata'];
-            console.log(meta);
-        }
-    }
-
-    $scope.media_block = function(data) {
-        if(data.hasOwnProperty('media')) { 
-            var meta = data['media'];
-
-            var template = '<div class="uploaded-images-and-links grids">';
-            for(var i=0; i < meta.length; i++) {
-
-                template += '<div class="image-block ' + meta[i].type +'">';
-
-                if(meta[i].type == 'video') {
-                    template += '<div class="video-circle"></div>';
-                }
-               
-                template += '<div class="delete-block" ng-click="test_punch(1000)" punch mid="' + meta[i].mid + '">x</div>';
-                //this should refer to pic or youtube link location...
-                template += '<div class="the-thumb"><img src="fullpage/admin/img/sample-inbox-image2.jpg" width="100%" /></div>';
-                template += '</div>';
-
-            }
-            template += '</div>';
-            return template;
-        }
-        
-    }
-
 });
 
 function Timer(callback, delay) {

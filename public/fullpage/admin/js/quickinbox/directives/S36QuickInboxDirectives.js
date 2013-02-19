@@ -78,15 +78,14 @@ angular.module('S36QuickInboxDirectives', [])
       , template: '<spa ng-bind-html-unsafe="time"></span>'
     } 
 })
-.directive('infoblock', function() {
-    
+.directive('infoblock', function() { 
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 var data = angular.fromJson(at);
                 if(data.attachments || data.metadata) {
-                    console.log($(element).addClass("additional-info")) ;                        
+                    $(element).addClass("additional-info");
                 }
             }) 
         }
