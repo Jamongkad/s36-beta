@@ -138,14 +138,14 @@ angular.module('S36QuickInboxDirectives', [])
                         var links = data[prop];
                         if(links.hasOwnProperty('video') && links.video == 'yes') { 
                             scope.mtemplate += '<div class="image-block video">';
-                            scope.mtemplate += '<div class="video-circle" link-url="' + links.url + '"open-video></div>';
-                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="video-circle-ajs" link-url="' + links.url + '"open-video></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs" ng-click="test_punch(1000)"><img src="' + links.image + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }
 
                         if(links.hasOwnProperty('video') && links.video == 'no') { 
                             scope.mtemplate += '<div class="image-block">';
-                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><a href="' + links.url + '">linky</a></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs" ng-click="test_punch(1000)"><a href="' + links.url + '">linky</a></div>';
                             scope.mtemplate += '</div>';
                         }
 
@@ -154,7 +154,7 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs" ng-click="test_punch(1000)"><img src="' + links[i].small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
 
