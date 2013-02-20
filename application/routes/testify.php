@@ -189,8 +189,14 @@ return array(
         });
 
         $tf->test('Televised Feedback', function($tf) {  
+            $client_ip = Helpers::get_client_ip();
+            $subdomain = Config::get('application.subdomain');
+            Helpers::dump($subdomain);
+            Helpers::dump($client_ip);
+            /*
             $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
             Helpers::dump($feeds);
+            */
             /*
             $tf->data->hosted->dump_build_data = True; 
             $tf->data->hosted->page_number = $tf->data->page;
