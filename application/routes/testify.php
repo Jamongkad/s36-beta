@@ -399,14 +399,23 @@ return array(
         $tf = new Testify("Quick Inbox");  
 
         $tf->beforeEach(function($tf) {
+            $tf->data->hosted_settings = new Hosted\Repositories\DBHostedSettings;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
         });
- 
+        
+        /*
         $tf->test("Quick Inbox: DBFeedback", function($tf) {  
             $feedback = $tf->data->dbfeedback->newfeedback_by_company(); 
             $tf->dump($feedback);
         });
+        */
+
+        $tf->test("Quick Inbox: Hosted Settings", function($tf) {  
+            $hosted = $tf->data->hosted_settings->get_panel_settings(6);
+            $tf->dump($hosted);
+        });
 
         $tf->run();          
-    }
+    },
+
 );

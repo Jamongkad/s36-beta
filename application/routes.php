@@ -69,8 +69,6 @@ return array(
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
                                                   , 'panel'             => $hosted_settings->get_panel_settings($company_info->companyid) ));
         
-        $panel = $hosted_settings->get_panel_settings($company_info->companyid);
-        Helpers::dump($panel);
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);
     },
