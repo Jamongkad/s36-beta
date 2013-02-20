@@ -35,5 +35,6 @@ return array(
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
         Helpers::dump($feedbackstate->feedback_state_obj());
+        Helpers::dump($auth);
     }
 );
