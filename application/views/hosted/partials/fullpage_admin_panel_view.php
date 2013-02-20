@@ -1,4 +1,4 @@
-<input type="hidden" name="theme_name" value="<?=$hosted->theme_name?>" />
+<input type="hidden" id="theme_name" name="theme_name" value="<?=$hosted->theme_name?>" />
 <div id="adminWindowBox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
