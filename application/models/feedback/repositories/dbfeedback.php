@@ -552,7 +552,7 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 User
                 ON FeedbackAdminReply.userId = User.userId
-               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name)
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_namee)
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
