@@ -30,7 +30,6 @@ class HostedService {
 
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
-
     }
 
     public function fetch_hosted_feedback() { 

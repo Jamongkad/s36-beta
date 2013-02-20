@@ -9,7 +9,7 @@ return array(
         return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
-    'GET /hosted/fullpage_partial/(:any)/(:num?)' => function($page=False) {
+    'GET /hosted/fullpage_partial/(:num?)' => function($page=False) {
         
         $hosted = new Feedback\Services\HostedService(Config::get('application.subdomain'));
         $hosted->page_number = $page;
