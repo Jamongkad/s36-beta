@@ -1,4 +1,4 @@
-<?=Helpers::dump($hosted)?>
+<input type="hidden" name="theme_name" value="<?=$hosted->theme_name?>" />
 <div id="adminWindowBox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
