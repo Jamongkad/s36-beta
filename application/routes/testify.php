@@ -180,11 +180,13 @@ return array(
     'GET /testify/hostedfeeds/(:any?)' => function($page=null) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($page) {
+            /*
             $mycompany = Config::get('application.subdomain');
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
             $tf->data->page = $page;
+            */
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
         });
 
