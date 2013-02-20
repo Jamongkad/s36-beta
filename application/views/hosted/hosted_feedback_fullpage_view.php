@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel) )?>
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel, 'hosted' => $hosted))?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>

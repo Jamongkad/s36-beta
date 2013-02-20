@@ -55,7 +55,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.undo_action = function(id) {
         $scope.undo = id;
-        QuickInboxService.change_feedback_state(id, 'undo'); 
+        QuickInboxService.change_feedback_state(id, 'restore'); 
     }
 
     $scope.test_punch = function(data) {

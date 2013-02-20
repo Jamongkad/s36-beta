@@ -1,3 +1,4 @@
+<?=Helpers::dump($hosted)?>
 <div id="adminWindowBox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>

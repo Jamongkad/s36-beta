@@ -8,7 +8,7 @@ angular.module('S36QuickInboxServices', [])
          
         $.ajax({
             type: 'POST'    
-          , data: {'state': state, 'feedid': id}
+          , data: { 'state': state, 'feedid': id }
           , url: '/hosted/change_feedback_state'
           , success: function(data) {  
                 console.log(data);

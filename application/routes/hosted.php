@@ -23,56 +23,8 @@ return array(
     },
 
     'GET /hosted/quick_inbox' => function() use ($feedback) {
-        /*
-        $data = Array(
-            Array(  'id' => 1
-                  , 'name' => 'Mathew Wong'
-                  , 'text' => 'Your service is awesome!'
-                  , 'subcontent' => true
-                  , 'media' => Array(
-                        Array('mid' => 10, 'type' => 'video', 'src' => 'youtube')     
-                      , Array('mid' => 12, 'type' => 'pic', 'src' => 'picpic')     
-                  ) 
-                  , 'metadata' => Array(
-                        Array('mtid' => 10, 'key' => 'Had sex recently', 'value' => 'yes')     
-                      , Array('mtid' => 12, 'key' => 'Spa?', 'value' => 'Aww Yeahh')     
-                      , Array('mtid' => 13, 'key' => 'Massage?', 'value' => 'Could have been worse')     
-                  )) 
-         ,  Array(  'id' => 2
-                  , 'subcontent' => false
-                  , 'name' => 'Irene Paredes'
-                  , 'text' => 'Mystical Creatures') 
-         ,  Array(  'id' => 3
-                  , 'subcontent' => false
-                  , 'name' => 'Meagan Wong'
-                  , 'text' => 'HEY I LOVE ICECREAM :))') 
-         ,  Array(  'id' => 4
-                  , 'subcontent' => false
-                  , 'name' => 'Robert Mordido'
-                  , 'text' => 'DOTA 2 Rocks.') 
-         ,  Array(  'id' => 5
-                  , 'subcontent' => false
-                  , 'name' => 'Leica Chang'
-                  , 'text' => 'I am a cute futtie.') 
-         ,  Array(  'id' => 6
-                  , 'subcontent' => false
-                  , 'name' => 'Derps Matusoc'
-                  , 'text' => 'Hi am a derp!') 
-         ,  Array(  'id' => 7
-                  , 'subcontent' => false
-                  , 'name' => 'Kennwel Labarda'
-                  , 'text' => 'I love raping people...with my mind.') 
-         ,  Array(  'id' => 8
-                  , 'subcontent' => false
-                  , 'name' => 'Ryan Chua'
-                  , 'text' => 'Ohhhh lah lah.') 
-        );
-    
-        echo json_encode($data);
-        */
-
-        $feedback = $feedback->newfeedback_by_company(false, $filter='positive');  
-        echo json_encode($feedback->nodes);
+        $feeds = $feedback->newfeedback_by_company(false, $filter='positive');  
+        echo json_encode($feeds->nodes);
     },
 
     'POST /hosted/change_feedback_state' => function() {
