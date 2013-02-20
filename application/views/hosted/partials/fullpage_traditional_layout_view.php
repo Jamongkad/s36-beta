@@ -1,5 +1,5 @@
 <?php if($collection): ?>
-<div id="threeColumnLayout" class="traditional">
+<div id="threeColumnLayout" class="hosted-layout">
 <?php foreach ($collection as $feed_group => $feed_list) :  ?>
     <div class="feedback-list">
     <?php foreach ($feed_list as $feed) :
