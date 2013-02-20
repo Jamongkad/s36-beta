@@ -552,7 +552,7 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 User
                 ON FeedbackAdminReply.userId = User.userId
-               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = "mathew-staging")
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name)
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
@@ -575,9 +575,9 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 FeedbackActions
                 ON Feedback.feedbackId = FeedbackActions.feedbackId
-                AND FeedbackActions.ip_address = "121.97.52.19"
+                AND FeedbackActions.ip_address = :client_ip
             WHERE 1=1
-                AND Company.name = "mathew-staging"
+                AND Company.name = :company_name
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
