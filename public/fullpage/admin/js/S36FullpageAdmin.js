@@ -664,8 +664,8 @@ var PanelAutoSaver = new function(layoutObj){
         // hide notif.
         setTimeout('PanelAutoSaver.S36FullpageAdmin.hide_notification()', 1000);
         if(layoutChanged==true){
-            window.location.hash = "#3";
-            window.location.reload(true);
+            window.location.hash    = "#3";
+            window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
         }
     }
     
