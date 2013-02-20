@@ -6,9 +6,11 @@ $feedback = new DBFeedback;
 
 return array(
     'GET /api/full_page_display/(:any)' => function($company_name) { 
+        /* Deprecated...Feb. 20, 2013
         $host = new Feedback\Services\HostedService($company_name);
         $feeds = $host->fetch_hosted_feedback(); 
         echo json_encode($feeds);
+        */
      },
 
     'POST /api/login' => function() {

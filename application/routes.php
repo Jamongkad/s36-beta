@@ -38,7 +38,7 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_name); 
         $hosted->page_number = 1; 
         //$hosted->dump_build_data = true;  // remove this after testing. 
-        $hosted->bust_hostfeed_data();
+        //$hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();        
 
@@ -52,7 +52,7 @@ return array(
 
         $meta = new Hosted\Services\HostedMetadata(Array(
              'company_name' => $company_info->company_name
-           , 'company_id' => $company_info->companyid
+           , 'company_id'   => $company_info->companyid
         ));
 
         $meta->calculate_metrics();

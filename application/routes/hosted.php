@@ -34,6 +34,6 @@ return array(
         $auth = S36Auth::user();
 
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
-        //$feedbackstate->change_state();
+        $feedbackstate->change_state();
     }
 );

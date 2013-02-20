@@ -24,15 +24,17 @@ class HostedService {
     private $featured_count;
     private $published_count;
     
-    public function __construct($company_name) {
+    public function __construct($company_name, $feeds) {
         $this->redis    = new redisent\Redis;
         $this->key_name = $company_name.":fullpage:data";
-
+        $this->feeds    = $feeds;
+        /*
         $feedback = new DBFeedback;
         $this->feeds = $feedback->televised_feedback_alt($company_name);
+        */
     }
 
-    public function fetch_hosted_feedback() { 
+    public function group_and_build() { 
 
         $collection = Array();
         foreach($this->feeds->result as $feed) {
@@ -104,7 +106,7 @@ class HostedService {
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
  
         $key = $this->redis->hgetall($this->key_name);
-        $hosted_feeds = $this->fetch_hosted_feedback();       
+        $hosted_feeds = $this->group_and_build();       
 
         if(!$key || $redis_total_set !== $total_collection) {
             //echo "Processing: Insert Data into Redis";
