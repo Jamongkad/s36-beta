@@ -195,6 +195,7 @@ return array(
             $subdomain = Config::get('application.subdomain');
             Helpers::dump($subdomain);
             Helpers::dump($client_ip);
+            $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
             /*
             $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
             Helpers::dump($feeds);
