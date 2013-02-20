@@ -29,7 +29,7 @@ return array(
 
     'POST /hosted/change_feedback_state' => function() {
         $data = Input::get();
-        $feed_id = Array($data['feedid']);
+        $feed_ids = Array($data['feedid']);
         $mode = $data['state'];
         $auth = S36Auth::user();
 
