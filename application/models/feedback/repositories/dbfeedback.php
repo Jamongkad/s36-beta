@@ -581,15 +581,16 @@ class DBFeedback extends S36DataObject {
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
-            LIMIT 10
         ';
         
         $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
+        /*
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
-        $sth->execute();
+        */
+        $sth->execute(array(':company_name' => $company_name, ':company_name' => $company_name, ':client_ip' => $client_ip));
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
