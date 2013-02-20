@@ -116,6 +116,7 @@ var S36FullpageCommon = function(){
 			$.when($('.feedback-list').masonry()).then(function(){layout.add_branches()});
 		}else if(layout_name == 'treble'){
 			$('.feedback-list').masonry('reload');
+			this.init_masonry(275,12,750);
 		}else if(layout_name == 'traditional'){
 			//no masonry!
 		}

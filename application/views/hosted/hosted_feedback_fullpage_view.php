@@ -158,26 +158,25 @@
         /*
         / Infinite Scroll
         */
-        S36FeedbackActions.initialize_actions();
+        S36FeedbackActions.initialize_actions(fullpageLayout);
         var counter = 0;    
         function update() {
-           if($(window).scrollTop() + $(window).height() == $(document).height()) {
-
-                //if admin window is present disable infinite scroll
+           if( ($(window).scrollTop() + $(window).height() + 400) >= $(document).height()) {
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
 
                 counter += 1;
                 var page_counter = counter + 1;
                 var container = $('#feedback-infinitescroll-landing'); 
                 $.ajax({ 
+                    async: false,
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                       var boxes = $(msg);
                       container.append(boxes); 
-                      S36FeedbackActions.initialize_actions();
                     }
                 });
-           }
+            }
+            S36FeedbackActions.initialize_actions(fullpageLayout);
         }
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
