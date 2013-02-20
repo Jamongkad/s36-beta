@@ -585,18 +585,11 @@ class DBFeedback extends S36DataObject {
         
         $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
-        /*
-        $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
-        $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
-        $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
-        */
         $sth->execute(array(':company_name_one' => $company_name, ':company_name_two' => $company_name, ':client_ip' => $client_ip));
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
-        Helpers::dump($result);
-
         $result_obj = new StdClass;
         $result_obj->result = $this->_return_feedback_nodes($result);
         $result_obj->total_rows = $row_count->fetchColumn();
