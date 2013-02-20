@@ -526,12 +526,7 @@ class DBFeedback extends S36DataObject {
     public function televised_feedback_alt($company_name) { 
         $sql = ' 
             SELECT
-                  Feedback.feedbackId
-                , Feedback.text
-                , Contact.firstName
-                , Contact.lastName
-                , Company.companyId
-                , Site.siteId
+                '.$this->select_vars.'
                 , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
                 , FeedbackActions.useful 
                 , FeedbackActions.flagged AS flagged_as_inappr
