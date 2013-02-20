@@ -14,8 +14,9 @@ var S36FeedbackActions = new function() {
     var send_button = '.send-button';
 
     var me = this;
+    var common = new S36FullpageCommon;
 
-    this.initialize_actions = function() {
+    this.initialize_actions = function(layoutObj) {
         me.flag_inapprt();
         me.undo_flag();
         me.vote();
@@ -24,7 +25,8 @@ var S36FeedbackActions = new function() {
         me.open_submission_form();
         me.admin_reply();
         me.attachment_controls();
-        me.masonry_initialize();
+        //me.masonry_initialize();
+        common.reload_layout_masonry(layoutObj);
         Helpers.close_lightbox();
         $('.star_rating').raty({
             hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
@@ -228,7 +230,7 @@ var S36FeedbackActions = new function() {
         });
     }
 
-    this.masonry_initialize = function() {
+    /*this.masonry_initialize = function() {
         $('.left-branch, .right-branch').remove();
         $.when($('.feedback-list').masonry({
 			itemSelector: '.feedback',
@@ -244,7 +246,7 @@ var S36FeedbackActions = new function() {
             me.add_branches();
         })
         
-    }
+    }*/
 
     this.add_branches = function() { 
         var s = $('.feedback-list').find('.regular');
