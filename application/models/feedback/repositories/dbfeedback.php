@@ -552,7 +552,7 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 User
                 ON FeedbackAdminReply.userId = User.userId
-               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_namee)
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name)
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
@@ -581,6 +581,7 @@ class DBFeedback extends S36DataObject {
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
+            LIMIT 10
         ';
         
         $client_ip = Helpers::get_client_ip();
