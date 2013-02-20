@@ -180,6 +180,7 @@ return array(
     'GET /testify/hostedfeeds/(:any?)' => function($page=null) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($page) {
+            $tf->data->page = $page;
             $mycompany = Config::get('application.subdomain');
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
             $feeds = $tf->data->dbfeedback->televised_feedback_alt($mycompany);
