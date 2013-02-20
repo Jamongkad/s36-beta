@@ -185,15 +185,20 @@ return array(
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
             $tf->data->page = $page;
+            $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
         });
 
-        $tf->test('Televised Feedback', function($tf) { 
+        $tf->test('Televised Feedback', function($tf) {  
+            $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
+            Helpers::dump($feeds);
+            /*
             $tf->data->hosted->dump_build_data = True; 
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->bust_hostfeed_data();
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
             $tf->dump($set);
+            */
         });    
         $tf->run();
     }, 
