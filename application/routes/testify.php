@@ -180,34 +180,23 @@ return array(
     'GET /testify/hostedfeeds/(:any?)' => function($page=null) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($page) {
-            /*
+
             $mycompany = Config::get('application.subdomain');
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany);
             $tf->data->redis     = new redisent\Redis;
             $tf->data->key_name = $mycompany.":fullpage:data";
             $tf->data->page = $page;
-            */
+
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
         });
 
         $tf->test('Televised Feedback', function($tf) {  
-            $client_ip = Helpers::get_client_ip();
-            $subdomain = Config::get('application.subdomain');
-            Helpers::dump($subdomain);
-            Helpers::dump($client_ip);
-            $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
-            /*
-            $feeds = $tf->data->dbfeedback->televised_feedback_alt(Config::get('application.subdomain'));
-            Helpers::dump($feeds);
-            */
-            /*
             $tf->data->hosted->dump_build_data = True; 
             $tf->data->hosted->page_number = $tf->data->page;
             $tf->data->hosted->bust_hostfeed_data();
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
             $tf->dump($set);
-            */
         });    
         $tf->run();
     }, 
