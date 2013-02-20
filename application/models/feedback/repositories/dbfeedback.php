@@ -552,7 +552,7 @@ class DBFeedback extends S36DataObject {
             LEFT JOIN
                 User
                 ON FeedbackAdminReply.userId = User.userId
-               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name)
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name_one)
             INNER JOIN
                 Site
                 ON Site.siteId = Feedback.siteId
@@ -577,7 +577,7 @@ class DBFeedback extends S36DataObject {
                 ON Feedback.feedbackId = FeedbackActions.feedbackId
                 AND FeedbackActions.ip_address = :client_ip
             WHERE 1=1
-                AND Company.name = :company_name
+                AND Company.name = :company_name_two
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
             ORDER BY 
                 Feedback.dtAdded DESC 
@@ -590,7 +590,7 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         */
-        $sth->execute(array(':company_name' => $company_name, ':client_ip' => $client_ip));
+        $sth->execute(array(':company_name_one' => $company_name, ':company_name_two' => $company_name, ':client_ip' => $client_ip));
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
