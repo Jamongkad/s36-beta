@@ -590,7 +590,7 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':company_name', $company_name, PDO::PARAM_STR);
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         */
-        $sth->execute(array(':company_name' => $company_name, ':company_name' => $company_name, ':client_ip' => $client_ip));
+        $sth->execute(array(':company_name' => $company_name, ':client_ip' => $client_ip));
 
         $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
