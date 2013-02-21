@@ -37,7 +37,14 @@ class HostedService {
     public function group_and_build() { 
 
         $collection = Array();
+        /*
         foreach($this->feeds->result as $feed) {
+            $head_date = strtotime($feed->head_date_format);
+            $collection[$head_date][] = $this->_build_leaf($feed);
+            $head_date = Null;
+        }  
+        */
+        foreach($this->feeds as $feed) {
             $head_date = strtotime($feed->head_date_format);
             $collection[$head_date][] = $this->_build_leaf($feed);
             $head_date = Null;
@@ -102,7 +109,9 @@ class HostedService {
 
     public function build_data() {
 
-        $total_collection = (int)$this->feeds->total_rows;
+        //$total_collection = (int)$this->feeds->total_rows;
+        //We want to generalize this algorithm
+        $total_collection = (int)count($this->feeds);
         $redis_total_set  = (int)$this->redis->hget($this->key_name, 'total:set');       
  
         $key = $this->redis->hgetall($this->key_name);
