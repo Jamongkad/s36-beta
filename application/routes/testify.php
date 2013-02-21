@@ -206,7 +206,7 @@ return array(
             */
             $company_name = Config::get('application.subdomain');
             $feeds = array(1116, 1115);
-            $fb = $feedback->cherry_pick_feedback($company_name, $feeds);
+            $fb = $tf->data->dbfeedback->cherry_pick_feedback($company_name, $feeds);
             $hosted = new Feedback\Services\HostedService($company_name, $fb);
             $sets = $hosted->group_and_build();
             $tf->dump($sets);
