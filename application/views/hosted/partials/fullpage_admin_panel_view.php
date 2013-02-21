@@ -24,6 +24,14 @@
                     </div>
                     <div class="pageBody">
                         <div id="quickInboxWidget" >
+add this below widget-list class:
+                            <div id="quickInboxActions">
+                                <span>Selected : </span>
+                                <input type="button" class="small-button publish" value="Publish" />
+                                <input type="button" class="small-button feature" value="Feature" />
+                                <input type="button" class="small-button delete" value="Delete" />
+                            </div>
+
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <!--quick inbox loop-->
@@ -80,9 +88,6 @@
                                     <!--quick inbox loop-->
 
                                     <!--actions menu -->
-                                    <div>
-                                     black
-                                    </div>
                                     <!--actions menu -->
                                 </div>
                             </div>
