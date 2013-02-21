@@ -39,21 +39,16 @@ return array(
         $sets = $hosted->group_and_build();
         $user = S36Auth::user();
 
-        return View::make('hosted/partials/hosted_feedback_partial_view', Array(
+        $view = View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
 
-        /*
-        $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
-        $sets = $hosted->group_and_build();
-        Helpers::dump($sets);
-        */
+        $result_data = Array(
+            'view' => $view
+          , 'theme_name' => 'treble'
+        )
 
-        /*
-        $feed_ids = Array($data['feedid']);
-        $mode = $data['state'];
-        $auth = S36Auth::user();
-        */
+        echo json_encode($result_data);
 
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
