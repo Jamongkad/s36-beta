@@ -18,6 +18,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {  
+               $('.widget-list').jScrollPane();
                 timer = new Timer(function() { 
                     feed_request();  
                     $('.widget-list').jScrollPane();
@@ -36,8 +37,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             timer.resume();
             console.log("Starting Poll");
         });
-
-        $('.widget-list').jScrollPane();
     })();
 
     $scope.publish = function(id) {
