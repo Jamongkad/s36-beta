@@ -38,27 +38,35 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         });
     })();
     
-    /*
-    $scope.publish = function(id) {
+
+    $scope.publish = function() {
+        /*
         $scope.published = id;
         QuickInboxService.change_feedback_state(id, 'publish');
+        */
+        console.log("Publishing muthafuckas");
     }
 
-    $scope.feature = function(id) { 
+    $scope.feature = function() { 
+        /*
         $scope.featured = id;
         QuickInboxService.change_feedback_state(id, 'feature');
+        */
     }
 
-    $scope.delete = function(id) {
+    $scope.delete = function() {
+        /*
         $scope.deleted = id;
         QuickInboxService.change_feedback_state(id, 'delete');
+        */
     }
 
-    $scope.undo_action = function(id) {
+    $scope.undo_action = function() {
+        /*
         $scope.undo = id;
         QuickInboxService.change_feedback_state(id, 'restore'); 
+        */
     }
-    */
 
     $scope.test_punch = function(data) {
         console.log(data);
