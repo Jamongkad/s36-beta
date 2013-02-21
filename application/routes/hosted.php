@@ -32,7 +32,7 @@ return array(
         $mode = $data['status'];
         $feeds = $data['feeds'];
         Helpers::dump($mode);
-        Helpers::dump(json_decode($feeds));
+        Helpers::dump($feeds);
         /*
         $feed_ids = Array($data['feedid']);
         $mode = $data['state'];
