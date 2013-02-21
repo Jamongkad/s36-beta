@@ -78,9 +78,6 @@
                                         </div>
                                     </div>
                                     <!--quick inbox loop-->
-
-                                    <!--actions menu -->
-                                    <!--actions menu -->
                                 </div>
                             </div>
                         </div>

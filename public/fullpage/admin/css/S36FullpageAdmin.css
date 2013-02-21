@@ -918,8 +918,8 @@ ul.patternList li div.active{
     border-top-right-radius:5px; 
     box-shadow:#999 0px -1px 6px; 
     text-shadow:#1d2f46 0px 1px; 
-    display:block;
+    display:none;
 }
 .quick-inbox-spacer {
-    height: 25px;    
+    height: 30px;    
 }
