@@ -9,7 +9,7 @@ angular.module('S36QuickInboxServices', [])
           , data: { 'status': feed_status, 'feeds': feeds }
           , url: '/hosted/change_feedback_state'
           , success: function(data) {  
-                console.log(data);
+                $("#feedbackContainer").html(data);
             }
         });
     }
