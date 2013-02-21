@@ -58,7 +58,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     $scope.get_selected_class = function(entity) {
-        console.log(entity);
+        return $scope.is_selected(entity.id) ? 'selected' : '';
     }
 
     $scope.publish = function() {
