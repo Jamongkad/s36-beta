@@ -601,6 +601,7 @@ class DBFeedback extends S36DataObject {
     public function cherry_pick_feedback($feedbackids, $company_name) {
         //$in_query = implode(',', array_fill(0, count($feedbackids), '?'));
         $in_query = implode(',', $feedbackids);
+        Helpers::dump($in_query);
         $sql = ' 
             SELECT
                 '.$this->select_vars.'
