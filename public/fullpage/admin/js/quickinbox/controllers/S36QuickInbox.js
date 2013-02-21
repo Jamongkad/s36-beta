@@ -62,7 +62,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         $scope.published = id;
         QuickInboxService.change_feedback_state(id, 'publish');
         */
-        console.log($scope.selected);
+        //console.log($scope.selected);
     }
 
     $scope.feature = function() { 
