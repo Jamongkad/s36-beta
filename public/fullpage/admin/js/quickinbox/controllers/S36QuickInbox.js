@@ -10,7 +10,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.undo;
 
     var timer;  
-                $('.widget-list').jScrollPane();
+
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
