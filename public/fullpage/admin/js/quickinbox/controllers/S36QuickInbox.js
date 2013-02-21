@@ -38,11 +38,20 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             console.log("Starting Poll");
         });
     })();
+
+    var update_selected = function(action, id) {
+        if (action == 'add' & $scope.selected.indexOf(id) == -1)
+            $scope.selected.push(id);
+        if (action == 'remove' && $scope.selected.indexOf(id) != -1)
+            $scope.selected.splice($scope.selected.indexOf(id), 1);
+    }
+
     
     $scope.update_selection = function($event, id) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-        console.log(action);
+        update_selected(action, id);
+        console.log($scope.selected);
     }
 
     $scope.is_selected = function(id) {
