@@ -26,6 +26,7 @@
                         <div id="quickInboxWidget" >
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
+                                    <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div style="float:left;width:10%">
                                             <input type="checkbox" name="feedid" value="{{feeds.id}}"/>
@@ -49,8 +50,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="widget-date">
                                                 <div feedbackdate date="{{feeds.date}}"></div>
                                             </div>
@@ -77,8 +76,11 @@
                                             <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
                                             -->
                                         </div>
-
                                     </div>
+                                    <!--quick inbox loop-->
+
+                                    <!--actions menu -->
+                                    <!--actions menu -->
                                 </div>
                             </div>
                         </div>
