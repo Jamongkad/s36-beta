@@ -602,6 +602,7 @@ class DBFeedback extends S36DataObject {
         //$in_query = implode(',', array_fill(0, count($feedbackids), '?'));
         $in_query = implode(',', $feedbackids);
         Helpers::dump($in_query);
+        Helpers::dump($company_name);
         $sql = ' 
             SELECT
                 '.$this->select_vars.'
@@ -665,8 +666,6 @@ class DBFeedback extends S36DataObject {
         }
         */
         $sth->execute(array(':company_name_one' => $company_name, ':company_name_two' => $company_name, ':client_ip' => $client_ip));
-
-        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
         $result_obj = new StdClass;
