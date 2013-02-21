@@ -32,14 +32,15 @@ return array(
         $data = Input::get();
         $mode = $data['status'];
         $feeds = $data['feeds'];
-        /*
+
         Helpers::dump($mode);
         Helpers::dump($feeds);
-        */
 
+        /*
         $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
         $sets = $hosted->group_and_build();
         Helpers::dump($sets);
+        */
 
         /*
         $feed_ids = Array($data['feedid']);
