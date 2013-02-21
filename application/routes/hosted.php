@@ -39,7 +39,6 @@ return array(
         $sets = $hosted->group_and_build();
         $user = S36Auth::user();
 
-
         return View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
