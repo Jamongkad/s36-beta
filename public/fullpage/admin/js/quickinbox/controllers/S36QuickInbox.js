@@ -47,10 +47,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     
-    $scope.update_selection = function($event, id) {
+    $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-        update_selected(action, id);
+        var data = angular.fromJson(feed);
+
+        update_selected(action, data);
     }
 
     $scope.is_selected = function(id) {
