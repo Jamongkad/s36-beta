@@ -184,6 +184,7 @@ return array(
             $mycompany = Config::get('application.subdomain');
             $tf->data->page = $page;
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
+
             $feeds = $tf->data->dbfeedback->televised_feedback_alt($mycompany);
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany, $feeds);
 
