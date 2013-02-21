@@ -322,29 +322,29 @@ class DBFeedback extends S36DataObject {
                 '.$this->select_vars.'
             FROM
                 Feedback
-                    LEFT JOIN
-                        FeedbackAdminReply
-                        ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
-                    INNER JOIN
-                        Site
-                        ON Site.siteId = Feedback.siteId
-                    INNER JOIN
-                        Category
-                        ON Feedback.categoryId = Category.categoryId
-                    INNER JOIN
-                        Contact
-                        ON Contact.contactId = Feedback.contactId 
-                    INNER JOIN
-                        FeedbackContactOrigin
-                        ON Feedback.contactid  = FeedbackContactOrigin.contactid
-                       AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
-                    INNER JOIN
-                        Country
-                        ON Country.countryId = Contact.countryId
-                    WHERE 1=1
-                        AND Feedback.feedbackId IN ('.$in_query.')
-                    ORDER BY
-                        Feedback.dtAdded DESC
+            LEFT JOIN
+                FeedbackAdminReply
+                ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+            INNER JOIN
+                Site
+                ON Site.siteId = Feedback.siteId
+            INNER JOIN
+                Category
+                ON Feedback.categoryId = Category.categoryId
+            INNER JOIN
+                Contact
+                ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactid  = FeedbackContactOrigin.contactid
+               AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+            INNER JOIN
+                Country
+                ON Country.countryId = Contact.countryId
+            WHERE 1=1
+                AND Feedback.feedbackId IN ('.$in_query.')
+            ORDER BY
+                Feedback.dtAdded DESC
         ');
 
         foreach($ids as $k => $id) {
@@ -574,7 +574,6 @@ class DBFeedback extends S36DataObject {
             WHERE 1=1
                 AND Company.name = :company_name_two
                 AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1)
-                /*AND Feedback.feedbackId IN (1117, 196, 462)*/
             ORDER BY 
                 Feedback.dtAdded DESC 
         ';

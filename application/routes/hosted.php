@@ -27,7 +27,7 @@ return array(
         echo json_encode($feeds->nodes);
     },
 
-    'POST /hosted/change_feedback_state' => function() {
+    'POST /hosted/change_feedback_state' => function() use ($feedback) {
         $mycompany = Config::get('application.subdomain');
         $data = Input::get();
         $mode = $data['status'];
@@ -35,6 +35,8 @@ return array(
 
         Helpers::dump($mode);
         Helpers::dump($feeds);
+        $fb = $feedback->pull_feedback_group($feeds);
+        Helpers::dump($fb);
 
         /*
         $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
