@@ -36,6 +36,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             timer.resume();
             console.log("Starting Poll");
         });
+
+        $('.widget-list').jScrollPane();
     })();
 
     $scope.publish = function(id) {
