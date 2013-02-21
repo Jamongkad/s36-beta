@@ -212,6 +212,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() {
                 console.log("Choose meeeeeeee!"); 
+                $("#quickInboxActions").show();
             })
         }
     }    
