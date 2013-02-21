@@ -1,5 +1,5 @@
 <input type="hidden" id="theme_name" name="theme_name" value="<?=$hosted->theme_name?>" />
-<div id="adminWindowBox">
+<div id="adminWindowBox" ng-app="QuickInbox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
         <div class="minBtn"></div>
@@ -23,13 +23,13 @@
                         <span class="light-text"></span>
                     </div>
                     <div class="pageBody">
-                        <div id="quickInboxWidget" >
-                            <div class="widget-list" ng-app="QuickInbox">
-                                <div ng-controller="AppCtrl">
+                        <div id="quickInboxWidget" ng-controller="AppCtrl">
+                            <div class="widget-list">
+                                <div>
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
-                                            <input type="checkbox" name="feedid" value="{{feeds.id}}"/>
+                                            <input type="checkbox" name="feedid" value="{{feeds.id}}" checkfeed/>
                                         </div>
 
                                         <div class="right">
@@ -55,25 +55,6 @@
                                             </div>
 
                                             <!--
-                                            <div class="widget-actions">
-                                                <div class="widget-icons"> 
-                                                    <input type="button" class="widget-icon check" publish  />
-                                                    <input type="button" class="widget-icon feature" feature />
-                                                    <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
-                                                    <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
-                                                    <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
-                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>     
-                                                    <input type="button" class="small-button publish" value="Publish" publish ng-click="publish(feeds.id)"/>
-                                                    <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
-                                                </div> 
-                                                <div class="widget-date">
-                                                    <div feedbackdate date="{{feeds.date}}"></div>
-                                                    <div class="the-delete">
-                                                        <input type="button" class="widget-icon delete" delete ng-click="delete(feeds.id)"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
                                             -->
                                         </div>
                                     </div>
@@ -84,7 +65,7 @@
                         <div class="quick-inbox-spacer"></div>
                         <div id="quickInboxActions">
                             <span>Selected : </span>
-                            <input type="button" class="small-button publish" value="Publish" />
+                            <input type="button" class="small-button publish" value="Publish"/>
                             <input type="button" class="small-button feature" value="Feature" />
                             <input type="button" class="small-button delete" value="Delete" />
                         </div>

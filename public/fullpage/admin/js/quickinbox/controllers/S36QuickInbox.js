@@ -37,7 +37,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             console.log("Starting Poll");
         });
     })();
-
+    
+    /*
     $scope.publish = function(id) {
         $scope.published = id;
         QuickInboxService.change_feedback_state(id, 'publish');
@@ -57,6 +58,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         $scope.undo = id;
         QuickInboxService.change_feedback_state(id, 'restore'); 
     }
+    */
 
     $scope.test_punch = function(data) {
         console.log(data);

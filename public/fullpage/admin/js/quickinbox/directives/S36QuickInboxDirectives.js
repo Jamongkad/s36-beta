@@ -1,4 +1,5 @@
 angular.module('S36QuickInboxDirectives', [])
+/*
 .directive('publish', function() {
     return {
         restrict: 'A'     
@@ -43,6 +44,7 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }          
 })
+*/
 .directive('punch', function() {
     return {
         restrict: 'A'     
@@ -203,22 +205,25 @@ angular.module('S36QuickInboxDirectives', [])
             })
         }
     }    
+})
+.directive('checkfeed', function() { 
+    return {  
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function() {
+                console.log("Choose meeeeeeee!"); 
+            })
+        }
+    }    
 });
 
 //helper functions
 function feedback_fadein(elem) { 
-    /*
     $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
         $(elem).parents('.widget-item').children('.widget-undo').show();
         $('.widget-list').jScrollPane();
     });
-    */
-
-    $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').animate({
-        opacity: 0.25     
-    }, 400, function() {
-       
-    });
+ 
 }
 
 function feedback_fadeout(elem) {
