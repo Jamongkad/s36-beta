@@ -43,7 +43,7 @@ angular.module('S36QuickInboxDirectives', [])
                 var me = this;
                 feedback_fadein(me);
                 */
-                console.log($('.widget-list input[type=checkbox][name=feedid]:checked').hide());
+                console.log($('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').hide());
             })
         }
     }    
