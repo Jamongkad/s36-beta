@@ -50,18 +50,18 @@
                                                 </div>
                                             </div>
                                             <div class="widget-actions">
-                                                <div class="widget-icons">
-                                                    <!--
+                                                <!--
+                                                <div class="widget-icons"> 
                                                     <input type="button" class="widget-icon check" publish  />
                                                     <input type="button" class="widget-icon feature" feature />
                                                     <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
                                                     <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
                                                     <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
-                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
-                                                    -->
+                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>     
                                                     <input type="button" class="small-button publish" value="Publish" publish ng-click="publish(feeds.id)"/>
                                                     <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
                                                 </div>
+                                                -->
                                                 <div class="widget-date">
                                                     <div feedbackdate date="{{feeds.date}}"></div>
                                                     <div class="the-delete">
