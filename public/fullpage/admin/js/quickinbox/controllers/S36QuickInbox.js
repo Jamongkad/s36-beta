@@ -21,7 +21,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 timer = new Timer(function() { 
                     feed_request();  
                     $('.widget-list').jScrollPane();
-                }, 2000); 
+                }, 10000); 
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks); 
             }
