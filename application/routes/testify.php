@@ -186,7 +186,7 @@ return array(
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
 
             $feeds = $tf->data->dbfeedback->televised_feedback_alt($mycompany);
-            $tf->data->hosted = new Feedback\Services\HostedService($mycompany, $feeds);
+            $tf->data->hosted = new Feedback\Services\HostedService($mycompany, $feeds->result);
 
         });
 
