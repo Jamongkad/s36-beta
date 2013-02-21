@@ -9,13 +9,14 @@ return array(
         return View::make('hosted/hosted_feedback_single_view', Array('feedback' => $feedback, 'fb_id' => $fb_id));
     },
 
-    'GET /hosted/fullpage_partial/(:num?)' => function($page=False) {
-        
-        $hosted = new Feedback\Services\HostedService(Config::get('application.subdomain'));
+    'GET /hosted/fullpage_partial/(:num?)' => function($page=False) use ($feedback) { 
+        $user = S36Auth::user();
+        $coompany_name = Config::get('application.subdomain');
+        $fb = $feedback->televised_feedback_alt($company_name);
+        $hosted = new Feedback\Services\HostedService($company_name, $fb->result); 
         $hosted->page_number = $page;
         $hosted->build_data();         
         $feeds = $hosted->fetch_data_by_set(); 
-        $user = S36Auth::user();
 
         return View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $feeds, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
@@ -36,7 +37,12 @@ return array(
         $fb = $feedback->pull_feedback_group($feeds);
         $hosted = new Feedback\Services\HostedService($mycompany, $fb);
         $sets = $hosted->group_and_build();
-        Helpers::dump($sets);
+
+        $user = S36Auth::user();
+
+        return View::make('hosted/partials/hosted_feedback_partial_view', Array(
+            'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
+        ))->get();
         /*
         $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
         $sets = $hosted->group_and_build();
