@@ -908,7 +908,6 @@ ul.patternList li div.active{
     border-top:1px solid #1d2f46;
     border-right:1px solid #1d2f46;
     border-left:1px solid #1d2f46; 
-    display:block;
     text-align:center;
     width:467px;
     -webkit-border-top-left-radius:5px;
@@ -919,4 +918,8 @@ ul.patternList li div.active{
     border-top-right-radius:5px; 
     box-shadow:#999 0px -1px 6px; 
     text-shadow:#1d2f46 0px 1px; 
+    display:block;
+}
+.quick-inbox-spacer {
+    height: 25px;    
 }
