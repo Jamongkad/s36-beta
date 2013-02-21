@@ -35,7 +35,7 @@ return array(
 
         Helpers::dump($mode);
         Helpers::dump($feeds);
-        $fb = $feedback->pull_feedback_group($feeds);
+        $fb = $feedback->pull_feedback_group(implode("|", $feeds));
         Helpers::dump($fb);
 
         /*
