@@ -180,13 +180,16 @@ return array(
     'GET /testify/hostedfeeds/(:any?)' => function($page=null) {
         $tf = new Testify("Hosted Feeds Test");
         $tf->beforeEach(function($tf) use ($page) {
-            
+            /* 
             $mycompany = Config::get('application.subdomain');
             $tf->data->page = $page;
+            */
             $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;  
-
+            /*
             $feeds = $tf->data->dbfeedback->televised_feedback_alt($mycompany);
             $tf->data->hosted = new Feedback\Services\HostedService($mycompany, $feeds->result);
+            */
+            
 
         });
 
@@ -197,10 +200,16 @@ return array(
             $tf->data->hosted->bust_hostfeed_data();
             $tf->data->hosted->build_data(); 
             $set = $tf->data->hosted->fetch_data_by_set();
-            */
+
             $set = $tf->data->hosted->group_and_build();
             $tf->dump($set);
-
+            */
+            $company_name = Config::get('application.subdomain');
+            $feeds = array(1116, 1115);
+            $fb = $feedback->cherry_pick_feedback($company_name, $feeds);
+            $hosted = new Feedback\Services\HostedService($company_name, $fb);
+            $sets = $hosted->group_and_build();
+            $tf->dump($sets);
             /*
             $block_id = Array(1117, 462);
             $ids = implode(',', array_fill(0, count($block_id), '?'));

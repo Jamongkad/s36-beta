@@ -326,7 +326,7 @@ class DBFeedback extends S36DataObject {
 
         $sth = $this->dbh->prepare('
             SELECT
-                '.$this->select_vars.'
+                '.$this->select_vars.' 
             FROM
                 Feedback
             LEFT JOIN
@@ -596,6 +596,79 @@ class DBFeedback extends S36DataObject {
         $result_obj->result = $this->_return_feedback_nodes($result);
         $result_obj->total_rows = $row_count->fetchColumn();
         return $result_obj; 
+    }
+
+    public function cherry_pick_feedback($feedbackids, $company_name) {
+        $in_query = implode(',', array_fill(0, count($feedbackids), '?'));
+        $sql = ' 
+            SELECT
+                '.$this->select_vars.'
+                , (SELECT COUNT(useful) FROM FeedbackActions WHERE Feedback.feedbackId = FeedbackActions.feedbackId) AS vote_count
+                , FeedbackActions.useful 
+                , FeedbackActions.flagged AS flagged_as_inappr
+                , FeedbackAdminReply.userId AS admin_userid
+                , FeedbackAdminReply.adminReply AS admin_reply
+                , User.username AS admin_username
+                , User.fullName AS admin_fullname
+                , User.avatar AS admin_avatar
+                , User.email AS admin_email 
+                , User.email AS admin_email 
+                , Company.name AS admin_companyname 
+                , Company.fullpageCompanyName AS admin_fullpagecompanyname 
+            FROM 
+                Feedback
+            LEFT JOIN
+                FeedbackAdminReply
+                ON FeedbackAdminReply.feedbackId = Feedback.feedbackId
+            LEFT JOIN
+                User
+                ON FeedbackAdminReply.userId = User.userId
+               AND User.companyId = (SELECT Company.companyId FROM Company WHERE Company.name = :company_name_one)
+            INNER JOIN
+                Site
+                ON Site.siteId = Feedback.siteId
+            INNER JOIN 
+                Company
+                ON Company.companyId = Site.companyId
+            INNER JOIN
+                Category
+                ON Category.categoryId = Feedback.categoryId
+            INNER JOIN
+                Contact
+                ON Contact.contactId = Feedback.contactId 
+            INNER JOIN
+                FeedbackContactOrigin
+                ON Feedback.contactId  = FeedbackContactOrigin.contactId
+                AND Feedback.feedbackId = FeedbackContactOrigin.feedbackId
+            INNER JOIN 
+                Country
+                ON Country.countryId = Contact.countryId  
+            LEFT JOIN
+                FeedbackActions
+                ON Feedback.feedbackId = FeedbackActions.feedbackId
+                AND FeedbackActions.ip_address = :client_ip
+            WHERE 1=1
+                AND Company.name = :company_name_two
+                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1) 
+                AND Feedback.feedbackId IN ('.$in_query.')
+            ORDER BY 
+                Feedback.dtAdded DESC 
+        ';
+        
+        $client_ip = Helpers::get_client_ip();
+        $sth = $this->dbh->prepare($sql);
+        foreach($feedbackids as $k => $id) {
+            $sth->bindValue(($k+1), $id);
+        }
+        $sth->execute(array(':company_name_one' => $company_name, ':company_name_two' => $company_name, ':client_ip' => $client_ip));
+
+        $row_count = $this->dbh->query("SELECT FOUND_ROWS()");
+        $result = $sth->fetchAll(PDO::FETCH_CLASS);
+        
+        $result_obj = new StdClass;
+        $result_obj->result = $this->_return_feedback_nodes($result);
+        return $result_obj; 
+        
     }
 
     public function count_todays_feedback($company_id) {
