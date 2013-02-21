@@ -313,8 +313,15 @@ class DBFeedback extends S36DataObject {
     }
     
     public function pull_feedback_group($feedbackids) {
+        
+        if(is_string($feedbackids)) {
+            $ids = explode("|", $feedbackids);     
+        }
 
-        $ids      = explode("|", $feedbackids);
+        if(is_array($feedbackids)) {
+            $ids = $feedbackids;     
+        }
+       
         $in_query = implode(',', array_fill(0, count($ids), '?'));
 
         $sth = $this->dbh->prepare('

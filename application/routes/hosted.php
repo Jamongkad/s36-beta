@@ -33,9 +33,7 @@ return array(
         $mode = $data['status'];
         $feeds = $data['feeds'];
 
-        Helpers::dump($mode);
-        Helpers::dump($feeds);
-        $fb = $feedback->pull_feedback_group(implode("|", $feeds));
+        $fb = $feedback->pull_feedback_group($feeds);
         $hosted = new Feedback\Services\HostedService($mycompany, $fb);
         $sets = $hosted->group_and_build();
         Helpers::dump($sets);
