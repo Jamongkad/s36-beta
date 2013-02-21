@@ -36,8 +36,9 @@ return array(
         Helpers::dump($mode);
         Helpers::dump($feeds);
         $fb = $feedback->pull_feedback_group(implode("|", $feeds));
-        Helpers::dump($fb);
-
+        $hosted = new Feedback\Services\HostedService($mycompany, $fb);
+        $sets = $hosted->group_and_build();
+        Helpers::dump($sets);
         /*
         $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
         $sets = $hosted->group_and_build();
