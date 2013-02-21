@@ -17,8 +17,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , dataType: 'json'
           , async: false
           , url: '/hosted/quick_inbox'
-          , success: function(data) {  
-               $('.widget-list').jScrollPane();
+          , success: function(data) {   
                 timer = new Timer(function() { 
                     feed_request();  
                     $('.widget-list').jScrollPane();
