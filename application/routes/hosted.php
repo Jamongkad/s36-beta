@@ -38,12 +38,12 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
         $sets = $hosted->group_and_build();
         $user = S36Auth::user();
-        Helpers::dump($sets);
-        /*
+
+
         return View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
-        */
+
         /*
         $hosted = new Feedback\Services\HostedService($mycompany, $feeds);
         $sets = $hosted->group_and_build();
