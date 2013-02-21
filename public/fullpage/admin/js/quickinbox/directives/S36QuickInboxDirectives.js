@@ -211,7 +211,7 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() {
-                console.log("Choose meeeeeeee!"); 
+                console.log($('.widget-item input[type=checkbox]')); 
                 $("#quickInboxActions").show();
             })
         }

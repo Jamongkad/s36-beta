@@ -27,7 +27,7 @@
                             <div class="widget-list">
                                 <div>
                                     <!--quick inbox loop-->
-                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks" ng-class="get_selected_class(feeds.id)">                                     
+                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
                                             <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, feeds.id)" checkfeed/>
                                         </div>
