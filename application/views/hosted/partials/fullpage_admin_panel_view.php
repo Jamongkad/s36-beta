@@ -27,44 +27,51 @@
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
-                                        <div class="widget-avatar"> 
-                                            <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
+                                        <div style="float:left;width:10%">
+                                            <input type="checkbox" name="feedid" value="{{feeds.id}}"/>
                                         </div>
-                                        <div class="widget-content">
-                                            <div class="widget-submitter">
-                                                <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                <span class="social-src" social login="{{feeds.logintype}}">
-                                                </span>
+
+                                        <div style="float:left;width:90%;">
+                                            <div class="widget-avatar"> 
+                                                <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                             </div>
-                                            <div class="widget-text">
-                                                <p>{{feeds.text}}</p>
-                                                <div infoblock load="{{feeds}}">
-                                                    <span metadata load="{{feeds.metadata}}"></span>
-                                                    <span attachments load="{{feeds.attachments}}"></span>
+                                            <div class="widget-content">
+                                                <div class="widget-submitter">
+                                                    <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
+                                                    <span class="social-src" social login="{{feeds.logintype}}">
+                                                    </span>
+                                                </div>
+                                                <div class="widget-text">
+                                                    <p>{{feeds.text}}</p>
+                                                    <div infoblock load="{{feeds}}">
+                                                        <span metadata load="{{feeds.metadata}}"></span>
+                                                        <span attachments load="{{feeds.attachments}}"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="widget-actions">
-                                            <div class="widget-icons">
-                                                <!--
-                                                <input type="button" class="widget-icon check" publish  />
-                                                <input type="button" class="widget-icon feature" feature />
-                                                <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
-                                                <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
-                                                <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
-                                                <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
-                                                -->
-                                                <input type="button" class="small-button publish" value="Publish" publish ng-click="publish(feeds.id)"/>
-                                                <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
-                                            </div>
-                                            <div class="widget-date">
-                                                <div feedbackdate date="{{feeds.date}}"></div>
-                                                <div class="the-delete">
-                                                    <input type="button" class="widget-icon delete" delete ng-click="delete(feeds.id)"/>
+                                            <div class="widget-actions">
+                                                <div class="widget-icons">
+                                                    <!--
+                                                    <input type="button" class="widget-icon check" publish  />
+                                                    <input type="button" class="widget-icon feature" feature />
+                                                    <input type="button" class="widget-icon reply" reply ng-click="reply(feeds.id)"/>
+                                                    <input type="button" class="widget-icon contact" contact ng-click="contact(feeds.id)"/>
+                                                    <input type="button" class="widget-icon save" categorize ng-click="categorize(feeds.id)"/>
+                                                    <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>
+                                                    -->
+                                                    <input type="button" class="small-button publish" value="Publish" publish ng-click="publish(feeds.id)"/>
+                                                    <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
+                                                </div>
+                                                <div class="widget-date">
+                                                    <div feedbackdate date="{{feeds.date}}"></div>
+                                                    <div class="the-delete">
+                                                        <input type="button" class="widget-icon delete" delete ng-click="delete(feeds.id)"/>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
                                         </div>
-                                        <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
+
                                     </div>
                                 </div>
                             </div>
