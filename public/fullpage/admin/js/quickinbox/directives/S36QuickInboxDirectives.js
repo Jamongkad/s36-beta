@@ -208,7 +208,7 @@ angular.module('S36QuickInboxDirectives', [])
 //helper functions
 function feedback_fadein(elem) { 
     $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
-        $(elem).parents('.widget-item').children('.widget-undo').show();
+        //$(elem).parents('.widget-item').children('.widget-undo').show();
         $('.widget-list').jScrollPane();
     });
 }
