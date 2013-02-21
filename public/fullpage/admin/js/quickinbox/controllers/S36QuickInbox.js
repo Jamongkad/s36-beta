@@ -3,6 +3,7 @@ var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInbo
 app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
+    $scope.selected = [];
 
     $scope.featured;
     $scope.published;
@@ -38,13 +39,21 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         });
     })();
     
+    $scope.update_selection = function($event, id) {
+        var checkbox = $event.target;
+        var action = (checkbox.checked ? 'add' : 'remove');
+        console.log(action);
+    }
+
+    $scope.is_selected = function(id) {
+        return $scope.selected.indexOf(id) >= 0;   
+    }
 
     $scope.publish = function() {
         /*
         $scope.published = id;
         QuickInboxService.change_feedback_state(id, 'publish');
         */
-        console.log("Publishing muthafuckas");
     }
 
     $scope.feature = function() { 

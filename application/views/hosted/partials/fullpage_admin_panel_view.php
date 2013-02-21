@@ -29,7 +29,7 @@
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
-                                            <input type="checkbox" name="feedid" value="{{feeds.id}}" checkfeed/>
+                                            <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, feeds.id)" checkfeed/>
                                         </div>
 
                                         <div class="right">
