@@ -46,7 +46,7 @@ return array(
         $result_data = Array(
             'view' => $view
           , 'theme_name' => 'treble'
-        )
+        );
 
         echo json_encode($result_data);
 
