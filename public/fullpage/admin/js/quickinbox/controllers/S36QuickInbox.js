@@ -10,7 +10,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.undo;
 
     var timer;  
-
+                $('.widget-list').jScrollPane();
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
@@ -24,7 +24,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 }, 30000); 
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks); 
-                $('.widget-list').jScrollPane();
             }
         });
 
