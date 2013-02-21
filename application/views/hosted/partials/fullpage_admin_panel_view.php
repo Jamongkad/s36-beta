@@ -49,8 +49,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div feedbackdate date="{{feeds.date}}"></div>
+                                            <!--
                                             <div class="widget-actions">
-                                                <!--
                                                 <div class="widget-icons"> 
                                                     <input type="button" class="widget-icon check" publish  />
                                                     <input type="button" class="widget-icon feature" feature />
@@ -60,8 +61,7 @@
                                                     <input type="button" class="widget-icon flag" flag ng-click="flag(feeds.id)"/>     
                                                     <input type="button" class="small-button publish" value="Publish" publish ng-click="publish(feeds.id)"/>
                                                     <input type="button" class="small-button feature" value="Feature" feature ng-click="feature(feeds.id)"/>
-                                                </div>
-                                                -->
+                                                </div> 
                                                 <div class="widget-date">
                                                     <div feedbackdate date="{{feeds.date}}"></div>
                                                     <div class="the-delete">
@@ -70,6 +70,7 @@
                                                 </div>
                                             </div>
                                             <h2 class="widget-undo" undo ng-click="undo_action(feeds.id)">Undo Action</h2>
+                                            -->
                                         </div>
 
                                     </div>
