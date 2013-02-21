@@ -50,11 +50,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="widget-actions">
-                                                <div class="widget-data">
-                                                    <div feedbackdate date="{{feeds.date}}"></div>
-                                                </div>
+
+                                            <div class="widget-date">
+                                                <div feedbackdate date="{{feeds.date}}"></div>
                                             </div>
+
                                             <!--
                                             <div class="widget-actions">
                                                 <div class="widget-icons"> 
