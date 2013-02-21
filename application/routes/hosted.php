@@ -35,7 +35,7 @@ return array(
         $feeds = $data['feeds'];
 
         $fb = $feedback->cherry_pick_feedback($feeds, $company_name);
-        $hosted = new Feedback\Services\HostedService($company_name, $fb);
+        $hosted = new Feedback\Services\HostedService($company_name, $fb->result);
         $sets = $hosted->group_and_build();
         $user = S36Auth::user();
         Helpers::dump($sets);
