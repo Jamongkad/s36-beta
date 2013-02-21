@@ -27,8 +27,7 @@
                             <div class="widget-list" ng-app="QuickInbox">
                                 <div ng-controller="AppCtrl">
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
-                                        <div class="widget-avatar">
-                                            <input type="checkbox" name="feedid" value="{{feeds.id}}" style="float:left"/>
+                                        <div class="widget-avatar"> 
                                             <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                         </div>
                                         <div class="widget-content">
