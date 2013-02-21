@@ -22,8 +22,8 @@
                         Recent Submitted Feedback
                         <span class="light-text"></span>
                     </div>
-                    <div class="pageBody">
-                        <div id="quickInboxWidget" ng-controller="AppCtrl">
+                    <div class="pageBody" ng-controller="AppCtrl">
+                        <div id="quickInboxWidget">
                             <div class="widget-list">
                                 <div>
                                     <!--quick inbox loop-->
