@@ -199,7 +199,7 @@ return array(
             $set = $tf->data->hosted->fetch_data_by_set();
             $tf->dump($set);
             */
-            $block_id = Array(1117, 462, 196);
+            $block_id = Array(1117, 462);
             $ids = implode(',', array_fill(0, count($block_id), '?'));
             $tf->dump($ids);
         });    
