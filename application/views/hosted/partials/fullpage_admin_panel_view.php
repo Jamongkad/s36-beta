@@ -29,7 +29,7 @@
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="widget-avatar">
                                             <input type="checkbox" name="feedid" value="{{feeds.id}}" style="float:left"/>
-                                            <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" />
+                                            <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                         </div>
                                         <div class="widget-content">
                                             <div class="widget-submitter">
