@@ -45,8 +45,6 @@ angular.module('S36QuickInboxDirectives', [])
                 */
                 $('.widget-list input[type=checkbox][name=feedid]:checked').parents('div.widget-item').fadeOut();
                 $('.widget-list').jScrollPane();
-                console.log(scope.selected);
-                scope.selected = [];
             })
         }
     }    

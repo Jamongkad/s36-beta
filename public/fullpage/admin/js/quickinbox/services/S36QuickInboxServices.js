@@ -3,12 +3,10 @@ angular.module('S36QuickInboxServices', [])
     
     var shared_service = {};
 
-    shared_service.change_feedback_state = function(id, state) {
-        console.log("Changing State: " + state + " Changing Id:" + id);
-         
+    shared_service.change_feedback_state = function(feed_status, feeds) {         
         $.ajax({
             type: 'POST'    
-          , data: { 'state': state, 'feedid': id }
+          , data: { 'status': feed_status, 'feeds': feeds }
           , url: '/hosted/change_feedback_state'
           , success: function(data) {  
                 console.log(data);

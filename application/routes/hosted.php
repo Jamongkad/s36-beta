@@ -29,9 +29,15 @@ return array(
 
     'POST /hosted/change_feedback_state' => function() {
         $data = Input::get();
+        $mode = $data['status'];
+        $feeds = $data['feeds'];
+        Helpers::dump($mode);
+        Helpers::dump(json_decode($feeds));
+        /*
         $feed_ids = Array($data['feedid']);
         $mode = $data['state'];
         $auth = S36Auth::user();
+        */
 
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
