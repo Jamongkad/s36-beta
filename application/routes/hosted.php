@@ -34,12 +34,11 @@ return array(
         $mode = $data['status'];
         $feeds = $data['feeds'];
 
-        $fb = $feedback->cherry_pick_feedback($company_name, $feeds);
+        $fb = $feedback->cherry_pick_feedback($feeds, $company_name);
         $hosted = new Feedback\Services\HostedService($company_name, $fb);
         $sets = $hosted->group_and_build();
-
         $user = S36Auth::user();
-        /*
+
         return View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
