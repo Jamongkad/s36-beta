@@ -652,7 +652,6 @@ class DBFeedback extends S36DataObject {
                 AND FeedbackActions.ip_address = :client_ip
             WHERE 1=1
                 AND Company.name = :company_name_two
-                AND (Feedback.isFeatured = 1 OR Feedback.isPublished = 1) 
                 AND Feedback.feedbackId IN ('.$in_query.')
             ORDER BY 
                 Feedback.dtAdded DESC 
