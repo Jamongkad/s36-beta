@@ -51,7 +51,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
         update_selected(action, id);
-        console.log($scope.selected);
     }
 
     $scope.is_selected = function(id) {
@@ -63,6 +62,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         $scope.published = id;
         QuickInboxService.change_feedback_state(id, 'publish');
         */
+        console.log($scope.selected);
     }
 
     $scope.feature = function() { 
