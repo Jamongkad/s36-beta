@@ -1,16 +1,5 @@
 angular.module('S36QuickInboxDirectives', [])
 /*
-.directive('publish', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                var me = this;
-                feedback_fadein(me);
-            })
-        }
-    }    
-})
 .directive('feature', function() {
     return {
         restrict: 'A'     
@@ -45,6 +34,20 @@ angular.module('S36QuickInboxDirectives', [])
     }          
 })
 */
+.directive('publish', function() {
+    return {
+        restrict: 'A'     
+      , link: function(scope, element, attrs) {
+            $(element).bind('click', function(e) {  
+                /*
+                var me = this;
+                feedback_fadein(me);
+                */
+                console.log($('.widget-list input[type=checkbo][name=feedid]:checked'));
+            })
+        }
+    }    
+})
 .directive('punch', function() {
     return {
         restrict: 'A'     
@@ -211,7 +214,6 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() {
-                console.log($('.widget-item input[type=checkbox]:checked')); 
                 $("#quickInboxActions").show();
             })
         }

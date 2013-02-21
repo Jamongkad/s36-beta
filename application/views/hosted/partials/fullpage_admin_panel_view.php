@@ -29,7 +29,7 @@
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
-                                            <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, feeds.id)" checkfeed/>
+                                            <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, feeds)" checkfeed/>
                                         </div>
 
                                         <div class="right">
@@ -65,7 +65,7 @@
                         <div class="quick-inbox-spacer"></div>
                         <div id="quickInboxActions">
                             <span>Selected : </span>
-                            <input type="button" class="small-button publish" value="Publish" ng-click="publish()"/>
+                            <input type="button" class="small-button publish" value="Publish" ng-click="publish()" publish/>
                             <input type="button" class="small-button feature" value="Feature" ng-click="feature()"/>
                             <input type="button" class="small-button delete" value="Delete" ng-click="delete()"/>
                         </div>
