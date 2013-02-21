@@ -630,6 +630,13 @@ ul.patternList li div.active{
 	width:140px;
 	float:left;
 }
+.widget-item .left {
+    float:left;width:10%   
+}
+
+.widget-item .right {
+    float:left;width:90%   
+}
 .widget-icon{
 	margin: 0px 0px;
 	padding: 0px;
@@ -882,3 +889,4 @@ ul.patternList li div.active{
 	display: none;
     cursor: pointer; 
 }
+

@@ -28,11 +28,11 @@
                                 <div ng-controller="AppCtrl">
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
-                                        <div style="float:left;width:10%">
+                                        <div class="left">
                                             <input type="checkbox" name="feedid" value="{{feeds.id}}"/>
                                         </div>
 
-                                        <div style="float:left;width:90%;">
+                                        <div class="right">
                                             <div class="widget-avatar"> 
                                                 <img src="/uploaded_images/avatar/48x48/{{feeds.avatar}}" style="float:right"/>
                                             </div>
@@ -80,6 +80,9 @@
                                     <!--quick inbox loop-->
 
                                     <!--actions menu -->
+                                    <div>
+
+                                    </div>
                                     <!--actions menu -->
                                 </div>
                             </div>
