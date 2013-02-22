@@ -1,7 +1,3 @@
-
-var fullpageLayout = new S36FullpageLayoutTimeLine;
-console.log(fullpageLayout);
-
 angular.module('S36QuickInboxServices', [])
 .service('QuickInboxService', function($rootScope) {
     
