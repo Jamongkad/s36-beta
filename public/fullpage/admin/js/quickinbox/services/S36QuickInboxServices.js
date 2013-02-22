@@ -11,44 +11,46 @@ angular.module('S36QuickInboxServices', [])
         });
     }
    
-    shared_service.render_feeds = function(feeds) {         
+    shared_service.render_feeds = function(mystatus, feeds) {         
+        
+        if(mystatus !== 'delete') { 
+            $.ajax({
+                type: 'POST'    
+              , dataType: 'json'
+              , data: { 'feeds': unique(feeds) }
+              , url: '/hosted/render_feeds'
+              , success: function(data) {  
 
-        $.ajax({
-            type: 'POST'    
-          , dataType: 'json'
-          , data: { 'feeds': unique(feeds) }
-          , url: '/hosted/render_feeds'
-          , success: function(data) {  
+                    $("#feedbackContainer").html(data.view);
 
-                $("#feedbackContainer").html(data.view);
+                    var fullpageLayout;
+                    var theme = data.theme_name;
 
-                var fullpageLayout;
-                var theme = data.theme_name;
+                    var fullpageCommon = new S36FullpageCommon;
 
-                var fullpageCommon = new S36FullpageCommon;
+                    if(theme == 'timeline') { 
+                        fullpageLayout = new S36FullpageLayoutTimeline;
+                        console.log("Timeline");
+                    }
 
-                if(theme == 'timeline') { 
-                    fullpageLayout = new S36FullpageLayoutTimeline;
-                    console.log("Timeline");
+                    if(theme == 'traditional') { 
+                        fullpageLayout = new S36FullpageLayoutTraditional;
+                        console.log("Traditional");
+                    }
+
+                    if(theme == 'treble') { 
+                        fullpageLayout = new S36FullpageLayoutTreble;
+                        console.log("Treble");
+                    }
+                   
+                    fullpageLayout.init_fullpage_layout()
+                    fullpageCommon.init_fullpage_common()
+                    S36FeedbackActions.initialize_actions(fullpageLayout)
+
+                    $('.widget-list').jScrollPane();
                 }
-
-                if(theme == 'traditional') { 
-                    fullpageLayout = new S36FullpageLayoutTraditional;
-                    console.log("Traditional");
-                }
-
-                if(theme == 'treble') { 
-                    fullpageLayout = new S36FullpageLayoutTreble;
-                    console.log("Treble");
-                }
-               
-                fullpageLayout.init_fullpage_layout()
-                fullpageCommon.init_fullpage_common()
-                S36FeedbackActions.initialize_actions(fullpageLayout)
-
-                $('.widget-list').jScrollPane();
-            }
-        });
+            });
+        }
     }
  
     return shared_service;

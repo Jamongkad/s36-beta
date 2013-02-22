@@ -706,17 +706,14 @@ class DBFeedback extends S36DataObject {
     public function _toggle_multiple($feedbackstate) { 
         $column   = $feedbackstate->column;
         $in_query = $feedbackstate->query;
-        Helpers::dump($column);
-        Helpers::dump($in_query);
 
-        /*
         $sql = "UPDATE Feedback $column WHERE 1=1 AND Feedback.feedbackId IN ($in_query)";
         $sth = $this->dbh->prepare($sql); 
         foreach($feedbackstate->block_id as $k => $id) {
             $sth->bindValue(($k+1), $id['feedid']);
         }
         return $sth->execute();       
-        */
+
     }
 
     public function _permanent_delete($opts) { 
