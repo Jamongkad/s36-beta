@@ -28,7 +28,7 @@ return array(
         echo json_encode($feeds->nodes);
     },
 
-    'POST /hosted/change_feedback_state' => function() use ($feedback) {
+    'POST /hosted/preview_feeds' => function() use ($feedback) {
         $company_name = Config::get('application.subdomain');
         $data = Input::get();
         $mode = $data['status'];
