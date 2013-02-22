@@ -15,16 +15,24 @@ angular.module('S36QuickInboxServices', [])
 
                 var fullpageCommon = new S36FullpageCommon;
 
+                console.log(fullpageCommon);
+
                 if(theme == 'timeline') { 
                     var fullpageLayout = new S36FullpageLayoutTimeline;
+                    console.log("Timeline");
+                    console.log(fullpageLayout);
                 }
 
                 if(theme == 'traditional') { 
                     var fullpageLayout = new S36FullpageLayoutTraditional;
+                    console.log("Traditional");
+                    console.log(fullpageLayout);
                 }
 
                 if(theme == 'treble') { 
                     var fullpageLayout = new S36FullpageLayoutTreble;
+                    console.log("Treble");
+                    console.log(fullpageLayout);
                 }
 
                 console.log(fullpageLayout.init_fullpage_layout()); // initialize document ready of the current layout javascripts
