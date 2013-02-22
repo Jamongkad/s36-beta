@@ -58,7 +58,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     $scope.admin_action = function(mystatus) {
-        console.log(mystatus);
+        QuickInboxService.change_feedback_status(mystatus, $scope.selected);
     }
 
     $scope.publish = function() {
