@@ -602,8 +602,7 @@ class DBFeedback extends S36DataObject {
         $in_query = implode(',', array_map(function($n) {
             return $n['feedid'];
         }, $feedbackids));
-        Helpers::dump($in_query);
-        /*
+
         $sql = ' 
             SELECT
                 '.$this->select_vars.'
@@ -666,7 +665,6 @@ class DBFeedback extends S36DataObject {
         $result_obj = new StdClass;
         $result_obj->result = $this->_return_feedback_nodes($result);
         return $result_obj; 
-        */ 
     }
 
     public function count_todays_feedback($company_id) {
