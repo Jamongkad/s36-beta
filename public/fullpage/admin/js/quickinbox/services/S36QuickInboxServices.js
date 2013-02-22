@@ -18,8 +18,6 @@ angular.module('S36QuickInboxServices', [])
 
                 var fullpageCommon = new S36FullpageCommon;
 
-                console.log(fullpageCommon);
-
                 if(theme == 'timeline') { 
                     fullpageLayout = new S36FullpageLayoutTimeline;
                     console.log("Timeline");
@@ -39,6 +37,7 @@ angular.module('S36QuickInboxServices', [])
                 fullpageCommon.init_fullpage_common()
                 S36FeedbackActions.initialize_actions(fullpageLayout)
 
+                $('.widget-list').jScrollPane();
             }
         });
     }
