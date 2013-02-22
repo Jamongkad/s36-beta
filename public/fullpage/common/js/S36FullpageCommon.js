@@ -121,4 +121,14 @@ var S36FullpageCommon = function(){
 			//no masonry!
 		}
 	}
+	
+	
+	// create a fullpage layout object.
+	this.create_layout = function(layout){
+		layout = layout.toLowerCase();
+		
+		if( layout == 'traditional' ) return new S36FullpageLayoutTraditional();
+		if( layout == 'timeline' ) return new S36FullpageLayoutTimeline();
+		if( layout == 'treble' ) return new S36FullpageLayoutTreble();
+	}
 }

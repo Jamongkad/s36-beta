@@ -144,9 +144,11 @@
 <?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
     $(document).ready(function(){
         var fullpageCommon = new S36FullpageCommon;
-        var fullpageLayout = new S36FullpageLayout<?php echo ucfirst($hosted->theme_name); ?>;
-        fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
+        var fullpageLayout = fullpageCommon.create_layout('<?php echo $hosted->theme_name; ?>');
+        
+        fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+        
         <?php if( ! is_null($user) ): //then display the admin bar by default ?>
             var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
             fullpageAdmin.init_fullpage_admin();
