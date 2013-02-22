@@ -1,13 +1,13 @@
+
+var fullpageLayout = new S36FullpageLayoutTimeLine;
+console.log(fullpageLayout);
+
 angular.module('S36QuickInboxServices', [])
 .service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
 
     shared_service.preview_feeds = function(feed_status, feeds) {         
-
-        var fullpageLayout = new S36FullpageLayoutTimeLine;
-
-        console.log(fullpageLayout);
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
