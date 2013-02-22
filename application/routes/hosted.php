@@ -29,8 +29,6 @@ return array(
     },
 
     'POST /hosted/change_feedback_status' => function() use ($feedback) { 
-        /*
-        */ 
         $data = Input::get();
         $mode  = $data['feedstatus'];
         $feeds = $data['feeds'];
