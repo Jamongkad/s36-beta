@@ -12,6 +12,7 @@ angular.module('S36QuickInboxServices', [])
           , success: function(data) {  
                 var fullpageLayout;
                 var theme = data.theme_name;
+
                 var fullpageCommon = new S36FullpageCommon;
 
                 if(theme == 'timeline') { 
@@ -26,11 +27,10 @@ angular.module('S36QuickInboxServices', [])
                     var fullpageLayout = new S36FullpageLayoutTreble;
                 }
 
-                fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
-                fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
+                console.log(fullpageLayout.init_fullpage_layout()); // initialize document ready of the current layout javascripts
+                console.log(fullpageCommon.init_fullpage_common()); // initialize document ready of the common javascript
 
-                S36FeedbackActions.initialize_actions(fullpageLayout);
-
+                console.log(S36FeedbackActions.initialize_actions(fullpageLayout));
                 $("#feedbackContainer").html(data.view);
             }
         });
