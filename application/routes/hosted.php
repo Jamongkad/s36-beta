@@ -45,13 +45,8 @@ return array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
 
-        $result_data = Array(
-            'view' => $view
-          , 'theme_name' => strtolower($hosted->theme_name)
-        );
-
+        $result_data = Array('view' => $view, 'theme_name' => strtolower($hosted->theme_name));
         echo json_encode($result_data);
-
         /*
         $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
         $feedbackstate->change_state();
