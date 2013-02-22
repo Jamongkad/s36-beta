@@ -174,7 +174,6 @@ return array(
 
         $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
         $header_view = new Hosted\Services\CompanyHeader($company->company_name, $company->fullpagecompanyname, $company->domain);
-        //echo "<pre>";print_r($company);echo "</pre>";
         return View::make('hosted/hosted_feedback_single_view', Array(
             'company'           => $company
           , 'user'              => $user
@@ -334,9 +333,6 @@ return array(
         }
     },
 
-    'GET /min'=>function(){
-        Package::load('minify');
-    }
 );
 
 function forward_or_dash() { 
