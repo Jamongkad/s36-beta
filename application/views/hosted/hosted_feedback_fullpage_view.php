@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('hosted' => $hosted, 'patterns' => $fullpage_patterns, 'panel' => $panel))?>
+<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>
@@ -122,7 +122,7 @@
             <!-- end of lightbox container -->
             
             <div id="feedbackContainer">
-                <?=View::make('hosted/partials/fullpage_'.strtolower($hosted->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
+                <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
             </div>
             <div id="feedback-infinitescroll-landing"></div> 
         </div>
@@ -137,14 +137,14 @@
 */
 ?>
 
-<?= HTML::style('/fullpage/layout/'.strtolower($hosted->theme_name).'/css/S36FullpageLayout'.ucfirst($hosted->theme_name).'.css'); ?>
-<?= HTML::script('/fullpage/layout/'.strtolower($hosted->theme_name).'/js/S36FullpageLayout'.ucfirst($hosted->theme_name).'.js'); ?>
+<?= HTML::style('/fullpage/layout/'.strtolower($panel->theme_name).'/css/S36FullpageLayout'.ucfirst($panel->theme_name).'.css'); ?>
+<?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
 <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 <script type="text/javascript">
-<?=(!empty($hosted->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$hosted->background_image.')");' : '' ?>
+<?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
     $(document).ready(function(){
         var fullpageCommon = new S36FullpageCommon;
-        var fullpageLayout = new S36FullpageLayout<?php echo ucfirst($hosted->theme_name); ?>;
+        var fullpageLayout = new S36FullpageLayout<?php echo ucfirst($panel->theme_name); ?>;
         fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         <?php if( ! is_null($user) ): //then display the admin bar by default ?>

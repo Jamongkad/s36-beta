@@ -43,16 +43,8 @@ return array(
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();        
 
-        //hosted settings
-        $hosted_settings->set_hosted_settings(Array('company_id' => $company_info->companyid));
-        $hosted_settings_info = $hosted_settings->hosted_settings();
-
-
-        Helpers::dump($hosted_settings_info);
-    
-        $h = $hosted_settings->get_panel_settings($company_info->companyid);
-        Helpers::dump($h);
-
+        //hosted settings 
+        $panel = $hosted_settings->get_panel_settings($company_info->companyid);
 
         $header_view = new Hosted\Services\CompanyHeader($company_info->company_name
                                                        , $company_info->fullpagecompanyname
@@ -72,10 +64,9 @@ return array(
                                                   , 'feed_count'        => $meta->perform()
                                                   , 'company_header'    => $header_view
                                                   , 'hosted_page_url'   => $hosted_page_url
-                                                  , 'hosted'            => $hosted_settings->get_panel_settings($company_info->companyid)
                                                   , 'fullpage_css'      => $fullpage->get_fullpage_css($company_info->companyid)
                                                   , 'fullpage_patterns' => $fullpage->get_fullpage_pattern()
-                                                  , 'panel'             => $hosted_settings->get_panel_settings($company_info->companyid) ));
+                                                  , 'panel'             => $panel ));
         
         // increment page view count of company.
         $company->incr_page_view($company_info->companyid);

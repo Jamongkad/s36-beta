@@ -1,4 +1,4 @@
-<input type="hidden" id="theme_name" name="theme_name" value="<?=$hosted->theme_name?>" />
+<input type="hidden" id="theme_name" name="theme_name" value="<?=$panel->theme_name?>" />
 <div id="adminWindowBox" ng-app="QuickInbox">
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
@@ -232,7 +232,7 @@
                     <div class="pageBody clear">
                         
                             <ul class="layout-list clear">
-                                <li <?=($hosted->theme_name=='Traditional') ? 'class="selected"' : ''?> id="Traditional">
+                                <li <?=($panel->theme_name=='Traditional') ? 'class="selected"' : ''?> id="Traditional">
                                     <div class="layout">
                                         <h3 class="layout-name">Traditional</h3>
                                         <div class="layout-thumb">
@@ -240,7 +240,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li <?=($hosted->theme_name=='Timeline') ? 'class="selected"' : ''?> id="Timeline">
+                                <li <?=($panel->theme_name=='Timeline') ? 'class="selected"' : ''?> id="Timeline">
                                     <div class="layout">
                                         <h3 class="layout-name">Timeline</h3>
                                         <div class="layout-thumb">
@@ -248,7 +248,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li <?=($hosted->theme_name=='Treble') ? 'class="selected"' : ''?> id="Treble">
+                                <li <?=($panel->theme_name=='Treble') ? 'class="selected"' : ''?> id="Treble">
                                     <div class="layout">
                                         <h3 class="layout-name">Treble</h3>
                                         <div class="layout-thumb">
