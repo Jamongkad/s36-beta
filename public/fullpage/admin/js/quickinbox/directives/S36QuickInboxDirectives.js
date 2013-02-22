@@ -182,21 +182,6 @@ angular.module('S36QuickInboxDirectives', [])
 });
 
 //helper functions
-function feedback_fadein(elem) { 
-    $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeOut(400, function() { 
-        $(elem).parents('.widget-item').children('.widget-undo').show();
-        $('.widget-list').jScrollPane();
-    });
- 
-}
-
-function feedback_fadeout(elem) {
-    $(elem).parents('.widget-item').children('.widget-undo').hide();
-    $(elem).parents('.widget-item').children('.widget-avatar, .widget-content, .widget-actions').fadeIn(400, function() { 
-        $('.widget-list').jScrollPane();
-    });
-}
-
 function ucwords(str) {
     return (str + '').replace(/^([a-z])|\s+([a-z])/g, function ($1) {
         return $1.toUpperCase();

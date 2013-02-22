@@ -3,8 +3,7 @@ angular.module('S36QuickInboxServices', [])
     
     var shared_service = {};
 
-    shared_service.change_feedback_status = function(feedstatus, feeds) {
-        
+    shared_service.change_feedback_status = function(feedstatus, feeds) { 
         $.ajax({
             type: 'POST'    
           , data: { 'feedstatus': feedstatus, 'feeds': unique(feeds) }

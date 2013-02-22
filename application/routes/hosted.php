@@ -30,11 +30,14 @@ return array(
 
     'POST /hosted/change_feedback_status' => function() use ($feedback) { 
         /*
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
-        $feedbackstate->change_state();
         */ 
         $data = Input::get();
-        Helpers::dump($data);
+        $mode  = $data['feedstatus'];
+        $feeds = $data['feeds'];
+        $auth  = S36Auth::user();
+
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feedids, $auth->companyid);
+        $feedbackstate->change_state();
     },
 
     'POST /hosted/render_feeds' => function() use ($feedback) {
