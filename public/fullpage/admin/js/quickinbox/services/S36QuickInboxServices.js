@@ -31,7 +31,7 @@ angular.module('S36QuickInboxServices', [])
 
                 S36FeedbackActions.initialize_actions(fullpageLayout);
                 */
-                $("#feedbackContainer").html(data);
+                $("#feedbackContainer").html(data.view);
             }
         });
     }
