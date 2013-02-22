@@ -10,12 +10,10 @@ angular.module('S36QuickInboxServices', [])
             if($.inArray(el, unique) === -1) unique.push(el);
         });
 
-        console.log(unique);
-
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
-          , data: { 'status': feed_status, 'feeds': feeds }
+          , data: { 'status': feed_status, 'feeds': unique }
           , url: '/hosted/preview_feeds'
           , success: function(data) {  
 
