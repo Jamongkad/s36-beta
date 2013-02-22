@@ -7,7 +7,7 @@ angular.module('S36QuickInboxServices', [])
 
         var unique = [];
         $.each(feeds, function(i, el){
-            if($.inArray(el, uniqueNames) === -1) unique.push(el);
+            if($.inArray(el, unique) === -1) unique.push(el);
         });
 
         console.log(unique);
