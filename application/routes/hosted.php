@@ -39,13 +39,16 @@ return array(
         $sets = $hosted->group_and_build();
         $user = S36Auth::user();
 
+        $hosted_settings = new Hosted\Repositories\DBHostedSettings;
+        $hosted = $hosted_settings->get_panel_settings(6);
+
         $view = View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
         ))->get();
 
         $result_data = Array(
             'view' => $view
-          , 'theme_name' => 'treble'
+          , 'theme_name' => strtolower($hosted->theme_name)
         );
 
         echo json_encode($result_data);
