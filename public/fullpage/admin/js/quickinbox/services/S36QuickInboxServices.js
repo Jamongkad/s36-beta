@@ -2,19 +2,23 @@ angular.module('S36QuickInboxServices', [])
 .service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
-   
-    shared_service.preview_feeds = function(feed_status, feeds) {         
 
-        var unique = [];
-        $.each(feeds, function(i, el){
-            if($.inArray(el, unique) === -1) unique.push(el);
+    shared_service.change_feedback_status = function(feedstatus, feeds) {
+        
+        $.ajax({
+            type: 'POST'    
+          , data: { 'feedstatus': feedstatus, 'feeds': unique(feeds) }
+          , url: '/hosted/change_feedback_status'
         });
+    }
+   
+    shared_service.render_feeds = function(feeds) {         
 
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
-          , data: { 'status': feed_status, 'feeds': unique }
-          , url: '/hosted/preview_feeds'
+          , data: { 'feeds': unique(feeds) }
+          , url: '/hosted/render_feeds'
           , success: function(data) {  
 
                 $("#feedbackContainer").html(data.view);
@@ -50,3 +54,12 @@ angular.module('S36QuickInboxServices', [])
  
     return shared_service;
 });
+
+function unique(myarray) { 
+    var unique = [];
+    $.each(myarray, function(i, el){
+        if($.inArray(el, unique) === -1) unique.push(el);
+    });
+
+    return unique
+}

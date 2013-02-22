@@ -28,7 +28,16 @@ return array(
         echo json_encode($feeds->nodes);
     },
 
-    'POST /hosted/preview_feeds' => function() use ($feedback) {
+    'POST /hosted/change_feedback_status' => function() use ($feedback) { 
+        /*
+        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
+        $feedbackstate->change_state();
+        */ 
+        $data = Input::get();
+        Helpers::dump($data);
+    },
+
+    'POST /hosted/render_feeds' => function() use ($feedback) {
         $company_name = Config::get('application.subdomain');
         $data = Input::get();
         $feeds = $data['feeds'];
@@ -47,9 +56,5 @@ return array(
 
         $result_data = Array('view' => $view, 'theme_name' => strtolower($hosted->theme_name));
         echo json_encode($result_data);
-        /*
-        $feedbackstate = new Feedback\Services\FeedbackState($mode, $feed_ids, $auth->companyid);
-        $feedbackstate->change_state();
-        */
     }
 );
