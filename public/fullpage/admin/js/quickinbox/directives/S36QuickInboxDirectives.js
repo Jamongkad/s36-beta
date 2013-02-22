@@ -1,40 +1,5 @@
 angular.module('S36QuickInboxDirectives', [])
-/*
-.directive('feature', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                var me = this;
-                feedback_fadein(me);
-            })
-        }
-    }     
-})
-.directive('delete', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                var me = this;
-                feedback_fadein(me);
-            })
-        }
-    }     
-})
-.directive('undo', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                var me = this;
-                feedback_fadeout(me);
-            })
-        }
-    }          
-})
-*/
-.directive('publish', function() {
+.directive('feedbackout', function() {
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) {

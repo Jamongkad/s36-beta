@@ -59,32 +59,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.admin_action = function(mystatus) {
         QuickInboxService.change_feedback_status(mystatus, $scope.selected);
-    }
-
-    $scope.publish = function() {
         //QuickInboxService.render_feeds($scope.selected);
-        QuickInboxService.change_feedback_status('publish', $scope.selected);
-    }
-
-    $scope.feature = function() { 
-        /*
-        $scope.featured = id;
-        QuickInboxService.change_feedback_state(id, 'feature');
-        */
-    }
-
-    $scope.delete = function() {
-        /*
-        $scope.deleted = id;
-        QuickInboxService.change_feedback_state(id, 'delete');
-        */
-    }
-
-    $scope.undo_action = function() {
-        /*
-        $scope.undo = id;
-        QuickInboxService.change_feedback_state(id, 'restore'); 
-        */
     }
 
     $scope.test_punch = function(data) {
