@@ -4,13 +4,17 @@ angular.module('S36QuickInboxServices', [])
     var shared_service = {};
 
     shared_service.preview_feeds = function(feed_status, feeds) {         
+
+        var fullpageLayout = new S36FullpageLayoutTimeLine;
+
+        console.log(fullpageLayout);
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
           , data: { 'status': feed_status, 'feeds': feeds }
           , url: '/hosted/preview_feeds'
           , success: function(data) {  
-                console.log(data);
+              /*
                 $("#feedbackContainer").html(data);
                 var fullpageLayout;
                 var theme = data.theme_name;
@@ -32,6 +36,7 @@ angular.module('S36QuickInboxServices', [])
                 fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
 
                 S36FeedbackActions.initialize_actions(fullpageLayout);
+                */
             }
         });
     }
