@@ -64,7 +64,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         */
         //console.log($scope.selected);
         QuickInboxService.preview_feeds('publish', $scope.selected);
-        console.log($scope.selected);
     }
 
     $scope.feature = function() { 
