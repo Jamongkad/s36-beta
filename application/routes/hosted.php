@@ -40,7 +40,7 @@ return array(
         $user = S36Auth::user();
 
         $hosted_settings = new Hosted\Repositories\DBHostedSettings;
-        $hosted = $hosted_settings->get_panel_settings(6);
+        $hosted = $hosted_settings->get_panel_settings($user->companyid);
 
         $view = View::make('hosted/partials/hosted_feedback_partial_view', Array(
             'collection' => $sets, 'fb_id' => Config::get('application.fb_id'), 'user' => $user
