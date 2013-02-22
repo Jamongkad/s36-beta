@@ -4,6 +4,14 @@ angular.module('S36QuickInboxServices', [])
     var shared_service = {};
    
     shared_service.preview_feeds = function(feed_status, feeds) {         
+
+        var unique = [];
+        $.each(feeds, function(i, el){
+            if($.inArray(el, uniqueNames) === -1) unique.push(el);
+        });
+
+        console.log(unique);
+
         $.ajax({
             type: 'POST'    
           , dataType: 'json'
