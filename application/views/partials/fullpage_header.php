@@ -68,7 +68,6 @@ echo HTML::script('/min/?g=FullpageCommon.js');
 if( ! is_null(\S36Auth::user()) ):
 echo HTML::style('/min/?g=FullpageAdmin.css');
 echo HTML::script('/min/?g=FullpageAdmin.js');
-echo HTML::script('/min/?g=QuickInbox.js');
 endif;
 ?>
 </head>
