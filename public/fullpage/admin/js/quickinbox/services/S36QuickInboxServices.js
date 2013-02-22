@@ -2,7 +2,7 @@ angular.module('S36QuickInboxServices', [])
 .service('QuickInboxService', function($rootScope) {
     
     var shared_service = {};
-
+   
     shared_service.preview_feeds = function(feed_status, feeds) {         
         $.ajax({
             type: 'POST'    
@@ -16,7 +16,7 @@ angular.module('S36QuickInboxServices', [])
                 var fullpageCommon = new S36FullpageCommon;
 
                 if(theme == 'timeline') { 
-                    var fullpageLayout = new S36FullpageLayoutTimeLine;
+                    var fullpageLayout = new S36FullpageLayoutTimeline;
                 }
 
                 if(theme == 'traditional') { 
