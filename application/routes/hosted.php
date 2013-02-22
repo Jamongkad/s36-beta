@@ -31,7 +31,6 @@ return array(
     'POST /hosted/preview_feeds' => function() use ($feedback) {
         $company_name = Config::get('application.subdomain');
         $data = Input::get();
-        $mode = $data['status'];
         $feeds = $data['feeds'];
 
         $fb = $feedback->cherry_pick_feedback($feeds, $company_name);

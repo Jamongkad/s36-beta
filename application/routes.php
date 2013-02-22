@@ -333,6 +333,9 @@ return array(
         }
     },
 
+    'GET /min'=>function(){
+        Package::load('minify');
+    }
 );
 
 function forward_or_dash() { 
