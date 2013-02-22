@@ -599,7 +599,9 @@ class DBFeedback extends S36DataObject {
     }
 
     public function cherry_pick_feedback($feedbackids, $company_name) {
-        $in_query = implode(',', $feedbackids);
+        Helpers::dump($feedbackids);
+        //$in_query = implode(',', $feedbackids);
+        /*
         $sql = ' 
             SELECT
                 '.$this->select_vars.'
@@ -656,18 +658,13 @@ class DBFeedback extends S36DataObject {
         
         $client_ip = Helpers::get_client_ip();
         $sth = $this->dbh->prepare($sql);
-        /*
-        foreach($feedbackids as $k => $id) {
-            $sth->bindValue(($k+1), $id);
-        }
-        */
         $sth->execute(array(':company_name_one' => $company_name, ':company_name_two' => $company_name, ':client_ip' => $client_ip));
         $result = $sth->fetchAll(PDO::FETCH_CLASS);
         
         $result_obj = new StdClass;
         $result_obj->result = $this->_return_feedback_nodes($result);
         return $result_obj; 
-        
+        */ 
     }
 
     public function count_todays_feedback($company_id) {
