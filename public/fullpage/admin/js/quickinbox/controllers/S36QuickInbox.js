@@ -57,6 +57,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         return $scope.selected.indexOf(id) >= 0;   
     }
 
+    $scope.admin_action = function(mystatus) {
+        console.log(mystatus);
+    }
+
     $scope.publish = function() {
         //QuickInboxService.render_feeds($scope.selected);
         QuickInboxService.change_feedback_status('publish', $scope.selected);
