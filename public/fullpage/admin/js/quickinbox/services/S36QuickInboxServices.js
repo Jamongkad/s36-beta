@@ -34,10 +34,10 @@ angular.module('S36QuickInboxServices', [])
                     fullpageLayout = new S36FullpageLayoutTreble;
                     console.log("Treble");
                 }
-
-                console.log(fullpageLayout.init_fullpage_layout()); // initialize document ready of the current layout javascripts
-                console.log(fullpageCommon.init_fullpage_common()); // initialize document ready of the common javascript
-                console.log(S36FeedbackActions.initialize_actions(fullpageLayout));
+               
+                fullpageLayout.init_fullpage_layout()
+                fullpageCommon.init_fullpage_common()
+                S36FeedbackActions.initialize_actions(fullpageLayout)
 
             }
         });
