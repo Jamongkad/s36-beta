@@ -27,6 +27,8 @@ angular.module('S36QuickInboxServices', [])
                     var fullpageLayout = new S36FullpageLayoutTreble;
                 }
 
+                console.log(fullpageLayout);
+
                 fullpageLayout.init_fullpage_layout(); // initialize document ready of the current layout javascripts
                 fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
 
