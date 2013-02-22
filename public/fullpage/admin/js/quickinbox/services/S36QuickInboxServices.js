@@ -10,6 +10,9 @@ angular.module('S36QuickInboxServices', [])
           , data: { 'status': feed_status, 'feeds': feeds }
           , url: '/hosted/preview_feeds'
           , success: function(data) {  
+
+                $("#feedbackContainer").html(data.view);
+
                 var fullpageLayout;
                 var theme = data.theme_name;
 
@@ -34,8 +37,8 @@ angular.module('S36QuickInboxServices', [])
 
                 console.log(fullpageLayout.init_fullpage_layout()); // initialize document ready of the current layout javascripts
                 console.log(fullpageCommon.init_fullpage_common()); // initialize document ready of the common javascript
-                //console.log(S36FeedbackActions.initialize_actions(fullpageLayout));
-                $("#feedbackContainer").html(data.view);
+                console.log(S36FeedbackActions.initialize_actions(fullpageLayout));
+
             }
         });
     }
