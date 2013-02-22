@@ -11,7 +11,7 @@ return array(
 
     'GET /hosted/fullpage_partial/(:num?)' => function($page=False) use ($feedback) { 
         $user = S36Auth::user();
-        $coompany_name = Config::get('application.subdomain');
+        $company_name = Config::get('application.subdomain');
         $fb = $feedback->televised_feedback_alt($company_name);
         $hosted = new Feedback\Services\HostedService($company_name, $fb->result); 
         $hosted->page_number = $page;
