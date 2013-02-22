@@ -53,9 +53,6 @@
                                             <div class="widget-date">
                                                 <div feedbackdate date="{{feeds.date}}"></div>
                                             </div>
-
-                                            <!--
-                                            -->
                                         </div>
                                     </div>
                                     <!--quick inbox loop-->
