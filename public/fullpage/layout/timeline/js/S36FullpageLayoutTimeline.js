@@ -4,11 +4,10 @@
 ||
 ||=========================================*/
 var S36FullpageLayoutTimeline = function(){
-    var common = new S36FullpageCommon;
     /* ========================================
     || Function needed to run by document ready
     ==========================================*/
-    this.init_fullpage_layout = function(){
+    this.init_fullpage_layout = function(common){
         common.init_masonry(100,365,750);
         this.add_branches();
     }
