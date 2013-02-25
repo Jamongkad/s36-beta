@@ -29,7 +29,7 @@ angular.module('S36QuickInboxDirectives', [])
                 } 
             }) 
         }
-      , template: '<spa ng-bind-html-unsafe="socialsrc"></span>'
+      , template: '<span ng-bind-html-unsafe="socialsrc"></span>'
     } 
 })
 .directive('feedbackdate', function() { 
@@ -41,7 +41,7 @@ angular.module('S36QuickInboxDirectives', [])
                 scope.time = '<div class="the-date">' + d.toString('MMMM d, yyyy') + '</div>' + '<div class="the-time">' + d.toString('h:mm:ss tt') + '</div>';
             }) 
         }
-      , template: '<spa ng-bind-html-unsafe="time"></span>'
+      , template: '<span ng-bind-html-unsafe="time"></span>'
     } 
 })
 .directive('infoblock', function() { 
