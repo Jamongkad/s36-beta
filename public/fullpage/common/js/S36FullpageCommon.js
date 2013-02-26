@@ -38,7 +38,8 @@ var S36FullpageCommon = function(){
 			$('.lightbox-shadow').fadeOut('fast');
 		});
 		$('.share-button').click(function(){
-			$(this).find('.share-box').fadeToggle('fast');
+			//$(this).find('.share-box').fadeToggle('fast');
+			$(this).find('.share-box').toggle();
 		});
 		$('.share-box').hover(function(){},function(){
 			$(this).fadeOut('fast');

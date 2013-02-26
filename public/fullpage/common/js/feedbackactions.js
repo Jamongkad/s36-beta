@@ -133,12 +133,14 @@ var S36FeedbackActions = new function() {
                 tw_share.addClass('twitter-share-button');
                 twttr.widgets.load();
             } 
-
-            $(this).find('.share-box').fadeIn('fast').hover(function() { 
+            
+            /*
+            $(this).find('.share-box').fadeIn('fast').hover(function() {
                 fb_like.addClass('fb-like');
             }, function() {
                 $(this).fadeOut('fast');
             });
+            */
 
             e.preventDefault();
         });
