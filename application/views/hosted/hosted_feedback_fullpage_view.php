@@ -145,7 +145,7 @@
 <?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
     $(document).ready(function(){
         var fullpageCommon = new S36FullpageCommon;
-        var fullpageLayout = fullpageCommon.create_layout('<?php echo $hosted->theme_name; ?>'); 
+        var fullpageLayout = fullpageCommon.create_layout('<?php echo $panel->theme_name; ?>'); 
         fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         
