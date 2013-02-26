@@ -29,7 +29,7 @@ return array(
 	| The Directories used to access your different assets. No trailing slash.
 	|
 	*/
-
+	'assets_dir'			=> $determine->d->assets_dir,
     'avatar48_dir'			=> '/uploaded_images/avatar/48x48',
     'avatar150_dir'			=> '/uploaded_images/avatar/150x150',
     'coverphoto_dir'		=> '/uploaded_images/coverphoto',

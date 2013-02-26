@@ -48,7 +48,7 @@ class Determiner {
              , 'db' => 's36_mathew'
            );
 
-           $obj->env_name = 'dev';
+           $obj->env_name = 'development';
            $obj->fb_id = '238865422903471';
            $obj->fb_secret = '8d466d68dd088e4b7425f295fcf9d194';
        }
@@ -60,7 +60,7 @@ class Determiner {
              , 'password' => 'brx4*svv'
              , 'db' => 's36_kennwel'
            );
-           $obj->env_name = 'dev';
+           $obj->env_name = 'development';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
        }
@@ -72,7 +72,7 @@ class Determiner {
              , 'password' => 'brx4*svv'
              , 'db' => 's36_robert'
            );
-           $obj->env_name = 'dev';
+           $obj->env_name = 'development';
            $obj->fb_id = '201862876610477';
            $obj->fb_secret = 'abb9a2a6b21385ed820beaac8f332d9a';
        }
@@ -89,7 +89,7 @@ class Determiner {
            );
 
            $obj->deploy_env = 'https://feedback.36storiesapp.com';
-           $obj->env_name = 'prod';
+           $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
        }
@@ -104,7 +104,7 @@ class Determiner {
            );
 
            $obj->deploy_env = 'https://feedback.fdback.com';
-           $obj->env_name = 'prod';
+           $obj->env_name = 'production';
            $obj->fb_id = '259670914062599';
            $obj->fb_secret   = '8e0666032461a99fb538e5f38ac7ef93';
        }
@@ -118,15 +118,12 @@ class Determiner {
            return $obj;
        }
        */
-      
-      if($obj->env_name == 'dev'){
-       $this->assets_dir = $this->assets_base_dir.'/'.$obj->env_name.'/'.$this->http_host;
-       if (!is_dir($this->assets_dir)) {
-            mkdir($this->assets_dir,0777,true);
-            $obj->assets_dir = $this->assets_dir;
-        }
-      }else{
-        $obj->assets_dir = $this->assets_base_dir.'/'.$obj->env_name;
+      $obj->assets_dir = $this->assets_base_dir.'/'.$obj->env_name;
+      if($obj->env_name == 'development'){
+          $obj->assets_dir = $obj->assets_dir.'/'.$this->http_host;
+      }
+      if(!is_dir($obj->assets_dir)) {
+        mkdir($obj->assets_dir,0777,true);
       }
       return $obj;
    }
