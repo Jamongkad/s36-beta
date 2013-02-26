@@ -36,12 +36,12 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
 
-  <?if($env == 'dev' or $env == 'local'):?>
+  <?if($env == 'development'):?>
   //DEV API KEY
   api_key: 1m2dv6lkxpoa
   <?endif?>
 
-  <?if($env == 'prod'):?>
+  <?if($env == 'production'):?>
   //PROD API KEY
   api_key: 1b773lzkdw3f
   <?endif?>
