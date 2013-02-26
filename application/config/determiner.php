@@ -35,7 +35,7 @@ class Determiner {
              , 'db' => 's36'
            );
 
-           $obj->env_name = 'dev';
+           $obj->env_name = 'staging';
            $obj->fb_id = '171323469605899';
            $obj->fb_secret = 'b60766ccb12c32c92029a773f7716be8';
        }
@@ -118,14 +118,17 @@ class Determiner {
            return $obj;
        }
        */
-
-        
+      
+      if($obj->env_name == 'dev'){
        $this->assets_dir = $this->assets_base_dir.'/'.$obj->env_name.'/'.$this->http_host;
        if (!is_dir($this->assets_dir)) {
-                mkdir($this->assets_dir,0777,true);
-                $obj->assets_dir = $this->assets_dir;
+            mkdir($this->assets_dir,0777,true);
+            $obj->assets_dir = $this->assets_dir;
         }
-        return $obj;
+      }else{
+        $obj->assets_dir = $this->assets_base_dir.'/'.$obj->env_name;
+      }
+      return $obj;
    }
   
    public function http_subdomain() {     
