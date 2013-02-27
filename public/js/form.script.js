@@ -292,7 +292,7 @@ $(document).keypress(function(event){
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].small_url,'width':'100%'}))
+							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}))
 							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
 							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
 							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
@@ -303,7 +303,7 @@ $(document).keypress(function(event){
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].small_url,'width':'100%'}).addClass('attachment'))
+							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}).addClass('attachment'))
 							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
 							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
 							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
@@ -722,7 +722,18 @@ $(document).keypress(function(event){
 			}else{
 				return true;
 			}
-		}else if(type == "email"){ //if type is email
+		}
+		else if(type == "url"){
+			if((value.length <= 0) || (value == default_val)){
+				return false;
+			}else{
+				var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+				var url = new RegExp(expression);
+				if(!value.match(url)) return false
+				else return true;
+			}
+		}
+		else if(type == "email"){ //if type is email
 			if((value.length <= 0) || (value == default_val)){
 				return false;
 			}else if(!validate_email(value)){
@@ -760,6 +771,7 @@ $(document).keypress(function(event){
 			var email		= $('#your_email');
 			var city 		= $('#your_city');
 			var country 	= $('#your_country');
+			var website 	= $('#your_website');
 			if(!validate_field(fname.attr('id'),fname.val(),fname.attr('title'), "regular")){
 				fname.focus();
 				display_error_mes(['Please Enter Your First Name']);
@@ -780,7 +792,11 @@ $(document).keypress(function(event){
 				country.focus();
 				display_error_mes(['Please Select Your Country']);
 				return false;
-			}else{
+			}else if(!validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
+				website.focus();
+				display_error_mes(['Please Enter a valid website address']);
+			}
+			else{
 				return true;
 			}
 		}
