@@ -33,11 +33,13 @@
                 <?php endif; ?>
                 
                 <div id="coverPhoto">
-                    <?php if( ! is_null($user) ): ?>
-                        <?php if( is_null($company->coverphoto_src) ): ?>
+                    <?php if( ! is_null($company->coverphoto_src) ): ?>
+                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                    <?php else: ?>
+                        <?php if( ! is_null($user) ): ?>
                             <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
                         <?php else: ?>
-                            <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                            <? // default public coverphoto here. ?>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
