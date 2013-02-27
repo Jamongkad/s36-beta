@@ -39,7 +39,7 @@
                         <?php if( ! is_null($user) ): ?>
                             <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
                         <?php else: ?>
-                            <? // default public coverphoto here. ?>
+                            <img width="850px" src="img/public-coverphoto.jpg" />
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
