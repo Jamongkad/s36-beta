@@ -17,29 +17,30 @@
             <div id="theBarTab" class=""></div>
             <div id="coverPhotoContainer">
                 
+                <?php if( ! is_null($user) ): ?>
+                    <div id="changeCoverButton">
+                        <div id="changeButtonText">            
+                            <span>Change Cover</span>
+                        </div>
+                        <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
+                    </div>
+                    <div id="saveCoverButton">
+                        Save Cover
+                    </div>
+                    <div id="dragPhoto">
+                        Drag Image to Reposition Cover
+                    </div>
+                <?php endif; ?>
                 
+                <div id="coverPhoto">
                     <?php if( ! is_null($user) ): ?>
-                        <div id="changeCoverButton">
-                            <div id="changeButtonText">            
-                                <span>Change Cover</span>
-                            </div>
-                            <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
-                        </div>
-                        <div id="saveCoverButton">
-                            Save Cover
-                        </div>
-                        <div id="dragPhoto">
-                            Drag Image to Reposition Cover
-                        </div>
-                    <?php endif; ?>
-                    
-                    <div id="coverPhoto">
                         <?php if( is_null($company->coverphoto_src) ): ?>
                             <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
                         <?php else: ?>
                             <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                         <?php endif; ?>
-                    </div>
+                    <?php endif; ?>
+                </div>
                 
                 
                 <!-- social link icons 1/28/2013 -->
@@ -166,10 +167,10 @@
         /*
         / Infinite Scroll
         */
-        S36FeedbackActions.initialize_actions(fullpageLayout);
+        S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
         var counter = 0;    
         function update() {
-           if( ($(window).scrollTop() + $(window).height() + 400) >= $(document).height()) {
+            if( ($(window).scrollTop() + $(window).height() + 400) >= $(document).height()) {
                 if( $('#adminWindowBox').length && $('#adminWindowBox').css('display') == 'block' ) return;
 
                 counter += 1;
@@ -187,7 +188,7 @@
 
             fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
-            S36FeedbackActions.initialize_actions(fullpageLayout);
+            S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
         }
         //rate limit this bitch
         var throttled = _.throttle(update, 800);

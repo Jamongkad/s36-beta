@@ -14,9 +14,9 @@ var S36FeedbackActions = new function() {
     var send_button = '.send-button';
 
     var me = this;
-    var common = new S36FullpageCommon;
+    //var common = new S36FullpageCommon;
 
-    this.initialize_actions = function(layoutObj) {
+    this.initialize_actions = function(layoutObj, common) {
         me.flag_inapprt();
         me.undo_flag();
         me.vote();
@@ -118,7 +118,7 @@ var S36FeedbackActions = new function() {
         });
     }
 
-    this.share = function() {      
+    this.share = function() {
         $(share).unbind('click.share_feedback').bind('click.share_feedback', function(e) {
      
             var fb_like = $(this).parents(feedback).find(fb_like_dummy);
@@ -133,6 +133,10 @@ var S36FeedbackActions = new function() {
                 tw_share.addClass('twitter-share-button');
                 twttr.widgets.load();
             } 
+            
+            $(this).find('.share-box').toggle().hover(function(){},function(){
+                $(this).fadeOut('fast');
+            });
             
             /*
             $(this).find('.share-box').fadeIn('fast').hover(function() {

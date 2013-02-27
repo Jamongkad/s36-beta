@@ -39,10 +39,10 @@ var S36FullpageCommon = function(){
 		});
 		$('.share-button').click(function(){
 			//$(this).find('.share-box').fadeToggle('fast');
-			$(this).find('.share-box').toggle();
+			//$(this).find('.share-box').toggle();
 		});
 		$('.share-box').hover(function(){},function(){
-			$(this).fadeOut('fast');
+			//$(this).fadeOut('fast');
 		});
 	}
 	/* ========================================
@@ -112,8 +112,8 @@ var S36FullpageCommon = function(){
 	this.reload_layout_masonry = function(layout){
 		var layout_name = layout.layout_name;
 		if(layout_name == 'timeline'){
-			$('.left-branch').remove();
-			$('.right-branch').remove();
+			//$('.left-branch').remove();
+			//$('.right-branch').remove();
 			$.when($('.feedback-list').masonry()).then(function(){layout.add_branches()});
 		}else if(layout_name == 'treble'){
 			$('.feedback-list').masonry('reload');
