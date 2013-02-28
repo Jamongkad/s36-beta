@@ -76,6 +76,10 @@ class FireMultiple {
                 $message = "Feedback has been deleted.";
             }
 
+            if($this->mode == 'restore') {
+                $message = "Feedback has been restored.";
+            }
+
             echo json_encode(Array('ui' => $obj, 'message' => $message));
         }  
     }    
