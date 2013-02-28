@@ -451,10 +451,11 @@ $(document).keypress(function(event){
 		
 		/* check email if valid on blur */
 		$('#your_email').blur(function(){
-			if(!validate_field( $(this).attr('id')   , $(this).val()   , $(this).attr('title')   , "email")){
-				display_error_mes(['Please Enter A Valid Email']);
+			if(!validate_field( $(this).attr('id'),$(this).val(),$(this).attr('title'),"email")){
+				display_error_mes(['Please enter a valid email']);
 			}
 		});
+		
 		
 		$('.fullscreen-icon,#edit_text_link').click(function(){
 			display_text_editor();
@@ -764,7 +765,7 @@ $(document).keypress(function(event){
 		}
 	}
 
-	function validate_form(){		
+	function validate_form(){
 		if($('#formBody').find('.current').attr('id') == "step2"){
 			var fname 		= $('#your_fname'); 
 			var lname 		= $('#your_lname'); 
@@ -772,29 +773,33 @@ $(document).keypress(function(event){
 			var city 		= $('#your_city');
 			var country 	= $('#your_country');
 			var website 	= $('#your_website');
+
 			if(!validate_field(fname.attr('id'),fname.val(),fname.attr('title'), "regular")){
 				fname.focus();
-				display_error_mes(['Please Enter Your First Name']);
+				display_error_mes(['Please enter your first Name']);
 				return false;
 			}else if(!validate_field( lname.attr('id')   , lname.val()   , lname.attr('title')   , "regular")){
 				lname.focus();
-				display_error_mes(['Please Enter Your Last Name']);
+				display_error_mes(['Please enter your last Name']);
 				return false;
 			}else if(!validate_field( email.attr('id')   , email.val()   , email.attr('title')   , "email")){
 				email.focus();
-				display_error_mes(['Please Enter A Valid Email']);
+				display_error_mes(['Please enter a valid email']);
 				return false;
 			}else if(!validate_field( city.attr('id')    , city.val()    , city.attr('title')    , "regular")){
 				city.focus();
-				display_error_mes(['Please Enter Your City']);
+				display_error_mes(['Please enter your city']);
 				return false;
 			}else if(!validate_field( country.attr('id') , country.val() , country.attr('title') , "regular")){
 				country.focus();
-				display_error_mes(['Please Select Your Country']);
+				display_error_mes(['Please select your country']);
 				return false;
-			}else if(!validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
+			}else if(!website.hasClass('default-text')){
+				if(!validate_field( website.attr('id'), website.val(),website.attr('title'), "url")){
 				website.focus();
-				display_error_mes(['Please Enter a valid website address']);
+				display_error_mes(['Please enter a valid website address']);
+				return false;
+				}
 			}
 			else{
 				return true;
