@@ -24,7 +24,7 @@ class HostedService {
     private $featured_count;
     private $published_count;
     
-    public function __construct($company_name, $feeds) {
+    public function __construct($company_name, $feeds=Null) {
         $this->redis    = new redisent\Redis;
         $this->key_name = $company_name.":fullpage:data";
         $this->feeds    = $feeds;

@@ -62,8 +62,21 @@ class FireMultiple {
                     $obj[$hseek] = $members;
                 }
             }
+             
+            $message = null;
+            if($this->mode == 'publish') {
+                $message = "Feedback has been published.";
+            }
+            
+            if($this->mode == 'feature') {
+                $message = "Feedback has been featured.";
+            }
 
-            echo json_encode(Array('ui' => $obj, 'message' => $this->mode));
+            if($this->mode == 'delete') {
+                $message = "Feedback has been deleted.";
+            }
+
+            echo json_encode(Array('ui' => $obj, 'message' => $message));
         }  
     }    
 }
