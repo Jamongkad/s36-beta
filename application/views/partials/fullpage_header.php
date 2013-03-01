@@ -89,7 +89,7 @@ endif;
             <div class="barLinks">
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
-                    <li>Signed in as <span><?=\S36Auth::user()->username?></span></li>
+                    <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
                     <li><a href="#" id="admin_panel">Admin Panel</a></li>
                     <li><a href="/dashboard">My Dashboard</a></li>
                     <li><a href="/admin">My Account</a>
