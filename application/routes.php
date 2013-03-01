@@ -350,9 +350,9 @@ return array(
 function forward_or_dash() { 
     if($forward_to = Input::get('forward_to')) {
         if($forward_to == 'me') { 
-            return redirect::to('/');
+            return Redirect::to('/');
         }
-        return redirect::to($forward_to);
+        return Redirect::to($forward_to);
     } else {
         return Redirect::to('dashboard');     
     } 
