@@ -332,11 +332,6 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/reset_password_success_view');        
         }
     },
-    
-    //important! this loads the minify library for static assets
-    'GET /min'=>function(){
-        Package::load('s36minify');
-    }
 );
 
 function forward_or_dash() { 
