@@ -110,7 +110,7 @@
                 </div>
                 <div class="admin-meta">
                     <div id="bye">
-                        <?=HTML::link('logout', 'Sign Out')?>
+                        <?=HTML::link('logout?forward_to=me', 'Sign Out')?>
                     </div>
                 </div>
             </div>

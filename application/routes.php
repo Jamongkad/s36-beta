@@ -232,7 +232,13 @@ return array(
     
     'GET /logout' => function() {
         S36Auth::logout();
-        return Redirect::to('login');
+        if($forward_to = Input::get('forward_to')) { 
+            if($forward_to == 'me') { 
+                return redirect::to('/');
+            }
+        } else {
+            return Redirect::to('login');     
+        } 
     },
 
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {
@@ -343,7 +349,10 @@ return array(
 
 function forward_or_dash() { 
     if($forward_to = Input::get('forward_to')) {
-        return Redirect::to($forward_to);
+        if($forward_to == 'me') { 
+            return redirect::to('/');
+        }
+        return redirect::to($forward_to);
     } else {
         return Redirect::to('dashboard');     
     } 
