@@ -52,6 +52,7 @@ $groups = array(
             ,'/fullpage/admin/js/S36FullpageAdmin.js'
         )
      ),
+     /* Weird Angular JS conflicts arise when minified
      'QuickInbox.js' => array(
         'type' =>'js',
         'files'=>array(
@@ -61,6 +62,7 @@ $groups = array(
            ,'/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js' 
         )
      ),
+     */
      'FullpageAdmin.css' => array(
         'type' =>'css',
         'files'=>array(
