@@ -335,7 +335,7 @@ return array(
     
     //important! this loads the minify library for static assets
     'GET /min'=>function(){
-        Package::load('minify');
+        Package::load('s36minify');
     }
 );
 

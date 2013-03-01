@@ -50,15 +50,15 @@ window.location.href = window.location.pathname+window.location.hash;
 | Global
 |--------------------------------------------------------------------------
 */
-echo HTML::script('/min/?g=Global.js');
+echo HTML::script('/minified/Global.js');
 
 /*
 |--------------------------------------------------------------------------
 | Fullpage Common
 |--------------------------------------------------------------------------
 */
-echo HTML::style('/min/?g=FullpageCommon.css');
-echo HTML::script('/min/?g=FullpageCommon.js');
+echo HTML::style('/minified/FullpageCommon.css');
+echo HTML::script('/minified/FullpageCommon.js');
 
 /*
 |--------------------------------------------------------------------------
@@ -66,8 +66,8 @@ echo HTML::script('/min/?g=FullpageCommon.js');
 |--------------------------------------------------------------------------
 */
 if( ! is_null(\S36Auth::user()) ):
-echo HTML::style('/min/?g=FullpageAdmin.css');
-echo HTML::script('/min/?g=FullpageAdmin.js');
+echo HTML::style('/minified/FullpageAdmin.css');
+echo HTML::script('/minified/FullpageAdmin.js');
 endif;
 ?>
 </head>
