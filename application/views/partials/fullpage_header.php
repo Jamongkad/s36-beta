@@ -101,7 +101,7 @@ endif;
                         </li>
                     <?php else: ?>
                         <li> 
-                            <?=HTML::link('login?forward_to=/', 'Login')?>
+                            <?=HTML::link('login?forward_to="/"', 'Login')?>
                         </li>
                     <?php endif; ?>
                 </ul>
