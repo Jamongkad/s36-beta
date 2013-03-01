@@ -89,18 +89,20 @@ endif;
             <div class="barLinks">
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
-                    <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
-                    <li><a href="#" id="admin_panel">Admin Panel</a></li>
-                    <li><a href="/dashboard">My Dashboard</a></li>
-                    <li><a href="/admin">My Account</a>
-                        <ul>
-                            <li><a href="/settings">My Settings</a>
-                            <li><a href="http://36stories.freshdesk.com/">Help</a>
-                            <li><a href="/logout">Logout</a>
-                        </ul>
-                    </li>
+                        <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
+                        <li><a href="#" id="admin_panel">Admin Panel</a></li>
+                        <li><a href="/dashboard">My Dashboard</a></li>
+                        <li><a href="/admin">My Account</a>
+                            <ul>
+                                <li><a href="/settings">My Settings</a>
+                                <li><a href="http://36stories.freshdesk.com/">Help</a>
+                                <li><a href="/logout">Logout</a>
+                            </ul>
+                        </li>
                     <?php else: ?>
-                    <li><a href="/login">Login</a></li>
+                        <li> 
+                            <?=HTML::link('login?forward_to=/', 'Login')?>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>
