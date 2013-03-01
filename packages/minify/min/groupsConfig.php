@@ -37,7 +37,7 @@ return array(
         ,'//fullpage/common/css/s36_client_style.css'
      ),
      'FullpageAdmin.js' => array(
-        '//fullpage/admin/js/jcycle.js'
+         '//fullpage/admin/js/jcycle.js'
         ,'//fullpage/admin/js/jquery.jcarousel.min.js'
         ,'//fullpage/admin/js/minicolors.js'
         ,'//fullpage/admin/js/colors.min.js'

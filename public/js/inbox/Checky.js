@@ -12,14 +12,14 @@ Checky.prototype.init = function() {
 
     var me = this;    
     $(document).delegate(me.feed_selection, 'change', function(e) {
-        var mode        = $(this).val();
-        var checkFeed   = $(me.check_feed_id);
+        var mode         = $(this).val();
+        var checkFeed    = $(me.check_feed_id);
         var categoryFeed = $(me.category_feed_id);
-        var ifChecked   = checkFeed.is(':checked');
-        var currentUrl  = $(location).attr('href');
-        var baseUrl     = $(this).attr('base-url');
-        var checkyBar   = $('.checky-bar');
-        var collection  = new Array();
+        var ifChecked    = checkFeed.is(':checked');
+        var currentUrl   = $(location).attr('href');
+        var baseUrl      = $(this).attr('base-url');
+        var checkyBar    = $('.checky-bar');
+        var collection   = new Array();
         var exam_collection = new Array();
 
         if (ifChecked && mode != 'none') { 
