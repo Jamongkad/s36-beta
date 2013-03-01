@@ -94,9 +94,9 @@ endif;
                         <li><a href="/dashboard">My Dashboard</a></li>
                         <li><a href="/admin">My Account</a>
                             <ul>
-                                <li><a href="/settings">My Settings</a>
-                                <li><a href="http://36stories.freshdesk.com/">Help</a>
-                                <li><a href="/logout">Logout</a>
+                                <li><a href="/settings">My Settings</a></li>
+                                <li><a href="http://36stories.freshdesk.com/">Help</a></li>
+                                <li><?=HTML::link('logout?forward_to=me', 'Log Out')?></li>
                             </ul>
                         </li>
                     <?php else: ?>
