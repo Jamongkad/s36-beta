@@ -55,9 +55,10 @@ $groups = array(
      'QuickInbox.js' => array(
         'type' =>'js',
         'files'=>array(
-            '/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js' 
+            '/js/angular.compilehtml.js' 
+           ,'/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js' 
            ,'/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'
-           ,'/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js'
+           ,'/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js' 
         )
      ),
      'FullpageAdmin.css' => array(

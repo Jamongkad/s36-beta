@@ -150,11 +150,11 @@
 <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
 <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 <? if($user): ?> 
-<?//= HTML::script('/minified/QuickInbox.js')?>
-<?= HTML::script('/js/angular.compilehtml.js'); ?>
-<?= HTML::script('/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js'); ?>
-<?= HTML::script('/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'); ?>
-<?= HTML::script('/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?>
+<?= HTML::script('/minified/QuickInbox.js')?>
+<?//= HTML::script('/js/angular.compilehtml.js'); ?>
+<?//= HTML::script('/fullpage/admin/js/quickinbox/controllers/S36QuickInbox.js'); ?>
+<?//= HTML::script('/fullpage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'); ?>
+<?//= HTML::script('/fullpage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?>
 <? endif ?>
 <script type="text/javascript">
 <?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
