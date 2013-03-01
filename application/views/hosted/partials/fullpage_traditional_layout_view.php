@@ -15,6 +15,7 @@
         $voted                      = $feed->feed_data->useful;
         $flagged                    = $feed->feed_data->flagged_as_inappr;
         $metadata                   = $feed->feed_data->metadata;
+        $is_recommended             = $feed->feed_data->isrecommended;
     ?>
 
     <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
@@ -167,7 +168,9 @@
         <!-- feedback user actions -->
         <div class="feedback-options clear">
             <div class="feedback-recommendation">
-                <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                <?php if( $is_recommended ): ?>
+                    <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
+                <?php endif; ?>
             </div>
             <div class="feedback-vote">
                 <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">

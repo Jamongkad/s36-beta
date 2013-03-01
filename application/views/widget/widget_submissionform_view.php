@@ -253,15 +253,15 @@ FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});
                         </div>
                         <div class="two-clm-in clear">
                             <div class="clm one">
-                                <input type="text" class="registration-input" name="company" id="your_company" title="Company Name (optional)" />
+                                <input type="text" class="registration-input" name="company" id="your_company" title="Company Name (optional)" maxlength="100" />
                             </div>
                             <div class="clm two">
-                                <input type="text" class="registration-input" name="position" id="your_occupation" title="Occupation (optional)" />
+                                <input type="text" class="registration-input" name="position" id="your_occupation" title="Occupation (optional)" maxlength="100" />
                             </div>
                         </div>
                         <div class="one-clm-in">
                             <div class="clm">
-                                <input type="text" class="registration-input" name="website" id="your_website" title="Website (optional)"/>
+                                <input type="text" class="registration-input" name="website" id="your_website" title="Website (optional)" maxlength="100" />
                             </div>
                         </div>
                         <div class="one-clm-in clear">

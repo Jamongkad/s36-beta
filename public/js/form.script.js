@@ -639,6 +639,10 @@ $(document).keypress(function(event){
 			text2 = elem2.val();
 		}
 		
+		// use ellipses to text1 and text2 if more than 40 chars.
+		if( text1.length > 40 ) text1 = text1.substr(0, 39) + '...';
+		if( text2.length > 40 ) text2 = text2.substr(0, 39) + '...';
+		
 		if(text1.length > 0 && text2.length > 0){
 			return text1+', '+text2;
 		}else if(text1.length == 0 && text2.length > 0){
