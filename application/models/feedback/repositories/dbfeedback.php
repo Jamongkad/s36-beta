@@ -531,7 +531,7 @@ class DBFeedback extends S36DataObject {
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
-    public function televised_feedback_alt($company_name) { 
+    public function televised_feedback_alt($company_name) {
         $sql = ' 
             SELECT
                 '.$this->select_vars.'
