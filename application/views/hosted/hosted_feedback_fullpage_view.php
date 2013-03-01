@@ -154,8 +154,8 @@
 <?= HTML::script('/js/angular.compilehtml.js'); ?>
 <?= HTML::script('/fullage/admin/js/quickinbox/controllers/S36QuickInbox.js'); ?>
 <?= HTML::script('/fullage/admin/js/quickinbox/directives/S36QuickInboxDirectives.js'); ?>
-<?= HTML::script('/fullage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?
-<? endif?>
+<?= HTML::script('/fullage/admin/js/quickinbox/services/S36QuickInboxServices.js'); ?>
+<? endif ?>
 <script type="text/javascript">
 <?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>
     $(document).ready(function(){
