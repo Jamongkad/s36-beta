@@ -234,7 +234,7 @@ return array(
         S36Auth::logout();
         if($forward_to = Input::get('forward_to')) { 
             if($forward_to == 'me') { 
-                return redirect::to('/');
+                return Redirect::to('/');
             }
         } else {
             return Redirect::to('login');     
