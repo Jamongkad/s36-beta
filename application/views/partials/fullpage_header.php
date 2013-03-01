@@ -21,6 +21,7 @@ window.location.href = window.location.pathname+window.location.hash;
 <?//= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'); ?>
 <?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
 <?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
+<?= HTML::script('/js/angular.compilehtml.js'); ?>
 <?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
 
 <script src="https://connect.facebook.net/en_US/all.js"></script>
