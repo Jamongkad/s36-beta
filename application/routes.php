@@ -150,6 +150,7 @@ return array(
             'url'       => $obj->feedback_url,
             'text'      => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
         ));
+
         $fb_query = http_build_query(array(
             'app_id'        => Config::get('application.fb_id'),
             'link'          => $obj->feedback_url,
@@ -159,8 +160,10 @@ return array(
             'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
             'redirect_uri'  => $obj->feedback_url
         ));
-        $obj->tweet_button      = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
-        $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
+
+        $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none">
+                               <img src="/img/btn-tw-tweet.png" /></a>';
+        $obj->share_button  = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
         echo json_encode($obj); 
     },
