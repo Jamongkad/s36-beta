@@ -74,7 +74,8 @@ return array(
         $feedback = new Feedback\Repositories\DBFeedback;
         echo "<pre>";print_r($input);echo "</pre>";
         /*update feedback attachments in database*/
-        $feedback->update_feedback($input['feedbackId'],array('attachments'=>json_encode($input['attachments'])));
+        $attachments = (isset($input['attachments'])) ? json_encode($input['attachments']) : '';
+        $feedback->update_feedback($input['feedbackId'],array('attachments'=>$attachments));
 
         /*start to remove images from the file system*/
         if(isset($input['remove_images'])){

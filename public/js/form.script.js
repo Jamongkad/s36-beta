@@ -138,7 +138,7 @@ $(document).keypress(function(event){
 			var uploaded_images = new Array;
 			$('#review-images .e_img_check').each(function(){
 				uploaded_images.push({
-					'name'		   :$(this).find('.img-name').val()
+					'name'		   :$(this).find('.image-name').val()
 				});
 			});
 			//get attached link data
@@ -290,7 +290,7 @@ $(document).keypress(function(event){
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
 							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}))
-							.append($('<input type="hidden" class="img-name"/>').val(data.result[0].name))
+							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 							); 
 				$('#review-images')
 					.append(
@@ -298,7 +298,7 @@ $(document).keypress(function(event){
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
 							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}).addClass('attachment'))
-							.append($('<input type="hidden" class="img-name"/>').val(data.result[0].name))
+							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 							);
 				
 				//resize the textbox when done
@@ -312,6 +312,7 @@ $(document).keypress(function(event){
 		});
 		// initialize the photo upload script
 		$('#your_photo').fileupload({
+			dropZone: false,
 			dataType: 'json',
 			add: function(e, data){
 				console.log('in add');
