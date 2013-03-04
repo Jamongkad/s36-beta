@@ -312,6 +312,7 @@ $(document).keypress(function(event){
 		});
 		// initialize the photo upload script
 		$('#your_photo').fileupload({
+			dropZone: false,
 			dataType: 'json',
 			add: function(e, data){
 				console.log('in add');
