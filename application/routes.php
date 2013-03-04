@@ -159,31 +159,23 @@ return array(
         echo json_encode($obj); 
     },
     
-    'GET /single/(:num)' => function($id) use ($user, $feedback, $hosted_settings, $company, $fullpage) { 
+    'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
 
-        $feedback   = $feedback->pull_feedback_by_id($id);
-        $company    = $company->get_company_info($feedback->companyid);
-        $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
+        $feedback  = $feedback->pull_feedback_by_id($id);
+        $company   = $company->get_company_info($feedback->companyid);
         $feed_data = new FeedbackNode($feedback);
-        Helpers::dump($feed_data->generate());
-        Helpers::dump($company);
-        Helpers::dump($hosted_settings);
-        /*
-        $company    = $company->get_company_info($feedback->companyid);
-        $fb_id      = Config::get('application.fb_id');
+        $fb_id     = Config::get('application.fb_id');
+        $panel = $hosted_settings->get_panel_settings($feedback->companyid);
 
-        $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
-        $header_view = new Hosted\Services\CompanyHeader($company->company_name, $company->fullpagecompanyname, $company->domain);
         return View::make('hosted/hosted_feedback_single_view', Array(
             'company'           => $company
           , 'user'              => $user
-          , 'feedback'          => $feedback
-          , 'fullpage_css'      => $fullpage->get_fullpage_css($company->companyid) 
-          , 'company_header'    => $header_view 
+          , 'feedback'          => $feed_data->generate()
+          , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid) 
           , 'fb_id'             => $fb_id
-          , 'panel'             => $hosted_settings->get_panel_settings($company->companyid)
+          , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
         ));
-        */
+
     },
 
     'GET /login' => function() use($company_name) {
