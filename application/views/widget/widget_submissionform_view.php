@@ -31,7 +31,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
 <div id="fb-root"></div>
 <script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
-FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
+    FB.init({appId: '<?=$fb_app_id?>', status: true, cookie: true});   
 </script>
 
 <script type="text/javascript" src="https://platform.linkedin.com/in.js">
