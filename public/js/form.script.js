@@ -195,6 +195,7 @@ $(document).keypress(function(event){
                 data: form_data, 
                 success: function(q) {
                     FB.XFBML.parse();
+                    console.log(q.share_button);
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
               }
