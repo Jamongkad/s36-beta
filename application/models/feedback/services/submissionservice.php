@@ -28,9 +28,7 @@ class SubmissionService {
         $this->dbfeedback       = new DBFeedback;
         $this->dbuser           = new DBUser; 
         $this->dbcontact        = new DBContact;
-        $this->dbh = DB::connection('master')->pdo;
-        //$this->feedback_attachments  = new FeedbackAttachments($this->post_data);
-        //$feedback_attachments = $this->feedback_attachments->generate_data($new_feedback_id); 
+        $this->dbh              = DB::connection('master')->pdo;
     }
 
     public function perform() {         

@@ -138,10 +138,7 @@ $(document).keypress(function(event){
 			var uploaded_images = new Array;
 			$('#review-images .e_img_check').each(function(){
 				uploaded_images.push({
-					'url'		   :$(this).find('.img-url').val(),
-					'small_url'	   :$(this).find('.img-small-url').val(),
-					'medium_url'   :$(this).find('.img-medium-url').val(),
-					'large_url'	   :$(this).find('.img-large-url').val()
+					'name'		   :$(this).find('.img-name').val()
 				});
 			});
 			//get attached link data
@@ -164,25 +161,25 @@ $(document).keypress(function(event){
 
             //collect  all data plus attachment data
             var form_data = {
-                site_id		: $('#siteId').val(),
-                company_id	: $('#companyId').val(),
-                title       : $('#feedbackTitle').val(),
-                feedback 	: $('#feedbackText').val(),
-                rating 		: $('#rating').val(),
-                recommend 	: $('#recommend').val(),
-                first_name	: $('#your_fname').val(),
-                last_name	: $('#your_lname').val(),
-                email 		: $('#your_email').val(),
-                city 		: $('#your_city').val(),
-                country 	: $('#your_country').val(),
-                login_type	: $('#loginType').val(),
+                site_id			: $('#siteId').val(),
+                company_id		: $('#companyId').val(),
+                title       	: $('#feedbackTitle').val(),
+                feedback 		: $('#feedbackText').val(),
+                rating 			: $('#rating').val(),
+                recommend 		: $('#recommend').val(),
+                first_name		: $('#your_fname').val(),
+                last_name		: $('#your_lname').val(),
+                email 			: $('#your_email').val(),
+                city 			: $('#your_city').val(),
+                country 		: $('#your_country').val(),
+                login_type		: $('#loginType').val(),
                 profile_link    : $('#profileLink').val(),
-                avatar 		: $('#preview_photo').attr('src'),
+                avatar 			: $('#preview_photo').attr('src'),
                 avatar_filename	: $('#avatar_filename').val(),
-                permission	: $('#your_permission').val(),
-                company 	: company,
-                position 	: position,
-                website 	: website,
+                permission		: $('#your_permission').val(),
+                company 		: company,
+                position 		: position,
+                website 		: website,
                 attachments     : attachments,
                 metadata        : $.makeArray(form_metadata)
             }            
@@ -293,10 +290,7 @@ $(document).keypress(function(event){
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
 							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}))
-							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
-							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
-							.append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
+							.append($('<input type="hidden" class="img-name"/>').val(data.result[0].name))
 							); 
 				$('#review-images')
 					.append(
@@ -304,10 +298,7 @@ $(document).keypress(function(event){
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
 							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}).addClass('attachment'))
-							.append($('<input type="hidden" class="img-url"/>').val(data.result[0].url))
-							.append($('<input type="hidden" class="img-large-url"/>').val(data.result[0].large_url))
-							.append($('<input type="hidden" class="img-medium-url"/>').val(data.result[0].medium_url))
-							.append($('<input type="hidden" class="img-small-url"/>').val(data.result[0].small_url))
+							.append($('<input type="hidden" class="img-name"/>').val(data.result[0].name))
 							);
 				
 				//resize the textbox when done

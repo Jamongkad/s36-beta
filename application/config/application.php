@@ -30,6 +30,9 @@ return array(
 	|
 	*/
 	'assets_dir'			=> $determine->d->assets_dir,
+	'attachments_small'		=> '/uploaded_images/form_upload/small',
+	'attachments_medium'	=> '/uploaded_images/form_upload/medium',
+	'attachments_large'		=> '/uploaded_images/form_upload/large',
     'avatar48_dir'			=> '/uploaded_images/avatar/48x48',
     'avatar150_dir'			=> '/uploaded_images/avatar/150x150',
     'coverphoto_dir'		=> '/uploaded_images/coverphoto',

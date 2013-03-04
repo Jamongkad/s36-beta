@@ -95,7 +95,7 @@ a:hover{
 #theBarTab{
 	width:26px;
 	height:23px;
-	background:url(../img/admin-tab.png);
+	background:url(/fullpage/common/img/admin-tab.png);
 	background-repeat:no-repeat;
 	background-position:left top;
 	position:absolute;
@@ -197,7 +197,7 @@ a:hover{
 #fadedContainer{
 	margin:0 auto;
 	width:876px;
-	background:#FFF url(../img/body-bg.png);
+	background:#FFF url(/fullpage/common/img/body-bg.png);
 }
 #mainContainer{
 	margin:0 auto;
@@ -268,7 +268,7 @@ a:hover{
 }
 .green-thumb{
 	padding-left:24px;
-	background:url(../img/green-thumb.png);
+	background:url(/fullpage/common/img/green-thumb.png);
 	background-repeat:no-repeat;
 	background-position:left center;
 	padding-top:5px;
@@ -303,7 +303,7 @@ a:hover{
 }
 .stars .star{
 	width:16px;margin-right:2px;
-	background:url(../img/star-sprites.png) bottom center;
+	background:url(/fullpage/common/img/star-sprites.png) bottom center;
 	background-repeat:no-repeat;
 	height:15px;
 	float:left;
@@ -381,7 +381,7 @@ a:hover{
 	width:780px;
 	margin-left:-390px;
 	color:#626262;
-	background: url(../img/faded-bg.png) repeat;
+	background: url(/fullpage/common/img/faded-bg.png) repeat;
 	border:none;
 	font-size:11px;
 	-webkit-border-radius:5px;
@@ -390,7 +390,7 @@ a:hover{
 	display:none;								
 }
 .lightbox-s{
-	background:url(../img/faded-white.png);
+	background:url(/fullpage/common/img/faded-white.png);
 	z-index:5900;
 	height:100%;
 	width:100%;
@@ -420,7 +420,7 @@ a:hover{
 	position:absolute;
 	bottom:5px;
 	padding:10px 10px;
-	background: url(../img/faded-bg-2.png) repeat;
+	background: url(/fullpage/common/img/faded-bg-2.png) repeat;
 	display:block;
 	right:5px;
 	left:5px;
@@ -430,7 +430,7 @@ a:hover{
 	background:#FFF;
 }
 .uploaded-images-close{
-	background:url(../img/uploaded-images-close.png) no-repeat;
+	background:url(/fullpage/common/img/uploaded-images-close.png) no-repeat;
 	width:45px;
 	height:45px;
 	position:absolute;
@@ -439,7 +439,7 @@ a:hover{
 	cursor:pointer;
 }
 .video-circle{
-	background:url(../img/video-play-circle.png) no-repeat;
+	background:url(/fullpage/common/img/video-play-circle.png) no-repeat;
 	width:25px;
 	height:25px;
 	position:absolute;
@@ -454,7 +454,7 @@ a:hover{
 #lightboxNotification{
 	position:fixed;
 	width:290px;
-	background:url(../img/faded-bg.png);
+	background:url(/fullpage/common/img/faded-bg.png);
 	z-index:6000;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
@@ -505,7 +505,7 @@ a:hover{
 }
 .lightbox-button{
 	width:63px;
-	background:url(../img/form-button.png);
+	background:url(/fullpage/common/img/form-button.png);
 	background-repeat:no-repeat;
 	background-position:top center;
 	display:inline-block;

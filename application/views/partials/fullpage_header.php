@@ -50,15 +50,15 @@ window.location.href = window.location.pathname+window.location.hash;
 | Global
 |--------------------------------------------------------------------------
 */
-echo HTML::script('/min/?g=Global.js');
+echo HTML::script('/minified/Global.js');
 
 /*
 |--------------------------------------------------------------------------
 | Fullpage Common
 |--------------------------------------------------------------------------
 */
-echo HTML::style('/min/?g=FullpageCommon.css');
-echo HTML::script('/min/?g=FullpageCommon.js');
+echo HTML::style('/minified/FullpageCommon.css');
+echo HTML::script('/minified/FullpageCommon.js');
 
 /*
 |--------------------------------------------------------------------------
@@ -66,8 +66,8 @@ echo HTML::script('/min/?g=FullpageCommon.js');
 |--------------------------------------------------------------------------
 */
 if( ! is_null(\S36Auth::user()) ):
-echo HTML::style('/min/?g=FullpageAdmin.css');
-echo HTML::script('/min/?g=FullpageAdmin.js');
+echo HTML::style('/minified/FullpageAdmin.css');
+echo HTML::script('/minified/FullpageAdmin.js');
 endif;
 ?>
 </head>
@@ -89,17 +89,20 @@ endif;
             <div class="barLinks">
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
-                    <li><a href="#" id="admin_panel">Admin Panel</a></li>
-                    <li><a href="/dashboard">My Dashboard</a></li>
-                    <li><a href="/admin">My Account</a>
-                        <ul>
-                            <li><a href="/settings">My Settings</a>
-                            <li><a href="http://36stories.freshdesk.com/">Help</a>
-                            <li><a href="/logout">Logout</a>
-                        </ul>
-                    </li>
+                        <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
+                        <li><a href="#" id="admin_panel">Admin Panel</a></li>
+                        <li><a href="/dashboard">My Dashboard</a></li>
+                        <li><a href="/admin">My Account</a>
+                            <ul>
+                                <li><a href="/settings">My Settings</a></li>
+                                <li><a href="http://36stories.freshdesk.com/">Help</a></li>
+                                <li><?=HTML::link('logout?forward_to=me', 'Log Out')?></li>
+                            </ul>
+                        </li>
                     <?php else: ?>
-                    <li><a href="/login">Login</a></li>
+                        <li> 
+                            <?=HTML::link('login?forward_to=me', 'Login')?>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>

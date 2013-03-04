@@ -153,6 +153,7 @@ class DBFeedback extends S36DataObject {
                         "about a year ago"
                 END as daysAgo
               , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
+              , LENGTH(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " "))) - LENGTH(REPLACE(TRIM(REPLACE(REPLACE(Feedback.text, "\n", " "), "\r", " ")) , " ", "")) + 1 AS word_count
             FROM 
                 Feedback
             INNER JOIN

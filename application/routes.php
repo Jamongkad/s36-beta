@@ -137,7 +137,7 @@ return array(
 
         $company_info         = $company->get_company_info($company_name);
         $hosted_settings_info = $hosted_settings->fetch_hosted_settings($company_info->companyid);
-
+        
         $feedback_redirect   = Redirect::to('single/'.$feedback->id);
         $website_redirect    = Redirect::to('');
 
@@ -150,6 +150,7 @@ return array(
             'url'       => $obj->feedback_url,
             'text'      => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
         ));
+
         $fb_query = http_build_query(array(
             'app_id'        => Config::get('application.fb_id'),
             'link'          => $obj->feedback_url,
@@ -159,11 +160,12 @@ return array(
             'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
             'redirect_uri'  => $obj->feedback_url
         ));
-        $obj->tweet_button      = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
-        $obj->share_button      = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
 
-        echo json_encode($obj);
-       
+        $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none">
+                               <img src="/img/btn-tw-tweet.png" /></a>';
+        $obj->share_button  = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
+
+        echo json_encode($obj); 
     },
     
     'GET /single/(:num)' => function($id) use ($user, $feedback, $hosted_settings, $company, $fullpage) { 
@@ -230,7 +232,13 @@ return array(
     
     'GET /logout' => function() {
         S36Auth::logout();
-        return Redirect::to('login');
+        if($forward_to = Input::get('forward_to')) { 
+            if($forward_to == 'me') { 
+                return Redirect::to('/');
+            }
+        } else {
+            return Redirect::to('login');     
+        } 
     },
 
     'GET /help' => Array('name' => 'help', 'before' => 's36_auth', 'do' => function() {
@@ -332,15 +340,13 @@ return array(
             return View::of_home_layout()->partial('contents', 'home/reset_password_success_view');        
         }
     },
-    
-    //important! this loads the minify library for static assets
-    'GET /min'=>function(){
-        Package::load('minify');
-    }
 );
 
 function forward_or_dash() { 
     if($forward_to = Input::get('forward_to')) {
+        if($forward_to == 'me') { 
+            return Redirect::to('/');
+        }
         return Redirect::to($forward_to);
     } else {
         return Redirect::to('dashboard');     

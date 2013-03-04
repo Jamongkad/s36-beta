@@ -50,16 +50,16 @@ return array(
         }
 
         $view_data = Array(
-              'feedback' => $feedback->grouped_feeds
-            , 'pagination' => $feedback->pagination
-            , 'admin_check' => $admin_check
-            , 'categories' => $category->pull_site_categories()
-            , 'status' => DB::table('Status', 'master')->get()
-            , 'inbox_state' => Helpers::inbox_state($filter)
-            , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
-            , 'filter' => $filter
-            , 'company_id' => $company_id
-            , 'reply_message' => json_encode($sm->jsonify())
+            'feedback' => $feedback->grouped_feeds
+          , 'pagination' => $feedback->pagination
+          , 'admin_check' => $admin_check
+          , 'categories' => $category->pull_site_categories()
+          , 'status' => DB::table('Status', 'master')->get()
+          , 'inbox_state' => Helpers::inbox_state($filter)
+          , 'priority_obj' => (object)Array(0 => 'low', 60 => 'medium', 100 => 'high') 
+          , 'filter' => $filter
+          , 'company_id' => $company_id
+          , 'reply_message' => json_encode($sm->jsonify())
         );
         
         if(!Input::get('_pjax')) { 
