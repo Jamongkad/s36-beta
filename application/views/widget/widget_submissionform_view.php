@@ -125,9 +125,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                 </div>
                 <div class="form-page-body">
                     <!-- star ratings -->
-                    <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>
-                   
-                    
+                    <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>   
                     <div class="dynamic-stars">
                         <div class="star-ratings clear">
                             <div class="star-container clear">
