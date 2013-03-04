@@ -414,8 +414,7 @@ class DBFeedback extends S36DataObject {
         $sth->bindParam(':client_ip', $client_ip, PDO::PARAM_STR);
         $sth->execute();       
         $result = $sth->fetch(PDO::FETCH_OBJ);
-        return $this->_return_feedback_nodes($result);
-        //return $result;
+        return $result;
     }
     
     public function total_feedback_by_company($company_id) {
