@@ -194,11 +194,12 @@ $(document).keypress(function(event){
                 dataType: "json",
                 data: form_data, 
                 success: function(q) {
+                    FB.XFBML.parse();
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
               }
             }); 
-		}
+	}	
 
 		 function fb_connect_success(obj){
    
