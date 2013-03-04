@@ -38,6 +38,7 @@
 
         <?= HTML::style('/fullpage/layout/'.strtolower($panel->theme_name).'/css/S36FullpageLayout'.ucfirst($panel->theme_name).'.css'); ?>
         <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
+        <?= HTML::style('/fullpage/common/css/S36SinglePage.css'); ?>
         <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
         <?if($feedback->avatar):?>
             <meta property="og:image" content='<?=URL::to(Config::get('application.avatar150_dir').'/'.$feedback->avatar)?>'/> 
