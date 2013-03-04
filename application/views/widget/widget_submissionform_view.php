@@ -122,12 +122,12 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
             <div id="step1" class="form-page" style="display:none;">
                 <div class="form-page-head">
                     <h1>Share your feedback</h1> 
-                    <script src="https://connect.facebook.net/en_US/all.js#xfbml=1" type="text/javascript"></script>
-                    <fb:like href="https://mathew-staging.gearfish.com/single/1211" send="false" width="450" show_faces="true" font=""></fb:like>
                 </div>
                 <div class="form-page-body">
                     <!-- star ratings -->
-                    <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>   
+                    <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>
+                    <script src="http://connect.facebook.net/en_US/all.js#appId=<?=$fb_app_id?>&amp;xfbml=1"></script>
+                    <fb:like href="https://mathew-staging/single/1121" send="true" width="450" show_faces="true" font=""></fb:like>
                     <div class="dynamic-stars">
                         <div class="star-ratings clear">
                             <div class="star-container clear">
