@@ -151,17 +151,8 @@ return array(
             'text'      => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
         ));
 
-        $fb_query = http_build_query(array(
-            'app_id'        => Config::get('application.fb_id'),
-            'link'          => $obj->feedback_url,
-            'picture'       => URL::to('/').'img/36logo2.png',
-            'name'          => $obj->company_name,
-            'caption'       => $hosted_settings_info->header_text,
-            'description'   => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!',
-            'redirect_uri'  => $obj->feedback_url
-        ));
 
-        //$obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
+        $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
         $obj->share_button  = '<fb:like href="'.$obj->feedback_url.'" send="false" width="450" show_faces="true" font=""></fb:like>';
         echo json_encode($obj); 
     },
@@ -169,6 +160,12 @@ return array(
     'GET /single/(:num)' => function($id) use ($user, $feedback, $hosted_settings, $company, $fullpage) { 
 
         $feedback   = $feedback->pull_feedback_by_id($id);
+        $company    = $company->get_company_info($feedback->companyid);
+        $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
+        Helpers::dump($feedback);
+        Helpers::dump($company);
+        Helpers::dump($hosted_settings);
+        /*
         $company    = $company->get_company_info($feedback->companyid);
         $fb_id      = Config::get('application.fb_id');
 
@@ -183,6 +180,7 @@ return array(
           , 'fb_id'             => $fb_id
           , 'panel'             => $hosted_settings->get_panel_settings($company->companyid)
         ));
+        */
     },
 
     'GET /login' => function() use($company_name) {

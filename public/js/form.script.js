@@ -197,6 +197,7 @@ $(document).keypress(function(event){
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
                     FB.XFBML.parse();
+                    twttr.widgets.load();
               }
             }); 
 	}	
