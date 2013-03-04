@@ -84,7 +84,9 @@
                             <div class="padded-5">
                                 <div class="the-thumb">
                                     <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
-                                    <img src="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>" width="100%" />
+                                    <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                    <?php $thumb_url = ($feed->feed_data->isfeatured == 1) ? Config::get('application.attachments_medium').'/'.$uploaded_image->name : Config::get('application.attachments_small').'/'.$uploaded_image->name ?>
+                                    <img src="<?=$thumb_url?>" width="100%" />
                                 </div>
                             </div>
                         </div>
