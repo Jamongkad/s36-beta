@@ -167,7 +167,7 @@ return array(
         $fb_id     = Config::get('application.fb_id');
         $panel = $hosted_settings->get_panel_settings($feedback->companyid);
 
-        return View::make('hosted/hosted_feedback_single_view', Array(
+        return View::make('hosted/hosted_feedback_single_view_new', Array(
             'company'           => $company
           , 'user'              => $user
           , 'feedback'          => $feed_data->generate()
