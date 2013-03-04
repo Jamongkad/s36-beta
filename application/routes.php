@@ -1,5 +1,7 @@
 <?php
 
+use Feedback\Entities\FeedbackNode;
+
 $feedback = new Feedback\Repositories\DBFeedback;
 $hosted_settings = new Hosted\Repositories\DBHostedSettings;
 $dbw = new Widget\Repositories\DBWidget;
@@ -162,7 +164,8 @@ return array(
         $feedback   = $feedback->pull_feedback_by_id($id);
         $company    = $company->get_company_info($feedback->companyid);
         $hosted_settings->set_hosted_settings(Array('company_id' => $feedback->companyid));  
-        Helpers::dump($feedback);
+        $feed_data = new FeedbackNode($feedback);
+        Helpers::dump($feed_data->generate());
         Helpers::dump($company);
         Helpers::dump($hosted_settings);
         /*
