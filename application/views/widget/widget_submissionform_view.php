@@ -121,12 +121,12 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
             <!-- form window 1 -->
             <div id="step1" class="form-page" style="display:none;">
                 <div class="form-page-head">
-                    <h1>Share your feedback</h1>
-                    <fb:like href="/single/1121" send="true" width="450" show_faces="true"></fb:like>
+                    <h1>Share your feedback</h1> 
                 </div>
                 <div class="form-page-body">
                     <!-- star ratings -->
                     <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>
+                    <fb:like href="/single/1121" send="true" width="450" show_faces="true"></fb:like>
                     <div class="dynamic-stars">
                         <div class="star-ratings clear">
                             <div class="star-container clear">
