@@ -19,15 +19,14 @@
         | Global
         |--------------------------------------------------------------------------
         */
-        echo HTML::script('/min/?g=Global');
+        echo html::script('/minified/global.js');
         
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
         |--------------------------------------------------------------------------
         */
-        echo HTML::script('/min/?g=FullpageCommon');
-        
+        echo HTML::script('/minified/FullpageCommon.js'); 
         /*
         |--------------------------------------------------------------------------
         | Facebook Open Graph
