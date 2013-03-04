@@ -163,9 +163,7 @@ return array(
 
         //$obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
         //$obj->share_button  = '<a href="https://www.facebook.com/dialog/feed?'.$fb_query.'"><img src="/img/fb-share-btn.png" /></a>';
-        $obj->share_button  = '<script src="https://connect.facebook.net/en_US/all.js#xfbml=1" type="text/javascript"></script>
-                               <fb:like href="'.$obj->feedback_url.'" send="false" width="450" show_faces="true" font=""></fb:like>';
-
+        $obj->share_button  = '<fb:like href="'.$obj->feedback_url.'" send="false" width="450" show_faces="true" font=""></fb:like>';
         echo json_encode($obj); 
     },
     
