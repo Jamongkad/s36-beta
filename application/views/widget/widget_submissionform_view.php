@@ -127,7 +127,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                     <!-- star ratings -->
                     <h2><?=($form_text) ? $form_text : "Rate your overall experience"?></h2>
                     <script src="http://connect.facebook.net/en_US/all.js#appId=<?=$fb_app_id?>&amp;xfbml=1"></script>
-                    <fb:like href="/single/1121" send="true" width="450" show_faces="true"></fb:like>
+                    <fb:like href="/single/1121" send="true" width="450" show_faces="true" font=""></fb:like>
                     <fb:like href="http://mysite.com/index.php" send="false" width="450" show_faces="true" font=""></fb:like>
                     <div class="dynamic-stars">
                         <div class="star-ratings clear">
