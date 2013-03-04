@@ -392,7 +392,7 @@ with others!</p>
                         </div>
                     </div>
                     <div id="share-boxes" class="clear">
-                        <div class="facebook-share-bar"></div>
+                        <div class="facebook-share-bar"></div><br/>
                         <div class="twitter-share-bar"></div>
                     </div>
                     <div id="like-boxes">
