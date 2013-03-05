@@ -280,6 +280,7 @@
                                 </div>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
+                                <!--
                                 <div class="feedback-options clear">
                                     <div class="feedback-recommendation">
                                         <?php if( $is_recommended ): ?>
@@ -323,6 +324,7 @@
                                         </span>
                                     </div>
                                 </div>
+                                -->
                                 <!-- end of feedback user actions -->
                             </div>
                         </div>
