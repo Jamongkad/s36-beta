@@ -77,8 +77,10 @@
                             <textarea id="fullpage_desc_textbox" rows="3"></textarea>
                         <?php endif; ?>
                     </div>
-                    <div class="send-button">
-                        <a href="javascript:reload_masonry();">Send in feedback</a>
+                    <div class="send-button" widgetkey="<?=$company->widgetkey?>">
+                        <a href="javascript:;">
+                            Send in feedback
+                        </a>
                     </div>
                 </div>
             </div>
