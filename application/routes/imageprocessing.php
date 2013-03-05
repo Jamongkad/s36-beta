@@ -11,7 +11,7 @@ return array(
         $options = array(
               'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/'
-            , 'upload_url' => get_full_url() .'/uploaded_images/coverphoto/'
+            , 'upload_url' => get_full_url() .'/uploaded_images/tmp/coverphoto_' . $user->companyid . '/'
             , 'param_name' => 'files'
             , 'width'      => 800
             , 'height'     => 500
@@ -53,7 +53,7 @@ return array(
         $orig_path  = $tmp_dir . $data['name'];
         $final_path = Config::get('application.uploaded_images_dir').'/coverphoto/'.$file_name;
         
-        if(file_exists($final_path)){ unlink($final_path); }
+        if( is_readable($final_path) ) unlink($final_path);
         exec('convert "' . $orig_path . '" "' . $final_path . '"'); //convert and rename uploaded image using image magick
         
         // delete the temporary uploads.

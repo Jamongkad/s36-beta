@@ -8,7 +8,6 @@
                 / remove image
                 */
                 var remove_images = {
-                        'url'          :$(this).find('.image-url').val(),
                         'small_url'    :$(this).find('.small-image-url').val(),
                         'medium_url'   :$(this).find('.medium-image-url').val(),
                         'large_url'    :$(this).find('.large-image-url').val()
@@ -20,14 +19,9 @@
                 if(div.find('.image-block').length>0){
                     var new_uploaded_images = new Array;
                     div.find('.the-thumb').each(function(){
-                        if(div.find('.image-url').length>0){
                         new_uploaded_images.push({
-                            'url'          :$(this).find('.image-url').val(),
-                            'small_url'    :$(this).find('.small-image-url').val(),
-                            'medium_url'   :$(this).find('.medium-image-url').val(),
-                            'large_url'    :$(this).find('.large-image-url').val()
+                            'name'    :$(this).find('.image-name').val(),
                         });
-                        }
                     });
                 }
 
@@ -383,11 +377,12 @@
                                                     <div class="image-block">
                                                         <div class="delete-block">x</div>
                                                         <div class="the-thumb">
-                                                            <input type="hidden" class="image-url" value="<?=$uploaded_image->url?>"/>
-                                                            <input type="hidden" class="small-image-url" value="<?=$uploaded_image->small_url?>"/>
-                                                            <input type="hidden" class="medium-image-url" value="<?=$uploaded_image->medium_url?>"/>
-                                                            <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                                            <img src="<?=$uploaded_image->small_url?>" width="100%" />                       
+                                                            <input type="hidden" class="small-image-url" value="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>"/>
+                                                            <input type="hidden" class="medium-image-url" value="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>"/>
+                                                            <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
+                                                            <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                                            <?php $thumb_url = ($feed->isfeatured == 1) ? Config::get('application.attachments_medium').'/'.$uploaded_image->name : Config::get('application.attachments_small').'/'.$uploaded_image->name ?>
+                                                            <img src="<?=$thumb_url?>" width="100%" />
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>

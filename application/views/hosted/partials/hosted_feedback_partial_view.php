@@ -19,16 +19,16 @@ foreach ($collection as $feed_group => $feed_list) :
             $feedback_content_class     = ($feed->feed_data->isfeatured == 1) ? 'regular-featured-contents' : 'regular-contents';
             $tw_marker                  = ($feed->feed_data->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
             $avatar                     = Config::get('application.avatar48_dir').'/'.$feed->feed_data->avatar;
-            $author_name                = $feed->feed_data->firstname.' '.$feed->feed_data->lastname;
-            $author_company             = $feed->feed_data->position.', '.$feed->feed_data->companyname;
-            $author_location            = $feed->feed_data->city.', '.$feed->feed_data->countryname;
-            $text                       = $feed->feed_data->text;
             $attachments                = (!empty($feed->feed_data->attachments)) ? $feed->feed_data->attachments : false;
             $vote_count                 = $feed->feed_data->vote_count;
             $voted                      = $feed->feed_data->useful;
             $flagged                    = $feed->feed_data->flagged_as_inappr;
             $metadata                   = $feed->feed_data->metadata;
             $is_recommended             = $feed->feed_data->isrecommended;
+            $position                   = $feed->feed_data->position;
+            $company_name               = $feed->feed_data->companyname;
+            $city                       = $feed->feed_data->city;
+            $country_name               = $feed->feed_data->countryname;
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
             <?=$tw_marker?>
@@ -38,10 +38,29 @@ foreach ($collection as $feed_group => $feed_list) :
                     <div class="author">
                         <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>
                         <div class="author-information">
-                            <div class="author-name clear"><?= HTML::entities($author_name); ?></div>
-                            <div class="author-company"><?= HTML::entities($author_company); ?></div>
+                            <div class="author-name clear">
+                                <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
+                                <span class="last_name"><?= HTML::entities($feed->feed_data->lastname); ?></span>
+                                <span class="last_name_ini"><?= HTML::entities(substr($feed->feed_data->lastname, 0, 1)); ?>.</span>
+                            </div>
+                            <div class="author-company">
+                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($position); ?><span class="company_comma">, </span>
+                                </span>
+                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                    <?= HTML::entities($company_name); ?>
+                                </span>
+                            </div>
                             <div class="author-location-info clear">
-                                <div class="author-location"><?= HTML::entities($author_location); ?></div><div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
+                                <div class="author-location">
+                                    <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($city); ?><span class="location_comma">, </span>
+                                    </span>
+                                    <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                        <?= HTML::entities($country_name); ?>
+                                    </span>
+                                </div>
+                                <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                             </div>
                             <div class="custom-meta-data clear">
                                 <?php if( ! is_null($metadata) ): ?>
@@ -79,7 +98,7 @@ foreach ($collection as $feed_group => $feed_list) :
                         </div>
                     <?php endif; ?>
                     <div class="feedback-text">
-                        <p><?=$text?></p>                                            
+                        <?= HTML::entities($feed->feed_data->text);?>
                     </div>
 
                 <?php if($attachments): ?>
@@ -214,7 +233,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="btn-block">
                                     <a href="<?=URL::to('single/'.$feed->feed_data->id)?>"
                                         data-url="<?=URL::to('single/'.$feed->feed_data->id)?>"
-                                        data-text="<?=$text?>"
+                                        data-text="<?=$feed->feed_data->text?>"
                                         class="tw_share_dummy">Tweet</a>
                                 </div>
                             </div>

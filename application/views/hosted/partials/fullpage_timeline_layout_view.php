@@ -26,6 +26,10 @@
             $flagged                    = $feed->feed_data->flagged_as_inappr;
             $metadata                   = $feed->feed_data->metadata;
             $is_recommended             = $feed->feed_data->isrecommended;
+            $position                   = $feed->feed_data->position;
+            $company_name               = $feed->feed_data->companyname;
+            $city                       = $feed->feed_data->city;
+            $country_name               = $feed->feed_data->countryname;
         ?>
         <div class="feedback <?=$feedback_main_class?>" fid="<?=$feedback_id;?>">
         <?=$tw_marker?>
@@ -41,13 +45,21 @@
                         <span class="last_name_ini"><?= HTML::entities(substr($feed->feed_data->lastname, 0, 1)); ?>.</span>
                     </div>
                     <div class="author-company">
-                        <span class="job"><?= HTML::entities($feed->feed_data->position); ?><span class="company_comma">, </span></span>
-                        <span class="company"><?= HTML::entities($feed->feed_data->companyname); ?></span>
+                        <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                            <?= HTML::entities($position); ?><span class="company_comma">, </span>
+                        </span>
+                        <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                            <?= HTML::entities($company_name); ?>
+                        </span>
                     </div>
                     <div class="author-location-info clear">
                         <div class="author-location">
-                            <span class="city"><?= HTML::entities($feed->feed_data->city); ?><span class="location_comma">, </span></span>
-                            <span class="country"><?= HTML::entities($feed->feed_data->countryname); ?></span>
+                            <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                <?= HTML::entities($city); ?><span class="location_comma">, </span>
+                            </span>
+                            <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                <?= HTML::entities($country_name); ?>
+                            </span>
                         </div>
                         <div class="flag flag-<?=strtolower($feed->feed_data->countrycode)?>"></div>
                     </div>
@@ -66,6 +78,7 @@
                 </div>  
             </div>
             <div class="reviews clear">
+                <!--
                 <div class="ratings clear">
                     <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
@@ -73,12 +86,27 @@
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>;">
                     <span class="vote_count"><?= $vote_count; ?></span> people found this useful
                 </div>
+                -->
+                <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
+                    <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
+                    <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
+                </div>
+                <?php if($feed->feed_data->isfeatured == 1): ?>
+                    <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                        <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- end of feedback header -->
         <!-- feedback text bubble -->
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
+            <?php if($feed->feed_data->isfeatured != 1): ?>
+                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                </div>
+            <?php endif; ?>
             <div class="feedback-text">
                 <?= HTML::entities($feed->feed_data->text);?>
             </div>
@@ -92,8 +120,10 @@
                         <div class="uploaded-image">
                             <div class="padded-5">
                                 <div class="the-thumb">
-                                    <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                    <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                    <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
+                                    <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                    <?php $thumb_url = ($feed->feed_data->isfeatured == 1) ? Config::get('application.attachments_medium').'/'.$uploaded_image->name : Config::get('application.attachments_small').'/'.$uploaded_image->name ?>
+                                    <img src="<?=$thumb_url?>" width="100%" />
                                 </div>
                             </div>
                         </div>
