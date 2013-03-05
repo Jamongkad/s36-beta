@@ -5,9 +5,11 @@
 <title>Hosted Page Timeline Layout</title>
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
         <meta property="og:title" content="<?=strip_tags($feedback->title)?>"/> 
-
         <?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
-        <?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
+        <?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
+        <?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
+        <?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
+
         <?php
         /*
         |--------------------------------------------------------------------------
