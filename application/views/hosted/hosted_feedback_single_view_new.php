@@ -289,6 +289,7 @@
                                         <?php endif; //endif attached link ?>
                                         </div>
                                     <?php endif; ?>
+                                    <br/>
                                 </div>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
