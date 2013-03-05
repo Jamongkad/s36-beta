@@ -107,18 +107,15 @@
             <div class="hosted-block">
                 <div class="company-reviews clear">
                     <div class="company-recommendation">
-                        <div class="green-thumb">98% of our customers recommend us to their friends.</div>
-                    </div>
-                    <div class="company-rating">
-                        <div class="review-count">Based on 29 reviews</div>
-                        <div class="stars blue clear">
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star full"></div>
-                            <div class="star half"></div>    
+                        <div class="green-thumb"> 
+                            <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
+                            of our customers recommend us to their friends.
                         </div>
-                        
+                    </div>
+                    <div class="company-rating"> 
+                        <div class="review-count">Based on <span itemprop="count"><?php echo $company->total_feedback; ?></span> reviews</div>
+                        <div class="stars blue clear"><div class="star_rating" rating="<?php echo round($company->avg_rating); ?>"></div></div>
+                        <meta itemprop="rating" content="<?php echo round($company->avg_rating); ?>" /><!-- for rich snippets. -->
                     </div>
                 </div>
             </div>
