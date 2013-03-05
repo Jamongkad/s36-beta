@@ -87,6 +87,7 @@
 
             <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
             <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
+            <!--
             <div class="hosted-block">
                 <div class="company-description clear">
                     <div class="company-text">
@@ -103,6 +104,7 @@
                     </div>
                 </div>
             </div>
+            -->
             
             <div class="hosted-block">
                 <div class="company-reviews clear">
