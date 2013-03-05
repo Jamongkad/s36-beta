@@ -131,11 +131,12 @@ class Helpers {
     
     //wrapper
     public static function dump($data) {
-
         return self::show_data($data);
-
     }
 
+    public static function secure_link($url) {
+        return str_replace('http://', 'https://', $url);
+    }
 
     public static function limit_string($string, $limit = 100) {
         // Return early if the string is already shorter than the limit
