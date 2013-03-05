@@ -38,7 +38,7 @@
                 var widgetkey = $(this).attr('widgetkey');
                 createLightboxes();
                 s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
-
+                console.log(widgetkey);
                 e.preventDefault();
             });
         </script>
