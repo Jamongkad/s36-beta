@@ -23,27 +23,34 @@
         |--------------------------------------------------------------------------
         */
         echo HTML::script('/minified/FullpageCommon.js'); 
-        /*
-        |--------------------------------------------------------------------------
-        | Facebook Open Graph
-        |--------------------------------------------------------------------------
-        */
         ?>
         <?= HTML::style('/fullpage/common/css/S36SinglePage.css'); ?>
         <?= HTML::style('/fullpage/common/css/S36SingleCommon.css'); ?>
         <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 
-        <script type="text/javascript">
-            $('.send-button').unbind('click.open_form').bind('click.open_form', function(e) {  
-                var widgetkey = $(this).attr('widgetkey');
-                createLightboxes();
-                s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
-                console.log(widgetkey);
-                e.preventDefault();
-            });
-        </script>
 </head>
 <body>
+<script src="https://connect.facebook.net/en_US/all.js"></script>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    window.fbAsyncInit = function() {
+            // init the FB JS SDK
+        FB.init({
+            appId      : '<?=$fb_id;?>', // App ID from the App Dashboard
+            status     : true, // check the login status upon init?
+            cookie     : true, // set sessions cookies to allow your server to access the session?
+            xfbml      : true  // parse XFBML tags on this page?
+        });
+    };
+
+    (function(d, debug){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document, /*debug*/ false))
+</script>
 <div id="bodyColorOverlay"></div>
 <div id="mainWrapper">
 	<div id="fadedContainer">
