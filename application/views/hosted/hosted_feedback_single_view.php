@@ -18,16 +18,14 @@
         |--------------------------------------------------------------------------
         | Global
         |--------------------------------------------------------------------------
-        */
-        echo HTML::script('/min/?g=Global');
-        
+        */    
+        echo HTML::script('/minified/Global.js');
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
         |--------------------------------------------------------------------------
         */
-        echo HTML::script('/min/?g=FullpageCommon');
-        
+        echo HTML::script('/minified/FullpageCommon.js'); 
         /*
         |--------------------------------------------------------------------------
         | Facebook Open Graph
@@ -37,6 +35,9 @@
         <meta property="og:title" content="<?=strip_tags($feedback->title)?>"/> 
         <meta property="og:description" content="<?=strip_tags($feedback->text)?>"/> 
         <meta property="og:type" content="article"/> 
+
+        <?= HTML::style('/fullpage/common/css/S36SinglePage.css'); ?>
+        <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
         <?if($feedback->avatar):?>
             <meta property="og:image" content='<?=URL::to(Config::get('application.avatar150_dir').'/'.$feedback->avatar)?>'/> 
         <?else:?>

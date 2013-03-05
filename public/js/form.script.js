@@ -193,9 +193,11 @@ $(document).keypress(function(event){
                 success: function(q) {
                     $('.facebook-share-bar').html(q.share_button);
                     $('.twitter-share-bar').html(q.tweet_button);
+                    FB.XFBML.parse();
+                    twttr.widgets.load();
               }
             }); 
-		}
+	}	
 
 		 function fb_connect_success(obj){
    

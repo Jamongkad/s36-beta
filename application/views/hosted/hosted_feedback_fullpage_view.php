@@ -1,13 +1,12 @@
 <?php if( ! is_null($user) ): ?>
-
-<div id="notification">
-    <div id="notification-design">
-        <div id="notification-message">
-            Loading... Please Wait... you bits.
+    <div id="notification">
+        <div id="notification-design">
+            <div id="notification-message">
+                Loading... Please Wait... you bits.
+            </div>
         </div>
     </div>
-</div>
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
+    <?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>
@@ -47,18 +46,18 @@
                 
                 <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
-                <?php if(!empty($panel->facebook_url)): ?>
-                    <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
-                        <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
-                    </a>
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($panel->twitter_url)): ?>
-                    <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
-                        <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
-                    </a>
-                    </div>
-                <?php endif; ?>
+                    <?php if(!empty($panel->facebook_url)): ?>
+                        <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                            <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($panel->twitter_url)): ?>
+                        <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
+                            <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -145,10 +144,11 @@
 |--------------------------------------------------------------------------
 */
 ?>
-
+<?= HTML::style('/minified/FullpageCommon.css'); ?>
 <?= HTML::style('/fullpage/layout/'.strtolower($panel->theme_name).'/css/S36FullpageLayout'.ucfirst($panel->theme_name).'.css'); ?>
 <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
 <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
+
 <? if($user): ?> 
 <?//= HTML::script('/minified/QuickInbox.js')?>
 <?= HTML::script('/js/angular.compilehtml.js'); ?>
