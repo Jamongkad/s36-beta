@@ -156,8 +156,6 @@
             </div>
             <!-- end of lightbox container -->
             <?php
-
-            $admin_avatar               = ($feedback->admin_avatar) ? $feedback->admin_avatar : '/img/48x48-blank-avatar.jpg';
             $feedback_id                = $feedback->id;
             $tw_marker                  = ($feedback->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
             $avatar                     = Config::get('application.avatar48_dir').'/'.$feedback->avatar;
