@@ -13,8 +13,8 @@
         |--------------------------------------------------------------------------
         | Global
         |--------------------------------------------------------------------------
-        */     
-        echo HTML::script('/fullpage/common/js/feedbackactions.js');
+        */    
+        echo HTML::script('/minified/Global.js');
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
@@ -31,6 +31,15 @@
         <?= HTML::style('/fullpage/common/css/S36SingleCommon.css'); ?>
         <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 
+        <script type="text/javascript">
+            $('.send-button').unbind('click.open_form').bind('click.open_form', function(e) {  
+                var widgetkey = $(this).attr('widgetkey');
+                createLightboxes();
+                s36_openLightbox(448, 600, '/widget/widget_loader/' + widgetkey); 
+
+                e.preventDefault();
+            });
+        </script>
 </head>
 <body>
 <div id="bodyColorOverlay"></div>
