@@ -12,6 +12,7 @@
 .regular .feedback-actions span{ margin-left: 0px; }
 .share-box{ width: 75px; }
 .btn-block{ text-align: left; }
+.feedback-list{ overflow: visible !important; }
 
 
 /*Fullpage*/
