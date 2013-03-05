@@ -292,7 +292,7 @@
                                             <?php endif; //endif attached link ?>
                                             <br/>
                                             <br/>
-                                            </div>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                                 <!-- end of feedback text bubble -->
