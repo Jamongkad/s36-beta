@@ -39,7 +39,9 @@
             <div id="coverPhotoContainer">
                 <div id="coverPhoto">
                     <?php if( ! is_null($company->coverphoto_src) ): ?>
-                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" 
+                             src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" 
+                             style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
                     <?php else: ?>
                         <?php if( ! is_null($user) ): ?>
                             <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
@@ -48,10 +50,19 @@
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>                
-                <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
-                	<div class="social-icon"><a href="#"><img src="img/facebook.png" title="Facebook Page" /></a></div>
-                	<div class="social-icon"><a href="#"><img src="img/twitter.png" title="Twitter Page" /></a></div>                    
+                    <?php if(!empty($panel->facebook_url)): ?>
+                        <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                            <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($panel->twitter_url)): ?>
+                        <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
+                            <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="hosted-block">
