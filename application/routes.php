@@ -162,8 +162,6 @@ return array(
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
 
         $feedback  = $feedback->pull_feedback_by_id($id);
-        Helpers::dump($feedback);
-        /*
         $company   = $company->get_company_info($feedback->companyid);
         $feed_data = new FeedbackNode($feedback);
         $fb_id     = Config::get('application.fb_id');
@@ -177,8 +175,6 @@ return array(
           , 'fb_id'             => $fb_id
           , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
         ));
-        */
-
     },
 
     'GET /login' => function() use($company_name) {
