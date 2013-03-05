@@ -55,6 +55,7 @@
 <div id="mainWrapper">
 	<div id="fadedContainer">
     	<div id="mainContainer">
+            <!--
             <div id="coverPhotoContainer">
                 <div id="coverPhoto">
                     <?php if( ! is_null($company->coverphoto_src) ): ?>
@@ -84,6 +85,7 @@
                     <?php endif; ?>
                 </div>
             </div>
+            -->
 
             <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
             <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
