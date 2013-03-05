@@ -240,9 +240,9 @@
                                         <p><?= HTML::entities($feedback->text);?></p><br/>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
+                                    <!--
                                     <?php if($attachments): ?>
-                                        <div class="additional-contents">
-                                            <!-- is it an image? -->
+                                        <div class="additional-contents"> 
                                             <?php if(isset($attachments->uploaded_images)): ?>
                                                 <div class="uploaded-images clear">
                                                     <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
@@ -294,6 +294,7 @@
                                             <br/>
                                         </div>
                                     <?php endif; ?>
+                                    -->
                                 </div>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
