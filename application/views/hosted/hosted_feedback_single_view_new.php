@@ -5,6 +5,9 @@
 <title>Hosted Page Timeline Layout</title>
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
         <meta property="og:title" content="<?=strip_tags($feedback->title)?>"/> 
+
+        <?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
+        <?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
         <?php
         /*
         |--------------------------------------------------------------------------
@@ -12,7 +15,7 @@
         |--------------------------------------------------------------------------
         */    
         echo HTML::script('/minified/Global.js');
-        echo HTML::script('/public/fullpage/common/js/feedbackactions.js');
+        echo HTML::script('/fullpage/common/js/feedbackactions.js');
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
@@ -29,8 +32,6 @@
         <?= HTML::style('/fullpage/common/css/S36SingleCommon.css'); ?>
         <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 
-        <?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
-        <?= HTML::script('https://platform.twitter.com/widgets.js" type="text/javascript'); ?>
 </head>
 <body>
 <div id="bodyColorOverlay"></div>
