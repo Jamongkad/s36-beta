@@ -177,9 +177,6 @@
             $flagged                    = $feedback->flagged_as_inappr;
             $metadata                   = $feedback->metadata;
             $is_recommended             = $feedback->isrecommended;                                                    
-            $attached_url = Helpers::secure_link($attachments->attached_link->url);
-            $attached_image = Helpers::secure_link($attachments->attached_link->image);
-                                                               
             ?>
             <div id="feedbackContainer">
             	<!-- this is where the magic begins -->
@@ -244,54 +241,58 @@
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
                                     <?php if($attachments): ?>
-                                    <div class="additional-contents">
-                                        <!-- is it an image? -->
-                                        <?php if(isset($attachments->uploaded_images)): ?>
-                                            <div class="uploaded-images clear">
-                                                <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
-                                                <div class="uploaded-image">
-                                                    <div class="padded-5">
-                                                        <div class="the-thumb">
-                                                            <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                                            <img src="<?=$uploaded_image->small_url?>" width="100%" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        <?php endif; //endif uploaded images ?>
-
-                                        <?php if(isset($attachments->attached_link)): ?>                       
-                                            <div class="uploaded-link">
-                                                <div class="padded-5">
-                                                        <div class="form-video-meta">
-                                                            <?php if($attachments->attached_link->video=='yes'): ?>
-                                                                <div class="video-thumb">
-                                                                    <div class="video-circle"></div>
-                                                                    <div class="the-thumb">
-                                                                        <input type="hidden" class="link-url" value="<?=$attached_url?>"/>
-                                                                        <img src="<?=$attached_image?>" width="100%">
-                                                                    </div>
-                                                                </div>
-                                                            <?php else: ?>
-                                                                <div class="video-thumb">
-                                                                    <a href="<?=$attached_url?>" target="_blank">
-                                                                        <img src="<?=$attached_image?>" width="100%">
-                                                                    </a>
-                                                                </div>
-                                                            <?php endif; ?>
-
-                                                            <div class="video-details">
-                                                                <h3><?=$attachments->attached_link->title?></h3>
-                                                                <p><?=$attachments->attached_link->description?></p>
+                                        <div class="additional-contents">
+                                            <!-- is it an image? -->
+                                            <?php if(isset($attachments->uploaded_images)): ?>
+                                                <div class="uploaded-images clear">
+                                                    <?php foreach($attachments->uploaded_images as $uploaded_image): ?>
+                                                    <div class="uploaded-image">
+                                                        <div class="padded-5">
+                                                            <div class="the-thumb">
+                                                                <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
+                                                                <img src="<?=$uploaded_image->small_url?>" width="100%" />
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php endif; //endif uploaded images ?>
+
+                                            <?php if(isset($attachments->attached_link)): ?>                       
+                                                <?
+                                                $attached_url = Helpers::secure_link($attachments->attached_link->url);
+                                                $attached_image = Helpers::secure_link($attachments->attached_link->image);
+                                                ?>
+                                                <div class="uploaded-link">
+                                                    <div class="padded-5">
+                                                            <div class="form-video-meta">
+                                                                <?php if($attachments->attached_link->video=='yes'): ?>
+                                                                    <div class="video-thumb">
+                                                                        <div class="video-circle"></div>
+                                                                        <div class="the-thumb">
+                                                                            <input type="hidden" class="link-url" value="<?=$attached_url?>"/>
+                                                                            <img src="<?=$attached_image?>" width="100%">
+                                                                        </div>
+                                                                    </div>
+                                                                <?php else: ?>
+                                                                    <div class="video-thumb">
+                                                                        <a href="<?=$attached_url?>" target="_blank">
+                                                                            <img src="<?=$attached_image?>" width="100%">
+                                                                        </a>
+                                                                    </div>
+                                                                <?php endif; ?>
+
+                                                                <div class="video-details">
+                                                                    <h3><?=$attachments->attached_link->title?></h3>
+                                                                    <p><?=$attachments->attached_link->description?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            <?php endif; //endif attached link ?>
+                                            <br/>
+                                            <br/>
                                             </div>
-                                        <?php endif; //endif attached link ?>
-                                        <br/>
-                                        <br/>
-                                        </div>
                                     <?php endif; ?>
                                 </div>
                                 <!-- end of feedback text bubble -->
