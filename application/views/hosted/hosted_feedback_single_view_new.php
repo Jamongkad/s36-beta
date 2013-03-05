@@ -176,8 +176,10 @@
             $voted                      = $feedback->useful;
             $flagged                    = $feedback->flagged_as_inappr;
             $metadata                   = $feedback->metadata;
-            $is_recommended             = $feedback->isrecommended;
-
+            $is_recommended             = $feedback->isrecommended;                                                    
+            $attached_url = Helpers::secure_link($attachments->attached_link->url);
+            $attached_image = Helpers::secure_link($attachments->attached_link->image);
+                                                               
             ?>
             <div id="feedbackContainer">
             	<!-- this is where the magic begins -->
@@ -264,11 +266,6 @@
                                                 <div class="padded-5">
                                                         <div class="form-video-meta">
                                                             <?php if($attachments->attached_link->video=='yes'): ?>
-
-                                                                <?php
-                                                                    $attached_url = Helpers::secure_link($attachments->attached_link->url);
-                                                                    $attached_image = Helpers::secure_link($attachments->attached_link->image);
-                                                                ?>
                                                                 <div class="video-thumb">
                                                                     <div class="video-circle"></div>
                                                                     <div class="the-thumb">
