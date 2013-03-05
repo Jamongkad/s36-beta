@@ -171,7 +171,6 @@ return array(
             'company'           => $company
           , 'user'              => $user
           , 'feedback'          => $feed_data->generate()
-          , 'fullpage_css'      => $fullpage->get_fullpage_css($feedback->companyid) 
           , 'fb_id'             => $fb_id
           , 'panel'             => $hosted_settings->get_panel_settings($feedback->companyid)
         ));

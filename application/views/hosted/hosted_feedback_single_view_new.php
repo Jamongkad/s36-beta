@@ -38,9 +38,16 @@
     	<div id="mainContainer">
             <div id="coverPhotoContainer">
                 <div id="coverPhoto">
-                    <img src="img/sample-cover.jpg" />
-                </div>
-                
+                    <?php if( ! is_null($company->coverphoto_src) ): ?>
+                        <img width="850px" dir="/uploaded_images/coverphoto/" basename="" src="/uploaded_images/coverphoto/<?php echo $company->coverphoto_src; ?>" style="top: <?php echo $company->coverphoto_top; ?>px; position: relative;" />
+                    <?php else: ?>
+                        <?php if( ! is_null($user) ): ?>
+                            <img dir="/uploaded_images/coverphoto/" basename="" src="img/sample-cover.jpg" />
+                        <?php else: ?>
+                            <img width="850px" src="img/public-coverphoto.jpg" />
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>                
                 <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
                 	<div class="social-icon"><a href="#"><img src="img/facebook.png" title="Facebook Page" /></a></div>
@@ -230,6 +237,5 @@
         </div>
     </div>
 </div>
-<?php echo $fullpage_css; ?>
 </body>
 </html>

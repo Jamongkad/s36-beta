@@ -1,13 +1,12 @@
 <?php if( ! is_null($user) ): ?>
-
-<div id="notification">
-    <div id="notification-design">
-        <div id="notification-message">
-            Loading... Please Wait... you bits.
+    <div id="notification">
+        <div id="notification-design">
+            <div id="notification-message">
+                Loading... Please Wait... you bits.
+            </div>
         </div>
     </div>
-</div>
-<?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
+    <?=View::make('hosted/partials/fullpage_admin_panel_view', Array('patterns' => $fullpage_patterns, 'panel' => $panel))?>
 <?php endif; ?>
 
 <div id="bodyColorOverlay"></div>
