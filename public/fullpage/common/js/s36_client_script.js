@@ -17,13 +17,16 @@ function createLightboxes(){
 	var s36_modalboxshadow = document.createElement("div");
 		s36_modalboxshadow.id = "s36_modalshadow";        
 		s36_modalboxshadow.className = "s36_modalshadow";
-		document.body.appendChild(s36_modalboxshadow);
 	
 	if(browser.msie) {
         s36_modalboxshadow.attachEvent("onclick", s36_closeLightbox);
+        
     } else {
         s36_modalboxshadow.setAttribute("onclick","s36_closeLightbox()");            
     }
+        
+		document.body.appendChild(s36_modalboxshadow);
+	
 	
 	// Create the s36 modal box
 	var s36_modalbox = document.createElement("div");
