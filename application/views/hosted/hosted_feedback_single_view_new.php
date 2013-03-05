@@ -65,11 +65,17 @@
                     <?php endif; ?>
                 </div>
             </div>
+
+            <div itemscope itemtype="https://data-vocabulary.org/Review-aggregate">
+            <meta itemprop="itemreviewed" content="<?php echo $company->company_name; ?>" />
             <div class="hosted-block">
                 <div class="company-description clear">
                     <div class="company-text">
-                       Our company strives to bring only the best possible products and services suitable for our clients specific needs. <br />
-                       Our business is simple: you describe, we create. Visit us at  www.charleskeith.com today and experience the love. 
+                        <? // keep the content of fullpage_desc_text in one line. ?>
+                        <div id="fullpage_desc" class="<?= (! is_null($user) ? 'editable' : ''); ?>" itemprop="summary"><?= nl2br( HTML::entities($company->description) ); ?></div>
+                        <?php if( ! is_null($user) ): ?>
+                            <textarea id="fullpage_desc_textbox" rows="3"></textarea>
+                        <?php endif; ?>
                     </div>
                     <div class="send-button">
                         <a href="javascript:reload_masonry();">Send in feedback</a>

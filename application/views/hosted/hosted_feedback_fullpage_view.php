@@ -46,18 +46,18 @@
                 
                 <!-- social link icons 1/28/2013 -->
                 <div id="socialLinkIcons" class="clear">
-                <?php if(!empty($panel->facebook_url)): ?>
-                    <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
-                        <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
-                    </a>
-                    </div>
-                <?php endif; ?>
-                <?php if(!empty($panel->twitter_url)): ?>
-                    <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
-                        <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
-                    </a>
-                    </div>
-                <?php endif; ?>
+                    <?php if(!empty($panel->facebook_url)): ?>
+                        <div class="social-icon fb"><a id="fb_url" href="<?= $panel->facebook_url; ?>">
+                            <img src="/fullpage/common/img/facebook.png" title="Facebook Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if(!empty($panel->twitter_url)): ?>
+                        <div class="social-icon tw"><a href="<?= $panel->twitter_url; ?>">
+                            <img src="/fullpage/common/img/twitter.png" title="Twitter Page" />
+                        </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
