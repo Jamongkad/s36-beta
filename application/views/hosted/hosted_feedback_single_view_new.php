@@ -12,6 +12,7 @@
         |--------------------------------------------------------------------------
         */    
         echo HTML::script('/minified/Global.js');
+        echo HTML::script('/public/fullpage/common/js/feedbackactions.js');
         /*
         |--------------------------------------------------------------------------
         | Fullpage Common
