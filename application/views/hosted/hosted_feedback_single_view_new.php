@@ -288,6 +288,7 @@
                                             </div>
                                         <?php endif; //endif attached link ?>
                                         <br/>
+                                        <br/>
                                         </div>
                                     <?php endif; ?>
                                 </div>
