@@ -86,9 +86,6 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                     <h2>Drag Photos on this area</h2>
                     <p>or</p>
                     <p><input type="file" multiple id="file_uploader" data-url="/imageprocessing/FormImageUploader/" /></p>
-                    <script type="text/javascript">
-
-                    </script>
                 </div>
                 <div id="upload-status-area">
                     <div class="upload-preview">

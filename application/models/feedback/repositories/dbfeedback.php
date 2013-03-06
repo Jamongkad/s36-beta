@@ -926,8 +926,7 @@ class DBFeedback extends S36DataObject {
             DB::table('FeedbackActions')
                 ->where('ip_address', '=', $data->ip_address)
                 ->where('feedbackId', '=', $data->feedbackId)
-                ->update( (array)$data );
-            
+                ->update( (array)$data );            
         }
         
     }
