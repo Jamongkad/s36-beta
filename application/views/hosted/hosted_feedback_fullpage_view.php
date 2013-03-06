@@ -18,7 +18,7 @@
                 
                 <?php if( ! is_null($user) ): ?>
                     <div id="changeCoverButton">
-                        <div id="changeButtonText">            
+                        <div id="changeButtonText">
                             <span>Change Cover</span>
                         </div>
                         <input type="file" id="cv_image" data-url="imageprocessing/upload_coverphoto" style="" />
