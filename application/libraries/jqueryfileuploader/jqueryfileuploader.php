@@ -470,6 +470,9 @@ class JqueryFileUploader
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
+
+        print_r($uploaded_file);
+
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
