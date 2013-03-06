@@ -654,6 +654,9 @@ class JqueryFileUploader
     }
 
     public function post($print_response = true) {
+
+        print_r("POST");
+
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete($print_response);
         }
