@@ -466,8 +466,7 @@ class JqueryFileUploader
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
 
-        print_r($uploaded_file);
-
+        //print_r($uploaded_file);
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $upload_dir = $this->get_upload_path();
             if (!is_dir($upload_dir)) {
@@ -654,8 +653,6 @@ class JqueryFileUploader
     }
 
     public function post($print_response = true) {
-
-        print_r("POST");
 
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete($print_response);
