@@ -9,6 +9,7 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
+
 namespace JqueryFileUploader;
 
 class JqueryFileUploader
@@ -426,6 +427,10 @@ class JqueryFileUploader
         return $file_name;
     }
 
+    protected function handle_form_data($file, $index) {
+        // Handle form data, e.g. $_REQUEST['description'][$index]
+    }
+
     protected function orient_image($file_path) {
         if (!function_exists('exif_read_data')) {
             return false;
@@ -465,8 +470,8 @@ class JqueryFileUploader
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
-
         if ($this->validate($uploaded_file, $file, $error, $index)) {
+            $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, $this->options['mkdir_mode'], true);
@@ -522,7 +527,6 @@ class JqueryFileUploader
             $file->size = $file_size;
             $this->set_file_delete_properties($file);
         }
-
         return $file;
     }
 
@@ -652,7 +656,6 @@ class JqueryFileUploader
     }
 
     public function post($print_response = true) {
-
         if (isset($_REQUEST['_method']) && $_REQUEST['_method'] === 'DELETE') {
             return $this->delete($print_response);
         }
