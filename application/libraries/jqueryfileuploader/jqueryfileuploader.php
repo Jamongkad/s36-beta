@@ -9,7 +9,7 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
-use Helpers;
+use \Helpers;
 
 namespace JqueryFileUploader;
 
