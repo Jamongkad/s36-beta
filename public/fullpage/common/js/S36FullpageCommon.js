@@ -33,6 +33,8 @@ var S36FullpageCommon = function(){
 		    });
 		});
 		
+		if( window.innerHeight < 700 ) $('#s36_modalbox').css({'margin-top': '30px', 'top' : '0px'});
+		
 		$('.uploaded-images-close').click(function(){
 			$(this).parent().fadeOut('fast');
 			$('.lightbox-shadow').fadeOut('fast');

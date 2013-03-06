@@ -378,7 +378,14 @@ ul.patternList li div.active{
 	display:none;
 }
 #changeCoverButton input {
-	cursor:pointer;background:#000;position:absolute;top:0px;margin:0px;opacity:0;filter: alpha(opacity=0);transform: translate(-300px, 0) scale(4);
+	cursor:pointer;
+	background:#000;
+	position:absolute;
+	top:0px;
+	margin:0px;
+	opacity:0;
+	filter: alpha(opacity=0);
+	/*transform: translate(-300px, 0) scale(4);*/  /* we've suffered enough from you */
 	direction:rtl;width:88px;
 	height:17px;
 	font-size:17px;
