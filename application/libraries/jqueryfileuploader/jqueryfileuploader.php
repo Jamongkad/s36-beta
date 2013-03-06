@@ -9,8 +9,6 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
-use \Helpers;
-
 namespace JqueryFileUploader;
 
 class JqueryFileUploader
@@ -524,7 +522,7 @@ class JqueryFileUploader
             $this->set_file_delete_properties($file);
         }
 
-        Helpers::dump($file);
+        print_r($file);
 
         return $file;
     }
