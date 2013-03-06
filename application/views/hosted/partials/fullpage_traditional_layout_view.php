@@ -114,6 +114,10 @@
             <?php endif; //endif uploaded images ?>
 
             <?php if(isset($attachments->attached_link)): ?>                       
+                <?
+                $attached_url = Helpers::secure_link($attachments->attached_link->url);
+                $attached_image = Helpers::secure_link($attachments->attached_link->image);
+                ?>
                 <div class="uploaded-link">
                     <div class="padded-5">
                         <div class="form-video-meta">
@@ -121,14 +125,14 @@
                                 <div class="video-thumb">
                                     <div class="video-circle"></div>
                                     <div class="the-thumb">
-                                        <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
-                                        <img src="<?=$attachments->attached_link->image?>" width="100%">
+                                        <input type="hidden" class="link-url" value="<?=$attached_url?>"/>
+                                        <img src="<?=$attached_image?>" width="100%">
                                     </div>
                                 </div>
                             <?php else: ?>
                                 <div class="video-thumb">
-                                    <a href="<?=$attachments->attached_link->url?>" target="_blank">
-                                        <img src="<?=$attachments->attached_link->image?>" width="100%">
+                                    <a href="<?=$attached_url?>" target="_blank">
+                                        <img src="<?=$attached_image?>" width="100%">
                                     </a>
                                 </div>
                             <?php endif; ?>

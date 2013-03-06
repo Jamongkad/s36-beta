@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php if(isset($_GET['nocache'])): ?>
-<meta http-equiv="expires" content="wed, 09 aug 2000 08:21:57 gmt" />
-<meta http-equiv="cache-control" content="no-cache" />
-<meta http-equiv="pragma" content="no-cache" />
-<script type="text/javascript">
-window.location.href = window.location.pathname+window.location.hash;
-</script>
+    <meta http-equiv="expires" content="wed, 09 aug 2000 08:21:57 gmt" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <script type="text/javascript">
+        window.location.href = window.location.pathname+window.location.hash;
+    </script>
 <?php endif; ?>
 <?php
 /*
@@ -57,8 +57,8 @@ echo HTML::script('/minified/Global.js');
 | Fullpage Common
 |--------------------------------------------------------------------------
 */
-echo HTML::style('/minified/FullpageCommon.css');
 echo HTML::script('/minified/FullpageCommon.js');
+echo HTML::style('/minified/FullpageCommon.css');
 
 /*
 |--------------------------------------------------------------------------
