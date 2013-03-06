@@ -465,6 +465,9 @@ class JqueryFileUploader
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
+
+        print_r($uploaded_file);
+
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $upload_dir = $this->get_upload_path();
             if (!is_dir($upload_dir)) {
@@ -521,8 +524,6 @@ class JqueryFileUploader
             $file->size = $file_size;
             $this->set_file_delete_properties($file);
         }
-
-        print_r($file);
 
         return $file;
     }
