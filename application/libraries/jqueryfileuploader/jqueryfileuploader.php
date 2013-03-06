@@ -427,10 +427,6 @@ class JqueryFileUploader
         return $file_name;
     }
 
-    protected function handle_form_data($file, $index) {
-        // Handle form data, e.g. $_REQUEST['description'][$index]
-    }
-
     protected function orient_image($file_path) {
         if (!function_exists('exif_read_data')) {
             return false;
@@ -471,7 +467,6 @@ class JqueryFileUploader
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
         if ($this->validate($uploaded_file, $file, $error, $index)) {
-            $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, $this->options['mkdir_mode'], true);
@@ -527,6 +522,9 @@ class JqueryFileUploader
             $file->size = $file_size;
             $this->set_file_delete_properties($file);
         }
+
+        Helpers::dump($file);
+
         return $file;
     }
 

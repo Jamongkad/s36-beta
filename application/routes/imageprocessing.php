@@ -77,7 +77,7 @@ return array(
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
-            , 'file_name'  =>  convert_filename_to_md5(date("mdyhis")).'.jpg'
+            , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir'  => Config::get('application.uploaded_images_dir').'/form_upload/'
             , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
             , 'image_versions' => array(
@@ -130,18 +130,4 @@ function get_full_url() {
         ($https && $_SERVER['SERVER_PORT'] === 443 ||
         $_SERVER['SERVER_PORT'] === 80 ? '' : ':'.$_SERVER['SERVER_PORT']))).
         substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
-}
-
-function convert_filename_to_md5($filename) { 
-    $filename_parts = explode('.',$filename);
-    $count = count($filename_parts);
-    if($count> 1) {
-        $ext = $filename_parts[$count-1];
-        unset($filename_parts[$count-1]);
-        $filename_to_md5 =  implode('.',$filename_parts);
-        $newName = md5($filename_to_md5). '.' . $ext ;
-    } else {
-        $newName = md5($filename);
-    }        
-    return $newName;
 }
