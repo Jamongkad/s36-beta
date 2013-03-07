@@ -261,7 +261,7 @@ $(document).keypress(function(event){
 			dropZone: $('#drag-and-drop-area'),
 			dataType: 'json',
             sequentialUploads: true,
-            limitMultiFileUploads: 3,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
 			add: function(e, data){
                 /*
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
