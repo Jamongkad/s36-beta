@@ -283,10 +283,7 @@ $(document).keypress(function(event){
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
-			},done: function(e, data){
-
-                console.log(data);
- 
+			},done: function(e, data){ 
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
