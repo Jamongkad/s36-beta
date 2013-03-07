@@ -122,6 +122,10 @@ class JqueryFileUploader
         }
     }
 
+    public static function static_get_full_url() {
+        return $this->get_full_url();
+    }
+
     protected function get_full_url() {
         $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
         return

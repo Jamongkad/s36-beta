@@ -9,9 +9,9 @@ return array(
         if( ! is_object($user) ) return 'You should be logged in to do this action'; 
         
         $options = array(
-              'script_url' => get_full_url().'/imageprocessing/upload_coverphoto'
+              'script_url' => JqueryFileUploader::static_get_full_url().'/imageprocessing/upload_coverphoto'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/tmp/coverphoto_' . $user->companyid . '/'
-            , 'upload_url' => get_full_url() .'/uploaded_images/tmp/coverphoto_' . $user->companyid . '/'
+            , 'upload_url' => JqueryFileUploader::static_get_full_url() .'/uploaded_images/tmp/coverphoto_' . $user->companyid . '/'
             , 'param_name' => 'files'
             , 'width'      => 800
             , 'height'     => 500
@@ -22,10 +22,10 @@ return array(
     
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
-              'script_url' => get_full_url().'/imageprocessing/upload_avatar'
+              'script_url' => JqueryFileUploader::static_get_full_url().'/imageprocessing/upload_avatar'
             , 'file_name'  => date("mdyhis").'.jpg'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
-            , 'upload_url' => get_full_url() .'/uploaded_images/avatar/'
+            , 'upload_url' => JqueryFileUploader::static_get_full_url() .'/uploaded_images/avatar/'
             , 'param_name' => 'files'
             , 'image_versions' => array(
                 '48x48' => array(
@@ -76,10 +76,10 @@ return array(
 
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
         $options = array(
-            'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
+            'script_url'    => JqueryFileUploader::static_get_full_url().'/imageprocessing/FormImageUploader'
             , 'file_name'   => md5(uniqid()).'.jpg'
             , 'upload_dir'  => Config::get('application.uploaded_images_dir').'/form_upload/'
-            , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
+            , 'upload_url'  => JqueryFileUploader::static_get_full_url() . '/uploaded_images/form_upload/'  
             , 'image_versions' => array(
                 'large' => array(
                     'max_width'     => 800,
@@ -108,10 +108,10 @@ return array(
         if( ! is_object($user) ) return 'You should be logged in to do this action';
         
         $options = array(
-              'script_url' => get_full_url().'/imageprocessing/upload_hosted_background_image'
+              'script_url' => JqueryFileUploader::static_get_full_url().'/imageprocessing/upload_hosted_background_image'
             //, 'file_name'  => 'test.jpg'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/hosted_background/'
-            , 'upload_url' => get_full_url() .'/uploaded_images/hosted_background/'
+            , 'upload_url' => JqueryFileUploader::static_get_full_url() .'/uploaded_images/hosted_background/'
             , 'param_name' => 'files'
         );     
 
@@ -119,15 +119,3 @@ return array(
     }),
 
 );
-
-/*additional methods*/
-function get_full_url() {
-    $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
-    return
-        ($https ? 'https://' : 'http://').
-        (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
-        (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
-        ($https && $_SERVER['SERVER_PORT'] === 443 ||
-        $_SERVER['SERVER_PORT'] === 80 ? '' : ':'.$_SERVER['SERVER_PORT']))).
-        substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
-}
