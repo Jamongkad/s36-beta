@@ -75,6 +75,7 @@ return array(
     },
 
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
+        /*
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
             , 'file_name'  => date("mdyhis").'.jpg'
@@ -96,6 +97,8 @@ return array(
             )
         );
         new JqueryFileUploader($options); 
+        */
+        Helpers::dump($_FILES);
     }),
 
     'GET /imageprocessing/linkpreview'=>array('name' => 'linkpreview', 'do' => function() {
