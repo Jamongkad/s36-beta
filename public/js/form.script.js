@@ -260,7 +260,10 @@ $(document).keypress(function(event){
 		$('#file_uploader').fileupload({
 			dropZone: $('#drag-and-drop-area'),
 			dataType: 'json',
+            sequentialUploads: true,
+            limitMultiFileUploads: 3,
 			add: function(e, data){
+                /*
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
 				if( image_types.indexOf( data.files[0].type ) == -1 ){
 					var error = ['Please select an image file'];
@@ -278,12 +281,13 @@ $(document).keypress(function(event){
 					display_error_mes(error);
 					return false
 				}
-				//data.submit();
-			},progress: function(e, data){
+                */
+				data.submit();
+			}, progress: function(e, data){
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
-			},done: function(e, data){ 
+			}, done: function(e, data){ 
 				$('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
