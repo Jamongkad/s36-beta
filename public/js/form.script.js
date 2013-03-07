@@ -263,7 +263,6 @@ $(document).keypress(function(event){
             sequentialUploads: true,
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
 			add: function(e, data){
-                /*
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
 				if( image_types.indexOf( data.files[0].type ) == -1 ){
 					var error = ['Please select an image file'];
@@ -281,7 +280,6 @@ $(document).keypress(function(event){
 					display_error_mes(error);
 					return false
 				}
-                */
 				data.submit();
 			}, progress: function(e, data){
 				$('.upload-preview').show('fast');

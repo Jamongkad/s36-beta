@@ -77,7 +77,7 @@ return array(
     'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
         $options = array(
             'script_url'    => get_full_url().'/imageprocessing/FormImageUploader'
-            , 'file_name'   => md5(uniqid()).'.jpg'//date("mdyhis").'.jpg'
+            , 'file_name'   => md5(uniqid()).'.jpg'
             , 'upload_dir'  => Config::get('application.uploaded_images_dir').'/form_upload/'
             , 'upload_url'  => get_full_url() . '/uploaded_images/form_upload/'  
             , 'image_versions' => array(
