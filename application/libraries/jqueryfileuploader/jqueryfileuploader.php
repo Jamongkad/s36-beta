@@ -123,7 +123,7 @@ class JqueryFileUploader
     }
 
     public static function static_get_full_url() {
-        return $this->get_full_url();
+        return self::get_full_url();
     }
 
     protected function get_full_url() {
