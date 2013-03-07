@@ -440,4 +440,16 @@ return array(
         $tf->run();          
     },
 
+    'GET /testify/fileuploader' => function() {
+         
+        $tf = new Testify("File Uploader");  
+
+        $tf->test("Testing File Uploader", function($tf) {   
+            $d = JqueryFileUploader::static_get_full_url();
+            $tf->dump($d);
+        });
+
+        $tf->run();          
+    }
+
 );
