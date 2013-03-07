@@ -145,10 +145,6 @@ class JqueryFileUploader
         return '';
     }
 
-    protected function get_query_separator($url) {
-        return strpos($url, '?') === false ? '?' : '&';
-    }
-
     protected function get_upload_path($file_name = null, $version = null) {
         $file_name = $file_name ? $file_name : '';
         $version_path = empty($version) ? '' : $version.'/';
