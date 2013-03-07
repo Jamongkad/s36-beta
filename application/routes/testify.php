@@ -445,7 +445,7 @@ return array(
         $tf = new Testify("File Uploader");  
 
         $tf->test("Testing File Uploader", function($tf) {   
-            $d = JqueryFileUploader::static_get_full_url();
+            $d = JqueryFileUploader::get_full_url();
             $tf->dump($d);
         });
 
