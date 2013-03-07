@@ -278,7 +278,7 @@ $(document).keypress(function(event){
 					display_error_mes(error);
 					return false
 				}
-				data.submit();
+				//data.submit();
 			},progress: function(e, data){
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
