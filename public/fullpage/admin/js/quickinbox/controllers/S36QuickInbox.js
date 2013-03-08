@@ -35,6 +35,7 @@ app.controller("AppCtrl", function($scope, $compile, $http, QuickInboxService) {
           , url: '/hosted/quick_inbox'
         }).success(function(data, status, headers, config) {
             console.log(data);
+            $scope.feedbacks = data;
         });
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
