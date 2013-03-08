@@ -52,6 +52,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         $scope.$apply();
         */
         console.log(feedbacks);
+        $scope.feedbacks = feedbacks;
         
         /*
         $.ajax({
