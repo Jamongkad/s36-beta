@@ -61,7 +61,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.feedbacks = data;
             }
         });
-        *
+        */
 
     }
     
