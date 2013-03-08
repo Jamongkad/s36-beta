@@ -34,7 +34,10 @@ app.controller("AppCtrl", function($scope, $compile, $http, QuickInboxService) {
             method: 'GET'  
           , url: '/hosted/quick_inbox'
         }).success(function(data, status, headers, config) {
-            console.log(data);
+            timer = new Timer(function() { 
+                feed_request();  
+                $('.widget-list').jScrollPane();
+            }, 10000); 
             $scope.feedbacks = data;
         });
 
