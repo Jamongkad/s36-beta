@@ -155,7 +155,7 @@ return array(
 
 
         $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
-        $obj->share_button  = '<fb:like href="'.$obj->feedback_url.'" send="false" width="450" show_faces="true" font=""></fb:like>';
+        $obj->share_button  = '<fb:like href="'.$obj->feedback_url.'" send="false" width="390" show_faces="false" font=""></fb:like>';
         echo json_encode($obj); 
     },
     

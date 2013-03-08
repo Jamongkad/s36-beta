@@ -775,3 +775,7 @@ select.regular-custom-field{
     top: 1px;
     *overflow: hidden;
 }
+
+iframe .ptm {
+    display:none;    
+}
