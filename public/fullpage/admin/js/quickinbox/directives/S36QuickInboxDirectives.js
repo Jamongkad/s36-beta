@@ -121,13 +121,16 @@ angular.module('S36QuickInboxDirectives', [])
                         //pics
                         for(var i=0; i<links.length; i++) {
 
-                            console.log(links[i].name);
+                            var file_name = links[i].name;
+                            var small_url  = '/uploaded_images/form_upload/small/' + file_name;
+                            var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
+                            var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
                             /* 
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic load="' +  links[i].large_url  + '">';
-                            scope.mtemplate += '<img src="' + links[i].small_url + '" width="100%" /></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic load="' +  large_url  + '">';
+                            scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
 
