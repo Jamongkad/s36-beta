@@ -1,11 +1,12 @@
 <input type="hidden" id="theme_name" name="theme_name" value="<?=$panel->theme_name?>" />
-<div id="adminWindowBox" ng-app="QuickInbox">
+<div ng-app="QuickInbox">
+<div id="adminWindowBox" ng-controller="AppCtrl" >
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
-        <div class="minBtn"></div>
-        <div class="closeBtn"></div>
+        <div class="minBtn" ng-click="resume_inbox(feedbacks)"></div>
+        <div class="closeBtn" ng-click="resume_inbox(feedbacks)"></div>
     </div>
-    <div id="adminWindowHolder" ng-controller="AppCtrl">
+    <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">
             <ul>
                 <li><a href="javascript:;" class="active" ng-click="resume_inbox(feedbacks)">Quick Inbox</a></li>
@@ -343,6 +344,7 @@
         </div>
     </div>
 </div>
+</div>
 <div id="notification">
     <div id="notification-design">
         <div id="notification-message">
@@ -350,3 +352,4 @@
         </div>
     </div>
 </div>
+

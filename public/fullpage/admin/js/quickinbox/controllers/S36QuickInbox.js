@@ -51,10 +51,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         $scope.feedbacks = feedbacks;
         $scope.$apply();
         */
+        /*
         console.log(feedbacks);
         $scope.feedbacks = feedbacks;
+        */
         
-        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -64,7 +65,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.feedbacks = data;
             }
         });
-        */
+
 
     }
     
