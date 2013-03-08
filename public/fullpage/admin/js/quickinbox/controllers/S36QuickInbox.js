@@ -46,6 +46,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);
     }
 
+    $scope.resume_inbox = function() {
+        console.log('Mathew Wong');
+    }
+
     
     $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
