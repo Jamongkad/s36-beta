@@ -51,11 +51,11 @@ var S36FullpageAdmin = function(layoutObj){
         /* ========================================
         || Close the admin window box when close button is clicked
         ==========================================*/
-        /*
+
         $('#adminWindowTitleBar .closeBtn').click(function(){
             $('#adminWindowBox').fadeOut('fast');
         });
-        */
+
         /* ========================================
         || Minimize the admin window when minimize button is clicked
         ==========================================*/
