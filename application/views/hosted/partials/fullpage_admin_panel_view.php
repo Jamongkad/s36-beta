@@ -6,7 +6,7 @@
         <div class="closeBtn"></div>
     </div>
     <div id="adminWindowHolder">
-        <div id="adminWindowMenuBar" ng-controller="AppCtrl">
+        <div id="adminWindowMenuBar">
             <ul>
                 <li><a href="javascript:;" class="active">Quick Inbox</a></li>
                 <li><a href="javascript:;" class="">Background</a></li>
@@ -22,7 +22,7 @@
                         Recent Submitted Feedback
                         <span class="light-text"></span>
                     </div>
-                    <div class="pageBody">
+                    <div class="pageBody" ng-controller="AppCtrl">
                         <div id="quickInboxWidget">
                             <div class="widget-list">
                                 <div>
