@@ -47,6 +47,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     $scope.resume_inbox = function() {
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -57,6 +58,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.$apply($scope.feedbacks); 
             }
         });
+        */
+        $('#quickInboxWidget').show();
+        $('.widget-list').show();
+        $('.widget-item').show();
     }
     
     $scope.update_selection = function($event, feed) {
