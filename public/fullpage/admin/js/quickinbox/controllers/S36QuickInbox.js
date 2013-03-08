@@ -23,6 +23,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     feed_request();  
                     $('.widget-list').jScrollPane();
                 }, 10000); 
+
+                var data = data;
                
                 $scope.$apply(function() {
                     $scope.feedbacks = data;     
