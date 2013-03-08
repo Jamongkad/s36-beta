@@ -23,12 +23,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     feed_request();  
                     $('.widget-list').jScrollPane();
                 }, 10000); 
-
-                var data = data;
-               
-                $scope.$apply(function() {
-                    $scope.feedbacks = data;     
-                }); 
+                $scope.feedbacks = data;
+                $scope.$apply($scope.feedbacks); 
             }
         });
 
@@ -57,11 +53,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-                var data = data;
-                $scope.$apply(function() {
-                    console.log(data);
-                    $scope.feedbacks = data;
-                }); 
+                $scope.feedbacks = data;
+                $scope.$apply($scope.feedbacks); 
             }
         });
     }
