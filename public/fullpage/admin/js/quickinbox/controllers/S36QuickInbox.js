@@ -47,9 +47,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     }
 
     $scope.resume_inbox = function() {
-        console.log('Mathew Wong');
+        feed_request();
     }
-
     
     $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
