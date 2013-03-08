@@ -98,12 +98,12 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-
-                    console.log(data);
-
+                    //console.log(data);
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
+
+                        console.log(links);
 
                         //videos
                         if(links.hasOwnProperty('video') && links.video == 'yes') { 
