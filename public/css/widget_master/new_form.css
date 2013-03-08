@@ -684,10 +684,10 @@ h2.h2-fix{
 	margin-top:10px;
 }
 .facebook-share-bar{
-	width:190px;
+    display:block;
 }
 .twitter-share-bar{
-	margin-left:200px;
+    display:block;
 }
 #like-boxes{
 	margin-top:10px;
