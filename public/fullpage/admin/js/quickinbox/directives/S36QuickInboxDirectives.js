@@ -103,8 +103,6 @@ angular.module('S36QuickInboxDirectives', [])
                     for(var prop in data) {
                         var links = data[prop];
 
-                        console.log(links);
-
                         //videos
                         if(links.hasOwnProperty('video') && links.video == 'yes') { 
                             scope.mtemplate += '<div class="image-block video">';
@@ -122,6 +120,8 @@ angular.module('S36QuickInboxDirectives', [])
                         
                         //pics
                         for(var i=0; i<links.length; i++) {
+
+                            console.log(links[i]);
                             /* 
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
