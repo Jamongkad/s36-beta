@@ -1,6 +1,6 @@
 var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices', 'CompileHtml']);
 
-app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
+app.controller("AppCtrl", function($scope, $compile, $http, QuickInboxService) {
 
     $scope.feedbacks = [];
     $scope.selected = [];
@@ -13,6 +13,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     var timer;  
 
     (function feed_request() { 
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -27,6 +28,13 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.feedbacks = data;
                 $scope.$apply();  
             }
+        });
+        */
+        $http({
+            method: 'GET'  
+          , url: '/hosted/quick_inbox'
+        }).success(function(data, status, headers, config) {
+            console.log(data);
         });
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
