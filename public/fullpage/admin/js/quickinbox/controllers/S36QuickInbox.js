@@ -46,8 +46,12 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);
     }
 
-    $scope.resume_inbox = function() {
+    $scope.resume_inbox = function(feedbacks) {
 
+        $scope.feedbacks = feedbacks;
+        $scope.apply();
+        
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -57,6 +61,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.feedbacks = data;
             }
         });
+        *
 
     }
     

@@ -8,7 +8,7 @@
     <div id="adminWindowHolder" ng-controller="AppCtrl">
         <div id="adminWindowMenuBar">
             <ul>
-                <li><a href="javascript:;" class="active" ng-click="resume_inbox()">Quick Inbox</a></li>
+                <li><a href="javascript:;" class="active" ng-click="resume_inbox(feedbacks)">Quick Inbox</a></li>
                 <li><a href="javascript:;" class="">Background</a></li>
                 <li><a href="javascript:;" class="">Display</a></li>
                 <li><a href="javascript:;" class="layoutMenu">Layout</a></li>
