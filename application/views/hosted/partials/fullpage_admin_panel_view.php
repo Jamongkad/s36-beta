@@ -6,7 +6,7 @@
         <div class="closeBtn"></div>
     </div>
     <div id="adminWindowHolder">
-        <div id="adminWindowMenuBar">
+        <div id="adminWindowMenuBar" ng-controller="AppCtrl">
             <ul>
                 <li><a href="javascript:;" class="active">Quick Inbox</a></li>
                 <li><a href="javascript:;" class="">Background</a></li>
@@ -22,14 +22,17 @@
                         Recent Submitted Feedback
                         <span class="light-text"></span>
                     </div>
-                    <div class="pageBody" ng-controller="AppCtrl">
+                    <div class="pageBody">
                         <div id="quickInboxWidget">
                             <div class="widget-list">
                                 <div>
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
-                                            <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, {feedid : feeds.id})" checkfeed/>
+                                            <input type="checkbox" 
+                                                   name="feedid" 
+                                                   ng-checked="is_selected(feeds.id)" 
+                                                   ng-click="update_selection($event, {feedid : feeds.id})" checkfeed/>
                                         </div>
 
                                         <div class="right">
