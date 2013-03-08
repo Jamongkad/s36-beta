@@ -39,6 +39,7 @@ app.controller("AppCtrl", function($scope, $compile, $http, QuickInboxService) {
                 $('.widget-list').jScrollPane();
             }, 10000); 
             $scope.feedbacks = data;
+            $scope.$apply();  
         });
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
