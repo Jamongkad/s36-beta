@@ -48,6 +48,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.resume_inbox = function() {
         console.log($scope.feedbacks);
+        $scope.$apply($scope.feedbacks); 
         /*
         $.ajax({
             type: 'GET'    
