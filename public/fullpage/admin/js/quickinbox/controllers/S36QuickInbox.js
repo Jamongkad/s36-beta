@@ -49,7 +49,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.resume_inbox = function() {
 
         $scope.feedbacks = [];
-
+        /*
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -60,6 +60,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.$apply($scope.feedbacks); 
             }
         });
+        */
 
     }
     
