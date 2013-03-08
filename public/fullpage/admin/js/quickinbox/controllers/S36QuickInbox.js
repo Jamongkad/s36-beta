@@ -49,7 +49,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.resume_inbox = function(feedbacks) {
 
         $scope.feedbacks = feedbacks;
-        $scope.apply();
+        $scope.$apply();
         
         /*
         $.ajax({
