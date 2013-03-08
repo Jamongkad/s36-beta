@@ -53,16 +53,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-                timer = new Timer(function() { 
-                    $('.widget-list').jScrollPane();
-                }, 10000); 
-                $scope.feedbacks = data;
-                $scope.$apply($scope.feedbacks); 
+                $scope.$apply(function() {
+                    $scope.feedbacks = data;
+                }); 
             }
         });
-       
-        console.log($scope.feedbacks);
-        return $scope.feedbacks;
     }
     
     $scope.update_selection = function($event, feed) {
