@@ -53,6 +53,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
+                var data = data;
                 $scope.$apply(function() {
                     console.log(data);
                     $scope.feedbacks = data;
