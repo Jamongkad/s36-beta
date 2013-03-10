@@ -20,6 +20,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() { 
+                    $('.widget-list').jScrollPane();
                     feed_request();  
                 }, 10000); 
            
