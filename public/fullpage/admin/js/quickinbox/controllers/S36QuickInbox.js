@@ -10,7 +10,9 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.deleted;
     $scope.undo;
 
-    var timer;  
+    var timer;                      
+    
+    var pane = $('.widget-list').jScrollPane();
 
     (function feed_request() { 
         $.ajax({
@@ -20,10 +22,9 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() { 
-                    $('.widget-list').jScrollPane();
+                    pane.reinitialise();
                     feed_request();  
-                }, 10000); 
-           
+                }, 10000);   
                 $scope.feedbacks = data;
             }
         });
@@ -53,8 +54,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         */
         /*
         console.log(feedbacks);
-        $scope.feedbacks = feedbacks;j 
-        */
+        $scope.feedbacks = feedbacks;
 
         $.ajax({
             type: 'GET'    
@@ -66,7 +66,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                 $scope.feedbacks = data;
             }
         });        
-
+        */
 
     }
     
