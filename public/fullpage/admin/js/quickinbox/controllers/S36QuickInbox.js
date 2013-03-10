@@ -16,7 +16,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     //var api = pane.data('jsp');
     //api.reinitialise();
     (function feed_request() { 
-        widgetscroll().data('jsp').reinitialise();
+        widgetscroll();
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
