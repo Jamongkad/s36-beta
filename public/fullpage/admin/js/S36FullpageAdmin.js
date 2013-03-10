@@ -7,7 +7,6 @@
 || Version: 0.0.0.1 
 || 
 ||=========================================*/
-
 var S36FullpageAdmin = function(layoutObj){
     /* ========================================
     || Function needed to run by document ready
@@ -78,12 +77,6 @@ var S36FullpageAdmin = function(layoutObj){
             $(this).addClass('selected');
             $('#selectedLayout').val($(this).attr('id'));
         });
-        /* ========================================
-        || Add a custom scrollbar on the quickinbox container
-        ==========================================*/
-        var pane = $('.widget-list').jScrollPane();
-        var api = pane.data('jsp');
-       //api.reinitialise();
         /* ========================================
         || Change the background color
         ==========================================*/
@@ -469,7 +462,14 @@ var S36FullpageAdmin = function(layoutObj){
 
 }
 
-
+var WidgetListScroll = new function() { 
+    /* ========================================
+    || Add a custom scrollbar on the quickinbox container
+    ==========================================*/
+    this.pane = $('.widget-list').jScrollPane();
+    this.api = pane.data('jsp');
+   //api.reinitialise();
+}
 
 
 // class that collects admin panel data and does the auto saving.
@@ -671,6 +671,5 @@ var PanelAutoSaver = new function(layoutObj){
             window.location.hash    = "#3";
             window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
         }
-    }
-    
+    }    
 }
