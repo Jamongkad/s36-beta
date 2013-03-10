@@ -189,8 +189,8 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) {
-            console.log(element);
-            element.jScrollPane();
+            //console.log(element);
+            //element.jScrollPane();
             /*
             var api = element.data('jsp');
             scope.$watch(function() {
