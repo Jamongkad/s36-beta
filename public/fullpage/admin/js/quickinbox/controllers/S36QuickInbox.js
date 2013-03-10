@@ -14,10 +14,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     
 
     (function feed_request() { 
-
+        /*
         var pane = $('.widget-list').jScrollPane();
         var api = pane.data('jsp');
         api.reinitialise();
+        */
 
         $.ajax({
             type: 'GET'    
