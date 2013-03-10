@@ -188,10 +188,9 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('scrollpane', function($compile) {
     return {
         restrict: 'A'
-      , link: function(scope, element, attrs) {
+      , link: function(scope, element, attrs) { 
             scope.$watch(function() {
                 var length = element.find('.widget-item').length;
-                $('.widget-list').jScrollPane();
                 return length
             }, function(length) {
                 //api should initialize.
