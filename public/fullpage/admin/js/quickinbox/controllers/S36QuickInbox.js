@@ -16,15 +16,14 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     //var api = pane.data('jsp');
     //api.reinitialise();
     (function feed_request() { 
-
+        widgetscroll().data('jsp').reinitialise();
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-                timer = new Timer(function() { 
-                    //widgetscroll().data('jsp').reinitialise();
+                timer = new Timer(function() {  
                     feed_request();   
                 }, 10000);   
                 $scope.feedbacks = data;
