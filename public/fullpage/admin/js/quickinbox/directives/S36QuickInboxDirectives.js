@@ -191,12 +191,14 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             element.addClass('scroll-pane');
             element.jScrollPane();
+            /*
             var api = element.data('jsp');
             scope.$watch(function() {
-                return element.find('.'+attrs.scrollpane.length;
+                return element.find('.'+attrs.scrollpane).length;
             }, function(length) {
                 api.reinitialise();
             });
+            */
         }
     }    
 });
