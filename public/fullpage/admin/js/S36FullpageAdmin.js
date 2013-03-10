@@ -20,6 +20,11 @@ var S36FullpageAdmin = function(layoutObj){
         // layoutObj is used as param because we use S36FullpageAdmin.show_notification() 
         // inside PanelAutoSaver.
         PanelAutoSaver.init(layoutObj);
+
+        /* ========================================
+        || Add a custom scrollbar on the quickinbox container
+        ==========================================*/
+        $('.widget-list').jScrollPane();
         
         // editing of panel description.
         $('#panel_desc_container').jScrollPane();
@@ -460,13 +465,6 @@ var S36FullpageAdmin = function(layoutObj){
         self.make_cover_undraggable(true);
     }
 
-}
-
-function widgetscroll() { 
-    /* ========================================
-    || Add a custom scrollbar on the quickinbox container
-    ==========================================*/
-    return $('.widget-list').jScrollPane();
 }
 
 // class that collects admin panel data and does the auto saving.
