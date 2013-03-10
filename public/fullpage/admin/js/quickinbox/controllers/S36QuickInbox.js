@@ -11,9 +11,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     var timer;                      
 
-    //$('.widget-list').jScrollPane();
-    //var api = pane.data('jsp');
-    //api.reinitialise();
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
@@ -26,8 +23,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
                     var api = $('.widget-list').jScrollPane().data().jsp;
                     api.destroy();
                     */
-                    $('.widget-list').jScrollPane().data('jsp').destroy();
-                    $('.widget-list').jScrollPane();
+                    $('.widget-list').jScrollPane().data().jsp.destroy();
+                    $('.widget-list').jScrollPane().data().jsp.reinitialise();
                     feed_request();   
                 }, 2000);   
                 $scope.feedbacks = data;
