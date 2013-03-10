@@ -462,13 +462,12 @@ var S36FullpageAdmin = function(layoutObj){
 
 }
 
-var WidgetListScroll = new function() { 
+function widgetscroll() { 
     /* ========================================
     || Add a custom scrollbar on the quickinbox container
     ==========================================*/
     var pane = $('.widget-list').jScrollPane();
-    this.api = pane.data('jsp');
-   //api.reinitialise();
+    return pane.data('jsp');
 }
 
 // class that collects admin panel data and does the auto saving.
