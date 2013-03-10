@@ -1,5 +1,5 @@
 var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices', 'CompileHtml']);
-
+widgetscroll();
 app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
@@ -15,7 +15,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     //$('.widget-list').jScrollPane();
     //var api = pane.data('jsp');
     //api.reinitialise();
-    widgetscroll();
     (function feed_request() { 
         $.ajax({
             type: 'GET'    
