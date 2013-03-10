@@ -3,8 +3,8 @@
 <div id="adminWindowBox" ng-controller="AppCtrl" >
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
-        <div class="minBtn" ng-click="resume_inbox(feedbacks)"></div>
-        <div class="closeBtn" ng-click="resume_inbox(feedbacks)"></div>
+        <div class="minBtn" ></div>
+        <div class="closeBtn" ></div>
     </div>
     <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">
