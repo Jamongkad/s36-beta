@@ -18,14 +18,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-
-                $('.widget-list').jScrollPane().data().jsp.destroy();
-                $('.widget-list').jScrollPane().data().jsp.reinitialise();
                 timer = new Timer(function() {  
-                    /*
-                    var api = $('.widget-list').jScrollPane().data().jsp;
-                    api.destroy();
-                    */
                     feed_request();   
                 }, 2000);   
                 $scope.feedbacks = data;
