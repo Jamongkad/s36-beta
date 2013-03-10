@@ -12,7 +12,13 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     var timer;                      
     
+
     (function feed_request() { 
+
+        var pane = $('.widget-list').jScrollPane();
+        var api = pane.data('jsp');
+        api.reinitialise();
+
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
@@ -20,10 +26,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() { 
-                    feed_request();  
-                    var pane = $('.widget-list').jScrollPane();
-                    var api = pane.data('jsp');
-                    api.reinitialise();
+                    feed_request();   
                 }, 10000);   
                 $scope.feedbacks = data;
             }
