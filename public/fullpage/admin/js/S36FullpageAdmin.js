@@ -467,7 +467,7 @@ var WidgetListScroll = new function() {
     || Add a custom scrollbar on the quickinbox container
     ==========================================*/
     this.pane = $('.widget-list').jScrollPane();
-    this.api = pane.data('jsp');
+    this.api = this.pane.data('jsp');
    //api.reinitialise();
 }
 
