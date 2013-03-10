@@ -13,6 +13,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     var timer;                      
     
     var pane = $('.widget-list').jScrollPane();
+    var api = pane.data('jsp');
 
     (function feed_request() { 
         $.ajax({
@@ -28,7 +29,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             }
         });
 
-        pane.reinitialise();
+        api.reinitialise();
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             timer.pause();
