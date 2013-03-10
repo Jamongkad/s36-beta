@@ -25,10 +25,10 @@
                     </div>
                     <div class="pageBody">
                         <div id="quickInboxWidget">
-                            <div class="widget-list">
+                            <div class="widget-list" scrollpane>
                                 <div>
                                     <!--quick inbox loop-->
-                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks" scrollpane>                                     
+                                    <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
                                             <input type="checkbox" 
                                                    name="feedid" 
