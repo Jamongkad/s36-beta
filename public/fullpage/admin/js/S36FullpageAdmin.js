@@ -466,7 +466,6 @@ var S36FullpageAdmin = function(layoutObj){
     }
 
 }
-
 // class that collects admin panel data and does the auto saving.
 var PanelAutoSaver = new function(layoutObj){
     

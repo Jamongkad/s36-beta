@@ -184,6 +184,14 @@ angular.module('S36QuickInboxDirectives', [])
             })
         }
     }    
+})
+.directive('scrollpane', function($compile) {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) {
+            console.log(element);
+        }
+    }    
 });
 
 //helper functions
