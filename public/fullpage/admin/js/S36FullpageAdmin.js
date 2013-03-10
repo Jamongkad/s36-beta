@@ -466,8 +466,7 @@ function widgetscroll() {
     /* ========================================
     || Add a custom scrollbar on the quickinbox container
     ==========================================*/
-    var pane = $('.widget-list').jScrollPane();
-    return pane.data('jsp');
+    return $('.widget-list').jScrollPane();
 }
 
 // class that collects admin panel data and does the auto saving.
