@@ -19,11 +19,11 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() {  
+                    $('.widget-list').jScrollPane().data().jsp.destroy();
+                    $('.widget-list').jScrollPane().data().jsp.reinitialise();
                     feed_request();   
                 }, 2000);   
 
-                $('.widget-list').jScrollPane().data().jsp.destroy();
-                $('.widget-list').jScrollPane().data().jsp.reinitialise();
                 $scope.feedbacks = data;
             }
         });
