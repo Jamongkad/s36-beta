@@ -18,12 +18,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-                timer = new Timer(function() {  
-                    /*
-                    var api = $('.widget-list').jScrollPane().data().jsp;
-                    api.destroy();
-                    $('.widget-list').jScrollPane();
-                    */
+                timer = new Timer(function() {   
                     feed_request();   
                 }, 10000);   
 
@@ -48,6 +43,10 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             $scope.selected.push(id);
         if (action == 'remove' && $scope.selected.indexOf(id) != -1)
             $scope.selected.splice($scope.selected.indexOf(id), 1);
+    }
+
+    $scope.scroll_pane = function()  {
+        $('.widget-list').jScrollPane();    
     }
  
     $scope.update_selection = function($event, feed) {
