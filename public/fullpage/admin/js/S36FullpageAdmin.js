@@ -81,7 +81,7 @@ var S36FullpageAdmin = function(layoutObj){
         /* ========================================
         || Add a custom scrollbar on the quickinbox container
         ==========================================*/
-        $('.widget-list').jScrollPane();
+        //$('.widget-list').jScrollPane();
         /* ========================================
         || Change the background color
         ==========================================*/
