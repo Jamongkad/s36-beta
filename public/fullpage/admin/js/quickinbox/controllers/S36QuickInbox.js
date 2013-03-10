@@ -15,7 +15,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     //$('.widget-list').jScrollPane();
     //var api = pane.data('jsp');
     //api.reinitialise();
-    console.log(widgetscroll());
+    console.log();
     (function feed_request() { 
 
         $.ajax({
@@ -25,6 +25,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() { 
+                    widgetscroll();
                     feed_request();   
                 }, 10000);   
                 $scope.feedbacks = data;
