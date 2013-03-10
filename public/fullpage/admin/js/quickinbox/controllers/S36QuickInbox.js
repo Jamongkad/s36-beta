@@ -22,12 +22,13 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
                 timer = new Timer(function() { 
-                    pane.reinitialise();
                     feed_request();  
                 }, 10000);   
                 $scope.feedbacks = data;
             }
         });
+
+        pane.reinitialise();
 
         $('#quickInbox').unbind('mouseenter.widget').bind('mouseenter.widget', function() { 
             timer.pause();
