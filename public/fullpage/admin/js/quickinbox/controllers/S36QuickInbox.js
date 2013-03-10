@@ -45,27 +45,26 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             $scope.selected.splice($scope.selected.indexOf(id), 1);
     }
 
-    $scope.resume_inbox = function(feedbacks) {
-        $('.widget-list').jScrollPane();
+    $scope.resume_inbox = function(feedbacks) { 
         /*
         $scope.feedbacks = feedbacks;
         $scope.$apply();
         */
         /*
         console.log(feedbacks);
-        $scope.feedbacks = feedbacks;j
-        
+        $scope.feedbacks = feedbacks;j 
+        */
+
         $.ajax({
             type: 'GET'    
           , dataType: 'json'
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
+                $('.widget-list').jScrollPane();
                 $scope.feedbacks = data;
             }
         });        
-        */
-
 
 
     }
