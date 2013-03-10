@@ -471,7 +471,6 @@ var WidgetListScroll = new function() {
    //api.reinitialise();
 }
 
-
 // class that collects admin panel data and does the auto saving.
 var PanelAutoSaver = new function(layoutObj){
     
