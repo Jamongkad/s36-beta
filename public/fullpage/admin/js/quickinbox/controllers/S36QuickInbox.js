@@ -15,6 +15,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     //$('.widget-list').jScrollPane();
     //var api = pane.data('jsp');
     //api.reinitialise();
+    console.log(S36FullpageAdmin);
     (function feed_request() { 
 
         $.ajax({
