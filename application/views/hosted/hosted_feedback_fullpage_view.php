@@ -161,7 +161,7 @@
             var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
             fullpageAdmin.init_fullpage_admin();
             fullpageCommon.init_toggle_bar(0);
-            var widgetlist = new WidgetListScroll();
+            var widgetlist = new WidgetListScroll;
             console.log(widgetlest);
         <?php else:  // then hide the admin bar by default ?>
             fullpageCommon.init_toggle_bar(1);
