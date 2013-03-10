@@ -158,7 +158,7 @@
         fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
         
         <?php if($user): //then display the admin bar by default ?>
-            widgetscroll();
+            //widgetscroll();
             var fullpageAdmin  = new S36FullpageAdmin(fullpageLayout);
             fullpageAdmin.init_fullpage_admin();
             fullpageCommon.init_toggle_bar(0);
