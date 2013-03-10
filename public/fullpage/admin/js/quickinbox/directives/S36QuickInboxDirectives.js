@@ -193,19 +193,15 @@ angular.module('S36QuickInboxDirectives', [])
                 var length = element.find('.widget-item').length;
                 return length
             }, function(length) {
-                //api should initialize.
-                $('.widget-list').jScrollPane();
-                console.log("New length: " + length);
+                var pane = $('.widget-list').jScrollPane();
+                var api = pane.data('jsp');
+                if(api) {
+                    api.destroy();
+                }
+                setTimeout(function() {
+                    $('.widget-list').jScrollPane();
+                }, 0);
             });
-            //element.jScrollPane();
-            /*
-            var api = element.data('jsp');
-            scope.$watch(function() {
-                return element.find('.'+attrs.scrollpane).length;
-            }, function(length) {
-                api.reinitialise();
-            });
-            */
         }
     }    
 });
