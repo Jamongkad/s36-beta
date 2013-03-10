@@ -191,7 +191,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             console.log(element);
             scope.$watch(function() {
-                console.log(element.find('.widget-item'));
+                console.log(element.find('.widget-item').length);
             }, function() {
                 
             });
