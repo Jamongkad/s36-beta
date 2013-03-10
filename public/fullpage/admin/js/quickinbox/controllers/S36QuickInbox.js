@@ -62,7 +62,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.admin_action = function(mystatus) {
         QuickInboxService.change_feedback_status(mystatus, $scope.selected);
-        QuickInboxService.render_feeds(mystatus, $scope.selected);
+        //implementation is too buggy
+        //QuickInboxService.render_feeds(mystatus, $scope.selected);
         $scope.selected = [];
     }
 
