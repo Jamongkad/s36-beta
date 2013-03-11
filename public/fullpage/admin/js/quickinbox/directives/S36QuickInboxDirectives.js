@@ -125,9 +125,7 @@ angular.module('S36QuickInboxDirectives', [])
                             var small_url  = '/uploaded_images/form_upload/small/' + file_name;
                             var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
                             var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
-                            /* 
-                            scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
-                            */
+
                             scope.mtemplate += '<div class="image-block pic">';
                             scope.mtemplate += '<div class="the-thumb-ajs" open-pic  ng-click="test_punch(1000)" load="' +  large_url  + '">';
                             scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
@@ -166,13 +164,13 @@ angular.module('S36QuickInboxDirectives', [])
             attrs.$observe('load', function(at) {
                 $(element).bind('click', function() { 
                     console.log("Pic Open");
-
-                    console.log(at);
-
                     var scroll_offset = $(document).scrollTop();
                     var top_offset = scroll_offset + 100;
                     $('.lightbox').fadeIn().css('top', top_offset);
                     var html = '<img src="' + at + '" width="100%" />';
+
+                    console.log(html);
+
                     $('.uploaded-images-content').html(html);
                 })
             })
