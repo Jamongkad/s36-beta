@@ -102,10 +102,10 @@
                     <div class="uploaded-image">
                         <div class="padded-5">
                             <div class="the-thumb">
-                                    <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
-                                        <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
-                                    </a>
-                                    <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
+                                <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
+                                    <div class="att_container"><img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" /></div>
+                                </a>
+                                <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
                             </div>
                         </div>
                     </div>

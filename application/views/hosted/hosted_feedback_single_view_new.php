@@ -64,7 +64,7 @@
         $(".fancybox").fancybox({
           openEffect : 'none',
           closeEffect : 'none'
-         });
+        });
     });
     </script>
 </head>
@@ -289,7 +289,7 @@
                                                         <div class="padded-5">
                                                             <div class="the-thumb">
                                                                 <a class="fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
-                                                                    <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                                    <div class="att_container"><img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" /></div>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -297,7 +297,7 @@
                                                     <?php endforeach; ?>
                                                 </div>
                                             <?php endif; //endif uploaded images ?>
-
+                                            
                                             <?php if(isset($attachments->attached_link)): ?>                       
                                                 <?
                                                 $attached_url = Helpers::secure_link($attachments->attached_link->url);
@@ -396,5 +396,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">S36FeedbackActions.vertically_center_attachments();</script>
 </body>
 </html>

@@ -104,7 +104,7 @@
                                 <div class="the-thumb">
                                     <?php $thumb_url = ($feed->feed_data->isfeatured == 1) ? Config::get('application.attachments_medium').'/'.$uploaded_image->name : Config::get('application.attachments_small').'/'.$uploaded_image->name ?>
                                     <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
-                                        <img src="<?=$thumb_url?>" width="100%" />
+                                        <div class="att_container"><img src="<?=$thumb_url?>" width="100%" /></div>
                                     </a>
                                     <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
                                 </div>
