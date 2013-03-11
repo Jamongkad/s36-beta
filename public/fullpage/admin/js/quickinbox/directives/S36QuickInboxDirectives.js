@@ -111,7 +111,8 @@ angular.module('S36QuickInboxDirectives', [])
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
                         scope.mtemplate += '<div class="video-circle-ajs" link-url="' + links.url + '" open-video></div>';
-                        scope.mtemplate += '<a class="the-thumb-ajs" ><img src="' + links.image + '" width="100%" /></a>';
+                        scope.mtemplate += '<a class="the-thumb-ajs fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">
+                        scope.mtemplate += '<img src="' + links.image + '" width="100%" /></a>';
                         scope.mtemplate += '</div>';
                     }
 
@@ -146,6 +147,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , link: function(scope, element, attrs) {
+          /*
             $(element).bind('click', function() { 
                 console.log("Video Open");
                 var scroll_offset = $(document).scrollTop();
@@ -156,6 +158,7 @@ angular.module('S36QuickInboxDirectives', [])
                 $('.lightbox').fadeIn().css('top', top_offset);
                 $('.uploaded-images-content').html(html);
             })
+            */
         }
     }    
 })

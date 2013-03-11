@@ -125,10 +125,10 @@
                                     <?php if($attachments->attached_link->video=='yes'): ?>
                                         <div class="video-thumb">
                                             <a class="fancybox-video" href="<?=$attached_url?>" rel="uploaded-videos-<?=$feedback_id?>">
-                                            <div class="video-circle"></div>
-                                            <div class="the-thumb">
-                                                <img src="<?=$attached_image?>" width="100%" />
-                                            </div>
+                                                <div class="video-circle"></div>
+                                                <div class="the-thumb">
+                                                    <img src="<?=$attached_image?>" width="100%" />
+                                                </div>
                                             </a>
                                         </div>
                                     <?php else: ?>
