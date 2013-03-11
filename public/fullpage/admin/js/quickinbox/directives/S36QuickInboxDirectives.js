@@ -190,12 +190,13 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             scope.$watch(function() {
+                /*
                 var pane = $('.widget-list').jScrollPane();
                 var api = pane.data('jsp');
                 if(api) {
                     api.destroy();
                 }
-
+                */
                 $('.widget-list').jScrollPane();
                 var length = element.find('.widget-item').length;
                 return length
