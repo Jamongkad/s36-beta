@@ -216,13 +216,11 @@ angular.module('S36QuickInboxDirectives', [])
 
                    var pane = $('.widget-list').jScrollPane();
                    var api = pane.data('jsp');
-                   
-                   console.log(api);
-
                    api.destroy();
-
-                   $('.widget-list').jScrollPane();
-
+                   console.log(api);
+                   setTimeout(function() {
+                       $('.widget-list').jScrollPane();
+                   }, 0);
 
                 e.preventDefault();
             });
