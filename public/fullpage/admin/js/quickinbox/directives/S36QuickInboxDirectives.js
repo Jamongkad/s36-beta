@@ -94,9 +94,12 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('attachments', function() {
     return {
         restrict: 'A'     
+      , scope: {
+            load: "="   
+          , feedid: "="
+        }
       , link: function(scope, element, attrs) { 
-            console.log(attrs.load);
-            console.log(attrs.feedid);
+            console.log(scope);
             /*
             attrs.$observe('load', function(at) {
                 if(at) {
