@@ -18,7 +18,7 @@
 		
 		$(this).keyup(function(e){
             console.log(e.which);
-			if((e.which == 13 || e.which == 32 || e.which == 17) && trim( $(this).val() ) != ""){
+			if((e.which == 13 || e.which == 32 || e.which == 17 || e.which == 224) && trim( $(this).val() ) != ""){
 				text = $(this).val();
 				
 				if( urlRegex.test(text)){
