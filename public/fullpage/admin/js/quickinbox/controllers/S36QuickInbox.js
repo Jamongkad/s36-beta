@@ -52,7 +52,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
             api.destroy();
         }
 
-        $('.widget-list').jScrollPane();
+        console.log($('.widget-list').jScrollPane());
+
     }
  
     $scope.update_selection = function($event, feed) {
