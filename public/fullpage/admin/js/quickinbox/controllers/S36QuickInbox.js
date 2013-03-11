@@ -20,7 +20,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , success: function(data) {   
                 timer = new Timer(function() {   
                     feed_request();   
-                }, 10000);   
+                }, 15000);   
 
                 $scope.feedbacks = data;
                 $scope.$apply($scope.feedbacks);
