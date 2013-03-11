@@ -17,6 +17,7 @@
 		var urlRegex = /(https?\:\/\/|\s)[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})(\/+[a-z0-9_.\:\;-]*)*(\?[\&\%\|\+a-z0-9_=,\.\:\;-]*)?([\&\%\|\+&a-z0-9_=,\:\;\.-]*)([\!\#\/\&\%\|\+a-z0-9_=,\:\;\.-]*)}*/i;
 		
 		$(this).keyup(function(e){
+            console.log(e.which);
 			if((e.which == 13 || e.which == 32 || e.which == 17) && trim( $(this).val() ) != ""){
 				text = $(this).val();
 				
