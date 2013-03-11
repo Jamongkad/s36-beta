@@ -167,7 +167,8 @@ return array(
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
 
         $feedback  = $feedback->pull_feedback_by_id($id);
-
+        
+        //if no feedback then redirect back to home page.
         if(!$feedback) {
             return Redirect::to('/');     
         }
