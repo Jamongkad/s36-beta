@@ -163,10 +163,11 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , scope: {
-            ld: "=load"
+            ld: "@load"
         }
       , link: function(scope, element, attrs) {
             console.log(element);
+            console.log(scope);
               /*
                 attrs.$observe('load', function(at) {
                     $(element).bind('click', function() { 
