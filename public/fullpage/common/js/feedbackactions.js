@@ -25,6 +25,7 @@ var S36FeedbackActions = new function() {
         me.open_submission_form();
         me.admin_reply();
         me.attachment_controls();
+        me.vertically_center_attachments();
         //me.masonry_initialize();
         common.reload_layout_masonry(layoutObj);
         Helpers.close_lightbox();
@@ -37,6 +38,18 @@ var S36FeedbackActions = new function() {
             starOn: 'star-fill.png',
             starOff: 'star-empty.png',
             readOnly: true
+        });
+    }
+    
+    this.vertically_center_attachments = function(){
+        $('.uploaded-image').each(function(){
+            var uploaded_image_h = $(this).height();
+            var att_container_h = $(this).find('.att_container').height();
+            var att_container = $(this).find('.att_container');
+            
+            if( att_container_h > uploaded_image_h ){
+                att_container.css('margin-top', -((att_container_h - uploaded_image_h) / 2));
+            }
         });
     }
 

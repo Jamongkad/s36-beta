@@ -41,7 +41,7 @@ return array(
         $hosted = new Feedback\Services\HostedService($company_name, $feeds->result); 
         $hosted->page_number = 1; 
         //$hosted->dump_build_data = true;  // remove this after testing. 
-        //$hosted->bust_hostfeed_data();
+        $hosted->bust_hostfeed_data();
         $hosted->build_data();
         $feeds = $hosted->fetch_data_by_set();        
 

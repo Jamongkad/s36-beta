@@ -34,6 +34,7 @@
 .undo_flag.hidden,
 .vote-action.hidden,
 .undo_vote.hidden { display: none; }
+.the-thumb{ overflow: hidden; }
 
 
 /* admin panel */
