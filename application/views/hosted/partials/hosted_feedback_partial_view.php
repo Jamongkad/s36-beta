@@ -110,8 +110,8 @@ foreach ($collection as $feed_group => $feed_list) :
                             <div class="uploaded-image">
                                 <div class="padded-5">
                                     <div class="the-thumb">
-                                        <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                        <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                        <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
+                                        <img src="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>" width="100%" />
                                     </div>
                                 </div>
                             </div>
