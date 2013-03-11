@@ -686,11 +686,10 @@ h2.h2-fix{
 	margin-top:10px;
 }
 .facebook-share-bar{
-	float:left;
-	width:190px;
+    display:block;
 }
 .twitter-share-bar{
-	margin-left:200px;
+    display:block;
 }
 #like-boxes{
 	margin-top:10px;
@@ -777,3 +776,7 @@ select.regular-custom-field{
     top: 1px;
     *overflow: hidden;
 }
+
+
+#fb-last-page-like-button iframe ._5v4._5v8{width:390px !important}
+#fb-last-page-like-button iframe ._5v4._5v8 .ptm{display:none !important}

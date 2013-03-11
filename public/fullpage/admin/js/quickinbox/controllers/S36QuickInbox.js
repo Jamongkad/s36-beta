@@ -1,5 +1,4 @@
 var app = angular.module("QuickInbox", ['S36QuickInboxDirectives', 'S36QuickInboxServices', 'CompileHtml']);
-
 app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.feedbacks = [];
@@ -10,7 +9,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
     $scope.deleted;
     $scope.undo;
 
-    var timer;  
+    var timer;                      
 
     (function feed_request() { 
         $.ajax({
@@ -19,12 +18,17 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
           , async: false
           , url: '/hosted/quick_inbox'
           , success: function(data) {   
-                timer = new Timer(function() { 
-                    feed_request();  
+                timer = new Timer(function() {  
+                    /*
+                    var api = $('.widget-list').jScrollPane().data().jsp;
+                    api.destroy();
                     $('.widget-list').jScrollPane();
-                }, 10000); 
+                    */
+                    feed_request();   
+                }, 10000);   
+
                 $scope.feedbacks = data;
-                $scope.$apply($scope.feedbacks); 
+                $scope.$apply($scope.feedbacks);
             }
         });
 
@@ -45,8 +49,7 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         if (action == 'remove' && $scope.selected.indexOf(id) != -1)
             $scope.selected.splice($scope.selected.indexOf(id), 1);
     }
-
-    
+ 
     $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
@@ -59,7 +62,8 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
 
     $scope.admin_action = function(mystatus) {
         QuickInboxService.change_feedback_status(mystatus, $scope.selected);
-        QuickInboxService.render_feeds(mystatus, $scope.selected);
+        //implementation is too buggy
+        //QuickInboxService.render_feeds(mystatus, $scope.selected);
         $scope.selected = [];
     }
 

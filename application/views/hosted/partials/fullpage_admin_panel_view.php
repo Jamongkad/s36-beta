@@ -1,11 +1,12 @@
 <input type="hidden" id="theme_name" name="theme_name" value="<?=$panel->theme_name?>" />
-<div id="adminWindowBox" ng-app="QuickInbox">
+<div ng-app="QuickInbox">
+<div id="adminWindowBox" ng-controller="AppCtrl" >
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
-        <div class="minBtn"></div>
-        <div class="closeBtn"></div>
+        <div class="minBtn" ></div>
+        <div class="closeBtn" ></div>
     </div>
-    <div id="adminWindowHolder">
+    <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">
             <ul>
                 <li><a href="javascript:;" class="active">Quick Inbox</a></li>
@@ -22,14 +23,17 @@
                         Recent Submitted Feedback
                         <span class="light-text"></span>
                     </div>
-                    <div class="pageBody" ng-controller="AppCtrl">
+                    <div class="pageBody">
                         <div id="quickInboxWidget">
-                            <div class="widget-list">
+                            <div class="widget-list" scrollpane>
                                 <div>
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
                                         <div class="left">
-                                            <input type="checkbox" name="feedid" ng-checked="is_selected(feeds.id)" ng-click="update_selection($event, {feedid : feeds.id})" checkfeed/>
+                                            <input type="checkbox" 
+                                                   name="feedid" 
+                                                   ng-checked="is_selected(feeds.id)" 
+                                                   ng-click="update_selection($event, {feedid : feeds.id})" checkfeed/>
                                         </div>
 
                                         <div class="right">
@@ -340,6 +344,7 @@
         </div>
     </div>
 </div>
+</div>
 <div id="notification">
     <div id="notification-design">
         <div id="notification-message">
@@ -347,3 +352,4 @@
         </div>
     </div>
 </div>
+

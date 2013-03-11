@@ -7,7 +7,6 @@
 || Version: 0.0.0.1 
 || 
 ||=========================================*/
-
 var S36FullpageAdmin = function(layoutObj){
     /* ========================================
     || Function needed to run by document ready
@@ -21,6 +20,11 @@ var S36FullpageAdmin = function(layoutObj){
         // layoutObj is used as param because we use S36FullpageAdmin.show_notification() 
         // inside PanelAutoSaver.
         PanelAutoSaver.init(layoutObj);
+
+        /* ========================================
+        || Add a custom scrollbar on the quickinbox container
+        ==========================================*/
+        //$('.widget-list').jScrollPane();
         
         // editing of panel description.
         $('#panel_desc_container').jScrollPane();
@@ -51,9 +55,11 @@ var S36FullpageAdmin = function(layoutObj){
         /* ========================================
         || Close the admin window box when close button is clicked
         ==========================================*/
+
         $('#adminWindowTitleBar .closeBtn').click(function(){
             $('#adminWindowBox').fadeOut('fast');
         });
+
         /* ========================================
         || Minimize the admin window when minimize button is clicked
         ==========================================*/
@@ -76,10 +82,6 @@ var S36FullpageAdmin = function(layoutObj){
             $(this).addClass('selected');
             $('#selectedLayout').val($(this).attr('id'));
         });
-        /* ========================================
-        || Add a custom scrollbar on the quickinbox container
-        ==========================================*/
-        $('.widget-list').jScrollPane();
         /* ========================================
         || Change the background color
         ==========================================*/
@@ -464,10 +466,6 @@ var S36FullpageAdmin = function(layoutObj){
     }
 
 }
-
-
-
-
 // class that collects admin panel data and does the auto saving.
 var PanelAutoSaver = new function(layoutObj){
     
@@ -667,6 +665,5 @@ var PanelAutoSaver = new function(layoutObj){
             window.location.hash    = "#3";
             window.location.href    = window.location.pathname+'?nocache&'+window.location.hash;
         }
-    }
-    
+    }    
 }
