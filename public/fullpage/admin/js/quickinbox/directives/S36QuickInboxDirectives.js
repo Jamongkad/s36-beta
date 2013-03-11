@@ -109,7 +109,6 @@ angular.module('S36QuickInboxDirectives', [])
                 for(var prop in scope.load) {
                     var links = scope.load[prop];
                     console.log(links);
-                    /*
                     //videos
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
@@ -127,7 +126,6 @@ angular.module('S36QuickInboxDirectives', [])
                     
                     //pics
                     for(var i=0; i<links.length; i++) {
-
                         var file_name = links[i].name;
                         var small_url  = '/uploaded_images/form_upload/small/' + file_name;
                         var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
@@ -138,7 +136,6 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
                         scope.mtemplate += '</div>';
                     }                       
-                    */
                 }
                 scope.mtemplate += '</div>';
             }
