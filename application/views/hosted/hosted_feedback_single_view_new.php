@@ -276,7 +276,7 @@
                                 <div class="feedback-text-bubble">
                                     <div class="feedback-tail"></div>
                                     <div class="feedback-text">
-                                        <p><?= HTML::entities($feedback->text);?></p><br/>
+                                        <p><?= HTML::entities($feedback->text);?></p>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
                                     
