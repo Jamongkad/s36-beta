@@ -52,6 +52,7 @@
     |--------------------------------------------------------------------------
     */
     echo HTML::script('/fancybox/jquery.fancybox.js');
+    echo HTML::script('/fancybox/jquery.fancybox.pack.js');
     echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
     echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
     echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
@@ -65,6 +66,25 @@
           openEffect : 'none',
           closeEffect : 'none'
          });
+
+        $(".fancybox-video").click(function() {
+        $.fancybox({
+            'padding'       : 0,
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'title'         : this.title,
+            'width'         : 640,
+            'height'        : 385,
+            'href'          : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+            'type'          : 'swf',
+            'swf'           : {
+            'wmode'             : 'transparent',
+            'allowfullscreen'   : 'true'
+            }
+        });
+        return false;
+        });
     });
     </script>
 </head>
@@ -308,11 +328,12 @@
                                                             <div class="form-video-meta">
                                                                 <?php if($attachments->attached_link->video=='yes'): ?>
                                                                     <div class="video-thumb">
+                                                                        <a class="fancybox-video" href="<?=$attached_url?>" rel="gallery">
                                                                         <div class="video-circle"></div>
                                                                         <div class="the-thumb">
-                                                                            <input type="hidden" class="link-url" value="<?=$attached_url?>"/>
-                                                                            <img src="<?=$attached_image?>" width="100%">
+                                                                            <img src="<?=$attached_image?>" width="100%" />
                                                                         </div>
+                                                                        </a>
                                                                     </div>
                                                                 <?php else: ?>
                                                                     <div class="video-thumb">
