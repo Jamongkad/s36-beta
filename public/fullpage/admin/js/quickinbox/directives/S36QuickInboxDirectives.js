@@ -147,7 +147,7 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) {
             $(element).bind('click', function() { 
-
+                console.log("Video Open");
                 var scroll_offset = $(document).scrollTop();
                 var top_offset = scroll_offset + 100;
                 var embed_url = $(this).attr('link-url').replace('www.youtube.com/watch?v=','www.youtube.com/embed/');
@@ -165,6 +165,8 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 $(element).bind('click', function() { 
+                    console.log("Pic Open");
+
                     var scroll_offset = $(document).scrollTop();
                     var top_offset = scroll_offset + 100;
                     $('.lightbox').fadeIn().css('top', top_offset);
