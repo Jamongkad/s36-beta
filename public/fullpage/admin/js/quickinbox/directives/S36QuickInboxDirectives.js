@@ -55,7 +55,7 @@ angular.module('S36QuickInboxDirectives', [])
                 if(at) {
                     var data = angular.fromJson(at);
                     //console.log(data); 
-                    scope.template = '<div class="custom-meta-list grids">';     
+                    scope.template = '<div class="custom-meta-list grids" ng-click="test_punch(100)">';     
                     for(var prop in data) {
                         var meta = data[prop];
                         scope.template += '<div class="custom-meta">';
@@ -96,7 +96,7 @@ angular.module('S36QuickInboxDirectives', [])
                     //videos
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
-                        scope.mtemplate += '<a class="fancybox-video" ng-click="test_punch(100)" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
+                        scope.mtemplate += '<a class="fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
                         scope.mtemplate += '<div class="video-circle-ajs"></div>';
                         scope.mtemplate += '<img src="' + links.image + '" width="100%" /></a>';
                         scope.mtemplate += '</div>';
