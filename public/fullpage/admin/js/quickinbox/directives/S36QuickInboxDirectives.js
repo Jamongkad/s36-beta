@@ -94,11 +94,11 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('attachments', function() {
     return {
         restrict: 'A'     
+      , scope: {
+            load: "=load"   
+        }
       , link: function(scope, element, attrs) { 
-            scope.$watch(function() {
-                console.log(scope.load);    
-            }, function(val) {
-            })
+            console.log(scope.load);
             /*
             attrs.$observe('load', function(at) {
                 if(at) {
