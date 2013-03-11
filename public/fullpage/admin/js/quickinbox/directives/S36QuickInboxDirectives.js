@@ -143,7 +143,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , scope: {
-            rel: "@rel" 
+            rel: "=rel" 
         }
       , link: function(scope, element, attrs) {
             console.log(scope.rel);
