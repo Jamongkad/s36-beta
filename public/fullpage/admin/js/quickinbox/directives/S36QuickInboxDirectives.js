@@ -213,7 +213,7 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
-               if(!$('.widget-list').is(':visible')) { 
+
                    var pane = $('.widget-list').jScrollPane();
                    var api = pane.data('jsp');
                    
@@ -223,7 +223,7 @@ angular.module('S36QuickInboxDirectives', [])
                    setTimeout(function() {
                        $('.widget-list').jScrollPane();
                    }, 0);
-                }
+
                 e.preventDefault();
             });
         }
