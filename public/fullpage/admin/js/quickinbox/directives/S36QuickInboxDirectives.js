@@ -167,7 +167,7 @@ angular.module('S36QuickInboxDirectives', [])
         }
       , link: function(scope, element, attrs) {
             console.log(element);
-            console.log(scope);
+            console.log(scope.ld);
               /*
                 attrs.$observe('load', function(at) {
                     $(element).bind('click', function() { 
