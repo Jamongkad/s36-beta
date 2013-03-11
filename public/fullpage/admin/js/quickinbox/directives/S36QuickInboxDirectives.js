@@ -220,9 +220,9 @@ angular.module('S36QuickInboxDirectives', [])
                    console.log(api);
 
                    api.destroy();
-                   setTimeout(function() {
-                       $('.widget-list').jScrollPane();
-                   }, 0);
+
+                   $('.widget-list').jScrollPane();
+
 
                 e.preventDefault();
             });
