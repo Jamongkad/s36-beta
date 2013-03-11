@@ -147,7 +147,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , scope: {
-            href: "@href"
+            href: "=href"
         }
       , link: function(scope, element, attrs) {
             console.log(scope.href);
