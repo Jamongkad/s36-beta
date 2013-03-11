@@ -99,10 +99,6 @@ angular.module('S36QuickInboxDirectives', [])
           , feedid: "=feedid"
         }
       , link: function(scope, element, attrs) { 
-            /* 
-            console.log(scope.load);
-            console.log(scope.feedid);
-            */
             if(scope.load) {
                 scope.mtemplate = '<div class="uploaded-images-and-links grids">';               
                 for(var prop in scope.load) {
@@ -147,10 +143,10 @@ angular.module('S36QuickInboxDirectives', [])
     return {  
         restrict: 'A'     
       , scope: {
-            href: "=href"
+            rel: "@rel" 
         }
       , link: function(scope, element, attrs) {
-            console.log(scope.href);
+            console.log(scope.rel);
         }
     }    
 })
@@ -191,12 +187,10 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) { 
-            $(element).bind('click', function(e) {
-    
+            $(element).bind('click', function(e) { 
                 var pane = $('.widget-list').jScrollPane();
                 var api = pane.data('jsp');
                 api.destroy();
-                console.log(api);
                 setTimeout(function() {
                     $('.widget-list').jScrollPane();
                 }, 200);
