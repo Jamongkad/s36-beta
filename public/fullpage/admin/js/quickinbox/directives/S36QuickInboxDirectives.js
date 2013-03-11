@@ -95,7 +95,7 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
-            console.log(attrs);
+            console.log(attrs.attachments);
             /*
             attrs.$observe('load', function(at) {
                 if(at) {
