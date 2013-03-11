@@ -9,16 +9,6 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }    
 })
-.directive('punch', function() {
-    return {
-        restrict: 'A'     
-      , link: function(scope, element, attrs) {
-            $(element).bind('click', function(e) {  
-                console.log("PUNCH");
-            })
-        }
-    }         
-})
 .directive('social', function() {
     return {
         restrict: 'A'
@@ -106,7 +96,7 @@ angular.module('S36QuickInboxDirectives', [])
                     //videos
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
-                        scope.mtemplate += '<a class="fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
+                        scope.mtemplate += '<a class="fancybox-video" ng-click="test_punch(100)" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
                         scope.mtemplate += '<div class="video-circle-ajs"></div>';
                         scope.mtemplate += '<img src="' + links.image + '" width="100%" /></a>';
                         scope.mtemplate += '</div>';
@@ -127,7 +117,7 @@ angular.module('S36QuickInboxDirectives', [])
                         var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
 
                         scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<a class="the-thumb-ajs" open-pic rel="gallery' + scope.feedid + '" href="' +  large_url  + '">';
+                            scope.mtemplate += '<a class="the-thumb-ajs" rel="gallery' + scope.feedid + '" href="' +  large_url  + '">';
                                 scope.mtemplate += '<img src="' + small_url + '" width="100%" />';
                             scope.mtemplate += '</a>';
                         scope.mtemplate += '</div>';
@@ -137,17 +127,6 @@ angular.module('S36QuickInboxDirectives', [])
             }
         }
       , template: '<span compile-html="mtemplate"></span>'
-    }    
-})
-.directive('openPic', function() { 
-    return {  
-        restrict: 'A'     
-      , scope: {
-            rel: "@" 
-        }
-      , link: function(scope, element, attrs) {
-            console.log(scope.rel);
-        }
     }    
 })
 .directive('checkfeed', function() { 
