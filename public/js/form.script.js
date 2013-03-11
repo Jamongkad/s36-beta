@@ -285,26 +285,35 @@ $(document).keypress(function(event){
 				$('.upload-preview').show('fast');
 				var progress = parseInt(data.loaded / data.total * 100, 10);
 				$('.upload-preview').last().find('.progress-shade').css('width', progress + '%');
-			}, done: function(e, data){ 
-                console.log(data);
-				$('.upload-preview').hide('fast');
+			}, done: function(e, data){
+                $('.upload-preview').hide('fast');
 				// append the new images to the html sync it with the review page::
 				$('#uploaded_images_preview')
 					.append(
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}))
+							.append(
+								$('<img />')
+								.attr({'src':data.result[0].medium_url,'width':'100%'})
+								.load(function(){
+									var parent_height = $('#uploaded_images_preview').height();
+									var image_height = $(this).height();
+									if( image_height > parent_height ){
+										$(this).css('margin-top', -((image_height - parent_height) / 2));
+									}
+								})
+							)
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
-							); 
+					);
 				$('#review-images')
 					.append(
 						$('<div />')
 							.addClass('image-thumb e_img_check')
 							.append($('<div class="thumb-img-close"></div>').attr('data-url',data.result[0].delete_url ))
-							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%','height':'75px'}).addClass('attachment'))
+							.append($('<img />').attr({'src':data.result[0].medium_url,'width':'100%'}).addClass('attachment'))
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
-							);
+					);
 				
 				//resize the textbox when done
 				scale_feedback_textbox();
@@ -313,7 +322,8 @@ $(document).keypress(function(event){
 				init_thumbnail_close_btn();
 				
 				//close the file upload window
-				close_file_upload();			
+				close_file_upload();
+                
             }
 		});
 		// initialize the photo upload script
