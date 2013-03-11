@@ -103,7 +103,6 @@ angular.module('S36QuickInboxDirectives', [])
             console.log(scope.load);
             console.log(scope.feedid);
             */
-
             if(scope.load) {
                 scope.mtemplate = '<div class="uploaded-images-and-links grids">';               
                 for(var prop in scope.load) {
@@ -131,7 +130,7 @@ angular.module('S36QuickInboxDirectives', [])
                         var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
 
                         scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<a class="the-thumb-ajs" open-pic punch rel="gallery-' + scope.feedid + '" load="' +  large_url  + '">';
+                            scope.mtemplate += '<a class="the-thumb-ajs" open-pic rel="gallery-' + scope.feedid + '" load="' +  large_url  + '">';
                                 scope.mtemplate += '<img src="' + small_url + '" width="100%" />';
                             scope.mtemplate += '</a>';
                         scope.mtemplate += '</div>';
@@ -163,19 +162,28 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('openPic', function() { 
     return {  
         restrict: 'A'     
+      , scope: {
+            ld: "=load"
+        }
       , link: function(scope, element, attrs) {
-            attrs.$observe('load', function(at) {
-                $(element).bind('click', function() { 
-                    console.log("Open Pic");
-                    /*
-                    var scroll_offset = $(document).scrollTop();
-                    var top_offset = scroll_offset + 100;
-                    $('.lightbox').fadeIn().css('top', top_offset);
-                    var html = '<img src="' + at + '" width="100%" />';
-                    $('.uploaded-images-content').html(html);
-                    */
+            $(element).bind('click', function(e) {
+                console.log(scope.ld);
+                e.preventDefault(); 
+            });
+              /*
+                attrs.$observe('load', function(at) {
+                    $(element).bind('click', function() { 
+                        console.log("Open Pic");
+               
+                        var scroll_offset = $(document).scrollTop();
+                        var top_offset = scroll_offset + 100;
+                        $('.lightbox').fadeIn().css('top', top_offset);
+                        var html = '<img src="' + at + '" width="100%" />';
+                        $('.uploaded-images-content').html(html);
+              
+                    })
                 })
-            })
+              */
         }
     }    
 })
