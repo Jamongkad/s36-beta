@@ -69,6 +69,18 @@ if( ! is_null(\S36Auth::user()) ):
 echo HTML::style('/minified/FullpageAdmin.css');
 echo HTML::script('/minified/FullpageAdmin.js');
 endif;
+/*
+|--------------------------------------------------------------------------
+| FancyBox
+|--------------------------------------------------------------------------
+*/
+echo HTML::script('/fancybox/jquery.fancybox.js');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
+echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
+echo HTML::style('/fancybox/jquery.fancybox.css');
+echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
+echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
 ?>
 </head>
 <body>
