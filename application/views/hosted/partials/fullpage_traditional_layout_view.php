@@ -102,7 +102,7 @@
                     <div class="uploaded-image">
                         <div class="padded-5">
                             <div class="the-thumb">
-                                    <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
+                                    <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="uploaded-images-<?=$feedback_id?>">
                                         <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
                                     </a>
                                     <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
@@ -123,7 +123,7 @@
                         <div class="form-video-meta">
                             <?php if($attachments->attached_link->video=='yes'): ?>
                                 <div class="video-thumb">
-                                    <a class="fancybox-video" href="<?=$attached_url?>" rel="gallery">
+                                    <a class="fancybox-video" href="<?=$attached_url?>" rel="uploaded-videos-<?=$feedback_id?>">
                                     <div class="video-circle"></div>
                                     <div class="the-thumb">
                                         <img src="<?=$attached_image?>" width="100%" />
