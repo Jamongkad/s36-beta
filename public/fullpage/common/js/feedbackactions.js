@@ -42,7 +42,7 @@ var S36FeedbackActions = new function() {
     }
     
     this.vertically_center_attachments = function(){
-        $('.uploaded-image').each(function(){
+        $('.uploaded-image').not('.adjusted').each(function(){
             var uploaded_image_h = $(this).height();
             var att_container_h = $(this).find('.att_container').height();
             var att_container = $(this).find('.att_container');
@@ -50,6 +50,8 @@ var S36FeedbackActions = new function() {
             if( att_container_h > uploaded_image_h ){
                 att_container.css('margin-top', -((att_container_h - uploaded_image_h) / 2));
             }
+            
+            $(this).addClass('adjusted');
         });
     }
 

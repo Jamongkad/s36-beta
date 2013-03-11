@@ -111,7 +111,7 @@ foreach ($collection as $feed_group => $feed_list) :
                                 <div class="padded-5">
                                     <div class="the-thumb">
                                         <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                        <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                        <div class="att_container"><img src="<?=$uploaded_image->small_url?>" width="100%" /></div>
                                     </div>
                                 </div>
                             </div>
