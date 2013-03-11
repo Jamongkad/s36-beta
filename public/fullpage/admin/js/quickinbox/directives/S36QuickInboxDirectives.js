@@ -226,7 +226,10 @@ angular.module('S36QuickInboxDirectives', [])
                 api.destroy();
             }
            */
-            console.log($('.widget-list').jScrollPane());
+           $(element).bind('click', function(e) {
+               console.log($('.widget-list').jScrollPane());
+               e.preventDefault();
+           });
         }
     }        
 });
