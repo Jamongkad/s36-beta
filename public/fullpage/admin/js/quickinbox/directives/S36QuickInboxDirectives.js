@@ -55,7 +55,7 @@ angular.module('S36QuickInboxDirectives', [])
                 if(at) {
                     var data = angular.fromJson(at);
                     //console.log(data); 
-                    scope.template = '<div class="custom-meta-list grids" ng-click="test_punch(100)">';     
+                    scope.template = '<div class="custom-meta-list grids">';     
                     for(var prop in data) {
                         var meta = data[prop];
                         scope.template += '<div class="custom-meta">';
