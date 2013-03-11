@@ -114,7 +114,7 @@ angular.module('S36QuickInboxDirectives', [])
                         //links
                         if(links.hasOwnProperty('video') && links.video == 'no') { 
                             scope.mtemplate += '<div class="image-block">';
-                            scope.mtemplate += '<div class="the-thumb-ajs" ng-click="test_punch(1000)"><a href="' + links.url + '">linky</a></div>';
+                            scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '">linky</a></div>';
                             scope.mtemplate += '</div>';
                         }
                         
@@ -129,7 +129,7 @@ angular.module('S36QuickInboxDirectives', [])
                             scope.mtemplate += '<div class="delete-block"  punch mid="' + meta[i].mid + '">x</div>';
                             */
                             scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic load="' +  large_url  + '">';
+                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic  ng-click="test_punch(1000)" load="' +  large_url  + '">';
                             scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
                             scope.mtemplate += '</div>';
                         }                       
