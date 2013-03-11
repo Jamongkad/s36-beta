@@ -78,15 +78,6 @@
                 </div>  
             </div>
             <div class="reviews clear">
-                <!--
-                <div class="ratings clear">
-                    <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
-                    <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
-                </div>
-                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>;">
-                    <span class="vote_count"><?= $vote_count; ?></span> people found this useful
-                </div>
-                -->
                 <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                     <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>

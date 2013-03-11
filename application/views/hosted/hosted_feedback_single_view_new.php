@@ -203,7 +203,11 @@
             $voted                      = $feedback->useful;
             $flagged                    = $feedback->flagged_as_inappr;
             $metadata                   = $feedback->metadata;
-            $is_recommended             = $feedback->isrecommended;                                                    
+            $is_recommended             = $feedback->isrecommended;
+            $position                   = $feedback->position;
+            $company_name               = $feedback->companyname;
+            $city                       = $feedback->city;
+            $country_name               = $feedback->countryname;
             ?>
             <div id="feedbackContainer">
             	<!-- this is where the magic begins -->
@@ -223,13 +227,21 @@
                                                 <span class="last_name_ini"><?= HTML::entities(substr($feedback->lastname, 0, 1)); ?>.</span>
                                             </div>
                                             <div class="author-company">
-                                                <span class="job"><?= HTML::entities($feedback->position); ?><span class="company_comma">, </span></span>
-                                                <span class="company"><?= HTML::entities($feedback->companyname); ?></span>
+                                                <span class="job" style="display: <?= ( trim($position) == '' ? 'none' : '' );?>;">
+                                                    <?= HTML::entities($position); ?><span class="company_comma">, </span>
+                                                </span>
+                                                <span class="company" style="display: <?= ( trim($company_name) == '' ? 'none' : '' );?>;">
+                                                    <?= HTML::entities($company_name); ?>
+                                                </span>
                                             </div>
                                             <div class="author-location-info clear">
                                                 <div class="author-location">
-                                                    <span class="city"><?= HTML::entities($feedback->city); ?><span class="location_comma">, </span></span>
-                                                    <span class="country"><?= HTML::entities($feedback->countryname); ?></span>
+                                                    <span class="city" style="display: <?= ( trim($city) == '' ? 'none' : '' );?>;">
+                                                        <?= HTML::entities($city); ?><span class="location_comma">, </span>
+                                                    </span>
+                                                    <span class="country" style="display: <?= ( trim($country_name) == '' ? 'none' : '' );?>;">
+                                                        <?= HTML::entities($country_name); ?>
+                                                    </span>
                                                 </div>
                                                 <div class="flag flag-<?=strtolower($feedback->countrycode)?>"></div>
                                             </div>

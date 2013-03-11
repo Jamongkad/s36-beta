@@ -471,7 +471,7 @@ $(document).keypress(function(event){
 	// end of document ready function
 	
 	function adjust_feedback_textbox_height(val){
-		$('#feedbackText').animate({'height':val,'width':357},100);
+		$('#feedbackText').animate({ 'height':val, 'width':357 }, 100);
 	}
 	function adjust_review_textbox_height(val){
 		$('#review-feedback-text').animate({'height':val},100);
