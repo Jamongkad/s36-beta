@@ -99,51 +99,49 @@ angular.module('S36QuickInboxDirectives', [])
           , feedid: "=feedid"
         }
       , link: function(scope, element, attrs) { 
+            /* 
             console.log(scope.load);
             console.log(scope.feedid);
-            /*
-            attrs.$observe('load', function(at) {
-                if(at) {
-                    var data = angular.fromJson(at);
-                    console.log(data);
-                    scope.mtemplate = '<div class="uploaded-images-and-links grids">';
-                    for(var prop in data) {
-                        var links = data[prop];
-
-                        //videos
-                        if(links.hasOwnProperty('video') && links.video == 'yes') { 
-                            scope.mtemplate += '<div class="image-block video">';
-                            scope.mtemplate += '<div class="video-circle-ajs" link-url="' + links.url + '" open-video></div>';
-                            scope.mtemplate += '<div class="the-thumb-ajs" ><img src="' + links.image + '" width="100%" /></div>';
-                            scope.mtemplate += '</div>';
-                        }
-
-                        //links
-                        if(links.hasOwnProperty('video') && links.video == 'no') { 
-                            scope.mtemplate += '<div class="image-block">';
-                            scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '">linky</a></div>';
-                            scope.mtemplate += '</div>';
-                        }
-                        
-                        //pics
-                        for(var i=0; i<links.length; i++) {
-
-                            var file_name = links[i].name;
-                            var small_url  = '/uploaded_images/form_upload/small/' + file_name;
-                            var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
-                            var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
-
-                            scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<div class="the-thumb-ajs" open-pic  ng-click="test_punch(1000)" load="' +  large_url  + '">';
-                            scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
-                            scope.mtemplate += '</div>';
-                        }                       
-
-                    }
-                    scope.mtemplate += '</div>';
-                }
-            });
             */
+
+            if(scope.load) {
+                scope.mtemplate = '<div class="uploaded-images-and-links grids">';               
+                for(var prop in scope.load) {
+                    var links = data[prop];
+                    console.log(links);
+                    /*
+                    //videos
+                    if(links.hasOwnProperty('video') && links.video == 'yes') { 
+                        scope.mtemplate += '<div class="image-block video">';
+                        scope.mtemplate += '<div class="video-circle-ajs" link-url="' + links.url + '" open-video></div>';
+                        scope.mtemplate += '<div class="the-thumb-ajs" ><img src="' + links.image + '" width="100%" /></div>';
+                        scope.mtemplate += '</div>';
+                    }
+
+                    //links
+                    if(links.hasOwnProperty('video') && links.video == 'no') { 
+                        scope.mtemplate += '<div class="image-block">';
+                        scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '">linky</a></div>';
+                        scope.mtemplate += '</div>';
+                    }
+                    
+                    //pics
+                    for(var i=0; i<links.length; i++) {
+
+                        var file_name = links[i].name;
+                        var small_url  = '/uploaded_images/form_upload/small/' + file_name;
+                        var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
+                        var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
+
+                        scope.mtemplate += '<div class="image-block pic">';
+                        scope.mtemplate += '<div class="the-thumb-ajs" open-pic  ng-click="test_punch(1000)" load="' +  large_url  + '">';
+                        scope.mtemplate += '<img src="' + small_url + '" width="100%" /></div>';
+                        scope.mtemplate += '</div>';
+                    }                       
+                    */
+                }
+                scope.mtemplate += '</div>';
+            }
         }
       , template: '<span compile-html="mtemplate"></span>'
     }    
