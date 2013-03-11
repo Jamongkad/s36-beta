@@ -166,10 +166,12 @@ angular.module('S36QuickInboxDirectives', [])
             ld: "@load"
         }
       , link: function(scope, element, attrs) {
+          /*
             $(element).fancybox({
               openEffect : 'none',
               closeEffect : 'none'
              });
+          */
         }
     }    
 })

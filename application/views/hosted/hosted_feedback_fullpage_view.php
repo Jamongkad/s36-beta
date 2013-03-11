@@ -183,6 +183,12 @@
         /*
         / FancyBox
         */
+
+        $("a.the-thumb-ajs").fancybox({
+          openEffect : 'none',
+          closeEffect : 'none'
+         });
+
         $(".fullpage-fancybox").fancybox({
           openEffect : 'none',
           closeEffect : 'none'
