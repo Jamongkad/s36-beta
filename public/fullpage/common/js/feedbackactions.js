@@ -25,7 +25,6 @@ var S36FeedbackActions = new function() {
         me.open_submission_form();
         me.admin_reply();
         me.attachment_controls();
-        me.vertically_center_attachments();
         //me.masonry_initialize();
         common.reload_layout_masonry(layoutObj);
         Helpers.close_lightbox();

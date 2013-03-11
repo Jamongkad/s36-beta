@@ -175,6 +175,7 @@
             fullpageLayout.init_fullpage_layout(fullpageCommon); // initialize document ready of the current layout javascripts
             fullpageCommon.init_fullpage_common(); // initialize document ready of the common javascript
             S36FeedbackActions.initialize_actions(fullpageLayout, fullpageCommon);
+            S36FeedbackActions.vertically_center_attachments();
         }
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
