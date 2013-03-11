@@ -212,14 +212,13 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
 
-               if(!$('.widget-list').is(':visible')) { 
-                   var pane = $('.widget-list').jScrollPane();
-                   var api = pane.data('jsp');
-                   api.destroy();
-                   setTimeout(function() {
-                       $('.widget-list').jScrollPane();
-                   }, 0);
-                }
+               var pane = $('.widget-list').jScrollPane();
+               var api = pane.data('jsp');
+               api.destroy();
+               setTimeout(function() {
+                   $('.widget-list').jScrollPane();
+               }, 0);
+
                 e.preventDefault();
             });
         }
