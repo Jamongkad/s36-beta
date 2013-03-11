@@ -191,7 +191,10 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) { 
             scope.$watch(function() {
                 $('.widget-list').jScrollPane();
-                var length = element.find('.widget-item').length;
+                var pane = $('.widget-list').jScrollPane();
+                var api = pane.data('jsp');
+                api.destroy();
+                $('.widget-list').jScrollPane();
                 return length
             }, function(length) {
                 var pane = $('.widget-list').jScrollPane();
