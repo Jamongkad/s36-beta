@@ -253,7 +253,7 @@ $(document).keypress(function(event){
 		}
 
 		
-		//initialize the link preview script!
+		//initialize the link preview script! 
 		$('#feedbackText').linkPreview();
 		$('#textEditor').linkPreview();
 		//initialize the file upload script! 
