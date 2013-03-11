@@ -133,11 +133,12 @@
                                 <div class="form-video-meta">
                                     <?php if($attachments->attached_link->video=='yes'): ?>
                                         <div class="video-thumb">
+                                            <a class="fancybox-video" href="<?=$attached_url?>" rel="gallery">
                                             <div class="video-circle"></div>
                                             <div class="the-thumb">
-                                                <input type="hidden" class="link-url" value="<?=$attached_url?>"/>
-                                                <img src="<?=$attached_image?>" width="100%">
+                                                    <img src="<?=$attached_image?>" width="100%" />
                                             </div>
+                                            </a>
                                         </div>
                                     <?php else: ?>
                                         <div class="video-thumb">
