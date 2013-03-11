@@ -94,11 +94,18 @@ angular.module('S36QuickInboxDirectives', [])
 .directive('attachments', function() {
     return {
         restrict: 'A'     
+      , scope: {
+            load: "@load"   
+          , feedid: "@feedid"
+        }
       , link: function(scope, element, attrs) { 
+            console.log(scope.load);
+            console.log(scope.feedid);
+            /*
             attrs.$observe('load', function(at) {
                 if(at) {
                     var data = angular.fromJson(at);
-                    //console.log(data);
+                    console.log(data);
                     scope.mtemplate = '<div class="uploaded-images-and-links grids">';
                     for(var prop in data) {
                         var links = data[prop];
@@ -136,6 +143,7 @@ angular.module('S36QuickInboxDirectives', [])
                     scope.mtemplate += '</div>';
                 }
             });
+            */
         }
       , template: '<span compile-html="mtemplate"></span>'
     }    
