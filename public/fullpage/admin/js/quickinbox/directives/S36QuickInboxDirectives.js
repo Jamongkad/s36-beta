@@ -130,7 +130,7 @@ angular.module('S36QuickInboxDirectives', [])
                         var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
 
                         scope.mtemplate += '<div class="image-block pic">';
-                            scope.mtemplate += '<a class="the-thumb-ajs" open-pic rel="gallery-' + scope.feedid + '" load="' +  large_url  + '">';
+                            scope.mtemplate += '<a class="the-thumb-ajs" open-pic rel="gallery-' + scope.feedid + '" href="' +  large_url  + '">';
                                 scope.mtemplate += '<img src="' + small_url + '" width="100%" />';
                             scope.mtemplate += '</a>';
                         scope.mtemplate += '</div>';
@@ -166,8 +166,11 @@ angular.module('S36QuickInboxDirectives', [])
             ld: "@load"
         }
       , link: function(scope, element, attrs) {
-            console.log(element);
-            console.log(scope.ld);
+            $(element).fancybox({
+              openEffect : 'none',
+              closeEffect : 'none'
+             });
+
               /*
                 attrs.$observe('load', function(at) {
                     $(element).bind('click', function() { 
