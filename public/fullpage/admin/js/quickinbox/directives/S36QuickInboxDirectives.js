@@ -96,9 +96,8 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'     
       , link: function(scope, element, attrs) { 
             scope.$watch(function() {
-                console.log(scope);    
+                console.log(scope.load);    
             }, function(val) {
-                console.log(val);
             })
             /*
             attrs.$observe('load', function(at) {
