@@ -206,6 +206,7 @@ angular.module('S36QuickInboxDirectives', [])
                 if(api) {
                     api.destroy();
                 }
+                console.log("Changing Length");
                 setTimeout(function() {
                     $('.widget-list').jScrollPane();
                 }, 0);
