@@ -163,14 +163,10 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 $(element).bind('click', function() { 
-                    console.log("Pic Open");
                     var scroll_offset = $(document).scrollTop();
                     var top_offset = scroll_offset + 100;
                     $('.lightbox').fadeIn().css('top', top_offset);
                     var html = '<img src="' + at + '" width="100%" />';
-
-                    console.log(html);
-
                     $('.uploaded-images-content').html(html);
                 })
             })
