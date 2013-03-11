@@ -227,8 +227,15 @@ angular.module('S36QuickInboxDirectives', [])
             }
            */
            $(element).bind('click', function(e) {
-               console.log($('.widget-list').jScrollPane());
-               console.log(scope.feedbacks);
+
+               if(!$('.widget-list').is(':visible')) { 
+                    var pane = $('.widget-list').jScrollPane();
+                    var api = pane.data('jsp');
+                    api.destroy();
+                    setTimeout(function() {
+                        $('.widget-list').jScrollPane();
+                    }, 0);
+                }
                e.preventDefault();
            });
         }
