@@ -53,7 +53,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         }
 
         $('.widget-list').jScrollPane();
-        var length = element.find('.widget-item').length;
     }
  
     $scope.update_selection = function($event, feed) {
