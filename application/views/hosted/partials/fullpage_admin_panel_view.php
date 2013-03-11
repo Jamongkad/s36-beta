@@ -3,8 +3,8 @@
 <div id="adminWindowBox" ng-controller="AppCtrl" >
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
-        <div class="minBtn" ></div>
-        <div class="closeBtn" ></div>
+        <div class="minBtn" initquick></div>
+        <div class="closeBtn" initquick></div>
     </div>
     <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">

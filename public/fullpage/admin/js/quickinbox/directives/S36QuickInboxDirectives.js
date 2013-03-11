@@ -192,15 +192,14 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) {
-
-                   var pane = $('.widget-list').jScrollPane();
-                   var api = pane.data('jsp');
-                   api.destroy();
-                   console.log(api);
-                   setTimeout(function() {
-                       $('.widget-list').jScrollPane();
-                   }, 200);
-
+    
+                var pane = $('.widget-list').jScrollPane();
+                var api = pane.data('jsp');
+                api.destroy();
+                console.log(api);
+                setTimeout(function() {
+                    $('.widget-list').jScrollPane();
+                }, 200);
                 e.preventDefault();
             });
         }
