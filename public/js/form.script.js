@@ -254,7 +254,12 @@ $(document).keypress(function(event){
 
 		
 		//initialize the link preview script!
+        $('feedbackText').blur(function() { 
+		    $(this).linkPreview();
+        });
+        /*
 		$('#feedbackText').linkPreview();
+        */
 		$('#textEditor').linkPreview();
 		//initialize the file upload script! 
 		$('#file_uploader').fileupload({
