@@ -111,7 +111,7 @@ angular.module('S36QuickInboxDirectives', [])
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
                         scope.mtemplate += '<div class="video-circle-ajs" link-url="' + links.url + '" open-video></div>';
-                        scope.mtemplate += '<a class="the-thumb-ajs fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">
+                        scope.mtemplate += '<a class="the-thumb-ajs fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
                         scope.mtemplate += '<img src="' + links.image + '" width="100%" /></a>';
                         scope.mtemplate += '</div>';
                     }
