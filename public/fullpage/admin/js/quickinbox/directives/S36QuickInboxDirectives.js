@@ -185,17 +185,11 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }    
 })
-.directive('scrollpane', function($compile) {
+.directive('scrollpane', function() {
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             scope.$watch(function() {
-                var pane = $('.widget-list').jScrollPane();
-                var api = pane.data('jsp');
-                if(api) {
-                    api.destroy();
-                }
-
                 $('.widget-list').jScrollPane();
                 var length = element.find('.widget-item').length;
                 return length
@@ -211,6 +205,25 @@ angular.module('S36QuickInboxDirectives', [])
             });
         }
     }    
+})
+.directive('initquick', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) { 
+           $(element).bind('click', function(e) {
+
+               if(!$('.widget-list').is(':visible')) { 
+                    var pane = $('.widget-list').jScrollPane();
+                    var api = pane.data('jsp');
+                    api.destroy();
+                    setTimeout(function() {
+                        $('.widget-list').jScrollPane();
+                    }, 0);
+                }
+               e.preventDefault();
+           });
+        }
+    }        
 });
 
 //helper functions

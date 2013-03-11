@@ -9,7 +9,7 @@
     <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">
             <ul>
-                <li><a href="javascript:;" class="active">Quick Inbox</a></li>
+                <li><a href="javascript:;" class="active" initquick>Quick Inbox</a></li>
                 <li><a href="javascript:;" class="">Background</a></li>
                 <li><a href="javascript:;" class="">Display</a></li>
                 <li><a href="javascript:;" class="layoutMenu">Layout</a></li>
