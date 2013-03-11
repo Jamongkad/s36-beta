@@ -193,7 +193,7 @@ angular.module('S36QuickInboxDirectives', [])
                 var pane = $('.widget-list').jScrollPane();
                 var api = pane.data('jsp');
                 if(api) {
-                    api.destroy();
+                    api.reinitialise();
                 }
 
                 setTimeout(function() {
