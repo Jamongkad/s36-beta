@@ -110,8 +110,10 @@ foreach ($collection as $feed_group => $feed_list) :
                             <div class="uploaded-image">
                                 <div class="padded-5">
                                     <div class="the-thumb">
-                                        <input type="hidden" class="large-image-url" value="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>"/>
-                                        <img src="<?=Config::get('application.attachments_small').'/'.$uploaded_image->name?>" width="100%" />
+                                        <a class="fullpage-fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="uploaded-images-<?=$feedback_id?>">
+                                            <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                        </a>
+                                    <input type="hidden" class="image-name" value="<?=$uploaded_image->name?>"/>
                                     </div>
                                 </div>
                             </div>
@@ -125,11 +127,12 @@ foreach ($collection as $feed_group => $feed_list) :
                                     <div class="form-video-meta">
                                         <?php if($attachments->attached_link->video=='yes'): ?>
                                             <div class="video-thumb">
-                                                <div class="video-circle"></div>
-                                                <div class="the-thumb">
-                                                    <input type="hidden" class="link-url" value="<?=$attachments->attached_link->url?>"/>
-                                                    <img src="<?=$attachments->attached_link->image?>" width="100%">
-                                                </div>
+                                                <a class="fancybox-video" href="<?=$attached_url?>" rel="uploaded-videos-<?=$feedback_id?>">
+                                                    <div class="video-circle"></div>
+                                                    <div class="the-thumb">
+                                                        <img src="<?=$attached_image?>" width="100%" />
+                                                    </div>
+                                                </a>
                                             </div>
                                         <?php else: ?>
                                             <div class="video-thumb">

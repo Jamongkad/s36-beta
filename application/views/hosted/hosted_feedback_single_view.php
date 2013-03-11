@@ -198,22 +198,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end of lightbox notification -->
-            <!-- lightbox container -->
-            <div class="lightbox-s"></div>
-            <div class="lightbox">
-                <div class="uploaded-images-close"></div>
-                <div class="uploaded-images-popup">
-                    <div class="uploaded-images-container">
-                        <div class="uploaded-images-view"> 
-                            <div class="uploaded-images-content">
-                           
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of lightbox container -->
             <?php
             $feedback_id                = $feedback->id;
             $tw_marker                  = ($feedback->origin=='tw') ? '<div class="twitter-marker"></div>' : '';
