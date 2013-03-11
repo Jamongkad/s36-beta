@@ -107,8 +107,9 @@ angular.module('S36QuickInboxDirectives', [])
             if(scope.load) {
                 scope.mtemplate = '<div class="uploaded-images-and-links grids">';               
                 for(var prop in scope.load) {
-                    var links = data[prop];
-                    console.log(links);
+                    //var links = data[prop];
+                    //console.log(links);
+                    console.log(prop);
                     /*
                     //videos
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
