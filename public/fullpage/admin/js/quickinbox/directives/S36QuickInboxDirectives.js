@@ -185,7 +185,7 @@ angular.module('S36QuickInboxDirectives', [])
         }
     }    
 })
-.directive('scrollpane', function($compile) {
+.directive('scrollpane', function() {
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) { 
@@ -213,6 +213,21 @@ angular.module('S36QuickInboxDirectives', [])
             });
         }
     }    
+})
+.directive('initquick', function() {
+    return {
+        restrict: 'A'
+      , link: function(scope, element, attrs) { 
+            var pane = $('.widget-list').jScrollPane();
+            var api = pane.data('jsp');
+            if(api) {
+                api.destroy();
+            }
+
+            console.log($('.widget-list').jScrollPane());
+        }
+    }    
+    
 });
 
 //helper functions

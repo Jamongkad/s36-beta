@@ -44,17 +44,6 @@ app.controller("AppCtrl", function($scope, $compile, QuickInboxService) {
         if (action == 'remove' && $scope.selected.indexOf(id) != -1)
             $scope.selected.splice($scope.selected.indexOf(id), 1);
     }
-
-    $scope.init_quick = function() { 
-        var pane = $('.widget-list').jScrollPane();
-        var api = pane.data('jsp');
-        if(api) {
-            api.destroy();
-        }
-
-        console.log($('.widget-list').jScrollPane());
-
-    }
  
     $scope.update_selection = function($event, feed) {
         var checkbox = $event.target;
