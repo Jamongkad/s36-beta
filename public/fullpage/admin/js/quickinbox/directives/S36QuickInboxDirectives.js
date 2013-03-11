@@ -190,15 +190,6 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             scope.$watch(function() {
-                /*
-                var pane = $('.widget-list').jScrollPane();
-                var api = pane.data('jsp');
-                if(api) {
-                    api.destroy();
-                }
-
-                $('.widget-list').jScrollPane();
-                */
                 $('.widget-list').jScrollPane();
                 var length = element.find('.widget-item').length;
                 return length
@@ -219,13 +210,6 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) { 
-          /*
-            var pane = $('.widget-list').jScrollPane();
-            var api = pane.data('jsp');
-            if(api) {
-                api.destroy();
-            }
-           */
            $(element).bind('click', function(e) {
 
                if(!$('.widget-list').is(':visible')) { 
