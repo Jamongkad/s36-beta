@@ -199,6 +199,7 @@ angular.module('S36QuickInboxDirectives', [])
 
                 $('.widget-list').jScrollPane();
                 */
+                $('.widget-list').jScrollPane();
                 var length = element.find('.widget-item').length;
                 return length
             }, function(length) {
@@ -218,12 +219,13 @@ angular.module('S36QuickInboxDirectives', [])
     return {
         restrict: 'A'
       , link: function(scope, element, attrs) { 
+          /*
             var pane = $('.widget-list').jScrollPane();
             var api = pane.data('jsp');
             if(api) {
                 api.destroy();
             }
-
+           */
             console.log($('.widget-list').jScrollPane());
         }
     }        
