@@ -226,8 +226,7 @@ angular.module('S36QuickInboxDirectives', [])
 
             console.log($('.widget-list').jScrollPane());
         }
-    }    
-    
+    }        
 });
 
 //helper functions
