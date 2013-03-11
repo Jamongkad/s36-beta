@@ -165,6 +165,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('load', function(at) {
                 $(element).bind('click', function() { 
+                    console.log("Open Pic")
                     var scroll_offset = $(document).scrollTop();
                     var top_offset = scroll_offset + 100;
                     $('.lightbox').fadeIn().css('top', top_offset);
