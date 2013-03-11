@@ -17,7 +17,7 @@
             </ul>
         </div>
         <div id="adminWindowPages">
-            <div id="quickInbox" class="adminPage" style="height:520px; width:520px">
+            <div id="quickInbox" class="adminPage" style="height:502px; width:520px">
                 <div class="pageContents">
                     <div class="pageTitle">
                         Recent Submitted Feedback
