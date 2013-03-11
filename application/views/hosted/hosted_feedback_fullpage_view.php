@@ -114,21 +114,6 @@
                 </div>
             </div>
             <!-- end of lightbox notification -->
-            <!-- lightbox container -->
-            <div class="lightbox-s"></div>
-            <div class="lightbox">
-                <div class="uploaded-images-close"></div>
-                <div class="uploaded-images-popup">
-                    <div class="uploaded-images-container">
-                        <div class="uploaded-images-view">
-                            <div class="uploaded-images-content">
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of lightbox container -->
-            
             <div id="feedbackContainer">
                 <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
             </div>
@@ -195,6 +180,13 @@
         //rate limit this bitch
         var throttled = _.throttle(update, 800);
         $(window).scroll(throttled);
+        /*
+        / FancyBox
+        */
+        $(".fullpage-fancybox").fancybox({
+          openEffect : 'none',
+          closeEffect : 'none'
+         });
     });
 </script>
 

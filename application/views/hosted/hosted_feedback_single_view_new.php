@@ -16,13 +16,16 @@
     <meta property="og:url" content="<?=URL::to('single/'.$feedback->id)?>"/> 
     <meta property="og:site_name" content="36Stories: Feedback made easy."/> 
     <meta property="fb:app_id" content="<?=$fb_id?>"/>
-
-    <?= HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); ?>
-    <?= HTML::script('https://platform.twitter.com/widgets.js'); ?>
-    <?= HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js'); ?>
-    <?= HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js'); ?>
-
     <?php
+    /*
+    |--------------------------------------------------------------------------
+    | Third-Party
+    |--------------------------------------------------------------------------
+    */
+    echo HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
+    echo HTML::script('https://platform.twitter.com/widgets.js');
+    echo HTML::script('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js');
+    echo HTML::script('https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js');
     /*
     |--------------------------------------------------------------------------
     | Global
@@ -34,12 +37,36 @@
     | Fullpage Common
     |--------------------------------------------------------------------------
     */
-    echo HTML::script('/minified/FullpageCommon.js'); 
+    echo HTML::script('/minified/FullpageCommon.js');
+    /*
+    |--------------------------------------------------------------------------
+    | Single Page
+    |--------------------------------------------------------------------------
+    */
+    echo HTML::style('/fullpage/common/css/S36SinglePage.css'); 
+    echo HTML::style('/fullpage/common/css/S36SingleCommon.css'); 
+    echo HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php.
+    /*
+    |--------------------------------------------------------------------------
+    | FancyBox
+    |--------------------------------------------------------------------------
+    */
+    echo HTML::script('/fancybox/jquery.fancybox.js');
+    echo HTML::script('/fancybox/helpers/jquery.fancybox-buttons.js?v=1.0.5');
+    echo HTML::script('/fancybox/helpers/jquery.fancybox-media.js?v=1.0.5');
+    echo HTML::script('/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7');
+    echo HTML::style('/fancybox/jquery.fancybox.css');
+    echo HTML::style('/fancybox/helpers/jquery.fancybox-buttons.css?v=1.0.5');
+    echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
     ?>
-    <?= HTML::style('/fullpage/common/css/S36SinglePage.css'); ?>
-    <?= HTML::style('/fullpage/common/css/S36SingleCommon.css'); ?>
-    <?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox({
+          openEffect : 'none',
+          closeEffect : 'none'
+         });
+    });
+    </script>
 </head>
 <body>
 <script src="https://connect.facebook.net/en_US/all.js"></script>
@@ -249,10 +276,10 @@
                                 <div class="feedback-text-bubble">
                                     <div class="feedback-tail"></div>
                                     <div class="feedback-text">
-                                        <p><?= HTML::entities($feedback->text);?></p><br/>
+                                        <p><?= HTML::entities($feedback->text);?></p>
                                     </div>
                                     <!-- are there any additional info uploaded?? -->
-                                    <!--
+                                    
                                     <?php if($attachments): ?>
                                         <div class="additional-contents"> 
                                             <?php if(isset($attachments->uploaded_images)): ?>
@@ -261,8 +288,9 @@
                                                     <div class="uploaded-image">
                                                         <div class="padded-5">
                                                             <div class="the-thumb">
-                                                                <input type="hidden" class="large-image-url" value="<?=$uploaded_image->large_url?>"/>
-                                                                <img src="<?=$uploaded_image->small_url?>" width="100%" />
+                                                                <a class="fancybox" href="<?=Config::get('application.attachments_large').'/'.$uploaded_image->name?>" rel="gallery">
+                                                                    <img src="<?=Config::get('application.attachments_medium').'/'.$uploaded_image->name?>" width="100%" />
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,7 +334,7 @@
                                             <br/>
                                         </div>
                                     <?php endif; ?>
-                                    -->
+                                    
                                 </div>
                                 <!-- end of feedback text bubble -->
                                 <!-- feedback user actions -->
