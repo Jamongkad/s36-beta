@@ -254,7 +254,7 @@ $(document).keypress(function(event){
 
 		
 		//initialize the link preview script!
-        $('feedbackText').blur(function() { 
+        $('#feedbackText').blur(function() { 
 		    $(this).linkPreview();
         });
         /*
