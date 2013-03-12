@@ -124,8 +124,10 @@ class JqueryFileUploader
 
     public static function get_full_url() {
         $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+        //force https
         return
-            ($https ? 'https://' : 'http://').
+            //($https ? 'https://' : 'http://').
+            'https://'.
             (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
             (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
             ($https && $_SERVER['SERVER_PORT'] === 443 ||
