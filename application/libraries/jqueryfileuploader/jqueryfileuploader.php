@@ -322,13 +322,13 @@ class JqueryFileUploader
 
         if($version == 'small') { 
             $resize = new Resize($new_file_path);
-            $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
+            $resize->resizeImage($options['max_width'], $options['max_height'], 'exact');
             $resize->saveImage($new_file_path, 100);
         }
 
         if($version == 'medium') { 
             $resize = new Resize($new_file_path);
-            $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
+            $resize->resizeImage($options['max_width'], $options['max_height'], 'exact');
             $resize->saveImage($new_file_path, 100);
         }
 
