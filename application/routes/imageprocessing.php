@@ -74,9 +74,9 @@ return array(
         
     },
 
-    'POST /imageprocessing/FormImageUploader'=>array('name' => 'FormImageUploader', 'do'=> function() {
+    'POST /imageprocessing/FormImageUploader' => array('do'=> function() {
         $options = array(
-            'script_url'    => JqueryFileUploader::get_full_url().'/imageprocessing/FormImageUploader'
+              'script_url'    => JqueryFileUploader::get_full_url().'/imageprocessing/FormImageUploader'
             , 'file_name'   => md5(uniqid()).'.jpg'
             , 'upload_dir'  => Config::get('application.uploaded_images_dir').'/form_upload/'
             , 'upload_url'  => JqueryFileUploader::get_full_url() . '/uploaded_images/form_upload/'  
@@ -86,8 +86,8 @@ return array(
                     'max_height'    => 1200,
                 ),
                 'medium' => array(
-                    'max_width'     => 350,
-                    'max_height'    => 600,
+                    'max_width'     => 200,
+                    'max_height'    => 200,
                 ),
                 'small' => array(
                     'max_width'     => 80,
@@ -98,7 +98,7 @@ return array(
         new JqueryFileUploader($options); 
     }),
 
-    'GET /imageprocessing/linkpreview'=>array('name' => 'linkpreview', 'do' => function() {
+    'GET /imageprocessing/linkpreview' => array('name' => 'linkpreview', 'do' => function() {
         $link_preview = new LinkPreview();
         $link_preview->text_crawler();
     }),

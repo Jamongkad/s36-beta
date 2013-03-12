@@ -12,6 +12,8 @@
 
 namespace JqueryFileUploader;
 
+use Resize;
+
 class JqueryFileUploader
 {
     protected $options;
@@ -124,8 +126,10 @@ class JqueryFileUploader
 
     public static function get_full_url() {
         $https = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+        //force https
         return
-            ($https ? 'https://' : 'http://').
+            //($https ? 'https://' : 'http://').
+            'https://'.
             (!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
             (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
             ($https && $_SERVER['SERVER_PORT'] === 443 ||
@@ -148,8 +152,7 @@ class JqueryFileUploader
     protected function get_upload_path($file_name = null, $version = null) {
         $file_name = $file_name ? $file_name : '';
         $version_path = empty($version) ? '' : $version.'/';
-        return $this->options['upload_dir'].$this->get_user_path()
-            .$version_path.$file_name;
+        return $this->options['upload_dir'].$this->get_user_path().$version_path.$file_name;
     }
 
     protected function get_download_url($file_name, $version = null) {
@@ -242,16 +245,20 @@ class JqueryFileUploader
     }
 
     protected function create_scaled_image($file_name, $version, $options) {
+
         $file_path = $this->get_upload_path($file_name);
+        
         if (!empty($version)) {
             $version_dir = $this->get_upload_path(null, $version);
             if (!is_dir($version_dir)) {
                 mkdir($version_dir, $this->options['mkdir_mode'], true);
             }
-            $new_file_path = $version_dir.'/'.$file_name;
+            //$new_file_path = $version_dir.'/'.$file_name;
+            $new_file_path = $version_dir.$file_name;
         } else {
             $new_file_path = $file_path;
         }
+        
         list($img_width, $img_height) = @getimagesize($file_path);
         if (!$img_width || !$img_height) {
             return false;
@@ -307,6 +314,20 @@ class JqueryFileUploader
         // Free up memory (imagedestroy does not delete files):
         @imagedestroy($src_img);
         @imagedestroy($new_img);
+        
+        //force auto cropping on small and medium photos
+        if($version == 'small') { 
+            $resize = new Resize($file_path);
+            $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
+            $resize->saveImage($new_file_path, 100);
+        }
+
+        if($version == 'medium') { 
+            $resize = new Resize($file_path);
+            $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
+            $resize->saveImage($new_file_path, 100);
+        }
+
         return $success;
     }
 
@@ -509,6 +530,7 @@ class JqueryFileUploader
                     $this->orient_image($file_path);
                 }
                 $file->url = $this->get_download_url($file->name);
+
                 foreach($this->options['image_versions'] as $version => $options) {
                     if ($this->create_scaled_image($file->name, $version, $options)) {
                         if (!empty($version)) {
@@ -521,6 +543,7 @@ class JqueryFileUploader
                         }
                     }
                 }
+
             } else if (!$content_range && $this->options['discard_aborted_uploads']) {
                 unlink($file_path);
                 $file->error = 'abort';
@@ -693,7 +716,7 @@ class JqueryFileUploader
             }
         } else {
             // param_name is a single object identifier like "file",
-            // $_FILES is a one-dimensional array:
+            // $_FILES is a one-dimensional array: 
             $info[] = $this->handle_file_upload(
                 isset($upload['tmp_name']) ? $upload['tmp_name'] : null,
                 $file_name ? $file_name : (isset($upload['name']) ?

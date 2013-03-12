@@ -181,14 +181,6 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                     <!-- end of uploads -->
                     
                     <!-- start of video upload -->
-                    <!-- 
-                    <div class="form-add-video">
-                        <a href="#" class="video-icon">Add Video</a> 
-                        <div class="form-video-url" style="display:none">
-                            <label>Enter Youtube Link : </label> <input type="text" class="regular-text" />
-                        </div>
-                    </div>
-                    -->
                     <div class="form-video-thumbs clear"></div>
                     
                     <!-- end of form upload -->

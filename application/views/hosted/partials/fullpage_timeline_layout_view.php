@@ -1,5 +1,4 @@
 <?php if($collection): ?>
-<div id="timelineLayout" class="hosted-layout">
 <?php foreach ($collection as $feed_group => $feed_list) : ?>
 <div class="feedback-block">
     <div class="feedback-spine"></div>                
@@ -78,14 +77,14 @@
                 </div>  
             </div>
             <div class="reviews clear">
-                <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
+                <div class="ratings clear">
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
-                    <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
+                    <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>
-                    <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                        <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
-                    </div>
+                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -99,7 +98,7 @@
                 </div>
             <?php endif; ?>
             <div class="feedback-text">
-                <?= HTML::entities($feed->feed_data->text);?>
+                <p><?= HTML::entities($feed->feed_data->text);?></p>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
@@ -216,12 +215,8 @@
                 </div>
             </div>
             <div class="feedback-actions clear">
-                <span class="flag-as <?= ($flagged != 1 ? '' : 'hidden'); ?>">
-                    Flag as inappropriate
-                </span>
-                <span class="undo_flag <?= ($flagged == 1 ? '' : 'hidden'); ?>">
-                    Undo flag
-                </span>
+                    <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
+                    <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
                 <span class="share-button">
                     Share
                     <div class="share-box">
@@ -253,5 +248,4 @@
 
 </div>
 <?php endforeach; //endforeach collection ?>
-</div> <!-- div end timeline layout -->
 <?php endif; //endif collection?>
