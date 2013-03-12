@@ -328,7 +328,7 @@ class JqueryFileUploader
 
         if($version == 'medium') { 
             $resize = new Resize($new_file_path);
-            $resize->resizeImage(350, 350, 'crop');
+            $resize->resizeImage(200, 200, 'crop');
             $resize->saveImage($new_file_path, 100);
         }
 
