@@ -408,7 +408,7 @@
                 </div>
                 <!-- end of magic -->
             </div>
-            <p align="center"><img src="/img/36stories-logo.png" /></p>
+            <p align="center"><a href="http://beta.36stories.com/"><img src="/img/36stories-logo.png" /></a></p>
         </div>
     </div>
 </div>

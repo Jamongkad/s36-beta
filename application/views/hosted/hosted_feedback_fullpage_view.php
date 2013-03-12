@@ -115,9 +115,11 @@
             </div>
             <!-- end of lightbox notification -->
             <div id="feedbackContainer">
+                <div id="threeColumnLayout" class="hosted-layout">
                 <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
+                <div id="feedback-infinitescroll-landing"></div> 
+                </div>
             </div>
-            <div id="feedback-infinitescroll-landing"></div> 
         </div>
     </div>
 </div>
@@ -129,10 +131,8 @@
 |--------------------------------------------------------------------------
 */
 ?>
-<?= HTML::style('/minified/FullpageCommon.css'); ?>
 <?= HTML::style('/fullpage/layout/'.strtolower($panel->theme_name).'/css/S36FullpageLayout'.ucfirst($panel->theme_name).'.css'); ?>
 <?= HTML::script('/fullpage/layout/'.strtolower($panel->theme_name).'/js/S36FullpageLayout'.ucfirst($panel->theme_name).'.js'); ?>
-<?= HTML::style('/fullpage/common/css/override.css');  // moved here from application/views/partials/fullpage_header.php. ?>
 
 <script type="text/javascript">
 <?=(!empty($panel->background_image)) ? '$("body").css("background-image","url(/uploaded_images/hosted_background/'.$panel->background_image.')");' : '' ?>

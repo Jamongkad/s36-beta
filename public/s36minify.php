@@ -34,10 +34,10 @@ $groups = array(
         'type' =>'css',
         'files'=>array(
              '/fullpage/common/css/S36FullpageCommon.css'
-            ,'/fullpage/common/css/master.css'
             ,'/fullpage/common/css/flags.css'
             ,'/fullpage/common/css/grids.css'
             ,'/fullpage/common/css/s36_client_style.css'
+            ,'/fullpage/common/css/override.css'
         )
      ),
      'FullpageAdmin.js' => array(

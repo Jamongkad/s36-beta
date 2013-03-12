@@ -16,7 +16,7 @@
 	color:#FFF;
 	text-shadow:#1c5573 0px 1px;
 }
-#timelineLayout{
+#threeColumnLayout{
 	border-top:#ececec 7px solid;
 }
 
@@ -126,7 +126,7 @@
 	color:#4f4e4e;
 }
 .reviews .rating-stat{
-	color:#787878;
+	color:#4ea6c6;
 	font-size:11px;
 }
 .feedback-text-bubble{
