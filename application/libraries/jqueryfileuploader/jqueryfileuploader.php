@@ -12,8 +12,6 @@
 
 namespace JqueryFileUploader;
 
-use Resize;
-
 class JqueryFileUploader
 {
     protected $options;
@@ -266,7 +264,12 @@ class JqueryFileUploader
         
         if($version == 'small') { 
             $imagine = new \Imagine\Gd\Imagine();
-            print_r($imagine);
+            $size = new \Imagine\Image\Box(60, 60);
+            $mode = \Imagine\Image\ImageInterface::THUMBNAIL_INSET;
+
+            $imagine->open($new_file_path)
+                    ->thumbnail($size, $mode)
+                    ->save($new_file_path, Array('quality' => 100));
             /*
             $resize_obj = new Resize($file_path);
             $resize_obj->resizeImage(50, 50, 'auto');
