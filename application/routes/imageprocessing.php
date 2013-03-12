@@ -86,8 +86,8 @@ return array(
                     'max_height'    => 1200,
                 ),
                 'medium' => array(
-                    'max_width'     => 350,
-                    'max_height'    => 350,
+                    'max_width'     => 200,
+                    'max_height'    => 200,
                 ),
                 'small' => array(
                     'max_width'     => 80,
