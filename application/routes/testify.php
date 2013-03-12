@@ -436,10 +436,10 @@ return array(
 
     'GET /testify/test_https' => function() {
         
-        $tf = new Testify("Quick Inbox");  
+        $tf = new Testify("Test HTTPS");  
 
         $tf->test("Test HTTPS", function($tf) {
-            $tf->dump($_SERVER);
+            $tf->dump(Request::protocol());
         });
 
         $tf->run();
