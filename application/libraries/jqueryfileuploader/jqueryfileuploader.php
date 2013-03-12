@@ -150,8 +150,7 @@ class JqueryFileUploader
     protected function get_upload_path($file_name = null, $version = null) {
         $file_name = $file_name ? $file_name : '';
         $version_path = empty($version) ? '' : $version.'/';
-        return $this->options['upload_dir'].$this->get_user_path()
-            .$version_path.$file_name;
+        return $this->options['upload_dir'].$this->get_user_path().$version_path.$file_name;
     }
 
     protected function get_download_url($file_name, $version = null) {
@@ -244,7 +243,12 @@ class JqueryFileUploader
     }
 
     protected function create_scaled_image($file_name, $version, $options) {
+
         $file_path = $this->get_upload_path($file_name);
+        
+        echo "filename: ".$file_name."\n";
+        echo "filepath: ".$file_path."\n";
+
         if (!empty($version)) {
             $version_dir = $this->get_upload_path(null, $version);
             if (!is_dir($version_dir)) {
@@ -254,6 +258,9 @@ class JqueryFileUploader
         } else {
             $new_file_path = $file_path;
         }
+
+        echo "new_filepath: ".$new_file_path."\n";
+
         list($img_width, $img_height) = @getimagesize($file_path);
         if (!$img_width || !$img_height) {
             return false;

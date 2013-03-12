@@ -29,6 +29,7 @@ return array(
     'TwitterOAuth' => 'TwitterOAuth\\TwitterOAuth',
     'Testify' => 'Testify\\Testify',
     'Pimple' => 'Pimple\\Pimple',
+    'Resize' => 'Resize\\Resize',
 	'JqueryFileUploader' => 'JqueryFileUploader\\JqueryFileUploader',
 	'Auth' => 'System\\Auth',
 	'Asset' => 'System\\Asset',
