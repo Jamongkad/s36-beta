@@ -412,6 +412,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">S36FeedbackActions.vertically_center_attachments();</script>
+<script type="text/javascript">
+//S36FeedbackActions.vertically_center_attachments();
+</script>
 </body>
 </html>
