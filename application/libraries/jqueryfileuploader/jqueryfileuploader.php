@@ -266,27 +266,15 @@ class JqueryFileUploader
         
         if($version == 'small') { 
             echo "small new_filepath: ".$new_file_path."\n";
-            /*
             $resize_obj = new Resize($new_file_path);
-            $resize_obj->resizeImage(350, 350, 'auto');
+            $resize_obj->resizeImage(50, 50, 'auto');
             $resize_obj->saveImage($new_file_path, 100);
-            */
         }
         if($version == 'medium') { 
             echo "medium new_filepath: ".$new_file_path."\n";
-            /*
             $resize_obj = new Resize($new_file_path);
-            $resize_obj->resizeImage(350, 350, 'auto');
+            $resize_obj->resizeImage(250, 250, 'auto');
             $resize_obj->saveImage($new_file_path, 100);
-            */
-        }
-        if($version == 'large') { 
-            echo "large new_filepath: ".$new_file_path."\n";
-            /*
-            $resize_obj = new Resize($new_file_path);
-            $resize_obj->resizeImage(350, 350, 'auto');
-            $resize_obj->saveImage($new_file_path, 100);
-            */
         }
 
         list($img_width, $img_height) = @getimagesize($file_path);
