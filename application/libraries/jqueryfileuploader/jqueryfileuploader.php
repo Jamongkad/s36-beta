@@ -263,8 +263,7 @@ class JqueryFileUploader
 
         echo "new_filepath: ".$new_file_path."\n";
         
-        $resize_obj = new Resize($new_file_path);
-
+        $resize_obj = new Resize($file_path);
         print_r($resize_obj);
 
         list($img_width, $img_height) = @getimagesize($file_path);
