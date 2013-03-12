@@ -85,6 +85,7 @@
 	display:block;
 	margin-bottom:15px;
 	float:right;
+	text-align: right;
 }
 .regular-featured .feedback-timestamp{
 	color:#8e8e8e;
@@ -106,7 +107,7 @@
 	color: #4ea6c6;
 	font-size: 11px;
 	position: absolute;
-	top: -15px;
+	top: -10px;
 	right: 0px;
 }
 .feedback-text-bubble{
