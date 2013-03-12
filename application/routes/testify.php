@@ -434,4 +434,15 @@ return array(
         $tf->run();          
     },
 
+    'GET /testify/test_https' => function() {
+        
+        $tf = new Testify("Quick Inbox");  
+
+        $tf->test("Test HTTPS", function($tf) {
+            $tf->dump($_SERVER);
+        });
+
+        $tf->run();
+    }
+
 );
