@@ -248,9 +248,6 @@ class JqueryFileUploader
 
         $file_path = $this->get_upload_path($file_name);
         
-        echo "filename: ".$file_name."\n";
-        echo "filepath: ".$file_path."\n";
-
         if (!empty($version)) {
             $version_dir = $this->get_upload_path(null, $version);
             if (!is_dir($version_dir)) {
@@ -261,8 +258,6 @@ class JqueryFileUploader
         } else {
             $new_file_path = $file_path;
         }
-
-        echo "new_filepath: ".$new_file_path."\n";
         
         list($img_width, $img_height) = @getimagesize($file_path);
         if (!$img_width || !$img_height) {
