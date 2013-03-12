@@ -265,7 +265,7 @@ class JqueryFileUploader
         echo "new_filepath: ".$new_file_path."\n";
         
         if($version == 'small') { 
-            $imagine = new Imagine\Gd\Imagine();
+            $imagine = new \Imagine\Gd\Imagine();
             print_r($imagine);
             /*
             $resize_obj = new Resize($file_path);
