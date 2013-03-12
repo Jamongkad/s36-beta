@@ -325,7 +325,7 @@
 					last_id++;
 				};
 			// handle field delete links
-			$('.remove_elm').bind('click', function () {
+			$('.remove_elm').live('click', function () {
 				$(this).parent('div').animate({
 					opacity: 'hide',
 					height: 'hide',
@@ -336,7 +336,7 @@
 				return false;
 			});
 			// handle field display/hide
-			$('.toggle-form').bind('click', function () {
+			$('.toggle-form').live('click', function () {
 				var target = $(this).attr("id");
 				if ($(this).html() === opts.messages.hide) {
 					$(this).removeClass('open').addClass('closed').html(opts.messages.show);
@@ -357,7 +357,7 @@
 				return false;
 			});
 			// handle delete confirmation
-			$('.delete-confirm').bind('click', function () {
+			$('.delete-confirm').live('click', function () {
 				var delete_id = $(this).attr("id").replace(/del_/, '');
 				if (confirm($(this).attr('title'))) {
 					$('#frm-' + delete_id + '-item').animate({
@@ -371,7 +371,7 @@
 				return false;
 			});
 			// Attach a callback to add new checkboxes
-			$('.add_ck').bind('click', function () { 
+			$('.add_ck').live('click', function () { 
                 var checkbox_child_count = $(this).parents('.fields').children('div').children('input[type=checkbox]').length;
                 
                 if(checkbox_child_count !== 3) {
@@ -381,12 +381,12 @@
 				return false;
 			});
 			// Attach a callback to add new options for select dropdowns
-			$('.add_opt').bind('click', function () {
+			$('.add_opt').live('click', function () {
 				$(this).parent().before(selectFieldHtml('', false));
 				return false;
 			});
 			// Attach a callback to add new radio fields
-			$('.add_rd').bind('click', function () {
+			$('.add_rd').live('click', function () {
                 var radio_child_count = $(this).parents('.fields').children('div').children('input[type=radio]').length;
 
                 if(radio_child_count !== 3) {
