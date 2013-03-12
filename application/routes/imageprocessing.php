@@ -85,6 +85,7 @@ return array(
                     'max_width'     => 800,
                     'max_height'    => 1200,
                 ),
+                /*
                 'medium' => array(
                     'max_width'     => 350,
                     'max_height'    => 600,
@@ -93,6 +94,7 @@ return array(
                     'max_width'     => 80,
                     'max_height'    => 80
                 )
+                */
             )
         );
         new JqueryFileUploader($options); 
