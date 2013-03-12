@@ -296,6 +296,7 @@ $(document).keypress(function(event){
 							.append(
 								$('<img />')
 								.attr({'src':data.result[0].medium_url,'width':'100%'})
+                                /*
 								.load(function(){
 									var parent_height = $('#uploaded_images_preview').height();
 									var image_height = $(this).height();
@@ -303,6 +304,7 @@ $(document).keypress(function(event){
 										$(this).css('margin-top', -((image_height - parent_height) / 2));
 									}
 								})
+                                */
 							)
 							.append($('<input type="hidden" class="image-name"/>').val(data.result[0].name))
 					);
