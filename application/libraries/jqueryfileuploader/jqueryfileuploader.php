@@ -509,6 +509,7 @@ class JqueryFileUploader
                     $this->orient_image($file_path);
                 }
                 $file->url = $this->get_download_url($file->name);
+
                 foreach($this->options['image_versions'] as $version => $options) {
                     if ($this->create_scaled_image($file->name, $version, $options)) {
                         if (!empty($version)) {
@@ -521,6 +522,7 @@ class JqueryFileUploader
                         }
                     }
                 }
+
             } else if (!$content_range && $this->options['discard_aborted_uploads']) {
                 unlink($file_path);
                 $file->error = 'abort';
@@ -680,7 +682,6 @@ class JqueryFileUploader
         if ($upload && is_array($upload['tmp_name'])) {
             // param_name is an array identifier like "files[]",
             // $_FILES is a multi-dimensional array:
-            echo "Multi Dimensional";
             foreach ($upload['tmp_name'] as $index => $value) {
                 $info[] = $this->handle_file_upload(
                     $upload['tmp_name'][$index],
@@ -694,8 +695,7 @@ class JqueryFileUploader
             }
         } else {
             // param_name is a single object identifier like "file",
-            // $_FILES is a one-dimensional array:
-            echo "Single File";
+            // $_FILES is a one-dimensional array: 
             $info[] = $this->handle_file_upload(
                 isset($upload['tmp_name']) ? $upload['tmp_name'] : null,
                 $file_name ? $file_name : (isset($upload['name']) ?
