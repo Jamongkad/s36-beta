@@ -680,6 +680,7 @@ class JqueryFileUploader
         if ($upload && is_array($upload['tmp_name'])) {
             // param_name is an array identifier like "files[]",
             // $_FILES is a multi-dimensional array:
+            echo "Multi Dimensional";
             foreach ($upload['tmp_name'] as $index => $value) {
                 $info[] = $this->handle_file_upload(
                     $upload['tmp_name'][$index],
@@ -694,6 +695,7 @@ class JqueryFileUploader
         } else {
             // param_name is a single object identifier like "file",
             // $_FILES is a one-dimensional array:
+            echo "Single File";
             $info[] = $this->handle_file_upload(
                 isset($upload['tmp_name']) ? $upload['tmp_name'] : null,
                 $file_name ? $file_name : (isset($upload['name']) ?
