@@ -434,4 +434,15 @@ return array(
         $tf->run();          
     },
 
+    'GET /testify/test_https' => function() {
+        
+        $tf = new Testify("Test HTTPS");  
+
+        $tf->test("Test HTTPS", function($tf) {
+            $tf->dump(Request::protocol());
+        });
+
+        $tf->run();
+    }
+
 );
