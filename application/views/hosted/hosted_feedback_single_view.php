@@ -85,6 +85,17 @@
         });
         return false;
         });
+        
+        $('.star_rating').raty({
+            hints: ['BAD', 'POOR', 'AVERAGE', 'GOOD', 'EXCELLENT'],
+            score: function(){
+                return $(this).attr('rating');
+            },
+            path: '/img/',
+            starOn: 'star-fill.png',
+            starOff: 'star-empty.png',
+            readOnly: true
+        });
     });
     </script>
 </head>
@@ -266,11 +277,8 @@
 
                                     <div class="reviews clear">
                                         <div class="ratings clear">
-                                            <div class="star_rating" rating="<?=$feedback->int_rating;?>"></div>
                                             <div class="feedback-timestamp"><?=$feedback->daysago?></div>
-                                        </div>
-                                        <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>;">
-                                            <span class="vote_count"><?= $vote_count; ?></span> people found this useful
+                                            <div class="star_rating" rating="<?=$feedback->int_rating;?>"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -279,6 +287,9 @@
                                 <!-- feedback text bubble -->
                                 <div class="feedback-text-bubble">
                                     <div class="feedback-tail"></div>
+                                    <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>;">
+                                        <span class="vote_count"><?= $vote_count; ?></span> people found this useful
+                                    </div>
                                     <div class="feedback-text">
                                         <p><?= HTML::entities($feedback->text);?></p>
                                     </div>
