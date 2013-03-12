@@ -121,8 +121,9 @@ class Request {
 	 */
 	public static function protocol()
 	{
-		//return (isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-        return 'https';
+        //force https on all routes
+		return (isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        //return 'https';
 	}
 
 	/**
