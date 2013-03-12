@@ -28,7 +28,7 @@
         <!-- feedback header -->
         <div class="feedback-header clear">
             <div class="author">
-                <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>  
+                <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>
                 <div class="author-information">
                     <div class="author-name clear">
                         <span class="first_name"><?= HTML::entities($feed->feed_data->firstname); ?></span>
@@ -61,22 +61,15 @@
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
                     <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
                 </div>
-                <?php if($feed->feed_data->isfeatured == 1): ?>
-                    <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                        <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
         <!-- end of feedback header -->
         <!-- feedback text bubble -->
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
-            <?php if($feed->feed_data->isfeatured != 1): ?>
-                <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
-                </div>
-            <?php endif; ?>
+            <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
+                <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+            </div>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
                     <?php foreach( $metadata as $group ): ?>
@@ -90,7 +83,7 @@
                 <?php endif; ?>
             </div>
             <div class="feedback-text">
-                <?= HTML::entities($feed->feed_data->text);?>
+                <p><?= HTML::entities($feed->feed_data->text);?></p>
             </div>
                     <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
