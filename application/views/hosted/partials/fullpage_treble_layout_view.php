@@ -1,5 +1,4 @@
 <?php if($collection): ?>
-<div id="threeColumnLayout" class="hosted-layout"> 
 <?php foreach ($collection as $feed_group => $feed_list) :  ?>
     <div class="feedback-list">
     <?php foreach ($feed_list as $feed) :
@@ -30,13 +29,8 @@
             <div class="reviews clear">
                 <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
-                    <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
+                    <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
                 </div>
-                <?php if($feed->feed_data->isfeatured == 1): ?>
-                    <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                        <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
-                    </div>
-                <?php endif; ?>
             </div>
             <div class="author">
                 <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>  
@@ -72,11 +66,9 @@
         <!-- feedback text bubble -->
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
-            <?php if($feed->feed_data->isfeatured != 1): ?>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
                     <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
                 </div>
-            <?php endif; ?>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
                     <?php foreach( $metadata as $group ): ?>
@@ -90,7 +82,7 @@
                 <?php endif; ?>
             </div>
             <div class="feedback-text">
-                <?= HTML::entities($feed->feed_data->text);?>
+                <p><?= HTML::entities($feed->feed_data->text);?></p>
             </div>
             <!-- are there any additional info uploaded?? -->
             <?php if($attachments): ?>
@@ -243,5 +235,4 @@
     </div><!-- end div feed-list -->
 
 <?php endforeach; //endforeach collection ?>
-</div><!-- end div threeColumnLayout -->
 <?php endif; //endif collection ?>

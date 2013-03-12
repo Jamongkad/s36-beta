@@ -1,5 +1,4 @@
 <?php if($collection): ?>
-<div id="threeColumnLayout" class="hosted-layout">
 <?php foreach ($collection as $feed_group => $feed_list) :  ?>
     <div class="feedback-list">
     <?php foreach ($feed_list as $feed) :
@@ -59,7 +58,7 @@
             <div class="reviews clear">
                 <div class="ratings <?=($feed->feed_data->isfeatured == 1) ? 'clear' : ''?>">
                     <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
-                    <div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div>
+                    <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
                 </div>
             </div>
         </div>
@@ -236,5 +235,4 @@
     </div><!-- end div feed-list -->
 
 <?php endforeach; //endforeach collection ?>
-</div><!-- end div threeColumnLayout -->
 <?php endif; //endif collection ?>
