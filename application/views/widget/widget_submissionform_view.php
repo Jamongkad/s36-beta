@@ -85,7 +85,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                 <div id="drag-and-drop-area">
                     <h2>Drag Photos on this area</h2>
                     <p>or</p>
-                    <p><input type="file" multiple id="file_uploader" data-url="/imageprocessing/FormImageUploader/" /></p>
+                    <p><input type="file" multiple id="file_uploader" data-url="/imageprocessing/upload_form_photos/" /></p>
                 </div>
                 <div id="upload-status-area">
                     <div class="upload-preview">
@@ -181,14 +181,6 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                     <!-- end of uploads -->
                     
                     <!-- start of video upload -->
-                    <!-- 
-                    <div class="form-add-video">
-                        <a href="#" class="video-icon">Add Video</a> 
-                        <div class="form-video-url" style="display:none">
-                            <label>Enter Youtube Link : </label> <input type="text" class="regular-text" />
-                        </div>
-                    </div>
-                    -->
                     <div class="form-video-thumbs clear"></div>
                     
                     <!-- end of form upload -->
