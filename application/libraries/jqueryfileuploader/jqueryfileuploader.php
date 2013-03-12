@@ -322,7 +322,7 @@ class JqueryFileUploader
 
         if($version == 'small') { 
             $resize = new Resize($new_file_path);
-            $resize->resizeImage(50, 50, 'auto');
+            $resize->resizeImage(50, 50, 'crop');
             $resize->saveImage($new_file_path, 100);
             /*
             $imagine = new \Imagine\Gd\Imagine();
