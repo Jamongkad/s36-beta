@@ -314,7 +314,8 @@ class JqueryFileUploader
         // Free up memory (imagedestroy does not delete files):
         @imagedestroy($src_img);
         @imagedestroy($new_img);
-
+        
+        //force auto cropping on small and medium photos
         if($version == 'small') { 
             $resize = new Resize($file_path);
             $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
