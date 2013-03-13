@@ -45,6 +45,15 @@ var S36FullpageAdmin = function(layoutObj){
         // open the admin window
         $('.barLinks #admin_panel').click(function(e){
             $('#adminWindowBox').fadeIn('fast');
+
+            console.log("Initializing Quick Inbox");
+            var pane = $('.widget-list').jScrollPane();
+            var api = pane.data('jsp');
+            api.destroy();
+            setTimeout(function() {
+                $('.widget-list').jScrollPane();
+            }, 200);
+
             e.preventDefault();
         });
         
