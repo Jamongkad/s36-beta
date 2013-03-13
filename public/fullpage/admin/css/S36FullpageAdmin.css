@@ -677,6 +677,7 @@ ul.patternList li div.active{
 .widget-date{
 	font-size:10px;
 	margin:3px 0px;
+    color: #aaa;
 }
 .widget-date .the-delete{
 	position:absolute;
