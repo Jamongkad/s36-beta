@@ -58,6 +58,9 @@
 }
 
 .regular-featured .feedback-header .reviews{
+	float: right;
+	width: 250px;
+	text-align: right;
 }
 .regular-featured .author-location{
 	float:left;
@@ -87,7 +90,7 @@
 }
 .reviews .ratings .stars{
 	margin-bottom:5px;
-	float:left;
+	/*float:left;*/
 }
 .feedback-timestamp{
 	color:#4f4e4e;
