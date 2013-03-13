@@ -29,8 +29,8 @@ return array(
 
     'GET /hosted/quick_inbox' => function() use ($feedback) {
         $feeds = $feedback->newfeedback_by_company(false, $filter='positive');  
-        //echo json_encode($feeds->nodes);
-        echo json_encode(Array());
+        echo json_encode($feeds->nodes);
+        //echo json_encode(Array());
     },
 
     'POST /hosted/change_feedback_status' => function() use ($feedback) { 
