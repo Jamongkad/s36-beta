@@ -110,6 +110,8 @@ angular.module('S36QuickInboxDirectives', [])
                     }
                     
                     //pics
+                    console.log(links.length);
+
                     for(var i=0; i<links.length; i++) {
                         var file_name = links[i].name;
                         var small_url  = '/uploaded_images/form_upload/small/' + file_name;
