@@ -58,6 +58,9 @@
 }
 
 .regular-featured .feedback-header .reviews{
+	/*float: right;
+	width: 250px;*/
+	text-align: right;
 }
 .regular-featured .author-location{
 	float:left;
@@ -220,6 +223,7 @@
 }
 .regular .feedback-header .reviews .feedback-timestamp{
 	color:#999999;
+	float: right;
 }
 .regular .author-location{
 	float:left;

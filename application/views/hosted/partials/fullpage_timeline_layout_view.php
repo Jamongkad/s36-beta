@@ -78,7 +78,7 @@
             </div>
             <div class="reviews clear">
                 <div class="ratings clear">
-                    <div class="feedback-timestamp"><?=$feed->feed_data->daysago?></div>
+                    <div class="feedback-timestamp"> &nbsp; <?=$feed->feed_data->daysago?></div>
                     <div class="stars blue clear"><div class="star_rating" rating="<?=$feed->feed_data->int_rating;?>"></div></div>
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>

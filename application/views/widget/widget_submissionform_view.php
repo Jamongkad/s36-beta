@@ -235,7 +235,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                                 <select class="registration-input default-text" name="country" id="your_country" title="Country">
                                        <option>Country</option>
                                     <?php foreach($countries->get() as $country): ?>
-                                       <option value='<?=strtolower($country->code)?>'><?=$country->name?></option>
+                                       <option value='<?=strtoupper($country->code)?>'><?=$country->name?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
