@@ -167,6 +167,7 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) { 
+                console.log("Initializing Quick Inbox");
                 var pane = $('.widget-list').jScrollPane();
                 var api = pane.data('jsp');
                 api.destroy();
