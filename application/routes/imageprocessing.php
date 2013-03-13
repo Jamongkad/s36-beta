@@ -23,7 +23,7 @@ return array(
     'POST /imageprocessing/upload_avatar' => array('name'=>'upload_avatar', 'do' => function() {
         $options = array(
               'script_url' => JqueryFileUploader::get_full_url().'/imageprocessing/upload_avatar'
-            , 'file_name'  => date("mdyhis").'.jpg'
+            , 'file_name'  => md5(uniqid()).'.jpg'
             , 'upload_dir' => Config::get('application.uploaded_images_dir').'/avatar/'
             , 'upload_url' => JqueryFileUploader::get_full_url() .'/uploaded_images/avatar/'
             , 'param_name' => 'files'
