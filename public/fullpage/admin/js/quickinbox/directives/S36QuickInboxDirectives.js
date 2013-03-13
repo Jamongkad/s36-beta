@@ -167,13 +167,8 @@ angular.module('S36QuickInboxDirectives', [])
         restrict: 'A'
       , link: function(scope, element, attrs) { 
             $(element).bind('click', function(e) { 
-                console.log("Initializing Quick Inbox");
-                var pane = $('.widget-list').jScrollPane();
-                var api = pane.data('jsp');
-                api.destroy();
-                setTimeout(function() {
-                    $('.widget-list').jScrollPane();
-                }, 200);
+                var fullpageCommon = new S36FullpageCommon;
+                fullpageCommon.init_quick_inbox();
                 e.preventDefault();
             });
         }
