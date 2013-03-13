@@ -877,7 +877,7 @@ $(document).keypress(function(event){
 		var company_position = get_proper_string(occupation,company);
 		var city_country = get_proper_string(city,country);
 		var flag = $('#flag');
-		flag.removeClass().addClass('flag flag-'+country.val());
+		flag.removeClass().addClass('flag flag-'+country.val().toLowerCase());
 		
 		$('#review_photo').attr('src',profile_img);
 		$('#review-name').html(fname+" "+lname);
