@@ -58,6 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div ng-show="!feedbacks.length">No Feedback for today.</div>
                                     <!--quick inbox loop-->
                                 </div>
                             </div>
