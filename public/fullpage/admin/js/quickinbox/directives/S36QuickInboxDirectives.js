@@ -146,18 +146,9 @@ angular.module('S36QuickInboxDirectives', [])
             scope.$watch(function() {
                 $('.widget-list').jScrollPane();
                 return element.find('.widget-item').length;
-            }, function(length) {
-
-                var pane = $('.widget-list').jScrollPane();
-                var api = pane.data('jsp');
-
-                if(api) {
-                    api.destroy();
-                }
-
-                setTimeout(function() {
-                    $('.widget-list').jScrollPane();
-                }, 0);
+            }, function(length) { 
+                var fullpageCommon = new S36FullpageCommon;
+                fullpageCommon.init_quick_inbox();
             });
         }
     }    
