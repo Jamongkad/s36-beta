@@ -129,6 +129,13 @@
 	color:#4ea6c6;
 	font-size:11px;
 }
+.rating-stat{
+	color: #4ea6c6;
+	font-size: 11px;
+	position: absolute;
+	top: -15px;
+	right: 0px;
+}
 .feedback-text-bubble{
 	margin-top:20px;
 	padding:20px;
@@ -186,7 +193,7 @@
 }
 .feedback-recommendation,.feedback-actions{
 	float:left;
-	width:385px;
+	/*width:385px; */  /* you've been strayed for a long time. */
 }
 .feedback-actions{
 	text-align:right;
