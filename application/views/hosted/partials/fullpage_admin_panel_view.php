@@ -26,6 +26,7 @@
                     <div class="pageBody">
                         <div id="quickInboxWidget">
                             <div class="widget-list" scrollpane>
+                                <h2 ng-show="!feedbacks.length">No Feedback for today.</h2>
                                 <div ui-if="!!feedbacks.length">
                                     <!--quick inbox loop-->
                                     <div class="widget-item clear" ng-repeat="feeds in feedbacks">                                     
