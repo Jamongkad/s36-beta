@@ -47,7 +47,7 @@ var S36FullpageAdmin = function(layoutObj){
             $('#adminWindowBox').fadeIn('fast');
             //S36FullpageCommon.init_quick_inbox();
             var fullpageCommon = new S36FullpageCommon;
-            console.log(fullpageCommon);
+            console.log(fullpageCommon.init_quick_inbox());
             e.preventDefault();
         });
         
