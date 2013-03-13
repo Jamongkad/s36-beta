@@ -134,4 +134,14 @@ var S36FullpageCommon = function(){
 		if( layout == 'timeline' ) return new S36FullpageLayoutTimeline();
 		if( layout == 'treble' ) return new S36FullpageLayoutTreble();
 	}
+
+    this.init_quick_inbox = function() {
+        console.log("Initializing Quick Inbox");
+        var pane = $('.widget-list').jScrollPane();
+        var api = pane.data('jsp');
+        api.destroy();
+        setTimeout(function() {
+            $('.widget-list').jScrollPane();
+        }, 200); 
+    }
 }
