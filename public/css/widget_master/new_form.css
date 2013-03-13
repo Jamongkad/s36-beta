@@ -86,6 +86,7 @@ a:hover{
 }
 .form-page{
 	width:448px;
+	display:none;
 }
 .form-page-head{
 	background:url(../../img/form-page-head-bg.jpg) repeat-x;
