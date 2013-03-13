@@ -610,7 +610,7 @@ ul.patternList li div.active{
 	float:left;
 }
 .widget-item .widget-content{
-	width:248px;
+	width:348px;
 	float:left;
 	margin:0px 10px;
 	font-size:11px;
@@ -676,7 +676,8 @@ ul.patternList li div.active{
 
 .widget-date{
 	font-size:10px;
-	margin-top:10px;
+	margin:3px 0px;
+    color: #aaa;
 }
 .widget-date .the-delete{
 	position:absolute;
@@ -710,7 +711,7 @@ ul.patternList li div.active{
 }
 .widget-content .uploaded-images-and-links .image-block{
 	width:54px;
-	margin-right:0px;
+	margin-right:5px;
 	float:left;
 	height:48px;
 	overflow:hidden;

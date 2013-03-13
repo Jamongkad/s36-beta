@@ -260,8 +260,7 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                             </div>
                             <div class="registration-avatar-inst">
                                 <h2>Select your display profile photo.</h2>
-                                <p>You can also use your company logo if 
-you like.</p>
+                                <p>You can also use your company logo if you like.</p>
                                 <input type="file" id="your_photo" data-url="/imageprocessing/upload_avatar/" />
                             </div>
                         </div>
