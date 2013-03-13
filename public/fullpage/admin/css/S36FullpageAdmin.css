@@ -686,9 +686,9 @@ ul.patternList li div.active{
 }
 
 .widget-content .additional-info{
-	background:#f7f7f7;
-	border:1px solid #dde7ef;
-	padding:15px;
+	/*background:#f7f7f7;*/
+	/*border:1px solid #dde7ef;*/
+	/*padding:15px;*/
 	margin-top:10px;
 	font-size:10px;
 }
