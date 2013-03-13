@@ -92,6 +92,11 @@ var S36FeedbackActions = new function() {
 
     this.vote = function() { 
         $(vote).unbind('click.vote_feedback').bind('click.vote_feedback', function(e) {
+            e.preventDefault();
+            
+            if( $(this).is('.off') ) return;
+            
+            $(this).addClass('off');
             
             var this_vote = $(this);
             var vote_count_obj = $(this).parents(feedback).find(vote_count);
@@ -108,14 +113,15 @@ var S36FeedbackActions = new function() {
                     this_vote.parents(feedback).find(undo_vote).show();
                 }
             });
-            e.preventDefault();
         });
     }
     
     this.undo_vote = function(e){
         $(undo_vote).unbind('click.undo_vote').bind('click.undo_vote', function(e) {
+            e.preventDefault();
             var this_undo = $(this);
             var vote_count_obj = $(this).parents(feedback).find(vote_count);
+            var this_vote = $(this).parent().find(vote);
             $.ajax({
                 url: '/feedback_action/unvote',
                 type: 'post',
@@ -126,9 +132,9 @@ var S36FeedbackActions = new function() {
                     
                     this_undo.parents(feedback).find(vote_container).show();
                     this_undo.hide();
+                    this_vote.removeClass('off');
                 }
             });
-            e.preventDefault();
         });
     }
 
