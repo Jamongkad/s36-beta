@@ -711,7 +711,7 @@ ul.patternList li div.active{
 }
 .widget-content .uploaded-images-and-links .image-block{
 	width:54px;
-	margin-right:0px;
+	margin-right:5px;
 	float:left;
 	height:48px;
 	overflow:hidden;
