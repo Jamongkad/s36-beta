@@ -43,8 +43,8 @@
                                             <div class="widget-content">
                                                 <div class="widget-submitter">
                                                     <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                    <span class="social-src" social login="{{feeds.logintype}}">
-                                                    </span>
+                                                    <span class="social-src" social login="{{feeds.logintype}}"></span>
+                                                    <span feedbackdate date="{{feeds.date}}"></span>
                                                 </div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
@@ -53,9 +53,6 @@
                                                         <span attachments load="feeds.attachments" feedid="feeds.id"></span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="widget-date">
-                                                <div feedbackdate date="{{feeds.date}}"></div>
                                             </div>
                                         </div>
                                     </div>
