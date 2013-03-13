@@ -713,7 +713,7 @@ ul.patternList li div.active{
 	width:54px;
 	margin-right:0px;
 	float:left;
-	height:48px;
+	/*height:48px;*/
 	overflow:hidden;
 }
 .widget-content .video-circle{
