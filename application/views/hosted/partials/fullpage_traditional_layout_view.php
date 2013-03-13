@@ -199,12 +199,8 @@
                 </span>
             </div>
             <div class="feedback-actions clear">
-                <span class="flag-as <?= ($flagged != 1 ? '' : 'hidden'); ?>">
-                    Flag as inappropriate
-                </span>
-                <span class="undo_flag <?= ($flagged == 1 ? '' : 'hidden'); ?>">
-                    Undo flag
-                </span>
+                <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
+                <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
                 <span class="share-button">
                     Share
                     <div class="share-box">
