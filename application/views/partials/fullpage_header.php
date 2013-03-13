@@ -102,7 +102,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
                 <ul>
                     <?php if( ! is_null(\S36Auth::user()) ): ?>
                         <li><a href="#">Signed in as <span><?=\S36Auth::user()->username?></a></li>
-                        <li><a href="#" id="admin_panel">Admin Panel</a></li>
+                        <li><a href="#" id="admin_panel" initquick>Admin Panel</a></li>
                         <li><a href="/dashboard">My Dashboard</a></li>
                         <li><a href="/admin">My Account</a>
                             <ul>
