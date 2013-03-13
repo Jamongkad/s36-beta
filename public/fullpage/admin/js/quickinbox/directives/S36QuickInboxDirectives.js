@@ -28,7 +28,7 @@ angular.module('S36QuickInboxDirectives', [])
       , link: function(scope, element, attrs) {
             attrs.$observe('date', function(at) {
                 var d = Date.parse(at);
-                scope.time = '<div class="the-date">' + d.toString('MMMM d, yyyy') + '</div>' + '<div class="the-time">' + d.toString('h:mm:ss tt') + '</div>';
+                scope.time = '<span class="the-date">' + d.toString('MMMM d, yyyy') + '</span>' + ' - <span class="the-time">' + d.toString('h:mm:ss tt') + '</span>';
             }) 
         }
       , template: '<span ng-bind-html-unsafe="time"></span>'
