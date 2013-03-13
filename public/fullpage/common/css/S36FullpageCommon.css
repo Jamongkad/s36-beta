@@ -298,7 +298,7 @@ a:hover{
 	margin-top:3px;
 }
 .regular-featured .feedback-timestamp{
-	/*float:right;*/
+	float:right;
 	margin-top:3px;
 }
 .stars .star{
