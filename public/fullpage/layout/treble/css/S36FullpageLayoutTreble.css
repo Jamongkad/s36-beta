@@ -91,6 +91,7 @@
 .reviews .ratings .stars{
 	margin-bottom:5px;
 	float:left;
+	text-align: left;
 }
 .feedback-timestamp{
 	color:#4f4e4e;
