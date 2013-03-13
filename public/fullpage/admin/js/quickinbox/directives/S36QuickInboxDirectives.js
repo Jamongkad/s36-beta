@@ -110,7 +110,6 @@ angular.module('S36QuickInboxDirectives', [])
                     }
                     
                     //pics
-                    console.log(links.length);
                     var box_width;
                     if(links.length == 1) {
                         box_width = "width:100%";
