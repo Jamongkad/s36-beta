@@ -34,7 +34,7 @@ return array(
                 ),
                 '150x150' => array(
                     'max_width'     => 150,
-                    'max_height'    => 150
+                    'max_height'    => 150,
                 )
             )
         );
@@ -88,10 +88,12 @@ return array(
                 'medium' => array(
                     'max_width'     => 200,
                     'max_height'    => 200,
+                    'use_external_library' => True
                 ),
                 'small' => array(
                     'max_width'     => 80,
                     'max_height'    => 80,
+                    'use_external_library' => True
                 )
             )
         );
