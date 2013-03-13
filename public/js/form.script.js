@@ -654,7 +654,9 @@ $(document).keypress(function(event){
 	}
 
 	function push_to_last_window(){
-		$('#all-done-textbox').html($('#feedbackText').val());
+		var feedback_text = $('#feedbackText').val();
+		if( feedback_text.length > 1000 ) feedback_text = feedback_text.substr(0, 999) + '...';
+		$('#all-done-textbox').html(feedback_text);
 		$('#back').fadeOut('fast');
 		$('#next').fadeOut('fast');
 		return true;

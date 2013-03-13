@@ -705,6 +705,7 @@ h2.h2-fix{
 	text-shadow:#FFF 0px 1px;
 	color:#545454;
 	padding:10px;
+	overflow: hidden;
 }
 #review-location{
  float:left;
