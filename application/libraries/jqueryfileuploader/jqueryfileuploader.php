@@ -316,13 +316,7 @@ class JqueryFileUploader
         @imagedestroy($new_img);
         
         //force auto cropping on small and medium photos
-        if($version == 'small') { 
-            $resize = new Resize($file_path);
-            $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
-            $resize->saveImage($new_file_path, 100);
-        }
-
-        if($version == 'medium') { 
+        if(array_key_exists('use_external_library', $options)) { 
             $resize = new Resize($file_path);
             $resize->resizeImage($options['max_width'], $options['max_height'], 'crop');
             $resize->saveImage($new_file_path, 100);

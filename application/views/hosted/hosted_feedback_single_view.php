@@ -234,7 +234,7 @@
                                 <!-- feedback header -->
                                 <div class="feedback-header clear">
                                     <div class="author">
-                                        <div class="author-avatar"><img src="<?=$avatar?>" width="48" height="48" /></div>  
+                                        <div class="author-avatar"><img src="<?=$avatar?>" width="100%"/></div>  
                                         <div class="author-information">
                                             <div class="author-name clear">                                            
                                                 <span class="first_name"><?= HTML::entities($feedback->firstname); ?></span>

@@ -45,6 +45,8 @@ var S36FullpageAdmin = function(layoutObj){
         // open the admin window
         $('.barLinks #admin_panel').click(function(e){
             $('#adminWindowBox').fadeIn('fast');
+            var fullpageCommon = new S36FullpageCommon;
+            fullpageCommon.init_quick_inbox();
             e.preventDefault();
         });
         

@@ -3,8 +3,8 @@
 <div id="adminWindowBox" ng-controller="AppCtrl" >
     <div id="adminWindowTitleBar">
         <div class="adminTitleText">Admin Panel</div>
-        <div class="minBtn" initquick></div>
-        <div class="closeBtn" initquick></div>
+        <div class="minBtn"></div>
+        <div class="closeBtn"></div>
     </div>
     <div id="adminWindowHolder" >
         <div id="adminWindowMenuBar">
@@ -43,8 +43,10 @@
                                             <div class="widget-content">
                                                 <div class="widget-submitter">
                                                     <span class="name">{{feeds.firstname}} {{feeds.lastname}}</span> 
-                                                    <span class="social-src" social login="{{feeds.logintype}}">
-                                                    </span>
+                                                    <span class="social-src" social login="{{feeds.logintype}}"></span>
+                                                </div>
+                                                <div class="widget-date">
+                                                    <span feedbackdate date="{{feeds.date}}"></span>
                                                 </div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
@@ -53,9 +55,6 @@
                                                         <span attachments load="feeds.attachments" feedid="feeds.id"></span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="widget-date">
-                                                <div feedbackdate date="{{feeds.date}}"></div>
                                             </div>
                                         </div>
                                     </div>
