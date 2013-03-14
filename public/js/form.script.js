@@ -324,7 +324,6 @@ $(document).keypress(function(event){
 			dropZone: false,
 			dataType: 'json',
 			add: function(e, data){
-				console.log('in add');
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
 				if( image_types.indexOf( data.files[0].type ) == -1 ){
 					var error = ['Please select an image file'];
@@ -369,11 +368,6 @@ $(document).keypress(function(event){
 		$('#next').click(function(){
 			var cur_page = $('.current').attr('id');
 			if(cur_page == 'step1'){
-                /*
-				if(validate_feedback()) {
-					$steps.cycle('next');
-				}
-                */
 				if(FormValidatePageOne.validate()) {
 					$steps.cycle('next');
 				}
