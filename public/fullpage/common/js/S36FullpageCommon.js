@@ -116,7 +116,7 @@ var S36FullpageCommon = function(){
 		if(layout_name == 'timeline'){
 			//$('.left-branch').remove();
 			//$('.right-branch').remove();
-			$.when($('.feedback-list').masonry()).then(function(){layout.add_branches()});
+			$.when($('#feedback-infinitescroll-landing').find('.feedback-list').masonry()).then(function(){layout.add_branches()});
 		}else if(layout_name == 'treble'){
 			$('.feedback-list').masonry('reload');
 			this.init_masonry(275,12,750);

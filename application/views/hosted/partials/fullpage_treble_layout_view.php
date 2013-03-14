@@ -164,7 +164,7 @@
                             <textarea class="admin-comment-textbox"></textarea>
                         </div>
                         <div class="admin-comment-leave-a-reply">
-                            <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span>
+                            <!-- <span class="admin-logged-session">Logged in as <a href="#"><?=$user->fullname?></a></span> -->
                             <input type="button" class="adminReply regular-button" value="Post Comment" />
                         </div>
                     </div>

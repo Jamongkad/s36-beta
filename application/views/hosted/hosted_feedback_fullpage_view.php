@@ -116,8 +116,8 @@
             <!-- end of lightbox notification -->
             <div id="feedbackContainer">
                 <div id="threeColumnLayout" class="hosted-layout">
-                <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
-                <div id="feedback-infinitescroll-landing"></div> 
+                    <?=View::make('hosted/partials/fullpage_'.strtolower($panel->theme_name).'_layout_view', Array('collection' => $feeds, 'user' => $user))?>
+                    <div id="feedback-infinitescroll-landing"></div>
                 </div>
             </div>
         </div>
@@ -161,13 +161,15 @@
 
                 counter += 1;
                 var page_counter = counter + 1;
-                var container = $('#feedback-infinitescroll-landing'); 
+                var container = $('#feedback-infinitescroll-landing');
+                if( fullpageLayout.layout_name == 'treble' ) container = $('.feedback-list');
                 $.ajax({ 
                     async: false,
                     url: '/hosted/fullpage_partial/' + page_counter
                   , success: function(msg) { 
                       var boxes = $(msg);
-                      container.append(boxes); 
+                      if( fullpageLayout.layout_name == 'treble' ) container.append(boxes.find('.feedback')); 
+                      else container.append(boxes); 
                     }
                 });
             }
