@@ -199,7 +199,7 @@
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
             </div>
-            <div class="feedback-vote" <?=(!$is_recommended) ? 'style="padding-left:-5px"' : null?>>
+            <div class="feedback-vote" <?=(!$is_recommended) ? 'style="margin-left:0px"' : null?>>
                 <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
                     Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                 </span>
