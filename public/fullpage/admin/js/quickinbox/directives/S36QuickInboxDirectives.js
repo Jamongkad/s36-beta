@@ -107,14 +107,6 @@ angular.module('S36QuickInboxDirectives', [])
 
                     //links
                     if(links.hasOwnProperty('video') && links.video == 'no') { 
-                        /*
-                        scope.mtemplate += '<div class="image-block" style="width:100%">';
-                        scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '" target=newtab>';
-                        scope.mtemplate += 'website link: ' + links.title + '<br/>';
-                        scope.mtemplate += '<img src="' + links.image + '" width="100%" height="50%"/>';
-                        scope.mtemplate += '</a></div>';
-                        scope.mtemplate += '</div>';
-                        */
                         scope.mtemplate += '<div class="uploaded-link">';
                         scope.mtemplate +=     '<div class="form-video-meta">';
                         scope.mtemplate +=         '<div class="video-thumb">';
@@ -123,8 +115,8 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate +=              '</div>';
                         scope.mtemplate +=         '</div>';
                         scope.mtemplate +=         '<div class="video-details">';
-                        scope.mtemplate +=             '<h3>' + links.title + '</h3>';
-                        scope.mtemplate +=             '<p>' + links.description + '</p>';
+                        scope.mtemplate +=             '<h3>' + links.title.substr(0, 300) + '...</h3>';
+                        scope.mtemplate +=             '<p>' + links.description.substr(0, 300) + '...</p>';
                         scope.mtemplate +=         '</div>';
                         scope.mtemplate +=     '</div>';
                         scope.mtemplate += '</div>';
