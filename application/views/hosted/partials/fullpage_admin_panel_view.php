@@ -51,10 +51,12 @@
                                                 </div>
                                                 <div class="widget-text">
                                                     <p>{{feeds.text}}</p>
+                                                    <!--
                                                     <div infoblock load="{{feeds}}">
                                                         <span metadata load="{{feeds.metadata}}"></span>
                                                         <span attachments load="feeds.attachments" feedid="feeds.id"></span>
                                                     </div>
+                                                    -->
                                                 </div>
                                             </div>
                                         </div>
