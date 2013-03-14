@@ -132,10 +132,7 @@ return array(
     },
 
     'POST /submit_feedback' => function() use($company_name, $company, $hosted_settings){
-
         /* stash this in a service somewhere...too much shit happening */
-        Helpers::dump(Input::get());
-        /*
         $addfeedback         = new Feedback\Services\SubmissionService(Input::get());
         $feedback            = $addfeedback->perform();                
 
@@ -161,7 +158,6 @@ return array(
         ';
         $obj->share_button = $fb_iframe;
         echo json_encode($obj); 
-        */
     },
     
     'GET /single/(:num)' => function($id) use ($user, $feedback, $company, $fullpage, $hosted_settings) { 
