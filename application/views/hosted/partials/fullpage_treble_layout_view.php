@@ -73,8 +73,7 @@
                     <? else: ?>
                         person 
                     <? endif; ?>
-                         found this useful
-
+                        found this useful
                 </div>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
@@ -224,7 +223,7 @@
                 </span>
             </div>
             <div class="vote-block">
-                <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
+                <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>" <?=(!$is_recommended) ? 'style="margin-left:0"' : 'style="margin-left:10px"'?>>
                     Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                 </span>
             </div>
