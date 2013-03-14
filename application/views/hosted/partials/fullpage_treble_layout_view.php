@@ -198,7 +198,7 @@
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
             </div>
-            <div class="feedback-actions clear">
+            <div class="feedback-actions clear" <?=($feedback_main_class == 'regular-featured') ? 'style="padding-top:5px"' : null?>>
                 <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
                 <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
                 <span class="share-button">
