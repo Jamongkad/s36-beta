@@ -119,7 +119,7 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate +=             '<p>' + links.description.substr(0, 100) + '...</p>';
                         scope.mtemplate +=         '</div>';
                         scope.mtemplate +=     '</div>';
-                        scope.mtemplate += '</div>';
+                        scope.mtemplate += '</div><br/>';
                     }
                     
                     //pics
