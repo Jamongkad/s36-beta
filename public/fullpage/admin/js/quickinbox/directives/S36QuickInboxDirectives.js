@@ -110,7 +110,7 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate += '<div class="image-block" style="width:100%">';
                         scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '" target=newtab>';
                         scope.mtemplate += 'website link: ' + link.title + '<br/>';
-                        scope.mtemplate += '<img src="' + links.image + '" width="100%" />';
+                        scope.mtemplate += '<img src="' + links.image + '" width="100%" height="50%"/>';
                         scope.mtemplate += '</a></div>';
                         scope.mtemplate += '</div>';
                     }
