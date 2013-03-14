@@ -83,7 +83,13 @@
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    <span class="vote_count"><?php echo $vote_count; ?></span> 
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                         found this useful
                 </div>
                 <?php endif; ?>
             </div>
