@@ -47,8 +47,7 @@ class DBFeedback extends S36DataObject {
                 , UNIX_TIMESTAMP(dtAdded) AS unix_timestamp
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "FULL PERMISSION"
-                    WHEN Feedback.permission = 2 THEN "LIMITED PERMISSION"
-                    WHEN Feedback.permission = 3 THEN "PRIVATE"
+                    WHEN Feedback.permission = 0 THEN "PRIVATE"
                   END AS permission
                 , CASE 
                     WHEN Feedback.rating = 1 THEN "POOR"
@@ -60,8 +59,7 @@ class DBFeedback extends S36DataObject {
                 , Feedback.rating AS int_rating
                 , CASE 
                     WHEN Feedback.permission = 1 THEN "full-permission"
-                    WHEN Feedback.permission = 2 THEN "limited-permission"
-                    WHEN Feedback.permission = 3 THEN "private-permission"
+                    WHEN Feedback.permission = 0 THEN "private-permission"
                   END AS permission_css
                 , Feedback.permission AS perm_val
                 , Feedback.isFeatured

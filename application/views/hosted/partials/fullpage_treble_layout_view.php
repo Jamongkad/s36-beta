@@ -110,6 +110,8 @@
                     <?
                     $attached_url = Helpers::secure_link($attachments->attached_link->url);
                     $attached_image = Helpers::secure_link($attachments->attached_link->image);
+                    $attachment_desc = $attachments->attached_link->description;
+                    $attachment_desc = ($attachment_desc == substr($attachment_desc, 0, 80) ? $attachment_desc : substr($attachment_desc, 0, 80) . '...');
                     ?>
                     <div class="uploaded-link">
                         <div class="padded-5">
@@ -132,8 +134,8 @@
                                     <?php endif; ?>
 
                                     <div class="video-details">
-                                        <h3><?=$attachments->attached_link->title?></h3>
-                                        <p><?=$attachments->attached_link->description?></p>
+                                        <h3><?= HTML::entities($attachments->attached_link->title); ?></h3>
+                                        <p><?= HTML::entities($attachment_desc); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -189,14 +191,6 @@
                 <?php if( $is_recommended ): ?>
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
-                <div class="vote-block">
-                    <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
-                        Was this useful? <a href="#" class="small-btn-pin">Yes</a>
-                    </span>
-                    <span class="undo_vote <?= ($voted == 1 ? '' : 'hidden'); ?>">
-                        Undo vote
-                    </span>
-                </div>
             </div>
             <div class="feedback-actions clear">
                 <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
@@ -220,6 +214,14 @@
                                 class="tw_share_dummy">Tweet</a>
                         </div>
                     </div>
+                </span>
+            </div>
+            <div class="vote-block">
+                <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
+                    Was this useful? <a href="#" class="small-btn-pin">Yes</a>
+                </span>
+                <span class="undo_vote <?= ($voted == 1 ? '' : 'hidden'); ?>">
+                    Undo vote
                 </span>
             </div>
         </div>

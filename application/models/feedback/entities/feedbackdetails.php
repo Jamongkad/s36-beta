@@ -63,7 +63,7 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'isPublished'   => $isPublished
           , 'rating'        => $this->post_data->get('rating')
           , 'text'          => $feedback_text
-          , 'permission'    => ($permission == '1') ? 1 : 0
+          , 'permission'    => ($permission) ? $permission : 1
           , 'dtAdded'       => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
           , 'attachments'   => json_encode($this->post_data->get('attachments'))
           , 'metadata'      => $metadata

@@ -109,6 +109,8 @@
                 <?
                 $attached_url = Helpers::secure_link($attachments->attached_link->url);
                 $attached_image = Helpers::secure_link($attachments->attached_link->image);
+                $attachment_desc = $attachments->attached_link->description;
+                $attachment_desc = ($attachment_desc == substr($attachment_desc, 0, 80) ? $attachment_desc : substr($attachment_desc, 0, 80) . '...');
                 ?>
                 <div class="uploaded-link">
                     <div class="padded-5">
@@ -131,8 +133,8 @@
                             <?php endif; ?>
 
                             <div class="video-details">
-                                <h3><?=$attachments->attached_link->title?></h3>
-                                <p><?=$attachments->attached_link->description?></p>
+                                <h3><?= HTML::entities($attachments->attached_link->title); ?></h3>
+                                <p><?= HTML::entities($attachment_desc); ?></p>
                             </div>
                         </div>
                     </div>
