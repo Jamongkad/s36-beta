@@ -143,10 +143,10 @@ angular.module('S36QuickInboxDirectives', [])
                    
                     for(var i=0; i<links.length; i++) {
                         var file_name = links[i].name;
+                        var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
                         /*
                         var small_url  = '/uploaded_images/form_upload/small/' + file_name;
                         var medium_url = '/uploaded_images/form_upload/medium/' + file_name;
-                        var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
                         */
 
                         scope.mtemplate += '<div class="image-block pic" style="' + box_width + '">';
