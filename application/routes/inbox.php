@@ -27,8 +27,9 @@ return array(
         $inbox->set_filters($filters);
         $inbox->ignore_cache = True;
         $feedback = $inbox->present_feedback();
-        
 
+        Helpers::dump($feedback->grouped_feeds);
+        
         $admin_check = S36Auth::user();  
         $company_id = S36Auth::user()->companyid;        
         //Resets UI code for clicky action function
