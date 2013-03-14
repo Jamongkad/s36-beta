@@ -182,8 +182,8 @@ $(document).keypress(function(event){
                 website 		: website,
                 attachments     : attachments,
                 metadata        : $.makeArray(form_metadata)
-            }            
-
+            }
+            
             /*submit all data for server side scripting*/
             $.ajax({
                 type: "POST",
