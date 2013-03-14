@@ -108,12 +108,14 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
                             <ul>
                                 <li><a href="/settings">My Settings</a></li>
                                 <li><a href="http://36stories.freshdesk.com/">Help</a></li>
-                                <li><?=HTML::link('logout?forward_to=me', 'Log Out')?></li>
+                                <li> 
+                                     <a href="/logout?forward_to=me">Log Out</a>
+                                </li>
                             </ul>
                         </li>
                     <?php else: ?>
                         <li> 
-                            <a href="/login/forward_to=me">Login</a>
+                            <a href="/login?forward_to=me">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>
