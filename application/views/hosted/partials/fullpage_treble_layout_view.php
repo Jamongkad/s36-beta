@@ -67,7 +67,14 @@
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    <span class="vote_count"><?php echo $vote_count; ?></span>
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                         found this useful
+
                 </div>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
