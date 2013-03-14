@@ -251,11 +251,11 @@ $(document).keypress(function(event){
 			  $('#preview_photo').attr('src',photo);
 			  $('#fb_flag').val("1");
 		}
-
-		
+	
 		//initialize the link preview script! 
 		$('#feedbackText').linkPreview();
 		$('#textEditor').linkPreview();
+
 		//initialize the file upload script! 
 		$('#file_uploader').fileupload({
 			dropZone: $('#drag-and-drop-area'),
