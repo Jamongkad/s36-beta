@@ -67,7 +67,14 @@
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
             <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                <span class="vote_count"><?php echo $vote_count; ?></span> 
+                    <span class="vote_count"><?php echo $vote_count; ?></span> 
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                         found this useful
             </div>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
@@ -192,7 +199,7 @@
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
             </div>
-            <div class="feedback-vote">
+            <div class="feedback-vote" <?=(!$is_recommended) ? 'style="padding-left:-5px"' : null?>>
                 <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
                     Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                 </span>
