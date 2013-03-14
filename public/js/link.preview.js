@@ -35,7 +35,7 @@
 						if(answer.videoIframe == null) answer.videoIframe = "";
 						
 						var e_title = answer.title.substr(0, 38);
-						var e_desc = answer.description.substr(0, 200);
+						var e_desc = answer.description.substr(0, 50);
 						e_title = e_title + ( e_title != answer.title ? '...' : '' );
 						e_desc = e_desc + ( e_desc != answer.description ? '...' : '' );
 						
