@@ -138,7 +138,7 @@ angular.module('S36QuickInboxDirectives', [])
 
                     if(links.length == 3) { 
                         box_width = "width:33%";
-                        link_url = '/uploaded_images/form_upload/small/';
+                        link_url = '/uploaded_images/form_upload/medium/';
                     }
                    
                     for(var i=0; i<links.length; i++) {
