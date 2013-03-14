@@ -250,6 +250,7 @@ a:hover{
 .form-video-thumbs,.form-image-thumbs{
 	overflow:hidden;
 	max-height:78px;
+	max-width:270px;
 }
 .form-image-thumbs{
 	margin-bottom:5px;
@@ -262,7 +263,6 @@ a:hover{
 .form-video-meta{
 	overflow:hidden;
 	max-height:68px;
-    max-width:270px;
 }
 .form-video-thumbs .video-thumb{
 	float:left;
