@@ -108,7 +108,7 @@ angular.module('S36QuickInboxDirectives', [])
                     //links
                     if(links.hasOwnProperty('video') && links.video == 'no') { 
                         scope.mtemplate += '<div class="image-block" style="width:100%">';
-                        scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '">;
+                        scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '">';
                         scope.mtemplate += '<img src="' + links.image + '" width="100%" />';
                         scope.mtemplate += '</a></div>';
                         scope.mtemplate += '</div>';
