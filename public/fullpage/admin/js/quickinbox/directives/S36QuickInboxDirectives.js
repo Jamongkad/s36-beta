@@ -102,7 +102,7 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate +=     '<a class="fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
                         scope.mtemplate +=     '<div class="video-circle-ajs"></div>';
                         scope.mtemplate +=     '<img src="' + links.image + '" width="100%" /></a>';
-                        scope.mtemplate += '</div>';
+                        scope.mtemplate += '</div><br/>';
                     }
 
                     //links
