@@ -116,7 +116,7 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate +=         '</div>';
                         scope.mtemplate +=         '<div class="video-details">';
                         scope.mtemplate +=             '<h3>' + links.title.substr(0, 300) + '...</h3>';
-                        scope.mtemplate +=             '<p>' + links.description.substr(0, 300) + '...</p>';
+                        scope.mtemplate +=             '<p>' + links.description.substr(0, 100) + '...</p>';
                         scope.mtemplate +=         '</div>';
                         scope.mtemplate +=     '</div>';
                         scope.mtemplate += '</div>';
