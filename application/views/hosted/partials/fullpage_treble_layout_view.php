@@ -67,7 +67,13 @@
         <div class="feedback-text-bubble">
             <div class="feedback-tail"></div>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    <span class="vote_count"><?php echo $vote_count; ?></span>
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                        found this useful
                 </div>
             <div class="custom-meta-data clear">
                 <?php if( ! is_null($metadata) ): ?>
@@ -192,7 +198,7 @@
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
             </div>
-            <div class="feedback-actions clear">
+            <div class="feedback-actions clear" <?=($feedback_main_class == 'regular-featured') ? 'style="padding-top:5px"' : null?>>
                 <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
                 <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
                 <span class="share-button">
@@ -217,7 +223,7 @@
                 </span>
             </div>
             <div class="vote-block">
-                <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
+                <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>" <?=(!$is_recommended) ? 'style="margin-left:0"' : 'style="margin-left:10px"'?>>
                     Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                 </span>
             </div>

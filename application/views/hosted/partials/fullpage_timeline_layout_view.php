@@ -83,7 +83,13 @@
                 </div>
                 <?php if($feed->feed_data->isfeatured == 1): ?>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    <span class="vote_count"><?php echo $vote_count; ?></span> 
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                         found this useful
                 </div>
                 <?php endif; ?>
             </div>
@@ -94,7 +100,13 @@
             <div class="feedback-tail"></div>
             <?php if($feed->feed_data->isfeatured != 1): ?>
                 <div class="rating-stat" style="display: <?= ($vote_count == 0 ? 'none' : ''); ?>">
-                    <span class="vote_count"><?php echo $vote_count; ?></span> people found this useful
+                    <span class="vote_count"><?php echo $vote_count; ?></span>
+                    <? if($vote_count > 1): ?>
+                        people
+                    <? else: ?>
+                        person 
+                    <? endif; ?>
+                         found this useful
                 </div>
             <?php endif; ?>
             <div class="feedback-text">
@@ -207,15 +219,15 @@
                 <?php if( $is_recommended ): ?>
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
-                <div class="vote-block">
+                <div class="vote-block" <?=(!$is_recommended) ? 'style="padding-top:5px"' : null?>>
                     <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
                         Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                     </span>
                 </div>
             </div>
             <div class="feedback-actions clear">
-                    <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
-                    <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
+                <span class="flag-as" style="<?=($flagged==1)?'display:none' : '' ?>">Flag as inappropriate</span>
+                <span class="undo_flag" style="<?=($flagged!=1)?'display:none' : '' ?>">Undo flag</span>
                 <span class="share-button">
                     Share
                     <div class="share-box">
