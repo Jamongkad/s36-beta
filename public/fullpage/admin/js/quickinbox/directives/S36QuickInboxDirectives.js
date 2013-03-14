@@ -99,19 +99,34 @@ angular.module('S36QuickInboxDirectives', [])
                     //videos
                     if(links.hasOwnProperty('video') && links.video == 'yes') { 
                         scope.mtemplate += '<div class="image-block video">';
-                        scope.mtemplate += '<a class="fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
-                        scope.mtemplate += '<div class="video-circle-ajs"></div>';
-                        scope.mtemplate += '<img src="' + links.image + '" width="100%" /></a>';
+                        scope.mtemplate +=     '<a class="fancybox-video" href="' + links.url + '" rel="gallery' + scope.feedid + '">';
+                        scope.mtemplate +=     '<div class="video-circle-ajs"></div>';
+                        scope.mtemplate +=     '<img src="' + links.image + '" width="100%" /></a>';
                         scope.mtemplate += '</div>';
                     }
 
                     //links
                     if(links.hasOwnProperty('video') && links.video == 'no') { 
+                        /*
                         scope.mtemplate += '<div class="image-block" style="width:100%">';
                         scope.mtemplate += '<div class="the-thumb-ajs"><a href="' + links.url + '" target=newtab>';
                         scope.mtemplate += 'website link: ' + links.title + '<br/>';
                         scope.mtemplate += '<img src="' + links.image + '" width="100%" height="50%"/>';
                         scope.mtemplate += '</a></div>';
+                        scope.mtemplate += '</div>';
+                        */
+                        scope.mtemplate += '<div class="uploaded-link">';
+                        scope.mtemplate +=     '<div class="form-video-meta">';
+                        scope.mtemplate +=         '<div class="video-thumb">';
+                        scope.mtemplate +=             '<div class="the-thumb">';
+                        scope.mtemplate +=                 '<a href="' + links.url + '" target=newtab><img src="' + links.image + '" width="100%"></a>';
+                        scope.mtemplate +=              '</div>';
+                        scope.mtemplate +=         '</div>';
+                        scope.mtemplate +=         '<div class="video-details">';
+                        scope.mtemplate +=             '<h3>' + links.title + '</h3>';
+                        scope.mtemplate +=             '<p>' + links.description + '</p>';
+                        scope.mtemplate +=         '</div>';
+                        scope.mtemplate +=     '</div>';
                         scope.mtemplate += '</div>';
                     }
                     
@@ -136,9 +151,9 @@ angular.module('S36QuickInboxDirectives', [])
                         var large_url  = '/uploaded_images/form_upload/large/' + file_name;;
 
                         scope.mtemplate += '<div class="image-block pic" style="' + box_width + '">';
-                            scope.mtemplate += '<a class="the-thumb-ajs" rel="gallery' + scope.feedid + '" href="' +  large_url  + '">';
-                                scope.mtemplate += '<img src="' + medium_url + '" width="100%" />';
-                            scope.mtemplate += '</a>';
+                        scope.mtemplate +=     '<a class="the-thumb-ajs" rel="gallery' + scope.feedid + '" href="' +  large_url  + '">';
+                        scope.mtemplate +=         '<img src="' + medium_url + '" width="100%" />';
+                        scope.mtemplate +=     '</a>';
                         scope.mtemplate += '</div>';
                     }                       
                 }
