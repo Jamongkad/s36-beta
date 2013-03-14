@@ -18,12 +18,11 @@ class FeedbackDetails extends FeedbackDataTypes {
 
     public function generate_data() {
 
-        $permission = $this->post_data->get('permission');
         $category = DB::Table('Category')->where('companyId', '=', $this->post_data->get('company_id'))
                                          ->where('intName', '=', 'default')->first(Array('categoryId')); 
 
+        //double scrub feedback text in fact triple scrub it before entering DB
         $feedback_text = Helpers::html_cleaner($this->post_data->get('feedback'));
-
         $config = \HTMLPurifier_Config::createDefault();
         $purifier = new \HTMLPurifier($config);
         $feedback_text = $purifier->purify($feedback_text);
@@ -33,9 +32,9 @@ class FeedbackDetails extends FeedbackDataTypes {
         $hosted->set_hosted_settings(Array('company_id' => $this->post_data->get('company_id')));
         $hosted_settings = $hosted->hosted_settings();
 
-        $isPublished = 0;
+        $is_published = 0;
         if($hosted_settings->autopost_enable == 1) {
-            $isPublished = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
+            $is_published = ($this->post_data->get('rating') < $hosted_settings->autopost_rating) ? 0 : 1;
         }
         /*end autoposting*/
 
@@ -60,10 +59,10 @@ class FeedbackDetails extends FeedbackDataTypes {
           , 'formId'        => 1
           , 'status'        => 'new'
           , 'isRecommended' => $this->post_data->get('recommend')
-          , 'isPublished'   => $isPublished
+          , 'isPublished'   => $is_published
           , 'rating'        => $this->post_data->get('rating')
           , 'text'          => $feedback_text
-          , 'permission'    => $permission
+          , 'permission'    => $this->post_data->get('permission')
           , 'dtAdded'       => ($this->post_data->get('date_change')) ? date('Y-m-d H:i:s', strtotime($this->post_data->get('date_change'))) : date('Y-m-d H:i:s')
           , 'attachments'   => json_encode($this->post_data->get('attachments'))
           , 'metadata'      => $metadata
