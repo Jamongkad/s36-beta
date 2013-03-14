@@ -242,10 +242,10 @@ if($facebook = $company_social->fetch_social_account('facebook')) {
                         </div>
                         <div class="two-clm-in clear">
                             <div class="clm one">
-                                <input type="text" class="registration-input" name="company" id="your_company" title="Company Name (optional)" maxlength="100" />
+                                <input maxlength='20' type="text" class="registration-input" name="company" id="your_company" title="Company Name (optional)" maxlength="100" />
                             </div>
                             <div class="clm two">
-                                <input type="text" class="registration-input" name="position" id="your_occupation" title="Occupation (optional)" maxlength="100" />
+                                <input maxlength='20' type="text" class="registration-input" name="position" id="your_occupation" title="Occupation (optional)" maxlength="100" />
                             </div>
                         </div>
                         <div class="one-clm-in">

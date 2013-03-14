@@ -153,13 +153,11 @@ return array(
             'text'      => 'I recommend '.$obj->company_name.', just sent them some great feedback over at '.$obj->website_url.'. Go check them out!'
         ));
 
-
         $obj->tweet_button  = '<a href="https://twitter.com/share?'.$tw_query.'" class="twitter-share-button" data-size="large" data-count="none"><img src="/img/btn-tw-tweet.png" /></a>';
         $fb_iframe = '
        <iframe src="//www.facebook.com/plugins/like.php?href='.urlencode($obj->feedback_url).'&amp;send=false&amp;layout=standard&amp;width=390&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35&amp;appId='.Config::get('application.fb_id').'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:390px; height:35px;" allowTransparency="true"></iframe>
         ';
         $obj->share_button = $fb_iframe;
-
         echo json_encode($obj); 
     },
     

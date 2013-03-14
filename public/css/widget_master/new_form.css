@@ -250,13 +250,14 @@ a:hover{
 .form-video-thumbs,.form-image-thumbs{
 	overflow:hidden;
 	max-height:78px;
+	max-width:270px;
 }
 .form-image-thumbs{
 	margin-bottom:5px;
 }
 .form-image-thumbs .image-thumb{
 	float:left;
-	width:100px;
+	width:70px;
 	margin-right:20px;
 }
 .form-video-meta{

@@ -21,7 +21,7 @@
                 <div class="pageContents">
                     <div class="pageTitle">
                         Recent Submitted Feedback
-                        <span class="light-text"></span>
+                        <span class="full-inbox-link"> <a href="/inbox/all">Click here to access full inbox</a></span>
                     </div>
                     <div class="pageBody">
                         <div id="quickInboxWidget">

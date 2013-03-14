@@ -251,11 +251,11 @@ $(document).keypress(function(event){
 			  $('#preview_photo').attr('src',photo);
 			  $('#fb_flag').val("1");
 		}
-
-		
+	
 		//initialize the link preview script! 
 		$('#feedbackText').linkPreview();
 		$('#textEditor').linkPreview();
+
 		//initialize the file upload script! 
 		$('#file_uploader').fileupload({
 			dropZone: $('#drag-and-drop-area'),
@@ -324,7 +324,6 @@ $(document).keypress(function(event){
 			dropZone: false,
 			dataType: 'json',
 			add: function(e, data){
-				console.log('in add');
 				var image_types = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png'];
 				if( image_types.indexOf( data.files[0].type ) == -1 ){
 					var error = ['Please select an image file'];
@@ -369,11 +368,6 @@ $(document).keypress(function(event){
 		$('#next').click(function(){
 			var cur_page = $('.current').attr('id');
 			if(cur_page == 'step1'){
-                /*
-				if(validate_feedback()) {
-					$steps.cycle('next');
-				}
-                */
 				if(FormValidatePageOne.validate()) {
 					$steps.cycle('next');
 				}
