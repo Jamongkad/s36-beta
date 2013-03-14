@@ -103,7 +103,7 @@ angular.module('S36QuickInboxDirectives', [])
                         scope.mtemplate +=         '<div class="video-circle-ajs"></div>';
                         scope.mtemplate +=         '<img src="' + links.image + '" width="100%" />';
                         scope.mtemplate +=     '</div>';
-                        scope.mtemplate +=  '</a><br/>';
+                        scope.mtemplate +=  '</a><br/><br/>';
 
                     }
 
