@@ -113,7 +113,7 @@ echo HTML::style('/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7');
                         </li>
                     <?php else: ?>
                         <li> 
-                            <?=HTML::link('login?forward_to=me', 'Login')?>
+                            <a href="/login/forward_to=me">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>
