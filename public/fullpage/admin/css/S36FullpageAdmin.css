@@ -931,3 +931,11 @@ ul.patternList li div.active{
 .quick-inbox-spacer {
     height: 30px;    
 }
+.full-inbox-link {
+    color: #999;
+    text-align: right;
+    float: right;
+    font-weight: normal;
+    font-size: 11px;
+    padding-top: 2px;
+}
