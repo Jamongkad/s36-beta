@@ -110,7 +110,7 @@ var S36FeedbackActions = new function() {
                     vote_count_obj.hide().text( parseInt(vote_count_obj.text()) + 1 ).fadeIn();
                     
                     this_vote.parents(feedback).find(vote_container).hide();
-                    this_vote.parents(feedback).find(undo_vote).show();
+                    //this_vote.parents(feedback).find(undo_vote).show();
                 }
             });
         });

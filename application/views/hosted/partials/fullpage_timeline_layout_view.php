@@ -209,9 +209,6 @@
                     <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
                         Was this useful? <a href="#" class="small-btn-pin">Yes</a>
                     </span>
-                    <span class="undo_vote <?= ($voted == 1 ? '' : 'hidden'); ?>">
-                        Undo vote
-                    </span>
                 </div>
             </div>
             <div class="feedback-actions clear">
