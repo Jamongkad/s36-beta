@@ -198,6 +198,9 @@
 .feedback-actions{
 	text-align:right;
 	font-size:11px;
+    padding-top: 5px;
+    padding-right: 3px;
+    float:right;
 }
 .feedback-actions span{
 	margin-left:10px;
@@ -337,7 +340,7 @@
 	margin-top:5px;
 }
 .regular .feedback-recommendation{
-	width:204px;
+	width:200px;
 	float:left;
 }
 .regular .feedback-recommendation .green-thumb{
@@ -354,7 +357,7 @@
 	font-size:11px;
 }
 .regular .feedback-actions span{
-	margin-left:10px;
+	margin-left:0px;
 }
 .regular .vote-action{
 	color:#4ea6c6;
