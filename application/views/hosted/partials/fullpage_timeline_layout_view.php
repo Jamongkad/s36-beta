@@ -219,6 +219,7 @@
                 <?php if( $is_recommended ): ?>
                     <div class="green-thumb">Recommended by <?= HTML::entities($feed->feed_data->firstname); ?> to friends</div>
                 <?php endif; ?>
+                <br/>
                 <div class="vote-block">
                     <span class="vote-action <?= ($voted != 1 ? '' : 'hidden'); ?>">
                         Was this useful? <a href="#" class="small-btn-pin">Yes</a>
