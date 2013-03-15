@@ -118,13 +118,13 @@ class Determiner {
            return $obj;
        }
        */
-      $obj->assets_dir = $this->assets_base_dir.'/'.$obj->env_name;
-      if($obj->env_name == 'development'){
-          $obj->assets_dir = $obj->assets_dir.'/'.$this->http_host;
-      }
-      if(!is_dir($obj->assets_dir)) {
-        mkdir($obj->assets_dir,0777,true);
-      }
+      // $obj->assets_dir = $this->assets_base_dir.'/'.$obj->env_name;
+      // if($obj->env_name == 'development'){
+      //     $obj->assets_dir = $obj->assets_dir.'/'.$this->http_host;
+      // }
+      // if(!is_dir($obj->assets_dir)) {
+      //   mkdir($obj->assets_dir,0777,true);
+      // }
       return $obj;
    }
   

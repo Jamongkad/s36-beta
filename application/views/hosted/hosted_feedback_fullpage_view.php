@@ -84,8 +84,10 @@
                     <div class="company-reviews clear">
                         <div class="company-recommendation">
                             <div class="green-thumb">
-                                <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
-                                of our customers recommend us to their friends.
+                                <?php if( $company->total_feedback != 0 ): ?>
+                                    <?php echo round(($company->total_recommendations / $company->total_feedback) * 100); ?>% 
+                                    of our customers recommend us to their friends.
+                            <?php endif; ?>
                             </div>
                         </div>
                         <div class="company-rating">
