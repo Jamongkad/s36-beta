@@ -426,6 +426,7 @@
                                                         </div>   
                                                     <?php } ?>
                                             </div>
+                                            <br/>
                                             <?php 
                                             /*
                                             | End Video and Web Link Attachment
