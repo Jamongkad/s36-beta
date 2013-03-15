@@ -28,7 +28,11 @@ return array(
     },
 
     'GET /hosted/quick_inbox' => function() use ($feedback) {
-        $feeds = $feedback->newfeedback_by_company(false, $filter='positive');  
+        $filter = Array(
+            'rating' => 'positive'
+          , 'privacy_policy' => 'public'
+        );
+        $feeds = $feedback->newfeedback_by_company($filter);  
         echo json_encode($feeds->nodes);
     },
 
