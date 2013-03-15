@@ -459,8 +459,6 @@ class DBFeedback extends S36DataObject {
             } 
             return $statement;
         };
-
-        Helpers::dump($filter_statement());
        
         $sql = "   
             SELECT 
@@ -502,6 +500,8 @@ class DBFeedback extends S36DataObject {
              ORDER BY 
                  Feedback.dtAdded DESC 
         ";
+
+        Helpers::dump($sql);
 
         $sth = $this->dbh->prepare($sql); 
         //In case we're logged in...
