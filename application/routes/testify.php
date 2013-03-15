@@ -373,21 +373,7 @@ return array(
         
         $tf->run();         
     },
-
-    'GET /testify/total_newfeedback' => function() {
-        $tf = new Testify("Total New Feedback");  
-        $tf->beforeEach(function($tf) {
-            $tf->data->dbfeedback = new Feedback\Repositories\DBFeedback;
-        });
-
-        $tf->test("Testing New Feedback Count ", function($tf) { 
-            $count = $tf->data->dbfeedback->total_newfeedback_by_company(); 
-            $tf->dump($count);
-        });
-        
-        $tf->run();          
-    },
-    
+ 
     'GET /testify/messageservice' => function() { 
 
         $tf = new Testify("Message Service");  
