@@ -451,8 +451,8 @@ class DBFeedback extends S36DataObject {
                     }
                 }
 
-                if(array_key_exists('privacy', $filter)) {
-                    if($filter['privacy'] == 'public') { 
+                if(array_key_exists('privacy_policy', $filter)) {
+                    if($filter['privacy_policy'] == 'public') { 
                         $statement .= 'AND Feedback.permission = 1';
                     } 
                 }
@@ -500,8 +500,6 @@ class DBFeedback extends S36DataObject {
              ORDER BY 
                  Feedback.dtAdded DESC 
         ";
-
-        Helpers::dump($sql);
 
         $sth = $this->dbh->prepare($sql); 
         //In case we're logged in...

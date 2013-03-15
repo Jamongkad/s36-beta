@@ -415,9 +415,9 @@ return array(
         $tf->test("Quick Inbox: DBFeedback", function($tf) {  
             $filter = Array(
                 'rating' => 'positive'
-              , 'privacy' => 'public'
+              , 'privacy_policy' => 'public'
             );
-            $feedback = $tf->data->dbfeedback->newfeedback_by_company(6); 
+            $feedback = $tf->data->dbfeedback->newfeedback_by_company(6, $filter); 
             $tf->dump($feedback);
         });
 
